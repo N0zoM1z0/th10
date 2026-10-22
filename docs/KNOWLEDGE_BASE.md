@@ -5258,3 +5258,13 @@ rotation flag OR4 and a pending multiplied scale result are whole-three-body
 raw-neutral; scale-first loses eight aligned positions. All four retain36
 whole guards4618/all121 and eight bounded child paths. No source or exact credit.
 [Full compiler observations and limits](evidence/anm-flip-lowering/README.md).
+
+## ANM float-service context controls (2026-10-22)
+
+Moving unchanged GetFloatVar to the end of its TU or to a separate GL/GS TU
+preserves the entire9964-byte ExecuteScript baseline after177/174 independently
+verified changed-address fields. Both complete inventories have350 fields, zero
+unresolved destinations and zero remaining ordinary-byte differences. This is
+measured native-peer equality only, not target equality or original TU proof.
+Both retain36 whole guards4618/all121 and eight bounded child paths.
+[Source transformations and proof scope](evidence/anm-float-service-context/README.md).

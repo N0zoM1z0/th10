@@ -1,10 +1,12 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-ANM flip/flag-lifetime controls are unadopted. Baseline remains9964 bytes,
-7541/7995 aligned diagnostic positions; ECL7020/6993 and Enemy14352 remain open.
-Authored409/74716, overall1252/141647 unchanged. Source613/247945, nonexact204,
-absent121. See [ANM flip evidence](evidence/anm-flip-lowering/README.md).
+ANM float-service definition-order/separate-GL controls are unadopted. Both are
+whole9964-byte baseline-equal after independently verified address replay.
+Baseline7541/7995, ECL7020/6993 and Enemy14352 remain nonexact. Authored409/74716,
+overall1252/141647 unchanged. Source613/247945, nonexact204, absent121.
+See [ANM float-service contexts](evidence/anm-float-service-context/README.md)
+and [ANM flip evidence](evidence/anm-flip-lowering/README.md).
 See [ECL translation-unit controls](evidence/ecl-tu-visibility/README.md).
 See [factory ABI controls](evidence/enemy-laser-calling-conventions/README.md).
 See [laser construction proof](evidence/enemy-laser-constructors/README.md).
@@ -49,6 +51,24 @@ scripts/repo-python scripts/verify-toolchain.py --execute
 scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
+
+## Latest ANM float-service context checkpoint
+
+Startingd815f8e. Definition-last compiles1/reuses9 game objects; separate-GL
+compiles2/reuses9. Both retain full9964 and7541/7995/90of92/gap2. Full350-field
+inventories agree;177/174 changed fields bind matching real MAP semantic names
+or identical local destination offsets, no unresolved fields or remaining byte
+differences after replay. This is baseline preservation, not target equality.
+Each passes35guards4424/all118, eight child paths and194/all3 direct caller:
+36whole4618/all121. ECL7020/6993/all189/62/callee171 retained. Source and all
+canonical pins unchanged. Fresh Ghidra/disk/tracking/toolchain-check pass; prior
+same-session executed toolchain receipt retained, no new full CI.
+[Evidence](evidence/anm-float-service-context/README.md). Cleanup16 files/
+1065922 bytes; keep separate-GL carrier, both source forms and compact proof.
+All owned jobs terminal0. Recovery:
+`.analysis/gpt-6-astra-medium/anm-float-context-20261022/RECOVERY.md`.
+Next rotate to Enemy dispatcher branch-size/request-lifetime differences; no
+small-function closure and no repetition of these two neutral ANM contexts.
 
 ## Latest ANM flip and flag-lifetime checkpoint
 
