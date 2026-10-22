@@ -1,0 +1,54 @@
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -1148,6 +1148,7 @@
+   int iVar27;
+   int secondLowBulletCount;
+   unsigned int uVar28;
++  int rankFloatIndex;
+   EnemyMotionView *selectedMotion;
+   EnemyPositionInterpolationView *positionInterpolation;
+   float *positionInterpolationValues;
+@@ -2690,10 +2691,10 @@
+     return 0;
+   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_3:
+     if (g_EnemyChapterState.rank >= 0x200) {
+-      iVar27 = 2;
++      rankFloatIndex = 2;
+       goto dispatch_rank_float_tail_b;
+     }
+-    iVar27 = 0;
++    rankFloatIndex = 0;
+     if (g_EnemyChapterState.rank > -0x200) goto dispatch_rank_float_tail_b;
+     goto dispatch_rank_float_tail_a;
+   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_5:
+@@ -2704,17 +2705,17 @@
+       goto dispatch_difficulty_float_index_3;
+     }
+     if (g_EnemyChapterState.rank >= -200) {
+-      iVar27 = 2;
++      rankFloatIndex = 2;
+       goto dispatch_rank_float_tail_a;
+     }
+     if (g_EnemyChapterState.rank < -400) {
+-      iVar27 = 0;
++      rankFloatIndex = 0;
+       goto dispatch_rank_float_tail_a;
+     }
+-    iVar27 = 1;
++    rankFloatIndex = 1;
+     goto dispatch_rank_float_tail_b;
+ dispatch_rank_float_tail_b:
+-    fVar19 = ReadFloatArgument(iVar27);
++    fVar19 = ReadFloatArgument(rankFloatIndex);
+ dispatch_store_float_result:
+     // Keep this owner lifetime explicit: the shipped shared tail reuses EBX
+     // as the full owner immediately before ResolveFloat.
+@@ -2724,7 +2725,7 @@
+     *pfVar15 = (float)fVar19;
+     return 0;
+ dispatch_rank_float_tail_a:
+-    fVar21 = ReadFloatArgument(iVar27);
++    fVar21 = ReadFloatArgument(rankFloatIndex);
+ dispatch_store_float_result_a:
+     positionInterpolationValues = ResolveFloatArgument(0);
+     *positionInterpolationValues = (float)fVar21;

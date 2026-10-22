@@ -5326,3 +5326,16 @@ local FlipX helper remains outlined; requiring inlining reproduces the complete
 baseline after independently binding303 changed fields, not a better FlipX.
 The target's accumulator XOR and slow-Tick operand-order differences remain
 open. See [expression-context evidence](evidence/anm-expression-context/README.md).
+
+## Enemy rank/aim result-tail placement (2026-10-22)
+
+Target aim411C5A ends by jumping into the49-byte result tail at411956 inside
+rank-five selection. Current native keeps that tail in aim. The baseline aim
+size excess41 combines a44-byte tail-placement penalty with a three-byte
+saving from [EDI+3C4] instead of ADD EDI,3C0 and [EDI+4]. Typing only the second
+player snapshot as a drawPosition pointer restores the latter form and adds16
+matched case positions, but does not relocate the tail. A separate rank index
+and wrapper spelling for result resolution are each raw-neutral across four
+complete bodies. Literal low-rank reads alter sharing but do not recover target
+routing. These are current-context compiler observations, not original source
+identification. See [rank/result evidence](evidence/enemy-rank-result-routing/README.md).
