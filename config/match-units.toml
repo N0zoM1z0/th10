@@ -23736,3 +23736,21 @@ target_address = 4410416
 size = 108
 linkages = [{ "offset" = 7, "type" = "REL32", "symbol" = "?Release@PbgArchive@@QAEXXZ", "target" = 4410640 }, { "offset" = 14, "type" = "REL32", "symbol" = "??2@YAPAXI@Z", "target" = 4531347 }, { "offset" = 27, "type" = "DIR32", "symbol" = "??_7CPbgFile@@6B@", "target" = 4649520 }, { "offset" = 58, "type" = "REL32", "symbol" = "?ParseHeader@PbgArchive@@QAE_NPBD@Z", "target" = 4411248 }, { "offset" = 67, "type" = "REL32", "symbol" = "?CopyFileName@PbgArchive@@QAEPADPBD@Z", "target" = 4411936 }, { "offset" = 83, "type" = "DIR32", "symbol" = "?g_PbgFileOpenModes@@3PAPADA", "target" = 4671752 }, { "offset" = 99, "type" = "REL32", "symbol" = "?Release@PbgArchive@@QAEXXZ", "target" = 4410640 }]
 pdb_source = "src/PbgArchive.cpp"
+
+# Complete success-first archive registration wrapper.
+[units.filesystem-load-archive]
+artifact_kind = "linked-pe"
+source = "src/FileSystem.cpp"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"]
+support_sources = ["src/PbgArchive.cpp", "src/PbgFile.cpp", "src/ResFile.cpp"]
+normal_support_sources = ["src/ResFile.cpp"]
+entry_symbol = "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z"
+output_dir = "build/match-linked/FileSystemPathSize"
+harness = "unresolved-symbol-data-anchors-v1"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+support_profiles = { "src/PbgArchive.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc", "/Ob1"] }
+functions = ["FileSystem::LoadArchive"]
+symbol = "?LoadArchive@FileSystem@@YA_NPBD@Z"
+target_address = 4413392
+size = 36
+linkages = [{ "offset" = 2, "symbol" = "?g_PbgArchiveCount@@3HA", "target" = 4683856, "type" = "DIR32" }, { "offset" = 11, "symbol" = "?g_PbgArchives@@3PAVPbgArchive@@A", "target" = 4793264, "type" = "DIR32" }, { "offset" = 16, "symbol" = "?Load@PbgArchive@@QAE_NPBD@Z", "target" = 4410416, "type" = "REL32" }, { "offset" = 26, "symbol" = "?g_PbgArchiveCount@@3HA", "target" = 4683856, "type" = "DIR32" }]

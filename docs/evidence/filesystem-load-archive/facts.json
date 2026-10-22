@@ -1,0 +1,451 @@
+{
+  "canonical_colds": [
+    {
+      "actual_source_TUs_compiled": 4,
+      "artifacts": {
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/link-anchors.obj": "b67046a02231e2cb09dcc922e8019bc17191330db5c377d149fd3cfee7d3193f",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/source.exe": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/source.ltcg.obj": "e878b90004f0eceb7788bde07b50a7c11d49b15c1639c0c5e3120ad3f553d2e9",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/source.map": "230501baf46ef0dc10cdae60501b19f743fd79db2e4496bbc73a762d7bc3b35b",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/source.pdb": "2afe173ffe0b579a9f1244e4f5797eb9ae1b376e7aef29b1d00e421b06f446d5",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/support-00-PbgArchive.ltcg.obj": "2cf47bae07cfff8def2c2237b99f3121c1318c27471ff984f1d15af37d55b20e",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/support-01-PbgFile.ltcg.obj": "2ee200be7ed5f58b8bdf32e770ed257490dbf03c606bc8572d1fbfec865e2ee6",
+        "build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1/support-02-ResFile.normal.obj": "2f76159c8e62560572cd7e13cae3e570d5dbf9d67e79e92ff9530523ea92336b"
+      },
+      "bound_report_sha256": "290d6d44013e2c962b0788de25889af37f57ac9bb4f811defa849d9ac6368c19",
+      "build_input_inventory_sha256": "718a25e55d6fcd68f1bd754ea0bb1dbec1a2e80a2005b81b1b2e3e223cda92ff",
+      "build_report_sha256": "e0235e7b2914edc6c27b4dee7922445cb06a628238a6ff46be438853243d0499",
+      "cold": 1,
+      "parent_and_guards": [
+        {
+          "candidate_address": "0x00401620",
+          "extent_source": "pdb-section-contribution",
+          "fields": 4,
+          "image_sha256": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+          "matched_bytes": 36,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 36,
+          "symbol": "?LoadArchive@FileSystem@@YA_NPBD@Z",
+          "unit": "filesystem-load-archive"
+        },
+        {
+          "candidate_address": "0x00401030",
+          "extent_source": "pdb-section-contribution",
+          "fields": 7,
+          "image_sha256": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+          "matched_bytes": 212,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 212,
+          "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+          "unit": "find"
+        },
+        {
+          "candidate_address": "0x00402460",
+          "extent_source": "pdb-section-contribution",
+          "fields": 2,
+          "image_sha256": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+          "matched_bytes": 46,
+          "pdb_module_index": 5,
+          "result": "exact",
+          "size": 46,
+          "symbol": "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z",
+          "unit": "caller"
+        },
+        {
+          "candidate_address": "0x00401D50",
+          "extent_source": "pdb-section-contribution",
+          "fields": 1,
+          "image_sha256": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+          "matched_bytes": 51,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 51,
+          "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+          "unit": "entry-size"
+        },
+        {
+          "candidate_address": "0x00401990",
+          "extent_source": "pdb-section-contribution",
+          "fields": 1,
+          "image_sha256": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+          "matched_bytes": 53,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 53,
+          "symbol": "?FindEntry@PbgArchive@@QAEPAUPbgArchiveEntry@@PBD@Z",
+          "unit": "find-entry"
+        },
+        {
+          "candidate_address": "0x00402110",
+          "extent_source": "pdb-section-contribution",
+          "fields": 3,
+          "image_sha256": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+          "matched_bytes": 46,
+          "pdb_module_index": 2,
+          "result": "exact",
+          "size": 46,
+          "symbol": "??1CPbgFile@@UAE@XZ",
+          "unit": "destructor"
+        },
+        {
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "fields": 14,
+          "image_sha256": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+          "matched_bytes": 214,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 214,
+          "symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+          "unit": "read"
+        },
+        {
+          "candidate_address": "0x004011F0",
+          "extent_source": "pdb-section-contribution",
+          "fields": 13,
+          "image_sha256": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+          "matched_bytes": 190,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 190,
+          "symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+          "unit": "size"
+        },
+        {
+          "candidate_address": "0x00401A20",
+          "extent_source": "pdb-section-contribution",
+          "fields": 7,
+          "image_sha256": "23636324143ccf1a438ce9222e5f7eb5dda6fdb9f71f494db1488ca147b7d6b1",
+          "matched_bytes": 108,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 108,
+          "symbol": "?Load@PbgArchive@@QAE_NPBD@Z",
+          "unit": "archive-load"
+        }
+      ]
+    },
+    {
+      "actual_source_TUs_compiled": 4,
+      "artifacts": {
+        "build/match-linked/FileSystemPathSize/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+        "build/match-linked/FileSystemPathSize/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+        "build/match-linked/FileSystemPathSize/link-anchors.obj": "16e750f6c59dfc04784d914c620338a90d2e7d4722aaffef3baca89d3b11723d",
+        "build/match-linked/FileSystemPathSize/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+        "build/match-linked/FileSystemPathSize/link-attempt-2.log": "5c2e65c905e91407cf794a1cca5e355bafe574262cedbcac0aef403d13f7fe7e",
+        "build/match-linked/FileSystemPathSize/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "build/match-linked/FileSystemPathSize/source.exe": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+        "build/match-linked/FileSystemPathSize/source.ltcg.obj": "fe8c8d65eab7ce1021b336c729bbb44b106d1748bedf7e5e522d73d1693f58e3",
+        "build/match-linked/FileSystemPathSize/source.map": "f4223d61a84e398ddd7af2afaae03a6fd7044c581e4975cc85647324fd596eda",
+        "build/match-linked/FileSystemPathSize/source.pdb": "6f05728e01010f28de27365b6f739cd27d97d5f77962bbd89eb43d3be3219669",
+        "build/match-linked/FileSystemPathSize/support-00-PbgArchive.ltcg.obj": "742b4325cfaa257c38fd7e822294eaf2705adaacfd330b9d9763d40863023259",
+        "build/match-linked/FileSystemPathSize/support-01-PbgFile.ltcg.obj": "52385597b522b2894fab89dfb5978d9a1d50d0d16ee49d156e149702ebfa9f99",
+        "build/match-linked/FileSystemPathSize/support-02-ResFile.normal.obj": "c85ca4c828cd607b8a6a89a0d90030ace438d0c0eee9647e9da1028ada13524a"
+      },
+      "bound_report_sha256": "6ab5d24165ab804506b9be4ae25321382d8dae207597d7ba2ffe37a98930a325",
+      "build_input_inventory_sha256": "718a25e55d6fcd68f1bd754ea0bb1dbec1a2e80a2005b81b1b2e3e223cda92ff",
+      "build_report_sha256": "0a38ec1946dc54f96b4c4c0fa30ae94fa06cad6b513244be757492859e19f0f8",
+      "cold": 2,
+      "parent_and_guards": [
+        {
+          "candidate_address": "0x00401620",
+          "extent_source": "pdb-section-contribution",
+          "fields": 4,
+          "image_sha256": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+          "matched_bytes": 36,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 36,
+          "symbol": "?LoadArchive@FileSystem@@YA_NPBD@Z",
+          "unit": "filesystem-load-archive"
+        },
+        {
+          "candidate_address": "0x00401030",
+          "extent_source": "pdb-section-contribution",
+          "fields": 7,
+          "image_sha256": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+          "matched_bytes": 212,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 212,
+          "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+          "unit": "find"
+        },
+        {
+          "candidate_address": "0x00402460",
+          "extent_source": "pdb-section-contribution",
+          "fields": 2,
+          "image_sha256": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+          "matched_bytes": 46,
+          "pdb_module_index": 5,
+          "result": "exact",
+          "size": 46,
+          "symbol": "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z",
+          "unit": "caller"
+        },
+        {
+          "candidate_address": "0x00401D50",
+          "extent_source": "pdb-section-contribution",
+          "fields": 1,
+          "image_sha256": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+          "matched_bytes": 51,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 51,
+          "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+          "unit": "entry-size"
+        },
+        {
+          "candidate_address": "0x00401990",
+          "extent_source": "pdb-section-contribution",
+          "fields": 1,
+          "image_sha256": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+          "matched_bytes": 53,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 53,
+          "symbol": "?FindEntry@PbgArchive@@QAEPAUPbgArchiveEntry@@PBD@Z",
+          "unit": "find-entry"
+        },
+        {
+          "candidate_address": "0x00402110",
+          "extent_source": "pdb-section-contribution",
+          "fields": 3,
+          "image_sha256": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+          "matched_bytes": 46,
+          "pdb_module_index": 2,
+          "result": "exact",
+          "size": 46,
+          "symbol": "??1CPbgFile@@UAE@XZ",
+          "unit": "destructor"
+        },
+        {
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "fields": 14,
+          "image_sha256": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+          "matched_bytes": 214,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 214,
+          "symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+          "unit": "read"
+        },
+        {
+          "candidate_address": "0x004011F0",
+          "extent_source": "pdb-section-contribution",
+          "fields": 13,
+          "image_sha256": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+          "matched_bytes": 190,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 190,
+          "symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+          "unit": "size"
+        },
+        {
+          "candidate_address": "0x00401A20",
+          "extent_source": "pdb-section-contribution",
+          "fields": 7,
+          "image_sha256": "d795671ae487a954b0167a335fe02499eb4c9e69236cfde6cf54ed762c65b8a0",
+          "matched_bytes": 108,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 108,
+          "symbol": "?Load@PbgArchive@@QAE_NPBD@Z",
+          "unit": "archive-load"
+        }
+      ]
+    }
+  ],
+  "claim": {
+    "callee_data_or_runtime_credit": 0,
+    "decoded_instructions": 11,
+    "end_inclusive": "0x004357F3",
+    "new_exact_functions": 1,
+    "new_exact_owned_bytes": 36,
+    "owned_bytes": 36,
+    "start": "0x004357D0",
+    "unit": "filesystem-load-archive"
+  },
+  "date": "2026-10-22",
+  "input_sha256": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/build-match-unit.py": "5ed4084bd07ec4ca3c70d6adafe536c68e0afcd7edf6a6a1f85635893e543fc3",
+    "scripts/compare-linked-function.py": "25ac689539c7ea15140585941f8f082aa67f1db402dc1b8b6717ec9b14f1375c",
+    "scripts/replay-exact-units.py": "3907eca4644c10f2ea097149f142e5d3d449d512e48ec79314dfbf3eebca0a41",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/FileSystem.cpp": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/PbgArchive.cpp": "0873a5711bee9797f899c347cd7241b7fb3379fbb544c0dc083b9c2ab7a51abc",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/ResFile.cpp": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b"
+  },
+  "large_baseline": {
+    "baseline_native_artifact_sha256": 15,
+    "baseline_native_source_sha256": 32,
+    "scope": "fresh hashes only; no new large-owner build or comparison"
+  },
+  "previous_canonical_unit_dictionaries_unchanged": 1246,
+  "prior_archive_second_cold_archive": {
+    "artifacts": {
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/link-anchors.obj": "94d88c04f1e0b2a4dbbf6722f482e3dd6515f82012723adcf6c34a685e19dc2c",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/link-attempt-3.log": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/source.exe": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/source.ltcg.obj": "a4470de0f71bf75929562c9cd0de550077c697fa893b7f9d10300b3c7e28cbd2",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/source.map": "0c5c8dce464b53cdece8d579852d8f708abbabc9c3a7267eeb9b1f1ec862917f",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/source.pdb": "78ecaf85a2efb61b728b8cd670dd4fad85e83842ae574c7039fb511602820973",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/support-00-PbgArchive.ltcg.obj": "74bd067df8233c4bd6e7b160bdad85c1eb4e13012b55d3d13bfa3c837be46463",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/support-01-PbgFile.ltcg.obj": "43f973ce161aad5d04223b40133cd4c51d48a394811163af219e85e35f36af46",
+      "build/gpt-6.1-sol/archive-load-exact-20261022/cold-2/support-02-ResFile.normal.obj": "c00526826c830c70d074681508edf2859adb203309add3f355b419d096758f55"
+    },
+    "original_bound_report_sha256": "85f6e211c6b97108a7d7faf519593b4257bda7d35118d5f1d529059dd280483c",
+    "scope": "Archive108 second cold retained before modified-source next build group overwrites canonical output"
+  },
+  "private_control": {
+    "candidate_bytes": 36,
+    "candidate_fields": 4,
+    "compiled_source_inputs": 1,
+    "executed_models": [
+      "loadarchive-positive-if"
+    ],
+    "existing_fields": 48,
+    "existing_whole_guards_bytes": 920,
+    "producer_sha256": "0b07ca0eabd8328c9472ad41e63e592e1a81620f0c3e98e146045e51b6d8e752",
+    "report_sha256": "814f2e290bc10a1e0bdf56144297306342e2849dada5f95c6d30b089a024bb9b",
+    "reused_source_objects": 3,
+    "scope": "routing only; not full cold or ledger evidence",
+    "source_sha256": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260",
+    "unexecuted_declared_forms": [
+      "loadarchive-shared-result",
+      "loadarchive-call-result"
+    ]
+  },
+  "recipe": {
+    "artifact_kind": "linked-pe",
+    "entry_symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+    "functions": [
+      "FileSystem::LoadArchive"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "linkages": [
+      {
+        "offset": 2,
+        "symbol": "?g_PbgArchiveCount@@3HA",
+        "target": 4683856,
+        "type": "DIR32"
+      },
+      {
+        "offset": 11,
+        "symbol": "?g_PbgArchives@@3PAVPbgArchive@@A",
+        "target": 4793264,
+        "type": "DIR32"
+      },
+      {
+        "offset": 16,
+        "symbol": "?Load@PbgArchive@@QAE_NPBD@Z",
+        "target": 4410416,
+        "type": "REL32"
+      },
+      {
+        "offset": 26,
+        "symbol": "?g_PbgArchiveCount@@3HA",
+        "target": 4683856,
+        "type": "DIR32"
+      }
+    ],
+    "normal_support_sources": [
+      "src/ResFile.cpp"
+    ],
+    "output_dir": "build/match-linked/FileSystemPathSize",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS",
+      "/EHsc"
+    ],
+    "size": 36,
+    "source": "src/FileSystem.cpp",
+    "support_profiles": {
+      "src/PbgArchive.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHsc",
+        "/Ob1"
+      ]
+    },
+    "support_sources": [
+      "src/PbgArchive.cpp",
+      "src/PbgFile.cpp",
+      "src/ResFile.cpp"
+    ],
+    "symbol": "?LoadArchive@FileSystem@@YA_NPBD@Z",
+    "target_address": 4413392
+  },
+  "source_change": "ordinary success-first branch; signatures/headers/globals/layouts/profiles unchanged",
+  "starting_head": "fdbe829ba723f4661a885e9e18baf9773bfcf11b",
+  "target": {
+    "extent_sha256": "ede0d9645e5c77e154a34187130d4e9940e3cd7f96cd9afc07e698398c894f04",
+    "identity": "original Japanese TH10 v1.00a",
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "target_review_sha256": "02532ba0d8b50517f05384013a7dbb89ccb0deea55eb5acf70ee726500083bf2"
+  },
+  "target_ghidra": {
+    "coverage": "independent dense target decode36 and full native extent; no Ghidra boundary manufactured",
+    "dump_sha256": "9851fea00d0eecf5c09123df825ef8df5fec15404dfdf2ee957e5396a41899b3",
+    "log_sha256": "8ba8e1f663137e1533f0d128701b605e36be3e2ba3e9f2a626a9cf2c95d00426",
+    "mapped_text_unchanged_before_after": true,
+    "missing_function_record": "0x004357D0",
+    "mode": "readOnly/noanalysis/rollback,maxcpu1,heap768MiB",
+    "reused_packet": "docs/evidence/pbgarchive-load/facts.json"
+  },
+  "unknowns": [
+    "original identifiers/class/lifetime and source/TU/production flags",
+    "physical data owners and complete Windows i386 product/runtime",
+    "semantic reconstruction and portability"
+  ]
+}

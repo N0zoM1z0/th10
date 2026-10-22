@@ -5031,3 +5031,25 @@ exception is introduced. Only108 new bytes are credited: authored405/73949,
 overall1246/140459; source613/nonexact208/absent121. Callee/data owners, original
 source/TU/flags and whole product/runtime remain unknown.
 [Complete archive load proof and limits](evidence/pbgarchive-load/README.md).
+
+## Exact archive registration success branch (2026-10-22)
+
+FileSystem::LoadArchive4357D0..4357F3 is complete36 bytes/all4 fields. The target
+selects a16-byte archive row at4923B0 using count477850, calls Load434C30 with
+ECX row/EAX filename, increments only on success and returns low-byte1/0. Raw
+target decoding covers all11 instructions; the reviewed boundary/origin remains
+unchanged despite Ghidra having no function record at this entry.
+
+An ordinary success-first if branch reproduces target branch/false-clear order,
+replacing the previous early failure return. Signature, headers, globals,
+layout and compiler profiles remain unchanged; no forced register/ABI, padding
+or fake return. One private one-primary/three-reused model passes36/all4 plus
+eight whole guards920/all48. Two declared alternatives are unexecuted. Two
+subsequent full four-TU colds independently pass956/all52 each, with only36 new
+bytes credited and all1246 prior canonical dictionaries unchanged. Earlier39
+and34-byte diagnostics are historical, not an exhausted source search.
+
+Authored exact becomes406/73985, overall1247/140495; source613/nonexact207/absent121.
+FileSystem source13/13, exact11/13; transforms323/307 remain nonexact. Actual
+product/runtime, original identifier/TU/flags and physical data owners remain
+unknown. [Complete registration proof and limits](evidence/filesystem-load-archive/README.md).

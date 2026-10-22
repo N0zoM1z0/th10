@@ -251,10 +251,12 @@ int __stdcall WriteFile(const char *path, const void *data, unsigned int size)
 // seam. This source signature records the behavior without claiming that ABI.
 bool LoadArchive(const char *filename)
 {
-    if (!g_PbgArchives[g_PbgArchiveCount].Load(filename))
-        return false;
-    ++g_PbgArchiveCount;
-    return true;
+    if (g_PbgArchives[g_PbgArchiveCount].Load(filename))
+    {
+        ++g_PbgArchiveCount;
+        return true;
+    }
+    return false;
 }
 
 unsigned char *Decrypt(unsigned char *data, int size, unsigned char xorValue,

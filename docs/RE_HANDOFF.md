@@ -1,11 +1,11 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Complete
-PbgArchive::Load434C30 is now exact108/all7 fields after two independent full
-four-TU colds, with maintained source/headers unchanged. Authored exact405/73949,
-overall1246/140459. Source remains613/247945 owned bytes; nonexact208, absent121.
-FileSystem source13/13, exact10/13.
-See [archive load proof](evidence/pbgarchive-load/README.md),
+FileSystem::LoadArchive4357D0 is now exact36/all4 fields after two independent
+full four-TU colds. Authored exact406/73985, overall1247/140495. Source remains
+613/247945 owned bytes; nonexact207, absent121. FileSystem source13/13, exact11/13.
+See [registration proof](evidence/filesystem-load-archive/README.md),
+[archive load proof](evidence/pbgarchive-load/README.md),
 [read proof](evidence/filesystem-path-read/README.md),
 [size/EH proof](evidence/filesystem-path-size/README.md),
 [lookup proof](evidence/filesystem-find-archive/README.md) and the preceding
@@ -41,11 +41,43 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
 273579 owned bytes;1097 source mappings. Authored source613/247945 bytes,
-208 source-present/nonexact,121 source-absent. Authored exact **405/73949 bytes**;
-overall exact1246/140459 bytes. Unknown origins524 keep the whole-game denominator
+207 source-present/nonexact,121 source-absent. Authored exact **406/73985 bytes**;
+overall exact1247/140495 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest complete archive load checkpoint
+## Latest complete archive registration checkpoint
+
+Starting pushed/remote-verified fdbe829, a normal success-first LoadArchive
+branch replaces the previous early failure return. The private one-primary/
+three-reused probe passes36/all4 plus eight whole guards920/all48; two other
+declared forms are not executed. No signature/header/global/layout/profile or
+ABI forcing is introduced. Maintained source exactly adopts that private form.
+
+Two independent actual four-TU canonical colds each pass36/all4 and eight
+existing whole guards920/all48, totaling956/all52. All1246 prior canonical unit
+dictionaries remain unchanged. Target raw review independently covers all11
+instructions and four fields, with unchanged boundary/origin rows. The earlier
+fresh local Ghidra review attests all412289 mapped bytes under readOnly/noanalysis
+rollback;4357D0 still has no Ghidra function record and none is manufactured.
+Only36 new authored bytes are credited. The preceding39 and34-byte diagnostics
+remain historical, not limits on possible natural source forms.
+
+Keep first actual cold
+`build/gpt-6.1-sol/filesystem-load-archive-20261022/cold-1` and second canonical
+`build/match-linked/FileSystemPathSize`. Prior archive108 second cold is archived
+and pinned at its private cold-2 path before replacement, preserving both old
+archive108 and Read pairs. Compact private recovery is
+`.analysis/gpt-6.1-sol/filesystem-load-archive-20261022/RECOVERY.md`.
+Fresh111-group CI passes with all373 final source/test/config inputs unchanged.
+Hash-checked cleanup removes12 files/1642902 logical bytes: the superseded
+private one-input carrier and two duplicate ledger snapshots. Both current
+colds, old Read/archive108 pairs and9 independent D3D files remain. Fresh32/15
+large input/artifact hashes pass only; no large build/comparison is claimed.
+Final CI and cleanup are recorded in
+[validation](evidence/filesystem-load-archive/validation-summary.json).
+Product/runtime, original names/TU/flags and semantic/port gates remain open.
+
+## Previous complete archive load checkpoint
 
 Starting pushed/remote-verified cd0038f, the existing natural PbgArchive::Load
 source reproduces the complete434C30..434C9B/108 owner in the current path graph.
@@ -388,35 +420,32 @@ bytes from21 owned paths, retaining compound-bit69 and Og-disabled161 failures.
 The ANM batch separately removed4289158 bytes from22 owned paths. Canonical
 carriers, prior snapshots, nine independent D3D files and provider/legacy remain.
 
-The three path owners now have complete canonical exact contracts: lookup212,
-Read214 and size190. Remaining FileSystem nonexact owners are LoadArchive36,
-Decrypt323 and Encrypt307, totaling666 bytes; use the origin ledger's subsystem
-fallback when counting, since the latter two have no function-row module.
-Inspect current target/caller evidence before selecting a private ABI or
-transform-lifetime experiment. The preceding39/36 LoadArchive diagnostic is
-not a bound on new contexts. Alternatively rotate to the large-owner routes
-above without repeating neutral models. Keep /GL and do not force registers or
+The three path owners and registration wrapper now have complete canonical
+contracts: lookup212, Read214, size190 and LoadArchive36. Remaining FileSystem
+nonexact owners are Decrypt323 and Encrypt307, totaling630 bytes; use the origin
+ledger's subsystem fallback when counting, since neither has a function-row
+module. Inspect current target/caller and operand-lifetime evidence before a
+transform experiment. Alternatively rotate to the large-owner routes above
+without repeating neutral models. Keep /GL and do not force registers or
 returns. The old File.cpp string still has no code xref and establishes no
 original source ownership.
 
-PbgArchive::Load434C30 now has the complete108/all7 canonical contract described
-above. Its two cached comparisons in the preceding Read packet were routing
-evidence, not a new cold or exact gain in that earlier batch. LoadArchive4357D0
-is34 bytes in the retained Read artifact, not the old39-byte measurement;
-target36 remains nonexact. Its failure path directly returns the callee's zero,
-while target explicitly clears AL and places success first. Ordinary branch/
-result-lifetime hypotheses remain available; inspect the current complete
-extent and fields and protect the eight accepted whole contributions. Fresh
-source/extent evidence takes precedence over historical notes.
+Current retained four-TU transform contributions are284 bytes each versus
+target Decrypt323/Encrypt307. Both native heads preserve AL into BL, but native
+returns RET while targets return RET20. This is an ABI/context diagnosis only,
+not a whole transform comparison or exact credit. Inspect TH10 callers and
+consistent compiler/TU context before changing any convention. TH09/TH095
+headers/implementation suggest ordinary data-first signatures only; they do not
+prove TH10 types/flags/ABI. TH095 provisional packed locals and unused writes
+are not TH10 evidence and must not be imported as padding. Compact current
+PDB extents are `next-transform-extents.json` in this private campaign.
 
-A private positive-if source control now reproduces LoadArchive36/all4 exactly,
-with all eight existing whole guards920/all48 retained. It compiles one primary
-and reuses three pinned source objects; it is not a full cold or ledger gain.
-No maintained source has changed in the archive108 batch. After committing that
-batch, adopt this ordinary success-first branch, add a canonical contract and
-perform two actual modified-source colds before36 promotion. Two other declared
-forms were not executed because the first form already matches. Compact proof:
-`loadarchive-positive-if.json` in the archive-load-exact private directory.
+PbgArchive::Load434C30 retains its complete108/all7 canonical contract. Its two
+cached comparisons in the preceding Read packet were routing evidence, not a
+new cold or gain in that earlier batch. The subsequent36 source/acceptance batch
+is now adopted and independently verified above. Historical Read34 and older39
+wrapper extents are not current measurements. Private model/acceptance manifests
+freeze their own historical inputs; never restore source or rerun blindly.
 
 The remaining source-absent queue is121 owners:118 GameUnassigned,2 Player and
 1 Startup. Neither FileSystem source completeness nor its host contracts close

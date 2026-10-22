@@ -1,0 +1,60 @@
+{
+  "canonical_cold_pair": {
+    "actual_full_four_TU_builds": 2,
+    "existing_whole_guard_bytes_each": 920,
+    "existing_whole_guard_count_each": 8,
+    "existing_whole_guard_fields_each": 48,
+    "new_parent_bytes_each": 36,
+    "new_parent_fields_each": 4,
+    "total_checked_bytes_each": 956,
+    "total_fields_each": 52
+  },
+  "ci": {
+    "command_groups": 111,
+    "exit_code": 0,
+    "frozen_input_count": 373,
+    "input_inventory_sha256": "5b0f8e7f2bc325862222aa7932a79423612f6ad9e9476198f7156eae000e0abb",
+    "inputs_unchanged": true,
+    "log_sha256": "3897babe7769d256ee198de88333f5f6ed438608317edce68dac9bd1fcb96ce7",
+    "status": "passed"
+  },
+  "cleanup": {
+    "files": 12,
+    "logical_bytes": 1642902,
+    "paths": [
+      "build/gpt-6.1-sol/archive-load-exact-20261022/loadarchive-positive-if",
+      ".analysis/gpt-6.1-sol/archive-load-exact-20261022/final-functions.csv",
+      ".analysis/gpt-6.1-sol/archive-load-exact-20261022/final-matches.csv"
+    ],
+    "retained": "both new current-source colds, compact source/producers/results, both historical archive108 and Read cold pairs, canonical/provider/legacy state and9 unrelated D3D files",
+    "status": "removed",
+    "trees": 1
+  },
+  "counts": {
+    "FileSystem_exact": 11,
+    "FileSystem_nonexact_bytes": 630,
+    "FileSystem_source": 13,
+    "authored": 734,
+    "authored_bytes": 273579,
+    "authored_exact": 406,
+    "authored_exact_bytes": 73985,
+    "origin_indeterminate": 524,
+    "overall_exact": 1247,
+    "overall_exact_bytes": 140495,
+    "source": 613,
+    "source_absent": 121,
+    "source_bytes": 247945,
+    "source_nonexact": 207
+  },
+  "cumulative_cleanup_logical_bytes_since_Read_checkpoint": 2451589,
+  "earlier_read_checkpoint_cleanup_logical_bytes": 808687,
+  "final_parent_comparison": {
+    "bytes": 36,
+    "fields": 4,
+    "result": "exact"
+  },
+  "new_exact_functions": 1,
+  "new_exact_owned_bytes": 36,
+  "phase": "active-incomplete; whole product/runtime open; semantic and port not started",
+  "status": "passed for bounded declared-context codegen and final111-group CI"
+}
