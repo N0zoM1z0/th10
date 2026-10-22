@@ -1,12 +1,14 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-ECL options/storage controls are unadopted: /Zi is whole-body neutral, /Os
-shrinks Run to2980 and fails the complete contract, primitive PopFloat adds two
-address-encoding differences (29 versus27). Maintained ECL stays7020/6993.
-Enemy stays14336/14416 (80 short), group gap328; ANM stays9964/nonexact.
+ANM aggregate-expression/FlipX-helper controls are unadopted. First/both explicit
+sums add8/2 target-different bytes despite unchanged scores; second-only is raw
+neutral. Ordinary helper outlines and shrinks ANM to9932; forced inline preserves
+the complete9964 baseline after303 verified address-field rewrites. ANM remains
+7541/7995,90/92/gap2; ECL7020/6993; Enemy14336/14416 (80 short), gap328.
 Authored409/74716, overall1252/141647, source613/247945, nonexact204 and absent121
 unchanged. No new exact credit.
+See [ANM expression contexts](evidence/anm-expression-context/README.md).
 See [ECL codegen controls](evidence/ecl-codegen-options/README.md).
 See [Enemy sentinel checkpoint](evidence/enemy-sentinel-lowering/README.md).
 See [Enemy motion checkpoint](evidence/enemy-motion-lifetime/README.md).
@@ -58,7 +60,25 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
-## Latest ECL codegen checkpoint
+## Latest ANM expression-context checkpoint
+
+Five private-source controls compile1/reuse9 each; all pass36 complete guards
+4618/all121 including the194/all3 caller, plus bounded child routes. First/both
+explicit vector constructors regress8/2 actual target-equal displacement bytes;
+second-only retains all three complete raw bodies. Ordinary FlipX helper stays
+outlined: ANM9932, FlipX27/52,7246/7998/88/gap40. Forceinline restores9964/53-byte
+FlipX, retains a helper copy, and moves ANM entry by48. All350 field inventories
+agree;303 changes independently bind matching symbols/local offsets. Zero
+ordinary bytes remain after field replay to baseline; not target equality.
+ECL7020/6993/189/62/callee171 retained throughout. No source/profile adoption.
+Delete64 rejected files/4266991 bytes; keep forced-inline carrier and compact
+proof. All owned jobs terminal0; no full CI. Recovery:
+`.analysis/gpt-6-astra-medium/anm-expression-context-20261022/RECOVERY.md`.
+These aggregate and inline-wrapper forms do not fix the FlipX allocator or slow
+Tick discrepancy. Preserve component-order evidence when evaluating another
+large-function hypothesis; aggregate scores conceal these local regressions.
+
+## Previous ECL codegen checkpoint
 
 Fresh residual decoding confirms all27 bytes occur in same-sized instructions
 with matching mnemonics: thread4, commuted addressing5, stack homes16, latch2.

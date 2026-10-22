@@ -1,0 +1,25 @@
+--- a/src/AnmManager.cpp
++++ b/src/AnmManager.cpp
+@@ -3095,6 +3095,12 @@
+     (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];
+ 
+ 
++static __forceinline void AnmFlipXAxisLocal(AnmVmView *vm)
++{
++    vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;
++    vm->scaleX *= -1.0f;
++}
++
+ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
+ {
+     AnmRawInstructionView *currentInstruction;
+@@ -3242,8 +3248,7 @@
+             break;
+ 
+         case ANM_OP_FLIP_X:
+-            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;
+-            vm->scaleX *= -1.0f;
++            AnmFlipXAxisLocal(vm);
+             break;
+         case ANM_OP_FLIP_Y:
+             vm->flags35C = (vm->flags35C ^ (1u << 10)) | 8u;

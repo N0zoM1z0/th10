@@ -1,0 +1,4054 @@
+{
+  "starting_head": "5584aba633adf62dab41456b8f395eb4edba86d2",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "private_manifest_sha256": "6882282ad1429c4156c4476d04f17f09dc05af727829db8ae63c6de5b6bc1e8a",
+  "canonical_manifest_sha256": "8ef1e6f9232cba78a2e108546adf769d5f84a07f89d039d4c06d08bb6eba7760",
+  "baseline_source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "baseline_case_aligned": {
+    "matched_comparable_bytes": 7541,
+    "comparable_bytes": 7995,
+    "absolute_case_gap_delta": 2,
+    "same_sized_cases": 90,
+    "normalization_complete": true
+  },
+  "controls": [
+    {
+      "label": "explicit-sum-first",
+      "producer_sha256": "7a1ca10e4e6f7d00acf96778700fbdfaf0d427acc486ecd77b667ec15dfeb45e",
+      "source_sha256": {
+        ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/AnmManager.cpp": "0b0b490f7adba3623ccbc86fde36822d7319c52c8ba7b0e114b78631ba908dc2",
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "549d503309b8d21e22c592d79d1bb67f5f72da12179741b236bd764c794c8435",
+      "body_extents_and_hashes": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D9A0",
+          "candidate_size": 9964,
+          "raw_sha256": "393bd681ea3e8e5dd73193d67b2f793d8091e869d849ddc0f315dce7dda39d1e"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406CF0",
+          "candidate_size": 7020,
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402810",
+          "candidate_size": 14336,
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "raw_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "unequal_sized_groups": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DDE6",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F974",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "ordinary_byte_delta_to_baseline": [
+        {
+          "offset": "0x240d",
+          "baseline": 72,
+          "candidate": 60,
+          "target": 72
+        },
+        {
+          "offset": "0x2413",
+          "baseline": 60,
+          "candidate": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x2476",
+          "baseline": 64,
+          "candidate": 52,
+          "target": 64
+        },
+        {
+          "offset": "0x247c",
+          "baseline": 52,
+          "candidate": 64,
+          "target": 52
+        },
+        {
+          "offset": "0x2483",
+          "baseline": 68,
+          "candidate": 56,
+          "target": 68
+        },
+        {
+          "offset": "0x248a",
+          "baseline": 56,
+          "candidate": 68,
+          "target": 56
+        },
+        {
+          "offset": "0x249a",
+          "baseline": 60,
+          "candidate": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24a0",
+          "baseline": 72,
+          "candidate": 60,
+          "target": 72
+        }
+      ],
+      "child_routing_result": "passed",
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "callee_bytes": 171
+      },
+      "inventory": [
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-07-AnmInt3Scale.ltcg.obj",
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/source.map",
+          "bytes": 92342,
+          "sha256": "b84f1ce64505b017658473b78156c46318ff5526578ded40f1ddc5a9727271e8"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-05-AnmVmId.ltcg.obj",
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/source.exe",
+          "bytes": 122880,
+          "sha256": "f35c89a1d05ece3a75a8eb2ebe6cf1315e48fe498dec03473a60aec44416c2e7"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/source.ltcg.obj",
+          "bytes": 157588,
+          "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/link.log",
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-04-Enemy.ltcg.obj",
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-06-RandomMath.ltcg.obj",
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-03-EnemyLaser.ltcg.obj",
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-02-AnmVmCreate.ltcg.obj",
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-00-EclVm.ltcg.obj",
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/link-aliases.rsp",
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/link-anchors.obj",
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-08-ItemManager.ltcg.obj",
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/source.pdb",
+          "bytes": 117760,
+          "sha256": "5186bcc730c5d06db760a390efebfef2ccbe0fde84d408108b077886bd7efe60"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-01-AnmManager.ltcg.obj",
+          "bytes": 248233,
+          "sha256": "549d503309b8d21e22c592d79d1bb67f5f72da12179741b236bd764c794c8435"
+        }
+      ]
+    },
+    {
+      "label": "explicit-sum-second",
+      "producer_sha256": "07f85858331fb8d8351f571306f0fe51015b1ecd3b6fa611b7fb427b66a65fbc",
+      "source_sha256": {
+        ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/AnmManager.cpp": "1f3aebc17716251598717ba79742a9386fc90c43bd04e3ed4edca2a0dead2b73",
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "37ef526d5509db019af03c0cf811053f439e372d2f853d5b706a63e009bcf47b",
+      "body_extents_and_hashes": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D9A0",
+          "candidate_size": 9964,
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406CF0",
+          "candidate_size": 7020,
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402810",
+          "candidate_size": 14336,
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "raw_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "unequal_sized_groups": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DDE6",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F974",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "ordinary_byte_delta_to_baseline": [],
+      "child_routing_result": "passed",
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "callee_bytes": 171
+      },
+      "inventory": [
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-07-AnmInt3Scale.ltcg.obj",
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/source.map",
+          "bytes": 92342,
+          "sha256": "148815dd981195cde93c7aa62633c63c897243c26fe6b0ca4628ba6a89fd965d"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-05-AnmVmId.ltcg.obj",
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/source.exe",
+          "bytes": 122880,
+          "sha256": "e0e0828fbcd505647834a4e8d0b03f247eebf3b56a0e8bdc9a26d39fa9c28ea8"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/source.ltcg.obj",
+          "bytes": 157588,
+          "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/link.log",
+          "bytes": 104,
+          "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-04-Enemy.ltcg.obj",
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-06-RandomMath.ltcg.obj",
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-03-EnemyLaser.ltcg.obj",
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-02-AnmVmCreate.ltcg.obj",
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-00-EclVm.ltcg.obj",
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/link-aliases.rsp",
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/link-anchors.obj",
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-08-ItemManager.ltcg.obj",
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/source.pdb",
+          "bytes": 117760,
+          "sha256": "f562f8bac2343de377629f764a121c3104a1d2c16f2ac23e8dbbad851e5ea142"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-01-AnmManager.ltcg.obj",
+          "bytes": 248237,
+          "sha256": "37ef526d5509db019af03c0cf811053f439e372d2f853d5b706a63e009bcf47b"
+        }
+      ]
+    },
+    {
+      "label": "explicit-sum-both",
+      "producer_sha256": "7a1ca10e4e6f7d00acf96778700fbdfaf0d427acc486ecd77b667ec15dfeb45e",
+      "source_sha256": {
+        ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/AnmManager.cpp": "5b51297def5e982f8da9ef76c0c3c5a67fd2e2865372a827ab15117efb1a8558",
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "90aae7c73dd2f17ad6777e88425e93d004820c0a0a24ae1531fc9b401280bb3b",
+      "body_extents_and_hashes": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D9A0",
+          "candidate_size": 9964,
+          "raw_sha256": "bf7617b4cfcc845099c092b5c057c6c1b974b7207941813eca261ddb8dbc9a18"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406CF0",
+          "candidate_size": 7020,
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402810",
+          "candidate_size": 14336,
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "raw_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "unequal_sized_groups": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DDE6",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F974",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "ordinary_byte_delta_to_baseline": [
+        {
+          "offset": "0x240d",
+          "baseline": 72,
+          "candidate": 60,
+          "target": 72
+        },
+        {
+          "offset": "0x2413",
+          "baseline": 60,
+          "candidate": 72,
+          "target": 60
+        }
+      ],
+      "child_routing_result": "passed",
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "callee_bytes": 171
+      },
+      "inventory": [
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-07-AnmInt3Scale.ltcg.obj",
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/source.map",
+          "bytes": 92342,
+          "sha256": "fd53d48210ae47eb93ad39169d62695b73bd621fbabbede83e69b7110629a2ab"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-05-AnmVmId.ltcg.obj",
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/source.exe",
+          "bytes": 122880,
+          "sha256": "78fd3c22079a5b148021203d9313340b65f77857288f989d2cb7d454df209a9e"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/source.ltcg.obj",
+          "bytes": 157588,
+          "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/link.log",
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-04-Enemy.ltcg.obj",
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-06-RandomMath.ltcg.obj",
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-03-EnemyLaser.ltcg.obj",
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-02-AnmVmCreate.ltcg.obj",
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-00-EclVm.ltcg.obj",
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/link-aliases.rsp",
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/link-anchors.obj",
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-08-ItemManager.ltcg.obj",
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/source.pdb",
+          "bytes": 117760,
+          "sha256": "49b3675417023f71b09518c9bc28cfecceb8cdf1abf552594ddb48c7ef5a2556"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-01-AnmManager.ltcg.obj",
+          "bytes": 248367,
+          "sha256": "90aae7c73dd2f17ad6777e88425e93d004820c0a0a24ae1531fc9b401280bb3b"
+        }
+      ]
+    },
+    {
+      "label": "inline-flip-x",
+      "producer_sha256": "7a1ca10e4e6f7d00acf96778700fbdfaf0d427acc486ecd77b667ec15dfeb45e",
+      "source_sha256": {
+        ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/AnmManager.cpp": "60a1e52c790469a650f32f148037e1ac2180e33803f7bc680b781c3f98b5cfca",
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "22d23df95776bf8005b854430780179d53097818c25d3d2d52511c8ace51855a",
+      "body_extents_and_hashes": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D9D0",
+          "candidate_size": 9932,
+          "raw_sha256": "5777ecbcc8f768406c96187cacec4f4912b81fc25d9afd5b49765d624210d204"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406CF0",
+          "candidate_size": 7020,
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402810",
+          "candidate_size": 14336,
+          "raw_sha256": "029f22a7eee45f8dd092bd1eac2084b15d8151ebf787caf2e37d150836809c8e"
+        }
+      },
+      "raw_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": false
+      },
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 7246,
+        "comparable_bytes": 7998,
+        "absolute_case_gap_delta": 40,
+        "same_sized_cases": 88,
+        "normalization_complete": true
+      },
+      "unequal_sized_groups": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DE16",
+          "target_size": 52,
+          "candidate_size": 27,
+          "gap_delta": -25,
+          "matched_comparable_bytes": 2,
+          "comparable_bytes": 44,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            62
+          ],
+          "target_address": "0x0043F2AA",
+          "candidate_address": "0x0040DE31",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            63
+          ],
+          "target_address": "0x0043F61D",
+          "candidate_address": "0x0040E1A5",
+          "target_size": 203,
+          "candidate_size": 206,
+          "gap_delta": 3,
+          "matched_comparable_bytes": 28,
+          "comparable_bytes": 190,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F98E",
+          "target_size": 1441,
+          "candidate_size": 1430,
+          "gap_delta": -11,
+          "matched_comparable_bytes": 819,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "ordinary_byte_delta_to_baseline": null,
+      "child_routing_result": "passed",
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "callee_bytes": 171
+      },
+      "inventory": [
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-07-AnmInt3Scale.ltcg.obj",
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/source.map",
+          "bytes": 92453,
+          "sha256": "df9eae1ba22b58f509409fbf3d6d7027950e1cb7693c893dc5c7e258c7e3c1ab"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-05-AnmVmId.ltcg.obj",
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/source.exe",
+          "bytes": 122880,
+          "sha256": "478e400b5a78268fa80deedf43203bcd08b935a06d3b7bf29108e1138227c067"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/source.ltcg.obj",
+          "bytes": 157588,
+          "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/link.log",
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-04-Enemy.ltcg.obj",
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-06-RandomMath.ltcg.obj",
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-03-EnemyLaser.ltcg.obj",
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-02-AnmVmCreate.ltcg.obj",
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-00-EclVm.ltcg.obj",
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/link-aliases.rsp",
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/link-anchors.obj",
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-08-ItemManager.ltcg.obj",
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/source.pdb",
+          "bytes": 117760,
+          "sha256": "84f7ba115f3f23a1417f99610b6eab7549e82a862ec9424e2d698388c26bf6fb"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-01-AnmManager.ltcg.obj",
+          "bytes": 248282,
+          "sha256": "22d23df95776bf8005b854430780179d53097818c25d3d2d52511c8ace51855a"
+        }
+      ]
+    },
+    {
+      "label": "forceinline-flip-x",
+      "producer_sha256": "c4a352f748b1e07ada0d07d60f36ad2e1dd5664db4f9864d476faa4171715cb3",
+      "source_sha256": {
+        ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/AnmManager.cpp": "f4d1e4ae67d19ee964192c8d50d80207cac5275eb2b62552a5bcb5d7afe3ff41",
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "4dc3512a8777a6aa2eb67ae6cf7e4996a3d2fc4a082b19bbfb41ec398d5eb26b",
+      "body_extents_and_hashes": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D9D0",
+          "candidate_size": 9964,
+          "raw_sha256": "c5af4adef6dc1dd0c57d99f4d58b6282c9c50fb91e977855c9849f06fdcb6f26"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406CF0",
+          "candidate_size": 7020,
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402810",
+          "candidate_size": 14336,
+          "raw_sha256": "22544879be88963ad3288527d6e59d0a68955c6bd61510d180156e8e98df981c"
+        }
+      },
+      "raw_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": false
+      },
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "unequal_sized_groups": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DE16",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F9A4",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "ordinary_byte_delta_to_baseline": null,
+      "child_routing_result": "passed",
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "callee_bytes": 171
+      },
+      "inventory": [
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/support-07-AnmInt3Scale.ltcg.obj",
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/source.map",
+          "bytes": 92453,
+          "sha256": "d02562fc1996d3b1ad963e43143d48ef620b284f96b6e59d9f9c24e5d6211555"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/support-05-AnmVmId.ltcg.obj",
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/source.exe",
+          "bytes": 122880,
+          "sha256": "4a4f1572747946877c0bdebb9fd813f4bd00342312ee15749993e64890887049"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/source.ltcg.obj",
+          "bytes": 157588,
+          "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/link.log",
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/support-04-Enemy.ltcg.obj",
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/support-06-RandomMath.ltcg.obj",
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/support-03-EnemyLaser.ltcg.obj",
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/support-02-AnmVmCreate.ltcg.obj",
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/support-00-EclVm.ltcg.obj",
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/link-aliases.rsp",
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/link-anchors.obj",
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/support-08-ItemManager.ltcg.obj",
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/source.pdb",
+          "bytes": 117760,
+          "sha256": "ae31e4648dc0402755b08829c16fa7bc0ba59d869a15690ec81411bf568d6f1e"
+        },
+        {
+          "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x/support-01-AnmManager.ltcg.obj",
+          "bytes": 248302,
+          "sha256": "4dc3512a8777a6aa2eb67ae6cf7e4996a3d2fc4a082b19bbfb41ec398d5eb26b"
+        }
+      ]
+    }
+  ],
+  "forced_inline_peer": {
+    "label": "forceinline-flip-x",
+    "size": 9964,
+    "fields": 350,
+    "normalization_complete": true,
+    "replayed_changed_fields": [
+      {
+        "offset": 151,
+        "type": "DIR32",
+        "local_offset": 9588,
+        "symbols": []
+      },
+      {
+        "offset": 167,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 226,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 250,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+        ]
+      },
+      {
+        "offset": 270,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 294,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?CreateVmVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+        ]
+      },
+      {
+        "offset": 317,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 338,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?CreateVmVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+        ]
+      },
+      {
+        "offset": 358,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?InsertAfter@AnmVmLayerNodeView@@QAEXPAU1@@Z"
+        ]
+      },
+      {
+        "offset": 450,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 471,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?CreateVmVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+        ]
+      },
+      {
+        "offset": 491,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?InsertAfter@AnmVmLayerNodeView@@QAEXPAU1@@Z"
+        ]
+      },
+      {
+        "offset": 590,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 605,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+        ]
+      },
+      {
+        "offset": 651,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 677,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 736,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 778,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 800,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 822,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 864,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 906,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 928,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 950,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 988,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+        ]
+      },
+      {
+        "offset": 1031,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 1048,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 1068,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+        ]
+      },
+      {
+        "offset": 1105,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@bf800000"
+        ]
+      },
+      {
+        "offset": 1158,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@bf800000"
+        ]
+      },
+      {
+        "offset": 1212,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1238,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1264,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1324,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1350,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1376,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1436,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1462,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1527,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 1553,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?StartPrimaryAlphaInterpolation@AnmVmView@@QAEXHEEE@Z"
+        ]
+      },
+      {
+        "offset": 1653,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1683,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1719,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1826,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1862,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1898,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 1991,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 1999,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?Decrement@AnmVmTimerView@@QAEXH@Z"
+        ]
+      },
+      {
+        "offset": 2197,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+        ]
+      },
+      {
+        "offset": 2419,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 2491,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 2708,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 2865,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 2901,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 2937,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 3016,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?ResetTimer@AnmVmFloat3InterpolationView@@QAEXXZ"
+        ]
+      },
+      {
+        "offset": 3082,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3102,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3131,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3167,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3189,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?StartPrimaryColorInterpolation@AnmVmView@@QAEXPBTAnmColorView@@0HE@Z"
+        ]
+      },
+      {
+        "offset": 3225,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3248,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3273,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?StartPrimaryAlphaInterpolation@AnmVmView@@QAEXHEEE@Z"
+        ]
+      },
+      {
+        "offset": 3339,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3359,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3388,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3424,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3446,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?StartSecondaryColorInterpolation@AnmVmView@@QAEXPBTAnmColorView@@0HE@Z"
+        ]
+      },
+      {
+        "offset": 3482,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3505,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3527,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?StartSecondaryAlphaInterpolation@AnmVmView@@QAEXHEEE@Z"
+        ]
+      },
+      {
+        "offset": 3564,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 3594,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 3630,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 3675,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3810,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?ResetTimer@AnmVmFloat3InterpolationView@@QAEXXZ"
+        ]
+      },
+      {
+        "offset": 3854,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 3890,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 3932,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 3963,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z"
+        ]
+      },
+      {
+        "offset": 4169,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 4178,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "_malloc"
+        ]
+      },
+      {
+        "offset": 4223,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 4249,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 4288,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 4320,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 4362,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 4385,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 4411,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 4452,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 4482,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 4520,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 4569,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 4592,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 4618,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 4659,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 4695,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 4727,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 4776,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 4799,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 4825,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 4867,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 4897,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 4935,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 4984,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 5007,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 5033,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 5079,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 5115,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 5147,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 5196,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 5219,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 5245,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 5291,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 5327,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 5365,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 5386,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "__CIfmod"
+        ]
+      },
+      {
+        "offset": 5424,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 5450,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 5489,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 5521,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 5565,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 5591,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 5630,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 5668,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 5715,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 5741,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 5785,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 5823,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 5870,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 5896,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 5942,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 5980,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 6027,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 6053,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 6099,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6137,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6171,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 6192,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "__CIfmod"
+        ]
+      },
+      {
+        "offset": 6243,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 6264,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 6276,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?AnmRandomU32InRange@@YIIPAURngView@@I@Z"
+        ]
+      },
+      {
+        "offset": 6297,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z"
+        ]
+      },
+      {
+        "offset": 6349,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6381,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6423,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 6466,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6498,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 6543,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6575,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 6620,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6652,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 6699,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6731,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 6742,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "__CIacos"
+        ]
+      },
+      {
+        "offset": 6781,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6813,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 6862,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 6890,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z"
+        ]
+      },
+      {
+        "offset": 6904,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?AddNormalizeAngle@@YGMMM@Z"
+        ]
+      },
+      {
+        "offset": 7172,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7195,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7240,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7270,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7328,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7351,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7396,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7426,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7484,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7507,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7552,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7588,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7651,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7674,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7719,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7755,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7818,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7841,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 7886,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7922,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 7985,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 8008,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetIntVar@AnmVmView@@QAEHH@Z"
+        ]
+      },
+      {
+        "offset": 8049,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 8079,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?GetFloatVar@AnmVmView@@QAEMM@Z"
+        ]
+      },
+      {
+        "offset": 8115,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+        ]
+      },
+      {
+        "offset": 8247,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?AddNormalizeAngle@@YGMMM@Z"
+        ]
+      },
+      {
+        "offset": 8316,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?AddNormalizeAngle@@YGMMM@Z"
+        ]
+      },
+      {
+        "offset": 8365,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?AddNormalizeAngle@@YGMMM@Z"
+        ]
+      },
+      {
+        "offset": 8491,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@3f800000"
+        ]
+      },
+      {
+        "offset": 8507,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@3f800000"
+        ]
+      },
+      {
+        "offset": 8531,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@3f800000"
+        ]
+      },
+      {
+        "offset": 8559,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@3f800000"
+        ]
+      },
+      {
+        "offset": 8575,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@3f800000"
+        ]
+      },
+      {
+        "offset": 8599,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@3f800000"
+        ]
+      },
+      {
+        "offset": 8704,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z"
+        ]
+      },
+      {
+        "offset": 8717,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z"
+        ]
+      },
+      {
+        "offset": 8765,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?Evaluate@AnmVmColorInterpolationView@@QAE?AUAnmInt3View@@XZ"
+        ]
+      },
+      {
+        "offset": 8816,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ"
+        ]
+      },
+      {
+        "offset": 8850,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z"
+        ]
+      },
+      {
+        "offset": 8893,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z"
+        ]
+      },
+      {
+        "offset": 8945,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?Evaluate@AnmVmColorInterpolationView@@QAE?AUAnmInt3View@@XZ"
+        ]
+      },
+      {
+        "offset": 8996,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ"
+        ]
+      },
+      {
+        "offset": 9051,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@40c90fdb"
+        ]
+      },
+      {
+        "offset": 9173,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@3f000000"
+        ]
+      },
+      {
+        "offset": 9309,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@3f000000"
+        ]
+      },
+      {
+        "offset": 9417,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "?AddNormalizeAngle@@YGMMM@Z"
+        ]
+      },
+      {
+        "offset": 9531,
+        "type": "DIR32",
+        "local_offset": null,
+        "symbols": [
+          "__real@3f800000"
+        ]
+      },
+      {
+        "offset": 9552,
+        "type": "REL32",
+        "local_offset": null,
+        "symbols": [
+          "__ftol2"
+        ]
+      },
+      {
+        "offset": 9588,
+        "type": "DIR32",
+        "local_offset": 8141,
+        "symbols": []
+      },
+      {
+        "offset": 9592,
+        "type": "DIR32",
+        "local_offset": 1795,
+        "symbols": []
+      },
+      {
+        "offset": 9596,
+        "type": "DIR32",
+        "local_offset": 8141,
+        "symbols": []
+      },
+      {
+        "offset": 9600,
+        "type": "DIR32",
+        "local_offset": 8148,
+        "symbols": []
+      },
+      {
+        "offset": 9604,
+        "type": "DIR32",
+        "local_offset": 571,
+        "symbols": []
+      },
+      {
+        "offset": 9608,
+        "type": "DIR32",
+        "local_offset": 980,
+        "symbols": []
+      },
+      {
+        "offset": 9612,
+        "type": "DIR32",
+        "local_offset": 1014,
+        "symbols": []
+      },
+      {
+        "offset": 9616,
+        "type": "DIR32",
+        "local_offset": 4211,
+        "symbols": []
+      },
+      {
+        "offset": 9620,
+        "type": "DIR32",
+        "local_offset": 4275,
+        "symbols": []
+      },
+      {
+        "offset": 9624,
+        "type": "DIR32",
+        "local_offset": 5412,
+        "symbols": []
+      },
+      {
+        "offset": 9628,
+        "type": "DIR32",
+        "local_offset": 5476,
+        "symbols": []
+      },
+      {
+        "offset": 9632,
+        "type": "DIR32",
+        "local_offset": 5553,
+        "symbols": []
+      },
+      {
+        "offset": 9636,
+        "type": "DIR32",
+        "local_offset": 5617,
+        "symbols": []
+      },
+      {
+        "offset": 9640,
+        "type": "DIR32",
+        "local_offset": 5703,
+        "symbols": []
+      },
+      {
+        "offset": 9644,
+        "type": "DIR32",
+        "local_offset": 5772,
+        "symbols": []
+      },
+      {
+        "offset": 9648,
+        "type": "DIR32",
+        "local_offset": 5858,
+        "symbols": []
+      },
+      {
+        "offset": 9652,
+        "type": "DIR32",
+        "local_offset": 5929,
+        "symbols": []
+      },
+      {
+        "offset": 9656,
+        "type": "DIR32",
+        "local_offset": 6015,
+        "symbols": []
+      },
+      {
+        "offset": 9660,
+        "type": "DIR32",
+        "local_offset": 6086,
+        "symbols": []
+      },
+      {
+        "offset": 9664,
+        "type": "DIR32",
+        "local_offset": 4350,
+        "symbols": []
+      },
+      {
+        "offset": 9668,
+        "type": "DIR32",
+        "local_offset": 4439,
+        "symbols": []
+      },
+      {
+        "offset": 9672,
+        "type": "DIR32",
+        "local_offset": 4557,
+        "symbols": []
+      },
+      {
+        "offset": 9676,
+        "type": "DIR32",
+        "local_offset": 4646,
+        "symbols": []
+      },
+      {
+        "offset": 9680,
+        "type": "DIR32",
+        "local_offset": 4764,
+        "symbols": []
+      },
+      {
+        "offset": 9684,
+        "type": "DIR32",
+        "local_offset": 4854,
+        "symbols": []
+      },
+      {
+        "offset": 9688,
+        "type": "DIR32",
+        "local_offset": 4972,
+        "symbols": []
+      },
+      {
+        "offset": 9692,
+        "type": "DIR32",
+        "local_offset": 5066,
+        "symbols": []
+      },
+      {
+        "offset": 9696,
+        "type": "DIR32",
+        "local_offset": 5184,
+        "symbols": []
+      },
+      {
+        "offset": 9700,
+        "type": "DIR32",
+        "local_offset": 5278,
+        "symbols": []
+      },
+      {
+        "offset": 9704,
+        "type": "DIR32",
+        "local_offset": 7160,
+        "symbols": []
+      },
+      {
+        "offset": 9708,
+        "type": "DIR32",
+        "local_offset": 7227,
+        "symbols": []
+      },
+      {
+        "offset": 9712,
+        "type": "DIR32",
+        "local_offset": 7316,
+        "symbols": []
+      },
+      {
+        "offset": 9716,
+        "type": "DIR32",
+        "local_offset": 7383,
+        "symbols": []
+      },
+      {
+        "offset": 9720,
+        "type": "DIR32",
+        "local_offset": 7472,
+        "symbols": []
+      },
+      {
+        "offset": 9724,
+        "type": "DIR32",
+        "local_offset": 7539,
+        "symbols": []
+      },
+      {
+        "offset": 9728,
+        "type": "DIR32",
+        "local_offset": 7639,
+        "symbols": []
+      },
+      {
+        "offset": 9732,
+        "type": "DIR32",
+        "local_offset": 7706,
+        "symbols": []
+      },
+      {
+        "offset": 9736,
+        "type": "DIR32",
+        "local_offset": 7806,
+        "symbols": []
+      },
+      {
+        "offset": 9740,
+        "type": "DIR32",
+        "local_offset": 7873,
+        "symbols": []
+      },
+      {
+        "offset": 9744,
+        "type": "DIR32",
+        "local_offset": 7973,
+        "symbols": []
+      },
+      {
+        "offset": 9748,
+        "type": "DIR32",
+        "local_offset": 8036,
+        "symbols": []
+      },
+      {
+        "offset": 9752,
+        "type": "DIR32",
+        "local_offset": 6218,
+        "symbols": []
+      },
+      {
+        "offset": 9756,
+        "type": "DIR32",
+        "local_offset": 6323,
+        "symbols": []
+      },
+      {
+        "offset": 9760,
+        "type": "DIR32",
+        "local_offset": 6453,
+        "symbols": []
+      },
+      {
+        "offset": 9764,
+        "type": "DIR32",
+        "local_offset": 6530,
+        "symbols": []
+      },
+      {
+        "offset": 9768,
+        "type": "DIR32",
+        "local_offset": 6607,
+        "symbols": []
+      },
+      {
+        "offset": 9772,
+        "type": "DIR32",
+        "local_offset": 6686,
+        "symbols": []
+      },
+      {
+        "offset": 9776,
+        "type": "DIR32",
+        "local_offset": 6768,
+        "symbols": []
+      },
+      {
+        "offset": 9780,
+        "type": "DIR32",
+        "local_offset": 6847,
+        "symbols": []
+      },
+      {
+        "offset": 9784,
+        "type": "DIR32",
+        "local_offset": 1624,
+        "symbols": []
+      },
+      {
+        "offset": 9788,
+        "type": "DIR32",
+        "local_offset": 1199,
+        "symbols": []
+      },
+      {
+        "offset": 9792,
+        "type": "DIR32",
+        "local_offset": 638,
+        "symbols": []
+      },
+      {
+        "offset": 9796,
+        "type": "DIR32",
+        "local_offset": 724,
+        "symbols": []
+      },
+      {
+        "offset": 9800,
+        "type": "DIR32",
+        "local_offset": 766,
+        "symbols": []
+      },
+      {
+        "offset": 9804,
+        "type": "DIR32",
+        "local_offset": 1311,
+        "symbols": []
+      },
+      {
+        "offset": 9808,
+        "type": "DIR32",
+        "local_offset": 1423,
+        "symbols": []
+      },
+      {
+        "offset": 9812,
+        "type": "DIR32",
+        "local_offset": 1515,
+        "symbols": []
+      },
+      {
+        "offset": 9816,
+        "type": "DIR32",
+        "local_offset": 2696,
+        "symbols": []
+      },
+      {
+        "offset": 9820,
+        "type": "DIR32",
+        "local_offset": 3040,
+        "symbols": []
+      },
+      {
+        "offset": 9824,
+        "type": "DIR32",
+        "local_offset": 3213,
+        "symbols": []
+      },
+      {
+        "offset": 9828,
+        "type": "DIR32",
+        "local_offset": 3551,
+        "symbols": []
+      },
+      {
+        "offset": 9832,
+        "type": "DIR32",
+        "local_offset": 3841,
+        "symbols": []
+      },
+      {
+        "offset": 9836,
+        "type": "DIR32",
+        "local_offset": 1094,
+        "symbols": []
+      },
+      {
+        "offset": 9840,
+        "type": "DIR32",
+        "local_offset": 1147,
+        "symbols": []
+      },
+      {
+        "offset": 9844,
+        "type": "DIR32",
+        "local_offset": 2030,
+        "symbols": []
+      },
+      {
+        "offset": 9848,
+        "type": "DIR32",
+        "local_offset": 1795,
+        "symbols": []
+      },
+      {
+        "offset": 9852,
+        "type": "DIR32",
+        "local_offset": 2331,
+        "symbols": []
+      },
+      {
+        "offset": 9856,
+        "type": "DIR32",
+        "local_offset": 1577,
+        "symbols": []
+      },
+      {
+        "offset": 9860,
+        "type": "DIR32",
+        "local_offset": 3994,
+        "symbols": []
+      },
+      {
+        "offset": 9864,
+        "type": "DIR32",
+        "local_offset": 6981,
+        "symbols": []
+      },
+      {
+        "offset": 9868,
+        "type": "DIR32",
+        "local_offset": 2023,
+        "symbols": []
+      },
+      {
+        "offset": 9872,
+        "type": "DIR32",
+        "local_offset": 2406,
+        "symbols": []
+      },
+      {
+        "offset": 9876,
+        "type": "DIR32",
+        "local_offset": 2478,
+        "symbols": []
+      },
+      {
+        "offset": 9880,
+        "type": "DIR32",
+        "local_offset": 2287,
+        "symbols": []
+      },
+      {
+        "offset": 9884,
+        "type": "DIR32",
+        "local_offset": 2550,
+        "symbols": []
+      },
+      {
+        "offset": 9888,
+        "type": "DIR32",
+        "local_offset": 2600,
+        "symbols": []
+      },
+      {
+        "offset": 9892,
+        "type": "DIR32",
+        "local_offset": 1979,
+        "symbols": []
+      },
+      {
+        "offset": 9896,
+        "type": "DIR32",
+        "local_offset": 894,
+        "symbols": []
+      },
+      {
+        "offset": 9900,
+        "type": "DIR32",
+        "local_offset": 852,
+        "symbols": []
+      },
+      {
+        "offset": 9904,
+        "type": "DIR32",
+        "local_offset": 3297,
+        "symbols": []
+      },
+      {
+        "offset": 9908,
+        "type": "DIR32",
+        "local_offset": 3470,
+        "symbols": []
+      },
+      {
+        "offset": 9912,
+        "type": "DIR32",
+        "local_offset": 7008,
+        "symbols": []
+      },
+      {
+        "offset": 9916,
+        "type": "DIR32",
+        "local_offset": 2233,
+        "symbols": []
+      },
+      {
+        "offset": 9920,
+        "type": "DIR32",
+        "local_offset": 7058,
+        "symbols": []
+      },
+      {
+        "offset": 9924,
+        "type": "DIR32",
+        "local_offset": 4069,
+        "symbols": []
+      },
+      {
+        "offset": 9928,
+        "type": "DIR32",
+        "local_offset": 4135,
+        "symbols": []
+      },
+      {
+        "offset": 9932,
+        "type": "DIR32",
+        "local_offset": 6930,
+        "symbols": []
+      },
+      {
+        "offset": 9936,
+        "type": "DIR32",
+        "local_offset": 155,
+        "symbols": []
+      },
+      {
+        "offset": 9940,
+        "type": "DIR32",
+        "local_offset": 7109,
+        "symbols": []
+      },
+      {
+        "offset": 9944,
+        "type": "DIR32",
+        "local_offset": 214,
+        "symbols": []
+      },
+      {
+        "offset": 9948,
+        "type": "DIR32",
+        "local_offset": 2650,
+        "symbols": []
+      },
+      {
+        "offset": 9952,
+        "type": "DIR32",
+        "local_offset": 305,
+        "symbols": []
+      },
+      {
+        "offset": 9956,
+        "type": "DIR32",
+        "local_offset": 258,
+        "symbols": []
+      },
+      {
+        "offset": 9960,
+        "type": "DIR32",
+        "local_offset": 438,
+        "symbols": []
+      }
+    ],
+    "unresolved": [],
+    "remaining_difference_offsets": [],
+    "equal_after_verified_address_replay": true,
+    "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+    "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+  },
+  "new_exact_credit": 0,
+  "source_adopted": false,
+  "cleanup": {
+    "files": 64,
+    "bytes": 4266991,
+    "inventory": [
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-07-AnmInt3Scale.ltcg.obj",
+        "bytes": 10486,
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/source.map",
+        "bytes": 92342,
+        "sha256": "b84f1ce64505b017658473b78156c46318ff5526578ded40f1ddc5a9727271e8"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-05-AnmVmId.ltcg.obj",
+        "bytes": 13646,
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/source.exe",
+        "bytes": 122880,
+        "sha256": "f35c89a1d05ece3a75a8eb2ebe6cf1315e48fe498dec03473a60aec44416c2e7"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/source.ltcg.obj",
+        "bytes": 157588,
+        "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/link.log",
+        "bytes": 167,
+        "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-04-Enemy.ltcg.obj",
+        "bytes": 97582,
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-06-RandomMath.ltcg.obj",
+        "bytes": 3947,
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-03-EnemyLaser.ltcg.obj",
+        "bytes": 44123,
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-02-AnmVmCreate.ltcg.obj",
+        "bytes": 10892,
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-00-EclVm.ltcg.obj",
+        "bytes": 55445,
+        "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/link-aliases.rsp",
+        "bytes": 19994,
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/link-anchors.obj",
+        "bytes": 11653,
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-08-ItemManager.ltcg.obj",
+        "bytes": 59951,
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/source.pdb",
+        "bytes": 117760,
+        "sha256": "5186bcc730c5d06db760a390efebfef2ccbe0fde84d408108b077886bd7efe60"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first/support-01-AnmManager.ltcg.obj",
+        "bytes": 248233,
+        "sha256": "549d503309b8d21e22c592d79d1bb67f5f72da12179741b236bd764c794c8435"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-07-AnmInt3Scale.ltcg.obj",
+        "bytes": 10486,
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/source.map",
+        "bytes": 92342,
+        "sha256": "148815dd981195cde93c7aa62633c63c897243c26fe6b0ca4628ba6a89fd965d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-05-AnmVmId.ltcg.obj",
+        "bytes": 13646,
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/source.exe",
+        "bytes": 122880,
+        "sha256": "e0e0828fbcd505647834a4e8d0b03f247eebf3b56a0e8bdc9a26d39fa9c28ea8"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/source.ltcg.obj",
+        "bytes": 157588,
+        "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/link.log",
+        "bytes": 104,
+        "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-04-Enemy.ltcg.obj",
+        "bytes": 97582,
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-06-RandomMath.ltcg.obj",
+        "bytes": 3947,
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-03-EnemyLaser.ltcg.obj",
+        "bytes": 44123,
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-02-AnmVmCreate.ltcg.obj",
+        "bytes": 10892,
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-00-EclVm.ltcg.obj",
+        "bytes": 55445,
+        "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/link-aliases.rsp",
+        "bytes": 19994,
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/link-anchors.obj",
+        "bytes": 11653,
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-08-ItemManager.ltcg.obj",
+        "bytes": 59951,
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/source.pdb",
+        "bytes": 117760,
+        "sha256": "f562f8bac2343de377629f764a121c3104a1d2c16f2ac23e8dbbad851e5ea142"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second/support-01-AnmManager.ltcg.obj",
+        "bytes": 248237,
+        "sha256": "37ef526d5509db019af03c0cf811053f439e372d2f853d5b706a63e009bcf47b"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-07-AnmInt3Scale.ltcg.obj",
+        "bytes": 10486,
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/source.map",
+        "bytes": 92342,
+        "sha256": "fd53d48210ae47eb93ad39169d62695b73bd621fbabbede83e69b7110629a2ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-05-AnmVmId.ltcg.obj",
+        "bytes": 13646,
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/source.exe",
+        "bytes": 122880,
+        "sha256": "78fd3c22079a5b148021203d9313340b65f77857288f989d2cb7d454df209a9e"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/source.ltcg.obj",
+        "bytes": 157588,
+        "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/link.log",
+        "bytes": 167,
+        "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-04-Enemy.ltcg.obj",
+        "bytes": 97582,
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-06-RandomMath.ltcg.obj",
+        "bytes": 3947,
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-03-EnemyLaser.ltcg.obj",
+        "bytes": 44123,
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-02-AnmVmCreate.ltcg.obj",
+        "bytes": 10892,
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-00-EclVm.ltcg.obj",
+        "bytes": 55445,
+        "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/link-aliases.rsp",
+        "bytes": 19994,
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/link-anchors.obj",
+        "bytes": 11653,
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-08-ItemManager.ltcg.obj",
+        "bytes": 59951,
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/source.pdb",
+        "bytes": 117760,
+        "sha256": "49b3675417023f71b09518c9bc28cfecceb8cdf1abf552594ddb48c7ef5a2556"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both/support-01-AnmManager.ltcg.obj",
+        "bytes": 248367,
+        "sha256": "90aae7c73dd2f17ad6777e88425e93d004820c0a0a24ae1531fc9b401280bb3b"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-07-AnmInt3Scale.ltcg.obj",
+        "bytes": 10486,
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/source.map",
+        "bytes": 92453,
+        "sha256": "df9eae1ba22b58f509409fbf3d6d7027950e1cb7693c893dc5c7e258c7e3c1ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-05-AnmVmId.ltcg.obj",
+        "bytes": 13646,
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/source.exe",
+        "bytes": 122880,
+        "sha256": "478e400b5a78268fa80deedf43203bcd08b935a06d3b7bf29108e1138227c067"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/source.ltcg.obj",
+        "bytes": 157588,
+        "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/link.log",
+        "bytes": 167,
+        "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-04-Enemy.ltcg.obj",
+        "bytes": 97582,
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-06-RandomMath.ltcg.obj",
+        "bytes": 3947,
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-03-EnemyLaser.ltcg.obj",
+        "bytes": 44123,
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-02-AnmVmCreate.ltcg.obj",
+        "bytes": 10892,
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-00-EclVm.ltcg.obj",
+        "bytes": 55445,
+        "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/link-aliases.rsp",
+        "bytes": 19994,
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/link-anchors.obj",
+        "bytes": 11653,
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-08-ItemManager.ltcg.obj",
+        "bytes": 59951,
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/source.pdb",
+        "bytes": 117760,
+        "sha256": "84f7ba115f3f23a1417f99610b6eab7549e82a862ec9424e2d698388c26bf6fb"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x/support-01-AnmManager.ltcg.obj",
+        "bytes": 248282,
+        "sha256": "22d23df95776bf8005b854430780179d53097818c25d3d2d52511c8ace51855a"
+      }
+    ]
+  },
+  "unrelated_untracked": {
+    "docs/evidence/d3d-adapter-format/README.md": "75412206932d385780dcfc84288f87a72b32545fdfe9cfba8d462969ca446ce1",
+    "docs/evidence/d3d-adapter-format/reconstruct.py": "3f2a09ac896cbb1c12a6a4901a62ef6a23cf006a7cb08bcb7d9046bf40cf5512",
+    "docs/evidence/d3d-adapter-format/.gitattributes": "ed498fc91b1843b2e372ddc35249846ed8411aa4b63361dc2fede9f454e0fb25",
+    "docs/evidence/d3d-adapter-format/evidence.json": "cac2ad3b15a0cab5b0dfbd186f068d05979fca84c64f146934ce45e976e1afca",
+    "docs/evidence/d3d-adapter-format/candidate.patch": "20f79cba52efad0ef229b0343b6c8ca7eea23ca813b301e45a95111a48558a4d",
+    "docs/evidence/d3d-adapter-format/test_candidate.py": "e74122636a34597a213bd53514d43f7665559177227eb2ccc7128bf6932cc6a7",
+    "docs/evidence/d3d-adapter-format/provenance.json": "d2e14614a1a9a683ab9f04210f76be95ee9c7fcc32b12dad71e94b9679f8e6d0",
+    "docs/evidence/d3d-adapter-format/REFERENCE_LICENSE.txt": "2928b2f628a94dc67b9c8fbc97bf85f7fe0444bc38e34e898befb4e450463b2f",
+    "docs/evidence/d3d-adapter-format/model.py": "b7be4e6b3bbceebddd3716ff8e2c48fed082245470485ddf70a8db42784dfc0c"
+  },
+  "terminal_exit_codes": {
+    "81063": 0,
+    "72122": 0,
+    "64541": 0,
+    "67989": 0,
+    "88737": 0,
+    "18294": 0,
+    "33430": 0
+  },
+  "full_cold_pair": false,
+  "full_ci_run": false
+}

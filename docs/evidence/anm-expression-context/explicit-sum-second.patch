@@ -1,0 +1,14 @@
+--- a/src/AnmManager.cpp
++++ b/src/AnmManager.cpp
+@@ -3798,7 +3798,10 @@
+                     angleValue, vm->scaleY - vm->scaleX * 0.5f);
+             vertex[0].z = 0.0f;
+             *reinterpret_cast<AnmFloat3View *>(&vertex[0].x) +=
+-                vm->position + vm->positionOffset;
++                AnmFloat3View(
++                    vm->position.x + vm->positionOffset.x,
++                    vm->position.y + vm->positionOffset.y,
++                    vm->position.z + vm->positionOffset.z);
+             ++vertex;
+ 
+             textureV += textureStep;

@@ -5315,3 +5315,14 @@ Replacing PopFloat's union with plain float while retaining its explicit stack
 pointer repairs none of the27 differences and adds +F9A/+FA6 address encodings;
 the existing union still contributes to current codegen fidelity. Maintained
 source/profile are unchanged. See [ECL codegen evidence](evidence/ecl-codegen-options/README.md).
+
+## ANM aggregate expression and inline context constraints (2026-10-22)
+
+Explicit AnmFloat3View component construction in ExecuteScript's generated
+vertex loop has context-dependent effects: first-only adds eight target-different
+operand-displacement bytes, both adds two, second-only changes no complete large
+body. Matching case totals conceal these FLD/FADD order regressions. An ordinary
+local FlipX helper remains outlined; requiring inlining reproduces the complete
+baseline after independently binding303 changed fields, not a better FlipX.
+The target's accumulator XOR and slow-Tick operand-order differences remain
+open. See [expression-context evidence](evidence/anm-expression-context/README.md).
