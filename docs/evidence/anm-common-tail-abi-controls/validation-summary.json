@@ -1,0 +1,85 @@
+{
+  "additional_direct_caller_bytes": 194,
+  "ci": {
+    "completed_groups": 111,
+    "exit_code": 0,
+    "group_coverage": "All ordered ci.py run labels checked with actual native exit0 and final success marker.",
+    "input_counts_unchanged": {
+      "baseline_artifact_sha256": 15,
+      "baseline_source_sha256": 32,
+      "frozen_inputs": 373,
+      "source_sha256": 108,
+      "unrelated_untracked": 9
+    },
+    "input_inventory_sha256": "5bae6a537b6dc69e4eec3d751c6b7972612e1860f940294a967265daae3fe459",
+    "log_sha256": "311e5410189756961c0d43790d34905e7352c04a19f517500e2b64cbb7a432f9",
+    "status": "passed"
+  },
+  "cleanup": {
+    "files": 50,
+    "logical_bytes": 3129383,
+    "native_trees": 3,
+    "retained": "canonical baseline15, both distinct full10-source ABI hypotheses and their32-file views, compact source/producers/reports, corrected loop-location evidence and9 unrelated D3D files",
+    "status": "removed"
+  },
+  "counts": {
+    "authored_exact": 409,
+    "authored_exact_bytes": 74716,
+    "overall_exact": 1250,
+    "overall_exact_bytes": 141226,
+    "source": 613,
+    "source_absent": 121,
+    "source_nonexact": 204
+  },
+  "direct_caller_result": "baseline and three source forms exact194/all3; default-static197 and member200 rejected",
+  "distinct_private_ten_source_colds": 2,
+  "each_base_guard_set": {
+    "bytes": 4424,
+    "fields": 118,
+    "functions": 35
+  },
+  "final_checks": {
+    "AnmManager_source_gate": "passed",
+    "Ghidra": "Fresh direct read-only/noanalysis review, native session90356 exit0; complete412289 mapped bytes unchanged.",
+    "documentation_hygiene": "passed, including staged packet",
+    "focused_case_diagnostic": "Completed6770/7995,90/92,gap14 for rejected default-static9948; diagnostic only, no acceptance authority.",
+    "git_diff_check": "passed",
+    "native_controls": "All five actual native producers terminate0; first3 compile1/reuse9, last2 freshly compile10 consistent source inputs each.",
+    "preflight": "Original target hash, executed toolchain, target-required tracking and current status report pass.",
+    "progress_generated_and_checked": "passed",
+    "public_tree_binary_exclusion": "passed, including staged packet",
+    "retained_private_hypotheses": "Each of both distinct ABI hypotheses retains all16 native and32 consistent input hashes after CI.",
+    "toolchain_check": "passed",
+    "tracking": "passed"
+  },
+  "ledger_note": {
+    "after_sha256": "309b5425bb2999342f888739c178189fb50d4fa6fa1b6c6482d91594c9301e13",
+    "before_sha256": "177bfae4230f752651336b0a55f740cf87de1c1f4d04e4bb36e8586181713974",
+    "changed_fields": [
+      [
+        "0x0043EE30",
+        "notes"
+      ]
+    ],
+    "scope": "Only the existing ANM ledger note is qualified; every other parsed field and raw row remains unchanged."
+  },
+  "loop_span_accounting": {
+    "candidate": [
+      960,
+      12,
+      468
+    ],
+    "target": [
+      960,
+      13,
+      468
+    ]
+  },
+  "maintained_source_changed": false,
+  "new_exact_functions": 0,
+  "new_exact_owned_bytes": 0,
+  "one_source_nine_reused_controls": 3,
+  "phase": "active-incomplete; whole Windows i386 product/runtime open; semantic and port not started",
+  "same_candidate_canonical_cold_pair": false,
+  "status": "five measured hypotheses completed; both interface changes rejected by full caller; maintained source preserved;111-group CI passed; no new exact credit"
+}

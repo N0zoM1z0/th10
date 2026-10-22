@@ -1,12 +1,14 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-ANM operand-form controls reject three measured variants; maintained source
-and exact totals remain unchanged. Authored exact409/74716, overall1250/141226.
+ANM common-tail and source-ABI controls complete five actual hypotheses;
+maintained source and exact totals remain unchanged. Authored exact409/74716,
+overall1250/141226.
 Source remains613/247945 owned bytes; nonexact204, absent121.
 Archive source15/15, exact15/15;
 FileSystem remains source13/13, exact11/13.
-See [ANM branch controls](evidence/anm-operand-branch-controls/README.md),
+See [ANM common-tail/ABI evidence](evidence/anm-common-tail-abi-controls/README.md),
+[ANM branch controls](evidence/anm-operand-branch-controls/README.md),
 [resource load proof](evidence/pbgarchive-load-from-resource/README.md),
 [header proof](evidence/pbgarchive-parse-header/README.md),
 [entry reader proof](evidence/pbgarchive-read-decompress-entry/README.md),
@@ -51,7 +53,66 @@ scripts/repo-python scripts/report-reconstruction-status.py
 overall exact1250/141226 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest bounded ANM operand-form checkpoint
+## Latest bounded ANM common-tail and ABI checkpoint
+
+Starting pushed/remote-verifiedca13d55, preflight passes target/toolchain/tracking.
+All108 maintained sources,32 large-source/header and15 baseline native files
+remain unchanged. The initial373 source/test/config inputs are unchanged until
+the deliberate ANM ledger-note qualification; only that note changes before
+the final373-input CI snapshot. Keep9 unrelated untracked D3D files unstaged.
+
+Fresh direct readOnly/noanalysis Ghidra reviews the existing entry/incoming
+references, FlipX52 and entire common-tail1441. Rollback/maxcpu1/heap768 MiB;
+all412289 mapped text bytes remain unchanged. No provisional signature, body
+or original source ABI is promoted. Actual loop backedges/forward JMP establish
+target960+13skipped+468=1441 versus baseline960+12skipped+468=1440. This explains
+span length only; all skipped fill remains owned/compared. The initial early-RET
+locator was invalid and superseded. Navigation omitting address fields and only
+the measured fill gives372 instructions each and one slow-Tick FLD/FADD pair
+difference, without target equality credit. FlipX target EAX XOR5 versus native
+EDX XOR6 explains its52/53 bytes.
+
+Three actual one-ANM-GL/nine-reused-object controls keep9964/7541of7995/90of92/
+gap2. Raw compound FlipX still changes4 ordinary radial Y/Z bytes despite equal
+case scores. Scale-initialized timer accumulation is raw-neutral; TU-local
+postfix forwarding is full-body baseline-equal after291 independently identified
+changed address fields are replayed. All3 pass35 whole guards4424/all118 and
+8 bounded child paths, with ECL7020/6993/27/189/62/171 preserved.
+
+Two distinct private32-file source overlays each cold-compile all10 game-source
+TUs, serial nice10 with GL/GS and existing profiles; only2 pinned harness files
+are reused. Default static emits9948/6770of7995/four plain RETs, still stack VM.
+Ordinary member emits9964/7541of7995/four RET4s and is whole-body baseline-equal
+after287 changed address fields are independently replayed. These are distinct
+hypotheses, not a same-candidate acceptance pair. Each passes35 base guards and
+the complete ECL diagnostic; the8 child-path checks are not run for these2.
+
+The additional complete canonical caller43E7E0/194/all3 passes for baseline and
+the first3 controls, but rejects default-static197 and member200 at actual PDB
+extents. Both interfaces are rejected. TH09 member versus provisional TH095
+static remains inconclusive hypothesis material; current static-stdcall is a
+maintained boundary view, not proven original membership/source convention.
+No maintained source, header, signature, recipe, match or origin/boundary state
+changes. Only the ANM ledger note is qualified; no new exact/case credit.
+
+Compact scope and results: [packet](evidence/anm-common-tail-abi-controls/README.md).
+Private recovery: `.analysis/gpt-6.1-sol/anm-common-tail-20261022/RECOVERY.md`.
+Hash-checked cleanup removes50 files/3129383 logical bytes:3 superseded private
+native carriers and2 superseded locator reports. Retain both distinct10-source
+ABI carriers/their32-file source views, baseline32/15, compact producers/reports,
+corrected loop evidence and9 independent D3D files. All111 final CI groups pass
+with actual exit0 and all373 final source/test/config inputs unchanged, including
+108 maintained source and32/15 baseline pins. Focused diagnosis, toolchain,
+tracking, source gate, progress, staged documentation/public-tree and whitespace
+checks pass. See the packet validation summary. Historical private producers
+pin pre-note inputs; never restore current source or notes to rerun them.
+
+Next rotate away from compound flags, slow-accumulator/postfix forwarding and
+default-static/member hypotheses. Investigate a distinct49/53/54 operand-lifetime
+or linked-context route, preserving the full194-byte caller as an extra guard.
+Whole Windows i386 product/runtime stays open; semantic/port stages unstarted.
+
+## Previous bounded ANM operand-form checkpoint
 
 Starting pushed/remote-verifiede19a98f, all108 maintained source/header files,
 373 source/test/config inputs,32 large-source/header pins,15 baseline artifacts

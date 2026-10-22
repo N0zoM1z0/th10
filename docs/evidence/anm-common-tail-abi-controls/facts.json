@@ -1,0 +1,812 @@
+{
+  "Ghidra": {
+    "complete_mapped_bytes": 412289,
+    "heap_MiB": 768,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "maxcpu": 1,
+    "noanalysis": true,
+    "readOnly": true,
+    "review_sha256": "9fcd4de1c260f5430acf786a58d02c767fb202803678a78e6c0612e43e11b7f1",
+    "reviewed_spans": [
+      "43F276..43F2A9",
+      "440E03..4413A3"
+    ],
+    "rollback": true,
+    "signature_and_body_provisional": true,
+    "transport": "direct-local-headless"
+  },
+  "baseline": {
+    "ANM_size": 9964,
+    "absolute_group_gap": 2,
+    "aligned_comparable_bytes": [
+      7541,
+      7995
+    ],
+    "native_artifact_sha256": {
+      "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+      "build/match-linked/EnemyItemDrops/link-anchors.obj": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+      "build/match-linked/EnemyItemDrops/source.exe": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+      "build/match-linked/EnemyItemDrops/source.ltcg.obj": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+      "build/match-linked/EnemyItemDrops/source.map": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+      "build/match-linked/EnemyItemDrops/source.pdb": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+      "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+      "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+      "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+      "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+      "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+      "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+      "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+      "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+      "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8"
+    },
+    "same_sized_groups": [
+      90,
+      92
+    ],
+    "source_header_sha256": {
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+      "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+      "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+    }
+  },
+  "baseline_address_replay_scope": "Candidate-to-retained-baseline byte comparison only. Changed fields replay only after matching local destination offsets or exact common MAP names. All350 field layouts match in the equal-sized peers. This is not canonical target equality or runtime equivalence.",
+  "complete_194_byte_direct_caller": {
+    "comparisons": [
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x0040D160",
+        "capstone_version": "5.0.6",
+        "compared_size": 194,
+        "data_spans": [],
+        "decoded_bytes": 194,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/EnemyItemDrops/source.exe",
+        "image_sha256": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x0041B14C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0077",
+            "local": false,
+            "offset": "0x7C",
+            "symbol": "?g_AnmGameSpeed@@3MA",
+            "target": "0x00476F78",
+            "target_encoded_value": "0x00476F78",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D9B0",
+            "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "local": false,
+            "offset": "0xA1",
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "target": "0x0043EE30",
+            "target_encoded_value": "0x000005AB",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0041B16C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0xA6",
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "target": "0x00491C10",
+            "target_encoded_value": "0x00491C10",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 194,
+        "matched_compared_bytes": 194,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "27891decc5b4d446a55a8e763a79d86a",
+        "pdb_module_index": 7,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 194,
+        "symbol": "?SetAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+        "target_address": "0x0043E7E0",
+        "unit": "baseline"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x0040D160",
+        "capstone_version": "5.0.6",
+        "compared_size": 194,
+        "data_spans": [],
+        "decoded_bytes": 194,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/gpt-6.1-sol/anm-common-tail-20261022/raw-compound-flip-x/source.exe",
+        "image_sha256": "a742ab63dfa6b95ef8fe0da3afb4dd7b64fc4ba9e36b8e6e7c1fe16cc02114d9",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x0041B14C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0077",
+            "local": false,
+            "offset": "0x7C",
+            "symbol": "?g_AnmGameSpeed@@3MA",
+            "target": "0x00476F78",
+            "target_encoded_value": "0x00476F78",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D9B0",
+            "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "local": false,
+            "offset": "0xA1",
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "target": "0x0043EE30",
+            "target_encoded_value": "0x000005AB",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0041B16C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0xA6",
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "target": "0x00491C10",
+            "target_encoded_value": "0x00491C10",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 194,
+        "matched_compared_bytes": 194,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "129eade5ca647345bd9c382a191e82d8",
+        "pdb_module_index": 7,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 194,
+        "symbol": "?SetAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+        "target_address": "0x0043E7E0",
+        "unit": "raw-compound-flip-x"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x0040D160",
+        "capstone_version": "5.0.6",
+        "compared_size": 194,
+        "data_spans": [],
+        "decoded_bytes": 194,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/gpt-6.1-sol/anm-common-tail-20261022/slow-timer-accumulator/source.exe",
+        "image_sha256": "0fd5bd0d650d288e3ce2cda762da9f67277adad7d7449580fd72ced41d657007",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x0041B14C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0077",
+            "local": false,
+            "offset": "0x7C",
+            "symbol": "?g_AnmGameSpeed@@3MA",
+            "target": "0x00476F78",
+            "target_encoded_value": "0x00476F78",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D9B0",
+            "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "local": false,
+            "offset": "0xA1",
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "target": "0x0043EE30",
+            "target_encoded_value": "0x000005AB",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0041B16C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0xA6",
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "target": "0x00491C10",
+            "target_encoded_value": "0x00491C10",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 194,
+        "matched_compared_bytes": 194,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "a87dacb6ff719544a6066e8dceb9a9f2",
+        "pdb_module_index": 7,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 194,
+        "symbol": "?SetAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+        "target_address": "0x0043E7E0",
+        "unit": "slow-timer-accumulator"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x0040D160",
+        "capstone_version": "5.0.6",
+        "compared_size": 194,
+        "data_spans": [],
+        "decoded_bytes": 194,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/gpt-6.1-sol/anm-common-tail-20261022/postfix-timer-view/source.exe",
+        "image_sha256": "e8ff2eab6d77efa8889c00e3edf27ada6d43f37e00ca82c8709b487662be8e77",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x0041B14C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0077",
+            "local": false,
+            "offset": "0x7C",
+            "symbol": "?g_AnmGameSpeed@@3MA",
+            "target": "0x00476F78",
+            "target_encoded_value": "0x00476F78",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040DA00",
+            "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "local": false,
+            "offset": "0xA1",
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "target": "0x0043EE30",
+            "target_encoded_value": "0x000005AB",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0041B16C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0xA6",
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "target": "0x00491C10",
+            "target_encoded_value": "0x00491C10",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 194,
+        "matched_compared_bytes": 194,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "d2a2c0e3427b34458ce84c3fa26732da",
+        "pdb_module_index": 7,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 194,
+        "symbol": "?SetAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+        "target_address": "0x0043E7E0",
+        "unit": "postfix-timer-view"
+      },
+      {
+        "error": "PDB contribution size 0xc5 differs from manifest 0xc2",
+        "result": "rejected",
+        "unit": "default-static-abi"
+      },
+      {
+        "error": "PDB contribution size 0xc8 differs from manifest 0xc2",
+        "result": "rejected",
+        "unit": "ordinary-member-view"
+      }
+    ],
+    "scope": "Complete canonical194-byte direct caller; actual context/source owner selected. Changed callee names are address bindings only, with target entry fixed43EE30."
+  },
+  "controls": [
+    {
+      "ECL": {
+        "complete_callee_exact_bytes": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020
+      },
+      "baseline_peer_summary": {
+        "equal_after_verified_address_replay": false,
+        "field_layout_equal": true,
+        "label": "raw-compound-flip-x",
+        "raw_equal": false,
+        "remaining_different_bytes": 4,
+        "scope": "Candidate-to-retained-baseline comparison only; address replay requires matching local offsets or actual shared MAP symbol names. No new target exactness.",
+        "size": 9964,
+        "unresolved_changed_fields": []
+      },
+      "candidate_owner": {
+        "address": "0x0040D9B0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\raw-compound-flip-x\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\raw-compound-flip-x\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51632,
+        "sha256": "61488f859dfd424bdc538b3c81f35571193e488c560e0b92896797da40b31fc7",
+        "size": 9964,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "label": "raw-compound-flip-x",
+      "native_artifact_manifest_sha256": "55ca50242d5ea979c74e5d5534bade8658661a372c1d5f0ff2cf2330a1159362",
+      "new_exact_credit": 0,
+      "producer_sha256": "b04d622a609a688129825576ec839911881fef0b2bbb706aa74789746654fe57",
+      "replayed_changed_fields": 0,
+      "source_adopted": false,
+      "source_patches": [
+        {
+          "patch": "--- a/src/AnmManager.cpp\n+++ b/src/AnmManager.cpp\n@@ -3242,7 +3242,8 @@\n             break;\n \n         case ANM_OP_FLIP_X:\n-            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;\n+            vm->flags35C ^= 1u << 9;\n+            vm->flags35C |= 8u;\n             vm->scaleX *= -1.0f;\n             break;\n         case ANM_OP_FLIP_Y:\n",
+          "role": "src/AnmManager.cpp",
+          "source_sha256": "88c96dd220e5612de3ec0cc88c09e23f8fa0efc4bb962f3f062034f4c25160b1"
+        }
+      ],
+      "source_scope": {
+        "actual_game_source_compiles": 1,
+        "bounded_child_static_paths": 8,
+        "canonical_replay": false,
+        "private_source_cold": false,
+        "reused_game_source_objects": 9
+      },
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    },
+    {
+      "ECL": {
+        "complete_callee_exact_bytes": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020
+      },
+      "baseline_peer_summary": {
+        "equal_after_verified_address_replay": true,
+        "field_layout_equal": true,
+        "label": "slow-timer-accumulator",
+        "raw_equal": true,
+        "remaining_different_bytes": 0,
+        "scope": "Candidate-to-retained-baseline comparison only; address replay requires matching local offsets or actual shared MAP symbol names. No new target exactness.",
+        "size": 9964,
+        "unresolved_changed_fields": []
+      },
+      "candidate_owner": {
+        "address": "0x0040D9B0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\slow-timer-accumulator\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\slow-timer-accumulator\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51632,
+        "sha256": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "size": 9964,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "label": "slow-timer-accumulator",
+      "native_artifact_manifest_sha256": "233e99d827385fdb79ef935174ec8040bbf117eb948441a8325b116ff1a4db68",
+      "new_exact_credit": 0,
+      "producer_sha256": "1837d8dd18c51549949a264a19cdeeaa21ea33536e25ef49a91055cd979982cc",
+      "replayed_changed_fields": 0,
+      "source_adopted": false,
+      "source_patches": [
+        {
+          "patch": "--- a/src/AnmManager.cpp\n+++ b/src/AnmManager.cpp\n@@ -3813,7 +3813,22 @@\n         vertex[1].v = textureV + vm->uvScrollY;\n     }\n \n-    vm->scriptTimer.Tick();\n+    {\n+        AnmVmTimerView &timer = vm->scriptTimer;\n+        timer.previous = timer.current;\n+        if (*timer.scale > 0.99f && *timer.scale < 1.01f)\n+        {\n+            ++timer.current;\n+            timer.subframe += 1.0f;\n+        }\n+        else\n+        {\n+            float nextSubframe = *timer.scale;\n+            nextSubframe += timer.subframe;\n+            timer.subframe = nextSubframe;\n+            timer.current = static_cast<int>(timer.subframe);\n+        }\n+    }\n     g_AnmGameSpeed = savedGameSpeed;\n     return 0;\n }\n",
+          "role": "src/AnmManager.cpp",
+          "source_sha256": "9282658810be01d548d76e4b3d89d0f127704240eb0264064a255e96e184933d"
+        }
+      ],
+      "source_scope": {
+        "actual_game_source_compiles": 1,
+        "bounded_child_static_paths": 8,
+        "canonical_replay": false,
+        "private_source_cold": false,
+        "reused_game_source_objects": 9
+      },
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    },
+    {
+      "ECL": {
+        "complete_callee_exact_bytes": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020
+      },
+      "baseline_peer_summary": {
+        "equal_after_verified_address_replay": true,
+        "field_layout_equal": true,
+        "label": "postfix-timer-view",
+        "raw_equal": false,
+        "remaining_different_bytes": 0,
+        "scope": "Candidate-to-retained-baseline comparison only; address replay requires matching local offsets or actual shared MAP symbol names. No new target exactness.",
+        "size": 9964,
+        "unresolved_changed_fields": []
+      },
+      "candidate_owner": {
+        "address": "0x0040DA00",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\postfix-timer-view\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\postfix-timer-view\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51712,
+        "sha256": "ef251727ef87ce904fcf613cbfcf71da978a25e6f46a3c01baa5e8f71928eb4f",
+        "size": 9964,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "label": "postfix-timer-view",
+      "native_artifact_manifest_sha256": "1c0519cf0ce7139f25abaf3582cad19cc96c2605f1e0515cdadd6c496b4fc1ce",
+      "new_exact_credit": 0,
+      "producer_sha256": "6dfcf3d97bb094b4c93fc384f9255f29b21ecfeb6527031729dcb68c0741f27b",
+      "replayed_changed_fields": 291,
+      "source_adopted": false,
+      "source_patches": [
+        {
+          "patch": "--- a/src/AnmManager.cpp\n+++ b/src/AnmManager.cpp\n@@ -3095,6 +3095,11 @@\n     (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];\n \n \n+static inline void operator++(AnmVmTimerView &timer, int)\n+{\n+    timer.Tick();\n+}\n+\n int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)\n {\n     AnmRawInstructionView *currentInstruction;\n@@ -3813,7 +3818,7 @@\n         vertex[1].v = textureV + vm->uvScrollY;\n     }\n \n-    vm->scriptTimer.Tick();\n+    vm->scriptTimer++;\n     g_AnmGameSpeed = savedGameSpeed;\n     return 0;\n }\n",
+          "role": "src/AnmManager.cpp",
+          "source_sha256": "909376a459fec14d37e8888ad232bd8d94f41c5c6c6bd53ea5e9b9d8dee6082f"
+        }
+      ],
+      "source_scope": {
+        "actual_game_source_compiles": 1,
+        "bounded_child_static_paths": 8,
+        "canonical_replay": false,
+        "private_source_cold": false,
+        "reused_game_source_objects": 9
+      },
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    },
+    {
+      "ECL": {
+        "complete_callee_exact_bytes": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020
+      },
+      "baseline_peer_summary": {
+        "entry_instructions": [
+          "0040d9c0 sub esp, 0xfc",
+          "0040d9c6 push ebp",
+          "0040d9c7 mov ebp, dword ptr [esp + 0x104]",
+          "0040d9ce mov eax, dword ptr [ebp + 0x390]",
+          "0040d9d4 test eax, eax",
+          "0040d9d6 jne 0x40d9e5",
+          "0040d9d8 mov eax, 1",
+          "0040d9dd pop ebp",
+          "0040d9de add esp, 0xfc",
+          "0040d9e4 ret ",
+          "0040d9e5 mov eax, dword ptr [ebp + 0x35c]",
+          "0040d9eb test eax, 0x20000"
+        ],
+        "label": "default-static-abi",
+        "raw_equal": false,
+        "return_instructions": [
+          "0040d9e4 ret ",
+          "0040d9fb ret ",
+          "0040f9b5 ret ",
+          "0040ff20 ret "
+        ],
+        "scope": "Candidate-to-retained-baseline comparison only; address replay requires matching local offsets or actual shared MAP symbol names. No new target exactness.",
+        "size": 9948
+      },
+      "candidate_owner": {
+        "address": "0x0040D9C0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\default-static-abi\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\default-static-abi\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51648,
+        "sha256": "06e3a42d15cec52b2b809e40dab6a6d45696bfb41d40bcd72c32d9ef308a3e2f",
+        "size": 9948,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SAHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 14,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 6770,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "label": "default-static-abi",
+      "native_artifact_manifest_sha256": "208ea3bd27d09bb18c48cfa6ac79a658cd1d44a0308111c8efa595c1d59265fc",
+      "new_exact_credit": 0,
+      "producer_sha256": "52b1042ac04f75ecb52653ac637f2d0503bdb6640bf8e404cc09f9b6b7d75ee7",
+      "replayed_changed_fields": 0,
+      "source_adopted": false,
+      "source_patches": [
+        {
+          "patch": "--- a/src/AnmManager.cpp\n+++ b/src/AnmManager.cpp\n@@ -3095,7 +3095,7 @@\n     (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];\n \n \n-int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)\n+int AnmRenderManagerView::ExecuteScript(AnmVmView *vm)\n {\n     AnmRawInstructionView *currentInstruction;\n     AnmRawInstructionView *fallbackInterrupt;\n",
+          "role": "src/AnmManager.cpp",
+          "source_sha256": "1f4aae14bb81f5fd3b4b8b4ca0aef211406153c0e54eb94f65f88c7f2de48320"
+        },
+        {
+          "patch": "--- a/src/AnmManager.hpp\n+++ b/src/AnmManager.hpp\n@@ -1096,7 +1096,7 @@\n         int surfaceIndex, int sourceX, int sourceY,\n         int sourceWidth, int sourceHeight, int destinationX,\n         int destinationY, int destinationWidth, int destinationHeight);\n-    static int __stdcall ExecuteScript(AnmVmView *vm);\n+    static int ExecuteScript(AnmVmView *vm);\n     int UpdatePrimaryVms();\n     int UpdateSecondaryVms();\n     int DrawLayer(int layer);\n",
+          "role": "src/AnmManager.hpp",
+          "source_sha256": "66fe85398526e22d7d1597f10cd1a7b71fb7397c54639464a8da932c3aa76d61"
+        }
+      ],
+      "source_scope": {
+        "actual_game_source_compiles": 10,
+        "canonical_replay": false,
+        "consistent_project_source_header_files": 32,
+        "private_source_cold": true,
+        "reused_game_source_objects": 0,
+        "reused_pinned_harness_files": {
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+          "link-anchors.obj": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f"
+        }
+      },
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    },
+    {
+      "ECL": {
+        "complete_callee_exact_bytes": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020
+      },
+      "baseline_peer_summary": {
+        "entry_instructions": [
+          "0040d9d0 sub esp, 0xfc",
+          "0040d9d6 push ebp",
+          "0040d9d7 mov ebp, dword ptr [esp + 0x104]",
+          "0040d9de mov eax, dword ptr [ebp + 0x390]",
+          "0040d9e4 test eax, eax",
+          "0040d9e6 jne 0x40d9f7",
+          "0040d9e8 mov eax, 1",
+          "0040d9ed pop ebp",
+          "0040d9ee add esp, 0xfc",
+          "0040d9f4 ret 4",
+          "0040d9f7 mov eax, dword ptr [ebp + 0x35c]",
+          "0040d9fd test eax, 0x20000"
+        ],
+        "equal_after_verified_address_replay": true,
+        "field_layout_equal": true,
+        "label": "ordinary-member-view",
+        "raw_equal": false,
+        "remaining_different_bytes": 0,
+        "return_instructions": [
+          "0040d9f4 ret 4",
+          "0040da0d ret 4",
+          "0040f9c9 ret 4",
+          "0040ff40 ret 4"
+        ],
+        "scope": "Candidate-to-retained-baseline comparison only; address replay requires matching local offsets or actual shared MAP symbol names. No new target exactness.",
+        "size": 9964,
+        "unresolved_changed_fields": []
+      },
+      "candidate_owner": {
+        "address": "0x0040D9D0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\ordinary-member-view\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-common-tail-20261022\\ordinary-member-view\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51664,
+        "sha256": "d10770c2557a0ae82ad221deae3fa4518834fcacc388164571e05a3c0b1525a4",
+        "size": 9964,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "label": "ordinary-member-view",
+      "native_artifact_manifest_sha256": "89de612c9975f775a6e5849e70de42f658394717d41dae3becd239bedefe7177",
+      "new_exact_credit": 0,
+      "producer_sha256": "048b3c755703b75f783a626f8559db41e1f954fb3b9d0d821e4b9dfe37bb2d70",
+      "replayed_changed_fields": 287,
+      "source_adopted": false,
+      "source_patches": [
+        {
+          "patch": "--- a/src/AnmManager.cpp\n+++ b/src/AnmManager.cpp\n@@ -714,7 +714,7 @@\n         return;\n \n     vm->pendingInterrupt = interrupt;\n-    AnmRenderManagerView::ExecuteScript(vm);\n+    g_AnmRenderManagerView->ExecuteScript(vm);\n     if (vm->layerNode.previous != NULL)\n         return;\n \n@@ -722,7 +722,7 @@\n     while (node != NULL)\n     {\n         static_cast<AnmVmView *>(node->owner)->pendingInterrupt = interrupt;\n-        AnmRenderManagerView::ExecuteScript(\n+        g_AnmRenderManagerView->ExecuteScript(\n             static_cast<AnmVmView *>(node->owner));\n         node = node->next;\n     }\n@@ -2844,7 +2844,7 @@\n         vm->currentInstruction = vm->beginningOfScript;\n         vm->scriptTimer.SetCurrent(0);\n         vm->visible = 0;\n-        AnmRenderManagerView::ExecuteScript(vm);\n+        g_AnmRenderManagerView->ExecuteScript(vm);\n         ++g_AnmRenderManagerView->scriptsStartedThisFrame;\n     }\n }\n@@ -2890,7 +2890,7 @@\n         vm->currentInstruction = vm->beginningOfScript;\n         vm->scriptTimer.SetCurrent(0);\n         vm->visible = 0;\n-        AnmRenderManagerView::ExecuteScript(vm);\n+        g_AnmRenderManagerView->ExecuteScript(vm);\n         ++g_AnmRenderManagerView->scriptsStartedThisFrame;\n     }\n }\n@@ -2938,7 +2938,7 @@\n     vm->currentInstruction = beginningOfScript;\n     vm->scriptTimer.SetCurrent(0);\n     vm->visible = 0;\n-    AnmRenderManagerView::ExecuteScript(vm);\n+    g_AnmRenderManagerView->ExecuteScript(vm);\n     ++g_AnmRenderManagerView->scriptsStartedThisFrame;\n }\n \n@@ -3095,7 +3095,7 @@\n     (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];\n \n \n-int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)\n+int AnmRenderManagerView::ExecuteScript(AnmVmView *vm)\n {\n     AnmRawInstructionView *currentInstruction;\n     AnmRawInstructionView *fallbackInterrupt;\n",
+          "role": "src/AnmManager.cpp",
+          "source_sha256": "567065a32c997ce87c67bc709a3b5b672525983284978814146cc6242cff9cc0"
+        },
+        {
+          "patch": "--- a/src/AnmManager.hpp\n+++ b/src/AnmManager.hpp\n@@ -1096,7 +1096,7 @@\n         int surfaceIndex, int sourceX, int sourceY,\n         int sourceWidth, int sourceHeight, int destinationX,\n         int destinationY, int destinationWidth, int destinationHeight);\n-    static int __stdcall ExecuteScript(AnmVmView *vm);\n+    int ExecuteScript(AnmVmView *vm);\n     int UpdatePrimaryVms();\n     int UpdateSecondaryVms();\n     int DrawLayer(int layer);\n",
+          "role": "src/AnmManager.hpp",
+          "source_sha256": "cba0c3b0c87418b5bee2cbb156117f67c9196ff66941849ee09e0aa4e7a6efd4"
+        },
+        {
+          "patch": "--- a/src/ItemManager.cpp\n+++ b/src/ItemManager.cpp\n@@ -529,7 +529,7 @@\n         continue;\n \n animate:\n-        AnmRenderManagerView::ExecuteScript(&item->vm);\n+        g_AnmRenderManagerView->ExecuteScript(&item->vm);\n         item->timer.previous = item->timer.current;\n         if (*item->timer.scale > 0.99f && *item->timer.scale < 1.01f)\n         {\n",
+          "role": "src/ItemManager.cpp",
+          "source_sha256": "99f27d04bbda61136315c9b81309c15f75d4967b9c2d8d0ac6c461f781f5cc2f"
+        }
+      ],
+      "source_scope": {
+        "actual_game_source_compiles": 10,
+        "canonical_replay": false,
+        "consistent_project_source_header_files": 32,
+        "private_source_cold": true,
+        "reused_game_source_objects": 0,
+        "reused_pinned_harness_files": {
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+          "link-anchors.obj": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f"
+        }
+      },
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    }
+  ],
+  "current_maintained_source_count": 108,
+  "flip_x_observation": {
+    "candidate_register": "EDX",
+    "candidate_xor_instruction_bytes": 6,
+    "target_register": "EAX",
+    "target_xor_instruction_bytes": 5
+  },
+  "initial_frozen_source_test_config_inputs": 373,
+  "instruction_navigation": {
+    "differences": [
+      {
+        "candidate": [
+          "0040fef7 fld dword ptr [ebp + 0x64]",
+          "0040fefa fadd dword ptr [ecx]"
+        ],
+        "kind": "replace",
+        "target": [
+          "00441377 fld dword ptr [ecx]",
+          "00441379 fadd dword ptr [ebp + 0x64]"
+        ]
+      }
+    ],
+    "instruction_counts": [
+      372,
+      372
+    ],
+    "scope": "NAVIGATION ONLY: ignores control/absolute addresses and removes the measured skipped alignment spans; not equality or acceptance evidence."
+  },
+  "loop_span_length_accounting": {
+    "inference": "The skipped bytes before a16-byte-aligned loop account for the whole one-byte span-size difference; ordinary code differences remain.",
+    "method": "Use the actual backward loop edge and preceding forward unconditional jump, not the first early RET.",
+    "observations": [
+      {
+        "aligned_loop_entry": "0x4411d0",
+        "forward_jump": "0x4411c1",
+        "label": "target",
+        "loop_backedge": "0x441302",
+        "prefix_bytes": 960,
+        "scope": "Length accounting only; no instruction or complete-function equality claim.",
+        "skipped_bytes": 13,
+        "skipped_hex": "8da424000000008d9b00000000",
+        "skipped_start": "0x4411c3",
+        "suffix_bytes": 468,
+        "table_offset_in_function": 9588
+      },
+      {
+        "aligned_loop_entry": "0x40fd50",
+        "forward_jump": "0x40fd42",
+        "label": "candidate",
+        "loop_backedge": "0x40fe82",
+        "prefix_bytes": 960,
+        "scope": "Length accounting only; no instruction or complete-function equality claim.",
+        "skipped_bytes": 12,
+        "skipped_hex": "8da42400000000eb038d4900",
+        "skipped_start": "0x40fd44",
+        "suffix_bytes": 468,
+        "table_offset_in_function": 9588
+      }
+    ]
+  },
+  "navigation_limits": "Control and absolute addresses are omitted and measured skipped alignment is removed only for locating differences; every padding byte remains part of the original complete-owner comparison. No target equality follows.",
+  "scope": "Bounded common-tail, flag form and consistent source-ABI hypotheses; maintained source unchanged; no exact credit.",
+  "source_abi_limits": [
+    "Default-static and ordinary-member are different private source hypotheses, not an accepted same-candidate cold pair.",
+    "Ordinary member and maintained static stdcall emit equal peer bodies after verified changed-address replay, but their direct callers differ194 versus200 bytes.",
+    "All35 helper guards pass in both ABI hypotheses; they do not validate ExecuteScript or its direct caller.",
+    "Current static stdcall remains a maintained boundary view. Original static/member status, declaration ABI, TU and ownership remain unknown.",
+    "No new parent, case, callee, data-owner, product/runtime, semantic or portability credit."
+  ],
+  "starting_head": "ca13d551d26ad977612f18541ce7c7187c1e32a0",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+}

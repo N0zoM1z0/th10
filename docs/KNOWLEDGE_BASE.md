@@ -5154,3 +5154,41 @@ callee identities; this is not new target equality. TH08/TH09/provisional TH095
 source-shape corroboration transfers no TH10 facts. The family is bounded,
 not exhausted. Exact counts remain409/74716 authored and1250/141226 overall.
 [ANM branch controls and limits](evidence/anm-operand-branch-controls/README.md).
+
+## ANM common-tail alignment and source ABI limits (2026-10-22)
+
+Actual loop backedges and the preceding forward JMP identify the common-tail
+fill: target960+13+468=1441 bytes, baseline960+12+468=1440. Both loop entries
+are16-byte aligned and both jump tables remain at function offset9588. The
+one-byte span-length difference lies entirely in skipped fill; exact comparison
+still owns and compares it. An initial early-RET locator was rejected and
+superseded. An address-omitting navigation view has372 instructions on each
+side, differing only in slow Tick's FLD/FADD operand pair; this is not a
+field-bound target equality proof. FlipX's target EAX XOR is5 bytes versus
+baseline EDX XOR6, explaining that case's52/53-byte length difference.
+
+Three actual one-ANM-GL/nine-reused-object forms keep the diagnostic score
+9964/7541of7995/90of92/gap2. Raw compound flags nevertheless change4 ordinary
+radial Y/Z bytes; score equality is not neutrality. A scale-initialized slow
+accumulator is raw-neutral. A TU-local postfix Tick forwarder is whole-body
+baseline-equal only after291 changed address fields are independently replayed.
+The existing timer header already spells scale+subframe.
+
+Two distinct consistent32-file overlays freshly compile all10 game-source TUs
+each, retaining GL/GS and existing profiles, with only2 pinned harness files
+reused. Default static emits9948/6770of7995 and four plain RETs; VM remains on
+the stack. Ordinary member emits9964/7541of7995/four RET4s and is baseline-equal
+after287 changed address fields are independently replayed. These are distinct
+hypotheses, not an acceptance cold pair. The exact194-byte/all3 direct caller
+passes baseline and the first3 forms, but rejects default197 and member200.
+Both interface changes are rejected despite35 helper guards4424/all118 passing
+in every image. ECL retains7020/6993/27/189/62/171. Only the first3 forms run
+the8 bounded child checks. No source, exact unit or production gate is promoted.
+
+TH09 member versus provisional TH095 static is inconclusive hypothesis evidence.
+The maintained static-stdcall boundary view preserves the current exact caller;
+target RET4 and executor-body equality do not prove original source membership
+or calling convention. Fresh read-only Ghidra attests all412289 mapped text
+bytes unchanged. Authored409/74716 and overall1250/141226 remain. Product/runtime,
+data ownership, semantic and port gates stay open.
+[Complete common-tail and ABI evidence](evidence/anm-common-tail-abi-controls/README.md).
