@@ -4906,3 +4906,22 @@ Og disabled grows161 and rejects all four complete Chain guards; the other
 four models retain838/all58 but every allocator candidate fails extent74.
 No source/profile form is adopted or original declaration/TU inferred. Keep
 the allocator open and rotate coverage. [Allocation controls](evidence/chain-allocation-controls/README.md).
+
+## Archive-or-disk path routing (2026-10-22)
+
+Target4356F0/212 builds the archive filename from the first slash and `.dat`,
+or retains a slash-free path, then case-sensitively scans active16-byte rows at
+4923B0/count477850/filename+8. Read435800/214 and size4358E0/190 use the suffix
+after the first slash or the original path. A matched archive owns failures;
+NULL reads/zero sizes do not fall back to disk. The optional buffer belongs
+only to the archive call. Disk Open's result is ignored; size/read and real
+CPbgFile destruction still run. Mode0 is the existing `r` pointer at474908.
+
+Three source mappings add616 owned source bytes, no exact credit. The shared
+ArchiveOrDiskPathView is a physical call view, not an original class/lifetime
+claim; the filename accessor changes no layout or global owner. Four-TU GL and
+normal-caller diagnostics produce220/236/242, still nonexact. Three selected
+canonical colds retain113/all3 and the new same-image normal caller46/all2.
+Host112/eight strict controls and full110 CI pass. Source presence is complete
+for all13 FileSystem authored owners; product/runtime and original TU remain open.
+[Target evidence and limits](evidence/filesystem-archive-routing/README.md).

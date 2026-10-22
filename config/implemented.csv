@@ -1092,3 +1092,6 @@ th10::Chain::AddToDrawChain
 th10::Chain::AllocElem
 MainRunCalcChain
 MainRunDrawChain
+ArchiveOrDiskPathView::FindArchive
+ArchiveOrDiskPathView::Read
+ArchiveOrDiskPathView::GetSize

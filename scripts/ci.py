@@ -63,6 +63,7 @@ def main() -> int:
         run("Validate hint lifecycle contracts", [sys.executable, "scripts/test-hint-lifecycle.py", "--skip-mutations"])
         run("Validate GameManager cleanup contract", [sys.executable, "scripts/test-game-manager-teardown.py", "--baseline-only"])
         run("Validate statistics save contract", [sys.executable, "scripts/test-game-statistics-save.py", "--baseline-only"])
+        run("Validate archive-or-disk routing", [sys.executable, "scripts/test-filesystem-archive-routing.py"])
         run("Validate GUI lifecycle contract", [sys.executable, "scripts/test-gui-lifecycle.py", "--baseline-only"])
         run("Validate GUI message construction and unwind contracts", [sys.executable, "scripts/test-gui-message-constructor.py", "--no-mutations"])
         run("Validate GUI message Run baseline", [sys.executable, "scripts/test-gui-message-run.py", "--no-mutations", "--out", "build/host-tests/gui-message-run-ci"])

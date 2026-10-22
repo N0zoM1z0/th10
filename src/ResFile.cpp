@@ -1,17 +1,8 @@
 #include "ResFile.hpp"
+#include "ArchiveOrDiskPath.hpp"
 
 #include <stdlib.h>
 #include <string.h>
-
-// Physical target-call view for the reviewed archive-or-disk helpers at
-// 0x00435800 and 0x004358E0. TH10 passes the path pointer in ECX; the data
-// helper additionally consumes one stack buffer argument. The descriptive
-// type does not claim an original source class or identifier.
-struct ArchiveOrDiskPathView
-{
-    BYTE *Read(BYTE *optionalBuffer);
-    DWORD GetSize();
-};
 
 CMemoryPbgFile::CMemoryPbgFile()
 {

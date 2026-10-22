@@ -1,11 +1,10 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Five
-Chain allocator controls fail the complete74-byte extent: four remain69 and
-Og disabled grows161. No source or exact credit changes. The four optimized
-models retain four complete Chain guards838/all58; Og disabled rejects all4.
-Fresh109-group CI passes with369 frozen inputs unchanged. See
-[allocation controls](evidence/chain-allocation-controls/README.md).
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Three
+FileSystem helpers now have maintained source, adding616 owned source bytes.
+FileSystem source presence is complete13/13. No new exact credit: authored
+exact401/73225, overall1242/139735. Fresh110-group CI passes with371 frozen
+inputs unchanged. See [archive routing](evidence/filesystem-archive-routing/README.md).
 
 ## Resume safely
 
@@ -36,10 +35,50 @@ scripts/repo-python scripts/report-reconstruction-status.py
 ## Current source and exact progress
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
-273579 owned bytes;1094 source mappings. Authored source610/247329 bytes,
-209 source-present/nonexact,124 source-absent. Authored exact **401/73225 bytes**;
+273579 owned bytes;1097 source mappings. Authored source613/247945 bytes,
+212 source-present/nonexact,121 source-absent. Authored exact **401/73225 bytes**;
 overall exact1242/139735 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
+
+## Latest FileSystem source checkpoint
+
+Target4356F0/212,435800/214,4358E0/190 now map to ArchiveOrDiskPathView
+FindArchive/Read/GetSize. The physical path-call declaration moves from
+ResFile.cpp to a shared header; PbgArchive gains a nonvirtual read-only filename
+accessor. Existing fields, virtuals and archive globals are retained. These are
+descriptive boundary views, not original class/TU, object lifetime or data owners.
+
+Lookup replaces the first slash and suffix with `.dat`, or compares a slash-free
+path unchanged, then case-sensitively scans16-byte active archive rows. Read/size
+use the first-slash suffix or original path. Matching archive failures do not
+fall back to disk. The optional buffer is forwarded only to archives. Disk Open
+returns are ignored; size/read and real CPbgFile destruction still run. Mode0
+is the existing `r` pointer. Current source preserves these target observations.
+
+Fresh local read-only/noanalysis Ghidra reviews all3 extents and attests412289
+mapped bytes unchanged before/after rollback. Ghidra lacks a436400 caller record;
+use raw46-byte context and its independent exact normal-COFF proof, not an
+invented Ghidra boundary. No private metadata edits are saved.
+
+Two actual four-TU builds succeed, first allGL then with the already exact
+normal-COFF ResFile caller. New helper extents220/236/242 remain nonexact versus
+212/214/190; positional field guesses are not semantic bindings. Three selected
+canonical units cold-replay113/all3: memory Open46, archive constructor16 and
+entry size51. An additional same-image normal caller passes46/all2 fields.
+No broad replay of unchanged consumers or new exact unit is claimed.
+
+Actual source passes112 ASan/UBSan assertions and8 compiled functional controls;
+dependencies are explicit host seams, without native class/lifetime/Windows or
+engine-runtime proof. Existing statistics-save229 scenarios/128 masks pass.
+All110 CI groups pass with371 source/test/config inputs unchanged. Current108
+native inputs are pinned. Older broad107 inventories below are historical;
+do not restore source to satisfy them. The large ten-TU32 source/header and15
+artifact pins freshly remain unchanged; no new large-owner comparison is claimed.
+
+Private recovery: `.analysis/gpt-6.1-sol/filesystem-archive-routing-20261022/RECOVERY.md`.
+Retain its normal-caller carrier, current producers/input pins and compact
+evidence. Clean only identified superseded current outputs; preserve nine
+independent D3D files, canonical carriers and provider/legacy state.
 
 The [insertion proof](evidence/chain-insertion-native/README.md) closes complete
 Calc449AE0..449B62 and Draw449B70..449BF2 owners131 each, densely decoded through
@@ -68,7 +107,7 @@ nonexact; implicit versus explicit outer construction is unknown. AllocElem74
 still emits69 in its reviewed context. The491BE4 physical g_MainCallbackOwner/
 g_Chain alias and production data owner remain open.
 
-## Current validation and recovery
+## Prior scoped checkpoints and recovery
 
 The [ECL layout packet](evidence/ecl-run-layout-controls/README.md) revalidates the
 entire ten-TU enemy-drop-item-counts recipe,32 source/header and15 native pins
@@ -206,16 +245,20 @@ bytes from21 owned paths, retaining compound-bit69 and Og-disabled161 failures.
 The ANM batch separately removed4289158 bytes from22 owned paths. Canonical
 carriers, prior snapshots, nine independent D3D files and provider/legacy remain.
 
-Next rotate to the source-absent FileSystem4356F0/212,435800/214,4358E0/190
-owners (616 bytes total). Fresh canonical source-presence triage confirms124
-absent:118 GameUnassigned,3 FileSystem,2 Player,1 Startup. Read current
-FileSystem.cpp/hpp, PbgArchive.cpp/hpp, PbgFile.cpp/hpp and ResFile.cpp/hpp, then
-re-attest/decompile the target and review calls/failure paths before writing.
-Existing FileSystem.cpp already declares g_PbgArchives[20] and its count; avoid
-duplicate globals. Source-level signatures should be natural; recover private
-ECX through actual caller/LTCG evidence. The historical File.cpp path string
-has no code xref and does not establish original TU ownership. This is the next
-bounded route, not a reduced campaign objective or completion claim.
+The three FileSystem owners above are now source-present. Next investigate their
+native call/lifetime shapes: target Read has one archive-reader call, native
+has two; target GetSize calls434EF0, native directly calls stricmp inside its
+owner, consistent with inlining the entry lookup. Both native wrappers retain
+out-of-line CPbgFile destruction where target inlines cleanup. FindArchive has
+branch/copy/alignment differences. Use target-supported ordinary-source and
+inlining/caller hypotheses, with complete field/EH binding before exact credit;
+keep /GL and do not force registers or returns. The old File.cpp string has
+no code xref and still does not establish original source ownership.
+
+The remaining source-absent queue is121 owners:118 GameUnassigned,2 Player and
+1 Startup. Neither FileSystem source completeness nor its host contracts close
+the broader objective. Continue bounded exact/source recovery and preserve
+all independent phase gates.
 
 Whole Windows i386 product/runtime closure is open: globals, static init,
 resources, libraries, link order and exercised paths still need audit. Semantic

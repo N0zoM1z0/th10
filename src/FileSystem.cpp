@@ -1,5 +1,6 @@
 #include "FileSystem.hpp"
 #include "PbgArchive.hpp"
+#include "ArchiveOrDiskPath.hpp"
 
 #include <windows.h>
 #include <stdlib.h>
@@ -13,6 +14,66 @@ extern PbgArchive g_PbgArchives[20];
 extern int g_PbgArchiveCount;
 // Distinct target storage at 0x00497990; original global name is unknown.
 extern PbgArchive g_MainPbgArchive;
+
+// Target 0x004356F0: the first slash selects an archive basename; a path
+// without a slash is compared unchanged. Archive filenames are case-sensitive.
+PbgArchive *ArchiveOrDiskPathView::FindArchive()
+{
+    const char *path = reinterpret_cast<const char *>(this);
+    const char *entryName = strchr(path, '/');
+    entryName = entryName == NULL ? path : entryName + 1;
+    int slashIndex = static_cast<int>(entryName - path) - 1;
+    char archiveFilename[MAX_PATH];
+
+    strcpy(archiveFilename, path);
+    if (slashIndex >= 0)
+        strcpy(archiveFilename + slashIndex, ".dat");
+
+    for (int index = 0; index < g_PbgArchiveCount; ++index)
+    {
+        if (strcmp(g_PbgArchives[index].GetArchiveFilename(),
+                   archiveFilename) == 0)
+            return &g_PbgArchives[index];
+    }
+    return NULL;
+}
+
+// Target 0x00435800: matching archives own the result even when their read
+// fails. Only a missing archive selects disk; optionalBuffer belongs to the
+// archive lane. The disk Open result is intentionally not used as a guard.
+BYTE *ArchiveOrDiskPathView::Read(BYTE *optionalBuffer)
+{
+    const char *path = reinterpret_cast<const char *>(this);
+    PbgArchive *archive = FindArchive();
+    if (archive != NULL)
+    {
+        const char *entryName = strchr(path, '/');
+        entryName = entryName == NULL ? path : entryName + 1;
+        return archive->ReadDecompressEntry(entryName, optionalBuffer);
+    }
+
+    CPbgFile file;
+    file.Open(path, g_PbgFileOpenModes[0]);
+    DWORD size = file.GetSize();
+    return reinterpret_cast<BYTE *>(file.ReadWholeFile(size));
+}
+
+// Target 0x004358E0 uses the same selection and suffix rules as Read.
+DWORD ArchiveOrDiskPathView::GetSize()
+{
+    const char *path = reinterpret_cast<const char *>(this);
+    PbgArchive *archive = FindArchive();
+    if (archive != NULL)
+    {
+        const char *entryName = strchr(path, '/');
+        entryName = entryName == NULL ? path : entryName + 1;
+        return archive->GetEntryDecompressedSize(entryName);
+    }
+
+    CPbgFile file;
+    file.Open(path, g_PbgFileOpenModes[0]);
+    return file.GetSize();
+}
 
 // Maintained reconstruction source. The namespace/function names are retained
 // after TH10 target behavior recovery; original TU and physical compiler

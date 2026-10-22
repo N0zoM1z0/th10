@@ -54,6 +54,7 @@ class PbgArchive
                                        unsigned char *outBuffer);
     u32 GetEntryDecompressedSize(const char *filename);
     PbgArchiveEntry *FindEntry(const char *filename);
+    const char *GetArchiveFilename() const { return m_Filename; }
     bool ParseHeader(const char *filename);
     PbgArchiveEntry *AllocEntries(void *entryBuffer, i32 count, u32 dataOffset);
     char *CopyFileName(const char *filename);
