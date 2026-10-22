@@ -50,6 +50,23 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
+## Latest large-owner priority and ECL controls
+
+The operator explicitly prioritizes large-function exactness; do not rotate to
+small-function closures. Starting2dd9776, four actual ECL-only/reuse9 probes
+finish0. Three local aggregate forms emit7036/7036/7056 versus7020 and fail the
+complete extent check. Unsigned FORMAT indexing retains the full27-difference
+inventory. All four retain nine whole ECL guards1137/all18; no source adopted,
+no exact gains. Current baseline independently reproduces7020/6993/all189 and
+the complete171-byte callee. See [ECL aggregate evidence](evidence/ecl-aggregate-lifetimes/README.md).
+Fresh target/toolchain execute/tracking and read-only Ghidra attestations pass;
+focused checks only, no full CI. All108 source, canonical native/recipe and9 D3D
+pins remain unchanged. Cleanup removes48 files/3198000 bytes; retain7056 pair
+carrier and compact sources/results. Private recovery:
+`.analysis/gpt-6-astra-medium/ecl-aggregate-lifetimes-20261022/RECOVERY.md`.
+Next examine genuine caller/callee optimizer visibility for the large owners;
+do not repeat these four forms or infer original types from negative controls.
+
 ## Current source and exact progress
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/

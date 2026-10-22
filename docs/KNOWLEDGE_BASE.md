@@ -5228,3 +5228,14 @@ selectors/108 ordered groups. No source, header, recipe, exact or runtime claim
 is adopted. Authored409/74716, overall1250/141226 remain. Product/runtime and
 semantic/port gates stay open.
 [Source controls, full scope and limits](evidence/enemy-laser-source-controls/README.md).
+
+## ECL aggregate lifetime controls (2026-10-22)
+
+Current ten-TU Run7020/all189 retains27 ordinary differences. Private existing
+three-member vectors in length-square or point-angle each produce7036; an
+ordinary two-float pair in both produces7056. Their complete PDB extents reject
+comparison. An unsigned FORMAT counter retains the entire27-difference inventory.
+Each ECL-only/reuse9 experiment preserves nine full guards1137/all18. These
+are compiler observations, not recovered original types or a general aggregate
+exclusion. No maintained source or exact credit changes.
+[Scope, patches and evidence](evidence/ecl-aggregate-lifetimes/README.md).

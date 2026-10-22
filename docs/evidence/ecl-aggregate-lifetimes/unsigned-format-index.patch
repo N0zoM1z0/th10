@@ -1,0 +1,11 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -1168,7 +1168,7 @@
+                 char *scratch = static_cast<char *>(malloc(0x400));
+                 scratch[0] = '\0';
+ 
+-                int argumentIndex = 0;
++                unsigned int argumentIndex = 0;
+                 while (cursor != NULL) {
+                     const char *percent = strchr(cursor, '%');
+                     if (percent == NULL)

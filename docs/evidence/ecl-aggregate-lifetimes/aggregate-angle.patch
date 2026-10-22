@@ -1,0 +1,17 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -1154,10 +1154,11 @@
+ 
+             case ECL_VM_POINT_ANGLE:
+             {
+-                const float dx = ReadFloat(2) - ReadFloat(0);
+-                const float dy = ReadFloat(3) - ReadFloat(1);
++                EclVmPolarVectorView delta;
++                delta.x = ReadFloat(2) - ReadFloat(0);
++                delta.y = ReadFloat(3) - ReadFloat(1);
+                 *ResolveFloat(0) =
+-                    static_cast<float>(atan2(dy, dx));
++                    static_cast<float>(atan2(delta.y, delta.x));
+                 break;
+             }
+ 

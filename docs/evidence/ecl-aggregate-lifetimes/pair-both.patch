@@ -1,0 +1,40 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -12,6 +12,8 @@
+ // 0x0044DF70-0x004506D0 corridor. Its declaration lets this file retain the
+ // complete VM dispatch while its implementation remains a separate unit.
+ extern float __stdcall EnemyWrapAngle(float angle);
++
++struct EclVmMathPair { float x; float y; };
+ 
+ struct EclVmPolarVectorView
+ {
+@@ -1142,9 +1144,10 @@
+ 
+             case ECL_VM_LENGTH_SQUARED:
+             {
+-                const float x = ReadFloat(1);
+-                const float y = ReadFloat(2);
+-                *ResolveFloat(0) = x * x + y * y;
++                EclVmMathPair vector;
++                vector.x = ReadFloat(1);
++                vector.y = ReadFloat(2);
++                *ResolveFloat(0) = vector.x * vector.x + vector.y * vector.y;
+                 break;
+             }
+ 
+@@ -1154,10 +1157,11 @@
+ 
+             case ECL_VM_POINT_ANGLE:
+             {
+-                const float dx = ReadFloat(2) - ReadFloat(0);
+-                const float dy = ReadFloat(3) - ReadFloat(1);
++                EclVmMathPair delta;
++                delta.x = ReadFloat(2) - ReadFloat(0);
++                delta.y = ReadFloat(3) - ReadFloat(1);
+                 *ResolveFloat(0) =
+-                    static_cast<float>(atan2(dy, dx));
++                    static_cast<float>(atan2(delta.y, delta.x));
+                 break;
+             }
+ 
