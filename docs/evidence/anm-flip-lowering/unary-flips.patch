@@ -1,0 +1,14 @@
+--- before selected ANM cases
++++ after selected ANM cases
+@@ -1,9 +1,9 @@
+         case ANM_OP_FLIP_X:
+             vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;
+-            vm->scaleX *= -1.0f;
++            vm->scaleX = -vm->scaleX;
+             break;
+         case ANM_OP_FLIP_Y:
+             vm->flags35C = (vm->flags35C ^ (1u << 10)) | 8u;
+-            vm->scaleY *= -1.0f;
++            vm->scaleY = -vm->scaleY;
+             break;
+ 

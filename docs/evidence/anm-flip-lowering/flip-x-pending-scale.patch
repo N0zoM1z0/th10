@@ -1,0 +1,11 @@
+--- before selected ANM cases
++++ after selected ANM cases
+@@ -1,4 +1,7 @@
+         case ANM_OP_FLIP_X:
++        {
++            const float flippedScale = vm->scaleX * -1.0f;
+             vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;
+-            vm->scaleX *= -1.0f;
++            vm->scaleX = flippedScale;
+             break;
++        }

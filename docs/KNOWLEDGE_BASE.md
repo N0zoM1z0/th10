@@ -5248,3 +5248,13 @@ complete171-byte float callee and nine full guards1137/all18. Replayed SHA-256
 is830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472.
 This does not establish original source-file boundaries or universal neutrality.
 [Exact transformations, evidence and scope](evidence/ecl-tu-visibility/README.md).
+
+## ANM flip multiplication and flags (2026-10-22)
+
+Target FlipX/FlipY XOR direction bits in flags35C separately from x87 FMUL of
+scale through470B60 (000080BF, float-1.0). The XOR is not float sign storage.
+Unary-minus source emits FCHS and9948 parent bytes, rejected versus9964. Raw
+rotation flag OR4 and a pending multiplied scale result are whole-three-body
+raw-neutral; scale-first loses eight aligned positions. All four retain36
+whole guards4618/all121 and eight bounded child paths. No source or exact credit.
+[Full compiler observations and limits](evidence/anm-flip-lowering/README.md).

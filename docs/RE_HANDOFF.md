@@ -1,10 +1,10 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-large-owner experiments split ECL stack services, HostRun and ReadIntValue into
-separate GL inputs. All three retain the complete7020/6993 Run body; no source
-adopted or exact gains. Authored409/74716, overall1252/141647 remain unchanged.
-Source613/247945, nonexact204, absent121. Archive15/15 and FileSystem11/13 exact.
+ANM flip/flag-lifetime controls are unadopted. Baseline remains9964 bytes,
+7541/7995 aligned diagnostic positions; ECL7020/6993 and Enemy14352 remain open.
+Authored409/74716, overall1252/141647 unchanged. Source613/247945, nonexact204,
+absent121. See [ANM flip evidence](evidence/anm-flip-lowering/README.md).
 See [ECL translation-unit controls](evidence/ecl-tu-visibility/README.md).
 See [factory ABI controls](evidence/enemy-laser-calling-conventions/README.md).
 See [laser construction proof](evidence/enemy-laser-constructors/README.md).
@@ -49,6 +49,25 @@ scripts/repo-python scripts/verify-toolchain.py --execute
 scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
+
+## Latest ANM flip and flag-lifetime checkpoint
+
+Starting2c4f17c, four actual one-ANM/reuse9 GL/GS controls finish0. Unary-minus
+scales emit9948/7307of8004; raw rotation flag OR4 is whole-three-body raw-neutral;
+FlipX scale-first remains9964 but falls7533/7995; pending multiplied result is
+whole-three-body raw-neutral. Baseline9964/7541of7995/90of92/gap2 retained.
+Target raw inspection confirms FMUL through470B60=-1.0 for scale, separate from
+XOR of flags35C. Unary FCHS is rejected; never confuse flag XOR with float sign.
+All four pass35 guards4424/all118, eight child routes and separate194/all3 caller:
+36 complete guards4618/all121 each. ECL7020/6993/all189/62/callee171 remains.
+Fresh target/toolchain/Ghidra pass. No source/profile/recipe adoption, no full CI.
+All108/32 source pins, canonical artifacts and9 D3D files unchanged. Cleanup48
+files/3197978 bytes; retain unary9948 and compact evidence. Initial absolute
+PDB-source selector preparation error corrected before four passing comparisons.
+[Evidence](evidence/anm-flip-lowering/README.md). Private recovery:
+`.analysis/gpt-6-astra-medium/anm-sign-lowering-20261022/RECOVERY.md`.
+Next investigate actual operand-service/caller register context, preserving FMUL
+and the complete caller guard. Do not repeat these forms or rotate to small owners.
 
 ## Latest ECL translation-unit checkpoint
 

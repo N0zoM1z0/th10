@@ -1,0 +1,18 @@
+--- before selected ANM cases
++++ after selected ANM cases
+@@ -2,13 +2,13 @@
+             vm->rotation.x = GET_FLOAT_VAR(0);
+             vm->rotation.y = GET_FLOAT_VAR(1);
+             vm->rotation.z = GET_FLOAT_VAR(2);
+-            vm->updateRotation = 1;
++            vm->flags35C |= 4u;
+             break;
+         case ANM_OP_ANGULAR_VELOCITY:
+             vm->angularVelocity.x = GET_FLOAT_VAR(0);
+             vm->angularVelocity.y = GET_FLOAT_VAR(1);
+             vm->angularVelocity.z = GET_FLOAT_VAR(2);
+-            vm->updateRotation = 1;
++            vm->flags35C |= 4u;
+             break;
+         case ANM_OP_SCALE_GROWTH:
+             vm->scaleGrowth.x = GET_FLOAT_VAR(0);
