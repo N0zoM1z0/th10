@@ -1,10 +1,11 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. This
-batch freshly diagnoses ECL Run and sixteen source/profile/order/entry controls:
-all retain **7020/6993 bytes,27 ordinary differences**. No new exact credit or
-game-source changes. The maintained diagnostic now routes private ECL inputs
-through explicit `--ecl-source`, with unchanged byte/field/callee/data checks.
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Four
+fresh ANM child/FlipX controls retain9964-byte totals but are neutral or regress;
+none is adopted. Every image passes35 complete guards4424/all118 and eight
+static child paths. ECL retains **7020/6993 bytes,27 ordinary differences**.
+No new exact credit or game-source changes. See the
+[child/flag controls](evidence/anm-child-flag-controls/README.md).
 
 ## Resume safely
 
@@ -136,11 +137,39 @@ indirect tables16. Ordinary tracking/CI does not waive this separate gate.
 |Enemy40E770 /14416|14352 bytes; frame2C4;181 selectors/108 groups;42 target-sized groups; aggregate gap566|Laser ABI, shared tails and packet/register/stack lifetime|
 
 The current ECL scope/storage/order/profile family is a measured plateau, not
-proof that Run is exhausted. Rotate the next bounded experiment to ANM child
-case91 or common-tail2, using the retained target-bound32/15 inputs and strict
-local destinations. Keep ECL27 open; do not repeat these16 neutral forms or
+proof that Run is exhausted. The subsequent child/flag controls below also
+reach a bounded plateau; rotate to ANM groups49/53/54 or common-tail2, using
+the retained target-bound32/15 inputs and strict local destinations. Keep
+ECL27 open; do not repeat these16 neutral forms or
 substitute the old two-TU26 result. Original data owners, source types, names,
 physical TU and production flags remain unknown despite close output.
+
+The subsequent ANM child/flag batch freshly revalidates all32/15 baseline pins,
+107 native inputs and369 code/test/config inputs. Local read-only Ghidra
+checks all412289 mapped bytes with rollback. Child91 default construction then
+assignment creates an extra copy and grows47->55. Explicit script/layer locals
+are whole-ANM raw-neutral. Two FlipX bitfield orders are identical across all
+three large bodies to each other and grow FlipX61 versus target52/current53.
+Their diagnostic totals regress to7309/8001 and7338/8000 respectively; baseline
+remains7541/7995. All four pass35 whole guards4424/all118 and Run189/62 with the
+exact171-byte callee; no full native cold or separate ANM host campaign is claimed.
+Five normal-COFF canonical contracts supply only additional linked guards here.
+One stale cancel-record mapping label in the old diagnostic template is refreshed
+from current canonical metadata; extent and fields are unchanged.
+
+Private recovery: `.analysis/gpt-6.1-sol/anm-child-tail-20261022/RECOVERY.md`.
+Retain the canonical baseline, compact transformations, producer and one actual
+child91-assignment failure; remove duplicate neutral/regressing carriers after
+recording their facts. All109 CI groups pass with369 frozen code/test/config
+inputs unchanged before/after. Cleanup removes6427081 logical bytes from33
+owned paths; target/toolchain, tracking, progress and whitespace checks pass.
+Nine independent D3D files remain untouched. Next groups49/53 use target
+EDX/EAX/ECX argument MOV/PUSH carriers versus native ECX/EDX/EAX;54 uses the
+first two corresponding registers (6/6/4 ordinary differences, equal sizes).
+Earlier named float result locals were neutral. Investigate a distinct lifetime
+or common-tail hypothesis without repeating those locals or these four forms.
+This is a bounded plateau, not
+an exhausted function or a blocker. Current authored401/73225 remains unchanged.
 
 Whole Windows i386 product/runtime closure is open: globals, static init,
 resources, libraries, link order and exercised paths still need audit. Semantic

@@ -4866,3 +4866,18 @@ differences; omitted private selection is rejected. Three valid/eight invalid
 source routes and16 table/selector controls pass. Historical adapters are proven
 to change only two source paths and ROOT discovery; new trials use the maintained
 tool. No game source or exact credit changes: authored401/73225, overall1242/139735.
+
+## ANM child and FlipX register constraints (2026-10-22)
+
+Fresh target review distinguishes child91's late EAX file load from native's
+early EDX load, and FlipX's target EAX accumulator XOR from native's longer EDX
+encoding. Four actual one-object controls preserve the current ten-TU graph.
+Default child construction/assignment adds a return-value copy and grows its
+group47->55; explicit script/layer locals reproduce the complete baseline ANM
+raw. Two FlipX bitfield orders produce identical three-large-owner bodies to
+each other and grow FlipX52/53->61. None is adopted. Every image passes35
+complete guards4424/all118 and all8 static child paths; complete ECL retains
+7020/6993,189/62, the exact171-byte callee and the same replayed body hash.
+Equal9,964-byte totals still hide local extent and scheduling differences.
+These results constrain the tested context, not original spelling, types,
+ownership or flags. See [child/flag controls](evidence/anm-child-flag-controls/README.md).

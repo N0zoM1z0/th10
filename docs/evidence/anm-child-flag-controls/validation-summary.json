@@ -1,0 +1,109 @@
+{
+  "scope": "Four private native controls plus unchanged-source repository checks; no canonical/game-source credit.",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "focused_native": {
+    "models": 4,
+    "per_image_complete_guards": 35,
+    "per_image_guard_bytes": 4424,
+    "per_image_semantic_fields": 118,
+    "per_image_static_child_paths": 8,
+    "ecl_run_bytes": 7020,
+    "ecl_run_ordinary_differences": 27,
+    "ecl_link_fields": 189,
+    "ecl_local_destinations": 62,
+    "complete_callee_exact_bytes": 171,
+    "full_native_cold": false
+  },
+  "checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-target.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --execute",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py --require-target",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/report-reconstruction-status.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/ci.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "ci": {
+    "groups": 109,
+    "exit_code": 0,
+    "log_sha256": "878733941a6dc4e104f61df935ee4286c7fd0a6600ae333651793addd757c948",
+    "frozen_code_test_config_inputs": 369,
+    "before_after_equal": true
+  },
+  "maintained_native_inputs_unchanged": 107,
+  "baseline_source_header_pins_unchanged": 32,
+  "baseline_artifact_pins_unchanged": 15,
+  "unrelated_D3D_files_preserved": 9,
+  "cleanup": {
+    "removed_paths": [
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer",
+      "build/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer-cases.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer-compile.log",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer-context.toml",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer-ecl.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer-execution.log",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer-guards.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer-guards.toml",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-script-layer-routing.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield",
+      "build/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-cases.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-compile.log",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-context.toml",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-ecl.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-execution.log",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-guards.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-guards.toml",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-routing.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale",
+      "build/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale-cases.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale-compile.log",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale-context.toml",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale-ecl.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale-execution.log",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale-guards.json",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale-guards.toml",
+      ".analysis/gpt-6.1-sol/anm-child-tail-20261022/flip-x-bitfield-after-scale-routing.json"
+    ],
+    "removed_logical_file_bytes": 6427081,
+    "scope": "Only this producer-owned inactive campaign output; canonical carrier, retained failure, D3D and provider/legacy untouched."
+  },
+  "authored_exact_functions": 401,
+  "authored_exact_bytes": 73225,
+  "overall_exact_functions": 1242,
+  "overall_exact_bytes": 139735
+}
