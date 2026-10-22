@@ -1,17 +1,18 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-Enemy middle/zero sharing controls are unadopted. Fresh/existing index locals
-produce four raw-identical complete bodies: Enemy14380, gap296, but lose the
-preceding candidate's target index3 back-edge and middle fallthrough. Shared
-fVar21 store and difficulty-only scope controls produce rank-five241/169 and
-worse parent gaps372/384. All keep the result tail in aim; all four carriers
-were inventoried and removed. Retain the preceding scoped-rank/shared-aim
-candidate14396/14416,3331/11138/gap298 for further result-lifetime work, not the
-new lower-gap296 control. Maintained Enemy14336/14416, gap328; ANM9964,
-7541/7995,90/92/gap2; ECL7020/6993 remain unchanged. Authored409/74716,
-overall1252/141647, source613/247945, nonexact204 and absent121 unchanged.
-No new exact credit.
+ECL loop-snapshot controls are unadopted: for-update, condition assignment and
+top-test variants unify the condition/body instruction observation and produce
+7004-byte Run, rejected against7020. They move the entry pointer into EDI and
+remove the target's separate body reload. Merely naming the condition pointer
+while keeping the body read preserves all three complete large raw bodies and
+all27 ECL differences. All four new carriers were inventoried and removed.
+Maintained ECL7020/6993, Enemy14336/14416/gap328 and ANM9964/7541-of-7995 remain
+unchanged. Retain the earlier Enemy scoped-rank/shared-aim candidate14396,
+3331/11138/gap298; newer read-sharing controls did not improve its branch graph.
+Authored409/74716, overall1252/141647, source613/247945, nonexact204 and absent121
+remain unchanged. No new exact credit.
+See [ECL loop snapshots](evidence/ecl-loop-cursor-lifetime/README.md).
 See [Enemy read-sharing controls](evidence/enemy-rank-read-sharing/README.md).
 See [Enemy selection graph](evidence/enemy-selection-graph/README.md).
 See [Enemy tail placement](evidence/enemy-tail-placement/README.md).

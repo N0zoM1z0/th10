@@ -5376,3 +5376,13 @@ store and scoping only difficulty each expand rank-five to241 versus169.
 These specific forms do not solve tail ownership; source goto sharing is not
 native block placement evidence. See
 [read-sharing controls](evidence/enemy-rank-read-sharing/README.md).
+
+## ECL condition/body snapshot distinction (2026-10-22)
+
+Target Run reads instruction into EAX for entry time comparison, then separately
+loads EDI at body+40. Three natural unified-snapshot loop forms remove that body
+reload and alter early-return/layout, emitting7004 instead of7020 bytes; all are
+rejected as complete owners despite nine exact helper guards. Keeping both reads
+but naming the condition pointer preserves all three large raw bodies and all27
+Run differences. The latch register mismatch is therefore not repaired by these
+loop-variable forms. See [loop-snapshot evidence](evidence/ecl-loop-cursor-lifetime/README.md).

@@ -1,0 +1,14 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -703,8 +703,10 @@
+     if (*instructionCursor == NULL)
+         return -1;
+ 
+-    while (static_cast<float>((*instructionCursor)->time) <= currentTime) {
++    for (;;) {
+         EclVmInstruction *current = *instructionCursor;
++        if (!(static_cast<float>(current->time) <= currentTime))
++            break;
+         int instructionOffset;
+         EclVmInstruction *advanceInstruction;
+ 
