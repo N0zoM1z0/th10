@@ -1,0 +1,50 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -711,6 +711,7 @@
+         if ((difficultyMask & current->difficultyMask) != 0) {
+             int floatResult;
+             int logicalResult;
++            EclVmScalar geometricValue;
+             switch (current->opcode) {
+             case ECL_VM_NOP:
+                 break;
+@@ -1105,11 +1106,10 @@
+             {
+                 // 0x0044F851 executes integer NEG on the raw float dword and
+                 // then pushes that dword with type 'f'.  This is not x87 FCHS.
+-                EclVmScalar value;
+-                stack.Pop('f', sizeof(value), &value);
++                stack.Pop('f', sizeof(geometricValue.bits), &geometricValue.bits);
+                 // Raw DWORD negation is modulo32, including negative-zero bits.
+-                value.bits = 0u - value.bits;
+-                stack.Push('f', sizeof(value), &value);
++                geometricValue.bits = 0u - geometricValue.bits;
++                stack.Push('f', sizeof(geometricValue.bits), &geometricValue.bits);
+                 break;
+             }
+ 
+@@ -1142,9 +1142,9 @@
+ 
+             case ECL_VM_LENGTH_SQUARED:
+             {
+-                const float x = ReadFloat(1);
++                geometricValue.real = ReadFloat(1);
+                 const float y = ReadFloat(2);
+-                *ResolveFloat(0) = x * x + y * y;
++                *ResolveFloat(0) = geometricValue.real * geometricValue.real + y * y;
+                 break;
+             }
+ 
+@@ -1154,10 +1154,10 @@
+ 
+             case ECL_VM_POINT_ANGLE:
+             {
+-                const float dx = ReadFloat(2) - ReadFloat(0);
++                geometricValue.real = ReadFloat(2) - ReadFloat(0);
+                 const float dy = ReadFloat(3) - ReadFloat(1);
+                 *ResolveFloat(0) =
+-                    static_cast<float>(atan2(dy, dx));
++                    static_cast<float>(atan2(dy, geometricValue.real));
+                 break;
+             }
+ 

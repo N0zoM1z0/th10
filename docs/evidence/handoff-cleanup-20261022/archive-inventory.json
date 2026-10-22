@@ -1,0 +1,151 @@
+{
+  "operation": "lossless archive of historical expanded reports; no source or unique evidence discarded",
+  "archive": ".analysis/handoff-cleanup-20261022/historical-gui-reports.tar.gz",
+  "archive_sha256": "c8c32137dbcac95ca926cd284e8b8dcbd04124de6da872c846e922dd56e86def",
+  "archive_bytes": 6501731,
+  "expanded_bytes": 130873625,
+  "file_count": 28,
+  "members": [
+    {
+      "path": ".analysis/gui-direct-creation/independent-provenance-ybt94uj7/prior/fresh/evidence.json",
+      "bytes": 2894681,
+      "sha256": "7495e25e18e1b28fcc8e03616121d2af358d52c713a0c24687b3c87d664adad9"
+    },
+    {
+      "path": ".analysis/gui-direct-creation/independent-provenance-ybt94uj7/review/fresh/evidence.json",
+      "bytes": 2893313,
+      "sha256": "7946828836073228389c3f187c8e5a8f6ef77e67e72574c878ad9c4d3d447123"
+    },
+    {
+      "path": ".analysis/gui-direct-creation/independent-provenance-ybt94uj7/review/fresh-provenance-validation.json",
+      "bytes": 296042,
+      "sha256": "ce23f00132e3880f3fbe99112b6e1412650033fe8951880a6f96c0559188b7e5"
+    },
+    {
+      "path": ".analysis/gui-direct-creation/independent-provenance-ybt94uj7/review/operand-boundaries.json",
+      "bytes": 715299,
+      "sha256": "e73b5317dace6707dddfaa15188940565410f201225cd28412c0212afe04f005"
+    },
+    {
+      "path": ".analysis/gui-direct-creation/independent-provenance-ybt94uj7/review/shifted-contribution-review.json",
+      "bytes": 3036794,
+      "sha256": "4b7093822531b8f3ceed1855c7c0d05259cfd2f9b90d359579963c951e808735"
+    },
+    {
+      "path": ".analysis/gui-message-run-v2/checks/pie-sides-five-probes.json",
+      "bytes": 28454357,
+      "sha256": "830173f2b9f2d1e0f3776fb8c917387aca95d8e191b45d5f8f6c72704571c803"
+    },
+    {
+      "path": ".analysis/gui-opcode1-character-arms/first_pass_01/target-comparison-private.json",
+      "bytes": 1098080,
+      "sha256": "770e7a7b5b48c039822c7847e0e5e75444ac4e9504eb92ca36c32d0913c9a597"
+    },
+    {
+      "path": ".analysis/gui-opcode1-character-arms/independent-provenance-yvfel7hf/prior/fresh/evidence.json",
+      "bytes": 2893313,
+      "sha256": "7946828836073228389c3f187c8e5a8f6ef77e67e72574c878ad9c4d3d447123"
+    },
+    {
+      "path": ".analysis/gui-opcode1-character-arms/independent-provenance-yvfel7hf/review/fresh/evidence.json",
+      "bytes": 2893338,
+      "sha256": "3f6ef4ecea1d472ebc9c4bca852efa5465970ab4d616a13e76f700b1982f56cf"
+    },
+    {
+      "path": ".analysis/gui-opcode1-character-arms/independent-provenance-yvfel7hf/review/fresh-provenance-validation.json",
+      "bytes": 296363,
+      "sha256": "8270edb0e6dd3a549f2f5fe2b96407106fa4058212ec4187d208df627d0fc6cc"
+    },
+    {
+      "path": ".analysis/gui-opcode1-character-arms/independent-provenance-yvfel7hf/review/operand-boundaries.json",
+      "bytes": 714385,
+      "sha256": "de876ec37af7d6ec3474e784464eae0bfa45cc343424ffda4659c8b43c7d3cca"
+    },
+    {
+      "path": ".analysis/gui-opcode1-character-arms/independent-provenance-yvfel7hf/review/shifted-contribution-review.json",
+      "bytes": 3038418,
+      "sha256": "fa558b65966fab790586e7e8ce5fc998eccc2b087deb7f4c7a608266714c85e0"
+    },
+    {
+      "path": ".analysis/gui-opcode12-receiver-chain/independent-provenance-0bqlb1pz/prior/fresh/evidence.json",
+      "bytes": 2893313,
+      "sha256": "7946828836073228389c3f187c8e5a8f6ef77e67e72574c878ad9c4d3d447123"
+    },
+    {
+      "path": ".analysis/gui-opcode12-receiver-chain/independent-provenance-0bqlb1pz/review/fresh/evidence.json",
+      "bytes": 2892630,
+      "sha256": "a4e128f767db9ceac91b5e24461046766d9e98b1d50e39f71ea5808fe78d87a7"
+    },
+    {
+      "path": ".analysis/gui-opcode12-receiver-chain/independent-provenance-0bqlb1pz/review/fresh-provenance-validation.json",
+      "bytes": 296046,
+      "sha256": "9c0288f44e790fdd992d1165b0959bca4ccdfe0096416baa6d13b68e1042bfe4"
+    },
+    {
+      "path": ".analysis/gui-opcode12-receiver-chain/independent-provenance-0bqlb1pz/review/operand-boundaries.json",
+      "bytes": 713267,
+      "sha256": "70dbb2d61f1515f25c4a61ceed369ed0fcdcfdf5299273aba2d88e9319f18c76"
+    },
+    {
+      "path": ".analysis/gui-opcode12-receiver-chain/independent-provenance-0bqlb1pz/review/shifted-contribution-review.json",
+      "bytes": 3037742,
+      "sha256": "8d1c6700f055e935f6d1072ad08dc4033fb92ec7449ede9489da3ac541de8fbd"
+    },
+    {
+      "path": ".analysis/gui-opcode18-stage-event/independent-provenance-eprcw85y/prior/fresh/evidence.json",
+      "bytes": 2893313,
+      "sha256": "7946828836073228389c3f187c8e5a8f6ef77e67e72574c878ad9c4d3d447123"
+    },
+    {
+      "path": ".analysis/gui-opcode18-stage-event/independent-provenance-eprcw85y/review/fresh/evidence.json",
+      "bytes": 2892973,
+      "sha256": "1c2a378a0d5cfc123d5f8c5aad116b680d3f4b3c27853aacac7d1945d3832a53"
+    },
+    {
+      "path": ".analysis/gui-opcode18-stage-event/independent-provenance-eprcw85y/review/fresh-provenance-validation.json",
+      "bytes": 296357,
+      "sha256": "4a90bb14552f2a430a0eeb375fd847d22aa085bd837a7b737c3fbd5ba9507aaa"
+    },
+    {
+      "path": ".analysis/gui-opcode18-stage-event/independent-provenance-eprcw85y/review/operand-boundaries.json",
+      "bytes": 714385,
+      "sha256": "de876ec37af7d6ec3474e784464eae0bfa45cc343424ffda4659c8b43c7d3cca"
+    },
+    {
+      "path": ".analysis/gui-opcode18-stage-event/independent-provenance-eprcw85y/review/shifted-contribution-review.json",
+      "bytes": 3038418,
+      "sha256": "fa558b65966fab790586e7e8ce5fc998eccc2b087deb7f4c7a608266714c85e0"
+    },
+    {
+      "path": ".analysis/gui-opcode20-stage-complete/independent-provenance-08541gev/prior/fresh/evidence.json",
+      "bytes": 2892973,
+      "sha256": "1c2a378a0d5cfc123d5f8c5aad116b680d3f4b3c27853aacac7d1945d3832a53"
+    },
+    {
+      "path": ".analysis/gui-opcode20-stage-complete/independent-provenance-08541gev/review/fresh/evidence.json",
+      "bytes": 2892919,
+      "sha256": "efa40c08ea81d66eef0b7e7383aab5f99caaaa670815298d5da1229cd134fefb"
+    },
+    {
+      "path": ".analysis/gui-opcode20-stage-complete/independent-provenance-08541gev/review/operand-boundaries.json",
+      "bytes": 710744,
+      "sha256": "27fb71dd59fc9b91984b25749aab9bacd8d7b5a4e1276699b0e6138863b7973a"
+    },
+    {
+      "path": ".analysis/gui-opcode20-stage-complete/independent-provenance-08541gev/review/shifted-contribution-review.json",
+      "bytes": 3041982,
+      "sha256": "982256e98f5b86da2fbbc809ae2d1867e4acf7e2d0b01de9729a37618b566657"
+    },
+    {
+      "path": ".analysis/gui-opcode20-stage-complete/semantic_review_01/private-diagnostics.json",
+      "bytes": 1401872,
+      "sha256": "de16cb9a4d913255dc4293b8eaaf1312cdebed23e8b183f2c6ba77ec37121b77"
+    },
+    {
+      "path": ".analysis/gpt-web/th10-resume-20261016/gui-asan-host-diagnostic.json",
+      "bytes": 51040308,
+      "sha256": "7f052c4d9ceadaa2c43fac27f2e5d9174f6e1608ddec29b87aca892d2fb5e9aa"
+    }
+  ],
+  "restore_command": "tar -xzf .analysis/handoff-cleanup-20261022/historical-gui-reports.tar.gz -C ."
+}

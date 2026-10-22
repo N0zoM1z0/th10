@@ -1,16 +1,46 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Five
-additional ECL local-storage controls have actual source-shape assertions.
-LENGTH const references retain all27 baseline differences and add one at+97;
-POINT_ANGLE references alone or combined fail the target call binding at18BC.
-Math-only shared scalar locals grow Run to7044 bytes. Integer PopInt union
-storage preserves all three complete large raw bodies and the7020/6993 baseline.
-No source is adopted; all five new native carriers are removed after hash
-verification. The preceding historical source-route corrections still apply.
-Maintained Enemy14336/14416/gap328 and ANM9964/7541-of-7995 are unchanged; retain
-the earlier Enemy14396 candidate. Authored409/74716, overall1252/141647,
-source613/247945, nonexact204 and absent121 remain unchanged. No new exact credit.
+Updated 2026-10-22. The operator requested cleanup and handoff and cleared the
+active goal. Reconstruction is incomplete; no experiment remains running and
+no further work should start automatically from the old goal.
+
+## Current checkpoint
+
+| Owner / metric | Maintained state |
+| --- | --- |
+| ECL Run | 7020 / 7020 bytes; 6993 matching, 27 ordinary differences |
+| ANM ExecuteScript | 9964 / 9964 bytes; not exact; case-aligned 7541 / 7995 |
+| Enemy dispatcher | 14336 / 14416 bytes; not exact; case gap 328 |
+| Authored source | 613 functions / 247945 bytes |
+| Authored exact | 409 functions / 74716 bytes |
+| Source-present nonexact / source absent | 204 / 121 functions |
+| Whole Windows product / runtime | Open; semantic reconstruction and port not started |
+
+Latest six ECL controls test shared geometric lifetimes against raw-negation
+storage. Primitive unsigned storage alone is baseline-neutral; shared-float
+controls remain at 31 differences regardless of primitive/member-address/stack
+pointer spelling. A shared union moves the repaired math slots but leaves 30
+differences. No maintained game source or exact count changes. All six carrier
+sets were removed after hash verification. See [latest ECL evidence](evidence/ecl-neg-storage-interaction/README.md).
+
+## Handoff essentials
+
+- [Cleanup receipt and restoration](evidence/handoff-cleanup-20261022/README.md):
+  historical GUI reports are losslessly archived, with every member verified.
+  Restore the archive before using an old script that expects an expanded report.
+- Keep canonical `build/match-linked/EnemyItemDrops` and existing useful private
+  candidates, especially `build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim`.
+  That Enemy candidate is 14396 bytes with gap 298; it is not adopted or exact.
+- Preserve nine unrelated untracked `docs/evidence/d3d-adapter-format/` files.
+- Historical ECL source-route labels were wrong for seven controls; consult the
+  corrected audit below and inspect actual patches before reusing a conclusion.
+- When reconstruction is explicitly resumed, prioritize the large owners and
+  use focused complete-owner replays; do not repeat the excluded storage forms.
+  Recheck Enemy's shared rank/aim tail graph against TH10 instructions before
+  treating its retained candidate as an improvement worth adopting.
+
+## Recent evidence index
+
 See [ECL local lifetime controls](evidence/ecl-math-local-lifetimes/README.md).
 See [ECL source-route audit](evidence/ecl-scratch-route-audit/README.md).
 See [ECL loop snapshots](evidence/ecl-loop-cursor-lifetime/README.md).

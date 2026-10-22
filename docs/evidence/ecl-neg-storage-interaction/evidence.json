@@ -1,0 +1,2884 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "072457288f9f575ee45f0e400589c55e309b5c4c",
+  "acceptance_authority": "none; no exact promotion",
+  "private_packet": ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022",
+  "baseline_run": {
+    "size": 7020,
+    "matched_bytes": 6993,
+    "first_differences": [
+      {
+        "offset": "0xEC",
+        "linked": 124,
+        "target": 84
+      },
+      {
+        "offset": "0xF1",
+        "linked": 87,
+        "target": 82
+      },
+      {
+        "offset": "0x12A",
+        "linked": 16,
+        "target": 0
+      },
+      {
+        "offset": "0x12C",
+        "linked": 106,
+        "target": 104
+      },
+      {
+        "offset": "0x146E",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x14D7",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x151D",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x168A",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x1710",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x181B",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x182B",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1838",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x183C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1840",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1844",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1899",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18B6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18E6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18F8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x191C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1932",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1957",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x199E",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19A8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19BA",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x19E6",
+        "linked": 3,
+        "target": 19
+      },
+      {
+        "offset": "0x19E8",
+        "linked": 0,
+        "target": 2
+      }
+    ],
+    "image_sha256": "92d650933e7e3735d2225ea4680783d4f1391e8ac92f387eb660909b1f78cbe0"
+  },
+  "variants": [
+    {
+      "variant": "neg-word",
+      "source_shape_assertions": [
+        "raw negation local is unsigned int; same four-byte tagged Pop and Push",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "b7d03cf9df209bcb51753978ba8a075b24b9175fb39a53ac70164524c6cff360",
+      "candidate_source_sha256": "9f936914d15e1d6b0e4a4e717ef24cf84047286465e618aef1265186907d9020",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\neg-word\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\neg-word\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\neg-word\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\neg-word\\support-00-EclVm.ltcg.obj",
+          "sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\neg-word\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\neg-word\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "image_sha256": "7c4791cc41c64d3af37383a51bb87aafcdec0188a9c5a607a9faf54f7393e076",
+        "candidate_address": "0x00406CF0",
+        "field_count": 189
+      },
+      "callee_guard": {
+        "size": 171,
+        "matched_bytes": 171,
+        "result": "exact"
+      },
+      "difference_delta": {
+        "repaired": [],
+        "added": [],
+        "changed": []
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "variant": "shared-neg-word",
+      "source_shape_assertions": [
+        "shared first geometric float actually declared, written and used in both math cases",
+        "raw negation local is unsigned int; same four-byte tagged Pop and Push",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "b7d03cf9df209bcb51753978ba8a075b24b9175fb39a53ac70164524c6cff360",
+      "candidate_source_sha256": "ca9c4f667bd82da9edb91e846661f5a90049ad6faf76e64e8b90767814984874",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-word\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-word\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-word\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-word\\support-00-EclVm.ltcg.obj",
+          "sha256": "b6208bedcab8ff9fe05c6f1718c14eb7264f50e656bf344be6dbeccd60dbc782",
+          "raw_sha256": "b6208bedcab8ff9fe05c6f1718c14eb7264f50e656bf344be6dbeccd60dbc782"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-word\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-word\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6989,
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "image_sha256": "606694809bf8e219d6a1577723e6de1f4c10365f8a22ad4a61989756778f3f0c",
+        "candidate_address": "0x00406CF0",
+        "field_count": 189
+      },
+      "callee_guard": {
+        "size": 171,
+        "matched_bytes": 171,
+        "result": "exact"
+      },
+      "difference_delta": {
+        "repaired": [
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          }
+        ],
+        "added": [
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          }
+        ],
+        "changed": [
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          }
+        ]
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "variant": "shared-neg-member",
+      "source_shape_assertions": [
+        "shared first geometric float actually declared, written and used in both math cases",
+        "both raw negation stack operations name the unsigned union member",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "b7d03cf9df209bcb51753978ba8a075b24b9175fb39a53ac70164524c6cff360",
+      "candidate_source_sha256": "9230764e78e2d3d5d1f0c8655cdc5f3d3cda9bbbc69e997981a4a1b779c98dba",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-member\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-member\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-member\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-member\\support-00-EclVm.ltcg.obj",
+          "sha256": "b6208bedcab8ff9fe05c6f1718c14eb7264f50e656bf344be6dbeccd60dbc782",
+          "raw_sha256": "b6208bedcab8ff9fe05c6f1718c14eb7264f50e656bf344be6dbeccd60dbc782"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-member\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-member\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6989,
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "image_sha256": "eb16919d56e744bfec49eff377135bbd2b412e763baf4ae516548924f2183daf",
+        "candidate_address": "0x00406CF0",
+        "field_count": 189
+      },
+      "callee_guard": {
+        "size": 171,
+        "matched_bytes": 171,
+        "result": "exact"
+      },
+      "difference_delta": {
+        "repaired": [
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          }
+        ],
+        "added": [
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          }
+        ],
+        "changed": [
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          }
+        ]
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "variant": "shared-neg-union",
+      "source_shape_assertions": [
+        "one existing scalar union shared by both first geometric operands and raw-word negation",
+        "raw path uses unsigned member addresses and modulo negation",
+        "each case initializes its active payload before reading it",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "3f43b6f662c309394089dc9026e9363de31e5c3c78f8137255326bb344fa74eb",
+      "candidate_source_sha256": "c134143ae4ce51e8d58d8a48a2584f50d3985ebf64998f001d820802924a496d",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-union\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-union\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-union\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-union\\support-00-EclVm.ltcg.obj",
+          "sha256": "c3094ecfe89a39c945d0e5844d7067367edc2b65fe821472a859ffafb8ea1cac",
+          "raw_sha256": "c3094ecfe89a39c945d0e5844d7067367edc2b65fe821472a859ffafb8ea1cac"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-union\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-union\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6990,
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "image_sha256": "43c237704f544530021a851119016b8f74175a9308f2e7f7c6076c17c539dcee",
+        "candidate_address": "0x00406CF0",
+        "field_count": 189
+      },
+      "callee_guard": {
+        "size": 171,
+        "matched_bytes": 171,
+        "result": "exact"
+      },
+      "difference_delta": {
+        "repaired": [
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          }
+        ],
+        "added": [
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          }
+        ],
+        "changed": [
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          }
+        ]
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "variant": "shared-first",
+      "source_shape_assertions": [
+        "shared first geometric float actually declared, written and used in both math cases",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "b7d03cf9df209bcb51753978ba8a075b24b9175fb39a53ac70164524c6cff360",
+      "candidate_source_sha256": "e0a06038cdf0ac0995c30796890a267a5f45c977c6f1cac426d370f78eb10122",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-first\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-first\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-first\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-first\\support-00-EclVm.ltcg.obj",
+          "sha256": "b6208bedcab8ff9fe05c6f1718c14eb7264f50e656bf344be6dbeccd60dbc782",
+          "raw_sha256": "b6208bedcab8ff9fe05c6f1718c14eb7264f50e656bf344be6dbeccd60dbc782"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-first\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-first\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6989,
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "image_sha256": "ed12a50b9ed323cd45816bb1c8b1b6dda83cb820065e45f4ca97c24dbec70ef4",
+        "candidate_address": "0x00406CF0",
+        "field_count": 189
+      },
+      "callee_guard": {
+        "size": 171,
+        "matched_bytes": 171,
+        "result": "exact"
+      },
+      "difference_delta": {
+        "repaired": [
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          }
+        ],
+        "added": [
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          }
+        ],
+        "changed": [
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          }
+        ]
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "variant": "shared-neg-stack-view",
+      "source_shape_assertions": [
+        "shared first geometric float actually declared, written and used in both math cases",
+        "raw-negation Pop and Push share an explicit pointer to the existing stack",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "2b3f08bf29cc77c0496dcf4c7ae9d0f7a6a34dc7092f43f9a5c1993e6be7c00e",
+      "candidate_source_sha256": "2dd6ce05033af8f66e07e91d149c3fe58499e67d163c0681df28c6f1c5837d74",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-stack-view\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-stack-view\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-stack-view\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-stack-view\\support-00-EclVm.ltcg.obj",
+          "sha256": "b6208bedcab8ff9fe05c6f1718c14eb7264f50e656bf344be6dbeccd60dbc782",
+          "raw_sha256": "b6208bedcab8ff9fe05c6f1718c14eb7264f50e656bf344be6dbeccd60dbc782"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-stack-view\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-neg-storage-interaction-20261022\\shared-neg-stack-view\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6989,
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "image_sha256": "16e00e0c47567f1dbfbbff1778af45ae6e392d78ba3e2155dfa6ee94e2488072",
+        "candidate_address": "0x00406CF0",
+        "field_count": 189
+      },
+      "callee_guard": {
+        "size": 171,
+        "matched_bytes": 171,
+        "result": "exact"
+      },
+      "difference_delta": {
+        "repaired": [
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          }
+        ],
+        "added": [
+          {
+            "offset": "0x169D",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16A8",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16AC",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B0",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16B6",
+            "linked": 24,
+            "target": 28
+          },
+          {
+            "offset": "0x16BB",
+            "linked": 28,
+            "target": 32
+          }
+        ],
+        "changed": [
+          {
+            "offset": "0x182B",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x191C",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 28,
+            "target": 20
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 28,
+            "target": 20
+          }
+        ]
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    }
+  ],
+  "verification_counts": {
+    "source_sha256": 108,
+    "baseline_artifact_sha256": 19,
+    "frozen_inputs": 373,
+    "unrelated_untracked": 9
+  },
+  "evidence_hashes": {
+    ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/manifest.json": "4fcdf7b877618312350e52909f8c4239768ec78318c72f8eadb591ab8e9cca75",
+    ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/probe.py": "b7d03cf9df209bcb51753978ba8a075b24b9175fb39a53ac70164524c6cff360",
+    ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/probe-union.py": "3f43b6f662c309394089dc9026e9363de31e5c3c78f8137255326bb344fa74eb",
+    ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/probe-stack.py": "2b3f08bf29cc77c0496dcf4c7ae9d0f7a6a34dc7092f43f9a5c1993e6be7c00e",
+    ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-stack-review.txt": "0ec5a377830edd730fb107c1f1c4416f143c8391db88299664da85973ec6d4ec",
+    ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/private-diagnostic.py": "776d92103d065322b515e11ce608173b5f219edac340feed5ce2781b3b25ed9e",
+    ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/target-ghidra.txt": "00581c65bd6d331b750cb52f0f6a8843ddf15a6928102da38d7798a98bf61e0f",
+    ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/ghidra.log": "2b2df54137a2211b0ed1078dac174c37d6f2d26843f4dc80a7c7737383560280"
+  },
+  "removed_artifacts": [
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/source.map",
+      "bytes": 92342,
+      "sha256": "f3a0630d04b62bb1d272c36d3a05eed0db96188f7156233d2543ab291db83624"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/source.exe",
+      "bytes": 122880,
+      "sha256": "7c4791cc41c64d3af37383a51bb87aafcdec0188a9c5a607a9faf54f7393e076"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/support-00-EclVm.ltcg.obj",
+      "bytes": 55644,
+      "sha256": "1fc31b85a2d6d58b64ac2cf7cca93cf5b962b43bc8f59ddd43260586ffbf8f5b"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/source.pdb",
+      "bytes": 117760,
+      "sha256": "86f4192a398efbc696e78bdddfbf43d17b34d53a1816a71a3b094270e2b839ac"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/source.map",
+      "bytes": 92342,
+      "sha256": "82577afd3249f1ac2fdf2429664048c903578a32994fee939a28a05da704781f"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/source.exe",
+      "bytes": 122880,
+      "sha256": "606694809bf8e219d6a1577723e6de1f4c10365f8a22ad4a61989756778f3f0c"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/support-00-EclVm.ltcg.obj",
+      "bytes": 55653,
+      "sha256": "b719aec5bc783a5eb43d248d5af731bb62dd35bcef61469994ac51ecef2440c5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/source.pdb",
+      "bytes": 117760,
+      "sha256": "bae43cdea4612b98f225e3d5da226d6f0f70a74a2c8bd9a89ea62ac38e35dbee"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/source.map",
+      "bytes": 92342,
+      "sha256": "75b2f0805a0c1f82f5112168a8e188de833745fd2b4a1f321e3adc163274a40e"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/source.exe",
+      "bytes": 122880,
+      "sha256": "eb16919d56e744bfec49eff377135bbd2b412e763baf4ae516548924f2183daf"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/support-00-EclVm.ltcg.obj",
+      "bytes": 55692,
+      "sha256": "e68ad4187b98e8a94fe033fa78d2aacee2e5699b0ab16c4668873861a30a1e05"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/source.pdb",
+      "bytes": 117760,
+      "sha256": "7e9b6f83783a9e43425cbcf253f4e28558219b628c69328a99c2b2ecb77a337e"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/source.map",
+      "bytes": 92342,
+      "sha256": "55740da17cda7718043e4eb8c7d0da72f6df1c86194a1532f30d0979b51500ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/source.exe",
+      "bytes": 122880,
+      "sha256": "43c237704f544530021a851119016b8f74175a9308f2e7f7c6076c17c539dcee"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/support-00-EclVm.ltcg.obj",
+      "bytes": 55705,
+      "sha256": "243a253285ef75cb2390273f8dc03746a90b59a7adb44bbfbca346fe996955ea"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/source.pdb",
+      "bytes": 117760,
+      "sha256": "4b74e9198126d1e6ec9d021971601d749100b188a44c3598fd0e41f8c1b9bb0e"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/source.map",
+      "bytes": 92342,
+      "sha256": "a25814df8579ca40aad0cd54a7fdbc3e8c37e59c8c01ccf920478311aa71a895"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/source.exe",
+      "bytes": 122880,
+      "sha256": "ed12a50b9ed323cd45816bb1c8b1b6dda83cb820065e45f4ca97c24dbec70ef4"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/support-00-EclVm.ltcg.obj",
+      "bytes": 55658,
+      "sha256": "063cd5dfab370e57ec783339629b72f757898dc8434689eede10661fba2dcce5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/source.pdb",
+      "bytes": 117760,
+      "sha256": "9b17d686d97ec8b4ab32803b5564e374a446ecc47f50e368897c9a516ffe7cdc"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/source.map",
+      "bytes": 92342,
+      "sha256": "cbb8391fd90f2dfe94e0fb04ce97c46555e21584aae6232c5eaec80b2abdf261"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/source.exe",
+      "bytes": 122880,
+      "sha256": "16e00e0c47567f1dbfbbff1778af45ae6e392d78ba3e2155dfa6ee94e2488072"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/support-00-EclVm.ltcg.obj",
+      "bytes": 55732,
+      "sha256": "353ec530f2a254c823afde66fa13f604301f44c3519bfca06901098aa5fc1a34"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/source.pdb",
+      "bytes": 117760,
+      "sha256": "8c102dc3de19ae72fb3610a09773faf4661fb1bbe1a1aeb75d9371f7fceaf0e6"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    }
+  ],
+  "removed_bytes": 6399286
+}

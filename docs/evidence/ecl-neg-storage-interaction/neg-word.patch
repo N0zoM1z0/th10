@@ -1,0 +1,15 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -1105,10 +1105,10 @@
+             {
+                 // 0x0044F851 executes integer NEG on the raw float dword and
+                 // then pushes that dword with type 'f'.  This is not x87 FCHS.
+-                EclVmScalar value;
++                unsigned int value;
+                 stack.Pop('f', sizeof(value), &value);
+                 // Raw DWORD negation is modulo32, including negative-zero bits.
+-                value.bits = 0u - value.bits;
++                value = 0u - value;
+                 stack.Push('f', sizeof(value), &value);
+                 break;
+             }

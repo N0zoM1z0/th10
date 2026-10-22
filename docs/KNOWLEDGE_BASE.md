@@ -5414,3 +5414,15 @@ unchanged, grow Run to7044. Using the existing union integer member in PopInt is
 raw-neutral across the three large owners and preserves7020/6993 with27 Run
 differences. These are tested compiler-context observations, not original source
 proofs. No candidate is adopted. See [local lifetime evidence](evidence/ecl-math-local-lifetimes/README.md).
+
+## ECL raw-negation / geometric storage interaction (2026-10-22)
+
+Unsigned primitive raw-negation storage alone preserves all three large raw
+bodies and Run's 27 differences. Current shared-first-float control has 31:
+two POINT_ANGLE homes recover, six NEG_FLOAT_STORAGE homes regress from target
+ESP+1C to ESP+18, and seven other differing bytes change value. Primitive word,
+explicit union member addresses and an explicit stack-view pointer each retain
+that complete shared-control output. A union shared across raw negation and the
+first geometric operands instead repairs three LENGTH homes, loses the two angle
+repairs, and retains the six regressions (30 differences). No candidate is
+adopted. See [interaction evidence](evidence/ecl-neg-storage-interaction/README.md).
