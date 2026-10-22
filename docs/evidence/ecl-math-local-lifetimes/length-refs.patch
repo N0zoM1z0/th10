@@ -1,0 +1,13 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -1142,8 +1142,8 @@
+ 
+             case ECL_VM_LENGTH_SQUARED:
+             {
+-                const float x = ReadFloat(1);
+-                const float y = ReadFloat(2);
++                const float &x = ReadFloat(1);
++                const float &y = ReadFloat(2);
+                 *ResolveFloat(0) = x * x + y * y;
+                 break;
+             }

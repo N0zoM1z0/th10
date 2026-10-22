@@ -5402,3 +5402,15 @@ An actual cursor reference is baseline-neutral across all three large bodies,
 with all27 Run differences unchanged. Historical comparisons remain measurements
 of their real inputs, while the source-form claims are corrected. See
 [source-route audit](evidence/ecl-scratch-route-audit/README.md).
+
+## ECL math local lifetime controls (2026-10-22)
+
+Actual LENGTH const float references add one RETURN-path commuted-address byte
+at+97 while preserving all27 baseline differences. POINT_ANGLE references alone
+and combined retain7020 bytes but move a ResolveFloat field to18BC without the
+required target binding; their complete raw bodies differ only at+97. Two scalar
+union locals shared only by the math cases, leaving FORMAT and the payload union
+unchanged, grow Run to7044. Using the existing union integer member in PopInt is
+raw-neutral across the three large owners and preserves7020/6993 with27 Run
+differences. These are tested compiler-context observations, not original source
+proofs. No candidate is adopted. See [local lifetime evidence](evidence/ecl-math-local-lifetimes/README.md).

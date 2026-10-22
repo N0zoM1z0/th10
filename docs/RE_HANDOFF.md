@@ -1,17 +1,17 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. An audit
-found seven historical ECL labels routed through Run-before-HostRun; recorded
-patches and a Git reconstruction prove the actual source hash. Three intended
-source forms had not been executed; four profile trials also reordered source.
-Five actual current trials now verify their transforms: shared/reversed/separate
-scratch unions give identical7036-byte bodies; named math destinations give7020
-but fail a target field at18BC; actual cursor reference preserves the full
-7020/6993 baseline and27 differences. No source is adopted; historical claims
-are corrected, and all five new carriers are removed after hash verification.
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Five
+additional ECL local-storage controls have actual source-shape assertions.
+LENGTH const references retain all27 baseline differences and add one at+97;
+POINT_ANGLE references alone or combined fail the target call binding at18BC.
+Math-only shared scalar locals grow Run to7044 bytes. Integer PopInt union
+storage preserves all three complete large raw bodies and the7020/6993 baseline.
+No source is adopted; all five new native carriers are removed after hash
+verification. The preceding historical source-route corrections still apply.
 Maintained Enemy14336/14416/gap328 and ANM9964/7541-of-7995 are unchanged; retain
 the earlier Enemy14396 candidate. Authored409/74716, overall1252/141647,
 source613/247945, nonexact204 and absent121 remain unchanged. No new exact credit.
+See [ECL local lifetime controls](evidence/ecl-math-local-lifetimes/README.md).
 See [ECL source-route audit](evidence/ecl-scratch-route-audit/README.md).
 See [ECL loop snapshots](evidence/ecl-loop-cursor-lifetime/README.md).
 See [Enemy read-sharing controls](evidence/enemy-rank-read-sharing/README.md).

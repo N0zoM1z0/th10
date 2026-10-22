@@ -1,0 +1,1565 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "6500ef8a652f0ad6e2f0febf6803e6a161a96efe",
+  "acceptance_authority": "none; no exact promotion",
+  "private_packet": ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022",
+  "baseline_run": {
+    "size": 7020,
+    "matched_bytes": 6993,
+    "first_differences": [
+      {
+        "offset": "0xEC",
+        "linked": 124,
+        "target": 84
+      },
+      {
+        "offset": "0xF1",
+        "linked": 87,
+        "target": 82
+      },
+      {
+        "offset": "0x12A",
+        "linked": 16,
+        "target": 0
+      },
+      {
+        "offset": "0x12C",
+        "linked": 106,
+        "target": 104
+      },
+      {
+        "offset": "0x146E",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x14D7",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x151D",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x168A",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x1710",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x181B",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x182B",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1838",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x183C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1840",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1844",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1899",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18B6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18E6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18F8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x191C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1932",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1957",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x199E",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19A8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19BA",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x19E6",
+        "linked": 3,
+        "target": 19
+      },
+      {
+        "offset": "0x19E8",
+        "linked": 0,
+        "target": 2
+      }
+    ],
+    "image_sha256": "92d650933e7e3735d2225ea4680783d4f1391e8ac92f387eb660909b1f78cbe0"
+  },
+  "variants": [
+    {
+      "variant": "length-refs",
+      "source_shape_assertions": [
+        "actual const-reference bindings: x,y",
+        "read expressions and result expressions unchanged",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "13e61608a24a475b05d0ecd207dd587e4602f2dee7fee9c5ad150acb03364df6",
+      "candidate_source_sha256": "ee4cc620a174e7832acf3779046b3bfa793af6991af0d19dd1282a1bea14b577",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\length-refs\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\length-refs\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\length-refs\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\length-refs\\support-00-EclVm.ltcg.obj",
+          "sha256": "b6a1206cbbe00a3b56cb63eaa3bd7ae743f0e0cc7797f945a69545ca9cf3ee61",
+          "raw_sha256": "b6a1206cbbe00a3b56cb63eaa3bd7ae743f0e0cc7797f945a69545ca9cf3ee61"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\length-refs\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\length-refs\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6992,
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0x97",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "image_sha256": "51a645d0811b13f249ea0709cde11acefd13d41d27d173cb1a264dd5c924b2fe",
+        "candidate_address": "0x00406CF0",
+        "field_count": 189
+      },
+      "callee_guard": {
+        "size": 171,
+        "matched_bytes": 171,
+        "result": "exact"
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "variant": "angle-refs",
+      "source_shape_assertions": [
+        "actual const-reference bindings: dx,dy",
+        "read expressions and result expressions unchanged",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "13e61608a24a475b05d0ecd207dd587e4602f2dee7fee9c5ad150acb03364df6",
+      "candidate_source_sha256": "e045fc98b80fb44ba9225b9eecd0262ecdcc6ae2bd89de0f1071706d382cb3df",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\angle-refs\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\angle-refs\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\angle-refs\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\angle-refs\\support-00-EclVm.ltcg.obj",
+          "sha256": "e85a32657f7b45649f861eee1c5fda76d1820776c4ba82258e4306d718e0b3fd",
+          "raw_sha256": "e85a32657f7b45649f861eee1c5fda76d1820776c4ba82258e4306d718e0b3fd"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\angle-refs\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\angle-refs\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "result": "unsupported",
+        "error": "external field lacks one prebound target: {'offset': 6332, 'width': 4, 'type': 'REL32', 'instruction': 'call', 'candidate_target': '0x004065F0', 'candidate_symbols': ['?ResolveFloat@EclVmContext@@QAEPAMI@Z'], 'instruction_end': 6336, 'target_encoded_value': '0x245CD9F3', 'target_candidate': '0x24A1D453'}",
+        "acceptance_authority": "none"
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "variant": "both-refs",
+      "source_shape_assertions": [
+        "actual const-reference bindings: x,y,dx,dy",
+        "read expressions and result expressions unchanged",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "13e61608a24a475b05d0ecd207dd587e4602f2dee7fee9c5ad150acb03364df6",
+      "candidate_source_sha256": "199bafb162f38cc6f41d24b21a6b3a4a82776b1c5217ef18a9aecb883e61c6c1",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\both-refs\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\both-refs\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\both-refs\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\both-refs\\support-00-EclVm.ltcg.obj",
+          "sha256": "e896eedd8d56935248bcd94c55abee535c60030b39b6742cf76717707cc090fb",
+          "raw_sha256": "e896eedd8d56935248bcd94c55abee535c60030b39b6742cf76717707cc090fb"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\both-refs\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\both-refs\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "result": "unsupported",
+        "error": "external field lacks one prebound target: {'offset': 6332, 'width': 4, 'type': 'REL32', 'instruction': 'call', 'candidate_target': '0x004065F0', 'candidate_symbols': ['?ResolveFloat@EclVmContext@@QAEPAMI@Z'], 'instruction_end': 6336, 'target_encoded_value': '0x245CD9F3', 'target_candidate': '0x24A1D453'}",
+        "acceptance_authority": "none"
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "variant": "math-scalar-pair",
+      "source_shape_assertions": [
+        "actual shared scalar pair in both math cases",
+        "only real members assigned and read",
+        "FORMAT block byte-for-byte unchanged",
+        "payload union definition unchanged",
+        "maintained function order unchanged"
+      ],
+      "producer_sha256": "13e61608a24a475b05d0ecd207dd587e4602f2dee7fee9c5ad150acb03364df6",
+      "candidate_source_sha256": "4445cd942a5bb87883101a054fdc2e1201484bad2eef06cb79a5d525ce129624",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9C0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51648,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\math-scalar-pair\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\math-scalar-pair\\support-01-AnmManager.ltcg.obj",
+          "sha256": "cc3e9986dafb8aaac9853bf44330066ac59b15b629ed0a55dd3d590c9778d8d8",
+          "raw_sha256": "cc3e9986dafb8aaac9853bf44330066ac59b15b629ed0a55dd3d590c9778d8d8"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7044,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\math-scalar-pair\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\math-scalar-pair\\support-00-EclVm.ltcg.obj",
+          "sha256": "79501c8663f85c8d931ee9edcabc9e3c356041e0b899f6a3aa6cb79eead526b4",
+          "raw_sha256": "79501c8663f85c8d931ee9edcabc9e3c356041e0b899f6a3aa6cb79eead526b4"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\math-scalar-pair\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\math-scalar-pair\\source.ltcg.obj",
+          "sha256": "21e9e2393103d6f5b5eef319e2f9922110911f4373c44a8759364e0eb9d7a48e",
+          "raw_sha256": "21e9e2393103d6f5b5eef319e2f9922110911f4373c44a8759364e0eb9d7a48e"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": false
+      },
+      "run": {
+        "result": "unsupported",
+        "error": "Run must have one complete 7020-byte PDB extent",
+        "acceptance_authority": "none"
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "variant": "integer-pop-scalar",
+      "source_shape_assertions": [
+        "actual PopInt storage uses existing integer union member",
+        "Run source and all other helper bodies unchanged",
+        "argument order, count and payload width unchanged"
+      ],
+      "producer_sha256": "8cd380e8dffe5cb59f906c82cefaffef94d6a9964b5f08344948aa54a3205b59",
+      "candidate_source_sha256": "55393604256c143becf22c1d1e27258a3dae8be3a85843a2de84b78581ee5f93",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\integer-pop-scalar\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\integer-pop-scalar\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\integer-pop-scalar\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\integer-pop-scalar\\support-00-EclVm.ltcg.obj",
+          "sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\integer-pop-scalar\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-math-local-lifetimes-20261022\\integer-pop-scalar\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "raw_identical_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "image_sha256": "7072be95a1ee3f8bd334ce50dcfa8ec9de5773a8495fe19667ebe86f252cc5ad",
+        "candidate_address": "0x00406CF0",
+        "field_count": 189
+      },
+      "callee_guard": {
+        "size": 171,
+        "matched_bytes": 171,
+        "result": "exact"
+      },
+      "guards": [
+        {
+          "unit": "ecl-vm-read-float",
+          "size": 183,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "size": 144,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "size": 124,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "size": 171,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "size": 58,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "size": 93,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "size": 146,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "size": 96,
+          "result": "exact"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "size": 122,
+          "result": "exact"
+        }
+      ]
+    }
+  ],
+  "verification_counts": {
+    "source_sha256": 108,
+    "baseline_artifact_sha256": 19,
+    "frozen_inputs": 373,
+    "unrelated_untracked": 9
+  },
+  "evidence_hashes": {
+    ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/manifest.json": "9b17172994870e5904d4aa3a90a446c9a5333cf43a2580f5a2e7565c9476b8be",
+    ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/probe.py": "13e61608a24a475b05d0ecd207dd587e4602f2dee7fee9c5ad150acb03364df6",
+    ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/probe-pop-int.py": "8cd380e8dffe5cb59f906c82cefaffef94d6a9964b5f08344948aa54a3205b59",
+    ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/private-diagnostic.py": "776d92103d065322b515e11ce608173b5f219edac340feed5ce2781b3b25ed9e",
+    ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/target-ghidra.txt": "00581c65bd6d331b750cb52f0f6a8843ddf15a6928102da38d7798a98bf61e0f",
+    ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/ghidra.log": "326bca7cd909dddf49f57d9fcc5d019dd1bfa01ffbccc5c598710a23fa178e88"
+  },
+  "removed_artifacts": [
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/source.map",
+      "bytes": 92342,
+      "sha256": "72014e9e568ca85813b384d9dfea21246f5f603420fe65a475351c66304089aa"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/source.exe",
+      "bytes": 122880,
+      "sha256": "51a645d0811b13f249ea0709cde11acefd13d41d27d173cb1a264dd5c924b2fe"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/link.log",
+      "bytes": 104,
+      "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/support-00-EclVm.ltcg.obj",
+      "bytes": 55729,
+      "sha256": "be1e9eca72263f969e02abe17a4a29bc570eb8372af3791ebff491620002f958"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/source.pdb",
+      "bytes": 117760,
+      "sha256": "bfaa68db54985d50c304c464d5a4a8f21391ff83847f5f3425c423201152f6e8"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/source.map",
+      "bytes": 92342,
+      "sha256": "e2a1f8ec55f5af757e4d1e8162080d568e87b185750d75714614a40d8a10fd49"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/source.exe",
+      "bytes": 122880,
+      "sha256": "290a523d58bcd94d17da6e45be66af0c4b2efd2fb22007f2b217b7818350ee1c"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/support-00-EclVm.ltcg.obj",
+      "bytes": 55719,
+      "sha256": "1c766195b134d84a526319baafa5bff9ae0207695227de8b3e49bf491e068e0e"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/source.pdb",
+      "bytes": 117760,
+      "sha256": "e20c0dec8ff81ffb185caa0b3d6395c0104aef8b8b8e75269a972343873eeba2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/source.map",
+      "bytes": 92342,
+      "sha256": "c0aa0aa9783011b433e46c349fdcf4a63acdd703a1b92603f8e83851f2c3fbf3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/source.exe",
+      "bytes": 122880,
+      "sha256": "c57dd5e5256ce7e9ff78d1d5ad2334eaba6ea07bf91760316e3ec76847eb260f"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/support-00-EclVm.ltcg.obj",
+      "bytes": 55783,
+      "sha256": "386a5776afd7fa155224c6872bb140b69d5d938826fbd92422545d9010d9adbd"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/source.pdb",
+      "bytes": 117760,
+      "sha256": "b1287f0a1d11c58662342884d8900fe8f18340bfd7c85790db44eb2f0dfebfe4"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/source.map",
+      "bytes": 92342,
+      "sha256": "56036ca00be18be48bd51239fcb5bbdbcdda8fd1995f7e0019af1fca28a196e7"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/source.exe",
+      "bytes": 122880,
+      "sha256": "a3f46540c99dfaad520fe529ea30c42dbb4c4a3806f1eb28c84ca806a153e8cf"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/support-00-EclVm.ltcg.obj",
+      "bytes": 55712,
+      "sha256": "bc9e56dbf562008f55506ecab68ca4fd970c982865d9a22504202f83b3673d4f"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/source.pdb",
+      "bytes": 117760,
+      "sha256": "b04797c84dabcc74539b60a53cb534c05557f2e70170a8e1647fdf7986855836"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/source.map",
+      "bytes": 92342,
+      "sha256": "54c77b417cc3a9097d3505352cc19f85b713efee254a3f40d312091158e976cf"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/source.exe",
+      "bytes": 122880,
+      "sha256": "7072be95a1ee3f8bd334ce50dcfa8ec9de5773a8495fe19667ebe86f252cc5ad"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/support-00-EclVm.ltcg.obj",
+      "bytes": 55706,
+      "sha256": "0b756deedd5e3693e9f4282356dc5b48e59301b1b6aac92db9d490b576693d7f"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/source.pdb",
+      "bytes": 117760,
+      "sha256": "9f2e461251dba4844aaa7d28e4c47ef9486f2bfa5e200309600a372a528c25c1"
+    },
+    {
+      "path": "build/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    }
+  ],
+  "removed_bytes": 5332921
+}

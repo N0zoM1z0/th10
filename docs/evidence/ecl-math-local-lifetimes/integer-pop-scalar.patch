@@ -1,0 +1,15 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -226,9 +226,9 @@
+ 
+ static __forceinline int PopInt(EclVmContext *context)
+ {
+-    int value;
+-    context->stack.Pop('i', sizeof(value), &value);
+-    return value;
++    EclVmScalar value;
++    context->stack.Pop('i', sizeof(value.integer), &value.integer);
++    return value.integer;
+ }
+ 
+ static __forceinline float PopFloat(EclVmContext *context)
