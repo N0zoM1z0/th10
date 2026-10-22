@@ -165,7 +165,7 @@ def main() -> int:
     header_path = root / 'src/ArchiveOrDiskPath.hpp'
     sources = {path: path.read_bytes() for path in [source_path, header_path]}
     text = sources[source_path].decode().replace('\r\n', '\n')
-    begin = text.index('PbgArchive *ArchiveOrDiskPathView::FindArchive()')
+    begin = text.index('static inline const char *ArchiveEntryName(const char *path)')
     end = text.index('// Maintained reconstruction source.', begin)
     selected = text[begin:end]
     for signature in ['PbgArchive *ArchiveOrDiskPathView::FindArchive()',
@@ -176,7 +176,7 @@ def main() -> int:
     mutations = {
         'last-slash': ("strchr(path, '/')", "strrchr(path, '/')"),
         'wrong-name-comparison': ('archiveFilename) == 0', 'archiveFilename) != 0'),
-        'wrong-array-element': ('return &g_PbgArchives[index];', 'return &g_PbgArchives[0];'),
+        'wrong-array-element': ('return archive;', 'return g_PbgArchives;'),
         'drop-output-buffer': ('return archive->ReadDecompressEntry(entryName, optionalBuffer);',
                                'return archive->ReadDecompressEntry(entryName, NULL);'),
         'fallback-after-archive-error': ('return archive->ReadDecompressEntry(entryName, optionalBuffer);',

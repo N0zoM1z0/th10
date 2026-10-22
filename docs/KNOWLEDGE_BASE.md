@@ -4925,3 +4925,24 @@ canonical colds retain113/all3 and the new same-image normal caller46/all2.
 Host112/eight strict controls and full110 CI pass. Source presence is complete
 for all13 FileSystem authored owners; product/runtime and original TU remain open.
 [Target evidence and limits](evidence/filesystem-archive-routing/README.md).
+
+## Exact archive filename lookup (2026-10-22)
+
+The complete4356F0..4357C3 owner is212 bytes, including loop alignment and the
+final MOV/JMP return path. A natural static inline first-slash suffix helper
+plus pointer iteration over existing archive rows reproduces all bytes and
+seven independently target-bound fields in two actual full four-TU VC7.1 SP1
+GL/GS/EHs cold builds. ResFile remains the reviewed normal-COFF support; each
+actual image also passes its whole46-byte caller and both call fields. There
+is no separate helper credit, original helper spelling/class/TU/profile or
+physical data-owner inference, and no runnable diagnostic-product claim.
+
+Pointer iteration alone leaves28 ordinary differences; explicit branching,
+buffer-first and declarations-first forms leave21. A strcpy-return form fails
+the exhaustive field inventory and a manual copy loop fails extent203/212.
+Those seven executed private models reuse three pinned objects. Both acceptance
+builds cold-compile all four source inputs. Source and host projection
+include the accepted ordinary helper. Read/GetSize bodies stay unchanged and
+nonexact at retained236/242 versus214/190. Authored exact advances to402/73437,
+overall1243/139947; source613/247945, nonexact211 and absent121 remain separate.
+[Complete lookup proof and limits](evidence/filesystem-find-archive/README.md).

@@ -17,11 +17,18 @@ extern PbgArchive g_MainPbgArchive;
 
 // Target 0x004356F0: the first slash selects an archive basename; a path
 // without a slash is compared unchanged. Archive filenames are case-sensitive.
+static inline const char *ArchiveEntryName(const char *path)
+{
+    const char *separator = strchr(path, '/');
+    if (separator != NULL)
+        return separator + 1;
+    return path;
+}
+
 PbgArchive *ArchiveOrDiskPathView::FindArchive()
 {
     const char *path = reinterpret_cast<const char *>(this);
-    const char *entryName = strchr(path, '/');
-    entryName = entryName == NULL ? path : entryName + 1;
+    const char *entryName = ArchiveEntryName(path);
     int slashIndex = static_cast<int>(entryName - path) - 1;
     char archiveFilename[MAX_PATH];
 
@@ -29,11 +36,11 @@ PbgArchive *ArchiveOrDiskPathView::FindArchive()
     if (slashIndex >= 0)
         strcpy(archiveFilename + slashIndex, ".dat");
 
-    for (int index = 0; index < g_PbgArchiveCount; ++index)
+    PbgArchive *archive = g_PbgArchives;
+    for (int index = 0; index < g_PbgArchiveCount; ++index, ++archive)
     {
-        if (strcmp(g_PbgArchives[index].GetArchiveFilename(),
-                   archiveFilename) == 0)
-            return &g_PbgArchives[index];
+        if (strcmp(archive->GetArchiveFilename(), archiveFilename) == 0)
+            return archive;
     }
     return NULL;
 }

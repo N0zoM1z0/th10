@@ -1,0 +1,95 @@
+{
+  "status": "passed for the declared bounded exact/source validation scope",
+  "focused_exact": {
+    "unit": "filesystem-find-archive",
+    "actual_full_cold_count": 2,
+    "cold_source_count": 4,
+    "owned_bytes_each": 212,
+    "semantic_fields_each": 7,
+    "same_image_caller_bytes_each": 46,
+    "caller_fields_each": 2
+  },
+  "host_source_assertions": 112,
+  "strict_compiled_controls": 8,
+  "tracking": "passed,1243 exact units",
+  "module_source_presence": "FileSystem13/13; exact8/13",
+  "toolchain_execute": "passed normalCOFF/LTCG/resource/PE32",
+  "toolchain_check": "passed",
+  "progress": "regenerated",
+  "ci": {
+    "status": "passed",
+    "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+    "command_groups": 110,
+    "exit_code": 0,
+    "input_count": 371,
+    "frozen_inputs_unchanged": true,
+    "input_inventory_sha256": "b5f145ccfa0254e85b552f3f128b98fde44f8a8cb3425322865761426b4becbe",
+    "log_sha256": "9f531431695b6b39efd135c85259aa6cdd82aca7503623a143803e9169975e4e"
+  },
+  "cleanup": {
+    "scope": "seven proven current-campaign superseded experiment carriers only; all producers/source variants/compact outcomes retained",
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/filesystem-codegen-20261022/pointer-loop",
+        "logical_bytes": 164287,
+        "file_count": 10
+      },
+      {
+        "path": "build/gpt-6.1-sol/filesystem-codegen-20261022/pointer-branch",
+        "logical_bytes": 164362,
+        "file_count": 10
+      },
+      {
+        "path": "build/gpt-6.1-sol/filesystem-codegen-20261022/buffer-first",
+        "logical_bytes": 164291,
+        "file_count": 10
+      },
+      {
+        "path": "build/gpt-6.1-sol/filesystem-codegen-20261022/copy-return",
+        "logical_bytes": 164389,
+        "file_count": 10
+      },
+      {
+        "path": "build/gpt-6.1-sol/filesystem-codegen-20261022/copy-loop",
+        "logical_bytes": 164568,
+        "file_count": 10
+      },
+      {
+        "path": "build/gpt-6.1-sol/filesystem-codegen-20261022/declarations-first",
+        "logical_bytes": 164383,
+        "file_count": 10
+      },
+      {
+        "path": "build/gpt-6.1-sol/filesystem-codegen-20261022/entry-helper",
+        "logical_bytes": 164662,
+        "file_count": 10
+      }
+    ],
+    "logical_file_bytes_removed": 1150942,
+    "retained": "both actual full cold carriers; prior routing baseline; independent D3D files; all canonical/provider/legacy inputs"
+  },
+  "limits": [
+    "bounded declared-context codegen only",
+    "whole Windows i386 product/runtime still open",
+    "semantic reconstruction and portability not started"
+  ],
+  "current_helper_contribution_sizes": {
+    "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+    "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 236,
+    "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 242
+  },
+  "independent_d3d_files_unchanged": 9,
+  "counts": {
+    "authored_functions": 734,
+    "authored_bytes": 273579,
+    "authored_source_functions": 613,
+    "authored_source_bytes": 247945,
+    "authored_exact_functions": 402,
+    "authored_exact_bytes": 73437,
+    "canonical_exact_functions": 1243,
+    "canonical_exact_bytes": 139947,
+    "source_present_nonexact": 211,
+    "source_absent": 121,
+    "indeterminate_origin": 524
+  }
+}

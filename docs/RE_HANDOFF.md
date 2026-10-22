@@ -1,10 +1,11 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Three
-FileSystem helpers now have maintained source, adding616 owned source bytes.
-FileSystem source presence is complete13/13. No new exact credit: authored
-exact401/73225, overall1242/139735. Fresh110-group CI passes with371 frozen
-inputs unchanged. See [archive routing](evidence/filesystem-archive-routing/README.md).
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Complete
+FileSystem FindArchive4356F0 is now exact212/all7 fields after two independent
+full four-TU colds. Authored exact402/73437, overall1243/139947. Source remains
+613/247945 owned bytes; nonexact211, absent121. FileSystem source13/13, exact8/13.
+See [lookup proof](evidence/filesystem-find-archive/README.md) and the preceding
+[archive routing](evidence/filesystem-archive-routing/README.md) source checkpoint.
 
 ## Resume safely
 
@@ -36,11 +37,42 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
 273579 owned bytes;1097 source mappings. Authored source613/247945 bytes,
-212 source-present/nonexact,121 source-absent. Authored exact **401/73225 bytes**;
-overall exact1242/139735 bytes. Unknown origins524 keep the whole-game denominator
+211 source-present/nonexact,121 source-absent. Authored exact **402/73437 bytes**;
+overall exact1243/139947 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest FileSystem source checkpoint
+## Latest exact archive lookup checkpoint
+
+Starting5b539f9 dirty work is recovered: the ordinary suffix helper and pointer
+iteration in FileSystem.cpp, plus its host selector/control update. Seven actual
+private controls culminate in212/all7 zero-difference; they reuse three support
+objects and are not full colds. No unexecuted planned model receives evidence.
+
+Canonical `filesystem-find-archive` then independently cold-compiles all four
+actual source inputs twice: GL/GS/EHs FileSystem, PbgArchive, PbgFile and the
+target-supported normal-COFF ResFile caller. Both complete212-byte PDB owners and
+all7 semantic fields pass; each actual image also retains caller46/all2. The
+whole extent includes loop alignment and the final MOV/JMP, not only through a
+RET. Both candidate literals and target independently contain five-byte `.dat`.
+Only one212-byte exact gain is credited; the inline helper and indeterminate
+4356D0 owner gain no source/origin/exact claim. Original class/TU/profile/data
+owners and product/runtime remain unknown. Read/GetSize bodies remain unchanged,
+with retained236/242 versus214/190. No broad historical or large-owner replay.
+
+Private recovery is `.analysis/gpt-6.1-sol/filesystem-codegen-20261022/`.
+Keep first actual cold `build/gpt-6.1-sol/filesystem-codegen-20261022/cold-1` and
+second canonical `build/match-linked/FileSystemArchiveLookup`, source/context
+pins, producers, compact controls and the preceding routing baseline. Cleanup
+removes70 files/1150942 logical bytes in seven superseded private build trees.
+All9 independent D3D files and other canonical/provider/legacy state stay intact.
+Fresh110-group CI passes with all371 code/test/config inputs unchanged. Its
+actual-source routing group passes112 assertions/eight compiled strict controls.
+Current canonical PDB owners independently confirm212/236/242; the latter two
+remain nonexact. Toolchain execution/check, tracking, progress, FileSystem source
+gate and whitespace pass. Validation is recorded in the
+[lookup packet](evidence/filesystem-find-archive/README.md).
+
+## Previous FileSystem source checkpoint
 
 Target4356F0/212,435800/214,4358E0/190 now map to ArchiveOrDiskPathView
 FindArchive/Read/GetSize. The physical path-call declaration moves from
@@ -249,8 +281,8 @@ The three FileSystem owners above are now source-present. Next investigate their
 native call/lifetime shapes: target Read has one archive-reader call, native
 has two; target GetSize calls434EF0, native directly calls stricmp inside its
 owner, consistent with inlining the entry lookup. Both native wrappers retain
-out-of-line CPbgFile destruction where target inlines cleanup. FindArchive has
-branch/copy/alignment differences. Use target-supported ordinary-source and
+out-of-line CPbgFile destruction where target inlines cleanup. FindArchive is
+now exact under the lookup recipe above. Use target-supported ordinary-source and
 inlining/caller hypotheses, with complete field/EH binding before exact credit;
 keep /GL and do not force registers or returns. The old File.cpp string has
 no code xref and still does not establish original source ownership.
