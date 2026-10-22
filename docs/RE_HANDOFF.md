@@ -1,10 +1,12 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-ANM float-service definition-order/separate-GL controls are unadopted. Both are
-whole9964-byte baseline-equal after independently verified address replay.
-Baseline7541/7995, ECL7020/6993 and Enemy14352 remain nonexact. Authored409/74716,
-overall1252/141647 unchanged. Source613/247945, nonexact204, absent121.
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Enemy
+spawn-field source adoption grows the parent from 14352 to 14368 / 14416 bytes
+(48 short). Three early groups recover target sizes; overall group gap falls
+566 to 348, with collateral nonexact regressions explicitly recorded. No new
+exact credit: authored409/74716, overall1252/141647 unchanged. Source613/247945,
+nonexact204, absent121. ANM9964 and ECL7020/6993 remain nonexact.
+See [Enemy spawn-tail checkpoint](evidence/enemy-spawn-tail-layout/README.md).
 See [ANM float-service contexts](evidence/anm-float-service-context/README.md)
 and [ANM flip evidence](evidence/anm-flip-lowering/README.md).
 See [ECL translation-unit controls](evidence/ecl-tu-visibility/README.md).
@@ -52,7 +54,21 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
-## Latest ANM float-service context checkpoint
+## Latest Enemy spawn-tail checkpoint
+
+Five source controls tested; adopt only local spawn-field fills with a shared
+spawn call. Private and maintained-path primary rebuilds produce four identical
+complete raw bodies. Each compiles1/reuses9, not a full cold pair. The maintained
+image passes38 complete guards5039/all125, including both existing constructors.
+181 selectors/108 groups, frame2C4 and19 sentinels retained. Some other groups
+regress; no whole-parent exact claim. Archive19 former native files and32 old
+source inputs before replacing the canonical build. Removed64 rejected files /
+4265482 bytes. All owned jobs terminal0; no full CI. Private recovery:
+`.analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/RECOVERY.md`.
+Next investigate register/stack lifetime differences in this new large dispatcher
+baseline; continue large-function work rather than small-function closures.
+
+## Previous ANM float-service context checkpoint
 
 Startingd815f8e. Definition-last compiles1/reuses9 game objects; separate-GL
 compiles2/reuses9. Both retain full9964 and7541/7995/90of92/gap2. Full350-field
@@ -837,7 +853,7 @@ indirect tables16. Ordinary tracking/CI does not waive this separate gate.
 | --- | --- | --- |
 |ANM43EE30 /9964|9964 bytes;7541/7995 aligned positions;90/92 target-sized groups; aggregate gap2|Child91, temporaries49/53/54, FlipX61, common-tail2 and Tick order|
 |ECL44E1A0 /7020|7020/6993,27 differences;189 fields/62 locals;171-byte float callee exact|Thread argument, SIB, homes and latch|
-|Enemy40E770 /14416|14352 bytes; frame2C4;181 selectors/108 groups;42 target-sized groups; aggregate gap566|Laser ABI, shared tails and packet/register/stack lifetime|
+|Enemy40E770 /14416|14368 bytes; frame2C4;181 selectors/108 groups;45 target-sized groups; aggregate gap348|Laser ABI, shared tails and packet/register/stack lifetime|
 
 The current ECL scope/storage/order/profile family is a measured plateau, not
 proof that Run is exhausted. The subsequent child/flag controls below also

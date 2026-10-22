@@ -5268,3 +5268,14 @@ unresolved destinations and zero remaining ordinary-byte differences. This is
 measured native-peer equality only, not target equality or original TU proof.
 Both retain36 whole guards4618/all121 and eight bounded child paths.
 [Source transformations and proof scope](evidence/anm-float-service-context/README.md).
+
+## Enemy spawn request tail compiler constraint (2026-10-22)
+
+TH10 target groups 0x100/0x101 occupy 403/81 bytes, with the latter jumping back
+into the former's spawn-call region. Local request-field fills with a shared
+spawn call recover those sizes in the maintained compiler context; duplicating
+the whole tail does not. This supports a source-shape hypothesis, not original
+source authorship or exactness. The maintained and private selected rebuilds
+have identical complete dispatcher/ANM/ECL/factory raw bodies. Other dispatcher
+groups regress, so neither matching sizes nor the smaller aggregate gap proves
+the entire parent. See [spawn-tail evidence](evidence/enemy-spawn-tail-layout/README.md).

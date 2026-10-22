@@ -1209,7 +1209,6 @@ int EnemyRuntimeView::DispatchEclInstruction()
       local_90.spawnRequest.position.z = 0.0;
       fVar19 = local_90.spawnRequest.position.y - 16.0f;
     }
-dispatch_finish_spawn_position:
     local_90.spawnRequest.position.y = (float)fVar19;
     uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));
     local_90.spawnRequest.life = uVar22;
@@ -1235,7 +1234,15 @@ dispatch_create_enemy_absolute:
     fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
     local_90.spawnRequest.position.x = (float)fVar19;
     fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
-    goto dispatch_finish_spawn_position;
+    local_90.spawnRequest.position.y = (float)fVar19;
+    uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));
+    local_90.spawnRequest.life = uVar22;
+    uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));
+    local_90.spawnRequest.scoreReward = uVar22;
+    uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
+    local_90.spawnRequest.itemDropType = uVar22;
+    local_90.spawnRequest.eclVariables = eclVariables;
+    goto dispatch_spawn_enemy;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET:
 dispatch_create_enemy_global:
     iVar26 = *(int *)(iVar27 + 0x10) + 4;

@@ -1,0 +1,53 @@
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -1235,7 +1235,15 @@
+     fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
+     local_90.spawnRequest.position.x = (float)fVar19;
+     fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
+-    goto dispatch_finish_spawn_position;
++    local_90.spawnRequest.position.y = (float)fVar19;
++    uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));
++    local_90.spawnRequest.life = uVar22;
++    uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));
++    local_90.spawnRequest.scoreReward = uVar22;
++    uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
++    local_90.spawnRequest.itemDropType = uVar22;
++    local_90.spawnRequest.eclVariables = eclVariables;
++    goto dispatch_spawn_enemy;
+   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET:
+ dispatch_create_enemy_global:
+     iVar26 = *(int *)(iVar27 + 0x10) + 4;
+@@ -2687,22 +2695,17 @@
+     if (g_EnemyChapterState.rank > -0x200) goto dispatch_rank_float_tail_b;
+     goto dispatch_rank_float_tail_a;
+   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_5:
+-    if (g_EnemyChapterState.rank >= 600) {
+-      goto dispatch_difficulty_float_index_4_a;
+-    }
+-    if (g_EnemyChapterState.rank >= 200) {
+-      goto dispatch_difficulty_float_index_3;
+-    }
+-    if (g_EnemyChapterState.rank >= -200) {
+-      iVar27 = 2;
+-      goto dispatch_rank_float_tail_a;
+-    }
+-    if (g_EnemyChapterState.rank < -400) {
+-      iVar27 = 0;
+-      goto dispatch_rank_float_tail_a;
+-    }
+-    iVar27 = 1;
+-    goto dispatch_rank_float_tail_b;
++    if (g_EnemyChapterState.rank >= 600)
++      fVar19 = ReadFloatArgument(4);
++    else if (g_EnemyChapterState.rank >= 200)
++      fVar19 = ReadFloatArgument(3);
++    else if (g_EnemyChapterState.rank >= -200)
++      fVar19 = ReadFloatArgument(2);
++    else if (g_EnemyChapterState.rank < -400)
++      fVar19 = ReadFloatArgument(0);
++    else
++      fVar19 = ReadFloatArgument(1);
++    goto dispatch_store_float_result;
+ dispatch_rank_float_tail_b:
+     fVar19 = ReadFloatArgument(iVar27);
+ dispatch_store_float_result:

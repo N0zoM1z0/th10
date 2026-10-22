@@ -1,0 +1,1988 @@
+{
+  "starting_head": "2529e27bf655f035ea35d0216199d322123912c8",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "acceptance_authority": "none for parent and partial cases; existing guards unchanged",
+  "adopted_source": {
+    "source_sha256": "5dadd2aec774f5abcb85e0082f9e96e3a09623329c6714c579e321cd8f721e00",
+    "candidate_source_sha256": "e76287d2ee7ca2d8af7f2a0fc4a0856bb1e1a4afad9408f7fce6eba782a5128b",
+    "only_extra_source_change": "remove newly unreferenced label dispatch_finish_spawn_position",
+    "compiled_game_objects": 1,
+    "reused_game_objects": 9,
+    "reused_harness_files": 2,
+    "full_cold": false,
+    "archive": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/baseline-before-adoption",
+    "archive_files": {
+      "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+      "source.map": "ab1d5a14558a30e851c44c857bb6482b78859c5fb91f2338ed07aab210dc89ef",
+      "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+      "link-attempt-2.log": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+      "source.exe": "16b8e4aa4942e9ff23846a7efbf2af76e61abebbc5280d689350a1427cda8ff6",
+      "source.ltcg.obj": "eaa7ae762e3a666264cd23fba53303c6e635b9558c3d3acfbce80a85122d3e35",
+      "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+      "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+      "link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+      "link-attempt-1.log": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+      "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+      "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+      "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+      "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+      "link-anchors.c": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+      "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+      "source.pdb": "6706a3a4a2b97abcec12a86f7e4c99bf49cf892ea9871525176a2b44d1cc6270",
+      "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    "new_artifacts": {
+      "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+      "build/match-linked/EnemyItemDrops/source.map": "cc27ac3974ed70482f8c57903a60c55213c859d91bf851b7f9237c6bc6417adb",
+      "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+      "build/match-linked/EnemyItemDrops/link-attempt-2.log": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+      "build/match-linked/EnemyItemDrops/source.exe": "4a00b54a3712ad0be7d491549a29e09114726d8fc37eb4e327c5c96cb250aca5",
+      "build/match-linked/EnemyItemDrops/source.ltcg.obj": "82f37e7c288c57ba2a439ed0562eba259c33ddf13183aa6cf98da4d0ab848878",
+      "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+      "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+      "build/match-linked/EnemyItemDrops/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+      "build/match-linked/EnemyItemDrops/link-attempt-1.log": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+      "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+      "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+      "build/match-linked/EnemyItemDrops/link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+      "build/match-linked/EnemyItemDrops/link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+      "build/match-linked/EnemyItemDrops/link-anchors.c": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+      "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+      "build/match-linked/EnemyItemDrops/source.pdb": "87c2a8e25924f5e515ecd919c0a5a9f9e7ef8d5a9a92c82793346923015e2bc7",
+      "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    }
+  },
+  "private_and_maintained_four_body_raw_equal": true,
+  "controls": [
+    {
+      "label": "baseline",
+      "size": 14352,
+      "raw_sha256": "c2105328a878fbb8171c8ccb320e79920c3a678a2b4c81c28106bb20b03cb8ad",
+      "frame": "esp, 0x2c4",
+      "sentinels": 19,
+      "case_aligned": {
+        "comparable": 11148,
+        "gap": 566,
+        "matched": 3219,
+        "same_sized": 42
+      },
+      "layout": {
+        "candidate_pre_table_span": 13696,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14352,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/EnemyItemDrops/source.exe",
+        "jump_table_address": "0x00405D90",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -64,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F40",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/match-linked/EnemyItemDrops",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [],
+      "reused_source_objects": {},
+      "reused_harness": {},
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/match-linked/EnemyItemDrops/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/match-linked/EnemyItemDrops/link-anchors.c": {
+          "bytes": 12239,
+          "sha256": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16"
+        },
+        "build/match-linked/EnemyItemDrops/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-1.log": {
+          "bytes": 39576,
+          "sha256": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-2.log": {
+          "bytes": 820,
+          "sha256": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-3.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/match-linked/EnemyItemDrops/source.exe": {
+          "bytes": 122880,
+          "sha256": "16b8e4aa4942e9ff23846a7efbf2af76e61abebbc5280d689350a1427cda8ff6"
+        },
+        "build/match-linked/EnemyItemDrops/source.ltcg.obj": {
+          "bytes": 157029,
+          "sha256": "eaa7ae762e3a666264cd23fba53303c6e635b9558c3d3acfbce80a85122d3e35"
+        },
+        "build/match-linked/EnemyItemDrops/source.map": {
+          "bytes": 92342,
+          "sha256": "ab1d5a14558a30e851c44c857bb6482b78859c5fb91f2338ed07aab210dc89ef"
+        },
+        "build/match-linked/EnemyItemDrops/source.pdb": {
+          "bytes": 117760,
+          "sha256": "6706a3a4a2b97abcec12a86f7e4c99bf49cf892ea9871525176a2b44d1cc6270"
+        },
+        "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "archived_output_dir": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/baseline-before-adoption",
+      "baseline_revalidated_from_archive": true
+    },
+    {
+      "label": "duplicate-spawn-tail",
+      "size": 14480,
+      "raw_sha256": "1ec792274bf34b80fb6d73a9c6d1cb9b177878784d55846bb41fdc979f26161a",
+      "frame": "esp, 0x2c4",
+      "sentinels": 19,
+      "case_aligned": {
+        "comparable": 11149,
+        "gap": 690,
+        "matched": 3137,
+        "same_sized": 42
+      },
+      "layout": {
+        "candidate_pre_table_span": 13824,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14480,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/source.exe",
+        "jump_table_address": "0x00405E10",
+        "physical_order_matches": true,
+        "pre_table_span_delta": 64,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405FC0",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "f1ac445c79dd867eb65c57f82e9e5a61f7a719fd35c83381c3aa3dcb5f89c9c2",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "d90ff7b8a03bfe49fcf09d33b687f1b6dafababaeb5a77b59199f02400506ce1"
+        }
+      ],
+      "reused_source_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/link.log": {
+          "bytes": 41,
+          "sha256": "cef3eac030f78ab3102198799a5a11bbcb1773c5271fc6786b6daeffbb560440"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/source.exe": {
+          "bytes": 122880,
+          "sha256": "5d2db34bb3bdba75270d6668af4f5ae2bc48e511297ea8c6c0f6f8a845abcebc"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/source.ltcg.obj": {
+          "bytes": 157785,
+          "sha256": "f1ac445c79dd867eb65c57f82e9e5a61f7a719fd35c83381c3aa3dcb5f89c9c2"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/source.map": {
+          "bytes": 92342,
+          "sha256": "a925ab3532bdb2b788f4aecbc084fec43baf29d806f1751ac6895cc31a409982"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/source.pdb": {
+          "bytes": 117760,
+          "sha256": "f0b16a97325d2e113fa60faed965465ff276842b0c8f2867b3c02bfe34479b87"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    },
+    {
+      "label": "rank-five-local-tails",
+      "size": 14536,
+      "raw_sha256": "0bd3595ca2ccd44c28690d79d7294310fd3adab932b610ca8a37fd701c78374f",
+      "frame": "esp, 0x2c4",
+      "sentinels": 19,
+      "case_aligned": {
+        "comparable": 11153,
+        "gap": 660,
+        "matched": 3229,
+        "same_sized": 42
+      },
+      "layout": {
+        "candidate_pre_table_span": 13880,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14536,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/source.exe",
+        "jump_table_address": "0x00405E48",
+        "physical_order_matches": true,
+        "pre_table_span_delta": 120,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405FF8",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "fb2625cd6e3b641db6d9d6a9a5cbb4dd37967c522291d8b9533e0c15163c5cc1",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "355a9c0c8051ad6a4ff110148c4fb795569cf00166c36a05140a005d8b94067c"
+        }
+      ],
+      "reused_source_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/link.log": {
+          "bytes": 41,
+          "sha256": "cef3eac030f78ab3102198799a5a11bbcb1773c5271fc6786b6daeffbb560440"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/source.exe": {
+          "bytes": 122880,
+          "sha256": "fa27d6d54c28aede8cb32717d697eaea17e0f018a928a7db459737edf7cc4400"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/source.ltcg.obj": {
+          "bytes": 157857,
+          "sha256": "fb2625cd6e3b641db6d9d6a9a5cbb4dd37967c522291d8b9533e0c15163c5cc1"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/source.map": {
+          "bytes": 92342,
+          "sha256": "970b9567881cf535654f4d65f0f1d93fcb484095d6180246168e1e51e223f80a"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/source.pdb": {
+          "bytes": 117760,
+          "sha256": "923877fb4bdf825b5b1e6fd4382998e7528597072f0b52873c56cb939679a6f4"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    },
+    {
+      "label": "duplicate-spawn-fields",
+      "size": 14368,
+      "raw_sha256": "2dca36439528596d3938d6a360e96046912ae04b91cfdba14f85b00aa1fbc55d",
+      "frame": "esp, 0x2c4",
+      "sentinels": 19,
+      "case_aligned": {
+        "comparable": 11139,
+        "gap": 348,
+        "matched": 3250,
+        "same_sized": 45
+      },
+      "layout": {
+        "candidate_pre_table_span": 13712,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14368,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/source.exe",
+        "jump_table_address": "0x00405DA0",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -48,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F50",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "9b8eaccc785b20a666b6116f48025d3051bd0ba1b661da3522f1f0944b8bd43e",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "e76287d2ee7ca2d8af7f2a0fc4a0856bb1e1a4afad9408f7fce6eba782a5128b"
+        }
+      ],
+      "reused_source_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/source.exe": {
+          "bytes": 122880,
+          "sha256": "07190f9762c165dd548a4db96dec61a5cbb2fd7bdb0d479f54b80b7c1d43a8ff"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/source.ltcg.obj": {
+          "bytes": 157712,
+          "sha256": "9b8eaccc785b20a666b6116f48025d3051bd0ba1b661da3522f1f0944b8bd43e"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/source.map": {
+          "bytes": 92342,
+          "sha256": "694df9ecdef9c026f79b3d3f1a7ae83c1c86034f4c624ff72524fddb44c74b8c"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/source.pdb": {
+          "bytes": 117760,
+          "sha256": "6bb1374aead1eb801f93dda2027d1b70a30896962ac4d509c8ccb5260cb97e2e"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    },
+    {
+      "label": "rank-five-shared-result",
+      "size": 14380,
+      "raw_sha256": "f5884d7b33d9c0dfca094b83130e330be263d06def7b9309710267ba67d5ad6f",
+      "frame": "esp, 0x2c4",
+      "sentinels": 19,
+      "case_aligned": {
+        "comparable": 11140,
+        "gap": 620,
+        "matched": 3222,
+        "same_sized": 43
+      },
+      "layout": {
+        "candidate_pre_table_span": 13724,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14380,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/source.exe",
+        "jump_table_address": "0x00405DAC",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -36,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F5C",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "7f5f7a6b8bf844f17b95a9940fd60e505071741ea55b9a204013c7fa37abb115",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "ee300474fc4e94dd680a6361ac06a4e1e6365525ed6f9d6b7789357ad0b5f6bb"
+        }
+      ],
+      "reused_source_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/source.exe": {
+          "bytes": 122880,
+          "sha256": "3510152fce11e5906a8ab27fa2695b793c30cae627836410fdc1de7ce4d0844a"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/source.ltcg.obj": {
+          "bytes": 157418,
+          "sha256": "7f5f7a6b8bf844f17b95a9940fd60e505071741ea55b9a204013c7fa37abb115"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/source.map": {
+          "bytes": 92342,
+          "sha256": "5607d421784f7d94e320818e7e4aeb51806786df735a4df09925263f8a3b8df0"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/source.pdb": {
+          "bytes": 117760,
+          "sha256": "3a670fecde64a374f81000c3b479d080631d754cfeee4bbabd35a9defce8502b"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    },
+    {
+      "label": "combined-spawn-rank",
+      "size": 14380,
+      "raw_sha256": "9d2e9ee1ba737fa7fd3b9aebbda9d46a1f3f5141b2c283ffc6a9f8e609756304",
+      "frame": "esp, 0x2c4",
+      "sentinels": 19,
+      "case_aligned": {
+        "comparable": 11124,
+        "gap": 388,
+        "matched": 3273,
+        "same_sized": 46
+      },
+      "layout": {
+        "candidate_pre_table_span": 13724,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14380,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/source.exe",
+        "jump_table_address": "0x00405DAC",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -36,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F5C",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "822afdcb9fe0d52a8f79915bc904f8974566e9418a6a750f5929cb1d725060c4",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "c0870f7eff0ac8fb19acd83f167328146888dbcdcc65fbc38b913ef8a117b00e"
+        }
+      ],
+      "reused_source_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/link.log": {
+          "bytes": 104,
+          "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/source.exe": {
+          "bytes": 122880,
+          "sha256": "fbac062ff8e98a93db4788029efe204b2db0467f7ccd642e7dd3fe5762c14f5d"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/source.ltcg.obj": {
+          "bytes": 157841,
+          "sha256": "822afdcb9fe0d52a8f79915bc904f8974566e9418a6a750f5929cb1d725060c4"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/source.map": {
+          "bytes": 92342,
+          "sha256": "c82ef76d969bc1b58a1f309bd4b68ee05773b7cc14f5012d96e9032366a63ee3"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/source.pdb": {
+          "bytes": 117760,
+          "sha256": "b1c88670f20b5d417240f1dc0357545d5f64a6febcdddd0d4401ad8621ec7b00"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    },
+    {
+      "label": "adopted",
+      "size": 14368,
+      "raw_sha256": "2dca36439528596d3938d6a360e96046912ae04b91cfdba14f85b00aa1fbc55d",
+      "frame": "esp, 0x2c4",
+      "sentinels": 19,
+      "case_aligned": {
+        "comparable": 11139,
+        "gap": 348,
+        "matched": 3250,
+        "same_sized": 45
+      },
+      "layout": {
+        "candidate_pre_table_span": 13712,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14368,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/EnemyItemDrops/source.exe",
+        "jump_table_address": "0x00405DA0",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -48,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F50",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/match-linked/EnemyItemDrops",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [],
+      "reused_source_objects": {},
+      "reused_harness": {},
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/match-linked/EnemyItemDrops/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/match-linked/EnemyItemDrops/link-anchors.c": {
+          "bytes": 12239,
+          "sha256": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16"
+        },
+        "build/match-linked/EnemyItemDrops/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-1.log": {
+          "bytes": 39576,
+          "sha256": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-2.log": {
+          "bytes": 820,
+          "sha256": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-3.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/match-linked/EnemyItemDrops/source.exe": {
+          "bytes": 122880,
+          "sha256": "4a00b54a3712ad0be7d491549a29e09114726d8fc37eb4e327c5c96cb250aca5"
+        },
+        "build/match-linked/EnemyItemDrops/source.ltcg.obj": {
+          "bytes": 157418,
+          "sha256": "82f37e7c288c57ba2a439ed0562eba259c33ddf13183aa6cf98da4d0ab848878"
+        },
+        "build/match-linked/EnemyItemDrops/source.map": {
+          "bytes": 92342,
+          "sha256": "cc27ac3974ed70482f8c57903a60c55213c859d91bf851b7f9237c6bc6417adb"
+        },
+        "build/match-linked/EnemyItemDrops/source.pdb": {
+          "bytes": 117760,
+          "sha256": "87c2a8e25924f5e515ecd919c0a5a9f9e7ef8d5a9a92c82793346923015e2bc7"
+        },
+        "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    }
+  ],
+  "case_transition": [
+    {
+      "opcodes": [
+        "0x109"
+      ],
+      "target_size": 17,
+      "baseline_size": 16,
+      "candidate_size": 17,
+      "baseline_match": 0,
+      "candidate_match": 9
+    },
+    {
+      "opcodes": [
+        "0x100"
+      ],
+      "target_size": 403,
+      "baseline_size": 278,
+      "candidate_size": 403,
+      "baseline_match": 19,
+      "candidate_match": 263
+    },
+    {
+      "opcodes": [
+        "0x101"
+      ],
+      "target_size": 81,
+      "baseline_size": 198,
+      "candidate_size": 81,
+      "baseline_match": 2,
+      "candidate_match": 50
+    },
+    {
+      "opcodes": [
+        "0x106"
+      ],
+      "target_size": 225,
+      "baseline_size": 219,
+      "candidate_size": 219,
+      "baseline_match": 32,
+      "candidate_match": 31
+    },
+    {
+      "opcodes": [
+        "0x10d"
+      ],
+      "target_size": 148,
+      "baseline_size": 148,
+      "candidate_size": 148,
+      "baseline_match": 71,
+      "candidate_match": 72
+    },
+    {
+      "opcodes": [
+        "0x118",
+        "0x11a"
+      ],
+      "target_size": 179,
+      "baseline_size": 183,
+      "candidate_size": 193,
+      "baseline_match": 4,
+      "candidate_match": 14
+    },
+    {
+      "opcodes": [
+        "0x119",
+        "0x11b"
+      ],
+      "target_size": 313,
+      "baseline_size": 304,
+      "candidate_size": 306,
+      "baseline_match": 19,
+      "candidate_match": 18
+    },
+    {
+      "opcodes": [
+        "0x156",
+        "0x15c",
+        "0x165",
+        "0x166",
+        "0x167"
+      ],
+      "target_size": 219,
+      "baseline_size": 224,
+      "candidate_size": 227,
+      "baseline_match": 2,
+      "candidate_match": 18
+    },
+    {
+      "opcodes": [
+        "0x157"
+      ],
+      "target_size": 33,
+      "baseline_size": 38,
+      "candidate_size": 37,
+      "baseline_match": 0,
+      "candidate_match": 1
+    },
+    {
+      "opcodes": [
+        "0x19c",
+        "0x1af"
+      ],
+      "target_size": 327,
+      "baseline_size": 331,
+      "candidate_size": 329,
+      "baseline_match": 161,
+      "candidate_match": 15
+    },
+    {
+      "opcodes": [
+        "0x19d",
+        "0x1b0"
+      ],
+      "target_size": 439,
+      "baseline_size": 389,
+      "candidate_size": 379,
+      "baseline_match": 166,
+      "candidate_match": 53
+    },
+    {
+      "opcodes": [
+        "0x1ac",
+        "0x1b1"
+      ],
+      "target_size": 322,
+      "baseline_size": 320,
+      "candidate_size": 318,
+      "baseline_match": 81,
+      "candidate_match": 31
+    },
+    {
+      "opcodes": [
+        "0x1ad",
+        "0x1b2"
+      ],
+      "target_size": 397,
+      "baseline_size": 405,
+      "candidate_size": 409,
+      "baseline_match": 27,
+      "candidate_match": 40
+    },
+    {
+      "opcodes": [],
+      "target_size": 24,
+      "baseline_size": 23,
+      "candidate_size": 26,
+      "baseline_match": 19,
+      "candidate_match": 19
+    }
+  ],
+  "maintained_guards": {
+    "count": 38,
+    "bytes": 5039,
+    "fields": 125
+  },
+  "new_exact_credit": 0,
+  "baseline_source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "baseline_artifact_sha256": {
+    "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "build/match-linked/EnemyItemDrops/source.map": "ab1d5a14558a30e851c44c857bb6482b78859c5fb91f2338ed07aab210dc89ef",
+    "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "build/match-linked/EnemyItemDrops/link-attempt-2.log": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "build/match-linked/EnemyItemDrops/source.exe": "16b8e4aa4942e9ff23846a7efbf2af76e61abebbc5280d689350a1427cda8ff6",
+    "build/match-linked/EnemyItemDrops/source.ltcg.obj": "eaa7ae762e3a666264cd23fba53303c6e635b9558c3d3acfbce80a85122d3e35",
+    "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "build/match-linked/EnemyItemDrops/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "build/match-linked/EnemyItemDrops/link-attempt-1.log": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "build/match-linked/EnemyItemDrops/link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "build/match-linked/EnemyItemDrops/link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "build/match-linked/EnemyItemDrops/link-anchors.c": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "build/match-linked/EnemyItemDrops/source.pdb": "6706a3a4a2b97abcec12a86f7e4c99bf49cf892ea9871525176a2b44d1cc6270",
+    "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+  },
+  "unrelated_untracked": {
+    "docs/evidence/d3d-adapter-format/README.md": "75412206932d385780dcfc84288f87a72b32545fdfe9cfba8d462969ca446ce1",
+    "docs/evidence/d3d-adapter-format/reconstruct.py": "3f2a09ac896cbb1c12a6a4901a62ef6a23cf006a7cb08bcb7d9046bf40cf5512",
+    "docs/evidence/d3d-adapter-format/.gitattributes": "ed498fc91b1843b2e372ddc35249846ed8411aa4b63361dc2fede9f454e0fb25",
+    "docs/evidence/d3d-adapter-format/evidence.json": "cac2ad3b15a0cab5b0dfbd186f068d05979fca84c64f146934ce45e976e1afca",
+    "docs/evidence/d3d-adapter-format/candidate.patch": "20f79cba52efad0ef229b0343b6c8ca7eea23ca813b301e45a95111a48558a4d",
+    "docs/evidence/d3d-adapter-format/test_candidate.py": "e74122636a34597a213bd53514d43f7665559177227eb2ccc7128bf6932cc6a7",
+    "docs/evidence/d3d-adapter-format/provenance.json": "d2e14614a1a9a683ab9f04210f76be95ee9c7fcc32b12dad71e94b9679f8e6d0",
+    "docs/evidence/d3d-adapter-format/REFERENCE_LICENSE.txt": "2928b2f628a94dc67b9c8fbc97bf85f7fe0444bc38e34e898befb4e450463b2f",
+    "docs/evidence/d3d-adapter-format/model.py": "b7be4e6b3bbceebddd3716ff8e2c48fed082245470485ddf70a8db42784dfc0c"
+  },
+  "cleanup": {
+    "files": 64,
+    "bytes": 4265482,
+    "inventory": [
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/link-aliases.rsp",
+        "bytes": 19994,
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/link-anchors.obj",
+        "bytes": 11653,
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/link.log",
+        "bytes": 41,
+        "sha256": "cef3eac030f78ab3102198799a5a11bbcb1773c5271fc6786b6daeffbb560440"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/source.exe",
+        "bytes": 122880,
+        "sha256": "5d2db34bb3bdba75270d6668af4f5ae2bc48e511297ea8c6c0f6f8a845abcebc"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/source.ltcg.obj",
+        "bytes": 157785,
+        "sha256": "f1ac445c79dd867eb65c57f82e9e5a61f7a719fd35c83381c3aa3dcb5f89c9c2"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/source.map",
+        "bytes": 92342,
+        "sha256": "a925ab3532bdb2b788f4aecbc084fec43baf29d806f1751ac6895cc31a409982"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/source.pdb",
+        "bytes": 117760,
+        "sha256": "f0b16a97325d2e113fa60faed965465ff276842b0c8f2867b3c02bfe34479b87"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-00-EclVm.ltcg.obj",
+        "bytes": 55445,
+        "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-01-AnmManager.ltcg.obj",
+        "bytes": 247856,
+        "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-02-AnmVmCreate.ltcg.obj",
+        "bytes": 10892,
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-03-EnemyLaser.ltcg.obj",
+        "bytes": 44123,
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-04-Enemy.ltcg.obj",
+        "bytes": 97582,
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-05-AnmVmId.ltcg.obj",
+        "bytes": 13646,
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-06-RandomMath.ltcg.obj",
+        "bytes": 3947,
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-07-AnmInt3Scale.ltcg.obj",
+        "bytes": 10486,
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail/support-08-ItemManager.ltcg.obj",
+        "bytes": 59951,
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/link-aliases.rsp",
+        "bytes": 19994,
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/link-anchors.obj",
+        "bytes": 11653,
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/link.log",
+        "bytes": 41,
+        "sha256": "cef3eac030f78ab3102198799a5a11bbcb1773c5271fc6786b6daeffbb560440"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/source.exe",
+        "bytes": 122880,
+        "sha256": "fa27d6d54c28aede8cb32717d697eaea17e0f018a928a7db459737edf7cc4400"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/source.ltcg.obj",
+        "bytes": 157857,
+        "sha256": "fb2625cd6e3b641db6d9d6a9a5cbb4dd37967c522291d8b9533e0c15163c5cc1"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/source.map",
+        "bytes": 92342,
+        "sha256": "970b9567881cf535654f4d65f0f1d93fcb484095d6180246168e1e51e223f80a"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/source.pdb",
+        "bytes": 117760,
+        "sha256": "923877fb4bdf825b5b1e6fd4382998e7528597072f0b52873c56cb939679a6f4"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-00-EclVm.ltcg.obj",
+        "bytes": 55445,
+        "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-01-AnmManager.ltcg.obj",
+        "bytes": 247856,
+        "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-02-AnmVmCreate.ltcg.obj",
+        "bytes": 10892,
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-03-EnemyLaser.ltcg.obj",
+        "bytes": 44123,
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-04-Enemy.ltcg.obj",
+        "bytes": 97582,
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-05-AnmVmId.ltcg.obj",
+        "bytes": 13646,
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-06-RandomMath.ltcg.obj",
+        "bytes": 3947,
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-07-AnmInt3Scale.ltcg.obj",
+        "bytes": 10486,
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails/support-08-ItemManager.ltcg.obj",
+        "bytes": 59951,
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/link-aliases.rsp",
+        "bytes": 19994,
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/link-anchors.obj",
+        "bytes": 11653,
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/link.log",
+        "bytes": 167,
+        "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/source.exe",
+        "bytes": 122880,
+        "sha256": "3510152fce11e5906a8ab27fa2695b793c30cae627836410fdc1de7ce4d0844a"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/source.ltcg.obj",
+        "bytes": 157418,
+        "sha256": "7f5f7a6b8bf844f17b95a9940fd60e505071741ea55b9a204013c7fa37abb115"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/source.map",
+        "bytes": 92342,
+        "sha256": "5607d421784f7d94e320818e7e4aeb51806786df735a4df09925263f8a3b8df0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/source.pdb",
+        "bytes": 117760,
+        "sha256": "3a670fecde64a374f81000c3b479d080631d754cfeee4bbabd35a9defce8502b"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-00-EclVm.ltcg.obj",
+        "bytes": 55445,
+        "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-01-AnmManager.ltcg.obj",
+        "bytes": 247856,
+        "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-02-AnmVmCreate.ltcg.obj",
+        "bytes": 10892,
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-03-EnemyLaser.ltcg.obj",
+        "bytes": 44123,
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-04-Enemy.ltcg.obj",
+        "bytes": 97582,
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-05-AnmVmId.ltcg.obj",
+        "bytes": 13646,
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-06-RandomMath.ltcg.obj",
+        "bytes": 3947,
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-07-AnmInt3Scale.ltcg.obj",
+        "bytes": 10486,
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result/support-08-ItemManager.ltcg.obj",
+        "bytes": 59951,
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/link-aliases.rsp",
+        "bytes": 19994,
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/link-anchors.obj",
+        "bytes": 11653,
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/link.log",
+        "bytes": 104,
+        "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/source.exe",
+        "bytes": 122880,
+        "sha256": "fbac062ff8e98a93db4788029efe204b2db0467f7ccd642e7dd3fe5762c14f5d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/source.ltcg.obj",
+        "bytes": 157841,
+        "sha256": "822afdcb9fe0d52a8f79915bc904f8974566e9418a6a750f5929cb1d725060c4"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/source.map",
+        "bytes": 92342,
+        "sha256": "c82ef76d969bc1b58a1f309bd4b68ee05773b7cc14f5012d96e9032366a63ee3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/source.pdb",
+        "bytes": 117760,
+        "sha256": "b1c88670f20b5d417240f1dc0357545d5f64a6febcdddd0d4401ad8621ec7b00"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-00-EclVm.ltcg.obj",
+        "bytes": 55445,
+        "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-01-AnmManager.ltcg.obj",
+        "bytes": 247856,
+        "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-02-AnmVmCreate.ltcg.obj",
+        "bytes": 10892,
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-03-EnemyLaser.ltcg.obj",
+        "bytes": 44123,
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-04-Enemy.ltcg.obj",
+        "bytes": 97582,
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-05-AnmVmId.ltcg.obj",
+        "bytes": 13646,
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-06-RandomMath.ltcg.obj",
+        "bytes": 3947,
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-07-AnmInt3Scale.ltcg.obj",
+        "bytes": 10486,
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank/support-08-ItemManager.ltcg.obj",
+        "bytes": 59951,
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      }
+    ]
+  },
+  "terminal_exit_codes": {
+    "ghidra28381": 0,
+    "baseline_and_full_tail58176": 0,
+    "rank_local40019": 0,
+    "spawn_fields60180": 0,
+    "rank_shared77444": 0,
+    "combined74371": 0,
+    "adopt7613": 0,
+    "review_and_two_guards47310": 0,
+    "toolchain16477": 0
+  },
+  "full_ci_run": false,
+  "full_cold_acceptance_pair": false
+}

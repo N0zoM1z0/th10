@@ -1,0 +1,53 @@
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -2688,21 +2688,41 @@
+     goto dispatch_rank_float_tail_a;
+   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_5:
+     if (g_EnemyChapterState.rank >= 600) {
+-      goto dispatch_difficulty_float_index_4_a;
++    fVar21 = ReadFloatArgument(4);
++    positionInterpolationValues = ResolveFloatArgument(0);
++    *positionInterpolationValues = (float)fVar21;
++    return 0;
+     }
+     if (g_EnemyChapterState.rank >= 200) {
+-      goto dispatch_difficulty_float_index_3;
++    fVar19 = ReadFloatArgument(3);
++    // Keep this owner lifetime explicit: the shipped shared tail reuses EBX
++    // as the full owner immediately before ResolveFloat.
++    iVar26 = reinterpret_cast<int>(owner);
++    pfVar15 = reinterpret_cast<EclVmContext *>(
++        *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
++    *pfVar15 = (float)fVar19;
++    return 0;
+     }
+     if (g_EnemyChapterState.rank >= -200) {
+-      iVar27 = 2;
+-      goto dispatch_rank_float_tail_a;
++    fVar21 = ReadFloatArgument(2);
++    positionInterpolationValues = ResolveFloatArgument(0);
++    *positionInterpolationValues = (float)fVar21;
++    return 0;
+     }
+     if (g_EnemyChapterState.rank < -400) {
+-      iVar27 = 0;
+-      goto dispatch_rank_float_tail_a;
+-    }
+-    iVar27 = 1;
+-    goto dispatch_rank_float_tail_b;
++    fVar21 = ReadFloatArgument(0);
++    positionInterpolationValues = ResolveFloatArgument(0);
++    *positionInterpolationValues = (float)fVar21;
++    return 0;
++    }
++    fVar19 = ReadFloatArgument(1);
++    // Keep this owner lifetime explicit: the shipped shared tail reuses EBX
++    // as the full owner immediately before ResolveFloat.
++    iVar26 = reinterpret_cast<int>(owner);
++    pfVar15 = reinterpret_cast<EclVmContext *>(
++        *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
++    *pfVar15 = (float)fVar19;
++    return 0;
+ dispatch_rank_float_tail_b:
+     fVar19 = ReadFloatArgument(iVar27);
+ dispatch_store_float_result:
