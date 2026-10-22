@@ -1,0 +1,525 @@
+{
+  "starting_head": "836e8058cb8d7460dbf97e42ffc1cd6aef5dde60",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "canonical_manifest_sha256": "c3ad555b73b3e4929765f93eda42b6288f98d8b45054b4d7a204a8a5557f659a",
+  "baseline_evidence": {
+    "path": "docs/evidence/anm-child-flag-controls/facts.json",
+    "sha256": "fac79b1c3c44e92b5995ab99ca048409768de73f39971c7374775c62071d16c4",
+    "all32_source_header_and15_artifact_pins_unchanged": true
+  },
+  "maintained_native_inputs_unchanged": 107,
+  "frozen_code_test_config_inputs": 369,
+  "independent_D3D_files_preserved": 9,
+  "ghidra": {
+    "mapped_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "unchanged_before_after": true,
+    "mode": "readOnly/noanalysis/rollback CPU1 heap768MiB",
+    "producer_sha256": "c7a8ee7aa30efc597df9df1db2e13748e46aafc185f13af1360016c3d2a81eb4"
+  },
+  "models": [
+    {
+      "model": "raw-float-locals",
+      "source_transformations": [
+        {
+          "before": "        case ANM_OP_ROTATION:\r\n            vm->rotation.x = GET_FLOAT_VAR(0);\r\n            vm->rotation.y = GET_FLOAT_VAR(1);\r\n            vm->rotation.z = GET_FLOAT_VAR(2);\r\n            vm->updateRotation = 1;\r\n            break;\r\n        case ANM_OP_ANGULAR_VELOCITY:\r\n            vm->angularVelocity.x = GET_FLOAT_VAR(0);\r\n            vm->angularVelocity.y = GET_FLOAT_VAR(1);\r\n            vm->angularVelocity.z = GET_FLOAT_VAR(2);\r\n            vm->updateRotation = 1;\r\n            break;\r\n        case ANM_OP_SCALE_GROWTH:\r\n            vm->scaleGrowth.x = GET_FLOAT_VAR(0);\r\n            vm->scaleGrowth.y = GET_FLOAT_VAR(1);\r\n            break;\r\n\r\n",
+          "after": "        case ANM_OP_ROTATION:\r\n        {\r\n            const float argument0 = currentInstruction->floatArgs[0];\r\n            vm->rotation.x = (currentInstruction->variableMask & (1 << 0)) != 0\r\n                ? vm->GetFloatVar(argument0) : argument0;\r\n            const float argument1 = currentInstruction->floatArgs[1];\r\n            vm->rotation.y = (currentInstruction->variableMask & (1 << 1)) != 0\r\n                ? vm->GetFloatVar(argument1) : argument1;\r\n            const float argument2 = currentInstruction->floatArgs[2];\r\n            vm->rotation.z = (currentInstruction->variableMask & (1 << 2)) != 0\r\n                ? vm->GetFloatVar(argument2) : argument2;\r\n            vm->updateRotation = 1;\r\n            break;\r\n        }\r\n        case ANM_OP_ANGULAR_VELOCITY:\r\n        {\r\n            const float argument0 = currentInstruction->floatArgs[0];\r\n            vm->angularVelocity.x = (currentInstruction->variableMask & (1 << 0)) != 0\r\n                ? vm->GetFloatVar(argument0) : argument0;\r\n            const float argument1 = currentInstruction->floatArgs[1];\r\n            vm->angularVelocity.y = (currentInstruction->variableMask & (1 << 1)) != 0\r\n                ? vm->GetFloatVar(argument1) : argument1;\r\n            const float argument2 = currentInstruction->floatArgs[2];\r\n            vm->angularVelocity.z = (currentInstruction->variableMask & (1 << 2)) != 0\r\n                ? vm->GetFloatVar(argument2) : argument2;\r\n            vm->updateRotation = 1;\r\n            break;\r\n        }\r\n        case ANM_OP_SCALE_GROWTH:\r\n        {\r\n            const float argument0 = currentInstruction->floatArgs[0];\r\n            vm->scaleGrowth.x = (currentInstruction->variableMask & (1 << 0)) != 0\r\n                ? vm->GetFloatVar(argument0) : argument0;\r\n            const float argument1 = currentInstruction->floatArgs[1];\r\n            vm->scaleGrowth.y = (currentInstruction->variableMask & (1 << 1)) != 0\r\n                ? vm->GetFloatVar(argument1) : argument1;\r\n            break;\r\n        }\r\n\r\n"
+        }
+      ],
+      "producer_sha256": "a3ca3d0fc70938f11cfd176dd43e04cd504f83393e0b1201e7374d7b718302a7",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/raw-float-locals/AnmManager.cpp": "9eb7bdfd93cb5e93525fe7cad208177ca0e361913ce3d7262a29970ecef22875",
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/raw-float-locals/source.exe",
+          "sha256": "06530618e65988c8b9e85b9c43912cddf6b197ae1005a6c9c9da809e40b6becf"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/raw-float-locals/source.map",
+          "sha256": "a57f4807ccb0937627a67fae281de211d8765d5d56467a841ba40d674febc7b5"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/raw-float-locals/source.pdb",
+          "sha256": "7b2a7e60e4dac9ff28edb718cf4f8df055c4447dd78f79ead6aafcac4afc2418"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/raw-float-locals/source.ltcg.obj",
+          "sha256": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab"
+        }
+      },
+      "case_summary": {
+        "matched_comparable_bytes": 6007,
+        "comparable_bytes": 8040,
+        "absolute_case_gap_delta": 232,
+        "same_sized_cases": 73,
+        "normalization_complete": true
+      },
+      "anm_size": 10076,
+      "selected_groups": [
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040DE5F",
+          "target_size": 112,
+          "candidate_size": 146,
+          "gap_delta": 34,
+          "matched_comparable_bytes": 5,
+          "comparable_bytes": 100,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040DEF1",
+          "target_size": 112,
+          "candidate_size": 155,
+          "gap_delta": 43,
+          "matched_comparable_bytes": 11,
+          "comparable_bytes": 100,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040DF8C",
+          "target_size": 92,
+          "candidate_size": 113,
+          "gap_delta": 21,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 80,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F9F9",
+          "target_size": 1441,
+          "candidate_size": 1435,
+          "gap_delta": -6,
+          "matched_comparable_bytes": 852,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "guards": {
+        "owners": 35,
+        "exact": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "static_child_paths": 8,
+      "ecl": {
+        "bytes": 7020,
+        "matched": 6993,
+        "ordinary_differences": 27,
+        "fields": 189,
+        "local_destinations": 62,
+        "complete_callee_exact_bytes": 171,
+        "replayed_body_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+        "decoded_bytes": 7019,
+        "annotated_selector_suffix": [
+          {
+            "offset": 7019,
+            "width": 1
+          }
+        ],
+        "generic_normalization_complete": false
+      }
+    },
+    {
+      "model": "float-operand-helper",
+      "source_transformations": [
+        {
+          "before": "int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)",
+          "after": "static float AnmReadFloatOperand(AnmVmView *vm,\r\n                                 const AnmRawInstructionView *instruction, int index)\r\n{\r\n    if ((instruction->variableMask & (1 << index)) != 0)\r\n        return vm->GetFloatVar(instruction->floatArgs[index]);\r\n    return instruction->floatArgs[index];\r\n}\r\n\r\nint __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)"
+        },
+        {
+          "before": "        case ANM_OP_ROTATION:\r\n            vm->rotation.x = GET_FLOAT_VAR(0);\r\n            vm->rotation.y = GET_FLOAT_VAR(1);\r\n            vm->rotation.z = GET_FLOAT_VAR(2);\r\n            vm->updateRotation = 1;\r\n            break;\r\n        case ANM_OP_ANGULAR_VELOCITY:\r\n            vm->angularVelocity.x = GET_FLOAT_VAR(0);\r\n            vm->angularVelocity.y = GET_FLOAT_VAR(1);\r\n            vm->angularVelocity.z = GET_FLOAT_VAR(2);\r\n            vm->updateRotation = 1;\r\n            break;\r\n        case ANM_OP_SCALE_GROWTH:\r\n            vm->scaleGrowth.x = GET_FLOAT_VAR(0);\r\n            vm->scaleGrowth.y = GET_FLOAT_VAR(1);\r\n            break;\r\n\r\n",
+          "after": "        case ANM_OP_ROTATION:\r\n        {\r\n            vm->rotation.x = AnmReadFloatOperand(vm, currentInstruction, 0);\r\n            vm->rotation.y = AnmReadFloatOperand(vm, currentInstruction, 1);\r\n            vm->rotation.z = AnmReadFloatOperand(vm, currentInstruction, 2);\r\n            vm->updateRotation = 1;\r\n            break;\r\n        }\r\n        case ANM_OP_ANGULAR_VELOCITY:\r\n        {\r\n            vm->angularVelocity.x = AnmReadFloatOperand(vm, currentInstruction, 0);\r\n            vm->angularVelocity.y = AnmReadFloatOperand(vm, currentInstruction, 1);\r\n            vm->angularVelocity.z = AnmReadFloatOperand(vm, currentInstruction, 2);\r\n            vm->updateRotation = 1;\r\n            break;\r\n        }\r\n        case ANM_OP_SCALE_GROWTH:\r\n        {\r\n            vm->scaleGrowth.x = AnmReadFloatOperand(vm, currentInstruction, 0);\r\n            vm->scaleGrowth.y = AnmReadFloatOperand(vm, currentInstruction, 1);\r\n            break;\r\n        }\r\n\r\n"
+        }
+      ],
+      "producer_sha256": "3d3925d2ce8720872b954dec0b9e6977804716360becc72eab53c751ca39b30d",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper/AnmManager.cpp": "a0a1661bb31ba885fb1383eb334b78b4002c4dedddef9d2023d78995d2a109a4",
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper/source.exe",
+          "sha256": "f4fbaadcc8689c1caa30323395e7ce8db1910c07aa391e0d3844faaabc804a9c"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper/source.map",
+          "sha256": "ce86f2d3ac108d7503c8f5cb90d7cef49726e5ba1db1456f41e31cfb319f9082"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper/source.pdb",
+          "sha256": "127b1ee50628c6e0e76a9527f45ac5227ea60b952f36571b9196447d6b74e6ce"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper/source.ltcg.obj",
+          "sha256": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab"
+        }
+      },
+      "case_summary": {
+        "matched_comparable_bytes": 7277,
+        "comparable_bytes": 7999,
+        "absolute_case_gap_delta": 130,
+        "same_sized_cases": 87,
+        "normalization_complete": true
+      },
+      "anm_size": 9836,
+      "selected_groups": [
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040DE8F",
+          "target_size": 112,
+          "candidate_size": 75,
+          "gap_delta": -37,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040DEDA",
+          "target_size": 112,
+          "candidate_size": 75,
+          "gap_delta": -37,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040DF25",
+          "target_size": 92,
+          "candidate_size": 52,
+          "gap_delta": -40,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 80,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F942",
+          "target_size": 1441,
+          "candidate_size": 1426,
+          "gap_delta": -15,
+          "matched_comparable_bytes": 845,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "guards": {
+        "owners": 35,
+        "exact": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "static_child_paths": 8,
+      "ecl": {
+        "bytes": 7020,
+        "matched": 6993,
+        "ordinary_differences": 27,
+        "fields": 189,
+        "local_destinations": 62,
+        "complete_callee_exact_bytes": 171,
+        "replayed_body_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+        "decoded_bytes": 7019,
+        "annotated_selector_suffix": [
+          {
+            "offset": 7019,
+            "width": 1
+          }
+        ],
+        "generic_normalization_complete": false
+      },
+      "helper_observation": {
+        "map_static_symbol": "?AnmReadFloatOperand@@YAMPAUAnmVmView@@PBUAnmRawInstructionView@@H@Z",
+        "address": "0x40d9b0",
+        "calls_in_groups49_53_54": 8,
+        "complete_helper_extent": "not established"
+      }
+    },
+    {
+      "model": "explicit-timer-tail",
+      "source_transformations": [
+        {
+          "before": "    vm->scriptTimer.Tick();",
+          "after": "    {\r\n        AnmVmTimerView &timer = vm->scriptTimer;\r\n        timer.previous = timer.current;\r\n        if (*timer.scale > 0.99f && *timer.scale < 1.01f)\r\n        {\r\n            ++timer.current;\r\n            timer.subframe += 1.0f;\r\n        }\r\n        else\r\n        {\r\n            timer.subframe += *timer.scale;\r\n            timer.current = static_cast<int>(timer.subframe);\r\n        }\r\n    }"
+        }
+      ],
+      "producer_sha256": "3d3925d2ce8720872b954dec0b9e6977804716360becc72eab53c751ca39b30d",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail/AnmManager.cpp": "accec2fac4250f8da5560fa764954c115b6fd9a95027f4b7f40d9fa8f2ccadc8",
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail/source.exe",
+          "sha256": "45d49dd044ee9278f3406b91b62ca075a03c977de80a949ac4244e7271b97f8d"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail/source.map",
+          "sha256": "5d3063848b3fe240506769516fbbbd95c63f8fd82caa59648123a92e9023dda1"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail/source.pdb",
+          "sha256": "f04e1158403d55263d2579fb2577ee476657acb61f28e8ea35ab4dee4a49fed6"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail/source.ltcg.obj",
+          "sha256": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab"
+        }
+      },
+      "case_summary": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "anm_size": 9964,
+      "selected_groups": [
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040DE5F",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040DECF",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040DF3F",
+          "target_size": 92,
+          "candidate_size": 92,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 72,
+          "comparable_bytes": 76,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F984",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "guards": {
+        "owners": 35,
+        "exact": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "static_child_paths": 8,
+      "ecl": {
+        "bytes": 7020,
+        "matched": 6993,
+        "ordinary_differences": 27,
+        "fields": 189,
+        "local_destinations": 62,
+        "complete_callee_exact_bytes": 171,
+        "replayed_body_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+        "decoded_bytes": 7019,
+        "annotated_selector_suffix": [
+          {
+            "offset": 7019,
+            "width": 1
+          }
+        ],
+        "generic_normalization_complete": false
+      },
+      "raw_comparison": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "raw_equal": true,
+          "baseline_size": 9964,
+          "new_size": 9964
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "raw_equal": true,
+          "baseline_size": 7020,
+          "new_size": 7020
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "raw_equal": true,
+          "baseline_size": 14352,
+          "new_size": 14352
+        }
+      }
+    }
+  ],
+  "acceptance_authority": "none",
+  "new_exact_functions": 0,
+  "new_exact_bytes": 0,
+  "limits": "Private diagnostic controls, each one GL compile/reuse9 objects; no full cold. Five normal-COFF canonical contracts are only additional linked guards. No ANM complete-field, original source/TU/flags, runtime or later-phase promotion.",
+  "cleanup": {
+    "removed_paths": [
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper",
+      "build/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper.json",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper-cases.json",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper-compile.log",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper-context.toml",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper-ecl.json",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper-execution.log",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper-guards.json",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper-guards.toml",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/float-operand-helper-routing.json",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail",
+      "build/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail.json",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail-cases.json",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail-compile.log",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail-context.toml",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail-ecl.json",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail-execution.log",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail-guards.json",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail-guards.toml",
+      ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/explicit-timer-tail-routing.json"
+    ],
+    "logical_file_bytes": 4289158,
+    "retained": "one enlarged raw-float input/native carrier; current canonical baseline and compact transformations"
+  }
+}

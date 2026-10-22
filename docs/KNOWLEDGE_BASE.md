@@ -4881,3 +4881,16 @@ complete guards4424/all118 and all8 static child paths; complete ECL retains
 Equal9,964-byte totals still hide local extent and scheduling differences.
 These results constrain the tested context, not original spelling, types,
 ownership or flags. See [child/flag controls](evidence/anm-child-flag-controls/README.md).
+
+## ANM operand lifetime constraints (2026-10-22)
+
+Raw input snapshots before mask tests grow the current ANM owner9964->10076
+and groups49/53/54 to146/155/113. An ordinary deferred-read helper stays out of
+line with eight calls and shrinks those groups to75/75/52; target direct operand
+resolution is not reproduced. Expanding the timer tail with a local reference
+and compound subframe addition reproduces all three complete baseline large
+native bodies raw. All three controls retain35 complete guards4424/all118 and
+complete ECL27/189fields/62locals/171-byte callee. No form is adopted. Input
+lifetime and helper inlining cannot be inferred from matched sizes, and this
+timer spelling does not explain the remaining Tick order in the current graph.
+[Operand controls](evidence/anm-operand-lifetime-controls/README.md).

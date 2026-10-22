@@ -1,11 +1,11 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Four
-fresh ANM child/FlipX controls retain9964-byte totals but are neutral or regress;
-none is adopted. Every image passes35 complete guards4424/all118 and eight
-static child paths. ECL retains **7020/6993 bytes,27 ordinary differences**.
-No new exact credit or game-source changes. See the
-[child/flag controls](evidence/anm-child-flag-controls/README.md).
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Three
+further ANM input/helper/timer controls regress or reproduce baseline; none is
+adopted. Every image passes35 complete guards4424/all118 and eight static child
+paths. ECL retains **7020/6993 bytes,27 ordinary differences**. No new exact
+credit or game-source changes. See
+[operand controls](evidence/anm-operand-lifetime-controls/README.md).
 
 ## Resume safely
 
@@ -170,6 +170,25 @@ Earlier named float result locals were neutral. Investigate a distinct lifetime
 or common-tail hypothesis without repeating those locals or these four forms.
 This is a bounded plateau, not
 an exhausted function or a blocker. Current authored401/73225 remains unchanged.
+
+The [operand lifetime controls](evidence/anm-operand-lifetime-controls/README.md)
+subsequently execute three distinct input/helper/timer forms. Input snapshots
+grow ANM10076, helper calls shrink it9836, and an explicit timer tail reproduces
+all three complete baseline large bodies raw. Each image retains35 whole
+guards4424/all118, eight child paths and full ECL27/189/62/171. No source is
+adopted. The current369 frozen code/test/config inputs are identical to the
+preceding109-group CI run; this documentation checkpoint reuses that result
+and does not claim a fresh CI execution. Final campaign checks remain due.
+Private recovery: `.analysis/gpt-6.1-sol/anm-argument-carriers-20261022/RECOVERY.md`.
+
+Coverage now rotates to Chain allocator449ED0/74 versus current69. Target tail
+loads flags into ECX, ORs1 and stores after the callback write; current native
+uses a memory OR, accounting for five bytes. Constructor AND scheduling also
+differs. Private flags-snapshot, ordinary callback-helper and untouched-source
+G7 controls remain69 while all four existing Chain guards838/all58 pass.
+These are candidates, not new exact units or proof of original compiler flags.
+The direct-tools campaign is `.analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/`;
+use its live process handles and current results to recover, not the state label.
 
 Whole Windows i386 product/runtime closure is open: globals, static init,
 resources, libraries, link order and exercised paths still need audit. Semantic
