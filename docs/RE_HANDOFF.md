@@ -1,13 +1,14 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-ANM common-tail and source-ABI controls complete five actual hypotheses;
-maintained source and exact totals remain unchanged. Authored exact409/74716,
+Enemy laser source controls complete five actual hypotheses and correct caller
+counting; maintained source and exact totals remain unchanged. Authored exact409/74716,
 overall1250/141226.
 Source remains613/247945 owned bytes; nonexact204, absent121.
 Archive source15/15, exact15/15;
 FileSystem remains source13/13, exact11/13.
-See [ANM common-tail/ABI evidence](evidence/anm-common-tail-abi-controls/README.md),
+See [Enemy laser source controls](evidence/enemy-laser-source-controls/README.md),
+[ANM common-tail/ABI evidence](evidence/anm-common-tail-abi-controls/README.md),
 [ANM branch controls](evidence/anm-operand-branch-controls/README.md),
 [resource load proof](evidence/pbgarchive-load-from-resource/README.md),
 [header proof](evidence/pbgarchive-parse-header/README.md),
@@ -53,7 +54,68 @@ scripts/repo-python scripts/report-reconstruction-status.py
 overall exact1250/141226 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest bounded ANM common-tail and ABI checkpoint
+## Latest bounded Enemy laser source checkpoint
+
+Starting pushed/remote-verifieda50ad2a, target, executed toolchain62774, tracking
+and live status pass. Source108/frozen373/baseline32/native15/D3D9 hashes pass.
+Fresh direct readOnly/noanalysis Ghidra89160 exits0 with rollback/maxcpu1/heap768
+and all412289 mapped bytes unchanged. Independent raw E8 survey joins10 actual
+factory calls:4 dispatcher and6 in5 provisional external Ghidra bodies. Correct
+the old "six external caller owners" phrase; no original ownership promotion.
+Factory153 densely decodes44 instructions/all4 direct fields/two RET4 exits.
+ESI manager/EDI request/stack type, EBX allocation-to-initializer and one tail
+read remain machine observations, not original source ABI or constructor proof.
+
+Five actual controls: remaining typed copies Enemy14344/3285of11144/gap570;
+request-reference Enemy14352/factory153 raw-neutral across4 complete bodies;
+ordinary manager member Enemy14344/3225of11145/gap562/factory157/RET8;
+append-tail cache Enemy14352/factory147/plain RET; ordinary member initializer
+methods raw-neutral across4 complete bodies. None is adopted. Baseline remains
+Enemy14352/3219of11148/gap566/42 target-sized groups; factory153/plain RET.
+All preserve frame2C4,19 sentinels,181 selectors and108 ordered groups.
+
+Reference/member interfaces each freshly compile10 actual source TUs from32
+consistent copies, with all10 calls converted and only2 pinned harness files
+reused. These are distinct hypotheses, not a same-candidate acceptance pair.
+The other3 compile1/reuse9 source objects, keeping GL/GS and scale Ob1. All5
+pass36 whole guards4618/all121, including the194-byte/all3 ANM direct caller.
+Five canonical COFF units remain additional linked guards only. ECL remains
+7020/6993/27/189/62/171 with7019 decoded plus1 reviewed selector; generic flag
+false is preserved. ANM/ECL raw bodies remain equal except tail-cache ANM's
+3 independently replayed changed fields; tail-cache Enemy similarly replays17.
+These are full-byte baseline comparisons, not target/runtime equivalence.
+Explicit qualified MAP/PDB static selection also proves both complete native
+initializer bodies65/74 raw-identical to the new member forms, with EAX-to-ESI
+entry. External-only enumeration cannot select original TU statics; no absence
+or target equality follows from that initial lookup failure.
+
+First reference preparation46823 exits1 after4 successful compiles because6
+calls were missed. Its complete corrected rebuild11082 exits0; no target
+hypothesis is rejected from the preparation failure. An initial diagnostic
+caller PDB selector is corrected before use. Actual successful controls74064,
+11082,81502,75052,36614 all terminate0. Maintained source/header/signature,
+profiles, canonical recipes and matches remain unchanged; only dispatcher and
+factory notes are qualified among initial373 inputs before the final snapshot.
+
+[Complete evidence](evidence/enemy-laser-source-controls/README.md).
+Private recovery: `.analysis/gpt-6.1-sol/enemy-laser-abi-20261022/RECOVERY.md`.
+Hash-checked cleanup removes89 files/4273546 logical bytes, including3 completed
+superseded carriers and the failed partial overlay/build. Keep member157 and
+member-initializer153 carriers, both consistent32-file source overlays, baseline
+32/15, compact producers/patches/results and9 unrelated D3D files unstaged.
+All111 final CI groups pass with actual exit0 and all373 final code/test/config
+inputs unchanged, including108 maintained sources and32/15 baseline pins.
+Focused selector/table, toolchain, tracking, Enemy/EnemyLaser source, progress, staged
+documentation and whitespace checks pass. Final scope is in the packet summary.
+Private producers pin pre-note metadata; never restore current source or notes
+to satisfy their historical snapshots.
+
+Next investigate a distinct target-local initializer/caller context, preserving
+all real call sites and the complete36-guard set; do not repeat these5 source
+forms or infer original membership from unchanged bodies. Source ownership,
+whole Windows i386 product/runtime and semantic/port gates remain open.
+
+## Previous bounded ANM common-tail and ABI checkpoint
 
 Starting pushed/remote-verifiedca13d55, preflight passes target/toolchain/tracking.
 All108 maintained sources,32 large-source/header and15 baseline native files

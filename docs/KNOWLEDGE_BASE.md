@@ -5192,3 +5192,37 @@ or calling convention. Fresh read-only Ghidra attests all412289 mapped text
 bytes unchanged. Authored409/74716 and overall1250/141226 remain. Product/runtime,
 data ownership, semantic and port gates stay open.
 [Complete common-tail and ABI evidence](evidence/anm-common-tail-abi-controls/README.md).
+
+## Enemy laser source forms and caller counting (2026-10-22)
+
+Fresh read-only/noanalysis Ghidra and an independent mapped-text E8 survey join
+10 actual FireLaser calls:4 in the dispatcher and6 in5 provisional external
+Ghidra bodies. Boundary UpdateBoundary contributes2 sites. The old "six external
+caller owners" wording confuses sites with functions and is corrected; original
+source/physical ownership remains unknown. The153-byte target densely decodes
+44 instructions/all4 direct fields and two RET4 exits; ESI manager/EDI request/
+stack type remain machine facts. Allocation results reach initialization calls
+through EBX, and the append sequence reads the tail once.
+
+Five actual source forms retain36 complete guards4618/all121 and ECL7020/6993/
+27/189/62/171. The remaining typed-copy form emits Enemy14344/3285of11144/gap570,
+worse aggregate gap than baseline14352/3219of11148/gap566 despite better
+positional agreement. A complete request-reference interface is raw-neutral
+across all4 bodies; ordinary manager member emits Enemy14344/gap562 but factory
+157/RET8 versus153/RET4. Both use distinct consistent32-file/full10-source GL/GS
+colds, with only2 pinned harness inputs reused; not an acceptance cold pair.
+All10 real source call sites are converted in each complete interface control.
+An initial incomplete reference overlay is a compiler preparation failure only.
+
+Ordinary tail caching emits factory147/plain RET; parent/ANM are baseline-equal
+after17/3 independently identified changed fields, ECL raw-equal. Ordinary member
+initialization methods reproduce all4 complete baseline raw bodies and do not
+recover constructor source/lifetime or EBX input. These3 body controls each
+compile1/reuse9 source objects. Explicit qualified MAP/PDB selection also proves
+the two complete native initializer bodies65/74 raw-identical to the new member
+forms, still EAX-to-ESI at entry; external-only lookup cannot select TU statics.
+All retain parent frame2C4,19 sentinels and181
+selectors/108 ordered groups. No source, header, recipe, exact or runtime claim
+is adopted. Authored409/74716, overall1250/141226 remain. Product/runtime and
+semantic/port gates stay open.
+[Source controls, full scope and limits](evidence/enemy-laser-source-controls/README.md).

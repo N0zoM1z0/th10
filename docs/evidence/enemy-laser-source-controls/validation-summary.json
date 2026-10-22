@@ -1,0 +1,77 @@
+{
+  "ci": {
+    "completed_groups": 111,
+    "coverage": "Every ordered ci.py run label matches; actual native handle exits0 with final success marker.",
+    "exit_code": 0,
+    "input_counts_unchanged": {
+      "baseline_artifact_sha256": 15,
+      "baseline_source_sha256": 32,
+      "frozen_inputs": 373,
+      "source_sha256": 108,
+      "unrelated_untracked": 9
+    },
+    "input_inventory_sha256": "e7db59d44c8283b445188a169f35851ca85821189ef1da7dcf27e113f02be7f9",
+    "log_sha256": "c3f868278df1181821328c25d03161968f2fa7f6a97c36b095a01cb27e8cb861",
+    "status": "passed"
+  },
+  "cleanup": {
+    "completed_native_trees_removed": 3,
+    "failed_partial_overlay_and_build_removed": true,
+    "files": 89,
+    "logical_bytes": 4273546,
+    "retained": "canonical baseline15 meaningful files; distinct member157 and member-initializer153 carriers; both consistent full-source overlays, compact producers/source patches/results and9 independent D3D files"
+  },
+  "controls": 5,
+  "counts": {
+    "authored_exact": 409,
+    "authored_exact_bytes": 74716,
+    "overall_exact": 1250,
+    "overall_exact_bytes": 141226,
+    "source": 613,
+    "source_absent": 121,
+    "source_nonexact": 204
+  },
+  "distinct_full_ten_source_colds": 2,
+  "each_complete_guard_set": {
+    "bytes": 4618,
+    "fields": 121,
+    "functions": 36
+  },
+  "final_checks": {
+    "EnemyLaser_source_completeness": "passed12/12 authored owners and6091 bytes",
+    "Enemy_source_completeness": "passed",
+    "Ghidra": "fresh direct readOnly/noanalysis/rollback,maxcpu1,heap768MiB; native89160 exits0; all412289 mapped bytes unchanged",
+    "complete_contextual_guards": "all5 images pass36 complete functions4618/all121; no canonical artifact-kind changes",
+    "documentation_hygiene": "passed including staged packet",
+    "focused_selector_coverage": "passed current source and target selector/table check",
+    "git_diff_check": "passed",
+    "native_models": "successful74064,11082,81502,75052,36614 all exit0; incomplete preparation46823 exits1 and is excluded from target evidence",
+    "preflight": "passed target hash, executed toolchain, require-target tracking and live status",
+    "progress_generated_and_checked": "passed",
+    "retained_artifacts": "both retained16-file carriers and both consistent32-file interface overlays verified after CI",
+    "toolchain_check": "passed",
+    "tracking": "passed"
+  },
+  "ledger_note": {
+    "after_sha256": "2dd017cb2fb91a6308902d4e6582b9a6b35e5efdbc28119647d22763408ba886",
+    "before_sha256": "309b5425bb2999342f888739c178189fb50d4fa6fa1b6c6482d91594c9301e13",
+    "changed_fields": [
+      [
+        "0x0040E770",
+        "notes"
+      ],
+      [
+        "0x0041C510",
+        "notes"
+      ]
+    ],
+    "scope": "Only dispatcher/factory notes are qualified; all1776 rows and other fields/raw rows unchanged"
+  },
+  "maintained_source_changed": false,
+  "new_exact_functions": 0,
+  "new_exact_owned_bytes": 0,
+  "one_source_nine_reused_controls": 3,
+  "phase": "active-incomplete; whole Windows i386 product/runtime open; semantic and port unstarted",
+  "same_candidate_acceptance_cold_pair": false,
+  "status": "five actual hypotheses completed; no maintained source or exact promotion; caller count clarified;111-group CI passed"
+}

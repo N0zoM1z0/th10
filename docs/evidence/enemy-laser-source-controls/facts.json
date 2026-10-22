@@ -1,0 +1,1398 @@
+{
+  "Ghidra": {
+    "exit_code": 0,
+    "heap_MiB": 768,
+    "mapped_bytes": 412289,
+    "maxcpu": 1,
+    "native_session": 89160,
+    "noanalysis": true,
+    "readOnly": true,
+    "review_sha256": "cb5510948dcde6932bd4f94455bc21deb3c0180af0a11eff82a67415310212c7",
+    "rollback": true
+  },
+  "baseline": {
+    "Enemy_case_aligned": {
+      "comparable": 11148,
+      "gap": 566,
+      "matched": 3219,
+      "same_sized": 42
+    },
+    "Enemy_size": 14352,
+    "factory_size": 153,
+    "pinned_native_artifact_sha256": {
+      "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+      "build/match-linked/EnemyItemDrops/link-anchors.obj": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+      "build/match-linked/EnemyItemDrops/source.exe": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+      "build/match-linked/EnemyItemDrops/source.ltcg.obj": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+      "build/match-linked/EnemyItemDrops/source.map": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+      "build/match-linked/EnemyItemDrops/source.pdb": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+      "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+      "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+      "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+      "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+      "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+      "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+      "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+      "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+      "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8"
+    },
+    "pinned_source_header_sha256": {
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+      "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+      "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+    }
+  },
+  "controls": [
+    {
+      "ECL": {
+        "complete_float_callee_exact": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_suffix_bytes": 1,
+        "size": 7020
+      },
+      "Enemy": {
+        "case_aligned": {
+          "comparable": 11144,
+          "gap": 570,
+          "matched": 3285,
+          "same_sized": 42
+        },
+        "frame": "esp, 0x2c4",
+        "physical_groups": 108,
+        "selectors": 181,
+        "sentinel_compares": 19,
+        "size": 14344
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "a6cc44dadfc18ac4420351498e9591f4486b090838166514ad2e5a5489d57a59",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/remaining-typed-copies/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "015b8a24dd61ff6ef14baeafcf2e40d96bda6303f396b46f61aa016661c9c92c"
+        }
+      ],
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory": {
+        "ret_operands": [
+          "plain",
+          "plain"
+        ],
+        "size": 153,
+        "structural_diagnostic": {
+          "comparable_bytes": 137,
+          "matched_comparable_bytes": 16,
+          "normalization_complete": true
+        },
+        "symbol": "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z"
+      },
+      "label": "remaining-typed-copies",
+      "maintained_source_adopted": false,
+      "native_exit_code": 0,
+      "native_inventory_sha256": "b0786bd0ecba03153d6fe37df3be955873e8a065cf88ba7510760f0db55a16bf",
+      "native_session": 74064,
+      "new_exact_credit": 0,
+      "peer_results": [
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14344,
+          "changed_address_fields_replayed": 0,
+          "label": "remaining-typed-copies",
+          "result": "different extents; no peer equality claim",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0040E770",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 153,
+          "candidate_size": 153,
+          "changed_address_fields_replayed": 0,
+          "label": "remaining-typed-copies",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "9e844488d4f0dce987882783f60dfe1ae302808bad4840735f46978d05d3435e",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0041C510",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "changed_address_fields_replayed": 0,
+          "label": "remaining-typed-copies",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0043EE30",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "changed_address_fields_replayed": 0,
+          "label": "remaining-typed-copies",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0044E1A0",
+          "unresolved_changed_fields": 0
+        }
+      ],
+      "producer_sha256": "4bd48ebc2d6c675da6296746e876fa3becf3ddf9ed4785c89d9b02bd995c6025",
+      "source_patches": [
+        {
+          "after_sha256": "015b8a24dd61ff6ef14baeafcf2e40d96bda6303f396b46f61aa016661c9c92c",
+          "before_sha256": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+          "patch": "--- a/src/EnemyEclDispatcher.cpp\n+++ b/src/EnemyEclDispatcher.cpp\n@@ -2516,10 +2516,9 @@\n       pfVar15 = pfVar15 + 1;\n     }\n     if (opcode == 0x1b1) {\n-      memcpy(\n-          reinterpret_cast<unsigned int *>(&local_288) + 11,\n-          reinterpret_cast<const void *>(runtimeAddress + 0x2e4),\n-          0x6c * sizeof(unsigned int));\n+      memcpy(local_288.type0.patternWords,\n+             &bulletPatterns[0].words[8],\n+             sizeof(local_288.type0.patternWords));\n     }\n     vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);\n     vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);\n@@ -2551,13 +2550,9 @@\n     EnemyInitializeLaserConfig(&local_288);\n     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));\n     if (*(short *)(iVar27 + 4) == 0x1b2) {\n-      puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);\n-      puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;\n-      for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {\n-        *puVar13 = *puVar14;\n-        puVar14 = puVar14 + 1;\n-        puVar13 = puVar13 + 1;\n-      }\n+      memcpy(local_288.type1.patternWords,\n+             &bulletPatterns[0].words[8],\n+             sizeof(local_288.type1.patternWords));\n     }\n     vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);\n     vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);\n",
+          "role": "src/EnemyEclDispatcher.cpp"
+        }
+      ],
+      "source_scope": {
+        "canonical_replay": false,
+        "consistent_overlay_files": null,
+        "fresh_game_source_compiles": 1,
+        "reused_game_source_objects": 9,
+        "reused_harness_files": 2,
+        "same_candidate_acceptance_cold_pair": false
+      }
+    },
+    {
+      "ECL": {
+        "complete_float_callee_exact": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_suffix_bytes": 1,
+        "size": 7020
+      },
+      "Enemy": {
+        "case_aligned": {
+          "comparable": 11148,
+          "gap": 566,
+          "matched": 3219,
+          "same_sized": 42
+        },
+        "frame": "esp, 0x2c4",
+        "physical_groups": 108,
+        "selectors": 181,
+        "sentinel_compares": 19,
+        "size": 14352
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "17fc2c1a5bea1dfcdf3d33a3e2fbda4a2e29642831f19b72bf25bf933c1261d5",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "dceec06353cabf4d7ae95da301f778c99f97c8d7e0c072a86200d0a3372e5b6a"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "92ad2856545b94d9894625e643d2e780bdc2db53b6d19036b432aa1a22585436",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EclVm.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/EclVm.cpp",
+          "source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "1fec02333b06d1a0913b02737b8d84a4e3a6c87fce33563c0f2f45d8af513590",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/AnmManager.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/AnmManager.cpp",
+          "source_sha256": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "08c25d6fe7f56491c5dbe238dc06b63540342108ec17845f8ddd2fd9207b89f4",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/AnmVmCreate.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/AnmVmCreate.cpp",
+          "source_sha256": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "92da437ba7d5a38fae8165e6b7b3edb09772155b6c27dda4de7eb490219e1f8c",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyLaser.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/EnemyLaser.cpp",
+          "source_sha256": "e4b05660200b5e94f599808d3fa660512fc1116268792cecd28fbe6c5796a4df"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "2da9b3240d6617e95349b8de1d0624fdcd1bfa12e0b518e33c26fedee45854c5",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/Enemy.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/Enemy.cpp",
+          "source_sha256": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "f546f4ff5c8ecaf92a62a55bd48d1458473700c0c5083221e70bcc28b70bd04b",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/AnmVmId.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/AnmVmId.cpp",
+          "source_sha256": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "d6a9e1faf724ca193354d615217531dc667a1122ef1398230331e174a93159d4",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/RandomMath.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/RandomMath.cpp",
+          "source_sha256": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "49054ecb268b28f2af0032a71ba74b18b16ed4c4c6bfef89e376ae331d2ba36f",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          "role": "src/AnmInt3Scale.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/AnmInt3Scale.cpp",
+          "source_sha256": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "2a9bae3d4f6cb048e068604989b7408c263b39e893ad1a1ca1c4bf0cc7dd94c1",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/ItemManager.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete/src/ItemManager.cpp",
+          "source_sha256": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c"
+        }
+      ],
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory": {
+        "ret_operands": [
+          "plain",
+          "plain"
+        ],
+        "size": 153,
+        "structural_diagnostic": {
+          "comparable_bytes": 137,
+          "matched_comparable_bytes": 16,
+          "normalization_complete": true
+        },
+        "symbol": "?EnemyFireLaser@@YAIPAXAAUEnemyLaserRequestScratch@@H@Z"
+      },
+      "label": "request-reference-complete",
+      "maintained_source_adopted": false,
+      "native_exit_code": 0,
+      "native_inventory_sha256": "3fd71c244680813f622cbb4f12235d92f6823ae2906ce6b4ab328d158722a975",
+      "native_session": 11082,
+      "new_exact_credit": 0,
+      "peer_results": [
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14352,
+          "changed_address_fields_replayed": 0,
+          "label": "request-reference-complete",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0040E770",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 153,
+          "candidate_size": 153,
+          "changed_address_fields_replayed": 0,
+          "label": "request-reference-complete",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "9e844488d4f0dce987882783f60dfe1ae302808bad4840735f46978d05d3435e",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0041C510",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "changed_address_fields_replayed": 0,
+          "label": "request-reference-complete",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0043EE30",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "changed_address_fields_replayed": 0,
+          "label": "request-reference-complete",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0044E1A0",
+          "unresolved_changed_fields": 0
+        }
+      ],
+      "producer_sha256": "ad1ff0030adedaafda55545383e79f1578512cee498d8b2dcd716e447b915624",
+      "source_patches": [
+        {
+          "after_sha256": "dceec06353cabf4d7ae95da301f778c99f97c8d7e0c072a86200d0a3372e5b6a",
+          "before_sha256": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+          "patch": "--- a/src/EnemyEclDispatcher.cpp\n+++ b/src/EnemyEclDispatcher.cpp\n@@ -2460,7 +2460,7 @@\n     fVar19 = (ReadFloatArgument(7));\n     reinterpret_cast<float *>(&local_288)[7] = (float)fVar19;\n     reinterpret_cast<unsigned int *>(&local_288)[10] |= 1;\n-    EnemyFireLaser(g_EnemyLaserManager, &local_288, 0);\n+    EnemyFireLaser(g_EnemyLaserManager, local_288, 0);\n     return 0;\n   case ENEMY_ECL_FIRE_STRAIGHT_LASER:\n   case ENEMY_ECL_FIRE_STRAIGHT_LASER_WITH_PATTERN:\n@@ -2502,7 +2502,7 @@\n     reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;\n     uVar22 = ENEMY_READ_INT_DIRECT(0xb);\n     reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 | 2;\n-    uVar6 = EnemyFireLaser(g_EnemyLaserManager, &local_288, 1);\n+    uVar6 = EnemyFireLaser(g_EnemyLaserManager, local_288, 1);\n     if (puVar5 != (unsigned int *)0x0) {\n       *puVar5 = uVar6;\n       return 0;\n@@ -2544,7 +2544,7 @@\n     fVar19 = (ReadFloatArgument(7));\n     reinterpret_cast<float *>(&local_288)[7] = (float)fVar19;\n     reinterpret_cast<unsigned int *>(&local_288)[10] &= 0xfffffffe;\n-    EnemyFireLaser(g_EnemyLaserManager, &local_288, 0);\n+    EnemyFireLaser(g_EnemyLaserManager, local_288, 0);\n     return 0;\n   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2:\n   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2_WITH_PATTERN:\n@@ -2587,7 +2587,7 @@\n     reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;\n     uVar22 = ReadIntArgument(0xb);\n     reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 & 0xfffffffd;\n-    uVar6 = EnemyFireLaser(g_EnemyLaserManager, &local_288, 1);\n+    uVar6 = EnemyFireLaser(g_EnemyLaserManager, local_288, 1);\n     if (puVar5 != (unsigned int *)0x0) {\n       *puVar5 = uVar6;\n       return 0;\n",
+          "role": "src/EnemyEclDispatcher.cpp"
+        },
+        {
+          "after_sha256": "e4b05660200b5e94f599808d3fa660512fc1116268792cecd28fbe6c5796a4df",
+          "before_sha256": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+          "patch": "--- a/src/EnemyLaser.cpp\n+++ b/src/EnemyLaser.cpp\n@@ -124,7 +124,7 @@\n         requestWords[2] = projected.z;\n         requestWords[3] = EnemyWrapAngle(-angle - g_EnemyPi);\n         reinterpret_cast<int *>(&request)[0x20 / 4] = requestOwner;\n-        EnemyFireLaser(g_EnemyLaserManager, &request, 0);\n+        EnemyFireLaser(g_EnemyLaserManager, request, 0);\n         fired = 1;\n     }\n \n@@ -141,7 +141,7 @@\n         requestWords[2] = projected.z;\n         requestWords[3] = -angle;\n         reinterpret_cast<int *>(&request)[0x20 / 4] = requestOwner;\n-        EnemyFireLaser(g_EnemyLaserManager, &request, 0);\n+        EnemyFireLaser(g_EnemyLaserManager, request, 0);\n     }\n \n     flags &= 0xf7fff3ffu;\n@@ -354,7 +354,7 @@\n             args.position.z = originalPosition.z + step.z * start;\n             EnemyFireLaser(\n                 g_EnemyLaserManager,\n-                reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n+                *reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n                 0);\n         }\n     }\n@@ -501,7 +501,7 @@\n             args.position.z = originalPosition.z + step.z * start;\n             EnemyFireLaser(\n                 g_EnemyLaserManager,\n-                reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n+                *reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n                 0);\n         }\n     }\n@@ -686,7 +686,7 @@\n \n         EnemyFireLaser(\n             g_EnemyLaserManager,\n-            reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n+            *reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n             0);\n     }\n \n@@ -814,7 +814,7 @@\n \n         EnemyFireLaser(\n             g_EnemyLaserManager,\n-            reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n+            *reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n             0);\n     }\n \n@@ -909,7 +909,7 @@\n // no new failure recovery is invented. Unknown types consume an ID but do not\n // allocate or insert. The existing tail is a required sentinel/list node.\n unsigned int EnemyFireLaser(\n-    void *managerStorage, EnemyLaserRequestScratch *request, int type)\n+    void *managerStorage, EnemyLaserRequestScratch &request, int type)\n {\n     EnemyLaserManagerStorageView *manager =\n         static_cast<EnemyLaserManagerStorageView *>(managerStorage);\n@@ -944,6 +944,6 @@\n     manager->tail->next = laser;\n     ++manager->count;\n     manager->tail = laser;\n-    reinterpret_cast<EnemyLaserApplyPrefixView *>(laser)->ApplyRequest(request);\n+    reinterpret_cast<EnemyLaserApplyPrefixView *>(laser)->ApplyRequest(&request);\n     return manager->nextId;\n }\n",
+          "role": "src/EnemyLaser.cpp"
+        },
+        {
+          "after_sha256": "27fa57f3ee251189fe1e8e61ab6fef15d3e1cf79f2092add2daa4ce8ff710dd0",
+          "before_sha256": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+          "patch": "--- a/src/EnemyLaser.hpp\n+++ b/src/EnemyLaser.hpp\n@@ -233,5 +233,5 @@\n EnemyLaserRequestScratch *EnemyInitializeLaserConfig(\n     EnemyLaserRequestScratch *request);\n unsigned int EnemyFireLaser(\n-    void *manager, EnemyLaserRequestScratch *request, int type);\n+    void *manager, EnemyLaserRequestScratch &request, int type);\n #endif\n",
+          "role": "src/EnemyLaser.hpp"
+        }
+      ],
+      "source_scope": {
+        "canonical_replay": false,
+        "consistent_overlay_files": 32,
+        "fresh_game_source_compiles": 10,
+        "reused_game_source_objects": 0,
+        "reused_harness_files": 2,
+        "same_candidate_acceptance_cold_pair": false
+      }
+    },
+    {
+      "ECL": {
+        "complete_float_callee_exact": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_suffix_bytes": 1,
+        "size": 7020
+      },
+      "Enemy": {
+        "case_aligned": {
+          "comparable": 11145,
+          "gap": 562,
+          "matched": 3225,
+          "same_sized": 43
+        },
+        "frame": "esp, 0x2c4",
+        "physical_groups": 108,
+        "selectors": 181,
+        "sentinel_compares": 19,
+        "size": 14344
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "9cdc534987940db96b158f66e6bc31b92743d65db6ed9157c69e6a5f40111ce3",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "1ac8f16249d5f2c0971c180711b92d07a2fc29e22e364c5b0293f70b241c353d"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "ee07a82e6b8125767605d9279a7f14910db17c6b38b0c1135760369366c743f9",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EclVm.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/EclVm.cpp",
+          "source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "f765ce9f235ed1a6368a4929e0ab9d835d272410de59428c22b953e613d199fe",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/AnmManager.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/AnmManager.cpp",
+          "source_sha256": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "d08b3a20bc6cac531ea2a12f0e5437c936fe84275cb728cc6ac6b1b29101e1db",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/AnmVmCreate.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/AnmVmCreate.cpp",
+          "source_sha256": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "b012e5603f9913365104155cfce67a7b3f6801b7c7366cefac50759e6c180ed8",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyLaser.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/EnemyLaser.cpp",
+          "source_sha256": "120db4bf987647011e77ec5e79efdc6ec8a7ff34a759358e33deab7c33ad2954"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "6a4e3c2e5abbd75ca7de0d316fdc72189f3954cb427777599fadcc968d151bcd",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/Enemy.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/Enemy.cpp",
+          "source_sha256": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "9c807bf50fc114bc7bd332bf9095f1fd5b44554c8942620c67dd2b3f619a1523",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/AnmVmId.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/AnmVmId.cpp",
+          "source_sha256": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "f57f9bdc16f3b1b7b4ef60a32f53564d6aaca46503eb6ba93a65bee323e93cdf",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/RandomMath.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/RandomMath.cpp",
+          "source_sha256": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "604c429264040d18baa4b72ae318cdbcfbc71a746020a1514e8b02784715ca72",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          "role": "src/AnmInt3Scale.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/AnmInt3Scale.cpp",
+          "source_sha256": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
+        },
+        {
+          "exit_code": 0,
+          "object_sha256": "240d23dae98724559d90fa4639562085329b0969e4d91b04d8237c20f63fd3f1",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/ItemManager.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member/src/ItemManager.cpp",
+          "source_sha256": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c"
+        }
+      ],
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory": {
+        "ret_operands": [
+          "8",
+          "8"
+        ],
+        "size": 157,
+        "structural_diagnostic": {
+          "comparable_bytes": 137,
+          "matched_comparable_bytes": 46,
+          "normalization_complete": true
+        },
+        "symbol": "?FireLaser@EnemyLaserManagerStorageView@@QAEIPAUEnemyLaserRequestScratch@@H@Z"
+      },
+      "label": "manager-member",
+      "maintained_source_adopted": false,
+      "native_exit_code": 0,
+      "native_inventory_sha256": "6f49602711950981b29696896bb05eca2096a5e92d86c55bdb55626cb445e2d4",
+      "native_session": 81502,
+      "new_exact_credit": 0,
+      "peer_results": [
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14344,
+          "changed_address_fields_replayed": 0,
+          "label": "manager-member",
+          "result": "different extents; no peer equality claim",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0040E770",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 153,
+          "candidate_size": 157,
+          "changed_address_fields_replayed": 0,
+          "label": "manager-member",
+          "result": "different extents; no peer equality claim",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0041C510",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "changed_address_fields_replayed": 0,
+          "label": "manager-member",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0043EE30",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "changed_address_fields_replayed": 0,
+          "label": "manager-member",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0044E1A0",
+          "unresolved_changed_fields": 0
+        }
+      ],
+      "producer_sha256": "ad1ff0030adedaafda55545383e79f1578512cee498d8b2dcd716e447b915624",
+      "source_patches": [
+        {
+          "after_sha256": "1ac8f16249d5f2c0971c180711b92d07a2fc29e22e364c5b0293f70b241c353d",
+          "before_sha256": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+          "patch": "--- a/src/EnemyEclDispatcher.cpp\n+++ b/src/EnemyEclDispatcher.cpp\n@@ -2460,7 +2460,7 @@\n     fVar19 = (ReadFloatArgument(7));\n     reinterpret_cast<float *>(&local_288)[7] = (float)fVar19;\n     reinterpret_cast<unsigned int *>(&local_288)[10] |= 1;\n-    EnemyFireLaser(g_EnemyLaserManager, &local_288, 0);\n+    reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(&local_288, 0);\n     return 0;\n   case ENEMY_ECL_FIRE_STRAIGHT_LASER:\n   case ENEMY_ECL_FIRE_STRAIGHT_LASER_WITH_PATTERN:\n@@ -2502,7 +2502,7 @@\n     reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;\n     uVar22 = ENEMY_READ_INT_DIRECT(0xb);\n     reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 | 2;\n-    uVar6 = EnemyFireLaser(g_EnemyLaserManager, &local_288, 1);\n+    uVar6 = reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(&local_288, 1);\n     if (puVar5 != (unsigned int *)0x0) {\n       *puVar5 = uVar6;\n       return 0;\n@@ -2544,7 +2544,7 @@\n     fVar19 = (ReadFloatArgument(7));\n     reinterpret_cast<float *>(&local_288)[7] = (float)fVar19;\n     reinterpret_cast<unsigned int *>(&local_288)[10] &= 0xfffffffe;\n-    EnemyFireLaser(g_EnemyLaserManager, &local_288, 0);\n+    reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(&local_288, 0);\n     return 0;\n   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2:\n   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2_WITH_PATTERN:\n@@ -2587,7 +2587,7 @@\n     reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;\n     uVar22 = ReadIntArgument(0xb);\n     reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 & 0xfffffffd;\n-    uVar6 = EnemyFireLaser(g_EnemyLaserManager, &local_288, 1);\n+    uVar6 = reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(&local_288, 1);\n     if (puVar5 != (unsigned int *)0x0) {\n       *puVar5 = uVar6;\n       return 0;\n",
+          "role": "src/EnemyEclDispatcher.cpp"
+        },
+        {
+          "after_sha256": "120db4bf987647011e77ec5e79efdc6ec8a7ff34a759358e33deab7c33ad2954",
+          "before_sha256": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+          "patch": "--- a/src/EnemyLaser.cpp\n+++ b/src/EnemyLaser.cpp\n@@ -124,7 +124,7 @@\n         requestWords[2] = projected.z;\n         requestWords[3] = EnemyWrapAngle(-angle - g_EnemyPi);\n         reinterpret_cast<int *>(&request)[0x20 / 4] = requestOwner;\n-        EnemyFireLaser(g_EnemyLaserManager, &request, 0);\n+        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(&request, 0);\n         fired = 1;\n     }\n \n@@ -141,7 +141,7 @@\n         requestWords[2] = projected.z;\n         requestWords[3] = -angle;\n         reinterpret_cast<int *>(&request)[0x20 / 4] = requestOwner;\n-        EnemyFireLaser(g_EnemyLaserManager, &request, 0);\n+        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(&request, 0);\n     }\n \n     flags &= 0xf7fff3ffu;\n@@ -352,8 +352,7 @@\n             args.position.x = originalPosition.x + step.x * start;\n             args.position.y = originalPosition.y + step.y * start;\n             args.position.z = originalPosition.z + step.z * start;\n-            EnemyFireLaser(\n-                g_EnemyLaserManager,\n+            reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(\n                 reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n                 0);\n         }\n@@ -499,8 +498,7 @@\n             args.position.x = originalPosition.x + step.x * start;\n             args.position.y = originalPosition.y + step.y * start;\n             args.position.z = originalPosition.z + step.z * start;\n-            EnemyFireLaser(\n-                g_EnemyLaserManager,\n+            reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(\n                 reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n                 0);\n         }\n@@ -684,8 +682,7 @@\n         args.type = type;\n         args.color = color;\n \n-        EnemyFireLaser(\n-            g_EnemyLaserManager,\n+        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(\n             reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n             0);\n     }\n@@ -812,8 +809,7 @@\n         args.type = type;\n         args.color = color;\n \n-        EnemyFireLaser(\n-            g_EnemyLaserManager,\n+        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->FireLaser(\n             reinterpret_cast<EnemyLaserRequestScratch *>(&args),\n             0);\n     }\n@@ -908,11 +904,10 @@\n // Target 0x0041C510. Allocation failure still reaches the target's null write;\n // no new failure recovery is invented. Unknown types consume an ID but do not\n // allocate or insert. The existing tail is a required sentinel/list node.\n-unsigned int EnemyFireLaser(\n-    void *managerStorage, EnemyLaserRequestScratch *request, int type)\n-{\n-    EnemyLaserManagerStorageView *manager =\n-        static_cast<EnemyLaserManagerStorageView *>(managerStorage);\n+unsigned int EnemyLaserManagerStorageView::FireLaser(\n+    EnemyLaserRequestScratch *request, int type)\n+{\n+    EnemyLaserManagerStorageView *manager = this;\n     if (manager->count >= 256)\n         return 0;\n     if (++manager->nextId == 0)\n",
+          "role": "src/EnemyLaser.cpp"
+        },
+        {
+          "after_sha256": "7c13812091abdf90b1db34638b51fd119e60573cd6cc6498a4653e769f7ee65c",
+          "before_sha256": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+          "patch": "--- a/src/EnemyLaser.hpp\n+++ b/src/EnemyLaser.hpp\n@@ -107,8 +107,10 @@\n // Complete storage view: +18 is sentinel.next, while +434 is the append tail.\n // The callback-chain prefix remains opaque here; GameManager keeps its existing\n // separately typed chain-prefix view at that boundary.\n+struct EnemyLaserRequestScratch;\n struct EnemyLaserManagerStorageView\n {\n+    unsigned int FireLaser(EnemyLaserRequestScratch *request, int type);\n     unsigned char unknown000[0x10];\n     EnemyLaserCommonStorageView sentinel;\n     EnemyLaserCommonStorageView *tail;\n@@ -232,6 +234,4 @@\n \n EnemyLaserRequestScratch *EnemyInitializeLaserConfig(\n     EnemyLaserRequestScratch *request);\n-unsigned int EnemyFireLaser(\n-    void *manager, EnemyLaserRequestScratch *request, int type);\n #endif\n",
+          "role": "src/EnemyLaser.hpp"
+        }
+      ],
+      "source_scope": {
+        "canonical_replay": false,
+        "consistent_overlay_files": 32,
+        "fresh_game_source_compiles": 10,
+        "reused_game_source_objects": 0,
+        "reused_harness_files": 2,
+        "same_candidate_acceptance_cold_pair": false
+      }
+    },
+    {
+      "ECL": {
+        "complete_float_callee_exact": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_suffix_bytes": 1,
+        "size": 7020
+      },
+      "Enemy": {
+        "case_aligned": {
+          "comparable": 11148,
+          "gap": 566,
+          "matched": 3219,
+          "same_sized": 42
+        },
+        "frame": "esp, 0x2c4",
+        "physical_groups": 108,
+        "selectors": 181,
+        "sentinel_compares": 19,
+        "size": 14352
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "60161397e1e2e5c0b0a47d62a625b4bad4d99d31ba3ad0cb14c3b5e43cd2b3ef",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyLaser.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/cached-append-tail/src/EnemyLaser.cpp",
+          "source_sha256": "2f580bccc9cc057c61cad075704f1591baaf28143687ee771463d30105a43fe6"
+        }
+      ],
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory": {
+        "ret_operands": [
+          "plain",
+          "plain"
+        ],
+        "size": 147,
+        "structural_diagnostic": {
+          "comparable_bytes": 137,
+          "matched_comparable_bytes": 17,
+          "normalization_complete": true
+        },
+        "symbol": "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z"
+      },
+      "label": "cached-append-tail",
+      "maintained_source_adopted": false,
+      "native_exit_code": 0,
+      "native_inventory_sha256": "8cbec4df9e1f5c09283a81d31114b1218a4da93ccc6bfed8a0288122c0fe7011",
+      "native_session": 75052,
+      "new_exact_credit": 0,
+      "peer_results": [
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14352,
+          "changed_address_fields_replayed": 17,
+          "field_count": 714,
+          "field_layout_equal": true,
+          "label": "cached-append-tail",
+          "raw_equal": false,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42",
+          "result": "verified changed-field peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0040E770",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 153,
+          "candidate_size": 147,
+          "changed_address_fields_replayed": 0,
+          "label": "cached-append-tail",
+          "result": "different extents; no peer equality claim",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0041C510",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "changed_address_fields_replayed": 3,
+          "field_count": 350,
+          "field_layout_equal": true,
+          "label": "cached-append-tail",
+          "raw_equal": false,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+          "result": "verified changed-field peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0043EE30",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "changed_address_fields_replayed": 0,
+          "label": "cached-append-tail",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0044E1A0",
+          "unresolved_changed_fields": 0
+        }
+      ],
+      "producer_sha256": "e718b86db364253699a96a489507169afdfce2403814638f686ccf5dcb73dc65",
+      "source_patches": [
+        {
+          "after_sha256": "2f580bccc9cc057c61cad075704f1591baaf28143687ee771463d30105a43fe6",
+          "before_sha256": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+          "patch": "--- a/src/EnemyLaser.cpp\n+++ b/src/EnemyLaser.cpp\n@@ -940,8 +940,9 @@\n         return manager->nextId;\n     }\n     laser->id = manager->nextId;\n-    laser->previous = manager->tail;\n-    manager->tail->next = laser;\n+    EnemyLaserCommonStorageView *previousTail = manager->tail;\n+    laser->previous = previousTail;\n+    previousTail->next = laser;\n     ++manager->count;\n     manager->tail = laser;\n     reinterpret_cast<EnemyLaserApplyPrefixView *>(laser)->ApplyRequest(request);\n",
+          "role": "src/EnemyLaser.cpp"
+        }
+      ],
+      "source_scope": {
+        "canonical_replay": false,
+        "consistent_overlay_files": null,
+        "fresh_game_source_compiles": 1,
+        "reused_game_source_objects": 9,
+        "reused_harness_files": 2,
+        "same_candidate_acceptance_cold_pair": false
+      }
+    },
+    {
+      "ECL": {
+        "complete_float_callee_exact": 171,
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "reviewed_suffix_bytes": 1,
+        "size": 7020
+      },
+      "Enemy": {
+        "case_aligned": {
+          "comparable": 11148,
+          "gap": 566,
+          "matched": 3219,
+          "same_sized": 42
+        },
+        "frame": "esp, 0x2c4",
+        "physical_groups": 108,
+        "selectors": 181,
+        "sentinel_compares": 19,
+        "size": 14352
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "df626cadc4ece6802a89ab4f323b34ff401ce9c636cccc5e2a2215fcf6bc5bd0",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyLaser.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/member-initializers/src/EnemyLaser.cpp",
+          "source_sha256": "9d4364216fea0a53affd0deaf541084fb034983b4dbdfaf90384c9683f81f9c1"
+        }
+      ],
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory": {
+        "ret_operands": [
+          "plain",
+          "plain"
+        ],
+        "size": 153,
+        "structural_diagnostic": {
+          "comparable_bytes": 137,
+          "matched_comparable_bytes": 16,
+          "normalization_complete": true
+        },
+        "symbol": "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z"
+      },
+      "label": "member-initializers",
+      "maintained_source_adopted": false,
+      "native_exit_code": 0,
+      "native_inventory_sha256": "8792e2ee417d47bd5f89b8ff8fb508ff4d6b54c09e0c94a765df65db650b491d",
+      "native_session": 36614,
+      "new_exact_credit": 0,
+      "peer_results": [
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14352,
+          "changed_address_fields_replayed": 0,
+          "label": "member-initializers",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0040E770",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 153,
+          "candidate_size": 153,
+          "changed_address_fields_replayed": 0,
+          "label": "member-initializers",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "9e844488d4f0dce987882783f60dfe1ae302808bad4840735f46978d05d3435e",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0041C510",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "changed_address_fields_replayed": 0,
+          "label": "member-initializers",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0043EE30",
+          "unresolved_changed_fields": 0
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "changed_address_fields_replayed": 0,
+          "label": "member-initializers",
+          "raw_equal": true,
+          "remaining_different_bytes": 0,
+          "replayed_sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+          "result": "raw peer equality",
+          "scope": "Full-byte candidate-to-baseline peer check only; no target exactness, source ABI or runtime claim.",
+          "target": "0x0044E1A0",
+          "unresolved_changed_fields": 0
+        }
+      ],
+      "producer_sha256": "8abeea297182cb31a7b2e5a8cbab6ae5c9cff8f24c5b158e9806bb51053a9cd7",
+      "source_patches": [
+        {
+          "after_sha256": "9d4364216fea0a53affd0deaf541084fb034983b4dbdfaf90384c9683f81f9c1",
+          "before_sha256": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+          "patch": "--- a/src/EnemyLaser.cpp\n+++ b/src/EnemyLaser.cpp\n@@ -839,6 +839,7 @@\n     EnemyLaserType0RequestView request;\n     AnmVmView primaryVm;\n     AnmVmView secondaryVm;\n+    EnemyLaserCommonStorageView *Initialize();\n };\n struct EnemyLaserType1StorageView\n {\n@@ -846,6 +847,7 @@\n     EnemyLaserType1RequestView request;\n     AnmVmView primaryVm;\n     AnmVmView secondaryVm;\n+    EnemyLaserCommonStorageView *Initialize();\n };\n typedef char EnemyLaserType0Layout[\n     (sizeof(EnemyLaserType0StorageView) == 0xd58 &&\n@@ -883,9 +885,9 @@\n     return request;\n }\n \n-static EnemyLaserCommonStorageView *EnemyInitializeLaserType0(\n-    EnemyLaserType0StorageView *laser)\n-{\n+EnemyLaserCommonStorageView *EnemyLaserType0StorageView::Initialize()\n+{\n+    EnemyLaserType0StorageView *laser = this;\n     EnemyInitializeLaserCommon(&laser->common);\n     laser->common.vtable = g_EnemyLaserType0Vtable;\n     memset(&laser->request, 0, sizeof(laser->request));\n@@ -893,9 +895,9 @@\n     new (&laser->secondaryVm) AnmVmView;\n     return &laser->common;\n }\n-static EnemyLaserCommonStorageView *EnemyInitializeLaserType1(\n-    EnemyLaserType1StorageView *laser)\n-{\n+EnemyLaserCommonStorageView *EnemyLaserType1StorageView::Initialize()\n+{\n+    EnemyLaserType1StorageView *laser = this;\n     EnemyInitializeLaserCommon(&laser->common);\n     laser->common.vtable = g_EnemyLaserType1Vtable;\n     EnemyInitializeLaserConfig(\n@@ -925,7 +927,7 @@\n             EnemyLaserType0StorageView *storage =\n                 static_cast<EnemyLaserType0StorageView *>(\n                     operator new(sizeof(EnemyLaserType0StorageView)));\n-            laser = storage ? EnemyInitializeLaserType0(storage) : NULL;\n+            laser = storage ? storage->Initialize() : NULL;\n         }\n         break;\n     case 1:\n@@ -933,7 +935,7 @@\n             EnemyLaserType1StorageView *storage =\n                 static_cast<EnemyLaserType1StorageView *>(\n                     operator new(sizeof(EnemyLaserType1StorageView)));\n-            laser = storage ? EnemyInitializeLaserType1(storage) : NULL;\n+            laser = storage ? storage->Initialize() : NULL;\n         }\n         break;\n     default:\n",
+          "role": "src/EnemyLaser.cpp"
+        }
+      ],
+      "source_scope": {
+        "canonical_replay": false,
+        "consistent_overlay_files": null,
+        "fresh_game_source_compiles": 1,
+        "reused_game_source_objects": 9,
+        "reused_harness_files": 2,
+        "same_candidate_acceptance_cold_pair": false
+      }
+    }
+  ],
+  "initializer_peer_observations": [
+    {
+      "body_sha256": "d1036557e06b0d36351e9c66222567fced76f9a411a98191946b617fb7a3f1c7",
+      "candidate_member_owner": {
+        "address": "0x00415570",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-03-EnemyLaser.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-abi-20261022\\member-initializers\\support-03-EnemyLaser.ltcg.obj",
+        "pdb_module_index": 3,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-abi-20261022\\member-initializers\\support-03-EnemyLaser.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 83312,
+        "sha256": "d1036557e06b0d36351e9c66222567fced76f9a411a98191946b617fb7a3f1c7",
+        "size": 65,
+        "symbol": "?Initialize@EnemyLaserType0StorageView@@QAEPAUEnemyLaserCommonStorageView@@XZ"
+      },
+      "complete_raw_equal": true,
+      "entry_instructions": [
+        {
+          "mnemonic": "push",
+          "operands": "esi"
+        },
+        {
+          "mnemonic": "push",
+          "operands": "edi"
+        },
+        {
+          "mnemonic": "mov",
+          "operands": "esi, eax"
+        },
+        {
+          "mnemonic": "call",
+          "operands": "0x4154d0"
+        }
+      ],
+      "kind": 0,
+      "original_static_owner": {
+        "address": "0x00415570",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-03-EnemyLaser.ltcg.obj",
+        "owner_visibility": "static",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-03-EnemyLaser.ltcg.obj",
+        "pdb_module_index": 3,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-03-EnemyLaser.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 83312,
+        "sha256": "d1036557e06b0d36351e9c66222567fced76f9a411a98191946b617fb7a3f1c7",
+        "size": 65,
+        "symbol": "?EnemyInitializeLaserType0@@YAPAUEnemyLaserCommonStorageView@@PAUEnemyLaserType0StorageView@@@Z"
+      },
+      "scope": "independently MAP/PDB-bound native peer extents only; no target constructor equality or origin claim"
+    },
+    {
+      "body_sha256": "8394080f7b0fc5b41c4dfd509410bc162a7764db1049c64cde8b7c59ee437129",
+      "candidate_member_owner": {
+        "address": "0x004155C0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-03-EnemyLaser.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-abi-20261022\\member-initializers\\support-03-EnemyLaser.ltcg.obj",
+        "pdb_module_index": 3,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-abi-20261022\\member-initializers\\support-03-EnemyLaser.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 83392,
+        "sha256": "8394080f7b0fc5b41c4dfd509410bc162a7764db1049c64cde8b7c59ee437129",
+        "size": 74,
+        "symbol": "?Initialize@EnemyLaserType1StorageView@@QAEPAUEnemyLaserCommonStorageView@@XZ"
+      },
+      "complete_raw_equal": true,
+      "entry_instructions": [
+        {
+          "mnemonic": "push",
+          "operands": "esi"
+        },
+        {
+          "mnemonic": "push",
+          "operands": "edi"
+        },
+        {
+          "mnemonic": "mov",
+          "operands": "esi, eax"
+        },
+        {
+          "mnemonic": "call",
+          "operands": "0x4154d0"
+        }
+      ],
+      "kind": 1,
+      "original_static_owner": {
+        "address": "0x004155C0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-03-EnemyLaser.ltcg.obj",
+        "owner_visibility": "static",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-03-EnemyLaser.ltcg.obj",
+        "pdb_module_index": 3,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-03-EnemyLaser.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 83392,
+        "sha256": "8394080f7b0fc5b41c4dfd509410bc162a7764db1049c64cde8b7c59ee437129",
+        "size": 74,
+        "symbol": "?EnemyInitializeLaserType1@@YAPAUEnemyLaserCommonStorageView@@PAUEnemyLaserType1StorageView@@@Z"
+      },
+      "scope": "independently MAP/PDB-bound native peer extents only; no target constructor equality or origin claim"
+    }
+  ],
+  "initializer_selector_limits": "The first lookup used the external-only enumerator and proved no absence. Original TU-static owners are selected through explicit qualified MAP/PDB selectors; full extents are independently checked before peer comparison.",
+  "limits": [
+    "No maintained source/header/interface/layout/profile or exact recipe is adopted.",
+    "Two full ten-source builds are distinct hypotheses, not an acceptance cold pair.",
+    "Five canonical normal-COFF contracts contribute extra linked guards only; their canonical artifact kinds are unchanged.",
+    "All case/factory structural scores are navigation diagnostics and grant no exact or runtime credit.",
+    "Six external direct calls occur in five provisional Ghidra bodies; original source ownership is not established."
+  ],
+  "preparation_failure": {
+    "complete_rebuild_session": 11082,
+    "exit_code": 1,
+    "native_session": 46823,
+    "status": "first reference overlay incomplete; compiler rejected six unconverted calls; no target hypothesis falsified",
+    "successful_source_compiles_before_failure": 4
+  },
+  "source_and_input_pins": {
+    "independent_D3D_files": 9,
+    "initial_source_test_config_inputs": 373,
+    "large_source_header_files": 32,
+    "maintained_source_files": 108,
+    "native_baseline_files": 15
+  },
+  "starting_head": "a50ad2a9b81d2d25e3e950ac923d6e628801626b",
+  "target_observations": {
+    "Ghidra_mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "direct_call_scan": {
+      "all_reviewed_calls": [
+        "0x411122",
+        "0x4112c9",
+        "0x41141b",
+        "0x41159a",
+        "0x41d0d8",
+        "0x41d14d",
+        "0x41dd4b",
+        "0x41e22a",
+        "0x41ef69",
+        "0x41f3ca"
+      ],
+      "dispatcher_calls": [
+        "0x411122",
+        "0x4112c9",
+        "0x41141b",
+        "0x41159a"
+      ],
+      "external_Ghidra_body_entries": 5,
+      "external_calls": [
+        {
+          "Ghidra_function_entry": "0041cfd0",
+          "call": "0x41d0d8"
+        },
+        {
+          "Ghidra_function_entry": "0041cfd0",
+          "call": "0x41d14d"
+        },
+        {
+          "Ghidra_function_entry": "0041d880",
+          "call": "0x41dd4b"
+        },
+        {
+          "Ghidra_function_entry": "0041dd80",
+          "call": "0x41e22a"
+        },
+        {
+          "Ghidra_function_entry": "0041eb00",
+          "call": "0x41ef69"
+        },
+        {
+          "Ghidra_function_entry": "0041efa0",
+          "call": "0x41f3ca"
+        }
+      ],
+      "method": "All mapped-text E8 byte positions surveyed for the exact relative destination, then joined to independently recorded Ghidra CALL references; counts do not promote original ownership"
+    },
+    "factory": {
+      "address": "0x0041C510",
+      "decoded_instructions": 44,
+      "direct_link_fields": [
+        {
+          "field_offset": 54,
+          "instruction": "0x41c545",
+          "kind": "REL32",
+          "target": "0x452493"
+        },
+        {
+          "field_offset": 68,
+          "instruction": "0x41c553",
+          "kind": "REL32",
+          "target": "0x41c680"
+        },
+        {
+          "field_offset": 80,
+          "instruction": "0x41c55f",
+          "kind": "REL32",
+          "target": "0x452493"
+        },
+        {
+          "field_offset": 94,
+          "instruction": "0x41c56d",
+          "kind": "REL32",
+          "target": "0x41c5b0"
+        }
+      ],
+      "machine_inputs": "ESI manager / EDI request / stack type; original source convention unknown",
+      "returns": [
+        {
+          "address": "0x41c51e",
+          "operand": "4"
+        },
+        {
+          "address": "0x41c5a6",
+          "operand": "4"
+        }
+      ],
+      "size": 153
+    },
+    "limits": "Machine facts and provisional Ghidra function grouping only; no source type/TU, ownership, exact or runtime promotion.",
+    "remaining_copy_sites": [
+      {
+        "destination": "ESP+0x7C",
+        "destination_lea": "0x00411316",
+        "dwords": 108,
+        "opcode": "0x1B1",
+        "rep_movsd": "0x0041131A",
+        "source": "EBX+0x2E4",
+        "source_lea": "0x0041130B"
+      },
+      {
+        "destination": "ESP+0x98",
+        "destination_lea": "0x00411460",
+        "dwords": 108,
+        "opcode": "0x1B2",
+        "rep_movsd": "0x00411467",
+        "source": "EBX+0x2E4",
+        "source_lea": "0x00411455"
+      }
+    ],
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+}
