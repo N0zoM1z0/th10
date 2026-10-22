@@ -1,0 +1,79 @@
+{
+  "affected_previous_cold": {
+    "bytes": 212,
+    "fields": 7,
+    "units": 1
+  },
+  "canonical_cold_pair": {
+    "additional_fields_each": 14,
+    "additional_whole_guards_bytes_each": 408,
+    "existing_size_bytes_each": 190,
+    "existing_size_fields_each": 13,
+    "full_four_TU_builds": 2,
+    "new_parent_bytes_each": 214,
+    "new_parent_fields_each": 14,
+    "total_checked_bytes_each": 812,
+    "total_fields_each": 41
+  },
+  "ci": {
+    "command_groups": 111,
+    "exit_code": 0,
+    "frozen_input_count": 373,
+    "input_inventory_sha256": "51d0fb993afcdd9ff23c0d2692f5113f615ae6fe748394185cb7e2339c23d57b",
+    "inputs_unchanged": true,
+    "log_sha256": "686881dce56537009304f2a1106e9e8f0140601591d356fa5dbec8e196967e7a",
+    "status": "passed"
+  },
+  "cleanup": {
+    "files": 50,
+    "logical_bytes": 808687,
+    "paths": [
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/g7",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/direct-entry-expression",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/archive-first",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/outer-result",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/caller-entry-normal"
+    ],
+    "retained": "both actual current-source cold carriers, compact sources/producers/results, canonical and provider/legacy state, nine independent D3D files",
+    "status": "removed",
+    "trees": 5
+  },
+  "counts": {
+    "authored": 734,
+    "authored_bytes": 273579,
+    "authored_exact": 404,
+    "authored_exact_bytes": 73841,
+    "origin_indeterminate": 524,
+    "overall_exact": 1245,
+    "overall_exact_bytes": 140351,
+    "source": 613,
+    "source_absent": 121,
+    "source_bytes": 247945,
+    "source_nonexact": 209
+  },
+  "final_parent_comparisons": [
+    {
+      "fields": 14,
+      "matched_bytes": 214,
+      "result": "exact",
+      "size": 214
+    },
+    {
+      "fields": 13,
+      "matched_bytes": 190,
+      "result": "exact",
+      "size": 190
+    }
+  ],
+  "host_routing": {
+    "compiled_strict_controls": 8,
+    "log_sha256": "82682edb98ef6701987735d7cda5b7ac6cbcc05dbd3048cf6eb4beb74cab1ba9",
+    "scope": "explicit archive/disk dependency seams; no target ABI/lifetime/Windows runtime proof",
+    "source_assertions": 112
+  },
+  "new_exact_functions": 1,
+  "new_exact_owned_bytes": 214,
+  "phase": "active-incomplete; product/runtime open; semantic and port not started",
+  "previous_visible_turn_classification": "no progress: status report only; native/dirty state revalidated before finishing the pending exact checkpoint",
+  "status": "passed for bounded declared-context codegen and source validation"
+}

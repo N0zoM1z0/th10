@@ -1,0 +1,781 @@
+{
+  "affected_original_recipe_cold": {
+    "fields": 7,
+    "matched_bytes": 212,
+    "report_sha256": "5f3313c8f1d7bc997ca29c173ee30c1d7d5d8622426b2afc407d5013307c4ec3",
+    "result": "exact",
+    "unit": "filesystem-find-archive"
+  },
+  "canonical_colds": [
+    {
+      "artifacts": {
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/link-anchors.obj": "1398ea4be9051d77cfa897800d48f14990967965c8068a90cfff6cf71d8ec01d",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/source.exe": "c63f83b5642f85f695b1829b7a4b9fea21f5c9c1c230c237be457d0f29cf8234",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/source.ltcg.obj": "113ca2fec545a7bcbac9a84d0b4089d21ec8d3e981a2649b7d1a18972746774d",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/source.map": "b0680817e2b9406dfd8477f240daa247a709a67a7cd03b40bcd1f47789a22a8b",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/source.pdb": "2afa82aa2130f3531905cf495a7cae546040e655bf948a92fcd518b8cb1e740a",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/support-00-PbgArchive.ltcg.obj": "a31303e85c18e1f20350c2ed4e65e41016f2d52967abd0b8b789328e9ae0b5f8",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/support-01-PbgFile.ltcg.obj": "3505031fab80647f3408af73c18ed8bc490d7ff759dcdda94795129a50ff4224",
+        "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-1/support-02-ResFile.normal.obj": "e9e1f030b64a32163a70de6c0bc4ad045d7cbe9c75d2700f5e1f76ab0c64fba6"
+      },
+      "bound_report_sha256": "8461cda08c45cf076fa8eecf54d1d643b07aea0ed5a68a119f79d0e784dc0ff7",
+      "build_input_inventory_sha256": "decdded0de279ecb760ceb4823e92aa110d4d21ef79e7d9b0246c3dbecf6ea73",
+      "build_report_sha256": "97c84eea991c9a92d684824a477ea7cce0d124f54ec3696db5825b75dfdf7ac1",
+      "cold": 1,
+      "full_source_inputs_compiled": 4,
+      "parents_and_guards": [
+        {
+          "candidate_address": "0x004011F0",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "c63f83b5642f85f695b1829b7a4b9fea21f5c9c1c230c237be457d0f29cf8234",
+          "link_field_count": 13,
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+          "unit": "filesystem-path-size"
+        },
+        {
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "c63f83b5642f85f695b1829b7a4b9fea21f5c9c1c230c237be457d0f29cf8234",
+          "link_field_count": 14,
+          "matched_bytes": 214,
+          "result": "exact",
+          "size": 214,
+          "symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+          "unit": "filesystem-path-read"
+        },
+        {
+          "candidate_address": "0x00401030",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "c63f83b5642f85f695b1829b7a4b9fea21f5c9c1c230c237be457d0f29cf8234",
+          "link_field_count": 7,
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+          "unit": "find"
+        },
+        {
+          "candidate_address": "0x00402460",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "c63f83b5642f85f695b1829b7a4b9fea21f5c9c1c230c237be457d0f29cf8234",
+          "link_field_count": 2,
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "symbol": "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z",
+          "unit": "caller"
+        },
+        {
+          "candidate_address": "0x00401D50",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "c63f83b5642f85f695b1829b7a4b9fea21f5c9c1c230c237be457d0f29cf8234",
+          "link_field_count": 1,
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+          "unit": "entry-size"
+        },
+        {
+          "candidate_address": "0x00401990",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "c63f83b5642f85f695b1829b7a4b9fea21f5c9c1c230c237be457d0f29cf8234",
+          "link_field_count": 1,
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "symbol": "?FindEntry@PbgArchive@@QAEPAUPbgArchiveEntry@@PBD@Z",
+          "unit": "find-entry"
+        },
+        {
+          "candidate_address": "0x00402110",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "c63f83b5642f85f695b1829b7a4b9fea21f5c9c1c230c237be457d0f29cf8234",
+          "link_field_count": 3,
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "symbol": "??1CPbgFile@@UAE@XZ",
+          "unit": "destructor"
+        }
+      ]
+    },
+    {
+      "artifacts": {
+        "build/match-linked/FileSystemPathSize/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+        "build/match-linked/FileSystemPathSize/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+        "build/match-linked/FileSystemPathSize/link-anchors.obj": "99200aefc2f4aa1a13dddddb180680a919554f1a327f2f1bf00ec1eaf3bd93b1",
+        "build/match-linked/FileSystemPathSize/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+        "build/match-linked/FileSystemPathSize/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+        "build/match-linked/FileSystemPathSize/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "build/match-linked/FileSystemPathSize/source.exe": "01e584a7c7d53b624f2b560a5b1f1fc93445bb959d004b2123d38b97cf3cf785",
+        "build/match-linked/FileSystemPathSize/source.ltcg.obj": "2276b063d48252d627f97d79a6e4610dace886695ea9f3a0f6ed8b6d89c02636",
+        "build/match-linked/FileSystemPathSize/source.map": "355eeea79605256ada301422f65e4128fa9d616c857e605e369cd46887c0d1d8",
+        "build/match-linked/FileSystemPathSize/source.pdb": "6fc20516090395dd5741d05f000e7ff57da33a2746ab07bd88296de5f6d0fec5",
+        "build/match-linked/FileSystemPathSize/support-00-PbgArchive.ltcg.obj": "2ef6c52541d6483f4b77626b86c373349e6d137431d6bf4351b633c4710c14d4",
+        "build/match-linked/FileSystemPathSize/support-01-PbgFile.ltcg.obj": "66ae54f5ac49fbca12be4a83feee234ca89532b8c4bfb3ae1a3a2c0ce531ae2f",
+        "build/match-linked/FileSystemPathSize/support-02-ResFile.normal.obj": "b94d4f9dd29b3801d991fcb8b457979f696535f02966cf848c11e61151e84241"
+      },
+      "bound_report_sha256": "b69130ab8c8d37c65ff32d2287277e022603a44af70f3c3a841c8654716f2c02",
+      "build_input_inventory_sha256": "decdded0de279ecb760ceb4823e92aa110d4d21ef79e7d9b0246c3dbecf6ea73",
+      "build_report_sha256": "2ebf738d63936e40eccb5c1d59a69a7daeb6440cae90b9283386e065a4e7e4bc",
+      "cold": 2,
+      "full_source_inputs_compiled": 4,
+      "parents_and_guards": [
+        {
+          "candidate_address": "0x004011F0",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "01e584a7c7d53b624f2b560a5b1f1fc93445bb959d004b2123d38b97cf3cf785",
+          "link_field_count": 13,
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+          "unit": "filesystem-path-size"
+        },
+        {
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "01e584a7c7d53b624f2b560a5b1f1fc93445bb959d004b2123d38b97cf3cf785",
+          "link_field_count": 14,
+          "matched_bytes": 214,
+          "result": "exact",
+          "size": 214,
+          "symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+          "unit": "filesystem-path-read"
+        },
+        {
+          "candidate_address": "0x00401030",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "01e584a7c7d53b624f2b560a5b1f1fc93445bb959d004b2123d38b97cf3cf785",
+          "link_field_count": 7,
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+          "unit": "find"
+        },
+        {
+          "candidate_address": "0x00402460",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "01e584a7c7d53b624f2b560a5b1f1fc93445bb959d004b2123d38b97cf3cf785",
+          "link_field_count": 2,
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "symbol": "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z",
+          "unit": "caller"
+        },
+        {
+          "candidate_address": "0x00401D50",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "01e584a7c7d53b624f2b560a5b1f1fc93445bb959d004b2123d38b97cf3cf785",
+          "link_field_count": 1,
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+          "unit": "entry-size"
+        },
+        {
+          "candidate_address": "0x00401990",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "01e584a7c7d53b624f2b560a5b1f1fc93445bb959d004b2123d38b97cf3cf785",
+          "link_field_count": 1,
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "symbol": "?FindEntry@PbgArchive@@QAEPAUPbgArchiveEntry@@PBD@Z",
+          "unit": "find-entry"
+        },
+        {
+          "candidate_address": "0x00402110",
+          "extent_source": "pdb-section-contribution",
+          "image_sha256": "01e584a7c7d53b624f2b560a5b1f1fc93445bb959d004b2123d38b97cf3cf785",
+          "link_field_count": 3,
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "symbol": "??1CPbgFile@@UAE@XZ",
+          "unit": "destructor"
+        }
+      ]
+    }
+  ],
+  "claim": {
+    "end_inclusive": "0x004358D5",
+    "generated_EH_code_credit": 0,
+    "metadata_ownership_credit": 0,
+    "new_exact_functions": 1,
+    "new_exact_owned_bytes": 214,
+    "owned_bytes": 214,
+    "start": "0x00435800",
+    "unit": "filesystem-path-read"
+  },
+  "date": "2026-10-22",
+  "host_routing": {
+    "compiled_strict_controls": 8,
+    "log_sha256": "82682edb98ef6701987735d7cda5b7ac6cbcc05dbd3048cf6eb4beb74cab1ba9",
+    "scope": "explicit archive/disk dependency seams; no target ABI/lifetime/Windows runtime proof",
+    "source_assertions": 112
+  },
+  "input_sha256": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/build-match-unit.py": "5ed4084bd07ec4ca3c70d6adafe536c68e0afcd7edf6a6a1f85635893e543fc3",
+    "scripts/compare-linked-function.py": "25ac689539c7ea15140585941f8f082aa67f1db402dc1b8b6717ec9b14f1375c",
+    "scripts/linked_stack_file_eh.py": "ff90c1389fcdc4b0db2cb31c404d75974be296e2746c1253148375b17b6d7796",
+    "scripts/replay-exact-units.py": "3907eca4644c10f2ea097149f142e5d3d449d512e48ec79314dfbf3eebca0a41",
+    "scripts/test-filesystem-archive-routing.py": "32fa63d0feac5a2123df04df7b8ca698b3e3eb34c0a5e6fb16d88fbce7a8fd2c",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/FileSystem.cpp": "005eca24fb8d30022c31a7c382179030ca719335710c9e393805330de010563c",
+    "src/PbgArchive.cpp": "0873a5711bee9797f899c347cd7241b7fb3379fbb544c0dc083b9c2ab7a51abc",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/ResFile.cpp": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b"
+  },
+  "large_baseline": {
+    "baseline_native_artifact_sha256": 15,
+    "baseline_native_source_sha256": 32,
+    "scope": "Fresh hashes only; no new large-owner build or comparison"
+  },
+  "local_ghidra": {
+    "dump_sha256": "8d8a4512e9bac3fc58998bb3d85dbadf1a5baadab643ca62a9575dca0c89e29f",
+    "heap_MiB": 768,
+    "log_sha256": "b2adee3bb93c2c3729c847630211301b27d908fe8f896c0d06632134db87937b",
+    "mapped_text_unchanged_before_after": true,
+    "maxcpu": 1,
+    "mode": "readOnly/noanalysis/rollback"
+  },
+  "previous_canonical_units_unchanged": 1244,
+  "private_models": [
+    {
+      "comparisons": [
+        {
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "unit": "find"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "caller"
+        },
+        {
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "unit": "entry-size"
+        },
+        {
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "unit": "find-entry"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "destructor"
+        },
+        {
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "unit": "get-size"
+        },
+        {
+          "matched_bytes": 200,
+          "result": "mismatch",
+          "size": 214,
+          "unit": "read"
+        }
+      ],
+      "compiled_inputs": [
+        {
+          "object": "source.ltcg.obj",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHsc",
+            "/G7"
+          ],
+          "sha256": "0d16c0cc974e6370a6b0739abe2e7f36311d7eb611558d3130c2258ed3eba05f",
+          "source": ".analysis/gpt-6.1-sol/filesystem-read-registers-20261022/g7/FileSystem.cpp"
+        },
+        {
+          "object": "support-02-ResFile.normal.obj",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GS",
+            "/EHsc",
+            "/G7"
+          ],
+          "sha256": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54",
+          "source": "src/ResFile.cpp"
+        }
+      ],
+      "model": "g7",
+      "producer_sha256": "f25f69c0cc3aa841a2ad8970a8d502ee6791685313114e8c6658d80e85883a89",
+      "report_sha256": "280992a468402999dcd5033bba125d3d024e79e7cfb9c6226373b82dfed4b5f7",
+      "retained_source_input_objects_reused": 2,
+      "source_sha256": "0d16c0cc974e6370a6b0739abe2e7f36311d7eb611558d3130c2258ed3eba05f"
+    },
+    {
+      "comparisons": [
+        {
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "unit": "find"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "caller"
+        },
+        {
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "unit": "entry-size"
+        },
+        {
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "unit": "find-entry"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "destructor"
+        },
+        {
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "unit": "get-size"
+        },
+        {
+          "matched_bytes": 200,
+          "result": "mismatch",
+          "size": 214,
+          "unit": "read"
+        }
+      ],
+      "compiled_inputs": [
+        {
+          "object": "source.ltcg.obj",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHsc"
+          ],
+          "sha256": "a968efbde660f65c351d2166836b6247c0dcee9c7c72fa21be35fc65fb3f6b24",
+          "source": ".analysis/gpt-6.1-sol/filesystem-read-registers-20261022/direct-entry-expression/FileSystem.cpp"
+        }
+      ],
+      "model": "direct-entry-expression",
+      "producer_sha256": "f25f69c0cc3aa841a2ad8970a8d502ee6791685313114e8c6658d80e85883a89",
+      "report_sha256": "7d0550766eb169554c1c9727a84cb89fc990289e9b1f35c4463d8afefca0714e",
+      "retained_source_input_objects_reused": 3,
+      "source_sha256": "a968efbde660f65c351d2166836b6247c0dcee9c7c72fa21be35fc65fb3f6b24"
+    },
+    {
+      "comparisons": [
+        {
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "unit": "find"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "caller"
+        },
+        {
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "unit": "entry-size"
+        },
+        {
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "unit": "find-entry"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "destructor"
+        },
+        {
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "unit": "get-size"
+        },
+        {
+          "matched_bytes": 200,
+          "result": "mismatch",
+          "size": 214,
+          "unit": "read"
+        }
+      ],
+      "compiled_inputs": [
+        {
+          "object": "source.ltcg.obj",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHsc"
+          ],
+          "sha256": "47700a4427058c1dfa651dc92ee591bbc62abf168260cd6e5b07430ae7057905",
+          "source": ".analysis/gpt-6.1-sol/filesystem-read-registers-20261022/archive-first/FileSystem.cpp"
+        }
+      ],
+      "model": "archive-first",
+      "producer_sha256": "f25f69c0cc3aa841a2ad8970a8d502ee6791685313114e8c6658d80e85883a89",
+      "report_sha256": "6f2c601b4ad6b4ba4c0182f9c20d0ff94a06e577ab057f44406701665cbcc038",
+      "retained_source_input_objects_reused": 3,
+      "source_sha256": "47700a4427058c1dfa651dc92ee591bbc62abf168260cd6e5b07430ae7057905"
+    },
+    {
+      "comparisons": [
+        {
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "unit": "find"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "caller"
+        },
+        {
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "unit": "entry-size"
+        },
+        {
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "unit": "find-entry"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "destructor"
+        },
+        {
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "unit": "get-size"
+        },
+        {
+          "matched_bytes": 214,
+          "result": "exact",
+          "size": 214,
+          "unit": "read"
+        }
+      ],
+      "compiled_inputs": [
+        {
+          "object": "source.ltcg.obj",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHsc"
+          ],
+          "sha256": "005eca24fb8d30022c31a7c382179030ca719335710c9e393805330de010563c",
+          "source": ".analysis/gpt-6.1-sol/filesystem-read-registers-20261022/outer-result/FileSystem.cpp"
+        }
+      ],
+      "model": "outer-result",
+      "producer_sha256": "f25f69c0cc3aa841a2ad8970a8d502ee6791685313114e8c6658d80e85883a89",
+      "report_sha256": "16a043a19f4b37e1b90a9aab1ec8de9834cd336be788d595caabbbe000893960",
+      "retained_source_input_objects_reused": 3,
+      "source_sha256": "005eca24fb8d30022c31a7c382179030ca719335710c9e393805330de010563c"
+    },
+    {
+      "comparisons": [
+        {
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "unit": "find"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "caller"
+        },
+        {
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "unit": "entry-size"
+        },
+        {
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "unit": "find-entry"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "destructor"
+        },
+        {
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "unit": "get-size"
+        },
+        {
+          "matched_bytes": 200,
+          "result": "mismatch",
+          "size": 214,
+          "unit": "read"
+        }
+      ],
+      "compiled_inputs": [],
+      "model": "caller-entry-normal",
+      "producer_sha256": "4f4239d5ae62c618beea9ddc758e7e4b0ae7c4242eff55e47b5256c68b93d4e7",
+      "report_sha256": "6f93c401471b62f54941480b9637de0bddd8c92bbb17f9a0a84156b82be1168e",
+      "retained_source_input_objects_reused": 4,
+      "source_sha256": "0d16c0cc974e6370a6b0739abe2e7f36311d7eb611558d3130c2258ed3eba05f"
+    }
+  ],
+  "recipe": {
+    "artifact_kind": "linked-pe",
+    "entry_symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+    "functions": [
+      "ArchiveOrDiskPathView::Read"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "linkages": [
+      {
+        "offset": 2,
+        "symbol": "__except_list",
+        "target": 0,
+        "type": "DIR32"
+      },
+      {
+        "offset": 9,
+        "stack_file_eh_handler": true,
+        "symbol": "__ehhandler$?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+        "target": 4608936,
+        "type": "DIR32"
+      },
+      {
+        "offset": 17,
+        "symbol": "__except_list",
+        "target": 0,
+        "type": "DIR32"
+      },
+      {
+        "offset": 29,
+        "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+        "target": 4413168,
+        "type": "REL32"
+      },
+      {
+        "offset": 43,
+        "symbol": "_strchr",
+        "target": 4532016,
+        "type": "REL32"
+      },
+      {
+        "offset": 66,
+        "symbol": "?ReadDecompressEntry@PbgArchive@@QAEPAEPBDPAE@Z",
+        "target": 4410832,
+        "type": "REL32"
+      },
+      {
+        "offset": 79,
+        "symbol": "__except_list",
+        "target": 0,
+        "type": "DIR32"
+      },
+      {
+        "offset": 90,
+        "symbol": "??_7CPbgFile@@6B@",
+        "target": 4649520,
+        "type": "DIR32"
+      },
+      {
+        "offset": 124,
+        "symbol": "?g_PbgFileOpenModes@@3PAPADA",
+        "target": 4671752,
+        "type": "DIR32"
+      },
+      {
+        "offset": 135,
+        "symbol": "?Open@CPbgFile@@UAE_NPBDPAD@Z",
+        "target": 4412272,
+        "type": "REL32"
+      },
+      {
+        "offset": 157,
+        "symbol": "__imp__GetFileSize@8",
+        "target": 4612312,
+        "type": "DIR32"
+      },
+      {
+        "offset": 167,
+        "symbol": "?ReadWholeFile@CPbgFile@@UAEPAXK@Z",
+        "target": 4412800,
+        "type": "REL32"
+      },
+      {
+        "offset": 189,
+        "symbol": "__imp__CloseHandle@4",
+        "target": 4612300,
+        "type": "DIR32"
+      },
+      {
+        "offset": 204,
+        "symbol": "__except_list",
+        "target": 0,
+        "type": "DIR32"
+      }
+    ],
+    "normal_support_sources": [
+      "src/ResFile.cpp"
+    ],
+    "output_dir": "build/match-linked/FileSystemPathSize",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS",
+      "/EHsc"
+    ],
+    "size": 214,
+    "source": "src/FileSystem.cpp",
+    "support_profiles": {
+      "src/PbgArchive.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHsc",
+        "/Ob1"
+      ]
+    },
+    "support_sources": [
+      "src/PbgArchive.cpp",
+      "src/PbgFile.cpp",
+      "src/ResFile.cpp"
+    ],
+    "symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+    "target_address": 4413440
+  },
+  "starting_head": "9cd7b17b3113f4af2d075c92b3a1baeac4cf039c",
+  "target": {
+    "base_relocation_directory_entries": 0,
+    "identity": "original Japanese TH10 v1.00a",
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+  },
+  "unknowns": [
+    "original source spelling and class/lifetime",
+    "production source/TU/flags and data ownership",
+    "whole Windows i386 product/runtime",
+    "semantic reconstruction and portability"
+  ]
+}

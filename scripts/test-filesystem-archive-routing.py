@@ -177,15 +177,15 @@ def main() -> int:
         'last-slash': ("strchr(path, '/')", "strrchr(path, '/')"),
         'wrong-name-comparison': ('archiveFilename) == 0', 'archiveFilename) != 0'),
         'wrong-array-element': ('return archive;', 'return g_PbgArchives;'),
-        'drop-output-buffer': ('return archive->ReadDecompressEntry(entryName, optionalBuffer);',
-                               'return archive->ReadDecompressEntry(entryName, NULL);'),
-        'fallback-after-archive-error': ('return archive->ReadDecompressEntry(entryName, optionalBuffer);',
-            'BYTE *result = archive->ReadDecompressEntry(entryName, optionalBuffer);\n        if (result != NULL) return result;'),
+        'drop-output-buffer': ('result = archive->ReadDecompressEntry(entryName, optionalBuffer);',
+                               'result = archive->ReadDecompressEntry(entryName, NULL);'),
+        'fallback-after-archive-error': ('    else\n    {\n        CPbgFile file;',
+            '    if (archive == NULL || result == NULL)\n    {\n        CPbgFile file;'),
         'guard-disk-open': ('file.Open(path, g_PbgFileOpenModes[0]);',
                            'if (!file.Open(path, g_PbgFileOpenModes[0])) return NULL;'),
         'drop-disk-size': ('return file.GetSize();', 'return 0;'),
-        'drop-entry-suffix': ('return archive->ReadDecompressEntry(entryName, optionalBuffer);',
-                             'return archive->ReadDecompressEntry(path, optionalBuffer);'),
+        'drop-entry-suffix': ('result = archive->ReadDecompressEntry(entryName, optionalBuffer);',
+                             'result = archive->ReadDecompressEntry(path, optionalBuffer);'),
     }
     cases = [('baseline', selected)]
     if not args.baseline_only:

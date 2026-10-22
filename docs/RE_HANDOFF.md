@@ -1,10 +1,11 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Complete
-FileSystem GetSize4358E0 is now exact190/all13 fields after two final independent
-full four-TU colds. Authored exact403/73627, overall1244/140137. Source remains
-613/247945 owned bytes; nonexact210, absent121. FileSystem source13/13, exact9/13.
-See [size/EH proof](evidence/filesystem-path-size/README.md),
+FileSystem Read435800 is now exact214/all14 fields after two independent full
+four-TU colds. Authored exact404/73841, overall1245/140351. Source remains
+613/247945 owned bytes; nonexact209, absent121. FileSystem source13/13, exact10/13.
+See [read proof](evidence/filesystem-path-read/README.md),
+[size/EH proof](evidence/filesystem-path-size/README.md),
 [lookup proof](evidence/filesystem-find-archive/README.md) and the preceding
 [archive routing](evidence/filesystem-archive-routing/README.md) source checkpoint.
 
@@ -38,11 +39,43 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
 273579 owned bytes;1097 source mappings. Authored source613/247945 bytes,
-210 source-present/nonexact,121 source-absent. Authored exact **403/73627 bytes**;
-overall exact1244/140137 bytes. Unknown origins524 keep the whole-game denominator
+209 source-present/nonexact,121 source-absent. Authored exact **404/73841 bytes**;
+overall exact1245/140351 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest size and stack-file EH checkpoint
+## Latest complete read checkpoint
+
+Starting9cd7b17, five actual controls isolate ordinary result lifetime. G7,
+direct suffix expression, archive-first declarations and a real normal-caller
+link entry leave Read214/200/all14. One result shared by archive/disk branches
+recovers all214 bytes and14 fields, including the existing stack-file EH binder.
+Only this natural source form and three host mutation selectors are adopted;
+signatures/layouts/globals/profiles remain unchanged. Host112/eight compiled
+strict controls pass. Private experiments reuse attested objects; they are not
+full cold evidence.
+
+Two actual independent four-TU canonical builds each reproduce Read214 and
+existing GetSize190/all27 fields, plus five complete guards408/all14, totaling
+812/all41. A separate original-recipe FindArchive cold also passes212/all7.
+All1244 previous unit dictionaries remain unchanged. Only214 new authored bytes
+are credited. The Ghidra review is readOnly/noanalysis/rollback, maxcpu1/heap768,
+and independently checks all412289 mapped text bytes before/after. No generated
+EH-code, metadata owner, original class/TU/flags or product/runtime claim follows.
+
+Fresh111-group CI passes with all373 final code/test/config inputs unchanged.
+Hash-verified cleanup removes50 files/808687 logical bytes across five obsolete
+private model carriers. Both actual colds and all9 independent D3D files remain.
+The32 large-source and15 native baseline pins remain unchanged; no new large
+build or comparison is claimed. Final CI and cleanup details are recorded in
+the [read validation](evidence/filesystem-path-read/validation-summary.json).
+Private recovery: `.analysis/gpt-6.1-sol/filesystem-read-registers-20261022/`.
+Keep the actual first cold at its matching build path and the second canonical
+carrier `build/match-linked/FileSystemPathSize`, compact source/producers/results
+and the affected FindArchive canonical carrier. Old manifest/model pins describe
+historical pre-adoption inputs; never restore source or rerun producers blindly.
+Preserve all9 independent untracked D3D files.
+
+## Previous size and stack-file EH checkpoint
 
 Starting5e8f6f3, ten private models recover single-call Read and the complete
 GetSize shape. Read/GetSize consume the existing suffix helper; FindEntry's
@@ -69,8 +102,9 @@ the corrected28-byte protocol and EOF-clean header. Earlier cold pairs and the
 interrupted EOF CI are superseded. Classified cleanup removes1999267 logical
 bytes; both final carriers and all9 independent D3D files remain unchanged.
 
-Current Read is214/200 with all14 fields/EH bound, leaving14 ordinary register/
-return-order differences. Its EHs context is204; do not mix those measurements.
+Before the subsequent shared-result checkpoint, Read was214/200 with all14
+fields/EH bound and14 ordinary register/return-order differences. Its older EHs
+context was204; do not mix those measurements.
 The ten-TU32 source/header and15 native pins freshly remain unchanged; no large
 owner cold or comparison is claimed. Old broad source inventories are historical.
 
@@ -318,15 +352,26 @@ bytes from21 owned paths, retaining compound-bit69 and Og-disabled161 failures.
 The ANM batch separately removed4289158 bytes from22 owned paths. Canonical
 carriers, prior snapshots, nine independent D3D files and provider/legacy remain.
 
-The three FileSystem owners above are source-present. FindArchive212 and
-GetSize190 now have complete canonical exact contracts. Next investigate Read's
-remaining14 ordinary register/return-order differences in its current214-byte
-EHsc/Ob1 caller graph, preserving all14 fields and the six whole guards. Its
-archive call and cleanup inlining are recovered; do not repeat the ten executed
-models or treat the EHs204 measurement as this context. Use target-supported
-ordinary-source/caller hypotheses with complete field/EH binding before credit;
-keep /GL and do not force registers or returns. The old File.cpp string has
-no code xref and still does not establish original source ownership.
+The three path owners now have complete canonical exact contracts: lookup212,
+Read214 and size190. Remaining FileSystem nonexact owners are LoadArchive36,
+Decrypt323 and Encrypt307, totaling666 bytes; use the origin ledger's subsystem
+fallback when counting, since the latter two have no function-row module.
+Inspect current target/caller evidence before selecting a private ABI or
+transform-lifetime experiment. The preceding39/36 LoadArchive diagnostic is
+not a bound on new contexts. Alternatively rotate to the large-owner routes
+above without repeating neutral models. Keep /GL and do not force registers or
+returns. The old File.cpp string still has no code xref and establishes no
+original source ownership.
+
+A subsequent read-only comparison of both retained Read carriers finds complete
+PbgArchive::Load434C30/108/all7 exact in the current caller graph. This is a new
+route, not ledger credit or a new cold in the Read batch. Review its target/caller
+and seven bindings, then establish a canonical support-owner unit and repeatable
+acceptance before promotion. The compact candidate and two pinned cached results
+are `next-pbg-load-cached.json` in the current private recovery directory.
+LoadArchive4357D0 is34 bytes in that same current artifact, not the old39-byte
+measurement; target36 remains nonexact. Fresh source/extent evidence takes
+precedence over historical notes.
 
 The remaining source-absent queue is121 owners:118 GameUnassigned,2 Player and
 1 Startup. Neither FileSystem source completeness nor its host contracts close

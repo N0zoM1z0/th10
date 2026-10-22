@@ -52,16 +52,20 @@ BYTE *ArchiveOrDiskPathView::Read(BYTE *optionalBuffer)
 {
     const char *path = reinterpret_cast<const char *>(this);
     PbgArchive *archive = FindArchive();
+    BYTE *result;
     if (archive != NULL)
     {
         const char *entryName = ArchiveEntryName(path);
-        return archive->ReadDecompressEntry(entryName, optionalBuffer);
+        result = archive->ReadDecompressEntry(entryName, optionalBuffer);
     }
-
-    CPbgFile file;
-    file.Open(path, g_PbgFileOpenModes[0]);
-    DWORD size = file.GetSize();
-    return reinterpret_cast<BYTE *>(file.ReadWholeFile(size));
+    else
+    {
+        CPbgFile file;
+        file.Open(path, g_PbgFileOpenModes[0]);
+        DWORD size = file.GetSize();
+        result = reinterpret_cast<BYTE *>(file.ReadWholeFile(size));
+    }
+    return result;
 }
 
 // Target 0x004358E0 uses the same selection and suffix rules as Read.

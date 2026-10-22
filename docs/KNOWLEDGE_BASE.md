@@ -4980,3 +4980,28 @@ nonexact. Callee-only EHsc does not inline cleanup; parent EHsc suffices in the
 tested family. These are measured constraints, not original-source/flag proof.
 Routing112/eight strict controls pass with the updated suffix-argument mutant.
 [Full evidence and limits](evidence/filesystem-path-size/README.md).
+
+## Exact archive-or-disk read result lifetime (2026-10-22)
+
+Read435800..4358D5 is complete214 bytes. A normal shared result across archive
+and disk branches, with the automatic CPbgFile in the disk branch, reproduces
+the target register and return ordering. No signature, layout, global, virtual,
+profile or target bytes change. The archive path keeps NULL failures without
+disk fallback and forwards the optional buffer only to the archive reader;
+disk Open's return is ignored and real file destruction precedes return.
+
+G7, direct suffix expression, archive-first declarations and a real normal
+caller entry each leave200/214 equal bytes with all14 fields bound; shared
+result reaches214/214. These private controls compile selected inputs or only
+relink and reuse attested objects. Two subsequent actual full four-TU colds
+each retain all214/all14 plus existing GetSize190/all13 and five whole
+guards408/all14, totaling812/all41. FindArchive's original canonical recipe
+also independently cold-passes212/all7. All1244 prior unit dictionaries remain
+unchanged. The existing stack-file EH protocol supplies address identity only;
+EH-code and metadata gain no ownership or duplicate exact credit.
+
+Only one214-byte gain is credited: authored404/73841, overall1245/140351;
+source613/nonexact209/absent121. FileSystem source13/13, exact10/13; remaining
+LoadArchive36 and transforms323/307 total666 nonexact bytes. Original spelling,
+class/lifetime, source/TU, production flags and product/runtime remain unknown.
+[Complete read proof and limits](evidence/filesystem-path-read/README.md).
