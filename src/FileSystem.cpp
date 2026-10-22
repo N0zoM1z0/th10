@@ -54,8 +54,7 @@ BYTE *ArchiveOrDiskPathView::Read(BYTE *optionalBuffer)
     PbgArchive *archive = FindArchive();
     if (archive != NULL)
     {
-        const char *entryName = strchr(path, '/');
-        entryName = entryName == NULL ? path : entryName + 1;
+        const char *entryName = ArchiveEntryName(path);
         return archive->ReadDecompressEntry(entryName, optionalBuffer);
     }
 
@@ -72,8 +71,7 @@ DWORD ArchiveOrDiskPathView::GetSize()
     PbgArchive *archive = FindArchive();
     if (archive != NULL)
     {
-        const char *entryName = strchr(path, '/');
-        entryName = entryName == NULL ? path : entryName + 1;
+        const char *entryName = ArchiveEntryName(path);
         return archive->GetEntryDecompressedSize(entryName);
     }
 

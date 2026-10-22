@@ -17,11 +17,11 @@ class Image:
     image_base=0
     def __init__(self,handler,frame,delete):
         self.sections=[SimpleNamespace(number=1,rva=0x1000,virtual_size=0x1000,characteristics=0x60000020),
-                       SimpleNamespace(number=2,rva=0x3000,virtual_size=0x1000,characteristics=0x40000040)]
+                       SimpleNamespace(number=2,rva=0x3000,virtual_size=0x24,characteristics=0x40000040)]
         action=handler-11
         cleanup=b'\x8b\x45\xf0\x50\xe8'+struct.pack('<i',delete-(action+9))+b'\x59\xc3'
         dispatch=b'\xb8'+struct.pack('<I',0x3008)+b'\xe9'+struct.pack('<i',frame-(handler+10))
-        self.memory={action:bytearray(cleanup+dispatch),0x3000:bytearray(struct.pack('<iI8I',-1,action,0x19930520,1,0x3000,0,0,0,0,0xffffffff))}
+        self.memory={action:bytearray(cleanup+dispatch),0x3000:bytearray(struct.pack('<iI7I',-1,action,0x19930520,1,0x3000,0,0,0,0))}
     def section(self,number):return self.sections[number-1]
     def read_address(self,address,size):
         for start,raw in self.memory.items():
@@ -62,6 +62,13 @@ def set32(f,side,address,value):f[side].write(address,struct.pack('<I',value))
 def main():
     f=fixture();result=bind(f);assert result['candidate']['region_bytes']==21 and result['target']['unwind_states']==1
     assert eh.allocation_eh_selector(f['unit'],{'type':'DIR32','symbol':'ordinary'}) is False
+    for neighbor in [0,0x17,0xffffffff]:
+        f=fixture()
+        for side in ['native','target']:
+            f[side].sections[1].virtual_size=0x28
+            f[side].memory[0x3000].extend(struct.pack('<I',neighbor))
+        bind(f)
+
     controls=[
         ('no-opt-in',lambda f:f['field'].pop('allocation_eh_handler'),'missing selector'),
         ('false-opt-in',lambda f:f['field'].update(allocation_eh_handler=False),'explicit true'),
@@ -70,6 +77,7 @@ def main():
         ('local-field',lambda f:f['field'].update(local=True),'separate DIR32'),
         ('added-offset',lambda f:f['field'].update(addend=1),'separate DIR32'),
         ('mixed-selector',lambda f:f['field'].update(static_source='src/other.cpp'),'separate DIR32'),
+        ('mixed-stack-EH',lambda f:f['field'].update(stack_file_eh_handler=True),'separate DIR32'),
         ('wrong-parent',lambda f:f['unit'].update(symbol='?Other@@YAXXZ'),'parent symbol'),
         ('wrong-pdb-parent',lambda f:f['parent'].update(symbol='?Other@@YAXXZ'),'PDB parent symbol'),
         ('absent-map',lambda f:f['statics'].clear(),'named MAP'),
@@ -98,6 +106,7 @@ def main():
         ('unrelated-action',lambda f:set32(f,'native',0x3004,0x1101),'unwind state/action'),
         ('wrong-storage-slot',lambda f:f['native'].write(0x1102,b'\xec'),'saved-storage/scalar-delete'),
         ('wrong-delete',lambda f:set32(f,'target',0x1205,eh.TARGET_DELETE+1-(0x1200+9)),'saved-storage/scalar-delete'),
+        ('short-FuncInfo',lambda f:setattr(f['native'].sections[1],'virtual_size',0x23),'range is outside'),
     ]
     for name,mutate,message in controls:
         f=fixture();mutate(f)
@@ -105,6 +114,6 @@ def main():
         except LinkedImageError as error:
             assert message in str(error),(name,str(error))
         else:raise AssertionError('accepted '+name)
-    print(f'Allocation EH synthetic positive and {len(controls)} rejection controls pass')
+    print(f'Allocation EH synthetic4 positives (28-byte section end/three neighbor values) and {len(controls)} rejection controls pass')
 
 if __name__=='__main__':main()

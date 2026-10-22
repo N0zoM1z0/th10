@@ -183,20 +183,6 @@ u32 PbgArchive::GetEntryDecompressedSize(const char *filename)
     return 0;
 }
 
-PbgArchiveEntry *PbgArchive::FindEntry(const char *filename)
-{
-    if (m_Entries == NULL)
-        return NULL;
-
-    PbgArchiveEntry *entry = m_Entries;
-    for (i32 i = m_NumOfEntries; i > 0; i--, entry++)
-    {
-        if (_stricmp(filename, entry->filename) == 0)
-            return entry;
-    }
-    return NULL;
-}
-
 bool PbgArchive::ParseHeader(const char *filename)
 {
     PbgArchiveHeader header;

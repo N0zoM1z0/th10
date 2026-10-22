@@ -4946,3 +4946,37 @@ include the accepted ordinary helper. Read/GetSize bodies stay unchanged and
 nonexact at retained236/242 versus214/190. Authored exact advances to402/73437,
 overall1243/139947; source613/247945, nonexact211 and absent121 remain separate.
 [Complete lookup proof and limits](evidence/filesystem-find-archive/README.md).
+
+## Exact archive-or-disk size and EH metadata extent (2026-10-22)
+
+GetSize4358E0..43599D is complete190 bytes. Ordinary shared suffix handling,
+inline FindEntry visibility and a bounded GL/GS/EHsc graph with GL/Ob1 archive
+support reproduce the owner/all13 fields in two final actual four-TU colds.
+Each also retains five whole guards408/all14. Separate existing canonical
+FindArchive212 and archive53/51 colds pass316/all9; all1243 previous unit
+dictionaries remain unchanged. Original flags/TU/class and data owners remain
+unknown. FindEntry's definition moves into the header; its maintained mapping
+continues to name the including compile TU. Only one190-byte gain is credited:
+authored403/73627, overall1244/140137; source613/nonexact210/absent121.
+
+The explicit stack-file EH binding checks the same-parent18-byte generated PDB
+region: LEA ECX,[EBP-0x18] then destructor tail, followed by FuncInfo dispatch.
+The qualified46-byte destructor must come from the declared real PbgFile input.
+Metadata is immutable and one-state; this is address binding, not EH-code,
+metadata ownership or native-runtime credit. Allocation and stack selectors
+are mutually exclusive.
+
+The supported19930520 header has seven words/28 bytes. Native Read FuncInfo ends
+at its readonly section boundary; GetSize's following word is Read's UnwindMap
+state in both images. The inherited eighth-word check constrained adjacent data.
+Both readers now stop at28. Four boundary/neighbor positives each and45 stack/
+37 allocation rejection controls pass. An existing181-byte allocation parent
+passes cached-artifact regression only; no new current-source cold is implied.
+The two initial pre-correction colds are superseded by the final pair.
+
+Read is now strictly comparable over214 bytes/all14 fields, including its EH
+protocol:200 bytes equal,14 ordinary register/return-order differences. It stays
+nonexact. Callee-only EHsc does not inline cleanup; parent EHsc suffices in the
+tested family. These are measured constraints, not original-source/flag proof.
+Routing112/eight strict controls pass with the updated suffix-argument mutant.
+[Full evidence and limits](evidence/filesystem-path-size/README.md).

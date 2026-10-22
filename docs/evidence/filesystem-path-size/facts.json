@@ -1,0 +1,1263 @@
+{
+  "date": "2026-10-22",
+  "starting_head": "5e8f6f3",
+  "target": {
+    "identity": "original Japanese TH10 v1.00a",
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "base_relocation_directory_entries": 0
+  },
+  "claim": {
+    "unit": "filesystem-path-size",
+    "start": "0x004358E0",
+    "end_inclusive": "0x0043599D",
+    "owned_bytes": 190,
+    "new_exact_credit": 190,
+    "generated_EH_code_credit": 0,
+    "metadata_ownership_credit": 0
+  },
+  "recipe": {
+    "artifact_kind": "linked-pe",
+    "source": "src/FileSystem.cpp",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS",
+      "/EHsc"
+    ],
+    "support_sources": [
+      "src/PbgArchive.cpp",
+      "src/PbgFile.cpp",
+      "src/ResFile.cpp"
+    ],
+    "normal_support_sources": [
+      "src/ResFile.cpp"
+    ],
+    "entry_symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+    "output_dir": "build/match-linked/FileSystemPathSize",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "support_profiles": {
+      "src/PbgArchive.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHsc",
+        "/Ob1"
+      ]
+    },
+    "functions": [
+      "ArchiveOrDiskPathView::GetSize"
+    ],
+    "symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+    "target_address": 4413664,
+    "size": 190,
+    "linkages": [
+      {
+        "offset": 4,
+        "type": "DIR32",
+        "symbol": "__except_list",
+        "target": 0
+      },
+      {
+        "offset": 9,
+        "type": "DIR32",
+        "symbol": "__ehhandler$?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+        "target": 4608904,
+        "stack_file_eh_handler": true
+      },
+      {
+        "offset": 17,
+        "type": "DIR32",
+        "symbol": "__except_list",
+        "target": 0
+      },
+      {
+        "offset": 31,
+        "type": "REL32",
+        "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+        "target": 4413168
+      },
+      {
+        "offset": 47,
+        "type": "REL32",
+        "symbol": "_strchr",
+        "target": 4532016
+      },
+      {
+        "offset": 66,
+        "type": "REL32",
+        "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+        "target": 4411120
+      },
+      {
+        "offset": 81,
+        "type": "DIR32",
+        "symbol": "__except_list",
+        "target": 0
+      },
+      {
+        "offset": 90,
+        "type": "DIR32",
+        "symbol": "??_7CPbgFile@@6B@",
+        "target": 4649520
+      },
+      {
+        "offset": 115,
+        "type": "DIR32",
+        "symbol": "?g_PbgFileOpenModes@@3PAPADA",
+        "target": 4671752
+      },
+      {
+        "offset": 126,
+        "type": "REL32",
+        "symbol": "?Open@CPbgFile@@UAE_NPBDPAD@Z",
+        "target": 4412272
+      },
+      {
+        "offset": 143,
+        "type": "DIR32",
+        "symbol": "__imp__GetFileSize@8",
+        "target": 4612312
+      },
+      {
+        "offset": 165,
+        "type": "DIR32",
+        "symbol": "__imp__CloseHandle@4",
+        "target": 4612300
+      },
+      {
+        "offset": 182,
+        "type": "DIR32",
+        "symbol": "__except_list",
+        "target": 0
+      }
+    ]
+  },
+  "input_sha256": {
+    "src/FileSystem.cpp": "0d16c0cc974e6370a6b0739abe2e7f36311d7eb611558d3130c2258ed3eba05f",
+    "src/PbgArchive.cpp": "0873a5711bee9797f899c347cd7241b7fb3379fbb544c0dc083b9c2ab7a51abc",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/ResFile.cpp": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "scripts/linked_stack_file_eh.py": "ff90c1389fcdc4b0db2cb31c404d75974be296e2746c1253148375b17b6d7796",
+    "scripts/linked_allocation_eh.py": "aa8544b4ed7472733d736d746d462b9324b64fb1f6331cf2507d4f9f8f27ee4e",
+    "scripts/compare-linked-function.py": "25ac689539c7ea15140585941f8f082aa67f1db402dc1b8b6717ec9b14f1375c",
+    "scripts/build-match-unit.py": "5ed4084bd07ec4ca3c70d6adafe536c68e0afcd7edf6a6a1f85635893e543fc3",
+    "scripts/test-linked-stack-file-eh.py": "b62307a9f6a692d0e84f417a259e0da2874091ee8e1136c530b127e51b02aeee",
+    "scripts/test-linked-allocation-eh.py": "114a4c14944b7b80ba885f60066f2a72bd6c62408eb8f801a9c9c60cc6519df8",
+    "scripts/test-filesystem-archive-routing.py": "0617eab794c3f19b082a368d8c4816083779b7e580ea285214ea44289db298c0",
+    "scripts/ci.py": "22e6a94857f8596261fc86d7892c6dfe01251d7690e04488b9b2dcf71192f8cc",
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f"
+  },
+  "private_models": [
+    {
+      "model": "read-suffix",
+      "compiled_source_count": 1,
+      "reused_support_object_count": 3,
+      "source_sha256": "d73281f7f201947fd65cad31a5d12b4a615db3438840d92dd78310072954b0ac",
+      "producer_sha256_observed": "7ab229fdf96f6b832c1c50e778f767333ff7fcde22c7fb3cae463662a7b59df9",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 204,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 242
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "both-suffix",
+      "compiled_source_count": 1,
+      "reused_support_object_count": 3,
+      "source_sha256": "0d16c0cc974e6370a6b0739abe2e7f36311d7eb611558d3130c2258ed3eba05f",
+      "producer_sha256_observed": "7ab229fdf96f6b832c1c50e778f767333ff7fcde22c7fb3cae463662a7b59df9",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 204,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 243
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "archive-ob1",
+      "compiled_source_count": 2,
+      "reused_support_object_count": 2,
+      "source_sha256": "0d16c0cc974e6370a6b0739abe2e7f36311d7eb611558d3130c2258ed3eba05f",
+      "producer_sha256_observed": "b8f2a4876a6ee539b3e48a64ab5b3b21dfe36901e4ac741e2d302b66f636f2a3",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 204,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 181
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        },
+        {
+          "unit": "entry-size",
+          "result": "unsupported",
+          "size": null,
+          "matched_bytes": null,
+          "error": "PDB contribution size 0x10 differs from manifest 0x33"
+        }
+      ]
+    },
+    {
+      "model": "class-dtor",
+      "compiled_source_count": 4,
+      "reused_support_object_count": 0,
+      "source_sha256": "d73281f7f201947fd65cad31a5d12b4a615db3438840d92dd78310072954b0ac",
+      "producer_sha256_observed": "565ae3626adedc124ddfaac29a811acbb22dc7a68ce2bb4e8ed2c4d898323218",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 204,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 242
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        },
+        {
+          "unit": "entry-size",
+          "result": "exact",
+          "size": 51,
+          "matched_bytes": 51,
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "explicit-close",
+      "compiled_source_count": 1,
+      "reused_support_object_count": 3,
+      "source_sha256": "bac3f8f1d3aa59d9d310e6f7d6b0d66136135f85d428adf6d6a4bb909b99ff5c",
+      "producer_sha256_observed": "ffb7aeca248327a88384750bd921e6a862353a4104562a157da1376452226ca8",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 231,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 242
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        },
+        {
+          "unit": "entry-size",
+          "result": "exact",
+          "size": 51,
+          "matched_bytes": 51,
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "c-nothrow",
+      "compiled_source_count": 4,
+      "reused_support_object_count": 0,
+      "source_sha256": "d73281f7f201947fd65cad31a5d12b4a615db3438840d92dd78310072954b0ac",
+      "producer_sha256_observed": "ffb7aeca248327a88384750bd921e6a862353a4104562a157da1376452226ca8",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 214,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 248
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        },
+        {
+          "unit": "entry-size",
+          "result": "exact",
+          "size": 51,
+          "matched_bytes": 51,
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "file-c-nothrow",
+      "compiled_source_count": 2,
+      "reused_support_object_count": 2,
+      "source_sha256": "d73281f7f201947fd65cad31a5d12b4a615db3438840d92dd78310072954b0ac",
+      "producer_sha256_observed": "a38f79aba15a2aa99492bf7905306a6e39aef29d0207c5e1c302ead7572e02ea",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 204,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 242
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        },
+        {
+          "unit": "entry-size",
+          "result": "exact",
+          "size": 51,
+          "matched_bytes": 51,
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "parent-c-nothrow",
+      "compiled_source_count": 2,
+      "reused_support_object_count": 2,
+      "source_sha256": "d73281f7f201947fd65cad31a5d12b4a615db3438840d92dd78310072954b0ac",
+      "producer_sha256_observed": "a38f79aba15a2aa99492bf7905306a6e39aef29d0207c5e1c302ead7572e02ea",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 214,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 248
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        },
+        {
+          "unit": "entry-size",
+          "result": "exact",
+          "size": 51,
+          "matched_bytes": 51,
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "scoped-c-nothrow",
+      "compiled_source_count": 2,
+      "reused_support_object_count": 2,
+      "source_sha256": "3e34b8f2af9a3122c0bcafe76b5b9979b918cb8d1d099c3d64ccc3f96b65a810",
+      "producer_sha256_observed": "bd0505215650337a74bc3e5f01bcac76ca6ef2110e279ac3b65a7cb92c510f4e",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 214,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 248
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        },
+        {
+          "unit": "entry-size",
+          "result": "exact",
+          "size": 51,
+          "matched_bytes": 51,
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "entry-c-nothrow",
+      "compiled_source_count": 4,
+      "reused_support_object_count": 0,
+      "source_sha256": "0d16c0cc974e6370a6b0739abe2e7f36311d7eb611558d3130c2258ed3eba05f",
+      "producer_sha256_observed": "17a429b7d9b0229e04e651f94abda70e9c6799c51cfe88d490eda80c7ca35baf",
+      "owner_sizes": {
+        "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ": 212,
+        "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z": 214,
+        "?GetSize@ArchiveOrDiskPathView@@QAEKXZ": 190
+      },
+      "guards": [
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "error": null
+        },
+        {
+          "unit": "find-archive",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "error": null
+        },
+        {
+          "unit": "entry-size",
+          "result": "exact",
+          "size": 51,
+          "matched_bytes": 51,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "accepted_final_colds": [
+    {
+      "number": 1,
+      "scope": "actual full four-TU cold; complete GetSize190/all13 including strict stack-file EH; five additional whole guards408/all14",
+      "input_manifest_sha256": "7d8c7a7d2e7417ff160e4ad17d72f852a864057d9df27bfda7ae3a11d7d1dc94",
+      "artifacts": {
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/link-anchors.obj": "eb91d834c165e257cc45fa203d42b9bdb2bb2fc24b5f9cd1649e0a4ad1ce4462",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/link-attempt-3.log": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/source.exe": "ebf25ac79d9a8b16a15d132d0e62ef0c0fcaa458e0b249b3585a8829ce4fe1af",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/source.ltcg.obj": "c8ff197ee8a270e74e09461527f2e413a79b7fba08f56673302effcceec33fc4",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/source.map": "776f77a9b4b50a4a78dd571b8fab4cd20d28e343caa0e211af4b9d3e8f11593b",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/source.pdb": "2f9ae9da264468b47b572e0c3104173696bc28085050b610acb5861243c55205",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/support-00-PbgArchive.ltcg.obj": "ed8f2e0d86b700edeb2219311741f49c7fd802dc76b660f2e0fbb6edeee0a716",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/support-01-PbgFile.ltcg.obj": "bb25c0638922999884df5ad9ae1e083a2c76462525e8f12688b9dea8a997ea3d",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1/support-02-ResFile.normal.obj": "f4efb61cb8ea53a2edd744c6123ab45098987b8144eb6e54dabc404f59b5116b"
+      },
+      "get_size": {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x004011F0",
+        "capstone_version": "5.0.6",
+        "compared_size": 190,
+        "data_spans": [],
+        "decoded_bytes": 190,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/FileSystemPathSize/source.exe",
+        "image_sha256": "ebf25ac79d9a8b16a15d132d0e62ef0c0fcaa458e0b249b3585a8829ce4fe1af",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x00404044",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0017",
+            "local": false,
+            "offset": "0x4",
+            "symbol": "__except_list",
+            "target": "0x00000000",
+            "target_encoded_value": "0x00000000",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00402758",
+            "linked_symbol": "__ehhandler$?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+            "local": false,
+            "offset": "0x9",
+            "stack_file_eh": {
+              "authority": "address binding only; no generated-code/runtime credit",
+              "candidate": {
+                "func_info": "0x403184",
+                "func_info_bytes": 28,
+                "handler": "0x402758",
+                "region_bytes": 18,
+                "stack_object_offset": -24,
+                "unwind_action": "0x402750",
+                "unwind_map": "0x40317c",
+                "unwind_states": 1
+              },
+              "cleanup_owner": {
+                "address": "0x00402110",
+                "extent_source": "pdb-section-contribution",
+                "map_object": "support-01-PbgFile.ltcg.obj",
+                "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\FileSystemPathSize\\support-01-PbgFile.ltcg.obj",
+                "pdb_module_index": 2,
+                "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\FileSystemPathSize\\support-01-PbgFile.ltcg.obj",
+                "section": ".text",
+                "section_number": 1,
+                "section_offset": 4368,
+                "sha256": "411ea31c79b94f8bbcaee49cff5ad586f284d6df8d214891e4b5950712733194",
+                "size": 46,
+                "symbol": "??1CPbgFile@@UAE@XZ"
+              },
+              "cleanup_symbol": "??1CPbgFile@@UAE@XZ",
+              "parent_symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+              "pdb_module_index": 1,
+              "symbol": "__ehhandler$?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+              "target": {
+                "func_info": "0x47146c",
+                "func_info_bytes": 28,
+                "handler": "0x465388",
+                "region_bytes": 18,
+                "stack_object_offset": -24,
+                "unwind_action": "0x465380",
+                "unwind_map": "0x471464",
+                "unwind_states": 1
+              }
+            },
+            "symbol": "__ehhandler$?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+            "target": "0x00465388",
+            "target_encoded_value": "0x00465388",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404044",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0017",
+            "local": false,
+            "offset": "0x11",
+            "symbol": "__except_list",
+            "target": "0x00000000",
+            "target_encoded_value": "0x00000000",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00401030",
+            "linked_symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+            "local": false,
+            "offset": "0x1F",
+            "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+            "target": "0x004356F0",
+            "target_encoded_value": "0xFFFFFDED",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x004040A0",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0040",
+            "local": false,
+            "offset": "0x2F",
+            "symbol": "_strchr",
+            "target": "0x00452730",
+            "target_encoded_value": "0x0001CE1D",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00401D50",
+            "linked_symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+            "local": false,
+            "offset": "0x42",
+            "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+            "target": "0x00434EF0",
+            "target_encoded_value": "0xFFFFF5CA",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404044",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0017",
+            "local": false,
+            "offset": "0x51",
+            "symbol": "__except_list",
+            "target": "0x00000000",
+            "target_encoded_value": "0x00000000",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00403064",
+            "linked_symbol": "??_7CPbgFile@@6B@",
+            "local": false,
+            "offset": "0x5A",
+            "symbol": "??_7CPbgFile@@6B@",
+            "target": "0x0046F230",
+            "target_encoded_value": "0x0046F230",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404030",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0012",
+            "local": false,
+            "offset": "0x73",
+            "symbol": "?g_PbgFileOpenModes@@3PAPADA",
+            "target": "0x00474908",
+            "target_encoded_value": "0x00474908",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00402140",
+            "linked_symbol": "?Open@CPbgFile@@UAE_NPBDPAD@Z",
+            "local": false,
+            "offset": "0x7E",
+            "symbol": "?Open@CPbgFile@@UAE_NPBDPAD@Z",
+            "target": "0x00435370",
+            "target_encoded_value": "0xFFFFFA0E",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404064",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0025",
+            "local": false,
+            "offset": "0x8F",
+            "symbol": "__imp__GetFileSize@8",
+            "target": "0x004660D8",
+            "target_encoded_value": "0x004660D8",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404048",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0018",
+            "local": false,
+            "offset": "0xA5",
+            "symbol": "__imp__CloseHandle@4",
+            "target": "0x004660CC",
+            "target_encoded_value": "0x004660CC",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404044",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0017",
+            "local": false,
+            "offset": "0xB6",
+            "symbol": "__except_list",
+            "target": "0x00000000",
+            "target_encoded_value": "0x00000000",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 190,
+        "matched_compared_bytes": 190,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "af65e0491379524f9abc6dabc2c74c7c",
+        "pdb_module_index": 1,
+        "raw_equal": false,
+        "result": "exact",
+        "returncode": 0,
+        "size": 190,
+        "symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+        "target_address": "0x004358E0",
+        "unit": "filesystem-path-size"
+      },
+      "guard_summaries": [
+        {
+          "unit": "find",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "normalization_complete": true,
+          "image_sha256": "ebf25ac79d9a8b16a15d132d0e62ef0c0fcaa458e0b249b3585a8829ce4fe1af",
+          "pdb_guid": "af65e0491379524f9abc6dabc2c74c7c",
+          "field_count": 7
+        },
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "normalization_complete": true,
+          "image_sha256": "ebf25ac79d9a8b16a15d132d0e62ef0c0fcaa458e0b249b3585a8829ce4fe1af",
+          "pdb_guid": "af65e0491379524f9abc6dabc2c74c7c",
+          "field_count": 2
+        },
+        {
+          "unit": "entry-size",
+          "result": "exact",
+          "size": 51,
+          "matched_bytes": 51,
+          "normalization_complete": true,
+          "image_sha256": "ebf25ac79d9a8b16a15d132d0e62ef0c0fcaa458e0b249b3585a8829ce4fe1af",
+          "pdb_guid": "af65e0491379524f9abc6dabc2c74c7c",
+          "field_count": 1
+        },
+        {
+          "unit": "find-entry",
+          "result": "exact",
+          "size": 53,
+          "matched_bytes": 53,
+          "normalization_complete": true,
+          "image_sha256": "ebf25ac79d9a8b16a15d132d0e62ef0c0fcaa458e0b249b3585a8829ce4fe1af",
+          "pdb_guid": "af65e0491379524f9abc6dabc2c74c7c",
+          "field_count": 1
+        },
+        {
+          "unit": "destructor",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "normalization_complete": true,
+          "image_sha256": "ebf25ac79d9a8b16a15d132d0e62ef0c0fcaa458e0b249b3585a8829ce4fe1af",
+          "pdb_guid": "af65e0491379524f9abc6dabc2c74c7c",
+          "field_count": 3
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "scope": "actual full four-TU cold; complete GetSize190/all13 including strict stack-file EH; five additional whole guards408/all14",
+      "input_manifest_sha256": "7d8c7a7d2e7417ff160e4ad17d72f852a864057d9df27bfda7ae3a11d7d1dc94",
+      "artifacts": {
+        "build/match-linked/FileSystemPathSize/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+        "build/match-linked/FileSystemPathSize/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+        "build/match-linked/FileSystemPathSize/link-anchors.obj": "19481f9d6a97a16d0b1a68390a266faf26c9159544e983d0ec30f6d9b57264f7",
+        "build/match-linked/FileSystemPathSize/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+        "build/match-linked/FileSystemPathSize/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+        "build/match-linked/FileSystemPathSize/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "build/match-linked/FileSystemPathSize/source.exe": "901fcd17a7798b4bf891926fb61cc7199a682b4671451ada9e851e2e61da9783",
+        "build/match-linked/FileSystemPathSize/source.ltcg.obj": "34c1866038cc3e5e2e1d31a8f14dd2591cb194be4b3cffd6e06b98db7caad506",
+        "build/match-linked/FileSystemPathSize/source.map": "f3d21cde1a902a6cd8decbd8d2a49d38791602b72204e4c7341f054645f9961b",
+        "build/match-linked/FileSystemPathSize/source.pdb": "04eb5cab429e6ac0d72798370d617905518955941151766767aa9624c3f2e5d3",
+        "build/match-linked/FileSystemPathSize/support-00-PbgArchive.ltcg.obj": "3fe2b11a635996c51d4a8e83e518c27bf57c938db5d4680ea82f7816453481a0",
+        "build/match-linked/FileSystemPathSize/support-01-PbgFile.ltcg.obj": "354c10c17777c2cf5ba6446c5b8b3216b4d6b58a55540844ceda3f867b4ee0b0",
+        "build/match-linked/FileSystemPathSize/support-02-ResFile.normal.obj": "464cc55033e2b991c84a4b42ca04c3f68f28c3215a0da4e28ecb773ddea87f9e"
+      },
+      "get_size": {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x004011F0",
+        "capstone_version": "5.0.6",
+        "compared_size": 190,
+        "data_spans": [],
+        "decoded_bytes": 190,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/FileSystemPathSize/source.exe",
+        "image_sha256": "901fcd17a7798b4bf891926fb61cc7199a682b4671451ada9e851e2e61da9783",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x00404044",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0017",
+            "local": false,
+            "offset": "0x4",
+            "symbol": "__except_list",
+            "target": "0x00000000",
+            "target_encoded_value": "0x00000000",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00402758",
+            "linked_symbol": "__ehhandler$?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+            "local": false,
+            "offset": "0x9",
+            "stack_file_eh": {
+              "authority": "address binding only; no generated-code/runtime credit",
+              "candidate": {
+                "func_info": "0x403184",
+                "func_info_bytes": 28,
+                "handler": "0x402758",
+                "region_bytes": 18,
+                "stack_object_offset": -24,
+                "unwind_action": "0x402750",
+                "unwind_map": "0x40317c",
+                "unwind_states": 1
+              },
+              "cleanup_owner": {
+                "address": "0x00402110",
+                "extent_source": "pdb-section-contribution",
+                "map_object": "support-01-PbgFile.ltcg.obj",
+                "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\FileSystemPathSize\\support-01-PbgFile.ltcg.obj",
+                "pdb_module_index": 2,
+                "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\FileSystemPathSize\\support-01-PbgFile.ltcg.obj",
+                "section": ".text",
+                "section_number": 1,
+                "section_offset": 4368,
+                "sha256": "411ea31c79b94f8bbcaee49cff5ad586f284d6df8d214891e4b5950712733194",
+                "size": 46,
+                "symbol": "??1CPbgFile@@UAE@XZ"
+              },
+              "cleanup_symbol": "??1CPbgFile@@UAE@XZ",
+              "parent_symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+              "pdb_module_index": 1,
+              "symbol": "__ehhandler$?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+              "target": {
+                "func_info": "0x47146c",
+                "func_info_bytes": 28,
+                "handler": "0x465388",
+                "region_bytes": 18,
+                "stack_object_offset": -24,
+                "unwind_action": "0x465380",
+                "unwind_map": "0x471464",
+                "unwind_states": 1
+              }
+            },
+            "symbol": "__ehhandler$?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+            "target": "0x00465388",
+            "target_encoded_value": "0x00465388",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404044",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0017",
+            "local": false,
+            "offset": "0x11",
+            "symbol": "__except_list",
+            "target": "0x00000000",
+            "target_encoded_value": "0x00000000",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00401030",
+            "linked_symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+            "local": false,
+            "offset": "0x1F",
+            "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+            "target": "0x004356F0",
+            "target_encoded_value": "0xFFFFFDED",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x004040A0",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0040",
+            "local": false,
+            "offset": "0x2F",
+            "symbol": "_strchr",
+            "target": "0x00452730",
+            "target_encoded_value": "0x0001CE1D",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00401D50",
+            "linked_symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+            "local": false,
+            "offset": "0x42",
+            "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+            "target": "0x00434EF0",
+            "target_encoded_value": "0xFFFFF5CA",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404044",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0017",
+            "local": false,
+            "offset": "0x51",
+            "symbol": "__except_list",
+            "target": "0x00000000",
+            "target_encoded_value": "0x00000000",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00403064",
+            "linked_symbol": "??_7CPbgFile@@6B@",
+            "local": false,
+            "offset": "0x5A",
+            "symbol": "??_7CPbgFile@@6B@",
+            "target": "0x0046F230",
+            "target_encoded_value": "0x0046F230",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404030",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0012",
+            "local": false,
+            "offset": "0x73",
+            "symbol": "?g_PbgFileOpenModes@@3PAPADA",
+            "target": "0x00474908",
+            "target_encoded_value": "0x00474908",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00402140",
+            "linked_symbol": "?Open@CPbgFile@@UAE_NPBDPAD@Z",
+            "local": false,
+            "offset": "0x7E",
+            "symbol": "?Open@CPbgFile@@UAE_NPBDPAD@Z",
+            "target": "0x00435370",
+            "target_encoded_value": "0xFFFFFA0E",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404064",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0025",
+            "local": false,
+            "offset": "0x8F",
+            "symbol": "__imp__GetFileSize@8",
+            "target": "0x004660D8",
+            "target_encoded_value": "0x004660D8",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404048",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0018",
+            "local": false,
+            "offset": "0xA5",
+            "symbol": "__imp__CloseHandle@4",
+            "target": "0x004660CC",
+            "target_encoded_value": "0x004660CC",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00404044",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0017",
+            "local": false,
+            "offset": "0xB6",
+            "symbol": "__except_list",
+            "target": "0x00000000",
+            "target_encoded_value": "0x00000000",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 190,
+        "matched_compared_bytes": 190,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "b9e1a73debc9e549a2e4d0b835e15257",
+        "pdb_module_index": 1,
+        "raw_equal": false,
+        "result": "exact",
+        "returncode": 0,
+        "size": 190,
+        "symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+        "target_address": "0x004358E0",
+        "unit": "filesystem-path-size"
+      },
+      "guard_summaries": [
+        {
+          "unit": "find",
+          "result": "exact",
+          "size": 212,
+          "matched_bytes": 212,
+          "normalization_complete": true,
+          "image_sha256": "901fcd17a7798b4bf891926fb61cc7199a682b4671451ada9e851e2e61da9783",
+          "pdb_guid": "b9e1a73debc9e549a2e4d0b835e15257",
+          "field_count": 7
+        },
+        {
+          "unit": "caller",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "normalization_complete": true,
+          "image_sha256": "901fcd17a7798b4bf891926fb61cc7199a682b4671451ada9e851e2e61da9783",
+          "pdb_guid": "b9e1a73debc9e549a2e4d0b835e15257",
+          "field_count": 2
+        },
+        {
+          "unit": "entry-size",
+          "result": "exact",
+          "size": 51,
+          "matched_bytes": 51,
+          "normalization_complete": true,
+          "image_sha256": "901fcd17a7798b4bf891926fb61cc7199a682b4671451ada9e851e2e61da9783",
+          "pdb_guid": "b9e1a73debc9e549a2e4d0b835e15257",
+          "field_count": 1
+        },
+        {
+          "unit": "find-entry",
+          "result": "exact",
+          "size": 53,
+          "matched_bytes": 53,
+          "normalization_complete": true,
+          "image_sha256": "901fcd17a7798b4bf891926fb61cc7199a682b4671451ada9e851e2e61da9783",
+          "pdb_guid": "b9e1a73debc9e549a2e4d0b835e15257",
+          "field_count": 1
+        },
+        {
+          "unit": "destructor",
+          "result": "exact",
+          "size": 46,
+          "matched_bytes": 46,
+          "normalization_complete": true,
+          "image_sha256": "901fcd17a7798b4bf891926fb61cc7199a682b4671451ada9e851e2e61da9783",
+          "pdb_guid": "b9e1a73debc9e549a2e4d0b835e15257",
+          "field_count": 3
+        }
+      ]
+    }
+  ],
+  "superseded_colds": "Earlier paired builds preceded the28-byte correction or EOF-only cleanup. Only the final two current-input373 snapshots support this checkpoint; no source/recipe/test/config change occurs during this final pair or fresh CI.",
+  "metadata_footprint": {
+    "supported_magic": "0x19930520",
+    "header_words": 7,
+    "header_bytes": 28,
+    "candidate_Read_FuncInfo": "0x4031a8",
+    "candidate_readonly_section_end": "0x4031c4",
+    "Read_header_ends_at_section_end": true,
+    "target_GetSize_FuncInfo": "0x0047146C",
+    "target_Read_UnwindMap": "0x00471488",
+    "target_GetSize_header_plus28_is_next_unwind_map": true,
+    "target_GetSize_action": "0x00465380",
+    "target_GetSize_handler": "0x00465388",
+    "target_Read_action": "0x004653A0",
+    "target_Read_handler": "0x004653A8",
+    "interpretation": "28-byte immutable one-state header; following data is not part of the header; no physical data-owner claim"
+  },
+  "ghidra": {
+    "transport": "direct local headless",
+    "mode": "readOnly/noanalysis/rollback",
+    "maxcpu": 1,
+    "heap_mib": 768,
+    "mapped_text_unchanged": true,
+    "report_sha256": "557ca5874cc88fef93cdcd7c15756b3f9311af3ca9e7ac4fc26ace4067bf1926",
+    "scope": "three path owners, seven callees, raw caller, four EH action/entry extents and metadata words",
+    "missing_function_metadata": "436400,435300,435530 and any absent EH records retained as raw contexts only; none invented"
+  },
+  "affected_canonical_cold": {
+    "unit_count": 3,
+    "owned_bytes": 316,
+    "field_count": 9,
+    "result": "exact",
+    "report_sha256": "78823eef0e20f4f6c69f9d6639cbbdb35af59a6cefc1c488a2acd6233fdf10da"
+  },
+  "allocation_reader_regression": {
+    "unit": "replay-manager-load",
+    "size": 181,
+    "result": "exact",
+    "scope": "existing cached artifact under corrected Oracle only; not a current-source cold"
+  },
+  "neighbor_Read": {
+    "size": 214,
+    "matched_bytes": 200,
+    "ordinary_differences": [
+      {
+        "offset": "0x18",
+        "linked": 83,
+        "target": 86
+      },
+      {
+        "offset": "0x19",
+        "linked": 86,
+        "target": 87
+      },
+      {
+        "offset": "0x22",
+        "linked": 216,
+        "target": 248
+      },
+      {
+        "offset": "0x24",
+        "linked": 219,
+        "target": 255
+      },
+      {
+        "offset": "0x40",
+        "linked": 83,
+        "target": 87
+      },
+      {
+        "offset": "0x46",
+        "linked": 94,
+        "target": 95
+      },
+      {
+        "offset": "0x47",
+        "linked": 91,
+        "target": 94
+      },
+      {
+        "offset": "0x59",
+        "linked": 187,
+        "target": 191
+      },
+      {
+        "offset": "0x5F",
+        "linked": 92,
+        "target": 124
+      },
+      {
+        "offset": "0xB5",
+        "linked": 92,
+        "target": 124
+      },
+      {
+        "offset": "0xC5",
+        "linked": 139,
+        "target": 95
+      },
+      {
+        "offset": "0xC6",
+        "linked": 198,
+        "target": 139
+      },
+      {
+        "offset": "0xC7",
+        "linked": 94,
+        "target": 198
+      },
+      {
+        "offset": "0xC8",
+        "linked": 91,
+        "target": 94
+      }
+    ],
+    "complete_field_count": 14,
+    "normalization_complete": true,
+    "EH_binding": "complete stack-file protocol with28-byte header",
+    "exact_credit": 0,
+    "image_sha256": "901fcd17a7798b4bf891926fb61cc7199a682b4671451ada9e851e2e61da9783"
+  },
+  "private_recovery": ".analysis/gpt-6.1-sol/filesystem-wrapper-codegen-20261022",
+  "limits": [
+    "bounded declared-context function codegen only",
+    "original helper/class/TU/production flags and metadata/data owners remain unknown",
+    "diagnostic anchor image is not a runnable product",
+    "whole Windows i386 product/runtime open; semantics and portability not started",
+    "no Factory receipt issued"
+  ],
+  "large_context_revalidation": {
+    "baseline_native_source_sha256": {
+      "count": 32,
+      "mismatches": []
+    },
+    "baseline_native_artifact_sha256": {
+      "count": 15,
+      "mismatches": []
+    }
+  },
+  "EOF_repair": {
+    "change": "one trailing blank line removed; all prior header bytes unchanged",
+    "old_sha256": "827757879f373cb98e8d0a04aaf6ce0bd3d67f38fe58737300f2a522a3c82dd1",
+    "new_sha256": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "superseded_snapshot_file_count": 13,
+    "superseded_snapshot_logical_bytes_removed": 169270,
+    "cancelled_CI_exit_code": 143,
+    "reason": "known EOF-whitespace failure; no green result claimed"
+  }
+}

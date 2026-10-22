@@ -69,3 +69,17 @@ class PbgArchive
     IPbgFile *m_FileAbstraction;
 };
 typedef char PbgArchiveSizeIs10[(sizeof(PbgArchive) == 0x10) ? 1 : -1];
+
+inline PbgArchiveEntry *PbgArchive::FindEntry(const char *filename)
+{
+    if (m_Entries == NULL)
+        return NULL;
+
+    PbgArchiveEntry *entry = m_Entries;
+    for (i32 i = m_NumOfEntries; i > 0; i--, entry++)
+    {
+        if (_stricmp(filename, entry->filename) == 0)
+            return entry;
+    }
+    return NULL;
+}

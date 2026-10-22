@@ -211,3 +211,27 @@ and CxxFrameHandler dispatch protocol. Ordinary public/static selectors remain
 unchanged. This supplies an address identity for the complete parent replay;
 it grants no child-code, metadata ownership or EH-runtime credit. Unsupported
 shapes stay unknown. See [the replay factory proof and limitations](evidence/replay-load/README.md).
+
+## Stack-file EH entry binding and metadata extent
+
+A DIR32 field can explicitly select `stack_file_eh_handler = true` for the
+reviewed one-state automatic CPbgFile cleanup shape. The parent's unaliased
+MAP handler must join one complete 18-byte generated PDB code contribution in
+that same parent object/module. Its eight-byte action loads ECX from EBP-0x18
+and tail-jumps to the real, qualified 46-byte CPbgFile destructor contribution;
+the ten-byte entry selects FuncInfo and jumps to CxxFrameHandler. An anchor
+cannot replace the destructor. Both images must expose immutable metadata and
+the same one-state cleanup protocol. Allocation, static and stack-file selectors
+are separate opt-ins and cannot be combined. Other stack objects, offsets,
+cleanup instructions and metadata shapes remain unsupported.
+
+The supported 0x19930520 one-state FuncInfo header is exactly seven words/28 bytes.
+Compiler output places the Read header at the end of its readonly section;
+GetSize's following word is the next UnwindMap state in both target and native
+images. Reading an eighth word incorrectly constrains adjacent data. Both EH
+readers now stop at28 bytes. Synthetic section-end and arbitrary-neighbor
+positives protect that boundary; malformed headers and short ranges still fail.
+This correction adds no exact credit or metadata ownership claim. The stack-file
+lane likewise supplies address identity only; the enclosing owner must still
+compare every byte and every field. See the
+[archive size proof](evidence/filesystem-path-size/README.md).

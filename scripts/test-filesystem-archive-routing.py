@@ -184,8 +184,8 @@ def main() -> int:
         'guard-disk-open': ('file.Open(path, g_PbgFileOpenModes[0]);',
                            'if (!file.Open(path, g_PbgFileOpenModes[0])) return NULL;'),
         'drop-disk-size': ('return file.GetSize();', 'return 0;'),
-        'drop-entry-suffix': ('entryName = entryName == NULL ? path : entryName + 1;\n        return archive->ReadDecompressEntry',
-                             'entryName = path;\n        return archive->ReadDecompressEntry'),
+        'drop-entry-suffix': ('return archive->ReadDecompressEntry(entryName, optionalBuffer);',
+                             'return archive->ReadDecompressEntry(path, optionalBuffer);'),
     }
     cases = [('baseline', selected)]
     if not args.baseline_only:

@@ -1,10 +1,11 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Complete
-FileSystem FindArchive4356F0 is now exact212/all7 fields after two independent
-full four-TU colds. Authored exact402/73437, overall1243/139947. Source remains
-613/247945 owned bytes; nonexact211, absent121. FileSystem source13/13, exact8/13.
-See [lookup proof](evidence/filesystem-find-archive/README.md) and the preceding
+FileSystem GetSize4358E0 is now exact190/all13 fields after two final independent
+full four-TU colds. Authored exact403/73627, overall1244/140137. Source remains
+613/247945 owned bytes; nonexact210, absent121. FileSystem source13/13, exact9/13.
+See [size/EH proof](evidence/filesystem-path-size/README.md),
+[lookup proof](evidence/filesystem-find-archive/README.md) and the preceding
 [archive routing](evidence/filesystem-archive-routing/README.md) source checkpoint.
 
 ## Resume safely
@@ -37,11 +38,51 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
 273579 owned bytes;1097 source mappings. Authored source613/247945 bytes,
-211 source-present/nonexact,121 source-absent. Authored exact **402/73437 bytes**;
-overall exact1243/139947 bytes. Unknown origins524 keep the whole-game denominator
+210 source-present/nonexact,121 source-absent. Authored exact **403/73627 bytes**;
+overall exact1244/140137 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest exact archive lookup checkpoint
+## Latest size and stack-file EH checkpoint
+
+Starting5e8f6f3, ten private models recover single-call Read and the complete
+GetSize shape. Read/GetSize consume the existing suffix helper; FindEntry's
+unchanged implementation becomes an ordinary inline header definition. The new
+EHsc recipe retains GL and uses GL/Ob1 archive support plus normal ResFile.
+No layout, virtual, global, signature, forced ABI or target byte changes.
+
+The explicit stack-file binder joins a unique parent-named MAP entry to its
+complete same-parent18-byte PDB region, validates EBP-0x18/destructor tail and
+immutable one-state FuncInfo. An inherited extra-word assumption is corrected:
+the supported header is28 bytes, with native Read ending at the readonly-section
+boundary. GetSize's following word belongs to Read's UnwindMap. Four positives
+each and45 stack/37 allocation rejections pass. Cached replay-manager-load181
+still passes under the corrected reader; this is not a current-source cold.
+
+The two initial colds are superseded. Both final actual four-TU colds pass
+GetSize190/all13 and five additional whole guards408/all14. Existing canonical
+FindArchive212 and archive53/51 independently cold-pass316/all9 in unchanged
+recipes. All1243 previous unit dictionaries are unchanged. Only190 new bytes
+are credited; EH-code/metadata owners and native runtime remain unknown.
+Routing112/eight strict controls pass after updating the suffix-argument mutant.
+Fresh111-group CI passes with all373 code/test/config inputs unchanged after
+the corrected28-byte protocol and EOF-clean header. Earlier cold pairs and the
+interrupted EOF CI are superseded. Classified cleanup removes1999267 logical
+bytes; both final carriers and all9 independent D3D files remain unchanged.
+
+Current Read is214/200 with all14 fields/EH bound, leaving14 ordinary register/
+return-order differences. Its EHs context is204; do not mix those measurements.
+The ten-TU32 source/header and15 native pins freshly remain unchanged; no large
+owner cold or comparison is claimed. Old broad source inventories are historical.
+
+Private recovery: `.analysis/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/`.
+Keep first final cold in
+`build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/accepted-cold-1` and second
+at `build/match-linked/FileSystemPathSize`, compact source/producers/results and
+the affected canonical carriers. Earlier model inputs are frozen historical
+states: never restore maintained source or blindly rerun their producers.
+The [size packet](evidence/filesystem-path-size/README.md) records validation.
+
+## Previous exact archive lookup checkpoint
 
 Starting5b539f9 dirty work is recovered: the ordinary suffix helper and pointer
 iteration in FileSystem.cpp, plus its host selector/control update. Seven actual
@@ -277,13 +318,13 @@ bytes from21 owned paths, retaining compound-bit69 and Og-disabled161 failures.
 The ANM batch separately removed4289158 bytes from22 owned paths. Canonical
 carriers, prior snapshots, nine independent D3D files and provider/legacy remain.
 
-The three FileSystem owners above are now source-present. Next investigate their
-native call/lifetime shapes: target Read has one archive-reader call, native
-has two; target GetSize calls434EF0, native directly calls stricmp inside its
-owner, consistent with inlining the entry lookup. Both native wrappers retain
-out-of-line CPbgFile destruction where target inlines cleanup. FindArchive is
-now exact under the lookup recipe above. Use target-supported ordinary-source and
-inlining/caller hypotheses, with complete field/EH binding before exact credit;
+The three FileSystem owners above are source-present. FindArchive212 and
+GetSize190 now have complete canonical exact contracts. Next investigate Read's
+remaining14 ordinary register/return-order differences in its current214-byte
+EHsc/Ob1 caller graph, preserving all14 fields and the six whole guards. Its
+archive call and cleanup inlining are recovered; do not repeat the ten executed
+models or treat the EHs204 measurement as this context. Use target-supported
+ordinary-source/caller hypotheses with complete field/EH binding before credit;
 keep /GL and do not force registers or returns. The old File.cpp string has
 no code xref and still does not establish original source ownership.
 

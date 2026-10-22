@@ -25,6 +25,7 @@ def allocation_eh_selector(unit, field):
     require(unit.get('artifact_kind') == 'linked-pe', 'linked-pe required')
     require(field.get('type') == 'DIR32' and not field.get('local', False)
             and field.get('addend', 0) == 0
+            and 'stack_file_eh_handler' not in field
             and not any(k.startswith('static_') for k in field), 'separate DIR32 entry required')
     require(field.get('symbol') == '__ehhandler$' + str(unit.get('symbol')), 'parent symbol differs')
     return True
@@ -58,10 +59,10 @@ def protocol(image, handler, frame_handler, deletion):
             and instructions[1].operands[0].type == X86_OP_IMM
             and instructions[1].operands[0].imm == frame_handler, 'handler/frame-handler protocol differs')
     info = instructions[0].operands[1].imm
-    section_range(image, info, 32, False)
-    header = struct.unpack('<8I', image.read_address(info,32))
+    section_range(image, info, 28, False)
+    header = struct.unpack('<7I', image.read_address(info,28))
     require((header[0],header[1],*header[3:]) ==
-            (0x19930520,1,0,0,0,0,0xffffffff), 'FuncInfo is not the supported one-state shape')
+            (0x19930520,1,0,0,0,0), 'FuncInfo is not the supported one-state shape')
     section_range(image, header[2], 8, False)
     state, action = struct.unpack('<iI',image.read_address(header[2],8))
     require(state == -1 and action == handler-11, 'unwind state/action differs')
@@ -78,7 +79,7 @@ def protocol(image, handler, frame_handler, deletion):
             'saved-storage/scalar-delete protocol differs')
     return {'handler':hex(handler),'unwind_action':hex(action),'func_info':hex(info),
             'unwind_map':hex(header[2]),'saved_storage_offset':-16,
-            'region_bytes':21,'unwind_states':1}
+            'region_bytes':21,'unwind_states':1,'func_info_bytes':28}
 
 
 def allocation_eh_target(unit, field, directory, image, publics, aliases,

@@ -1,0 +1,79 @@
+{
+  "status": "passed for bounded declared-context codegen and source/Oracle validation",
+  "new_exact_functions": 1,
+  "new_exact_owned_bytes": 190,
+  "canonical_cold_pair": {
+    "final_full_four_TU_builds": 2,
+    "owner_each": 190,
+    "fields_each": 13,
+    "additional_whole_guards_each": 408,
+    "additional_fields_each": 14
+  },
+  "affected_previous_cold": {
+    "units": 3,
+    "bytes": 316,
+    "fields": 9
+  },
+  "stack_file_EH_tests": {
+    "positives": 4,
+    "rejection_controls": 45
+  },
+  "allocation_EH_tests": {
+    "positives": 4,
+    "rejection_controls": 37
+  },
+  "host_routing": {
+    "source_assertions": 112,
+    "compiled_strict_controls": 8,
+    "scope": "explicit dependency seams only; no target ABI/lifetime/Windows runtime proof"
+  },
+  "ci": {
+    "status": "passed",
+    "exit_code": 0,
+    "command_groups": 111,
+    "frozen_input_count": 373,
+    "inputs_unchanged": true,
+    "input_inventory_sha256": "bcd782381142043a9d61b6f275c97986c237752dbb3794802a879787120ad40a",
+    "log_sha256": "70ba686ee02d411fd648d837c2d06a4e65a3a99dc872ac12bc41e5f4ea077864"
+  },
+  "counts": {
+    "authored": 734,
+    "authored_bytes": 273579,
+    "source": 613,
+    "source_bytes": 247945,
+    "authored_exact": 403,
+    "authored_exact_bytes": 73627,
+    "overall_exact": 1244,
+    "overall_exact_bytes": 140137,
+    "source_nonexact": 210,
+    "source_absent": 121,
+    "origin_indeterminate": 524
+  },
+  "cleanup": {
+    "current_cleanup": {
+      "trees": 11,
+      "files": 122,
+      "logical_bytes": 1829997,
+      "paths": [
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/read-suffix",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/both-suffix",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/archive-ob1",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/class-dtor",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/explicit-close",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/c-nothrow",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/file-c-nothrow",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/parent-c-nothrow",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/scoped-c-nothrow",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/entry-c-nothrow",
+        "build/gpt-6.1-sol/filesystem-wrapper-codegen-20261022/cold-1"
+      ]
+    },
+    "earlier_superseded_EOF_snapshot": {
+      "files": 13,
+      "logical_bytes": 169270
+    },
+    "total_logical_file_bytes_removed": 1999267,
+    "retained": "both final current-source cold carriers, compact source/producers/results, affected canonical carriers, all9 independent D3D files and provider/legacy state"
+  },
+  "superseded_attempts": "Pre-metadata/pre-EOF cold pairs and deliberately interrupted EOF CI are historical; only the final current-source pair and fresh111-group terminal0 CI support this checkpoint"
+}
