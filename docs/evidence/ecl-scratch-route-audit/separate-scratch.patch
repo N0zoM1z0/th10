@@ -1,0 +1,116 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -696,6 +696,13 @@
+ }
+ 
+ 
++union EclVmRunScratch
++{
++    int integer;
++    float real;
++    char *text;
++};
++
+ int EclVmContext::Run(float timeDelta)
+ {
+     EclVmInstruction **const instructionCursor = &instruction;
+@@ -711,6 +718,7 @@
+         if ((difficultyMask & current->difficultyMask) != 0) {
+             int floatResult;
+             int logicalResult;
++            EclVmRunScratch operand0, operand1;
+             switch (current->opcode) {
+             case ECL_VM_NOP:
+                 break;
+@@ -1142,9 +1150,9 @@
+ 
+             case ECL_VM_LENGTH_SQUARED:
+             {
+-                const float x = ReadFloat(1);
+-                const float y = ReadFloat(2);
+-                *ResolveFloat(0) = x * x + y * y;
++                operand0.real = ReadFloat(1);
++                operand1.real = ReadFloat(2);
++                *ResolveFloat(0) = operand0.real * operand0.real + operand1.real * operand1.real;
+                 break;
+             }
+ 
+@@ -1154,10 +1162,10 @@
+ 
+             case ECL_VM_POINT_ANGLE:
+             {
+-                const float dx = ReadFloat(2) - ReadFloat(0);
+-                const float dy = ReadFloat(3) - ReadFloat(1);
++                operand1.real = ReadFloat(2) - ReadFloat(0);
++                operand0.real = ReadFloat(3) - ReadFloat(1);
+                 *ResolveFloat(0) =
+-                    static_cast<float>(atan2(dy, dx));
++                    static_cast<float>(atan2(operand0.real, operand1.real));
+                 break;
+             }
+ 
+@@ -1165,20 +1173,20 @@
+             {
+                 const char *cursor =
+                     reinterpret_cast<const char *>(current) + 0x14;
+-                char *scratch = static_cast<char *>(malloc(0x400));
+-                scratch[0] = '\0';
+-
+-                int argumentIndex = 0;
++                operand1.text = static_cast<char *>(malloc(0x400));
++                operand1.text[0] = '\0';
++
++                operand0.integer = 0;
+                 while (cursor != NULL) {
+                     const char *percent = strchr(cursor, '%');
+                     if (percent == NULL)
+                         break;
+ 
+-                    strcpy(scratch, cursor);
+-                    scratch[percent - cursor] = '\0';
++                    strcpy(operand1.text, cursor);
++                    operand1.text[percent - cursor] = '\0';
+                     switch (percent[1]) {
+                     case '%':
+-                        EclDebugTrace(scratch);
++                        EclDebugTrace(operand1.text);
+                         break;
+                     case 'd':
+                     case 'f':
+@@ -1186,26 +1194,26 @@
+                         const int inlineBytes = OperandInt(instruction, 0);
+                         const char argumentType = *(
+                             reinterpret_cast<const char *>(instruction)
+-                            + 0x14 + inlineBytes + argumentIndex * 8);
++                            + 0x14 + inlineBytes + operand0.integer * 8);
+                         if (argumentType == 'f' || argumentType == 'g') {
+-                            EclDebugTrace(scratch, ReadFloatValue(
+-                                argumentIndex + 1, this,
++                            EclDebugTrace(operand1.text, ReadFloatValue(
++                                operand0.integer + 1, this,
+                                 reinterpret_cast<const float *>(instruction)[
+-                                    inlineBytes / 4 + 6 + argumentIndex * 2]));
+-                            ++argumentIndex;
++                                    inlineBytes / 4 + 6 + operand0.integer * 2]));
++                            ++operand0.integer;
+                         } else {
+-                            EclDebugTrace(scratch, ReadIntValue(
+-                                argumentIndex + 1,
++                            EclDebugTrace(operand1.text, ReadIntValue(
++                                operand0.integer + 1,
+                                 reinterpret_cast<const int *>(instruction)[
+-                                    inlineBytes / 4 + 6 + argumentIndex * 2]));
+-                            ++argumentIndex;
++                                    inlineBytes / 4 + 6 + operand0.integer * 2]));
++                            ++operand0.integer;
+                         }
+                         break;
+                     }
+                     }
+                     cursor = percent + 2;
+                 }
+-                free(scratch);
++                free(operand1.text);
+                 break;
+             }
+ 

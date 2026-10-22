@@ -1,17 +1,18 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-ECL loop-snapshot controls are unadopted: for-update, condition assignment and
-top-test variants unify the condition/body instruction observation and produce
-7004-byte Run, rejected against7020. They move the entry pointer into EDI and
-remove the target's separate body reload. Merely naming the condition pointer
-while keeping the body read preserves all three complete large raw bodies and
-all27 ECL differences. All four new carriers were inventoried and removed.
-Maintained ECL7020/6993, Enemy14336/14416/gap328 and ANM9964/7541-of-7995 remain
-unchanged. Retain the earlier Enemy scoped-rank/shared-aim candidate14396,
-3331/11138/gap298; newer read-sharing controls did not improve its branch graph.
-Authored409/74716, overall1252/141647, source613/247945, nonexact204 and absent121
-remain unchanged. No new exact credit.
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. An audit
+found seven historical ECL labels routed through Run-before-HostRun; recorded
+patches and a Git reconstruction prove the actual source hash. Three intended
+source forms had not been executed; four profile trials also reordered source.
+Five actual current trials now verify their transforms: shared/reversed/separate
+scratch unions give identical7036-byte bodies; named math destinations give7020
+but fail a target field at18BC; actual cursor reference preserves the full
+7020/6993 baseline and27 differences. No source is adopted; historical claims
+are corrected, and all five new carriers are removed after hash verification.
+Maintained Enemy14336/14416/gap328 and ANM9964/7541-of-7995 are unchanged; retain
+the earlier Enemy14396 candidate. Authored409/74716, overall1252/141647,
+source613/247945, nonexact204 and absent121 remain unchanged. No new exact credit.
+See [ECL source-route audit](evidence/ecl-scratch-route-audit/README.md).
 See [ECL loop snapshots](evidence/ecl-loop-cursor-lifetime/README.md).
 See [Enemy read-sharing controls](evidence/enemy-rank-read-sharing/README.md).
 See [Enemy selection graph](evidence/enemy-selection-graph/README.md).
@@ -889,9 +890,11 @@ one-byte selector suffix is complete coverage despite the generic flag.
 
 Sixteen actual controls retain the same entire target-replayed Run hash
 830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472.
-These cover wider scopes, scalar scratch sharing, named math destinations,
-Run-definition order, cursor reference, EHs/G6/G7/GS-off profiles(retaining GL),
-support order and real/external entries. Twelve compile only ECL/reuse9 verified
+The later [source-route audit](evidence/ecl-scratch-route-audit/README.md) corrects
+three labels: scratch sharing, named destinations and cursor reference actually
+repeat Run-before-HostRun. The four profile controls also reorder Run. Wider
+scopes, definition ordering, support ordering and entry controls retain their
+recorded scope. Twelve compile only ECL/reuse9 verified
 objects; four link all10 reused objects. Fifteen pass nine selected whole ECL
 same-image guards1137/all18. HostRun as external entry produces151 versus146
 and that guard batch is rejected; no full nine-guard success is claimed for it.
@@ -923,7 +926,8 @@ positive and one actual HostRun extent failure remain. Results:
 [validation](evidence/ecl-run-layout-controls/validation-summary.json).
 Private recovery: `.analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/RECOVERY.md`
 and manifest.json. Keep the unchanged canonical ten-TU baseline, one private
-reference-cursor source/API carrier and the HostRun151/146 extent failure;
+historically labelled reference-cursor (actual definition-order) source/API
+carrier and the HostRun151/146 extent failure;
 retain compact source transformations and reports. Remove duplicate neutral
 outputs and superseded private diagnostic copies after preserving facts.
 Nine independent D3D files and provider/legacy unknown state remain untouched.

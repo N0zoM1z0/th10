@@ -1,0 +1,67 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -698,13 +698,13 @@
+ 
+ int EclVmContext::Run(float timeDelta)
+ {
+-    EclVmInstruction **const instructionCursor = &instruction;
+-
+-    if (*instructionCursor == NULL)
++    EclVmInstruction *&instructionCursor = instruction;
++
++    if (instructionCursor == NULL)
+         return -1;
+ 
+-    while (static_cast<float>((*instructionCursor)->time) <= currentTime) {
+-        EclVmInstruction *current = *instructionCursor;
++    while (static_cast<float>((instructionCursor)->time) <= currentTime) {
++        EclVmInstruction *current = instructionCursor;
+         int instructionOffset;
+         EclVmInstruction *advanceInstruction;
+ 
+@@ -716,7 +716,7 @@
+                 break;
+ 
+             case ECL_VM_TERMINATE:
+-                *instructionCursor = NULL;
++                instructionCursor = NULL;
+                 return -1;
+ 
+             case ECL_VM_RETURN:
+@@ -728,9 +728,9 @@
+                 }
+ 
+                 stack.Pop(
+-                    0, sizeof(*instructionCursor), instructionCursor);
++                    0, sizeof(instructionCursor), &instructionCursor);
+                 stack.Pop(0, sizeof(currentTime), &currentTime);
+-                if (*instructionCursor == NULL)
++                if (instructionCursor == NULL)
+                     return -1;
+                 break;
+             }
+@@ -806,7 +806,7 @@
+             case ECL_VM_JUMP:
+ jump_instruction:
+             {
+-                advanceInstruction = *instructionCursor;
++                advanceInstruction = instructionCursor;
+                 currentTime = static_cast<float>(OperandInt(advanceInstruction, 1));
+                 instructionOffset = OperandInt(advanceInstruction, 0);
+                 goto advance_instruction;
+@@ -1216,13 +1216,13 @@
+             }
+         }
+ 
+-        advanceInstruction = *instructionCursor;
++        advanceInstruction = instructionCursor;
+         instructionOffset = advanceInstruction->size;
+ advance_instruction:
+         unsigned char *advanceBytes =
+             reinterpret_cast<unsigned char *>(advanceInstruction);
+         advanceBytes += instructionOffset;
+-        *instructionCursor = reinterpret_cast<EclVmInstruction *>(advanceBytes);
++        instructionCursor = reinterpret_cast<EclVmInstruction *>(advanceBytes);
+     }
+ 
+     currentTime += timeDelta;

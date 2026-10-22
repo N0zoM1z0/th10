@@ -6,6 +6,16 @@ Started at `15cd8b1`. No game source, header, canonical match recipe, boundary,
 origin or exact credit changes. The maintained diagnostic gains an explicit
 private-source selector and corresponding guards.
 
+## Source-transform correction, 2026-10-22
+
+The later [source-route audit](../ecl-scratch-route-audit/README.md) reconstructs
+the recorded source patch and verifies its compiled-source hash. Three labels
+(shared-scalar-scratch, reference-cursor, named-math-destinations) actually repeat
+Run-before-HostRun because an earlier broad elif intercepts them. The four
+profile controls also include that reordering. Their recorded native results
+remain valid for those actual inputs; they do not establish neutrality of the
+three unexecuted source forms. The table below reflects the corrected scope.
+
 ## Fresh target and baseline observations
 
 The selected ten-TU context is `enemy-drop-item-counts`, with the real Enemy
@@ -35,10 +45,10 @@ the suffix. The generic flag is not a claim that data was left untested.
 
 | Control family | Executed models | Complete Run outcome |
 | --- | ---: | --- |
-| Move math/result declarations to wider scopes; share late scalar scratch; name math destinations |5|7020/6993, same entire replayed body|
+| Wider math/scratch/result declarations |3|7020/6993, same entire replayed body|
 | Move Run before context methods or before HostRun |2|Same entire replayed body|
-| Use a reference for the live instruction cursor |1|Same entire replayed body|
-| Add EHs, G6 or G7, or disable GS for the ECL object; retain GL |4|Same entire replayed body|
+| Labels for shared scalar scratch, cursor reference and named destinations |3|Actually repeat Run-before-HostRun; intended transforms not executed|
+| Add EHs, G6 or G7, or disable GS; also move Run before HostRun |4|Same entire replayed body in that reordered-source context|
 | Move ECL last, reverse supports, or select the real runtime caller as entry |3|Same entire replayed body|
 | Select HostRun itself as external entry |1|Run unchanged; complete HostRun guard rejected151 versus146 bytes|
 

@@ -4851,8 +4851,11 @@ residual spans. Full Run remains7020/6993 with189 fields/62 locals and the exact
 orientations,16 stack homes and2 latch registers. All60 words/88 selectors remain
 checked, including the annotated final selector byte.
 
-Sixteen executed scope/storage/definition-order/profile/link controls reproduce
-the same entire target-replayed Run hash830db1c...a472. Fifteen pass nine selected
+Sixteen historical executions reproduce the same entire target-replayed Run
+hash830db1c...a472. The later [source-route audit](evidence/ecl-scratch-route-audit/README.md)
+shows that shared-scratch, cursor-reference and named-destination labels actually
+repeat definition reordering; the four profile trials also reorder Run. Those
+records do not prove that the three intended source forms were executed. Fifteen pass nine selected
 whole same-image guards1137/all18. Making HostRun external still leaves Run
 unchanged but produces151 versus146 bytes for HostRun, so that guard batch is
 rejected. Source/profile models compile one ECL object/reuse9; link models reuse
@@ -5386,3 +5389,16 @@ rejected as complete owners despite nine exact helper guards. Keeping both reads
 but naming the condition pointer preserves all three large raw bodies and all27
 Run differences. The latch register mismatch is therefore not repaired by these
 loop-variable forms. See [loop-snapshot evidence](evidence/ecl-loop-cursor-lifetime/README.md).
+
+## ECL historical source-route audit and actual scratch trials (2026-10-22)
+
+Seven old labels shared the Run-before-HostRun source hash4f5e445c...ab4 because
+an early elif intercepted later transformations. Applying the recorded patch to
+Git15cd8b1 reconstructs that exact hash and confirms the absent source forms.
+Current actual shared/reversed/separate union scratch trials all emit identical
+7036-byte Run bodies. Named math destinations preserve7020 but move an external
+call field to18BC without a matching target call; the strict Oracle rejects it.
+An actual cursor reference is baseline-neutral across all three large bodies,
+with all27 Run differences unchanged. Historical comparisons remain measurements
+of their real inputs, while the source-form claims are corrected. See
+[source-route audit](evidence/ecl-scratch-route-audit/README.md).

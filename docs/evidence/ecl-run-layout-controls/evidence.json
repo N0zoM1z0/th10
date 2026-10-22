@@ -792,6 +792,11 @@
           "src/ItemManager.cpp"
         ],
         "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/shared-scalar-scratch"
+      },
+      "source_transform_audit": {
+        "actual_source_transform": "Run moved before HostRun",
+        "correction_evidence": "docs/evidence/ecl-scratch-route-audit/evidence.json",
+        "intended_source_transform_executed": false
       }
     },
     {
@@ -872,6 +877,11 @@
           "src/ItemManager.cpp"
         ],
         "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/reference-cursor"
+      },
+      "source_transform_audit": {
+        "actual_source_transform": "Run moved before HostRun",
+        "correction_evidence": "docs/evidence/ecl-scratch-route-audit/evidence.json",
+        "intended_source_transform_executed": false
       }
     },
     {
@@ -980,6 +990,11 @@
           ]
         },
         "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/ehs-profile"
+      },
+      "source_transform_audit": {
+        "actual_source_transform": "Run moved before HostRun",
+        "correction_evidence": "docs/evidence/ecl-scratch-route-audit/evidence.json",
+        "profile_applied_with_extra_definition_reordering": true
       }
     },
     {
@@ -1088,6 +1103,11 @@
           ]
         },
         "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/g7-profile"
+      },
+      "source_transform_audit": {
+        "actual_source_transform": "Run moved before HostRun",
+        "correction_evidence": "docs/evidence/ecl-scratch-route-audit/evidence.json",
+        "profile_applied_with_extra_definition_reordering": true
       }
     },
     {
@@ -1168,6 +1188,11 @@
           "src/ItemManager.cpp"
         ],
         "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/named-math-destinations"
+      },
+      "source_transform_audit": {
+        "actual_source_transform": "Run moved before HostRun",
+        "correction_evidence": "docs/evidence/ecl-scratch-route-audit/evidence.json",
+        "intended_source_transform_executed": false
       }
     },
     {
@@ -1276,6 +1301,11 @@
           ]
         },
         "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/g6-profile"
+      },
+      "source_transform_audit": {
+        "actual_source_transform": "Run moved before HostRun",
+        "correction_evidence": "docs/evidence/ecl-scratch-route-audit/evidence.json",
+        "profile_applied_with_extra_definition_reordering": true
       }
     },
     {
@@ -1383,6 +1413,11 @@
           ]
         },
         "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/no-gs-profile"
+      },
+      "source_transform_audit": {
+        "actual_source_transform": "Run moved before HostRun",
+        "correction_evidence": "docs/evidence/ecl-scratch-route-audit/evidence.json",
+        "profile_applied_with_extra_definition_reordering": true
       }
     },
     {
@@ -1925,5 +1960,20 @@
     "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
     "full_diagnostic_location": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/baseline-run.json"
   },
-  "evidence_format_scope": "Curated observations, transformations and input fingerprints. Full generated diagnostics and logs stay below .analysis; no exact ledger credit."
+  "evidence_format_scope": "Curated observations, transformations and input fingerprints. Full generated diagnostics and logs stay below .analysis; no exact ledger credit.",
+  "source_transform_correction": {
+    "scope": "Original measurements and patches preserved; experiment labels corrected after Git/patch/source-hash reconstruction.",
+    "unexecuted_source_forms": [
+      "shared-scalar-scratch",
+      "reference-cursor",
+      "named-math-destinations"
+    ],
+    "profile_controls_with_extra_reordering": [
+      "ehs-profile",
+      "g7-profile",
+      "g6-profile",
+      "no-gs-profile"
+    ],
+    "evidence": "docs/evidence/ecl-scratch-route-audit/evidence.json"
+  }
 }

@@ -1,0 +1,23 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -1144,7 +1144,8 @@
+             {
+                 const float x = ReadFloat(1);
+                 const float y = ReadFloat(2);
+-                *ResolveFloat(0) = x * x + y * y;
++                float *destination = ResolveFloat(0);
++                *destination = x * x + y * y;
+                 break;
+             }
+ 
+@@ -1156,8 +1157,8 @@
+             {
+                 const float dx = ReadFloat(2) - ReadFloat(0);
+                 const float dy = ReadFloat(3) - ReadFloat(1);
+-                *ResolveFloat(0) =
+-                    static_cast<float>(atan2(dy, dx));
++                float *destination = ResolveFloat(0);
++                *destination = static_cast<float>(atan2(dy, dx));
+                 break;
+             }
+ 
