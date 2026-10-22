@@ -5304,3 +5304,14 @@ in this compiler context, without proving the surrounding instructions exact.
 A const short opcode initialized at first use is raw-neutral across four complete
 bodies; it does not repair packet/opcode register allocation. See
 [sentinel evidence](evidence/enemy-sentinel-lowering/README.md).
+
+## ECL debug/size options and PopFloat storage (2026-10-22)
+
+In the current ten-TU context, adding /Zi only to ECL preserves all three
+complete large raw bodies and all27 Run differences. Adding /Os instead emits
+2980-byte Run and violates all nine existing ECL guard contracts. These are
+bounded compiler observations, not original production flag identification.
+Replacing PopFloat's union with plain float while retaining its explicit stack
+pointer repairs none of the27 differences and adds +F9A/+FA6 address encodings;
+the existing union still contributes to current codegen fidelity. Maintained
+source/profile are unchanged. See [ECL codegen evidence](evidence/ecl-codegen-options/README.md).

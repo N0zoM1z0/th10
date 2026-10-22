@@ -1,0 +1,1860 @@
+{
+  "starting_head": "7f7897d8bae03ef0fd199c8376694d946bf029a3",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "private_manifest_sha256": "31b13da3ceb4a8365dc35abeb7076e033d1e58014f9ab8b1f3d33c19346366f8",
+  "canonical_manifest_sha256": "8ef1e6f9232cba78a2e108546adf769d5f84a07f89d039d4c06d08bb6eba7760",
+  "baseline_ecl_source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+  "baseline": {
+    "owners": {
+      "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "address": "0x0040D9A0",
+        "size": 9964,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51616,
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+        "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+        "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+      },
+      "?Run@EclVmContext@@QAEHM@Z": {
+        "symbol": "?Run@EclVmContext@@QAEHM@Z",
+        "address": "0x00406CF0",
+        "size": 7020,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 23792,
+        "map_object": "support-00-EclVm.ltcg.obj",
+        "pdb_module_index": 2,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-00-EclVm.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-00-EclVm.ltcg.obj",
+        "sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+        "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+      },
+      "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+        "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "address": "0x00402810",
+        "size": 14336,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 6160,
+        "map_object": "source.ltcg.obj",
+        "pdb_module_index": 4,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\source.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\source.ltcg.obj",
+        "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+        "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+      }
+    },
+    "diagnostic_exit_code": 1
+  },
+  "baseline_differences": [
+    {
+      "offset": "0xEC",
+      "linked": 124,
+      "target": 84
+    },
+    {
+      "offset": "0xF1",
+      "linked": 87,
+      "target": 82
+    },
+    {
+      "offset": "0x12A",
+      "linked": 16,
+      "target": 0
+    },
+    {
+      "offset": "0x12C",
+      "linked": 106,
+      "target": 104
+    },
+    {
+      "offset": "0x146E",
+      "linked": 7,
+      "target": 56
+    },
+    {
+      "offset": "0x14D7",
+      "linked": 7,
+      "target": 56
+    },
+    {
+      "offset": "0x151D",
+      "linked": 7,
+      "target": 56
+    },
+    {
+      "offset": "0x168A",
+      "linked": 8,
+      "target": 1
+    },
+    {
+      "offset": "0x1710",
+      "linked": 8,
+      "target": 1
+    },
+    {
+      "offset": "0x181B",
+      "linked": 20,
+      "target": 24
+    },
+    {
+      "offset": "0x182B",
+      "linked": 24,
+      "target": 20
+    },
+    {
+      "offset": "0x1838",
+      "linked": 24,
+      "target": 20
+    },
+    {
+      "offset": "0x183C",
+      "linked": 24,
+      "target": 20
+    },
+    {
+      "offset": "0x1840",
+      "linked": 20,
+      "target": 24
+    },
+    {
+      "offset": "0x1844",
+      "linked": 20,
+      "target": 24
+    },
+    {
+      "offset": "0x1899",
+      "linked": 24,
+      "target": 20
+    },
+    {
+      "offset": "0x18B6",
+      "linked": 24,
+      "target": 20
+    },
+    {
+      "offset": "0x18E6",
+      "linked": 24,
+      "target": 20
+    },
+    {
+      "offset": "0x18F8",
+      "linked": 20,
+      "target": 24
+    },
+    {
+      "offset": "0x191C",
+      "linked": 24,
+      "target": 20
+    },
+    {
+      "offset": "0x1932",
+      "linked": 24,
+      "target": 20
+    },
+    {
+      "offset": "0x1957",
+      "linked": 20,
+      "target": 24
+    },
+    {
+      "offset": "0x199E",
+      "linked": 20,
+      "target": 24
+    },
+    {
+      "offset": "0x19A8",
+      "linked": 20,
+      "target": 24
+    },
+    {
+      "offset": "0x19BA",
+      "linked": 24,
+      "target": 20
+    },
+    {
+      "offset": "0x19E6",
+      "linked": 3,
+      "target": 19
+    },
+    {
+      "offset": "0x19E8",
+      "linked": 0,
+      "target": 2
+    }
+  ],
+  "residual_instructions": [
+    {
+      "offset": "0xEC",
+      "target": {
+        "instruction_offset": "0xeb",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [edi + ecx*4 + 0x10]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0xeb",
+        "mnemonic": "mov",
+        "operands": "edi, dword ptr [edi + ecx*4 + 0x10]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0xF1",
+      "target": {
+        "instruction_offset": "0xf1",
+        "mnemonic": "push",
+        "operands": "edx",
+        "size": 1
+      },
+      "candidate": {
+        "instruction_offset": "0xf1",
+        "mnemonic": "push",
+        "operands": "edi",
+        "size": 1
+      }
+    },
+    {
+      "offset": "0x12A",
+      "target": {
+        "instruction_offset": "0x129",
+        "mnemonic": "mov",
+        "operands": "eax, dword ptr [eax]",
+        "size": 2
+      },
+      "candidate": {
+        "instruction_offset": "0x129",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [eax]",
+        "size": 2
+      }
+    },
+    {
+      "offset": "0x12C",
+      "target": {
+        "instruction_offset": "0x12b",
+        "mnemonic": "mov",
+        "operands": "dword ptr [eax + 4], ebp",
+        "size": 3
+      },
+      "candidate": {
+        "instruction_offset": "0x12b",
+        "mnemonic": "mov",
+        "operands": "dword ptr [edx + 4], ebp",
+        "size": 3
+      }
+    },
+    {
+      "offset": "0x146E",
+      "target": {
+        "instruction_offset": "0x146c",
+        "mnemonic": "cmp",
+        "operands": "byte ptr [eax + edi], 0x66",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x146c",
+        "mnemonic": "cmp",
+        "operands": "byte ptr [edi + eax], 0x66",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x14D7",
+      "target": {
+        "instruction_offset": "0x14d5",
+        "mnemonic": "cmp",
+        "operands": "byte ptr [eax + edi], 0x66",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x14d5",
+        "mnemonic": "cmp",
+        "operands": "byte ptr [edi + eax], 0x66",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x151D",
+      "target": {
+        "instruction_offset": "0x151b",
+        "mnemonic": "cmp",
+        "operands": "byte ptr [eax + edi], 0x66",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x151b",
+        "mnemonic": "cmp",
+        "operands": "byte ptr [edi + eax], 0x66",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x168A",
+      "target": {
+        "instruction_offset": "0x1688",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [ecx + eax]",
+        "size": 3
+      },
+      "candidate": {
+        "instruction_offset": "0x1688",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [eax + ecx]",
+        "size": 3
+      }
+    },
+    {
+      "offset": "0x1710",
+      "target": {
+        "instruction_offset": "0x170e",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [ecx + eax]",
+        "size": 3
+      },
+      "candidate": {
+        "instruction_offset": "0x170e",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [eax + ecx]",
+        "size": 3
+      }
+    },
+    {
+      "offset": "0x181B",
+      "target": {
+        "instruction_offset": "0x1818",
+        "mnemonic": "fstp",
+        "operands": "dword ptr [esp + 0x18]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x1818",
+        "mnemonic": "fstp",
+        "operands": "dword ptr [esp + 0x14]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x182B",
+      "target": {
+        "instruction_offset": "0x1828",
+        "mnemonic": "fstp",
+        "operands": "dword ptr [esp + 0x14]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x1828",
+        "mnemonic": "fstp",
+        "operands": "dword ptr [esp + 0x18]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x1838",
+      "target": {
+        "instruction_offset": "0x1835",
+        "mnemonic": "fld",
+        "operands": "dword ptr [esp + 0x14]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x1835",
+        "mnemonic": "fld",
+        "operands": "dword ptr [esp + 0x18]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x183C",
+      "target": {
+        "instruction_offset": "0x1839",
+        "mnemonic": "fmul",
+        "operands": "dword ptr [esp + 0x14]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x1839",
+        "mnemonic": "fmul",
+        "operands": "dword ptr [esp + 0x18]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x1840",
+      "target": {
+        "instruction_offset": "0x183d",
+        "mnemonic": "fld",
+        "operands": "dword ptr [esp + 0x18]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x183d",
+        "mnemonic": "fld",
+        "operands": "dword ptr [esp + 0x14]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x1844",
+      "target": {
+        "instruction_offset": "0x1841",
+        "mnemonic": "fmul",
+        "operands": "dword ptr [esp + 0x18]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x1841",
+        "mnemonic": "fmul",
+        "operands": "dword ptr [esp + 0x14]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x1899",
+      "target": {
+        "instruction_offset": "0x1896",
+        "mnemonic": "fstp",
+        "operands": "dword ptr [esp + 0x14]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x1896",
+        "mnemonic": "fstp",
+        "operands": "dword ptr [esp + 0x18]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x18B6",
+      "target": {
+        "instruction_offset": "0x18b3",
+        "mnemonic": "fld",
+        "operands": "dword ptr [esp + 0x14]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x18b3",
+        "mnemonic": "fld",
+        "operands": "dword ptr [esp + 0x18]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x18E6",
+      "target": {
+        "instruction_offset": "0x18e3",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp + 0x14], eax",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x18e3",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp + 0x18], eax",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x18F8",
+      "target": {
+        "instruction_offset": "0x18f5",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp + 0x18], 0",
+        "size": 8
+      },
+      "candidate": {
+        "instruction_offset": "0x18f5",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp + 0x14], 0",
+        "size": 8
+      }
+    },
+    {
+      "offset": "0x191C",
+      "target": {
+        "instruction_offset": "0x1919",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [esp + 0x14]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x1919",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [esp + 0x18]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x1932",
+      "target": {
+        "instruction_offset": "0x192f",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [esp + 0x14]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x192f",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [esp + 0x18]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x1957",
+      "target": {
+        "instruction_offset": "0x1954",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [esp + 0x18]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x1954",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [esp + 0x14]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x199E",
+      "target": {
+        "instruction_offset": "0x199b",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [esp + 0x18]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x199b",
+        "mnemonic": "mov",
+        "operands": "ecx, dword ptr [esp + 0x14]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x19A8",
+      "target": {
+        "instruction_offset": "0x19a5",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp + 0x18], ecx",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x19a5",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esp + 0x14], ecx",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x19BA",
+      "target": {
+        "instruction_offset": "0x19b7",
+        "mnemonic": "mov",
+        "operands": "eax, dword ptr [esp + 0x14]",
+        "size": 4
+      },
+      "candidate": {
+        "instruction_offset": "0x19b7",
+        "mnemonic": "mov",
+        "operands": "eax, dword ptr [esp + 0x18]",
+        "size": 4
+      }
+    },
+    {
+      "offset": "0x19E6",
+      "target": {
+        "instruction_offset": "0x19e5",
+        "mnemonic": "mov",
+        "operands": "edx, dword ptr [ebx]",
+        "size": 2
+      },
+      "candidate": {
+        "instruction_offset": "0x19e5",
+        "mnemonic": "mov",
+        "operands": "eax, dword ptr [ebx]",
+        "size": 2
+      }
+    },
+    {
+      "offset": "0x19E8",
+      "target": {
+        "instruction_offset": "0x19e7",
+        "mnemonic": "fild",
+        "operands": "dword ptr [edx]",
+        "size": 2
+      },
+      "candidate": {
+        "instruction_offset": "0x19e7",
+        "mnemonic": "fild",
+        "operands": "dword ptr [eax]",
+        "size": 2
+      }
+    }
+  ],
+  "controls": [
+    {
+      "label": "debug-info",
+      "producer_sha256": "e1ed44bf854eb6c493138c43b44c5138e69b96c0e8f18de6043e368421c47687",
+      "source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Zi"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\debug-info\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\debug-info\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\debug-info\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\debug-info\\support-00-EclVm.ltcg.obj",
+          "sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\debug-info\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\debug-info\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "raw_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "callee_bytes": 171,
+        "callee_result": "exact"
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "guard_failures": [],
+      "artifacts": [
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-07-AnmInt3Scale.ltcg.obj",
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "bytes": 10486
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/source.map",
+          "sha256": "b7b3482aac5911120ea0a53ad336cb9e3f0e1c2f83c838cc1ec70c3a3c12bd4b",
+          "bytes": 92342
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-00-eclvm.ltcg.pdb",
+          "sha256": "2b85a13fe6717636e33fbdfd0e036333b4578853a27eac60b7bcb5062f99ef30",
+          "bytes": 53248
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-05-AnmVmId.ltcg.obj",
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "bytes": 13646
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/source.exe",
+          "sha256": "8f7a42ced0a4686345628da81e03cc0faa6dbca73b41b901619467cfb46c76e7",
+          "bytes": 122880
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/source.ltcg.obj",
+          "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "bytes": 157588
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/link.log",
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+          "bytes": 167
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-04-Enemy.ltcg.obj",
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "bytes": 97582
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-06-RandomMath.ltcg.obj",
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "bytes": 3947
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-03-EnemyLaser.ltcg.obj",
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "bytes": 44123
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-02-AnmVmCreate.ltcg.obj",
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "bytes": 10892
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-00-EclVm.ltcg.obj",
+          "sha256": "90923ebccd73ef62358d3627b256925a24df00a07f1048ac72a1714ad09183af",
+          "bytes": 58557
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/link-aliases.rsp",
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+          "bytes": 19994
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/link-anchors.obj",
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "bytes": 11653
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-08-ItemManager.ltcg.obj",
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "bytes": 59951
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/source.pdb",
+          "sha256": "016b794be1141b19407eacab5faea00519147e12b12d6c9a4f07a4af536de32d",
+          "bytes": 142336
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-01-AnmManager.ltcg.obj",
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "bytes": 247856
+        }
+      ],
+      "compiler_log": "EclVm.cpp\n"
+    },
+    {
+      "label": "size-favor",
+      "producer_sha256": "e1ed44bf854eb6c493138c43b44c5138e69b96c0e8f18de6043e368421c47687",
+      "source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Os"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040C700",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 46848,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\size-favor\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\size-favor\\support-01-AnmManager.ltcg.obj",
+          "sha256": "a06fb7831bb0f63f9ed93489ab25c9b36fdbb40279de38f9a35536c02a1240d8",
+          "raw_sha256": "a06fb7831bb0f63f9ed93489ab25c9b36fdbb40279de38f9a35536c02a1240d8"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406A13",
+          "size": 2980,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23059,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\size-favor\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\size-favor\\support-00-EclVm.ltcg.obj",
+          "sha256": "4f90d235ab4c9d9c2a498cb450d9148e4dcf149a448a2fc44d268f3d2dea10aa",
+          "raw_sha256": "4f90d235ab4c9d9c2a498cb450d9148e4dcf149a448a2fc44d268f3d2dea10aa"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\size-favor\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\size-favor\\source.ltcg.obj",
+          "sha256": "512b590bb63be9776fdb12d6c5110ac2abc55dccf3c9d1eacd88eb0520bf58d4",
+          "raw_sha256": "512b590bb63be9776fdb12d6c5110ac2abc55dccf3c9d1eacd88eb0520bf58d4"
+        }
+      },
+      "raw_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": false
+      },
+      "run": {
+        "error": "Run must have one complete 7020-byte PDB extent"
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 0,
+        "fields": 0,
+        "all_exact": false
+      },
+      "guard_failures": [
+        {
+          "unit": "ecl-vm-read-float",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x85 differs from manifest 0xb7"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x7c differs from manifest 0x90"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x5d differs from manifest 0x7c"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x80 differs from manifest 0xab"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x3c differs from manifest 0x3a"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x57 differs from manifest 0x5d"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x8c differs from manifest 0x92"
+        },
+        {
+          "unit": "ecl-vm-stack-push",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x53 differs from manifest 0x60"
+        },
+        {
+          "unit": "ecl-vm-stack-pop",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x6d differs from manifest 0x7a"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-07-AnmInt3Scale.ltcg.obj",
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "bytes": 10486
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/source.map",
+          "sha256": "29987e105698a4ed20812e9712840e6246cd3d4a23baab043cf3273c5635542b",
+          "bytes": 92342
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-05-AnmVmId.ltcg.obj",
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "bytes": 13646
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/source.exe",
+          "sha256": "8ca379674c593e2293a0e3fdd9d01475ab40c23465eaf4739291f9d8ee0f3af2",
+          "bytes": 118784
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/source.ltcg.obj",
+          "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "bytes": 157588
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/link.log",
+          "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+          "bytes": 104
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-04-Enemy.ltcg.obj",
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "bytes": 97582
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-06-RandomMath.ltcg.obj",
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "bytes": 3947
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-03-EnemyLaser.ltcg.obj",
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "bytes": 44123
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-02-AnmVmCreate.ltcg.obj",
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "bytes": 10892
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-00-EclVm.ltcg.obj",
+          "sha256": "6071a08e05c52a6ae82d56fddd8c4a55e4b45668a807006a525c6bb5b00c9251",
+          "bytes": 55637
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/link-aliases.rsp",
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+          "bytes": 19994
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/link-anchors.obj",
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "bytes": 11653
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-08-ItemManager.ltcg.obj",
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "bytes": 59951
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/source.pdb",
+          "sha256": "4baad6a5ce2c5c6896f5d75ae620526c08287a642f2fbe0ef28ac528b38a0704",
+          "bytes": 117760
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-01-AnmManager.ltcg.obj",
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "bytes": 247856
+        }
+      ],
+      "compiler_log": "EclVm.cpp\n"
+    },
+    {
+      "label": "primitive-pop",
+      "producer_sha256": "1755ec2b9cd46551a7b4f51661db28c5e7566c10c7c4524c336e142c42e6189f",
+      "source_sha256": "f9617776cea788078d494fa69b001519a0d8e4d34a2fec9574af2d428d482b78",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "full_cold": false
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9A0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51616,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\primitive-pop\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\primitive-pop\\support-01-AnmManager.ltcg.obj",
+          "sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406CF0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23792,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\primitive-pop\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\primitive-pop\\support-00-EclVm.ltcg.obj",
+          "sha256": "3d6b480a54851121c945bd3d39355a369f90f3240e50948944e5f439f7043685",
+          "raw_sha256": "3d6b480a54851121c945bd3d39355a369f90f3240e50948944e5f439f7043685"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14336,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\primitive-pop\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6-astra-medium\\ecl-codegen-options-20261022\\primitive-pop\\source.ltcg.obj",
+          "sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "raw_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6991,
+        "fields": 189,
+        "local_destinations": 62,
+        "differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0xF9A",
+            "linked": 1,
+            "target": 8
+          },
+          {
+            "offset": "0xFA6",
+            "linked": 1,
+            "target": 8
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "callee_bytes": 171,
+        "callee_result": "exact"
+      },
+      "guard_summary": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "guard_failures": [],
+      "artifacts": [
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/support-07-AnmInt3Scale.ltcg.obj",
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+          "bytes": 10486
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/source.map",
+          "sha256": "491bd8dfa269babcf82fd39e6590157a010a4ee94dd05866bf476c6cae9bbc27",
+          "bytes": 92342
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/support-05-AnmVmId.ltcg.obj",
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+          "bytes": 13646
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/source.exe",
+          "sha256": "6d7e9d070e90c761d17289c101216282030f9742c1a8d02653847cb08cfa713d",
+          "bytes": 122880
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/source.ltcg.obj",
+          "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+          "bytes": 157588
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/link.log",
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+          "bytes": 167
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/support-04-Enemy.ltcg.obj",
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+          "bytes": 97582
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/support-06-RandomMath.ltcg.obj",
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+          "bytes": 3947
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/support-03-EnemyLaser.ltcg.obj",
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+          "bytes": 44123
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/support-02-AnmVmCreate.ltcg.obj",
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+          "bytes": 10892
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/support-00-EclVm.ltcg.obj",
+          "sha256": "a0a1b88aa9e7cab862656c6ce04a44bc07e99003b1e85cf51f08729f853e46d4",
+          "bytes": 55632
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/link-aliases.rsp",
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+          "bytes": 19994
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/link-anchors.obj",
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+          "bytes": 11653
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/support-08-ItemManager.ltcg.obj",
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+          "bytes": 59951
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/source.pdb",
+          "sha256": "8102ea7ea330aa5378552da29683991d234f352042cbeb076f89e15e438b34fc",
+          "bytes": 117760
+        },
+        {
+          "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop/support-01-AnmManager.ltcg.obj",
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+          "bytes": 247856
+        }
+      ],
+      "compiler_log": "EclVm.cpp\n"
+    }
+  ],
+  "source_adopted": false,
+  "new_exact_credit": 0,
+  "unrelated_untracked": {
+    "docs/evidence/d3d-adapter-format/README.md": "75412206932d385780dcfc84288f87a72b32545fdfe9cfba8d462969ca446ce1",
+    "docs/evidence/d3d-adapter-format/reconstruct.py": "3f2a09ac896cbb1c12a6a4901a62ef6a23cf006a7cb08bcb7d9046bf40cf5512",
+    "docs/evidence/d3d-adapter-format/.gitattributes": "ed498fc91b1843b2e372ddc35249846ed8411aa4b63361dc2fede9f454e0fb25",
+    "docs/evidence/d3d-adapter-format/evidence.json": "cac2ad3b15a0cab5b0dfbd186f068d05979fca84c64f146934ce45e976e1afca",
+    "docs/evidence/d3d-adapter-format/candidate.patch": "20f79cba52efad0ef229b0343b6c8ca7eea23ca813b301e45a95111a48558a4d",
+    "docs/evidence/d3d-adapter-format/test_candidate.py": "e74122636a34597a213bd53514d43f7665559177227eb2ccc7128bf6932cc6a7",
+    "docs/evidence/d3d-adapter-format/provenance.json": "d2e14614a1a9a683ab9f04210f76be95ee9c7fcc32b12dad71e94b9679f8e6d0",
+    "docs/evidence/d3d-adapter-format/REFERENCE_LICENSE.txt": "2928b2f628a94dc67b9c8fbc97bf85f7fe0444bc38e34e898befb4e450463b2f",
+    "docs/evidence/d3d-adapter-format/model.py": "b7be4e6b3bbceebddd3716ff8e2c48fed082245470485ddf70a8db42784dfc0c"
+  },
+  "cleanup": {
+    "files": 33,
+    "bytes": 2209593,
+    "inventory": [
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-07-AnmInt3Scale.ltcg.obj",
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "bytes": 10486
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/source.map",
+        "sha256": "b7b3482aac5911120ea0a53ad336cb9e3f0e1c2f83c838cc1ec70c3a3c12bd4b",
+        "bytes": 92342
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-00-eclvm.ltcg.pdb",
+        "sha256": "2b85a13fe6717636e33fbdfd0e036333b4578853a27eac60b7bcb5062f99ef30",
+        "bytes": 53248
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-05-AnmVmId.ltcg.obj",
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "bytes": 13646
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/source.exe",
+        "sha256": "8f7a42ced0a4686345628da81e03cc0faa6dbca73b41b901619467cfb46c76e7",
+        "bytes": 122880
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/source.ltcg.obj",
+        "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "bytes": 157588
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/link.log",
+        "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "bytes": 167
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-04-Enemy.ltcg.obj",
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "bytes": 97582
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-06-RandomMath.ltcg.obj",
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "bytes": 3947
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-03-EnemyLaser.ltcg.obj",
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "bytes": 44123
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-02-AnmVmCreate.ltcg.obj",
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "bytes": 10892
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-00-EclVm.ltcg.obj",
+        "sha256": "90923ebccd73ef62358d3627b256925a24df00a07f1048ac72a1714ad09183af",
+        "bytes": 58557
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/link-aliases.rsp",
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "bytes": 19994
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/link-anchors.obj",
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "bytes": 11653
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-08-ItemManager.ltcg.obj",
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "bytes": 59951
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/source.pdb",
+        "sha256": "016b794be1141b19407eacab5faea00519147e12b12d6c9a4f07a4af536de32d",
+        "bytes": 142336
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info/support-01-AnmManager.ltcg.obj",
+        "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "bytes": 247856
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-07-AnmInt3Scale.ltcg.obj",
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "bytes": 10486
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/source.map",
+        "sha256": "29987e105698a4ed20812e9712840e6246cd3d4a23baab043cf3273c5635542b",
+        "bytes": 92342
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-05-AnmVmId.ltcg.obj",
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "bytes": 13646
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/source.exe",
+        "sha256": "8ca379674c593e2293a0e3fdd9d01475ab40c23465eaf4739291f9d8ee0f3af2",
+        "bytes": 118784
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/source.ltcg.obj",
+        "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "bytes": 157588
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/link.log",
+        "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+        "bytes": 104
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-04-Enemy.ltcg.obj",
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "bytes": 97582
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-06-RandomMath.ltcg.obj",
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "bytes": 3947
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-03-EnemyLaser.ltcg.obj",
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "bytes": 44123
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-02-AnmVmCreate.ltcg.obj",
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "bytes": 10892
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-00-EclVm.ltcg.obj",
+        "sha256": "6071a08e05c52a6ae82d56fddd8c4a55e4b45668a807006a525c6bb5b00c9251",
+        "bytes": 55637
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/link-aliases.rsp",
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "bytes": 19994
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/link-anchors.obj",
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "bytes": 11653
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-08-ItemManager.ltcg.obj",
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "bytes": 59951
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/source.pdb",
+        "sha256": "4baad6a5ce2c5c6896f5d75ae620526c08287a642f2fbe0ef28ac528b38a0704",
+        "bytes": 117760
+      },
+      {
+        "path": "build/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor/support-01-AnmManager.ltcg.obj",
+        "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "bytes": 247856
+      }
+    ]
+  },
+  "terminal_exit_codes": {
+    "46036": 0,
+    "87298": 0,
+    "43840": 0,
+    "10260": 0,
+    "60170": 0
+  },
+  "full_cold_pair": false,
+  "full_ci_run": false
+}

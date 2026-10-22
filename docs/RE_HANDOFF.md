@@ -1,12 +1,13 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-Enemy sentinel operand-order changes recover two direct FCOM sites; all19
-sentinel reference values and ordered comparison forms now agree with target.
-Parent14336/14416 is80 short (previously64); group gap improves336 ->328.
-Register, stack and scheduling differences remain; no new exact credit.
+ECL options/storage controls are unadopted: /Zi is whole-body neutral, /Os
+shrinks Run to2980 and fails the complete contract, primitive PopFloat adds two
+address-encoding differences (29 versus27). Maintained ECL stays7020/6993.
+Enemy stays14336/14416 (80 short), group gap328; ANM stays9964/nonexact.
 Authored409/74716, overall1252/141647, source613/247945, nonexact204 and absent121
-unchanged. ANM9964 and ECL7020/6993 remain nonexact.
+unchanged. No new exact credit.
+See [ECL codegen controls](evidence/ecl-codegen-options/README.md).
 See [Enemy sentinel checkpoint](evidence/enemy-sentinel-lowering/README.md).
 See [Enemy motion checkpoint](evidence/enemy-motion-lifetime/README.md).
 See [Enemy spawn-tail checkpoint](evidence/enemy-spawn-tail-layout/README.md).
@@ -57,7 +58,25 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
-## Latest Enemy sentinel checkpoint
+## Latest ECL codegen checkpoint
+
+Fresh residual decoding confirms all27 bytes occur in same-sized instructions
+with matching mnemonics: thread4, commuted addressing5, stack homes16, latch2.
+Append /Zi to the ECL object's profile: all three complete large raw bodies and
+all27 offsets/values remain identical. Append /Os: Run2980/7020, all9 ECL guard
+contracts reject; no ordinary-byte score. Replace only PopFloat union storage
+with plain float, retaining stackView: Run7020/6991, all27 old differences remain
+and +F9A/+FA6 are added. Other large raw bodies unchanged. The two supported
+controls each pass9 complete ECL guards1137/all18 plus full171-byte callee.
+All controls compile1/reuse9, keep GL/GS; no canonical changes or full CI.
+Source/native/recipe/unrelated pins unchanged. Remove33 option files/2209593
+bytes; retain primitive-pop carrier and compact inputs. All owned jobs terminal0.
+Recovery: `.analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/RECOVERY.md`.
+Next use a different concrete source-lifetime or optimizer-visibility hypothesis;
+these option/storage controls do not repair the27-byte residual. Do not repeat
+plain declaration rearrangements or infer original flags from neutral output.
+
+## Previous Enemy sentinel checkpoint
 
 Adopt two float-left comparisons, retaining the negation for unordered behavior.
 Groups0x121/0x123 and0x12a/0x12b shrink532 ->530 and95 ->93 against525/92.
