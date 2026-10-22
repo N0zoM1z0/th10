@@ -5005,3 +5005,29 @@ source613/nonexact209/absent121. FileSystem source13/13, exact10/13; remaining
 LoadArchive36 and transforms323/307 total666 nonexact bytes. Original spelling,
 class/lifetime, source/TU, production flags and product/runtime remain unknown.
 [Complete read proof and limits](evidence/filesystem-path-read/README.md).
+
+## Exact archive load support contribution (2026-10-22)
+
+PbgArchive::Load434C30..434C9B is complete108 bytes. Existing maintained source
+in the path graph reproduces the ECX archive/EAX filename boundary without
+source/header/ABI/profile changes. Two independent actual four-TU colds pass
+all108 bytes/all7 fields; each also retains seven whole guards812/all41,
+totaling920/all48. The explicit pdb_source selects the real archive support
+contribution. All1245 previous canonical unit dictionaries remain unchanged.
+Initial cached Read carriers were routing evidence, separate from this pair.
+
+Fresh target/Ghidra review confirms the two releases, allocation/null check,
+parser, filename copy/publication and unchecked backend reopen with mode0.
+Startup42011F sets ECX497990 and EAX th10.dat. Raw call4357DF also targets Load
+although its caller has no Ghidra function record or recorded xref; neither
+missing metadata nor the recorded startup xref establishes a unique caller.
+Complete mapped text remains unchanged under readOnly/noanalysis rollback.
+
+Identical canonical build groups must share one output directory. The proposed
+separate output is rejected before compilation; accepted pbgarchive-load shares
+FileSystemPathSize. The prior Read second cold is archived and hash-checked
+before replacement, preserving both historical cold carriers. No infrastructure
+exception is introduced. Only108 new bytes are credited: authored405/73949,
+overall1246/140459; source613/nonexact208/absent121. Callee/data owners, original
+source/TU/flags and whole product/runtime remain unknown.
+[Complete archive load proof and limits](evidence/pbgarchive-load/README.md).

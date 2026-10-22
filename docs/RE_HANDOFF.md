@@ -1,10 +1,12 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Complete
-FileSystem Read435800 is now exact214/all14 fields after two independent full
-four-TU colds. Authored exact404/73841, overall1245/140351. Source remains
-613/247945 owned bytes; nonexact209, absent121. FileSystem source13/13, exact10/13.
-See [read proof](evidence/filesystem-path-read/README.md),
+PbgArchive::Load434C30 is now exact108/all7 fields after two independent full
+four-TU colds, with maintained source/headers unchanged. Authored exact405/73949,
+overall1246/140459. Source remains613/247945 owned bytes; nonexact208, absent121.
+FileSystem source13/13, exact10/13.
+See [archive load proof](evidence/pbgarchive-load/README.md),
+[read proof](evidence/filesystem-path-read/README.md),
 [size/EH proof](evidence/filesystem-path-size/README.md),
 [lookup proof](evidence/filesystem-find-archive/README.md) and the preceding
 [archive routing](evidence/filesystem-archive-routing/README.md) source checkpoint.
@@ -39,11 +41,45 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
 273579 owned bytes;1097 source mappings. Authored source613/247945 bytes,
-209 source-present/nonexact,121 source-absent. Authored exact **404/73841 bytes**;
-overall exact1245/140351 bytes. Unknown origins524 keep the whole-game denominator
+208 source-present/nonexact,121 source-absent. Authored exact **405/73949 bytes**;
+overall exact1246/140459 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest complete read checkpoint
+## Latest complete archive load checkpoint
+
+Starting pushed/remote-verified cd0038f, the existing natural PbgArchive::Load
+source reproduces the complete434C30..434C9B/108 owner in the current path graph.
+Two pinned Read carriers first supply cached comparisons; two subsequent actual
+four-TU canonical colds independently pass108/all7 and seven whole same-image
+guards812/all41, totaling920/all48 each. All1245 prior canonical unit dictionaries
+remain unchanged. Source, headers, ABI declarations, profiles and infrastructure
+are unchanged. Explicit pdb_source binds the archive support contribution.
+
+Fresh local readOnly/noanalysis Ghidra reviews the loader/callees and attests
+all412289 mapped text bytes unchanged before/after rollback, maxcpu1/heap768.
+Startup's recorded call42011F preloads ECX497990/EAX th10.dat. Independently
+decoded4357DF also calls Load, despite its missing Ghidra function/xref record.
+Never infer that the recorded startup xref is the only target call. Seven fields
+are independently bound: two Release calls, allocation, parser, filename copy,
+vtable and mode0. Callee/data ownership and runtime receive no duplicate credit.
+
+Initial separate-output preflight rejects the identical build group before any
+compilation. The accepted unit shares FileSystemPathSize as required. Prior
+Read cold2 is archived/pinned at its private build path before overwriting the
+canonical carrier; both historical Read colds remain. Keep current archive
+cold1 at `build/gpt-6.1-sol/archive-load-exact-20261022/cold-1` and cold2 in the
+shared canonical directory, plus compact producers/results. Private recovery:
+`.analysis/gpt-6.1-sol/archive-load-exact-20261022/RECOVERY.md`.
+Fresh111-group CI passes with373 frozen inputs unchanged during execution.
+Afterward only unrelated optional quoting in two CSV files is restored to HEAD
+format; all1776 function rows and1246 match rows are exactly equal as parsed,
+with the other371 inputs unchanged. Final tracking/progress/Oracle checks pass;
+the format-only proof and final snapshot are recorded in
+[validation](evidence/pbgarchive-load/validation-summary.json).
+Only108 new authored bytes are credited; broader product/semantic/port gates
+remain open.
+
+## Previous complete read checkpoint
 
 Starting9cd7b17, five actual controls isolate ordinary result lifetime. G7,
 direct suffix expression, archive-first declarations and a real normal-caller
@@ -363,15 +399,24 @@ above without repeating neutral models. Keep /GL and do not force registers or
 returns. The old File.cpp string still has no code xref and establishes no
 original source ownership.
 
-A subsequent read-only comparison of both retained Read carriers finds complete
-PbgArchive::Load434C30/108/all7 exact in the current caller graph. This is a new
-route, not ledger credit or a new cold in the Read batch. Review its target/caller
-and seven bindings, then establish a canonical support-owner unit and repeatable
-acceptance before promotion. The compact candidate and two pinned cached results
-are `next-pbg-load-cached.json` in the current private recovery directory.
-LoadArchive4357D0 is34 bytes in that same current artifact, not the old39-byte
-measurement; target36 remains nonexact. Fresh source/extent evidence takes
-precedence over historical notes.
+PbgArchive::Load434C30 now has the complete108/all7 canonical contract described
+above. Its two cached comparisons in the preceding Read packet were routing
+evidence, not a new cold or exact gain in that earlier batch. LoadArchive4357D0
+is34 bytes in the retained Read artifact, not the old39-byte measurement;
+target36 remains nonexact. Its failure path directly returns the callee's zero,
+while target explicitly clears AL and places success first. Ordinary branch/
+result-lifetime hypotheses remain available; inspect the current complete
+extent and fields and protect the eight accepted whole contributions. Fresh
+source/extent evidence takes precedence over historical notes.
+
+A private positive-if source control now reproduces LoadArchive36/all4 exactly,
+with all eight existing whole guards920/all48 retained. It compiles one primary
+and reuses three pinned source objects; it is not a full cold or ledger gain.
+No maintained source has changed in the archive108 batch. After committing that
+batch, adopt this ordinary success-first branch, add a canonical contract and
+perform two actual modified-source colds before36 promotion. Two other declared
+forms were not executed because the first form already matches. Compact proof:
+`loadarchive-positive-if.json` in the archive-load-exact private directory.
 
 The remaining source-absent queue is121 owners:118 GameUnassigned,2 Player and
 1 Startup. Neither FileSystem source completeness nor its host contracts close

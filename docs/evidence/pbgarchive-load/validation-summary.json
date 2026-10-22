@@ -1,0 +1,76 @@
+{
+  "artifact_lifecycle": {
+    "both_previous_read_colds_retained": true,
+    "earlier_read_checkpoint_removed_logical_bytes": 808687,
+    "new_archive_pair_retained": true,
+    "previous_read_second_cold_archived_and_pinned_files": 13,
+    "superseded_experimental_builds_created": 0,
+    "unrelated_D3D_files_preserved": 9
+  },
+  "canonical_cold_pair": {
+    "existing_whole_guard_bytes_each": 812,
+    "existing_whole_guard_count_each": 7,
+    "existing_whole_guard_fields_each": 41,
+    "full_four_TU_builds": 2,
+    "new_parent_bytes_each": 108,
+    "new_parent_fields_each": 7,
+    "total_checked_bytes_each": 920,
+    "total_fields_each": 48
+  },
+  "ci": {
+    "command_groups": 111,
+    "exit_code": 0,
+    "frozen_input_count": 373,
+    "input_inventory_sha256": "4fad3c0ae8e1a5e45313fa12348a209efdf7b9d42cbbce89710c6daf9677589d",
+    "log_sha256": "57fc9a45c323fd0711d3d7210f3067a1de099d641a7e9d0451f881969e0bc8bf",
+    "status": "passed",
+    "unchanged_during_ci": true
+  },
+  "counts": {
+    "authored": 734,
+    "authored_bytes": 273579,
+    "authored_exact": 405,
+    "authored_exact_bytes": 73949,
+    "origin_indeterminate": 524,
+    "overall_exact": 1246,
+    "overall_exact_bytes": 140459,
+    "source": 613,
+    "source_absent": 121,
+    "source_bytes": 247945,
+    "source_nonexact": 208
+  },
+  "final_parent_comparison": {
+    "bytes": 108,
+    "fields": 7,
+    "result": "exact"
+  },
+  "new_exact_functions": 1,
+  "new_exact_owned_bytes": 108,
+  "phase": "active-incomplete; whole product/runtime open; semantic and port not started",
+  "post_ci_csv_format_restore": {
+    "files": {
+      "config/functions.csv": {
+        "after_raw_sha256": "2f887f09c2114e164f98afaa479dd9d8ec829128c26b675588d9e3962455bd09",
+        "before_raw_sha256": "cb4206ebdc11e40b444120123089d728f39f648a159d402e3d008de8e5d314ca",
+        "csv_rows_exactly_equal": true,
+        "csv_rows_including_header": 1777,
+        "logical_rows_sha256": "9972d8fa3b53f56d7a6fd62f20726c12d226a183b787d5d6f0be6d8c6a13f356",
+        "scope": "Restore unrelated optional CSV quoting byte-for-byte from HEAD; retain only intended108 row promotion/insertion. Planned after terminal CI; source/test/tool inputs remain unchanged."
+      },
+      "config/matches.csv": {
+        "after_raw_sha256": "5c52c81a43c8780db5fdc4df92ca2af2f524725c617fe84d628d0ad68e81fec0",
+        "before_raw_sha256": "b4047c57cbc461d2aa1434899b9a781b100efdd33760a27c02fbb4d3e4dabe72",
+        "csv_rows_exactly_equal": true,
+        "csv_rows_including_header": 1247,
+        "logical_rows_sha256": "d65e2421b9e0befca5cb7b6f4904f20389be3e07895844933e3b9b850c32c291",
+        "scope": "Restore unrelated optional CSV quoting byte-for-byte from HEAD; retain only intended108 row promotion/insertion. Planned after terminal CI; source/test/tool inputs remain unchanged."
+      }
+    },
+    "final_input_inventory_sha256": "d7814397fd24561ca7bbf80ee4550fcf1f75cca943ec9c28c5b26167952dc89b",
+    "other_frozen_inputs_unchanged": 371,
+    "scope": "Only optional quoting restored to keep the diff focused; every parsed row/value remains identical to completed CI input"
+  },
+  "previous_canonical_units_unchanged": 1245,
+  "source_and_headers_unchanged": true,
+  "status": "passed for bounded declared-context codegen;111 CI passed before CSV-only formatting restoration with identical parsed ledger rows"
+}

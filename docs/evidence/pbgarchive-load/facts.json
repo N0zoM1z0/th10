@@ -1,0 +1,435 @@
+{
+  "canonical_colds": [
+    {
+      "artifacts": {
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/link-anchors.obj": "18d0da0e833471f9759a9730b0bec1c1d81cd562b946fe8e34b3b1fa32c4825f",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/source.exe": "d7016f9d28dde60fc0aea86d3558d861cd714e8b6e48d13bd8ad67268a2a5dd6",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/source.ltcg.obj": "04e22999900a48690581dfd32777ec2b0ae8516978b2361a3267ad532e4871aa",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/source.map": "953393859e740899df3d10d627087b72116fee286bcceadcb5ba1c5b6bf05b08",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/source.pdb": "f65edddc41914ab37e335064409b526b40e628659d63c38cf223abd259bd5530",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/support-00-PbgArchive.ltcg.obj": "ec0683dfb2bd42f10321c85904544bae3fa031b05c50a2088c6451a7f899ab75",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/support-01-PbgFile.ltcg.obj": "7053c5692c6e63ce1e8c506a9578cfd31b823b547bb9dca3190a2a14e0f44159",
+        "build/gpt-6.1-sol/archive-load-exact-20261022/cold-1/support-02-ResFile.normal.obj": "3b10e134d1d1c3b5e15a08a9e3efb4c3d549b5a5bc689453092aeb966dbf5f3f"
+      },
+      "bound_report_sha256": "81e17b9caf6b386f8550d0fbb7261a8f2d108da37c2845dc7079c00de38b0d28",
+      "build_input_inventory_sha256": "d18a8c6e1d9f26c55e6f3f383fa5e79729fd054560e5c36ba70a1c7cb787d9cb",
+      "build_report_sha256": "5801981a8634c41e98671b6027966ccda50dc005712e6b7094b76f69f982e027",
+      "cold": 1,
+      "full_source_inputs_compiled": 4,
+      "parent_and_guards": [
+        {
+          "candidate_address": "0x00401030",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 7,
+          "image_sha256": "d7016f9d28dde60fc0aea86d3558d861cd714e8b6e48d13bd8ad67268a2a5dd6",
+          "matched_bytes": 212,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 212,
+          "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+          "unit": "find"
+        },
+        {
+          "candidate_address": "0x00402460",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 2,
+          "image_sha256": "d7016f9d28dde60fc0aea86d3558d861cd714e8b6e48d13bd8ad67268a2a5dd6",
+          "matched_bytes": 46,
+          "pdb_module_index": 5,
+          "result": "exact",
+          "size": 46,
+          "symbol": "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z",
+          "unit": "caller"
+        },
+        {
+          "candidate_address": "0x00401D50",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "image_sha256": "d7016f9d28dde60fc0aea86d3558d861cd714e8b6e48d13bd8ad67268a2a5dd6",
+          "matched_bytes": 51,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 51,
+          "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+          "unit": "entry-size"
+        },
+        {
+          "candidate_address": "0x00401990",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "image_sha256": "d7016f9d28dde60fc0aea86d3558d861cd714e8b6e48d13bd8ad67268a2a5dd6",
+          "matched_bytes": 53,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 53,
+          "symbol": "?FindEntry@PbgArchive@@QAEPAUPbgArchiveEntry@@PBD@Z",
+          "unit": "find-entry"
+        },
+        {
+          "candidate_address": "0x00402110",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 3,
+          "image_sha256": "d7016f9d28dde60fc0aea86d3558d861cd714e8b6e48d13bd8ad67268a2a5dd6",
+          "matched_bytes": 46,
+          "pdb_module_index": 2,
+          "result": "exact",
+          "size": 46,
+          "symbol": "??1CPbgFile@@UAE@XZ",
+          "unit": "destructor"
+        },
+        {
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 14,
+          "image_sha256": "d7016f9d28dde60fc0aea86d3558d861cd714e8b6e48d13bd8ad67268a2a5dd6",
+          "matched_bytes": 214,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 214,
+          "symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+          "unit": "read"
+        },
+        {
+          "candidate_address": "0x004011F0",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 13,
+          "image_sha256": "d7016f9d28dde60fc0aea86d3558d861cd714e8b6e48d13bd8ad67268a2a5dd6",
+          "matched_bytes": 190,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 190,
+          "symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+          "unit": "size"
+        },
+        {
+          "candidate_address": "0x00401A20",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 7,
+          "image_sha256": "d7016f9d28dde60fc0aea86d3558d861cd714e8b6e48d13bd8ad67268a2a5dd6",
+          "matched_bytes": 108,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 108,
+          "symbol": "?Load@PbgArchive@@QAE_NPBD@Z",
+          "unit": "pbgarchive-load"
+        }
+      ]
+    },
+    {
+      "artifacts": {
+        "build/match-linked/FileSystemPathSize/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+        "build/match-linked/FileSystemPathSize/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+        "build/match-linked/FileSystemPathSize/link-anchors.obj": "94d88c04f1e0b2a4dbbf6722f482e3dd6515f82012723adcf6c34a685e19dc2c",
+        "build/match-linked/FileSystemPathSize/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+        "build/match-linked/FileSystemPathSize/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+        "build/match-linked/FileSystemPathSize/link-attempt-3.log": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+        "build/match-linked/FileSystemPathSize/source.exe": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+        "build/match-linked/FileSystemPathSize/source.ltcg.obj": "a4470de0f71bf75929562c9cd0de550077c697fa893b7f9d10300b3c7e28cbd2",
+        "build/match-linked/FileSystemPathSize/source.map": "0c5c8dce464b53cdece8d579852d8f708abbabc9c3a7267eeb9b1f1ec862917f",
+        "build/match-linked/FileSystemPathSize/source.pdb": "78ecaf85a2efb61b728b8cd670dd4fad85e83842ae574c7039fb511602820973",
+        "build/match-linked/FileSystemPathSize/support-00-PbgArchive.ltcg.obj": "74bd067df8233c4bd6e7b160bdad85c1eb4e13012b55d3d13bfa3c837be46463",
+        "build/match-linked/FileSystemPathSize/support-01-PbgFile.ltcg.obj": "43f973ce161aad5d04223b40133cd4c51d48a394811163af219e85e35f36af46",
+        "build/match-linked/FileSystemPathSize/support-02-ResFile.normal.obj": "c00526826c830c70d074681508edf2859adb203309add3f355b419d096758f55"
+      },
+      "bound_report_sha256": "85f6e211c6b97108a7d7faf519593b4257bda7d35118d5f1d529059dd280483c",
+      "build_input_inventory_sha256": "d18a8c6e1d9f26c55e6f3f383fa5e79729fd054560e5c36ba70a1c7cb787d9cb",
+      "build_report_sha256": "70a409186e9b596d37bf040f1dc891290e9a784b3d4613ff327828a291d4ebeb",
+      "cold": 2,
+      "full_source_inputs_compiled": 4,
+      "parent_and_guards": [
+        {
+          "candidate_address": "0x00401030",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 7,
+          "image_sha256": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+          "matched_bytes": 212,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 212,
+          "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+          "unit": "find"
+        },
+        {
+          "candidate_address": "0x00402460",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 2,
+          "image_sha256": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+          "matched_bytes": 46,
+          "pdb_module_index": 5,
+          "result": "exact",
+          "size": 46,
+          "symbol": "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z",
+          "unit": "caller"
+        },
+        {
+          "candidate_address": "0x00401D50",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "image_sha256": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+          "matched_bytes": 51,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 51,
+          "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+          "unit": "entry-size"
+        },
+        {
+          "candidate_address": "0x00401990",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "image_sha256": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+          "matched_bytes": 53,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 53,
+          "symbol": "?FindEntry@PbgArchive@@QAEPAUPbgArchiveEntry@@PBD@Z",
+          "unit": "find-entry"
+        },
+        {
+          "candidate_address": "0x00402110",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 3,
+          "image_sha256": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+          "matched_bytes": 46,
+          "pdb_module_index": 2,
+          "result": "exact",
+          "size": 46,
+          "symbol": "??1CPbgFile@@UAE@XZ",
+          "unit": "destructor"
+        },
+        {
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 14,
+          "image_sha256": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+          "matched_bytes": 214,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 214,
+          "symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+          "unit": "read"
+        },
+        {
+          "candidate_address": "0x004011F0",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 13,
+          "image_sha256": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+          "matched_bytes": 190,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 190,
+          "symbol": "?GetSize@ArchiveOrDiskPathView@@QAEKXZ",
+          "unit": "size"
+        },
+        {
+          "candidate_address": "0x00401A20",
+          "extent_source": "pdb-section-contribution",
+          "field_count": 7,
+          "image_sha256": "c534c8208c17c0efca7d447e4fa756a81ee579f43c6b347a2aedf1e2659d0ac9",
+          "matched_bytes": 108,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 108,
+          "symbol": "?Load@PbgArchive@@QAE_NPBD@Z",
+          "unit": "pbgarchive-load"
+        }
+      ]
+    }
+  ],
+  "claim": {
+    "callee_or_data_ownership_credit": 0,
+    "end_inclusive": "0x00434C9B",
+    "new_exact_functions": 1,
+    "new_exact_owned_bytes": 108,
+    "owned_bytes": 108,
+    "start": "0x00434C30",
+    "unit": "pbgarchive-load"
+  },
+  "date": "2026-10-22",
+  "input_sha256": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/build-match-unit.py": "5ed4084bd07ec4ca3c70d6adafe536c68e0afcd7edf6a6a1f85635893e543fc3",
+    "scripts/compare-linked-function.py": "25ac689539c7ea15140585941f8f082aa67f1db402dc1b8b6717ec9b14f1375c",
+    "scripts/linked_image.py": "6d785f51c57052ba7a3dfb6fe97ec1ff54829d58901bde5a7923013cc570cb21",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/FileSystem.cpp": "005eca24fb8d30022c31a7c382179030ca719335710c9e393805330de010563c",
+    "src/PbgArchive.cpp": "0873a5711bee9797f899c347cd7241b7fb3379fbb544c0dc083b9c2ab7a51abc",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/ResFile.cpp": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b"
+  },
+  "large_baseline": {
+    "baseline_native_artifact_sha256": 15,
+    "baseline_native_source_sha256": 32,
+    "scope": "fresh hash check only; no new large-owner native build or comparison"
+  },
+  "local_ghidra": {
+    "dump_sha256": "9851fea00d0eecf5c09123df825ef8df5fec15404dfdf2ee957e5396a41899b3",
+    "independent_raw_caller": "0x004357DF",
+    "log_sha256": "8ba8e1f663137e1533f0d128701b605e36be3e2ba3e9f2a626a9cf2c95d00426",
+    "mapped_text_unchanged_before_after": true,
+    "missing_caller_function_record": "0x004357D0",
+    "mode": "readOnly/noanalysis/rollback,maxcpu1,heap768MiB",
+    "observed_startup_call": "0x0042011F"
+  },
+  "output_preflight": {
+    "archived_read_artifact_count": 13,
+    "reason": "identical build groups must share one output",
+    "rejected_report_sha256": "f15126dab76e44e09749b0ae87aaee6efd675aa83cf308139a9a913e28a1ad1c",
+    "resolution": "share existing output and archive previous second Read cold first",
+    "result": "rejected before compilation"
+  },
+  "previous_canonical_units_unchanged": 1245,
+  "prior_cached_routing": {
+    "report_sha256": "b2243b117efb55ed7eed6450f68ea7bd0f037bc0b51259f8a22529919f393c33",
+    "scope": "two pinned preceding Read carriers; no new cold or exact credit in that earlier checkpoint"
+  },
+  "prior_read_second_cold_archive": {
+    "artifacts": {
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/link-anchors.obj": "99200aefc2f4aa1a13dddddb180680a919554f1a327f2f1bf00ec1eaf3bd93b1",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/source.exe": "01e584a7c7d53b624f2b560a5b1f1fc93445bb959d004b2123d38b97cf3cf785",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/source.ltcg.obj": "2276b063d48252d627f97d79a6e4610dace886695ea9f3a0f6ed8b6d89c02636",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/source.map": "355eeea79605256ada301422f65e4128fa9d616c857e605e369cd46887c0d1d8",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/source.pdb": "6fc20516090395dd5741d05f000e7ff57da33a2746ab07bd88296de5f6d0fec5",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/support-00-PbgArchive.ltcg.obj": "2ef6c52541d6483f4b77626b86c373349e6d137431d6bf4351b633c4710c14d4",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/support-01-PbgFile.ltcg.obj": "66ae54f5ac49fbca12be4a83feee234ca89532b8c4bfb3ae1a3a2c0ce531ae2f",
+      "build/gpt-6.1-sol/filesystem-read-registers-20261022/cold-2/support-02-ResFile.normal.obj": "b94d4f9dd29b3801d991fcb8b457979f696535f02966cf848c11e61151e84241"
+    },
+    "original_bound_report_sha256": "b69130ab8c8d37c65ff32d2287277e022603a44af70f3c3a841c8654716f2c02",
+    "scope": "Original Read second cold archived before the next identical build group overwrites canonical output"
+  },
+  "recipe": {
+    "artifact_kind": "linked-pe",
+    "entry_symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+    "functions": [
+      "PbgArchive::Load"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "linkages": [
+      {
+        "offset": 7,
+        "symbol": "?Release@PbgArchive@@QAEXXZ",
+        "target": 4410640,
+        "type": "REL32"
+      },
+      {
+        "offset": 14,
+        "symbol": "??2@YAPAXI@Z",
+        "target": 4531347,
+        "type": "REL32"
+      },
+      {
+        "offset": 27,
+        "symbol": "??_7CPbgFile@@6B@",
+        "target": 4649520,
+        "type": "DIR32"
+      },
+      {
+        "offset": 58,
+        "symbol": "?ParseHeader@PbgArchive@@QAE_NPBD@Z",
+        "target": 4411248,
+        "type": "REL32"
+      },
+      {
+        "offset": 67,
+        "symbol": "?CopyFileName@PbgArchive@@QAEPADPBD@Z",
+        "target": 4411936,
+        "type": "REL32"
+      },
+      {
+        "offset": 83,
+        "symbol": "?g_PbgFileOpenModes@@3PAPADA",
+        "target": 4671752,
+        "type": "DIR32"
+      },
+      {
+        "offset": 99,
+        "symbol": "?Release@PbgArchive@@QAEXXZ",
+        "target": 4410640,
+        "type": "REL32"
+      }
+    ],
+    "normal_support_sources": [
+      "src/ResFile.cpp"
+    ],
+    "output_dir": "build/match-linked/FileSystemPathSize",
+    "pdb_source": "src/PbgArchive.cpp",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS",
+      "/EHsc"
+    ],
+    "size": 108,
+    "source": "src/FileSystem.cpp",
+    "support_profiles": {
+      "src/PbgArchive.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHsc",
+        "/Ob1"
+      ]
+    },
+    "support_sources": [
+      "src/PbgArchive.cpp",
+      "src/PbgFile.cpp",
+      "src/ResFile.cpp"
+    ],
+    "symbol": "?Load@PbgArchive@@QAE_NPBD@Z",
+    "target_address": 4410416
+  },
+  "source_and_headers_unchanged": true,
+  "starting_head": "cd0038f29e651b3d7f0a085a6a183bb26513faa3",
+  "target": {
+    "identity": "original Japanese TH10 v1.00a",
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+  },
+  "unknowns": [
+    "original class/lifetime and source/TU/production flags",
+    "callee and data ownership",
+    "whole Windows i386 product/runtime",
+    "semantic reconstruction and portability"
+  ]
+}
