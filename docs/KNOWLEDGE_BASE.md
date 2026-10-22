@@ -5339,3 +5339,15 @@ and wrapper spelling for result resolution are each raw-neutral across four
 complete bodies. Literal low-rank reads alter sharing but do not recover target
 routing. These are current-context compiler observations, not original source
 identification. See [rank/result evidence](evidence/enemy-rank-result-routing/README.md).
+
+## Enemy shared-tail ownership versus case order (2026-10-22)
+
+With the typed aim pointer, moving the aim source case before rank-three emits
+its76-byte computation and a jump into a49-byte rank-five result tail. Rank-five
+becomes172 bytes, versus169 in target. However the emitted aim body also moves
+before rank-three, violating target physical order at ordinal95. This proves
+that source case order affects tail ownership in this context, not that the
+control is exact or adoptable. Swapping only read/store label blocks is raw
+neutral. Dedicated float results change stack homes; separating aim Y afterward
+is raw-neutral across four complete bodies. See
+[tail placement evidence](evidence/enemy-tail-placement/README.md).

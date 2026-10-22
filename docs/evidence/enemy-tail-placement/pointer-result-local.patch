@@ -1,0 +1,84 @@
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -1137,6 +1137,8 @@
+   float *pfVar15;
+   unsigned char *pbVar16;
+   int iVar17;
++  float rankAimResult;
++  float rankOtherResult;
+   float fVar19;
+   float fVar20;
+   float fVar21;
+@@ -1990,21 +1992,21 @@
+   case ENEMY_ECL_SELECT_FLOAT_BY_DIFFICULTY:
+     switch(g_EnemyDifficulty) {
+     case 0:
+-      fVar19 = ReadFloatArgument(1);
++      rankAimResult = ReadFloatArgument(1);
+       goto dispatch_store_float_result;
+     case 1:
+-      fVar21 = ReadFloatArgument(2);
++      rankOtherResult = ReadFloatArgument(2);
+       goto dispatch_store_float_result_a;
+     case 2:
+ dispatch_difficulty_float_index_3:
+-      fVar19 = ReadFloatArgument(3);
++      rankAimResult = ReadFloatArgument(3);
+       goto dispatch_store_float_result;
+     case 3:
+ dispatch_difficulty_float_index_4_a:
+-      fVar21 = ReadFloatArgument(4);
++      rankOtherResult = ReadFloatArgument(4);
+       goto dispatch_store_float_result_a;
+     case 4:
+-      fVar19 = ReadFloatArgument(4);
++      rankAimResult = ReadFloatArgument(4);
+       goto dispatch_store_float_result;
+     default:
+       goto dispatch_complete;
+@@ -2714,20 +2716,20 @@
+     iVar27 = 1;
+     goto dispatch_rank_float_tail_b;
+ dispatch_rank_float_tail_b:
+-    fVar19 = ReadFloatArgument(iVar27);
++    rankAimResult = ReadFloatArgument(iVar27);
+ dispatch_store_float_result:
+     // Keep this owner lifetime explicit: the shipped shared tail reuses EBX
+     // as the full owner immediately before ResolveFloat.
+     iVar26 = reinterpret_cast<int>(owner);
+     pfVar15 = reinterpret_cast<EclVmContext *>(
+         *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
+-    *pfVar15 = (float)fVar19;
++    *pfVar15 = (float)rankAimResult;
+     return 0;
+ dispatch_rank_float_tail_a:
+-    fVar21 = ReadFloatArgument(iVar27);
++    rankOtherResult = ReadFloatArgument(iVar27);
+ dispatch_store_float_result_a:
+     positionInterpolationValues = ResolveFloatArgument(0);
+-    *positionInterpolationValues = (float)fVar21;
++    *positionInterpolationValues = (float)rankOtherResult;
+     return 0;
+   case ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK:
+     fVar19 = (ReadFloatArgument(1));
+@@ -2801,13 +2803,15 @@
+     g_AnmGameSpeed = (float)fVar19;
+     return 0;
+   case ENEMY_ECL_AIM_BULLET_AT_PLAYER:
++  {
+     pfVar15 = (float *)(reinterpret_cast<int>(g_Player) + 0x3c0);
+-    fVar19 = (ReadFloatArgument(1));
+-    iVar26 = reinterpret_cast<int>(g_Player);
+-    fVar21 = (ReadFloatArgument(2));
+-    fVar19 = atan2(*(float *)(iVar26 + 0x3c4) - fVar21,
+-                   *pfVar15 - (float)fVar19);
++    rankAimResult = (ReadFloatArgument(1));
++    const PlayerFloat3 *aimPosition = &g_Player->drawPosition;
++    rankOtherResult = (ReadFloatArgument(2));
++    rankAimResult = atan2(aimPosition->y - rankOtherResult,
++                   *pfVar15 - (float)rankAimResult);
+     goto dispatch_store_float_result;
++  }
+   case ENEMY_ECL_SUBTRACT_DIFFICULTY_VALUE:
+     if (g_EnemyDifficulty == 0) {
+       uVar22 = ReadIntArgument(0);

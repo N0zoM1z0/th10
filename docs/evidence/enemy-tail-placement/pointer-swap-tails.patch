@@ -1,0 +1,46 @@
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -2713,6 +2713,12 @@
+     }
+     iVar27 = 1;
+     goto dispatch_rank_float_tail_b;
++dispatch_rank_float_tail_a:
++    fVar21 = ReadFloatArgument(iVar27);
++dispatch_store_float_result_a:
++    positionInterpolationValues = ResolveFloatArgument(0);
++    *positionInterpolationValues = (float)fVar21;
++    return 0;
+ dispatch_rank_float_tail_b:
+     fVar19 = ReadFloatArgument(iVar27);
+ dispatch_store_float_result:
+@@ -2723,12 +2729,6 @@
+         *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
+     *pfVar15 = (float)fVar19;
+     return 0;
+-dispatch_rank_float_tail_a:
+-    fVar21 = ReadFloatArgument(iVar27);
+-dispatch_store_float_result_a:
+-    positionInterpolationValues = ResolveFloatArgument(0);
+-    *positionInterpolationValues = (float)fVar21;
+-    return 0;
+   case ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK:
+     fVar19 = (ReadFloatArgument(1));
+     fVar21 = (ReadFloatArgument(2));
+@@ -2801,13 +2801,15 @@
+     g_AnmGameSpeed = (float)fVar19;
+     return 0;
+   case ENEMY_ECL_AIM_BULLET_AT_PLAYER:
++  {
+     pfVar15 = (float *)(reinterpret_cast<int>(g_Player) + 0x3c0);
+     fVar19 = (ReadFloatArgument(1));
+-    iVar26 = reinterpret_cast<int>(g_Player);
++    const PlayerFloat3 *aimPosition = &g_Player->drawPosition;
+     fVar21 = (ReadFloatArgument(2));
+-    fVar19 = atan2(*(float *)(iVar26 + 0x3c4) - fVar21,
++    fVar19 = atan2(aimPosition->y - fVar21,
+                    *pfVar15 - (float)fVar19);
+     goto dispatch_store_float_result;
++  }
+   case ENEMY_ECL_SUBTRACT_DIFFICULTY_VALUE:
+     if (g_EnemyDifficulty == 0) {
+       uVar22 = ReadIntArgument(0);

@@ -1,15 +1,17 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-Enemy rank/result-tail controls are unadopted. Separate index and wrapper result
-resolution preserve four complete raw bodies; low-rank literal reads worsen
-case gap328 to338. A typed second aim pointer restores target ADD EDI,3C0 and
-[EDI+4], improving that region23/60 to39/60, but the shared49-byte tail still
-resides in aim instead of rank-five. Retain this expression for combined tail
-placement work; parent14340 is not exact. Maintained Enemy14336/14416, gap328;
+Enemy tail-placement controls are unadopted. Moving the typed-pointer aim case
+before rank-three produces aim76 and rank-five172 (target76/169), with aim jumping
+into a49-byte rank tail. However physical case order differs at ordinal95, so
+the normal order diagnostic rejects it; no aggregate case score is claimed.
+Swapping tail labels is raw-neutral; dedicated results change stack homes, and
+splitting aim Y is then raw-neutral. Retain the reordered carrier for joint
+case-layout/branch-sharing investigation. Maintained Enemy14336/14416, gap328;
 ANM9964,7541/7995,90/92/gap2; ECL7020/6993 remain unchanged.
 Authored409/74716, overall1252/141647, source613/247945, nonexact204 and absent121
 unchanged. No new exact credit.
+See [Enemy tail placement](evidence/enemy-tail-placement/README.md).
 See [Enemy rank/result routing](evidence/enemy-rank-result-routing/README.md).
 See [ANM expression contexts](evidence/anm-expression-context/README.md).
 See [ECL codegen controls](evidence/ecl-codegen-options/README.md).

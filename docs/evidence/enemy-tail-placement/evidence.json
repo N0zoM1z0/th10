@@ -1,0 +1,1039 @@
+{
+  "adopted": false,
+  "controls": [
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/link.log": {
+          "bytes": 104,
+          "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.exe": {
+          "bytes": 122880,
+          "sha256": "85dc8b2a83f75260d6e7e883b511bb7bfe6a7704464cf66b4d9991211a7b0bf3"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.ltcg.obj": {
+          "bytes": 157881,
+          "sha256": "22f969e1f547d37c72b49c8d90708678d461a1ca4aef938b18612482433ea9d2"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.map": {
+          "bytes": 92342,
+          "sha256": "b80435730bffbab6fb9c8334db1dfd534f41feab7205dc9d1172330239949cf1"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.pdb": {
+          "bytes": 117760,
+          "sha256": "2c0030cc8f08a0a5360aa1911204e53c53629a93a57fb85ca4643df9f001af17"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14340,
+          "raw_sha256": "5a5669646cd4ee2d27e1a92bcc08496b7b9447537b33ec060d8aa05fe5fb284c"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "f746582899ca09d4e7f1954df4922eec787905c88e55c347aa75059501b96334"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "ecc4f403bd88ef4a8b03580d032ad4bd992aa00442d26418bdaa69a90d12d9a7"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "f100d3e5185e4979e1939dea3359a6b499ba0db3cefa347fb0f2b646b10e556e"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11128,
+        "gap": 332,
+        "matched": 3261,
+        "same_sized": 45
+      },
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406450",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.exe",
+          "image_sha256": "85dc8b2a83f75260d6e7e883b511bb7bfe6a7704464cf66b4d9991211a7b0bf3",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "f755230092ac8e499e4e9f0f5b2d4630",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D00",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.exe",
+          "image_sha256": "85dc8b2a83f75260d6e7e883b511bb7bfe6a7704464cf66b4d9991211a7b0bf3",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "f755230092ac8e499e4e9f0f5b2d4630",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "pointer-swap-tails",
+      "layout": {
+        "candidate_pre_table_span": 13684,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14340,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.exe",
+        "jump_table_address": "0x00405D84",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -76,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F34",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "ebcc976666fabf9056d2dfa1eab40cf288f89b3b05f54c2d6abb38c9e24751dd",
+      "report_sha256": "de9f580f330794b9b6b8e3b1ef4b64cc1beadea5c98ec61b598ce3e0e9fb66a3",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x4059b5",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x15e",
+          "size": 125,
+          "start": "0x405939"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405cf7",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 120,
+          "start": "0x405c80"
+        }
+      ],
+      "terminal_exit_code": 0
+    },
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.exe": {
+          "bytes": 122880,
+          "sha256": "b9cde20da16f506fa11ecca5b5149387eb52cc20bf196c86c83eb15effd76132"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.ltcg.obj": {
+          "bytes": 157961,
+          "sha256": "9aa82616d42a50f3b5f844105c6f781735ef19947a44d4bd0e2225381347f4a3"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.map": {
+          "bytes": 92342,
+          "sha256": "fa315e786df508086b037864e64bb5d1b8371d4d76b42d56230c83321d0275de"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.pdb": {
+          "bytes": 117760,
+          "sha256": "1b7e01424508856f2996953131d859f78ab5fcbfd9b55c0c4153a8c96a8c71c5"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14340,
+          "raw_sha256": "2b58b2fb43f87140bd5a09a22c45a6524c6cc82437b3e6a907520ff75b02071d"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "f746582899ca09d4e7f1954df4922eec787905c88e55c347aa75059501b96334"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "ecc4f403bd88ef4a8b03580d032ad4bd992aa00442d26418bdaa69a90d12d9a7"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "f100d3e5185e4979e1939dea3359a6b499ba0db3cefa347fb0f2b646b10e556e"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11128,
+        "gap": 332,
+        "matched": 3255,
+        "same_sized": 45
+      },
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406450",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.exe",
+          "image_sha256": "b9cde20da16f506fa11ecca5b5149387eb52cc20bf196c86c83eb15effd76132",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "bf44160af3a85443affce7305e37db6d",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D00",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.exe",
+          "image_sha256": "b9cde20da16f506fa11ecca5b5149387eb52cc20bf196c86c83eb15effd76132",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "bf44160af3a85443affce7305e37db6d",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "pointer-result-local",
+      "layout": {
+        "candidate_pre_table_span": 13684,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14340,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.exe",
+        "jump_table_address": "0x00405D84",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -76,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F34",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "ebcc976666fabf9056d2dfa1eab40cf288f89b3b05f54c2d6abb38c9e24751dd",
+      "report_sha256": "7c3126b3de2999ade3f16d9de8909c14174529c3acbc70b0ccef6dcd7b4a7368",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x4059b5",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x15e",
+          "size": 125,
+          "start": "0x405939"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405cf7",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 120,
+          "start": "0x405c80"
+        }
+      ],
+      "terminal_exit_code": 0
+    },
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/source.exe": {
+          "bytes": 122880,
+          "sha256": "81c45c41565fe4d881e1206e2da05b831071f4218f690115b808ff79fd833076"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/source.ltcg.obj": {
+          "bytes": 157926,
+          "sha256": "683b002cda54f85fe5f41310d9d973a2460e039fde7263f5a0e5c04de04ca8e2"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/source.map": {
+          "bytes": 92342,
+          "sha256": "f0745f67008f11beb8b2de8fb17a412eed8cec60fe26a8f9e46db33bad270963"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/source.pdb": {
+          "bytes": 117760,
+          "sha256": "d7c7b193af5353a865db2f79e08d284a127d0ebfa794ddf1a7730e8b66128759"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14308,
+          "raw_sha256": "78d17a71cab718f07b2ab0b0682aa8507070a04f162f2b83357771bfa6e26eae"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "605eac3b894df9ba4a7acc6e69a33c979d52d2a79f8c1f907670f998d2527d9e"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "5f65283dbfabdf7213973a5c9a309feea1bc02d812ea62751da42a410e2dcd8c"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "aa33f8298c18b8b4dbcba550a22301796d9ca36b55dc0f3c63181725654cf634"
+        }
+      },
+      "case_aligned": null,
+      "diagnostic_stop": "Expected physical-order assertion rejected candidate; guard, full owner and ANM/ECL reports already completed. Independent routing review uses candidate-sorted extents; no aggregate target-order case score.",
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406430",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/source.exe",
+          "image_sha256": "81c45c41565fe4d881e1206e2da05b831071f4218f690115b808ff79fd833076",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "7ebb5ab2671e3947813f36e1e184cd1e",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406CE0",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/source.exe",
+          "image_sha256": "81c45c41565fe4d881e1206e2da05b831071f4218f690115b808ff79fd833076",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "7ebb5ab2671e3947813f36e1e184cd1e",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "pointer-aim-before-rank",
+      "layout": {
+        "candidate_pre_table_span": 13652,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14308,
+        "first_physical_order_difference": 95,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank/source.exe",
+        "jump_table_address": "0x00405D64",
+        "physical_order_matches": false,
+        "pre_table_span_delta": -108,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F14",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "ebcc976666fabf9056d2dfa1eab40cf288f89b3b05f54c2d6abb38c9e24751dd",
+      "report_sha256": "7e0052d7525b930b2777cdf5efe9f46fd165566bb4dc9b939d2a0c04863cd6b0",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x405a10",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x15e",
+          "size": 172,
+          "start": "0x405965"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405942",
+            "mnemonic": "jmp",
+            "operand": "0x4059e0"
+          },
+          "opcode": "0x1ae",
+          "size": 76,
+          "start": "0x4058fb"
+        }
+      ],
+      "terminal_exit_code": 1
+    },
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.exe": {
+          "bytes": 122880,
+          "sha256": "2598e99c689cf0d16a6360dc66b5c7df4da3e68f4b84c9b629ea09017c9296af"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.ltcg.obj": {
+          "bytes": 157961,
+          "sha256": "d0bd01b34118a51b983638cb78116c42cf6fc681aaf79c34f546501c6f8c8b7c"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.map": {
+          "bytes": 92342,
+          "sha256": "b6333a34570023c64140bde94518109609c69cadc7ec97eff895313c77cafb8e"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.pdb": {
+          "bytes": 117760,
+          "sha256": "611c3c791b98fedc3a55ea0388aab550124b590107003121f4d0cb34202aedda"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14340,
+          "raw_sha256": "2b58b2fb43f87140bd5a09a22c45a6524c6cc82437b3e6a907520ff75b02071d"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "f746582899ca09d4e7f1954df4922eec787905c88e55c347aa75059501b96334"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "ecc4f403bd88ef4a8b03580d032ad4bd992aa00442d26418bdaa69a90d12d9a7"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "f100d3e5185e4979e1939dea3359a6b499ba0db3cefa347fb0f2b646b10e556e"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11128,
+        "gap": 332,
+        "matched": 3255,
+        "same_sized": 45
+      },
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406450",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.exe",
+          "image_sha256": "2598e99c689cf0d16a6360dc66b5c7df4da3e68f4b84c9b629ea09017c9296af",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "c3c1eecef059284e99f70a0ca280b048",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D00",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.exe",
+          "image_sha256": "2598e99c689cf0d16a6360dc66b5c7df4da3e68f4b84c9b629ea09017c9296af",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "c3c1eecef059284e99f70a0ca280b048",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "pointer-split-y",
+      "layout": {
+        "candidate_pre_table_span": 13684,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14340,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.exe",
+        "jump_table_address": "0x00405D84",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -76,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F34",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "b3279f6daba8b7dae0158ce881f1e5af6ed54320dc290f81895ebdc9347643eb",
+      "report_sha256": "0d23ef3a561a588d16bb39d997d4c9ddaa3137be640e2860186e8af93cbe445a",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x4059b5",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x15e",
+          "size": 125,
+          "start": "0x405939"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405cf7",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 120,
+          "start": "0x405c80"
+        }
+      ],
+      "terminal_exit_code": 0
+    }
+  ],
+  "hash_verified_unchanged": {
+    "baseline_artifact_sha256": 19,
+    "baseline_source_sha256": 32,
+    "frozen_inputs": 373,
+    "source_sha256": 108,
+    "unrelated_untracked": 9
+  },
+  "new_exact_credit": 0,
+  "previous_goal_turn_classification": "progress: fresh pointer lowering and neutral index/wrapper evidence change next experiment",
+  "raw_peer_equalities": [
+    [
+      "pointer-swap-tails",
+      "previous aim-interior-pointer",
+      "all four complete bodies"
+    ],
+    [
+      "pointer-result-local",
+      "pointer-split-y",
+      "all four complete bodies"
+    ]
+  ],
+  "removed_artifacts": [
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.map",
+      "sha256": "b80435730bffbab6fb9c8334db1dfd534f41feab7205dc9d1172330239949cf1"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.exe",
+      "sha256": "85dc8b2a83f75260d6e7e883b511bb7bfe6a7704464cf66b4d9991211a7b0bf3"
+    },
+    {
+      "bytes": 157881,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.ltcg.obj",
+      "sha256": "22f969e1f547d37c72b49c8d90708678d461a1ca4aef938b18612482433ea9d2"
+    },
+    {
+      "bytes": 104,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/link.log",
+      "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/source.pdb",
+      "sha256": "2c0030cc8f08a0a5360aa1911204e53c53629a93a57fb85ca4643df9f001af17"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.map",
+      "sha256": "fa315e786df508086b037864e64bb5d1b8371d4d76b42d56230c83321d0275de"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.exe",
+      "sha256": "b9cde20da16f506fa11ecca5b5149387eb52cc20bf196c86c83eb15effd76132"
+    },
+    {
+      "bytes": 157961,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.ltcg.obj",
+      "sha256": "9aa82616d42a50f3b5f844105c6f781735ef19947a44d4bd0e2225381347f4a3"
+    },
+    {
+      "bytes": 167,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/source.pdb",
+      "sha256": "1b7e01424508856f2996953131d859f78ab5fcbfd9b55c0c4153a8c96a8c71c5"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.map",
+      "sha256": "b6333a34570023c64140bde94518109609c69cadc7ec97eff895313c77cafb8e"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.exe",
+      "sha256": "2598e99c689cf0d16a6360dc66b5c7df4da3e68f4b84c9b629ea09017c9296af"
+    },
+    {
+      "bytes": 157961,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.ltcg.obj",
+      "sha256": "d0bd01b34118a51b983638cb78116c42cf6fc681aaf79c34f546501c6f8c8b7c"
+    },
+    {
+      "bytes": 167,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/source.pdb",
+      "sha256": "611c3c791b98fedc3a55ea0388aab550124b590107003121f4d0cb34202aedda"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    }
+  ],
+  "retained_carrier": "pointer-aim-before-rank",
+  "starting_head": "abdbffe2312431ad15c01c4968bccfba6075526d",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+}
