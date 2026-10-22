@@ -1,11 +1,13 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Complete
-PbgArchive::ParseHeader434F70 is now exact350/all10 fields after two independent
-full four-TU colds. Authored exact408/74616, overall1249/141126. Source remains
-613/247945 owned bytes; nonexact205, absent121. Archive source15/15, exact14/15;
+PbgArchive::LoadFromResource434CA0 is now exact100/all6 after two independent
+full four-TU colds with unchanged source. Authored exact409/74716, overall1250/
+141226. Source remains613/247945 owned bytes; nonexact204, absent121.
+Archive source15/15, exact15/15;
 FileSystem remains source13/13, exact11/13.
-See [header proof](evidence/pbgarchive-parse-header/README.md),
+See [resource load proof](evidence/pbgarchive-load-from-resource/README.md),
+[header proof](evidence/pbgarchive-parse-header/README.md),
 [entry reader proof](evidence/pbgarchive-read-decompress-entry/README.md),
 [registration proof](evidence/filesystem-load-archive/README.md),
 [archive load proof](evidence/pbgarchive-load/README.md),
@@ -44,11 +46,49 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
 273579 owned bytes;1097 source mappings. Authored source613/247945 bytes,
-205 source-present/nonexact,121 source-absent. Authored exact **408/74616 bytes**;
-overall exact1249/141126 bytes. Unknown origins524 keep the whole-game denominator
+204 source-present/nonexact,121 source-absent. Authored exact **409/74716 bytes**;
+overall exact1250/141226 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest complete archive header checkpoint
+## Latest complete resource archive load checkpoint
+
+Starting pushed/remote-verified73fbf4c, fresh local Ghidra reviews the existing
+100-byte retained body and vtable reference, with no incoming reference observed.
+ReadOnly/noanalysis/rollback, maxcpu1/heap768 MiB; all412289 mapped text bytes
+remain unchanged. Complete target decode independently covers36 instructions,
+five local branches and all6 fields:5 REL32 calls and1 DIR32 resource vtable.
+The original PE has no base relocations; decoded operands and semantic target
+observations establish its fields. Original callers remain unknown.
+
+The old normal-COFF ResFile context emits161 with base-constructor/EH handling;
+the separate Ob2/Gz context emits280. One actual source-unchanged ResFile GL
+support compile, reusing3 source objects, recovers100/all6 and9 whole existing
+guards956/all52. It exposes the existing constructor to optimization. This is
+one measured hypothesis, not original production flags or physical TU proof.
+
+Two independent actual full4TU allGL/GS/EHsc canonical colds, archiveOb1, each
+reproduce new100/all6 and9 whole guards956/all52:1056/all58 total. All1249 prior
+canonical dictionaries remain unchanged. Source/header/interface/layout/ABI and
+all13 old-context files are unchanged. Only100 new bytes count; constructors,
+callees and vtable data owners gain no credit. Archive now15/15 authored exact
+under its separately declared contexts, without a whole-product claim.
+
+Keep first actual cold
+`build/gpt-6.1-sol/archive-resource-load-20261022/accepted-cold-1` and second
+`build/match-linked/PbgArchiveResourceLoad`, plus compact producers/results.
+Private recovery: `.analysis/gpt-6.1-sol/archive-resource-load-20261022/RECOVERY.md`.
+Hash-checked cleanup removes11 files/187410 logical bytes: the superseded
+one-support carrier and rejected empty-argument preflight log. The successful
+complete attestation, actual colds, old-context proofs and9 D3D files remain.
+The32 large-source/header and15 native baseline hashes freshly pass only;
+no new large build or comparison is claimed. All111 final CI groups pass with
+exit0 and all373 source/test/config inputs unchanged throughout. Final focused
+100/all6, toolchain/tracking, Archive source gate, generated progress,
+documentation links and whitespace pass. Final validation status:
+[resource load validation](evidence/pbgarchive-load-from-resource/validation-summary.json).
+Whole Windows i386 product/runtime and semantic/port gates stay open.
+
+## Previous complete archive header checkpoint
 
 Starting pushed/verified62e6cd1, target observations correct ParseHeader seek to
 literal FILE_BEGIN=0, guard temporary frees on failure and place backend-null
@@ -523,9 +563,10 @@ retains that context. This establishes one reproduced cleanup context, not the
 original convention/TU/flags or transform exactness. Former ParseHeader355 and
 private351 measurements are superseded by its complete350/all10 context above.
 Continue TH10-local transform/caller investigation without repeating the measured
-/Gz/reference/direct-field/late-checksum family. Archive has one remaining authored
-nonexact owner, the100-byte LoadFromResource body. Inspect target/caller/source
-evidence before selecting it; size or adjacent-game conventions grant no credit.
+/Gz/reference/direct-field/late-checksum family. Archive's15 reviewed authored
+owners now have exact contracts under their declared contexts. Continue either
+the two FileSystem transforms or a distinct large-owner lifetime hypothesis;
+source, physical ownership and product/runtime gates remain independent.
 Existing allocator327 stays a normal-COFF canonical claim even though a full
 linked guard matches it here. Neither surface proves production ownership.
 TH09/TH095

@@ -1,0 +1,59 @@
+{
+  "actual_full_four_TU_colds": 2,
+  "ci": {
+    "completed_groups": 111,
+    "exit_code": 0,
+    "frozen_input_count": 373,
+    "frozen_inputs_unchanged": true,
+    "independent_D3D_files_unchanged": 9,
+    "input_inventory_sha256": "4a0e0e85d0049965c223d469858e7f01cfdcfcb27d5fb042390599ec4c4dc4cd",
+    "log_sha256": "dee677fd27075e6f62cd0a034ae1ce7ea492da8fe5932d4c11f1094ae3dbe125",
+    "status": "passed"
+  },
+  "cleanup": {
+    "files": 11,
+    "logical_bytes": 187410,
+    "scope": "superseded one-support private build and failed empty-argument preflight log; successful full attestation, compact reports/producers, two actual new colds,13 old-context files and9 independent D3D files retained",
+    "status": "removed",
+    "trees": 1
+  },
+  "counts": {
+    "Archive_exact": 15,
+    "Archive_nonexact_bytes": 0,
+    "Archive_source": 15,
+    "authored": 734,
+    "authored_bytes": 273579,
+    "authored_exact": 409,
+    "authored_exact_bytes": 74716,
+    "overall_exact": 1250,
+    "overall_exact_bytes": 141226,
+    "source": 613,
+    "source_absent": 121,
+    "source_bytes": 247945,
+    "source_nonexact": 204
+  },
+  "each_cold": {
+    "existing_guard_bytes": 956,
+    "existing_guard_fields": 52,
+    "existing_guard_functions": 9,
+    "new_bytes": 100,
+    "new_fields": 6,
+    "total_checked_bytes": 1056,
+    "total_fields": 58
+  },
+  "final_checks": {
+    "Archive_source_completeness": "15/15 source;15/15 exact;1527 authored bytes",
+    "documentation_hygiene": "passed",
+    "focused_resource_loader": "100/all6 exact",
+    "git_diff_check": "passed",
+    "progress_generated_and_checked": "passed",
+    "source_unchanged_from": "73fbf4c6ffef29e295b1802ddf0582052a8151b4",
+    "toolchain_check": "passed",
+    "tracking": "passed"
+  },
+  "new_exact_functions": 1,
+  "new_exact_owned_bytes": 100,
+  "phase": "active-incomplete; whole Windows i386 product/runtime open; semantic and port not started",
+  "source_changed": false,
+  "status": "two actual complete100/all6 colds,9 whole guards each,111-group CI and final focused checks passed"
+}

@@ -5108,3 +5108,28 @@ Only350 new bytes count: authored408/74616, overall1249/141126; source613/
 nonexact205/absent121. Archive source15/15, exact14/15; resource load100 remains.
 Whole product/runtime, physical data owners and semantic/port stages stay open.
 [Complete header proof and limits](evidence/pbgarchive-parse-header/README.md).
+
+## Exact retained resource archive loader (2026-10-22)
+
+LoadFromResource434CA0..434D03 is complete100 bytes. Its machine inputs are
+ECX archive/EAX resource name; it initializes three memory-backend fields and
+the resource vtable, then parses/copies the name and releases on failure. Fresh
+read-only Ghidra observes no incoming reference; original callers remain unknown.
+Complete target decoding covers36 instructions/five local branches and all6
+fields:5 external relative calls and1 absolute vtable. Original target PE base
+relocations are absent, so decoded operands and target/Ghidra identity supply
+the target inventory independently of the linked candidate's relocation table.
+
+Unchanged source emits161 with a normal-COFF ResFile base-constructor/EH call
+context, or280 in the separate Ob2/Gz graph. Making that same existing ResFile
+constructor visible through GL recovers100/all6. The initial one-support/three-
+reused control is followed by two actual full4TU allGL/GS/EHsc colds, archiveOb1.
+Each passes100/all6 plus9 whole guards956/all52, totaling1056/all58. All1249 prior
+canonical recipes and maintained source/header/interface/layout/ABI remain
+unchanged. The result does not identify original physical ownership or flags.
+
+Only100 new authored bytes count: authored409/74716, overall1250/141226,
+source613/nonexact204/absent121. Archive15/15 authored owners now exact under
+their separate contexts. Whole Windows i386 product/runtime, data owners and
+semantic/port gates remain open.
+[Complete resource loader proof and limits](evidence/pbgarchive-load-from-resource/README.md).
