@@ -1,0 +1,95 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -42,92 +42,6 @@
+     x = static_cast<float>(cos(angle)) * magnitude;
+     y = static_cast<float>(sin(angle)) * magnitude;
+ #endif
+-}
+-
+-
+-EclVmStackView::EclVmStackView()
+-    : stackTop(0), frameBase(0)
+-{
+-}
+-
+-
+-int EclVmStackView::Push(
+-    unsigned char type, int size, const void *value)
+-{
+-    if (stackTop + size >= 0x1000)
+-        return -1;
+-
+-    if (type != 0)
+-    {
+-        data[stackTop] = type;
+-        stackTop += 4;
+-    }
+-
+-    memcpy(data + stackTop, value, size);
+-    stackTop += size;
+-    return 0;
+-}
+-
+-int EclVmStackView::Pop(unsigned char type, int size, void *value)
+-{
+-    if (stackTop - size < 0)
+-        return -1;
+-
+-    unsigned char *const stackData = data;
+-    stackTop -= size;
+-    unsigned char *const valueAddress = stackData + stackTop;
+-    memcpy(value, valueAddress, size);
+-
+-    if (type != 0)
+-    {
+-        stackTop -= 4;
+-        const unsigned char *const typeAddress = stackData + stackTop;
+-        const unsigned char storedType = *typeAddress;
+-        if (storedType != 'f')
+-        {
+-            if (storedType == 'i' && type == 'f')
+-            {
+-                *reinterpret_cast<float *>(value) = static_cast<float>(
+-                    *reinterpret_cast<int *>(value));
+-            }
+-        }
+-        else if (type == 'i')
+-        {
+-            *reinterpret_cast<int *>(value) = static_cast<int>(
+-                *reinterpret_cast<float *>(value));
+-        }
+-    }
+-
+-    return 0;
+-}
+-
+-int EclVmStackView::EnterFrame(int localBytes)
+-{
+-    const int previousTop = stackTop;
+-    const int localTop = previousTop + localBytes;
+-    if (localTop >= 0x1000)
+-        return -1;
+-
+-    stackTop = localTop;
+-    if (stackTop + 4 < 0x1000)
+-    {
+-        *reinterpret_cast<int *>(data + stackTop) = frameBase;
+-        stackTop += 4;
+-    }
+-    frameBase = previousTop;
+-    return 0;
+-}
+-
+-int EclVmStackView::LeaveFrame()
+-{
+-    const int previousFrame = frameBase;
+-    if (stackTop - 4 >= 0)
+-    {
+-        stackTop -= 4;
+-        frameBase = *reinterpret_cast<int *>(data + stackTop);
+-    }
+-    stackTop = previousFrame;
+-    return 0;
+ }
+ 
+ 

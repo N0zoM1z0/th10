@@ -1,0 +1,31 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -257,28 +257,6 @@
+ } // namespace
+ 
+ 
+-int EclVmContext::ReadIntValue(unsigned int flagIndex, int value)
+-{
+-    if (IsOperandIndirect(instruction, flagIndex))
+-    {
+-        if (value >= 0)
+-        {
+-            EclVmStackView *const operandStack = &stack;
+-            return *reinterpret_cast<int *>(
+-                operandStack->data + operandStack->frameBase + value);
+-        }
+-        if (value == -1)
+-        {
+-            stack.Pop('i', sizeof(value), &value);
+-        }
+-        else
+-        {
+-            return host->ReadEclInt(value);
+-        }
+-    }
+-    return value;
+-}
+-
+ int EclVmContext::ReadInt(unsigned int index)
+ {
+     if (IsOperandIndirect(instruction, index))

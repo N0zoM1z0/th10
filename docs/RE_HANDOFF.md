@@ -1,11 +1,11 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-three full-source factory calling-convention controls are not adopted; maintained
-source and exact counts remain unchanged. The preceding natural construction
-checkpoint added202/219 with indeterminate origin. Authored409/74716 stays
-unchanged; overall1252/141647. Source613/247945, nonexact204, absent121.
-Archive15/15 exact; FileSystem11/13 exact, both source-complete.
+large-owner experiments split ECL stack services, HostRun and ReadIntValue into
+separate GL inputs. All three retain the complete7020/6993 Run body; no source
+adopted or exact gains. Authored409/74716, overall1252/141647 remain unchanged.
+Source613/247945, nonexact204, absent121. Archive15/15 and FileSystem11/13 exact.
+See [ECL translation-unit controls](evidence/ecl-tu-visibility/README.md).
 See [factory ABI controls](evidence/enemy-laser-calling-conventions/README.md).
 See [laser construction proof](evidence/enemy-laser-constructors/README.md).
 See [Enemy laser source controls](evidence/enemy-laser-source-controls/README.md),
@@ -49,6 +49,22 @@ scripts/repo-python scripts/verify-toolchain.py --execute
 scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
+
+## Latest ECL translation-unit checkpoint
+
+Starting8bbfef7, three actual two-compiled/nine-reused game-object controls split
+stack services, HostRun or ReadIntValue into separate GL/GS translation units.
+All reproduce the complete Run7020/6993,189 fields/62 locals, exact171-byte
+callee and nine whole guards1137/all18. Complete target-replayed hashes equal
+baseline830db1c5...a472; no source/profile/recipe/ledger adoption. Fresh target,
+executed toolchain and readOnly/noanalysis Ghidra pass. Source108, canonical
+native/recipe and9 unrelated D3D pins are unchanged. Focused validation only,
+no full CI per operator scope. [Evidence](evidence/ecl-tu-visibility/README.md).
+Cleanup removes34 files/2137686 bytes; retain last split-int-service carrier and
+compact producers/source pairs/results. All owned jobs terminal0. Recovery:
+`.analysis/gpt-6-astra-medium/ecl-tu-visibility-20261022/RECOVERY.md`.
+Next rotate to ANM's operand/common-tail differences. Do not repeat these neutral
+partitions or substitute small-function exact closures for the large-owner goal.
 
 ## Latest large-owner priority and ECL controls
 

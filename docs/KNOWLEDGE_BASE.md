@@ -5239,3 +5239,12 @@ Each ECL-only/reuse9 experiment preserves nine full guards1137/all18. These
 are compiler observations, not recovered original types or a general aggregate
 exclusion. No maintained source or exact credit changes.
 [Scope, patches and evidence](evidence/ecl-aggregate-lifetimes/README.md).
+
+## ECL translation-unit visibility controls (2026-10-22)
+
+Moving unchanged stack services, HostRun or ReadIntValue to a second GL/GS input
+is whole-Run neutral in three measured eleven-TU contexts:7020/6993/all189,
+complete171-byte float callee and nine full guards1137/all18. Replayed SHA-256
+is830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472.
+This does not establish original source-file boundaries or universal neutrality.
+[Exact transformations, evidence and scope](evidence/ecl-tu-visibility/README.md).
