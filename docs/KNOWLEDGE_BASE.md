@@ -4894,3 +4894,15 @@ complete ECL27/189fields/62locals/171-byte callee. No form is adopted. Input
 lifetime and helper inlining cannot be inferred from matched sizes, and this
 timer spelling does not explain the remaining Tick order in the current graph.
 [Operand controls](evidence/anm-operand-lifetime-controls/README.md).
+
+## Chain allocator flags and extent constraint (2026-10-22)
+
+Target449ED0 is74 bytes; its flags load/OR/store consumes9 bytes versus current
+four-byte memory OR. Constructor AND scheduling also differs. Flags snapshots,
+an ordinary callback helper, compound heap-bit assignment and G7 preserve the
+same69 ordinary bytes after ignoring only the observed CALL field. The helper's
+raw displacement changes with its owner address, not with a code improvement.
+Og disabled grows161 and rejects all four complete Chain guards; the other
+four models retain838/all58 but every allocator candidate fails extent74.
+No source/profile form is adopted or original declaration/TU inferred. Keep
+the allocator open and rotate coverage. [Allocation controls](evidence/chain-allocation-controls/README.md).

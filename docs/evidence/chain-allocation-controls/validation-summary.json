@@ -1,0 +1,55 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "ci": {
+    "exit_code": 0,
+    "groups": 109,
+    "log_sha256": "93dc53c747f46a5734331bfd94992ea5479a11c3b5cfde5bcdf825b982055825",
+    "frozen_inputs": 369,
+    "unchanged_from_pre_control_snapshot": true
+  },
+  "source_header_pins_unchanged": 107,
+  "baseline_snapshot_files_unchanged": 23,
+  "independent_D3D_preserved": 9,
+  "focused": {
+    "optimized_models": 4,
+    "per_image_complete_exact_guards": 4,
+    "per_image_bytes": 838,
+    "per_image_fields": 58,
+    "globalopt_off_rejected_guards": 4,
+    "all_allocator_candidates_rejected_on_extent": true,
+    "full_native_cold": false
+  },
+  "cleanup": {
+    "removed_paths": [
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/flags-snapshot",
+      "build/gpt-6.1-sol/chain-allocation-codegen-20261022/flags-snapshot",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/flags-snapshot.json",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/flags-snapshot-compile.log",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/flags-snapshot-disassembly.txt",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/flags-snapshot-execution.log",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/flags-snapshot-units.toml",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/profile-g7",
+      "build/gpt-6.1-sol/chain-allocation-codegen-20261022/profile-g7",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/profile-g7.json",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/profile-g7-compile.log",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/profile-g7-disassembly.txt",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/profile-g7-execution.log",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/profile-g7-units.toml",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/callback-helper",
+      "build/gpt-6.1-sol/chain-allocation-codegen-20261022/callback-helper",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/callback-helper.json",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/callback-helper-compile.log",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/callback-helper-disassembly.txt",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/callback-helper-execution.log",
+      ".analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/callback-helper-units.toml"
+    ],
+    "logical_file_bytes": 5338060,
+    "scope": "Only this producer-owned inactive Chain outputs; two observed failure extents retained; original snapshots/D3D/provider preserved"
+  },
+  "authored_source": 610,
+  "authored_exact": 401,
+  "authored_exact_bytes": 73225,
+  "canonical_exact": 1242,
+  "canonical_exact_bytes": 139735,
+  "checks": "Fresh target/toolchain execute and tracking preflight; toolchain --check, tracking, generated progress and diff checks pass; no separate native product or runtime closure."
+}

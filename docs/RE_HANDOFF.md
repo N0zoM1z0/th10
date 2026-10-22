@@ -1,11 +1,11 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Three
-further ANM input/helper/timer controls regress or reproduce baseline; none is
-adopted. Every image passes35 complete guards4424/all118 and eight static child
-paths. ECL retains **7020/6993 bytes,27 ordinary differences**. No new exact
-credit or game-source changes. See
-[operand controls](evidence/anm-operand-lifetime-controls/README.md).
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Five
+Chain allocator controls fail the complete74-byte extent: four remain69 and
+Og disabled grows161. No source or exact credit changes. The four optimized
+models retain four complete Chain guards838/all58; Og disabled rejects all4.
+Fresh109-group CI passes with369 frozen inputs unchanged. See
+[allocation controls](evidence/chain-allocation-controls/README.md).
 
 ## Resume safely
 
@@ -177,8 +177,9 @@ grow ANM10076, helper calls shrink it9836, and an explicit timer tail reproduces
 all three complete baseline large bodies raw. Each image retains35 whole
 guards4424/all118, eight child paths and full ECL27/189/62/171. No source is
 adopted. The current369 frozen code/test/config inputs are identical to the
-preceding109-group CI run; this documentation checkpoint reuses that result
-and does not claim a fresh CI execution. Final campaign checks remain due.
+preceding109-group CI run; the ANM documentation checkpoint484f421 reused that
+result. The final Chain batch now independently reruns all109 groups successfully
+with the same369 inputs unchanged.
 Private recovery: `.analysis/gpt-6.1-sol/anm-argument-carriers-20261022/RECOVERY.md`.
 
 Coverage now rotates to Chain allocator449ED0/74 versus current69. Target tail
@@ -189,6 +190,32 @@ G7 controls remain69 while all four existing Chain guards838/all58 pass.
 These are candidates, not new exact units or proof of original compiler flags.
 The direct-tools campaign is `.analysis/gpt-6.1-sol/chain-allocation-codegen-20261022/`;
 use its live process handles and current results to recover, not the state label.
+
+The final allocation packet includes five actual controls: flags snapshot, G7,
+callback helper and compound heap bit remain69, while Og disabled grows161 and
+rejects all four guards. Ignoring only the sole observed CALL field3..6, every
+optimized69-byte body is identical to the retained69-byte baseline. The helper's
+raw difference is a changed linked owner/CALL displacement, not ordinary code.
+No allocator comparison passes its74-byte PDB extent, and no normal-COFF
+substitution or original flag/TU inference is made. Full read-only local Ghidra
+attests412289 mapped bytes before/after and reviews the allocator/constructor.
+All107 native inputs and23 original snapshot files remain unchanged. Full109
+CI, target/toolchain, tracking, generated progress and whitespace checks pass;
+all369 code/test/config inputs remain unchanged. Cleanup removes5338060 logical
+bytes from21 owned paths, retaining compound-bit69 and Og-disabled161 failures.
+The ANM batch separately removed4289158 bytes from22 owned paths. Canonical
+carriers, prior snapshots, nine independent D3D files and provider/legacy remain.
+
+Next rotate to the source-absent FileSystem4356F0/212,435800/214,4358E0/190
+owners (616 bytes total). Fresh canonical source-presence triage confirms124
+absent:118 GameUnassigned,3 FileSystem,2 Player,1 Startup. Read current
+FileSystem.cpp/hpp, PbgArchive.cpp/hpp, PbgFile.cpp/hpp and ResFile.cpp/hpp, then
+re-attest/decompile the target and review calls/failure paths before writing.
+Existing FileSystem.cpp already declares g_PbgArchives[20] and its count; avoid
+duplicate globals. Source-level signatures should be natural; recover private
+ECX through actual caller/LTCG evidence. The historical File.cpp path string
+has no code xref and does not establish original TU ownership. This is the next
+bounded route, not a reduced campaign objective or completion claim.
 
 Whole Windows i386 product/runtime closure is open: globals, static init,
 resources, libraries, link order and exercised paths still need audit. Semantic
