@@ -91,6 +91,21 @@ def toml_value(value):
     return json.dumps(value)
 
 
+def select_ecl_source(context, requested=None):
+    """Select one existing repository-local input, including private probes."""
+    source = (ROOT / (requested or "src/EclVm.cpp")).resolve()
+    try:
+        relative = source.relative_to(ROOT.resolve()).as_posix()
+    except ValueError as exc:
+        raise ValueError("ECL source must stay inside the repository") from exc
+    if not source.is_file():
+        raise ValueError("ECL source must be an existing file")
+    inputs = [context["source"], *context.get("support_sources", [])]
+    if sum((ROOT / value).resolve() == source for value in inputs) != 1:
+        raise ValueError("context must compile the selected ECL source exactly once")
+    return source, relative
+
+
 def compare(args):
     canonical_path = ROOT / "config/match-units.toml"
     canonical_bytes = canonical_path.read_bytes()
@@ -106,8 +121,10 @@ def compare(args):
     context = units[args.unit]
     if context["artifact_kind"] != "linked-pe":
         raise ValueError("the context must be a declared linked-PE unit")
-    if "src/EclVm.cpp" not in [context["source"], *context.get("support_sources", [])]:
-        raise ValueError("the context does not compile the maintained ECL source")
+    source_path, source_selector = select_ecl_source(
+        context, getattr(args, "ecl_source", None)
+    )
+    source_bytes = source_path.read_bytes()
     directory = (ROOT / (args.artifact_dir or context["output_dir"])).resolve()
     directory.relative_to(ROOT / "build")
     image_path = directory / "source.exe"
@@ -134,7 +151,7 @@ def compare(args):
                 unit[key] = context[key]
             else:
                 unit.pop(key, None)
-        unit.update(output_dir=str(directory.relative_to(ROOT)), pdb_source="src/EclVm.cpp")
+        unit.update(output_dir=str(directory.relative_to(ROOT)), pdb_source=source_selector)
         return unit
 
     guard = contextual(canonical["units"]["ecl-vm-read-float-value"])
@@ -194,6 +211,8 @@ def compare(args):
         raise ValueError("context manifest changed during comparison")
     if canonical_path.read_bytes() != canonical_bytes:
         raise ValueError("canonical bindings changed during comparison")
+    if source_path.read_bytes() != source_bytes:
+        raise ValueError("selected ECL source changed during comparison")
     return {
         "scope": "Noncanonical complete-owner diagnostic; no exact ledger credit.",
         "context_unit": args.unit,
@@ -201,6 +220,11 @@ def compare(args):
         if manifest_path.is_relative_to(ROOT) else str(manifest_path),
         "context_manifest_sha256": hashlib.sha256(manifest_bytes).hexdigest(),
         "canonical_bindings_sha256": hashlib.sha256(canonical_bytes).hexdigest(),
+        "observed_ecl_source": {
+            "path": source_selector,
+            "sha256": hashlib.sha256(source_bytes).hexdigest(),
+            "scope": "Input observed during diagnosis; artifact/source correspondence is not asserted.",
+        },
         "callee_guard": guarded,
         "run": result,
     }
@@ -213,6 +237,10 @@ def main():
     parser.add_argument(
         "--context-manifest", type=Path,
         help="declared build context (target bindings remain canonical)",
+    )
+    parser.add_argument(
+        "--ecl-source", type=Path,
+        help="explicit ECL input in the selected context (default: src/EclVm.cpp)",
     )
     args = parser.parse_args()
     try:

@@ -1,0 +1,1929 @@
+{
+  "state": "diagnostic controls only; no new exact credit or maintained game-source change",
+  "starting_head": "15cd8b1f5ddf1697986a904f5dc448278b92b517",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text": {
+    "inclusive_range": [
+      "0x00401000",
+      "0x00465A80"
+    ],
+    "bytes": 412289,
+    "before_after_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "readOnly_noanalysis_rollback": true,
+    "residual_review_spans": 12,
+    "Run_callers": [
+      "0x0044FD33",
+      "0x0044FD45"
+    ],
+    "HostRun_callers": [
+      "0x0040E0FE",
+      "0x0040E205"
+    ],
+    "HostRun_caller_owner": "0x0040DC80"
+  },
+  "baseline_recipe": {
+    "artifact_kind": "linked-pe",
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/ItemManager.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+    "output_dir": "build/match-linked/EnemyItemDrops",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "owner_visibility": "static",
+    "pdb_source": "src/EnemyEclDispatcher.cpp",
+    "functions": [
+      "EnemyDropItemCounts"
+    ],
+    "symbol": "?EnemyDropItemCounts@@YAXPBUPlayerFloat3@@PAH@Z",
+    "target_address": 4245920,
+    "size": 48,
+    "linkages": [
+      {
+        "offset": 23,
+        "type": "DIR32",
+        "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+        "target": 4683800
+      },
+      {
+        "offset": 30,
+        "type": "REL32",
+        "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+        "target": 4307712
+      },
+      {
+        "offset": 36,
+        "type": "REL32",
+        "symbol": "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z",
+        "target": 4245968
+      }
+    ]
+  },
+  "baseline_source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "baseline_native_artifact_sha256": {
+    "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+    "build/match-linked/EnemyItemDrops/source.map": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+    "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+    "build/match-linked/EnemyItemDrops/source.exe": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "build/match-linked/EnemyItemDrops/source.ltcg.obj": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+    "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+    "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+    "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+    "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+    "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+    "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "build/match-linked/EnemyItemDrops/link-anchors.obj": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+    "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+    "build/match-linked/EnemyItemDrops/source.pdb": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+    "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0"
+  },
+  "maintained_native_source_header_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmRectangle.cpp": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletLifecycle.cpp": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243",
+    "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+    "src/BulletTransform.cpp": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+    "src/Chain.cpp": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/DecomphelpLeafAccessors.cpp": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/Decompress.cpp": "bb26102d2b0db297123e7302a7110cb6d320243b8422c269468464d3566c10cc",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Ending.cpp": "dac885626c1100f6df8b3fe5df5ab71584556ff0728804b44aec3a0fd2982b78",
+    "src/Ending.hpp": "4f8e62b1d23eb8b2cf9074cba791d7212f04317792529e4ac0f32e83b99248f5",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyCallback.cpp": "8d96765576c94e631db6c76178afa4c556b9a8d40cadb5f108f9cd5297103e4d",
+    "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyLaserLine.hpp": "7fded6867889d41110085110f9ec39a75a7139488ce00475e881f7de27ef58dc",
+    "src/EnemyLaserType1.hpp": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b",
+    "src/EnemyMotion.cpp": "c936446223176d9651f21608d7c3b080e8f9f0f5bbe06b803410a7d8d990fa83",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "b2b20c98166dfaf83fc2abfe3ae8005329ba4e0fb63c73049c0015141f17f634",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/FrontEnd.cpp": "6c972e54085aa3969d4eb4ab9e516bf35a87809ca762b87a098346fe27f010b7",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameManager.cpp": "f4d213bb89e23d51114578720f299a53800c782516af441294733f8c919762bb",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/GameStatistics.cpp": "60eb7f57910372a78e6d6bba45c22af8e758bc5114aaa8bb00faf7a43eb1f13b",
+    "src/GameStatistics.hpp": "ae615e9a3982449e970883e2409ca1ef045192086ca9a84ad0ab94aadc6a20b6",
+    "src/Gui.cpp": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiDraw.cpp": "6ff7fd7d108ba74aa98ed5210592fbfc916a542f85fb12f5a75075c3ca3a03d7",
+    "src/GuiMessage.cpp": "c53ed5ef974a296ecd83e949a50ad48d9f1d7e12b621680849dd465965bde4c6",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.cpp": "a6a6acb7418900f4a94e153843b3ed6a2b5675d197678eeadff50a54076c28a2",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputPolling.cpp": "81fcea0ee72f07a3ce3188ae9591fae43f751ec6318e0065375159a0064ea31c",
+    "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+    "src/InputState.cpp": "48c48082b17c994d83cdc49ec370f2adcc35fca27e87813d7714089a01321007",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/LaserClear.cpp": "2fd57dbbad9b1d64c5d3bce55abfb285674c656290a6dfd53dcd9955af8c2236",
+    "src/LaserInitialize.cpp": "ecb1eaa8e79ea7218d311bd9f5475c266bd8fb9c2130c105c356afde4c7e2e94",
+    "src/LaserLine.cpp": "001ad4d1e0b6fe7f13e659b9c3e56a36d1c60f1ca8075241b331e9529b6bad03",
+    "src/LaserScript.cpp": "2f8474386a59cd91aebb19a206e850048f5e92b73ba25a20e66f225f0e32b041",
+    "src/LaserType1.cpp": "27fba91c2ed157457d158d76d9438c6721e1604dc723f327bc5e7d4453d9d034",
+    "src/LaserType1Clear.cpp": "11ef7e2086ff24db4cdd66eed1b96ff1a2051ae7b7734398a2be2ee57604366c",
+    "src/Lzss.cpp": "6a066b4eac947b11cd120a3daf5f43a659995af4048ea58836650b30657d6aaa",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "9cce8257321bde23fdb88b6f42f7412a3b6a425a138f7bda0482796fd300cd8e",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.cpp": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/ReplayManager.cpp": "82c21944fad4b21c03caae4048076b86720fac3e36af626cf42a51f0ea53d449",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResFile.cpp": "0488cd5bf7846eaf592abf00558c93d797a7aa759aefae4cf773855a06d4fb8b",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.cpp": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7",
+    "src/ScriptViewer.hpp": "ef3f7a2120f99201dcd5790de136aa2f6782deb4b89e96e2ed5528bce3e7657e",
+    "src/ScriptViewerLifecycle.cpp": "08f91480ad45fbfc9f3519d0869bacca4055a3b66b595fb96d196f1aff980916",
+    "src/ScriptViewerOwners.hpp": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+    "src/ScriptViewerWorker.cpp": "a1d103a8c3d5770d9902b0b520f484720e6a4be9e83dfe79b5a218e619e338a9",
+    "src/Sound.cpp": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/SpellPanel.cpp": "9fa87f6a3a6447524af3d2136010a114cfb3ab9358866dbd28c0d560f6f7bb91",
+    "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+    "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+    "src/StageScript.cpp": "536e18dedfafde3f92f68db588a791f33ab5b44e2312bba62802cd5d321da000",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+    "src/TextRenderer.cpp": "1a774fcace6aa5d5fc12b930d5f418e20bf0a90f6b8409e7ffcd664564b1676b",
+    "src/TextRenderer.hpp": "1ef663d5b3c5e8d2b2e1abfc1090aea72a2fc56fba07228b56808f5a1a272efa",
+    "src/TransitionEffect.cpp": "57475c2b9ef35961ddad413ce5479e3c415b99fbd1af9742dab85796cc6f0e10",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/ZWave.cpp": "8a0eafe895d9e4d7feb2b768907379890e96168a4bbcd85743791aeeab0935f3"
+  },
+  "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+  "residual_categories": {
+    "thread_register_bytes": 4,
+    "commuted_addressing_bytes": 5,
+    "stack_home_bytes": 16,
+    "common_latch_register_bytes": 2
+  },
+  "complete_difference_offsets": [
+    236,
+    241,
+    298,
+    300,
+    5230,
+    5335,
+    5405,
+    5770,
+    5904,
+    6171,
+    6187,
+    6200,
+    6204,
+    6208,
+    6212,
+    6297,
+    6326,
+    6374,
+    6392,
+    6428,
+    6450,
+    6487,
+    6558,
+    6568,
+    6586,
+    6630,
+    6632
+  ],
+  "controls": [
+    {
+      "label": "switch-math-locals",
+      "kind": "source/profile control",
+      "image_sha256": "548eb741af5dec2e4d88d54b8961f3ecc186e7f9ee7d7074f750d0eb50ca57c4",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "44ab16022c113f40ebc76ced1fc536f456744e426eafc980810e2209f615d8a9",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/switch-math-locals/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "45de147e003b8a112b1edf61af352c3e22e27f15d4f371b83406e8177fd91d1e",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,7 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            float x, y, dx, dy;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -1142,8 +1143,8 @@\n \n             case ECL_VM_LENGTH_SQUARED:\n             {\n-                const float x = ReadFloat(1);\n-                const float y = ReadFloat(2);\n+                x = ReadFloat(1);\n+                y = ReadFloat(2);\n                 *ResolveFloat(0) = x * x + y * y;\n                 break;\n             }\n@@ -1154,8 +1155,8 @@\n \n             case ECL_VM_POINT_ANGLE:\n             {\n-                const float dx = ReadFloat(2) - ReadFloat(0);\n-                const float dy = ReadFloat(3) - ReadFloat(1);\n+                dx = ReadFloat(2) - ReadFloat(0);\n+                dy = ReadFloat(3) - ReadFloat(1);\n                 *ResolveFloat(0) =\n                     static_cast<float>(atan2(dy, dx));\n                 break;\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "f13b51918f91ac479583a4a8a1b1dff5",
+        "pdb_age": 1,
+        "candidate_address": "0x00406D00",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/switch-math-locals/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/switch-math-locals"
+      }
+    },
+    {
+      "label": "switch-scratch",
+      "kind": "source/profile control",
+      "image_sha256": "b8ce35e04cea68e82cfab22846d8a38531a1bf92b3a334be45847d40711edc16",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "c841c635f46b3dcbee61e10c53a0daf7d51a193396c597650d8ecc575e6bbcc8",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/switch-scratch/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "a9ea45271fa32177e68db7db03269de65fb0a895b1734a623e5d5d647b65a83c",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,10 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            float x, y, dx, dy;\n+            const char *cursor;\n+            char *scratch;\n+            int argumentIndex;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -1142,8 +1146,8 @@\n \n             case ECL_VM_LENGTH_SQUARED:\n             {\n-                const float x = ReadFloat(1);\n-                const float y = ReadFloat(2);\n+                x = ReadFloat(1);\n+                y = ReadFloat(2);\n                 *ResolveFloat(0) = x * x + y * y;\n                 break;\n             }\n@@ -1154,8 +1158,8 @@\n \n             case ECL_VM_POINT_ANGLE:\n             {\n-                const float dx = ReadFloat(2) - ReadFloat(0);\n-                const float dy = ReadFloat(3) - ReadFloat(1);\n+                dx = ReadFloat(2) - ReadFloat(0);\n+                dy = ReadFloat(3) - ReadFloat(1);\n                 *ResolveFloat(0) =\n                     static_cast<float>(atan2(dy, dx));\n                 break;\n@@ -1163,12 +1167,12 @@\n \n             case ECL_VM_EVALUATE_FORMAT_OPERANDS:\n             {\n-                const char *cursor =\n+                cursor =\n                     reinterpret_cast<const char *>(current) + 0x14;\n-                char *scratch = static_cast<char *>(malloc(0x400));\n+                scratch = static_cast<char *>(malloc(0x400));\n                 scratch[0] = '\\0';\n \n-                int argumentIndex = 0;\n+                argumentIndex = 0;\n                 while (cursor != NULL) {\n                     const char *percent = strchr(cursor, '%');\n                     if (percent == NULL)\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "20b3b3b8e43a4a41803b9f3dc9a9b3dd",
+        "pdb_age": 1,
+        "candidate_address": "0x00406D00",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/switch-scratch/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/switch-scratch"
+      }
+    },
+    {
+      "label": "function-results",
+      "kind": "source/profile control",
+      "image_sha256": "fbb111a6abfc2f077b5251b99e109a8e77b5f9b35ed6c6eafdb24f9b41fb2049",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "34237d5d542b694e86a8842a84af2643ed44f2f7ce8bd0bd20403074668151c2",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/function-results/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "cef1f2af98e1b70a5c3dbd9eb26c83ab9e4b438e024f5178095651b47562711d",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -699,6 +699,8 @@\n int EclVmContext::Run(float timeDelta)\n {\n     EclVmInstruction **const instructionCursor = &instruction;\n+    int floatResult;\n+    int logicalResult;\n \n     if (*instructionCursor == NULL)\n         return -1;\n@@ -709,8 +711,6 @@\n         EclVmInstruction *advanceInstruction;\n \n         if ((difficultyMask & current->difficultyMask) != 0) {\n-            int floatResult;\n-            int logicalResult;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "21398df4eae65549a5756f3ffcb0df1b",
+        "pdb_age": 1,
+        "candidate_address": "0x00406D00",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/function-results/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/function-results"
+      }
+    },
+    {
+      "label": "run-before-context",
+      "kind": "source/profile control",
+      "image_sha256": "6003d3eb4c7a7f02e349c3bfda040e5c4a497734f888a267ece0d860dadd675a",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "e6b2ce06b8d6102f6081f62c73f0ff1b2113137e6953627be4bee021037220a7",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/run-before-context/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "8dad64d0a971e6d3f78647bcd19cbc57cd9d0b35e15726c3220086473ee5d060",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_transform": {
+        "operation": "move unchanged tail before marker",
+        "tail_starts": "// Model the disabled variadic trace suggested by FORMAT",
+        "insert_before": "int EclVmContext::ReadIntValue(",
+        "baseline_source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369"
+      },
+      "PDB_bound_observation": {
+        "pdb_guid": "398ea50298611443bb9bd95360ab048a",
+        "pdb_age": 1,
+        "candidate_address": "0x00406350",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/run-before-context/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/run-before-context"
+      }
+    },
+    {
+      "label": "run-before-host",
+      "kind": "source/profile control",
+      "image_sha256": "6c5d75aeb83d043dbf90a132e90a71805913d70cd93385c82fbbb2b5636b85de",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "4f5e445c5cbcb36b77c04c9f5f3acc265c97f3b1c59df955dd8264bab0a73ab4",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/run-before-host/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "2340d88281803829492c19b88987be026543c48478a460fda4194041c7948959",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_transform": {
+        "operation": "move unchanged tail before marker",
+        "tail_starts": "// Model the disabled variadic trace suggested by FORMAT",
+        "insert_before": "int EclVmHost::Run(",
+        "baseline_source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369"
+      },
+      "PDB_bound_observation": {
+        "pdb_guid": "0125f8b86d251a4cb94ac60219d495bf",
+        "pdb_age": 1,
+        "candidate_address": "0x00406B60",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/run-before-host/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/run-before-host"
+      }
+    },
+    {
+      "label": "shared-scalar-scratch",
+      "kind": "source/profile control",
+      "image_sha256": "9fc668bd37b44ca6a67e486c573ee6788f627f520440bd8144c232df22bb578f",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "4f5e445c5cbcb36b77c04c9f5f3acc265c97f3b1c59df955dd8264bab0a73ab4",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/shared-scalar-scratch/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "f19f11fa44c2676a0188162b6f746232515ac7c8a2eec4a6fd8e795e07628b04",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -597,98 +597,6 @@\n }\n \n \n-int EclVmHost::Run(float timeDelta)\n-{\n-    int first = 1;\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        activeContext = node->context;\n-        if (first)\n-        {\n-            if (activeContext->Run(timeDelta) != 0)\n-                return -1;\n-            first = false;\n-        }\n-        else if (activeContext->Run(timeDelta) != 0)\n-        {\n-            delete activeContext;\n-            if (node->next != NULL)\n-                node->next->previous = node->previous;\n-            if (node->previous != NULL)\n-                node->previous->next = node->next;\n-            node->next = NULL;\n-            node->previous = NULL;\n-            delete node;\n-        }\n-        node = next;\n-    }\n-    activeContext = &embeddedContext;\n-    return 0;\n-}\n-\n-\n-struct EnemyFullObjectView;\n-\n-// Enemy.cpp keeps its target-specific full-object view separate from this\n-// generic VM layer. Both views share the target-proven EclVmHost prefix.\n-int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n-{\n-    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n-}\n-\n-\n-void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n-{\n-    EclVmContext *context = new EclVmContext;\n-    EclVmThreadNode *node = new EclVmThreadNode;\n-\n-    context->threadId = threadId;\n-    context->host = this;\n-    context->currentTime = 0.0f;\n-    context->instruction = NULL;\n-    context->difficultyMask = activeContext->difficultyMask;\n-\n-    EclVmThreadNode *const list = &threadList;\n-    node->context = context;\n-    node->next = NULL;\n-    node->previous = NULL;\n-    if (list->next != NULL)\n-    {\n-        node->next = list->next;\n-        list->next->previous = node;\n-    }\n-    list->next = node;\n-    node->previous = list;\n-\n-    context->StartSubroutine(activeContext, firstArgument);\n-}\n-\n-EclVmThreadNode *EclVmHost::FindThread(int threadId)\n-{\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        if (node->context->threadId == threadId)\n-            return node;\n-        node = node->next;\n-    }\n-    return NULL;\n-}\n-\n-void EclVmHost::StopAllThreads()\n-{\n-    EclVmThreadNode *node = threadList.next;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        node->context->instruction = NULL;\n-        node = next;\n-    }\n-}\n-\n-\n // Model the disabled variadic trace suggested by FORMAT's unused text copy.\n // Argument evaluation remains observable; the original trace definition is unknown.\n static void EclDebugTrace(const char *format, ...)\n@@ -1228,3 +1136,97 @@\n     currentTime += timeDelta;\n     return 0;\n }\n+\n+\n+int EclVmHost::Run(float timeDelta)\n+{\n+    int first = 1;\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        activeContext = node->context;\n+        if (first)\n+        {\n+            if (activeContext->Run(timeDelta) != 0)\n+                return -1;\n+            first = false;\n+        }\n+        else if (activeContext->Run(timeDelta) != 0)\n+        {\n+            delete activeContext;\n+            if (node->next != NULL)\n+                node->next->previous = node->previous;\n+            if (node->previous != NULL)\n+                node->previous->next = node->next;\n+            node->next = NULL;\n+            node->previous = NULL;\n+            delete node;\n+        }\n+        node = next;\n+    }\n+    activeContext = &embeddedContext;\n+    return 0;\n+}\n+\n+\n+struct EnemyFullObjectView;\n+\n+// Enemy.cpp keeps its target-specific full-object view separate from this\n+// generic VM layer. Both views share the target-proven EclVmHost prefix.\n+int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n+{\n+    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n+}\n+\n+\n+void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n+{\n+    EclVmContext *context = new EclVmContext;\n+    EclVmThreadNode *node = new EclVmThreadNode;\n+\n+    context->threadId = threadId;\n+    context->host = this;\n+    context->currentTime = 0.0f;\n+    context->instruction = NULL;\n+    context->difficultyMask = activeContext->difficultyMask;\n+\n+    EclVmThreadNode *const list = &threadList;\n+    node->context = context;\n+    node->next = NULL;\n+    node->previous = NULL;\n+    if (list->next != NULL)\n+    {\n+        node->next = list->next;\n+        list->next->previous = node;\n+    }\n+    list->next = node;\n+    node->previous = list;\n+\n+    context->StartSubroutine(activeContext, firstArgument);\n+}\n+\n+EclVmThreadNode *EclVmHost::FindThread(int threadId)\n+{\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        if (node->context->threadId == threadId)\n+            return node;\n+        node = node->next;\n+    }\n+    return NULL;\n+}\n+\n+void EclVmHost::StopAllThreads()\n+{\n+    EclVmThreadNode *node = threadList.next;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        node->context->instruction = NULL;\n+        node = next;\n+    }\n+}\n+\n+\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "cdb8e474ec60fa4482a21a282edb01be",
+        "pdb_age": 1,
+        "candidate_address": "0x00406B60",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/shared-scalar-scratch/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/shared-scalar-scratch"
+      }
+    },
+    {
+      "label": "reference-cursor",
+      "kind": "source/profile control",
+      "image_sha256": "c5ee30224f82d38bead64766391ad2d537afee6a38e5ce5c5556ae0cb1a21894",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "4f5e445c5cbcb36b77c04c9f5f3acc265c97f3b1c59df955dd8264bab0a73ab4",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/reference-cursor/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "0e54bf00193b3a6af21ec30b412ae497f964ee30891792709c7a3e37a79989df",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -597,98 +597,6 @@\n }\n \n \n-int EclVmHost::Run(float timeDelta)\n-{\n-    int first = 1;\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        activeContext = node->context;\n-        if (first)\n-        {\n-            if (activeContext->Run(timeDelta) != 0)\n-                return -1;\n-            first = false;\n-        }\n-        else if (activeContext->Run(timeDelta) != 0)\n-        {\n-            delete activeContext;\n-            if (node->next != NULL)\n-                node->next->previous = node->previous;\n-            if (node->previous != NULL)\n-                node->previous->next = node->next;\n-            node->next = NULL;\n-            node->previous = NULL;\n-            delete node;\n-        }\n-        node = next;\n-    }\n-    activeContext = &embeddedContext;\n-    return 0;\n-}\n-\n-\n-struct EnemyFullObjectView;\n-\n-// Enemy.cpp keeps its target-specific full-object view separate from this\n-// generic VM layer. Both views share the target-proven EclVmHost prefix.\n-int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n-{\n-    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n-}\n-\n-\n-void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n-{\n-    EclVmContext *context = new EclVmContext;\n-    EclVmThreadNode *node = new EclVmThreadNode;\n-\n-    context->threadId = threadId;\n-    context->host = this;\n-    context->currentTime = 0.0f;\n-    context->instruction = NULL;\n-    context->difficultyMask = activeContext->difficultyMask;\n-\n-    EclVmThreadNode *const list = &threadList;\n-    node->context = context;\n-    node->next = NULL;\n-    node->previous = NULL;\n-    if (list->next != NULL)\n-    {\n-        node->next = list->next;\n-        list->next->previous = node;\n-    }\n-    list->next = node;\n-    node->previous = list;\n-\n-    context->StartSubroutine(activeContext, firstArgument);\n-}\n-\n-EclVmThreadNode *EclVmHost::FindThread(int threadId)\n-{\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        if (node->context->threadId == threadId)\n-            return node;\n-        node = node->next;\n-    }\n-    return NULL;\n-}\n-\n-void EclVmHost::StopAllThreads()\n-{\n-    EclVmThreadNode *node = threadList.next;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        node->context->instruction = NULL;\n-        node = next;\n-    }\n-}\n-\n-\n // Model the disabled variadic trace suggested by FORMAT's unused text copy.\n // Argument evaluation remains observable; the original trace definition is unknown.\n static void EclDebugTrace(const char *format, ...)\n@@ -1228,3 +1136,97 @@\n     currentTime += timeDelta;\n     return 0;\n }\n+\n+\n+int EclVmHost::Run(float timeDelta)\n+{\n+    int first = 1;\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        activeContext = node->context;\n+        if (first)\n+        {\n+            if (activeContext->Run(timeDelta) != 0)\n+                return -1;\n+            first = false;\n+        }\n+        else if (activeContext->Run(timeDelta) != 0)\n+        {\n+            delete activeContext;\n+            if (node->next != NULL)\n+                node->next->previous = node->previous;\n+            if (node->previous != NULL)\n+                node->previous->next = node->next;\n+            node->next = NULL;\n+            node->previous = NULL;\n+            delete node;\n+        }\n+        node = next;\n+    }\n+    activeContext = &embeddedContext;\n+    return 0;\n+}\n+\n+\n+struct EnemyFullObjectView;\n+\n+// Enemy.cpp keeps its target-specific full-object view separate from this\n+// generic VM layer. Both views share the target-proven EclVmHost prefix.\n+int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n+{\n+    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n+}\n+\n+\n+void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n+{\n+    EclVmContext *context = new EclVmContext;\n+    EclVmThreadNode *node = new EclVmThreadNode;\n+\n+    context->threadId = threadId;\n+    context->host = this;\n+    context->currentTime = 0.0f;\n+    context->instruction = NULL;\n+    context->difficultyMask = activeContext->difficultyMask;\n+\n+    EclVmThreadNode *const list = &threadList;\n+    node->context = context;\n+    node->next = NULL;\n+    node->previous = NULL;\n+    if (list->next != NULL)\n+    {\n+        node->next = list->next;\n+        list->next->previous = node;\n+    }\n+    list->next = node;\n+    node->previous = list;\n+\n+    context->StartSubroutine(activeContext, firstArgument);\n+}\n+\n+EclVmThreadNode *EclVmHost::FindThread(int threadId)\n+{\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        if (node->context->threadId == threadId)\n+            return node;\n+        node = node->next;\n+    }\n+    return NULL;\n+}\n+\n+void EclVmHost::StopAllThreads()\n+{\n+    EclVmThreadNode *node = threadList.next;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        node->context->instruction = NULL;\n+        node = next;\n+    }\n+}\n+\n+\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "be96a97eacf9b044b28cc5db66b96465",
+        "pdb_age": 1,
+        "candidate_address": "0x00406B60",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/reference-cursor/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/reference-cursor"
+      }
+    },
+    {
+      "label": "ehs-profile",
+      "kind": "source/profile control",
+      "image_sha256": "258bf4fffc478352b3a6af5b2f4033056d5193ed38d5ffaa1c5e075e61d257a3",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "4f5e445c5cbcb36b77c04c9f5f3acc265c97f3b1c59df955dd8264bab0a73ab4",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/ehs-profile/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "d42c9c322194d3a89fa21087582f295511e5164a4bcbcf8c62c6730665080a85",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -597,98 +597,6 @@\n }\n \n \n-int EclVmHost::Run(float timeDelta)\n-{\n-    int first = 1;\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        activeContext = node->context;\n-        if (first)\n-        {\n-            if (activeContext->Run(timeDelta) != 0)\n-                return -1;\n-            first = false;\n-        }\n-        else if (activeContext->Run(timeDelta) != 0)\n-        {\n-            delete activeContext;\n-            if (node->next != NULL)\n-                node->next->previous = node->previous;\n-            if (node->previous != NULL)\n-                node->previous->next = node->next;\n-            node->next = NULL;\n-            node->previous = NULL;\n-            delete node;\n-        }\n-        node = next;\n-    }\n-    activeContext = &embeddedContext;\n-    return 0;\n-}\n-\n-\n-struct EnemyFullObjectView;\n-\n-// Enemy.cpp keeps its target-specific full-object view separate from this\n-// generic VM layer. Both views share the target-proven EclVmHost prefix.\n-int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n-{\n-    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n-}\n-\n-\n-void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n-{\n-    EclVmContext *context = new EclVmContext;\n-    EclVmThreadNode *node = new EclVmThreadNode;\n-\n-    context->threadId = threadId;\n-    context->host = this;\n-    context->currentTime = 0.0f;\n-    context->instruction = NULL;\n-    context->difficultyMask = activeContext->difficultyMask;\n-\n-    EclVmThreadNode *const list = &threadList;\n-    node->context = context;\n-    node->next = NULL;\n-    node->previous = NULL;\n-    if (list->next != NULL)\n-    {\n-        node->next = list->next;\n-        list->next->previous = node;\n-    }\n-    list->next = node;\n-    node->previous = list;\n-\n-    context->StartSubroutine(activeContext, firstArgument);\n-}\n-\n-EclVmThreadNode *EclVmHost::FindThread(int threadId)\n-{\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        if (node->context->threadId == threadId)\n-            return node;\n-        node = node->next;\n-    }\n-    return NULL;\n-}\n-\n-void EclVmHost::StopAllThreads()\n-{\n-    EclVmThreadNode *node = threadList.next;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        node->context->instruction = NULL;\n-        node = next;\n-    }\n-}\n-\n-\n // Model the disabled variadic trace suggested by FORMAT's unused text copy.\n // Argument evaluation remains observable; the original trace definition is unknown.\n static void EclDebugTrace(const char *format, ...)\n@@ -1228,3 +1136,97 @@\n     currentTime += timeDelta;\n     return 0;\n }\n+\n+\n+int EclVmHost::Run(float timeDelta)\n+{\n+    int first = 1;\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        activeContext = node->context;\n+        if (first)\n+        {\n+            if (activeContext->Run(timeDelta) != 0)\n+                return -1;\n+            first = false;\n+        }\n+        else if (activeContext->Run(timeDelta) != 0)\n+        {\n+            delete activeContext;\n+            if (node->next != NULL)\n+                node->next->previous = node->previous;\n+            if (node->previous != NULL)\n+                node->previous->next = node->next;\n+            node->next = NULL;\n+            node->previous = NULL;\n+            delete node;\n+        }\n+        node = next;\n+    }\n+    activeContext = &embeddedContext;\n+    return 0;\n+}\n+\n+\n+struct EnemyFullObjectView;\n+\n+// Enemy.cpp keeps its target-specific full-object view separate from this\n+// generic VM layer. Both views share the target-proven EclVmHost prefix.\n+int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n+{\n+    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n+}\n+\n+\n+void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n+{\n+    EclVmContext *context = new EclVmContext;\n+    EclVmThreadNode *node = new EclVmThreadNode;\n+\n+    context->threadId = threadId;\n+    context->host = this;\n+    context->currentTime = 0.0f;\n+    context->instruction = NULL;\n+    context->difficultyMask = activeContext->difficultyMask;\n+\n+    EclVmThreadNode *const list = &threadList;\n+    node->context = context;\n+    node->next = NULL;\n+    node->previous = NULL;\n+    if (list->next != NULL)\n+    {\n+        node->next = list->next;\n+        list->next->previous = node;\n+    }\n+    list->next = node;\n+    node->previous = list;\n+\n+    context->StartSubroutine(activeContext, firstArgument);\n+}\n+\n+EclVmThreadNode *EclVmHost::FindThread(int threadId)\n+{\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        if (node->context->threadId == threadId)\n+            return node;\n+        node = node->next;\n+    }\n+    return NULL;\n+}\n+\n+void EclVmHost::StopAllThreads()\n+{\n+    EclVmThreadNode *node = threadList.next;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        node->context->instruction = NULL;\n+        node = next;\n+    }\n+}\n+\n+\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "ebe0b77d89f0a2449645d8789fdd6f97",
+        "pdb_age": 1,
+        "candidate_address": "0x00406B60",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/ehs-profile/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/ehs-profile/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        },
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/ehs-profile"
+      }
+    },
+    {
+      "label": "g7-profile",
+      "kind": "source/profile control",
+      "image_sha256": "54c65a88c6a5d4b792272080d92e248b44b0631691eea6a4d5b26eb41fc3ac38",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "4f5e445c5cbcb36b77c04c9f5f3acc265c97f3b1c59df955dd8264bab0a73ab4",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/g7-profile/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "7355fa859b325c7fdc6f1e5ced2b9a9b72c7ea98a3f640ba2db2e2148137fe74",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -597,98 +597,6 @@\n }\n \n \n-int EclVmHost::Run(float timeDelta)\n-{\n-    int first = 1;\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        activeContext = node->context;\n-        if (first)\n-        {\n-            if (activeContext->Run(timeDelta) != 0)\n-                return -1;\n-            first = false;\n-        }\n-        else if (activeContext->Run(timeDelta) != 0)\n-        {\n-            delete activeContext;\n-            if (node->next != NULL)\n-                node->next->previous = node->previous;\n-            if (node->previous != NULL)\n-                node->previous->next = node->next;\n-            node->next = NULL;\n-            node->previous = NULL;\n-            delete node;\n-        }\n-        node = next;\n-    }\n-    activeContext = &embeddedContext;\n-    return 0;\n-}\n-\n-\n-struct EnemyFullObjectView;\n-\n-// Enemy.cpp keeps its target-specific full-object view separate from this\n-// generic VM layer. Both views share the target-proven EclVmHost prefix.\n-int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n-{\n-    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n-}\n-\n-\n-void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n-{\n-    EclVmContext *context = new EclVmContext;\n-    EclVmThreadNode *node = new EclVmThreadNode;\n-\n-    context->threadId = threadId;\n-    context->host = this;\n-    context->currentTime = 0.0f;\n-    context->instruction = NULL;\n-    context->difficultyMask = activeContext->difficultyMask;\n-\n-    EclVmThreadNode *const list = &threadList;\n-    node->context = context;\n-    node->next = NULL;\n-    node->previous = NULL;\n-    if (list->next != NULL)\n-    {\n-        node->next = list->next;\n-        list->next->previous = node;\n-    }\n-    list->next = node;\n-    node->previous = list;\n-\n-    context->StartSubroutine(activeContext, firstArgument);\n-}\n-\n-EclVmThreadNode *EclVmHost::FindThread(int threadId)\n-{\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        if (node->context->threadId == threadId)\n-            return node;\n-        node = node->next;\n-    }\n-    return NULL;\n-}\n-\n-void EclVmHost::StopAllThreads()\n-{\n-    EclVmThreadNode *node = threadList.next;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        node->context->instruction = NULL;\n-        node = next;\n-    }\n-}\n-\n-\n // Model the disabled variadic trace suggested by FORMAT's unused text copy.\n // Argument evaluation remains observable; the original trace definition is unknown.\n static void EclDebugTrace(const char *format, ...)\n@@ -1228,3 +1136,97 @@\n     currentTime += timeDelta;\n     return 0;\n }\n+\n+\n+int EclVmHost::Run(float timeDelta)\n+{\n+    int first = 1;\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        activeContext = node->context;\n+        if (first)\n+        {\n+            if (activeContext->Run(timeDelta) != 0)\n+                return -1;\n+            first = false;\n+        }\n+        else if (activeContext->Run(timeDelta) != 0)\n+        {\n+            delete activeContext;\n+            if (node->next != NULL)\n+                node->next->previous = node->previous;\n+            if (node->previous != NULL)\n+                node->previous->next = node->next;\n+            node->next = NULL;\n+            node->previous = NULL;\n+            delete node;\n+        }\n+        node = next;\n+    }\n+    activeContext = &embeddedContext;\n+    return 0;\n+}\n+\n+\n+struct EnemyFullObjectView;\n+\n+// Enemy.cpp keeps its target-specific full-object view separate from this\n+// generic VM layer. Both views share the target-proven EclVmHost prefix.\n+int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n+{\n+    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n+}\n+\n+\n+void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n+{\n+    EclVmContext *context = new EclVmContext;\n+    EclVmThreadNode *node = new EclVmThreadNode;\n+\n+    context->threadId = threadId;\n+    context->host = this;\n+    context->currentTime = 0.0f;\n+    context->instruction = NULL;\n+    context->difficultyMask = activeContext->difficultyMask;\n+\n+    EclVmThreadNode *const list = &threadList;\n+    node->context = context;\n+    node->next = NULL;\n+    node->previous = NULL;\n+    if (list->next != NULL)\n+    {\n+        node->next = list->next;\n+        list->next->previous = node;\n+    }\n+    list->next = node;\n+    node->previous = list;\n+\n+    context->StartSubroutine(activeContext, firstArgument);\n+}\n+\n+EclVmThreadNode *EclVmHost::FindThread(int threadId)\n+{\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        if (node->context->threadId == threadId)\n+            return node;\n+        node = node->next;\n+    }\n+    return NULL;\n+}\n+\n+void EclVmHost::StopAllThreads()\n+{\n+    EclVmThreadNode *node = threadList.next;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        node->context->instruction = NULL;\n+        node = next;\n+    }\n+}\n+\n+\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "46ff3656ada6b94aac9313ab809f2b96",
+        "pdb_age": 1,
+        "candidate_address": "0x00406B60",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/g7-profile/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/g7-profile/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/G7"
+          ]
+        },
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/g7-profile"
+      }
+    },
+    {
+      "label": "named-math-destinations",
+      "kind": "source/profile control",
+      "image_sha256": "2309e3dc623b2c3c804da89fb316174f6b18fe0b647ed70b8926c917a064392b",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "4f5e445c5cbcb36b77c04c9f5f3acc265c97f3b1c59df955dd8264bab0a73ab4",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/named-math-destinations/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "dc4687a0c80c0075e9e8a2c2e14fccdb99212368d27bc4071d30682d9bff53a4",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -597,98 +597,6 @@\n }\n \n \n-int EclVmHost::Run(float timeDelta)\n-{\n-    int first = 1;\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        activeContext = node->context;\n-        if (first)\n-        {\n-            if (activeContext->Run(timeDelta) != 0)\n-                return -1;\n-            first = false;\n-        }\n-        else if (activeContext->Run(timeDelta) != 0)\n-        {\n-            delete activeContext;\n-            if (node->next != NULL)\n-                node->next->previous = node->previous;\n-            if (node->previous != NULL)\n-                node->previous->next = node->next;\n-            node->next = NULL;\n-            node->previous = NULL;\n-            delete node;\n-        }\n-        node = next;\n-    }\n-    activeContext = &embeddedContext;\n-    return 0;\n-}\n-\n-\n-struct EnemyFullObjectView;\n-\n-// Enemy.cpp keeps its target-specific full-object view separate from this\n-// generic VM layer. Both views share the target-proven EclVmHost prefix.\n-int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n-{\n-    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n-}\n-\n-\n-void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n-{\n-    EclVmContext *context = new EclVmContext;\n-    EclVmThreadNode *node = new EclVmThreadNode;\n-\n-    context->threadId = threadId;\n-    context->host = this;\n-    context->currentTime = 0.0f;\n-    context->instruction = NULL;\n-    context->difficultyMask = activeContext->difficultyMask;\n-\n-    EclVmThreadNode *const list = &threadList;\n-    node->context = context;\n-    node->next = NULL;\n-    node->previous = NULL;\n-    if (list->next != NULL)\n-    {\n-        node->next = list->next;\n-        list->next->previous = node;\n-    }\n-    list->next = node;\n-    node->previous = list;\n-\n-    context->StartSubroutine(activeContext, firstArgument);\n-}\n-\n-EclVmThreadNode *EclVmHost::FindThread(int threadId)\n-{\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        if (node->context->threadId == threadId)\n-            return node;\n-        node = node->next;\n-    }\n-    return NULL;\n-}\n-\n-void EclVmHost::StopAllThreads()\n-{\n-    EclVmThreadNode *node = threadList.next;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        node->context->instruction = NULL;\n-        node = next;\n-    }\n-}\n-\n-\n // Model the disabled variadic trace suggested by FORMAT's unused text copy.\n // Argument evaluation remains observable; the original trace definition is unknown.\n static void EclDebugTrace(const char *format, ...)\n@@ -1228,3 +1136,97 @@\n     currentTime += timeDelta;\n     return 0;\n }\n+\n+\n+int EclVmHost::Run(float timeDelta)\n+{\n+    int first = 1;\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        activeContext = node->context;\n+        if (first)\n+        {\n+            if (activeContext->Run(timeDelta) != 0)\n+                return -1;\n+            first = false;\n+        }\n+        else if (activeContext->Run(timeDelta) != 0)\n+        {\n+            delete activeContext;\n+            if (node->next != NULL)\n+                node->next->previous = node->previous;\n+            if (node->previous != NULL)\n+                node->previous->next = node->next;\n+            node->next = NULL;\n+            node->previous = NULL;\n+            delete node;\n+        }\n+        node = next;\n+    }\n+    activeContext = &embeddedContext;\n+    return 0;\n+}\n+\n+\n+struct EnemyFullObjectView;\n+\n+// Enemy.cpp keeps its target-specific full-object view separate from this\n+// generic VM layer. Both views share the target-proven EclVmHost prefix.\n+int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n+{\n+    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n+}\n+\n+\n+void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n+{\n+    EclVmContext *context = new EclVmContext;\n+    EclVmThreadNode *node = new EclVmThreadNode;\n+\n+    context->threadId = threadId;\n+    context->host = this;\n+    context->currentTime = 0.0f;\n+    context->instruction = NULL;\n+    context->difficultyMask = activeContext->difficultyMask;\n+\n+    EclVmThreadNode *const list = &threadList;\n+    node->context = context;\n+    node->next = NULL;\n+    node->previous = NULL;\n+    if (list->next != NULL)\n+    {\n+        node->next = list->next;\n+        list->next->previous = node;\n+    }\n+    list->next = node;\n+    node->previous = list;\n+\n+    context->StartSubroutine(activeContext, firstArgument);\n+}\n+\n+EclVmThreadNode *EclVmHost::FindThread(int threadId)\n+{\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        if (node->context->threadId == threadId)\n+            return node;\n+        node = node->next;\n+    }\n+    return NULL;\n+}\n+\n+void EclVmHost::StopAllThreads()\n+{\n+    EclVmThreadNode *node = threadList.next;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        node->context->instruction = NULL;\n+        node = next;\n+    }\n+}\n+\n+\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "071e682a993b7e4f82e9ab19d2079c27",
+        "pdb_age": 1,
+        "candidate_address": "0x00406B60",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/named-math-destinations/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/named-math-destinations"
+      }
+    },
+    {
+      "label": "g6-profile",
+      "kind": "source/profile control",
+      "image_sha256": "7f7f08b312beee4dfaf160213d406cad7d7f47fb35e911163469f39a9d995e13",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "4f5e445c5cbcb36b77c04c9f5f3acc265c97f3b1c59df955dd8264bab0a73ab4",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/g6-profile/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "4a34feb8b2d3cfdd5e034064ceca87db611f6b44de4d6e50297c2cc8db7b8da3",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -597,98 +597,6 @@\n }\n \n \n-int EclVmHost::Run(float timeDelta)\n-{\n-    int first = 1;\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        activeContext = node->context;\n-        if (first)\n-        {\n-            if (activeContext->Run(timeDelta) != 0)\n-                return -1;\n-            first = false;\n-        }\n-        else if (activeContext->Run(timeDelta) != 0)\n-        {\n-            delete activeContext;\n-            if (node->next != NULL)\n-                node->next->previous = node->previous;\n-            if (node->previous != NULL)\n-                node->previous->next = node->next;\n-            node->next = NULL;\n-            node->previous = NULL;\n-            delete node;\n-        }\n-        node = next;\n-    }\n-    activeContext = &embeddedContext;\n-    return 0;\n-}\n-\n-\n-struct EnemyFullObjectView;\n-\n-// Enemy.cpp keeps its target-specific full-object view separate from this\n-// generic VM layer. Both views share the target-proven EclVmHost prefix.\n-int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n-{\n-    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n-}\n-\n-\n-void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n-{\n-    EclVmContext *context = new EclVmContext;\n-    EclVmThreadNode *node = new EclVmThreadNode;\n-\n-    context->threadId = threadId;\n-    context->host = this;\n-    context->currentTime = 0.0f;\n-    context->instruction = NULL;\n-    context->difficultyMask = activeContext->difficultyMask;\n-\n-    EclVmThreadNode *const list = &threadList;\n-    node->context = context;\n-    node->next = NULL;\n-    node->previous = NULL;\n-    if (list->next != NULL)\n-    {\n-        node->next = list->next;\n-        list->next->previous = node;\n-    }\n-    list->next = node;\n-    node->previous = list;\n-\n-    context->StartSubroutine(activeContext, firstArgument);\n-}\n-\n-EclVmThreadNode *EclVmHost::FindThread(int threadId)\n-{\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        if (node->context->threadId == threadId)\n-            return node;\n-        node = node->next;\n-    }\n-    return NULL;\n-}\n-\n-void EclVmHost::StopAllThreads()\n-{\n-    EclVmThreadNode *node = threadList.next;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        node->context->instruction = NULL;\n-        node = next;\n-    }\n-}\n-\n-\n // Model the disabled variadic trace suggested by FORMAT's unused text copy.\n // Argument evaluation remains observable; the original trace definition is unknown.\n static void EclDebugTrace(const char *format, ...)\n@@ -1228,3 +1136,97 @@\n     currentTime += timeDelta;\n     return 0;\n }\n+\n+\n+int EclVmHost::Run(float timeDelta)\n+{\n+    int first = 1;\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        activeContext = node->context;\n+        if (first)\n+        {\n+            if (activeContext->Run(timeDelta) != 0)\n+                return -1;\n+            first = false;\n+        }\n+        else if (activeContext->Run(timeDelta) != 0)\n+        {\n+            delete activeContext;\n+            if (node->next != NULL)\n+                node->next->previous = node->previous;\n+            if (node->previous != NULL)\n+                node->previous->next = node->next;\n+            node->next = NULL;\n+            node->previous = NULL;\n+            delete node;\n+        }\n+        node = next;\n+    }\n+    activeContext = &embeddedContext;\n+    return 0;\n+}\n+\n+\n+struct EnemyFullObjectView;\n+\n+// Enemy.cpp keeps its target-specific full-object view separate from this\n+// generic VM layer. Both views share the target-proven EclVmHost prefix.\n+int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n+{\n+    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n+}\n+\n+\n+void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n+{\n+    EclVmContext *context = new EclVmContext;\n+    EclVmThreadNode *node = new EclVmThreadNode;\n+\n+    context->threadId = threadId;\n+    context->host = this;\n+    context->currentTime = 0.0f;\n+    context->instruction = NULL;\n+    context->difficultyMask = activeContext->difficultyMask;\n+\n+    EclVmThreadNode *const list = &threadList;\n+    node->context = context;\n+    node->next = NULL;\n+    node->previous = NULL;\n+    if (list->next != NULL)\n+    {\n+        node->next = list->next;\n+        list->next->previous = node;\n+    }\n+    list->next = node;\n+    node->previous = list;\n+\n+    context->StartSubroutine(activeContext, firstArgument);\n+}\n+\n+EclVmThreadNode *EclVmHost::FindThread(int threadId)\n+{\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        if (node->context->threadId == threadId)\n+            return node;\n+        node = node->next;\n+    }\n+    return NULL;\n+}\n+\n+void EclVmHost::StopAllThreads()\n+{\n+    EclVmThreadNode *node = threadList.next;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        node->context->instruction = NULL;\n+        node = next;\n+    }\n+}\n+\n+\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "be73288c69d05946a6d88ec530d33642",
+        "pdb_age": 1,
+        "candidate_address": "0x00406B60",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/g6-profile/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/g6-profile/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/G6"
+          ]
+        },
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/g6-profile"
+      }
+    },
+    {
+      "label": "no-gs-profile",
+      "kind": "source/profile control",
+      "image_sha256": "23b73c55e85e30dc4e28c82b1b24ed660e083268bd2c6933349b390d07c8138e",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "source_sha256": "4f5e445c5cbcb36b77c04c9f5f3acc265c97f3b1c59df955dd8264bab0a73ab4",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "full_cold": false,
+        "reused_baseline_object_and_anchor_names": [
+          "source.ltcg.obj",
+          "support-01-AnmManager.ltcg.obj",
+          "support-02-AnmVmCreate.ltcg.obj",
+          "support-03-EnemyLaser.ltcg.obj",
+          "support-04-Enemy.ltcg.obj",
+          "support-05-AnmVmId.ltcg.obj",
+          "support-06-RandomMath.ltcg.obj",
+          "support-07-AnmInt3Scale.ltcg.obj",
+          "support-08-ItemManager.ltcg.obj",
+          "link-anchors.obj",
+          "link-aliases.rsp"
+        ],
+        "hash_reference": "baseline_native_artifact_sha256"
+      },
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "historical_route": {
+        "source": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/no-gs-profile/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "d4ca2b9f37b72d4c1f96dc27a582e09f7229df289f5f74238cd63ca35b089195",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "historical_route_bytewise_verified": true,
+      "source_patch_from_baseline": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -597,98 +597,6 @@\n }\n \n \n-int EclVmHost::Run(float timeDelta)\n-{\n-    int first = 1;\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        activeContext = node->context;\n-        if (first)\n-        {\n-            if (activeContext->Run(timeDelta) != 0)\n-                return -1;\n-            first = false;\n-        }\n-        else if (activeContext->Run(timeDelta) != 0)\n-        {\n-            delete activeContext;\n-            if (node->next != NULL)\n-                node->next->previous = node->previous;\n-            if (node->previous != NULL)\n-                node->previous->next = node->next;\n-            node->next = NULL;\n-            node->previous = NULL;\n-            delete node;\n-        }\n-        node = next;\n-    }\n-    activeContext = &embeddedContext;\n-    return 0;\n-}\n-\n-\n-struct EnemyFullObjectView;\n-\n-// Enemy.cpp keeps its target-specific full-object view separate from this\n-// generic VM layer. Both views share the target-proven EclVmHost prefix.\n-int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n-{\n-    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n-}\n-\n-\n-void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n-{\n-    EclVmContext *context = new EclVmContext;\n-    EclVmThreadNode *node = new EclVmThreadNode;\n-\n-    context->threadId = threadId;\n-    context->host = this;\n-    context->currentTime = 0.0f;\n-    context->instruction = NULL;\n-    context->difficultyMask = activeContext->difficultyMask;\n-\n-    EclVmThreadNode *const list = &threadList;\n-    node->context = context;\n-    node->next = NULL;\n-    node->previous = NULL;\n-    if (list->next != NULL)\n-    {\n-        node->next = list->next;\n-        list->next->previous = node;\n-    }\n-    list->next = node;\n-    node->previous = list;\n-\n-    context->StartSubroutine(activeContext, firstArgument);\n-}\n-\n-EclVmThreadNode *EclVmHost::FindThread(int threadId)\n-{\n-    EclVmThreadNode *node = &threadList;\n-    while (node != NULL)\n-    {\n-        if (node->context->threadId == threadId)\n-            return node;\n-        node = node->next;\n-    }\n-    return NULL;\n-}\n-\n-void EclVmHost::StopAllThreads()\n-{\n-    EclVmThreadNode *node = threadList.next;\n-    while (node != NULL)\n-    {\n-        EclVmThreadNode *next = node->next;\n-        node->context->instruction = NULL;\n-        node = next;\n-    }\n-}\n-\n-\n // Model the disabled variadic trace suggested by FORMAT's unused text copy.\n // Argument evaluation remains observable; the original trace definition is unknown.\n static void EclDebugTrace(const char *format, ...)\n@@ -1228,3 +1136,97 @@\n     currentTime += timeDelta;\n     return 0;\n }\n+\n+\n+int EclVmHost::Run(float timeDelta)\n+{\n+    int first = 1;\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        activeContext = node->context;\n+        if (first)\n+        {\n+            if (activeContext->Run(timeDelta) != 0)\n+                return -1;\n+            first = false;\n+        }\n+        else if (activeContext->Run(timeDelta) != 0)\n+        {\n+            delete activeContext;\n+            if (node->next != NULL)\n+                node->next->previous = node->previous;\n+            if (node->previous != NULL)\n+                node->previous->next = node->next;\n+            node->next = NULL;\n+            node->previous = NULL;\n+            delete node;\n+        }\n+        node = next;\n+    }\n+    activeContext = &embeddedContext;\n+    return 0;\n+}\n+\n+\n+struct EnemyFullObjectView;\n+\n+// Enemy.cpp keeps its target-specific full-object view separate from this\n+// generic VM layer. Both views share the target-proven EclVmHost prefix.\n+int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)\n+{\n+    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);\n+}\n+\n+\n+void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)\n+{\n+    EclVmContext *context = new EclVmContext;\n+    EclVmThreadNode *node = new EclVmThreadNode;\n+\n+    context->threadId = threadId;\n+    context->host = this;\n+    context->currentTime = 0.0f;\n+    context->instruction = NULL;\n+    context->difficultyMask = activeContext->difficultyMask;\n+\n+    EclVmThreadNode *const list = &threadList;\n+    node->context = context;\n+    node->next = NULL;\n+    node->previous = NULL;\n+    if (list->next != NULL)\n+    {\n+        node->next = list->next;\n+        list->next->previous = node;\n+    }\n+    list->next = node;\n+    node->previous = list;\n+\n+    context->StartSubroutine(activeContext, firstArgument);\n+}\n+\n+EclVmThreadNode *EclVmHost::FindThread(int threadId)\n+{\n+    EclVmThreadNode *node = &threadList;\n+    while (node != NULL)\n+    {\n+        if (node->context->threadId == threadId)\n+            return node;\n+        node = node->next;\n+    }\n+    return NULL;\n+}\n+\n+void EclVmHost::StopAllThreads()\n+{\n+    EclVmThreadNode *node = threadList.next;\n+    while (node != NULL)\n+    {\n+        EclVmThreadNode *next = node->next;\n+        node->context->instruction = NULL;\n+        node = next;\n+    }\n+}\n+\n+\n",
+      "PDB_bound_observation": {
+        "pdb_guid": "b106a1c901ac8d44af5922aee93f6d16",
+        "pdb_age": 1,
+        "candidate_address": "0x00406B60",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/no-gs-profile/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/no-gs-profile/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS-"
+          ]
+        },
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/no-gs-profile"
+      }
+    },
+    {
+      "label": "ecl-last",
+      "kind": "link-only control",
+      "image_sha256": "ee7b610eb8e5894a284886b63ade6ab2162631074db45a2bfb5b2588a7822f32",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "PDB_bound_observation": {
+        "pdb_guid": "08b2572bdfcff24f8ff419e646260ba2",
+        "pdb_age": 1,
+        "candidate_address": "0x004178C0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 5
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/EclVm.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/ecl-last"
+      },
+      "link_input_source_order": [
+        "src/EnemyEclDispatcher.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp",
+        "src/EclVm.cpp"
+      ],
+      "reused_object_hash_reference": "baseline_native_artifact_sha256"
+    },
+    {
+      "label": "reverse-supports",
+      "kind": "link-only control",
+      "image_sha256": "3201a353830ccb8ada31f1451875bd7fa27ce9f7074fa6fbebaf0c12debe3d6d",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "PDB_bound_observation": {
+        "pdb_guid": "a3214c801c4e0240a69f24b50c6902ed",
+        "pdb_age": 1,
+        "candidate_address": "0x004178C0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 5
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "support_sources": [
+          "src/ItemManager.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmVmId.cpp",
+          "src/Enemy.cpp",
+          "src/EnemyLaser.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmManager.cpp",
+          "src/EclVm.cpp"
+        ],
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/reverse-supports"
+      },
+      "link_input_source_order": [
+        "src/EnemyEclDispatcher.cpp",
+        "src/ItemManager.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmId.cpp",
+        "src/Enemy.cpp",
+        "src/EnemyLaser.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmManager.cpp",
+        "src/EclVm.cpp"
+      ],
+      "reused_object_hash_reference": "baseline_native_artifact_sha256"
+    },
+    {
+      "label": "runtime-entry",
+      "kind": "link-only control",
+      "image_sha256": "ae993a3e8a9f483608bd501679fc99818b333bb124cbff190ac492951ea0c380",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "selected_same_image_guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true,
+        "actual_reports_independently_checked": true
+      },
+      "PDB_bound_observation": {
+        "pdb_guid": "a06e57bafb73414f9c325e28894b4e96",
+        "pdb_age": 1,
+        "candidate_address": "0x00406D10",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/runtime-entry"
+      },
+      "link_input_source_order": [
+        "src/EnemyEclDispatcher.cpp",
+        "src/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "reused_object_hash_reference": "baseline_native_artifact_sha256"
+    },
+    {
+      "label": "host-entry",
+      "kind": "link-only control",
+      "image_sha256": "acbafc8bfb60cbf792d9504587330103843c087d343642a56df5be0ac2ff16b7",
+      "Run_bytes": 7020,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_fields": 62,
+      "target_binding_signature_sha256": "6b58c859a154acd4cfd676236072da48f98fdfba0ca48745f8a7d12faf41ef3e",
+      "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "callee171_exact": true,
+      "generic_decoded_bytes": 7019,
+      "explicit_data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "full_cold": false,
+      "adopted": false,
+      "selected_same_image_guards": {
+        "state": "rejected",
+        "unit": "ecl-vm-host-run",
+        "candidate_size": 151,
+        "target_size": 146,
+        "scope": "link and Run diagnosis completed; selected whole-guard batch stopped at this extent rejection; no nine-guard pass claim"
+      },
+      "PDB_bound_observation": {
+        "pdb_guid": "608ed1c4b6df0041873b37c282a7b080",
+        "pdb_age": 1,
+        "candidate_address": "0x00406D10",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2
+      },
+      "context_base": "baseline_compilation_context",
+      "context_overrides": {
+        "entry_symbol": "?Run@EclVmHost@@QAEHM@Z",
+        "output_dir": "build/gpt-6.1-sol/ecl-run-register-pressure-20261022/host-entry"
+      }
+    }
+  ],
+  "guard_template_revalidation": {
+    "guard_manifest": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/canonical-guards.toml",
+    "guard_manifest_sha256": "6008ad283a3cf76ae12897c23da4bbd73de8286fd7394ab6fb496bec4bed9571",
+    "canonical_manifest_sha256": "c3ad555b73b3e4929765f93eda42b6288f98d8b45054b4d7a204a8a5557f659a",
+    "current_canonical_template_equivalence": {
+      "ecl-vm-read-float": "ecl-vm-read-float",
+      "ecl-vm-read-int": "ecl-vm-read-int",
+      "ecl-vm-read-int-value": "ecl-vm-read-int-value",
+      "ecl-vm-read-float-value": "ecl-vm-read-float-value",
+      "ecl-vm-resolve-int": "ecl-vm-resolve-int",
+      "ecl-vm-resolve-float": "ecl-vm-resolve-float",
+      "ecl-vm-host-run": "ecl-vm-host-run",
+      "ecl-vm-stack-push": "ecl-vm-stack-push",
+      "ecl-vm-stack-pop": "ecl-vm-stack-pop"
+    },
+    "checked_scope": "All non-context semantic descriptors identical; no acceptance/binding rule inferred from historical notes."
+  },
+  "profile_capability": {
+    "compiler_sha256": "333254d73ee602f6ec14b00e9bf40f533a1b181429943e3634971642af00c9f7",
+    "help_returncode": 0,
+    "help_sha256": "5f09aad19ab0117c39c0406ffe69448511ac5b927e7574438dc5acbcb77a8392",
+    "advertised_switch_lines": [
+      "/G6 optimize for PPro, P-II, P-III       /GX[-] enable C++ EH (same as /EHsc)",
+      "/G7 optimize for Pentium 4 or Athlon     /EHs enable C++ EH (no SEH exceptions)",
+      "/GB optimize for blended model (default) /EHa enable C++ EH (w/ SEH exceptions)",
+      "/Gd __cdecl calling convention           /EHc extern \"C\" defaults to nothrow",
+      "/GS enable security checks               /RTCu Uninitialized local usage checks"
+    ],
+    "scope": "Pinned compiler help advertises the selected /G7 option; recorded candidate profile explicitly retains /GL."
+  },
+  "native_source_routing_validation": [
+    {
+      "case": "native-api-baseline",
+      "returncode": 1,
+      "size": 7020,
+      "matched_bytes": 6993,
+      "fields": 189,
+      "locals": 62,
+      "callee171_exact": true,
+      "normalized_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "observed_source": {
+        "path": "src/EclVm.cpp",
+        "sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+        "scope": "Input observed during diagnosis; artifact/source correspondence is not asserted."
+      }
+    },
+    {
+      "case": "native-api-private",
+      "returncode": 1,
+      "size": 7020,
+      "matched_bytes": 6993,
+      "fields": 189,
+      "locals": 62,
+      "callee171_exact": true,
+      "normalized_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "observed_source": {
+        "path": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/reference-cursor/EclVm.cpp",
+        "sha256": "4f5e445c5cbcb36b77c04c9f5f3acc265c97f3b1c59df955dd8264bab0a73ab4",
+        "scope": "Input observed during diagnosis; artifact/source correspondence is not asserted."
+      }
+    },
+    {
+      "case": "native-api-missing-selector",
+      "returncode": 2,
+      "error": "context must compile the selected ECL source exactly once"
+    }
+  ],
+  "routing_change": {
+    "explicit_option": "--ecl-source",
+    "scope": "one existing repository-local source, compiled exactly once by the chosen context; PDB owner selector and observed source fingerprint only",
+    "original_byte_field_callee_table_selector_rules_unchanged": true,
+    "observed_source_is_not_artifact_provenance": true
+  },
+  "unchanged_progress": {
+    "authored_exact_functions": 401,
+    "authored_exact_bytes": 73225,
+    "overall_exact_functions": 1242,
+    "overall_exact_bytes": 139735,
+    "authored_functions": 734,
+    "authored_bytes": 273579,
+    "authored_source_functions": 610,
+    "source_nonexact": 209,
+    "source_absent": 124,
+    "unknown_origins": 524
+  },
+  "limitations": [
+    "No original source spelling, variable lifetime, type, class, physical TU or production profile identification",
+    "Tested neutral forms do not exclude other source/compiler contexts",
+    "No full cold in this campaign; ten-TU baseline source/artifact pins are freshly equal to the earlier complete cold",
+    "Only nine selected whole ECL guards; no broad all-unit replay",
+    "Host-entry result is rejected by its changed HostRun extent",
+    "No Windows product/runtime, semantic reconstruction or port closure"
+  ],
+  "baseline_compilation_context": {
+    "artifact_kind": "linked-pe",
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/ItemManager.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+    "output_dir": "build/match-linked/EnemyItemDrops",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "baseline_observation": {
+    "size": 7020,
+    "matched_bytes": 6993,
+    "compared_size": 7020,
+    "matched_compared_bytes": 6993,
+    "image": "build/match-linked/EnemyItemDrops/source.exe",
+    "image_sha256": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "pdb_guid": "27891decc5b4d446a55a8e763a79d86a",
+    "pdb_age": 1,
+    "candidate_address": "0x00406D00",
+    "extent_source": "pdb-section-contribution",
+    "decoded_bytes": 7019,
+    "normalization_complete": false,
+    "data_spans": [
+      {
+        "offset": 7019,
+        "width": 1
+      }
+    ],
+    "first_differences": [
+      {
+        "offset": "0xEC",
+        "linked": 124,
+        "target": 84
+      },
+      {
+        "offset": "0xF1",
+        "linked": 87,
+        "target": 82
+      },
+      {
+        "offset": "0x12A",
+        "linked": 16,
+        "target": 0
+      },
+      {
+        "offset": "0x12C",
+        "linked": 106,
+        "target": 104
+      },
+      {
+        "offset": "0x146E",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x14D7",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x151D",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x168A",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x1710",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x181B",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x182B",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1838",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x183C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1840",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1844",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1899",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18B6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18E6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18F8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x191C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1932",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1957",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x199E",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19A8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19BA",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x19E6",
+        "linked": 3,
+        "target": 19
+      },
+      {
+        "offset": "0x19E8",
+        "linked": 0,
+        "target": 2
+      }
+    ],
+    "capstone_version": "5.0.6",
+    "bound_fields": 189,
+    "local_fields": 62,
+    "complete_callee_guard": {
+      "size": 171,
+      "matched_bytes": 171,
+      "bound_fields": 4,
+      "pdb_guid": "27891decc5b4d446a55a8e763a79d86a",
+      "source": "same-image ReadFloatValue"
+    },
+    "complete_target_replayed_Run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+    "full_diagnostic_location": ".analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/baseline-run.json"
+  },
+  "evidence_format_scope": "Curated observations, transformations and input fingerprints. Full generated diagnostics and logs stay below .analysis; no exact ledger credit."
+}

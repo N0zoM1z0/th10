@@ -1,9 +1,10 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Current
-batch additionally closes both Chain insertion owners: **131 bytes each, seven
-fields each, two independent actual-source colds**. New credit is two authored
-functions/262 bytes; product/runtime remains open.
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. This
+batch freshly diagnoses ECL Run and sixteen source/profile/order/entry controls:
+all retain **7020/6993 bytes,27 ordinary differences**. No new exact credit or
+game-source changes. The maintained diagnostic now routes private ECL inputs
+through explicit `--ecl-source`, with unchanged byte/field/callee/data checks.
 
 ## Resume safely
 
@@ -68,46 +69,59 @@ g_Chain alias and production data owner remain open.
 
 ## Current validation and recovery
 
-Two independent full14-TU actual-source colds pass the insertion pair262/all14
-fields. First cold also freshly preserves both runners576/all44: four units838
-bytes. Its complete output is snapshotted and hashed before the second cold.
-Second cold recompiles all14 TUs for the two new owners. No other old helper or
-large-owner replay is claimed for this batch. Canonical new units share the
-existing ScriptViewerLifecycle-cold-2 output and preserve all `/GL` profiles and
-support overrides. No original production flags or TU partition is inferred.
+The [ECL layout packet](evidence/ecl-run-layout-controls/README.md) revalidates the
+entire ten-TU enemy-drop-item-counts recipe,32 source/header and15 native pins
+against the previous actual cold. All107 maintained native source/header files
+remain byte-identical. No new full cold is performed. Fresh local readOnly/
+noanalysis Ghidra reviews12 residual spans and HostRun callers with all412289
+mapped bytes unchanged before/after; transaction rollback/maxcpu1/heap768 MiB.
 
-The private one-object/13-cache member model passes262/14. Old scalar bodies are
-already131 bytes but fail exhaustive field positions: target counter25h/31h,
-candidate29h/3Bh. These controls are not full colds. Earlier dispatcher wrapper/
-header-only/member/order trials and the signed-symbol link failure retain their
-historical source scope; do not rerun old producers that restore source or use
-historical pins.
+Complete Run is7020/6993 with189 bound fields/62 local destinations and the
+complete171-byte ReadFloatValue exact. Its27 differences are4 thread-register,
+5 commuted-addressing,16 stack-home and2 common-latch register bytes. All60
+jump words and88 selectors are checked. Generic decoding7019 plus the explicit
+one-byte selector suffix is complete coverage despite the generic flag.
 
-Fresh host1375 ASan/UBSan assertions, eight strict faulty-code controls and19 EOL
-checks pass. The two existing supervisor-to-host storage projections now require
-12 occurrences each, from8. Only the active Chain.cpp LF pin changes; six other
-dependencies and CRLF-to-LF-only rejection remain unchanged. Host roles do not
-prove native layout, Windows concurrency, renderer or game runtime.
+Sixteen actual controls retain the same entire target-replayed Run hash
+830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472.
+These cover wider scopes, scalar scratch sharing, named math destinations,
+Run-definition order, cursor reference, EHs/G6/G7/GS-off profiles(retaining GL),
+support order and real/external entries. Twelve compile only ECL/reuse9 verified
+objects; four link all10 reused objects. Fifteen pass nine selected whole ECL
+same-image guards1137/all18. HostRun as external entry produces151 versus146
+and that guard batch is rejected; no full nine-guard success is claimed for it.
+All tested neutral forms remain candidates, with no original-source/type/flag/
+TU/ownership inference. The earlier11 thread controls also remain historical.
 
-All1240 preexisting canonical unit definitions and existing
-[large32-input/15-artifact pins](evidence/chain-source-closure/native-summary.json)
-are freshly checked unchanged. Whole canonical manifest fingerprints change only
-by adding two units and are historical outside their recorded source snapshots.
-Chain.cpp is outside the large graph; Main.hpp is unchanged. No new large cold,
-35-guard replay or Run measurement is claimed. Current insertion colds supersede
-the earlier runner proof's shared second carrier; its first snapshot and receipts
-remain historical, with current runners freshly preserved in first insertion cold.
+The maintained diagnostic now selects one explicit existing repository-local
+ECL input compiled exactly once by the chosen context. Default src/EclVm.cpp
+behavior remains. Its stable observed source hash is not producer attestation.
+Canonical bindings, complete callee,189/62 and all data rules remain unchanged.
+Actual default/private CLI comparisons retain the complete27 differences; a
+private context without the selector is rejected. Three valid/eight invalid
+source selections and16 existing table/selector controls pass. Historical
+private copies are bytewise proven to alter only two source paths and ROOT;
+new work uses the maintained option. Old producers froze pre-routing inputs:
+do not blindly rerun them or restore historical source.
 
-All108 fresh full CI groups pass with all368 frozen source/test/config inputs
-unchanged. Classified cleanup removes14120146 logical file bytes from eight
-owned reproducible trees and one duplicate disassembly. Both actual cold
-carriers, compact facts and the baseline negative remain. Independent D3D work
-and provider/legacy state are preserved. Results:
-[validation](evidence/chain-insertion-native/validation-summary.json).
-Private recovery: `.analysis/gpt-6.1-sol/chain-insertion-codegen-20261022/RECOVERY.md`
-and manifest.json. Retain current first-cold snapshot and second canonical carrier,
-compact source model/negative inventory reports and producers. The previous batch
-already removed20,432,288 logical file bytes and preserved independent D3D work.
+The previous Chain insertion batch independently passed two actual14-TU colds:
+new262/all14 fields plus first-cold current runners576/all44, four units838.
+Its retained carriers and compact proofs keep their source/context scope. Current
+game source, headers, canonical recipes and exact counts are unchanged, so no
+new Chain cold, host1375/eight controls/19 EOL replay or large35-guard replay is
+claimed in this ECL batch. Full CI below includes those host checks.
+
+All109 full CI groups pass with all369 frozen source/test/config inputs unchanged.
+Classified cleanup removes27654818 logical file bytes across29 owned
+trees and95 superseded files. The canonical baseline, one private API
+positive and one actual HostRun extent failure remain. Results:
+[validation](evidence/ecl-run-layout-controls/validation-summary.json).
+Private recovery: `.analysis/gpt-6.1-sol/ecl-run-register-pressure-20261022/RECOVERY.md`
+and manifest.json. Keep the unchanged canonical ten-TU baseline, one private
+reference-cursor source/API carrier and the HostRun151/146 extent failure;
+retain compact source transformations and reports. Remove duplicate neutral
+outputs and superseded private diagnostic copies after preserving facts.
+Nine independent D3D files and provider/legacy unknown state remain untouched.
 
 Global boundary metadata drift remains open:1116 rows,49 state and107 confidence
 differences, zero geometry differences. First failure401100 provenance. Unowned
@@ -121,12 +135,12 @@ indirect tables16. Ordinary tracking/CI does not waive this separate gate.
 |ECL44E1A0 /7020|7020/6993,27 differences;189 fields/62 locals;171-byte float callee exact|Thread argument, SIB, homes and latch|
 |Enemy40E770 /14416|14352 bytes; frame2C4;181 selectors/108 groups;42 target-sized groups; aggregate gap566|Laser ABI, shared tails and packet/register/stack lifetime|
 
-The Chain insertion route is now closed in the declared context. A next bounded
-route can resume ECL Run's thread argument/home/latch controls against the pinned
-ten-TU context. Its strict60-table-word/88-selector coverage remains required despite
-the generic normalization flag at the final selector byte. Older two-TU26 is
-historical. Do not transfer exactness across functions or infer original layouts,
-class/TU/profile, signedness or storage ownership from matching neighbors.
+The current ECL scope/storage/order/profile family is a measured plateau, not
+proof that Run is exhausted. Rotate the next bounded experiment to ANM child
+case91 or common-tail2, using the retained target-bound32/15 inputs and strict
+local destinations. Keep ECL27 open; do not repeat these16 neutral forms or
+substitute the old two-TU26 result. Original data owners, source types, names,
+physical TU and production flags remain unknown despite close output.
 
 Whole Windows i386 product/runtime closure is open: globals, static init,
 resources, libraries, link order and exercised paths still need audit. Semantic

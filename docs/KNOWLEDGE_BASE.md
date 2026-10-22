@@ -4838,3 +4838,31 @@ Chain.cpp LF pin changes. All1240 prior unit dictionaries and large32/15 pins
 remain unchanged; whole manifest hashes and older shared-carrier receipts retain
 their historical scope. No new large-owner replay, global-storage/alias closure,
 native Windows runtime, semantic reconstruction or portability claim follows.
+
+## 2026-10-22 ECL Run layout controls and private source routing
+
+The [layout packet](evidence/ecl-run-layout-controls/README.md) freshly verifies the
+ten-TU recipe,32 source/header and15 native pins and all107 maintained native
+inputs unchanged. Direct read-only Ghidra attests all412289 mapped bytes and12
+residual spans. Full Run remains7020/6993 with189 fields/62 locals and the exact
+171-byte ReadFloatValue callee; the27 differences are4 thread registers,5 SIB
+orientations,16 stack homes and2 latch registers. All60 words/88 selectors remain
+checked, including the annotated final selector byte.
+
+Sixteen executed scope/storage/definition-order/profile/link controls reproduce
+the same entire target-replayed Run hash830db1c...a472. Fifteen pass nine selected
+whole same-image guards1137/all18. Making HostRun external still leaves Run
+unchanged but produces151 versus146 bytes for HostRun, so that guard batch is
+rejected. Source/profile models compile one ECL object/reuse9; link models reuse
+all10. None is a full cold. Neutral results do not identify or exclude original
+source spellings, flags, TU partition, lifetimes or ownership in other contexts.
+
+`diagnose-ecl-run-native.py --ecl-source PATH` now routes an explicit existing
+repository-local input present exactly once in the selected context. It binds
+the actual PDB source and observes a stable source hash, without asserting that
+the image was built from it. Canonical target bindings and all comparison rules
+remain unchanged. Actual baseline/private CLI comparisons retain the full27
+differences; omitted private selection is rejected. Three valid/eight invalid
+source routes and16 table/selector controls pass. Historical adapters are proven
+to change only two source paths and ROOT discovery; new trials use the maintained
+tool. No game source or exact credit changes: authored401/73225, overall1242/139735.

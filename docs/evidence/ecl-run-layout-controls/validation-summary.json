@@ -1,0 +1,51 @@
+{
+  "controls": {
+    "complete_Run_comparisons": 16,
+    "same_complete_Run_body": 16,
+    "fully_guarded_neutral_models": 15,
+    "models_rejected_by_HostRun_extent": 1,
+    "guarded_models_each": {
+      "selected_complete_functions": 9,
+      "bytes": 1137,
+      "fields": 18
+    },
+    "new_exact_credit": 0,
+    "full_colds": 0
+  },
+  "source_selection": {
+    "valid_routes": 3,
+    "rejection_guards": 8,
+    "existing_table_coverage_controls": 16,
+    "actual_native_cli_expected_returns": [
+      1,
+      1,
+      2
+    ],
+    "default_and_private_ordinary_differences": 27,
+    "fields": 189,
+    "local_fields": 62,
+    "complete_callee171_exact": true
+  },
+  "full_ci": {
+    "state": "passed",
+    "groups": 109,
+    "returncode": 0,
+    "frozen_source_test_config_paths": 369,
+    "all_frozen_inputs_unchanged": true,
+    "log_sha256": "575160b68e259a3bdfad672affa1cb6d22c23546adc9b3d343ac026d0dabde4e"
+  },
+  "cleanup": {
+    "state": "complete",
+    "removed_logical_file_bytes": 27654818,
+    "removed_trees": 29,
+    "removed_files": 95,
+    "retained": [
+      "unchanged canonical ten-TU baseline and its15 artifact pins",
+      "reference-cursor source/context/native carrier for maintained private-source API",
+      "HostRun entry151/146 extent rejection with its actual native carrier",
+      "compact source transformations, fingerprints, baseline/selected reports and read-only Ghidra residual observations"
+    ],
+    "independent_D3D_files_preserved": 9,
+    "provider_and_legacy_unknown_state": "untouched"
+  }
+}

@@ -128,6 +128,15 @@ Artifact producer/source pins are separate evidence: the command does not
 assert that an existing image was built from the supplied context or current
 source. See the [real scale support proof](evidence/enemy-real-scale-support/README.md).
 
+For an isolated private ECL input, `--ecl-source PATH` selects its PDB source
+owner explicitly. The file must exist inside the repository and occur exactly
+once among the context's primary/support inputs; the default remains
+`src/EclVm.cpp`. The selected source and both manifests must remain unchanged
+during diagnosis. The reported source hash is an observation, not proof that
+the artifact was built from that input. Target bindings, the full callee,
+189 fields/62 local destinations and table/selector coverage are unchanged.
+See [source routing and layout controls](evidence/ecl-run-layout-controls/README.md).
+
 A direct REL32 call to a static callee may explicitly declare both
 `static_source` and `static_size`. This opt-in derives the selected object from
 the unit's source/support list and uses the existing qualified MAP/PDB owner
