@@ -1,0 +1,754 @@
+{
+  "acceptance_authority": "none",
+  "cleanup_note": "Two superseded trials lose only 13 duplicate reused objects each; identical files remain in value-current-data-14. Every measured image/map/PDB and unique Player object remains.",
+  "date": "2026-10-23",
+  "exact_credit": 0,
+  "ghidra_review_sha256": "a541122209721d9b99403350ff1d14a264f234fa6adf984f491e4dfe429b2721",
+  "maintained_player_sha256": "af7338a601f565564900b7e1526fbb269636a8bf5d05bf44c6814a4c5a05df3f",
+  "maintained_source_changed": false,
+  "manifest_path": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/manifest.json",
+  "manifest_sha256": "52ad71368aa3664a6598f61a3847ffbf7a219d757fe40117a1ccc649e0bc1056",
+  "patches": {
+    "bound-services": {
+      "patch_sha256": "60c318c17b10ce3a30a79c026ba62c6138479333a5718bde8cd0a0eead204171",
+      "source_sha256": "c95ed2ef701079d94f2fcfb653ab818eec2591cfd6792c9f17c3d3700d03a004",
+      "state": "prepared-not-executed"
+    },
+    "typed-nodes": {
+      "patch_sha256": "1f687f667c587a26e38f15fd1a23230ace3f1a2333dc248ef9ae19df0afa283b",
+      "source_sha256": "8c9f0b218eca58c19386326ffeeda0ef26b4f9a2642610b7db9356d457d99c29",
+      "state": "measured-private-not-adopted"
+    },
+    "value-current-data": {
+      "patch_sha256": "9d3a7e308a8f1dca57b9fc7addb6d7894cc2f0cd2b61ce52362e974d8d5e63c7",
+      "source_sha256": "a32ce9e08f23447fa7f0ac2f06cad8f8db43c5fde6e7f377c43a553bee4411e3",
+      "state": "measured-private-not-adopted"
+    },
+    "value-extent-left": {
+      "patch_sha256": "138e1c6ff31b8a92a1679901888a1478b46d2f0d7a56422a56b73d812d6fdcff",
+      "source_sha256": "d392575751936157fb929e2e852c7736d3170f45d842fc24c02d532bdbe05eb8",
+      "state": "measured-private-not-adopted"
+    },
+    "value-pos-left": {
+      "patch_sha256": "58ce9a516e0de733c3aa2c810b5c4047571f7130cb2b3215561d5ad05edc6cc0",
+      "source_sha256": "4e686796088aceb7f64506f1f874f0faacc1cd71a3c295db77f3818625cf59b9",
+      "state": "prepared-not-executed"
+    }
+  },
+  "producer_path": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/probe.py",
+  "source_head": "040f1e8872b42fae2dd4055b0f1212123494424e",
+  "target_disassembly_sha256": "e8030df9e4274dcc82c33065e2d3a6178b4bbffea9bd9f750ec79cf3cc344aee",
+  "target_entry": "0x4247F0",
+  "target_owned_size": 1435,
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "trials": [
+    {
+      "artifacts": {
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/link-aliases.rsp": {
+          "bytes": 35803,
+          "sha256": "e5af1fda002a46edd5deca7ca551042f940714f6b710b8815e916998b4c7a442"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/link-anchors.c": {
+          "bytes": 23523,
+          "sha256": "a351990eb33e6c97fddc6a16a869982a2aa77e3edf6b1dcbfd62e20e2a6210a7"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/link-anchors.obj": {
+          "bytes": 21900,
+          "sha256": "c0b0ded8c77610827a2804b283741c0892c378a1673961e3e7161eb7c01a798d"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/link-attempt-1.log": {
+          "bytes": 67084,
+          "sha256": "e7c889c6d094dbc9269ad8d40eb60fcce70d2e469887681ff32bb56b56ffb2ee"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/link-attempt-2.log": {
+          "bytes": 1023,
+          "sha256": "f2523c8939dc66b60c004a4b5a298436cab7b7b0be18240bec8e5d28ffb2ee75"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/link-attempt-3.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/source.exe": {
+          "bytes": 167936,
+          "sha256": "6b3737f7fb05bb39a913a00bf8737735456b108ecdf39e5388441fb7c8b3a5a6"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/source.ltcg.obj": {
+          "bytes": 60924,
+          "sha256": "a26fa6b05b7699ba3f8bd6fddc681b5ba8d0edbea366b374b2acbeaf1fbb27c4"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/source.map": {
+          "bytes": 157953,
+          "sha256": "31f27b548a3ba4538c53d6cddb73aef5fcdb09cd874f049ef1da3865fd223361"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/source.pdb": {
+          "bytes": 175104,
+          "sha256": "b0ecec48babd64d6d5e2c5bfe375bbe5ff36c33d39fe3a42545e96f463e7fec7"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-00-AnmManager.ltcg.obj": {
+          "bytes": 247746,
+          "sha256": "eda326a290ea5164f0bb930061fbf997f7a9defcbab08d77a2c70c08a848c4e4"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-01-Chain.ltcg.obj": {
+          "bytes": 36912,
+          "sha256": "0a0b0a8c953275736a4824a280f37c5ed441ce713bbd5e9821b05a2abd30871c"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-02-FrontEnd.ltcg.obj": {
+          "bytes": 224381,
+          "sha256": "2dd4fe010bc8edb75ce0cea69363db988d9d242aac1e04dec6e7bf6c79f01e77"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-03-Player.ltcg.obj": {
+          "bytes": 99897,
+          "sha256": "e461fad1efe7ed009c58ee14c72275ddb874a8705432eb51ca5952d19aac9b42"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-04-Gui.ltcg.obj": {
+          "bytes": 125067,
+          "sha256": "8d85caf134d0e35d1cece03b96417bb0471c5b4e11b289da0226a1fa69f0fd2d"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-05-Enemy.ltcg.obj": {
+          "bytes": 97606,
+          "sha256": "2585e97b5f0056ae2e15a27623da467441e30521470e52ed7f2faa587bbba7d1"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-06-BulletLifecycle.ltcg.obj": {
+          "bytes": 13052,
+          "sha256": "756de6c67297b72d951f23a44102bce14b80a727cc084aa32ba6a9b308c32399"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-07-InputState.ltcg.obj": {
+          "bytes": 3530,
+          "sha256": "70bfca112e184af1c2a5df67a8cf13874debb0c2319a0a5874b819b0e8c32e8b"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-08-Main.ltcg.obj": {
+          "bytes": 94093,
+          "sha256": "71e5011201947131e3fae277ec368867461b4714bb73f1bf6972cd32dc6152a1"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-09-ScriptViewerWorker.ltcg.obj": {
+          "bytes": 28960,
+          "sha256": "df21578b8130a872a901b78d1c0be6f7608d0afcfdfd18b6a6e4178e897a4cb7"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-10-ScriptViewerLifecycle.ltcg.obj": {
+          "bytes": 44492,
+          "sha256": "92d196d65909c85b3acac0f40808c0ea67265b6b33c5ef8be813050903bec862"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-11-ItemManager.ltcg.obj": {
+          "bytes": 59411,
+          "sha256": "38d7b0b9dbc65e6d205b802f87a85258612014cf6e1318c1214687e57576e9d6"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-12-AnmVmId.ltcg.obj": {
+          "bytes": 13679,
+          "sha256": "5ab3053d74f6ad90b1856f110af195ee2d1d8aa6056c8a4818ab5011769d7c65"
+        }
+      },
+      "compiled": [
+        {
+          "object_sha256": "e461fad1efe7ed009c58ee14c72275ddb874a8705432eb51ca5952d19aac9b42",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes/Player.cpp",
+          "source_sha256": "8c9f0b218eca58c19386326ffeeda0ef26b4f9a2642610b7db9356d457d99c29"
+        }
+      ],
+      "entry_instructions": [
+        "mov eax, dword ptr [0x426530]",
+        "push ebp",
+        "xor ebp, ebp",
+        "cmp eax, ebp",
+        "mov eax, 0x42562c",
+        "jne 0x418c26",
+        "mov eax, 0x425620",
+        "mov edx, dword ptr [0x426594]"
+      ],
+      "guards": {
+        "bytes": 838,
+        "count": 4,
+        "exact": 4,
+        "fields": 58
+      },
+      "label": "typed-nodes",
+      "parent_owner": {
+        "address": "0x00418C10",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-03-Player.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-03-Player.ltcg.obj",
+        "pdb_module_index": 2,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-03-Player.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 97296,
+        "sha256": "0f666245d73dfde8f1b1053975bfa0e52c5e106f41f0c1a39624173a7d0fc4e4",
+        "size": 1116,
+        "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z"
+      },
+      "parent_raw_sha256": "0f666245d73dfde8f1b1053975bfa0e52c5e106f41f0c1a39624173a7d0fc4e4",
+      "producer_sha256": "1a849052b656c945a4c02c3f82b31cb42688b8a27a498bf09c8461397dcc1da0",
+      "real_callees": {
+        "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z": {
+          "calls": [
+            "0x418c81"
+          ],
+          "owner": {
+            "address": "0x0040D5D0",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-01-Chain.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-01-Chain.ltcg.obj",
+            "pdb_module_index": 14,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-01-Chain.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50640,
+            "sha256": "b039e27dea4b25a1d9d0bf4cf325a4c582168340303e18042449c681880d5b8f",
+            "size": 131,
+            "symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+          }
+        },
+        "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z": {
+          "calls": [
+            "0x418cac"
+          ],
+          "owner": {
+            "address": "0x0040D660",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-01-Chain.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-01-Chain.ltcg.obj",
+            "pdb_module_index": 14,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-01-Chain.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50784,
+            "sha256": "cb789f3cf37b8971de69cc61efdf45fa954c49c3ddac993ae0aafc98fa18cc48",
+            "size": 131,
+            "symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+          }
+        },
+        "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z": {
+          "calls": [
+            "0x418c62",
+            "0x418c8e"
+          ],
+          "owner": {
+            "address": "0x0040D580",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-01-Chain.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-01-Chain.ltcg.obj",
+            "pdb_module_index": 14,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-01-Chain.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50560,
+            "sha256": "58bbd66880260d0fb6601ac8c22cc8703771d166461e4a5751ca60c36433d548",
+            "size": 69,
+            "symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z"
+          }
+        },
+        "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z": {
+          "calls": [
+            "0x418cbd"
+          ],
+          "owner": {
+            "address": "0x004068D0",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-00-AnmManager.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-00-AnmManager.ltcg.obj",
+            "pdb_module_index": 6,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\typed-nodes-14\\support-00-AnmManager.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 22736,
+            "sha256": "182beeb029a46dcfcb8a1857ac04380444d18d43d2a398dd00f2790c8aaf9959",
+            "size": 200,
+            "symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z"
+          }
+        }
+      },
+      "report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+      "report_sha256": "bffe8226367bff9017f76f0d41d7ebc6e8b0f426924eab0b2232706d909045ad",
+      "reused_objects": 13,
+      "state": "measured-private-not-adopted",
+      "structural_compared": 1267,
+      "structural_matched": 143
+    },
+    {
+      "artifacts": {
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/link-aliases.rsp": {
+          "bytes": 35803,
+          "sha256": "e5af1fda002a46edd5deca7ca551042f940714f6b710b8815e916998b4c7a442"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/link-anchors.c": {
+          "bytes": 23523,
+          "sha256": "a351990eb33e6c97fddc6a16a869982a2aa77e3edf6b1dcbfd62e20e2a6210a7"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/link-anchors.obj": {
+          "bytes": 21924,
+          "sha256": "64fc7715579512d8f8f3b1d9d649d80c34e5a697eec1d4b9182242e6256e3540"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/link-attempt-1.log": {
+          "bytes": 67153,
+          "sha256": "3d3558b998c28a85d3a412b4948a55528aad8b6fa86afc3d811eda5f31bdc528"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/link-attempt-2.log": {
+          "bytes": 1029,
+          "sha256": "53dca0c994e343a96546d7b52a1224c74d49fd0929f08b6b669e275cc2675ccc"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/link-attempt-3.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/source.exe": {
+          "bytes": 167936,
+          "sha256": "4b2591c498fd50d8e134cef4a6030d3701adffd47864d2266115321219385bb4"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/source.ltcg.obj": {
+          "bytes": 60924,
+          "sha256": "a26fa6b05b7699ba3f8bd6fddc681b5ba8d0edbea366b374b2acbeaf1fbb27c4"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/source.map": {
+          "bytes": 157864,
+          "sha256": "a6ebbde488953a69c73fa530fc2f70474a9a9cca4de7ff97c57319f7e3504bb6"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/source.pdb": {
+          "bytes": 175104,
+          "sha256": "ace31760c4c77511497c714c652b3c02b67e9d755c4c34b958b3aaf931d38f72"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-00-AnmManager.ltcg.obj": {
+          "bytes": 247746,
+          "sha256": "eda326a290ea5164f0bb930061fbf997f7a9defcbab08d77a2c70c08a848c4e4"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-01-Chain.ltcg.obj": {
+          "bytes": 36912,
+          "sha256": "0a0b0a8c953275736a4824a280f37c5ed441ce713bbd5e9821b05a2abd30871c"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-02-FrontEnd.ltcg.obj": {
+          "bytes": 224381,
+          "sha256": "2dd4fe010bc8edb75ce0cea69363db988d9d242aac1e04dec6e7bf6c79f01e77"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-03-Player.ltcg.obj": {
+          "bytes": 98734,
+          "sha256": "3e2691cc4ce41cd948a9cffd5b842d5ed57ece51e0fd72188da9eb534ddbec78"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-04-Gui.ltcg.obj": {
+          "bytes": 125067,
+          "sha256": "8d85caf134d0e35d1cece03b96417bb0471c5b4e11b289da0226a1fa69f0fd2d"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-05-Enemy.ltcg.obj": {
+          "bytes": 97606,
+          "sha256": "2585e97b5f0056ae2e15a27623da467441e30521470e52ed7f2faa587bbba7d1"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-06-BulletLifecycle.ltcg.obj": {
+          "bytes": 13052,
+          "sha256": "756de6c67297b72d951f23a44102bce14b80a727cc084aa32ba6a9b308c32399"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-07-InputState.ltcg.obj": {
+          "bytes": 3530,
+          "sha256": "70bfca112e184af1c2a5df67a8cf13874debb0c2319a0a5874b819b0e8c32e8b"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-08-Main.ltcg.obj": {
+          "bytes": 94093,
+          "sha256": "71e5011201947131e3fae277ec368867461b4714bb73f1bf6972cd32dc6152a1"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-09-ScriptViewerWorker.ltcg.obj": {
+          "bytes": 28960,
+          "sha256": "df21578b8130a872a901b78d1c0be6f7608d0afcfdfd18b6a6e4178e897a4cb7"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-10-ScriptViewerLifecycle.ltcg.obj": {
+          "bytes": 44492,
+          "sha256": "92d196d65909c85b3acac0f40808c0ea67265b6b33c5ef8be813050903bec862"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-11-ItemManager.ltcg.obj": {
+          "bytes": 59411,
+          "sha256": "38d7b0b9dbc65e6d205b802f87a85258612014cf6e1318c1214687e57576e9d6"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-12-AnmVmId.ltcg.obj": {
+          "bytes": 13679,
+          "sha256": "5ab3053d74f6ad90b1856f110af195ee2d1d8aa6056c8a4818ab5011769d7c65"
+        }
+      },
+      "compiled": [
+        {
+          "object_sha256": "3e2691cc4ce41cd948a9cffd5b842d5ed57ece51e0fd72188da9eb534ddbec78",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left/Player.cpp",
+          "source_sha256": "d392575751936157fb929e2e852c7736d3170f45d842fc24c02d532bdbe05eb8"
+        }
+      ],
+      "entry_instructions": [
+        "mov eax, dword ptr [0x426530]",
+        "sub esp, 0xc",
+        "push ebp",
+        "xor ebp, ebp",
+        "cmp eax, ebp",
+        "mov eax, 0x42562c",
+        "jne 0x418c29",
+        "mov eax, 0x425620"
+      ],
+      "guards": {
+        "bytes": 838,
+        "count": 4,
+        "exact": 4,
+        "fields": 58
+      },
+      "label": "value-extent-left",
+      "parent_owner": {
+        "address": "0x00418C10",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-03-Player.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-03-Player.ltcg.obj",
+        "pdb_module_index": 2,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-03-Player.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 97296,
+        "sha256": "41e32037f8f8bd4aeac324a17c20ec716d9053c99835e0cc66d22a43763f4665",
+        "size": 1366,
+        "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z"
+      },
+      "parent_raw_sha256": "41e32037f8f8bd4aeac324a17c20ec716d9053c99835e0cc66d22a43763f4665",
+      "producer_sha256": "1a849052b656c945a4c02c3f82b31cb42688b8a27a498bf09c8461397dcc1da0",
+      "real_callees": {
+        "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z": {
+          "calls": [
+            "0x418c84"
+          ],
+          "owner": {
+            "address": "0x0040D5D0",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-01-Chain.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-01-Chain.ltcg.obj",
+            "pdb_module_index": 14,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-01-Chain.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50640,
+            "sha256": "b039e27dea4b25a1d9d0bf4cf325a4c582168340303e18042449c681880d5b8f",
+            "size": 131,
+            "symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+          }
+        },
+        "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z": {
+          "calls": [
+            "0x418caf"
+          ],
+          "owner": {
+            "address": "0x0040D660",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-01-Chain.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-01-Chain.ltcg.obj",
+            "pdb_module_index": 14,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-01-Chain.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50784,
+            "sha256": "cb789f3cf37b8971de69cc61efdf45fa954c49c3ddac993ae0aafc98fa18cc48",
+            "size": 131,
+            "symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+          }
+        },
+        "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z": {
+          "calls": [
+            "0x418c65",
+            "0x418c91"
+          ],
+          "owner": {
+            "address": "0x0040D580",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-01-Chain.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-01-Chain.ltcg.obj",
+            "pdb_module_index": 14,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-01-Chain.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50560,
+            "sha256": "58bbd66880260d0fb6601ac8c22cc8703771d166461e4a5751ca60c36433d548",
+            "size": 69,
+            "symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z"
+          }
+        },
+        "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z": {
+          "calls": [
+            "0x418cc0"
+          ],
+          "owner": {
+            "address": "0x004068D0",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-00-AnmManager.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-00-AnmManager.ltcg.obj",
+            "pdb_module_index": 6,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-extent-left-14\\support-00-AnmManager.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 22736,
+            "sha256": "182beeb029a46dcfcb8a1857ac04380444d18d43d2a398dd00f2790c8aaf9959",
+            "size": 200,
+            "symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z"
+          }
+        }
+      },
+      "report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+      "report_sha256": "de982c02288cf3b08441eda0ffab29426bcebdd0734ee5d0e8c36bab6e1dba6c",
+      "reused_objects": 13,
+      "state": "measured-private-not-adopted",
+      "structural_compared": 1275,
+      "structural_matched": 76
+    },
+    {
+      "artifacts": {
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/link-aliases.rsp": {
+          "bytes": 35803,
+          "sha256": "e5af1fda002a46edd5deca7ca551042f940714f6b710b8815e916998b4c7a442"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/link-anchors.c": {
+          "bytes": 23523,
+          "sha256": "a351990eb33e6c97fddc6a16a869982a2aa77e3edf6b1dcbfd62e20e2a6210a7"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/link-anchors.obj": {
+          "bytes": 21925,
+          "sha256": "a0876a41bfb012ad3b81a7df1111ed3f8a4c69807b863df1ebc0289f27a04727"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/link-attempt-1.log": {
+          "bytes": 67154,
+          "sha256": "e1f67a5d2e285e665c9a97014da0eecacab74fa586ebab47a1b30913a4d07e3d"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/link-attempt-2.log": {
+          "bytes": 1030,
+          "sha256": "68b08b9d5d024884ee8496603a51d1b61bf3153ced8895d823490ef1cfbd51af"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/link-attempt-3.log": {
+          "bytes": 104,
+          "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/source.exe": {
+          "bytes": 167936,
+          "sha256": "31e4739f71fcc5324b7ceb755947c7fbf814b682f4a643619a15fd87d38b9764"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/source.ltcg.obj": {
+          "bytes": 60924,
+          "sha256": "a26fa6b05b7699ba3f8bd6fddc681b5ba8d0edbea366b374b2acbeaf1fbb27c4"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/source.map": {
+          "bytes": 157864,
+          "sha256": "5ee3c2af0e4099528e42b26771906f9b8de36e6619e842dca0a3a51b9839fb5c"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/source.pdb": {
+          "bytes": 175104,
+          "sha256": "8b7e291ffebbffd5022c0f4320c5e0d8206bc2e725f8f89dc9e6243c02bb4c45"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-00-AnmManager.ltcg.obj": {
+          "bytes": 247746,
+          "sha256": "eda326a290ea5164f0bb930061fbf997f7a9defcbab08d77a2c70c08a848c4e4"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-01-Chain.ltcg.obj": {
+          "bytes": 36912,
+          "sha256": "0a0b0a8c953275736a4824a280f37c5ed441ce713bbd5e9821b05a2abd30871c"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-02-FrontEnd.ltcg.obj": {
+          "bytes": 224381,
+          "sha256": "2dd4fe010bc8edb75ce0cea69363db988d9d242aac1e04dec6e7bf6c79f01e77"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-03-Player.ltcg.obj": {
+          "bytes": 98794,
+          "sha256": "12ac7b4883eb2d6693020a953160713def1d1d06b1c0c28ecbb70ddff98c0524"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-04-Gui.ltcg.obj": {
+          "bytes": 125067,
+          "sha256": "8d85caf134d0e35d1cece03b96417bb0471c5b4e11b289da0226a1fa69f0fd2d"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-05-Enemy.ltcg.obj": {
+          "bytes": 97606,
+          "sha256": "2585e97b5f0056ae2e15a27623da467441e30521470e52ed7f2faa587bbba7d1"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-06-BulletLifecycle.ltcg.obj": {
+          "bytes": 13052,
+          "sha256": "756de6c67297b72d951f23a44102bce14b80a727cc084aa32ba6a9b308c32399"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-07-InputState.ltcg.obj": {
+          "bytes": 3530,
+          "sha256": "70bfca112e184af1c2a5df67a8cf13874debb0c2319a0a5874b819b0e8c32e8b"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-08-Main.ltcg.obj": {
+          "bytes": 94093,
+          "sha256": "71e5011201947131e3fae277ec368867461b4714bb73f1bf6972cd32dc6152a1"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-09-ScriptViewerWorker.ltcg.obj": {
+          "bytes": 28960,
+          "sha256": "df21578b8130a872a901b78d1c0be6f7608d0afcfdfd18b6a6e4178e897a4cb7"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-10-ScriptViewerLifecycle.ltcg.obj": {
+          "bytes": 44492,
+          "sha256": "92d196d65909c85b3acac0f40808c0ea67265b6b33c5ef8be813050903bec862"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-11-ItemManager.ltcg.obj": {
+          "bytes": 59411,
+          "sha256": "38d7b0b9dbc65e6d205b802f87a85258612014cf6e1318c1214687e57576e9d6"
+        },
+        "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-12-AnmVmId.ltcg.obj": {
+          "bytes": 13679,
+          "sha256": "5ab3053d74f6ad90b1856f110af195ee2d1d8aa6056c8a4818ab5011769d7c65"
+        }
+      },
+      "compiled": [
+        {
+          "object_sha256": "12ac7b4883eb2d6693020a953160713def1d1d06b1c0c28ecbb70ddff98c0524",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data/Player.cpp",
+          "source_sha256": "a32ce9e08f23447fa7f0ac2f06cad8f8db43c5fde6e7f377c43a553bee4411e3"
+        }
+      ],
+      "entry_instructions": [
+        "mov eax, dword ptr [0x426530]",
+        "sub esp, 0xc",
+        "push ebp",
+        "xor ebp, ebp",
+        "cmp eax, ebp",
+        "mov eax, 0x42562c",
+        "jne 0x418c29",
+        "mov eax, 0x425620"
+      ],
+      "guards": {
+        "bytes": 838,
+        "count": 4,
+        "exact": 4,
+        "fields": 58
+      },
+      "label": "value-current-data",
+      "parent_owner": {
+        "address": "0x00418C10",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-03-Player.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-03-Player.ltcg.obj",
+        "pdb_module_index": 2,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-03-Player.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 97296,
+        "sha256": "4b0c293e90f6d71a0985e233ff8efe0ff33933695f46eb440af9a94dda94f6ac",
+        "size": 1388,
+        "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z"
+      },
+      "parent_raw_sha256": "4b0c293e90f6d71a0985e233ff8efe0ff33933695f46eb440af9a94dda94f6ac",
+      "producer_sha256": "1a849052b656c945a4c02c3f82b31cb42688b8a27a498bf09c8461397dcc1da0",
+      "real_callees": {
+        "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z": {
+          "calls": [
+            "0x418c84"
+          ],
+          "owner": {
+            "address": "0x0040D5D0",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-01-Chain.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-01-Chain.ltcg.obj",
+            "pdb_module_index": 14,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-01-Chain.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50640,
+            "sha256": "b039e27dea4b25a1d9d0bf4cf325a4c582168340303e18042449c681880d5b8f",
+            "size": 131,
+            "symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+          }
+        },
+        "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z": {
+          "calls": [
+            "0x418caf"
+          ],
+          "owner": {
+            "address": "0x0040D660",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-01-Chain.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-01-Chain.ltcg.obj",
+            "pdb_module_index": 14,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-01-Chain.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50784,
+            "sha256": "cb789f3cf37b8971de69cc61efdf45fa954c49c3ddac993ae0aafc98fa18cc48",
+            "size": 131,
+            "symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+          }
+        },
+        "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z": {
+          "calls": [
+            "0x418c65",
+            "0x418c91"
+          ],
+          "owner": {
+            "address": "0x0040D580",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-01-Chain.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-01-Chain.ltcg.obj",
+            "pdb_module_index": 14,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-01-Chain.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50560,
+            "sha256": "58bbd66880260d0fb6601ac8c22cc8703771d166461e4a5751ca60c36433d548",
+            "size": 69,
+            "symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z"
+          }
+        },
+        "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z": {
+          "calls": [
+            "0x418cc0"
+          ],
+          "owner": {
+            "address": "0x004068D0",
+            "extent_source": "pdb-section-contribution",
+            "map_object": "support-00-AnmManager.ltcg.obj",
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-00-AnmManager.ltcg.obj",
+            "pdb_module_index": 6,
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-chain-bindings-20261023\\value-current-data-14\\support-00-AnmManager.ltcg.obj",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 22736,
+            "sha256": "182beeb029a46dcfcb8a1857ac04380444d18d43d2a398dd00f2790c8aaf9959",
+            "size": 200,
+            "symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z"
+          }
+        }
+      },
+      "report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14.json",
+      "report_sha256": "6339b94454dc8c8946d4f3a270f2c3c98bf759a2736e786a04341a583a0c1096",
+      "reused_objects": 13,
+      "state": "measured-private-not-adopted",
+      "structural_compared": 1275,
+      "structural_matched": 103
+    }
+  ],
+  "unresolved": [
+    "Player complete field bindings and complete exact comparison",
+    "Missing real option-data loader binding at 0x426520/229",
+    "Prepared PreloadAnm/GameErrorContext context not compiled",
+    "Original ABI, object ownership, translation unit, product and runtime"
+  ]
+}

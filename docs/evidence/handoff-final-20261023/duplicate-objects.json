@@ -1,0 +1,184 @@
+[
+  {
+    "bytes": 60924,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/source.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/source.ltcg.obj",
+    "sha256": "a26fa6b05b7699ba3f8bd6fddc681b5ba8d0edbea366b374b2acbeaf1fbb27c4"
+  },
+  {
+    "bytes": 247746,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-00-AnmManager.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-00-AnmManager.ltcg.obj",
+    "sha256": "eda326a290ea5164f0bb930061fbf997f7a9defcbab08d77a2c70c08a848c4e4"
+  },
+  {
+    "bytes": 36912,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-01-Chain.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-01-Chain.ltcg.obj",
+    "sha256": "0a0b0a8c953275736a4824a280f37c5ed441ce713bbd5e9821b05a2abd30871c"
+  },
+  {
+    "bytes": 224381,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-02-FrontEnd.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-02-FrontEnd.ltcg.obj",
+    "sha256": "2dd4fe010bc8edb75ce0cea69363db988d9d242aac1e04dec6e7bf6c79f01e77"
+  },
+  {
+    "bytes": 125067,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-04-Gui.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-04-Gui.ltcg.obj",
+    "sha256": "8d85caf134d0e35d1cece03b96417bb0471c5b4e11b289da0226a1fa69f0fd2d"
+  },
+  {
+    "bytes": 97606,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-05-Enemy.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-05-Enemy.ltcg.obj",
+    "sha256": "2585e97b5f0056ae2e15a27623da467441e30521470e52ed7f2faa587bbba7d1"
+  },
+  {
+    "bytes": 13052,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-06-BulletLifecycle.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-06-BulletLifecycle.ltcg.obj",
+    "sha256": "756de6c67297b72d951f23a44102bce14b80a727cc084aa32ba6a9b308c32399"
+  },
+  {
+    "bytes": 3530,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-07-InputState.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-07-InputState.ltcg.obj",
+    "sha256": "70bfca112e184af1c2a5df67a8cf13874debb0c2319a0a5874b819b0e8c32e8b"
+  },
+  {
+    "bytes": 94093,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-08-Main.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-08-Main.ltcg.obj",
+    "sha256": "71e5011201947131e3fae277ec368867461b4714bb73f1bf6972cd32dc6152a1"
+  },
+  {
+    "bytes": 28960,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-09-ScriptViewerWorker.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-09-ScriptViewerWorker.ltcg.obj",
+    "sha256": "df21578b8130a872a901b78d1c0be6f7608d0afcfdfd18b6a6e4178e897a4cb7"
+  },
+  {
+    "bytes": 44492,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-10-ScriptViewerLifecycle.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-10-ScriptViewerLifecycle.ltcg.obj",
+    "sha256": "92d196d65909c85b3acac0f40808c0ea67265b6b33c5ef8be813050903bec862"
+  },
+  {
+    "bytes": 59411,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-11-ItemManager.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-11-ItemManager.ltcg.obj",
+    "sha256": "38d7b0b9dbc65e6d205b802f87a85258612014cf6e1318c1214687e57576e9d6"
+  },
+  {
+    "bytes": 13679,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14/support-12-AnmVmId.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/typed-nodes-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-12-AnmVmId.ltcg.obj",
+    "sha256": "5ab3053d74f6ad90b1856f110af195ee2d1d8aa6056c8a4818ab5011769d7c65"
+  },
+  {
+    "bytes": 60924,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/source.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/source.ltcg.obj",
+    "sha256": "a26fa6b05b7699ba3f8bd6fddc681b5ba8d0edbea366b374b2acbeaf1fbb27c4"
+  },
+  {
+    "bytes": 247746,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-00-AnmManager.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-00-AnmManager.ltcg.obj",
+    "sha256": "eda326a290ea5164f0bb930061fbf997f7a9defcbab08d77a2c70c08a848c4e4"
+  },
+  {
+    "bytes": 36912,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-01-Chain.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-01-Chain.ltcg.obj",
+    "sha256": "0a0b0a8c953275736a4824a280f37c5ed441ce713bbd5e9821b05a2abd30871c"
+  },
+  {
+    "bytes": 224381,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-02-FrontEnd.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-02-FrontEnd.ltcg.obj",
+    "sha256": "2dd4fe010bc8edb75ce0cea69363db988d9d242aac1e04dec6e7bf6c79f01e77"
+  },
+  {
+    "bytes": 125067,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-04-Gui.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-04-Gui.ltcg.obj",
+    "sha256": "8d85caf134d0e35d1cece03b96417bb0471c5b4e11b289da0226a1fa69f0fd2d"
+  },
+  {
+    "bytes": 97606,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-05-Enemy.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-05-Enemy.ltcg.obj",
+    "sha256": "2585e97b5f0056ae2e15a27623da467441e30521470e52ed7f2faa587bbba7d1"
+  },
+  {
+    "bytes": 13052,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-06-BulletLifecycle.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-06-BulletLifecycle.ltcg.obj",
+    "sha256": "756de6c67297b72d951f23a44102bce14b80a727cc084aa32ba6a9b308c32399"
+  },
+  {
+    "bytes": 3530,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-07-InputState.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-07-InputState.ltcg.obj",
+    "sha256": "70bfca112e184af1c2a5df67a8cf13874debb0c2319a0a5874b819b0e8c32e8b"
+  },
+  {
+    "bytes": 94093,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-08-Main.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-08-Main.ltcg.obj",
+    "sha256": "71e5011201947131e3fae277ec368867461b4714bb73f1bf6972cd32dc6152a1"
+  },
+  {
+    "bytes": 28960,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-09-ScriptViewerWorker.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-09-ScriptViewerWorker.ltcg.obj",
+    "sha256": "df21578b8130a872a901b78d1c0be6f7608d0afcfdfd18b6a6e4178e897a4cb7"
+  },
+  {
+    "bytes": 44492,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-10-ScriptViewerLifecycle.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-10-ScriptViewerLifecycle.ltcg.obj",
+    "sha256": "92d196d65909c85b3acac0f40808c0ea67265b6b33c5ef8be813050903bec862"
+  },
+  {
+    "bytes": 59411,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-11-ItemManager.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-11-ItemManager.ltcg.obj",
+    "sha256": "38d7b0b9dbc65e6d205b802f87a85258612014cf6e1318c1214687e57576e9d6"
+  },
+  {
+    "bytes": 13679,
+    "path": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14/support-12-AnmVmId.ltcg.obj",
+    "producer_report": ".analysis/gpt-6.1-sol/player-chain-bindings-20261023/value-extent-left-14.json",
+    "retained_identical": "build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14/support-12-AnmVmId.ltcg.obj",
+    "sha256": "5ab3053d74f6ad90b1856f110af195ee2d1d8aa6056c8a4818ab5011769d7c65"
+  }
+]

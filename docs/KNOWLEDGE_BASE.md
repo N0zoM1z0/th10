@@ -5544,3 +5544,26 @@ not close target callers. Consistent member argument reversal is whole-parent
 neutral; the ordinary free/cdecl counterpart emits Stage 1872 and a198-byte/plain
 RET initializer, so it is rejected. Full16-source caller visibility is Stage-
 equal after 13 bound fields. No exact increment or original declaration inference.
+
+## Player startup value candidates recovered for handoff (2026-10-23)
+
+The target's complete 4247F0/1435 initializer reserves 12 scratch bytes and
+copies eight three-component arithmetic results from temporary storage. Its
+additions load extent before position; its subtractions use position minus
+extent. After timer setup, optionData is reloaded from Player+45C. These target
+observations motivate actual existing Float3 value operations and shorter data
+pointer lifetime; they do not justify fabricated stores, padding or an ABI claim.
+
+Three private 14-TU trials bind the existing Chain APIs, then add value operations,
+then reload optionData: complete sizes1116/1366/1388. Both value forms recover
+the 12-byte frame. All retain four complete Chain guards838/all58 and five real
+callback/VM calls. Each compiles only private Player and reuses13 pinned game
+objects; none is an independent whole-graph cold or a complete exact comparison.
+The final1388-byte job is terminal and its report/artifacts agree. Maintained
+Player source remains unchanged1116/nonexact. Two additional controls are only
+prepared, not executed. See [the measured/pending packet](evidence/player-startup-candidates/README.md).
+
+The [final cleanup receipt](evidence/handoff-final-20261023/README.md) records
+verified archive restoration, duplicate-object replacements and Git packing.
+Current large-owner witnesses, canonical linked outputs, original target and
+the nine unrelated D3D files are retained. No new exact, product or runtime credit.

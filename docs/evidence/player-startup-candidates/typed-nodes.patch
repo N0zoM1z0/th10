@@ -1,0 +1,67 @@
+--- a/src/Player.cpp
++++ b/src/Player.cpp
+@@ -1,5 +1,6 @@
+ #include "EnemyGameState.hpp"
+ #include "Player.hpp"
++#include "Chain.hpp"
+ #include "AnmVmId.hpp"
+ #include "BulletManager.hpp"
+ #include "GameScoreState.hpp"
+@@ -113,6 +114,11 @@
+     (offsetof(PlayerCallbackNodeView, callback) == 0x08) ? 1 : -1];
+ typedef char PlayerCallbackNodeViewOwnerAt20[
+     (offsetof(PlayerCallbackNodeView, owner) == 0x20) ? 1 : -1];
++typedef char PlayerCallbackNodeMatchesChain[
++    (sizeof(PlayerCallbackNodeView) == sizeof(th10::ChainElem) &&
++     offsetof(PlayerCallbackNodeView, flags) == offsetof(th10::ChainElem, flags) &&
++     offsetof(PlayerCallbackNodeView, callback) == offsetof(th10::ChainElem, callback) &&
++     offsetof(PlayerCallbackNodeView, owner) == offsetof(th10::ChainElem, arg)) ? 1 : -1];
+ 
+ // Neutral maintained views for the target-observed auxiliary draw gate. Their
+ // original object and field identifiers are not established by this packet.
+@@ -397,12 +403,6 @@
+     int loadFlags, void *owner, const char *filename);
+ void PlayerReportInitializationError();
+ int PlayerLoadOptionData(Player *player, const char *filename);
+-PlayerCallbackNodeView * __stdcall PlayerAllocateCallbackNode(
+-    PlayerChainCallback callback);
+-void PlayerRegisterUpdateCallbackNode(
+-    PlayerCallbackNodeView *node, int priority, void *manager);
+-void PlayerRegisterDrawCallbackNode(
+-    PlayerCallbackNodeView *node, int priority, void *manager);
+ 
+ int __fastcall PlayerUpdateCallback(Player *player);
+ int __fastcall PlayerDrawCallback(Player *player);
+@@ -805,19 +805,21 @@
+         }
+     }
+ 
+-    PlayerCallbackNodeView *updateNode =
+-        PlayerAllocateCallbackNode(PlayerUpdateCallback);
+-    updateNode->owner = player;
++    th10::ChainElem *updateNode = th10::Chain::AllocElem(
++        reinterpret_cast<th10::ChainCallback>(PlayerUpdateCallback));
++    updateNode->arg = player;
+     updateNode->flags &= ~2u;
+-    PlayerRegisterUpdateCallbackNode(updateNode, 0x10, g_PlayerCallbackManager);
+-    player->updateCallbackNode = updateNode;
+-
+-    PlayerCallbackNodeView *drawNode =
+-        PlayerAllocateCallbackNode(PlayerDrawCallback);
++    th10::Chain::AddToCalcChain(updateNode, 0x10,
++        reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
++    player->updateCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(updateNode);
++
++    th10::ChainElem *drawNode = th10::Chain::AllocElem(
++        reinterpret_cast<th10::ChainCallback>(PlayerDrawCallback));
+     drawNode->flags &= ~2u;
+-    drawNode->owner = player;
+-    PlayerRegisterDrawCallbackNode(drawNode, 0x16, g_PlayerCallbackManager);
+-    player->drawCallbackNode = drawNode;
++    drawNode->arg = player;
++    th10::Chain::AddToDrawChain(drawNode, 0x16,
++        reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
++    player->drawCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(drawNode);
+ 
+     // Target 0x4248B1 calls the real VM initializer at 0x404F30 with
+     // Player+0x14, resource at +0x10, and script index zero.

@@ -1,0 +1,32 @@
+{
+  "after": {
+    "count": 232,
+    "garbage": 0,
+    "in-pack": 11013,
+    "packs": 1,
+    "prune-packable": 0,
+    "size": 5316,
+    "size-garbage": 0,
+    "size-pack": 8545
+  },
+  "before": {
+    "count": 11245,
+    "garbage": 0,
+    "in-pack": 0,
+    "packs": 0,
+    "prune-packable": 0,
+    "size": 287356,
+    "size-garbage": 0,
+    "size-pack": 0
+  },
+  "command": "nice -n 10 git -c gc.auto=0 -c pack.threads=1 repack -a -d",
+  "commit_list_sha256": "e36010089594bd563fc631bbb83032b92506c73d0c9fbcc553c6678089df5d5f",
+  "reachable_reflog_commit_count": 837,
+  "reachable_reflog_commits_unchanged": true,
+  "reclaimed_git_reported_bytes": 280058880,
+  "refs_unchanged": true,
+  "starting_refs": "040f1e8872b42fae2dd4055b0f1212123494424e refs/heads/main\n040f1e8872b42fae2dd4055b0f1212123494424e refs/remotes/origin/main\n",
+  "total_objects_after": 11245,
+  "total_objects_before": 11245,
+  "units": "Git size/size-pack are KiB; no expiration or pruning requested"
+}

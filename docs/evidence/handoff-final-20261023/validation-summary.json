@@ -1,0 +1,104 @@
+{
+  "archive_and_duplicate_reclaimed_logical_bytes": 42779781,
+  "artifact_reclaimed_logical_bytes": 49826033,
+  "cache_cleanup": {
+    "bytes": 7046252,
+    "files": 383,
+    "inventory_path": ".analysis/handoff-final-20261023/cache-inventory.json",
+    "inventory_sha256": "6c646b7bc82b39d30fb6e31a656d0f23374de784a9fa6272ac5056e171518c36",
+    "kind": "generated Python bytecode",
+    "path": "build/pycache"
+  },
+  "checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-target.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --execute",
+      "result": "passed",
+      "scope": "compiler/resource/link smoke; no game compile"
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py --require-target",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/report-reconstruction-status.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "result": "passed",
+      "tracked_output_changes": false
+    },
+    {
+      "command": "git fsck --connectivity-only --no-dangling",
+      "result": "passed",
+      "when": "before packing"
+    },
+    {
+      "command": "git fsck --full --no-dangling",
+      "result": "passed",
+      "when": "after packing"
+    },
+    {
+      "command": "git apply --check --ignore-whitespace <each retained Player patch>",
+      "count": 5,
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/check-doc-hygiene.py",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    },
+    {
+      "command": "local link validation for all four changed/new Markdown documents",
+      "result": "passed"
+    }
+  ],
+  "cleanup_producer_sha256": "45fa7357f02a036ebc5e4082ed1f343065e263991f3199b2ec7bb927df8b06da",
+  "focused_oracle": {
+    "bytes": 838,
+    "cold_build": false,
+    "fields": 58,
+    "kind": "cached canonical linked complete-owner comparison",
+    "owners": 4,
+    "private_report": ".analysis/handoff-final-20261023/canonical-chain-replay.json",
+    "private_report_sha256": "4acd159a97dda4fd10890e84f37f40203e8359df6b380bfff351c26daf67259f",
+    "result": "passed",
+    "units": [
+      "chain-run-calc",
+      "chain-run-draw",
+      "chain-add-calc",
+      "chain-add-draw"
+    ]
+  },
+  "full_ci": {
+    "reason": "operator explicitly prioritizes focused checks; no maintained game source change",
+    "result": "not-run"
+  },
+  "git_reclaimed_reported_bytes": 280058880,
+  "maintained_source_changed": false,
+  "new_exact_credit": 0,
+  "post_documentation_critical_hashes_rechecked": 1671,
+  "product_runtime_validation": "not-performed",
+  "protected_all_unchanged": true,
+  "protected_before_after_artifact_cleanup": 36306,
+  "protection_inventory_path": ".analysis/handoff-final-20261023/protected.json.gz",
+  "protection_inventory_sha256": "d2a4fd283dd9f100ea3cc2e19ccdb007abd3ac4bb7a218d398b688da0e6442ea",
+  "starting_head": "040f1e8872b42fae2dd4055b0f1212123494424e",
+  "state": "active-incomplete",
+  "unrelated_d3d_files_hash_unchanged": 9
+}

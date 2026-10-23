@@ -1,0 +1,106 @@
+{
+  "archive": {
+    "bytes": 10535456,
+    "path": ".analysis/handoff-final-20261023/historical-rng-snapshots.tar.gz",
+    "sha256": "2e4ad04790ca246da6d7572e6c30eea4b978a42a9647cbf3fa599113a79ea2e1"
+  },
+  "disposition": "all archive members length/hash verified before expanded copies removed",
+  "full_member_inventory": {
+    "files": 1387,
+    "path": ".analysis/handoff-final-20261023/archive-files.json.gz",
+    "sha256": "e68b3760ba5918a2996f30defd315a3ca5e759de74ac234f2b0c884cfa87eb4e",
+    "uncompressed_sha256": "5cdbac487809606bbd761b85c98e9b7472d1ea7da500e85add381ee775cc8ef5"
+  },
+  "provenance_receipts": [
+    {
+      "bytes": 1266,
+      "path": ".analysis/rng-additional-guards-20261018-a001/receipt.json",
+      "sha256": "b27610f80526611093848da65194e3c4ff55bed024ffffbfa6f2f527885fc83c"
+    },
+    {
+      "bytes": 11788,
+      "path": ".analysis/rng-local-candidate-20261018-a002/receipt.json",
+      "sha256": "ea42e445b454255ea9fac7d8334e2d3262542f878ac286ef672ca55c988595da"
+    }
+  ],
+  "trees": [
+    {
+      "bytes": 3707346,
+      "files": 105,
+      "member_inventory_sha256": "02b5013fbb4e4bf52a3fb1541ea7d55b462b0511d9cbe1a0ba877fd12c1f277f",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_AnmRandomU32InRange/tree"
+    },
+    {
+      "bytes": 3708010,
+      "files": 105,
+      "member_inventory_sha256": "d40edcdfc13d004ebe59f9d68c9fd526915320cfc06ba20ba0803e6730cee403",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_AnmScriptVariables/tree"
+    },
+    {
+      "bytes": 4139934,
+      "files": 110,
+      "member_inventory_sha256": "5c23334bcd646c3d8f83b832c2d07e506ea07dceda37fc06ffcb2aba885b23ee",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_AnmTextureAlphaBleed/tree"
+    },
+    {
+      "bytes": 3707732,
+      "files": 105,
+      "member_inventory_sha256": "b4529a72e99d3eaa1b7cfc7226419afab865d6582d5e4eac05d0b159e707ebe7",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_AnmTrail/tree"
+    },
+    {
+      "bytes": 3725995,
+      "files": 106,
+      "member_inventory_sha256": "60c1653601576fabec03ccbbdaa4c8fe7eee2af000001d11e76decb63747d73d",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_AnmVmCreate/tree"
+    },
+    {
+      "bytes": 4481620,
+      "files": 111,
+      "member_inventory_sha256": "37a2803a1c9975e891b530b9cd74fa64bf3ffd119b00f16c02c7f7869a1d9167",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_FrontEndKeyConfigDisplay/tree"
+    },
+    {
+      "bytes": 4481400,
+      "files": 111,
+      "member_inventory_sha256": "c007ffa77c65fbadfb25a80195e3d9d0f7e0ecf14d4575d1827fae058bbb1e73",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_FrontEndOptionsRefresh/tree"
+    },
+    {
+      "bytes": 5415359,
+      "files": 117,
+      "member_inventory_sha256": "538b25fff4c306cdf20c8871cac200719c38311360f044f4163ae9fab925aeeb",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_GuiTransitionEffectCallbacks/tree"
+    },
+    {
+      "bytes": 4164475,
+      "files": 111,
+      "member_inventory_sha256": "5fa03318ff9e724f52035f21124a256556ad33ebd5b93c78936c61c4dd420f0b",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_HintLifecycle/tree"
+    },
+    {
+      "bytes": 3354145,
+      "files": 105,
+      "member_inventory_sha256": "9b64e183b6c8f0615d05f92ada898c08c72c094d6f5b9a991782a2121e65d051",
+      "path": ".analysis/rng-additional-guards-20261018-a001/candidate_TextBufferLifecycle/tree"
+    },
+    {
+      "bytes": 3268767,
+      "files": 96,
+      "member_inventory_sha256": "4d95210d1bab904f309b9cd1d22757a0804df27d486546c0b9a4d45dad7b21ef",
+      "path": ".analysis/rng-local-candidate-20261018-a002/baseline_coff/tree"
+    },
+    {
+      "bytes": 3791958,
+      "files": 109,
+      "member_inventory_sha256": "b11bf29f6528500cd1026619b7d6299b852375d66cf93c0fb1a39d17978ee548",
+      "path": ".analysis/rng-local-candidate-20261018-a002/candidate_anm/tree"
+    },
+    {
+      "bytes": 3268790,
+      "files": 96,
+      "member_inventory_sha256": "765e2c2a3357c710756dc1e9d5a2d047f9b7f9ae25e7fc2b9f502a7214661f07",
+      "path": ".analysis/rng-local-candidate-20261018-a002/candidate_coff/tree"
+    }
+  ]
+}

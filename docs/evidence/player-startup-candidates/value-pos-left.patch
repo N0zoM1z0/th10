@@ -1,0 +1,123 @@
+--- a/src/Player.cpp
++++ b/src/Player.cpp
+@@ -1,5 +1,6 @@
+ #include "EnemyGameState.hpp"
+ #include "Player.hpp"
++#include "Chain.hpp"
+ #include "AnmVmId.hpp"
+ #include "BulletManager.hpp"
+ #include "GameScoreState.hpp"
+@@ -113,6 +114,11 @@
+     (offsetof(PlayerCallbackNodeView, callback) == 0x08) ? 1 : -1];
+ typedef char PlayerCallbackNodeViewOwnerAt20[
+     (offsetof(PlayerCallbackNodeView, owner) == 0x20) ? 1 : -1];
++typedef char PlayerCallbackNodeMatchesChain[
++    (sizeof(PlayerCallbackNodeView) == sizeof(th10::ChainElem) &&
++     offsetof(PlayerCallbackNodeView, flags) == offsetof(th10::ChainElem, flags) &&
++     offsetof(PlayerCallbackNodeView, callback) == offsetof(th10::ChainElem, callback) &&
++     offsetof(PlayerCallbackNodeView, owner) == offsetof(th10::ChainElem, arg)) ? 1 : -1];
+ 
+ // Neutral maintained views for the target-observed auxiliary draw gate. Their
+ // original object and field identifiers are not established by this packet.
+@@ -397,12 +403,6 @@
+     int loadFlags, void *owner, const char *filename);
+ void PlayerReportInitializationError();
+ int PlayerLoadOptionData(Player *player, const char *filename);
+-PlayerCallbackNodeView * __stdcall PlayerAllocateCallbackNode(
+-    PlayerChainCallback callback);
+-void PlayerRegisterUpdateCallbackNode(
+-    PlayerCallbackNodeView *node, int priority, void *manager);
+-void PlayerRegisterDrawCallbackNode(
+-    PlayerCallbackNodeView *node, int priority, void *manager);
+ 
+ int __fastcall PlayerUpdateCallback(Player *player);
+ int __fastcall PlayerDrawCallback(Player *player);
+@@ -805,19 +805,21 @@
+         }
+     }
+ 
+-    PlayerCallbackNodeView *updateNode =
+-        PlayerAllocateCallbackNode(PlayerUpdateCallback);
+-    updateNode->owner = player;
++    th10::ChainElem *updateNode = th10::Chain::AllocElem(
++        reinterpret_cast<th10::ChainCallback>(PlayerUpdateCallback));
++    updateNode->arg = player;
+     updateNode->flags &= ~2u;
+-    PlayerRegisterUpdateCallbackNode(updateNode, 0x10, g_PlayerCallbackManager);
+-    player->updateCallbackNode = updateNode;
+-
+-    PlayerCallbackNodeView *drawNode =
+-        PlayerAllocateCallbackNode(PlayerDrawCallback);
++    th10::Chain::AddToCalcChain(updateNode, 0x10,
++        reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
++    player->updateCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(updateNode);
++
++    th10::ChainElem *drawNode = th10::Chain::AllocElem(
++        reinterpret_cast<th10::ChainCallback>(PlayerDrawCallback));
+     drawNode->flags &= ~2u;
+-    drawNode->owner = player;
+-    PlayerRegisterDrawCallbackNode(drawNode, 0x16, g_PlayerCallbackManager);
+-    player->drawCallbackNode = drawNode;
++    drawNode->arg = player;
++    th10::Chain::AddToDrawChain(drawNode, 0x16,
++        reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
++    player->drawCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(drawNode);
+ 
+     // Target 0x4248B1 calls the real VM initializer at 0x404F30 with
+     // Player+0x14, resource at +0x10, and script index zero.
+@@ -868,31 +870,30 @@
+     player->extent2.y = player->extent2.x;
+     player->extent2.z = 5.0f;
+ 
+-    player->derivedMin0.x = player->drawPosition.x - player->extent0.x;
+-    player->derivedMin0.y = player->drawPosition.y - player->extent0.y;
+-    player->derivedMin0.z = player->drawPosition.z - player->extent0.z;
+-    player->derivedMax0.x = player->drawPosition.x + player->extent0.x;
+-    player->derivedMax0.y = player->drawPosition.y + player->extent0.y;
+-    player->derivedMax0.z = player->drawPosition.z + player->extent0.z;
+-
+-    player->derivedVectors[0].x = player->drawPosition.x - player->extent1.x;
+-    player->derivedVectors[0].y = player->drawPosition.y - player->extent1.y;
+-    player->derivedVectors[0].z = player->drawPosition.z - player->extent1.z;
+-    player->derivedVectors[1].x = player->drawPosition.x + player->extent1.x;
+-    player->derivedVectors[1].y = player->drawPosition.y + player->extent1.y;
+-    player->derivedVectors[1].z = player->drawPosition.z + player->extent1.z;
+-    player->derivedVectors[2].x = player->drawPosition.x - player->extent2.x;
+-    player->derivedVectors[2].y = player->drawPosition.y - player->extent2.y;
+-    player->derivedVectors[2].z = player->drawPosition.z - player->extent2.z;
+-    player->derivedVectors[3].x = player->drawPosition.x + player->extent2.x;
+-    player->derivedVectors[3].y = player->drawPosition.y + player->extent2.y;
+-    player->derivedVectors[3].z = player->drawPosition.z + player->extent2.z;
+-    player->derivedVectors[4].x = player->drawPosition.x - player->extent2.x;
+-    player->derivedVectors[4].y = player->drawPosition.y - player->extent2.y;
+-    player->derivedVectors[4].z = player->drawPosition.z - player->extent2.z;
+-    player->derivedVectors[5].x = player->drawPosition.x + player->extent2.x;
+-    player->derivedVectors[5].y = player->drawPosition.y + player->extent2.y;
+-    player->derivedVectors[5].z = player->drawPosition.z + player->extent2.z;
++    const AnmFloat3View &positionValue =
++        *reinterpret_cast<const AnmFloat3View *>(&player->drawPosition);
++    const AnmFloat3View &extentValue0 =
++        *reinterpret_cast<const AnmFloat3View *>(&player->extent0);
++    const AnmFloat3View &extentValue1 =
++        *reinterpret_cast<const AnmFloat3View *>(&player->extent1);
++    const AnmFloat3View &extentValue2 =
++        *reinterpret_cast<const AnmFloat3View *>(&player->extent2);
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedMin0) =
++        positionValue - extentValue0;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedMax0) =
++        positionValue + extentValue0;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[0]) =
++        positionValue - extentValue1;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[1]) =
++        positionValue + extentValue1;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[2]) =
++        positionValue - extentValue2;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[3]) =
++        positionValue + extentValue2;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[4]) =
++        positionValue - extentValue2;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[5]) =
++        positionValue + extentValue2;
+ 
+     if ((player->updateTimer1.flags & 1) == 0)
+     {
