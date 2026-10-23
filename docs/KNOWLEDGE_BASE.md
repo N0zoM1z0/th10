@@ -5470,3 +5470,12 @@ missing-type compile and auxiliary isolated-source parse reject are retained;
 whole source-body identity separately binds the maintained source view used for route
 projection against the split image. No source, original TU, or exact gain.
 See [partition evidence](evidence/anm-execute-partition/README.md).
+
+## ANM real link-entry controls (2026-10-23)
+
+Relinking the same ten canonical objects with real primary, secondary and
+executor entry symbols preserves all three complete large raw bodies. Primary
+and secondary roots each regress their own caller by one ordinary byte (149/148
+at+6 and123/122 at+3); executor root keeps both callers and all38 guards exact.
+No source/profile adoption or original-context inference. See
+[entry evidence](evidence/anm-real-entry-context/README.md).

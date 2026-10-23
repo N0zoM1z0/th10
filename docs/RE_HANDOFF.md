@@ -16,19 +16,12 @@ replay. New checkpoints use `gpt-6.1-sol: ...` and are pushed after validation.
 | Source-present nonexact / source absent | 204 / 121 functions |
 | Whole Windows product / runtime | Open; semantic reconstruction and port not started |
 
-Latest private ANM partition moves the complete ExecuteScript definition into
-a separate consistent GL TU. The eleven-source graph compiles two ANM objects
-over the actual recovered stages and reuses nine pinned canonical game objects.
-ANM9964/ECL7020/Enemy14336 preserve all complete peer bytes after298 ANM/24 Enemy
-bound address rewrites; no ordinary changes. ANM7541/7995/90of92/gap2 and ECL27
-remain. All36 whole guards4618/all121 and eight child paths pass. The initial
-missing-type compile and later isolated-source parse error are retained as
-failed stages; native recovery and explicitly source-body-bound route projection
-are separate completed checks. No source adoption/exact gain;17 new carriers
-removed after hash checks (1098060 bytes). See
-[ANM partition evidence](evidence/anm-execute-partition/README.md),
-[option controls](evidence/anm-codegen-options/README.md) and
-[flag/timer controls](evidence/anm-flags-timer-values/README.md).
+Latest ANM controls relink the same ten pinned objects with three real entries.
+All three large raw bodies remain identical. Primary and secondary roots each
+regress their own complete caller by one byte; ExecuteScript root preserves all
+38 guards4890/all127. ANM9964/7541-of-7995/gap2 and ECL27 remain. No adoption or
+exact gain. All48 new native files were hash-verified and removed. See
+[ANM real-entry evidence](evidence/anm-real-entry-context/README.md).
 
 ## Handoff essentials
 
@@ -43,12 +36,12 @@ removed after hash checks (1098060 bytes). See
   corrected audit below and inspect actual patches before reusing a conclusion.
 - Continue to prioritize the large owners and
   use focused complete-owner replays; do not repeat the excluded storage forms.
-  Enemy value sinks, ANM shared flags/by-value addition, G6/G7 and the complete
-  ExecuteScript TU split do not fix their target graphs. ANM-only Ob1 regresses
-  five exact guards. Next investigate a target-backed real ANM caller/entry
-  context with unchanged types/flags and complete caller guards. Groups49/53/54,
-  FlipX and common tail remain open. Retain the Enemy candidate without
-  promoting it; do not repeat the body-preserving source/profile forms.
+  ANM source lifetimes, G6/G7, executor TU partition and three real entry roots
+  do not fix the current graph; Ob1 regresses five guards. Rotate to reviewed
+  large StageExecuteScript403C80/1868: refresh its actual nine-source StageCreate
+  baseline before investigating color/vector/register differences in opcodes8,
+  10/11,12/13 and14. Keep the three larger owners open and preserve the retained
+  Enemy candidate; no small-function closure substitutes for this work.
 
 ## Recent evidence index
 

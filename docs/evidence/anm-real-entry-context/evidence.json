@@ -1,0 +1,577 @@
+{
+  "scope": "three link-only real ANM entry contexts; no source/profile/exact adoption",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "f9b1b7a6710e2284cf0a6d9d5b8a2f77c2e15cae",
+  "private_packet": ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023",
+  "baseline_entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+  "variants": [
+    {
+      "label": "primary-pass",
+      "entry_validation": {
+        "requested": "?UpdatePrimaryVms@AnmRenderManagerView@@QAEHXZ",
+        "symbol": "?UpdatePrimaryVms@AnmRenderManagerView@@QAEHXZ",
+        "address": "0x0040A5A0",
+        "rva": 42400,
+        "object": "support-01-anmmanager.ltcg.obj",
+        "size": 149
+      },
+      "source_shape_assertions": [
+        "source, headers, compiler flags and object order unchanged",
+        "all ten canonical game objects and two harness inputs reused",
+        "only link ENTRY changes to ?UpdatePrimaryVms@AnmRenderManagerView@@QAEHXZ"
+      ],
+      "producer_sha256": "fc0c95d56ded672ed9aed1d5469d54b7178ae88f6ee57018c4dc89d5956a3433",
+      "reused_objects_and_harness": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "guard_summary": {
+        "owners": 38,
+        "exact": 37,
+        "bytes": 4741,
+        "fields": 124
+      },
+      "rejected_guards": [
+        {
+          "unit": "anm-manager-update-primary-vms",
+          "result": "mismatch",
+          "size": 149,
+          "matched_bytes": 148,
+          "first_differences": [
+            {
+              "offset": "0x6",
+              "linked": 249,
+              "target": 248
+            }
+          ]
+        }
+      ],
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "peer_comparison": [
+        {
+          "label": "primary-pass",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        {
+          "label": "primary-pass",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        {
+          "label": "primary-pass",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14336,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      }
+    },
+    {
+      "label": "secondary-pass",
+      "entry_validation": {
+        "requested": "?UpdateSecondaryVms@AnmRenderManagerView@@QAEHXZ",
+        "symbol": "?UpdateSecondaryVms@AnmRenderManagerView@@QAEHXZ",
+        "address": "0x0040A640",
+        "rva": 42560,
+        "object": "support-01-anmmanager.ltcg.obj",
+        "size": 123
+      },
+      "source_shape_assertions": [
+        "source, headers, compiler flags and object order unchanged",
+        "all ten canonical game objects and two harness inputs reused",
+        "only link ENTRY changes to ?UpdateSecondaryVms@AnmRenderManagerView@@QAEHXZ"
+      ],
+      "producer_sha256": "fc0c95d56ded672ed9aed1d5469d54b7178ae88f6ee57018c4dc89d5956a3433",
+      "reused_objects_and_harness": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "guard_summary": {
+        "owners": 38,
+        "exact": 37,
+        "bytes": 4767,
+        "fields": 124
+      },
+      "rejected_guards": [
+        {
+          "unit": "anm-manager-update-secondary-vms",
+          "result": "mismatch",
+          "size": 123,
+          "matched_bytes": 122,
+          "first_differences": [
+            {
+              "offset": "0x3",
+              "linked": 249,
+              "target": 248
+            }
+          ]
+        }
+      ],
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "peer_comparison": [
+        {
+          "label": "secondary-pass",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        {
+          "label": "secondary-pass",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        {
+          "label": "secondary-pass",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14336,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      }
+    },
+    {
+      "label": "executor-entry",
+      "entry_validation": {
+        "requested": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "address": "0x0040D9A0",
+        "rva": 55712,
+        "object": "support-01-anmmanager.ltcg.obj",
+        "size": 9964
+      },
+      "source_shape_assertions": [
+        "source, headers, compiler flags and object order unchanged",
+        "all ten canonical game objects and two harness inputs reused",
+        "only link ENTRY changes to ?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      ],
+      "producer_sha256": "fc0c95d56ded672ed9aed1d5469d54b7178ae88f6ee57018c4dc89d5956a3433",
+      "reused_objects_and_harness": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "guard_summary": {
+        "owners": 38,
+        "exact": 38,
+        "bytes": 4890,
+        "fields": 127
+      },
+      "rejected_guards": [],
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "peer_comparison": [
+        {
+          "label": "executor-entry",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        {
+          "label": "executor-entry",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        {
+          "label": "executor-entry",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14336,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      }
+    }
+  ],
+  "private_evidence_sha256": {
+    ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023/manifest.json": "5600525b8fab7c221894afeb5e87c37c96578d0de980ec74906003f7bdc40ddf",
+    ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023/probe.py": "fc0c95d56ded672ed9aed1d5469d54b7178ae88f6ee57018c4dc89d5956a3433",
+    ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023/compare-peers.py": "31c32e658d2c2cba34b9cf4776e66c9a85abbb957336bce2a77018ef6fda8f5c",
+    ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023/peer-comparisons.json": "99601f3cf92d695a20d709f0f260575e595be8c3af1a15d77a79ca0cf841ea93",
+    ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023/target-ghidra.txt": "efcd064e7788992b745a0218e97048ee6b3f28ad15d2d7554154d778b51614cb",
+    ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023/ghidra.log": "229c04ec0ed3d708898735862c6c33dc7d6916ce9962b12c3960ee09e4b5983e"
+  },
+  "removed_artifacts": [
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/source.map",
+      "bytes": 92342,
+      "sha256": "14151c696cc38e707966bb7518deb329d20cbb0f055422dc93a69e597ac8bf64"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/source.exe",
+      "bytes": 122880,
+      "sha256": "ee8479f294241fb1e66a5d7517fea95f0090619bf644bb6c578bbebfeddbe3ff"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/source.pdb",
+      "bytes": 117760,
+      "sha256": "d4afba07babcc3e68c61dccdbb02991eb132adf73454a888aedc466f9dcc4090"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/source.map",
+      "bytes": 92342,
+      "sha256": "67fec24c7fcb25cbe1ce6a07c64e96dd817293acab464f35cc6d859d3fc0ad6c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/source.exe",
+      "bytes": 122880,
+      "sha256": "32a4af58b9da940f704c2b114bb5c2d0a1ae450c8057bab8f3a69978fcf482ff"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/source.pdb",
+      "bytes": 117760,
+      "sha256": "540fb9d2b6f6e2b143dbc634e33f02f2b0659d82d6e6ad7c3ee09cd66361a4e5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/source.map",
+      "bytes": 92342,
+      "sha256": "e158a344ca2e30343df9185a2ab6e40f323118218f2d88e4ee4f1b33c200f159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/source.exe",
+      "bytes": 122880,
+      "sha256": "cd87c8ab053ae90ef89db1c69f4df0ccb93d90e44a0dc316b4c5b24b0aa1cdbd"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/link.log",
+      "bytes": 104,
+      "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/source.pdb",
+      "bytes": 117760,
+      "sha256": "3caebc7f1927875c08ba90bf538416dbcdabea8d5cadd404f30f13ab521da511"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    }
+  ],
+  "removed_bytes": 3198873,
+  "new_exact_credit": 0
+}
