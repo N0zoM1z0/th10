@@ -1,0 +1,30 @@
+--- a/src/AnmManager.cpp
++++ b/src/AnmManager.cpp
+@@ -3102,6 +3102,7 @@
+     AnmVmView *createdChild;
+     float savedGameSpeed;
+     int interruptSentinel;
++    unsigned int flipFlags;
+ 
+     if (vm->currentInstruction == NULL)
+         return 1;
+@@ -3242,11 +3243,17 @@
+             break;
+ 
+         case ANM_OP_FLIP_X:
+-            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;
++            flipFlags = vm->flags35C;
++            flipFlags ^= 1u << 9;
++            flipFlags |= 8u;
++            vm->flags35C = flipFlags;
+             vm->scaleX *= -1.0f;
+             break;
+         case ANM_OP_FLIP_Y:
+-            vm->flags35C = (vm->flags35C ^ (1u << 10)) | 8u;
++            flipFlags = vm->flags35C;
++            flipFlags ^= 1u << 10;
++            flipFlags |= 8u;
++            vm->flags35C = flipFlags;
+             vm->scaleY *= -1.0f;
+             break;
+ 

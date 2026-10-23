@@ -1,0 +1,30 @@
+--- a/src/AnmManager.cpp
++++ b/src/AnmManager.cpp
+@@ -3119,6 +3119,7 @@
+     while ((currentInstruction = vm->currentInstruction),
+            currentInstruction->time <= vm->scriptTimer.current)
+     {
++        unsigned int flipFlags;
+ #define GET_INT_VAR(argumentNumber)                                      \
+     ((currentInstruction->variableMask & (1 << (argumentNumber))) != 0   \
+         ? vm->GetIntVar(currentInstruction->intArgs[(argumentNumber)])   \
+@@ -3242,11 +3243,17 @@
+             break;
+ 
+         case ANM_OP_FLIP_X:
+-            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;
++            flipFlags = vm->flags35C;
++            flipFlags ^= 1u << 9;
++            flipFlags |= 8u;
++            vm->flags35C = flipFlags;
+             vm->scaleX *= -1.0f;
+             break;
+         case ANM_OP_FLIP_Y:
+-            vm->flags35C = (vm->flags35C ^ (1u << 10)) | 8u;
++            flipFlags = vm->flags35C;
++            flipFlags ^= 1u << 10;
++            flipFlags |= 8u;
++            vm->flags35C = flipFlags;
+             vm->scaleY *= -1.0f;
+             break;
+ 

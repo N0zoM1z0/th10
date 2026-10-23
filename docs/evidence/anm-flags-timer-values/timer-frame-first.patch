@@ -1,0 +1,36 @@
+--- a/src/AnmManager.cpp
++++ b/src/AnmManager.cpp
+@@ -3095,6 +3095,11 @@
+     (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];
+ 
+ 
++static __forceinline float AnmFrameSumLocal(float frame, float scale)
++{
++    return scale + frame;
++}
++
+ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
+ {
+     AnmRawInstructionView *currentInstruction;
+@@ -3813,7 +3818,20 @@
+         vertex[1].v = textureV + vm->uvScrollY;
+     }
+ 
+-    vm->scriptTimer.Tick();
++    {
++        AnmVmTimerView &timer = vm->scriptTimer;
++        timer.previous = timer.current;
++        if (*timer.scale > 0.99f && *timer.scale < 1.01f)
++        {
++            ++timer.current;
++            timer.subframe += 1.0f;
++        }
++        else
++        {
++            timer.subframe = AnmFrameSumLocal(timer.subframe, *timer.scale);
++            timer.current = static_cast<int>(timer.subframe);
++        }
++    }
+     g_AnmGameSpeed = savedGameSpeed;
+     return 0;
+ }

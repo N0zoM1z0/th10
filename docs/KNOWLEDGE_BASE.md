@@ -5438,3 +5438,13 @@ with +6 net matched positions, but no rank/aim improvement. An ordinary static
 helper grows Enemy to 14620. All retain the selected result tail in aim instead
 of target rank-five. No source or exact gain is adopted. See
 [value-sink evidence](evidence/enemy-value-sink-lifetimes/README.md).
+
+## ANM shared flip flags and timer value arguments (2026-10-23)
+
+Loop- and function-scoped unsigned accumulators used by both X/Y flips preserve
+all three complete raw bodies. Two real by-value float helpers, with opposite
+parameter orders, preserve the complete bodies after symbol/local-offset replay
+of291 changed ANM and17 Enemy fields. No unresolved or ordinary peer difference
+remains; ECL is raw-neutral. Neither form changes FlipX53/52, common1440/1441 or
+the slow timer's load order. No source/exact gain. See
+[flag/timer evidence](evidence/anm-flags-timer-values/README.md).

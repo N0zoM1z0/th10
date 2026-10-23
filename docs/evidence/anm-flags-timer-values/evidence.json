@@ -1,0 +1,1059 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "ad6e9560a2f75946347f432f8575f1340b455a77",
+  "scope": "four whole-ANM value lifetime controls; no maintained source or exact credit",
+  "private_packet": ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023",
+  "variants": [
+    {
+      "label": "flip-shared-loop",
+      "source_shape_assertions": [
+        "one shared unsigned accumulator actually used by both X/Y flips",
+        "loop-local",
+        "both target FMUL scale operations remain unchanged"
+      ],
+      "source_sha256": "145784d6d95829e83d47a94b0e88700649a64eaa8d07859df2249f29bf999ae0",
+      "producer_sha256": "591fbd8a8e6cd309c690c8eafcb24c8a0a13b3ca60773f080ad374f61dc6ae84",
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "selected_cases": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DDE6",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            62
+          ],
+          "target_address": "0x0043F2AA",
+          "candidate_address": "0x0040DE1B",
+          "target_size": 52,
+          "candidate_size": 52,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 44,
+          "comparable_bytes": 44,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040DE4F",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040DEBF",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040DF2F",
+          "target_size": 92,
+          "candidate_size": 92,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 72,
+          "comparable_bytes": 76,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F974",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "peer_comparison": [
+        {
+          "label": "flip-shared-loop",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "flip-shared-loop",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "flip-shared-loop",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14336,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "982a39ce07b51bfd645955d212b40eb284fd8a0f225edc133473f12189520572",
+      "child_route_report_sha256": "6f695d0653e24f7cdb3f62aafc727e69b2ee26bfb2a03b280c830e8b9cd341cd"
+    },
+    {
+      "label": "flip-shared-function",
+      "source_shape_assertions": [
+        "one shared unsigned accumulator actually used by both X/Y flips",
+        "function-local",
+        "both target FMUL scale operations remain unchanged"
+      ],
+      "source_sha256": "6f1f0510017a3529e5c81afa374ebde61bc0a16b3914b52b03cec9d28a119e30",
+      "producer_sha256": "591fbd8a8e6cd309c690c8eafcb24c8a0a13b3ca60773f080ad374f61dc6ae84",
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "selected_cases": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DDE6",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            62
+          ],
+          "target_address": "0x0043F2AA",
+          "candidate_address": "0x0040DE1B",
+          "target_size": 52,
+          "candidate_size": 52,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 44,
+          "comparable_bytes": 44,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040DE4F",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040DEBF",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040DF2F",
+          "target_size": 92,
+          "candidate_size": 92,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 72,
+          "comparable_bytes": 76,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F974",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "peer_comparison": [
+        {
+          "label": "flip-shared-function",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "flip-shared-function",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "flip-shared-function",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14336,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "69df7ef1f880dfef49c25ab9f62d8892316cb28c1c03a87ddf59d4206bf241f3",
+      "child_route_report_sha256": "38c02afb6e719c6b682d291e83a2d6a3b79fcecfe755b5abe83968158509d5dd"
+    },
+    {
+      "label": "timer-scale-first",
+      "source_shape_assertions": [
+        "real by-value float addition helper; both arguments used",
+        "helper parameter order: float scale, float frame",
+        "only final script timer expands; original threshold and conversions retained"
+      ],
+      "source_sha256": "68a0c5d1948dc065ef7a6457e082e1d08ee37b47b74921faaf92df2f4d4c1e30",
+      "producer_sha256": "591fbd8a8e6cd309c690c8eafcb24c8a0a13b3ca60773f080ad374f61dc6ae84",
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "selected_cases": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DDF6",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            62
+          ],
+          "target_address": "0x0043F2AA",
+          "candidate_address": "0x0040DE2B",
+          "target_size": 52,
+          "candidate_size": 52,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 44,
+          "comparable_bytes": 44,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040DE5F",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040DECF",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040DF3F",
+          "target_size": 92,
+          "candidate_size": 92,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 72,
+          "comparable_bytes": 76,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F984",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "peer_comparison": [
+        {
+          "label": "timer-scale-first",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_changed_field_count": 291,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "timer-scale-first",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "timer-scale-first",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14336,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_changed_field_count": 17,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "561b05d2915d0840cb90f38e9f7a20eaf6aa5b9244bab9895e1127202c977af1",
+      "child_route_report_sha256": "94c3cb4b14196617723591a58402b053e501f1c3515a61e27ae318b3874e7b7b"
+    },
+    {
+      "label": "timer-frame-first",
+      "source_shape_assertions": [
+        "real by-value float addition helper; both arguments used",
+        "helper parameter order: float frame, float scale",
+        "only final script timer expands; original threshold and conversions retained"
+      ],
+      "source_sha256": "6922406eefcb2e02beb81e50759f6815bd527772bfe42de22439e912f7a53cd4",
+      "producer_sha256": "591fbd8a8e6cd309c690c8eafcb24c8a0a13b3ca60773f080ad374f61dc6ae84",
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "selected_cases": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DDF6",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            62
+          ],
+          "target_address": "0x0043F2AA",
+          "candidate_address": "0x0040DE2B",
+          "target_size": 52,
+          "candidate_size": 52,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 44,
+          "comparable_bytes": 44,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040DE5F",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040DECF",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040DF3F",
+          "target_size": 92,
+          "candidate_size": 92,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 72,
+          "comparable_bytes": 76,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F984",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "peer_comparison": [
+        {
+          "label": "timer-frame-first",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_changed_field_count": 291,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "timer-frame-first",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "timer-frame-first",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14336,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_changed_field_count": 17,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "33b35b2e3c750b50c39f7dc39d729e47e4d495c5ee0dc5d2c70c54d10ab8a7e1",
+      "child_route_report_sha256": "832fd5275356b5a35a497c0695331a1a1f2dbdb3e0fce094555a612f2a216823"
+    }
+  ],
+  "input_counts": {
+    "source_sha256": 108,
+    "baseline_source_sha256": 32,
+    "baseline_artifact_sha256": 19,
+    "frozen_inputs": 373,
+    "unrelated_untracked": 9
+  },
+  "private_evidence_sha256": {
+    ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/manifest.json": "b2d40e3c5c020c282c7bf5fc64b90b37b1feba275c812cf82142f0775a35f5df",
+    ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/probe.py": "591fbd8a8e6cd309c690c8eafcb24c8a0a13b3ca60773f080ad374f61dc6ae84",
+    ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/compare-peers.py": "31c32e658d2c2cba34b9cf4776e66c9a85abbb957336bce2a77018ef6fda8f5c",
+    ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/peer-comparisons.json": "2cba8ecaca9e40376094043b3f36af957d4eee9e68d00f3b7c849294656a3d78",
+    ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/target-ghidra.txt": "9fcd4de1c260f5430acf786a58d02c767fb202803678a78e6c0612e43e11b7f1",
+    ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/ghidra.log": "994dc2850dea1914c0cc283274c0c9b94619a11cd79cf9e5ca327691889fccc3"
+  },
+  "removed_artifacts": [
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/source.map",
+      "bytes": 92342,
+      "sha256": "55a093c2a9d4e47e2c923ac5726c63da53b5b704d54b92f6ef08f4a4cb788aa6"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/source.exe",
+      "bytes": 122880,
+      "sha256": "4c49f221b00b68981f68c2f27854892d140770b2b6c585833731d4297ed1e52b"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/source.pdb",
+      "bytes": 117760,
+      "sha256": "5b08cc809c5eff03808ae1e2b2fc3410a3608ea753446f836617903e53a7f8b2"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop/support-01-AnmManager.ltcg.obj",
+      "bytes": 248163,
+      "sha256": "982a39ce07b51bfd645955d212b40eb284fd8a0f225edc133473f12189520572"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/source.map",
+      "bytes": 92342,
+      "sha256": "7025c8a042c076598fd00583b7b2fe4bde833fb466ea6f4df0cfdfe6ef259b0e"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/source.exe",
+      "bytes": 122880,
+      "sha256": "620b29f7218b84d2af59dbc9414e134241c93104d32ba73452283e6c6a4e720b"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/link.log",
+      "bytes": 104,
+      "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/source.pdb",
+      "bytes": 117760,
+      "sha256": "c9a27670f71967ebfc06c0b5384c23b3330da99fc66ae9ba82517142858fc60c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function/support-01-AnmManager.ltcg.obj",
+      "bytes": 248179,
+      "sha256": "69df7ef1f880dfef49c25ab9f62d8892316cb28c1c03a87ddf59d4206bf241f3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/source.map",
+      "bytes": 92435,
+      "sha256": "51a33b4374f8a299eb0335d1509718e77b3f82c63e9211fc0defb4b26b7a4816"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/source.exe",
+      "bytes": 122880,
+      "sha256": "e117595769ea9c0b2f212237302a66610530edff2b33cbdea0c039a652b329b9"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/source.pdb",
+      "bytes": 117760,
+      "sha256": "b5db742f0c1580c1305ce38fe72a1269ba3ca515c8a4014a4841fc4e7c6eedab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first/support-01-AnmManager.ltcg.obj",
+      "bytes": 248663,
+      "sha256": "561b05d2915d0840cb90f38e9f7a20eaf6aa5b9244bab9895e1127202c977af1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/source.map",
+      "bytes": 92435,
+      "sha256": "38bcd0633016e7ad8ed972e483f28319dfd307ec4ac74adf5e653b46f51cd345"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/source.exe",
+      "bytes": 122880,
+      "sha256": "0d43756b0860e8e1542fc171850e9e92fbfd81be78801f26ec19ba3735020ce4"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/source.pdb",
+      "bytes": 117760,
+      "sha256": "3947eaed409f1d7dacd1041c6511f7c010a74caa8db4dcc0db544ff56fac387f"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first/support-01-AnmManager.ltcg.obj",
+      "bytes": 248663,
+      "sha256": "33b35b2e3c750b50c39f7dc39d729e47e4d495c5ee0dc5d2c70c54d10ab8a7e1"
+    }
+  ],
+  "removed_bytes": 4267615,
+  "new_exact_credit": 0
+}

@@ -16,15 +16,14 @@ replay. New checkpoints use `gpt-6.1-sol: ...` and are pushed after validation.
 | Source-present nonexact / source absent | 204 / 121 functions |
 | Whole Windows product / runtime | Open; semantic reconstruction and port not started |
 
-Latest Enemy batch tests four value-sink/lifetime forms on the retained hybrid.
-Typed shared-tail resolution is raw-neutral; forceinline by-value storage is
-peer-neutral after independently bound address replay. Const references change
-121 ordinary bytes only in four unrelated spawn/shoot groups (+6 aggregate
-matched positions), leaving rank/aim unchanged. Ordinary helper grows Enemy to
-14620. None repairs aim's misplaced 49-byte result tail; none is adopted.
-All four pass36 whole guards4618/all121 and retain ECL27. New64 native files
-were hash-verified and removed (4271145 bytes); the older hybrid is preserved.
-See [Enemy value-sink evidence](evidence/enemy-value-sink-lifetimes/README.md).
+Latest ANM batch tests four real flag/timer value lifetimes. Loop- and
+function-scoped flip accumulators preserve all three complete raw bodies.
+Scale-first and frame-first by-value timer helpers preserve all complete bytes
+after independently binding291 ANM and17 Enemy changed address fields. FlipX
+still53/52, common span1440/1441 and slow timer order unchanged. All36 whole
+guards4618/all121 and eight child paths pass per trial; ECL27 is retained.
+No source or exact gain;64 new native files removed after hash verification
+(4267615 bytes). See [ANM flag/timer evidence](evidence/anm-flags-timer-values/README.md).
 
 ## Handoff essentials
 
@@ -39,9 +38,11 @@ See [Enemy value-sink evidence](evidence/enemy-value-sink-lifetimes/README.md).
   corrected audit below and inspect actual patches before reusing a conclusion.
 - Continue to prioritize the large owners and
   use focused complete-owner replays; do not repeat the excluded storage forms.
-  The latest value-sink tests do not fix Enemy's shared rank/aim graph. Rotate
-  to ANM temporary groups49/53/54 or common-tail2 with a distinct target-backed
-  lifetime hypothesis; retain the Enemy candidate without promoting it.
+  Enemy value sinks and the latest ANM shared flags/by-value addition forms
+  do not fix their target graphs. Next test a distinct declared ANM processor
+  codegen context, preserving /GL and focused whole guards; otherwise return to
+  groups49/53/54 with a materially different lifetime hypothesis. Retain the
+  Enemy candidate without promoting it.
 
 ## Recent evidence index
 
