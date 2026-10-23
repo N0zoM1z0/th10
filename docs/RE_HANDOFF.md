@@ -1,6 +1,7 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-23 after Player vector-value ordering. Reconstruction remains
+Updated 2026-10-23 for handoff after Player vector-value ordering and artifact
+compaction. Reconstruction remains
 **active-incomplete**. Maintained PlayerInitialize keeps1435 bytes and now matches
 1359/leaves76 differences after49 independent address bindings. Headers, layouts,
 ABI declarations, canonical recipes and exact ledgers are unchanged. Checkpoint
@@ -140,87 +141,19 @@ maintained17, player-services maintained/full-services and prior-chain-canonical
   14396-byte/gap298 candidate
   `build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim`.
 
-## Cleanup, preservation and restoration
+## Artifact recovery
 
-The [current cleanup](evidence/player-initialization-vector-order/cleanup-summary.json)
-archives16 closed build trees and15 private source proposals:431 files/32.06MB
-become0.42MB, reclaiming31.64MB. All25803 retained-file hashes are unchanged during
-compaction. Current/selected carriers and all required old caches remain expanded.
-Restore ignored paths before historical consumers:
+Code checkpoint `2c1c753` retains the measured Player improvement. The
+[handoff cleanup](evidence/handoff-artifact-compact-20261023/README.md) archives
+85 complete historical LTCG probe caches:1229 files/64.85MB become2.28MB,
+reclaiming62.57MB. All24600 protected-file hashes are unchanged during compaction.
+The preceding Player batch separately reclaimed31.64MB. No further game-source,
+header, recipe or ledger change is made for cleanup.
 
-```sh
-tar -xJf .analysis/player-vector-order-cleanup-20261023/completed-controls.tar.xz -C .
-```
-
-The [preceding owner-capture cleanup](evidence/player-initialization-owner-capture/cleanup-summary.json)
-records16 closed builds and two completed67-file type snapshots:567 files/34.16MB
-become0.88MB, plus one superseded ledger intermediate removed. Reclaimed payload
-is34.39MB; all25532 protected hashes are unchanged during compaction. Current and
-selected carriers, the old expanded caller graph, source witnesses and compact
-reports/producers remain expanded. Restore ignored paths from the repository root:
-
-```sh
-tar -xJf .analysis/player-owner-capture-cleanup-20261023/completed-controls.tar.xz -C .
-```
-
-The [preceding handoff cleanup](evidence/handoff-ready-20261023/README.md) archives
-19 newly closed Player build trees, five full private snapshots and15 historical
-host-test output trees:13326 files/133.71MB become1.74MB, reclaiming131.97MB payload
-(163.81MB allocated blocks). During compaction all25296 retained-file hashes
-are unchanged; documentation updates follow that protected check.
-Two useful19-input graphs, current maintained/selected carriers, required caches,
-compact reports and producers remain expanded. Restore selected roots before
-running historical consumers:
-
-```sh
-tar -xJf .analysis/handoff-ready-20261023/player-completed-controls.tar.xz -C .
-tar -xJf .analysis/handoff-ready-20261023/historical-host-checks.tar.xz -C .
-```
-
-The [preceding cleanup receipt](evidence/player-initialization-caller-controls/cleanup-summary.json)
-records15 completed control builds and four closed source/header snapshots:
-665 files/33.40MB become0.73MB, reclaiming32.67MB of payload. Every archive member
-is length/hash-verified and all37241 protected file hashes are unchanged. Both
-current carriers, selected sources, compact reports and producers remain expanded.
-Restore archived controls/snapshots from the repository root when needed:
-
-```sh
-tar -xJf .analysis/player-caller-cleanup-20261023/completed-controls.tar.xz -C .
-```
-
-The [current validation receipt](evidence/player-initialization-vector-order/validation-summary.json)
-states the focused source/Oracle scope. The
-[owner-capture receipt](evidence/player-initialization-owner-capture/validation-summary.json)
-retains its earlier scope. The
-[handoff-only receipt](evidence/handoff-ready-20261023/validation-summary.json) and
-[publication receipt](evidence/player-initialization-caller-controls/validation-summary.json)
-retain their earlier build/check scopes. The previous
-[ordering cleanup](evidence/player-initialization-ordering/README.md) retains its
-separate338-file gzip archive and restoration command, saving18.17MB at that checkpoint.
-The [previous cleanup receipt](evidence/handoff-final-20261023/README.md) records
-13 losslessly archived historical RNG snapshot trees, 26 removed duplicate
-Player objects and Git object repacking. Snapshot contents were verified per
-file before removal. Historical RNG producers, receipts and compact results
-remain expanded; restore required trees before using old consumers.
-Git refs and the reachable/reflog commit list are unchanged by packing.
-
-All canonical linked outputs, current large-owner candidates, their required
-source snapshots, toolchains, Wine state, Ghidra database, original target and
-game data are retained. All nine unrelated untracked
-`docs/evidence/d3d-adapter-format/` files, including `.gitattributes`, remain
-unstaged and hash-unchanged. Unknown-origin legacy files are retained.
-
-Restore the earlier RNG snapshot archive from the repository root; optionally append one
-exact original member path from the inventory:
-
-```sh
-tar -xzf .analysis/handoff-final-20261023/historical-rng-snapshots.tar.gz -C .
-```
-
-Earlier archives remain unchanged, with separate restoration commands:
-[329 compiler reports](evidence/handoff-cleanup-20261023/README.md) and
-[28 GUI reports](evidence/handoff-cleanup-20261022/README.md).
-Never restore old maintained source or weaken historical pins to rerun a probe.
+Use the [artifact and restoration index](RE_ARTIFACTS.md) for current expanded
+carriers, every archive path and restore command. Restore required ignored paths
+before historical consumers; never restore old source over src/ or weaken pins.
+All nine unrelated untracked D3D files remain unstaged and hash-unchanged.
 
 ## Resume safely and validation scope
 

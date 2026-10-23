@@ -1,0 +1,129 @@
+{
+  "scope": "documentation and lossless historical probe-cache compaction after recovered Player checkpoint; no game source/header/recipe/ledger changes",
+  "starting_head": "2c1c753865fdaa818c330f6b3dab5676da9eae1c",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "recovery": "original target, executed pinned toolchain smoke, target-required tracking and status passed before compaction; no new game reconstruction experiment or Ghidra analysis",
+  "focused_oracle": {
+    "kind": "cached full-owned-extent comparison after checking current source and artifact hashes",
+    "parent_size": 1435,
+    "parent_matching": 1359,
+    "parent_differences": 76,
+    "independent_fields": 49,
+    "result": "expected complete mismatch; no new exact credit",
+    "full_guards_exact": 8,
+    "guard_bytes": 1753,
+    "guard_fields": 99,
+    "receipt_sha256": "f365a8946b3f6c2ecd653a48f8d842eb1b67f6da8976827e6a135ae12ebce59e",
+    "new_game_compilations": 0,
+    "independent_cold_pair": false
+  },
+  "cleanup": {
+    "archived_trees": 85,
+    "files": 1229,
+    "before_bytes": 64851867,
+    "archive_bytes": 2278404,
+    "reclaimed_bytes": 62573463,
+    "member_lengths_hashes_verified_before_removal": true,
+    "protected_files_verified": 24600,
+    "all_protected_unchanged_during_compaction": true,
+    "subsequent_changes_to_protected_files": [
+      "README.md",
+      "docs/RE_HANDOFF.md"
+    ],
+    "unrelated_D3D_files_hash_verified": 9,
+    "unrelated_D3D_staged": false,
+    "archive_restore_commands_present": 10
+  },
+  "checks": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-target.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.125,
+      "log_sha256": "52f48d8a90d0019b41d48bc7d804839aa4f78c8978029937505f9da1f3feb630"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.141,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py",
+        "--require-target"
+      ],
+      "exit_code": 0,
+      "seconds": 0.354,
+      "log_sha256": "344278847dcec53d43546fabbc51f81b910eeb0d4913e733f6d5894d25f5bc02"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.143,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.138,
+      "log_sha256": "d9c37039657cc0a1a10d8f7a205617b4eaf5851f9e7572226287bc7e5e4aa423"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-reconstruction-status.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.144,
+      "log_sha256": "881c82bd1357823b1b3f6dfba8c3214a9c1b5854689adf0981574cf5c9cc8990"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/build-match-unit.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.388,
+      "log_sha256": "3c3d25a8f7ef707beaac4c4d61aa69edb7cdb6d8fb909df373a23b0c1a29a27a"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.146,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.009,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "full_CI": "not run under operator focused-validation preference",
+  "native_product_runtime": "open; no runtime validation",
+  "semantic_port": "not started; no new credit",
+  "phase": "active-incomplete"
+}

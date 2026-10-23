@@ -1,0 +1,211 @@
+{
+  "scope": "lossless compaction of complete historical probe-ltcg caches; all direct tracked and private producer/input-manifest references retained expanded",
+  "starting_head": "2c1c753865fdaa818c330f6b3dab5676da9eae1c",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "producer_family": {
+    "scripts/probe-ltcg-backlog.py": "05b5ee4b21bb0af5d24111dff40fd8aea776c8c0e7656f6012bb71aa63bca26f",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f"
+  },
+  "selected_roots": [
+    "build/probe-ltcg/AnmExecute-baseline",
+    "build/probe-ltcg/AnmExecute-color-baseline-20261016",
+    "build/probe-ltcg/AnmExecute-color-order-20261016",
+    "build/probe-ltcg/AnmExecute-color-primary-root-20261016",
+    "build/probe-ltcg/AnmExecute-color-value-20261016",
+    "build/probe-ltcg/AnmExecute-rng-branches",
+    "build/probe-ltcg/AnmExecute-rng-cold2",
+    "build/probe-ltcg/AnmExecute-scale-value",
+    "build/probe-ltcg/AnmExecute-script-binding",
+    "build/probe-ltcg/EnemyLaser-baseline",
+    "build/probe-ltcg/EnemyLaser-integrated",
+    "build/probe-ltcg/EnemyRuntime-baseline",
+    "build/probe-ltcg/EnemyRuntime-connected-baseline",
+    "build/probe-ltcg/EnemyRuntime-connected-identities",
+    "build/probe-ltcg/EnemyRuntime-ecl-context-baseline",
+    "build/probe-ltcg/EnemyRuntime-movement",
+    "build/probe-ltcg/EnemyRuntime-movement-components",
+    "build/probe-ltcg/EnemyRuntime-scale-reload",
+    "build/probe-ltcg/EnemyRuntime-subroutine",
+    "build/probe-ltcg/EnemyRuntime-subroutine-sequenced",
+    "build/probe-ltcg/EnemyRuntime-tail-baseline",
+    "build/probe-ltcg/EnemyRuntime-tail-final",
+    "build/probe-ltcg/EnemyRuntime-tail-identities",
+    "build/probe-ltcg/GuiHud-branch-immediates",
+    "build/probe-ltcg/GuiHud-counter-direct",
+    "build/probe-ltcg/GuiHud-lexical-boss",
+    "build/probe-ltcg/GuiHud-lexical-message",
+    "build/probe-ltcg/GuiHud-lexical-spell",
+    "build/probe-ltcg/GuiHud-semantic",
+    "build/probe-ltcg/GuiReset-lexical-interrupt",
+    "build/probe-ltcg/GuiReset-local-interrupt",
+    "build/probe-ltcg/ItemSound-baseline",
+    "build/probe-ltcg/ItemSound-corrected",
+    "build/probe-ltcg/MusicRoom-interrupt-structure",
+    "build/probe-ltcg/MusicRoom-lexical-interrupt",
+    "build/probe-ltcg/MusicRoom-prerequisites",
+    "build/probe-ltcg/MusicRoom-recovered",
+    "build/probe-ltcg/MusicRoom-warning-arms",
+    "build/probe-ltcg/PlayerDamage-auxiliary",
+    "build/probe-ltcg/PlayerDamage-baseline",
+    "build/probe-ltcg/PlayerDamage-bounds-aggregate",
+    "build/probe-ltcg/PlayerDamage-connected-baseline",
+    "build/probe-ltcg/PlayerDamage-connected-identities",
+    "build/probe-ltcg/PlayerDamage-corrected",
+    "build/probe-ltcg/PlayerDamage-movement-identities",
+    "build/probe-ltcg/PlayerDamage-prerequisites",
+    "build/probe-ltcg/PlayerDamage-shot-update",
+    "build/probe-ltcg/PlayerDamage-size-reload",
+    "build/probe-ltcg/PlayerUpdate-baseline",
+    "build/probe-ltcg/ResultMenu-initial",
+    "build/probe-ltcg/ResultMenu-keyconfig-display",
+    "build/probe-ltcg/ResultMenu-options-attenuation-order-20261016",
+    "build/probe-ltcg/ResultMenu-options-baseline-20261016",
+    "build/probe-ltcg/ResultMenu-options-color-expansion-20261016",
+    "build/probe-ltcg/ResultMenu-options-controller-20261016",
+    "build/probe-ltcg/ResultMenu-options-controller-bound-20261016",
+    "build/probe-ltcg/ResultMenu-options-controller-sound-20261016",
+    "build/probe-ltcg/ResultMenu-options-early-return-20261016",
+    "build/probe-ltcg/ResultMenu-options-enclosing-update-20261016",
+    "build/probe-ltcg/ResultMenu-options-expansion-20261016",
+    "build/probe-ltcg/ResultMenu-options-inline-20261016",
+    "build/probe-ltcg/ResultMenu-options-lexical-close-20261016",
+    "build/probe-ltcg/ResultMenu-options-lifetimes-20261016",
+    "build/probe-ltcg/ResultMenu-options-owner-reload-20261016",
+    "build/probe-ltcg/ResultMenu-options-typed-id-20261016",
+    "build/probe-ltcg/ResultMenu-practice-contract",
+    "build/probe-ltcg/ResultMenu-resume-20261016",
+    "build/probe-ltcg/ResultMenu-resume-case-order-20261016",
+    "build/probe-ltcg/ResultMenu-score",
+    "build/probe-ltcg/ResultMenu-score-connected",
+    "build/probe-ltcg/SoundJoinRealMain",
+    "build/probe-ltcg/StageDraw-aggregate-delta",
+    "build/probe-ltcg/StageDraw-aggregate-xyz",
+    "build/probe-ltcg/StageDraw-camera",
+    "build/probe-ltcg/StageDraw-inclusive-depth",
+    "build/probe-ltcg/StageDraw-loaded-sprite",
+    "build/probe-ltcg/StageScript-direct-setters",
+    "build/probe-ltcg/StageScript-fog-hermite-grouped",
+    "build/probe-ltcg/StageScript-fog-recovered",
+    "build/probe-ltcg/StageScript-layout-corrected",
+    "build/probe-ltcg/src_AnmManager.cpp",
+    "build/probe-ltcg/src_BulletManager.cpp",
+    "build/probe-ltcg/src_EclVm.cpp",
+    "build/probe-ltcg/src_ItemManager.cpp",
+    "build/probe-ltcg/src_Sound.cpp"
+  ],
+  "retained_roots": {
+    "AnmExecute-scale-aggregate": [
+      "incomplete cache; preserved"
+    ],
+    "EnemyRuntime-connected-check": [
+      "incomplete cache; preserved"
+    ],
+    "FileWriteRealMain": [
+      ".analysis/gpt-dots-file-write/probe.py"
+    ],
+    "GameManagerCleanup-GuiLifecycle": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-game-gui-lifecycle.py"
+    ],
+    "GameManagerCleanup-GuiLifecycle-EHsc": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-game-gui-lifecycle-eh.py"
+    ],
+    "GameManagerCleanup-GuiNamedMessage-EHsc": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-game-gui-named-eh.py"
+    ],
+    "GameManagerCleanup-Hint": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-game-teardown.py"
+    ],
+    "GameManagerCleanup-Statistics": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-game-statistics.py"
+    ],
+    "GuiReset-recovered": [
+      "incomplete cache; preserved"
+    ],
+    "GuiReset-recovered-entry-fixed": [
+      ".analysis/gpt-dots-gui-reset/checkpoint-notes.py"
+    ],
+    "HintExport-source": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-hint-export.py"
+    ],
+    "HintFrame-source": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-hint-frame.py"
+    ],
+    "HintLifecycle-lexical-marking": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-hint-marking.py"
+    ],
+    "HintLifecycle-lexical-scales": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-hint-scales.py"
+    ],
+    "HintLifecycle-source": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-hint-lifecycle.py"
+    ],
+    "HintLoad-source": [
+      ".analysis/gpt-web/th10-resume-20261016/probe-hint-load.py"
+    ],
+    "MusicRoom-unordered-fixed": [
+      "docs/KNOWLEDGE_BASE.md",
+      ".analysis/gpt-dots-music-room/checkpoint-notes.py"
+    ],
+    "OpenWriteRealReplay": [
+      ".analysis/gpt-dots-open-write/probe.py"
+    ],
+    "PlayerUpdate-corrected": [
+      ".analysis/gpt-dots-player-update/report-contexts.py"
+    ],
+    "PlayerUpdate-respawn": [
+      ".analysis/gpt-dots-player-update/report-final-contexts.py"
+    ],
+    "ResultMenu-options-input-binding-20261016": [
+      ".analysis/gpt-web/th10-resume-20261016/options-input-binding-topology.json",
+      ".analysis/gpt-web/th10-resume-20261016/options-input-binding.json"
+    ],
+    "ResultMenu-pause": [
+      "incomplete cache; preserved"
+    ],
+    "SoundInitRealMain": [
+      ".analysis/gpt-dots-sound-init/probe.py"
+    ],
+    "SoundJoinCorrectEntry": [
+      ".analysis/gpt-dots-sound-join/probe.py"
+    ],
+    "SoundReleaseRealMain": [
+      ".analysis/gpt-dots-sound-release/probe.py"
+    ],
+    "SoundSampleRealMain": [
+      ".analysis/gpt-dots-sound-sample/probe.py"
+    ],
+    "StageDraw-game-stage": [
+      "docs/KNOWLEDGE_BASE.md"
+    ],
+    "StageDraw-lifecycle": [
+      ".analysis/gpt-dots-stage-draw/replay-lifecycle-report.py"
+    ],
+    "StageDraw-passes": [
+      "docs/KNOWLEDGE_BASE.md"
+    ],
+    "StageDraw-recovered": [
+      "incomplete cache; preserved"
+    ],
+    "StageScript-recovered": [
+      "incomplete cache; preserved"
+    ],
+    "src_Main.cpp": [
+      "incomplete cache; preserved"
+    ]
+  },
+  "retention_scan": "all tracked files and private .py/.toml/manifest/plan/input/pins JSON files below4MB; not an exhaustive scan of historical result dumps",
+  "files": 1229,
+  "before_bytes": 64851867,
+  "archive": ".analysis/handoff-artifact-compact-20261023/historical-probe-caches.tar.xz",
+  "archive_bytes": 2278404,
+  "archive_sha256": "69391193b9c54cf13f7d98c2b3dad6e7fced425cb7486e391695ab205f8cf6ea",
+  "inventory": ".analysis/handoff-artifact-compact-20261023/archive-members.json.gz",
+  "inventory_sha256": "6ae0be3203c6674d4d6f7b3bb56a1686e883608b23968bce2a62f88cf485b129",
+  "protected_files_verified": 24600,
+  "all_protected_unchanged_during_compaction": true,
+  "producer_sha256": "cae99d89d72266b9a91b97d173a5613faf48f782c65cedd1e568b7b120593eb6",
+  "restore": "tar -xJf .analysis/handoff-artifact-compact-20261023/historical-probe-caches.tar.xz -C .",
+  "reclaimed_bytes": 62573463,
+  "reclaimed_allocated_bytes": 64921600
+}
