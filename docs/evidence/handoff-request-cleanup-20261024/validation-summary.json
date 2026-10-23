@@ -1,0 +1,89 @@
+{
+  "state": "passed",
+  "scope": "operator-requested documentation/artifact cleanup; no new reconstruction trials",
+  "starting_head": "00c74665b87bb09f6a7e89da0aa9279048bb1a74",
+  "maintained_source_checkpoint": "00c7466",
+  "checks": [
+    {
+      "name": "current-parent-replay",
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/anm-full-parent-bindings-20261024/compare-current.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "1682089f2e69b8fe8e9418cb190f45d7b236da6b73ea2b70a7cecd1f91d801e4"
+    },
+    {
+      "name": "toolchain-check",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "name": "tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "c07bd5ce4bc75bc6dfbaf01c986b3ec251b111ff5b9c5cd0b29bfa571e71e57e"
+    },
+    {
+      "name": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "name": "doc-hygiene",
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "current_ANM": {
+    "size": 9964,
+    "matched_bytes": 9960,
+    "fields": 350,
+    "local_destinations": 95
+  },
+  "current_ECL": "6995/7020/all189/62;171-byte callee exact;16 guards1617/all21",
+  "current_Player": "1380/1435/all49;actual17-input/52-file graph;8 guards1753/all99",
+  "source_and_config_unchanged": true,
+  "all108_source_pins_and32_compiled_input_pins_verified": true,
+  "all373_source_config_script_pins_verified": true,
+  "all9_D3D_files_hash_unchanged_untracked_unstaged": true,
+  "archived_controls": 15,
+  "private_game_compilations_before_cleanup": 11,
+  "real_input_relinks_before_cleanup": 4,
+  "all_launched_experiments_terminal": true,
+  "no_new_reconstruction_started_after_handoff_request": true,
+  "full_CI": {
+    "rerun": false,
+    "reason": "source/config/test code unchanged; focused retained-carrier and repository checks passed",
+    "prior_source_checkpoint": "00c7466",
+    "prior_documented_coverage": "89 completed +22 recovered stages;111 total; initial stale-pin failure retained"
+  },
+  "new_exact_credit": false,
+  "product_runtime_semantic_port_completion": false
+}

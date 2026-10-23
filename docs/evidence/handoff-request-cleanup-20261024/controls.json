@@ -1,0 +1,1134 @@
+[
+  {
+    "label": "actual-player-EHs-11",
+    "kind": "declared-real-input-relink",
+    "game_compiles": 0,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "not separately rerun; full-parent fields/ordinary comparison completed",
+    "plan_sha256": "cb652a6cd26caae13ae8b1bff094f397fb4818c5c80d3d581da76e6e98f3b083",
+    "object_inputs": 11,
+    "context": {
+      "artifact_kind": "linked-pe",
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        "src/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp",
+        "src/Player.cpp"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ],
+        "src/EclVm.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/Player.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ]
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "output_dir": "build/gpt-6.1-sol/anm-request-return-context-20261024/actual-player-EHs-11",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1"
+    },
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "order-Anm-first-support",
+    "kind": "declared-real-input-relink",
+    "game_compiles": 0,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "not separately rerun; full-parent fields/ordinary comparison completed",
+    "plan_sha256": "63d01faa5d5683cc1e8f2f64d5ae1e34c5131e3d00f1614c285f3f5eeeb207df",
+    "object_inputs": 10,
+    "context": {
+      "artifact_kind": "linked-pe",
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/EclVm.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ],
+        "src/EclVm.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ]
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "output_dir": "build/gpt-6.1-sol/anm-request-return-context-20261024/order-Anm-first-support",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1"
+    },
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "order-Anm-primary",
+    "kind": "declared-real-input-relink",
+    "game_compiles": 0,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "not separately rerun; full-parent fields/ordinary comparison completed",
+    "plan_sha256": "99420c4ac7d6cf0cba7c7f1f858cfda51335c2c3bc2f6f4a695cbb9033aa7a09",
+    "object_inputs": 10,
+    "context": {
+      "artifact_kind": "linked-pe",
+      "source": "src/AnmManager.cpp",
+      "support_sources": [
+        "src/EnemyEclDispatcher.cpp",
+        "src/EclVm.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ],
+        "src/EclVm.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ]
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "output_dir": "build/gpt-6.1-sol/anm-request-return-context-20261024/order-Anm-primary",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1"
+    },
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "order-creator-first-support",
+    "kind": "declared-real-input-relink",
+    "game_compiles": 0,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "not separately rerun; full-parent fields/ordinary comparison completed",
+    "plan_sha256": "42fdc9b4085adf5dbea320959710444a285d41e63edec90a04c1234041ebd675",
+    "object_inputs": 10,
+    "context": {
+      "artifact_kind": "linked-pe",
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        "src/AnmVmCreate.cpp",
+        "src/AnmManager.cpp",
+        "src/EclVm.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ],
+        "src/EclVm.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ]
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "output_dir": "build/gpt-6.1-sol/anm-request-return-context-20261024/order-creator-first-support",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1"
+    },
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-both-reference-accessors",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "67f6b0a72ad6d42f4598b2465d9300348bd387429f1ff821df7d7ff2c84b0775",
+    "source_sha256": "d9dbe2e7cf31ccdd590e72187136652c54a871bf313fab7befd042bd3d27ed4b",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-both-value-accessors",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9950,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 139,
+          "target": 82
+        },
+        {
+          "offset": "0x116",
+          "linked": 149,
+          "target": 80
+        },
+        {
+          "offset": "0x117",
+          "linked": 8,
+          "target": 139
+        },
+        {
+          "offset": "0x118",
+          "linked": 3,
+          "target": 133
+        },
+        {
+          "offset": "0x119",
+          "linked": 0,
+          "target": 8
+        },
+        {
+          "offset": "0x11A",
+          "linked": 0,
+          "target": 3
+        },
+        {
+          "offset": "0x11B",
+          "linked": 81,
+          "target": 0
+        },
+        {
+          "offset": "0x11C",
+          "linked": 80,
+          "target": 0
+        },
+        {
+          "offset": "0x11D",
+          "linked": 82,
+          "target": 80
+        },
+        {
+          "offset": "0x2476",
+          "linked": 52,
+          "target": 64
+        },
+        {
+          "offset": "0x247C",
+          "linked": 64,
+          "target": 52
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "15e14fcd904545950249c0c826a401be635064637fde8c7521c6ffd620d34ce5",
+    "source_sha256": "200ce874bc18ab433c1db3324115f6006d7e4026ba3858df709a22083772a8d9",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-layer-value-accessor",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9950,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 139,
+          "target": 82
+        },
+        {
+          "offset": "0x116",
+          "linked": 149,
+          "target": 80
+        },
+        {
+          "offset": "0x117",
+          "linked": 8,
+          "target": 139
+        },
+        {
+          "offset": "0x118",
+          "linked": 3,
+          "target": 133
+        },
+        {
+          "offset": "0x119",
+          "linked": 0,
+          "target": 8
+        },
+        {
+          "offset": "0x11A",
+          "linked": 0,
+          "target": 3
+        },
+        {
+          "offset": "0x11B",
+          "linked": 81,
+          "target": 0
+        },
+        {
+          "offset": "0x11C",
+          "linked": 80,
+          "target": 0
+        },
+        {
+          "offset": "0x11D",
+          "linked": 82,
+          "target": 80
+        },
+        {
+          "offset": "0x2476",
+          "linked": 52,
+          "target": 64
+        },
+        {
+          "offset": "0x247C",
+          "linked": 64,
+          "target": 52
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "e7810fce50cd07ae8ba5b027645018bdd0140eba39241a8671367abd9f4bf5f7",
+    "source_sha256": "90e0f7821726a7a3bfd36106ed2767314c1717aab5712babfe705e88d072182f",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-local-case-type",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "9355d0a211a3deb893e149b74a7230ea69e06ff8776032d805c5d51cf5dda259",
+    "source_sha256": "d36be5e86e88400bcb3cb4e462e2a2b4dc77e29b3044e2ad63b20476cbe247f1",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-return-layer-argument-first",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "2b08f7c08ee3775951c72368ca1e9cc4398fc94e9a641734d22e2ba8010378d3",
+    "source_sha256": "df7e9da9427175005ed26c78b7d84f926b91a80e4477b8690158ef92e970c9bd",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-return-read-fields",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 1,
+    "candidate_size": 9948,
+    "full_parent": {
+      "result": "unsupported",
+      "error": "PDB contribution size 0x26dc differs from manifest 0x26ec"
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "rejected-extra-helper-call",
+    "plan_sha256": "b206e896fc5f8c5a936a1afa5629e7e191289d1f95f34d6f82c4429ebc9982f7",
+    "source_sha256": "67261432c94f683910e6105fb35cdf99fab8810fe6a2f786dcee2fdcae673040",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-return-two-values",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "0fbe5a90ed7fa069e08b8aa9878a520521e5ca609ccfd4a1a3ca43342485e72f",
+    "source_sha256": "bfc91d15df38deffc31dad48633278a511606a7bc00692fc35f71006701ae91a",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-script-value-accessor",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "8f94842af38490ba339b5afc96f10e66286a330ddf4d4ce377a7078b063b39dd",
+    "source_sha256": "78336914a46c2fb8fcaa9423aec3dfcf7b446fd57b204622b5f5362365afa396",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-signed-layer-value",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "354a5034155fd144bf51f321137047bd6c82b4a7b08145665f96969bb81517b5",
+    "source_sha256": "d35395ab78c7a8508c3d2321e8558cece5425c9d522d2514ba67af1485bfe06c",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-unsigned-script-signed-layer",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "ae86a11b682e55d04fadc0e6ee5979ef728658f8f7394043d97295fef8dcbbab",
+    "source_sha256": "0591496ba678025c2c00a5a655a46e4d294c810793ad72551172fe28842976ce",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  },
+  {
+    "label": "request-unsigned-script-value",
+    "kind": "one-ANM-compile",
+    "game_compiles": 1,
+    "terminal_returncode": 0,
+    "candidate_size": 9964,
+    "full_parent": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ]
+    },
+    "whole_guards": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "child_routes": "passed8-bounded-paths",
+    "plan_sha256": "fe2e9bd97b6b63e3251ca02ed1a131c2c70b97d29a50f1a0d08f09a1e867eb31",
+    "source_sha256": "55d0323f2e670c06634b459c584cb2ceb27ec3acfc67db80b8c424ff8bf64830",
+    "producer_sha256": "099eefa541d54d57bf7571b810bde7abf82ad103d8f0011df221d2593df29439",
+    "ECL": {
+      "size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "complete_callee_size": 171,
+      "callee_exact": true
+    }
+  }
+]

@@ -7,6 +7,13 @@ when transferring this workspace. Historical input pins remain immutable.
 
 ## Expanded continuation inputs
 
+Latest [handoff recovery](evidence/handoff-request-cleanup-20261024/README.md)
+closes all15 request-return/accessor/type/caller/order controls without improving
+ANM9960/9964. Their source/image/bulky reports are archived; original plans,
+producers, logs and a separate terminal checkpoint remain in
+`.analysis/gpt-6.1-sol/anm-request-return-context-20261024`.
+The three current/selected carriers below are unchanged and remain expanded.
+
 Current replay is
 `.analysis/gpt-6.1-sol/anm-full-parent-bindings-20261024/compare-current.py`.
 It pins actual maintained ANM9960/9964/all350/95, ECL6995/7020 and the rebuilt
@@ -82,6 +89,7 @@ exact historical files; it does not make a stale report current or grant exactne
 
 | Archive group | Receipt | Before → archive |
 | --- | --- | ---: |
+| Request-return/accessor/type and declared caller/order controls,15 closed images | [Latest handoff](evidence/handoff-request-cleanup-20261024/cleanup-summary.json) |32.70 →0.53 |
 | ANM child request/whole-vector/value controls and real-Player relink,23 closed images | [ANM request record](evidence/anm-child-request-record/cleanup-summary.json) |53.87 →0.59 |
 | Recovered ECL inline and ANM flag/child/timer controls, 26 closed images | [2026-10-24 handoff](evidence/handoff-cleanup-20261024/cleanup-summary.json) | 59.13 → 0.61 |
 | ECL consumer/working-value/profile controls,30 closed images | [Typed trace](evidence/ecl-typed-trace-lifetimes/cleanup-summary.json) |52.81 →0.47 |
@@ -112,6 +120,7 @@ with `tar -tJf` for xz or `tar -tzf` for gzip. Restore only ignored paths; never
 extract old maintained source into src/ or relax source/target pins.
 
 ```sh
+tar -xJf .analysis/handoff-request-cleanup-20261024/closed-request-and-order-controls.tar.xz -C .
 tar -xJf .analysis/anm-child-request-cleanup-20261024/closed-controls.tar.xz -C .
 tar -xJf .analysis/handoff-cleanup-20261024/closed-ecl-anm-controls.tar.xz -C .
 tar -xJf .analysis/ecl-typed-trace-cleanup-20261023/closed-controls.tar.xz -C .

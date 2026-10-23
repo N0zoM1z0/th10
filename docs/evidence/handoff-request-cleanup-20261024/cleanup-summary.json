@@ -1,0 +1,20 @@
+{
+  "state": "completed",
+  "starting_head": "00c74665b87bb09f6a7e89da0aa9279048bb1a74",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "archived_images": 15,
+  "game_compilations": 11,
+  "files": 355,
+  "before_bytes": 32699863,
+  "archive": ".analysis/handoff-request-cleanup-20261024/closed-request-and-order-controls.tar.xz",
+  "archive_bytes": 528784,
+  "archive_sha256": "747d6a45cbb363fb3050e493eeb1af06accc36d914f7211b577d92e3e67ea8b7",
+  "inventory": ".analysis/handoff-request-cleanup-20261024/archive-members.json.gz",
+  "inventory_sha256": "d0c84db58d8eceba77541e428662f904a5bb5f7ee60433ded5ddd25952d28e0c",
+  "protected_files_verified": 23681,
+  "all_protected_unchanged_during_compaction": true,
+  "preservation": "all maintained source/config/ledgers, current/selected/Player17 carriers, before/support caches and archives, target/resources/tools/Wine/database, nine D3D files, unknown legacy content",
+  "producer_sha256": "bc93c836d0ef73c7e96bd91854f8bb1de17956e9b2199e2842bd3c0061c40f8d",
+  "restore": "tar -xJf .analysis/handoff-request-cleanup-20261024/closed-request-and-order-controls.tar.xz -C .",
+  "reclaimed_bytes": 32171079
+}
