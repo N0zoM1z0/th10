@@ -1,0 +1,23 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -56,6 +56,11 @@
+ // Target 0x00403C80: code1806 bytes, with a separately audited15-slot table.
+ // Opcode0 yields without consuming the record or ticking the script timer;
+ // interpolation/rocking still advance. Signed record sizes are not repaired.
++static void StoreStageScriptGlobal(int value)
++{
++    g_StageScriptGlobal4923A8 = value;
++}
++
+ int __stdcall StageExecuteScript(StageScriptView *stage)
+ {
+     while (stage->instruction->time <= stage->scriptTimer.current)
+@@ -171,7 +176,7 @@
+             stage->rockingTimer.SetCurrent(0);
+             break;
+         case 13:
+-            g_StageScriptGlobal4923A8 = integers[0];
++            StoreStageScriptGlobal(integers[0]);
+             break;
+         case 14:
+             if (integers[1] >= 0)

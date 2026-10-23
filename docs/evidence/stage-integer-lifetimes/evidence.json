@@ -1,0 +1,602 @@
+{
+  "date": "2026-10-23",
+  "starting_commit": "2b03d2b970d6a14b701fb621da053620fe7ae7b8",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "recover four completed pre-handoff controls; no new native build or maintained source change",
+  "fresh_canonical_replay": {
+    "parent_bytes": 1868,
+    "raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+    "guards": {
+      "count": 11,
+      "exact": 11,
+      "bytes": 987,
+      "fields": 36
+    },
+    "case_summary": {
+      "matched": 1443,
+      "comparable": 1619,
+      "gap": 2,
+      "same_sized": 13
+    }
+  },
+  "trials": [
+    {
+      "label": "shared-word",
+      "scope": "complete Stage dispatcher structural diagnosis; no exact credit",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/StageScript.cpp",
+          "source_sha256": "85827aca672e2926d77ca88fa16a641006feee5bb7b00777be5ed304009d4a46",
+          "object_sha256": "24745a3d9aeeebdb4b3d42ef74868d0acf9155197995b38d0434dc256966feb7",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-03-AnmManager.ltcg.obj": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1439,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "one actually used int value shared by cases12/13",
+        "the record is read only in the original selected branches; no hoisted unconditional load"
+      ],
+      "source_sha256": "85827aca672e2926d77ca88fa16a641006feee5bb7b00777be5ed304009d4a46",
+      "producer_sha256": "04466ab9a408f961607d6b8c637b675b7715a3dbf1e678e7b13dca5678b78e36",
+      "parent_bytes": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "0dcc2c2ed8644650d875fe42621e3a7f650b6516e032097bd6fe6f5fa0019ce8",
+      "fields": 36,
+      "replayed_changed_fields": [],
+      "unresolved": [],
+      "remaining_differences": [
+        {
+          "offset": 1574,
+          "baseline": 1,
+          "candidate": 69
+        },
+        {
+          "offset": 1575,
+          "baseline": 216,
+          "candidate": 64
+        },
+        {
+          "offset": 1576,
+          "baseline": 69,
+          "candidate": 216
+        },
+        {
+          "offset": 1577,
+          "baseline": 64,
+          "candidate": 1
+        }
+      ],
+      "equal_after_verified_address_replay": false,
+      "acceptance_authority": "none; complete native peer comparison, not target exactness"
+    },
+    {
+      "label": "global-helper",
+      "scope": "complete Stage dispatcher structural diagnosis; no exact credit",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/StageScript.cpp",
+          "source_sha256": "0961dfaa29735f2c31912c23f47ac46a081a9b983a4db7fe17455b707ff8a3bd",
+          "object_sha256": "eadc829b17469febd28c83ebc5366fd1c0de570297736238cd9e0a6c60ff2f5c",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-03-AnmManager.ltcg.obj": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "only opcode13 passes its used int to a real void store helper",
+        "helper qualifier: ordinary static",
+        "no ABI annotation, fake result or unused input"
+      ],
+      "source_sha256": "0961dfaa29735f2c31912c23f47ac46a081a9b983a4db7fe17455b707ff8a3bd",
+      "producer_sha256": "04466ab9a408f961607d6b8c637b675b7715a3dbf1e678e7b13dca5678b78e36",
+      "parent_bytes": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "7a03b4c7be3ec2562a5c8b51206ad60b4cdbf40b492ea887bc094bebe357db3b",
+      "fields": 36,
+      "replayed_changed_fields": [
+        {
+          "offset": 55,
+          "type": "DIR32",
+          "local_offset": 1808,
+          "symbols": []
+        },
+        {
+          "offset": 705,
+          "type": "REL32",
+          "local_offset": null,
+          "symbols": [
+            "??0StageFogView@@QAE@MMMMMM@Z"
+          ]
+        },
+        {
+          "offset": 1582,
+          "type": "REL32",
+          "local_offset": null,
+          "symbols": [
+            "__ftol2"
+          ]
+        },
+        {
+          "offset": 1770,
+          "type": "REL32",
+          "local_offset": null,
+          "symbols": [
+            "?Tick@AnmVmTimerView@@QAEXXZ"
+          ]
+        },
+        {
+          "offset": 1788,
+          "type": "REL32",
+          "local_offset": null,
+          "symbols": [
+            "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+          ]
+        },
+        {
+          "offset": 1808,
+          "type": "DIR32",
+          "local_offset": 1589,
+          "symbols": []
+        },
+        {
+          "offset": 1812,
+          "type": "DIR32",
+          "local_offset": 59,
+          "symbols": []
+        },
+        {
+          "offset": 1816,
+          "type": "DIR32",
+          "local_offset": 130,
+          "symbols": []
+        },
+        {
+          "offset": 1820,
+          "type": "DIR32",
+          "local_offset": 243,
+          "symbols": []
+        },
+        {
+          "offset": 1824,
+          "type": "DIR32",
+          "local_offset": 341,
+          "symbols": []
+        },
+        {
+          "offset": 1828,
+          "type": "DIR32",
+          "local_offset": 373,
+          "symbols": []
+        },
+        {
+          "offset": 1832,
+          "type": "DIR32",
+          "local_offset": 465,
+          "symbols": []
+        },
+        {
+          "offset": 1836,
+          "type": "DIR32",
+          "local_offset": 497,
+          "symbols": []
+        },
+        {
+          "offset": 1840,
+          "type": "DIR32",
+          "local_offset": 511,
+          "symbols": []
+        },
+        {
+          "offset": 1844,
+          "type": "DIR32",
+          "local_offset": 623,
+          "symbols": []
+        },
+        {
+          "offset": 1848,
+          "type": "DIR32",
+          "local_offset": 842,
+          "symbols": []
+        },
+        {
+          "offset": 1852,
+          "type": "DIR32",
+          "local_offset": 1106,
+          "symbols": []
+        },
+        {
+          "offset": 1856,
+          "type": "DIR32",
+          "local_offset": 1358,
+          "symbols": []
+        },
+        {
+          "offset": 1860,
+          "type": "DIR32",
+          "local_offset": 1410,
+          "symbols": []
+        },
+        {
+          "offset": 1864,
+          "type": "DIR32",
+          "local_offset": 1421,
+          "symbols": []
+        }
+      ],
+      "unresolved": [],
+      "remaining_differences": [],
+      "equal_after_verified_address_replay": true,
+      "acceptance_authority": "none; complete native peer comparison, not target exactness"
+    },
+    {
+      "label": "timer-address",
+      "scope": "complete Stage dispatcher structural diagnosis; no exact credit",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/StageScript.cpp",
+          "source_sha256": "311250f3b3e8af1c89e254963f2cdc05903161c450d1baaae49e5dd51dfa4030",
+          "object_sha256": "cdb97e3611c4f36c9c14b611c558ecfbeafc1ebeda2544885b313c86d05373fa",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-03-AnmManager.ltcg.obj": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "only opcode12 computes the used timer receiver before mode storage",
+        "no new memory read, API or header changes"
+      ],
+      "source_sha256": "311250f3b3e8af1c89e254963f2cdc05903161c450d1baaae49e5dd51dfa4030",
+      "producer_sha256": "04466ab9a408f961607d6b8c637b675b7715a3dbf1e678e7b13dca5678b78e36",
+      "parent_bytes": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "fields": 36,
+      "replayed_changed_fields": [],
+      "unresolved": [],
+      "remaining_differences": [],
+      "equal_after_verified_address_replay": true,
+      "acceptance_authority": "none; complete native peer comparison, not target exactness"
+    },
+    {
+      "label": "global-copy",
+      "scope": "complete Stage dispatcher structural diagnosis; no exact credit",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/StageScript.cpp",
+          "source_sha256": "ef705a24e18ae71f8504ef7077278b7a7a46e84ccc17b32e444c5c9443b2b45c",
+          "object_sha256": "e09389e8e0aecc3e3b7c7fa9738f89f8f6c65b1ab4fd5b9586858dc6e3601182",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-03-AnmManager.ltcg.obj": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "only opcode13 copies the actual four-byte record word to the same int global",
+        "no copied target bytes, ABI changes, padding or unused data"
+      ],
+      "source_sha256": "ef705a24e18ae71f8504ef7077278b7a7a46e84ccc17b32e444c5c9443b2b45c",
+      "producer_sha256": "062f813586b965610f989d4bc13a1a103a4ef434bd744364fb36b2e24ae3c473",
+      "parent_bytes": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "fields": 36,
+      "replayed_changed_fields": [],
+      "unresolved": [],
+      "remaining_differences": [],
+      "equal_after_verified_address_replay": true,
+      "acceptance_authority": "none; complete native peer comparison, not target exactness"
+    }
+  ],
+  "not_executed": [
+    "global-forceinline"
+  ],
+  "execution_recovery": {
+    "shared-word": "previous terminal exit 0, session 73991",
+    "global-helper": "previous terminal exit 0, session 62256",
+    "timer-address": "previous terminal exit 0, session 70420",
+    "global-copy": "lost original exec handle; final source-asserted report, all artifact hashes and final log verified; no live producer remains; direct exit code not claimed"
+  },
+  "source_adoption": false,
+  "exact_credit": false
+}

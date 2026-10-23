@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-23",
+  "starting_commit": "2b03d2b970d6a14b701fb621da053620fe7ae7b8",
+  "batch": "operator-requested documentation and artifact cleanup; reconstruction active-incomplete",
+  "recovery": {
+    "starting_commit": "2b03d2b970d6a14b701fb621da053620fe7ae7b8",
+    "pre_cleanup_handoff_sha256": "aedf2c53df748a74a1d34458d2a1ab4e395cd54518f6531aacd9acd99eabd7a1",
+    "historical_sections_moved": 26,
+    "historical_body_preserved_verbatim": true,
+    "source_and_recipe_changes": false,
+    "preserved_d3d_files": 9,
+    "all_protected_files_verified": 1568,
+    "full_ci": "not repeated; documentation and artifact cleanup only, focused cached Stage whole-owner guards replayed",
+    "new_native_builds": "toolchain smoke only; no game-source compile"
+  },
+  "focused_oracle": {
+    "parent_bytes": 1868,
+    "raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+    "guards": {
+      "count": 11,
+      "exact": 11,
+      "bytes": 987,
+      "fields": 36
+    },
+    "case_summary": {
+      "matched": 1443,
+      "comparable": 1619,
+      "gap": 2,
+      "same_sized": 13
+    }
+  },
+  "completed_checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-target.py",
+      "exit_code": 0
+    },
+    {
+      "command": "nice -n 10 scripts/repo-python scripts/verify-toolchain.py --execute",
+      "session_id": 78891,
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py --require-target",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/report-reconstruction-status.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python .analysis/handoff-cleanup-20261023/close-stage.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python .analysis/handoff-cleanup-20261023/archive-reports.py verify",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/check-doc-hygiene.py",
+      "exit_code": 0
+    },
+    {
+      "command": "new/moved documentation links, historical section identity, four git apply --check replays",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check and git diff --cached --check",
+      "exit_code": 0
+    }
+  ],
+  "cleanup": {
+    "reports_archived": 329,
+    "all_members_verified_before_original_removal": true,
+    "archive_sha256": "7f1f9b0a2fa73b91bc9d0b76738f9807ccf20c9d0684820905f490e9e02ba327",
+    "removed_carriers": 60,
+    "net_logical_bytes_reclaimed": 180720282,
+    "protected_files_verified": 1568,
+    "protected_inventory_sha256": "819f4335018888b344325b2cd210afa5725b7c20ee769fcf13bd3c5123dbd3e8"
+  },
+  "game_source_header_recipe_ledger_changes": false,
+  "full_ci": {
+    "run": false,
+    "reason": "operator requests focused validation and speed; no maintained code, recipe or ledger changes"
+  },
+  "new_exact_credit": false,
+  "whole_windows_product": "open",
+  "runtime_validation": "not added",
+  "semantic_and_port": "not started",
+  "documentation_checks": {
+    "maintained_doc_hygiene": "passed",
+    "new_and_moved_doc_links": "passed",
+    "historical_section_identity": "all 26 verbatim against prior HEAD",
+    "four_retained_patches": "git apply --check passed"
+  },
+  "documentation_changes": {
+    "active_handoff_lines": 122,
+    "previous_active_handoff_lines": 1106,
+    "historical_sections_preserved_verbatim": 26
+  },
+  "staged_scope": "documentation, cleanup inventories and four actual source patches only; nine unrelated D3D files excluded"
+}

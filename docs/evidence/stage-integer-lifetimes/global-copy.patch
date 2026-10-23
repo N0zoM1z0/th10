@@ -1,0 +1,18 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -1,5 +1,6 @@
+ #include "StageScript.hpp"
+ #include <math.h>
++#include <string.h>
+ 
+ extern "C" AnmFloat3View *__stdcall D3DXVec3Normalize(
+     AnmFloat3View *output, const AnmFloat3View *input);
+@@ -171,7 +172,7 @@
+             stage->rockingTimer.SetCurrent(0);
+             break;
+         case 13:
+-            g_StageScriptGlobal4923A8 = integers[0];
++            memcpy(&g_StageScriptGlobal4923A8, integers, sizeof(g_StageScriptGlobal4923A8));
+             break;
+         case 14:
+             if (integers[1] >= 0)

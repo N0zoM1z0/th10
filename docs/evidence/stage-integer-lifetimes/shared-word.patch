@@ -1,0 +1,26 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -63,6 +63,7 @@
+         StageInstructionView *instruction = stage->instruction;
+         int *integers = instruction->args.integers;
+         float *values = instruction->args.reals;
++        int operandWord;
+         switch (instruction->opcode)
+         {
+         case 0:
+@@ -167,11 +168,13 @@
+             break;
+         }
+         case 12:
+-            stage->rockingMode = static_cast<unsigned char>(integers[0]);
++            operandWord = integers[0];
++            stage->rockingMode = static_cast<unsigned char>(operandWord);
+             stage->rockingTimer.SetCurrent(0);
+             break;
+         case 13:
+-            g_StageScriptGlobal4923A8 = integers[0];
++            operandWord = integers[0];
++            g_StageScriptGlobal4923A8 = operandWord;
+             break;
+         case 14:
+             if (integers[1] >= 0)

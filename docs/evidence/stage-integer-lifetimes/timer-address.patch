@@ -1,0 +1,17 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -167,9 +167,12 @@
+             break;
+         }
+         case 12:
++        {
++            AnmVmTimerView *const timer = &stage->rockingTimer;
+             stage->rockingMode = static_cast<unsigned char>(integers[0]);
+-            stage->rockingTimer.SetCurrent(0);
+-            break;
++            timer->SetCurrent(0);
++            break;
++        }
+         case 13:
+             g_StageScriptGlobal4923A8 = integers[0];
+             break;

@@ -1,0 +1,1708 @@
+{
+  "date": "2026-10-23",
+  "starting_commit": "2b03d2b970d6a14b701fb621da053620fe7ae7b8",
+  "archive": {
+    "path": ".analysis/handoff-cleanup-20261023/historical-codegen-reports.tar.gz",
+    "bytes": 12619788,
+    "sha256": "7f1f9b0a2fa73b91bc9d0b76738f9807ccf20c9d0684820905f490e9e02ba327"
+  },
+  "files": [
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-argument-carriers-20261022/raw-float-locals.json",
+      "bytes": 647746,
+      "sha256": "fef2f9db642b06297df1139285705ada96f146d89312f17531bc0cd5a5aff469"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores.json",
+      "bytes": 648902,
+      "sha256": "97511d66844254fa4168defd7d5a6d28c8366e46d5b229f019a7b72bc8509d8f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper.json",
+      "bytes": 659989,
+      "sha256": "0f180cbec8e057c6d7106054f93429eb733ef878f0b43b3ab68e1032c280b87f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select.json",
+      "bytes": 648819,
+      "sha256": "8a33138071b2b5f1fe1314928ca6fc70044595e0afe2df6246c0e966ffe086c5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/child91-direct-temporary.json",
+      "bytes": 651822,
+      "sha256": "73cfb7055eb670b49df7fa9d0ba6dbe07f0a86b8daea5a9104b9c904c3c045d9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/child91-script-local.json",
+      "bytes": 651726,
+      "sha256": "29e912ee9505f4eb31ccb3a487e9f54079ddbf72fb90001b400432c5e94fe5fc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/initializer-base-storage.json",
+      "bytes": 664299,
+      "sha256": "400b9fc2a6c8fe873d901e18d2e5535f1e77296a256621b06110d70b1a89ed9e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/initializer-copy-blocks.json",
+      "bytes": 658103,
+      "sha256": "59abed3b8b133e810865c2f6c43b1fb36475c0f69b91d582e02116b8d12bc359"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third.json",
+      "bytes": 658271,
+      "sha256": "3fc98532a40421b0f101cd51c6fe8028263b8fd9bb66dbba2d6a3df9dca42121"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/initializer-flags-snapshot.json",
+      "bytes": 658187,
+      "sha256": "3ec34eaed16944b782cfbad225605e4409ea2fc44158679fa78978e061bf7748"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/real-player-structural.json",
+      "bytes": 683575,
+      "sha256": "547d3c5e5da9c59c38e33dc6b98cef92b5b3c7d9aff787992d58e50b12a8f2c5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/real-player.json",
+      "bytes": 683575,
+      "sha256": "547d3c5e5da9c59c38e33dc6b98cef92b5b3c7d9aff787992d58e50b12a8f2c5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base.json",
+      "bytes": 672251,
+      "sha256": "728054a46252ba1812c7d394b0511f91b97f125309dcf4f61d861a440bccd98c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-child-tail-20261022/child91-assignment.json",
+      "bytes": 645922,
+      "sha256": "1bc11bfcd6d1c79fd2c43291e4862d4b613e9650259acda36c9c36654dd52b9d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-common-tail-20261022/default-static-abi.json",
+      "bytes": 649919,
+      "sha256": "2b02dddf7a98b346f5cdb206289142cfd9062da143fef784428fb0ef6a12d9a9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-common-tail-20261022/ordinary-member-view.json",
+      "bytes": 650668,
+      "sha256": "2dd534f7b90ef8e4714167fc6cc82b01f012ba8bf1f4bd70747812a1d84818e0"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-common-tail-20261022/postfix-timer-view.json",
+      "bytes": 705272,
+      "sha256": "7ddd1aec139b96e4b8a06569417c4d57b5384b571a7eaf3182a71c2d50977498"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-common-tail-20261022/raw-compound-flip-x.json",
+      "bytes": 645935,
+      "sha256": "e89aa13dcd1ddc8fbf73640f13b908f3961b13b5465d017c889140180a154948"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-common-tail-20261022/slow-timer-accumulator.json",
+      "bytes": 646395,
+      "sha256": "05eb37268b7a16df9f6e7618315b162dd24376db0d3bade3203306ad007254b4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/baseline.json",
+      "bytes": 669283,
+      "sha256": "4ee5e626a69d589a6a598dca6724855aa0547939c8a3cee43969b14b848b6730"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/child-identity-assignment.json",
+      "bytes": 665522,
+      "sha256": "1c63b077a5cbc712926333f298c4059d25bf49303699bbf96b85f12e68acc7f2"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/copied-baseline.json",
+      "bytes": 665089,
+      "sha256": "4af7b88161974c6e8d4395dd51c0a8a2efb6d9596dfb8b9ffb4ddd1d8e01c310"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/countdown-copy.json",
+      "bytes": 665255,
+      "sha256": "50f9755710c5e0c96bf6a1d375de98762fd679030ac043cd6fb82ade67bcd1cf"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/flip-bitfields-tail.json",
+      "bytes": 665252,
+      "sha256": "ac436028829cb0fef4ec588b65b230785ac861328a972e7e7945a15190d7a7dc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/ring-counter-hoisted.json",
+      "bytes": 665405,
+      "sha256": "32f370418e71af28b18dba30bab244daf2241c82ec9f711385f9dafd6fd38e77"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/ring-limit-before-counter.json",
+      "bytes": 665530,
+      "sha256": "eeb0c89319cec539013bfc737653e233aa5f0e395a9069ea77993ba81c79e625"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/ring-limit-variable.json",
+      "bytes": 665380,
+      "sha256": "32493ae9fa5794f5b66771f1c445cedf86f0c7a1a2b4c3e6e33fb6b939d69853"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/ring-locals-hoisted.json",
+      "bytes": 665380,
+      "sha256": "a8a1897e84161e6b985bfa4cd7820d4c8a6ff011dca78cdb6d6a4945aa9a81a4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/vector-references.json",
+      "bytes": 665139,
+      "sha256": "27a42ef1a670494e1a604741d6d3164b7393a08cfde9217bdde186296365d43d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-copy-lifetimes-20261021/vector-values.json",
+      "bytes": 664078,
+      "sha256": "e0c5edc0be6750a99b0c5800908ac01bf25185bbb9abdecf46da176bd59d041a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-flags-20261021/baseline.json",
+      "bytes": 649760,
+      "sha256": "9f68af13d58b0cf7e1cea0df494f5733c7795ad4e187e20595cdf4cd19c93da5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-stdcall.json",
+      "bytes": 666918,
+      "sha256": "1848db4d185fa0b7036366d94f452a93b8b19794b97a4361f735ce8b221fe887"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-value-first.json",
+      "bytes": 665550,
+      "sha256": "d47586f94714b8c7244e809f32743a50e52223a11de4312c31abd05a63807920"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-flags-20261021/getter-owner-first.json",
+      "bytes": 661964,
+      "sha256": "4a40c46310a1319cfaef1ad7cd996cccae594419b36354b507ace29c45389325"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-flags-20261021/getter-value-first.json",
+      "bytes": 661964,
+      "sha256": "56dfb1d7e659cdf3ce80b7eb58f877bc6c0ce5de22ac97060f3e85071797919d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-flags-20261021/instruction-name.json",
+      "bytes": 664956,
+      "sha256": "386158a8071f1344a3e19401ab6cea19dd66b1d6b855d745efd15203ca41f690"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-flags-20261021/member-execute.json",
+      "bytes": 694100,
+      "sha256": "5f79c37160d842c981af73fce8bda2cc4d9f9b8c0380bf62a555d2938c7a308d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-flags-20261021/profile-g6.json",
+      "bytes": 664823,
+      "sha256": "332275a48733de9ffdbb886457238f4df66eea3caaaa44f85c79ba19ec92d725"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-flags-20261021/profile-g7.json",
+      "bytes": 664823,
+      "sha256": "d7785e070b0a677286dfd82aa7bfa7985785b76d4214400ef2d97f9067cdfc19"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/partition-complete.json",
+      "bytes": 678645,
+      "sha256": "0dd91fa88232f8d35030d7f73c99c52ad015b9ac9e75b909caa89ef82a0fdd19"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute.json",
+      "bytes": 677843,
+      "sha256": "04f6a7b2dab9658031857794d184c82c3461653693f93fea302556ebea2b33fd"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-function.json",
+      "bytes": 706428,
+      "sha256": "dbd2c99e4877b4d97412745837d3a992e74ac471dfb73a5a98b79ddb58cf7d54"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/flip-shared-loop.json",
+      "bytes": 706356,
+      "sha256": "51445a21b02c50cdcddb1206fb83e42d2f82b8086767303360a7552ba614d611"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-frame-first.json",
+      "bytes": 706763,
+      "sha256": "4cbea85c630d7d20625774a2daf45267eb0cba1cee2600f8c69181d4440ee33f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/timer-scale-first.json",
+      "bytes": 706763,
+      "sha256": "c39b362dcb7acaabfdc4ea6438a29580cc96dfe6267e69dabb3960e1bbef9ea7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags-structural.json",
+      "bytes": 484454,
+      "sha256": "1d2e3c18d33bb5e75a565d6e4b937f6c6a42d6c861692f29d36a519815e991e0"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags.json",
+      "bytes": 643594,
+      "sha256": "a3e4d1a689c396f05f336d3c5aad555868cf8629d82b7d050f065b1a9452f3f1"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field.json",
+      "bytes": 643846,
+      "sha256": "376d856be080e20a22b060a87aa0aedd8d4232208dc50f5535a1acc7e6f13a0f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown.json",
+      "bytes": 643594,
+      "sha256": "6d2adc4c56784102a45d1cee2d983f4d7f1e286aadb3c766115e157fbbb6919f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown.json",
+      "bytes": 643918,
+      "sha256": "1aa3419d8f54ea76eaef6ad34ef944eb8bb4b1be92f312fe48416278930b1ae2"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-processor-options-20261023/g6.json",
+      "bytes": 646740,
+      "sha256": "be27202c0ee33ffe30b6990b9ee463a5ac0352cc19ca99e33d774785003f847d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-processor-options-20261023/g7.json",
+      "bytes": 646740,
+      "sha256": "56fa44bee2a2e5db93221ff3eb7f597eff2a133629b8d902d12ef0b8966df9a6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-processor-options-20261023/ob1.json",
+      "bytes": 647125,
+      "sha256": "6ba0516a4408295c87bf5204009d42c448b2ba5efbe4f1fd79ccf7bc6d21237f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/baseline.json",
+      "bytes": 644845,
+      "sha256": "9f683cc956c541ba81ef02819799cbe4014333186cd1109ec29c08d6f139157d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/child-script-local.json",
+      "bytes": 646912,
+      "sha256": "a7774ce75bfb38451cc9fc5c011059adaf317972b531cc18399a56fee327ca8c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/component-locals.json",
+      "bytes": 646840,
+      "sha256": "1d2c76572d51aee333b5e65415821b60acf7b25ac90b6c03deedbf253874b72a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/flip-both-inplace-second.json",
+      "bytes": 646928,
+      "sha256": "0bd28cc01d7b6c67f4d2d4d19c8d04afbb81f2f0f1fafb1f2cf69458da7f68d6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/flip-both-reverse-all.json",
+      "bytes": 647020,
+      "sha256": "70c846e86ceeffcd3ca575896a596b7947adec7a494bd2ac96934aaf8c9d264b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/flip-both-reverse-second.json",
+      "bytes": 647128,
+      "sha256": "6e0992066704c841cb63a88822dd0b77d4cd4aeebdb383ae89b6aa705376ab0a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/flip-both.json",
+      "bytes": 646588,
+      "sha256": "f9c34e67382009352548d0e87a09250d8574f2d295f31783a2924d6db5eb35ec"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/flip-x-only.json",
+      "bytes": 646660,
+      "sha256": "f2837b83d65e13cec09a8ecee5ffa4e208c6c8fe9e14824dbe63c7c1b50c5040"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/flip-y-only.json",
+      "bytes": 646660,
+      "sha256": "29d528288325d833324866c6e19d688e532355971d78d0d487b5aa4ce6d4c2f4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/float-mask-truth.json",
+      "bytes": 646840,
+      "sha256": "0afb93410a08a97b05cf110de0c05be9fb61412e7bfc413c3cd2ca26ae055139"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/grouped-one-based.json",
+      "bytes": 646876,
+      "sha256": "c08fa796b3dafdeb0e52a5e1fea5a13b41e66ab6ec8df12ce5e4acd63aba3c77"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/instruction-local-name.json",
+      "bytes": 647056,
+      "sha256": "19d736f32d2701ac8d311ad084931ad07f7080b4b5e57e55d97a5745e79cf915"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-radial-expression-20261022/legacy-expressions.json",
+      "bytes": 647080,
+      "sha256": "51b4b47b8ba47c084933e0361b0554a9eff4a008234516c4aea8b7e1c1976497"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency.json",
+      "bytes": 671760,
+      "sha256": "bf58dca4cdd7bd8a5c8609255edcbae4e1bc6597c29898481c49fc1c49d768fa"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/copied-baseline.json",
+      "bytes": 651650,
+      "sha256": "ca6ff897f83bf30fee208a3b13508fed5fce60239c6e15559b435efc88eb8f7b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-scale-first.json",
+      "bytes": 651870,
+      "sha256": "fd509dff9143de4844ae3a708e5f10d3aa0ecbc467657f322e8590cb5dc1a885"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-subframe-first.json",
+      "bytes": 651942,
+      "sha256": "0cc1a771ae5fa97792846458e19dca95314ac6b98525d7501f2cc1a55b6704eb"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/adopted-structural.json",
+      "bytes": 484406,
+      "sha256": "9cd3d86a0e6e0784670d6f8daed74c8f773dd58b7887ae6ffd73cb012f4ec630"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/adopted.json",
+      "bytes": 646439,
+      "sha256": "dccc57a417f3eda3b9c8bdac96b98b962819c99ecc2b94989a761eac54e11b3e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/canonical-structural.json",
+      "bytes": 484256,
+      "sha256": "ecd87ae8f208adce43f7ac6a297a7cc45349e00132aff3a711d75d06e616c9a4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/canonical.json",
+      "bytes": 644845,
+      "sha256": "9f683cc956c541ba81ef02819799cbe4014333186cd1109ec29c08d6f139157d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count.json",
+      "bytes": 643879,
+      "sha256": "efab679ccf591231fe400e2fab7446f126aaa22d2c920a991bb0bf7cec25bbe8"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags-structural.json",
+      "bytes": 484550,
+      "sha256": "d1a2fe434eebab25db7ee4dfed0899062fbcd521d38ed93db084077c343170ab"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags.json",
+      "bytes": 644023,
+      "sha256": "9df62a272443d39fdb00a165dbc93cd2237b43abc13b4875cf7bf75c93551d10"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations.json",
+      "bytes": 643807,
+      "sha256": "7d66e755ba52dab3a7c5afd0581894f84fbb4e9366eadcec99172a06bcc5d947"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/baseline.json",
+      "bytes": 398190,
+      "sha256": "cef631870bcea950e5c461a303acc724ba0e3fdec885480a085bbf38e1987373"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/callback-entry.json",
+      "bytes": 418964,
+      "sha256": "507aa49783b3327c915200c1c93c4fa9537af7f3ff41471668dc166a59e8e6f3"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/glyph-dirty.json",
+      "bytes": 418419,
+      "sha256": "1f54a5f38670d32f125285116ee04da4a914f8a2db9412f19dbe9e499641194b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/member.json",
+      "bytes": 386961,
+      "sha256": "0b2f2a4569ede466ba865e30ac8cc3ebc98cd5a63970f7f07f12d349cb5ae4b4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/newline-paths.json",
+      "bytes": 418517,
+      "sha256": "0680918784f2420bb2b6171f6d3bcacbdec524111645a14078e47f33ac79c195"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/viewport-expanded.json",
+      "bytes": 418713,
+      "sha256": "c62d27b4fe6e8c24a861a02681e9e97e1a7992e75ba32e83e32e57a0c7c771d4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/viewport-fastcall.json",
+      "bytes": 401948,
+      "sha256": "0bac2fcbda01e8835726944c94f74626e6b0737839270f51d3a2b0984bf5c8c3"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/viewport-indexed.json",
+      "bytes": 401902,
+      "sha256": "47c64fa1965937a921d4aaaea27aacbfc85f4cce5ab46c2ce22eb37357b057ab"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/viewport-member.json",
+      "bytes": 401798,
+      "sha256": "a7862cb1458e07b3c560db53ce7333f1358afa52b44a91e4a2939ea3323a7d35"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ascii-render-member-20261021/viewport-view.json",
+      "bytes": 398060,
+      "sha256": "2ac9acae1cc7adb2188f6b4fa8a8e6bb59c335baa4b6a71d657b4ef43827577a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/format-for-scope.json",
+      "bytes": 646709,
+      "sha256": "5575a2b6fcdcddb3d378ffbd04b6b34b59ee9c5cd563e1a94366079798c5fdb0"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/length-declarations.json",
+      "bytes": 646817,
+      "sha256": "299b244f2d471d4d2265a9ecd22ba123261dd789f5b5acc22d41d46ae7aa717b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/length-reverse-declarations.json",
+      "bytes": 647105,
+      "sha256": "2e7005942c9c9782bfcfe18455b49deed73671d102e74417194f3462ea6ff820"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/neg-bits.json",
+      "bytes": 646421,
+      "sha256": "a3df1bd2ea2a2bd23bcddaec36c9db0d8fc897250d767fc7219bd30db6042490"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-first-neg-bits.json",
+      "bytes": 647293,
+      "sha256": "957c3f1ef1b57eb52b42c011c6df5b1657fb81b77dda089b5799ec3ed4e8d75f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-first.json",
+      "bytes": 646969,
+      "sha256": "1195bff439bb8093d005a673caae940e3910b21b3e5d43f2ffb07b10d74f5ae6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-pair-reversed.json",
+      "bytes": 647257,
+      "sha256": "4ca9aed641796f5ab611c4653182663e4b030151f920844d0f640e9f4133eb18"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-pair.json",
+      "bytes": 646933,
+      "sha256": "31f13cb040c244426be18695e8bb3e6b43caef98713aa6863851f09dac7b52b5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-second.json",
+      "bytes": 646601,
+      "sha256": "2bd06e146a045dcafeb233ecbf9393fa39560aec0e2ae09c59928926c2e7a032"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-point-angle-20261021/enemy-static-adapter.json",
+      "bytes": 370627,
+      "sha256": "a0e89aa51884b57036b4f898e2462856ecbfeaee7858a29eb3209f250ca5b1a5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-point-angle-20261021/enemy-static-direct.json",
+      "bytes": 370607,
+      "sha256": "0e4467b6ea105e4f4daec912504e3c05c1acc1d7b6f3aff50c02ffa698cd5e8d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-point-angle-20261021/enemy-support-pin.json",
+      "bytes": 364999,
+      "sha256": "8ab4558f4e771ac33569c3cfc86103fabb5803e1e1ba5cfa16066ae6c5d9cd6f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/comparison-scalar-record.json",
+      "bytes": 494160,
+      "sha256": "3b2582ef989a9c5e4de91a94beb7619e3085c672a927ed60bcc24806592bd766"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g6.json",
+      "bytes": 494514,
+      "sha256": "df72e7747f7a05df8d300a94a3af79ee52676e4897652261b6c421e20122e034"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g7.json",
+      "bytes": 494514,
+      "sha256": "099e8a9436a0f219468a10169c0c50a466369cbb0d33f5b272c58ecc8e3eaa53"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-direct-buffer.json",
+      "bytes": 494917,
+      "sha256": "7cfe44816d29300ba2e92ffd58dbdb20a418a667bbc473cad2067960401e26be"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-readonly-byte-view.json",
+      "bytes": 494148,
+      "sha256": "d22fe25fe01e3150b4c84b7b0b1a8137829f4807304ece91b6ae8c115150d86a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/push-float-const-ref.json",
+      "bytes": 494136,
+      "sha256": "7820f5e449032243dfd45d10c586388300442aebea191be4d68f256f28513ceb"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/run-scope-comparison-lifetimes.json",
+      "bytes": 494397,
+      "sha256": "1f135be00a3ddbff65c09ada1f6c291029ce95b38a68d47c3e336dd8e027e947"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/unsigned-comparison-word.json",
+      "bytes": 492338,
+      "sha256": "0875af7977f01313d0f14a2cd16a50c7b2b64bc31680bc298b9701610db6f0bf"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-square-order-20261021/current-player-structural.json",
+      "bytes": 484629,
+      "sha256": "09a22b67fd9807173278d30cbb531db9c450baa0b12958647ab69b82ca60a011"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-square-order-20261021/current-player.json",
+      "bytes": 667838,
+      "sha256": "0ffc5ec4938abefb60bffab9b46971e02512058b72287c9e162e0b7890a33f7a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-raw-thread-id.json",
+      "bytes": 494171,
+      "sha256": "67b71b0068639ff5c38c42454df43fc520987af431ae1d165a5b2e3bb326cdc9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-thread-results.json",
+      "bytes": 494961,
+      "sha256": "a5c8fdd9e52d9eb29f8b86499432f8e6aaa2840bba872b4fa4f9d4ef6d5417c9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-both.json",
+      "bytes": 646907,
+      "sha256": "27cf00103f9f7227a2dda294303702dbf477e4ced33f7003ac930a80de7bc062"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-context.json",
+      "bytes": 647017,
+      "sha256": "83c5360c833ac64537d1ad9383d5862885b238f01eb890e8aa3820e053a81f5b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-flags.json",
+      "bytes": 646943,
+      "sha256": "e7b20f6252cc0727ee6069d1314cfa27a3c26e16f2893391feb80da20900e1e9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-leaves.json",
+      "bytes": 646979,
+      "sha256": "63475a27c58a87fb7fffb1e96d1a2ee127f2399508c74851b4412f2b8f89b498"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-node.json",
+      "bytes": 646907,
+      "sha256": "a89ffb0f4e1c0fa34d8c3c826e5a5728f130fccb7bd30ebd457cfb373b746cd8"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-stop-control.json",
+      "bytes": 647195,
+      "sha256": "422f11b0b0e5e1d51480ec03308d567df20eb3d0631ea741f9e63e669df5c037"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-live-cursor.json",
+      "bytes": 646873,
+      "sha256": "751ccc19b00ce918e1cfaa70bbbea52d69da31655ab7131dd5f449f88055481d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-signed-index.json",
+      "bytes": 646909,
+      "sha256": "637489bd1139973f23b0b8ba9d11cca96f8e9d6262cec59f004ac2e496b16a66"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-struct-word-index.json",
+      "bytes": 647490,
+      "sha256": "997b528f64ed0f2c4b5b01065169317a0051ee7fcafa5fe2d8366dc80937fde1"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-word-pointer.json",
+      "bytes": 647310,
+      "sha256": "aa7d98491aa73bcc1153f03530a1dd7aa84805d776b3af1dd99713c04073c368"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/stop-context-reference.json",
+      "bytes": 647053,
+      "sha256": "3a854709ee9be089b78c965c5a0a4d077831b159b363759176671dc122fe3e67"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-adapter-partition-20261021/baseline.json",
+      "bytes": 380241,
+      "sha256": "6795a3cfab3a106e16f258e77cd5b1274ca84bb75019800c552b18d5f331aea2"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-adapter-partition-20261021/canonical-cold2.json",
+      "bytes": 373723,
+      "sha256": "792c9bb84152ffb28f6a2bae7ddf9b8d2ba307b50defd8533c68fd6528c765d2"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-adapter-partition-20261021/host-view-raw-float.json",
+      "bytes": 370535,
+      "sha256": "977c1bce2581a1faf648a0587b55fcabc74a5cfc9b6e87ea4fc6052c6c18f7b0"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-adapter-partition-20261021/late-int.json",
+      "bytes": 373810,
+      "sha256": "98588a067157a386bf1f801b5c8de5ef47d9c55f9f572b5161102228b2266e69"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-adapter-partition-20261021/retained-cold1.json",
+      "bytes": 374643,
+      "sha256": "192d7a602cbcf0a3215294bf1d535f22d895a26e6c24b8294c82b9a595646e9a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-adapter-partition-20261021/split-standalone.json",
+      "bytes": 380814,
+      "sha256": "89b58dd4130d9fc5f724eff15d84228429509c3b688af594316689c17d5e9c06"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/baseline-structural.json",
+      "bytes": 495899,
+      "sha256": "c71d24de05c77be1004345882f399bf44241395fd8cadb76a4efb855f384b675"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/canonical-cold2-structural.json",
+      "bytes": 492677,
+      "sha256": "63d5998a53a8a0f3cd65db7c620a2ffd51875a1cfe5fa4b2f52823d6999d7f46"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/maintained-cold1-structural.json",
+      "bytes": 493045,
+      "sha256": "bc38eb98b60915f9a505d5b6a9f8725dcc6d0b0853e978e19d42f266be78bd0f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/accepted-cold-1-retained-review.json",
+      "bytes": 657779,
+      "sha256": "828f510444c5fc49d2045068592203b487f10baaca2733d67ac80765b353584e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/accepted-cold-1-review.json",
+      "bytes": 657743,
+      "sha256": "b1f9c6db12734d65923a822c8ee3c45dfc7f6c42be9777893044ab7b884ae8d1"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/accepted-cold-2-review.json",
+      "bytes": 657743,
+      "sha256": "64c58bc2dc61968269b354f504b673a3201116b3889b2e717ad0b1bc3a198ed4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/header-inline-vm.json",
+      "bytes": 662247,
+      "sha256": "5c1b575f4e5270d1e23e0679c9ffbeb8015de6ea5a4fd0ecbc94f9ea7bb8342c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/observed-virtual-construction.json",
+      "bytes": 662691,
+      "sha256": "50bef89b7f171e0a7c537d4c7fa19bd8847512821c543f44735b6203a2ab963f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/prefix-construction-fast.json",
+      "bytes": 668769,
+      "sha256": "66756bda6476dd52dd7f3995b87d9a908ec50ea814a6bca5a631d05f2f8ad3cb"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/prefix-construction-tail.json",
+      "bytes": 661030,
+      "sha256": "8983fdcf1f5143019ff276f56d5e0192194961c0cf6c40b6de232e72bca15e76"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/prefix-construction.json",
+      "bytes": 660427,
+      "sha256": "02bea9f2a391bfe648058705bb98be5bd2acf3a2d8a1b7d82d5c45e1bc4dec74"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/typed-construction-factory.json",
+      "bytes": 662836,
+      "sha256": "2c1a56c8fac2054dd138cb96a6653c090530c279ca68b7644ee5ad3d2c15a1a9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/typed-construction-fast-order.json",
+      "bytes": 667417,
+      "sha256": "8f4c925b767cb1dcc5c2c03ddc20049290b9ae7302f96d9540b9f82ceebf6dc7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/typed-construction-member-order.json",
+      "bytes": 669176,
+      "sha256": "6858cc4a4ccb7cfd15b2192f6c63c5bac729d8e8ad056a2b8a43e2170dc2f43d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/typed-construction-stdcall.json",
+      "bytes": 663027,
+      "sha256": "c2b9e9745f204d5a9dc75d2bd163a56c27a951eb27ff36ac90aea212344ed83a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/baseline.json",
+      "bytes": 374643,
+      "sha256": "192d7a602cbcf0a3215294bf1d535f22d895a26e6c24b8294c82b9a595646e9a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/canonical-cold2.json",
+      "bytes": 374775,
+      "sha256": "a989f4cc19aea7ef26581efe6735df361e0c2d649449e56e7469fc7d7548ac87"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/count-condition.json",
+      "bytes": 375780,
+      "sha256": "a524e42e0605c208c13f4b834481a0943634f12085ea683dad51975b5c8a94b1"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/count-difficulty-host.json",
+      "bytes": 375654,
+      "sha256": "5753ba90eee235c9a9435f5423caf907c02f2cdeb991889dec1ca2954cce24e0"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/count-host.json",
+      "bytes": 375639,
+      "sha256": "fe4f18726b6cbbe7ff43508d9c811fe3682075704166dfc75f6524ec5f7b75fc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/count-pattern.json",
+      "bytes": 375724,
+      "sha256": "4e4d3aa406852642efa2a52669e3d55be63b6d2230987edc59be6d01b6fb1e8a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/difficulty-calls.json",
+      "bytes": 375514,
+      "sha256": "7b8183254a5c063a8cb0bd1cf8ffe6978290eda70a7645c05a23080a8d4b8352"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/host-prologue.json",
+      "bytes": 374671,
+      "sha256": "ec2df661cc80dbd4f9081bbf639c47974113e1089320c683e218065552a304d6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/macro-host.json",
+      "bytes": 374587,
+      "sha256": "ffe92fb5883bd5702425a86f246be2e1992daaedf633da2103068fcc924798bd"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/rank-direct.json",
+      "bytes": 375667,
+      "sha256": "56e0bd5b51d917582d20b0bbe5c6b36e37c4bda9f48b69085dc38f383e4a9f83"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-direct-integer-host-20261021/retained-cold1.json",
+      "bytes": 375751,
+      "sha256": "ffeffedcca937055ba488f6d3362cf8fb09dbc8d33809806240b098ae3ff3f42"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-finalize-real-services-20261021/canonical-cold2.json",
+      "bytes": 601376,
+      "sha256": "bad34cae418890254ebc14a476a4dd9e142fcb13b0ba3f9bf3e5617f4fd627d1"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-finalize-real-services-20261021/maintained-cold1.json",
+      "bytes": 602252,
+      "sha256": "bd569d2bbfefd6e251a79ca1d63e2e5362f1844acfe9149a585d77b8747d778b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-finalize-real-services-20261021/real-services-outline-faith.json",
+      "bytes": 569703,
+      "sha256": "fd916ef70e1805a725fadffe094cdd324cf600ecf8cf3b2aa820b0ceb41ac190"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-finalize-real-services-20261021/real-services-typed-drops.json",
+      "bytes": 566470,
+      "sha256": "e1926b6c28e63c1b4d06ecdd9a3a329476e7a75f8637d966117052f48c600185"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-finalize-real-services-20261021/real-services.json",
+      "bytes": 517557,
+      "sha256": "ae036b7298d9199f5d803a216fd7bbab66f6132be0d87503d68a2f967a443218"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-int-adapter-20261021/anm-baseline.json",
+      "bytes": 374814,
+      "sha256": "6d9d3c324630c2815a75fcf028a5e6672d60626f2cae866143699700564a52b1"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-int-adapter-20261021/anm-flip-captured.json",
+      "bytes": 375778,
+      "sha256": "91d698a2107accf843a88e5bd1edd04585b33349ff375abdba281a779751a45b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-int-adapter-20261021/anm-flip-inline.json",
+      "bytes": 375690,
+      "sha256": "14541b19d2eee11a2da567959cc1cfb76eddd1ae1796adef185484d4cb10869e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-int-adapter-20261021/baseline.json",
+      "bytes": 370627,
+      "sha256": "a0e89aa51884b57036b4f898e2462856ecbfeaee7858a29eb3209f250ca5b1a5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-int-adapter-20261021/static-callee-context-index.json",
+      "bytes": 374468,
+      "sha256": "7d6f7aefc703fdd4c4b9f6419195bcafd172469bb237dc0a570ca0769200c4c6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-int-adapter-20261021/static-callee-index-context.json",
+      "bytes": 375487,
+      "sha256": "03bde12cd6a70c964f8fd02a9d7e463f6fab4746701ba820edb2928a1b046ba4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-int-adapter-20261021/static-index-runtime.json",
+      "bytes": 373974,
+      "sha256": "adea20970f26c537a652fd76a4575e8846aa937e456793e0cd7b101c2280b688"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-int-adapter-20261021/static-runtime-index.json",
+      "bytes": 373974,
+      "sha256": "ac6d6f0990397d01e278d556ed56fdb780ec8ef8f126f6f4b6b381fc70f11015"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/baseline.json",
+      "bytes": 651190,
+      "sha256": "472e50efa543de0e4b8aac2f79458d0531c1854453911772c3bc05bca97268b2"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/cached-append-tail.json",
+      "bytes": 654062,
+      "sha256": "2d357c138dca5fe4c635fc56550a6b24edebca71eeefeea6a782ebb2541cafcf"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/manager-member.json",
+      "bytes": 666549,
+      "sha256": "0ac46b6ac332b24b2cba658991c81a17d1dcd627525217b36316348598389c17"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/member-initializers.json",
+      "bytes": 656026,
+      "sha256": "3a4be0a819e8ac846b188ffe5ee798df2e146bd63465a9e9a99ad71b142d1c5e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/remaining-typed-copies.json",
+      "bytes": 655302,
+      "sha256": "5cdf0831a4d1b92354f6839c6944a61690ce413a5aaa9eed4408b2bb9cbe5206"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-abi-20261022/request-reference-complete.json",
+      "bytes": 666275,
+      "sha256": "b1a87bb9b37b86a497ceb9d24bb8c59333cf7676cf80aeb04b06c787fa05a603"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted-structural.json",
+      "bytes": 484438,
+      "sha256": "9035156139f7622e860b309459b3f60bf17e00b7172e4f4299f19e24da5ffb47"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted.json",
+      "bytes": 646406,
+      "sha256": "cdb02e7212d6138acafc153842dc0ae3b746b00b69cb0e896439f985a9665fd2"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a.json",
+      "bytes": 644243,
+      "sha256": "b0732ccefdab2634140d02914c7f5eccacc8dbb14812394c5e2d24a3a93e1d54"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block.json",
+      "bytes": 643595,
+      "sha256": "cb42ca6290c4c74445f1243073e0114bde4c07f9a0e63aca8d86335c9b695dba"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/canonical-structural.json",
+      "bytes": 484250,
+      "sha256": "494a7930586f25a30af6c05a75ce50b02bc846301b9287c0b71ebd01c2111fe5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/canonical.json",
+      "bytes": 644845,
+      "sha256": "61246dac6a3df241d5b4bdfeca1731e1c6111f3024a81701a1200805a4a1ad86"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy.json",
+      "bytes": 643238,
+      "sha256": "85482d41638a814c5bef683a6cfcdf52849d16a446632dc675e958ba5872f8db"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity.json",
+      "bytes": 645031,
+      "sha256": "d6d7b4849f7f14f117be7e2a74c9c1b24fa8d2d79b3e225678c132625b5833ee"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/scale-support.json",
+      "bytes": 669283,
+      "sha256": "4ee5e626a69d589a6a598dca6724855aa0547939c8a3cee43969b14b848b6730"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/baseline.json",
+      "bytes": 490487,
+      "sha256": "ce0331598af0eb596095ff7e38c70bfc938d6a2e9c3f0ee09565a5fe4295f093"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/canonical-cold2.json",
+      "bytes": 522935,
+      "sha256": "1578e97ff4de19ceb5793cbfe8ed2fd0ef8533e8d22ed694927a5ea40c7efc41"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/copied-baseline.json",
+      "bytes": 511959,
+      "sha256": "eab06ff8bd9c8350416fc2289d067321e36a80958b5d4a19281269ece6bc9cd9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1.json",
+      "bytes": 549763,
+      "sha256": "9397e3b565c3011b894963177edecd769dd7e51d886643ed761e3f009991c972"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/maintained-cold1.json",
+      "bytes": 549908,
+      "sha256": "1da19ea0ac9c03f94b0215a84d7ed15378aa0417d5a6ba1ca246e9900ed14697"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers-correct-rng-outlined-angle.json",
+      "bytes": 533505,
+      "sha256": "d10e1b59640bf40ee3d7d3b55e15f65e46eb54e0a46d3f3cbdab307bf7c73742"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers-correct-rng.json",
+      "bytes": 534840,
+      "sha256": "37f35f8268201e437ce4294b32e59880199f51240145a698ae4572147615ff42"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers-direct-counts.json",
+      "bytes": 530049,
+      "sha256": "e616805245853b66216258872bc1a18dd8e81b194311d1a299b0b5587358cc4c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers-final-scatter.json",
+      "bytes": 531433,
+      "sha256": "ee08c9ed9f4e182ce34df05c9ee6ca556f3b3585fd212ebee129f4bcae1befb3"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers-inplace-scatter-stdcall.json",
+      "bytes": 532445,
+      "sha256": "0cd48cbbeeaa8f848c60fabbf005b39fb41c50289771ab918127cbf64725aa0c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers-inplace-scatter-v2.json",
+      "bytes": 532639,
+      "sha256": "60410e08268b6d2fde276419529171928acef4139635d0973a25369a76a3782b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers-inplace-scatter.json",
+      "bytes": 533263,
+      "sha256": "ccfc3ca075aefef3684bc8520f2882718774bafc188af5d7060288508fc59b76"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers-signed-rng-outlined-angle.json",
+      "bytes": 533484,
+      "sha256": "9ecd34b660daf295d975cccae4904b9cf9c47e39c26d7e5d00b8844cce8dbfde"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers-stdcall-core.json",
+      "bytes": 535544,
+      "sha256": "eeb7a8237349d2fc59ff875cc7d90aa552f393e57074cfe17bc0c14b19ce3ad0"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-item-callers.json",
+      "bytes": 535258,
+      "sha256": "1e192282bb11040da58721a459ab7ad6a505a45d151aef3b1a80eba0d2d0e057"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/real-items-baseline.json",
+      "bytes": 561386,
+      "sha256": "828b95423cf90255a3b9bffdc1050fe1c695e9d3843cadd057f41c1a6bb32622"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/separate-packet.json",
+      "bytes": 511959,
+      "sha256": "16e21f2fc4f0a2b3c4206731087cefc255e74130ad2b849694015e6dbaf5bd9c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-tail-packet-20261021/short-second-count.json",
+      "bytes": 512007,
+      "sha256": "4cb0be65a1f9d3d4447acc605efadc93a444e614e67dd9590a330b20bb81afef"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink.json",
+      "bytes": 660419,
+      "sha256": "c0b98a5848923e7277efcac8bd3e0b57f492c4022cd2c12e00257fc177333dc1"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink.json",
+      "bytes": 665824,
+      "sha256": "76bdb7a95de6827625bc4bd786368b761019ccf248daed67e9c5beb1a4da9d5a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks.json",
+      "bytes": 660380,
+      "sha256": "2590f95f7ec465a165af797f4d88bcdaa367ffe8fb0fe1bd5fd708e85e5c9357"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail.json",
+      "bytes": 660420,
+      "sha256": "189516278e245c2f38682bec28c2553144fbbbdaa663096dd5538fb11845d714"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/main-shortcut-20261021/large-baseline.json",
+      "bytes": 669283,
+      "sha256": "4ee5e626a69d589a6a598dca6724855aa0547939c8a3cee43969b14b848b6730"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/main-shortcut-20261021/large-header-context.json",
+      "bytes": 649641,
+      "sha256": "2346c542e338c39a9950e5778c197464ace23a3504f044dcc514f0adf62db296"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/main-surface-outlines-20261021/large-before.json",
+      "bytes": 649760,
+      "sha256": "9f68af13d58b0cf7e1cea0df494f5733c7795ad4e187e20595cdf4cd19c93da5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/main-surface-outlines-20261021/large-current.json",
+      "bytes": 664917,
+      "sha256": "20a45afd0ead88e3359c9cf1e4135186c452846a522f88b8370bc1c52a939c61"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/main-window-callback-20261021/large-baseline.json",
+      "bytes": 649641,
+      "sha256": "2346c542e338c39a9950e5778c197464ace23a3504f044dcc514f0adf62db296"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/main-window-callback-20261021/large-header-context.json",
+      "bytes": 649760,
+      "sha256": "9f68af13d58b0cf7e1cea0df494f5733c7795ad4e187e20595cdf4cd19c93da5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/replay-open-context-20261021/large-before.json",
+      "bytes": 664917,
+      "sha256": "20a45afd0ead88e3359c9cf1e4135186c452846a522f88b8370bc1c52a939c61"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/replay-open-context-20261021/large-check.json",
+      "bytes": 490487,
+      "sha256": "ce0331598af0eb596095ff7e38c70bfc938d6a2e9c3f0ee09565a5fe4295f093"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-execute-20261019/retained2-inspect.json",
+      "bytes": 342573,
+      "sha256": "e5d901324802f16cf27596e700697c3f4ebfeba1c005c5f98986f7b06383fcee"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-float2-expressions-20261020/final-cold2.json",
+      "bytes": 381576,
+      "sha256": "c48be5458e403c4f5306e5fe969a23cf5410e1a126c64119d6cf5a2777d384df"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-float2-storage-20261020/retained-cold2.json",
+      "bytes": 371717,
+      "sha256": "c5c5899ebb4b4b5de3eff3171d273f26b3d9b5d508be4eab7c5044d84d714549"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-integer-abi-20261020/alpha-accumulate.json",
+      "bytes": 381931,
+      "sha256": "3cda7256cc3793895a84169311514da4dbf6b4e02fc1ff9372f25ffe00f35a0e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-integer-abi-20261020/baseline.json",
+      "bytes": 381576,
+      "sha256": "c48be5458e403c4f5306e5fe969a23cf5410e1a126c64119d6cf5a2777d384df"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-integer-abi-20261020/final-cold1.json",
+      "bytes": 380924,
+      "sha256": "89000e82deeaf21b81222a395b3b31360af581d8c9b987af54e352226cb1254f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-integer-abi-20261020/final-cold2.json",
+      "bytes": 380924,
+      "sha256": "abb86ffa69c04daf66cdd83a0621f35d1b0f4e135c902564522372230348b207"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-integer-abi-20261020/outline-pointer-ob1.json",
+      "bytes": 379808,
+      "sha256": "c5efd630ac3fb0c9207b4c716ef40c941c282e22a0a95cac9ca916063b262205"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-integer-abi-20261020/rgb-target-stores-alpha.json",
+      "bytes": 382204,
+      "sha256": "68bc014a5c109c346615323fde9531163acfa1c6f321f27886eb57720cba2be6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-lifetimes-20261020/baseline.json",
+      "bytes": 343645,
+      "sha256": "d4aea1de4b38e4d43576ee49064ed163a35a9ad44e34d47e2d28cf3530f71f0d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-lifetimes-20261020/double-remainder-inputs.json",
+      "bytes": 344050,
+      "sha256": "7db3293a3dfea098315cf27053f792488d3574aabc5b7ca791c583cef8f72f9e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-lifetimes-20261020/flip-x-fields.json",
+      "bytes": 343782,
+      "sha256": "119b50a6ca848d6b61c3b33b0f7060a7a3625bb5e2e1393f5ca4a27048cc9bc6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-lifetimes-20261020/flip-x-statement-order.json",
+      "bytes": 344019,
+      "sha256": "3042ceb4d61e1aad0eafeb88cf5f1b6b37a7c90677df0129a5aa8826429259e3"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-lifetimes-20261020/named-float-lifetimes.json",
+      "bytes": 343996,
+      "sha256": "cb35be4a76329308aec08253841b825375a549b7f0c96f47eb3d14622fa966b1"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/baseline.json",
+      "bytes": 380924,
+      "sha256": "abb86ffa69c04daf66cdd83a0621f35d1b0f4e135c902564522372230348b207"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/before-formatting/final-cold1.json",
+      "bytes": 374814,
+      "sha256": "426f88bcfa4e4bed1afb9318bea99af7cd446bf3a9ff9e48f2a2974b683e9eae"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/before-formatting/final-cold2.json",
+      "bytes": 374814,
+      "sha256": "3bdc636cc4bfe21e7e65012c7d415ac95e7e019e0b3c58dbcf006f8fa70e4abc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/final-cold1.json",
+      "bytes": 374814,
+      "sha256": "4d773e7f1e4e52547a7bcb71fb060ecd5537cd9339dfa6ba1a3e15f81cbdef81"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/final-cold2.json",
+      "bytes": 374814,
+      "sha256": "5b60fbe69d4eba7d208e6a1f824362eccc6012dc1e95b1005852a92aede46b86"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/rgb-four-calls-result.json",
+      "bytes": 379576,
+      "sha256": "1ddfdea63466d900129c4c482fdc6f0dfc0b8af1868133e60dd3294481078c7c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/rgb-four-calls-value.json",
+      "bytes": 379540,
+      "sha256": "7b0396de75dc85ac5c15e33a97773bcbc3c30a7db41ad9c383e0f71205737f06"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/rgb-linear-scale-2t.json",
+      "bytes": 379498,
+      "sha256": "dc5a5c5a28583f0869101b0b111083e8e3e49e6c1b3350354c24ab049faa9da5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/rgb-linear-scale.json",
+      "bytes": 379381,
+      "sha256": "4ea3c5f7246cab0fe54eb1993b812b29de4595e3dee1e4b71bf1d5ace3fc9d5c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/rgb-named-results.json",
+      "bytes": 376211,
+      "sha256": "981d54900f75a822d5fa7a2f8de81fb48db6b521955d107ea8f39cc523b26b84"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/rgb-ops-pointer.json",
+      "bytes": 382075,
+      "sha256": "f7a4d9d8241bf7196746658d408976dcb7138efd5a98d16f8de13ed1343ae539"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/rgb-ops-value.json",
+      "bytes": 381962,
+      "sha256": "9ba825b94534a9845c8ae63add2f145931862bd006181a84b36341843644600f"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/rgb-scale-separate-gl.json",
+      "bytes": 382662,
+      "sha256": "caf3fc968ed2b6abc7a2a6c8b2fba4ed6c11d89098edf751a98468608ccd8094"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/rgb-scale-separate-ob1.json",
+      "bytes": 378773,
+      "sha256": "e4f2d25432869c7b3a996432fa27f47c490635130625d4f24b990737925ba0ac"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-world-20261019/screen-family.json",
+      "bytes": 331728,
+      "sha256": "89d176ab6c5c4ad604637294df1757d33c54c2abc2a7b4d9c3f61f9929c230ef"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-effect-constructor-20261020/major-owner-preview.json",
+      "bytes": 540804,
+      "sha256": "d460d2a04945a1e8a5df9c25a6cbbae9aa2d2bb4ca0fe4b7ac39590b25c76186"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-enemy-adapter-20261019/shared-polar-pairs-cold2.json",
+      "bytes": 614996,
+      "sha256": "038cb33b35c1411cb0de3750742a15b99e6c19526b968bcd0cf2b78c7087c93a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-enemy-dispatch-20261019/retained-cold2.json",
+      "bytes": 612982,
+      "sha256": "6d77610ffba53820045f91cec88a43aa2438dd1ccaa6a236a6ee97a121a20a60"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-enemy-interface-20261020/array-bounds.json",
+      "bytes": 614683,
+      "sha256": "0922a113f15e121300d55c93d7b7e0ceaebd4ef1729c8ee15f58e641772657b6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-enemy-interface-20261020/baseline.json",
+      "bytes": 614599,
+      "sha256": "2ca820d29fbc5ab6921ebf2cce270fd26488d82c8d323c6239f1722c8841670b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-enemy-interface-20261020/cold-one.json",
+      "bytes": 614102,
+      "sha256": "16d7071b40c9c974fddaf71e645f0b48549b9029c98ea0bde051b3a021b3cfbc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-enemy-interface-20261020/cold-two.json",
+      "bytes": 614102,
+      "sha256": "16d7071b40c9c974fddaf71e645f0b48549b9029c98ea0bde051b3a021b3cfbc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-enemy-interface-20261020/reload.json",
+      "bytes": 614557,
+      "sha256": "c1e457d016da2800813d4d79db608af1b488cb6dcd1337b5eea2d5c3c5894c07"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-enemy-owners-20261020/baseline.json",
+      "bytes": 614536,
+      "sha256": "247cd83284f3a84d31741f24266f2bdfef3a92d9e92dff78b06ba997dccd97ba"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/baseline.json",
+      "bytes": 651867,
+      "sha256": "1d366049494f5968c0e1f41acbd0629669caeada49a7d1191d6b8f76ed8c0890"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-both.json",
+      "bytes": 651461,
+      "sha256": "3894f6e2035f45979910bb3f168138b4c897ec7c8629355553e3340639a262cd"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-first.json",
+      "bytes": 651312,
+      "sha256": "e9990c2c7ea3071f57ea8a527e8d42fe0ec136886b9a269a98e47cb0c75495f0"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/explicit-sum-second.json",
+      "bytes": 651330,
+      "sha256": "4445a8491fe29f864b55847dcbf2977de51854ec18cf217ff54d496b0af60aed"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/forceinline-flip-x.json",
+      "bytes": 659423,
+      "sha256": "526a0e2e1caa212064186d0e914b0a5968341a79d758e22b86e155e48af78172"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-expression-context-20261022/inline-flip-x.json",
+      "bytes": 659305,
+      "sha256": "8a02bd875260fa42a607c337b981673326ec640ba7ebe6dd6b16de1315ee2035"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-float-context-20261022/float-definition-last.json",
+      "bytes": 648576,
+      "sha256": "095c1379281b13e582616b753d1432d63c205b26014c7fd1c48a4a4447f4212a"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-float-context-20261022/float-separate-gl.json",
+      "bytes": 648772,
+      "sha256": "2f5283bddd47124d524b67d316572841a7c3f9873c29f98be26ee1118c4c33dd"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-sign-lowering-20261022/flip-x-pending-scale.json",
+      "bytes": 646934,
+      "sha256": "2ac42f0e2b28f483ae08dcb0ce22439b5047c4b3a3bd46a2fdbc0fdd92bf5f95"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-sign-lowering-20261022/flip-x-scale-first.json",
+      "bytes": 646800,
+      "sha256": "a8f2403c66a7d4c8359e1eb4a44f25911643d1cbaf058724f881bd7ab392ad16"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-sign-lowering-20261022/raw-rotation-flags.json",
+      "bytes": 647864,
+      "sha256": "cb7b87f2adbc189c5b2dd469e31286eb8059f221e396278c9ed47b81e65961ea"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/anm-sign-lowering-20261022/unary-flips.json",
+      "bytes": 645546,
+      "sha256": "ff126104bb852fdc6e2aa040107b0b6a129d758a9aca16b232c0e0583453d791"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-aggregate-lifetimes-20261022/aggregate-angle.json",
+      "bytes": 655439,
+      "sha256": "077cb4700513ca5eadbe2f6e8184bcec692f4f7b99972f7b823d16c016cbe488"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-aggregate-lifetimes-20261022/aggregate-length.json",
+      "bytes": 655475,
+      "sha256": "a3633a31d2a008ce9b97e786f9412ad31b74e35f49759d156d7e1275fb825bfc"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-aggregate-lifetimes-20261022/pair-both.json",
+      "bytes": 655208,
+      "sha256": "7fc550b5778eab19a75767b53bf2b4abb9052ca472b971c1f1f23151d3896825"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-aggregate-lifetimes-20261022/unsigned-format-index.json",
+      "bytes": 655151,
+      "sha256": "35e7578e16a22dfeb422afbaff85b3f9298a4a40e9783b78a6153f73388f4b88"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/debug-info.json",
+      "bytes": 655133,
+      "sha256": "2fd9b35b04e81d9a5754026069123703bb19217193c0f63e2d79a7f57fe4cf3c"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/primitive-pop.json",
+      "bytes": 655259,
+      "sha256": "8007db5c39e8b344ebffb8b4f20119e77118c9e4580df987931b2c82921e0c0d"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-codegen-options-20261022/size-favor.json",
+      "bytes": 648367,
+      "sha256": "096936778f52c08ed42252c378b3f924cbc9ba7bde15cf666f0a7d8139d91037"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-loop-cursor-lifetime-20261022/condition-snapshot.json",
+      "bytes": 655890,
+      "sha256": "e4ab32060615277b10168d1f45545b7f535a2923912e74410a3ca7ec5ebdf0c4"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-loop-cursor-lifetime-20261022/condition-view.json",
+      "bytes": 655280,
+      "sha256": "fef0755c20a5c33708c297bc0f561b61198b5d8dea248717f6b51f7da0ee6479"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-loop-cursor-lifetime-20261022/for-refresh.json",
+      "bytes": 655631,
+      "sha256": "6a40096b2011d35da707892ab04d7defd6b3d6c4ccf745e62843d2079b295f9b"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-loop-cursor-lifetime-20261022/top-test.json",
+      "bytes": 655520,
+      "sha256": "4ba6793a25f3b47de865a5334941847be49519971b79941b938e51a39930dc24"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/angle-refs.json",
+      "bytes": 655918,
+      "sha256": "098f4a24a66eb60613c9fa4e87a4845c6a13515ce1e88eb59e9af1a5e19288fe"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/both-refs.json",
+      "bytes": 655881,
+      "sha256": "d6f0abb4345d20e562330a5f7197ba30ee08d64505240069b334ef07956d3460"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/integer-pop-scalar.json",
+      "bytes": 655640,
+      "sha256": "54ee9a90398d24e7bc6f102812c7ad83be86df925fb3348fb897ddb2502b009a"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/length-refs.json",
+      "bytes": 655532,
+      "sha256": "d6f827305550d28fe676f0c8859ec5bb11e0210881ae9737967f0463a301e972"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-math-local-lifetimes-20261022/math-scalar-pair.json",
+      "bytes": 656101,
+      "sha256": "cdb800a3bfb4930f5d95df6fa85ca17c15e30f57ed3c3d39c74ec350693cfd61"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/neg-word.json",
+      "bytes": 655408,
+      "sha256": "a262a4ac7c65ad8dfbd36ee9c94583f80a63cede5591b4ae1b3910fe9b0304f2"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-first.json",
+      "bytes": 655973,
+      "sha256": "00af5273fe36eec465a1c8732abc2e121ee414ba12af81c3362889c44ce3f613"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-member.json",
+      "bytes": 656231,
+      "sha256": "6e6d410937ce274154c3f89a1eb24c7d89467624b940616178706637dd640539"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-stack-view.json",
+      "bytes": 656387,
+      "sha256": "0b39f3027fa2dae38ca4e5da8ab8c8b6f47697e4df07883b5e1590b3b720e55c"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-union.json",
+      "bytes": 656157,
+      "sha256": "7d42e176cfaa3fc73c7dfd1be2c2d1defd3c35a2d3137872b7d439d023d535eb"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-neg-storage-interaction-20261022/shared-neg-word.json",
+      "bytes": 656162,
+      "sha256": "3bc931556642f0ced2a5dbb184a5576c775d7c7f8dff8c5250bc04aa7a48dcc4"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-scratch-route-audit-20261022/named-destinations.json",
+      "bytes": 656072,
+      "sha256": "2b8bf9a3b352bd1ce1be61185ae5b64e04fae655f60e69f297ce4d8a2522ac4a"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-scratch-route-audit-20261022/reference-cursor.json",
+      "bytes": 655504,
+      "sha256": "fcd05f7b736fc2a1618f75af6cad0b7dec449507baaa5f93fe765f5a068c57aa"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-scratch-route-audit-20261022/separate-scratch.json",
+      "bytes": 656097,
+      "sha256": "3b814358852b86d91bf5ab7407d3588a0f16c0cbde09f28267fef3890f125ab2"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-scratch-route-audit-20261022/shared-scalar-reverse.json",
+      "bytes": 656269,
+      "sha256": "9a91fad9245ee887099b4e5c6699a0ee95860e5e6f9fac1277604d18fc1bf578"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-scratch-route-audit-20261022/shared-scalar.json",
+      "bytes": 655973,
+      "sha256": "18aba3ed93350a00aa78791708c73b45b1a37586c975e376da82dae77846edd7"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-tu-visibility-20261022/split-host.json",
+      "bytes": 654994,
+      "sha256": "0f4accac2157f3fca9357e6db2e4d967bdeac8da058e726a32b518a8930d0fcf"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-tu-visibility-20261022/split-int-service.json",
+      "bytes": 655272,
+      "sha256": "703852b3022d2533e0f20238a92407c2ab7a8f1b1a2fd1186bd7662959792087"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/ecl-tu-visibility-20261022/split-stack.json",
+      "bytes": 655065,
+      "sha256": "b029be9b9e33db62f67bddba78931809c6d8ea35fb711740e010f21a58f62249"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-motion-lifetime-20261022/adopted.json",
+      "bytes": 651867,
+      "sha256": "f4b3dca0255c4ee0f90331994f912a172bd8805552e670d7591aa34f30e99be0"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-motion-lifetime-20261022/baseline.json",
+      "bytes": 651867,
+      "sha256": "c09f25e0f772bfb2aa8628a8b50a25f2d83af4acccc3914f714bea8eaaa0ffa6"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-motion-lifetime-20261022/explicit-sum.json",
+      "bytes": 655518,
+      "sha256": "125649e45e36e3c82c133814e2365c535521b53c37104a2f8cf6e1a4a3840cef"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-motion-lifetime-20261022/integer-motion.json",
+      "bytes": 655956,
+      "sha256": "de3e701ad4bfff136e569d35cc80c20f300b39053525d9ec7f1c9ce6f977b783"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-motion-lifetime-20261022/local-motion.json",
+      "bytes": 655737,
+      "sha256": "3de830e4a638d879fd67ec923d94a93d236233870f727609c0f8a7f8173a65ae"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-motion-lifetime-20261022/local-operands.json",
+      "bytes": 655948,
+      "sha256": "601f72c87cd3765710d5d06a90a6b2d61e7554f386998585c18f51f47ddab11c"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-motion-lifetime-20261022/sum-double-y.json",
+      "bytes": 655902,
+      "sha256": "b88b869b4f86839dbd796f1bb5a381cb6277accb398cab06059e64931295fba4"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-motion-lifetime-20261022/sum-y-left.json",
+      "bytes": 655666,
+      "sha256": "a6178b2eca849b494e1472194a86fdbb5508cf0efcc5d3462e3251fc622797b0"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only.json",
+      "bytes": 658928,
+      "sha256": "b882c2b160e3e8305c98bbae9c064320384ecab02af068cf01076ac35f273152"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing.json",
+      "bytes": 660491,
+      "sha256": "b39653429f631487786e4e0817313ef69727dca401c858eaeca42f821c206825"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index.json",
+      "bytes": 660459,
+      "sha256": "0bbff6f9c55455138a68f6aed485dc41649ab28bd30d6b661b40de1d7a7f08c0"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values.json",
+      "bytes": 661639,
+      "sha256": "3a7087911819e5cd31334df3138dfbb5ead8f36c7140b1ea84b0c6b672defdb5"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-rank-result-routing-20261022/aim-interior-pointer.json",
+      "bytes": 655681,
+      "sha256": "c12130b4cb63fcea2d6d73d0ad51a607ed3fe06de6404717c785fa2bdeca0220"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-rank-result-routing-20261022/baseline.json",
+      "bytes": 651867,
+      "sha256": "41c3750875f9aa98065756ee4c4d567fac527096e69ff59d2781a7941d0658bc"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-rank-result-routing-20261022/rank-index-local.json",
+      "bytes": 656609,
+      "sha256": "e7a1447531b7ded239d0ab674fc32246da69af13a420d2a2cd596960321df173"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-rank-result-routing-20261022/rank-local-reads.json",
+      "bytes": 655957,
+      "sha256": "864eb9afba34a5639f42ea5e0ce98fdf810f5947ada2890b6f9d41b3c64d676d"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-rank-result-routing-20261022/wrapper-result-tail.json",
+      "bytes": 655491,
+      "sha256": "d6f013ad14994f8c89f4d86376b9c45b7df35134c940f832f0a0c09d6a2b1ce0"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending.json",
+      "bytes": 656668,
+      "sha256": "6604038e245e8ac94cfbeebb25b003862d2592435c984ab5ffc2dc460113b83c"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks.json",
+      "bytes": 661422,
+      "sha256": "838055532a8f6838bbdeaf7155f250fdb91f959656d7a27ca6ff9bf6e39eef3f"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim.json",
+      "bytes": 660589,
+      "sha256": "1ab6bc71779a0e8c30287b7f2fd1f50b09861ab743dc69393ccf87e980a0d7d7"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks.json",
+      "bytes": 660538,
+      "sha256": "e08ccc42e2c851d31bdcbd70d2f88867f519bbd535cd8cde50ae347e25821d82"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/adopted.json",
+      "bytes": 651867,
+      "sha256": "1d366049494f5968c0e1f41acbd0629669caeada49a7d1191d6b8f76ed8c0890"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/baseline.json",
+      "bytes": 651867,
+      "sha256": "08d8e884ebd3f08e74e0c2665db04bdbc38f9fc08abdb2a5f828e4deca32dcde"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode.json",
+      "bytes": 655183,
+      "sha256": "923740727715b586eb162656237d1ac438238c5c3fb83cde7d9df71961209d9b"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left.json",
+      "bytes": 655228,
+      "sha256": "95bda92ff54e1c71eff4a54ce2e55052091248ff8287b18965f2c12725436e16"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/adopted.json",
+      "bytes": 651867,
+      "sha256": "d5ce5ae9795210038ed80856dddd4735c8f664ad4be7b13c25c0539ffa80c131"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/baseline.json",
+      "bytes": 651874,
+      "sha256": "81b09460d3968d38ff8f31f6866a6ef31154c1f6761b447cd3b15cf9fca55e9f"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/combined-spawn-rank.json",
+      "bytes": 657655,
+      "sha256": "02cccb0bf4b6887541d568448e19cc97b7662a2858f24be265bcf29b00dc5947"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-fields.json",
+      "bytes": 655755,
+      "sha256": "73cdb90673f727545e26688c868619a488959b1bab47e16ddaec98ec77d99209"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/duplicate-spawn-tail.json",
+      "bytes": 657235,
+      "sha256": "b86203051712498980808321c0100c4ff2a4940dafd0499a7f20d49fd785d56b"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-local-tails.json",
+      "bytes": 660279,
+      "sha256": "087d582a6a6be787c9793adc5265dca9c4b96c771d91e4153ad1ba49f14b4ccb"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-shared-tails-20261022/rank-five-shared-result.json",
+      "bytes": 656859,
+      "sha256": "824d99e92763f90b2a46c824758c8ea437f9a122f65dfab5dd16d740f8b82c50"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-aim-before-rank.json",
+      "bytes": 654995,
+      "sha256": "7e0052d7525b930b2777cdf5efe9f46fd165566bb4dc9b939d2a0c04863cd6b0"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-result-local.json",
+      "bytes": 657868,
+      "sha256": "7c3126b3de2999ade3f16d9de8909c14174529c3acbc70b0ccef6dcd7b4a7368"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-split-y.json",
+      "bytes": 657680,
+      "sha256": "0d23ef3a561a588d16bb39d997d4c9ddaa3137be640e2860186e8af93cbe445a"
+    },
+    {
+      "path": ".analysis/gpt-6-astra-medium/enemy-tail-placement-20261022/pointer-swap-tails.json",
+      "bytes": 656370,
+      "sha256": "de9f580f330794b9b6b8e3b1ef4b64cc1beadea5c98ec61b598ce3e0e9fb66a3"
+    }
+  ],
+  "member_count": 329,
+  "expanded_bytes": 190634458,
+  "all_members_length_and_sha256_verified": true,
+  "restoration": "tar -xzf .analysis/handoff-cleanup-20261023/historical-codegen-reports.tar.gz -C .",
+  "protected_files_verified": 1568,
+  "excluded_large_json": [
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023/executor-entry.json",
+      "reason": "current replay input or non-report historical state"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023/primary-pass.json",
+      "reason": "current replay input or non-report historical state"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-real-entry-context-20261023/secondary-pass.json",
+      "reason": "current replay input or non-report historical state"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-integer-value-context-20261021/authored-backlog.json",
+      "reason": "current replay input or non-report historical state"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-representation-20261021/authored-backlog.json",
+      "reason": "current replay input or non-report historical state"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/baseline.json",
+      "reason": "current replay input or non-report historical state"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/canonical-cold2.json",
+      "reason": "current replay input or non-report historical state"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/leaf-compare-extent-20261022/post-boundary-audit.json",
+      "reason": "current replay input or non-report historical state"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-anm-world-20261019/exact-backlog-at-entry.json",
+      "reason": "current replay input or non-report historical state"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/th10-gui-replay-20261020/source-controls.json",
+      "reason": "current replay input or non-report historical state"
+    }
+  ],
+  "net_saved_bytes": 178014670,
+  "file_classification": "durable-analysis-evidence",
+  "producer": "historical compiler/link/Oracle diagnostic output; original provenance retained verbatim in archived JSON",
+  "disposition": "lossless archive with verified original path, length and hash; restore before historical consumers",
+  "provenance": "The full per-report producer/context/source metadata is retained verbatim inside each hashed archived report; detailed selection/protection manifest remains in .analysis/handoff-cleanup-20261023/manifest.json."
+}

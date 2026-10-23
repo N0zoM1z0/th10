@@ -5493,3 +5493,20 @@ state/fog host fixtures pass with the real color declaration imported. No new
 exact credit or original field-type claim. Low-byte snapshot, six spline copies
 and four signed channel values regress (1856/1824/1892); reject them. See
 [color storage evidence](evidence/stage-color-storage/README.md).
+
+## Stage integer operand controls and handoff (2026-10-23)
+
+Target opcode13 at 404202 uses EAX for its accumulator store; the current native
+uses EDX, not the earlier handoff's ECX. Opcode12 uses target DL/native CL and
+inlines SetCurrent(0) in both spans. Timer receiver precomputation and an actual
+four-byte memcpy are complete 1868-byte raw-neutral controls. An ordinary store
+helper is baseline-equal after 20 independently identified address fields;
+sharing the int local between 12/13 adds four ordinary differences. All retain 11
+whole guards 987/all 36. No adoption or exact gain. The declared forceinline
+control remains unexecuted. See
+[integer evidence](evidence/stage-integer-lifetimes/README.md).
+
+The [cleanup receipt](evidence/handoff-cleanup-20261023/README.md) provides the
+lossless historical report restoration index. The active handoff is shortened;
+all 26 older sections remain verbatim in the dated history. Restore archived
+reports before historical consumers; do not restore old source or relax pins.

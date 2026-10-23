@@ -1,0 +1,309 @@
+{
+  "files": [
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/source.map",
+      "bytes": 59421,
+      "sha256": "ede9cd8454b45faef1cef795325269e15a09caf9d576b96ee205b5fe8e5cd419"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/support-02-Chain.ltcg.obj",
+      "bytes": 36793,
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13690,
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/source.exe",
+      "bytes": 77824,
+      "sha256": "a9f76978d4125bfe4af1acbbb76e368af645dcbbdb39c56c045eb05f6ce7c003"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/source.ltcg.obj",
+      "bytes": 42722,
+      "sha256": "24745a3d9aeeebdb4b3d42ef74868d0acf9155197995b38d0434dc256966feb7"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/support-06-RandomMath.ltcg.obj",
+      "bytes": 3991,
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/support-01-StageDraw.ltcg.obj",
+      "bytes": 25868,
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/support-00-StageLifecycle.ltcg.obj",
+      "bytes": 21748,
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/support-07-FileSystem.ltcg.obj",
+      "bytes": 33430,
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/link-aliases.rsp",
+      "bytes": 10086,
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/link-anchors.obj",
+      "bytes": 6758,
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/support-04-AnmVmCreate.ltcg.obj",
+      "bytes": 10936,
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/source.pdb",
+      "bytes": 84992,
+      "sha256": "08a88aaa1caead7796e3687d79c0c70213dc113ee873e540732fba3526ae554d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/shared-word/support-03-AnmManager.ltcg.obj",
+      "bytes": 247900,
+      "sha256": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/source.map",
+      "bytes": 59504,
+      "sha256": "37084b6c177d50f94921e8cd01c34d83c55bac620a3c2cbb517276769ccdbd23"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/support-02-Chain.ltcg.obj",
+      "bytes": 36793,
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13690,
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/source.exe",
+      "bytes": 77824,
+      "sha256": "0441f05cd9a2e3850b5f2483dfbdb933bfbd4015f5849988f8af8eb3097fb662"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/source.ltcg.obj",
+      "bytes": 42874,
+      "sha256": "eadc829b17469febd28c83ebc5366fd1c0de570297736238cd9e0a6c60ff2f5c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/support-06-RandomMath.ltcg.obj",
+      "bytes": 3991,
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/support-01-StageDraw.ltcg.obj",
+      "bytes": 25868,
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/support-00-StageLifecycle.ltcg.obj",
+      "bytes": 21748,
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/support-07-FileSystem.ltcg.obj",
+      "bytes": 33430,
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/link-aliases.rsp",
+      "bytes": 10086,
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/link-anchors.obj",
+      "bytes": 6758,
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/support-04-AnmVmCreate.ltcg.obj",
+      "bytes": 10936,
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/source.pdb",
+      "bytes": 84992,
+      "sha256": "89bd8bffee6818cbae54d8c3719efad5422238556641edb2aac9890ba7cfe858"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-helper/support-03-AnmManager.ltcg.obj",
+      "bytes": 247900,
+      "sha256": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/source.map",
+      "bytes": 59421,
+      "sha256": "bce254abfebc3cbfe3c61cc9c15f63733151188c68a4da8347b4fb973648eb6b"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/support-02-Chain.ltcg.obj",
+      "bytes": 36793,
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13690,
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/source.exe",
+      "bytes": 77824,
+      "sha256": "3c84db839738ee36e9a7d43a163607a75f7de7e28aac4edf2973d498e0b6ebc3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/source.ltcg.obj",
+      "bytes": 42721,
+      "sha256": "cdb97e3611c4f36c9c14b611c558ecfbeafc1ebeda2544885b313c86d05373fa"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/support-06-RandomMath.ltcg.obj",
+      "bytes": 3991,
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/support-01-StageDraw.ltcg.obj",
+      "bytes": 25868,
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/support-00-StageLifecycle.ltcg.obj",
+      "bytes": 21748,
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/support-07-FileSystem.ltcg.obj",
+      "bytes": 33430,
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/link-aliases.rsp",
+      "bytes": 10086,
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/link-anchors.obj",
+      "bytes": 6758,
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/support-04-AnmVmCreate.ltcg.obj",
+      "bytes": 10936,
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/source.pdb",
+      "bytes": 84992,
+      "sha256": "52e6340211edfb37568eda9fae2189b8d1785b2d90cb9e1c3504f2f922354c97"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/timer-address/support-03-AnmManager.ltcg.obj",
+      "bytes": 247900,
+      "sha256": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/source.map",
+      "bytes": 59421,
+      "sha256": "9b019e5b5bb90ad637f7ef4e152415045a06f77f57725eb96260a77a864a8883"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/support-02-Chain.ltcg.obj",
+      "bytes": 36793,
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13690,
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/source.exe",
+      "bytes": 77824,
+      "sha256": "bc05ee5b7d902347b99d4720514a32b80200c8aaf1c0dc99f097af184e44a895"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/source.ltcg.obj",
+      "bytes": 42796,
+      "sha256": "e09389e8e0aecc3e3b7c7fa9738f89f8f6c65b1ab4fd5b9586858dc6e3601182"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/support-06-RandomMath.ltcg.obj",
+      "bytes": 3991,
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/support-01-StageDraw.ltcg.obj",
+      "bytes": 25868,
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/support-00-StageLifecycle.ltcg.obj",
+      "bytes": 21748,
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/support-07-FileSystem.ltcg.obj",
+      "bytes": 33430,
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/link-aliases.rsp",
+      "bytes": 10086,
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/link-anchors.obj",
+      "bytes": 6758,
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/support-04-AnmVmCreate.ltcg.obj",
+      "bytes": 10936,
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/source.pdb",
+      "bytes": 84992,
+      "sha256": "263fb98961141f9af59b07d5e586c416428f1b21b5cd94aea0f272cd30237712"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023/global-copy/support-03-AnmManager.ltcg.obj",
+      "bytes": 247900,
+      "sha256": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4"
+    }
+  ],
+  "count": 60,
+  "logical_bytes": 2705612,
+  "file_classification": "generated-ephemeral-output",
+  "producer": "probe.py for shared-word/global-helper/timer-address; probe-copy.py for global-copy, under .analysis/gpt-6.1-sol/stage-dispatch-integer-lifetimes-20261023",
+  "disposition": "delete after final whole-parent peer comparison; source, patch, producer and reports retained"
+}
