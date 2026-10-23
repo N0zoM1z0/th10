@@ -6,6 +6,11 @@ all49 independent address bindings. No source, header, profile, canonical recipe
 or exact ledger is changed by this batch. These results supersede the unexecuted
 parameter/vector suggestions in the [previous packet](../player-initialization-caller-controls/README.md).
 
+The [owner-capture follow-up](../player-initialization-owner-capture/README.md)
+now advances maintained source to1355/1435 and tests the inherited-storage,
+bitfield, getter and missing-Stage-caller suggestions. This packet keeps its
+original1195 input bindings and results.
+
 [The compact results](controls.json) bind21 completed native images to their
 producer reports and hashes. Eighteen have complete1435-byte comparisons; three
 fail the strict size check without cropping. All21 pass eight full shared guards
@@ -36,8 +41,10 @@ therefore does not explain the receiver bridge.
 
 _ReadBarrier is rejected before linking: pinned VC7.1 reports C4163, unavailable
 intrinsic. It has no completed image or parent result. Inherited vector storage,
-volatile containing-bitfield storage, a plain manager getter, both manager locals
-and the calc-volatile/draw-local combination are **prepared but unexecuted**.
+volatile containing-bitfield storage and a plain manager getter were prepared
+but unexecuted here; the follow-up measures all three as complete-parent neutral.
+Both manager locals and the calc-volatile/draw-local combination remain unexecuted
+at this checkpoint.
 Do not report those controls as tested or remove /GL to fit a normal-COFF Oracle.
 
 ## Missing real caller and next large-owner experiment

@@ -1,0 +1,13 @@
+{
+  "scope": "all unique complete public PDB owners only; static/unowned regions, target equality and runtime outside scope",
+  "private_maintained_public_owners_equal": 519,
+  "private_maintained_public_bytes_equal": 140370,
+  "previous_maintained_public_owners_changed": [
+    "?PlayerInitialize@@YAHPAUPlayer@@@Z"
+  ],
+  "source_reports": {
+    ".analysis/gpt-6.1-sol/player-chain-members-20261023/maintained-17.json": "92cf85fa5f314d0d842ad0713c742735b2dd7b61c4d952ccac7a27ae6aadd288",
+    ".analysis/gpt-6.1-sol/player-stage-caller-20261023/calc-snapshot-before-owner.json": "79b6b5920df126e1286e009f6741f069040e06bbf3d9ff37dab52805b34f4239",
+    ".analysis/gpt-6.1-sol/player-stage-caller-20261023/maintained-17.json": "7c98dc31c7942f99a86b32a5fd129dd8dbbecb0127a24092ed18f4ac5bf75e55"
+  }
+}

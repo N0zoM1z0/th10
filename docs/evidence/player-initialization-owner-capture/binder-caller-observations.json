@@ -1,0 +1,181 @@
+{
+  "scope": "bounded raw target caller cross-check; Ghidra references are not a complete incoming-call inventory",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "ghidra_mapped_bytes": 412289,
+  "ghidra_mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+  "ghidra_readonly_rollback": true,
+  "ghidra_recorded_direct_calls": 21,
+  "six_additional_raw_verified_calls": [
+    "0x448ec5",
+    "0x448f3c",
+    "0x448ff5",
+    "0x44906c",
+    "0x449125",
+    "0x44919c"
+  ],
+  "verified_incoming_call_lower_bound": 27,
+  "complete_call_inventory": false,
+  "position_creators": [
+    {
+      "address": "0x448d50",
+      "size": 95,
+      "provisional_source_name": "AnmLoadedView::CreateVmAtScreenVariant0",
+      "calls": [
+        {
+          "site": "0x448d5d",
+          "target": "0x449950"
+        },
+        {
+          "site": "0x448d95",
+          "target": "0x43e710"
+        },
+        {
+          "site": "0x448da4",
+          "target": "0x4489d0"
+        }
+      ]
+    },
+    {
+      "address": "0x448db0",
+      "size": 118,
+      "provisional_source_name": "AnmLoadedView::CreateVmAtWorldVariant0",
+      "calls": [
+        {
+          "site": "0x448dbd",
+          "target": "0x449950"
+        },
+        {
+          "site": "0x448e0c",
+          "target": "0x43e710"
+        },
+        {
+          "site": "0x448e1b",
+          "target": "0x4489d0"
+        }
+      ]
+    },
+    {
+      "address": "0x448e80",
+      "size": 95,
+      "provisional_source_name": "AnmLoadedView::CreateVmAtScreenVariant2",
+      "calls": [
+        {
+          "site": "0x448e8d",
+          "target": "0x449950"
+        },
+        {
+          "site": "0x448ec5",
+          "target": "0x43e710"
+        },
+        {
+          "site": "0x448ed4",
+          "target": "0x448a50"
+        }
+      ]
+    },
+    {
+      "address": "0x448ee0",
+      "size": 118,
+      "provisional_source_name": "AnmLoadedView::CreateVmAtWorldVariant2",
+      "calls": [
+        {
+          "site": "0x448eed",
+          "target": "0x449950"
+        },
+        {
+          "site": "0x448f3c",
+          "target": "0x43e710"
+        },
+        {
+          "site": "0x448f4b",
+          "target": "0x448a50"
+        }
+      ]
+    },
+    {
+      "address": "0x448fb0",
+      "size": 95,
+      "provisional_source_name": "AnmLoadedView::CreateVmAtScreenVariant1",
+      "calls": [
+        {
+          "site": "0x448fbd",
+          "target": "0x449950"
+        },
+        {
+          "site": "0x448ff5",
+          "target": "0x43e710"
+        },
+        {
+          "site": "0x449004",
+          "target": "0x448ac0"
+        }
+      ]
+    },
+    {
+      "address": "0x449010",
+      "size": 118,
+      "provisional_source_name": "AnmLoadedView::CreateVmAtWorldVariant1",
+      "calls": [
+        {
+          "site": "0x44901d",
+          "target": "0x449950"
+        },
+        {
+          "site": "0x44906c",
+          "target": "0x43e710"
+        },
+        {
+          "site": "0x44907b",
+          "target": "0x448ac0"
+        }
+      ]
+    },
+    {
+      "address": "0x4490e0",
+      "size": 95,
+      "provisional_source_name": "AnmLoadedView::CreateVmAtScreenVariant3",
+      "calls": [
+        {
+          "site": "0x4490ed",
+          "target": "0x449950"
+        },
+        {
+          "site": "0x449125",
+          "target": "0x43e710"
+        },
+        {
+          "site": "0x449134",
+          "target": "0x448b40"
+        }
+      ]
+    },
+    {
+      "address": "0x449140",
+      "size": 118,
+      "provisional_source_name": "AnmLoadedView::CreateVmAtWorldVariant3",
+      "calls": [
+        {
+          "site": "0x44914d",
+          "target": "0x449950"
+        },
+        {
+          "site": "0x44919c",
+          "target": "0x43e710"
+        },
+        {
+          "site": "0x4491ab",
+          "target": "0x448b40"
+        }
+      ]
+    }
+  ],
+  "rejected_inference": "Do not change six correct creator calls to another binder because they are absent from the Ghidra reference list. All eight complete target creator extents call43E710.",
+  "native_diagnostic": "the expanded27-input image has21 decoded direct calls to the child, with a different owner distribution; equal counts alone do not close target callers",
+  "evidence_sha256": {
+    ".analysis/gpt-6.1-sol/player-stage-caller-20261023/script-binder-callers.txt": "d3bd67dad8b8da9f3708da8b2eeaad7f856c3897289fa1b4223514f3d8e0db9d",
+    ".analysis/gpt-6.1-sol/player-stage-caller-20261023/script-binder-callers-ghidra.log": "8352585ad1f6c6bb76ed4cb33ecb22b542c6964c01b610831819b2843c8380fc",
+    ".analysis/gpt-6.1-sol/player-stage-caller-20261023/native-binder-callers.json": "268e4b006d32d31a016448ad2a2cdcb9da0dcfddffc304cc0f9529038122f2d5",
+    "config/functions.csv": "42fb1a1aa71f22f7dfa313d376c2fc173e278a9e0105bab604aedc00f2c84fb5"
+  },
+  "producer_sha256": "736f9efa5caa1e4c4dc01aeb8c8ee6bd047089b7bbc3750f2c411724ddd4c726"
+}

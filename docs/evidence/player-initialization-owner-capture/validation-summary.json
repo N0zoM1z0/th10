@@ -1,0 +1,134 @@
+{
+  "scope": "one nonexact1435-byte Player initializer source change and two candidate-ledger notes; source/interfaces/layouts elsewhere unchanged",
+  "starting_head": "a21e5165fd0db3df5642d2509390beb7de499e15",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "preflight": "disk target, executed pinned toolchain, target-required tracking/status and two full-mapped-text readOnly/rollback Ghidra reviews passed; logs/producers retained privately",
+  "native_scope": {
+    "complete_images": 19,
+    "new_object_compilations": 55,
+    "complete_parent_comparisons": 17,
+    "size_rejections": [
+      1438,
+      1446
+    ],
+    "maintained_new_compilations": 1,
+    "maintained_pinned_reused_inputs": 16,
+    "independent_whole_graph_cold_pair": false
+  },
+  "focused_oracle": {
+    "parent_size": 1435,
+    "parent_matched": 1355,
+    "parent_differences": 80,
+    "independent_fields": 49,
+    "result": "expected complete mismatch; no exact credit",
+    "shared_guards": 8,
+    "shared_guard_bytes": 1753,
+    "shared_guard_fields": 99,
+    "all_shared_guards_exact": true,
+    "cached_receipt_sha256": "7ce2da82ab719a0eb66ee87c2cb9400faf928388fb8b2bbb72d9182db60e46eb"
+  },
+  "public_reproduction": {
+    "scope": "all unique complete public PDB owners only; static/unowned regions, target equality and runtime outside scope",
+    "private_maintained_public_owners_equal": 519,
+    "private_maintained_public_bytes_equal": 140370,
+    "previous_maintained_public_owners_changed": [
+      "?PlayerInitialize@@YAHPAUPlayer@@@Z"
+    ],
+    "source_reports": {
+      ".analysis/gpt-6.1-sol/player-chain-members-20261023/maintained-17.json": "92cf85fa5f314d0d842ad0713c742735b2dd7b61c4d952ccac7a27ae6aadd288",
+      ".analysis/gpt-6.1-sol/player-stage-caller-20261023/calc-snapshot-before-owner.json": "79b6b5920df126e1286e009f6741f069040e06bbf3d9ff37dab52805b34f4239",
+      ".analysis/gpt-6.1-sol/player-stage-caller-20261023/maintained-17.json": "7c98dc31c7942f99a86b32a5fd129dd8dbbecb0127a24092ed18f4ac5bf75e55"
+    }
+  },
+  "checks": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.143,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py",
+        "--require-target"
+      ],
+      "exit_code": 0,
+      "seconds": 0.403,
+      "log_sha256": "344278847dcec53d43546fabbc51f81b910eeb0d4913e733f6d5894d25f5bc02"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.151,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.163,
+      "log_sha256": "d9c37039657cc0a1a10d8f7a205617b4eaf5851f9e7572226287bc7e5e4aa423"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-reconstruction-status.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.158,
+      "log_sha256": "881c82bd1357823b1b3f6dfba8c3214a9c1b5854689adf0981574cf5c9cc8990"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/build-match-unit.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.533,
+      "log_sha256": "3c3d25a8f7ef707beaac4c4d61aa69edb7cdb6d8fb909df373a23b0c1a29a27a"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.183,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.03,
+      "log_sha256": "96ed9d3ebda61e3f76d862740e2f9f9175705c60b3d9ea8457d52ca6a5203791"
+    }
+  ],
+  "cleanup": {
+    "all25532_protected_files_unchanged_during_compaction": true,
+    "subsequent_protected_changes": "four intentional documentation updates only; source and ledger unchanged since validated build",
+    "unrelated_D3D_files_hash_verified": 9,
+    "unrelated_D3D_staged": false
+  },
+  "full_CI": "not run under operator focused-validation preference",
+  "broad_canonical_cold": "not run; no new exact candidate or modified exact body/interface",
+  "native_product_runtime": "open; no runtime validation",
+  "semantic_port": "not started; no new credit",
+  "staged_whitespace": "passed git diff --cached --check",
+  "maintained_patch": "one-context unified source patch; passed git apply --check --reverse against maintained working source"
+}

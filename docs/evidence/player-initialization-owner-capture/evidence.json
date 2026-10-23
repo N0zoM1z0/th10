@@ -1,0 +1,460 @@
+{
+  "source_starting_checkpoint": "a21e5165fd0db3df5642d2509390beb7de499e15",
+  "scope": "large Player initializer; complete1435/49 comparison, no exact credit",
+  "baseline": {
+    "size": 1435,
+    "matched": 1195,
+    "differences": 240,
+    "bound_report_sha256": "b69e0b69abba32566fcaff5a765dbc46fdaae975b77827d8e2d94ea644e1aab9"
+  },
+  "selected_private": "calc-snapshot-before-owner",
+  "maintained": "maintained-17",
+  "current": {
+    "size": 1435,
+    "matched": 1355,
+    "differences": 80,
+    "fields": 49,
+    "changed_replayed_bytes": 200,
+    "target_repairs": 164,
+    "target_equal_losses": 4,
+    "net_repairs": 160,
+    "compiler_barriers": 4,
+    "scoped_volatile_manager_reads": 1
+  },
+  "complete_images": 19,
+  "complete_parent_comparisons": 17,
+  "new_object_compilations": 55,
+  "results": [
+    {
+      "label": "actual-manager-20",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 19,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/actual-manager-20.json",
+      "report_sha256": "fd1bce7ddd6190e4e92e15875eddfe4d7d9882b95524f20051242a24efddc83d",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "3313ef4d6d5bc432c33cb71c18b74d2afe423524c29d10a09d2d4b8bb540d30e"
+    },
+    {
+      "label": "all-wrapper-callers-27",
+      "size": 1435,
+      "new_compilations": 6,
+      "reused_inputs": 21,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/all-wrapper-callers-27.json",
+      "report_sha256": "cf26f0cc71ad33049f809b1dd6a27cbe12d18449a07e4300cc43ac813aefdc65",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "65e45b8d0824e70a55e10c95588f36386d0f8bc73310b3c3d2d881da93fe6d4a"
+    },
+    {
+      "label": "anm-cpu-g7-17",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/anm-cpu-g7-17.json",
+      "report_sha256": "dcb06e57ec46ac24dd5f84207f2887dc1961a89613017c038565c283669adf5f",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "4986655f01a01914a07568399e20635aa5b9ca56be4c3b402631fbc80aae996d"
+    },
+    {
+      "label": "both-global-identities",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/both-global-identities.json",
+      "report_sha256": "c5a4c302b0e1d988b13e5e571b59e6bc7a01c17d427fb8dda76c2c77ad7e3a03",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "f5e88d8121e5f84dadaf448d867ce080cb97d00b0d7642728f3e12a60f7ff070"
+    },
+    {
+      "label": "both-owner-captures",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/both-owner-captures.json",
+      "report_sha256": "4d49dfc2f87d860025dde3ad570170c192460810a9bf422bdcaf546f441fb452",
+      "matched": 1207,
+      "differences": 228,
+      "fields": 49,
+      "changed_bytes": 216,
+      "repairs": 32,
+      "losses": 20,
+      "whole_parent_neutral": false,
+      "bound_report_sha256": "0ec40413d8c732616cc4f01dea838c409ba22aff6f5c661de0afdf2724b6392b"
+    },
+    {
+      "label": "calc-captured-owner-rmw",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/calc-captured-owner-rmw.json",
+      "report_sha256": "59f60fe59c01128595f8ad8830e608a669a189e83641d03fec7548df3bbc8de1",
+      "matched": 1351,
+      "differences": 84,
+      "fields": 49,
+      "changed_bytes": 200,
+      "repairs": 160,
+      "losses": 4,
+      "whole_parent_neutral": false,
+      "bound_report_sha256": "5d4ac2657634d0e1fae2e199ccd2d13f83ee31e2cface20e0f6be1280697ca2f"
+    },
+    {
+      "label": "calc-flags-volatile-read",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/calc-flags-volatile-read.json",
+      "report_sha256": "4cf3578d61ace5294919f58e79df5a8c030f4d6d55a27a63d72af476b475bf7b",
+      "matched": 1183,
+      "differences": 252,
+      "fields": 49,
+      "changed_bytes": 20,
+      "repairs": 4,
+      "losses": 16,
+      "whole_parent_neutral": false,
+      "bound_report_sha256": "b102ee275230daa6c4fc8b2c7488f702a552905ab9eb57b51d0da859eb5fba04"
+    },
+    {
+      "label": "calc-owner-arg-first",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/calc-owner-arg-first.json",
+      "report_sha256": "d516369022f62d6ffaf31c9efa173d8e4f72352a043d98b86cc661e532d00749",
+      "matched": 1355,
+      "differences": 80,
+      "fields": 49,
+      "changed_bytes": 200,
+      "repairs": 164,
+      "losses": 4,
+      "whole_parent_neutral": false,
+      "bound_report_sha256": "ed0c0e34e34686dc0ae75f38702f9a3614db9aabfe5349592f0389d074cebd7c"
+    },
+    {
+      "label": "calc-snapshot-before-owner",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/calc-snapshot-before-owner.json",
+      "report_sha256": "79b6b5920df126e1286e009f6741f069040e06bbf3d9ff37dab52805b34f4239",
+      "matched": 1355,
+      "differences": 80,
+      "fields": 49,
+      "changed_bytes": 200,
+      "repairs": 164,
+      "losses": 4,
+      "whole_parent_neutral": false,
+      "bound_report_sha256": "0946bf8b46cb7f4fcada7fe68dff05ced0b3abfeb556dd57ebf780a7f216c09f"
+    },
+    {
+      "label": "callback-owner-getter",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/callback-owner-getter.json",
+      "report_sha256": "8d915ca1060f9b40790ba58ff9f4eca6e181e2dbf4a1a3f71dc3d3e9131d9fb6",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "79e4dacd2f5a94272d5c3baa7be3c7107b3d0f6cd82411d302399cfdbfd456cf"
+    },
+    {
+      "label": "first-max-operand",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/first-max-operand.json",
+      "report_sha256": "52595b1658397be6d41d7cc3604385b328db54085e98ef75798cfbce0667b8a5",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "e12e18ab567253a5e2b0e76844552f071c0eca1028343572c3659f5901e21be0"
+    },
+    {
+      "label": "first-timer-member",
+      "size": 1438,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/first-timer-member.json",
+      "report_sha256": "b428c31345adfb5783869dd06b13b25fe158a256031ebc2ed7ef12966580f7a2",
+      "result": "strict-complete-owner-size-rejection",
+      "complete_parent_comparison": false
+    },
+    {
+      "label": "maintained-17",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/maintained-17.json",
+      "report_sha256": "7c98dc31c7942f99a86b32a5fd129dd8dbbecb0127a24092ed18f4ac5bf75e55",
+      "matched": 1355,
+      "differences": 80,
+      "fields": 49,
+      "changed_bytes": 200,
+      "repairs": 164,
+      "losses": 4,
+      "whole_parent_neutral": false,
+      "bound_report_sha256": "aaac5a5b8f9e5d2683bd03465795882f9237181fc3533df7e9dce2af204627bd"
+    },
+    {
+      "label": "selected-first-extent-value",
+      "size": 1446,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/selected-first-extent-value.json",
+      "report_sha256": "d78930926d11f6215363d05d57c4249fb398c10c59a9cde6270a7f01adf2072d",
+      "result": "strict-complete-owner-size-rejection",
+      "complete_parent_comparison": false
+    },
+    {
+      "label": "selected-selector-snapshot",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/selected-selector-snapshot.json",
+      "report_sha256": "dbf5690af609fc425563ece9575bccfc60543526e0141d7648ceced60b7977bf",
+      "matched": 1347,
+      "differences": 88,
+      "fields": 49,
+      "changed_bytes": 208,
+      "repairs": 164,
+      "losses": 12,
+      "whole_parent_neutral": false,
+      "bound_report_sha256": "51ab8718d9da54a071c2408db17b3264b5c76246f15c3c141b151be3d949b492"
+    },
+    {
+      "label": "stage-loop-21",
+      "size": 1435,
+      "new_compilations": 1,
+      "reused_inputs": 20,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/stage-loop-21.json",
+      "report_sha256": "83b399c32cd9a133129144bfffdbff5f8538cbb70396ca7faa004edcc2b730ec",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "c043c72eb561ba3e9074df7fcb584cc7e0f3d18c67b75ed8fb4f7df8c7d89999"
+    },
+    {
+      "label": "vector-base-storage-17",
+      "size": 1435,
+      "new_compilations": 17,
+      "reused_inputs": 0,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/vector-base-storage-17.json",
+      "report_sha256": "e619c884993f926af3f85f385b5d4ef4ff097a026bf57c57225117206b4d87c4",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "09f8e64c09e8317f2455a1f23d160afb0383718d0ee726bd8e7bdb5402f51a80"
+    },
+    {
+      "label": "volatile-bitfield-17",
+      "size": 1435,
+      "new_compilations": 17,
+      "reused_inputs": 0,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/volatile-bitfield-17.json",
+      "report_sha256": "d9de4ae805de29a42f393a6385d3b83a445b531492e4ebf98826e5437f1471c4",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "5f7a9eeb171ba8e7e9bba6e0b93b845a6c044f861fc71b12f841c9722611ee6c"
+    },
+    {
+      "label": "winmain-entry-27",
+      "size": 1435,
+      "new_compilations": 0,
+      "reused_inputs": 27,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/winmain-entry-27.json",
+      "report_sha256": "3da42e28b504cd2e3a85fc6292e7162b1007db9e38c37d84ac0dbca181b99b4f",
+      "matched": 1195,
+      "differences": 240,
+      "fields": 49,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0,
+      "whole_parent_neutral": true,
+      "bound_report_sha256": "f7df2d0ba1a68bbfe33cd8e71795e234d11b6be6e56c7ed3166911f0eabe8799"
+    }
+  ],
+  "prepared_unexecuted": [
+    "anm-cpu-g6-17",
+    "calc-captured-owner-publication",
+    "calc-flags-volatile-view",
+    "chain-global-identity",
+    "draw-owner-before-flags",
+    "selector-value-snapshot"
+  ],
+  "public_reproduction": {
+    "scope": "all unique complete public PDB owners only; static/unowned regions, target equality and runtime outside scope",
+    "private_maintained_public_owners_equal": 519,
+    "private_maintained_public_bytes_equal": 140370,
+    "previous_maintained_public_owners_changed": [
+      "?PlayerInitialize@@YAHPAUPlayer@@@Z"
+    ],
+    "source_reports": {
+      ".analysis/gpt-6.1-sol/player-chain-members-20261023/maintained-17.json": "92cf85fa5f314d0d842ad0713c742735b2dd7b61c4d952ccac7a27ae6aadd288",
+      ".analysis/gpt-6.1-sol/player-stage-caller-20261023/calc-snapshot-before-owner.json": "79b6b5920df126e1286e009f6741f069040e06bbf3d9ff37dab52805b34f4239",
+      ".analysis/gpt-6.1-sol/player-stage-caller-20261023/maintained-17.json": "7c98dc31c7942f99a86b32a5fd129dd8dbbecb0127a24092ed18f4ac5bf75e55"
+    }
+  },
+  "maintained_cpp_sha256": "8a16f4c155d23db90c6f3a38fef4ce87a809dbb635e9dcc57cdcb54f922601b7",
+  "canonical_recipes_unchanged": true,
+  "exact_credit": "none",
+  "product_runtime": "open; no new validation"
+}

@@ -1,0 +1,47 @@
+{
+  "scope": "16 closed Player control builds and two completed67-file private type snapshots; all current/selected and expanded27-input caller graph retained",
+  "roots": [
+    "build/gpt-6.1-sol/player-stage-caller-20261023/actual-manager-20",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/anm-cpu-g7-17",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/both-global-identities",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/both-owner-captures",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/calc-captured-owner-rmw",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/calc-flags-volatile-read",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/calc-owner-arg-first",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/callback-owner-getter",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/first-max-operand",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/first-timer-member",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/selected-first-extent-value",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/selected-selector-snapshot",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/stage-loop-21",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/vector-base-storage-17",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/volatile-bitfield-17",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/winmain-entry-27",
+    ".analysis/gpt-6.1-sol/player-parameter-partition-20261023/heap-bitfield-volatile",
+    ".analysis/gpt-6.1-sol/player-parameter-partition-20261023/vector-base-storage"
+  ],
+  "files": 567,
+  "before_bytes": 34164419,
+  "archive": ".analysis/player-owner-capture-cleanup-20261023/completed-controls.tar.xz",
+  "archive_bytes": 875184,
+  "archive_sha256": "c8cba9e481476f1bb7dbabf7fed33454508428f6bc3554e0e0206ba7cb6325cf",
+  "inventory": ".analysis/player-owner-capture-cleanup-20261023/archive-members.json.gz",
+  "inventory_sha256": "14267a486921024e2bac170e64e985211cc13eecebefb49ad482e91088168e01",
+  "protected_files_verified": 25532,
+  "all_protected_unchanged_during_compaction": true,
+  "removed_intermediate": {
+    "path": ".analysis/gpt-6.1-sol/player-stage-caller-20261023/functions-two-notes.csv",
+    "bytes": 1100501,
+    "sha256": "42fb1a1aa71f22f7dfa313d376c2fc173e278a9e0105bab604aedc00f2c84fb5",
+    "reason": "superseded current-session serialization intermediate, byte-identical maintained ledger retained"
+  },
+  "retained_full": [
+    "build/gpt-6.1-sol/player-stage-caller-20261023/all-wrapper-callers-27",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/calc-snapshot-before-owner",
+    "build/gpt-6.1-sol/player-stage-caller-20261023/maintained-17"
+  ],
+  "restore": "tar -xJf .analysis/player-owner-capture-cleanup-20261023/completed-controls.tar.xz -C .",
+  "producer_sha256": "bfcec3a67cef5a14ec6aafe6c4b7a1961a7e35323c10b5fec245b2d9699e8702",
+  "reclaimed_bytes": 34389736,
+  "reclaimed_allocated_bytes": 34492416
+}

@@ -8,6 +8,9 @@ Headers, ABI declarations, canonical recipes and exact ledgers are unchanged.
 Follow-up: the [parameter/partition controls](../player-initialization-parameter-controls/README.md)
 now test the parameter and vector suggestions below at the maintained1195 baseline.
 The earlier1170-baseline controls and their input pins remain historical.
+The [owner-capture packet](../player-initialization-owner-capture/README.md)
+supersedes the live result with1355/80; the reproduction commands below retain
+this packet's historical source pins.
 
 ## Maintained change and complete comparison
 

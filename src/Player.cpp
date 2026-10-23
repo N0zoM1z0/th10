@@ -873,13 +873,13 @@ int PlayerInitialize(Player *player)
 
     th10::ChainElem *updateNode = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(PlayerUpdateCallback));
-    // Target reads flags before publishing the owner association.
+    // Capture flags and the current owner before publishing the node fields.
     const unsigned int updateFlags = updateNode->flags;
-    _ReadWriteBarrier();
+    th10::Chain *const updateManager = reinterpret_cast<th10::Chain *>(
+        *reinterpret_cast<void *volatile *>(&g_PlayerCallbackManager));
     updateNode->arg = player;
     updateNode->flags = updateFlags & ~2u;
-    th10::Chain::AddToCalcChain(updateNode, 0x10,
-        reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
+    th10::Chain::AddToCalcChain(updateNode, 0x10, updateManager);
     player->updateCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(updateNode);
 
     th10::ChainElem *drawNode = th10::Chain::AllocElem(

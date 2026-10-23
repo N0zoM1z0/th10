@@ -5684,3 +5684,39 @@ The [handoff cleanup receipt](evidence/handoff-ready-20261023/README.md) records
 verified lossless archives, restoration commands and retained current graphs.
 Maintained code, headers, recipes, ledgers and progress counts are unchanged.
 No new exactness, native product/runtime, semantic or portability credit follows.
+
+## Player callback-owner capture and incomplete Ghidra references (2026-10-23)
+
+The [owner-capture packet](evidence/player-initialization-owner-capture/README.md)
+records the maintained1435-byte Player initializer at1355 matching/80 different
+after all49 independent field bindings. Capturing the real manager through one
+scoped volatile pointer observation before node publication replaces the first
+compiler barrier. Four initializer barriers remain. The manager's EAX absolute
+load shortens naturally; compiler loop alignment expands6->7 bytes without source
+padding. Across200 changed bytes,164 repairs/four losses give net160 over1195/240.
+Original qualifiers, barriers, threading and class/TU ownership remain unknown.
+
+Private/maintained builds reproduce all519 complete public PDB owners raw,
+140370 bytes; only PlayerInitialize changes against the previous maintained image
+among those owners. Static/unowned fragments and target equality are outside the
+check. All19 complete images pass eight guards1753/all99;17 full parent comparisons
+and55 new object compilations are recorded. Timer/extent variants emit1438/1446
+and are never cropped. Draw-owner and selector-snapshot combinations regress;
+neutral source/profile/caller controls are indexed to prevent blind repetition.
+
+Ghidra lists21 incoming binder43E710 calls but omits six raw E8 calls inside fully
+decoded95/118-byte position creators. Those eight creators all correctly call the
+same binder; the independently verified incoming lower bound is27, not a complete
+inventory. A same-count native list has different physical owners. Missing
+Ghidra references do not prove source calls wrong or establish caller closure.
+The404450 behavior note is corrected from manager-slot speculation to observed
+Stage-layout loops; its source/exact state remains open and the private caller
+prerequisite is not adopted. The large initializer still has37 prefix,21 early
+timer,11 vector-region and11 tail-region differing bytes. No small helper exact
+claim, product/runtime validation, semantic gate or portability follows.
+
+Current producers and restoration commands are in the packet. Closed builds and
+two completed full type snapshots are archived with per-member length/hash
+verification; current/selected graphs, canonical caches, target, databases,
+toolchains and all nine unrelated D3D files remain retained. Historical source
+pins are immutable. Exact counts remain409/74716 authored and1252/141647 overall.
