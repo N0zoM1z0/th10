@@ -1,0 +1,52 @@
+{
+  "scope": "complete public PDB contribution peers; excludes static/unowned fragments, product and runtime",
+  "selected_vs_actual_maintained": {
+    "owners": 352,
+    "bytes": 95263,
+    "all_raw_identical": true
+  },
+  "ten_input_before_vs_after": {
+    "owners": 352,
+    "raw_identical": 351,
+    "ordinary_changed": [
+      "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+    ]
+  },
+  "Player17_before_vs_after": {
+    "owners": 519,
+    "raw_identical": 518,
+    "ordinary_changed": [
+      "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+    ]
+  },
+  "actual_Player_project_inputs": 17,
+  "actual_Player_project_include_files": 52,
+  "Player_matched_bytes": 1380,
+  "Player_size": 1435,
+  "Player_fields": 49,
+  "Player_guards": {
+    "owners": 8,
+    "bytes": 1753,
+    "fields": 99,
+    "all_exact": true
+  },
+  "ANM_guards": {
+    "owners": 36,
+    "bytes": 4618,
+    "fields": 121,
+    "all_exact": true
+  },
+  "ECL": {
+    "matched_bytes": 6995,
+    "size": 7020,
+    "fields": 189,
+    "local_destinations": 62,
+    "complete_float_callee_size": 171,
+    "callee_exact": true,
+    "guards": 16,
+    "guard_bytes": 1617,
+    "guard_fields": 21
+  },
+  "target_oracle_implementation_changed": false,
+  "original_layout_ABI_profiles_recipes_changed": false
+}

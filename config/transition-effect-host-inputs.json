@@ -5,7 +5,7 @@
   "sha256_lf": {
     "src/Chain.cpp": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
     "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
-    "src/AnmManager.cpp": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
+    "src/AnmManager.cpp": "e3764604ae06c8d0130cb8713f765c13d4fda074e87d67e27e8745f0e154e2fd",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
@@ -356,5 +356,19 @@
     "source": "Use existing unsigned-byte supervisor member views in AddToCalcChain/AddToDrawChain; no signature, type, algorithm, volatile or padding changes.",
     "host": "Existing member projections now have exactly12 occurrences each; same host storage roles and strict CRLF-to-LF-only policy.",
     "acceptance": "Two independent full14TU actual-source canonical cold replays pass262/14 exhaustive fields; source/ownership/runtime claims remain separate."
+  },
+  "reviewed_anm_child_request_update": {
+    "date": "2026-10-24",
+    "starting_head": "3d3639d167e5ef4e02669cbc6545b5c610d965ef",
+    "input": "src/AnmManager.cpp",
+    "old_sha256_lf": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
+    "new_sha256_lf": "e3764604ae06c8d0130cb8713f765c13d4fda074e87d67e27e8745f0e154e2fd",
+    "new_raw_sha256": "5b3545b319d18e3c0fa869f5a11390d9b5534148cc0fa867803d08796fe640c6",
+    "whole_file_inverse_verified": true,
+    "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "other_six_host_dependencies_unchanged": true,
+    "strict_normalization_and_rejection_policy_unchanged": true,
+    "reason": "Only source-local axis/child argument value views and ExecuteScript flip/child91 statements change. Exact inverse reconstructs the whole prior file; the host-consumed RNG helper and all other host dependencies are identical. No host adaptation or pin rejection policy change.",
+    "evidence": "docs/evidence/anm-child-request-record/README.md"
   }
 }

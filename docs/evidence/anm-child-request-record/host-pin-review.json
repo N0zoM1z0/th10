@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-24",
+  "starting_head": "3d3639d167e5ef4e02669cbc6545b5c610d965ef",
+  "input": "src/AnmManager.cpp",
+  "old_sha256_lf": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
+  "new_sha256_lf": "e3764604ae06c8d0130cb8713f765c13d4fda074e87d67e27e8745f0e154e2fd",
+  "new_raw_sha256": "5b3545b319d18e3c0fa869f5a11390d9b5534148cc0fa867803d08796fe640c6",
+  "whole_file_inverse_verified": true,
+  "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+  "other_six_host_dependencies_unchanged": true,
+  "strict_normalization_and_rejection_policy_unchanged": true,
+  "reason": "Only source-local axis/child argument value views and ExecuteScript flip/child91 statements change. Exact inverse reconstructs the whole prior file; the host-consumed RNG helper and all other host dependencies are identical. No host adaptation or pin rejection policy change.",
+  "evidence": "docs/evidence/anm-child-request-record/README.md",
+  "entire_generated_host_harness_unchanged": true,
+  "generated_host_harness_sha256": "b3c9bc19d52f13cf68011b41cf8ac19a018ab3ea243d8f88c89efb240204efce",
+  "all_extracted_dependency_hashes_unchanged": true
+}

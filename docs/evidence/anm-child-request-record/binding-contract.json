@@ -1,0 +1,4488 @@
+{
+  "scope": "all350 fields of complete9964-byte ANM parent; semantic bases/addends; no original ownership or runtime claim",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_address": 4451888,
+  "size": 9964,
+  "independent_target_decoded_span": 9588,
+  "trailing_absolute_table_words": 94,
+  "independent_target_inventory_sha256": "c56708460794ea4a3a1e440bbb2dd0fbeed39e9243d29a6cae9ace8985e6e3d5",
+  "field_counts": {
+    "canonical independent binding": 235,
+    "independently observed local offset": 95,
+    "explicit reviewed semantic identity": 5,
+    "explicit complete vector base plus component addend": 15
+  },
+  "linkages": [
+    {
+      "offset": 71,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 86,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 151,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4461476,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 167,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 226,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 250,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+      "target": 4492544,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-loaded-create-vm-variant0",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 270,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 294,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?CreateVmVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+      "target": 4492848,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-loaded-create-vm-variant2",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 317,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 338,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?CreateVmVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+      "target": 4493152,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-loaded-create-vm-variant1",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 345,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+      "target": 4494416,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-vm-id-get-vm",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 358,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?InsertAfter@AnmVmLayerNodeView@@QAEXPAU1@@Z",
+      "target": 4272640,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-vm-layer-node-insert-after",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 450,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 471,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?CreateVmVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+      "target": 4493456,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-loaded-create-vm-variant3",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 478,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+      "target": 4494416,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-vm-id-get-vm",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 491,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?InsertAfter@AnmVmLayerNodeView@@QAEXPAU1@@Z",
+      "target": 4272640,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-vm-layer-node-insert-after",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 590,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 605,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+      "target": 4449696,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-loaded-set-sprite",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 651,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 677,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 736,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 778,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 800,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 822,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 864,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 906,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 928,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 950,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 988,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+      "target": 4215824,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-vm-timer-set-current",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1031,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1048,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1068,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+      "target": 4215824,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-vm-timer-set-current",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1105,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@bf800000",
+      "target": 4655968,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 69
+        }
+      }
+    },
+    {
+      "offset": 1157,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@bf800000",
+      "target": 4655968,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 69
+        }
+      }
+    },
+    {
+      "offset": 1211,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1237,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1263,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1323,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1349,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1375,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1435,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1461,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1526,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1552,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?StartPrimaryAlphaInterpolation@AnmVmView@@QAEXHEEE@Z",
+      "target": 4465408,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-primary-alpha-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1652,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1682,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1718,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1825,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1861,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1897,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1990,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 1998,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Decrement@AnmVmTimerView@@QAEXH@Z",
+      "target": 4361680,
+      "evidence": {
+        "kind": "explicit reviewed semantic identity",
+        "basis": "fresh TH10 timer decrement20-byte entry/ABI and call to canonical Add; source role, not callee exactness"
+      }
+    },
+    {
+      "offset": 2196,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+      "target": 4215824,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-vm-timer-set-current",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 2418,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 2490,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 2707,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 2718,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 2732,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "addend": 4,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 2740,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "addend": 8,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 2749,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 2762,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "addend": 4,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 2771,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "addend": 8,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 2864,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 2900,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 2936,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3015,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?ResetTimer@AnmVmFloat3InterpolationView@@QAEXXZ",
+      "target": 4214992,
+      "evidence": {
+        "kind": "explicit reviewed semantic identity",
+        "basis": "TH10 complete50-byte reset and native complete50-byte contribution with canonical game-speed field"
+      }
+    },
+    {
+      "offset": 3081,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3101,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3130,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3166,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3188,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?StartPrimaryColorInterpolation@AnmVmView@@QAEXPBTAnmColorView@@0HE@Z",
+      "target": 4465184,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-primary-color-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3224,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3247,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3272,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?StartPrimaryAlphaInterpolation@AnmVmView@@QAEXHEEE@Z",
+      "target": 4465408,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-primary-alpha-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3338,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3358,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3387,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3423,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3445,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?StartSecondaryColorInterpolation@AnmVmView@@QAEXPBTAnmColorView@@0HE@Z",
+      "target": 4464720,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-secondary-color-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3481,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3504,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3526,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?StartSecondaryAlphaInterpolation@AnmVmView@@QAEXHEEE@Z",
+      "target": 4464464,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-secondary-alpha-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3563,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3593,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3629,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3674,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3686,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 3700,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "addend": 4,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 3709,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "addend": 8,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 3717,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 3731,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "addend": 4,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 3739,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "addend": 8,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 writable zero vector12-byte observation and POSITION_TIME/ROTATION_TIME three-word copy roles; no original owner claim"
+      }
+    },
+    {
+      "offset": 3809,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?ResetTimer@AnmVmFloat3InterpolationView@@QAEXXZ",
+      "target": 4214992,
+      "evidence": {
+        "kind": "explicit reviewed semantic identity",
+        "basis": "TH10 complete50-byte reset and native complete50-byte contribution with canonical game-speed field"
+      }
+    },
+    {
+      "offset": 3853,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3889,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3931,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 3962,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z",
+      "target": 4303728,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4044,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?InitializePulsingRadialTrail@AnmVmView@@QAEHXZ",
+      "target": 4477680,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-initialize-pulsing-radial-trail",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4168,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4177,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "_malloc",
+      "target": 4531974,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "pbgfile-read-whole-file",
+          "offset": 44
+        }
+      }
+    },
+    {
+      "offset": 4222,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4248,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4287,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4319,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4361,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4384,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4410,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4451,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4481,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4519,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4568,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4591,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4617,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4658,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4694,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4726,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4775,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4798,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4824,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4866,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4896,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4934,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 4983,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5006,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5032,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5078,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5114,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5146,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5195,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5218,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5244,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5290,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5326,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5364,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5385,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__CIfmod",
+      "target": 4602810,
+      "evidence": {
+        "kind": "explicit reviewed semantic identity",
+        "basis": "pinned87fmod.obj10-byte aux extent; complete50-byte member code and80-byte fmod descriptor corroboration"
+      }
+    },
+    {
+      "offset": 5423,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5449,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5488,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5520,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5564,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5590,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5629,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5667,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5714,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5740,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5784,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5822,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5869,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5895,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5941,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 5979,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6026,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6052,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6098,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6136,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6170,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6191,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__CIfmod",
+      "target": 4602810,
+      "evidence": {
+        "kind": "explicit reviewed semantic identity",
+        "basis": "pinned87fmod.obj10-byte aux extent; complete50-byte member code and80-byte fmod descriptor corroboration"
+      }
+    },
+    {
+      "offset": 6242,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6247,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AlternateRngView@@3URngView@@A",
+      "target": 4790440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "offset": 133
+        }
+      }
+    },
+    {
+      "offset": 6263,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6268,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "offset": 146
+        }
+      }
+    },
+    {
+      "offset": 6275,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AnmRandomU32InRange@@YIIPAURngView@@I@Z",
+      "target": 4443008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-random-u32-in-range",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6296,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z",
+      "target": 4451744,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6348,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6353,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AlternateRngView@@3URngView@@A",
+      "target": 4790440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "offset": 133
+        }
+      }
+    },
+    {
+      "offset": 6363,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AlternateRngView@@3URngView@@A",
+      "target": 4790440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "offset": 133
+        }
+      }
+    },
+    {
+      "offset": 6380,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6390,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "offset": 146
+        }
+      }
+    },
+    {
+      "offset": 6395,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetRandomF32@RngView@@QAEMXZ",
+      "target": 4504352,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "rng-get-random-f32",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6422,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6465,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6497,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6542,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6574,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6619,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6651,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6698,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6730,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6741,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__CIacos",
+      "target": 4602864,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "runtime-crt-00463bf0",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6780,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6812,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6861,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6889,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVarPtr@AnmVmView@@QAEPAMPAMGI@Z",
+      "target": 4451584,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var-ptr",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 6903,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AddNormalizeAngle@@YGMMM@Z",
+      "target": 4504592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-add-normalize-angle",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7171,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7194,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7239,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7269,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7327,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7350,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7395,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7425,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7483,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7506,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7551,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7587,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7650,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7673,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7718,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7754,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7817,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7840,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7885,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7921,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 7984,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8007,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetIntVar@AnmVmView@@QAEHH@Z",
+      "target": 4451440,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-int-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8048,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8078,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target": 4451008,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-get-float-var",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8114,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+      "target": 4215824,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-vm-timer-set-current",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8168,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 8206,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+      "target": 4505408,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-vm-timer-add",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8212,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@00000000",
+      "target": 4655876,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 33
+        }
+      }
+    },
+    {
+      "offset": 8230,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 8246,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AddNormalizeAngle@@YGMMM@Z",
+      "target": 4504592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-add-normalize-angle",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8281,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@00000000",
+      "target": 4655876,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 33
+        }
+      }
+    },
+    {
+      "offset": 8299,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 8315,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AddNormalizeAngle@@YGMMM@Z",
+      "target": 4504592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-add-normalize-angle",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8330,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@00000000",
+      "target": 4655876,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 33
+        }
+      }
+    },
+    {
+      "offset": 8348,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 8364,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AddNormalizeAngle@@YGMMM@Z",
+      "target": 4504592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-add-normalize-angle",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8379,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@00000000",
+      "target": 4655876,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 33
+        }
+      }
+    },
+    {
+      "offset": 8397,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 8427,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@00000000",
+      "target": 4655876,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 33
+        }
+      }
+    },
+    {
+      "offset": 8445,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 8475,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 8490,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f800000",
+      "target": 4655868,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-render-project-camera-facing-quad",
+          "offset": 338
+        }
+      }
+    },
+    {
+      "offset": 8506,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f800000",
+      "target": 4655868,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-render-project-camera-facing-quad",
+          "offset": 338
+        }
+      }
+    },
+    {
+      "offset": 8517,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@00000000",
+      "target": 4655876,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 33
+        }
+      }
+    },
+    {
+      "offset": 8530,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f800000",
+      "target": 4655868,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-render-project-camera-facing-quad",
+          "offset": 338
+        }
+      }
+    },
+    {
+      "offset": 8543,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 8558,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f800000",
+      "target": 4655868,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-render-project-camera-facing-quad",
+          "offset": 338
+        }
+      }
+    },
+    {
+      "offset": 8574,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f800000",
+      "target": 4655868,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-render-project-camera-facing-quad",
+          "offset": 338
+        }
+      }
+    },
+    {
+      "offset": 8585,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@00000000",
+      "target": 4655876,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 33
+        }
+      }
+    },
+    {
+      "offset": 8598,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f800000",
+      "target": 4655868,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-render-project-camera-facing-quad",
+          "offset": 338
+        }
+      }
+    },
+    {
+      "offset": 8622,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmPositionOffsetDelta@@3UAnmFloat3View@@A",
+      "target": 4791916,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 flag13 three-component offset addition and writable12-byte data observation; no original owner claim"
+      }
+    },
+    {
+      "offset": 8640,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmPositionOffsetDelta@@3UAnmFloat3View@@A",
+      "target": 4791916,
+      "addend": 4,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 flag13 three-component offset addition and writable12-byte data observation; no original owner claim"
+      }
+    },
+    {
+      "offset": 8658,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmPositionOffsetDelta@@3UAnmFloat3View@@A",
+      "target": 4791916,
+      "addend": 8,
+      "evidence": {
+        "kind": "explicit complete vector base plus component addend",
+        "basis": "TH10 flag13 three-component offset addition and writable12-byte data observation; no original owner claim"
+      }
+    },
+    {
+      "offset": 8703,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+      "target": 4212240,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-evaluate-float3-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8716,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+      "target": 4212240,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-evaluate-float3-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8764,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAE?AUAnmInt3View@@XZ",
+      "target": 4462080,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-evaluate-rgb-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8815,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ",
+      "target": 4462928,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-evaluate-alpha-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8849,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+      "target": 4463312,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-evaluate-scale-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8892,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+      "target": 4212240,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-evaluate-float3-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8944,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAE?AUAnmInt3View@@XZ",
+      "target": 4462080,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-evaluate-rgb-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 8995,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ",
+      "target": 4462928,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-evaluate-alpha-interpolation",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 9050,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@40c90fdb",
+      "target": 4655892,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-add-normalize-angle",
+          "offset": 25
+        }
+      }
+    },
+    {
+      "offset": 9173,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f000000",
+      "target": 4655884,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-render-draw-no-rotation",
+          "offset": 39
+        }
+      }
+    },
+    {
+      "offset": 9185,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?FromAngleMagnitude@AnmScriptVectorView@@QAEXMM@Z",
+      "target": 4464368,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-script-vector",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 9309,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f000000",
+      "target": 4655884,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-render-draw-no-rotation",
+          "offset": 39
+        }
+      }
+    },
+    {
+      "offset": 9321,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?FromAngleMagnitude@AnmScriptVectorView@@QAEXMM@Z",
+      "target": 4464368,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-script-vector",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 9417,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AddNormalizeAngle@@YGMMM@Z",
+      "target": 4504592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-add-normalize-angle",
+          "primary": true
+        }
+      }
+    },
+    {
+      "offset": 9499,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f7d70a4",
+      "target": 4655976,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "enemy-manager-update",
+          "offset": 95
+        }
+      }
+    },
+    {
+      "offset": 9514,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f8147ae",
+      "target": 4655972,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "enemy-manager-update",
+          "offset": 111
+        }
+      }
+    },
+    {
+      "offset": 9531,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f800000",
+      "target": 4655868,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-render-project-camera-facing-quad",
+          "offset": 338
+        }
+      }
+    },
+    {
+      "offset": 9552,
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__ftol2",
+      "target": 4602668,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "ecl-vm-read-float",
+          "offset": 49
+        }
+      }
+    },
+    {
+      "offset": 9571,
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592,
+      "evidence": {
+        "kind": "canonical independent binding",
+        "canonical_reference": {
+          "unit": "anm-start-scale-interpolation",
+          "offset": 101
+        }
+      }
+    },
+    {
+      "offset": 9588,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4460028,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9592,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453682,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9596,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4460028,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9600,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4460035,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9604,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452459,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9608,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452868,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9612,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452902,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9616,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456098,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9620,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456162,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9624,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457299,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9628,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457363,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9632,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457440,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9636,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457504,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9640,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457590,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9644,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457659,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9648,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457745,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9652,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457816,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9656,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457902,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9660,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457973,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9664,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456237,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9668,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456326,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9672,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456444,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9676,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456533,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9680,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456651,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9684,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456741,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9688,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456859,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9692,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456953,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9696,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457071,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9700,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4457165,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9704,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459047,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9708,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459114,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9712,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459203,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9716,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459270,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9720,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459359,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9724,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459426,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9728,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459526,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9732,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459593,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9736,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459693,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9740,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459760,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9744,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459860,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9748,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4459923,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9752,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458105,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9756,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458210,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9760,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458340,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9764,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458417,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9768,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458494,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9772,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458573,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9776,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458655,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9780,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458734,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9784,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453511,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9788,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453086,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9792,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452526,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9796,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452612,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9800,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452654,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9804,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453198,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9808,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453310,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9812,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453402,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9816,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454583,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9820,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454927,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9824,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4455100,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9828,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4455438,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9832,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4455728,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9836,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452982,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9840,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453034,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9844,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453917,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9848,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453682,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9852,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454218,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9856,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453464,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9860,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4455881,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9864,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458868,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9868,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453910,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9872,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454293,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9876,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454365,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9880,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454174,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9884,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454437,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9888,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454487,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9892,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4453866,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9896,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452782,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9900,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452740,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9904,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4455184,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9908,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4455357,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9912,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458895,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9916,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454120,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9920,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458945,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9924,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4455956,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9928,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4456022,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9932,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458817,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9936,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452043,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9940,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4458996,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9944,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452102,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9948,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4454537,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9952,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452193,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9956,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452146,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    },
+    {
+      "offset": 9960,
+      "type": "DIR32",
+      "width": 4,
+      "local": true,
+      "target": 4452326,
+      "evidence": {
+        "kind": "independently observed local offset"
+      }
+    }
+  ],
+  "acceptance_authority": "none"
+}

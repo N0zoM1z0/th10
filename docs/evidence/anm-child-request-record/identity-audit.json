@@ -1,0 +1,76 @@
+{
+  "scope": "five semantic address identities for full9964 parent; no child exact acceptance",
+  "Ghidra_readonly_full_mapped_text_attested": true,
+  "ResetTimer": {
+    "target": "0x4050D0",
+    "complete_candidate_size": 50,
+    "complete_target_size": 50,
+    "ordinary_equal_after_one_canonical_game_speed_field": true
+  },
+  "Decrement": {
+    "target": "0x428DD0",
+    "target_size": 20,
+    "candidate_size": 68,
+    "source_role": "signed integer negation, convert tofloat, Add; private EAX value/ESI timer receiver",
+    "canonical_Add_target": "0x44BF40",
+    "canonical_Add_size": 88,
+    "child_exact": false
+  },
+  "vectors": {
+    "zero_base": "0x491C14",
+    "delta_base": "0x491E6C",
+    "each_observed_bytes": 12,
+    "source_roles": "three-word tangent copies and three-component flag13 offset addition",
+    "original_owner_unknown": true
+  },
+  "CIfmod": {
+    "target": "0x463BBA",
+    "member": "..\\build\\intel\\mt_obj\\87fmod.obj",
+    "member_sha256": "28e8c7d48b2645df3cc8ad4a5343d3ad1c2f326e1b71ada86059877e94901f51",
+    "complete_aux_extent": 10,
+    "complete_member_text": 50,
+    "ordinary_member_text_positions": 26,
+    "member_ordinary_bytes_equal": true,
+    "full_descriptor_bytes": 80,
+    "descriptor16_nonpointer_bytes_equal": true,
+    "all16_pointer_slots_and_repeated_identities_checked": true,
+    "text_fields": {
+      "__OP_FMODjmptab": [
+        4681744
+      ],
+      "__ctrandisp2": [
+        4603195
+      ],
+      "__cintrindisp2": [
+        4603072
+      ],
+      "__adjust_fdiv": [
+        4682632
+      ],
+      "__adj_fprem": [
+        4606748
+      ]
+    },
+    "descriptor_fields": {
+      "fFMOD": [
+        4602820
+      ],
+      "__rtindfpop": [
+        4604134
+      ],
+      "__tosnan2": [
+        4604031
+      ],
+      "__rtzeropop": [
+        4603972
+      ],
+      "__nosnan2": [
+        4604029
+      ],
+      "__nan2": [
+        4604071
+      ]
+    }
+  },
+  "boundaries_ownership_origin_runtime_acceptance": "unchanged"
+}

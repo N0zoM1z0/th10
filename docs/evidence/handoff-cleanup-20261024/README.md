@@ -53,8 +53,10 @@ The source view is not an assertion about the original class declaration.
 complete 9964-byte PDB contribution, 9588-byte decoded span and 94-word trailing
 table. Structural inventory has 350 four-byte fields, leaving 8564 ordinary
 positions; 8552 match. The 12 structural differences are +113, +115..+11D in
-child91 argument preparation and +249A/+24A0 in slow Tick's FLD/FADD ordering.
-Offsets are hexadecimal. This is **structural diagnosis only**; the complete
+child91 argument preparation and +249A/+24A0 in the second radial vertex Z addition.
+The earlier slow-Tick attribution was corrected by the later
+[full-parent audit](../anm-child-request-record/README.md); those two offsets
+are radial-vector code. Offsets are hexadecimal. This is **structural diagnosis only**; the complete
 semantic address replay remains unfinished. All 350 fields need independently
 justified target bindings, including 95 local/table references.
 Coincident data anchors must use the proper

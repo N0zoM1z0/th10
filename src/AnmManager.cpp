@@ -3095,6 +3095,24 @@ typedef char AnmScriptVectorViewSizeIs0C[
     (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];
 
 
+union AnmAxisFlagWord
+{
+    unsigned int raw;
+    struct
+    {
+        unsigned int lowerFlags : 9;
+        unsigned int flippedAxes : 2;
+        unsigned int upperFlags : 21;
+    } bits;
+};
+typedef char AnmAxisFlagWordSizeIs4[(sizeof(AnmAxisFlagWord) == 4) ? 1 : -1];
+
+struct AnmChildScriptLayer
+{
+    int script;
+    unsigned int layer;
+};
+
 int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
@@ -3158,8 +3176,11 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         }
         case ANM_OP_CREATE_CHILD_91:
         {
+            AnmChildScriptLayer childArguments = {
+                GET_INT_VAR(0), vm->renderLayer
+            };
             AnmVmIdView childId = vm->anmFile->CreateVmVariant2(
-                GET_INT_VAR(0), vm->renderLayer);
+                childArguments.script, childArguments.layer);
             createdChild = childId.GetVm();
             goto child_variant_2_or_3;
         }
@@ -3242,13 +3263,23 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
 
         case ANM_OP_FLIP_X:
-            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;
+        {
+            AnmAxisFlagWord axisFlags;
+            axisFlags.raw = vm->flags35C;
+            axisFlags.bits.flippedAxes ^= 1u;
+            vm->flags35C = axisFlags.raw | 8u;
             vm->scaleX *= -1.0f;
             break;
+        }
         case ANM_OP_FLIP_Y:
-            vm->flags35C = (vm->flags35C ^ (1u << 10)) | 8u;
+        {
+            AnmAxisFlagWord axisFlags;
+            axisFlags.raw = vm->flags35C;
+            axisFlags.bits.flippedAxes ^= 2u;
+            vm->flags35C = axisFlags.raw | 8u;
             vm->scaleY *= -1.0f;
             break;
+        }
 
         case ANM_OP_ROTATION:
             vm->rotation.x = GET_FLOAT_VAR(0);

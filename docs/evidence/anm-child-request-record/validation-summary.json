@@ -1,0 +1,418 @@
+{
+  "state": "passed",
+  "starting_head": "3d3639d167e5ef4e02669cbc6545b5c610d965ef",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "complete maintained9964-byte ANM comparison, unchanged ECL and rebuilt Player contexts; no new exact acceptance",
+  "preflight": {
+    "target": "passed",
+    "toolchain_execute": "passed",
+    "tracking_require_target": "passed",
+    "status_report": "passed",
+    "Ghidra": "fresh direct readOnly/noanalysis/rollback/maxcpu1/768MiB; all412289 mapped text bytes passed"
+  },
+  "strict_ANM": {
+    "size": 9964,
+    "matched_bytes": 9960,
+    "fields": 350,
+    "local_destinations": 95,
+    "mismatches": [
+      "0x113",
+      "0x115",
+      "0x249A",
+      "0x24A0"
+    ]
+  },
+  "source_builds": {
+    "private_ANM_compiles": 23,
+    "actual_maintained_ANM_compiles": 2,
+    "completed_images": 26,
+    "real_Player_caller_relink_game_compiles": 0,
+    "independent_whole_graph_cold_pair": false
+  },
+  "completed_checks": [
+    {
+      "name": "current-complete-parents-and-guards",
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/anm-full-parent-bindings-20261024/compare-current.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "1682089f2e69b8fe8e9418cb190f45d7b236da6b73ea2b70a7cecd1f91d801e4"
+    },
+    {
+      "name": "current-child-routes",
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-anm-child-routing.py",
+        "--artifact-dir",
+        "build/gpt-6.1-sol/anm-full-parent-bindings-20261024/maintained-current",
+        "--json"
+      ],
+      "returncode": 0,
+      "log_sha256": "b8a7dcd022a454f299172965c8dae0e7d4862bc143a000c65ec2c43c3321e3a9"
+    },
+    {
+      "name": "verify-toolchain-check",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "name": "validate-tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "c07bd5ce4bc75bc6dfbaf01c986b3ec251b111ff5b9c5cd0b29bfa571e71e57e"
+    },
+    {
+      "name": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "name": "documentation",
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "CI": {
+    "scope": "combined current-source CI stage coverage; not one uninterrupted passing full invocation",
+    "initial_invocation_returncode": 1,
+    "initial_stages_started": 90,
+    "initial_successful_stages": 89,
+    "original_log_sha256": "b4e90eac65332419293546452f11855a3e4e74d9b2611896864b17a0e9963381",
+    "recovery": "reviewed normalized whole-file AnmManager host pin; extracted RNG body and six other dependencies identical; rejection policy unchanged",
+    "reused_labels": [
+      "Compile workflow Python",
+      "Validate LTCG entry identity guards",
+      "Validate qualified static owners",
+      "Validate linked profiles and static callees",
+      "Validate internal linked destinations",
+      "Validate linked table and selector coverage",
+      "Validate ECL diagnostic source routing",
+      "Validate allocation EH address binding",
+      "Validate stack-file EH address binding",
+      "Validate replay payload order",
+      "Validate Enemy dispatch case scopes",
+      "Validate ECL FORMAT argument consumption",
+      "Validate ECL raw float-word negation",
+      "Validate lexical HUD message phase",
+      "Validate lexical HUD boss-gauge phase",
+      "Validate HUD boss-gauge selection",
+      "Validate HUD lifetimes and countdown sounds",
+      "Validate automatic hint export",
+      "Validate hint loading and parsing",
+      "Validate hint frame contracts",
+      "Validate conditional hint arithmetic",
+      "Validate hint lifecycle contracts",
+      "Validate GameManager cleanup contract",
+      "Validate statistics save contract",
+      "Validate archive-or-disk routing",
+      "Validate GUI lifecycle contract",
+      "Validate GUI message construction and unwind contracts",
+      "Validate GUI message Run baseline",
+      "Validate enemy-name dispatch controls",
+      "Validate canonical replay mode controls",
+      "Validate enemy portrait sprite controls",
+      "Validate stage complete20 controls",
+      "Validate stage event18 controls",
+      "Validate direct creation caller controls",
+      "Validate portrait creation controls",
+      "Validate GUI message construction-Run-destruction baseline",
+      "Validate GUI draw contracts",
+      "Validate laser owner bindings",
+      "Validate rectangle contracts and strict mutations",
+      "Validate alpha interpolation and strict mutations",
+      "Validate RGB interpolation and strict mutations",
+      "Validate loaded-ANM slot release",
+      "Validate ANM child call routing",
+      "Validate GUI draw arithmetic witnesses",
+      "Validate GUI draw complete-header layout",
+      "Validate GUI reset event order",
+      "Validate music-room state and parsers",
+      "Validate stage script state and callback",
+      "Validate stage projected bounds and draw",
+      "Validate stage camera setup",
+      "Validate ASCII viewport transitions",
+      "Validate ASCII glyph paths",
+      "Validate stage draw passes",
+      "Validate stage lifecycle ownership",
+      "Validate enemy callback scale reload",
+      "Validate enemy motion and interpolation",
+      "Validate conditional enemy polar storage",
+      "Validate enemy runtime tail",
+      "Validate item sound owner",
+      "Validate enemy item scatter numeric sequence",
+      "Validate enemy death service order and live storage",
+      "Validate bullet cancel transition and timer order",
+      "Validate circle cancellation and unordered comparisons",
+      "Validate player damage lifetimes",
+      "Validate player damage prerequisites",
+      "Validate auxiliary player damage",
+      "Validate player shot update lifetimes",
+      "Validate player movement ANM identities",
+      "Validate result/replay-name controller",
+      "Validate front-end replay save",
+      "Validate title and main-menu controls",
+      "Validate MIDI event and timer controls",
+      "Validate spell-panel state and sprite binding",
+      "Validate result rows and name-entry ASCII queue",
+      "Validate laser motion and Player contact",
+      "Validate laser command programs and live fields",
+      "Validate laser initialization and turning motion",
+      "Validate laser clearing, VM lists and item spawning",
+      "Validate type1 laser phases and runtime interfaces",
+      "Validate type1 laser clearing and offscreen counts",
+      "Validate input polling, device failures and gameplay repeat",
+      "Validate script browser state and event order",
+      "Validate script browser display and renderer calls",
+      "Validate worker wait and restart order",
+      "Validate Ending owner and script state",
+      "Validate browser and manager destruction order",
+      "Validate manager pool reset order",
+      "Validate debug input repeat edges",
+      "Validate result-transition and scaled-sound baseline"
+    ],
+    "completed_remaining_stages": [
+      {
+        "label": "Validate transition-effect logical baseline",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/transition_effect_host_test.py",
+          "--out",
+          "build/host-tests/transition-effect-ci"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate transition-effect pin portability",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/transition_effect_eol_test.py",
+          "--out",
+          "build/host-tests/transition-effect-eol-ci"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate actual Chain dispatcher status controls",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-chain-dispatcher-controls.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate pause/capture controller",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-pause-menu-state.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate practice controller state",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-frontend-practice-state.py",
+          "--skip-mutations"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate key-config display lifetimes",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-keyconfig-display-state.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate options-refresh lifetimes",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-options-refresh-state.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate options controller state",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-options-controller-state.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate options topology recognizer",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-options-owner-topology.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate options timer predicate",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-options-timer-predicate.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate supervisor binding identity",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-main-supervisor-bindings.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate score insertion and publication",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-score-insertion.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate Player power-state transitions",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-player-update-state.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate Player state2 and automatic hints",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/test-player-state2.py",
+          "--baseline-only"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate documentation references",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/check-doc-hygiene.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate ledgers",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/validate-tracking.py"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate ANM/ECL core source completeness",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/report-source-completeness.py",
+          "--module",
+          "AnmManager",
+          "--module",
+          "EclVm",
+          "--module",
+          "Enemy",
+          "--require-complete"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate toolchain declarations",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/verify-toolchain.py",
+          "--check"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate canonical match graph",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/build-match-unit.py",
+          "--check"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Validate open whole-build graph",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/build.py",
+          "--check"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Check generated progress",
+        "command": [
+          "/home/pentester/miniconda3/bin/python3",
+          "scripts/progress.py",
+          "--check"
+        ],
+        "returncode": 0
+      },
+      {
+        "label": "Check whitespace",
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "returncode": 0
+      }
+    ],
+    "total_stages_seen": 111,
+    "remaining_returncode": 0,
+    "source_and_script_pins_verified": true,
+    "stale_pin_occurs_only_in_effect_host_and_EOListed_stages": true
+  },
+  "host_dependency_review": "exact full-file inverse and identical complete generated effect harness; only reviewed dependency hash refreshed; strict policy/tests unchanged;19 EOL/pin tests pass",
+  "ECL": "6995/7020/all189/62;171-byte callee exact;16 guards1617/all21",
+  "Player": "1380/1435/all49;8 guards1753/all99;actual17-input/52-file graph after ANM recompile",
+  "public_peer_preservation": "selected/maintained all352 raw-identical; versus before other351/352 and other518/519 Player owners raw-identical; static/unowned/runtime excluded",
+  "all_current_source_config_script_artifact_and_contract_pins_verified": true,
+  "unrelated_D3D_files": 9,
+  "unrelated_D3D_hashes_unchanged": true,
+  "cleanup_receipts": [
+    "cleanup-summary.json",
+    "ci-cache-cleanup.json"
+  ],
+  "exact_counts_changed": false,
+  "new_exact_credit": false,
+  "native_product_runtime_closed": false,
+  "semantic_or_port_started": false,
+  "maintained_source_changed": true,
+  "shared_header_layout_ABI_profile_recipe_changed": false
+}

@@ -1,0 +1,19 @@
+{
+  "state": "completed",
+  "starting_head": "3d3639d167e5ef4e02669cbc6545b5c610d965ef",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "archived_images": 23,
+  "files": 573,
+  "before_bytes": 53872238,
+  "archive": ".analysis/anm-child-request-cleanup-20261024/closed-controls.tar.xz",
+  "archive_bytes": 586836,
+  "archive_sha256": "e626347b8c2453c5876ee6521c0f990aa71386f2d94186e03d76ad2bd612ebdd",
+  "inventory": ".analysis/anm-child-request-cleanup-20261024/archive-members.json.gz",
+  "inventory_sha256": "eb9672c3b2c292853286704be9a015f807327010f1863b26d4f7e1307c24a28f",
+  "protected_files_verified": 23680,
+  "all_protected_unchanged": true,
+  "preservation": "maintained code/config; initial/current/compilation manifests, all plans/producers/logs, target inventory/binding proof, selected/maintained/Player17 carriers, all before/support caches and existing archives, resources/tools/Wine/database, all nine unrelated D3D files; unclassified legacy trees untouched",
+  "producer_sha256": "27568787683d51dc4dfa9875a6d0bae48a91d556567c4cd194c60e293e9abdd8",
+  "restore": "tar -xJf .analysis/anm-child-request-cleanup-20261024/closed-controls.tar.xz -C .",
+  "reclaimed_bytes": 53285402
+}

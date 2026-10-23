@@ -7,29 +7,31 @@ when transferring this workspace. Historical input pins remain immutable.
 
 ## Expanded continuation inputs
 
-The recovered private ANM two-bit candidate remains fully expanded at
-`.analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-local`
-and `build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-local`.
-Use `.analysis/handoff-cleanup-20261024/validate-candidate.py` for the pinned
-retained-carrier replay. The complete 350-field semantic binding contract and
-peer audit remain unfinished; 12 structural differences do not grant exactness.
-The [recovery packet](evidence/handoff-cleanup-20261024/README.md) records all 27
-controls and which 26 require restoration. Their plans/producers/logs remain
-expanded; the selected candidate's source/reports/guard contracts also remain.
+Current replay is
+`.analysis/gpt-6.1-sol/anm-full-parent-bindings-20261024/compare-current.py`.
+It pins actual maintained ANM9960/9964/all350/95, ECL6995/7020 and the rebuilt
+Player1380/1435 graph. Read the [parent packet](evidence/anm-child-request-record/README.md)
+for the four residual bytes, full semantic contract and corrected radial-Z attribution.
+Three complete current/selected carriers remain expanded under the corresponding
+build root: `child91-argument-record`, `maintained-current`, `maintained-player-17`.
+The current source/compile manifests are separate; old historical pins are immutable.
 
-The current pinned ECL/Player replay is
-`.analysis/gpt-6.1-sol/ecl-case-order-20261023/compare-current.py`.
-Retained Player inputs remain under player-selection-storage-20261023. Its
-manifest-final.json and original producers preserve the earlier broader source
-freeze. The new helper separately verifies its unchanged actual17-input/52-file
-graph; do not relax the old global attestor's now-historical ECL source hash.
+The prior ECL/Player replay in ecl-case-order-20261023 freezes the old ANM source
+and is now historical. Its actual original compilation is retained; do not relax
+its attestor or overwrite support caches. Old Player manifests similarly remain
+historical, while the new Player17 graph compiles the current ANM source.
+The previous private two-bit-local ANM witness remains expanded as the9952/12
+before-state with independent350-field replay; it is no longer the best source.
 
 | Carrier | Purpose |
 | --- | --- |
+| `build/gpt-6.1-sol/anm-full-parent-bindings-20261024/maintained-current` | Current ANM9960/all350/95, ECL6995; actual maintained ANM compile |
+| `build/gpt-6.1-sol/anm-full-parent-bindings-20261024/child91-argument-record` | Selected private witness; all352 public owners raw-equal to maintained |
+| `build/gpt-6.1-sol/anm-full-parent-bindings-20261024/maintained-player-17` | Current Player1380/all49 after actual ANM recompile;8 guards preserved |
 | `build/gpt-6.1-sol/player-value-lifetimes-20261023/current-callers-27` | Earlier27-input caller control;1380/55,unadopted context |
 | `build/gpt-6.1-sol/player-value-lifetimes-20261023/current-winmain-entry-27` | Same historical27 inputs/actual WinMain entry;1380/55,not product closure |
-| `build/gpt-6.1-sol/player-selection-storage-20261023/maintained-17` | Current1380/1435,55 differences,all49 bindings |
-| `build/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-chain-owner` | Selected private witness reproducing current bytes |
+| `build/gpt-6.1-sol/player-selection-storage-20261023/maintained-17` | Before-state1380/1435;old ANM source;new actual graph listed above |
+| `build/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-chain-owner` | Historical private Player witness;before current ANM change |
 | `build/gpt-6.1-sol/player-flag-lifetimes-20261023/maintained-17` | Previous1370/65 cache |
 | `build/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-commit-barrier` | Previous selected timer-commit witness |
 | `build/gpt-6.1-sol/player-residual-publication-20261023/maintained-17` | Previous1359/76 cache |
@@ -39,8 +41,8 @@ graph; do not relax the old global attestor's now-historical ECL source hash.
 | `build/gpt-6.1-sol/player-stage-caller-20261023/all-wrapper-callers-27` | Closed caller-visibility graph retained as a support cache |
 | `build/gpt-6.1-sol/stage-initializer-formals-20261023` | Earlier VM-binding private/maintained witnesses |
 | `build/match-linked/StageRealCallback` | Maintained Stage diagnostic graph |
-| `build/gpt-6.1-sol/ecl-case-order-20261023/maintained-current` | Current ECL6995/25 diagnostic graph |
-| `build/gpt-6.1-sol/ecl-case-order-20261023/typed-disabled-trace` | Selected private witness,352 public owners raw-equal to maintained |
+| `build/gpt-6.1-sol/ecl-case-order-20261023/maintained-current` | Before ANM change;ECL6995/25 remains its actual compiled result |
+| `build/gpt-6.1-sol/ecl-case-order-20261023/typed-disabled-trace` | Previous ECL private witness,352 public owners raw-equal at its checkpoint |
 | `build/match-linked/EnemyItemDrops` | Before ECL6993 graph; pinned historical support cache |
 | `build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim` | Unadopted14396-byte Enemy candidate |
 
@@ -52,18 +54,19 @@ Tools, Wine state, the private Ghidra database, original target and game data
 are retained. The nine unrelated D3D files remain untracked and unstaged.
 Unknown-origin artifacts and incomplete probe caches are retained.
 
-The current ECL campaign is .analysis/gpt-6.1-sol/ecl-case-order-20261023.
-Use manifest-current.json/compare-current.py. Its maintained-current and selected
-typed-disabled-trace carriers remain expanded, with complete25-byte residual,
-189 bindings/62 locals,16 guards and provenance. The before EnemyItemDrops
-canonical cache still represents6993, not current6995 ECL source. The initial
-manifest and manifest-final compilation receipt remain immutable.
+The earlier ECL typed-trace campaign remains under
+.analysis/gpt-6.1-sol/ecl-case-order-20261023. Its current-at-that-checkpoint
+manifest/helper now freezes the prior ANM source; use the new parent helper
+above for current-source replay. Its maintained-current and selected
+trace carriers retain the complete25-byte residual,189 fields/62 locals,
+16 guards and original compilation provenance. The original EnemyItemDrops
+cache still represents6993. Do not overwrite these before/support inputs.
 
-Thirty closed ECL images/private source proposals/bulky structural reports are
-archived. The preceding ecl-typed-values campaign and13 closed Player services
-images remain archived as indexed below. Actual old Player17-input/52-file project
-closure is unchanged, but its broader frozen ECL source hash is historical; use
-the new pinned compare-current helper rather than relax that old global attestor.
+Thirty closed ECL images/private proposals/reports, the preceding typed-values
+campaign and13 closed Player service images remain archived below. The prior
+Player17-input graph is historical after ANM.cpp changes; the new current graph
+recompiles that actual source and verifies all52 project files. Old manifests
+remain immutable, including their broader ECL freezes.
 
 Repeated src/config/scripts/build subtrees from19 terminal historical workers
 (Bullet1454, ECL baseline, shot-type/replay/difficulty/ANM pairs and Enemy spell
@@ -79,6 +82,7 @@ exact historical files; it does not make a stale report current or grant exactne
 
 | Archive group | Receipt | Before → archive |
 | --- | --- | ---: |
+| ANM child request/whole-vector/value controls and real-Player relink,23 closed images | [ANM request record](evidence/anm-child-request-record/cleanup-summary.json) |53.87 →0.59 |
 | Recovered ECL inline and ANM flag/child/timer controls, 26 closed images | [2026-10-24 handoff](evidence/handoff-cleanup-20261024/cleanup-summary.json) | 59.13 → 0.61 |
 | ECL consumer/working-value/profile controls,30 closed images | [Typed trace](evidence/ecl-typed-trace-lifetimes/cleanup-summary.json) |52.81 →0.47 |
 | Closed ECL/Player controls and19 historical worker snapshot families | [Latest handoff cleanup](evidence/handoff-ecl-cleanup-20261023/cleanup-summary.json) |109.04 →1.57 |
@@ -108,6 +112,7 @@ with `tar -tJf` for xz or `tar -tzf` for gzip. Restore only ignored paths; never
 extract old maintained source into src/ or relax source/target pins.
 
 ```sh
+tar -xJf .analysis/anm-child-request-cleanup-20261024/closed-controls.tar.xz -C .
 tar -xJf .analysis/handoff-cleanup-20261024/closed-ecl-anm-controls.tar.xz -C .
 tar -xJf .analysis/ecl-typed-trace-cleanup-20261023/closed-controls.tar.xz -C .
 tar -xJf .analysis/handoff-ecl-cleanup-20261023/closed-probes-and-snapshots.tar.xz -C .
