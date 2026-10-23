@@ -1,0 +1,98 @@
+{
+  "state": "active-incomplete",
+  "source_head_before": "276ada7635be396a13576ab04493abccdfb20f9c",
+  "maintained_parent": {
+    "bytes": 1435,
+    "matched_bytes": 1195,
+    "different_bytes": 240,
+    "independent_fields": 49
+  },
+  "private_maintained_public_owners": {
+    "count": 519,
+    "bytes": 140370,
+    "raw_equal": true,
+    "scope_excludes": "static/unowned fragments and target equality",
+    "inventory_sha256": "3affe79c2017371f660a133773644ec7e341af5b133be053b3503256af406215"
+  },
+  "full_image_count": 17,
+  "complete_control_images": 16,
+  "coherent_full_17_input_control_graphs": 3,
+  "successful_game_compilations_including_maintained": 71,
+  "failed_game_compile_attempts": 1,
+  "all_complete_images_guards": {
+    "units": 8,
+    "bytes": 1753,
+    "fields": 99,
+    "result": "exact",
+    "per_image": true
+  },
+  "actual_caller_graph": {
+    "inputs": 24,
+    "new_compilations": 7,
+    "pinned_reused": 17,
+    "explicit_member_calls": 27
+  },
+  "final_input_attestation": {
+    "source_files": 108,
+    "frozen_inputs": 373,
+    "unrelated_untracked_files": 9,
+    "result": "passed"
+  },
+  "preflight_checks": [
+    "verify-target.py",
+    "verify-toolchain.py --execute",
+    "validate-tracking.py --require-target",
+    "report-reconstruction-status.py"
+  ],
+  "preflight_result": "passed",
+  "ghidra": {
+    "transport": "direct local headless",
+    "read_only": true,
+    "analysis": false,
+    "rollback": true,
+    "max_cpu": 1,
+    "heap_mib": 768,
+    "mapped_bytes": 412289,
+    "mapped_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "passed": true
+  },
+  "final_checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/check-doc-hygiene.py",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "focused_current_guards": {
+    "result": "exact",
+    "units": 8,
+    "bytes": 1753,
+    "fields": 99,
+    "cached_current_artifacts": true,
+    "report_sha256": "c3be3eab75eb14a7bf3d98896c583dfa9fb8d27d60fbaafa28c73fcd7a01998e",
+    "producer_sha256": "e10cd96faa676d27ef85b0da926eb8f458c5b7d1f3aafdd8ef4cfff9002177b6"
+  },
+  "new_exact_credit": 0,
+  "headers_canonical_recipe_or_exact_ledger_changed": false,
+  "new_canonical_cold": "not performed; modified parent is nonexact and existing guarded bodies/interfaces remain unchanged",
+  "independent_cold_pair": "not performed; no exact acceptance claim",
+  "full_ci": "not-run under explicit operator focused-validation preference",
+  "product_runtime_validation": "not-performed",
+  "cleanup_receipt_sha256": "5c85096224e9f9cd21516c172988d27bc0420dc6c9f25717b31fd105d57c220a",
+  "unrelated_D3D_files_preserved": 9
+}

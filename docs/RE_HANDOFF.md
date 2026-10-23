@@ -1,9 +1,9 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-23 after recovering Player ordering work and preparing handoff.
+Updated 2026-10-23 after Player caller/type controls and publication scheduling.
 Reconstruction remains **active-incomplete**. The maintained initializer now
 emits1435 bytes in its measured17-input graph, but is not exact: complete replay
-of49 independently bound address fields matches1170/leaves265 differences.
+of49 independently bound address fields matches1195/leaves240 differences.
 The required .sht loader is source-present, not a standalone exact claim. Headers,
 layouts, canonical recipes and exact ledgers remain unchanged. Checkpoint prefix:
 `gpt-6.1-sol: ...`.
@@ -16,7 +16,7 @@ layouts, canonical recipes and exact ledgers remain unchanged. Checkpoint prefix
 | ANM ExecuteScript / target 9964 | 9964 bytes; nonexact; case 7541/7995, 90/92 target-sized groups, gap 2 |
 | Enemy dispatcher / target 14416 | 14336 bytes; frame 2C4; 181 selectors/108 groups; case 3245/11128, 45 target-sized groups, gap 328 |
 | StageExecuteScript / target 1868 | 1868 bytes; frame 8C; nonexact; case 1443/1619, 13/15 target-sized groups, gap 2 |
-| PlayerInitialize / target 1435 | 1435 bytes in current17-input graph;1170 matching/265 differences after all49 independent bindings; nonexact |
+| PlayerInitialize / target 1435 | 1435 bytes in current17-input graph;1195 matching/240 differences after all49 independent bindings; nonexact |
 | Authored / source / exact | 734 functions/273579 bytes; source 614/248174; exact 409/74716 |
 | Source-present nonexact / absent | 205 / 120 authored functions |
 | Overall exact | 1252 functions/141647 bytes; 1098 source mappings |
@@ -29,48 +29,52 @@ Large-function exact work remains the priority, without small-function count gai
 
 ## Resume Player's complete initializer
 
-Read the [current ordering and cleanup packet](evidence/player-initialization-ordering/README.md)
-first, then the [real-dependency packet](evidence/player-startup-real-dependencies/README.md).
-Source uses actual Chain/resource/log services and the required
-.sht loader426520/229. The real linked loader uses ESI Player/EAX filename and
-restores both target log-call paths. Existing shared selection storage at
-GameScoreState474C40+28/+2C restores target-like character reloads. Eight existing
-Float3 value operations recover the12-byte scratch; chained extent stores repair
-six target bytes with no losses. Original type/data ownership remains unknown.
+Read the [current caller/type controls](evidence/player-initialization-caller-controls/README.md),
+then the historical [ordering](evidence/player-initialization-ordering/README.md)
+and [real-dependency](evidence/player-startup-real-dependencies/README.md) packets.
+Actual Chain/resource/log services, .sht loader426520/229, existing selection
+storage474C40+28/+2C and Float3 values retain the target1435-byte owner/12-byte scratch.
+All49 independent address fields are replayed; no ordinary/local bytes are masked.
+Keep the [complete240-byte residual](evidence/player-initialization-caller-controls/parent-differences.json).
+Do not bind shared-storage members to coincident neighboring diagnostic anchors.
 
-All49 native/target address destinations are independently identified and their
-complete inventories agree. The 1435-byte parent matches1170 bytes after replay;
-no ordinary instruction or local control destination is masked. Preserve the
-[full265-byte residual](evidence/player-initialization-ordering/parent-differences.json).
-Do not infer source identity from a coincident neighboring diagnostic anchor.
+Two additional compiler-only barriers recover draw-node memory-form flags and
+late call-argument setup. Over178 changed bytes there are32 repairs/seven losses,
+net25 versus276ada7. Five initializer barriers emit no CPU fences; original
+source barriers/threading remain unknown. Eight full shared guards pass1753/all99.
+Private/maintained builds reproduce519 complete public PDB owners raw; this does
+not cover static/unowned fragments or prove target equality/product behavior.
 
-The adopted flags snapshot, contiguous history-pair view and three compiler-only
-barriers change284 complete-parent bytes:68 repairs and21 target-equal losses,
-net47 repairs versus07b1be2. Original barriers/threading remain unknown. Eight
-complete shared guards pass1753/all99. The local history temporary emits1471
-bytes and is rejected without cropping. Changing the diagnostic root makes the
-VM wrapper202 but breaks its core guard275/273; that route is rejected.
+Three coherent private17-input graphs test Chain insertion members, Player
+Initialize as a member, and actual AnmVmView embedding. All inputs recompile;
+every complete parent is baseline-neutral and all guards pass. A24-input graph
+adds seven real caller TUs to cover all27 maintained explicit VM member calls,
+and is also complete-parent neutral. This does not close the target28-call/11-owner
+inventory. The VM wrapper stays200/nativeEDX versus202/targetESI, with core273 exact.
+The first embedding mapping is caught by an offset assertion: color+300 is the
+current ANM secondaryColor view, not primaryColor+2FC. The corrected type is
+measured and neutral. No header/interface change is adopted.
 
-Next attack callback setup/VM receiver, history addressing, first data-pointer
-scheduling, one commuted float operand and tail timer/index schedule. Preserve
-all1435 bytes and every field. The shared VM wrapper still uses nativeEDX /
-targetESI and is200/202 bytes. A coherent member-method Chain interface is only
-an unexecuted hypothesis: declarations, definitions, every affected input and
-mangled bindings must move together and preserve all complete guards. Earlier
-neutral/regressive controls are indexed in the current and historical packets.
-Do not repeat them without a new premise or substitute a small loader exact
-claim for the large-owner objective.
+Of240 remaining differences,197 precede offset150;21 are in150..1FF,11 in200..3FF
+and11 in400..59A. Prioritize callback/VM receiver and address lifetimes: the first
+flags/global pair still allocates different registers and adds a longer global
+load. Consistent insertion-parameter reordering and natural vector-operator
+return shape are unexecuted; the former requires every consumer and signature
+binding to move together, and the older direct-constructor control does not test
+the latter. Later constant placement, a commuted vector operand, scratch-store
+order and selection-index registers remain. Early callback
+field publication, volatile flags and removing the first node barrier regress.
+Do not repeat indexed controls without a new premise or replace the large-owner
+objective with a small helper claim. Preserve all1435 bytes and49 fields.
 
-Current private inputs/producers: `.analysis/gpt-6.1-sol/player-schedule-20261023`.
+Current producers: `.analysis/gpt-6.1-sol/player-chain-members-20261023`.
 Use manifest-final.json, common-final.py, probe-maintained.py and
-bound-parent-final.py. Both maintained-17 and combined-history-pair-17 under
-the corresponding build campaign remain complete and expanded. Preserve
-historical pins;13 other control builds require restoration from the new archive.
-Retain `build/gpt-6.1-sol/player-services-20261023/maintained-17`, full-services-17
-support cache and prior-chain-canonical. Cleanup records identical replacements
-for removed duplicate supports. The
-[earlier candidate packet](evidence/player-startup-candidates/README.md) is historical;
-its patches belong to source040f1e8 and are not current-source patches.
+bound-parent-final.py. Both maintained-17 and highlight-publication-17 under the
+corresponding build campaign remain complete. Historical pins are immutable;
+closed controls/snapshots require archive restoration before old consumers run.
+Retain the prior player-schedule maintained17 carrier and player-services
+maintained/full-services support caches plus prior-chain-canonical. The older
+[source candidates](evidence/player-startup-candidates/README.md) belong to040f1e8.
 
 ## Other large-owner routes and closed controls
 
@@ -100,18 +104,21 @@ its patches belong to source040f1e8 and are not current-source patches.
 
 ## Cleanup, preservation and restoration
 
-The [current cleanup receipt](evidence/player-initialization-ordering/cleanup-summary.json)
-records13 completed control builds archived losslessly:338 files/24.99MB become
-6.82MB, reclaiming18.17MB of payload. All36952 protected file hashes pass before
-and after removal. Both current carriers, all source inputs/producers and compact
-results remain expanded. Restore controls from the repository root as needed:
+The [current cleanup receipt](evidence/player-initialization-caller-controls/cleanup-summary.json)
+records15 completed control builds and four closed source/header snapshots:
+665 files/33.40MB become0.73MB, reclaiming32.67MB of payload. Every archive member
+is length/hash-verified and all37241 protected file hashes are unchanged. Both
+current carriers, selected sources, compact reports and producers remain expanded.
+Restore archived controls/snapshots from the repository root when needed:
 
 ```sh
-tar -xzf .analysis/handoff-player-ordering-20261023/control-builds.tar.gz -C .
+tar -xJf .analysis/player-caller-cleanup-20261023/completed-controls.tar.xz -C .
 ```
 
-Git packing and final check scope are in the
-[validation receipt](evidence/player-initialization-ordering/validation-summary.json).
+The [current validation receipt](evidence/player-initialization-caller-controls/validation-summary.json)
+states actual build/check scope. The previous
+[ordering cleanup](evidence/player-initialization-ordering/README.md) retains its
+separate338-file gzip archive and restoration command, saving18.17MB at that checkpoint.
 The [previous cleanup receipt](evidence/handoff-final-20261023/README.md) records
 13 losslessly archived historical RNG snapshot trees, 26 removed duplicate
 Player objects and Git object repacking. Snapshot contents were verified per
@@ -159,12 +166,12 @@ subagents. Attest the database before new target analysis. Full mapped text
 401000..465A80 inclusive is 412289 bytes, SHA-256
 `cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f`.
 
-Recovered source verifies the complete1435-byte Player parent after49 independent
-bindings and all519 uniquely enumerated public owners between private/maintained
-compilations. Eight complete shared guards pass1753/all99 in the current17-input
-image. These reuse16 pinned objects; they are not independent cold graph pairs.
-The previous07b1be2 checkpoint separately cold-replayed the original14-input
-Chain recipe4/838/all58. No new cold game build, full CI, exact acceptance,
-product closure or runtime validation is claimed for cleanup. Earlier17-input
-Stage/caller images have different context and are not interchangeable with this
-graph. Original classes/TUs, flags and ownership remain independently unknown.
+Current source verifies the complete1435-byte Player parent after49 independent
+bindings and519 private/maintained public owners raw. Eight complete shared
+guards pass1753/all99. Maintained reproduction compiles Player and reuses16 pinned
+inputs; the three private interface/type graphs each freshly compile all17 once.
+No independent full-graph pair, new exact acceptance, canonical cold, full CI,
+product closure or runtime validation is claimed. The older07b1be2 checkpoint
+separately cold-replayed the original14-input Chain recipe4/838/all58. Different
+Stage/caller graphs are not interchangeable. Original classes/TUs, flags and
+ownership remain independently unknown.

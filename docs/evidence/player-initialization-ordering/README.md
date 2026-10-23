@@ -1,5 +1,9 @@
 # Player initialization ordering and handoff cleanup
 
+Historical source checkpoint276ada7. The [successor caller/type packet](../player-initialization-caller-controls/README.md)
+records current1195/1435 matching with240 differences. The1170/265 result below
+belongs to this packet's original input pins.
+
 2026-10-23, recovered from source checkpoint07b1be2. The maintained complete
 PlayerInitialize4247F0/1435 now matches1170 bytes after replay of49 independently
 bound address fields, leaving265 differences. The previous result was1123/312.

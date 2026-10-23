@@ -1,0 +1,43 @@
+{
+  "scope": "15 completed private Player control builds and4 closed interface/type snapshots, losslessly archived after per-file verification; no new reconstruction experiment",
+  "roots": [
+    "build/gpt-6.1-sol/player-chain-members-20261023/all-actual-callers-24",
+    "build/gpt-6.1-sol/player-chain-members-20261023/calc-manager-after-flags-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/calc-manager-early-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/draw-flags-barrier-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/draw-flags-bitfield-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/draw-flags-volatile-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/draw-manager-publish-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/draw-publish-calc-snapshot-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/draw-publish-original-calc-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/highlight-only-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/member-default-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/node-field-early-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/player-member-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/vm-embedding-secondary-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/vm-node-publication-17",
+    ".analysis/gpt-6.1-sol/player-chain-members-20261023/member-default",
+    ".analysis/gpt-6.1-sol/player-chain-members-20261023/player-member",
+    ".analysis/gpt-6.1-sol/player-chain-members-20261023/vm-embedding",
+    ".analysis/gpt-6.1-sol/player-chain-members-20261023/vm-embedding-secondary"
+  ],
+  "files": 665,
+  "before_bytes": 33400408,
+  "before_allocated_bytes": 34869248,
+  "archive": ".analysis/player-caller-cleanup-20261023/completed-controls.tar.xz",
+  "archive_bytes": 729592,
+  "archive_sha256": "644feac85eaf5403f598490b7019c43d792b6b0c168a8bc06864c45566aa69ae",
+  "archive_allocated_bytes": 733184,
+  "inventory": ".analysis/player-caller-cleanup-20261023/archive-members.json.gz",
+  "inventory_sha256": "45e3304f0122b7cab9d09181b404a17b9b741936838c07fefc7d11901eab4c38",
+  "protected_files_verified": 37241,
+  "all_protected_unchanged": true,
+  "retained_full": [
+    "build/gpt-6.1-sol/player-chain-members-20261023/maintained-17",
+    "build/gpt-6.1-sol/player-chain-members-20261023/highlight-publication-17"
+  ],
+  "restore": "tar -xJf .analysis/player-caller-cleanup-20261023/completed-controls.tar.xz -C .",
+  "producer_sha256": "54271e2744d5ca69c699cd3f86deb4b0f755b04e2c6aaf2a8756fdbc42d6648c",
+  "reclaimed_bytes": 32670816,
+  "reclaimed_allocated_bytes": 34136064
+}

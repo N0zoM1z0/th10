@@ -116,10 +116,10 @@ typedef char PlayerCallbackNodeViewCallbackAt08[
     (offsetof(PlayerCallbackNodeView, callback) == 0x08) ? 1 : -1];
 typedef char PlayerCallbackNodeViewOwnerAt20[
     (offsetof(PlayerCallbackNodeView, owner) == 0x20) ? 1 : -1];
-// Existing shared storage begins at target 0x474C40; the selection words are
-// observed at +0x28/+0x2C. This is a storage view, not an original owner claim.
 typedef char PlayerFixedPositionPairContiguous[
     (offsetof(Player, positionY) == offsetof(Player, positionX) + sizeof(int)) ? 1 : -1];
+// Existing shared storage begins at target 0x474C40; the selection words are
+// observed at +0x28/+0x2C. This is a storage view, not an original owner claim.
 typedef char PlayerSelectionStorageAt28[
     (offsetof(GameScoreStateView, unknown28) == 0x28) ? 1 : -1];
 typedef char PlayerCallbackNodeMatchesChain[
@@ -885,6 +885,8 @@ int PlayerInitialize(Player *player)
     th10::ChainElem *drawNode = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(PlayerDrawCallback));
     drawNode->flags &= ~2u;
+    // Complete the flags update before publishing the callback argument.
+    _ReadWriteBarrier();
     drawNode->arg = player;
     th10::Chain::AddToDrawChain(drawNode, 0x16,
         reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
@@ -987,6 +989,8 @@ int PlayerInitialize(Player *player)
     player->highlightTimer.current = 120;
     player->highlightTimer.subframe = 120.0f;
     player->highlightTimer.previous = 119;
+    // Finish timer writes before preparing the option-rebuild call.
+    _ReadWriteBarrier();
     player->optionTransitionFrames = 30;
 
     RebuildPlayerOptions(player);

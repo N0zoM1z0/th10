@@ -5600,6 +5600,9 @@ Exact counts and the product/runtime/semantic gates remain unchanged.
 
 ## Player startup ordering recovered for handoff (2026-10-23)
 
+Historical checkpoint276ada7; the caller/publication controls below supersede
+its1170/265 residual without weakening the historical pins.
+
 The [ordering packet](evidence/player-initialization-ordering/README.md) records
 the current1435-byte PlayerInitialize4247F0. Complete replay with all49 independently
 identified address fields matches1170/leaves265 differences, up47 versus07b1be2.
@@ -5622,3 +5625,32 @@ The same packet records13 completed private control builds archived losslessly
 after per-file verification, with both current carriers and all source/producers
 retained expanded. The current handoff has restoration commands and remaining
 large-owner routes. The nine unrelated untracked D3D files remain untouched.
+
+## Player initialization caller/type and publication controls (2026-10-23)
+
+The [caller/type packet](evidence/player-initialization-caller-controls/README.md)
+records current PlayerInitialize4247F0/1435:1195 matching/240 different bytes after
+all49 independent address bindings. Draw-node and highlight-timer publication
+barriers change178 bytes with32 repairs/seven losses, net25 versus276ada7. They
+recover memory-form flag clearing and the late argument push; five compiler-only
+barriers now constrain the initializer. No CPU fence, padding or forced ABI is
+introduced. Original barriers, threading and class/TU ownership remain unknown.
+
+Three coherent private17-input graphs freshly compile every input for ordinary
+Chain insertion members, Player Initialize as a member, and actual AnmVmView
+embedding. All are complete-parent neutral, with eight full guards1753/all99.
+Adding seven actual caller TUs produces a24-input graph covering27 maintained VM
+member calls and is also whole-parent neutral; target28-call/11-owner coverage
+remains open. These graphs do not explain the wrapper200/nativeEDX versus202/ESI.
+A wrong primaryColor+2FC mapping to Player color+300 fails a native offset assertion;
+secondaryColor+300 passes all six corrected extent/field assertions. This relates
+current views and does not establish original ownership; no type/header is adopted.
+
+Sixteen completed controls plus maintained reproduction compare all1435 bytes and
+49 fields. Equal scores are not byte-neutral proof: adding the VM-node barrier
+changes12 still-wrong bytes while retaining1173 matching. The selected candidate
+and maintained source reproduce all519 public PDB owners raw/140370 bytes, excluding
+static/unowned fragments and target equality. Exact counts and product/runtime/
+semantic/port gates are unchanged. Closed controls and four full interface/type
+snapshots are losslessly archived with per-file verification; current carriers,
+producers and the nine unrelated D3D files remain intact.
