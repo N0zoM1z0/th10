@@ -1,0 +1,397 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "56edff00106483cc93f4ebd224bbdd570f699052",
+  "scope": "Recovered successful core compile; corrected Execute-only compile; nine canonical objects reused; explicit eleven-source graph; no full cold or exact credit; native stages passed; original auxiliary route source parse rejected; complete routes recovered by explicit whole-body projection",
+  "source_shape_assertions": [
+    "complete ExecuteScript definition moved byte-for-byte into one new GL TU",
+    "all other original definitions retained in original-order core; unchanged headers and signature",
+    "original includes, identical shared vector type and matching random-helper declaration"
+  ],
+  "private_packet": ".analysis/gpt-6.1-sol/anm-execute-partition-20261023",
+  "failed_attempt": {
+    "result": "compile rejected; no link or owner comparison",
+    "producer_sha256": "115c112a79ecf583537754a76d55870a9ad7ca9755c1554b9434e93348706f29",
+    "log_sha256": "d2f0bfcc11dd99d9ef67ff2d8e27e25577587fa42044276b8e27445603d078ce",
+    "original_execute_source_sha256": "72efe2bd52ad91720a7781de18a770eed5a77c4c17a40fc217a0af9ee620cb10",
+    "core_source_sha256": "c4e012cd06f65cfc0498b670aec199497404453642d6f2618329ff5886566810"
+  },
+  "native_recovery_producer_sha256": "8938fbe6bb9e32f6d78bace3ef75e015d2a74a82825826ebd597c22bcdf49b8b",
+  "recovery_source_projection": {
+    "compiled_source": ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/AnmExecute.cpp",
+    "compiled_source_sha256": "859a19ab3969dce2ba1783a6554f81931c47b3f6802e85946ed11ccde7f36828",
+    "whole_function_body_sha256": "90c1f3a3a4060e9f220823bcb30f915ce1a4c53451d36a1271e7d05ee56eee28",
+    "reason": "official parser needs a following member; maintained view has the byte-identical whole ExecuteScript definition; only enum/case projection uses that view"
+  },
+  "child_candidate_static_paths": 8,
+  "actual_source_sha256": {
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/AnmExecute.cpp": "859a19ab3969dce2ba1783a6554f81931c47b3f6802e85946ed11ccde7f36828",
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/AnmManager.cpp": "c4e012cd06f65cfc0498b670aec199497404453642d6f2618329ff5886566810",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "core_object_sha256": "d3a010d60794cae93f764bc37f4be486f6aaa2ade8f3304a53f56acc1e159a00",
+  "execute_object_sha256": "b0228bf2e3adef97feabff63741beb293773a0b98676fcab3cf0ceee01202454",
+  "reused_objects_including_prior_core": {
+    "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+    "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "support-01-AnmManager.ltcg.obj": "d3a010d60794cae93f764bc37f4be486f6aaa2ade8f3304a53f56acc1e159a00",
+    "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+  },
+  "context": {
+    "artifact_kind": "linked-pe",
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/ItemManager.cpp",
+      ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/AnmExecute.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+    "output_dir": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "guard_summary": {
+    "owners": 36,
+    "exact": 36,
+    "bytes": 4618,
+    "fields": 121
+  },
+  "case_aligned": {
+    "matched_comparable_bytes": 7541,
+    "comparable_bytes": 7995,
+    "absolute_case_gap_delta": 2,
+    "same_sized_cases": 90,
+    "normalization_complete": true
+  },
+  "selected_cases": [
+    {
+      "opcodes": [
+        61
+      ],
+      "target_address": "0x0043F276",
+      "candidate_address": "0x004172E6",
+      "target_size": 52,
+      "candidate_size": 53,
+      "gap_delta": 1,
+      "matched_comparable_bytes": 13,
+      "comparable_bytes": 45,
+      "normalization_complete": true
+    },
+    {
+      "opcodes": [
+        62
+      ],
+      "target_address": "0x0043F2AA",
+      "candidate_address": "0x0041731B",
+      "target_size": 52,
+      "candidate_size": 52,
+      "gap_delta": 0,
+      "matched_comparable_bytes": 44,
+      "comparable_bytes": 44,
+      "normalization_complete": true
+    },
+    {
+      "opcodes": [
+        49
+      ],
+      "target_address": "0x0043F2DE",
+      "candidate_address": "0x0041734F",
+      "target_size": 112,
+      "candidate_size": 112,
+      "gap_delta": 0,
+      "matched_comparable_bytes": 90,
+      "comparable_bytes": 96,
+      "normalization_complete": true
+    },
+    {
+      "opcodes": [
+        53
+      ],
+      "target_address": "0x0043F34E",
+      "candidate_address": "0x004173BF",
+      "target_size": 112,
+      "candidate_size": 112,
+      "gap_delta": 0,
+      "matched_comparable_bytes": 90,
+      "comparable_bytes": 96,
+      "normalization_complete": true
+    },
+    {
+      "opcodes": [
+        54
+      ],
+      "target_address": "0x0043F3BE",
+      "candidate_address": "0x0041742F",
+      "target_size": 92,
+      "candidate_size": 92,
+      "gap_delta": 0,
+      "matched_comparable_bytes": 72,
+      "comparable_bytes": 76,
+      "normalization_complete": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target_address": "0x00440E03",
+      "candidate_address": "0x00418E74",
+      "target_size": 1441,
+      "candidate_size": 1440,
+      "gap_delta": -1,
+      "matched_comparable_bytes": 857,
+      "comparable_bytes": 1253,
+      "normalization_complete": true
+    }
+  ],
+  "peer_comparison": [
+    {
+      "label": "separate-execute",
+      "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "baseline_size": 9964,
+      "candidate_size": 9964,
+      "acceptance_authority": "none; peer comparison only",
+      "fields": 350,
+      "candidate_generic_normalization_complete": true,
+      "baseline_generic_normalization_complete": true,
+      "equal_after_verified_address_replay": true,
+      "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+      "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+      "replayed_changed_field_count": 298,
+      "unresolved_count": 0,
+      "remaining_ordinary_difference_count": 0
+    },
+    {
+      "label": "separate-execute",
+      "symbol": "?Run@EclVmContext@@QAEHM@Z",
+      "baseline_size": 7020,
+      "candidate_size": 7020,
+      "acceptance_authority": "none; peer comparison only",
+      "fields": 189,
+      "candidate_generic_normalization_complete": false,
+      "baseline_generic_normalization_complete": false,
+      "equal_after_verified_address_replay": true,
+      "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+      "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+      "replayed_changed_field_count": 0,
+      "unresolved_count": 0,
+      "remaining_ordinary_difference_count": 0
+    },
+    {
+      "label": "separate-execute",
+      "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "baseline_size": 14336,
+      "candidate_size": 14336,
+      "acceptance_authority": "none; peer comparison only",
+      "fields": 714,
+      "candidate_generic_normalization_complete": true,
+      "baseline_generic_normalization_complete": true,
+      "equal_after_verified_address_replay": true,
+      "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+      "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+      "replayed_changed_field_count": 24,
+      "unresolved_count": 0,
+      "remaining_ordinary_difference_count": 0
+    }
+  ],
+  "ecl": {
+    "size": 7020,
+    "matched_bytes": 6993,
+    "fields": 189,
+    "callee": {
+      "size": 171,
+      "matched_bytes": 171,
+      "result": "exact"
+    }
+  },
+  "stage_status": {
+    "initial_compile": "failed on missing vector view; no link",
+    "recovered_native_compile_link_guards_cases": "passed",
+    "original_auxiliary_source_parse": "rejected isolated source; failed command exit1",
+    "whole_body_verified_source_projection_and_child_routes": "passed exit0",
+    "complete_peer_field_replay": "passed exit0"
+  },
+  "private_evidence_sha256": {
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/manifest.json": "c7d0d73db8e9b934e45194ee20bccb5fbce36dd9e575a32a7c65b94c5213c637",
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/probe.py": "115c112a79ecf583537754a76d55870a9ad7ca9755c1554b9434e93348706f29",
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/finish.py": "8938fbe6bb9e32f6d78bace3ef75e015d2a74a82825826ebd597c22bcdf49b8b",
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/reproduce.py": "e434b6142568b2a00ca075367537191e7f1f0f5687ba5d1a6455399e7e8d59e9",
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/complete-checks.py": "5237bf6f7b23195f7c6acc2b06a09e4daa9e7baad5f786c0335fa6a929a0d6bf",
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/peer-comparisons.json": "4dffc32b0e7e34be367e9c5cc753b609ef8a5f05b2fe679ded7a1ad9205c0c5c",
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/complete-child-routing.json": "d97b6be831d1474330e98b6ef34eda033ba346fabf2cb6842acdb8e5228dad4e",
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/failed-initial-attempt.log": "d2f0bfcc11dd99d9ef67ff2d8e27e25577587fa42044276b8e27445603d078ce",
+    ".analysis/gpt-6.1-sol/anm-execute-partition-20261023/finish.log": "6a5cea102043ad02b51d70ed2ea5f4f6641bb807dffc5cefe704be3eed05ea3b"
+  },
+  "clean_reproduction_driver": "reproduce.py: prepared but not executed; actual evidence comes from recorded initial/recovered stages",
+  "removed_artifacts": [
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/source.map",
+      "bytes": 92342,
+      "sha256": "e2e16c561a14afad8d5d3c6e1887c86b618825750bd2ece3ea7a75171d1c5f9a"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/source.exe",
+      "bytes": 122880,
+      "sha256": "66a655194417b4c956b2e46700a17b3382cbdcb90997fced1a77a04e0c474e27"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-09-AnmExecute.ltcg.obj",
+      "bytes": 64875,
+      "sha256": "b0228bf2e3adef97feabff63741beb293773a0b98676fcab3cf0ceee01202454"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/source.pdb",
+      "bytes": 117760,
+      "sha256": "2e0d5862fa12fa825fdc19b3490f11a45da0be17eb756bfa04642eeed6e279ff"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-execute-partition-20261023/separate-execute/support-01-AnmManager.ltcg.obj",
+      "bytes": 214729,
+      "sha256": "d3a010d60794cae93f764bc37f4be486f6aaa2ade8f3304a53f56acc1e159a00"
+    }
+  ],
+  "removed_bytes": 1098060,
+  "new_exact_credit": 0
+}

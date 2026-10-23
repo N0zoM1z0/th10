@@ -5458,3 +5458,15 @@ changes to14356 despite its unchanged reused object. This is an observed link
 context effect, not original settings or an internal compiler-policy proof.
 ECL retains7020/6993 and complete peer equality after105 bound address rewrites.
 No candidate is adopted. See [ANM options](evidence/anm-codegen-options/README.md).
+
+## ANM separate executor GL translation unit (2026-10-23)
+
+A private eleven-source graph moves the complete executor body byte-for-byte
+and retains identical type declarations/signatures. Across recovered actual
+stages, two ANM objects compile and nine canonical objects are reused. All three
+complete peer bodies match after298 ANM and24 Enemy bound address rewrites;
+ECL is raw-neutral. All36 guards and eight bounded child paths pass. An initial
+missing-type compile and auxiliary isolated-source parse reject are retained;
+whole source-body identity separately binds the maintained source view used for route
+projection against the split image. No source, original TU, or exact gain.
+See [partition evidence](evidence/anm-execute-partition/README.md).
