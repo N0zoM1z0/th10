@@ -15,6 +15,8 @@ source, not the current source.
 
 | Carrier | Purpose |
 | --- | --- |
+| `build/gpt-6.1-sol/player-value-lifetimes-20261023/current-callers-27` | Current-source27-input caller control;1380/55,unadopted context |
+| `build/gpt-6.1-sol/player-value-lifetimes-20261023/current-winmain-entry-27` | Same27 inputs/actual WinMain entry;1380/55,not product closure |
 | `build/gpt-6.1-sol/player-selection-storage-20261023/maintained-17` | Current1380/1435,55 differences,all49 bindings |
 | `build/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-chain-owner` | Selected private witness reproducing current bytes |
 | `build/gpt-6.1-sol/player-flag-lifetimes-20261023/maintained-17` | Previous1370/65 cache |
@@ -45,6 +47,7 @@ exact historical files; it does not make a stale report current or grant exactne
 
 | Archive group | Receipt | Before → archive |
 | --- | --- | ---: |
+| Player value/copy controls and refused entry partial output | [Value/caller controls](evidence/player-initialization-value-controls/cleanup-summary.json) |29.93 →0.48 |
 | Player draw-owner/table controls,14 images/14 source proposals | [Draw owner](evidence/player-initialization-draw-owner/cleanup-summary.json) |28.14 →0.41 |
 | Player timer-commit controls and rejected intrinsic attempt | [Timer commit](evidence/player-initialization-timer-commit/cleanup-summary.json) |18.85 →0.40 |
 | Historical complete LTCG probe caches,85 trees | [Handoff compaction](evidence/handoff-artifact-compact-20261023/README.md) |64.85 →2.28 |
@@ -70,6 +73,7 @@ with `tar -tJf` for xz or `tar -tzf` for gzip. Restore only ignored paths; never
 extract old maintained source into src/ or relax source/target pins.
 
 ```sh
+tar -xJf .analysis/player-value-controls-cleanup-20261023/completed-controls.tar.xz -C .
 tar -xJf .analysis/player-draw-owner-cleanup-20261023/completed-controls.tar.xz -C .
 tar -xJf .analysis/player-timer-commit-cleanup-20261023/completed-controls.tar.xz -C .
 tar -xJf .analysis/handoff-artifact-compact-20261023/historical-probe-caches.tar.xz -C .

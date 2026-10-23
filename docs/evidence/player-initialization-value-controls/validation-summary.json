@@ -1,0 +1,138 @@
+{
+  "scope": "large Player source-value/current-caller experiments only; maintained game source/headers/ABI/profiles/recipes/ledgers unchanged; no exact credit",
+  "starting_head": "370637d8b3f5c1a2e07bbf5a2678be5089f36ee3",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "preflight": "target identity, executed pinned toolchain, target-required tracking/status and fresh direct readOnly/noanalysis/rollback Ghidra full412289-byte mapped-text attestation passed",
+  "native_scope": {
+    "complete_linked_images": 16,
+    "new_object_compilations": 15,
+    "complete_parent_comparisons": 12,
+    "strict1443_size_rejections": 4,
+    "whole_baseline_equal_images": 10,
+    "regressive_target_sized_images": 2,
+    "refused_preliminary_entry_without_image": 1,
+    "current27_compile1_reuse26": true,
+    "WinMain27_compile0_reuse27": true,
+    "independent_cold_pair": false
+  },
+  "final_oracles": {
+    "contexts": [
+      "maintained17",
+      "current27",
+      "WinMain27"
+    ],
+    "all_parent_sizes": 1435,
+    "all_parent_matches": 1380,
+    "all_parent_differences": 55,
+    "independent_fields_each": 49,
+    "same_complete_replayed_bytes": true,
+    "shared_full_guards_each": 8,
+    "shared_guard_bytes_each": 1753,
+    "shared_guard_fields_each": 99,
+    "receipt_sha256": "193d89b8e7702f480d222befa34f58573d2e08e5e0ae13dffb6c135bd82f737e"
+  },
+  "reuse_proof": {
+    "26_source_hashes_equal_prior_compiler_inputs": true,
+    "historical_header_hashes_verified": 50,
+    "tracked_source_delta_since_prior_caller_graph": [
+      "src/Player.cpp"
+    ],
+    "current_source_unchanged_in_this_batch": true
+  },
+  "checks": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.131,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py",
+        "--require-target"
+      ],
+      "exit_code": 0,
+      "seconds": 0.341,
+      "log_sha256": "344278847dcec53d43546fabbc51f81b910eeb0d4913e733f6d5894d25f5bc02"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.125,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.126,
+      "log_sha256": "d9c37039657cc0a1a10d8f7a205617b4eaf5851f9e7572226287bc7e5e4aa423"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-reconstruction-status.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.141,
+      "log_sha256": "881c82bd1357823b1b3f6dfba8c3214a9c1b5854689adf0981574cf5c9cc8990"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/build-match-unit.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.345,
+      "log_sha256": "3c3d25a8f7ef707beaac4c4d61aa69edb7cdb6d8fb909df373a23b0c1a29a27a"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.138,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.022,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "cleanup": {
+    "all25332_protected_unchanged_during_compaction": true,
+    "subsequent_protected_changes": [
+      "docs/KNOWLEDGE_BASE.md",
+      "docs/RE_ARTIFACTS.md",
+      "docs/RE_HANDOFF.md",
+      "docs/evidence/player-initialization-draw-owner/README.md"
+    ],
+    "unrelated_D3D_files_hash_verified": 9,
+    "unrelated_D3D_staged": false
+  },
+  "full_CI": "not run under operator focused-validation preference",
+  "broad_canonical_cold": "not run; no new exact candidate or modified exact body/interface",
+  "product_runtime": "open; no new runtime validation",
+  "semantic_port": "not started; no credit",
+  "phase": "active-incomplete",
+  "next_evidence": "rotate to large ECL Run27-byte residual or obtain new target ABI/data-owner evidence before repeating Player value forms"
+}

@@ -4,6 +4,10 @@
 improves1370/65 to **1380 matching/55 differences**, after all49 independent
 address bindings. No small-function target mapping or exact credit is added.
 
+The [value/current-caller follow-up](../player-initialization-value-controls/README.md)
+keeps this1380/55 source unchanged and records additional exclusions. The17-input
+source pins and commands below remain current for this source checkpoint.
+
 ## Maintained source and complete comparison
 
 [The patch](maintained.patch) changes only the draw-registration manager argument

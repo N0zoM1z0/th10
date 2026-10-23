@@ -5811,3 +5811,24 @@ helper controls produce identical1247 full replays,12 repairs/135 losses versus
 1370: the cold selection block improves while prefix allocation regresses.
 The measured matrix/draw-owner combination yields1248. Expanded indexing and
 real memcpy value copies are whole1370-neutral; do not add independent scores.
+
+## Player value-form and current-caller exclusions (2026-10-23)
+
+The [value/caller controls](evidence/player-initialization-value-controls/README.md)
+leave maintained source and its full1435-byte1380/55 result unchanged. Pre-masked
+flags, unsigned character/shot/pair views,32-bit enums and real flags/owner getters
+are whole-replay neutral. Neutrality does not identify original signedness/type.
+TH08's current u8 and TH095's i16 shot views are only differing adjacent-game
+hypotheses; TH10 accepts its own observed32-bit accesses, not either foreign layout.
+Flags memcpy yields1207; a two-int record yields1344. Four direct/staged/reference
+word-copy forms produce full1443-byte owners and are rejected without cropping.
+
+A fresh Player compile in the retained27-input real-caller graph reuses26
+source-pinned objects;50 historical header hashes and tracked source history
+are checked. Complete49-field replay matches every current17-input parent byte.
+Actual WinMain entry with0 compiles/27 reused objects is also identical. Eight
+full guards1753/all99 pass in both contexts. This closes those experiments at
+current1380, not target call-site/ownership closure or the VM receiver mismatch.
+VC7.1 linker entry selector WinMain@16 resolves owned public _WinMain@16; requesting
+the latter spelling directly is refused as unresolved before an image. No opaque
+entry anchor is allowed. These diagnostic images remain non-products.

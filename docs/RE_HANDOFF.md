@@ -60,7 +60,7 @@ Shared selection storage remains GameScoreState474C40+28/+2C; never use coincide
 neighboring diagnostic anchors as semantic members. The.sht loader426520/229 is
 source-present, not exact.
 
-The current batch records16 complete1435-byte images/16 new Player object
+The draw-owner source checkpoint records16 complete1435-byte images/16 new Player object
 compilations, each with49 fields and eight full guards. Matrix-view, actual
 matrix-declaration and real filename-value helper forms produce identical1247
 replays:12 repairs/135 losses versus1370, despite correcting the cold selection
@@ -105,6 +105,35 @@ scripts/repo-python .analysis/gpt-6.1-sol/player-selection-storage-20261023/boun
 Expected mismatch1380/1435,49 fields. Restore archived ignored paths before
 historical consumers, never old source into src/ and never weaken input pins.
 
+## Latest value and current-caller controls
+
+The [value/caller packet](evidence/player-initialization-value-controls/README.md)
+adds16 completed images/15 new objects without changing maintained source,
+headers, profiles, ledgers or the1380/55 baseline. Twelve target-sized parents
+replay all49 fields; four1443-byte candidates fail the strict size check and are
+never cropped. All16 images pass eight complete guards1753/all99.
+
+Pre-masking flags, three unsigned views,32-bit enum views and three actual-value
+getter forms reproduce every former1380 byte. The flags memcpy form gives1207;
+a two-int selection record gives1344. Four per-word vector-copy forms grow to
+1443, including real const-reference helpers. Do not infer original signedness
+or types from these neutral or regressive results.
+
+Current source in the retained27-input real-caller graph also reproduces1380;
+its actual WinMain entry is byte-identical after49 bindings. The fresh Player
+compile reuses26 source-pinned objects;50 historical header hashes and tracked
+source history are checked. The WinMain relink compiles nothing/reuses27.
+The correct linker selector WinMain@16 resolves the PDB-owned _WinMain@16; a
+preliminary leading-underscore selector was refused before any image, not
+replaced with a data anchor. These results extend the old1195-context observation
+to current1380; they do not close target caller identities, original ABI or data
+ownership. Both new27-input carriers remain expanded; their replay commands and
+lossless restoration are in the packet and [artifact index](RE_ARTIFACTS.md).
+
+Next large-owner batch: revisit ECL Run's27 ordinary differences against current
+target/source evidence. More Player width/getter/copy permutations need a new
+ABI or data-owner premise; current caller-count/entry expansion alone is neutral.
+
 ## Other large-owner routes and closed controls
 
 - [Earlier Player VM binding and caller audit](evidence/player-initializer-binding/README.md):
@@ -132,6 +161,12 @@ historical consumers, never old source into src/ and never weaken input pins.
   `build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim`.
 
 ## Artifact recovery
+
+The [latest control cleanup](evidence/player-initialization-value-controls/cleanup-summary.json)
+archives14 closed images/14 private source proposals and one refused-entry
+partial tree:406 files/29.93MB become0.48MB,reclaiming29.45MB. All25332 protected
+hashes are unchanged during compaction. The maintained17-input carrier and two
+current27-input witnesses remain expanded.
 
 The [current cleanup](evidence/player-initialization-draw-owner/cleanup-summary.json)
 archives14 closed images and14 private source proposals:378 files/28.14MB become
@@ -170,8 +205,9 @@ subagents. Attest the database before new target analysis. Full mapped text
 Current source verifies the complete1435-byte Player parent at1380/55 after49
 independent bindings and reproduces519 private/maintained public owners raw.
 Eight complete shared guards pass1753/all99. Maintained reproduction compiles
-Player and reuses16 pinned inputs;16 complete images/new Player compilations
-are recorded in the current packet. No independent full-graph pair, new exact
+Player and reuses16 pinned inputs in the maintained17-input graph. The latest
+separate controls complete16 images/15 new objects,12 full parent comparisons
+and four strict1443-byte rejections. No independent full-graph pair, new exact
 acceptance, canonical cold, full CI, product closure or runtime validation is
 claimed. The older07b1be2 checkpoint separately cold-replayed the original14-input
 Chain recipe4/838/all58. Different Stage/caller graphs are not interchangeable.
