@@ -1,0 +1,390 @@
+{
+  "scope": "target-bound direct-E8 survey; missing ownership/linear boundary stays unconfirmed, with no new-function claim",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "decoder": "5.0.6",
+  "function_ledger_sha256": "6348262c480cf8105d62fe796d90a3e56c5a7b82bba6ad24b39be3e1923a4d91",
+  "boundary_ledger_sha256": "945b25be5a448ea4a9c73780c6b1294596799309b1cbc3823018c7548e88b229",
+  "ghidra_reference_count": 28,
+  "raw_e8_hints": 30,
+  "independently_boundary_confirmed_count": 28,
+  "calls": [
+    {
+      "call_address": "0x40422a",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00403C80",
+        "proposed_name": "StageExecuteScript",
+        "size": "1868",
+        "source_file": "src/StageScript.cpp",
+        "status": "decompiled"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x4044d3",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00404450",
+        "proposed_name": "",
+        "size": "214",
+        "source_file": "",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x406bb7",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x004067D0",
+        "proposed_name": "BulletManagerView::SpawnSingleBullet",
+        "size": "1413",
+        "source_file": "src/BulletManager.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x4070a8",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00406D90",
+        "proposed_name": "BulletRuntimeView::AdvanceTransformProgram",
+        "size": "1454",
+        "source_file": "src/BulletTransform.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409976",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409990",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x4099dd",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x4099f7",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409a28",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409a41",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409a72",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409a8c",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409abe",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409ad8",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409b09",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409b22",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409b59",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409b7b",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x409b95",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x00409280",
+        "proposed_name": "EnemyBeginSpell",
+        "size": "2432",
+        "source_file": "src/EnemyEclDispatcher.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x41b045",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x0041AFD0",
+        "proposed_name": "ItemManagerUpdateBody",
+        "size": "2320",
+        "source_file": "src/ItemManager.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x41bc74",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x0041BB00",
+        "proposed_name": "ItemManagerView::Spawn",
+        "size": "819",
+        "source_file": "src/ItemManager.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x41bcb5",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x0041BB00",
+        "proposed_name": "ItemManagerView::Spawn",
+        "size": "819",
+        "source_file": "src/ItemManager.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x41be65",
+      "ghidra_reference": false,
+      "raw_e8_destination": "0x404f30",
+      "owner": null,
+      "entry_linear_decode_confirms_instruction": false
+    },
+    {
+      "call_address": "0x41c90a",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x0041C8C0",
+        "proposed_name": "EnemyLaserLineView::Initialize",
+        "size": "442",
+        "source_file": "src/LaserInitialize.cpp",
+        "status": "decompiled"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x41c96c",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x0041C8C0",
+        "proposed_name": "EnemyLaserLineView::Initialize",
+        "size": "442",
+        "source_file": "src/LaserInitialize.cpp",
+        "status": "decompiled"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x41cd46",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x0041CA80",
+        "proposed_name": "EnemyLaserLineView::RunCommands",
+        "size": "1356",
+        "source_file": "src/LaserScript.cpp",
+        "status": "decompiled"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x41e60a",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x0041E5C0",
+        "proposed_name": "EnemyLaserType1View::Initialize",
+        "size": "309",
+        "source_file": "src/LaserType1.cpp",
+        "status": "decompiled"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x41e671",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x0041E5C0",
+        "proposed_name": "EnemyLaserType1View::Initialize",
+        "size": "309",
+        "source_file": "src/LaserType1.cpp",
+        "status": "decompiled"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x4248b1",
+      "ghidra_reference": true,
+      "raw_e8_destination": "0x404f30",
+      "owner": {
+        "address": "0x004247F0",
+        "proposed_name": "PlayerInitialize",
+        "size": "1435",
+        "source_file": "src/Player.cpp",
+        "status": "unclassified"
+      },
+      "entry_linear_decode_confirms_instruction": true
+    },
+    {
+      "call_address": "0x4415d5",
+      "ghidra_reference": false,
+      "raw_e8_destination": "0x404f30",
+      "owner": null,
+      "entry_linear_decode_confirms_instruction": false
+    }
+  ]
+}

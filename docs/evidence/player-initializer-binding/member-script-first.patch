@@ -1,0 +1,243 @@
+--- a/src/BulletTransform.cpp
++++ b/src/BulletTransform.cpp
+@@ -128,8 +128,7 @@
+                 g_BulletSpriteScriptBase[record->payload.int0] +
+                 record->payload.int1;
+             vm.InitializeForLoadedScript(
+-                reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->bulletAnm,
+-                scriptIndex);
++                scriptIndex, reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->bulletAnm);
+         }
+         break;
+ 
+--- a/src/BulletManager.cpp
++++ b/src/BulletManager.cpp
+@@ -704,8 +704,7 @@
+     bullet->value454 = 0;
+ 
+     bullet->vm.InitializeForLoadedScript(
+-        bulletAnm,
+-        g_BulletSpriteScriptBase[descriptor->bulletType] + descriptor->color);
++        g_BulletSpriteScriptBase[descriptor->bulletType] + descriptor->color, bulletAnm);
+ 
+     switch (g_BulletEffectMode[descriptor->bulletType])
+     {
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -853,10 +853,10 @@
+     case 1:
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x0c);
++        state->stageVms[0].InitializeForLoadedScript(0x0c, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0b);
++        state->stageVms[1].InitializeForLoadedScript(0x0b, stageResource);
+         if (spellId < 2) {
+             stageResource = reinterpret_cast<AnmLoadedView *>(
+                 g_EnemyManager->effectResources[2]);
+@@ -873,10 +873,10 @@
+     case 2:
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x0e);
++        state->stageVms[0].InitializeForLoadedScript(0x0e, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0f);
++        state->stageVms[1].InitializeForLoadedScript(0x0f, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+         stageVm = g_AnmRenderManagerView->AllocateVm();
+@@ -885,10 +885,10 @@
+     case 3:
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x12);
++        state->stageVms[0].InitializeForLoadedScript(0x12, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x13);
++        state->stageVms[1].InitializeForLoadedScript(0x13, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+         stageVm = g_AnmRenderManagerView->AllocateVm();
+@@ -897,10 +897,10 @@
+     case 4:
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x13);
++        state->stageVms[0].InitializeForLoadedScript(0x13, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x14);
++        state->stageVms[1].InitializeForLoadedScript(0x14, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+         stageVm = g_AnmRenderManagerView->AllocateVm();
+@@ -909,10 +909,10 @@
+     case 5:
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x0c);
++        state->stageVms[0].InitializeForLoadedScript(0x0c, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0d);
++        state->stageVms[1].InitializeForLoadedScript(0x0d, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+         stageVm = g_AnmRenderManagerView->AllocateVm();
+@@ -921,10 +921,10 @@
+     case 6:
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x21);
++        state->stageVms[0].InitializeForLoadedScript(0x21, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+-        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x22);
++        state->stageVms[1].InitializeForLoadedScript(0x22, stageResource);
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+         stageVm = g_AnmRenderManagerView->AllocateVm();
+@@ -934,17 +934,17 @@
+         stageResource = reinterpret_cast<AnmLoadedView *>(
+             g_EnemyManager->effectResources[2]);
+         if (g_EnemyChapterState.chapter < 24) {
+-            state->stageVms[0].InitializeForLoadedScript(stageResource, 0x26);
++            state->stageVms[0].InitializeForLoadedScript(0x26, stageResource);
+             stageResource = reinterpret_cast<AnmLoadedView *>(
+                 g_EnemyManager->effectResources[2]);
+             stageVm = g_AnmRenderManagerView->AllocateVm();
+             stageScript = 0x28;
+         }
+         else {
+-            state->stageVms[0].InitializeForLoadedScript(stageResource, 0x1b);
++            state->stageVms[0].InitializeForLoadedScript(0x1b, stageResource);
+             stageResource = reinterpret_cast<AnmLoadedView *>(
+                 g_EnemyManager->effectResources[2]);
+-            state->stageVms[1].InitializeForLoadedScript(stageResource, 0x1c);
++            state->stageVms[1].InitializeForLoadedScript(0x1c, stageResource);
+             stageResource = reinterpret_cast<AnmLoadedView *>(
+                 g_EnemyManager->effectResources[2]);
+             stageVm = g_AnmRenderManagerView->AllocateVm();
+--- a/src/LaserScript.cpp
++++ b/src/LaserScript.cpp
+@@ -81,7 +81,7 @@
+                 int script = g_BulletSpriteScriptBase[command.arguments[2].integer] +
+                     command.arguments[3].integer;
+                 primaryVm.InitializeForLoadedScript(
+-                    g_EnemyPrimaryResourceOwner->primaryEnemyResource, script);
++                    script, g_EnemyPrimaryResourceOwner->primaryEnemyResource);
+             }
+             break;
+         case 0x8000u:
+--- a/src/ItemManager.cpp
++++ b/src/ItemManager.cpp
+@@ -294,8 +294,7 @@
+             {
+                 item->active = 2;
+                 item->vm.InitializeForLoadedScript(
+-                    g_EnemyPrimaryResourceOwner->primaryEnemyResource,
+-                    item->kind + 0x176);
++                    item->kind + 0x176, g_EnemyPrimaryResourceOwner->primaryEnemyResource);
+             }
+             continue;
+         }
+@@ -832,7 +831,7 @@
+     {
+         item->spriteKind = 1;
+         item->vm.InitializeForLoadedScript(
+-            g_EnemyPrimaryResourceOwner->primaryEnemyResource, 0x177);
++            0x177, g_EnemyPrimaryResourceOwner->primaryEnemyResource);
+     }
+     else
+     {
+@@ -845,7 +844,7 @@
+         else
+             script = kind + 0x176;
+         item->vm.InitializeForLoadedScript(
+-            g_EnemyPrimaryResourceOwner->primaryEnemyResource, script);
++            script, g_EnemyPrimaryResourceOwner->primaryEnemyResource);
+     }
+     item->vm.primaryColor.value = color;
+     return 0;
+--- a/src/LaserType1.cpp
++++ b/src/LaserType1.cpp
+@@ -31,8 +31,7 @@
+     state = 3;
+     AnmVmView *vm = &primaryVm;
+     vm->InitializeForLoadedScript(
+-        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource,
+-        request.color + g_BulletSpriteScriptBase[request.type]);
++        request.color + g_BulletSpriteScriptBase[request.type], reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource);
+     primaryVm.pendingInterrupt = 2;
+     AnmRenderManagerView::ExecuteScript(vm);
+     if ((request.flags44 & 2u) != 0)
+@@ -40,8 +39,7 @@
+     primaryVm.flags35C = (primaryVm.flags35C & 0xfc63ffffu) | 0x00600000u;
+     vm = &secondaryVm;
+     vm->InitializeForLoadedScript(
+-        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource,
+-        request.color + 0x103);
++        request.color + 0x103, reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource);
+     secondaryVm.pendingInterrupt = 2;
+     AnmRenderManagerView::ExecuteScript(vm);
+     vm->flags35C = (vm->flags35C & ~0x20u) | 0x10u;
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -175,7 +175,7 @@
+             break;
+         case 14:
+             if (integers[1] >= 0)
+-                stage->scriptVms[integers[0]].InitializeForLoadedScript(stage->anm, integers[1]);
++                stage->scriptVms[integers[0]].InitializeForLoadedScript(integers[1], stage->anm);
+             else
+             {
+                 AnmVmView *vm = &stage->scriptVms[integers[0]];
+--- a/src/AnmManager.hpp
++++ b/src/AnmManager.hpp
+@@ -479,7 +479,7 @@
+         int duration, unsigned char mode,
+         unsigned char initial, unsigned char final);
+     void InitializeForLoadedScript(
+-        AnmLoadedView *loaded, int scriptIndex);
++        int scriptIndex, AnmLoadedView *loaded);
+ 
+     int id;
+     AnmVmLayerNodeView managerNode;
+--- a/src/AnmManager.cpp
++++ b/src/AnmManager.cpp
+@@ -2853,7 +2853,7 @@
+ // The private LTCG ABI keeps the VM in ESI and the script index in EAX while
+ // the AnmLoadedView pointer remains the sole stack argument.
+ void AnmVmView::InitializeForLoadedScript(
+-    AnmLoadedView *loaded, int newScriptIndex)
++    int newScriptIndex, AnmLoadedView *loaded)
+ {
+     Initialize();
+     positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
+--- a/src/LaserInitialize.cpp
++++ b/src/LaserInitialize.cpp
+@@ -18,8 +18,7 @@
+     unknown00C = 2;
+     AnmVmView *vm = &primaryVm;
+     vm->InitializeForLoadedScript(
+-        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource,
+-        request.color + g_BulletSpriteScriptBase[request.type]);
++        request.color + g_BulletSpriteScriptBase[request.type], reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource);
+     primaryVm.pendingInterrupt = 2;
+     AnmRenderManagerView::ExecuteScript(vm);
+     if ((request.flags & 1u) != 0)
+@@ -28,8 +27,7 @@
+ 
+     vm = &secondaryVm;
+     vm->InitializeForLoadedScript(
+-        reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource,
+-        request.color + 0x103);
++        request.color + 0x103, reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource);
+     secondaryVm.pendingInterrupt = 2;
+     AnmRenderManagerView::ExecuteScript(vm);
+     vm->flags35C = (vm->flags35C & ~0x20u) | 0x10u;

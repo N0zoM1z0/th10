@@ -5522,3 +5522,25 @@ The receiver remains native EDX/target ESI. All six retain 11 complete guards 98
 seven actual game compiles/six links, no source or exact gain. These bounded
 controls exclude neither all lifetimes nor all source/caller contexts. See
 [vector/visibility evidence](evidence/stage-vector-lifetimes/README.md).
+
+## Player startup's shared VM initializer binding (2026-10-23)
+
+Target 0x4248B1 inside PlayerInitialize4247F0/1435 directly calls 0x404F30 with the VM
+at Player+0x14, loaded resource at +0x10 and script 0. Replace the declaration-only
+PlayerInitializeEmbeddedDrawVm call with the existing ANM member boundary view;
+remove its unused prototype. This removes one unresolved callable placeholder.
+Private and maintained seventeen-TU images reproduce all 366 complete public
+PDB owners raw. Player stays 1116/nonexact and its structural score 126->98/1267
+is not a byte-improvement claim. Both images retain 11 Stage guards 987/all 36 and
+the existing273-byte VM Initialize contract. Source/layout/ABI ownership and
+native runtime remain independent unknowns. See
+[binding evidence](evidence/player-initializer-binding/README.md).
+
+The same target review confirms 28 direct initializer calls in11 reviewed
+physical owners; five Ghidra references lack Ghidra function owners, correcting
+the old 23/eight-owner inventory. Two unowned raw E8 hints 0x41BE65/4415D5 stay
+unconfirmed. The source now contains 27 explicit shared-member calls; counts do
+not close target callers. Consistent member argument reversal is whole-parent
+neutral; the ordinary free/cdecl counterpart emits Stage 1872 and a198-byte/plain
+RET initializer, so it is rejected. Full16-source caller visibility is Stage-
+equal after 13 bound fields. No exact increment or original declaration inference.

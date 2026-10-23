@@ -1,0 +1,1548 @@
+{
+  "date": "2026-10-23",
+  "starting_commit": "0902294aca8d046887f64838c6ed29b818c10854",
+  "scope": "replace PlayerInitialize declaration-only VM initializer with the existing target-bound shared ANM member; investigate Stage caller/formal contexts without new exact credit",
+  "source_transition": {
+    "source": "src/Player.cpp",
+    "before_sha256": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+    "after_sha256": "af7338a601f565564900b7e1526fbb269636a8bf5d05bf44c6814a4c5a05df3f",
+    "updated_pin_groups": [
+      "source_sha256",
+      "frozen_inputs"
+    ],
+    "old_manifest_sha256": "cfce73b1db5954b53f5392566262dd6041e1552577827e21beacc46f312774f3",
+    "scope": "only replace the declaration-only embedded VM initializer with the existing target-bound ANM member call and remove its unused prototype",
+    "private_candidate": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-initializer/Player.cpp",
+    "new_exact_credit": false
+  },
+  "target_binding": {
+    "caller_entry": "0x004247F0",
+    "complete_target_parent_bytes": 1435,
+    "call_address": "0x004248B1",
+    "callee_entry": "0x00404F30",
+    "complete_target_callee_bytes": 202,
+    "vm": "Player + 0x14",
+    "loaded_resource": "pointer at Player + 0x10",
+    "script_index": 0,
+    "evidence": "fresh readOnly/noanalysis Ghidra plus raw call independently decoded from reviewed complete owner; existing Player layout assertions and selected native code owner/edge",
+    "original_class_layout_lifetime_or_public_abi_proof": false
+  },
+  "observations": [
+    {
+      "label": "member-script-first",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/StageScript.cpp",
+          "source_sha256": "886e5c093511157425b4c5b913ef4dc3ccc21757413868d806d2a75ccf4093b2",
+          "object_sha256": "6f9bdceb8c941410c79a800a6fe94be8848d780edb7361fc706ac9d6a2b8d471"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/StageLifecycle.cpp",
+          "source_sha256": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+          "object_sha256": "3412c83a814b8678c87ed8372f894cdccbb7202bd282100f1b734f76a845a2a6"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/StageDraw.cpp",
+          "source_sha256": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+          "object_sha256": "6caece7c66f710ef1f4afcdf34e846524203a2b0b968ad9b1e7e43d5f5d36ac2"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Chain.cpp",
+          "source_sha256": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
+          "object_sha256": "a09b7fdcfa3344321dd99a471c42f31d3df64e15460d4952c055e66930afe39e"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/AnmManager.cpp",
+          "source_sha256": "6887254c10953f15b649ab25079d65a2e31106bc2955bfc36f85ad5178767d34",
+          "object_sha256": "e7ba6cf811234cec6cc2b7c3d50a96a2978b296d39e87537eaa3cd541dc6c6f2"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/AnmVmCreate.cpp",
+          "source_sha256": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+          "object_sha256": "9de24567557edf304ddda4cf0241f230ff15132cdac57444ec1ddd788a78341f"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/AnmVmId.cpp",
+          "source_sha256": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+          "object_sha256": "1a9ca085fd28c7b8ec14cdbc65fae5175ad2e8fe52bd66d0c83ce11b4f2b27c5"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/RandomMath.cpp",
+          "source_sha256": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+          "object_sha256": "0127a6cf34cc241c7b1ed01985511deda4ec1c6752f0ea09dd1f9ec1fbc25b62"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/FileSystem.cpp",
+          "source_sha256": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260",
+          "object_sha256": "9fa7f8c0de187e2d92942887403a376c1172c38b9add8b64f70fd71295df7cbc"
+        }
+      ],
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "only the two real member formals and their 26 actual source calls swap order",
+        "member body unchanged; all 108 source/header snapshots consistent; all 21 selected quoted inputs private",
+        "all nine actual GL/GS game inputs recompiled; only two harness inputs reused; no ABI annotation or forced register"
+      ],
+      "producer_sha256": "240d6f602b63b2d4c44ca3f61da5e177331b740dfd1ea843841d869849ddb694",
+      "parent": {
+        "candidate_size": 1868,
+        "matched_comparable_bytes": 1241,
+        "comparable_bytes": 1724,
+        "raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26"
+      },
+      "reused_object_count": 2,
+      "explicit_source_identity_binding": {
+        "old_symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+        "new_symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXHPAUAnmLoadedView@@@Z",
+        "target_address": "0x00404F30",
+        "basis": "same unique member definition with body preserved byte-for-byte after newline normalization; all formals and 26 real source calls reordered consistently; complete selected graph recompiled",
+        "method_body_sha256": "edad34df8c4e0f65d15e58c7c0f613651fbbfb25d956adc86c40b59391810c54",
+        "original_signature_or_abi_proof": false
+      },
+      "context": {
+        "primary_source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/StageScript.cpp",
+        "support_source_count": 8,
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first",
+        "context_sha256": "132ceac784ff672b24b92b5b39beadbe48087b9ade6a16d6c23175c4bf220e8b"
+      }
+    },
+    {
+      "label": "free-vm-first",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/StageScript.cpp",
+          "source_sha256": "979e124db6a6b9d41415a9949ef5615883ea62a520486d1fd5122551c753d413",
+          "object_sha256": "26a813ddfc02d927e0f97d0cc109dd04aee5cdabc9a16995ef3fbe9c353b2a12"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/StageLifecycle.cpp",
+          "source_sha256": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+          "object_sha256": "baa1fed67aa3f58afb3617aab91bcdf70b0aee8391a77e31584251b502d74001"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/StageDraw.cpp",
+          "source_sha256": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+          "object_sha256": "86b3d293108d28e3f27daf760fb9f9d3ebdcceea33b1a09749240af763affea3"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Chain.cpp",
+          "source_sha256": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
+          "object_sha256": "f5978a91c0b45f97f6cc02bcd376f3064301644ebb72c8ba82ecf9b31ece01e9"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/AnmManager.cpp",
+          "source_sha256": "ea5250a44a4bdeddee245a3db2a41bb153901ae391bb0e4bc2b89c07aadf02fd",
+          "object_sha256": "bf38a82325312649e112428be14e7d50cf13a7f5244c242689c7347f6b204aa2"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/AnmVmCreate.cpp",
+          "source_sha256": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+          "object_sha256": "f16b82eb6f551d77b0c3982ff4f1de14afb24ac9dfd629d18594e5beda983b8a"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/AnmVmId.cpp",
+          "source_sha256": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+          "object_sha256": "49eb9628d6d34ba7da3c75ddd00f3fd0bf9c76d9630c8533843e555d829e0f1c"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/RandomMath.cpp",
+          "source_sha256": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+          "object_sha256": "61672fa1e1f8a96633eafecb97fe3fdcad5fa359ef2a09e2754c1ae9533de142"
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/FileSystem.cpp",
+          "source_sha256": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260",
+          "object_sha256": "30ab7784116c61945b18a060975ca6c70ab927eda6a34e1e15a7778d0e14cb2c"
+        }
+      ],
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1336,
+        "comparable": 1619,
+        "gap": 4,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "ordinary free-function counterpart uses the same VM, loaded resource and script index values in all 26 real source calls",
+        "reverse VM qualification exactly recovers the old member body; all 108 source/header snapshots consistent and 21 selected quoted inputs private",
+        "all nine actual GL/GS game inputs recompiled; only two harness inputs reused; no ABI annotation, wrapper, unused input or forced register"
+      ],
+      "producer_sha256": "12aa835156879f1d23f43cab0c14ff80fbd1cc92d86b2dd587c4e21976c0449e",
+      "parent": {
+        "candidate_size": 1872,
+        "matched_comparable_bytes": 1221,
+        "comparable_bytes": 1728,
+        "raw_sha256": "17666610a3156a82bff1815f2461911b5c3fccfe436410d4adf236d71775f7c2"
+      },
+      "reused_object_count": 2,
+      "explicit_source_identity_binding": {
+        "old_symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+        "new_symbol": "?InitializeEmbeddedAnmVm@@YAXPAUAnmVmView@@PAUAnmLoadedView@@H@Z",
+        "target_address": "0x00404F30",
+        "basis": "same field operations and two real method calls under an explicit VM parameter; reverse qualification exactly recovers the original member body; all 26 receivers/arguments converted consistently; complete selected graph recompiled",
+        "method_body_sha256": "edad34df8c4e0f65d15e58c7c0f613651fbbfb25d956adc86c40b59391810c54",
+        "original_signature_or_abi_proof": false
+      },
+      "context": {
+        "primary_source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/StageScript.cpp",
+        "support_source_count": 8,
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first",
+        "context_sha256": "c79c727a6d4d68c8d03d289cff837ed3ba3649e3224b700a7fc0cb49a2557bb7"
+      }
+    },
+    {
+      "label": "all-maintained-callers",
+      "compiled": [
+        {
+          "source": "src/StageScript.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/source.ltcg.obj",
+          "source_sha256": "5f85456c235e4c10a5a89e33ad4748ef2e28b5abe7864fbe7139e8dd549fd764",
+          "object_sha256": "cfd1cac1b5ad5fc7383b10545d7c10dd62d419ac018723db6468696c4950366e",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/StageLifecycle.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-00-StageLifecycle.ltcg.obj",
+          "source_sha256": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+          "object_sha256": "dd1761545a6da9454e58b6eda96dbc29e569b2e8d7fbb2c9e75cb6724cbf71a8",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/StageDraw.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-01-StageDraw.ltcg.obj",
+          "source_sha256": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+          "object_sha256": "862baddef74f9aecd463ae895e760d7abde61029f09b74cdc9197b19e74a9f09",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/Chain.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-02-Chain.ltcg.obj",
+          "source_sha256": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
+          "object_sha256": "2fcc275dfcc05a65d5ab6d5c2958a2f8b6d19122a58122dff054ee5acb6f1d47",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/AnmManager.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-03-AnmManager.ltcg.obj",
+          "source_sha256": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+          "object_sha256": "76e9575c6afed5d2083826ba6baab4bca262d35bde733d0a8539d6caa729231e",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/AnmVmCreate.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-04-AnmVmCreate.ltcg.obj",
+          "source_sha256": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+          "object_sha256": "46c9510026f4c3c7ba9bce0c1259e3b94bfd907425efab4b5ff613fbb54484d5",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/AnmVmId.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-05-AnmVmId.ltcg.obj",
+          "source_sha256": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+          "object_sha256": "a6f704c1f7d3c1236b418d0870420a843c945e0efe3d64c493a68c4135098e50",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/RandomMath.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-06-RandomMath.ltcg.obj",
+          "source_sha256": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+          "object_sha256": "3fb7df46c9577684d46a4be1332980857e207e409b06179ba5258790672c05e8",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/FileSystem.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-07-FileSystem.ltcg.obj",
+          "source_sha256": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260",
+          "object_sha256": "487fb38b0db5c482fc1101dfcf09387abb676c895383c179543b2bab3bd1e2d0",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/EnemyEclDispatcher.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-08-EnemyEclDispatcher.ltcg.obj",
+          "source_sha256": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+          "object_sha256": "253a06f60c13cdeacc3638b6406315aa259bf32a49ffdaa19d9571aa75a89f82",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/BulletManager.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-09-BulletManager.ltcg.obj",
+          "source_sha256": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+          "object_sha256": "05d40e9aab8228647c1fefbdf887ba93dcee08bd31192e37db5c5b13b73db847",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/BulletTransform.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-10-BulletTransform.ltcg.obj",
+          "source_sha256": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+          "object_sha256": "be2a1741a7a278a0bd929faccddf06197b01cf49fb32528400a8e4a6471ad093",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/ItemManager.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-11-ItemManager.ltcg.obj",
+          "source_sha256": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+          "object_sha256": "5afd49a764c15d1fc762846d6fac9ecaea0f15c17e6edf3db549dd39f58771cf",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/LaserInitialize.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-12-LaserInitialize.ltcg.obj",
+          "source_sha256": "ecb1eaa8e79ea7218d311bd9f5475c266bd8fb9c2130c105c356afde4c7e2e94",
+          "object_sha256": "86a1103e125382aca2e8c26efaf723fa7a6686a103026ab3152c6c2c70aab0b2",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/LaserType1.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-13-LaserType1.ltcg.obj",
+          "source_sha256": "27fba91c2ed157457d158d76d9438c6721e1604dc723f327bc5e7d4453d9d034",
+          "object_sha256": "025e79fd390da61bba30f2a305e4ae5046cdcdc9fd30a79ba0c50d28ecd91b93",
+          "kind": "game-source"
+        },
+        {
+          "source": "src/LaserScript.cpp",
+          "object": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-14-LaserScript.ltcg.obj",
+          "source_sha256": "2f8474386a59cd91aebb19a206e850048f5e92b73ba25a20e66f225f0e32b041",
+          "object_sha256": "8a5088d3a2cd7bf1864e31c1387fcd61cb816a0b55427e174126e1ee0e31fac1",
+          "kind": "game-source"
+        }
+      ],
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "no source, header, signature or ABI changes; add seven actual maintained caller TUs to the Stage graph",
+        "all 26 maintained source calls occur in sixteen freshly compiled game inputs; this does not cover missing target callers",
+        "profiles retain GL/GS; unresolved non-entry symbols use regenerated non-runnable anchors"
+      ],
+      "producer_sha256": "99fe9b4bbefa947276fe4162b308dd3016ca6a8af53c1b3df0aab093082bb1e0",
+      "parent": {
+        "candidate_size": 1868,
+        "matched_comparable_bytes": 1241,
+        "comparable_bytes": 1724,
+        "raw_sha256": "cda6a3c546fbfdbe751aae3807dfdfa0a6de55a726ef3c7eef765bba1e40186c"
+      },
+      "reused_object_count": 0,
+      "context": {
+        "primary_source": "src/StageScript.cpp",
+        "support_source_count": 15,
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers",
+        "context_sha256": "a353089331624726f15a611ecf25fa3d1bd53cc6027e41875183bd8a55f775ea"
+      }
+    },
+    {
+      "label": "player-baseline-17",
+      "compiled": [
+        {
+          "source": "src/Player.cpp",
+          "source_sha256": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+          "object_sha256": "eec1f9f79772c1765443317f3789983ef75350f868149b2e35d294a2b5028d10"
+        }
+      ],
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "same sixteen verified game objects; only actual Player source compiled",
+        "baseline keeps the declaration-only placeholder; real form calls the existing full ANM member with Player+14/resource+10/script0",
+        "no shared header, layout, function signature, ABI annotation or profile changes"
+      ],
+      "producer_sha256": "b7f732c72875a00f2867ea4f13dae3f017fa91b7cc7b26f00da025e2d3d250bb",
+      "parent": {
+        "candidate_size": 1868,
+        "matched_comparable_bytes": 1241,
+        "comparable_bytes": 1724,
+        "raw_sha256": "cc51ec7ce78169fb95c46debc22456f2e59212497a3cb59f2cd30f8cb286e179"
+      },
+      "reused_object_count": 16,
+      "player": {
+        "candidate_size": 1116,
+        "matched_comparable_bytes": 126,
+        "comparable_bytes": 1267,
+        "raw_sha256": "b9121c4a32bfa08d5da8796acbf0269659464a9b9a75201c668c6b484b411e77",
+        "pdb_owner": {
+          "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z",
+          "address": "0x00419B30",
+          "size": 1116,
+          "extent_source": "pdb-section-contribution",
+          "sha256": "b9121c4a32bfa08d5da8796acbf0269659464a9b9a75201c668c6b484b411e77"
+        }
+      },
+      "real_initializer_edges": [],
+      "real_initializer_owner": {
+        "symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+        "address": "0x00408890",
+        "size": 200,
+        "extent_source": "pdb-section-contribution",
+        "sha256": "4e04ddeefe0121d136f647b27eaa1964ad5e2753b78a48dcd5433797634ad6ad"
+      },
+      "context": {
+        "primary_source": "src/StageScript.cpp",
+        "support_source_count": 16,
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-baseline-17",
+        "context_sha256": "6141dbe2d03a4310be0619d8ec161e332d0564169d8de8d97c1c6c27c69fa4ef"
+      }
+    },
+    {
+      "label": "player-real-17",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-initializer/Player.cpp",
+          "source_sha256": "af7338a601f565564900b7e1526fbb269636a8bf5d05bf44c6814a4c5a05df3f",
+          "object_sha256": "dde885d2220e4736b36d4047191a6a83f4a79bb2aefa22eaee6a958d3345586f"
+        }
+      ],
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "same sixteen verified game objects; only actual Player source compiled",
+        "baseline keeps the declaration-only placeholder; real form calls the existing full ANM member with Player+14/resource+10/script0",
+        "no shared header, layout, function signature, ABI annotation or profile changes"
+      ],
+      "producer_sha256": "b7f732c72875a00f2867ea4f13dae3f017fa91b7cc7b26f00da025e2d3d250bb",
+      "parent": {
+        "candidate_size": 1868,
+        "matched_comparable_bytes": 1241,
+        "comparable_bytes": 1724,
+        "raw_sha256": "5790f72fca0f71a79ed360022e50e572381d7d3581678b6199b743ee5ad074b7"
+      },
+      "reused_object_count": 16,
+      "player": {
+        "candidate_size": 1116,
+        "matched_comparable_bytes": 98,
+        "comparable_bytes": 1267,
+        "raw_sha256": "d46a518962cdd7910bed85d305b5e457afde397ba36dbb24d1aef4a4718b4839",
+        "pdb_owner": {
+          "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z",
+          "address": "0x00419B30",
+          "size": 1116,
+          "extent_source": "pdb-section-contribution",
+          "sha256": "d46a518962cdd7910bed85d305b5e457afde397ba36dbb24d1aef4a4718b4839"
+        }
+      },
+      "real_initializer_edges": [
+        {
+          "address": "0x419be2",
+          "destination": "0x408890"
+        }
+      ],
+      "real_initializer_owner": {
+        "symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+        "address": "0x00408890",
+        "size": 200,
+        "extent_source": "pdb-section-contribution",
+        "sha256": "4e04ddeefe0121d136f647b27eaa1964ad5e2753b78a48dcd5433797634ad6ad"
+      },
+      "context": {
+        "primary_source": "src/StageScript.cpp",
+        "support_source_count": 16,
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17",
+        "context_sha256": "c7784120700e1f738ee11b5fc711b43ea2907e3ef1a743f734f36d7784adf045"
+      }
+    },
+    {
+      "label": "player-maintained-17",
+      "compiled": [
+        {
+          "source": "src/Player.cpp",
+          "source_sha256": "af7338a601f565564900b7e1526fbb269636a8bf5d05bf44c6814a4c5a05df3f",
+          "object_sha256": "fb37f24b54655a2c459b3bbab74566858a2fe2fae8ee472d0286dfdc794e0b26"
+        }
+      ],
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "source_shape_assertions": [
+        "same sixteen verified game objects; only actual Player source compiled",
+        "baseline keeps the declaration-only placeholder; real form calls the existing full ANM member with Player+14/resource+10/script0",
+        "no shared header, layout, function signature, ABI annotation or profile changes"
+      ],
+      "producer_sha256": "cb22e45fef785d5294b1dbfc0f947c83369fef8c3dc2efddae4a1ad84e620bdd",
+      "parent": {
+        "candidate_size": 1868,
+        "matched_comparable_bytes": 1241,
+        "comparable_bytes": 1724,
+        "raw_sha256": "5790f72fca0f71a79ed360022e50e572381d7d3581678b6199b743ee5ad074b7"
+      },
+      "reused_object_count": 16,
+      "player": {
+        "candidate_size": 1116,
+        "matched_comparable_bytes": 98,
+        "comparable_bytes": 1267,
+        "raw_sha256": "d46a518962cdd7910bed85d305b5e457afde397ba36dbb24d1aef4a4718b4839",
+        "pdb_owner": {
+          "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z",
+          "address": "0x00419B30",
+          "size": 1116,
+          "extent_source": "pdb-section-contribution",
+          "sha256": "d46a518962cdd7910bed85d305b5e457afde397ba36dbb24d1aef4a4718b4839"
+        }
+      },
+      "real_initializer_edges": [
+        {
+          "address": "0x419be2",
+          "destination": "0x408890"
+        }
+      ],
+      "real_initializer_owner": {
+        "symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+        "address": "0x00408890",
+        "size": 200,
+        "extent_source": "pdb-section-contribution",
+        "sha256": "4e04ddeefe0121d136f647b27eaa1964ad5e2753b78a48dcd5433797634ad6ad"
+      },
+      "context": {
+        "primary_source": "src/StageScript.cpp",
+        "support_source_count": 16,
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-maintained-17",
+        "context_sha256": "abbb1650cdb4fe8e3d5cbe7bd90be3057f575c3de8d496964e2b31475e8d8888"
+      }
+    }
+  ],
+  "maintained_reproduction": {
+    "complete_public_owned_functions": 366,
+    "all_private_to_maintained_extents_and_raw_bytes_equal": true,
+    "scope": "all complete public MAP/PDB-owned code contributions in the seventeen-TU diagnostic graph; no static/unowned-fragment or runtime claim"
+  },
+  "adoption_graph_delta": {
+    "scope": "complete public MAP/PDB owners in measured seventeen-TU before/after graphs; static/unowned fragments and other canonical contexts excluded",
+    "owners": 366,
+    "raw_equal": 147,
+    "equal_after_verified_address_replay": 206,
+    "other_owners": [
+      {
+        "symbol": "?StageDrawEarly@@YGHPAUStageScriptView@@@Z",
+        "object": "support-01-stagedraw.ltcg.obj",
+        "baseline_size": 918,
+        "candidate_size": 918,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          64,
+          76
+        ],
+        "unresolved_field_offsets": [
+          64,
+          76
+        ],
+        "replayed_field_count": 39
+      },
+      {
+        "symbol": "?StageDrawLate@@YGHPAUStageScriptView@@@Z",
+        "object": "support-01-stagedraw.ltcg.obj",
+        "baseline_size": 917,
+        "candidate_size": 917,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          58,
+          70
+        ],
+        "unresolved_field_offsets": [
+          58,
+          70
+        ],
+        "replayed_field_count": 46
+      },
+      {
+        "symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+        "object": "support-02-chain.ltcg.obj",
+        "baseline_size": 129,
+        "candidate_size": 129,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          25,
+          36,
+          48,
+          105,
+          119
+        ],
+        "unresolved_field_offsets": [
+          25,
+          36,
+          48,
+          105,
+          119
+        ],
+        "replayed_field_count": 2
+      },
+      {
+        "symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+        "object": "support-02-chain.ltcg.obj",
+        "baseline_size": 129,
+        "candidate_size": 129,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          25,
+          36,
+          48,
+          105,
+          119
+        ],
+        "unresolved_field_offsets": [
+          25,
+          36,
+          48,
+          105,
+          119
+        ],
+        "replayed_field_count": 2
+      },
+      {
+        "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+        "object": "support-02-chain.ltcg.obj",
+        "baseline_size": 264,
+        "candidate_size": 264,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          1,
+          11,
+          21,
+          81,
+          92,
+          103,
+          116,
+          127,
+          202,
+          212,
+          221
+        ],
+        "unresolved_field_offsets": [
+          1,
+          11,
+          21,
+          81,
+          92,
+          103,
+          116,
+          127,
+          202,
+          212,
+          221
+        ],
+        "replayed_field_count": 4
+      },
+      {
+        "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+        "object": "support-02-chain.ltcg.obj",
+        "baseline_size": 220,
+        "candidate_size": 220,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          2,
+          13,
+          25,
+          67,
+          78,
+          89,
+          102,
+          113,
+          172,
+          183
+        ],
+        "unresolved_field_offsets": [
+          2,
+          13,
+          25,
+          67,
+          78,
+          89,
+          102,
+          113,
+          172,
+          183
+        ],
+        "replayed_field_count": 4
+      },
+      {
+        "symbol": "?DrawMode6@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "object": "support-03-anmmanager.ltcg.obj",
+        "baseline_size": 643,
+        "candidate_size": 643,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          520,
+          574,
+          588
+        ],
+        "unresolved_field_offsets": [
+          520,
+          574,
+          588
+        ],
+        "replayed_field_count": 23
+      },
+      {
+        "symbol": "?DrawMode7@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "object": "support-03-anmmanager.ltcg.obj",
+        "baseline_size": 402,
+        "candidate_size": 402,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          68,
+          327
+        ],
+        "unresolved_field_offsets": [
+          68,
+          327
+        ],
+        "replayed_field_count": 19
+      },
+      {
+        "symbol": "?AsciiManagerDrawStrings@@YGHPAUAsciiManagerView@@@Z",
+        "object": "support-03-anmmanager.ltcg.obj",
+        "baseline_size": 726,
+        "candidate_size": 726,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          209,
+          220,
+          247,
+          258,
+          264,
+          275,
+          302,
+          649,
+          655,
+          666,
+          700
+        ],
+        "unresolved_field_offsets": [
+          209,
+          220,
+          247,
+          258,
+          264,
+          275,
+          302,
+          649,
+          655,
+          666,
+          700
+        ],
+        "replayed_field_count": 8
+      },
+      {
+        "symbol": "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z",
+        "object": "support-03-anmmanager.ltcg.obj",
+        "baseline_size": 572,
+        "candidate_size": 572,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          179,
+          190,
+          217,
+          228,
+          234,
+          245,
+          272,
+          495,
+          501,
+          512,
+          546
+        ],
+        "unresolved_field_offsets": [
+          179,
+          190,
+          217,
+          228,
+          234,
+          245,
+          272,
+          495,
+          501,
+          512,
+          546
+        ],
+        "replayed_field_count": 8
+      },
+      {
+        "symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+        "object": "support-08-enemyecldispatcher.ltcg.obj",
+        "baseline_size": 149,
+        "candidate_size": 149,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          15
+        ],
+        "unresolved_field_offsets": [
+          15
+        ],
+        "replayed_field_count": 1
+      },
+      {
+        "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+        "object": "support-08-enemyecldispatcher.ltcg.obj",
+        "baseline_size": 123,
+        "candidate_size": 123,
+        "result": "compared",
+        "remaining_byte_offsets": [
+          5
+        ],
+        "unresolved_field_offsets": [
+          5
+        ],
+        "replayed_field_count": 0
+      },
+      {
+        "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z",
+        "object": "support-15-player.ltcg.obj",
+        "baseline_size": 1116,
+        "candidate_size": 1116,
+        "result": "unequal-field-inventory"
+      }
+    ],
+    "removed_unresolved_symbols": [
+      "?PlayerInitializeEmbeddedDrawVm@@YAXPAUPlayerDrawVmView@@PAXH@Z"
+    ],
+    "added_unresolved_symbols": []
+  },
+  "member_order_peer": [
+    {
+      "label": "member-script-first",
+      "explicit_semantic_rename": {
+        "old_symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+        "new_symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXHPAUAnmLoadedView@@@Z",
+        "target_address": "0x00404F30",
+        "basis": "same unique member definition with body preserved byte-for-byte after newline normalization; all formals and 26 real source calls reordered consistently; complete selected graph recompiled",
+        "method_body_sha256": "edad34df8c4e0f65d15e58c7c0f613651fbbfb25d956adc86c40b59391810c54",
+        "original_signature_or_abi_proof": false
+      },
+      "independent_source_and_unique_pdb_checks": true,
+      "parent": {
+        "baseline_size": 1868,
+        "candidate_size": 1868,
+        "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+        "candidate_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+        "scope": "complete native peer comparison; no target equality authority",
+        "result": "compared",
+        "fields": 36,
+        "replayed_changed_fields": [],
+        "equal_after_verified_address_replay": true,
+        "ordinary_difference_count": 0,
+        "unresolved_count": 0
+      },
+      "initializer": {
+        "baseline_size": 200,
+        "candidate_size": 200,
+        "baseline_raw_sha256": "4e04ddeefe0121d136f647b27eaa1964ad5e2753b78a48dcd5433797634ad6ad",
+        "candidate_raw_sha256": "4e04ddeefe0121d136f647b27eaa1964ad5e2753b78a48dcd5433797634ad6ad",
+        "scope": "complete native peer comparison; no target equality authority",
+        "result": "compared",
+        "fields": 2,
+        "replayed_changed_fields": [],
+        "equal_after_verified_address_replay": true,
+        "candidate_entry_instructions": [
+          "sub esp, 0xc",
+          "push esi",
+          "mov esi, eax",
+          "call 0x40b8d0",
+          "mov dword ptr [esp + 4], 0",
+          "mov ecx, dword ptr [esp + 4]",
+          "lea eax, [edx + 0x340]",
+          "mov dword ptr [eax], ecx",
+          "mov dword ptr [esp + 8], 0",
+          "mov ecx, dword ptr [esp + 8]",
+          "mov dword ptr [eax + 4], ecx",
+          "mov dword ptr [esp + 0xc], 0"
+        ],
+        "ordinary_difference_count": 0,
+        "unresolved_count": 0
+      }
+    }
+  ],
+  "stage_context_peers": [
+    {
+      "label": "all-maintained-callers",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "cda6a3c546fbfdbe751aae3807dfdfa0a6de55a726ef3c7eef765bba1e40186c",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [
+        {
+          "offset": 90,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 805,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1069,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1321,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1388,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1415,
+          "type": "DIR32",
+          "symbols": [
+            "?g_StageScriptGlobal4923A8@@3HA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1529,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f7d70a4"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1544,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f8147ae"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1561,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f800000"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1582,
+          "type": "REL32",
+          "symbols": [
+            "__ftol2"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1745,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3c490fdb"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1751,
+          "type": "DIR32",
+          "symbols": [
+            "__real@40490fdb"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1759,
+          "type": "DIR32",
+          "symbols": [
+            "__real@c2c80000"
+          ],
+          "local_offset": null
+        }
+      ],
+      "equal_after_verified_address_replay": true,
+      "ordinary_difference_count": 0,
+      "unresolved_count": 0
+    },
+    {
+      "label": "player-baseline-17",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "cc51ec7ce78169fb95c46debc22456f2e59212497a3cb59f2cd30f8cb286e179",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [
+        {
+          "offset": 90,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 805,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1069,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1321,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1388,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1415,
+          "type": "DIR32",
+          "symbols": [
+            "?g_StageScriptGlobal4923A8@@3HA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1529,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f7d70a4"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1544,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f8147ae"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1561,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f800000"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1582,
+          "type": "REL32",
+          "symbols": [
+            "__ftol2"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1745,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3c490fdb"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1751,
+          "type": "DIR32",
+          "symbols": [
+            "__real@40490fdb"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1759,
+          "type": "DIR32",
+          "symbols": [
+            "__real@c2c80000"
+          ],
+          "local_offset": null
+        }
+      ],
+      "equal_after_verified_address_replay": true,
+      "ordinary_difference_count": 0,
+      "unresolved_count": 0
+    },
+    {
+      "label": "player-real-17",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "5790f72fca0f71a79ed360022e50e572381d7d3581678b6199b743ee5ad074b7",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [
+        {
+          "offset": 90,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 805,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1069,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1321,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1388,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1415,
+          "type": "DIR32",
+          "symbols": [
+            "?g_StageScriptGlobal4923A8@@3HA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1529,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f7d70a4"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1544,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f8147ae"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1561,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f800000"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1582,
+          "type": "REL32",
+          "symbols": [
+            "__ftol2"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1745,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3c490fdb"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1751,
+          "type": "DIR32",
+          "symbols": [
+            "__real@40490fdb"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1759,
+          "type": "DIR32",
+          "symbols": [
+            "__real@c2c80000"
+          ],
+          "local_offset": null
+        }
+      ],
+      "equal_after_verified_address_replay": true,
+      "ordinary_difference_count": 0,
+      "unresolved_count": 0
+    },
+    {
+      "label": "player-maintained-17",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "5790f72fca0f71a79ed360022e50e572381d7d3581678b6199b743ee5ad074b7",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [
+        {
+          "offset": 90,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 805,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1069,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1321,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1388,
+          "type": "DIR32",
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1415,
+          "type": "DIR32",
+          "symbols": [
+            "?g_StageScriptGlobal4923A8@@3HA"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1529,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f7d70a4"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1544,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f8147ae"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1561,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3f800000"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1582,
+          "type": "REL32",
+          "symbols": [
+            "__ftol2"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1745,
+          "type": "DIR32",
+          "symbols": [
+            "__real@3c490fdb"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1751,
+          "type": "DIR32",
+          "symbols": [
+            "__real@40490fdb"
+          ],
+          "local_offset": null
+        },
+        {
+          "offset": 1759,
+          "type": "DIR32",
+          "symbols": [
+            "__real@c2c80000"
+          ],
+          "local_offset": null
+        }
+      ],
+      "equal_after_verified_address_replay": true,
+      "ordinary_difference_count": 0,
+      "unresolved_count": 0
+    }
+  ],
+  "extra_target_guard_scope": {
+    "per_seventeen_tu_image": "11 Stage contracts987/all36 plus existing VM Initialize273/all0 =12/1260/all36",
+    "results": {
+      "player-baseline-17": [
+        {
+          "unit": "chain-run-calc",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x108 differs from manifest 0x134"
+        },
+        {
+          "unit": "chain-run-draw",
+          "result": "unsupported",
+          "error": "PDB contribution size 0xdc differs from manifest 0x10c"
+        },
+        {
+          "unit": "chain-add-calc",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x81 differs from manifest 0x83"
+        },
+        {
+          "unit": "chain-add-draw",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x81 differs from manifest 0x83"
+        },
+        {
+          "unit": "anm-vm-initialize-private",
+          "result": "exact",
+          "size": 273
+        }
+      ],
+      "player-maintained-17": [
+        {
+          "unit": "chain-run-calc",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x108 differs from manifest 0x134"
+        },
+        {
+          "unit": "chain-run-draw",
+          "result": "unsupported",
+          "error": "PDB contribution size 0xdc differs from manifest 0x10c"
+        },
+        {
+          "unit": "chain-add-calc",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x81 differs from manifest 0x83"
+        },
+        {
+          "unit": "chain-add-draw",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x81 differs from manifest 0x83"
+        },
+        {
+          "unit": "anm-vm-initialize-private",
+          "result": "exact",
+          "size": 273
+        }
+      ]
+    },
+    "four_chain_contracts": "both seventeen-TU images reject at complete extents; not credited or cropped. Canonical fourteen-TU cold replay is separate."
+  },
+  "xref_summary": {
+    "ghidra_reference_count": 28,
+    "raw_e8_hints": 30,
+    "independently_boundary_confirmed_count": 28
+  },
+  "source_call_counts": {
+    "before_named_member_calls": 26,
+    "after_named_member_calls": 27,
+    "complete_target_caller_or_runtime_closure": false
+  },
+  "sessions": {
+    "preflight_toolchain": 27930,
+    "ghidra_initializer": 25790,
+    "ghidra_player": 17450,
+    "native": [
+      {
+        "label": "member-script-first",
+        "session": 70567,
+        "exit_code": 0
+      },
+      {
+        "label": "free-vm-first",
+        "session": 26766,
+        "exit_code": 0
+      },
+      {
+        "label": "all-maintained-callers",
+        "session": 48989,
+        "exit_code": 0
+      },
+      {
+        "label": "player-baseline-17",
+        "session": 68610,
+        "exit_code": 0
+      },
+      {
+        "label": "player-real-17",
+        "session": 40037,
+        "exit_code": 0
+      },
+      {
+        "label": "player-maintained-17",
+        "session": 59050,
+        "exit_code": 0
+      }
+    ]
+  },
+  "known_limitations": [
+    "Player parent stays1116 versus target1435; structural positions126->98 of1267. These are triage diagnostics, not target-byte improvement or exact credit.",
+    "The full native VM initializer remains200 versus target202, with private registers differing.",
+    "Five Ghidra references have no Ghidra function owner; reviewed ledger owners still validate their call boundaries. Two additional raw E8 hints lack owner/boundary proof.",
+    "Public-graph comparison verifies353 before/after owners; twelve more have unresolved address bindings and Player changes field inventory. Static/unowned fragments and other contexts are outside that proof.",
+    "No full CI, game runtime, production data ownership or semantic/port closure is claimed."
+  ],
+  "new_exact_credit": false,
+  "canonical_recipe_or_match_ledger_changes": false,
+  "canonical_chain_current_source": {
+    "cold_session": 62982,
+    "exit_code": 0,
+    "game_sources": 14,
+    "same_recipe_preserved": true,
+    "focused_contracts": 4,
+    "exact_bytes": 838,
+    "all_linked_fields": 58,
+    "source_sha256": {
+      "src/ScriptViewer.cpp": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7",
+      "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "src/Chain.cpp": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
+      "src/FrontEnd.cpp": "6c972e54085aa3969d4eb4ab9e516bf35a87809ca762b87a098346fe27f010b7",
+      "src/Player.cpp": "af7338a601f565564900b7e1526fbb269636a8bf5d05bf44c6814a4c5a05df3f",
+      "src/Gui.cpp": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff",
+      "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+      "src/BulletLifecycle.cpp": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243",
+      "src/InputState.cpp": "48c48082b17c994d83cdc49ec370f2adcc35fca27e87813d7714089a01321007",
+      "src/Main.cpp": "9cce8257321bde23fdb88b6f42f7412a3b6a425a138f7bda0482796fd300cd8e",
+      "src/ScriptViewerWorker.cpp": "a1d103a8c3d5770d9902b0b520f484720e6a4be9e83dfe79b5a218e619e338a9",
+      "src/ScriptViewerLifecycle.cpp": "08f91480ad45fbfc9f3519d0869bacca4055a3b66b595fb96d196f1aff980916",
+      "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f"
+    },
+    "canonical_manifest_sha256": "8ef1e6f9232cba78a2e108546adf769d5f84a07f89d039d4c06d08bb6eba7760"
+  },
+  "private_full_report": {
+    "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/full-evidence-before-compaction.json",
+    "bytes": 133445,
+    "sha256": "f7d43cd05f70a5a0f6a9740afc07217a10f599a233e504ca056faa43decacbbb",
+    "reason": "full measured contexts, compile records and unresolved address-field observations; compact tracked report preserves conclusions and input fingerprints"
+  },
+  "experimental_game_profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL",
+    "/GS"
+  ]
+}

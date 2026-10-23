@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-23",
+  "starting_commit": "0902294aca8d046887f64838c6ed29b818c10854",
+  "source_change": {
+    "source": "src/Player.cpp",
+    "before_sha256": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+    "after_sha256": "af7338a601f565564900b7e1526fbb269636a8bf5d05bf44c6814a4c5a05df3f",
+    "updated_pin_groups": [
+      "source_sha256",
+      "frozen_inputs"
+    ],
+    "old_manifest_sha256": "cfce73b1db5954b53f5392566262dd6041e1552577827e21beacc46f312774f3",
+    "scope": "only replace the declaration-only embedded VM initializer with the existing target-bound ANM member call and remove its unused prototype",
+    "private_candidate": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-initializer/Player.cpp",
+    "new_exact_credit": false
+  },
+  "selected_seventeen_tu_before_after": {
+    "stage_guards": 11,
+    "stage_exact_bytes": 987,
+    "stage_fields": 36,
+    "vm_core_initialize_exact_bytes": 273,
+    "total_guards": 12,
+    "total_bytes": 1260,
+    "total_fields": 36,
+    "new_exact_credit": false
+  },
+  "private_to_maintained": {
+    "complete_public_owned_functions": 366,
+    "all_extents_and_raw_bytes_equal": true
+  },
+  "canonical_chain": {
+    "cold_command": "nice -n 10 scripts/repo-python scripts/build-match-unit.py --unit chain-run-calc",
+    "cold_session": 62982,
+    "exit_code": 0,
+    "game_source_tus": 14,
+    "selected_units": [
+      "chain-run-calc",
+      "chain-run-draw",
+      "chain-add-calc",
+      "chain-add-draw"
+    ],
+    "all_exact": true,
+    "bytes": 838,
+    "all_linked_fields": 58,
+    "original_recipe_preserved": true,
+    "source_and_artifact_hashes_rechecked": true,
+    "previous_canonical_witness": "build/gpt-6.1-sol/stage-initializer-formals-20261023/prior-chain-canonical"
+  },
+  "experimental_seventeen_tu_chain_scope": "four contracts reject on complete extents in both before/after images; not passes. Canonical14 replay above is the accepted-context preservation check.",
+  "preparation_recovery": "initial expanded guard metadata inherited an inapplicable support profile and implicit primary PDB owner; corrected without rebuilding, then true full-extent results recorded",
+  "checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-target.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --execute (session27930)",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py --require-target",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/report-reconstruction-status.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/check-doc-hygiene.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "named_shared_initializer_calls": 27,
+  "cleanup": {
+    "native_count": 81,
+    "native_bytes": 3964133,
+    "snapshot_count": 160,
+    "snapshot_bytes": 2470106,
+    "verified_before_removal": true
+  },
+  "preserved_pin_groups": {
+    "source_sha256": 108,
+    "frozen_inputs": 373,
+    "baseline_source_sha256": 32,
+    "baseline_artifact_sha256": 19,
+    "unrelated_untracked": 9,
+    "stage_inputs": 21,
+    "stage_canonical_artifacts": 16,
+    "old_stage_artifacts": 18
+  },
+  "all_protected_pins_verified_except_explicit_source_transition": true,
+  "canonical_recipes_or_exact_ledgers_changed": false,
+  "full_ci": {
+    "run": false,
+    "reason": "focused affected parent/binding checks plus one existing canonical cold context under operator instruction"
+  },
+  "whole_windows_product": "open",
+  "game_runtime": "not validated",
+  "semantic_and_port": "not started",
+  "completion": "reconstruction active-incomplete"
+}

@@ -1,16 +1,15 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-23 after resuming the reconstruction goal from the cleanup
-checkpoint. Reconstruction remains **active-incomplete**. Six subsequent Stage
-controls are complete; none is adopted. Maintained source, headers, compiler
-profiles, recipes and exact ledgers stay unchanged. Checkpoints use
-`gpt-6.1-sol: ...`.
+Updated 2026-10-23. Reconstruction remains **active-incomplete**. Player startup
+now binds its VM call to the real shared ANM initializer. Headers, layouts,
+compiler profiles, canonical recipes and exact ledgers are unchanged. Checkpoints
+use `gpt-6.1-sol: ...`.
 
 ## Current state
 
-Latest source checkpoint: `2b03d2b`, Stage opcode8 packed-color write scheduling.
-Cleanup checkpoint fd366f2 recovered four integer controls. The subsequent
-six vector/lifetime/definition-visibility controls are now complete and neutral.
+Latest maintained change: [Player's real VM binding](evidence/player-initializer-binding/README.md).
+The previous byte-improving source checkpoint is2b03d2b, Stage packed-color
+scheduling. Cleanup fd366f2 and six neutral Stage controls0902294 remain recorded.
 
 | Owner / metric | Maintained state |
 | --- | --- |
@@ -18,6 +17,7 @@ six vector/lifetime/definition-visibility controls are now complete and neutral.
 | ANM ExecuteScript / target 9964 | 9964 bytes; nonexact; case 7541/7995, 90/92 target-sized groups, gap 2 |
 | Enemy dispatcher / target 14416 | 14336 bytes; frame 2C4; 181 selectors/108 groups; case 3245/11128, 45 target-sized groups, gap 328 |
 | StageExecuteScript / target 1868 | 1868 bytes; frame 8C; nonexact; case 1443/1619, 13/15 target-sized groups, gap 2 |
+| PlayerInitialize / target 1435 |1116 bytes/nonexact in the 17-TU graph; now calls real shared VM initializer; structural98/1267 is diagnostic only|
 | Authored / source / exact | 734 functions/273579 bytes; source 613/247945; exact 409/74716 |
 | Source-present nonexact / absent | 204 / 121 authored functions |
 | Overall exact | 1252 functions/141647 bytes; 1097 source mappings |
@@ -27,7 +27,20 @@ Case scores and structural diagnostics grant no exactness credit. Live ledger
 counts are in [PROGRESS.md](PROGRESS.md). There are 1776 reviewed candidates,
 518 excluded origins and 524 indeterminate origins; the denominator remains open.
 
-## Latest Stage work and next route
+## Latest Player/Stage work and next route
+
+Target 0x4248B1 in the 1435-byte Player initializer directly calls 0x404F30 with VM at
+Player+0x14, resource at +0x10 and script 0. Player.cpp now uses the existing full ANM
+boundary view and removes its declaration-only helper. In the measured graph,
+one unresolved placeholder disappears; private and maintained compilations have
+identical raw bytes across all 366 complete public PDB owners. Player remains
+1116 bytes; masked positions 126->98/1267 do not establish target improvement.
+This is a call-identity/source-closure repair, with no new exact credit.
+
+Next work may attack the remaining real dependency bindings in this large Player
+initializer, or rotate to another large owner. Do not replace that priority with
+small-function closure. Keep the before/after 17-TU carriers under
+`build/gpt-6.1-sol/stage-initializer-formals-20261023` as identified in the evidence.
 
 The adopted [color view](evidence/stage-color-storage/README.md) changes exactly
 nine raw bytes: five target repairs, zero target-equal losses, four still
@@ -55,11 +68,16 @@ Continue the large-owner exact work, with Stage 403C80/1868 as the current route
   definition into Stage's TU is equal after 3 independently bound fields. All
   retain 11 guards 987/all 36 and all 15 table entries. Shared vectors, explicit
   component fills and named VM operands did not repair register allocation.
-- Native VM initializer remains 200 versus target 202, with EDX versus target ESI
-  receiver. A consistent formal-argument-order control is untested; preserve its
-  body and every compiled declaration/call, without forcing private registers.
-  Alternatively rotate to another large owner. These are hypotheses, not
-  established original signatures or translation units.
+- Member argument reversal is now tested across consistent snapshots/all nine
+  compiled TUs: complete Stage and initializer bytes are neutral. Ordinary free/
+  cdecl emits Stage 1872 and initializer198/plain RET and is rejected. Adding all
+  then-maintained 26 named calls/16 fresh TUs and the corrected Player call/17 TUs
+  leaves Stage baseline-equal after 13 independently bound address fields.
+- Native VM initializer remains 200 versus target 202, with EDX versus targetESI
+  receiver. Current audit confirms 28 direct calls in11 reviewed owners, replacing
+  the old 23/eight-owner inventory. Source now has 27 explicit member calls; the
+  unmapped 0x404450 owner and two unowned raw E8 hints keep caller closure open.
+  These counts prove no original signature, class, translation unit or runtime.
 - Do not repeat those six forms, the four integer controls, low-byte color
   snapshot, six spline copies or signed channel snapshots. Preserve the complete
   parent, physical group order and strict local offsets. Establish exhaustive
@@ -125,9 +143,13 @@ source milestones. Authorized checkpoints are committed and pushed, with remote
 HEAD verified. Original class/TU/flags, data ownership and product/runtime remain
 independent unknowns.
 
-Latest packet freshly replays 11 Stage guards 987/all 36 in the unchanged canonical
-image after seven actual game compiles/six experimental links. Target identity,
-executed toolchain, Ghidra, tracking, progress, documentation and whitespace pass.
-All 90 neutral native files/4058006 bytes are hash-verified and removed; compact
-inputs/results remain. No full CI, source adoption or exact gain. See the latest
-evidence packet for completed scope; the earlier cleanup receipt stays historical.
+The 17-TU before/after graphs each pass 11 Stage guards 987/all 36 and the existing
+273-byte VM initializer:12 whole checks/1260/all 36. Four Chain contracts reject
+there at unequal complete extents in both images; their canonical 14-TU current-
+source cold separately passes all 4/838/all 58 in the original recipe. No partial
+extent is accepted. Preserve its archived previous carrier. The unchanged
+Stage/Enemy canonical witnesses, nine D3D files and prior useful candidates remain.
+Cleanup removes 81 superseded native files/3964133 bytes plus 160 unchanged,
+uncompiled snapshot copies/2470106 bytes. See the latest evidence packet for
+checks and retained carriers. No full CI or runtime validation is claimed;
+exact counts stay unchanged.

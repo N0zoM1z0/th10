@@ -1,0 +1,1625 @@
+{
+  "removed_native_files": [
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/source.map",
+      "sha256": "bf3364163ec72045aa11a93cf572d1a34405c9802722ea865ff039d37280386d",
+      "bytes": 59421,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/support-02-Chain.ltcg.obj",
+      "sha256": "a09b7fdcfa3344321dd99a471c42f31d3df64e15460d4952c055e66930afe39e",
+      "bytes": 37443,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/support-05-AnmVmId.ltcg.obj",
+      "sha256": "1a9ca085fd28c7b8ec14cdbc65fae5175ad2e8fe52bd66d0c83ce11b4f2b27c5",
+      "bytes": 14186,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/source.exe",
+      "sha256": "e031e5b5e8c66c2e53e0fbe157dda9a082abb12b6cb3e570978d842569685107",
+      "bytes": 77824,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/source.ltcg.obj",
+      "sha256": "6f9bdceb8c941410c79a800a6fe94be8848d780edb7361fc706ac9d6a2b8d471",
+      "bytes": 43054,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "bytes": 167,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/support-06-RandomMath.ltcg.obj",
+      "sha256": "0127a6cf34cc241c7b1ed01985511deda4ec1c6752f0ea09dd1f9ec1fbc25b62",
+      "bytes": 4256,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/support-01-StageDraw.ltcg.obj",
+      "sha256": "6caece7c66f710ef1f4afcdf34e846524203a2b0b968ad9b1e7e43d5f5d36ac2",
+      "bytes": 26441,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "3412c83a814b8678c87ed8372f894cdccbb7202bd282100f1b734f76a845a2a6",
+      "bytes": 22552,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/support-07-FileSystem.ltcg.obj",
+      "sha256": "9fa7f8c0de187e2d92942887403a376c1172c38b9add8b64f70fd71295df7cbc",
+      "bytes": 33926,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/link-aliases.rsp",
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f",
+      "bytes": 10086,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/link-anchors.obj",
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+      "bytes": 6758,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "9de24567557edf304ddda4cf0241f230ff15132cdac57444ec1ddd788a78341f",
+      "bytes": 11432,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/source.pdb",
+      "sha256": "7b4c673c3e993ec31f8a03ed595a4d3f4ef44b481bef7aacc64cc8adb56f48e8",
+      "bytes": 84992,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/support-03-AnmManager.ltcg.obj",
+      "sha256": "e7ba6cf811234cec6cc2b7c3d50a96a2978b296d39e87537eaa3cd541dc6c6f2",
+      "bytes": 248704,
+      "trial": "member-script-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/source.map",
+      "sha256": "77e8bda800e204096ce730f9d5fd595ddf74c331ab7f901c80f01d97ffa40bf3",
+      "bytes": 59422,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/support-02-Chain.ltcg.obj",
+      "sha256": "f5978a91c0b45f97f6cc02bcd376f3064301644ebb72c8ba82ecf9b31ece01e9",
+      "bytes": 37383,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/support-05-AnmVmId.ltcg.obj",
+      "sha256": "49eb9628d6d34ba7da3c75ddd00f3fd0bf9c76d9630c8533843e555d829e0f1c",
+      "bytes": 14138,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/source.exe",
+      "sha256": "4c2e0c16899255dccda6a8177c496fda9abdb5a375471e8653df93be5135879c",
+      "bytes": 77824,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/source.ltcg.obj",
+      "sha256": "26a813ddfc02d927e0f97d0cc109dd04aee5cdabc9a16995ef3fbe9c353b2a12",
+      "bytes": 42998,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "bytes": 167,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/support-06-RandomMath.ltcg.obj",
+      "sha256": "61672fa1e1f8a96633eafecb97fe3fdcad5fa359ef2a09e2754c1ae9533de142",
+      "bytes": 4226,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/support-01-StageDraw.ltcg.obj",
+      "sha256": "86b3d293108d28e3f27daf760fb9f9d3ebdcceea33b1a09749240af763affea3",
+      "bytes": 26387,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "baa1fed67aa3f58afb3617aab91bcdf70b0aee8391a77e31584251b502d74001",
+      "bytes": 22480,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/support-07-FileSystem.ltcg.obj",
+      "sha256": "30ab7784116c61945b18a060975ca6c70ab927eda6a34e1e15a7778d0e14cb2c",
+      "bytes": 33878,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/link-aliases.rsp",
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f",
+      "bytes": 10086,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/link-anchors.obj",
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+      "bytes": 6758,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "f16b82eb6f551d77b0c3982ff4f1de14afb24ac9dfd629d18594e5beda983b8a",
+      "bytes": 11384,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/source.pdb",
+      "sha256": "d8e7cac10d3eec292e34eb87ff0672b3b5f5b1ef5dcc096ef96a264963735801",
+      "bytes": 84992,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/support-03-AnmManager.ltcg.obj",
+      "sha256": "bf38a82325312649e112428be14e7d50cf13a7f5244c242689c7347f6b204aa2",
+      "bytes": 248622,
+      "trial": "free-vm-first"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/source.map",
+      "sha256": "69cf079da541b1fadcc94bf7f08c4e0cba27bc0a106543a3107f40ca404e5278",
+      "bytes": 89065,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-02-Chain.ltcg.obj",
+      "sha256": "2fcc275dfcc05a65d5ab6d5c2958a2f8b6d19122a58122dff054ee5acb6f1d47",
+      "bytes": 36833,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-05-AnmVmId.ltcg.obj",
+      "sha256": "a6f704c1f7d3c1236b418d0870420a843c945e0efe3d64c493a68c4135098e50",
+      "bytes": 13730,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/link-attempt-2.log",
+      "sha256": "4bbe1405c1e7ce94d08458da5a708470243b725e9f9cfccdbf75a1b320ae476c",
+      "bytes": 862,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/source.exe",
+      "sha256": "cec058b5b779b87d08424ebfb0fd6c67ef321ea9834f6aea59811ad9a67f7df8",
+      "bytes": 114688,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/source.ltcg.obj",
+      "sha256": "cfd1cac1b5ad5fc7383b10545d7c10dd62d419ac018723db6468696c4950366e",
+      "bytes": 42521,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-06-RandomMath.ltcg.obj",
+      "sha256": "3fb7df46c9577684d46a4be1332980857e207e409b06179ba5258790672c05e8",
+      "bytes": 4031,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/link-attempt-3.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "bytes": 167,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-01-StageDraw.ltcg.obj",
+      "sha256": "862baddef74f9aecd463ae895e760d7abde61029f09b74cdc9197b19e74a9f09",
+      "bytes": 25908,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "dd1761545a6da9454e58b6eda96dbc29e569b2e8d7fbb2c9e75cb6724cbf71a8",
+      "bytes": 21788,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-11-ItemManager.ltcg.obj",
+      "sha256": "5afd49a764c15d1fc762846d6fac9ecaea0f15c17e6edf3db549dd39f58771cf",
+      "bytes": 60035,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-07-FileSystem.ltcg.obj",
+      "sha256": "487fb38b0db5c482fc1101dfcf09387abb676c895383c179543b2bab3bd1e2d0",
+      "bytes": 33470,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/link-attempt-1.log",
+      "sha256": "a33000b0c942f711d4dbdc41a73c8d9267242983b5004d24cb95f38cbe0a2616",
+      "bytes": 34977,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-13-LaserType1.ltcg.obj",
+      "sha256": "025e79fd390da61bba30f2a305e4ae5046cdcdc9fd30a79ba0c50d28ecd91b93",
+      "bytes": 20231,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-08-EnemyEclDispatcher.ltcg.obj",
+      "sha256": "253a06f60c13cdeacc3638b6406315aa259bf32a49ffdaa19d9571aa75a89f82",
+      "bytes": 157718,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-09-BulletManager.ltcg.obj",
+      "sha256": "05d40e9aab8228647c1fefbdf887ba93dcee08bd31192e37db5c5b13b73db847",
+      "bytes": 56684,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-12-LaserInitialize.ltcg.obj",
+      "sha256": "86a1103e125382aca2e8c26efaf723fa7a6686a103026ab3152c6c2c70aab0b2",
+      "bytes": 31396,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-10-BulletTransform.ltcg.obj",
+      "sha256": "be2a1741a7a278a0bd929faccddf06197b01cf49fb32528400a8e4a6471ad093",
+      "bytes": 19150,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/link-aliases.rsp",
+      "sha256": "4474bc6aa7825002e0298d6b984fad96e15428f95421470e4f6aca882a589d02",
+      "bytes": 17498,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/link-anchors.obj",
+      "sha256": "c3866e33897d305123766b638ab4b634627017c68c6558ec43abaaf170dd6830",
+      "bytes": 11026,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/link-anchors.c",
+      "sha256": "80bfebfcbfad5e9cf9cf8c9184c413528775b60e0a9f0186c55a24ff3c19247f",
+      "bytes": 11459,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-14-LaserScript.ltcg.obj",
+      "sha256": "8a5088d3a2cd7bf1864e31c1387fcd61cb816a0b55427e174126e1ee0e31fac1",
+      "bytes": 33824,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "46c9510026f4c3c7ba9bce0c1259e3b94bfd907425efab4b5ff613fbb54484d5",
+      "bytes": 10976,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/source.pdb",
+      "sha256": "f2e85196b13003e0a6d691f3e72696eda8ab49f998bc754dda08ee355acdbfa1",
+      "bytes": 117760,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/all-maintained-callers/support-03-AnmManager.ltcg.obj",
+      "sha256": "76e9575c6afed5d2083826ba6baab4bca262d35bde733d0a8539d6caa729231e",
+      "bytes": 247940,
+      "trial": "all-maintained-callers"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/source.map",
+      "sha256": "f3aa269357c2b05a72713985a2b76a7d3af0d0f0426bcd7af9a527964c56f951",
+      "bytes": 106567,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-02-Chain.ltcg.obj",
+      "sha256": "2fcc275dfcc05a65d5ab6d5c2958a2f8b6d19122a58122dff054ee5acb6f1d47",
+      "bytes": 36833,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-05-AnmVmId.ltcg.obj",
+      "sha256": "a6f704c1f7d3c1236b418d0870420a843c945e0efe3d64c493a68c4135098e50",
+      "bytes": 13730,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/link-attempt-2.log",
+      "sha256": "08d719f357e205634d3790faeffc70c57e3379299f9508a3b04a4a8539b572fd",
+      "bytes": 854,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/source.exe",
+      "sha256": "07504804912228541ed2537eaa5ea0c77defe0b27860eb17a79d5c956d31697c",
+      "bytes": 131072,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/source.ltcg.obj",
+      "sha256": "cfd1cac1b5ad5fc7383b10545d7c10dd62d419ac018723db6468696c4950366e",
+      "bytes": 42521,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-06-RandomMath.ltcg.obj",
+      "sha256": "3fb7df46c9577684d46a4be1332980857e207e409b06179ba5258790672c05e8",
+      "bytes": 4031,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/link-attempt-3.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "bytes": 167,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-01-StageDraw.ltcg.obj",
+      "sha256": "862baddef74f9aecd463ae895e760d7abde61029f09b74cdc9197b19e74a9f09",
+      "bytes": 25908,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "dd1761545a6da9454e58b6eda96dbc29e569b2e8d7fbb2c9e75cb6724cbf71a8",
+      "bytes": 21788,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-11-ItemManager.ltcg.obj",
+      "sha256": "5afd49a764c15d1fc762846d6fac9ecaea0f15c17e6edf3db549dd39f58771cf",
+      "bytes": 60035,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-07-FileSystem.ltcg.obj",
+      "sha256": "487fb38b0db5c482fc1101dfcf09387abb676c895383c179543b2bab3bd1e2d0",
+      "bytes": 33470,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/link-attempt-1.log",
+      "sha256": "a5b299c9d58885e2f5eb7ca2acc6307b73882eade700b6a6a15dd97af7ff3ad4",
+      "bytes": 46628,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-13-LaserType1.ltcg.obj",
+      "sha256": "025e79fd390da61bba30f2a305e4ae5046cdcdc9fd30a79ba0c50d28ecd91b93",
+      "bytes": 20231,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-08-EnemyEclDispatcher.ltcg.obj",
+      "sha256": "253a06f60c13cdeacc3638b6406315aa259bf32a49ffdaa19d9571aa75a89f82",
+      "bytes": 157718,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-09-BulletManager.ltcg.obj",
+      "sha256": "05d40e9aab8228647c1fefbdf887ba93dcee08bd31192e37db5c5b13b73db847",
+      "bytes": 56684,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-12-LaserInitialize.ltcg.obj",
+      "sha256": "86a1103e125382aca2e8c26efaf723fa7a6686a103026ab3152c6c2c70aab0b2",
+      "bytes": 31396,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-10-BulletTransform.ltcg.obj",
+      "sha256": "be2a1741a7a278a0bd929faccddf06197b01cf49fb32528400a8e4a6471ad093",
+      "bytes": 19150,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/link-aliases.rsp",
+      "sha256": "38b5b028c20a6dc6e7fb149b03c50ef4526a09f6ec620b5dff8ec287b8415cc0",
+      "bytes": 23559,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/link-anchors.obj",
+      "sha256": "307ecc679cbe874a46631c2e38b3c2dc82f1fdf9211fb5ace9275211e77dcb7f",
+      "bytes": 14243,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/link-anchors.c",
+      "sha256": "e22974be431b10de428431600ee8fc61adfb4bb73ab9aba3bd9aa36e22d6f812",
+      "bytes": 15047,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-15-Player.ltcg.obj",
+      "sha256": "dde885d2220e4736b36d4047191a6a83f4a79bb2aefa22eaee6a958d3345586f",
+      "bytes": 99893,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-14-LaserScript.ltcg.obj",
+      "sha256": "8a5088d3a2cd7bf1864e31c1387fcd61cb816a0b55427e174126e1ee0e31fac1",
+      "bytes": 33824,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "46c9510026f4c3c7ba9bce0c1259e3b94bfd907425efab4b5ff613fbb54484d5",
+      "bytes": 10976,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/source.pdb",
+      "sha256": "6886a8c0cc186f0679e070c50ec66337ded389bb18730ba3932df7b151c49925",
+      "bytes": 134144,
+      "trial": "player-real-17"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-initializer-formals-20261023/player-real-17/support-03-AnmManager.ltcg.obj",
+      "sha256": "76e9575c6afed5d2083826ba6baab4bca262d35bde733d0a8539d6caa729231e",
+      "bytes": 247940,
+      "trial": "player-real-17"
+    }
+  ],
+  "removed_snapshot_copies": [
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Gui.cpp",
+      "bytes": 91239,
+      "sha256": "acec2fe6333f21a65066fa1556512ab67cadeae247e3e2798f9a984bd8c20779",
+      "original_source": "src/Gui.cpp",
+      "original_before_source_sha256": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Ending.cpp",
+      "bytes": 16475,
+      "sha256": "c51c8be4bcf55123bfb52335a0ef701faa59b568143b6023c75d05f31ce168d1",
+      "original_source": "src/Ending.cpp",
+      "original_before_source_sha256": "dac885626c1100f6df8b3fe5df5ab71584556ff0728804b44aec3a0fd2982b78"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Player.hpp",
+      "bytes": 18886,
+      "sha256": "b454c544d948181408c7e1ddabafe37c8e017abd17efb3b5410a6182cd7ed3c7",
+      "original_source": "src/Player.hpp",
+      "original_before_source_sha256": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/FrontEnd.hpp",
+      "bytes": 11342,
+      "sha256": "ffe99f6ff4892edf5de403b25b96fdeb4069c8734f288c6d9185f9fcffd718b9",
+      "original_source": "src/FrontEnd.hpp",
+      "original_before_source_sha256": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EnemyLaser.hpp",
+      "bytes": 8336,
+      "sha256": "3471d8e6748ba2e8c126e9d8459dae36dc83e29d439472ec7a8fe542c89bccb7",
+      "original_source": "src/EnemyLaser.hpp",
+      "original_before_source_sha256": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Lzss.cpp",
+      "bytes": 7386,
+      "sha256": "d960b29e80680347df50c10be31b9af2e12b5d407d5f1dbec0661d0a472f84df",
+      "original_source": "src/Lzss.cpp",
+      "original_before_source_sha256": "6a066b4eac947b11cd120a3daf5f43a659995af4048ea58836650b30657d6aaa"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GameEffectUpdate.hpp",
+      "bytes": 644,
+      "sha256": "13e26156e858c767eeb13f708ec8d3dbaa94582ecf218c391d817c8365249e83",
+      "original_source": "src/GameEffectUpdate.hpp",
+      "original_before_source_sha256": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EnemyLaser.cpp",
+      "bytes": 30832,
+      "sha256": "8a2819d200f38303dc6ed40d0e4cb2048bfa289e0e1b2d03558c973cc1bcc5f7",
+      "original_source": "src/EnemyLaser.cpp",
+      "original_before_source_sha256": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/LaserLine.cpp",
+      "bytes": 7229,
+      "sha256": "001ad4d1e0b6fe7f13e659b9c3e56a36d1c60f1ca8075241b331e9529b6bad03",
+      "original_source": "src/LaserLine.cpp",
+      "original_before_source_sha256": "001ad4d1e0b6fe7f13e659b9c3e56a36d1c60f1ca8075241b331e9529b6bad03"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/InputPolling.hpp",
+      "bytes": 3270,
+      "sha256": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+      "original_source": "src/InputPolling.hpp",
+      "original_before_source_sha256": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EnemyLaserType1.hpp",
+      "bytes": 1690,
+      "sha256": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b",
+      "original_source": "src/EnemyLaserType1.hpp",
+      "original_before_source_sha256": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/DecomphelpLeafAccessors.cpp",
+      "bytes": 253666,
+      "sha256": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+      "original_source": "src/DecomphelpLeafAccessors.cpp",
+      "original_before_source_sha256": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ItemManager.hpp",
+      "bytes": 3121,
+      "sha256": "2bcf83bf36cc4522b74432e7be60de767bcdee6690af415cdf1d9de112906c9c",
+      "original_source": "src/ItemManager.hpp",
+      "original_before_source_sha256": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/DecomphelpLeafTypes.hpp",
+      "bytes": 1308,
+      "sha256": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+      "original_source": "src/DecomphelpLeafTypes.hpp",
+      "original_before_source_sha256": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ScriptViewerLifecycle.cpp",
+      "bytes": 4176,
+      "sha256": "08f91480ad45fbfc9f3519d0869bacca4055a3b66b595fb96d196f1aff980916",
+      "original_source": "src/ScriptViewerLifecycle.cpp",
+      "original_before_source_sha256": "08f91480ad45fbfc9f3519d0869bacca4055a3b66b595fb96d196f1aff980916"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ReplayManager.cpp",
+      "bytes": 28559,
+      "sha256": "76dc6be32508fea499a566e0b220c529e0be6c13f6f20a28763717adfeabe646",
+      "original_source": "src/ReplayManager.cpp",
+      "original_before_source_sha256": "82c21944fad4b21c03caae4048076b86720fac3e36af626cf42a51f0ea53d449"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EclVm.hpp",
+      "bytes": 6188,
+      "sha256": "8ea144a4069b89baeb3c538cc0bb98de86d83fc141f8788500b08c9cfc38acaa",
+      "original_source": "src/EclVm.hpp",
+      "original_before_source_sha256": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ScriptViewerOwners.hpp",
+      "bytes": 1628,
+      "sha256": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+      "original_source": "src/ScriptViewerOwners.hpp",
+      "original_before_source_sha256": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/LaserClear.cpp",
+      "bytes": 1371,
+      "sha256": "2fd57dbbad9b1d64c5d3bce55abfb285674c656290a6dfd53dcd9955af8c2236",
+      "original_source": "src/LaserClear.cpp",
+      "original_before_source_sha256": "2fd57dbbad9b1d64c5d3bce55abfb285674c656290a6dfd53dcd9955af8c2236"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/TransitionEffect.cpp",
+      "bytes": 13833,
+      "sha256": "45136f443eb766031421ab539878232e66449ccc1a601c5045f798228eb98c37",
+      "original_source": "src/TransitionEffect.cpp",
+      "original_before_source_sha256": "57475c2b9ef35961ddad413ce5479e3c415b99fbd1af9742dab85796cc6f0e10"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Decompress.cpp",
+      "bytes": 3230,
+      "sha256": "bb26102d2b0db297123e7302a7110cb6d320243b8422c269468464d3566c10cc",
+      "original_source": "src/Decompress.cpp",
+      "original_before_source_sha256": "bb26102d2b0db297123e7302a7110cb6d320243b8422c269468464d3566c10cc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GameErrorContext.cpp",
+      "bytes": 2177,
+      "sha256": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+      "original_source": "src/GameErrorContext.cpp",
+      "original_before_source_sha256": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EnemyMotion.cpp",
+      "bytes": 348,
+      "sha256": "c936446223176d9651f21608d7c3b080e8f9f0f5bbe06b803410a7d8d990fa83",
+      "original_source": "src/EnemyMotion.cpp",
+      "original_before_source_sha256": "c936446223176d9651f21608d7c3b080e8f9f0f5bbe06b803410a7d8d990fa83"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GameScoreState.hpp",
+      "bytes": 1342,
+      "sha256": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "original_source": "src/GameScoreState.hpp",
+      "original_before_source_sha256": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GuiScore.hpp",
+      "bytes": 559,
+      "sha256": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "original_source": "src/GuiScore.hpp",
+      "original_before_source_sha256": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Enemy.cpp",
+      "bytes": 68643,
+      "sha256": "ca00c0b9febca02ffd27f609da17b8103276e3860421354371941ab3785d03bf",
+      "original_source": "src/Enemy.cpp",
+      "original_before_source_sha256": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/LaserType1Clear.cpp",
+      "bytes": 2256,
+      "sha256": "11ef7e2086ff24db4cdd66eed1b96ff1a2051ae7b7734398a2be2ee57604366c",
+      "original_source": "src/LaserType1Clear.cpp",
+      "original_before_source_sha256": "11ef7e2086ff24db4cdd66eed1b96ff1a2051ae7b7734398a2be2ee57604366c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ResFile.hpp",
+      "bytes": 1102,
+      "sha256": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+      "original_source": "src/ResFile.hpp",
+      "original_before_source_sha256": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GuiMessage.cpp",
+      "bytes": 4271,
+      "sha256": "5475cb70e8a3c876069e2c73ee899f333391b4f516f3db46765da0d1f82cf9c6",
+      "original_source": "src/GuiMessage.cpp",
+      "original_before_source_sha256": "c53ed5ef974a296ecd83e949a50ad48d9f1d7e12b621680849dd465965bde4c6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Sound.cpp",
+      "bytes": 33801,
+      "sha256": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+      "original_source": "src/Sound.cpp",
+      "original_before_source_sha256": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ResultMenu.hpp",
+      "bytes": 2026,
+      "sha256": "9814e4ae728b0ad5d59aa071fa5a6a2d3d2a4596c9900bbfc6417a5f7efd8ffe",
+      "original_source": "src/ResultMenu.hpp",
+      "original_before_source_sha256": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/AnmRectangle.hpp",
+      "bytes": 867,
+      "sha256": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
+      "original_source": "src/AnmRectangle.hpp",
+      "original_before_source_sha256": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EnemyCallback.cpp",
+      "bytes": 4753,
+      "sha256": "062509a99d5274c47b899412d33b9b7d50a2aaa6e1e5df13c6cfd1baf3f368e4",
+      "original_source": "src/EnemyCallback.cpp",
+      "original_before_source_sha256": "8d96765576c94e631db6c76178afa4c556b9a8d40cadb5f108f9cd5297103e4d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Main.cpp",
+      "bytes": 51405,
+      "sha256": "84eef66afe9703a635df2879b43b324692bcfca6e81d7e00a4c75324c04487e6",
+      "original_source": "src/Main.cpp",
+      "original_before_source_sha256": "9cce8257321bde23fdb88b6f42f7412a3b6a425a138f7bda0482796fd300cd8e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GameStageDescriptor.hpp",
+      "bytes": 697,
+      "sha256": "b9e03884d82ee00b113e821f835e5c017c7a861daf163aa858d288d33e5234de",
+      "original_source": "src/GameStageDescriptor.hpp",
+      "original_before_source_sha256": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GameManager.cpp",
+      "bytes": 27030,
+      "sha256": "bfa297a70c8d0f5208209619b0692a25fd99ec3ea0327ac59ad9c5176ed9c76b",
+      "original_source": "src/GameManager.cpp",
+      "original_before_source_sha256": "f4d213bb89e23d51114578720f299a53800c782516af441294733f8c919762bb"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/BulletLifecycle.cpp",
+      "bytes": 490,
+      "sha256": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243",
+      "original_source": "src/BulletLifecycle.cpp",
+      "original_before_source_sha256": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ScriptViewerWorker.cpp",
+      "bytes": 1232,
+      "sha256": "a1d103a8c3d5770d9902b0b520f484720e6a4be9e83dfe79b5a218e619e338a9",
+      "original_source": "src/ScriptViewerWorker.cpp",
+      "original_before_source_sha256": "a1d103a8c3d5770d9902b0b520f484720e6a4be9e83dfe79b5a218e619e338a9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ScriptViewer.cpp",
+      "bytes": 14627,
+      "sha256": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7",
+      "original_source": "src/ScriptViewer.cpp",
+      "original_before_source_sha256": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GameStatistics.hpp",
+      "bytes": 3595,
+      "sha256": "a95677a1fbd629d1472a29cf078e86896fc3eb23490eaff471e6b0db2abf988d",
+      "original_source": "src/GameStatistics.hpp",
+      "original_before_source_sha256": "ae615e9a3982449e970883e2409ca1ef045192086ca9a84ad0ab94aadc6a20b6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ReplayChain.hpp",
+      "bytes": 1347,
+      "sha256": "5958761d7a0bdd08c9db770778f1e2fbe687267348f18c7b8a74b57f35539361",
+      "original_source": "src/ReplayChain.hpp",
+      "original_before_source_sha256": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ZWave.cpp",
+      "bytes": 24033,
+      "sha256": "bdd42d602a9f84992d2cd2e5d4c40be5704fb59c1d9f86444c55d0162bffe4ea",
+      "original_source": "src/ZWave.cpp",
+      "original_before_source_sha256": "8a0eafe895d9e4d7feb2b768907379890e96168a4bbcd85743791aeeab0935f3"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/TextRenderer.hpp",
+      "bytes": 2123,
+      "sha256": "1ef663d5b3c5e8d2b2e1abfc1090aea72a2fc56fba07228b56808f5a1a272efa",
+      "original_source": "src/TextRenderer.hpp",
+      "original_before_source_sha256": "1ef663d5b3c5e8d2b2e1abfc1090aea72a2fc56fba07228b56808f5a1a272efa"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EnemyPrimaryResources.hpp",
+      "bytes": 468,
+      "sha256": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "original_source": "src/EnemyPrimaryResources.hpp",
+      "original_before_source_sha256": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EnemySoundQueue.hpp",
+      "bytes": 633,
+      "sha256": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "original_source": "src/EnemySoundQueue.hpp",
+      "original_before_source_sha256": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/PlayerCollision.hpp",
+      "bytes": 538,
+      "sha256": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "original_source": "src/PlayerCollision.hpp",
+      "original_before_source_sha256": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ReplayManager.hpp",
+      "bytes": 8788,
+      "sha256": "c41163bcbe87f60485ef6f97e6b1299c18922b39b9a9229fd92bedc887c6bb73",
+      "original_source": "src/ReplayManager.hpp",
+      "original_before_source_sha256": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/PlayerCollision.cpp",
+      "bytes": 1855,
+      "sha256": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+      "original_source": "src/PlayerCollision.cpp",
+      "original_before_source_sha256": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Hint.hpp",
+      "bytes": 4483,
+      "sha256": "f6bc72bbb456806ec7ae18b45823113039c48797e540b7aec9afca24cadf5e06",
+      "original_source": "src/Hint.hpp",
+      "original_before_source_sha256": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ScriptViewer.hpp",
+      "bytes": 2602,
+      "sha256": "449f1118f9176099e1f7f8bb1bc3eca1705b15bf02addb7936907c0d4cf62d44",
+      "original_source": "src/ScriptViewer.hpp",
+      "original_before_source_sha256": "ef3f7a2120f99201dcd5790de136aa2f6782deb4b89e96e2ed5528bce3e7657e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Enemy.hpp",
+      "bytes": 20267,
+      "sha256": "adab18bef220415ef96cb96f279efae79269ebe991e58ce8ca6ff074f60709ae",
+      "original_source": "src/Enemy.hpp",
+      "original_before_source_sha256": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Decompress.hpp",
+      "bytes": 234,
+      "sha256": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+      "original_source": "src/Decompress.hpp",
+      "original_before_source_sha256": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Ending.hpp",
+      "bytes": 3115,
+      "sha256": "d59af33d9de1e9305bbd29da01d860edb814207c245d0310fe1e88707216836b",
+      "original_source": "src/Ending.hpp",
+      "original_before_source_sha256": "4f8e62b1d23eb8b2cf9074cba791d7212f04317792529e4ac0f32e83b99248f5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Midi.cpp",
+      "bytes": 11382,
+      "sha256": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+      "original_source": "src/Midi.cpp",
+      "original_before_source_sha256": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/AnmRectangle.cpp",
+      "bytes": 2724,
+      "sha256": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
+      "original_source": "src/AnmRectangle.cpp",
+      "original_before_source_sha256": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Lzss.hpp",
+      "bytes": 703,
+      "sha256": "64c116f6e2778b5cd6b76707e24c4a855d793b0735771f07aa8cebe9d12b4b23",
+      "original_source": "src/Lzss.hpp",
+      "original_before_source_sha256": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/InputState.hpp",
+      "bytes": 1603,
+      "sha256": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+      "original_source": "src/InputState.hpp",
+      "original_before_source_sha256": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/FrontEnd.cpp",
+      "bytes": 176189,
+      "sha256": "e704d39c1764501997046ca2ab083cb5a60f8e079e23d9b178a1270191202793",
+      "original_source": "src/FrontEnd.cpp",
+      "original_before_source_sha256": "6c972e54085aa3969d4eb4ab9e516bf35a87809ca762b87a098346fe27f010b7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/InputState.cpp",
+      "bytes": 823,
+      "sha256": "48c48082b17c994d83cdc49ec370f2adcc35fca27e87813d7714089a01321007",
+      "original_source": "src/InputState.cpp",
+      "original_before_source_sha256": "48c48082b17c994d83cdc49ec370f2adcc35fca27e87813d7714089a01321007"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EclVm.cpp",
+      "bytes": 37372,
+      "sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "original_source": "src/EclVm.cpp",
+      "original_before_source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/BulletManager.hpp",
+      "bytes": 10349,
+      "sha256": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+      "original_source": "src/BulletManager.hpp",
+      "original_before_source_sha256": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ResFile.cpp",
+      "bytes": 3221,
+      "sha256": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54",
+      "original_source": "src/ResFile.cpp",
+      "original_before_source_sha256": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Midi.hpp",
+      "bytes": 3991,
+      "sha256": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+      "original_source": "src/Midi.hpp",
+      "original_before_source_sha256": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/BulletRuntime.cpp",
+      "bytes": 5617,
+      "sha256": "91261504e04ed4fe77b01a65eda978a76db2247c319e83e6636f8080a884d804",
+      "original_source": "src/BulletRuntime.cpp",
+      "original_before_source_sha256": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/PbgArchive.cpp",
+      "bytes": 8063,
+      "sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+      "original_source": "src/PbgArchive.cpp",
+      "original_before_source_sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GameStatistics.cpp",
+      "bytes": 2246,
+      "sha256": "be4103039d2b683b062727b3b77cb6d918b01408623518df375038a9f16b24d6",
+      "original_source": "src/GameStatistics.cpp",
+      "original_before_source_sha256": "60eb7f57910372a78e6d6bba45c22af8e758bc5114aaa8bb00faf7a43eb1f13b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/InputPolling.cpp",
+      "bytes": 10023,
+      "sha256": "81fcea0ee72f07a3ce3188ae9591fae43f751ec6318e0065375159a0064ea31c",
+      "original_source": "src/InputPolling.cpp",
+      "original_before_source_sha256": "81fcea0ee72f07a3ce3188ae9591fae43f751ec6318e0065375159a0064ea31c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Player.cpp",
+      "bytes": 82095,
+      "sha256": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+      "original_source": "src/Player.cpp",
+      "original_before_source_sha256": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Gui.hpp",
+      "bytes": 6439,
+      "sha256": "bc6db49db4f9f3c180b1f3e89215cd2bb87bd767ea81539c77812afbfeb17361",
+      "original_source": "src/Gui.hpp",
+      "original_before_source_sha256": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/ReplayTimingSource.hpp",
+      "bytes": 688,
+      "sha256": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+      "original_source": "src/ReplayTimingSource.hpp",
+      "original_before_source_sha256": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EnemyLaserLine.hpp",
+      "bytes": 2624,
+      "sha256": "7fded6867889d41110085110f9ec39a75a7139488ce00475e881f7de27ef58dc",
+      "original_source": "src/EnemyLaserLine.hpp",
+      "original_before_source_sha256": "7fded6867889d41110085110f9ec39a75a7139488ce00475e881f7de27ef58dc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/GuiDraw.cpp",
+      "bytes": 4241,
+      "sha256": "f185a8f1c79ad0c451393ab0000caa40bd228e06895bd06426e5c8f3977f266a",
+      "original_source": "src/GuiDraw.cpp",
+      "original_before_source_sha256": "6ff7fd7d108ba74aa98ed5210592fbfc916a542f85fb12f5a75075c3ca3a03d7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/TextRenderer.cpp",
+      "bytes": 16068,
+      "sha256": "1a774fcace6aa5d5fc12b930d5f418e20bf0a90f6b8409e7ffcd664564b1676b",
+      "original_source": "src/TextRenderer.cpp",
+      "original_before_source_sha256": "1a774fcace6aa5d5fc12b930d5f418e20bf0a90f6b8409e7ffcd664564b1676b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/PbgFile.cpp",
+      "bytes": 3750,
+      "sha256": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+      "original_source": "src/PbgFile.cpp",
+      "original_before_source_sha256": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/SpellPanel.cpp",
+      "bytes": 4140,
+      "sha256": "9fa87f6a3a6447524af3d2136010a114cfb3ab9358866dbd28c0d560f6f7bb91",
+      "original_source": "src/SpellPanel.cpp",
+      "original_before_source_sha256": "9fa87f6a3a6447524af3d2136010a114cfb3ab9358866dbd28c0d560f6f7bb91"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/AnmInt3Scale.cpp",
+      "bytes": 296,
+      "sha256": "ca49c0dbbd437128ef0be850dfcb928873cbcce8ef996be350a4adfcdeedb154",
+      "original_source": "src/AnmInt3Scale.cpp",
+      "original_before_source_sha256": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/TransitionEffect.hpp",
+      "bytes": 1796,
+      "sha256": "8700cfb6b85d63c21497657a414c2496400efdf093d7ef13c2aac9e53fa60703",
+      "original_source": "src/TransitionEffect.hpp",
+      "original_before_source_sha256": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/EnemyGameState.hpp",
+      "bytes": 1840,
+      "sha256": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "original_source": "src/EnemyGameState.hpp",
+      "original_before_source_sha256": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/SoundFormat.hpp",
+      "bytes": 483,
+      "sha256": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+      "original_source": "src/SoundFormat.hpp",
+      "original_before_source_sha256": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/member-script-first/src/Hint.cpp",
+      "bytes": 30171,
+      "sha256": "e1539ed95de285c34b61ea0e40f4ffabdc3087d02f7c8bf96fc927ec1b2e0ec3",
+      "original_source": "src/Hint.cpp",
+      "original_before_source_sha256": "a6a6acb7418900f4a94e153843b3ed6a2b5675d197678eeadff50a54076c28a2"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Gui.cpp",
+      "bytes": 91239,
+      "sha256": "acec2fe6333f21a65066fa1556512ab67cadeae247e3e2798f9a984bd8c20779",
+      "original_source": "src/Gui.cpp",
+      "original_before_source_sha256": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Ending.cpp",
+      "bytes": 16475,
+      "sha256": "c51c8be4bcf55123bfb52335a0ef701faa59b568143b6023c75d05f31ce168d1",
+      "original_source": "src/Ending.cpp",
+      "original_before_source_sha256": "dac885626c1100f6df8b3fe5df5ab71584556ff0728804b44aec3a0fd2982b78"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Player.hpp",
+      "bytes": 18886,
+      "sha256": "b454c544d948181408c7e1ddabafe37c8e017abd17efb3b5410a6182cd7ed3c7",
+      "original_source": "src/Player.hpp",
+      "original_before_source_sha256": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/FrontEnd.hpp",
+      "bytes": 11342,
+      "sha256": "ffe99f6ff4892edf5de403b25b96fdeb4069c8734f288c6d9185f9fcffd718b9",
+      "original_source": "src/FrontEnd.hpp",
+      "original_before_source_sha256": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EnemyLaser.hpp",
+      "bytes": 8336,
+      "sha256": "3471d8e6748ba2e8c126e9d8459dae36dc83e29d439472ec7a8fe542c89bccb7",
+      "original_source": "src/EnemyLaser.hpp",
+      "original_before_source_sha256": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Lzss.cpp",
+      "bytes": 7386,
+      "sha256": "d960b29e80680347df50c10be31b9af2e12b5d407d5f1dbec0661d0a472f84df",
+      "original_source": "src/Lzss.cpp",
+      "original_before_source_sha256": "6a066b4eac947b11cd120a3daf5f43a659995af4048ea58836650b30657d6aaa"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GameEffectUpdate.hpp",
+      "bytes": 644,
+      "sha256": "13e26156e858c767eeb13f708ec8d3dbaa94582ecf218c391d817c8365249e83",
+      "original_source": "src/GameEffectUpdate.hpp",
+      "original_before_source_sha256": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EnemyLaser.cpp",
+      "bytes": 30832,
+      "sha256": "8a2819d200f38303dc6ed40d0e4cb2048bfa289e0e1b2d03558c973cc1bcc5f7",
+      "original_source": "src/EnemyLaser.cpp",
+      "original_before_source_sha256": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/LaserLine.cpp",
+      "bytes": 7229,
+      "sha256": "001ad4d1e0b6fe7f13e659b9c3e56a36d1c60f1ca8075241b331e9529b6bad03",
+      "original_source": "src/LaserLine.cpp",
+      "original_before_source_sha256": "001ad4d1e0b6fe7f13e659b9c3e56a36d1c60f1ca8075241b331e9529b6bad03"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/InputPolling.hpp",
+      "bytes": 3270,
+      "sha256": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+      "original_source": "src/InputPolling.hpp",
+      "original_before_source_sha256": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EnemyLaserType1.hpp",
+      "bytes": 1690,
+      "sha256": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b",
+      "original_source": "src/EnemyLaserType1.hpp",
+      "original_before_source_sha256": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/DecomphelpLeafAccessors.cpp",
+      "bytes": 253666,
+      "sha256": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+      "original_source": "src/DecomphelpLeafAccessors.cpp",
+      "original_before_source_sha256": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ItemManager.hpp",
+      "bytes": 3121,
+      "sha256": "2bcf83bf36cc4522b74432e7be60de767bcdee6690af415cdf1d9de112906c9c",
+      "original_source": "src/ItemManager.hpp",
+      "original_before_source_sha256": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/DecomphelpLeafTypes.hpp",
+      "bytes": 1308,
+      "sha256": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+      "original_source": "src/DecomphelpLeafTypes.hpp",
+      "original_before_source_sha256": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ScriptViewerLifecycle.cpp",
+      "bytes": 4176,
+      "sha256": "08f91480ad45fbfc9f3519d0869bacca4055a3b66b595fb96d196f1aff980916",
+      "original_source": "src/ScriptViewerLifecycle.cpp",
+      "original_before_source_sha256": "08f91480ad45fbfc9f3519d0869bacca4055a3b66b595fb96d196f1aff980916"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ReplayManager.cpp",
+      "bytes": 28559,
+      "sha256": "76dc6be32508fea499a566e0b220c529e0be6c13f6f20a28763717adfeabe646",
+      "original_source": "src/ReplayManager.cpp",
+      "original_before_source_sha256": "82c21944fad4b21c03caae4048076b86720fac3e36af626cf42a51f0ea53d449"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EclVm.hpp",
+      "bytes": 6188,
+      "sha256": "8ea144a4069b89baeb3c538cc0bb98de86d83fc141f8788500b08c9cfc38acaa",
+      "original_source": "src/EclVm.hpp",
+      "original_before_source_sha256": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ScriptViewerOwners.hpp",
+      "bytes": 1628,
+      "sha256": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+      "original_source": "src/ScriptViewerOwners.hpp",
+      "original_before_source_sha256": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/LaserClear.cpp",
+      "bytes": 1371,
+      "sha256": "2fd57dbbad9b1d64c5d3bce55abfb285674c656290a6dfd53dcd9955af8c2236",
+      "original_source": "src/LaserClear.cpp",
+      "original_before_source_sha256": "2fd57dbbad9b1d64c5d3bce55abfb285674c656290a6dfd53dcd9955af8c2236"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/TransitionEffect.cpp",
+      "bytes": 13833,
+      "sha256": "45136f443eb766031421ab539878232e66449ccc1a601c5045f798228eb98c37",
+      "original_source": "src/TransitionEffect.cpp",
+      "original_before_source_sha256": "57475c2b9ef35961ddad413ce5479e3c415b99fbd1af9742dab85796cc6f0e10"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Decompress.cpp",
+      "bytes": 3230,
+      "sha256": "bb26102d2b0db297123e7302a7110cb6d320243b8422c269468464d3566c10cc",
+      "original_source": "src/Decompress.cpp",
+      "original_before_source_sha256": "bb26102d2b0db297123e7302a7110cb6d320243b8422c269468464d3566c10cc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GameErrorContext.cpp",
+      "bytes": 2177,
+      "sha256": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+      "original_source": "src/GameErrorContext.cpp",
+      "original_before_source_sha256": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EnemyMotion.cpp",
+      "bytes": 348,
+      "sha256": "c936446223176d9651f21608d7c3b080e8f9f0f5bbe06b803410a7d8d990fa83",
+      "original_source": "src/EnemyMotion.cpp",
+      "original_before_source_sha256": "c936446223176d9651f21608d7c3b080e8f9f0f5bbe06b803410a7d8d990fa83"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GameScoreState.hpp",
+      "bytes": 1342,
+      "sha256": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "original_source": "src/GameScoreState.hpp",
+      "original_before_source_sha256": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GuiScore.hpp",
+      "bytes": 559,
+      "sha256": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "original_source": "src/GuiScore.hpp",
+      "original_before_source_sha256": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Enemy.cpp",
+      "bytes": 68643,
+      "sha256": "ca00c0b9febca02ffd27f609da17b8103276e3860421354371941ab3785d03bf",
+      "original_source": "src/Enemy.cpp",
+      "original_before_source_sha256": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/LaserType1Clear.cpp",
+      "bytes": 2256,
+      "sha256": "11ef7e2086ff24db4cdd66eed1b96ff1a2051ae7b7734398a2be2ee57604366c",
+      "original_source": "src/LaserType1Clear.cpp",
+      "original_before_source_sha256": "11ef7e2086ff24db4cdd66eed1b96ff1a2051ae7b7734398a2be2ee57604366c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ResFile.hpp",
+      "bytes": 1102,
+      "sha256": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+      "original_source": "src/ResFile.hpp",
+      "original_before_source_sha256": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GuiMessage.cpp",
+      "bytes": 4271,
+      "sha256": "5475cb70e8a3c876069e2c73ee899f333391b4f516f3db46765da0d1f82cf9c6",
+      "original_source": "src/GuiMessage.cpp",
+      "original_before_source_sha256": "c53ed5ef974a296ecd83e949a50ad48d9f1d7e12b621680849dd465965bde4c6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Sound.cpp",
+      "bytes": 33801,
+      "sha256": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+      "original_source": "src/Sound.cpp",
+      "original_before_source_sha256": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ResultMenu.hpp",
+      "bytes": 2026,
+      "sha256": "9814e4ae728b0ad5d59aa071fa5a6a2d3d2a4596c9900bbfc6417a5f7efd8ffe",
+      "original_source": "src/ResultMenu.hpp",
+      "original_before_source_sha256": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/AnmRectangle.hpp",
+      "bytes": 867,
+      "sha256": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
+      "original_source": "src/AnmRectangle.hpp",
+      "original_before_source_sha256": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EnemyCallback.cpp",
+      "bytes": 4753,
+      "sha256": "062509a99d5274c47b899412d33b9b7d50a2aaa6e1e5df13c6cfd1baf3f368e4",
+      "original_source": "src/EnemyCallback.cpp",
+      "original_before_source_sha256": "8d96765576c94e631db6c76178afa4c556b9a8d40cadb5f108f9cd5297103e4d"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Main.cpp",
+      "bytes": 51405,
+      "sha256": "84eef66afe9703a635df2879b43b324692bcfca6e81d7e00a4c75324c04487e6",
+      "original_source": "src/Main.cpp",
+      "original_before_source_sha256": "9cce8257321bde23fdb88b6f42f7412a3b6a425a138f7bda0482796fd300cd8e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GameStageDescriptor.hpp",
+      "bytes": 697,
+      "sha256": "b9e03884d82ee00b113e821f835e5c017c7a861daf163aa858d288d33e5234de",
+      "original_source": "src/GameStageDescriptor.hpp",
+      "original_before_source_sha256": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GameManager.cpp",
+      "bytes": 27030,
+      "sha256": "bfa297a70c8d0f5208209619b0692a25fd99ec3ea0327ac59ad9c5176ed9c76b",
+      "original_source": "src/GameManager.cpp",
+      "original_before_source_sha256": "f4d213bb89e23d51114578720f299a53800c782516af441294733f8c919762bb"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/BulletLifecycle.cpp",
+      "bytes": 490,
+      "sha256": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243",
+      "original_source": "src/BulletLifecycle.cpp",
+      "original_before_source_sha256": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ScriptViewerWorker.cpp",
+      "bytes": 1232,
+      "sha256": "a1d103a8c3d5770d9902b0b520f484720e6a4be9e83dfe79b5a218e619e338a9",
+      "original_source": "src/ScriptViewerWorker.cpp",
+      "original_before_source_sha256": "a1d103a8c3d5770d9902b0b520f484720e6a4be9e83dfe79b5a218e619e338a9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ScriptViewer.cpp",
+      "bytes": 14627,
+      "sha256": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7",
+      "original_source": "src/ScriptViewer.cpp",
+      "original_before_source_sha256": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GameStatistics.hpp",
+      "bytes": 3595,
+      "sha256": "a95677a1fbd629d1472a29cf078e86896fc3eb23490eaff471e6b0db2abf988d",
+      "original_source": "src/GameStatistics.hpp",
+      "original_before_source_sha256": "ae615e9a3982449e970883e2409ca1ef045192086ca9a84ad0ab94aadc6a20b6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ReplayChain.hpp",
+      "bytes": 1347,
+      "sha256": "5958761d7a0bdd08c9db770778f1e2fbe687267348f18c7b8a74b57f35539361",
+      "original_source": "src/ReplayChain.hpp",
+      "original_before_source_sha256": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ZWave.cpp",
+      "bytes": 24033,
+      "sha256": "bdd42d602a9f84992d2cd2e5d4c40be5704fb59c1d9f86444c55d0162bffe4ea",
+      "original_source": "src/ZWave.cpp",
+      "original_before_source_sha256": "8a0eafe895d9e4d7feb2b768907379890e96168a4bbcd85743791aeeab0935f3"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/TextRenderer.hpp",
+      "bytes": 2123,
+      "sha256": "1ef663d5b3c5e8d2b2e1abfc1090aea72a2fc56fba07228b56808f5a1a272efa",
+      "original_source": "src/TextRenderer.hpp",
+      "original_before_source_sha256": "1ef663d5b3c5e8d2b2e1abfc1090aea72a2fc56fba07228b56808f5a1a272efa"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EnemyPrimaryResources.hpp",
+      "bytes": 468,
+      "sha256": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "original_source": "src/EnemyPrimaryResources.hpp",
+      "original_before_source_sha256": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EnemySoundQueue.hpp",
+      "bytes": 633,
+      "sha256": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "original_source": "src/EnemySoundQueue.hpp",
+      "original_before_source_sha256": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/PlayerCollision.hpp",
+      "bytes": 538,
+      "sha256": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "original_source": "src/PlayerCollision.hpp",
+      "original_before_source_sha256": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ReplayManager.hpp",
+      "bytes": 8788,
+      "sha256": "c41163bcbe87f60485ef6f97e6b1299c18922b39b9a9229fd92bedc887c6bb73",
+      "original_source": "src/ReplayManager.hpp",
+      "original_before_source_sha256": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/PlayerCollision.cpp",
+      "bytes": 1855,
+      "sha256": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+      "original_source": "src/PlayerCollision.cpp",
+      "original_before_source_sha256": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Hint.hpp",
+      "bytes": 4483,
+      "sha256": "f6bc72bbb456806ec7ae18b45823113039c48797e540b7aec9afca24cadf5e06",
+      "original_source": "src/Hint.hpp",
+      "original_before_source_sha256": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ScriptViewer.hpp",
+      "bytes": 2602,
+      "sha256": "449f1118f9176099e1f7f8bb1bc3eca1705b15bf02addb7936907c0d4cf62d44",
+      "original_source": "src/ScriptViewer.hpp",
+      "original_before_source_sha256": "ef3f7a2120f99201dcd5790de136aa2f6782deb4b89e96e2ed5528bce3e7657e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Enemy.hpp",
+      "bytes": 20267,
+      "sha256": "adab18bef220415ef96cb96f279efae79269ebe991e58ce8ca6ff074f60709ae",
+      "original_source": "src/Enemy.hpp",
+      "original_before_source_sha256": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Decompress.hpp",
+      "bytes": 234,
+      "sha256": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+      "original_source": "src/Decompress.hpp",
+      "original_before_source_sha256": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Ending.hpp",
+      "bytes": 3115,
+      "sha256": "d59af33d9de1e9305bbd29da01d860edb814207c245d0310fe1e88707216836b",
+      "original_source": "src/Ending.hpp",
+      "original_before_source_sha256": "4f8e62b1d23eb8b2cf9074cba791d7212f04317792529e4ac0f32e83b99248f5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Midi.cpp",
+      "bytes": 11382,
+      "sha256": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+      "original_source": "src/Midi.cpp",
+      "original_before_source_sha256": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/AnmRectangle.cpp",
+      "bytes": 2724,
+      "sha256": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
+      "original_source": "src/AnmRectangle.cpp",
+      "original_before_source_sha256": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Lzss.hpp",
+      "bytes": 703,
+      "sha256": "64c116f6e2778b5cd6b76707e24c4a855d793b0735771f07aa8cebe9d12b4b23",
+      "original_source": "src/Lzss.hpp",
+      "original_before_source_sha256": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/InputState.hpp",
+      "bytes": 1603,
+      "sha256": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+      "original_source": "src/InputState.hpp",
+      "original_before_source_sha256": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/FrontEnd.cpp",
+      "bytes": 176189,
+      "sha256": "e704d39c1764501997046ca2ab083cb5a60f8e079e23d9b178a1270191202793",
+      "original_source": "src/FrontEnd.cpp",
+      "original_before_source_sha256": "6c972e54085aa3969d4eb4ab9e516bf35a87809ca762b87a098346fe27f010b7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/InputState.cpp",
+      "bytes": 823,
+      "sha256": "48c48082b17c994d83cdc49ec370f2adcc35fca27e87813d7714089a01321007",
+      "original_source": "src/InputState.cpp",
+      "original_before_source_sha256": "48c48082b17c994d83cdc49ec370f2adcc35fca27e87813d7714089a01321007"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EclVm.cpp",
+      "bytes": 37372,
+      "sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "original_source": "src/EclVm.cpp",
+      "original_before_source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/BulletManager.hpp",
+      "bytes": 10349,
+      "sha256": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+      "original_source": "src/BulletManager.hpp",
+      "original_before_source_sha256": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ResFile.cpp",
+      "bytes": 3221,
+      "sha256": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54",
+      "original_source": "src/ResFile.cpp",
+      "original_before_source_sha256": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Midi.hpp",
+      "bytes": 3991,
+      "sha256": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+      "original_source": "src/Midi.hpp",
+      "original_before_source_sha256": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/BulletRuntime.cpp",
+      "bytes": 5617,
+      "sha256": "91261504e04ed4fe77b01a65eda978a76db2247c319e83e6636f8080a884d804",
+      "original_source": "src/BulletRuntime.cpp",
+      "original_before_source_sha256": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/PbgArchive.cpp",
+      "bytes": 8063,
+      "sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+      "original_source": "src/PbgArchive.cpp",
+      "original_before_source_sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GameStatistics.cpp",
+      "bytes": 2246,
+      "sha256": "be4103039d2b683b062727b3b77cb6d918b01408623518df375038a9f16b24d6",
+      "original_source": "src/GameStatistics.cpp",
+      "original_before_source_sha256": "60eb7f57910372a78e6d6bba45c22af8e758bc5114aaa8bb00faf7a43eb1f13b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/InputPolling.cpp",
+      "bytes": 10023,
+      "sha256": "81fcea0ee72f07a3ce3188ae9591fae43f751ec6318e0065375159a0064ea31c",
+      "original_source": "src/InputPolling.cpp",
+      "original_before_source_sha256": "81fcea0ee72f07a3ce3188ae9591fae43f751ec6318e0065375159a0064ea31c"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Player.cpp",
+      "bytes": 82095,
+      "sha256": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+      "original_source": "src/Player.cpp",
+      "original_before_source_sha256": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Gui.hpp",
+      "bytes": 6439,
+      "sha256": "bc6db49db4f9f3c180b1f3e89215cd2bb87bd767ea81539c77812afbfeb17361",
+      "original_source": "src/Gui.hpp",
+      "original_before_source_sha256": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/ReplayTimingSource.hpp",
+      "bytes": 688,
+      "sha256": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+      "original_source": "src/ReplayTimingSource.hpp",
+      "original_before_source_sha256": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EnemyLaserLine.hpp",
+      "bytes": 2624,
+      "sha256": "7fded6867889d41110085110f9ec39a75a7139488ce00475e881f7de27ef58dc",
+      "original_source": "src/EnemyLaserLine.hpp",
+      "original_before_source_sha256": "7fded6867889d41110085110f9ec39a75a7139488ce00475e881f7de27ef58dc"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/GuiDraw.cpp",
+      "bytes": 4241,
+      "sha256": "f185a8f1c79ad0c451393ab0000caa40bd228e06895bd06426e5c8f3977f266a",
+      "original_source": "src/GuiDraw.cpp",
+      "original_before_source_sha256": "6ff7fd7d108ba74aa98ed5210592fbfc916a542f85fb12f5a75075c3ca3a03d7"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/TextRenderer.cpp",
+      "bytes": 16068,
+      "sha256": "1a774fcace6aa5d5fc12b930d5f418e20bf0a90f6b8409e7ffcd664564b1676b",
+      "original_source": "src/TextRenderer.cpp",
+      "original_before_source_sha256": "1a774fcace6aa5d5fc12b930d5f418e20bf0a90f6b8409e7ffcd664564b1676b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/PbgFile.cpp",
+      "bytes": 3750,
+      "sha256": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+      "original_source": "src/PbgFile.cpp",
+      "original_before_source_sha256": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/SpellPanel.cpp",
+      "bytes": 4140,
+      "sha256": "9fa87f6a3a6447524af3d2136010a114cfb3ab9358866dbd28c0d560f6f7bb91",
+      "original_source": "src/SpellPanel.cpp",
+      "original_before_source_sha256": "9fa87f6a3a6447524af3d2136010a114cfb3ab9358866dbd28c0d560f6f7bb91"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/AnmInt3Scale.cpp",
+      "bytes": 296,
+      "sha256": "ca49c0dbbd437128ef0be850dfcb928873cbcce8ef996be350a4adfcdeedb154",
+      "original_source": "src/AnmInt3Scale.cpp",
+      "original_before_source_sha256": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/TransitionEffect.hpp",
+      "bytes": 1796,
+      "sha256": "8700cfb6b85d63c21497657a414c2496400efdf093d7ef13c2aac9e53fa60703",
+      "original_source": "src/TransitionEffect.hpp",
+      "original_before_source_sha256": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/EnemyGameState.hpp",
+      "bytes": 1840,
+      "sha256": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "original_source": "src/EnemyGameState.hpp",
+      "original_before_source_sha256": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/SoundFormat.hpp",
+      "bytes": 483,
+      "sha256": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+      "original_source": "src/SoundFormat.hpp",
+      "original_before_source_sha256": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/stage-initializer-formals-20261023/free-vm-first/src/Hint.cpp",
+      "bytes": 30171,
+      "sha256": "e1539ed95de285c34b61ea0e40f4ffabdc3087d02f7c8bf96fc927ec1b2e0ec3",
+      "original_source": "src/Hint.cpp",
+      "original_before_source_sha256": "a6a6acb7418900f4a94e153843b3ed6a2b5675d197678eeadff50a54076c28a2"
+    }
+  ],
+  "native_count": 81,
+  "native_bytes": 3964133,
+  "snapshot_count": 160,
+  "snapshot_bytes": 2470106,
+  "retained": [
+    "current canonical Stage and Enemy outputs",
+    "current-source canonical Chain cold and byte-identical prior Chain witness",
+    "player-baseline-17 and player-maintained-17 complete native carriers",
+    "before-player source, private/maintained source transition, all modified/compiled private inputs, producers and compact proof"
+  ],
+  "classification": "terminal complete neutral/rejected/equivalent carriers and explicitly unchanged uncompiled snapshot copies; no provider, target, toolchain or unrelated files",
+  "native_file_classification": "generated-ephemeral-output",
+  "snapshot_classification": "unchanged uncompiled snapshot copy"
+}

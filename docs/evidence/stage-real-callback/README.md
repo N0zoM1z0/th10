@@ -1,5 +1,13 @@
 # Stage registration, Update and timer closure (2026-10-19)
 
+Caller-inventory correction 2026-10-23: the
+[Player binding audit](../player-initializer-binding/README.md) confirms 28 direct
+VM-initializer calls in 11 reviewed physical owners, including five references
+without Ghidra function owners. The historical 23/eight-owner count below is not
+complete. Two additional unowned raw E8 hints remain unconfirmed; no new function
+or source coverage is credited. The maintained Player startup now uses the real
+shared initializer instead of its declaration-only placeholder.
+
 Context update2026-10-23: the [Stage color checkpoint](../stage-color-storage/README.md)
 refreshes the current nine-TU graph with21 source/header inputs and all11 whole
 guards987/all36 passing. Only opcode8's color view changes maintained source;

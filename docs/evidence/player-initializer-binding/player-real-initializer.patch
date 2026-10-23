@@ -1,0 +1,23 @@
+--- a/src/Player.cpp
++++ b/src/Player.cpp
+@@ -403,8 +403,6 @@
+     PlayerCallbackNodeView *node, int priority, void *manager);
+ void PlayerRegisterDrawCallbackNode(
+     PlayerCallbackNodeView *node, int priority, void *manager);
+-void PlayerInitializeEmbeddedDrawVm(
+-    PlayerDrawVmView *vm, void *resource, int scriptIndex);
+ 
+ int __fastcall PlayerUpdateCallback(Player *player);
+ int __fastcall PlayerDrawCallback(Player *player);
+@@ -821,7 +819,10 @@
+     PlayerRegisterDrawCallbackNode(drawNode, 0x16, g_PlayerCallbackManager);
+     player->drawCallbackNode = drawNode;
+ 
+-    PlayerInitializeEmbeddedDrawVm(&player->drawVm, player->resource, 0);
++    // Target 0x4248B1 calls the real VM initializer at 0x404F30 with
++    // Player+0x14, resource at +0x10, and script index zero.
++    reinterpret_cast<AnmVmView *>(&player->drawVm)->InitializeForLoadedScript(
++        reinterpret_cast<AnmLoadedView *>(player->resource), 0);
+ 
+     PlayerOptionDataView *data = player->optionData;
+     player->drawPosition.x = 0.0f;
