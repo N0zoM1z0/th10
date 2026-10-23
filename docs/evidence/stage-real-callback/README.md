@@ -1,5 +1,11 @@
 # Stage registration, Update and timer closure (2026-10-19)
 
+Context update2026-10-23: the [Stage color checkpoint](../stage-color-storage/README.md)
+refreshes the current nine-TU graph with21 source/header inputs and all11 whole
+guards987/all36 passing. Only opcode8's color view changes maintained source;
+parent stays1868 and its structural positions improve1236->1241/1724. The pins
+and measurements below remain historical, not current-source input hashes.
+
 The genuine StageCreate/registration graph now closes **376 authored exact
 bytes** and **21 origin-indeterminate exact bytes**. Two independent cold
 CL13.10.6030/LINK7.10.6030 links, with the same19 project input hashes, pass

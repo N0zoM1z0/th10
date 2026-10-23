@@ -1,0 +1,16 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -114,9 +114,11 @@
+             break;
+         case 8:
+         {
+-            stage->camera.fog.color = integers[0];
++            const unsigned int packedColor = integers[0];
++            const unsigned char blue = static_cast<unsigned char>(packedColor);
++            stage->camera.fog.color = packedColor;
+             const unsigned char *bytes = reinterpret_cast<const unsigned char *>(&stage->camera.fog.color);
+-            stage->camera.fog.blue = static_cast<float>(bytes[0]);
++            stage->camera.fog.blue = static_cast<float>(blue);
+             stage->camera.fog.green = static_cast<float>(bytes[1]);
+             stage->camera.fog.red = static_cast<float>(bytes[2]);
+             stage->camera.fog.alpha = static_cast<float>(bytes[3]);

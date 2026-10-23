@@ -5479,3 +5479,17 @@ and secondary roots each regress their own caller by one ordinary byte (149/148
 at+6 and123/122 at+3); executor root keeps both callers and all38 guards exact.
 No source/profile adoption or original-context inference. See
 [entry evidence](evidence/anm-real-entry-context/README.md).
+
+## Stage dispatcher color storage improvement (2026-10-23)
+
+Current nine-TU StageCreate refresh reproduces the complete1868/frame8C owner.
+An existing four-byte AnmColorView over opcode8's fog word moves its packed store
+before the first scratch spill, as target403E85 requires. The full parent differs
+from baseline at exactly nine nonlinked bytes (+206..20E): five target repairs,
+zero target-equal regressions and four still different. All other1859 bytes,
+including link fields/table words, stay identical. A maintained primary compile
+reproduces the private candidate and all11 guards987/all36 pass. Both actual
+state/fog host fixtures pass with the real color declaration imported. No new
+exact credit or original field-type claim. Low-byte snapshot, six spline copies
+and four signed channel values regress (1856/1824/1892); reject them. See
+[color storage evidence](evidence/stage-color-storage/README.md).

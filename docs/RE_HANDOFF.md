@@ -11,17 +11,26 @@ replay. New checkpoints use `gpt-6.1-sol: ...` and are pushed after validation.
 | ECL Run | 7020 / 7020 bytes; 6993 matching, 27 ordinary differences |
 | ANM ExecuteScript | 9964 / 9964 bytes; not exact; case-aligned 7541 / 7995 |
 | Enemy dispatcher | 14336 / 14416 bytes; not exact; case gap 328 |
+| StageExecuteScript | 1868 / 1868 bytes; nonexact; five target-byte repairs, no target-equal loss |
 | Authored source | 613 functions / 247945 bytes |
 | Authored exact | 409 functions / 74716 bytes |
 | Source-present nonexact / source absent | 204 / 121 functions |
 | Whole Windows product / runtime | Open; semantic reconstruction and port not started |
 
-Latest ANM controls relink the same ten pinned objects with three real entries.
-All three large raw bodies remain identical. Primary and secondary roots each
-regress their own complete caller by one byte; ExecuteScript root preserves all
-38 guards4890/all127. ANM9964/7541-of-7995/gap2 and ECL27 remain. No adoption or
-exact gain. All48 new native files were hash-verified and removed. See
-[ANM real-entry evidence](evidence/anm-real-entry-context/README.md).
+Latest Stage1868-byte dispatcher checkpoint adopts an existing typed color view
+only in opcode8. Exactly nine raw parent bytes change: five target repairs, zero
+target-equal regressions, four remain different. All other1859 bytes and every
+linked field/table word stay unchanged. Full structural positions1236->1241/1724;
+case1438->1443/1619,13/15 target-sized groups/gap2. The function remains nonexact.
+Fresh nine-TU StageCreate baseline and a separate maintained primary compile
+with eight fixed supports pass11 complete guards987/all36; maintained parent
+raw bytes equal the selected private candidate. Two actual-source host fixtures
+pass after importing the actual existing color declaration. Three other source
+forms regress and are rejected. Canonical StageRealCallback is refreshed after
+hash-archiving its old output;60 private files removed (2704921 bytes). No new
+exact count. See [Stage color evidence](evidence/stage-color-storage/README.md).
+The preceding [ANM real-entry controls](evidence/anm-real-entry-context/README.md)
+were raw-neutral in all three large bodies and are not repeated.
 
 ## Handoff essentials
 
@@ -36,12 +45,14 @@ exact gain. All48 new native files were hash-verified and removed. See
   corrected audit below and inspect actual patches before reusing a conclusion.
 - Continue to prioritize the large owners and
   use focused complete-owner replays; do not repeat the excluded storage forms.
-  ANM source lifetimes, G6/G7, executor TU partition and three real entry roots
-  do not fix the current graph; Ob1 regresses five guards. Rotate to reviewed
-  large StageExecuteScript403C80/1868: refresh its actual nine-source StageCreate
-  baseline before investigating color/vector/register differences in opcodes8,
-  10/11,12/13 and14. Keep the three larger owners open and preserve the retained
-  Enemy candidate; no small-function closure substitutes for this work.
+  Keep the three larger owners open. Continue StageExecuteScript403C80/1868
+  against the newly validated canonical StageRealCallback graph. Opcode13 uses
+  an ECX store versus target EAX accumulator, adding one byte; common-tail
+  alignment compensates. Investigate actual receiver/value lifetimes in12/13
+  and remaining10/11 and14 registers. Do not repeat low-byte snapshots, the
+  six typed spline copies, four signed channel snapshots or closed ANM forms.
+  Preserve the retained Enemy candidate; no small-function closure substitutes
+  for the ongoing large-owner work.
 
 ## Recent evidence index
 

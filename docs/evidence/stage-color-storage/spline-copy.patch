@@ -1,0 +1,28 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -140,9 +140,9 @@
+         }
+         case 10:
+         {
+-            AnmFloat3View initialTangent(values[2], values[3], values[4]);
+-            AnmFloat3View final(values[5], values[6], values[7]);
+-            AnmFloat3View finalTangent(values[8], values[9], values[10]);
++            AnmFloat3View initialTangent = *reinterpret_cast<const AnmFloat3View *>(values + 2);
++            AnmFloat3View final = *reinterpret_cast<const AnmFloat3View *>(values + 5);
++            AnmFloat3View finalTangent = *reinterpret_cast<const AnmFloat3View *>(values + 8);
+             stage->positionInterpolation.duration = integers[0];
+             stage->positionInterpolation.initial = stage->camera.position;
+             stage->positionInterpolation.initialTangent = initialTangent;
+@@ -154,9 +154,9 @@
+         }
+         case 11:
+         {
+-            AnmFloat3View initialTangent(values[2], values[3], values[4]);
+-            AnmFloat3View final(values[5], values[6], values[7]);
+-            AnmFloat3View finalTangent(values[8], values[9], values[10]);
++            AnmFloat3View initialTangent = *reinterpret_cast<const AnmFloat3View *>(values + 2);
++            AnmFloat3View final = *reinterpret_cast<const AnmFloat3View *>(values + 5);
++            AnmFloat3View finalTangent = *reinterpret_cast<const AnmFloat3View *>(values + 8);
+             stage->directionInterpolation.duration = integers[0];
+             stage->directionInterpolation.initial = stage->camera.direction;
+             stage->directionInterpolation.initialTangent = initialTangent;

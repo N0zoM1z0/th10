@@ -23,6 +23,9 @@ class StageScriptState(unittest.TestCase):
         # This dispatcher test keeps an explicit fog sink; the second test runs real fog arithmetic.
         source=source.split('// Six float channels plus a derived packed-color dword')[0]
         timer_source=(ROOT/'src/AnmManager.hpp').read_text()
+        color_start=timer_source.index('union AnmColorView\n{')
+        color_end=timer_source.index('\n};',color_start)+3
+        color_source=timer_source[color_start:color_end]
         timer_start=timer_source.index('struct AnmVmTimerView\n{')
         timer_end=timer_source.index('\n};',timer_start)+3
         timer_source=timer_source[timer_start:timer_end]
@@ -39,7 +42,7 @@ static float g_AnmGameSpeed=1.0f;
 struct AnmMatrixView {float values[16];};
 struct AnmViewportView {unsigned x,y,width,height;float minZ,maxZ;};
 struct AnmFloat3View {float x,y,z;AnmFloat3View(){} AnmFloat3View(float a,float b,float c):x(a),y(b),z(c){} AnmFloat3View operator-(const AnmFloat3View &b)const{return AnmFloat3View(x-b.x,y-b.y,z-b.z);} };
-'''+timer_source+r'''
+'''+timer_source+color_source+r'''
 static std::vector<const void *> evaluations;
 struct AnmVmFloat3InterpolationView {AnmFloat3View initial,final,initialTangent,finalTangent;AnmVmTimerView timer;int duration=0,mode=0;AnmFloat3View *Evaluate(AnmFloat3View *out){evaluations.push_back(this);*out=final;return out;}};
 struct AnmLoadedView {};

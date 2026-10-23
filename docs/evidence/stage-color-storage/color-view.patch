@@ -1,0 +1,21 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -114,12 +114,12 @@
+             break;
+         case 8:
+         {
+-            stage->camera.fog.color = integers[0];
+-            const unsigned char *bytes = reinterpret_cast<const unsigned char *>(&stage->camera.fog.color);
+-            stage->camera.fog.blue = static_cast<float>(bytes[0]);
+-            stage->camera.fog.green = static_cast<float>(bytes[1]);
+-            stage->camera.fog.red = static_cast<float>(bytes[2]);
+-            stage->camera.fog.alpha = static_cast<float>(bytes[3]);
++            AnmColorView &color = *reinterpret_cast<AnmColorView *>(&stage->camera.fog.color);
++            color.value = integers[0];
++            stage->camera.fog.blue = static_cast<float>(color.blue);
++            stage->camera.fog.green = static_cast<float>(color.green);
++            stage->camera.fog.red = static_cast<float>(color.red);
++            stage->camera.fog.alpha = static_cast<float>(color.alpha);
+             stage->camera.fog.start = values[1];
+             stage->camera.fog.end = values[2];
+             break;

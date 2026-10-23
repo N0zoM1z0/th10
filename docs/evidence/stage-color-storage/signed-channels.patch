@@ -1,0 +1,21 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -116,10 +116,14 @@
+         {
+             stage->camera.fog.color = integers[0];
+             const unsigned char *bytes = reinterpret_cast<const unsigned char *>(&stage->camera.fog.color);
+-            stage->camera.fog.blue = static_cast<float>(bytes[0]);
+-            stage->camera.fog.green = static_cast<float>(bytes[1]);
+-            stage->camera.fog.red = static_cast<float>(bytes[2]);
+-            stage->camera.fog.alpha = static_cast<float>(bytes[3]);
++            const int blue = bytes[0];
++            const int green = bytes[1];
++            const int red = bytes[2];
++            const int alpha = bytes[3];
++            stage->camera.fog.blue = static_cast<float>(blue);
++            stage->camera.fog.green = static_cast<float>(green);
++            stage->camera.fog.red = static_cast<float>(red);
++            stage->camera.fog.alpha = static_cast<float>(alpha);
+             stage->camera.fog.start = values[1];
+             stage->camera.fog.end = values[2];
+             break;
