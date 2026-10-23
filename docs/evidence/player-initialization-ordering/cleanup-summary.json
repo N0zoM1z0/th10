@@ -1,0 +1,37 @@
+{
+  "scope": "13 completed private Player control builds, losslessly archived after per-file verification; no new reconstruction experiment",
+  "roots": [
+    "build/gpt-6.1-sol/player-schedule-20261023/both-timer-barriers-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/chain-phase-snapshots-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/combined-publication-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/direct-max-value-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/entry-core-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/glyph-chain-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/history-local-pair-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/history-memcpy-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/history-pair-copy-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/history-y-first-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/node-publication-order-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/tail-timer-barrier-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/typed-chain-17"
+  ],
+  "files": 338,
+  "before_bytes": 24989945,
+  "before_allocated_bytes": 25665536,
+  "archive": ".analysis/handoff-player-ordering-20261023/control-builds.tar.gz",
+  "archive_bytes": 6820472,
+  "archive_sha256": "4f67c8f42f7ef13883eaae8507b9b48f16a5562ee7918f33b0e394510540136c",
+  "archive_allocated_bytes": 6823936,
+  "inventory": ".analysis/handoff-player-ordering-20261023/archive-members.json.gz",
+  "inventory_sha256": "993d6285538c098cedb9fb24b1cc69090262e516996365dbc646c9a1c58ee6c8",
+  "protected_files_verified": 36952,
+  "all_protected_unchanged": true,
+  "retained_full": [
+    "build/gpt-6.1-sol/player-schedule-20261023/maintained-17",
+    "build/gpt-6.1-sol/player-schedule-20261023/combined-history-pair-17"
+  ],
+  "restore": "tar -xzf .analysis/handoff-player-ordering-20261023/control-builds.tar.gz -C .",
+  "producer_sha256": "52dee4fea67e3fc9b3a2a582fb271be3cb59a12db4f2c49e254b26ef5386ea54",
+  "reclaimed_bytes": 18169473,
+  "reclaimed_allocated_bytes": 18841600
+}

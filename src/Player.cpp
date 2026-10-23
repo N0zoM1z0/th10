@@ -118,6 +118,8 @@ typedef char PlayerCallbackNodeViewOwnerAt20[
     (offsetof(PlayerCallbackNodeView, owner) == 0x20) ? 1 : -1];
 // Existing shared storage begins at target 0x474C40; the selection words are
 // observed at +0x28/+0x2C. This is a storage view, not an original owner claim.
+typedef char PlayerFixedPositionPairContiguous[
+    (offsetof(Player, positionY) == offsetof(Player, positionX) + sizeof(int)) ? 1 : -1];
 typedef char PlayerSelectionStorageAt28[
     (offsetof(GameScoreStateView, unknown28) == 0x28) ? 1 : -1];
 typedef char PlayerCallbackNodeMatchesChain[
@@ -871,8 +873,11 @@ int PlayerInitialize(Player *player)
 
     th10::ChainElem *updateNode = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(PlayerUpdateCallback));
+    // Target reads flags before publishing the owner association.
+    const unsigned int updateFlags = updateNode->flags;
+    _ReadWriteBarrier();
     updateNode->arg = player;
-    updateNode->flags &= ~2u;
+    updateNode->flags = updateFlags & ~2u;
     th10::Chain::AddToCalcChain(updateNode, 0x10,
         reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
     player->updateCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(updateNode);
@@ -902,8 +907,9 @@ int PlayerInitialize(Player *player)
 
     for (int i = 0; i < 33; ++i)
     {
-        player->replayPositionHistory[i].x = player->positionX;
-        player->replayPositionHistory[i].y = player->positionY;
+        // The source position is a contiguous two-word storage view.
+        player->replayPositionHistory[i] =
+            *reinterpret_cast<const PlayerPositionPair *>(&player->positionX);
     }
 
     if ((player->updateTimer0.flags & 1) == 0)
@@ -917,6 +923,8 @@ int PlayerInitialize(Player *player)
     player->updateTimer0.subframe = -1.0f;
     player->updateTimer0.previous = -2;
     player->updateTimer0.current = -1;
+    // Keep the observed timer publication before following data reads.
+    _ReadWriteBarrier();
 
     player->optionData->value04 = g_PlayerOptionValue04ByCharacter[character];
     player->optionData->value0C = g_PlayerOptionValue0CByCharacter[character];
@@ -965,6 +973,8 @@ int PlayerInitialize(Player *player)
     player->updateTimer1.current = 0;
     player->updateTimer1.subframe = 0.0f;
     player->updateTimer1.previous = -1;
+    // Match the reset path: finish writes before reading the next timer flags.
+    _ReadWriteBarrier();
 
     if ((player->highlightTimer.flags & 1) == 0)
     {

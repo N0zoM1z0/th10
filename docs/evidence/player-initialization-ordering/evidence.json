@@ -1,0 +1,1796 @@
+{
+  "state": "active-incomplete",
+  "acceptance_authority": "none",
+  "source_head_before": "07b1be2324b8ece4697ead2ac5d6f19bcdda28bc",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "maintained": {
+    "parent_bytes": 1435,
+    "matched_bytes": 1170,
+    "different_bytes": 265,
+    "independent_fields": 49,
+    "guards": {
+      "count": 8,
+      "exact": 8,
+      "bytes": 1753,
+      "fields": 99
+    },
+    "compiled": [
+      {
+        "source": "src/Player.cpp",
+        "source_sha256": "ee74efa92560a3883e4be06e01e8fc0ccb58af09cbe68262c532d5d48644986e",
+        "object_sha256": "9028fed7c95261280a798f04fbad7bd824947dcaeb332996918c157a5ad3f3f3",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ]
+      }
+    ],
+    "context": {
+      "artifact_kind": "linked-pe",
+      "source": "src/ScriptViewer.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/Chain.cpp",
+        "src/FrontEnd.cpp",
+        "src/Player.cpp",
+        "src/Gui.cpp",
+        "src/Enemy.cpp",
+        "src/BulletLifecycle.cpp",
+        "src/InputState.cpp",
+        "src/Main.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/ScriptViewerLifecycle.cpp",
+        "src/ItemManager.cpp",
+        "src/AnmVmId.cpp",
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/PbgArchive.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "support_profiles": {
+        "src/Enemy.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ]
+      },
+      "normal_support_sources": [],
+      "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/maintained-17"
+    },
+    "artifacts": {
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/source.map": {
+        "sha256": "c1eed18c881d91eb859c30b25ef6015313422f5036615b130170831a8e0f876f",
+        "bytes": 167870
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/link-attempt-2.log": {
+        "sha256": "533acf6a23e610a0428c297926dc5ece798327456b41660f98576c51768e52b3",
+        "bytes": 1095
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/source.exe": {
+        "sha256": "42df17cacb1c1984dd9b64cb295eb3809b7f16693c989daab338bad985883fa2",
+        "bytes": 176128
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/source.ltcg.obj": {
+        "sha256": "a26fa6b05b7699ba3f8bd6fddc681b5ba8d0edbea366b374b2acbeaf1fbb27c4",
+        "bytes": 60924
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-07-InputState.ltcg.obj": {
+        "sha256": "70bfca112e184af1c2a5df67a8cf13874debb0c2319a0a5874b819b0e8c32e8b",
+        "bytes": 3530
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/link-attempt-3.log": {
+        "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "bytes": 167
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-14-FileSystem.ltcg.obj": {
+        "sha256": "62452651055ea31197dc9e6414dd2c691b93d5ff8b07f4eb20a69c31db4705b3",
+        "bytes": 33443
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-10-ScriptViewerLifecycle.ltcg.obj": {
+        "sha256": "92d196d65909c85b3acac0f40808c0ea67265b6b33c5ef8be813050903bec862",
+        "bytes": 44492
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-05-Enemy.ltcg.obj": {
+        "sha256": "2585e97b5f0056ae2e15a27623da467441e30521470e52ed7f2faa587bbba7d1",
+        "bytes": 97606
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-09-ScriptViewerWorker.ltcg.obj": {
+        "sha256": "df21578b8130a872a901b78d1c0be6f7608d0afcfdfd18b6a6e4178e897a4cb7",
+        "bytes": 28960
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-00-AnmManager.ltcg.obj": {
+        "sha256": "eda326a290ea5164f0bb930061fbf997f7a9defcbab08d77a2c70c08a848c4e4",
+        "bytes": 247746
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-11-ItemManager.ltcg.obj": {
+        "sha256": "38d7b0b9dbc65e6d205b802f87a85258612014cf6e1318c1214687e57576e9d6",
+        "bytes": 59411
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-15-PbgArchive.ltcg.obj": {
+        "sha256": "44d41ceff1ade2230ecd965c6d94c8dffee3b4f34742ad9db791c4437f0855b5",
+        "bytes": 32847
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/link-attempt-1.log": {
+        "sha256": "ec95ea33c7b13a0803e33ac17ce4c820b5226bd17e8f2405e73facfe9052e897",
+        "bytes": 70847
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-02-FrontEnd.ltcg.obj": {
+        "sha256": "2dd4fe010bc8edb75ce0cea69363db988d9d242aac1e04dec6e7bf6c79f01e77",
+        "bytes": 224381
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-13-GameErrorContext.ltcg.obj": {
+        "sha256": "f8f8d641b18f3a6736bccbbdfd9577f9cc42881b1d6c1013a24355ace74c19cf",
+        "bytes": 19836
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-03-Player.ltcg.obj": {
+        "sha256": "9028fed7c95261280a798f04fbad7bd824947dcaeb332996918c157a5ad3f3f3",
+        "bytes": 101131
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-01-Chain.ltcg.obj": {
+        "sha256": "0a0b0a8c953275736a4824a280f37c5ed441ce713bbd5e9821b05a2abd30871c",
+        "bytes": 36912
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/link-aliases.rsp": {
+        "sha256": "2a03c33c1c407c44fe35d00af651266daa84deb9e6fb7f4aa3f46eb6bb8ad4aa",
+        "bytes": 37693
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/link-anchors.obj": {
+        "sha256": "64a70b244a1b3396321820b2d54f5439ee19cc7e79951981ec53abe544aa0cae",
+        "bytes": 23115
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/link-anchors.c": {
+        "sha256": "c91b69c973bf4c063e1e9439c5e73828c0db788d6eb872dfc6c81fd992111d71",
+        "bytes": 24875
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-08-Main.ltcg.obj": {
+        "sha256": "71e5011201947131e3fae277ec368867461b4714bb73f1bf6972cd32dc6152a1",
+        "bytes": 94093
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-04-Gui.ltcg.obj": {
+        "sha256": "8d85caf134d0e35d1cece03b96417bb0471c5b4e11b289da0226a1fa69f0fd2d",
+        "bytes": 125067
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/source.pdb": {
+        "sha256": "7994623649f3a362c2620b41f0ff20e3ec62750b6d8a8a0ff7e3cf456ddd427a",
+        "bytes": 183296
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-06-BulletLifecycle.ltcg.obj": {
+        "sha256": "756de6c67297b72d951f23a44102bce14b80a727cc084aa32ba6a9b308c32399",
+        "bytes": 13052
+      },
+      "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/support-12-AnmVmId.ltcg.obj": {
+        "sha256": "5ab3053d74f6ad90b1856f110af195ee2d1d8aa6056c8a4818ab5011769d7c65",
+        "bytes": 13679
+      }
+    }
+  },
+  "complete_delta_from_07b1be2": {
+    "label": "combined-history-pair",
+    "matched_bytes": 1170,
+    "different_bytes": 265,
+    "changed_bytes": 284,
+    "repairs": 68,
+    "losses": 21
+  },
+  "public_owner_equality": {
+    "claim": "private and maintained complete public PDB owner raw-byte equality; not target exactness",
+    "count": 519,
+    "bytes": 140370
+  },
+  "public_owner_inventory_sha256": "0333976a217a57c0bceaa431f51b255c78a98aae2308d32517fd0407e1eae08d",
+  "producer_and_input_pins": {
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/manifest.json": "7422c290410c6a78d3c199e4b1034fe823c8e2b58ffb495407b537ba1bf75b0e",
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/manifest-final.json": "251b78de55fcd89192a27f3c87d9a17cb6a8b8ab62ff80cffb65cd4bd563453b",
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/probe.py": "56b7fea84f5966fce27a3beed2c80f996034109ec5ff575c38c2ca3a13745f85",
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/probe-maintained.py": "b571aebaa3ca6d5b6c29e982debf805dfe3491a5f7719196544acaa203177b5c",
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/common-final.py": "7b06df11f592c37943979e9442a0cb53d6869848d7b4340fd3287e2541281117",
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/bound-parent-final.py": "2078280502eedb5b062c94c85ffacc79123fc88b2c8de5451534ba77770ce62b",
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/run-ghidra.py": "56ab1a3221c7b38e9111ec66c1e183d9966e43071c1cf177a9cd341fe8450033",
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/target-review.txt": "128a28e0473583b6ec603ab44ef26dfa94f84f68174f9ec2d7afa5b63a8c894d",
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/ghidra.log": "401ac287ee46bcf244989994170609d718d66e0a1d2a2fc9cee03df7bcded53c",
+    ".analysis/gpt-6.1-sol/player-schedule-20261023/ghidra/PlayerScheduleReview.java": "68128ceffadc4b471d8126582c680c55ecbd2899d2a1c4b11eb01802828a902b"
+  },
+  "guards": [
+    {
+      "unit": "chain-run-calc",
+      "result": "exact",
+      "bytes": 308,
+      "fields": 23
+    },
+    {
+      "unit": "chain-run-draw",
+      "result": "exact",
+      "bytes": 268,
+      "fields": 21
+    },
+    {
+      "unit": "chain-add-calc",
+      "result": "exact",
+      "bytes": 131,
+      "fields": 7
+    },
+    {
+      "unit": "chain-add-draw",
+      "result": "exact",
+      "bytes": 131,
+      "fields": 7
+    },
+    {
+      "unit": "decomphelp-game-error-log",
+      "result": "exact",
+      "bytes": 201,
+      "fields": 12
+    },
+    {
+      "unit": "anm-manager-preload-anm",
+      "result": "exact",
+      "bytes": 81,
+      "fields": 3
+    },
+    {
+      "unit": "file-system-open-file",
+      "result": "exact",
+      "bytes": 360,
+      "fields": 26
+    },
+    {
+      "unit": "anm-vm-initialize-private",
+      "result": "exact",
+      "bytes": 273,
+      "fields": 0
+    }
+  ],
+  "trials": [
+    {
+      "label": "both-timer-barriers",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "c369a936e0cd015b6efed83456f7c937a0b6f2ecf82f0a09e89e324251994e3b",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/both-timer-barriers/Player.cpp",
+          "source_sha256": "4782f0ca36d3bc4bf064acab5197da1e95ce2c062b4254df1727aecb63d86e9f",
+          "object_sha256": "d8ab37a1997eb55a58e9cec9be901879435cd8a06b6dbc89132230f88368535d",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/both-timer-barriers/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/both-timer-barriers-17"
+      },
+      "matched_bytes": 1160,
+      "different_bytes": 275,
+      "changed_bytes": 75,
+      "repairs": 48,
+      "losses": 11
+    },
+    {
+      "label": "chain-phase-snapshots",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "42862d5a965f9cad66a1623642bfecb751699cab2f251d4fd338ab8dde3c77fb",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/chain-phase-snapshots/Player.cpp",
+          "source_sha256": "645e3326b3ee45d3d381ec0b1ba4f950339f51cad514b4551bac9ac03d7a7f75",
+          "object_sha256": "090513575fec54e83c179d3783173de5e64b286c293408ae10e5de95a8687232",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/chain-phase-snapshots/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/chain-phase-snapshots-17"
+      },
+      "matched_bytes": 1152,
+      "different_bytes": 283,
+      "changed_bytes": 291,
+      "repairs": 65,
+      "losses": 36
+    },
+    {
+      "label": "combined-history-pair",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "4c02f62f26f8f16177b5c5e2b092e1795256e83874b0b06313099b5a9b2cf055",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/combined-history-pair/Player.cpp",
+          "source_sha256": "5b5e4870c9a1325376a6976c1a44786d4ea3681b59987685c53f9e4d918c4d25",
+          "object_sha256": "3bf1b09eb5435d4aa352d32ec4823630eeac6e22915a83b365b52165da311fb6",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/combined-history-pair/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/combined-history-pair-17"
+      },
+      "matched_bytes": 1170,
+      "different_bytes": 265,
+      "changed_bytes": 284,
+      "repairs": 68,
+      "losses": 21
+    },
+    {
+      "label": "combined-publication",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "f80488a13e54641008beae4a3ddb848ba5633dea3b1363b4f405dbe3657bc459",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/combined-publication/Player.cpp",
+          "source_sha256": "6b27bb58f9061fa2724411b24164b0947db57d274f9a1e1f9439a048e0e237e2",
+          "object_sha256": "3edceb0443a5d6bd123732ea3df2f43857943ededea2f89607466bed44d33313",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/combined-publication/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/combined-publication-17"
+      },
+      "matched_bytes": 1161,
+      "different_bytes": 274,
+      "changed_bytes": 275,
+      "repairs": 59,
+      "losses": 21
+    },
+    {
+      "label": "direct-max-value",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "eaf4163a47985c89ead6620f5c258df589ad2de143d4662981bff59e65c6a03f",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/direct-max-value/Player.cpp",
+          "source_sha256": "5e310d142b0feaef71e38c1992615df660dfb9dd1814aefd2b193745be53b7ff",
+          "object_sha256": "d5f15f3da988b4b2ebf91dab2009bcb0414f1b315241f242a965a9f600569f05",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/direct-max-value/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/direct-max-value-17"
+      },
+      "matched_bytes": 1147,
+      "different_bytes": 288,
+      "changed_bytes": 24,
+      "repairs": 24,
+      "losses": 0
+    },
+    {
+      "label": "entry-core",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 7,
+        "bytes": 1480,
+        "fields": 99
+      },
+      "report_sha256": "658af2e317fc3d311ac9014c415f5d50c802745caa7391c077eb098b524678cf",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/entry-core/Player.cpp",
+          "source_sha256": "4782f0ca36d3bc4bf064acab5197da1e95ce2c062b4254df1727aecb63d86e9f",
+          "object_sha256": "51ff320716a9e07e7f5987738bfd301d0b2916755c3e5f4065b819e92d083d15",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/entry-core/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?Initialize@AnmVmView@@QAEXXZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/entry-core-17"
+      },
+      "matched_bytes": 1160,
+      "different_bytes": 275,
+      "changed_bytes": 84,
+      "repairs": 48,
+      "losses": 11
+    },
+    {
+      "label": "glyph-chain",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "5be4fbcd67566780500807edd97fa2f26e433c904c5de6e1779841dd20d2fe08",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/glyph-chain/AnmManager.cpp",
+          "source_sha256": "33c4a19c43e58e5694f8c58b71489f175b9d6cac7ce219323df0ef47dce786e7",
+          "object_sha256": "629012eb75b9c86de185743c3689215833e3e3e56e39accbb9efeb2989b845c1",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/glyph-chain/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          "src/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/glyph-chain-17"
+      },
+      "matched_bytes": 1123,
+      "different_bytes": 312,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0
+    },
+    {
+      "label": "history-local-pair",
+      "parent_bytes": 1471,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "2d33a0f6aaa0056a89f2f8bf0f475a599da72b36215c48f7a880995a345d250d",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/history-local-pair/Player.cpp",
+          "source_sha256": "72c4cc9d6861f9700c6194515d5ecd97ef67549f1da3e9f057aca8f30729ee07",
+          "object_sha256": "de30e6f5386326d0ee02ba7a399dfc98563c26f8e8156b6b4ddf09be63e32102",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/history-local-pair/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/history-local-pair-17"
+      },
+      "result": "strict complete-parent comparator rejected size; no cropped comparison"
+    },
+    {
+      "label": "history-memcpy",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "99fb20d1424c6b476b653ac8f92cca59e7be2f69e81ffbb6638c50fa50313858",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/history-memcpy/Player.cpp",
+          "source_sha256": "68dc0794ed886f9c3f3e847412675f92c60efc6644e996becbccfaf464ad2a59",
+          "object_sha256": "9e8c1b51c2110924266ac5220e47219b0f38987b0e8720e62fe6a0454a78e3ab",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/history-memcpy/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/history-memcpy-17"
+      },
+      "matched_bytes": 1157,
+      "different_bytes": 278,
+      "changed_bytes": 105,
+      "repairs": 61,
+      "losses": 27
+    },
+    {
+      "label": "history-pair-copy",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "2e84c8664352ba197adbc13bf90b5627cb2785b9f202d22fe81baf7d61d9387e",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/history-pair-copy/Player.cpp",
+          "source_sha256": "fd267ab0d1185384000fdfb7802a4261ab8fe11f69834a23dda49a8898f6b616",
+          "object_sha256": "efe18cc384c2ae965acc813b71dda355af919fcb90263bc4ef8dbbae9d56354d",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/history-pair-copy/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/history-pair-copy-17"
+      },
+      "matched_bytes": 1169,
+      "different_bytes": 266,
+      "changed_bytes": 85,
+      "repairs": 57,
+      "losses": 11
+    },
+    {
+      "label": "history-y-first",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "fcc3ad3b4f61a57639642818caf931c84cb6644b85ff86e20946d4f2b4fca01b",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/history-y-first/Player.cpp",
+          "source_sha256": "889606b166b675115d0c54191940dbd0d1990fb6f799fbe4d174afc84e0ecafa",
+          "object_sha256": "d1ce8f6687dd15e073dcee2b7a57a1e4191ea2109cdaf2a313523600368659b5",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/history-y-first/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/history-y-first-17"
+      },
+      "matched_bytes": 1146,
+      "different_bytes": 289,
+      "changed_bytes": 28,
+      "repairs": 24,
+      "losses": 1
+    },
+    {
+      "label": "maintained",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "3bc76f0bd178a897d0f3de75642e092b0959b7ced9aafcc78f082a39ec2d646c",
+      "compiled": [
+        {
+          "source": "src/Player.cpp",
+          "source_sha256": "ee74efa92560a3883e4be06e01e8fc0ccb58af09cbe68262c532d5d48644986e",
+          "object_sha256": "9028fed7c95261280a798f04fbad7bd824947dcaeb332996918c157a5ad3f3f3",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          "src/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/maintained-17"
+      }
+    },
+    {
+      "label": "node-publication-order",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "9a5c5cb8810c016a1ba75db5ccdf3ee1640c2ccd4ef27e476f59301019028e1e",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/node-publication-order/Player.cpp",
+          "source_sha256": "1dadb90884318c390a98d9f492053849a13aeb41cb7df215530b8b172b8ac2d0",
+          "object_sha256": "2359752135134b26ac41f56c8b52f97ebcd16d8b70452fc237b136743e8c295a",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/node-publication-order/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/node-publication-order-17"
+      },
+      "matched_bytes": 1148,
+      "different_bytes": 287,
+      "changed_bytes": 224,
+      "repairs": 35,
+      "losses": 10
+    },
+    {
+      "label": "tail-timer-barrier",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "42bb9711acd29b0218378fd405b5f7d53aea7d0a06e29b13bdc7d33383d8e64a",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/tail-timer-barrier/Player.cpp",
+          "source_sha256": "8abbe76e3069ea6244a5d80e37bbccdfde9106f00c49b0817cb82e686d0d0ad1",
+          "object_sha256": "4f99b296fce6ea4fdc5ac0ae839dfd9209b9d818f171ed7c8e3d66a4c0880119",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/tail-timer-barrier/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/tail-timer-barrier-17"
+      },
+      "matched_bytes": 1147,
+      "different_bytes": 288,
+      "changed_bytes": 24,
+      "repairs": 24,
+      "losses": 0
+    },
+    {
+      "label": "typed-chain",
+      "parent_bytes": 1435,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "report_sha256": "0b4121e60900882a3b8b20c89edb3fad8b3a4812f85ad9b98228a4d68d05cc50",
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/player-schedule-20261023/typed-chain/Player.cpp",
+          "source_sha256": "1df32aeb7681d32ddc8aaacf34edb23e6fc08ff96f885676abc60bdd9b79ce10",
+          "object_sha256": "0fe896d9fd3ee7ad4e52d58f84e029f7a9185581e4db01c5deedcd8e97c4d389",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ]
+        }
+      ],
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/ScriptViewer.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/Chain.cpp",
+          "src/FrontEnd.cpp",
+          ".analysis/gpt-6.1-sol/player-schedule-20261023/typed-chain/Player.cpp",
+          "src/Gui.cpp",
+          "src/Enemy.cpp",
+          "src/BulletLifecycle.cpp",
+          "src/InputState.cpp",
+          "src/Main.cpp",
+          "src/ScriptViewerWorker.cpp",
+          "src/ScriptViewerLifecycle.cpp",
+          "src/ItemManager.cpp",
+          "src/AnmVmId.cpp",
+          "src/GameErrorContext.cpp",
+          "src/FileSystem.cpp",
+          "src/PbgArchive.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "support_profiles": {
+          "src/Enemy.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "normal_support_sources": [],
+        "output_dir": "build/gpt-6.1-sol/player-schedule-20261023/typed-chain-17"
+      },
+      "matched_bytes": 1123,
+      "different_bytes": 312,
+      "changed_bytes": 0,
+      "repairs": 0,
+      "losses": 0
+    }
+  ],
+  "original_barriers_threading_and_ownership": "unknown; compiler ordering hypothesis only",
+  "new_exact_credit": 0,
+  "product_runtime": "not validated"
+}

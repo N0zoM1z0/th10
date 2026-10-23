@@ -1,0 +1,2107 @@
+{
+  "unit": "player-initialize",
+  "artifact_kind": "linked-pe",
+  "result": "mismatch",
+  "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z",
+  "target_address": "0x004247F0",
+  "size": 1435,
+  "matched_bytes": 1170,
+  "compared_size": 1435,
+  "matched_compared_bytes": 1170,
+  "image": "build/gpt-6.1-sol/player-schedule-20261023/maintained-17/source.exe",
+  "image_sha256": "42df17cacb1c1984dd9b64cb295eb3809b7f16693c989daab338bad985883fa2",
+  "pdb_guid": "40a18d2156959846929c3ba0cbc54fc2",
+  "pdb_age": 1,
+  "candidate_address": "0x00418D00",
+  "extent_source": "pdb-section-contribution",
+  "pdb_module_index": 2,
+  "decoded_bytes": 1435,
+  "normalization_complete": true,
+  "data_spans": [],
+  "linkages": [
+    {
+      "offset": "0x1",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0xE",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_C@_08KNHJMNEM@pl00?4anm?$AA@",
+      "linked_symbol": "??_C@_08KNHJMNEM@pl00?4anm?$AA@",
+      "local": false,
+      "candidate_target": "0x00426660",
+      "target": "0x0046E42C",
+      "addend": 0,
+      "target_encoded_value": "0x0046E42C"
+    },
+    {
+      "offset": "0x15",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_C@_08GGCFBOOJ@pl01?4anm?$AA@",
+      "linked_symbol": "??_C@_08GGCFBOOJ@pl01?4anm?$AA@",
+      "local": false,
+      "candidate_target": "0x00426654",
+      "target": "0x0046E420",
+      "addend": 0,
+      "target_encoded_value": "0x0046E420"
+    },
+    {
+      "offset": "0x1B",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerVmManager@@3PAUPlayerVmManager@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0361",
+      "local": false,
+      "candidate_target": "0x004275DC",
+      "target": "0x00491C10",
+      "addend": 0,
+      "target_encoded_value": "0x00491C10"
+    },
+    {
+      "offset": "0x26",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z",
+      "linked_symbol": "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z",
+      "local": false,
+      "candidate_target": "0x00405310",
+      "target": "0x00447280",
+      "addend": 0,
+      "target_encoded_value": "0x00022A66"
+    },
+    {
+      "offset": "0x32",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_C@_0DD@KDINFMGL@?$IO?$KJ?$IL?$EA?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+      "linked_symbol": "??_C@_0DD@KDINFMGL@?$IO?$KJ?$IL?$EA?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+      "local": false,
+      "candidate_target": "0x00426620",
+      "target": "0x0046E3EC",
+      "addend": 0,
+      "target_encoded_value": "0x0046E3EC"
+    },
+    {
+      "offset": "0x37",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameErrorContext@th10@@3UGameErrorContext@1@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0243",
+      "local": false,
+      "candidate_target": "0x00427404",
+      "target": "0x00474F70",
+      "addend": 0,
+      "target_encoded_value": "0x00474F70"
+    },
+    {
+      "offset": "0x3C",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+      "linked_symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+      "local": false,
+      "candidate_target": "0x00424370",
+      "target": "0x0044B810",
+      "addend": 0,
+      "target_encoded_value": "0x00026FE0"
+    },
+    {
+      "offset": "0x4C",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerSharedOptionData@@3PAUPlayerOptionDataView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0351",
+      "local": false,
+      "candidate_target": "0x004275B4",
+      "target": "0x00491BF0",
+      "addend": 0,
+      "target_encoded_value": "0x00491BF0"
+    },
+    {
+      "offset": "0x61",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerSharedOptionData@@3PAUPlayerOptionDataView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0351",
+      "local": false,
+      "candidate_target": "0x004275B4",
+      "target": "0x00491BF0",
+      "addend": 0,
+      "target_encoded_value": "0x00491BF0"
+    },
+    {
+      "offset": "0x67",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?PlayerUpdateCallback@@YIHPAUPlayer@@@Z",
+      "linked_symbol": "?PlayerUpdateCallback@@YIHPAUPlayer@@@Z",
+      "local": false,
+      "candidate_target": "0x0041ABC0",
+      "target": "0x00426500",
+      "addend": 0,
+      "target_encoded_value": "0x00426500"
+    },
+    {
+      "offset": "0x6C",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+      "linked_symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+      "local": false,
+      "candidate_target": "0x0040D570",
+      "target": "0x00449ED0",
+      "addend": 0,
+      "target_encoded_value": "0x00025670"
+    },
+    {
+      "offset": "0x77",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerCallbackManager@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0331",
+      "local": false,
+      "candidate_target": "0x00427564",
+      "target": "0x00491BE4",
+      "addend": 0,
+      "target_encoded_value": "0x00491BE4"
+    },
+    {
+      "offset": "0x8B",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+      "linked_symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+      "local": false,
+      "candidate_target": "0x0040D5C0",
+      "target": "0x00449AE0",
+      "addend": 0,
+      "target_encoded_value": "0x00025261"
+    },
+    {
+      "offset": "0x90",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?PlayerDrawCallback@@YIHPAUPlayer@@@Z",
+      "linked_symbol": "?PlayerDrawCallback@@YIHPAUPlayer@@@Z",
+      "local": false,
+      "candidate_target": "0x0041ABD0",
+      "target": "0x00426510",
+      "addend": 0,
+      "target_encoded_value": "0x00426510"
+    },
+    {
+      "offset": "0x98",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+      "linked_symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+      "local": false,
+      "candidate_target": "0x0040D570",
+      "target": "0x00449ED0",
+      "addend": 0,
+      "target_encoded_value": "0x00025644"
+    },
+    {
+      "offset": "0x9E",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerCallbackManager@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0331",
+      "local": false,
+      "candidate_target": "0x00427564",
+      "target": "0x00491BE4",
+      "addend": 0,
+      "target_encoded_value": "0x00491BE4"
+    },
+    {
+      "offset": "0xB7",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+      "linked_symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+      "local": false,
+      "candidate_target": "0x0040D650",
+      "target": "0x00449B70",
+      "addend": 0,
+      "target_encoded_value": "0x000252C5"
+    },
+    {
+      "offset": "0xC8",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+      "linked_symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+      "local": false,
+      "candidate_target": "0x004068C0",
+      "target": "0x00404F30",
+      "addend": 0,
+      "target_encoded_value": "0xFFFE0674"
+    },
+    {
+      "offset": "0xF7",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42c80000",
+      "linked_symbol": "__real@42c80000",
+      "local": false,
+      "candidate_target": "0x004267EC",
+      "target": "0x00470B44",
+      "addend": 0,
+      "target_encoded_value": "0x00470B44"
+    },
+    {
+      "offset": "0xFC",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__ftol2",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0409",
+      "local": false,
+      "candidate_target": "0x0042769C",
+      "target": "0x00463B2C",
+      "addend": 0,
+      "target_encoded_value": "0x0003F23C"
+    },
+    {
+      "offset": "0x10B",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42c80000",
+      "linked_symbol": "__real@42c80000",
+      "local": false,
+      "candidate_target": "0x004267EC",
+      "target": "0x00470B44",
+      "addend": 0,
+      "target_encoded_value": "0x00470B44"
+    },
+    {
+      "offset": "0x110",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__ftol2",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0409",
+      "local": false,
+      "candidate_target": "0x0042769C",
+      "target": "0x00463B2C",
+      "addend": 0,
+      "target_encoded_value": "0x0003F228"
+    },
+    {
+      "offset": "0x11F",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42c80000",
+      "linked_symbol": "__real@42c80000",
+      "local": false,
+      "candidate_target": "0x004267EC",
+      "target": "0x00470B44",
+      "addend": 0,
+      "target_encoded_value": "0x00470B44"
+    },
+    {
+      "offset": "0x124",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__ftol2",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0409",
+      "local": false,
+      "candidate_target": "0x0042769C",
+      "target": "0x00463B2C",
+      "addend": 0,
+      "target_encoded_value": "0x0003F214"
+    },
+    {
+      "offset": "0x133",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42c80000",
+      "linked_symbol": "__real@42c80000",
+      "local": false,
+      "candidate_target": "0x004267EC",
+      "target": "0x00470B44",
+      "addend": 0,
+      "target_encoded_value": "0x00470B44"
+    },
+    {
+      "offset": "0x138",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__ftol2",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0409",
+      "local": false,
+      "candidate_target": "0x0042769C",
+      "target": "0x00463B2C",
+      "addend": 0,
+      "target_encoded_value": "0x0003F200"
+    },
+    {
+      "offset": "0x175",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerTimerScale@@3MA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0358",
+      "local": false,
+      "candidate_target": "0x004275D0",
+      "target": "0x00476F78",
+      "addend": 0,
+      "target_encoded_value": "0x00476F78"
+    },
+    {
+      "offset": "0x1BB",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x1C2",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerOptionValue04ByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0345",
+      "local": false,
+      "candidate_target": "0x0042759C",
+      "target": "0x00476FB8",
+      "addend": 0,
+      "target_encoded_value": "0x00476FB8"
+    },
+    {
+      "offset": "0x1D1",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x1D8",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerOptionValue0CByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0347",
+      "local": false,
+      "candidate_target": "0x004275A4",
+      "target": "0x00476FB0",
+      "addend": 0,
+      "target_encoded_value": "0x00476FB0"
+    },
+    {
+      "offset": "0x1E7",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x1EE",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerOptionValue08ByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0346",
+      "local": false,
+      "candidate_target": "0x004275A0",
+      "target": "0x00476FA0",
+      "addend": 0,
+      "target_encoded_value": "0x00476FA0"
+    },
+    {
+      "offset": "0x20B",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f000000",
+      "linked_symbol": "__real@3f000000",
+      "local": false,
+      "candidate_target": "0x00426784",
+      "target": "0x00470B0C",
+      "addend": 0,
+      "target_encoded_value": "0x00470B0C"
+    },
+    {
+      "offset": "0x223",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x22A",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerOptionValue0CByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0347",
+      "local": false,
+      "candidate_target": "0x004275A4",
+      "target": "0x00476FB0",
+      "addend": 0,
+      "target_encoded_value": "0x00476FB0"
+    },
+    {
+      "offset": "0x236",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f000000",
+      "linked_symbol": "__real@3f000000",
+      "local": false,
+      "candidate_target": "0x00426784",
+      "target": "0x00470B0C",
+      "addend": 0,
+      "target_encoded_value": "0x00470B0C"
+    },
+    {
+      "offset": "0x248",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x24F",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerExtent2ByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0337",
+      "local": false,
+      "candidate_target": "0x0042757C",
+      "target": "0x00476FA8",
+      "addend": 0,
+      "target_encoded_value": "0x00476FA8"
+    },
+    {
+      "offset": "0x25B",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f000000",
+      "linked_symbol": "__real@3f000000",
+      "local": false,
+      "candidate_target": "0x00426784",
+      "target": "0x00470B0C",
+      "addend": 0,
+      "target_encoded_value": "0x00470B0C"
+    },
+    {
+      "offset": "0x54E",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z",
+      "linked_symbol": "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z",
+      "local": false,
+      "candidate_target": "0x0041AD70",
+      "target": "0x00426F70",
+      "addend": 0,
+      "target_encoded_value": "0x0000222E"
+    },
+    {
+      "offset": "0x55C",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x561",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427448",
+      "target": "0x00474C40",
+      "addend": 44,
+      "target_encoded_value": "0x00474C6C"
+    },
+    {
+      "offset": "0x56D",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerShotDataFilenames@@3PAPBDA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0353",
+      "local": false,
+      "candidate_target": "0x004275BC",
+      "target": "0x00476FC0",
+      "addend": 0,
+      "target_encoded_value": "0x00476FC0"
+    },
+    {
+      "offset": "0x574",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?PlayerLoadOptionData@@YAHPAUPlayer@@PBD@Z",
+      "linked_symbol": "?PlayerLoadOptionData@@YAHPAUPlayer@@PBD@Z",
+      "local": false,
+      "candidate_target": "0x00418C10",
+      "target": "0x00426520",
+      "addend": 0,
+      "target_encoded_value": "0x000017B8"
+    },
+    {
+      "offset": "0x581",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_C@_0DD@KDINFMGL@?$IO?$KJ?$IL?$EA?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+      "linked_symbol": "??_C@_0DD@KDINFMGL@?$IO?$KJ?$IL?$EA?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+      "local": false,
+      "candidate_target": "0x00426620",
+      "target": "0x0046E3EC",
+      "addend": 0,
+      "target_encoded_value": "0x0046E3EC"
+    },
+    {
+      "offset": "0x586",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameErrorContext@th10@@3UGameErrorContext@1@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0243",
+      "local": false,
+      "candidate_target": "0x00427404",
+      "target": "0x00474F70",
+      "addend": 0,
+      "target_encoded_value": "0x00474F70"
+    },
+    {
+      "offset": "0x58B",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+      "linked_symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+      "local": false,
+      "candidate_target": "0x00424370",
+      "target": "0x0044B810",
+      "addend": 0,
+      "target_encoded_value": "0x00026A91"
+    }
+  ],
+  "raw_equal": false,
+  "first_differences": [
+    {
+      "offset": "0x73",
+      "linked": 70,
+      "target": 86
+    },
+    {
+      "offset": "0x75",
+      "linked": 139,
+      "target": 161
+    },
+    {
+      "offset": "0x76",
+      "linked": 13,
+      "target": 228
+    },
+    {
+      "offset": "0x77",
+      "linked": 228,
+      "target": 27
+    },
+    {
+      "offset": "0x78",
+      "linked": 27,
+      "target": 73
+    },
+    {
+      "offset": "0x79",
+      "linked": 73,
+      "target": 0
+    },
+    {
+      "offset": "0x7A",
+      "linked": 0,
+      "target": 131
+    },
+    {
+      "offset": "0x7B",
+      "linked": 131,
+      "target": 226
+    },
+    {
+      "offset": "0x7C",
+      "linked": 224,
+      "target": 253
+    },
+    {
+      "offset": "0x7D",
+      "linked": 253,
+      "target": 80
+    },
+    {
+      "offset": "0x7E",
+      "linked": 81,
+      "target": 191
+    },
+    {
+      "offset": "0x7F",
+      "linked": 191,
+      "target": 16
+    },
+    {
+      "offset": "0x80",
+      "linked": 16,
+      "target": 0
+    },
+    {
+      "offset": "0x83",
+      "linked": 0,
+      "target": 137
+    },
+    {
+      "offset": "0x84",
+      "linked": 137,
+      "target": 94
+    },
+    {
+      "offset": "0x85",
+      "linked": 94,
+      "target": 32
+    },
+    {
+      "offset": "0x86",
+      "linked": 32,
+      "target": 137
+    },
+    {
+      "offset": "0x87",
+      "linked": 137,
+      "target": 86
+    },
+    {
+      "offset": "0x88",
+      "linked": 70,
+      "target": 4
+    },
+    {
+      "offset": "0x89",
+      "linked": 4,
+      "target": 232
+    },
+    {
+      "offset": "0x8A",
+      "linked": 232,
+      "target": 98
+    },
+    {
+      "offset": "0x8B",
+      "linked": 97,
+      "target": 82
+    },
+    {
+      "offset": "0x8C",
+      "linked": 82,
+      "target": 2
+    },
+    {
+      "offset": "0x8D",
+      "linked": 2,
+      "target": 0
+    },
+    {
+      "offset": "0x8E",
+      "linked": 0,
+      "target": 104
+    },
+    {
+      "offset": "0x8F",
+      "linked": 104,
+      "target": 16
+    },
+    {
+      "offset": "0x90",
+      "linked": 16,
+      "target": 101
+    },
+    {
+      "offset": "0x91",
+      "linked": 101,
+      "target": 66
+    },
+    {
+      "offset": "0x92",
+      "linked": 66,
+      "target": 0
+    },
+    {
+      "offset": "0x93",
+      "linked": 0,
+      "target": 137
+    },
+    {
+      "offset": "0x94",
+      "linked": 137,
+      "target": 115
+    },
+    {
+      "offset": "0x95",
+      "linked": 115,
+      "target": 8
+    }
+  ],
+  "capstone_version": "5.0.6",
+  "all_differences": [
+    {
+      "offset": 115,
+      "native": 70,
+      "target": 86
+    },
+    {
+      "offset": 117,
+      "native": 139,
+      "target": 161
+    },
+    {
+      "offset": 118,
+      "native": 13,
+      "target": 228
+    },
+    {
+      "offset": 119,
+      "native": 228,
+      "target": 27
+    },
+    {
+      "offset": 120,
+      "native": 27,
+      "target": 73
+    },
+    {
+      "offset": 121,
+      "native": 73,
+      "target": 0
+    },
+    {
+      "offset": 122,
+      "native": 0,
+      "target": 131
+    },
+    {
+      "offset": 123,
+      "native": 131,
+      "target": 226
+    },
+    {
+      "offset": 124,
+      "native": 224,
+      "target": 253
+    },
+    {
+      "offset": 125,
+      "native": 253,
+      "target": 80
+    },
+    {
+      "offset": 126,
+      "native": 81,
+      "target": 191
+    },
+    {
+      "offset": 127,
+      "native": 191,
+      "target": 16
+    },
+    {
+      "offset": 128,
+      "native": 16,
+      "target": 0
+    },
+    {
+      "offset": 131,
+      "native": 0,
+      "target": 137
+    },
+    {
+      "offset": 132,
+      "native": 137,
+      "target": 94
+    },
+    {
+      "offset": 133,
+      "native": 94,
+      "target": 32
+    },
+    {
+      "offset": 134,
+      "native": 32,
+      "target": 137
+    },
+    {
+      "offset": 135,
+      "native": 137,
+      "target": 86
+    },
+    {
+      "offset": 136,
+      "native": 70,
+      "target": 4
+    },
+    {
+      "offset": 137,
+      "native": 4,
+      "target": 232
+    },
+    {
+      "offset": 138,
+      "native": 232,
+      "target": 98
+    },
+    {
+      "offset": 139,
+      "native": 97,
+      "target": 82
+    },
+    {
+      "offset": 140,
+      "native": 82,
+      "target": 2
+    },
+    {
+      "offset": 141,
+      "native": 2,
+      "target": 0
+    },
+    {
+      "offset": 142,
+      "native": 0,
+      "target": 104
+    },
+    {
+      "offset": 143,
+      "native": 104,
+      "target": 16
+    },
+    {
+      "offset": 144,
+      "native": 16,
+      "target": 101
+    },
+    {
+      "offset": 145,
+      "native": 101,
+      "target": 66
+    },
+    {
+      "offset": 146,
+      "native": 66,
+      "target": 0
+    },
+    {
+      "offset": 147,
+      "native": 0,
+      "target": 137
+    },
+    {
+      "offset": 148,
+      "native": 137,
+      "target": 115
+    },
+    {
+      "offset": 149,
+      "native": 115,
+      "target": 8
+    },
+    {
+      "offset": 150,
+      "native": 8,
+      "target": 232
+    },
+    {
+      "offset": 151,
+      "native": 232,
+      "target": 69
+    },
+    {
+      "offset": 152,
+      "native": 68,
+      "target": 86
+    },
+    {
+      "offset": 153,
+      "native": 86,
+      "target": 2
+    },
+    {
+      "offset": 154,
+      "native": 2,
+      "target": 0
+    },
+    {
+      "offset": 155,
+      "native": 0,
+      "target": 139
+    },
+    {
+      "offset": 156,
+      "native": 139,
+      "target": 13
+    },
+    {
+      "offset": 157,
+      "native": 21,
+      "target": 228
+    },
+    {
+      "offset": 158,
+      "native": 228,
+      "target": 27
+    },
+    {
+      "offset": 159,
+      "native": 27,
+      "target": 73
+    },
+    {
+      "offset": 160,
+      "native": 73,
+      "target": 0
+    },
+    {
+      "offset": 161,
+      "native": 0,
+      "target": 139
+    },
+    {
+      "offset": 162,
+      "native": 139,
+      "target": 240
+    },
+    {
+      "offset": 163,
+      "native": 240,
+      "target": 131
+    },
+    {
+      "offset": 164,
+      "native": 139,
+      "target": 102
+    },
+    {
+      "offset": 165,
+      "native": 70,
+      "target": 4
+    },
+    {
+      "offset": 166,
+      "native": 4,
+      "target": 253
+    },
+    {
+      "offset": 167,
+      "native": 131,
+      "target": 81
+    },
+    {
+      "offset": 168,
+      "native": 224,
+      "target": 191
+    },
+    {
+      "offset": 169,
+      "native": 253,
+      "target": 22
+    },
+    {
+      "offset": 170,
+      "native": 82,
+      "target": 0
+    },
+    {
+      "offset": 171,
+      "native": 191,
+      "target": 0
+    },
+    {
+      "offset": 172,
+      "native": 22,
+      "target": 0
+    },
+    {
+      "offset": 173,
+      "native": 0,
+      "target": 137
+    },
+    {
+      "offset": 174,
+      "native": 0,
+      "target": 94
+    },
+    {
+      "offset": 175,
+      "native": 0,
+      "target": 32
+    },
+    {
+      "offset": 176,
+      "native": 137,
+      "target": 232
+    },
+    {
+      "offset": 177,
+      "native": 70,
+      "target": 203
+    },
+    {
+      "offset": 178,
+      "native": 4,
+      "target": 82
+    },
+    {
+      "offset": 179,
+      "native": 137,
+      "target": 2
+    },
+    {
+      "offset": 180,
+      "native": 94,
+      "target": 0
+    },
+    {
+      "offset": 181,
+      "native": 32,
+      "target": 139
+    },
+    {
+      "offset": 182,
+      "native": 232,
+      "target": 83
+    },
+    {
+      "offset": 183,
+      "native": 197,
+      "target": 16
+    },
+    {
+      "offset": 184,
+      "native": 82,
+      "target": 137
+    },
+    {
+      "offset": 185,
+      "native": 2,
+      "target": 115
+    },
+    {
+      "offset": 186,
+      "native": 0,
+      "target": 12
+    },
+    {
+      "offset": 187,
+      "native": 139,
+      "target": 141
+    },
+    {
+      "offset": 188,
+      "native": 67,
+      "target": 115
+    },
+    {
+      "offset": 189,
+      "native": 16,
+      "target": 20
+    },
+    {
+      "offset": 190,
+      "native": 80,
+      "target": 82
+    },
+    {
+      "offset": 191,
+      "native": 141,
+      "target": 51
+    },
+    {
+      "offset": 192,
+      "native": 83,
+      "target": 192
+    },
+    {
+      "offset": 193,
+      "native": 20,
+      "target": 232
+    },
+    {
+      "offset": 194,
+      "native": 51,
+      "target": 122
+    },
+    {
+      "offset": 195,
+      "native": 192,
+      "target": 6
+    },
+    {
+      "offset": 196,
+      "native": 137,
+      "target": 254
+    },
+    {
+      "offset": 197,
+      "native": 115,
+      "target": 255
+    },
+    {
+      "offset": 198,
+      "native": 12,
+      "target": 139
+    },
+    {
+      "offset": 199,
+      "native": 232,
+      "target": 179
+    },
+    {
+      "offset": 200,
+      "native": 116,
+      "target": 92
+    },
+    {
+      "offset": 201,
+      "native": 6,
+      "target": 4
+    },
+    {
+      "offset": 202,
+      "native": 254,
+      "target": 0
+    },
+    {
+      "offset": 203,
+      "native": 255,
+      "target": 0
+    },
+    {
+      "offset": 204,
+      "native": 139,
+      "target": 137
+    },
+    {
+      "offset": 205,
+      "native": 179,
+      "target": 171
+    },
+    {
+      "offset": 206,
+      "native": 92,
+      "target": 192
+    },
+    {
+      "offset": 207,
+      "native": 4,
+      "target": 3
+    },
+    {
+      "offset": 210,
+      "native": 137,
+      "target": 199
+    },
+    {
+      "offset": 211,
+      "native": 171,
+      "target": 131
+    },
+    {
+      "offset": 212,
+      "native": 192,
+      "target": 196
+    },
+    {
+      "offset": 216,
+      "native": 199,
+      "target": 0
+    },
+    {
+      "offset": 217,
+      "native": 131,
+      "target": 0
+    },
+    {
+      "offset": 218,
+      "native": 196,
+      "target": 200
+    },
+    {
+      "offset": 219,
+      "native": 3,
+      "target": 67
+    },
+    {
+      "offset": 220,
+      "native": 0,
+      "target": 137
+    },
+    {
+      "offset": 221,
+      "native": 0,
+      "target": 171
+    },
+    {
+      "offset": 222,
+      "native": 0,
+      "target": 204
+    },
+    {
+      "offset": 223,
+      "native": 0,
+      "target": 3
+    },
+    {
+      "offset": 224,
+      "native": 200,
+      "target": 0
+    },
+    {
+      "offset": 225,
+      "native": 67,
+      "target": 0
+    },
+    {
+      "offset": 226,
+      "native": 137,
+      "target": 199
+    },
+    {
+      "offset": 227,
+      "native": 171,
+      "target": 131
+    },
+    {
+      "offset": 228,
+      "native": 204,
+      "target": 208
+    },
+    {
+      "offset": 232,
+      "native": 199,
+      "target": 64
+    },
+    {
+      "offset": 233,
+      "native": 131,
+      "target": 156
+    },
+    {
+      "offset": 234,
+      "native": 208,
+      "target": 0
+    },
+    {
+      "offset": 235,
+      "native": 3,
+      "target": 0
+    },
+    {
+      "offset": 236,
+      "native": 0,
+      "target": 217
+    },
+    {
+      "offset": 237,
+      "native": 0,
+      "target": 70
+    },
+    {
+      "offset": 238,
+      "native": 64,
+      "target": 16
+    },
+    {
+      "offset": 239,
+      "native": 156,
+      "target": 216
+    },
+    {
+      "offset": 240,
+      "native": 0,
+      "target": 13
+    },
+    {
+      "offset": 241,
+      "native": 0,
+      "target": 68
+    },
+    {
+      "offset": 242,
+      "native": 217,
+      "target": 11
+    },
+    {
+      "offset": 243,
+      "native": 70,
+      "target": 71
+    },
+    {
+      "offset": 244,
+      "native": 16,
+      "target": 0
+    },
+    {
+      "offset": 245,
+      "native": 216,
+      "target": 232
+    },
+    {
+      "offset": 246,
+      "native": 13,
+      "target": 66
+    },
+    {
+      "offset": 247,
+      "native": 68,
+      "target": 242
+    },
+    {
+      "offset": 248,
+      "native": 11,
+      "target": 3
+    },
+    {
+      "offset": 249,
+      "native": 71,
+      "target": 0
+    },
+    {
+      "offset": 250,
+      "native": 0,
+      "target": 137
+    },
+    {
+      "offset": 251,
+      "native": 232,
+      "target": 131
+    },
+    {
+      "offset": 252,
+      "native": 60,
+      "target": 212
+    },
+    {
+      "offset": 253,
+      "native": 242,
+      "target": 3
+    },
+    {
+      "offset": 254,
+      "native": 3,
+      "target": 0
+    },
+    {
+      "offset": 256,
+      "native": 137,
+      "target": 217
+    },
+    {
+      "offset": 257,
+      "native": 131,
+      "target": 70
+    },
+    {
+      "offset": 258,
+      "native": 212,
+      "target": 20
+    },
+    {
+      "offset": 259,
+      "native": 3,
+      "target": 216
+    },
+    {
+      "offset": 260,
+      "native": 0,
+      "target": 13
+    },
+    {
+      "offset": 261,
+      "native": 0,
+      "target": 68
+    },
+    {
+      "offset": 262,
+      "native": 217,
+      "target": 11
+    },
+    {
+      "offset": 263,
+      "native": 70,
+      "target": 71
+    },
+    {
+      "offset": 264,
+      "native": 20,
+      "target": 0
+    },
+    {
+      "offset": 265,
+      "native": 216,
+      "target": 232
+    },
+    {
+      "offset": 266,
+      "native": 13,
+      "target": 46
+    },
+    {
+      "offset": 267,
+      "native": 68,
+      "target": 242
+    },
+    {
+      "offset": 268,
+      "native": 11,
+      "target": 3
+    },
+    {
+      "offset": 269,
+      "native": 71,
+      "target": 0
+    },
+    {
+      "offset": 270,
+      "native": 0,
+      "target": 137
+    },
+    {
+      "offset": 271,
+      "native": 232,
+      "target": 131
+    },
+    {
+      "offset": 272,
+      "native": 40,
+      "target": 216
+    },
+    {
+      "offset": 273,
+      "native": 242,
+      "target": 3
+    },
+    {
+      "offset": 274,
+      "native": 3,
+      "target": 0
+    },
+    {
+      "offset": 276,
+      "native": 137,
+      "target": 217
+    },
+    {
+      "offset": 277,
+      "native": 131,
+      "target": 70
+    },
+    {
+      "offset": 278,
+      "native": 216,
+      "target": 24
+    },
+    {
+      "offset": 279,
+      "native": 3,
+      "target": 216
+    },
+    {
+      "offset": 280,
+      "native": 0,
+      "target": 13
+    },
+    {
+      "offset": 281,
+      "native": 0,
+      "target": 68
+    },
+    {
+      "offset": 282,
+      "native": 217,
+      "target": 11
+    },
+    {
+      "offset": 283,
+      "native": 70,
+      "target": 71
+    },
+    {
+      "offset": 284,
+      "native": 24,
+      "target": 0
+    },
+    {
+      "offset": 285,
+      "native": 216,
+      "target": 232
+    },
+    {
+      "offset": 286,
+      "native": 13,
+      "target": 26
+    },
+    {
+      "offset": 287,
+      "native": 68,
+      "target": 242
+    },
+    {
+      "offset": 288,
+      "native": 11,
+      "target": 3
+    },
+    {
+      "offset": 289,
+      "native": 71,
+      "target": 0
+    },
+    {
+      "offset": 290,
+      "native": 0,
+      "target": 137
+    },
+    {
+      "offset": 291,
+      "native": 232,
+      "target": 131
+    },
+    {
+      "offset": 292,
+      "native": 20,
+      "target": 220
+    },
+    {
+      "offset": 293,
+      "native": 242,
+      "target": 3
+    },
+    {
+      "offset": 294,
+      "native": 3,
+      "target": 0
+    },
+    {
+      "offset": 296,
+      "native": 137,
+      "target": 217
+    },
+    {
+      "offset": 297,
+      "native": 131,
+      "target": 70
+    },
+    {
+      "offset": 298,
+      "native": 220,
+      "target": 28
+    },
+    {
+      "offset": 299,
+      "native": 3,
+      "target": 216
+    },
+    {
+      "offset": 300,
+      "native": 0,
+      "target": 13
+    },
+    {
+      "offset": 301,
+      "native": 0,
+      "target": 68
+    },
+    {
+      "offset": 302,
+      "native": 217,
+      "target": 11
+    },
+    {
+      "offset": 303,
+      "native": 70,
+      "target": 71
+    },
+    {
+      "offset": 304,
+      "native": 28,
+      "target": 0
+    },
+    {
+      "offset": 305,
+      "native": 216,
+      "target": 232
+    },
+    {
+      "offset": 306,
+      "native": 13,
+      "target": 6
+    },
+    {
+      "offset": 307,
+      "native": 68,
+      "target": 242
+    },
+    {
+      "offset": 308,
+      "native": 11,
+      "target": 3
+    },
+    {
+      "offset": 309,
+      "native": 71,
+      "target": 0
+    },
+    {
+      "offset": 310,
+      "native": 0,
+      "target": 137
+    },
+    {
+      "offset": 311,
+      "native": 232,
+      "target": 131
+    },
+    {
+      "offset": 312,
+      "native": 0,
+      "target": 224
+    },
+    {
+      "offset": 313,
+      "native": 242,
+      "target": 3
+    },
+    {
+      "offset": 314,
+      "native": 3,
+      "target": 0
+    },
+    {
+      "offset": 316,
+      "native": 137,
+      "target": 141
+    },
+    {
+      "offset": 318,
+      "native": 224,
+      "target": 108
+    },
+    {
+      "offset": 319,
+      "native": 3,
+      "target": 67
+    },
+    {
+      "offset": 322,
+      "native": 141,
+      "target": 185
+    },
+    {
+      "offset": 323,
+      "native": 131,
+      "target": 33
+    },
+    {
+      "offset": 324,
+      "native": 108,
+      "target": 0
+    },
+    {
+      "offset": 325,
+      "native": 67,
+      "target": 0
+    },
+    {
+      "offset": 327,
+      "native": 0,
+      "target": 235
+    },
+    {
+      "offset": 328,
+      "native": 185,
+      "target": 7
+    },
+    {
+      "offset": 329,
+      "native": 33,
+      "target": 141
+    },
+    {
+      "offset": 330,
+      "native": 0,
+      "target": 164
+    },
+    {
+      "offset": 331,
+      "native": 0,
+      "target": 36
+    },
+    {
+      "offset": 333,
+      "native": 141,
+      "target": 0
+    },
+    {
+      "offset": 334,
+      "native": 73,
+      "target": 0
+    },
+    {
+      "offset": 412,
+      "native": 131,
+      "target": 199
+    },
+    {
+      "offset": 413,
+      "native": 206,
+      "target": 131
+    },
+    {
+      "offset": 414,
+      "native": 255,
+      "target": 104
+    },
+    {
+      "offset": 415,
+      "native": 199,
+      "target": 4
+    },
+    {
+      "offset": 416,
+      "native": 131,
+      "target": 0
+    },
+    {
+      "offset": 417,
+      "native": 104,
+      "target": 0
+    },
+    {
+      "offset": 418,
+      "native": 4,
+      "target": 0
+    },
+    {
+      "offset": 420,
+      "native": 0,
+      "target": 128
+    },
+    {
+      "offset": 421,
+      "native": 0,
+      "target": 191
+    },
+    {
+      "offset": 422,
+      "native": 0,
+      "target": 199
+    },
+    {
+      "offset": 423,
+      "native": 128,
+      "target": 131
+    },
+    {
+      "offset": 424,
+      "native": 191,
+      "target": 96
+    },
+    {
+      "offset": 425,
+      "native": 199,
+      "target": 4
+    },
+    {
+      "offset": 426,
+      "native": 131,
+      "target": 0
+    },
+    {
+      "offset": 427,
+      "native": 96,
+      "target": 0
+    },
+    {
+      "offset": 428,
+      "native": 4,
+      "target": 254
+    },
+    {
+      "offset": 429,
+      "native": 0,
+      "target": 255
+    },
+    {
+      "offset": 430,
+      "native": 0,
+      "target": 255
+    },
+    {
+      "offset": 431,
+      "native": 254,
+      "target": 255
+    },
+    {
+      "offset": 432,
+      "native": 255,
+      "target": 131
+    },
+    {
+      "offset": 433,
+      "native": 255,
+      "target": 206
+    },
+    {
+      "offset": 721,
+      "native": 196,
+      "target": 32
+    },
+    {
+      "offset": 722,
+      "native": 3,
+      "target": 4
+    },
+    {
+      "offset": 727,
+      "native": 32,
+      "target": 196
+    },
+    {
+      "offset": 728,
+      "native": 4,
+      "target": 3
+    },
+    {
+      "offset": 827,
+      "native": 217,
+      "target": 137
+    },
+    {
+      "offset": 828,
+      "native": 92,
+      "target": 120
+    },
+    {
+      "offset": 829,
+      "native": 36,
+      "target": 4
+    },
+    {
+      "offset": 830,
+      "native": 20,
+      "target": 217
+    },
+    {
+      "offset": 831,
+      "native": 137,
+      "target": 92
+    },
+    {
+      "offset": 832,
+      "native": 120,
+      "target": 36
+    },
+    {
+      "offset": 833,
+      "native": 4,
+      "target": 20
+    },
+    {
+      "offset": 1316,
+      "native": 83,
+      "target": 199
+    },
+    {
+      "offset": 1317,
+      "native": 199,
+      "target": 131
+    },
+    {
+      "offset": 1318,
+      "native": 131,
+      "target": 16
+    },
+    {
+      "offset": 1319,
+      "native": 16,
+      "target": 67
+    },
+    {
+      "offset": 1320,
+      "native": 67,
+      "target": 0
+    },
+    {
+      "offset": 1322,
+      "native": 0,
+      "target": 120
+    },
+    {
+      "offset": 1323,
+      "native": 120,
+      "target": 0
+    },
+    {
+      "offset": 1326,
+      "native": 0,
+      "target": 199
+    },
+    {
+      "offset": 1327,
+      "native": 199,
+      "target": 131
+    },
+    {
+      "offset": 1328,
+      "native": 131,
+      "target": 20
+    },
+    {
+      "offset": 1329,
+      "native": 20,
+      "target": 67
+    },
+    {
+      "offset": 1330,
+      "native": 67,
+      "target": 0
+    },
+    {
+      "offset": 1334,
+      "native": 0,
+      "target": 240
+    },
+    {
+      "offset": 1335,
+      "native": 240,
+      "target": 66
+    },
+    {
+      "offset": 1336,
+      "native": 66,
+      "target": 199
+    },
+    {
+      "offset": 1337,
+      "native": 199,
+      "target": 131
+    },
+    {
+      "offset": 1338,
+      "native": 131,
+      "target": 12
+    },
+    {
+      "offset": 1339,
+      "native": 12,
+      "target": 67
+    },
+    {
+      "offset": 1340,
+      "native": 67,
+      "target": 0
+    },
+    {
+      "offset": 1342,
+      "native": 0,
+      "target": 119
+    },
+    {
+      "offset": 1343,
+      "native": 119,
+      "target": 0
+    },
+    {
+      "offset": 1346,
+      "native": 0,
+      "target": 83
+    },
+    {
+      "offset": 1370,
+      "native": 139,
+      "target": 161
+    },
+    {
+      "offset": 1371,
+      "native": 13,
+      "target": 104
+    },
+    {
+      "offset": 1372,
+      "native": 104,
+      "target": 76
+    },
+    {
+      "offset": 1373,
+      "native": 76,
+      "target": 71
+    },
+    {
+      "offset": 1374,
+      "native": 71,
+      "target": 0
+    },
+    {
+      "offset": 1375,
+      "native": 0,
+      "target": 139
+    },
+    {
+      "offset": 1376,
+      "native": 161,
+      "target": 13
+    },
+    {
+      "offset": 1382,
+      "native": 4,
+      "target": 20
+    },
+    {
+      "offset": 1383,
+      "native": 72,
+      "target": 65
+    },
+    {
+      "offset": 1385,
+      "native": 193,
+      "target": 208
+    },
+    {
+      "offset": 1388,
+      "native": 133,
+      "target": 149
+    }
+  ],
+  "acceptance_authority": "none",
+  "claim": "private complete-parent diagnostic only",
+  "independent_target_field_count": 49,
+  "source_report_sha256": "3bc76f0bd178a897d0f3de75642e092b0959b7ced9aafcc78f082a39ec2d646c",
+  "producer_sha256": "2078280502eedb5b062c94c85ffacc79123fc88b2c8de5451534ba77770ce62b"
+}

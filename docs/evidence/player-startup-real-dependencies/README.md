@@ -1,5 +1,10 @@
 # Player startup: real dependencies and shared storage
 
+Historical source checkpoint07b1be2. The current ordering refinement is recorded
+in [the successor packet](../player-initialization-ordering/README.md):1170/1435
+matching with265 differences. The1123/312 result below belongs to this packet's
+source and input pins; do not treat it as the current residual.
+
 2026-10-23, starting 13047bf. PlayerInitialize now uses its real Chain, resource,
 error-log and loaded-shot-data dependencies. Its complete linked candidate is
 1435 bytes, the target size, but remains nonexact: independent replay of all49

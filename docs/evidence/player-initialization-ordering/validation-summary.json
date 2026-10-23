@@ -1,0 +1,81 @@
+{
+  "state": "active-incomplete",
+  "source_head_before": "07b1be2324b8ece4697ead2ac5d6f19bcdda28bc",
+  "maintained_parent": {
+    "bytes": 1435,
+    "matched_bytes": 1170,
+    "different_bytes": 265,
+    "independent_fields": 49,
+    "result": "mismatch"
+  },
+  "focused_guards": {
+    "units": 8,
+    "bytes": 1753,
+    "fields": 99,
+    "result": "exact",
+    "cached_artifacts": true,
+    "report_sha256": "bb4e7bc4611e3bd9cec5e2a3aa3e9379f1793da56142d4560725da4bf48bcb9c"
+  },
+  "private_maintained_public_owners": {
+    "count": 519,
+    "bytes": 140370,
+    "raw_equal": true,
+    "unique_inventory": true,
+    "scope_excludes": "static/unowned fragments"
+  },
+  "final_input_attestation": {
+    "maintained_source_files": 108,
+    "frozen_inputs": 373,
+    "unrelated_untracked_D3D_files": 9,
+    "all_hashes_pass": true
+  },
+  "preflight_checks": [
+    "verify-target.py",
+    "verify-toolchain.py --execute",
+    "validate-tracking.py --require-target",
+    "report-reconstruction-status.py"
+  ],
+  "preflight_result": "passed",
+  "final_checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/check-doc-hygiene.py",
+      "result": "passed"
+    },
+    {
+      "command": "git -c gc.auto=0 -c pack.threads=1 diff --check",
+      "result": "passed"
+    }
+  ],
+  "exact_ledger_changed": false,
+  "canonical_recipe_changed": false,
+  "headers_changed": false,
+  "new_exact_credit": 0,
+  "new_game_cold_build": "not performed for cleanup; recovered maintained compilation already complete",
+  "full_ci": "not-run under explicit operator focused-validation preference",
+  "product_runtime_validation": "not-performed",
+  "git_packing": {
+    "command": "git -c gc.auto=0 -c pack.threads=1 repack -a -d",
+    "before": "count: 274\nsize: 6400\nin-pack: 11013\npacks: 1\nsize-pack: 8545\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+    "after": "count: 232\nsize: 5316\nin-pack: 11055\npacks: 1\nsize-pack: 8867\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+    "refs_and_commits_unchanged": true,
+    "all_object_ids_unchanged": true,
+    "object_count": 11287,
+    "objects_sha256": "03ded0e246f6129509e71d4bd913c7f3f5173f5ee152df2a78b1ecdebe90166c",
+    "fsck_full": "passed",
+    "history_rewrite_pruning_or_reflog_expiration": false
+  },
+  "cleanup_receipt_sha256": "58e752f0bf320a0b1f866f5fa62fdacae8709bd859c38a3bd8299e951a947ade",
+  "unrelated_d3d_hash_unchanged": 9
+}

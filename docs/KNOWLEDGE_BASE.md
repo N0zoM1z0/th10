@@ -5570,6 +5570,9 @@ the nine unrelated D3D files are retained. No new exact, product or runtime cred
 
 ## Player startup real dependencies and selection storage (2026-10-23)
 
+Historical checkpoint07b1be2; the ordering refinement below supersedes its
+1123/312 residual while preserving the original evidence pins.
+
 The [real-dependency packet](evidence/player-startup-real-dependencies/README.md)
 replaces declaration-only Chain/resource/log/data-loader calls in the complete
 Player initializer. The necessary .sht loader426520/229 is source-present, not
@@ -5594,3 +5597,28 @@ flag snapshot, index/multiply order and PlayerOb1 are complete-parent neutral.
 Pointer history, option-value locals and timer members regress. Keep
 the complete residual and avoid repeating these forms without a new premise.
 Exact counts and the product/runtime/semantic gates remain unchanged.
+
+## Player startup ordering recovered for handoff (2026-10-23)
+
+The [ordering packet](evidence/player-initialization-ordering/README.md) records
+the current1435-byte PlayerInitialize4247F0. Complete replay with all49 independently
+identified address fields matches1170/leaves265 differences, up47 versus07b1be2.
+The adopted node-flags snapshot, contiguous fixed-position pair storage view and
+three compiler-only read/write barriers change284 bytes:68 repairs and21 losses.
+This is a measured net improvement; original barriers, threading and physical
+ownership remain unknown. No CPU fence, dummy write or forced ABI is introduced.
+
+Private/maintained compilations reproduce all519 unique complete public PDB
+owners raw, totaling140370 bytes. Eight complete shared guards pass1753/all99.
+The16 reused game inputs do not constitute independent whole-graph cold builds.
+The VM core-root control emits a202-byte wrapper but breaks the core275/273;
+the target's extra wrapper bytes belong to the receiver bridge, not a fabricated
+return. A local history-pair temporary emits1471 and is rejected without cropping.
+The current packet distinguishes measured controls from the unexecuted coherent
+Chain member-interface hypothesis. Source presence, exact counts and native
+product/runtime/semantic gates remain independent and unchanged.
+
+The same packet records13 completed private control builds archived losslessly
+after per-file verification, with both current carriers and all source/producers
+retained expanded. The current handoff has restoration commands and remaining
+large-owner routes. The nine unrelated untracked D3D files remain untouched.
