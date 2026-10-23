@@ -1,5 +1,8 @@
 # Player startup candidates recovered for handoff
 
+Historical checkpoint13047bf. Current maintained work is recorded in
+[the real-dependency packet](../player-startup-real-dependencies/README.md).
+
 2026-10-23, maintained source 040f1e8. These experiments concern the complete
 1435-byte PlayerInitialize owner at 0x4247F0. No candidate is adopted and no exact
 ledger changes. Maintained Player remains 1116 bytes in the previously measured
@@ -44,7 +47,7 @@ do not establish an exact improvement, exhaustive field binding or runtime.
 
 The [evidence](evidence.json) pins the actual private inputs, producers, complete
 PDB owners, diagnostic scores, guards, call edges and all measured artifacts.
-Five adjacent patches apply independently to unchanged maintained Player.cpp:
+Five adjacent patches apply independently to Player.cpp at source040f1e8:
 three measured candidates, plus **value-pos-left** and **bound-services**, which
 are prepared but **not executed**. The latter introduces the existing PreloadAnm
 and GameErrorContext::Log implementations and requires its additional real

@@ -5567,3 +5567,30 @@ The [final cleanup receipt](evidence/handoff-final-20261023/README.md) records
 verified archive restoration, duplicate-object replacements and Git packing.
 Current large-owner witnesses, canonical linked outputs, original target and
 the nine unrelated D3D files are retained. No new exact, product or runtime credit.
+
+## Player startup real dependencies and selection storage (2026-10-23)
+
+The [real-dependency packet](evidence/player-startup-real-dependencies/README.md)
+replaces declaration-only Chain/resource/log/data-loader calls in the complete
+Player initializer. The necessary .sht loader426520/229 is source-present, not
+exact; target and native callers use ESI Player/EAX filename. Its four diagonal-
+speed writes, callback-table bases and serialized offsets are TH10 observations,
+not adjacent-game facts. The +2C callback meaning and table owners stay unknown.
+
+Reading character/shot words through existing GameScoreState storage474C40+28/+2C
+restores reloads across float writes and moves the linked parent1415->1435.
+That is compiler evidence for an aggregate-alias hypothesis; original ownership
+remains unproven. Chained extent x/y stores repair six target bytes with no losses.
+All49 address fields are independently bound, with equal complete target/native
+destination inventories. Full1435-byte replay matches1123/leaves312 differences.
+Never bind a member to a neighboring diagnostic anchor just because its MAP
+address happens to coincide: these operands are explicitly GameScoreState+28/+2C.
+
+Current-source/private builds reproduce all519 complete public owners raw;
+static/unowned regions are outside this check. Seven complete shared guards pass
+1480/all99; a separate original-recipe Chain cold passes4/838/all58. Node reorder
+changes four still-different bytes with no repairs/losses. Partial node views,
+flag snapshot, index/multiply order and PlayerOb1 are complete-parent neutral.
+Pointer history, option-value locals and timer members regress. Keep
+the complete residual and avoid repeating these forms without a new premise.
+Exact counts and the product/runtime/semantic gates remain unchanged.

@@ -1,0 +1,89 @@
+{
+  "canonical_chain_cold": {
+    "artifact_builds": 1,
+    "bytes": 838,
+    "command": "nice -n 10 scripts/repo-python scripts/replay-exact-units.py --unit chain-run-calc --unit chain-run-draw --unit chain-add-calc --unit chain-add-draw --json",
+    "fields": 58,
+    "game_inputs": 14,
+    "report_sha256": "8953f36e52b4b98e8b42795c75204226564727c5fb4a5504d3c1e3a5d0141d07",
+    "result": "exact",
+    "units": 4
+  },
+  "canonical_match_manifest_changed": false,
+  "checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-target.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --execute",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py --require-target",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/report-reconstruction-status.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "result": "passed"
+    },
+    {
+      "command": "scripts/repo-python scripts/check-doc-hygiene.py",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "cleanup": {
+    "bytes": 14502567,
+    "files": 200,
+    "retained_full_carriers": [
+      "build/gpt-6.1-sol/player-services-20261023/maintained-17",
+      "build/gpt-6.1-sol/player-services-20261023/full-services-17",
+      "build/gpt-6.1-sol/player-services-20261023/prior-chain-canonical"
+    ],
+    "scope": "only duplicate reused supports; measured images/maps/PDBs/unique Player objects and all private source inputs retained"
+  },
+  "exact_ledger_changed": false,
+  "full_ci": "not-run under operator-focused scope",
+  "headers_changed": false,
+  "maintained_graph_shared_guards": {
+    "bytes": 1480,
+    "cold_build": false,
+    "count": 7,
+    "fields": 99,
+    "result": "exact"
+  },
+  "maintained_parent": {
+    "bytes": 1435,
+    "different_bytes": 312,
+    "independent_fields": 49,
+    "matched_bytes": 1123,
+    "result": "nonexact"
+  },
+  "new_exact_credit": 0,
+  "private_maintained_public_owners": {
+    "count": 519,
+    "raw_equal": true,
+    "scope_excludes": "static/unowned fragments",
+    "unique_inventory": true
+  },
+  "runtime_product_validation": "not-performed",
+  "source_head_before": "13047bf8ecef41ff6a2c3a71190d78dee8eea789",
+  "state": "active-incomplete",
+  "unrelated_d3d_hash_unchanged": 9
+}

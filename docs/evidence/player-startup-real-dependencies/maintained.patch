@@ -1,0 +1,260 @@
+--- a/src/Player.cpp
++++ b/src/Player.cpp
+@@ -1,5 +1,8 @@
+ #include "EnemyGameState.hpp"
+ #include "Player.hpp"
++#include "Chain.hpp"
++#include "GameErrorContext.hpp"
++#include "FileSystem.hpp"
+ #include "AnmVmId.hpp"
+ #include "BulletManager.hpp"
+ #include "GameScoreState.hpp"
+@@ -113,6 +116,15 @@
+     (offsetof(PlayerCallbackNodeView, callback) == 0x08) ? 1 : -1];
+ typedef char PlayerCallbackNodeViewOwnerAt20[
+     (offsetof(PlayerCallbackNodeView, owner) == 0x20) ? 1 : -1];
++// Existing shared storage begins at target 0x474C40; the selection words are
++// observed at +0x28/+0x2C. This is a storage view, not an original owner claim.
++typedef char PlayerSelectionStorageAt28[
++    (offsetof(GameScoreStateView, unknown28) == 0x28) ? 1 : -1];
++typedef char PlayerCallbackNodeMatchesChain[
++    (sizeof(PlayerCallbackNodeView) == sizeof(th10::ChainElem) &&
++     offsetof(PlayerCallbackNodeView, flags) == offsetof(th10::ChainElem, flags) &&
++     offsetof(PlayerCallbackNodeView, callback) == offsetof(th10::ChainElem, callback) &&
++     offsetof(PlayerCallbackNodeView, owner) == offsetof(th10::ChainElem, arg)) ? 1 : -1];
+ 
+ // Neutral maintained views for the target-observed auxiliary draw gate. Their
+ // original object and field identifiers are not established by this packet.
+@@ -389,20 +401,10 @@
+ void PlayerMarkResourceVmsPending(void *resource);
+ void PlayerDestroyAnimationCacheContents(void *cache);
+ 
+-// Descriptive interfaces for the Player initializer's observed callees. Only
+-// PlayerLoadAnimationResource has a conventional machine spelling supported by
+-// the target (ECX, EDX, then one stack argument). The others hide private
+-// register contracts and are not original ABI claims.
+-void * __fastcall PlayerLoadAnimationResource(
+-    int loadFlags, void *owner, const char *filename);
+-void PlayerReportInitializationError();
++// Ordinary source spelling for the .sht loader reviewed at 0x426520.
++// The target/native linked graph uses ESI Player and EAX filename; the original
++// declaration and physical translation unit remain unproven.
+ int PlayerLoadOptionData(Player *player, const char *filename);
+-PlayerCallbackNodeView * __stdcall PlayerAllocateCallbackNode(
+-    PlayerChainCallback callback);
+-void PlayerRegisterUpdateCallbackNode(
+-    PlayerCallbackNodeView *node, int priority, void *manager);
+-void PlayerRegisterDrawCallbackNode(
+-    PlayerCallbackNodeView *node, int priority, void *manager);
+ 
+ int __fastcall PlayerUpdateCallback(Player *player);
+ int __fastcall PlayerDrawCallback(Player *player);
+@@ -773,19 +775,81 @@
+     return player;
+ }
+ 
++// Target 0x426520: loaded .sht offsets and callback indices are fixed up in place.
++// Table bases are observed TH10 storage views; lengths and original owners remain unknown.
++extern void *g_PlayerShotSpawnCallbacks[];
++extern PlayerShotUpdateCallback g_PlayerShotUpdateCallbacks[];
++extern void *g_PlayerShotUnknown2CCallbacks[];
++extern PlayerShotCollisionCallback g_PlayerShotCollisionCallbacks[];
++
++struct PlayerShotDataEntryBoundaryView
++{
++    PlayerShotDescriptorView *descriptors;
++    unsigned int unknown04;
++};
++typedef char PlayerShotDataEntryBoundarySizeIs08[
++    (sizeof(PlayerShotDataEntryBoundaryView) == 8) ? 1 : -1];
++
++int PlayerLoadOptionData(Player *player, const char *filename)
++{
++    player->optionData = reinterpret_cast<PlayerOptionDataView *>(
++        FileSystem::OpenFile(filename, NULL, 0));
++    if (player->optionData == NULL)
++        return -1;
++
++    const double diagonalScale = sin(0.7853982f);
++    player->optionData->diagonalSpeedMode0 = static_cast<float>(
++        diagonalScale * player->optionData->axisSpeedMode0);
++    player->optionData->diagonalSpeedMode1 = static_cast<float>(
++        diagonalScale * player->optionData->axisSpeedMode1);
++    // The target repeats both writes, reloading the header pointer between them.
++    player->optionData->diagonalSpeedMode0 = static_cast<float>(
++        diagonalScale * player->optionData->axisSpeedMode0);
++    player->optionData->diagonalSpeedMode1 = static_cast<float>(
++        diagonalScale * player->optionData->axisSpeedMode1);
++
++    for (int i = 0; i < player->optionData->entryCount; ++i)
++    {
++        reinterpret_cast<unsigned int &>(
++            reinterpret_cast<PlayerShotDataEntryBoundaryView *>(
++                reinterpret_cast<unsigned char *>(player->optionData) + 0x110)[i].descriptors) +=
++            reinterpret_cast<unsigned int>(player->optionData);
++        PlayerShotDescriptorView *descriptor =
++            reinterpret_cast<PlayerShotDataEntryBoundaryView *>(
++                reinterpret_cast<unsigned char *>(player->optionData) + 0x110)[i].descriptors;
++        while (descriptor->fireInterval >= 0)
++        {
++            descriptor->spawnCallback = g_PlayerShotSpawnCallbacks[
++                reinterpret_cast<unsigned int>(descriptor->spawnCallback)];
++            descriptor->updateCallback = g_PlayerShotUpdateCallbacks[
++                reinterpret_cast<unsigned int>(descriptor->updateCallback)];
++            descriptor->unknown2C = g_PlayerShotUnknown2CCallbacks[
++                reinterpret_cast<unsigned int>(descriptor->unknown2C)];
++            descriptor->collisionCallback = g_PlayerShotCollisionCallbacks[
++                reinterpret_cast<unsigned int>(descriptor->collisionCallback)];
++            ++descriptor;
++        }
++    }
++    return 0;
++}
++
+ // Maintained source for the Player initialization owner at
+ // 0x004247F0-0x00424D8A. Its sole target caller places the newly allocated
+ // Player in EBX immediately before the call. This ordinary source parameter is
+ // a maintainable spelling of that private machine boundary.
+ int PlayerInitialize(Player *player)
+ {
++    const int &character =
++        *reinterpret_cast<const int *>(g_GameScoreState.unknown28);
++    const int &shotType =
++        *reinterpret_cast<const int *>(g_GameScoreState.unknown28 + 4);
+     const char *animationFilename =
+-        g_PlayerCharacter != 0 ? "pl01.anm" : "pl00.anm";
+-    player->resource = PlayerLoadAnimationResource(
+-        8, g_PlayerVmManager, animationFilename);
++        character == 0 ? "pl00.anm" : "pl01.anm";
++    player->resource = reinterpret_cast<AnmRenderManagerView *>(g_PlayerVmManager)->
++        PreloadAnm(8, animationFilename);
+     if (player->resource == NULL)
+     {
+-        PlayerReportInitializationError();
++        th10::g_GameErrorContext.Log("\x8e\xa9\x8b\x40\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8c\xa9\x82\xc2\x82\xa9\x82\xe8\x82\xdc\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\x0d\x0a");
+         return -1;
+     }
+ 
+@@ -796,28 +860,30 @@
+     }
+     else
+     {
+-        const int dataIndex = g_PlayerShotType + g_PlayerCharacter * 3;
++        const int dataIndex = shotType + character * 3;
+         if (PlayerLoadOptionData(
+                 player, g_PlayerShotDataFilenames[dataIndex]) != 0)
+         {
+-            PlayerReportInitializationError();
++            th10::g_GameErrorContext.Log("\x8e\xa9\x8b\x40\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8c\xa9\x82\xc2\x82\xa9\x82\xe8\x82\xdc\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\x0d\x0a");
+             return -1;
+         }
+     }
+ 
+-    PlayerCallbackNodeView *updateNode =
+-        PlayerAllocateCallbackNode(PlayerUpdateCallback);
+-    updateNode->owner = player;
++    th10::ChainElem *updateNode = th10::Chain::AllocElem(
++        reinterpret_cast<th10::ChainCallback>(PlayerUpdateCallback));
++    updateNode->arg = player;
+     updateNode->flags &= ~2u;
+-    PlayerRegisterUpdateCallbackNode(updateNode, 0x10, g_PlayerCallbackManager);
+-    player->updateCallbackNode = updateNode;
+-
+-    PlayerCallbackNodeView *drawNode =
+-        PlayerAllocateCallbackNode(PlayerDrawCallback);
++    th10::Chain::AddToCalcChain(updateNode, 0x10,
++        reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
++    player->updateCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(updateNode);
++
++    th10::ChainElem *drawNode = th10::Chain::AllocElem(
++        reinterpret_cast<th10::ChainCallback>(PlayerDrawCallback));
+     drawNode->flags &= ~2u;
+-    drawNode->owner = player;
+-    PlayerRegisterDrawCallbackNode(drawNode, 0x16, g_PlayerCallbackManager);
+-    player->drawCallbackNode = drawNode;
++    drawNode->arg = player;
++    th10::Chain::AddToDrawChain(drawNode, 0x16,
++        reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
++    player->drawCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(drawNode);
+ 
+     // Target 0x4248B1 calls the real VM initializer at 0x404F30 with
+     // Player+0x14, resource at +0x10, and script index zero.
+@@ -852,47 +918,41 @@
+     player->updateTimer0.previous = -2;
+     player->updateTimer0.current = -1;
+ 
+-    data->value04 = g_PlayerOptionValue04ByCharacter[g_PlayerCharacter];
+-    data->value0C = g_PlayerOptionValue0CByCharacter[g_PlayerCharacter];
+-    data->value08 = g_PlayerOptionValue08ByCharacter[g_PlayerCharacter];
+-
+-    player->extent0.x = data->value04 * 0.5f;
+-    player->extent0.y = player->extent0.x;
++    player->optionData->value04 = g_PlayerOptionValue04ByCharacter[character];
++    player->optionData->value0C = g_PlayerOptionValue0CByCharacter[character];
++    player->optionData->value08 = g_PlayerOptionValue08ByCharacter[character];
++
++    player->extent0.x = player->extent0.y = player->optionData->value04 * 0.5f;
+     player->extent0.z = 5.0f;
+-    player->extent1.x =
+-        g_PlayerOptionValue0CByCharacter[g_PlayerCharacter] * 0.5f;
+-    player->extent1.y = player->extent1.x;
++    player->extent1.x = player->extent1.y = g_PlayerOptionValue0CByCharacter[character] * 0.5f;
+     player->extent1.z = 5.0f;
+-    player->extent2.x =
+-        g_PlayerExtent2ByCharacter[g_PlayerCharacter] * 0.5f;
+-    player->extent2.y = player->extent2.x;
++    player->extent2.x = player->extent2.y = g_PlayerExtent2ByCharacter[character] * 0.5f;
+     player->extent2.z = 5.0f;
+ 
+-    player->derivedMin0.x = player->drawPosition.x - player->extent0.x;
+-    player->derivedMin0.y = player->drawPosition.y - player->extent0.y;
+-    player->derivedMin0.z = player->drawPosition.z - player->extent0.z;
+-    player->derivedMax0.x = player->drawPosition.x + player->extent0.x;
+-    player->derivedMax0.y = player->drawPosition.y + player->extent0.y;
+-    player->derivedMax0.z = player->drawPosition.z + player->extent0.z;
+-
+-    player->derivedVectors[0].x = player->drawPosition.x - player->extent1.x;
+-    player->derivedVectors[0].y = player->drawPosition.y - player->extent1.y;
+-    player->derivedVectors[0].z = player->drawPosition.z - player->extent1.z;
+-    player->derivedVectors[1].x = player->drawPosition.x + player->extent1.x;
+-    player->derivedVectors[1].y = player->drawPosition.y + player->extent1.y;
+-    player->derivedVectors[1].z = player->drawPosition.z + player->extent1.z;
+-    player->derivedVectors[2].x = player->drawPosition.x - player->extent2.x;
+-    player->derivedVectors[2].y = player->drawPosition.y - player->extent2.y;
+-    player->derivedVectors[2].z = player->drawPosition.z - player->extent2.z;
+-    player->derivedVectors[3].x = player->drawPosition.x + player->extent2.x;
+-    player->derivedVectors[3].y = player->drawPosition.y + player->extent2.y;
+-    player->derivedVectors[3].z = player->drawPosition.z + player->extent2.z;
+-    player->derivedVectors[4].x = player->drawPosition.x - player->extent2.x;
+-    player->derivedVectors[4].y = player->drawPosition.y - player->extent2.y;
+-    player->derivedVectors[4].z = player->drawPosition.z - player->extent2.z;
+-    player->derivedVectors[5].x = player->drawPosition.x + player->extent2.x;
+-    player->derivedVectors[5].y = player->drawPosition.y + player->extent2.y;
+-    player->derivedVectors[5].z = player->drawPosition.z + player->extent2.z;
++    const AnmFloat3View &positionValue =
++        *reinterpret_cast<const AnmFloat3View *>(&player->drawPosition);
++    const AnmFloat3View &extentValue0 =
++        *reinterpret_cast<const AnmFloat3View *>(&player->extent0);
++    const AnmFloat3View &extentValue1 =
++        *reinterpret_cast<const AnmFloat3View *>(&player->extent1);
++    const AnmFloat3View &extentValue2 =
++        *reinterpret_cast<const AnmFloat3View *>(&player->extent2);
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedMin0) =
++        positionValue - extentValue0;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedMax0) =
++        extentValue0 + positionValue;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[0]) =
++        positionValue - extentValue1;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[1]) =
++        extentValue1 + positionValue;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[2]) =
++        positionValue - extentValue2;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[3]) =
++        extentValue2 + positionValue;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[4]) =
++        positionValue - extentValue2;
++    *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[5]) =
++        extentValue2 + positionValue;
+ 
+     if ((player->updateTimer1.flags & 1) == 0)
+     {

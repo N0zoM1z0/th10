@@ -1,0 +1,1078 @@
+{
+  "chained_extent_store_repairs": [
+    {
+      "after": 32,
+      "before": 28,
+      "offset": 535,
+      "target": 32
+    },
+    {
+      "after": 28,
+      "before": 32,
+      "offset": 541,
+      "target": 28
+    },
+    {
+      "after": 44,
+      "before": 40,
+      "offset": 572,
+      "target": 44
+    },
+    {
+      "after": 40,
+      "before": 44,
+      "offset": 578,
+      "target": 40
+    },
+    {
+      "after": 56,
+      "before": 52,
+      "offset": 615,
+      "target": 56
+    },
+    {
+      "after": 52,
+      "before": 56,
+      "offset": 621,
+      "target": 52
+    }
+  ],
+  "current_parent": {
+    "acceptance_authority": "none",
+    "context": {
+      "artifact_kind": "linked-pe",
+      "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "normal_support_sources": [],
+      "output_dir": "build/gpt-6.1-sol/player-services-20261023/maintained-17",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "source": "src/ScriptViewer.cpp",
+      "support_profiles": {
+        "src/Enemy.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ]
+      },
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/Chain.cpp",
+        "src/FrontEnd.cpp",
+        "src/Player.cpp",
+        "src/Gui.cpp",
+        "src/Enemy.cpp",
+        "src/BulletLifecycle.cpp",
+        "src/InputState.cpp",
+        "src/Main.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/ScriptViewerLifecycle.cpp",
+        "src/ItemManager.cpp",
+        "src/AnmVmId.cpp",
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/PbgArchive.cpp"
+      ]
+    },
+    "different_bytes": 312,
+    "fields": 49,
+    "matched_bytes": 1123,
+    "owner": {
+      "address": "0x00418D00",
+      "extent_source": "pdb-section-contribution",
+      "map_object": "support-03-Player.ltcg.obj",
+      "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-services-20261023\\maintained-17\\support-03-Player.ltcg.obj",
+      "pdb_module_index": 2,
+      "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\player-services-20261023\\maintained-17\\support-03-Player.ltcg.obj",
+      "section": ".text",
+      "section_number": 1,
+      "section_offset": 97536,
+      "sha256": "96f8d9b446953be2f475681aeebcecc0eaf345a258e86c413a05a9cb65535fa3",
+      "size": 1435,
+      "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z"
+    }
+  },
+  "ghidra": {
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "read_only_noanalysis_rollback": true,
+    "review_path": ".analysis/gpt-6.1-sol/player-services-20261023/player-services-ghidra.txt",
+    "review_sha256": "bf585ac4a10d023dccd6b910ccd4c60009e8b1aa4c130d3837252c0ff4a02b4f"
+  },
+  "maintained_player_after_sha256": "5f76102a89ab2ebe52196575ac66fb9195819395dafe13a19170ae38151cb431",
+  "maintained_player_before_sha256": "af7338a601f565564900b7e1526fbb269636a8bf5d05bf44c6814a4c5a05df3f",
+  "new_exact_credit": 0,
+  "not_executed_controls": [
+    "node-order",
+    "history-pointer"
+  ],
+  "notes": [
+    "All trials above are private diagnostics, not independent full cold pairs.",
+    "Compiler observations do not identify original classes, global owners, TUs or runtime behavior.",
+    "The existing canonical manifest and exact ledger are unchanged."
+  ],
+  "predecessor_15_input_graph": {
+    "guards": {
+      "bytes": 1120,
+      "count": 6,
+      "exact": 6,
+      "fields": 73
+    },
+    "parent_size": 1401,
+    "real_direct_calls": 7,
+    "report_sha256": "b483be9bb565f806b8ffd295034fbc01602f724baf93660164e4972f122dcb8f"
+  },
+  "private_to_maintained_public_owners": {
+    "all_raw_equal": true,
+    "count": 519,
+    "scope_excludes": "static and unowned fragments",
+    "unique_complete_inventory": true
+  },
+  "source_transition_manifest": {
+    "authorized_transitions": [
+      {
+        "after_sha256": "5f76102a89ab2ebe52196575ac66fb9195819395dafe13a19170ae38151cb431",
+        "before_sha256": "af7338a601f565564900b7e1526fbb269636a8bf5d05bf44c6814a4c5a05df3f",
+        "map": "source_sha256",
+        "path": "src/Player.cpp"
+      },
+      {
+        "after_sha256": "71ceffa76ee8897db5b4fd7c6411525238e6982b914ce7307296cdb8360f6a56",
+        "before_sha256": "6348262c480cf8105d62fe796d90a3e56c5a7b82bba6ad24b39be3e1923a4d91",
+        "map": "frozen_inputs",
+        "path": "config/functions.csv"
+      },
+      {
+        "after_sha256": "26db6170537d0560bf801bd4fa88d46813dcf1b659bd5ecc890ff347163f2a11",
+        "before_sha256": "f6919f1342ad800d9a68b4cd3b6ac699bfea9f0a7a46ce9c7c2f4b6ff70e2d72",
+        "map": "frozen_inputs",
+        "path": "config/implemented.csv"
+      },
+      {
+        "after_sha256": "9de7f1f250fb03203a0658e2354f1eff5b463504d950a22d685a9fdc7af88f76",
+        "before_sha256": "edf2a68f968189839e545b8c0cd07f6451c44d957eb65178a6b96a6cac799f45",
+        "map": "frozen_inputs",
+        "path": "config/reccmp-functions.csv"
+      },
+      {
+        "after_sha256": "5f76102a89ab2ebe52196575ac66fb9195819395dafe13a19170ae38151cb431",
+        "before_sha256": "af7338a601f565564900b7e1526fbb269636a8bf5d05bf44c6814a4c5a05df3f",
+        "map": "frozen_inputs",
+        "path": "src/Player.cpp"
+      }
+    ],
+    "path": ".analysis/gpt-6.1-sol/player-services-20261023/manifest-final.json",
+    "sha256": "0c6910cc9233537cdf70d696ff5b82c548d1b63b3594070ade53fe43ad381773"
+  },
+  "starting_head": "13047bf8ecef41ff6a2c3a71190d78dee8eea789",
+  "target_evidence": {
+    "loader_callback_table_bases": [
+      "0x47476C",
+      "0x474778",
+      "0x491BF4",
+      "0x491BF8"
+    ],
+    "loader_diagonal_coefficient": "double(float(0.7853982f)) at0x470C50",
+    "loader_diagonal_store_count": 4,
+    "option_data_loader": "0x426520/229",
+    "selection_addends": [
+      "0x28",
+      "0x2C"
+    ],
+    "selection_storage_base": "0x474C40"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "trials": [
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1104,
+        "report_sha256": "2bb7114f81b680716486cb6a37d4f8de012acbbf0bf469aa727fa7b346a385cb",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "763e2ffee0fb3a677ede48e9e479372378557ad3662af2b6cbead7d208404f6f",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/named-history-pointer/Player.cpp",
+          "source_sha256": "24aa3d60b0a4d3a6aff09ef31872ee8084aae637fb61db77fa349021d33efff3"
+        }
+      ],
+      "compiler_producer_sha256": "c40547167f1354c0a5c0610cdeb82ee4c68e3c5c501d048cd56fcbe6330b3643",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "named-history-pointer",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/named-history-pointer-17.json",
+      "report_sha256": "72532a8beacd80a162ff9d7e670a71fc251239f15eafdb5399239b4361ec157d",
+      "reused_object_count": 16,
+      "structural_compared": 1239,
+      "structural_matched": 979
+    },
+    {
+      "compiled_sources": [
+        {
+          "object_sha256": "0a357fcf0f36202297803a79a8f3e2676e25b31ad46b2591cf4e8ad5d2eb9c7d",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/paired-timer-members/Player.cpp",
+          "source_sha256": "cd7a21cd8bf0386a151a2acfc50ccd7797d6f3fb1a730f82514af59ac965a849"
+        }
+      ],
+      "compiler_producer_sha256": "c40547167f1354c0a5c0610cdeb82ee4c68e3c5c501d048cd56fcbe6330b3643",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "paired-timer-members",
+      "parent_size": 1439,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/paired-timer-members-17.json",
+      "report_sha256": "94b5f13c77bca7447f1cab946f2a148086f6d6854632a879546202526564c203",
+      "reused_object_count": 16,
+      "structural_compared": 1235,
+      "structural_matched": 963
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1123,
+        "report_sha256": "9800cc9b377eb43abc8100b6325aec15133f8f075f32894bb678554a7cc52ffe",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "7a32fed4ffb1f7f75027848c98319eb3f0b02301ed1893df7ba262f86c106758",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/Player.cpp",
+          "source_sha256": "5f76102a89ab2ebe52196575ac66fb9195819395dafe13a19170ae38151cb431"
+        }
+      ],
+      "compiler_producer_sha256": "7f9cdacb0c2024186765ee1a67df17402fa723260a5b8a1710c9d8ec95f8f03d",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "maintained",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/maintained-17.json",
+      "report_sha256": "262c5cc816755857b54d366a4906a63c2f074dcb0634cfe47727cda2daa5f644",
+      "reused_object_count": 16,
+      "structural_compared": 1239,
+      "structural_matched": 998
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1123,
+        "report_sha256": "42f16ec081a5aa43e007d27440c34c00793eea7aa823330bbf43ea4fca1e13c0",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "09a94e2c0b9cafa1078c21611b06bdf30da56893bf90fb5fcac4eb2767582d14",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/named-selection/Player.cpp",
+          "source_sha256": "312363e7e6aa7a9eadadf4f8566dfe9b00cf23b2102e438cce9253264fbb0dd4"
+        }
+      ],
+      "compiler_producer_sha256": "c40547167f1354c0a5c0610cdeb82ee4c68e3c5c501d048cd56fcbe6330b3643",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "named-selection",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/named-selection-17.json",
+      "report_sha256": "ffe46b64f820115f3b17bf0197455d931bca8e3ae5bd8c716e741e99841be66a",
+      "reused_object_count": 16,
+      "structural_compared": 1239,
+      "structural_matched": 998
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1123,
+        "report_sha256": "165d9d8b8450cb644d738ad176df2a6536a00f8dc839b75a24c62563e208b259",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "57d8bef3ce75863f655f3eaac9cc5203d9d77c8174275fef33e804565367a374",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/node-snapshot/Player.cpp",
+          "source_sha256": "c3cd5ff9ee7b30ad85fe3b4145b69a8f7c2e03bd43371fdedfa10db03b4cab9e"
+        }
+      ],
+      "compiler_producer_sha256": "c40547167f1354c0a5c0610cdeb82ee4c68e3c5c501d048cd56fcbe6330b3643",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "node-snapshot",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/node-snapshot-17.json",
+      "report_sha256": "0aac8dbb483bf27f03af2744778d354634135c7dcabd0135ebd354fdb0cd89c0",
+      "reused_object_count": 16,
+      "structural_compared": 1239,
+      "structural_matched": 998
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1117,
+        "report_sha256": "698ced861a87dd48baf65078de9f151dc6a952289623e10c9496074f764c04a2",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "e6c96bee30dfa9ad640e52c454ee770ff7b874cc8ef6da3e65e2cc48907e46f3",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/selection-storage/Player.cpp",
+          "source_sha256": "a0da5e831a4f1bec59ceea54095e39f840d241561bb6fc579599af90649ee9da"
+        },
+        {
+          "object_sha256": "df974ea2f1dfd3e7575f82bbd0d19b9cea9ac3507955a577a0d970aa653cfef4",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/FileSystem.cpp",
+          "source_sha256": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260"
+        },
+        {
+          "object_sha256": "55a4e0668ddc6868708359d612b7c1b3d0110e38ea413eee84db9c02a437315e",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/PbgArchive.cpp",
+          "source_sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7"
+        }
+      ],
+      "compiler_producer_sha256": "8d0079263b5cb887e44fe251d2dd6318716eb1bb3bdabde5ae5e29f7abd7db66",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "selection-storage",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/selection-storage-17.json",
+      "report_sha256": "f1f02d1c29dac7e995714e133126c9e15b3b8e048bff9f3b44127e7f9bc98689",
+      "reused_object_count": 14,
+      "structural_compared": 1239,
+      "structural_matched": 992
+    },
+    {
+      "compiled_sources": [
+        {
+          "object_sha256": "f828e634aa143770f817399478c52e5d03615ab36ee292b9bfb8e051d32f6e7d",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/full-services/Player.cpp",
+          "source_sha256": "279dea553805e1139312728e73ca3eafb7f90240676b9ba165436b07f869593c"
+        },
+        {
+          "object_sha256": "62452651055ea31197dc9e6414dd2c691b93d5ff8b07f4eb20a69c31db4705b3",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/FileSystem.cpp",
+          "source_sha256": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260"
+        },
+        {
+          "object_sha256": "44d41ceff1ade2230ecd965c6d94c8dffee3b4f34742ad9db791c4437f0855b5",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/PbgArchive.cpp",
+          "source_sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7"
+        }
+      ],
+      "compiler_producer_sha256": "8d0079263b5cb887e44fe251d2dd6318716eb1bb3bdabde5ae5e29f7abd7db66",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "full-services",
+      "parent_size": 1415,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/full-services-17.json",
+      "report_sha256": "41ae847a6d03c47229ba50d9801ac43217d5870d5ee2d2b4b3e8a80eb68ac486",
+      "reused_object_count": 14,
+      "structural_compared": 1255,
+      "structural_matched": 195
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1123,
+        "report_sha256": "c7ac9193f154e2401f59095c5d92cb221bc55526a1fae2f967df4d857ab2a2cc",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "3fe83e5b3852f2e167a2bcd3c0dd1b84815338b40a78e09ae957cb9d44554f53",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/paired-extents/Player.cpp",
+          "source_sha256": "8d3ff6fe2dc1f7527b6080e56f1d5fcfd04231183e7a1785ef579d76bb08d5a5"
+        },
+        {
+          "object_sha256": "e479b9e2c574b9ba4da360c2e69bff4e481b8d684840afa882dac80a1870c9dc",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/FileSystem.cpp",
+          "source_sha256": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260"
+        },
+        {
+          "object_sha256": "c7f42e976853f3322a1361101bf52acb1653916440089358ae98378e9b273a83",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/PbgArchive.cpp",
+          "source_sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7"
+        }
+      ],
+      "compiler_producer_sha256": "8d0079263b5cb887e44fe251d2dd6318716eb1bb3bdabde5ae5e29f7abd7db66",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "paired-extents",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/paired-extents-17.json",
+      "report_sha256": "04a132d807a9d1110e6ddc74696d349d48a58dc093506a2f6701a793554e4f4b",
+      "reused_object_count": 14,
+      "structural_compared": 1239,
+      "structural_matched": 998
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1123,
+        "report_sha256": "6f94a6796e5fc7b923398338fbe5956bc79788c6fc6703b9e554afd583a17bf5",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "c85039d20fca9afc016f9d11ad47ae430384df1925c8e2dda8c3a5b1a91e4ad5",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/partial-node-views/Player.cpp",
+          "source_sha256": "287626572f66afec8af95bbd549cc0c9409cb8b959a4c1f0bbca6340534dc2d1"
+        }
+      ],
+      "compiler_producer_sha256": "c40547167f1354c0a5c0610cdeb82ee4c68e3c5c501d048cd56fcbe6330b3643",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "partial-node-views",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/partial-node-views-17.json",
+      "report_sha256": "cb6554c754dbce44acf8f5e0bfb9a53b7cc4350d14bbca6150f0f7c126c2c31b",
+      "reused_object_count": 16,
+      "structural_compared": 1239,
+      "structural_matched": 998
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1123,
+        "report_sha256": "d8bb2f214264031a49e7e1cec228d5c2cfa42d24d51d0e1d9507b00f603cba47",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "61f6c8aa450831c633c5e95693a04b1f2bd38a4440b7d1b349e190ca15ecf917",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/named-index-order/Player.cpp",
+          "source_sha256": "ce2bf8ce611939a6b8426797341180eb344b8f9093d6229a39f2028001b939da"
+        }
+      ],
+      "compiler_producer_sha256": "c40547167f1354c0a5c0610cdeb82ee4c68e3c5c501d048cd56fcbe6330b3643",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "named-index-order",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/named-index-order-17.json",
+      "report_sha256": "16211c60d202b7d39079eeb68bea3984e301eab38d7491def908cf2e7ebaf583",
+      "reused_object_count": 16,
+      "structural_compared": 1239,
+      "structural_matched": 998
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1123,
+        "report_sha256": "5976af0eddb29823dc34e62a0a8592c2b556cc68e7d0c63a549804c8ca05d295",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "ef3f298b552712f8a93e0f2d8335007bbf60a107bc91aa0e67b76340c7dafa21",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/loader-operand-order/Player.cpp",
+          "source_sha256": "16cc087cda08ed3e5b0ffc5140e86a821fb2ff49a2cbdb1ace3666117e95f09c"
+        }
+      ],
+      "compiler_producer_sha256": "c40547167f1354c0a5c0610cdeb82ee4c68e3c5c501d048cd56fcbe6330b3643",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "loader-operand-order",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/loader-operand-order-17.json",
+      "report_sha256": "fe5f7f216b18b33bf77ef38ea594651611846df014255b1a5458e7f4fb823e6e",
+      "reused_object_count": 16,
+      "structural_compared": 1239,
+      "structural_matched": 998
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1123,
+        "report_sha256": "2d8da52e9b6d34adb0a72c5a61c90f1df23f7deabdc5b2ae493058a1861d30ca",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "c84d924cc8a897104681b804bbdd7cc120a4eb2f1bbad63f592d4525146d4ebc",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs",
+            "/Ob1"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/named-selection-ob1/Player.cpp",
+          "source_sha256": "312363e7e6aa7a9eadadf4f8566dfe9b00cf23b2102e438cce9253264fbb0dd4"
+        }
+      ],
+      "compiler_producer_sha256": "5358cd6ca259bf52706759604a1d9f2584af7102c24ba0d5c82b83fd0a0d1eb6",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "named-selection-ob1",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/named-selection-ob1-17.json",
+      "report_sha256": "ed63e3acef7b2f17e56ddaba1c00d02589d043ddce4d5c77b2e8a6c15b75d238",
+      "reused_object_count": 16,
+      "structural_compared": 1239,
+      "structural_matched": 998
+    },
+    {
+      "compiled_sources": [
+        {
+          "object_sha256": "701bdd28d797bcf80e1f89cc28e752943ebf9d9333bd3cedf3f014080c8bfe04",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/timer-members/Player.cpp",
+          "source_sha256": "c23947f872a529ea78feaa527d1efa976f68d4073f68c20984f364c54f9f903d"
+        },
+        {
+          "object_sha256": "d0efc3349570c183ccf8dec9c492d8041a5846da0b98418b596cbac9cda67c92",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/FileSystem.cpp",
+          "source_sha256": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260"
+        },
+        {
+          "object_sha256": "4d4467e035adfbfd4d144fc7dfe092fd648a43fa0fe44ea3c12c9371127d8dc7",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/PbgArchive.cpp",
+          "source_sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7"
+        }
+      ],
+      "compiler_producer_sha256": "8d0079263b5cb887e44fe251d2dd6318716eb1bb3bdabde5ae5e29f7abd7db66",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "timer-members",
+      "parent_size": 1421,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/timer-members-17.json",
+      "report_sha256": "51c1584d2ea526f83356dea4a9c91e2bbf79bbfcf695a786a94a6d9be82cd8f3",
+      "reused_object_count": 14,
+      "structural_compared": 1251,
+      "structural_matched": 213
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1115,
+        "report_sha256": "0a4dde0b686f63e6e6ee6e68d793c5b659626db5fd27c913b183bca8e81a608c",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "f97ee6d69d76c008fe55355c12d0c92c2735cf30a99a578b9d47d74b2eb7aed0",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/named-option-values/Player.cpp",
+          "source_sha256": "65b53f1799415dd27be5316364c95966f6980c85f06710b00bf048c08fd55f0b"
+        }
+      ],
+      "compiler_producer_sha256": "c40547167f1354c0a5c0610cdeb82ee4c68e3c5c501d048cd56fcbe6330b3643",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "named-option-values",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/named-option-values-17.json",
+      "report_sha256": "94fba4c3b2b7e53c642d07a1433a7e0b81006c2b862d314f833c549f9181e756",
+      "reused_object_count": 16,
+      "structural_compared": 1239,
+      "structural_matched": 990
+    },
+    {
+      "bound_parent": {
+        "fields": 49,
+        "matched_bytes": 1123,
+        "report_sha256": "e4f86275dfeba68721b02fd1e7ba94663b72470991e881a75c207a41281c20ef",
+        "result": "mismatch",
+        "size": 1435
+      },
+      "compiled_sources": [
+        {
+          "object_sha256": "34c99733c451118ca0806a1a1dd3f211685dc3b55c8bd84414db9fb30cd88aca",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": ".analysis/gpt-6.1-sol/player-services-20261023/paired-node-order/Player.cpp",
+          "source_sha256": "cf944f93e4913ff7c4dab0c3cc5783dee9e39434c267548996314552ba5b4416"
+        },
+        {
+          "object_sha256": "a16a79d1db2541117ac9e4d49fec8e84672bc6b7c32f2133cd167fac3f2b13e6",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/FileSystem.cpp",
+          "source_sha256": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260"
+        },
+        {
+          "object_sha256": "c99250713f812df8801377af238f3d819bf4ecc0561f47b4bcc9f2c758c70e7c",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "source": "src/PbgArchive.cpp",
+          "source_sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7"
+        }
+      ],
+      "compiler_producer_sha256": "8d0079263b5cb887e44fe251d2dd6318716eb1bb3bdabde5ae5e29f7abd7db66",
+      "guards": {
+        "bytes": 1480,
+        "count": 7,
+        "exact": 7,
+        "fields": 99
+      },
+      "label": "paired-node-order",
+      "parent_size": 1435,
+      "report_path": ".analysis/gpt-6.1-sol/player-services-20261023/paired-node-order-17.json",
+      "report_sha256": "ca31bedca9fe74a3a165f83b495cdfe1eb98b636efd4ad4b70ae430c7d21d9eb",
+      "reused_object_count": 14,
+      "structural_compared": 1239,
+      "structural_matched": 998
+    }
+  ],
+  "whole_parent_control_deltas": [
+    {
+      "changed_bytes": 4,
+      "changed_offsets": [
+        "0xac",
+        "0xad",
+        "0xaf",
+        "0xb0"
+      ],
+      "label": "paired-node-order",
+      "target_equal_losses": 0,
+      "target_repairs": 0
+    },
+    {
+      "changed_bytes": 0,
+      "changed_offsets": [],
+      "label": "partial-node-views",
+      "target_equal_losses": 0,
+      "target_repairs": 0
+    },
+    {
+      "changed_bytes": 0,
+      "changed_offsets": [],
+      "label": "node-snapshot",
+      "target_equal_losses": 0,
+      "target_repairs": 0
+    },
+    {
+      "changed_bytes": 0,
+      "changed_offsets": [],
+      "label": "named-index-order",
+      "target_equal_losses": 0,
+      "target_repairs": 0
+    },
+    {
+      "changed_bytes": 0,
+      "changed_offsets": [],
+      "label": "loader-operand-order",
+      "target_equal_losses": 0,
+      "target_repairs": 0
+    },
+    {
+      "changed_bytes": 0,
+      "changed_offsets": [],
+      "label": "named-selection-ob1",
+      "target_equal_losses": 0,
+      "target_repairs": 0
+    },
+    {
+      "changed_bytes": 0,
+      "changed_offsets": [],
+      "label": "named-selection",
+      "target_equal_losses": 0,
+      "target_repairs": 0
+    }
+  ]
+}

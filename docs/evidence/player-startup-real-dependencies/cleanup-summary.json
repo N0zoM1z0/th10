@@ -1,0 +1,10 @@
+{
+  "bytes": 14502567,
+  "files": 200,
+  "retained_full_carriers": [
+    "build/gpt-6.1-sol/player-services-20261023/maintained-17",
+    "build/gpt-6.1-sol/player-services-20261023/full-services-17",
+    "build/gpt-6.1-sol/player-services-20261023/prior-chain-canonical"
+  ],
+  "scope": "only duplicate reused supports; measured images/maps/PDBs/unique Player objects and all private source inputs retained"
+}

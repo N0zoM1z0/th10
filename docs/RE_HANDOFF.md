@@ -1,11 +1,12 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-23 for the operator-requested cleanup and handoff. Reconstruction
-remains **active-incomplete**. Maintained game source is still 040f1e8: Player's
-startup VM call uses the real shared ANM initializer. Subsequent Player candidates
-are private, measured and **not adopted**. No source, header, layout, compiler
-profile, canonical recipe or exact ledger changes in this batch.
-Current checkpoint prefix: `gpt-6.1-sol: ...`.
+Updated 2026-10-23 after Player startup's real-dependency/source repair.
+Reconstruction remains **active-incomplete**. The maintained initializer now
+emits1435 bytes in its measured17-input graph, but is not exact: complete replay
+of49 independently bound address fields matches1123/leaves312 differences.
+The required .sht loader is source-present, not a standalone exact claim. Headers,
+layouts, canonical recipes and exact ledgers remain unchanged. Checkpoint prefix:
+`gpt-6.1-sol: ...`.
 
 ## Current state
 
@@ -15,10 +16,10 @@ Current checkpoint prefix: `gpt-6.1-sol: ...`.
 | ANM ExecuteScript / target 9964 | 9964 bytes; nonexact; case 7541/7995, 90/92 target-sized groups, gap 2 |
 | Enemy dispatcher / target 14416 | 14336 bytes; frame 2C4; 181 selectors/108 groups; case 3245/11128, 45 target-sized groups, gap 328 |
 | StageExecuteScript / target 1868 | 1868 bytes; frame 8C; nonexact; case 1443/1619, 13/15 target-sized groups, gap 2 |
-| PlayerInitialize / target 1435 | 1116 bytes/nonexact in maintained 17-TU graph; latest private 14-TU candidate 1388 bytes, not adopted |
-| Authored / source / exact | 734 functions/273579 bytes; source 613/247945; exact 409/74716 |
-| Source-present nonexact / absent | 204 / 121 authored functions |
-| Overall exact | 1252 functions/141647 bytes; 1097 source mappings |
+| PlayerInitialize / target 1435 | 1435 bytes in current17-input graph;1123 matching/312 differences after all49 independent bindings; nonexact |
+| Authored / source / exact | 734 functions/273579 bytes; source 614/248174; exact 409/74716 |
+| Source-present nonexact / absent | 205 / 120 authored functions |
+| Overall exact | 1252 functions/141647 bytes; 1098 source mappings |
 | Windows product / runtime | Open; semantic reconstruction and portability not started |
 
 Case scores, masked structural scores and size proximity grant no exactness
@@ -28,39 +29,42 @@ Large-function exact work remains the priority, without small-function count gai
 
 ## Resume Player's complete initializer
 
-Read the [new Player candidate packet](evidence/player-startup-candidates/README.md)
-first. It reconciles the final completed job and preserves five independently
-applicable patches, actual input/artifact hashes and complete-parent reports.
+Read the [real-dependency packet](evidence/player-startup-real-dependencies/README.md)
+first. Source now uses actual Chain/resource/log services and the required
+.sht loader426520/229. The real linked loader uses ESI Player/EAX filename and
+restores both target log-call paths. Existing shared selection storage at
+GameScoreState474C40+28/+2C restores target-like character reloads. Eight existing
+Float3 value operations recover the12-byte scratch; chained extent stores repair
+six target bytes with no losses. Original type/data ownership remains unknown.
 
-| Private 14-TU trial | Complete Player bytes | State |
-| --- | --- | --- |
-| typed-nodes: existing Chain allocation and insertion APIs | 1116 | Measured, not adopted |
-| value-extent-left: eight existing Float3 value operations | 1366 | Measured, not adopted |
-| value-current-data: also reload optionData after timer setup | 1388 | Measured, not adopted |
-| value-pos-left / bound-services | Unknown | Prepared, not executed |
+All49 native/target address destinations are independently identified and their
+complete inventories agree. The 1435-byte parent matches1123 bytes after replay;
+no ordinary instruction or local control destination is masked. Preserve the
+[full312-byte residual](evidence/player-startup-real-dependencies/parent-differences.json).
+Do not infer source identity from a coincident neighboring diagnostic anchor.
 
-All three measured trials pass four complete Chain guards, 838 bytes/all 58
-fields, and expose five real callback/VM call edges. The target and both value
-candidates reserve 12 scratch bytes; the original scalar source does not.
-This supports further source-shape investigation, not whole-parent exactness.
+Next attack callback setup/VM receiver, history addressing, first data-pointer
+scheduling, one commuted float operand and tail timer/index schedule. Preserve
+all1435 bytes and every field. The shared VM initializer still uses nativeEDX /
+targetESI and is200/202 bytes; prior formal/caller controls remain exclusions.
+Node reorder changes four still-different bytes without repairs/losses. Partial
+views, flag snapshot, index/multiply order and PlayerOb1 are whole-parent neutral.
+Pointer history, option-value locals and timer members
+regress. Do not rerun those forms without a new premise or substitute a small
+loader exact claim for the large-owner objective.
 
-Next measure the prepared real resource/error bindings, then inspect the full
-1435-byte parent residual. The declaration-only option-data loader targets
-0x426520/229 and lacks its real source/caller binding. Treat it as a dependency
-of this large owner, not a separate small-function campaign. Establish every
-target field independently before whole-owner exact acceptance.
-
-Private inputs/producers:
-`.analysis/gpt-6.1-sol/player-chain-bindings-20261023`.
-Complete latest native carrier:
-`build/gpt-6.1-sol/player-chain-bindings-20261023/value-current-data-14`.
-Earlier trials retain images, maps, PDBs and unique Player objects; only their
-26 duplicate reused objects are removed. Existing manifests retain their pins.
-Do not overwrite completed trial directories or relax pins.
+Private inputs/producers: `.analysis/gpt-6.1-sol/player-services-20261023`.
+Current-state recovery uses manifest-final.json, stage-common-final.py,
+probe-maintained.py and bound-parent-final.py. Preserve historical pins.
+Retain `build/gpt-6.1-sol/player-services-20261023/maintained-17`, full-services-17
+support cache and prior-chain-canonical. Cleanup records identical replacements
+for removed duplicate supports. The
+[earlier candidate packet](evidence/player-startup-candidates/README.md) is historical;
+its patches belong to source040f1e8 and are not current-source patches.
 
 ## Other large-owner routes and closed controls
 
-- [Maintained Player VM binding and caller audit](evidence/player-initializer-binding/README.md):
+- [Earlier Player VM binding and caller audit](evidence/player-initializer-binding/README.md):
   private/maintained 17-TU images agree across 366 complete public PDB owners.
   Preserve both carriers under `build/gpt-6.1-sol/stage-initializer-formals-20261023`.
   The audit confirms 28 direct target calls in 11 reviewed owners; source has 27
@@ -133,11 +137,11 @@ subagents. Attest the database before new target analysis. Full mapped text
 401000..465A80 inclusive is 412289 bytes, SHA-256
 `cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f`.
 
-This documentation/artifact batch reruns cached canonical Chain comparison for
-four full owners/838 bytes/all 58 fields, target/toolchain/tracking/progress,
-documentation hygiene, Git connectivity and whitespace. It does not cold-build
-new game source, repeat full CI or claim new exact/product/runtime validation.
-The preceding current-source canonical Chain cold is recorded in the Player VM
-packet. Its four contracts reject unequal extents in the 17-TU graph; only the
-declared canonical 14-TU replay is accepted. Original classes/TUs, flags,
-ownership, product and runtime stay independently unknown.
+This source batch verifies the complete1435-byte Player parent after49 independent
+bindings and all519 uniquely enumerated public owners between private/maintained
+compilations. Seven complete shared guards pass1480/all99 in the current17-input
+image. One separate original-recipe14-input cold passes four Chain owners838/all58.
+Full CI, new exact acceptance, product closure and runtime validation are not
+claimed. Earlier17-input Stage/caller images have different context and are not
+interchangeable with this graph. Original classes/TUs, flags and ownership remain
+independently unknown.
