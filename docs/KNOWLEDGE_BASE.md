@@ -5780,3 +5780,34 @@ is unavailable as an intrinsic; the producer rejects the object before link.
 Do not route it through an opaque diagnostic anchor. Real named-vector returns,
 calc-snapshot write barrier and actual Player /G7 are also whole-parent neutral
 at1370; source ownership, original qualifiers and compiler flags remain unknown.
+
+## Player initializer: draw owner and selection shape (2026-10-23)
+
+The [draw-owner packet](evidence/player-initialization-draw-owner/README.md) binds
+one maintained argument change: AddToDrawChain reads existing th10::g_Chain.
+Complete1435-byte replay/all49 fields improves1370/65 to1380/55, ten target
+repairs/no target-equal losses. Actual node-argument publication now follows
+priority setup at the target position. Five barriers and the VM wrapper200/EDX
+remain; headers, ABI, profiles, canonical recipes and exact ledgers are unchanged.
+
+This does not prove an original type or source owner. Changing the legacy
+manager declaration alone, with either old or typed ordered access, reproduces
+all1370 former bytes. The current result depends on symbol/alias context. The
+calc legacy view and draw Chain reference independently bind TH10 global491BE4,
+while their native diagnostic anchors are distinct. Runtime storage aliasing,
+original classes/TUs and production data ownership remain open.
+
+All519 private/maintained complete public PDB owners reproduce raw140370 bytes.
+Only the parent changes versus1370;518 other public owners remain raw-identical.
+Raw parent changes15 bytes. Independent field replay also changes15 bytes:
+ten repair the target and five remain different, with no target-equal losses. Static/unowned fragments are outside this coverage.
+Eight complete guards1753/all99 pass;16 pinned objects are reused, not cold-built.
+
+Fresh Ghidra table bytes match the original file at476FC0 for24 bytes. The six
+pointers select pl00a.sht/pl00b.sht/pl00c.sht then pl01a.sht/pl01b.sht/pl01c.sht.
+Stride3 target arithmetic and six pointers do not establish original C++ array
+dimensions, constness or ownership. Matrix-view/declaration and real filename
+helper controls produce identical1247 full replays,12 repairs/135 losses versus
+1370: the cold selection block improves while prefix allocation regresses.
+The measured matrix/draw-owner combination yields1248. Expanded indexing and
+real memcpy value copies are whole1370-neutral; do not add independent scores.

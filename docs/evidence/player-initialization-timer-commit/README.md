@@ -4,6 +4,9 @@
 improves1359/76 to **1370 matching/65 differences**, after all49 independent
 address bindings. No small-function mapping or exact credit is added.
 
+The [draw-owner successor](../player-initialization-draw-owner/README.md)
+now reaches1380/55. This packet's1370 source pins and commands are historical.
+
 ## Maintained source and full reproduction
 
 [The source patch](maintained.patch) adds a compiler-only read/write barrier

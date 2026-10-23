@@ -1,0 +1,18 @@
+{
+  "scope": "all519 unique complete public PDB owners; static/unowned fragments and runtime outside scope",
+  "complete_public_owners": 519,
+  "complete_public_bytes": 140370,
+  "previous_raw_changed_public_owners": [
+    {
+      "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z",
+      "differences": 15
+    }
+  ],
+  "previous_other_public_owners_raw_equal": 518,
+  "source_reports": {
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/maintained-17.json": "cf0b6b9b519b7771b03e3013e3404a55c78b118a75dba03a64ae94a096fd2887",
+    ".analysis/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-chain-owner.json": "86f22bb77dee107c649615c3db7356a8fe9e2fd293b775e15b8399e7d88a5cc1",
+    ".analysis/gpt-6.1-sol/player-selection-storage-20261023/maintained-17.json": "46d43c5c9ce1cd59143b7687e7114d5add0f6c2dbb80bb4e4a6eb46cb0d7983e"
+  },
+  "private_maintained_public_raw_equal": 519
+}

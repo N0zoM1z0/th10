@@ -1,8 +1,8 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-23 after Player timer-commit scheduling. Reconstruction remains
+Updated 2026-10-23 after Player draw-owner publication. Reconstruction remains
 **active-incomplete**. Maintained PlayerInitialize keeps1435 bytes and now matches
-1370/leaves65 differences after49 independent address bindings. Headers, layouts,
+1380/leaves55 differences after49 independent address bindings. Headers, layouts,
 ABI declarations, canonical recipes and exact ledgers are unchanged. Checkpoint
 prefix: `gpt-6.1-sol: ...`.
 
@@ -14,7 +14,7 @@ prefix: `gpt-6.1-sol: ...`.
 | ANM ExecuteScript / target 9964 | 9964 bytes; nonexact; case7541/7995,90/92 target-sized groups,gap2 |
 | Enemy dispatcher / target 14416 | 14336 bytes; frame2C4;181 selectors/108 groups;case3245/11128,45 target-sized groups,gap328 |
 | StageExecuteScript / target 1868 | 1868 bytes; frame8C;nonexact;case1443/1619,13/15 target-sized groups,gap2 |
-| PlayerInitialize / target 1435 | 1435 bytes in current17-input graph;1370 matching/65 differences after all49 independent bindings;nonexact |
+| PlayerInitialize / target 1435 | 1435 bytes in current17-input graph;1380 matching/55 differences after all49 independent bindings;nonexact |
 | Authored / source / exact | 734 functions/273579 bytes;source614/248174;exact409/74716 |
 | Source-present nonexact / absent | 205 /120 authored functions |
 | Overall exact | 1252 functions/141647 bytes;1098 source mappings |
@@ -27,76 +27,82 @@ Large-function exact work remains the priority, without small-function count gai
 
 ## Resume Player's complete initializer
 
-Read the [timer-commit packet](evidence/player-initialization-timer-commit/README.md)
-and preserve the [complete65-byte residual/all49 fields](evidence/player-initialization-timer-commit/parent-differences.json).
-The [vector-order packet](evidence/player-initialization-vector-order/README.md)
-retains the preceding1359/76 baseline and the
-[owner-capture packet](evidence/player-initialization-owner-capture/README.md)
-retains1355/80. Older1195/1170/1123 source pins are historical, not current.
+Read the [draw-owner packet](evidence/player-initialization-draw-owner/README.md)
+and preserve the [complete55-byte residual/all49 fields](evidence/player-initialization-draw-owner/parent-differences.json).
+The [timer-commit packet](evidence/player-initialization-timer-commit/README.md)
+retains1370/65, [vector ordering](evidence/player-initialization-vector-order/README.md)
+retains1359/76, and [owner capture](evidence/player-initialization-owner-capture/README.md)
+retains1355/80. Older1195/1170/1123 inputs and commands are historical.
 
-A compiler-only read/write barrier between the actual first-timer previous=-2
-and current=-1 stores delays the pure OR ESI,-1 until the target position. All21
-former timer-region differences disappear. Across34 changed replayed bytes,
-21 target bytes are repaired and10 target-equal bytes are lost in later vector
-scratch-store scheduling: net11,1370/65. Five initializer barriers now remain.
-The earlier callback-owner capture, contiguous position history and four-byte
-vector-operand improvement are retained. Original barriers, qualifiers,
-threading, classes and TU ownership remain unknown. No CPU fence is emitted.
+Only the draw-registration argument now reads existing th10::g_Chain. Its TH10
+identity491BE4 and the retained calc-owner view are independently bound. This
+moves the actual node-argument publication into the target position: complete
+1435-byte replay improves1370/65 to1380/55, ten repairs/no target-equal losses.
+Five initializer barriers, owner/vector scoped observations, history copy and
+twelve-byte Float3 scratch remain. No header, layout, ABI, profile, canonical
+recipe or exact-ledger change is made. No small helper receives target credit.
 
-Actual Chain/resource/log services, .sht loader426520/229, shared selection
-storage474C40+28/+2C and Float3 values retain the1435-byte owner/12-byte scratch.
-The loader is source-present, not exact. All49 fields are independently bound;
-no ordinary/local bytes are masked. Do not bind shared-storage members to
-coincident neighboring diagnostic anchors. The real internal vector helper
-remains unmapped and receives no small-function credit.
+Do not infer an original C++ type or ownership from this result. Typing the old
+manager declaration alone, including its ordered access, reproduces the old1370
+bytes. The result depends on the current symbol/alias context. Two distinct
+native diagnostic anchors independently bind the same TH10 global; this is not
+proof that their runtime storage aliases. Original qualifiers, classes, TUs,
+barriers and product data ownership remain unknown. No CPU fence is added.
 
 Private and freshly compiled maintained Player objects reproduce519 complete
-public PDB owners raw/140370 bytes. Only PlayerInitialize changes versus1359;
-the other518 public owners are raw-identical. This is bounded public-owner
-coverage, not static/unowned or runtime closure. The older vector-order packet
-separately records the retained /OPT:NOREF helper copy and its earlier40h layout
-movement; do not transfer its old field-only scope to the new raw-equality result.
-Eight complete shared guards pass1753/all99. Maintained reproduction compiles
-Player once and reuses16 pinned unchanged inputs, not a whole-graph cold pair.
+public PDB owners raw/140370 bytes. Only PlayerInitialize changes versus1370;
+the other518 public owners are raw-identical. Static/unowned fragments and
+runtime remain outside scope. Eight complete shared guards pass1753/all99.
+Maintained reproduction compiles Player once and reuses16 pinned unchanged
+inputs, not an independent whole-graph cold pair. All49 target fields remain
+independently bound and every ordinary/local byte is compared without cropping.
+Shared selection storage remains GameScoreState474C40+28/+2C; never use coincident
+neighboring diagnostic anchors as semantic members. The.sht loader426520/229 is
+source-present, not exact.
 
-The current batch has11 complete1435-byte images, all49 fields/eight guards,
-and12 compiler invocations:11 accepted objects plus one rejected intrinsic
-attempt. Draw-owner capture with ordinary/ordered reads regresses to1203; a
-node-publication barrier gives1358 and an ordered cold character read1351.
-A volatile previous-field store gives1358. A supported write-only timer barrier,
-two real vector-value helpers, a write barrier after the calc-flags snapshot,
-and actual Player /G7 all reproduce1370 byte-for-byte and are not adopted.
-Pinned VC7.1 rejects _ReadBarrier with C4163; the driver refuses its object
-before linking. Never turn that unsupported intrinsic into an opaque helper.
+The current batch records16 complete1435-byte images/16 new Player object
+compilations, each with49 fields and eight full guards. Matrix-view, actual
+matrix-declaration and real filename-value helper forms produce identical1247
+replays:12 repairs/135 losses versus1370, despite correcting the cold selection
+block. Adding the selected draw owner to a matrix form yields1248, not additive
+gains. Expanded indexing and two real memcpy value copies reproduce1370.
+Typed draw-owner snapshots give1214, a following barrier1229. Typed calc-owner
+access gives1370, ordered calc flags1193 and a calc snapshot barrier1210.
+The old _ReadBarrier/C4163 refusal remains valid; do not link an opaque substitute.
+
+Fresh disk/Ghidra table bytes agree at476FC0/24: pl00a,b,c.sht followed by
+pl01a,b,c.sht. The stride3 code and six pointers do not establish original C++
+array dimensions or data authorship. Native alias/type hypotheses stay separate
+from these TH10 observations. New manifests bind the current1370 receipt and
+required hashes; obsolete copied candidate-score hints are excluded without
+changing historical input pins.
 
 The prior missing-Stage-caller, GameManager and27-input wrapper graphs remain
 neutral at their own1195 baseline. Actual WinMain entry is also neutral there.
-These graphs do not close all target call-site identities or transfer their
-result to different source. Earlier controls require a new premise to repeat.
-
+They do not close target call-site identities or transfer to different source.
 The target-attested binder audit finds Ghidra's21 incoming references incomplete:
-six extra raw CALLs in complete95/118-byte creators give a verified lower bound27.
+six extra CALLs in complete95/118-byte creators give a verified lower bound27.
 All eight position creators call43E710 correctly. The expanded native image has
 21 direct child calls with a different owner distribution; counts alone do not
 close callers. The VM wrapper remains200/nativeEDX versus202/targetESI; its273-byte
 core guard is exact. Inspect operands and missing/differently folded owners.
 
-Of65 remaining differences,37 precede150,none lie in150..1FF,10 lie in200..3FF
-and18 in400..59A. Prioritize callback/VM receiver lifetimes, vector scratch-store
-scheduling and selector registers. Keep the whole large parent as the objective.
+Of55 differences,27 precede150,none lie in150..1FF,10 lie in200..3FF and18 in
+400..59A. Prioritize calc/draw manager-read ordering, VM receiver lifetimes,
+vector scratch-store scheduling and cold selection registers. Earlier neutral
+or regressive controls require a new premise to repeat. Keep the large parent.
 
-Current producers: `.analysis/gpt-6.1-sol/player-flag-lifetimes-20261023`.
+Current producers: `.analysis/gpt-6.1-sol/player-selection-storage-20261023`.
 Use manifest-final.json, common-final.py, probe-maintained.py and bound-parent-final.py.
-The initial1359 manifest stays immutable. Keep current maintained-17 and selected
-first-timer-commit-barrier carriers expanded. All required older Player caches
-and selected witnesses remain; actual paths and restore commands are indexed in
-[RE_ARTIFACTS.md](RE_ARTIFACTS.md).
+The initial1370 manifest stays immutable. Keep current maintained-17 and selected
+draw-typed-chain-owner carriers expanded. Older required Player caches and
+witnesses remain; paths and restoration commands are in [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 ```sh
-scripts/repo-python .analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/bound-parent-final.py maintained-17
+scripts/repo-python .analysis/gpt-6.1-sol/player-selection-storage-20261023/bound-parent-final.py maintained-17
 ```
 
-Expected mismatch1370/1435,49 fields. Restore archived ignored paths before
+Expected mismatch1380/1435,49 fields. Restore archived ignored paths before
 historical consumers, never old source into src/ and never weaken input pins.
 
 ## Other large-owner routes and closed controls
@@ -127,18 +133,17 @@ historical consumers, never old source into src/ and never weaken input pins.
 
 ## Artifact recovery
 
-The [current cleanup](evidence/player-initialization-timer-commit/cleanup-summary.json)
-archives nine closed images, one rejected intrinsic object tree and ten private
-source proposals:249 files/18.85MB become0.40MB, reclaiming18.45MB. All24811
-protected-file hashes are unchanged during compaction. Current/selected carriers
-and required old caches remain expanded.
+The [current cleanup](evidence/player-initialization-draw-owner/cleanup-summary.json)
+archives14 closed images and14 private source proposals:378 files/28.14MB become
+0.41MB, reclaiming27.73MB. All25068 protected-file hashes are unchanged during
+compaction. Current/selected carriers and required old caches remain expanded.
+The preceding timer-commit batch separately reclaimed18.45MB.
 
-The [prior handoff cleanup](evidence/handoff-artifact-compact-20261023/README.md)
-archives85 complete historical LTCG probe caches:1229 files/64.85MB become2.28MB,
-reclaiming62.57MB. The preceding vector-order batch separately reclaimed31.64MB.
-Use the [artifact and restoration index](RE_ARTIFACTS.md) for every archive path
-and restore command. All nine unrelated untracked D3D files remain unstaged and
-hash-unchanged. Original target, tools, Wine, database and game data are retained.
+Earlier [handoff compaction](evidence/handoff-artifact-compact-20261023/README.md)
+reclaimed62.57MB; vector ordering separately reclaimed31.64MB. Use the
+[artifact and restoration index](RE_ARTIFACTS.md) for every archive path and
+restore command. All nine unrelated D3D files remain untracked, unstaged and
+hash-unchanged. Target, tools, Wine, database and game data are retained.
 
 ## Resume safely and validation scope
 
@@ -162,13 +167,12 @@ subagents. Attest the database before new target analysis. Full mapped text
 401000..465A80 inclusive is 412289 bytes, SHA-256
 `cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f`.
 
-Current source verifies the complete1435-byte Player parent at1370/65 after49
+Current source verifies the complete1435-byte Player parent at1380/55 after49
 independent bindings and reproduces519 private/maintained public owners raw.
 Eight complete shared guards pass1753/all99. Maintained reproduction compiles
-Player and reuses16 pinned inputs;11 complete images and12 compiler invocations
-including one refused intrinsic object are recorded in the current packet.
-No independent full-graph pair, new exact acceptance, canonical cold, full CI,
-product closure or runtime validation is claimed. The older07b1be2 checkpoint
-separately cold-replayed the original14-input Chain recipe4/838/all58. Different
-Stage/caller graphs are not interchangeable. Original classes/TUs, flags and
-ownership remain independently unknown.
+Player and reuses16 pinned inputs;16 complete images/new Player compilations
+are recorded in the current packet. No independent full-graph pair, new exact
+acceptance, canonical cold, full CI, product closure or runtime validation is
+claimed. The older07b1be2 checkpoint separately cold-replayed the original14-input
+Chain recipe4/838/all58. Different Stage/caller graphs are not interchangeable.
+Original classes/TUs, flags and ownership remain independently unknown.

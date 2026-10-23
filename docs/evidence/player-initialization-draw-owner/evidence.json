@@ -1,0 +1,460 @@
+{
+  "starting_head": "f17a3df1c8ab0493404422b66a4feb0c02af9cc3",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "complete1435-byte large Player owner; one draw-registration owner reference change, no small-function mappings or exact credit",
+  "results": [
+    {
+      "label": "selection-matrix-view",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/selection-matrix-view.json",
+      "report_sha256": "ba77f7625811dee225aa90d1ca969e3f6be962024bd052382ebb3ff45d7d2987",
+      "bound_report_sha256": "187dac52139ceb23b504da0c95bf5ebac746a820b05729b470e7ae88a5458012",
+      "parent_size": 1435,
+      "matched_bytes": 1247,
+      "differences": 188,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 12,
+      "target_equal_losses_vs1370": 135,
+      "replayed_sha256": "77934eaba6639d99889420ced01165a858df7779b68a82b4951f8253fe413b58",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "selection-expanded-index",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/selection-expanded-index.json",
+      "report_sha256": "dd9e5e9fe84a877de20db055991454883dd18130a45120832f01815bf11642d8",
+      "bound_report_sha256": "b9ae42107e3bf779f79fedba1ee21402780f54c1beea3a56ac339744bfe01114",
+      "parent_size": 1435,
+      "matched_bytes": 1370,
+      "differences": 65,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 0,
+      "target_equal_losses_vs1370": 0,
+      "replayed_sha256": "498ae47d675c55b53788bee903da1a696486b5f5920c79e34a75e0f34318746b",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "selection-value-helper",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/selection-value-helper.json",
+      "report_sha256": "9ee0dc181a6870dfd50e118335ac328fee39e94cab81d95c41c90849838ff3bc",
+      "bound_report_sha256": "aa336e198bf81767e6ded2eb574ac50591eaf5a14974c56c75669d578d9d2540",
+      "parent_size": 1435,
+      "matched_bytes": 1247,
+      "differences": 188,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 12,
+      "target_equal_losses_vs1370": 135,
+      "replayed_sha256": "77934eaba6639d99889420ced01165a858df7779b68a82b4951f8253fe413b58",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "draw-typed-chain-owner",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-chain-owner.json",
+      "report_sha256": "86f22bb77dee107c649615c3db7356a8fe9e2fd293b775e15b8399e7d88a5cc1",
+      "bound_report_sha256": "9bdba5d88eb628ff7d9a6db9260d6a36dd98f8c140ad2ff7eb89ba562b0693ac",
+      "parent_size": 1435,
+      "matched_bytes": 1380,
+      "differences": 55,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 10,
+      "target_equal_losses_vs1370": 0,
+      "replayed_sha256": "80804de1a40b57cbeb8c02cfe2ae36fc33613cfb01969b272dedb6330000003b",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": true
+    },
+    {
+      "label": "two-vector-memcpy-values",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/two-vector-memcpy-values.json",
+      "report_sha256": "64b6be3ee2bc8d5694f6a26f11f9528aea6859cf8a2fcecbe62c7a0d188e2e4d",
+      "bound_report_sha256": "dac64cbecf10ff79c9e36146da339bd1aeb50ffaa50cdf1b28b0a492ef4a5320",
+      "parent_size": 1435,
+      "matched_bytes": 1370,
+      "differences": 65,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 0,
+      "target_equal_losses_vs1370": 0,
+      "replayed_sha256": "498ae47d675c55b53788bee903da1a696486b5f5920c79e34a75e0f34318746b",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "selection-matrix-declaration",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/selection-matrix-declaration.json",
+      "report_sha256": "9a6d65cab2260bd227f8ecb1a46995010391de8cb0a809860a576bb14e5f1d2d",
+      "bound_report_sha256": "cc96f407f76364db5abcc74226c3d9e88189d27793e9ee627917754cb1acc040",
+      "parent_size": 1435,
+      "matched_bytes": 1247,
+      "differences": 188,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 12,
+      "target_equal_losses_vs1370": 135,
+      "replayed_sha256": "77934eaba6639d99889420ced01165a858df7779b68a82b4951f8253fe413b58",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "draw-typed-owner-snapshot",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-owner-snapshot.json",
+      "report_sha256": "826fb01fc6337d2cdc875a4ddbbe54b7cb1eb0527b29635b0c5f5fe4cfb121a1",
+      "bound_report_sha256": "922c5e2a40876d03bd1927eaf0174b3e870666dba556c628d51e71c86a7b155f",
+      "parent_size": 1435,
+      "matched_bytes": 1214,
+      "differences": 221,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 0,
+      "target_equal_losses_vs1370": 156,
+      "replayed_sha256": "2505110bd7b7fa2963d3c190525f0c6c025868dc5afef70d3032ed7fa124c25a",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "draw-typed-owner-ordered",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-owner-ordered.json",
+      "report_sha256": "26f09adc16acc557a59342c67ef862ce128d9904cc68ececeb315029fd0c7057",
+      "bound_report_sha256": "01bf3ea80942d295f97902290dfe799f86a0faf60c0c9abeeb886284299b0795",
+      "parent_size": 1435,
+      "matched_bytes": 1214,
+      "differences": 221,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 0,
+      "target_equal_losses_vs1370": 156,
+      "replayed_sha256": "2505110bd7b7fa2963d3c190525f0c6c025868dc5afef70d3032ed7fa124c25a",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "calc-typed-ordered-owner",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/calc-typed-ordered-owner.json",
+      "report_sha256": "335cb3b02de8f271b8ca202005a0476a0828f5cb89ce21e9ad025e2d42601e46",
+      "bound_report_sha256": "e1e4018c9225def905e2fe60be6c26a0a19381da1813a87991e11ec6429ca655",
+      "parent_size": 1435,
+      "matched_bytes": 1370,
+      "differences": 65,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 0,
+      "target_equal_losses_vs1370": 0,
+      "replayed_sha256": "498ae47d675c55b53788bee903da1a696486b5f5920c79e34a75e0f34318746b",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "calc-typed-ordered-flags",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/calc-typed-ordered-flags.json",
+      "report_sha256": "aebc0e3fbd1cd966ebee5aa92a9c58774daf29615177f0fb5ab956cc5430366c",
+      "bound_report_sha256": "5b19a13038174f61033fa15766d0ff018bc3e463aa7415d688df9a3090d48e0a",
+      "parent_size": 1435,
+      "matched_bytes": 1193,
+      "differences": 242,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 3,
+      "target_equal_losses_vs1370": 180,
+      "replayed_sha256": "7e272c18c5ea4ca3ef96c70c15584f3b0eef3e8c91df564b3331a24dacbcd33a",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "draw-typed-snapshot-barrier",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-snapshot-barrier.json",
+      "report_sha256": "c3ee083534cf3406cc475bb56962d4ac41448066a10b665c41787bf41b15d328",
+      "bound_report_sha256": "e11461fcb2266a7b5b0f3f2e7b759b5947af3ef0f659a9f680386a9dedcd54ec",
+      "parent_size": 1435,
+      "matched_bytes": 1229,
+      "differences": 206,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 2,
+      "target_equal_losses_vs1370": 143,
+      "replayed_sha256": "782f2c80baae26bac31115b491495469db406c4224aeb069420b757e43e1987e",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "matrix-typed-draw",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/matrix-typed-draw.json",
+      "report_sha256": "cad1025c6aff7c2f9190a15269564a20df41ec660d184d5f688dae0ff1cb325c",
+      "bound_report_sha256": "b05cd3be0989e79e79c7555232a686e42f1879654e0220bdbcef48faab489dd8",
+      "parent_size": 1435,
+      "matched_bytes": 1248,
+      "differences": 187,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 13,
+      "target_equal_losses_vs1370": 135,
+      "replayed_sha256": "de3c76f8c8d2d5b4795e778cb92f347e0e5b46dbb797a913417cdf10ca522e27",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "typed-draw-calc-readwrite-snapshot",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/typed-draw-calc-readwrite-snapshot.json",
+      "report_sha256": "9d59215b521138048feddde7f7fb037f14b2cd5394c7fd7c4e8b0ec63492d470",
+      "bound_report_sha256": "71a749a1588dea3f922ec0cd05b8729b79c7ec11e181a0ee03e1990163b751e6",
+      "parent_size": 1435,
+      "matched_bytes": 1210,
+      "differences": 225,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 4,
+      "target_equal_losses_vs1370": 164,
+      "replayed_sha256": "c3f5239aa1233c59e5268e0c88207695f311a1f0950760cc6a6a40825a4184d1",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "callback-manager-typed-declaration",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/callback-manager-typed-declaration.json",
+      "report_sha256": "f279253cb27c990a6542d32f92ca6f2dd7c5e73c7d0efb92a190da7b134e32a8",
+      "bound_report_sha256": "820a6346f7b95a3ae66b235243d9df0e72df2d2fefa2f6532ad5bafd7c6058a7",
+      "parent_size": 1435,
+      "matched_bytes": 1370,
+      "differences": 65,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 0,
+      "target_equal_losses_vs1370": 0,
+      "replayed_sha256": "498ae47d675c55b53788bee903da1a696486b5f5920c79e34a75e0f34318746b",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "callback-manager-typed-access",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/callback-manager-typed-access.json",
+      "report_sha256": "8d03dc7aa9baf75c8363855e6de4bebf4f0daa14dd328428408c01ebdf510910",
+      "bound_report_sha256": "4bc1db9fcaa285b2db6d5fc5a61474f91cd5a6a696bddccc10124f904f654209",
+      "parent_size": 1435,
+      "matched_bytes": 1370,
+      "differences": 65,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 0,
+      "target_equal_losses_vs1370": 0,
+      "replayed_sha256": "498ae47d675c55b53788bee903da1a696486b5f5920c79e34a75e0f34318746b",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": false
+    },
+    {
+      "label": "maintained-17",
+      "report": ".analysis/gpt-6.1-sol/player-selection-storage-20261023/maintained-17.json",
+      "report_sha256": "46d43c5c9ce1cd59143b7687e7114d5add0f6c2dbb80bb4e4a6eb46cb0d7983e",
+      "bound_report_sha256": "36aea265786b894ad9875e349f71e787daa01166a8ea3c14bd1f38a2076764c1",
+      "parent_size": 1435,
+      "matched_bytes": 1380,
+      "differences": 55,
+      "independent_fields": 49,
+      "target_repairs_vs1370": 10,
+      "target_equal_losses_vs1370": 0,
+      "replayed_sha256": "80804de1a40b57cbeb8c02cfe2ae36fc33613cfb01969b272dedb6330000003b",
+      "new_object_compilations": 1,
+      "reused_objects": 16,
+      "guards": {
+        "count": 8,
+        "exact": 8,
+        "bytes": 1753,
+        "fields": 99
+      },
+      "whole_replay_equal_selected1380": true
+    }
+  ],
+  "compiler_invocations": 16,
+  "accepted_new_object_compilations": 16,
+  "complete_linked_images": 16,
+  "complete_parent_comparisons": 16,
+  "size_rejections": [],
+  "current": {
+    "matched": 1380,
+    "different": 55,
+    "independent_fields": 49,
+    "repairs_vs1370": 10,
+    "target_equal_losses_vs1370": 0,
+    "five_initializer_barriers_unchanged": true
+  },
+  "table_observations": {
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "table_address": "0x476fc0",
+    "bytes": 24,
+    "table_sha256": "5492c325f5855582bc5c7ab7f50e5be64b258ef6c09d3d03606badc0883e1ec5",
+    "table_file_ghidra_equal": true,
+    "rows": [
+      {
+        "index": 0,
+        "address": "0x46e3e0",
+        "value": "pl00a.sht"
+      },
+      {
+        "index": 1,
+        "address": "0x46e3d4",
+        "value": "pl00b.sht"
+      },
+      {
+        "index": 2,
+        "address": "0x46e3c8",
+        "value": "pl00c.sht"
+      },
+      {
+        "index": 3,
+        "address": "0x46e3bc",
+        "value": "pl01a.sht"
+      },
+      {
+        "index": 4,
+        "address": "0x46e3b0",
+        "value": "pl01b.sht"
+      },
+      {
+        "index": 5,
+        "address": "0x46e3a4",
+        "value": "pl01c.sht"
+      }
+    ],
+    "limit": "six contiguous pointers and target stride3 arithmetic do not establish original C++ array dimensions or ownership"
+  },
+  "manager_bindings": [
+    {
+      "offset": "0x73",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerCallbackManager@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0331",
+      "local": false,
+      "candidate_target": "0x00427564",
+      "target": "0x00491BE4",
+      "addend": 0,
+      "target_encoded_value": "0x00491BE4"
+    },
+    {
+      "offset": "0xA3",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0175",
+      "local": false,
+      "candidate_target": "0x004272F4",
+      "target": "0x00491BE4",
+      "addend": 0,
+      "target_encoded_value": "0x00491BE4"
+    }
+  ],
+  "binding_limit": "two distinct diagnostic anchors independently bind the same TH10491BE4 identity; diagnostic runtime storage aliasing and original C++ ownership/type remain unproven; declaration-type-only controls are neutral",
+  "public_reproduction": {
+    "scope": "all519 unique complete public PDB owners; static/unowned fragments and runtime outside scope",
+    "complete_public_owners": 519,
+    "complete_public_bytes": 140370,
+    "previous_raw_changed_public_owners": [
+      {
+        "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z",
+        "differences": 15
+      }
+    ],
+    "previous_other_public_owners_raw_equal": 518,
+    "source_reports": {
+      ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/maintained-17.json": "cf0b6b9b519b7771b03e3013e3404a55c78b118a75dba03a64ae94a096fd2887",
+      ".analysis/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-chain-owner.json": "86f22bb77dee107c649615c3db7356a8fe9e2fd293b775e15b8399e7d88a5cc1",
+      ".analysis/gpt-6.1-sol/player-selection-storage-20261023/maintained-17.json": "46d43c5c9ce1cd59143b7687e7114d5add0f6c2dbb80bb4e4a6eb46cb0d7983e"
+    },
+    "private_maintained_public_raw_equal": 519
+  },
+  "independent_cold_pair": false,
+  "product_runtime": "open; no new credit",
+  "metadata_recovery": "fresh manifest binds current1370 receipt and required hash maps; copied obsolete human candidate hints are excluded without weakening historical pins"
+}

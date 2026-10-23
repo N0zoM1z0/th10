@@ -1,0 +1,129 @@
+{
+  "scope": "complete1435-byte parent after49 independently bound fields,1370 to1380",
+  "changed_replayed_bytes": 15,
+  "target_repairs": 10,
+  "target_equal_losses": 0,
+  "changed_still_different": 5,
+  "all_changed_bytes": [
+    {
+      "offset": "0xa1",
+      "previous": 137,
+      "current": 139,
+      "target": 139,
+      "repair": true,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xa2",
+      "previous": 94,
+      "current": 13,
+      "target": 240,
+      "repair": false,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xa3",
+      "previous": 32,
+      "current": 228,
+      "target": 131,
+      "repair": false,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xa4",
+      "previous": 139,
+      "current": 27,
+      "target": 102,
+      "repair": false,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xa5",
+      "previous": 13,
+      "current": 73,
+      "target": 4,
+      "repair": false,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xa6",
+      "previous": 228,
+      "current": 0,
+      "target": 253,
+      "repair": false,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xa7",
+      "previous": 27,
+      "current": 81,
+      "target": 81,
+      "repair": true,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xa8",
+      "previous": 73,
+      "current": 191,
+      "target": 191,
+      "repair": true,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xa9",
+      "previous": 0,
+      "current": 22,
+      "target": 22,
+      "repair": true,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xaa",
+      "previous": 81,
+      "current": 0,
+      "target": 0,
+      "repair": true,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xab",
+      "previous": 191,
+      "current": 0,
+      "target": 0,
+      "repair": true,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xac",
+      "previous": 22,
+      "current": 0,
+      "target": 0,
+      "repair": true,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xad",
+      "previous": 0,
+      "current": 137,
+      "target": 137,
+      "repair": true,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xae",
+      "previous": 0,
+      "current": 94,
+      "target": 94,
+      "repair": true,
+      "target_equal_loss": false
+    },
+    {
+      "offset": "0xaf",
+      "previous": 0,
+      "current": 32,
+      "target": 32,
+      "repair": true,
+      "target_equal_loss": false
+    }
+  ]
+}

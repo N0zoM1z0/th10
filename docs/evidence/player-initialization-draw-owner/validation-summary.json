@@ -1,0 +1,171 @@
+{
+  "scope": "one1435-byte nonexact Player initializer draw-owner reference change and one candidate-ledger notes cell; no header/ABI/canonical/exact-ledger change",
+  "starting_head": "f17a3df1c8ab0493404422b66a4feb0c02af9cc3",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "preflight": "target identity, executed pinned toolchain, target-required tracking/status and direct readOnly/noanalysis/rollback Ghidra full412289-byte mapped text plus24-byte table comparison passed",
+  "native_scope": {
+    "complete_linked_images": 16,
+    "complete_parent_comparisons": 16,
+    "compiler_invocations": 16,
+    "accepted_object_compilations": 16,
+    "rejected_intrinsic_object_attempts": 0,
+    "size_rejections": [],
+    "fresh_maintained_compilations": 1,
+    "maintained_reused_pinned_inputs": 16,
+    "independent_whole_graph_cold_pair": false
+  },
+  "focused_oracle": {
+    "size": 1435,
+    "matched": 1380,
+    "different": 55,
+    "independent_fields": 49,
+    "repairs_vs1370": 10,
+    "target_equal_losses_vs1370": 0,
+    "changed_replayed_bytes": 15,
+    "changed_still_different": 5,
+    "result": "expected complete mismatch; no exact credit",
+    "shared_full_guards_exact": 8,
+    "shared_guard_bytes": 1753,
+    "shared_guard_fields": 99,
+    "cached_receipt_sha256": "aa884020903a41939bf3d84bf858a00274d581ddff412d3ffc89d308326e67be"
+  },
+  "public_reproduction": {
+    "scope": "all519 unique complete public PDB owners; static/unowned fragments and runtime outside scope",
+    "complete_public_owners": 519,
+    "complete_public_bytes": 140370,
+    "previous_raw_changed_public_owners": [
+      {
+        "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z",
+        "differences": 15
+      }
+    ],
+    "previous_other_public_owners_raw_equal": 518,
+    "source_reports": {
+      ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/maintained-17.json": "cf0b6b9b519b7771b03e3013e3404a55c78b118a75dba03a64ae94a096fd2887",
+      ".analysis/gpt-6.1-sol/player-selection-storage-20261023/draw-typed-chain-owner.json": "86f22bb77dee107c649615c3db7356a8fe9e2fd293b775e15b8399e7d88a5cc1",
+      ".analysis/gpt-6.1-sol/player-selection-storage-20261023/maintained-17.json": "46d43c5c9ce1cd59143b7687e7114d5add0f6c2dbb80bb4e4a6eb46cb0d7983e"
+    },
+    "private_maintained_public_raw_equal": 519
+  },
+  "manager_binding_limit": "two distinct diagnostic anchors independently bind the same TH10491BE4 identity; diagnostic runtime storage aliasing and original C++ ownership/type remain unproven; declaration-type-only controls are neutral",
+  "table_observation_sha256": "ac1bda8abd551880f67a6d4f872563af1587d6ae3ec0783877293a2062ebf547",
+  "replay_delta_sha256": "edcfc06ab7e38446ed5019d3187d4a76623c7a5a22f19cad46232440bae316d9",
+  "checks": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.167,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py",
+        "--require-target"
+      ],
+      "exit_code": 0,
+      "seconds": 0.955,
+      "log_sha256": "344278847dcec53d43546fabbc51f81b910eeb0d4913e733f6d5894d25f5bc02"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.395,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.428,
+      "log_sha256": "d9c37039657cc0a1a10d8f7a205617b4eaf5851f9e7572226287bc7e5e4aa423"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-reconstruction-status.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.362,
+      "log_sha256": "881c82bd1357823b1b3f6dfba8c3214a9c1b5854689adf0981574cf5c9cc8990"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/build-match-unit.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 2.543,
+      "log_sha256": "3c3d25a8f7ef707beaac4c4d61aa69edb7cdb6d8fb909df373a23b0c1a29a27a"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.236,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.078,
+      "log_sha256": "96ed9d3ebda61e3f76d862740e2f9f9175705c60b3d9ea8457d52ca6a5203791"
+    },
+    {
+      "command": [
+        "git",
+        "apply",
+        "--check",
+        "--reverse",
+        "--unidiff-zero",
+        "docs/evidence/player-initialization-draw-owner/maintained.patch"
+      ],
+      "exit_code": 0,
+      "seconds": 0.014,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/player-selection-storage-20261023/compare-public.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.248,
+      "log_sha256": "02d00a9a9d112b86bba1985e07d6360d1facf0dc696640ab1ca89ea9588f5b1f"
+    }
+  ],
+  "cleanup": {
+    "all25068_protected_unchanged_during_compaction": true,
+    "subsequent_protected_changes": [
+      "docs/KNOWLEDGE_BASE.md",
+      "docs/RE_ARTIFACTS.md",
+      "docs/RE_HANDOFF.md",
+      "docs/evidence/player-initialization-timer-commit/README.md"
+    ],
+    "source_ledger_unchanged_since_validated_native_build": true,
+    "unrelated_D3D_files_hash_verified": 9,
+    "unrelated_D3D_staged": false
+  },
+  "full_CI": "not run under operator focused-validation preference",
+  "broad_canonical_cold": "not run; no new exact candidate or modified exact body/interface",
+  "product_runtime": "open; no new runtime validation",
+  "semantic_port": "not started; no new credit",
+  "phase": "active-incomplete"
+}

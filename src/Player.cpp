@@ -898,8 +898,7 @@ int PlayerInitialize(Player *player)
     // Complete the flags update before publishing the callback argument.
     _ReadWriteBarrier();
     drawNode->arg = player;
-    th10::Chain::AddToDrawChain(drawNode, 0x16,
-        reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
+    th10::Chain::AddToDrawChain(drawNode, 0x16, th10::g_Chain);
     player->drawCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(drawNode);
 
     // Target 0x4248B1 calls the real VM initializer at 0x404F30 with

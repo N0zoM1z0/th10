@@ -1,0 +1,8 @@
+diff --git a/src/Player.cpp b/src/Player.cpp
+index fb91433..afa08a9 100644
+--- a/src/Player.cpp
++++ b/src/Player.cpp
+@@ -901,2 +901 @@ int PlayerInitialize(Player *player)
+-    th10::Chain::AddToDrawChain(drawNode, 0x16,
+-        reinterpret_cast<th10::Chain *>(g_PlayerCallbackManager));
++    th10::Chain::AddToDrawChain(drawNode, 0x16, th10::g_Chain);
