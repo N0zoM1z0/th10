@@ -1,0 +1,882 @@
+[
+  {
+    "kind": "ECL",
+    "label": "inline-pop-definition",
+    "report": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-pop-definition.json",
+    "report_sha256": "c862fd9d7afe6c972cfb8d20849fa33bf5e8bff0bafb971d2ca9ccf2e3db4e21",
+    "plan": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-pop-definition-plan.json",
+    "plan_sha256": "0a0317bcf1c8263424de1a5145d98243cef42fbf82d246b44235368afba09344",
+    "source": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-pop-definition/EclVm.cpp",
+    "source_sha256": "457900bdbb671e38ce13a02b19bdb14ca1b94f60b714496cd5fbbd909646b53b",
+    "producer_sha256": "069c0ef53800c4f401cb213c2f28a653c287fb422d84f98eb68e702298e8aeba",
+    "output": "build/gpt-6.1-sol/ecl-inline-context-20261023/inline-pop-definition",
+    "guard_summary": {
+      "owners": 9,
+      "bytes": 1137,
+      "fields": 18,
+      "all_exact": true
+    },
+    "metrics": {
+      "owner_size": 7020,
+      "matched_bytes": 6995,
+      "all_352_public_owners_raw_identical": true
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ECL",
+    "label": "inline-read-int-value-definition",
+    "report": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-read-int-value-definition.json",
+    "report_sha256": "989e28154ea011b69787004a26391e1b5e493eb0005e6989db004b3f97b68880",
+    "plan": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-read-int-value-definition-plan.json",
+    "plan_sha256": "612dfe47bfe97da51452ccafee1bf74f922300cc1ed5b02a0519ec8f62e174ee",
+    "source": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-read-int-value-definition/EclVm.cpp",
+    "source_sha256": "82aaf34eb798158735ab2843f8d57b584845071a7643e485570a85b24264281a",
+    "producer_sha256": "069c0ef53800c4f401cb213c2f28a653c287fb422d84f98eb68e702298e8aeba",
+    "output": "build/gpt-6.1-sol/ecl-inline-context-20261023/inline-read-int-value-definition",
+    "guard_summary": {
+      "owners": 9,
+      "bytes": 1137,
+      "fields": 18,
+      "all_exact": true
+    },
+    "metrics": {
+      "owner_size": 7020,
+      "matched_bytes": 6995,
+      "all_352_public_owners_raw_identical": true
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ECL",
+    "label": "inline-reset-default",
+    "report": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-default.json",
+    "report_sha256": "910b3a451d810eaf91c6c9998fdd3e0eeee17dd58c4f8eae5d48426e9f78fded",
+    "plan": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-default-plan.json",
+    "plan_sha256": "b497a9a1b65eed79e0aacbb3d124a004ed45c01a0d8afae6cdb6b24811abd812",
+    "source": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-default/EclVm.cpp",
+    "source_sha256": "1f534f882cc3c55cb84539a3dabd00a83585d2310b9b40f62924a59a2566b780",
+    "producer_sha256": "069c0ef53800c4f401cb213c2f28a653c287fb422d84f98eb68e702298e8aeba",
+    "output": "build/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-default",
+    "guard_summary": {
+      "owners": 9,
+      "bytes": 1137,
+      "fields": 18,
+      "all_exact": true
+    },
+    "metrics": {
+      "owner_size": 7020,
+      "matched_bytes": 6995,
+      "all_352_public_owners_raw_identical": true
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ECL",
+    "label": "inline-reset-eight",
+    "report": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-eight.json",
+    "report_sha256": "07abecbbe352207e5f8817adffce442d2ec234d722825b10cbdc890774634d87",
+    "plan": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-eight-plan.json",
+    "plan_sha256": "0f71af86fd21c2dcb603a946962a2e748b7140787fb11eb4222b2c6362995937",
+    "source": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-eight/EclVm.cpp",
+    "source_sha256": "a1f34f2ca1b6baec2fd54cd205834c02028cca21c3ae1e1eeeb664a1b324d50e",
+    "producer_sha256": "069c0ef53800c4f401cb213c2f28a653c287fb422d84f98eb68e702298e8aeba",
+    "output": "build/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-eight",
+    "guard_summary": {
+      "owners": 9,
+      "bytes": 1137,
+      "fields": 18,
+      "all_exact": true
+    },
+    "metrics": {
+      "owner_size": 7020,
+      "matched_bytes": 6995,
+      "all_352_public_owners_raw_identical": true
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ECL",
+    "label": "inline-reset-two",
+    "report": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-two.json",
+    "report_sha256": "03e0782ed3c8c696428cb0c2c9568ce365f97f2ac249a9b30a09b92062749888",
+    "plan": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-two-plan.json",
+    "plan_sha256": "ac23d642335c3edd436cf160c746315ec53bd3d8ed66172ba046cb5d33cddf79",
+    "source": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-two/EclVm.cpp",
+    "source_sha256": "88684010c473877f958d9c756078b8b0b9705b44ea9043c2cafd29a4ff3d8c0e",
+    "producer_sha256": "069c0ef53800c4f401cb213c2f28a653c287fb422d84f98eb68e702298e8aeba",
+    "output": "build/gpt-6.1-sol/ecl-inline-context-20261023/inline-reset-two",
+    "guard_summary": {
+      "owners": 9,
+      "bytes": 1137,
+      "fields": 18,
+      "all_exact": true
+    },
+    "metrics": {
+      "owner_size": 7020,
+      "matched_bytes": 6995,
+      "all_352_public_owners_raw_identical": true
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ECL",
+    "label": "profile-inline-explicit",
+    "report": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/profile-inline-explicit.json",
+    "report_sha256": "2a44fb5ee1a8a2a0215d7ae6bb93e0ef2c5131b57d04923526cfc66b068b1201",
+    "plan": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/profile-inline-explicit-plan.json",
+    "plan_sha256": "d3780eb080b3c616c4dc86621617b3114108a8f412fc99fc2d36b0a8b16dfbb7",
+    "source": ".analysis/gpt-6.1-sol/ecl-inline-context-20261023/profile-inline-explicit/EclVm.cpp",
+    "source_sha256": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "producer_sha256": "069c0ef53800c4f401cb213c2f28a653c287fb422d84f98eb68e702298e8aeba",
+    "output": "build/gpt-6.1-sol/ecl-inline-context-20261023/profile-inline-explicit",
+    "guard_summary": {
+      "owners": 9,
+      "bytes": 364,
+      "fields": 5,
+      "all_exact": false
+    },
+    "metrics": {
+      "result": "unsupported",
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "owner_size": 4356,
+      "full_parent": "strict-size-rejection"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-return-bit-index",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-bit-index.json",
+    "report_sha256": "6fd4d0e046ebd12423ed83e5dd874c837969121b76418c6f98fcd2e627f754fa",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-bit-index-plan.json",
+    "plan_sha256": "54d0ccc3765499ff96bd0ecc3b76848bc2760086f6a4af7b0632886f87b402e2",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-bit-index/AnmManager.cpp",
+    "source_sha256": "0994dc5885a4a9f7bd4eecf24a818bcfb5a2649d2ac23b76455cbd8c2eb9582f",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-bit-index",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "structural_matched": 1938,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-return-generic",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-generic.json",
+    "report_sha256": "12498e0750eb2abb04db7c4e1e7e0cafed20115c87de5ca3cb2f15a672106416",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-generic-plan.json",
+    "plan_sha256": "8bcbc4c5b3721c4bdaaa01ad480bab618648ff1cf1626d3b47f5331f8a07b7bf",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-generic/AnmManager.cpp",
+    "source_sha256": "221d671acaa6cc482ecfc7a0c524a5a5d096a3f67d148e269cfd6cbe113b09c2",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-generic",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "structural_matched": 1938,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-return-reference",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-reference.json",
+    "report_sha256": "881b3458b4d3590f8cbf4c54ac270453e705c8a3c8b58e3625644ba72c6f25a9",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-reference-plan.json",
+    "plan_sha256": "8d00d3c99ee58bb3736a2ce6b752a9346d5736b89e5ee12afea69879bc8fe368",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-reference/AnmManager.cpp",
+    "source_sha256": "8dfa1834198b7c256e6420e7aeeb7a708a895ea5f542a63b3e2a3966aecc48ad",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-return-reference",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "structural_matched": 1938,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-two-bit-local",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-local.json",
+    "report_sha256": "e3d005cce131e90fdf2193547f74d16a2dcc000c4d5f4d517f192fb2eccbff73",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-local-plan.json",
+    "plan_sha256": "be75cf1b62bf2e660e77d1fcff86785675554e36d082b68ab0d5059cbe3bd3bf",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-local/AnmManager.cpp",
+    "source_sha256": "4d78ced7eb3a84e3b154ff0b91a8a53757852dcf141634de5389926df23dabd8",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-local",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "expanded-continuation-witness"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-two-bit-return",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-return.json",
+    "report_sha256": "f072b3124f4cb566d30dafcecc6e8da8e7d5702dc2412abe30388ec9c1ccfbae",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-return-plan.json",
+    "plan_sha256": "212c5973b52d2f2af1ba4ded75149e82d93e69a6b821a182c50734ca52039f56",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-return/AnmManager.cpp",
+    "source_sha256": "f19271526a57f32ffd83e9337858e72de9c3d220b3296c591723e21046d1f39e",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-return",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-two-bit-shared",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-shared.json",
+    "report_sha256": "15e8af490a495ca36593e63053a2ea6a6d27fd453a5901732b34e59ebf887186",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-shared-plan.json",
+    "plan_sha256": "1bbc68c7b2f2bec2c4ab58bc7ac7d5590f1a27bee45b975c8958566a2f727eaf",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-shared/AnmManager.cpp",
+    "source_sha256": "c37cb18de512b03a2beac371b79b60bfa3b0b36be0fafd262722888316382e6e",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-shared",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-two-bit-value-return",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-value-return.json",
+    "report_sha256": "39660fc4cf9b30afa42984ab7bd937c4e08cb263593aa9d5c831d0b0e075b0fa",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-value-return-plan.json",
+    "plan_sha256": "c092f745a5ed3b7ea25c662b0fc03a903d2e47b0ab6b0a4627b28875dfc2c784",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-value-return/AnmManager.cpp",
+    "source_sha256": "5fcbf484aa2a59cb40c0900cedeb35bee2027ac30a82662de7b08afdb4667493",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-value-return",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7980,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8550,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-x-flags-getter",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-x-flags-getter.json",
+    "report_sha256": "7af0a2322898963248656f7423331095bf8d6c8dc0693f09767fe9603f6fdbd6",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-x-flags-getter-plan.json",
+    "plan_sha256": "5f2cd2145633ee73c1671b764a5c03d7d9079bfe7492a1ca528f1ffd3592f787",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-x-flags-getter/AnmManager.cpp",
+    "source_sha256": "307c74ace9bf183f76ff6ddeae4ccdb467ae8dd95ee79042d82029f02f3d26cc",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-x-flags-getter",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "structural_matched": 1938,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-x-return-specific",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-x-return-specific.json",
+    "report_sha256": "4d35395a436ef7ae30d10c432eb26e27e1924516c1bd19a1cf9b72b28908178a",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-x-return-specific-plan.json",
+    "plan_sha256": "a0ce997cacb4fceb38044b89d43e0a4dfadf0488515259f290afa106529b1c6e",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-x-return-specific/AnmManager.cpp",
+    "source_sha256": "fa1daefe51396777fdaa3a0d44217ce5cc7100eea897e964eb53ccf0779690fb",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-x-return-specific",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "structural_matched": 1938,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-xy-flags-getter",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-xy-flags-getter.json",
+    "report_sha256": "e322417860d7cb0ceae379dfb46d39e6d56c821f907db9a73eb79dcb1feb204b",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-xy-flags-getter-plan.json",
+    "plan_sha256": "fc96c1263c105db1e539a3e8bed5361724165c4c7b83080d4aff49923a926a7c",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-xy-flags-getter/AnmManager.cpp",
+    "source_sha256": "f061238369bddb3f538a67ff1031b6f679408cb5edac62dc8e1585eb283e21fc",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-xy-flags-getter",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "structural_matched": 1938,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "flip-xy-return-specific",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-xy-return-specific.json",
+    "report_sha256": "37920afab3be554662bbec317012c3920b8380159b610000ad9c6baf9f6159ba",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-xy-return-specific-plan.json",
+    "plan_sha256": "991612c9ef162cf4d4cef804490c5640394fa4331b225102b3e0b1309c17fb28",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-xy-return-specific/AnmManager.cpp",
+    "source_sha256": "155b1867a1331e3cb26661d01b0d7ce6f4f2a97a85a13429d9116666683daa87",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-xy-return-specific",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "structural_matched": 1938,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-child-direct-init",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-direct-init.json",
+    "report_sha256": "0a638a03ad4cf3cd77639d7344b335128e36d4672606315993f83479003f2896",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-direct-init-plan.json",
+    "plan_sha256": "8b8736d1526d8ae0e5917ddb6b9910ca30761476a24ba853d9ad4675a6e7313a",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-direct-init/AnmManager.cpp",
+    "source_sha256": "88ed20be10db78f3a5bcc0f56ed68f1d030197762830e08b9229c12349cecdfa",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-direct-init",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-child-file-getter",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-getter.json",
+    "report_sha256": "d98cf38138b077a707ecfe3320a227f2bce1e863b3b5b2e3b1022fc95dc1c138",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-getter-plan.json",
+    "plan_sha256": "32bc9c1a367967a3b05707024a4d066d9bc21f906e1bd972997a4a1185e1ca9a",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-getter/AnmManager.cpp",
+    "source_sha256": "c424c5467e518fa713cc622e6832ba6bef6f4f6b02b4a69e0df0decef483628f",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-getter",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-child-file-reference-getter",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-reference-getter.json",
+    "report_sha256": "cd856377b637f90163d1b323a66fa4e61cb58764b6e9b61ee818f2388ff74358",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-reference-getter-plan.json",
+    "plan_sha256": "6bcc3c78707175e561c6a87019581132399832bf14adfdd01f6e6a17aeed361c",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-reference-getter/AnmManager.cpp",
+    "source_sha256": "99a694f5d261c85935d067c08f2f507106bcb58091d0731cc1c215af467dca67",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-reference-getter",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-child-file-reference",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-reference.json",
+    "report_sha256": "61bfbaf0baf6cd927f7564930e629835008dbb273b494bc735a7fcfa8a271e6a",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-reference-plan.json",
+    "plan_sha256": "f4e7b6516c01e8171decd1e9cf9c99bcf6efb969c09054e47a780380232e11d9",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-reference/AnmManager.cpp",
+    "source_sha256": "6e455f5dceca9948a632f3ac173cdb71f037277e53d5129e8586325069369f9f",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-reference",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7980,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8550,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-child-file-snapshot",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-snapshot.json",
+    "report_sha256": "9407fc7d58b3980f96671a741bb1080d10b4864d0e3b81f819d6445490c3f660",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-snapshot-plan.json",
+    "plan_sha256": "f9ca7d90d96175be636b1577ac7e751f09124400055ced7f4221e737600f97be",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-snapshot/AnmManager.cpp",
+    "source_sha256": "01dd8b66b94250f37c4caa077975426c0b155302cadbc3b33c6ddd48b07893e2",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-child-file-snapshot",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7475,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "structural_matched": 1265,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-separate-word-update",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-separate-word-update.json",
+    "report_sha256": "d60c1a881ac09ce078b98328c8a0ba1b7f8e8b35a8b4573b65213bd43041d8a9",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-separate-word-update-plan.json",
+    "plan_sha256": "c96a3e40f21bd2d71b9b72162c39d10b533c3939c605ec18d5cec4d783da046a",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-separate-word-update/AnmManager.cpp",
+    "source_sha256": "4c4dda4bd54a07ee689d01ff76f94ea85065d38d683d158e0b5632017dba618f",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-separate-word-update",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-timer-double-sum",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-double-sum.json",
+    "report_sha256": "73bed86fdb9ce584e13e3c60983671f06b95522cd49099586893794ecab66f6c",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-double-sum-plan.json",
+    "plan_sha256": "0011a3b8dcda62118d39c2619f57f2194fbdbdecb9a8416df32fa456b1d244c6",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-double-sum/AnmManager.cpp",
+    "source_sha256": "b50a155c9cb5cedadb4dcf3fd50dbf04f03f596a248c2ebe270d198bc07a1e5d",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-double-sum",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-timer-reference-sum",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-reference-sum.json",
+    "report_sha256": "c19dd4850332331549dbd29ab634d5cfe2c93952244bbf3f77d34d2c43abc021",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-reference-sum-plan.json",
+    "plan_sha256": "f563677db7c4a6079c034803c57be8061316e517ee1a4cacc13e28ff1e572aaa",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-reference-sum/AnmManager.cpp",
+    "source_sha256": "eb5cd77401e1b645eba958950eb85bad7b6afb64c1b6b3fb50c8aade5a30d7e7",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-reference-sum",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-timer-reversed-sum",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-reversed-sum.json",
+    "report_sha256": "bf3fbe6d101824aa9d25683fc7d7466fee067eaf0a9e2a9537f70b83f6d2dbf5",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-reversed-sum-plan.json",
+    "plan_sha256": "ee3cdc60c8a86eff647209895a8c41ad8a266d570e6dcaedc65bd408b00a8a2e",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-reversed-sum/AnmManager.cpp",
+    "source_sha256": "bf45f92df811c369d02720594db58b6c0d0bc245dbbac30a2d67d7316e2bb73a",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-timer-reversed-sum",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  },
+  {
+    "kind": "ANM",
+    "label": "two-bit-update-scale-field",
+    "report": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-update-scale-field.json",
+    "report_sha256": "80b4bc2876be2f38c175683d37676bf823304425e3e3359e66f20596e3288be6",
+    "plan": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-update-scale-field-plan.json",
+    "plan_sha256": "4e77fb3081495af0670981fd25e9346f1f099aade6047d52706c5fc9eae8faca",
+    "source": ".analysis/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-update-scale-field/AnmManager.cpp",
+    "source_sha256": "0e8218a81bbebc1d084e7935390eef4e86e7d24b77b45d2a1a93f701a32317a0",
+    "producer_sha256": "68e87d40015b17e8d0e58c4c845e609210a74364debd45761a1169ec22d37d19",
+    "output": "build/gpt-6.1-sol/anm-flag-return-context-20261023/two-bit-update-scale-field",
+    "guard_summary": {
+      "owners": 36,
+      "exact": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "metrics": {
+      "owner_size": 9964,
+      "case": {
+        "matched_comparable_bytes": 7982,
+        "comparable_bytes": 7994,
+        "absolute_case_gap_delta": 0,
+        "same_sized_cases": 92,
+        "normalization_complete": true
+      },
+      "structural_matched": 8552,
+      "structural_comparable": 8564,
+      "structural_fields": 350,
+      "structural_normalization_complete": true,
+      "ECL_matched": 6995,
+      "child_routes": "passed"
+    },
+    "disposition": "lossless-archive"
+  }
+]

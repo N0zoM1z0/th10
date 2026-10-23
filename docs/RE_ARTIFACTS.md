@@ -7,6 +7,16 @@ when transferring this workspace. Historical input pins remain immutable.
 
 ## Expanded continuation inputs
 
+The recovered private ANM two-bit candidate remains fully expanded at
+`.analysis/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-local`
+and `build/gpt-6.1-sol/anm-flag-return-context-20261023/flip-two-bit-local`.
+Use `.analysis/handoff-cleanup-20261024/validate-candidate.py` for the pinned
+retained-carrier replay. The complete 350-field semantic binding contract and
+peer audit remain unfinished; 12 structural differences do not grant exactness.
+The [recovery packet](evidence/handoff-cleanup-20261024/README.md) records all 27
+controls and which 26 require restoration. Their plans/producers/logs remain
+expanded; the selected candidate's source/reports/guard contracts also remain.
+
 The current pinned ECL/Player replay is
 `.analysis/gpt-6.1-sol/ecl-case-order-20261023/compare-current.py`.
 Retained Player inputs remain under player-selection-storage-20261023. Its
@@ -69,6 +79,7 @@ exact historical files; it does not make a stale report current or grant exactne
 
 | Archive group | Receipt | Before → archive |
 | --- | --- | ---: |
+| Recovered ECL inline and ANM flag/child/timer controls, 26 closed images | [2026-10-24 handoff](evidence/handoff-cleanup-20261024/cleanup-summary.json) | 59.13 → 0.61 |
 | ECL consumer/working-value/profile controls,30 closed images | [Typed trace](evidence/ecl-typed-trace-lifetimes/cleanup-summary.json) |52.81 →0.47 |
 | Closed ECL/Player controls and19 historical worker snapshot families | [Latest handoff cleanup](evidence/handoff-ecl-cleanup-20261023/cleanup-summary.json) |109.04 →1.57 |
 | Player value/copy controls and refused entry partial output | [Value/caller controls](evidence/player-initialization-value-controls/cleanup-summary.json) |29.93 →0.48 |
@@ -97,6 +108,7 @@ with `tar -tJf` for xz or `tar -tzf` for gzip. Restore only ignored paths; never
 extract old maintained source into src/ or relax source/target pins.
 
 ```sh
+tar -xJf .analysis/handoff-cleanup-20261024/closed-ecl-anm-controls.tar.xz -C .
 tar -xJf .analysis/ecl-typed-trace-cleanup-20261023/closed-controls.tar.xz -C .
 tar -xJf .analysis/handoff-ecl-cleanup-20261023/closed-probes-and-snapshots.tar.xz -C .
 tar -xJf .analysis/player-value-controls-cleanup-20261023/completed-controls.tar.xz -C .

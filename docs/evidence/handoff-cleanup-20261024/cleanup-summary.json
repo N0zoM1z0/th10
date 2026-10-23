@@ -1,0 +1,20 @@
+{
+  "starting_head": "7dd1c6d5098491110d99426ae1feb8ef6732c8dc",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "producer_sha256": "ae1b84bd6e25a62aeacff94c1926a3298a2ecaffe0b391a4cb095dd46cf1a193",
+  "controls": 27,
+  "archived_controls": 26,
+  "files": 598,
+  "before_bytes": 59130719,
+  "archive": ".analysis/handoff-cleanup-20261024/closed-ecl-anm-controls.tar.xz",
+  "archive_bytes": 609532,
+  "archive_sha256": "cb913af4b905e7af0a694907995290de49280202e83bbf55abaa47457666d23c",
+  "inventory": ".analysis/handoff-cleanup-20261024/archive-members.json.gz",
+  "inventory_sha256": "fb3e07f5b8ad83f3c09445ea5aef47999bb9aac970e5cb08897a3e9c2f3463f6",
+  "protected_files_verified": 23412,
+  "all_protected_unchanged": true,
+  "preservation": "maintained code/config/ledgers; all prior carriers/support caches/archives; selected ANM two-bit-local complete source/image/reports; all manifests/plans/producers/logs; target/resources/tools/Wine/database; all nine unrelated D3D files; unknown legacy trees",
+  "restore": "tar -xJf .analysis/handoff-cleanup-20261024/closed-ecl-anm-controls.tar.xz -C .",
+  "reclaimed_bytes": 58521187,
+  "reclaimed_allocated_bytes": 59478016
+}

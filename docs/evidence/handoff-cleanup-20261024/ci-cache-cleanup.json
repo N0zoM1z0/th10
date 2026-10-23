@@ -1,0 +1,44 @@
+{
+  "classification": "reproducible successful public-CI host outputs and Python bytecode only",
+  "selections": {
+    "build/pycache": [
+      "scripts/repo-python",
+      "scripts/ci.py"
+    ],
+    "build/host-tests/gui-message-run-ci": [
+      "scripts/repo-python",
+      "scripts/test-gui-message-run.py",
+      "--no-mutations",
+      "--out",
+      "build/host-tests/gui-message-run-ci"
+    ],
+    "build/host-tests/gui-message-lifecycle-ci": [
+      "scripts/repo-python",
+      "scripts/test-gui-message-lifecycle.py",
+      "--no-mutations",
+      "--out",
+      "build/host-tests/gui-message-lifecycle-ci"
+    ],
+    "build/host-tests/transition-effect-ci": [
+      "scripts/repo-python",
+      "scripts/transition_effect_host_test.py",
+      "--out",
+      "build/host-tests/transition-effect-ci"
+    ],
+    "build/host-tests/transition-effect-eol-ci": [
+      "scripts/repo-python",
+      "scripts/transition_effect_eol_test.py",
+      "--out",
+      "build/host-tests/transition-effect-eol-ci"
+    ]
+  },
+  "files": 468,
+  "removed_payload_bytes": 10237114,
+  "retained_host_receipts": 4,
+  "inventory": ".analysis/handoff-cleanup-20261024/removed-ci-cache.json.gz",
+  "inventory_bytes": 30888,
+  "inventory_sha256": "065fa153014b5a798598f6ba3789d993d4984551adb4e46339aab9356c1a48be",
+  "reconstruction_native_carriers_removed": 0,
+  "original_resources_tools_database_removed": 0,
+  "reclaimed_bytes_after_inventory": 10206226
+}

@@ -1,0 +1,51 @@
+{
+  "scope": "retained candidate diagnostics only; no new compilation, independent cold pair or full ANM exact replay",
+  "candidate": "flip-two-bit-local",
+  "source_sha256": "4d78ced7eb3a84e3b154ff0b91a8a53757852dcf141634de5389926df23dabd8",
+  "image_sha256": "b5b1b67ac040b91cdcb5d0b5a4759b2bc9939fdd66b038b0469707c134defebf",
+  "owner_size": 9964,
+  "decoded_span": 9588,
+  "structural": {
+    "matched": 8552,
+    "comparable": 8564,
+    "fields": 350,
+    "ordinary_difference_offsets": [
+      "0x113",
+      "0x115",
+      "0x116",
+      "0x117",
+      "0x118",
+      "0x119",
+      "0x11A",
+      "0x11B",
+      "0x11C",
+      "0x11D",
+      "0x249A",
+      "0x24A0"
+    ],
+    "acceptance_authority": "none",
+    "independent_semantic_field_binding": "incomplete"
+  },
+  "case": {
+    "matched_comparable_bytes": 7982,
+    "comparable_bytes": 7994,
+    "absolute_case_gap_delta": 0,
+    "same_sized_cases": 92,
+    "normalization_complete": true
+  },
+  "guards": {
+    "owners": 36,
+    "bytes": 4618,
+    "fields": 121,
+    "all_exact": true
+  },
+  "ECL": {
+    "size": 7020,
+    "matched_bytes": 6995,
+    "fields": 189,
+    "complete_callee_size": 171,
+    "callee_exact": true
+  },
+  "child_routes": "passed",
+  "source_and_artifact_hashes_verified": true
+}

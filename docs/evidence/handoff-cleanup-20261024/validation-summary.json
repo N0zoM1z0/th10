@@ -1,0 +1,111 @@
+{
+  "scope": "documentation/artifact cleanup; maintained source, headers, config and exact ledgers unchanged",
+  "starting_head": "7dd1c6d5098491110d99426ae1feb8ef6732c8dc",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "preflight": {
+    "verify_target": "passed",
+    "verify_toolchain_execute": "passed",
+    "validate_tracking_require_target": "passed",
+    "report_reconstruction_status": "passed"
+  },
+  "archive_member_readback": "all598 verified by length/SHA-256 before removal",
+  "protected_hashes": "all23412 unchanged during compaction",
+  "game_compilations_this_cleanup": 0,
+  "new_target_analysis": false,
+  "independent_cold_pair": false,
+  "new_exact_credit": false,
+  "product_runtime_semantic_port_completion": false,
+  "checks": [
+    {
+      "name": "maintained-ECL-Player",
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/ecl-case-order-20261023/compare-current.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "080d63c23a5d99addd2ef94338610cf95159f0e2b5ecce6095cec917603b2bba"
+    },
+    {
+      "name": "retained-ANM-candidate",
+      "command": [
+        "scripts/repo-python",
+        ".analysis/handoff-cleanup-20261024/validate-candidate.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "fa735970e3119e37df2c807c7b7d9bd3c01eea312a8a212090f137073ed18d5d"
+    },
+    {
+      "name": "verify-toolchain-check",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "name": "validate-tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "c07bd5ce4bc75bc6dfbaf01c986b3ec251b111ff5b9c5cd0b29bfa571e71e57e"
+    },
+    {
+      "name": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "name": "documentation-hygiene",
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "name": "public-CI",
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "5b791122d9a286290f1107be748ec20d6da65f33086c45afdfe608040274a9a5"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "status": "passed",
+  "public_ci_stages": 111,
+  "finished_utc": "2026-10-23T16:41:29.758841+00:00",
+  "preservation_audit": {
+    "maintained_sources_verified": 108,
+    "compiled_input_sources_verified": 32,
+    "frozen_source_config_script_files_verified": 373,
+    "unrelated_D3D_files_verified": 9,
+    "compiler_producers_verified": 27,
+    "archive_digest_verified": true,
+    "all_handoff_packet_links_verified": true
+  },
+  "post_validation_cache_cleanup": {
+    "receipt": "ci-cache-cleanup.json",
+    "scope": "only successful public-CI host outputs and Python bytecode",
+    "reconstruction_native_carriers_removed": 0
+  }
+}
