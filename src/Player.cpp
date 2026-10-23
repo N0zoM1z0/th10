@@ -934,6 +934,8 @@ int PlayerInitialize(Player *player)
     }
     player->updateTimer0.subframe = -1.0f;
     player->updateTimer0.previous = -2;
+    // Complete the preceding stores before publishing the current timer value.
+    _ReadWriteBarrier();
     player->updateTimer0.current = -1;
     // Keep the observed timer publication before following data reads.
     _ReadWriteBarrier();

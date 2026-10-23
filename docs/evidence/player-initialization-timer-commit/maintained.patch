@@ -1,0 +1,7 @@
+diff --git a/src/Player.cpp b/src/Player.cpp
+index 295dc1d..fb91433 100644
+--- a/src/Player.cpp
++++ b/src/Player.cpp
+@@ -936,0 +937,2 @@ int PlayerInitialize(Player *player)
++    // Complete the preceding stores before publishing the current timer value.
++    _ReadWriteBarrier();

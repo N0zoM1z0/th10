@@ -1,0 +1,43 @@
+{
+  "scope": "9 closed Player images,1 rejected intrinsic object tree and10 private source proposals; selected and maintained complete carriers retained",
+  "roots": [
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/draw-owner-local",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/draw-owner-ordered",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/draw-publication-barrier",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/cold-character-ordered",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-writebarrier",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-ordered-previous",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/timer-two-named-vector-values",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/timer-calc-snapshot-writebarrier",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/timer-player-g7",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-readbarrier",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/draw-owner-local",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/draw-owner-ordered",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/draw-publication-barrier",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/cold-character-ordered",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-writebarrier",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-ordered-previous",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/timer-two-named-vector-values",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/timer-calc-snapshot-writebarrier",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/timer-player-g7",
+    ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-readbarrier"
+  ],
+  "files": 249,
+  "before_bytes": 18847561,
+  "archive": ".analysis/player-timer-commit-cleanup-20261023/completed-controls.tar.xz",
+  "archive_bytes": 395180,
+  "archive_sha256": "c00b912fecc2ee402eb2c34753ab4824c06b8501f6b3ad7124b21c15259d87d1",
+  "inventory": ".analysis/player-timer-commit-cleanup-20261023/archive-members.json.gz",
+  "inventory_sha256": "31bd57afbf4979869fb33b7fc3ddca3fb9369f468dfd4d3e9cc5170c6c3b683d",
+  "protected_files_verified": 24811,
+  "all_protected_unchanged_during_compaction": true,
+  "removed_intermediate": null,
+  "retained_full": [
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-commit-barrier",
+    "build/gpt-6.1-sol/player-flag-lifetimes-20261023/maintained-17"
+  ],
+  "restore": "tar -xJf .analysis/player-timer-commit-cleanup-20261023/completed-controls.tar.xz -C .",
+  "producer_sha256": "f2f7a59f905d42725a6665690625ba39e0b578452112974ddc1e16179b3f4be3",
+  "reclaimed_bytes": 18452381,
+  "reclaimed_allocated_bytes": 18993152
+}

@@ -1,0 +1,167 @@
+{
+  "scope": "one1435-byte nonexact Player initializer ordering change and one candidate-ledger notes cell; no header/ABI/canonical/exact-ledger change",
+  "starting_head": "d58657384f138c250e8fb184f7ac5d02d19ba2f9",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "preflight": "target identity, executed pinned toolchain, target-required tracking/status and direct readOnly/noanalysis/rollback Ghidra full412289-byte mapped-text attestation passed",
+  "native_scope": {
+    "complete_linked_images": 11,
+    "complete_parent_comparisons": 11,
+    "compiler_invocations": 12,
+    "accepted_object_compilations": 11,
+    "rejected_intrinsic_object_attempts": 1,
+    "size_rejections": [],
+    "fresh_maintained_compilations": 1,
+    "maintained_reused_pinned_inputs": 16,
+    "independent_whole_graph_cold_pair": false
+  },
+  "focused_oracle": {
+    "size": 1435,
+    "matched": 1370,
+    "different": 65,
+    "independent_fields": 49,
+    "repairs_vs1359": 21,
+    "target_equal_losses_vs1359": 10,
+    "changed_replayed_bytes": 34,
+    "result": "expected complete mismatch; no exact credit",
+    "shared_full_guards_exact": 8,
+    "shared_guard_bytes": 1753,
+    "shared_guard_fields": 99,
+    "cached_receipt_sha256": "d251e22b85d74002652ee5f594c25978bed301a733595e4ad0410a45e13cecb6"
+  },
+  "public_reproduction": {
+    "scope": "all519 unique complete public PDB owners; static/unowned fragments and runtime outside scope",
+    "complete_public_owners": 519,
+    "complete_public_bytes": 140370,
+    "previous_raw_changed_public_owners": [
+      {
+        "symbol": "?PlayerInitialize@@YAHPAUPlayer@@@Z",
+        "differences": 34
+      }
+    ],
+    "previous_other_public_owners_raw_equal": 518,
+    "source_reports": {
+      ".analysis/gpt-6.1-sol/player-residual-publication-20261023/maintained-17.json": "835f14c93ab86af17159588b0ec670059cee4c804b0f7c95f567030b395a4d93",
+      ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-commit-barrier.json": "8d5d0054fdfe363d55f4c80ee2035318e4abfa9828fc46526bbc640b10e692db",
+      ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/maintained-17.json": "cf0b6b9b519b7771b03e3013e3404a55c78b118a75dba03a64ae94a096fd2887"
+    },
+    "private_maintained_public_raw_equal": 519
+  },
+  "checks": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.203,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py",
+        "--require-target"
+      ],
+      "exit_code": 0,
+      "seconds": 0.443,
+      "log_sha256": "344278847dcec53d43546fabbc51f81b910eeb0d4913e733f6d5894d25f5bc02"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.183,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.175,
+      "log_sha256": "d9c37039657cc0a1a10d8f7a205617b4eaf5851f9e7572226287bc7e5e4aa423"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-reconstruction-status.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.173,
+      "log_sha256": "881c82bd1357823b1b3f6dfba8c3214a9c1b5854689adf0981574cf5c9cc8990"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/build-match-unit.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.713,
+      "log_sha256": "3c3d25a8f7ef707beaac4c4d61aa69edb7cdb6d8fb909df373a23b0c1a29a27a"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.156,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.031,
+      "log_sha256": "96ed9d3ebda61e3f76d862740e2f9f9175705c60b3d9ea8457d52ca6a5203791"
+    },
+    {
+      "command": [
+        "git",
+        "apply",
+        "--check",
+        "--reverse",
+        "--unidiff-zero",
+        "docs/evidence/player-initialization-timer-commit/maintained.patch"
+      ],
+      "exit_code": 0,
+      "seconds": 0.003,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/player-flag-lifetimes-20261023/compare-public.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.181,
+      "log_sha256": "f86272629ab69b3b489714bc37fd785e5e2d6cd7d583a31c8cbddd44b7bd1426"
+    }
+  ],
+  "cleanup": {
+    "all24811_protected_unchanged_during_compaction": true,
+    "subsequent_protected_changes": [
+      "docs/KNOWLEDGE_BASE.md",
+      "docs/RE_ARTIFACTS.md",
+      "docs/RE_HANDOFF.md",
+      "docs/evidence/player-initialization-vector-order/README.md"
+    ],
+    "source_ledger_unchanged_since_validated_native_build": true,
+    "unrelated_D3D_files_hash_verified": 9,
+    "unrelated_D3D_staged": false
+  },
+  "full_CI": "not run under operator focused-validation preference",
+  "broad_canonical_cold": "not run; no new exact candidate or modified exact body/interface",
+  "product_runtime": "open; no new runtime validation",
+  "semantic_port": "not started; no new credit",
+  "phase": "active-incomplete"
+}

@@ -8,15 +8,17 @@ when transferring this workspace. Historical input pins remain immutable.
 ## Expanded continuation inputs
 
 The current Player producer is
-`.analysis/gpt-6.1-sol/player-residual-publication-20261023`.
+`.analysis/gpt-6.1-sol/player-flag-lifetimes-20261023`.
 Use manifest-final.json, common-final.py, probe-maintained.py and
 bound-parent-final.py. Its initial manifest and older producers bind historical
 source, not the current source.
 
 | Carrier | Purpose |
 | --- | --- |
-| `build/gpt-6.1-sol/player-residual-publication-20261023/maintained-17` | Current1359/1435,76 differences,all49 bindings |
-| `build/gpt-6.1-sol/player-stage-caller-20261023/max0-ordered-named-result` | Selected private witness reproducing current bytes |
+| `build/gpt-6.1-sol/player-flag-lifetimes-20261023/maintained-17` | Current1370/1435,65 differences,all49 bindings |
+| `build/gpt-6.1-sol/player-flag-lifetimes-20261023/first-timer-commit-barrier` | Selected private witness reproducing current bytes |
+| `build/gpt-6.1-sol/player-residual-publication-20261023/maintained-17` | Previous1359/76 cache |
+| `build/gpt-6.1-sol/player-stage-caller-20261023/max0-ordered-named-result` | Previous selected vector-order witness |
 | `build/gpt-6.1-sol/player-stage-caller-20261023/maintained-17` | Previous1355/80 cache |
 | `build/gpt-6.1-sol/player-stage-caller-20261023/calc-snapshot-before-owner` | Previous owner-capture private witness |
 | `build/gpt-6.1-sol/player-stage-caller-20261023/all-wrapper-callers-27` | Closed caller-visibility graph retained as a support cache |
@@ -41,6 +43,7 @@ exact historical files; it does not make a stale report current or grant exactne
 
 | Archive group | Receipt | Before → archive |
 | --- | --- | ---: |
+| Player timer-commit controls and rejected intrinsic attempt | [Timer commit](evidence/player-initialization-timer-commit/cleanup-summary.json) |18.85 →0.40 |
 | Historical complete LTCG probe caches,85 trees | [Handoff compaction](evidence/handoff-artifact-compact-20261023/README.md) |64.85 →2.28 |
 | Player vector-order controls,16 builds/15 private source proposals | [Vector ordering](evidence/player-initialization-vector-order/cleanup-summary.json) |32.06 →0.42 |
 | Player owner-capture controls and two type snapshots | [Owner capture](evidence/player-initialization-owner-capture/cleanup-summary.json) |34.16 →0.88 |
@@ -64,6 +67,7 @@ with `tar -tJf` for xz or `tar -tzf` for gzip. Restore only ignored paths; never
 extract old maintained source into src/ or relax source/target pins.
 
 ```sh
+tar -xJf .analysis/player-timer-commit-cleanup-20261023/completed-controls.tar.xz -C .
 tar -xJf .analysis/handoff-artifact-compact-20261023/historical-probe-caches.tar.xz -C .
 tar -xJf .analysis/player-vector-order-cleanup-20261023/completed-controls.tar.xz -C .
 tar -xJf .analysis/player-owner-capture-cleanup-20261023/completed-controls.tar.xz -C .

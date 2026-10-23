@@ -5,6 +5,9 @@ improves from1355 matching/80 different bytes to **1359 matching/76 different**,
 after all49 independent address bindings. Four ordinary bytes are repaired with
 no target-equal losses. No small-function target mapping or exact credit is added.
 
+The [timer-commit successor](../player-initialization-timer-commit/README.md)
+now reaches1370/65. This packet's1359 source pins and commands are historical.
+
 ## Source and full comparison
 
 [The patch](maintained.patch) constructs the actual extent-plus-position value

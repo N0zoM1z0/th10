@@ -5749,3 +5749,34 @@ false stronger raw-equality assertion. Prefix37/timer21/vector7/tail11 bytes rem
 Closed controls/source proposals are hash-verified in a lossless archive; current
 carriers, canonical caches, tools, target, database and unrelated D3D files remain.
 No exact count, native product/runtime, semantic or portability gate changes.
+
+## Player initializer: timer commit scheduling (2026-10-23)
+
+The [timer-commit packet](evidence/player-initialization-timer-commit/README.md)
+binds the complete1435-byte owner/all49 independent fields to current source.
+A compiler-only barrier between actual previous=-2/current=-1 writes postpones
+OR ESI,-1 from owner+19C to+1B0, making the whole first timer region agree with
+TH10. This is a compiler observation, not proof of an original intrinsic or
+concurrency model. Five initializer barriers remain; no CPU fence is emitted.
+
+Full replay improves1359/76 to1370/65. Across34 changed bytes there are21 repairs
+and10 target-equal losses; three already-different positions also change value.
+Two later vector scratch FSTP stores move earlier. Do not describe the gain as
+21 bytes without the losses or combine independent trial scores. Remaining
+buckets are37 before150,zero in150..1FF,10 in200..3FF and18 in400..59A.
+No ordinary bytes/local destinations are masked and no exact ledger is advanced.
+
+Fresh maintained and private Player compiles reproduce519 complete public PDB
+owners/140370 bytes raw. Versus1359 only PlayerInitialize changes, while518
+others remain raw-identical. This is stronger than the earlier vector-order
+packet's field-only layout classification in this bounded context; it does not
+cover static/unowned fragments, product linkage or runtime. Eight complete
+shared guards1753/all99 pass. Maintained compilation reuses16 pinned objects,
+not an independent whole-graph cold pair.
+
+The pinned VC7.1 accepts _WriteBarrier as an intrinsic and its narrow timer
+control reproduces the full1370 bytes. _ReadBarrier instead warns C4163 that it
+is unavailable as an intrinsic; the producer rejects the object before link.
+Do not route it through an opaque diagnostic anchor. Real named-vector returns,
+calc-snapshot write barrier and actual Player /G7 are also whole-parent neutral
+at1370; source ownership, original qualifiers and compiler flags remain unknown.
