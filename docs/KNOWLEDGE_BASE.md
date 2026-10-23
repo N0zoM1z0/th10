@@ -5654,3 +5654,33 @@ static/unowned fragments and target equality. Exact counts and product/runtime/
 semantic/port gates are unchanged. Closed controls and four full interface/type
 snapshots are losslessly archived with per-file verification; current carriers,
 producers and the nine unrelated D3D files remain intact.
+
+## Player parameter/partition controls and handoff (2026-10-23)
+
+The [follow-up packet](evidence/player-initialization-parameter-controls/README.md)
+recovers21 complete native images at source bd2b5a4:18 full1435-byte parent
+comparisons with all49 independent fields and three strict size rejections.
+Maintained Player stays1195/1435 with240 differences. Coherent Chain parameter
+reordering, vector named-result return, ordinary VM-owned script binding with
+all24 maintained calls converted, /G6, /G7 and tested wrapper/reset TU partitions
+are whole-parent neutral. All complete images preserve eight guards1753/all99.
+/Op, /Os and copy-plus-assign vector produce1471,1270 and1500 bytes, never cropped.
+The equal-score flag-mask control changes nine still-wrong bytes; volatile
+manager controls and _WriteBarrier regress. _ReadBarrier is unavailable as a
+VC7.1 intrinsic. Prepared controls are labeled unexecuted, not silently counted.
+
+A separately attested prior raw-target review of404450/214 observes Stage
+object/primitive iteration rather than the ledger's older manager-slot hypothesis.
+Its sole incoming call4181E3 corresponds to the existing GamePrepareAnimationSlots
+interface in GameManagerUpdateBody; the later ResetGameStage helper is distinct.
+Signed primitive script index+4 and byte stride+2, sequential VM indices+6,
+three callback-node OR2 operations, object flags assignment1 and final instruction
+reset agree with the current Stage layout. Original classes/TUs remain unknown;
+source for this dependency is still absent. Supplying it in a real caller graph
+is an unexecuted prerequisite hypothesis for large Player exact, not a new small
+exact objective. The tested19-input child-owner swap is already neutral.
+
+The [handoff cleanup receipt](evidence/handoff-ready-20261023/README.md) records
+verified lossless archives, restoration commands and retained current graphs.
+Maintained code, headers, recipes, ledgers and progress counts are unchanged.
+No new exactness, native product/runtime, semantic or portability credit follows.

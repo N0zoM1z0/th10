@@ -5,6 +5,10 @@
 replaying all49 independently identified address fields. It remains nonexact.
 Headers, ABI declarations, canonical recipes and exact ledgers are unchanged.
 
+Follow-up: the [parameter/partition controls](../player-initialization-parameter-controls/README.md)
+now test the parameter and vector suggestions below at the maintained1195 baseline.
+The earlier1170-baseline controls and their input pins remain historical.
+
 ## Maintained change and complete comparison
 
 [The patch](maintained.patch) adds two compiler-only read/write barriers. One
@@ -93,12 +97,12 @@ The current residual contains197 differences before offset150,21 in150..1FF,
 lifetime constraints in the prefix. The first flags/global pair still chooses
 different registers and the global load's longer encoding shifts later bytes;
 the wrapper receiver bridge remains open. Consistent natural Chain parameter
-reordering is unexecuted; it requires every graph consumer to recompile, new
-signature bindings and both complete131-byte insertion guards. Later timer-constant placement, one
-commuted vector operand, scratch-store order and selection-index registers also
-remain. A different natural vector-value operator return shape is **unexecuted**;
-the earlier direct-constructor control does not test it. Preserve every byte and
-field; do not substitute a small helper match for the large owner.
+reordering was unexecuted at this checkpoint; the follow-up packet now records
+three coherent forms with all17 inputs recompiled and complete guards passing.
+Later timer-constant placement, one commuted vector operand, scratch-store order
+and selection-index registers also remain. The natural vector named-result
+return was unexecuted here and is now measured as whole-parent neutral; the follow-up copy-plus-assign form fails the complete
+size check at1500 bytes. Preserve every byte and field; do not substitute a small helper match for the large owner.
 
 [Cleanup](cleanup-summary.json) losslessly archives15 completed control builds
 and four closed source/header snapshots:665 files,33400408 bytes become729592

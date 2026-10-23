@@ -1,0 +1,70 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "evidence_class": "prior target-attested read-only Ghidra review, raw target operands and existing Stage layout assertions; no new target analysis during cleanup",
+  "mapped_text_bytes": 412289,
+  "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+  "read_only": true,
+  "analysis_transaction_rolled_back": true,
+  "reviewed_owner": {
+    "address": "0x404450",
+    "size": 214,
+    "inclusive_end": "0x404525",
+    "ghidra_body_ranges": [
+      [
+        "0x404450",
+        "0x4044b4"
+      ],
+      [
+        "0x4044c0",
+        "0x404525"
+      ]
+    ],
+    "source_present": false,
+    "abi_observed": "one stack pointer argument, RET4"
+  },
+  "incoming": {
+    "call": "0x4181e3",
+    "caller": "0x418190",
+    "caller_source": "src/GameManager.cpp",
+    "current_opaque_interface": "GamePrepareAnimationSlots(g_GameAnimationSlots)"
+  },
+  "target_observations": {
+    "chain_node_offsets": [
+      "0x8",
+      "0xc",
+      "0x2a40"
+    ],
+    "chain_flags_operation": "OR2 at each node+4, without null checks",
+    "data_header": "argument+0x10; signed16 objectCount at header+0",
+    "objects": "argument+0x14; each object flags byte+3 assigned1",
+    "primitive_start": "object+0x1c",
+    "primitive_loop": "while signed16 type at+0 is nonnegative",
+    "vm_storage": "argument+0x17c; stride0x3ac; sequential vmIndex starts0",
+    "loaded_resource": "argument+0x178",
+    "wrapper_call": {
+      "site": "0x4044d3",
+      "target": "0x404f30",
+      "live_ins": "ESI=selected object VM; EAX=sign-extended primitive+4; stack=loaded resource"
+    },
+    "primitive_vm_index": "signed16 storage+6 assigned current vmIndex before increment",
+    "primitive_stride": "sign-extended16 byteSize at+2; unchecked",
+    "instruction_reset": "argument+0x4c assigned scriptBase argument+0x1c, including objectCount<=0"
+  },
+  "corroboration": {
+    "kind": "TH10-local source layout, not original class ownership",
+    "source": "src/StageScript.hpp"
+  },
+  "superseded_hypothesis": "old functions.csv origin prose suggests ANM manager-slot iteration; raw offsets/loop are consistent with the current Stage data view",
+  "unknowns": [
+    "original source class and physical TU",
+    "private ABI emergence in a complete real-caller graph",
+    "whether supplying this missing dependency improves PlayerInitialize exactness"
+  ],
+  "next_scope": "private caller dependency experiment judged by complete1435-byte Player parent/all49 fields/full shared guards, not standalone214-byte exact farming",
+  "local_evidence_sha256": {
+    ".analysis/gpt-6.1-sol/player-parameter-partition-20261023/missing-caller-review.txt": "78619535a3647903bad0182aa4cfa173bf3d25b875e111c818245291febc1a8e",
+    ".analysis/gpt-6.1-sol/player-parameter-partition-20261023/missing-caller-ghidra.log": "a7717ab7fba39941fac0c7265d62988cebb7925546ebf6ee9a659d88a151fc87",
+    ".analysis/gpt-6.1-sol/player-parameter-partition-20261023/run-missing-caller.py": "d0619e6118f7f06ea2789ae9228a7d9a3898662063b9612c86c40719e25b5121",
+    ".analysis/gpt-6.1-sol/player-parameter-partition-20261023/ghidra/MissingVmCallerReview.java": "30751430a8f8663b4e720030971bd27dd584f425b54142bedde8e5e0386af8fd"
+  }
+}

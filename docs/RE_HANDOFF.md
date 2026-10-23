@@ -1,6 +1,6 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-23 after Player caller/type controls and publication scheduling.
+Updated 2026-10-23 for operator-requested cleanup and handoff at source bd2b5a4.
 Reconstruction remains **active-incomplete**. The maintained initializer now
 emits1435 bytes in its measured17-input graph, but is not exact: complete replay
 of49 independently bound address fields matches1195/leaves240 differences.
@@ -29,7 +29,8 @@ Large-function exact work remains the priority, without small-function count gai
 
 ## Resume Player's complete initializer
 
-Read the [current caller/type controls](evidence/player-initialization-caller-controls/README.md),
+Read the [latest parameter/partition controls](evidence/player-initialization-parameter-controls/README.md),
+then the [caller/publication controls](evidence/player-initialization-caller-controls/README.md),
 then the historical [ordering](evidence/player-initialization-ordering/README.md)
 and [real-dependency](evidence/player-startup-real-dependencies/README.md) packets.
 Actual Chain/resource/log services, .sht loader426520/229, existing selection
@@ -58,16 +59,39 @@ measured and neutral. No header/interface change is adopted.
 Of240 remaining differences,197 precede offset150;21 are in150..1FF,11 in200..3FF
 and11 in400..59A. Prioritize callback/VM receiver and address lifetimes: the first
 flags/global pair still allocates different registers and adds a longer global
-load. Consistent insertion-parameter reordering and natural vector-operator
-return shape are unexecuted; the former requires every consumer and signature
-binding to move together, and the older direct-constructor control does not test
-the latter. Later constant placement, a commuted vector operand, scratch-store
-order and selection-index registers remain. Early callback
+load. Coherent Chain parameter reordering, natural vector named-result return,
+VM child-binder member ownership, /G6 and /G7, and moving the VM wrapper/reset
+into another TU are now measured whole-parent neutral. Copy-plus-assign vector,
+/Op and /Os controls fail complete size checks at1500/1471/1270 bytes respectively;
+no result is cropped. Equal-score flag-mask changes are not byte-neutral.
+Later constant placement, a commuted vector operand, scratch-store order and
+selection-index registers remain. Early callback
 field publication, volatile flags and removing the first node barrier regress.
 Do not repeat indexed controls without a new premise or replace the large-owner
 objective with a small helper claim. Preserve all1435 bytes and49 fields.
 
-Current producers: `.analysis/gpt-6.1-sol/player-chain-members-20261023`.
+The new packet records21 complete native images,18 full parent comparisons and
+three strict size rejections. Eight shared guards1753/all99 pass in every complete
+image. _ReadBarrier fails VC7.1 C4163 before link. Inherited vector storage,
+containing-bitfield volatility and three manager-access variants are prepared
+but unexecuted. No game source changed after bd2b5a4.
+
+Next test the missing real wrapper caller404450/214 only as a prerequisite for
+large Player exact work. Fresh prior read-only target review identifies Stage
+object/primitive iteration using existing StageScript.hpp fields. Its actual
+opaque source interface is GamePrepareAnimationSlots(g_GameAnimationSlots) in
+GameManagerUpdateBody, with target call4181E3; it is not the later ResetGameStage
+helper. Preserve signed counts/strides, flags assignment and final instruction
+reset. Original class/TU remain unknown. The19-input script-binder owner swap
+is already fully compiled and neutral; do not repeat it as an untested idea.
+
+Latest producers: `.analysis/gpt-6.1-sol/player-parameter-partition-20261023`.
+Keep complete child-callers-baseline-19 and vm-script-owner-all-19 carriers under
+the corresponding build campaign and the expanded vm-script-owner source/header
+snapshot. These are diagnostic graph controls; they do not close all28 target
+wrapper calls. Their two bound-parent-19.py commands are in the new packet.
+
+Maintained-source producers: `.analysis/gpt-6.1-sol/player-chain-members-20261023`.
 Use manifest-final.json, common-final.py, probe-maintained.py and
 bound-parent-final.py. Both maintained-17 and highlight-publication-17 under the
 corresponding build campaign remain complete. Historical pins are immutable;
@@ -104,7 +128,21 @@ maintained/full-services support caches plus prior-chain-canonical. The older
 
 ## Cleanup, preservation and restoration
 
-The [current cleanup receipt](evidence/player-initialization-caller-controls/cleanup-summary.json)
+The [latest cleanup receipt](evidence/handoff-ready-20261023/README.md) archives
+19 newly closed Player build trees, five full private snapshots and15 historical
+host-test output trees:13326 files/133.71MB become1.74MB, reclaiming131.97MB payload
+(163.81MB allocated blocks). During compaction all25296 retained-file hashes
+are unchanged; documentation updates follow that protected check.
+Two useful19-input graphs, current maintained/selected carriers, required caches,
+compact reports and producers remain expanded. Restore selected roots before
+running historical consumers:
+
+```sh
+tar -xJf .analysis/handoff-ready-20261023/player-completed-controls.tar.xz -C .
+tar -xJf .analysis/handoff-ready-20261023/historical-host-checks.tar.xz -C .
+```
+
+The [preceding cleanup receipt](evidence/player-initialization-caller-controls/cleanup-summary.json)
 records15 completed control builds and four closed source/header snapshots:
 665 files/33.40MB become0.73MB, reclaiming32.67MB of payload. Every archive member
 is length/hash-verified and all37241 protected file hashes are unchanged. Both
@@ -115,8 +153,10 @@ Restore archived controls/snapshots from the repository root when needed:
 tar -xJf .analysis/player-caller-cleanup-20261023/completed-controls.tar.xz -C .
 ```
 
-The [current validation receipt](evidence/player-initialization-caller-controls/validation-summary.json)
-states actual build/check scope. The previous
+The [current validation receipt](evidence/handoff-ready-20261023/validation-summary.json)
+states the cleanup-only check scope; the
+[publication receipt](evidence/player-initialization-caller-controls/validation-summary.json)
+retains the earlier build scope. The previous
 [ordering cleanup](evidence/player-initialization-ordering/README.md) retains its
 separate338-file gzip archive and restoration command, saving18.17MB at that checkpoint.
 The [previous cleanup receipt](evidence/handoff-final-20261023/README.md) records
@@ -169,7 +209,10 @@ subagents. Attest the database before new target analysis. Full mapped text
 Current source verifies the complete1435-byte Player parent after49 independent
 bindings and519 private/maintained public owners raw. Eight complete shared
 guards pass1753/all99. Maintained reproduction compiles Player and reuses16 pinned
-inputs; the three private interface/type graphs each freshly compile all17 once.
+inputs; the three previous private interface/type graphs each freshly compile
+all17 once.
+The latest parameter/binder graphs separately compile17 or19 inputs as recorded
+in their packet; cleanup only recovers existing results and runs cached comparisons.
 No independent full-graph pair, new exact acceptance, canonical cold, full CI,
 product closure or runtime validation is claimed. The older07b1be2 checkpoint
 separately cold-replayed the original14-input Chain recipe4/838/all58. Different

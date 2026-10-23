@@ -1,0 +1,106 @@
+{
+  "scope": "documentation and artifact-only cleanup; no modified game functions/interfaces",
+  "source_checkpoint": "bd2b5a422fd37e70a7561c71e96df18e844b114d",
+  "preflight": {
+    "verify_target": "passed; verify-target.log",
+    "toolchain_execute": "passed; toolchain-execute.log",
+    "tracking_require_target": "passed; tracking-preflight.log",
+    "reconstruction_status": "recorded; status-preflight.log"
+  },
+  "focused_oracle": {
+    "kind": "cached maintained graph; no native compilation",
+    "parent_size": 1435,
+    "parent_matched_bytes": 1195,
+    "parent_differences": 240,
+    "parent_independent_fields": 49,
+    "parent_result": "expected mismatch; no exact credit",
+    "shared_guards": 8,
+    "shared_guard_bytes": 1753,
+    "shared_guard_fields": 99,
+    "shared_guard_result": "all exact",
+    "raw_report_sha256": "da47c4e4dd5a050baf3cd0b115ff8a6f22a9fc0b8f70f666bfb96c2445f16e11"
+  },
+  "recovered_19_input_comparisons": "both complete1435/49 match1195, replay-equal to maintained baseline; bound before compaction",
+  "maintenance_checks": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.155,
+      "log": ".analysis/handoff-ready-20261023/toolchain-check.log",
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.372,
+      "log": ".analysis/handoff-ready-20261023/tracking-final.log",
+      "log_sha256": "c07bd5ce4bc75bc6dfbaf01c986b3ec251b111ff5b9c5cd0b29bfa571e71e57e"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.164,
+      "log": ".analysis/handoff-ready-20261023/progress.log",
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.181,
+      "log": ".analysis/handoff-ready-20261023/progress-check.log",
+      "log_sha256": "d9c37039657cc0a1a10d8f7a205617b4eaf5851f9e7572226287bc7e5e4aa423"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/build-match-unit.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.704,
+      "log": ".analysis/handoff-ready-20261023/match-graph-check.log",
+      "log_sha256": "3c3d25a8f7ef707beaac4c4d61aa69edb7cdb6d8fb909df373a23b0c1a29a27a"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/build.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.16,
+      "log": ".analysis/handoff-ready-20261023/build-graph-check.log",
+      "log_sha256": "fe5e4116da8e1492cb9ab815d7df395598537110c0bf45fbdbc8b18899d9bc62"
+    }
+  ],
+  "documentation_hygiene": "passed scripts/repo-python scripts/check-doc-hygiene.py",
+  "whitespace": "passed git diff --check",
+  "full_ci": "not run under operator focused-validation preference; game code/interfaces unchanged",
+  "broad_cold_replay": "not run; no new exact claims or game source changes",
+  "ghidra": "no new analysis; preserved earlier full-text-attested read-only review and producer",
+  "product_runtime_semantics_port": "unchanged and open/not started; no new credit",
+  "unrelated_work": {
+    "d3d_files": 9,
+    "preserved_hashes": true,
+    "staged": false
+  },
+  "post_cleanup_protection": {
+    "files_rechecked": 25296,
+    "only_changes": "three intentionally updated tracked documentation files",
+    "game_sources_configs_tests_private_inputs_unchanged": true
+  }
+}
