@@ -1,0 +1,901 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "aeeb50a94b32da3a575046c6a1cc9c2371e06c00",
+  "scope": "three ANM-only explicit compiler options with unchanged source; no canonical profile adoption",
+  "private_packet": ".analysis/gpt-6.1-sol/anm-processor-options-20261023",
+  "variants": [
+    {
+      "label": "g6",
+      "actual_anm_flags": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/G6"
+      ],
+      "source_shape_assertions": [
+        "source bytes unchanged",
+        "ANM-only declared processor option /G6",
+        "all original switches including /GL and /GS retained"
+      ],
+      "source_sha256": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "producer_sha256": "393f1a698da7182d4f220127bb40ea02b8a2d533c51e3a6952d6b3771e20a20f",
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "rejected_guards": [],
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "selected_cases": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DDE6",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            62
+          ],
+          "target_address": "0x0043F2AA",
+          "candidate_address": "0x0040DE1B",
+          "target_size": 52,
+          "candidate_size": 52,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 44,
+          "comparable_bytes": 44,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040DE4F",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040DEBF",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040DF2F",
+          "target_size": 92,
+          "candidate_size": 92,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 72,
+          "comparable_bytes": 76,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F974",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D9A0",
+          "candidate_size": 9964,
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406CF0",
+          "candidate_size": 7020,
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402810",
+          "candidate_size": 14336,
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "peer_comparison": [
+        {
+          "label": "g6",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "g6",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "g6",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14336,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "5d3199eebd5faf169f37722a81d84ef10733df8e75cce40ae7d8608b88b001c5"
+    },
+    {
+      "label": "g7",
+      "actual_anm_flags": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/G7"
+      ],
+      "source_shape_assertions": [
+        "source bytes unchanged",
+        "ANM-only declared processor option /G7",
+        "all original switches including /GL and /GS retained"
+      ],
+      "source_sha256": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "producer_sha256": "393f1a698da7182d4f220127bb40ea02b8a2d533c51e3a6952d6b3771e20a20f",
+      "guard_summary": {
+        "owners": 36,
+        "exact": 36,
+        "bytes": 4618,
+        "fields": 121
+      },
+      "rejected_guards": [],
+      "case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "selected_cases": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040DDE6",
+          "target_size": 52,
+          "candidate_size": 53,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 45,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            62
+          ],
+          "target_address": "0x0043F2AA",
+          "candidate_address": "0x0040DE1B",
+          "target_size": 52,
+          "candidate_size": 52,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 44,
+          "comparable_bytes": 44,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040DE4F",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040DEBF",
+          "target_size": 112,
+          "candidate_size": 112,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 90,
+          "comparable_bytes": 96,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040DF2F",
+          "target_size": 92,
+          "candidate_size": 92,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 72,
+          "comparable_bytes": 76,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F974",
+          "target_size": 1441,
+          "candidate_size": 1440,
+          "gap_delta": -1,
+          "matched_comparable_bytes": 857,
+          "comparable_bytes": 1253,
+          "normalization_complete": true
+        }
+      ],
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D9A0",
+          "candidate_size": 9964,
+          "raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406CF0",
+          "candidate_size": 7020,
+          "raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402810",
+          "candidate_size": 14336,
+          "raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136"
+        }
+      },
+      "peer_comparison": [
+        {
+          "label": "g7",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_sha256": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "g7",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "g7",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14336,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_sha256": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "28e7d2f2c2b6cad80519b7e520018fcd0f2342645e6ac0797c082718d40d84cf"
+    },
+    {
+      "label": "ob1",
+      "actual_anm_flags": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "source_shape_assertions": [
+        "source bytes unchanged",
+        "ANM-only declared inline selection option /Ob1",
+        "all original switches including /GL and /GS retained"
+      ],
+      "source_sha256": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "producer_sha256": "34a1740c84da473740455a21ddf640e0c88c1ade26d78db854d3d817cf01bd4a",
+      "guard_summary": {
+        "owners": 36,
+        "exact": 31,
+        "bytes": 3446,
+        "fields": 73
+      },
+      "rejected_guards": [
+        {
+          "unit": "enemy-drop-item-counts",
+          "result": "unsupported",
+          "error": "linked fields differ from manifest: actual=[(11, 'DIR32', 4), (30, 'REL32', 4), (36, 'REL32', 4)] expected=[(23, 'DIR32', 4), (30, 'REL32', 4), (36, 'REL32', 4)]"
+        },
+        {
+          "unit": "enemy-drop-item-counts-core",
+          "result": "unsupported",
+          "error": "linked fields differ from manifest: actual=[(11, 'DIR32', 4), (16, 'REL32', 4), (22, 'DIR32', 4), (82, 'REL32', 4), (87, 'DIR32', 4), (122, 'DIR32', 4), (127, 'DIR32', 4), (133, 'DIR32', 4), (168, 'DIR32', 4), (188, 'DIR32', 4), (200, 'DIR32', 4), (213, 'DIR32', 4), (229, 'DIR32', 4), (243, 'DIR32', 4), (286, 'REL32', 4), (291, 'DIR32', 4), (326, 'DIR32', 4), (331, 'DIR32', 4), (337, 'DIR32', 4), (372, 'DIR32', 4), (392, 'DIR32', 4), (404, 'DIR32', 4), (410, 'DIR32', 4), (417, 'DIR32', 4), (423, 'DIR32', 4), (433, 'DIR32', 4), (441, 'REL32', 4)] expected=[(11, 'DIR32', 4), (16, 'REL32', 4), (22, 'DIR32', 4), (82, 'REL32', 4), (87, 'DIR32', 4), (122, 'DIR32', 4), (127, 'DIR32', 4), (133, 'DIR32', 4), (168, 'DIR32', 4), (188, 'DIR32', 4), (200, 'DIR32', 4), (213, 'DIR32', 4), (229, 'DIR32', 4), (242, 'DIR32', 4), (286, 'REL32', 4), (291, 'DIR32', 4), (326, 'DIR32', 4), (331, 'DIR32', 4), (337, 'DIR32', 4), (372, 'DIR32', 4), (392, 'DIR32', 4), (404, 'DIR32', 4), (410, 'DIR32', 4), (417, 'DIR32', 4), (423, 'DIR32', 4), (433, 'DIR32', 4), (441, 'REL32', 4)]"
+        },
+        {
+          "unit": "enemy-finalize-death",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x9d differs from manifest 0xa2"
+        },
+        {
+          "unit": "cancel-record",
+          "result": "unsupported",
+          "error": "PDB contribution size 0xd6 differs from manifest 0xc7"
+        },
+        {
+          "unit": "circle-cancel",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x108 differs from manifest 0x104"
+        }
+      ],
+      "case_aligned": {
+        "matched_comparable_bytes": 3117,
+        "comparable_bytes": 8094,
+        "absolute_case_gap_delta": 325,
+        "same_sized_cases": 9,
+        "normalization_complete": true
+      },
+      "selected_cases": [
+        {
+          "opcodes": [
+            61
+          ],
+          "target_address": "0x0043F276",
+          "candidate_address": "0x0040D6B5",
+          "target_size": 52,
+          "candidate_size": 50,
+          "gap_delta": -2,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 44,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            62
+          ],
+          "target_address": "0x0043F2AA",
+          "candidate_address": "0x0040D6E7",
+          "target_size": 52,
+          "candidate_size": 49,
+          "gap_delta": -3,
+          "matched_comparable_bytes": 37,
+          "comparable_bytes": 44,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "candidate_address": "0x0040D718",
+          "target_size": 112,
+          "candidate_size": 113,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 38,
+          "comparable_bytes": 97,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "candidate_address": "0x0040D789",
+          "target_size": 112,
+          "candidate_size": 113,
+          "gap_delta": 1,
+          "matched_comparable_bytes": 38,
+          "comparable_bytes": 97,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "candidate_address": "0x0040D7FA",
+          "target_size": 92,
+          "candidate_size": 86,
+          "gap_delta": -6,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 76,
+          "normalization_complete": true
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "target_address": "0x00440E03",
+          "candidate_address": "0x0040F248",
+          "target_size": 1441,
+          "candidate_size": 1436,
+          "gap_delta": -5,
+          "matched_comparable_bytes": 56,
+          "comparable_bytes": 1257,
+          "normalization_complete": true
+        }
+      ],
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D280",
+          "candidate_size": 9948,
+          "raw_sha256": "30427d2d7ac68cbf01c73f2ca40e23fe463c01f07e4cac9732957f6927854919"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406A00",
+          "candidate_size": 7020,
+          "raw_sha256": "968a8afa3ee149ecd2a2be632a02deef966a334a6555f9991fcae618a5d60c00"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402500",
+          "candidate_size": 14356,
+          "raw_sha256": "f9a4019566cde1369a033243796dd5ce94641968477fff3ec8e40f3f9f5c5d15"
+        }
+      },
+      "peer_comparison": [
+        {
+          "label": "ob1",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9948,
+          "acceptance_authority": "none; peer comparison only",
+          "result": "unequal-extent"
+        },
+        {
+          "label": "ob1",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+          "replayed_changed_field_count": 105,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "ob1",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14336,
+          "candidate_size": 14356,
+          "acceptance_authority": "none; peer comparison only",
+          "result": "unequal-extent"
+        }
+      ],
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      "changed_object_sha256": "847c7bfc56324d669da3457015b719e7a83f405d338b550b35a038b657c83363"
+    }
+  ],
+  "input_counts": {
+    "source_sha256": 108,
+    "baseline_source_sha256": 32,
+    "baseline_artifact_sha256": 19,
+    "frozen_inputs": 373,
+    "unrelated_untracked": 9
+  },
+  "private_evidence_sha256": {
+    ".analysis/gpt-6.1-sol/anm-processor-options-20261023/manifest.json": "d5a4e05eeadc151be8ce0445ce812ebda989d19b9e5ade78307c484271f5eb65",
+    ".analysis/gpt-6.1-sol/anm-processor-options-20261023/probe.py": "393f1a698da7182d4f220127bb40ea02b8a2d533c51e3a6952d6b3771e20a20f",
+    ".analysis/gpt-6.1-sol/anm-processor-options-20261023/probe-ob1.py": "34a1740c84da473740455a21ddf640e0c88c1ade26d78db854d3d817cf01bd4a",
+    ".analysis/gpt-6.1-sol/anm-processor-options-20261023/compare-peers.py": "31c32e658d2c2cba34b9cf4776e66c9a85abbb957336bce2a77018ef6fda8f5c",
+    ".analysis/gpt-6.1-sol/anm-processor-options-20261023/peer-comparisons.json": "af7eeb49e79359c574265004a859e5b1f63137928af7a8bca1326d59f16acd0f"
+  },
+  "ghidra_attestation": "same-session .analysis/gpt-6.1-sol/anm-flags-timer-values-20261023/ghidra.log; target/database unchanged",
+  "removed_artifacts": [
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/source.map",
+      "bytes": 92342,
+      "sha256": "6c34b8b930d3cac38f70ee3b0a0bae25bdb38232f3c36a11976f51f9a937d875"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/source.exe",
+      "bytes": 122880,
+      "sha256": "d206e1c86cd175bd17026257f5dc79b125e6183abd517678564161a785b20b12"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/link.log",
+      "bytes": 104,
+      "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/source.pdb",
+      "bytes": 117760,
+      "sha256": "26b058e8049bb9c1bc2d699c4490f5324476490f40364f2e6ee651a09ec7d533"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g6/support-01-AnmManager.ltcg.obj",
+      "bytes": 247996,
+      "sha256": "5d3199eebd5faf169f37722a81d84ef10733df8e75cce40ae7d8608b88b001c5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/source.map",
+      "bytes": 92342,
+      "sha256": "1fc059585875f6c56e5dc09442fb01172ba679a4bbdd5aa4977fda23e216072d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/source.exe",
+      "bytes": 122880,
+      "sha256": "a4012f5993fdd44f97e892c2edce46394d57a437e24ec8b35f9da2106ebcf26f"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/source.pdb",
+      "bytes": 117760,
+      "sha256": "3ede4607424a1a35f26ae79913e4a8f584ad7a95cd26aee73a7e372556805a31"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/g7/support-01-AnmManager.ltcg.obj",
+      "bytes": 247996,
+      "sha256": "28e7d2f2c2b6cad80519b7e520018fcd0f2342645e6ac0797c082718d40d84cf"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/source.map",
+      "bytes": 92342,
+      "sha256": "7fa0f553edad56c2b3a841073b9a39c780ee0506016a551093ee6fd9291056f8"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/source.exe",
+      "bytes": 118784,
+      "sha256": "91a52252cf146da37813e2a394171de75fe8db038a1bf9d64e4a053ba789525b"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/source.ltcg.obj",
+      "bytes": 157588,
+      "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/source.pdb",
+      "bytes": 117760,
+      "sha256": "92ef22e9e76fa117c29341b08b5f79162982208bf0b401e584138e8d57cd9e95"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-processor-options-20261023/ob1/support-01-AnmManager.ltcg.obj",
+      "bytes": 248000,
+      "sha256": "847c7bfc56324d669da3457015b719e7a83f405d338b550b35a038b657c83363"
+    }
+  ],
+  "removed_bytes": 3195201,
+  "new_exact_credit": 0
+}

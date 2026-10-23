@@ -16,14 +16,14 @@ replay. New checkpoints use `gpt-6.1-sol: ...` and are pushed after validation.
 | Source-present nonexact / source absent | 204 / 121 functions |
 | Whole Windows product / runtime | Open; semantic reconstruction and port not started |
 
-Latest ANM batch tests four real flag/timer value lifetimes. Loop- and
-function-scoped flip accumulators preserve all three complete raw bodies.
-Scale-first and frame-first by-value timer helpers preserve all complete bytes
-after independently binding291 ANM and17 Enemy changed address fields. FlipX
-still53/52, common span1440/1441 and slow timer order unchanged. All36 whole
-guards4618/all121 and eight child paths pass per trial; ECL27 is retained.
-No source or exact gain;64 new native files removed after hash verification
-(4267615 bytes). See [ANM flag/timer evidence](evidence/anm-flags-timer-values/README.md).
+Latest ANM option controls compile unchanged source. /G6 and /G7 preserve all
+three complete raw bodies and36 whole guards4618/all121. /Ob1 yields ANM9948,
+only9/92 same-sized groups, gap325 and31/36 guards; five Enemy contracts reject
+field inventories or extents. Enemy becomes14356 despite reusing its object.
+ECL7020/6993 remains complete with exact171-byte callee. No profile adoption or
+new exact credit. All48 new carriers removed after hash checks (3195201 bytes).
+See [ANM option evidence](evidence/anm-codegen-options/README.md) and the preceding
+[ANM flag/timer evidence](evidence/anm-flags-timer-values/README.md).
 
 ## Handoff essentials
 
@@ -38,11 +38,11 @@ No source or exact gain;64 new native files removed after hash verification
   corrected audit below and inspect actual patches before reusing a conclusion.
 - Continue to prioritize the large owners and
   use focused complete-owner replays; do not repeat the excluded storage forms.
-  Enemy value sinks and the latest ANM shared flags/by-value addition forms
-  do not fix their target graphs. Next test a distinct declared ANM processor
-  codegen context, preserving /GL and focused whole guards; otherwise return to
-  groups49/53/54 with a materially different lifetime hypothesis. Retain the
-  Enemy candidate without promoting it.
+  Enemy value sinks, ANM shared flags/by-value addition and G6/G7 controls do
+  not fix their target graphs; ANM-only Ob1 regresses five exact guards. Next
+  isolate ExecuteScript into a consistent separate GL TU while retaining the
+  same types, callers and objects elsewhere. Groups49/53/54, FlipX and common
+  tail remain open. Retain the Enemy candidate without promoting it.
 
 ## Recent evidence index
 

@@ -5448,3 +5448,13 @@ of291 changed ANM and17 Enemy fields. No unresolved or ordinary peer difference
 remains; ECL is raw-neutral. Neither form changes FlipX53/52, common1440/1441 or
 the slow timer's load order. No source/exact gain. See
 [flag/timer evidence](evidence/anm-flags-timer-values/README.md).
+
+## ANM processor and inline-selection options (2026-10-23)
+
+Adding only G6 or G7 to ANM's unchanged source/profile preserves all three
+complete large raw bodies and36 whole guards. Adding only Ob1 instead gives
+ANM9948,9/92 target-sized groups and five rejected Enemy guard contracts; Enemy
+changes to14356 despite its unchanged reused object. This is an observed link
+context effect, not original settings or an internal compiler-policy proof.
+ECL retains7020/6993 and complete peer equality after105 bound address rewrites.
+No candidate is adopted. See [ANM options](evidence/anm-codegen-options/README.md).
