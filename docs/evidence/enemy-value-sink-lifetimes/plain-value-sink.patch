@@ -1,0 +1,173 @@
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -1117,6 +1117,12 @@
+ #define ENEMY_READ_INT_DIRECT(index) \
+     (reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadInt(index))
+ 
++static void StoreSelectedFloat(EnemyRuntimeView *runtime, float value)
++{
++    float *destination = runtime->ResolveFloatArgument(0);
++    *destination = value;
++}
++
+ int EnemyRuntimeView::DispatchEclInstruction()
+ 
+ {
+@@ -1988,24 +1994,37 @@
+     *puVar5 = (int)uVar22;
+     return 0;
+   case ENEMY_ECL_SELECT_FLOAT_BY_DIFFICULTY:
+-    switch(g_EnemyDifficulty) {
++    switch (g_EnemyDifficulty) {
+     case 0:
+-      fVar19 = ReadFloatArgument(1);
+-      goto dispatch_store_float_result;
++      {
++        const float selected = ReadFloatArgument(1);
++        StoreSelectedFloat(this, selected);
++        return 0;
++      }
+     case 1:
+-      fVar21 = ReadFloatArgument(2);
+-      goto dispatch_store_float_result_a;
++      {
++        const float selected = ReadFloatArgument(2);
++        StoreSelectedFloat(this, selected);
++        return 0;
++      }
+     case 2:
+-dispatch_difficulty_float_index_3:
+-      fVar19 = ReadFloatArgument(3);
+-      goto dispatch_store_float_result;
++      {
++        const float selected = ReadFloatArgument(3);
++        StoreSelectedFloat(this, selected);
++        return 0;
++      }
+     case 3:
+-dispatch_difficulty_float_index_4_a:
+-      fVar21 = ReadFloatArgument(4);
+-      goto dispatch_store_float_result_a;
++      {
++        const float selected = ReadFloatArgument(4);
++        StoreSelectedFloat(this, selected);
++        return 0;
++      }
+     case 4:
+-      fVar19 = ReadFloatArgument(4);
+-      goto dispatch_store_float_result;
++      {
++        const float selected = ReadFloatArgument(4);
++        StoreSelectedFloat(this, selected);
++        return 0;
++      }
+     default:
+       goto dispatch_complete;
+     }
+@@ -2689,45 +2708,51 @@
+     EnemySetChapter(&g_EnemyChapterState, (int)uVar22);
+     return 0;
+   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_3:
+-    if (g_EnemyChapterState.rank >= 0x200) {
+-      iVar27 = 2;
+-      goto dispatch_rank_float_tail_b;
+-    }
+-    iVar27 = 0;
+-    if (g_EnemyChapterState.rank > -0x200) goto dispatch_rank_float_tail_b;
+-    goto dispatch_rank_float_tail_a;
++    if (g_EnemyChapterState.rank >= 0x200)
++    {
++      const float selected = ReadFloatArgument(2);
++      StoreSelectedFloat(this, selected);
++      return 0;
++    }
++    if (g_EnemyChapterState.rank > -0x200)
++    {
++      const float selected = ReadFloatArgument(0);
++      StoreSelectedFloat(this, selected);
++      return 0;
++    }
++    {
++      const float selected = ReadFloatArgument(0);
++      StoreSelectedFloat(this, selected);
++      return 0;
++    }
+   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_5:
+-    if (g_EnemyChapterState.rank >= 600) {
+-      goto dispatch_difficulty_float_index_4_a;
+-    }
+-    if (g_EnemyChapterState.rank >= 200) {
+-      goto dispatch_difficulty_float_index_3;
+-    }
+-    if (g_EnemyChapterState.rank >= -200) {
+-      iVar27 = 2;
+-      goto dispatch_rank_float_tail_a;
+-    }
+-    if (g_EnemyChapterState.rank < -400) {
+-      iVar27 = 0;
+-      goto dispatch_rank_float_tail_a;
+-    }
+-    iVar27 = 1;
+-    goto dispatch_rank_float_tail_b;
+-dispatch_rank_float_tail_b:
+-    fVar19 = ReadFloatArgument(iVar27);
++    if (g_EnemyChapterState.rank >= 600)
++    {
++      const float selected = ReadFloatArgument(4);
++      StoreSelectedFloat(this, selected);
++      return 0;
++    }
++    if (g_EnemyChapterState.rank >= 200)
++    {
++      const float selected = ReadFloatArgument(3);
++      StoreSelectedFloat(this, selected);
++      return 0;
++    }
++    if (g_EnemyChapterState.rank >= -200)
++    {
++      const float selected = ReadFloatArgument(2);
++      StoreSelectedFloat(this, selected);
++      return 0;
++    }
++    if (g_EnemyChapterState.rank < -400)
++    {
++      const float selected = ReadFloatArgument(0);
++      StoreSelectedFloat(this, selected);
++      return 0;
++    }
++    fVar19 = ReadFloatArgument(1);
+ dispatch_store_float_result:
+-    // Keep this owner lifetime explicit: the shipped shared tail reuses EBX
+-    // as the full owner immediately before ResolveFloat.
+-    iVar26 = reinterpret_cast<int>(owner);
+-    pfVar15 = reinterpret_cast<EclVmContext *>(
+-        *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
+-    *pfVar15 = (float)fVar19;
+-    return 0;
+-dispatch_rank_float_tail_a:
+-    fVar21 = ReadFloatArgument(iVar27);
+-dispatch_store_float_result_a:
+-    positionInterpolationValues = ResolveFloatArgument(0);
+-    *positionInterpolationValues = (float)fVar21;
++    StoreSelectedFloat(this, fVar19);
+     return 0;
+   case ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK:
+     fVar19 = (ReadFloatArgument(1));
+@@ -2801,13 +2826,15 @@
+     g_AnmGameSpeed = (float)fVar19;
+     return 0;
+   case ENEMY_ECL_AIM_BULLET_AT_PLAYER:
++  {
+     pfVar15 = (float *)(reinterpret_cast<int>(g_Player) + 0x3c0);
+     fVar19 = (ReadFloatArgument(1));
+-    iVar26 = reinterpret_cast<int>(g_Player);
++    const PlayerFloat3 *aimPosition = &g_Player->drawPosition;
+     fVar21 = (ReadFloatArgument(2));
+-    fVar19 = atan2(*(float *)(iVar26 + 0x3c4) - fVar21,
++    fVar19 = atan2(aimPosition->y - fVar21,
+                    *pfVar15 - (float)fVar19);
+     goto dispatch_store_float_result;
++  }
+   case ENEMY_ECL_SUBTRACT_DIFFICULTY_VALUE:
+     if (g_EnemyDifficulty == 0) {
+       uVar22 = ReadIntArgument(0);

@@ -1,0 +1,1501 @@
+{
+  "starting_head": "23fd7b94eb5264975d6f1d7ddebc7ff5de8914d6",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "Four private whole-Enemy value sink controls; no maintained source or exact claim",
+  "private_packet": ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023",
+  "variants": [
+    {
+      "label": "inline-value-sink",
+      "producer_sha256": "6d17d32316d3318b7228281702f3caf2699cbd6442d6f0fb3dfe5937d02aae00",
+      "source_shape_assertions": [
+        "all 12 scoped selected writes plus shared rank-one/aim write use a real by-value float helper",
+        "helper qualifier: __forceinline "
+      ],
+      "source_sha256": "7cd0c34b5a078b152c3c5ba2a3df9bc8bce19d7921ac9cac0bcc57f0126e3d76",
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "daf9bddc1fa8a60a53f18fc842d02f579ab440917caccb1e88f360ffae3ef959",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "7cd0c34b5a078b152c3c5ba2a3df9bc8bce19d7921ac9cac0bcc57f0126e3d76"
+        }
+      ],
+      "reused_source_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "owners": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402830",
+          "candidate_size": 14396,
+          "raw_sha256": "377fb1ff040e9aefff2f9d4826509f55f4130a51b4641baec3d6b4ff65aee366"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_address": "0x004157D0",
+          "candidate_size": 153,
+          "raw_sha256": "8d97cf7decd11c2ada6bd104f67b281f1a0f4a06c0f9cf4c160fdcd56c1a18d2"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040DA00",
+          "candidate_size": 9964,
+          "raw_sha256": "2ea49bf5d0bf6527f3c731a99a906dc6ef79ff31d3a779b64aef06cc52f1b658"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406D50",
+          "candidate_size": 7020,
+          "raw_sha256": "8340220dd490a758b69408ce113e11a6449984a63e4f0d4ec2e1cf0040187d2b"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "enemy_cases": {
+        "comparable": 11138,
+        "gap": 298,
+        "matched": 3331,
+        "same_sized": 46
+      },
+      "selector_equal": true,
+      "physical_order_matches": true,
+      "anm_cases": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "peer_comparison": [
+        {
+          "label": "inline-value-sink",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14396,
+          "candidate_size": 14396,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "3dd4b8b83e80e52915c2ed4c35bd53a50ca501f7ec92537a03b10bb51cbff210",
+          "replayed_sha256": "3dd4b8b83e80e52915c2ed4c35bd53a50ca501f7ec92537a03b10bb51cbff210",
+          "replayed_changed_field_count": 330,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "inline-value-sink",
+          "symbol": "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z",
+          "baseline_size": 153,
+          "candidate_size": 153,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 4,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f",
+          "replayed_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f",
+          "replayed_changed_field_count": 2,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "inline-value-sink",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7",
+          "replayed_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7",
+          "replayed_changed_field_count": 104,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "inline-value-sink",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b",
+          "replayed_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b",
+          "replayed_changed_field_count": 104,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "routing": {
+        "layout": {
+          "image": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/source.exe",
+          "function_address": "0x00402830",
+          "contribution_size": 14396,
+          "jump_table_address": "0x00405DDC",
+          "selector_table_address": "0x00405F8C",
+          "selector_equal": true,
+          "selector_equal_bytes": 181,
+          "target_pre_table_span": 13760,
+          "candidate_pre_table_span": 13740,
+          "pre_table_span_delta": -20,
+          "target_suffix_bytes": 43,
+          "candidate_suffix_bytes": 43,
+          "physical_order_matches": true,
+          "first_physical_order_difference": null
+        },
+        "selected_cases": [
+          {
+            "opcode": "0x15e",
+            "start": "0x40595f",
+            "size": 177,
+            "last_instruction": {
+              "address": "0x405a0b",
+              "mnemonic": "jmp",
+              "operand": "0x405d21"
+            },
+            "fpatan_addresses": [],
+            "calls": [
+              {
+                "address": "0x405989",
+                "mnemonic": "call",
+                "operand": "0x406550"
+              },
+              {
+                "address": "0x40599d",
+                "mnemonic": "call",
+                "operand": "0x406650"
+              },
+              {
+                "address": "0x4059b6",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              },
+              {
+                "address": "0x4059cb",
+                "mnemonic": "call",
+                "operand": "0x406550"
+              },
+              {
+                "address": "0x4059df",
+                "mnemonic": "call",
+                "operand": "0x406650"
+              },
+              {
+                "address": "0x4059f8",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              },
+              {
+                "address": "0x405a06",
+                "mnemonic": "call",
+                "operand": "0x406550"
+              }
+            ]
+          },
+          {
+            "opcode": "0x1ae",
+            "start": "0x405cda",
+            "size": 120,
+            "last_instruction": {
+              "address": "0x405d51",
+              "mnemonic": "ret",
+              "operand": ""
+            },
+            "fpatan_addresses": [
+              "0x405d1f"
+            ],
+            "calls": [
+              {
+                "address": "0x405cee",
+                "mnemonic": "call",
+                "operand": "0x406550"
+              },
+              {
+                "address": "0x405d11",
+                "mnemonic": "call",
+                "operand": "0x406550"
+              },
+              {
+                "address": "0x405d30",
+                "mnemonic": "call",
+                "operand": "0x406650"
+              },
+              {
+                "address": "0x405d49",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "typed-shared-tail",
+      "producer_sha256": "6d17d32316d3318b7228281702f3caf2699cbd6442d6f0fb3dfe5937d02aae00",
+      "source_shape_assertions": [
+        "only shared rank-one/aim tail uses typed member resolver; input is otherwise the retained hybrid"
+      ],
+      "source_sha256": "1fd705180d3e3d8264cf3120ff63107ca02a6dd418d8d656e7ffb55b469eccb8",
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "4e7b1f0d341a4b5987faddc7e495966a065d3b7c0f05bd2f394a2b840ff7bf6f",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "1fd705180d3e3d8264cf3120ff63107ca02a6dd418d8d656e7ffb55b469eccb8"
+        }
+      ],
+      "reused_source_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "owners": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402810",
+          "candidate_size": 14396,
+          "raw_sha256": "3dd4b8b83e80e52915c2ed4c35bd53a50ca501f7ec92537a03b10bb51cbff210"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_address": "0x004157B0",
+          "candidate_size": 153,
+          "raw_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D9E0",
+          "candidate_size": 9964,
+          "raw_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406D30",
+          "candidate_size": 7020,
+          "raw_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "enemy_cases": {
+        "comparable": 11138,
+        "gap": 298,
+        "matched": 3331,
+        "same_sized": 46
+      },
+      "selector_equal": true,
+      "physical_order_matches": true,
+      "anm_cases": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "peer_comparison": [
+        {
+          "label": "typed-shared-tail",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14396,
+          "candidate_size": 14396,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "3dd4b8b83e80e52915c2ed4c35bd53a50ca501f7ec92537a03b10bb51cbff210",
+          "replayed_sha256": "3dd4b8b83e80e52915c2ed4c35bd53a50ca501f7ec92537a03b10bb51cbff210",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "typed-shared-tail",
+          "symbol": "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z",
+          "baseline_size": 153,
+          "candidate_size": 153,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 4,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f",
+          "replayed_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "typed-shared-tail",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7",
+          "replayed_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "typed-shared-tail",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b",
+          "replayed_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "routing": {
+        "layout": {
+          "image": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/source.exe",
+          "function_address": "0x00402810",
+          "contribution_size": 14396,
+          "jump_table_address": "0x00405DBC",
+          "selector_table_address": "0x00405F6C",
+          "selector_equal": true,
+          "selector_equal_bytes": 181,
+          "target_pre_table_span": 13760,
+          "candidate_pre_table_span": 13740,
+          "pre_table_span_delta": -20,
+          "target_suffix_bytes": 43,
+          "candidate_suffix_bytes": 43,
+          "physical_order_matches": true,
+          "first_physical_order_difference": null
+        },
+        "selected_cases": [
+          {
+            "opcode": "0x15e",
+            "start": "0x40593f",
+            "size": 177,
+            "last_instruction": {
+              "address": "0x4059eb",
+              "mnemonic": "jmp",
+              "operand": "0x405d01"
+            },
+            "fpatan_addresses": [],
+            "calls": [
+              {
+                "address": "0x405969",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              },
+              {
+                "address": "0x40597d",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x405996",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              },
+              {
+                "address": "0x4059ab",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              },
+              {
+                "address": "0x4059bf",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x4059d8",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              },
+              {
+                "address": "0x4059e6",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              }
+            ]
+          },
+          {
+            "opcode": "0x1ae",
+            "start": "0x405cba",
+            "size": 120,
+            "last_instruction": {
+              "address": "0x405d31",
+              "mnemonic": "ret",
+              "operand": ""
+            },
+            "fpatan_addresses": [
+              "0x405cff"
+            ],
+            "calls": [
+              {
+                "address": "0x405cce",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              },
+              {
+                "address": "0x405cf1",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              },
+              {
+                "address": "0x405d10",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x405d29",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "reference-sinks",
+      "producer_sha256": "6d17d32316d3318b7228281702f3caf2699cbd6442d6f0fb3dfe5937d02aae00",
+      "source_shape_assertions": [
+        "all 12 scoped difficulty/rank selected values use actual const references"
+      ],
+      "source_sha256": "8a63fab0c237e87c2a679b6b757ce5a425c420db21caa004e800f8879d985c11",
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "42120fffe76a8b878692af515331dbf39dfa16bdd530d6cac3fb5398ca1e186b",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "8a63fab0c237e87c2a679b6b757ce5a425c420db21caa004e800f8879d985c11"
+        }
+      ],
+      "reused_source_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "owners": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402810",
+          "candidate_size": 14396,
+          "raw_sha256": "1d44d72ba305ff986564cf2f39a7a9242b1cdadbba56847da3277babc15ee84b"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_address": "0x004157B0",
+          "candidate_size": 153,
+          "raw_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040D9E0",
+          "candidate_size": 9964,
+          "raw_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406D30",
+          "candidate_size": 7020,
+          "raw_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "enemy_cases": {
+        "comparable": 11138,
+        "gap": 298,
+        "matched": 3337,
+        "same_sized": 46
+      },
+      "selector_equal": true,
+      "physical_order_matches": true,
+      "anm_cases": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "peer_comparison": [
+        {
+          "label": "reference-sinks",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14396,
+          "candidate_size": 14396,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 714,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": false,
+          "baseline_raw_sha256": "3dd4b8b83e80e52915c2ed4c35bd53a50ca501f7ec92537a03b10bb51cbff210",
+          "replayed_sha256": "1d44d72ba305ff986564cf2f39a7a9242b1cdadbba56847da3277babc15ee84b",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 121
+        },
+        {
+          "label": "reference-sinks",
+          "symbol": "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z",
+          "baseline_size": 153,
+          "candidate_size": 153,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 4,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f",
+          "replayed_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "reference-sinks",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7",
+          "replayed_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "reference-sinks",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b",
+          "replayed_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b",
+          "replayed_changed_field_count": 0,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "routing": {
+        "layout": {
+          "image": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/source.exe",
+          "function_address": "0x00402810",
+          "contribution_size": 14396,
+          "jump_table_address": "0x00405DBC",
+          "selector_table_address": "0x00405F6C",
+          "selector_equal": true,
+          "selector_equal_bytes": 181,
+          "target_pre_table_span": 13760,
+          "candidate_pre_table_span": 13740,
+          "pre_table_span_delta": -20,
+          "target_suffix_bytes": 43,
+          "candidate_suffix_bytes": 43,
+          "physical_order_matches": true,
+          "first_physical_order_difference": null
+        },
+        "selected_cases": [
+          {
+            "opcode": "0x15e",
+            "start": "0x40593f",
+            "size": 177,
+            "last_instruction": {
+              "address": "0x4059eb",
+              "mnemonic": "jmp",
+              "operand": "0x405d01"
+            },
+            "fpatan_addresses": [],
+            "calls": [
+              {
+                "address": "0x405969",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              },
+              {
+                "address": "0x40597d",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x405996",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              },
+              {
+                "address": "0x4059ab",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              },
+              {
+                "address": "0x4059bf",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x4059d8",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              },
+              {
+                "address": "0x4059e6",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              }
+            ]
+          },
+          {
+            "opcode": "0x1ae",
+            "start": "0x405cba",
+            "size": 120,
+            "last_instruction": {
+              "address": "0x405d31",
+              "mnemonic": "ret",
+              "operand": ""
+            },
+            "fpatan_addresses": [
+              "0x405cff"
+            ],
+            "calls": [
+              {
+                "address": "0x405cce",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              },
+              {
+                "address": "0x405cf1",
+                "mnemonic": "call",
+                "operand": "0x406530"
+              },
+              {
+                "address": "0x405d10",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x405d29",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "plain-value-sink",
+      "producer_sha256": "6d17d32316d3318b7228281702f3caf2699cbd6442d6f0fb3dfe5937d02aae00",
+      "source_shape_assertions": [
+        "all 12 scoped selected writes plus shared rank-one/aim write use a real by-value float helper",
+        "helper qualifier: ordinary static"
+      ],
+      "source_sha256": "f8ccb876da3a738b61c278b868f4ade1ebf85212375cfb4d44640125c951fadf",
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "20a9dc7798785a302de76340d7a1e216b113dfa354991ffec4a869161a3ec034",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "f8ccb876da3a738b61c278b868f4ade1ebf85212375cfb4d44640125c951fadf"
+        }
+      ],
+      "reused_source_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "owners": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_address": "0x00402830",
+          "candidate_size": 14620,
+          "raw_sha256": "2ab3e625cc3cb4081e44071c6fd70edc8a402298c18ac06d82d2119b40dc9337"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_address": "0x004158B0",
+          "candidate_size": 153,
+          "raw_sha256": "088fd9fc886860dfaab2b0849a32bd70e967b8d3725c55eec7d69421ebd07bc5"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x0040DAE0",
+          "candidate_size": 9964,
+          "raw_sha256": "a33a36fa71ec27a0f91e2ef43ad11f384dc9501b266e5c4f7a5195a9bc06139b"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_address": "0x00406E30",
+          "candidate_size": 7020,
+          "raw_sha256": "3cd097cdd5b13c8d0e70f3207562dc5285d45b50176a773e15c00e753b97f570"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "enemy_cases": {
+        "comparable": 11140,
+        "gap": 518,
+        "matched": 3309,
+        "same_sized": 46
+      },
+      "selector_equal": true,
+      "physical_order_matches": true,
+      "anm_cases": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ecl": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "callee": {
+          "size": 171,
+          "matched_bytes": 171,
+          "result": "exact"
+        }
+      },
+      "peer_comparison": [
+        {
+          "label": "plain-value-sink",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "baseline_size": 14396,
+          "candidate_size": 14620,
+          "acceptance_authority": "none; peer comparison only",
+          "result": "unequal-extent"
+        },
+        {
+          "label": "plain-value-sink",
+          "symbol": "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z",
+          "baseline_size": 153,
+          "candidate_size": 153,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 4,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f",
+          "replayed_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f",
+          "replayed_changed_field_count": 2,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "plain-value-sink",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 350,
+          "candidate_generic_normalization_complete": true,
+          "baseline_generic_normalization_complete": true,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7",
+          "replayed_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7",
+          "replayed_changed_field_count": 104,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        },
+        {
+          "label": "plain-value-sink",
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "acceptance_authority": "none; peer comparison only",
+          "fields": 189,
+          "candidate_generic_normalization_complete": false,
+          "baseline_generic_normalization_complete": false,
+          "equal_after_verified_address_replay": true,
+          "baseline_raw_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b",
+          "replayed_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b",
+          "replayed_changed_field_count": 104,
+          "unresolved_count": 0,
+          "remaining_ordinary_difference_count": 0
+        }
+      ],
+      "routing": {
+        "layout": {
+          "image": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/source.exe",
+          "function_address": "0x00402830",
+          "contribution_size": 14620,
+          "jump_table_address": "0x00405EBC",
+          "selector_table_address": "0x0040606C",
+          "selector_equal": true,
+          "selector_equal_bytes": 181,
+          "target_pre_table_span": 13760,
+          "candidate_pre_table_span": 13964,
+          "pre_table_span_delta": 204,
+          "target_suffix_bytes": 43,
+          "candidate_suffix_bytes": 43,
+          "physical_order_matches": true,
+          "first_physical_order_difference": null
+        },
+        "selected_cases": [
+          {
+            "opcode": "0x15e",
+            "start": "0x405a19",
+            "size": 223,
+            "last_instruction": {
+              "address": "0x405af3",
+              "mnemonic": "jmp",
+              "operand": "0x405e09"
+            },
+            "fpatan_addresses": [],
+            "calls": [
+              {
+                "address": "0x405a41",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x405a51",
+                "mnemonic": "call",
+                "operand": "0x402810"
+              },
+              {
+                "address": "0x405a67",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              },
+              {
+                "address": "0x405a7f",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x405a8f",
+                "mnemonic": "call",
+                "operand": "0x402810"
+              },
+              {
+                "address": "0x405aa5",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              },
+              {
+                "address": "0x405aba",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x405aca",
+                "mnemonic": "call",
+                "operand": "0x402810"
+              },
+              {
+                "address": "0x405ae0",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              },
+              {
+                "address": "0x405aee",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              }
+            ]
+          },
+          {
+            "opcode": "0x1ae",
+            "start": "0x405dc2",
+            "size": 113,
+            "last_instruction": {
+              "address": "0x405e32",
+              "mnemonic": "ret",
+              "operand": ""
+            },
+            "fpatan_addresses": [
+              "0x405e07"
+            ],
+            "calls": [
+              {
+                "address": "0x405dd6",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x405df9",
+                "mnemonic": "call",
+                "operand": "0x406630"
+              },
+              {
+                "address": "0x405e14",
+                "mnemonic": "call",
+                "operand": "0x402810"
+              },
+              {
+                "address": "0x405e2a",
+                "mnemonic": "call",
+                "operand": "0x41b338"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "reference_case_deltas": [
+    {
+      "opcodes": [
+        "0x19c",
+        "0x1af"
+      ],
+      "matched_delta": 1,
+      "before": 14,
+      "after": 15,
+      "target_size": 327,
+      "candidate_size": 329
+    },
+    {
+      "opcodes": [
+        "0x19d",
+        "0x1b0"
+      ],
+      "matched_delta": -2,
+      "before": 57,
+      "after": 55,
+      "target_size": 439,
+      "candidate_size": 379
+    },
+    {
+      "opcodes": [
+        "0x1ac",
+        "0x1b1"
+      ],
+      "matched_delta": 2,
+      "before": 29,
+      "after": 31,
+      "target_size": 322,
+      "candidate_size": 318
+    },
+    {
+      "opcodes": [
+        "0x1ad",
+        "0x1b2"
+      ],
+      "matched_delta": 5,
+      "before": 36,
+      "after": 41,
+      "target_size": 397,
+      "candidate_size": 409
+    }
+  ],
+  "reference_changed_groups": [
+    {
+      "opcodes": [
+        "0x19c",
+        "0x1af"
+      ],
+      "changed_ordinary_bytes": 33
+    },
+    {
+      "opcodes": [
+        "0x19d",
+        "0x1b0"
+      ],
+      "changed_ordinary_bytes": 34
+    },
+    {
+      "opcodes": [
+        "0x1ac",
+        "0x1b1"
+      ],
+      "changed_ordinary_bytes": 26
+    },
+    {
+      "opcodes": [
+        "0x1ad",
+        "0x1b2"
+      ],
+      "changed_ordinary_bytes": 28
+    }
+  ],
+  "hybrid_source": {
+    ".analysis/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/src/EnemyEclDispatcher.cpp": "335e824aaa19d4efadc641e2e5dd758e9ed15c75c3b6a0b0ce9c5739ea9dfe2f"
+  },
+  "private_evidence_hashes": {
+    ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/manifest.json": "274c82187dda705a925d7c8f9e721116c33ffe7c2c35fe189e004b0f50f60698",
+    ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/probe.py": "6d17d32316d3318b7228281702f3caf2699cbd6442d6f0fb3dfe5937d02aae00",
+    ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/compare-peers.py": "614eaa9e2fdea009291c302c13f185247043de133ee12d8fc306e93033764287",
+    ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/peer-comparisons.json": "f9220b5381827b11eb04b2e1e05997670b63d143278669ec7cd3af8804e0515d",
+    ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/target-ghidra.txt": "f2d47f0742517afb8cb79de5e14cdcb0bb0ff617f98edadba8ec5dadee24a572",
+    ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/ghidra.log": "bc8b91d356b138c8842851778b5a4ac5aea394a0d08c2604ae5bdf3205aae7c9",
+    ".analysis/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-instruction-review.json": "98126775fecb28b6937f56332377d408b3703fb36f18b366cb9f0262cbd5954c"
+  },
+  "input_counts": {
+    "source_sha256": 108,
+    "baseline_source_sha256": 32,
+    "baseline_artifact_sha256": 19,
+    "frozen_inputs": 373,
+    "unrelated_untracked": 9
+  },
+  "removed_artifacts": [
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/source.exe",
+      "bytes": 122880,
+      "sha256": "3cb6eee2b980e09b01a6ec49fd73a9b3b23aa1c7ba84bd76d21f60bb4bbb46ec"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/source.ltcg.obj",
+      "bytes": 158763,
+      "sha256": "daf9bddc1fa8a60a53f18fc842d02f579ab440917caccb1e88f360ffae3ef959"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/source.map",
+      "bytes": 92442,
+      "sha256": "0de5c1ca89f73c8539b1e2034b973e5e3ca7f01794aae1f81cb1e8a0cc7d94be"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/source.pdb",
+      "bytes": 117760,
+      "sha256": "e1e38ea990b041bc1e42adee41fdb2156643da2f5066ccbb155ebfa2be93b11e"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/inline-value-sink/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/source.exe",
+      "bytes": 122880,
+      "sha256": "e2d59efab0f91ac518a26670113ef8891f41c5b1396f019dffaba28689131c38"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/source.ltcg.obj",
+      "bytes": 159045,
+      "sha256": "4e7b1f0d341a4b5987faddc7e495966a065d3b7c0f05bd2f394a2b840ff7bf6f"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/source.map",
+      "bytes": 92342,
+      "sha256": "13b920b9bf48a6fe04b70abc357504154e6b51aed7337399d854978d2865e157"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/source.pdb",
+      "bytes": 117760,
+      "sha256": "a287495ab0f283c5ca17622820e8f45f22378a3049f846af54d93c124388123a"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/typed-shared-tail/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/link.log",
+      "bytes": 167,
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/source.exe",
+      "bytes": 122880,
+      "sha256": "a79ccb3c304f2d7d9fccf0a1f541dd74777953ec4452b92466bb1834f2bbeb85"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/source.ltcg.obj",
+      "bytes": 159545,
+      "sha256": "42120fffe76a8b878692af515331dbf39dfa16bdd530d6cac3fb5398ca1e186b"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/source.map",
+      "bytes": 92342,
+      "sha256": "1c741a12b0ea7808a3948f9a6a802c3bc5122223b07d8993411fefe0c0b8f161"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/source.pdb",
+      "bytes": 117760,
+      "sha256": "a777f73a66b9310530e5ebacdeda78aedef7b4db13743d8c4e70281e3e455aae"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/reference-sinks/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/link-aliases.rsp",
+      "bytes": 19994,
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/link-anchors.obj",
+      "bytes": 11653,
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/link.log",
+      "bytes": 104,
+      "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/source.exe",
+      "bytes": 122880,
+      "sha256": "9b18851163cdb66255f52045292016d38699dbc6db6bd018bfa1cb073f571d94"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/source.ltcg.obj",
+      "bytes": 158759,
+      "sha256": "20a9dc7798785a302de76340d7a1e216b113dfa354991ffec4a869161a3ec034"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/source.map",
+      "bytes": 92442,
+      "sha256": "8bfb9416a24f777881b705e601bfaa6375aa268b009457a1660d1001ee1a6b4f"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/source.pdb",
+      "bytes": 117760,
+      "sha256": "9dfa0c0aa77d1e09a03d1a9e309b2bdcad69dafdec80ef4cc67f94819eb9c2c6"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/support-00-EclVm.ltcg.obj",
+      "bytes": 55445,
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/support-01-AnmManager.ltcg.obj",
+      "bytes": 247856,
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/support-02-AnmVmCreate.ltcg.obj",
+      "bytes": 10892,
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/support-03-EnemyLaser.ltcg.obj",
+      "bytes": 44123,
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/support-04-Enemy.ltcg.obj",
+      "bytes": 97582,
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/support-05-AnmVmId.ltcg.obj",
+      "bytes": 13646,
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/support-06-RandomMath.ltcg.obj",
+      "bytes": 3947,
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/support-07-AnmInt3Scale.ltcg.obj",
+      "bytes": 10486,
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "path": "build/gpt-6.1-sol/enemy-value-sink-lifetime-20261023/plain-value-sink/support-08-ItemManager.ltcg.obj",
+      "bytes": 59951,
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    }
+  ],
+  "removed_bytes": 4271145,
+  "all_jobs_terminal": true,
+  "new_exact_credit": 0
+}

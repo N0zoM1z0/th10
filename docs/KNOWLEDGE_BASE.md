@@ -5426,3 +5426,15 @@ that complete shared-control output. A union shared across raw negation and the
 first geometric operands instead repairs three LENGTH homes, loses the two angle
 repairs, and retains the six regressions (30 differences). No candidate is
 adopted. See [interaction evidence](evidence/ecl-neg-storage-interaction/README.md).
+
+## Enemy selected-value sink lifetimes (2026-10-23)
+
+Four controls use the hash-pinned scoped-rank/shared-aim candidate. Typed tail
+resolution is raw-neutral. A forceinline float-by-value helper retains all four
+complete owner bodies after independent map/static-symbol/local-offset field
+replay (zero unresolved or ordinary bytes); this is peer equivalence only.
+Const selected references change 121 bytes in four unrelated spawn/shoot groups,
+with +6 net matched positions, but no rank/aim improvement. An ordinary static
+helper grows Enemy to 14620. All retain the selected result tail in aim instead
+of target rank-five. No source or exact gain is adopted. See
+[value-sink evidence](evidence/enemy-value-sink-lifetimes/README.md).

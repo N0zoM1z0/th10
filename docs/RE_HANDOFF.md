@@ -1,8 +1,8 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. The operator requested cleanup and handoff and cleared the
-active goal. Reconstruction is incomplete; no experiment remains running and
-no further work should start automatically from the old goal.
+Updated 2026-10-23. The operator resumed the previous reconstruction goal.
+Status is **active-incomplete**; prioritize large-function exact work and focused
+replay. New checkpoints use `gpt-6.1-sol: ...` and are pushed after validation.
 
 ## Current checkpoint
 
@@ -16,12 +16,15 @@ no further work should start automatically from the old goal.
 | Source-present nonexact / source absent | 204 / 121 functions |
 | Whole Windows product / runtime | Open; semantic reconstruction and port not started |
 
-Latest six ECL controls test shared geometric lifetimes against raw-negation
-storage. Primitive unsigned storage alone is baseline-neutral; shared-float
-controls remain at 31 differences regardless of primitive/member-address/stack
-pointer spelling. A shared union moves the repaired math slots but leaves 30
-differences. No maintained game source or exact count changes. All six carrier
-sets were removed after hash verification. See [latest ECL evidence](evidence/ecl-neg-storage-interaction/README.md).
+Latest Enemy batch tests four value-sink/lifetime forms on the retained hybrid.
+Typed shared-tail resolution is raw-neutral; forceinline by-value storage is
+peer-neutral after independently bound address replay. Const references change
+121 ordinary bytes only in four unrelated spawn/shoot groups (+6 aggregate
+matched positions), leaving rank/aim unchanged. Ordinary helper grows Enemy to
+14620. None repairs aim's misplaced 49-byte result tail; none is adopted.
+All four pass36 whole guards4618/all121 and retain ECL27. New64 native files
+were hash-verified and removed (4271145 bytes); the older hybrid is preserved.
+See [Enemy value-sink evidence](evidence/enemy-value-sink-lifetimes/README.md).
 
 ## Handoff essentials
 
@@ -34,10 +37,11 @@ sets were removed after hash verification. See [latest ECL evidence](evidence/ec
 - Preserve nine unrelated untracked `docs/evidence/d3d-adapter-format/` files.
 - Historical ECL source-route labels were wrong for seven controls; consult the
   corrected audit below and inspect actual patches before reusing a conclusion.
-- When reconstruction is explicitly resumed, prioritize the large owners and
+- Continue to prioritize the large owners and
   use focused complete-owner replays; do not repeat the excluded storage forms.
-  Recheck Enemy's shared rank/aim tail graph against TH10 instructions before
-  treating its retained candidate as an improvement worth adopting.
+  The latest value-sink tests do not fix Enemy's shared rank/aim graph. Rotate
+  to ANM temporary groups49/53/54 or common-tail2 with a distinct target-backed
+  lifetime hypothesis; retain the Enemy candidate without promoting it.
 
 ## Recent evidence index
 
@@ -85,7 +89,7 @@ See [Enemy laser source controls](evidence/enemy-laser-source-controls/README.md
 - Full mapped text401000..465A80 inclusive is412289 bytes, SHA-256
   `cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f`.
   Older64A80-byte hashes cover only a truncated prefix.
-- Authorized English `gpt-6-astra-medium: ...` checkpoints are committed and pushed to
+- Authorized English `gpt-6.1-sol: ...` checkpoints are committed and pushed to
   `origin/main` after validation. Replay only necessary affected units.
 - Latest operator steering: prioritize reconstruction speed. Use focused affected
   exact replays and necessary checks per batch; reserve full CI for meaningful
