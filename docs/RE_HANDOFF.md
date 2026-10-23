@@ -1,15 +1,15 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-23 for operator-requested cleanup and handoff. Reconstruction is
-**active-incomplete**. Latest reconstruction checkpoint: `67fa36a`; this cleanup
-does not change game source, headers, ABI, profiles, recipes or exact ledgers.
-Operator commit format: `gpt-6-astra-medium: xxx ~`. Local commits only; no push.
+Updated 2026-10-23 after the typed ECL trace checkpoint. Reconstruction remains
+**active-incomplete**. Current ECL Run improves6993/27 to6995/25 with unchanged
+complete7020-byte extent. No header, ABI, layout, profile, recipe or exact-ledger
+change is made. Operator commit prefix: `gpt-6.1-sol: ...`. Local commits; no push.
 
 ## Current state
 
 | Owner / metric | Maintained state |
 | --- | --- |
-| ECL Run / target7020 | 7020 bytes;6993 matching/27 ordinary differences;189 fields/62 local destinations;171-byte float callee exact |
+| ECL Run / target7020 | 7020 bytes;6995 matching/25 ordinary differences;189 fields/62 local destinations;171-byte float callee exact |
 | ANM ExecuteScript / target9964 | 9964 bytes;nonexact;case7541/7995,90/92 target-sized groups,gap2 |
 | Enemy dispatcher / target14416 | 14336 bytes;frame2C4;case3245/11128,45 target-sized groups,gap328 |
 | StageExecuteScript / target1868 | 1868 bytes;frame8C;nonexact;case1443/1619,13/15 target-sized groups,gap2 |
@@ -25,41 +25,49 @@ authored denominator remains provisional. Prioritize large-function exact work.
 
 ## Next large-owner route: ECL Run
 
-Keep `src/EclVm.cpp` and `build/match-linked/EnemyItemDrops` as the maintained
-7020/6993 reference. Preserve the complete owned table/selector suffix, all189
-bindings/62 local destinations, and the171-byte callee. Never crop, move a local
-destination, mask ordinary bytes or drop /GL to improve a score.
+The current carrier is
+`build/gpt-6.1-sol/ecl-case-order-20261023/maintained-current`; selected private
+witness typed-disabled-trace remains beside it. The canonical EnemyItemDrops
+carrier is retained as a **before-state6993 witness**, not current-source ECL
+evidence. Use the new explicit context/helper below. Do not rebuild over the old
+canonical cache casually: historical experiments pin its exact artifacts.
 
-The27 ordinary differences fall into four groups: thread registers4 bytes,
-commuted address encodings5, stack-home allocation16, common-latch registers2.
-Review TH10 bytes and actual source patches before trusting older hypotheses.
-The [source-route audit](evidence/ecl-scratch-route-audit/README.md) supersedes
-seven incorrectly routed historical labels. Earlier routes and other large
-owners are indexed in [historical handoffs](RE_HANDOFF_HISTORY_20261023.md).
+Read the [typed trace packet](evidence/ecl-typed-trace-lifetimes/README.md) and
+[all25 residual bytes/189 bindings](evidence/ecl-typed-trace-lifetimes/current-parent-proof.json).
+Typed disabled consumers preserve FORMAT service calls and live instruction
+rereads. Six ordinary bytes change: four repairs at146E/14D7/168A/1710 and two
+losses atAF/1FB. Original logger signatures/classes/TUs remain unknown. Three
+emitted static consumers gain no target identity or small-function exact credit.
 
-The [latest ECL controls](evidence/handoff-ecl-cleanup-20261023/README.md) are now
-recorded durably: eight images/nine total new ECL object compilations, counting
-one later /Op attempt. Both LENGTH records produce7036 bytes; shared case records
-produce6940/7056. All four fail the strict size check. A real stop-thread helper,
-const current-instruction view and commuted Pop pointer expressions reproduce
-the complete6993 replay. Spawn argument locals keep7020 but fail the independent
-external-call binding at+F5; there is no valid full-parent score. All eight images
-pass nine whole guards1137/all18. None improves maintained source.
+Remaining differences: thread registers4 bytes, commuted addresses3, stack
+homes16 and common latch2. Keep all7020 bytes,189 fields/62 locals,60 table words,
+88 selectors and the171-byte callee; never crop or move a local destination.
+Current full replay SHA is
+aeccdec2b6e53998a8e12793cf5a3860e4522847412afd607bba526ebc7d75e6.
+All16 ECL contracts pass1617/all21. Selected/actual maintained builds reproduce
+352 complete public owners/95263 bytes raw; only Run has ordinary changes versus
+before, with the other351 raw-identical or independently bound address moves.
+Static/unowned fragments and native runtime remain outside that peer proof.
 
-The /Op object compiles, but its first link fails for _atan2/_sin/_cos. Reusing
-that same object with distinct regenerated anchors still fails for __CIatan2.
-Neither attempt produces an image or a parent/guard comparison. Do not label
-/Op neutral or substitute a different math ABI. `format-before-math` and
-`format-before-frame` were prepared but **never executed**; the sequential
-driver stopped at the failed relink. Their sources/plans remain expanded under
-`.analysis/gpt-6.1-sol/ecl-typed-values-20261023`.
+The32-image/32-object batch has18 full parent comparisons,11 strict size
+rejections and3 binding refusals. Plain math helpers are neutral; shared floats
+repair math bytes but break six raw-negation bytes. Reversed mapping gives6992
+before/6994 with typed trace; neither improves6995. Scalar pairs grow7028/7032.
+Case-order plans are now executed: FORMAT-before-math fails malloc binding;
+before-frame is7012 bytes. Actual opcode helpers are6480/6972/6884/6320.
 
-Read that campaign's manifest, plans and patches before reusing a proposal.
-Closed images, private source proposals and bulky structural reports are now
-archived; restore required paths through [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
-Historical source/input pins remain immutable. New experiments need a fresh
-current-input manifest, not a weakened old pin. Unexecuted case ordering or a
-new target-supported ABI/source premise remains available; no result is assumed.
+The /Op harness now links with separate C/CI anchors: actual Run6964, ANM9980,
+Enemy14336. Run and two ECL guard sizes fail; seven selected guards pass861/all11.
+It is no longer an unexecuted profile comparison. No math ABI is substituted.
+Further helper/value/aggregate permutations need a new target or optimizer premise.
+Prior [misrouted labels](evidence/ecl-scratch-route-audit/README.md) remain corrected;
+older large-owner routes are in [historical handoffs](RE_HANDOFF_HISTORY_20261023.md).
+
+Current producers: .analysis/gpt-6.1-sol/ecl-case-order-20261023. Use
+manifest-current.json and compare-current.py; manifest-final.json/probe-maintained.py
+bind the completed actual-source compile. The initial before manifest stays
+immutable. Each build compiles ECL/reuses nine pinned inputs; no independent
+whole-graph cold pair or exact acceptance is claimed.
 
 ## Other large owners and retained witnesses
 
@@ -70,17 +78,17 @@ TH10 address491BE4 independently; distinct diagnostic anchors do not prove
 runtime aliasing. Five compiler barriers, vector observations and twelve-byte
 Float3 scratch remain. Original qualifiers/classes/TUs and data ownership are open.
 
-Current Player inputs live in
-`.analysis/gpt-6.1-sol/player-selection-storage-20261023`: manifest-final.json,
-common-final.py, probe-maintained.py and bound-parent-final.py. Preserve its
-maintained-17 and draw-typed-chain-owner carriers. The maintained/private pair
-agrees across519 complete public owners/140370 bytes, with PlayerInitialize the
-sole changed owner versus1370. Eight guards1753/all99 pass. This compiles Player
-once/reuses16 pinned inputs; it is not an independent whole-graph cold pair.
+Player's maintained/selected carriers remain under
+.analysis/gpt-6.1-sol/player-selection-storage-20261023. Its earlier519-owner
+raw proof and eight guards1753/all99 are retained. Current ECL source is outside
+the actual Player17-input/52-project-file include closure, all independently
+verified unchanged. The new compare-current.py replays1435/1380/all49 and all
+eight guards without weakening the old producer's broader frozen ECL hash.
+Old Player manifests remain immutable; their global attestor is now historical.
 
 The [value/caller controls](evidence/player-initialization-value-controls/README.md)
-add16 images/15 objects without improving1380. Current-source27-input real-caller
-and actual WinMain entry controls are neutral; both carriers remain expanded.
+add16 images/15 objects without improving1380. The earlier27-input real-caller
+and actual WinMain entry controls are neutral; both historical carriers remain expanded.
 They do not close target caller identities. The shared VM wrapper is still
 native200/EDX versus target202/ESI. More getter/width/copy permutations need a
 new premise. Older timer/vector/caller packets remain historical evidence.
@@ -93,14 +101,13 @@ historical support caches; graph names alone do not establish compatible inputs.
 
 ## Cleanup and safe resume
 
-The [cleanup receipt](evidence/handoff-ecl-cleanup-20261023/cleanup-summary.json)
-archives2785 files:109.04MB become1.57MB,reclaiming107.47MB. All22842 protected
-hashes agree during compaction. It covers closed ECL outputs,13 older Player
-control images and repeated source/build trees from19 terminal historical workers.
-Outer worker receipts/producers and resource inputs remain expanded. Historical
-workers include failed diagnostics; archiving grants no truth or exactness credit.
-All nine unrelated D3D files remain untracked, unstaged and hash-unchanged.
-Tools, Wine, private database, original target and current carriers are retained.
+The [latest cleanup](evidence/ecl-typed-trace-lifetimes/cleanup-summary.json)
+archives542 files from30 closed controls:52.81MB become0.47MB,reclaiming52.34MB.
+All23212 protected hashes agree during compaction. Current/selected and before
+carriers remain expanded; historical private proposals/reports need restoration
+through [RE_ARTIFACTS.md](RE_ARTIFACTS.md). The prior cleanup separately reclaimed
+107.47MB; do not add it to this batch's saving. All nine unrelated D3D files
+remain untracked/unstaged/hash-unchanged; tools, Wine, database and target remain.
 
 Read AGENTS.md, [RE_WORKFLOW.md](RE_WORKFLOW.md), [ORACLES.md](ORACLES.md), relevant
 source/ledger rows and Git status/diffs before changing state. The only valid
@@ -114,11 +121,11 @@ scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/verify-toolchain.py --execute
 scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
-scripts/repo-python scripts/diagnose-ecl-run-native.py --unit enemy-drop-item-counts
-scripts/repo-python .analysis/gpt-6.1-sol/player-selection-storage-20261023/bound-parent-final.py maintained-17
+scripts/repo-python .analysis/gpt-6.1-sol/ecl-case-order-20261023/compare-current.py
+scripts/repo-python scripts/diagnose-ecl-run-native.py --unit context --context-manifest .analysis/gpt-6.1-sol/ecl-case-order-20261023/maintained-current-context.toml
 ```
 
-Expected diagnostic outcomes: ECL6993/7020,189 fields/62 locals,171-byte callee
+Expected diagnostic outcomes: ECL6995/7020,189 fields/62 locals,171-byte callee
 exact (command exits1 for the mismatch); Player1380/1435/all49 fields. These use
 retained carriers and are not fresh cold builds. Re-attest Ghidra before new
 target analysis. Prior operator execution preferences are direct local tools,
@@ -126,8 +133,9 @@ serial nice10 native builds, no subagents, readOnly/noanalysis/rollback Ghidra
 maxcpu1/heap768m. Full mapped text401000..465A80 inclusive is412289 bytes, SHA-256
 cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f.
 
-[Validation](evidence/handoff-ecl-cleanup-20261023/validation-summary.json) records
-the actual focused checks. No game-source change or game compilation occurs in
-this cleanup; toolchain smoke runs separately. Full CI, broad cold replay,
-independent full-graph pairs, product/runtime closure and new exact acceptance
-are not claimed. Progress counts and phase gates remain unchanged.
+[Validation](evidence/ecl-typed-trace-lifetimes/validation-summary.json) records
+the actual focused scope:32 completed images/32 ECL compilations, current parent,
+all16 ECL guards, source-projected FORMAT controls and unchanged Player graph.
+No independent full-graph pair, canonical cold, full CI, new exact acceptance,
+product/runtime closure, semantic or port completion is claimed. Counts and
+phase gates remain unchanged. Continue on the complete large parent.

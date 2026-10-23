@@ -1,0 +1,12 @@
+{
+  "scope": "all uniquely enumerated complete public PDB owners; static/unowned fragments and native product/runtime excluded",
+  "public_owners": 352,
+  "bytes": 95263,
+  "private_and_maintained_raw_equal": true,
+  "private_label": "typed-disabled-trace",
+  "maintained_label": "maintained-current",
+  "maintained_source_sha256": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+  "new_game_compilations": 1,
+  "reused_game_objects": 9,
+  "independent_cold_pair": false
+}

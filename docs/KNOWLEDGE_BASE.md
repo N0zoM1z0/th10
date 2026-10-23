@@ -5850,3 +5850,26 @@ still fails for __CIatan2. No image or comparison exists, so /Op codegen remains
 unresolved. The prepared FORMAT case-order proposals never execute after that
 failure. Historical artifacts are losslessly archived with verified restoration;
 current source, target identities, exact counts and phase gates do not change.
+
+## ECL Run: typed trace consumer checkpoint (2026-10-23)
+
+The [typed trace packet](evidence/ecl-typed-trace-lifetimes/README.md) improves
+the complete maintained7020-byte Run from6993/27 to6995/25: four commuted-address
+repairs and two new commuted-address losses, all189 fields/62 locals and171-byte
+callee retained. All16 ECL contracts pass1617/all21. Selected/private and actual
+maintained builds agree raw across352 public owners/95263 bytes; other351 owners
+have no ordinary changes after independently binding moved native fields.
+Static/unowned fragments, original logger signatures and product/runtime remain open.
+
+Multiple typed int/float/double/reference/template consumers and typed variadic
+fallbacks reproduce the entire6995 replay. More working-value sharing remains
+regressive: repaired math slots add six raw-negation differences; scalar pairs
+grow7028/7032 even with typed trace. Opcode helpers remain outlined, giving
+6480/6972/6884/6320 and strict refusals. No helper receives target credit.
+
+The prior /Op link refusal is now resolved with distinct C/CI anchors, never ABI
+substitution. Actual unchanged-source Run6964 and ReadFloat207/ResolveFloat125
+fail their complete extents; seven selected guards remain861/all11. This is a
+tested negative for the declared graph, not proof of original compiler flags.
+The32-image batch adds no exact credit and does not close native product/runtime,
+semantics or portability. Preserve current6995 and old6993 carriers separately.

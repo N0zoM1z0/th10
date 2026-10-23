@@ -1,0 +1,3288 @@
+{
+  "starting_head": "405fde43a1f74c102ddf77326557e2a18eba6eff",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "complete ECL Run source/consumer/lifetime/profile experiments; no small-function exact credit",
+  "phase": "active-incomplete",
+  "images": 32,
+  "game_object_compilations": 32,
+  "full_parent_comparisons": 18,
+  "strict_extent_rejections": 11,
+  "same_size_binding_rejections": 3,
+  "controls": [
+    {
+      "label": "angle-value-helper",
+      "source_sha256": "d525edea46f1ad56cfdfa969836c2d0bd65a3f4cfefe9b0628fdf6238ba85657",
+      "source_shape": "actual angle-value-helper consumed mathematical return values; real scalar reads and arithmetic operand ordering preserved; ordinary static helpers with no forced ABI or inlining",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "08c6f718700c4ed46982edd98a7541f5a6d0dd762562e39589174f061fa2930c",
+      "patch_sha256": "cf2c88767e6ffe053983929b33462065a83e63b9e779756b54436ba6bacfac15",
+      "native_size": 7020,
+      "raw_owner_sha256": "68e0997a3870650257d194a7a6f16a084a909a774b4675ee60bf6026009df1ce",
+      "native_image_sha256": "94d219cdaed21e09c8a412b1734fceaebf9214ba91953273fb37a91c32ec9da5",
+      "run_result": "mismatch",
+      "matching": 6993,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/angle-value-helper/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/angle-value-helper/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/angle-value-helper",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "251cab35e368eb873a9848182ce80a319e62b41b1a4f3bb3d6693defb838b638",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [],
+      "new_different_offsets": []
+    },
+    {
+      "label": "current-shared-floats-xy",
+      "source_sha256": "23a55b344debde1791a9512b39f48f614c9d1a056f8150c711ee0f2725b474c6",
+      "source_shape": "actual current-shared-floats-xy; actual values assigned before every use and all read sequences/operand order preserved; no padding, forced ABI or ignored source route",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "dac9bdc4247c477d4bddff86eb5b500b751e2707c10ff819a8afb05d6a4fbd7b",
+      "patch_sha256": "89185ddf65ff6573fcf45400b7e6978f27305592af63f2f4c7b228b2fb5f7fef",
+      "native_size": 7020,
+      "raw_owner_sha256": "b6208bedcab8ff9fe05c6f1718c14eb7264f50e656bf344be6dbeccd60dbc782",
+      "native_image_sha256": "0782ebaa2b982cfb42da28e5160fe5de7f4d130c3e90902dbb92237ce5a8075e",
+      "run_result": "mismatch",
+      "matching": 6989,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/current-shared-floats-xy/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/current-shared-floats-xy/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/current-shared-floats-xy",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "2cf061fd50e54d940c5f7d15b3a552e7dde8461af297e9095418a0d03c547a98",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x1899",
+        "0x18b6"
+      ],
+      "new_different_offsets": [
+        "0x169d",
+        "0x16a8",
+        "0x16ac",
+        "0x16b0",
+        "0x16b6",
+        "0x16bb"
+      ]
+    },
+    {
+      "label": "current-shared-floats-yx",
+      "source_sha256": "e36f9c5cd6b8541c6a6848aa3f7f8e31fb570ad33aa6a518b98a6969d48ea684",
+      "source_shape": "actual current-shared-floats-yx; actual values assigned before every use and all read sequences/operand order preserved; no padding, forced ABI or ignored source route",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "f7ced41313c430b106158701dbf65c45d5f87575cbbf13389d063efd961efa56",
+      "patch_sha256": "60c454ea6fdb1d3cd0dcdd7d4cb0635ea7e3ae4c0a4dd245fe06499322f3eb28",
+      "native_size": 7020,
+      "raw_owner_sha256": "e7505823ab2954758eb1713753c6f92bb19f13b4b2e910bab5754cc712458e35",
+      "native_image_sha256": "e259587c52d520757628f76f85e1eae2dc0b110d043a735dbab8005f16a065f3",
+      "run_result": "mismatch",
+      "matching": 6992,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/current-shared-floats-yx/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/current-shared-floats-yx/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/current-shared-floats-yx",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "beb0d9991e198b665ff23f785e0c1559794e2c712d4a0fd795a486f7b803c8fe",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x182b",
+        "0x1838",
+        "0x183c",
+        "0x1899",
+        "0x18b6"
+      ],
+      "new_different_offsets": [
+        "0x169d",
+        "0x16a8",
+        "0x16ac",
+        "0x16b0",
+        "0x16b6",
+        "0x16bb"
+      ]
+    },
+    {
+      "label": "due-reference-helper",
+      "source_sha256": "61aac85ddda42efa4db690391e739dcf15381b4dbd64b8f95d4693029d3b4786",
+      "source_shape": "actual due-reference-helper; actual values assigned before every use and all read sequences/operand order preserved; no padding, forced ABI or ignored source route",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "90e1825f1024a8c71296e60c37e0f648aadc55c3554d5192f507bc1ae199dbfc",
+      "patch_sha256": "515c20f3b1f87fe31f7dfa67d758fcd59741965f0f6bcc57f0659d5589fc83b6",
+      "native_size": 7872,
+      "raw_owner_sha256": "ebe6359bd5dbebe93dc7c51eb670471903c39d376120b17e4589887c5f437c85",
+      "native_image_sha256": "7c32cbf68def0c814771b7641c858c52e0bb72ef828630c9f2852a774d2c68cc",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/due-reference-helper/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/due-reference-helper/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/due-reference-helper",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "3654cb1146eb646bb8dbce5e937329e6e7b31513e10e4bd6f6895434bc09bbe7"
+    },
+    {
+      "label": "due-time-value-helper",
+      "source_sha256": "f4e25027cbf778c40b62a5783d2ed2c3b211b558a4990a73374867d0b0996ce1",
+      "source_shape": "actual due-time-value-helper; actual values assigned before every use and all read sequences/operand order preserved; no padding, forced ABI or ignored source route",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "375403e2b9095e86e6c0f46b5c35f5ea17faf4fb1aa337e59b04e0a49cf1bbf7",
+      "patch_sha256": "d75fe87b6a5d6e6caf862b192335c4df72387f6f0a49b0680148f22e64142e7c",
+      "native_size": 7020,
+      "raw_owner_sha256": "68e0997a3870650257d194a7a6f16a084a909a774b4675ee60bf6026009df1ce",
+      "native_image_sha256": "dab587bc5d084a31f3d6c8f9591a5343606a1d09abf89250ad0a0cad06b253f5",
+      "run_result": "mismatch",
+      "matching": 6993,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/due-time-value-helper/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/due-time-value-helper/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/due-time-value-helper",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "3c53520e51a5dcd6c2b2f20f7c53250d731cb009bba3e9b9002ac4748c237149",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [],
+      "new_different_offsets": []
+    },
+    {
+      "label": "format-before-frame",
+      "source_sha256": "020e684ee3b76f77e18d89274fa4521aadae9cf5669c26aac2a438f09579153e",
+      "source_shape": "move intact FORMAT case before selected independent break-terminated case; case labels and complete moved body unchanged; no declaration-only dummy or padding",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "3e69e5d0e7ccdb5b05ba4838a1cdb519f495be04036ab5f21b556a8c1de95b7b",
+      "patch_sha256": "de3b43f37338ee53600fd7a915df855b736c53633b0e772c800270d9078245f4",
+      "native_size": 7012,
+      "raw_owner_sha256": "e0bf2eca03824901246b81edc600d32942f0abedc5529cd7eec52cfd2683e977",
+      "native_image_sha256": "f30af6ef997bd9dfd6ceae0605fcdd0bb50df6e93ed2fc109b3b4cb2266514e9",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/format-before-frame/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/format-before-frame/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/format-before-frame",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "74242825a946cb23d2f5caa52aba30eb2b4a47a9e7772834a84798dcf8178305"
+    },
+    {
+      "label": "format-before-math",
+      "source_sha256": "b2cbb02eb698e57022495ef101f8be7398985511dfe11d45cc27b748a674a6cb",
+      "source_shape": "move intact FORMAT case before selected independent break-terminated case; case labels and complete moved body unchanged; no declaration-only dummy or padding",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "f1634275e74b71147d494b69170c27e46ab534ccdeac3e79a8d72204dcfd3824",
+      "patch_sha256": "73bf4e6b385ae69a22808bee602400a2c0223cfcec818f7811d55da60b4b0814",
+      "native_size": 7020,
+      "raw_owner_sha256": "7c0bb478c54b38a003b6ea0167be6132cbc6889a8fefc933c10b4e98253f5004",
+      "native_image_sha256": "fa2da3f4546fc9e32b684e4b75d16b8dfb62e968c7c33a9cd29df67aa22d2124",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "external field lacks one prebound target: {'offset': 6165, 'width': 4, 'type': 'REL32', 'instruction': 'call', 'candidate_target': '0x0041B3B0', 'candidate_symbols': ['_malloc', '_th10_ltcg_probe_anchor_0230'], 'instruction_end': 6169, 'target_encoded_value': '0xD9000004', 'target_candidate': '0xD944F9BD'}",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/format-before-math/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/format-before-math/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/format-before-math",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "85cad03a9d1ac1490569512be15727c6ea2eeae112199fbb98ce363d159a0e29"
+    },
+    {
+      "label": "format-evaluation-helper",
+      "source_sha256": "bd8233f7a7429cc6658f24f35fc7ed03b354b4193619de57b73ab22e53ebae9c",
+      "source_shape": "actual format-evaluation-helper; ordinary static real operations; live context instruction rereads and operand-service evaluation retained; no noinline/forceinline/ABI manipulation",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "84c5292d14f01fa0297829e6c2f0328ddadd12622db4956e524716112cf4819f",
+      "patch_sha256": "07f5ad5b37374b5c5c9cd8bff3d78f6dece0b1d4740e432af98fce2c9b48f49b",
+      "native_size": 6480,
+      "raw_owner_sha256": "54768901da465e69595b0e8bde9732fa7da08f01f8c14781403eea698a2622a8",
+      "native_image_sha256": "16b2c68fb6a04a262145207cda99024aa0ebdce14dd43f331dfe2bad3fb82e88",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/format-evaluation-helper/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/format-evaluation-helper/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/format-evaluation-helper",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "f99fc59c9e788f8c07512cf76c13619936fd8bc6e471715193901b50932f398b"
+    },
+    {
+      "label": "format-geometry-evaluation-helpers",
+      "source_sha256": "854a9a9245a3a9617c11f9db7f4a1260f9818f6520a3ac4fbe5087a627b2f6ee",
+      "source_shape": "actual format-geometry-evaluation-helpers; ordinary static real operations; live context instruction rereads and operand-service evaluation retained; no noinline/forceinline/ABI manipulation",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "083a2922069d78d45af1b4d34f58bd38b406063d139040c3da80896d1ab18599",
+      "patch_sha256": "46ec44864638ad2c5705e53c251f2471e07e9e90635cd320f7017f590adf8d63",
+      "native_size": 6320,
+      "raw_owner_sha256": "f7cd90a9078a7ed1154044efcd9a506128e74fd7237e16456ab0acbaed517615",
+      "native_image_sha256": "8060f6bfcfe1cf65a74678ce7fcac9eebdaf91ed4038dc8e8d4f24b06d8c23ff",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/format-geometry-evaluation-helpers/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/format-geometry-evaluation-helpers/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/format-geometry-evaluation-helpers",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "f583e87285f98c49c220cccecad0511c9f74e5b4eb0a6f8cf184b054ac88c521"
+    },
+    {
+      "label": "geometry-evaluation-helpers",
+      "source_sha256": "5a218981ebb6c00a33786a49592fd4c5e281782ac1d94ac45c520eab8c8c5cb4",
+      "source_shape": "actual geometry-evaluation-helpers; ordinary static real operations; live context instruction rereads and operand-service evaluation retained; no noinline/forceinline/ABI manipulation",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "19f39e6e1720860d360a7e2387431689f625423fff1bba49cc62c532d4f99abc",
+      "patch_sha256": "d7b5ea9e091cfa51ea4f0caf064bf91a9f4364d8eb0b662067f57d892f3c78a8",
+      "native_size": 6884,
+      "raw_owner_sha256": "04c2db0b40c09e7b6e60a31aaecf4b317271798ab37379b79b2a2463e8785ca5",
+      "native_image_sha256": "971b1a0c9c5af1940fd9754e94e2f193d9b96fa0a7b41bf7f91da233ab044ea3",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/geometry-evaluation-helpers/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/geometry-evaluation-helpers/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/geometry-evaluation-helpers",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "fdeeb4a741fbb7cdc0423482d0a8ebe23331b08fd5e693f964edb177264dfe44"
+    },
+    {
+      "label": "length-evaluation-helper",
+      "source_sha256": "51c8f35fb179b8b879ca86ecf9db7ca46bd190f24fa4062db713f95221826740",
+      "source_shape": "actual length-evaluation-helper; ordinary static real operations; live context instruction rereads and operand-service evaluation retained; no noinline/forceinline/ABI manipulation",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "b1808d359516a9e30e7de72e7f6d78b4626eca09b5f8793e790f43ceb0b367a7",
+      "patch_sha256": "3b45f63eb38e1e2a7dce81221aa58b59cfa61c87a871a29a9334e9512526d421",
+      "native_size": 6972,
+      "raw_owner_sha256": "81521961c2558f216d01af4fff3d96465fd1b21345a809d2640b56e78104ac50",
+      "native_image_sha256": "e5a91dc292af01e7aa28a4c6d68590c8d8f2dada5cf727be90eaae3e40a9bd43",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/length-evaluation-helper/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/length-evaluation-helper/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/length-evaluation-helper",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "46712684b812840fb744123b32f9ffc09c3039fefbdfdf3534becc6cd0526d04"
+    },
+    {
+      "label": "length-value-helper",
+      "source_sha256": "2d7dbccf36b5aa3fba58b208bc392c4e377fefaa184eb4c8b1322fffd5832a47",
+      "source_shape": "actual length-value-helper consumed mathematical return values; real scalar reads and arithmetic operand ordering preserved; ordinary static helpers with no forced ABI or inlining",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "9ba3d852e916c10aa6e0f54bb761c29679d5bccc7eade9d84aefb9eef9760b88",
+      "patch_sha256": "692daddce3e22d77d8346c6a6715b4ee1e81f6ba1aa0ea5dda938f553c028355",
+      "native_size": 7020,
+      "raw_owner_sha256": "5557f9f2adce23c6970bd96cefc7dd248331c54253f412a4648f64cb89ab0e1a",
+      "native_image_sha256": "59a60ac4012e3924eb125851fd6c00a9bc4527f8b2dbbe5d13cfa24f2dfffee9",
+      "run_result": "mismatch",
+      "matching": 6993,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/length-value-helper/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/length-value-helper/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/length-value-helper",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "1b9fd6bde16ca943970dd16c66b82bbe6240f208497bc70803b9630a8a093885",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [],
+      "new_different_offsets": []
+    },
+    {
+      "label": "maintained-current",
+      "source_sha256": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+      "source_shape": "fresh actual maintained ECL compile; typed int/float disabled trace consumers; source otherwise identical to selected private except explanatory comment; original header/layout/ABI/profile unchanged",
+      "producer_sha256": "f251e10c2d6c5cf3ef6486d1ea1623813e77f65eba7546b8f3ee5f46c2d749e7",
+      "plan_sha256": "4f67848aa60b03d1cd5a8210082761a57b2573c54a0235c9fd426ee890632826",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "native_size": 7020,
+      "raw_owner_sha256": "34ee053c36403c1ad7c3757159d29c63b0f1352f12fa2e96f229c3f5504aacea",
+      "native_image_sha256": "792ac127cc3b1be98903e1e5d3f8752adaaf14923a4bfbfb0520bc645c1a2399",
+      "run_result": "mismatch",
+      "matching": 6995,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          "src/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/maintained-current",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "83d75a06e8f4a95b3cd47d8d0a3c674b6b46587d1d7ef7d319ebfad172aa8030",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb"
+      ]
+    },
+    {
+      "label": "math-negation-common-scalar-xy",
+      "source_sha256": "17f02a4e807a257b13d3f8cdaf50cffdcdf00fe233239b0485867438bd471018",
+      "source_shape": "actual math-negation-common-scalar-xy; actual values assigned before every use and all read sequences/operand order preserved; no padding, forced ABI or ignored source route",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "b20787026c971d8ac3b8a4fe11ab99d861cc7a63ef0797f5c5afce21f74bf17f",
+      "patch_sha256": "b2d3d4935f49a240f07abda1704d5fff6e6056353f4c5bc2472d1d857df0a126",
+      "native_size": 7028,
+      "raw_owner_sha256": "04b95c1ebbe07ac3c56b546f0e16db2db68f4ca8fb7ca5f79b0fd4326a967f83",
+      "native_image_sha256": "a42f95cb55c1c7ac6193421489dda76efe7bef34377536122e1e625fdf0a2cf2",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/math-negation-common-scalar-xy/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/math-negation-common-scalar-xy/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/math-negation-common-scalar-xy",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "ad351366251efe6f5fab862ecf158eeee41a7c4ba6651c9be7181d8c6c9a2bde"
+    },
+    {
+      "label": "math-negation-common-scalar-yx",
+      "source_sha256": "9f64d7518b35c6b2f3570adb3e1c6bd5ac39042c17573c21951a80bc35fe9e23",
+      "source_shape": "actual math-negation-common-scalar-yx; actual values assigned before every use and all read sequences/operand order preserved; no padding, forced ABI or ignored source route",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "67b059b4921fb6d22a14c7963156fb786ae237118941e642fa7530984c7ce471",
+      "patch_sha256": "cd85eb07d627ce94f94df7a42a6f090ad5796fe0b972986d7ec284ec996dacd2",
+      "native_size": 7032,
+      "raw_owner_sha256": "a928eca0f4f17d85c6bdc93da15ea477cbc8ffa0321e94cd2108891c5659ba69",
+      "native_image_sha256": "7a37d5d809cf6660b0fc82e89a075be082cf19ebcce62af5454d322f50c3eced",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/math-negation-common-scalar-yx/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/math-negation-common-scalar-yx/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/math-negation-common-scalar-yx",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "55a56a7666e743b1efa535efa492f72b954844dc74cdc2869d77afedbebeebf9"
+    },
+    {
+      "label": "math-reference-helpers",
+      "source_sha256": "7788f55674dde982a1aabfe33969a12a2845cd80c59f960ca212d1b44692187f",
+      "source_shape": "actual math-reference-helpers consumed mathematical return values; real scalar reads and arithmetic operand ordering preserved; ordinary static helpers with no forced ABI or inlining",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "1bf72a2dadf73af33f71b6e92e6ec06a5072098c1431e2c937e94cf89b9f5328",
+      "patch_sha256": "07370bfad1560fa461fc2c5ae433ac5046ad792ece759b87d43c0334f291e585",
+      "native_size": 7020,
+      "raw_owner_sha256": "fd72599caf36878e246d80c37804d9b8bea9ad0803bad18d9e6daf5c06df9b0c",
+      "native_image_sha256": "9c9e40dc4108204911667a2d8d4d4778d785548b1bfd901c1b3d91c961bb5e41",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "external field lacks one prebound target: {'offset': 6332, 'width': 4, 'type': 'REL32', 'instruction': 'call', 'candidate_target': '0x004065F0', 'candidate_symbols': ['?ResolveFloat@EclVmContext@@QAEPAMI@Z'], 'instruction_end': 6336, 'target_encoded_value': '0x245CD9F3', 'target_candidate': '0x24A1D453'}",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/math-reference-helpers/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/math-reference-helpers/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/math-reference-helpers",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "42d6ae0dc8b50d4d61105c0b86a03c95d414c6775029814a2b53bfbb483f71e0"
+    },
+    {
+      "label": "math-value-helpers",
+      "source_sha256": "6ae4a3a13c04bcd8e4f4e2eed1bcbaa3b46a8f82caf72167aeb359862d7c33aa",
+      "source_shape": "actual math-value-helpers consumed mathematical return values; real scalar reads and arithmetic operand ordering preserved; ordinary static helpers with no forced ABI or inlining",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "79fa66c25bae01b1de9d4ef510413cb862ab0f7e672575d3d84f31dbf58548f3",
+      "patch_sha256": "d8166b26832f3ddeae8c441157cf2cb598741ccef1678291656b4a2f7d2b7823",
+      "native_size": 7020,
+      "raw_owner_sha256": "be5dd482e3836c2083752f2e6b4f685a38906065412868d6400fe33ac9e5a98b",
+      "native_image_sha256": "2b965128181c49467bb296fd8228863d724eb2fb2b87084084b1c1b57aa1ed4b",
+      "run_result": "mismatch",
+      "matching": 6993,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/math-value-helpers/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/math-value-helpers/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/math-value-helpers",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "84ef93e37765c95d490c951cd04f08c9fbbf1459074f5bee98021f196df1f70d",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [],
+      "new_different_offsets": []
+    },
+    {
+      "label": "profile-float-consistency",
+      "source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "source_shape": "unchanged actual source, GL/GS retained; append historical /Op only to ECL; distinct unique non-runnable anchors for every emitted C/CI math identity; no ABI alias substitution",
+      "producer_sha256": "4374d571a4a557f1dd21c43e39c71c776591417c515402ccc0254ad564ba720b",
+      "plan_sha256": "1e47e6a7dbe0b8536f2474bc481b93bb3597f385faf3a1dd349064ca5bfb4084",
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "native_size": 6964,
+      "raw_owner_sha256": "672a113072999353995c0332916732a8d48a953616f29d89665fbd45c26bb8fe",
+      "native_image_sha256": "f9b757c7e04fbb5dfa8d1f977e09a4d8b4d5a3f52f5862b30785cfe0e35d5090",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 861,
+        "fields": 11,
+        "all_exact": false
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 9,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/profile-float-consistency/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/profile-float-consistency/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Op"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/profile-float-consistency",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "e502d547f7ac36ac29898cbf4fb9d5d5cc4a07587b2d18aa4ddfe5c39e3cc462",
+      "anchor_attempts": [
+        {
+          "attempt": 0,
+          "exit_code": 0,
+          "log_sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        }
+      ]
+    },
+    {
+      "label": "spawn-current-field",
+      "source_sha256": "9eacd1d62402273a08dcef8adeabc97c2653e68c4ba7087ba9b764d72b201a84",
+      "source_shape": "actual spawn-current-field; actual values assigned before every use and all read sequences/operand order preserved; no padding, forced ABI or ignored source route",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "f7ebd4a9d0d7e5d8ba44cf694ebb4d30a43903bb68568e9939813fa6e0828675",
+      "patch_sha256": "80402460f8f4ed686968912ab8be168b83307e7eed6a289232d11c7f271c672f",
+      "native_size": 7020,
+      "raw_owner_sha256": "823f4ae4cd4ce78db39d0080e592d1fff42e8564b583528a16aec6b34c2d522e",
+      "native_image_sha256": "00560eed1c97ec677d3834ec470d652ea7761d6e30c0524b4daa5cace447daba",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "external field lacks one prebound target: {'offset': 249, 'width': 4, 'type': 'REL32', 'instruction': 'call', 'candidate_target': '0x00406330', 'candidate_symbols': ['?ReadIntValue@EclVmContext@@QAEHIH@Z'], 'instruction_end': 253, 'target_encoded_value': '0xBE8B0000', 'target_candidate': '0xBECFE29D'}",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/spawn-current-field/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/spawn-current-field/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/spawn-current-field",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "6a000c7580493dd371fa4ec86567d902d0250826f7a5905479cb340c1a0b9778"
+    },
+    {
+      "label": "stop-context-value-helper",
+      "source_sha256": "3e87af7acabec4ab138f94d831659a098feef421117ad6f5ea764566eefac1f4",
+      "source_shape": "actual stop-context-value-helper; actual values assigned before every use and all read sequences/operand order preserved; no padding, forced ABI or ignored source route",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "37bc22c789d8c18cb8823cfb9b7de9810b2e734a607506f581e8927ce0a5ad74",
+      "patch_sha256": "7839014fe4d3ccb5d136c5928e6fd68b0bb27f6b408e4c53ca2dc7455225ec3d",
+      "native_size": 7020,
+      "raw_owner_sha256": "68e0997a3870650257d194a7a6f16a084a909a774b4675ee60bf6026009df1ce",
+      "native_image_sha256": "da9c5eb4f5eb5c921735366e6f37379ffc27ee925398f37b80d71475d081f339",
+      "run_result": "mismatch",
+      "matching": 6993,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/stop-context-value-helper/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/stop-context-value-helper/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/stop-context-value-helper",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "f823a908b1a479f320b6a6b94e52d0b4157b1b711c678376f5c89a612f4a424d",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [],
+      "new_different_offsets": []
+    },
+    {
+      "label": "template-reference-disabled-trace",
+      "source_sha256": "6e97eb7083c278dc7493d876ca7c1a6f5ec604434bae4d70627f5ffc8dff4909",
+      "source_shape": "actual template-reference-disabled-trace; only disabled trace signatures change, no call sites/evaluations/FORMAT counter or value ordering changes; real int/float results are supplied through typed overload/template parameters; no fake return or forced ABI",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "9d6dcf90b2730043df68ea72c1c757c06704ff40d6e0f66b7a9e37f54a69f92a",
+      "patch_sha256": "4620f05cf17ca312a4f5d53fb3be8968a86cd49992474e762b9db5fe48d1cb92",
+      "native_size": 7020,
+      "raw_owner_sha256": "d5013e2fdf6b12a053b99dd7111e12e12ec273a9319c96377c4c61e85643d976",
+      "native_image_sha256": "fa4b38e782b3451428e1586a0f03cd526321fb807499c3794ca0cb84f4763a91",
+      "run_result": "mismatch",
+      "matching": 6995,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/template-reference-disabled-trace/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/template-reference-disabled-trace/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/template-reference-disabled-trace",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "20ae63e593847e00c16e5789176c0a17aa5438ece243a9266cca13744c5035b4",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb"
+      ]
+    },
+    {
+      "label": "template-value-disabled-trace",
+      "source_sha256": "f0248782498d2296d2a07468966b70ec5de8249b1e87605b7348d5fa9ae8549d",
+      "source_shape": "actual template-value-disabled-trace; only disabled trace signatures change, no call sites/evaluations/FORMAT counter or value ordering changes; real int/float results are supplied through typed overload/template parameters; no fake return or forced ABI",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "0d7f491f561abf02acef90caaa4b98066f25666bfcc6096e15e470f9d4c4e246",
+      "patch_sha256": "77d9c95ba665be9217b97a115d254ff6bcbe49176cb5ea6a32e681cac64a6293",
+      "native_size": 7020,
+      "raw_owner_sha256": "d5013e2fdf6b12a053b99dd7111e12e12ec273a9319c96377c4c61e85643d976",
+      "native_image_sha256": "78570ef0dc768ce5acf7bc11956c3fe500e277b2d05b41029f173b38fcfb6ecd",
+      "run_result": "mismatch",
+      "matching": 6995,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/template-value-disabled-trace/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/template-value-disabled-trace/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/template-value-disabled-trace",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "85c379b3e12527bbb421bd892179114e16a3137e127ad7dd888d9f0af1c7db9f",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb"
+      ]
+    },
+    {
+      "label": "typed-disabled-trace",
+      "source_sha256": "63a6efc6921c371eb6b2649bed8d0d03ed56f5d8fa6bca747d95e10ca9f89fa9",
+      "source_shape": "actual typed-disabled-trace; ordinary static real operations; live context instruction rereads and operand-service evaluation retained; no noinline/forceinline/ABI manipulation",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "3039c2f8eb84509672e7e1294925c90cf5f3661f13f5e2e6fb9b53c0995d8476",
+      "patch_sha256": "a9e780c248d90c18557ca0d8d7c889f868ee1d14dace72d5dae91a480b7bb9e4",
+      "native_size": 7020,
+      "raw_owner_sha256": "34ee053c36403c1ad7c3757159d29c63b0f1352f12fa2e96f229c3f5504aacea",
+      "native_image_sha256": "e9f014a47318c53feaca92b0f4cff8c5af20cdd5c825c3f2f2ac7d44babe8f0e",
+      "run_result": "mismatch",
+      "matching": 6995,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-disabled-trace/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-disabled-trace/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-disabled-trace",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "d2c7feb5011e0c75b2ad8d218a9c883dff4514f6fae6a95788685689b5e76447",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb"
+      ]
+    },
+    {
+      "label": "typed-double-disabled-trace",
+      "source_sha256": "beeb078b61f47d447f687818b92035fac119a7c5395d8d992b1e4f6d47b5ac25",
+      "source_shape": "actual typed-double-disabled-trace; only disabled trace signatures change, no call sites/evaluations/FORMAT counter or value ordering changes; real int/float results are supplied through typed overload/template parameters; no fake return or forced ABI",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "054764ec95e6db1468e9a6b662c6be1c2fa56f9bd9ce69575df4fbec7d72d3e7",
+      "patch_sha256": "afc3c296866f8e26ae1cbc8f8b4f9c0c88385f6390f9d852f040f90540c2eaed",
+      "native_size": 7020,
+      "raw_owner_sha256": "34ee053c36403c1ad7c3757159d29c63b0f1352f12fa2e96f229c3f5504aacea",
+      "native_image_sha256": "5c0b8200f75c2fdf38aa555962cf728368acd7ba4b5efba11a63b4b0e5d4eb57",
+      "run_result": "mismatch",
+      "matching": 6995,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-double-disabled-trace/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-double-disabled-trace/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-double-disabled-trace",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "65665a3610206e5a36563b5f2bfa893b6fb2bd3c0a8e0e9e0d3e76cc85e28455",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb"
+      ]
+    },
+    {
+      "label": "typed-float-trace-fallback",
+      "source_sha256": "a13f4fff04232c3500a5e3ee4fd02ab1a1fdef14c5f62ee5b88ae33cfbe064d5",
+      "source_shape": "actual typed-float-trace-fallback; preserve existing variadic no-value/fallback consumer while adding real typed scalar overloads; original call sites and operand evaluation unchanged",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "282495d540ac77d5a26b307ccc8287e0b9bc760760e11948634a84a2f5f96b50",
+      "patch_sha256": "2271e6d5d69b46da75bcaa978a74582e1de9baa1d3e704f2d42e100f387660d2",
+      "native_size": 7020,
+      "raw_owner_sha256": "4efdd9c826302706dd111e2dd27f8f47c323cae50d56297294fd28cb51e2d23a",
+      "native_image_sha256": "539f3e48d01d86ad570afad67afd4a1bd688d7ad7988820b7976964c7f7afeed",
+      "run_result": "mismatch",
+      "matching": 6995,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-float-trace-fallback/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-float-trace-fallback/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-float-trace-fallback",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "100477b5fec38b31414c6d48c064cb0092d04321bd958f370630c5e28e37dec4",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb"
+      ]
+    },
+    {
+      "label": "typed-int-trace-fallback",
+      "source_sha256": "cb623449d9400fc37c79d89a5e19a13fbe94320620c55133f850820ea6572e53",
+      "source_shape": "actual typed-int-trace-fallback; preserve existing variadic no-value/fallback consumer while adding real typed scalar overloads; original call sites and operand evaluation unchanged",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "21ae994afc1e5e571220af442958f7b6fe3538e4833d2147e217d735d18ab9d2",
+      "patch_sha256": "ebbf17e8360c648407c102d3c761d513ee0d41cf80c7939075b26134f55b8453",
+      "native_size": 7020,
+      "raw_owner_sha256": "4efdd9c826302706dd111e2dd27f8f47c323cae50d56297294fd28cb51e2d23a",
+      "native_image_sha256": "a2a76985b34a52b1d0e9e4c10f109996aad83860e2ead35b58ab73274a9c1239",
+      "run_result": "mismatch",
+      "matching": 6995,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-int-trace-fallback/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-int-trace-fallback/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-int-trace-fallback",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "4c98bbe6488089f94512c5f969af06795059aa5b0d8a098ca098953747e68dbb",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb"
+      ]
+    },
+    {
+      "label": "typed-reference-disabled-trace",
+      "source_sha256": "4dd372887d3f2994291e17e02b66c8dcb3b1e9948605339dc111eb0f817cbe82",
+      "source_shape": "actual typed-reference-disabled-trace; only disabled trace signatures change, no call sites/evaluations/FORMAT counter or value ordering changes; real int/float results are supplied through typed overload/template parameters; no fake return or forced ABI",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "2ea810d45f1add64ebb95e822cf01c273bd46345ac7ac0b119f2dbae4e18b5cd",
+      "patch_sha256": "b5b47987c96f2930d524d8861d4efb2605da2425533421e7daf270f2d458c0b5",
+      "native_size": 7020,
+      "raw_owner_sha256": "34ee053c36403c1ad7c3757159d29c63b0f1352f12fa2e96f229c3f5504aacea",
+      "native_image_sha256": "3ece438a1271b58d923f3f443574f340d0862d266fef46cc6466a9f1ea972abb",
+      "run_result": "mismatch",
+      "matching": 6995,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-reference-disabled-trace/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-reference-disabled-trace/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-reference-disabled-trace",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "8113a8ad1a914bbb5e830e093e23b948f2e8eb8300306ed5c1ee2c2f6ec4cbb2",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb"
+      ]
+    },
+    {
+      "label": "typed-scalar-trace-fallback",
+      "source_sha256": "1b8a35b0f359cfdacedd4b636ef35872d4857cd5552d3ac7335d0deb0f0e92af",
+      "source_shape": "actual typed-scalar-trace-fallback; preserve existing variadic no-value/fallback consumer while adding real typed scalar overloads; original call sites and operand evaluation unchanged",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "ef0122ab215171c2089fd27d3d805634e7b71d4d465af8dda23cede154b330c6",
+      "patch_sha256": "27067b77a278cff42474274bf1ebcc01d8d32d720713427d51edf23e9801bb62",
+      "native_size": 7020,
+      "raw_owner_sha256": "34ee053c36403c1ad7c3757159d29c63b0f1352f12fa2e96f229c3f5504aacea",
+      "native_image_sha256": "6ab676878da1e7c7a2d4e94f7517a4714e4311e6a9ffc56758cd53a9b006fe4a",
+      "run_result": "mismatch",
+      "matching": 6995,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-scalar-trace-fallback/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-scalar-trace-fallback/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-scalar-trace-fallback",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "b0c38b45a5c1f2f6f018aed039f787de0de7cbd52d5ad4fa7abc51aa56d936dc",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb"
+      ]
+    },
+    {
+      "label": "typed-trace-current-shared-floats-xy",
+      "source_sha256": "d523b336bc08da62cb13bacc6ff16788668f4acae1be720991513573a1ffb777",
+      "source_shape": "actual typed-trace-current-shared-floats-xy; combine measured typed scalar consumer with a separately measured real working-value lifetime hypothesis; no other source change",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "e2394f958fe4a5272d9f4ec4a30a5a5f42459d97e5191118b5052f3e14c5700a",
+      "patch_sha256": "bf0db7e3abca86f9ff4b0c4a733fff780399123fd14e5a975b847958b666ecab",
+      "native_size": 7020,
+      "raw_owner_sha256": "92c16e8330a06f8a86fce7ecac5faceb0e60a40e36b9e9d2b85d461ecbb464b0",
+      "native_image_sha256": "76e3b95c31596c78b3166593008432b068c76896b76df69fce75b0a1e917e848",
+      "run_result": "mismatch",
+      "matching": 6991,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-current-shared-floats-xy/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-current-shared-floats-xy/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-current-shared-floats-xy",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "3203fa75b526cf93d9cf29c7a8447777dec397ace90e81efa9550987ee66e5eb",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710",
+        "0x1899",
+        "0x18b6"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb",
+        "0x169d",
+        "0x16a8",
+        "0x16ac",
+        "0x16b0",
+        "0x16b6",
+        "0x16bb"
+      ]
+    },
+    {
+      "label": "typed-trace-current-shared-floats-yx",
+      "source_sha256": "5c58fdf90c44bcd1d22d5e808b04a6a493de6be12fe213a141fa82e13fdc7e3f",
+      "source_shape": "actual typed-trace-current-shared-floats-yx; combine measured typed scalar consumer with a separately measured real working-value lifetime hypothesis; no other source change",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "e35275bec55bc58139a5140fb01973e46289e03850355a1eeabda112848d9785",
+      "patch_sha256": "7ab8e68b5d17f34ffb6b3e7fb552d0a3a2026526b4594b8041cfbf2fb675ac92",
+      "native_size": 7020,
+      "raw_owner_sha256": "e41a9ae00318ad14d7bfc4a46d9d2de238f68af91d0b7e08ebd17723618b9dea",
+      "native_image_sha256": "45abc63b15fd2cc9d3e21a4bebd43f2e440dd8cb135cdc579f04624365fc1935",
+      "run_result": "mismatch",
+      "matching": 6994,
+      "error": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-current-shared-floats-yx/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-current-shared-floats-yx/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-current-shared-floats-yx",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "b937d774f22d6d0326f575cd87589a7dc18e9d39fb3deba56b59fa70ce5a3370",
+      "fields": 189,
+      "local_destinations": 62,
+      "repaired_offsets": [
+        "0x146e",
+        "0x14d7",
+        "0x168a",
+        "0x1710",
+        "0x182b",
+        "0x1838",
+        "0x183c",
+        "0x1899",
+        "0x18b6"
+      ],
+      "new_different_offsets": [
+        "0xaf",
+        "0x1fb",
+        "0x169d",
+        "0x16a8",
+        "0x16ac",
+        "0x16b0",
+        "0x16b6",
+        "0x16bb"
+      ]
+    },
+    {
+      "label": "typed-trace-math-negation-common-scalar-xy",
+      "source_sha256": "0bf948030041e6d71b382582448ce7f17c2622395246a7f54175eaee90136287",
+      "source_shape": "actual typed-trace-math-negation-common-scalar-xy; combine measured typed scalar consumer with a separately measured real working-value lifetime hypothesis; no other source change",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "4b6c1597f2bc7d88ff68fe35d2b0ada67f9c953ed0838e1d4e92bf6ce842d1af",
+      "patch_sha256": "d0ad1bd02bee7507d433c2f5f265eb2d5572512fdf87fae820a2d5a85bf3b9c3",
+      "native_size": 7028,
+      "raw_owner_sha256": "e62f872d087a49ab1d18c62bb15d568a99521f189dc0287b5830e8bd4977e1aa",
+      "native_image_sha256": "d1902e4832d8d0830a50781e3040ad37b4ecc810603d4fa1ad2ce69cee09f911",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-math-negation-common-scalar-xy/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-math-negation-common-scalar-xy/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-math-negation-common-scalar-xy",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "d334c3130276e045de95f6d5c45a721367b970afcef6bcb1aa228aa2ee28f5e0"
+    },
+    {
+      "label": "typed-trace-math-negation-common-scalar-yx",
+      "source_sha256": "f57e67d56a5f513f4eb7e21670232a21dd39d8a6feebee88539b6e9745b52f6b",
+      "source_shape": "actual typed-trace-math-negation-common-scalar-yx; combine measured typed scalar consumer with a separately measured real working-value lifetime hypothesis; no other source change",
+      "producer_sha256": "e846ab497ece4bf4020336712229d7d69a3cbd8427c72eddf1cfabb2ddb93fa7",
+      "plan_sha256": "f3c7608d7135f3c1ca7aab111e17f535764d36254b0916dd9b59c20b50c83379",
+      "patch_sha256": "73f4b38304d4e285e25126ee9585625643a6f17b82cd3825cbd874af95607b8b",
+      "native_size": 7032,
+      "raw_owner_sha256": "09962fbe98f19a76888a657d190b955cd0fb702316349d1fd927e0c26070c828",
+      "native_image_sha256": "181d9126859d6b49ba3514639c4c547657ac128cdaeb3cc7ef6a8c610c2827be",
+      "run_result": "unsupported",
+      "matching": null,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "compiled_game_objects": 1,
+      "reused_inputs": 11,
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-math-negation-common-scalar-yx/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-math-negation-common-scalar-yx/EclVm.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/ecl-case-order-20261023/typed-trace-math-negation-common-scalar-yx",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "native_report_sha256": "6a958d2f2e487d7d4c5a440b8bcc1906473a39a32f9cce1f5f4c45804fc9971f"
+    }
+  ],
+  "selected_private": "typed-disabled-trace",
+  "maintained": "maintained-current",
+  "parent_before": {
+    "matching": 6993,
+    "differences": 27
+  },
+  "parent_after": {
+    "matching": 6995,
+    "differences": 25,
+    "replayed_sha256": "aeccdec2b6e53998a8e12793cf5a3860e4522847412afd607bba526ebc7d75e6",
+    "repairs": 4,
+    "target_equal_losses": 2
+  },
+  "all_ECL_guards": {
+    "owners": 16,
+    "bytes": 1617,
+    "fields": 21,
+    "all_exact_before_and_after": true,
+    "new_exact_credit": false
+  },
+  "peer_preservation": {
+    "owners": 352,
+    "before_bytes": 95263,
+    "raw_identical": 233,
+    "address_fields_only": 118,
+    "other": [
+      "?Run@EclVmContext@@QAEHM@Z"
+    ]
+  },
+  "maintained_reproduction": {
+    "scope": "all uniquely enumerated complete public PDB owners; static/unowned fragments and native product/runtime excluded",
+    "public_owners": 352,
+    "bytes": 95263,
+    "private_and_maintained_raw_equal": true,
+    "private_label": "typed-disabled-trace",
+    "maintained_label": "maintained-current",
+    "maintained_source_sha256": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "new_game_compilations": 1,
+    "reused_game_objects": 9,
+    "independent_cold_pair": false
+  },
+  "Player_reuse": {
+    "source_inputs": 17,
+    "unchanged_project_include_closure": 52,
+    "ECL_cpp_not_compiled_or_included": true,
+    "parent_matching": 1380,
+    "parent_size": 1435,
+    "fields": 49,
+    "guards": 8,
+    "guard_bytes": 1753,
+    "guard_fields": 99,
+    "old_manifests_immutable": true
+  },
+  "original_source_inference": "typed disabled logger is a bounded source hypothesis, not proof of original signatures/classes/TUs; three ordinary static logger contributions gain no target identity or exact credit",
+  "Ghidra": {
+    "read_only": true,
+    "no_analysis": true,
+    "rollback": true,
+    "maxcpu": 1,
+    "heap_mib": 768,
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "log_sha256": "f671a2c0c293923f650d739eaee13b602cbeae3b5d34fc4a76c9849f244d16c1"
+  },
+  "FORMAT_host": {
+    "scenarios": 10,
+    "functional_mutants": 8,
+    "sanitizers": "ASan/UBSan/leaks",
+    "log_sha256": "8694321e9273ced472fec345baf250485e0b34c86df8a3605e52a38cdf9dc98d"
+  },
+  "independent_full_graph_cold_pair": false,
+  "new_exact_acceptance": false,
+  "proof_pins": {
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/manifest.json": "03ac8ec591a08638ea087fda8762e7c064de95c05200dd8c071d4dcd9d116c91",
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/manifest-final.json": "f2f79fe198a17115df146fcc7e36d9d8b00e5155a113ca488daac59d1bec27da",
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/manifest-current.json": "f28726519cc3c8f2932b959a2b9b37c94557a79d6c2c32cb48db2c21a65a2511",
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/maintained-current-peer-native.json": "84107155aaa2c6b2182905ec2b367dc85d0d2779845d76f62d47c4455aabe9f5",
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/peer-native.py": "6f2c0a6933c27bd00403f09b44b5b534784fdc04a76bb6f40aa7daed7ddfb33d",
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/compare-current.py": "b0e23ef870767a86007da67625ffe3bdeaf4d0fe7bdc08601f3f9659406ae9eb",
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/current-comparison.json": "7055bb77297c939341f3d77bcd11679c9889fad170db9361712aca0b638ce76d",
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/maintained-current-all-ecl-guards.toml": "9cc307bfa8b2ca0f0edaa4f6849b762a47387d5100b462a9401746f5b1f4e3d8",
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/baseline-all-ecl-guards.json": "6969f6493f9582a03f91e134eb154625c22ba6f5ff2f74adaa574f55385e9144",
+    ".analysis/gpt-6.1-sol/ecl-case-order-20261023/maintained-current-all-ecl-guards.json": "09b92323fe3d200fc48c55daf15565bdda62b368d2dbe6bf2d47ed7976fac956"
+  },
+  "canonical_bindings_sha256": "8ef1e6f9232cba78a2e108546adf769d5f84a07f89d039d4c06d08bb6eba7760",
+  "current_source_sha256": {
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "scripts/test-ecl-format.py": "71fd21c50cefddddc1e12c5bd888a4c1805fe416356d9f2eae55cd25dddfa324"
+  }
+}

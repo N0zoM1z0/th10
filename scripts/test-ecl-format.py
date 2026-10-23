@@ -16,8 +16,9 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def extract(text, start, end):
-    if text.count(start) != 1 or text.count(end) != 1:
+def extract(text, start, end, *, unique_start=True):
+    starts = text.count(start)
+    if not starts or (unique_start and starts != 1) or text.count(end) != 1:
         raise ValueError(f"ambiguous source projection: {start!r}")
     return text[text.index(start):text.index(end)]
 
@@ -29,8 +30,9 @@ def run(args, out):
     text = source.read_text()
     arm = extract(text, "            case ECL_VM_EVALUATE_FORMAT_OPERANDS:",
                   "            default:\n                if (host->DispatchEclInstruction() == -1)")
+    # Compile the whole trace overload group used by the actual FORMAT arm.
     sink = extract(text, "static void EclDebugTrace(",
-                   "int EclVmContext::Run(float timeDelta)")
+                   "int EclVmContext::Run(float timeDelta)", unique_start=False)
     instruction = extract(header.read_text(), "struct EclVmInstruction\n",
                           "class EclVmHost;")
     variants = [("positive", arm)]

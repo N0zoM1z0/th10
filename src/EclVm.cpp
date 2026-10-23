@@ -689,9 +689,17 @@ void EclVmHost::StopAllThreads()
 }
 
 
-// Model the disabled variadic trace suggested by FORMAT's unused text copy.
+// Model the disabled scalar trace suggested by FORMAT's unused text copy.
 // Argument evaluation remains observable; the original trace definition is unknown.
-static void EclDebugTrace(const char *format, ...)
+static void EclDebugTrace(const char *format)
+{
+}
+
+static void EclDebugTrace(const char *format, int value)
+{
+}
+
+static void EclDebugTrace(const char *format, float value)
 {
 }
 

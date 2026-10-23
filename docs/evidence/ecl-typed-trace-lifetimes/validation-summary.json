@@ -1,0 +1,179 @@
+{
+  "starting_head": "405fde43a1f74c102ddf77326557e2a18eba6eff",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "large ECL Run typed consumer source checkpoint; no exact acceptance",
+  "phase": "active-incomplete",
+  "native_campaign": {
+    "images": 32,
+    "new_ECL_object_compilations": 32,
+    "unchanged_reused_game_objects_per_image": 9,
+    "independent_full_graph_cold_pair": false,
+    "strict_parent_comparisons": 18,
+    "size_refusals": 11,
+    "binding_refusals": 3,
+    "GL_GS_retained": true,
+    "full_CI": "not run under operator focused-validation preference",
+    "broad_cold_replay": "not run; no modified canonical recipe, ABI/header/layout or new exact claim"
+  },
+  "parent": {
+    "size": 7020,
+    "matching_before": 6993,
+    "matching_after": 6995,
+    "differences_before": 27,
+    "differences_after": 25,
+    "repairs": 4,
+    "target_equal_losses": 2,
+    "independently_bound_fields": 189,
+    "local_destinations": 62,
+    "callee_size": 171,
+    "callee_exact": true,
+    "data_suffix_fully_compared": true,
+    "ordinary_and_local_bytes_unmasked": true
+  },
+  "existing_ECL_guards": {
+    "before_and_after_exact": 16,
+    "bytes": 1617,
+    "fields": 21,
+    "new_exact_credit": false
+  },
+  "maintained_reproduction": {
+    "private_maintained_public_owners_raw_identical": 352,
+    "bytes": 95263,
+    "before_after_raw_identical": 233,
+    "before_after_address_fields_only": 118,
+    "ordinary_changed_owners": [
+      "EclVmContext::Run"
+    ],
+    "unresolved_changed_fields": 0,
+    "excludes": "static/unowned fragments, original source signatures/ownership, product/runtime"
+  },
+  "FORMAT_host": {
+    "scenarios": 10,
+    "functional_mutants": 8,
+    "sanitizers": "ASan/UBSan/leaks",
+    "log_sha256": "8694321e9273ced472fec345baf250485e0b34c86df8a3605e52a38cdf9dc98d"
+  },
+  "Player": {
+    "source_inputs": 17,
+    "unchanged_project_include_closure": 52,
+    "ECL_cpp_not_compiled_or_included": true,
+    "parent_matching": 1380,
+    "parent_size": 1435,
+    "fields": 49,
+    "guards": 8,
+    "guard_bytes": 1753,
+    "guard_fields": 99,
+    "old_manifests_immutable": true
+  },
+  "preflight": {
+    "target_verified": true,
+    "pinned_toolchain_execute_passed": true,
+    "Ghidra": {
+      "read_only": true,
+      "no_analysis": true,
+      "rollback": true,
+      "maxcpu": 1,
+      "heap_mib": 768,
+      "mapped_text_bytes": 412289,
+      "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+      "log_sha256": "f671a2c0c293923f650d739eaee13b602cbeae3b5d34fc4a76c9849f244d16c1"
+    }
+  },
+  "cleanup": {
+    "files": 542,
+    "before_bytes": 52809218,
+    "archive_bytes": 473072,
+    "reclaimed_bytes": 52336146,
+    "all_member_lengths_hashes_verified_before_removal": true,
+    "protected_files_verified": 23212,
+    "all_protected_unchanged_during_compaction": true,
+    "later_documentation_and_notes_updates": [
+      ".analysis/gpt-6.1-sol/ecl-case-order-20261023/compare-current.py",
+      "config/functions.csv",
+      "docs/KNOWLEDGE_BASE.md",
+      "docs/RE_ARTIFACTS.md",
+      "docs/RE_HANDOFF.md"
+    ],
+    "unrelated_D3D_files_hash_verified": 9,
+    "archive_restore_commands_verified": 15
+  },
+  "checks": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.201,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py",
+        "--require-target"
+      ],
+      "exit_code": 0,
+      "seconds": 0.523,
+      "log_sha256": "344278847dcec53d43546fabbc51f81b910eeb0d4913e733f6d5894d25f5bc02"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.254,
+      "log_sha256": "d9c37039657cc0a1a10d8f7a205617b4eaf5851f9e7572226287bc7e5e4aa423"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-reconstruction-status.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.186,
+      "log_sha256": "881c82bd1357823b1b3f6dfba8c3214a9c1b5854689adf0981574cf5c9cc8990"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/build-match-unit.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 2.136,
+      "log_sha256": "3c3d25a8f7ef707beaac4c4d61aa69edb7cdb6d8fb909df373a23b0c1a29a27a"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.204,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.033,
+      "log_sha256": "0cdc056f59e67270f98bbdd895038c7525e2e7f95e42dc6d29a3470b2cdadb54"
+    }
+  ],
+  "ledger_changes": "ECL Run notes only; status/match_percent/boundary/origin/mappings/exact ledger unchanged",
+  "totals": {
+    "authored_exact_functions": 409,
+    "authored_exact_bytes": 74716,
+    "overall_exact_functions": 1252,
+    "overall_exact_bytes": 141647
+  },
+  "native_product_runtime": "open; no runtime validation",
+  "semantic_port": "not started"
+}
