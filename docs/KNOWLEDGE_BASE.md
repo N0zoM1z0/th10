@@ -5510,3 +5510,15 @@ The [cleanup receipt](evidence/handoff-cleanup-20261023/README.md) provides the
 lossless historical report restoration index. The active handoff is shortened;
 all 26 older sections remain verbatim in the dated history. Restore archived
 reports before historical consumers; do not restore old source or relax pins.
+
+## Stage vector lifetime and definition visibility controls (2026-10-23)
+
+Shared spline temporaries inside/outside the loop, one shared final across 3/5/10/11,
+named opcode 14 operands and explicit spline component fills each preserve the
+entire 1868-byte parent raw. Moving the actual VM initializer definition to
+Stage's TU is parent-equal after 3 independently bound address fields; its full
+200-byte native callee is equal after 2 fields and still differs from target 202.
+The receiver remains native EDX/target ESI. All six retain 11 complete guards 987/all 36;
+seven actual game compiles/six links, no source or exact gain. These bounded
+controls exclude neither all lifetimes nor all source/caller contexts. See
+[vector/visibility evidence](evidence/stage-vector-lifetimes/README.md).

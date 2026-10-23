@@ -1,15 +1,16 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-23 for the operator-requested cleanup and handoff. Reconstruction
-remains **active-incomplete**. No reconstruction experiment is running. Maintained
-game source, headers, compiler profiles, recipes and exact ledgers are unchanged
-by this cleanup. Checkpoints use `gpt-6.1-sol: ...`.
+Updated 2026-10-23 after resuming the reconstruction goal from the cleanup
+checkpoint. Reconstruction remains **active-incomplete**. Six subsequent Stage
+controls are complete; none is adopted. Maintained source, headers, compiler
+profiles, recipes and exact ledgers stay unchanged. Checkpoints use
+`gpt-6.1-sol: ...`.
 
 ## Current state
 
 Latest source checkpoint: `2b03d2b`, Stage opcode8 packed-color write scheduling.
-This handoff closes the four already-completed subsequent Stage experiments;
-none is adopted and no new experiment was started for cleanup.
+Cleanup checkpoint fd366f2 recovered four integer controls. The subsequent
+six vector/lifetime/definition-visibility controls are now complete and neutral.
 
 | Owner / metric | Maintained state |
 | --- | --- |
@@ -49,13 +50,21 @@ Continue the large-owner exact work, with Stage 403C80/1868 as the current route
   native 401792 uses **EDX**, adding one byte. The prior ECX note was wrong.
 - Opcode12 target 4041CE uses DL; maintained native 40175E uses CL. SetCurrent(0)
   is fully inlined in both spans. Receiver precomputation did not repair it.
-- Investigate a materially different value/register lifetime or the remaining
-  spline opcodes 10/11 and opcode 14. Preserve the whole parent, all 15 table entries,
-  physical group order and strict local offsets. Establish exhaustive independent
-  target field bindings before any whole-parent exact claim.
-- Do not repeat the four integer controls, low-byte color snapshot, six spline
-  copies or signed channel snapshots. Keep ANM/ECL/Enemy open; do not substitute
-  small-function closures for the operator's large-function priority.
+- The [six vector/visibility controls](evidence/stage-vector-lifetimes/README.md)
+  are complete-parent neutral: five raw-equal; moving the existing initializer
+  definition into Stage's TU is equal after 3 independently bound fields. All
+  retain 11 guards 987/all 36 and all 15 table entries. Shared vectors, explicit
+  component fills and named VM operands did not repair register allocation.
+- Native VM initializer remains 200 versus target 202, with EDX versus target ESI
+  receiver. A consistent formal-argument-order control is untested; preserve its
+  body and every compiled declaration/call, without forcing private registers.
+  Alternatively rotate to another large owner. These are hypotheses, not
+  established original signatures or translation units.
+- Do not repeat those six forms, the four integer controls, low-byte color
+  snapshot, six spline copies or signed channel snapshots. Preserve the complete
+  parent, physical group order and strict local offsets. Establish exhaustive
+  independent target field bindings before any whole-parent exact claim. Keep
+  ANM/ECL/Enemy open; no small-function closure substitutes for this priority.
 
 The three larger owners' latest exclusions and evidence are indexed in the
 [historical handoffs](RE_HANDOFF_HISTORY_20261023.md). In particular, seven old
@@ -116,7 +125,9 @@ source milestones. Authorized checkpoints are committed and pushed, with remote
 HEAD verified. Original class/TU/flags, data ownership and product/runtime remain
 independent unknowns.
 
-This cleanup freshly replays 11 Stage guards covering 987 bytes/all 36 fields and retains the current
-1868-byte parent. Target identity, executed toolchain smoke, tracking, progress,
-documentation and whitespace checks pass. No full CI or new game compile is
-claimed. See the cleanup receipt for the complete validation scope.
+Latest packet freshly replays 11 Stage guards 987/all 36 in the unchanged canonical
+image after seven actual game compiles/six experimental links. Target identity,
+executed toolchain, Ghidra, tracking, progress, documentation and whitespace pass.
+All 90 neutral native files/4058006 bytes are hash-verified and removed; compact
+inputs/results remain. No full CI, source adoption or exact gain. See the latest
+evidence packet for completed scope; the earlier cleanup receipt stays historical.

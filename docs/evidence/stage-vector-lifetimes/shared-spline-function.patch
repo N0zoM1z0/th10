@@ -1,0 +1,52 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -58,6 +58,7 @@
+ // interpolation/rocking still advance. Signed record sizes are not repaired.
+ int __stdcall StageExecuteScript(StageScriptView *stage)
+ {
++    AnmFloat3View splineInitialTangent, splineFinal, splineFinalTangent;
+     while (stage->instruction->time <= stage->scriptTimer.current)
+     {
+         StageInstructionView *instruction = stage->instruction;
+@@ -140,29 +141,29 @@
+         }
+         case 10:
+         {
+-            AnmFloat3View initialTangent(values[2], values[3], values[4]);
+-            AnmFloat3View final(values[5], values[6], values[7]);
+-            AnmFloat3View finalTangent(values[8], values[9], values[10]);
++            splineInitialTangent = AnmFloat3View(values[2], values[3], values[4]);
++            splineFinal = AnmFloat3View(values[5], values[6], values[7]);
++            splineFinalTangent = AnmFloat3View(values[8], values[9], values[10]);
+             stage->positionInterpolation.duration = integers[0];
+             stage->positionInterpolation.initial = stage->camera.position;
+-            stage->positionInterpolation.initialTangent = initialTangent;
+-            stage->positionInterpolation.final = final;
++            stage->positionInterpolation.initialTangent = splineInitialTangent;
++            stage->positionInterpolation.final = splineFinal;
+             stage->positionInterpolation.mode = 8;
+-            stage->positionInterpolation.finalTangent = finalTangent;
++            stage->positionInterpolation.finalTangent = splineFinalTangent;
+             stage->positionInterpolation.timer.SetCurrent(0);
+             break;
+         }
+         case 11:
+         {
+-            AnmFloat3View initialTangent(values[2], values[3], values[4]);
+-            AnmFloat3View final(values[5], values[6], values[7]);
+-            AnmFloat3View finalTangent(values[8], values[9], values[10]);
++            splineInitialTangent = AnmFloat3View(values[2], values[3], values[4]);
++            splineFinal = AnmFloat3View(values[5], values[6], values[7]);
++            splineFinalTangent = AnmFloat3View(values[8], values[9], values[10]);
+             stage->directionInterpolation.duration = integers[0];
+             stage->directionInterpolation.initial = stage->camera.direction;
+-            stage->directionInterpolation.initialTangent = initialTangent;
+-            stage->directionInterpolation.final = final;
++            stage->directionInterpolation.initialTangent = splineInitialTangent;
++            stage->directionInterpolation.final = splineFinal;
+             stage->directionInterpolation.mode = 8;
+-            stage->directionInterpolation.finalTangent = finalTangent;
++            stage->directionInterpolation.finalTangent = splineFinalTangent;
+             stage->directionInterpolation.timer.SetCurrent(0);
+             break;
+         }

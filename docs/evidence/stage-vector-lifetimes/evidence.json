@@ -1,0 +1,833 @@
+{
+  "date": "2026-10-23",
+  "starting_commit": "fd366f23810d9525b1f2ea9f6accfaed0953b27f",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "six complete Stage dispatcher vector/lifetime/TU controls; no source adoption or exact credit",
+  "trials": [
+    {
+      "label": "shared-spline-loop",
+      "producer_sha256": "fa16705ee72314644fa24f753ff56bf5a44ae86b1f252f85bf27163f4e25c3b3",
+      "source_shape_assertions": [
+        "same three actually used vector storage objects shared only by spline cases10/11",
+        "scope inside the script loop",
+        "all nine input floats still snapshot before state writes; no unused storage or extra initialization"
+      ],
+      "source_sha256": "c6087d8c8efc01cfbc2be915de2d2b163953e5db206611e702efb79aaa5397f0",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/StageScript.cpp",
+          "source_sha256": "c6087d8c8efc01cfbc2be915de2d2b163953e5db206611e702efb79aaa5397f0",
+          "object_sha256": "15b6360761eb90cd64f86e2111d4016d03ca6da43ffb46536a853d94e03ae22e",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-03-AnmManager.ltcg.obj": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "parent_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26"
+    },
+    {
+      "label": "shared-spline-function",
+      "producer_sha256": "fa16705ee72314644fa24f753ff56bf5a44ae86b1f252f85bf27163f4e25c3b3",
+      "source_shape_assertions": [
+        "same three actually used vector storage objects shared only by spline cases10/11",
+        "scope outside the script loop",
+        "all nine input floats still snapshot before state writes; no unused storage or extra initialization"
+      ],
+      "source_sha256": "0d2a1b8a7d7cc605da8e5a9834bbb70756a1f48e9fbc72a95582ca880caf4348",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/StageScript.cpp",
+          "source_sha256": "0d2a1b8a7d7cc605da8e5a9834bbb70756a1f48e9fbc72a95582ca880caf4348",
+          "object_sha256": "c9cc82cac00bec2656e0a56b2c517af9a9bb3931dcad0bafee5f4d202ec42cb4",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-03-AnmManager.ltcg.obj": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "parent_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26"
+    },
+    {
+      "label": "shared-final-all",
+      "producer_sha256": "fa16705ee72314644fa24f753ff56bf5a44ae86b1f252f85bf27163f4e25c3b3",
+      "source_shape_assertions": [
+        "one used final vector shared by linear and spline cases3/5/10/11",
+        "no tangent storage sharing; original read/store order retained"
+      ],
+      "source_sha256": "6fd8a4ec884543eb8f2c63cc689e289873fd2397359fe12ee91d9b73ac14421f",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/StageScript.cpp",
+          "source_sha256": "6fd8a4ec884543eb8f2c63cc689e289873fd2397359fe12ee91d9b73ac14421f",
+          "object_sha256": "80c3557a021ed2f0e191da759b9cc9ce0f68dda4dfad997eeaf03af980bd4d0e",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-03-AnmManager.ltcg.obj": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "parent_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26"
+    },
+    {
+      "label": "named-vm14",
+      "producer_sha256": "fa16705ee72314644fa24f753ff56bf5a44ae86b1f252f85bf27163f4e25c3b3",
+      "source_shape_assertions": [
+        "only opcode14 snapshots its script index once and names the real slot/loaded/VM receiver before the existing call",
+        "no signature, calling convention, flag operation or negative-path operand change"
+      ],
+      "source_sha256": "f6061003cbdbc367e856383659941a5bcee452c6705fbaed9ddfd82a1c31c31c",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/StageScript.cpp",
+          "source_sha256": "f6061003cbdbc367e856383659941a5bcee452c6705fbaed9ddfd82a1c31c31c",
+          "object_sha256": "9ed5675995036f612cd99243a367268e22cb23830d494b2d67a8fc3817d0fa2b",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-03-AnmManager.ltcg.obj": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "parent_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26"
+    },
+    {
+      "label": "initializer-same-tu",
+      "producer_sha256": "05e675718822eea666b01473dd8e9f393788ce321b9fb5b1766e4504b363c59b",
+      "source_shape_assertions": [
+        "only the complete existing InitializeForLoadedScript definition moves from AnmManager.cpp to StageScript.cpp",
+        "body preserved verbatim after newline normalization; all shared declarations and compiler profiles unchanged",
+        "two actual GL/GS compilations and seven fixed game objects; no fake ABI or extra caller"
+      ],
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/StageScript.cpp": "31acfcc8c9cedfc635025d216d926f3cb640e6061302565b61ff3045c07d503b",
+        ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/AnmManager.cpp": "94d61a25b4ce65a009f3c26097ad95d921c06aee56cff1df1e6a0b0307c13f46"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/StageScript.cpp",
+          "source_sha256": "31acfcc8c9cedfc635025d216d926f3cb640e6061302565b61ff3045c07d503b",
+          "object_sha256": "80d68a28cad0ccf416bdbb3a6402bbdf37a18f1bd941141f669cf942cb36cd61",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        },
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/AnmManager.cpp",
+          "source_sha256": "94d61a25b4ce65a009f3c26097ad95d921c06aee56cff1df1e6a0b0307c13f46",
+          "object_sha256": "111a3055ab30a9c52ffd2371b659f6dab2c8f6cfd204e4742648dc228e266d37",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "parent_raw_sha256": "810968c5be245f4b37b08e0f81617432d54889f0b830e08d2a27b9bf4b05d726"
+    },
+    {
+      "label": "component-fill",
+      "producer_sha256": "432e009eb759ba95f2b4bdebb42627db4c3defdf11ed880342a9661dde80c584",
+      "source_shape_assertions": [
+        "only spline10/11 vector initialization changes from three-argument construction to ordered component assignment",
+        "all nine actually used floats still snapshot before any Stage state write",
+        "same existing empty-default Float3 type; no padding, unused storage, helper or ABI change"
+      ],
+      "source_sha256": "c9a4177a14dc05c32bb7356d4194413d8052086c552a08eda7b98a451f1a1759",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/StageScript.cpp",
+        "support_sources": [
+          "src/StageLifecycle.cpp",
+          "src/StageDraw.cpp",
+          "src/Chain.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/FileSystem.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+        "output_dir": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "compiled": [
+        {
+          "source": ".analysis/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/StageScript.cpp",
+          "source_sha256": "c9a4177a14dc05c32bb7356d4194413d8052086c552a08eda7b98a451f1a1759",
+          "object_sha256": "14c09672a7a88eec563a0ef5288482718bcbb3b3b0d10798e80eff7a744e7f74",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ]
+        }
+      ],
+      "reused": {
+        "support-00-StageLifecycle.ltcg.obj": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+        "support-01-StageDraw.ltcg.obj": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+        "support-02-Chain.ltcg.obj": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+        "support-03-AnmManager.ltcg.obj": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+        "support-04-AnmVmCreate.ltcg.obj": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+        "support-05-AnmVmId.ltcg.obj": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+        "support-06-RandomMath.ltcg.obj": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+        "support-07-FileSystem.ltcg.obj": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+        "link-anchors.obj": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+        "link-aliases.rsp": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f"
+      },
+      "guards": {
+        "count": 11,
+        "exact": 11,
+        "bytes": 987,
+        "fields": 36
+      },
+      "case_summary": {
+        "matched": 1443,
+        "comparable": 1619,
+        "gap": 2,
+        "same_sized": 13
+      },
+      "parent_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26"
+    }
+  ],
+  "whole_parent_peer_comparisons": [
+    {
+      "label": "shared-spline-loop",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [],
+      "unresolved": [],
+      "ordinary_differences": [],
+      "equal_after_verified_address_replay": true
+    },
+    {
+      "label": "shared-spline-function",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [],
+      "unresolved": [],
+      "ordinary_differences": [],
+      "equal_after_verified_address_replay": true
+    },
+    {
+      "label": "shared-final-all",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [],
+      "unresolved": [],
+      "ordinary_differences": [],
+      "equal_after_verified_address_replay": true
+    },
+    {
+      "label": "named-vm14",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [],
+      "unresolved": [],
+      "ordinary_differences": [],
+      "equal_after_verified_address_replay": true
+    },
+    {
+      "label": "initializer-same-tu",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "810968c5be245f4b37b08e0f81617432d54889f0b830e08d2a27b9bf4b05d726",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [
+        {
+          "offset": 1452,
+          "type": "REL32",
+          "local_offset": null,
+          "symbols": [
+            "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        },
+        {
+          "offset": 1607,
+          "type": "REL32",
+          "local_offset": null,
+          "symbols": [
+            "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z"
+          ]
+        },
+        {
+          "offset": 1654,
+          "type": "REL32",
+          "local_offset": null,
+          "symbols": [
+            "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z"
+          ]
+        }
+      ],
+      "unresolved": [],
+      "ordinary_differences": [],
+      "equal_after_verified_address_replay": true
+    },
+    {
+      "label": "component-fill",
+      "baseline_size": 1868,
+      "candidate_size": 1868,
+      "baseline_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "candidate_raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+      "scope": "complete native peer comparison; no target exactness authority",
+      "result": "compared",
+      "fields": 36,
+      "replayed_changed_fields": [],
+      "unresolved": [],
+      "ordinary_differences": [],
+      "equal_after_verified_address_replay": true
+    }
+  ],
+  "initializer_same_tu_child_observation": {
+    "scope": "complete native peer preservation only; target callee remains nonexact",
+    "target_size": 202,
+    "native_size": 200,
+    "replayed_changed_fields": [
+      {
+        "offset": 7,
+        "symbols": [
+          "?Initialize@AnmVmView@@QAEXXZ"
+        ],
+        "type": "REL32"
+      },
+      {
+        "offset": 189,
+        "symbols": [
+          "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+        ],
+        "type": "REL32"
+      }
+    ],
+    "equal_after_verified_address_replay": true,
+    "baseline_sha256": "4e04ddeefe0121d136f647b27eaa1964ad5e2753b78a48dcd5433797634ad6ad",
+    "candidate_sha256": "a1f7e6c9a6d58969264e8a1620bed96cdec92fdb0840873761fe1681669b0a84",
+    "target_sha256": "a315bc4a4020d02fa2b151ba92b7ce1e74923a1670beef7afd512a43edcc4266",
+    "baseline_entry_instructions": [
+      "sub esp, 0xc",
+      "push esi",
+      "mov esi, eax",
+      "call 0x40b8d0",
+      "mov dword ptr [esp + 4], 0",
+      "mov ecx, dword ptr [esp + 4]",
+      "lea eax, [edx + 0x340]",
+      "mov dword ptr [eax], ecx",
+      "mov dword ptr [esp + 8], 0",
+      "mov ecx, dword ptr [esp + 8]",
+      "mov dword ptr [eax + 4], ecx",
+      "mov dword ptr [esp + 0xc], 0"
+    ],
+    "target_entry_instructions": [
+      "sub esp, 0xc",
+      "push ebx",
+      "mov edx, esi",
+      "mov ebx, eax",
+      "call 0x401de0",
+      "mov dword ptr [esp + 4], 0",
+      "mov ecx, dword ptr [esp + 4]",
+      "lea eax, [esi + 0x340]",
+      "mov dword ptr [eax], ecx",
+      "mov dword ptr [esp + 8], 0",
+      "mov edx, dword ptr [esp + 8]",
+      "mov dword ptr [eax + 4], edx"
+    ],
+    "caller_transport_observation": "Stage opcode14 still supplies native EDX VM receiver versus target ESI; EAX script index and one loaded-pointer stack argument retained"
+  },
+  "final_canonical": {
+    "parent_bytes": 1868,
+    "raw_sha256": "c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26",
+    "guards": {
+      "count": 11,
+      "exact": 11,
+      "bytes": 987,
+      "fields": 36
+    },
+    "case_summary": {
+      "matched": 1443,
+      "comparable": 1619,
+      "gap": 2,
+      "same_sized": 13
+    }
+  },
+  "execution": {
+    "toolchain": {
+      "session": 91531,
+      "exit_code": 0,
+      "recovery": "initial smoke handle lost in truncated tool output; no live process remained; fresh serial smoke logged and observed exit0"
+    },
+    "ghidra": {
+      "session": 40961,
+      "exit_code": 0,
+      "mode": "readOnly/noanalysis/rollback/maxcpu1/heap768m",
+      "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f"
+    },
+    "native_sessions": [
+      {
+        "label": "shared-spline-loop",
+        "session": 41951,
+        "exit_code": 0
+      },
+      {
+        "label": "shared-spline-function",
+        "session": 99191,
+        "exit_code": 0
+      },
+      {
+        "label": "shared-final-all",
+        "session": 50389,
+        "exit_code": 0
+      },
+      {
+        "label": "named-vm14",
+        "session": 11391,
+        "exit_code": 0
+      },
+      {
+        "label": "initializer-same-tu",
+        "session": 41488,
+        "exit_code": 0
+      },
+      {
+        "label": "component-fill",
+        "session": 15766,
+        "exit_code": 0
+      }
+    ],
+    "game_compilations": 7,
+    "links": 6,
+    "independent_same_candidate_cold_pair": false
+  },
+  "next_route": "A consistent formal-argument-order experiment for the existing VM initializer is untested; preserve method body and every compiled declaration/call, without forcing private registers. Alternatively rotate to an unresolved large owner. Do not repeat these six forms.",
+  "source_profile_recipe_ledger_changes": false,
+  "new_exact_credit": false
+}

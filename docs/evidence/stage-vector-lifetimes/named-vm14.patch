@@ -1,0 +1,27 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -174,14 +174,22 @@
+             g_StageScriptGlobal4923A8 = integers[0];
+             break;
+         case 14:
+-            if (integers[1] >= 0)
+-                stage->scriptVms[integers[0]].InitializeForLoadedScript(stage->anm, integers[1]);
++        {
++            int scriptIndex = integers[1];
++            if (scriptIndex >= 0)
++            {
++                int slot = integers[0];
++                AnmLoadedView *loaded = stage->anm;
++                AnmVmView *vm = &stage->scriptVms[slot];
++                vm->InitializeForLoadedScript(loaded, scriptIndex);
++            }
+             else
+             {
+                 AnmVmView *vm = &stage->scriptVms[integers[0]];
+                 vm->flags35C &= ~1u;
+             }
+             break;
++        }
+         }
+         stage->instruction = reinterpret_cast<StageInstructionView *>(
+             reinterpret_cast<unsigned char *>(stage->instruction) + stage->instruction->byteSize);

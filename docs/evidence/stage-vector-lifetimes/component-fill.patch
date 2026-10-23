@@ -1,0 +1,46 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -140,9 +140,18 @@
+         }
+         case 10:
+         {
+-            AnmFloat3View initialTangent(values[2], values[3], values[4]);
+-            AnmFloat3View final(values[5], values[6], values[7]);
+-            AnmFloat3View finalTangent(values[8], values[9], values[10]);
++            AnmFloat3View initialTangent;
++            initialTangent.x = values[2];
++            initialTangent.y = values[3];
++            initialTangent.z = values[4];
++            AnmFloat3View final;
++            final.x = values[5];
++            final.y = values[6];
++            final.z = values[7];
++            AnmFloat3View finalTangent;
++            finalTangent.x = values[8];
++            finalTangent.y = values[9];
++            finalTangent.z = values[10];
+             stage->positionInterpolation.duration = integers[0];
+             stage->positionInterpolation.initial = stage->camera.position;
+             stage->positionInterpolation.initialTangent = initialTangent;
+@@ -154,9 +163,18 @@
+         }
+         case 11:
+         {
+-            AnmFloat3View initialTangent(values[2], values[3], values[4]);
+-            AnmFloat3View final(values[5], values[6], values[7]);
+-            AnmFloat3View finalTangent(values[8], values[9], values[10]);
++            AnmFloat3View initialTangent;
++            initialTangent.x = values[2];
++            initialTangent.y = values[3];
++            initialTangent.z = values[4];
++            AnmFloat3View final;
++            final.x = values[5];
++            final.y = values[6];
++            final.z = values[7];
++            AnmFloat3View finalTangent;
++            finalTangent.x = values[8];
++            finalTangent.y = values[9];
++            finalTangent.z = values[10];
+             stage->directionInterpolation.duration = integers[0];
+             stage->directionInterpolation.initial = stage->camera.direction;
+             stage->directionInterpolation.initialTangent = initialTangent;

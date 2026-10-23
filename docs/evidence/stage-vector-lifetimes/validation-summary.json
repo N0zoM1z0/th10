@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-23",
+  "starting_commit": "fd366f23810d9525b1f2ea9f6accfaed0953b27f",
+  "scope": "six full Stage dispatcher controls; seven game compiles and six links; no maintained code/profile/recipe/ledger changes",
+  "focused_oracle": {
+    "all_six_images": {
+      "guard_count": 11,
+      "whole_guard_bytes": 987,
+      "guard_fields": 36,
+      "target_parent_bytes": 1868,
+      "all_complete_parents_equal_to_baseline_after_bound_fields": true,
+      "new_exact_credit": false
+    },
+    "final_canonical_replay": "passed 11/987/all36; parent c1984eb7ab1703cc428d6659507d841f3ae7e7ebe04cfa094e8f07bd18685b26"
+  },
+  "preserved_input_groups": {
+    "source_sha256": 108,
+    "frozen_inputs": 373,
+    "baseline_source_sha256": 32,
+    "baseline_artifact_sha256": 19,
+    "unrelated_untracked": 9,
+    "stage_inputs": 21,
+    "stage_canonical_artifacts": 16,
+    "old_stage_artifacts": 18
+  },
+  "all_preserved_pins_verified": true,
+  "native_and_ghidra_jobs": "terminal exit0; no live producer",
+  "patch_validation": "all six git apply --check --ignore-whitespace pass, accommodating maintained CRLF AnmManager source",
+  "cleanup": {
+    "files": 90,
+    "bytes": 4058006,
+    "all_producer_hashes_verified_before_removal": true
+  },
+  "full_ci": {
+    "run": false,
+    "reason": "operator focuses large-owner reconstruction and affected complete checks; no maintained source changes"
+  },
+  "whole_windows_product": "open",
+  "runtime": "not added",
+  "semantic_and_port": "not started",
+  "checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-target.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --execute (logged terminal session91531)",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py --require-target",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/report-reconstruction-status.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/check-doc-hygiene.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "evidence_links_and_six_peer_reports": "verified"
+}

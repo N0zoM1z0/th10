@@ -1,0 +1,46 @@
+--- a/src/StageScript.cpp
++++ b/src/StageScript.cpp
+@@ -63,6 +63,7 @@
+         StageInstructionView *instruction = stage->instruction;
+         int *integers = instruction->args.integers;
+         float *values = instruction->args.reals;
++        AnmFloat3View final;
+         switch (instruction->opcode)
+         {
+         case 0:
+@@ -81,7 +82,7 @@
+             break;
+         case 3:
+         {
+-            AnmFloat3View final(values[2], values[3], values[4]);
++            final = AnmFloat3View(values[2], values[3], values[4]);
+             stage->positionInterpolation.duration = integers[0];
+             stage->positionInterpolation.mode = integers[1];
+             stage->positionInterpolation.initial = stage->camera.position;
+@@ -96,7 +97,7 @@
+             break;
+         case 5:
+         {
+-            AnmFloat3View final(values[2], values[3], values[4]);
++            final = AnmFloat3View(values[2], values[3], values[4]);
+             stage->directionInterpolation.duration = integers[0];
+             stage->directionInterpolation.mode = integers[1];
+             stage->directionInterpolation.initial = stage->camera.direction;
+@@ -141,7 +142,7 @@
+         case 10:
+         {
+             AnmFloat3View initialTangent(values[2], values[3], values[4]);
+-            AnmFloat3View final(values[5], values[6], values[7]);
++            final = AnmFloat3View(values[5], values[6], values[7]);
+             AnmFloat3View finalTangent(values[8], values[9], values[10]);
+             stage->positionInterpolation.duration = integers[0];
+             stage->positionInterpolation.initial = stage->camera.position;
+@@ -155,7 +156,7 @@
+         case 11:
+         {
+             AnmFloat3View initialTangent(values[2], values[3], values[4]);
+-            AnmFloat3View final(values[5], values[6], values[7]);
++            final = AnmFloat3View(values[5], values[6], values[7]);
+             AnmFloat3View finalTangent(values[8], values[9], values[10]);
+             stage->directionInterpolation.duration = integers[0];
+             stage->directionInterpolation.initial = stage->camera.direction;

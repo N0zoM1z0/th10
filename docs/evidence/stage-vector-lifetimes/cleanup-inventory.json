@@ -1,0 +1,549 @@
+{
+  "classification": "generated-ephemeral-output",
+  "producer": "probe.py, probe-initializer.py and probe-components.py in the bound private packet",
+  "disposition": "remove complete neutral candidate native files after terminal jobs, whole-parent peer proof and exact producer-hash verification; sources, patches, reports and producers retained",
+  "files": [
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/source.map",
+      "sha256": "a46360ca72c0e6221e231eb96cf170548e9dc8b4dcb7dcc7d9e8fa52d32c592d",
+      "bytes": 59421,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/support-02-Chain.ltcg.obj",
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+      "bytes": 36793,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/support-05-AnmVmId.ltcg.obj",
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+      "bytes": 13690,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/source.exe",
+      "sha256": "8361ed89f3292b90c58387da4b0c84be1875981ecf0032e5d2226f308ce57475",
+      "bytes": 77824,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/source.ltcg.obj",
+      "sha256": "15b6360761eb90cd64f86e2111d4016d03ca6da43ffb46536a853d94e03ae22e",
+      "bytes": 42670,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/link.log",
+      "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+      "bytes": 104,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/support-06-RandomMath.ltcg.obj",
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+      "bytes": 3991,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/support-01-StageDraw.ltcg.obj",
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+      "bytes": 25868,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+      "bytes": 21748,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/support-07-FileSystem.ltcg.obj",
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+      "bytes": 33430,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/link-aliases.rsp",
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f",
+      "bytes": 10086,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/link-anchors.obj",
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+      "bytes": 6758,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+      "bytes": 10936,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/source.pdb",
+      "sha256": "2faab713c5542807b66c63d10381034fb101d444e702eb58f45132e5e7a6232b",
+      "bytes": 84992,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-loop/support-03-AnmManager.ltcg.obj",
+      "sha256": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+      "bytes": 247900,
+      "trial": "shared-spline-loop"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/source.map",
+      "sha256": "7141e092ef7381a8559f5ad2738ea0c320da4f6d62d64cfae7ae162896019c8c",
+      "bytes": 59421,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/support-02-Chain.ltcg.obj",
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+      "bytes": 36793,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/support-05-AnmVmId.ltcg.obj",
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+      "bytes": 13690,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/source.exe",
+      "sha256": "8af14bda8379cd9aa341b71972e0f7f24d63c580893e3dc19a770367859e1060",
+      "bytes": 77824,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/source.ltcg.obj",
+      "sha256": "c9cc82cac00bec2656e0a56b2c517af9a9bb3931dcad0bafee5f4d202ec42cb4",
+      "bytes": 42686,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "bytes": 167,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/support-06-RandomMath.ltcg.obj",
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+      "bytes": 3991,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/support-01-StageDraw.ltcg.obj",
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+      "bytes": 25868,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+      "bytes": 21748,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/support-07-FileSystem.ltcg.obj",
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+      "bytes": 33430,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/link-aliases.rsp",
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f",
+      "bytes": 10086,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/link-anchors.obj",
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+      "bytes": 6758,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+      "bytes": 10936,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/source.pdb",
+      "sha256": "8b57f27c1a9f490f9ff58e9d02de3d00cb14bc88dfaf72d53191dfaf6d263f4c",
+      "bytes": 84992,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-spline-function/support-03-AnmManager.ltcg.obj",
+      "sha256": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+      "bytes": 247900,
+      "trial": "shared-spline-function"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/source.map",
+      "sha256": "24b4965407501fc649d2a510773484396d119b55c52e8e363a5be06351a1f2ea",
+      "bytes": 59421,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/support-02-Chain.ltcg.obj",
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+      "bytes": 36793,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/support-05-AnmVmId.ltcg.obj",
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+      "bytes": 13690,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/source.exe",
+      "sha256": "2dcc7b0ff09d9fd84b550c65386ae33553e6da8ea20be8b0f38103b8a2d22140",
+      "bytes": 77824,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/source.ltcg.obj",
+      "sha256": "80c3557a021ed2f0e191da759b9cc9ce0f68dda4dfad997eeaf03af980bd4d0e",
+      "bytes": 42602,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/link.log",
+      "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+      "bytes": 104,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/support-06-RandomMath.ltcg.obj",
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+      "bytes": 3991,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/support-01-StageDraw.ltcg.obj",
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+      "bytes": 25868,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+      "bytes": 21748,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/support-07-FileSystem.ltcg.obj",
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+      "bytes": 33430,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/link-aliases.rsp",
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f",
+      "bytes": 10086,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/link-anchors.obj",
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+      "bytes": 6758,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+      "bytes": 10936,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/source.pdb",
+      "sha256": "a5f674baa4da890585d02a22ecd11006c4502c1c1ea76f836c0aa8963eec9a22",
+      "bytes": 84992,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/shared-final-all/support-03-AnmManager.ltcg.obj",
+      "sha256": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+      "bytes": 247900,
+      "trial": "shared-final-all"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/source.map",
+      "sha256": "9b5627e0678fd35fba57f4fd72d7fee1a09108dc5cfc1f9703ef79069f155aa8",
+      "bytes": 59421,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/support-02-Chain.ltcg.obj",
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+      "bytes": 36793,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/support-05-AnmVmId.ltcg.obj",
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+      "bytes": 13690,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/source.exe",
+      "sha256": "5faccbaeeb5efdc20ef439f291193af3497e1c89bcc5108b260a4e9b183855e4",
+      "bytes": 77824,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/source.ltcg.obj",
+      "sha256": "9ed5675995036f612cd99243a367268e22cb23830d494b2d67a8fc3817d0fa2b",
+      "bytes": 42784,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "bytes": 167,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/support-06-RandomMath.ltcg.obj",
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+      "bytes": 3991,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/support-01-StageDraw.ltcg.obj",
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+      "bytes": 25868,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+      "bytes": 21748,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/support-07-FileSystem.ltcg.obj",
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+      "bytes": 33430,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/link-aliases.rsp",
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f",
+      "bytes": 10086,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/link-anchors.obj",
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+      "bytes": 6758,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+      "bytes": 10936,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/source.pdb",
+      "sha256": "337772b9e71b16ba8367b150dc857aa691e0704146345c5713937f1cf5de26a6",
+      "bytes": 84992,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/named-vm14/support-03-AnmManager.ltcg.obj",
+      "sha256": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+      "bytes": 247900,
+      "trial": "named-vm14"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/source.map",
+      "sha256": "3104e0b15c53433f917f288db2b48787259fc33917d0a42c915df3a131093d9b",
+      "bytes": 59406,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/support-02-Chain.ltcg.obj",
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+      "bytes": 36793,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/support-05-AnmVmId.ltcg.obj",
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+      "bytes": 13690,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/source.exe",
+      "sha256": "06d7c5b7a9cc8a8df50627fbbb6552a49e24f1e70a40d395f407a0dacb865838",
+      "bytes": 77824,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/source.ltcg.obj",
+      "sha256": "80d68a28cad0ccf416bdbb3a6402bbdf37a18f1bd941141f669cf942cb36cd61",
+      "bytes": 43442,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "bytes": 167,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/support-06-RandomMath.ltcg.obj",
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+      "bytes": 3991,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/support-01-StageDraw.ltcg.obj",
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+      "bytes": 25868,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+      "bytes": 21748,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/support-07-FileSystem.ltcg.obj",
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+      "bytes": 33430,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/link-aliases.rsp",
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f",
+      "bytes": 10086,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/link-anchors.obj",
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+      "bytes": 6758,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+      "bytes": 10936,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/source.pdb",
+      "sha256": "fdae0d22695ad78dc38234a8643382b80d5ae7ad3219e67289a804f4f1835b6b",
+      "bytes": 84992,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/initializer-same-tu/support-03-AnmManager.ltcg.obj",
+      "sha256": "111a3055ab30a9c52ffd2371b659f6dab2c8f6cfd204e4742648dc228e266d37",
+      "bytes": 247322,
+      "trial": "initializer-same-tu"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/source.map",
+      "sha256": "64788de96f4b710739f3837ef7497d28e374a62aaddf7d8c7a75cef05815bcb9",
+      "bytes": 59421,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/support-02-Chain.ltcg.obj",
+      "sha256": "cc5713fdc336b1125258fd5ecb0a68d21bb0204a865a2e35d30c43b50b07c8af",
+      "bytes": 36793,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/support-05-AnmVmId.ltcg.obj",
+      "sha256": "476db1d8c0bfeb05c310903972f5c6910c62699f0da446f1b614c4aa243ca20e",
+      "bytes": 13690,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/source.exe",
+      "sha256": "325a91d499c3be4a61da95f0f474e0c5c0e595e0af7a46e81ce0422cfb8758c0",
+      "bytes": 77824,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/source.ltcg.obj",
+      "sha256": "14c09672a7a88eec563a0ef5288482718bcbb3b3b0d10798e80eff7a744e7f74",
+      "bytes": 42917,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "bytes": 167,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/support-06-RandomMath.ltcg.obj",
+      "sha256": "4330648c2b207d7633f611bb145028c26b1e5cbf16ef66c65b4ba65760f4ac91",
+      "bytes": 3991,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/support-01-StageDraw.ltcg.obj",
+      "sha256": "b677511f08428b5b3377f6df82bb197f2ceb277eca58db929cd9e1f9dcd13a3b",
+      "bytes": 25868,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/support-00-StageLifecycle.ltcg.obj",
+      "sha256": "8ca53a637d826b09aaeecb2fa1596ce8cb3b70629da77db7eab0124d99b6d717",
+      "bytes": 21748,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/support-07-FileSystem.ltcg.obj",
+      "sha256": "e882e5505fc4f68da44308ab207ab27b3a4ff9caaad08ce4f00314e7b0dc8a74",
+      "bytes": 33430,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/link-aliases.rsp",
+      "sha256": "6cf591767359de336037e8789d0fc86d6d2b98172fdf73c34ffd5c6ccf97c19f",
+      "bytes": 10086,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/link-anchors.obj",
+      "sha256": "bd4ad4260798d18e5e47219609df714d65e0c39a176c8474942bb8152c8d6905",
+      "bytes": 6758,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/support-04-AnmVmCreate.ltcg.obj",
+      "sha256": "2c8c6a0fd9b2ca3139f2615dc95d00dd858f35469a3878f60cd0aa2d2a512c99",
+      "bytes": 10936,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/source.pdb",
+      "sha256": "01a936e2d20fa343c6ac647b38dac9a71ee7ef09762ce4aca02f365909aad457",
+      "bytes": 84992,
+      "trial": "component-fill"
+    },
+    {
+      "path": "build/gpt-6.1-sol/stage-vector-lifetimes-20261023/component-fill/support-03-AnmManager.ltcg.obj",
+      "sha256": "6cf6bc2b378463a1a91191f7be997a00edfb354bf2d2cf4c0ac90a65c485c9a4",
+      "bytes": 247900,
+      "trial": "component-fill"
+    }
+  ],
+  "count": 90,
+  "logical_bytes": 4058006
+}
