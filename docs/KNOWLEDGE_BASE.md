@@ -5832,3 +5832,21 @@ current1380, not target call-site/ownership closure or the VM receiver mismatch.
 VC7.1 linker entry selector WinMain@16 resolves owned public _WinMain@16; requesting
 the latter spelling directly is refused as unresolved before an image. No opaque
 entry anchor is allowed. These diagnostic images remain non-products.
+
+## ECL Run: typed storage controls and incomplete /Op link (2026-10-23)
+
+The [recovered controls](evidence/handoff-ecl-cleanup-20261023/README.md) do not
+improve maintained7020/6993. LENGTH float records emit7036 bytes; two real
+LENGTH/angle/FORMAT record variants emit6940/7056. A stop-thread helper, const
+instruction view and commuted Pop pointer expressions reproduce every former
+replayed parent byte, with189 fields/62 local destinations and171-byte callee
+exact. Spawn argument locals retain7020 but move a call away from its independently
+bound target field at+F5; there is no valid full-parent score. All eight images
+pass nine complete guards1137/all18; none is exact or adopted.
+
+The unchanged-source /Op object compiles with /GL and /GS retained. Its first
+link fails for _atan2/_sin/_cos; a distinct-anchor relink of the same objects
+still fails for __CIatan2. No image or comparison exists, so /Op codegen remains
+unresolved. The prepared FORMAT case-order proposals never execute after that
+failure. Historical artifacts are losslessly archived with verified restoration;
+current source, target identities, exact counts and phase gates do not change.

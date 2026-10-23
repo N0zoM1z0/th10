@@ -39,6 +39,20 @@ Tools, Wine state, the private Ghidra database, original target and game data
 are retained. The nine unrelated D3D files remain untracked and unstaged.
 Unknown-origin artifacts and incomplete probe caches are retained.
 
+The latest ECL campaign is .analysis/gpt-6.1-sol/ecl-typed-values-20261023.
+Its manifest, actual plans/patches, strict parent/guard reports, producers and
+unexecuted format-before-math/format-before-frame sources remain expanded.
+Eight closed images/private source proposals/bulky structural reports and two
+failed-link trees are archived. The maintained EnemyItemDrops carrier remains.
+Thirteen older Player services control images are also archived; maintained-17,
+full-services-17, bound-services-reviewed-15 and prior-chain-canonical are kept.
+
+Repeated src/config/scripts/build subtrees from19 terminal historical workers
+(Bullet1454, ECL baseline, shot-type/replay/difficulty/ANM pairs and Enemy spell
+controls) are archived. Outer manifests, receipts, runners and resource inputs
+remain. Restore the historical subtrees before using those workers; preserving
+an old result does not make it current or passing.
+
 ## Archive index
 
 All sizes below are decimal payload MB. Each receipt binds the archive digest,
@@ -47,6 +61,7 @@ exact historical files; it does not make a stale report current or grant exactne
 
 | Archive group | Receipt | Before → archive |
 | --- | --- | ---: |
+| Closed ECL/Player controls and19 historical worker snapshot families | [Latest handoff cleanup](evidence/handoff-ecl-cleanup-20261023/cleanup-summary.json) |109.04 →1.57 |
 | Player value/copy controls and refused entry partial output | [Value/caller controls](evidence/player-initialization-value-controls/cleanup-summary.json) |29.93 →0.48 |
 | Player draw-owner/table controls,14 images/14 source proposals | [Draw owner](evidence/player-initialization-draw-owner/cleanup-summary.json) |28.14 →0.41 |
 | Player timer-commit controls and rejected intrinsic attempt | [Timer commit](evidence/player-initialization-timer-commit/cleanup-summary.json) |18.85 →0.40 |
@@ -73,6 +88,7 @@ with `tar -tJf` for xz or `tar -tzf` for gzip. Restore only ignored paths; never
 extract old maintained source into src/ or relax source/target pins.
 
 ```sh
+tar -xJf .analysis/handoff-ecl-cleanup-20261023/closed-probes-and-snapshots.tar.xz -C .
 tar -xJf .analysis/player-value-controls-cleanup-20261023/completed-controls.tar.xz -C .
 tar -xJf .analysis/player-draw-owner-cleanup-20261023/completed-controls.tar.xz -C .
 tar -xJf .analysis/player-timer-commit-cleanup-20261023/completed-controls.tar.xz -C .

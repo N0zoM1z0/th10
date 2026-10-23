@@ -1,0 +1,145 @@
+{
+  "scope": "operator-requested documentation and lossless closed-probe compaction; no game-source/header/profile/recipe/ledger changes",
+  "starting_head": "67fa36af075f98fe692c958ecf9e0394552cedde",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "recovery": "target, executed pinned toolchain smoke, target-required tracking/status passed; no new Ghidra analysis",
+  "focused_oracles": {
+    "kind": "retained carriers after checking current source and artifact hashes",
+    "ECL": {
+      "size": 7020,
+      "matching": 6993,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "callee_size": 171,
+      "callee_result": "exact",
+      "guards_exact": 9,
+      "guard_bytes": 1137,
+      "guard_fields": 18
+    },
+    "Player": {
+      "size": 1435,
+      "matching": 1380,
+      "ordinary_differences": 55,
+      "fields": 49,
+      "guards_exact": 8,
+      "guard_bytes": 1753,
+      "guard_fields": 99
+    },
+    "new_game_compilations": 0,
+    "independent_cold_pair": false,
+    "private_replay_sha256": "32bf7f5475988fc00ba6cb9cad4a2febfb3f0735b2df81fbcea8a9215cda71e7"
+  },
+  "cleanup": {
+    "files": 2785,
+    "before_bytes": 109040461,
+    "archive_bytes": 1572544,
+    "reclaimed_bytes": 107467917,
+    "all_member_lengths_hashes_verified_before_removal": true,
+    "protected_files_verified": 22842,
+    "all_protected_unchanged_during_compaction": true,
+    "subsequent_protected_document_changes": [
+      "docs/KNOWLEDGE_BASE.md",
+      "docs/RE_ARTIFACTS.md",
+      "docs/RE_HANDOFF.md"
+    ],
+    "source_header_config_unchanged": true,
+    "progress_unchanged": true,
+    "unrelated_D3D_files_hash_verified": 9,
+    "unrelated_D3D_staged": false,
+    "archive_restore_commands_verified": 14
+  },
+  "checks": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-target.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.209,
+      "log_sha256": "52f48d8a90d0019b41d48bc7d804839aa4f78c8978029937505f9da1f3feb630"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.237,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py",
+        "--require-target"
+      ],
+      "exit_code": 0,
+      "seconds": 0.554,
+      "log_sha256": "344278847dcec53d43546fabbc51f81b910eeb0d4913e733f6d5894d25f5bc02"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.185,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.214,
+      "log_sha256": "d9c37039657cc0a1a10d8f7a205617b4eaf5851f9e7572226287bc7e5e4aa423"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-reconstruction-status.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.224,
+      "log_sha256": "881c82bd1357823b1b3f6dfba8c3214a9c1b5854689adf0981574cf5c9cc8990"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/build-match-unit.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.961,
+      "log_sha256": "3c3d25a8f7ef707beaac4c4d61aa69edb7cdb6d8fb909df373a23b0c1a29a27a"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.211,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.024,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "full_CI": "not run under operator focused-validation preference",
+  "broad_cold_replay": "not run; no affected source/header/interface or new exact claim",
+  "native_product_runtime": "open; no runtime validation",
+  "semantic_port": "not started",
+  "phase": "active-incomplete"
+}

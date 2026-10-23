@@ -1,0 +1,281 @@
+{
+  "starting_head": "67fa36a",
+  "campaign": ".analysis/gpt-6.1-sol/ecl-typed-values-20261023",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "current_source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+  "manifest_sha256": "2275716e58c76c3ee7aec3a295029635422825acafe3613a7c9a516de27b70fd",
+  "canonical_manifest_sha256": "8ef1e6f9232cba78a2e108546adf769d5f84a07f89d039d4c06d08bb6eba7760",
+  "acceptance_authority": "none",
+  "game_source_changes": false,
+  "new_game_object_compilations": 9,
+  "completed_native_images": 8,
+  "controls": [
+    {
+      "label": "length-record-yx",
+      "source_shape": [
+        "actual length-record-yx transformation; all fields/values consumed, maintained definition order and read sequences retained",
+        "prepared-source SHA checked before/after compile; no label-based source transformation"
+      ],
+      "source_sha256": "cac9ac561928b2f4e322534fe1988b01362bd8ec5217e99b96b08524d25e28e6",
+      "patch_sha256": "0dac561b18e2b55de3da0982370a77090b0d2fe2789d72c610d3abe2d946968a",
+      "producer_sha256": "f36e4f701067a9fdaf2c8bb1078f341dec0b564ead513035c50865428b94a184",
+      "image_sha256": "ce462b02c39814fd30c0d24bacc348ebe06763018ee7a8d99d2619e6d62d4229",
+      "native_owner_size": 7036,
+      "native_owner_raw_sha256": "8c704129ca44830b8877b0f3ffb513653ea8e8c5577459ec6faa8d50a72db8c8",
+      "parent_result": "unsupported",
+      "matched_bytes": null,
+      "binding_fields": 0,
+      "local_destinations": 0,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "callee_result": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "native_compiled": [
+        "support-00-EclVm.ltcg.obj"
+      ],
+      "reused_inputs": 11,
+      "report_sha256": "42977085d64d40af86d1e98b5735ed05c0178f3fa924a0ccd268b67fcc46e2fe",
+      "full_parent_report": ".analysis/gpt-6.1-sol/ecl-typed-values-20261023/length-record-yx-run.json"
+    },
+    {
+      "label": "length-record-xy",
+      "source_shape": [
+        "actual length-record-xy transformation; all fields/values consumed, maintained definition order and read sequences retained",
+        "prepared-source SHA checked before/after compile; no label-based source transformation"
+      ],
+      "source_sha256": "2ff3d01352b0fc3f4ebce66ab37385fae22c0e26b3b141cb392e86ccebe93954",
+      "patch_sha256": "c59b30cdbdcdbc57ac5611ee5ad676756ae5d66b3f3530563b793821035e0d80",
+      "producer_sha256": "f36e4f701067a9fdaf2c8bb1078f341dec0b564ead513035c50865428b94a184",
+      "image_sha256": "9e59d2ca225efa15e1f9aab1a47ece7c783fca5ad2db0feb681b68cdda7d875c",
+      "native_owner_size": 7036,
+      "native_owner_raw_sha256": "0594ab87b7d1e8447aef5f7054ad448c7dc017655e1d70e944d894edc7c44fa6",
+      "parent_result": "unsupported",
+      "matched_bytes": null,
+      "binding_fields": 0,
+      "local_destinations": 0,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "callee_result": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "native_compiled": [
+        "support-00-EclVm.ltcg.obj"
+      ],
+      "reused_inputs": 11,
+      "report_sha256": "59571cc4a3e61ffc5b18b5a2d24dd5b7a7954cf67d7ef18f96d969360e3c1dee",
+      "full_parent_report": ".analysis/gpt-6.1-sol/ecl-typed-values-20261023/length-record-xy-run.json"
+    },
+    {
+      "label": "case-records-yx",
+      "source_shape": [
+        "actual case-records-yx transformation; all fields/values consumed, maintained definition order and read sequences retained",
+        "prepared-source SHA checked before/after compile; no label-based source transformation"
+      ],
+      "source_sha256": "466791199bb2ffd591e551c6f7a5bce98d2081c41702d14a9fcb94068b6aa338",
+      "patch_sha256": "d55b4538d46b949abc914810bdb3fd9457d0820de7d9a5dc4ba7a64e735fbeeb",
+      "producer_sha256": "f36e4f701067a9fdaf2c8bb1078f341dec0b564ead513035c50865428b94a184",
+      "image_sha256": "ee7cd85f3b6c303fbe0b2c541ee55703c40e94624328af869fdff83d796b2a78",
+      "native_owner_size": 6940,
+      "native_owner_raw_sha256": "2321f95bfb424e7d3a38687b60cb65859f6f07098bdda7979d1cd92bbe17e7d4",
+      "parent_result": "unsupported",
+      "matched_bytes": null,
+      "binding_fields": 0,
+      "local_destinations": 0,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "callee_result": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "native_compiled": [
+        "support-00-EclVm.ltcg.obj"
+      ],
+      "reused_inputs": 11,
+      "report_sha256": "acdb069fd7156e1708cfaeef9b48e357e9fb4fb1ba76187253ea2a9e0c7313e4",
+      "full_parent_report": ".analysis/gpt-6.1-sol/ecl-typed-values-20261023/case-records-yx-run.json"
+    },
+    {
+      "label": "case-records-xy",
+      "source_shape": [
+        "actual case-records-xy transformation; all fields/values consumed, maintained definition order and read sequences retained",
+        "prepared-source SHA checked before/after compile; no label-based source transformation"
+      ],
+      "source_sha256": "f2b9a2ac8534e39ba6f5a42b1d0359198aac1eca4c54e2769d20a5d5e485f160",
+      "patch_sha256": "72d4e603d92cd2d1225cfb195e2b7a3b7aae30a7624f103de3320d7baa51766d",
+      "producer_sha256": "f36e4f701067a9fdaf2c8bb1078f341dec0b564ead513035c50865428b94a184",
+      "image_sha256": "ac68bfc2a1743991019a96813f3eff98326b8e780cbc63aa6fd77b12b9e8c3f4",
+      "native_owner_size": 7056,
+      "native_owner_raw_sha256": "ea0943ad68a69daae0486fb70d508f9c39e326c79f4adf54088e03bb2ef9e402",
+      "parent_result": "unsupported",
+      "matched_bytes": null,
+      "binding_fields": 0,
+      "local_destinations": 0,
+      "error": "Run must have one complete 7020-byte PDB extent",
+      "callee_result": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "native_compiled": [
+        "support-00-EclVm.ltcg.obj"
+      ],
+      "reused_inputs": 11,
+      "report_sha256": "fb94bb98a9057a2548232aaef28fbde374907e1c75aa33357ff64d18b3f0e734",
+      "full_parent_report": ".analysis/gpt-6.1-sol/ecl-typed-values-20261023/case-records-xy-run.json"
+    },
+    {
+      "label": "stop-thread-helper",
+      "source_shape": [
+        "actual stop-thread-helper transformation; all fields/values consumed, maintained definition order and read sequences retained",
+        "prepared-source SHA checked before/after compile; no label-based source transformation"
+      ],
+      "source_sha256": "696572f497beb416d219e808bbbfaf416bdb5cc4815541cc778343ded67ee08c",
+      "patch_sha256": "031d7b5ff79f0282e2a99a00eb908003de84b308acb2b6f78807807b6a0cdb61",
+      "producer_sha256": "f36e4f701067a9fdaf2c8bb1078f341dec0b564ead513035c50865428b94a184",
+      "image_sha256": "2a6325d6b4187e03f3c9acaaa35d4f713862e6347fac1d4d52aecc33c5c40a13",
+      "native_owner_size": 7020,
+      "native_owner_raw_sha256": "68e0997a3870650257d194a7a6f16a084a909a774b4675ee60bf6026009df1ce",
+      "parent_result": "mismatch",
+      "matched_bytes": 6993,
+      "binding_fields": 189,
+      "local_destinations": 62,
+      "error": null,
+      "callee_result": "exact",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "native_compiled": [
+        "support-00-EclVm.ltcg.obj"
+      ],
+      "reused_inputs": 11,
+      "report_sha256": "3b439e4a6a571d39900bbf296082a84ab087999b526b95bffb5557a62fd68c8f",
+      "full_parent_report": ".analysis/gpt-6.1-sol/ecl-typed-values-20261023/stop-thread-helper-run.json"
+    },
+    {
+      "label": "readonly-current",
+      "source_shape": [
+        "actual readonly-current transformation; all fields/values consumed, maintained definition order and read sequences retained",
+        "prepared-source SHA checked before/after compile; no label-based source transformation"
+      ],
+      "source_sha256": "aeb2e23bfa75057c9e95eba22f2ebccb3dcac6327b8ae6b69744fcc1cdbe4844",
+      "patch_sha256": "f357e7d735bb0e9d374aee70e06f9affcdc8b0a955d5562d13a33dd83901a1bc",
+      "producer_sha256": "f36e4f701067a9fdaf2c8bb1078f341dec0b564ead513035c50865428b94a184",
+      "image_sha256": "1d42e0cb3dadf5f08d56078abf54392eb4b6a9bf6a72786b4b7a2c70f1a5413c",
+      "native_owner_size": 7020,
+      "native_owner_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+      "parent_result": "mismatch",
+      "matched_bytes": 6993,
+      "binding_fields": 189,
+      "local_destinations": 62,
+      "error": null,
+      "callee_result": "exact",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "native_compiled": [
+        "support-00-EclVm.ltcg.obj"
+      ],
+      "reused_inputs": 11,
+      "report_sha256": "d7b9298b5078d88a6bbf7c8d11dc9e03b41ec101bd0254906f9c79f89c41ae6b",
+      "full_parent_report": ".analysis/gpt-6.1-sol/ecl-typed-values-20261023/readonly-current-run.json"
+    },
+    {
+      "label": "pop-pointer-order",
+      "source_shape": [
+        "actual pop-pointer-order transformation; all fields/values consumed, maintained definition order and read sequences retained",
+        "prepared-source SHA checked before/after compile; no label-based source transformation"
+      ],
+      "source_sha256": "1d043a1ea2c75714d2dae28547b9c0caa4c414e85d4f8330483328acb821edb2",
+      "patch_sha256": "eb8f1bdb5f95ac84977b8988623ef3cd883f4c68ce2104ecdfd5307d51f9b031",
+      "producer_sha256": "f36e4f701067a9fdaf2c8bb1078f341dec0b564ead513035c50865428b94a184",
+      "image_sha256": "d2901c650d6071944f13dc6f4cb4e0678803f69deddf979fd8f6a14d02949609",
+      "native_owner_size": 7020,
+      "native_owner_raw_sha256": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121",
+      "parent_result": "mismatch",
+      "matched_bytes": 6993,
+      "binding_fields": 189,
+      "local_destinations": 62,
+      "error": null,
+      "callee_result": "exact",
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "native_compiled": [
+        "support-00-EclVm.ltcg.obj"
+      ],
+      "reused_inputs": 11,
+      "report_sha256": "616eb3c3ea51c9706a3f1599a6269e95ef98699a40680d385a2c9ef741be0ba5",
+      "full_parent_report": ".analysis/gpt-6.1-sol/ecl-typed-values-20261023/pop-pointer-order-run.json"
+    },
+    {
+      "label": "spawn-argument-values",
+      "source_shape": [
+        "actual spawn-argument-values transformation; all fields/values consumed, maintained definition order and read sequences retained",
+        "prepared-source SHA checked before/after compile; no label-based source transformation"
+      ],
+      "source_sha256": "d29ae5c79423cdfbf37cd91179a237cc4c14f269e204118dcaa62f14ec045d5f",
+      "patch_sha256": "5be1eedd782d993a6899d1e95598d92acb4a8cc65ff182736e3875127267fa2c",
+      "producer_sha256": "f36e4f701067a9fdaf2c8bb1078f341dec0b564ead513035c50865428b94a184",
+      "image_sha256": "2123b628eec6821780e3fbf490b9cc2459f4875c91085cfe5acac2b9f2e1429f",
+      "native_owner_size": 7020,
+      "native_owner_raw_sha256": "3a9523a98b4d112e015034c0c14641fcd546515135a43c8e802dbd1c980e7df1",
+      "parent_result": "unsupported",
+      "matched_bytes": null,
+      "binding_fields": 0,
+      "local_destinations": 0,
+      "error": "external field lacks one prebound target: {'offset': 245, 'width': 4, 'type': 'REL32', 'instruction': 'call', 'candidate_target': '0x00406330', 'candidate_symbols': ['?ReadIntValue@EclVmContext@@QAEHIH@Z'], 'instruction_end': 249, 'target_encoded_value': '0x1C65E8D6', 'target_candidate': '0x1CAACB6F'}",
+      "callee_result": null,
+      "guards": {
+        "owners": 9,
+        "bytes": 1137,
+        "fields": 18,
+        "all_exact": true
+      },
+      "native_compiled": [
+        "support-00-EclVm.ltcg.obj"
+      ],
+      "reused_inputs": 11,
+      "report_sha256": "4e9229ff5c35c18aa6c92656a4fba2d6fc4edb373b231f17f9bf1edb0289c60b",
+      "full_parent_report": ".analysis/gpt-6.1-sol/ecl-typed-values-20261023/spawn-argument-values-run.json"
+    }
+  ],
+  "profile_attempt": {
+    "flag": "/Op",
+    "source_changed": false,
+    "compilation": "one successful ECL compile, GL and GS retained",
+    "initial_link": "terminal LNK2001 for _atan2, _sin, _cos; no image",
+    "relink": "reuses same ten game objects; unique regenerated anchors; terminal LNK2001 for __CIatan2; no image",
+    "parent_comparison": "not executed",
+    "guard_comparison": "not executed",
+    "log_sha256": {
+      "float-consistency.log": "b828f3226c19c3506107b4f84a5b280b06c98caae2ecbf8323981371fa71334f",
+      "float-consistency-linked.log": "224b876a172177833e06beaf659eb3d8b760aff1c6c6f40914e6b2e81ca26a51"
+    },
+    "no_abi_substitution": true
+  },
+  "prepared_not_executed": [
+    "format-before-math",
+    "format-before-frame"
+  ],
+  "validation_scope": "The eight historical images compiled ECL once each and reused nine pinned game objects plus two harness inputs; all eight pass nine whole guards 1137 bytes/18 fields. Three strict parents reproduce 6993/7020 with189 fields/62 locals and171-byte callee exact. No independent cold pair or exact acceptance."
+}
