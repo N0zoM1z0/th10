@@ -835,6 +835,16 @@ int PlayerLoadOptionData(Player *player, const char *filename)
     return 0;
 }
 
+static AnmFloat3View AddPlayerPositionExtent(
+    const AnmFloat3View &extent, const AnmFloat3View &position)
+{
+    AnmFloat3View result;
+    result.x = extent.x + position.x;
+    result.y = *static_cast<volatile const float *>(&extent.y) + position.y;
+    result.z = extent.z + position.z;
+    return result;
+}
+
 // Maintained source for the Player initialization owner at
 // 0x004247F0-0x00424D8A. Its sole target caller places the newly allocated
 // Player in EBX immediately before the call. This ordinary source parameter is
@@ -950,7 +960,7 @@ int PlayerInitialize(Player *player)
     *reinterpret_cast<AnmFloat3View *>(&player->derivedMin0) =
         positionValue - extentValue0;
     *reinterpret_cast<AnmFloat3View *>(&player->derivedMax0) =
-        extentValue0 + positionValue;
+        AddPlayerPositionExtent(extentValue0, positionValue);
     *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[0]) =
         positionValue - extentValue1;
     *reinterpret_cast<AnmFloat3View *>(&player->derivedVectors[1]) =

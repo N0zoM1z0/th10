@@ -6,6 +6,9 @@
 It remains nonexact. Headers, layouts, ABI declarations, canonical recipes and
 exact ledgers are unchanged; two candidate-ledger notes are updated.
 
+The [vector-order follow-up](../player-initialization-vector-order/README.md)
+now reaches1359/76. This packet's1355/80 source inputs and commands remain historical.
+
 ## Maintained source and full reproduction
 
 [The patch](maintained.patch) captures the actual registration owner through one

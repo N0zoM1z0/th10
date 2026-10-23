@@ -1,0 +1,18 @@
+diff --git a/src/Player.cpp b/src/Player.cpp
+index 04fbbd4..295dc1d 100644
+--- a/src/Player.cpp
++++ b/src/Player.cpp
+@@ -837,0 +838,10 @@ int PlayerLoadOptionData(Player *player, const char *filename)
++static AnmFloat3View AddPlayerPositionExtent(
++    const AnmFloat3View &extent, const AnmFloat3View &position)
++{
++    AnmFloat3View result;
++    result.x = extent.x + position.x;
++    result.y = *static_cast<volatile const float *>(&extent.y) + position.y;
++    result.z = extent.z + position.z;
++    return result;
++}
++
+@@ -953 +963 @@ int PlayerInitialize(Player *player)
+-        extentValue0 + positionValue;
++        AddPlayerPositionExtent(extentValue0, positionValue);

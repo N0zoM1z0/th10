@@ -1,10 +1,10 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-23 after Player callback-owner capture. Reconstruction remains
+Updated 2026-10-23 after Player vector-value ordering. Reconstruction remains
 **active-incomplete**. Maintained PlayerInitialize keeps1435 bytes and now matches
-1355/leaves80 differences after49 independent address bindings. Headers, layouts,
+1359/leaves76 differences after49 independent address bindings. Headers, layouts,
 ABI declarations, canonical recipes and exact ledgers are unchanged. Checkpoint
-prefix: `gpt-6.1-sol: ...`.
+prefix: `gpt-6-astra-medium: ... ~`.
 
 ## Current state
 
@@ -14,7 +14,7 @@ prefix: `gpt-6.1-sol: ...`.
 | ANM ExecuteScript / target 9964 | 9964 bytes; nonexact; case7541/7995,90/92 target-sized groups,gap2 |
 | Enemy dispatcher / target 14416 | 14336 bytes; frame2C4;181 selectors/108 groups;case3245/11128,45 target-sized groups,gap328 |
 | StageExecuteScript / target 1868 | 1868 bytes; frame8C;nonexact;case1443/1619,13/15 target-sized groups,gap2 |
-| PlayerInitialize / target 1435 | 1435 bytes in current17-input graph;1355 matching/80 differences after all49 independent bindings;nonexact |
+| PlayerInitialize / target 1435 | 1435 bytes in current17-input graph;1359 matching/76 differences after all49 independent bindings;nonexact |
 | Authored / source / exact | 734 functions/273579 bytes;source614/248174;exact409/74716 |
 | Source-present nonexact / absent | 205 /120 authored functions |
 | Overall exact | 1252 functions/141647 bytes;1098 source mappings |
@@ -27,8 +27,10 @@ Large-function exact work remains the priority, without small-function count gai
 
 ## Resume Player's complete initializer
 
-Read the [current owner-capture packet](evidence/player-initialization-owner-capture/README.md)
-and preserve the [complete80-byte residual/all49 fields](evidence/player-initialization-owner-capture/parent-differences.json).
+Read the [current vector-order packet](evidence/player-initialization-vector-order/README.md)
+and preserve the [complete76-byte residual/all49 fields](evidence/player-initialization-vector-order/parent-differences.json).
+The [owner-capture packet](evidence/player-initialization-owner-capture/README.md)
+retains the preceding1355/80 baseline.
 The prior [parameter/type](evidence/player-initialization-parameter-controls/README.md),
 [caller/publication](evidence/player-initialization-caller-controls/README.md),
 [ordering](evidence/player-initialization-ordering/README.md) and
@@ -49,22 +51,31 @@ The loader is source-present, not exact. All49 fields are independently bound;
 no ordinary/local bytes are masked. Do not bind shared-storage members to
 coincident neighboring diagnostic anchors.
 
+The new component-order value construction and one scoped Y-operand observation
+repair four further ordinary bytes without losses, reaching1359/76. The actual
+three-component result is used and the helper inlines inside the complete parent.
+Its original qualifier/source structure is unknown; no helper target is mapped.
+
 Private and freshly compiled maintained Player objects reproduce519 complete
-public PDB owners raw/140370 bytes. Against the prior maintained image, only
-PlayerInitialize changes among those owners. This excludes static/unowned
-fragments and grants no target equality or product/runtime claim. Eight complete
+public PDB owners raw/140370 bytes. The /OPT:NOREF diagnostic also retains an
+unmapped static helper copy; later code shifts40h. Old/new raw bytes change in160
+public owners:159 differences are confined to independently observed link-field
+extents in both images, and only PlayerInitialize has ordinary differences.
+This classification does not bind every semantic destination or prove target-wide
+exactness. Static/unowned fragments and product/runtime remain outside scope. Eight complete
 shared guards pass1753/all99. Maintained reproduction compiles Player once and
 reuses16 pinned unchanged inputs, not an independent whole-graph cold pair.
 
-The current packet records19 complete images/55 new object compilations and17
-full parent comparisons. First-timer member and first-extent value controls
-emit1438/1446 and are rejected without cropping. A draw-manager capture regresses
-the selected source to1207; selector snapshots give1347. Register effects interact;
-do not add independent gains. Original-manager getter, coherent inherited vector
-storage, volatile containing-bitfield storage, first-vector operand commutation
-and G7 on the actual ANM owner are neutral in their measured contexts. The
-allocator's74-byte size in one type control grants no standalone exact credit.
-Prepared/unexecuted variants remain explicitly listed in the packet.
+The current packet records18 complete1435-byte images/18 new object compilations,
+all replayed with49 independent fields and eight full guards. Ordered calc flags
+and an intervening snapshot barrier regress. All five first-timer store-order
+permutations regress, confined to the timer region. Timer-scale identity and
+actual Player G5 profile are whole-parent neutral. Direct ordered-Y constructors
+move the read too early; a real named component-order return fixes its operands.
+Subtraction/POD/timer helpers and an ordinary inline declaration preserve the
+selected1359 bytes and are not adopted as additional changes. The previous
+owner-capture packet retains its19-image/55-object scope, including rejected
+1438/1446-byte controls. Do not add gains from independent experiments.
 
 The private missing-Stage-caller dependency, actual GameManager caller and full
 wrapper-caller source graph produce20/21/27-input old-source controls, all neutral
@@ -80,22 +91,24 @@ image has21 direct child calls with a different owner distribution; counts alone
 do not close callers. Inspect real operands and missing/differently folded owners.
 The VM wrapper remains200/nativeEDX versus202/targetESI; its core273 guard is exact.
 
-Of80 remaining differences,37 precede150,21 lie in150..1FF,11 in200..3FF and11 in
+Of76 remaining differences,37 precede150,21 lie in150..1FF,7 in200..3FF and11 in
 400..59A. Prioritize callback/VM receiver lifetimes, the early timer constant,
-the commuted vector component/scratch-store ordering and selector registers.
+the vector scratch-store ordering and selector registers.
 Earlier neutral controls require a new premise before repetition. Keep every
 owned byte and field; the large parent remains the objective.
 
-Current producers: `.analysis/gpt-6.1-sol/player-stage-caller-20261023`.
+Current producers: `.analysis/gpt-6.1-sol/player-residual-publication-20261023`.
 Use manifest-final.json, common-final.py, probe-maintained.py and bound-parent-final.py.
-Keep complete maintained-17, calc-snapshot-before-owner and the historical
-all-wrapper-callers-27 distribution witness under the corresponding build campaign.
+Keep complete maintained-17 under the new build campaign and selected
+max0-ordered-named-result under the older player-stage-caller build campaign;
+actual paths are recorded in each report. Keep earlier maintained1355,
+calc-snapshot-before-owner and all-wrapper-callers-27 witnesses unchanged.
 
 ```sh
-scripts/repo-python .analysis/gpt-6.1-sol/player-stage-caller-20261023/bound-parent-final.py maintained-17
+scripts/repo-python .analysis/gpt-6.1-sol/player-residual-publication-20261023/bound-parent-final.py maintained-17
 ```
 
-Expected mismatch1355/1435,49 fields. Initial/historical manifests are immutable;
+Expected mismatch1359/1435,49 fields. Initial/historical manifests are immutable;
 restore archived ignored paths before historical consumers, never old source
 into src/ and never weaken pins. Earlier required caches remain retained:
 player-chain-members maintained/highlight-publication17, player-schedule
@@ -129,7 +142,17 @@ maintained17, player-services maintained/full-services and prior-chain-canonical
 
 ## Cleanup, preservation and restoration
 
-The [current cleanup receipt](evidence/player-initialization-owner-capture/cleanup-summary.json)
+The [current cleanup](evidence/player-initialization-vector-order/cleanup-summary.json)
+archives16 closed build trees and15 private source proposals:431 files/32.06MB
+become0.42MB, reclaiming31.64MB. All25803 retained-file hashes are unchanged during
+compaction. Current/selected carriers and all required old caches remain expanded.
+Restore ignored paths before historical consumers:
+
+```sh
+tar -xJf .analysis/player-vector-order-cleanup-20261023/completed-controls.tar.xz -C .
+```
+
+The [preceding owner-capture cleanup](evidence/player-initialization-owner-capture/cleanup-summary.json)
 records16 closed builds and two completed67-file type snapshots:567 files/34.16MB
 become0.88MB, plus one superseded ledger intermediate removed. Reclaimed payload
 is34.39MB; all25532 protected hashes are unchanged during compaction. Current and
@@ -165,8 +188,10 @@ Restore archived controls/snapshots from the repository root when needed:
 tar -xJf .analysis/player-caller-cleanup-20261023/completed-controls.tar.xz -C .
 ```
 
-The [current validation receipt](evidence/player-initialization-owner-capture/validation-summary.json)
+The [current validation receipt](evidence/player-initialization-vector-order/validation-summary.json)
 states the focused source/Oracle scope. The
+[owner-capture receipt](evidence/player-initialization-owner-capture/validation-summary.json)
+retains its earlier scope. The
 [handoff-only receipt](evidence/handoff-ready-20261023/validation-summary.json) and
 [publication receipt](evidence/player-initialization-caller-controls/validation-summary.json)
 retain their earlier build/check scopes. The previous
@@ -219,11 +244,11 @@ subagents. Attest the database before new target analysis. Full mapped text
 401000..465A80 inclusive is 412289 bytes, SHA-256
 `cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f`.
 
-Current source verifies the complete1435-byte Player parent at1355/80 after49
+Current source verifies the complete1435-byte Player parent at1359/76 after49
 independent bindings and reproduces519 private/maintained public owners raw.
 Eight complete shared guards pass1753/all99. Maintained reproduction compiles
-Player and reuses16 pinned inputs; the complete19-image experiment matrix and
-all55 new object compilations are recorded in the current packet. No independent
+Player and reuses16 pinned inputs; the complete18-image experiment matrix and
+all18 new object compilations are recorded in the current packet. No independent
 full-graph pair, new exact acceptance, canonical cold, full CI, product closure
 or runtime validation is claimed. The older07b1be2 checkpoint separately
 cold-replayed the original14-input Chain recipe4/838/all58. Different Stage/caller

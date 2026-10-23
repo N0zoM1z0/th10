@@ -1,0 +1,985 @@
+{
+  "scope": "complete1435-byte owner after49 independent bindings; all remaining ordinary/local differences, no cropping or masking",
+  "matched": 1359,
+  "size": 1435,
+  "field_count": 49,
+  "all_differences": [
+    {
+      "offset": 114,
+      "native": 161,
+      "target": 139
+    },
+    {
+      "offset": 115,
+      "native": 228,
+      "target": 86
+    },
+    {
+      "offset": 116,
+      "native": 27,
+      "target": 4
+    },
+    {
+      "offset": 117,
+      "native": 73,
+      "target": 161
+    },
+    {
+      "offset": 118,
+      "native": 0,
+      "target": 228
+    },
+    {
+      "offset": 119,
+      "native": 139,
+      "target": 27
+    },
+    {
+      "offset": 120,
+      "native": 86,
+      "target": 73
+    },
+    {
+      "offset": 121,
+      "native": 4,
+      "target": 0
+    },
+    {
+      "offset": 156,
+      "native": 240,
+      "target": 13
+    },
+    {
+      "offset": 157,
+      "native": 131,
+      "target": 228
+    },
+    {
+      "offset": 158,
+      "native": 102,
+      "target": 27
+    },
+    {
+      "offset": 159,
+      "native": 4,
+      "target": 73
+    },
+    {
+      "offset": 160,
+      "native": 253,
+      "target": 0
+    },
+    {
+      "offset": 161,
+      "native": 137,
+      "target": 139
+    },
+    {
+      "offset": 162,
+      "native": 94,
+      "target": 240
+    },
+    {
+      "offset": 163,
+      "native": 32,
+      "target": 131
+    },
+    {
+      "offset": 164,
+      "native": 139,
+      "target": 102
+    },
+    {
+      "offset": 165,
+      "native": 13,
+      "target": 4
+    },
+    {
+      "offset": 166,
+      "native": 228,
+      "target": 253
+    },
+    {
+      "offset": 167,
+      "native": 27,
+      "target": 81
+    },
+    {
+      "offset": 168,
+      "native": 73,
+      "target": 191
+    },
+    {
+      "offset": 169,
+      "native": 0,
+      "target": 22
+    },
+    {
+      "offset": 170,
+      "native": 81,
+      "target": 0
+    },
+    {
+      "offset": 171,
+      "native": 191,
+      "target": 0
+    },
+    {
+      "offset": 172,
+      "native": 22,
+      "target": 0
+    },
+    {
+      "offset": 173,
+      "native": 0,
+      "target": 137
+    },
+    {
+      "offset": 174,
+      "native": 0,
+      "target": 94
+    },
+    {
+      "offset": 175,
+      "native": 0,
+      "target": 32
+    },
+    {
+      "offset": 184,
+      "native": 82,
+      "target": 137
+    },
+    {
+      "offset": 185,
+      "native": 141,
+      "target": 115
+    },
+    {
+      "offset": 186,
+      "native": 83,
+      "target": 12
+    },
+    {
+      "offset": 187,
+      "native": 20,
+      "target": 141
+    },
+    {
+      "offset": 188,
+      "native": 51,
+      "target": 115
+    },
+    {
+      "offset": 189,
+      "native": 192,
+      "target": 20
+    },
+    {
+      "offset": 190,
+      "native": 137,
+      "target": 82
+    },
+    {
+      "offset": 191,
+      "native": 115,
+      "target": 51
+    },
+    {
+      "offset": 192,
+      "native": 12,
+      "target": 192
+    },
+    {
+      "offset": 412,
+      "native": 131,
+      "target": 199
+    },
+    {
+      "offset": 413,
+      "native": 206,
+      "target": 131
+    },
+    {
+      "offset": 414,
+      "native": 255,
+      "target": 104
+    },
+    {
+      "offset": 415,
+      "native": 199,
+      "target": 4
+    },
+    {
+      "offset": 416,
+      "native": 131,
+      "target": 0
+    },
+    {
+      "offset": 417,
+      "native": 104,
+      "target": 0
+    },
+    {
+      "offset": 418,
+      "native": 4,
+      "target": 0
+    },
+    {
+      "offset": 420,
+      "native": 0,
+      "target": 128
+    },
+    {
+      "offset": 421,
+      "native": 0,
+      "target": 191
+    },
+    {
+      "offset": 422,
+      "native": 0,
+      "target": 199
+    },
+    {
+      "offset": 423,
+      "native": 128,
+      "target": 131
+    },
+    {
+      "offset": 424,
+      "native": 191,
+      "target": 96
+    },
+    {
+      "offset": 425,
+      "native": 199,
+      "target": 4
+    },
+    {
+      "offset": 426,
+      "native": 131,
+      "target": 0
+    },
+    {
+      "offset": 427,
+      "native": 96,
+      "target": 0
+    },
+    {
+      "offset": 428,
+      "native": 4,
+      "target": 254
+    },
+    {
+      "offset": 429,
+      "native": 0,
+      "target": 255
+    },
+    {
+      "offset": 430,
+      "native": 0,
+      "target": 255
+    },
+    {
+      "offset": 431,
+      "native": 254,
+      "target": 255
+    },
+    {
+      "offset": 432,
+      "native": 255,
+      "target": 131
+    },
+    {
+      "offset": 433,
+      "native": 255,
+      "target": 206
+    },
+    {
+      "offset": 827,
+      "native": 217,
+      "target": 137
+    },
+    {
+      "offset": 828,
+      "native": 92,
+      "target": 120
+    },
+    {
+      "offset": 829,
+      "native": 36,
+      "target": 4
+    },
+    {
+      "offset": 830,
+      "native": 20,
+      "target": 217
+    },
+    {
+      "offset": 831,
+      "native": 137,
+      "target": 92
+    },
+    {
+      "offset": 832,
+      "native": 120,
+      "target": 36
+    },
+    {
+      "offset": 833,
+      "native": 4,
+      "target": 20
+    },
+    {
+      "offset": 1370,
+      "native": 139,
+      "target": 161
+    },
+    {
+      "offset": 1371,
+      "native": 13,
+      "target": 104
+    },
+    {
+      "offset": 1372,
+      "native": 104,
+      "target": 76
+    },
+    {
+      "offset": 1373,
+      "native": 76,
+      "target": 71
+    },
+    {
+      "offset": 1374,
+      "native": 71,
+      "target": 0
+    },
+    {
+      "offset": 1375,
+      "native": 0,
+      "target": 139
+    },
+    {
+      "offset": 1376,
+      "native": 161,
+      "target": 13
+    },
+    {
+      "offset": 1382,
+      "native": 4,
+      "target": 20
+    },
+    {
+      "offset": 1383,
+      "native": 72,
+      "target": 65
+    },
+    {
+      "offset": 1385,
+      "native": 193,
+      "target": 208
+    },
+    {
+      "offset": 1388,
+      "native": 133,
+      "target": 149
+    }
+  ],
+  "linkages": [
+    {
+      "offset": "0x1",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0xE",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_C@_08KNHJMNEM@pl00?4anm?$AA@",
+      "linked_symbol": "??_C@_08KNHJMNEM@pl00?4anm?$AA@",
+      "local": false,
+      "candidate_target": "0x00426660",
+      "target": "0x0046E42C",
+      "addend": 0,
+      "target_encoded_value": "0x0046E42C"
+    },
+    {
+      "offset": "0x15",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_C@_08GGCFBOOJ@pl01?4anm?$AA@",
+      "linked_symbol": "??_C@_08GGCFBOOJ@pl01?4anm?$AA@",
+      "local": false,
+      "candidate_target": "0x00426654",
+      "target": "0x0046E420",
+      "addend": 0,
+      "target_encoded_value": "0x0046E420"
+    },
+    {
+      "offset": "0x1B",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerVmManager@@3PAUPlayerVmManager@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0361",
+      "local": false,
+      "candidate_target": "0x004275DC",
+      "target": "0x00491C10",
+      "addend": 0,
+      "target_encoded_value": "0x00491C10"
+    },
+    {
+      "offset": "0x26",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z",
+      "linked_symbol": "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z",
+      "local": false,
+      "candidate_target": "0x00405310",
+      "target": "0x00447280",
+      "addend": 0,
+      "target_encoded_value": "0x00022A66"
+    },
+    {
+      "offset": "0x32",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_C@_0DD@KDINFMGL@?$IO?$KJ?$IL?$EA?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+      "linked_symbol": "??_C@_0DD@KDINFMGL@?$IO?$KJ?$IL?$EA?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+      "local": false,
+      "candidate_target": "0x00426620",
+      "target": "0x0046E3EC",
+      "addend": 0,
+      "target_encoded_value": "0x0046E3EC"
+    },
+    {
+      "offset": "0x37",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameErrorContext@th10@@3UGameErrorContext@1@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0243",
+      "local": false,
+      "candidate_target": "0x00427404",
+      "target": "0x00474F70",
+      "addend": 0,
+      "target_encoded_value": "0x00474F70"
+    },
+    {
+      "offset": "0x3C",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+      "linked_symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+      "local": false,
+      "candidate_target": "0x004243B0",
+      "target": "0x0044B810",
+      "addend": 0,
+      "target_encoded_value": "0x00026FE0"
+    },
+    {
+      "offset": "0x4C",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerSharedOptionData@@3PAUPlayerOptionDataView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0351",
+      "local": false,
+      "candidate_target": "0x004275B4",
+      "target": "0x00491BF0",
+      "addend": 0,
+      "target_encoded_value": "0x00491BF0"
+    },
+    {
+      "offset": "0x61",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerSharedOptionData@@3PAUPlayerOptionDataView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0351",
+      "local": false,
+      "candidate_target": "0x004275B4",
+      "target": "0x00491BF0",
+      "addend": 0,
+      "target_encoded_value": "0x00491BF0"
+    },
+    {
+      "offset": "0x67",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?PlayerUpdateCallback@@YIHPAUPlayer@@@Z",
+      "linked_symbol": "?PlayerUpdateCallback@@YIHPAUPlayer@@@Z",
+      "local": false,
+      "candidate_target": "0x0041AC00",
+      "target": "0x00426500",
+      "addend": 0,
+      "target_encoded_value": "0x00426500"
+    },
+    {
+      "offset": "0x6C",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+      "linked_symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+      "local": false,
+      "candidate_target": "0x0040D570",
+      "target": "0x00449ED0",
+      "addend": 0,
+      "target_encoded_value": "0x00025670"
+    },
+    {
+      "offset": "0x73",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerCallbackManager@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0331",
+      "local": false,
+      "candidate_target": "0x00427564",
+      "target": "0x00491BE4",
+      "addend": 0,
+      "target_encoded_value": "0x00491BE4"
+    },
+    {
+      "offset": "0x8A",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+      "linked_symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+      "local": false,
+      "candidate_target": "0x0040D5C0",
+      "target": "0x00449AE0",
+      "addend": 0,
+      "target_encoded_value": "0x00025262"
+    },
+    {
+      "offset": "0x8F",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?PlayerDrawCallback@@YIHPAUPlayer@@@Z",
+      "linked_symbol": "?PlayerDrawCallback@@YIHPAUPlayer@@@Z",
+      "local": false,
+      "candidate_target": "0x0041AC10",
+      "target": "0x00426510",
+      "addend": 0,
+      "target_encoded_value": "0x00426510"
+    },
+    {
+      "offset": "0x97",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+      "linked_symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+      "local": false,
+      "candidate_target": "0x0040D570",
+      "target": "0x00449ED0",
+      "addend": 0,
+      "target_encoded_value": "0x00025645"
+    },
+    {
+      "offset": "0xA6",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerCallbackManager@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0331",
+      "local": false,
+      "candidate_target": "0x00427564",
+      "target": "0x00491BE4",
+      "addend": 0,
+      "target_encoded_value": "0x00491BE4"
+    },
+    {
+      "offset": "0xB1",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+      "linked_symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+      "local": false,
+      "candidate_target": "0x0040D650",
+      "target": "0x00449B70",
+      "addend": 0,
+      "target_encoded_value": "0x000252CB"
+    },
+    {
+      "offset": "0xC2",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+      "linked_symbol": "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z",
+      "local": false,
+      "candidate_target": "0x004068C0",
+      "target": "0x00404F30",
+      "addend": 0,
+      "target_encoded_value": "0xFFFE067A"
+    },
+    {
+      "offset": "0xF1",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42c80000",
+      "linked_symbol": "__real@42c80000",
+      "local": false,
+      "candidate_target": "0x004267EC",
+      "target": "0x00470B44",
+      "addend": 0,
+      "target_encoded_value": "0x00470B44"
+    },
+    {
+      "offset": "0xF6",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__ftol2",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0409",
+      "local": false,
+      "candidate_target": "0x0042769C",
+      "target": "0x00463B2C",
+      "addend": 0,
+      "target_encoded_value": "0x0003F242"
+    },
+    {
+      "offset": "0x105",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42c80000",
+      "linked_symbol": "__real@42c80000",
+      "local": false,
+      "candidate_target": "0x004267EC",
+      "target": "0x00470B44",
+      "addend": 0,
+      "target_encoded_value": "0x00470B44"
+    },
+    {
+      "offset": "0x10A",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__ftol2",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0409",
+      "local": false,
+      "candidate_target": "0x0042769C",
+      "target": "0x00463B2C",
+      "addend": 0,
+      "target_encoded_value": "0x0003F22E"
+    },
+    {
+      "offset": "0x119",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42c80000",
+      "linked_symbol": "__real@42c80000",
+      "local": false,
+      "candidate_target": "0x004267EC",
+      "target": "0x00470B44",
+      "addend": 0,
+      "target_encoded_value": "0x00470B44"
+    },
+    {
+      "offset": "0x11E",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__ftol2",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0409",
+      "local": false,
+      "candidate_target": "0x0042769C",
+      "target": "0x00463B2C",
+      "addend": 0,
+      "target_encoded_value": "0x0003F21A"
+    },
+    {
+      "offset": "0x12D",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42c80000",
+      "linked_symbol": "__real@42c80000",
+      "local": false,
+      "candidate_target": "0x004267EC",
+      "target": "0x00470B44",
+      "addend": 0,
+      "target_encoded_value": "0x00470B44"
+    },
+    {
+      "offset": "0x132",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "__ftol2",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0409",
+      "local": false,
+      "candidate_target": "0x0042769C",
+      "target": "0x00463B2C",
+      "addend": 0,
+      "target_encoded_value": "0x0003F206"
+    },
+    {
+      "offset": "0x175",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerTimerScale@@3MA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0358",
+      "local": false,
+      "candidate_target": "0x004275D0",
+      "target": "0x00476F78",
+      "addend": 0,
+      "target_encoded_value": "0x00476F78"
+    },
+    {
+      "offset": "0x1BB",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x1C2",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerOptionValue04ByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0345",
+      "local": false,
+      "candidate_target": "0x0042759C",
+      "target": "0x00476FB8",
+      "addend": 0,
+      "target_encoded_value": "0x00476FB8"
+    },
+    {
+      "offset": "0x1D1",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x1D8",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerOptionValue0CByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0347",
+      "local": false,
+      "candidate_target": "0x004275A4",
+      "target": "0x00476FB0",
+      "addend": 0,
+      "target_encoded_value": "0x00476FB0"
+    },
+    {
+      "offset": "0x1E7",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x1EE",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerOptionValue08ByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0346",
+      "local": false,
+      "candidate_target": "0x004275A0",
+      "target": "0x00476FA0",
+      "addend": 0,
+      "target_encoded_value": "0x00476FA0"
+    },
+    {
+      "offset": "0x20B",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f000000",
+      "linked_symbol": "__real@3f000000",
+      "local": false,
+      "candidate_target": "0x00426784",
+      "target": "0x00470B0C",
+      "addend": 0,
+      "target_encoded_value": "0x00470B0C"
+    },
+    {
+      "offset": "0x223",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x22A",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerOptionValue0CByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0347",
+      "local": false,
+      "candidate_target": "0x004275A4",
+      "target": "0x00476FB0",
+      "addend": 0,
+      "target_encoded_value": "0x00476FB0"
+    },
+    {
+      "offset": "0x236",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f000000",
+      "linked_symbol": "__real@3f000000",
+      "local": false,
+      "candidate_target": "0x00426784",
+      "target": "0x00470B0C",
+      "addend": 0,
+      "target_encoded_value": "0x00470B0C"
+    },
+    {
+      "offset": "0x248",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x24F",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerExtent2ByCharacter@@3PAMA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0337",
+      "local": false,
+      "candidate_target": "0x0042757C",
+      "target": "0x00476FA8",
+      "addend": 0,
+      "target_encoded_value": "0x00476FA8"
+    },
+    {
+      "offset": "0x25B",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f000000",
+      "linked_symbol": "__real@3f000000",
+      "local": false,
+      "candidate_target": "0x00426784",
+      "target": "0x00470B0C",
+      "addend": 0,
+      "target_encoded_value": "0x00470B0C"
+    },
+    {
+      "offset": "0x54E",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z",
+      "linked_symbol": "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z",
+      "local": false,
+      "candidate_target": "0x0041ADB0",
+      "target": "0x00426F70",
+      "addend": 0,
+      "target_encoded_value": "0x0000222E"
+    },
+    {
+      "offset": "0x55C",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427444",
+      "target": "0x00474C40",
+      "addend": 40,
+      "target_encoded_value": "0x00474C68"
+    },
+    {
+      "offset": "0x561",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0249",
+      "local": false,
+      "candidate_target": "0x00427448",
+      "target": "0x00474C40",
+      "addend": 44,
+      "target_encoded_value": "0x00474C6C"
+    },
+    {
+      "offset": "0x56D",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_PlayerShotDataFilenames@@3PAPBDA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0353",
+      "local": false,
+      "candidate_target": "0x004275BC",
+      "target": "0x00476FC0",
+      "addend": 0,
+      "target_encoded_value": "0x00476FC0"
+    },
+    {
+      "offset": "0x574",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?PlayerLoadOptionData@@YAHPAUPlayer@@PBD@Z",
+      "linked_symbol": "?PlayerLoadOptionData@@YAHPAUPlayer@@PBD@Z",
+      "local": false,
+      "candidate_target": "0x00418C10",
+      "target": "0x00426520",
+      "addend": 0,
+      "target_encoded_value": "0x000017B8"
+    },
+    {
+      "offset": "0x581",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_C@_0DD@KDINFMGL@?$IO?$KJ?$IL?$EA?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+      "linked_symbol": "??_C@_0DD@KDINFMGL@?$IO?$KJ?$IL?$EA?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+      "local": false,
+      "candidate_target": "0x00426620",
+      "target": "0x0046E3EC",
+      "addend": 0,
+      "target_encoded_value": "0x0046E3EC"
+    },
+    {
+      "offset": "0x586",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameErrorContext@th10@@3UGameErrorContext@1@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0243",
+      "local": false,
+      "candidate_target": "0x00427404",
+      "target": "0x00474F70",
+      "addend": 0,
+      "target_encoded_value": "0x00474F70"
+    },
+    {
+      "offset": "0x58B",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+      "linked_symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+      "local": false,
+      "candidate_target": "0x004243B0",
+      "target": "0x0044B810",
+      "addend": 0,
+      "target_encoded_value": "0x00026A91"
+    }
+  ],
+  "buckets": {
+    "below150": 37,
+    "150..1ff": 21,
+    "200..3ff": 7,
+    "400..59a": 11
+  },
+  "bound_report_sha256": "fe9ea6879e0727d44a5c1d0d16ae77d00cd3abe1f954b00f9ac6d029fcc2d603"
+}

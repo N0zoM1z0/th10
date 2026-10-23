@@ -5720,3 +5720,32 @@ two completed full type snapshots are archived with per-member length/hash
 verification; current/selected graphs, canonical caches, target, databases,
 toolchains and all nine unrelated D3D files remain retained. Historical source
 pins are immutable. Exact counts remain409/74716 authored and1252/141647 overall.
+
+## Player vector-value ordering and native address movement (2026-10-23)
+
+The [vector-order packet](evidence/player-initialization-vector-order/README.md)
+recovers four additional ordinary bytes in the complete1435-byte initializer:
+1359 matching/76 different after all49 independent bindings. An ordinary helper
+returns the actual three-component sum in component order with a scoped Y read;
+automatic inlining matches extent-Y then position-Y operands. No return is fake,
+no field is unused and no source padding or private ABI is imposed. Original
+qualifier/helper provenance stays unknown; the helper grants no target credit.
+
+All18 complete native images/18 object compilations retain1435/all49 and pass
+eight full shared guards1753/all99. Five timer store permutations all regress in
+the timer region; ordered calc observations and snapshot barriers regress.
+Timer-scale identity and actual G5 profile are whole-parent neutral. Direct
+constructors hoist the Y read early; component-order return repairs four bytes.
+Other real-return/POD/timer/inline forms are equal to the selected1359 result.
+
+All519 unique complete public PDB owners/140370 bytes reproduce raw between
+private and maintained builds. Against the old image,160 public owners have raw
+changes because the non-product /OPT:NOREF image retains an unmapped helper and
+later code moves40h. For159 owners, changed bytes lie only in PE DIR32/external
+REL32 extents present in BOTH images; only PlayerInitialize has ordinary changes.
+This classification is not semantic binding of every destination, static/unowned
+coverage, target-wide exactness or product/runtime evidence. Do not preserve a
+false stronger raw-equality assertion. Prefix37/timer21/vector7/tail11 bytes remain.
+Closed controls/source proposals are hash-verified in a lossless archive; current
+carriers, canonical caches, tools, target, database and unrelated D3D files remain.
+No exact count, native product/runtime, semantic or portability gate changes.
