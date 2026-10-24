@@ -1099,3 +1099,4 @@ ArchiveOrDiskPathView::GetSize,0x004358E0,function
 PlayerLoadOptionData,0x00426520,function
 MainClearPresentTwice,0x0043BC40,function
 MainSetScreenColor,0x0043BCD0,function
+GameErrorContext::Flush,0x00438950,function

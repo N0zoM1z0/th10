@@ -1,0 +1,53 @@
+{
+  "scope": "WinMain logging checkpoint; full WinMain remains nonexact",
+  "source_sha256": {
+    "src/Main.cpp": "1cf12840976adf45f6a0bdc81b0cfa170ad6472efdbdafaf458a98b088f095ff",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/GameErrorContext.hpp": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37"
+  },
+  "new_owner": {
+    "address": "0x00438950",
+    "size": 79,
+    "canonical_unit": "game-error-flush",
+    "fields": 6,
+    "exact": true,
+    "boundary_origin_review_before_codegen": true
+  },
+  "authored_denominator_delta": 79,
+  "authored_exact_numerator_delta": 79,
+  "authored_total_bytes": 273658,
+  "authored_exact_bytes": 75038,
+  "authored_exact_functions": 412,
+  "source_authored_owners": 617,
+  "ci": {
+    "stages": 112,
+    "exit": 0,
+    "finished_utc": "2026-10-24T19:55:46Z",
+    "inputs_preserved": true,
+    "log_sha256": "3d779f149a3fcb81cdee7abbedd679ffd1741890ff00567ea444c0b7b7b2acbf",
+    "input_freeze_sha256": "6e21593a90928dfdf0a225c7809da0edf89c6b5b85321641383639b515bd6192"
+  },
+  "fresh_canonical_guards": {
+    "same_ten_TU_owners": 6,
+    "same_ten_TU_bytes": 1436,
+    "same_ten_TU_fields": 69,
+    "old_Log_recipe": "201/all12 exact",
+    "old_Fatal_recipe": "201/all11 exact",
+    "old_color_recipe": "108/all11 and135/all8 exact"
+  },
+  "WinMain": {
+    "candidate_extent": 1405,
+    "target_extent": 1389,
+    "exact": false
+  },
+  "separate_global_boundary_check": {
+    "exit": 1,
+    "preexisting_manual_vs_automatic_divergence": true,
+    "prior_address_extent_changes": 0,
+    "prior_state_differences": 48,
+    "prior_confidence_differences": 106,
+    "old_manual_evidence_not_overwritten": true
+  },
+  "runtime_product_and_shared_global_closure": false,
+  "post_ci_edits": "Outcome documentation only; separate hygiene/link/whitespace checks"
+}

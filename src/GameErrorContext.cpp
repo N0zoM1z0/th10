@@ -1,4 +1,5 @@
 #include "GameErrorContext.hpp"
+#include "FileSystem.hpp"
 // Natural C++ candidate adapted from th10-decomphelp-forN0/src/GameErrorContext.cpp.
 // The target-bound Log and Fatal bodies are retained here only after direct
 // IDA review and canonical VC7.1 replay. Fatal uses a natural same-TU entry
@@ -68,6 +69,18 @@ char * __fastcall GameErrorContext::Fatal(char *fmt, ...)
     LeaveCriticalSection(&g_CriticalSections[3]);
     g_LogLockDepth--;
     return fmt;
+}
+
+// Reconstructed context-based shutdown operation; original method name/TU unknown.
+void GameErrorContext::Flush()
+{
+    if (m_BufferEnd != m_Buffer)
+    {
+        Log("---------------------------------------------------------- \r\n");
+        if (m_Fatal != 0)
+            MessageBoxA(NULL, m_Buffer, "log", MB_ICONERROR);
+        FileSystem::WriteFile("./log.txt", m_Buffer, strlen(m_Buffer));
+    }
 }
 
 // Diagnostic-only natural entry context for the target's private Fatal

@@ -3,15 +3,21 @@
 Updated 2026-10-24 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
-Committed source checkpoints: MIDI inline-clock recovery **45c16aa** and
-Options WORD-consumer recovery **1e35737**, and five-factor D3D **6b3b5e2**.
-This checkpoint appends the real 135-byte helper and 108-byte
-wrapper. Both are now canonically exact: helper 135/all 8, wrapper 108/all 11.
-The fresh wrapper cold build passed at 18:15:52 UTC with complete same-image
-helper proof; this batch adds 243 authored exact bytes and two source owners.
-D3D inlines the wrapper and remains 1238/1159, nonexact. New-source ten-TU
-regression passed at 18:11:20 UTC. All 112 full-CI stages passed at 18:28:40
-UTC against this source/tool revision, with frozen inputs preserved.
+Committed source checkpoints: MIDI inline-clock recovery **45c16aa**,
+Options WORD-consumer recovery **1e35737**, five-factor D3D **6b3b5e2**, and
+real D3D callees **a454afc**. This checkpoint adds
+[WinMain logging recovery](evidence/winmain-logging-20261024/README.md).
+Three separately measured models restore two real Log calls, restart buffer
+stores and a natural Flush member. WinMain remains 1405/1389, nonexact.
+Flush was independently admitted as a complete authored owner before exact
+credit, then freshly canonical-passed **79 bytes / all 6 fields** at 19:37:59 UTC.
+This batch adds 79 exact bytes, 79 reviewed authored bytes and one source owner.
+The same fresh ten-TU image preserves six canonical guards, 1436/all 69.
+The old Log and Fatal canonical recipes cold-passed 201/all 12 and 201/all 11;
+the original three-TU color recipe preserved wrapper108/all 11 and helper135/all 8.
+All 112 CI stages passed for this revision at 19:55:46 UTC, exit 0, with frozen
+inputs preserved. The separate global automatic boundary check still fails
+on pre-existing manual-versus-automatic divergence, as detailed below.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
@@ -20,9 +26,10 @@ directions belong to predecessor sessions.
 The new method changes selection and experiment order, not acceptance rules.
 MIDI and Options have completed bounded source experiments and are parked with
 receipts below; neither added a whole-owner exact match or source-present owner.
-Real callee recovery adds **243 new whole-owner exact bytes** across
-MainClearPresentTwice and MainSetScreenColor, plus two source-present owners.
-InitD3DRendering remains nonexact, with no runtime/shared-global closure.
+The prior D3D callee checkpoint added 243 whole-owner exact bytes across
+MainClearPresentTwice and MainSetScreenColor. Current logging recovery adds
+**79 new whole-owner exact bytes** for Flush only, not its WinMain caller.
+InitD3DRendering and WinMain remain nonexact, with no runtime/shared-global closure.
 All experiments in the preceding ANM 15-control panel are terminal.
 
 ## Maintained state
@@ -39,16 +46,27 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | InitD3DRendering / target 1159 | Current candidate 1238 bytes; wrapper inlined, no direct wrapper call; nonexact |
 | MainClearPresentTwice / target 135 | Fresh canonical exact 135/all 8; also replayed in the wrapper's same fresh image |
 | MainSetScreenColor / target 108 | Fresh canonical exact 108/all 11 with recursive same-image helper 135/all 8 proof |
-| Authored / source / authored exact | 734 functions / 273579 bytes; source 616 / 248417; exact 411 / 74959 |
+| WinMain / target 1389 | 1405-byte candidate after three logging models; naturally inlined Flush; nonexact |
+| GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
+| Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
 | Authored source-present nonexact / absent | 205 / 118 functions |
-| Overall exact / mappings | 1254 functions / 141890 bytes; 1100 mappings |
+| Overall exact / mappings | 1255 functions / 141969 bytes; 1101 mappings |
 | Windows i386 product / runtime | Open; semantic reconstruction and portability not started |
 
-[Live progress](PROGRESS.md): 1776 reviewed, 518 excluded, 524 indeterminate origins.
-Both complete real callees receive exact-ledger credit only after their fresh
-canonical replays; both receive source mappings. Progress and SVG reflect this,
-with no boundary/origin, profile or phase-gate promotion. Ordinary equal-byte
-counts and diagnostic equality are not canonical exact credit.
+[Live progress](PROGRESS.md): 1777 candidates and reviewed boundaries,
+518 excluded and 524 indeterminate origins. The focused Flush admission adds
+one authored boundary/origin and source mapping; its 79 exact bytes were credited
+only after fresh canonical replay. All prior ledger rows were byte-preserved.
+Progress and SVG reflect the new numerator and denominator separately. No
+profile, product/runtime or phase-gate promotion follows.
+
+Fresh Ghidra architecture export passed, but the separate
+`report-boundary-inventory.py --check-ledger` failed on pre-existing
+manual-versus-automatic divergence across **48 states, 106 confidences and
+evidence text**, with **zero address/extent changes**. This is neither a passed
+check nor a text-only difference. Preserve prior manual evidence; focused
+single-owner acceptance does not resolve that global automatic-check failure.
+Receipts remain under `.analysis/gpt-dots/error-flush-boundary-review-20261024/`.
 
 ## Next bounded work
 
@@ -81,19 +99,31 @@ the controller are preserved. UpdateOptions remains3276/3188 with structural
 and binding gaps. The two fewer static FindVm calls are branch factoring, not
 lost runtime work. Park unsupported layout/adapter spelling panels.
 
-Current work is [real D3D callee recovery](evidence/d3d-real-callees-20261024/README.md).
-The fresh three-TU graph-only baseline preserved thirteen prior exact guards;
-the implementation now independently matches helper 135/all 8, wrapper
-108/all 11 and real Flush 133/all 4. Both new bodies now have fresh canonical
-acceptance. The applied strict `static_callee_unit` extension proves the helper
-recursively in the same artifact, with cycle/identity/extent/field checks and
-unchanged legacy zero-field behavior; its maintained suite passes 110 tests.
-D3D inlines the wrapper and remains 1238/1159, with no direct wrapper call.
-The new-source ten-TU six-owner regression passed 1436/all 69 at 18:11:20 UTC.
-All 112 CI stages pass. Tooling/tests and callees/evidence/progress are separate
-local checkpoints. Continue only with a new evidence-backed parent-boundary
-model; do not blindly suppress inlining globally. No runtime/shared-global
-closure or parent exactness follows from these accepted standalone bodies.
+The prior [real D3D callee checkpoint](evidence/d3d-real-callees-20261024/README.md)
+accepted helper 135/all 8 and wrapper 108/all 11 using strict same-artifact
+recursive callee proof, with unchanged legacy zero-field behavior. Its maintained
+suite passes 110 tests and its historical full CI passed all 112 stages. D3D
+still inlines the wrapper and remains 1238/1159, with no direct wrapper call.
+Reopen only with a new evidence-backed boundary model, not global noinline controls.
+
+Current [WinMain logging evidence](evidence/winmain-logging-20261024/README.md)
+records three separate full-owner measurements: two real Log calls yield 1327
+bytes; restart BufferEnd/first-byte stores yield 1343; the natural Flush member
+yields 1405. All are nonexact against 1389; these are extents, not mismatch counts.
+The reset trial's original post-build audit exited 1 and is preserved. A separate
+same-image supplemental CFG proof establishes BL = 0 at the byte store; it does
+not rewrite that failed audit. All trials preserve eight guards 1679/all 88 and
+Log/Fatal 402/all 23; the last also preserves WriteFile 218/all 20 and literal
+payloads. Flush boundary/origin was accepted independently before compilation,
+then admitted before its fresh canonical 79/all 6 replay and exact credit.
+The same fresh canonical ten-TU image preserves six guards 1436/all 69.
+Log/Fatal and the original color canonical recipes have now cold-passed;
+the new full CI passed all 112 stages at 19:55:46 UTC, with inputs preserved.
+Only CI-result documentation changed afterward and was checked separately.
+See the [validation summary](evidence/winmain-logging-20261024/validation-summary.json).
+Original class/method/TU and runtime/shared-
+global identity remain unproven. Device null recheck after Reset, instance
+publication timing and allocation capture/final-null-store models remain untried.
 Ending remains queued: its retained source matches its receipt, but 20/52
 support/header inputs drifted and prior aggregate controls were neutral. Do not
 tune against that stale graph or start another unsupported allocation panel.

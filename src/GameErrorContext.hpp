@@ -11,6 +11,7 @@ struct GameErrorContext
 
     char * __fastcall Log(char *fmt, ...);
     char * __fastcall Fatal(char *fmt, ...);
+    void Flush();
 };
 
 extern GameErrorContext g_GameErrorContext;

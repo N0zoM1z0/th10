@@ -329,7 +329,7 @@ int WINAPI WinMain(
 
     for (i = 0; i < 7; ++i)
         InitializeCriticalSection(&g_MainSupervisorView.criticalSections[i]);
-    MainLog(g_MainStartupLog);
+    th10::g_GameErrorContext.Log(const_cast<char *>(g_MainStartupLog));
 
     if (GameWindowView::CheckForRunningGameInstance() == MAIN_RENDER_ERROR)
         goto stop;
@@ -467,8 +467,10 @@ stop:
 
     if (renderResult == MAIN_RENDER_RESTART)
     {
-        MainResetLog();
-        MainLog(g_MainRestartLog);
+        th10::g_GameErrorContext.m_BufferEnd =
+            th10::g_GameErrorContext.m_Buffer;
+        th10::g_GameErrorContext.m_Buffer[0] = 0;
+        th10::g_GameErrorContext.Log(const_cast<char *>(g_MainRestartLog));
         if (g_MainSupervisorView.windowed == 0)
             WINNLSEnableIME(NULL, TRUE);
         for (i = 0; i < 60; ++i)
@@ -490,7 +492,7 @@ stop:
         MainDestroyMusic(g_MainSupervisorView.musicOwner);
         g_MainSupervisorView.musicOwner = NULL;
     }
-    MainFlushLog();
+    th10::g_GameErrorContext.Flush();
 
     for (i = 0; i < 7; ++i)
         DeleteCriticalSection(&g_MainSupervisorView.criticalSections[i]);

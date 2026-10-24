@@ -938,6 +938,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00438880,0x004388E6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004388F0,0x00438905,reviewed,medium,target-ida-leaf-review-2026-09-30,Direct IDA Pro MCP byte read covers the complete leaf extent and ret tail; CC padding follows with no interior branch evidence.
 0x00438940,0x00438949,reviewed,medium,target-ida-leaf-review-2026-09-30,Direct IDA Pro MCP byte read covers the complete leaf extent and ret tail; CC padding follows with no interior branch evidence.
+0x00438950,0x0043899E,reviewed,high,target-error-flush-boundary-2026-10-24,Independent complete target boundary/body/reference review accepted before native build. Retained context-based logging behavior matches WinMain inline sequence; original method/class identifiers and TU unknown. Diagnostic same-ten-TU member trial matches full79/all6; canonical replay remains required for exact credit.
 0x004389C0,0x004389C3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x004389D0,0x004389D3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x004389E0,0x004389E3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

@@ -938,6 +938,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00438880,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
 0x004388F0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00438940,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
+0x00438950,authored_game,GameErrorContext,authored,high,target-error-flush-boundary-2026-10-24
 0x004389C0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004389D0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004389E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
