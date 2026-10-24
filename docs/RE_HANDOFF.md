@@ -1,10 +1,18 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-24 for operator-requested cleanup and handoff. Last source
-checkpoint: **00c7466**. This cleanup changes documentation/artifacts only;
-all started experiments are terminal and no reconstruction job remains running.
-The project remains **active-incomplete**. Commit prefix: `gpt-6.1-sol: ...`.
-Local commits only; never push. Continue large functions, not small-function farming.
+Updated 2026-10-24 for the operator-approved
+[exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
+Documentation baseline: **887e0bab**; last source checkpoint: **00c7466**.
+The project remains **active-incomplete**. Goal: **98% of reviewed authored
+owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
+never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
+directions belong to predecessor sessions.
+
+The new method changes selection and experiment order, not acceptance rules.
+This documentation change adds **0 new whole-owner exact bytes** and no source
+coverage. Initial triage selected MIDI ProcessEvent; its complete comparison
+contract is the first gate, with no new pilot compile or source result yet.
+All experiments in the preceding 15-control panel are terminal.
 
 ## Maintained state
 
@@ -21,9 +29,43 @@ Local commits only; never push. Continue large functions, not small-function far
 | Windows i386 product / runtime | Open; semantic reconstruction and portability not started |
 
 [Live progress](PROGRESS.md): 1776 reviewed, 518 excluded, 524 indeterminate origins.
-No exact ledger, boundary/origin, profile, ABI or phase gate changes in cleanup.
+No exact ledger, boundary/origin, profile, ABI or phase gate changes in this
+method adoption. Source coverage and ordinary equal-byte counts are not exact
+credit; the maintained totals above remain independent metrics.
 
-## Resume the complete ANM parent
+## Next bounded work
+
+Select medium/large representatives by complete comparability, a concrete
+semantic uncertainty and family reuse. Build natural low-level C++ with honest
+provisional offset/numeric names, real widths/captures/rounding/control flow and
+actual callee declarations; compare the first complete owner early. Use one
+falsifiable coherent model per trial and targeted native controls only where
+needed. Readability/class cleanup follows stable exactness, with complete replay
+after each refactor. Keep new exact owned bytes and source coverage separate.
+
+ANM's four-byte and ECL's 25-byte residues are preserved but parked against
+further neutral spelling panels. Reopen only with new target, def-use, lifetime,
+callee or real-context evidence, an explicit prediction and a distinct baseline.
+After repeated byte-identical controls, retain a bounded receipt and change
+representative; there is no mandatory trial count or global exhaustion rule.
+The [method checklist and candidate-selection space](TH10_EXACT_FIRST_METHOD_20261024.md)
+define the next experiment packet.
+
+First representative: **MIDI ProcessEvent, target 1670 bytes**. Triage found a
+simple real-Tick single-TU `/GL` context and 14 named external anchors. First
+bind every call and all three selector tails: the existing 1614-versus-1670
+diagnostic has incomplete normalization and is not a complete accepted owner
+comparison or an ordinary-byte mismatch score. No new compiler/source result
+or exact credit is claimed. FrontEndOptions (3188 bytes) and EndingRun (1568
+bytes) are queued only, not concurrent experiments or accepted candidates.
+
+ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
+Nonlocal coupling is observed; a wrong compiler or production TU cause is not
+proved. The existing code is already compiler-oriented, so readability alone is
+not a supported explanation. Near-match progress adds no whole-owner exact
+credit until all ordinary bytes and complete comparison gates pass.
+
+## Parked complete ANM parent
 
 Read the [source/proof packet](evidence/anm-child-request-record/README.md),
 [350-field contract](evidence/anm-child-request-record/binding-contract.json) and
@@ -87,10 +129,20 @@ scripts/repo-python scripts/report-reconstruction-status.py
 scripts/repo-python .analysis/gpt-6.1-sol/anm-full-parent-bindings-20261024/compare-current.py
 ```
 
-These replay retained actual-source artifacts. Re-attest Ghidra before new target
-analysis. Direct local tools, serial nice10 native jobs, no subagents; Ghidra
-readOnly/noanalysis/rollback, maxcpu1, heap768m. Full mapped text401000..465A80
-inclusive:412289 bytes, SHA-256
+These replay retained actual-source artifacts, not a new cold build. The
+2026-10-24 Web preflight reverified the fixed target, VC7.1 build-6030 smoke and
+tracking/status; Factory-native Ghidra `check` passed at 14:17 UTC for
+`target:th10-main`. Retained replay reconfirmed ANM 9960/9964 with all 350
+fields, 95 local destinations and 36 guards; ECL 6995/7020 with all 189 fields,
+62 local destinations, its complete 171-byte callee and 16 guards; Player
+1380/1435. This adds no exact acceptance.
+
+Re-attest Ghidra before new target analysis using the Factory-native transport
+in AGENTS.md. Current work uses registered repository `th10`; the coordinator
+alone schedules native builds serially on one CPU at niceness 10 and owns final
+gates/commits. Read-only analysis and disjoint documentation can be delegated.
+Preserve Ghidra read-only/noanalysis/rollback and bounded CPU/heap settings.
+Full mapped text 401000..465A80 inclusive: 412289 bytes, SHA-256
 cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f.
 
 [Latest cleanup](evidence/handoff-request-cleanup-20261024/cleanup-summary.json):

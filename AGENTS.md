@@ -13,6 +13,26 @@ committed. Repository tools use this path by default. Do not search `/mnt`, add
 a Windows game-directory mount, or set `TH10_TARGET_PATH` during normal Factory
 work. That environment variable is only an explicit local override.
 
+## Current operator direction — October 24, 2026
+
+The operator resumed TH10 through Factory after pausing TH09, then explicitly
+approved the exact-first method learned from a read-only review of recent TH105
+commits. Target at least 98% of reviewed authored owned bytes exact. Prioritize
+complete medium/large representatives; compare the first complete source early.
+Permit provisional offset/numeric names and natural low-level C/C++ rather than
+requiring readable abstractions first. Repeated byte-neutral controls should be
+parked with receipts; reopen only with new independent evidence and a falsifiable
+prediction. Preserve strict whole-owner, field/local-target and ABI checks.
+See docs/TH10_EXACT_FIRST_METHOD_20261024.md for the operational checklist.
+
+This is the resumed Factory Web workflow. Earlier direct-local routing is
+historical. Keep all compiler/linker jobs serial, one CPU at nice10, with bounded
+runtime and retained exit logs. Do not transplant TH105's VC8 profiles into TH10.
+Use English local commits prefixed `gpt-dots:`, author
+`N0zoM1z0 <1705004398@qq.com>`, with trailer
+`Co-authored-by: gensokyo-dev <342580529+gensokyo-dev@users.noreply.github.com>`.
+Never push. Preserve the nine unrelated untracked D3D adapter evidence files.
+
 ## Mandatory session recovery
 
 Before changing anything:

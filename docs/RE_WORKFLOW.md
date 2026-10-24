@@ -10,6 +10,43 @@ the four pinned Capstone component hashes before selecting an interpreter, so
 Web and local shells cannot silently use different decoders. Stop if any
 identity differs.
 
+## Exact-first operating method
+
+The operator-approved [2026-10-24 exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md)
+governs candidate selection and experiment order. The goal is **98% of reviewed
+authored owned bytes exact**, not source coverage or approximate byte equality.
+Select representative medium/large owners by comparability, concrete semantic
+uncertainty and family reuse, not tiny-leaf counts or nearest byte distance.
+
+Recover natural low-level C++ first. Honest provisional offset/numeric names
+are acceptable; recover actual widths, signedness, captures/lifetimes, rounding,
+control flow and callee declarations before imposing readable classes or APIs.
+Make the first complete-owner comparison early. Use directed native controls
+only for concrete ambiguities, not a large test matrix before that comparison.
+After stable exactness, improve readability and replay the affected complete
+owner and required contract after each refactor.
+
+Each trial tests one falsifiable coherent model against a distinct baseline.
+Preserve full extents, all fields, fixed local targets and required complete
+callees; structural failures are diagnostic, never acceptance. Park repeated
+byte-identical spelling panels with a bounded receipt and switch representative,
+without a magic trial count or global exhaustion requirement. ANM's four-byte
+and ECL's 25-byte cases reopen only with new target/def-use/lifetime/callee/context
+evidence and a specific prediction. Current source is already compiler-oriented;
+readability alone and a wrong compiler/TU are not established causes.
+
+Report new whole-owner exact bytes separately from source coverage and useful
+diagnostic progress. Never credit a fragment or convert a near-match score into
+an exact owner. Preserve TH10 LTCG `/GL`; TH105 successes transfer experimental
+discipline, not VC8 flags or data. Do not use fake ABI, padding, copied bytes,
+allocation-forcing register hints or weakened comparators.
+
+Current Web/Factory work uses registered repository `th10` and local
+`gpt-dots: ...` commits, never push. The coordinator alone runs native builds,
+serially on one CPU at niceness 10, and owns final gates/commits. Disjoint
+documentation and read-only analysis may proceed separately. Historical
+direct-local-only/no-subagent instructions do not govern this session.
+
 ## Bounded exact-reconstruction loop
 
 1. Keep entry, physical boundary, origin, and source presence independent. Run
@@ -50,11 +87,14 @@ identity differs.
 5. For authored code, recover ABI, types, object layout, globals, constants,
    side effects, and error behavior using bounded Ghidra queries and raw target
    evidence. Keep hypotheses explicitly falsifiable.
-6. Place natural C/C++ in a candidate translation unit. Mark source presence
-   without claiming exactness.
-7. Compile the smallest useful historical-compiler probe with an explicit
-   candidate profile. The pinned build-6030 tool surfaces are observed, but the
-   profile and physical owner are still hypotheses. Determine whether the
+6. Place a coherent complete natural low-level C/C++ owner in a candidate
+   translation unit. Keep provisional names where appropriate and mark source
+   presence without claiming exactness. Do not require speculative class/API
+   cleanup before comparison.
+7. Compile the first complete owner early with an explicit candidate profile;
+   use smaller directed probes only to resolve concrete blocking ambiguities.
+   The pinned build-6030 tool surfaces are observed, but the profile and physical
+   owner are still hypotheses. Determine whether the
    candidate belongs to a normal C/C++ COFF unit or to LTCG. For normal COFF,
    compare the complete owned extent and every relocation. For LTCG, do not
    strip `/GL` and do not use the standalone comparator. Use
