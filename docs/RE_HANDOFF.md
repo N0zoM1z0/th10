@@ -3,19 +3,24 @@
 Updated 2026-10-24 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
-The bounded MIDI inline-clock checkpoint is45c16aa. This checkpoint adds only
-two observed WORD consumers in UpdateOptions; parked core owners, headers,
-profiles and exactness ledgers remain unchanged.
+Committed source checkpoints: MIDI inline-clock recovery **45c16aa** and
+Options WORD-consumer recovery **1e35737**. This checkpoint records the measured
+five-factor D3D source in `src/Main.cpp`; the final
+sign trial completed at 17:30:01 UTC. The owner is 1152/1159 and nonexact.
+Fresh ten-TU canonical regression passed at 17:32:16 UTC; all 111 full-CI
+stages passed at 17:42:01 UTC. Real callee closure is next, not yet implemented. Parked core owners,
+headers, profiles and exactness ledgers remain unchanged.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
 directions belong to predecessor sessions.
 
 The new method changes selection and experiment order, not acceptance rules.
-This documentation change adds **0 new whole-owner exact bytes** and no source
-coverage. Initial triage selected MIDI ProcessEvent; its complete comparison
-contract is the first gate, with no new pilot compile or source result yet.
-All experiments in the preceding 15-control panel are terminal.
+MIDI and Options have completed bounded source experiments and are parked with
+receipts below; neither added a whole-owner exact match or source-present owner.
+The active D3D pilot also has **0 new whole-owner exact bytes**. Its structural
+diagnostics and exact peer guards do not establish an exact D3D owner. All
+experiments in the preceding ANM 15-control panel are terminal.
 
 ## Maintained state
 
@@ -26,6 +31,9 @@ All experiments in the preceding 15-control panel are terminal.
 | Enemy dispatcher / target 14416 | 14336 bytes; frame 2C4; case 3245/11128, 45 sized groups, gap 328 |
 | StageExecuteScript / target 1868 | Retained 1868 bytes; frame 8C; nonexact; case 1443/1619, 13/15 groups, gap 2 |
 | PlayerInitialize / target 1435 | 1380/1435; 55 differences; 49 fields; actual 17-input graph recompiled ANM |
+| MIDI ProcessEvent / target 1670 | 1690-byte candidate; all 37 fields recovered; structural rejection, parked at 45c16aa |
+| UpdateOptions / target 3188 | 3276-byte candidate; two observed WORD consumers recovered; nonexact, parked at 1e35737 |
+| InitD3DRendering / target 1159 | Final five-factor candidate 1152 bytes / 98 fields versus target 100; 30/29 branches; real callee closure open; zero exact credit |
 | Authored / source / authored exact | 734 functions / 273579 bytes; source 614 / 248174; exact 409 / 74716 |
 | Authored source-present nonexact / absent | 205 / 120 functions |
 | Overall exact / mappings | 1252 functions / 141647 bytes; 1098 mappings |
@@ -67,10 +75,19 @@ the controller are preserved. UpdateOptions remains3276/3188 with structural
 and binding gaps. The two fewer static FindVm calls are branch factoring, not
 lost runtime work. Park unsupported layout/adapter spelling panels.
 
-Next selection is a bounded Ending/normal-ABI alternative review. The retained
-Ending source matches its receipt, but20/52 support/header inputs drifted and
-its prior aggregate controls were neutral. Do not tune against that stale
-whole graph or automatically spend on another allocation panel.
+Current bounded work is InitD3DRendering. Separate API-only and tangent-only
+models, then their combination, recovered the observed real error-context calls
+and tangent input precision without making the whole owner exact. The subsequent
+MainSetScreenColor stdcall declaration-only trial removes extra caller cleanup,
+but its unresolved nonexecutable anchor does not close the actual 108-byte
+callee. Byte-flag and camera-sign trials are now measured, with the original
+byte-flag postbuild failure preserved alongside separate v03 validation.
+Next establish a fresh three-TU graph-only baseline before implementing the
+real 108-byte and 135-byte callees. No new source-present or exact claim exists
+for that planned closure.
+Ending remains queued: its retained source matches its receipt, but 20/52
+support/header inputs drifted and prior aggregate controls were neutral. Do not
+tune against that stale graph or start another unsupported allocation panel.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not
@@ -165,8 +182,11 @@ sources/images/reports require restoration. [Artifact index](RE_ARTIFACTS.md)
 lists every archive and retained Stage/Enemy/older caller context. Ignored archives
 are not in a Git clone; transfer the workspace and inventories when required.
 [Validation](evidence/handoff-request-cleanup-20261024/validation-summary.json)
-records this cleanup's focused checks; unchanged source/config does not need
-another full CI. The source checkpoint retains its honest89+22-stage CI coverage.
+records that historical cleanup's focused checks and the earlier source
+checkpoint's 89+22-stage CI coverage. MIDI checkpoint **45c16aa** later passed
+all 111 stages; Options **1e35737** had focused validation at its own checkpoint.
+The final five-factor D3D source now independently passes all 111 stages,
+including the retained Options changes, with frozen inputs preserved.
 
 ## First exact-first pilot result: MIDI
 
@@ -184,8 +204,9 @@ panel. Require new target-backed evidence before the next model, otherwise move
 to the queued complete representative. Preserve old/updated source receipts and
 the nine unrelated D3D files. See the pilot packet for actual validation scope.
 
-Full MIDI checkpoint CI completed all 111 declared stages with exit0. The
-source and fixture tested are the final checkpoint inputs. Receipt and log:
+Full MIDI checkpoint **45c16aa** CI completed all 111 declared stages with
+exit 0. The source and fixture tested are that checkpoint's inputs, not the
+later Options change or current dirty Main.cpp. Receipt and log:
 .analysis/gpt-dots/midi-exact-first-20261024/root-ci.log and root-ci.exit.
 The RPC timeout was reconciled from its completed receipt, not rerun. Subsequent
 documentation records that result; link/progress/whitespace checks were repeated.
@@ -197,3 +218,100 @@ Validation includes2909 host cases,14 detected negative controls, full
 Refresh3999/all112, all333 public-owner diagnostics and independent whole-.text
 preservation outside UpdateOptions. This is focused modified-owner validation,
 not a new full111-stage CI run. No new exact bytes or source owners are claimed.
+
+## Active D3D pilot: final five-factor source
+
+See the [durable D3D receipt](evidence/d3d-exact-first-20261024/README.md).
+
+Status after the 17:32:16 UTC regression: final measured uncommitted
+`src/Main.cpp` SHA-256 is
+`3bbb030a9d3f9d1961ebbfcfbccb5c2dbf080cf9dc68f8d129f9362d7cfb8de7`.
+The completed trials below are structural inventories, not ordinary-byte
+equality scores or canonical exact acceptance:
+
+- Fresh baseline: 1051 candidate bytes versus target 1159, 84 versus 100 address
+  fields, and 28 versus 29 local branches.
+- Tangent-only model: one pi literal gains its float suffix and reproduces the
+  target tangent-input qword payload `0000004052c1d03f`. The candidate extent
+  remains 1051 bytes; this does not repair the error-call model.
+- API-only model: 14 real GameErrorContext calls (13 Log, one Fatal) replace
+  the facades, producing 1125 bytes / 98 fields. All 14 receiver, format and
+  cleanup checks pass. Complete real Log (201 bytes / all 12 fields) and Fatal
+  (201 bytes / all 11 fields) peer guards are exact; these are not new D3D credit.
+- In the API-only/combined checkpoint, two fewer field sites were localized
+  to memory-OR versus load/store and a common post-log load; one fewer branch
+  was fallthrough, not missing effects. This historical localization does not
+  explain away the later 30/29 branches or waive complete comparison gates.
+- Combined model: one build completed with exit 0 at 17:11:22 UTC. All eight
+  factor predicates pass: 14 real API edges with receiver/format/varargs/cleanup
+  checks, both complete 201-byte peer guards, no facades, and the exact target
+  tangent payload. The owner remains 1125/1159 bytes, 98/100 fields and 28/29
+  branches, with full-owner exactness false and zero exact credit.
+- Stdcall declaration-only model: one trial completed at 17:17:45 UTC with
+  exit 0 and all twelve predicates passing. Actual `YGXI` decoration, the
+  unchanged sole `FF000000` argument and removal of caller `ADD ESP, 4` are
+  observed. The owner is 1122/1159 bytes, 98/100 fields and 28/29 branches;
+  previous API edges, both 201-byte guards and tangent payload still pass.
+  The explicit unresolved nonexecutable data anchor remains: this does not
+  implement or close the real 108-byte callee.
+- Byte-flag model: compiled once, then the original postbuild audit failed on
+  one unreachable identity-LEA alignment instruction. Original `bool.json`
+  and exit 1 are preserved. Separate v03 validation audits all 1150 bytes,
+  passes ten flag predicates, rejects four negative controls and preserves
+  eleven whole guards (2330 bytes / all 121 fields). It is not a compiler rerun
+  or a rewritten successful producer receipt.
+- Camera-sign model: completed once at 17:30:01 UTC with exit 0. All 29
+  predicates pass, including positive 240 then division/FCHS, exact tangent
+  input, three BYTE flag accesses, stdcall cleanup, fourteen API edges and
+  eleven whole guards (2330 bytes / all 121 fields). Final owner 1152/1159,
+  98/100 fields and 30/29 branches remains nonexact. These are counts/extents,
+  not seven mismatching bytes or fractions of bindings passed.
+- Fresh ten-TU canonical regression completed at 17:32:16 UTC with exit 0:
+  ReleaseSurfaces 43, ServiceScreenshots 111, Present 236, TakeScreenshot 504,
+  CaptureToTexture 240 and ScreenshotWorker 302; total 1436 bytes / all 69
+  fields. This is separate existing-owner regression, not new exact credit.
+  Full target-independent CI subsequently passed all 111 stages at 17:42:01
+  UTC, exit 0, with all frozen inputs unchanged. No runtime pass is claimed.
+
+Ignored receipt roots and exact files:
+- `.analysis/gpt-dots/d3d-tangent-precision-20261024/`:
+  `baseline-audit.json`, `candidate-audit.json`, `baseline.json`,
+  `candidate.json`, and their `.log` / `.exit` files.
+- `.analysis/gpt-dots/d3d-error-context-api-20261024/`:
+  `api-only-owner-audit.json`, `api-only-edge-audit.json`,
+  `api-only-independent-replay.json`, `api-only.json`, `api-only.log`,
+  `api-only.exit`, and `root-application.json`. API-only source SHA-256:
+  `320e4f1c8e2bc4eb98a03359d0d5eb60ac5f37d9bdfd2d579aa01d4375ec17e8`.
+- `.analysis/gpt-dots/d3d-api-tangent-combined-20261024/`:
+  `combined.json`, `combined-owner-audit.json`, `combined-edge-audit.json`,
+  `combined.log`, `combined.exit`, `model.json`, `root-application.json`,
+  `api-baseline-replay.json`, and `remaining-localization.json`.
+  The completed receipt reports `supported-combined-factors-only`,
+  `acceptance_authority=none`, and `exactness_credit=0`.
+- `.analysis/gpt-dots/d3d-color-stdcall-20261024/`: `stdcall.json`,
+  `stdcall-color-audit.json`, `stdcall-owner-audit.json`,
+  `stdcall-edge-audit.json`, `stdcall.log`, and `stdcall.exit`.
+  Image SHA-256:
+  `2a694826f3268139414bcb34834e08eaedd89799e12127e0a2607f22ca824fcb`.
+  The receipt states `supported-declaration-cleanup-only` and
+  `color_callee_closure=false`; exactness credit remains zero.
+- `.analysis/gpt-dots/d3d-byte-flag-20261024/`: original `bool.json` /
+  `bool.exit` and separate `bool-supplemental-validation-v03.json`.
+  Supplemental receipt SHA-256:
+  `028d15b0f2b5024a194a39f3d048541b3f605f74ae1059ed667dffa505c482d1`.
+- `.analysis/gpt-dots/d3d-camera-sign-order-20261024/sign.json`, with
+  `sign.log`, `sign.exit` and the complete owner/flag/guard audits.
+  Final image SHA-256:
+  `248410d9b91a6b23ce38b7626b528e3a78c06ce8d21b32cbc0ae3109c2bd0e06`.
+- `.analysis/gpt-dots/d3d-main-regression-20261024/receipt.json`:
+  completed six-owner canonical regression; not a full-CI receipt.
+- `.analysis/gpt-dots/d3d-checkpoint-20261024/`: `root-ci.log`,
+  `root-ci.exit`, `ci-inputs.json`, `post-ci-inputs.log` and
+  `checkpoint-validation.json`. All 111 stages passed; source and protected
+  inputs were unchanged. Only CI-result documentation was edited afterward
+  and rechecked separately.
+
+This pilot is distinct from the stopped adapter-format experiment. Preserve
+all nine untracked files under `docs/evidence/d3d-adapter-format/` without
+resuming or incorporating that work. New whole-owner exact bytes and new
+source-present owners remain zero; later promotion still requires every gate.
