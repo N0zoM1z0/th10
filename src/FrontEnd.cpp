@@ -1201,7 +1201,7 @@ int __stdcall FrontEndControllerView::UpdateOptions(
 
         int leftRepeated = InputRepeated(FRONT_END_INPUT_LEFT);
         AnmRenderManagerView *manager = g_AnmRenderManagerView;
-        if (leftRepeated)
+        if (static_cast<unsigned short>(leftRepeated))
         {
             switch (controller->cursor.current)
             {
@@ -1230,7 +1230,7 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             }
         }
 
-        if (InputRepeated(FRONT_END_INPUT_RIGHT))
+        if (static_cast<unsigned short>(InputRepeated(FRONT_END_INPUT_RIGHT)))
         {
             switch (controller->cursor.current)
             {

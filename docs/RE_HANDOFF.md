@@ -3,8 +3,9 @@
 Updated 2026-10-24 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
-This source checkpoint adds only the MIDI inline-clock correction and its
-host-test boundary adaptation; it does not change the parked core owners.
+The bounded MIDI inline-clock checkpoint is45c16aa. This checkpoint adds only
+two observed WORD consumers in UpdateOptions; parked core owners, headers,
+profiles and exactness ledgers remain unchanged.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
@@ -59,10 +60,17 @@ exact378/all5. It remains a structural rejection, not an ordinary-byte score.
 Private MIDI helper register edges independently support the retained `/GL`
 lane; original per-TU flags remain unknown. See the result below.
 
-Next is a read-only complete-contract review of **FrontEndOptions (3188 bytes)**
-using its existing real caller graph and exact RefreshOptionsDisplay peer.
-Do not assume old ledger size summaries are the newest native result. No new
-Options trial has run. EndingRun (1568 bytes) remains queued only.
+The [Options pilot](evidence/options-input-word-20261024/README.md) now has a
+fresh eight-TU baseline and one tested WORD-consumer model. Both target AX
+conditions are recovered; Refresh3999/all112 and every executable byte outside
+the controller are preserved. UpdateOptions remains3276/3188 with structural
+and binding gaps. The two fewer static FindVm calls are branch factoring, not
+lost runtime work. Park unsupported layout/adapter spelling panels.
+
+Next selection is a bounded Ending/normal-ABI alternative review. The retained
+Ending source matches its receipt, but20/52 support/header inputs drifted and
+its prior aggregate controls were neutral. Do not tune against that stale
+whole graph or automatically spend on another allocation panel.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not
@@ -181,3 +189,11 @@ source and fixture tested are the final checkpoint inputs. Receipt and log:
 .analysis/gpt-dots/midi-exact-first-20261024/root-ci.log and root-ci.exit.
 The RPC timeout was reconciled from its completed receipt, not rerun. Subsequent
 documentation records that result; link/progress/whitespace checks were repeated.
+
+## Options WORD-consumer checkpoint
+
+See the [complete bounded receipt](evidence/options-input-word-20261024/README.md).
+Validation includes2909 host cases,14 detected negative controls, full
+Refresh3999/all112, all333 public-owner diagnostics and independent whole-.text
+preservation outside UpdateOptions. This is focused modified-owner validation,
+not a new full111-stage CI run. No new exact bytes or source owners are claimed.

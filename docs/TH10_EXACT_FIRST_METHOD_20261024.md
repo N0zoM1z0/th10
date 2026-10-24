@@ -14,7 +14,8 @@ exact ledger row. At adoption, the maintained source checkpoint is
 `00c7466`, the documentation baseline is `887e0bab`, and new whole-owner
 exact bytes from this method remain **0**. MIDI was the first bounded
 representative; its completed nonexact source checkpoint is recorded below.
-The method itself remains unchanged, and Options is the next bounded review.
+The method itself remains unchanged; the MIDI and Options pilots are recorded
+below and the next representative is under bounded review.
 
 ## Why the method changes
 
@@ -165,14 +166,15 @@ Initial 2026-10-24 triage selected the following bounded first step:
 | Candidate | Selection or queue state | Required next evidence |
 | --- | --- | --- |
 | MIDI ProcessEvent, target 1670 bytes | First pilot completed; current1690, unsupported helper removed, five guards retained | Park unsupported allocation/alignment trials; require new independent evidence to reopen |
-| FrontEndOptions, target 3188 bytes | Next bounded complete-contract review | Verify current artifact provenance, call boundaries and the exact same-graph display peer before source tuning |
+| FrontEndOptions, target 3188 bytes | Fresh baseline and one WORD-consumer model complete; still3276/3188 | Preserve exact Refresh and known captures; park unsupported branch-factoring/adapter trials |
 | EndingRun, target 1568 bytes | Queued only | Reassess complete comparability and one concrete semantic uncertainty before selection |
 
 The MIDI audit independently inventories complete original/candidate bodies,
 fields and selector tails, but rejects current structural mismatches. It grants
 no exactness or ordinary-byte score. The first source model and tests are
 recorded below; no further alignment/register panel is authorized by that result
-alone. Options remains at the review stage, not an asserted source improvement.
+alone. The subsequent Options width model is recorded below; no whole-owner exactness
+follows from its two recovered consumers.
 
 ## Reporting and execution
 
@@ -215,3 +217,12 @@ expansion restores the original37-field inventory and preserves five exact
 guards, but the complete owner remains nonexact at1690/1670. This is bounded
 diagnostic/source progress, not new exact bytes. The next decision follows the
 parking rule rather than an unbounded alignment/register experiment panel.
+
+## Second pilot checkpoint
+
+[Options](evidence/options-input-word-20261024/README.md) first received a fresh
+current-source baseline, then one target-backed result-width model. Both AX
+consumers are recovered, with all executable code outside the controller and
+the full3999-byte exact Refresh peer unchanged. The controller is still
+nonexact. Static FindVm sharing was distinguished from missing runtime work;
+that finding does not justify a new spelling panel or partial exact credit.
