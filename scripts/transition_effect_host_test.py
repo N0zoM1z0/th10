@@ -71,7 +71,7 @@ def build(source, out, canonical=DEFAULT_CANON, sanitize=False):
         '*(ChainCallback *)((u8 *)elem + 0x0c)':'elem->addedCallback',
         '*(ChainCallback *)((u8 *)elem + 0x10)':'elem->deletedCallback',
         '*(ChainCallback *)((u8 *)elem + 0x8)':'elem->callback',
-        'free(elem);':'HostFree(elem);',
+        '::operator delete(elem);':'HostFree(elem);',
     }
     adaptation_counts={}
     for old,new in substitutions.items():

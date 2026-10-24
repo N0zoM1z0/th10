@@ -1,0 +1,329 @@
+{
+  "schema_version": 1,
+  "status": "Three separately measured HUD models and canonical identity repair; full CI v2 passed",
+  "baseline_commit": "726d79587f98cb839441d96482ec247a8b9b05ba",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_owner": {
+    "address": "0x414900",
+    "size": 3836,
+    "code_bytes": 3805,
+    "alignment_bytes": 3,
+    "table_bytes": 28
+  },
+  "graph": {
+    "units": 14,
+    "profile": "/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc /GL",
+    "gs": false,
+    "support_overrides": null,
+    "order_reference": "docs/evidence/hud-life-capture-20261024/summary.json"
+  },
+  "models": [
+    {
+      "model": "excess-segment conditional clear",
+      "source_sha256": "278c095555ed285d2f51854855e99bbab068cde976798f3290cd99ce4ef7c7ac",
+      "image_sha256": "0031e8217500e0f65b2b3178ef0620907877f3bd5a2e218de43aefa5d6fbd9ff",
+      "native_exit": 0,
+      "independent_review_passed": true,
+      "whole_owner_exact": false,
+      "complete_extent": {
+        "size": 3824,
+        "code_bytes": 3796,
+        "alignment_bytes": 0,
+        "table_bytes": 28
+      },
+      "inventory": {
+        "instructions": 1076,
+        "syntactic_fields": 72,
+        "local_branches": 249,
+        "direct_calls": 21
+      },
+      "guards": {
+        "units": 13,
+        "bytes": 1468,
+        "fields": 79
+      },
+      "receipts": [
+        {
+          "path": ".analysis/gpt-dots/hud-conditional-clear-trial-20261024/candidate/receipt.json",
+          "sha256": "da7c114b9fa8cfe3f2065011ae45057f24a97533d9788ee9150af125e58e6249"
+        },
+        {
+          "path": ".analysis/gpt-dots/hud-conditional-clear-trial-20261024/independent-review/receipt.json",
+          "sha256": "6d9146fb01c35b68532f08992f8cb11747e0b217cc062a9b6f171953ff954d49"
+        }
+      ]
+    },
+    {
+      "model": "hidden-gauge conditional clear",
+      "source_sha256": "ba2f9bc396f3bc4460dbffd59465f4a5c9e2982fd8ce509a77cf6902d169d38b",
+      "image_sha256": "938e9681fa3cafd545f3cb50c41e464a4d24a3163460bd708f88ca23d4506990",
+      "native_exit": 0,
+      "independent_review_passed": true,
+      "whole_owner_exact": false,
+      "complete_extent": {
+        "size": 3824,
+        "code_bytes": 3796,
+        "alignment_bytes": 0,
+        "table_bytes": 28
+      },
+      "inventory": {
+        "instructions": 1076,
+        "syntactic_fields": 72,
+        "local_branches": 249,
+        "direct_calls": 21
+      },
+      "guards": {
+        "units": 13,
+        "bytes": 1468,
+        "fields": 79
+      },
+      "receipts": [
+        {
+          "path": ".analysis/gpt-dots/hud-hidden-clear-trial-20261024/candidate/receipt.json",
+          "sha256": "aa7ae5329ce0c9666df438b1a2a9f576c3f1a22c8eb373b9e86576e3049db2f9"
+        },
+        {
+          "path": ".analysis/gpt-dots/hud-hidden-clear-trial-20261024/independent-review/receipt.json",
+          "sha256": "b873c73eca22d0357d9bd5527059a74b0b54059e0b1b45d9c69d6370612104b6"
+        }
+      ]
+    },
+    {
+      "model": "finished-message explicit global operator delete",
+      "source_sha256": "6ad418338b2bdc59036da48da99f07b6fc664cba0d82531890160c6d855e91a9",
+      "image_sha256": "0e323d45e30ac536c884fdd0b78cf55ecccd5f04a91857ce18cbaa7bbee0e70c",
+      "native_exit": 0,
+      "independent_review_passed": true,
+      "whole_owner_exact": false,
+      "complete_extent": {
+        "size": 3824,
+        "code_bytes": 3796,
+        "alignment_bytes": 0,
+        "table_bytes": 28
+      },
+      "inventory": {
+        "instructions": 1076,
+        "syntactic_fields": 72,
+        "local_branches": 249,
+        "direct_calls": 21
+      },
+      "guards": {
+        "units": 13,
+        "bytes": 1468,
+        "fields": 79
+      },
+      "retained_properties": [
+        "captured life",
+        "excess conditional clear",
+        "hidden conditional clear",
+        "six manual ID clears",
+        "18 manual flag-access effects",
+        "captured owner argument and caller cleanup of four bytes",
+        "null-owner bypass",
+        "GUI null publication after release",
+        "no destructor edge"
+      ],
+      "actual_deallocator_symbol": "??3@YAXPAX@Z",
+      "diagnostic_callee_is_anchor_backed": true,
+      "receipts": [
+        {
+          "path": ".analysis/gpt-dots/hud-deallocator-trial-20261024/candidate/receipt.json",
+          "sha256": "782627d20d2f6390695f44d53827027af7042370a853ad8a25c7b7a50573e8b8"
+        },
+        {
+          "path": ".analysis/gpt-dots/hud-deallocator-trial-20261024/candidate/lifecycle-and-deallocator-proof.json",
+          "sha256": "c9a4b49a4d080400680e5c63cfcf8b66c55cac85172e1d78027d9d4333a63779"
+        },
+        {
+          "path": ".analysis/gpt-dots/hud-deallocator-trial-20261024/independent-review/receipt.json",
+          "sha256": "bf31e24152f2f96392641f645d3942e974af173ea3d4dcf99e25b86aceb30102"
+        }
+      ]
+    }
+  ],
+  "hidden_trial_delta": {
+    "hud_changed_byte_positions": 1,
+    "kind": "short conditional-branch displacement",
+    "all_other_hud_bytes_equal": true,
+    "all_table_bytes_equal": true,
+    "run_full_4480_bytes_equal": true,
+    "manager_load_still_before_gate": true
+  },
+  "canonical_delete_identity_repair": {
+    "accepted_revalidation": true,
+    "all_frozen_inputs_unchanged": true,
+    "current_hashes": {
+      "config/match-units.toml": "5eac3d6ae4effd940147b10c868bb085ad085b1a23910b99103d80d2d4def597",
+      "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+      "src/Enemy.cpp": "788c4d3d15e47adf4f66cb8ab035e19feade1d54cf8454e4d20758aab63ae086",
+      "src/Gui.cpp": "ba2f9bc396f3bc4460dbffd59465f4a5c9e2982fd8ce509a77cf6902d169d38b"
+    },
+    "enemy_allocation_spelling": "Unknown; explicit global operator delete models proven deallocation only, not payload type or original allocation syntax",
+    "groups": [
+      {
+        "build_count": 1,
+        "comparison_passes": 2,
+        "image_sha256": "c8a80d08e0533eea201968e49de981385fa3a3689d248081d54333f1877de1ec",
+        "stage": "enemy",
+        "units": 11
+      },
+      {
+        "build_count": 1,
+        "comparison_passes": 2,
+        "image_sha256": "05246e64aa08da92e60f1ac40a3ba9cbe7edb7ba8d02d595bfb59a9deebf510e",
+        "stage": "scriptviewer",
+        "units": 31
+      },
+      {
+        "build_count": 1,
+        "comparison_passes": 2,
+        "image_sha256": "31bbac030a190f0ef410dbadb3c82e9f4d98577afa2c132bec91ecce65c79da3",
+        "stage": "gui",
+        "units": 13
+      }
+    ],
+    "new_exact_bytes": 0,
+    "original_failure": "GUI observation requested obsolete nonstatic Run symbol; supplemental correct static selector passed",
+    "original_root_exit": 1,
+    "owners": [
+      {
+        "changed_symbol_fields": 2,
+        "remaining_contract_unchanged": true,
+        "size": 45,
+        "source": "src/Enemy.cpp",
+        "unit": "enemy-ecl-release-allocations"
+      },
+      {
+        "changed_symbol_fields": 2,
+        "remaining_contract_unchanged": true,
+        "size": 47,
+        "source": "src/Enemy.cpp",
+        "unit": "enemy-ecl-host-destructor"
+      },
+      {
+        "changed_symbol_fields": 1,
+        "remaining_contract_unchanged": true,
+        "size": 114,
+        "source": "src/Chain.cpp",
+        "unit": "decomphelp-chain-unregister"
+      }
+    ],
+    "revalidated_existing_authored_bytes": 206,
+    "revalidated_owner_count": 3,
+    "total_cold_builds": 3,
+    "total_distinct_guard_units": 55,
+    "target_delete_identity": {
+      "address": "0x4524a1",
+      "complete_equal": true,
+      "member": "delete.obj",
+      "object_sha256": "69c83661cc9e45befe7937deffededb4e34a7018bbd64f8b654b6803970f458e",
+      "size": 5,
+      "symbol": "??3@YAXPAX@Z",
+      "calls_distinct_free_at": "0x452422"
+    },
+    "preflight_correction": {
+      "compiler_started": false,
+      "reason": "git apply normalized Chain.cpp to CRLF; candidate freeze preserves LF",
+      "action": "Restore exact reviewed candidate bytes; no frozen contract change"
+    },
+    "supplemental_gui": {
+      "passed": true,
+      "same_image_no_rebuild": true,
+      "original_artifacts_preserved": 205
+    },
+    "receipts": [
+      {
+        "path": ".analysis/gpt-dots/free-delete-binding-audit-20261024/repair-validation/final-acceptance-review.json",
+        "sha256": "1e9a08c1546686129aa962a9e4850a63fcf639fd90142656cb4a9c21ad67cfa7"
+      },
+      {
+        "path": ".analysis/gpt-dots/free-delete-binding-audit-20261024/repair-validation/receipt.json",
+        "sha256": "905b5a1a7877e2c82d189d6a72c223806a7c8f36b8c8d427a5c806ea15b884f8"
+      },
+      {
+        "path": ".analysis/gpt-dots/free-delete-binding-audit-20261024/repair-validation/supplemental-gui/receipt.json",
+        "sha256": "5d3d5087783cdae34f891cefa38986c18ad061d5aa941b61ffbe086be72afa88"
+      },
+      {
+        "path": ".analysis/gpt-dots/free-delete-binding-audit-20261024/repair-validation/root-application-eol.json",
+        "sha256": "a1547df8de78093bcfb1ee0776510b58dcbfd260bc22eb043cca36445674de95"
+      }
+    ]
+  },
+  "pending": {
+    "full_batch_ci": "passed: 112 stages, exit0, frozen inputs unchanged",
+    "default_first_boss_marker_comparison": "being prepared; not tested",
+    "float_local_model": "separate and untried"
+  },
+  "credit": {
+    "new_exact_bytes": 0,
+    "new_exact_owners": 0,
+    "new_source_owners": 0,
+    "authored_denominator_change": 0
+  },
+  "limits": [
+    "Syntactic inventories are not accepted semantic bindings.",
+    "Extent gaps are not target ordinary-byte mismatch counts.",
+    "No full HUD exactness, runtime closure or original allocation syntax is established.",
+    "Original failed repair audit and preflight correction remain retained.",
+    "Target float4 versus candidate double8 multiply referent and ordinary/control-flow differences remain; no float-width model was tested."
+  ],
+  "current_gui_sha256": "6ad418338b2bdc59036da48da99f07b6fc664cba0d82531890160c6d855e91a9",
+  "deallocator_trial_delta": {
+    "baseline_image_sha256": "31bbac030a190f0ef410dbadb3c82e9f4d98577afa2c132bec91ecce65c79da3",
+    "hud_changed_byte_positions": 2,
+    "changed_offsets": [
+      "0xB89",
+      "0xB8A"
+    ],
+    "kind": "actual scalar-delete call displacement",
+    "all_other_hud_bytes_equal": true,
+    "all_table_bytes_equal": true,
+    "six_manual_cleanup_walks_equal": true,
+    "run_full_4480_bytes_equal": true,
+    "frozen_inputs_preserved": 4340
+  },
+  "post_hud_delete_scriptviewer_regression": {
+    "passed": true,
+    "units": 31,
+    "reason": "Gui.cpp changed after initial canonical repair and is a ScriptViewer support TU",
+    "source_gui_sha256": "6ad418338b2bdc59036da48da99f07b6fc664cba0d82531890160c6d855e91a9",
+    "receipt": ".analysis/gpt-dots/scriptviewer-hud-delete-current-20261024/receipt.json",
+    "receipt_sha256": "301dabcc9ed5ac84ad08d39ec1d4bfcaea480ace2e414c2671df9d6d0c17fd7f",
+    "one_cold_build": true,
+    "new_exact_bytes": 0
+  },
+  "host_message_observer_update": {
+    "original_ci_exit": 1,
+    "original_log": ".analysis/gpt-dots/hud-cleanup-delete-checkpoint-20261024/root-ci.log",
+    "original_log_sha256": "eded5a323495c02d9749d8e4f93c58ac51690f92a4998141f3d251bde19c4f20",
+    "cause": "Free-only host observer did not intercept explicit operator delete on synthetic stack-backed message fixtures",
+    "scope": "Host extracted-phase observer only; production and native codegen inputs unchanged",
+    "test_script_sha256": "47a635fac12ecbc7a5db63da56152821086a3533fd93cb2e54adafb5b27b72f2",
+    "focused_passed": true,
+    "original_mutations_preserved": 16,
+    "additional_wrong_deallocator_mutation": 1,
+    "full_ci_rerun": "passed all112 stages"
+  },
+  "chain_host_observer_update": {
+    "script_sha256": "6e5b5b863435966023028117218c730b39f913ea110db5f49cca951af1e86a8d",
+    "host_pin_manifest_sha256": "be34e8b26cdf8833e43b1a2a8d6203d9975b192766af61f41ef9ca2a05eece62",
+    "source_chain_sha256_lf": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "scope": "Only exact adapter token and reviewed Chain pin/provenance; no production changes or relaxed pin rules",
+    "focused_normal_assertions": 1375,
+    "focused_asan_ubsan_assertions": 1375,
+    "strict_eol_tests": 19,
+    "all_passed": true,
+    "packet": ".analysis/gpt-dots/chain-delete-observer-20261024"
+  },
+  "full_ci_v2": {
+    "passed": true,
+    "stages": 112,
+    "exit_code": 0,
+    "frozen_inputs_preserved": true,
+    "verified_utc": "2026-10-24T23:33:14Z",
+    "log": ".analysis/gpt-dots/hud-cleanup-delete-checkpoint-20261024/root-ci-v2.log",
+    "log_sha256": "ac11f36f2c29eb68b19161f6b936536279143934e97c1fd8c00c6fd54bfdf86f",
+    "original_ci_exit_one_preserved": true
+  }
+}

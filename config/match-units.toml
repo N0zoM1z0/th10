@@ -1795,8 +1795,8 @@ symbol = "?ReleaseEclAllocations@EnemyEclHostBaseView@@QAEXXZ"
 target_address = 0x0040C6E0
 size = 45
 linkages = [
-  { offset = 23, type = "REL32", symbol = "_free", target = 0x004524A1 },
-  { offset = 29, type = "REL32", symbol = "_free", target = 0x004524A1 },
+  { offset = 23, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 29, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
 ]
 
 [units.enemy-ecl-reset-state]
@@ -1892,8 +1892,8 @@ target_address = 0x0040C780
 size = 47
 linkages = [
   { offset = 11, type = "DIR32", symbol = "??_7EnemyEclHostBaseView@@6B@", target = 0x0046D0D8 },
-  { offset = 25, type = "REL32", symbol = "_free", target = 0x004524A1 },
-  { offset = 31, type = "REL32", symbol = "_free", target = 0x004524A1 },
+  { offset = 25, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 31, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
 ]
 
 [units.enemy-ecl-context-constructor]
@@ -10779,7 +10779,7 @@ pdb_source = "src/Chain.cpp"
 [[units.decomphelp-chain-unregister.linkages]]
 offset = 104
 type = "REL32"
-symbol = "_free"
+symbol = "??3@YAXPAX@Z"
 target = 4531361
 
 [units.decomphelp-chain-remove-all]

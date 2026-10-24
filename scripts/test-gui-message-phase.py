@@ -2,8 +2,8 @@
 """Source-extracted HUD message cleanup checks; host UBSan, not game execution.
 
 Plain VM structures test final deletion flags, root/child traversal, list priority,
-IDs and free order. Run owner replacement and free observation are synthetic seams,
-not claims that real Run/free change gui->message. No callbacks are added to walks.
+IDs and deallocation order. Run owner replacement and raw deallocation observation
+are synthetic seams, not claims that real Run/delete change gui->message. No callbacks are added to walks.
 Manager retention and intra-walk ordering are target/source-topology evidence only.
 """
 from pathlib import Path
@@ -30,8 +30,11 @@ static AnmRenderManagerView *g_AnmRenderManagerView;
 static GuiView *activeGui;static GuiMessageVmView *replacement,*runArg,*freed;
 static bool replaceOwner,freeValid;static int runResult,runCount,freeCount;
 int GuiMessageVmView::Run(GuiMessageVmView *p){runArg=p;++runCount;if(replaceOwner)activeGui->message=replacement;return runResult;}
-static void ObservedFree(GuiMessageVmView *p){++freeCount;freed=p;if(activeGui->message!=p)freeValid=false;for(int i=0;i<6;++i)if(p->vmIds[i].value!=0)freeValid=false;}
-#define free ObservedFree
+static void ObservedRelease(GuiMessageVmView *p,bool scalarDelete){++freeCount;freed=p;if(!scalarDelete||activeGui->message!=p)freeValid=false;for(int i=0;i<6;++i)if(p->vmIds[i].value!=0)freeValid=false;}
+// Narrow phase-only seam: never replace process-global delete or free stack data.
+struct HostDeallocationObserver {static void operator delete(void *p) noexcept {ObservedRelease(static_cast<GuiMessageVmView *>(p),true);}};
+static void ObservedWrongFree(GuiMessageVmView *p){ObservedRelease(p,false);}
+#define free ObservedWrongFree
 static void Exercise(GuiView *gui) @PHASE@
 #undef free
 static void Reset(GuiView &g,GuiMessageVmView &m,AnmRenderManagerView &a){g={&m};m=GuiMessageVmView();a=AnmRenderManagerView();activeGui=&g;g_AnmRenderManagerView=&a;replacement=runArg=freed=NULL;replaceOwner=false;freeValid=true;runResult=1;runCount=freeCount=0;}
@@ -74,14 +77,18 @@ class MessagePhase(unittest.TestCase):
   compiler=shutil.which('c++')
   if not compiler:self.skipTest('host C++ unavailable')
   with tempfile.TemporaryDirectory(prefix='th10-message-') as t:
-   p=Path(t)/'test.cpp';e=Path(t)/'test';p.write_text(PROGRAM.replace('@PHASE@',s))
+   p=Path(t)/'test.cpp';e=Path(t)/'test'
+   # Instrument only the explicit qualified call, preserving argument/order.
+   # Wrong-deallocator mutations use the separate nonfreeing free observer.
+   observed=s.replace('::operator delete(', 'HostDeallocationObserver::operator delete(')
+   p.write_text(PROGRAM.replace('@PHASE@',observed))
    r=subprocess.run([compiler,'-std=c++11','-O0','-fsanitize=undefined','-fno-sanitize-recover=undefined',str(p),'-o',str(e)],capture_output=True,text=True);self.assertEqual(r.returncode,0,r.stderr)
    return subprocess.run([str(e)],capture_output=True,text=True)
  def test_actual_phase(self):
-  r=self.run_phase(phase_source());self.assertEqual(r.returncode,0,r.stdout+r.stderr)
+  s=phase_source();self.assertEqual(s.count('::operator delete('),1);r=self.run_phase(s);self.assertEqual(r.returncode,0,r.stdout+r.stderr)
  def test_mutations(self):
   s=phase_source()
-  changes=[('success-reload','message->lifetimeTimer.Tick();','gui->message->lifetimeTimer.Tick();'),('failure-stale','finishedMessage = gui->message;','finishedMessage = message;'),('free-entry','free(finishedMessage);','free(message);'),('clear-before-free','free(finishedMessage);','gui->message = NULL; free(finishedMessage);'),('missing-owner-clear','gui->message = NULL;','/* missing clear */'),('skip-zero','if (id != 0)','if (true)'),('primary-priority','node = manager->primaryVmListHead;','node = manager->secondaryVmListHead;'),('root-rule','vm->layerNode.previous == NULL','vm->layerNode.previous != NULL'),('replace-flags','vm->flags35C |= GUI_ANM_DELETE_FLAG;','vm->flags35C = GUI_ANM_DELETE_FLAG;'),('child-flag','static_cast<AnmVmView *>(node->owner)->flags35C |= GUI_ANM_DELETE_FLAG;','static_cast<AnmVmView *>(node->owner)->flags35C |= 0;')]
+  changes=[('success-reload','message->lifetimeTimer.Tick();','gui->message->lifetimeTimer.Tick();'),('failure-stale','finishedMessage = gui->message;','finishedMessage = message;'),('free-entry','::operator delete(finishedMessage);','::operator delete(message);'),('clear-before-free','::operator delete(finishedMessage);','gui->message = NULL; ::operator delete(finishedMessage);'),('wrong-deallocator','::operator delete(finishedMessage);','free(finishedMessage);'),('missing-owner-clear','gui->message = NULL;','/* missing clear */'),('skip-zero','if (id != 0)','if (true)'),('primary-priority','node = manager->primaryVmListHead;','node = manager->secondaryVmListHead;'),('root-rule','vm->layerNode.previous == NULL','vm->layerNode.previous != NULL'),('replace-flags','vm->flags35C |= GUI_ANM_DELETE_FLAG;','vm->flags35C = GUI_ANM_DELETE_FLAG;'),('child-flag','static_cast<AnmVmView *>(node->owner)->flags35C |= GUI_ANM_DELETE_FLAG;','static_cast<AnmVmView *>(node->owner)->flags35C |= 0;')]
   changes += [('clear-slot-'+name,'finishedMessage->vmIds[GUI_MESSAGE_'+name+'].value = 0;','/* missing ID clear */') for name in ['PLAYER_PORTRAIT','ENEMY_PORTRAIT','TEXT_BOX','TEXT_LINE_0','TEXT_LINE_1','ENEMY_NAME']]
   for name,old,new in changes:
    with self.subTest(mutation=name):

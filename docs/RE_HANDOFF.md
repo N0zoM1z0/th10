@@ -5,21 +5,28 @@ Updated 2026-10-24 for the operator-approved
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
 WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
 at **97a206f** (Sound) and **7b85dd3** (Chain). WinMain remains parked against
-flag/noinline matrices. Current source checkpoint is
-[HUD boss-life capture](evidence/hud-life-capture-20261024/README.md).
-A fresh fourteen-TU Gui baseline preceded one ordinary const int life capture.
-Both complete owners are **3772/3836, nonexact**: 3741 code bytes, three-byte
-identity LEA alignment and seven table words. Candidate inventory is 71 syntactic
-fields / 248 local branches / 21 calls; baseline is 71/249/21 and target 72/250/21.
-The natural 26-byte load/capture/FILD/publication/FIDIV sequence equals target,
-without forced spill, volatile or width changes; this earns no fragment credit.
-Thirteen guards pass 1468/all 79 in both images. Independent baseline/candidate
-reviews preserve 111/229 artifacts, respectively; both native exits are 0.
-This batch adds zero exact bytes or source owners; metrics are unchanged.
-The focused boss-gauge suite passes 5 tests. All 112 target-independent CI stages
-passed for this source, exit 0, with frozen inputs preserved, verified at
-22:25:31 UTC. Only CI-result/next-step documentation changed afterward. An
-isolated excess-segment conditional ID-clear model is being prepared, not tried.
+flag/noinline matrices. Capture checkpoint **726d795** is the baseline for the
+current [HUD conditional-clear and delete-identity batch](evidence/hud-clear-delete-identity-20261024/README.md).
+Two individually measured conditional-clear models retain life capture and all
+13 exact guards, 1468/all 79, with independent proofs. A separate finished-message
+operator-delete call model also passes native and independent checks. Full HUD is now
+**3824/3836, nonexact**: 3796 code bytes, no alignment and seven table words.
+The hidden-clear model changes one branch displacement byte only; all other
+HUD bytes and the complete 4480-byte Run owner equal the preceding excess-clear
+image. Syntactic inventory is 72 fields / 249 local branches / 21 calls, not
+accepted semantic bindings or a target mismatch score.
+A separate actual-operator-delete identity repair revalidates three existing
+exact owners, 45/47/114 bytes, and all 55 distinct Enemy/ScriptViewer/Gui guard
+units. Original exit 1 and preflight-only line-ending correction are preserved;
+corrected same-image GUI observation passes, with no repeat native build.
+No exact credit, source coverage or authored denominator changes.
+Current Gui SHA-256:
+`6ad418338b2bdc59036da48da99f07b6fc664cba0d82531890160c6d855e91a9`.
+Full CI v2 passed all 112 stages for this batch, exit 0, with frozen inputs
+preserved, verified at 23:33:14 UTC. The first CI failure was an obsolete host
+deallocation observer; its log is preserved. Scoped observer/pin repairs retain
+all prior checks and add wrong-deallocator rejection. Only CI-result docs changed
+after the successful run.
 The separate global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
@@ -32,8 +39,9 @@ receipts below; neither added a whole-owner exact match or source-present owner.
 The prior D3D callee checkpoint added 243 whole-owner exact bytes across
 MainClearPresentTwice and MainSetScreenColor. Logging checkpoint 152492a added
 79 whole-owner exact bytes for Flush only, not its WinMain caller. The prior
-lifecycle/music caller batches, Sound/Chain diagnostics and current HUD capture
-trial each add **zero new whole-owner exact bytes**.
+lifecycle/music caller batches, Sound/Chain diagnostics and current HUD models
+each add **zero new whole-owner exact bytes**. Canonical identity repair retains
+206 previously credited bytes without adding new credit.
 InitD3DRendering and WinMain remain nonexact, with no runtime/shared-global closure.
 All experiments in the preceding ANM 15-control panel are terminal.
 
@@ -55,7 +63,7 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
-| HUD UpdateStageElements / target 3836 | Candidate 3772 bytes: 3741 code + 3 alignment + 28 table; 71 syntactic fields / 248 locals / 21 calls; nonexact |
+| HUD UpdateStageElements / target 3836 | Candidate 3824 bytes: 3796 code + 0 alignment + 28 table; 72 syntactic fields / 249 locals / 21 calls; nonexact |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
 | Authored source-present nonexact / absent | 205 / 118 functions |
 | Overall exact / mappings | 1255 functions / 141969 bytes; 1101 mappings |
@@ -203,25 +211,51 @@ exact credit occurs.
 Keep WinMain parked against flag/noinline matrices; reopen only for new
 independent evidence and a falsifiable model.
 
-Current [HUD capture evidence](evidence/hud-life-capture-20261024/README.md)
-uses a fresh actual fourteen-TU Gui baseline, not the stale older carrier.
-This graph retains /GL **without /GS**, with no support overrides. The fresh
-baseline retained the life reread, so one ordinary const int capture was applied;
-publication and ratio numerator now consume that same value. The 26-byte native
-load/capture/FILD/publication/FIDIV sequence naturally equals target, with no
-forced stack/register placement or width change. Full owner stays 3772/3836,
-nonexact, including all 3741 code bytes, three alignment bytes and seven table
-words. Candidate/baseline inventories are 71/248/21 and 71/249/21 fields/locals/
-calls; target is 72/250/21. These are not accepted bindings. All 226 raw
-baseline/candidate differing positions are retained, not reported as target
-mismatches; alignment/table words are unchanged. Independent baseline and
-candidate reviews pass, preserving 111 and 229 original artifacts. Both native
-exits are 0 and thirteen guards pass 1468/all 79. Current Gui SHA-256:
-`142c14724e4d600f93fb462af60df08d43b42c5ca6880cee449256135661f6e6`.
-Focused boss-gauge tests pass 5 cases; all 112 CI stages passed with frozen
-inputs preserved. An isolated excess-segment conditional ID-clear model is
-being prepared, but has not been applied or compiled.
-No new exact or source-owner credit follows the local capture improvement.
+The [HUD capture checkpoint](evidence/hud-life-capture-20261024/README.md)
+726d795 used a fresh actual fourteen-TU Gui baseline, not the stale older
+carrier. Its ordinary const int capture naturally recovered the target life
+load/capture/FILD/publication/FIDIV sequence, with no forced spill or width
+change. Both complete owners stayed 3772/3836. Its 112-stage CI pass remains
+scoped to that source checkpoint.
+
+The [current HUD clear/delete evidence](evidence/hud-clear-delete-identity-20261024/README.md)
+retains the same Gui /GL graph **without /GS** and no support overrides.
+Moving only the excess-segment ID clear inside its nonzero gate produces
+3824 bytes and wider native scheduling changes, including a real EnemyManager
+reload. Moving only the hidden-gauge ID clear inside its nonzero gate then
+changes exactly one branch displacement byte. All other HUD/table bytes and
+all 4480 Run bytes are identical to the preceding excess image. Independent
+proofs preserve life capture, make zero paths skip their respective ID clears,
+and require one clear on every terminating nonzero path; invalid-graph controls
+reject. The hidden-block manager load still precedes the gate, unlike target.
+HUD remains nonexact; 3824 is 3796 code + 0 alignment + 28 table bytes.
+Its 72/249/21 syntactic fields/locals/calls are not accepted bindings; the
+12-byte extent gap is not an ordinary mismatch count. Both native trials and
+all 13 guards pass, with original artifacts intact.
+
+The separate deallocator identity repair uses actual operator delete in
+Enemy.cpp/Chain.cpp and corrects five symbol contracts. Three existing exact
+owners (45/47/114 bytes) revalidate across one cold build per Enemy,
+ScriptViewer and Gui producer, covering all 55 distinct units in canonical
+and independent replay. Original repair exit 1 from an obsolete nonstatic Run
+observer is retained; separate correct-static-selector replay passes on the
+same image. Chain EOL restoration occurred after a preflight-only stop, before
+compilation. Original allocation syntax and Enemy payload type remain unknown;
+no `_free`-to-delete symbol substitution is accepted.
+The separate HUD finished-message trial changes only free to explicit global
+operator delete. Native exit 0, all 13 guards and inherited proofs pass; complete
+HUD remains 3824 bytes. Six manual ID clears, 18 flag-access effects, captured
+owner argument, caller cleanup, null bypass and final GUI null publication are
+retained without a destructor edge. The callee remains a diagnostic anchor.
+Independent third-model review passes with all 4340 frozen inputs and the
+repaired baseline intact. Only two HUD bytes in the actual call displacement
+change; all other HUD/table bytes, all six cleanup walks and the complete Run
+owner are raw-identical. Full CI v2 passed all 112 stages with frozen inputs
+preserved after scoped host observer/pin corrections. Default-first
+boss-marker comparison is being prepared, not tested; the float-local model
+remains separate and untried. Target float4 versus candidate double8 multiply
+referent and ordinary/control-flow differences remain unresolved. No new
+exact/source/denominator credit or runtime closure follows these repairs.
 Ending remains queued: its retained source matches its receipt, but 20/52
 support/header inputs drifted and prior aggregate controls were neutral. Do not
 tune against that stale graph or start another unsupported allocation panel.

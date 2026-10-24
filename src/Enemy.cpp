@@ -340,8 +340,8 @@ void EnemyEclHostBaseView::ReleaseEclAllocations()
     while (node != NULL)
     {
         EnemyOwnedAllocationNodeView *next = node->next;
-        free(node->allocation);
-        free(node);
+        ::operator delete(node->allocation);
+        ::operator delete(node);
         node = next;
     }
 }

@@ -6,6 +6,7 @@
 #include "Main.hpp"
 #include <windows.h>
 #include <stdlib.h>
+#include <new>
 
 typedef unsigned char u8;
 typedef unsigned int u32;
@@ -164,7 +165,7 @@ found:
         elem->callback = NULL;
         elem->addedCallback = NULL;
         elem->deletedCallback = NULL;
-        free(elem);
+        ::operator delete(elem);
     }
 }
 

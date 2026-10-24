@@ -1286,9 +1286,9 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                                     }
                                 }
                             }
+                            gui->bossGaugeSegmentVmIds[segment].value = 0;
                         }
                     }
-                    gui->bossGaugeSegmentVmIds[segment].value = 0;
                 }
             }
         }
@@ -1327,9 +1327,9 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                             }
                         }
                     }
+                    gui->bossGaugeVmId.value = 0;
                 }
             }
-            gui->bossGaugeVmId.value = 0;
             gui->bossGaugeDisplayed = 0.0f;
             for (int value = 0; value < 4; ++value)
                 gui->bossGaugeValues[value].value = 0.0f;
@@ -1561,7 +1561,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                         }
                         finishedMessage->vmIds[GUI_MESSAGE_ENEMY_NAME].value = 0;
                     }
-                    free(finishedMessage);
+                    ::operator delete(finishedMessage);
                 }
                 gui->message = NULL;
             }

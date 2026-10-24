@@ -3,7 +3,7 @@
   "normalization": "crlf-to-lf-only",
   "committed_base": "67ced17fff5dfe758a33000b3f83c92002187373",
   "sha256_lf": {
-    "src/Chain.cpp": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
+    "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
     "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
     "src/AnmManager.cpp": "e3764604ae06c8d0130cb8713f765c13d4fda074e87d67e27e8745f0e154e2fd",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
@@ -370,5 +370,14 @@
     "strict_normalization_and_rejection_policy_unchanged": true,
     "reason": "Only source-local axis/child argument value views and ExecuteScript flip/child91 statements change. Exact inverse reconstructs the whole prior file; the host-consumed RNG helper and all other host dependencies are identical. No host adaptation or pin rejection policy change.",
     "evidence": "docs/evidence/anm-child-request-record/README.md"
+  },
+  "reviewed_delete_identity_update": {
+    "date": "2026-10-24",
+    "source": "src/Chain.cpp",
+    "previous_sha256_lf": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
+    "current_sha256_lf": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "current_raw_sha256": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "scope": "Reviewed scalar-delete identity repair: explicit raw operator delete after unchanged callback cleanup; host deallocation seam token updated; all other pins unchanged",
+    "evidence": ".analysis/gpt-dots/free-delete-binding-audit-20261024/repair-validation/final-acceptance-review.json"
   }
 }
