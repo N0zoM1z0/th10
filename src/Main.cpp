@@ -1437,3 +1437,56 @@ double MainGetTimestampUnlocked()
         g_GameWindowView.timeOrigin = timestamp;
     return timestamp - g_GameWindowView.timeOrigin;
 }
+
+// Slot +0xAC: observed seven stack arguments including the device receiver.
+// The opaque rectangle argument is always NULL in both target sites.
+typedef long (__stdcall *MainD3d9ClearForScreenColor)(
+    MainD3d9DeviceView *, unsigned int, const void *, unsigned int,
+    unsigned int, float, unsigned int);
+
+// Target 43BC40 / 135 bytes. The target's private color input is ESI.
+// Ordinary source argument below lets /GL choose its internal convention;
+// no artificial register binding or inline-control attribute is requested.
+// Both Present calls occur unconditionally; Reset occurs on signed failure.
+static void MainClearPresentTwice(unsigned int color)
+{
+    MainD3d9DeviceView *device = g_MainSupervisorView.d3dDevice;
+    reinterpret_cast<MainD3d9ClearForScreenColor>(device->vtable->slot0AC)(
+        device, 0, NULL, 3, color, 1.0f, 0);
+    device = g_MainSupervisorView.d3dDevice;
+    if (device->vtable->Present(device, NULL, NULL, NULL, NULL) < 0)
+    {
+        device = g_MainSupervisorView.d3dDevice;
+        device->vtable->Reset(device, &g_MainSupervisorView.presentParameters);
+    }
+
+    device = g_MainSupervisorView.d3dDevice;
+    reinterpret_cast<MainD3d9ClearForScreenColor>(device->vtable->slot0AC)(
+        device, 0, NULL, 3, color, 1.0f, 0);
+    device = g_MainSupervisorView.d3dDevice;
+    if (device->vtable->Present(device, NULL, NULL, NULL, NULL) < 0)
+    {
+        device = g_MainSupervisorView.d3dDevice;
+        device->vtable->Reset(device, &g_MainSupervisorView.presentParameters);
+    }
+}
+
+// Target43BCD0 /108 bytes. The exposed stack contract is one DWORD, RET4.
+// No incoming register is consumed. Original source ownership/name unknown.
+void __stdcall MainSetScreenColor(unsigned int color)
+{
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    if (manager != NULL)
+        manager->FlushVertexBuffer();
+
+    // Device capture precedes viewport writes in the target.
+    MainD3d9DeviceView *device = g_MainSupervisorView.d3dDevice;
+    g_MainSupervisorView.viewport.x = 0;
+    g_MainSupervisorView.viewport.y = 0;
+    g_MainSupervisorView.viewport.width = 640;
+    g_MainSupervisorView.viewport.height = 480;
+    g_MainSupervisorView.viewport.minZ = 0.0f;
+    g_MainSupervisorView.viewport.maxZ = 1.0f;
+    device->vtable->SetViewport(device, &g_MainSupervisorView.viewport);
+    MainClearPresentTwice(color);
+}

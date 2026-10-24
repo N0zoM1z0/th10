@@ -1,0 +1,40 @@
+{
+  "source_sha256": "34af603b4fbfa66a9a94802c3383dcd108e80a57b8f3de7d27513a275654b577",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_canonical_owners": {
+    "main-clear-present-twice": {
+      "bytes": 135,
+      "fields": 8
+    },
+    "main-set-screen-color": {
+      "bytes": 108,
+      "fields": 11,
+      "nested_same_artifact_callee": "main-clear-present-twice"
+    }
+  },
+  "new_authored_exact_bytes": 243,
+  "authored_exact_total": 74959,
+  "reviewed_authored_denominator": 273579,
+  "new_source_owners": 2,
+  "ci_stages": 112,
+  "ci_exit": 0,
+  "ci_finished_utc": "2026-10-24T18:28:40Z",
+  "ci_inputs_preserved": true,
+  "ci_log_sha256": "0684389d0a2e34b73ead277640e93e018df1aba3e4b67c3ec13aa176efe04449",
+  "ci_freeze_sha256": "2fb1862e6326a7f6e1a257c8977e898542b837aa3e079eeabf9b4f8b34386e02",
+  "new_source_canonical_regression": {
+    "owners": 6,
+    "bytes": 1436,
+    "fields": 69,
+    "all_exact": true
+  },
+  "D3D_parent": {
+    "candidate_extent": 1238,
+    "target_extent": 1159,
+    "exact": false,
+    "direct_wrapper_edge": false,
+    "wrapper_operations_inlined": true
+  },
+  "runtime_and_shared_global_storage_closure": false,
+  "post_ci_changes": "Outcome documentation only; separate documentation and whitespace checks."
+}

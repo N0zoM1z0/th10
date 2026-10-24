@@ -140,12 +140,27 @@ See [source routing and layout controls](evidence/ecl-run-layout-controls/README
 A direct REL32 call to a static callee may explicitly declare both
 `static_source` and `static_size`. This opt-in derives the selected object from
 the unit's source/support list and uses the existing qualified MAP/PDB owner
-checks. The callee must have a complete reviewed target boundary, dense
-zero-field decoding and raw equality across its whole extent; the decoded
+checks. In the default lane, the callee must have a complete reviewed target
+boundary, dense zero-field decoding and raw equality across its whole extent; the decoded
 caller must CALL its exact entry. Partial bodies, linked child fields, interior
 entries, JMPs and implicit public-to-static fallback are rejected. This binds
 the caller field without adding duplicate credit for the callee. See the
 [script browser lifecycle evidence](evidence/script-viewer-native-lifecycle/README.md).
+
+A field-bearing static CALL may additionally opt in with
+`static_callee_unit = "unit-name"`. The referenced unit must be a complete,
+qualified static owner with the same entry, source, symbol and extent as the
+linkage, and the identical primary/support/profile/link/entry/harness graph and
+output directory. Its maintained source/name mapping and reviewed target
+boundary must agree. The canonical engine recursively proves every callee
+field, fixed local destination and ordinary byte in the same PE/MAP/PDB;
+artifact hashes and PDB identity must remain unchanged throughout that proof.
+The caller still must CALL the exact entry and compare every owned byte.
+Unknown references, cycles, partial or different-artifact proofs, ambiguous
+owners, interior entries and tail-jump use of this option are rejected. The
+report retains the complete nested proof rather than granting extra callee
+credit through the caller. Without this key, the legacy zero-field lane is
+unchanged. See the [D3D real-callee proof](evidence/d3d-real-callees-20261024/README.md).
 
 A static REL32 tail jump uses the same whole raw-equal zero-field callee checks
 and additionally declares `static_tail_jump = true`. This explicit lane requires
@@ -173,8 +188,8 @@ graph. Different declared candidate/target sizes are permitted because this is
 **address binding only**, not callee byte equality. The report labels that scope
 explicitly; the enclosing parent still replays every field and compares every
 owned byte. Callback bytes receive no credit from that parent replay. This lane
-does not change the direct static CALL policy above, which still requires a
-complete raw-equal zero-field callee. See the
+does not weaken either direct static CALL lane above: both require a complete
+callee byte proof, not just an address. See the
 [transition initializer proof](evidence/effect-initializer/README.md).
 
 If a required input, extent, tool profile, or observable cannot be established,

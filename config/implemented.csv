@@ -1096,3 +1096,5 @@ ArchiveOrDiskPathView::FindArchive
 ArchiveOrDiskPathView::Read
 ArchiveOrDiskPathView::GetSize
 PlayerLoadOptionData
+MainClearPresentTwice
+MainSetScreenColor

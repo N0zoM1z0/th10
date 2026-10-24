@@ -4,12 +4,14 @@ Updated 2026-10-24 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
 Committed source checkpoints: MIDI inline-clock recovery **45c16aa** and
-Options WORD-consumer recovery **1e35737**. This checkpoint records the measured
-five-factor D3D source in `src/Main.cpp`; the final
-sign trial completed at 17:30:01 UTC. The owner is 1152/1159 and nonexact.
-Fresh ten-TU canonical regression passed at 17:32:16 UTC; all 111 full-CI
-stages passed at 17:42:01 UTC. Real callee closure is next, not yet implemented. Parked core owners,
-headers, profiles and exactness ledgers remain unchanged.
+Options WORD-consumer recovery **1e35737**, and five-factor D3D **6b3b5e2**.
+This checkpoint appends the real 135-byte helper and 108-byte
+wrapper. Both are now canonically exact: helper 135/all 8, wrapper 108/all 11.
+The fresh wrapper cold build passed at 18:15:52 UTC with complete same-image
+helper proof; this batch adds 243 authored exact bytes and two source owners.
+D3D inlines the wrapper and remains 1238/1159, nonexact. New-source ten-TU
+regression passed at 18:11:20 UTC. All 112 full-CI stages passed at 18:28:40
+UTC against this source/tool revision, with frozen inputs preserved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
@@ -18,9 +20,10 @@ directions belong to predecessor sessions.
 The new method changes selection and experiment order, not acceptance rules.
 MIDI and Options have completed bounded source experiments and are parked with
 receipts below; neither added a whole-owner exact match or source-present owner.
-The active D3D pilot also has **0 new whole-owner exact bytes**. Its structural
-diagnostics and exact peer guards do not establish an exact D3D owner. All
-experiments in the preceding ANM 15-control panel are terminal.
+Real callee recovery adds **243 new whole-owner exact bytes** across
+MainClearPresentTwice and MainSetScreenColor, plus two source-present owners.
+InitD3DRendering remains nonexact, with no runtime/shared-global closure.
+All experiments in the preceding ANM 15-control panel are terminal.
 
 ## Maintained state
 
@@ -33,16 +36,19 @@ experiments in the preceding ANM 15-control panel are terminal.
 | PlayerInitialize / target 1435 | 1380/1435; 55 differences; 49 fields; actual 17-input graph recompiled ANM |
 | MIDI ProcessEvent / target 1670 | 1690-byte candidate; all 37 fields recovered; structural rejection, parked at 45c16aa |
 | UpdateOptions / target 3188 | 3276-byte candidate; two observed WORD consumers recovered; nonexact, parked at 1e35737 |
-| InitD3DRendering / target 1159 | Final five-factor candidate 1152 bytes / 98 fields versus target 100; 30/29 branches; real callee closure open; zero exact credit |
-| Authored / source / authored exact | 734 functions / 273579 bytes; source 614 / 248174; exact 409 / 74716 |
-| Authored source-present nonexact / absent | 205 / 120 functions |
-| Overall exact / mappings | 1252 functions / 141647 bytes; 1098 mappings |
+| InitD3DRendering / target 1159 | Current candidate 1238 bytes; wrapper inlined, no direct wrapper call; nonexact |
+| MainClearPresentTwice / target 135 | Fresh canonical exact 135/all 8; also replayed in the wrapper's same fresh image |
+| MainSetScreenColor / target 108 | Fresh canonical exact 108/all 11 with recursive same-image helper 135/all 8 proof |
+| Authored / source / authored exact | 734 functions / 273579 bytes; source 616 / 248417; exact 411 / 74959 |
+| Authored source-present nonexact / absent | 205 / 118 functions |
+| Overall exact / mappings | 1254 functions / 141890 bytes; 1100 mappings |
 | Windows i386 product / runtime | Open; semantic reconstruction and portability not started |
 
 [Live progress](PROGRESS.md): 1776 reviewed, 518 excluded, 524 indeterminate origins.
-No exact ledger, boundary/origin, profile, ABI or phase gate changes in this
-method adoption. Source coverage and ordinary equal-byte counts are not exact
-credit; the maintained totals above remain independent metrics.
+Both complete real callees receive exact-ledger credit only after their fresh
+canonical replays; both receive source mappings. Progress and SVG reflect this,
+with no boundary/origin, profile or phase-gate promotion. Ordinary equal-byte
+counts and diagnostic equality are not canonical exact credit.
 
 ## Next bounded work
 
@@ -75,16 +81,19 @@ the controller are preserved. UpdateOptions remains3276/3188 with structural
 and binding gaps. The two fewer static FindVm calls are branch factoring, not
 lost runtime work. Park unsupported layout/adapter spelling panels.
 
-Current bounded work is InitD3DRendering. Separate API-only and tangent-only
-models, then their combination, recovered the observed real error-context calls
-and tangent input precision without making the whole owner exact. The subsequent
-MainSetScreenColor stdcall declaration-only trial removes extra caller cleanup,
-but its unresolved nonexecutable anchor does not close the actual 108-byte
-callee. Byte-flag and camera-sign trials are now measured, with the original
-byte-flag postbuild failure preserved alongside separate v03 validation.
-Next establish a fresh three-TU graph-only baseline before implementing the
-real 108-byte and 135-byte callees. No new source-present or exact claim exists
-for that planned closure.
+Current work is [real D3D callee recovery](evidence/d3d-real-callees-20261024/README.md).
+The fresh three-TU graph-only baseline preserved thirteen prior exact guards;
+the implementation now independently matches helper 135/all 8, wrapper
+108/all 11 and real Flush 133/all 4. Both new bodies now have fresh canonical
+acceptance. The applied strict `static_callee_unit` extension proves the helper
+recursively in the same artifact, with cycle/identity/extent/field checks and
+unchanged legacy zero-field behavior; its maintained suite passes 110 tests.
+D3D inlines the wrapper and remains 1238/1159, with no direct wrapper call.
+The new-source ten-TU six-owner regression passed 1436/all 69 at 18:11:20 UTC.
+All 112 CI stages pass. Tooling/tests and callees/evidence/progress are separate
+local checkpoints. Continue only with a new evidence-backed parent-boundary
+model; do not blindly suppress inlining globally. No runtime/shared-global
+closure or parent exactness follows from these accepted standalone bodies.
 Ending remains queued: its retained source matches its receipt, but 20/52
 support/header inputs drifted and prior aggregate controls were neutral. Do not
 tune against that stale graph or start another unsupported allocation panel.
@@ -185,8 +194,10 @@ are not in a Git clone; transfer the workspace and inventories when required.
 records that historical cleanup's focused checks and the earlier source
 checkpoint's 89+22-stage CI coverage. MIDI checkpoint **45c16aa** later passed
 all 111 stages; Options **1e35737** had focused validation at its own checkpoint.
-The final five-factor D3D source now independently passes all 111 stages,
+Five-factor D3D checkpoint **6b3b5e2** independently passed all 111 stages,
 including the retained Options changes, with frozen inputs preserved.
+The new real-callee source/tooling has its own subsequent 112-stage full-CI
+pass at 18:28:40 UTC, exit 0, and its own new-source ten-TU regression pass.
 
 ## First exact-first pilot result: MIDI
 
@@ -219,12 +230,41 @@ Refresh3999/all112, all333 public-owner diagnostics and independent whole-.text
 preservation outside UpdateOptions. This is focused modified-owner validation,
 not a new full111-stage CI run. No new exact bytes or source owners are claimed.
 
-## Active D3D pilot: final five-factor source
+## Current real D3D callees
+
+[Durable result and copied canonical receipts](evidence/d3d-real-callees-20261024/README.md).
+Current Main.cpp SHA-256:
+`34af603b4fbfa66a9a94802c3383dcd108e80a57b8f3de7d27513a275654b577`.
+
+The same three-TU graph-only baseline preceded implementation. Independent
+full replay matches helper 135/all 8, wrapper 108/all 11 and real Flush
+133/all 4. A separate v04 width audit accounts for the inlined SetViewport
+eight-byte cleanup and preserves flag/stack checks; the original unresolved
+audit is retained. D3D is 1238/1159 and does not directly call the wrapper.
+
+Fresh canonical unit `main-clear-present-twice` passed at 18:05:14 UTC.
+The strict `static_callee_unit` capability is now applied with 110 maintained
+tests passing. A fresh `main-set-screen-color` cold build passed at 18:15:52
+UTC, wrapper 108/all 11 plus recursive same-image helper 135/all 8, with all
+frozen inputs preserved. Both complete owners are now credited, totaling
+243 authored exact bytes; no D3D parent credit is added.
+
+New-source ten-TU regression passed at 18:11:20 UTC: six complete owners,
+1436 bytes / all 69 fields. Receipt:
+`.analysis/gpt-dots/d3d-callee-regression-20261024/receipt.json`.
+Full CI independently passed all 112 stages at 18:28:40 UTC, exit 0, with all
+frozen inputs unchanged. Logs and hash receipts remain under
+`.analysis/gpt-dots/d3d-callees-checkpoint-20261024/`; the durable
+[evidence summary](evidence/d3d-real-callees-20261024/validation-summary.json)
+records the scope. Only CI-result documentation changed afterward and was
+rechecked. Runtime, shared-global identity and parent closure remain open.
+
+## Historical D3D checkpoint: five-factor source 6b3b5e2
 
 See the [durable D3D receipt](evidence/d3d-exact-first-20261024/README.md).
 
-Status after the 17:32:16 UTC regression: final measured uncommitted
-`src/Main.cpp` SHA-256 is
+Historical source tested by the 17:32:16 UTC regression and checkpointed as
+6b3b5e2, `src/Main.cpp` SHA-256:
 `3bbb030a9d3f9d1961ebbfcfbccb5c2dbf080cf9dc68f8d129f9362d7cfb8de7`.
 The completed trials below are structural inventories, not ordinary-byte
 equality scores or canonical exact acceptance:
@@ -313,5 +353,7 @@ Ignored receipt roots and exact files:
 
 This pilot is distinct from the stopped adapter-format experiment. Preserve
 all nine untracked files under `docs/evidence/d3d-adapter-format/` without
-resuming or incorporating that work. New whole-owner exact bytes and new
-source-present owners remain zero; later promotion still requires every gate.
+resuming or incorporating that work. The historical five-factor checkpoint
+added zero exact bytes and zero source owners. The later real-callee recovery
+above separately adds 243 exact callee bytes and two source-present owners.
+The D3D parent and runtime/shared-global closure remain open.
