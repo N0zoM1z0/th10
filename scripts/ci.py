@@ -43,6 +43,7 @@ def main() -> int:
         run("Compile workflow Python", [sys.executable, "-m", "py_compile", *tracked("scripts/*.py")])
         run("Validate LTCG entry identity guards", [sys.executable, "scripts/test-ltcg-entry.py"])
         run("Validate qualified static owners", [sys.executable, "scripts/test-static-owner-selection.py"])
+        run("Validate referenced static callee units", [sys.executable, "scripts/test-linked-static-callee-unit.py"])
         run("Validate linked profiles and static callees", [sys.executable, "scripts/test-linked-context.py"])
         run("Validate internal linked destinations", [sys.executable, "scripts/test-linked-local-fields.py"])
         run("Validate linked table and selector coverage", [sys.executable, "scripts/test-linked-data-coverage.py"])

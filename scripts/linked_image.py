@@ -474,7 +474,7 @@ def static_linkage_selector(
     unit: dict[str, object], field: dict[str, object]
 ) -> dict[str, object] | None:
     """Opt in to a complete static transfer target; never infer its visibility."""
-    present = {key for key in ("static_source", "static_size", "static_tail_jump") if key in field}
+    present = {key for key in ("static_source", "static_size", "static_tail_jump", "static_callee_unit") if key in field}
     if not present:
         return None
     if unit.get("artifact_kind") != "linked-pe":
@@ -486,6 +486,10 @@ def static_linkage_selector(
     if (field.get("type") != "REL32" or field.get("local", False)
             or field.get("addend", 0) != 0):
         raise LinkedImageError("static linkage requires a direct REL32 entry call")
+    if "static_callee_unit" in field:
+        if (not isinstance(field["static_callee_unit"], str) or not field["static_callee_unit"]
+                or field.get("static_tail_jump")):
+            raise LinkedImageError("static_callee_unit requires a named direct CALL unit")
     return static_owner_selector({
         "artifact_kind": "linked-pe", "owner_visibility": "static",
         "source": unit.get("source"), "pdb_source": field["static_source"],
@@ -493,6 +497,56 @@ def static_linkage_selector(
         "normal_support_sources": unit.get("normal_support_sources", []),
         "symbol": field.get("symbol"), "size": field["static_size"],
     })
+
+
+def static_callee_unit_reference(unit, field, units):
+    """Resolve an explicit same-artifact, whole-static-owner proof dependency."""
+    if "static_callee_unit" not in field:
+        return None
+    selector = static_linkage_selector(unit, field)
+    name = field["static_callee_unit"]
+    callee = units.get(name)
+    if not isinstance(callee, dict):
+        raise LinkedImageError("static callee unit reference is unknown")
+    if static_owner_selector(callee) != selector or callee.get("owner_visibility") != "static":
+        raise LinkedImageError("static callee unit owner identity differs from linkage")
+    if callee.get("target_address") != field.get("target"):
+        raise LinkedImageError("static callee unit target differs from linkage")
+    # Compare the entire declared compilation/link graph, not only the file path.
+    defaults = {"support_sources": [], "normal_support_sources": [], "support_profiles": {}}
+    for key in ("artifact_kind", "source", "profile", "support_sources",
+                "normal_support_sources", "support_profiles", "link_profile",
+                "harness", "entry_symbol", "output_dir"):
+        if unit.get(key, defaults.get(key)) != callee.get(key, defaults.get(key)):
+            raise LinkedImageError("static callee unit differs in artifact graph: " + key)
+    if not isinstance(unit.get("output_dir"), str) or not unit["output_dir"]:
+        raise LinkedImageError("static callee unit requires an explicit shared output")
+    return name
+
+
+def validate_static_callee_units(units):
+    """Reject missing/mismatched references and cycles before build or replay."""
+    edges = {}
+    for name, unit in units.items():
+        if not isinstance(unit, dict):
+            raise LinkedImageError("static callee graph contains an invalid unit")
+        edges[name] = []
+        for field in unit.get("linkages", []):
+            if isinstance(field, dict) and "static_callee_unit" in field:
+                edges[name].append(static_callee_unit_reference(unit, field, units))
+    active, complete = set(), set()
+    def visit(name):
+        if name in active:
+            raise LinkedImageError("static callee unit dependency cycle")
+        if name in complete:
+            return
+        active.add(name)
+        for callee in edges[name]:
+            visit(callee)
+        active.remove(name)
+        complete.add(name)
+    for name in edges:
+        visit(name)
 
 
 STATIC_ADDRESS_KEYS = (
@@ -517,7 +571,7 @@ def static_address_selector(
         raise LinkedImageError("static address requires a linked-pe artifact")
     if (field.get("type") != "DIR32" or field.get("local", False)
             or field.get("addend", 0) != 0
-            or any(key in field for key in ("static_source", "static_size", "static_tail_jump"))):
+            or any(key in field for key in ("static_source", "static_size", "static_tail_jump", "static_callee_unit"))):
         raise LinkedImageError("static address requires a separate DIR32 entry binding")
     size = field["static_address_target_size"]
     if type(size) is not int or size <= 0:

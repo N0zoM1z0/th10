@@ -17,6 +17,8 @@ from linked_image import (
     linked_functions,
     static_owner_selector,
     static_linkage_selector,
+    static_callee_unit_reference,
+    validate_static_callee_units,
     static_address_selector,
     STATIC_ADDRESS_KEYS,
     map_publics,
@@ -103,6 +105,7 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
                 **({"stack_file_eh_handler": True} if raw.get("stack_file_eh_handler") else {}),
                 **({"static_source": raw["static_source"], "static_size": raw["static_size"]}
                    if static_linkage_selector(unit, raw) is not None else {}),
+                **({"static_callee_unit": raw["static_callee_unit"]} if "static_callee_unit" in raw else {}),
                 **({"static_tail_jump": True} if raw.get("static_tail_jump") else {}),
                 **({key: raw[key] for key in STATIC_ADDRESS_KEYS}
                    if static_address_selector(unit, raw) is not None else {}),
@@ -210,8 +213,9 @@ def pack_linked_value(
 def static_call_target(
     unit: dict[str, object], field: dict[str, object], directory: Path,
     image: PEImage, publics: list[dict[str, object]], target: PEImage,
+    *, unit_manifest=None, active_units=(),
 ) -> dict[str, object]:
-    """Resolve one complete, zero-field static callee, including its raw bytes."""
+    """Prove a whole static callee: legacy raw body or explicit unit replay."""
     selector = static_linkage_selector(unit, field)
     if selector is None:
         raise ValueError("static call target lacks an explicit selector")
@@ -224,7 +228,7 @@ def static_call_target(
             or bounds[0]["state"] != "reviewed"
             or int(bounds[0]["span_end"], 0) != address + size - 1):
         raise ValueError("static callee lacks the complete reviewed target boundary")
-    if field.get("static_tail_jump"):
+    if field.get("static_tail_jump") or "static_callee_unit" in field:
         name = owners[0].get("proposed_name")
         if (owners[0].get("source_file") != field["static_source"] or not name
                 or not str(field["symbol"]).startswith("?" + name + "@@")):
@@ -237,6 +241,29 @@ def static_call_target(
         raise ValueError("static callee must have one qualified complete owner")
     function = functions[0]
     candidate = int(function["address"], 0)
+    if "static_callee_unit" in field:
+        if unit_manifest is None:
+            raise ValueError("static callee unit requires the same manifest context")
+        reference = static_callee_unit_reference(unit, field, unit_manifest["units"])
+        def artifact_identity():
+            return {suffix: hashlib.sha256((directory / ("source." + suffix)).read_bytes()).hexdigest()
+                    for suffix in ("exe", "map", "pdb")}
+        before = artifact_identity()
+        if (before["exe"] != linked["image_sha256"]
+                or before["exe"] != hashlib.sha256(image.data).hexdigest()):
+            raise ValueError("static callee artifact changed during owner selection")
+        proof = compare_unit(reference, _active_units=active_units, _unit_manifest=unit_manifest)
+        if artifact_identity() != before:
+            raise ValueError("static callee artifact changed during recursive replay")
+        if (proof["result"] != "exact" or proof["size"] != size
+                or proof["compared_size"] != size or proof["matched_bytes"] != size
+                or proof["matched_compared_bytes"] != size
+                or proof["candidate_address"] != function["address"]
+                or proof["image_sha256"] != before["exe"]
+                or proof["pdb_guid"] != linked["pdb_guid"] or proof["pdb_age"] != linked["pdb_age"]
+                or not proof["normalization_complete"] or proof["decoded_bytes"] != size):
+            raise ValueError("static callee unit lacks an exact whole same-artifact proof")
+        return {**function, "callee_unit_proof": proof, "artifact_sha256": before}
     fields = linked_code_fields(image, publics, candidate, size)
     if (not fields["normalization_complete"] or fields["decoded_bytes"] != size
             or fields["fields"]):
@@ -290,9 +317,15 @@ def static_address_target(
     return function
 
 
-def compare_unit(name: str) -> dict[str, object]:
-    with UNITS_MANIFEST.open("rb") as stream:
-        unit_manifest = tomllib.load(stream)
+def compare_unit(name: str, *, _active_units=(), _unit_manifest=None) -> dict[str, object]:
+    if name in _active_units:
+        raise ValueError("static callee unit dependency cycle")
+    active_units = (*_active_units, name)
+    if _unit_manifest is None:
+        with UNITS_MANIFEST.open("rb") as stream:
+            unit_manifest = tomllib.load(stream)
+    else:
+        unit_manifest = _unit_manifest
     with TARGET_MANIFEST.open("rb") as stream:
         target_manifest = tomllib.load(stream)
     if unit_manifest.get("target_sha256") != target_manifest["target"]["sha256"]:
@@ -304,6 +337,7 @@ def compare_unit(name: str) -> dict[str, object]:
         or not isinstance(units[name], dict)
     ):
         raise ValueError(f"unknown match unit {name!r}")
+    validate_static_callee_units(units)
     unit = units[name]
     if unit.get("artifact_kind") != "linked-pe":
         raise ValueError("this comparator requires an explicit linked-PE artifact kind")
@@ -461,10 +495,11 @@ def compare_unit(name: str) -> dict[str, object]:
             if observed.get("instruction") != instruction:
                 raise ValueError(f"static linkage must be a decoded direct {instruction.upper()}")
             static_key = (semantic, str(field["static_source"]), int(field["static_size"]),
-                          int(field["target"]), bool(field.get("static_tail_jump")))
+                          int(field["target"]), bool(field.get("static_tail_jump")), field.get("static_callee_unit"))
             if static_key not in static_calls:
                 static_calls[static_key] = static_call_target(
-                    unit, field, directory, candidate_image, publics, target)
+                    unit, field, directory, candidate_image, publics, target,
+                    unit_manifest=unit_manifest, active_units=active_units)
             function = static_calls[static_key]
             if int(function["address"], 0) != expected_candidate_address:
                 raise ValueError("static call does not enter its qualified callee")
@@ -532,6 +567,7 @@ def compare_unit(name: str) -> dict[str, object]:
         for offset, (left, right) in enumerate(zip(candidate, original))
         if left != right
     ]
+    function = parent_function  # Callee lookup must not replace caller extent metadata.
     coverage_differences = sum(int(row["offset"], 0) < size for row in differences)
     return {
         "unit": name,

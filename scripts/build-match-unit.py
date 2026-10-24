@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from linked_image import static_owner_selector, static_linkage_selector, static_address_selector
+from linked_image import static_owner_selector, static_linkage_selector, static_address_selector, validate_static_callee_units
 from linked_allocation_eh import allocation_eh_selector
 from linked_stack_file_eh import stack_file_eh_selector
 
@@ -340,6 +340,7 @@ def load() -> dict[str, object]:
         if previous_group != group:
             raise ValueError(f"build artifact {output.relative_to(ROOT)!s} has two owners")
 
+    validate_static_callee_units(units)
     target_extents.sort()
     for previous, current in zip(target_extents, target_extents[1:]):
         if current[0] < previous[1]:
