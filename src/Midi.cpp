@@ -68,15 +68,6 @@ unsigned int MidiReadVariableLength(unsigned char **cursor)
     return value;
 }
 
-static unsigned __int64 MidiElapsedTicks(const MidiOutputView *output)
-{
-    return (static_cast<unsigned __int64>(
-                static_cast<__int64>(output->ticksPerQuarterNote)) *
-            output->elapsedTimerTicks * 1000) /
-        static_cast<unsigned __int64>(
-            static_cast<__int64>(output->tempoMicroseconds));
-}
-
 // TH10 0x0043ACE0.
 void MidiOutputView::ResetTracks()
 {
@@ -125,7 +116,11 @@ void MidiOutputView::ApplyChannelVolumes(int adjustment)
 void MidiOutputView::Tick()
 {
     int anyActive = 0;
-    unsigned __int64 eventTime = eventTickBase + MidiElapsedTicks(this);
+    unsigned __int64 eventTime = eventTickBase + ((static_cast<unsigned __int64>(
+                static_cast<__int64>(this->ticksPerQuarterNote)) *
+            this->elapsedTimerTicks * 1000) /
+        static_cast<unsigned __int64>(
+            static_cast<__int64>(this->tempoMicroseconds)));
     if (fadeActive != 0) {
         if (fadePosition >= fadeDuration) {
             fadeVolume = 0.0f;
@@ -149,7 +144,11 @@ void MidiOutputView::Tick()
                     static_cast<__int64>(track->nextEventTick)) > eventTime)
                 break;
             ProcessEvent(this, track);
-            eventTime = eventTickBase + MidiElapsedTicks(this);
+            eventTime = eventTickBase + ((static_cast<unsigned __int64>(
+                static_cast<__int64>(this->ticksPerQuarterNote)) *
+            this->elapsedTimerTicks * 1000) /
+        static_cast<unsigned __int64>(
+            static_cast<__int64>(this->tempoMicroseconds)));
         } while (tracks[i].active != 0);
     }
     ++elapsedTimerTicks;
@@ -216,7 +215,11 @@ void __stdcall MidiOutputView::ProcessEvent(
                 return;
             }
             if (meta == 0x51) {
-                output->eventTickBase += MidiElapsedTicks(output);
+                output->eventTickBase += ((static_cast<unsigned __int64>(
+                static_cast<__int64>(output->ticksPerQuarterNote)) *
+            output->elapsedTimerTicks * 1000) /
+        static_cast<unsigned __int64>(
+            static_cast<__int64>(output->tempoMicroseconds)));
                 output->elapsedTimerTicks = 0;
                 output->tempoMicroseconds = 0;
                 for (int i = 0; i < length; ++i) {

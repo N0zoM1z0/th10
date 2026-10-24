@@ -2,7 +2,9 @@
 
 Updated 2026-10-24 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
-Documentation baseline: **887e0bab**; last source checkpoint: **00c7466**.
+Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
+This source checkpoint adds only the MIDI inline-clock correction and its
+host-test boundary adaptation; it does not change the parked core owners.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
@@ -51,13 +53,16 @@ representative; there is no mandatory trial count or global exhaustion rule.
 The [method checklist and candidate-selection space](TH10_EXACT_FIRST_METHOD_20261024.md)
 define the next experiment packet.
 
-First representative: **MIDI ProcessEvent, target 1670 bytes**. Triage found a
-simple real-Tick single-TU `/GL` context and 14 named external anchors. First
-bind every call and all three selector tails: the existing 1614-versus-1670
-diagnostic has incomplete normalization and is not a complete accepted owner
-comparison or an ordinary-byte mismatch score. No new compiler/source result
-or exact credit is claimed. FrontEndOptions (3188 bytes) and EndingRun (1568
-bytes) are queued only, not concurrent experiments or accepted candidates.
+First representative **MIDI ProcessEvent** is now bounded and parked after one
+informative model: target1670, current1690, all37 fields restored, five guards
+exact378/all5. It remains a structural rejection, not an ordinary-byte score.
+Private MIDI helper register edges independently support the retained `/GL`
+lane; original per-TU flags remain unknown. See the result below.
+
+Next is a read-only complete-contract review of **FrontEndOptions (3188 bytes)**
+using its existing real caller graph and exact RefreshOptionsDisplay peer.
+Do not assume old ledger size summaries are the newest native result. No new
+Options trial has run. EndingRun (1568 bytes) remains queued only.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not
@@ -154,3 +159,25 @@ are not in a Git clone; transfer the workspace and inventories when required.
 [Validation](evidence/handoff-request-cleanup-20261024/validation-summary.json)
 records this cleanup's focused checks; unchanged source/config does not need
 another full CI. The source checkpoint retains its honest89+22-stage CI coverage.
+
+## First exact-first pilot result: MIDI
+
+The [MIDI pilot](evidence/midi-exact-first-20261024/README.md) cold-reproduces
+the old incomplete parser baseline, then removes one unsupported source-only
+clock helper boundary at its three actual uses. Complete parser call/data
+inventory recovers 37 fields, but the owner is 1690 versus 1670 bytes and remains
+nonexact. Tick stays481/473; five guards remain exact378/all5. No exact ledger
+or source coverage credit is added. Source and fixture changes are scoped to
+Midi.cpp and its host fixture; no profile, ABI or comparator relaxation.
+
+The +20-byte extent difference includes loop alignment and skip jumps; it does
+not mean only20 bytes mismatch. Do not resume an uninformed register/alignment
+panel. Require new target-backed evidence before the next model, otherwise move
+to the queued complete representative. Preserve old/updated source receipts and
+the nine unrelated D3D files. See the pilot packet for actual validation scope.
+
+Full MIDI checkpoint CI completed all 111 declared stages with exit0. The
+source and fixture tested are the final checkpoint inputs. Receipt and log:
+.analysis/gpt-dots/midi-exact-first-20261024/root-ci.log and root-ci.exit.
+The RPC timeout was reconciled from its completed receipt, not rerun. Subsequent
+documentation records that result; link/progress/whitespace checks were repeated.

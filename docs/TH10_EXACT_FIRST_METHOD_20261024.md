@@ -12,9 +12,9 @@ This changes experiment selection and source-recovery order. It does not relax
 [Oracle policy](ORACLES.md), change any accepted extent, or authorize a new
 exact ledger row. At adoption, the maintained source checkpoint is
 `00c7466`, the documentation baseline is `887e0bab`, and new whole-owner
-exact bytes from this method are **0**. Initial triage selected MIDI ProcessEvent
-as the first bounded representative; its full comparison contract is the first
-gate. No new pilot compile, source change or experiment outcome is asserted here.
+exact bytes from this method remain **0**. MIDI was the first bounded
+representative; its completed nonexact source checkpoint is recorded below.
+The method itself remains unchanged, and Options is the next bounded review.
 
 ## Why the method changes
 
@@ -164,16 +164,15 @@ Initial 2026-10-24 triage selected the following bounded first step:
 
 | Candidate | Selection or queue state | Required next evidence |
 | --- | --- | --- |
-| MIDI ProcessEvent, target 1670 bytes | First representative: real Tick entry, simple single-TU `/GL` context, 14 named external anchors | Bind all calls and three selector tails before a complete owner comparison; existing 1614-versus-1670 diagnostic normalization is incomplete |
-| FrontEndOptions, target 3188 bytes | Queued only | Reassess complete comparability and one concrete semantic uncertainty before selection |
+| MIDI ProcessEvent, target 1670 bytes | First pilot completed; current1690, unsupported helper removed, five guards retained | Park unsupported allocation/alignment trials; require new independent evidence to reopen |
+| FrontEndOptions, target 3188 bytes | Next bounded complete-contract review | Verify current artifact provenance, call boundaries and the exact same-graph display peer before source tuning |
 | EndingRun, target 1568 bytes | Queued only | Reassess complete comparability and one concrete semantic uncertainty before selection |
 
-The MIDI diagnostic is not a full accepted comparison or a count of ordinary
-mismatching bytes. The named anchors do not by themselves establish all call
-bindings or tail ownership. First review that complete contract; then use the
-hypothesis checklist for one coherent source trial if evidence warrants it.
-No new source edit, compiler result or exact claim exists for this pilot at this
-documentation checkpoint. Update the maintained handoff with the actual outcome.
+The MIDI audit independently inventories complete original/candidate bodies,
+fields and selector tails, but rejects current structural mismatches. It grants
+no exactness or ordinary-byte score. The first source model and tests are
+recorded below; no further alignment/register panel is authorized by that result
+alone. Options remains at the review stage, not an asserted source improvement.
 
 ## Reporting and execution
 
@@ -207,3 +206,12 @@ document links and whitespace checks pass. All nine unrelated D3D evidence
 files retain their recorded hashes. No new cold reconstruction build or full
 CI run is claimed for this documentation-only checkpoint; the existing source
 CI coverage remains scoped to its recorded source checkpoint.
+
+## First pilot checkpoint
+
+[MIDI ProcessEvent](evidence/midi-exact-first-20261024/README.md) exposed a real
+unsupported helper boundary in its first complete comparison. One lexical
+expansion restores the original37-field inventory and preserves five exact
+guards, but the complete owner remains nonexact at1690/1670. This is bounded
+diagnostic/source progress, not new exact bytes. The next decision follows the
+parking rule rather than an unbounded alignment/register experiment panel.

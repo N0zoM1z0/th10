@@ -59,7 +59,13 @@ static void suite(){
  reset();data={0,0xc0,1,0};std::vector<unsigned char> second={0x81,1,0xc0,2,0};input(data);input(second,a[1]);seq.trackCount=2;seq.fadeActive=1;seq.fadeVolume=.2f;seq.resetState2DC=7;seq.eventTickBase=8;seq.elapsedTimerTicks=9;seq.ResetTracks();CHECK(seq.fadeVolume==1&&seq.fadeActive==0&&seq.resetState2DC==0&&seq.eventTickBase==0&&seq.elapsedTimerTicks==0&&a[0].active==1&&a[0].nextEventTick==0&&a[0].cursor==data.data()+1&&a[0].loopCursor==data.data()&&a[1].active==1&&a[1].nextEventTick==129&&a[1].cursor==second.data()+2,"reset-track-state");
  reset();data={0xc0,1,0,0xff,0x2f,0};input(data);a[0].nextEventTick=-1;seq.Tick();CHECK(messages.empty()&&a[0].active==1&&seq.elapsedTimerTicks==1,"negative-event-not-due");
  reset();input(data);a[0].nextEventTick=1;seq.elapsedTimerTicks=0x100000000ULL;seq.tempoMicroseconds=-500;seq.Tick();CHECK(messages.empty()&&seq.elapsedTimerTicks==0x100000001ULL,"signed-tempo-extension");
- reset();seq.ticksPerQuarterNote=-1;seq.tempoMicroseconds=1;seq.elapsedTimerTicks=1;CHECK(MidiElapsedTicks(&seq)==ULLONG_MAX-999,"signed-clock-multiply");
+ // Observe the actual tempo-event path, not a reconstruction-only helper.
+ reset();data={0xff,0x51,0,0};input(data);seq.tempoMicroseconds=-500;
+ seq.elapsedTimerTicks=0x100000000ULL;process();
+ CHECK(seq.eventTickBase==0,"signed-tempo-extension");
+ reset();data={0xff,0x51,0,0};input(data);seq.ticksPerQuarterNote=-1;
+ seq.tempoMicroseconds=1;seq.elapsedTimerTicks=1;process();
+ CHECK(seq.eventTickBase==ULLONG_MAX-999,"signed-clock-multiply");
  reset();data={0xc0,1,0,0xff,0x2f,0};input(data);seq.Tick();CHECK(messages.size()==1&&a[0].active==0&&seq.elapsedTimerTicks==1,"tick-drains-due");
  reset();data={0,0xc0,1,0};input(data);a[0].active=0;seq.Tick();CHECK(a[0].active==1&&a[0].cursor==data.data()+1&&seq.elapsedTimerTicks==0,"tick-rewind-after-increment");
  reset();data={0xc0,1,0,0xff,0x2f,0};input(data);std::vector<unsigned char> replacement={0xc0,2,0};input(replacement,b[0]);b[0].active=0;seq.trackCount=1;after=[](const std::string&s){if(s=="short")seq.tracks=b;};seq.Tick();CHECK(seq.tracks==b&&a[0].active==1&&messages.size()==1&&seq.elapsedTimerTicks==1,"tick-live-track-table");
