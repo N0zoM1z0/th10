@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "source_checkpoint": "45fce0f6af4f1a6990f61a1b30b9ea927699fbb3",
+  "scope": "Dependency-only expanded diagnostic graph. No tracked source, canonical configuration, metrics or comparator change.",
+  "target": {
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "owner": "WinMain",
+    "size": 1389
+  },
+  "source_sha256": {
+    "src/Main.cpp": "e49f06a2c64f0eb6e2577237253a0b3bf0773d14fc51e991fcb2ced19d7be4f0",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/FileSystem.cpp": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260",
+    "src/Midi.cpp": "7871c32b29e1d81a2db45a91d08bc65e0a314f37885fb3befbbea81859475439",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/AnmManager.cpp": "5b3545b319d18e3c0fa869f5a11390d9b5534148cc0fa867803d08796fe640c6",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/Sound.cpp": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00"
+  },
+  "maintained_ten_tu_result": {
+    "image_sha256": "832cc185996620c09694424cd4ef0f5b06589323f3c3152aa1c8f8ccecadbcb1",
+    "size": 1423,
+    "fields": 153,
+    "calls": 72,
+    "locals": 48,
+    "exact": false
+  },
+  "expanded_eleven_tu_result": {
+    "image_sha256": "165f28a711ec1133a87d035f2c6003260535a2b9f78e080d5b7a844794cae5ac",
+    "size": 1453,
+    "fields": 154,
+    "calls": 71,
+    "locals": 46,
+    "exact": false
+  },
+  "metric_meaning": "Complete owner extents and inventory counts, not mismatch-byte counts or an accepted normalized parent score.",
+  "graph": {
+    "ordered_translation_units": [
+      "src/Main.cpp",
+      "src/GameErrorContext.cpp",
+      "src/FileSystem.cpp",
+      "src/Midi.cpp",
+      "src/PbgArchive.cpp",
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/Sound.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "entry_symbol": "WinMain@16",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "normal_support_sources": [],
+    "delta": "Append only src/Sound.cpp; all existing source order and graph keys preserved."
+  },
+  "original_attempt": {
+    "exit": 1,
+    "receipt_completed": false,
+    "reason": "Sound comparator units expected primary source.ltcg.obj contributions, but actual owners are support-09-Sound.ltcg.obj.",
+    "receipt_sha256": "08d1baba80aa8deae08719d89d138a55c1a932aaaab39dcf5c7e270ce7460d4f"
+  },
+  "supplemental_ownership": {
+    "passed": true,
+    "selector_changes": [
+      {
+        "unit": "sound-join-worker-threads",
+        "added_key": "pdb_source",
+        "value": "src/Sound.cpp",
+        "actual_object": "support-09-Sound.ltcg.obj"
+      },
+      {
+        "unit": "sound-release-owner",
+        "added_key": "pdb_source",
+        "value": "src/Sound.cpp",
+        "actual_object": "support-09-Sound.ltcg.obj"
+      },
+      {
+        "unit": "sound-setup-thread",
+        "added_key": "pdb_source",
+        "value": "src/Sound.cpp",
+        "actual_object": "support-09-Sound.ltcg.obj"
+      },
+      {
+        "unit": "sound-find-wave-chunk",
+        "added_key": "pdb_source",
+        "value": "src/Sound.cpp",
+        "actual_object": "support-09-Sound.ltcg.obj"
+      }
+    ],
+    "original_hashes_preserved": 107,
+    "native_rebuild": false,
+    "receipt": {
+      "path": ".analysis/gpt-dots/winmain-sound-dependency-20261024/supplemental-ownership/receipt.json",
+      "sha256": "632b1e13230f0c1c1c4cbdd6eea6563b5705922c2785e42a434bdc1abd4d1c92"
+    }
+  },
+  "same_image_regression": {
+    "guards": [
+      {
+        "unit": "main-release-anm-surfaces",
+        "size": 43,
+        "fields": 0,
+        "result": "exact"
+      },
+      {
+        "unit": "main-service-anm-screenshots",
+        "size": 111,
+        "fields": 2,
+        "result": "exact"
+      },
+      {
+        "unit": "main-present",
+        "size": 236,
+        "fields": 20,
+        "result": "exact"
+      },
+      {
+        "unit": "main-take-screenshot",
+        "size": 504,
+        "fields": 14,
+        "result": "exact"
+      },
+      {
+        "unit": "anm-capture-to-texture",
+        "size": 240,
+        "fields": 3,
+        "result": "exact"
+      },
+      {
+        "unit": "main-screenshot-worker",
+        "size": 302,
+        "fields": 30,
+        "result": "exact"
+      },
+      {
+        "unit": "main-clear-present-twice",
+        "size": 135,
+        "fields": 8,
+        "result": "exact"
+      },
+      {
+        "unit": "main-set-screen-color",
+        "size": 108,
+        "fields": 11,
+        "result": "exact"
+      },
+      {
+        "unit": "game-error-flush",
+        "size": 79,
+        "fields": 6,
+        "result": "exact"
+      },
+      {
+        "unit": "sound-join-worker-threads",
+        "size": 175,
+        "fields": 3,
+        "result": "exact"
+      },
+      {
+        "unit": "sound-release-owner",
+        "size": 301,
+        "fields": 6,
+        "result": "exact"
+      },
+      {
+        "unit": "sound-setup-thread",
+        "size": 57,
+        "fields": 7,
+        "result": "exact"
+      },
+      {
+        "unit": "sound-find-wave-chunk",
+        "size": 71,
+        "fields": 1,
+        "result": "exact"
+      }
+    ],
+    "guard_bytes": 2362,
+    "guard_fields": 111,
+    "peers": [
+      {
+        "unit": "decomphelp-game-error-log",
+        "size": 201,
+        "fields": 12,
+        "exact": true
+      },
+      {
+        "unit": "decomphelp-game-error-fatal",
+        "size": 201,
+        "fields": 11,
+        "exact": true
+      },
+      {
+        "unit": "filesystem-write-file",
+        "size": 218,
+        "fields": 20,
+        "exact": true
+      }
+    ],
+    "unprepare_header": {
+      "size": 79,
+      "fields": 3,
+      "exact": true
+    },
+    "stop_playback": {
+      "size": 129,
+      "fields": 5,
+      "ordinary_differences": 13,
+      "residual_unchanged": true,
+      "exact": false
+    }
+  },
+  "sound_properties": {
+    "start_and_create_thread_inlined": true,
+    "request_state_2_inlined": true,
+    "join_receiver": "ESI",
+    "release_receiver": "EAX",
+    "main_process_sound_queues": "unresolved non-runnable data anchor; no actual contribution"
+  },
+  "independent_review": {
+    "passed": true,
+    "current_original_artifacts_preserved": 138,
+    "historical_original_hashes_verified": 107,
+    "native_run": false,
+    "receipt": {
+      "path": ".analysis/gpt-dots/winmain-sound-dependency-20261024/independent-review/receipt.json",
+      "sha256": "21279660633e296f6251f6492d163a6288066ebc395788d28446354fa1f77203"
+    }
+  },
+  "new_exact_owned_bytes": 0,
+  "new_source_owners": 0,
+  "canonical_graph_migration": false,
+  "runtime_closure": false,
+  "validation_scope": {
+    "new_full_ci_run": false,
+    "retained_full_ci_commit": "45fce0f",
+    "retained_full_ci_stages": 112,
+    "retained_full_ci_verified_utc": "2026-10-24T21:39:42Z",
+    "current_changes": "Documentation only; focused documentation checks, not a new full CI pass."
+  }
+}

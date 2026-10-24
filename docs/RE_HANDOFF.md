@@ -5,20 +5,22 @@ Updated 2026-10-24 for the operator-approved
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
 Committed source checkpoints include MIDI **45c16aa**, Options **1e35737**,
 five-factor D3D **6b3b5e2**, real D3D callees **a454afc**, WinMain logging/Flush
-**152492a**, and WinMain publication/registry lifetimes **b33dda1**.
-Current checkpoint is
-[WinMain music caller recovery](evidence/winmain-music-20261024/README.md):
-post-stop reload/null gating followed by a separately measured natural
-MidiOutputView::StopPlayback call. WinMain is **1423/1389, nonexact**, with
-153 fields, 72 calls and 48 local branches. Both native trials and independent
-replays pass; the first preserves 115 artifacts and the second preserves its
-original files. The real EDI receiver matches, but StopPlayback remains
-129 bytes / all 5 fields with 13 ordinary scheduling differences. UnprepareHeader
-is exact 79/all 3; prior guards and properties remain intact.
-This batch adds zero exact bytes or source owners; tracking metrics are unchanged.
-All 112 target-independent CI stages passed for this source, exit 0, with frozen
-inputs preserved, verified at 21:39:42 UTC. Only CI-result documentation changed
-afterward. The separate global automatic boundary check remains unresolved.
+**152492a**, publication/registry lifetimes **b33dda1**, and music callers
+**45fce0f**. Current work is the documentation-only
+[Sound dependency diagnostic](evidence/winmain-sound-dependency-20261024/README.md).
+Maintained source and canonical configuration are unchanged: ten-TU WinMain
+remains **1423/1389, nonexact**. Appending only existing Sound.cpp to the
+ignored graph produces eleven-TU **1453/1389**, 154 fields / 71 calls / 46 locals,
+also nonexact. No canonical graph migration or new exact/source credit occurs.
+The native runner's original exit 1 is preserved. A separate same-image audit
+passes with exactly four supported Sound PDB-owner selectors, preserving 107
+hashes without rebuilding. Independent replay passes with 138 current originals
+preserved and the 107 historical hashes verified. Thirteen guards pass
+2362/all 111, three peers 620/all 43 and UnprepareHeader 79/all 3; StopPlayback
+retains its 13 ordinary differences. MainProcessSoundQueues remains unresolved.
+The 112-stage CI pass verified at 21:39:42 UTC remains scoped to 45fce0f.
+Current documentation receives focused checks, not a new full-CI claim. The
+separate global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
@@ -30,8 +32,8 @@ receipts below; neither added a whole-owner exact match or source-present owner.
 The prior D3D callee checkpoint added 243 whole-owner exact bytes across
 MainClearPresentTwice and MainSetScreenColor. Logging checkpoint 152492a added
 79 whole-owner exact bytes for Flush only, not its WinMain caller. The prior
-lifecycle batch and current music caller batch each add **zero new whole-owner
-exact bytes**.
+lifecycle/music caller batches and current Sound dependency diagnostic each
+add **zero new whole-owner exact bytes**.
 InitD3DRendering and WinMain remain nonexact, with no runtime/shared-global closure.
 All experiments in the preceding ANM 15-control panel are terminal.
 
@@ -49,7 +51,8 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | InitD3DRendering / target 1159 | Current candidate 1238 bytes; wrapper inlined, no direct wrapper call; nonexact |
 | MainClearPresentTwice / target 135 | Fresh canonical exact 135/all 8; also replayed in the wrapper's same fresh image |
 | MainSetScreenColor / target 108 | Fresh canonical exact 108/all 11 with recursive same-image helper 135/all 8 proof |
-| WinMain / target 1389 | 1423-byte candidate after two music caller models; 153 fields / 72 calls / 48 locals; nonexact |
+| WinMain / target 1389 | Maintained ten-TU context: 1423 bytes / 153 fields / 72 calls / 48 locals; nonexact |
+| WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
 | Authored source-present nonexact / absent | 205 / 118 functions |
@@ -144,7 +147,7 @@ All 112 CI stages passed for b33dda1 with frozen inputs preserved, verified at
 21:18:54 UTC. Original class/constructor identities, delete versus delete[]
 spelling and runtime/shared-global closure remain unproven.
 
-Current [music caller evidence](evidence/winmain-music-20261024/README.md)
+Committed [music caller evidence](evidence/winmain-music-20261024/README.md)
 records two separate models after b33dda1. Post-stop reload/null gating yields
 1438 bytes / 153 fields / 72 calls / 49 locals; the real StopPlayback call yields
 1423 / 153 / 72 / 48. Both native exits are 0 and both independent reviews pass.
@@ -156,9 +159,27 @@ UnprepareHeader remains exact 79/all 3. Nine guards retain 1758/all 94 and three
 peers retain 620/all 43; prior startup/publication/device/registry/logging and
 music-gate properties pass. Current Main SHA-256:
 `e49f06a2c64f0eb6e2577237253a0b3bf0773d14fc51e991fcb2ced19d7be4f0`.
-All 112 CI stages passed for this source with frozen inputs preserved. Parent extents/counts are not
-mismatch-byte counts, and unresolved destroy/storage/runtime identity remains
-unproven. Reopen residuals only with new evidence and a falsifiable model.
+All 112 CI stages passed for 45fce0f with frozen inputs preserved, verified at
+21:39:42 UTC. Parent extents/counts are not mismatch-byte counts; unresolved
+destroy/storage/runtime identity remains unproven.
+
+Current [Sound dependency evidence](evidence/winmain-sound-dependency-20261024/README.md)
+records only appended Sound.cpp visibility in the ignored eleven-TU graph.
+Existing support order, /GL /GS and AnmInt3Scale-only /Ob1 remain unchanged;
+source/config/metrics are untouched and maintained ten-TU WinMain stays 1423.
+The expanded image gives 1453 bytes / 154 fields / 71 calls / 46 locals, nonexact.
+Original native exit 1 reflects a wrong primary-PDB-owner expectation for four
+Sound functions. Supplemental replay selects actual support-09 ownership with
+four supported pdb_source keys only; all 107 original hashes are preserved and
+no rebuild occurs. Independent replay passes, preserving 138 current originals
+and verifying the 107 historical hashes. Thirteen complete guards pass
+2362/all 111, including Sound 604/all 17; Log/Fatal/WriteFile remain 620/all 43
+and UnprepareHeader 79/all 3. StopPlayback's 129/all 5 body retains the same 13
+ordinary differences. Start/CreateThread and Request/state-2 operations inline;
+actual Join ESI and Release EAX match target observations. MainProcessSoundQueues
+remains unresolved. No exact credit, canonical graph migration or runtime closure
+follows; current validation is focused documentation checks, not a new full CI.
+Reopen residuals only with new evidence and a falsifiable model.
 Ending remains queued: its retained source matches its receipt, but 20/52
 support/header inputs drifted and prior aggregate controls were neutral. Do not
 tune against that stale graph or start another unsupported allocation panel.
