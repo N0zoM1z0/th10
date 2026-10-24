@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "baseline_commit": "152492af8cf8d0422880366be1ac3a7879397c5a",
+  "scope": "Four separately measured WinMain source models in the retained ten-TU LTCG diagnostic graph; no canonical parent acceptance or runtime closure.",
+  "target": {
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "function": "WinMain",
+    "address": "0x00438AD0",
+    "size": 1389
+  },
+  "current_source": {
+    "path": "src/Main.cpp",
+    "sha256": "af0bc3965b9b5a22c642d8dfa99f3e1884c3dc1504c87031a9ffb2ef6bc11507"
+  },
+  "metric_meaning": "Sizes are complete owner extents; fields/calls/locals are inventory counts, not matched or mismatched byte counts.",
+  "new_exact_owned_bytes": 0,
+  "new_source_owners": 0,
+  "tracking_metrics_changed": false,
+  "models": [
+    {
+      "model": "device-recheck",
+      "description": "Fresh post-Reset device null recheck",
+      "source_before_sha256": "1cf12840976adf45f6a0bdc81b0cfa170ad6472efdbdafaf458a98b088f095ff",
+      "source_after_sha256": "f561d70969314f5804527f649ed1ba2cd1be513c728949e2f20bda0630c83e00",
+      "image_sha256": "bb9bdd465917b2569052a1de80c4a1df985eb8d1ff3b090baef5e6fb6905be5f",
+      "winmain": {
+        "size": 1420,
+        "fields": 155,
+        "calls": 72,
+        "locals": 46
+      },
+      "whole_owner_exact": false,
+      "original_receipt_completed": true,
+      "original_runner_exit": 0,
+      "measured_audit_passed": true,
+      "evidence": [
+        {
+          "path": ".analysis/gpt-dots/winmain-device-recheck-20261024/root-application.json",
+          "sha256": "829ef8f05a82029a516875dae4d793333cbae8e55b168cd706fb05f9fffd0b0a"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-device-recheck-20261024/trial-receipt.json",
+          "sha256": "68a96860f27d129a433c9935a94554e46d4d3bc87f8a8829cdd1dbe619fa565b"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-device-recheck-20261024/trial-root.exit",
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        }
+      ]
+    },
+    {
+      "model": "instance-publication",
+      "description": "Success-only supervisor instance publication",
+      "source_before_sha256": "f561d70969314f5804527f649ed1ba2cd1be513c728949e2f20bda0630c83e00",
+      "source_after_sha256": "a829b3bc3a78c0d02e2b7a8a1bd42d83edb9ea43948ec4b02f4c88a8a9bf5a8e",
+      "image_sha256": "ccdcc95c1739c7e66b6c93be2f689ba2d0fd68af97695bda5f0926d3a3c5cb93",
+      "winmain": {
+        "size": 1420,
+        "fields": 155,
+        "calls": 72,
+        "locals": 46
+      },
+      "whole_owner_exact": false,
+      "original_receipt_completed": false,
+      "original_runner_exit": 1,
+      "measured_audit_passed": true,
+      "evidence": [
+        {
+          "path": ".analysis/gpt-dots/winmain-instance-publication-20261024/root-application.json",
+          "sha256": "e7942300889f54e7d49670c91f06309fde44b2bbac2a84f5ffc85967357bb6e2"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-instance-publication-20261024/trial-receipt.json",
+          "sha256": "5b7382f129d081a3fd1d7209080a73359a005bf0275d3269c41ea959718a6748"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-instance-publication-20261024/trial-root.exit",
+          "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-instance-publication-20261024/supplemental-v2/receipt.json",
+          "sha256": "e944c061edc5c88f6b575318249b12036f16fd26d72084ec98fc8cb4124ade30"
+        }
+      ],
+      "audit_history": "Native build succeeded; original post-build audit failed on overlapping diagnostic anchors. Separate same-image v2 stack/value/CFG provenance passes; original failure retained."
+    },
+    {
+      "model": "registry-startup",
+      "description": "POD allocation, full zeroing and late publication",
+      "source_before_sha256": "a829b3bc3a78c0d02e2b7a8a1bd42d83edb9ea43948ec4b02f4c88a8a9bf5a8e",
+      "source_after_sha256": "dc85b764101178f2df6f52683b0eec3bc6d6060a8d88bf3f0c8a0b16bbb41ddb",
+      "image_sha256": "1ede54ca6b1689e5e0dd6694bb24bfa10498553232a7c0f92dd74b141629f7be",
+      "winmain": {
+        "size": 1435,
+        "fields": 154,
+        "calls": 72,
+        "locals": 45
+      },
+      "whole_owner_exact": false,
+      "original_receipt_completed": false,
+      "original_runner_exit": 1,
+      "measured_audit_passed": true,
+      "evidence": [
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-startup-20261024/root-application.json",
+          "sha256": "c831e4f8ad8d2928ddfd5b65c5623fa2aad448efcf3031741ccbbb985192bfab"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-startup-20261024/trial-receipt.json",
+          "sha256": "72e1a69fc762560b235a2f7cac5f8a42e01069c07488d5a4cb7dec40b40808df"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-startup-20261024/trial-root.exit",
+          "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-startup-20261024/supplemental-v3/receipt.json",
+          "sha256": "0c7e89e7d910b7d975827352041e43acd3b239773454617286fed9e6f3734e9d"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-startup-20261024/root-preflight-recovery.json",
+          "sha256": "5e3301a5f3208c97aa950d051a43b7d186c55fa7b074d1c9862ce31ef060f6b5"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-startup-20261024/trial-root-v2.exit",
+          "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-startup-20261024/startup-auditor-tests.json",
+          "sha256": "1e0926866e74840549ee55c5dd85c7eda8aa178577208cb20281d5e5bf59dbf0"
+        }
+      ],
+      "native_runner_exit": 1,
+      "audit_history": "Original exit 1 was preflight-only and ran no compiler. The separately logged first native attempt also exited 1 in its inherited device audit. Supplemental v3 preserves full-width LEA r,[r] identity in CFG facts and passes on that same image without rebuilding; both failures remain retained."
+    },
+    {
+      "model": "registry-teardown",
+      "description": "Captured registry teardown with real free and scalar delete",
+      "source_before_sha256": "dc85b764101178f2df6f52683b0eec3bc6d6060a8d88bf3f0c8a0b16bbb41ddb",
+      "source_after_sha256": "af0bc3965b9b5a22c642d8dfa99f3e1884c3dc1504c87031a9ffb2ef6bc11507",
+      "image_sha256": "21310a5263f7753e7d1ae8964cb0457c8cd4abeaf329bfb991e06cfd0fffb37e",
+      "winmain": {
+        "size": 1421,
+        "fields": 152,
+        "calls": 72,
+        "locals": 45
+      },
+      "whole_owner_exact": false,
+      "original_receipt_completed": true,
+      "original_runner_exit": 0,
+      "measured_audit_passed": true,
+      "evidence": [
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-teardown-20261024/root-application.json",
+          "sha256": "458653e7cb17570e58c1f873273a8167a4f0a573527d234aed36fa0e1bbe1d1a"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-teardown-20261024/trial-receipt.json",
+          "sha256": "d24c4ce15e1965b0a023182a2d8d55959fc04b25c08e0fda8b74eaa83f167477"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-teardown-20261024/trial-root.exit",
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        {
+          "path": ".analysis/gpt-dots/winmain-registry-teardown-20261024/audit-tests.json",
+          "sha256": "20a952dfec31b98403f2169866b76c3792ff522e11f3d82a276a4f2375932a9d"
+        }
+      ]
+    }
+  ],
+  "same_image_regression": {
+    "guard_owners": 9,
+    "guard_bytes": 1758,
+    "guard_fields": 94,
+    "peer_owners": 3,
+    "peer_bytes": 620,
+    "peer_fields": 43,
+    "scope": "Existing intact contracts; no new credit and no recertification of other canonical graphs."
+  },
+  "independent_teardown_replay": {
+    "passed": true,
+    "path": ".analysis/gpt-dots/winmain-registry-teardown-20261024/independent-review/receipt.json",
+    "sha256": "0f7b5fbc8626681a97fcf1c59ab910684978b60c7250a3209ae8ffdb0dcd9d95",
+    "original_artifacts_preserved": 116,
+    "image_sha256": "21310a5263f7753e7d1ae8964cb0457c8cd4abeaf329bfb991e06cfd0fffb37e"
+  },
+  "full_ci": {
+    "status": "passed",
+    "stages": 112,
+    "exit_code": 0,
+    "frozen_inputs_preserved": true,
+    "log": ".analysis/gpt-dots/winmain-lifetime-checkpoint-20261024/root-ci.log",
+    "log_sha256": "500477d312677984b7cbe5634d0de174a1f43f997aa899cf546002da4d7c326c",
+    "result_verified_utc": "2026-10-24T21:18:54Z",
+    "scope": "Target-independent CI; separate automatic boundary-ledger divergence remains unresolved."
+  },
+  "pending_models": [
+    {
+      "model": "music-null-gate",
+      "status": "prepared, not tried"
+    }
+  ],
+  "unproven": [
+    "Original class, constructor and method identities",
+    "Original delete versus delete[] source spelling",
+    "Production TU/link context",
+    "Runtime and shared-global storage closure"
+  ]
+}

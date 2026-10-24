@@ -4,20 +4,20 @@ Updated 2026-10-24 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
 Committed source checkpoints: MIDI inline-clock recovery **45c16aa**,
-Options WORD-consumer recovery **1e35737**, five-factor D3D **6b3b5e2**, and
-real D3D callees **a454afc**. This checkpoint adds
-[WinMain logging recovery](evidence/winmain-logging-20261024/README.md).
-Three separately measured models restore two real Log calls, restart buffer
-stores and a natural Flush member. WinMain remains 1405/1389, nonexact.
-Flush was independently admitted as a complete authored owner before exact
-credit, then freshly canonical-passed **79 bytes / all 6 fields** at 19:37:59 UTC.
-This batch adds 79 exact bytes, 79 reviewed authored bytes and one source owner.
-The same fresh ten-TU image preserves six canonical guards, 1436/all 69.
-The old Log and Fatal canonical recipes cold-passed 201/all 12 and 201/all 11;
-the original three-TU color recipe preserved wrapper108/all 11 and helper135/all 8.
-All 112 CI stages passed for this revision at 19:55:46 UTC, exit 0, with frozen
-inputs preserved. The separate global automatic boundary check still fails
-on pre-existing manual-versus-automatic divergence, as detailed below.
+Options WORD-consumer recovery **1e35737**, five-factor D3D **6b3b5e2**,
+real D3D callees **a454afc**, and WinMain logging/Flush **152492a**.
+Current checkpoint is
+[WinMain lifecycle recovery](evidence/winmain-lifecycle-20261024/README.md):
+four separately measured device, instance-publication, registry-startup and
+captured-teardown models. WinMain is **1421/1389, nonexact**, with 152 fields,
+72 calls and 45 local branches. Teardown native exit is 0; independent replay
+passes with 116 original artifacts preserved. Nine same-image guards retain
+1758/all 94 and Log/Fatal/WriteFile retain 620/all 43.
+This batch adds zero exact bytes or source owners; all tracking metrics remain
+unchanged. All 112 target-independent CI stages passed for this source, exit 0,
+with frozen inputs preserved, verified at 21:18:54 UTC. Only CI-result
+documentation changed afterward. The separate global automatic boundary check
+remains unresolved as detailed below.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
@@ -27,8 +27,9 @@ The new method changes selection and experiment order, not acceptance rules.
 MIDI and Options have completed bounded source experiments and are parked with
 receipts below; neither added a whole-owner exact match or source-present owner.
 The prior D3D callee checkpoint added 243 whole-owner exact bytes across
-MainClearPresentTwice and MainSetScreenColor. Current logging recovery adds
-**79 new whole-owner exact bytes** for Flush only, not its WinMain caller.
+MainClearPresentTwice and MainSetScreenColor. Logging checkpoint 152492a added
+79 whole-owner exact bytes for Flush only, not its WinMain caller. The current
+four-model lifecycle batch adds **zero new whole-owner exact bytes**.
 InitD3DRendering and WinMain remain nonexact, with no runtime/shared-global closure.
 All experiments in the preceding ANM 15-control panel are terminal.
 
@@ -46,7 +47,7 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | InitD3DRendering / target 1159 | Current candidate 1238 bytes; wrapper inlined, no direct wrapper call; nonexact |
 | MainClearPresentTwice / target 135 | Fresh canonical exact 135/all 8; also replayed in the wrapper's same fresh image |
 | MainSetScreenColor / target 108 | Fresh canonical exact 108/all 11 with recursive same-image helper 135/all 8 proof |
-| WinMain / target 1389 | 1405-byte candidate after three logging models; naturally inlined Flush; nonexact |
+| WinMain / target 1389 | 1421-byte candidate after four further lifecycle models; 152 fields / 72 calls / 45 locals; nonexact |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
 | Authored source-present nonexact / absent | 205 / 118 functions |
@@ -106,7 +107,7 @@ suite passes 110 tests and its historical full CI passed all 112 stages. D3D
 still inlines the wrapper and remains 1238/1159, with no direct wrapper call.
 Reopen only with a new evidence-backed boundary model, not global noinline controls.
 
-Current [WinMain logging evidence](evidence/winmain-logging-20261024/README.md)
+Historical [WinMain logging evidence](evidence/winmain-logging-20261024/README.md)
 records three separate full-owner measurements: two real Log calls yield 1327
 bytes; restart BufferEnd/first-byte stores yield 1343; the natural Flush member
 yields 1405. All are nonexact against 1389; these are extents, not mismatch counts.
@@ -121,9 +122,26 @@ Log/Fatal and the original color canonical recipes have now cold-passed;
 the new full CI passed all 112 stages at 19:55:46 UTC, with inputs preserved.
 Only CI-result documentation changed afterward and was checked separately.
 See the [validation summary](evidence/winmain-logging-20261024/validation-summary.json).
-Original class/method/TU and runtime/shared-
-global identity remain unproven. Device null recheck after Reset, instance
-publication timing and allocation capture/final-null-store models remain untried.
+Original class/method/TU and runtime/shared-global identity remain unproven.
+
+Current [WinMain lifecycle evidence](evidence/winmain-lifecycle-20261024/README.md)
+records four independent models after 152492a: fresh post-Reset device null
+recheck (1420 bytes), success-only supervisor instance publication (1420), POD
+registry operator-new/full-zeroing/late publication (1435), and captured teardown
+using real entry free plus scalar container delete with no global clear (1421).
+All remain nonexact against 1389; extent differences are not mismatch-byte counts.
+The instance audit's original exit 1 is retained beside successful same-image
+alias/value/CFG supplemental proof. Startup separately retains its preflight-only
+exit 1 and first-native post-build audit exit 1; supplemental v3 preserves an
+identity LEA zero fact on the existing image, without recompilation.
+Teardown native exit 0 and independent replay pass; all 116 original artifacts
+are preserved. Nine guards remain exact 1758/all 94, and Log/Fatal/WriteFile
+remain exact 620/all 43 under intact same-image contracts. Current Main SHA-256:
+`af0bc3965b9b5a22c642d8dfa99f3e1884c3dc1504c87031a9ffb2ef6bc11507`.
+All 112 CI stages passed with frozen inputs preserved. The music null-gate
+proposal is prepared, not tried;
+original class/constructor identities, delete versus delete[] spelling and
+runtime/shared-global closure remain unproven.
 Ending remains queued: its retained source matches its receipt, but 20/52
 support/header inputs drifted and prior aggregate controls were neutral. Do not
 tune against that stale graph or start another unsupported allocation panel.

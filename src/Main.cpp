@@ -320,12 +320,15 @@ int WINAPI WinMain(
     (void)showCommand;
 
     g_GameWindowView.instance = instance;
-    g_MainSupervisorView.instance = instance;
-    g_MainAllocationRegistry =
-        static_cast<MainAllocationRegistryView *>(
-            malloc(sizeof(MainAllocationRegistryView)));
-    if (g_MainAllocationRegistry != NULL)
-        memset(g_MainAllocationRegistry, 0, sizeof(MainAllocationRegistryView));
+    {
+        MainAllocationRegistryView *registry = new MainAllocationRegistryView;
+        if (registry != NULL)
+        {
+            memset(registry, 0, sizeof(MainAllocationRegistryView));
+            registry->hasEntries = 0;
+        }
+        g_MainAllocationRegistry = registry;
+    }
 
     for (i = 0; i < 7; ++i)
         InitializeCriticalSection(&g_MainSupervisorView.criticalSections[i]);
@@ -334,6 +337,7 @@ int WINAPI WinMain(
     if (GameWindowView::CheckForRunningGameInstance() == MAIN_RENDER_ERROR)
         goto stop;
 
+    g_MainSupervisorView.instance = instance;
     MainInitializeSystemParameters();
     if (MainLoadConfiguration("th10.cfg", &g_MainSupervisorView) != 0)
         goto stop;
@@ -446,9 +450,12 @@ stop:
         g_MainSupervisorView.d3dDevice->vtable->Reset(
             g_MainSupervisorView.d3dDevice,
             &g_MainSupervisorView.presentParameters);
-        g_MainSupervisorView.d3dDevice->vtable->Release(
-            g_MainSupervisorView.d3dDevice);
-        g_MainSupervisorView.d3dDevice = NULL;
+        if (g_MainSupervisorView.d3dDevice != NULL)
+        {
+            g_MainSupervisorView.d3dDevice->vtable->Release(
+                g_MainSupervisorView.d3dDevice);
+            g_MainSupervisorView.d3dDevice = NULL;
+        }
     }
     if (g_MainSupervisorView.d3dInterface != NULL)
     {
@@ -507,19 +514,20 @@ stop:
         NULL, SPIF_SENDCHANGE);
     WINNLSEnableIME(NULL, TRUE);
 
-    if (g_MainAllocationRegistry != NULL)
     {
-        if (g_MainAllocationRegistry->hasEntries != 0)
+        MainAllocationRegistryView *registry = g_MainAllocationRegistry;
+        if (registry != NULL)
         {
-            for (i = 0; i < 0x2800; ++i)
+            if (registry->hasEntries != 0)
             {
-                if (g_MainAllocationRegistry->entries[i] != NULL)
-                    MainFreeRegisteredAllocation(
-                        g_MainAllocationRegistry->entries[i]);
+                for (i = 0; i < 0x2800; ++i)
+                {
+                    if (registry->entries[i] != NULL)
+                        free(registry->entries[i]);
+                }
             }
+            delete registry;
         }
-        free(g_MainAllocationRegistry);
-        g_MainAllocationRegistry = NULL;
     }
     return 0;
 }
