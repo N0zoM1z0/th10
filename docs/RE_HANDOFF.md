@@ -3,24 +3,24 @@
 Updated 2026-10-24 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
-Latest source checkpoint is music callers **45fce0f**; Sound dependency evidence
-is committed as **97a206f**. Current bounded work is the documentation-only
-[Chain dependency diagnostic](evidence/winmain-chain-dependency-20261024/README.md).
-Maintained ten-TU WinMain remains **1423/1389, nonexact**; ignored Sound eleven-TU
-and Sound + Chain twelve-TU graphs yield **1453/1389** and **1533/1389** respectively.
-The twelve-TU inventory is 155 fields / 71 calls / 48 local branches. Source,
-canonical configuration and metrics are unchanged; there is no graph migration
-or new exact/source credit. Native exit 0, independent full replay and detailed
-creation/routing review pass with original files unchanged.
-Creation wrapper and constructor inline into WinMain, unlike the original's
-explicit constructor call; the standalone 59-byte constructor retains 16 ordinary
-differences. Six real Chain seams resolve, but callback-owner and Chain globals
-remain distinct. All inherited guards/properties pass, without runtime closure.
-Park WinMain against flag/noinline matrices. HUD UpdateStageElements (3836 bytes)
-is the next queued capture-model representative: read-only review only, untried.
-The 112-stage CI pass verified at 21:39:42 UTC remains scoped to 45fce0f; current
-validation is focused documentation checks, not a new full-CI claim. The separate
-global automatic boundary check remains unresolved.
+WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
+at **97a206f** (Sound) and **7b85dd3** (Chain). WinMain remains parked against
+flag/noinline matrices. Current source checkpoint is
+[HUD boss-life capture](evidence/hud-life-capture-20261024/README.md).
+A fresh fourteen-TU Gui baseline preceded one ordinary const int life capture.
+Both complete owners are **3772/3836, nonexact**: 3741 code bytes, three-byte
+identity LEA alignment and seven table words. Candidate inventory is 71 syntactic
+fields / 248 local branches / 21 calls; baseline is 71/249/21 and target 72/250/21.
+The natural 26-byte load/capture/FILD/publication/FIDIV sequence equals target,
+without forced spill, volatile or width changes; this earns no fragment credit.
+Thirteen guards pass 1468/all 79 in both images. Independent baseline/candidate
+reviews preserve 111/229 artifacts, respectively; both native exits are 0.
+This batch adds zero exact bytes or source owners; metrics are unchanged.
+The focused boss-gauge suite passes 5 tests. All 112 target-independent CI stages
+passed for this source, exit 0, with frozen inputs preserved, verified at
+22:25:31 UTC. Only CI-result/next-step documentation changed afterward. An
+isolated excess-segment conditional ID-clear model is being prepared, not tried.
+The separate global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
@@ -32,8 +32,8 @@ receipts below; neither added a whole-owner exact match or source-present owner.
 The prior D3D callee checkpoint added 243 whole-owner exact bytes across
 MainClearPresentTwice and MainSetScreenColor. Logging checkpoint 152492a added
 79 whole-owner exact bytes for Flush only, not its WinMain caller. The prior
-lifecycle/music caller batches and Sound/Chain dependency diagnostics each add
-**zero new whole-owner exact bytes**.
+lifecycle/music caller batches, Sound/Chain diagnostics and current HUD capture
+trial each add **zero new whole-owner exact bytes**.
 InitD3DRendering and WinMain remain nonexact, with no runtime/shared-global closure.
 All experiments in the preceding ANM 15-control panel are terminal.
 
@@ -55,6 +55,7 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
+| HUD UpdateStageElements / target 3836 | Candidate 3772 bytes: 3741 code + 3 alignment + 28 table; 71 syntactic fields / 248 locals / 21 calls; nonexact |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
 | Authored source-present nonexact / absent | 205 / 118 functions |
 | Overall exact / mappings | 1255 functions / 141969 bytes; 1101 mappings |
@@ -179,8 +180,9 @@ and UnprepareHeader 79/all 3. StopPlayback's 129/all 5 body retains the same 13
 ordinary differences. Start/CreateThread and Request/state-2 operations inline;
 actual Join ESI and Release EAX match target observations. MainProcessSoundQueues
 remains unresolved. No exact credit, canonical graph migration or runtime closure
-follows; current validation is focused documentation checks, not a new full CI.
-Current [Chain dependency evidence](evidence/winmain-chain-dependency-20261024/README.md)
+follows; that evidence-only checkpoint used focused documentation checks,
+not a new full CI.
+Parked [Chain dependency evidence](evidence/winmain-chain-dependency-20261024/README.md)
 appends only Chain.cpp after Sound.cpp, preserving all profiles and the unchanged
 Main source. Twelve-TU WinMain is 1533/1389, nonexact; the maintained ten-TU
 1423-byte and Sound eleven-TU 1453-byte results remain separate. Native exit 0,
@@ -198,10 +200,28 @@ retain 2362/all 111, three peers 620/all 43, and UnprepareHeader 79/all 3;
 StopPlayback keeps its 13 ordinary differences. No canonical migration or new
 exact credit occurs.
 
-Park WinMain against flag/noinline matrices; reopen only for new independent
-evidence and a falsifiable model. Next larger representative: HUD
-UpdateStageElements, target 3836 bytes, queued capture/lifetime model. Read-only
-review is underway, not a tested experiment; no new outcome or exact claim.
+Keep WinMain parked against flag/noinline matrices; reopen only for new
+independent evidence and a falsifiable model.
+
+Current [HUD capture evidence](evidence/hud-life-capture-20261024/README.md)
+uses a fresh actual fourteen-TU Gui baseline, not the stale older carrier.
+This graph retains /GL **without /GS**, with no support overrides. The fresh
+baseline retained the life reread, so one ordinary const int capture was applied;
+publication and ratio numerator now consume that same value. The 26-byte native
+load/capture/FILD/publication/FIDIV sequence naturally equals target, with no
+forced stack/register placement or width change. Full owner stays 3772/3836,
+nonexact, including all 3741 code bytes, three alignment bytes and seven table
+words. Candidate/baseline inventories are 71/248/21 and 71/249/21 fields/locals/
+calls; target is 72/250/21. These are not accepted bindings. All 226 raw
+baseline/candidate differing positions are retained, not reported as target
+mismatches; alignment/table words are unchanged. Independent baseline and
+candidate reviews pass, preserving 111 and 229 original artifacts. Both native
+exits are 0 and thirteen guards pass 1468/all 79. Current Gui SHA-256:
+`142c14724e4d600f93fb462af60df08d43b42c5ca6880cee449256135661f6e6`.
+Focused boss-gauge tests pass 5 cases; all 112 CI stages passed with frozen
+inputs preserved. An isolated excess-segment conditional ID-clear model is
+being prepared, but has not been applied or compiled.
+No new exact or source-owner credit follows the local capture improvement.
 Ending remains queued: its retained source matches its receipt, but 20/52
 support/header inputs drifted and prior aggregate controls were neutral. Do not
 tune against that stale graph or start another unsupported allocation panel.

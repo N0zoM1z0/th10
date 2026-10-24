@@ -976,8 +976,9 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
             ? NULL : g_EnemyManager->specialEnemySlots[0];
         if (boss != NULL && gui->message == NULL)
         {
-            gui->bossLife = boss->runtime.life;
-            gui->bossGaugeTarget = static_cast<float>(boss->runtime.life) /
+            const int bossLife = boss->runtime.life;
+            gui->bossLife = bossLife;
+            gui->bossGaugeTarget = static_cast<float>(bossLife) /
                 static_cast<float>(boss->runtime.unknown13C4);
             if (gui->bossGaugeDisplayed < gui->bossGaugeTarget)
                 gui->bossGaugeDisplayed += 0.025f;

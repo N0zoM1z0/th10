@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "baseline_checkpoint": "7b85dd36a8764e1b96526e806d8e7d5586a0e36c",
+  "scope": "One ordinary const int life capture after a fresh independent baseline. Full HUD remains nonexact; no accepted semantic field binding contract.",
+  "source": {
+    "path": "src/Gui.cpp",
+    "baseline_sha256": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff",
+    "candidate_sha256": "142c14724e4d600f93fb462af60df08d43b42c5ca6880cee449256135661f6e6"
+  },
+  "images": {
+    "baseline_sha256": "7af8caeb971f0b06e6d61ec3aed79e86c26a0c470be8c43f0739665529d72926",
+    "candidate_sha256": "7ee7125c32bf203c7b356d0872d696b3cd6b96a01a97d01823c5907107ff7117"
+  },
+  "graph": {
+    "ordered_translation_units": [
+      "src/Gui.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/Player.cpp",
+      "src/FrontEnd.cpp",
+      "src/DecomphelpLeafAccessors.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/TransitionEffect.cpp",
+      "src/Chain.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmRectangle.cpp"
+    ],
+    "source": "src/Gui.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/Player.cpp",
+      "src/FrontEnd.cpp",
+      "src/DecomphelpLeafAccessors.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/TransitionEffect.cpp",
+      "src/Chain.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmRectangle.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "support_profiles": null,
+    "entry_symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "source_sha256_baseline": {
+      "src/Gui.cpp": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff",
+      "src/AnmManager.cpp": "5b3545b319d18e3c0fa869f5a11390d9b5534148cc0fa867803d08796fe640c6",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/EnemyEclDispatcher.cpp": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+      "src/Player.cpp": "86377639fde184c3d1576386a238a796e91f3ef829736eb553725875190db051",
+      "src/FrontEnd.cpp": "c99267034a509201f2eba34c26ce5b8a05a1e58a2b23f3830b2225220042db31",
+      "src/DecomphelpLeafAccessors.cpp": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+      "src/Main.cpp": "e49f06a2c64f0eb6e2577237253a0b3bf0773d14fc51e991fcb2ced19d7be4f0",
+      "src/Sound.cpp": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+      "src/TransitionEffect.cpp": "57475c2b9ef35961ddad413ce5479e3c415b99fbd1af9742dab85796cc6f0e10",
+      "src/Chain.cpp": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/AnmRectangle.cpp": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b"
+    },
+    "candidate_source_delta": "src/Gui.cpp only; all supports unchanged"
+  },
+  "complete_owners": [
+    {
+      "context": "baseline",
+      "size": 3772,
+      "code_bytes": 3741,
+      "syntactic_field_count": 71,
+      "local_branch_count": 249,
+      "direct_call_count": 21,
+      "alignment_bytes": 3,
+      "alignment_kind": "identity LEA ECX,[ECX]",
+      "table_words": 7,
+      "table_bytes": 28,
+      "exact": false
+    },
+    {
+      "context": "candidate",
+      "size": 3772,
+      "code_bytes": 3741,
+      "syntactic_field_count": 71,
+      "local_branch_count": 248,
+      "direct_call_count": 21,
+      "alignment_bytes": 3,
+      "alignment_kind": "identity LEA ECX,[ECX]",
+      "table_words": 7,
+      "table_bytes": 28,
+      "exact": false
+    },
+    {
+      "context": "target",
+      "size": 3836,
+      "code_bytes": 3805,
+      "syntactic_field_count": 72,
+      "local_branch_count": 250,
+      "direct_call_count": 21,
+      "alignment_bytes": 3,
+      "alignment_kind": "identity LEA ECX,[ECX]",
+      "table_words": 7,
+      "table_bytes": 28,
+      "exact": null
+    }
+  ],
+  "model": {
+    "description": "Capture boss->runtime.life once in an ordinary const int; use the same value for bossLife publication and float numerator.",
+    "denominator_types_guards_source_assignment_order_unchanged": true,
+    "forced_spill_or_register": false,
+    "volatile_or_width_change": false
+  },
+  "capture_observation": {
+    "object_reread_removed": true,
+    "sequence": "load / integer capture / FILD / publication / integer-memory FIDIV",
+    "local_raw_sequence_size": 26,
+    "local_raw_sequence_equal_to_target": true,
+    "fragment_exact_credit": 0
+  },
+  "baseline_candidate_comparison": {
+    "complete_raw_byte_positions_differing": 226,
+    "alignment_unchanged": true,
+    "table_words_unchanged": true,
+    "scope": "Raw baseline-to-candidate positions, not a target mismatch score or accepted normalized comparison."
+  },
+  "independent_reviews": {
+    "baseline": {
+      "passed": true,
+      "original_artifacts_preserved": 111
+    },
+    "candidate": {
+      "passed": true,
+      "original_artifacts_preserved": 229
+    }
+  },
+  "guards": [
+    {
+      "unit": "transition-draw-screen",
+      "result": "exact",
+      "size": 134,
+      "fields": 9
+    },
+    {
+      "unit": "transition-draw-playfield",
+      "result": "exact",
+      "size": 68,
+      "fields": 1
+    },
+    {
+      "unit": "transition-draw-dim-playfield",
+      "result": "exact",
+      "size": 68,
+      "fields": 1
+    },
+    {
+      "unit": "transition-draw-pulse",
+      "result": "exact",
+      "size": 74,
+      "fields": 1
+    },
+    {
+      "unit": "chain-register-calc",
+      "result": "exact",
+      "size": 43,
+      "fields": 3
+    },
+    {
+      "unit": "chain-register-draw",
+      "result": "exact",
+      "size": 43,
+      "fields": 3
+    },
+    {
+      "unit": "transition-fade-out",
+      "result": "exact",
+      "size": 93,
+      "fields": 5
+    },
+    {
+      "unit": "transition-draw-dim-screen",
+      "result": "exact",
+      "size": 68,
+      "fields": 1
+    },
+    {
+      "unit": "transition-effect-factory",
+      "result": "exact",
+      "size": 82,
+      "fields": 2
+    },
+    {
+      "unit": "transition-effect-initialize",
+      "result": "exact",
+      "size": 396,
+      "fields": 37
+    },
+    {
+      "unit": "transition-pulse",
+      "result": "exact",
+      "size": 154,
+      "fields": 6
+    },
+    {
+      "unit": "transition-dim",
+      "result": "exact",
+      "size": 175,
+      "fields": 8
+    },
+    {
+      "unit": "frontend-find-script",
+      "result": "exact",
+      "size": 70,
+      "fields": 2
+    }
+  ],
+  "guard_bytes": 1468,
+  "guard_fields": 79,
+  "validation": {
+    "baseline_native_exit": 0,
+    "candidate_native_exit": 0,
+    "focused_boss_gauge_tests": {
+      "passed": true,
+      "tests": 5
+    },
+    "full_ci": {
+      "passed": true,
+      "stages": 112,
+      "exit_code": 0,
+      "frozen_inputs_preserved": true,
+      "verified_utc": "2026-10-24T22:25:31Z",
+      "log": ".analysis/gpt-dots/hud-life-capture-checkpoint-20261024/root-ci.log",
+      "log_sha256": "7d3d7f7bddc767ab3f111755d59eb151a9803f4f3bc92e63b57c2bb31204c6f0",
+      "scope": "Target-independent checks; separate automatic boundary-ledger divergence unresolved."
+    },
+    "previous_full_ci_source_checkpoint": "45fce0f"
+  },
+  "new_exact_owned_bytes": 0,
+  "new_source_owners": 0,
+  "metrics_changed": false,
+  "next_work": "Isolated excess-segment conditional ID-clear model is being prepared; not applied or compiled. WinMain remains parked.",
+  "evidence": [
+    {
+      "path": ".analysis/gpt-dots/hud-life-capture-preparation-20261024/baseline/receipt.json",
+      "sha256": "325722d69d0cd101b7b56a211eb2c35e4366265539cbebc33011b520dc15f5e2"
+    },
+    {
+      "path": ".analysis/gpt-dots/hud-life-capture-preparation-20261024/baseline/independent-review/receipt.json",
+      "sha256": "bb3dca97f39693494c11256b9ae00533f1d4345aaec742b6d00c5edcf502011a"
+    },
+    {
+      "path": ".analysis/gpt-dots/hud-life-capture-preparation-20261024/candidate/receipt.json",
+      "sha256": "1da5fb0eff34f3d767346e7ebc3d33516ada5b7e193c225dee3a34c7e397ef22"
+    },
+    {
+      "path": ".analysis/gpt-dots/hud-life-capture-preparation-20261024/candidate/independent-review/receipt.json",
+      "sha256": "7361e69b9961e23e0e2cb8db4a6f7bbc64af3f02a982479c731adde1e3e2b1ef"
+    },
+    {
+      "path": ".analysis/gpt-dots/hud-life-capture-preparation-20261024/candidate/independent-review/complete-owner-comparison.json",
+      "sha256": "65e65d23a2d270379d9b081e92128ecb284cb06dbd8cc5a5e3b7584dd8a1f58e"
+    },
+    {
+      "path": ".analysis/gpt-dots/hud-life-capture-preparation-20261024/candidate/focused-boss-gauge.log",
+      "sha256": "96987dcca16cc72f6a7f1d3247b59a48ef592232c80e51bfa5e5e5bed44bb70b"
+    },
+    {
+      "path": ".analysis/gpt-dots/hud-life-capture-preparation-20261024/current-graph.json",
+      "sha256": "78de46796b1d784c15f2a0ceee7f24927135afd63fc1f8d79b762f3658d27437"
+    }
+  ]
+}
