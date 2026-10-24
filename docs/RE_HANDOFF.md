@@ -3,24 +3,24 @@
 Updated 2026-10-24 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
-Committed source checkpoints include MIDI **45c16aa**, Options **1e35737**,
-five-factor D3D **6b3b5e2**, real D3D callees **a454afc**, WinMain logging/Flush
-**152492a**, publication/registry lifetimes **b33dda1**, and music callers
-**45fce0f**. Current work is the documentation-only
-[Sound dependency diagnostic](evidence/winmain-sound-dependency-20261024/README.md).
-Maintained source and canonical configuration are unchanged: ten-TU WinMain
-remains **1423/1389, nonexact**. Appending only existing Sound.cpp to the
-ignored graph produces eleven-TU **1453/1389**, 154 fields / 71 calls / 46 locals,
-also nonexact. No canonical graph migration or new exact/source credit occurs.
-The native runner's original exit 1 is preserved. A separate same-image audit
-passes with exactly four supported Sound PDB-owner selectors, preserving 107
-hashes without rebuilding. Independent replay passes with 138 current originals
-preserved and the 107 historical hashes verified. Thirteen guards pass
-2362/all 111, three peers 620/all 43 and UnprepareHeader 79/all 3; StopPlayback
-retains its 13 ordinary differences. MainProcessSoundQueues remains unresolved.
-The 112-stage CI pass verified at 21:39:42 UTC remains scoped to 45fce0f.
-Current documentation receives focused checks, not a new full-CI claim. The
-separate global automatic boundary check remains unresolved.
+Latest source checkpoint is music callers **45fce0f**; Sound dependency evidence
+is committed as **97a206f**. Current bounded work is the documentation-only
+[Chain dependency diagnostic](evidence/winmain-chain-dependency-20261024/README.md).
+Maintained ten-TU WinMain remains **1423/1389, nonexact**; ignored Sound eleven-TU
+and Sound + Chain twelve-TU graphs yield **1453/1389** and **1533/1389** respectively.
+The twelve-TU inventory is 155 fields / 71 calls / 48 local branches. Source,
+canonical configuration and metrics are unchanged; there is no graph migration
+or new exact/source credit. Native exit 0, independent full replay and detailed
+creation/routing review pass with original files unchanged.
+Creation wrapper and constructor inline into WinMain, unlike the original's
+explicit constructor call; the standalone 59-byte constructor retains 16 ordinary
+differences. Six real Chain seams resolve, but callback-owner and Chain globals
+remain distinct. All inherited guards/properties pass, without runtime closure.
+Park WinMain against flag/noinline matrices. HUD UpdateStageElements (3836 bytes)
+is the next queued capture-model representative: read-only review only, untried.
+The 112-stage CI pass verified at 21:39:42 UTC remains scoped to 45fce0f; current
+validation is focused documentation checks, not a new full-CI claim. The separate
+global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
@@ -32,8 +32,8 @@ receipts below; neither added a whole-owner exact match or source-present owner.
 The prior D3D callee checkpoint added 243 whole-owner exact bytes across
 MainClearPresentTwice and MainSetScreenColor. Logging checkpoint 152492a added
 79 whole-owner exact bytes for Flush only, not its WinMain caller. The prior
-lifecycle/music caller batches and current Sound dependency diagnostic each
-add **zero new whole-owner exact bytes**.
+lifecycle/music caller batches and Sound/Chain dependency diagnostics each add
+**zero new whole-owner exact bytes**.
 InitD3DRendering and WinMain remain nonexact, with no runtime/shared-global closure.
 All experiments in the preceding ANM 15-control panel are terminal.
 
@@ -53,6 +53,7 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | MainSetScreenColor / target 108 | Fresh canonical exact 108/all 11 with recursive same-image helper 135/all 8 proof |
 | WinMain / target 1389 | Maintained ten-TU context: 1423 bytes / 153 fields / 72 calls / 48 locals; nonexact |
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
+| WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
 | Authored source-present nonexact / absent | 205 / 118 functions |
@@ -163,7 +164,7 @@ All 112 CI stages passed for 45fce0f with frozen inputs preserved, verified at
 21:39:42 UTC. Parent extents/counts are not mismatch-byte counts; unresolved
 destroy/storage/runtime identity remains unproven.
 
-Current [Sound dependency evidence](evidence/winmain-sound-dependency-20261024/README.md)
+Committed [Sound dependency evidence](evidence/winmain-sound-dependency-20261024/README.md)
 records only appended Sound.cpp visibility in the ignored eleven-TU graph.
 Existing support order, /GL /GS and AnmInt3Scale-only /Ob1 remain unchanged;
 source/config/metrics are untouched and maintained ten-TU WinMain stays 1423.
@@ -179,7 +180,28 @@ ordinary differences. Start/CreateThread and Request/state-2 operations inline;
 actual Join ESI and Release EAX match target observations. MainProcessSoundQueues
 remains unresolved. No exact credit, canonical graph migration or runtime closure
 follows; current validation is focused documentation checks, not a new full CI.
-Reopen residuals only with new evidence and a falsifiable model.
+Current [Chain dependency evidence](evidence/winmain-chain-dependency-20261024/README.md)
+appends only Chain.cpp after Sound.cpp, preserving all profiles and the unchanged
+Main source. Twelve-TU WinMain is 1533/1389, nonexact; the maintained ten-TU
+1423-byte and Sound eleven-TU 1453-byte results remain separate. Native exit 0,
+independent full replay and detailed creation/routing review pass with originals
+unchanged. Actual
+creation wrapper and constructor inline into WinMain, unlike the target's
+explicit constructor call. The standalone constructor is 59 bytes with the same
+16 ordinary differences. Detailed review proves new 0x48, null/non-null CFG,
+all 16 sentinel DWORD stores, bit-0-only masks, untouched +0x20/+0x44 arguments
+and separate null/non-null Main-slot publication. The complete +80-byte extent
+delta partitions as prefix 0, creation/SDK setup +81 and suffix -1, not a
+mismatch score. Six real seams resolve, but g_MainCallbackOwner and g_Chain
+remain distinct at 0x414304/0x4142D8; no shared-global/runtime proof follows. Thirteen guards
+retain 2362/all 111, three peers 620/all 43, and UnprepareHeader 79/all 3;
+StopPlayback keeps its 13 ordinary differences. No canonical migration or new
+exact credit occurs.
+
+Park WinMain against flag/noinline matrices; reopen only for new independent
+evidence and a falsifiable model. Next larger representative: HUD
+UpdateStageElements, target 3836 bytes, queued capture/lifetime model. Read-only
+review is underway, not a tested experiment; no new outcome or exact claim.
 Ending remains queued: its retained source matches its receipt, but 20/52
 support/header inputs drifted and prior aggregate controls were neutral. Do not
 tune against that stale graph or start another unsupported allocation panel.

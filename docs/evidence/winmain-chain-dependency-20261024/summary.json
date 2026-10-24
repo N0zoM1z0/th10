@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "baseline_checkpoint": "97a206f7f2c662549955c19032a47991f4b38534",
+  "maintained_source_checkpoint": "45fce0f",
+  "scope": "Append-only Chain dependency diagnostic; no tracked source/configuration/metrics changes or canonical graph migration.",
+  "target": {
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "owner": "WinMain",
+    "size": 1389
+  },
+  "source_sha256": {
+    "src/Main.cpp": "e49f06a2c64f0eb6e2577237253a0b3bf0773d14fc51e991fcb2ced19d7be4f0",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/FileSystem.cpp": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260",
+    "src/Midi.cpp": "7871c32b29e1d81a2db45a91d08bc65e0a314f37885fb3befbbea81859475439",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/AnmManager.cpp": "5b3545b319d18e3c0fa869f5a11390d9b5534148cc0fa867803d08796fe640c6",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/Sound.cpp": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+    "src/Chain.cpp": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68"
+  },
+  "contexts": [
+    {
+      "translation_units": 10,
+      "role": "maintained context",
+      "size": 1423,
+      "fields": 153,
+      "calls": 72,
+      "locals": 48,
+      "exact": false
+    },
+    {
+      "translation_units": 11,
+      "role": "Sound dependency diagnostic",
+      "size": 1453,
+      "fields": 154,
+      "calls": 71,
+      "locals": 46,
+      "exact": false
+    },
+    {
+      "translation_units": 12,
+      "role": "Sound plus Chain dependency diagnostic",
+      "size": 1533,
+      "fields": 155,
+      "calls": 71,
+      "locals": 48,
+      "exact": false,
+      "image_sha256": "187250991fd10383de3d37afb34355511ce48428910c5d6e4ee1f8045de3c7ba"
+    }
+  ],
+  "metric_meaning": "Complete owner extents and inventory counts, not mismatch-byte counts or accepted normalized parent scores.",
+  "graph": {
+    "ordered_translation_units": [
+      "src/Main.cpp",
+      "src/GameErrorContext.cpp",
+      "src/FileSystem.cpp",
+      "src/Midi.cpp",
+      "src/PbgArchive.cpp",
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/Sound.cpp",
+      "src/Chain.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "entry_symbol": "WinMain@16",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "normal_support_sources": [],
+    "delta": "Append only src/Chain.cpp after src/Sound.cpp."
+  },
+  "native_trial": {
+    "exit": 0,
+    "audit_passed": true,
+    "receipt": {
+      "path": ".analysis/gpt-dots/winmain-chain-dependency-20261024/trial-receipt.json",
+      "sha256": "b8d9332ede6d584e3f4d49e2dd2bab5baedda030d5fd8c30b4dbdd9f3fd797f5"
+    }
+  },
+  "basic_independent_replay": {
+    "passed": true,
+    "original_files_unchanged": true,
+    "receipt": {
+      "path": ".analysis/gpt-dots/winmain-chain-dependency-20261024/independent-review/receipt.json",
+      "sha256": "2546813c536aaba65b57658409e5991b3af4f851b85c8e906f1161ac4b5a6a09"
+    }
+  },
+  "detailed_independent_review": {
+    "status": "passed",
+    "original_files_unchanged": true,
+    "native_run": false,
+    "receipt": {
+      "path": ".analysis/gpt-dots/winmain-chain-dependency-20261024/independent-review/receipt.json",
+      "sha256": "2546813c536aaba65b57658409e5991b3af4f851b85c8e906f1161ac4b5a6a09"
+    },
+    "creation_proof": {
+      "path": ".analysis/gpt-dots/winmain-chain-dependency-20261024/independent-review/creation-proof.json",
+      "sha256": "7b4619ebbeb95b958cf4fd3d1815e76d35291d578cc8f3331af0cce78232e195"
+    },
+    "routing_proof": {
+      "path": ".analysis/gpt-dots/winmain-chain-dependency-20261024/independent-review/six-seam-routing.json",
+      "sha256": "5727e7a4feabb1df4ae9ca33d59df9f2b615b885614bc563b4ef4681aa4b66a2"
+    }
+  },
+  "creation_boundary": {
+    "creation_wrapper_inlined_into_winmain": true,
+    "constructor_inlined_into_winmain": true,
+    "target_retains_explicit_constructor_call": true,
+    "standalone_constructor": {
+      "size": 59,
+      "ordinary_differences": 16,
+      "exact": false,
+      "address_fields": 0
+    },
+    "resolved_seams": [
+      "?MainCreateCallbackOwner@@YAPAXXZ",
+      "?MainRunCalcChain@@YGHPAX@Z",
+      "?MainRunDrawChain@@YGHPAX@Z",
+      "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+      "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+      "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+    ],
+    "allocation_size": 72,
+    "null_path_bypasses_owner_dereferences": true,
+    "inlined_sentinel_dword_stores": 16,
+    "flag_change": "Clear only bit 0 in each pre-existing sentinel flag word",
+    "untouched_argument_offsets": [
+      "0x20",
+      "0x44"
+    ],
+    "publication": "Separate null/non-null routes publish zero or the actual returned owner to MainCallbackOwner",
+    "whole_image_direct_edge_counts": {
+      "creation_wrapper": 0,
+      "constructor": 0,
+      "RunCalc": 1,
+      "RunDraw": 1,
+      "AllocElem": 5,
+      "AddCalc": 2,
+      "AddDraw": 3
+    }
+  },
+  "global_identity": {
+    "main_callback_owner_and_chain_distinct": true,
+    "runtime_shared_storage_proved": false,
+    "main_callback_owner_candidate_address": "0x00414304",
+    "chain_candidate_address": "0x004142D8"
+  },
+  "remaining_unresolved": [
+    "?MainRegisterChain@@YAHPAUMainSupervisorView@@@Z",
+    "?MainReleaseChain@@YAXPAUMainSupervisorView@@@Z",
+    "?MainDestroyCallbackOwner@@YAXPAX@Z",
+    "?MainLoadConfiguration@@YAHPBDPAUMainSupervisorView@@@Z"
+  ],
+  "same_image_regression": {
+    "guard_owners": 13,
+    "guard_bytes": 2362,
+    "guard_fields": 111,
+    "peer_owners": 3,
+    "peer_bytes": 620,
+    "peer_fields": 43,
+    "unprepare_header": {
+      "size": 79,
+      "fields": 3,
+      "exact": true
+    },
+    "stop_playback": {
+      "size": 129,
+      "fields": 5,
+      "ordinary_differences": 13,
+      "exact": false
+    }
+  },
+  "new_exact_owned_bytes": 0,
+  "new_source_owners": 0,
+  "canonical_graph_migration": false,
+  "runtime_closure": false,
+  "next_work": {
+    "winmain": "Park against flag/noinline matrices; reopen only with new independent evidence and a falsifiable model.",
+    "representative": "HUD UpdateStageElements",
+    "target_size": 3836,
+    "model": "capture/lifetime",
+    "status": "queued; read-only review only, not tested"
+  },
+  "validation_scope": {
+    "new_full_ci_run": false,
+    "retained_full_ci_commit": "45fce0f",
+    "retained_full_ci_stages": 112,
+    "retained_full_ci_verified_utc": "2026-10-24T21:39:42Z",
+    "current_changes": "Documentation only; focused checks, not a new full CI pass."
+  },
+  "parent_extent_decomposition": {
+    "baseline_size": 1453,
+    "expanded_size": 1533,
+    "prefix_delta": 0,
+    "creation_and_sdk_setup_delta": 81,
+    "suffix_delta": -1,
+    "total_delta": 80,
+    "scope": "Complete owner extent decomposition, not a mismatch/equality score"
+  }
+}
