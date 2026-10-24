@@ -495,8 +495,10 @@ stop:
         "th10.cfg", g_MainSupervisorView.serializedConfiguration, 0x34);
     if (g_MainSupervisorView.musicOwner != NULL)
     {
-        MainStopMusic(g_MainSupervisorView.musicOwner);
-        MainDestroyMusic(g_MainSupervisorView.musicOwner);
+        static_cast<MidiOutputView *>(g_MainSupervisorView.musicOwner)
+            ->StopPlayback();
+        if (g_MainSupervisorView.musicOwner != NULL)
+            MainDestroyMusic(g_MainSupervisorView.musicOwner);
         g_MainSupervisorView.musicOwner = NULL;
     }
     th10::g_GameErrorContext.Flush();

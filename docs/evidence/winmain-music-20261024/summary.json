@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "baseline_commit": "b33dda1940726ac979b67fb3ce42edd9de68a9b5",
+  "scope": "Two separately measured music caller models in the retained ten-TU LTCG graph; full parent and StopPlayback remain nonexact.",
+  "target": {
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "function": "WinMain",
+    "address": "0x00438AD0",
+    "size": 1389
+  },
+  "current_source": {
+    "path": "src/Main.cpp",
+    "sha256": "e49f06a2c64f0eb6e2577237253a0b3bf0773d14fc51e991fcb2ced19d7be4f0"
+  },
+  "metric_meaning": "WinMain sizes are complete owner extents; field/call/local values are inventory counts, not ordinary-byte difference counts.",
+  "new_exact_owned_bytes": 0,
+  "new_source_owners": 0,
+  "tracking_metrics_changed": false,
+  "models": [
+    {
+      "model": "music-recheck",
+      "description": "Reload musicOwner after stop and guard destruction with a fresh null test",
+      "source_before_sha256": "af0bc3965b9b5a22c642d8dfa99f3e1884c3dc1504c87031a9ffb2ef6bc11507",
+      "source_after_sha256": "06257b174660b685d023894444e3b211a449af1b09ad9aee34b118b8e8556451",
+      "image_sha256": "53efaca1f25a0cdd1755d6536ba80be441d31b7c192052fb8661b7490bb07567",
+      "winmain": {
+        "size": 1438,
+        "fields": 153,
+        "calls": 72,
+        "locals": 49
+      },
+      "native_runner_exit": 0,
+      "audit_passed": true,
+      "whole_owner_exact": false,
+      "receipt": {
+        "path": ".analysis/gpt-dots/winmain-music-recheck-20261024/trial-receipt.json",
+        "sha256": "7a8200582913346bd692f21f4150d84a4a41a56b59bdde6938f529333ba92a6b"
+      }
+    },
+    {
+      "model": "stop-playback",
+      "description": "Replace only MainStopMusic with the natural MidiOutputView::StopPlayback member call",
+      "source_before_sha256": "06257b174660b685d023894444e3b211a449af1b09ad9aee34b118b8e8556451",
+      "source_after_sha256": "e49f06a2c64f0eb6e2577237253a0b3bf0773d14fc51e991fcb2ced19d7be4f0",
+      "image_sha256": "832cc185996620c09694424cd4ef0f5b06589323f3c3152aa1c8f8ccecadbcb1",
+      "winmain": {
+        "size": 1423,
+        "fields": 153,
+        "calls": 72,
+        "locals": 48
+      },
+      "native_runner_exit": 0,
+      "audit_passed": true,
+      "whole_owner_exact": false,
+      "receipt": {
+        "path": ".analysis/gpt-dots/winmain-stop-playback-20261024/trial-receipt.json",
+        "sha256": "6c608332c5ba60da9a69ff80d7feb4dd30b2d8789346a0c94dbe5c3a747bd69f"
+      }
+    }
+  ],
+  "stop_playback": {
+    "size": 129,
+    "fields": 5,
+    "all_field_identities_bound": true,
+    "actual_receiver": "EDI",
+    "target_receiver": "EDI",
+    "receiver_source_coercion": false,
+    "ordinary_byte_differences": 13,
+    "exact": false,
+    "ordinary_body_unchanged_from_preceding_image": true,
+    "receipt": {
+      "path": ".analysis/gpt-dots/winmain-stop-playback-20261024/trial-stop-report.json",
+      "sha256": "dcbafac0f1720f3ac7b3235e747703d0d6792437ee99474567a19c6939e151a8"
+    },
+    "baseline_comparison": {
+      "path": ".analysis/gpt-dots/winmain-stop-playback-20261024/independent-review/callee-baseline-comparison.json",
+      "sha256": "c6df0ef5943eeb59b14c08b18dcb1bc4614c88deaa9a5a3589a7abce06cc777d"
+    }
+  },
+  "same_image_regression": {
+    "guard_owners": 9,
+    "guard_bytes": 1758,
+    "guard_fields": 94,
+    "peer_owners": 3,
+    "peer_bytes": 620,
+    "peer_fields": 43,
+    "additional_stop_trial_peer": {
+      "owner": "UnprepareHeader",
+      "size": 79,
+      "fields": 3,
+      "exact": true
+    },
+    "scope": "Intact existing contracts; no new exact credit or recertification of other canonical graphs."
+  },
+  "independent_reviews": [
+    {
+      "model": "music-recheck",
+      "passed": true,
+      "original_artifacts_preserved": 115,
+      "path": ".analysis/gpt-dots/winmain-music-independent-review-20261024/review-receipt.json",
+      "sha256": "9f488fe3e155a2358ad6c8cee158cccac2e5faf60d08db4213300fdd68e5fd19"
+    },
+    {
+      "model": "stop-playback",
+      "passed": true,
+      "original_files_unchanged": true,
+      "path": ".analysis/gpt-dots/winmain-stop-playback-20261024/independent-review/receipt.json",
+      "sha256": "409cb5bc398e498c4b4443c4b36d6f7714af48a1d913657da4fb368e6268cbdb"
+    }
+  ],
+  "full_ci": {
+    "status": "passed",
+    "stages": 112,
+    "exit_code": 0,
+    "frozen_inputs_preserved": true,
+    "result_verified_utc": "2026-10-24T21:39:42Z",
+    "log": ".analysis/gpt-dots/winmain-music-checkpoint-20261024/root-ci.log",
+    "log_sha256": "a9cc192a217d44998d6db5506d384c1f1560d5cfc050599bb9a9e9cabca25ea6",
+    "scope": "Target-independent checks; separate automatic boundary-ledger divergence remains unresolved."
+  },
+  "remaining_limits": [
+    "WinMain has no complete accepted normalized comparison",
+    "StopPlayback retains 13 ordinary scheduling differences",
+    "Destroy facade and shared-global runtime identity remain unresolved",
+    "No production TU or runnable product closure"
+  ]
+}

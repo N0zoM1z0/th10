@@ -3,21 +3,22 @@
 Updated 2026-10-24 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
-Committed source checkpoints: MIDI inline-clock recovery **45c16aa**,
-Options WORD-consumer recovery **1e35737**, five-factor D3D **6b3b5e2**,
-real D3D callees **a454afc**, and WinMain logging/Flush **152492a**.
+Committed source checkpoints include MIDI **45c16aa**, Options **1e35737**,
+five-factor D3D **6b3b5e2**, real D3D callees **a454afc**, WinMain logging/Flush
+**152492a**, and WinMain publication/registry lifetimes **b33dda1**.
 Current checkpoint is
-[WinMain lifecycle recovery](evidence/winmain-lifecycle-20261024/README.md):
-four separately measured device, instance-publication, registry-startup and
-captured-teardown models. WinMain is **1421/1389, nonexact**, with 152 fields,
-72 calls and 45 local branches. Teardown native exit is 0; independent replay
-passes with 116 original artifacts preserved. Nine same-image guards retain
-1758/all 94 and Log/Fatal/WriteFile retain 620/all 43.
-This batch adds zero exact bytes or source owners; all tracking metrics remain
-unchanged. All 112 target-independent CI stages passed for this source, exit 0,
-with frozen inputs preserved, verified at 21:18:54 UTC. Only CI-result
-documentation changed afterward. The separate global automatic boundary check
-remains unresolved as detailed below.
+[WinMain music caller recovery](evidence/winmain-music-20261024/README.md):
+post-stop reload/null gating followed by a separately measured natural
+MidiOutputView::StopPlayback call. WinMain is **1423/1389, nonexact**, with
+153 fields, 72 calls and 48 local branches. Both native trials and independent
+replays pass; the first preserves 115 artifacts and the second preserves its
+original files. The real EDI receiver matches, but StopPlayback remains
+129 bytes / all 5 fields with 13 ordinary scheduling differences. UnprepareHeader
+is exact 79/all 3; prior guards and properties remain intact.
+This batch adds zero exact bytes or source owners; tracking metrics are unchanged.
+All 112 target-independent CI stages passed for this source, exit 0, with frozen
+inputs preserved, verified at 21:39:42 UTC. Only CI-result documentation changed
+afterward. The separate global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
 never push. Earlier `gpt-6.1-sol` prefixes and direct-local-only/no-subagent
@@ -28,8 +29,9 @@ MIDI and Options have completed bounded source experiments and are parked with
 receipts below; neither added a whole-owner exact match or source-present owner.
 The prior D3D callee checkpoint added 243 whole-owner exact bytes across
 MainClearPresentTwice and MainSetScreenColor. Logging checkpoint 152492a added
-79 whole-owner exact bytes for Flush only, not its WinMain caller. The current
-four-model lifecycle batch adds **zero new whole-owner exact bytes**.
+79 whole-owner exact bytes for Flush only, not its WinMain caller. The prior
+lifecycle batch and current music caller batch each add **zero new whole-owner
+exact bytes**.
 InitD3DRendering and WinMain remain nonexact, with no runtime/shared-global closure.
 All experiments in the preceding ANM 15-control panel are terminal.
 
@@ -47,7 +49,7 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | InitD3DRendering / target 1159 | Current candidate 1238 bytes; wrapper inlined, no direct wrapper call; nonexact |
 | MainClearPresentTwice / target 135 | Fresh canonical exact 135/all 8; also replayed in the wrapper's same fresh image |
 | MainSetScreenColor / target 108 | Fresh canonical exact 108/all 11 with recursive same-image helper 135/all 8 proof |
-| WinMain / target 1389 | 1421-byte candidate after four further lifecycle models; 152 fields / 72 calls / 45 locals; nonexact |
+| WinMain / target 1389 | 1423-byte candidate after two music caller models; 153 fields / 72 calls / 48 locals; nonexact |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
 | Authored source-present nonexact / absent | 205 / 118 functions |
@@ -124,7 +126,7 @@ Only CI-result documentation changed afterward and was checked separately.
 See the [validation summary](evidence/winmain-logging-20261024/validation-summary.json).
 Original class/method/TU and runtime/shared-global identity remain unproven.
 
-Current [WinMain lifecycle evidence](evidence/winmain-lifecycle-20261024/README.md)
+Historical [WinMain lifecycle evidence](evidence/winmain-lifecycle-20261024/README.md)
 records four independent models after 152492a: fresh post-Reset device null
 recheck (1420 bytes), success-only supervisor instance publication (1420), POD
 registry operator-new/full-zeroing/late publication (1435), and captured teardown
@@ -136,12 +138,27 @@ exit 1 and first-native post-build audit exit 1; supplemental v3 preserves an
 identity LEA zero fact on the existing image, without recompilation.
 Teardown native exit 0 and independent replay pass; all 116 original artifacts
 are preserved. Nine guards remain exact 1758/all 94, and Log/Fatal/WriteFile
-remain exact 620/all 43 under intact same-image contracts. Current Main SHA-256:
+remain exact 620/all 43 under intact same-image contracts. Checkpoint Main SHA-256:
 `af0bc3965b9b5a22c642d8dfa99f3e1884c3dc1504c87031a9ffb2ef6bc11507`.
-All 112 CI stages passed with frozen inputs preserved. The music null-gate
-proposal is prepared, not tried;
-original class/constructor identities, delete versus delete[] spelling and
-runtime/shared-global closure remain unproven.
+All 112 CI stages passed for b33dda1 with frozen inputs preserved, verified at
+21:18:54 UTC. Original class/constructor identities, delete versus delete[]
+spelling and runtime/shared-global closure remain unproven.
+
+Current [music caller evidence](evidence/winmain-music-20261024/README.md)
+records two separate models after b33dda1. Post-stop reload/null gating yields
+1438 bytes / 153 fields / 72 calls / 49 locals; the real StopPlayback call yields
+1423 / 153 / 72 / 48. Both native exits are 0 and both independent reviews pass.
+The first review preserves 115 artifacts; the second preserves original files
+and confirms the complete callee's ordinary body is unchanged from baseline.
+StopPlayback naturally receives EDI and binds all five fields across its full
+129 bytes, but retains 13 ordinary scheduling differences and no exact credit.
+UnprepareHeader remains exact 79/all 3. Nine guards retain 1758/all 94 and three
+peers retain 620/all 43; prior startup/publication/device/registry/logging and
+music-gate properties pass. Current Main SHA-256:
+`e49f06a2c64f0eb6e2577237253a0b3bf0773d14fc51e991fcb2ced19d7be4f0`.
+All 112 CI stages passed for this source with frozen inputs preserved. Parent extents/counts are not
+mismatch-byte counts, and unresolved destroy/storage/runtime identity remains
+unproven. Reopen residuals only with new evidence and a falsifiable model.
 Ending remains queued: its retained source matches its receipt, but 20/52
 support/header inputs drifted and prior aggregate controls were neutral. Do not
 tune against that stale graph or start another unsupported allocation panel.
