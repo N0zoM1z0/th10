@@ -23,7 +23,8 @@ typedef unsigned int ZunBool;
 @CHAIN_DECLARATIONS@
 @VM_ID_DECLARATIONS@
 @FLOAT3_DECLARATION@
-struct PlayerTimerView { int previous, current; float subframe; float *scale; unsigned int flags; };
+// Storage-only timer seam; no constructor or Tick behavior is modeled.
+@GAME_TIMER_STORAGE@
 @GAME_DECLARATIONS@
 // Opaque native type only; the host does not construct or destroy GuiView.
 struct GuiView;

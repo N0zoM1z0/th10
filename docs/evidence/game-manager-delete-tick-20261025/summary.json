@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "baseline_commit": "38981e4b084a232ccb5641a468cb399a47340f49",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "current_source_sha256": "4847d2f30f244f195b2240b0f9738fa66a6cfa24379b285da6e4ad616b59f4f0",
+  "current_image_sha256": "410c3a6ab7a735e5c416176fdb77d87f589dd40b1bba3aebf558c3bb492ad1d8",
+  "graph": {
+    "artifact_kind": "linked-pe",
+    "entry_symbol": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "source": "src/GameManager.cpp",
+    "support_sources": []
+  },
+  "models": [
+    {
+      "model": "fresh baseline",
+      "source_sha256": "f4d213bb89e23d51114578720f299a53800c782516af441294733f8c919762bb",
+      "image_sha256": "41e41353b31d5bc0f63ce7f601ddbaef8e1ebba49dad72a1cc311f8b3cc91f22",
+      "whole_owner_size": 1587,
+      "target_size": 1544,
+      "whole_owner_exact": false,
+      "stage_exits": {
+        "root.exit": 0,
+        "cold.exit": 0,
+        "comparison.exit": 0
+      },
+      "independent_review_passed": true,
+      "guards": {
+        "checks": 3,
+        "bytes": 127,
+        "fields": 2
+      },
+      "receipts": [
+        {
+          "path": ".analysis/gpt-dots/game-menu-delete-current-20261025/receipt.json",
+          "sha256": "fc2d4cd678a72f06c4cd123bf3e8e19071cef80b8d559fc8be743026c963dfa8"
+        },
+        {
+          "path": ".analysis/gpt-dots/game-menu-delete-current-20261025/independent-review/review.json",
+          "sha256": "144ac9010e45eb8f95dd920f7fffc096b08d1d6950963eab87fab75f1b82048e"
+        }
+      ]
+    },
+    {
+      "model": "explicit scalar delete",
+      "source_sha256": "d075eb547d977b4010c85da9642960b20e545dfacad8d81c81f25a43cda188a3",
+      "image_sha256": "5d68650322466110e6a661d260b1b8e61391c24e650f435b7ee02435ac1ff76e",
+      "whole_owner_size": 1587,
+      "target_size": 1544,
+      "whole_owner_exact": false,
+      "stage_exits": {
+        "root.exit": 0,
+        "cold.exit": 0,
+        "comparison.exit": 0
+      },
+      "independent_review_passed": true,
+      "guards": {
+        "checks": 3,
+        "bytes": 127,
+        "fields": 2
+      },
+      "receipts": [
+        {
+          "path": ".analysis/gpt-dots/game-menu-delete-candidate-20261025/receipt.json",
+          "sha256": "637426d487a5bf235ec88a4fc73c689a9ccdaf539266d82bc3780390d60ee99b"
+        },
+        {
+          "path": ".analysis/gpt-dots/game-menu-delete-candidate-20261025/independent-review/receipt.json",
+          "sha256": "9b13bc260adbd3004b5d795756ab786676ae0ec0d0317b83563135d47ad972a4"
+        }
+      ]
+    },
+    {
+      "model": "existing real Tick definition",
+      "source_sha256": "4847d2f30f244f195b2240b0f9738fa66a6cfa24379b285da6e4ad616b59f4f0",
+      "image_sha256": "410c3a6ab7a735e5c416176fdb77d87f589dd40b1bba3aebf558c3bb492ad1d8",
+      "whole_owner_size": 1581,
+      "target_size": 1544,
+      "whole_owner_exact": false,
+      "stage_exits": {
+        "root.exit": 0,
+        "cold.exit": 0,
+        "comparison.exit": 0
+      },
+      "independent_review_passed": true,
+      "guards": {
+        "checks": 3,
+        "bytes": 127,
+        "fields": 2
+      },
+      "receipts": [
+        {
+          "path": ".analysis/gpt-dots/game-real-tick-candidate-20261025/receipt.json",
+          "sha256": "637426d487a5bf235ec88a4fc73c689a9ccdaf539266d82bc3780390d60ee99b"
+        },
+        {
+          "path": ".analysis/gpt-dots/game-real-tick-candidate-20261025/independent-review/receipt.json",
+          "sha256": "f28b5c698ff1cbf088a3987330fc4a17b1075f809b53784733c02eb473b0ceb8"
+        }
+      ]
+    }
+  ],
+  "delete_model": {
+    "only_raw_changed_position_count": 1,
+    "changed_field_count": 1,
+    "actual_scalar_delete_symbol": "??3@YAXPAX@Z",
+    "target_delete_address": "0x4524A1",
+    "ordinary_positions_unchanged": 1131,
+    "same_captured_owner_and_cleanup_and_gates": true,
+    "typed_delete_added": false
+  },
+  "real_tick_model": {
+    "same_i386_storage_size": 20,
+    "field_offsets": [
+      0,
+      4,
+      8,
+      12,
+      16
+    ],
+    "stage_timer_offset": 16,
+    "set_current_sites_unchanged": 2,
+    "actual_native_receiver": "ESI",
+    "caller_argument_cleanup": false,
+    "outlined_tick": {
+      "size": 72,
+      "fields": 4,
+      "exact": true,
+      "existing_credit_only": true
+    },
+    "parent_inventory": {
+      "fields": 114,
+      "locals": 55,
+      "not_target_canonical_acceptance": true
+    },
+    "native_set_current": {
+      "size": 57,
+      "all_53_nonfield_bytes_equal": true,
+      "sole_field_same_game_speed_identity": true,
+      "comparison_scope": "baseline versus candidate, not independent target exactness"
+    }
+  },
+  "separate_ondraw_canonical_replay": {
+    "size": 31,
+    "fields": 1,
+    "exact": true,
+    "image_sha256": "97eee708b7876b790ea02009de500912609b3a3701e7b425d0f817b96135d785",
+    "receipt": {
+      "path": ".analysis/gpt-dots/game-manager-checkpoint-20261025/ondraw/comparison.json",
+      "sha256": "74699a8dd266405bf83e44166e1b22bd3312d9e45a45ac63867994804aee17ae"
+    }
+  },
+  "host_timer_storage_fixture": {
+    "scope": "Canonical five-field storage extraction/audit only; no constructor or Tick behavior, no host-to-native pointer-width proof",
+    "initial_compile_failure_preserved": {
+      "path": ".analysis/gpt-dots/game-manager-checkpoint-20261025/focused-teardown.log",
+      "sha256": "16ebe973b42ee9dee693d2fdb5f8f3b61d3ed26b28d4d48aaa21f4fc07658ce9"
+    },
+    "staged_O2_baseline_cases": 70,
+    "staged_ASan_UBSan_cases": 70,
+    "staged_compiled_mutations_with_exact_diagnostics": 50,
+    "strict_classifier_and_other_logic_unchanged": true,
+    "reordered_and_extra_field_negative_audits_reject": true,
+    "applied_root_baseline_cases": 70,
+    "applied_test_sha256": "34272bbdd811a65ea87082e9ea728e7321f20159cff6089bd784057f2376347d",
+    "applied_fixture_sha256": "2c3b3bd09d158bb5959e5a2e41c485f4194e06133bbdd292e271008ae7c3ba2d",
+    "receipts": [
+      {
+        "path": ".analysis/gpt-dots/game-teardown-timer-host-20261025/receipt.json",
+        "sha256": "17b4331960460cf33c6a8590f5b110127bf1f08736802502693feb28c0898914"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-manager-checkpoint-20261025/root-focused-teardown.log",
+        "sha256": "3b261e1391b242950fc9aca9c8c94bbe8a3ac6b39a55b7ddcc941d9baa47bfdc"
+      }
+    ]
+  },
+  "retained_failures": [
+    {
+      "path": ".analysis/gpt-dots/game-real-tick-candidate-20261025/prepare-failure.json",
+      "sha256": "5027b5fec4c2f9029e0e0c013478fc42dd419b8ead8ea1fd9581df8cf1cea5a7"
+    },
+    {
+      "path": ".analysis/gpt-dots/game-real-tick-candidate-20261025/independent-review/initial-review-failure.json",
+      "sha256": "bf738eafea18f046d844602771d501e16a32f68426dcf58f8dc79d3c144b4c61"
+    },
+    {
+      "path": ".analysis/gpt-dots/game-real-tick-candidate-20261025/independent-review/alignment-review-failure.json",
+      "sha256": "dc56458679ad58de872021bb83ba22bde56a0457854c9856262423782053f794"
+    }
+  ],
+  "failure_scope": "Preparation failed before freeze/build; independent review observer failures were repaired on the same retained image. No native retry or failure overwrite. Role-checked before/after alignment is not target-local normalization.",
+  "credit": {
+    "new_exact_bytes": 0,
+    "new_exact_owners": 0,
+    "new_source_owners": 0,
+    "authored_denominator_change": 0
+  },
+  "full_checkpoint_ci": {
+    "status": "passed",
+    "scope": "112-stage target-independent source/test checkpoint; not parent exactness or runtime closure",
+    "verified_at_utc": "2026-10-25T02:16:22Z",
+    "stage_count": 112,
+    "root_exit": 0,
+    "post_input_check_exit": 0,
+    "frozen_input_count": 1489,
+    "frozen_inputs_preserved": true,
+    "transport_timeout": "Earlier MCP timeout affected transport only; durable CI and post-input checks passed.",
+    "post_ci_changes": "Only these evidence documents and the handoff are updated after the successful freeze.",
+    "receipts": [
+      {
+        "path": ".analysis/gpt-dots/game-manager-checkpoint-20261025/root-ci.log",
+        "sha256": "ef2e4c1857cb428f040d6b21c269b435c79b1c6d2caa7152c2bc9b42d266d871"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-manager-checkpoint-20261025/root-ci.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-manager-checkpoint-20261025/ci-inputs.json",
+        "sha256": "88b8508313bc732c59fc3b39ec2ad8c2a53ddd138e7f1e75890c5049efb395f3"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-manager-checkpoint-20261025/post-ci-inputs.log",
+        "sha256": "0130d46800c5077c9481973197b8320b62dd798126f567b294e9181656af2802"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-manager-checkpoint-20261025/post-ci-inputs.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-manager-checkpoint-20261025/run-ci.sh",
+        "sha256": "9780ca816eb73222252ecba80ebc9322786dd6ccdb6ea6c248cbabdabce0f08f"
+      }
+    ]
+  },
+  "next_work": {
+    "gui_substitution": "rejected: actual target callee 0x417040 is not HUD UpdateStageElements 0x414900",
+    "flag_control_audit": "completed read-only; combined versus separate flag tests do not prove a bitfield declaration; parked",
+    "new_trial": "none",
+    "existing_worker_stop": {
+      "symbol": "ScriptViewerWorkerView::Stop",
+      "target_address": "0x44C150",
+      "size": 101,
+      "status": "read-only next lead; not a completed model or newly credited owner"
+    }
+  },
+  "limits": [
+    "Parent extent and inventories are not mismatch-byte counts or a percentage passed.",
+    "Existing same-image Tick and canonical OnDraw checks do not create new credit.",
+    "No original class/type spelling, product runtime or shared-global closure is established."
+  ]
+}

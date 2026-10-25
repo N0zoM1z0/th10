@@ -118,6 +118,19 @@ def audit_seams(root, source, fixture):
     require('g_GameOwner47781C' not in source, 'obsolete independent laser alias remains')
     require(source.count('reinterpret_cast<GameChainOwnerView *>(g_EnemyLaserManager)') == 3,
             'laser chain-prefix caller bindings drift')
+    # The cleanup owner only carries timer storage; it never executes Tick.
+    # Extract exactly the canonical five data fields, not constructor/method behavior.
+    # Host pointer width differs: this is not an x86 layout or timer-runtime test.
+    timer = balanced(anm, 'struct AnmVmTimerView\n', True)
+    marker = '    AnmVmTimerView()'
+    require(timer.count(marker) == 1, 'timer constructor/storage boundary drift')
+    storage = timer[timer.index('{') + 1:timer.index(marker)]
+    require(normalized(storage) == 'intprevious;intcurrent;floatsubframe;float*scale;unsignedintflags;',
+            'canonical timer five-field storage/order drift')
+    require('AnmVmTimerViewstageTimer;' in normalized(balanced(source, 'struct GameManager\n', True)),
+            'GameManager timer declaration drift')
+    require(fixture.count('@GAME_TIMER_STORAGE@') == 1, 'timer storage insertion point drift')
+    fixture = fixture.replace('@GAME_TIMER_STORAGE@', 'struct AnmVmTimerView\n{' + storage + '};')
     game_types = ['GameManager', 'GameChainElementView', 'GameChainOwnerView', 'GameMenuView',
                   'GameAdditionalChainView']
     fixture = fixture.replace('@GAME_DECLARATIONS@', 'struct GameChainElementView;\n' + '\n'.join(

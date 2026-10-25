@@ -4,6 +4,18 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [GameManager delete/timer checkpoint](evidence/game-manager-delete-tick-20261025/README.md)
+has a fresh single-TU /GL-without-/GS baseline and two independently reviewed
+models: actual menu delete leaves 1587/1544; existing real Tick yields
+**1581/1544, nonexact**, with 114 fields / 55 locals inventoried. Three guards
+127/all 2, same-image Tick 72/all 4 and separate canonical OnDraw 31/all 1 pass.
+Tick and OnDraw are existing credit only. Scoped host timer-storage repair passes
+70 baseline cases and staged ASan/UBSan 70 cases plus 50 strict mutations.
+The current source/test checkpoint passes all 112 target-independent CI stages,
+verified 2026-10-25 02:16:22 UTC, with all 1489 frozen inputs preserved.
+No new exact/source/denominator credit follows.
+Current GameManager.cpp SHA-256:
+`4847d2f30f244f195b2240b0f9738fa66a6cfa24379b285da6e4ad616b59f4f0`.
 WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
 at **97a206f** (Sound) and **7b85dd3** (Chain). WinMain remains parked against
 flag/noinline matrices. After clear/delete checkpoint **9fb5a3d**, three
@@ -25,8 +37,10 @@ The original default-first Wine-path/link failure is retained separately from
 the successful same-source retry. Current Gui SHA-256:
 `70184d8834dc24998debe484a67a6643b8e55a6327a6115835353e008a68309b`.
 Full CI passed all 112 stages for source checkpoint 470dca2, exit 0, with
-frozen inputs preserved, verified at 2026-10-25 00:36:31 UTC. This follow-on
-source-current refresh checkpoints change documentation only and claim no new full CI.
+frozen inputs preserved, verified at 2026-10-25 00:36:31 UTC. Subsequent shared
+baseline/Ending documentation checkpoints changed no source. The current
+GameManager source/test checkpoint now has its own 112-stage pass, recorded
+below; the prior pass is not relabeled as covering these changes.
 Prior checkpoint failures and scoped observer repairs remain recorded separately.
 Park unsupported HUD spelling/flag panels: visible register/save scheduling
 and folded boss-flag tests do not establish another semantic factor. The
@@ -42,9 +56,13 @@ and neutral. The [fresh Ending refresh](evidence/ending-source-current-20261025/
 passes native/independent review and remains 1576/1568, nonexact. Ten guards
 943/all 57, six sampling checks and existing PendingThree 65/all 2 pass; the only
 two historical/current non-field changes reflect the prior FrontEnd correction.
-Core, HUD, WinMain and Ending stay parked against old panels. GameManagerUpdateBody
-1544 is the next prepared pilot, requiring a fresh single-TU /GL-no-/GS baseline
-before its deallocator-call model; no GameManager build or edit has occurred.
+Core, HUD, WinMain and Ending stay parked against old panels. GameManager's
+bounded delete and real-timer models are measured below. GUI substitution is
+rejected because the actual target is 0x417040, not HUD 0x414900. The completed
+read-only flag/control audit does not establish a bitfield declaration from
+combined versus separate tests; park that lead. An existing
+ScriptViewerWorkerView::Stop at 0x44C150 (101 bytes) is a read-only next lead,
+not a completed model or newly credited owner.
 The separate global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
@@ -57,7 +75,7 @@ receipts below; neither added a whole-owner exact match or source-present owner.
 The prior D3D callee checkpoint added 243 whole-owner exact bytes across
 MainClearPresentTwice and MainSetScreenColor. Logging checkpoint 152492a added
 79 whole-owner exact bytes for Flush only, not its WinMain caller. The prior
-lifecycle/music caller batches, Sound/Chain diagnostics and current HUD models
+lifecycle/music caller batches, Sound/Chain diagnostics, HUD and GameManager models
 each add **zero new whole-owner exact bytes**. Canonical identity repair retains
 206 previously credited bytes without adding new credit.
 InitD3DRendering and WinMain remain nonexact, with no runtime/shared-global closure.
@@ -81,6 +99,7 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
+| GameManagerUpdateBody / target 1544 | Current 1581 bytes; 114 fields / 55 locals inventoried; real Tick 72/all 4 preserved; nonexact |
 | Ending Run / target 1568 | Fresh source-current 1576 bytes; complete alignment / 18 table words / 53 locals retained; nonexact |
 | HUD UpdateStageElements / target 3836 | Candidate 3824 bytes: 3796 code + 0 alignment + 28 table; 72 syntactic fields / 249 locals / 21 calls; nonexact |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
@@ -346,12 +365,41 @@ Park Ending source panels. Source/configuration and metrics remain unchanged;
 the prior 470dca2 full-CI scope is preserved, with focused documentation checks
 only for this checkpoint.
 
-Next bounded pilot: GameManagerUpdateBody, target 1544. Target cleanup retains a
-captured owner before scalar delete 0x4524A1; current source uses free(menu).
-Prepare its actual single-TU /GL-without-/GS baseline before the one-call model.
-No GameManager native build or source edit has occurred. Preserve captured-owner
-lifetime, manual effects, ABI and complete-owner/guard gates; a shared CRT backend
-does not permit free/delete identity substitution.
+The [current GameManager checkpoint](evidence/game-manager-delete-tick-20261025/README.md)
+first built the actual single-TU /GL-without-/GS OnUpdate baseline, 1587/1544.
+The one-call free(menu) to explicit operator delete model remains 1587 bytes;
+independent review proves the actual release identity and unchanged captured
+owner, explicit cleanup and gates. Only one raw release-field byte changes.
+
+The next model uses same-layout AnmVmTimerView storage and the existing Tick,
+removing GameAdvanceTimer. Parent becomes 1581/1544, nonexact; all 114 fields
+and 55 locals are inventoried. Three guards retain 127/all 2. Actual outlined
+Tick is exact 72/all 4, naturally receiving ESI with no caller argument cleanup.
+Both SetCurrent sites remain unchanged; the 57-byte native body preserves all
+53 non-field bytes and the same single game-speed field. Existing Tick credit
+is not added again. The original OnDraw canonical recipe independently cold-
+replays 31/all 1 in its separate image.
+
+The host teardown fixture initially lacked the renamed timer storage. Its
+compile failure is preserved; only canonical five-field extraction/audit was
+added, with no timer constructor/Tick model or host-to-i386 layout claim.
+Staged O2 baseline 70 and ASan/UBSan 70 plus 50 strict mutation checks pass;
+the applied root baseline also passes 70. Classifier and other test logic are
+unchanged. Preparation-only path failure and independent-review failures remain
+recorded; successful review used the same retained native image, with no native
+retry. Full target-independent CI now passes all 112 stages, verified
+2026-10-25 02:16:22 UTC. In game-manager-checkpoint-20261025, root-ci.exit and
+post-ci-inputs.exit are both 0; all 1489 frozen source, documentation and
+protected-file inputs were preserved. The earlier MCP timeout was transport
+only, not native or CI failure. The linked summary records log/pin hashes.
+This documentation-only result update follows that freeze; metrics stay unchanged.
+
+GUI replacement was rejected: the actual target call is 0x417040, not
+UpdateStageElements 0x414900. The completed read-only flag/control audit cannot
+prove a bitfield declaration from combined versus separate flag tests; that
+lead is parked. Existing ScriptViewerWorkerView::Stop, 0x44C150 / 101 bytes,
+is only a next audit lead, not a tested model or new exact credit. Do not infer
+parent exactness or runtime closure from local call, callee or host-fixture results.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not

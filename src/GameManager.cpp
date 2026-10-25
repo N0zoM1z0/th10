@@ -35,7 +35,7 @@ struct GameManager
     int stageResourceIndex;
     GameChainElementView *updateChain;
     GameChainElementView *drawChain;
-    PlayerTimerView stageTimer;
+    AnmVmTimerView stageTimer;
     u32 configuration[13];
     u32 m_Flags;
     int initializationMode;
@@ -135,7 +135,6 @@ extern void GameEmitDemoEffect(int script, int type, int duration, int x, int y,
 extern void GameQueueSound(unsigned char *sound, int soundId);
 extern void GameUpdateGui(GuiView *gui);
 extern void GameUpdateFaithDecay(unsigned char *state);
-extern void GameAdvanceTimer(PlayerTimerView *timer);
 extern void EnemyMarkPendingInterrupt(int *vmId);
 
 // Target0x4045B0 starts the primary stage's60-frame transition. The actual
@@ -248,7 +247,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
     if (menu != NULL && (menu->flags2A18 & 8) != 0)
     {
         GameDestroyMenu(menu);
-        free(menu);
+        ::operator delete(menu);
     }
     if ((manager->m_Flags & 4) != 0)
     {
@@ -284,7 +283,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
         GameUpdateFaithDecay(g_GameStageState);
     ++g_GameFrameCounter0;
     ++g_GameFrameCounter1;
-    GameAdvanceTimer(&manager->stageTimer);
+    manager->stageTimer.Tick();
     return 1;
 }
 
