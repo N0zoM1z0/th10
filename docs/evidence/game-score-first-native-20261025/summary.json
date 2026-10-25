@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "maintained_checkpoint": "ef5b9a849fb11237c789752f957835aee035f4ba",
+  "scope": "Ignored first complete source plus expanded graph; no maintained source admission.",
+  "maintained_game_manager_sha256": "cf8c462512ec0c3b95f8273029038bdf2201a35543c79964bd4bd067194bc044",
+  "maintained_gui_sha256": "70184d8834dc24998debe484a67a6643b8e55a6327a6115835353e008a68309b",
+  "staged_gui_sha256": "c2b8607c9a4e48496472159b6de8f98a3f3b7c5202342f5a5746999af9fdf6ac",
+  "proposal_sha256": "a2c11e3310858fa2ba70121f30fb0bd6d41a79dfa9a3b067898cc86d39ac0efb",
+  "image_sha256": "d51ad3edc9b79539f9ff9fc167ce070f72c02e7f91109c4a62da703ac7abb8c1",
+  "graph": {
+    "entry": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "ordered_tus": [
+      "src/GameManager.cpp",
+      "src/ScriptViewerWorker.cpp",
+      ".analysis/gpt-dots/game-score-first-native-20261025/Gui.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/EclVm.cpp"
+    ],
+    "base_profile": "/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc /GL",
+    "additional_GS_only": [
+      "src/EnemyEclDispatcher.cpp",
+      "src/EclVm.cpp"
+    ],
+    "link_profile": "/ltcg /nodefaultlib /subsystem:console /incremental:no /fixed:no /base:0x00400000 /debug /debugtype:cv /opt:noref /opt:noicf /safeseh:no",
+    "closure_files": 39,
+    "original_production_profile_proved": false
+  },
+  "complete_nonexact_owners": {
+    "GameManagerUpdateBody": "1559/1544 bytes; native 114 fields, 55 locals, 36 calls",
+    "GameUpdateGui": "734/671 bytes; native 39 fields, 24 locals, 15 calls",
+    "GameAddLives4188A0": "194/141 bytes; native 15 fields, 1 local, 7 calls"
+  },
+  "stage_exits": {
+    "original_root": 1,
+    "original_cold": 1,
+    "supplemental_observer_comparison": 0,
+    "supplemental_metadata_validation": 0
+  },
+  "failure_scope": "After successful cold_link, PosixPath dictionary keys in support_profiles failed JSON serialization; original invocation remains failed, not relabeled successful.",
+  "supplement_scope": "Same retained image; explicitly reconstructed metadata, no invented cold_removed values, no rebuild; all 65 original files unchanged.",
+  "existing_exact_guards": {
+    "manager": "127 bytes / 2 fields / 3 guards",
+    "Tick": "72 / 4",
+    "Stop": "101 / 3",
+    "SetSprite": "356 / 2",
+    "CreateVmVariant0": "73 / 5",
+    "GuiLives": "77 / 0",
+    "QueueSample": "123 / 1",
+    "MarkVm": "66 / 1, corrected COFF-to-linked supplement",
+    "FindVm": "73 / 0, same-image callee"
+  },
+  "original_optional_MarkVm_schema_failure_preserved": true,
+  "observations": [
+    "After-OR dead branch naturally retained.",
+    "CreateVmVariant0 inlined where target calls.",
+    "AddLives first 43 bytes instruction-equivalent modulo fields, no fragment credit.",
+    "No concrete semantic defect found by independent audits; no wrapper/noinline/profile tuning justified."
+  ],
+  "new_credit": {
+    "maintained_source_owners": 0,
+    "exact_owners": 0,
+    "exact_bytes": 0,
+    "authored_denominator_bytes": 0
+  },
+  "full_ci": "No new run claimed; maintained ef5b9a8 worker checkpoint has its separate 112-stage pass.",
+  "next_model": "No new semantic source model supported; fresh evidence required before another trial.",
+  "shared_storage_runtime_closure": false,
+  "receipt_sha256": {
+    ".analysis/gpt-dots/game-score-first-native-20261025/freeze.json": "3b16f7ec520977cbdd419bd16dc54b52cf29a098269d0ff81a93b4ec7b1ba70e",
+    ".analysis/gpt-dots/game-score-first-native-20261025/receipt.json": "78c4a8a251f0fff5c1cae7a293951419630df41034dcf60ad2359eb90a0188ab",
+    ".analysis/gpt-dots/game-score-first-native-20261025/score-comparison.json": "a49910e97787ff7d7079af1041edace61756ca391b0070651c23aa2f78114aed",
+    ".analysis/gpt-dots/game-score-first-native-20261025/supplemental-metadata/receipt.json": "efbc9e768c11d13a7f1df8246cfdcafb0281a5934a2753121db942129d4c7e64",
+    ".analysis/gpt-dots/game-score-first-native-20261025/supplemental-metadata/serialization-failure.json": "5ddf9ec8e3b31f36c1138204b2f49a2e32c6a29207bed0be97bde8ee0d522fee"
+  },
+  "shared_model": {
+    "packet": ".analysis/gpt-dots/game-score-shared-native-20261025",
+    "image_sha256": "68c83c1ada3b327b80f81b82a430977ceedc70356eee8833beaf9091f75882d1",
+    "proposal_sha256": "2ea58076c5fe5ba026435da4c456b2a559ad4ad3bf2281847aafe11c439f9a58",
+    "header_sha256": "636485ddcda61806e7138615187957c606a1a1770dcedfe289360fb66a5194ff",
+    "overlay": "40 files / 730068 bytes; all quoted includes resolve within overlay.",
+    "graph_delta": "All prior eight TUs from overlay/src in the same order; append ItemManager.cpp as ninth. Same profiles; only dispatcher/EclVm add /GS.",
+    "model": "Canonical GameScoreState partial fields retain 0x5C extent and rank 0x58; use existing ItemAddLives and actual ItemManager caller 0x41B704; 0x5C/0x60 stay separate aliases.",
+    "root_cold_comparison_exits": [
+      0,
+      0,
+      0
+    ],
+    "full_metadata_saved": true,
+    "serialization_failure": false,
+    "complete_nonexact_owners": {
+      "GameManagerUpdateBody": "1559/1544; 114 fields / 55 locals / 36 calls",
+      "GameUpdateGui": "730/671; 39 fields / 24 locals / 15 calls",
+      "ItemAddLives": "189/141; 15 fields / 1 local / 7 calls"
+    },
+    "all_tested_guards_except_CreateVmVariant0_exact": true,
+    "all_optional_guards_exact": false,
+    "CreateVmVariant0": "Structural rejection: native PDB owner 74 bytes, target manifest 73 bytes; original failure retained.",
+    "runner_success_scope": "Required checks passed, not all optional guards exact or any new owner accepted.",
+    "independent_review": {
+      "status": "passed diagnostic review, optional structural failure retained",
+      "receipt": ".analysis/gpt-dots/game-score-shared-native-20261025/independent-review/receipt.json",
+      "sha256": "7696c68a8437656b47b9e7455a1c920e0712ffe6b5c6a9b5879df8246400833c",
+      "originals_preserved": true,
+      "other_exact_guards": 10,
+      "CreateVmVariant0_exact": false,
+      "mechanism": "InitializeVm 207/RET8 (ECX=this, stack VM/script) becomes 201/RET4 (EDX=VM, ECX=script, stack this). Wrapper one-byte PUSH VM becomes two-byte MOV EDX,EBX with scheduling changes; extent 73 to 74.",
+      "caller_identity": "Both scorer and real ItemManager call the same ItemAddLives using canonical g_GameScoreState; same header/source identities verified.",
+      "anm_source_and_header_unchanged": true,
+      "causality_limit": "Combined ninth-TU plus type/context model does not isolate cause or justify noinline changes. Runtime aliases remain unresolved."
+    },
+    "maintained_source_admitted": false,
+    "new_exact_credit": 0,
+    "receipt_sha256": {
+      ".analysis/gpt-dots/game-score-shared-native-20261025/freeze.json": "9f2b1fc28bce79015e2fbee2d3b9b662189e258c73a9d76ff536f20b25124175",
+      ".analysis/gpt-dots/game-score-shared-native-20261025/stage-inventory.json": "066336ada392710727c9b1cc2738e865ec2c81539d339662fa83c58b037e6176",
+      ".analysis/gpt-dots/game-score-shared-native-20261025/cold-result.json": "7fd537e7664829b2ece80ef0e603bc5aab7f2d7f4f49579690be2870ff5ec908",
+      ".analysis/gpt-dots/game-score-shared-native-20261025/receipt.json": "6f42c2b1d7f60dbf098d84931113fab9e19663bbcef30da4ce4eb658bd8d1f59",
+      ".analysis/gpt-dots/game-score-shared-native-20261025/score-comparison.json": "a02de13e81d4879774aa23d3a5319c68c253a861f239f4bcaad12069f3103188",
+      ".analysis/gpt-dots/game-score-shared-native-20261025/anm-loaded-create-vm-variant0-same-image.json": "9e7214076cdf17c6df93f93d8b98120c5b52851cdaa93fb87ca80a7f1f422cf4"
+    }
+  }
+}

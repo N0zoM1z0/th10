@@ -4,7 +4,7 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
-Current [GameManager real-worker checkpoint](evidence/game-manager-real-worker-20261025/README.md)
+Maintained [GameManager real-worker checkpoint ef5b9a8](evidence/game-manager-real-worker-20261025/README.md)
 adds only the actual ScriptViewerWorker.cpp support TU to the /GL-without-/GS
 OnUpdate graph and replaces two facade calls with existing Stop. Native
 root/cold/comparison exits are 0. The complete parent is **1575/1544, nonexact**
@@ -20,6 +20,21 @@ exact/source/denominator credit follows.
 Prior [delete/timer checkpoint cdc54c74](evidence/game-manager-delete-tick-20261025/README.md)
 passed all 112 target-independent CI stages, verified 2026-10-25 02:16:22 UTC,
 with all 1489 frozen inputs preserved; that pass does not cover this change.
+The [first complete score/life experiment](evidence/game-score-first-native-20261025/README.md)
+is ignored source plus an eight-TU graph, not a maintained source change:
+GameUpdateGui 734/671, GameAddLives 194/141 and parent 1559/1544 are all nonexact.
+Original root/cold exits remain 1 after successful linking because PosixPath
+metadata dictionary keys failed serialization. Separate comparison/metadata
+supplements pass on the retained image, preserving originals without rebuilding.
+First-model guards, including corrected MarkVm 66/all 1 and FindVm 73/all 0,
+pass. A second coherent 40-file, nine-TU shared-state/ItemManager model now
+exits 0 with complete metadata: parent 1559/1544, score 730/671 and ItemAddLives
+189/141 remain nonexact. CreateVmVariant0 alone structurally rejects at 74/73;
+runner success does not mean all optional guards exact. Independent review
+confirms 10 other exact guards and real ItemAddLives caller identity; natural
+downstream InitializeVm ABI changes explain the wrapper growth, not a source
+defect or isolated causal proof. Both experiments add no maintained source,
+exact/denominator credit or new full-CI claim.
 Current GameManager.cpp SHA-256:
 `cf8c462512ec0c3b95f8273029038bdf2201a35543c79964bd4bd067194bc044`.
 WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
@@ -107,7 +122,9 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
-| GameManagerUpdateBody / target 1544 | Two-TU candidate 1575 bytes; 114 fields / 55 locals / 36 calls inventoried; Tick 72/all 4 and Stop 101/all 3 preserved; nonexact |
+| GameManagerUpdateBody / target 1544 | Maintained two-TU 1575 bytes; ignored eight/nine-TU score/life models 1559 bytes; nonexact |
+| GameUpdateGui / target 671 | Ignored first/shared models 734/730 bytes; not maintained/admitted, nonexact |
+| GameAddLives / ItemAddLives / target 141 | Ignored first/shared models 194/189 bytes; not maintained/admitted, nonexact |
 | Ending Run / target 1568 | Fresh source-current 1576 bytes; complete alignment / 18 table words / 53 locals retained; nonexact |
 | HUD UpdateStageElements / target 3836 | Candidate 3824 bytes: 3796 code + 0 alignment + 28 table; 72 syntactic fields / 249 locals / 21 calls; nonexact |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
@@ -434,6 +451,47 @@ The earlier MCP timeout was transport only, not a native or CI failure.
 The linked summary records the log/pin hashes; this documentation-only result
 update follows the freeze. cdc54c74's prior pass remains separately scoped.
 No new exact/source/denominator credit or runtime closure follows.
+
+The [first complete score/life source diagnostic](evidence/game-score-first-native-20261025/README.md)
+combines new ignored definitions with expansion from two to eight actual TUs.
+Maintained source remains ef5b9a8. GameUpdateGui is 734/671, GameAddLives 194/141
+and GameManagerUpdateBody 1559/1544, all nonexact. Base /GL-without-/GS remains;
+only dispatcher/EclVm add the existing sound-queue context's /GS. This is not a
+pure differential, canonical graph migration or original production profile.
+
+Original root/cold exit 1 is JSON serialization of PosixPath dictionary keys
+after successful linking. Supplemental comparison and reconstructed-metadata
+validation exit 0 on the same image, preserving 65 originals without rebuilding;
+original failure records and the optional MarkVm schema rejection remain.
+Correct canonical relocation conversion proves MarkVm 66/all 1 and FindVm
+73/all 0, alongside manager 127/all 2, Tick 72/all 4, Stop 101/all 3, SetSprite
+356/all 2, CreateVmVariant0 73/all 5, GuiLives 77/all 0 and QueueSample 123/all 1.
+All are existing credit. The dead after-OR branch survives naturally; inlined
+CreateVmVariant0 differs from target calls, and AddLives' 43-byte matching
+instruction prefix grants no fragment credit. New independent score anchors
+and nearest-symbol guesses do not establish shared storage or runtime closure.
+
+Independent first-model audits found no concrete semantic defect supporting
+wrapper/noinline/profile tuning. The second shared model now uses a coherent
+40-file / 730068-byte overlay and nine TUs, appending real ItemManager. Partial
+canonical GameScoreState keeps its 0x5C extent and rank at 0x58; existing
+ItemAddLives identity and its 0x41B704 caller are visible, while 0x5C/0x60 remain
+separate aliases. Root/cold/comparison exits are 0 with full metadata saved.
+Parent stays 1559/1544; score 730/671 and ItemAddLives 189/141 remain nonexact.
+All tested guards except CreateVmVariant0 pass: its complete 74-byte owner
+structurally rejects against 73, and the optional failure remains recorded.
+Runner success is not all-guards exactness. Independent diagnostic review
+confirms 10 other exact guards and preserved originals. Downstream InitializeVm
+changes from 207 bytes/RET8 (ECX=this, stack VM/script) to 201/RET4 (EDX=VM,
+ECX=script, stack this); replacing a one-byte push with a two-byte move explains
+the wrapper's growth. ANM source/header are unchanged. Scorer and ItemManager
+call the same ItemAddLives with canonical g_GameScoreState, but the combined
+ninth-TU/type model does not isolate causality or close runtime aliases.
+Receipt SHA-256:
+`7696c68a8437656b47b9e7455a1c920e0712ffe6b5c6a9b5879df8246400833c`.
+No new semantic/noinline model is justified. No maintained source admission,
+exact credit, shared runtime closure or new full-CI claim follows; prior
+checkpoint scopes stay intact.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not
