@@ -1,0 +1,321 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owner_address": "0x427e90",
+  "owner_size": 717,
+  "code_sha256": "454117187913d3e82111c697c5da5f6ef383a1b14e227bebe4e42ad7bad59d6f",
+  "fields": [
+    {
+      "offset": 110,
+      "type": "DIR32",
+      "target": "0x476f78"
+    },
+    {
+      "offset": 188,
+      "type": "DIR32",
+      "target": "0x470b00"
+    },
+    {
+      "offset": 219,
+      "type": "DIR32",
+      "target": "0x470b00"
+    },
+    {
+      "offset": 289,
+      "type": "REL32",
+      "target": "0x44bc70"
+    },
+    {
+      "offset": 314,
+      "type": "REL32",
+      "target": "0x44c5d0"
+    },
+    {
+      "offset": 347,
+      "type": "REL32",
+      "target": "0x44bc70"
+    },
+    {
+      "offset": 387,
+      "type": "DIR32",
+      "target": "0x491c10"
+    },
+    {
+      "offset": 399,
+      "type": "REL32",
+      "target": "0x449950"
+    },
+    {
+      "offset": 436,
+      "type": "REL32",
+      "target": "0x449870"
+    },
+    {
+      "offset": 442,
+      "type": "DIR32",
+      "target": "0x491c10"
+    },
+    {
+      "offset": 453,
+      "type": "REL32",
+      "target": "0x4489d0"
+    },
+    {
+      "offset": 584,
+      "type": "REL32",
+      "target": "0x449950"
+    },
+    {
+      "offset": 621,
+      "type": "REL32",
+      "target": "0x449870"
+    },
+    {
+      "offset": 627,
+      "type": "DIR32",
+      "target": "0x491c10"
+    },
+    {
+      "offset": 636,
+      "type": "REL32",
+      "target": "0x4489d0"
+    },
+    {
+      "offset": 697,
+      "type": "DIR32",
+      "target": "0x492590"
+    },
+    {
+      "offset": 702,
+      "type": "REL32",
+      "target": "0x43dd10"
+    }
+  ],
+  "branches": [
+    [
+      27,
+      2,
+      46
+    ],
+    [
+      40,
+      6,
+      706
+    ],
+    [
+      51,
+      2,
+      75
+    ],
+    [
+      62,
+      2,
+      48
+    ],
+    [
+      90,
+      2,
+      117
+    ],
+    [
+      135,
+      2,
+      170
+    ],
+    [
+      168,
+      2,
+      257
+    ],
+    [
+      261,
+      2,
+      278
+    ],
+    [
+      300,
+      2,
+      327
+    ],
+    [
+      325,
+      2,
+      354
+    ],
+    [
+      470,
+      2,
+      476
+    ],
+    [
+      474,
+      2,
+      535
+    ],
+    [
+      484,
+      2,
+      499
+    ],
+    [
+      490,
+      2,
+      529
+    ],
+    [
+      497,
+      2,
+      486
+    ],
+    [
+      507,
+      2,
+      472
+    ],
+    [
+      516,
+      2,
+      529
+    ],
+    [
+      523,
+      2,
+      512
+    ],
+    [
+      527,
+      2,
+      535
+    ],
+    [
+      533,
+      2,
+      538
+    ],
+    [
+      553,
+      2,
+      570
+    ],
+    [
+      574,
+      2,
+      653
+    ],
+    [
+      651,
+      2,
+      656
+    ],
+    [
+      662,
+      2,
+      677
+    ],
+    [
+      684,
+      2,
+      706
+    ]
+  ],
+  "calls": [
+    [
+      288,
+      "0x44bc70"
+    ],
+    [
+      313,
+      "0x44c5d0"
+    ],
+    [
+      346,
+      "0x44bc70"
+    ],
+    [
+      398,
+      "0x449950"
+    ],
+    [
+      435,
+      "0x449870"
+    ],
+    [
+      452,
+      "0x4489d0"
+    ],
+    [
+      583,
+      "0x449950"
+    ],
+    [
+      620,
+      "0x449870"
+    ],
+    [
+      635,
+      "0x4489d0"
+    ],
+    [
+      675,
+      "eax"
+    ],
+    [
+      701,
+      "0x43dd10"
+    ]
+  ],
+  "table_bytes": 0,
+  "padding_after": "cccccc",
+  "caller": {
+    "address": 4358496,
+    "size": 105,
+    "fields": {
+      "decoded_bytes": 105,
+      "normalization_complete": true,
+      "fields": [
+        {
+          "offset": 87,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4357776,
+          "candidate_symbols": [],
+          "instruction_end": 91
+        }
+      ]
+    },
+    "locals": [
+      [
+        27,
+        2,
+        34
+      ],
+      [
+        42,
+        2,
+        47
+      ],
+      [
+        65,
+        2,
+        101
+      ],
+      [
+        81,
+        2,
+        91
+      ],
+      [
+        99,
+        2,
+        67
+      ]
+    ],
+    "calls": [
+      [
+        86,
+        "0x427e90"
+      ]
+    ]
+  },
+  "note": "Target has no relocation directory: generic linked_code_fields reports only10 relative calls; seven DIR32 operands independently decoded and bound here. Caller also has DIR32 power at offset3 ->474C48."
+}

@@ -5921,3 +5921,24 @@ post-fog player capture/nonempty-loop refresh, unsigned digit count, signed age,
 x87 distance lifetime and alpha denominator3072 are target-local facts.
 No canonical source/metric admission or runtime/global-storage closure follows.
 Park register/profile permutations absent a new independent source contract.
+
+
+## Player shot creation complete pilot (2026-10-25)
+
+See [the bounded evidence packet](evidence/player-shot-creation-20261025/README.md).
+Reviewed authored717-byte owner427E90 has17 link fields,25 branches/22 distinct
+local destinations,10 direct calls plus callback, RET12 and no owned table.
+Its real105-byte caller428160 passes three stack parameters; ordinary stdcall
+is supported for the creator, while the caller's private EDI/EBX lowering is
+not forced. Signed option index-minus-one selects replayPair1, callback keeps
+the original descriptor but soundId/shot.x are reread afterward, and null
+FindVm clears the ID before unconditional VM flag access. Existing timer and
+old shot flags must be preserved. Exact EnemyRuntimeVector44C5D0 is not the
+distinct AnmFloat3 helper4458B0.
+
+Four complete isolated natural source models emit770,633,772,618 bytes against
+717; caller123/120 against105. All structurally reject while all five existing
+guards464/all9 pass in each image. Scan spelling materially affects unrolling
+and inlining, but does not identify original TU/optimizer context. No new
+source/exact credit follows; park further spelling/register/profile panels
+until independent TH10 evidence predicts a specific complete-owner effect.

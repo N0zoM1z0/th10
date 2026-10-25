@@ -1,0 +1,26 @@
+{
+  "scope": "evidence-only, no maintained source or ledger changes",
+  "preflight_receipt": "repository-command:b8e143c3ca4846c9a24967bf642ad77f",
+  "focused_checks_receipt": "repository-command:6205a7bfeda44aeab5a8118c459dbc18",
+  "checks": {
+    "all_four_images_five_guards": "pass",
+    "original_artifact_hashes": "pass",
+    "frozen_support_header_toolchain_inputs": "pass",
+    "target17_fields_25branches_22destinations": "pass",
+    "reproduce_help": "pass",
+    "toolchain_check": "pass",
+    "tracking": "pass",
+    "progress": "pass-byte-neutral",
+    "diff_check": "pass",
+    "full_ci": "not-run-diagnostic-only",
+    "runtime": "not-claimed"
+  },
+  "original_artifacts_preserved": 122,
+  "new_exact_bytes": 0,
+  "new_source_bytes": 0,
+  "independent_review": {
+    "verdict": "approved-evidence-only-park",
+    "receipt": "repository-command:0072298a4e54448fa60f02debcec57fd",
+    "limitation": "Final emitted scan rotates load/test; source recovers semantics, not instruction shape."
+  }
+}

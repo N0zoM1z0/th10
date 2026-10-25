@@ -4,6 +4,17 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [Player shot creation pilot](evidence/player-shot-creation-20261025/README.md)
+retains four complete isolated models: **770/717**, **633/717**, **772/717**
+and **618/717**; real105-byte caller remains123 or120 bytes. All structurally
+reject. Target RET12/three stack arguments correct the first cdecl mistake;
+pointer scan and motion-subobject scope are recovered without forced registers.
+Inlining remains different; unsupported loop/register/profile panels are parked.
+All four images retain five guards **464/all9**. Complete17-field/25-branch
+target and all candidate inventories are retained; no source/exact/metric change.
+Original compile failure and post-link JSON metadata failure are preserved,
+with separate retained-image recovery rather than duplicate native runs.
+Toolchain-check, tracking, progress and diff checks pass; no new full-CI claim.
 Current [popup-number Draw pilot](evidence/popup-digit-draw-20261025/README.md)
 retains three complete isolated models: **484/540**, **535/540**, and existing-global
 identity **535/540**. All are structural rejections; the last two are whole-body

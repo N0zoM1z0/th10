@@ -1,0 +1,2638 @@
+{
+  "acceptance": "none",
+  "exactness_credit": 0,
+  "trials": {
+    "first": {
+      "creator": {
+        "address": 4198480,
+        "size": 770,
+        "fields": {
+          "decoded_bytes": 770,
+          "normalization_complete": true,
+          "fields": [
+            {
+              "offset": 160,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280716,
+              "candidate_symbols": [
+                "?g_AnmGameSpeed@@3MA",
+                "_th10_ltcg_probe_anchor_0093"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 239,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4276848,
+              "candidate_symbols": [
+                "__real@3c23d70a"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 266,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4276848,
+              "candidate_symbols": [
+                "__real@3c23d70a"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 336,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4260928,
+              "candidate_symbols": [
+                "?EnemyWrapAngle@@YGMM@Z"
+              ],
+              "instruction_end": 340
+            },
+            {
+              "offset": 367,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4248464,
+              "candidate_symbols": [
+                "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z"
+              ],
+              "instruction_end": 371
+            },
+            {
+              "offset": 400,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4260928,
+              "candidate_symbols": [
+                "?EnemyWrapAngle@@YGMM@Z"
+              ],
+              "instruction_end": 404
+            },
+            {
+              "offset": 440,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 452,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206416,
+              "candidate_symbols": [
+                "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+              ],
+              "instruction_end": 456
+            },
+            {
+              "offset": 489,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4245728,
+              "candidate_symbols": [
+                "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+              ],
+              "instruction_end": 493
+            },
+            {
+              "offset": 495,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 506,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206576,
+              "candidate_symbols": [
+                "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+              ],
+              "instruction_end": 510
+            },
+            {
+              "offset": 639,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206416,
+              "candidate_symbols": [
+                "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+              ],
+              "instruction_end": 643
+            },
+            {
+              "offset": 676,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4245728,
+              "candidate_symbols": [
+                "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+              ],
+              "instruction_end": 680
+            },
+            {
+              "offset": 682,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 691,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206576,
+              "candidate_symbols": [
+                "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+              ],
+              "instruction_end": 695
+            },
+            {
+              "offset": 752,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280968,
+              "candidate_symbols": [
+                "?g_MainSoundOwner@@3PAEA",
+                "_th10_ltcg_probe_anchor_0156"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 757,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4257712,
+              "candidate_symbols": [
+                "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z"
+              ],
+              "instruction_end": 761
+            }
+          ]
+        },
+        "locals": [
+          [
+            20,
+            2,
+            39
+          ],
+          [
+            33,
+            6,
+            762
+          ],
+          [
+            51,
+            2,
+            99
+          ],
+          [
+            55,
+            2,
+            88
+          ],
+          [
+            60,
+            2,
+            91
+          ],
+          [
+            68,
+            2,
+            96
+          ],
+          [
+            84,
+            2,
+            48
+          ],
+          [
+            86,
+            2,
+            99
+          ],
+          [
+            89,
+            2,
+            99
+          ],
+          [
+            94,
+            2,
+            99
+          ],
+          [
+            105,
+            6,
+            761
+          ],
+          [
+            140,
+            2,
+            167
+          ],
+          [
+            185,
+            2,
+            220
+          ],
+          [
+            218,
+            2,
+            304
+          ],
+          [
+            308,
+            2,
+            325
+          ],
+          [
+            352,
+            2,
+            380
+          ],
+          [
+            378,
+            2,
+            407
+          ],
+          [
+            521,
+            2,
+            527
+          ],
+          [
+            525,
+            2,
+            590
+          ],
+          [
+            535,
+            2,
+            557
+          ],
+          [
+            548,
+            2,
+            584
+          ],
+          [
+            555,
+            2,
+            544
+          ],
+          [
+            565,
+            2,
+            523
+          ],
+          [
+            571,
+            2,
+            584
+          ],
+          [
+            578,
+            2,
+            567
+          ],
+          [
+            582,
+            2,
+            590
+          ],
+          [
+            588,
+            2,
+            593
+          ],
+          [
+            608,
+            2,
+            625
+          ],
+          [
+            629,
+            2,
+            708
+          ],
+          [
+            706,
+            2,
+            711
+          ],
+          [
+            717,
+            2,
+            732
+          ],
+          [
+            739,
+            2,
+            761
+          ]
+        ],
+        "calls": [
+          [
+            335,
+            "0x410440"
+          ],
+          [
+            366,
+            "0x40d390"
+          ],
+          [
+            399,
+            "0x410440"
+          ],
+          [
+            451,
+            "0x402f50"
+          ],
+          [
+            488,
+            "0x40c8e0"
+          ],
+          [
+            505,
+            "0x402ff0"
+          ],
+          [
+            638,
+            "0x402f50"
+          ],
+          [
+            675,
+            "0x40c8e0"
+          ],
+          [
+            690,
+            "0x402ff0"
+          ],
+          [
+            730,
+            "eax"
+          ],
+          [
+            756,
+            "0x40f7b0"
+          ]
+        ]
+      },
+      "caller": {
+        "address": 4199264,
+        "size": 123,
+        "fields": {
+          "decoded_bytes": 123,
+          "normalization_complete": true,
+          "fields": [
+            {
+              "offset": 3,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280980,
+              "candidate_symbols": [
+                "?g_PlayerPower@@3FA",
+                "_th10_ltcg_probe_anchor_0159"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 100,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4198480,
+              "candidate_symbols": [
+                "?PlayerCreateShot@@YAHPAUPlayer@@PBUPlayerShotDescriptorView@@H@Z"
+              ],
+              "instruction_end": 104
+            }
+          ]
+        },
+        "locals": [
+          [
+            27,
+            2,
+            34
+          ],
+          [
+            48,
+            2,
+            53
+          ],
+          [
+            70,
+            2,
+            118
+          ],
+          [
+            94,
+            2,
+            107
+          ],
+          [
+            115,
+            2,
+            80
+          ]
+        ],
+        "calls": [
+          [
+            99,
+            "0x401050"
+          ]
+        ]
+      },
+      "result": "structural-rejection"
+    },
+    "while": {
+      "creator": {
+        "address": 4198480,
+        "size": 633,
+        "fields": {
+          "decoded_bytes": 633,
+          "normalization_complete": true,
+          "fields": [
+            {
+              "offset": 120,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280716,
+              "candidate_symbols": [
+                "?g_AnmGameSpeed@@3MA",
+                "_th10_ltcg_probe_anchor_0093"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 200,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4276848,
+              "candidate_symbols": [
+                "__real@3c23d70a"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 227,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4276848,
+              "candidate_symbols": [
+                "__real@3c23d70a"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 297,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4260784,
+              "candidate_symbols": [
+                "?EnemyWrapAngle@@YGMM@Z"
+              ],
+              "instruction_end": 301
+            },
+            {
+              "offset": 328,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4248320,
+              "candidate_symbols": [
+                "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z"
+              ],
+              "instruction_end": 332
+            },
+            {
+              "offset": 361,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4260784,
+              "candidate_symbols": [
+                "?EnemyWrapAngle@@YGMM@Z"
+              ],
+              "instruction_end": 365
+            },
+            {
+              "offset": 380,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 415,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206272,
+              "candidate_symbols": [
+                "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+              ],
+              "instruction_end": 419
+            },
+            {
+              "offset": 457,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4245584,
+              "candidate_symbols": [
+                "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+              ],
+              "instruction_end": 461
+            },
+            {
+              "offset": 463,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 474,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206432,
+              "candidate_symbols": [
+                "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+              ],
+              "instruction_end": 478
+            },
+            {
+              "offset": 489,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4205552,
+              "candidate_symbols": [
+                "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+              ],
+              "instruction_end": 493
+            },
+            {
+              "offset": 554,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4218768,
+              "candidate_symbols": [
+                "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+              ],
+              "instruction_end": 558
+            },
+            {
+              "offset": 612,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280968,
+              "candidate_symbols": [
+                "?g_MainSoundOwner@@3PAEA",
+                "_th10_ltcg_probe_anchor_0156"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 617,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4257568,
+              "candidate_symbols": [
+                "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z"
+              ],
+              "instruction_end": 621
+            }
+          ]
+        },
+        "locals": [
+          [
+            20,
+            2,
+            39
+          ],
+          [
+            33,
+            6,
+            623
+          ],
+          [
+            56,
+            2,
+            84
+          ],
+          [
+            73,
+            6,
+            622
+          ],
+          [
+            82,
+            2,
+            64
+          ],
+          [
+            99,
+            2,
+            127
+          ],
+          [
+            146,
+            2,
+            181
+          ],
+          [
+            179,
+            2,
+            265
+          ],
+          [
+            269,
+            2,
+            286
+          ],
+          [
+            313,
+            2,
+            341
+          ],
+          [
+            339,
+            2,
+            368
+          ],
+          [
+            497,
+            2,
+            502
+          ],
+          [
+            514,
+            2,
+            531
+          ],
+          [
+            535,
+            2,
+            569
+          ],
+          [
+            567,
+            2,
+            572
+          ],
+          [
+            577,
+            2,
+            592
+          ],
+          [
+            599,
+            2,
+            621
+          ]
+        ],
+        "calls": [
+          [
+            296,
+            "0x4103b0"
+          ],
+          [
+            327,
+            "0x40d300"
+          ],
+          [
+            360,
+            "0x4103b0"
+          ],
+          [
+            414,
+            "0x402ec0"
+          ],
+          [
+            456,
+            "0x40c850"
+          ],
+          [
+            473,
+            "0x402f60"
+          ],
+          [
+            488,
+            "0x402bf0"
+          ],
+          [
+            553,
+            "0x405f90"
+          ],
+          [
+            590,
+            "eax"
+          ],
+          [
+            616,
+            "0x40f720"
+          ]
+        ]
+      },
+      "caller": {
+        "address": 4199120,
+        "size": 120,
+        "fields": {
+          "decoded_bytes": 120,
+          "normalization_complete": true,
+          "fields": [
+            {
+              "offset": 3,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280980,
+              "candidate_symbols": [
+                "?g_PlayerPower@@3FA",
+                "_th10_ltcg_probe_anchor_0159"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 100,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4198480,
+              "candidate_symbols": [
+                "?PlayerCreateShot@@YGHPAUPlayer@@PBUPlayerShotDescriptorView@@H@Z"
+              ],
+              "instruction_end": 104
+            }
+          ]
+        },
+        "locals": [
+          [
+            27,
+            2,
+            34
+          ],
+          [
+            48,
+            2,
+            53
+          ],
+          [
+            70,
+            2,
+            115
+          ],
+          [
+            94,
+            2,
+            104
+          ],
+          [
+            112,
+            2,
+            80
+          ]
+        ],
+        "calls": [
+          [
+            99,
+            "0x401050"
+          ]
+        ]
+      },
+      "result": "structural-rejection"
+    },
+    "counted": {
+      "creator": {
+        "address": 4198480,
+        "size": 772,
+        "fields": {
+          "decoded_bytes": 772,
+          "normalization_complete": true,
+          "fields": [
+            {
+              "offset": 167,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280716,
+              "candidate_symbols": [
+                "?g_AnmGameSpeed@@3MA",
+                "_th10_ltcg_probe_anchor_0093"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 246,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4276848,
+              "candidate_symbols": [
+                "__real@3c23d70a"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 273,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4276848,
+              "candidate_symbols": [
+                "__real@3c23d70a"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 343,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4260928,
+              "candidate_symbols": [
+                "?EnemyWrapAngle@@YGMM@Z"
+              ],
+              "instruction_end": 347
+            },
+            {
+              "offset": 374,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4248464,
+              "candidate_symbols": [
+                "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z"
+              ],
+              "instruction_end": 378
+            },
+            {
+              "offset": 407,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4260928,
+              "candidate_symbols": [
+                "?EnemyWrapAngle@@YGMM@Z"
+              ],
+              "instruction_end": 411
+            },
+            {
+              "offset": 447,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 459,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206416,
+              "candidate_symbols": [
+                "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+              ],
+              "instruction_end": 463
+            },
+            {
+              "offset": 496,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4245728,
+              "candidate_symbols": [
+                "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+              ],
+              "instruction_end": 500
+            },
+            {
+              "offset": 502,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 513,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206576,
+              "candidate_symbols": [
+                "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+              ],
+              "instruction_end": 517
+            },
+            {
+              "offset": 639,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206416,
+              "candidate_symbols": [
+                "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+              ],
+              "instruction_end": 643
+            },
+            {
+              "offset": 676,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4245728,
+              "candidate_symbols": [
+                "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+              ],
+              "instruction_end": 680
+            },
+            {
+              "offset": 682,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 691,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206576,
+              "candidate_symbols": [
+                "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+              ],
+              "instruction_end": 695
+            },
+            {
+              "offset": 752,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280968,
+              "candidate_symbols": [
+                "?g_MainSoundOwner@@3PAEA",
+                "_th10_ltcg_probe_anchor_0156"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 757,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4257712,
+              "candidate_symbols": [
+                "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z"
+              ],
+              "instruction_end": 761
+            }
+          ]
+        },
+        "locals": [
+          [
+            27,
+            2,
+            46
+          ],
+          [
+            40,
+            6,
+            761
+          ],
+          [
+            51,
+            2,
+            121
+          ],
+          [
+            59,
+            2,
+            95
+          ],
+          [
+            67,
+            2,
+            101
+          ],
+          [
+            75,
+            2,
+            112
+          ],
+          [
+            91,
+            2,
+            48
+          ],
+          [
+            93,
+            2,
+            121
+          ],
+          [
+            99,
+            2,
+            121
+          ],
+          [
+            110,
+            2,
+            121
+          ],
+          [
+            126,
+            6,
+            761
+          ],
+          [
+            147,
+            2,
+            174
+          ],
+          [
+            192,
+            2,
+            227
+          ],
+          [
+            225,
+            2,
+            311
+          ],
+          [
+            315,
+            2,
+            332
+          ],
+          [
+            359,
+            2,
+            387
+          ],
+          [
+            385,
+            2,
+            414
+          ],
+          [
+            528,
+            2,
+            534
+          ],
+          [
+            532,
+            2,
+            590
+          ],
+          [
+            542,
+            2,
+            557
+          ],
+          [
+            548,
+            2,
+            584
+          ],
+          [
+            555,
+            2,
+            544
+          ],
+          [
+            565,
+            2,
+            530
+          ],
+          [
+            571,
+            2,
+            584
+          ],
+          [
+            578,
+            2,
+            567
+          ],
+          [
+            582,
+            2,
+            590
+          ],
+          [
+            588,
+            2,
+            593
+          ],
+          [
+            608,
+            2,
+            625
+          ],
+          [
+            629,
+            2,
+            708
+          ],
+          [
+            706,
+            2,
+            711
+          ],
+          [
+            717,
+            2,
+            732
+          ],
+          [
+            739,
+            2,
+            761
+          ]
+        ],
+        "calls": [
+          [
+            342,
+            "0x410440"
+          ],
+          [
+            373,
+            "0x40d390"
+          ],
+          [
+            406,
+            "0x410440"
+          ],
+          [
+            458,
+            "0x402f50"
+          ],
+          [
+            495,
+            "0x40c8e0"
+          ],
+          [
+            512,
+            "0x402ff0"
+          ],
+          [
+            638,
+            "0x402f50"
+          ],
+          [
+            675,
+            "0x40c8e0"
+          ],
+          [
+            690,
+            "0x402ff0"
+          ],
+          [
+            730,
+            "eax"
+          ],
+          [
+            756,
+            "0x40f7b0"
+          ]
+        ]
+      },
+      "caller": {
+        "address": 4199264,
+        "size": 120,
+        "fields": {
+          "decoded_bytes": 120,
+          "normalization_complete": true,
+          "fields": [
+            {
+              "offset": 3,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280980,
+              "candidate_symbols": [
+                "?g_PlayerPower@@3FA",
+                "_th10_ltcg_probe_anchor_0159"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 100,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4198480,
+              "candidate_symbols": [
+                "?PlayerCreateShot@@YGHPAUPlayer@@PBUPlayerShotDescriptorView@@H@Z"
+              ],
+              "instruction_end": 104
+            }
+          ]
+        },
+        "locals": [
+          [
+            27,
+            2,
+            34
+          ],
+          [
+            48,
+            2,
+            53
+          ],
+          [
+            70,
+            2,
+            115
+          ],
+          [
+            94,
+            2,
+            104
+          ],
+          [
+            112,
+            2,
+            80
+          ]
+        ],
+        "calls": [
+          [
+            99,
+            "0x401050"
+          ]
+        ]
+      },
+      "result": "structural-rejection"
+    },
+    "motion": {
+      "creator": {
+        "address": 4198544,
+        "size": 618,
+        "fields": {
+          "decoded_bytes": 618,
+          "normalization_complete": true,
+          "fields": [
+            {
+              "offset": 111,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280716,
+              "candidate_symbols": [
+                "?g_AnmGameSpeed@@3MA",
+                "_th10_ltcg_probe_anchor_0093"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 191,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4276848,
+              "candidate_symbols": [
+                "__real@3c23d70a"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 218,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4276848,
+              "candidate_symbols": [
+                "__real@3c23d70a"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 288,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4260832,
+              "candidate_symbols": [
+                "?EnemyWrapAngle@@YGMM@Z"
+              ],
+              "instruction_end": 292
+            },
+            {
+              "offset": 313,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4248368,
+              "candidate_symbols": [
+                "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z"
+              ],
+              "instruction_end": 317
+            },
+            {
+              "offset": 346,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4260832,
+              "candidate_symbols": [
+                "?EnemyWrapAngle@@YGMM@Z"
+              ],
+              "instruction_end": 350
+            },
+            {
+              "offset": 365,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 400,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206320,
+              "candidate_symbols": [
+                "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+              ],
+              "instruction_end": 404
+            },
+            {
+              "offset": 442,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4245632,
+              "candidate_symbols": [
+                "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+              ],
+              "instruction_end": 446
+            },
+            {
+              "offset": 448,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280748,
+              "candidate_symbols": [
+                "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "_th10_ltcg_probe_anchor_0101"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 459,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4206480,
+              "candidate_symbols": [
+                "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+              ],
+              "instruction_end": 463
+            },
+            {
+              "offset": 474,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4205600,
+              "candidate_symbols": [
+                "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+              ],
+              "instruction_end": 478
+            },
+            {
+              "offset": 539,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4218816,
+              "candidate_symbols": [
+                "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+              ],
+              "instruction_end": 543
+            },
+            {
+              "offset": 597,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280968,
+              "candidate_symbols": [
+                "?g_MainSoundOwner@@3PAEA",
+                "_th10_ltcg_probe_anchor_0156"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 602,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4257616,
+              "candidate_symbols": [
+                "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z"
+              ],
+              "instruction_end": 606
+            }
+          ]
+        },
+        "locals": [
+          [
+            27,
+            2,
+            46
+          ],
+          [
+            40,
+            6,
+            607
+          ],
+          [
+            53,
+            2,
+            75
+          ],
+          [
+            64,
+            6,
+            607
+          ],
+          [
+            73,
+            2,
+            55
+          ],
+          [
+            90,
+            2,
+            118
+          ],
+          [
+            137,
+            2,
+            172
+          ],
+          [
+            170,
+            2,
+            256
+          ],
+          [
+            260,
+            2,
+            277
+          ],
+          [
+            299,
+            2,
+            326
+          ],
+          [
+            324,
+            2,
+            353
+          ],
+          [
+            482,
+            2,
+            487
+          ],
+          [
+            499,
+            2,
+            516
+          ],
+          [
+            520,
+            2,
+            554
+          ],
+          [
+            552,
+            2,
+            557
+          ],
+          [
+            562,
+            2,
+            577
+          ],
+          [
+            584,
+            2,
+            606
+          ]
+        ],
+        "calls": [
+          [
+            287,
+            "0x4103e0"
+          ],
+          [
+            312,
+            "0x40d330"
+          ],
+          [
+            345,
+            "0x4103e0"
+          ],
+          [
+            399,
+            "0x402ef0"
+          ],
+          [
+            441,
+            "0x40c880"
+          ],
+          [
+            458,
+            "0x402f90"
+          ],
+          [
+            473,
+            "0x402c20"
+          ],
+          [
+            538,
+            "0x405fc0"
+          ],
+          [
+            575,
+            "eax"
+          ],
+          [
+            601,
+            "0x40f750"
+          ]
+        ]
+      },
+      "caller": {
+        "address": 4199168,
+        "size": 120,
+        "fields": {
+          "decoded_bytes": 120,
+          "normalization_complete": true,
+          "fields": [
+            {
+              "offset": 3,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4280980,
+              "candidate_symbols": [
+                "?g_PlayerPower@@3FA",
+                "_th10_ltcg_probe_anchor_0159"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 100,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4198544,
+              "candidate_symbols": [
+                "?PlayerCreateShot@@YGHPAUPlayer@@PBUPlayerShotDescriptorView@@H@Z"
+              ],
+              "instruction_end": 104
+            }
+          ]
+        },
+        "locals": [
+          [
+            27,
+            2,
+            34
+          ],
+          [
+            48,
+            2,
+            53
+          ],
+          [
+            70,
+            2,
+            115
+          ],
+          [
+            94,
+            2,
+            104
+          ],
+          [
+            112,
+            2,
+            80
+          ]
+        ],
+        "calls": [
+          [
+            99,
+            "0x401090"
+          ]
+        ]
+      },
+      "result": "structural-rejection"
+    }
+  },
+  "guard_results": {
+    "first-retry": {
+      "enemy-runtime-vector": {
+        "unit": "enemy-runtime-vector",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z",
+        "target_address": "0x0044C5D0",
+        "size": 30,
+        "matched_bytes": 30,
+        "compared_size": 30,
+        "matched_compared_bytes": 30,
+        "image": "build/gpt-dots/player-shot-first-retry/source.exe",
+        "image_sha256": "7e496199170d15575826af90476d065575b664d142558280adfdbbd735eece96",
+        "pdb_guid": "faeea93862f2fe4b8978093c99eb10a4",
+        "pdb_age": 1,
+        "candidate_address": "0x0040D390",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 4,
+        "decoded_bytes": 30,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "enemy-wrap-angle": {
+        "unit": "enemy-wrap-angle",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?EnemyWrapAngle@@YGMM@Z",
+        "target_address": "0x0044BC70",
+        "size": 94,
+        "matched_bytes": 94,
+        "compared_size": 94,
+        "matched_compared_bytes": 94,
+        "image": "build/gpt-dots/player-shot-first-retry/source.exe",
+        "image_sha256": "7e496199170d15575826af90476d065575b664d142558280adfdbbd735eece96",
+        "pdb_guid": "faeea93862f2fe4b8978093c99eb10a4",
+        "pdb_age": 1,
+        "candidate_address": "0x00410440",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 3,
+        "decoded_bytes": 94,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x8",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40490fdb",
+            "linked_symbol": "__real@40490fdb",
+            "local": false,
+            "candidate_target": "0x00414220",
+            "target": "0x00470B18",
+            "addend": 0,
+            "target_encoded_value": "0x00470B18"
+          },
+          {
+            "offset": "0x15",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40c90fdb",
+            "linked_symbol": "__real@40c90fdb",
+            "local": false,
+            "candidate_target": "0x0041421C",
+            "target": "0x00470B14",
+            "addend": 0,
+            "target_encoded_value": "0x00470B14"
+          },
+          {
+            "offset": "0x23",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40490fdb",
+            "linked_symbol": "__real@40490fdb",
+            "local": false,
+            "candidate_target": "0x00414220",
+            "target": "0x00470B18",
+            "addend": 0,
+            "target_encoded_value": "0x00470B18"
+          },
+          {
+            "offset": "0x30",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@c0490fdb",
+            "linked_symbol": "__real@c0490fdb",
+            "local": false,
+            "candidate_target": "0x00414218",
+            "target": "0x00470B10",
+            "addend": 0,
+            "target_encoded_value": "0x00470B10"
+          },
+          {
+            "offset": "0x42",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40c90fdb",
+            "linked_symbol": "__real@40c90fdb",
+            "local": false,
+            "candidate_target": "0x0041421C",
+            "target": "0x00470B14",
+            "addend": 0,
+            "target_encoded_value": "0x00470B14"
+          },
+          {
+            "offset": "0x50",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@c0490fdb",
+            "linked_symbol": "__real@c0490fdb",
+            "local": false,
+            "candidate_target": "0x00414218",
+            "target": "0x00470B10",
+            "addend": 0,
+            "target_encoded_value": "0x00470B10"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "anm-manager-add-vm-primary-tail": {
+        "unit": "anm-manager-add-vm-primary-tail",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+        "target_address": "0x004489D0",
+        "size": 118,
+        "matched_bytes": 118,
+        "compared_size": 118,
+        "matched_compared_bytes": 118,
+        "image": "build/gpt-dots/player-shot-first-retry/source.exe",
+        "image_sha256": "7e496199170d15575826af90476d065575b664d142558280adfdbbd735eece96",
+        "pdb_guid": "faeea93862f2fe4b8978093c99eb10a4",
+        "pdb_age": 1,
+        "candidate_address": "0x00402FF0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 118,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "anm-manager-find-vm": {
+        "unit": "anm-manager-find-vm",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "target_address": "0x004491C0",
+        "size": 73,
+        "matched_bytes": 73,
+        "compared_size": 73,
+        "matched_compared_bytes": 73,
+        "image": "build/gpt-dots/player-shot-first-retry/source.exe",
+        "image_sha256": "7e496199170d15575826af90476d065575b664d142558280adfdbbd735eece96",
+        "pdb_guid": "faeea93862f2fe4b8978093c99eb10a4",
+        "pdb_age": 1,
+        "candidate_address": "0x00402C80",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 73,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "enemy-sound-queue-cue": {
+        "unit": "enemy-sound-queue-cue",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+        "target_address": "0x0043DD10",
+        "size": 149,
+        "matched_bytes": 149,
+        "compared_size": 149,
+        "matched_compared_bytes": 149,
+        "image": "build/gpt-dots/player-shot-first-retry/source.exe",
+        "image_sha256": "7e496199170d15575826af90476d065575b664d142558280adfdbbd735eece96",
+        "pdb_guid": "faeea93862f2fe4b8978093c99eb10a4",
+        "pdb_age": 1,
+        "candidate_address": "0x0040F7B0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 3,
+        "decoded_bytes": 149,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x7",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40a6aaab",
+            "linked_symbol": "__real@40a6aaab",
+            "local": false,
+            "candidate_target": "0x00414228",
+            "target": "0x00470B20",
+            "addend": 0,
+            "target_encoded_value": "0x00470B20"
+          },
+          {
+            "offset": "0xF",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_EnemySoundCueMetadata@@3PAUEnemySoundCueMetadataView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0144",
+            "local": false,
+            "candidate_target": "0x0041525E",
+            "target": "0x004749C8",
+            "addend": 6,
+            "target_encoded_value": "0x004749CE"
+          },
+          {
+            "offset": "0x15",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "__ftol2",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0183",
+            "local": false,
+            "candidate_target": "0x004152F4",
+            "target": "0x00463B2C",
+            "addend": 0,
+            "target_encoded_value": "0x00025E03"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      }
+    },
+    "model": {
+      "enemy-runtime-vector": {
+        "unit": "enemy-runtime-vector",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z",
+        "target_address": "0x0044C5D0",
+        "size": 30,
+        "matched_bytes": 30,
+        "compared_size": 30,
+        "matched_compared_bytes": 30,
+        "image": "build/gpt-dots/player-shot-model/source.exe",
+        "image_sha256": "3234344f9b8687eaca30340a593e2ea1b6310340cc4fe7f36c72075b6b81b647",
+        "pdb_guid": "9a0aa7c21664c444ba6a309e8be306d3",
+        "pdb_age": 1,
+        "candidate_address": "0x0040D300",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 4,
+        "decoded_bytes": 30,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "enemy-wrap-angle": {
+        "unit": "enemy-wrap-angle",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?EnemyWrapAngle@@YGMM@Z",
+        "target_address": "0x0044BC70",
+        "size": 94,
+        "matched_bytes": 94,
+        "compared_size": 94,
+        "matched_compared_bytes": 94,
+        "image": "build/gpt-dots/player-shot-model/source.exe",
+        "image_sha256": "3234344f9b8687eaca30340a593e2ea1b6310340cc4fe7f36c72075b6b81b647",
+        "pdb_guid": "9a0aa7c21664c444ba6a309e8be306d3",
+        "pdb_age": 1,
+        "candidate_address": "0x004103B0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 3,
+        "decoded_bytes": 94,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x8",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40490fdb",
+            "linked_symbol": "__real@40490fdb",
+            "local": false,
+            "candidate_target": "0x00414220",
+            "target": "0x00470B18",
+            "addend": 0,
+            "target_encoded_value": "0x00470B18"
+          },
+          {
+            "offset": "0x15",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40c90fdb",
+            "linked_symbol": "__real@40c90fdb",
+            "local": false,
+            "candidate_target": "0x0041421C",
+            "target": "0x00470B14",
+            "addend": 0,
+            "target_encoded_value": "0x00470B14"
+          },
+          {
+            "offset": "0x23",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40490fdb",
+            "linked_symbol": "__real@40490fdb",
+            "local": false,
+            "candidate_target": "0x00414220",
+            "target": "0x00470B18",
+            "addend": 0,
+            "target_encoded_value": "0x00470B18"
+          },
+          {
+            "offset": "0x30",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@c0490fdb",
+            "linked_symbol": "__real@c0490fdb",
+            "local": false,
+            "candidate_target": "0x00414218",
+            "target": "0x00470B10",
+            "addend": 0,
+            "target_encoded_value": "0x00470B10"
+          },
+          {
+            "offset": "0x42",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40c90fdb",
+            "linked_symbol": "__real@40c90fdb",
+            "local": false,
+            "candidate_target": "0x0041421C",
+            "target": "0x00470B14",
+            "addend": 0,
+            "target_encoded_value": "0x00470B14"
+          },
+          {
+            "offset": "0x50",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@c0490fdb",
+            "linked_symbol": "__real@c0490fdb",
+            "local": false,
+            "candidate_target": "0x00414218",
+            "target": "0x00470B10",
+            "addend": 0,
+            "target_encoded_value": "0x00470B10"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "anm-manager-add-vm-primary-tail": {
+        "unit": "anm-manager-add-vm-primary-tail",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+        "target_address": "0x004489D0",
+        "size": 118,
+        "matched_bytes": 118,
+        "compared_size": 118,
+        "matched_compared_bytes": 118,
+        "image": "build/gpt-dots/player-shot-model/source.exe",
+        "image_sha256": "3234344f9b8687eaca30340a593e2ea1b6310340cc4fe7f36c72075b6b81b647",
+        "pdb_guid": "9a0aa7c21664c444ba6a309e8be306d3",
+        "pdb_age": 1,
+        "candidate_address": "0x00402F60",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 118,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "anm-manager-find-vm": {
+        "unit": "anm-manager-find-vm",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "target_address": "0x004491C0",
+        "size": 73,
+        "matched_bytes": 73,
+        "compared_size": 73,
+        "matched_compared_bytes": 73,
+        "image": "build/gpt-dots/player-shot-model/source.exe",
+        "image_sha256": "3234344f9b8687eaca30340a593e2ea1b6310340cc4fe7f36c72075b6b81b647",
+        "pdb_guid": "9a0aa7c21664c444ba6a309e8be306d3",
+        "pdb_age": 1,
+        "candidate_address": "0x00402BF0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 73,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "enemy-sound-queue-cue": {
+        "unit": "enemy-sound-queue-cue",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+        "target_address": "0x0043DD10",
+        "size": 149,
+        "matched_bytes": 149,
+        "compared_size": 149,
+        "matched_compared_bytes": 149,
+        "image": "build/gpt-dots/player-shot-model/source.exe",
+        "image_sha256": "3234344f9b8687eaca30340a593e2ea1b6310340cc4fe7f36c72075b6b81b647",
+        "pdb_guid": "9a0aa7c21664c444ba6a309e8be306d3",
+        "pdb_age": 1,
+        "candidate_address": "0x0040F720",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 3,
+        "decoded_bytes": 149,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x7",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40a6aaab",
+            "linked_symbol": "__real@40a6aaab",
+            "local": false,
+            "candidate_target": "0x00414228",
+            "target": "0x00470B20",
+            "addend": 0,
+            "target_encoded_value": "0x00470B20"
+          },
+          {
+            "offset": "0xF",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_EnemySoundCueMetadata@@3PAUEnemySoundCueMetadataView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0144",
+            "local": false,
+            "candidate_target": "0x0041525E",
+            "target": "0x004749C8",
+            "addend": 6,
+            "target_encoded_value": "0x004749CE"
+          },
+          {
+            "offset": "0x15",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "__ftol2",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0183",
+            "local": false,
+            "candidate_target": "0x004152F4",
+            "target": "0x00463B2C",
+            "addend": 0,
+            "target_encoded_value": "0x00025E03"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      }
+    },
+    "scan": {
+      "enemy-runtime-vector": {
+        "unit": "enemy-runtime-vector",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z",
+        "target_address": "0x0044C5D0",
+        "size": 30,
+        "matched_bytes": 30,
+        "compared_size": 30,
+        "matched_compared_bytes": 30,
+        "image": "build/gpt-dots/player-shot-scan/source.exe",
+        "image_sha256": "7737c04ab27a23ee4c1f6f9b92c69171027f58ad9fc4eefae22103654243f66a",
+        "pdb_guid": "99c941bd32ceb846b9e470e51e8388e7",
+        "pdb_age": 1,
+        "candidate_address": "0x0040D390",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 4,
+        "decoded_bytes": 30,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "enemy-wrap-angle": {
+        "unit": "enemy-wrap-angle",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?EnemyWrapAngle@@YGMM@Z",
+        "target_address": "0x0044BC70",
+        "size": 94,
+        "matched_bytes": 94,
+        "compared_size": 94,
+        "matched_compared_bytes": 94,
+        "image": "build/gpt-dots/player-shot-scan/source.exe",
+        "image_sha256": "7737c04ab27a23ee4c1f6f9b92c69171027f58ad9fc4eefae22103654243f66a",
+        "pdb_guid": "99c941bd32ceb846b9e470e51e8388e7",
+        "pdb_age": 1,
+        "candidate_address": "0x00410440",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 3,
+        "decoded_bytes": 94,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x8",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40490fdb",
+            "linked_symbol": "__real@40490fdb",
+            "local": false,
+            "candidate_target": "0x00414220",
+            "target": "0x00470B18",
+            "addend": 0,
+            "target_encoded_value": "0x00470B18"
+          },
+          {
+            "offset": "0x15",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40c90fdb",
+            "linked_symbol": "__real@40c90fdb",
+            "local": false,
+            "candidate_target": "0x0041421C",
+            "target": "0x00470B14",
+            "addend": 0,
+            "target_encoded_value": "0x00470B14"
+          },
+          {
+            "offset": "0x23",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40490fdb",
+            "linked_symbol": "__real@40490fdb",
+            "local": false,
+            "candidate_target": "0x00414220",
+            "target": "0x00470B18",
+            "addend": 0,
+            "target_encoded_value": "0x00470B18"
+          },
+          {
+            "offset": "0x30",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@c0490fdb",
+            "linked_symbol": "__real@c0490fdb",
+            "local": false,
+            "candidate_target": "0x00414218",
+            "target": "0x00470B10",
+            "addend": 0,
+            "target_encoded_value": "0x00470B10"
+          },
+          {
+            "offset": "0x42",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40c90fdb",
+            "linked_symbol": "__real@40c90fdb",
+            "local": false,
+            "candidate_target": "0x0041421C",
+            "target": "0x00470B14",
+            "addend": 0,
+            "target_encoded_value": "0x00470B14"
+          },
+          {
+            "offset": "0x50",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@c0490fdb",
+            "linked_symbol": "__real@c0490fdb",
+            "local": false,
+            "candidate_target": "0x00414218",
+            "target": "0x00470B10",
+            "addend": 0,
+            "target_encoded_value": "0x00470B10"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "anm-manager-add-vm-primary-tail": {
+        "unit": "anm-manager-add-vm-primary-tail",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+        "target_address": "0x004489D0",
+        "size": 118,
+        "matched_bytes": 118,
+        "compared_size": 118,
+        "matched_compared_bytes": 118,
+        "image": "build/gpt-dots/player-shot-scan/source.exe",
+        "image_sha256": "7737c04ab27a23ee4c1f6f9b92c69171027f58ad9fc4eefae22103654243f66a",
+        "pdb_guid": "99c941bd32ceb846b9e470e51e8388e7",
+        "pdb_age": 1,
+        "candidate_address": "0x00402FF0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 118,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "anm-manager-find-vm": {
+        "unit": "anm-manager-find-vm",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "target_address": "0x004491C0",
+        "size": 73,
+        "matched_bytes": 73,
+        "compared_size": 73,
+        "matched_compared_bytes": 73,
+        "image": "build/gpt-dots/player-shot-scan/source.exe",
+        "image_sha256": "7737c04ab27a23ee4c1f6f9b92c69171027f58ad9fc4eefae22103654243f66a",
+        "pdb_guid": "99c941bd32ceb846b9e470e51e8388e7",
+        "pdb_age": 1,
+        "candidate_address": "0x00402C80",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 73,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "enemy-sound-queue-cue": {
+        "unit": "enemy-sound-queue-cue",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+        "target_address": "0x0043DD10",
+        "size": 149,
+        "matched_bytes": 149,
+        "compared_size": 149,
+        "matched_compared_bytes": 149,
+        "image": "build/gpt-dots/player-shot-scan/source.exe",
+        "image_sha256": "7737c04ab27a23ee4c1f6f9b92c69171027f58ad9fc4eefae22103654243f66a",
+        "pdb_guid": "99c941bd32ceb846b9e470e51e8388e7",
+        "pdb_age": 1,
+        "candidate_address": "0x0040F7B0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 3,
+        "decoded_bytes": 149,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x7",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40a6aaab",
+            "linked_symbol": "__real@40a6aaab",
+            "local": false,
+            "candidate_target": "0x00414228",
+            "target": "0x00470B20",
+            "addend": 0,
+            "target_encoded_value": "0x00470B20"
+          },
+          {
+            "offset": "0xF",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_EnemySoundCueMetadata@@3PAUEnemySoundCueMetadataView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0144",
+            "local": false,
+            "candidate_target": "0x0041525E",
+            "target": "0x004749C8",
+            "addend": 6,
+            "target_encoded_value": "0x004749CE"
+          },
+          {
+            "offset": "0x15",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "__ftol2",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0183",
+            "local": false,
+            "candidate_target": "0x004152F4",
+            "target": "0x00463B2C",
+            "addend": 0,
+            "target_encoded_value": "0x00025E03"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      }
+    },
+    "motion": {
+      "enemy-runtime-vector": {
+        "unit": "enemy-runtime-vector",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z",
+        "target_address": "0x0044C5D0",
+        "size": 30,
+        "matched_bytes": 30,
+        "compared_size": 30,
+        "matched_compared_bytes": 30,
+        "image": "build/gpt-dots/player-shot-motion/source.exe",
+        "image_sha256": "126daaff70f03bcde73b332f2c6e642049cb5c1fb8d25cb6cb1f6f31b27c6789",
+        "pdb_guid": "a2df1458b2271c4b92f77260f5a9e4b3",
+        "pdb_age": 1,
+        "candidate_address": "0x0040D330",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 4,
+        "decoded_bytes": 30,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "enemy-wrap-angle": {
+        "unit": "enemy-wrap-angle",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?EnemyWrapAngle@@YGMM@Z",
+        "target_address": "0x0044BC70",
+        "size": 94,
+        "matched_bytes": 94,
+        "compared_size": 94,
+        "matched_compared_bytes": 94,
+        "image": "build/gpt-dots/player-shot-motion/source.exe",
+        "image_sha256": "126daaff70f03bcde73b332f2c6e642049cb5c1fb8d25cb6cb1f6f31b27c6789",
+        "pdb_guid": "a2df1458b2271c4b92f77260f5a9e4b3",
+        "pdb_age": 1,
+        "candidate_address": "0x004103E0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 3,
+        "decoded_bytes": 94,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x8",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40490fdb",
+            "linked_symbol": "__real@40490fdb",
+            "local": false,
+            "candidate_target": "0x00414220",
+            "target": "0x00470B18",
+            "addend": 0,
+            "target_encoded_value": "0x00470B18"
+          },
+          {
+            "offset": "0x15",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40c90fdb",
+            "linked_symbol": "__real@40c90fdb",
+            "local": false,
+            "candidate_target": "0x0041421C",
+            "target": "0x00470B14",
+            "addend": 0,
+            "target_encoded_value": "0x00470B14"
+          },
+          {
+            "offset": "0x23",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40490fdb",
+            "linked_symbol": "__real@40490fdb",
+            "local": false,
+            "candidate_target": "0x00414220",
+            "target": "0x00470B18",
+            "addend": 0,
+            "target_encoded_value": "0x00470B18"
+          },
+          {
+            "offset": "0x30",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@c0490fdb",
+            "linked_symbol": "__real@c0490fdb",
+            "local": false,
+            "candidate_target": "0x00414218",
+            "target": "0x00470B10",
+            "addend": 0,
+            "target_encoded_value": "0x00470B10"
+          },
+          {
+            "offset": "0x42",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40c90fdb",
+            "linked_symbol": "__real@40c90fdb",
+            "local": false,
+            "candidate_target": "0x0041421C",
+            "target": "0x00470B14",
+            "addend": 0,
+            "target_encoded_value": "0x00470B14"
+          },
+          {
+            "offset": "0x50",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@c0490fdb",
+            "linked_symbol": "__real@c0490fdb",
+            "local": false,
+            "candidate_target": "0x00414218",
+            "target": "0x00470B10",
+            "addend": 0,
+            "target_encoded_value": "0x00470B10"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "anm-manager-add-vm-primary-tail": {
+        "unit": "anm-manager-add-vm-primary-tail",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+        "target_address": "0x004489D0",
+        "size": 118,
+        "matched_bytes": 118,
+        "compared_size": 118,
+        "matched_compared_bytes": 118,
+        "image": "build/gpt-dots/player-shot-motion/source.exe",
+        "image_sha256": "126daaff70f03bcde73b332f2c6e642049cb5c1fb8d25cb6cb1f6f31b27c6789",
+        "pdb_guid": "a2df1458b2271c4b92f77260f5a9e4b3",
+        "pdb_age": 1,
+        "candidate_address": "0x00402F90",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 118,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "anm-manager-find-vm": {
+        "unit": "anm-manager-find-vm",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "target_address": "0x004491C0",
+        "size": 73,
+        "matched_bytes": 73,
+        "compared_size": 73,
+        "matched_compared_bytes": 73,
+        "image": "build/gpt-dots/player-shot-motion/source.exe",
+        "image_sha256": "126daaff70f03bcde73b332f2c6e642049cb5c1fb8d25cb6cb1f6f31b27c6789",
+        "pdb_guid": "a2df1458b2271c4b92f77260f5a9e4b3",
+        "pdb_age": 1,
+        "candidate_address": "0x00402C20",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 73,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [],
+        "raw_equal": true,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "enemy-sound-queue-cue": {
+        "unit": "enemy-sound-queue-cue",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+        "target_address": "0x0043DD10",
+        "size": 149,
+        "matched_bytes": 149,
+        "compared_size": 149,
+        "matched_compared_bytes": 149,
+        "image": "build/gpt-dots/player-shot-motion/source.exe",
+        "image_sha256": "126daaff70f03bcde73b332f2c6e642049cb5c1fb8d25cb6cb1f6f31b27c6789",
+        "pdb_guid": "a2df1458b2271c4b92f77260f5a9e4b3",
+        "pdb_age": 1,
+        "candidate_address": "0x0040F750",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 3,
+        "decoded_bytes": 149,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x7",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@40a6aaab",
+            "linked_symbol": "__real@40a6aaab",
+            "local": false,
+            "candidate_target": "0x00414228",
+            "target": "0x00470B20",
+            "addend": 0,
+            "target_encoded_value": "0x00470B20"
+          },
+          {
+            "offset": "0xF",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_EnemySoundCueMetadata@@3PAUEnemySoundCueMetadataView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0144",
+            "local": false,
+            "candidate_target": "0x0041525E",
+            "target": "0x004749C8",
+            "addend": 6,
+            "target_encoded_value": "0x004749CE"
+          },
+          {
+            "offset": "0x15",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "__ftol2",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0183",
+            "local": false,
+            "candidate_target": "0x004152F4",
+            "target": "0x00463B2C",
+            "addend": 0,
+            "target_encoded_value": "0x00025E03"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      }
+    }
+  }
+}
