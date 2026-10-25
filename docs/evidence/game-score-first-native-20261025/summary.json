@@ -68,7 +68,7 @@
     "authored_denominator_bytes": 0
   },
   "full_ci": "No new run claimed; maintained ef5b9a8 worker checkpoint has its separate 112-stage pass.",
-  "next_model": "No new semantic source model supported; fresh evidence required before another trial.",
+  "next_model": "One paired ANM-definition-TU control with 36 family guards and a separate maintained-source Faith 65-byte, three-TU pilot are preparing; no outcomes or adoption claimed.",
   "shared_storage_runtime_closure": false,
   "receipt_sha256": {
     ".analysis/gpt-dots/game-score-first-native-20261025/freeze.json": "3b16f7ec520977cbdd419bd16dc54b52cf29a098269d0ff81a93b4ec7b1ba70e",
@@ -123,5 +123,35 @@
       ".analysis/gpt-dots/game-score-shared-native-20261025/score-comparison.json": "a02de13e81d4879774aa23d3a5319c68c253a861f239f4bcaad12069f3103188",
       ".analysis/gpt-dots/game-score-shared-native-20261025/anm-loaded-create-vm-variant0-same-image.json": "9e7214076cdf17c6df93f93d8b98120c5b52851cdaa93fb87ca80a7f1f422cf4"
     }
+  },
+  "gui_only_ob1_control": {
+    "packet": ".analysis/gpt-dots/game-score-gui-ob1-20261025",
+    "image_sha256": "e426afc37a47e142b0e23ba98b7761e988577a3958c12c51f83380c2a50deb94",
+    "baseline_image_sha256": "68c83c1ada3b327b80f81b82a430977ceedc70356eee8833beaf9091f75882d1",
+    "source_closure_hashes_unchanged": 40,
+    "frozen_pins_verified": 1885,
+    "sole_change": "Add /Ob1 only to Gui.cpp in the same nine-TU graph.",
+    "intended_Create_call_prediction": "falsified",
+    "selected_complete_owners": "Manager 1559, score 730, lives 189, Create 74, Initialize 201, Run 4504, HUD 3836: ordinary bytes, field identities and fixed locals equal the shared-model baseline, not target acceptance.",
+    "raw_equal_selected": "Score, Create, Initialize",
+    "tables_unchanged": "Run: all 24/7/7/5 words; HUD: all 7 words. Offsets and destinations preserved.",
+    "root_cold_comparison_exits": [
+      1,
+      0,
+      1
+    ],
+    "strict_guard_results": "10 of 11 exact; required CreateVmVariant0 structurally rejects 74/73.",
+    "failure_scope": "The required exact guard fails, not native linking, serialization or Stage observer.",
+    "original_artifacts_preserved": 183,
+    "whole_image_neutral": false,
+    "collateral": "GameResetGui 1964 to 1900 versus target 1965, with a new real SetLivesDisplayCount call; not accepted or fully reviewed as a target match.",
+    "new_exact_credit": 0,
+    "source_or_profile_adopted": false,
+    "receipt_sha256": {
+      ".analysis/gpt-dots/game-score-gui-ob1-20261025/independent-profile-review/receipt.json": "9bed7defb15069b71dd45c3c61500eb2c20cb2ee09af092a6f83e34042e35bbb",
+      ".analysis/gpt-dots/game-score-gui-ob1-20261025/independent-profile-review/collateral-and-guards.json": "a18c138b95d99c83beea2677011b93ac7ed3d130b08b56727cbfed563b56a301",
+      ".analysis/gpt-dots/game-score-gui-ob1-20261025/receipt.json": "f8139c2a8b5cdd89c1279ba7f5ff446c222b12c027cfed0d672054b30cc1113f"
+    },
+    "separate_work": "Old ANM-only /Ob1 adverse ten-TU /GL /GS evidence is separate. One paired ANM-definition-TU control with 36 family guards is preparing, not a panel. A Faith 65-byte pilot separately prepares a maintained-source cf8c4625 three-TU context without Stage/score integration."
   }
 }

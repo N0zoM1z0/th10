@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "maintained_checkpoint": "ef5ca8dc0c6713350ed2f3e8ee64969b76f4948c",
+  "scope": "Ignored combined two-body source plus four-TU graph; maintained source unchanged.",
+  "maintained_game_manager_sha256": "cf8c462512ec0c3b95f8273029038bdf2201a35543c79964bd4bd067194bc044",
+  "staged_game_manager_sha256": "fd88c5a79b1a7e560feba310e7cbb3aebf7b017dbcaf45ac08c4377238d4fc0b",
+  "image_sha256": "8691400fb3dbce91f85f63d096fc12c6a73712f444118b6f236b8cb0818bda4c",
+  "baseline_image_sha256": "70c33f67484fc89cd8310403cc04852a5ae4f05f0d5505898690f13d16969240",
+  "graph": {
+    "entry": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "ordered_tus": [
+      ".analysis/gpt-dots/game-stage-pair-native-20261025/GameManager.cpp",
+      "src/ScriptViewerWorker.cpp",
+      "src/AnmManager.cpp",
+      "src/TransitionEffect.cpp"
+    ],
+    "profile": "/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc /GL",
+    "link_profile": "/ltcg /nodefaultlib /subsystem:console /incremental:no /fixed:no /base:0x00400000 /debug /debugtype:cv /opt:noref /opt:noicf /safeseh:no",
+    "support_overrides": false,
+    "native_closure_files": 29
+  },
+  "complete_nonexact_owners": {
+    "GamePrepareAnimationSlots": "184/214 bytes; native 1 field / 5 locals / 1 call; full target internal alignment retained",
+    "GameEnterMenuState": "263/119; native 8 fields / 3 locals / 3 calls",
+    "GameManagerUpdateBody": "1605/1544; native 114 fields / 55 locals / 36 calls",
+    "InitializeForLoadedScript404F30": "200/202; native 2 fields / 0 locals / 2 calls; not InitializeVm449870"
+  },
+  "original_stage_exits": {
+    "root": 1,
+    "cold": 0,
+    "comparison": 1
+  },
+  "original_failure": "Inherited positional cleanup observer expected CMP; actual TEST ESI,ESI preserves null/bit-8 gates and same captured cleanup/delete owner.",
+  "independent_supplement": {
+    "passed": true,
+    "original_invocation_reclassified": false,
+    "original_artifacts_preserved": 53,
+    "native_rebuild": false,
+    "whole_parent_acceptance": false
+  },
+  "existing_exact_guards": {
+    "manager": "92+7+28 = 127 bytes / 2 fields",
+    "Tick": "72 / 4",
+    "Stop": "101 / 3"
+  },
+  "optional_factory_guard": "Structural rejection retained: complete owner 81 bytes, target 82; not exact.",
+  "all_optional_guards_exact": false,
+  "bounded_review": [
+    "Signed widths, reloads, 32-bit counters, short store and unconditional reset preserved.",
+    "Reset target stack/RET4 becomes native EDI/RET; VM child receiver target ESI becomes native EDX, changing spills/alignment.",
+    "Transition inlines allocation/factory/kind-2 initialization; native EBX versus target ESI.",
+    "No grounded source/profile/ABI correction found; not complete semantic equivalence."
+  ],
+  "supplement_observer_failure": "Optional factory rejection throws rather than returns a result; handling error retained separately, same-image repair only.",
+  "new_credit": {
+    "maintained_source_owners": 0,
+    "exact_owners": 0,
+    "exact_bytes": 0,
+    "authored_denominator_bytes": 0
+  },
+  "full_ci": "No new full-CI claim; previous maintained-source checkpoint scopes unchanged.",
+  "separate_control": "GUI-only /Ob1 in the nine-TU score context with fixed source bytes is separate preparation, not Stage tuning/adoption or a measured result in this note.",
+  "limits": "Original class/TU/ABI provenance, shared storage and runtime closure unresolved; unsupported Stage panels parked.",
+  "receipt_sha256": {
+    ".analysis/gpt-dots/game-stage-pair-native-20261025/freeze.json": "ea7b62269f1c16a1fa8a2fb276d4b0083a071d4fe845aff6ab07e22f42f77938",
+    ".analysis/gpt-dots/game-stage-pair-native-20261025/receipt.json": "473ff4f9a7eade1de91556e4c986684d994416e70dca6cf17b4cefe986892b93",
+    ".analysis/gpt-dots/game-stage-pair-native-20261025/stage-pair-comparison.json": "6458df10f3fca9a464732a171082914bb705713d482b59075a0200ef6779c5af",
+    ".analysis/gpt-dots/game-stage-pair-native-20261025/run-error.json": "f52a2c3e66aa4d06b61847105ddbd1b64443929f7999174475f354ef10629029",
+    ".analysis/gpt-dots/game-stage-pair-native-20261025/transition-effect-factory-same-image.json": "d8c42bdbcb02f7852c2a05e6328f25a939e861c1e3ab46e0eb62ee8eebba5c19",
+    ".analysis/gpt-dots/game-stage-pair-native-20261025/independent-stage-review/receipt.json": "b7003b3ccf54eb8460a038d1ba552ca13f48c5b03edc75d61ab1ed61f9595582",
+    ".analysis/gpt-dots/game-stage-pair-native-20261025/independent-stage-review/observer-rejection-handling.json": "43411a64e4258a82e6fade699d74da0833a37057031ae61e96f56662434a0d18"
+  }
+}

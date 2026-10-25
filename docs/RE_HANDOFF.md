@@ -35,6 +35,20 @@ confirms 10 other exact guards and real ItemAddLives caller identity; natural
 downstream InitializeVm ABI changes explain the wrapper growth, not a source
 defect or isolated causal proof. Both experiments add no maintained source,
 exact/denominator credit or new full-CI claim.
+The [Stage-pair first complete diagnostic](evidence/game-stage-pair-native-20261025/README.md)
+is a separate ignored four-TU model, all /GL without /GS: reset 184/214,
+transition 263/119, parent 1605/1544 and VM child 200/202 remain nonexact.
+Cold exits 0; original comparison/root exits 1 are retained for a positional
+menu observer mismatch. Independent same-image review passes with 53 originals
+preserved, required guards intact and optional factory 81/82 still structurally
+rejected. No grounded source correction, maintained admission or new credit.
+The separate fixed-source GUI-only /Ob1 score control falsifies its intended
+Create-call recovery: all seven selected complete owners stay baseline-equal,
+but Create 74/73 still fails its required guard. GameResetGui changes 1964 to
+1900 with a real SetLives call, so the whole image is not neutral or accepted.
+One paired ANM-definition-TU control with 36 family guards is preparing, not
+adoption or a panel. A Faith 65-byte, maintained-source three-TU pilot prepares
+separately, with no Stage/score integration or measured outcome claimed.
 Current GameManager.cpp SHA-256:
 `cf8c462512ec0c3b95f8273029038bdf2201a35543c79964bd4bd067194bc044`.
 WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
@@ -122,9 +136,10 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
-| GameManagerUpdateBody / target 1544 | Maintained two-TU 1575 bytes; ignored eight/nine-TU score/life models 1559 bytes; nonexact |
+| GameManagerUpdateBody / target 1544 | Maintained two-TU 1575; ignored score eight/nine-TU 1559 and Stage four-TU 1605; all nonexact |
 | GameUpdateGui / target 671 | Ignored first/shared models 734/730 bytes; not maintained/admitted, nonexact |
 | GameAddLives / ItemAddLives / target 141 | Ignored first/shared models 194/189 bytes; not maintained/admitted, nonexact |
+| Stage reset / transition / targets 214 / 119 | Ignored complete four-TU models 184 / 263 bytes; full reset alignment retained; nonexact |
 | Ending Run / target 1568 | Fresh source-current 1576 bytes; complete alignment / 18 table words / 53 locals retained; nonexact |
 | HUD UpdateStageElements / target 3836 | Candidate 3824 bytes: 3796 code + 0 alignment + 28 table; 72 syntactic fields / 249 locals / 21 calls; nonexact |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
@@ -492,6 +507,47 @@ Receipt SHA-256:
 No new semantic/noinline model is justified. No maintained source admission,
 exact credit, shared runtime closure or new full-CI claim follows; prior
 checkpoint scopes stay intact.
+
+The separately measured GUI-only /Ob1 control keeps all 40 shared-model source
+hashes and other graph properties fixed; 1885 pins and 183 original artifacts
+are verified. It falsifies the intended CreateVmVariant0 call-edge prediction.
+Manager 1559, score 730, lives 189, Create 74, Initialize 201, Run 4504 and HUD
+3836 retain ordinary bytes, field identities and fixed locals; score/Create/
+Initialize are raw-identical. Run tables 24/7/7/5 and HUD seven words are intact.
+Cold exits 0; comparison/root exits 1 because the control requires all 11
+guards and Create still structurally rejects 74/73 while the other 10 pass.
+No target exactness follows from these baseline comparisons. Whole-image
+neutrality is false: GameResetGui changes 1964 to 1900 (target 1965), gaining
+a real SetLivesDisplayCount call without acceptance. Independent and collateral
+receipts are linked in the score summary. No source/profile/metric/CI change.
+
+Historical ANM-only /Ob1 adverse evidence from a different ten-TU /GL /GS
+context remains separate. One paired ANM-definition-TU control with 36 family
+guards is preparing to expose tradeoffs, not adopt a profile or open a panel.
+The 65-byte Faith dependency pilot separately starts from maintained
+GameManager cf8c4625 in a three-TU graph, without ignored Stage/score source
+integration. Neither future experiment's outcome is asserted here.
+
+The separate [Stage-pair diagnostic](evidence/game-stage-pair-native-20261025/README.md)
+uses staged GameManager plus real Worker, AnmManager and TransitionEffect,
+all /GL without /GS. It adds two complete bodies and expands context together;
+no score overlay is reused. Reset 184/214, transition 263/119, parent 1605/1544
+and InitializeForLoadedScript 200/202 are nonexact. The whole 214-byte reset
+extent, including internal alignment, stays retained rather than trimmed.
+
+Cold exits 0; original comparison/root exits 1 remain. The inherited observer
+expected CMP where actual TEST ESI,ESI preserves null/bit-8 gates and the same
+captured cleanup/delete pointer. Independent supplement verifies the retained
+image without rebuilding and preserves 53 originals; manager 127/all 2, Tick
+72/all 4 and Stop 101/all 3 pass, but factory 81/82 is a retained structural
+rejection. Its exception-handling observer error is separately preserved.
+Signed widths/control/reloads are reviewed; natural reset/child receiver ABI
+changes alter spills/alignment, while transition allocation/factory/kind-2
+initialization inlines. No independently grounded source correction follows.
+Original class/TU/ABI provenance, shared storage and runtime remain unresolved.
+Keep unsupported Stage profile/ABI panels parked; the separately documented
+GUI-only /Ob1 negative control is not Stage tuning or adoption. No maintained
+source admission, metric change or new full-CI claim follows.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not

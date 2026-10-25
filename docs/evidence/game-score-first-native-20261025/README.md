@@ -88,6 +88,33 @@ Review receipt SHA-256:
 `7696c68a8437656b47b9e7455a1c920e0712ffe6b5c6a9b5879df8246400833c`.
 First-model failure and supplements remain unchanged with their original scope.
 
+## Separate GUI-only /Ob1 negative control
+
+In `game-score-gui-ob1-20261025`, all **40 source-closure hashes and 1885 pins**
+are verified; only the existing nine-TU graph's Gui.cpp gains /Ob1. The predicted
+CreateVmVariant0 call recovery is **falsified**. Seven complete owners preserve
+all ordinary bytes, field identities and fixed locals against the shared-model
+baseline: manager 1559, score 730, lives 189, Create 74, Initialize 201, Run
+4504 and HUD 3836. Score/Create/Initialize are also raw-identical; Run's complete
+24/7/7/5-word tables and HUD's seven words remain unchanged. This is baseline
+neutrality for those owners, not target exactness, even where an extent matches.
+
+Cold exits 0; **comparison/root remain 1** because this control requires all
+11 guards: 10 pass, while Create still structurally rejects **74/73**. This is
+not the earlier serialization or Stage observer failure. All 183 original
+artifacts are preserved. **Do not claim whole-image neutrality**: GameResetGui
+changes 1964 to 1900 bytes (target 1965), gaining a real SetLivesDisplayCount
+call; that collateral owner is not accepted. The control image is
+`e426afc37a47e142b0e23ba98b7761e988577a3958c12c51f83380c2a50deb94`.
+Compact independent and collateral receipt hashes are in the summary.
+
+Historical ANM-only /Ob1 adversity in a different /GL /GS ten-TU graph stays
+separate. One final paired ANM-definition-TU control with 36 family guards is
+being prepared to expose tradeoffs, not adopt a profile or open a panel. A
+65-byte Faith dependency source pilot is separately being prepared from the
+maintained GameManager in a three-TU graph, with no Stage/score integration.
+Neither future result is claimed here; Stage evidence remains a separate note.
+
 ## Credit and CI scope
 
 **Zero new maintained source owners, exact bytes or denominator bytes.** The
@@ -95,5 +122,5 @@ previous 112-stage pass belongs to maintained ef5b9a8's worker checkpoint;
 there is no new full-CI claim for this ignored source/graph experiment.
 
 Neither model establishes shared runtime storage or original class/TU ownership.
-No new semantic source model is supported by this review; further work requires
-fresh evidence, not wrapper/noinline/profile or spelling/flag panels.
+The negative control authorizes no source/profile adoption; further work stays
+bounded by the separately stated evidence, not wrapper/noinline or spelling panels.
