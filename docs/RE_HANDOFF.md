@@ -4,6 +4,16 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [Spt Test script-load pilot](evidence/spt-test-load-20261025/README.md)
+retains first complete407/261 and actual-filesystem-context261/261 models.
+Main's real mode1 caller recovers external OpenFile/private filename-EAX instead
+of archive-only inlining, but constructor scheduling and count/register lifetime
+still differ. All8 load fields and6 fixed locals are retained; three full guards
+pass665/all37 in both images. True global callback16/all2 is diagnostic only.
+Existing concrete class is moved byte-preserved only inside isolated proposals;
+raw constructor installs vptr BEFORE memset erases it, correcting old prose.
+Independent review passes proposal/field/local scope, not exactness. Source,
+canonical recipes and metrics unchanged; park unsupported scheduling panels.
 Current [scene camera initializer pilot](evidence/scene-camera-init-20261025/README.md)
 retains complete existing-type451/465 and genuine rocking-vector487/465 models;
 both structurally reject. Existing vector constructors naturally preserve XYZ

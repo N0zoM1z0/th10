@@ -1,0 +1,68 @@
+{
+  "retained_artifacts_unchanged": 59,
+  "results": {
+    "first": {
+      "guards": {
+        "spt-test-draw": {
+          "result": "exact",
+          "size": 531,
+          "fields": 32
+        },
+        "ascii-manager-add-small-format-text-gs": {
+          "result": "exact",
+          "size": 100,
+          "fields": 4
+        },
+        "enemy-ecl-resource-base-constructor": {
+          "result": "exact",
+          "size": 34,
+          "fields": 1
+        },
+        "callback": {
+          "result": "exact",
+          "size": 16,
+          "fields": 2
+        }
+      },
+      "load_result": "rejected",
+      "frozen_inputs": 234
+    },
+    "context": {
+      "guards": {
+        "spt-test-draw": {
+          "result": "exact",
+          "size": 531,
+          "fields": 32
+        },
+        "ascii-manager-add-small-format-text-gs": {
+          "result": "exact",
+          "size": 100,
+          "fields": 4
+        },
+        "enemy-ecl-resource-base-constructor": {
+          "result": "exact",
+          "size": 34,
+          "fields": 1
+        },
+        "callback": {
+          "result": "exact",
+          "size": 16,
+          "fields": 2
+        }
+      },
+      "load_result": "mismatch",
+      "frozen_inputs": 234
+    }
+  },
+  "completed_at": "2026-10-25T09:23:31.468963+00:00",
+  "toolchain_declarations": "pass",
+  "tracking": "pass",
+  "progress": "pass; markdown and SVG unchanged",
+  "diff_check": "pass",
+  "full_ci": "not run; isolated proposal/documentation only",
+  "source_changes": false,
+  "exact_credit": 0,
+  "authored_exact_owners": 416,
+  "authored_exact_bytes": 75782,
+  "authored_owned_bytes": 273658
+}

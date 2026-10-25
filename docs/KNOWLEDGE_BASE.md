@@ -6003,3 +6003,19 @@ matching against overlapping4-byte data anchors. No source/exact credit or
 runtime/full-CI claim. Reopen only with independent lifetime/constructor or
 actual caller/compiler-context evidence. See
 [complete evidence](evidence/scene-camera-init-20261025/README.md).
+
+
+## Spt Test script-load pilot, 2026-10-25
+
+See [the bounded evidence](evidence/spt-test-load-20261025/README.md).
+Raw42BE20..42BF24 is261 code bytes; global callback42BE10..1F is16 and uses
+[477844], not a context argument. Existing concrete EnemyEclResourceBaseView
+provides the1098-byte allocation; raw40C830 and its inline copy install46D0F0
+before full memset erases the vptr, not afterward as old constructor prose says.
+The following virtual slot0 dereference is preserved, not repaired; runtime
+safety/original declaration remain unknown. First complete407/261 specializes
+archive-only OpenFile. Adding its actual Main/PbgArchive context recovers the
+call/private EAX filename and261-byte extent but not exactness. All8 fields and6
+locals are bound; Draw531, ASCII100 and constructor34 full guards pass both
+images. Proposals remain isolated, no source/exact/denominator credit. Park
+unsupported scheduling/ABI/profile panels pending new independent evidence.

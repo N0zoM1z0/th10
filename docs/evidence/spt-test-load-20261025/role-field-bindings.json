@@ -1,0 +1,433 @@
+{
+  "target_load": [
+    {
+      "offset": 7,
+      "type": "DIR32",
+      "symbol": "___security_cookie",
+      "target": 4666976
+    },
+    {
+      "offset": 39,
+      "type": "DIR32",
+      "symbol": "??_C@_02DKCKIIND@?$CFs?$AA@",
+      "target": 4645320
+    },
+    {
+      "offset": 45,
+      "type": "REL32",
+      "symbol": "_sprintf",
+      "target": 4532968
+    },
+    {
+      "offset": 95,
+      "type": "REL32",
+      "symbol": "_free",
+      "target": 4531234
+    },
+    {
+      "offset": 115,
+      "type": "REL32",
+      "symbol": "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z",
+      "target": 4502368
+    },
+    {
+      "offset": 131,
+      "type": "REL32",
+      "symbol": "??2@YAPAXI@Z",
+      "target": 4531347
+    },
+    {
+      "offset": 147,
+      "type": "DIR32",
+      "symbol": "??_7EnemyEclResourceBaseView@@6B@",
+      "target": 4641008
+    },
+    {
+      "offset": 250,
+      "type": "REL32",
+      "symbol": "@__security_check_cookie@4",
+      "target": 4558501
+    }
+  ],
+  "target_callback": [
+    {
+      "offset": 3,
+      "type": "DIR32",
+      "symbol": "?g_SptTestView@@3PAUSptTestView@@A",
+      "target": 4683844
+    },
+    {
+      "offset": 8,
+      "type": "REL32",
+      "symbol": "?LoadScript@SptTestView@@QAEHXZ",
+      "target": 4374048
+    }
+  ],
+  "first_candidate_load": [
+    {
+      "candidate_offset": 7,
+      "type": "DIR32",
+      "symbol": "___security_cookie",
+      "candidate_base": 4256168,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4666976,
+      "target_addend": 0,
+      "target_role": "___security_cookie"
+    },
+    {
+      "candidate_offset": 39,
+      "type": "DIR32",
+      "symbol": "??_C@_02DKCKIIND@?$CFs?$AA@",
+      "candidate_base": 4251692,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4645320,
+      "target_addend": 0,
+      "target_role": "??_C@_02DKCKIIND@?$CFs?$AA@"
+    },
+    {
+      "candidate_offset": 45,
+      "type": "REL32",
+      "symbol": "_sprintf",
+      "candidate_base": 4256236,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4532968,
+      "target_addend": 0,
+      "target_role": "_sprintf"
+    },
+    {
+      "candidate_offset": 95,
+      "type": "REL32",
+      "symbol": "_free",
+      "candidate_base": 4256228,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4531234,
+      "target_addend": 0,
+      "target_role": "_free"
+    },
+    {
+      "candidate_offset": 109,
+      "type": "DIR32",
+      "symbol": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A",
+      "candidate_base": 4255960,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4792996,
+      "target_addend": 0,
+      "target_role": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A"
+    },
+    {
+      "candidate_offset": 114,
+      "type": "REL32",
+      "symbol": "_EnterCriticalSection@4",
+      "candidate_base": 4256148,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": null,
+      "target_addend": null,
+      "target_import_slot": 4612272,
+      "target_role": "External Win32 import; candidate direct anchored call differs from target IAT-indirect form. No invented direct target thunk binding."
+    },
+    {
+      "candidate_offset": 120,
+      "type": "DIR32",
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "candidate_base": 4255968,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4793118,
+      "target_addend": 0,
+      "target_role": "?gReplayFileOpenCount@@3EA"
+    },
+    {
+      "candidate_offset": 132,
+      "type": "REL32",
+      "symbol": "_strrchr",
+      "candidate_base": 4256244,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4532528,
+      "target_addend": 0,
+      "target_role": "_strrchr"
+    },
+    {
+      "candidate_offset": 156,
+      "type": "REL32",
+      "symbol": "_strrchr",
+      "candidate_base": 4256244,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4532528,
+      "target_addend": 0,
+      "target_role": "_strrchr"
+    },
+    {
+      "candidate_offset": 178,
+      "type": "DIR32",
+      "symbol": "?g_MainPbgArchive@@3VPbgArchive@@A",
+      "candidate_base": 4256072,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4815248,
+      "target_addend": 0,
+      "target_role": "?g_MainPbgArchive@@3VPbgArchive@@A"
+    },
+    {
+      "candidate_offset": 183,
+      "type": "REL32",
+      "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+      "candidate_base": 4255884,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4411120,
+      "target_addend": 0,
+      "target_role": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z"
+    },
+    {
+      "candidate_offset": 197,
+      "type": "REL32",
+      "symbol": "_malloc",
+      "candidate_base": 4256232,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4531974,
+      "target_addend": 0,
+      "target_role": "_malloc"
+    },
+    {
+      "candidate_offset": 211,
+      "type": "DIR32",
+      "symbol": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A",
+      "candidate_base": 4255960,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4792996,
+      "target_addend": 0,
+      "target_role": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A"
+    },
+    {
+      "candidate_offset": 216,
+      "type": "REL32",
+      "symbol": "_LeaveCriticalSection@4",
+      "candidate_base": 4256152,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": null,
+      "target_addend": null,
+      "target_import_slot": 4612276,
+      "target_role": "External Win32 import; candidate direct anchored call differs from target IAT-indirect form. No invented direct target thunk binding."
+    },
+    {
+      "candidate_offset": 221,
+      "type": "DIR32",
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "candidate_base": 4255968,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4793118,
+      "target_addend": 0,
+      "target_role": "?gReplayFileOpenCount@@3EA"
+    },
+    {
+      "candidate_offset": 234,
+      "type": "DIR32",
+      "symbol": "?g_MainPbgArchive@@3VPbgArchive@@A",
+      "candidate_base": 4256072,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4815248,
+      "target_addend": 0,
+      "target_role": "?g_MainPbgArchive@@3VPbgArchive@@A"
+    },
+    {
+      "candidate_offset": 239,
+      "type": "REL32",
+      "symbol": "?ReadDecompressEntry@PbgArchive@@QAEPAEPBDPAE@Z",
+      "candidate_base": 4255940,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4410832,
+      "target_addend": 0,
+      "target_role": "?ReadDecompressEntry@PbgArchive@@QAEPAEPBDPAE@Z"
+    },
+    {
+      "candidate_offset": 244,
+      "type": "DIR32",
+      "symbol": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A",
+      "candidate_base": 4255960,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4792996,
+      "target_addend": 0,
+      "target_role": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A"
+    },
+    {
+      "candidate_offset": 249,
+      "type": "REL32",
+      "symbol": "_LeaveCriticalSection@4",
+      "candidate_base": 4256152,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": null,
+      "target_addend": null,
+      "target_import_slot": 4612276,
+      "target_role": "External Win32 import; candidate direct anchored call differs from target IAT-indirect form. No invented direct target thunk binding."
+    },
+    {
+      "candidate_offset": 254,
+      "type": "DIR32",
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "candidate_base": 4255968,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4793118,
+      "target_addend": 0,
+      "target_role": "?gReplayFileOpenCount@@3EA"
+    },
+    {
+      "candidate_offset": 266,
+      "type": "DIR32",
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "candidate_base": 4255968,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4793118,
+      "target_addend": 0,
+      "target_role": "?gReplayFileOpenCount@@3EA"
+    },
+    {
+      "candidate_offset": 277,
+      "type": "REL32",
+      "symbol": "??2@YAPAXI@Z",
+      "candidate_base": 4255752,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4531347,
+      "target_addend": 0,
+      "target_role": "??2@YAPAXI@Z"
+    },
+    {
+      "candidate_offset": 292,
+      "type": "DIR32",
+      "symbol": "??_7EnemyEclResourceBaseView@@6B@",
+      "candidate_base": 4251676,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4641008,
+      "target_addend": 0,
+      "target_role": "??_7EnemyEclResourceBaseView@@6B@"
+    },
+    {
+      "candidate_offset": 396,
+      "type": "REL32",
+      "symbol": "@__security_check_cookie@4",
+      "candidate_base": 4256100,
+      "candidate_addend": 0,
+      "scope": "role-only; rejected extent, no acceptance",
+      "target_base": 4558501,
+      "target_addend": 0,
+      "target_role": "@__security_check_cookie@4"
+    }
+  ],
+  "context_candidate_load": [
+    {
+      "offset": "0x7",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "___security_cookie",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0175",
+      "local": false,
+      "candidate_target": "0x004112BC",
+      "target": "0x00473660",
+      "addend": 0,
+      "target_encoded_value": "0x00473660"
+    },
+    {
+      "offset": "0x27",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_C@_02DKCKIIND@?$CFs?$AA@",
+      "linked_symbol": "??_C@_02DKCKIIND@?$CFs?$AA@",
+      "local": false,
+      "candidate_target": "0x0041002C",
+      "target": "0x0046E1C8",
+      "addend": 0,
+      "target_encoded_value": "0x0046E1C8"
+    },
+    {
+      "offset": "0x2D",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "_sprintf",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0231",
+      "local": false,
+      "candidate_target": "0x0041139C",
+      "target": "0x00452AE8",
+      "addend": 0,
+      "target_encoded_value": "0x00026C97"
+    },
+    {
+      "offset": "0x5F",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "_free",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0229",
+      "local": false,
+      "candidate_target": "0x00411394",
+      "target": "0x00452422",
+      "addend": 0,
+      "target_encoded_value": "0x0002659F"
+    },
+    {
+      "offset": "0x73",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z",
+      "linked_symbol": "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z",
+      "local": false,
+      "candidate_target": "0x0040CD00",
+      "target": "0x0044B360",
+      "addend": 0,
+      "target_encoded_value": "0x0001F4C9"
+    },
+    {
+      "offset": "0x83",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "??2@YAPAXI@Z",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0004",
+      "local": false,
+      "candidate_target": "0x00411010",
+      "target": "0x00452493",
+      "addend": 0,
+      "target_encoded_value": "0x000265EC"
+    },
+    {
+      "offset": "0x93",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "??_7EnemyEclResourceBaseView@@6B@",
+      "linked_symbol": "??_7EnemyEclResourceBaseView@@6B@",
+      "local": false,
+      "candidate_target": "0x0041001C",
+      "target": "0x0046D0F0",
+      "addend": 0,
+      "target_encoded_value": "0x0046D0F0"
+    },
+    {
+      "offset": "0xFA",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "@__security_check_cookie@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0151",
+      "local": false,
+      "candidate_target": "0x0041125C",
+      "target": "0x00458EA5",
+      "addend": 0,
+      "target_encoded_value": "0x0002CF87"
+    }
+  ]
+}
