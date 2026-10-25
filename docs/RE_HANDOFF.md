@@ -4,6 +4,19 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [disk streaming pilot](evidence/disk-streaming-20261025/README.md)
+retains first complete parent681/702 and actual disk caller249/241.
+Open173/all3 is diagnostic code-exact; one natural constructor visibility
+model additionally reproduces base118/all3 and derived109/all4, recovering
+the actual ESI/four-stack-argument constructor ABI. Parent remains681/702
+with only one non-link byte changed; no grounded further model. Same-image
+and original canonical Stop176/Reopen55/Thread189 guards pass420/all13.
+Independent review confirms complete code and one-allocation EH semantics.
+All400 exact-shaped dependency bytes remain proposals: unresolved possible
+DSUtil ancestry prevents provenance/source/metric admission. No production
+source, classification, denominator or new full-CI claim. Original first
+proof is frozen; canonical transport result recovered from terminal logs,
+without rerun. Park unsupported startup/register/flag panels.
 Current [alternate text/dependency pilot](evidence/text-alternate-20261025/README.md)
 closes only the real **72-byte FillColor** dependency. Separate helpers-only and
 canonical cold links in the original CreateTextBuffer/RandomMath graph are raw

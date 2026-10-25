@@ -1,0 +1,144 @@
+--- Sound.hpp
++++ Sound.hpp
+@@ -64,0 +65 @@
++    int OpenDiskBgm(const char *path);
+--- Sound.cpp
++++ Sound.cpp
+@@ -178,0 +179,5 @@
++    HRESULT CreateStreaming(
++        CSound **sound, const char *filename, DWORD creationFlags,
++        GUID algorithm, DWORD bufferCount, DWORD notifySize,
++        HANDLE notifyEvent, ThBgmFormat *format);
++
+@@ -1000,0 +1006,22 @@
++
++// First complete actual disk caller; raw target 0x43D690.
++int SoundPlayerView::OpenDiskBgm(const char *path)
++{
++    strcpy(unknownNameSlot, path);
++    if (manager == NULL || directSound == NULL)
++        return -1;
++    StopBgm();
++    ThBgmFormat *format = bgmFormats;
++    DWORD blockAlign = format->format.nBlockAlign;
++    DWORD notifySize = format->format.nSamplesPerSec * 4 * blockAlign / 16;
++    notifySize -= notifySize % blockAlign;
++    bgmUpdateEvent = CreateEventA(NULL, FALSE, FALSE, NULL);
++    bgmThreadHandle = CreateThread(
++        NULL, 0, BgmPlayerThread, g_MainSupervisorView.gameWindow,
++        0, &bgmThreadId);
++    HRESULT result = manager->CreateStreaming(
++        &bgm, path, 0x10100, GUID_NULL, 16, notifySize, bgmUpdateEvent, format);
++    if (result < 0)
++        return -1;
++    return 0;
++}
+--- ZWave.cpp
++++ ZWave.cpp
+@@ -40,0 +41,5 @@
++
++    HRESULT CreateStreaming(
++        CSound **sound, const char *filename, DWORD creationFlags,
++        GUID algorithm, DWORD bufferCount, DWORD notifySize,
++        HANDLE notifyEvent, ThBgmFormat *format);
+@@ -76,0 +82,2 @@
++    HRESULT Open(const char *filename, ThBgmFormat *format, DWORD flags);
++
+@@ -182,0 +190,75 @@
++
++HRESULT CSoundManager::CreateStreaming(
++    CSound **sound, const char *filename, DWORD creationFlags,
++    GUID algorithm, DWORD bufferCount, DWORD notifySize,
++    HANDLE notifyEvent, ThBgmFormat *format)
++{
++    if (directSound == NULL)
++        return CO_E_NOTINITIALIZED;
++
++    LPDIRECTSOUNDBUFFER soundBuffer = NULL;
++    LPDIRECTSOUNDNOTIFY notify = NULL;
++    DSBPOSITIONNOTIFY *notifications = NULL;
++    CWaveFile *waveFile = new CWaveFile();
++    if (waveFile->Open(filename, format, 1) != S_OK)
++    {
++        delete waveFile;
++        return E_FAIL;
++    }
++
++    DWORD bufferSize = notifySize * bufferCount;
++    DSBUFFERDESC description;
++    ZeroMemory(&description, sizeof(description));
++    description.dwSize = sizeof(description);
++    description.dwFlags = creationFlags | DSBCAPS_CTRLPOSITIONNOTIFY |
++        DSBCAPS_GLOBALFOCUS | DSBCAPS_GETCURRENTPOSITION2 |
++        DSBCAPS_CTRLVOLUME | DSBCAPS_LOCSOFTWARE;
++    description.dwBufferBytes = bufferSize;
++    description.guid3DAlgorithm = algorithm;
++    description.lpwfxFormat = &waveFile->m_pzwf->format;
++
++    if (FAILED(directSound->CreateSoundBuffer(
++            &description, &soundBuffer, NULL)) ||
++        FAILED(soundBuffer->QueryInterface(
++            IID_IDirectSoundNotify, reinterpret_cast<void **>(&notify))))
++        return E_FAIL;
++
++    notifications = new DSBPOSITIONNOTIFY[bufferCount];
++    if (notifications == NULL)
++        return E_OUTOFMEMORY;
++
++    for (DWORD i = 0; i < bufferCount; ++i)
++    {
++        notifications[i].dwOffset = notifySize * i + notifySize - 1;
++        notifications[i].hEventNotify = notifyEvent;
++    }
++
++    HRESULT result = notify->SetNotificationPositions(bufferCount, notifications);
++    if (FAILED(result))
++    {
++        if (notify != NULL)
++        {
++            notify->Release();
++            notify = NULL;
++        }
++        delete[] notifications;
++        return E_FAIL;
++    }
++
++    if (notify != NULL)
++    {
++        notify->Release();
++        notify = NULL;
++    }
++    delete[] notifications;
++
++    *sound = new CStreamingSound(soundBuffer, bufferSize, waveFile, notifySize);
++    CopyMemory(&(*sound)->m_dsbd, &description, sizeof(description));
++    (*sound)->m_pSoundManager = this;
++    static_cast<CStreamingSound *>(*sound)->m_hNotifyEvent = notifyEvent;
++    static_cast<CStreamingSound *>(*sound)->m_bIsLocked = FALSE;
++    return S_OK;
++}
++
++
++
+@@ -818,0 +901,21 @@
++
++// First complete disk-open model; raw target 0x44DBF0, not an admission.
++HRESULT CWaveFile::Open(const char *filename, ThBgmFormat *format, DWORD flags)
++{
++    m_dwFlags = flags;
++    m_bIsReadingFromMemory = FALSE;
++    if (flags == 1)
++    {
++        if (filename == NULL)
++            return E_INVALIDARG;
++        m_hWaveFile = CreateFileA(filename, GENERIC_READ, FILE_SHARE_READ,
++            NULL, OPEN_EXISTING,
++            FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
++        if (m_hWaveFile == INVALID_HANDLE_VALUE)
++            return E_FAIL;
++        m_pzwf = format;
++        ResetFile(false);
++        m_dwSize = m_ck.cksize;
++    }
++    return S_OK;
++}

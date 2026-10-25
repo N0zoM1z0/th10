@@ -5955,3 +5955,19 @@ reuse leaves failure-without-output semantics unresolved. Historical shadow
 TEXT-00213 neutral controls stay parked. See
 [evidence and source hypotheses](evidence/text-alternate-20261025/README.md).
 Original class/TU/profile, runtime and whole-product closure remain open.
+
+## Disk streaming first complete pilot,2026-10-25
+
+[Diagnostic packet](evidence/disk-streaming-20261025/README.md) preserves
+parent44C8F0/702 and actual disk caller43D690/241 as isolated681/249 proposals.
+First model Open173/all3 is complete diagnostic code-exact. One independently
+reviewed natural base118+derived109 visibility model recovers both complete
+constructors/all3+4 fields and target ESI/four-stack-argument derived ABI.
+Parent changes only its constructor receiver byte, remains681/702; caller
+remains249/241. Same-image and original-context Stop176/Reopen55/Thread189
+guards420/all13 pass. Parent owns11 internal alignment bytes and its EH has
+one streaming-allocation unwind only. Failure leaks/asymmetric cleanup and
+output-pointer rereads are intentional. No source/metric admission: authored
+ledger's behavior anchor does not settle plausible DSUtil ancestry. Preserve
+all400 diagnostic exact-shaped dependency bytes separately from unresolved
+origin/data ownership. No grounded further model: park startup/flag panels.

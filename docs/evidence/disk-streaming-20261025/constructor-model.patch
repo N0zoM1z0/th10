@@ -1,0 +1,36 @@
+--- ZWave.cpp
++++ ZWave.cpp
+@@ -141,0 +142,2 @@
++    CSound(LPDIRECTSOUNDBUFFER *buffers, DWORD bufferSize,
++           DWORD bufferCount, CWaveFile *waveFile);
+@@ -921,0 +924,30 @@
++
++// Bounded complete constructor visibility model, target 0x44CE80.
++// Field initialization order follows allocation/copy; no added failure handling.
++CSound::CSound(LPDIRECTSOUNDBUFFER *buffers, DWORD bufferSize,
++               DWORD bufferCount, CWaveFile *waveFile)
++{
++    m_apDSBuffer = new LPDIRECTSOUNDBUFFER[bufferCount];
++    for (DWORD i = 0; i < bufferCount; ++i)
++        m_apDSBuffer[i] = buffers[i];
++    m_dwDSBufferSize = bufferSize;
++    m_dwNumBuffers = bufferCount;
++    m_pWaveFile = waveFile;
++    FillBufferWithSound(m_apDSBuffer[0], FALSE);
++    for (DWORD j = 0; j < bufferCount; ++j)
++        m_apDSBuffer[j]->SetCurrentPosition(0);
++    m_bIsPlaying = FALSE;
++}
++
++// Target 0x44D6A0: ordinary inheritance specializes the one-buffer base.
++CStreamingSound::CStreamingSound(
++    LPDIRECTSOUNDBUFFER buffer, DWORD bufferSize,
++    CWaveFile *waveFile, DWORD notifySize)
++    : CSound(&buffer, bufferSize, 1, waveFile)
++{
++    m_dwLastPlayPos = 0;
++    m_dwPlayProgress = 0;
++    m_dwNextWriteOffset = 0;
++    m_bFillNextNotificationWithSilence = FALSE;
++    m_dwNotifySize = notifySize;
++}

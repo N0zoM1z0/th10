@@ -1,0 +1,3152 @@
+{
+  "acceptance": "none; diagnostic byteproof separate from unresolved origin",
+  "first": {
+    "image_sha256": "360f125b647c3ff4ba891db0193e4fd1b060879884cc6e05ed04f2c63e7cb727",
+    "owners": {
+      "parent": {
+        "symbol": "?CreateStreaming@CSoundManager@@QAEJPAPAVCSound@@PBDKU_GUID@@KKPAXPAUThBgmFormat@@@Z",
+        "target": {
+          "address": "0x44c8f0",
+          "size": 702,
+          "fields": [
+            {
+              "offset": 3,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46533b"
+            },
+            {
+              "offset": 25,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x473660"
+            },
+            {
+              "offset": 135,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x452493"
+            },
+            {
+              "offset": 186,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x44dbf0"
+            },
+            {
+              "offset": 217,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x4660cc"
+            },
+            {
+              "offset": 233,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x4524a1"
+            },
+            {
+              "offset": 415,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46743c"
+            },
+            {
+              "offset": 435,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x452493"
+            },
+            {
+              "offset": 539,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x4524a1"
+            },
+            {
+              "offset": 569,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x4524a1"
+            },
+            {
+              "offset": 576,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x452493"
+            },
+            {
+              "offset": 610,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x44d6a0"
+            },
+            {
+              "offset": 692,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x458ea5"
+            }
+          ],
+          "locals": [
+            [
+              109,
+              2,
+              121
+            ],
+            [
+              116,
+              5,
+              670
+            ],
+            [
+              146,
+              2,
+              168
+            ],
+            [
+              166,
+              2,
+              172
+            ],
+            [
+              192,
+              2,
+              250
+            ],
+            [
+              196,
+              6,
+              546
+            ],
+            [
+              206,
+              2,
+              231
+            ],
+            [
+              245,
+              5,
+              670
+            ],
+            [
+              397,
+              6,
+              546
+            ],
+            [
+              424,
+              2,
+              546
+            ],
+            [
+              446,
+              2,
+              458
+            ],
+            [
+              453,
+              5,
+              670
+            ],
+            [
+              462,
+              2,
+              501
+            ],
+            [
+              467,
+              2,
+              480
+            ],
+            [
+              499,
+              2,
+              480
+            ],
+            [
+              521,
+              2,
+              553
+            ],
+            [
+              525,
+              2,
+              537
+            ],
+            [
+              551,
+              2,
+              670
+            ],
+            [
+              555,
+              2,
+              567
+            ],
+            [
+              593,
+              2,
+              616
+            ],
+            [
+              614,
+              2,
+              618
+            ]
+          ],
+          "calls": [
+            [
+              134,
+              "0x452493"
+            ],
+            [
+              185,
+              "0x44dbf0"
+            ],
+            [
+              215,
+              "dword ptr [0x4660cc]"
+            ],
+            [
+              232,
+              "0x4524a1"
+            ],
+            [
+              392,
+              "dword ptr [edx + 0xc]"
+            ],
+            [
+              420,
+              "dword ptr [edx]"
+            ],
+            [
+              434,
+              "0x452493"
+            ],
+            [
+              510,
+              "dword ptr [ecx + 0xc]"
+            ],
+            [
+              530,
+              "dword ptr [edx + 8]"
+            ],
+            [
+              538,
+              "0x4524a1"
+            ],
+            [
+              560,
+              "dword ptr [ecx + 8]"
+            ],
+            [
+              568,
+              "0x4524a1"
+            ],
+            [
+              575,
+              "0x452493"
+            ],
+            [
+              609,
+              "0x44d6a0"
+            ],
+            [
+              691,
+              "0x458ea5"
+            ]
+          ]
+        },
+        "candidate": {
+          "address": "0x4026d0",
+          "size": 681,
+          "fields": {
+            "decoded_bytes": 681,
+            "normalization_complete": true,
+            "fields": [
+              {
+                "offset": 3,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4209083,
+                "candidate_symbols": [],
+                "instruction_end": null
+              },
+              {
+                "offset": 9,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215208,
+                "candidate_symbols": [
+                  "__except_list",
+                  "_th10_ltcg_probe_anchor_0019"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 17,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215208,
+                "candidate_symbols": [
+                  "__except_list",
+                  "_th10_ltcg_probe_anchor_0019"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 25,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215204,
+                "candidate_symbols": [
+                  "___security_cookie",
+                  "_th10_ltcg_probe_anchor_0018"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 132,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215136,
+                "candidate_symbols": [
+                  "??2@YAPAXI@Z",
+                  "_th10_ltcg_probe_anchor_0001"
+                ],
+                "instruction_end": 136
+              },
+              {
+                "offset": 183,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4208864,
+                "candidate_symbols": [
+                  "?Open@CWaveFile@@QAEJPBDPAUThBgmFormat@@K@Z"
+                ],
+                "instruction_end": 187
+              },
+              {
+                "offset": 210,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215220,
+                "candidate_symbols": [
+                  "__imp__CloseHandle@4",
+                  "_th10_ltcg_probe_anchor_0022"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 226,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215140,
+                "candidate_symbols": [
+                  "??3@YAXPAX@Z",
+                  "_th10_ltcg_probe_anchor_0002"
+                ],
+                "instruction_end": 230
+              },
+              {
+                "offset": 248,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215208,
+                "candidate_symbols": [
+                  "__except_list",
+                  "_th10_ltcg_probe_anchor_0019"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 260,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215184,
+                "candidate_symbols": [
+                  "@__security_check_cookie@4",
+                  "_th10_ltcg_probe_anchor_0013"
+                ],
+                "instruction_end": 264
+              },
+              {
+                "offset": 435,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215196,
+                "candidate_symbols": [
+                  "_IID_IDirectSoundNotify",
+                  "_th10_ltcg_probe_anchor_0016"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 459,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215136,
+                "candidate_symbols": [
+                  "??2@YAPAXI@Z",
+                  "_th10_ltcg_probe_anchor_0001"
+                ],
+                "instruction_end": 463
+              },
+              {
+                "offset": 575,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215140,
+                "candidate_symbols": [
+                  "??3@YAXPAX@Z",
+                  "_th10_ltcg_probe_anchor_0002"
+                ],
+                "instruction_end": 579
+              },
+              {
+                "offset": 582,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215136,
+                "candidate_symbols": [
+                  "??2@YAPAXI@Z",
+                  "_th10_ltcg_probe_anchor_0001"
+                ],
+                "instruction_end": 586
+              },
+              {
+                "offset": 616,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215132,
+                "candidate_symbols": [
+                  "??0CStreamingSound@@QAE@PAUIDirectSoundBuffer@@KPAVCWaveFile@@K@Z",
+                  "_th10_ltcg_probe_anchor_0000"
+                ],
+                "instruction_end": 620
+              }
+            ]
+          },
+          "locals": [
+            [
+              109,
+              2,
+              118
+            ],
+            [
+              116,
+              2,
+              238
+            ],
+            [
+              143,
+              2,
+              165
+            ],
+            [
+              163,
+              2,
+              169
+            ],
+            [
+              189,
+              2,
+              270
+            ],
+            [
+              193,
+              2,
+              233
+            ],
+            [
+              199,
+              2,
+              224
+            ],
+            [
+              417,
+              6,
+              233
+            ],
+            [
+              444,
+              6,
+              233
+            ],
+            [
+              470,
+              2,
+              482
+            ],
+            [
+              477,
+              5,
+              238
+            ],
+            [
+              486,
+              2,
+              517
+            ],
+            [
+              491,
+              2,
+              496
+            ],
+            [
+              515,
+              2,
+              496
+            ],
+            [
+              537,
+              2,
+              559
+            ],
+            [
+              541,
+              2,
+              553
+            ],
+            [
+              554,
+              5,
+              225
+            ],
+            [
+              561,
+              2,
+              573
+            ],
+            [
+              599,
+              2,
+              622
+            ],
+            [
+              620,
+              2,
+              624
+            ],
+            [
+              676,
+              5,
+              238
+            ]
+          ],
+          "calls": [
+            [
+              131,
+              "0x405160"
+            ],
+            [
+              182,
+              "0x4038e0"
+            ],
+            [
+              208,
+              "dword ptr [0x4051b4]"
+            ],
+            [
+              225,
+              "0x405164"
+            ],
+            [
+              259,
+              "0x405190"
+            ],
+            [
+              412,
+              "dword ptr [edx + 0xc]"
+            ],
+            [
+              440,
+              "dword ptr [edx]"
+            ],
+            [
+              458,
+              "0x405160"
+            ],
+            [
+              526,
+              "dword ptr [ecx + 0xc]"
+            ],
+            [
+              546,
+              "dword ptr [edx + 8]"
+            ],
+            [
+              566,
+              "dword ptr [ecx + 8]"
+            ],
+            [
+              574,
+              "0x405164"
+            ],
+            [
+              581,
+              "0x405160"
+            ],
+            [
+              615,
+              "0x40515c"
+            ]
+          ]
+        }
+      },
+      "caller": {
+        "symbol": "?OpenDiskBgm@SoundPlayerView@@QAEHPBD@Z",
+        "target": {
+          "address": "0x43d690",
+          "size": 241,
+          "fields": [
+            {
+              "offset": 54,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x43dab0"
+            },
+            {
+              "offset": 90,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x466120"
+            },
+            {
+              "offset": 102,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x491c70"
+            },
+            {
+              "offset": 117,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x43e3a0"
+            },
+            {
+              "offset": 127,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x466118"
+            },
+            {
+              "offset": 153,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46a67c"
+            },
+            {
+              "offset": 161,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46a680"
+            },
+            {
+              "offset": 177,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46a684"
+            },
+            {
+              "offset": 186,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46a688"
+            },
+            {
+              "offset": 220,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x44c8f0"
+            }
+          ],
+          "locals": [
+            [
+              26,
+              2,
+              18
+            ],
+            [
+              36,
+              2,
+              48
+            ],
+            [
+              51,
+              2,
+              38
+            ]
+          ],
+          "calls": [
+            [
+              53,
+              "0x43dab0"
+            ],
+            [
+              88,
+              "dword ptr [0x466120]"
+            ],
+            [
+              125,
+              "dword ptr [0x466118]"
+            ],
+            [
+              219,
+              "0x44c8f0"
+            ]
+          ]
+        },
+        "candidate": {
+          "address": "0x402520",
+          "size": 249,
+          "fields": {
+            "decoded_bytes": 249,
+            "normalization_complete": true,
+            "fields": [
+              {
+                "offset": 52,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4200960,
+                "candidate_symbols": [
+                  "?StopBgm@SoundPlayerView@@QAEXXZ"
+                ],
+                "instruction_end": 56
+              },
+              {
+                "offset": 88,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215224,
+                "candidate_symbols": [
+                  "__imp__CreateEventA@16",
+                  "_th10_ltcg_probe_anchor_0023"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 94,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215240,
+                "candidate_symbols": [
+                  "__imp__MsgWaitForMultipleObjects@20",
+                  "_th10_ltcg_probe_anchor_0027"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 115,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4203504,
+                "candidate_symbols": [
+                  "?BgmPlayerThread@SoundPlayerView@@SGKPAX@Z"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 125,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215232,
+                "candidate_symbols": [
+                  "__imp__CreateThread@24",
+                  "_th10_ltcg_probe_anchor_0025"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 151,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215192,
+                "candidate_symbols": [
+                  "_GUID_NULL",
+                  "_th10_ltcg_probe_anchor_0015"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 159,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215196,
+                "candidate_symbols": [
+                  "_IID_IDirectSoundNotify",
+                  "_th10_ltcg_probe_anchor_0016"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 175,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215200,
+                "candidate_symbols": [
+                  "___CxxFrameHandler",
+                  "_th10_ltcg_probe_anchor_0017"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 184,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215204,
+                "candidate_symbols": [
+                  "___security_cookie",
+                  "_th10_ltcg_probe_anchor_0018"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 218,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4204240,
+                "candidate_symbols": [
+                  "?CreateStreaming@CSoundManager@@QAEJPAPAVCSound@@PBDKU_GUID@@KKPAXPAUThBgmFormat@@@Z"
+                ],
+                "instruction_end": 222
+              }
+            ]
+          },
+          "locals": [
+            [
+              26,
+              2,
+              18
+            ],
+            [
+              36,
+              6,
+              239
+            ],
+            [
+              45,
+              6,
+              239
+            ]
+          ],
+          "calls": [
+            [
+              51,
+              "0x401a00"
+            ],
+            [
+              86,
+              "dword ptr [0x4051b8]"
+            ],
+            [
+              123,
+              "dword ptr [0x4051c0]"
+            ],
+            [
+              217,
+              "0x4026d0"
+            ]
+          ]
+        }
+      },
+      "open": {
+        "symbol": "?Open@CWaveFile@@QAEJPBDPAUThBgmFormat@@K@Z",
+        "target": {
+          "address": "0x44dbf0",
+          "size": 173,
+          "fields": [
+            {
+              "offset": 54,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x4660c4"
+            },
+            {
+              "offset": 133,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x4977a4"
+            },
+            {
+              "offset": 147,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x4660c8"
+            }
+          ],
+          "locals": [
+            [
+              16,
+              6,
+              169
+            ],
+            [
+              24,
+              2,
+              33
+            ],
+            [
+              67,
+              2,
+              76
+            ],
+            [
+              87,
+              2,
+              124
+            ],
+            [
+              106,
+              2,
+              163
+            ],
+            [
+              126,
+              2,
+              163
+            ]
+          ],
+          "calls": [
+            [
+              52,
+              "dword ptr [0x4660c4]"
+            ],
+            [
+              145,
+              "dword ptr [0x4660c8]"
+            ]
+          ]
+        },
+        "candidate": {
+          "address": "0x4038e0",
+          "size": 173,
+          "fields": {
+            "decoded_bytes": 173,
+            "normalization_complete": true,
+            "fields": [
+              {
+                "offset": 54,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215228,
+                "candidate_symbols": [
+                  "__imp__CreateFileA@28",
+                  "_th10_ltcg_probe_anchor_0024"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 133,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215172,
+                "candidate_symbols": [
+                  "?g_SoundBgmFileBaseOffset@@3HA",
+                  "_th10_ltcg_probe_anchor_0010"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 147,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215256,
+                "candidate_symbols": [
+                  "__imp__SetFilePointer@16",
+                  "_th10_ltcg_probe_anchor_0031"
+                ],
+                "instruction_end": null
+              }
+            ]
+          },
+          "locals": [
+            [
+              16,
+              6,
+              169
+            ],
+            [
+              24,
+              2,
+              33
+            ],
+            [
+              67,
+              2,
+              76
+            ],
+            [
+              87,
+              2,
+              124
+            ],
+            [
+              106,
+              2,
+              163
+            ],
+            [
+              126,
+              2,
+              163
+            ]
+          ],
+          "calls": [
+            [
+              52,
+              "dword ptr [0x4051bc]"
+            ],
+            [
+              145,
+              "dword ptr [0x4051d8]"
+            ]
+          ]
+        }
+      }
+    },
+    "guards": {
+      "sound-player-stop-bgm": {
+        "result": "exact",
+        "size": 176,
+        "image_sha256": "360f125b647c3ff4ba891db0193e4fd1b060879884cc6e05ed04f2c63e7cb727",
+        "linkages": [
+          {
+            "offset": "0x10",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?Stop@CSound@@QAEJXZ",
+            "linked_symbol": "?Stop@CSound@@QAEJXZ",
+            "local": false,
+            "candidate_target": "0x00403310",
+            "target": "0x0044D550",
+            "addend": 0,
+            "target_encoded_value": "0x0000FA8C"
+          },
+          {
+            "offset": "0x26",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__PostThreadMessageA@16",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0029",
+            "local": false,
+            "candidate_target": "0x004051D0",
+            "target": "0x00466210",
+            "addend": 0,
+            "target_encoded_value": "0x00466210"
+          },
+          {
+            "offset": "0x3C",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__WaitForSingleObject@8",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0034",
+            "local": false,
+            "candidate_target": "0x004051E4",
+            "target": "0x0046611C",
+            "addend": 0,
+            "target_encoded_value": "0x0046611C"
+          },
+          {
+            "offset": "0x79",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__CloseHandle@4",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0022",
+            "local": false,
+            "candidate_target": "0x004051B4",
+            "target": "0x004660CC",
+            "addend": 0,
+            "target_encoded_value": "0x004660CC"
+          }
+        ]
+      },
+      "sound-player-reopen-bgm": {
+        "result": "exact",
+        "size": 55,
+        "image_sha256": "360f125b647c3ff4ba891db0193e4fd1b060879884cc6e05ed04f2c63e7cb727",
+        "linkages": [
+          {
+            "offset": "0x14",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?GetFmtIndexByName@SoundPlayerView@@QAEHPBD@Z",
+            "linked_symbol": "?GetFmtIndexByName@SoundPlayerView@@QAEHPBD@Z",
+            "local": false,
+            "candidate_target": "0x00401AB0",
+            "target": "0x0043D2A0",
+            "addend": 0,
+            "target_encoded_value": "0xFFFFFAF8"
+          },
+          {
+            "offset": "0x2F",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?Reopen@CWaveFile@@QAEJPAUThBgmFormat@@@Z",
+            "linked_symbol": "?Reopen@CWaveFile@@QAEJPAUThBgmFormat@@@Z",
+            "local": false,
+            "candidate_target": "0x00402C50",
+            "target": "0x0044DCA0",
+            "addend": 0,
+            "target_encoded_value": "0x000104DD"
+          }
+        ]
+      },
+      "sound-bgm-player-thread": {
+        "result": "exact",
+        "size": 189,
+        "image_sha256": "360f125b647c3ff4ba891db0193e4fd1b060879884cc6e05ed04f2c63e7cb727",
+        "linkages": [
+          {
+            "offset": "0x6",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__PeekMessageA@20",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0028",
+            "local": false,
+            "candidate_target": "0x004051CC",
+            "target": "0x0046623C",
+            "addend": 0,
+            "target_encoded_value": "0x0046623C"
+          },
+          {
+            "offset": "0xD",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__MsgWaitForMultipleObjects@20",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0027",
+            "local": false,
+            "candidate_target": "0x004051C8",
+            "target": "0x0046620C",
+            "addend": 0,
+            "target_encoded_value": "0x0046620C"
+          },
+          {
+            "offset": "0x2A",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_MainSoundOwner@@3PAEA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+            "local": false,
+            "candidate_target": "0x0040A388",
+            "target": "0x00492590",
+            "addend": 21004,
+            "target_encoded_value": "0x0049779C"
+          },
+          {
+            "offset": "0x33",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_MainSoundOwner@@3PAEA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+            "local": false,
+            "candidate_target": "0x0040A384",
+            "target": "0x00492590",
+            "addend": 21000,
+            "target_encoded_value": "0x00497798"
+          },
+          {
+            "offset": "0x8F",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_MainSoundOwner@@3PAEA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+            "local": false,
+            "candidate_target": "0x0040A384",
+            "target": "0x00492590",
+            "addend": 21000,
+            "target_encoded_value": "0x00497798"
+          },
+          {
+            "offset": "0x96",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?HandleWaveStreamNotification@CStreamingSound@@QAEJH@Z",
+            "linked_symbol": "?HandleWaveStreamNotification@CStreamingSound@@QAEJH@Z",
+            "local": false,
+            "candidate_target": "0x00403550",
+            "target": "0x0044D850",
+            "addend": 0,
+            "target_encoded_value": "0x0000F416"
+          },
+          {
+            "offset": "0x9B",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_MainSoundOwner@@3PAEA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+            "local": false,
+            "candidate_target": "0x0040A384",
+            "target": "0x00492590",
+            "addend": 21000,
+            "target_encoded_value": "0x00497798"
+          }
+        ]
+      }
+    },
+    "dependency_comparisons": {
+      "open": {
+        "unit": "disk-wave-open-diagnostic",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?Open@CWaveFile@@QAEJPBDPAUThBgmFormat@@K@Z",
+        "target_address": "0x0044DBF0",
+        "size": 173,
+        "matched_bytes": 173,
+        "compared_size": 173,
+        "matched_compared_bytes": 173,
+        "image": "build/gpt-dots/disk-streaming-first/source.exe",
+        "image_sha256": "360f125b647c3ff4ba891db0193e4fd1b060879884cc6e05ed04f2c63e7cb727",
+        "pdb_guid": "778b9c1f1467a94c85f815d8cff01def",
+        "pdb_age": 1,
+        "candidate_address": "0x004038E0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2,
+        "decoded_bytes": 173,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x36",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__CreateFileA@28",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0024",
+            "local": false,
+            "candidate_target": "0x004051BC",
+            "target": "0x004660C4",
+            "addend": 0,
+            "target_encoded_value": "0x004660C4"
+          },
+          {
+            "offset": "0x85",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_SoundBgmFileBaseOffset@@3HA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0010",
+            "local": false,
+            "candidate_target": "0x00405184",
+            "target": "0x004977A4",
+            "addend": 0,
+            "target_encoded_value": "0x004977A4"
+          },
+          {
+            "offset": "0x93",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__SetFilePointer@16",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0031",
+            "local": false,
+            "candidate_target": "0x004051D8",
+            "target": "0x004660C8",
+            "addend": 0,
+            "target_encoded_value": "0x004660C8"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      }
+    }
+  },
+  "constructor": {
+    "image_sha256": "6c8787c03c73441ef116490694a6d7fbf936aa59f71b949b8fe606f95c492de1",
+    "owners": {
+      "parent": {
+        "symbol": "?CreateStreaming@CSoundManager@@QAEJPAPAVCSound@@PBDKU_GUID@@KKPAXPAUThBgmFormat@@@Z",
+        "target": {
+          "address": "0x44c8f0",
+          "size": 702,
+          "fields": [
+            {
+              "offset": 3,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46533b"
+            },
+            {
+              "offset": 25,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x473660"
+            },
+            {
+              "offset": 135,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x452493"
+            },
+            {
+              "offset": 186,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x44dbf0"
+            },
+            {
+              "offset": 217,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x4660cc"
+            },
+            {
+              "offset": 233,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x4524a1"
+            },
+            {
+              "offset": 415,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46743c"
+            },
+            {
+              "offset": 435,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x452493"
+            },
+            {
+              "offset": 539,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x4524a1"
+            },
+            {
+              "offset": 569,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x4524a1"
+            },
+            {
+              "offset": 576,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x452493"
+            },
+            {
+              "offset": 610,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x44d6a0"
+            },
+            {
+              "offset": 692,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x458ea5"
+            }
+          ],
+          "locals": [
+            [
+              109,
+              2,
+              121
+            ],
+            [
+              116,
+              5,
+              670
+            ],
+            [
+              146,
+              2,
+              168
+            ],
+            [
+              166,
+              2,
+              172
+            ],
+            [
+              192,
+              2,
+              250
+            ],
+            [
+              196,
+              6,
+              546
+            ],
+            [
+              206,
+              2,
+              231
+            ],
+            [
+              245,
+              5,
+              670
+            ],
+            [
+              397,
+              6,
+              546
+            ],
+            [
+              424,
+              2,
+              546
+            ],
+            [
+              446,
+              2,
+              458
+            ],
+            [
+              453,
+              5,
+              670
+            ],
+            [
+              462,
+              2,
+              501
+            ],
+            [
+              467,
+              2,
+              480
+            ],
+            [
+              499,
+              2,
+              480
+            ],
+            [
+              521,
+              2,
+              553
+            ],
+            [
+              525,
+              2,
+              537
+            ],
+            [
+              551,
+              2,
+              670
+            ],
+            [
+              555,
+              2,
+              567
+            ],
+            [
+              593,
+              2,
+              616
+            ],
+            [
+              614,
+              2,
+              618
+            ]
+          ],
+          "calls": [
+            [
+              134,
+              "0x452493"
+            ],
+            [
+              185,
+              "0x44dbf0"
+            ],
+            [
+              215,
+              "dword ptr [0x4660cc]"
+            ],
+            [
+              232,
+              "0x4524a1"
+            ],
+            [
+              392,
+              "dword ptr [edx + 0xc]"
+            ],
+            [
+              420,
+              "dword ptr [edx]"
+            ],
+            [
+              434,
+              "0x452493"
+            ],
+            [
+              510,
+              "dword ptr [ecx + 0xc]"
+            ],
+            [
+              530,
+              "dword ptr [edx + 8]"
+            ],
+            [
+              538,
+              "0x4524a1"
+            ],
+            [
+              560,
+              "dword ptr [ecx + 8]"
+            ],
+            [
+              568,
+              "0x4524a1"
+            ],
+            [
+              575,
+              "0x452493"
+            ],
+            [
+              609,
+              "0x44d6a0"
+            ],
+            [
+              691,
+              "0x458ea5"
+            ]
+          ]
+        },
+        "candidate": {
+          "address": "0x4026d0",
+          "size": 681,
+          "fields": {
+            "decoded_bytes": 681,
+            "normalization_complete": true,
+            "fields": [
+              {
+                "offset": 3,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4209323,
+                "candidate_symbols": [],
+                "instruction_end": null
+              },
+              {
+                "offset": 9,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215204,
+                "candidate_symbols": [
+                  "__except_list",
+                  "_th10_ltcg_probe_anchor_0018"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 17,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215204,
+                "candidate_symbols": [
+                  "__except_list",
+                  "_th10_ltcg_probe_anchor_0018"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 25,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215200,
+                "candidate_symbols": [
+                  "___security_cookie",
+                  "_th10_ltcg_probe_anchor_0017"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 132,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215132,
+                "candidate_symbols": [
+                  "??2@YAPAXI@Z",
+                  "_th10_ltcg_probe_anchor_0000"
+                ],
+                "instruction_end": 136
+              },
+              {
+                "offset": 183,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4208864,
+                "candidate_symbols": [
+                  "?Open@CWaveFile@@QAEJPBDPAUThBgmFormat@@K@Z"
+                ],
+                "instruction_end": 187
+              },
+              {
+                "offset": 210,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215216,
+                "candidate_symbols": [
+                  "__imp__CloseHandle@4",
+                  "_th10_ltcg_probe_anchor_0021"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 226,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215136,
+                "candidate_symbols": [
+                  "??3@YAXPAX@Z",
+                  "_th10_ltcg_probe_anchor_0001"
+                ],
+                "instruction_end": 230
+              },
+              {
+                "offset": 248,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215204,
+                "candidate_symbols": [
+                  "__except_list",
+                  "_th10_ltcg_probe_anchor_0018"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 260,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215180,
+                "candidate_symbols": [
+                  "@__security_check_cookie@4",
+                  "_th10_ltcg_probe_anchor_0012"
+                ],
+                "instruction_end": 264
+              },
+              {
+                "offset": 435,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215192,
+                "candidate_symbols": [
+                  "_IID_IDirectSoundNotify",
+                  "_th10_ltcg_probe_anchor_0015"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 459,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215132,
+                "candidate_symbols": [
+                  "??2@YAPAXI@Z",
+                  "_th10_ltcg_probe_anchor_0000"
+                ],
+                "instruction_end": 463
+              },
+              {
+                "offset": 575,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215136,
+                "candidate_symbols": [
+                  "??3@YAXPAX@Z",
+                  "_th10_ltcg_probe_anchor_0001"
+                ],
+                "instruction_end": 579
+              },
+              {
+                "offset": 582,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215132,
+                "candidate_symbols": [
+                  "??2@YAPAXI@Z",
+                  "_th10_ltcg_probe_anchor_0000"
+                ],
+                "instruction_end": 586
+              },
+              {
+                "offset": 616,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4209168,
+                "candidate_symbols": [
+                  "??0CStreamingSound@@QAE@PAUIDirectSoundBuffer@@KPAVCWaveFile@@K@Z"
+                ],
+                "instruction_end": 620
+              }
+            ]
+          },
+          "locals": [
+            [
+              109,
+              2,
+              118
+            ],
+            [
+              116,
+              2,
+              238
+            ],
+            [
+              143,
+              2,
+              165
+            ],
+            [
+              163,
+              2,
+              169
+            ],
+            [
+              189,
+              2,
+              270
+            ],
+            [
+              193,
+              2,
+              233
+            ],
+            [
+              199,
+              2,
+              224
+            ],
+            [
+              417,
+              6,
+              233
+            ],
+            [
+              444,
+              6,
+              233
+            ],
+            [
+              470,
+              2,
+              482
+            ],
+            [
+              477,
+              5,
+              238
+            ],
+            [
+              486,
+              2,
+              517
+            ],
+            [
+              491,
+              2,
+              496
+            ],
+            [
+              515,
+              2,
+              496
+            ],
+            [
+              537,
+              2,
+              559
+            ],
+            [
+              541,
+              2,
+              553
+            ],
+            [
+              554,
+              5,
+              225
+            ],
+            [
+              561,
+              2,
+              573
+            ],
+            [
+              599,
+              2,
+              622
+            ],
+            [
+              620,
+              2,
+              624
+            ],
+            [
+              676,
+              5,
+              238
+            ]
+          ],
+          "calls": [
+            [
+              131,
+              "0x40515c"
+            ],
+            [
+              182,
+              "0x4038e0"
+            ],
+            [
+              208,
+              "dword ptr [0x4051b0]"
+            ],
+            [
+              225,
+              "0x405160"
+            ],
+            [
+              259,
+              "0x40518c"
+            ],
+            [
+              412,
+              "dword ptr [edx + 0xc]"
+            ],
+            [
+              440,
+              "dword ptr [edx]"
+            ],
+            [
+              458,
+              "0x40515c"
+            ],
+            [
+              526,
+              "dword ptr [ecx + 0xc]"
+            ],
+            [
+              546,
+              "dword ptr [edx + 8]"
+            ],
+            [
+              566,
+              "dword ptr [ecx + 8]"
+            ],
+            [
+              574,
+              "0x405160"
+            ],
+            [
+              581,
+              "0x40515c"
+            ],
+            [
+              615,
+              "0x403a10"
+            ]
+          ]
+        }
+      },
+      "caller": {
+        "symbol": "?OpenDiskBgm@SoundPlayerView@@QAEHPBD@Z",
+        "target": {
+          "address": "0x43d690",
+          "size": 241,
+          "fields": [
+            {
+              "offset": 54,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x43dab0"
+            },
+            {
+              "offset": 90,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x466120"
+            },
+            {
+              "offset": 102,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x491c70"
+            },
+            {
+              "offset": 117,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x43e3a0"
+            },
+            {
+              "offset": 127,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x466118"
+            },
+            {
+              "offset": 153,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46a67c"
+            },
+            {
+              "offset": 161,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46a680"
+            },
+            {
+              "offset": 177,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46a684"
+            },
+            {
+              "offset": 186,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x46a688"
+            },
+            {
+              "offset": 220,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x44c8f0"
+            }
+          ],
+          "locals": [
+            [
+              26,
+              2,
+              18
+            ],
+            [
+              36,
+              2,
+              48
+            ],
+            [
+              51,
+              2,
+              38
+            ]
+          ],
+          "calls": [
+            [
+              53,
+              "0x43dab0"
+            ],
+            [
+              88,
+              "dword ptr [0x466120]"
+            ],
+            [
+              125,
+              "dword ptr [0x466118]"
+            ],
+            [
+              219,
+              "0x44c8f0"
+            ]
+          ]
+        },
+        "candidate": {
+          "address": "0x402520",
+          "size": 249,
+          "fields": {
+            "decoded_bytes": 249,
+            "normalization_complete": true,
+            "fields": [
+              {
+                "offset": 52,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4200960,
+                "candidate_symbols": [
+                  "?StopBgm@SoundPlayerView@@QAEXXZ"
+                ],
+                "instruction_end": 56
+              },
+              {
+                "offset": 88,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215220,
+                "candidate_symbols": [
+                  "__imp__CreateEventA@16",
+                  "_th10_ltcg_probe_anchor_0022"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 94,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215236,
+                "candidate_symbols": [
+                  "__imp__MsgWaitForMultipleObjects@20",
+                  "_th10_ltcg_probe_anchor_0026"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 115,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4203504,
+                "candidate_symbols": [
+                  "?BgmPlayerThread@SoundPlayerView@@SGKPAX@Z"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 125,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215228,
+                "candidate_symbols": [
+                  "__imp__CreateThread@24",
+                  "_th10_ltcg_probe_anchor_0024"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 151,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215188,
+                "candidate_symbols": [
+                  "_GUID_NULL",
+                  "_th10_ltcg_probe_anchor_0014"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 159,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215192,
+                "candidate_symbols": [
+                  "_IID_IDirectSoundNotify",
+                  "_th10_ltcg_probe_anchor_0015"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 175,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215196,
+                "candidate_symbols": [
+                  "___CxxFrameHandler",
+                  "_th10_ltcg_probe_anchor_0016"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 184,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215200,
+                "candidate_symbols": [
+                  "___security_cookie",
+                  "_th10_ltcg_probe_anchor_0017"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 218,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4204240,
+                "candidate_symbols": [
+                  "?CreateStreaming@CSoundManager@@QAEJPAPAVCSound@@PBDKU_GUID@@KKPAXPAUThBgmFormat@@@Z"
+                ],
+                "instruction_end": 222
+              }
+            ]
+          },
+          "locals": [
+            [
+              26,
+              2,
+              18
+            ],
+            [
+              36,
+              6,
+              239
+            ],
+            [
+              45,
+              6,
+              239
+            ]
+          ],
+          "calls": [
+            [
+              51,
+              "0x401a00"
+            ],
+            [
+              86,
+              "dword ptr [0x4051b4]"
+            ],
+            [
+              123,
+              "dword ptr [0x4051bc]"
+            ],
+            [
+              217,
+              "0x4026d0"
+            ]
+          ]
+        }
+      },
+      "open": {
+        "symbol": "?Open@CWaveFile@@QAEJPBDPAUThBgmFormat@@K@Z",
+        "target": {
+          "address": "0x44dbf0",
+          "size": 173,
+          "fields": [
+            {
+              "offset": 54,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x4660c4"
+            },
+            {
+              "offset": 133,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x4977a4"
+            },
+            {
+              "offset": 147,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x4660c8"
+            }
+          ],
+          "locals": [
+            [
+              16,
+              6,
+              169
+            ],
+            [
+              24,
+              2,
+              33
+            ],
+            [
+              67,
+              2,
+              76
+            ],
+            [
+              87,
+              2,
+              124
+            ],
+            [
+              106,
+              2,
+              163
+            ],
+            [
+              126,
+              2,
+              163
+            ]
+          ],
+          "calls": [
+            [
+              52,
+              "dword ptr [0x4660c4]"
+            ],
+            [
+              145,
+              "dword ptr [0x4660c8]"
+            ]
+          ]
+        },
+        "candidate": {
+          "address": "0x4038e0",
+          "size": 173,
+          "fields": {
+            "decoded_bytes": 173,
+            "normalization_complete": true,
+            "fields": [
+              {
+                "offset": 54,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215224,
+                "candidate_symbols": [
+                  "__imp__CreateFileA@28",
+                  "_th10_ltcg_probe_anchor_0023"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 133,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215168,
+                "candidate_symbols": [
+                  "?g_SoundBgmFileBaseOffset@@3HA",
+                  "_th10_ltcg_probe_anchor_0009"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 147,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4215252,
+                "candidate_symbols": [
+                  "__imp__SetFilePointer@16",
+                  "_th10_ltcg_probe_anchor_0030"
+                ],
+                "instruction_end": null
+              }
+            ]
+          },
+          "locals": [
+            [
+              16,
+              6,
+              169
+            ],
+            [
+              24,
+              2,
+              33
+            ],
+            [
+              67,
+              2,
+              76
+            ],
+            [
+              87,
+              2,
+              124
+            ],
+            [
+              106,
+              2,
+              163
+            ],
+            [
+              126,
+              2,
+              163
+            ]
+          ],
+          "calls": [
+            [
+              52,
+              "dword ptr [0x4051b8]"
+            ],
+            [
+              145,
+              "dword ptr [0x4051d4]"
+            ]
+          ]
+        }
+      },
+      "base": {
+        "symbol": "??0CSound@@QAE@PAPAUIDirectSoundBuffer@@KKPAVCWaveFile@@@Z",
+        "target": {
+          "address": "0x44ce80",
+          "size": 118,
+          "fields": [
+            {
+              "offset": 13,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x004705D8"
+            },
+            {
+              "offset": 18,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x00452493"
+            },
+            {
+              "offset": 76,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x0044D110"
+            }
+          ],
+          "locals": [
+            [
+              32,
+              2,
+              48
+            ],
+            [
+              46,
+              2,
+              34
+            ],
+            [
+              84,
+              2,
+              105
+            ],
+            [
+              103,
+              2,
+              86
+            ]
+          ],
+          "calls": [
+            [
+              17,
+              "0x452493"
+            ],
+            [
+              75,
+              "0x44d110"
+            ],
+            [
+              97,
+              "dword ptr [edx + 0x34]"
+            ]
+          ]
+        },
+        "candidate": {
+          "address": "0x403990",
+          "size": 118,
+          "fields": {
+            "decoded_bytes": 118,
+            "normalization_complete": true,
+            "fields": [
+              {
+                "offset": 13,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4211332,
+                "candidate_symbols": [
+                  "??_7CSound@@6B@"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 18,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215132,
+                "candidate_symbols": [
+                  "??2@YAPAXI@Z",
+                  "_th10_ltcg_probe_anchor_0000"
+                ],
+                "instruction_end": 22
+              },
+              {
+                "offset": 76,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4206320,
+                "candidate_symbols": [
+                  "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z"
+                ],
+                "instruction_end": 80
+              }
+            ]
+          },
+          "locals": [
+            [
+              32,
+              2,
+              48
+            ],
+            [
+              46,
+              2,
+              34
+            ],
+            [
+              84,
+              2,
+              105
+            ],
+            [
+              103,
+              2,
+              86
+            ]
+          ],
+          "calls": [
+            [
+              17,
+              "0x40515c"
+            ],
+            [
+              75,
+              "0x402ef0"
+            ],
+            [
+              97,
+              "dword ptr [edx + 0x34]"
+            ]
+          ]
+        }
+      },
+      "derived": {
+        "symbol": "??0CStreamingSound@@QAE@PAUIDirectSoundBuffer@@KPAVCWaveFile@@K@Z",
+        "target": {
+          "address": "0x44d6a0",
+          "size": 109,
+          "fields": [
+            {
+              "offset": 5,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x004705D8"
+            },
+            {
+              "offset": 10,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x00452493"
+            },
+            {
+              "offset": 59,
+              "width": 4,
+              "type": "REL32",
+              "target": "0x0044D110"
+            },
+            {
+              "offset": 96,
+              "width": 4,
+              "type": "DIR32",
+              "target": "0x004705D4"
+            }
+          ],
+          "locals": [],
+          "calls": [
+            [
+              9,
+              "0x452493"
+            ],
+            [
+              58,
+              "0x44d110"
+            ],
+            [
+              72,
+              "dword ptr [ecx + 0x34]"
+            ]
+          ]
+        },
+        "candidate": {
+          "address": "0x403a10",
+          "size": 109,
+          "fields": {
+            "decoded_bytes": 109,
+            "normalization_complete": true,
+            "fields": [
+              {
+                "offset": 5,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4211332,
+                "candidate_symbols": [
+                  "??_7CSound@@6B@"
+                ],
+                "instruction_end": null
+              },
+              {
+                "offset": 10,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4215132,
+                "candidate_symbols": [
+                  "??2@YAPAXI@Z",
+                  "_th10_ltcg_probe_anchor_0000"
+                ],
+                "instruction_end": 14
+              },
+              {
+                "offset": 59,
+                "width": 4,
+                "type": "REL32",
+                "instruction": "call",
+                "candidate_target": 4206320,
+                "candidate_symbols": [
+                  "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z"
+                ],
+                "instruction_end": 63
+              },
+              {
+                "offset": 96,
+                "width": 4,
+                "type": "DIR32",
+                "candidate_target": 4211328,
+                "candidate_symbols": [
+                  "??_7CStreamingSound@@6B@"
+                ],
+                "instruction_end": null
+              }
+            ]
+          },
+          "locals": [],
+          "calls": [
+            [
+              9,
+              "0x40515c"
+            ],
+            [
+              58,
+              "0x402ef0"
+            ],
+            [
+              72,
+              "dword ptr [ecx + 0x34]"
+            ]
+          ]
+        }
+      }
+    },
+    "guards": {
+      "sound-player-stop-bgm": {
+        "result": "exact",
+        "size": 176,
+        "image_sha256": "6c8787c03c73441ef116490694a6d7fbf936aa59f71b949b8fe606f95c492de1",
+        "linkages": [
+          {
+            "offset": "0x10",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?Stop@CSound@@QAEJXZ",
+            "linked_symbol": "?Stop@CSound@@QAEJXZ",
+            "local": false,
+            "candidate_target": "0x00403310",
+            "target": "0x0044D550",
+            "addend": 0,
+            "target_encoded_value": "0x0000FA8C"
+          },
+          {
+            "offset": "0x26",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__PostThreadMessageA@16",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0028",
+            "local": false,
+            "candidate_target": "0x004051CC",
+            "target": "0x00466210",
+            "addend": 0,
+            "target_encoded_value": "0x00466210"
+          },
+          {
+            "offset": "0x3C",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__WaitForSingleObject@8",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0033",
+            "local": false,
+            "candidate_target": "0x004051E0",
+            "target": "0x0046611C",
+            "addend": 0,
+            "target_encoded_value": "0x0046611C"
+          },
+          {
+            "offset": "0x79",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__CloseHandle@4",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0021",
+            "local": false,
+            "candidate_target": "0x004051B0",
+            "target": "0x004660CC",
+            "addend": 0,
+            "target_encoded_value": "0x004660CC"
+          }
+        ]
+      },
+      "sound-player-reopen-bgm": {
+        "result": "exact",
+        "size": 55,
+        "image_sha256": "6c8787c03c73441ef116490694a6d7fbf936aa59f71b949b8fe606f95c492de1",
+        "linkages": [
+          {
+            "offset": "0x14",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?GetFmtIndexByName@SoundPlayerView@@QAEHPBD@Z",
+            "linked_symbol": "?GetFmtIndexByName@SoundPlayerView@@QAEHPBD@Z",
+            "local": false,
+            "candidate_target": "0x00401AB0",
+            "target": "0x0043D2A0",
+            "addend": 0,
+            "target_encoded_value": "0xFFFFFAF8"
+          },
+          {
+            "offset": "0x2F",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?Reopen@CWaveFile@@QAEJPAUThBgmFormat@@@Z",
+            "linked_symbol": "?Reopen@CWaveFile@@QAEJPAUThBgmFormat@@@Z",
+            "local": false,
+            "candidate_target": "0x00402C50",
+            "target": "0x0044DCA0",
+            "addend": 0,
+            "target_encoded_value": "0x000104DD"
+          }
+        ]
+      },
+      "sound-bgm-player-thread": {
+        "result": "exact",
+        "size": 189,
+        "image_sha256": "6c8787c03c73441ef116490694a6d7fbf936aa59f71b949b8fe606f95c492de1",
+        "linkages": [
+          {
+            "offset": "0x6",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__PeekMessageA@20",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0027",
+            "local": false,
+            "candidate_target": "0x004051C8",
+            "target": "0x0046623C",
+            "addend": 0,
+            "target_encoded_value": "0x0046623C"
+          },
+          {
+            "offset": "0xD",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__MsgWaitForMultipleObjects@20",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0026",
+            "local": false,
+            "candidate_target": "0x004051C4",
+            "target": "0x0046620C",
+            "addend": 0,
+            "target_encoded_value": "0x0046620C"
+          },
+          {
+            "offset": "0x2A",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_MainSoundOwner@@3PAEA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0007",
+            "local": false,
+            "candidate_target": "0x0040A384",
+            "target": "0x00492590",
+            "addend": 21004,
+            "target_encoded_value": "0x0049779C"
+          },
+          {
+            "offset": "0x33",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_MainSoundOwner@@3PAEA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0007",
+            "local": false,
+            "candidate_target": "0x0040A380",
+            "target": "0x00492590",
+            "addend": 21000,
+            "target_encoded_value": "0x00497798"
+          },
+          {
+            "offset": "0x8F",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_MainSoundOwner@@3PAEA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0007",
+            "local": false,
+            "candidate_target": "0x0040A380",
+            "target": "0x00492590",
+            "addend": 21000,
+            "target_encoded_value": "0x00497798"
+          },
+          {
+            "offset": "0x96",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?HandleWaveStreamNotification@CStreamingSound@@QAEJH@Z",
+            "linked_symbol": "?HandleWaveStreamNotification@CStreamingSound@@QAEJH@Z",
+            "local": false,
+            "candidate_target": "0x00403550",
+            "target": "0x0044D850",
+            "addend": 0,
+            "target_encoded_value": "0x0000F416"
+          },
+          {
+            "offset": "0x9B",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_MainSoundOwner@@3PAEA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0007",
+            "local": false,
+            "candidate_target": "0x0040A380",
+            "target": "0x00492590",
+            "addend": 21000,
+            "target_encoded_value": "0x00497798"
+          }
+        ]
+      }
+    },
+    "dependency_comparisons": {
+      "open": {
+        "unit": "open",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?Open@CWaveFile@@QAEJPBDPAUThBgmFormat@@K@Z",
+        "target_address": "0x0044DBF0",
+        "size": 173,
+        "matched_bytes": 173,
+        "compared_size": 173,
+        "matched_compared_bytes": 173,
+        "image": "build/gpt-dots/disk-streaming-constructor/source.exe",
+        "image_sha256": "6c8787c03c73441ef116490694a6d7fbf936aa59f71b949b8fe606f95c492de1",
+        "pdb_guid": "0fb225708ab12644b518bacdd09ea468",
+        "pdb_age": 1,
+        "candidate_address": "0x004038E0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2,
+        "decoded_bytes": 173,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x36",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__CreateFileA@28",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0023",
+            "local": false,
+            "candidate_target": "0x004051B8",
+            "target": "0x004660C4",
+            "addend": 0,
+            "target_encoded_value": "0x004660C4"
+          },
+          {
+            "offset": "0x85",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_SoundBgmFileBaseOffset@@3HA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0009",
+            "local": false,
+            "candidate_target": "0x00405180",
+            "target": "0x004977A4",
+            "addend": 0,
+            "target_encoded_value": "0x004977A4"
+          },
+          {
+            "offset": "0x93",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__imp__SetFilePointer@16",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0030",
+            "local": false,
+            "candidate_target": "0x004051D4",
+            "target": "0x004660C8",
+            "addend": 0,
+            "target_encoded_value": "0x004660C8"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "base": {
+        "unit": "base",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "??0CSound@@QAE@PAPAUIDirectSoundBuffer@@KKPAVCWaveFile@@@Z",
+        "target_address": "0x0044CE80",
+        "size": 118,
+        "matched_bytes": 118,
+        "compared_size": 118,
+        "matched_compared_bytes": 118,
+        "image": "build/gpt-dots/disk-streaming-constructor/source.exe",
+        "image_sha256": "6c8787c03c73441ef116490694a6d7fbf936aa59f71b949b8fe606f95c492de1",
+        "pdb_guid": "0fb225708ab12644b518bacdd09ea468",
+        "pdb_age": 1,
+        "candidate_address": "0x00403990",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2,
+        "decoded_bytes": 118,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0xD",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "??_7CSound@@6B@",
+            "linked_symbol": "??_7CSound@@6B@",
+            "local": false,
+            "candidate_target": "0x00404284",
+            "target": "0x004705D8",
+            "addend": 0,
+            "target_encoded_value": "0x004705D8"
+          },
+          {
+            "offset": "0x12",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "??2@YAPAXI@Z",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0000",
+            "local": false,
+            "candidate_target": "0x0040515C",
+            "target": "0x00452493",
+            "addend": 0,
+            "target_encoded_value": "0x000055FD"
+          },
+          {
+            "offset": "0x4C",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z",
+            "linked_symbol": "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z",
+            "local": false,
+            "candidate_target": "0x00402EF0",
+            "target": "0x0044D110",
+            "addend": 0,
+            "target_encoded_value": "0x00000240"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      "derived": {
+        "unit": "derived",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "??0CStreamingSound@@QAE@PAUIDirectSoundBuffer@@KPAVCWaveFile@@K@Z",
+        "target_address": "0x0044D6A0",
+        "size": 109,
+        "matched_bytes": 109,
+        "compared_size": 109,
+        "matched_compared_bytes": 109,
+        "image": "build/gpt-dots/disk-streaming-constructor/source.exe",
+        "image_sha256": "6c8787c03c73441ef116490694a6d7fbf936aa59f71b949b8fe606f95c492de1",
+        "pdb_guid": "0fb225708ab12644b518bacdd09ea468",
+        "pdb_age": 1,
+        "candidate_address": "0x00403A10",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 2,
+        "decoded_bytes": 109,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x5",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "??_7CSound@@6B@",
+            "linked_symbol": "??_7CSound@@6B@",
+            "local": false,
+            "candidate_target": "0x00404284",
+            "target": "0x004705D8",
+            "addend": 0,
+            "target_encoded_value": "0x004705D8"
+          },
+          {
+            "offset": "0xA",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "??2@YAPAXI@Z",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0000",
+            "local": false,
+            "candidate_target": "0x0040515C",
+            "target": "0x00452493",
+            "addend": 0,
+            "target_encoded_value": "0x00004DE5"
+          },
+          {
+            "offset": "0x3B",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z",
+            "linked_symbol": "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z",
+            "local": false,
+            "candidate_target": "0x00402EF0",
+            "target": "0x0044D110",
+            "addend": 0,
+            "target_encoded_value": "0xFFFFFA31"
+          },
+          {
+            "offset": "0x60",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "??_7CStreamingSound@@6B@",
+            "linked_symbol": "??_7CStreamingSound@@6B@",
+            "local": false,
+            "candidate_target": "0x00404280",
+            "target": "0x004705D4",
+            "addend": 0,
+            "target_encoded_value": "0x004705D4"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      }
+    }
+  },
+  "canonical_guards": {
+    "canonical-sound-bgm-player-thread": {
+      "artifact_kind": "linked-pe",
+      "candidate_address": "0x004023F0",
+      "capstone_version": "5.0.6",
+      "compared_size": 189,
+      "data_spans": [],
+      "decoded_bytes": 189,
+      "extent_source": "pdb-section-contribution",
+      "first_differences": [],
+      "image": "build/match-linked/SoundInitBuffers/source.exe",
+      "image_sha256": "c07ae42ffe1910950697c71e2c1284f9b1c0f1c749c599920cb6aee5c716c71b",
+      "linkages": [
+        {
+          "addend": 0,
+          "candidate_target": "0x004051CC",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0028",
+          "local": false,
+          "offset": "0x6",
+          "symbol": "__imp__PeekMessageA@20",
+          "target": "0x0046623C",
+          "target_encoded_value": "0x0046623C",
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "addend": 0,
+          "candidate_target": "0x004051C8",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0027",
+          "local": false,
+          "offset": "0xD",
+          "symbol": "__imp__MsgWaitForMultipleObjects@20",
+          "target": "0x0046620C",
+          "target_encoded_value": "0x0046620C",
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "addend": 21004,
+          "candidate_target": "0x0040A388",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+          "local": false,
+          "offset": "0x2A",
+          "symbol": "?g_MainSoundOwner@@3PAEA",
+          "target": "0x00492590",
+          "target_encoded_value": "0x0049779C",
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "addend": 21000,
+          "candidate_target": "0x0040A384",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+          "local": false,
+          "offset": "0x33",
+          "symbol": "?g_MainSoundOwner@@3PAEA",
+          "target": "0x00492590",
+          "target_encoded_value": "0x00497798",
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "addend": 21000,
+          "candidate_target": "0x0040A384",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+          "local": false,
+          "offset": "0x8F",
+          "symbol": "?g_MainSoundOwner@@3PAEA",
+          "target": "0x00492590",
+          "target_encoded_value": "0x00497798",
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "addend": 0,
+          "candidate_target": "0x004031A0",
+          "linked_symbol": "?HandleWaveStreamNotification@CStreamingSound@@QAEJH@Z",
+          "local": false,
+          "offset": "0x96",
+          "symbol": "?HandleWaveStreamNotification@CStreamingSound@@QAEJH@Z",
+          "target": "0x0044D850",
+          "target_encoded_value": "0x0000F416",
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "addend": 21000,
+          "candidate_target": "0x0040A384",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+          "local": false,
+          "offset": "0x9B",
+          "symbol": "?g_MainSoundOwner@@3PAEA",
+          "target": "0x00492590",
+          "target_encoded_value": "0x00497798",
+          "type": "DIR32",
+          "width": 4
+        }
+      ],
+      "matched_bytes": 189,
+      "matched_compared_bytes": 189,
+      "normalization_complete": true,
+      "pdb_age": 1,
+      "pdb_guid": "96098b70f6c03a429cc1e0ae75234ed6",
+      "pdb_module_index": 1,
+      "raw_equal": false,
+      "result": "exact",
+      "size": 189,
+      "symbol": "?BgmPlayerThread@SoundPlayerView@@SGKPAX@Z",
+      "target_address": "0x0043E3A0",
+      "unit": "sound-bgm-player-thread"
+    },
+    "canonical-sound-player-stop-bgm": {
+      "artifact_kind": "linked-pe",
+      "candidate_address": "0x004019B0",
+      "capstone_version": "5.0.6",
+      "compared_size": 176,
+      "data_spans": [],
+      "decoded_bytes": 176,
+      "extent_source": "pdb-section-contribution",
+      "first_differences": [],
+      "image": "build/match-linked/SoundStopBgm/source.exe",
+      "image_sha256": "8ce620eeacd09c6ee406ed96336052b1753e51049dfa56f17559273b2ae3d99a",
+      "linkages": [
+        {
+          "addend": 0,
+          "candidate_target": "0x00402E90",
+          "linked_symbol": "?Stop@CSound@@QAEJXZ",
+          "local": false,
+          "offset": "0x10",
+          "symbol": "?Stop@CSound@@QAEJXZ",
+          "target": "0x0044D550",
+          "target_encoded_value": "0x0000FA8C",
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "addend": 0,
+          "candidate_target": "0x004051C0",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0025",
+          "local": false,
+          "offset": "0x26",
+          "symbol": "__imp__PostThreadMessageA@16",
+          "target": "0x00466210",
+          "target_encoded_value": "0x00466210",
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "addend": 0,
+          "candidate_target": "0x004051D4",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0030",
+          "local": false,
+          "offset": "0x3C",
+          "symbol": "__imp__WaitForSingleObject@8",
+          "target": "0x0046611C",
+          "target_encoded_value": "0x0046611C",
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "addend": 0,
+          "candidate_target": "0x004051A4",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0018",
+          "local": false,
+          "offset": "0x79",
+          "symbol": "__imp__CloseHandle@4",
+          "target": "0x004660CC",
+          "target_encoded_value": "0x004660CC",
+          "type": "DIR32",
+          "width": 4
+        }
+      ],
+      "matched_bytes": 176,
+      "matched_compared_bytes": 176,
+      "normalization_complete": true,
+      "pdb_age": 1,
+      "pdb_guid": "7ea6c331ee76464d8d9488f5ca781272",
+      "pdb_module_index": 1,
+      "raw_equal": false,
+      "result": "exact",
+      "size": 176,
+      "symbol": "?StopBgm@SoundPlayerView@@QAEXXZ",
+      "target_address": "0x0043DAB0",
+      "unit": "sound-player-stop-bgm"
+    },
+    "canonical-sound-player-reopen-bgm": {
+      "artifact_kind": "linked-pe",
+      "candidate_address": "0x00401BA0",
+      "capstone_version": "5.0.6",
+      "compared_size": 55,
+      "data_spans": [],
+      "decoded_bytes": 55,
+      "extent_source": "pdb-section-contribution",
+      "first_differences": [],
+      "image": "build/match-linked/SoundReopenBgm/source.exe",
+      "image_sha256": "27247fc8d04e2d3829a38d4a3eb125e4c8cdcc575674cacffd06fd5983f3bcb0",
+      "linkages": [
+        {
+          "addend": 0,
+          "candidate_target": "0x00401AB0",
+          "linked_symbol": "?GetFmtIndexByName@SoundPlayerView@@QAEHPBD@Z",
+          "local": false,
+          "offset": "0x14",
+          "symbol": "?GetFmtIndexByName@SoundPlayerView@@QAEHPBD@Z",
+          "target": "0x0043D2A0",
+          "target_encoded_value": "0xFFFFFAF8",
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "addend": 0,
+          "candidate_target": "0x00402880",
+          "linked_symbol": "?Reopen@CWaveFile@@QAEJPAUThBgmFormat@@@Z",
+          "local": false,
+          "offset": "0x2F",
+          "symbol": "?Reopen@CWaveFile@@QAEJPAUThBgmFormat@@@Z",
+          "target": "0x0044DCA0",
+          "target_encoded_value": "0x000104DD",
+          "type": "REL32",
+          "width": 4
+        }
+      ],
+      "matched_bytes": 55,
+      "matched_compared_bytes": 55,
+      "normalization_complete": true,
+      "pdb_age": 1,
+      "pdb_guid": "74e89e5a31099c4e8453897f94a5a946",
+      "pdb_module_index": 1,
+      "raw_equal": false,
+      "result": "exact",
+      "size": 55,
+      "symbol": "?ReopenBgm@SoundPlayerView@@QAEHPBD@Z",
+      "target_address": "0x0043D790",
+      "unit": "sound-player-reopen-bgm"
+    }
+  }
+}
