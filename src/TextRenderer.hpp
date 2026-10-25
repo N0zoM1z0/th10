@@ -19,6 +19,7 @@ struct TextRenderBufferView
     HBITMAP bitmap;
     void *pixels;
 
+    void FillColor(unsigned int color);
     bool InvertAlpha(int processedRows);
     bool ReleaseBuffer();
     bool TryAllocateBuffer(int width, int height, int format);

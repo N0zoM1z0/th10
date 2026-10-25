@@ -24161,3 +24161,18 @@ offset = 4
 type = "REL32"
 symbol = "?Draw@SptTestView@@QAEHXZ"
 target = 4375392
+
+[units.text-fill-color]
+artifact_kind = "linked-pe"
+source = "src/TextRenderer.cpp"
+support_sources = ["src/RandomMath.cpp"]
+output_dir = "build/match-linked/TextBufferLifecycle"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CreateTextBuffer@TextHelperView@@YAXXZ"
+functions = ["TextRenderBufferView::FillColor"]
+symbol = "?FillColor@TextRenderBufferView@@QAEXI@Z"
+target_address = 0x00436CA0
+size = 72
+linkages = []

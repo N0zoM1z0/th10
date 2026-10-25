@@ -409,3 +409,14 @@ void TextHelperView::CreateTextBuffer()
 }
 
 #undef TEXT_FONT_FACE_CP932
+
+// Natural member; target's ESI owner/ECX color is private LTCG lowering.
+void TextRenderBufferView::FillColor(unsigned int color)
+{
+    unsigned short value = static_cast<unsigned short>(
+        (((color >> 20 & 15) << 4 | (color >> 12 & 15)) << 4) |
+        (color >> 4 & 15));
+    unsigned short *pixel = static_cast<unsigned short *>(pixels);
+    for (int i = 0; i < static_cast<int>(imageSize); i += 2, ++pixel)
+        *pixel = value;
+}

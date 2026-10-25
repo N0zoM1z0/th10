@@ -1,0 +1,120 @@
+--- a/src/TextRenderer.cpp
++++ b/src/TextRenderer.cpp
+@@ -238,0 +239,70 @@
++void __stdcall TextHelperView::RenderTextToTextureAlternate(
++    const D3d9RectView *rectangle, int x, int glyphWidth,
++    unsigned int color, const char *text, D3d9TextureView *texture)
++{
++    HFONT font;
++    if (glyphWidth <= 17)
++        font = g_TextFont17;
++    else if (glyphWidth <= 18)
++        font = g_TextFont18;
++    else if (glyphWidth <= 19)
++        font = g_TextFont19;
++    else if (glyphWidth <= 20)
++        font = g_TextFont20;
++    else if (glyphWidth <= 21)
++        font = g_TextFont21;
++    else if (glyphWidth <= 22)
++        font = g_TextFont22;
++    else if (glyphWidth <= 23)
++        font = g_TextFont23;
++    else if (glyphWidth <= 24)
++        font = g_TextFont24;
++    else if (glyphWidth <= 25)
++        font = g_TextFont25;
++    else if (glyphWidth <= 26)
++        font = g_TextFont26;
++    else if (glyphWidth <= 27)
++        font = g_TextFont27;
++    else if (glyphWidth <= 28)
++        font = g_TextFont28;
++    else if (glyphWidth <= 29)
++        font = g_TextFont29;
++    else if (glyphWidth <= 30)
++        font = g_TextFont30;
++    else
++        font = g_TextFont31;
++
++    if (glyphWidth < 17)
++        glyphWidth = 17;
++
++    g_TextRenderBuffer.FillColor(color);
++    HDC hdc = g_TextRenderBuffer.deviceContext;
++    HGDIOBJ previousFont = SelectObject(hdc, font);
++    int processedRows = glyphWidth * 2 + 6;
++    g_TextRenderBuffer.InvertAlpha(processedRows);
++    SetBkMode(hdc, TRANSPARENT);
++    int textLength = static_cast<int>(strlen(text));
++    SetTextColor(hdc, color);
++    TextOutA(hdc, x * 2, 0, text, textLength);
++    SelectObject(hdc, previousFont);
++    g_TextRenderBuffer.InvertAlpha(processedRows);
++    TextRenderBufferApplyAlphaBleed(&g_TextRenderBuffer, processedRows);
++    SelectObject(hdc, previousFont);
++
++    D3d9RectView sourceRect;
++    sourceRect.left = 0;
++    sourceRect.top = 0;
++    sourceRect.right = (rectangle->right - rectangle->left) * 2 + 22;
++    sourceRect.bottom = glyphWidth * 2 + 2;
++    if (sourceRect.right > 1024)
++        sourceRect.right = 1024;
++    D3d9SurfaceView *surface;
++    texture->vtable->GetSurfaceLevel(texture, 0, &surface);
++    D3DXLoadSurfaceFromMemory(
++        surface, NULL, rectangle, g_TextRenderBuffer.pixels,
++        g_TextRenderBuffer.format, g_TextRenderBuffer.pitch,
++        NULL, &sourceRect, 4, 0);
++    if (surface != NULL)
++        surface->vtable->Release(surface);
++}
++
+@@ -411,0 +482,46 @@
++
++// Natural member; target's ESI owner/ECX color is private LTCG lowering.
++void TextRenderBufferView::FillColor(unsigned int color)
++{
++    unsigned short value = static_cast<unsigned short>(
++        (((color >> 20 & 15) << 4 | (color >> 12 & 15)) << 4) |
++        (color >> 4 & 15));
++    unsigned short *pixel = static_cast<unsigned short *>(pixels);
++    for (int i = 0; i < static_cast<int>(imageSize); i += 2, ++pixel)
++        *pixel = value;
++}
++struct TextArgb1555PixelView
++{
++    unsigned short rgb : 15;
++    unsigned short alpha : 1;
++};
++bool TextRenderBufferView::InvertAlpha(int processedRows)
++{
++    int byteCount = pitch * processedRows;
++    unsigned char *bytes = static_cast<unsigned char *>(pixels);
++    switch (format)
++    {
++    case 0x15:
++        for (int i = 3; i < byteCount; i += 4)
++            bytes[i] = ~bytes[i];
++        break;
++    case 0x19:
++        {
++            TextArgb1555PixelView *pixel = reinterpret_cast<TextArgb1555PixelView *>(bytes);
++            for (int i = 0; i < byteCount; i += 2, ++pixel)
++            {
++                pixel->alpha = ~pixel->alpha;
++                if (pixel->alpha == 0)
++                    pixel->rgb = 0;
++            }
++        }
++        break;
++    case 0x1a:
++        for (int i = 1; i < byteCount; i += 2)
++            bytes[i] ^= 0xf0;
++        break;
++    default:
++        return false;
++    }
++    return true;
++}

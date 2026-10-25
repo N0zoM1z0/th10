@@ -1,0 +1,2016 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target": {
+    "RenderTextToTextureAlternate": {
+      "size": 509,
+      "sha256": "aecece0903a5ef73fbbecb3d1d130866635ce8e6369ee5d205eb73b7c3e3be62",
+      "fields": [
+        {
+          "offset": 18,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790432,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 34,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790428,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 50,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790424,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 66,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790420,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 82,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790416,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 95,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790412,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 108,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790408,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 121,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790404,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 134,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790400,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 147,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790396,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 160,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790392,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 173,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790388,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 186,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790384,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 197,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790380,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 205,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4790376,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 224,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672688,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 229,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4418720,
+          "candidate_symbols": [],
+          "instruction_end": 233
+        },
+        {
+          "offset": 235,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672964,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 241,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4612140,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 255,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672688,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 264,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4419936,
+          "candidate_symbols": [],
+          "instruction_end": 268
+        },
+        {
+          "offset": 273,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4612124,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 309,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4612120,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 336,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4612116,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 350,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672688,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 355,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4419936,
+          "candidate_symbols": [],
+          "instruction_end": 359
+        },
+        {
+          "offset": 361,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672688,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 366,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4418976,
+          "candidate_symbols": [],
+          "instruction_end": 370
+        },
+        {
+          "offset": 445,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672960,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 451,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672944,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 465,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672976,
+          "evidence": "decoded absolute target operand; stripped target"
+        },
+        {
+          "offset": 481,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4530598,
+          "candidate_symbols": [],
+          "instruction_end": 485
+        }
+      ],
+      "local_branches": [
+        [
+          14,
+          2,
+          27
+        ],
+        [
+          22,
+          5,
+          209
+        ],
+        [
+          30,
+          2,
+          43
+        ],
+        [
+          38,
+          5,
+          209
+        ],
+        [
+          46,
+          2,
+          59
+        ],
+        [
+          54,
+          5,
+          209
+        ],
+        [
+          62,
+          2,
+          75
+        ],
+        [
+          70,
+          5,
+          209
+        ],
+        [
+          78,
+          2,
+          88
+        ],
+        [
+          86,
+          2,
+          209
+        ],
+        [
+          91,
+          2,
+          101
+        ],
+        [
+          99,
+          2,
+          209
+        ],
+        [
+          104,
+          2,
+          114
+        ],
+        [
+          112,
+          2,
+          209
+        ],
+        [
+          117,
+          2,
+          127
+        ],
+        [
+          125,
+          2,
+          209
+        ],
+        [
+          130,
+          2,
+          140
+        ],
+        [
+          138,
+          2,
+          209
+        ],
+        [
+          143,
+          2,
+          153
+        ],
+        [
+          151,
+          2,
+          209
+        ],
+        [
+          156,
+          2,
+          166
+        ],
+        [
+          164,
+          2,
+          209
+        ],
+        [
+          169,
+          2,
+          179
+        ],
+        [
+          177,
+          2,
+          209
+        ],
+        [
+          182,
+          2,
+          192
+        ],
+        [
+          190,
+          2,
+          209
+        ],
+        [
+          201,
+          2,
+          209
+        ],
+        [
+          212,
+          2,
+          219
+        ],
+        [
+          293,
+          2,
+          288
+        ],
+        [
+          418,
+          2,
+          428
+        ],
+        [
+          495,
+          2,
+          503
+        ]
+      ],
+      "calls": [
+        {
+          "offset": 228,
+          "operand": "0x436ca0"
+        },
+        {
+          "offset": 247,
+          "operand": "ebx"
+        },
+        {
+          "offset": 263,
+          "operand": "0x437160"
+        },
+        {
+          "offset": 271,
+          "operand": "dword ptr [0x46601c]"
+        },
+        {
+          "offset": 307,
+          "operand": "dword ptr [0x466018]"
+        },
+        {
+          "offset": 334,
+          "operand": "dword ptr [0x466014]"
+        },
+        {
+          "offset": 346,
+          "operand": "ebx"
+        },
+        {
+          "offset": 354,
+          "operand": "0x437160"
+        },
+        {
+          "offset": 365,
+          "operand": "0x436da0"
+        },
+        {
+          "offset": 376,
+          "operand": "ebx"
+        },
+        {
+          "offset": 441,
+          "operand": "dword ptr [edx + 0x48]"
+        },
+        {
+          "offset": 480,
+          "operand": "0x4521a6"
+        },
+        {
+          "offset": 500,
+          "operand": "dword ptr [ecx + 8]"
+        }
+      ]
+    },
+    "FillColor": {
+      "size": 72,
+      "sha256": "55215d8e32b4bee60c8455a130621cf29b63cd4331663ad2127d0acb386b074f",
+      "fields": [],
+      "local_branches": [
+        [
+          49,
+          2,
+          70
+        ],
+        [
+          68,
+          2,
+          51
+        ]
+      ],
+      "calls": []
+    },
+    "InvertAlpha": {
+      "size": 157,
+      "sha256": "80a76178c47262df822a02862baac77374259ba7fdab4b475e73b507cdc366ed",
+      "fields": [],
+      "local_branches": [
+        [
+          27,
+          2,
+          127
+        ],
+        [
+          32,
+          2,
+          69
+        ],
+        [
+          35,
+          2,
+          43
+        ],
+        [
+          50,
+          2,
+          151
+        ],
+        [
+          61,
+          2,
+          52
+        ],
+        [
+          71,
+          2,
+          151
+        ],
+        [
+          105,
+          2,
+          115
+        ],
+        [
+          119,
+          2,
+          80
+        ],
+        [
+          134,
+          2,
+          151
+        ],
+        [
+          149,
+          2,
+          136
+        ]
+      ],
+      "calls": []
+    }
+  },
+  "models": {
+    "first": {
+      "image_sha256": "10418ef3976e9ee63c5eaa8877094e774844d3d22ffc325763becf4715c6f44b",
+      "pdb_guid": "9861c08de4563a4e964d4b726710dac2",
+      "pdb_age": 1,
+      "owners": {
+        "RenderTextToTextureAlternate": {
+          "size": 575,
+          "sha256": "bdfc44d24f9f2fa539faebc16786c4f525fe3dfa75bdd53bb70083e8ad6277de",
+          "fields": [
+            {
+              "offset": 18,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210692,
+              "candidate_symbols": [
+                "?g_TextFont17@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0001"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 34,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210696,
+              "candidate_symbols": [
+                "?g_TextFont18@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0002"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 50,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210700,
+              "candidate_symbols": [
+                "?g_TextFont19@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0003"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 66,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210704,
+              "candidate_symbols": [
+                "?g_TextFont20@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0004"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 82,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210708,
+              "candidate_symbols": [
+                "?g_TextFont21@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0005"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 95,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210712,
+              "candidate_symbols": [
+                "?g_TextFont22@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0006"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 108,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210716,
+              "candidate_symbols": [
+                "?g_TextFont23@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0007"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 121,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210720,
+              "candidate_symbols": [
+                "?g_TextFont24@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0008"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 134,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210724,
+              "candidate_symbols": [
+                "?g_TextFont25@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0009"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 147,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210728,
+              "candidate_symbols": [
+                "?g_TextFont26@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0010"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 160,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210732,
+              "candidate_symbols": [
+                "?g_TextFont27@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0011"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 173,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210736,
+              "candidate_symbols": [
+                "?g_TextFont28@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0012"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 186,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210740,
+              "candidate_symbols": [
+                "?g_TextFont29@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0013"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 197,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210744,
+              "candidate_symbols": [
+                "?g_TextFont30@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0014"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 205,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210748,
+              "candidate_symbols": [
+                "?g_TextFont31@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0015"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 232,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211020,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 259,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211040,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 293,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211020,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 309,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211028,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 315,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210788,
+              "candidate_symbols": [
+                "__imp__SelectObject@8",
+                "_th10_ltcg_probe_anchor_0025"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 329,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210752,
+              "candidate_symbols": [
+                "?g_TextRenderBuffer@@3UTextRenderBufferView@@A",
+                "_th10_ltcg_probe_anchor_0016"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 336,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4202080,
+              "candidate_symbols": [
+                "?InvertAlpha@TextRenderBufferView@@QAE_NH@Z"
+              ],
+              "instruction_end": 340
+            },
+            {
+              "offset": 345,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210792,
+              "candidate_symbols": [
+                "__imp__SetBkMode@8",
+                "_th10_ltcg_probe_anchor_0026"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 377,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210796,
+              "candidate_symbols": [
+                "__imp__SetTextColor@8",
+                "_th10_ltcg_probe_anchor_0027"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 404,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210800,
+              "candidate_symbols": [
+                "__imp__TextOutA@20",
+                "_th10_ltcg_probe_anchor_0028"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 414,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210752,
+              "candidate_symbols": [
+                "?g_TextRenderBuffer@@3UTextRenderBufferView@@A",
+                "_th10_ltcg_probe_anchor_0016"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 419,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4202080,
+              "candidate_symbols": [
+                "?InvertAlpha@TextRenderBufferView@@QAE_NH@Z"
+              ],
+              "instruction_end": 423
+            },
+            {
+              "offset": 425,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210752,
+              "candidate_symbols": [
+                "?g_TextRenderBuffer@@3UTextRenderBufferView@@A",
+                "_th10_ltcg_probe_anchor_0016"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 430,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4198512,
+              "candidate_symbols": [
+                "?TextRenderBufferApplyAlphaBleed@@YG_NPAUTextRenderBufferView@@I@Z"
+              ],
+              "instruction_end": 434
+            },
+            {
+              "offset": 511,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211024,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 517,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211008,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 531,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211040,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 547,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4210760,
+              "candidate_symbols": [
+                "_D3DXLoadSurfaceFromMemory@40",
+                "_th10_ltcg_probe_anchor_0018"
+              ],
+              "instruction_end": 551
+            }
+          ],
+          "local_branches": [
+            [
+              14,
+              2,
+              27
+            ],
+            [
+              22,
+              5,
+              209
+            ],
+            [
+              30,
+              2,
+              43
+            ],
+            [
+              38,
+              5,
+              209
+            ],
+            [
+              46,
+              2,
+              59
+            ],
+            [
+              54,
+              5,
+              209
+            ],
+            [
+              62,
+              2,
+              75
+            ],
+            [
+              70,
+              5,
+              209
+            ],
+            [
+              78,
+              2,
+              88
+            ],
+            [
+              86,
+              2,
+              209
+            ],
+            [
+              91,
+              2,
+              101
+            ],
+            [
+              99,
+              2,
+              209
+            ],
+            [
+              104,
+              2,
+              114
+            ],
+            [
+              112,
+              2,
+              209
+            ],
+            [
+              117,
+              2,
+              127
+            ],
+            [
+              125,
+              2,
+              209
+            ],
+            [
+              130,
+              2,
+              140
+            ],
+            [
+              138,
+              2,
+              209
+            ],
+            [
+              143,
+              2,
+              153
+            ],
+            [
+              151,
+              2,
+              209
+            ],
+            [
+              156,
+              2,
+              166
+            ],
+            [
+              164,
+              2,
+              209
+            ],
+            [
+              169,
+              2,
+              179
+            ],
+            [
+              177,
+              2,
+              209
+            ],
+            [
+              182,
+              2,
+              192
+            ],
+            [
+              190,
+              2,
+              209
+            ],
+            [
+              201,
+              2,
+              209
+            ],
+            [
+              212,
+              2,
+              226
+            ],
+            [
+              278,
+              2,
+              307
+            ],
+            [
+              280,
+              2,
+              288
+            ],
+            [
+              305,
+              2,
+              288
+            ],
+            [
+              361,
+              2,
+              356
+            ],
+            [
+              484,
+              2,
+              494
+            ],
+            [
+              561,
+              2,
+              569
+            ]
+          ],
+          "calls": [
+            {
+              "offset": 321,
+              "operand": "ebp"
+            },
+            {
+              "offset": 335,
+              "operand": "0x401e60"
+            },
+            {
+              "offset": 343,
+              "operand": "dword ptr [0x404068]"
+            },
+            {
+              "offset": 375,
+              "operand": "dword ptr [0x40406c]"
+            },
+            {
+              "offset": 402,
+              "operand": "dword ptr [0x404070]"
+            },
+            {
+              "offset": 410,
+              "operand": "ebp"
+            },
+            {
+              "offset": 418,
+              "operand": "0x401e60"
+            },
+            {
+              "offset": 429,
+              "operand": "0x401070"
+            },
+            {
+              "offset": 436,
+              "operand": "ebp"
+            },
+            {
+              "offset": 507,
+              "operand": "dword ptr [edx + 0x48]"
+            },
+            {
+              "offset": 546,
+              "operand": "0x404048"
+            },
+            {
+              "offset": 566,
+              "operand": "dword ptr [ecx + 8]"
+            }
+          ],
+          "pdb_contribution": {
+            "symbol": "?RenderTextToTextureAlternate@TextHelperView@@YGXPBUD3d9RectView@@HHIPBDPAUD3d9TextureView@@@Z",
+            "address": "0x00401660",
+            "size": 575,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 1632,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-first-20261025\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-first-20261025\\source.ltcg.obj",
+            "sha256": "bdfc44d24f9f2fa539faebc16786c4f525fe3dfa75bdd53bb70083e8ad6277de"
+          },
+          "raw_equal_to_target": false
+        },
+        "FillColor": {
+          "size": 72,
+          "sha256": "55215d8e32b4bee60c8455a130621cf29b63cd4331663ad2127d0acb386b074f",
+          "fields": [],
+          "local_branches": [
+            [
+              49,
+              2,
+              70
+            ],
+            [
+              68,
+              2,
+              51
+            ]
+          ],
+          "calls": [],
+          "pdb_contribution": {
+            "symbol": "?FillColor@TextRenderBufferView@@QAEXI@Z",
+            "address": "0x00401E10",
+            "size": 72,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 3600,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-first-20261025\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-first-20261025\\source.ltcg.obj",
+            "sha256": "55215d8e32b4bee60c8455a130621cf29b63cd4331663ad2127d0acb386b074f"
+          },
+          "raw_equal_to_target": true
+        },
+        "InvertAlpha": {
+          "size": 165,
+          "sha256": "703a335e6e1d6160be901a3334c70527debc2502c7e965397a61430c8721a21f",
+          "fields": [],
+          "local_branches": [
+            [
+              27,
+              2,
+              134
+            ],
+            [
+              32,
+              2,
+              69
+            ],
+            [
+              35,
+              2,
+              43
+            ],
+            [
+              50,
+              2,
+              159
+            ],
+            [
+              61,
+              2,
+              52
+            ],
+            [
+              71,
+              2,
+              159
+            ],
+            [
+              112,
+              2,
+              122
+            ],
+            [
+              126,
+              2,
+              80
+            ],
+            [
+              141,
+              2,
+              159
+            ],
+            [
+              157,
+              2,
+              144
+            ]
+          ],
+          "calls": [],
+          "pdb_contribution": {
+            "symbol": "?InvertAlpha@TextRenderBufferView@@QAE_NH@Z",
+            "address": "0x00401E60",
+            "size": 165,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 3680,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-first-20261025\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-first-20261025\\source.ltcg.obj",
+            "sha256": "703a335e6e1d6160be901a3334c70527debc2502c7e965397a61430c8721a21f"
+          },
+          "raw_equal_to_target": false
+        }
+      },
+      "artifact_dir": "build/text-alternate-first-20261025"
+    },
+    "word": {
+      "image_sha256": "ad6a247f3618bf70a13df7fa4fcc7a31629edcf270e4c4ea8f4f040611334a6c",
+      "pdb_guid": "3fea6feb5db20942ad99f74c8935057f",
+      "pdb_age": 1,
+      "owners": {
+        "RenderTextToTextureAlternate": {
+          "size": 575,
+          "sha256": "024475c0a9b4e03960799f5cbb38e029ed4515ff0dd1a54f9b81e132f81cd50c",
+          "fields": [
+            {
+              "offset": 18,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210692,
+              "candidate_symbols": [
+                "?g_TextFont17@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0001"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 34,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210696,
+              "candidate_symbols": [
+                "?g_TextFont18@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0002"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 50,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210700,
+              "candidate_symbols": [
+                "?g_TextFont19@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0003"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 66,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210704,
+              "candidate_symbols": [
+                "?g_TextFont20@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0004"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 82,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210708,
+              "candidate_symbols": [
+                "?g_TextFont21@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0005"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 95,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210712,
+              "candidate_symbols": [
+                "?g_TextFont22@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0006"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 108,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210716,
+              "candidate_symbols": [
+                "?g_TextFont23@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0007"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 121,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210720,
+              "candidate_symbols": [
+                "?g_TextFont24@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0008"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 134,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210724,
+              "candidate_symbols": [
+                "?g_TextFont25@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0009"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 147,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210728,
+              "candidate_symbols": [
+                "?g_TextFont26@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0010"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 160,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210732,
+              "candidate_symbols": [
+                "?g_TextFont27@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0011"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 173,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210736,
+              "candidate_symbols": [
+                "?g_TextFont28@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0012"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 186,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210740,
+              "candidate_symbols": [
+                "?g_TextFont29@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0013"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 197,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210744,
+              "candidate_symbols": [
+                "?g_TextFont30@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0014"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 205,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210748,
+              "candidate_symbols": [
+                "?g_TextFont31@@3PAUHFONT__@@A",
+                "_th10_ltcg_probe_anchor_0015"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 232,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211020,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 259,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211040,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 293,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211020,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 309,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211028,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 315,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210788,
+              "candidate_symbols": [
+                "__imp__SelectObject@8",
+                "_th10_ltcg_probe_anchor_0025"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 329,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210752,
+              "candidate_symbols": [
+                "?g_TextRenderBuffer@@3UTextRenderBufferView@@A",
+                "_th10_ltcg_probe_anchor_0016"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 336,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4202080,
+              "candidate_symbols": [
+                "?InvertAlpha@TextRenderBufferView@@QAE_NH@Z"
+              ],
+              "instruction_end": 340
+            },
+            {
+              "offset": 345,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210792,
+              "candidate_symbols": [
+                "__imp__SetBkMode@8",
+                "_th10_ltcg_probe_anchor_0026"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 377,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210796,
+              "candidate_symbols": [
+                "__imp__SetTextColor@8",
+                "_th10_ltcg_probe_anchor_0027"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 404,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210800,
+              "candidate_symbols": [
+                "__imp__TextOutA@20",
+                "_th10_ltcg_probe_anchor_0028"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 414,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210752,
+              "candidate_symbols": [
+                "?g_TextRenderBuffer@@3UTextRenderBufferView@@A",
+                "_th10_ltcg_probe_anchor_0016"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 419,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4202080,
+              "candidate_symbols": [
+                "?InvertAlpha@TextRenderBufferView@@QAE_NH@Z"
+              ],
+              "instruction_end": 423
+            },
+            {
+              "offset": 425,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4210752,
+              "candidate_symbols": [
+                "?g_TextRenderBuffer@@3UTextRenderBufferView@@A",
+                "_th10_ltcg_probe_anchor_0016"
+              ],
+              "instruction_end": null
+            },
+            {
+              "offset": 430,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4198512,
+              "candidate_symbols": [
+                "?TextRenderBufferApplyAlphaBleed@@YG_NPAUTextRenderBufferView@@I@Z"
+              ],
+              "instruction_end": 434
+            },
+            {
+              "offset": 511,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211024,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 517,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211008,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 531,
+              "width": 4,
+              "type": "DIR32",
+              "candidate_target": 4211040,
+              "candidate_symbols": [],
+              "instruction_end": null
+            },
+            {
+              "offset": 547,
+              "width": 4,
+              "type": "REL32",
+              "instruction": "call",
+              "candidate_target": 4210760,
+              "candidate_symbols": [
+                "_D3DXLoadSurfaceFromMemory@40",
+                "_th10_ltcg_probe_anchor_0018"
+              ],
+              "instruction_end": 551
+            }
+          ],
+          "local_branches": [
+            [
+              14,
+              2,
+              27
+            ],
+            [
+              22,
+              5,
+              209
+            ],
+            [
+              30,
+              2,
+              43
+            ],
+            [
+              38,
+              5,
+              209
+            ],
+            [
+              46,
+              2,
+              59
+            ],
+            [
+              54,
+              5,
+              209
+            ],
+            [
+              62,
+              2,
+              75
+            ],
+            [
+              70,
+              5,
+              209
+            ],
+            [
+              78,
+              2,
+              88
+            ],
+            [
+              86,
+              2,
+              209
+            ],
+            [
+              91,
+              2,
+              101
+            ],
+            [
+              99,
+              2,
+              209
+            ],
+            [
+              104,
+              2,
+              114
+            ],
+            [
+              112,
+              2,
+              209
+            ],
+            [
+              117,
+              2,
+              127
+            ],
+            [
+              125,
+              2,
+              209
+            ],
+            [
+              130,
+              2,
+              140
+            ],
+            [
+              138,
+              2,
+              209
+            ],
+            [
+              143,
+              2,
+              153
+            ],
+            [
+              151,
+              2,
+              209
+            ],
+            [
+              156,
+              2,
+              166
+            ],
+            [
+              164,
+              2,
+              209
+            ],
+            [
+              169,
+              2,
+              179
+            ],
+            [
+              177,
+              2,
+              209
+            ],
+            [
+              182,
+              2,
+              192
+            ],
+            [
+              190,
+              2,
+              209
+            ],
+            [
+              201,
+              2,
+              209
+            ],
+            [
+              212,
+              2,
+              226
+            ],
+            [
+              278,
+              2,
+              307
+            ],
+            [
+              280,
+              2,
+              288
+            ],
+            [
+              305,
+              2,
+              288
+            ],
+            [
+              361,
+              2,
+              356
+            ],
+            [
+              484,
+              2,
+              494
+            ],
+            [
+              561,
+              2,
+              569
+            ]
+          ],
+          "calls": [
+            {
+              "offset": 321,
+              "operand": "ebp"
+            },
+            {
+              "offset": 335,
+              "operand": "0x401e60"
+            },
+            {
+              "offset": 343,
+              "operand": "dword ptr [0x404068]"
+            },
+            {
+              "offset": 375,
+              "operand": "dword ptr [0x40406c]"
+            },
+            {
+              "offset": 402,
+              "operand": "dword ptr [0x404070]"
+            },
+            {
+              "offset": 410,
+              "operand": "ebp"
+            },
+            {
+              "offset": 418,
+              "operand": "0x401e60"
+            },
+            {
+              "offset": 429,
+              "operand": "0x401070"
+            },
+            {
+              "offset": 436,
+              "operand": "ebp"
+            },
+            {
+              "offset": 507,
+              "operand": "dword ptr [edx + 0x48]"
+            },
+            {
+              "offset": 546,
+              "operand": "0x404048"
+            },
+            {
+              "offset": 566,
+              "operand": "dword ptr [ecx + 8]"
+            }
+          ],
+          "pdb_contribution": {
+            "symbol": "?RenderTextToTextureAlternate@TextHelperView@@YGXPBUD3d9RectView@@HHIPBDPAUD3d9TextureView@@@Z",
+            "address": "0x00401660",
+            "size": 575,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 1632,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-word-inversion-20261025\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-word-inversion-20261025\\source.ltcg.obj",
+            "sha256": "024475c0a9b4e03960799f5cbb38e029ed4515ff0dd1a54f9b81e132f81cd50c"
+          },
+          "raw_equal_to_target": false
+        },
+        "FillColor": {
+          "size": 72,
+          "sha256": "55215d8e32b4bee60c8455a130621cf29b63cd4331663ad2127d0acb386b074f",
+          "fields": [],
+          "local_branches": [
+            [
+              49,
+              2,
+              70
+            ],
+            [
+              68,
+              2,
+              51
+            ]
+          ],
+          "calls": [],
+          "pdb_contribution": {
+            "symbol": "?FillColor@TextRenderBufferView@@QAEXI@Z",
+            "address": "0x00401E10",
+            "size": 72,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 3600,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-word-inversion-20261025\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-word-inversion-20261025\\source.ltcg.obj",
+            "sha256": "55215d8e32b4bee60c8455a130621cf29b63cd4331663ad2127d0acb386b074f"
+          },
+          "raw_equal_to_target": true
+        },
+        "InvertAlpha": {
+          "size": 173,
+          "sha256": "c3b003e0916cc0e02b2bbea7a07c830b7d64cc15e0729dfdbf1a7e757fc69c4f",
+          "fields": [],
+          "local_branches": [
+            [
+              27,
+              2,
+              143
+            ],
+            [
+              32,
+              2,
+              69
+            ],
+            [
+              35,
+              2,
+              43
+            ],
+            [
+              50,
+              2,
+              167
+            ],
+            [
+              61,
+              2,
+              52
+            ],
+            [
+              71,
+              2,
+              167
+            ],
+            [
+              121,
+              2,
+              131
+            ],
+            [
+              135,
+              2,
+              80
+            ],
+            [
+              150,
+              2,
+              167
+            ],
+            [
+              165,
+              2,
+              152
+            ]
+          ],
+          "calls": [],
+          "pdb_contribution": {
+            "symbol": "?InvertAlpha@TextRenderBufferView@@QAE_NH@Z",
+            "address": "0x00401E60",
+            "size": 173,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 3680,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-word-inversion-20261025\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-alternate-word-inversion-20261025\\source.ltcg.obj",
+            "sha256": "c3b003e0916cc0e02b2bbea7a07c830b7d64cc15e0729dfdbf1a7e757fc69c4f"
+          },
+          "raw_equal_to_target": false
+        }
+      },
+      "artifact_dir": "build/text-alternate-word-inversion-20261025"
+    },
+    "helper-only": {
+      "image_sha256": "48f8acaac2f1fdfc7f70d471cd38e87bfc1b64acb4c41bc66abb4e98bd8f9813",
+      "pdb_guid": "35a155eed0f68d4d90d2c0f1a6949742",
+      "pdb_age": 1,
+      "owners": {
+        "FillColor": {
+          "size": 72,
+          "sha256": "55215d8e32b4bee60c8455a130621cf29b63cd4331663ad2127d0acb386b074f",
+          "fields": [],
+          "local_branches": [
+            [
+              49,
+              2,
+              70
+            ],
+            [
+              68,
+              2,
+              51
+            ]
+          ],
+          "calls": [],
+          "pdb_contribution": {
+            "symbol": "?FillColor@TextRenderBufferView@@QAEXI@Z",
+            "address": "0x00401BD0",
+            "size": 72,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 3024,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-fill-helper-only-20261025\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\text-fill-helper-only-20261025\\source.ltcg.obj",
+            "sha256": "55215d8e32b4bee60c8455a130621cf29b63cd4331663ad2127d0acb386b074f"
+          },
+          "raw_equal_to_target": true
+        }
+      },
+      "artifact_dir": "build/text-fill-helper-only-20261025"
+    },
+    "canonical": {
+      "image_sha256": "03cd999d09fa47425c3c865dc3c10db2a110e0682345858999f480b8aaf3c7d5",
+      "pdb_guid": "0505a837e16d69488c376cd972bd8f0f",
+      "pdb_age": 1,
+      "owners": {
+        "FillColor": {
+          "size": 72,
+          "sha256": "55215d8e32b4bee60c8455a130621cf29b63cd4331663ad2127d0acb386b074f",
+          "fields": [],
+          "local_branches": [
+            [
+              49,
+              2,
+              70
+            ],
+            [
+              68,
+              2,
+              51
+            ]
+          ],
+          "calls": [],
+          "pdb_contribution": {
+            "symbol": "?FillColor@TextRenderBufferView@@QAEXI@Z",
+            "address": "0x00401BD0",
+            "size": 72,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 3024,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\TextBufferLifecycle\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\TextBufferLifecycle\\source.ltcg.obj",
+            "sha256": "55215d8e32b4bee60c8455a130621cf29b63cd4331663ad2127d0acb386b074f"
+          },
+          "raw_equal_to_target": true
+        }
+      },
+      "artifact_dir": "build/match-linked/TextBufferLifecycle"
+    }
+  }
+}

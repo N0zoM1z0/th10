@@ -4,6 +4,17 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [alternate text/dependency pilot](evidence/text-alternate-20261025/README.md)
+closes only the real **72-byte FillColor** dependency. Separate helpers-only and
+canonical cold links in the original CreateTextBuffer/RandomMath graph are raw
+exact with both locals; no rejected parent/inversion body is admitted.
+Create781/Release107/Allocate421 and separate COFF bleed946 guards pass.
+First complete alternate remains575/509; alpha inversion165 then173/157 rejects.
+Target surface output reuses color's argument slot: failure-without-output
+semantics remain unresolved. Parent and historical TEXT-002 controls are parked.
+Authored exact is now **75782/273658,416 owners**, source621/249240.
+All113 full-CI stages pass, completed07:49:18 UTC with1542 frozen inputs
+including protected9 unchanged. RPC timeout recovered from terminal logs, no rerun.
 Current [Player shot creation pilot](evidence/player-shot-creation-20261025/README.md)
 retains four complete isolated models: **770/717**, **633/717**, **772/717**
 and **618/717**; real105-byte caller remains123 or120 bytes. All structurally

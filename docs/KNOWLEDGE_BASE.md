@@ -5942,3 +5942,16 @@ guards464/all9 pass in each image. Scan spelling materially affects unrolling
 and inlining, but does not identify original TU/optimizer context. No new
 source/exact credit follows; park further spelling/register/profile panels
 until independent TH10 evidence predicts a specific complete-owner effect.
+
+## Text alternate and color-fill dependency,2026-10-25
+
+Only FillColor436CA0/72 is admitted: ordinary member source naturally produces
+private ESI owner/ECX color. Helpers-only and separate canonical cold links in
+existing TextRenderer+RandomMath/CreateTextBuffer graph are raw exact, zero
+fields/two locals; existing lifecycle1309/all50 and COFF bleed946 guards pass.
+No alternate or inversion source credit: first complete alternate575/509,
+inversion165 then173/157 remain isolated. Target color parameter output-home
+reuse leaves failure-without-output semantics unresolved. Historical shadow
+TEXT-00213 neutral controls stay parked. See
+[evidence and source hypotheses](evidence/text-alternate-20261025/README.md).
+Original class/TU/profile, runtime and whole-product closure remain open.

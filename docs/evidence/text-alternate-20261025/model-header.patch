@@ -1,0 +1,6 @@
+--- a/src/TextRenderer.hpp
++++ b/src/TextRenderer.hpp
+@@ -21,0 +22 @@
++    void FillColor(unsigned int color);
+@@ -55,0 +57 @@
++void __stdcall RenderTextToTextureAlternate(const D3d9RectView *, int, int, unsigned int, const char *, D3d9TextureView *);

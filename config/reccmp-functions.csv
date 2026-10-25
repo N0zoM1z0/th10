@@ -1104,3 +1104,4 @@ GameUpdateFaithDecay,0x00418A00,function
 FileSystem::WriteToOpenFile,0x0044B740,function
 SptTestView::Draw,0x0042C360,function
 SptTestDrawCallback,0x0042C590,function
+TextRenderBufferView::FillColor,0x00436CA0,function

@@ -1,0 +1,19 @@
+{
+  "started_at": "2026-10-25T07:41:16Z",
+  "finished_at": "2026-10-25T07:49:18Z",
+  "ci_exit": 0,
+  "frozen_input_count": 1542,
+  "protected_untracked_count": 9,
+  "changed_inputs": [],
+  "native_guards": {
+    "text-fill-color": 72,
+    "text-create-buffer": 781,
+    "text-release-buffer": 107,
+    "text-try-allocate-buffer": 421,
+    "text-buffer-apply-alpha-bleed": 946
+  },
+  "scope": "All repository CI stages; native whole-function guards separately cold replayed. No runtime claim.",
+  "ci_stages": 113,
+  "transport_recovery": "Original RPC and interim read/status timed out; terminal durable logs recovered at07:51:24 without duplicate execution.",
+  "post_ci_document_checks": "Staged whitespace gate caught blank context lines in proposal patches. Re-encoded as zero-context unified patches; independently reapplied all three and verified exact candidate content. No source/proof result changes."
+}
