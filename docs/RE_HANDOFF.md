@@ -2,7 +2,8 @@
 
 Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
-Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
+Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
+Fresh shared source-current replay: **470dca2**, 2026-10-25.
 WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
 at **97a206f** (Sound) and **7b85dd3** (Chain). WinMain remains parked against
 flag/noinline matrices. After clear/delete checkpoint **9fb5a3d**, three
@@ -23,15 +24,22 @@ labeled host precision modeling are not game FPU/runtime proof.
 The original default-first Wine-path/link failure is retained separately from
 the successful same-source retry. Current Gui SHA-256:
 `70184d8834dc24998debe484a67a6643b8e55a6327a6115835353e008a68309b`.
-Full CI passed all 112 stages for this source, exit 0, with frozen inputs
-preserved, verified at 2026-10-25 00:36:31 UTC. Only CI-result documentation
-changed afterward. Prior checkpoint failures and scoped observer repairs remain
-recorded separately.
+Full CI passed all 112 stages for source checkpoint 470dca2, exit 0, with
+frozen inputs preserved, verified at 2026-10-25 00:36:31 UTC. This follow-on
+shared-baseline checkpoint changes documentation only and claims no new full CI.
+Prior checkpoint failures and scoped observer repairs remain recorded separately.
 Park unsupported HUD spelling/flag panels: visible register/save scheduling
-and folded boss-flag tests do not establish another semantic factor. ANM/ECL's
-shared ten-TU / 32-file native closure has changed only Enemy.cpp and
-GameErrorContext.hpp. A fresh shared baseline runner is staged, not frozen or compiled;
-the old 4/25 differences remain historical until that measurement.
+and folded boss-flag tests do not establish another semantic factor. The
+[fresh shared ANM/ECL baseline](evidence/anm-ecl-source-current-20261025/README.md)
+now confirms the same 4/25 ordinary differences over complete 9964/7020-byte
+owners, with all 350/189 fields and 95/62 locals. All 36 ANM and 16 ECL guard
+checks pass, covering 43 unique extents; the exact 171-byte callee is included.
+Original root/cold exit 1 was metadata serialization after successful linking.
+A separate ignored observer validates the retained image and identical
+independent replay, with no rebuild or overwritten failure. No new exact credit
+or new full-CI claim follows. The vector inheritance premise was already tested
+and neutral; Ending has no new semantic factor. A source-current Ending baseline
+is being prepared. Core, HUD and WinMain stay parked against old panels.
 The separate global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
@@ -54,8 +62,8 @@ All experiments in the preceding ANM 15-control panel are terminal.
 
 | Owner / metric | Last verified maintained result |
 | --- | --- |
-| ANM ExecuteScript / target 9964 | Retained historical **9960/9964**; 4 ordinary differences; all 350 fields / 95 fixed local destinations; case 7990/7994, 92/92 groups, gap 0 |
-| ECL Run / target 7020 | Retained historical 6995/7020; 25 differences; 189 fields / 62 locals; 171-byte float callee exact |
+| ANM ExecuteScript / target 9964 | Fresh source-current **9960/9964**; 4 ordinary differences; all 350 fields / 95 fixed local destinations; case 7990/7994, 92/92 groups, gap 0 |
+| ECL Run / target 7020 | Fresh source-current 6995/7020; 25 differences; 189 fields / 62 locals; 171-byte float callee exact |
 | Enemy dispatcher / target 14416 | 14336 bytes; frame 2C4; case 3245/11128, 45 sized groups, gap 328 |
 | StageExecuteScript / target 1868 | Retained 1868 bytes; frame 8C; nonexact; case 1443/1619, 13/15 groups, gap 2 |
 | PlayerInitialize / target 1435 | 1380/1435; 55 differences; 49 fields; actual 17-input graph recompiled ANM |
@@ -294,17 +302,32 @@ nor model establishes the game's FPU state or runtime behavior. Original failing
 probes remain under `.analysis/gpt-dots/hud-host-precision-audit-20261025/`.
 Full CI passed all 112 stages with frozen inputs preserved; metrics stay unchanged.
 
-The ANM/ECL audit proves their shared ten-TU / 32-file native closure changed
-only Enemy.cpp (two actual-delete corrections) and GameErrorContext.hpp (Flush
-declaration); Main.cpp, Gui.cpp and Chain.cpp are not compiled in that graph.
-A fresh shared baseline runner is staged, not frozen or compiled, under
-`.analysis/gpt-dots/anm-ecl-source-current-20261025/`. Preserve original recipes
-and receipts, all extents/fields/locals and guards, and retain structural failures
-as errors. Do not require the historical four/25 differences to recur. This is
-a source-current baseline refresh, not a new spelling/profile/source trial.
-Ending remains queued: its retained source matches its receipt, but 20/52
-support/header inputs drifted and prior aggregate controls were neutral. Do not
-tune against that stale graph or start another unsupported allocation panel.
+The [fresh shared ANM/ECL replay](evidence/anm-ecl-source-current-20261025/README.md)
+uses the actual ten-TU / 32-file native closure. Only Enemy.cpp's two actual-delete
+corrections and GameErrorContext.hpp's Flush declaration differ from the old
+producer; Main.cpp, Gui.cpp and Chain.cpp are not compiled in this graph.
+One fresh image retains ANM 9960/9964 with all 350 fields / 95 locals, and ECL
+6995/7020 with all 189 fields / 62 locals, including its trailing owned selector
+byte. Thirty-six ANM and sixteen ECL guard checks pass: nine are shared, giving
+43 unique physical extents. The exact 171-byte callee is already included.
+
+Original root/cold exit 1 records a PosixPath serialization failure after
+successful linking, not a failed native image. The unchanged frozen runner and
+failure artifacts are preserved; a new ignored supplemental observer validates
+the retained image and identical independent same-image results. No rebuild,
+source/configuration/metric change or new exact credit occurs. The prior
+470dca2 112-stage CI pass remains correctly scoped; only documentation changes
+in this follow-on checkpoint.
+
+Keep the core residuals, HUD and WinMain parked against their old panels.
+The SDK8-inspired vector storage-inheritance premise was already tested on
+October 21 with eleven TUs consistently rebuilt and byte-neutral results; no
+new type-shape control is justified. EndingRun has no new source-contract error.
+Its correct latest producer is the 18-TU ending-load-script graph, not the older
+17-TU EndingCreate graph. Its current native closure has 57 files: 22 of 52 prior
+files changed, five headers added, none removed; Ending.cpp itself is unchanged.
+A single source-current Ending baseline is being prepared for measurement only.
+Do not tune against stale output or reopen unsupported aggregate/allocation panels.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not
@@ -342,11 +365,13 @@ No new hypothesis after those 15 was compiled or measured.
 
 ## Retained ANM/ECL inputs
 
-These are historical retained measurements. The two native-input changes above
-justify a new shared baseline; it has not yet been compiled.
+The source-current baseline now lives under
+`.analysis/gpt-dots/anm-ecl-source-current-20261025/`; its successful supplemental
+observer preserves the original failed serialization receipt. The historical
+carriers below remain immutable context and are not relabeled as new builds.
 
 Producer root: `.analysis/gpt-6.1-sol/anm-full-parent-bindings-20261024`.
-Use **manifest-current.json / compare-current.py**. Its compilation and initial
+Historical replay uses **manifest-current.json / compare-current.py**. Its compilation and initial
 manifests are immutable; later ledger-note and reviewed host-pin transitions are
 recorded separately. Older ecl-case-order/Player global freezes are historical;
 do not weaken them or overwrite their before/support caches.

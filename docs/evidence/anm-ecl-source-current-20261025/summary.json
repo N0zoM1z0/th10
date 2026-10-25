@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "source_checkpoint": "470dca2a709d60d78a27fe0b6db62d3717146cb1",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "image_sha256": "66f4f95c25b7486b6b862c0f17e6d4f8380927a055458c3bd74c2a7065e56947",
+  "native_cold_builds": 1,
+  "graph": {
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/ItemManager.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/EclVm.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ]
+    },
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "native_project_inputs": 32,
+  "changed_native_inputs": {
+    "src/Enemy.cpp": {
+      "sha256": "788c4d3d15e47adf4f66cb8ab035e19feade1d54cf8454e4d20758aab63ae086",
+      "change": "two actual operator-delete corrections"
+    },
+    "src/GameErrorContext.hpp": {
+      "sha256": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37",
+      "change": "nonvirtual Flush declaration"
+    }
+  },
+  "not_compiled_in_graph": [
+    "src/Main.cpp",
+    "src/Gui.cpp",
+    "src/Chain.cpp"
+  ],
+  "frozen_inputs": 1761,
+  "parents": {
+    "ANM": {
+      "size": 9964,
+      "compared_size": 9964,
+      "matched_bytes": 9960,
+      "fields": 350,
+      "locals": 95,
+      "data_spans": [],
+      "ordinary_differences": 4,
+      "whole_owner_exact": false
+    },
+    "ECL": {
+      "size": 7020,
+      "compared_size": 7020,
+      "matched_bytes": 6995,
+      "fields": 189,
+      "locals": 62,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "ordinary_differences": 25,
+      "whole_owner_exact": false
+    }
+  },
+  "guard_groups": {
+    "ANM": {
+      "checks": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "ECL": {
+      "checks": 16,
+      "bytes": 1617,
+      "fields": 21
+    }
+  },
+  "guard_overlap": {
+    "total_group_checks": 52,
+    "unique_nonoverlapping_physical_extents": 43,
+    "unique_extent_bytes": 5098,
+    "shared_extents_checked_in_both_groups": 9,
+    "shared_units": [
+      "ecl-vm-host-run",
+      "ecl-vm-read-float",
+      "ecl-vm-read-float-value",
+      "ecl-vm-read-int",
+      "ecl-vm-read-int-value",
+      "ecl-vm-resolve-float",
+      "ecl-vm-resolve-int",
+      "ecl-vm-stack-pop",
+      "ecl-vm-stack-push"
+    ],
+    "callee_171_already_in_shared_guards": true
+  },
+  "callee": {
+    "unit": "float-value-guard",
+    "size": 171,
+    "fields": 4,
+    "exact": true
+  },
+  "validation": {
+    "supplemental_passed": true,
+    "independent_same_image_results_equal": true,
+    "original_root_exit": 1,
+    "original_cold_exit": 1,
+    "original_failure": "PosixPath JSON serialization after cold_link returned successfully; not a compile/link failure.",
+    "original_runner_and_failure_artifacts_preserved": true,
+    "native_artifacts_preserved": true,
+    "new_supplemental_observer_only": true,
+    "native_rebuild_after_failure": false
+  },
+  "receipts": [
+    {
+      "path": ".analysis/gpt-dots/anm-ecl-source-current-20261025/receipt.json",
+      "sha256": "dd13cdfb05e41ba5a43d54296ee4b6bf9f8464b804a5354eaee71df23795b20b"
+    },
+    {
+      "path": ".analysis/gpt-dots/anm-ecl-source-current-20261025/freeze.json",
+      "sha256": "ece6ca8060c6a040fe4f0a1aa93b0cac3270c8fcb85d9dfc4c379d67a2bded9b"
+    },
+    {
+      "path": ".analysis/gpt-dots/anm-ecl-source-current-20261025/supplemental-serialization/receipt.json",
+      "sha256": "7260d7308aafbf8d304f5a6a14478ec4e864f098e6e697594f18cc7ecf2b9b41"
+    },
+    {
+      "path": ".analysis/gpt-dots/anm-ecl-source-current-20261025/supplemental-serialization/reconstructed-completion.json",
+      "sha256": "24c909d24805d6235e5d7809d4d96d74a518fd75795d428bbe172b9c0e331e42"
+    },
+    {
+      "path": ".analysis/gpt-dots/anm-ecl-source-current-20261025/supplemental-serialization/preserved-inputs.json",
+      "sha256": "c65c69240b28b39a32594d61cf5516a1d548074ca9be999b61b2e7f9623ee2b0"
+    }
+  ],
+  "credit": {
+    "new_exact_bytes": 0,
+    "new_exact_owners": 0,
+    "new_source_owners": 0,
+    "authored_denominator_change": 0
+  },
+  "ci_scope": "470dca2 already passed 112 stages at 2026-10-25 00:36:31 UTC; this documentation-only checkpoint does not claim a new full CI.",
+  "next_work": {
+    "parked": [
+      "ANM/ECL old spelling panels",
+      "HUD unsupported flag/register panels",
+      "WinMain flag/noinline panels"
+    ],
+    "read_only_audits": {
+      "vector_representation": "Exact SDK8-inspired storage-inheritance premise already tested consistently across eleven TUs on2026-10-21 and byte-neutral; no new model justified. SDK9 original class remains unproved.",
+      "EndingRun": "No new semantic factor; actual latest18-TU producer now has57-file closure:22 of52 prior files changed,5 added,none removed. Ending.cpp itself unchanged. One source-current measurement is being prepared, no source trial."
+    },
+    "source_trial_authorized_by_audits": false
+  },
+  "limits": [
+    "A matched-byte count is not whole-owner exact credit.",
+    "Independent comparison processes validate one fresh image, not two independent cold builds.",
+    "No full runtime, shared-global, production-profile or original source-spelling proof."
+  ]
+}
