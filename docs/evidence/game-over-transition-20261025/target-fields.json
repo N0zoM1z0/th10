@@ -1,0 +1,198 @@
+[
+  {
+    "offset": 2,
+    "type": "DIR32",
+    "symbol": "?g_ResultGameManager@@3PAUResultGameManagerView@@A",
+    "target": 4683792,
+    "addend": 0
+  },
+  {
+    "offset": 13,
+    "type": "DIR32",
+    "symbol": "?g_GameConfigurationFlags@@3IA",
+    "target": 4792308,
+    "addend": 0
+  },
+  {
+    "offset": 33,
+    "type": "DIR32",
+    "symbol": "?g_GameTransitionState@@3HA",
+    "target": 4792248,
+    "addend": 0
+  },
+  {
+    "offset": 75,
+    "type": "DIR32",
+    "symbol": "?g_AnmGameSpeed@@3MA",
+    "target": 4681592,
+    "addend": 0
+  },
+  {
+    "offset": 84,
+    "type": "DIR32",
+    "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+    "target": 4683488,
+    "addend": 0
+  },
+  {
+    "offset": 112,
+    "type": "DIR32",
+    "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+    "target": 4791312,
+    "addend": 0
+  },
+  {
+    "offset": 126,
+    "type": "REL32",
+    "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+    "target": 4495696,
+    "addend": 0
+  },
+  {
+    "offset": 163,
+    "type": "REL32",
+    "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+    "target": 4495472,
+    "addend": 0
+  },
+  {
+    "offset": 169,
+    "type": "DIR32",
+    "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+    "target": 4791312,
+    "addend": 0
+  },
+  {
+    "offset": 180,
+    "type": "REL32",
+    "symbol": "?AddVmVariant1@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+    "target": 4491968,
+    "addend": 0
+  },
+  {
+    "offset": 210,
+    "type": "REL32",
+    "symbol": "?RequestCaptureRectangle@AnmRenderManagerView@@QAEHHHHHH@Z",
+    "target": 4342912,
+    "addend": 0
+  },
+  {
+    "offset": 216,
+    "type": "DIR32",
+    "symbol": "?g_GuiView@@3PAUGuiView@@A",
+    "target": 4683532,
+    "addend": 0
+  },
+  {
+    "offset": 233,
+    "type": "REL32",
+    "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+    "target": 4495696,
+    "addend": 0
+  },
+  {
+    "offset": 273,
+    "type": "REL32",
+    "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+    "target": 4495472,
+    "addend": 0
+  },
+  {
+    "offset": 279,
+    "type": "DIR32",
+    "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+    "target": 4791312,
+    "addend": 0
+  },
+  {
+    "offset": 288,
+    "type": "REL32",
+    "symbol": "?AddVmVariant1@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+    "target": 4491968,
+    "addend": 0
+  },
+  {
+    "offset": 297,
+    "type": "DIR32",
+    "symbol": "??_C@_0BA@JMOMNNJJ@bgm?1th10_17?4wav?$AA@",
+    "target": 4645080,
+    "addend": 0
+  },
+  {
+    "offset": 310,
+    "type": "REL32",
+    "symbol": "?FrontEndLoadMusic@@YGHHPBD@Z",
+    "target": 4328080,
+    "addend": 0
+  },
+  {
+    "offset": 316,
+    "type": "DIR32",
+    "symbol": "?g_FrontEndSupervisorFlags@@3IA",
+    "target": 4791672,
+    "addend": 0
+  },
+  {
+    "offset": 331,
+    "type": "DIR32",
+    "symbol": "??_C@_05JLNEMJLN@dummy?$AA@",
+    "target": 4644760,
+    "addend": 0
+  },
+  {
+    "offset": 336,
+    "type": "DIR32",
+    "symbol": "?g_MainSoundOwner@@3PAEA",
+    "target": 4793744,
+    "addend": 0
+  },
+  {
+    "offset": 341,
+    "type": "REL32",
+    "symbol": "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z",
+    "target": 4449376,
+    "addend": 0
+  },
+  {
+    "offset": 350,
+    "type": "DIR32",
+    "symbol": "??_C@_05JLNEMJLN@dummy?$AA@",
+    "target": 4644760,
+    "addend": 0
+  },
+  {
+    "offset": 355,
+    "type": "DIR32",
+    "symbol": "?g_MainSoundOwner@@3PAEA",
+    "target": 4793744,
+    "addend": 0
+  },
+  {
+    "offset": 360,
+    "type": "REL32",
+    "symbol": "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z",
+    "target": 4449376,
+    "addend": 0
+  },
+  {
+    "offset": 366,
+    "type": "DIR32",
+    "symbol": "?g_GameStatisticsRows@@3PAUGameStatisticsOwner@@A",
+    "target": 4683836,
+    "addend": 0
+  },
+  {
+    "offset": 389,
+    "type": "DIR32",
+    "symbol": "?g_AnmGameSpeed@@3MA",
+    "target": 4681592,
+    "addend": 0
+  },
+  {
+    "offset": 401,
+    "type": "DIR32",
+    "symbol": "?g_AnmGameSpeed@@3MA",
+    "target": 4681592,
+    "addend": 0
+  }
+]

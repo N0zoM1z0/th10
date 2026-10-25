@@ -6056,3 +6056,16 @@ canonical ReplayDestroy graph justify one ReplayManager-only /GL /GS /EHs suppor
 correction. This restores all 18 fields/16 locals/alignment naturally; four ordinary
 ModRM bytes remain from equivalent chain argument-setup ordering. No exact/source
 admission follows. See [bounded proposal and receipts](evidence/replay-controller-cleanup-20261025/README.md).
+
+## Game-over transition isolated pilot (2026-10-25)
+
+Reviewed4231D0..42336A411 has sole actual Player425BCF caller, loading EDI
+from477830. Ordinary typed source in the actual Player callback /GL graph
+naturally reproduces EDI/plainRET but the whole body is413, nonexact. Model
+reuses423370 semantics with script128/completed0; statistics mark1D8A3 is
+canonical owner.tail.payload[2F], not an invented allocation. Two aggregate
+locals and private Capture/Music argument ABIs differ. Actual Ending music
+caller visibility is whole-body neutral; no broad caller/profile panel follows.
+All28 fields/3 locals retained; five existing guards533/all0 pass both images.
+See [complete evidence](evidence/game-over-transition-20261025/README.md).
+No source/exact, storage/product/runtime or phase-gate admission.

@@ -4,6 +4,16 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [game-over transition pilot](evidence/game-over-transition-20261025/README.md)
+retains two complete413/411 models in the actual Player callback graph.
+Ordinary typed source naturally recovers EDI/plainRET. One actual Ending music
+caller extension is whole-body neutral after diagnostic field masking; private
+callee ABI and aggregate-local scheduling still differ. All28 target/candidate
+fields and3 fixed locals are explicit, five same-image guards pass533/all0 in
+both images, and independent review approves isolated proposal scope only.
+Canonical statistics tail+2F replaces no storage owner. Source/metrics unchanged;
+park unsupported ABI/register/flag panels, preserve protected9/prior proofs.
+Focused docs-only checks pass; no new full-CI/runtime claim.
 Current [replay-controller cleanup pilot](evidence/replay-controller-cleanup-20261025/README.md)
 retains two complete 311-byte models. First structurally rejects despite equal
 extent: no-EH dependency selects EAX destructor ABI and shifted fields/locals.
