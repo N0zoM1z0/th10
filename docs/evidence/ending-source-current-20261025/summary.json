@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "source_checkpoint": "d0e7040f4a203097e0d7d38ed69fd424f9713748",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "ending_source_sha256": "dac885626c1100f6df8b3fe5df5ab71584556ff0728804b44aec3a0fd2982b78",
+  "ending_source_unchanged": true,
+  "image_sha256": "f825e3a0cc4c030bc8b61b57ff00d370fdf9c213f84647bff681d311c3d25cb8",
+  "native_cold_builds": 1,
+  "graph": {
+    "artifact_kind": "linked-pe",
+    "entry_symbol": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS",
+      "/EHs"
+    ],
+    "source": "src/Ending.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/FrontEnd.cpp",
+      "src/ScriptViewer.cpp",
+      "src/ScriptViewerWorker.cpp",
+      "src/FileSystem.cpp",
+      "src/Main.cpp",
+      "src/Chain.cpp",
+      "src/RandomMath.cpp",
+      "src/DecomphelpLeafAccessors.cpp",
+      "src/TransitionEffect.cpp",
+      "src/Sound.cpp",
+      "src/Player.cpp",
+      "src/GameErrorContext.cpp",
+      "src/PbgArchive.cpp"
+    ]
+  },
+  "reference_producer": "docs/evidence/ending-initialize/native-replay.json; final cold 18-TU checksum-entry graph, not older 17-TU EndingCreate graph",
+  "native_closure": {
+    "old_files": 52,
+    "current_files": 57,
+    "changed_old_files": 22,
+    "added_headers": [
+      "src/ArchiveOrDiskPath.hpp",
+      "src/EnemyPrimaryResources.hpp",
+      "src/Hint.hpp",
+      "src/Midi.hpp",
+      "src/StageScript.hpp"
+    ],
+    "removed_files": 0
+  },
+  "frozen_inputs": 1763,
+  "run": {
+    "whole_owner_exact": false,
+    "extent_and_inventory": {
+      "native": {
+        "size": 1576,
+        "reachable_bytes": 1498,
+        "code_and_alignment_size": 1504,
+        "table_words": 18,
+        "syntactic_fields": 92,
+        "local_branches": 53,
+        "calls": 45
+      },
+      "target": {
+        "size": 1568,
+        "reachable_bytes": 1488,
+        "code_and_alignment_size": 1496,
+        "table_words": 18,
+        "syntactic_fields": 90,
+        "local_branches": 53,
+        "calls": 45
+      }
+    },
+    "full_alignment_and_18_table_words_retained": true,
+    "canonical_parent_acceptance": false
+  },
+  "guards": {
+    "checks": 10,
+    "exact_bytes": 943,
+    "fields": 57
+  },
+  "sampling": {
+    "checks": 6,
+    "creation_order": 4,
+    "initializer": 2,
+    "passed": true
+  },
+  "additional_pending_three": {
+    "unit": "result-menu-pending-three",
+    "size": 65,
+    "fields": 2,
+    "same_image_strict_exact": true,
+    "already_credited": true,
+    "new_exact_credit": 0
+  },
+  "historical_current_comparison": {
+    "field_identities_and_payloads_proven": 92,
+    "raw_nonfield_bytes_compared": 1208,
+    "changed_nonfield_offsets": [
+      "0xBC",
+      "0x169"
+    ],
+    "change": "ECX to EAX caller operands, matching target and reflecting prior FrontEnd PendingThree correction",
+    "alignment_unchanged": true,
+    "all_18_table_local_offsets_unchanged": true,
+    "all_53_local_branches_unchanged": true,
+    "target_exactness_authority": false
+  },
+  "stage_exits": {
+    "root.exit": 0,
+    "cold.exit": 0,
+    "comparison.exit": 0,
+    "sampling.exit": 0,
+    "independent-review/replay.exit": 0,
+    "independent-review/sampling.exit": 0
+  },
+  "independent_review_passed": true,
+  "originals_preserved": true,
+  "receipts": [
+    {
+      "path": ".analysis/gpt-dots/ending-source-current-20261025/receipt.json",
+      "sha256": "4139a1534d05d16b17597d838ed5d29116b46abfe1b3687a44b73a2f81019d55"
+    },
+    {
+      "path": ".analysis/gpt-dots/ending-source-current-20261025/freeze.json",
+      "sha256": "e07ecaef628d18c5c0aff8227d770b34c08aee629b9818c0073a7bb5ddf26f1c"
+    },
+    {
+      "path": ".analysis/gpt-dots/ending-source-current-20261025/comparison-receipt.json",
+      "sha256": "7378bb752ce12c7f7a5b545e06ad7588f0e658edb490b5859e82d0627a225f7c"
+    },
+    {
+      "path": ".analysis/gpt-dots/ending-source-current-20261025/sampling.json",
+      "sha256": "74009abe328073ce94096467684d0860c0e0f83a5ac7d7977ea1c95a2460ca79"
+    },
+    {
+      "path": ".analysis/gpt-dots/ending-source-current-20261025/independent-review/receipt.json",
+      "sha256": "3ca7c9bdd45b432a7f249957e224132eeba5540cd48860118672950d270b5765"
+    },
+    {
+      "path": ".analysis/gpt-dots/ending-source-current-20261025/independent-review/history-identity-comparison.json",
+      "sha256": "a1b4561f7a9b91bab58902da5dc809d4e8f9a10f78c61a8dd3f2013e9fa56068"
+    },
+    {
+      "path": ".analysis/gpt-dots/ending-source-current-20261025/independent-review/pending-three.json",
+      "sha256": "63546d18ebe74865dfed13cb73a9df7e0fa0be02dbb08b3b265ce8f4692640b2"
+    }
+  ],
+  "credit": {
+    "new_exact_bytes": 0,
+    "new_exact_owners": 0,
+    "new_source_owners": 0,
+    "authored_denominator_change": 0
+  },
+  "ci_scope": "Source/configuration unchanged; prior 470dca2 112-stage pass at 2026-10-25 00:36:31 UTC remains applicable. This documentation-only checkpoint claims focused documentation checks, not new full CI.",
+  "next_work": {
+    "ending": "park source panels; no new semantic discrepancy identified",
+    "other_parked": [
+      "ANM/ECL prior panels",
+      "HUD unsupported flag/register panels",
+      "WinMain flag/noinline panels"
+    ],
+    "pilot": "GameManagerUpdateBody",
+    "target_size": 1544,
+    "hypothesis": "target captured-owner cleanup then scalar delete at 0x4524A1, versus current free(menu)",
+    "baseline_required": "actual single-TU /GL without /GS, before one-call source trial",
+    "status": "preparation only; no GameManager build or source edit"
+  },
+  "limits": [
+    "Historical/current field identities are not a final target canonical contract.",
+    "Run extent difference is not an ordinary mismatch-byte count or similarity score.",
+    "No runtime, original source-spelling or shared-global closure is established."
+  ]
+}

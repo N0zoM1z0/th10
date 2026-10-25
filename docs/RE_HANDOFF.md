@@ -26,7 +26,7 @@ the successful same-source retry. Current Gui SHA-256:
 `70184d8834dc24998debe484a67a6643b8e55a6327a6115835353e008a68309b`.
 Full CI passed all 112 stages for source checkpoint 470dca2, exit 0, with
 frozen inputs preserved, verified at 2026-10-25 00:36:31 UTC. This follow-on
-shared-baseline checkpoint changes documentation only and claims no new full CI.
+source-current refresh checkpoints change documentation only and claim no new full CI.
 Prior checkpoint failures and scoped observer repairs remain recorded separately.
 Park unsupported HUD spelling/flag panels: visible register/save scheduling
 and folded boss-flag tests do not establish another semantic factor. The
@@ -38,8 +38,13 @@ Original root/cold exit 1 was metadata serialization after successful linking.
 A separate ignored observer validates the retained image and identical
 independent replay, with no rebuild or overwritten failure. No new exact credit
 or new full-CI claim follows. The vector inheritance premise was already tested
-and neutral; Ending has no new semantic factor. A source-current Ending baseline
-is being prepared. Core, HUD and WinMain stay parked against old panels.
+and neutral. The [fresh Ending refresh](evidence/ending-source-current-20261025/README.md)
+passes native/independent review and remains 1576/1568, nonexact. Ten guards
+943/all 57, six sampling checks and existing PendingThree 65/all 2 pass; the only
+two historical/current non-field changes reflect the prior FrontEnd correction.
+Core, HUD, WinMain and Ending stay parked against old panels. GameManagerUpdateBody
+1544 is the next prepared pilot, requiring a fresh single-TU /GL-no-/GS baseline
+before its deallocator-call model; no GameManager build or edit has occurred.
 The separate global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
@@ -76,6 +81,7 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
+| Ending Run / target 1568 | Fresh source-current 1576 bytes; complete alignment / 18 table words / 53 locals retained; nonexact |
 | HUD UpdateStageElements / target 3836 | Candidate 3824 bytes: 3796 code + 0 alignment + 28 table; 72 syntactic fields / 249 locals / 21 calls; nonexact |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
 | Authored source-present nonexact / absent | 205 / 118 functions |
@@ -322,12 +328,30 @@ in this follow-on checkpoint.
 Keep the core residuals, HUD and WinMain parked against their old panels.
 The SDK8-inspired vector storage-inheritance premise was already tested on
 October 21 with eleven TUs consistently rebuilt and byte-neutral results; no
-new type-shape control is justified. EndingRun has no new source-contract error.
-Its correct latest producer is the 18-TU ending-load-script graph, not the older
-17-TU EndingCreate graph. Its current native closure has 57 files: 22 of 52 prior
-files changed, five headers added, none removed; Ending.cpp itself is unchanged.
-A single source-current Ending baseline is being prepared for measurement only.
-Do not tune against stale output or reopen unsupported aggregate/allocation panels.
+new type-shape control is justified.
+
+The [source-current Ending refresh](evidence/ending-source-current-20261025/README.md)
+uses the correct 18-TU checksum-entry producer, not older EndingCreate17. Its
+57-file closure has 22 changed old inputs and five added headers; Ending.cpp is
+unchanged. Root/cold/comparison/sampling exits are all 0, and independent replay
+passes. Run remains 1576/1568 with complete alignment, 18 table words and 53
+locals. Ten guards retain 943/all 57, six creation/initializer sampling checks
+pass, and same-image PendingThree is exact 65/all 2 as existing credit only.
+
+Complete historical/current comparison proves all 92 field identities/payloads.
+Of 1208 raw non-field bytes, only offsets 0xBC/0x169 change ECX to EAX, matching
+target and reflecting the prior FrontEnd dependency correction. This is not a
+target exactness score; no new semantic discrepancy or exact credit follows.
+Park Ending source panels. Source/configuration and metrics remain unchanged;
+the prior 470dca2 full-CI scope is preserved, with focused documentation checks
+only for this checkpoint.
+
+Next bounded pilot: GameManagerUpdateBody, target 1544. Target cleanup retains a
+captured owner before scalar delete 0x4524A1; current source uses free(menu).
+Prepare its actual single-TU /GL-without-/GS baseline before the one-call model.
+No GameManager native build or source edit has occurred. Preserve captured-owner
+lifetime, manual effects, ABI and complete-owner/guard gates; a shared CRT backend
+does not permit free/delete identity substitution.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not
