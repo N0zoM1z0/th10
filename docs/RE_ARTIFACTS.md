@@ -143,3 +143,21 @@ tar -xzf .analysis/handoff-cleanup-20261022/historical-gui-reports.tar.gz -C .
 Historical consumers may refer to files moved into these archives. Restore those
 files before rerunning the consumer. Rebuilding from today's source is a new
 experiment and does not reproduce a historical source-bound receipt.
+
+## Unsupported historical ECL intermediates, 2026-10-25
+
+Eleven inactive, explicitly unsupported ECL trials were losslessly archived: 121
+object intermediates and 11 bulky reports (15,009,038 payload bytes) in
+`.analysis/gpt-dots/ecl-unsupported-recoverable-archive-20261025/unsupported-ecl-intermediates.tar.xz` (191,724 bytes).
+Archive SHA-256: `8ae9553fbe03ee45ae0d3f4f0e011ee33d7fc2085ca2b1bc1f0df768ccf6ad65`.
+Full path/size/SHA-256 inventory and verification receipts remain alongside it.
+All 132 members passed archive and isolated-restore checks before recoverable
+original removal. PE/MAP/PDB, sources, scripts, manifests, logs, original
+`*-run.json` failure receipts and current baselines remain expanded. No new
+exactness credit. Retain this archive and its inventory indefinitely.
+
+Restore from repository root, or append one exact inventory member:
+
+```sh
+tar -xJf .analysis/gpt-dots/ecl-unsupported-recoverable-archive-20261025/unsupported-ecl-intermediates.tar.xz -C .
+```
