@@ -1,0 +1,12 @@
+--- src/StageScript.hpp
++++ isolated/StageScript.hpp
+@@ -36,8 +36,7 @@
+     AnmFloat3View up;
+     AnmFloat3View normalizedDirection;
+     AnmFloat3View cameraRight;
+-    float rockingOffset;
+-    float rockingOffsetY, rockingOffsetZ;
++    AnmFloat3View rocking; // isolated same-layout vector proposal
+     float value048;
+     AnmMatrixView viewMatrix, projectionMatrix;
+     AnmViewportView viewport;

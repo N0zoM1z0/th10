@@ -5986,3 +5986,20 @@ roles are explicitly bound by source base/addend, not neighboring anchor names.
 Five guards retain259/all4 in each image. No maintained source/exact/denominator
 change; original class/object lifetime and runtime closure remain unknown.
 See [complete evidence and rejected models](evidence/replay-stage-restore-20261025/README.md).
+
+## Scene camera initializer, 2026-10-25 bounded diagnostic
+
+Target4216F0–4218C0 is465 bytes, straight-line with40 absolute data fields,
+zero calls/branches/local targets, and15 external CC suffix bytes. Its sole
+decoded direct call4201CB belongs to startup4201B0. Existing semantic dump
+Fn004216F0 does not establish native context/source mapping. Main's camera
+aliases491D7C/491E94 map+154/+26C, separated by118 bytes; physical allocated
+storage ownership remains open. First existing-type proposal451 and genuine
+rocking-vector type proposal487 both reject complete465. Real vector
+constructors naturally retain stack XYZ writes; no volatile/padding/forced ABI
+was required. The vector proposal does not prove the original type. All40
+bindings use explicit operation provenance and base+addend, not nearest-symbol
+matching against overlapping4-byte data anchors. No source/exact credit or
+runtime/full-CI claim. Reopen only with independent lifetime/constructor or
+actual caller/compiler-context evidence. See
+[complete evidence](evidence/scene-camera-init-20261025/README.md).

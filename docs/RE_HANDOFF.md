@@ -4,6 +4,14 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [scene camera initializer pilot](evidence/scene-camera-init-20261025/README.md)
+retains complete existing-type451/465 and genuine rocking-vector487/465 models;
+both structurally reject. Existing vector constructors naturally preserve XYZ
+stack traffic, without fake writes. All40 target/candidate fields have explicit
+source-role/base/addend bindings and no local targets; four-byte diagnostic
+anchors overlap and are never treated as runnable storage. Independent review
+passes the isolated source proposals/inventories, not exactness. Source/metrics
+unchanged; no new full-CI/runtime claim. Park unsupported spelling/profile panels.
 Current [game activation pilot](evidence/game-activation-20261025/README.md)
 retains first complete activation456/397 and helper89/81 in the actual Player
 callback graph. A target-grounded flags-capture correction is whole-body raw
