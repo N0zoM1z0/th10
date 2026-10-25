@@ -595,13 +595,15 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
              link != NULL; link = link->next)
         {
             ReplayFrameData *frameData = (ReplayFrameData *)link->value;
-            int recordCount = frameData->recordEnd - frameData->records;
-            int recordBytes = recordCount * sizeof(ReplayRecData);
-            int fpsBytes = frameData->fpsEnd - frameData->fpsSamples;
-
-            allocationSize += recordBytes + fpsBytes;
-            stageHeader->payloadSize += recordBytes + fpsBytes;
-            stageHeader->recordCount += recordCount;
+            allocationSize +=
+                (frameData->recordEnd - frameData->records) * sizeof(ReplayRecData) +
+                (frameData->fpsEnd - frameData->fpsSamples);
+            stageHeaders[stage]->payloadSize +=
+                (frameData->recordEnd - frameData->records) * sizeof(ReplayRecData) +
+                (frameData->fpsEnd - frameData->fpsSamples);
+            frameData = (ReplayFrameData *)link->value;
+            stageHeaders[stage]->recordCount +=
+                frameData->recordEnd - frameData->records;
         }
 
         stageCount++;
@@ -639,7 +641,8 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
             int recordBytes = recordCount * sizeof(ReplayRecData);
             memcpy(uncompressedData + uncompressedSize, frameData->records,
                    recordBytes);
-            uncompressedSize += recordBytes;
+            uncompressedSize += (frameData->recordEnd - frameData->records) *
+                                sizeof(ReplayRecData);
         }
 
         // Target writes every node's records before any node's FPS samples.
@@ -650,7 +653,7 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
             int fpsBytes = frameData->fpsEnd - frameData->fpsSamples;
             memcpy(uncompressedData + uncompressedSize, frameData->fpsSamples,
                    fpsBytes);
-            uncompressedSize += fpsBytes;
+            uncompressedSize += frameData->fpsEnd - frameData->fpsSamples;
         }
     }
 

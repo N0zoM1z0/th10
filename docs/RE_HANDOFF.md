@@ -4,6 +4,18 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [Replay Save capture correction](evidence/replay-save-captures-20261025/README.md)
+recovers same-frame postcopy end rereads and prepass post-payload link/header
+recapture. Fresh baseline1748, separate postcopy1807/prepass1744 and combined1794
+remain nonexact versus1681; unchanged two-TU /GL /GS and real Save entry.
+Independent whole-owner review and separate canonical opener137/all12 pass;
+canonical parent is raw-identical to reviewed combined. All three host tests
+pass, including synthetic copy-observer positives and four negative controls.
+Repeated prepass end reads remain CSE'd, with no intervening target write/call;
+park unsupported volatile/register/profile panels. No metric or phase promotion.
+Full 112-stage CI passed, with 1504 frozen inputs preserved, verified 05:25:39 UTC.
+The transport timeout was recovered from durable exit0 logs, without rerunning.
+Only CI-result documentation changes afterward.
 Current [Sound command declaration checkpoint](evidence/game-sound-command-20261025/README.md)
 shares the unchanged SoundPlayer declarations and replaces GameManager's music
 facade with the real QueueCommand member on 0x492590 (not Supervisor 0x491C28).

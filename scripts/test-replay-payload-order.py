@@ -97,5 +97,65 @@ int main() {
             subprocess.run([str(binary)], check=True)
 
 
+    @unittest.skipUnless(shutil.which("c++"), "host C++ compiler unavailable")
+    def test_postcopy_uses_reread_of_captured_frame(self):
+        # Deliberate host-only copy observer: mutate the captured frame's end
+        # and replace link->value after the copy. This tests the extracted
+        # expressions, not normal memcpy behavior or game runtime aliasing.
+        loops = copy_loops()
+        prefix = r'''
+#include <cassert>
+#include <cstring>
+struct ReplayRecData { unsigned char bytes[6]; };
+struct ReplayFrameData {
+    ReplayRecData records[3]; ReplayRecData *recordEnd;
+    unsigned char fpsSamples[4]; unsigned char *fpsEnd;
+};
+struct ReplayListNode { void *value; ReplayListNode *next; };
+static ReplayFrameData original, replacement;
+static ReplayListNode *observedLink;
+static int copies;
+static void observedCopy(void *dst, const void *src, unsigned size) {
+    std::memcpy(dst, src, size);
+    ++copies;
+    original.recordEnd = original.records + 1;
+    original.fpsEnd = original.fpsSamples + 1;
+    observedLink->value = &replacement;
+}
+static int exercise() {
+    original.recordEnd = original.records + 2;
+    original.fpsEnd = original.fpsSamples + 2;
+    replacement.recordEnd = replacement.records + 3;
+    replacement.fpsEnd = replacement.fpsSamples + 3;
+    ReplayListNode node = {&original, 0}; observedLink = &node;
+    ReplayListNode stageFrameLists[1] = {{0, &node}};
+    int stage = 0, uncompressedSize = 0;
+    unsigned char uncompressedData[128] = {};
+'''
+        (ROOT / "build").mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix="replay-capture-", dir=ROOT / "build") as directory:
+            for index, loop in enumerate(loops):
+                # Positive: reread the original captured frame (6 / 1 bytes).
+                # Negatives: cached length and reloading link->value (12 / 2,
+                # respectively 18 / 3 bytes) must both be discriminated.
+                expected = 6 if index == 0 else 1
+                expressions = [loop, loop.replace(
+                    "uncompressedSize += (frameData->recordEnd - frameData->records) *\n                                sizeof(ReplayRecData);",
+                    "uncompressedSize += recordBytes;").replace(
+                    "uncompressedSize += frameData->fpsEnd - frameData->fpsSamples;",
+                    "uncompressedSize += fpsBytes;"),
+                    loop.replace("uncompressedSize +=", "frameData = (ReplayFrameData *)link->value; uncompressedSize +=")]
+                self.assertEqual(len(set(expressions)), 3)
+                for variant, expression in enumerate(expressions):
+                    code = prefix + expression.replace("memcpy(", "observedCopy(")
+                    code += "\nreturn uncompressedSize;\n}\nint main() { assert(copies == 0); int n = exercise(); assert(copies == 1); assert(n "
+                    code += ("==" if variant == 0 else "!=") + " " + str(expected) + "); }\n"
+                    source = Path(directory) / ("case-%d-%d.cpp" % (index, variant))
+                    binary = source.with_suffix("")
+                    source.write_text(code)
+                    subprocess.run([shutil.which("c++"), "-std=c++11", "-O2", str(source), "-o", str(binary)], check=True)
+                    subprocess.run([str(binary)], check=True)
+
+
 if __name__ == "__main__":
     unittest.main()
