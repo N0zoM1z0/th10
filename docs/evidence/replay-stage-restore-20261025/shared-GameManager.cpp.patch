@@ -1,0 +1,80 @@
+--- src/GameManager.cpp
++++ .analysis/replay-stage-restore-shared-20261025/source/GameManager.cpp
+@@ -328,15 +328,8 @@
+ extern void *g_GameMainChain;                              // 0x491BE4
+ extern u32 g_GameConfigurationSnapshot[13];               // 0x491D48
+ extern int g_GameNewSession;                              // 0x491FC4
+-extern int g_GameStartingStage;                           // 0x474C74
+-extern int g_GameStartupMode;                             // 0x474C7C
+-extern int g_GameStartupValue474C94;                            // 0x474C94
+-extern int g_GameStartupValue474C90;                           // 0x474C90
+-extern volatile int g_PlayerLivesDisplayCount;                            // 0x474C70
+ extern int g_GameLivesOverride;                            // 0x474CAC
+-extern short g_PlayerPower;
+ extern int g_GameRankResetCounter;                        // 0x474C9C
+-extern int g_EnemyRank;                                   // 0x474C98
+ extern int g_GameShotStartupValue;                        // 0x474C50
+ extern const char g_GameDefaultReplayPath[];              // 0x477710
+ extern GameFpsResetView *g_GameFpsReset;                   // 0x477708
+@@ -385,25 +378,25 @@
+     g_GameFrameCounter1 = 0;
+     if (g_GameNewSession != 0)
+     {
+-        if (g_GameStartupMode == 7)
+-            g_GameStartingStage = 4;
++        if (g_GameScoreState.stage == 7)
++            g_GameScoreState.value34 = 4;
+         GameStatisticsOwner *statistics = g_GameStatisticsRows;
+         GameStatisticsRecord &row =
+             statistics->records[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
+-        int startingStage = g_GameStartingStage;
++        int startingStage = g_GameScoreState.value34;
+         g_GameScoreState.unknown00 = row.StageInitialScore(startingStage);
+-        g_GameStartupValue474C94 = row.StageStartupValue(startingStage);
++        g_GameScoreState.value54 = row.StageStartupValue(startingStage);
+         if ((g_GameRuntimeFlags & 8) == 0)
+-            g_GameStartupValue474C90 = 0;
++            g_GameScoreState.value50 = 0;
+         g_GameScoreState.score = 0;
+         g_GameScoreState.SetFaith(50000);
+         if ((g_GameRuntimeFlags & 0x10) == 0)
+-            g_PlayerLivesDisplayCount = 2;
++            static_cast<volatile GameScoreStateView &>(g_GameScoreState).value30 = 2;
+         else if (g_GameLivesOverride == 0)
+-            g_PlayerLivesDisplayCount = 9;
++            static_cast<volatile GameScoreStateView &>(g_GameScoreState).value30 = 9;
+         else
+-            g_PlayerLivesDisplayCount = g_GameLivesOverride - 1;
+-        g_PlayerPower = g_GameStartupMode != 1 ? 80 : 0;
++            static_cast<volatile GameScoreStateView &>(g_GameScoreState).value30 = g_GameLivesOverride - 1;
++        g_GameScoreState.power = g_GameScoreState.stage != 1 ? 80 : 0;
+         g_GameRuntimeFlags &= ~4;
+         if (manager->initializationMode == 0)
+         {
+@@ -413,7 +406,7 @@
+                 ++startRow.sessionStarts;
+         }
+         g_GameRankResetCounter = 0;
+-        g_EnemyRank = (g_GameRuntimeFlags & 8) != 0 ? -512 : 0;
++        g_GameScoreState.rank = (g_GameRuntimeFlags & 8) != 0 ? -512 : 0;
+     }
+     else if (g_GameScoreState.unknown00 < g_GameScoreState.score)
+         g_GameScoreState.unknown00 = g_GameScoreState.score;
+@@ -528,7 +521,7 @@
+                 ascii->asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
+             transition = g_GameTransitionState;
+         }
+-        if (g_GameComparison474C80 == g_GameStartupMode)
++        if (g_GameComparison474C80 == g_GameScoreState.stage)
+             g_GameRuntimeFlags |= 1u;
+     }
+     else if (transition == 11)
+@@ -545,7 +538,7 @@
+     else if (transition == 13)
+     {
+         g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
+-        if (g_GameComparison474C80 != g_GameStartupMode)
++        if (g_GameComparison474C80 != g_GameScoreState.stage)
+         {
+             th10::leaf::Fn00418A90(g_GameStageState);
+             g_GameRuntimeFlags |= 8u;

@@ -1,0 +1,33 @@
+--- src/GameScoreState.hpp
++++ .analysis/replay-stage-restore-shared-20261025/source/GameScoreState.hpp
+@@ -24,7 +24,14 @@
+     int faith;
+     int unknown10;
+     GameScoreTimerView timer;
+-    unsigned char unknown28[0x30];
++    unsigned char unknown28[8];
++    int value30;
++    int value34;
++    unsigned char unknown38[4];
++    int stage;
++    unsigned char unknown40[0x10];
++    int value50;
++    int value54;
+     int rank;
+ 
+     void AddFaith(int amount);
+@@ -44,6 +51,14 @@
+     (offsetof(GameScoreStateView, timer) == 0x14) ? 1 : -1];
+ typedef char GameScoreStateRankAt58[
+     (offsetof(GameScoreStateView, rank) == 0x58) ? 1 : -1];
++typedef char GameScoreStateSharedRestoreOffsets[
++    (offsetof(GameScoreStateView, value30) == 0x30 &&
++     offsetof(GameScoreStateView, value34) == 0x34 &&
++     offsetof(GameScoreStateView, unknown38) == 0x38 &&
++     offsetof(GameScoreStateView, stage) == 0x3c &&
++     offsetof(GameScoreStateView, value50) == 0x50 &&
++     offsetof(GameScoreStateView, value54) == 0x54) ? 1 : -1];
++
+ typedef char GameScoreStateSizeIs5C[
+     (sizeof(GameScoreStateView) == 0x5c) ? 1 : -1];
+ 

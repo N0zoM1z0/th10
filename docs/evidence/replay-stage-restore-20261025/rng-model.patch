@@ -1,0 +1,64 @@
+--- /home/pentester/coding/codex_ida/th10-reconstruction/th10/.analysis/replay-stage-restore-shared-20261025/source/ReplayManager.cpp
++++ /home/pentester/coding/codex_ida/th10-reconstruction/th10/.analysis/replay-stage-restore-rng-20261025/source/ReplayManager.cpp
+@@ -5,6 +5,7 @@
+ #include "Decompress.hpp"
+ #include "FileSystem.hpp"
+ #include "GameScoreState.hpp"
++#include "Rng.hpp"
+ #include "Lzss.hpp"
+ #include "Player.hpp"
+ 
+@@ -82,8 +83,6 @@
+ extern int g_ReplayCharacter;
+ extern int g_ReplayShotType;
+ extern int g_ReplayDifficulty;
+-extern unsigned short g_ReplayStageSeed;
+-extern int g_ReplayStageSeedCounter;
+ extern unsigned int g_ReplayStageFlags;
+ extern unsigned int g_ReplayStageValue1B8;
+ extern void *g_ReplayChainManager;
+@@ -193,8 +192,8 @@
+         }
+ 
+         stageHeader->stageIndex = (short)g_GameScoreState.stage;
+-        stageHeader->unknown002 = g_ReplayStageSeed;
+-        g_ReplayStageSeedCounter = 0;
++        stageHeader->unknown002 = g_RngView.seed;
++        g_RngView.generationCount = 0;
+         stageHeader->unknownFlag1C0 = g_ReplayStageFlags;
+         if (g_ReplayStageFlags != 0)
+         {
+@@ -253,8 +252,8 @@
+         g_ReplayCharacter = replayData->character;
+         g_ReplayShotType = replayData->shotType;
+         g_ReplayDifficulty = replayData->difficulty;
+-        g_ReplayStageSeed = stageHeader->unknown002;
+-        g_ReplayStageSeedCounter = 0;
++        g_RngView.seed = stageHeader->unknown002;
++        g_RngView.generationCount = 0;
+         g_GameScoreState.score = stageHeader->unknown00C;
+         g_GameScoreState.power = stageHeader->unknown010;
+         g_GameScoreState.SetFaith(stageHeader->unknown014 * 10);
+@@ -845,9 +844,9 @@
+             memset(allocated, 0, sizeof(*allocated));
+         replay->stageHeaders[g_GameScoreState.stage] = allocated;
+         ReplayStageDataHeader *header = replay->stageHeaders[g_GameScoreState.stage];
+-        header->unknown002 = g_ReplayStageSeed;
++        header->unknown002 = g_RngView.seed;
+         short stage = (short)g_GameScoreState.stage;
+-        g_ReplayStageSeedCounter = 0;
++        g_RngView.generationCount = 0;
+         header->stageIndex = stage;
+         header->unknownFlag1C0 = g_ReplayStageFlags;
+     }
+@@ -858,8 +857,8 @@
+         state.fpsCursor = state.fpsStart;
+         state.recordIndex = 0;
+         ReplayStageDataHeader *header = state.header;
+-        g_ReplayStageSeed = header->unknown002;
+-        g_ReplayStageSeedCounter = 0;
++        g_RngView.seed = header->unknown002;
++        g_RngView.generationCount = 0;
+         g_GameScoreState.score = header->unknown00C;
+         g_GameScoreState.power = header->unknown010;
+         g_GameScoreState.SetFaith(header->unknown014 * 10);

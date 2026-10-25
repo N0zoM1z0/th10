@@ -1,0 +1,340 @@
+{
+  "all_fields_bound": true,
+  "candidate_size": 357,
+  "fields": [
+    {
+      "addend": 0,
+      "candidate_address": "0x406018",
+      "candidate_offset": 15,
+      "symbol": "??2@YAPAXI@Z",
+      "target_address": "0x452493",
+      "target_base": "0x452493",
+      "target_offset": 15,
+      "type": "REL32"
+    },
+    {
+      "addend": 60,
+      "candidate_address": "0x406264",
+      "candidate_offset": 40,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c7c",
+      "target_base": "0x474c40",
+      "target_offset": 43,
+      "type": "DIR32"
+    },
+    {
+      "addend": 0,
+      "candidate_address": "0x4062e8",
+      "candidate_offset": 46,
+      "symbol": "?g_ReplayStageFlags@@3IA",
+      "target_address": "0x491fc4",
+      "target_base": "0x491fc4",
+      "target_offset": 100,
+      "type": "DIR32"
+    },
+    {
+      "addend": 60,
+      "candidate_address": "0x406264",
+      "candidate_offset": 56,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c7c",
+      "target_base": "0x474c40",
+      "target_offset": 53,
+      "type": "DIR32"
+    },
+    {
+      "addend": 0,
+      "candidate_address": "0x4062fc",
+      "candidate_offset": 67,
+      "symbol": "?g_RngView@@3URngView@@A",
+      "target_address": "0x4918b0",
+      "target_base": "0x4918b0",
+      "target_offset": 64,
+      "type": "DIR32"
+    },
+    {
+      "addend": 60,
+      "candidate_address": "0x406264",
+      "candidate_offset": 78,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c7c",
+      "target_base": "0x474c40",
+      "target_offset": 75,
+      "type": "DIR32"
+    },
+    {
+      "addend": 4,
+      "candidate_address": "0x406300",
+      "candidate_offset": 106,
+      "symbol": "?g_RngView@@3URngView@@A",
+      "target_address": "0x4918b4",
+      "target_base": "0x4918b0",
+      "target_offset": 81,
+      "type": "DIR32"
+    },
+    {
+      "addend": 60,
+      "candidate_address": "0x406264",
+      "candidate_offset": 133,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c7c",
+      "target_base": "0x474c40",
+      "target_offset": 136,
+      "type": "DIR32"
+    },
+    {
+      "addend": 4,
+      "candidate_address": "0x40622c",
+      "candidate_offset": 187,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c44",
+      "target_base": "0x474c40",
+      "target_offset": 202,
+      "type": "DIR32"
+    },
+    {
+      "addend": 0,
+      "candidate_address": "0x4062fc",
+      "candidate_offset": 197,
+      "symbol": "?g_RngView@@3URngView@@A",
+      "target_address": "0x4918b0",
+      "target_base": "0x4918b0",
+      "target_offset": 183,
+      "type": "DIR32"
+    },
+    {
+      "addend": 8,
+      "candidate_address": "0x406230",
+      "candidate_offset": 204,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c48",
+      "target_base": "0x474c40",
+      "target_offset": 213,
+      "type": "DIR32"
+    },
+    {
+      "addend": 0,
+      "candidate_address": "0x406228",
+      "candidate_offset": 218,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c40",
+      "target_base": "0x474c40",
+      "target_offset": 227,
+      "type": "DIR32"
+    },
+    {
+      "addend": 4,
+      "candidate_address": "0x406300",
+      "candidate_offset": 224,
+      "symbol": "?g_RngView@@3URngView@@A",
+      "target_address": "0x4918b4",
+      "target_base": "0x4918b0",
+      "target_offset": 189,
+      "type": "DIR32"
+    },
+    {
+      "addend": 0,
+      "candidate_address": "0x403c40",
+      "candidate_offset": 233,
+      "symbol": "?SetFaith@GameScoreStateView@@QAEXH@Z",
+      "target_address": "0x418b80",
+      "target_base": "0x418b80",
+      "target_offset": 232,
+      "type": "REL32"
+    },
+    {
+      "addend": 36,
+      "candidate_address": "0x40624c",
+      "candidate_offset": 239,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c64",
+      "target_base": "0x474c40",
+      "target_offset": 238,
+      "type": "DIR32"
+    },
+    {
+      "addend": 36,
+      "candidate_address": "0x40624c",
+      "candidate_offset": 255,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c64",
+      "target_base": "0x474c40",
+      "target_offset": 254,
+      "type": "DIR32"
+    },
+    {
+      "addend": 32,
+      "candidate_address": "0x406248",
+      "candidate_offset": 264,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c60",
+      "target_base": "0x474c40",
+      "target_offset": 263,
+      "type": "DIR32"
+    },
+    {
+      "addend": 0,
+      "candidate_address": "0x4062a0",
+      "candidate_offset": 268,
+      "symbol": "?g_PlayerTimerScale@@3MA",
+      "target_address": "0x476f78",
+      "target_base": "0x476f78",
+      "target_offset": 267,
+      "type": "DIR32"
+    },
+    {
+      "addend": 36,
+      "candidate_address": "0x40624c",
+      "candidate_offset": 274,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c64",
+      "target_base": "0x474c40",
+      "target_offset": 273,
+      "type": "DIR32"
+    },
+    {
+      "addend": 24,
+      "candidate_address": "0x406240",
+      "candidate_offset": 283,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c58",
+      "target_base": "0x474c40",
+      "target_offset": 282,
+      "type": "DIR32"
+    },
+    {
+      "addend": 20,
+      "candidate_address": "0x40623c",
+      "candidate_offset": 289,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c54",
+      "target_base": "0x474c40",
+      "target_offset": 288,
+      "type": "DIR32"
+    },
+    {
+      "addend": 28,
+      "candidate_address": "0x406244",
+      "candidate_offset": 295,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c5c",
+      "target_base": "0x474c40",
+      "target_offset": 294,
+      "type": "DIR32"
+    },
+    {
+      "addend": 48,
+      "candidate_address": "0x406258",
+      "candidate_offset": 304,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c70",
+      "target_base": "0x474c40",
+      "target_offset": 303,
+      "type": "DIR32"
+    },
+    {
+      "addend": 88,
+      "candidate_address": "0x406280",
+      "candidate_offset": 313,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c98",
+      "target_base": "0x474c40",
+      "target_offset": 312,
+      "type": "DIR32"
+    },
+    {
+      "addend": 80,
+      "candidate_address": "0x406278",
+      "candidate_offset": 324,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c90",
+      "target_base": "0x474c40",
+      "target_offset": 323,
+      "type": "DIR32"
+    },
+    {
+      "addend": 60,
+      "candidate_address": "0x406264",
+      "candidate_offset": 329,
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "target_address": "0x474c7c",
+      "target_base": "0x474c40",
+      "target_offset": 328,
+      "type": "DIR32"
+    },
+    {
+      "addend": 0,
+      "candidate_address": "0x4062ec",
+      "candidate_offset": 350,
+      "symbol": "?g_ReplayStageValue1B8@@3IA",
+      "target_address": "0x474c9c",
+      "target_base": "0x474c9c",
+      "target_offset": 349,
+      "type": "DIR32"
+    }
+  ],
+  "local_branches": {
+    "candidate": [
+      {
+        "destination": "0x4026fb",
+        "destination_offset": 123,
+        "mnemonic": "jne",
+        "offset": 6,
+        "width": 2
+      },
+      {
+        "destination": "0x4026a7",
+        "destination_offset": 39,
+        "mnemonic": "je",
+        "offset": 26,
+        "width": 2
+      },
+      {
+        "destination": "0x4027e3",
+        "destination_offset": 355,
+        "mnemonic": "jne",
+        "offset": 126,
+        "width": 6
+      },
+      {
+        "destination": "0x402796",
+        "destination_offset": 278,
+        "mnemonic": "jne",
+        "offset": 251,
+        "width": 2
+      }
+    ],
+    "target": [
+      {
+        "destination": "0x42a71e",
+        "destination_offset": 126,
+        "mnemonic": "jne",
+        "offset": 6,
+        "width": 2
+      },
+      {
+        "destination": "0x42a6c9",
+        "destination_offset": 41,
+        "mnemonic": "je",
+        "offset": 28,
+        "width": 2
+      },
+      {
+        "destination": "0x42a802",
+        "destination_offset": 354,
+        "mnemonic": "jne",
+        "offset": 129,
+        "width": 6
+      },
+      {
+        "destination": "0x42a7b5",
+        "destination_offset": 277,
+        "mnemonic": "jne",
+        "offset": 250,
+        "width": 2
+      }
+    ]
+  },
+  "scope": "Diagnostic role-supported complete27 address-field correspondence; source/model binding only, not whole-owner equality, acceptance, data ownership or runtime proof. Absolute candidate aliases never determine roles.",
+  "target_size": 356
+}

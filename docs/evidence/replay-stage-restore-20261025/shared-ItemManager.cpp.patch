@@ -1,0 +1,70 @@
+--- src/ItemManager.cpp
++++ .analysis/replay-stage-restore-shared-20261025/source/ItemManager.cpp
+@@ -143,7 +143,6 @@
+ extern ItemPowerDisplayOwnerView *g_ItemPowerDisplayOwner; // 0x47770C
+ extern unsigned char g_MainSoundOwner[0x52d0];
+ extern unsigned int g_PlayerInputBits;
+-extern short g_PlayerPower;
+ extern int g_EnemyDifficulty;
+ 
+ // TH10-local call contracts for still source-absent callees. Their target
+@@ -413,7 +412,7 @@
+         case 10:
+         {
+             int changed = g_GameScoreState.AddPower(1);
+-            int power = g_PlayerPower;
++            int power = g_GameScoreState.power;
+             g_ItemPowerDisplayOwner->UpdatePowerDisplay(power / 20,
+                 ((power % 20) * 100) / 20);
+             if (changed != 0)
+@@ -423,14 +422,14 @@
+                     -1, 0xffffff40);
+                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                     QueueSoundCue(29, item->worldPosition.x);
+-                if (g_PlayerPower >= 100)
++                if (g_GameScoreState.power >= 100)
+                     convertPowerItems = 1;
+                 g_GameScoreState.AddRank(12);
+             }
+             else
+             {
+                 g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+-                    g_PlayerPower / 2, 0xffff4040);
++                    g_GameScoreState.power / 2, 0xffff4040);
+             }
+             g_GameScoreState.ExtendFaithTimer(60);
+             break;
+@@ -485,7 +484,7 @@
+         case 11:
+         {
+             int changed = g_GameScoreState.AddPower(20);
+-            int power = g_PlayerPower;
++            int power = g_GameScoreState.power;
+             g_ItemPowerDisplayOwner->UpdatePowerDisplay(power / 20,
+                 ((power % 20) * 100) / 20);
+             if (changed != 0)
+@@ -496,13 +495,13 @@
+                 g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+                     -1, 0xffffff40);
+                 g_GameScoreState.AddRank(24);
+-                if (g_PlayerPower >= 100)
++                if (g_GameScoreState.power >= 100)
+                     convertPowerItems = 1;
+             }
+             else
+             {
+                 g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+-                    g_PlayerPower / 2, 0xffff4040);
++                    g_GameScoreState.power / 2, 0xffff4040);
+             }
+             g_GameScoreState.ExtendFaithTimer(20);
+             break;
+@@ -805,7 +804,7 @@
+     item->timer.subframe = 0.0f;
+     item->timer.previous = -1;
+     item->unknown3C4 = 0;
+-    if (g_PlayerPower >= 100)
++    if (g_GameScoreState.power >= 100)
+     {
+         switch (kind)
+         {

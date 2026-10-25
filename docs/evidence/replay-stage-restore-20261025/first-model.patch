@@ -1,0 +1,43 @@
+--- src/ReplayManager.cpp
++++ candidate/ReplayManager.cpp
+@@ -842,3 +842,40 @@
+ 
+     return 0;
+ }
++
++// Target 0x42A6A0: restore or open the current replay stage.
++void GameRestoreReplayState(ReplayManager *replay)
++{
++    if (replay->mode == REPLAY_MANAGER_RECORD)
++    {
++        ReplayStageDataHeader *allocated = new ReplayStageDataHeader;
++        if (allocated != NULL)
++            memset(allocated, 0, sizeof(*allocated));
++        replay->stageHeaders[g_ReplayCurrentStage] = allocated;
++        ReplayStageDataHeader *header = replay->stageHeaders[g_ReplayCurrentStage];
++        header->unknown002 = g_ReplayStageSeed;
++        short stage = (short)g_ReplayCurrentStage;
++        g_ReplayStageSeedCounter = 0;
++        header->stageIndex = stage;
++        header->unknownFlag1C0 = g_ReplayStageFlags;
++    }
++    else if (replay->mode == REPLAY_MANAGER_PLAYBACK)
++    {
++        ReplayStageState &state = replay->stageStates[g_ReplayCurrentStage];
++        state.recordCursor = state.recordStart;
++        state.fpsCursor = state.fpsStart;
++        state.recordIndex = 0;
++        ReplayStageDataHeader *header = state.header;
++        g_ReplayStageSeed = header->unknown002;
++        g_ReplayStageSeedCounter = 0;
++        g_ReplayStageValue00C = header->unknown00C;
++        g_ReplayStageValue010 = header->unknown010;
++        g_GameScoreState.SetFaith(header->unknown014 * 10);
++        g_GameScoreState.SetTimerCurrent(header->unknown018);
++        g_ReplayStageValue01C = header->unknown01C;
++        g_ReplayStageValue020 = header->unknown020;
++        g_ReplayStageValue1B4 = header->unknown1B4;
++        g_ReplayStageValue1B8 =
++            replay->stageStates[g_ReplayCurrentStage].header->unknown1B8;
++    }
++}

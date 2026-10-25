@@ -1,0 +1,195 @@
+--- .analysis/replay-stage-restore-20261025/ReplayManager.cpp
++++ .analysis/replay-stage-restore-shared-20261025/source/ReplayManager.cpp
+@@ -79,20 +79,12 @@
+ extern unsigned short g_ReplayInputFlags;
+ extern unsigned int g_ReplayInputBehaviorFlags;
+ extern ReplayFpsSource *g_ReplayFpsSource;
+-extern int g_ReplayCurrentStage;
+ extern int g_ReplayCharacter;
+ extern int g_ReplayShotType;
+ extern int g_ReplayDifficulty;
+ extern unsigned short g_ReplayStageSeed;
+ extern int g_ReplayStageSeedCounter;
+ extern unsigned int g_ReplayStageFlags;
+-extern unsigned int g_ReplayStageValue00C;
+-extern unsigned short g_ReplayStageValue010;
+-extern unsigned int g_ReplayStageValue014;
+-extern unsigned int g_ReplayStageValue018;
+-extern unsigned int g_ReplayStageValue01C;
+-extern unsigned int g_ReplayStageValue020;
+-extern unsigned int g_ReplayStageValue1B4;
+ extern unsigned int g_ReplayStageValue1B8;
+ extern void *g_ReplayChainManager;
+ 
+@@ -175,8 +167,8 @@
+     {
+         g_ReplayManager = this;
+ 
+-        ReplayClearStageFrameData(this, g_ReplayCurrentStage);
+-        currentFrameLink = ReplayAllocateFrameData(this, g_ReplayCurrentStage);
++        ReplayClearStageFrameData(this, g_GameScoreState.stage);
++        currentFrameLink = ReplayAllocateFrameData(this, g_GameScoreState.stage);
+ 
+         fileHeader = new ReplayFileHeader;
+         memset(fileHeader, 0, sizeof(*fileHeader));
+@@ -189,7 +181,7 @@
+ 
+         ReplayStageDataHeader *stageHeader = new ReplayStageDataHeader;
+         memset(stageHeader, 0, sizeof(*stageHeader));
+-        stageHeaders[g_ReplayCurrentStage] = stageHeader;
++        stageHeaders[g_GameScoreState.stage] = stageHeader;
+ 
+         replayData->character = g_ReplayCharacter;
+         replayData->shotType = g_ReplayShotType;
+@@ -200,7 +192,7 @@
+                    sizeof(replayData->runtimeSnapshot));
+         }
+ 
+-        stageHeader->stageIndex = (short)g_ReplayCurrentStage;
++        stageHeader->stageIndex = (short)g_GameScoreState.stage;
+         stageHeader->unknown002 = g_ReplayStageSeed;
+         g_ReplayStageSeedCounter = 0;
+         stageHeader->unknownFlag1C0 = g_ReplayStageFlags;
+@@ -209,14 +201,14 @@
+             stageHeader->unknown024 = 0;
+             stageHeader->unknown028 = 0;
+         }
+-        stageHeader->unknown00C = g_ReplayStageValue00C;
+-        stageHeader->unknown010 = g_ReplayStageValue010;
+-        stageHeader->unknown014 = g_ReplayStageValue014;
+-        stageHeader->unknown018 = g_ReplayStageValue018;
+-        stageHeader->unknown01C = g_ReplayStageValue01C;
+-        stageHeader->unknown020 = g_ReplayStageValue020;
+-        stageHeader->unknown1B4 = g_ReplayStageValue1B4;
+-        replayData->unknown060 = g_ReplayStageValue1B4;
++        stageHeader->unknown00C = g_GameScoreState.score;
++        stageHeader->unknown010 = g_GameScoreState.power;
++        stageHeader->unknown014 = g_GameScoreState.faith;
++        stageHeader->unknown018 = g_GameScoreState.timer.current;
++        stageHeader->unknown01C = g_GameScoreState.value30;
++        stageHeader->unknown020 = g_GameScoreState.rank;
++        stageHeader->unknown1B4 = g_GameScoreState.value50;
++        replayData->unknown060 = g_GameScoreState.value50;
+ 
+         updateChain = new ReplayChainElement;
+         updateChain->callback = ReplayProcessFrameCallback;
+@@ -239,7 +231,7 @@
+         drawChain->isHeapAllocated = 1;
+         ReplayAddToDrawChain(g_ReplayChainManager, drawChain, 5);
+ 
+-        activeStage = g_ReplayCurrentStage;
++        activeStage = g_GameScoreState.stage;
+         return 0;
+     }
+ 
+@@ -252,7 +244,7 @@
+         memcpy(g_ReplayRuntime->replaySnapshot, replayData->runtimeSnapshot,
+                sizeof(replayData->runtimeSnapshot));
+ 
+-        ReplayStageState &stageState = stageStates[g_ReplayCurrentStage];
++        ReplayStageState &stageState = stageStates[g_GameScoreState.stage];
+         ReplayStageDataHeader *stageHeader = stageState.header;
+         stageState.recordCursor = stageState.recordStart;
+         stageState.recordIndex = 0;
+@@ -263,13 +255,13 @@
+         g_ReplayDifficulty = replayData->difficulty;
+         g_ReplayStageSeed = stageHeader->unknown002;
+         g_ReplayStageSeedCounter = 0;
+-        g_ReplayStageValue00C = stageHeader->unknown00C;
+-        g_ReplayStageValue010 = stageHeader->unknown010;
++        g_GameScoreState.score = stageHeader->unknown00C;
++        g_GameScoreState.power = stageHeader->unknown010;
+         g_GameScoreState.SetFaith(stageHeader->unknown014 * 10);
+         g_GameScoreState.SetTimerCurrent(stageHeader->unknown018);
+-        g_ReplayStageValue01C = stageHeader->unknown01C;
+-        g_ReplayStageValue020 = stageHeader->unknown020;
+-        g_ReplayStageValue1B4 = stageHeader->unknown1B4;
++        g_GameScoreState.value30 = stageHeader->unknown01C;
++        g_GameScoreState.rank = stageHeader->unknown020;
++        g_GameScoreState.value50 = stageHeader->unknown1B4;
+         g_ReplayStageValue1B8 = stageHeader->unknown1B8;
+ 
+         updateChain = new ReplayChainElement;
+@@ -349,7 +341,7 @@
+ 
+     if (mode == REPLAY_MANAGER_RECORD)
+     {
+-        int stage = g_ReplayCurrentStage;
++        int stage = g_GameScoreState.stage;
+         ReplayStageDataHeader *stageHeader = stageHeaders[stage];
+ 
+         ReplayClearStageFrameData(this, stage);
+@@ -357,13 +349,13 @@
+ 
+         if (g_ReplayStageFlags == 0)
+         {
+-            stageHeader->unknown00C = g_ReplayStageValue00C;
+-            stageHeader->unknown010 = g_ReplayStageValue010;
+-            stageHeader->unknown014 = g_ReplayStageValue014;
+-            stageHeader->unknown018 = g_ReplayStageValue018;
+-            stageHeader->unknown01C = g_ReplayStageValue01C;
+-            stageHeader->unknown020 = g_ReplayStageValue020;
+-            stageHeader->unknown1B4 = g_ReplayStageValue1B4;
++            stageHeader->unknown00C = g_GameScoreState.score;
++            stageHeader->unknown010 = g_GameScoreState.power;
++            stageHeader->unknown014 = g_GameScoreState.faith;
++            stageHeader->unknown018 = g_GameScoreState.timer.current;
++            stageHeader->unknown01C = g_GameScoreState.value30;
++            stageHeader->unknown020 = g_GameScoreState.rank;
++            stageHeader->unknown1B4 = g_GameScoreState.value50;
+         }
+ 
+         Player *runtime = g_Player;
+@@ -391,7 +383,7 @@
+     }
+     else if (mode == REPLAY_MANAGER_PLAYBACK)
+     {
+-        int stage = g_ReplayCurrentStage;
++        int stage = g_GameScoreState.stage;
+         ReplayStageDataHeader *stageHeader = stageStates[stage].header;
+         Player *runtime = g_Player;
+ 
+@@ -851,31 +843,31 @@
+         ReplayStageDataHeader *allocated = new ReplayStageDataHeader;
+         if (allocated != NULL)
+             memset(allocated, 0, sizeof(*allocated));
+-        replay->stageHeaders[g_ReplayCurrentStage] = allocated;
+-        ReplayStageDataHeader *header = replay->stageHeaders[g_ReplayCurrentStage];
++        replay->stageHeaders[g_GameScoreState.stage] = allocated;
++        ReplayStageDataHeader *header = replay->stageHeaders[g_GameScoreState.stage];
+         header->unknown002 = g_ReplayStageSeed;
+-        short stage = (short)g_ReplayCurrentStage;
++        short stage = (short)g_GameScoreState.stage;
+         g_ReplayStageSeedCounter = 0;
+         header->stageIndex = stage;
+         header->unknownFlag1C0 = g_ReplayStageFlags;
+     }
+     else if (replay->mode == REPLAY_MANAGER_PLAYBACK)
+     {
+-        ReplayStageState &state = replay->stageStates[g_ReplayCurrentStage];
++        ReplayStageState &state = replay->stageStates[g_GameScoreState.stage];
+         state.recordCursor = state.recordStart;
+         state.fpsCursor = state.fpsStart;
+         state.recordIndex = 0;
+         ReplayStageDataHeader *header = state.header;
+         g_ReplayStageSeed = header->unknown002;
+         g_ReplayStageSeedCounter = 0;
+-        g_ReplayStageValue00C = header->unknown00C;
+-        g_ReplayStageValue010 = header->unknown010;
++        g_GameScoreState.score = header->unknown00C;
++        g_GameScoreState.power = header->unknown010;
+         g_GameScoreState.SetFaith(header->unknown014 * 10);
+         g_GameScoreState.SetTimerCurrent(header->unknown018);
+-        g_ReplayStageValue01C = header->unknown01C;
+-        g_ReplayStageValue020 = header->unknown020;
+-        g_ReplayStageValue1B4 = header->unknown1B4;
++        g_GameScoreState.value30 = header->unknown01C;
++        g_GameScoreState.rank = header->unknown020;
++        g_GameScoreState.value50 = header->unknown1B4;
+         g_ReplayStageValue1B8 =
+-            replay->stageStates[g_ReplayCurrentStage].header->unknown1B8;
+-    }
+-}
++            replay->stageStates[g_GameScoreState.stage].header->unknown1B8;
++    }
++}

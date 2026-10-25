@@ -1,0 +1,238 @@
+{
+  "acceptance_authority": "none",
+  "authored_exact_bytes": 75782,
+  "authored_exact_owners": 416,
+  "authored_owned_bytes": 273658,
+  "baseline_head": "63b1137d501760e9193b338c1798a1c85f6c9765",
+  "commands": {
+    "first": "3e8738a7cc6e4bd1aa2f3c4145fab6a9",
+    "preflight": "2db1c05a8ce6484a84a9ff7a3f288019",
+    "rng": "dd8718eaa41a496b97fd9bd9c0df7c53",
+    "shared": "69b974fd4f5a4065b6245a40420c4b60"
+  },
+  "focused_validation": {
+    "diff_check": "pass",
+    "frozen_inputs": [
+      {
+        "excluded_changed_docs": [
+          "docs/KNOWLEDGE_BASE.md",
+          "docs/RE_HANDOFF.md"
+        ],
+        "inputs_checked": 3221,
+        "packet": ".analysis/replay-stage-restore-20261025"
+      },
+      {
+        "excluded_changed_docs": [
+          "docs/KNOWLEDGE_BASE.md",
+          "docs/RE_HANDOFF.md"
+        ],
+        "inputs_checked": 3258,
+        "packet": ".analysis/replay-stage-restore-shared-20261025"
+      },
+      {
+        "excluded_changed_docs": [
+          "docs/KNOWLEDGE_BASE.md",
+          "docs/RE_HANDOFF.md"
+        ],
+        "inputs_checked": 3255,
+        "packet": ".analysis/replay-stage-restore-rng-20261025"
+      }
+    ],
+    "independent_review": "GO documentation-only park; NO source adoption or exact credit",
+    "progress": "pass",
+    "protected_files": 9,
+    "reproducible_patches": "All six unified patches replay exactly to frozen candidate text with complete hunk context/count checks; native inputs retain independently frozen CRLF bytes.",
+    "staged_patch_whitespace": "Initial staged diff check reports mandatory blank context markers in unified diff artifacts; local *.patch -whitespace attributes preserve patch syntax without touching source. Rechecked staged diff passes.",
+    "toolchain_check": "pass",
+    "tracking": "pass"
+  },
+  "full_ci": "not rerun; documentation-only checkpoint",
+  "independent_review": {
+    "admission": false,
+    "artifact_files_per_model": 12,
+    "candidate_local_destinations": [
+      123,
+      39,
+      355,
+      278
+    ],
+    "exclusions": "Mutable documentation/analysis excluded except own source closure",
+    "independently_checked_inputs_per_model": 2353,
+    "mismatches": 0,
+    "models": [
+      "shared",
+      "rng"
+    ],
+    "passed": true,
+    "remaining": "Allocation/packed-flag and playback seed/score/counter scheduling differ; no new meaningful hypothesis",
+    "scope": "Read-only final shared/RNG source, complete owned disassemblies, explicit27 role fields,4local destinations, ABI, frozen inputs/artifacts and guards",
+    "target_local_destinations": [
+      126,
+      41,
+      354,
+      277
+    ]
+  },
+  "maintained_source_changed": false,
+  "models": [
+    {
+      "caller_size": 1053,
+      "caller_target_size": 1009,
+      "cold_exit": 0,
+      "comparison_exit": 0,
+      "freeze_input_count": 3223,
+      "guard_bytes": 259,
+      "guard_field_count": 4,
+      "guards": [
+        {
+          "passed": true,
+          "unit": "game-score-set-faith"
+        },
+        {
+          "passed": true,
+          "unit": "game-score-set-timer-current"
+        },
+        {
+          "passed": true,
+          "unit": "game-stage-transition-delay"
+        },
+        {
+          "passed": true,
+          "unit": "game-manager-update-callback"
+        },
+        {
+          "passed": true,
+          "unit": "game-manager-mark-chains"
+        }
+      ],
+      "image_sha256": "cd0864fe043b64f992d7fe2ab505169cc95868e97097c9aa0b2264747ec54a6b",
+      "model": "first",
+      "native_field_count": 24,
+      "native_local_count": 4,
+      "packet": ".analysis/replay-stage-restore-20261025",
+      "receipts": {
+        "artifacts.json": "33efe5445baa48e09f318cfe4f996b3ab95f53cdc5c6b022d122243ce602fa9e",
+        "caller-complete.json": "52f7da3ba228d9e212415e207df02fc4927d814e657fb7b8707f2fa07fa0eba8",
+        "cold-result.json": "3d3318926f29850ec03446fc0fc8d55d004385f8b5aefde3f4080f4d3f705c03",
+        "freeze.json": "52186c4577990a3ae75a20849dc37aca8132444f76640ea208f241d3aaaefed7",
+        "guards-summary.json": "3101e177c0f3ad5bc3f3add57032d71ddd759d19de4601d3277bdc6110137b76",
+        "restore-complete.json": "9edeca5e092f9bf96b4514532eeb7148704c80185950ac9e9d8beaff1884c846"
+      },
+      "restore_size": 344,
+      "restore_target_size": 356,
+      "target_field_count": 27,
+      "target_local_count": 4
+    },
+    {
+      "caller_size": 1070,
+      "caller_target_size": 1009,
+      "cold_exit": 0,
+      "comparison_exit": 0,
+      "freeze_input_count": 3260,
+      "guard_bytes": 259,
+      "guard_field_count": 4,
+      "guards": [
+        {
+          "passed": true,
+          "unit": "game-score-set-faith"
+        },
+        {
+          "passed": true,
+          "unit": "game-score-set-timer-current"
+        },
+        {
+          "passed": true,
+          "unit": "game-stage-transition-delay"
+        },
+        {
+          "passed": true,
+          "unit": "game-manager-update-callback"
+        },
+        {
+          "passed": true,
+          "unit": "game-manager-mark-chains"
+        }
+      ],
+      "image_sha256": "a5e1fe7e12acbac7a07e58bc0c50b749a8fa719e592768907dec2accd53fa8bf",
+      "model": "shared",
+      "native_field_count": 27,
+      "native_local_count": 4,
+      "packet": ".analysis/replay-stage-restore-shared-20261025",
+      "receipts": {
+        "artifacts.json": "4596a5910bb707858b5702e0d96bc5e2e667346c1963e096d593866fc2a7ec21",
+        "caller-complete.json": "068c34d9907a69c81f64e7edaca65d9bb3526449d482c58bf5d5473689b11711",
+        "cold-result.json": "8527945797597988cc210f0f35aa564e84c3a3ccbc9fb94d13473c802d368aa6",
+        "freeze.json": "c53aca5173763b70f3ee86b1d22a7f5a9e532649fb389ee95e2f0ab311682989",
+        "guards-summary.json": "80664bac345020fae84cf68a3dc1aec6f0b6db39cdc64bb59051fa4eb0dbbb5d",
+        "restore-complete.json": "5051f9d4b319c146701ff63871d2bf85e20cff51c7c7dc170a2504b7ad04db48"
+      },
+      "restore_size": 357,
+      "restore_target_size": 356,
+      "target_field_count": 27,
+      "target_local_count": 4
+    },
+    {
+      "caller_size": 1070,
+      "caller_target_size": 1009,
+      "cold_exit": 0,
+      "comparison_exit": 0,
+      "freeze_input_count": 3257,
+      "guard_bytes": 259,
+      "guard_field_count": 4,
+      "guards": [
+        {
+          "passed": true,
+          "unit": "game-score-set-faith"
+        },
+        {
+          "passed": true,
+          "unit": "game-score-set-timer-current"
+        },
+        {
+          "passed": true,
+          "unit": "game-stage-transition-delay"
+        },
+        {
+          "passed": true,
+          "unit": "game-manager-update-callback"
+        },
+        {
+          "passed": true,
+          "unit": "game-manager-mark-chains"
+        }
+      ],
+      "image_sha256": "a660729962f1a646d4badb895c80bca3a46be2de3d806c09a451b27f89fc5b42",
+      "model": "rng",
+      "native_field_count": 27,
+      "native_local_count": 4,
+      "packet": ".analysis/replay-stage-restore-rng-20261025",
+      "receipts": {
+        "artifacts.json": "5afe23a6297ff5b4f25e5c7555ea3b48a30f62a5c0819e0daff8ffcb62d603d1",
+        "caller-complete.json": "5b9fdfad8ad89804d6574364548942d8e79b62f9cf23773f4fcdab05749b9719",
+        "cold-result.json": "597d56692ede34d1398b66f49283ff649baa487073497308e7999b9803e69566",
+        "freeze.json": "a51053951c2cb47a60a84444912e1eaa28e51e0bd827e76ebed81695bec44a4a",
+        "guards-summary.json": "a70085e584c89b2eaa23e1ac18b338807b75d92fa2bab97bdb54083c6e3a53b1",
+        "restore-complete.json": "5d28b0f818611cd177c13c5e133a95987e1fd770262608c36e7a6e4dedb3c822"
+      },
+      "restore_size": 357,
+      "restore_target_size": 356,
+      "target_field_count": 27,
+      "target_local_count": 4
+    }
+  ],
+  "new_exact_bytes": 0,
+  "new_source_bytes": 0,
+  "original_proofs_preserved": true,
+  "rng_differential": {
+    "changed_nonfield_offsets": [],
+    "complete_nonfield_bytes_equal": true,
+    "rng_normalized_sha256": "5a8baf97761ba020bc2424b3f8ca9519baf77f7b0f95bbbf12f2cc64fd7f8727",
+    "scope": "Diagnostic field masking only; no target equality or semantic field acceptance",
+    "shared_normalized_sha256": "5a8baf97761ba020bc2424b3f8ca9519baf77f7b0f95bbbf12f2cc64fd7f8727",
+    "sizes": [
+      357,
+      357
+    ]
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+}

@@ -5971,3 +5971,18 @@ output-pointer rereads are intentional. No source/metric admission: authored
 ledger's behavior anchor does not settle plausible DSUtil ancestry. Preserve
 all400 diagnostic exact-shaped dependency bytes separately from unresolved
 origin/data ownership. No grounded further model: park startup/flag panels.
+
+## Replay stage restoration storage diagnostic, 2026-10-25
+
+The reviewed authored356-byte owner42A6A0 is called only by GameManagerInitialize
+417870 at417AFB. First natural source with separate global scalars emits344 bytes,
+EAX-to-ESI receiver and omits3 current-stage reads. A coherent GameScoreState
+view retaining extent5C and actual stage+3C recovers naturalEBX and all3 reads,
+including the final stage/header recapture after playback state writes; complete
+owner357/356 and caller1070/1009 remain nonexact. Existing RngView seed+0/count+4
+identity is a separately tested source correction, but its complete357-byte body
+is neutral after address-field masking and does not fix scheduling. All27 field
+roles are explicitly bound by source base/addend, not neighboring anchor names.
+Five guards retain259/all4 in each image. No maintained source/exact/denominator
+change; original class/object lifetime and runtime closure remain unknown.
+See [complete evidence and rejected models](evidence/replay-stage-restore-20261025/README.md).
