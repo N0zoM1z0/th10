@@ -1,32 +1,37 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-24 for the operator-approved
+Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL core baseline: **00c7466**.
 WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
 at **97a206f** (Sound) and **7b85dd3** (Chain). WinMain remains parked against
-flag/noinline matrices. Capture checkpoint **726d795** is the baseline for the
-current [HUD conditional-clear and delete-identity batch](evidence/hud-clear-delete-identity-20261024/README.md).
-Two individually measured conditional-clear models retain life capture and all
-13 exact guards, 1468/all 79, with independent proofs. A separate finished-message
-operator-delete call model also passes native and independent checks. Full HUD is now
-**3824/3836, nonexact**: 3796 code bytes, no alignment and seven table words.
-The hidden-clear model changes one branch displacement byte only; all other
-HUD bytes and the complete 4480-byte Run owner equal the preceding excess-clear
-image. Syntactic inventory is 72 fields / 249 local branches / 21 calls, not
-accepted semantic bindings or a target mismatch score.
-A separate actual-operator-delete identity repair revalidates three existing
-exact owners, 45/47/114 bytes, and all 55 distinct Enemy/ScriptViewer/Gui guard
-units. Original exit 1 and preflight-only line-ending correction are preserved;
-corrected same-image GUI observation passes, with no repeat native build.
-No exact credit, source coverage or authored denominator changes.
-Current Gui SHA-256:
-`6ad418338b2bdc59036da48da99f07b6fc664cba0d82531890160c6d855e91a9`.
-Full CI v2 passed all 112 stages for this batch, exit 0, with frozen inputs
-preserved, verified at 23:33:14 UTC. The first CI failure was an obsolete host
-deallocation observer; its log is preserved. Scoped observer/pin repairs retain
-all prior checks and add wrong-deallocator rejection. Only CI-result docs changed
-after the successful run.
+flag/noinline matrices. After clear/delete checkpoint **9fb5a3d**, three
+[HUD marker/manager models](evidence/hud-marker-manager-20261024/README.md)
+pass native and independent review: default-first status routing, a float local
+with widened subtraction retained and no F32 roundtrip, and manager capture
+inside the hidden nonzero ID gate. They preserve all 13 exact guards, 1468/all
+79, complete Run 4480 and all seven HUD table words. Full HUD remains
+**3824/3836, nonexact**: 3796 code bytes, no alignment and 28 table bytes.
+The 34/16/8 changed-position counts compare each baseline/candidate pair, not
+target mismatches. Inventory is 72 fields / 249 local branches / 21 calls;
+no canonical parent acceptance or new exact/source/denominator credit follows.
+A refreshed final-carrier review declares all 72 fields and six role-supported
+aliases, but remains inactive/unaccepted: extent, alignment and local layout
+still reject. The scoped host precision-test split passes seven root tests;
+independent review approves the split. Native no-roundtrip evidence and separately
+labeled host precision modeling are not game FPU/runtime proof.
+The original default-first Wine-path/link failure is retained separately from
+the successful same-source retry. Current Gui SHA-256:
+`70184d8834dc24998debe484a67a6643b8e55a6327a6115835353e008a68309b`.
+Full CI passed all 112 stages for this source, exit 0, with frozen inputs
+preserved, verified at 2026-10-25 00:36:31 UTC. Only CI-result documentation
+changed afterward. Prior checkpoint failures and scoped observer repairs remain
+recorded separately.
+Park unsupported HUD spelling/flag panels: visible register/save scheduling
+and folded boss-flag tests do not establish another semantic factor. ANM/ECL's
+shared ten-TU / 32-file native closure has changed only Enemy.cpp and
+GameErrorContext.hpp. A fresh shared baseline runner is staged, not frozen or compiled;
+the old 4/25 differences remain historical until that measurement.
 The separate global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
@@ -49,8 +54,8 @@ All experiments in the preceding ANM 15-control panel are terminal.
 
 | Owner / metric | Last verified maintained result |
 | --- | --- |
-| ANM ExecuteScript / target 9964 | **9960/9964**; 4 ordinary differences; all 350 fields / 95 fixed local destinations; case 7990/7994, 92/92 groups, gap 0 |
-| ECL Run / target 7020 | 6995/7020; 25 differences; 189 fields / 62 locals; 171-byte float callee exact |
+| ANM ExecuteScript / target 9964 | Retained historical **9960/9964**; 4 ordinary differences; all 350 fields / 95 fixed local destinations; case 7990/7994, 92/92 groups, gap 0 |
+| ECL Run / target 7020 | Retained historical 6995/7020; 25 differences; 189 fields / 62 locals; 171-byte float callee exact |
 | Enemy dispatcher / target 14416 | 14336 bytes; frame 2C4; case 3245/11128, 45 sized groups, gap 328 |
 | StageExecuteScript / target 1868 | Retained 1868 bytes; frame 8C; nonexact; case 1443/1619, 13/15 groups, gap 2 |
 | PlayerInitialize / target 1435 | 1380/1435; 55 differences; 49 fields; actual 17-input graph recompiled ANM |
@@ -218,7 +223,7 @@ load/capture/FILD/publication/FIDIV sequence, with no forced spill or width
 change. Both complete owners stayed 3772/3836. Its 112-stage CI pass remains
 scoped to that source checkpoint.
 
-The [current HUD clear/delete evidence](evidence/hud-clear-delete-identity-20261024/README.md)
+The [prior HUD clear/delete evidence](evidence/hud-clear-delete-identity-20261024/README.md)
 retains the same Gui /GL graph **without /GS** and no support overrides.
 Moving only the excess-segment ID clear inside its nonzero gate produces
 3824 bytes and wider native scheduling changes, including a real EnemyManager
@@ -227,7 +232,8 @@ changes exactly one branch displacement byte. All other HUD/table bytes and
 all 4480 Run bytes are identical to the preceding excess image. Independent
 proofs preserve life capture, make zero paths skip their respective ID clears,
 and require one clear on every terminating nonzero path; invalid-graph controls
-reject. The hidden-block manager load still precedes the gate, unlike target.
+reject. At that checkpoint the hidden-block manager load still preceded the
+gate, unlike target.
 HUD remains nonexact; 3824 is 3796 code + 0 alignment + 28 table bytes.
 Its 72/249/21 syntactic fields/locals/calls are not accepted bindings; the
 12-byte extent gap is not an ordinary mismatch count. Both native trials and
@@ -251,11 +257,51 @@ Independent third-model review passes with all 4340 frozen inputs and the
 repaired baseline intact. Only two HUD bytes in the actual call displacement
 change; all other HUD/table bytes, all six cleanup walks and the complete Run
 owner are raw-identical. Full CI v2 passed all 112 stages with frozen inputs
-preserved after scoped host observer/pin corrections. Default-first
-boss-marker comparison is being prepared, not tested; the float-local model
-remains separate and untried. Target float4 versus candidate double8 multiply
-referent and ordinary/control-flow differences remain unresolved. No new
-exact/source/denominator credit or runtime closure follows these repairs.
+preserved after scoped host observer/pin corrections at checkpoint 9fb5a3d.
+Those repairs add no new exact/source/denominator credit or runtime closure.
+
+The [current marker/manager evidence](evidence/hud-marker-manager-20261024/README.md)
+records three later independent models. Default-first routing recovers target
+less/unordered multiplication and equal/greater default behavior, changing 34
+localized HUD positions. Its original Winepath-contaminated link failure
+produced no usable image; the same-source retry passed after a clean-path health
+check, without rewriting the failure. The float local retains explicit widening
+before subtraction and recovers the target m32 coefficient without an F32 memory
+roundtrip; incidental timer operand-order recovery did not change timer source.
+Moving the hidden manager capture inside the ID gate then swaps exactly eight
+instruction bytes, skipping capture on zero ID and capturing once before both
+head reads on terminating nonzero paths. All 13 guards, prior properties, full
+Run 4480 and HUD tables pass independently for each model. HUD stays 3824/3836,
+nonexact; the 12-byte extent gap is not an ordinary mismatch count.
+
+The historical 72-field draft is preserved separately. The refreshed final
+review in `.analysis/gpt-dots/hud-final-binding-review-20261025/` now declares
+all 72 target fields and six explicit role-supported aliases against final
+Gui 70184d88 / image b2fd9d94. Deallocator and coefficient width/payload blockers
+are resolved, but `target-binding-draft.json` is inactive and unaccepted.
+Full extent, alignment, fixed locals and final per-site ABI/alias/ordinary-byte
+acceptance remain open. No new source-contract discrepancy was identified.
+Park unsupported register/save scheduling and folded-flag spelling panels.
+
+GCC host probes materialize the float local even under observed x87 PC64 /
+round-to-nearest, unlike native no-roundtrip code. The scoped lifetime-test
+split keeps portable actual-source expressions unchanged and separately labels
+the conditional PC53/PC64 finite model. Expected 254, rounded-before-subtraction
+rejection, the exact failure classifier and UBSan remain. Seven root tests pass;
+independent review approves the split with classifier negatives and source/header
+identity checks intact. Production Gui is unchanged; neither host probe
+nor model establishes the game's FPU state or runtime behavior. Original failing
+probes remain under `.analysis/gpt-dots/hud-host-precision-audit-20261025/`.
+Full CI passed all 112 stages with frozen inputs preserved; metrics stay unchanged.
+
+The ANM/ECL audit proves their shared ten-TU / 32-file native closure changed
+only Enemy.cpp (two actual-delete corrections) and GameErrorContext.hpp (Flush
+declaration); Main.cpp, Gui.cpp and Chain.cpp are not compiled in that graph.
+A fresh shared baseline runner is staged, not frozen or compiled, under
+`.analysis/gpt-dots/anm-ecl-source-current-20261025/`. Preserve original recipes
+and receipts, all extents/fields/locals and guards, and retain structural failures
+as errors. Do not require the historical four/25 differences to recur. This is
+a source-current baseline refresh, not a new spelling/profile/source trial.
 Ending remains queued: its retained source matches its receipt, but 20/52
 support/header inputs drifted and prior aggregate controls were neutral. Do not
 tune against that stale graph or start another unsupported allocation panel.
@@ -294,7 +340,10 @@ outlined-helper owner is strictly refused and fails child routing. Earlier23
 controls are in the source packet. Do not repeat these without a new premise.
 No new hypothesis after those 15 was compiled or measured.
 
-## Expanded current inputs
+## Retained ANM/ECL inputs
+
+These are historical retained measurements. The two native-input changes above
+justify a new shared baseline; it has not yet been compiled.
 
 Producer root: `.analysis/gpt-6.1-sol/anm-full-parent-bindings-20261024`.
 Use **manifest-current.json / compare-current.py**. Its compilation and initial
@@ -308,7 +357,7 @@ do not weaken them or overwrite their before/support caches.
 | `child91-argument-record` | Selected private witness; all352 public owners raw-equal to maintained |
 | `maintained-player-17` | Actual ANM recompile in Player17/52 graph; Player1380/all49 |
 
-The current helper also checks 36 guards4618/all121, ECL's complete171-byte callee
+The retained helper also checks 36 guards4618/all121, ECL's complete171-byte callee
 and16 guards1617/all21, and Player's8 guards1753/all99. Other351/352 and518/519
 public owners remain raw-identical in the source checkpoint's peer proofs.
 Static/unowned fragments and runtime are outside those proofs. No independent

@@ -352,13 +352,17 @@ static int MarkerBoundaryContracts() {
         UpdateSpellAndBossPosition(&gui);
         CHECK(gui.bossPositionVm.primaryColor.alpha==alphas[i]);
     }
-    // Finite field-value witness, not observed gameplay. Host widened math
+#ifndef TH10_PORTABLE_SOURCE_CONTRACTS
+    // Precision-model-only witness: native retained x87 expression, not the
+    // portable host's materialized float local. Finite field-value witness,
+    // not observed gameplay. Host widened math
     // models x87 PC53/PC64; PC24 can round to64 even without a store. Runtime
     // x87 control is unknown: this does not prove native alpha or precision.
     Reset(gui);g_EnemyManager=&manager;g_GuiGameOwner=&game;g_Player=&player;
     boss.runtime.flags=0;boss.runtime.worldMotion.position.x=64.0f;player.drawPosition.x=1.0f/1048576.0f;
     UpdateSpellAndBossPosition(&gui);
     CHECK(gui.bossPositionVm.primaryColor.alpha==254);
+#endif
     const float positions[]={-193,-192,192,193};
     for(unsigned i=0;i<4;++i) {
         Reset(gui);g_EnemyManager=&manager;g_GuiGameOwner=&game;g_Player=&player;
@@ -536,7 +540,20 @@ class HudLifetimeContracts(unittest.TestCase):
                 with self.assertRaisesRegex(AssertionError, 'canonical HUD source missing'):
                     validate_canonical_source(source.replace(canonical, 'wrong_canonical_member'))
 
-    def run_owner(self, source):
+    def run_owner(self, source, precision_model=False):
+        # Explicit architecture split, never production source rewriting.
+        # Portable actual-source tests retain the float local unchanged and
+        # exclude only the separately tested excess-precision witness.
+        # The model preserves the current extracted expression/branch but
+        # represents the independently observed no-F32-roundtrip evaluation
+        # using a double host local. This is a conditional PC53/PC64 finite
+        # model, NOT actual-source host codegen or runtime x87-state proof.
+        flags = ['-DTH10_PORTABLE_SOURCE_CONTRACTS']
+        if precision_model:
+            declaration = 'const float distance = fabs('
+            self.assertEqual(source.count(declaration), 2)
+            source = source.replace(declaration, 'const double distance = fabs(')
+            flags = []
         compiler=shutil.which('c++')
         if compiler is None: self.skipTest('host C++ compiler unavailable')
         with tempfile.TemporaryDirectory(prefix='th10-hud-') as folder:
@@ -544,9 +561,24 @@ class HudLifetimeContracts(unittest.TestCase):
             path=Path(folder)/'hud.cpp';exe=Path(folder)/'hud'
             path.write_text(CANONICAL_ENEMY + PROGRAM.replace('@OWNERS@',source))
             result=subprocess.run([compiler,'-std=c++11','-O0','-fsanitize=undefined',
-                                   '-fno-sanitize-recover=undefined',str(path),'-o',str(exe)],capture_output=True,text=True,timeout=120)
+                                   '-fno-sanitize-recover=undefined'] + flags + [str(path),'-o',str(exe)],capture_output=True,text=True,timeout=120)
             self.assertEqual(result.returncode,0,result.stdout+result.stderr)
             return subprocess.run([str(exe)],capture_output=True,text=True,timeout=15)
+
+    def test_native_precision_model_and_rounding_control(self):
+        source = owner_source()
+        wide = 'static_cast<double>(boss->runtime.worldMotion.position.x) - g_Player->drawPosition.x'
+        rounded = 'static_cast<double>(boss->runtime.worldMotion.position.x - g_Player->drawPosition.x)'
+        self.assertEqual(source.count(wide), 2)
+        self.assertEqual(source.count('const float distance = fabs('), 2)
+        result = self.run_owner(source, precision_model=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        mutated = source.replace(wide, rounded)
+        result = self.run_owner(mutated, precision_model=True)
+        # Same exact expression/line/status classifier; no crash/UBSan failure
+        # or arbitrary nonzero exit can replace the causal precision CHECK.
+        model_source = mutated.replace('const float distance = fabs(', 'const double distance = fabs(')
+        assert_mutation(self, result, CANONICAL_ENEMY + PROGRAM.replace('@OWNERS@', model_source), 'rounded-distance')
 
     def test_actual_source_contracts(self):
         result=self.run_owner(owner_source())
@@ -608,7 +640,6 @@ class HudLifetimeContracts(unittest.TestCase):
             ('marker-interrupt-seven','gui->bossPositionVm.pendingInterrupt = 7;','gui->bossPositionVm.pendingInterrupt = 8;'),
             ('marker-preserve-flags','gui->guiFlags &= ~6u;','gui->guiFlags = 0;'),
             ('marker-no-double-transition','else if (phase == 1)','if (((gui->guiFlags >> 1) & 3) == 1)'),
-            ('rounded-distance','static_cast<double>(boss->runtime.worldMotion.position.x) - g_Player->drawPosition.x','static_cast<double>(boss->runtime.worldMotion.position.x - g_Player->drawPosition.x)'),
         ]
         for name,old,new in replacements:
             with self.subTest(mutation=name):

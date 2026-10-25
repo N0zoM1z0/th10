@@ -1294,11 +1294,11 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
         }
         else
         {
-            AnmRenderManagerView *manager = g_AnmRenderManagerView;
             {
                 const int id = gui->bossGaugeVmId.value;
                 if (id != 0)
                 {
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
                     AnmVmLayerNodeView *node = manager->primaryVmListHead;
                     while (node != NULL &&
                            static_cast<AnmVmView *>(node->owner)->id != id)
@@ -1690,14 +1690,14 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                 AnmRenderManagerView::ExecuteScript(&gui->bossPositionVm);
                 gui->bossPositionVm.positionOffset.x = boss->runtime.worldMotion.position.x + 224.0f;
                 gui->bossPositionVm.positionOffset.y = 480.0f;
-                const double distance = fabs(
+                const float distance = fabs(
                     static_cast<double>(boss->runtime.worldMotion.position.x) - g_Player->drawPosition.x);
-                if (distance < 64.0)
+                if (distance >= 64.0)
+                    gui->bossPositionVm.primaryColor.alpha = 0xff;
+                else
                     gui->bossPositionVm.primaryColor.alpha =
                         static_cast<unsigned char>(
                             64 - static_cast<int>(distance * -2.984375f));
-                else
-                    gui->bossPositionVm.primaryColor.alpha = 0xff;
                 if (boss->runtime.worldMotion.position.x < -192.0f || boss->runtime.worldMotion.position.x > 192.0f)
                     gui->bossPositionVm.primaryColor.alpha = 0;
             }

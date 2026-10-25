@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "documented_at_utc": "2026-10-25",
+  "baseline_commit": "9fb5a3d102f7d493add4a36b24e33bc0523821fa",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "current_gui_sha256": "70184d8834dc24998debe484a67a6643b8e55a6327a6115835353e008a68309b",
+  "current_image_sha256": "b2fd9d94f5af6b52652494268c50c7a229792a245dd6447b79d2d3432ef54410",
+  "target_owner": {
+    "address": "0x414900",
+    "size": 3836,
+    "code_bytes": 3805,
+    "alignment_bytes": 3,
+    "table_bytes": 28
+  },
+  "graph": {
+    "source": "src/Gui.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/Player.cpp",
+      "src/FrontEnd.cpp",
+      "src/DecomphelpLeafAccessors.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/TransitionEffect.cpp",
+      "src/Chain.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmRectangle.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+  },
+  "support_overrides": null,
+  "models": [
+    {
+      "model": "default-first marker routing",
+      "source_sha256": "ae2acd81d797b57a5ed2ea62eda3951bb50534be0ad5c86e0342c1403eddc2f2",
+      "image_sha256": "3091831162824614d365dfc8177850c3b9f9d555cdb62a82dbe564c16e6b4955",
+      "baseline_image_sha256": "0e323d45e30ac536c884fdd0b78cf55ecccd5f04a91857ce18cbaa7bbee0e70c",
+      "native_exit": 0,
+      "independent_review_passed": true,
+      "preserved_frozen_inputs": 5635,
+      "whole_owner_exact": false,
+      "complete_extent": {
+        "size": 3824,
+        "code_bytes": 3796,
+        "alignment_bytes": 0,
+        "table_bytes": 28
+      },
+      "inventory": {
+        "syntactic_fields": 72,
+        "local_branches": 249,
+        "direct_calls": 21
+      },
+      "baseline_candidate_raw_changed_positions": 34,
+      "full_run_4480_bytes_identical": true,
+      "hud_tables_identical": true,
+      "guards": {
+        "units": 13,
+        "bytes": 1468,
+        "fields": 79
+      },
+      "receipts": [
+        {
+          "path": ".analysis/gpt-dots/hud-default-first-retry-20261024/candidate/receipt.json",
+          "sha256": "094318799935f9537f43c8b03f366c1f5c8995f53a0c903731a029400e8b3c01"
+        },
+        {
+          "path": ".analysis/gpt-dots/hud-default-first-retry-20261024/independent-review/receipt.json",
+          "sha256": "6144404cede5e5e860a302411b035b30cde341859f28f51392dc62f416ab4e35"
+        }
+      ]
+    },
+    {
+      "model": "float distance local with widened subtraction retained",
+      "source_sha256": "321e25baafa85664fc4f8421950e683fd880c09252c6f35e48fb7bbe87c8460f",
+      "image_sha256": "49c79a2cde1e8cea9d98583d89298539885935cae9dbde33c6dd10e442207b8e",
+      "baseline_image_sha256": "3091831162824614d365dfc8177850c3b9f9d555cdb62a82dbe564c16e6b4955",
+      "native_exit": 0,
+      "independent_review_passed": true,
+      "preserved_frozen_inputs": 5768,
+      "whole_owner_exact": false,
+      "complete_extent": {
+        "size": 3824,
+        "code_bytes": 3796,
+        "alignment_bytes": 0,
+        "table_bytes": 28
+      },
+      "inventory": {
+        "syntactic_fields": 72,
+        "local_branches": 249,
+        "direct_calls": 21
+      },
+      "baseline_candidate_raw_changed_positions": 16,
+      "full_run_4480_bytes_identical": true,
+      "hud_tables_identical": true,
+      "guards": {
+        "units": 13,
+        "bytes": 1468,
+        "fields": 79
+      },
+      "receipts": [
+        {
+          "path": ".analysis/gpt-dots/hud-float-distance-trial-20261024/candidate/receipt.json",
+          "sha256": "8fbb64810506ec5b68dc7ed0de74f6f1b7056e43251a753b287b5edf0d0bd856"
+        },
+        {
+          "path": ".analysis/gpt-dots/hud-float-distance-trial-20261024/independent-review/receipt.json",
+          "sha256": "215f7e7d2ed15db681a0ff8bc1eae78dfe53a889ee5de65bf912716825eb0949"
+        }
+      ]
+    },
+    {
+      "model": "hidden manager capture inside nonzero ID gate",
+      "source_sha256": "70184d8834dc24998debe484a67a6643b8e55a6327a6115835353e008a68309b",
+      "image_sha256": "b2fd9d94f5af6b52652494268c50c7a229792a245dd6447b79d2d3432ef54410",
+      "baseline_image_sha256": "49c79a2cde1e8cea9d98583d89298539885935cae9dbde33c6dd10e442207b8e",
+      "native_exit": 0,
+      "independent_review_passed": true,
+      "preserved_frozen_inputs": 5903,
+      "whole_owner_exact": false,
+      "complete_extent": {
+        "size": 3824,
+        "code_bytes": 3796,
+        "alignment_bytes": 0,
+        "table_bytes": 28
+      },
+      "inventory": {
+        "syntactic_fields": 72,
+        "local_branches": 249,
+        "direct_calls": 21
+      },
+      "baseline_candidate_raw_changed_positions": 8,
+      "full_run_4480_bytes_identical": true,
+      "hud_tables_identical": true,
+      "guards": {
+        "units": 13,
+        "bytes": 1468,
+        "fields": 79
+      },
+      "receipts": [
+        {
+          "path": ".analysis/gpt-dots/hud-hidden-manager-trial-20261024/candidate/receipt.json",
+          "sha256": "5cfa10f719e1d9a747544101a31c4326b14228cf689e1e6c45f2456752e23ad2"
+        },
+        {
+          "path": ".analysis/gpt-dots/hud-hidden-manager-trial-20261024/independent-review/receipt.json",
+          "sha256": "b042605ae12ee21cb0a47c061af3cea0bc4f37846487c89b6641d02860a758c9"
+        }
+      ]
+    }
+  ],
+  "default_first_failure_and_retry": {
+    "original_exit": 1,
+    "usable_image_produced": false,
+    "model_audit_ran": false,
+    "cause": "Winepath returned page-fault text before the path; contaminated linker input caused LNK1104.",
+    "same_source_retry": true,
+    "clean_path_health_passed": true,
+    "original_artifacts_preserved": true,
+    "receipts": [
+      {
+        "path": ".analysis/gpt-dots/hud-default-first-trial-20261024/candidate/receipt.json",
+        "sha256": "cd56ec89576ffea7e02fa6e13033a86af7e3b77d6c2cd9e019262fcc9aea3588"
+      },
+      {
+        "path": ".analysis/gpt-dots/hud-default-first-retry-20261024/root-winepath-health.json",
+        "sha256": "a0a5118a14abb1f5f24b8933d4de0ca898b4f66aebf2f65e05461dc86c48fcb1"
+      }
+    ]
+  },
+  "marker_properties": {
+    "routes": {
+      "less": "multiply",
+      "unordered": "multiply",
+      "equal": "default255",
+      "greater": "default255"
+    },
+    "comparison_width": 8,
+    "comparison_value": 64.0,
+    "final_multiplier_width": 4,
+    "multiplier_value": -2.984375,
+    "widen_before_subtraction_preserved": true,
+    "no_float32_store_reload_roundtrip": true,
+    "original_source_type_proven": false,
+    "runtime_nan_to_int_claim": false
+  },
+  "timer_operand_order": {
+    "incidental_recovery_without_timer_source_change": true,
+    "receipt": {
+      "path": ".analysis/gpt-dots/hud-float-distance-trial-20261024/independent-review/timer-order-supplement.json",
+      "sha256": "06eccaf436e98188b22e3bf43d15f1b97a4e6e1e40968f75d50f1ce838604b1a"
+    }
+  },
+  "hidden_manager": {
+    "eight_byte_instruction_order_swap": true,
+    "zero_id_skips_capture_list_and_clear": true,
+    "terminating_nonzero_paths_capture_once_before_both_head_reads": true,
+    "three_negative_controls_reject": true
+  },
+  "historical_full_binding_review": {
+    "receipt": {
+      "path": ".analysis/gpt-dots/hud-full-binding-review-20261024/reviewed-fields.json",
+      "sha256": "22a403014818381766654ff60e585769828cde444ff3bb7c1f9a58a21e728282"
+    },
+    "fields_reviewed": 72,
+    "candidate_image_sha256": "0031e8217500e0f65b2b3178ef0620907877f3bd5a2e218de43aefa5d6fbd9ff",
+    "source_sha256": "278c095555ed285d2f51854855e99bbab068cde976798f3290cd99ce4ef7c7ac",
+    "status_counts_at_that_carrier": {
+      "reviewed-role-alias-needs-explicit-contract": 10,
+      "reviewed-callee-identity": 20,
+      "reviewed-existing-global-contract": 13,
+      "reviewed-width-exact-constant": 19,
+      "unresolved-fixed-local-layout": 8,
+      "blocked-deallocator-identity": 1,
+      "blocked-constant-width-and-payload": 1
+    },
+    "final_carrier_canonical_manifest": false,
+    "scope": "Earlier excess-clear carrier only. Subsequent call, routing and constant-width repairs have separate receipts; no silent retargeting or canonical HUD acceptance."
+  },
+  "credit": {
+    "new_exact_bytes": 0,
+    "new_exact_owners": 0,
+    "new_source_owners": 0,
+    "authored_denominator_change": 0
+  },
+  "full_batch_ci": {
+    "passed": true,
+    "stages": 112,
+    "exit_code": 0,
+    "frozen_inputs_preserved": true,
+    "verified_utc": "2026-10-25T00:36:31Z",
+    "log": ".analysis/gpt-dots/hud-marker-capture-checkpoint-20261025/root-ci.log",
+    "log_sha256": "b7936cdff5182e8d392e8ea3d36ccb98b3e9f10beca8feace6b944815eb768d9",
+    "scope": "Target-independent checks; separate automatic boundary-ledger divergence remains unresolved"
+  },
+  "next_work": {
+    "hud": "park unsupported spelling/register/flag panels; no new semantic factor identified",
+    "winmain": "remains parked",
+    "anm_ecl": {
+      "status": "fresh shared source-current baseline runner staged; not frozen or compiled",
+      "translation_units": 10,
+      "native_project_inputs": 32,
+      "changed_native_inputs": {
+        "src/Enemy.cpp": "two free-to-explicit-operator-delete corrections",
+        "src/GameErrorContext.hpp": "nonvirtual Flush declaration"
+      },
+      "not_compiled_in_this_graph": [
+        "src/Main.cpp",
+        "src/Gui.cpp",
+        "src/Chain.cpp"
+      ],
+      "historical_residuals_only": {
+        "anm": 4,
+        "ecl": 25
+      },
+      "source_trial_planned": false,
+      "receipt": {
+        "path": ".analysis/gpt-dots/anm-ecl-source-current-20261025/draft-review.json",
+        "sha256": "4efe3f8c38e17dcc6947df152b0f57915ba4efd8cf38c51a531fa18227ee9900"
+      }
+    }
+  },
+  "limits": [
+    "Raw changed positions compare each baseline with its candidate, not candidate with target.",
+    "The 12-byte extent gap is not an ordinary mismatch count or similarity score.",
+    "Complete fields, fixed local targets, aliases and ordinary-byte equality still require final canonical parent acceptance.",
+    "No original source spelling, executable runtime closure or shared-global identity is established."
+  ],
+  "final_field_binding_review": {
+    "draft": {
+      "path": ".analysis/gpt-dots/hud-final-binding-review-20261025/target-binding-draft.json",
+      "sha256": "6b46f94914244174bd175477c31cffaa99a87fd6fce1663f02e0ef9d09e6946b"
+    },
+    "review_receipt": {
+      "path": ".analysis/gpt-dots/hud-final-binding-review-20261025/review-receipt.json",
+      "sha256": "70dc0ccb158689872c60b79d6e52a3384df8f81fb10a67f39ce13a7b951ce67e"
+    },
+    "source_sha256": "70184d8834dc24998debe484a67a6643b8e55a6327a6115835353e008a68309b",
+    "candidate_image_sha256": "b2fd9d94f5af6b52652494268c50c7a229792a245dd6447b79d2d3432ef54410",
+    "fields_reviewed": 72,
+    "provisional_role_supported_aliases": 6,
+    "field_categories": {
+      "calls": 21,
+      "constants": 20,
+      "existing_external_globals": 13,
+      "alias_occurrences": 10,
+      "fixed_owned_local_table_fields": 8
+    },
+    "deallocator_identity_blocker_resolved": true,
+    "coefficient_width_payload_blocker_resolved": true,
+    "active": false,
+    "accepted": false,
+    "strict_rejections": [
+      "whole extent 3824 versus 3836",
+      "code extent",
+      "alignment",
+      "fixed local layout and table destinations"
+    ],
+    "remaining_acceptance": "Final per-site field/ABI assignments and explicit alias acceptance; full ordinary-byte equality and runtime closure are not proved."
+  },
+  "host_precision_split": {
+    "test_script": "scripts/test-gui-hud-lifetimes.py",
+    "test_script_sha256": "f7b8df7cebc839e13f96d72fdfd0e7100f1ff785b5424f2ff22d9349fab00824",
+    "production_source_unchanged": true,
+    "observed_host": "GCC x87 probe still materializes float local at PC64 / round-to-nearest",
+    "actual_source_expressions_unchanged_in_portable_tests": true,
+    "precision_specific_finite_witness_in_separate_labeled_model": true,
+    "model_scope": "Conditional native no-F32-roundtrip finite evaluation under PC53/PC64 and round-to-nearest, not actual-source host codegen or observed game behavior.",
+    "expected_254_preserved": true,
+    "rounded_before_subtraction_rejection_preserved": true,
+    "exact_failure_classifier_unchanged": true,
+    "ubsan_retained": true,
+    "root_focused_tests_passed": 7,
+    "independent_review": "approved with no blocking concern; classifier negatives and source/header identity checks preserved",
+    "receipts": [
+      {
+        "path": ".analysis/gpt-dots/hud-host-precision-audit-20261025/receipt.json",
+        "sha256": "a3f5f411f7db058c2d5584cb629a6f38280f88bfa9420c151c0ddcfa57e49963"
+      },
+      {
+        "path": ".analysis/gpt-dots/hud-host-precision-audit-20261025/root-focused.log",
+        "sha256": "2ab15ac024c00be5ccedade7bf205a28650c1ec8069373afd3ae66d4de3c4e9b"
+      }
+    ]
+  }
+}
