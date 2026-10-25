@@ -1099,3 +1099,4 @@ PlayerLoadOptionData
 MainClearPresentTwice
 MainSetScreenColor
 GameErrorContext::Flush
+GameUpdateFaithDecay

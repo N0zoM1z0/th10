@@ -4,7 +4,17 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
-Maintained [GameManager real-worker checkpoint ef5b9a8](evidence/game-manager-real-worker-20261025/README.md)
+Current [Faith update checkpoint](evidence/game-faith-update-20261025/README.md)
+has applied natural source and a fresh canonical **65/all 1 exact** replay for
+existing authored owner 0x418A00. Independent same-image review preserves
+Faith plus six existing guards, 453/all 14; original transition 127/all 2 and
+OnDraw 31/all 1 recipes separately cold-pass. Root has admitted **+65 authored
+exact bytes / +1 owner** and **+65 source bytes / +1 owner**, with existing
+boundary/origin and denominator unchanged. Parent remains 1572/1544, nonexact.
+This source checkpoint passes all 112 target-independent CI stages, verified
+2026-10-25 04:03:35 UTC, with all 1498 frozen inputs preserved. Prior pass
+scopes and canonical proof limits remain unchanged.
+Prior maintained [GameManager real-worker checkpoint ef5b9a8](evidence/game-manager-real-worker-20261025/README.md)
 adds only the actual ScriptViewerWorker.cpp support TU to the /GL-without-/GS
 OnUpdate graph and replaces two facade calls with existing Stop. Native
 root/cold/comparison exits are 0. The complete parent is **1575/1544, nonexact**
@@ -46,11 +56,13 @@ The separate fixed-source GUI-only /Ob1 score control falsifies its intended
 Create-call recovery: all seven selected complete owners stay baseline-equal,
 but Create 74/73 still fails its required guard. GameResetGui changes 1964 to
 1900 with a real SetLives call, so the whole image is not neutral or accepted.
-One paired ANM-definition-TU control with 36 family guards is preparing, not
-adoption or a panel. A Faith 65-byte, maintained-source three-TU pilot prepares
-separately, with no Stage/score integration or measured outcome claimed.
+The paired ANM-definition-TU control restores Create call edges but remains
+rejected: score 665 and lives 147 are nonexact, SetSprite 185 and Create 75
+fail, and the 36-guard family drops from 28 to 25 exact with six unchanged
+unavailable owners. No profile adoption. Faith is the separate maintained
+three-TU checkpoint above, without Stage/score integration.
 Current GameManager.cpp SHA-256:
-`cf8c462512ec0c3b95f8273029038bdf2201a35543c79964bd4bd067194bc044`.
+`2edb5631c3c6bdb3b960cb2110213cc55aa167e0c51f7a59570ed237c377c543`.
 WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
 at **97a206f** (Sound) and **7b85dd3** (Chain). WinMain remains parked against
 flag/noinline matrices. After clear/delete checkpoint **9fb5a3d**, three
@@ -112,7 +124,7 @@ receipts below; neither added a whole-owner exact match or source-present owner.
 The prior D3D callee checkpoint added 243 whole-owner exact bytes across
 MainClearPresentTwice and MainSetScreenColor. Logging checkpoint 152492a added
 79 whole-owner exact bytes for Flush only, not its WinMain caller. The prior
-lifecycle/music caller batches, Sound/Chain diagnostics, HUD and GameManager models
+lifecycle/music caller batches, Sound/Chain diagnostics, HUD and pre-Faith GameManager models
 each add **zero new whole-owner exact bytes**. Canonical identity repair retains
 206 previously credited bytes without adding new credit.
 InitD3DRendering and WinMain remain nonexact, with no runtime/shared-global closure.
@@ -136,15 +148,16 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
-| GameManagerUpdateBody / target 1544 | Maintained two-TU 1575; ignored score eight/nine-TU 1559 and Stage four-TU 1605; all nonexact |
+| GameManagerUpdateBody / target 1544 | Current Faith three-TU 1572; prior maintained two-TU 1575; ignored score 1559 and Stage 1605; all nonexact |
+| GameUpdateFaithDecay / target 65 | Fresh canonical exact 65/all 1; source and exact admission complete, +65 authored exact bytes |
 | GameUpdateGui / target 671 | Ignored first/shared models 734/730 bytes; not maintained/admitted, nonexact |
 | GameAddLives / ItemAddLives / target 141 | Ignored first/shared models 194/189 bytes; not maintained/admitted, nonexact |
 | Stage reset / transition / targets 214 / 119 | Ignored complete four-TU models 184 / 263 bytes; full reset alignment retained; nonexact |
 | Ending Run / target 1568 | Fresh source-current 1576 bytes; complete alignment / 18 table words / 53 locals retained; nonexact |
 | HUD UpdateStageElements / target 3836 | Candidate 3824 bytes: 3796 code + 0 alignment + 28 table; 72 syntactic fields / 249 locals / 21 calls; nonexact |
-| Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
-| Authored source-present nonexact / absent | 205 / 118 functions |
-| Overall exact / mappings | 1255 functions / 141969 bytes; 1101 mappings |
+| Authored / source / authored exact | 735 functions / 273658 bytes; source 618 / 248561; exact 413 / 75103 |
+| Authored source-present nonexact / absent | 205 / 117 functions |
+| Overall exact / mappings | 1256 functions / 142034 bytes; 1102 mappings |
 | Windows i386 product / runtime | Open; semantic reconstruction and portability not started |
 
 [Live progress](PROGRESS.md): 1777 candidates and reviewed boundaries,
@@ -522,11 +535,12 @@ a real SetLivesDisplayCount call without acceptance. Independent and collateral
 receipts are linked in the score summary. No source/profile/metric/CI change.
 
 Historical ANM-only /Ob1 adverse evidence from a different ten-TU /GL /GS
-context remains separate. One paired ANM-definition-TU control with 36 family
-guards is preparing to expose tradeoffs, not adopt a profile or open a panel.
-The 65-byte Faith dependency pilot separately starts from maintained
-GameManager cf8c4625 in a three-TU graph, without ignored Stage/score source
-integration. Neither future experiment's outcome is asserted here.
+context remains separate. The paired ANM-definition-TU control restores Create
+call edges but is rejected: score 665/671 and lives 147/141 remain nonexact;
+SetSprite 185 and Create 75 fail; family exact guards drop 28 to 25, with six
+unavailable owners unchanged among 36 checks. This is no profile adoption or
+new panel. Faith independently reaches canonical verification in the maintained
+three-TU graph, without ignored Stage/score integration, as recorded below.
 
 The separate [Stage-pair diagnostic](evidence/game-stage-pair-native-20261025/README.md)
 uses staged GameManager plus real Worker, AnmManager and TransitionEffect,
@@ -548,6 +562,27 @@ Original class/TU/ABI provenance, shared storage and runtime remain unresolved.
 Keep unsupported Stage profile/ABI panels parked; the separately documented
 GUI-only /Ob1 negative control is not Stage tuning or adoption. No maintained
 source admission, metric change or new full-CI claim follows.
+
+The [Faith update source checkpoint](evidence/game-faith-update-20261025/README.md)
+uses GameManager, ScriptViewerWorker and AnmManager, all /GL without /GS, real
+OnUpdate entry and standard diagnostic anchors. Positive timer current calls
+real Add(-1.0f) then returns. Otherwise, when faith exceeds 5000, subtract the
+old unknown10 before raising it to at least 18 and flooring faith at 5000.
+Fresh canonical cold replay proves the complete 65-byte owner and sole field;
+independent same-image replay covers 453 bytes / 14 fields across seven owners.
+Original transition and OnDraw recipes separately cold-pass with preserved
+inputs. Parent 1572/1544 remains nonexact. Existing boundary/origin stay intact;
+ledger admission is complete (+65 exact/source bytes, one owner each, unchanged
+denominator), with tracking validation passed and progress regenerated by root.
+The four existing legacy units retain 158 bytes / all 3 fields. This source's
+full target-independent CI passes all 112 stages, verified 2026-10-25
+04:03:35 UTC. In game-faith-checkpoint-20261025, root-ci.exit and
+post-ci-inputs.exit are both 0; all 1498 frozen inputs were preserved. The
+evidence summary records durable log/pin hashes; only CI-result documentation
+changes after that freeze. Admission and prior regression scopes are unchanged.
+No original class, lifetime,
+shared runtime storage or product closure is claimed. See GAME-004 for the
+durable ordering fact and the copied canonical receipt for exactness scope.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not

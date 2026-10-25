@@ -134,8 +134,29 @@ extern void __stdcall GameDestroyMenu(GameMenuView *menu);
 extern void GameEmitDemoEffect(int script, int type, int duration, int x, int y, int z);
 extern void GameQueueSound(unsigned char *sound, int soundId);
 extern void GameUpdateGui(GuiView *gui);
-extern void GameUpdateFaithDecay(unsigned char *state);
 extern void EnemyMarkPendingInterrupt(int *vmId);
+
+// Target 0x418A00 updates the shared score timer before allowing faith decay.
+// As in ExtendFaithTimer, this cast models the observed same-layout boundary.
+void GameUpdateFaithDecay(unsigned char *state)
+{
+    GameScoreStateView *score = reinterpret_cast<GameScoreStateView *>(state);
+    if (score->timer.current > 0)
+    {
+        AnmVmTimerView *sharedTimer =
+            reinterpret_cast<AnmVmTimerView *>(&score->timer);
+        sharedTimer->Add(-1.0f);
+        return;
+    }
+    if (score->faith > 5000)
+    {
+        score->faith -= score->unknown10;
+        if (score->unknown10 < 18)
+            score->unknown10 = 18;
+        if (score->faith < 5000)
+            score->faith = 5000;
+    }
+}
 
 // Target0x4045B0 starts the primary stage's60-frame transition. The actual
 // GameManager caller supplies4776E8, separately from the menu entry4776E4.

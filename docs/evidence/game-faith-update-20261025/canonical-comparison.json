@@ -1,0 +1,38 @@
+{
+  "artifact_kind": "linked-pe",
+  "candidate_address": "0x004010F0",
+  "capstone_version": "5.0.6",
+  "compared_size": 65,
+  "data_spans": [],
+  "decoded_bytes": 65,
+  "extent_source": "pdb-section-contribution",
+  "first_differences": [],
+  "image": "build/match-linked/GameFaithUpdate/source.exe",
+  "image_sha256": "fc2e7a967aa0b0bd95e5a4d6ba9f2819ebd533b8388dbfb67a0eb82dd0471746",
+  "linkages": [
+    {
+      "addend": 0,
+      "candidate_target": "0x00409C20",
+      "linked_symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+      "local": false,
+      "offset": "0x11",
+      "symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+      "target": "0x0044BF40",
+      "target_encoded_value": "0x0003352B",
+      "type": "REL32",
+      "width": 4
+    }
+  ],
+  "matched_bytes": 65,
+  "matched_compared_bytes": 65,
+  "normalization_complete": true,
+  "pdb_age": 1,
+  "pdb_guid": "46986288a6c9994fabae5b02939d8529",
+  "pdb_module_index": 1,
+  "raw_equal": false,
+  "result": "exact",
+  "size": 65,
+  "symbol": "?GameUpdateFaithDecay@@YAXPAE@Z",
+  "target_address": "0x00418A00",
+  "unit": "game-update-faith-decay"
+}

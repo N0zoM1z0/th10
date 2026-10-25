@@ -23894,3 +23894,18 @@ symbol = "?Flush@GameErrorContext@th10@@QAEXXZ"
 target_address = 4426064
 size = 79
 linkages = [{ "offset" = 9, "type" = "DIR32", "symbol" = "??_C@_0DO@MLBKKHLL@?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9@", "target" = 4650956 }, { "offset" = 16, "type" = "REL32", "symbol" = "?Log@GameErrorContext@th10@@QAAPADPADZZ", "target" = 4503568 }, { "offset" = 36, "type" = "DIR32", "symbol" = "??_C@_03MGHMBJCF@log?$AA@", "target" = 4650952 }, { "offset" = 45, "type" = "DIR32", "symbol" = "__imp__MessageBoxA@16", "target" = 4612660 }, { "offset" = 66, "type" = "DIR32", "symbol" = "??_C@_09HEPPHMDG@?4?1log?4txt?$AA@", "target" = 4650940 }, { "offset" = 73, "type" = "REL32", "symbol" = "?WriteFile@FileSystem@@YGHPBDPBXI@Z", "target" = 4502848 }]
+
+[units.game-update-faith-decay]
+artifact_kind = "linked-pe"
+source = "src/GameManager.cpp"
+support_sources = ["src/ScriptViewerWorker.cpp", "src/AnmManager.cpp"]
+output_dir = "build/match-linked/GameFaithUpdate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?OnUpdate@GameManager@@SIIPAU1@@Z"
+functions = ["GameUpdateFaithDecay"]
+symbol = "?GameUpdateFaithDecay@@YAXPAE@Z"
+target_address = 0x00418A00
+size = 65
+linkages = [{ offset = 0x11, type = "REL32", symbol = "?Add@AnmVmTimerView@@QAEXM@Z", target = 0x0044BF40 }]

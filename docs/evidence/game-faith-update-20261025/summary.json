@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "base_checkpoint": "52ba2fb78523fd21627021d6d7856ae5945e5821",
+  "unit": "game-update-faith-decay",
+  "target_address": "0x418A00",
+  "size": 65,
+  "fields": 1,
+  "source_sha256": "2edb5631c3c6bdb3b960cb2110213cc55aa167e0c51f7a59570ed237c377c543",
+  "canonical_image_sha256": "fc2e7a967aa0b0bd95e5a4d6ba9f2819ebd533b8388dbfb67a0eb82dd0471746",
+  "diagnostic_image_sha256": "d60a74d5e806cf0134d47ebdc3e6485deb027a6529b32281ee09963c03f9595d",
+  "graph": {
+    "ordered_tus": [
+      "src/GameManager.cpp",
+      "src/ScriptViewerWorker.cpp",
+      "src/AnmManager.cpp"
+    ],
+    "profile": "/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc /GL",
+    "entry": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": "/ltcg /nodefaultlib /subsystem:console /incremental:no /fixed:no /base:0x00400000 /debug /debugtype:cv /opt:noref /opt:noicf /safeseh:no"
+  },
+  "semantics": "Positive timer: real Add(-1.0f), return. Otherwise if faith > 5000: subtract OLD unknown10, then clamp unknown10 to at least 18, then floor faith at 5000.",
+  "canonical_cold_exit": 0,
+  "canonical_exact": true,
+  "canonical_independent_review": true,
+  "canonical_comparison": {
+    "path": "canonical-comparison.json",
+    "sha256": "ff292ce55e65e815c33d0f6dd2988b1b8b3e5c852e49760ec2cfcb1874ca52c0"
+  },
+  "same_image_replay": {
+    "owners": 7,
+    "bytes": 453,
+    "fields": 14,
+    "existing_guard_sizes": "92, 7, 28, 72, 101, 88",
+    "original_artifacts_preserved": 68
+  },
+  "legacy_canonical_regressions": {
+    "GameStageTransition": "Fresh original recipe: 3 guards, 127 bytes / 2 fields",
+    "OnDraw": "Fresh original recipe: 31 bytes / 1 field",
+    "inputs_preserved": true,
+    "total": "4 existing units / 158 bytes / 3 fields, no new credit"
+  },
+  "parent": "1572/1544, nonexact; no parent credit",
+  "admission": {
+    "status": "accepted after canonical replay and root ledger validation",
+    "new_exact_bytes": 65,
+    "new_exact_owners": 1,
+    "new_source_bytes": 65,
+    "new_source_owners": 1,
+    "authored_denominator_change": 0,
+    "existing_boundary_and_origin_retained": true
+  },
+  "full_ci": {
+    "status": "passed",
+    "scope": "112-stage target-independent Faith source checkpoint; canonical exactness and runtime claims remain separately scoped.",
+    "verified_at_utc": "2026-10-25T04:03:35Z",
+    "stage_count": 112,
+    "root_exit": 0,
+    "post_input_check_exit": 0,
+    "frozen_input_count": 1498,
+    "frozen_inputs_preserved": true,
+    "post_ci_changes": "Only Faith evidence README/summary and handoff CI-result text updated after the successful freeze.",
+    "receipts": [
+      {
+        "path": ".analysis/gpt-dots/game-faith-checkpoint-20261025/root-ci.log",
+        "sha256": "f38c070b31b5c73dafc7cd987badeb0fee180c5a4f933904351b36cd9d324255"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-faith-checkpoint-20261025/root-ci.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-faith-checkpoint-20261025/ci-inputs.json",
+        "sha256": "188b65059b18bda0127d63004db72a26f996fca49f3d21510707e1534bf76bbb"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-faith-checkpoint-20261025/post-ci-inputs.log",
+        "sha256": "0130d46800c5077c9481973197b8320b62dd798126f567b294e9181656af2802"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-faith-checkpoint-20261025/post-ci-inputs.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-faith-checkpoint-20261025/run-ci.sh",
+        "sha256": "4757cb55f703cdec0bb0b16c92c069e6097f374e8dc9a613a49cd1562f1d1cd0"
+      }
+    ]
+  },
+  "limits": "Original class/type spelling, C++ object lifetime, shared storage/runtime and original production graph remain unproved. No Stage/score diagnostic source integration.",
+  "receipt_sha256": {
+    ".analysis/gpt-dots/game-faith-canonical-20261025/independent-review/receipt.json": "17833de8443509fcb17e461cad5979cabcfb9ae9ad3462084beb3a3cb27160b2",
+    ".analysis/gpt-dots/game-faith-canonical-20261025/regression-validation.json": "4704a83db65666d3e8883f415c9cb536de5f68cdbb453881ea46a0d934b319ea",
+    ".analysis/gpt-dots/game-faith-update-native-20261025/independent-review/receipt.json": "a4e65463b44a8955d078b3dc5fc043798eeeedf939bbe4577887dd8824926e32"
+  },
+  "admitted_totals": {
+    "authored_functions": 735,
+    "authored_bytes": 273658,
+    "authored_source_owners": 618,
+    "authored_source_bytes": 248561,
+    "authored_exact_owners": 413,
+    "authored_exact_bytes": 75103,
+    "overall_exact_owners": 1256,
+    "overall_exact_bytes": 142034,
+    "source_mappings": 1102,
+    "authored_source_nonexact": 205,
+    "authored_source_missing": 117
+  }
+}
