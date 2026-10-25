@@ -4,6 +4,16 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [popup-number Draw pilot](evidence/popup-digit-draw-20261025/README.md)
+retains three complete isolated models: **484/540**, **535/540**, and existing-global
+identity **535/540**. All are structural rejections; the last two are whole-body
+identical after diagnostic link-field normalization. Target record iteration,
+x87 dx/dy lifetime and branch-local sprite publication are recovered, but no
+new prediction justifies register/profile permutations. All three images retain
+same-image Flush133/all4 and DrawNoRotation515/all29. Source proposals and full
+15-field/18-target-local inventories are retained without canonical admission,
+new source/exact credit, or metric change. Docs-only focused checks pass; no new
+full CI or runtime claim. Original artifacts are hash-frozen and preserved.
 Current [separate Spt Test Draw](evidence/spt-test-draw-20261025/README.md)
 closes **531 authored bytes / one owner** on the first complete natural model.
 A separate canonical cold link independently reproduces Draw531/all32,

@@ -1,0 +1,427 @@
+{
+  "result": "structural-rejection",
+  "target_size": 540,
+  "candidate_sizes": {
+    "first": 484,
+    "model": 535,
+    "identity": 535
+  },
+  "all_fields": {
+    "first": [
+      {
+        "candidate_offset": 1,
+        "target_offset": 1,
+        "symbol": "?g_AnmHardwareFlags@@3EA",
+        "target": "0x491d78",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 16,
+        "target_offset": 22,
+        "symbol": "?g_StageFogEnabled@@3HA",
+        "target": "0x492378",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 26,
+        "target_offset": 32,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 31,
+        "target_offset": 37,
+        "symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+        "target": "0x442f50",
+        "type": "REL32"
+      },
+      {
+        "candidate_offset": 36,
+        "target_offset": 42,
+        "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+        "target": "0x491c30",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 49,
+        "target_offset": 52,
+        "symbol": "?g_StageFogEnabled@@3HA",
+        "target": "0x492378",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 65,
+        "target_offset": 71,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "target": "0x477834",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 102,
+        "target_offset": 102,
+        "symbol": "__real@41000000",
+        "target": "0x470bd0",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 141,
+        "target_offset": 141,
+        "symbol": "__real@3f000000",
+        "target": "0x470b0c",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 150,
+        "target_offset": 150,
+        "symbol": "__real@43600000",
+        "target": "0x470b4c",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 165,
+        "target_offset": 165,
+        "symbol": "__real@41800000",
+        "target": "0x470b48",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 213,
+        "target_offset": 213,
+        "symbol": "__ftol2",
+        "target": "0x463b2c",
+        "type": "REL32"
+      },
+      {
+        "candidate_offset": 379,
+        "target_offset": 427,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 412,
+        "target_offset": 460,
+        "symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x443080",
+        "type": "REL32"
+      },
+      {
+        "candidate_offset": 450,
+        "target_offset": 506,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "target": "0x477834",
+        "type": "DIR32"
+      }
+    ],
+    "model": [
+      {
+        "candidate_offset": 1,
+        "target_offset": 1,
+        "symbol": "?g_AnmHardwareFlags@@3EA",
+        "target": "0x491d78",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 22,
+        "target_offset": 22,
+        "symbol": "?g_StageFogEnabled@@3HA",
+        "target": "0x492378",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 32,
+        "target_offset": 32,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 37,
+        "target_offset": 37,
+        "symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+        "target": "0x442f50",
+        "type": "REL32"
+      },
+      {
+        "candidate_offset": 42,
+        "target_offset": 42,
+        "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+        "target": "0x491c30",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 55,
+        "target_offset": 52,
+        "symbol": "?g_StageFogEnabled@@3HA",
+        "target": "0x492378",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 71,
+        "target_offset": 71,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "target": "0x477834",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 102,
+        "target_offset": 102,
+        "symbol": "__real@41000000",
+        "target": "0x470bd0",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 141,
+        "target_offset": 141,
+        "symbol": "__real@3f000000",
+        "target": "0x470b0c",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 150,
+        "target_offset": 150,
+        "symbol": "__real@43600000",
+        "target": "0x470b4c",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 165,
+        "target_offset": 165,
+        "symbol": "__real@41800000",
+        "target": "0x470b48",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 213,
+        "target_offset": 213,
+        "symbol": "__ftol2",
+        "target": "0x463b2c",
+        "type": "REL32"
+      },
+      {
+        "candidate_offset": 454,
+        "target_offset": 427,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 463,
+        "target_offset": 460,
+        "symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x443080",
+        "type": "REL32"
+      },
+      {
+        "candidate_offset": 501,
+        "target_offset": 506,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "target": "0x477834",
+        "type": "DIR32"
+      }
+    ],
+    "identity": [
+      {
+        "candidate_offset": 1,
+        "target_offset": 1,
+        "symbol": "?g_AnmHardwareFlags@@3EA",
+        "target": "0x491d78",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 22,
+        "target_offset": 22,
+        "symbol": "?g_StageFogEnabled@@3HA",
+        "target": "0x492378",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 32,
+        "target_offset": 32,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 37,
+        "target_offset": 37,
+        "symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+        "target": "0x442f50",
+        "type": "REL32"
+      },
+      {
+        "candidate_offset": 42,
+        "target_offset": 42,
+        "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+        "target": "0x491c30",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 55,
+        "target_offset": 52,
+        "symbol": "?g_StageFogEnabled@@3HA",
+        "target": "0x492378",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 71,
+        "target_offset": 71,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "target": "0x477834",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 102,
+        "target_offset": 102,
+        "symbol": "__real@41000000",
+        "target": "0x470bd0",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 141,
+        "target_offset": 141,
+        "symbol": "__real@3f000000",
+        "target": "0x470b0c",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 150,
+        "target_offset": 150,
+        "symbol": "__real@43600000",
+        "target": "0x470b4c",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 165,
+        "target_offset": 165,
+        "symbol": "__real@41800000",
+        "target": "0x470b48",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 213,
+        "target_offset": 213,
+        "symbol": "__ftol2",
+        "target": "0x463b2c",
+        "type": "REL32"
+      },
+      {
+        "candidate_offset": 454,
+        "target_offset": 427,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "type": "DIR32"
+      },
+      {
+        "candidate_offset": 463,
+        "target_offset": 460,
+        "symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x443080",
+        "type": "REL32"
+      },
+      {
+        "candidate_offset": 501,
+        "target_offset": 506,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "target": "0x477834",
+        "type": "DIR32"
+      }
+    ]
+  },
+  "target_local_branches": [
+    [
+      19,
+      2,
+      69
+    ],
+    [
+      28,
+      2,
+      69
+    ],
+    [
+      88,
+      6,
+      510
+    ],
+    [
+      98,
+      2,
+      115
+    ],
+    [
+      113,
+      2,
+      123
+    ],
+    [
+      226,
+      2,
+      235
+    ],
+    [
+      233,
+      2,
+      277
+    ],
+    [
+      240,
+      2,
+      272
+    ],
+    [
+      270,
+      2,
+      277
+    ],
+    [
+      291,
+      6,
+      510
+    ],
+    [
+      304,
+      2,
+      310
+    ],
+    [
+      316,
+      2,
+      391
+    ],
+    [
+      322,
+      2,
+      391
+    ],
+    [
+      327,
+      2,
+      360
+    ],
+    [
+      358,
+      2,
+      419
+    ],
+    [
+      389,
+      2,
+      419
+    ],
+    [
+      498,
+      6,
+      306
+    ],
+    [
+      522,
+      6,
+      83
+    ]
+  ],
+  "model_identity_normalized_equal": true,
+  "exactness_credit": 0,
+  "limitation": "Different extents/local layout prohibit ordinary mismatch-byte score; field role order binding is diagnostic only."
+}

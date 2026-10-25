@@ -1,0 +1,1768 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_size": 540,
+  "target_local_branches": [
+    [
+      19,
+      2,
+      69
+    ],
+    [
+      28,
+      2,
+      69
+    ],
+    [
+      88,
+      6,
+      510
+    ],
+    [
+      98,
+      2,
+      115
+    ],
+    [
+      113,
+      2,
+      123
+    ],
+    [
+      226,
+      2,
+      235
+    ],
+    [
+      233,
+      2,
+      277
+    ],
+    [
+      240,
+      2,
+      272
+    ],
+    [
+      270,
+      2,
+      277
+    ],
+    [
+      291,
+      6,
+      510
+    ],
+    [
+      304,
+      2,
+      310
+    ],
+    [
+      316,
+      2,
+      391
+    ],
+    [
+      322,
+      2,
+      391
+    ],
+    [
+      327,
+      2,
+      360
+    ],
+    [
+      358,
+      2,
+      419
+    ],
+    [
+      389,
+      2,
+      419
+    ],
+    [
+      498,
+      6,
+      306
+    ],
+    [
+      522,
+      6,
+      83
+    ]
+  ],
+  "trials": {
+    "first": {
+      "size": 484,
+      "image_sha256": "f77c3fd99a834776c472e63c0d83109763b8f3a68e4c60146a95450667764ea3",
+      "fields": 15,
+      "local_branches": [
+        [
+          13,
+          2,
+          63
+        ],
+        [
+          22,
+          2,
+          63
+        ],
+        [
+          88,
+          6,
+          454
+        ],
+        [
+          98,
+          2,
+          115
+        ],
+        [
+          113,
+          2,
+          123
+        ],
+        [
+          226,
+          2,
+          238
+        ],
+        [
+          236,
+          2,
+          287
+        ],
+        [
+          243,
+          2,
+          279
+        ],
+        [
+          277,
+          2,
+          287
+        ],
+        [
+          301,
+          6,
+          454
+        ],
+        [
+          316,
+          2,
+          345
+        ],
+        [
+          321,
+          2,
+          345
+        ],
+        [
+          343,
+          2,
+          350
+        ],
+        [
+          442,
+          6,
+          310
+        ],
+        [
+          466,
+          6,
+          83
+        ]
+      ],
+      "calls": [
+        [
+          30,
+          "0x409c40"
+        ],
+        [
+          57,
+          "dword ptr [ecx + 0xe4]"
+        ],
+        [
+          212,
+          "0x40e17c"
+        ],
+        [
+          411,
+          "0x409d70"
+        ]
+      ],
+      "guards": {
+        "anm-render-flush-vertex-buffer": {
+          "unit": "anm-render-flush-vertex-buffer",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+          "target_address": "0x00442F50",
+          "size": 133,
+          "matched_bytes": 133,
+          "compared_size": 133,
+          "matched_compared_bytes": 133,
+          "image": "build/gpt-dots/popup-digit-draw-first/source.exe",
+          "image_sha256": "f77c3fd99a834776c472e63c0d83109763b8f3a68e4c60146a95450667764ea3",
+          "pdb_guid": "ba26575b85ea2c4bb8099e9d3547f491",
+          "pdb_age": 1,
+          "candidate_address": "0x00409C40",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 2,
+          "decoded_bytes": 133,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0xB",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            },
+            {
+              "offset": "0x1F",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            },
+            {
+              "offset": "0x33",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            },
+            {
+              "offset": "0x4C",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        "anm-render-draw-no-rotation": {
+          "unit": "anm-render-draw-no-rotation",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "target_address": "0x00443080",
+          "size": 515,
+          "matched_bytes": 515,
+          "compared_size": 515,
+          "matched_compared_bytes": 515,
+          "image": "build/gpt-dots/popup-digit-draw-first/source.exe",
+          "image_sha256": "f77c3fd99a834776c472e63c0d83109763b8f3a68e4c60146a95450667764ea3",
+          "pdb_guid": "ba26575b85ea2c4bb8099e9d3547f491",
+          "pdb_age": 1,
+          "candidate_address": "0x00409D70",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 2,
+          "decoded_bytes": 515,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x27",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x0040D1E0",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x52",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0x58",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F0",
+              "target": "0x004978C0",
+              "addend": 0,
+              "target_encoded_value": "0x004978C0"
+            },
+            {
+              "offset": "0x84",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0x8A",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F0",
+              "target": "0x004978C0",
+              "addend": 0,
+              "target_encoded_value": "0x004978C0"
+            },
+            {
+              "offset": "0xC0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x0040D1E0",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0xCA",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "_floor",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0097",
+              "local": false,
+              "candidate_target": "0x0040E184",
+              "target": "0x00452FF0",
+              "addend": 0,
+              "target_encoded_value": "0x0000FEA2"
+            },
+            {
+              "offset": "0xD0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0xD5",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0xDB",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0xE7",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F0",
+              "target": "0x004978C0",
+              "addend": 0,
+              "target_encoded_value": "0x004978C0"
+            },
+            {
+              "offset": "0xED",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E144",
+              "target": "0x004978C0",
+              "addend": 84,
+              "target_encoded_value": "0x00497914"
+            },
+            {
+              "offset": "0xF3",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E10C",
+              "target": "0x004978C0",
+              "addend": 28,
+              "target_encoded_value": "0x004978DC"
+            },
+            {
+              "offset": "0x12A",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x130",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F4",
+              "target": "0x004978C0",
+              "addend": 4,
+              "target_encoded_value": "0x004978C4"
+            },
+            {
+              "offset": "0x15C",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x162",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F4",
+              "target": "0x004978C0",
+              "addend": 4,
+              "target_encoded_value": "0x004978C4"
+            },
+            {
+              "offset": "0x197",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "_floor",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0097",
+              "local": false,
+              "candidate_target": "0x0040E184",
+              "target": "0x00452FF0",
+              "addend": 0,
+              "target_encoded_value": "0x0000FDD5"
+            },
+            {
+              "offset": "0x19D",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x1A3",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x1A9",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x1B2",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F4",
+              "target": "0x004978C0",
+              "addend": 4,
+              "target_encoded_value": "0x004978C4"
+            },
+            {
+              "offset": "0x1BC",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E148",
+              "target": "0x004978C0",
+              "addend": 88,
+              "target_encoded_value": "0x00497918"
+            },
+            {
+              "offset": "0x1C2",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E12C",
+              "target": "0x004978C0",
+              "addend": 60,
+              "target_encoded_value": "0x004978FC"
+            },
+            {
+              "offset": "0x1E2",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E14C",
+              "target": "0x004978C0",
+              "addend": 92,
+              "target_encoded_value": "0x0049791C"
+            },
+            {
+              "offset": "0x1E8",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E130",
+              "target": "0x004978C0",
+              "addend": 64,
+              "target_encoded_value": "0x00497900"
+            },
+            {
+              "offset": "0x1EE",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E114",
+              "target": "0x004978C0",
+              "addend": 36,
+              "target_encoded_value": "0x004978E4"
+            },
+            {
+              "offset": "0x1F4",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F8",
+              "target": "0x004978C0",
+              "addend": 8,
+              "target_encoded_value": "0x004978C8"
+            },
+            {
+              "offset": "0x1F9",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?DrawInner@AnmRenderManagerView@@QAEHPAUAnmVmView@@H@Z",
+              "linked_symbol": "?DrawInner@AnmRenderManagerView@@QAEHPAUAnmVmView@@H@Z",
+              "local": false,
+              "candidate_target": "0x004097C0",
+              "target": "0x00442670",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF3F3"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        }
+      }
+    },
+    "model": {
+      "size": 535,
+      "image_sha256": "0befde7a7278f91514ddca388b95eac2552f77c4ff6c1eeb80499e4181099a6f",
+      "fields": 15,
+      "local_branches": [
+        [
+          19,
+          2,
+          69
+        ],
+        [
+          28,
+          2,
+          69
+        ],
+        [
+          88,
+          6,
+          505
+        ],
+        [
+          98,
+          2,
+          115
+        ],
+        [
+          113,
+          2,
+          123
+        ],
+        [
+          226,
+          2,
+          238
+        ],
+        [
+          236,
+          2,
+          287
+        ],
+        [
+          243,
+          2,
+          279
+        ],
+        [
+          277,
+          2,
+          287
+        ],
+        [
+          301,
+          6,
+          505
+        ],
+        [
+          316,
+          2,
+          390
+        ],
+        [
+          322,
+          2,
+          390
+        ],
+        [
+          327,
+          2,
+          359
+        ],
+        [
+          357,
+          2,
+          419
+        ],
+        [
+          388,
+          2,
+          419
+        ],
+        [
+          493,
+          6,
+          310
+        ],
+        [
+          517,
+          6,
+          83
+        ]
+      ],
+      "calls": [
+        [
+          36,
+          "0x409c70"
+        ],
+        [
+          63,
+          "dword ptr [ecx + 0xe4]"
+        ],
+        [
+          212,
+          "0x40e17c"
+        ],
+        [
+          462,
+          "0x409da0"
+        ]
+      ],
+      "guards": {
+        "anm-render-flush-vertex-buffer": {
+          "unit": "anm-render-flush-vertex-buffer",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+          "target_address": "0x00442F50",
+          "size": 133,
+          "matched_bytes": 133,
+          "compared_size": 133,
+          "matched_compared_bytes": 133,
+          "image": "build/gpt-dots/popup-digit-draw-model/source.exe",
+          "image_sha256": "0befde7a7278f91514ddca388b95eac2552f77c4ff6c1eeb80499e4181099a6f",
+          "pdb_guid": "8e596f1767bef94fbef9e1392512ef3f",
+          "pdb_age": 1,
+          "candidate_address": "0x00409C70",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 2,
+          "decoded_bytes": 133,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0xB",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            },
+            {
+              "offset": "0x1F",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            },
+            {
+              "offset": "0x33",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            },
+            {
+              "offset": "0x4C",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        "anm-render-draw-no-rotation": {
+          "unit": "anm-render-draw-no-rotation",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "target_address": "0x00443080",
+          "size": 515,
+          "matched_bytes": 515,
+          "compared_size": 515,
+          "matched_compared_bytes": 515,
+          "image": "build/gpt-dots/popup-digit-draw-model/source.exe",
+          "image_sha256": "0befde7a7278f91514ddca388b95eac2552f77c4ff6c1eeb80499e4181099a6f",
+          "pdb_guid": "8e596f1767bef94fbef9e1392512ef3f",
+          "pdb_age": 1,
+          "candidate_address": "0x00409DA0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 2,
+          "decoded_bytes": 515,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x27",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x0040D1E0",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x52",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0x58",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F0",
+              "target": "0x004978C0",
+              "addend": 0,
+              "target_encoded_value": "0x004978C0"
+            },
+            {
+              "offset": "0x84",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0x8A",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F0",
+              "target": "0x004978C0",
+              "addend": 0,
+              "target_encoded_value": "0x004978C0"
+            },
+            {
+              "offset": "0xC0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x0040D1E0",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0xCA",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "_floor",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0097",
+              "local": false,
+              "candidate_target": "0x0040E184",
+              "target": "0x00452FF0",
+              "addend": 0,
+              "target_encoded_value": "0x0000FEA2"
+            },
+            {
+              "offset": "0xD0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0xD5",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0xDB",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0xE7",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F0",
+              "target": "0x004978C0",
+              "addend": 0,
+              "target_encoded_value": "0x004978C0"
+            },
+            {
+              "offset": "0xED",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E144",
+              "target": "0x004978C0",
+              "addend": 84,
+              "target_encoded_value": "0x00497914"
+            },
+            {
+              "offset": "0xF3",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E10C",
+              "target": "0x004978C0",
+              "addend": 28,
+              "target_encoded_value": "0x004978DC"
+            },
+            {
+              "offset": "0x12A",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x130",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F4",
+              "target": "0x004978C0",
+              "addend": 4,
+              "target_encoded_value": "0x004978C4"
+            },
+            {
+              "offset": "0x15C",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x162",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F4",
+              "target": "0x004978C0",
+              "addend": 4,
+              "target_encoded_value": "0x004978C4"
+            },
+            {
+              "offset": "0x197",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "_floor",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0097",
+              "local": false,
+              "candidate_target": "0x0040E184",
+              "target": "0x00452FF0",
+              "addend": 0,
+              "target_encoded_value": "0x0000FDD5"
+            },
+            {
+              "offset": "0x19D",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x1A3",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x1A9",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x1B2",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F4",
+              "target": "0x004978C0",
+              "addend": 4,
+              "target_encoded_value": "0x004978C4"
+            },
+            {
+              "offset": "0x1BC",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E148",
+              "target": "0x004978C0",
+              "addend": 88,
+              "target_encoded_value": "0x00497918"
+            },
+            {
+              "offset": "0x1C2",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E12C",
+              "target": "0x004978C0",
+              "addend": 60,
+              "target_encoded_value": "0x004978FC"
+            },
+            {
+              "offset": "0x1E2",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E14C",
+              "target": "0x004978C0",
+              "addend": 92,
+              "target_encoded_value": "0x0049791C"
+            },
+            {
+              "offset": "0x1E8",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E130",
+              "target": "0x004978C0",
+              "addend": 64,
+              "target_encoded_value": "0x00497900"
+            },
+            {
+              "offset": "0x1EE",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E114",
+              "target": "0x004978C0",
+              "addend": 36,
+              "target_encoded_value": "0x004978E4"
+            },
+            {
+              "offset": "0x1F4",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F8",
+              "target": "0x004978C0",
+              "addend": 8,
+              "target_encoded_value": "0x004978C8"
+            },
+            {
+              "offset": "0x1F9",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?DrawInner@AnmRenderManagerView@@QAEHPAUAnmVmView@@H@Z",
+              "linked_symbol": "?DrawInner@AnmRenderManagerView@@QAEHPAUAnmVmView@@H@Z",
+              "local": false,
+              "candidate_target": "0x004097F0",
+              "target": "0x00442670",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF3F3"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        }
+      }
+    },
+    "identity": {
+      "size": 535,
+      "image_sha256": "7b09e79631eb49e4d48102838de472146fcfe2e3124555a029008cfdf0da2444",
+      "fields": 15,
+      "local_branches": [
+        [
+          19,
+          2,
+          69
+        ],
+        [
+          28,
+          2,
+          69
+        ],
+        [
+          88,
+          6,
+          505
+        ],
+        [
+          98,
+          2,
+          115
+        ],
+        [
+          113,
+          2,
+          123
+        ],
+        [
+          226,
+          2,
+          238
+        ],
+        [
+          236,
+          2,
+          287
+        ],
+        [
+          243,
+          2,
+          279
+        ],
+        [
+          277,
+          2,
+          287
+        ],
+        [
+          301,
+          6,
+          505
+        ],
+        [
+          316,
+          2,
+          390
+        ],
+        [
+          322,
+          2,
+          390
+        ],
+        [
+          327,
+          2,
+          359
+        ],
+        [
+          357,
+          2,
+          419
+        ],
+        [
+          388,
+          2,
+          419
+        ],
+        [
+          493,
+          6,
+          310
+        ],
+        [
+          517,
+          6,
+          83
+        ]
+      ],
+      "calls": [
+        [
+          36,
+          "0x409c70"
+        ],
+        [
+          63,
+          "dword ptr [ecx + 0xe4]"
+        ],
+        [
+          212,
+          "0x40e178"
+        ],
+        [
+          462,
+          "0x409da0"
+        ]
+      ],
+      "guards": {
+        "anm-render-flush-vertex-buffer": {
+          "unit": "anm-render-flush-vertex-buffer",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+          "target_address": "0x00442F50",
+          "size": 133,
+          "matched_bytes": 133,
+          "compared_size": 133,
+          "matched_compared_bytes": 133,
+          "image": "build/gpt-dots/popup-digit-draw-identity/source.exe",
+          "image_sha256": "7b09e79631eb49e4d48102838de472146fcfe2e3124555a029008cfdf0da2444",
+          "pdb_guid": "433c27cdd8df434ea2e388660314e461",
+          "pdb_age": 1,
+          "candidate_address": "0x00409C70",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 2,
+          "decoded_bytes": 133,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0xB",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            },
+            {
+              "offset": "0x1F",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            },
+            {
+              "offset": "0x33",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            },
+            {
+              "offset": "0x4C",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x00491C30",
+              "addend": 0,
+              "target_encoded_value": "0x00491C30"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        "anm-render-draw-no-rotation": {
+          "unit": "anm-render-draw-no-rotation",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "target_address": "0x00443080",
+          "size": 515,
+          "matched_bytes": 515,
+          "compared_size": 515,
+          "matched_compared_bytes": 515,
+          "image": "build/gpt-dots/popup-digit-draw-identity/source.exe",
+          "image_sha256": "7b09e79631eb49e4d48102838de472146fcfe2e3124555a029008cfdf0da2444",
+          "pdb_guid": "433c27cdd8df434ea2e388660314e461",
+          "pdb_age": 1,
+          "candidate_address": "0x00409DA0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 2,
+          "decoded_bytes": 515,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x27",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x0040D1E0",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x52",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0x58",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F0",
+              "target": "0x004978C0",
+              "addend": 0,
+              "target_encoded_value": "0x004978C0"
+            },
+            {
+              "offset": "0x84",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0x8A",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F0",
+              "target": "0x004978C0",
+              "addend": 0,
+              "target_encoded_value": "0x004978C0"
+            },
+            {
+              "offset": "0xC0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x0040D1E0",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0xCA",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "_floor",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0096",
+              "local": false,
+              "candidate_target": "0x0040E180",
+              "target": "0x00452FF0",
+              "addend": 0,
+              "target_encoded_value": "0x0000FEA2"
+            },
+            {
+              "offset": "0xD0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0xD5",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0xDB",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E128",
+              "target": "0x004978C0",
+              "addend": 56,
+              "target_encoded_value": "0x004978F8"
+            },
+            {
+              "offset": "0xE7",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F0",
+              "target": "0x004978C0",
+              "addend": 0,
+              "target_encoded_value": "0x004978C0"
+            },
+            {
+              "offset": "0xED",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E144",
+              "target": "0x004978C0",
+              "addend": 84,
+              "target_encoded_value": "0x00497914"
+            },
+            {
+              "offset": "0xF3",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E10C",
+              "target": "0x004978C0",
+              "addend": 28,
+              "target_encoded_value": "0x004978DC"
+            },
+            {
+              "offset": "0x12A",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x130",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F4",
+              "target": "0x004978C0",
+              "addend": 4,
+              "target_encoded_value": "0x004978C4"
+            },
+            {
+              "offset": "0x15C",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x162",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F4",
+              "target": "0x004978C0",
+              "addend": 4,
+              "target_encoded_value": "0x004978C4"
+            },
+            {
+              "offset": "0x197",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "_floor",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0096",
+              "local": false,
+              "candidate_target": "0x0040E180",
+              "target": "0x00452FF0",
+              "addend": 0,
+              "target_encoded_value": "0x0000FDD5"
+            },
+            {
+              "offset": "0x19D",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x1A3",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x1A9",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E110",
+              "target": "0x004978C0",
+              "addend": 32,
+              "target_encoded_value": "0x004978E0"
+            },
+            {
+              "offset": "0x1B2",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F4",
+              "target": "0x004978C0",
+              "addend": 4,
+              "target_encoded_value": "0x004978C4"
+            },
+            {
+              "offset": "0x1BC",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E148",
+              "target": "0x004978C0",
+              "addend": 88,
+              "target_encoded_value": "0x00497918"
+            },
+            {
+              "offset": "0x1C2",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E12C",
+              "target": "0x004978C0",
+              "addend": 60,
+              "target_encoded_value": "0x004978FC"
+            },
+            {
+              "offset": "0x1E2",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E14C",
+              "target": "0x004978C0",
+              "addend": 92,
+              "target_encoded_value": "0x0049791C"
+            },
+            {
+              "offset": "0x1E8",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E130",
+              "target": "0x004978C0",
+              "addend": 64,
+              "target_encoded_value": "0x00497900"
+            },
+            {
+              "offset": "0x1EE",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E114",
+              "target": "0x004978C0",
+              "addend": 36,
+              "target_encoded_value": "0x004978E4"
+            },
+            {
+              "offset": "0x1F4",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0060",
+              "local": false,
+              "candidate_target": "0x0040E0F8",
+              "target": "0x004978C0",
+              "addend": 8,
+              "target_encoded_value": "0x004978C8"
+            },
+            {
+              "offset": "0x1F9",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?DrawInner@AnmRenderManagerView@@QAEHPAUAnmVmView@@H@Z",
+              "linked_symbol": "?DrawInner@AnmRenderManagerView@@QAEHPAUAnmVmView@@H@Z",
+              "local": false,
+              "candidate_target": "0x004097F0",
+              "target": "0x00442670",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF3F3"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        }
+      }
+    }
+  }
+}

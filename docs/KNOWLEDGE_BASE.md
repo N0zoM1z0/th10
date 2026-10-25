@@ -5907,3 +5907,17 @@ Reviewed authored numerator increases531; denominator stays273658. Newly
 bounded callback is origin-indeterminate and adds only overall exact10 bytes.
 Original production class/TU/storage and native runtime remain unknown.
 See [complete proof and focused observations](evidence/spt-test-draw-20261025/README.md).
+
+## Popup-number Draw first complete models (2026-10-25)
+
+The [isolated Draw pilot](evidence/popup-digit-draw-20261025/README.md) establishes
+723 draw records of40 bytes from owner3C4 (allocationB884), distinct from the
+insertion ring720. Target Draw42B780..42B99B is540 dense bytes,15 link fields
+and18 local branches; callback42B9B0 is10 bytes with indeterminate origin.
+First484 and revised535 remain nonexact. Existing hardware byte491D78 identity
+correction is normalized-byte neutral. All three images retain real Flush133
+and DrawNoRotation515 exact guards (33 fields total). Branch-local sprite stores,
+post-fog player capture/nonempty-loop refresh, unsigned digit count, signed age,
+x87 distance lifetime and alpha denominator3072 are target-local facts.
+No canonical source/metric admission or runtime/global-storage closure follows.
+Park register/profile permutations absent a new independent source contract.
