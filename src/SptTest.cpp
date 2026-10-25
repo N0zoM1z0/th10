@@ -1,3 +1,4 @@
+#include "Main.hpp"
 #include "SptTest.hpp"
 #include "EclVm.hpp"
 
@@ -57,3 +58,56 @@ int __fastcall SptTestDrawCallback(void *context)
 {
     return static_cast<SptTestView *>(context)->Draw();
 }
+
+#include <stdlib.h>
+#include <string.h>
+SptTestView::SptTestView()
+{
+    memset(this, 0, sizeof(*this));
+    flags |= 2;
+    g_SptTestView = this;
+}
+int SptTestView::RegisterTasks()
+{
+    th10::ChainElem *task = th10::Chain::AllocElem(SptTestUpdateCallback);
+    task->flags |= 2;
+    task->arg = this;
+    th10::Chain::AddToCalcChain(task, 5, th10::g_Chain);
+    updateTask = task;
+    task = th10::Chain::AllocElem(SptTestDrawCallback);
+    task->flags |= 2;
+    task->arg = this;
+    th10::Chain::AddToDrawChain(task, 0x27, th10::g_Chain);
+    drawTask = task;
+    return 0;
+}
+SptTestView *SptTestCreate()
+{
+    SptTestView *view = new SptTestView;
+    if (view->RegisterTasks() != 0)
+    {
+        delete view;
+        return NULL;
+    }
+    return view;
+}
+void SptTestView::ClearScriptNames()
+{
+    if (scriptNames)
+    {
+        for (int i = 0; i < scriptCount; ++i)
+            if (scriptNames[i])
+            {
+                free(scriptNames[i]);
+                scriptNames[i] = NULL;
+            }
+        if (scriptNames)
+        {
+            free(scriptNames);
+            scriptNames = NULL;
+        }
+        scriptNames = NULL;
+    }
+}
+// Destructor42BC30 remains an explicit unresolved dependency; its complete
+// first proposal is nonexact and is not admitted with these helpers.

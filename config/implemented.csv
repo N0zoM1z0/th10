@@ -1108,3 +1108,7 @@ GameStatisticsOwner::GameStatisticsOwner
 CreateStatistics42AF20
 GameStatisticsOwner::Load42B030
 InitializeStatisticsTail42ADD0
+SptTestView::ClearScriptNames
+SptTestView::SptTestView
+SptTestView::RegisterTasks
+SptTestCreate

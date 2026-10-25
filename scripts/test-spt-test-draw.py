@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class SptTestDraw(unittest.TestCase):
     def test_actual_source_states_and_reloads(self):
         source = (ROOT/'src/SptTest.cpp').read_text()
+        source = source[:source.index('SptTestView::SptTestView()')]
         source = '\n'.join(line for line in source.splitlines() if not line.startswith('#include'))
         program = r'''
 #include <cassert>

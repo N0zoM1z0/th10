@@ -4,6 +4,19 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [Spt Test helper/cleanup pilot](evidence/spt-test-cleanup-20261025/README.md)
+closes **315 authored bytes / three owners**: names86, ctor145, registration84.
+First full, clean isolated and canonical cold graphs pass315/all12/all5 locals;
+nine same-image guards1225 and separate original Draw641/all37 pass. Authentic
+factory67 is source-only (116 emitted); new authored denominator/source +382.
+Destructor413/405 remains isolated with all33 fields/all8 locals and separate
+member EH support accounted; extra8 state store and EAX/EDX slot6 reload differ.
+No noinline/ABI/EH guesses; unresolved dtor/update declarations remain explicit.
+Original Worker/Enemy untouched; focused sanitizer+Draw host tests pass.
+Authored exact76662/274040,421 owners; source629/250416. All115 full-CI stages
+pass with2090 frozen inputs unchanged, terminal exit0 recovered11:24:25 UTC
+without rerun. Afterward only result docs and byte-preserving old CSV quoting were restored;
+parsed rows are identical and focused tracking/progress checks pass.
 Current [game-over transition pilot](evidence/game-over-transition-20261025/README.md)
 retains two complete413/411 models in the actual Player callback graph.
 Ordinary typed source naturally recovers EDI/plainRET. One actual Ending music

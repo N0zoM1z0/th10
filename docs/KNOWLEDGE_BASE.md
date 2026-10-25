@@ -6069,3 +6069,18 @@ caller visibility is whole-body neutral; no broad caller/profile panel follows.
 All28 fields/3 locals retained; five existing guards533/all0 pass both images.
 See [complete evidence](evidence/game-over-transition-20261025/README.md).
 No source/exact, storage/product/runtime or phase-gate admission.
+
+## Spt Test helper closure (2026-10-25)
+
+Independent raw review and three complete linked contexts close names42BAD0/86,
+ctor42BB30/145 and registration42BBD0/84:315 authored exact bytes/all12 fields.
+The new2E4 owner uses existing worker/cursor members, then memset erases them;
+keep this odd target behavior. Registration publishes tasks after Add priorities
+5/27h and returns0. Names frees signed-count entries with table/count reloads,
+nulls entries and outer table twice, never resets count. Actual factory42BF30/67
+is authored/source-only,116 emitted after natural register inlining/folding.
+New denominator/source +382; no destructor405 or compiler-wrapper admission.
+Full destructor proposal413 adds EH-state store8 and uses EAX rather than EDX
+for ANM6 reload; all33 fields including FS0 and separate member EH21 support
+are inventoried, not credited. Whole runtime reachability remains unknown.
+See [complete receipts and parked proposal](evidence/spt-test-cleanup-20261025/README.md).

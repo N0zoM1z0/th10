@@ -1109,3 +1109,7 @@ GameStatisticsOwner::GameStatisticsOwner,0x0042AE60,function
 CreateStatistics42AF20,0x0042AF20,function
 GameStatisticsOwner::Load42B030,0x0042B030,function
 InitializeStatisticsTail42ADD0,0x0042ADD0,function
+SptTestView::ClearScriptNames,0x0042BAD0,function
+SptTestView::SptTestView,0x0042BB30,function
+SptTestView::RegisterTasks,0x0042BBD0,function
+SptTestCreate,0x0042BF30,function

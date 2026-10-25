@@ -24211,3 +24211,53 @@ functions = ["InitializeStatisticsTail42ADD0"]
 size = 142
 target_address = 4369872
 linkages = [{"offset" = 31, "type" = "DIR32", "symbol" = "??_C@_08GGFKNFHG@?5?5?5?5?5?5?5?5?$AA@", "target" = 4645716, "addend" = 0}, {"offset" = 42, "type" = "DIR32", "symbol" = "??_C@_08GGFKNFHG@?5?5?5?5?5?5?5?5?$AA@", "target" = 4645716, "addend" = 4}, {"offset" = 51, "type" = "DIR32", "symbol" = "??_C@_08GGFKNFHG@?5?5?5?5?5?5?5?5?$AA@", "target" = 4645716, "addend" = 8}, {"offset" = 81, "type" = "DIR32", "symbol" = "?g_RngView@@3URngView@@A", "target" = 4790448, "addend" = 0}, {"offset" = 87, "type" = "DIR32", "symbol" = "?g_RngView@@3URngView@@A", "target" = 4790448, "addend" = 4}, {"offset" = 123, "type" = "DIR32", "symbol" = "?g_RngView@@3URngView@@A", "target" = 4790448, "addend" = 0}, {"offset" = 129, "type" = "DIR32", "symbol" = "?g_RngView@@3URngView@@A", "target" = 4790448, "addend" = 4}]
+
+# Independently reviewed SptTest helpers; real factory with unresolved destructor.
+
+[units.spt-test-constructor]
+artifact_kind = "linked-pe"
+source = "src/SptTest.cpp"
+output_dir = "build/match-linked/SptTestHelpers-cold"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewer.cpp"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?SptTestCreate@@YAPAUSptTestView@@XZ"
+pdb_source = "src/SptTest.cpp"
+symbol = "??0SptTestView@@QAE@XZ"
+functions = ["SptTestView::SptTestView"]
+size = 145
+target_address = 4373296
+linkages = [{ "offset" = 17, "type" = "DIR32", "target" = 4654052, "symbol" = "??_7ScriptViewerWorkerView@@6B@" }, { "offset" = 137, "type" = "DIR32", "target" = 4683844, "symbol" = "?g_SptTestView@@3PAUSptTestView@@A" }]
+
+[units.spt-test-register-tasks]
+artifact_kind = "linked-pe"
+source = "src/SptTest.cpp"
+output_dir = "build/match-linked/SptTestHelpers-cold"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewer.cpp"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?SptTestCreate@@YAPAUSptTestView@@XZ"
+pdb_source = "src/SptTest.cpp"
+symbol = "?RegisterTasks@SptTestView@@QAEHXZ"
+functions = ["SptTestView::RegisterTasks"]
+size = 84
+target_address = 4373456
+linkages = [{ "offset" = 3, "type" = "DIR32", "target" = 4375936, "symbol" = "?SptTestUpdateCallback@@YIHPAX@Z" }, { "offset" = 8, "type" = "REL32", "target" = 4497104, "symbol" = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z" }, { "offset" = 19, "type" = "DIR32", "target" = 4791268, "symbol" = "?g_Chain@th10@@3PAUChain@1@A" }, { "offset" = 33, "type" = "REL32", "target" = 4496096, "symbol" = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z" }, { "offset" = 38, "type" = "DIR32", "target" = 4375952, "symbol" = "?SptTestDrawCallback@@YIHPAX@Z" }, { "offset" = 46, "type" = "REL32", "target" = 4497104, "symbol" = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z" }, { "offset" = 58, "type" = "DIR32", "target" = 4791268, "symbol" = "?g_Chain@th10@@3PAUChain@1@A" }, { "offset" = 72, "type" = "REL32", "target" = 4496240, "symbol" = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z" }]
+
+[units.spt-test-clear-script-names]
+artifact_kind = "linked-pe"
+source = "src/SptTest.cpp"
+output_dir = "build/match-linked/SptTestHelpers-cold"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewer.cpp"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?SptTestCreate@@YAPAUSptTestView@@XZ"
+pdb_source = "src/SptTest.cpp"
+symbol = "?ClearScriptNames@SptTestView@@QAEXXZ"
+functions = ["SptTestView::ClearScriptNames"]
+size = 86
+target_address = 4373200
+linkages = [{ "offset" = 29, "type" = "REL32", "target" = 4531234, "symbol" = "_free" }, { "offset" = 64, "type" = "REL32", "target" = 4531234, "symbol" = "_free" }]

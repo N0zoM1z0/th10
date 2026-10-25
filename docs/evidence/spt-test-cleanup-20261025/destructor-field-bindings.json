@@ -1,0 +1,436 @@
+{
+  "status": "nonexact",
+  "target_size": 405,
+  "candidate_size": 413,
+  "all_fields": [
+    {
+      "target_offset": 2,
+      "candidate_offset": 2,
+      "type": "DIR32",
+      "symbol": "__except_list",
+      "target_base": "0x0",
+      "addend": 0,
+      "candidate_base": "0x40f170",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 9,
+      "candidate_offset": 9,
+      "type": "DIR32",
+      "symbol": "__ehhandler$??1SptTestView@@QAE@XZ",
+      "target_base": "0x4653eb",
+      "addend": 0,
+      "candidate_base": "0x40d45b",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 17,
+      "candidate_offset": 17,
+      "type": "DIR32",
+      "symbol": "__except_list",
+      "target_base": "0x0",
+      "addend": 0,
+      "candidate_base": "0x40f170",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 38,
+      "candidate_offset": 38,
+      "type": "REL32",
+      "symbol": "?ClearScriptNames@SptTestView@@QAEXXZ",
+      "target_base": "0x42bad0",
+      "addend": 0,
+      "candidate_base": "0x401460",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 49,
+      "candidate_offset": 49,
+      "type": "DIR32",
+      "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+      "target_base": "0x491be4",
+      "addend": 0,
+      "candidate_base": "0x40f10c",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 55,
+      "candidate_offset": 55,
+      "type": "DIR32",
+      "symbol": "__imp__EnterCriticalSection@4",
+      "target_base": "0x4660b0",
+      "addend": 0,
+      "candidate_base": "0x40f180",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 62,
+      "candidate_offset": 62,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target_base": "0x491c28",
+      "addend": 1612,
+      "candidate_base": "0x40f120",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 70,
+      "candidate_offset": 70,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target_base": "0x491c28",
+      "addend": 1780,
+      "candidate_base": "0x40f120",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 79,
+      "candidate_offset": 79,
+      "type": "REL32",
+      "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+      "target_base": "0x449f60",
+      "addend": 0,
+      "candidate_base": "0x40ce70",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 84,
+      "candidate_offset": 84,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target_base": "0x491c28",
+      "addend": 1612,
+      "candidate_base": "0x40f120",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 90,
+      "candidate_offset": 90,
+      "type": "DIR32",
+      "symbol": "__imp__LeaveCriticalSection@4",
+      "target_base": "0x4660b4",
+      "addend": 0,
+      "candidate_base": "0x40f184",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 96,
+      "candidate_offset": 96,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target_base": "0x491c28",
+      "addend": 1780,
+      "candidate_base": "0x40f120",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 107,
+      "candidate_offset": 107,
+      "type": "DIR32",
+      "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+      "target_base": "0x491be4",
+      "addend": 0,
+      "candidate_base": "0x40f10c",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 114,
+      "candidate_offset": 114,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target_base": "0x491c28",
+      "addend": 1612,
+      "candidate_base": "0x40f120",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 122,
+      "candidate_offset": 122,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target_base": "0x491c28",
+      "addend": 1780,
+      "candidate_base": "0x40f120",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 131,
+      "candidate_offset": 131,
+      "type": "REL32",
+      "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+      "target_base": "0x449f60",
+      "addend": 0,
+      "candidate_base": "0x40ce70",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 136,
+      "candidate_offset": 136,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target_base": "0x491c28",
+      "addend": 1612,
+      "candidate_base": "0x40f120",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 142,
+      "candidate_offset": 142,
+      "type": "DIR32",
+      "symbol": "__imp__LeaveCriticalSection@4",
+      "target_base": "0x4660b4",
+      "addend": 0,
+      "candidate_base": "0x40f184",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 148,
+      "candidate_offset": 148,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target_base": "0x491c28",
+      "addend": 1780,
+      "candidate_base": "0x40f120",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 164,
+      "candidate_offset": 164,
+      "type": "REL32",
+      "symbol": "_free",
+      "target_base": "0x452422",
+      "addend": 0,
+      "candidate_base": "0x40f194",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 201,
+      "candidate_offset": 201,
+      "type": "DIR32",
+      "symbol": "??_7EnemyEclResourceBaseView@@6B@",
+      "target_base": "0x46d0f0",
+      "addend": 0,
+      "candidate_base": "0x40e01c",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 209,
+      "candidate_offset": 209,
+      "type": "REL32",
+      "symbol": "_free",
+      "target_base": "0x452422",
+      "addend": 0,
+      "candidate_base": "0x40f194",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 228,
+      "candidate_offset": 228,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target_base": "0x4524a1",
+      "addend": 0,
+      "candidate_base": "0x40f004",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 274,
+      "candidate_offset": 274,
+      "type": "DIR32",
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target_base": "0x491c10",
+      "addend": 0,
+      "candidate_base": "0x40f0f8",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 295,
+      "candidate_offset": 295,
+      "type": "REL32",
+      "symbol": "?Release@AnmLoadedView@@QAEXXZ",
+      "target_base": "0x447810",
+      "addend": 0,
+      "candidate_base": "0x404fe0",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 303,
+      "candidate_offset": 303,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target_base": "0x4524a1",
+      "addend": 0,
+      "candidate_base": "0x40f004",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 318,
+      "candidate_offset": 318,
+      "type": "DIR32",
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target_base": "0x491c10",
+      "addend": 0,
+      "candidate_base": "0x40f0f8",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 339,
+      "candidate_offset": 339,
+      "type": "REL32",
+      "symbol": "?Release@AnmLoadedView@@QAEXXZ",
+      "target_base": "0x447810",
+      "addend": 0,
+      "candidate_base": "0x404fe0",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 347,
+      "candidate_offset": 347,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target_base": "0x4524a1",
+      "addend": 0,
+      "candidate_base": "0x40f004",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 365,
+      "candidate_offset": 373,
+      "type": "DIR32",
+      "symbol": "?g_SptTestView@@3PAUSptTestView@@A",
+      "target_base": "0x477844",
+      "addend": 0,
+      "candidate_base": "0x40f128",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 375,
+      "candidate_offset": 383,
+      "type": "DIR32",
+      "symbol": "??_7ScriptViewerWorkerView@@6B@",
+      "target_base": "0x4703e4",
+      "addend": 0,
+      "candidate_base": "0x40e234",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 380,
+      "candidate_offset": 388,
+      "type": "REL32",
+      "symbol": "?Stop@ScriptViewerWorkerView@@QAEXXZ",
+      "target_base": "0x44c150",
+      "addend": 0,
+      "candidate_base": "0x40d300",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    },
+    {
+      "target_offset": 394,
+      "candidate_offset": 402,
+      "type": "DIR32",
+      "symbol": "__except_list",
+      "target_base": "0x0",
+      "addend": 0,
+      "candidate_base": "0x40f170",
+      "scope": "diagnostic binding only; parent413/405 rejected"
+    }
+  ],
+  "target_locals": [
+    {
+      "offset": 59,
+      "destination": 100,
+      "width": 2
+    },
+    {
+      "offset": 111,
+      "destination": 152,
+      "width": 2
+    },
+    {
+      "offset": 160,
+      "destination": 181,
+      "width": 2
+    },
+    {
+      "offset": 189,
+      "destination": 245,
+      "width": 2
+    },
+    {
+      "offset": 205,
+      "destination": 226,
+      "width": 2
+    },
+    {
+      "offset": 253,
+      "destination": 272,
+      "width": 2
+    },
+    {
+      "offset": 292,
+      "destination": 316,
+      "width": 2
+    },
+    {
+      "offset": 336,
+      "destination": 360,
+      "width": 2
+    }
+  ],
+  "candidate_locals": [
+    {
+      "offset": 59,
+      "width": 2,
+      "destination": 100
+    },
+    {
+      "offset": 111,
+      "width": 2,
+      "destination": 152
+    },
+    {
+      "offset": 160,
+      "width": 2,
+      "destination": 181
+    },
+    {
+      "offset": 189,
+      "width": 2,
+      "destination": 245
+    },
+    {
+      "offset": 205,
+      "width": 2,
+      "destination": 226
+    },
+    {
+      "offset": 253,
+      "width": 2,
+      "destination": 272
+    },
+    {
+      "offset": 292,
+      "width": 2,
+      "destination": 316
+    },
+    {
+      "offset": 336,
+      "width": 2,
+      "destination": 360
+    }
+  ],
+  "eh": {
+    "target_handler": "0x4653eb",
+    "target_action": "0x4653e0",
+    "target_funcinfo": "0x4714d8",
+    "target_unwindmap": "0x4714d0",
+    "candidate_handler": "0x40d45b",
+    "candidate_action": "0x40d450",
+    "candidate_funcinfo": "0x40e398",
+    "candidate_unwindmap": "0x40e390",
+    "states": 1,
+    "cleanup": "[EBP+4]+0x10 -> real worker destructor44C130",
+    "support_extent": 21,
+    "scope": "raw semantic metadata observation only; generated support is not canonical-qualified or credited"
+  },
+  "rejection": "Extra8-byte state=-1 store before worker cleanup and slot6 EAX-versus-EDX reload/push; no flag/ABI guesses."
+}

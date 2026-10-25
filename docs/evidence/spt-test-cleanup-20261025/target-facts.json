@@ -1,0 +1,178 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owners": {
+    "names": {
+      "address": "0x42bad0",
+      "size": 86,
+      "sha256": "e8424bbc48a7fcb38179a5e0739717b84801a112e5ad8e3dfbb04e9ff5e1d8b4",
+      "fields": [
+        {
+          "offset": 29,
+          "type": "REL32",
+          "target": "0x452422"
+        },
+        {
+          "offset": 64,
+          "type": "REL32",
+          "target": "0x452422"
+        }
+      ],
+      "locals": [
+        {
+          "offset": 5,
+          "destination": 85,
+          "width": 2
+        },
+        {
+          "offset": 15,
+          "destination": 54,
+          "width": 2
+        },
+        {
+          "offset": 25,
+          "destination": 46,
+          "width": 2
+        },
+        {
+          "offset": 52,
+          "destination": 17,
+          "width": 2
+        },
+        {
+          "offset": 60,
+          "destination": 78,
+          "width": 2
+        }
+      ]
+    },
+    "ctor": {
+      "address": "0x42bb30",
+      "size": 145,
+      "sha256": "c49fe0cc95aad33f79c3a2c43150aaccb1e1a0c9d372e0c22ab382443f69d4ec",
+      "fields": [
+        {
+          "offset": 17,
+          "type": "DIR32",
+          "target": "0x4703e4"
+        },
+        {
+          "offset": 137,
+          "type": "DIR32",
+          "target": "0x477844"
+        }
+      ],
+      "locals": []
+    },
+    "register": {
+      "address": "0x42bbd0",
+      "size": 84,
+      "sha256": "c0e4e801dd8d09355dcb2f6b9fd83ea2feb78d118b44ee4e4e685311e25b4808",
+      "fields": [
+        {
+          "offset": 3,
+          "type": "DIR32",
+          "target": "0x42c580"
+        },
+        {
+          "offset": 8,
+          "type": "REL32",
+          "target": "0x449ed0"
+        },
+        {
+          "offset": 19,
+          "type": "DIR32",
+          "target": "0x491be4"
+        },
+        {
+          "offset": 33,
+          "type": "REL32",
+          "target": "0x449ae0"
+        },
+        {
+          "offset": 38,
+          "type": "DIR32",
+          "target": "0x42c590"
+        },
+        {
+          "offset": 46,
+          "type": "REL32",
+          "target": "0x449ed0"
+        },
+        {
+          "offset": 58,
+          "type": "DIR32",
+          "target": "0x491be4"
+        },
+        {
+          "offset": 72,
+          "type": "REL32",
+          "target": "0x449b70"
+        }
+      ],
+      "locals": []
+    },
+    "factory": {
+      "address": "0x42bf30",
+      "size": 67,
+      "sha256": "327f5e5c96ecfacee4b35055a90e493f69a369508412d7f03ee6ede9514c25f0",
+      "fields": [
+        {
+          "offset": 7,
+          "type": "REL32",
+          "target": "0x452493"
+        },
+        {
+          "offset": 21,
+          "type": "REL32",
+          "target": "0x42bb30"
+        },
+        {
+          "offset": 32,
+          "type": "REL32",
+          "target": "0x42bbd0"
+        },
+        {
+          "offset": 46,
+          "type": "REL32",
+          "target": "0x42bc30"
+        },
+        {
+          "offset": 52,
+          "type": "REL32",
+          "target": "0x4524a1"
+        }
+      ],
+      "locals": [
+        {
+          "offset": 16,
+          "destination": 29,
+          "width": 2
+        },
+        {
+          "offset": 27,
+          "destination": 31,
+          "width": 2
+        },
+        {
+          "offset": 38,
+          "destination": 63,
+          "width": 2
+        },
+        {
+          "offset": 42,
+          "destination": 59,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "authored_exact_added": 315,
+  "authored_source_and_denominator_added": 382,
+  "excluded_from_admission": [
+    "destructor405",
+    "scalar-deleting27",
+    "nullable-release18",
+    "generated EH21",
+    "update callback5/body926"
+  ]
+}

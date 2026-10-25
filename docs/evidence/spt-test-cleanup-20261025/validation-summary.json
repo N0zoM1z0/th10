@@ -1,0 +1,30 @@
+{
+  "result": "passed",
+  "canonical": "315 bytes/all12 fields/all5 helper locals; nine same-image guards1225 exact",
+  "original_draw_recipe": "641 bytes/all37 fields exact",
+  "host": "actual-source helpers ASan/UBSan (vptr intentionally excluded) and original Draw fixture pass",
+  "ci_stages": 115,
+  "ci_exit": 0,
+  "frozen_inputs": 2090,
+  "changed": [],
+  "terminal_recovered_utc": "2026-10-25T11:24:25Z",
+  "transport": "Original fullCI RPC and queued read-only status calls timed out; terminal logs recovered without rerun. Final query exit1 was empty ps grep, distinct from ci_exit0.",
+  "protected_untracked_files": 9,
+  "final_ci_log_sha256": "cc76776b9ea5e16f8aba54ed19080df6649529fa352153e2ba888e5f1cdd0b32",
+  "post_ci_changes": "Result docs and restoration of pre-existing CSV quoting only; parsed rows proved identical, source/recipes unchanged.",
+  "review": "Independent read-only helper315 origins/boundaries/fields/locals and factory67 authored/source-only approval; no dtor/wrapper admission.",
+  "csv_serialization_restore": {
+    "config/functions.csv": {
+      "parsed_rows_identical": true,
+      "old_rows_byte_preserved": true,
+      "added_rows": 4,
+      "semantic_sha256": "663e6f74e6e7be77184b49d52c351feffa84b066c969cddc6dbee58f2db3ccd8"
+    },
+    "config/matches.csv": {
+      "parsed_rows_identical": true,
+      "old_rows_byte_preserved": true,
+      "added_rows": 3,
+      "semantic_sha256": "a4f1166fe0ebd66c112da4730ef36601df42af84423d2e56d3c41c8430bc94c6"
+    }
+  }
+}

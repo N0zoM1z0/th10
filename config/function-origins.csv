@@ -781,6 +781,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0042B780,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0042B9C0,authored_game,ItemPopup,authored,high,target-item-shared-helper-contracts-2026-10-02
 0x0042BAB0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
+0x0042BAD0,authored_game,SptTest,authored,high,spt-test-helpers-complete-owner-2026-10-25
+0x0042BB30,authored_game,SptTest,authored,high,spt-test-helpers-complete-owner-2026-10-25
+0x0042BBD0,authored_game,SptTest,authored,high,spt-test-helpers-complete-owner-2026-10-25
+0x0042BF30,authored_game,SptTest,authored,high,spt-test-helpers-complete-owner-2026-10-25
 0x0042C360,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x0042C590,unknown,SptTest,indeterminate,unknown,spt-test-draw-complete-owner-2026-10-25
 0x0042C5A0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
