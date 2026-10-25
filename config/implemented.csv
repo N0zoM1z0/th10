@@ -1112,3 +1112,6 @@ SptTestView::ClearScriptNames
 SptTestView::SptTestView
 SptTestView::RegisterTasks
 SptTestCreate
+SptTestView::Update
+SptTestUpdateCallback
+EclVmScriptDatabase::CreateHost

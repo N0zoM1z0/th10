@@ -20,7 +20,8 @@ struct SptTestView
     ScriptViewerCursorView files;
     ScriptViewerCursorView entries;
     AnmFloat3View position;
-    unsigned char unknown2D0[8];
+    int value2D0;
+    unsigned int flags2D4;
     EclVmScriptDatabase *scriptDatabase;
     EnemyEclHostBaseView *activeVm;
     unsigned char *scriptData;
@@ -29,6 +30,7 @@ struct SptTestView
     int RegisterTasks();
     void ClearScriptNames();
     int Draw();
+    int Update();
 };
 typedef char SptTestDrawLayout[(offsetof(SptTestView, state) == 0x30 &&
     offsetof(SptTestView, menu) == 0x3c &&
@@ -39,8 +41,7 @@ typedef char SptTestDrawLayout[(offsetof(SptTestView, state) == 0x30 &&
 typedef char SptTestFullLayout[(sizeof(SptTestView)==0x2e4 && offsetof(SptTestView,worker)==0x10 && offsetof(SptTestView,activeVm)==0x2dc && offsetof(SptTestView,scriptData)==0x2e0)?1:-1];
 extern SptTestView *g_SptTestView;
 SptTestView *SptTestCreate();
-// Actual registered five-byte callback42C580 and its update body42BFC0
-// remain unimplemented dependencies; the callback has no authored credit.
+// Actual callback, original authored/outlined origin indeterminate.
 int __fastcall SptTestUpdateCallback(void *context);
 int __fastcall SptTestDrawCallback(void *context);
 #endif

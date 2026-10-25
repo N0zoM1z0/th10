@@ -6084,3 +6084,17 @@ Full destructor proposal413 adds EH-state store8 and uses EAX rather than EDX
 for ANM6 reload; all33 fields including FS0 and separate member EH21 support
 are inventoried, not credited. Whole runtime reachability remains unknown.
 See [complete receipts and parked proposal](evidence/spt-test-cleanup-20261025/README.md).
+
+
+## 2026-10-25 Spt Test update and concrete-host factory
+
+See [the bounded packet](evidence/spt-test-update-20261025/README.md).
+Raw update42BFC0 owns926 bytes including internal LEA6; callback42C580 owns5
+with indeterminate authored-versus-outlined origin. Factory450500 owns89 and
+natural EclVmScriptDatabase member ownership explains RET4/caller cleanup
+without forced privateEDI. Canonical89/all3/all2 exact; update926 remains
+nonexact despite all48 local targets. New authoredsource/denominator1015,
+new authoredexact89. Preserve invalid FindClose, unchecked second pass/allocation,
+Run-before-null, worker state2-after-Start race, and factory's absent active-context
+initialization. Callback42BE10/Load261 remain declared unresolved dependencies.
+No source-TU, runtime/shared-global or product closure follows.

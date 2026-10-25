@@ -81,6 +81,7 @@ struct EclVmScriptFileHeader
     unsigned int zero14[4];
 };
 
+struct EnemyEclHostBaseView;
 struct EclVmScriptDatabase
 {
     virtual int AddScriptData(void *scriptData);
@@ -93,6 +94,7 @@ struct EclVmScriptDatabase
     unsigned char unknown090[0x1008];
 
     EclVmInstruction *FindSubroutine(const char *name);
+    EnemyEclHostBaseView *CreateHost(const char *name);
 };
 
 class EclVmHost

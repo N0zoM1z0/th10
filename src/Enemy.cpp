@@ -1886,3 +1886,15 @@ __declspec(noinline) unsigned int Fn0040CC40(unsigned char *pThis)
 
 }
 }
+
+// Complete target450500 factory: no ResetEclState, active-context initialization
+// or allocation failure repair. Original private ABI must emerge from LTCG.
+EnemyEclHostBaseView *EclVmScriptDatabase::CreateHost(const char *name)
+{
+    EnemyEclHostBaseView *host = new EnemyEclHostBaseView;
+    host->scriptDatabase = reinterpret_cast<EnemyEclResourceView *>(this);
+    host->activeEclContext->currentInstruction =
+        reinterpret_cast<EnemyEclInstructionView *>(FindSubroutine(name));
+    host->activeEclContext->value00 = 0;
+    return host;
+}

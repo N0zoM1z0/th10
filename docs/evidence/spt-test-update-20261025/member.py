@@ -1,0 +1,9 @@
+from pathlib import Path
+import shutil
+p=Path('.analysis/spt-test-update-20261025');d=p/'member-candidate';assert not d.exists();shutil.copytree(p/'candidate',d)
+f=d/'SptTest.cpp';s=f.read_text().replace('EnemyEclHostBaseView *SptTestCreateVm(EclVmScriptDatabase *database, const char *name);\n','').replace('SptTestCreateVm(scriptDatabase, scriptDatabase->subroutines[entries.current].name)','scriptDatabase->CreateHost(scriptDatabase->subroutines[entries.current].name)');f.write_text(s)
+f=d/'EclVm.hpp';b=f.read_bytes();b=b.replace(b'struct EclVmScriptDatabase\r\n',b'struct EnemyEclHostBaseView;\r\nstruct EclVmScriptDatabase\r\n').replace(b'    EclVmInstruction *FindSubroutine(const char *name);',b'    EclVmInstruction *FindSubroutine(const char *name);\r\n    EnemyEclHostBaseView *CreateHost(const char *name);');f.write_bytes(b)
+f=d/'Enemy.cpp';b=f.read_bytes().replace(b'EnemyEclHostBaseView *SptTestCreateVm(EclVmScriptDatabase *database, const char *name)',b'EnemyEclHostBaseView *EclVmScriptDatabase::CreateHost(const char *name)').replace(b'reinterpret_cast<EnemyEclResourceView *>(database);',b'reinterpret_cast<EnemyEclResourceView *>(this);').replace(b'database->FindSubroutine(name)',b'FindSubroutine(name)');f.write_bytes(b)
+s=(p/'first.py').read_text().replace('spt-test-update-first','spt-test-update-member').replace("candidate=p/'candidate'","candidate=p/'member-candidate'");(p/'member-build.py').write_text(s)
+s=(p/'compare.py').read_text().replace("cand='.analysis/spt-test-update-20261025/candidate/'","cand='.analysis/spt-test-update-20261025/member-candidate/'").replace('?SptTestCreateVm@@YAPAUEnemyEclHostBaseView@@PAUEclVmScriptDatabase@@PBD@Z','?CreateHost@EclVmScriptDatabase@@QAEPAUEnemyEclHostBaseView@@PBD@Z');(p/'member-compare.py').write_text(s)
+print('single natural database-member model prepared; first unchanged')

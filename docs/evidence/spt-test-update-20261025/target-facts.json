@@ -1,0 +1,502 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owners": {
+    "update": {
+      "address": "0x42bfc0",
+      "size": 926,
+      "sha256": "c43b90258ec2654d86146a1c648fd891e675f50c02736fa59506d53dfa225353",
+      "fields": [
+        {
+          "offset": 7,
+          "type": "DIR32",
+          "target": "0x473660"
+        },
+        {
+          "offset": 63,
+          "type": "REL32",
+          "target": "0x44fd10"
+        },
+        {
+          "offset": 129,
+          "type": "DIR32",
+          "target": "0x474e36"
+        },
+        {
+          "offset": 141,
+          "type": "DIR32",
+          "target": "0x474e34"
+        },
+        {
+          "offset": 152,
+          "type": "REL32",
+          "target": "0x44bea0"
+        },
+        {
+          "offset": 158,
+          "type": "DIR32",
+          "target": "0x474e36"
+        },
+        {
+          "offset": 170,
+          "type": "DIR32",
+          "target": "0x474e34"
+        },
+        {
+          "offset": 181,
+          "type": "REL32",
+          "target": "0x44bea0"
+        },
+        {
+          "offset": 207,
+          "type": "DIR32",
+          "target": "0x474e36"
+        },
+        {
+          "offset": 224,
+          "type": "DIR32",
+          "target": "0x491c28"
+        },
+        {
+          "offset": 229,
+          "type": "REL32",
+          "target": "0x40ac90"
+        },
+        {
+          "offset": 271,
+          "type": "DIR32",
+          "target": "0x474e30"
+        },
+        {
+          "offset": 276,
+          "type": "REL32",
+          "target": "0x40ace0"
+        },
+        {
+          "offset": 290,
+          "type": "REL32",
+          "target": "0x44bea0"
+        },
+        {
+          "offset": 300,
+          "type": "DIR32",
+          "target": "0x474e30"
+        },
+        {
+          "offset": 305,
+          "type": "REL32",
+          "target": "0x40ace0"
+        },
+        {
+          "offset": 319,
+          "type": "REL32",
+          "target": "0x44bea0"
+        },
+        {
+          "offset": 325,
+          "type": "DIR32",
+          "target": "0x474e38"
+        },
+        {
+          "offset": 382,
+          "type": "REL32",
+          "target": "0x450500"
+        },
+        {
+          "offset": 421,
+          "type": "DIR32",
+          "target": "0x474e36"
+        },
+        {
+          "offset": 433,
+          "type": "DIR32",
+          "target": "0x474e34"
+        },
+        {
+          "offset": 444,
+          "type": "REL32",
+          "target": "0x44bea0"
+        },
+        {
+          "offset": 450,
+          "type": "DIR32",
+          "target": "0x474e36"
+        },
+        {
+          "offset": 462,
+          "type": "DIR32",
+          "target": "0x474e34"
+        },
+        {
+          "offset": 473,
+          "type": "REL32",
+          "target": "0x44bea0"
+        },
+        {
+          "offset": 479,
+          "type": "DIR32",
+          "target": "0x474e36"
+        },
+        {
+          "offset": 507,
+          "type": "DIR32",
+          "target": "0x42be10"
+        },
+        {
+          "offset": 518,
+          "type": "REL32",
+          "target": "0x44c1c0"
+        },
+        {
+          "offset": 535,
+          "type": "REL32",
+          "target": "0x42bad0"
+        },
+        {
+          "offset": 541,
+          "type": "DIR32",
+          "target": "0x4660a0"
+        },
+        {
+          "offset": 551,
+          "type": "DIR32",
+          "target": "0x46cea8"
+        },
+        {
+          "offset": 575,
+          "type": "DIR32",
+          "target": "0x4660a4"
+        },
+        {
+          "offset": 586,
+          "type": "DIR32",
+          "target": "0x4660a8"
+        },
+        {
+          "offset": 612,
+          "type": "REL32",
+          "target": "0x452706"
+        },
+        {
+          "offset": 628,
+          "type": "DIR32",
+          "target": "0x46cea8"
+        },
+        {
+          "offset": 659,
+          "type": "REL32",
+          "target": "0x452706"
+        },
+        {
+          "offset": 706,
+          "type": "DIR32",
+          "target": "0x4660a4"
+        },
+        {
+          "offset": 722,
+          "type": "DIR32",
+          "target": "0x4660a8"
+        },
+        {
+          "offset": 915,
+          "type": "REL32",
+          "target": "0x458ea5"
+        }
+      ],
+      "locals": [
+        {
+          "offset": 33,
+          "destination": 534,
+          "width": 6
+        },
+        {
+          "offset": 40,
+          "destination": 118,
+          "width": 2
+        },
+        {
+          "offset": 45,
+          "destination": 896,
+          "width": 6
+        },
+        {
+          "offset": 75,
+          "destination": 100,
+          "width": 2
+        },
+        {
+          "offset": 83,
+          "destination": 896,
+          "width": 6
+        },
+        {
+          "offset": 91,
+          "destination": 100,
+          "width": 2
+        },
+        {
+          "offset": 113,
+          "destination": 896,
+          "width": 5
+        },
+        {
+          "offset": 137,
+          "destination": 147,
+          "width": 2
+        },
+        {
+          "offset": 145,
+          "destination": 156,
+          "width": 2
+        },
+        {
+          "offset": 166,
+          "destination": 176,
+          "width": 2
+        },
+        {
+          "offset": 174,
+          "destination": 185,
+          "width": 2
+        },
+        {
+          "offset": 189,
+          "destination": 404,
+          "width": 6
+        },
+        {
+          "offset": 196,
+          "destination": 238,
+          "width": 2
+        },
+        {
+          "offset": 199,
+          "destination": 896,
+          "width": 6
+        },
+        {
+          "offset": 215,
+          "destination": 896,
+          "width": 6
+        },
+        {
+          "offset": 233,
+          "destination": 896,
+          "width": 5
+        },
+        {
+          "offset": 244,
+          "destination": 896,
+          "width": 6
+        },
+        {
+          "offset": 283,
+          "destination": 294,
+          "width": 2
+        },
+        {
+          "offset": 312,
+          "destination": 323,
+          "width": 2
+        },
+        {
+          "offset": 333,
+          "destination": 896,
+          "width": 6
+        },
+        {
+          "offset": 347,
+          "destination": 362,
+          "width": 2
+        },
+        {
+          "offset": 399,
+          "destination": 896,
+          "width": 5
+        },
+        {
+          "offset": 429,
+          "destination": 439,
+          "width": 2
+        },
+        {
+          "offset": 437,
+          "destination": 448,
+          "width": 2
+        },
+        {
+          "offset": 458,
+          "destination": 468,
+          "width": 2
+        },
+        {
+          "offset": 466,
+          "destination": 477,
+          "width": 2
+        },
+        {
+          "offset": 487,
+          "destination": 896,
+          "width": 6
+        },
+        {
+          "offset": 529,
+          "destination": 896,
+          "width": 5
+        },
+        {
+          "offset": 564,
+          "destination": 583,
+          "width": 2
+        },
+        {
+          "offset": 581,
+          "destination": 566,
+          "width": 2
+        },
+        {
+          "offset": 597,
+          "destination": 728,
+          "width": 6
+        },
+        {
+          "offset": 638,
+          "destination": 719,
+          "width": 2
+        },
+        {
+          "offset": 652,
+          "destination": 647,
+          "width": 2
+        },
+        {
+          "offset": 696,
+          "destination": 688,
+          "width": 2
+        },
+        {
+          "offset": 712,
+          "destination": 719,
+          "width": 2
+        },
+        {
+          "offset": 717,
+          "destination": 640,
+          "width": 2
+        },
+        {
+          "offset": 751,
+          "destination": 768,
+          "width": 2
+        },
+        {
+          "offset": 753,
+          "destination": 761,
+          "width": 2
+        },
+        {
+          "offset": 759,
+          "destination": 771,
+          "width": 2
+        },
+        {
+          "offset": 766,
+          "destination": 771,
+          "width": 2
+        },
+        {
+          "offset": 787,
+          "destination": 810,
+          "width": 2
+        },
+        {
+          "offset": 789,
+          "destination": 800,
+          "width": 2
+        },
+        {
+          "offset": 798,
+          "destination": 816,
+          "width": 2
+        },
+        {
+          "offset": 808,
+          "destination": 816,
+          "width": 2
+        },
+        {
+          "offset": 832,
+          "destination": 855,
+          "width": 2
+        },
+        {
+          "offset": 834,
+          "destination": 845,
+          "width": 2
+        },
+        {
+          "offset": 843,
+          "destination": 861,
+          "width": 2
+        },
+        {
+          "offset": 853,
+          "destination": 861,
+          "width": 2
+        }
+      ]
+    },
+    "callback": {
+      "address": "0x42c580",
+      "size": 5,
+      "sha256": "d572626b421bf44a178ca32998e937e8734d6d7b7f4115d2cf288581d4d84030",
+      "fields": [
+        {
+          "offset": 1,
+          "type": "REL32",
+          "target": "0x42bfc0"
+        }
+      ],
+      "locals": []
+    },
+    "factory": {
+      "address": "0x450500",
+      "size": 89,
+      "sha256": "bb722fb9b41a756dd42e2976529322014267581b1d350bd82cc0159f07603383",
+      "fields": [
+        {
+          "offset": 7,
+          "type": "REL32",
+          "target": "0x452493"
+        },
+        {
+          "offset": 20,
+          "type": "DIR32",
+          "target": "0x46d0d8"
+        },
+        {
+          "offset": 64,
+          "type": "REL32",
+          "target": "0x450470"
+        }
+      ],
+      "locals": [
+        {
+          "offset": 16,
+          "destination": 48,
+          "width": 2
+        },
+        {
+          "offset": 46,
+          "destination": 50,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "origin": {
+    "update": "authored_game",
+    "factory": "authored_game",
+    "callback": "indeterminate"
+  },
+  "review": "independent raw/source review; no global external-interior-xref absence or original TU assertion"
+}

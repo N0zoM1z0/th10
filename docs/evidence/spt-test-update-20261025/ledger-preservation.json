@@ -1,0 +1,23 @@
+{
+  "functions.csv": {
+    "old_rows_unchanged": 1782,
+    "new_rows": 3
+  },
+  "function-boundaries.csv": {
+    "old_rows_unchanged": 1782,
+    "new_rows": 3
+  },
+  "function-origins.csv": {
+    "old_rows_unchanged": 1782,
+    "new_rows": 3
+  },
+  "reccmp-functions.csv": {
+    "old_rows_unchanged": 1114,
+    "new_rows": 3
+  },
+  "matches.csv": {
+    "old_rows_unchanged": 1265,
+    "new_rows": 2
+  },
+  "protected9": "unchanged"
+}

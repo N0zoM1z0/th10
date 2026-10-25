@@ -1113,3 +1113,6 @@ SptTestView::ClearScriptNames,0x0042BAD0,function
 SptTestView::SptTestView,0x0042BB30,function
 SptTestView::RegisterTasks,0x0042BBD0,function
 SptTestCreate,0x0042BF30,function
+SptTestView::Update,0x0042BFC0,function
+SptTestUpdateCallback,0x0042C580,function
+EclVmScriptDatabase::CreateHost,0x00450500,function

@@ -24261,3 +24261,57 @@ functions = ["SptTestView::ClearScriptNames"]
 size = 86
 target_address = 4373200
 linkages = [{ "offset" = 29, "type" = "REL32", "target" = 4531234, "symbol" = "_free" }, { "offset" = 64, "type" = "REL32", "target" = 4531234, "symbol" = "_free" }]
+
+[units.ecl-database-create-host]
+artifact_kind = "linked-pe"
+source = "src/SptTest.cpp"
+output_dir = "build/match-linked/SptTestUpdate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewer.cpp", "src/FrontEnd.cpp", "src/Main.cpp", "src/EclVm.cpp", "src/Enemy.cpp"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?SptTestUpdateCallback@@YIHPAX@Z"
+pdb_source = "src/Enemy.cpp"
+symbol = "?CreateHost@EclVmScriptDatabase@@QAEPAUEnemyEclHostBaseView@@PBD@Z"
+functions = ["EclVmScriptDatabase::CreateHost"]
+size = 89
+target_address = 4523264
+
+[[units.ecl-database-create-host.linkages]]
+offset = 7
+type = "REL32"
+target = 4531347
+symbol = "??2@YAPAXI@Z"
+
+[[units.ecl-database-create-host.linkages]]
+offset = 20
+type = "DIR32"
+target = 4640984
+symbol = "??_7EnemyEclHostBaseView@@6B@"
+
+[[units.ecl-database-create-host.linkages]]
+offset = 64
+type = "REL32"
+target = 4523120
+symbol = "?FindSubroutine@EclVmScriptDatabase@@QAEPAUEclVmInstruction@@PBD@Z"
+
+[units.spt-test-update-callback]
+artifact_kind = "linked-pe"
+source = "src/SptTest.cpp"
+output_dir = "build/match-linked/SptTestUpdate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewer.cpp", "src/FrontEnd.cpp", "src/Main.cpp", "src/EclVm.cpp", "src/Enemy.cpp"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?SptTestUpdateCallback@@YIHPAX@Z"
+pdb_source = "src/SptTest.cpp"
+symbol = "?SptTestUpdateCallback@@YIHPAX@Z"
+functions = ["SptTestUpdateCallback"]
+size = 5
+target_address = 4375936
+
+[[units.spt-test-update-callback.linkages]]
+offset = 1
+type = "REL32"
+target = 4374464
+symbol = "?Update@SptTestView@@QAEHXZ"

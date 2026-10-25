@@ -1,0 +1,2528 @@
+{
+  "first": {
+    "target_size": 926,
+    "candidate_size": 929,
+    "fields": [
+      {
+        "target_offset": 7,
+        "candidate_offset": 7,
+        "type": "DIR32",
+        "symbol": "___security_cookie",
+        "target_base": "0x473660",
+        "candidate_base": "0x4214f4",
+        "addend": 0
+      },
+      {
+        "target_offset": 63,
+        "candidate_offset": 63,
+        "type": "REL32",
+        "symbol": "?Run@EclVmHost@@QAEHM@Z",
+        "target_base": "0x44fd10",
+        "candidate_base": "0x41b110",
+        "addend": 0
+      },
+      {
+        "target_offset": 129,
+        "candidate_offset": 129,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 141,
+        "candidate_offset": 141,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 152,
+        "candidate_offset": 152,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3e0",
+        "addend": 0
+      },
+      {
+        "target_offset": 158,
+        "candidate_offset": 158,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 170,
+        "candidate_offset": 170,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 181,
+        "candidate_offset": 181,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3e0",
+        "addend": 0
+      },
+      {
+        "target_offset": 207,
+        "candidate_offset": 207,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 224,
+        "candidate_offset": 224,
+        "type": "DIR32",
+        "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+        "target_base": "0x491c28",
+        "candidate_base": "0x421438",
+        "addend": 0
+      },
+      {
+        "target_offset": 229,
+        "candidate_offset": 229,
+        "type": "REL32",
+        "symbol": "?SetNextGameMode@MainSupervisorView@@QAEXH@Z",
+        "target_base": "0x40ac90",
+        "candidate_base": "0x4186c0",
+        "addend": 0
+      },
+      {
+        "target_offset": 271,
+        "candidate_offset": 271,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 0
+      },
+      {
+        "target_offset": 276,
+        "candidate_offset": 276,
+        "type": "REL32",
+        "symbol": "?IsRepeated@FrontEndInputView@@QAEHG@Z",
+        "target_base": "0x40ace0",
+        "candidate_base": "0x40e460",
+        "addend": 0
+      },
+      {
+        "target_offset": 290,
+        "candidate_offset": 290,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3e0",
+        "addend": 0
+      },
+      {
+        "target_offset": 300,
+        "candidate_offset": 300,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 0
+      },
+      {
+        "target_offset": 305,
+        "candidate_offset": 305,
+        "type": "REL32",
+        "symbol": "?IsRepeated@FrontEndInputView@@QAEHG@Z",
+        "target_base": "0x40ace0",
+        "candidate_base": "0x40e460",
+        "addend": 0
+      },
+      {
+        "target_offset": 319,
+        "candidate_offset": 319,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3e0",
+        "addend": 0
+      },
+      {
+        "target_offset": 325,
+        "candidate_offset": 325,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 8
+      },
+      {
+        "target_offset": 382,
+        "candidate_offset": 382,
+        "type": "REL32",
+        "symbol": "?SptTestCreateVm@@YAPAUEnemyEclHostBaseView@@PAUEclVmScriptDatabase@@PBD@Z",
+        "target_base": "0x450500",
+        "candidate_base": "0x41f3b0",
+        "addend": 0
+      },
+      {
+        "target_offset": 421,
+        "candidate_offset": 424,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 433,
+        "candidate_offset": 436,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 444,
+        "candidate_offset": 447,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3e0",
+        "addend": 0
+      },
+      {
+        "target_offset": 450,
+        "candidate_offset": 453,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 462,
+        "candidate_offset": 465,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 473,
+        "candidate_offset": 476,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3e0",
+        "addend": 0
+      },
+      {
+        "target_offset": 479,
+        "candidate_offset": 482,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 507,
+        "candidate_offset": 510,
+        "type": "DIR32",
+        "symbol": "?SptTestLoadCallback@@YAHXZ",
+        "target_base": "0x42be10",
+        "candidate_base": "0x421220",
+        "addend": 0
+      },
+      {
+        "target_offset": 518,
+        "candidate_offset": 521,
+        "type": "REL32",
+        "symbol": "?Start@ScriptViewerWorkerView@@QAEXPAXP6AHXZ@Z",
+        "target_base": "0x44c1c0",
+        "candidate_base": "0x40d410",
+        "addend": 0
+      },
+      {
+        "target_offset": 535,
+        "candidate_offset": 538,
+        "type": "REL32",
+        "symbol": "?ClearScriptNames@SptTestView@@QAEXXZ",
+        "target_base": "0x42bad0",
+        "candidate_base": "0x401400",
+        "addend": 0
+      },
+      {
+        "target_offset": 541,
+        "candidate_offset": 544,
+        "type": "DIR32",
+        "symbol": "__imp__FindFirstFileA@8",
+        "target_base": "0x4660a0",
+        "candidate_base": "0x421544",
+        "addend": 0
+      },
+      {
+        "target_offset": 551,
+        "candidate_offset": 554,
+        "type": "DIR32",
+        "symbol": "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@",
+        "target_base": "0x46cea8",
+        "candidate_base": "0x42001c",
+        "addend": 0
+      },
+      {
+        "target_offset": 575,
+        "candidate_offset": 585,
+        "type": "DIR32",
+        "symbol": "__imp__FindNextFileA@8",
+        "target_base": "0x4660a4",
+        "candidate_base": "0x421548",
+        "addend": 0
+      },
+      {
+        "target_offset": 586,
+        "candidate_offset": 596,
+        "type": "DIR32",
+        "symbol": "__imp__FindClose@4",
+        "target_base": "0x4660a8",
+        "candidate_base": "0x421540",
+        "addend": 0
+      },
+      {
+        "target_offset": 612,
+        "candidate_offset": 618,
+        "type": "REL32",
+        "symbol": "_malloc",
+        "target_base": "0x452706",
+        "candidate_base": "0x4215d4",
+        "addend": 0
+      },
+      {
+        "target_offset": 628,
+        "candidate_offset": 631,
+        "type": "DIR32",
+        "symbol": "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@",
+        "target_base": "0x46cea8",
+        "candidate_base": "0x42001c",
+        "addend": 0
+      },
+      {
+        "target_offset": 659,
+        "candidate_offset": 668,
+        "type": "REL32",
+        "symbol": "_malloc",
+        "target_base": "0x452706",
+        "candidate_base": "0x4215d4",
+        "addend": 0
+      },
+      {
+        "target_offset": 706,
+        "candidate_offset": 709,
+        "type": "DIR32",
+        "symbol": "__imp__FindNextFileA@8",
+        "target_base": "0x4660a4",
+        "candidate_base": "0x421548",
+        "addend": 0
+      },
+      {
+        "target_offset": 722,
+        "candidate_offset": 725,
+        "type": "DIR32",
+        "symbol": "__imp__FindClose@4",
+        "target_base": "0x4660a8",
+        "candidate_base": "0x421540",
+        "addend": 0
+      },
+      {
+        "target_offset": 915,
+        "candidate_offset": 918,
+        "type": "REL32",
+        "symbol": "@__security_check_cookie@4",
+        "target_base": "0x458ea5",
+        "candidate_base": "0x421494",
+        "addend": 0
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 33,
+        "width": 6,
+        "destination": 534
+      },
+      {
+        "offset": 40,
+        "width": 2,
+        "destination": 118
+      },
+      {
+        "offset": 45,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 75,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 83,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 91,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 113,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 137,
+        "width": 2,
+        "destination": 147
+      },
+      {
+        "offset": 145,
+        "width": 2,
+        "destination": 156
+      },
+      {
+        "offset": 166,
+        "width": 2,
+        "destination": 176
+      },
+      {
+        "offset": 174,
+        "width": 2,
+        "destination": 185
+      },
+      {
+        "offset": 189,
+        "width": 6,
+        "destination": 404
+      },
+      {
+        "offset": 196,
+        "width": 2,
+        "destination": 238
+      },
+      {
+        "offset": 199,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 215,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 233,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 244,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 283,
+        "width": 2,
+        "destination": 294
+      },
+      {
+        "offset": 312,
+        "width": 2,
+        "destination": 323
+      },
+      {
+        "offset": 333,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 347,
+        "width": 2,
+        "destination": 362
+      },
+      {
+        "offset": 399,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 429,
+        "width": 2,
+        "destination": 439
+      },
+      {
+        "offset": 437,
+        "width": 2,
+        "destination": 448
+      },
+      {
+        "offset": 458,
+        "width": 2,
+        "destination": 468
+      },
+      {
+        "offset": 466,
+        "width": 2,
+        "destination": 477
+      },
+      {
+        "offset": 487,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 529,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 564,
+        "width": 2,
+        "destination": 583
+      },
+      {
+        "offset": 581,
+        "width": 2,
+        "destination": 566
+      },
+      {
+        "offset": 597,
+        "width": 6,
+        "destination": 728
+      },
+      {
+        "offset": 638,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 652,
+        "width": 2,
+        "destination": 647
+      },
+      {
+        "offset": 696,
+        "width": 2,
+        "destination": 688
+      },
+      {
+        "offset": 712,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 717,
+        "width": 2,
+        "destination": 640
+      },
+      {
+        "offset": 751,
+        "width": 2,
+        "destination": 768
+      },
+      {
+        "offset": 753,
+        "width": 2,
+        "destination": 761
+      },
+      {
+        "offset": 759,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 766,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 787,
+        "width": 2,
+        "destination": 810
+      },
+      {
+        "offset": 789,
+        "width": 2,
+        "destination": 800
+      },
+      {
+        "offset": 798,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 808,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 832,
+        "width": 2,
+        "destination": 855
+      },
+      {
+        "offset": 834,
+        "width": 2,
+        "destination": 845
+      },
+      {
+        "offset": 843,
+        "width": 2,
+        "destination": 861
+      },
+      {
+        "offset": 853,
+        "width": 2,
+        "destination": 861
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 33,
+        "width": 6,
+        "destination": 537
+      },
+      {
+        "offset": 40,
+        "width": 2,
+        "destination": 118
+      },
+      {
+        "offset": 45,
+        "width": 6,
+        "destination": 899
+      },
+      {
+        "offset": 75,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 83,
+        "width": 6,
+        "destination": 899
+      },
+      {
+        "offset": 91,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 113,
+        "width": 5,
+        "destination": 899
+      },
+      {
+        "offset": 137,
+        "width": 2,
+        "destination": 147
+      },
+      {
+        "offset": 145,
+        "width": 2,
+        "destination": 156
+      },
+      {
+        "offset": 166,
+        "width": 2,
+        "destination": 176
+      },
+      {
+        "offset": 174,
+        "width": 2,
+        "destination": 185
+      },
+      {
+        "offset": 189,
+        "width": 6,
+        "destination": 407
+      },
+      {
+        "offset": 196,
+        "width": 2,
+        "destination": 238
+      },
+      {
+        "offset": 199,
+        "width": 6,
+        "destination": 899
+      },
+      {
+        "offset": 215,
+        "width": 6,
+        "destination": 899
+      },
+      {
+        "offset": 233,
+        "width": 5,
+        "destination": 899
+      },
+      {
+        "offset": 244,
+        "width": 6,
+        "destination": 899
+      },
+      {
+        "offset": 283,
+        "width": 2,
+        "destination": 294
+      },
+      {
+        "offset": 312,
+        "width": 2,
+        "destination": 323
+      },
+      {
+        "offset": 333,
+        "width": 6,
+        "destination": 899
+      },
+      {
+        "offset": 347,
+        "width": 2,
+        "destination": 362
+      },
+      {
+        "offset": 402,
+        "width": 5,
+        "destination": 899
+      },
+      {
+        "offset": 432,
+        "width": 2,
+        "destination": 442
+      },
+      {
+        "offset": 440,
+        "width": 2,
+        "destination": 451
+      },
+      {
+        "offset": 461,
+        "width": 2,
+        "destination": 471
+      },
+      {
+        "offset": 469,
+        "width": 2,
+        "destination": 480
+      },
+      {
+        "offset": 490,
+        "width": 6,
+        "destination": 899
+      },
+      {
+        "offset": 532,
+        "width": 5,
+        "destination": 899
+      },
+      {
+        "offset": 567,
+        "width": 2,
+        "destination": 593
+      },
+      {
+        "offset": 591,
+        "width": 2,
+        "destination": 576
+      },
+      {
+        "offset": 607,
+        "width": 2,
+        "destination": 731
+      },
+      {
+        "offset": 644,
+        "width": 2,
+        "destination": 722
+      },
+      {
+        "offset": 661,
+        "width": 2,
+        "destination": 656
+      },
+      {
+        "offset": 699,
+        "width": 2,
+        "destination": 691
+      },
+      {
+        "offset": 715,
+        "width": 2,
+        "destination": 722
+      },
+      {
+        "offset": 720,
+        "width": 2,
+        "destination": 646
+      },
+      {
+        "offset": 754,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 756,
+        "width": 2,
+        "destination": 764
+      },
+      {
+        "offset": 762,
+        "width": 2,
+        "destination": 774
+      },
+      {
+        "offset": 769,
+        "width": 2,
+        "destination": 774
+      },
+      {
+        "offset": 790,
+        "width": 2,
+        "destination": 813
+      },
+      {
+        "offset": 792,
+        "width": 2,
+        "destination": 803
+      },
+      {
+        "offset": 801,
+        "width": 2,
+        "destination": 819
+      },
+      {
+        "offset": 811,
+        "width": 2,
+        "destination": 819
+      },
+      {
+        "offset": 835,
+        "width": 2,
+        "destination": 858
+      },
+      {
+        "offset": 837,
+        "width": 2,
+        "destination": 848
+      },
+      {
+        "offset": 846,
+        "width": 2,
+        "destination": 864
+      },
+      {
+        "offset": 856,
+        "width": 2,
+        "destination": 864
+      }
+    ],
+    "scope": "diagnostic field identities only; no offset normalization acceptance; update nonexact"
+  },
+  "member": {
+    "target_size": 926,
+    "candidate_size": 926,
+    "fields": [
+      {
+        "target_offset": 7,
+        "candidate_offset": 7,
+        "type": "DIR32",
+        "symbol": "___security_cookie",
+        "target_base": "0x473660",
+        "candidate_base": "0x4214f4",
+        "addend": 0
+      },
+      {
+        "target_offset": 63,
+        "candidate_offset": 63,
+        "type": "REL32",
+        "symbol": "?Run@EclVmHost@@QAEHM@Z",
+        "target_base": "0x44fd10",
+        "candidate_base": "0x41b100",
+        "addend": 0
+      },
+      {
+        "target_offset": 129,
+        "candidate_offset": 129,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 141,
+        "candidate_offset": 141,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 152,
+        "candidate_offset": 152,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 158,
+        "candidate_offset": 158,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 170,
+        "candidate_offset": 170,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 181,
+        "candidate_offset": 181,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 207,
+        "candidate_offset": 207,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 224,
+        "candidate_offset": 224,
+        "type": "DIR32",
+        "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+        "target_base": "0x491c28",
+        "candidate_base": "0x421438",
+        "addend": 0
+      },
+      {
+        "target_offset": 229,
+        "candidate_offset": 229,
+        "type": "REL32",
+        "symbol": "?SetNextGameMode@MainSupervisorView@@QAEXH@Z",
+        "target_base": "0x40ac90",
+        "candidate_base": "0x4186b0",
+        "addend": 0
+      },
+      {
+        "target_offset": 271,
+        "candidate_offset": 271,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 0
+      },
+      {
+        "target_offset": 276,
+        "candidate_offset": 276,
+        "type": "REL32",
+        "symbol": "?IsRepeated@FrontEndInputView@@QAEHG@Z",
+        "target_base": "0x40ace0",
+        "candidate_base": "0x40e450",
+        "addend": 0
+      },
+      {
+        "target_offset": 290,
+        "candidate_offset": 290,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 300,
+        "candidate_offset": 300,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 0
+      },
+      {
+        "target_offset": 305,
+        "candidate_offset": 305,
+        "type": "REL32",
+        "symbol": "?IsRepeated@FrontEndInputView@@QAEHG@Z",
+        "target_base": "0x40ace0",
+        "candidate_base": "0x40e450",
+        "addend": 0
+      },
+      {
+        "target_offset": 319,
+        "candidate_offset": 319,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 325,
+        "candidate_offset": 325,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 8
+      },
+      {
+        "target_offset": 382,
+        "candidate_offset": 382,
+        "type": "REL32",
+        "symbol": "?CreateHost@EclVmScriptDatabase@@QAEPAUEnemyEclHostBaseView@@PBD@Z",
+        "target_base": "0x450500",
+        "candidate_base": "0x41f3a0",
+        "addend": 0
+      },
+      {
+        "target_offset": 421,
+        "candidate_offset": 421,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 433,
+        "candidate_offset": 433,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 444,
+        "candidate_offset": 444,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 450,
+        "candidate_offset": 450,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 462,
+        "candidate_offset": 462,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 473,
+        "candidate_offset": 473,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 479,
+        "candidate_offset": 479,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 507,
+        "candidate_offset": 507,
+        "type": "DIR32",
+        "symbol": "?SptTestLoadCallback@@YAHXZ",
+        "target_base": "0x42be10",
+        "candidate_base": "0x421220",
+        "addend": 0
+      },
+      {
+        "target_offset": 518,
+        "candidate_offset": 518,
+        "type": "REL32",
+        "symbol": "?Start@ScriptViewerWorkerView@@QAEXPAXP6AHXZ@Z",
+        "target_base": "0x44c1c0",
+        "candidate_base": "0x40d400",
+        "addend": 0
+      },
+      {
+        "target_offset": 535,
+        "candidate_offset": 535,
+        "type": "REL32",
+        "symbol": "?ClearScriptNames@SptTestView@@QAEXXZ",
+        "target_base": "0x42bad0",
+        "candidate_base": "0x401400",
+        "addend": 0
+      },
+      {
+        "target_offset": 541,
+        "candidate_offset": 541,
+        "type": "DIR32",
+        "symbol": "__imp__FindFirstFileA@8",
+        "target_base": "0x4660a0",
+        "candidate_base": "0x421544",
+        "addend": 0
+      },
+      {
+        "target_offset": 551,
+        "candidate_offset": 551,
+        "type": "DIR32",
+        "symbol": "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@",
+        "target_base": "0x46cea8",
+        "candidate_base": "0x42001c",
+        "addend": 0
+      },
+      {
+        "target_offset": 575,
+        "candidate_offset": 575,
+        "type": "DIR32",
+        "symbol": "__imp__FindNextFileA@8",
+        "target_base": "0x4660a4",
+        "candidate_base": "0x421548",
+        "addend": 0
+      },
+      {
+        "target_offset": 586,
+        "candidate_offset": 586,
+        "type": "DIR32",
+        "symbol": "__imp__FindClose@4",
+        "target_base": "0x4660a8",
+        "candidate_base": "0x421540",
+        "addend": 0
+      },
+      {
+        "target_offset": 612,
+        "candidate_offset": 612,
+        "type": "REL32",
+        "symbol": "_malloc",
+        "target_base": "0x452706",
+        "candidate_base": "0x4215d4",
+        "addend": 0
+      },
+      {
+        "target_offset": 628,
+        "candidate_offset": 625,
+        "type": "DIR32",
+        "symbol": "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@",
+        "target_base": "0x46cea8",
+        "candidate_base": "0x42001c",
+        "addend": 0
+      },
+      {
+        "target_offset": 659,
+        "candidate_offset": 659,
+        "type": "REL32",
+        "symbol": "_malloc",
+        "target_base": "0x452706",
+        "candidate_base": "0x4215d4",
+        "addend": 0
+      },
+      {
+        "target_offset": 706,
+        "candidate_offset": 706,
+        "type": "DIR32",
+        "symbol": "__imp__FindNextFileA@8",
+        "target_base": "0x4660a4",
+        "candidate_base": "0x421548",
+        "addend": 0
+      },
+      {
+        "target_offset": 722,
+        "candidate_offset": 722,
+        "type": "DIR32",
+        "symbol": "__imp__FindClose@4",
+        "target_base": "0x4660a8",
+        "candidate_base": "0x421540",
+        "addend": 0
+      },
+      {
+        "target_offset": 915,
+        "candidate_offset": 915,
+        "type": "REL32",
+        "symbol": "@__security_check_cookie@4",
+        "target_base": "0x458ea5",
+        "candidate_base": "0x421494",
+        "addend": 0
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 33,
+        "width": 6,
+        "destination": 534
+      },
+      {
+        "offset": 40,
+        "width": 2,
+        "destination": 118
+      },
+      {
+        "offset": 45,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 75,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 83,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 91,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 113,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 137,
+        "width": 2,
+        "destination": 147
+      },
+      {
+        "offset": 145,
+        "width": 2,
+        "destination": 156
+      },
+      {
+        "offset": 166,
+        "width": 2,
+        "destination": 176
+      },
+      {
+        "offset": 174,
+        "width": 2,
+        "destination": 185
+      },
+      {
+        "offset": 189,
+        "width": 6,
+        "destination": 404
+      },
+      {
+        "offset": 196,
+        "width": 2,
+        "destination": 238
+      },
+      {
+        "offset": 199,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 215,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 233,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 244,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 283,
+        "width": 2,
+        "destination": 294
+      },
+      {
+        "offset": 312,
+        "width": 2,
+        "destination": 323
+      },
+      {
+        "offset": 333,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 347,
+        "width": 2,
+        "destination": 362
+      },
+      {
+        "offset": 399,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 429,
+        "width": 2,
+        "destination": 439
+      },
+      {
+        "offset": 437,
+        "width": 2,
+        "destination": 448
+      },
+      {
+        "offset": 458,
+        "width": 2,
+        "destination": 468
+      },
+      {
+        "offset": 466,
+        "width": 2,
+        "destination": 477
+      },
+      {
+        "offset": 487,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 529,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 564,
+        "width": 2,
+        "destination": 583
+      },
+      {
+        "offset": 581,
+        "width": 2,
+        "destination": 566
+      },
+      {
+        "offset": 597,
+        "width": 6,
+        "destination": 728
+      },
+      {
+        "offset": 638,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 652,
+        "width": 2,
+        "destination": 647
+      },
+      {
+        "offset": 696,
+        "width": 2,
+        "destination": 688
+      },
+      {
+        "offset": 712,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 717,
+        "width": 2,
+        "destination": 640
+      },
+      {
+        "offset": 751,
+        "width": 2,
+        "destination": 768
+      },
+      {
+        "offset": 753,
+        "width": 2,
+        "destination": 761
+      },
+      {
+        "offset": 759,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 766,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 787,
+        "width": 2,
+        "destination": 810
+      },
+      {
+        "offset": 789,
+        "width": 2,
+        "destination": 800
+      },
+      {
+        "offset": 798,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 808,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 832,
+        "width": 2,
+        "destination": 855
+      },
+      {
+        "offset": 834,
+        "width": 2,
+        "destination": 845
+      },
+      {
+        "offset": 843,
+        "width": 2,
+        "destination": 861
+      },
+      {
+        "offset": 853,
+        "width": 2,
+        "destination": 861
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 33,
+        "width": 6,
+        "destination": 534
+      },
+      {
+        "offset": 40,
+        "width": 2,
+        "destination": 118
+      },
+      {
+        "offset": 45,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 75,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 83,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 91,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 113,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 137,
+        "width": 2,
+        "destination": 147
+      },
+      {
+        "offset": 145,
+        "width": 2,
+        "destination": 156
+      },
+      {
+        "offset": 166,
+        "width": 2,
+        "destination": 176
+      },
+      {
+        "offset": 174,
+        "width": 2,
+        "destination": 185
+      },
+      {
+        "offset": 189,
+        "width": 6,
+        "destination": 404
+      },
+      {
+        "offset": 196,
+        "width": 2,
+        "destination": 238
+      },
+      {
+        "offset": 199,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 215,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 233,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 244,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 283,
+        "width": 2,
+        "destination": 294
+      },
+      {
+        "offset": 312,
+        "width": 2,
+        "destination": 323
+      },
+      {
+        "offset": 333,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 347,
+        "width": 2,
+        "destination": 362
+      },
+      {
+        "offset": 399,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 429,
+        "width": 2,
+        "destination": 439
+      },
+      {
+        "offset": 437,
+        "width": 2,
+        "destination": 448
+      },
+      {
+        "offset": 458,
+        "width": 2,
+        "destination": 468
+      },
+      {
+        "offset": 466,
+        "width": 2,
+        "destination": 477
+      },
+      {
+        "offset": 487,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 529,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 564,
+        "width": 2,
+        "destination": 583
+      },
+      {
+        "offset": 581,
+        "width": 2,
+        "destination": 566
+      },
+      {
+        "offset": 597,
+        "width": 6,
+        "destination": 728
+      },
+      {
+        "offset": 638,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 652,
+        "width": 2,
+        "destination": 647
+      },
+      {
+        "offset": 696,
+        "width": 2,
+        "destination": 688
+      },
+      {
+        "offset": 712,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 717,
+        "width": 2,
+        "destination": 640
+      },
+      {
+        "offset": 751,
+        "width": 2,
+        "destination": 768
+      },
+      {
+        "offset": 753,
+        "width": 2,
+        "destination": 761
+      },
+      {
+        "offset": 759,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 766,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 787,
+        "width": 2,
+        "destination": 810
+      },
+      {
+        "offset": 789,
+        "width": 2,
+        "destination": 800
+      },
+      {
+        "offset": 798,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 808,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 832,
+        "width": 2,
+        "destination": 855
+      },
+      {
+        "offset": 834,
+        "width": 2,
+        "destination": 845
+      },
+      {
+        "offset": 843,
+        "width": 2,
+        "destination": 861
+      },
+      {
+        "offset": 853,
+        "width": 2,
+        "destination": 861
+      }
+    ],
+    "scope": "diagnostic field identities only; no offset normalization acceptance; update nonexact"
+  },
+  "canonical": {
+    "target_size": 926,
+    "candidate_size": 926,
+    "fields": [
+      {
+        "target_offset": 7,
+        "candidate_offset": 7,
+        "type": "DIR32",
+        "symbol": "___security_cookie",
+        "target_base": "0x473660",
+        "candidate_base": "0x4214f4",
+        "addend": 0
+      },
+      {
+        "target_offset": 63,
+        "candidate_offset": 63,
+        "type": "REL32",
+        "symbol": "?Run@EclVmHost@@QAEHM@Z",
+        "target_base": "0x44fd10",
+        "candidate_base": "0x41b100",
+        "addend": 0
+      },
+      {
+        "target_offset": 129,
+        "candidate_offset": 129,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 141,
+        "candidate_offset": 141,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 152,
+        "candidate_offset": 152,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 158,
+        "candidate_offset": 158,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 170,
+        "candidate_offset": 170,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 181,
+        "candidate_offset": 181,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 207,
+        "candidate_offset": 207,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 224,
+        "candidate_offset": 224,
+        "type": "DIR32",
+        "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+        "target_base": "0x491c28",
+        "candidate_base": "0x421438",
+        "addend": 0
+      },
+      {
+        "target_offset": 229,
+        "candidate_offset": 229,
+        "type": "REL32",
+        "symbol": "?SetNextGameMode@MainSupervisorView@@QAEXH@Z",
+        "target_base": "0x40ac90",
+        "candidate_base": "0x4186b0",
+        "addend": 0
+      },
+      {
+        "target_offset": 271,
+        "candidate_offset": 271,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 0
+      },
+      {
+        "target_offset": 276,
+        "candidate_offset": 276,
+        "type": "REL32",
+        "symbol": "?IsRepeated@FrontEndInputView@@QAEHG@Z",
+        "target_base": "0x40ace0",
+        "candidate_base": "0x40e450",
+        "addend": 0
+      },
+      {
+        "target_offset": 290,
+        "candidate_offset": 290,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 300,
+        "candidate_offset": 300,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 0
+      },
+      {
+        "target_offset": 305,
+        "candidate_offset": 305,
+        "type": "REL32",
+        "symbol": "?IsRepeated@FrontEndInputView@@QAEHG@Z",
+        "target_base": "0x40ace0",
+        "candidate_base": "0x40e450",
+        "addend": 0
+      },
+      {
+        "target_offset": 319,
+        "candidate_offset": 319,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 325,
+        "candidate_offset": 325,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 8
+      },
+      {
+        "target_offset": 382,
+        "candidate_offset": 382,
+        "type": "REL32",
+        "symbol": "?CreateHost@EclVmScriptDatabase@@QAEPAUEnemyEclHostBaseView@@PBD@Z",
+        "target_base": "0x450500",
+        "candidate_base": "0x41f3a0",
+        "addend": 0
+      },
+      {
+        "target_offset": 421,
+        "candidate_offset": 421,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 433,
+        "candidate_offset": 433,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 444,
+        "candidate_offset": 444,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 450,
+        "candidate_offset": 450,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 462,
+        "candidate_offset": 462,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 4
+      },
+      {
+        "target_offset": 473,
+        "candidate_offset": 473,
+        "type": "REL32",
+        "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+        "target_base": "0x44bea0",
+        "candidate_base": "0x40e3d0",
+        "addend": 0
+      },
+      {
+        "target_offset": 479,
+        "candidate_offset": 479,
+        "type": "DIR32",
+        "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+        "target_base": "0x474e30",
+        "candidate_base": "0x421324",
+        "addend": 6
+      },
+      {
+        "target_offset": 507,
+        "candidate_offset": 507,
+        "type": "DIR32",
+        "symbol": "?SptTestLoadCallback@@YAHXZ",
+        "target_base": "0x42be10",
+        "candidate_base": "0x421220",
+        "addend": 0
+      },
+      {
+        "target_offset": 518,
+        "candidate_offset": 518,
+        "type": "REL32",
+        "symbol": "?Start@ScriptViewerWorkerView@@QAEXPAXP6AHXZ@Z",
+        "target_base": "0x44c1c0",
+        "candidate_base": "0x40d400",
+        "addend": 0
+      },
+      {
+        "target_offset": 535,
+        "candidate_offset": 535,
+        "type": "REL32",
+        "symbol": "?ClearScriptNames@SptTestView@@QAEXXZ",
+        "target_base": "0x42bad0",
+        "candidate_base": "0x401400",
+        "addend": 0
+      },
+      {
+        "target_offset": 541,
+        "candidate_offset": 541,
+        "type": "DIR32",
+        "symbol": "__imp__FindFirstFileA@8",
+        "target_base": "0x4660a0",
+        "candidate_base": "0x421544",
+        "addend": 0
+      },
+      {
+        "target_offset": 551,
+        "candidate_offset": 551,
+        "type": "DIR32",
+        "symbol": "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@",
+        "target_base": "0x46cea8",
+        "candidate_base": "0x42001c",
+        "addend": 0
+      },
+      {
+        "target_offset": 575,
+        "candidate_offset": 575,
+        "type": "DIR32",
+        "symbol": "__imp__FindNextFileA@8",
+        "target_base": "0x4660a4",
+        "candidate_base": "0x421548",
+        "addend": 0
+      },
+      {
+        "target_offset": 586,
+        "candidate_offset": 586,
+        "type": "DIR32",
+        "symbol": "__imp__FindClose@4",
+        "target_base": "0x4660a8",
+        "candidate_base": "0x421540",
+        "addend": 0
+      },
+      {
+        "target_offset": 612,
+        "candidate_offset": 612,
+        "type": "REL32",
+        "symbol": "_malloc",
+        "target_base": "0x452706",
+        "candidate_base": "0x4215d4",
+        "addend": 0
+      },
+      {
+        "target_offset": 628,
+        "candidate_offset": 625,
+        "type": "DIR32",
+        "symbol": "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@",
+        "target_base": "0x46cea8",
+        "candidate_base": "0x42001c",
+        "addend": 0
+      },
+      {
+        "target_offset": 659,
+        "candidate_offset": 659,
+        "type": "REL32",
+        "symbol": "_malloc",
+        "target_base": "0x452706",
+        "candidate_base": "0x4215d4",
+        "addend": 0
+      },
+      {
+        "target_offset": 706,
+        "candidate_offset": 706,
+        "type": "DIR32",
+        "symbol": "__imp__FindNextFileA@8",
+        "target_base": "0x4660a4",
+        "candidate_base": "0x421548",
+        "addend": 0
+      },
+      {
+        "target_offset": 722,
+        "candidate_offset": 722,
+        "type": "DIR32",
+        "symbol": "__imp__FindClose@4",
+        "target_base": "0x4660a8",
+        "candidate_base": "0x421540",
+        "addend": 0
+      },
+      {
+        "target_offset": 915,
+        "candidate_offset": 915,
+        "type": "REL32",
+        "symbol": "@__security_check_cookie@4",
+        "target_base": "0x458ea5",
+        "candidate_base": "0x421494",
+        "addend": 0
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 33,
+        "width": 6,
+        "destination": 534
+      },
+      {
+        "offset": 40,
+        "width": 2,
+        "destination": 118
+      },
+      {
+        "offset": 45,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 75,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 83,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 91,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 113,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 137,
+        "width": 2,
+        "destination": 147
+      },
+      {
+        "offset": 145,
+        "width": 2,
+        "destination": 156
+      },
+      {
+        "offset": 166,
+        "width": 2,
+        "destination": 176
+      },
+      {
+        "offset": 174,
+        "width": 2,
+        "destination": 185
+      },
+      {
+        "offset": 189,
+        "width": 6,
+        "destination": 404
+      },
+      {
+        "offset": 196,
+        "width": 2,
+        "destination": 238
+      },
+      {
+        "offset": 199,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 215,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 233,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 244,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 283,
+        "width": 2,
+        "destination": 294
+      },
+      {
+        "offset": 312,
+        "width": 2,
+        "destination": 323
+      },
+      {
+        "offset": 333,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 347,
+        "width": 2,
+        "destination": 362
+      },
+      {
+        "offset": 399,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 429,
+        "width": 2,
+        "destination": 439
+      },
+      {
+        "offset": 437,
+        "width": 2,
+        "destination": 448
+      },
+      {
+        "offset": 458,
+        "width": 2,
+        "destination": 468
+      },
+      {
+        "offset": 466,
+        "width": 2,
+        "destination": 477
+      },
+      {
+        "offset": 487,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 529,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 564,
+        "width": 2,
+        "destination": 583
+      },
+      {
+        "offset": 581,
+        "width": 2,
+        "destination": 566
+      },
+      {
+        "offset": 597,
+        "width": 6,
+        "destination": 728
+      },
+      {
+        "offset": 638,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 652,
+        "width": 2,
+        "destination": 647
+      },
+      {
+        "offset": 696,
+        "width": 2,
+        "destination": 688
+      },
+      {
+        "offset": 712,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 717,
+        "width": 2,
+        "destination": 640
+      },
+      {
+        "offset": 751,
+        "width": 2,
+        "destination": 768
+      },
+      {
+        "offset": 753,
+        "width": 2,
+        "destination": 761
+      },
+      {
+        "offset": 759,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 766,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 787,
+        "width": 2,
+        "destination": 810
+      },
+      {
+        "offset": 789,
+        "width": 2,
+        "destination": 800
+      },
+      {
+        "offset": 798,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 808,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 832,
+        "width": 2,
+        "destination": 855
+      },
+      {
+        "offset": 834,
+        "width": 2,
+        "destination": 845
+      },
+      {
+        "offset": 843,
+        "width": 2,
+        "destination": 861
+      },
+      {
+        "offset": 853,
+        "width": 2,
+        "destination": 861
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 33,
+        "width": 6,
+        "destination": 534
+      },
+      {
+        "offset": 40,
+        "width": 2,
+        "destination": 118
+      },
+      {
+        "offset": 45,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 75,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 83,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 91,
+        "width": 2,
+        "destination": 100
+      },
+      {
+        "offset": 113,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 137,
+        "width": 2,
+        "destination": 147
+      },
+      {
+        "offset": 145,
+        "width": 2,
+        "destination": 156
+      },
+      {
+        "offset": 166,
+        "width": 2,
+        "destination": 176
+      },
+      {
+        "offset": 174,
+        "width": 2,
+        "destination": 185
+      },
+      {
+        "offset": 189,
+        "width": 6,
+        "destination": 404
+      },
+      {
+        "offset": 196,
+        "width": 2,
+        "destination": 238
+      },
+      {
+        "offset": 199,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 215,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 233,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 244,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 283,
+        "width": 2,
+        "destination": 294
+      },
+      {
+        "offset": 312,
+        "width": 2,
+        "destination": 323
+      },
+      {
+        "offset": 333,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 347,
+        "width": 2,
+        "destination": 362
+      },
+      {
+        "offset": 399,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 429,
+        "width": 2,
+        "destination": 439
+      },
+      {
+        "offset": 437,
+        "width": 2,
+        "destination": 448
+      },
+      {
+        "offset": 458,
+        "width": 2,
+        "destination": 468
+      },
+      {
+        "offset": 466,
+        "width": 2,
+        "destination": 477
+      },
+      {
+        "offset": 487,
+        "width": 6,
+        "destination": 896
+      },
+      {
+        "offset": 529,
+        "width": 5,
+        "destination": 896
+      },
+      {
+        "offset": 564,
+        "width": 2,
+        "destination": 583
+      },
+      {
+        "offset": 581,
+        "width": 2,
+        "destination": 566
+      },
+      {
+        "offset": 597,
+        "width": 6,
+        "destination": 728
+      },
+      {
+        "offset": 638,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 652,
+        "width": 2,
+        "destination": 647
+      },
+      {
+        "offset": 696,
+        "width": 2,
+        "destination": 688
+      },
+      {
+        "offset": 712,
+        "width": 2,
+        "destination": 719
+      },
+      {
+        "offset": 717,
+        "width": 2,
+        "destination": 640
+      },
+      {
+        "offset": 751,
+        "width": 2,
+        "destination": 768
+      },
+      {
+        "offset": 753,
+        "width": 2,
+        "destination": 761
+      },
+      {
+        "offset": 759,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 766,
+        "width": 2,
+        "destination": 771
+      },
+      {
+        "offset": 787,
+        "width": 2,
+        "destination": 810
+      },
+      {
+        "offset": 789,
+        "width": 2,
+        "destination": 800
+      },
+      {
+        "offset": 798,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 808,
+        "width": 2,
+        "destination": 816
+      },
+      {
+        "offset": 832,
+        "width": 2,
+        "destination": 855
+      },
+      {
+        "offset": 834,
+        "width": 2,
+        "destination": 845
+      },
+      {
+        "offset": 843,
+        "width": 2,
+        "destination": 861
+      },
+      {
+        "offset": 853,
+        "width": 2,
+        "destination": 861
+      }
+    ],
+    "scope": "diagnostic field identities only; no offset normalization acceptance; update nonexact"
+  }
+}

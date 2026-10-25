@@ -785,7 +785,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0042BB30,authored_game,SptTest,authored,high,spt-test-helpers-complete-owner-2026-10-25
 0x0042BBD0,authored_game,SptTest,authored,high,spt-test-helpers-complete-owner-2026-10-25
 0x0042BF30,authored_game,SptTest,authored,high,spt-test-helpers-complete-owner-2026-10-25
+0x0042BFC0,authored_game,SptTest,authored,high,spt-test-update-factory-complete-owner-2026-10-25
 0x0042C360,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
+0x0042C580,unknown,SptTest,indeterminate,unknown,spt-test-update-factory-complete-owner-2026-10-25
 0x0042C590,unknown,SptTest,indeterminate,unknown,spt-test-draw-complete-owner-2026-10-25
 0x0042C5A0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0042C5C0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
@@ -1283,6 +1285,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004501E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00450220,authored_game,EclVm,authored,high,ecl-vm-script-loader-2026-09-16
 0x00450470,authored_game,EclVm,authored,high,ecl-vm-thread-control-2026-09-16
+0x00450500,authored_game,EclVm,authored,high,spt-test-update-factory-complete-owner-2026-10-25
 0x004505B0,authored_game,EclVm,authored,high,ecl-vm-stack-core-2026-09-16
 0x00450610,authored_game,EclVm,authored,high,ecl-vm-stack-pop-2026-09-16
 0x00450690,authored_game,EclVm,authored,high,ecl-vm-stack-core-2026-09-16

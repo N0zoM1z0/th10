@@ -111,3 +111,122 @@ void SptTestView::ClearScriptNames()
 }
 // Destructor42BC30 remains an explicit unresolved dependency; its complete
 // first proposal is nonexact and is not admitted with these helpers.
+
+#include "Enemy.hpp"
+#include "InputState.hpp"
+// The real loader callback42BE10 ignores the context; declared dependency only.
+extern int SptTestLoadCallback();
+static inline void SelectScriptViewerEntry(FrontEndCursorView &cursor, int value)
+{
+    if (cursor.count != 0)
+        cursor.current = value >= cursor.count ? cursor.count - 1 : value;
+    else
+        cursor.current = 0;
+}
+
+static inline void RememberScriptViewerCursor(FrontEndCursorView *cursor)
+{
+    cursor->previous = cursor->current;
+}
+
+
+int SptTestView::Update()
+{
+    WIN32_FIND_DATAA find;
+    switch (state)
+    {
+    case 4:
+        reinterpret_cast<EclVmHost *>(activeVm)->Run(1.0f);
+        if (!activeVm || !activeVm->activeEclContext->currentInstruction)
+        {
+            if (activeVm) delete activeVm;
+            activeVm = NULL;
+            state = 1;
+        }
+        break;
+    case 1:
+        RememberScriptViewerCursor(&menu);
+        if (g_FrontEndInput.IsActiveInline(0x20)) menu.Move(1);
+        if (g_FrontEndInput.IsActiveInline(0x10)) menu.Move(-1);
+        switch (menu.current)
+        {
+        case 2:
+            if (g_FrontEndInput.pressed & 0x1001)
+                g_MainSupervisorView.SetNextGameMode(3);
+            break;
+        case 1:
+            if (scriptDatabase)
+            {
+                RememberScriptViewerCursor(&entries);
+                if (static_cast<unsigned short>(g_FrontEndInput.IsRepeated(0x80))) entries.Move(1);
+                if (static_cast<unsigned short>(g_FrontEndInput.IsRepeated(0x40))) entries.Move(-1);
+                if (g_FrontEndInput.mask008 & 0x1001)
+                {
+                    if (activeVm)
+                    {
+                        delete activeVm;
+                        activeVm = NULL;
+                    }
+                    activeVm = scriptDatabase->CreateHost(scriptDatabase->subroutines[entries.current].name);
+                    state = 4;
+                }
+            }
+            break;
+        case 0:
+            RememberScriptViewerCursor(&files);
+            if (g_FrontEndInput.IsActiveInline(0x80)) files.Move(1);
+            if (g_FrontEndInput.IsActiveInline(0x40)) files.Move(-1);
+            if (g_FrontEndInput.pressed & 0x1001)
+            {
+                flags2D4 &= ~2u;
+                worker.Start(this, SptTestLoadCallback);
+                state = 2;
+            }
+            break;
+        }
+        break;
+    case 0:
+        ClearScriptNames();
+        int count = 0;
+        HANDLE search = FindFirstFileA("../../data/*.ecl", &find);
+        if (search != INVALID_HANDLE_VALUE)
+        {
+            do { ++count; } while (FindNextFileA(search, &find));
+        }
+        FindClose(search);
+        scriptCount = count;
+        if (count)
+        {
+            scriptNames = static_cast<char **>(malloc(count * sizeof(char *)));
+            search = FindFirstFileA("../../data/*.ecl", &find);
+            for (int i = 0; i < count; ++i)
+            {
+                scriptNames[i] = static_cast<char *>(malloc(strlen(find.cFileName) + 1));
+                strcpy(scriptNames[i], find.cFileName);
+                if (!FindNextFileA(search, &find)) break;
+            }
+            FindClose(search);
+        }
+        menu.count = 3;
+        menu.wraps = 1;
+        SelectScriptViewerEntry(menu, 0);
+        files.count = count;
+        files.wraps = 1;
+        SelectScriptViewerEntry(files, 0);
+        entries.count = 1;
+        entries.wraps = 1;
+        SelectScriptViewerEntry(entries, 0);
+        state = 1;
+        position.x = 0.0f;
+        position.y = 32.0f;
+        position.z = 0.0f;
+        value2D0 = 1000;
+        break;
+    }
+    return 1;
+}
+
+int __fastcall SptTestUpdateCallback(void *context)
+{
+    return static_cast<SptTestView *>(context)->Update();
+}

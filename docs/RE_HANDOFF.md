@@ -4,6 +4,22 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [Spt Test update/factory pilot](evidence/spt-test-update-20261025/README.md)
+closes **89 authored bytes / one factory owner**, with the complete926 update
+admitted source-only/nonexact. Natural database-member ownership restores RET4
+and removes caller cleanup; no forced ABI. Update has all39 semantic fields/all48
+fixed locals but shifted second-search field/register scheduling still reject.
+Actual canonical cold89/all3/all2 and callback5 pass; callback origin remains
+indeterminate. Twelve same-image guards1492 and separate original helper315/Draw641
+cold contexts pass. Final wrapper exit1 (ASCII observer source-owner metadata)
+is preserved; separate same-image supplement passes with2104 frozen inputs intact,
+without native rerun. Authored exact76751/275055,422 owners; source631/251431.
+New source/denominator+1015; no updateexact or runtime/product claim. Target
+unchecked enumeration/allocation, Run-before-null and state-publication race remain.
+Load261/callback16 stay declared dependencies. Host2groups pass full sanitizers;
+all116 full-CI stages pass with2492 frozen inputs unchanged, terminal0 verified
+12:00:29 UTC without rerun. Only result docs and AST-identical fixture EOF cleanup afterward; focused checks pass.
+Park unsupported scheduling panels.
 Current [Spt Test helper/cleanup pilot](evidence/spt-test-cleanup-20261025/README.md)
 closes **315 authored bytes / three owners**: names86, ctor145, registration84.
 First full, clean isolated and canonical cold graphs pass315/all12/all5 locals;
