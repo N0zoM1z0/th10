@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Decompress.hpp"
-// Diagnostic declarations: target initializers are not implemented here.
+#include "Rng.hpp"
+// The record initializer remains a declared, unreconstructed dependency.
 void InitializeStatisticsTail42ADD0(GameStatisticsTail *tail);
 void InitializeStatisticsRecord42ACB0(GameStatisticsRecord *record);
 
@@ -82,4 +83,16 @@ fallback:
     *reinterpret_cast<unsigned short *>(&header->unknown08) = 3;
     header->unknown0C = 0x100;
     return 0;
+}
+
+void InitializeStatisticsTail42ADD0(GameStatisticsTail *tail)
+{
+    memset(tail, 0, sizeof(*tail));
+    unsigned char *bytes = reinterpret_cast<unsigned char *>(tail);
+    *reinterpret_cast<unsigned short *>(bytes) = 0x5453;
+    *reinterpret_cast<unsigned short *>(bytes + 2) = 0;
+    *reinterpret_cast<unsigned int *>(bytes + 8) = sizeof(*tail);
+    strcpy(reinterpret_cast<char *>(bytes + 0xc), "        ");
+    for (int i = 0; i < 512; ++i)
+        *reinterpret_cast<unsigned short *>(bytes + 0x46 + i * 2) = g_RngView.GetRandomU16();
 }

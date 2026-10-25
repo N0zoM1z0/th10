@@ -6028,3 +6028,18 @@ Private EBX/AL and checksum expansion emerge from ordinary source. Reuse the
 canonical GameStatisticsOwner; ctor/factory are source-present nonexact, tail and
 record initializers remain declaration-only. Save remains nonexact; no implicit
 initializer, runtime-storage, original-profile or product closure follows.
+
+## Statistics defaults pilot, 2026-10-25
+
+See [complete evidence](evidence/statistics-initializers-20261025/README.md).
+42ADD0..42AE5D is a142-byte statistics-tail initializer, not replay payload.
+Natural existing RngView/RandomMath GL visibility produces private EDX and all512
+inlined ushort draws; complete exact all7 fields/all3 fixed locals. Clear448,
+ST/version0/size448, eight spaces+NUL at+C, RNG words46..445, final2zero bytes.
+42ACB0 is274-byte record defaults; three natural full models291/258/274 reject.
+Record/table remain unadmitted. Table4743C0 has110 consumed signed bytes and a
+shared Fn004088C0 consumer; original physical extent/trailing padding unknown.
+No operand-order, alignment, register, noinline or profile panels are justified.
+Loader423 remains exact under separate canonical cold new graph; all five original
+1078-byte guards and four341-byte RNG owners pass. Diagnostic RNG+4 anchor overlap
+is not storage ownership or runtime proof. Authored exact gains142 only.

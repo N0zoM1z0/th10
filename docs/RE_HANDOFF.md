@@ -4,6 +4,15 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [statistics initializer pilot](evidence/statistics-initializers-20261025/README.md)
+closes **142 authored bytes / one owner** for the tail. Independent clean tail-only
+and separate canonical cold graphs pass142/all7/all3 locals, preserve loader423,
+five filesystem/decompress guards1078/all60 and four RNG341/all5. Genuine
+RandomMath GL supplies natural privateEDX inlining. Record three models291/258/274
+remain nonexact and isolated; no shared table allocation admitted. Ctor137/132
+and factory98/97 remain nonexact. Authored exact76347/273658,418 owners;
+source625/250034. Host3856 full-byte/guard/RNG sanitizer cases pass; all114 full-CI stages pass,
+1619 frozen inputs unchanged, terminal exit0 recovered10:18:12 UTC without rerun.
 Current [statistics loader](evidence/statistics-load-20261025/README.md) closes
 **423 authored bytes / one owner** on the first complete natural model and a
 separate canonical cold link, all5 fields/all18 fixed locals. Real ctor/factory

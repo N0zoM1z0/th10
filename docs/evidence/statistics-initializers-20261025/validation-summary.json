@@ -1,0 +1,43 @@
+{
+  "target": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "canonical": {
+    "tail_bytes": 142,
+    "tail_fields": 7,
+    "tail_locals": 3,
+    "loader_bytes": 423,
+    "loader_fields": 5,
+    "loader_locals": 18,
+    "filesystem_decompress_guard_bytes": 1078,
+    "filesystem_decompress_fields": 60,
+    "rng_bytes": 341,
+    "rng_fields": 5
+  },
+  "host": {
+    "result": "pass",
+    "cases": 3856,
+    "sanitizers": [
+      "ASan",
+      "UBSan",
+      "LSan"
+    ]
+  },
+  "full_ci": {
+    "result": "pass",
+    "stages": 114,
+    "exit": 0,
+    "frozen_inputs": 1619,
+    "freeze": "unchanged",
+    "observed_terminal_utc": "2026-10-25T10:18:12Z",
+    "transport": "RPC timeout recovered without rerun"
+  },
+  "prior_loader_artifacts": 56,
+  "protected_files": 9,
+  "review": {
+    "source": "5dd05b2def17486aa474654ab8f2d168",
+    "canonical": [
+      "6e60564bfe044c60a39d355aaef1bb07",
+      "91f531dd6b8e44dab0a9d02c5b56b135"
+    ]
+  },
+  "scope": "142 new exact/source bytes only; no record/table/product/runtime admission"
+}

@@ -1107,3 +1107,4 @@ TextRenderBufferView::FillColor
 GameStatisticsOwner::GameStatisticsOwner
 CreateStatistics42AF20
 GameStatisticsOwner::Load42B030
+InitializeStatisticsTail42ADD0
