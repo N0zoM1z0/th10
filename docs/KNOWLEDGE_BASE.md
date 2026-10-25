@@ -6135,3 +6135,16 @@ AllocateVm153/161 and InitializeVm207/217 remain independent nonexact dependenci
 Their exactness is not required by default for a fully identity/ABI-bound caller,
 but none of these rejected parents receives credit. See the [packet](evidence/gui-spell-notification-20261025/README.md).
 Park unsupported convention/inline/profile panels; source/denominator unchanged.
+
+## Enemy laser manager lifecycle — 2026-10-25
+
+The real GameManager-created laser manager has237 newly exact authored bytes
+(Initialize146/factory91); cleanup195 is source-only with four argument-setup
+ModRM differences. Its real424-byte base sentinel is constructed then erased
+by the45C manager memset; global publication is inside successful construction,
+while Initialize is still called after null allocation. Full51-byte failure
+text matters independently of the pointer-shaped instruction. Saved next must
+precede virtual slot4 Unlink; links are reread afterward, with no ANM unload.
+See [complete evidence and preservation limits](evidence/enemy-laser-manager-20261025/README.md).
+Standalone41C100 remains unclassified/no new credit; base98's old origin/mapping
+is unchanged. The factory diagnostic is not a recovered GameManager product graph.

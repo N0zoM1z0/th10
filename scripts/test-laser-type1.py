@@ -21,6 +21,11 @@ def run(args,out):
         text=re.sub(r'typedef\s+char\s+\w+\s*\[[\s\S]*?\]\s*;','// HOST native assertion omitted.',text)
         for cls,field in [('AnmVmTimerView','flags'),('PlayerTimerView','flags'),('PlayerOptionRuntime','flags80'),('PlayerConstructorFlagView','flags'),('EnemyInterpolationTimerView','flags')]:
             text=text.replace(f'{cls}() {{ {field} &= ~1u; }}',f'{cls}() : {field}(0) {{}}')
+        if name == 'EnemyLaser.hpp':
+            # HOST ONLY: storage sentinel avoids native erased-vptr base construction.
+            # This fixture does not validate manager/base ctor, layout or vtable.
+            assert text.count('EnemyLaserConstructionBaseView sentinel;') == 1
+            text=text.replace('EnemyLaserConstructionBaseView sentinel;', 'EnemyLaserCommonStorageView sentinel;')
         (out/name).write_text(text)
     def read(name):
         p=ROOT/'src'/name;hashes['src/'+name]=hashlib.sha256(p.read_bytes()).hexdigest();return p.read_text()

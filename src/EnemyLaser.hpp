@@ -3,6 +3,8 @@
 #include "AnmManager.hpp"
 #include "Player.hpp"
 #include <stddef.h>
+#include <string.h>
+#include "Chain.hpp"
 
 // These are explicit views of the single target47781C allocation. The narrow
 // lookup and known-slot virtual views preserve existing call boundaries; they
@@ -104,30 +106,6 @@ typedef char EnemyLaserCommonIdAt054[
     (offsetof(EnemyLaserCommonStorageView, id) == 0x54) ? 1 : -1];
 typedef char EnemyLaserPatternSizeIs034[
     (sizeof(EnemyLaserPatternRecordView) == 0x34) ? 1 : -1];
-// Complete storage view: +18 is sentinel.next, while +434 is the append tail.
-// The callback-chain prefix remains opaque here; GameManager keeps its existing
-// separately typed chain-prefix view at that boundary.
-struct EnemyLaserManagerStorageView
-{
-    unsigned char unknown000[0x10];
-    EnemyLaserCommonStorageView sentinel;
-    EnemyLaserCommonStorageView *tail;
-    int count;
-    unsigned int nextId;
-    PlayerFloat3 cancelPosition;
-    unsigned char unknown44C[0x458 - 0x44c];
-    AnmLoadedView *effectResource;
-};
-typedef char EnemyLaserManagerStorageLayout[
-    (sizeof(EnemyLaserManagerStorageView) == 0x45c &&
-     offsetof(EnemyLaserManagerStorageView, sentinel) == 0x10 &&
-     offsetof(EnemyLaserManagerStorageView, sentinel) +
-         offsetof(EnemyLaserCommonStorageView, next) == 0x18 &&
-     offsetof(EnemyLaserManagerStorageView, tail) == 0x434 &&
-     offsetof(EnemyLaserManagerStorageView, count) == 0x438 &&
-     offsetof(EnemyLaserManagerStorageView, nextId) == 0x43c &&
-     offsetof(EnemyLaserManagerStorageView, cancelPosition) == 0x440 &&
-     offsetof(EnemyLaserManagerStorageView, effectResource) == 0x458) ? 1 : -1];
 typedef char EnemyEffectWaitViewLayout[
     (offsetof(EnemyEffectWaitNode, next) == 0x08 &&
      offsetof(EnemyEffectWaitNode, state) == 0x0c &&
@@ -234,4 +212,73 @@ EnemyLaserRequestScratch *EnemyInitializeLaserConfig(
     EnemyLaserRequestScratch *request);
 unsigned int EnemyFireLaser(
     void *manager, EnemyLaserRequestScratch *request, int type);
+struct EnemyLaserConstructionBaseView
+{
+    virtual void RunCommands();
+    virtual int ApplyRequest(const EnemyLaserRequestScratch *request);
+    virtual int Update();
+    virtual int Draw();
+    virtual int Unlink();
+    virtual int Clear(int mode);
+    virtual int CheckBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
+    virtual int CheckCircle(EnemyLaserVectorView *, float, int);
+    virtual int CheckPoint(EnemyLaserVectorView *, float);
+    virtual void Motion0001();
+    virtual void Motion0010();
+    virtual void Motion0020();
+    virtual void Motion0040();
+    virtual void Motion0100();
+    virtual void Motion0080();
+    virtual void Bounce();
+    virtual void Motion100000();
+    virtual void Motion200000();
+    virtual void Motion4000000();
+
+    EnemyLaserCommonStorageView *previous;
+    EnemyLaserCommonStorageView *next;
+    unsigned int unknown00C;
+    AnmVmTimerView timer;
+    unsigned char unknown024[0x54 - 0x24];
+    unsigned int id;
+    EnemyLaserPatternRecordView patterns[18];
+    unsigned char unknown400[0x410 - 0x400];
+    AnmVmTimerView finalTimer;
+
+    EnemyLaserConstructionBaseView()
+    {
+        memset(this, 0, sizeof(*this));
+        timer.SetCurrent(0);
+    }
+};
+
+// Complete storage view: +18 is sentinel.next, while +434 is the append tail.
+// The recovered callback prefix shares this owner with GameManager's existing
+// separately typed chain-prefix view at that boundary.
+struct EnemyLaserManagerStorageView
+{
+    unsigned char unknown000[8];
+    th10::ChainElem *updateTask;
+    th10::ChainElem *drawTask;
+    EnemyLaserConstructionBaseView sentinel;
+    EnemyLaserCommonStorageView *tail;
+    int count;
+    unsigned int nextId;
+    PlayerFloat3 cancelPosition;
+    unsigned char unknown44C[0x458 - 0x44c];
+    AnmLoadedView *effectResource;
+
+    EnemyLaserManagerStorageView() { memset(this, 0, sizeof(*this)); g_EnemyLaserManager = reinterpret_cast<EnemyLaserManagerView *>(this); }
+    int Initialize();
+};
+typedef char EnemyLaserManagerStorageLayout[
+    (sizeof(EnemyLaserManagerStorageView) == 0x45c &&
+     offsetof(EnemyLaserManagerStorageView, sentinel) == 0x10 &&
+     offsetof(EnemyLaserManagerStorageView, sentinel) +
+         offsetof(EnemyLaserCommonStorageView, next) == 0x18 &&
+     offsetof(EnemyLaserManagerStorageView, tail) == 0x434 &&
+     offsetof(EnemyLaserManagerStorageView, count) == 0x438 &&
+     offsetof(EnemyLaserManagerStorageView, nextId) == 0x43c &&
+     offsetof(EnemyLaserManagerStorageView, cancelPosition) == 0x440 &&
+     offsetof(EnemyLaserManagerStorageView, effectResource) == 0x458) ? 1 : -1];
+
 #endif

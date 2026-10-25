@@ -1,0 +1,3117 @@
+[
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-common-tail-abi-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "cc27ac3974ed70482f8c57903a60c55213c859d91bf851b7f9237c6bc6417adb",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "4a00b54a3712ad0be7d491549a29e09114726d8fc37eb4e327c5c96cb250aca5",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "82f37e7c288c57ba2a439ed0562eba259c33ddf13183aa6cf98da4d0ab848878",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "87c2a8e25924f5e515ecd919c0a5a9f9e7ef8d5a9a92c82793346923015e2bc7",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "ab1d5a14558a30e851c44c857bb6482b78859c5fb91f2338ed07aab210dc89ef",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "16b8e4aa4942e9ff23846a7efbf2af76e61abebbc5280d689350a1427cda8ff6",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "eaa7ae762e3a666264cd23fba53303c6e635b9558c3d3acfbce80a85122d3e35",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "6706a3a4a2b97abcec12a86f7e4c99bf49cf892ea9871525176a2b44d1cc6270",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-spawn-tail-layout/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "6162ce4405e846ee3b09abbddb2e8316d58ea56b3063a7c528d5f06d6a2a6412",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "92d650933e7e3735d2225ea4680783d4f1391e8ac92f387eb660909b1f78cbe0",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "c94f77beb2f1cf5d1a88242a22e876758bd6a6d3a893286312861235d91b17b5",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-sentinel-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-operand-branch-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-source-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "ab1d5a14558a30e851c44c857bb6482b78859c5fb91f2338ed07aab210dc89ef",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "16b8e4aa4942e9ff23846a7efbf2af76e61abebbc5280d689350a1427cda8ff6",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "eaa7ae762e3a666264cd23fba53303c6e635b9558c3d3acfbce80a85122d3e35",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "6706a3a4a2b97abcec12a86f7e4c99bf49cf892ea9871525176a2b44d1cc6270",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-aggregate-lifetimes/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "3400a754dd182fb8be85fbf69e2ae41a71e37f59602c30e8d3ee496561dd3b82",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "b652c3c81e356f05ec9eb6cd9c988f73476675ad29451f4122b3764a76af8823",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "31c6e0ea0d25304986d246aed52208d5ce2a676e36b6266de1021be35a922945",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "41524aedfe5e054e2618d0b0034d4febd02d6f073e822acf123932ff0b18cdd3",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-radial-count/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-insertion-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "ab1d5a14558a30e851c44c857bb6482b78859c5fb91f2338ed07aab210dc89ef",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "16b8e4aa4942e9ff23846a7efbf2af76e61abebbc5280d689350a1427cda8ff6",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "eaa7ae762e3a666264cd23fba53303c6e635b9558c3d3acfbce80a85122d3e35",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "6706a3a4a2b97abcec12a86f7e4c99bf49cf892ea9871525176a2b44d1cc6270",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-tu-visibility/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "bb752665c6ece19f60b7f112ab2ae71859ef15aee80fa41f385a1439bc0be6d8",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "5d5e4f30e2de91a5f1accad45a4f246a84d0a80b684e92d7214137a09b89d390",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "dc7dc128c33d781396fbc1db289416607aa21b8e6f47360fab821625ccc9b4ac",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/pending-id-value/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "de2e9504848eff4470703e0d55e263149190b18dae12d1faf9bbd8949914fe69",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "9dcddc325413082df86742c06ecde5f247ebec577cb38eba908a338c45af0d8a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "bb752665c6ece19f60b7f112ab2ae71859ef15aee80fa41f385a1439bc0be6d8",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "5d5e4f30e2de91a5f1accad45a4f246a84d0a80b684e92d7214137a09b89d390",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "dc7dc128c33d781396fbc1db289416607aa21b8e6f47360fab821625ccc9b4ac",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "bb752665c6ece19f60b7f112ab2ae71859ef15aee80fa41f385a1439bc0be6d8",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "5d5e4f30e2de91a5f1accad45a4f246a84d0a80b684e92d7214137a09b89d390",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "dc7dc128c33d781396fbc1db289416607aa21b8e6f47360fab821625ccc9b4ac",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-circle-cancel/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-flag-controls/facts.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "3c0620e30c3357b39a2763089490bf5602724f1155895b15a0b99c924cb387a6",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "7621b789d32e0e49881b2484e2fb0fd8f25a30e3b8c7f2b3c94695ab0be706ee",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "800665c33103e14140ea75974c70ca090e1a5031a669d59d409cf09f1b518b2b",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "8e4f14845a4079e388b26f2c78590541648b227d68dcbcfe8e86134901622c75",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "b22ef7a8c3dfa9d955ac4853bfd464907f61b4c6c04fcbdb866f5666e316127f",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "1f62f5d4bb258fc53722310bc40f1f1a89b98de86d62fed5d6f8a6e60c856a8e",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "40a376c488d308613ab33001d5502b3a58021e3a38a66b97d8ffcafefab7fb30",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "dd25521d899c8efb999ba6cf021a312d2391352804a654c61db5abffb0d1ddde",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "79e265450d8937ddabb063ae659d212e95c5eaabe146247bd723311baf856a88",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "e701e68b0ebe57de1d46ac4c513b32e0c883921ef5c90575ec31569115b870f5",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "575d055e3469ebe3c3ffaccfe3b60aa8e0a9f0af7ca72c277d2c7fcac063bd12",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "6fab698b72615a492a7831a843494dcb948f3e27baf78b69c7d2f1f810a31abb",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "cdacd7e2ad2ded393a5a309216f43ceb211ac73dcf9892e30c686d5062867e48",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-laser-pattern-copy/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "c7d4d1afb8bfe18e679216950cd80575a77a7df068d66b47458fb066682ba7fa",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "538dbede2c4a344a97978dfeb93a1dde020f8efec92f1c4a5561f850e77ad623",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "e207933a8c229c38fdde21e28060fcb5550e1523ce0607a20a71d9c36614dc60",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "f26dd6276fc93ffb2359f46fde526a946e93e754311d111cae5f05a42e6bbd6d",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "8ff42fa5289729ce9edf764dad1d4bfa6d9fcf96d048c17fe6a400428f6e431c",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "3c0620e30c3357b39a2763089490bf5602724f1155895b15a0b99c924cb387a6",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "7621b789d32e0e49881b2484e2fb0fd8f25a30e3b8c7f2b3c94695ab0be706ee",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "800665c33103e14140ea75974c70ca090e1a5031a669d59d409cf09f1b518b2b",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "8e4f14845a4079e388b26f2c78590541648b227d68dcbcfe8e86134901622c75",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "b22ef7a8c3dfa9d955ac4853bfd464907f61b4c6c04fcbdb866f5666e316127f",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "1f62f5d4bb258fc53722310bc40f1f1a89b98de86d62fed5d6f8a6e60c856a8e",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "40a376c488d308613ab33001d5502b3a58021e3a38a66b97d8ffcafefab7fb30",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "dd25521d899c8efb999ba6cf021a312d2391352804a654c61db5abffb0d1ddde",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "79e265450d8937ddabb063ae659d212e95c5eaabe146247bd723311baf856a88",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "e701e68b0ebe57de1d46ac4c513b32e0c883921ef5c90575ec31569115b870f5",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "575d055e3469ebe3c3ffaccfe3b60aa8e0a9f0af7ca72c277d2c7fcac063bd12",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "6fab698b72615a492a7831a843494dcb948f3e27baf78b69c7d2f1f810a31abb",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "cdacd7e2ad2ded393a5a309216f43ceb211ac73dcf9892e30c686d5062867e48",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-residual-data-audit/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "c7d4d1afb8bfe18e679216950cd80575a77a7df068d66b47458fb066682ba7fa",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "bb752665c6ece19f60b7f112ab2ae71859ef15aee80fa41f385a1439bc0be6d8",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "5d5e4f30e2de91a5f1accad45a4f246a84d0a80b684e92d7214137a09b89d390",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "dc7dc128c33d781396fbc1db289416607aa21b8e6f47360fab821625ccc9b4ac",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-timer-sequencing/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-dispatcher-native/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "ab1d5a14558a30e851c44c857bb6482b78859c5fb91f2338ed07aab210dc89ef",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "16b8e4aa4942e9ff23846a7efbf2af76e61abebbc5280d689350a1427cda8ff6",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "eaa7ae762e3a666264cd23fba53303c6e635b9558c3d3acfbce80a85122d3e35",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "6706a3a4a2b97abcec12a86f7e4c99bf49cf892ea9871525176a2b44d1cc6270",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-flip-lowering/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "cc27ac3974ed70482f8c57903a60c55213c859d91bf851b7f9237c6bc6417adb",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "4a00b54a3712ad0be7d491549a29e09114726d8fc37eb4e327c5c96cb250aca5",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "82f37e7c288c57ba2a439ed0562eba259c33ddf13183aa6cf98da4d0ab848878",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "87c2a8e25924f5e515ecd919c0a5a9f9e7ef8d5a9a92c82793346923015e2bc7",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "c839b3794ec708eaea0fe47a9bec0d78f6bf60662c726e51510b64a1107a8a56",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "f89ae913f0121ac795d5e1ef3615bc735e61661f93e8d4850e53cc1745f7c7a7",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "93e4af3d4d86602bcfdb5a9de70056ce59330cd6912c8e7c6b63d125027feccf",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "de1de777f774b88cefd2d7a43f3e1c322a370627064d9959f138463a54d64bc1",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/enemy-motion-lifetime/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "ab1d5a14558a30e851c44c857bb6482b78859c5fb91f2338ed07aab210dc89ef",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-2.log",
+    "expected": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+    "actual": "f284e3ba098e28210304e1a1221fbf83ba2434df93bbde8c6961bcb30f4c103f",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "16b8e4aa4942e9ff23846a7efbf2af76e61abebbc5280d689350a1427cda8ff6",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "eaa7ae762e3a666264cd23fba53303c6e635b9558c3d3acfbce80a85122d3e35",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-3.log",
+    "expected": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "actual": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-attempt-1.log",
+    "expected": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "actual": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.c",
+    "expected": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "actual": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+    "equal": true
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "6706a3a4a2b97abcec12a86f7e4c99bf49cf892ea9871525176a2b44d1cc6270",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-float-service-context/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "bb752665c6ece19f60b7f112ab2ae71859ef15aee80fa41f385a1439bc0be6d8",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "5d5e4f30e2de91a5f1accad45a4f246a84d0a80b684e92d7214137a09b89d390",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "dc7dc128c33d781396fbc1db289416607aa21b8e6f47360fab821625ccc9b4ac",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/anm-child-creator-context/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/chain-source-closure/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "bb752665c6ece19f60b7f112ab2ae71859ef15aee80fa41f385a1439bc0be6d8",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "5d5e4f30e2de91a5f1accad45a4f246a84d0a80b684e92d7214137a09b89d390",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "dc7dc128c33d781396fbc1db289416607aa21b8e6f47360fab821625ccc9b4ac",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/player-pending3-route/native-summary.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+    "expected": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+    "actual": "03ce5f90c465e9e712936d19dfc863f2709bf39b31b9399dc4dbcde6d80e0201",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.map",
+    "expected": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+    "actual": "dcb32bce9a9d1553f610bb1f3ce64d6800794fb12f0ab8e48e21d8b1c3c22228",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+    "expected": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+    "actual": "b10e201cff826998a5dc583305f06c009769ec81c51ffc7cf5deb19325dfa5e2",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.exe",
+    "expected": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+    "actual": "983647c94a361a8a07b9acb2305615e9c10c482790a8177f8aa1ff91c0a2d4e0",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+    "expected": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+    "actual": "c8c3383ca545e48dff294d7395eef8a0cf6dd2bd4148dcab4abe52fb84e7f609",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+    "expected": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+    "actual": "e40c8f04630c4eeac75cf9da78419f06b35900b318191cc24593acb9e065aada",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+    "expected": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+    "actual": "ccb05cb206f50c92d779391967fe2e37bd3903032b8e175db6d07bce4541ee04",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+    "expected": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+    "actual": "3569176914a4882b05f231d4db3c28ae6154872a1d577ff789a84b302141f332",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+    "expected": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+    "actual": "cb33c072c0517fdf52a53fe71302e59e880bc8b82001298f4113e195dd667067",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+    "expected": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+    "actual": "d016c32ff1993b79914f1d6720e8a53a0b5efd9d5f3ca801cc8bcf855fdeba54",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-aliases.rsp",
+    "expected": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "actual": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/link-anchors.obj",
+    "expected": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+    "actual": "1f6abc4d4225af2b30c35512fbb2a6692a8f8c0c735c8a6954055b5095aa5b48",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+    "expected": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+    "actual": "867eba13108ee4fc086c7c4b7c64685ce65931f04a33f3de760871fd6f6ea513",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/source.pdb",
+    "expected": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+    "actual": "dbd439e68daa23317b023406c9e69a01bdf210ce93c28148df4b0ad7c293d6d1",
+    "equal": false
+  },
+  {
+    "document": "docs/evidence/ecl-run-layout-controls/evidence.json",
+    "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+    "expected": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+    "actual": "c3fc6bf222b4998c93153f56f3bb66b425d9acdeb8089b2bdf03647f44f72494",
+    "equal": false
+  }
+]

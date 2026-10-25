@@ -1119,3 +1119,6 @@ GuiView::GuiView
 GuiView::Initialize
 GuiView::LoadData
 ScriptViewerCreateGui
+EnemyLaserManagerStorageView::Initialize
+GameCleanupLinked41C1C0
+GameCreateOwner41C290
