@@ -17,6 +17,7 @@
 #include "StageScript.hpp"
 #include "GameStageDescriptor.hpp"
 #include "ScriptViewer.hpp"
+#include "Sound.hpp"
 
 // Natural source candidate adapted from th10-decomphelp-forN0.  The bounded
 // OnDraw body is retained here only after direct TH10 IDA boundary review;
@@ -105,7 +106,6 @@ extern EnemyManagerView *g_EnemyManager;
 // Target47770C uses the canonical g_GuiView declaration in Gui.hpp.
 extern GameStageUpdateView *g_GameStageUpdate;          // 0x477848
 extern unsigned char g_GameWorkerState[];              // 0x492254
-extern unsigned char g_GameMusicState[];               // 0x492590
 extern unsigned char g_GameSoundState[];               // 0x491C28
 extern unsigned int g_GameConfigurationFlags;          // 0x491FF4
 extern unsigned int g_GameConfigurationFlags491D78;
@@ -129,7 +129,6 @@ extern void GameResetAnimationOwner(GameChainOwnerView *owner);
 extern void __stdcall GameClearEnemyVms(EnemyManagerView *manager);
 extern void GameClearLinkedObjects(GameChainOwnerView *owner);
 extern void __stdcall GamePlayStageMusic(int channel, int musicIndex);
-extern void GameAssignMusic(unsigned char *music, const char *name, int mode, int value);
 extern void __stdcall GameDestroyMenu(GameMenuView *menu);
 extern void GameEmitDemoEffect(int script, int type, int duration, int x, int y, int z);
 extern void GameQueueSound(unsigned char *sound, int soundId);
@@ -255,7 +254,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
     {
         manager->m_Flags &= ~0x800;
         ResetGameStage();
-        GameAssignMusic(g_GameMusicState, "dummy",
+        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand("dummy",
             (g_GameConfigurationFlags491D78 & 0x10) != 0 ? 4 : 3, 0);
         GamePlayStageMusic(0, g_GameStageUpdate->musicIndex);
         GameEffectUpdateView *effect = g_GameEffectUpdate;

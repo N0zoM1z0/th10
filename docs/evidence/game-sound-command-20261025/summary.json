@@ -1,0 +1,435 @@
+{
+  "baseline_head": "de0a0593ddda812ee485e8c54be856d43f973946",
+  "canonical_recipes_unchanged": true,
+  "canonical_replays": {
+    "faith_retry_exit": 0,
+    "initial_aggregate_exit": 1,
+    "matched_bytes": 10976,
+    "source_pins_preserved": true,
+    "unit_count": 46,
+    "units": [
+      {
+        "artifact": "build/match/Sound.obj",
+        "artifact_sha256": "62c17e08410af1c71f32749f963349f7b772be157ea86f6980e2c5a653727464",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 34,
+        "unit": "sound-start-load-thread"
+      },
+      {
+        "artifact": "build/match-linked/ZWaveStop/source.exe",
+        "artifact_sha256": "41b06eef05c5254e7a3b24aba1fc7cec6db3bfd3e3c23378e4e5779f7bc83e99",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 82,
+        "unit": "zwave-csound-stop"
+      },
+      {
+        "artifact": "build/match-linked/SoundStopBgm/source.exe",
+        "artifact_sha256": "14de28cf62374f54203185efc4bf00927fd8782f304cb5706b49e57374e99598",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 176,
+        "unit": "sound-player-stop-bgm"
+      },
+      {
+        "artifact": "build/match-linked/SoundReopenBgm/source.exe",
+        "artifact_sha256": "cc5053d1471565a912966860c952e04b5ea4f1024ed64f3d6fc444b1b1723c6a",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 55,
+        "unit": "sound-player-reopen-bgm"
+      },
+      {
+        "artifact": "build/match-linked/ZWaveReopen/source.exe",
+        "artifact_sha256": "d22114b5dd62f99aa63f8f3df1e3b010d877b5c87961d4adab6b29f9d8d5fe74",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 78,
+        "unit": "zwave-wave-file-reopen"
+      },
+      {
+        "artifact": "build/match-linked/ZWaveReopen/source.exe",
+        "artifact_sha256": "d22114b5dd62f99aa63f8f3df1e3b010d877b5c87961d4adab6b29f9d8d5fe74",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 194,
+        "unit": "zwave-wave-file-reset"
+      },
+      {
+        "artifact": "build/match-linked/SoundInitBuffers/source.exe",
+        "artifact_sha256": "3821904eb9ef7d96313d94aa3b04eb69293b1b95d6313eda2da2a6fb626a616a",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 338,
+        "unit": "streaming-sound-init-buffers"
+      },
+      {
+        "artifact": "build/match-linked/SoundInitBuffers/source.exe",
+        "artifact_sha256": "3821904eb9ef7d96313d94aa3b04eb69293b1b95d6313eda2da2a6fb626a616a",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 189,
+        "unit": "sound-bgm-player-thread"
+      },
+      {
+        "artifact": "build/match-linked/SoundJoinRealMain/source.exe",
+        "artifact_sha256": "52eab82a8b6fbb53a3dd3f8be24f7ac35ac1537b08972cd532f2912a85806279",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 175,
+        "unit": "sound-join-worker-threads"
+      },
+      {
+        "artifact": "build/match-linked/SoundJoinRealMain/source.exe",
+        "artifact_sha256": "52eab82a8b6fbb53a3dd3f8be24f7ac35ac1537b08972cd532f2912a85806279",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 301,
+        "unit": "sound-release-owner"
+      },
+      {
+        "artifact": "build/match-linked/SoundSetupRealMain/source.exe",
+        "artifact_sha256": "c9d6cedb7114fbb339a5d8935d2312f29ad23532f28a7fca2fc7768f403abcbd",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 57,
+        "unit": "sound-setup-thread"
+      },
+      {
+        "artifact": "build/match-linked/SoundSetupRealMain/source.exe",
+        "artifact_sha256": "c9d6cedb7114fbb339a5d8935d2312f29ad23532f28a7fca2fc7768f403abcbd",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 71,
+        "unit": "sound-find-wave-chunk"
+      },
+      {
+        "artifact": "build/match-linked/FrontEndOptionsRefresh/source.exe",
+        "artifact_sha256": "fca179b854687129bcee23260b7286694423f08257ad74dd138ea15f3ddc2069",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 3999,
+        "unit": "frontend-options-refresh"
+      },
+      {
+        "artifact": "build/match-linked/FrontEndKeyConfigDisplay/source.exe",
+        "artifact_sha256": "93678e6f18c02eed20edcdff2baea2d31aac309d947dc55bdace4ed9f59fb6b0",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 2452,
+        "unit": "frontend-keyconfig-display"
+      },
+      {
+        "artifact": "build/match-linked/FrontEndKeyConfigDisplay/source.exe",
+        "artifact_sha256": "93678e6f18c02eed20edcdff2baea2d31aac309d947dc55bdace4ed9f59fb6b0",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 93,
+        "unit": "frontend-practice-unlock"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 134,
+        "unit": "transition-draw-screen"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 68,
+        "unit": "transition-draw-playfield"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 68,
+        "unit": "transition-draw-dim-playfield"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 74,
+        "unit": "transition-draw-pulse"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 43,
+        "unit": "chain-register-calc"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 43,
+        "unit": "chain-register-draw"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 93,
+        "unit": "transition-fade-out"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 68,
+        "unit": "transition-draw-dim-screen"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 82,
+        "unit": "transition-effect-factory"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 396,
+        "unit": "transition-effect-initialize"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 154,
+        "unit": "transition-pulse"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 175,
+        "unit": "transition-dim"
+      },
+      {
+        "artifact": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+        "artifact_sha256": "4f6845eb7e687bdc33afac4ecd91afb070e2b433e80c1a79ce5db7424e9a853f",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 70,
+        "unit": "frontend-find-script"
+      },
+      {
+        "artifact": "build/match-linked/Ending/source.exe",
+        "artifact_sha256": "bcea741302b57d14cc4f09035bef0d9e826319ee05539e4d0928a70af4356fb5",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 99,
+        "unit": "ending-create"
+      },
+      {
+        "artifact": "build/match-linked/Ending/source.exe",
+        "artifact_sha256": "bcea741302b57d14cc4f09035bef0d9e826319ee05539e4d0928a70af4356fb5",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 18,
+        "unit": "ending-delete"
+      },
+      {
+        "artifact": "build/match-linked/Ending/source.exe",
+        "artifact_sha256": "bcea741302b57d14cc4f09035bef0d9e826319ee05539e4d0928a70af4356fb5",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 111,
+        "unit": "ending-update"
+      },
+      {
+        "artifact": "build/match-linked/Ending/source.exe",
+        "artifact_sha256": "bcea741302b57d14cc4f09035bef0d9e826319ee05539e4d0928a70af4356fb5",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 10,
+        "unit": "ending-update-callback"
+      },
+      {
+        "artifact": "build/match-linked/Ending/source.exe",
+        "artifact_sha256": "bcea741302b57d14cc4f09035bef0d9e826319ee05539e4d0928a70af4356fb5",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 93,
+        "unit": "ending-text-tick"
+      },
+      {
+        "artifact": "build/match-linked/Ending/source.exe",
+        "artifact_sha256": "bcea741302b57d14cc4f09035bef0d9e826319ee05539e4d0928a70af4356fb5",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 18,
+        "unit": "ending-load-animation-callback"
+      },
+      {
+        "artifact": "build/match-linked/EndingLoadScript/source.exe",
+        "artifact_sha256": "4cadf129f8884387efcdffa5f5a3157e19bafe933d3a78c295a5802e7bb0b22e",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 106,
+        "unit": "ending-load-script"
+      },
+      {
+        "artifact": "build/match-linked/ReplayManagerDestroy/source.exe",
+        "artifact_sha256": "b307923511ff97f0c8fde3f44807c5c4c3abce0d78b211126f16d568903737ff",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 18,
+        "unit": "replay-manager-destroy"
+      },
+      {
+        "artifact": "build/match-linked/ReplayManagerDestroy/source.exe",
+        "artifact_sha256": "b307923511ff97f0c8fde3f44807c5c4c3abce0d78b211126f16d568903737ff",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 181,
+        "unit": "replay-manager-load"
+      },
+      {
+        "artifact": "build/match-linked/ReplayManagerDestroy/source.exe",
+        "artifact_sha256": "b307923511ff97f0c8fde3f44807c5c4c3abce0d78b211126f16d568903737ff",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 182,
+        "unit": "replay-draw-fps"
+      },
+      {
+        "artifact": "build/match-linked/ReplayManagerDestroy/source.exe",
+        "artifact_sha256": "b307923511ff97f0c8fde3f44807c5c4c3abce0d78b211126f16d568903737ff",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 58,
+        "unit": "replay-control-playback-frames"
+      },
+      {
+        "artifact": "build/match-linked/ReplayManagerDestroy/source.exe",
+        "artifact_sha256": "b307923511ff97f0c8fde3f44807c5c4c3abce0d78b211126f16d568903737ff",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 28,
+        "unit": "replay-draw-fps-callback"
+      },
+      {
+        "artifact": "build/match-linked/ReplayManagerDestroy/source.exe",
+        "artifact_sha256": "b307923511ff97f0c8fde3f44807c5c4c3abce0d78b211126f16d568903737ff",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 69,
+        "unit": "frontend-has-any-clear"
+      },
+      {
+        "artifact": "build/match-linked/GameManagerOnDraw/source.exe",
+        "artifact_sha256": "e165cb21fd4d4bf85d8d89b1aec7c3154ae7913ad48ef18a46807263fba23ce1",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 31,
+        "unit": "decomphelp-game-manager-on-draw"
+      },
+      {
+        "artifact": "build/match-linked/GameStageTransition/source.exe",
+        "artifact_sha256": "5f6f907832a9b53f43c0c256cdfc2f8778d28658aaa3384533e2c396997ed112",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 7,
+        "unit": "game-manager-update-callback"
+      },
+      {
+        "artifact": "build/match-linked/GameStageTransition/source.exe",
+        "artifact_sha256": "5f6f907832a9b53f43c0c256cdfc2f8778d28658aaa3384533e2c396997ed112",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 28,
+        "unit": "game-manager-mark-chains"
+      },
+      {
+        "artifact": "build/match-linked/GameStageTransition/source.exe",
+        "artifact_sha256": "5f6f907832a9b53f43c0c256cdfc2f8778d28658aaa3384533e2c396997ed112",
+        "result": "exact",
+        "scope": "Original cold aggregate artifact; separately recovered comparison",
+        "size": 92,
+        "unit": "game-stage-transition-delay"
+      },
+      {
+        "artifact": "build/match-linked/GameFaithUpdate/source.exe",
+        "artifact_sha256": "27abfb15f8c3711a963d77ccd669d66c03f3b149e2b114abd1031164ce03581b",
+        "result": "exact",
+        "scope": "Separate successful cold retry; original aggregate failed at Wine path conversion",
+        "size": 65,
+        "unit": "game-update-faith-decay"
+      }
+    ]
+  },
+  "ci": {
+    "exit": 0,
+    "finished_utc": "2026-10-25T04:58:15.678415+00:00",
+    "frozen_inputs": 1499,
+    "preserved": true,
+    "stages": 112,
+    "verified_utc": "2026-10-25T04:59:48Z"
+  },
+  "diagnostic": {
+    "baseline_four_tu_parent_size": 1572,
+    "complete_sound_differential_bytes": 5114,
+    "complete_sound_differential_owners": 26,
+    "optional_exact": 4,
+    "optional_failed": 4,
+    "parent_target_size": 1544,
+    "proposal_four_tu_parent_size": 1569,
+    "queue_native_size": 90,
+    "queue_target_size": 104,
+    "required_fields": 14,
+    "required_guards_bytes": 453,
+    "source_adoption_independent_review_passed": true
+  },
+  "evidence": {
+    ".analysis/gpt-dots/game-sound-adoption-20261025/ci-freeze.json": "2d7cde23bd8d8ccaee720fc603aadbec1c9fae070123e7609f725795b2e53176",
+    ".analysis/gpt-dots/game-sound-adoption-20261025/ci.log": "f0980710831a2f4dc6c98c1a5e919ce9bcdafb60c696fe3b9542cd21ff9ef8fa",
+    ".analysis/gpt-dots/game-sound-adoption-20261025/faith-retry.json": "1f8c5a5fa1d282210e16e999b4d1ea49f23136f7a473ee9dba431d0aecdcbf3e",
+    ".analysis/gpt-dots/game-sound-adoption-20261025/freeze.json": "018793632edbf633561bb6b7cdd54235aed15d0071a7d8e87e07558744ff4def",
+    ".analysis/gpt-dots/game-sound-adoption-20261025/music-room-host.log": "1eb9da85c49f2f0a0fd64d55c865ce8a2a64f232d662373232f5d5357133a01f",
+    ".analysis/gpt-dots/game-sound-adoption-20261025/recovered-45-comparisons.json": "d3c0b0b69c7ec47cb1fe576d2faed6ffe5927e27c92756929584c89256d98c06",
+    ".analysis/gpt-dots/game-sound-adoption-20261025/replay.json": "7815e89c7cfbed4f61cd3d7f93896b940474f6d207dbf45f44449338baa1c305",
+    ".analysis/gpt-dots/game-sound-adoption-20261025/result-transition-host.json": "9af6966536459d9b0c2ee3197bec0793788c027938da3f9d0ad2c5a247a30567",
+    ".analysis/gpt-dots/game-sound-command-native-20261025/independent-review/receipt.json": "faf60becc043d2c987aa61fb30cf6360ddecfaf0aaf3e6bbc32345f4153110d4",
+    ".analysis/gpt-dots/game-sound-command-native-20261025/receipt.json": "a88eca91e26b78d3904f526a7bfe520c3f68d84de925dc7cb4e6011a60338e5a",
+    ".analysis/gpt-dots/game-sound-graph-baseline-20261025/independent-review/receipt.json": "a96ef1bc4ab428446c7625fcce2ae8720dce31a77cb7702b396e32a77073ad1b",
+    ".analysis/gpt-dots/game-sound-graph-baseline-20261025/receipt.json": "e49b8fc527ed39fd24ab2b8b93ac68e9131e7d7490cd56ca5848c1917339a275"
+  },
+  "host": {
+    "music_room": "3 tests pass",
+    "result_transition": "Baseline plus 32 assertion-identified mutations pass"
+  },
+  "new_exact_credit": 0,
+  "new_source_credit": 0,
+  "source_hashes": {
+    "scripts/test-result-transition.py": "8c4960db8601f37b73556a9db6a63aed0c64a5fb1e805152f2751bd90e86547b",
+    "src/GameManager.cpp": "272f7522ead73a5e446b4580350bcf612b675abdb00f13113aefbb54b5764b42",
+    "src/Sound.cpp": "0fece6ced771b6bd9871b736669fac04b31c6ba49d1314be82fab39b31da5102",
+    "src/Sound.hpp": "7cf5dcc2362427a8e276c08f25a4db4d9d6152f42751320d6e6243c1e7bb9c49"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "unknown": [
+    "original class and production TU/profile ownership",
+    "Sound storage lifetime and alias validity",
+    "complete Windows i386 audio/product/runtime closure"
+  ]
+}

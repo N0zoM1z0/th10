@@ -197,7 +197,7 @@ def main():
         ('AnmManager.hpp', 'AnmVmTimerView'), ('AnmVmId.hpp', 'AnmVmIdView'),
         ('FrontEnd.hpp', 'FrontEndCursorView'), ('ResultMenu.hpp', 'ResultMenuView'),
         ('FrontEnd.cpp', 'ResultGameChainView'), ('FrontEnd.cpp', 'ResultGameManagerView'),
-        ('Sound.cpp', 'SoundPlayerCommand'), ('Sound.cpp', 'SoundPlayerView')]
+        ('Sound.hpp', 'SoundPlayerCommand'), ('Sound.hpp', 'SoundPlayerView')]
     structure_parts = []
     for file,name in structs:
         body = extract(source(file),name,True)

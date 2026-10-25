@@ -4,7 +4,20 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
-Current [Faith update checkpoint](evidence/game-faith-update-20261025/README.md)
+Current [Sound command declaration checkpoint](evidence/game-sound-command-20261025/README.md)
+shares the unchanged SoundPlayer declarations and replaces GameManager's music
+facade with the real QueueCommand member on 0x492590 (not Supervisor 0x491C28).
+First complete four-TU comparison is parent 1569/1544 and QueueCommand 90/104,
+both nonexact; seven required guards 453/all 14 pass. Graph-only independent
+review preserves all 26 Sound contributions / 5114 bytes and proves four optional
+same-context Sound failures preexist the change. Original canonical 41 Sound
+and five GameManager units all pass 10976 bytes after separate recovery of 45
+successful cold artifacts and a successful fresh Faith retry. The original
+aggregate exit 1 from Wine path-conversion/LNK1104 is retained, not relabeled.
+Host baseline plus 32 mutation controls and music-room 3 tests pass. All 112 CI
+stages pass, verified 2026-10-25 04:59:48 UTC, with 1499 frozen inputs unchanged.
+No recipe migration, new exact/source credit or phase-gate promotion follows.
+Prior [Faith update checkpoint](evidence/game-faith-update-20261025/README.md)
 has applied natural source and a fresh canonical **65/all 1 exact** replay for
 existing authored owner 0x418A00. Independent same-image review preserves
 Faith plus six existing guards, 453/all 14; original transition 127/all 2 and
@@ -62,7 +75,7 @@ fail, and the 36-guard family drops from 28 to 25 exact with six unchanged
 unavailable owners. No profile adoption. Faith is the separate maintained
 three-TU checkpoint above, without Stage/score integration.
 Current GameManager.cpp SHA-256:
-`2edb5631c3c6bdb3b960cb2110213cc55aa167e0c51f7a59570ed237c377c543`.
+`272f7522ead73a5e446b4580350bcf612b675abdb00f13113aefbb54b5764b42`.
 WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
 at **97a206f** (Sound) and **7b85dd3** (Chain). WinMain remains parked against
 flag/noinline matrices. After clear/delete checkpoint **9fb5a3d**, three
@@ -148,7 +161,7 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
-| GameManagerUpdateBody / target 1544 | Current Faith three-TU 1572; prior maintained two-TU 1575; ignored score 1559 and Stage 1605; all nonexact |
+| GameManagerUpdateBody / target 1544 | Sound declaration-closed four-TU 1569; current canonical Faith three-TU also 1569 (different context); prior 1572; all nonexact |
 | GameUpdateFaithDecay / target 65 | Fresh canonical exact 65/all 1; source and exact admission complete, +65 authored exact bytes |
 | GameUpdateGui / target 671 | Ignored first/shared models 734/730 bytes; not maintained/admitted, nonexact |
 | GameAddLives / ItemAddLives / target 141 | Ignored first/shared models 194/189 bytes; not maintained/admitted, nonexact |
