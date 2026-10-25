@@ -1,0 +1,2452 @@
+{
+  "Initialize": {
+    "symbol": "?Initialize@EnemyLaserManagerStorageView@@QAEHXZ",
+    "target_address": 4309280,
+    "target_size": 146,
+    "candidate_size": 146,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 2,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4791312,
+        "instruction_end": null
+      },
+      {
+        "offset": 7,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4640136,
+        "instruction_end": null
+      },
+      {
+        "offset": 17,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4485760,
+        "instruction_end": 21
+      },
+      {
+        "offset": 32,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4640084,
+        "instruction_end": null
+      },
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4673392,
+        "instruction_end": null
+      },
+      {
+        "offset": 42,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4503568,
+        "instruction_end": 46
+      },
+      {
+        "offset": 56,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4310144,
+        "instruction_end": null
+      },
+      {
+        "offset": 61,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4497104,
+        "instruction_end": 65
+      },
+      {
+        "offset": 72,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4791268,
+        "instruction_end": null
+      },
+      {
+        "offset": 86,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4496096,
+        "instruction_end": 90
+      },
+      {
+        "offset": 91,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4310240,
+        "instruction_end": null
+      },
+      {
+        "offset": 99,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4497104,
+        "instruction_end": 103
+      },
+      {
+        "offset": 111,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4791268,
+        "instruction_end": null
+      },
+      {
+        "offset": 125,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4496240,
+        "instruction_end": 129
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 2,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309508,
+        "candidate_symbols": [
+          "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "_th10_ltcg_probe_anchor_0123"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "addend": 0,
+            "target": 4791312
+          }
+        ],
+        "replay_target": 4791312
+      },
+      {
+        "offset": 7,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4305056,
+        "candidate_symbols": [
+          "??_C@_0L@JHPPDGCE@bullet?4anm?$AA@"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "??_C@_0L@JHPPDGCE@bullet?4anm?$AA@",
+            "addend": 0,
+            "target": 4640136
+          }
+        ],
+        "replay_target": 4640136
+      },
+      {
+        "offset": 17,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4243200,
+        "candidate_symbols": [
+          "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z"
+        ],
+        "instruction_end": 21,
+        "source_roles": [
+          {
+            "symbol": "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z",
+            "addend": 0,
+            "target": 4485760
+          }
+        ],
+        "replay_target": 4485760
+      },
+      {
+        "offset": 32,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4305004,
+        "candidate_symbols": [
+          "??_C@_0DD@LJIGBHIF@?$JDG?$JCe?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "??_C@_0DD@LJIGBHIF@?$JDG?$JCe?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+            "addend": 0,
+            "target": 4640084
+          }
+        ],
+        "replay_target": 4640084
+      },
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309728,
+        "candidate_symbols": [
+          "?g_GameErrorContext@th10@@3UGameErrorContext@1@A",
+          "_th10_ltcg_probe_anchor_0178"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_GameErrorContext@th10@@3UGameErrorContext@1@A",
+            "addend": 0,
+            "target": 4673392
+          }
+        ],
+        "replay_target": 4673392
+      },
+      {
+        "offset": 42,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4300304,
+        "candidate_symbols": [
+          "?Log@GameErrorContext@th10@@QAAPADPADZZ"
+        ],
+        "instruction_end": 46,
+        "source_roles": [
+          {
+            "symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+            "addend": 0,
+            "target": 4503568
+          }
+        ],
+        "replay_target": 4503568
+      },
+      {
+        "offset": 56,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309232,
+        "candidate_symbols": [
+          "?EnemyLaserUpdateCallback@@YIHPAX@Z",
+          "_th10_ltcg_probe_anchor_0054"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?EnemyLaserUpdateCallback@@YIHPAX@Z",
+            "addend": 0,
+            "target": 4310144
+          }
+        ],
+        "replay_target": 4310144
+      },
+      {
+        "offset": 61,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4298944,
+        "candidate_symbols": [
+          "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z"
+        ],
+        "instruction_end": 65,
+        "source_roles": [
+          {
+            "symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+            "addend": 0,
+            "target": 4497104
+          }
+        ],
+        "replay_target": 4497104
+      },
+      {
+        "offset": 72,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309528,
+        "candidate_symbols": [
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "_th10_ltcg_probe_anchor_0128"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+            "addend": 0,
+            "target": 4791268
+          }
+        ],
+        "replay_target": 4791268
+      },
+      {
+        "offset": 86,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4299024,
+        "candidate_symbols": [
+          "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+        ],
+        "instruction_end": 90,
+        "source_roles": [
+          {
+            "symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+            "addend": 0,
+            "target": 4496096
+          }
+        ],
+        "replay_target": 4496096
+      },
+      {
+        "offset": 91,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309228,
+        "candidate_symbols": [
+          "?EnemyLaserDrawCallback@@YIHPAX@Z",
+          "_th10_ltcg_probe_anchor_0053"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?EnemyLaserDrawCallback@@YIHPAX@Z",
+            "addend": 0,
+            "target": 4310240
+          }
+        ],
+        "replay_target": 4310240
+      },
+      {
+        "offset": 99,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4298944,
+        "candidate_symbols": [
+          "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z"
+        ],
+        "instruction_end": 103,
+        "source_roles": [
+          {
+            "symbol": "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+            "addend": 0,
+            "target": 4497104
+          }
+        ],
+        "replay_target": 4497104
+      },
+      {
+        "offset": 111,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309528,
+        "candidate_symbols": [
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "_th10_ltcg_probe_anchor_0128"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+            "addend": 0,
+            "target": 4791268
+          }
+        ],
+        "replay_target": 4791268
+      },
+      {
+        "offset": 125,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4299168,
+        "candidate_symbols": [
+          "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+        ],
+        "instruction_end": 129,
+        "source_roles": [
+          {
+            "symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+            "addend": 0,
+            "target": 4496240
+          }
+        ],
+        "replay_target": 4496240
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 29,
+        "size": 2,
+        "target_offset": 53
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 29,
+        "size": 2,
+        "target_offset": 53
+      }
+    ],
+    "ordinary_differences": [],
+    "literal_checks": [
+      {
+        "target": 4640136,
+        "symbol": "??_C@_0L@JHPPDGCE@bullet?4anm?$AA@",
+        "expected_hex": "62756c6c65742e616e6d00",
+        "candidate_hex": "62756c6c65742e616e6d00",
+        "equal": true
+      },
+      {
+        "target": 4640084,
+        "symbol": "??_C@_0DD@LJIGBHIF@?$JDG?$JCe?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL@",
+        "expected_hex": "934792658366815b835e82aa8ca982c282a982e882dc82b982f181428366815b835e82aa89f382ea82c482a282dc82b70d0a00",
+        "candidate_hex": "934792658366815b835e82aa8ca982c282a982e882dc82b982f181428366815b835e82aa89f382ea82c482a282dc82b70d0a00",
+        "equal": true
+      }
+    ],
+    "exact": true
+  },
+  "Cleanup": {
+    "symbol": "?GameCleanupLinked41C1C0@@YGXPAUGameChainOwnerView@@@Z",
+    "target_address": 4309440,
+    "target_size": 195,
+    "candidate_size": 195,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 7,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4612272,
+        "instruction_end": null
+      },
+      {
+        "offset": 14,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4612276,
+        "instruction_end": null
+      },
+      {
+        "offset": 27,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4791268,
+        "instruction_end": null
+      },
+      {
+        "offset": 34,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4792948,
+        "instruction_end": null
+      },
+      {
+        "offset": 42,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      },
+      {
+        "offset": 51,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4497248,
+        "instruction_end": 55
+      },
+      {
+        "offset": 56,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4792948,
+        "instruction_end": null
+      },
+      {
+        "offset": 64,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      },
+      {
+        "offset": 79,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4791268,
+        "instruction_end": null
+      },
+      {
+        "offset": 86,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4792948,
+        "instruction_end": null
+      },
+      {
+        "offset": 94,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      },
+      {
+        "offset": 103,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4497248,
+        "instruction_end": 107
+      },
+      {
+        "offset": 108,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4792948,
+        "instruction_end": null
+      },
+      {
+        "offset": 116,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      },
+      {
+        "offset": 165,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4531361,
+        "instruction_end": 169
+      },
+      {
+        "offset": 183,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4683804,
+        "instruction_end": null
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 7,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309908,
+        "candidate_symbols": [
+          "__imp__EnterCriticalSection@4",
+          "_th10_ltcg_probe_anchor_0223"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "__imp__EnterCriticalSection@4",
+            "addend": 0,
+            "target": 4612272
+          }
+        ],
+        "replay_target": 4612272
+      },
+      {
+        "offset": 14,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309912,
+        "candidate_symbols": [
+          "__imp__LeaveCriticalSection@4",
+          "_th10_ltcg_probe_anchor_0224"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "__imp__LeaveCriticalSection@4",
+            "addend": 0,
+            "target": 4612276
+          }
+        ],
+        "replay_target": 4612276
+      },
+      {
+        "offset": 27,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309528,
+        "candidate_symbols": [
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "_th10_ltcg_probe_anchor_0128"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+            "addend": 0,
+            "target": 4791268
+          }
+        ],
+        "replay_target": 4791268
+      },
+      {
+        "offset": 34,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311412,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1612,
+            "target": 4792948
+          }
+        ],
+        "replay_target": 4792948
+      },
+      {
+        "offset": 42,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      },
+      {
+        "offset": 51,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4299312,
+        "candidate_symbols": [
+          "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z"
+        ],
+        "instruction_end": 55,
+        "source_roles": [
+          {
+            "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+            "addend": 0,
+            "target": 4497248
+          }
+        ],
+        "replay_target": 4497248
+      },
+      {
+        "offset": 56,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311412,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1612,
+            "target": 4792948
+          }
+        ],
+        "replay_target": 4792948
+      },
+      {
+        "offset": 64,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      },
+      {
+        "offset": 79,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309528,
+        "candidate_symbols": [
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "_th10_ltcg_probe_anchor_0128"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+            "addend": 0,
+            "target": 4791268
+          }
+        ],
+        "replay_target": 4791268
+      },
+      {
+        "offset": 86,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311412,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1612,
+            "target": 4792948
+          }
+        ],
+        "replay_target": 4792948
+      },
+      {
+        "offset": 94,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      },
+      {
+        "offset": 103,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4299312,
+        "candidate_symbols": [
+          "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z"
+        ],
+        "instruction_end": 107,
+        "source_roles": [
+          {
+            "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+            "addend": 0,
+            "target": 4497248
+          }
+        ],
+        "replay_target": 4497248
+      },
+      {
+        "offset": 108,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311412,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1612,
+            "target": 4792948
+          }
+        ],
+        "replay_target": 4792948
+      },
+      {
+        "offset": 116,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      },
+      {
+        "offset": 165,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4309024,
+        "candidate_symbols": [
+          "??3@YAXPAX@Z",
+          "_th10_ltcg_probe_anchor_0002"
+        ],
+        "instruction_end": 169,
+        "source_roles": [
+          {
+            "symbol": "??3@YAXPAX@Z",
+            "addend": 0,
+            "target": 4531361
+          }
+        ],
+        "replay_target": 4531361
+      },
+      {
+        "offset": 183,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309640,
+        "candidate_symbols": [
+          "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A",
+          "_th10_ltcg_probe_anchor_0156"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A",
+            "addend": 0,
+            "target": 4683804
+          }
+        ],
+        "replay_target": 4683804
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 31,
+        "size": 2,
+        "target_offset": 68
+      },
+      {
+        "offset": 83,
+        "size": 2,
+        "target_offset": 120
+      },
+      {
+        "offset": 129,
+        "size": 2,
+        "target_offset": 178
+      },
+      {
+        "offset": 155,
+        "size": 2,
+        "target_offset": 163
+      },
+      {
+        "offset": 176,
+        "size": 2,
+        "target_offset": 131
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 31,
+        "size": 2,
+        "target_offset": 68
+      },
+      {
+        "offset": 83,
+        "size": 2,
+        "target_offset": 120
+      },
+      {
+        "offset": 129,
+        "size": 2,
+        "target_offset": 178
+      },
+      {
+        "offset": 155,
+        "size": 2,
+        "target_offset": 163
+      },
+      {
+        "offset": 176,
+        "size": 2,
+        "target_offset": 131
+      }
+    ],
+    "ordinary_differences": [
+      {
+        "offset": 47,
+        "target": 206,
+        "candidate": 215
+      },
+      {
+        "offset": 49,
+        "target": 215,
+        "candidate": 206
+      },
+      {
+        "offset": 99,
+        "target": 206,
+        "candidate": 215
+      },
+      {
+        "offset": 101,
+        "target": 215,
+        "candidate": 206
+      }
+    ],
+    "literal_checks": [],
+    "exact": false
+  },
+  "Create": {
+    "symbol": "?GameCreateOwner41C290@@YAPAXXZ",
+    "target_address": 4309648,
+    "target_size": 91,
+    "candidate_size": 91,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 7,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4531347,
+        "instruction_end": 11
+      },
+      {
+        "offset": 25,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4309040,
+        "instruction_end": 29
+      },
+      {
+        "offset": 42,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4683804,
+        "instruction_end": null
+      },
+      {
+        "offset": 55,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4309280,
+        "instruction_end": 59
+      },
+      {
+        "offset": 70,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4309440,
+        "instruction_end": 74
+      },
+      {
+        "offset": 76,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4531361,
+        "instruction_end": 80
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 7,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4309020,
+        "candidate_symbols": [
+          "??2@YAPAXI@Z",
+          "_th10_ltcg_probe_anchor_0001"
+        ],
+        "instruction_end": 11,
+        "source_roles": [
+          {
+            "symbol": "??2@YAPAXI@Z",
+            "addend": 0,
+            "target": 4531347
+          }
+        ],
+        "replay_target": 4531347
+      },
+      {
+        "offset": 25,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4198480,
+        "candidate_symbols": [
+          "??0EnemyLaserConstructionBaseView@@QAE@XZ"
+        ],
+        "instruction_end": 29,
+        "source_roles": [
+          {
+            "symbol": "??0EnemyLaserConstructionBaseView@@QAE@XZ",
+            "addend": 0,
+            "target": 4309040
+          }
+        ],
+        "replay_target": 4309040
+      },
+      {
+        "offset": 42,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309640,
+        "candidate_symbols": [
+          "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A",
+          "_th10_ltcg_probe_anchor_0156"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A",
+            "addend": 0,
+            "target": 4683804
+          }
+        ],
+        "replay_target": 4683804
+      },
+      {
+        "offset": 55,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4198672,
+        "candidate_symbols": [
+          "?Initialize@EnemyLaserManagerStorageView@@QAEHXZ"
+        ],
+        "instruction_end": 59,
+        "source_roles": [
+          {
+            "symbol": "?Initialize@EnemyLaserManagerStorageView@@QAEHXZ",
+            "addend": 0,
+            "target": 4309280
+          }
+        ],
+        "replay_target": 4309280
+      },
+      {
+        "offset": 70,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4198832,
+        "candidate_symbols": [
+          "?GameCleanupLinked41C1C0@@YGXPAUGameChainOwnerView@@@Z"
+        ],
+        "instruction_end": 74,
+        "source_roles": [
+          {
+            "symbol": "?GameCleanupLinked41C1C0@@YGXPAUGameChainOwnerView@@@Z",
+            "addend": 0,
+            "target": 4309440
+          }
+        ],
+        "replay_target": 4309440
+      },
+      {
+        "offset": 76,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4309024,
+        "candidate_symbols": [
+          "??3@YAXPAX@Z",
+          "_th10_ltcg_probe_anchor_0002"
+        ],
+        "instruction_end": 80,
+        "source_roles": [
+          {
+            "symbol": "??3@YAXPAX@Z",
+            "addend": 0,
+            "target": 4531361
+          }
+        ],
+        "replay_target": 4531361
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 18,
+        "size": 2,
+        "target_offset": 49
+      },
+      {
+        "offset": 47,
+        "size": 2,
+        "target_offset": 51
+      },
+      {
+        "offset": 62,
+        "size": 2,
+        "target_offset": 87
+      },
+      {
+        "offset": 66,
+        "size": 2,
+        "target_offset": 83
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 18,
+        "size": 2,
+        "target_offset": 49
+      },
+      {
+        "offset": 47,
+        "size": 2,
+        "target_offset": 51
+      },
+      {
+        "offset": 62,
+        "size": 2,
+        "target_offset": 87
+      },
+      {
+        "offset": 66,
+        "size": 2,
+        "target_offset": 83
+      }
+    ],
+    "ordinary_differences": [],
+    "literal_checks": [],
+    "exact": true
+  },
+  "base": {
+    "symbol": "??0EnemyLaserConstructionBaseView@@QAE@XZ",
+    "target_address": 4309040,
+    "target_size": 98,
+    "candidate_size": 98,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 2,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4643504,
+        "instruction_end": null
+      },
+      {
+        "offset": 75,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4681592,
+        "instruction_end": null
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 2,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4304928,
+        "candidate_symbols": [
+          "??_7EnemyLaserConstructionBaseView@@6B@"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "??_7EnemyLaserConstructionBaseView@@6B@",
+            "addend": 0,
+            "target": 4643504
+          }
+        ],
+        "replay_target": 4643504
+      },
+      {
+        "offset": 75,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309476,
+        "candidate_symbols": [
+          "?g_AnmGameSpeed@@3MA",
+          "_th10_ltcg_probe_anchor_0115"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_AnmGameSpeed@@3MA",
+            "addend": 0,
+            "target": 4681592
+          }
+        ],
+        "replay_target": 4681592
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 26,
+        "size": 2,
+        "target_offset": 19
+      },
+      {
+        "offset": 54,
+        "size": 2,
+        "target_offset": 82
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 26,
+        "size": 2,
+        "target_offset": 19
+      },
+      {
+        "offset": 54,
+        "size": 2,
+        "target_offset": 82
+      }
+    ],
+    "ordinary_differences": [],
+    "literal_checks": [],
+    "exact": true
+  },
+  "enemy-laser-type0-constructor": {
+    "symbol": "??0EnemyLaserType0StorageView@@QAE@XZ",
+    "target_address": 4310448,
+    "target_size": 202,
+    "candidate_size": 202,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 5,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4309040,
+        "instruction_end": 9
+      },
+      {
+        "offset": 11,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4643424,
+        "instruction_end": null
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 5,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4198480,
+        "candidate_symbols": [
+          "??0EnemyLaserConstructionBaseView@@QAE@XZ"
+        ],
+        "instruction_end": 9,
+        "source_roles": [
+          {
+            "symbol": "??0EnemyLaserConstructionBaseView@@QAE@XZ",
+            "addend": 0,
+            "target": 4309040
+          }
+        ],
+        "replay_target": 4309040
+      },
+      {
+        "offset": 11,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4305584,
+        "candidate_symbols": [
+          "??_7EnemyLaserType0StorageView@@6B@"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "??_7EnemyLaserType0StorageView@@6B@",
+            "addend": 0,
+            "target": 4643424
+          }
+        ],
+        "replay_target": 4643424
+      }
+    ],
+    "target_locals": [],
+    "candidate_locals": [],
+    "ordinary_differences": [],
+    "literal_checks": [],
+    "exact": true
+  },
+  "enemy-laser-type1-constructor": {
+    "symbol": "??0EnemyLaserType1StorageView@@QAE@XZ",
+    "target_address": 4310656,
+    "target_size": 219,
+    "candidate_size": 219,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 5,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4309040,
+        "instruction_end": 9
+      },
+      {
+        "offset": 11,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4643344,
+        "instruction_end": null
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 5,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4198480,
+        "candidate_symbols": [
+          "??0EnemyLaserConstructionBaseView@@QAE@XZ"
+        ],
+        "instruction_end": 9,
+        "source_roles": [
+          {
+            "symbol": "??0EnemyLaserConstructionBaseView@@QAE@XZ",
+            "addend": 0,
+            "target": 4309040
+          }
+        ],
+        "replay_target": 4309040
+      },
+      {
+        "offset": 11,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4305504,
+        "candidate_symbols": [
+          "??_7EnemyLaserType1StorageView@@6B@"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "??_7EnemyLaserType1StorageView@@6B@",
+            "addend": 0,
+            "target": 4643344
+          }
+        ],
+        "replay_target": 4643344
+      }
+    ],
+    "target_locals": [],
+    "candidate_locals": [],
+    "ordinary_differences": [],
+    "literal_checks": [],
+    "exact": true
+  },
+  "anm-manager-preload-anm": {
+    "symbol": "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z",
+    "target_address": 4485760,
+    "target_size": 81,
+    "candidate_size": 81,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 20,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4485312,
+        "instruction_end": 24
+      },
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4612268,
+        "instruction_end": null
+      },
+      {
+        "offset": 52,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4792308,
+        "instruction_end": null
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 20,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4242752,
+        "candidate_symbols": [
+          "?ReadAnmEntries@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z"
+        ],
+        "instruction_end": 24,
+        "source_roles": [
+          {
+            "symbol": "?ReadAnmEntries@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z",
+            "addend": 0,
+            "target": 4485312
+          }
+        ],
+        "replay_target": 4485312
+      },
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309920,
+        "candidate_symbols": [
+          "__imp__Sleep@4",
+          "_th10_ltcg_probe_anchor_0226"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "__imp__Sleep@4",
+            "addend": 0,
+            "target": 4612268
+          }
+        ],
+        "replay_target": 4612268
+      },
+      {
+        "offset": 52,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309496,
+        "candidate_symbols": [
+          "?g_AnmPreloadStopRequested@@3CA",
+          "_th10_ltcg_probe_anchor_0120"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_AnmPreloadStopRequested@@3CA",
+            "addend": 0,
+            "target": 4792308
+          }
+        ],
+        "replay_target": 4792308
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 9,
+        "size": 2,
+        "target_offset": 78
+      },
+      {
+        "offset": 28,
+        "size": 2,
+        "target_offset": 34
+      },
+      {
+        "offset": 58,
+        "size": 2,
+        "target_offset": 74
+      },
+      {
+        "offset": 72,
+        "size": 2,
+        "target_offset": 51
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 9,
+        "size": 2,
+        "target_offset": 78
+      },
+      {
+        "offset": 28,
+        "size": 2,
+        "target_offset": 34
+      },
+      {
+        "offset": 58,
+        "size": 2,
+        "target_offset": 74
+      },
+      {
+        "offset": 72,
+        "size": 2,
+        "target_offset": 51
+      }
+    ],
+    "ordinary_differences": [],
+    "literal_checks": [],
+    "exact": true
+  },
+  "decomphelp-game-error-log": {
+    "symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+    "target_address": 4503568,
+    "target_size": 201,
+    "candidate_size": 201,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 6,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4558528,
+        "instruction_end": 10
+      },
+      {
+        "offset": 11,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4666976,
+        "instruction_end": null
+      },
+      {
+        "offset": 20,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793020,
+        "instruction_end": null
+      },
+      {
+        "offset": 35,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4612272,
+        "instruction_end": null
+      },
+      {
+        "offset": 40,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793119,
+        "instruction_end": null
+      },
+      {
+        "offset": 54,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793119,
+        "instruction_end": null
+      },
+      {
+        "offset": 73,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4531366,
+        "instruction_end": 77
+      },
+      {
+        "offset": 149,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793020,
+        "instruction_end": null
+      },
+      {
+        "offset": 155,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4612276,
+        "instruction_end": null
+      },
+      {
+        "offset": 160,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793119,
+        "instruction_end": null
+      },
+      {
+        "offset": 176,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793119,
+        "instruction_end": null
+      },
+      {
+        "offset": 190,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4558501,
+        "instruction_end": 194
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 6,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4309896,
+        "candidate_symbols": [
+          "__chkstk",
+          "_th10_ltcg_probe_anchor_0220"
+        ],
+        "instruction_end": 10,
+        "source_roles": [
+          {
+            "symbol": "__chkstk",
+            "addend": 0,
+            "target": 4558528
+          }
+        ],
+        "replay_target": 4558528
+      },
+      {
+        "offset": 11,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309892,
+        "candidate_symbols": [
+          "___security_cookie",
+          "_th10_ltcg_probe_anchor_0219"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "___security_cookie",
+            "addend": 0,
+            "target": 4666976
+          }
+        ],
+        "replay_target": 4666976
+      },
+      {
+        "offset": 20,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309608,
+        "candidate_symbols": [
+          "?g_EnemyDifficulty@@3HA",
+          "_th10_ltcg_probe_anchor_0148"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_CriticalSections@th10@@3PAU_RTL_CRITICAL_SECTION@@A",
+            "addend": 72,
+            "target": 4793020
+          }
+        ],
+        "replay_target": 4793020
+      },
+      {
+        "offset": 35,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309908,
+        "candidate_symbols": [
+          "__imp__EnterCriticalSection@4",
+          "_th10_ltcg_probe_anchor_0223"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "__imp__EnterCriticalSection@4",
+            "addend": 0,
+            "target": 4612272
+          }
+        ],
+        "replay_target": 4612272
+      },
+      {
+        "offset": 40,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309792,
+        "candidate_symbols": [
+          "?g_LogLockDepth@th10@@3EA",
+          "_th10_ltcg_probe_anchor_0194"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_LogLockDepth@th10@@3EA",
+            "addend": 0,
+            "target": 4793119
+          }
+        ],
+        "replay_target": 4793119
+      },
+      {
+        "offset": 54,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309792,
+        "candidate_symbols": [
+          "?g_LogLockDepth@th10@@3EA",
+          "_th10_ltcg_probe_anchor_0194"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_LogLockDepth@th10@@3EA",
+            "addend": 0,
+            "target": 4793119
+          }
+        ],
+        "replay_target": 4793119
+      },
+      {
+        "offset": 73,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4309964,
+        "candidate_symbols": [
+          "_th10_ltcg_probe_anchor_0237",
+          "_vsprintf"
+        ],
+        "instruction_end": 77,
+        "source_roles": [
+          {
+            "symbol": "_vsprintf",
+            "addend": 0,
+            "target": 4531366
+          }
+        ],
+        "replay_target": 4531366
+      },
+      {
+        "offset": 149,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309608,
+        "candidate_symbols": [
+          "?g_EnemyDifficulty@@3HA",
+          "_th10_ltcg_probe_anchor_0148"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_CriticalSections@th10@@3PAU_RTL_CRITICAL_SECTION@@A",
+            "addend": 72,
+            "target": 4793020
+          }
+        ],
+        "replay_target": 4793020
+      },
+      {
+        "offset": 155,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309912,
+        "candidate_symbols": [
+          "__imp__LeaveCriticalSection@4",
+          "_th10_ltcg_probe_anchor_0224"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "__imp__LeaveCriticalSection@4",
+            "addend": 0,
+            "target": 4612276
+          }
+        ],
+        "replay_target": 4612276
+      },
+      {
+        "offset": 160,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309792,
+        "candidate_symbols": [
+          "?g_LogLockDepth@th10@@3EA",
+          "_th10_ltcg_probe_anchor_0194"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_LogLockDepth@th10@@3EA",
+            "addend": 0,
+            "target": 4793119
+          }
+        ],
+        "replay_target": 4793119
+      },
+      {
+        "offset": 176,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309792,
+        "candidate_symbols": [
+          "?g_LogLockDepth@th10@@3EA",
+          "_th10_ltcg_probe_anchor_0194"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_LogLockDepth@th10@@3EA",
+            "addend": 0,
+            "target": 4793119
+          }
+        ],
+        "replay_target": 4793119
+      },
+      {
+        "offset": 190,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4309824,
+        "candidate_symbols": [
+          "@__security_check_cookie@4",
+          "_th10_ltcg_probe_anchor_0202"
+        ],
+        "instruction_end": 194,
+        "source_roles": [
+          {
+            "symbol": "@__security_check_cookie@4",
+            "addend": 0,
+            "target": 4558501
+          }
+        ],
+        "replay_target": 4558501
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 92,
+        "size": 2,
+        "target_offset": 87
+      },
+      {
+        "offset": 113,
+        "size": 2,
+        "target_offset": 148
+      },
+      {
+        "offset": 127,
+        "size": 2,
+        "target_offset": 119
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 92,
+        "size": 2,
+        "target_offset": 87
+      },
+      {
+        "offset": 113,
+        "size": 2,
+        "target_offset": 148
+      },
+      {
+        "offset": 127,
+        "size": 2,
+        "target_offset": 119
+      }
+    ],
+    "ordinary_differences": [],
+    "literal_checks": [],
+    "exact": true
+  },
+  "decomphelp-chain-unregister": {
+    "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+    "target_address": 4497248,
+    "target_size": 114,
+    "candidate_size": 114,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 104,
+        "width": 4,
+        "type": "REL32",
+        "candidate_target": 4531361,
+        "instruction_end": 108
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 104,
+        "width": 4,
+        "type": "REL32",
+        "instruction": "call",
+        "candidate_target": 4309024,
+        "candidate_symbols": [
+          "??3@YAXPAX@Z",
+          "_th10_ltcg_probe_anchor_0002"
+        ],
+        "instruction_end": 108,
+        "source_roles": [
+          {
+            "symbol": "??3@YAXPAX@Z",
+            "addend": 0,
+            "target": 4531361
+          }
+        ],
+        "replay_target": 4531361
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 5,
+        "size": 2,
+        "target_offset": 112
+      },
+      {
+        "offset": 13,
+        "size": 2,
+        "target_offset": 27
+      },
+      {
+        "offset": 18,
+        "size": 2,
+        "target_offset": 48
+      },
+      {
+        "offset": 25,
+        "size": 2,
+        "target_offset": 16
+      },
+      {
+        "offset": 32,
+        "size": 2,
+        "target_offset": 111
+      },
+      {
+        "offset": 36,
+        "size": 2,
+        "target_offset": 48
+      },
+      {
+        "offset": 43,
+        "size": 2,
+        "target_offset": 34
+      },
+      {
+        "offset": 53,
+        "size": 2,
+        "target_offset": 111
+      },
+      {
+        "offset": 60,
+        "size": 2,
+        "target_offset": 65
+      },
+      {
+        "offset": 70,
+        "size": 2,
+        "target_offset": 78
+      },
+      {
+        "offset": 91,
+        "size": 2,
+        "target_offset": 111
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 5,
+        "size": 2,
+        "target_offset": 112
+      },
+      {
+        "offset": 13,
+        "size": 2,
+        "target_offset": 27
+      },
+      {
+        "offset": 18,
+        "size": 2,
+        "target_offset": 48
+      },
+      {
+        "offset": 25,
+        "size": 2,
+        "target_offset": 16
+      },
+      {
+        "offset": 32,
+        "size": 2,
+        "target_offset": 111
+      },
+      {
+        "offset": 36,
+        "size": 2,
+        "target_offset": 48
+      },
+      {
+        "offset": 43,
+        "size": 2,
+        "target_offset": 34
+      },
+      {
+        "offset": 53,
+        "size": 2,
+        "target_offset": 111
+      },
+      {
+        "offset": 60,
+        "size": 2,
+        "target_offset": 65
+      },
+      {
+        "offset": 70,
+        "size": 2,
+        "target_offset": 78
+      },
+      {
+        "offset": 91,
+        "size": 2,
+        "target_offset": 111
+      }
+    ],
+    "ordinary_differences": [],
+    "literal_checks": [],
+    "exact": true
+  },
+  "chain-add-calc": {
+    "symbol": "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+    "target_address": 4496096,
+    "target_size": 131,
+    "candidate_size": 131,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 25,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4792948,
+        "instruction_end": null
+      },
+      {
+        "offset": 31,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4612272,
+        "instruction_end": null
+      },
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      },
+      {
+        "offset": 49,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      },
+      {
+        "offset": 106,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4792948,
+        "instruction_end": null
+      },
+      {
+        "offset": 115,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4612276,
+        "instruction_end": null
+      },
+      {
+        "offset": 121,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 25,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311412,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1612,
+            "target": 4792948
+          }
+        ],
+        "replay_target": 4792948
+      },
+      {
+        "offset": 31,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309908,
+        "candidate_symbols": [
+          "__imp__EnterCriticalSection@4",
+          "_th10_ltcg_probe_anchor_0223"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "__imp__EnterCriticalSection@4",
+            "addend": 0,
+            "target": 4612272
+          }
+        ],
+        "replay_target": 4612272
+      },
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      },
+      {
+        "offset": 49,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      },
+      {
+        "offset": 106,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311412,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1612,
+            "target": 4792948
+          }
+        ],
+        "replay_target": 4792948
+      },
+      {
+        "offset": 115,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309912,
+        "candidate_symbols": [
+          "__imp__LeaveCriticalSection@4",
+          "_th10_ltcg_probe_anchor_0224"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "__imp__LeaveCriticalSection@4",
+            "addend": 0,
+            "target": 4612276
+          }
+        ],
+        "replay_target": 4612276
+      },
+      {
+        "offset": 121,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 8,
+        "size": 2,
+        "target_offset": 24
+      },
+      {
+        "offset": 63,
+        "size": 2,
+        "target_offset": 83
+      },
+      {
+        "offset": 72,
+        "size": 2,
+        "target_offset": 83
+      },
+      {
+        "offset": 81,
+        "size": 2,
+        "target_offset": 65
+      },
+      {
+        "offset": 91,
+        "size": 2,
+        "target_offset": 102
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 8,
+        "size": 2,
+        "target_offset": 24
+      },
+      {
+        "offset": 63,
+        "size": 2,
+        "target_offset": 83
+      },
+      {
+        "offset": 72,
+        "size": 2,
+        "target_offset": 83
+      },
+      {
+        "offset": 81,
+        "size": 2,
+        "target_offset": 65
+      },
+      {
+        "offset": 91,
+        "size": 2,
+        "target_offset": 102
+      }
+    ],
+    "ordinary_differences": [],
+    "literal_checks": [],
+    "exact": true
+  },
+  "chain-add-draw": {
+    "symbol": "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z",
+    "target_address": 4496240,
+    "target_size": 131,
+    "candidate_size": 131,
+    "fields_shape_equal": true,
+    "target_fields": [
+      {
+        "offset": 25,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4792948,
+        "instruction_end": null
+      },
+      {
+        "offset": 31,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4612272,
+        "instruction_end": null
+      },
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      },
+      {
+        "offset": 49,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      },
+      {
+        "offset": 106,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4792948,
+        "instruction_end": null
+      },
+      {
+        "offset": 115,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4612276,
+        "instruction_end": null
+      },
+      {
+        "offset": 121,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4793116,
+        "instruction_end": null
+      }
+    ],
+    "candidate_fields": [
+      {
+        "offset": 25,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311412,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1612,
+            "target": 4792948
+          }
+        ],
+        "replay_target": 4792948
+      },
+      {
+        "offset": 31,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309908,
+        "candidate_symbols": [
+          "__imp__EnterCriticalSection@4",
+          "_th10_ltcg_probe_anchor_0223"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "__imp__EnterCriticalSection@4",
+            "addend": 0,
+            "target": 4612272
+          }
+        ],
+        "replay_target": 4612272
+      },
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      },
+      {
+        "offset": 49,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      },
+      {
+        "offset": 106,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311412,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1612,
+            "target": 4792948
+          }
+        ],
+        "replay_target": 4792948
+      },
+      {
+        "offset": 115,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4309912,
+        "candidate_symbols": [
+          "__imp__LeaveCriticalSection@4",
+          "_th10_ltcg_probe_anchor_0224"
+        ],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "__imp__LeaveCriticalSection@4",
+            "addend": 0,
+            "target": 4612276
+          }
+        ],
+        "replay_target": 4612276
+      },
+      {
+        "offset": 121,
+        "width": 4,
+        "type": "DIR32",
+        "candidate_target": 4311580,
+        "candidate_symbols": [],
+        "instruction_end": null,
+        "source_roles": [
+          {
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "addend": 1780,
+            "target": 4793116
+          }
+        ],
+        "replay_target": 4793116
+      }
+    ],
+    "target_locals": [
+      {
+        "offset": 8,
+        "size": 2,
+        "target_offset": 24
+      },
+      {
+        "offset": 63,
+        "size": 2,
+        "target_offset": 83
+      },
+      {
+        "offset": 72,
+        "size": 2,
+        "target_offset": 83
+      },
+      {
+        "offset": 81,
+        "size": 2,
+        "target_offset": 65
+      },
+      {
+        "offset": 91,
+        "size": 2,
+        "target_offset": 102
+      }
+    ],
+    "candidate_locals": [
+      {
+        "offset": 8,
+        "size": 2,
+        "target_offset": 24
+      },
+      {
+        "offset": 63,
+        "size": 2,
+        "target_offset": 83
+      },
+      {
+        "offset": 72,
+        "size": 2,
+        "target_offset": 83
+      },
+      {
+        "offset": 81,
+        "size": 2,
+        "target_offset": 65
+      },
+      {
+        "offset": 91,
+        "size": 2,
+        "target_offset": 102
+      }
+    ],
+    "ordinary_differences": [],
+    "literal_checks": [],
+    "exact": true
+  }
+}

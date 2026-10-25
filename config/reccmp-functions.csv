@@ -1120,3 +1120,6 @@ GuiView::GuiView,0x00413810,function
 GuiView::Initialize,0x00413980,function
 GuiView::LoadData,0x00413A20,function
 ScriptViewerCreateGui,0x00414830,function
+EnemyLaserManagerStorageView::Initialize,0x0041C120,function
+GameCleanupLinked41C1C0,0x0041C1C0,function
+GameCreateOwner41C290,0x0041C290,function

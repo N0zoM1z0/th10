@@ -87,6 +87,7 @@ def main() -> int:
             run("Validate portrait creation controls", [sys.executable, "scripts/test-gui-portrait-creation.py", "--out", str(Path(output) / "run")])
         run("Validate GUI message construction-Run-destruction baseline", [sys.executable, "scripts/test-gui-message-lifecycle.py", "--no-mutations", "--out", "build/host-tests/gui-message-lifecycle-ci"])
         run("Validate GUI draw contracts", [sys.executable, "scripts/test-gui-draw.py"])
+        run("Validate enemy laser manager lifecycle", [sys.executable, "scripts/test-enemy-laser-manager.py", "--no-mutations"])
         run("Validate laser owner bindings", [sys.executable, "scripts/test-laser-owner-binding.py", "--opt", "O2", "--no-mutations"])
         run("Validate rectangle contracts and strict mutations", [sys.executable, "scripts/test-anm-rectangle.py"])
         run("Validate alpha interpolation and strict mutations", [sys.executable, "scripts/test-anm-alpha-interpolation.py"])

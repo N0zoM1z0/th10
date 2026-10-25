@@ -829,44 +829,6 @@ int EnemyLaserType1CollisionView::CheckCollisionCircle(
 // callback implementations and production data ownership remain unknown.
 // These virtual methods are declarations only; the diagnostic link records
 // unresolved address anchors and is not a runnable product.
-struct EnemyLaserConstructionBaseView
-{
-    virtual void RunCommands();
-    virtual int ApplyRequest(const EnemyLaserRequestScratch *request);
-    virtual int Update();
-    virtual int Draw();
-    virtual int Unlink();
-    virtual int Clear(int mode);
-    virtual int CheckBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
-    virtual int CheckCircle(EnemyLaserVectorView *, float, int);
-    virtual int CheckPoint(EnemyLaserVectorView *, float);
-    virtual void Motion0001();
-    virtual void Motion0010();
-    virtual void Motion0020();
-    virtual void Motion0040();
-    virtual void Motion0100();
-    virtual void Motion0080();
-    virtual void Bounce();
-    virtual void Motion100000();
-    virtual void Motion200000();
-    virtual void Motion4000000();
-
-    EnemyLaserCommonStorageView *previous;
-    EnemyLaserCommonStorageView *next;
-    unsigned int unknown00C;
-    AnmVmTimerView timer;
-    unsigned char unknown024[0x54 - 0x24];
-    unsigned int id;
-    EnemyLaserPatternRecordView patterns[18];
-    unsigned char unknown400[0x410 - 0x400];
-    AnmVmTimerView finalTimer;
-
-    EnemyLaserConstructionBaseView()
-    {
-        memset(this, 0, sizeof(*this));
-        timer.SetCurrent(0);
-    }
-};
 struct EnemyLaserType0RequestConstructionView : EnemyLaserType0RequestView
 {
     EnemyLaserType0RequestConstructionView()

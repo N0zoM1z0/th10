@@ -4,6 +4,20 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [enemy laser manager lifecycle](evidence/enemy-laser-manager-20261025/README.md)
+closes **237 authored bytes / two owners**: Initialize146 and factory91, with
+cleanup195 source-only/four ModRM differences. Actual factory13TU GL/GS graph,
+not ScriptViewer or proven GameManager production graph; all20 fields/5locals,
+full51-byte failure string and success-only constructor publication verified.
+Eight same-image guards1177 pass; original10TU constructors421 cold pass.
+Base98 remains existing indeterminate; standalone41C10030 is unclassified/no
+new ledger credit. Host119 affected variants plus6 manager controls pass.
+Authored exact77271/275055,426 owners; source637/252435, denominator unchanged.
+Historical first constructor cold19 hashes preserved; mutable EnemyItemDrops
+canonical output regenerated without pre-run snapshot, so blanket historical
+carrier preservation is NOT claimed (full audit in packet). Protected9 unchanged.
+All118 final CI stages pass;2904 frozen inputs unchanged, terminal0 recovered
+14:18:05 without rerun. No product/runtime promotion.
 Current [GUI spell notification / EndSpell pilot](evidence/gui-spell-notification-20261025/README.md)
 retains three complete isolated models: notification652/652/660 versus proposed668,
 and real dispatcher glue452/452/447 versus399. All seven table words,35 notification

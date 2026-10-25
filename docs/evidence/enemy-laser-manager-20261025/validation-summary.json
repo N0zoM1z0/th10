@@ -1,0 +1,64 @@
+{
+  "new_authored_exact_bytes": 237,
+  "new_authored_exact_functions": 2,
+  "new_authored_source_bytes": 432,
+  "new_authored_source_functions": 3,
+  "authored_denominator": 275055,
+  "authored_exact_bytes": 77271,
+  "authored_exact_functions": 426,
+  "authored_source_bytes": 252435,
+  "authored_source_functions": 637,
+  "canonical": {
+    "exit": 0,
+    "frozen_count": 138,
+    "changed": []
+  },
+  "original_constructor_cold": {
+    "exit": 0,
+    "frozen_count": 138,
+    "changed": []
+  },
+  "same_image_guards": {
+    "functions": 8,
+    "bytes": 1177,
+    "fields": 36
+  },
+  "host": {
+    "sanitizers": "ASan/UBSan/leaks",
+    "affected_variants": 119,
+    "manager_positive": 1,
+    "manager_runtime_mutations": 3,
+    "manager_structural_mutations": 2
+  },
+  "cleanup": {
+    "size": 195,
+    "fields": 16,
+    "locals": 5,
+    "ordinary_mismatches": [
+      47,
+      49,
+      99,
+      101
+    ],
+    "exact": false
+  },
+  "standalone_constructor41C100": "unclassified/no new ledger row or credit; implicit source context only",
+  "historical_native_path_preservation": "not claimed for mutable EnemyItemDrops output; no pre-run native snapshot; see prior-output-audit",
+  "historical_retained_constructor_first_cold": {
+    "manifest": ".analysis/gpt-6.1-sol/enemy-construction-context-20261022/accepted-cold-1-retained.json",
+    "count": 19,
+    "changed": []
+  },
+  "final_ci": {
+    "ci_exit": 0,
+    "frozen_count": 2904,
+    "changed": [],
+    "status": "passed",
+    "stages": 118,
+    "recovered_at": "2026-10-25T14:18:05Z",
+    "log_sha256": "81f97a3724ddf58ae07a698e3587a09a48ea32df2d2751d78837071bc6bbda6d",
+    "duplicate_runs": 0
+  },
+  "runtime_product_portability": "not claimed",
+  "post_native_source_changes": "Two stale header-comment lines corrected only; C++ tokens unchanged. Host mutation rejection diagnostics pinned before CI and rerun under full sanitizers."
+}

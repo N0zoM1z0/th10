@@ -1,0 +1,250 @@
+--- a/EnemyLaser.hpp
++++ b/EnemyLaser.hpp
+@@ -3,6 +3,8 @@
+ #include "AnmManager.hpp"
+ #include "Player.hpp"
+ #include <stddef.h>
++#include <string.h>
++#include "Chain.hpp"
+ 
+ // These are explicit views of the single target47781C allocation. The narrow
+ // lookup and known-slot virtual views preserve existing call boundaries; they
+@@ -104,30 +106,6 @@
+     (offsetof(EnemyLaserCommonStorageView, id) == 0x54) ? 1 : -1];
+ typedef char EnemyLaserPatternSizeIs034[
+     (sizeof(EnemyLaserPatternRecordView) == 0x34) ? 1 : -1];
+-// Complete storage view: +18 is sentinel.next, while +434 is the append tail.
+-// The callback-chain prefix remains opaque here; GameManager keeps its existing
+-// separately typed chain-prefix view at that boundary.
+-struct EnemyLaserManagerStorageView
+-{
+-    unsigned char unknown000[0x10];
+-    EnemyLaserCommonStorageView sentinel;
+-    EnemyLaserCommonStorageView *tail;
+-    int count;
+-    unsigned int nextId;
+-    PlayerFloat3 cancelPosition;
+-    unsigned char unknown44C[0x458 - 0x44c];
+-    AnmLoadedView *effectResource;
+-};
+-typedef char EnemyLaserManagerStorageLayout[
+-    (sizeof(EnemyLaserManagerStorageView) == 0x45c &&
+-     offsetof(EnemyLaserManagerStorageView, sentinel) == 0x10 &&
+-     offsetof(EnemyLaserManagerStorageView, sentinel) +
+-         offsetof(EnemyLaserCommonStorageView, next) == 0x18 &&
+-     offsetof(EnemyLaserManagerStorageView, tail) == 0x434 &&
+-     offsetof(EnemyLaserManagerStorageView, count) == 0x438 &&
+-     offsetof(EnemyLaserManagerStorageView, nextId) == 0x43c &&
+-     offsetof(EnemyLaserManagerStorageView, cancelPosition) == 0x440 &&
+-     offsetof(EnemyLaserManagerStorageView, effectResource) == 0x458) ? 1 : -1];
+ typedef char EnemyEffectWaitViewLayout[
+     (offsetof(EnemyEffectWaitNode, next) == 0x08 &&
+      offsetof(EnemyEffectWaitNode, state) == 0x0c &&
+@@ -234,4 +212,73 @@
+     EnemyLaserRequestScratch *request);
+ unsigned int EnemyFireLaser(
+     void *manager, EnemyLaserRequestScratch *request, int type);
++struct EnemyLaserConstructionBaseView
++{
++    virtual void RunCommands();
++    virtual int ApplyRequest(const EnemyLaserRequestScratch *request);
++    virtual int Update();
++    virtual int Draw();
++    virtual int Unlink();
++    virtual int Clear(int mode);
++    virtual int CheckBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
++    virtual int CheckCircle(EnemyLaserVectorView *, float, int);
++    virtual int CheckPoint(EnemyLaserVectorView *, float);
++    virtual void Motion0001();
++    virtual void Motion0010();
++    virtual void Motion0020();
++    virtual void Motion0040();
++    virtual void Motion0100();
++    virtual void Motion0080();
++    virtual void Bounce();
++    virtual void Motion100000();
++    virtual void Motion200000();
++    virtual void Motion4000000();
++
++    EnemyLaserCommonStorageView *previous;
++    EnemyLaserCommonStorageView *next;
++    unsigned int unknown00C;
++    AnmVmTimerView timer;
++    unsigned char unknown024[0x54 - 0x24];
++    unsigned int id;
++    EnemyLaserPatternRecordView patterns[18];
++    unsigned char unknown400[0x410 - 0x400];
++    AnmVmTimerView finalTimer;
++
++    EnemyLaserConstructionBaseView()
++    {
++        memset(this, 0, sizeof(*this));
++        timer.SetCurrent(0);
++    }
++};
++
++// Complete storage view: +18 is sentinel.next, while +434 is the append tail.
++// The callback-chain prefix remains opaque here; GameManager keeps its existing
++// separately typed chain-prefix view at that boundary.
++struct EnemyLaserManagerStorageView
++{
++    unsigned char unknown000[8];
++    th10::ChainElem *updateTask;
++    th10::ChainElem *drawTask;
++    EnemyLaserConstructionBaseView sentinel;
++    EnemyLaserCommonStorageView *tail;
++    int count;
++    unsigned int nextId;
++    PlayerFloat3 cancelPosition;
++    unsigned char unknown44C[0x458 - 0x44c];
++    AnmLoadedView *effectResource;
++
++    EnemyLaserManagerStorageView() { memset(this, 0, sizeof(*this)); }
++    int Initialize();
++};
++typedef char EnemyLaserManagerStorageLayout[
++    (sizeof(EnemyLaserManagerStorageView) == 0x45c &&
++     offsetof(EnemyLaserManagerStorageView, sentinel) == 0x10 &&
++     offsetof(EnemyLaserManagerStorageView, sentinel) +
++         offsetof(EnemyLaserCommonStorageView, next) == 0x18 &&
++     offsetof(EnemyLaserManagerStorageView, tail) == 0x434 &&
++     offsetof(EnemyLaserManagerStorageView, count) == 0x438 &&
++     offsetof(EnemyLaserManagerStorageView, nextId) == 0x43c &&
++     offsetof(EnemyLaserManagerStorageView, cancelPosition) == 0x440 &&
++     offsetof(EnemyLaserManagerStorageView, effectResource) == 0x458) ? 1 : -1];
++
+ #endif
+--- a/EnemyLaser.cpp
++++ b/EnemyLaser.cpp
+@@ -829,44 +829,6 @@
+ // callback implementations and production data ownership remain unknown.
+ // These virtual methods are declarations only; the diagnostic link records
+ // unresolved address anchors and is not a runnable product.
+-struct EnemyLaserConstructionBaseView
+-{
+-    virtual void RunCommands();
+-    virtual int ApplyRequest(const EnemyLaserRequestScratch *request);
+-    virtual int Update();
+-    virtual int Draw();
+-    virtual int Unlink();
+-    virtual int Clear(int mode);
+-    virtual int CheckBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
+-    virtual int CheckCircle(EnemyLaserVectorView *, float, int);
+-    virtual int CheckPoint(EnemyLaserVectorView *, float);
+-    virtual void Motion0001();
+-    virtual void Motion0010();
+-    virtual void Motion0020();
+-    virtual void Motion0040();
+-    virtual void Motion0100();
+-    virtual void Motion0080();
+-    virtual void Bounce();
+-    virtual void Motion100000();
+-    virtual void Motion200000();
+-    virtual void Motion4000000();
+-
+-    EnemyLaserCommonStorageView *previous;
+-    EnemyLaserCommonStorageView *next;
+-    unsigned int unknown00C;
+-    AnmVmTimerView timer;
+-    unsigned char unknown024[0x54 - 0x24];
+-    unsigned int id;
+-    EnemyLaserPatternRecordView patterns[18];
+-    unsigned char unknown400[0x410 - 0x400];
+-    AnmVmTimerView finalTimer;
+-
+-    EnemyLaserConstructionBaseView()
+-    {
+-        memset(this, 0, sizeof(*this));
+-        timer.SetCurrent(0);
+-    }
+-};
+ struct EnemyLaserType0RequestConstructionView : EnemyLaserType0RequestView
+ {
+     EnemyLaserType0RequestConstructionView()
+--- a/EnemyLaserManager.cpp
++++ b/EnemyLaserManager.cpp
+@@ -0,0 +1,84 @@
++#include "Main.hpp"
++#include "EnemyLaser.hpp"
++#include "GameErrorContext.hpp"
++#include <new>
++
++extern int __fastcall EnemyLaserUpdateCallback(void *);
++extern int __fastcall EnemyLaserDrawCallback(void *);
++struct GameChainOwnerView;
++
++int EnemyLaserManagerStorageView::Initialize()
++{
++    effectResource = g_AnmRenderManagerView->PreloadAnm(7, "bullet.anm");
++    if (!effectResource)
++    {
++        th10::g_GameErrorContext.Log("\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
++        return -1;
++    }
++    th10::ChainElem *task = th10::Chain::AllocElem(EnemyLaserUpdateCallback);
++    task->flags &= ~2u;
++    th10::Chain *chain = th10::g_Chain;
++    task->arg = this;
++    th10::Chain::AddToCalcChain(task, 0x13, chain);
++    updateTask = task;
++    task = th10::Chain::AllocElem(EnemyLaserDrawCallback);
++    task->flags &= ~2u;
++    chain = th10::g_Chain;
++    task->arg = this;
++    th10::Chain::AddToDrawChain(task, 0x1b, chain);
++    drawTask = task;
++    tail = reinterpret_cast<EnemyLaserCommonStorageView *>(&sentinel);
++    return 0;
++}
++
++void __stdcall GameCleanupLinked41C1C0(GameChainOwnerView *owner)
++{
++    EnemyLaserManagerStorageView *manager = reinterpret_cast<EnemyLaserManagerStorageView *>(owner);
++    th10::ChainElem *task = manager->updateTask;
++    th10::Chain *chain = th10::g_Chain;
++    if (task)
++    {
++        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
++        ++g_MainSupervisorView.criticalSectionLockCounts[0];
++        th10::Chain::UnregisterElem(task, chain);
++        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
++        --g_MainSupervisorView.criticalSectionLockCounts[0];
++    }
++    task = manager->drawTask;
++    chain = th10::g_Chain;
++    if (task)
++    {
++        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
++        ++g_MainSupervisorView.criticalSectionLockCounts[0];
++        th10::Chain::UnregisterElem(task, chain);
++        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
++        --g_MainSupervisorView.criticalSectionLockCounts[0];
++    }
++    EnemyLaserCommonStorageView *node = manager->sentinel.next;
++    while (node)
++    {
++        EnemyLaserCommonStorageView *savedNext = node->next;
++        reinterpret_cast<EnemyLaserConstructionBaseView *>(node)->Unlink();
++        node->previous->next = node->next;
++        if (node->next) node->next->previous = node->previous;
++        ::operator delete(node);
++        node = savedNext;
++    }
++    g_EnemyLaserManager = NULL;
++}
++
++void *GameCreateOwner41C290()
++{
++    EnemyLaserManagerStorageView *manager = new EnemyLaserManagerStorageView;
++    g_EnemyLaserManager = reinterpret_cast<EnemyLaserManagerView *>(manager);
++    if (manager->Initialize())
++    {
++        if (manager)
++        {
++            GameCleanupLinked41C1C0(reinterpret_cast<GameChainOwnerView *>(manager));
++            ::operator delete(manager);
++        }
++        return NULL;
++    }
++    return manager;
++}
