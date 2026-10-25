@@ -1,0 +1,143 @@
+{
+  "first": {
+    "spt-test-draw": {
+      "result": "exact",
+      "size": 531,
+      "matched_bytes": 531,
+      "compared_size": 531,
+      "image_sha256": "01a919d09a4b9803c7e59d96aa93d9b2260e58637fb0a2ffbbe578f8a8347b4f",
+      "pdb_guid": "22b40d0e1005ca4ca2cb5e15a92376af",
+      "pdb_age": 1,
+      "candidate_address": "0x00401020",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 531,
+      "normalization_complete": true,
+      "first_differences": [],
+      "field_count": 32
+    },
+    "spt-test-draw-callback": {
+      "result": "exact",
+      "size": 10,
+      "matched_bytes": 10,
+      "compared_size": 10,
+      "image_sha256": "01a919d09a4b9803c7e59d96aa93d9b2260e58637fb0a2ffbbe578f8a8347b4f",
+      "pdb_guid": "22b40d0e1005ca4ca2cb5e15a92376af",
+      "pdb_age": 1,
+      "candidate_address": "0x00401240",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 10,
+      "normalization_complete": true,
+      "first_differences": [],
+      "field_count": 1
+    },
+    "spt-test-ascii-guard": {
+      "result": "exact",
+      "size": 100,
+      "matched_bytes": 100,
+      "compared_size": 100,
+      "image_sha256": "01a919d09a4b9803c7e59d96aa93d9b2260e58637fb0a2ffbbe578f8a8347b4f",
+      "pdb_guid": "22b40d0e1005ca4ca2cb5e15a92376af",
+      "pdb_age": 1,
+      "candidate_address": "0x00409470",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 100,
+      "normalization_complete": true,
+      "first_differences": [],
+      "field_count": 4
+    }
+  },
+  "canonical_cold": {
+    "spt-test-draw": {
+      "result": "exact",
+      "size": 531,
+      "matched_bytes": 531,
+      "compared_size": 531,
+      "image_sha256": "589e76525b9705427a3702e1e1e7bac83ff6ece9bfba34b335c6bd87b3259be5",
+      "pdb_guid": "5fafb6dc5c75ce43ab97c4d107ae2f5f",
+      "pdb_age": 1,
+      "candidate_address": "0x00401020",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 531,
+      "normalization_complete": true,
+      "first_differences": [],
+      "field_count": 32
+    },
+    "spt-test-draw-callback": {
+      "result": "exact",
+      "size": 10,
+      "matched_bytes": 10,
+      "compared_size": 10,
+      "image_sha256": "589e76525b9705427a3702e1e1e7bac83ff6ece9bfba34b335c6bd87b3259be5",
+      "pdb_guid": "5fafb6dc5c75ce43ab97c4d107ae2f5f",
+      "pdb_age": 1,
+      "candidate_address": "0x00401240",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 10,
+      "normalization_complete": true,
+      "first_differences": [],
+      "field_count": 1
+    },
+    "spt-test-ascii-guard": {
+      "result": "exact",
+      "size": 100,
+      "matched_bytes": 100,
+      "compared_size": 100,
+      "image_sha256": "589e76525b9705427a3702e1e1e7bac83ff6ece9bfba34b335c6bd87b3259be5",
+      "pdb_guid": "5fafb6dc5c75ce43ab97c4d107ae2f5f",
+      "pdb_age": 1,
+      "candidate_address": "0x00409470",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 100,
+      "normalization_complete": true,
+      "first_differences": [],
+      "field_count": 4
+    }
+  },
+  "source_sha256": {
+    "src/SptTest.cpp": "ee99981cea74f6083b7ef496536dabe9a8761f980858629ede6a845684f736af",
+    "src/SptTest.hpp": "b70e2015ef6410c32a4acf17b7277cf2bc7f662280101fd1c451358a2725738e",
+    "src/AnmManager.cpp": "5b3545b319d18e3c0fa869f5a11390d9b5534148cc0fa867803d08796fe640c6"
+  },
+  "fixed_local_branches": [
+    [
+      56,
+      6,
+      276
+    ],
+    [
+      63,
+      2,
+      179
+    ],
+    [
+      66,
+      6,
+      520
+    ],
+    [
+      315,
+      2,
+      345
+    ],
+    [
+      343,
+      2,
+      358
+    ],
+    [
+      384,
+      2,
+      417
+    ],
+    [
+      415,
+      2,
+      430
+    ]
+  ],
+  "native_exit": 0,
+  "canonical_cold_exit": 0,
+  "comparison_exit": 0,
+  "historical_boundary_check_exit": 1,
+  "historical_boundary_check_reason": "Pre-existing manual versus automatic evidence-text mismatch at 0x00401100; not changed or relabeled."
+}

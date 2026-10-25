@@ -5892,3 +5892,18 @@ dependency result: the complete2669 exporter and its227 fields remain unchanged,
 with24 inlines rather than target9 writer calls plus15 inlines. Keep shared
 474494/4744B0 tables separately identity-bound; no extra exporter-owned bytes.
 See [proof, regression scope and failures](evidence/hint-writer-dependency-20261025/README.md).
+
+## Separate Spt Test Draw (2026-10-25)
+
+Target42C360/531 is a distinct authored display owner, not ScriptViewer40A940.
+First complete natural source and separate canonical cold replay pass531/all32,
+all7 fixed locals, actual callback42C590/10/all1 and real ASCII helper100/all4.
+The two-TU SptTest+AnmManager /GL /GS /EHs callback-root graph naturally selects
+EDI owner/ESI ASCII/EBX position; no ABI annotation or register hint is needed.
+The object's+2D8 ECL database differs from ScriptViewer's global manager;
+its missing-database output is argument-free `Ecl not load`. Coords are+2C4/+2C8,
+states2/3 return after fresh-global white restoration, and there is no VM tail.
+Reviewed authored numerator increases531; denominator stays273658. Newly
+bounded callback is origin-indeterminate and adds only overall exact10 bytes.
+Original production class/TU/storage and native runtime remain unknown.
+See [complete proof and focused observations](evidence/spt-test-draw-20261025/README.md).

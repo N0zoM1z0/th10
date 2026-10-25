@@ -1,0 +1,22 @@
+{
+  "original_ci_result": "passed",
+  "original_ci_exit": 0,
+  "stage_count": 113,
+  "first_native_inputs_unchanged": 113,
+  "original_ci_log_sha256": "856b94578877cd837fdeb8dfd0b12c4b8fc6139ff246de85b38f7b757bad42b8",
+  "original_verified_utc": "2026-10-25T06:42:15Z",
+  "setup_failure": "PEImage.sha256 property was called as method before freeze creation; shell continued to original CI. No original all-input frozen claim. Corrected metadata uses property and set -e; distinct final frozen validation follows.",
+  "transport": "Original CI and first status read MCP timed out; original terminal exit0 recovered without duplicate while pending.",
+  "final_frozen_validation": {
+    "result": "passed",
+    "exit": 0,
+    "stage_count": 113,
+    "frozen_input_count": 1515,
+    "frozen_changed": [],
+    "first_native_inputs_unchanged": 113,
+    "protected_d3d_files_unchanged": 9,
+    "ci_log_sha256": "aa1559dfd6f580afcf09555ba2d5446c1c28be3b7d2debd7c59c586e3e15ff47",
+    "verified_utc": "2026-10-25T06:51:37Z",
+    "post_verification_changes": "CI result documentation only."
+  }
+}

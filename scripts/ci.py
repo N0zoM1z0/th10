@@ -131,6 +131,7 @@ def main() -> int:
         run("Validate input polling, device failures and gameplay repeat", [sys.executable, "scripts/test-input-polling.py", "--no-mutations"])
         run("Validate script browser state and event order", [sys.executable, "scripts/test-script-viewer-update.py"])
         run("Validate script browser display and renderer calls", [sys.executable, "scripts/test-script-viewer-draw.py"])
+        run("Validate separate Spt Test display contracts", [sys.executable, "scripts/test-spt-test-draw.py"])
         run("Validate worker wait and restart order", [sys.executable, "scripts/test-script-viewer-worker.py"])
         run("Validate Ending owner and script state", [sys.executable, "scripts/test-ending-state.py", "--no-mutations"])
         run("Validate browser and manager destruction order", [sys.executable, "scripts/test-script-viewer-lifecycle.py"])

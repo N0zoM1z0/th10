@@ -782,6 +782,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0042B9C0,0x0042BA66,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=8; no overlap or external interior branch
 0x0042BAB0,0x0042BAB0,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0042C360,0x0042C572,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x42c593 to entry; independent IDA MCP extent agrees"
+0x0042C590,0x0042C599,reviewed,high,spt-test-draw-complete-owner-2026-10-25,"Independent pinned target dense10-byte decode through RET; registered callback pointer at42BBF5, actual ECX context to EDI body42C360; no ledger/body overlap, six CC suffix bytes before42C5A0. Fresh read-only architecture export retained; historical global401100 evidence-text mismatch remains."
 0x0042C5A0,0x0042C5A0,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0042C5C0,0x0042C612,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=31; no overlap or external interior branch
 0x0042C620,0x0042C66F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=48; no overlap or external interior branch

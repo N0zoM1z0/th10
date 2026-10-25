@@ -1101,3 +1101,5 @@ MainSetScreenColor
 GameErrorContext::Flush
 GameUpdateFaithDecay
 FileSystem::WriteToOpenFile
+SptTestView::Draw
+SptTestDrawCallback

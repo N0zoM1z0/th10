@@ -1,0 +1,36 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "body": {
+    "address": "0x0042C360",
+    "span_end": "0x0042C572",
+    "size": 531,
+    "code_bytes": 531,
+    "alignment_bytes": 0,
+    "table_bytes": 0,
+    "sha256": "5f9e511eabbee57ac359de46800836a116cf6bd738f96e7082035ea3d3b56473",
+    "suffix_cc_bytes": 13,
+    "origin": "prior authored_game/medium preserved"
+  },
+  "callback": {
+    "address": "0x0042C590",
+    "span_end": "0x0042C599",
+    "size": 10,
+    "sha256": "6e66d0cf4ec50c31ae168eaaaeabe81570c57e0b69cdefe93fc094e7daddb140",
+    "suffix_cc_bytes": 6,
+    "registration_reference": "0x0042BBF5",
+    "context_write": "0x0042BC14",
+    "draw_priority": 39,
+    "origin": "unknown/indeterminate: source-written callback versus compiler outlining unresolved"
+  },
+  "independent_review": {
+    "first": "repository-command:2cb60b87bab7438e94157999ef5ccfc4",
+    "canonical": "repository-command:1e8305d7b43f4f8fac6ecea3fb3b74d2",
+    "boundary": "repository-command:32a02245b3fc4b0883a9b4f10e484262"
+  },
+  "preflight": "repository-command:50fbc2ab95264878beebd8ba63fc9f2d",
+  "architecture_export": "repository-command:4f41d1009bb74640ba26921ea983aaca",
+  "factory_native_ghidra_check": "2026-10-25T06:24:28Z passed target:th10-main",
+  "authored_exact_delta": 531,
+  "authored_denominator_delta": 0,
+  "overall_exact_delta": 541
+}

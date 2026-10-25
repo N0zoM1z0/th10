@@ -1,0 +1,230 @@
+{
+  "spt-test-draw": [
+    {
+      "offset": 7,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    },
+    {
+      "offset": 12,
+      "type": "DIR32",
+      "symbol": "??_C@_09EPACFKEJ@Spt?5Test?6?$AA@",
+      "target": 4647124
+    },
+    {
+      "offset": 45,
+      "type": "REL32",
+      "symbol": "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ",
+      "target": 4200080
+    },
+    {
+      "offset": 74,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    },
+    {
+      "offset": 119,
+      "type": "REL32",
+      "symbol": "__ftol2",
+      "target": 4602668
+    },
+    {
+      "offset": 131,
+      "type": "REL32",
+      "symbol": "__ftol2",
+      "target": 4602668
+    },
+    {
+      "offset": 137,
+      "type": "DIR32",
+      "symbol": "??_C@_0O@LKELLPF@Pos?5?$CF?43d?5?$CF?43d?$AA@",
+      "target": 4640244
+    },
+    {
+      "offset": 146,
+      "type": "REL32",
+      "symbol": "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ",
+      "target": 4200080
+    },
+    {
+      "offset": 151,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    },
+    {
+      "offset": 181,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    },
+    {
+      "offset": 209,
+      "type": "DIR32",
+      "symbol": "??_C@_0L@OKBLGMCB@Loading?5?$CFs?$AA@",
+      "target": 4640324
+    },
+    {
+      "offset": 242,
+      "type": "REL32",
+      "symbol": "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ",
+      "target": 4200080
+    },
+    {
+      "offset": 248,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    },
+    {
+      "offset": 283,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    },
+    {
+      "offset": 331,
+      "type": "DIR32",
+      "symbol": "??_C@_07NPEDNENG@File?5?$CFs?$AA@",
+      "target": 4640316
+    },
+    {
+      "offset": 336,
+      "type": "REL32",
+      "symbol": "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ",
+      "target": 4200080
+    },
+    {
+      "offset": 346,
+      "type": "DIR32",
+      "symbol": "??_C@_0BA@DOIDIGMK@File?5not?5found?4?$AA@",
+      "target": 4640300
+    },
+    {
+      "offset": 351,
+      "type": "REL32",
+      "symbol": "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ",
+      "target": 4200080
+    },
+    {
+      "offset": 368,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    },
+    {
+      "offset": 403,
+      "type": "DIR32",
+      "symbol": "??_C@_06DMKEJMOH@Ecl?5?$CFs?$AA@",
+      "target": 4640292
+    },
+    {
+      "offset": 408,
+      "type": "REL32",
+      "symbol": "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ",
+      "target": 4200080
+    },
+    {
+      "offset": 418,
+      "type": "DIR32",
+      "symbol": "??_C@_0N@OPJEEJJA@Ecl?5not?5load?$AA@",
+      "target": 4647108
+    },
+    {
+      "offset": 423,
+      "type": "REL32",
+      "symbol": "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ",
+      "target": 4200080
+    },
+    {
+      "offset": 432,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    },
+    {
+      "offset": 437,
+      "type": "DIR32",
+      "symbol": "??_C@_04GMBKPCGK@Quit?$AA@",
+      "target": 4640276
+    },
+    {
+      "offset": 454,
+      "type": "REL32",
+      "symbol": "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ",
+      "target": 4200080
+    },
+    {
+      "offset": 463,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    },
+    {
+      "offset": 468,
+      "type": "DIR32",
+      "symbol": "??_C@_01PPODPGHN@?$DO?$AA@",
+      "target": 4640272
+    },
+    {
+      "offset": 474,
+      "type": "DIR32",
+      "symbol": "__real@41200000",
+      "target": 4656156
+    },
+    {
+      "offset": 488,
+      "type": "DIR32",
+      "symbol": "__real@41800000",
+      "target": 4655944
+    },
+    {
+      "offset": 497,
+      "type": "REL32",
+      "symbol": "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ",
+      "target": 4200080
+    },
+    {
+      "offset": 503,
+      "type": "DIR32",
+      "symbol": "?g_AsciiManagerView@@3PAUAsciiManagerView@@A",
+      "target": 4683488
+    }
+  ],
+  "spt-test-draw-callback": [
+    {
+      "offset": 4,
+      "type": "REL32",
+      "symbol": "?Draw@SptTestView@@QAEHXZ",
+      "target": 4375392
+    }
+  ],
+  "spt-test-ascii-guard": [
+    {
+      "offset": 7,
+      "type": "DIR32",
+      "symbol": "___security_cookie",
+      "target": 4666976
+    },
+    {
+      "offset": 42,
+      "type": "REL32",
+      "symbol": "_vsprintf",
+      "target": 4531366
+    },
+    {
+      "offset": 55,
+      "type": "REL32",
+      "symbol": "?AddString@AsciiManagerView@@QAEXPAUAnmFloat3View@@PBD@Z",
+      "target": 4199728
+    },
+    {
+      "offset": 89,
+      "type": "REL32",
+      "symbol": "@__security_check_cookie@4",
+      "target": 4558501
+    }
+  ]
+}

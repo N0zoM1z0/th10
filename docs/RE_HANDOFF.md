@@ -4,6 +4,19 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [separate Spt Test Draw](evidence/spt-test-draw-20261025/README.md)
+closes **531 authored bytes / one owner** on the first complete natural model.
+A separate canonical cold link independently reproduces Draw531/all32,
+callback10/all1 and real ASCII helper100/all4, including all seven fixed locals.
+Only SptTest.cpp plus AnmManager.cpp, /GL /GS /EHs and the real callback root
+are needed; no forced ABI or inherited fourteen-TU graph. Callback42C590 is
+newly bounded but origin-indeterminate, adding no authored denominator/bytes.
+Authored exact is now **75710/273658, 415 owners**; authored source620/249168.
+Focused host tests and all113 final CI stages pass; all1515 frozen inputs
+including nine protected files are unchanged, verified06:51:37 UTC. Original
+CI also passed but its freeze setup failed; the distinct corrected frozen pass
+is separately recorded. MCP timeout recovery did not duplicate active runs.
+Existing historical boundary evidence-text mismatch401100 remains unchanged.
 Current [Hint writer dependency](evidence/hint-writer-dependency-20261025/README.md)
 recovers the real -1/-2/0 return contract with ordinary parameters. Two canonical
 cold replays reproduce standalone writer **76/all 7 exact**, with independent
@@ -192,13 +205,13 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | Stage reset / transition / targets 214 / 119 | Ignored complete four-TU models 184 / 263 bytes; full reset alignment retained; nonexact |
 | Ending Run / target 1568 | Fresh source-current 1576 bytes; complete alignment / 18 table words / 53 locals retained; nonexact |
 | HUD UpdateStageElements / target 3836 | Candidate 3824 bytes: 3796 code + 0 alignment + 28 table; 72 syntactic fields / 249 locals / 21 calls; nonexact |
-| Authored / source / authored exact | 735 functions / 273658 bytes; source 619 / 248637; exact 414 / 75179 |
-| Authored source-present nonexact / absent | 205 / 116 functions |
-| Overall exact / mappings | 1257 functions / 142110 bytes; 1103 mappings |
+| Authored / source / authored exact | 735 functions / 273658 bytes; source 620 / 249168; exact 415 / 75710 |
+| Authored source-present nonexact / absent | 205 / 115 functions |
+| Overall exact / mappings | 1259 functions / 142651 bytes; 1105 mappings |
 | Windows i386 product / runtime | Open; semantic reconstruction and portability not started |
 
-[Live progress](PROGRESS.md): 1777 candidates and reviewed boundaries,
-518 excluded and 524 indeterminate origins. The focused Flush admission adds
+[Live progress](PROGRESS.md): 1778 candidates and reviewed boundaries,
+518 excluded and 525 indeterminate origins. The focused Flush admission adds
 one authored boundary/origin and source mapping; its 79 exact bytes were credited
 only after fresh canonical replay. All prior ledger rows were byte-preserved.
 Progress and SVG reflect the new numerator and denominator separately. No
