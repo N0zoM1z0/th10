@@ -1,0 +1,155 @@
+[
+  {
+    "instruction": "0x405893",
+    "offset": 54,
+    "type": "DIR32",
+    "encoded_target": "0x476f78",
+    "role": "g_PlayerTimerScale",
+    "base_target": "0x476f78",
+    "addend": 0
+  },
+  {
+    "instruction": "0x40589d",
+    "offset": 62,
+    "type": "DIR32",
+    "encoded_target": "0x477834",
+    "role": "g_Player",
+    "base_target": "0x477834",
+    "addend": 0
+  },
+  {
+    "instruction": "0x4058d9",
+    "offset": 122,
+    "type": "DIR32",
+    "encoded_target": "0x4776f4",
+    "role": "g_EnemyGameState",
+    "base_target": "0x4776f4",
+    "addend": 0
+  },
+  {
+    "instruction": "0x4058ff",
+    "offset": 160,
+    "type": "DIR32",
+    "encoded_target": "0x474c68",
+    "role": "g_GameStatisticsIndex0",
+    "base_target": "0x474c68",
+    "addend": 0
+  },
+  {
+    "instruction": "0x405917",
+    "offset": 185,
+    "type": "DIR32",
+    "encoded_target": "0x4776f0",
+    "role": "g_EnemyPrimaryResourceOwner",
+    "base_target": "0x4776f0",
+    "addend": 0
+  },
+  {
+    "instruction": "0x40592b",
+    "offset": 204,
+    "type": "REL32",
+    "encoded_target": "0x448db0",
+    "role": "AnmLoadedView::CreateVmAtWorldVariant0",
+    "base_target": "0x448db0",
+    "addend": 0
+  },
+  {
+    "instruction": "0x40593a",
+    "offset": 219,
+    "type": "DIR32",
+    "encoded_target": "0x492590",
+    "role": "g_MainSoundOwner",
+    "base_target": "0x492590",
+    "addend": 0
+  },
+  {
+    "instruction": "0x405942",
+    "offset": 227,
+    "type": "REL32",
+    "encoded_target": "0x43dd10",
+    "role": "EnemySoundQueueView::QueueSoundCue",
+    "base_target": "0x43dd10",
+    "addend": 0
+  },
+  {
+    "instruction": "0x405947",
+    "offset": 234,
+    "type": "DIR32",
+    "encoded_target": "0x474c48",
+    "role": "g_PlayerPower",
+    "base_target": "0x474c48",
+    "addend": 0
+  },
+  {
+    "instruction": "0x405956",
+    "offset": 248,
+    "type": "DIR32",
+    "encoded_target": "0x47770c",
+    "role": "g_ItemPowerDisplayOwner",
+    "base_target": "0x47770c",
+    "addend": 0
+  },
+  {
+    "instruction": "0x405975",
+    "offset": 278,
+    "type": "REL32",
+    "encoded_target": "0x4054b0",
+    "role": "ItemPowerDisplayOwnerView::UpdatePowerDisplay",
+    "base_target": "0x4054b0",
+    "addend": 0
+  },
+  {
+    "instruction": "0x40597a",
+    "offset": 284,
+    "type": "DIR32",
+    "encoded_target": "0x4776f4",
+    "role": "g_EnemyGameState",
+    "base_target": "0x4776f4",
+    "addend": 0
+  },
+  {
+    "instruction": "0x405982",
+    "offset": 291,
+    "type": "REL32",
+    "encoded_target": "0x405500",
+    "role": "EnemyGameStateView::CancelSpellBonusAfterGrace",
+    "base_target": "0x405500",
+    "addend": 0
+  },
+  {
+    "instruction": "0x405987",
+    "offset": 296,
+    "type": "DIR32",
+    "encoded_target": "0x474c98",
+    "role": "g_GameScoreState",
+    "base_target": "0x474c40",
+    "addend": 88
+  },
+  {
+    "instruction": "0x405996",
+    "offset": 311,
+    "type": "DIR32",
+    "encoded_target": "0x474c98",
+    "role": "g_GameScoreState",
+    "base_target": "0x474c40",
+    "addend": 88
+  },
+  {
+    "instruction": "0x40599e",
+    "offset": 320,
+    "type": "DIR32",
+    "encoded_target": "0x474c98",
+    "role": "g_GameScoreState",
+    "base_target": "0x474c40",
+    "addend": 88
+  },
+  {
+    "instruction": "0x4059b1",
+    "offset": 339,
+    "type": "DIR32",
+    "encoded_target": "0x474c98",
+    "role": "g_GameScoreState",
+    "base_target": "0x474c40",
+    "addend": 88
+  }
+]

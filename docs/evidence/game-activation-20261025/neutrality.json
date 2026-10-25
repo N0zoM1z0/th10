@@ -1,0 +1,14 @@
+[
+  {
+    "symbol_substring": "PlayerNotifyPowerTransition@@",
+    "size": 456,
+    "raw_identical": true,
+    "sha256": "d0cc6174825f47e53afca591d67a0e4d0b2c4b3acbda7b9b33405b089d952351"
+  },
+  {
+    "symbol_substring": "CancelSpellBonusAfterGrace@",
+    "size": 89,
+    "raw_identical": true,
+    "sha256": "23d3d76109221518d5566ae68ec732c4a0f679f9b8dfecd2e5d17b31f297830d"
+  }
+]

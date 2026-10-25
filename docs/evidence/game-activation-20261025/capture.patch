@@ -1,0 +1,166 @@
+--- a/Player.cpp
++++ b/Player.cpp
+@@ -1,4 +1,6 @@
+ #include "EnemyGameState.hpp"
++#include "EnemySoundQueue.hpp"
++#include "ItemPowerDisplay.hpp"
+ #include "Player.hpp"
+ #include "Chain.hpp"
+ #include "GameErrorContext.hpp"
+@@ -155,12 +157,13 @@
+ 
+ struct PlayerUpdateGate28
+ {
+-    unsigned char unknown000[0x28];
++    unsigned char unknown000[0x14];
++    GameScoreTimerView timer;
+     int value28;
+-    unsigned char unknown02C[4];
++    AnmVmIdView vmId;
+     PlayerFloat3 position;
+     float radius;
+-    unsigned char unknown040[4];
++    float value40;
+     int mode;
+ 
+     int GetDamageAtPosition(const PlayerFloat3 *targetPosition);
+@@ -232,7 +235,7 @@
+ 
+ // Descriptive interfaces for target-observed Player update callees. Their
+ // original identifiers and private register conventions remain unproven.
+-void PlayerNotifyPowerTransition(PlayerUpdateGate28 *gate);
++int __stdcall PlayerNotifyPowerTransition(PlayerUpdateGate28 *gate);
+ void PlayerUpdatePowerDisplay(int value, int valueAgain, int percent);
+ void PlayerStartPowerDisplayTimer(int frames);
+ void PlayerEmitStateTransitionEffect(float value, int mode, int variant);
+@@ -2308,3 +2311,67 @@
+     for (i = 0; i < 4; ++i)
+         player->options[i].resetFlag = 1;
+ }
++
++// Complete target405500, including the intentionally unchanged frontVms[2].
++void EnemyGameStateView::CancelSpellBonusAfterGrace()
++{
++    if (spellTimer.current >= 60)
++    {
++        unsigned int flags = flags378C;
++        currentSpellBonus = 0;
++        flags378C = flags & ~2u;
++        frontVms[0].flags35C &= ~2u;
++        frontVms[1].flags35C &= ~2u;
++        frontVms[3].flags35C &= ~2u;
++        frontVms[4].flags35C &= ~2u;
++        frontVms[5].flags35C &= ~2u;
++        frontVms[6].flags35C &= ~2u;
++        frontVms[7].flags35C &= ~2u;
++    }
++}
++
++extern unsigned char g_MainSoundOwner[0x52d0];
++// Complete target405860, ordinary one-argument stack cleanup contract.
++int __stdcall PlayerNotifyPowerTransition(PlayerUpdateGate28 *gate)
++{
++    if (gate->value28 != 0)
++        return -1;
++    gate->value28 = 1;
++    if ((gate->timer.flags & 1u) == 0)
++    {
++        gate->timer.current = 0;
++        gate->timer.previous = -999999;
++        gate->timer.subframe = 0.0f;
++        gate->timer.scale = &g_PlayerTimerScale;
++        gate->timer.flags |= 1u;
++    }
++    gate->timer.current = 0;
++    gate->timer.subframe = 0.0f;
++    gate->timer.previous = -1;
++    Player *player = g_Player;
++    gate->position = player->drawPosition;
++    gate->radius = 32.0f;
++    gate->value40 = 4.0f;
++    EnemyGameStateView *panel = g_EnemyGameState;
++    int script;
++    if (((panel->flags378C & 1u) != 0 &&
++         panel->spellId >= 93 && panel->spellId <= 96) || panel->spellId == 109)
++        script = 441;
++    else
++        script = 400 + (g_GameStatisticsIndex0 != 0 ? 7 : 0);
++    gate->vmId = reinterpret_cast<BulletManagerView *>(g_EnemyPrimaryResourceOwner)
++        ->bulletAnm->CreateVmAtWorldVariant0(script,
++            reinterpret_cast<const AnmFloat3View *>(&gate->position));
++    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundCue(38, gate->position.x);
++    int power = g_PlayerPower;
++    g_ItemPowerDisplayOwner->UpdatePowerDisplay(power / 20, ((power % 20) * 100) / 20);
++    panel = g_EnemyGameState;
++    panel->CancelSpellBonusAfterGrace();
++    g_GameScoreState.rank -= 128;
++    if (g_GameScoreState.rank > 1024)
++        g_GameScoreState.rank = 1024;
++    else if (g_GameScoreState.rank < -1024)
++        g_GameScoreState.rank = -1024;
++    gate->mode = (panel->flags378C & 1u) != 0 && panel->spellTimer.current >= 60;
++    return 0;
++}
+--- a/EnemyGameState.hpp
++++ b/EnemyGameState.hpp
+@@ -22,6 +22,7 @@
+     AnmFloat3View effectPosition;
+ 
+     int UpdateSpellPanel();
++    void CancelSpellBonusAfterGrace();
+ };
+ typedef char EnemySpellEmbeddedVmsAt10[
+     (offsetof(EnemyGameStateView, stageVms) == 0x10) ? 1 : -1];
+--- a/ItemManager.cpp
++++ b/ItemManager.cpp
+@@ -1,3 +1,4 @@
++#include "ItemPowerDisplay.hpp"
+ #include "EnemySoundQueue.hpp"
+ #include "GuiScore.hpp"
+ #include <stddef.h>
+@@ -122,22 +123,6 @@
+     int value28;
+ };
+ struct ItemPopupOwnerView;
+-struct ItemPowerDisplayOwnerView
+-{
+-    unsigned char unknown0000[0x6a8c];
+-    AnmVmView powerVms[4];
+-    unsigned char unknown793C[0x9e18 - 0x793c];
+-    AnmVmIdView powerNoticeVmId;
+-    unsigned char unknown9E1C[0x9ec8 - 0x9e1c];
+-    AnmLoadedView *frontAnm;
+-    void UpdatePowerDisplay(int value, int percent);
+-};
+-typedef char ItemPowerVmsAt6A8C[
+-    (offsetof(ItemPowerDisplayOwnerView, powerVms) == 0x6a8c) ? 1 : -1];
+-typedef char ItemPowerFrontAnmAt9EC8[
+-    (offsetof(ItemPowerDisplayOwnerView, frontAnm) == 0x9ec8) ? 1 : -1];
+-typedef char ItemPowerNoticeVmAt9E18[
+-    (offsetof(ItemPowerDisplayOwnerView, powerNoticeVmId) == 0x9e18) ? 1 : -1];
+ extern ItemAutoCollectGateView *g_ItemAutoCollectGate;
+ extern ItemPopupOwnerView *g_ItemPopupOwner;
+ extern ItemPowerDisplayOwnerView *g_ItemPowerDisplayOwner; // 0x47770C
+--- /dev/null
++++ b/ItemPowerDisplay.hpp
+@@ -0,0 +1,20 @@
++#pragma once
++#include "AnmManager.hpp"
++#include <stddef.h>
++struct ItemPowerDisplayOwnerView
++{
++    unsigned char unknown0000[0x6a8c];
++    AnmVmView powerVms[4];
++    unsigned char unknown793C[0x9e18 - 0x793c];
++    AnmVmIdView powerNoticeVmId;
++    unsigned char unknown9E1C[0x9ec8 - 0x9e1c];
++    AnmLoadedView *frontAnm;
++    void UpdatePowerDisplay(int value, int percent);
++};
++typedef char ItemPowerVmsAt6A8C[
++    (offsetof(ItemPowerDisplayOwnerView, powerVms) == 0x6a8c) ? 1 : -1];
++typedef char ItemPowerFrontAnmAt9EC8[
++    (offsetof(ItemPowerDisplayOwnerView, frontAnm) == 0x9ec8) ? 1 : -1];
++typedef char ItemPowerNoticeVmAt9E18[
++    (offsetof(ItemPowerDisplayOwnerView, powerNoticeVmId) == 0x9e18) ? 1 : -1];
++extern ItemPowerDisplayOwnerView *g_ItemPowerDisplayOwner;

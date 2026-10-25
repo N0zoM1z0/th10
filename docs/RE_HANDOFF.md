@@ -4,6 +4,16 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [game activation pilot](evidence/game-activation-20261025/README.md)
+retains first complete activation456/397 and helper89/81 in the actual Player
+callback graph. A target-grounded flags-capture correction is whole-body raw
+identical, falsifying the scheduling prediction. All17 target fields/12 locals
+are explicit; existing gate/global and power-display declaration are shared.
+Hidden world-creator result naturally reuses the dead argument slot; power
+helper inlining, not a fabricated ABI, expands the parent. Both images preserve
+five complete guards486/all9. Source proposals remain isolated; no source/exact
+or metric changes. Unsupported scheduling/inline/profile panels are parked,
+protected9 and prior proofs unchanged; no new full-CI or runtime claim.
 Current [replay-stage restore pilot](evidence/replay-stage-restore-20261025/README.md)
 retains three complete models **344/356,357/356,357/356**; actual root417870
 (callsite417AFB) remains1053/1009 then1070/1009, nonexact. A coherent33-file

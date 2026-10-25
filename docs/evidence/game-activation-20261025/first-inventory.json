@@ -1,0 +1,736 @@
+{
+  "target": {
+    "address": 4216928,
+    "size": 397,
+    "locals": [
+      [
+        12,
+        2,
+        21
+      ],
+      [
+        34,
+        2,
+        61
+      ],
+      [
+        132,
+        2,
+        150
+      ],
+      [
+        143,
+        2,
+        150
+      ],
+      [
+        148,
+        2,
+        178
+      ],
+      [
+        157,
+        2,
+        178
+      ],
+      [
+        176,
+        2,
+        183
+      ],
+      [
+        316,
+        2,
+        330
+      ],
+      [
+        328,
+        2,
+        347
+      ],
+      [
+        335,
+        2,
+        347
+      ],
+      [
+        360,
+        2,
+        382
+      ],
+      [
+        369,
+        2,
+        382
+      ]
+    ],
+    "calls": [
+      [
+        203,
+        "0x448db0"
+      ],
+      [
+        226,
+        "0x43dd10"
+      ],
+      [
+        277,
+        "0x4054b0"
+      ],
+      [
+        290,
+        "0x405500"
+      ]
+    ],
+    "raw_decoder_fields": {
+      "decoded_bytes": 397,
+      "normalization_complete": true,
+      "fields": [
+        {
+          "offset": 204,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4492720,
+          "candidate_symbols": [],
+          "instruction_end": 208
+        },
+        {
+          "offset": 227,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4447504,
+          "candidate_symbols": [],
+          "instruction_end": 231
+        },
+        {
+          "offset": 278,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4215984,
+          "candidate_symbols": [],
+          "instruction_end": 282
+        },
+        {
+          "offset": 291,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4216064,
+          "candidate_symbols": [],
+          "instruction_end": 295
+        }
+      ]
+    },
+    "fields": {
+      "fields": [
+        {
+          "instruction": "0x405893",
+          "offset": 54,
+          "type": "DIR32",
+          "encoded_target": "0x476f78",
+          "role": "g_PlayerTimerScale",
+          "base_target": "0x476f78",
+          "addend": 0
+        },
+        {
+          "instruction": "0x40589d",
+          "offset": 62,
+          "type": "DIR32",
+          "encoded_target": "0x477834",
+          "role": "g_Player",
+          "base_target": "0x477834",
+          "addend": 0
+        },
+        {
+          "instruction": "0x4058d9",
+          "offset": 122,
+          "type": "DIR32",
+          "encoded_target": "0x4776f4",
+          "role": "g_EnemyGameState",
+          "base_target": "0x4776f4",
+          "addend": 0
+        },
+        {
+          "instruction": "0x4058ff",
+          "offset": 160,
+          "type": "DIR32",
+          "encoded_target": "0x474c68",
+          "role": "g_GameStatisticsIndex0",
+          "base_target": "0x474c68",
+          "addend": 0
+        },
+        {
+          "instruction": "0x405917",
+          "offset": 185,
+          "type": "DIR32",
+          "encoded_target": "0x4776f0",
+          "role": "g_EnemyPrimaryResourceOwner",
+          "base_target": "0x4776f0",
+          "addend": 0
+        },
+        {
+          "instruction": "0x40592b",
+          "offset": 204,
+          "type": "REL32",
+          "encoded_target": "0x448db0",
+          "role": "AnmLoadedView::CreateVmAtWorldVariant0",
+          "base_target": "0x448db0",
+          "addend": 0
+        },
+        {
+          "instruction": "0x40593a",
+          "offset": 219,
+          "type": "DIR32",
+          "encoded_target": "0x492590",
+          "role": "g_MainSoundOwner",
+          "base_target": "0x492590",
+          "addend": 0
+        },
+        {
+          "instruction": "0x405942",
+          "offset": 227,
+          "type": "REL32",
+          "encoded_target": "0x43dd10",
+          "role": "EnemySoundQueueView::QueueSoundCue",
+          "base_target": "0x43dd10",
+          "addend": 0
+        },
+        {
+          "instruction": "0x405947",
+          "offset": 234,
+          "type": "DIR32",
+          "encoded_target": "0x474c48",
+          "role": "g_PlayerPower",
+          "base_target": "0x474c48",
+          "addend": 0
+        },
+        {
+          "instruction": "0x405956",
+          "offset": 248,
+          "type": "DIR32",
+          "encoded_target": "0x47770c",
+          "role": "g_ItemPowerDisplayOwner",
+          "base_target": "0x47770c",
+          "addend": 0
+        },
+        {
+          "instruction": "0x405975",
+          "offset": 278,
+          "type": "REL32",
+          "encoded_target": "0x4054b0",
+          "role": "ItemPowerDisplayOwnerView::UpdatePowerDisplay",
+          "base_target": "0x4054b0",
+          "addend": 0
+        },
+        {
+          "instruction": "0x40597a",
+          "offset": 284,
+          "type": "DIR32",
+          "encoded_target": "0x4776f4",
+          "role": "g_EnemyGameState",
+          "base_target": "0x4776f4",
+          "addend": 0
+        },
+        {
+          "instruction": "0x405982",
+          "offset": 291,
+          "type": "REL32",
+          "encoded_target": "0x405500",
+          "role": "EnemyGameStateView::CancelSpellBonusAfterGrace",
+          "base_target": "0x405500",
+          "addend": 0
+        },
+        {
+          "instruction": "0x405987",
+          "offset": 296,
+          "type": "DIR32",
+          "encoded_target": "0x474c98",
+          "role": "g_GameScoreState",
+          "base_target": "0x474c40",
+          "addend": 88
+        },
+        {
+          "instruction": "0x405996",
+          "offset": 311,
+          "type": "DIR32",
+          "encoded_target": "0x474c98",
+          "role": "g_GameScoreState",
+          "base_target": "0x474c40",
+          "addend": 88
+        },
+        {
+          "instruction": "0x40599e",
+          "offset": 320,
+          "type": "DIR32",
+          "encoded_target": "0x474c98",
+          "role": "g_GameScoreState",
+          "base_target": "0x474c40",
+          "addend": 88
+        },
+        {
+          "instruction": "0x4059b1",
+          "offset": 339,
+          "type": "DIR32",
+          "encoded_target": "0x474c98",
+          "role": "g_GameScoreState",
+          "base_target": "0x474c40",
+          "addend": 88
+        }
+      ],
+      "complete_target_role_inventory": true
+    }
+  },
+  "helper-target": {
+    "address": 4216064,
+    "size": 81,
+    "fields": {
+      "decoded_bytes": 81,
+      "normalization_complete": true,
+      "fields": []
+    },
+    "locals": [
+      [
+        7,
+        2,
+        80
+      ]
+    ],
+    "calls": []
+  },
+  "candidate": {
+    "address": 4213232,
+    "size": 456,
+    "fields": {
+      "decoded_bytes": 456,
+      "normalization_complete": true,
+      "fields": [
+        {
+          "offset": 54,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293440,
+          "candidate_symbols": [
+            "?g_PlayerTimerScale@@3MA",
+            "_th10_ltcg_probe_anchor_0208"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 62,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293316,
+          "candidate_symbols": [
+            "?g_Player@@3PAUPlayer@@A",
+            "_th10_ltcg_probe_anchor_0177"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 109,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293156,
+          "candidate_symbols": [
+            "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+            "_th10_ltcg_probe_anchor_0137"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 168,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293252,
+          "candidate_symbols": [
+            "?g_GameStatisticsIndex0@@3HA",
+            "_th10_ltcg_probe_anchor_0161"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 186,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293196,
+          "candidate_symbols": [
+            "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A",
+            "_th10_ltcg_probe_anchor_0147"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 204,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4238560,
+          "candidate_symbols": [
+            "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z"
+          ],
+          "instruction_end": 208
+        },
+        {
+          "offset": 219,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293308,
+          "candidate_symbols": [
+            "?g_MainSoundOwner@@3PAEA",
+            "_th10_ltcg_probe_anchor_0175"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 227,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4267568,
+          "candidate_symbols": [
+            "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z"
+          ],
+          "instruction_end": 231
+        },
+        {
+          "offset": 234,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293404,
+          "candidate_symbols": [
+            "?g_PlayerPower@@3FA",
+            "_th10_ltcg_probe_anchor_0199"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 248,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293292,
+          "candidate_symbols": [
+            "?g_ItemPowerDisplayOwner@@3PAUItemPowerDisplayOwnerView@@A",
+            "_th10_ltcg_probe_anchor_0171"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 290,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4237104,
+          "candidate_symbols": [
+            "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+          ],
+          "instruction_end": 294
+        },
+        {
+          "offset": 322,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4237104,
+          "candidate_symbols": [
+            "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+          ],
+          "instruction_end": 326
+        },
+        {
+          "offset": 342,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4237104,
+          "candidate_symbols": [
+            "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+          ],
+          "instruction_end": 346
+        },
+        {
+          "offset": 347,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293156,
+          "candidate_symbols": [
+            "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+            "_th10_ltcg_probe_anchor_0137"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 352,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4213136,
+          "candidate_symbols": [
+            "?CancelSpellBonusAfterGrace@EnemyGameStateView@@QAEXXZ"
+          ],
+          "instruction_end": 356
+        },
+        {
+          "offset": 358,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293336,
+          "candidate_symbols": [
+            "?g_PlayerCharacter@@3HA",
+            "_th10_ltcg_probe_anchor_0182"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 378,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293336,
+          "candidate_symbols": [
+            "?g_PlayerCharacter@@3HA",
+            "_th10_ltcg_probe_anchor_0182"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 387,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293336,
+          "candidate_symbols": [
+            "?g_PlayerCharacter@@3HA",
+            "_th10_ltcg_probe_anchor_0182"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 407,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293336,
+          "candidate_symbols": [
+            "?g_PlayerCharacter@@3HA",
+            "_th10_ltcg_probe_anchor_0182"
+          ],
+          "instruction_end": null
+        }
+      ]
+    },
+    "locals": [
+      [
+        12,
+        2,
+        21
+      ],
+      [
+        34,
+        2,
+        61
+      ],
+      [
+        133,
+        2,
+        151
+      ],
+      [
+        144,
+        2,
+        151
+      ],
+      [
+        149,
+        2,
+        160
+      ],
+      [
+        158,
+        2,
+        167
+      ],
+      [
+        165,
+        2,
+        184
+      ],
+      [
+        383,
+        2,
+        397
+      ],
+      [
+        395,
+        2,
+        415
+      ],
+      [
+        403,
+        2,
+        415
+      ],
+      [
+        422,
+        2,
+        447
+      ],
+      [
+        431,
+        2,
+        447
+      ]
+    ],
+    "calls": [
+      [
+        203,
+        "0x40ace0"
+      ],
+      [
+        226,
+        "0x411e30"
+      ],
+      [
+        289,
+        "0x40a730"
+      ],
+      [
+        321,
+        "0x40a730"
+      ],
+      [
+        341,
+        "0x40a730"
+      ],
+      [
+        351,
+        "0x404990"
+      ]
+    ],
+    "rank_binding": {
+      "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+      "map_public": "0x418280",
+      "addend": 88,
+      "encoded": "0x4182d8",
+      "target_base": "0x474c40",
+      "target_encoded": "0x474c98",
+      "note": "Nearest-anchor labels are not semantic identity."
+    }
+  },
+  "helper-candidate": {
+    "address": 4213136,
+    "size": 89,
+    "fields": {
+      "decoded_bytes": 89,
+      "normalization_complete": true,
+      "fields": []
+    },
+    "locals": [
+      [
+        7,
+        2,
+        88
+      ]
+    ],
+    "calls": []
+  },
+  "creator-candidate": {
+    "address": 4238560,
+    "size": 116,
+    "fields": {
+      "decoded_bytes": 116,
+      "normalization_complete": true,
+      "fields": [
+        {
+          "offset": 9,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293084,
+          "candidate_symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "_th10_ltcg_probe_anchor_0119"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 14,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4225968,
+          "candidate_symbols": [
+            "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+          ],
+          "instruction_end": 18
+        },
+        {
+          "offset": 52,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289112,
+          "candidate_symbols": [
+            "__real@43600000"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 69,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289108,
+          "candidate_symbols": [
+            "__real@41800000"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 93,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4237888,
+          "candidate_symbols": [
+            "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+          ],
+          "instruction_end": 97
+        },
+        {
+          "offset": 99,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4293084,
+          "candidate_symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "_th10_ltcg_probe_anchor_0119"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 106,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4226128,
+          "candidate_symbols": [
+            "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+          ],
+          "instruction_end": 110
+        }
+      ]
+    },
+    "locals": [],
+    "calls": [
+      [
+        13,
+        "0x407bb0"
+      ],
+      [
+        92,
+        "0x40aa40"
+      ],
+      [
+        105,
+        "0x407c50"
+      ]
+    ]
+  }
+}
