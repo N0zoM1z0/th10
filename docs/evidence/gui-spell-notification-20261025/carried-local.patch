@@ -1,0 +1,117 @@
+--- a/src/Gui.cpp
++++ b/src/Gui.cpp
+@@ -2121,0 +2122,65 @@
++
++// Full target 0x4172E0 notification, including every event arm.
++void GuiNotifySpell(GuiView *gui, int event, int value)
++{
++    switch (event) {
++    case 0: {
++        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
++        gui->specialVmId9E14.value = 0;
++        gui->specialVmId9E14 = gui->frontAnm->CreateVmVariant0(0x47, 15);
++        int remaining = value;
++        int visible = 0;
++        int divisor = 10000000;
++        AnmRenderManagerView *manager = g_AnmRenderManagerView;
++        for (int i = 0; i < 8; ++i) {
++            AnmVmIdView *id = &gui->valueVmIds[i];
++            manager->MarkVmForDeletion(*id);
++            id->value = 0;
++            AnmLoadedView *front = gui->frontAnm;
++            AnmVmView *vm = manager->AllocateVm();
++            vm->renderLayer = 15;
++            vm->flags35C |= 0x40000000u;
++            front->InitializeVm(vm, i + 0x27);
++            manager = g_AnmRenderManagerView;
++            AnmVmIdView created = manager->AddVmVariant0(vm);
++            int digit = remaining / divisor;
++            int remainder = remaining % divisor;
++            *id = created;
++            if (digit != 0) visible = 1;
++            vm = manager->FindVm(*id);
++            if (vm != 0) vm->anmFile->SetSprite(vm, digit + 8);
++            if (visible == 0) id->ClearFlag2();
++            else id->SetFlag2();
++            divisor /= 10;
++            remaining = remainder;
++        }
++        return;
++    }
++    case 1:
++        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
++        gui->specialVmId9E14.value = 0;
++        gui->specialVmId9E14 = gui->frontAnm->CreateVmVariant0(0x48, 15);
++        return;
++    case 2:
++        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E18);
++        gui->specialVmId9E18.value = 0;
++        gui->specialVmId9E18 = gui->frontAnm->CreateVmVariant0(0x49, 15);
++        return;
++    case 3:
++        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E18);
++        gui->specialVmId9E18.value = 0;
++        gui->specialVmId9E18 = gui->frontAnm->CreateVmVariant0(0x4a, 15);
++        return;
++    case 4:
++        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E18);
++        gui->specialVmId9E18.value = 0;
++        gui->specialVmId9E18 = gui->frontAnm->CreateVmVariant0(0x4b, 15);
++        return;
++    case 5: return;
++    case 6:
++        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
++        gui->specialVmId9E14.value = 0;
++        gui->specialVmId9E14 = gui->frontAnm->CreateVmVariant0(0x4c, 15);
++        return;
++    }
++}
+--- a/src/Gui.hpp
++++ b/src/Gui.hpp
+@@ -198,0 +199 @@
++void GuiNotifySpell(GuiView *gui, int event, int value);
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -11,0 +12,3 @@
++#include "StageScript.hpp"
++#include "GuiScore.hpp"
++extern StageScriptView *g_StagePrimary;
+@@ -2857,0 +2861,38 @@
++
++// Full target 0x409C00, called by the maintained END_SPELL dispatcher arm.
++void EnemyEndSpell(EnemyGameStateView *state)
++{
++    if ((state->flags378C & 1) == 0) return;
++    g_StagePrimary->flags |= 1;
++    EnemyMarkPendingInterrupt(&state->panelVmIds[0].value);
++    EnemyMarkPendingInterrupt(&state->panelVmIds[1].value);
++    EnemyMarkPendingInterrupt(&state->panelVmIds[2].value);
++    unsigned int flags = state->flags378C;
++    AnmRenderManagerView *manager = g_AnmRenderManagerView;
++    state->flags378C = flags & ~1u;
++    manager->MarkVmForDeletion(AnmVmIdView(state->managedVmId));
++    state->managedVmId = 0;
++    if ((state->flags378C & 2) != 0) {
++        g_GuiScore.Add(state->currentSpellBonus);
++        GuiNotifySpell(g_GuiView, 0, state->currentSpellBonus);
++        if (*reinterpret_cast<int *>(g_EnemySpellPlaybackState + 0x10) != 1) {
++            unsigned char *statistics = g_EnemySpellStatistics;
++            unsigned char *record = statistics +
++                (g_EnemyChapterState.statisticsGroupA * 3 +
++                 g_EnemyChapterState.statisticsGroupB) * 0x437c +
++                state->spellId * 0x90 + 0x5a4;
++            int count = *reinterpret_cast<int *>(record + 0x80);
++            if (count < 99999) *reinterpret_cast<int *>(record + 0x80) = count + 1;
++            record = statistics + state->spellId * 0x90 + 0x19a8c;
++            count = *reinterpret_cast<int *>(record + 0x80);
++            if (count < 99999) *reinterpret_cast<int *>(record + 0x80) = count + 1;
++        }
++        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(0x2d, 0);
++    } else {
++        GuiView *gui = g_GuiView;
++        AnmVmIdView *id = &gui->specialVmId9E14;
++        manager->MarkVmForDeletion(*id);
++        id->value = 0;
++        *id = gui->frontAnm->CreateVmVariant0(0x48, 15);
++    }
++}

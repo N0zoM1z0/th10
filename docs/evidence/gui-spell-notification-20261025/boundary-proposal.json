@@ -1,0 +1,19 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "entry": "0x4172e0",
+  "code_size": 640,
+  "table_address": "0x417560",
+  "table_words": [
+    "0x4172f9",
+    "0x417441",
+    "0x417460",
+    "0x4174a0",
+    "0x4174e0",
+    "0x417558",
+    "0x417520"
+  ],
+  "owned_size_proposal": 668,
+  "padding_after": "cccccccc",
+  "selector_guard": "unsigned eax > 6 exits; sole table xref4172F2",
+  "ledger_changed": false
+}

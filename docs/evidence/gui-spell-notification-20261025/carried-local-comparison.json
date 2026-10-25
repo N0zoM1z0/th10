@@ -1,0 +1,1752 @@
+{
+  "notification": {
+    "result": "structural-rejection",
+    "target_address": "0x4172e0",
+    "target_size": 668,
+    "target_code": 640,
+    "candidate_address": "0x417350",
+    "candidate_size": 652,
+    "candidate_code": 624,
+    "target_inventory": {
+      "decoded_bytes": 640,
+      "normalization_complete": false,
+      "fields": [
+        {
+          "offset": 21,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289888,
+          "instruction_end": null,
+          "source_roles": [],
+          "explicit_local_offset": 640
+        },
+        {
+          "offset": 33,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4791312,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 41,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493984,
+          "instruction_end": 45,
+          "source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 69,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4492544,
+          "instruction_end": 73,
+          "source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 89,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4791312,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 123,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493984,
+          "instruction_end": 127,
+          "source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 144,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4495696,
+          "instruction_end": 148,
+          "source_roles": [
+            {
+              "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 189,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4495472,
+          "instruction_end": 193,
+          "source_roles": [
+            {
+              "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 195,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4791312,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 206,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4491728,
+          "instruction_end": 210,
+          "source_roles": [
+            {
+              "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 247,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493760,
+          "instruction_end": 251,
+          "source_roles": [
+            {
+              "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 265,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4449696,
+          "instruction_end": 269,
+          "source_roles": [
+            {
+              "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 280,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4494816,
+          "instruction_end": 284,
+          "source_roles": [
+            {
+              "symbol": "?ClearFlag2@AnmVmIdView@@QAEXXZ",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 287,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4494736,
+          "instruction_end": 291,
+          "source_roles": [
+            {
+              "symbol": "?SetFlag2@AnmVmIdView@@QAEXXZ",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 361,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4791312,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 367,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493984,
+          "instruction_end": 371,
+          "source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 392,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4791312,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 398,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493984,
+          "instruction_end": 402,
+          "source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 428,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4492544,
+          "instruction_end": 432,
+          "source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 456,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4791312,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 462,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493984,
+          "instruction_end": 466,
+          "source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 492,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4492544,
+          "instruction_end": 496,
+          "source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 520,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4791312,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 526,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493984,
+          "instruction_end": 530,
+          "source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 556,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4492544,
+          "instruction_end": 560,
+          "source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 584,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4791312,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 590,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493984,
+          "instruction_end": 594,
+          "source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 620,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4492544,
+          "instruction_end": 624,
+          "source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 640,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289273,
+          "instruction_end": null,
+          "source_roles": [],
+          "explicit_local_offset": 25
+        },
+        {
+          "offset": 644,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289601,
+          "instruction_end": null,
+          "source_roles": [],
+          "explicit_local_offset": 353
+        },
+        {
+          "offset": 648,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289632,
+          "instruction_end": null,
+          "source_roles": [],
+          "explicit_local_offset": 384
+        },
+        {
+          "offset": 652,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289696,
+          "instruction_end": null,
+          "source_roles": [],
+          "explicit_local_offset": 448
+        },
+        {
+          "offset": 656,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289760,
+          "instruction_end": null,
+          "source_roles": [],
+          "explicit_local_offset": 512
+        },
+        {
+          "offset": 660,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289880,
+          "instruction_end": null,
+          "source_roles": [],
+          "explicit_local_offset": 632
+        },
+        {
+          "offset": 664,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289824,
+          "instruction_end": null,
+          "source_roles": [],
+          "explicit_local_offset": 576
+        }
+      ],
+      "target_field_method": "complete instruction operands plus all7 raw table words; does not rely on stripped PE relocation directory",
+      "generic_decode_observation": {
+        "decoded_bytes": 640,
+        "normalization_complete": false,
+        "scope": "generic decoder may traverse jump-table words; not complete-owner acceptance"
+      },
+      "bounded_code_span_complete": true,
+      "code_span_includes_alignment": true,
+      "terminal_ret_end": 640,
+      "trailing_alignment_bytes": 0,
+      "fixed_local_destinations": [
+        {
+          "offset": 11,
+          "size": 6,
+          "mnemonic": "ja",
+          "destination_offset": 633
+        },
+        {
+          "offset": 233,
+          "size": 2,
+          "mnemonic": "je",
+          "destination_offset": 243
+        },
+        {
+          "offset": 253,
+          "size": 2,
+          "mnemonic": "je",
+          "destination_offset": 269
+        },
+        {
+          "offset": 277,
+          "size": 2,
+          "mnemonic": "jne",
+          "destination_offset": 286
+        },
+        {
+          "offset": 284,
+          "size": 2,
+          "mnemonic": "jmp",
+          "destination_offset": 291
+        },
+        {
+          "offset": 337,
+          "size": 6,
+          "mnemonic": "jl",
+          "destination_offset": 117
+        },
+        {
+          "offset": 379,
+          "size": 5,
+          "mnemonic": "jmp",
+          "destination_offset": 602
+        }
+      ],
+      "table_offsets": [
+        25,
+        353,
+        384,
+        448,
+        512,
+        632,
+        576
+      ]
+    },
+    "candidate_inventory": {
+      "decoded_bytes": 624,
+      "normalization_complete": false,
+      "fields": [
+        {
+          "offset": 21,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289984,
+          "instruction_end": null,
+          "explicit_source_roles": [],
+          "explicit_local_offset": 624
+        },
+        {
+          "offset": 33,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 41,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235856,
+          "instruction_end": 45,
+          "explicit_source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4492a0"
+            }
+          ]
+        },
+        {
+          "offset": 69,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4249040,
+          "instruction_end": 73,
+          "explicit_source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0,
+              "target": "0x448d00"
+            }
+          ]
+        },
+        {
+          "offset": 81,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 123,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235856,
+          "instruction_end": 127,
+          "explicit_source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4492a0"
+            }
+          ]
+        },
+        {
+          "offset": 144,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4236304,
+          "instruction_end": 148,
+          "explicit_source_roles": [
+            {
+              "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+              "addend": 0,
+              "target": "0x449950"
+            }
+          ]
+        },
+        {
+          "offset": 181,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4275888,
+          "instruction_end": 185,
+          "explicit_source_roles": [
+            {
+              "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+              "addend": 0,
+              "target": "0x449870"
+            }
+          ]
+        },
+        {
+          "offset": 187,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 198,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4236464,
+          "instruction_end": 202,
+          "explicit_source_roles": [
+            {
+              "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+              "addend": 0,
+              "target": "0x4489d0"
+            }
+          ]
+        },
+        {
+          "offset": 239,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235584,
+          "instruction_end": 243,
+          "explicit_source_roles": [
+            {
+              "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4491c0"
+            }
+          ]
+        },
+        {
+          "offset": 257,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4247760,
+          "instruction_end": 261,
+          "explicit_source_roles": [
+            {
+              "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+              "addend": 0,
+              "target": "0x43e5a0"
+            }
+          ]
+        },
+        {
+          "offset": 272,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4290208,
+          "instruction_end": 276,
+          "explicit_source_roles": [
+            {
+              "symbol": "?ClearFlag2@AnmVmIdView@@QAEXXZ",
+              "addend": 0,
+              "target": "0x4495e0"
+            }
+          ]
+        },
+        {
+          "offset": 279,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4290128,
+          "instruction_end": 283,
+          "explicit_source_roles": [
+            {
+              "symbol": "?SetFlag2@AnmVmIdView@@QAEXXZ",
+              "addend": 0,
+              "target": "0x449590"
+            }
+          ]
+        },
+        {
+          "offset": 351,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 357,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235856,
+          "instruction_end": 361,
+          "explicit_source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4492a0"
+            }
+          ]
+        },
+        {
+          "offset": 382,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 388,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235856,
+          "instruction_end": 392,
+          "explicit_source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4492a0"
+            }
+          ]
+        },
+        {
+          "offset": 418,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4249040,
+          "instruction_end": 422,
+          "explicit_source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0,
+              "target": "0x448d00"
+            }
+          ]
+        },
+        {
+          "offset": 444,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 450,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235856,
+          "instruction_end": 454,
+          "explicit_source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4492a0"
+            }
+          ]
+        },
+        {
+          "offset": 480,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4249040,
+          "instruction_end": 484,
+          "explicit_source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0,
+              "target": "0x448d00"
+            }
+          ]
+        },
+        {
+          "offset": 506,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 512,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235856,
+          "instruction_end": 516,
+          "explicit_source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4492a0"
+            }
+          ]
+        },
+        {
+          "offset": 542,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4249040,
+          "instruction_end": 546,
+          "explicit_source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0,
+              "target": "0x448d00"
+            }
+          ]
+        },
+        {
+          "offset": 568,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 574,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235856,
+          "instruction_end": 578,
+          "explicit_source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4492a0"
+            }
+          ]
+        },
+        {
+          "offset": 604,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4249040,
+          "instruction_end": 608,
+          "explicit_source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0,
+              "target": "0x448d00"
+            }
+          ]
+        },
+        {
+          "offset": 624,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289385,
+          "instruction_end": null,
+          "explicit_source_roles": [],
+          "explicit_local_offset": 25
+        },
+        {
+          "offset": 628,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289703,
+          "instruction_end": null,
+          "explicit_source_roles": [],
+          "explicit_local_offset": 343
+        },
+        {
+          "offset": 632,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289734,
+          "instruction_end": null,
+          "explicit_source_roles": [],
+          "explicit_local_offset": 374
+        },
+        {
+          "offset": 636,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289796,
+          "instruction_end": null,
+          "explicit_source_roles": [],
+          "explicit_local_offset": 436
+        },
+        {
+          "offset": 640,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289858,
+          "instruction_end": null,
+          "explicit_source_roles": [],
+          "explicit_local_offset": 498
+        },
+        {
+          "offset": 644,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289976,
+          "instruction_end": null,
+          "explicit_source_roles": [],
+          "explicit_local_offset": 616
+        },
+        {
+          "offset": 648,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4289920,
+          "instruction_end": null,
+          "explicit_source_roles": [],
+          "explicit_local_offset": 560
+        }
+      ],
+      "generic_decode_observation": {
+        "decoded_bytes": 651,
+        "normalization_complete": true,
+        "scope": "generic decoder may traverse jump-table words; not complete-owner acceptance"
+      },
+      "bounded_code_span_complete": true,
+      "code_span_includes_alignment": true,
+      "terminal_ret_end": 622,
+      "trailing_alignment_bytes": 2,
+      "fixed_local_destinations": [
+        {
+          "offset": 11,
+          "size": 6,
+          "mnemonic": "ja",
+          "destination_offset": 617
+        },
+        {
+          "offset": 225,
+          "size": 2,
+          "mnemonic": "je",
+          "destination_offset": 235
+        },
+        {
+          "offset": 245,
+          "size": 2,
+          "mnemonic": "je",
+          "destination_offset": 261
+        },
+        {
+          "offset": 269,
+          "size": 2,
+          "mnemonic": "jne",
+          "destination_offset": 278
+        },
+        {
+          "offset": 276,
+          "size": 2,
+          "mnemonic": "jmp",
+          "destination_offset": 283
+        },
+        {
+          "offset": 329,
+          "size": 6,
+          "mnemonic": "jl",
+          "destination_offset": 117
+        },
+        {
+          "offset": 369,
+          "size": 5,
+          "mnemonic": "jmp",
+          "destination_offset": 586
+        }
+      ],
+      "table_offsets": [
+        25,
+        343,
+        374,
+        436,
+        498,
+        616,
+        560
+      ]
+    },
+    "exactness_credit": 0
+  },
+  "end-spell": {
+    "result": "structural-rejection",
+    "target_address": "0x409c00",
+    "target_size": 399,
+    "target_code": 399,
+    "candidate_address": "0x405f90",
+    "candidate_size": 452,
+    "candidate_code": 452,
+    "target_inventory": {
+      "decoded_bytes": 399,
+      "normalization_complete": false,
+      "fields": [
+        {
+          "offset": 18,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4683496,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_StagePrimary@@3PAUStageScriptView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 38,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4234832,
+          "instruction_end": 42,
+          "source_roles": [
+            {
+              "symbol": "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 49,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4234832,
+          "instruction_end": 53,
+          "source_roles": [
+            {
+              "symbol": "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 60,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4234832,
+          "instruction_end": 64,
+          "source_roles": [
+            {
+              "symbol": "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 72,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4791312,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 95,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493984,
+          "instruction_end": 99,
+          "source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 136,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672580,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_GuiScore@@3UGuiScoreView@@A",
+              "addend": 4
+            }
+          ]
+        },
+        {
+          "offset": 158,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672580,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_GuiScore@@3UGuiScoreView@@A",
+              "addend": 4
+            }
+          ]
+        },
+        {
+          "offset": 166,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672580,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_GuiScore@@3UGuiScoreView@@A",
+              "addend": 4
+            }
+          ]
+        },
+        {
+          "offset": 181,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4683532,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_GuiView@@3PAUGuiView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 190,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4289248,
+          "instruction_end": 194,
+          "source_roles": [
+            {
+              "symbol": "?GuiNotifySpell@@YAXPAUGuiView@@HH@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 196,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4683832,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_EnemySpellPlaybackState@@3PAEA",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 207,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672616,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_EnemyChapterState@@3UEnemyChapterStateView@@A",
+              "addend": 40
+            }
+          ]
+        },
+        {
+          "offset": 213,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4672620,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_EnemyChapterState@@3UEnemyChapterStateView@@A",
+              "addend": 44
+            }
+          ]
+        },
+        {
+          "offset": 222,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4683836,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_EnemySpellStatistics@@3PAEA",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 324,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4793744,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_MainSoundOwner@@3PAEA",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 329,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4447376,
+          "instruction_end": 333,
+          "source_roles": [
+            {
+              "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 340,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4683532,
+          "instruction_end": null,
+          "source_roles": [
+            {
+              "symbol": "?g_GuiView@@3PAUGuiView@@A",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 360,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4493984,
+          "instruction_end": 364,
+          "source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0
+            }
+          ]
+        },
+        {
+          "offset": 386,
+          "width": 4,
+          "type": "REL32",
+          "candidate_target": 4492544,
+          "instruction_end": 390,
+          "source_roles": [
+            {
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "addend": 0
+            }
+          ]
+        }
+      ],
+      "target_field_method": "complete instruction operands plus all7 raw table words; does not rely on stripped PE relocation directory",
+      "generic_decode_observation": {
+        "decoded_bytes": 399,
+        "normalization_complete": false,
+        "scope": "generic decoder may traverse jump-table words; not complete-owner acceptance"
+      },
+      "bounded_code_span_complete": true,
+      "code_span_includes_alignment": true,
+      "terminal_ret_end": 399,
+      "trailing_alignment_bytes": 0,
+      "fixed_local_destinations": [
+        {
+          "offset": 11,
+          "size": 6,
+          "mnemonic": "je",
+          "destination_offset": 396
+        },
+        {
+          "offset": 116,
+          "size": 6,
+          "mnemonic": "je",
+          "destination_offset": 338
+        },
+        {
+          "offset": 162,
+          "size": 2,
+          "mnemonic": "jl",
+          "destination_offset": 174
+        },
+        {
+          "offset": 204,
+          "size": 2,
+          "mnemonic": "je",
+          "destination_offset": 316
+        },
+        {
+          "offset": 267,
+          "size": 2,
+          "mnemonic": "jge",
+          "destination_offset": 276
+        },
+        {
+          "offset": 307,
+          "size": 2,
+          "mnemonic": "jge",
+          "destination_offset": 316
+        }
+      ],
+      "table_offsets": []
+    },
+    "candidate_inventory": {
+      "decoded_bytes": 452,
+      "normalization_complete": false,
+      "fields": [
+        {
+          "offset": 25,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297348,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_StagePrimary@@3PAUStageScriptView@@A",
+              "addend": 0,
+              "target": "0x4776e8"
+            }
+          ]
+        },
+        {
+          "offset": 44,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4200304,
+          "instruction_end": 48,
+          "explicit_source_roles": [
+            {
+              "symbol": "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+              "addend": 0,
+              "target": "0x409e50"
+            }
+          ]
+        },
+        {
+          "offset": 55,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4200304,
+          "instruction_end": 59,
+          "explicit_source_roles": [
+            {
+              "symbol": "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+              "addend": 0,
+              "target": "0x409e50"
+            }
+          ]
+        },
+        {
+          "offset": 66,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4200304,
+          "instruction_end": 70,
+          "explicit_source_roles": [
+            {
+              "symbol": "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+              "addend": 0,
+              "target": "0x409e50"
+            }
+          ]
+        },
+        {
+          "offset": 84,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 101,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235856,
+          "instruction_end": 105,
+          "explicit_source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4492a0"
+            }
+          ]
+        },
+        {
+          "offset": 141,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297296,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_GuiScore@@3UGuiScoreView@@A",
+              "addend": 4,
+              "target": "0x474c44"
+            }
+          ]
+        },
+        {
+          "offset": 163,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297296,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_GuiScore@@3UGuiScoreView@@A",
+              "addend": 4,
+              "target": "0x474c44"
+            }
+          ]
+        },
+        {
+          "offset": 171,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297296,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_GuiScore@@3UGuiScoreView@@A",
+              "addend": 4,
+              "target": "0x474c44"
+            }
+          ]
+        },
+        {
+          "offset": 186,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297308,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_GuiView@@3PAUGuiView@@A",
+              "addend": 0,
+              "target": "0x47770c"
+            }
+          ]
+        },
+        {
+          "offset": 195,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4289360,
+          "instruction_end": 199,
+          "explicit_source_roles": [
+            {
+              "symbol": "?GuiNotifySpell@@YAXPAUGuiView@@HH@Z",
+              "addend": 0,
+              "target": "0x4172e0"
+            }
+          ]
+        },
+        {
+          "offset": 201,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297172,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_EnemySpellPlaybackState@@3PAEA",
+              "addend": 0,
+              "target": "0x477838"
+            }
+          ]
+        },
+        {
+          "offset": 216,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297144,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_EnemyChapterState@@3UEnemyChapterStateView@@A",
+              "addend": 40,
+              "target": "0x474c68"
+            }
+          ]
+        },
+        {
+          "offset": 222,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297148,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_EnemyChapterState@@3UEnemyChapterStateView@@A",
+              "addend": 44,
+              "target": "0x474c6c"
+            }
+          ]
+        },
+        {
+          "offset": 228,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297176,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_EnemySpellStatistics@@3PAEA",
+              "addend": 0,
+              "target": "0x47783c"
+            }
+          ]
+        },
+        {
+          "offset": 332,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297316,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_MainSoundOwner@@3PAEA",
+              "addend": 0,
+              "target": "0x492590"
+            }
+          ]
+        },
+        {
+          "offset": 337,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4201120,
+          "instruction_end": 341,
+          "explicit_source_roles": [
+            {
+              "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+              "addend": 0,
+              "target": "0x43dc90"
+            }
+          ]
+        },
+        {
+          "offset": 349,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297308,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_GuiView@@3PAUGuiView@@A",
+              "addend": 0,
+              "target": "0x47770c"
+            }
+          ]
+        },
+        {
+          "offset": 363,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4235856,
+          "instruction_end": 367,
+          "explicit_source_roles": [
+            {
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "addend": 0,
+              "target": "0x4492a0"
+            }
+          ]
+        },
+        {
+          "offset": 380,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4236304,
+          "instruction_end": 384,
+          "explicit_source_roles": [
+            {
+              "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+              "addend": 0,
+              "target": "0x449950"
+            }
+          ]
+        },
+        {
+          "offset": 417,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4275888,
+          "instruction_end": 421,
+          "explicit_source_roles": [
+            {
+              "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+              "addend": 0,
+              "target": "0x449870"
+            }
+          ]
+        },
+        {
+          "offset": 423,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4297048,
+          "instruction_end": null,
+          "explicit_source_roles": [
+            {
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "addend": 0,
+              "target": "0x491c10"
+            }
+          ]
+        },
+        {
+          "offset": 432,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4236464,
+          "instruction_end": 436,
+          "explicit_source_roles": [
+            {
+              "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+              "addend": 0,
+              "target": "0x4489d0"
+            }
+          ]
+        }
+      ],
+      "generic_decode_observation": {
+        "decoded_bytes": 452,
+        "normalization_complete": true,
+        "scope": "generic decoder may traverse jump-table words; not complete-owner acceptance"
+      },
+      "bounded_code_span_complete": true,
+      "code_span_includes_alignment": true,
+      "terminal_ret_end": 452,
+      "trailing_alignment_bytes": 0,
+      "fixed_local_destinations": [
+        {
+          "offset": 18,
+          "size": 6,
+          "mnemonic": "je",
+          "destination_offset": 448
+        },
+        {
+          "offset": 121,
+          "size": 6,
+          "mnemonic": "je",
+          "destination_offset": 347
+        },
+        {
+          "offset": 167,
+          "size": 2,
+          "mnemonic": "jl",
+          "destination_offset": 179
+        },
+        {
+          "offset": 213,
+          "size": 2,
+          "mnemonic": "je",
+          "destination_offset": 325
+        },
+        {
+          "offset": 276,
+          "size": 2,
+          "mnemonic": "jge",
+          "destination_offset": 285
+        },
+        {
+          "offset": 316,
+          "size": 2,
+          "mnemonic": "jge",
+          "destination_offset": 325
+        }
+      ],
+      "table_offsets": []
+    },
+    "exactness_credit": 0
+  }
+}

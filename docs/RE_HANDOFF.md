@@ -4,6 +4,17 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [GUI spell notification / EndSpell pilot](evidence/gui-spell-notification-20261025/README.md)
+retains three complete isolated models: notification652/652/660 versus proposed668,
+and real dispatcher glue452/452/447 versus399. All seven table words,35 notification
+fields/7 locals and20 target glue fields/6 locals are explicit; candidate glue has23
+fields due to inlined failure creation. Carried-local control changes notification
+only; one ordinary stdcall hypothesis naturally restoresRET8 but remains nonexact.
+Independent review supports future668 boundary proposal, not ledger/source admission.
+All11 same-image guards pass1078/all21 in every image;1839 frozen inputs preserved,
+including GUIcreation canonical283 and protected9. Original compile/observer failures
+retained without duplicate native runs. Source/metrics unchanged; park unsupported
+ABI/noinline/profile panels. Focused docs checks only, no new full-CI/runtime claim.
 Current [GUI creation family](evidence/gui-creation-20261025/README.md) closes
 **283 authored bytes / two owners**: factory136 and Initialize147 (not ctor).
 Actual logger dependency restores natural ECX; separate canonical cold and

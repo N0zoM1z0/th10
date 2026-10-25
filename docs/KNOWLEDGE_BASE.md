@@ -6110,3 +6110,28 @@ remains origin-indeterminate and emits525 with maintained ID constructors; never
 remove their zeroing to manufacture equality. Existing dtor tail stays parked.
 Independent allocationEH review and30 whole guards3738 pass; no product/runtime
 claim. See [GUI creation packet](evidence/gui-creation-20261025/README.md).
+
+
+## GUI spell notification and EndSpell finite pilot (2026-10-25)
+
+Target4172E0 has640 code bytes plus a seven-word28-byte table417560..41757B;
+unsigned selector0..6 and the sole4172F2 table xref support future owned668.
+FourCC bytes separate the next417580 entry. Independent review supports this
+proposal only; the maintained640 row and all metrics remain unchanged.
+Full ordinary models in the actual dispatcher graph yield652,652,660; complete
+EndSpell409C00 yields452,452,447 versus399. One target-grounded carried-value
+local changes notification scheduling; ordinary stdcall only hypothesizes the
+public contract and naturally restores privateRET8 without proving that contract.
+All seven arms survive the sole event0 caller. Do not force register ABI, noinline,
+or branch removal to fit target. First complete comparison precedes host matrices.
+Notification preserves manager capture across digit iterations, resource capture
+before allocation, post-Initialize manager reload, published ID before lookup,
+signed decimal remainder carry, found-VM resource and separate flag-helper lookup.
+EndSpell preserves post-retirement flags and bonus rereads, two bounded statistics
+counts, captured statistics pointer, and the earlier manager on failure.
+All35 notification fields/7 local branches/7 table slots and20 target glue fields/
+6 local branches are inventoried. Eleven guards1078/all21 pass in all3 images;
+AllocateVm153/161 and InitializeVm207/217 remain independent nonexact dependencies.
+Their exactness is not required by default for a fully identity/ABI-bound caller,
+but none of these rejected parents receives credit. See the [packet](evidence/gui-spell-notification-20261025/README.md).
+Park unsupported convention/inline/profile panels; source/denominator unchanged.

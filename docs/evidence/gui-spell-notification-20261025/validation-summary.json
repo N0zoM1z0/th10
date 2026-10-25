@@ -1,0 +1,333 @@
+{
+  "baseline": "e937e097704fcbc1a0471813e1c4ef63e9d5842b",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_bytes": 0,
+  "new_source_bytes": 0,
+  "denominator_change": 0,
+  "boundary_change_applied": false,
+  "runtime_product_closure": false,
+  "trials": {
+    "first-include-order": {
+      "native_exit": 0,
+      "native_image": "build/gpt-dots/gui-spell-notification-20261025/first-include-order/source.exe",
+      "image_sha256": "7d04b0ad0725a9c7c16a092072ebb510fc720f9bdb70ccbf540b1b0475baad01",
+      "plan": {
+        "primary": ".analysis/gpt-dots/gui-spell-notification-20261025/src/EnemyEclDispatcher.cpp",
+        "supports": [
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/EclVm.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/AnmManager.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/AnmVmCreate.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/Gui.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/AnmVmId.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "overrides": {
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/Gui.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "prediction": "natural full-source graph; no forced private ABI, no event specialization prevention",
+        "complete_owners": {
+          "Notify": [
+            4289248,
+            668,
+            640
+          ],
+          "EndSpell": [
+            4234240,
+            399,
+            399
+          ]
+        }
+      },
+      "source_sha256": {
+        "Gui.cpp": "e3f9f1ba86cf4b5d8acc5edf000ca275fa139a321376294561c5731b168541a2",
+        "Gui.hpp": "0d2b2651580ad313a58158bdf1ef1f214eefdd1698ecf9183b849b9979ef741a",
+        "EnemyEclDispatcher.cpp": "8a14bfd20c08ae360dedc6497dc172fa18d019d809e184feefdca6185ebd65ca"
+      },
+      "guard_count": 11,
+      "guard_bytes": 1078,
+      "guard_fields": 21,
+      "all_guards_exact": true,
+      "freeze": {
+        "unchanged": true,
+        "count": 1839
+      },
+      "sizes": {
+        "notification": [
+          652,
+          668
+        ],
+        "end-spell": [
+          452,
+          399
+        ]
+      },
+      "code_alignment_table": {
+        "candidate": [
+          624,
+          0,
+          28
+        ],
+        "target": [
+          640,
+          0,
+          28
+        ]
+      }
+    },
+    "carried-local": {
+      "native_exit": 0,
+      "native_image": "build/gpt-dots/gui-spell-notification-20261025/carried-local/source.exe",
+      "image_sha256": "6f88f0186d4b82a5b7a48bea3b99e93e7c6e69f5ea85f2a6767bfc02979bbbc7",
+      "plan": {
+        "primary": ".analysis/gpt-dots/gui-spell-notification-20261025/src/EnemyEclDispatcher.cpp",
+        "supports": [
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/EclVm.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/AnmManager.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/AnmVmCreate.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/Gui.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/AnmVmId.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "overrides": {
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/Gui.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "prediction": "one lifetime factor: remaining=value local; predict capture then incoming-slot reuse; declaration/profile/graph unchanged",
+        "complete_owners": {
+          "Notify": [
+            4289248,
+            668,
+            640
+          ],
+          "EndSpell": [
+            4234240,
+            399,
+            399
+          ]
+        }
+      },
+      "source_sha256": {
+        "Gui.cpp": "fc82af3f085619a2c1a80edeb4420bec9324381f4fa2f9f75df3d8fa5fcb94b8",
+        "Gui.hpp": "0d2b2651580ad313a58158bdf1ef1f214eefdd1698ecf9183b849b9979ef741a",
+        "EnemyEclDispatcher.cpp": "8a14bfd20c08ae360dedc6497dc172fa18d019d809e184feefdca6185ebd65ca"
+      },
+      "guard_count": 11,
+      "guard_bytes": 1078,
+      "guard_fields": 21,
+      "all_guards_exact": true,
+      "freeze": {
+        "unchanged": true,
+        "count": 1839
+      },
+      "sizes": {
+        "notification": [
+          652,
+          668
+        ],
+        "end-spell": [
+          452,
+          399
+        ]
+      },
+      "code_alignment_table": {
+        "candidate": [
+          622,
+          2,
+          28
+        ],
+        "target": [
+          640,
+          0,
+          28
+        ]
+      }
+    },
+    "stdcall-control": {
+      "native_exit": 0,
+      "native_image": "build/gpt-dots/gui-spell-notification-20261025/stdcall-control/source.exe",
+      "image_sha256": "06eb4900f0462a8b4e977481aa91276423d017ffa45fea6e4186340ba130ff56",
+      "plan": {
+        "primary": ".analysis/gpt-dots/gui-spell-notification-20261025/src/EnemyEclDispatcher.cpp",
+        "supports": [
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/EclVm.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/AnmManager.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/AnmVmCreate.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/Gui.cpp",
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/AnmVmId.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "overrides": {
+          ".analysis/gpt-dots/gui-spell-notification-20261025/src/Gui.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "prediction": "sole ordinary stdcall declaration-only hypothesis; predict natural private EAX and RET8; original public convention remains unknown; no forced registers/noinline",
+        "complete_owners": {
+          "Notify": [
+            4289248,
+            668,
+            640
+          ],
+          "EndSpell": [
+            4234240,
+            399,
+            399
+          ]
+        }
+      },
+      "source_sha256": {
+        "Gui.cpp": "ab44631faf18bcab94a85117aebedae0da045cf2918bb5ccbd591798d75463a6",
+        "Gui.hpp": "769936fbce886105cc9b82725537705650e26a5335b30c483153839d8c1358a0",
+        "EnemyEclDispatcher.cpp": "8a14bfd20c08ae360dedc6497dc172fa18d019d809e184feefdca6185ebd65ca"
+      },
+      "guard_count": 11,
+      "guard_bytes": 1078,
+      "guard_fields": 21,
+      "all_guards_exact": true,
+      "freeze": {
+        "unchanged": true,
+        "count": 1839
+      },
+      "sizes": {
+        "notification": [
+          660,
+          668
+        ],
+        "end-spell": [
+          447,
+          399
+        ]
+      },
+      "code_alignment_table": {
+        "candidate": [
+          632,
+          0,
+          28
+        ],
+        "target": [
+          640,
+          0,
+          28
+        ]
+      }
+    }
+  },
+  "callee_nonexact_extents": {
+    "AllocateVm": [
+      153,
+      161
+    ],
+    "InitializeVm": [
+      207,
+      217
+    ]
+  },
+  "independent_review": "/root/review_spell_notification_family approved isolated diagnostic scope and future668 boundary proposal; not exact/source/publicABI evidence",
+  "original_compile_failure": "StageScript.hpp before Main.hpp conflicts with SDK C-linkage critical-section declarations; first.exit=1, no image",
+  "observer_recovery": "Initial inspect.py filename shadowed stdlib inspect; renamed compare-packet.py and replayed retained image, no native rerun",
+  "full_ci": "not run for isolated proposal/documentation; prior e937e097 full117-stage pass not relabeled",
+  "preserved_baseline_input_count": 1727,
+  "final_validation": {
+    "toolchain_check": "pass",
+    "tracking": "pass",
+    "progress_regeneration": "pass; unchanged generated files",
+    "diff_check": "pass",
+    "patch_reconstruction": {
+      "first-include-order": {
+        "patch_reconstructs_all_three_sources": true,
+        "normalized_lf_sha256": {
+          "Gui.cpp": "d5496e6b49af64ca6742aee335e5ee3abf427e08b3ac050ecf20534566f5f069",
+          "Gui.hpp": "efc3264b1b18d95d5059e6dee96df03b5591ae7ae9e4b41dbe79b5972b94280b",
+          "EnemyEclDispatcher.cpp": "be36df7a39b711f02ca8302ab40fc68246c345f62c46ad4a0314a080b79d059a"
+        },
+        "native_input_bytes_sha256_recorded_separately": true
+      },
+      "carried-local": {
+        "patch_reconstructs_all_three_sources": true,
+        "normalized_lf_sha256": {
+          "Gui.cpp": "fc82af3f085619a2c1a80edeb4420bec9324381f4fa2f9f75df3d8fa5fcb94b8",
+          "Gui.hpp": "efc3264b1b18d95d5059e6dee96df03b5591ae7ae9e4b41dbe79b5972b94280b",
+          "EnemyEclDispatcher.cpp": "be36df7a39b711f02ca8302ab40fc68246c345f62c46ad4a0314a080b79d059a"
+        },
+        "native_input_bytes_sha256_recorded_separately": true
+      },
+      "stdcall-control": {
+        "patch_reconstructs_all_three_sources": true,
+        "normalized_lf_sha256": {
+          "Gui.cpp": "ab44631faf18bcab94a85117aebedae0da045cf2918bb5ccbd591798d75463a6",
+          "Gui.hpp": "769936fbce886105cc9b82725537705650e26a5335b30c483153839d8c1358a0",
+          "EnemyEclDispatcher.cpp": "be36df7a39b711f02ca8302ab40fc68246c345f62c46ad4a0314a080b79d059a"
+        },
+        "native_input_bytes_sha256_recorded_separately": true
+      }
+    },
+    "preserved_inputs_excluding_intentional_two_docs": 1725,
+    "new_full_ci": false,
+    "independent_review_scope": "isolated source/capture/boundary/field/local/table diagnostic only",
+    "artifact_budget_bytes": 7731096,
+    "patch_whitespace_recovery": "Staged diff check found space-only unified context lines; regenerated zero-context diffs and reverified all3 normalized source reconstructions; no source/native rerun"
+  }
+}
