@@ -16,6 +16,7 @@
 #include "Gui.hpp"
 #include "StageScript.hpp"
 #include "GameStageDescriptor.hpp"
+#include "ScriptViewer.hpp"
 
 // Natural source candidate adapted from th10-decomphelp-forN0.  The bounded
 // OnDraw body is retained here only after direct TH10 IDA boundary review;
@@ -121,7 +122,6 @@ extern const char g_GameInitialEclName[];               // 0x46D278
 // Ordinary source interfaces for still-unreconstructed dependencies. Several
 // target bodies use private LTCG register receivers: their observed machine
 // live-ins remain in the ledger/analysis, rather than invented source ABIs.
-extern void GameFinishWorker(unsigned char *worker);
 extern void __stdcall GamePrepareAnimationSlots(GameChainOwnerView *owner);
 extern void GameEnterMenuState(GameMenuView *menu);
 extern void GameResetAnimationSlots(GameChainOwnerView *owner);
@@ -206,7 +206,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
     {
         if ((manager->m_Flags & 8) != 0)
         {
-            GameFinishWorker(g_GameWorkerState);
+            reinterpret_cast<ScriptViewerWorkerView *>(g_GameWorkerState)->Stop();
             g_GameTransitionState = (~(g_GameConfigurationFlags >> 12) & 1) | 2;
             return 1;
         }
@@ -255,7 +255,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
         return 1;
     }
 
-    GameFinishWorker(g_GameWorkerState);
+    reinterpret_cast<ScriptViewerWorkerView *>(g_GameWorkerState)->Stop();
     if ((g_GameRuntimeFlags & 0x20) != 0)
     {
         if ((g_GameInputBits & 0x160b) != 0 || (manager->m_Flags & 0x70) != 0)

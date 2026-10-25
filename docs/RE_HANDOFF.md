@@ -4,18 +4,24 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
-Current [GameManager delete/timer checkpoint](evidence/game-manager-delete-tick-20261025/README.md)
-has a fresh single-TU /GL-without-/GS baseline and two independently reviewed
-models: actual menu delete leaves 1587/1544; existing real Tick yields
-**1581/1544, nonexact**, with 114 fields / 55 locals inventoried. Three guards
-127/all 2, same-image Tick 72/all 4 and separate canonical OnDraw 31/all 1 pass.
-Tick and OnDraw are existing credit only. Scoped host timer-storage repair passes
-70 baseline cases and staged ASan/UBSan 70 cases plus 50 strict mutations.
-The current source/test checkpoint passes all 112 target-independent CI stages,
-verified 2026-10-25 02:16:22 UTC, with all 1489 frozen inputs preserved.
-No new exact/source/denominator credit follows.
+Current [GameManager real-worker checkpoint](evidence/game-manager-real-worker-20261025/README.md)
+adds only the actual ScriptViewerWorker.cpp support TU to the /GL-without-/GS
+OnUpdate graph and replaces two facade calls with existing Stop. Native
+root/cold/comparison exits are 0. The complete parent is **1575/1544, nonexact**
+(previous single-TU 1581), with 114 fields / 55 locals / 36 calls inventoried.
+Three guards 127/all 2, same-image Tick 72/all 4 and Stop 101/all 3 pass; the
+separate original canonical OnDraw recipe cold-passes 31/all 1. These are
+existing credit only. Independent review passes, preserving 94 original
+artifacts and both ESI receiver edges. This worker checkpoint passes all 112
+target-independent CI stages, verified 2026-10-25 02:35:47 UTC, with all
+1491 frozen inputs preserved.
+Root's focused teardown baseline passes 70 cases. No new
+exact/source/denominator credit follows.
+Prior [delete/timer checkpoint cdc54c74](evidence/game-manager-delete-tick-20261025/README.md)
+passed all 112 target-independent CI stages, verified 2026-10-25 02:16:22 UTC,
+with all 1489 frozen inputs preserved; that pass does not cover this change.
 Current GameManager.cpp SHA-256:
-`4847d2f30f244f195b2240b0f9738fa66a6cfa24379b285da6e4ad616b59f4f0`.
+`cf8c462512ec0c3b95f8273029038bdf2201a35543c79964bd4bd067194bc044`.
 WinMain source is checkpointed at **45fce0f**; dependency evidence is retained
 at **97a206f** (Sound) and **7b85dd3** (Chain). WinMain remains parked against
 flag/noinline matrices. After clear/delete checkpoint **9fb5a3d**, three
@@ -38,9 +44,10 @@ the successful same-source retry. Current Gui SHA-256:
 `70184d8834dc24998debe484a67a6643b8e55a6327a6115835353e008a68309b`.
 Full CI passed all 112 stages for source checkpoint 470dca2, exit 0, with
 frozen inputs preserved, verified at 2026-10-25 00:36:31 UTC. Subsequent shared
-baseline/Ending documentation checkpoints changed no source. The current
-GameManager source/test checkpoint now has its own 112-stage pass, recorded
-below; the prior pass is not relabeled as covering these changes.
+baseline/Ending documentation checkpoints changed no source. GameManager
+delete/timer checkpoint cdc54c74 has its own 112-stage pass, recorded below;
+the real-worker checkpoint now has its separate 112-stage pass verified at
+02:35:47 UTC. Neither historical pass is relabeled for a different source.
 Prior checkpoint failures and scoped observer repairs remain recorded separately.
 Park unsupported HUD spelling/flag panels: visible register/save scheduling
 and folded boss-flag tests do not establish another semantic factor. The
@@ -57,12 +64,13 @@ passes native/independent review and remains 1576/1568, nonexact. Ten guards
 943/all 57, six sampling checks and existing PendingThree 65/all 2 pass; the only
 two historical/current non-field changes reflect the prior FrontEnd correction.
 Core, HUD, WinMain and Ending stay parked against old panels. GameManager's
-bounded delete and real-timer models are measured below. GUI substitution is
+bounded delete, real-timer and real-worker models are measured below. GUI substitution is
 rejected because the actual target is 0x417040, not HUD 0x414900. The completed
 read-only flag/control audit does not establish a bitfield declaration from
-combined versus separate tests; park that lead. An existing
-ScriptViewerWorkerView::Stop at 0x44C150 (101 bytes) is a read-only next lead,
-not a completed model or newly credited owner.
+combined versus separate tests; park that lead. Existing
+ScriptViewerWorkerView::Stop at 0x44C150 is now replayed in the new diagnostic
+graph, with no new credit. Its existing noinline annotation and provisional
+byte-array aliases are unchanged; original annotation/runtime closure is unknown.
 The separate global automatic boundary check remains unresolved.
 The project remains **active-incomplete**. Goal: **98% of reviewed authored
 owned bytes exact**. Current commit prefix: `gpt-dots: ...`; local commits only,
@@ -99,7 +107,7 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | WinMain with Sound dependency / target 1389 | Ignored eleven-TU diagnostic only: 1453 bytes / 154 fields / 71 calls / 46 locals; no canonical graph migration |
 | WinMain with Sound + Chain / target 1389 | Ignored twelve-TU diagnostic: 1533 bytes / 155 fields / 71 calls / 48 locals; creation/ctor inlined; no canonical graph migration |
 | GameErrorContext::Flush / target 79 | Fresh canonical exact 79/all 6; independently admitted complete authored owner |
-| GameManagerUpdateBody / target 1544 | Current 1581 bytes; 114 fields / 55 locals inventoried; real Tick 72/all 4 preserved; nonexact |
+| GameManagerUpdateBody / target 1544 | Two-TU candidate 1575 bytes; 114 fields / 55 locals / 36 calls inventoried; Tick 72/all 4 and Stop 101/all 3 preserved; nonexact |
 | Ending Run / target 1568 | Fresh source-current 1576 bytes; complete alignment / 18 table words / 53 locals retained; nonexact |
 | HUD UpdateStageElements / target 3836 | Candidate 3824 bytes: 3796 code + 0 alignment + 28 table; 72 syntactic fields / 249 locals / 21 calls; nonexact |
 | Authored / source / authored exact | 735 functions / 273658 bytes; source 617 / 248496; exact 412 / 75038 |
@@ -365,7 +373,7 @@ Park Ending source panels. Source/configuration and metrics remain unchanged;
 the prior 470dca2 full-CI scope is preserved, with focused documentation checks
 only for this checkpoint.
 
-The [current GameManager checkpoint](evidence/game-manager-delete-tick-20261025/README.md)
+The prior [GameManager delete/timer checkpoint cdc54c74](evidence/game-manager-delete-tick-20261025/README.md)
 first built the actual single-TU /GL-without-/GS OnUpdate baseline, 1587/1544.
 The one-call free(menu) to explicit operator delete model remains 1587 bytes;
 independent review proves the actual release identity and unchanged captured
@@ -397,9 +405,35 @@ This documentation-only result update follows that freeze; metrics stay unchange
 GUI replacement was rejected: the actual target call is 0x417040, not
 UpdateStageElements 0x414900. The completed read-only flag/control audit cannot
 prove a bitfield declaration from combined versus separate flag tests; that
-lead is parked. Existing ScriptViewerWorkerView::Stop, 0x44C150 / 101 bytes,
-is only a next audit lead, not a tested model or new exact credit. Do not infer
-parent exactness or runtime closure from local call, callee or host-fixture results.
+lead is parked. Do not infer parent exactness or runtime closure from local
+call, callee or host-fixture results.
+
+The [subsequent real-worker model](evidence/game-manager-real-worker-20261025/README.md)
+includes existing ScriptViewer.hpp, removes GameFinishWorker and calls the
+existing Stop at both sites through the unchanged byte-array global view. Only
+ScriptViewerWorker.cpp joins the actual OnUpdate graph; both TUs retain /GL
+without /GS. Parent extent changes 1581 to 1575 versus target 1544, still
+nonexact, with 114 fields / 55 locals / 36 calls inventoried. All three manager
+guards 127/all 2, Tick 72/all 4 and actual-worker Stop 101/all 3 pass in the
+same image; separate canonical OnDraw cold-passes 31/all 1. No new exact credit.
+Existing noinline is retained unchanged from 46853f1; original annotation and
+production TU remain unknown. The view does not establish object construction,
+lifetime, shared-global identity or runtime closure. Independent review passes
+with 94 original artifacts preserved, both ESI receiver edges and all 55
+aligned branch roles verified. Only two symbolic field identities change to
+Stop; four ordinary instruction regions cover receiver moves, caller cleanup
+removal and the second direct memory flag test. Retained observer EOL/position/
+guard-count errors were repaired on the same image without another compile.
+The independent receipt SHA-256 is
+`ebcc5bf7877a34db072350fb42778d3dc3765d44c5b802c82dd6cec2cb4c9fb5`.
+Root's focused teardown baseline also passes 70 cases. The worker checkpoint
+now passes all 112 target-independent CI stages, verified 2026-10-25
+02:35:47 UTC. In game-worker-checkpoint-20261025, root-ci.exit and
+post-ci-inputs.exit are both 0, and all 1491 frozen inputs were preserved.
+The earlier MCP timeout was transport only, not a native or CI failure.
+The linked summary records the log/pin hashes; this documentation-only result
+update follows the freeze. cdc54c74's prior pass remains separately scoped.
+No new exact/source/denominator credit or runtime closure follows.
 
 ECL's residuals are mostly stack/register/SIB choices, including 16 stack homes.
 Nonlocal coupling is observed; a wrong compiler or production TU cause is not

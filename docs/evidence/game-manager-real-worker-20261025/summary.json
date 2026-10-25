@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "baseline_commit": "cdc54c74f2ce7fd17ecb851e0aa7b914cd676ba9",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "cf8c462512ec0c3b95f8273029038bdf2201a35543c79964bd4bd067194bc044",
+  "image_sha256": "70c33f67484fc89cd8310403cc04852a5ae4f05f0d5505898690f13d16969240",
+  "baseline_source_sha256": "4847d2f30f244f195b2240b0f9738fa66a6cfa24379b285da6e4ad616b59f4f0",
+  "baseline_image_sha256": "410c3a6ab7a735e5c416176fdb77d87f589dd40b1bba3aebf558c3bb492ad1d8",
+  "graph": {
+    "artifact_kind": "linked-pe",
+    "entry_symbol": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "source": "src/GameManager.cpp",
+    "support_sources": [
+      "src/ScriptViewerWorker.cpp"
+    ]
+  },
+  "native_closure_file_count": 23,
+  "model": "Include existing ScriptViewer.hpp; remove facade; replace two GameFinishWorker calls with existing Stop through unchanged byte-array view; append only actual worker TU.",
+  "complete_parent": {
+    "baseline_size": 1581,
+    "candidate_size": 1575,
+    "target_size": 1544,
+    "exact": false,
+    "candidate_fields": 114,
+    "candidate_local_branches": 55,
+    "candidate_calls": 36,
+    "target_fields": 114,
+    "target_local_branches": 60,
+    "target_calls": 36,
+    "inventory_is_canonical_acceptance": false
+  },
+  "stage_exits": {
+    "root": 0,
+    "cold": 0,
+    "comparison": 0
+  },
+  "same_image_regression": {
+    "manager_guard_checks": 3,
+    "manager_guard_bytes": 127,
+    "manager_guard_fields": 2,
+    "tick": {
+      "size": 72,
+      "fields": 4,
+      "exact": true
+    },
+    "stop": {
+      "target_address": "0x44C150",
+      "size": 101,
+      "fields": 3,
+      "exact": true,
+      "pdb_source": "src/ScriptViewerWorker.cpp"
+    },
+    "existing_credit_only": true
+  },
+  "separate_canonical_ondraw": {
+    "size": 31,
+    "fields": 1,
+    "exact": true,
+    "cold_build_exit": 0,
+    "existing_credit_only": true,
+    "image_sha256": "5ef296f6a73c31b798c5ba910092cb5046a5636ad0d39e8053591d561e75bc09",
+    "receipt": {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/ondraw/comparison.json",
+      "sha256": "b77fce6787ccc43bfce896ff88b6d0021893de41ceb370381afc4a5c545a4bd6"
+    }
+  },
+  "independent_review": {
+    "status": "passed",
+    "receipt": {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/independent-review/receipt.json",
+      "sha256": "ebcc5bf7877a34db072350fb42778d3dc3765d44c5b802c82dd6cec2cb4c9fb5"
+    },
+    "preserved_original_artifacts": 94,
+    "original_artifacts_unchanged": true,
+    "both_ESI_receiver_edges_verified": true,
+    "all_55_aligned_branch_roles_preserved": true,
+    "field_identity_changes": 2,
+    "field_identity_change_scope": "Only the two GameFinishWorker facade calls become actual Stop.",
+    "ordinary_instruction_change_regions": 4,
+    "ordinary_change_scope": [
+      "Two PUSH receiver instructions become MOV ESI.",
+      "First caller argument cleanup removed.",
+      "Second load/cleanup/register test becomes direct memory test."
+    ],
+    "same_image_replay_without_rebuild": true,
+    "retained_observer_failures": [
+      {
+        "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/independent-review/preflight-eol-failure.json",
+        "sha256": "c08c99e5a8861f5b85c437cc2d7c453d4c65d75aae97bdd11c3a3e2f9f47b8fd"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/independent-review/edge-observer-failure.json",
+        "sha256": "0631863651da70c6bf889663d452f8d8294b6e8d9542c784923f1dce8fbaded8"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/independent-review/guard-count-observer-failure.json",
+        "sha256": "1882a906605b9bd0db6a0ae7444c1990205200ed0921058a368e26d01bbf91b3"
+      }
+    ],
+    "failure_scope": "Observer EOL comparison, cleanup-position expectation and guard-size split errors; repaired on the retained image, not native build failures."
+  },
+  "receipts": [
+    {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/freeze.json",
+      "sha256": "78828bac85ef901ff5841fea1ae477564bb4e8e105b9c1069c3a9412171df281"
+    },
+    {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/receipt.json",
+      "sha256": "96e3dd9fe852243dc61e20c58e0f9cb8634cfa0233225b97804b6708a801c201"
+    },
+    {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/comparison-receipt.json",
+      "sha256": "11d60c749f78c2b15bbf98eeb1f4acad5bfef350c1df3bdb322b6ed3f5335221"
+    },
+    {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/complete-run.json",
+      "sha256": "2ee10795802dce933bc7775ece0d83319c2d0e2a9feea4e7eb87dd9a847a638f"
+    },
+    {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/worker-comparison.json",
+      "sha256": "44393bee2641f83761ecd2be8946a443dc23940b06c3e6b3204e284344494bbc"
+    },
+    {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/worker-edges.json",
+      "sha256": "cb34cc41a0c411e422a39a4672c58e983a5e25dbc0daf7a9a706d007b0f4e2e9"
+    },
+    {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/script-viewer-worker-stop-same-image.json",
+      "sha256": "c2f2b387fab00ab8f6618fb9affe68d82ddc5854e6c4e336631b6b47e7979ae2"
+    },
+    {
+      "path": ".analysis/gpt-dots/game-real-worker-candidate-20261025/anm-timer-tick-same-image.json",
+      "sha256": "e8889f70bce94cafe83dbd7a51bef563904bd3e44acfe03c19fab2cb26234cfb"
+    }
+  ],
+  "annotation": {
+    "existing_noinline_unchanged": true,
+    "maintained_since_commit": "46853f1",
+    "original_annotation": "unknown",
+    "new_outline_or_register_hint": false
+  },
+  "credit": {
+    "new_exact_bytes": 0,
+    "new_exact_owners": 0,
+    "new_source_owners": 0,
+    "authored_denominator_change": 0
+  },
+  "full_checkpoint_ci": {
+    "status": "passed",
+    "scope": "112-stage target-independent worker source checkpoint; not parent exactness or runtime closure",
+    "verified_at_utc": "2026-10-25T02:35:47Z",
+    "stage_count": 112,
+    "root_exit": 0,
+    "post_input_check_exit": 0,
+    "frozen_input_count": 1491,
+    "frozen_inputs_preserved": true,
+    "transport_timeout": "Earlier MCP timeout affected transport only; durable CI and post-input checks passed.",
+    "post_ci_changes": "Only the worker evidence documents and handoff are updated after the successful freeze.",
+    "prior_pass_scope": "112-stage pass verified 2026-10-25 02:16:22 UTC belongs to cdc54c74 only",
+    "receipts": [
+      {
+        "path": ".analysis/gpt-dots/game-worker-checkpoint-20261025/root-ci.log",
+        "sha256": "a91e9eba5d9448f51a739dc6b8412895261dd64bc7902444d7021689af551a73"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-worker-checkpoint-20261025/root-ci.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-worker-checkpoint-20261025/ci-inputs.json",
+        "sha256": "b3973fa5cffbfaba74ef3bc28c1f173c579f6102704e222c81d637c081710f2b"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-worker-checkpoint-20261025/post-ci-inputs.log",
+        "sha256": "0130d46800c5077c9481973197b8320b62dd798126f567b294e9181656af2802"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-worker-checkpoint-20261025/post-ci-inputs.exit",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      {
+        "path": ".analysis/gpt-dots/game-worker-checkpoint-20261025/run-ci.sh",
+        "sha256": "0fdc5b374c76bac491943e48dcd358e33b2e2cafac929c6f9a61a10d7019c319"
+      }
+    ]
+  },
+  "limits": [
+    "Parent extents/inventories are not mismatch-byte counts or a percentage passed.",
+    "Global byte-array view and independent Ready/Cancelled aliases remain unchanged; original type, construction, lifetime, storage identity and runtime closure remain unproved.",
+    "Actual two-TU diagnostic graph does not establish original production partition or migrate a canonical recipe.",
+    "GUI substitution remains rejected; combined versus separate flag tests do not establish bitfield declaration."
+  ],
+  "root_focused_teardown": {
+    "status": "passed",
+    "baseline_cases": 70,
+    "scope": "Focused host baseline, not full CI."
+  }
+}
