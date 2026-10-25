@@ -1,0 +1,807 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "baseline": "8703e4172c66c13d1e161c3b3fc8b767e0b95cca",
+  "new_authored_exact_bytes": 283,
+  "new_authored_exact_owners": 2,
+  "new_authored_source_bytes": 572,
+  "new_authored_source_owners": 3,
+  "new_indeterminate_source_bytes": 367,
+  "denominator_change": 0,
+  "runtime_product_closure": false,
+  "trials": {
+    "first": {
+      "compare": {
+        "gui-create": {
+          "result": "exact",
+          "size": 136,
+          "image_sha256": "a61097ddab0566c8cc3d4adc58b0c95c28617bdf574795fefa6ac351234e8400",
+          "pdb_guid": "c0f79bea63e61546b395bde83695be7d",
+          "candidate_address": "0x0041E8E0",
+          "first_differences": [],
+          "field_count": 10
+        },
+        "gui-initialize": {
+          "result": "mismatch",
+          "size": 147,
+          "image_sha256": "a61097ddab0566c8cc3d4adc58b0c95c28617bdf574795fefa6ac351234e8400",
+          "pdb_guid": "c0f79bea63e61546b395bde83695be7d",
+          "candidate_address": "0x0041E840",
+          "first_differences": [
+            {
+              "offset": "0x24",
+              "linked": 104,
+              "target": 185
+            },
+            {
+              "offset": "0x30",
+              "linked": 8,
+              "target": 4
+            }
+          ],
+          "field_count": 15
+        },
+        "script-viewer-create": {
+          "result": "exact",
+          "size": 67,
+          "image_sha256": "a61097ddab0566c8cc3d4adc58b0c95c28617bdf574795fefa6ac351234e8400",
+          "pdb_guid": "c0f79bea63e61546b395bde83695be7d",
+          "candidate_address": "0x00401240",
+          "first_differences": [],
+          "field_count": 5
+        },
+        "script-viewer-initialize-managers": {
+          "result": "exact",
+          "size": 101,
+          "image_sha256": "a61097ddab0566c8cc3d4adc58b0c95c28617bdf574795fefa6ac351234e8400",
+          "pdb_guid": "c0f79bea63e61546b395bde83695be7d",
+          "candidate_address": "0x00401460",
+          "first_differences": [],
+          "field_count": 10
+        },
+        "script-viewer-load-thread": {
+          "result": "exact",
+          "size": 16,
+          "image_sha256": "a61097ddab0566c8cc3d4adc58b0c95c28617bdf574795fefa6ac351234e8400",
+          "pdb_guid": "c0f79bea63e61546b395bde83695be7d",
+          "candidate_address": "0x004014D0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-update": {
+          "result": "rejected",
+          "error": "static owner pdb_source must be its primary or support source"
+        },
+        "anm-manager-preload-anm": {
+          "result": "exact",
+          "size": 81,
+          "image_sha256": "a61097ddab0566c8cc3d4adc58b0c95c28617bdf574795fefa6ac351234e8400",
+          "pdb_guid": "c0f79bea63e61546b395bde83695be7d",
+          "candidate_address": "0x00405310",
+          "first_differences": [],
+          "field_count": 3
+        }
+      }
+    },
+    "logger": {
+      "compare": {
+        "gui-create": {
+          "result": "exact",
+          "size": 136,
+          "image_sha256": "66a0c63a9c284a98b0c8396f30a5f3d23ce52699d4d159deb73c200f181b802f",
+          "pdb_guid": "24ee12d7232c634ca9b0600fb04ffbc0",
+          "candidate_address": "0x0041E8E0",
+          "first_differences": [],
+          "field_count": 10
+        },
+        "gui-initialize": {
+          "result": "exact",
+          "size": 147,
+          "image_sha256": "66a0c63a9c284a98b0c8396f30a5f3d23ce52699d4d159deb73c200f181b802f",
+          "pdb_guid": "24ee12d7232c634ca9b0600fb04ffbc0",
+          "candidate_address": "0x0041E840",
+          "first_differences": [],
+          "field_count": 15
+        },
+        "script-viewer-create": {
+          "result": "exact",
+          "size": 67,
+          "image_sha256": "66a0c63a9c284a98b0c8396f30a5f3d23ce52699d4d159deb73c200f181b802f",
+          "pdb_guid": "24ee12d7232c634ca9b0600fb04ffbc0",
+          "candidate_address": "0x00401240",
+          "first_differences": [],
+          "field_count": 5
+        },
+        "script-viewer-initialize-managers": {
+          "result": "exact",
+          "size": 101,
+          "image_sha256": "66a0c63a9c284a98b0c8396f30a5f3d23ce52699d4d159deb73c200f181b802f",
+          "pdb_guid": "24ee12d7232c634ca9b0600fb04ffbc0",
+          "candidate_address": "0x00401460",
+          "first_differences": [],
+          "field_count": 10
+        },
+        "script-viewer-load-thread": {
+          "result": "exact",
+          "size": 16,
+          "image_sha256": "66a0c63a9c284a98b0c8396f30a5f3d23ce52699d4d159deb73c200f181b802f",
+          "pdb_guid": "24ee12d7232c634ca9b0600fb04ffbc0",
+          "candidate_address": "0x004014D0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-update": {
+          "result": "exact",
+          "size": 1251,
+          "image_sha256": "66a0c63a9c284a98b0c8396f30a5f3d23ce52699d4d159deb73c200f181b802f",
+          "pdb_guid": "24ee12d7232c634ca9b0600fb04ffbc0",
+          "candidate_address": "0x004015E0",
+          "first_differences": [],
+          "field_count": 83
+        },
+        "anm-manager-preload-anm": {
+          "result": "exact",
+          "size": 81,
+          "image_sha256": "66a0c63a9c284a98b0c8396f30a5f3d23ce52699d4d159deb73c200f181b802f",
+          "pdb_guid": "24ee12d7232c634ca9b0600fb04ffbc0",
+          "candidate_address": "0x00405310",
+          "first_differences": [],
+          "field_count": 3
+        }
+      }
+    },
+    "captures": {
+      "compare": {
+        "gui-create": {
+          "result": "exact",
+          "size": 136,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x0041E8E0",
+          "first_differences": [],
+          "field_count": 10
+        },
+        "gui-initialize": {
+          "result": "exact",
+          "size": 147,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x0041E840",
+          "first_differences": [],
+          "field_count": 15
+        },
+        "script-viewer-create": {
+          "result": "exact",
+          "size": 67,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00401240",
+          "first_differences": [],
+          "field_count": 5
+        },
+        "script-viewer-initialize-managers": {
+          "result": "exact",
+          "size": 101,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00401460",
+          "first_differences": [],
+          "field_count": 10
+        },
+        "script-viewer-load-thread": {
+          "result": "exact",
+          "size": 16,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x004014D0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-update": {
+          "result": "exact",
+          "size": 1251,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x004015E0",
+          "first_differences": [],
+          "field_count": 83
+        },
+        "anm-manager-preload-anm": {
+          "result": "exact",
+          "size": 81,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00405310",
+          "first_differences": [],
+          "field_count": 3
+        }
+      },
+      "guards": {
+        "script-viewer-constructor": {
+          "result": "exact",
+          "size": 234,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x004010E0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-register-tasks": {
+          "result": "exact",
+          "size": 106,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x004011D0",
+          "first_differences": [],
+          "field_count": 12
+        },
+        "script-viewer-clear-names": {
+          "result": "exact",
+          "size": 86,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00401550",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00401D70",
+          "first_differences": [],
+          "field_count": 1
+        },
+        "bullet-reset-pool": {
+          "result": "exact",
+          "size": 45,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00420ED0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "enemy-manager-clear": {
+          "result": "exact",
+          "size": 118,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x004202A0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "enemy-manager-suspend-callbacks": {
+          "result": "exact",
+          "size": 28,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00420280",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "input-debug-repeat": {
+          "result": "exact",
+          "size": 109,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00420F00",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "script-viewer-worker-stop": {
+          "result": "exact",
+          "size": 101,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00422FD0",
+          "first_differences": [],
+          "field_count": 3
+        },
+        "script-viewer-worker-start": {
+          "result": "exact",
+          "size": 56,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00423040",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-suspend-player": {
+          "result": "exact",
+          "size": 36,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00401520",
+          "first_differences": [],
+          "field_count": 1
+        },
+        "decomphelp-chain-unregister": {
+          "result": "exact",
+          "size": 114,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x0040D6E0",
+          "first_differences": [],
+          "field_count": 1
+        },
+        "decomphelp-chain-remove-all": {
+          "result": "exact",
+          "size": 82,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x0040D760",
+          "first_differences": [],
+          "field_count": 7
+        },
+        "enemy-spawn": {
+          "result": "exact",
+          "size": 577,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00420890",
+          "first_differences": [],
+          "field_count": 12
+        },
+        "frontend-cursor-move": {
+          "result": "exact",
+          "size": 128,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x0040DBB0",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "frontend-input-repeated": {
+          "result": "exact",
+          "size": 33,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x0040DC30",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "main-set-next-game-mode": {
+          "result": "exact",
+          "size": 37,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00420FB0",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "script-viewer-create": {
+          "result": "exact",
+          "size": 67,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00401240",
+          "first_differences": [],
+          "field_count": 5
+        },
+        "script-viewer-initialize-managers": {
+          "result": "exact",
+          "size": 101,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00401460",
+          "first_differences": [],
+          "field_count": 10
+        },
+        "script-viewer-load-thread": {
+          "result": "exact",
+          "size": 16,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x004014D0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-update": {
+          "result": "exact",
+          "size": 1251,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x004015E0",
+          "first_differences": [],
+          "field_count": 83
+        },
+        "script-viewer-worker-destructor": {
+          "result": "exact",
+          "size": 16,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00422FC0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-gui": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00423320",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-player": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00423340",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-bullets": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00423360",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-bomb": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00423380",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-items": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x004233A0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-popups": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x004233C0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "anm-manager-preload-anm": {
+          "result": "exact",
+          "size": 81,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00405310",
+          "first_differences": [],
+          "field_count": 3
+        },
+        "decomphelp-game-error-log": {
+          "result": "exact",
+          "size": 201,
+          "image_sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+          "pdb_guid": "5ea8ffae27c23d44850ecbcd63c2d7b8",
+          "candidate_address": "0x00425B90",
+          "first_differences": [],
+          "field_count": 12
+        }
+      }
+    },
+    "canonical": {
+      "compare": {
+        "gui-creation-factory": {
+          "result": "exact",
+          "size": 136,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x0041E8E0",
+          "first_differences": [],
+          "field_count": 10
+        },
+        "gui-creation-initialize": {
+          "result": "exact",
+          "size": 147,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x0041E840",
+          "first_differences": [],
+          "field_count": 15
+        }
+      },
+      "guards": {
+        "script-viewer-constructor": {
+          "result": "exact",
+          "size": 234,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x004010E0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-register-tasks": {
+          "result": "exact",
+          "size": 106,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x004011D0",
+          "first_differences": [],
+          "field_count": 12
+        },
+        "script-viewer-clear-names": {
+          "result": "exact",
+          "size": 86,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00401550",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00401D70",
+          "first_differences": [],
+          "field_count": 1
+        },
+        "bullet-reset-pool": {
+          "result": "exact",
+          "size": 45,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00420ED0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "enemy-manager-clear": {
+          "result": "exact",
+          "size": 118,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x004202A0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "enemy-manager-suspend-callbacks": {
+          "result": "exact",
+          "size": 28,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00420280",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "input-debug-repeat": {
+          "result": "exact",
+          "size": 109,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00420F00",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "script-viewer-worker-stop": {
+          "result": "exact",
+          "size": 101,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00422FD0",
+          "first_differences": [],
+          "field_count": 3
+        },
+        "script-viewer-worker-start": {
+          "result": "exact",
+          "size": 56,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00423040",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-suspend-player": {
+          "result": "exact",
+          "size": 36,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00401520",
+          "first_differences": [],
+          "field_count": 1
+        },
+        "decomphelp-chain-unregister": {
+          "result": "exact",
+          "size": 114,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x0040D6E0",
+          "first_differences": [],
+          "field_count": 1
+        },
+        "decomphelp-chain-remove-all": {
+          "result": "exact",
+          "size": 82,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x0040D760",
+          "first_differences": [],
+          "field_count": 7
+        },
+        "enemy-spawn": {
+          "result": "exact",
+          "size": 577,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00420890",
+          "first_differences": [],
+          "field_count": 12
+        },
+        "frontend-cursor-move": {
+          "result": "exact",
+          "size": 128,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x0040DBB0",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "frontend-input-repeated": {
+          "result": "exact",
+          "size": 33,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x0040DC30",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "main-set-next-game-mode": {
+          "result": "exact",
+          "size": 37,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00420FB0",
+          "first_differences": [],
+          "field_count": 0
+        },
+        "script-viewer-create": {
+          "result": "exact",
+          "size": 67,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00401240",
+          "first_differences": [],
+          "field_count": 5
+        },
+        "script-viewer-initialize-managers": {
+          "result": "exact",
+          "size": 101,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00401460",
+          "first_differences": [],
+          "field_count": 10
+        },
+        "script-viewer-load-thread": {
+          "result": "exact",
+          "size": 16,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x004014D0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-update": {
+          "result": "exact",
+          "size": 1251,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x004015E0",
+          "first_differences": [],
+          "field_count": 83
+        },
+        "script-viewer-worker-destructor": {
+          "result": "exact",
+          "size": 16,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00422FC0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-gui": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00423320",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-player": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00423340",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-bullets": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00423360",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-bomb": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00423380",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-items": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x004233A0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "script-viewer-release-popups": {
+          "result": "exact",
+          "size": 18,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x004233C0",
+          "first_differences": [],
+          "field_count": 2
+        },
+        "anm-manager-preload-anm": {
+          "result": "exact",
+          "size": 81,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00405310",
+          "first_differences": [],
+          "field_count": 3
+        },
+        "decomphelp-game-error-log": {
+          "result": "exact",
+          "size": 201,
+          "image_sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+          "pdb_guid": "1fd0fa180b8e8a4eba697d518aad7ad6",
+          "candidate_address": "0x00425B90",
+          "first_differences": [],
+          "field_count": 12
+        }
+      }
+    }
+  },
+  "validation": {
+    "focused_host": "passed; 5 source mutants rejected; address+undefined/leaks; explicit dependency seams",
+    "full_ci": {
+      "ci_exit": 0,
+      "frozen_count": 2683,
+      "changed": [],
+      "stages": 117,
+      "verified_utc": "2026-10-25T12:55:01Z",
+      "recovery": "MCP timeout recovered from terminal files; no duplicate native/CI execution",
+      "scope": "all117 stages; no Windows product/runtime claim"
+    },
+    "legacy_gui_fixtures": "all five passed at12:37:14: lifecycle ASan/UBSan135; message-constructor; message-lifecycle ASan/UBSan; message-run13groups ASan/UBSan; draw O0/O2/UBSan. Explicit setup-only constructor seams; no tested-body changes.",
+    "first_full_ci": {
+      "exit": 1,
+      "stages_started": 78,
+      "frozen_inputs": 2676,
+      "changed": [],
+      "reason": "laser-line legacy fixture lacked explicit GuiView setup constructor; production body unchanged",
+      "repair": "documented setup-only seam added; laser-line and include-only laser-type1 focused controls pass"
+    }
+  }
+}

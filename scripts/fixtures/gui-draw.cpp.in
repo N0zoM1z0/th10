@@ -17,6 +17,8 @@ struct AnmLoadedView {};
 struct GuiMessageVmView {};
 @GAUGE@
 @GUI@
+// Host-only zeroed GUI setup; actual construction has its own extracted contract.
+GuiView::GuiView() { memset(this, 0, sizeof(*this)); }
 GuiView::~GuiView() {}
 @RECTANGLE@
 struct EnemyFullObjectView { struct { unsigned flags=0; } runtime; };

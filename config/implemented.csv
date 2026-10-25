@@ -1115,3 +1115,7 @@ SptTestCreate
 SptTestView::Update
 SptTestUpdateCallback
 EclVmScriptDatabase::CreateHost
+GuiView::GuiView
+GuiView::Initialize
+GuiView::LoadData
+ScriptViewerCreateGui

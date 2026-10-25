@@ -122,6 +122,8 @@ AnmRenderManagerView::~AnmRenderManagerView() {}
 AsciiManagerView::AsciiManagerView() {}
 AsciiManagerView::~AsciiManagerView() {}
 size_t AsciiManagerView::GetSize() { return sizeof(*this); }
+// Host-only GUI setup seam; creation is covered by test_th10_gui_creation_contracts.py.
+GuiView::GuiView() {}
 GuiView::~GuiView() {}
 EnemyManagerView::EnemyManagerView() {}
 EnemyManagerView::~EnemyManagerView() {}

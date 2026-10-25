@@ -24315,3 +24315,186 @@ offset = 1
 type = "REL32"
 target = 4374464
 symbol = "?Update@SptTestView@@QAEHXZ"
+
+# Complete GUI creation family in actual ScriptViewer root + real filesystem/logger.
+[units.gui-creation-factory]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/GuiCreation-cold-20261025"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp", "src/FileSystem.cpp", "src/PbgArchive.cpp", "src/GameErrorContext.cpp"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/Gui.cpp"
+functions = ["ScriptViewerCreateGui"]
+symbol = "?ScriptViewerCreateGui@@YAPAXXZ"
+target_address = 4278320
+size = 136
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+
+[[units.gui-creation-factory.linkages]]
+offset = 3
+type = "DIR32"
+symbol = "__ehhandler$?ScriptViewerCreateGui@@YAPAXXZ"
+target = 4610123
+allocation_eh_handler = true
+
+[[units.gui-creation-factory.linkages]]
+offset = 9
+type = "DIR32"
+symbol = "__except_list"
+target = 0
+
+[[units.gui-creation-factory.linkages]]
+offset = 17
+type = "DIR32"
+symbol = "__except_list"
+target = 0
+
+[[units.gui-creation-factory.linkages]]
+offset = 29
+type = "REL32"
+symbol = "??2@YAPAXI@Z"
+target = 4531347
+
+[[units.gui-creation-factory.linkages]]
+offset = 54
+type = "REL32"
+symbol = "??0GuiView@@QAE@XZ"
+target = 4274192
+
+[[units.gui-creation-factory.linkages]]
+offset = 73
+type = "REL32"
+symbol = "?Initialize@GuiView@@QAEHXZ"
+target = 4274560
+
+[[units.gui-creation-factory.linkages]]
+offset = 87
+type = "REL32"
+symbol = "??1GuiView@@QAE@XZ"
+target = 4277744
+
+[[units.gui-creation-factory.linkages]]
+offset = 93
+type = "REL32"
+symbol = "??3@YAXPAX@Z"
+target = 4531361
+
+[[units.gui-creation-factory.linkages]]
+offset = 110
+type = "DIR32"
+symbol = "__except_list"
+target = 0
+
+[[units.gui-creation-factory.linkages]]
+offset = 128
+type = "DIR32"
+symbol = "__except_list"
+target = 0
+[units.gui-creation-initialize]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/GuiCreation-cold-20261025"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp", "src/FileSystem.cpp", "src/PbgArchive.cpp", "src/GameErrorContext.cpp"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/Gui.cpp"
+functions = ["GuiView::Initialize"]
+symbol = "?Initialize@GuiView@@QAEHXZ"
+target_address = 4274560
+size = 147
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+
+[[units.gui-creation-initialize.linkages]]
+offset = 2
+type = "DIR32"
+symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+target = 4791312
+
+[[units.gui-creation-initialize.linkages]]
+offset = 7
+type = "DIR32"
+symbol = "??_C@_09DDFJDAFG@front?4anm?$AA@"
+target = 4641364
+
+[[units.gui-creation-initialize.linkages]]
+offset = 17
+type = "REL32"
+symbol = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z"
+target = 4485760
+
+[[units.gui-creation-initialize.linkages]]
+offset = 32
+type = "DIR32"
+symbol = "??_C@_0BH@JNGBGENB@?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IJ?s?$IC?j?$IC?D?$IC?$KC?$IC?$NM?$IC?$LH?$AN?6?$AA@"
+target = 4639592
+
+[[units.gui-creation-initialize.linkages]]
+offset = 37
+type = "DIR32"
+symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A"
+target = 4673392
+
+[[units.gui-creation-initialize.linkages]]
+offset = 42
+type = "REL32"
+symbol = "?Log@GameErrorContext@th10@@QAAPADPADZZ"
+target = 4503568
+
+[[units.gui-creation-initialize.linkages]]
+offset = 55
+type = "REL32"
+symbol = "?LoadData@GuiView@@QAEHXZ"
+target = 4274720
+
+[[units.gui-creation-initialize.linkages]]
+offset = 66
+type = "DIR32"
+symbol = "?GuiUpdateCallback@@YIHPAX@Z"
+target = 4283104
+
+[[units.gui-creation-initialize.linkages]]
+offset = 71
+type = "REL32"
+symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z"
+target = 4497104
+
+[[units.gui-creation-initialize.linkages]]
+offset = 82
+type = "DIR32"
+symbol = "?g_Chain@th10@@3PAUChain@1@A"
+target = 4791268
+
+[[units.gui-creation-initialize.linkages]]
+offset = 96
+type = "REL32"
+symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+target = 4496096
+
+[[units.gui-creation-initialize.linkages]]
+offset = 101
+type = "DIR32"
+symbol = "?GuiDrawCallback@@YIHPAX@Z"
+target = 4283120
+
+[[units.gui-creation-initialize.linkages]]
+offset = 109
+type = "REL32"
+symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z"
+target = 4497104
+
+[[units.gui-creation-initialize.linkages]]
+offset = 121
+type = "DIR32"
+symbol = "?g_Chain@th10@@3PAUChain@1@A"
+target = 4791268
+
+[[units.gui-creation-initialize.linkages]]
+offset = 135
+type = "REL32"
+symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+target = 4496240

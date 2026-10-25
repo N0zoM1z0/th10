@@ -4,6 +4,19 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [GUI creation family](evidence/gui-creation-20261025/README.md) closes
+**283 authored bytes / two owners**: factory136 and Initialize147 (not ctor).
+Actual logger dependency restores natural ECX; separate canonical cold and
+capture-corrected links pass25fields/6locals. All30 same-image guards pass3738,
+including prior ScriptViewer root/lifecycle and Preload81/Log. LoadData289 remains
+source-only after genuine filename/stage capture correction; ctor367 is
+indeterminate/source-only (525 emitted), existing ID construction retained.
+New authored source572, no denominator change. Exact77034/275055,424 owners;
+source634/252003. Original compile/metadata failures retained, no duplicate runs.
+Focused host and all117 full-CI stages pass;2683 frozen inputs unchanged,
+terminal0 recovered12:55:01 without rerun. Original78-stage failure from one
+missing laser test-only ctor seam is retained; focused repair plus full rerun pass.
+No runtime/product/portability promotion.
 Current [Spt Test update/factory pilot](evidence/spt-test-update-20261025/README.md)
 closes **89 authored bytes / one factory owner**, with the complete926 update
 admitted source-only/nonexact. Natural database-member ownership restores RET4

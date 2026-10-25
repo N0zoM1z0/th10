@@ -1,0 +1,714 @@
+{
+  ".analysis/gui-creation-20261025/canonical-compare.json": {
+    "sha256": "22a4e42327ebb5d3f87ccf34f036bf7bf2dfc02c56aeff3451c181f2e8fed0a6",
+    "size": 11992
+  },
+  ".analysis/gui-creation-20261025/canonical-guards.json": {
+    "sha256": "b127a941dc311c85a67bbcb04ed841f2c2537fc58ced6cc2f41b63de02045d72",
+    "size": 92716
+  },
+  ".analysis/gui-creation-20261025/canonical-units.json": {
+    "sha256": "5c4cd889fc3f2f71e7ec4a0875e632151391d6216978abae7931353463c07ad1",
+    "size": 6929
+  },
+  ".analysis/gui-creation-20261025/captures-compare.json": {
+    "sha256": "7571d3912783b6699106f1e471955110356b470a5dcd256019ff675291250861",
+    "size": 56379
+  },
+  ".analysis/gui-creation-20261025/captures-guards.json": {
+    "sha256": "f2c10506f8137ec63beac6098169f8ac99787c052671a62b85662d87731ed4a5",
+    "size": 92440
+  },
+  ".analysis/gui-creation-20261025/captures-manifest.json": {
+    "sha256": "d2eb3c8c574bb59c527b082307e45487b8545a27a33f4b119d805b37ba658300",
+    "size": 1991143
+  },
+  ".analysis/gui-creation-20261025/first-compare.json": {
+    "sha256": "aee28045bb13056d6a9726f8a45e289deb8a79e0caa692aecfcb6fd341946f49",
+    "size": 23091
+  },
+  ".analysis/gui-creation-20261025/first-manifest.json": {
+    "sha256": "5bafdc9623565e4b266821f29999e730dd76827df708b25242e4f7adebddd59f",
+    "size": 1904983
+  },
+  ".analysis/gui-creation-20261025/ghidra-raw.json": {
+    "sha256": "6e5a545f5d4f671d52f9863ac6d7c4330f23e9a077f47ea9c804e492ab069d52",
+    "size": 33868
+  },
+  ".analysis/gui-creation-20261025/inventory.json": {
+    "sha256": "e8bf93c3845396d797ffcc88c21224f687ce4348b4d536a8578e5f0a419c95ed",
+    "size": 67017
+  },
+  ".analysis/gui-creation-20261025/logger-compare.json": {
+    "sha256": "a6d923448adbe863a52db14fa9bfc92797315373a90abcf61d609dca737b997c",
+    "size": 56434
+  },
+  ".analysis/gui-creation-20261025/logger-manifest.json": {
+    "sha256": "c9fb6893a3e0ef0bb772d9ceb6d32e120e6eae0256a2df824cc8812f8bd927c5",
+    "size": 2003508
+  },
+  ".analysis/gui-creation-20261025/canonical-build.py": {
+    "sha256": "d0056549ce01786a7bac16a7031361f004a716f1f288bad66a3db6b40658b44a",
+    "size": 2396
+  },
+  ".analysis/gui-creation-20261025/canonical-guards.py": {
+    "sha256": "d56aa61cf1ef653bf6376053b7214430a61a1e0367a468192668ba32e760fe5d",
+    "size": 1225
+  },
+  ".analysis/gui-creation-20261025/captures-build.py": {
+    "sha256": "2de53302ff0394784785e1578be1b1b5a09dd4443ee7ab52452c75c512d6c097",
+    "size": 2390
+  },
+  ".analysis/gui-creation-20261025/captures-compare.py": {
+    "sha256": "43117cad0e34d1656b6de19d8081967c89dfe1210a64b62983a3b8b47cfb5287",
+    "size": 3975
+  },
+  ".analysis/gui-creation-20261025/compare.py": {
+    "sha256": "95eb6c27025ea9a3d302d2b8399aff48b6d0f43bced45fa6bb30f11e93c24246",
+    "size": 3707
+  },
+  ".analysis/gui-creation-20261025/first-fixed.py": {
+    "sha256": "8454970902f57b7ce21f7d18215947c2b72da88afcfe3b43870a40082749d48d",
+    "size": 2183
+  },
+  ".analysis/gui-creation-20261025/first.py": {
+    "sha256": "5218bd0cb0774f8f3f00dfa9741d35b4baf83457d9a73e9626a6475c733c05cb",
+    "size": 2177
+  },
+  ".analysis/gui-creation-20261025/guards.py": {
+    "sha256": "ff060758b56e5b7b4bfea319d8272c3b5efbed55978e100143d8ec8193078e4d",
+    "size": 1209
+  },
+  ".analysis/gui-creation-20261025/inventory.py": {
+    "sha256": "fc6470e93a739cf8d4a0ae73d890961ee3a6a7d0f260731461052c905f14b4d1",
+    "size": 4486
+  },
+  ".analysis/gui-creation-20261025/logger-build.py": {
+    "sha256": "7879408f637667429e7150685732712fde878530d92482d821e2b405cc534571",
+    "size": 2400
+  },
+  ".analysis/gui-creation-20261025/logger-compare.py": {
+    "sha256": "9b7292cec54c3fcda00de04a0838493b110a0702da3648b2e70112ac805d4e69",
+    "size": 3981
+  },
+  ".analysis/gui-creation-20261025/package.py": {
+    "sha256": "9ea6d3605aa7f3683fecd12fb8c649e40ce3f19058c35518c76f058d1a6717a9",
+    "size": 2584
+  },
+  ".analysis/gui-creation-20261025/prepare.py": {
+    "sha256": "0c430532421b10a30f42b46223c6c4e91f58e510f79c0f45a88e6c50f6ac017e",
+    "size": 3173
+  },
+  ".analysis/gui-creation-20261025/canonical-build.log": {
+    "sha256": "e8d4a56b39f3a85be7b1e6981b82d9552d832440f3ca309861e763c27d4d01c3",
+    "size": 13404
+  },
+  ".analysis/gui-creation-20261025/captures-build.log": {
+    "sha256": "686b61d4cbad1bfd4cd6d0ba55c008a9b66922995d1d7f2703b40615de502ea1",
+    "size": 13062
+  },
+  ".analysis/gui-creation-20261025/first-fixed.log": {
+    "sha256": "6d05d86af47912eb8f149351369edac80ffda388f34a87318a585857368e24d4",
+    "size": 985
+  },
+  ".analysis/gui-creation-20261025/first.log": {
+    "sha256": "cc33b41fceedfcd2d1e3a754d592ab7bc5fee005b7f7fc0df54f6230ae403da7",
+    "size": 1723
+  },
+  ".analysis/gui-creation-20261025/logger-build.log": {
+    "sha256": "74dcddcb25668217e93d97f984f43335024ac13a1dbf7de441244d43bfda0434",
+    "size": 13252
+  },
+  ".analysis/gui-creation-20261025/canonical-build.exit": {
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "size": 2
+  },
+  ".analysis/gui-creation-20261025/captures-build.exit": {
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "size": 2
+  },
+  ".analysis/gui-creation-20261025/first-fixed.exit": {
+    "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "size": 2
+  },
+  ".analysis/gui-creation-20261025/first.exit": {
+    "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "size": 2
+  },
+  ".analysis/gui-creation-20261025/logger-build.exit": {
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "size": 2
+  },
+  "build/gui-creation-first-20261025/freeze-pass.txt": {
+    "sha256": "466e46b16a54dcff00ed4f60b09037834ade52f810da444fb93b3ed896e2db18",
+    "size": 28
+  },
+  "build/gui-creation-first-20261025/frozen-inputs.json": {
+    "sha256": "088b1629decbde459b89df717d66e58bb1979250ca59439d6d3a648f5109d058",
+    "size": 221351
+  },
+  "build/gui-creation-first-20261025/source.ltcg.obj": {
+    "sha256": "89ed8ecf85a84255e0881179a36dc27d5402325ba59bbb674eb1e94aaf87bfbe",
+    "size": 61580
+  },
+  "build/gui-creation-first-20261025/support-00-AnmManager.ltcg.obj": {
+    "sha256": "7ba41110209bb2ddeb23f341fc58ffcde789773dca06806fc23a96e0ee96e0c6",
+    "size": 248418
+  },
+  "build/gui-creation-first-20261025/support-01-Chain.ltcg.obj": {
+    "sha256": "1bcae40492cafee30e7ade62c22400e8d003bff6924b4ad6901820d6bc1fa3f0",
+    "size": 40895
+  },
+  "build/gui-creation-first-20261025/support-02-FrontEnd.ltcg.obj": {
+    "sha256": "21d724e439c7222f81f86cdf36a28d51663eee41ef6c0dab01755b1911f50fac",
+    "size": 224969
+  },
+  "build/gui-creation-first-20261025/support-03-Player.ltcg.obj": {
+    "sha256": "1d6ae0b9a03ad660aeb35b5119390ce53cf8520495756013c2bca5363b0702fb",
+    "size": 102262
+  },
+  "build/gui-creation-first-fixed-20261025/freeze-pass.txt": {
+    "sha256": "466e46b16a54dcff00ed4f60b09037834ade52f810da444fb93b3ed896e2db18",
+    "size": 28
+  },
+  "build/gui-creation-first-fixed-20261025/frozen-inputs.json": {
+    "sha256": "20cff88bf14bdeeafbd322b649b1a73a2a72f98e97b35450223fa425574b0552",
+    "size": 221351
+  },
+  "build/gui-creation-first-fixed-20261025/functions-recovered.json": {
+    "sha256": "62aa455aeadb92f27cec7296d40f9b49f370de077f367f15ff74a3f142acf03f",
+    "size": 431872
+  },
+  "build/gui-creation-first-fixed-20261025/link-aliases.rsp": {
+    "sha256": "bd201aa3bd7661f87a0b08935d7a0b2cc314169dfbc7abf4c9742ddd194835a2",
+    "size": 37476
+  },
+  "build/gui-creation-first-fixed-20261025/link-anchors.c": {
+    "sha256": "7cb1677614811c3a690f57b0a4d87ce575b22b7f35924644c5ef23644fc079ff",
+    "size": 24667
+  },
+  "build/gui-creation-first-fixed-20261025/link-anchors.obj": {
+    "sha256": "cb7f56922ede2de4c814bee4e3beeca510f143cef4883550392015c699348d4a",
+    "size": 22892
+  },
+  "build/gui-creation-first-fixed-20261025/link-attempt-1.log": {
+    "sha256": "f888f9af9e7218adadbeedce662d394ce13424f827b07758a842ded29ecbdbd4",
+    "size": 70479
+  },
+  "build/gui-creation-first-fixed-20261025/link-attempt-2.log": {
+    "sha256": "aacc281d3f408329b5be7d18066380337e8f01e54950fe551a8c704febd96c73",
+    "size": 936
+  },
+  "build/gui-creation-first-fixed-20261025/link-attempt-3.log": {
+    "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "size": 104
+  },
+  "build/gui-creation-first-fixed-20261025/source.exe": {
+    "sha256": "a61097ddab0566c8cc3d4adc58b0c95c28617bdf574795fefa6ac351234e8400",
+    "size": 176128
+  },
+  "build/gui-creation-first-fixed-20261025/source.ltcg.obj": {
+    "sha256": "52f32505bfa8f7130a9cb847e2c2ce73f18d733cadb8b6b9f89b930566f5ba75",
+    "size": 61592
+  },
+  "build/gui-creation-first-fixed-20261025/source.map": {
+    "sha256": "81544c1f17f80d4227b720d1e2dd087cd4f7b04feee01612fd4c0b89c06a6907",
+    "size": 168419
+  },
+  "build/gui-creation-first-fixed-20261025/source.pdb": {
+    "sha256": "b662cd89cc6ff4f943624d1e05e8ef1e4439eec390d27be5fe7474b9a86c2181",
+    "size": 183296
+  },
+  "build/gui-creation-first-fixed-20261025/support-00-AnmManager.ltcg.obj": {
+    "sha256": "67f91559d1a785ec47da0fecf462ed0142894061d87c710a2cdb9a7b9e3a2002",
+    "size": 248430
+  },
+  "build/gui-creation-first-fixed-20261025/support-01-Chain.ltcg.obj": {
+    "sha256": "837398c75948abcd208b11e05095f0e2fe2c108e3faca9e63b82cfbaffe27bab",
+    "size": 40907
+  },
+  "build/gui-creation-first-fixed-20261025/support-02-FrontEnd.ltcg.obj": {
+    "sha256": "ca9ca561a8eb6c7f24eb5a5da5946ffc4ee555a4c1ed7881cf1d570c2d13d8e4",
+    "size": 224981
+  },
+  "build/gui-creation-first-fixed-20261025/support-03-Player.ltcg.obj": {
+    "sha256": "7b490728d0a89c08b677582e6a1a48a10dd5418acaf155a198f3ebf7589e12c2",
+    "size": 102274
+  },
+  "build/gui-creation-first-fixed-20261025/support-04-Gui.ltcg.obj": {
+    "sha256": "99ee5f03fef3ebaf6a590d110af2d3b37fb8db322871e73ac0910d196fed1c4b",
+    "size": 132222
+  },
+  "build/gui-creation-first-fixed-20261025/support-05-Enemy.ltcg.obj": {
+    "sha256": "1fb9da1806e7fcb68fc972b29929360e3f2d8e0f28747c80c16c9f532ff61a07",
+    "size": 98735
+  },
+  "build/gui-creation-first-fixed-20261025/support-06-BulletLifecycle.ltcg.obj": {
+    "sha256": "bca601cd8eb00b20be66d494bc7f327ece9e6c069f7d0d6017292d6d77880cd6",
+    "size": 13378
+  },
+  "build/gui-creation-first-fixed-20261025/support-07-InputState.ltcg.obj": {
+    "sha256": "c03a1290a6b0e6ab2b244ecd57a2b175f35ce98c235e8328d6e3dd43b1141800",
+    "size": 3628
+  },
+  "build/gui-creation-first-fixed-20261025/support-08-Main.ltcg.obj": {
+    "sha256": "d038689934359af05fbc0998448024596d2bef998dd4163b88184b5e09a4366f",
+    "size": 96800
+  },
+  "build/gui-creation-first-fixed-20261025/support-09-ScriptViewerWorker.ltcg.obj": {
+    "sha256": "58a993dc7b44f060da9eda444ca3889d0886057bab719635980342f8747f1b4e",
+    "size": 29324
+  },
+  "build/gui-creation-first-fixed-20261025/support-10-ScriptViewerLifecycle.ltcg.obj": {
+    "sha256": "f7d26fd8088e07489503982d65e142f1b6e1a8a7af2069293b4529a762a4fad8",
+    "size": 45008
+  },
+  "build/gui-creation-first-fixed-20261025/support-11-ItemManager.ltcg.obj": {
+    "sha256": "3e04bc572e96b7954dcc8ca9fdd44bc6f0e08de8dfbae3af20dd684594e7d04a",
+    "size": 59813
+  },
+  "build/gui-creation-first-fixed-20261025/support-12-AnmVmId.ltcg.obj": {
+    "sha256": "af9f9813627d28b3522ba057fc1af641271cbc1886462e0cc445fd6bcd605290",
+    "size": 13891
+  },
+  "build/gui-creation-first-fixed-20261025/support-13-FileSystem.ltcg.obj": {
+    "sha256": "b3f2ef875d0e82d84a1740b2699f68ce81bfe2b3ef365e5f27243fad6fb49140",
+    "size": 33667
+  },
+  "build/gui-creation-first-fixed-20261025/support-14-PbgArchive.ltcg.obj": {
+    "sha256": "710210d940371c477253ec5e187704fae79b49eb3204a6b4ea552944c117d93a",
+    "size": 33073
+  },
+  "build/gui-creation-actual-logger-20261025/freeze-pass.txt": {
+    "sha256": "466e46b16a54dcff00ed4f60b09037834ade52f810da444fb93b3ed896e2db18",
+    "size": 28
+  },
+  "build/gui-creation-actual-logger-20261025/frozen-inputs.json": {
+    "sha256": "29e53d3a3fb90f4f1c6c33b66b148d85ad8fb6129ebe9eff6ee28fdabca8946c",
+    "size": 221799
+  },
+  "build/gui-creation-actual-logger-20261025/functions.json": {
+    "sha256": "2baf2d63c9be8afeb7ce9e57e7fdb889a86435e31b236f5925d60ccc25023f91",
+    "size": 437417
+  },
+  "build/gui-creation-actual-logger-20261025/link-aliases.rsp": {
+    "sha256": "f1923427906c15733cbc0cd63421ef46d8989d97278ce0ec5117f0e4312bfd55",
+    "size": 37493
+  },
+  "build/gui-creation-actual-logger-20261025/link-anchors.c": {
+    "sha256": "57d050cdddf5a3fdab041c03b51476d672ee921ce247201f9203310b3ea293ce",
+    "size": 24719
+  },
+  "build/gui-creation-actual-logger-20261025/link-anchors.obj": {
+    "sha256": "b373abd294eeff83851bcbc58c8f0b7995e6f6c7e3ddb968e9aba91c555908a6",
+    "size": 22941
+  },
+  "build/gui-creation-actual-logger-20261025/link-attempt-1.log": {
+    "sha256": "f8e9da4b6b4e4ca3654c629c487d8ae833cc1ea76e436b09dc854abcf48585b2",
+    "size": 70347
+  },
+  "build/gui-creation-actual-logger-20261025/link-attempt-2.log": {
+    "sha256": "7f9429d21602b326b4b276c6695fa64dfe2fe50e8e31ad9fbc3ab32e0aa24078",
+    "size": 1017
+  },
+  "build/gui-creation-actual-logger-20261025/link-attempt-3.log": {
+    "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "size": 104
+  },
+  "build/gui-creation-actual-logger-20261025/native.json": {
+    "sha256": "901b1003c12818498f61f8f47bb075d29b743e6db70e8dad028fe8ca8a5e717e",
+    "size": 61117
+  },
+  "build/gui-creation-actual-logger-20261025/source.exe": {
+    "sha256": "66a0c63a9c284a98b0c8396f30a5f3d23ce52699d4d159deb73c200f181b802f",
+    "size": 180224
+  },
+  "build/gui-creation-actual-logger-20261025/source.ltcg.obj": {
+    "sha256": "0453ea7fe6ff4245bb6e79b2c787f0fc1bfd79f56eadae24f3e5f7ca2f14f0b0",
+    "size": 61668
+  },
+  "build/gui-creation-actual-logger-20261025/source.map": {
+    "sha256": "829fa616d2ce0c8b92d812f2a0e82f356da1aedcb0458199a4eb07ccebf961bd",
+    "size": 169347
+  },
+  "build/gui-creation-actual-logger-20261025/source.pdb": {
+    "sha256": "073632aacb1027829b16cfa68d2cf950e70f91d8fe190bfd5d613a68b1a46e0e",
+    "size": 183296
+  },
+  "build/gui-creation-actual-logger-20261025/support-00-AnmManager.ltcg.obj": {
+    "sha256": "de1d39720f531c5f39e0146e21fe4e42ec47b85d55576ff69909d92c07eabc4f",
+    "size": 248474
+  },
+  "build/gui-creation-actual-logger-20261025/support-01-Chain.ltcg.obj": {
+    "sha256": "1336f37dadce9fa9285df1e1a200c2bdb20d7dc966e4bc4fb895de51e83d6acd",
+    "size": 40943
+  },
+  "build/gui-creation-actual-logger-20261025/support-02-FrontEnd.ltcg.obj": {
+    "sha256": "b8fddf46f40c8037e1fde18095473edc9e6f8e9c7a12c0a2a24a193e78bb2386",
+    "size": 225049
+  },
+  "build/gui-creation-actual-logger-20261025/support-03-Player.ltcg.obj": {
+    "sha256": "99c30101bce14c0ee783aa9f6f0222ef340c32e850439775778112a0503f1363",
+    "size": 102334
+  },
+  "build/gui-creation-actual-logger-20261025/support-04-Gui.ltcg.obj": {
+    "sha256": "0059245fd48f2182f5038ffaf0a73a70efaaf4a96e186a1294f4530f171ddf01",
+    "size": 132487
+  },
+  "build/gui-creation-actual-logger-20261025/support-05-Enemy.ltcg.obj": {
+    "sha256": "919e5451b51f1e0fdf9827bf01a4c31b0b2c05a288b993ff44524ce2748b0d2d",
+    "size": 98807
+  },
+  "build/gui-creation-actual-logger-20261025/support-06-BulletLifecycle.ltcg.obj": {
+    "sha256": "a8ef928dee96450394b46fb40595fe3c3020fb0e77859cd9ec193c85fec510e7",
+    "size": 13418
+  },
+  "build/gui-creation-actual-logger-20261025/support-07-InputState.ltcg.obj": {
+    "sha256": "2086466275a0eca041e2e44de7cebc0f77e2c22aad876d145098a0bc076641f7",
+    "size": 3644
+  },
+  "build/gui-creation-actual-logger-20261025/support-08-Main.ltcg.obj": {
+    "sha256": "fd34a3fd44fabbcdae5030d34f5a27efda53272f38ec3673584ed7f7a455d1e6",
+    "size": 96844
+  },
+  "build/gui-creation-actual-logger-20261025/support-09-ScriptViewerWorker.ltcg.obj": {
+    "sha256": "2f7dbb9250a36a51ee297ba42dbcf4aa793eefdf6ebe9775ef4da5f27a2c2e04",
+    "size": 29368
+  },
+  "build/gui-creation-actual-logger-20261025/support-10-ScriptViewerLifecycle.ltcg.obj": {
+    "sha256": "79e5b3fefd2295091536a6f562f7a5bce791cb1a59fbb9eeec4ebe540a3a2516",
+    "size": 45068
+  },
+  "build/gui-creation-actual-logger-20261025/support-11-ItemManager.ltcg.obj": {
+    "sha256": "139e55e05c0897295422e048cdbcdbf87be00ee1c20cc04bbb048799fae3f7d6",
+    "size": 59861
+  },
+  "build/gui-creation-actual-logger-20261025/support-12-AnmVmId.ltcg.obj": {
+    "sha256": "f123befc2a115aa97a34e532f1ac72f925088d26a57bf993c04e7e33624fc868",
+    "size": 13919
+  },
+  "build/gui-creation-actual-logger-20261025/support-13-FileSystem.ltcg.obj": {
+    "sha256": "acf777919f9a2020e4cb9221ae34c6df34981ef921710cf2029d5f399b06c9b2",
+    "size": 33695
+  },
+  "build/gui-creation-actual-logger-20261025/support-14-PbgArchive.ltcg.obj": {
+    "sha256": "293eab578525381126182ec1502d847a8f94aacd7a807e814f1b75e3864e46e8",
+    "size": 33105
+  },
+  "build/gui-creation-actual-logger-20261025/support-15-GameErrorContext.ltcg.obj": {
+    "sha256": "bda873a88a3f28ef194fc09542aa1e32b6041ff49c97d9116843f5a130d74ce1",
+    "size": 20975
+  },
+  "build/gui-creation-captures-20261025/freeze-pass.txt": {
+    "sha256": "466e46b16a54dcff00ed4f60b09037834ade52f810da444fb93b3ed896e2db18",
+    "size": 28
+  },
+  "build/gui-creation-captures-20261025/frozen-inputs.json": {
+    "sha256": "47f66fecc63d06bbe1a77d2be369831453ece95a3e94f03a12b7eca868865f95",
+    "size": 221239
+  },
+  "build/gui-creation-captures-20261025/functions.json": {
+    "sha256": "661cedf6c7e6caf850b94c61ad658e3db57dbf8c383a9f1beaf61ff145bee24d",
+    "size": 431352
+  },
+  "build/gui-creation-captures-20261025/link-aliases.rsp": {
+    "sha256": "f1923427906c15733cbc0cd63421ef46d8989d97278ce0ec5117f0e4312bfd55",
+    "size": 37493
+  },
+  "build/gui-creation-captures-20261025/link-anchors.c": {
+    "sha256": "57d050cdddf5a3fdab041c03b51476d672ee921ce247201f9203310b3ea293ce",
+    "size": 24719
+  },
+  "build/gui-creation-captures-20261025/link-anchors.obj": {
+    "sha256": "0131acc510bacfa5ffb6d67188d84c43e04a17ed646f3cd219b68cc4aa25b529",
+    "size": 22936
+  },
+  "build/gui-creation-captures-20261025/link-attempt-1.log": {
+    "sha256": "be5e27153bc082b6e9485059ca6fa8a4aa811612a660115bbfb4a832693258dc",
+    "size": 70342
+  },
+  "build/gui-creation-captures-20261025/link-attempt-2.log": {
+    "sha256": "91a34ce7467b7cfdc76fd0c7376a8c194a7da556953aac434549c757374c7307",
+    "size": 1012
+  },
+  "build/gui-creation-captures-20261025/link-attempt-3.log": {
+    "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "size": 104
+  },
+  "build/gui-creation-captures-20261025/native.json": {
+    "sha256": "91f2a6984cf2552d25911289e407935ccbaaa340ec045af43e725d59e79dfff0",
+    "size": 60907
+  },
+  "build/gui-creation-captures-20261025/source.exe": {
+    "sha256": "851473f528f947d11c55f72ef6038a920d56321b41915d86287fb1f648443f64",
+    "size": 180224
+  },
+  "build/gui-creation-captures-20261025/source.ltcg.obj": {
+    "sha256": "a15a83754bd20e35929ef060b52ad26ca791c37ee2e7b0cac8c5449f96445fc2",
+    "size": 61568
+  },
+  "build/gui-creation-captures-20261025/source.map": {
+    "sha256": "c4a62173f11ea13c81dad23724a64ae83f23410ed3b61009a69a39b081624418",
+    "size": 169347
+  },
+  "build/gui-creation-captures-20261025/source.pdb": {
+    "sha256": "85f4af87421fc4ebcf433b9ad6fec0447774bbae64781a5750f3e8fa6a760b0a",
+    "size": 183296
+  },
+  "build/gui-creation-captures-20261025/support-00-AnmManager.ltcg.obj": {
+    "sha256": "7926e4707700d9532c7958335cbc5115d9ceaf2da9d3a85a13051d62ea1ff6d1",
+    "size": 248414
+  },
+  "build/gui-creation-captures-20261025/support-01-Chain.ltcg.obj": {
+    "sha256": "7c9b64bd5778924a11c0bcd09f6e53b814f79b58a715754c9dbdedbf52b836aa",
+    "size": 40893
+  },
+  "build/gui-creation-captures-20261025/support-02-FrontEnd.ltcg.obj": {
+    "sha256": "3d7785d39c039efcd133db556efe63cf5668cf2ff4a3a31cc98dbc3749ff6879",
+    "size": 224959
+  },
+  "build/gui-creation-captures-20261025/support-03-Player.ltcg.obj": {
+    "sha256": "950f38bb44841ba045c7d1823305ef738b936d7d4221cf341d31140d70963ece",
+    "size": 102254
+  },
+  "build/gui-creation-captures-20261025/support-04-Gui.ltcg.obj": {
+    "sha256": "3bddff6cb303e6a90a78a5f136a1eca5e24ef25fde5a6692d5b8a432d63a81db",
+    "size": 132484
+  },
+  "build/gui-creation-captures-20261025/support-05-Enemy.ltcg.obj": {
+    "sha256": "7d9ba775d2020a17acdeb0437cfef5346382cf1caade02ddca839c0139ef41ea",
+    "size": 98712
+  },
+  "build/gui-creation-captures-20261025/support-06-BulletLifecycle.ltcg.obj": {
+    "sha256": "e3ef9ba08b47adf558574a3b7557a93ea42e7dca49f18c73e19d88a22e846cf4",
+    "size": 13363
+  },
+  "build/gui-creation-captures-20261025/support-07-InputState.ltcg.obj": {
+    "sha256": "e09e68dcd1dd80b8348cca22b1da58f50845b87631861f0e1df0daeb6a796686",
+    "size": 3619
+  },
+  "build/gui-creation-captures-20261025/support-08-Main.ltcg.obj": {
+    "sha256": "e72079093479661693d4e9e229dc2c25127b42890d1ca45ef32f7c8c97086b8f",
+    "size": 96784
+  },
+  "build/gui-creation-captures-20261025/support-09-ScriptViewerWorker.ltcg.obj": {
+    "sha256": "d6db6dda542496faaa04461adfd178a80e11cc80d3db7bea5842adb9e76080e7",
+    "size": 29308
+  },
+  "build/gui-creation-captures-20261025/support-10-ScriptViewerLifecycle.ltcg.obj": {
+    "sha256": "96fd77071ff0b39cea951e691fa8f85ac6bf2f32c6dd15982fe7d212a18a468e",
+    "size": 44988
+  },
+  "build/gui-creation-captures-20261025/support-11-ItemManager.ltcg.obj": {
+    "sha256": "5d9ac28ac20e50a310699f0af551981f738d99c0741ead2eb3043299c6453a43",
+    "size": 59796
+  },
+  "build/gui-creation-captures-20261025/support-12-AnmVmId.ltcg.obj": {
+    "sha256": "a6ea11d05d70dcc85e661588020b2536380990aad982a44770b126850ee571a7",
+    "size": 13879
+  },
+  "build/gui-creation-captures-20261025/support-13-FileSystem.ltcg.obj": {
+    "sha256": "8d991aab355e869e5ad7b010e370b0d6af58a877918a973e669c6efe9bb68eb4",
+    "size": 33655
+  },
+  "build/gui-creation-captures-20261025/support-14-PbgArchive.ltcg.obj": {
+    "sha256": "5ee08caf51971935da3e05d4b4916cc014a857d754a90596437f28ae4bb4b6cc",
+    "size": 33060
+  },
+  "build/gui-creation-captures-20261025/support-15-GameErrorContext.ltcg.obj": {
+    "sha256": "4a788655451a22163e55538678cd233e5c3e9e9b3c1d9328b6805857b200f562",
+    "size": 20945
+  },
+  "build/match-linked/GuiCreation-cold-20261025/freeze-pass.txt": {
+    "sha256": "466e46b16a54dcff00ed4f60b09037834ade52f810da444fb93b3ed896e2db18",
+    "size": 28
+  },
+  "build/match-linked/GuiCreation-cold-20261025/frozen-inputs.json": {
+    "sha256": "0b9196209326dd409ee62c24a4364bdd0581311e7d77f5368a3a8738a3069e46",
+    "size": 206718
+  },
+  "build/match-linked/GuiCreation-cold-20261025/functions.json": {
+    "sha256": "40147577580404903b71487e56be4d770f720f8cbfec8e741fca4302c264df91",
+    "size": 442268
+  },
+  "build/match-linked/GuiCreation-cold-20261025/link-aliases.rsp": {
+    "sha256": "f1923427906c15733cbc0cd63421ef46d8989d97278ce0ec5117f0e4312bfd55",
+    "size": 37493
+  },
+  "build/match-linked/GuiCreation-cold-20261025/link-anchors.c": {
+    "sha256": "57d050cdddf5a3fdab041c03b51476d672ee921ce247201f9203310b3ea293ce",
+    "size": 24719
+  },
+  "build/match-linked/GuiCreation-cold-20261025/link-anchors.obj": {
+    "sha256": "3e1b57a7e8beeaaf150320a7ae96b21d6ce3db5ee1136b9c8f9d147f153f83c7",
+    "size": 22944
+  },
+  "build/match-linked/GuiCreation-cold-20261025/link-attempt-1.log": {
+    "sha256": "88684654541287bf04112fd0bd73e40fa2ffb5c55b6068c6fe11a9d4a1eec86f",
+    "size": 70350
+  },
+  "build/match-linked/GuiCreation-cold-20261025/link-attempt-2.log": {
+    "sha256": "a11c3e883b8597d208458c5f3db273fc3ea82be46949146b42dda4864ba5e251",
+    "size": 1020
+  },
+  "build/match-linked/GuiCreation-cold-20261025/link-attempt-3.log": {
+    "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+    "size": 104
+  },
+  "build/match-linked/GuiCreation-cold-20261025/native.json": {
+    "sha256": "158f66b97756f57672cb131cbdc4e84967f999c1de2a0565df18bb6520692803",
+    "size": 60433
+  },
+  "build/match-linked/GuiCreation-cold-20261025/source.exe": {
+    "sha256": "d38a94239eb2959ebd4371255d99660962680bc001e8480285c25233777cf538",
+    "size": 180224
+  },
+  "build/match-linked/GuiCreation-cold-20261025/source.ltcg.obj": {
+    "sha256": "fdc7772f694f61e169fb38b89d5d3a5c5953fe3d1cea759c50b5fe7b290870f7",
+    "size": 60918
+  },
+  "build/match-linked/GuiCreation-cold-20261025/source.map": {
+    "sha256": "5a1a45846a892515b445cbf148eee6a4c5e213cbc915abb4399e109c5f480e55",
+    "size": 169347
+  },
+  "build/match-linked/GuiCreation-cold-20261025/source.pdb": {
+    "sha256": "57ce29af16a4520e750ec3d1effc9d8186e805672a9a4217b34a2986ac2faa1d",
+    "size": 183296
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-00-AnmManager.ltcg.obj": {
+    "sha256": "8470ada20c9bdd7ab04263e0906933748970bf6b334ef0f5dd3bda4cec0a2a72",
+    "size": 248060
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-01-Chain.ltcg.obj": {
+    "sha256": "94dbe7150c49998c9e25e877fe2d4dc906678b48f88882a56b86b7f538a881e1",
+    "size": 40613
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-02-FrontEnd.ltcg.obj": {
+    "sha256": "bf844adabd2310ae1db241bc22361730f1529910d41b5b77d9e4805581032550",
+    "size": 224383
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-03-Player.ltcg.obj": {
+    "sha256": "c05f467435dcbd24ddffee6a332d754d9d83db05474449b6255577c5b302269d",
+    "size": 101752
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-04-Gui.ltcg.obj": {
+    "sha256": "072fea6ee5daf5d7c68951b77e4658eab7384080700aaa09d9cf7ed79cf18098",
+    "size": 131797
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-05-Enemy.ltcg.obj": {
+    "sha256": "e426163e9a709f8501278df91f4c7fad93a1d8ced7dc93c718116bf418a66324",
+    "size": 98099
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-06-BulletLifecycle.ltcg.obj": {
+    "sha256": "0842091ec2f12b249ecd9ccc5610bd3a24db71749dd9a8c7255bc6f0ae6c0efe",
+    "size": 13046
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-07-InputState.ltcg.obj": {
+    "sha256": "66ed63d865019eac7c1344f53a32222bb6bf55e21a70c7ea9cef7029c9f75483",
+    "size": 3524
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-08-Main.ltcg.obj": {
+    "sha256": "53ec08e6e80f9dd18683b739fc1cfa5f91de5e18293b2a688137226f550652f1",
+    "size": 96430
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-09-ScriptViewerWorker.ltcg.obj": {
+    "sha256": "b72805afb1ee6e20b1223f357548c42d3e819909e4fe1842e4fa4bdadf2cdd9e",
+    "size": 28954
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-10-ScriptViewerLifecycle.ltcg.obj": {
+    "sha256": "61ce149888cb3ce0832d4f202a2282819d817f19f27d2331cf3354588d5fe038",
+    "size": 44486
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-11-ItemManager.ltcg.obj": {
+    "sha256": "e85977287a1f3b6223ee3d7d65c67381e17003363d01eb1540eb91d2b6a7190f",
+    "size": 59405
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-12-AnmVmId.ltcg.obj": {
+    "sha256": "b03a5c88ff2a730be11b54d4f1614eaa7ae825a0298d36f6702428a84ccfc299",
+    "size": 13673
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-13-FileSystem.ltcg.obj": {
+    "sha256": "915a59f6810da2d38bd10eb1ac261f1f502de987acd1ce5e9562d668b61906fd",
+    "size": 33449
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-14-PbgArchive.ltcg.obj": {
+    "sha256": "91e1000b31e7570c2670c9688f3178dd8cf7ec66fccce0d54f357e00dc0e31d3",
+    "size": 32817
+  },
+  "build/match-linked/GuiCreation-cold-20261025/support-15-GameErrorContext.ltcg.obj": {
+    "sha256": "fa0805ae671a933eba5db0981e10582c33a7bb0f1c2371583bcc0a554c551281",
+    "size": 20813
+  },
+  ".analysis/gui-creation-host/test.log": {
+    "sha256": "7fb4bbac54665a8b25e12c9341ecd0086b5ed37d7e921fdf1d07276aae6b9522",
+    "size": 243
+  },
+  ".analysis/gui-creation-host/legacy/message-constructor.log": {
+    "sha256": "365ac5deb16362f1f57cb7219111c5a7bc2a8f920641adf79d525539bbf8673f",
+    "size": 1585
+  },
+  ".analysis/gui-creation-host/legacy/message-run.log": {
+    "sha256": "602b53ea970777e9e64fdca0cb208dec91ff8f3a19f570bb73c4cf161e72c4a0",
+    "size": 78
+  },
+  ".analysis/gui-creation-host/legacy/draw.log": {
+    "sha256": "1846191373936a5f9a026c63f99201ed850435a6d9e23ddb18c3f862a3076340",
+    "size": 587
+  },
+  ".analysis/gui-creation-host/legacy/lifecycle.log": {
+    "sha256": "e5618326bf0d7f166311105a8da4446a980205dfc187c26687035de4c8b4a036",
+    "size": 340
+  },
+  ".analysis/gui-creation-host/legacy/message-lifecycle.log": {
+    "sha256": "5335a554cfc1e9515e4e70a8944e0bee8efa498472963b75b3ab0816e4ac4f1d",
+    "size": 127
+  },
+  ".analysis/gui-creation-20261025/final-ci.log": {
+    "sha256": "46f06fe4571ee99100604b978c26b47225682f813e2d1ba9cae6d8e8f021893c",
+    "size": 38945
+  },
+  ".analysis/gui-creation-20261025/final-ci.exit": {
+    "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "size": 2
+  },
+  ".analysis/gui-creation-20261025/final-ci-frozen.json": {
+    "sha256": "dacf06d67a2a239cdfadb358bfcbac97c68664ae2c3c069f458cf4a645fbe8f8",
+    "size": 340046
+  },
+  ".analysis/gui-creation-20261025/final-ci-verification.json": {
+    "sha256": "ed9b1f0d0e5097076a32c3f2f2df8734c3cb7e206a63e56b99bf5a5214913b60",
+    "size": 60
+  },
+  ".analysis/gui-creation-20261025/header-consumers.json": {
+    "sha256": "09bb83468cc955a559e72ddb3482b505ba36996fd40861190a7ee56151f81006",
+    "size": 2304
+  },
+  ".analysis/gui-creation-host/legacy/laser-line.log": {
+    "sha256": "caa93eb2104957be7660eb0e999ea250221648bcc4858074d944e903bf852059",
+    "size": 14
+  },
+  ".analysis/gui-creation-host/legacy/laser-type1.log": {
+    "sha256": "caa93eb2104957be7660eb0e999ea250221648bcc4858074d944e903bf852059",
+    "size": 14
+  },
+  ".analysis/gui-creation-20261025/final-corrected/final-ci-frozen.json": {
+    "sha256": "45ee52cdacd28ca9620e40f949ad1e43fd83151aa17dd19f82f6e711f33d17f2",
+    "size": 340915
+  },
+  ".analysis/gui-creation-20261025/final-corrected/final-ci-verification.json": {
+    "sha256": "6739dc06eff55549e114ceea3860760d33852bbe42e0b4f72f83dc309f0d0ba5",
+    "size": 60
+  },
+  ".analysis/gui-creation-20261025/final-corrected/final-ci.exit": {
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "size": 2
+  },
+  ".analysis/gui-creation-20261025/final-corrected/final-ci.log": {
+    "sha256": "482104359faf0659ed29d47c4c36f6ad81c733375b57f839f75f28af5a7dd2df",
+    "size": 46432
+  },
+  ".analysis/gui-creation-20261025/final-corrected/run.py": {
+    "sha256": "347e9fc2ac33edc7c79d92c8e12a8dbea723d8a83528d93443f5b2e3e3e346b8",
+    "size": 1203
+  }
+}

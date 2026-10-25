@@ -43,7 +43,9 @@ void FrontEndQueueSoundCommand(const char *,int,int);
 alignas(EnemySoundQueueView) unsigned char g_MainSoundOwner[0x52d0];unsigned char g_GameStageState[0x100];
 #include "canonical-dependency-types.inc"
 GameChainOwnerView *g_GameOwner477830;static ResultMenuView gameOwner;EnemySoundCueMetadataView g_EnemySoundCueMetadata[134];
-AnmVmView::AnmVmView(){}AnmVmView::~AnmVmView(){}AnmLoadedView::AnmLoadedView(){}AnmRenderManagerView::AnmRenderManagerView(){}AnmRenderManagerView::~AnmRenderManagerView(){}GuiView::~GuiView(){}Player::Player(){}Player::~Player(){}
+AnmVmView::AnmVmView(){}AnmVmView::~AnmVmView(){}AnmLoadedView::AnmLoadedView(){}AnmRenderManagerView::AnmRenderManagerView(){}AnmRenderManagerView::~AnmRenderManagerView(){}// Host-only GUI setup seam; creation is covered by test_th10_gui_creation_contracts.py.
+GuiView::GuiView() {}
+GuiView::~GuiView(){}Player::Player(){}Player::~Player(){}
 PlayerDrawVmView::~PlayerDrawVmView() {} // Host dependency sink.
 EnemyManagerView::EnemyManagerView(){}EnemyManagerView::~EnemyManagerView(){}
 // Guaranteed static zero-initialization precedes unchanged Player raw-flag member

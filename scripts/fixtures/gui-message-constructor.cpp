@@ -118,6 +118,8 @@ GuiMessageVmView::~GuiMessageVmView()
     if (messageMemory.armed && this == messageMemory.pointer)
         ++messageMemory.completeDestructors;
 }
+// Host-only GUI setup seam; creation is covered by test_th10_gui_creation_contracts.py.
+GuiView::GuiView() {}
 GuiView::~GuiView() {}
 EnemyManagerView::EnemyManagerView() {}
 EnemyManagerView::~EnemyManagerView() {}

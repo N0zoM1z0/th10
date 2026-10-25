@@ -1116,3 +1116,7 @@ SptTestCreate,0x0042BF30,function
 SptTestView::Update,0x0042BFC0,function
 SptTestUpdateCallback,0x0042C580,function
 EclVmScriptDatabase::CreateHost,0x00450500,function
+GuiView::GuiView,0x00413810,function
+GuiView::Initialize,0x00413980,function
+GuiView::LoadData,0x00413A20,function
+ScriptViewerCreateGui,0x00414830,function

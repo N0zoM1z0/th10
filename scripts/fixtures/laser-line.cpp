@@ -33,6 +33,8 @@ Player::~Player(){}
 PlayerDrawVmView::~PlayerDrawVmView(){}
 GuiMessageVmView::GuiMessageVmView(const unsigned char *){}
 GuiMessageVmView::~GuiMessageVmView(){}
+// HOST setup only; complete GUI creation has its own extracted contract.
+GuiView::GuiView(){}
 GuiView::~GuiView(){}
 static Player playerA,playerB;Player *g_Player=&playerA;
 static GuiView gui;GuiView *g_GuiView=&gui;

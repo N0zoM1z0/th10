@@ -1,0 +1,107 @@
+--- a/Gui.cpp
++++ b/Gui.cpp
+@@ -2024,3 +2024,92 @@
+     g_GuiView = NULL;
+ }
+ // GUI lifecycle end.
++
++#include "FileSystem.hpp"
++extern void *g_ScriptViewerStageRoute;
++extern char g_StageFilePath[];
++extern int __fastcall GuiUpdateCallback(void *owner);
++extern int __fastcall GuiDrawCallback(void *owner);
++
++GuiView::GuiView()
++{
++    memset(this, 0, sizeof(*this));
++    ownerFlags |= 2;
++    g_GuiView = this;
++}
++
++int GuiView::LoadData()
++{
++    const unsigned char *route = static_cast<const unsigned char *>(g_ScriptViewerStageRoute);
++    stageUiAnm = g_AnmRenderManagerView->PreloadAnm(28, *reinterpret_cast<const char *const *>(route + 0x20));
++    if (!stageUiAnm)
++        goto failed;
++    if (g_GuiRetainedMessageFile491BE8)
++    {
++        messageFile = g_GuiRetainedMessageFile491BE8;
++        g_GuiRetainedMessageFile491BE8 = NULL;
++    }
++    else
++    {
++        route = static_cast<const unsigned char *>(g_ScriptViewerStageRoute);
++        const int index = *reinterpret_cast<const int *>(g_GameStageState + 0x28);
++        g_StageFilePath[0] = 0;
++        strcat(g_StageFilePath, reinterpret_cast<const char *const *>(route + 0x18)[index]);
++        messageFile = FileSystem::OpenFile(g_StageFilePath, NULL, 0);
++        if (!messageFile)
++            goto failed;
++    }
++    if (!(frameTimer.flags & 1))
++    {
++        frameTimer.current = 0;
++        frameTimer.previous = -999999;
++        frameTimer.subframe = 0.0f;
++        frameTimer.scale = &g_AnmGameSpeed;
++        frameTimer.flags |= 1;
++    }
++    frameTimer.current = 0;
++    frameTimer.subframe = 0.0f;
++    frameTimer.previous = -1;
++    spellSeconds = -1;
++    previousSpellSeconds = -1;
++    value9E78 = *reinterpret_cast<const int *>(g_GameStageState + 4);
++    return 0;
++failed:
++    g_AnmErrorLoggerView.Log("\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
++    return -1;
++}
++
++int GuiView::Initialize()
++{
++    frontAnm = g_AnmRenderManagerView->PreloadAnm(6, "front.anm");
++    if (!frontAnm)
++    {
++        g_AnmErrorLoggerView.Log("\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
++        return -1;
++    }
++    if (LoadData()) return -1;
++    th10::ChainElem *task = th10::Chain::AllocElem(GuiUpdateCallback);
++    task->flags &= ~2u;
++    th10::Chain *chain = th10::g_Chain;
++    task->arg = this;
++    th10::Chain::AddToCalcChain(task, 0x18, chain);
++    updateCallback = task;
++    task = th10::Chain::AllocElem(GuiDrawCallback);
++    task->flags &= ~2u;
++    chain = th10::g_Chain;
++    task->arg = this;
++    th10::Chain::AddToDrawChain(task, 0x2b, chain);
++    drawCallback = task;
++    return 0;
++}
++
++void *ScriptViewerCreateGui()
++{
++    GuiView *gui = new GuiView;
++    if (gui->Initialize())
++    {
++        delete gui;
++        return NULL;
++    }
++    return gui;
++}
+--- a/Gui.hpp
++++ b/Gui.hpp
+@@ -154,6 +154,9 @@
+     AnmLoadedView *frontAnm;
+     int endingCounter;
+ 
++    GuiView();
++    int Initialize();
++    int LoadData();
+     ~GuiView();
+     void SetLivesDisplayCount(int count);
+     static int __stdcall UpdateStageElements(GuiView *gui);

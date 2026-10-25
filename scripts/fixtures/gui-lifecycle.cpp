@@ -14,6 +14,10 @@ struct AnmVmTimerView {int previous,current;float subframe;};
 struct AnmFloat3View {float x,y,z;};
 struct GuiMessageInstructionView {};
 @GUI_DECLARATIONS@
+// Host-only GUI setup seam; destructor/member tests intentionally exclude creation.
+// Complete creation body is covered by test_th10_gui_creation_contracts.py.
+GuiView::GuiView() {}
+
 // HOST CONSTRUCTION SEAM (one definition): parameter matches the copied real
 // declaration. This creates a live fixture object and initializes test state;
 // it does not execute or validate the production message constructor/effects.

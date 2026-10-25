@@ -6098,3 +6098,15 @@ new authoredexact89. Preserve invalid FindClose, unchecked second pass/allocatio
 Run-before-null, worker state2-after-Start race, and factory's absent active-context
 initialization. Callback42BE10/Load261 remain declared unresolved dependencies.
 No source-TU, runtime/shared-global or product closure follows.
+
+## GUI creation family, 2026-10-25
+
+Complete factory414830/136 and Initialize413980/147 are exact in the real
+ScriptViewer root plus filesystem/logger graph; actual GameErrorContext Log
+visibility restores targetECX without ABI spelling changes. LoadData413A20/289
+is source-only after target-proven filename-beforeclear and stage-before-spell
+captures; remaining register/store scheduling is parked. Actualctor413810/367
+remains origin-indeterminate and emits525 with maintained ID constructors; never
+remove their zeroing to manufacture equality. Existing dtor tail stays parked.
+Independent allocationEH review and30 whole guards3738 pass; no product/runtime
+claim. See [GUI creation packet](evidence/gui-creation-20261025/README.md).

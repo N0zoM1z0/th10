@@ -2024,3 +2024,98 @@ GuiView::~GuiView()
     g_GuiView = NULL;
 }
 // GUI lifecycle end.
+
+// GUI creation family: ctor413810 (origin indeterminate), Initialize413980,
+// LoadData413A20 and factory414830. Keep target failure/publication order.
+#include "FileSystem.hpp"
+#include "GameErrorContext.hpp"
+extern void *g_ScriptViewerStageRoute;
+extern char g_StageFilePath[];
+extern int __fastcall GuiUpdateCallback(void *owner);
+extern int __fastcall GuiDrawCallback(void *owner);
+
+GuiView::GuiView()
+{
+    memset(this, 0, sizeof(*this));
+    ownerFlags |= 2;
+    g_GuiView = this;
+}
+
+int GuiView::LoadData()
+{
+    int capturedStage;
+    const unsigned char *route = static_cast<const unsigned char *>(g_ScriptViewerStageRoute);
+    stageUiAnm = g_AnmRenderManagerView->PreloadAnm(28, *reinterpret_cast<const char *const *>(route + 0x20));
+    if (!stageUiAnm)
+        goto failed;
+    if (g_GuiRetainedMessageFile491BE8)
+    {
+        messageFile = g_GuiRetainedMessageFile491BE8;
+        g_GuiRetainedMessageFile491BE8 = NULL;
+    }
+    else
+    {
+        route = static_cast<const unsigned char *>(g_ScriptViewerStageRoute);
+        const int index = *reinterpret_cast<const int *>(g_GameStageState + 0x28);
+        const char *filename = reinterpret_cast<const char *const *>(route + 0x18)[index];
+        g_StageFilePath[0] = 0;
+        strcat(g_StageFilePath, filename);
+        messageFile = FileSystem::OpenFile(g_StageFilePath, NULL, 0);
+        if (!messageFile)
+            goto failed;
+    }
+    if (!(frameTimer.flags & 1))
+    {
+        frameTimer.current = 0;
+        frameTimer.previous = -999999;
+        frameTimer.subframe = 0.0f;
+        frameTimer.scale = &g_AnmGameSpeed;
+        frameTimer.flags |= 1;
+    }
+    frameTimer.current = 0;
+    frameTimer.subframe = 0.0f;
+    frameTimer.previous = -1;
+    capturedStage = *reinterpret_cast<const int *>(g_GameStageState + 4);
+    spellSeconds = -1;
+    previousSpellSeconds = -1;
+    value9E78 = capturedStage;
+    return 0;
+failed:
+    th10::g_GameErrorContext.Log("\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
+    return -1;
+}
+
+int GuiView::Initialize()
+{
+    frontAnm = g_AnmRenderManagerView->PreloadAnm(6, "front.anm");
+    if (!frontAnm)
+    {
+        th10::g_GameErrorContext.Log("\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
+        return -1;
+    }
+    if (LoadData()) return -1;
+    th10::ChainElem *task = th10::Chain::AllocElem(GuiUpdateCallback);
+    task->flags &= ~2u;
+    th10::Chain *chain = th10::g_Chain;
+    task->arg = this;
+    th10::Chain::AddToCalcChain(task, 0x18, chain);
+    updateCallback = task;
+    task = th10::Chain::AllocElem(GuiDrawCallback);
+    task->flags &= ~2u;
+    chain = th10::g_Chain;
+    task->arg = this;
+    th10::Chain::AddToDrawChain(task, 0x2b, chain);
+    drawCallback = task;
+    return 0;
+}
+
+void *ScriptViewerCreateGui()
+{
+    GuiView *gui = new GuiView;
+    if (gui->Initialize())
+    {
+        delete gui;
+        return NULL;
+    }
+    return gui;
+}
