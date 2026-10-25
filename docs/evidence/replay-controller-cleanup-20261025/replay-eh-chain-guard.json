@@ -1,0 +1,38 @@
+{
+  "unit": "decomphelp-chain-unregister",
+  "artifact_kind": "linked-pe",
+  "result": "exact",
+  "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+  "target_address": "0x00449F60",
+  "size": 114,
+  "matched_bytes": 114,
+  "compared_size": 114,
+  "matched_compared_bytes": 114,
+  "image": "build/replay-controller-cleanup-replay-eh-20261025/source.exe",
+  "image_sha256": "98ccddece22e7f11a7abdb2787b989d5a034bbef17c28e8e190f880aa88cbe7d",
+  "pdb_guid": "3f1833d4a435784d9d1fa17877b7600d",
+  "pdb_age": 1,
+  "candidate_address": "0x00404540",
+  "extent_source": "pdb-section-contribution",
+  "pdb_module_index": 7,
+  "decoded_bytes": 114,
+  "normalization_complete": true,
+  "data_spans": [],
+  "linkages": [
+    {
+      "offset": "0x68",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "??3@YAXPAX@Z",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+      "local": false,
+      "candidate_target": "0x00414020",
+      "target": "0x004524A1",
+      "addend": 0,
+      "target_encoded_value": "0x000084D5"
+    }
+  ],
+  "raw_equal": false,
+  "first_differences": [],
+  "capstone_version": "5.0.6"
+}

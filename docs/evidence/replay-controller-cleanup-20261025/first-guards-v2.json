@@ -1,0 +1,69 @@
+{
+  "anm-manager-find-vm": {
+    "unit": "anm-manager-find-vm",
+    "artifact_kind": "linked-pe",
+    "result": "exact",
+    "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "target_address": "0x004491C0",
+    "size": 73,
+    "matched_bytes": 73,
+    "compared_size": 73,
+    "matched_compared_bytes": 73,
+    "image": "build/replay-controller-cleanup-first-20261025/source.exe",
+    "image_sha256": "de7c1d84233751e2c9d4bdab403195aa492bdc4f01de5cfd1ebf493c8520897a",
+    "pdb_guid": "103e68dcf988dc4cac33c4edb826494e",
+    "pdb_age": 1,
+    "candidate_address": "0x004060F0",
+    "extent_source": "pdb-section-contribution",
+    "pdb_module_index": 8,
+    "decoded_bytes": 73,
+    "normalization_complete": true,
+    "data_spans": [],
+    "linkages": [],
+    "raw_equal": true,
+    "first_differences": [],
+    "capstone_version": "5.0.6"
+  },
+  "anm-manager-mark-vm-for-deletion": {
+    "unit": "anm-manager-mark-vm-for-deletion",
+    "artifact_kind": "linked-pe",
+    "result": "exact",
+    "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+    "target_address": "0x004492A0",
+    "size": 66,
+    "matched_bytes": 66,
+    "compared_size": 66,
+    "matched_compared_bytes": 66,
+    "image": "build/replay-controller-cleanup-first-20261025/source.exe",
+    "image_sha256": "de7c1d84233751e2c9d4bdab403195aa492bdc4f01de5cfd1ebf493c8520897a",
+    "pdb_guid": "103e68dcf988dc4cac33c4edb826494e",
+    "pdb_age": 1,
+    "candidate_address": "0x00406200",
+    "extent_source": "pdb-section-contribution",
+    "pdb_module_index": 8,
+    "decoded_bytes": 66,
+    "normalization_complete": true,
+    "data_spans": [],
+    "linkages": [
+      {
+        "offset": "0x6",
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "linked_symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "local": false,
+        "candidate_target": "0x004060F0",
+        "target": "0x004491C0",
+        "addend": 0,
+        "target_encoded_value": "0xFFFFFF16"
+      }
+    ],
+    "raw_equal": false,
+    "first_differences": [],
+    "capstone_version": "5.0.6"
+  },
+  "replay-manager-destroy": {
+    "result": "rejected",
+    "error": "PDB contribution size 0x13 differs from manifest 0x12"
+  }
+}

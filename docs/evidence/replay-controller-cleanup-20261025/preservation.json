@@ -1,0 +1,18 @@
+{
+  "statistics-initializers-20261025": {
+    "files": 150,
+    "unchanged": true
+  },
+  "statistics-load-20261025": {
+    "files": 56,
+    "unchanged": true
+  },
+  "first": {
+    "frozen_inputs": 124,
+    "unchanged": true
+  },
+  "replay-eh": {
+    "frozen_inputs": 124,
+    "unchanged": true
+  }
+}

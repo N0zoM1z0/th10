@@ -1,0 +1,104 @@
+{
+  "head": "5c9241c75f8d38ca346b38b58430f88f7bc2e2c5",
+  "preflight": {
+    "target_toolchain_tracking_status_command": "repository-command:a63cc3a83150424dac61b89c111c5cba",
+    "exit": 0,
+    "ghidra_native_check": "2026-10-25T10:24:57Z passed target:th10-main"
+  },
+  "models": {
+    "first": {
+      "size": 311,
+      "fields": 18,
+      "locals": 16,
+      "guards": [
+        {
+          "name": "anm-manager-find-vm",
+          "result": "exact",
+          "size": 73,
+          "fields": 0
+        },
+        {
+          "name": "anm-manager-mark-vm-for-deletion",
+          "result": "exact",
+          "size": 66,
+          "fields": 1
+        },
+        {
+          "name": "replay-manager-destroy",
+          "result": "rejected",
+          "size": null,
+          "fields": 0
+        },
+        {
+          "name": "chain",
+          "result": "exact",
+          "size": 114,
+          "fields": 1
+        }
+      ]
+    },
+    "replay-eh": {
+      "size": 311,
+      "fields": 18,
+      "locals": 16,
+      "guards": [
+        {
+          "name": "anm-manager-find-vm",
+          "result": "exact",
+          "size": 73,
+          "fields": 0
+        },
+        {
+          "name": "anm-manager-mark-vm-for-deletion",
+          "result": "exact",
+          "size": 66,
+          "fields": 1
+        },
+        {
+          "name": "replay-manager-destroy",
+          "result": "exact",
+          "size": 18,
+          "fields": 2
+        },
+        {
+          "name": "chain",
+          "result": "exact",
+          "size": 114,
+          "fields": 1
+        }
+      ]
+    }
+  },
+  "first_exit": 0,
+  "replay_eh_original_exit": 1,
+  "replay_eh_original_failure": "post-link JSON metadata serialization of PosixPath support-profile keys; native artifacts retained; no native rerun",
+  "independent_review": "review_replay_controller_cleanup: complete source and18fields/16locals pass, nonexact4ModRM residues; park",
+  "source_or_exact_credit": 0,
+  "full_ci": "not run; isolated proposals/docs only",
+  "preservation": {
+    "statistics-initializers-20261025": {
+      "files": 150,
+      "unchanged": true
+    },
+    "statistics-load-20261025": {
+      "files": 56,
+      "unchanged": true
+    },
+    "first": {
+      "frozen_inputs": 124,
+      "unchanged": true
+    },
+    "replay-eh": {
+      "frozen_inputs": 124,
+      "unchanged": true
+    }
+  },
+  "focused_checks": {
+    "toolchain_check": "pass",
+    "tracking": "pass",
+    "progress": "pass; generated files unchanged",
+    "diff_check": "pass",
+    "python_syntax": "pass",
+    "new_doc_links": "pass"
+  }
+}

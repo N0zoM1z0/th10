@@ -1,0 +1,263 @@
+{
+  "unit": "cleanup",
+  "artifact_kind": "linked-pe",
+  "result": "mismatch",
+  "symbol": "?GameCleanupController422220@@YGXPAUGameChainOwnerView@@@Z",
+  "target_address": "0x00422220",
+  "size": 311,
+  "matched_bytes": 307,
+  "compared_size": 311,
+  "matched_compared_bytes": 307,
+  "image": "build/replay-controller-cleanup-replay-eh-20261025/source.exe",
+  "image_sha256": "98ccddece22e7f11a7abdb2787b989d5a034bbef17c28e8e190f880aa88cbe7d",
+  "pdb_guid": "3f1833d4a435784d9d1fa17877b7600d",
+  "pdb_age": 1,
+  "candidate_address": "0x00402300",
+  "extent_source": "pdb-section-contribution",
+  "pdb_module_index": 4,
+  "decoded_bytes": 311,
+  "normalization_complete": true,
+  "data_spans": [],
+  "linkages": [
+    {
+      "offset": "0x7",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__EnterCriticalSection@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0264",
+      "local": false,
+      "candidate_target": "0x00414420",
+      "target": "0x004660B0",
+      "addend": 0,
+      "target_encoded_value": "0x004660B0"
+    },
+    {
+      "offset": "0xE",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__LeaveCriticalSection@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0268",
+      "local": false,
+      "candidate_target": "0x00414430",
+      "target": "0x004660B4",
+      "addend": 0,
+      "target_encoded_value": "0x004660B4"
+    },
+    {
+      "offset": "0x1B",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0142",
+      "local": false,
+      "candidate_target": "0x00414238",
+      "target": "0x00491BE4",
+      "addend": 0,
+      "target_encoded_value": "0x00491BE4"
+    },
+    {
+      "offset": "0x22",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0201",
+      "local": false,
+      "candidate_target": "0x00414970",
+      "target": "0x00491C28",
+      "addend": 1612,
+      "target_encoded_value": "0x00492274"
+    },
+    {
+      "offset": "0x2A",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0201",
+      "local": false,
+      "candidate_target": "0x00414A18",
+      "target": "0x00491C28",
+      "addend": 1780,
+      "target_encoded_value": "0x0049231C"
+    },
+    {
+      "offset": "0x33",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+      "linked_symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+      "local": false,
+      "candidate_target": "0x00404540",
+      "target": "0x00449F60",
+      "addend": 0,
+      "target_encoded_value": "0x00027D09"
+    },
+    {
+      "offset": "0x38",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0201",
+      "local": false,
+      "candidate_target": "0x00414970",
+      "target": "0x00491C28",
+      "addend": 1612,
+      "target_encoded_value": "0x00492274"
+    },
+    {
+      "offset": "0x40",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0201",
+      "local": false,
+      "candidate_target": "0x00414A18",
+      "target": "0x00491C28",
+      "addend": 1780,
+      "target_encoded_value": "0x0049231C"
+    },
+    {
+      "offset": "0x4F",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0142",
+      "local": false,
+      "candidate_target": "0x00414238",
+      "target": "0x00491BE4",
+      "addend": 0,
+      "target_encoded_value": "0x00491BE4"
+    },
+    {
+      "offset": "0x56",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0201",
+      "local": false,
+      "candidate_target": "0x00414970",
+      "target": "0x00491C28",
+      "addend": 1612,
+      "target_encoded_value": "0x00492274"
+    },
+    {
+      "offset": "0x5E",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0201",
+      "local": false,
+      "candidate_target": "0x00414A18",
+      "target": "0x00491C28",
+      "addend": 1780,
+      "target_encoded_value": "0x0049231C"
+    },
+    {
+      "offset": "0x67",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+      "linked_symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+      "local": false,
+      "candidate_target": "0x00404540",
+      "target": "0x00449F60",
+      "addend": 0,
+      "target_encoded_value": "0x00027CD5"
+    },
+    {
+      "offset": "0x6C",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0201",
+      "local": false,
+      "candidate_target": "0x00414970",
+      "target": "0x00491C28",
+      "addend": 1612,
+      "target_encoded_value": "0x00492274"
+    },
+    {
+      "offset": "0x74",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0201",
+      "local": false,
+      "candidate_target": "0x00414A18",
+      "target": "0x00491C28",
+      "addend": 1780,
+      "target_encoded_value": "0x0049231C"
+    },
+    {
+      "offset": "0x8F",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "??1ReplayManager@@QAE@XZ",
+      "linked_symbol": "??1ReplayManager@@QAE@XZ",
+      "local": false,
+      "candidate_target": "0x004110D0",
+      "target": "0x004294A0",
+      "addend": 0,
+      "target_encoded_value": "0x000071ED"
+    },
+    {
+      "offset": "0x95",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "??3@YAXPAX@Z",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+      "local": false,
+      "candidate_target": "0x00414020",
+      "target": "0x004524A1",
+      "addend": 0,
+      "target_encoded_value": "0x000301E8"
+    },
+    {
+      "offset": "0xB2",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0137",
+      "local": false,
+      "candidate_target": "0x00414224",
+      "target": "0x00491C10",
+      "addend": 0,
+      "target_encoded_value": "0x00491C10"
+    },
+    {
+      "offset": "0x12F",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GameOwner477830@@3PAUGameChainOwnerView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0177",
+      "local": false,
+      "candidate_target": "0x004142C4",
+      "target": "0x00477830",
+      "addend": 0,
+      "target_encoded_value": "0x00477830"
+    }
+  ],
+  "raw_equal": false,
+  "first_differences": [
+    {
+      "offset": "0x2F",
+      "linked": 215,
+      "target": 206
+    },
+    {
+      "offset": "0x31",
+      "linked": 206,
+      "target": 215
+    },
+    {
+      "offset": "0x63",
+      "linked": 215,
+      "target": 206
+    },
+    {
+      "offset": "0x65",
+      "linked": 206,
+      "target": 215
+    }
+  ],
+  "capstone_version": "5.0.6"
+}

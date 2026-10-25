@@ -4,6 +4,17 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [replay-controller cleanup pilot](evidence/replay-controller-cleanup-20261025/README.md)
+retains two complete 311-byte models. First structurally rejects despite equal
+extent: no-EH dependency selects EAX destructor ABI and shifted fields/locals.
+One actual ReplayManager canonical EH support-profile correction naturally
+restores stack RET4, all 18 fields/all 16 locals and internal 3-byte alignment.
+Four ordinary ModRM bytes remain in two equivalent chain argument-setup swaps;
+the whole owner is nonexact. Four same-image guards pass 271/all4. Independent
+review approves proposal/field/local scope only. Original post-link metadata
+exit 1 is preserved and recovered without native rerun. Prior 150 initializer
+and 56 loader artifacts plus source/protected 9 are unchanged. Source/metrics
+unchanged; park unsupported register/ABI/spelling panels, no new full-CI claim.
 Current [statistics initializer pilot](evidence/statistics-initializers-20261025/README.md)
 closes **142 authored bytes / one owner** for the tail. Independent clean tail-only
 and separate canonical cold graphs pass142/all7/all3 locals, preserve loader423,

@@ -1,0 +1,1364 @@
+{
+  "first": {
+    "target": {
+      "size": 311,
+      "sha256": "3fc2856a14e84f767ea5070b5fe0916a8dbc9be84df4af050f24949beb919781",
+      "fields": [
+        {
+          "offset": 51,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4497248,
+          "candidate_symbols": [],
+          "instruction_end": 55
+        },
+        {
+          "offset": 103,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4497248,
+          "candidate_symbols": [],
+          "instruction_end": 107
+        },
+        {
+          "offset": 143,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4363424,
+          "candidate_symbols": [],
+          "instruction_end": 147
+        },
+        {
+          "offset": 149,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4531361,
+          "candidate_symbols": [],
+          "instruction_end": 153
+        }
+      ],
+      "locals": [
+        {
+          "offset": 31,
+          "width": 2,
+          "destination": 68
+        },
+        {
+          "offset": 83,
+          "width": 2,
+          "destination": 120
+        },
+        {
+          "offset": 139,
+          "width": 2,
+          "destination": 156
+        },
+        {
+          "offset": 160,
+          "width": 2,
+          "destination": 135
+        },
+        {
+          "offset": 174,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 190,
+          "width": 2,
+          "destination": 205
+        },
+        {
+          "offset": 196,
+          "width": 2,
+          "destination": 230
+        },
+        {
+          "offset": 203,
+          "width": 2,
+          "destination": 192
+        },
+        {
+          "offset": 213,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 219,
+          "width": 2,
+          "destination": 230
+        },
+        {
+          "offset": 226,
+          "width": 2,
+          "destination": 215
+        },
+        {
+          "offset": 228,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 234,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 260,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 267,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 285,
+          "width": 2,
+          "destination": 272
+        }
+      ],
+      "explicit_field_bindings": [
+        {
+          "offset": 7,
+          "type": "DIR32",
+          "symbol": "__imp__EnterCriticalSection@4",
+          "target": 4612272,
+          "addend": 0
+        },
+        {
+          "offset": 14,
+          "type": "DIR32",
+          "symbol": "__imp__LeaveCriticalSection@4",
+          "target": 4612276,
+          "addend": 0
+        },
+        {
+          "offset": 27,
+          "type": "DIR32",
+          "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+          "target": 4791268,
+          "addend": 0
+        },
+        {
+          "offset": 34,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 42,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 51,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248,
+          "addend": 0
+        },
+        {
+          "offset": 56,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 64,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 79,
+          "type": "DIR32",
+          "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+          "target": 4791268,
+          "addend": 0
+        },
+        {
+          "offset": 86,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 94,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 103,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248,
+          "addend": 0
+        },
+        {
+          "offset": 108,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 116,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 143,
+          "type": "REL32",
+          "symbol": "??1ReplayManager@@QAE@XZ",
+          "target": 4363424,
+          "addend": 0
+        },
+        {
+          "offset": 149,
+          "type": "REL32",
+          "symbol": "??3@YAXPAX@Z",
+          "target": 4531361,
+          "addend": 0
+        },
+        {
+          "offset": 178,
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "target": 4791312,
+          "addend": 0
+        },
+        {
+          "offset": 303,
+          "type": "DIR32",
+          "symbol": "?g_GameOwner477830@@3PAUGameChainOwnerView@@A",
+          "target": 4683824,
+          "addend": 0
+        }
+      ]
+    },
+    "candidate": {
+      "size": 311,
+      "sha256": "3794ad771b7239e8e9327d512a692acb7e167a2e224172ed31466730e8f844d6",
+      "fields": [
+        {
+          "offset": 7,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4277256,
+          "candidate_symbols": [
+            "__imp__EnterCriticalSection@4",
+            "_th10_ltcg_probe_anchor_0258"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 14,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4277272,
+          "candidate_symbols": [
+            "__imp__LeaveCriticalSection@4",
+            "_th10_ltcg_probe_anchor_0262"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 27,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4276784,
+          "candidate_symbols": [
+            "?g_Chain@th10@@3PAUChain@1@A",
+            "_th10_ltcg_probe_anchor_0140"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 34,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278632,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 42,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278800,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 51,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4212032,
+          "candidate_symbols": [
+            "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z"
+          ],
+          "instruction_end": 55
+        },
+        {
+          "offset": 56,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278632,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 64,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278800,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 79,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4276784,
+          "candidate_symbols": [
+            "?g_Chain@th10@@3PAUChain@1@A",
+            "_th10_ltcg_probe_anchor_0140"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 86,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278632,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 94,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278800,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 103,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4212032,
+          "candidate_symbols": [
+            "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z"
+          ],
+          "instruction_end": 107
+        },
+        {
+          "offset": 108,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278632,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 116,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278800,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 144,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4264192,
+          "candidate_symbols": [
+            "??1ReplayManager@@QAE@XZ"
+          ],
+          "instruction_end": 148
+        },
+        {
+          "offset": 150,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4276256,
+          "candidate_symbols": [
+            "??3@YAXPAX@Z",
+            "_th10_ltcg_probe_anchor_0008"
+          ],
+          "instruction_end": 154
+        },
+        {
+          "offset": 179,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4276764,
+          "candidate_symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "_th10_ltcg_probe_anchor_0135"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 303,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4276924,
+          "candidate_symbols": [
+            "?g_GameOwner477830@@3PAUGameChainOwnerView@@A",
+            "_th10_ltcg_probe_anchor_0175"
+          ],
+          "instruction_end": null
+        }
+      ],
+      "locals": [
+        {
+          "offset": 31,
+          "width": 2,
+          "destination": 68
+        },
+        {
+          "offset": 83,
+          "width": 2,
+          "destination": 120
+        },
+        {
+          "offset": 139,
+          "width": 2,
+          "destination": 157
+        },
+        {
+          "offset": 161,
+          "width": 2,
+          "destination": 135
+        },
+        {
+          "offset": 175,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 191,
+          "width": 2,
+          "destination": 206
+        },
+        {
+          "offset": 197,
+          "width": 2,
+          "destination": 231
+        },
+        {
+          "offset": 204,
+          "width": 2,
+          "destination": 193
+        },
+        {
+          "offset": 214,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 220,
+          "width": 2,
+          "destination": 231
+        },
+        {
+          "offset": 227,
+          "width": 2,
+          "destination": 216
+        },
+        {
+          "offset": 229,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 235,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 261,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 268,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 285,
+          "width": 2,
+          "destination": 272
+        }
+      ],
+      "explicit_field_bindings": [
+        {
+          "offset": 7,
+          "type": "DIR32",
+          "symbol": "__imp__EnterCriticalSection@4",
+          "target": 4612272,
+          "addend": 0,
+          "candidate_value": 4277256,
+          "candidate_base": 4277256
+        },
+        {
+          "offset": 14,
+          "type": "DIR32",
+          "symbol": "__imp__LeaveCriticalSection@4",
+          "target": 4612276,
+          "addend": 0,
+          "candidate_value": 4277272,
+          "candidate_base": 4277272
+        },
+        {
+          "offset": 27,
+          "type": "DIR32",
+          "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+          "target": 4791268,
+          "addend": 0,
+          "candidate_value": 4276784,
+          "candidate_base": 4276784
+        },
+        {
+          "offset": 34,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612,
+          "candidate_value": 4278632,
+          "candidate_base": 4277020
+        },
+        {
+          "offset": 42,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780,
+          "candidate_value": 4278800,
+          "candidate_base": 4277020
+        },
+        {
+          "offset": 51,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248,
+          "addend": 0,
+          "candidate_value": 4212032,
+          "candidate_base": 4212032
+        },
+        {
+          "offset": 56,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612,
+          "candidate_value": 4278632,
+          "candidate_base": 4277020
+        },
+        {
+          "offset": 64,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780,
+          "candidate_value": 4278800,
+          "candidate_base": 4277020
+        },
+        {
+          "offset": 79,
+          "type": "DIR32",
+          "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+          "target": 4791268,
+          "addend": 0,
+          "candidate_value": 4276784,
+          "candidate_base": 4276784
+        },
+        {
+          "offset": 86,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612,
+          "candidate_value": 4278632,
+          "candidate_base": 4277020
+        },
+        {
+          "offset": 94,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780,
+          "candidate_value": 4278800,
+          "candidate_base": 4277020
+        },
+        {
+          "offset": 103,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248,
+          "addend": 0,
+          "candidate_value": 4212032,
+          "candidate_base": 4212032
+        },
+        {
+          "offset": 108,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612,
+          "candidate_value": 4278632,
+          "candidate_base": 4277020
+        },
+        {
+          "offset": 116,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780,
+          "candidate_value": 4278800,
+          "candidate_base": 4277020
+        },
+        {
+          "offset": 144,
+          "type": "REL32",
+          "symbol": "??1ReplayManager@@QAE@XZ",
+          "target": 4363424,
+          "addend": 0,
+          "candidate_value": 4264192,
+          "candidate_base": 4264192
+        },
+        {
+          "offset": 150,
+          "type": "REL32",
+          "symbol": "??3@YAXPAX@Z",
+          "target": 4531361,
+          "addend": 0,
+          "candidate_value": 4276256,
+          "candidate_base": 4276256
+        },
+        {
+          "offset": 179,
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "target": 4791312,
+          "addend": 0,
+          "candidate_value": 4276764,
+          "candidate_base": 4276764
+        },
+        {
+          "offset": 303,
+          "type": "DIR32",
+          "symbol": "?g_GameOwner477830@@3PAUGameChainOwnerView@@A",
+          "target": 4683824,
+          "addend": 0,
+          "candidate_value": 4276924,
+          "candidate_base": 4276924
+        }
+      ]
+    }
+  },
+  "replay-eh": {
+    "target": {
+      "size": 311,
+      "sha256": "3fc2856a14e84f767ea5070b5fe0916a8dbc9be84df4af050f24949beb919781",
+      "fields": [
+        {
+          "offset": 51,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4497248,
+          "candidate_symbols": [],
+          "instruction_end": 55
+        },
+        {
+          "offset": 103,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4497248,
+          "candidate_symbols": [],
+          "instruction_end": 107
+        },
+        {
+          "offset": 143,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4363424,
+          "candidate_symbols": [],
+          "instruction_end": 147
+        },
+        {
+          "offset": 149,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4531361,
+          "candidate_symbols": [],
+          "instruction_end": 153
+        }
+      ],
+      "locals": [
+        {
+          "offset": 31,
+          "width": 2,
+          "destination": 68
+        },
+        {
+          "offset": 83,
+          "width": 2,
+          "destination": 120
+        },
+        {
+          "offset": 139,
+          "width": 2,
+          "destination": 156
+        },
+        {
+          "offset": 160,
+          "width": 2,
+          "destination": 135
+        },
+        {
+          "offset": 174,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 190,
+          "width": 2,
+          "destination": 205
+        },
+        {
+          "offset": 196,
+          "width": 2,
+          "destination": 230
+        },
+        {
+          "offset": 203,
+          "width": 2,
+          "destination": 192
+        },
+        {
+          "offset": 213,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 219,
+          "width": 2,
+          "destination": 230
+        },
+        {
+          "offset": 226,
+          "width": 2,
+          "destination": 215
+        },
+        {
+          "offset": 228,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 234,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 260,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 267,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 285,
+          "width": 2,
+          "destination": 272
+        }
+      ],
+      "explicit_field_bindings": [
+        {
+          "offset": 7,
+          "type": "DIR32",
+          "symbol": "__imp__EnterCriticalSection@4",
+          "target": 4612272,
+          "addend": 0
+        },
+        {
+          "offset": 14,
+          "type": "DIR32",
+          "symbol": "__imp__LeaveCriticalSection@4",
+          "target": 4612276,
+          "addend": 0
+        },
+        {
+          "offset": 27,
+          "type": "DIR32",
+          "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+          "target": 4791268,
+          "addend": 0
+        },
+        {
+          "offset": 34,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 42,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 51,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248,
+          "addend": 0
+        },
+        {
+          "offset": 56,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 64,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 79,
+          "type": "DIR32",
+          "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+          "target": 4791268,
+          "addend": 0
+        },
+        {
+          "offset": 86,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 94,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 103,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248,
+          "addend": 0
+        },
+        {
+          "offset": 108,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 116,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 143,
+          "type": "REL32",
+          "symbol": "??1ReplayManager@@QAE@XZ",
+          "target": 4363424,
+          "addend": 0
+        },
+        {
+          "offset": 149,
+          "type": "REL32",
+          "symbol": "??3@YAXPAX@Z",
+          "target": 4531361,
+          "addend": 0
+        },
+        {
+          "offset": 178,
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "target": 4791312,
+          "addend": 0
+        },
+        {
+          "offset": 303,
+          "type": "DIR32",
+          "symbol": "?g_GameOwner477830@@3PAUGameChainOwnerView@@A",
+          "target": 4683824,
+          "addend": 0
+        }
+      ]
+    },
+    "candidate": {
+      "size": 311,
+      "sha256": "0283137641cc138e36003a17ae40f869857ad9c7b31a8733edf15c0d4e07ad28",
+      "fields": [
+        {
+          "offset": 7,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4277280,
+          "candidate_symbols": [
+            "__imp__EnterCriticalSection@4",
+            "_th10_ltcg_probe_anchor_0264"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 14,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4277296,
+          "candidate_symbols": [
+            "__imp__LeaveCriticalSection@4",
+            "_th10_ltcg_probe_anchor_0268"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 27,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4276792,
+          "candidate_symbols": [
+            "?g_Chain@th10@@3PAUChain@1@A",
+            "_th10_ltcg_probe_anchor_0142"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 34,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278640,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 42,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278808,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 51,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4212032,
+          "candidate_symbols": [
+            "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z"
+          ],
+          "instruction_end": 55
+        },
+        {
+          "offset": 56,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278640,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 64,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278808,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 79,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4276792,
+          "candidate_symbols": [
+            "?g_Chain@th10@@3PAUChain@1@A",
+            "_th10_ltcg_probe_anchor_0142"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 86,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278640,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 94,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278808,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 103,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4212032,
+          "candidate_symbols": [
+            "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z"
+          ],
+          "instruction_end": 107
+        },
+        {
+          "offset": 108,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278640,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 116,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4278808,
+          "candidate_symbols": [],
+          "instruction_end": null
+        },
+        {
+          "offset": 143,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4264144,
+          "candidate_symbols": [
+            "??1ReplayManager@@QAE@XZ"
+          ],
+          "instruction_end": 147
+        },
+        {
+          "offset": 149,
+          "width": 4,
+          "type": "REL32",
+          "instruction": "call",
+          "candidate_target": 4276256,
+          "candidate_symbols": [
+            "??3@YAXPAX@Z",
+            "_th10_ltcg_probe_anchor_0008"
+          ],
+          "instruction_end": 153
+        },
+        {
+          "offset": 178,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4276772,
+          "candidate_symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "_th10_ltcg_probe_anchor_0137"
+          ],
+          "instruction_end": null
+        },
+        {
+          "offset": 303,
+          "width": 4,
+          "type": "DIR32",
+          "candidate_target": 4276932,
+          "candidate_symbols": [
+            "?g_GameOwner477830@@3PAUGameChainOwnerView@@A",
+            "_th10_ltcg_probe_anchor_0177"
+          ],
+          "instruction_end": null
+        }
+      ],
+      "locals": [
+        {
+          "offset": 31,
+          "width": 2,
+          "destination": 68
+        },
+        {
+          "offset": 83,
+          "width": 2,
+          "destination": 120
+        },
+        {
+          "offset": 139,
+          "width": 2,
+          "destination": 156
+        },
+        {
+          "offset": 160,
+          "width": 2,
+          "destination": 135
+        },
+        {
+          "offset": 174,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 190,
+          "width": 2,
+          "destination": 205
+        },
+        {
+          "offset": 196,
+          "width": 2,
+          "destination": 230
+        },
+        {
+          "offset": 203,
+          "width": 2,
+          "destination": 192
+        },
+        {
+          "offset": 213,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 219,
+          "width": 2,
+          "destination": 230
+        },
+        {
+          "offset": 226,
+          "width": 2,
+          "destination": 215
+        },
+        {
+          "offset": 228,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 234,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 260,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 267,
+          "width": 2,
+          "destination": 287
+        },
+        {
+          "offset": 285,
+          "width": 2,
+          "destination": 272
+        }
+      ],
+      "explicit_field_bindings": [
+        {
+          "offset": 7,
+          "type": "DIR32",
+          "symbol": "__imp__EnterCriticalSection@4",
+          "target": 4612272,
+          "addend": 0,
+          "candidate_value": 4277280,
+          "candidate_base": 4277280
+        },
+        {
+          "offset": 14,
+          "type": "DIR32",
+          "symbol": "__imp__LeaveCriticalSection@4",
+          "target": 4612276,
+          "addend": 0,
+          "candidate_value": 4277296,
+          "candidate_base": 4277296
+        },
+        {
+          "offset": 27,
+          "type": "DIR32",
+          "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+          "target": 4791268,
+          "addend": 0,
+          "candidate_value": 4276792,
+          "candidate_base": 4276792
+        },
+        {
+          "offset": 34,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612,
+          "candidate_value": 4278640,
+          "candidate_base": 4277028
+        },
+        {
+          "offset": 42,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780,
+          "candidate_value": 4278808,
+          "candidate_base": 4277028
+        },
+        {
+          "offset": 51,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248,
+          "addend": 0,
+          "candidate_value": 4212032,
+          "candidate_base": 4212032
+        },
+        {
+          "offset": 56,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612,
+          "candidate_value": 4278640,
+          "candidate_base": 4277028
+        },
+        {
+          "offset": 64,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780,
+          "candidate_value": 4278808,
+          "candidate_base": 4277028
+        },
+        {
+          "offset": 79,
+          "type": "DIR32",
+          "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+          "target": 4791268,
+          "addend": 0,
+          "candidate_value": 4276792,
+          "candidate_base": 4276792
+        },
+        {
+          "offset": 86,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612,
+          "candidate_value": 4278640,
+          "candidate_base": 4277028
+        },
+        {
+          "offset": 94,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780,
+          "candidate_value": 4278808,
+          "candidate_base": 4277028
+        },
+        {
+          "offset": 103,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248,
+          "addend": 0,
+          "candidate_value": 4212032,
+          "candidate_base": 4212032
+        },
+        {
+          "offset": 108,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612,
+          "candidate_value": 4278640,
+          "candidate_base": 4277028
+        },
+        {
+          "offset": 116,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780,
+          "candidate_value": 4278808,
+          "candidate_base": 4277028
+        },
+        {
+          "offset": 143,
+          "type": "REL32",
+          "symbol": "??1ReplayManager@@QAE@XZ",
+          "target": 4363424,
+          "addend": 0,
+          "candidate_value": 4264144,
+          "candidate_base": 4264144
+        },
+        {
+          "offset": 149,
+          "type": "REL32",
+          "symbol": "??3@YAXPAX@Z",
+          "target": 4531361,
+          "addend": 0,
+          "candidate_value": 4276256,
+          "candidate_base": 4276256
+        },
+        {
+          "offset": 178,
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "target": 4791312,
+          "addend": 0,
+          "candidate_value": 4276772,
+          "candidate_base": 4276772
+        },
+        {
+          "offset": 303,
+          "type": "DIR32",
+          "symbol": "?g_GameOwner477830@@3PAUGameChainOwnerView@@A",
+          "target": 4683824,
+          "addend": 0,
+          "candidate_value": 4276932,
+          "candidate_base": 4276932
+        }
+      ]
+    }
+  }
+}

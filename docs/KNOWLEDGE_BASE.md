@@ -6043,3 +6043,16 @@ No operand-order, alignment, register, noinline or profile panels are justified.
 Loader423 remains exact under separate canonical cold new graph; all five original
 1078-byte guards and four341-byte RNG owners pass. Diagnostic RNG+4 anchor overlap
 is not storage ownership or runtime proof. Authored exact gains142 only.
+
+## Replay-controller cleanup, 2026-10-25
+
+The complete authored 422220..422356 owner is 311 bytes with18 explicit link fields
+and 16 fixed locals. Its natural partial-view proposal unregisters both captured
+chains, deletes 25 captured ReplayManager pointers, inlines real FindVm/tree marking
+and clears owner ID/global without releasing the controller. The first actual
+GameManagerCleanup graph yields 311 bytes but shifts fields through a private EAX
+destructor ABI. The target destructor's FS exception frame/RET4 and existing
+canonical ReplayDestroy graph justify one ReplayManager-only /GL /GS /EHs support
+correction. This restores all 18 fields/16 locals/alignment naturally; four ordinary
+ModRM bytes remain from equivalent chain argument-setup ordering. No exact/source
+admission follows. See [bounded proposal and receipts](evidence/replay-controller-cleanup-20261025/README.md).
