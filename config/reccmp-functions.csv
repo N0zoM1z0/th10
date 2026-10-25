@@ -1101,3 +1101,4 @@ MainClearPresentTwice,0x0043BC40,function
 MainSetScreenColor,0x0043BCD0,function
 GameErrorContext::Flush,0x00438950,function
 GameUpdateFaithDecay,0x00418A00,function
+FileSystem::WriteToOpenFile,0x0044B740,function

@@ -94,7 +94,7 @@ typedef char GameStatisticsOwnerSize1DCB4[(sizeof(GameStatisticsOwner) == 0x1dcb
                         'extern unsigned char gReplayFileOpenCount;']:
         require(declaration in fs_source, 'canonical FileSystem global seam drift: ' + declaration)
     protocol = '\n\n'.join(balanced(fs_source, signature) for signature in [
-        'void WriteToOpenFile(const void *data, unsigned int size)', 'int CloseWriteFile()'])
+        'int WriteToOpenFile(const void *data, unsigned int size)', 'int CloseWriteFile()'])
     require('unsigned char *__stdcall CompressData(unsigned char *input, int inputSize,' in lzss_header,
             'canonical compression boundary drift')
     callee_headers = strip_includes(fs_header) + '\n' + strip_includes(lzss_header)
@@ -143,7 +143,7 @@ MUTATIONS = [
  ('free-order-reversed', 'owner', 'if (compressed != NULL)\n        free(compressed);\n    free(scratch);', 'free(scratch);\n    if (compressed != NULL)\n        free(compressed);', 'pointer == (freeIndex == 0 ? compressedPointer : scratchPointer)'),
  ('scratch-leaked', 'owner', 'free(scratch);', ';', '!allocations[0].live && !allocations[1].live'),
  ('write-error-propagated', 'owner', '    return 0;\n}', '    return -1;\n}', 'result == (s.openResult == 0 ? 0 : -1)'),
- ('write-bool-used', 'protocol', '::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);', 'if (!::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL)) return;', 'observedIo == expectedIo'),
+ ('write-bool-used', 'protocol', '::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);', 'if (!::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL)) return -1;', 'observedIo == expectedIo'),
  ('write-handle-cached', 'protocol', 'DWORD bytesWritten;', 'HANDLE cachedHandle = gReplayFileHandle;\n    DWORD bytesWritten;', 'observedIo == expectedIo'),
  ('short-write-handle-cleared', 'protocol', '        CloseHandle(gReplayFileHandle);', '        CloseHandle(gReplayFileHandle);\n        gReplayFileHandle = INVALID_HANDLE_VALUE;', 'writeIndex == expectedApiWrites'),
  ('short-write-decrement-omitted', 'protocol', '        --gReplayFileOpenCount;', '        ;', 'observedIo == expectedIo'),

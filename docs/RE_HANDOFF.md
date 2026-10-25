@@ -4,6 +4,18 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [Hint writer dependency](evidence/hint-writer-dependency-20261025/README.md)
+recovers the real -1/-2/0 return contract with ordinary parameters. Two canonical
+cold replays reproduce standalone writer **76/all 7 exact**, with independent
+review and +76 authored exact/source bytes, +1 owner; denominator unchanged.
+The complete exporter remains **2669/2247 nonexact**, raw-identical across the
+fresh baseline/model, retaining all24 inline writes instead of target9 calls/15
+inlines. All14 original FileSystem guards pass2205 bytes after separately
+preserving/recovering an original Wine path/LNK1104 failure. Both opener contexts
+pass137/all12; Save1794 remains candidate-equivalent with95 fields/41 locals.
+Focused host controls and all112 CI stages pass, verified06:12:10 UTC.
+All1497 frozen tracked/new proof inputs plus9 protected files are unchanged;
+CI RPC timeout recovered from terminal exit0 logs without rerun.
 Current [Replay Save capture correction](evidence/replay-save-captures-20261025/README.md)
 recovers same-frame postcopy end rereads and prepass post-payload link/header
 recapture. Fresh baseline1748, separate postcopy1807/prepass1744 and combined1794
@@ -180,9 +192,9 @@ All experiments in the preceding ANM 15-control panel are terminal.
 | Stage reset / transition / targets 214 / 119 | Ignored complete four-TU models 184 / 263 bytes; full reset alignment retained; nonexact |
 | Ending Run / target 1568 | Fresh source-current 1576 bytes; complete alignment / 18 table words / 53 locals retained; nonexact |
 | HUD UpdateStageElements / target 3836 | Candidate 3824 bytes: 3796 code + 0 alignment + 28 table; 72 syntactic fields / 249 locals / 21 calls; nonexact |
-| Authored / source / authored exact | 735 functions / 273658 bytes; source 618 / 248561; exact 413 / 75103 |
-| Authored source-present nonexact / absent | 205 / 117 functions |
-| Overall exact / mappings | 1256 functions / 142034 bytes; 1102 mappings |
+| Authored / source / authored exact | 735 functions / 273658 bytes; source 619 / 248637; exact 414 / 75179 |
+| Authored source-present nonexact / absent | 205 / 116 functions |
+| Overall exact / mappings | 1257 functions / 142110 bytes; 1103 mappings |
 | Windows i386 product / runtime | Open; semantic reconstruction and portability not started |
 
 [Live progress](PROGRESS.md): 1777 candidates and reviewed boundaries,

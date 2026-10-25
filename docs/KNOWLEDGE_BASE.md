@@ -5880,3 +5880,15 @@ fail their complete extents; seven selected guards remain861/all11. This is a
 tested negative for the declared graph, not proof of original compiler flags.
 The32-image batch adds no exact credit and does not close native product/runtime,
 semantics or portability. Preserve current6995 and old6993 carriers separately.
+
+## Hint writer return contract (2026-10-25)
+
+Target44B740/76 returns -1 on invalid handle, -2 after short-count cleanup, and
+0 on complete byte count; it tests byte count rather than Win32 BOOL. Natural
+ordinary-parameter int source emits the private EDX=data/ESI=size ABI in the
+complete Hint exporter-entry /GL graph. Two canonical cold replays pass76/all7;
+existing boundary/origin preserved, +76 source/exact bytes. This is an independent
+dependency result: the complete2669 exporter and its227 fields remain unchanged,
+with24 inlines rather than target9 writer calls plus15 inlines. Keep shared
+474494/4744B0 tables separately identity-bound; no extra exporter-owned bytes.
+See [proof, regression scope and failures](evidence/hint-writer-dependency-20261025/README.md).

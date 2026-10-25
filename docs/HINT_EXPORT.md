@@ -51,8 +51,8 @@ claiming the original array declaration; see HINT_LOAD.md.
 - Preserve coordinate truncation, RGB output order, one-decimal scale, and
   name tables. The base table intentionally skips `boss_card_11`. Unknown
   base/alignment values pass a null pointer to `%s`, without a new fallback.
-- Keep the existing **void** `FileSystem::WriteToOpenFile` API. Its result is
-  unused here. Writes compare byte counts rather than the Windows BOOL result.
+- The target-backed **int** `FileSystem::WriteToOpenFile` API returns -1/-2/0;
+  its result is unused here. Writes compare byte counts rather than the Windows BOOL result.
   A short write closes the reloaded global handle, releases the critical
   section and decrements its count without invalidating the handle or stopping
   export. Later writes and final cleanup can repeat those operations.
@@ -70,7 +70,7 @@ dependencies and extracts the actual unchanged writer and close bodies from
 negative remaining, next-link mutation, open/allocation ordering and repeated
 short-write cleanup. It does not execute the game or write actual hint files.
 
-The default command runs 12 functional mutation controls. A mutation counts
+The default command runs 15 functional mutation controls, including three writer return checks. A mutation counts
 as detected only with exit code 1 and the labeled `HINT_CHECK_FAILED`
 diagnostic; sanitizer failures are rejected as mutation evidence. Explicit
 Python checks remain active under `python -O`. `--skip-mutations` runs the
@@ -82,8 +82,8 @@ exceptional conversion/formatting equivalence or original runtime safety.
 
 The native cleanup caller, full object lifetime graph, production global/table
 storage, Windows runtime closure and exact code generation remain unresolved.
-Standalone writer `0x0044B740` receives no new source or exactness claim from
-this exporter. A successful host fixture or diagnostic compile is not native
+The separate [writer dependency proof](evidence/hint-writer-dependency-20261025/README.md)
+now admits standalone `0x0044B740` as 76/all 7 exact; this grants no exporter credit. A successful host fixture or diagnostic compile is not native
 exactness evidence.
 
 The first diagnostic link used `Hint.cpp` with `FileSystem.cpp` and the real
@@ -92,3 +92,8 @@ decorated `ExportAutomaticHints` entry. It compiled successfully, with a
 syntax/layout compatibility in that diagnostic context only; it supplies no
 exactness or native caller-graph closure. The diagnostic PE SHA-256 was
 `49dfedd3c1f62fce3233b7ff4e809cbbdca615bb0fddb5a8ec41aca500cd4aeb`.
+
+The 2026-10-25 fresh baseline and natural int-return dependency model both emit
+2669 bytes with all 24 writes inline, unlike the target nine-call/15-inline
+partition. The complete parent is byte-neutral and remains nonexact; see the
+writer dependency proof above.

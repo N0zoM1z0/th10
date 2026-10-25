@@ -11,6 +11,9 @@ import subprocess
 import tempfile
 SCRIPT = Path(__file__).resolve()
 MUTATIONS = [
+ ('invalid_return','FileSystemWrite.inc','return -1;','return 0;'),
+ ('short_return','FileSystemWrite.inc','return -2;','return 0;'),
+ ('success_return','FileSystemWrite.inc','    return 0;\n}\n\nint CloseWriteFile','    return 1;\n}\n\nint CloseWriteFile'),
  ('repair_negative_repeat','Hint.cpp','if (entry->remaining > 0)','if (entry->remaining != 0)'),
  ('one_based_stage','Hint.cpp','"Stage : %d\\r\\n\\r\\n", stage','"Stage : %d\\r\\n\\r\\n", stage + 1'),
  ('limit_254','Hint.cpp','emitted >= 255','emitted >= 254'),
@@ -18,7 +21,7 @@ MUTATIONS = [
  ('late_next_read','Hint.cpp','                node = next;','                node = node->next;'),
  ('swap_red_blue','Hint.cpp','static_cast<int>(entry->red),','static_cast<int>(entry->blue),'),
  ('insert_card11','Hint.cpp','{"boss_card_12",53}','{"boss_card_11",53}'),
- ('reset_failed_handle','FileSystemWrite.inc','--gReplayFileOpenCount;\n    }\n}\n\nint CloseWriteFile','--gReplayFileOpenCount;\n        gReplayFileHandle = INVALID_HANDLE_VALUE;\n    }\n}\n\nint CloseWriteFile'),
+ ('reset_failed_handle','FileSystemWrite.inc','--gReplayFileOpenCount;\n        return -2;\n    }\n    return 0;\n}\n\nint CloseWriteFile','--gReplayFileOpenCount;\n        gReplayFileHandle = INVALID_HANDLE_VALUE;\n        return -2;\n    }\n    return 0;\n}\n\nint CloseWriteFile'),
  ('trust_bool','FileSystemWrite.inc','::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);','if (!::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL)) bytesWritten = 0;'),
  ('cached_failed_handle','FileSystemWrite.inc','::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);','int savedHandle = gReplayFileHandle;\n    ::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);\n    gReplayFileHandle = savedHandle;'),
  ('unknown_empty','Hint.cpp','const char *baseName = 0;','const char *baseName = "";'),
@@ -66,10 +69,10 @@ def extract_function(source, signature):
 def source_inputs(root):
     filesystem = (root/'src/FileSystem.cpp').read_text()
     header = (root/'src/FileSystem.hpp').read_text()
-    require('void WriteToOpenFile(const void *data, unsigned int size);' in header,
-            'Expected unchanged void FileSystem writer declaration')
+    require('int WriteToOpenFile(const void *data, unsigned int size);' in header,
+            'Expected target-backed int FileSystem writer declaration')
     bodies = '\n\n'.join(extract_function(filesystem, signature) for signature in [
-        'void WriteToOpenFile(const void *data, unsigned int size)',
+        'int WriteToOpenFile(const void *data, unsigned int size)',
         'int CloseWriteFile()'])
     complete = (root/'src/Hint.cpp').read_text()
     marker = '// Target418D40.'
@@ -131,7 +134,7 @@ def main():
         result=run(inputs,mutation,args.optimization)
         require_mutation_failure(result, mutation[0])
         print('MUTATION KILLED:',mutation[0])
-    print('PASS:',len(MUTATIONS),'functional mutations; actual void file helper extracted')
+    print('PASS:',len(MUTATIONS),'functional mutations; actual int file helper extracted')
 
 if __name__ == '__main__':
     main()

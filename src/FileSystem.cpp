@@ -385,12 +385,13 @@ int __stdcall OpenWriteFile(const char *path)
     return 0;
 }
 
-// Recovered from the four inline write sequences inside SaveReplay. No
-// independent target function boundary or exact-byte claim is assigned.
-void WriteToOpenFile(const void *data, unsigned int size)
+// Target44B740: ordinary parameters lower naturally to the private EDX/ESI
+// ABI in the complete Hint export graph. Return values are -1 for an invalid
+// handle, -2 after short-write cleanup, and 0 for a complete byte count.
+int WriteToOpenFile(const void *data, unsigned int size)
 {
     if (gReplayFileHandle == INVALID_HANDLE_VALUE)
-        return;
+        return -1;
     DWORD bytesWritten;
     ::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);
     if (size != bytesWritten)
@@ -399,7 +400,9 @@ void WriteToOpenFile(const void *data, unsigned int size)
         CloseHandle(gReplayFileHandle);
         LeaveCriticalSection(&gReplayFileCriticalSection);
         --gReplayFileOpenCount;
+        return -2;
     }
+    return 0;
 }
 
 int CloseWriteFile()

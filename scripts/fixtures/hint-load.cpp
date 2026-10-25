@@ -114,9 +114,10 @@ namespace FileSystem {
         CHECK(exporting);
         return 0;
     }
-    void WriteToOpenFile(const void *data, unsigned int size) {
+    int WriteToOpenFile(const void *data, unsigned int size) {
         CHECK(exporting);
         exportText.append(static_cast<const char*>(data), size);
+        return 0;
     }
     int CloseWriteFile() {
         CHECK(exporting);

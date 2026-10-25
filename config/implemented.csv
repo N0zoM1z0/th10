@@ -1100,3 +1100,4 @@ MainClearPresentTwice
 MainSetScreenColor
 GameErrorContext::Flush
 GameUpdateFaithDecay
+FileSystem::WriteToOpenFile

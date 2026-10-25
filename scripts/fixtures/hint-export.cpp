@@ -163,10 +163,10 @@ int main() {
  CHECK(std::count(events.begin(),events.end(),"leave")==static_cast<int>(closes.size()));
  CHECK(gReplayFileOpenCount==static_cast<unsigned char>(1-closes.size()));
  CHECK(gReplayFileHandle==77);
- reset();FileSystem::WriteToOpenFile("x",1);CHECK(writes.empty());
- gReplayFileHandle=7;gReplayFileOpenCount=1;shortWrite=true;FileSystem::WriteToOpenFile("x",1);
+ reset();CHECK(FileSystem::WriteToOpenFile("x",1)==-1);CHECK(writes.empty());
+ gReplayFileHandle=7;gReplayFileOpenCount=1;shortWrite=true;CHECK(FileSystem::WriteToOpenFile("x",1)==-2);
  CHECK(writes.size()==1&&closes.size()==1&&gReplayFileOpenCount==0);
- shortWrite=false;FileSystem::WriteToOpenFile("x",1);
+ shortWrite=false;CHECK(FileSystem::WriteToOpenFile("x",1)==0);
  CHECK(writes.size()==2&&closes.size()==1);
  puts("PASS: exact stream, 183 table pairs, stage/limit/lifetime/error-path fixtures");
 }

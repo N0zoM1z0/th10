@@ -120,11 +120,11 @@ python -O scripts/test-hint-export.py
 ```
 
 Both runners support `--skip-mutations` for lightweight CI. Default runs use
-UBSan and execute 22 loader controls or 12 exporter controls. Mutation success
+UBSan and execute 22 loader controls or 15 exporter controls. Mutation success
 requires exit status 1, exactly one labeled CHECK diagnostic, and no UBSan
 message. Python checks remain active under `-O`. The exporter fixture retains
-source-extracted, unchanged void FileSystem writer/close effects; its added
-OpenFile stub fails immediately if the loader is unexpectedly called.
+source-extracted FileSystem writer/close effects; the writer now has its
+target-backed int return contract. Its added OpenFile stub fails immediately if the loader is unexpectedly called.
 
 The loader fixture compiles the maintained source, substituting only its two
 entry allocation and two release call sites with tracking dependencies. It
