@@ -13,6 +13,8 @@ GameAdditionalChainView *g_GameOwner4776F4;
 GameMenuView *g_GameMenu;
 GuiView *g_GuiView;
 GameStatisticsOwner *g_GameStatisticsRows;
+// Host-only storage seam: teardown scenarios do not execute file construction.
+GameStatisticsOwner::GameStatisticsOwner() {}
 Player *g_Player;
 EnemyManagerView *g_EnemyManager;
 HintOwnerView *g_GameOwner477814;

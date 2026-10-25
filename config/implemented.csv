@@ -1104,3 +1104,6 @@ FileSystem::WriteToOpenFile
 SptTestView::Draw
 SptTestDrawCallback
 TextRenderBufferView::FillColor
+GameStatisticsOwner::GameStatisticsOwner
+CreateStatistics42AF20
+GameStatisticsOwner::Load42B030

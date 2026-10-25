@@ -1105,3 +1105,6 @@ FileSystem::WriteToOpenFile,0x0044B740,function
 SptTestView::Draw,0x0042C360,function
 SptTestDrawCallback,0x0042C590,function
 TextRenderBufferView::FillColor,0x00436CA0,function
+GameStatisticsOwner::GameStatisticsOwner,0x0042AE60,function
+CreateStatistics42AF20,0x0042AF20,function
+GameStatisticsOwner::Load42B030,0x0042B030,function

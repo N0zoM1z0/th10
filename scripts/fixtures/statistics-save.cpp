@@ -16,6 +16,10 @@
 @CANONICAL_STATISTICS_HEADER@
 @CANONICAL_CALLEE_HEADERS@
 
+// Host-only storage constructor seam. Real file loading/initialization is outside
+// this save contract; scenarios explicitly initialize every observed field.
+GameStatisticsOwner::GameStatisticsOwner() {}
+
 // Explicit native-host representation. The canonical owner has two native
 // pointers, so its record block moves by 8 bytes on host64. Production assertions
 // are not asserted true on this host and the production declarations are intact.
@@ -185,7 +189,8 @@ void PlanIo() {
 void Initialize(const Scenario &s) {
     scenario = s;
     owner = &ownerStorage.value;
-    std::memset(&ownerStorage, 0xa5, sizeof(ownerStorage));
+    // Deliberate byte-pattern fixture initialization, including guard regions.
+    std::fill_n(reinterpret_cast<unsigned char *>(&ownerStorage), sizeof(ownerStorage), 0xa5);
     for (unsigned h = 0; h < headerStorage.size(); ++h) {
         std::memset(&headerStorage[h], 0xa5, sizeof(headerStorage[h]));
         auto &header = headerStorage[h].value;

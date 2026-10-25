@@ -6019,3 +6019,12 @@ call/private EAX filename and261-byte extent but not exactness. All8 fields and6
 locals are bound; Draw531, ASCII100 and constructor34 full guards pass both
 images. Proposals remain isolated, no source/exact/denominator credit. Park
 unsupported scheduling/ABI/profile panels pending new independent evidence.
+
+## Statistics loader exact owner, 2026-10-25
+
+[Complete evidence](evidence/statistics-load-20261025/README.md):42B030423 is
+exact in first and independent canonical cold graphs, all5 fields/all18 locals.
+Private EBX/AL and checksum expansion emerge from ordinary source. Reuse the
+canonical GameStatisticsOwner; ctor/factory are source-present nonexact, tail and
+record initializers remain declaration-only. Save remains nonexact; no implicit
+initializer, runtime-storage, original-profile or product closure follows.

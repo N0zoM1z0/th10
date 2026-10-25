@@ -53,6 +53,8 @@ struct GameStatisticsTail
 
 struct GameStatisticsOwner
 {
+    GameStatisticsOwner();
+    int Load42B030();
     GameStatisticsFileHeader *header;
     unsigned char *loadedPayload; // Separately freed at42AEF0; meaning unresolved.
     GameStatisticsRecord records[7];
@@ -82,3 +84,5 @@ typedef char GameStatisticsOwnerSize1DCB4[(sizeof(GameStatisticsOwner) == 0x1dcb
 // physical alias obligation, not a second definition/allocation here.
 extern GameStatisticsOwner *g_GameStatisticsRows;
 int GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics);
+
+GameStatisticsOwner *CreateStatistics42AF20();

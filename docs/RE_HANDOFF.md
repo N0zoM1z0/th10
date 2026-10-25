@@ -4,6 +4,16 @@ Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
 Fresh shared source-current replay: **470dca2**, 2026-10-25.
+Current [statistics loader](evidence/statistics-load-20261025/README.md) closes
+**423 authored bytes / one owner** on the first complete natural model and a
+separate canonical cold link, all5 fields/all18 fixed locals. Real ctor/factory
+source adds229 more source bytes, but remains138/132 and98/97 nonexact; two
+initializers are declared support only. Five same-image guards pass1078/all60;
+Save564 remains independently nonexact. Authored exact now76205/273658,417 owners;
+source624/249892. Corrected save229+44 and teardown70+50 sanitizer controls pass;
+host constructor seam is explicit, production save/layout unchanged. All113 full-CI
+stages pass with1603 frozen inputs preserved, verified09:49:13 UTC. RPC timeout
+was recovered without rerun; no runtime/product closure claim.
 Current [Spt Test script-load pilot](evidence/spt-test-load-20261025/README.md)
 retains first complete407/261 and actual-filesystem-context261/261 models.
 Main's real mode1 caller recovers external OpenFile/private filename-EAX instead

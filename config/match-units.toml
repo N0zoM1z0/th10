@@ -24176,3 +24176,21 @@ symbol = "?FillColor@TextRenderBufferView@@QAEXI@Z"
 target_address = 0x00436CA0
 size = 72
 linkages = []
+
+# Complete loader in its real constructor/factory context; initializer bodies remain declared support.
+[units.game-statistics-load]
+artifact_kind = "linked-pe"
+source = "src/GameStatisticsLoad.cpp"
+pdb_source = "src/GameStatisticsLoad.cpp"
+support_sources = ["src/GameStatistics.cpp", "src/FileSystem.cpp", "src/Decompress.cpp"]
+normal_support_sources = ["src/Decompress.cpp"]
+output_dir = "build/match-linked/GameStatisticsLoad"
+entry_symbol = "?CreateStatistics42AF20@@YGPAUGameStatisticsOwner@@XZ"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc", "/Gz"]
+harness = "unresolved-symbol-data-anchors-v1"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+symbol = "?Load42B030@GameStatisticsOwner@@QAEHXZ"
+functions = ["GameStatisticsOwner::Load42B030"]
+size = 423
+target_address = 4370480
+linkages = [{"offset" = 53, "type" = "REL32", "symbol" = "?Decrypt@FileSystem@@YGPAEPAEHEEHH@Z", "target" = 4501712}, {"offset" = 70, "type" = "REL32", "symbol" = "_malloc", "target" = 4531974}, {"offset" = 93, "type" = "REL32", "symbol" = "?DecompressData@@YGPAEPAEH0H@Z", "target" = 4414912}, {"offset" = 347, "type" = "REL32", "symbol" = "_free", "target" = 4531234}, {"offset" = 363, "type" = "REL32", "symbol" = "_malloc", "target" = 4531974}]
