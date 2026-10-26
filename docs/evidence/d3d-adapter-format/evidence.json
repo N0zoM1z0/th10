@@ -1,0 +1,91 @@
+{
+  "scope": "sanitized failed-operation evidence; no owner/build-success/guard result",
+  "command_id": "repository-command:aaf359bd32d044dbb8b56d8bb1787572",
+  "receipt_sha256": "d5830f6b3dd4f57d3c4f33a5c7dcd8777773df6a26aff4ee24cf24f19d9d6cc8",
+  "head_before": "4a113613d9f4a04b8b70ff739f2965461d6352c6",
+  "head_after": "4a113613d9f4a04b8b70ff739f2965461d6352c6",
+  "clean_before": true,
+  "clean_after": true,
+  "exit_code": 1,
+  "result": {
+    "adoption_authority": "none",
+    "arm_diagnostics": {
+      "baseline": {
+        "availability_grace_counts": {
+          "expired": 0,
+          "pending": 0,
+          "resolved": 0
+        },
+        "cleanup_reason": "none",
+        "detached_class_counts": {
+          "exited_unattested": 1,
+          "pending_availability": 0,
+          "shared_wine_runtime_host": 7,
+          "unknown": 0,
+          "wineserver32": 0,
+          "wineserver64": 1
+        },
+        "detached_history_count": 9,
+        "detached_history_sha256": "6ae0c72847a8d790ab3507925fc3e10ebdf610d513e91c4f7b328b8f47371e97",
+        "failure_stage": "monitoring",
+        "live_failure_reason_counts": {
+          "availability_grace_expired": 0,
+          "availability_grace_repeated": 0,
+          "capacity_exceeded": 0,
+          "executable_drift": 0,
+          "executable_temporarily_unavailable": 0,
+          "executable_unknown": 0,
+          "identity_unresolved": 0,
+          "prefix_mismatch": 0,
+          "prefix_missing": 0,
+          "prefix_unreadable": 0,
+          "session_not_isolated": 0
+        },
+        "ordinary_client_group_cleanup_complete": true,
+        "primary_reason": "accounting_unresolved",
+        "returncode_before_cleanup": null,
+        "shared_runtime_residual_count": 8,
+        "shared_runtime_sampling_complete": true,
+        "terminal_exit_confirmed_count": 1,
+        "worker_exception_class": null,
+        "worker_phase": "cold_link"
+      }
+    },
+    "failure_class": "Other",
+    "restart_allowed": false,
+    "runtime_executed": false,
+    "status": "failed",
+    "target_exactness_tested": false
+  },
+  "claim_consumed": true,
+  "candidate_started": false,
+  "measurements_established": false,
+  "target_read": false,
+  "cause": "unresolved; monitor did not retain failing accounting predicate",
+  "diagnostic": "closed without execution; retained schema cannot discriminate historical predicate",
+  "pair_pins": {
+    "pair.py": {
+      "bytes": 22974,
+      "sha256": "116d3740fe80314c4e3b2545b9d064caa06b6c171b8b42ac14bb30c57564cad1"
+    },
+    "monitor.py": {
+      "bytes": 27281,
+      "sha256": "91fd99df6d88e4a550baf41478b11038d307cf37c5e027f6abbed2d4ada2b326"
+    },
+    "owner.py": {
+      "bytes": 3809,
+      "sha256": "803c56bc5621154c3909c7d0d6a7493b9bf3afc512414c543da4715d44e977bc"
+    },
+    "manifest.json": {
+      "bytes": 23498,
+      "sha256": "a580a9d2d94e4eeaf5d4bd633d7f04700399643b098e29d559e7f7f5652f8ad9"
+    },
+    "candidate.patch": {
+      "bytes": 437,
+      "sha256": "20f79cba52efad0ef229b0343b6c8ca7eea23ca813b301e45a95111a48558a4d"
+    }
+  },
+  "source_adopted": false,
+  "target_exactness_proven": false,
+  "guards_run": false
+}

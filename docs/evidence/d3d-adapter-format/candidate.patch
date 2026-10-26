@@ -1,0 +1,11 @@
+--- a/src/Main.cpp
++++ b/src/Main.cpp
+@@ -783,7 +783,7 @@
+     {
+         if (g_MainSupervisorView.d3dInterface->vtable->CheckDeviceFormat(
+                 g_MainSupervisorView.d3dInterface, 0,
+-                MAIN_D3D_DEVICE_HAL, displayMode.format, 0,
++                MAIN_D3D_DEVICE_HAL, presentParameters.backBufferFormat, 0,
+                 MAIN_D3D_RESOURCE_TEXTURE,
+                 MAIN_D3D_FORMAT_A8R8G8B8) == 0)
+         {

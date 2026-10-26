@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-26",
+  "status": "source-model-only",
+  "original_baseline_commit": "4a11361",
+  "original_cpp_sha256": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+  "original_hpp_sha256": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+  "command": "scripts/repo-python docs/evidence/d3d-adapter-format/test_candidate.py --baseline-root <reconstructed commit 4a11361 files in ignored .analysis/>",
+  "tests": 8,
+  "failed_tests": 0,
+  "source_test_exit_code": 0,
+  "source_test_log_sha256": "c6352adff70a6982c739a1cd77bbb43d2425eefd2dc2112b92b0ceebf2a6ca31",
+  "native_candidate_started": false,
+  "native_exactness_proven": false,
+  "candidate_source_adopted": false,
+  "historical_native_operation": "terminal failed; not retried",
+  "tracked_artifacts": {
+    ".gitattributes": {
+      "sha256": "ed498fc91b1843b2e372ddc35249846ed8411aa4b63361dc2fede9f454e0fb25",
+      "bytes": 75
+    },
+    "README.md": {
+      "sha256": "75412206932d385780dcfc84288f87a72b32545fdfe9cfba8d462969ca446ce1",
+      "bytes": 6126
+    },
+    "REFERENCE_LICENSE.txt": {
+      "sha256": "2928b2f628a94dc67b9c8fbc97bf85f7fe0444bc38e34e898befb4e450463b2f",
+      "bytes": 1217
+    },
+    "candidate.patch": {
+      "sha256": "20f79cba52efad0ef229b0343b6c8ca7eea23ca813b301e45a95111a48558a4d",
+      "bytes": 437
+    },
+    "evidence.json": {
+      "sha256": "cac2ad3b15a0cab5b0dfbd186f068d05979fca84c64f146934ce45e976e1afca",
+      "bytes": 3162
+    },
+    "model.py": {
+      "sha256": "b7be4e6b3bbceebddd3716ff8e2c48fed082245470485ddf70a8db42784dfc0c",
+      "bytes": 1930
+    },
+    "provenance.json": {
+      "sha256": "d2e14614a1a9a683ab9f04210f76be95ee9c7fcc32b12dad71e94b9679f8e6d0",
+      "bytes": 1489
+    },
+    "reconstruct.py": {
+      "sha256": "3f2a09ac896cbb1c12a6a4901a62ef6a23cf006a7cb08bcb7d9046bf40cf5512",
+      "bytes": 1140
+    },
+    "test_candidate.py": {
+      "sha256": "e74122636a34597a213bd53514d43f7665559177227eb2ccc7128bf6932cc6a7",
+      "bytes": 4121
+    }
+  },
+  "scope": "Records an unadopted hypothesis and the old failed native operation; no target-byte or runtime result."
+}

@@ -1,0 +1,18 @@
+{
+  "baseline_root": "/workspace/shared/gui-direct-creation/candidate",
+  "baseline_cpp": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+  "header": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+  "candidate_cpp": "9a9ed9e39a35c026f8b58dea885d6dd86fe314b8c820c5554676c2672431c78e",
+  "review_sha256": "2b89817c1f0a7a115f01d7bb3cc306f37d67b0d85714832da8bf8dedddd0c0c4",
+  "reference_commit": "4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a",
+  "reference_path": "matching2/msvc/src/core/main/d3d_initialize.cpp",
+  "reference_blob": "fbc82c3d54729ae909c2e772919643d7cd8aa20b",
+  "reference_sha256": "9ead34f1b09d7521b94af6d75a920ffa5ab41f76002548c137feb2ef625d80bc",
+  "api_sources": [
+    "https://learn.microsoft.com/en-us/windows/win32/api/d3d9/nf-d3d9-idirect3d9-checkdeviceformat",
+    "https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dpresent-parameters",
+    "https://learn.microsoft.com/en-us/windows/win32/api/d3d9/nf-d3d9-idirect3d9-createdevice"
+  ],
+  "scope": "Original source argument replacement/model; no upstream implementation/controls copied; target ABI/ownership/adoption unproved",
+  "model_scope_limitation": "Model limitation: on fullscreen options&1, maintained source also sets colorMode=1; the abstract model leaves its input color unchanged. That fixture tests probe suppression only and is not a distinguishing witness or coverage of all constructor state. No full initialization-state equivalence is claimed."
+}
