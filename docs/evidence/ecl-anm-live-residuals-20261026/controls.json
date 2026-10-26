@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_tree_replay_image_sha256": "95a546f62ffeb8adf890a214149434b13582cc29988330b298ff15b4365616fd",
+  "original_source_inputs": {
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/AnmManager.cpp": "5b3545b319d18e3c0fa869f5a11390d9b5534148cc0fa867803d08796fe640c6",
+    "src/EnemyEclDispatcher.cpp": "78c8037c81f51ca558ff4e9403d4d2721d410c2f3f56571091b5c2694827aba5"
+  },
+  "current_complete_owners": {
+    "EclVmContext::Run": {
+      "address": "0x0044E1A0",
+      "extent_bytes": 7020,
+      "matching": 6995,
+      "ordinary_differences": 25,
+      "link_fields": 189,
+      "fixed_local_destinations": 62,
+      "exact_float_callee_bytes": 171,
+      "result": "nonexact",
+      "offsets": [
+        "0xAF",
+        "0xEC",
+        "0xF1",
+        "0x12A",
+        "0x12C",
+        "0x1FB",
+        "0x151D",
+        "0x181B",
+        "0x182B",
+        "0x1838",
+        "0x183C",
+        "0x1840",
+        "0x1844",
+        "0x1899",
+        "0x18B6",
+        "0x18E6",
+        "0x18F8",
+        "0x191C",
+        "0x1932",
+        "0x1957",
+        "0x199E",
+        "0x19A8",
+        "0x19BA",
+        "0x19E6",
+        "0x19E8"
+      ]
+    },
+    "AnmRenderManagerView::ExecuteScript": {
+      "address": "0x0043EE30",
+      "extent_bytes": 9964,
+      "matching": 9960,
+      "ordinary_differences": 4,
+      "link_fields": 350,
+      "result": "nonexact",
+      "offsets": [
+        "0x113",
+        "0x115",
+        "0x249A",
+        "0x24A0"
+      ]
+    },
+    "EnemyPrepareProjection": {
+      "address": "0x00401D20",
+      "extent_bytes": 60,
+      "matching": 60,
+      "link_fields": 1,
+      "result": "exact",
+      "reviewed_source_commit": "2c5a96f"
+    }
+  },
+  "controlled_source_experiments": {
+    "ecl": [
+      {
+        "variant": "swap-length",
+        "result": "mismatch",
+        "extent": 7020,
+        "matching": 6995,
+        "source_sha256": "1245f38f60f39e44d79409d381b53ef52c3dee421208fb9c6de6cf0598a3bcb9",
+        "reference_receipt_sha256": "8c7abd9a10eabb725bc344d1c8ccdec9013beadf24fee388f61aa9484d9d5937",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "swap-length-angle",
+        "result": "mismatch",
+        "extent": 7020,
+        "matching": 6995,
+        "source_sha256": "a15857172c633047acf5a2e459abde26ad0a64b3000d305baf0eb6e593af8244",
+        "reference_receipt_sha256": "bad9d0b5ce571705f4f1f2b958ce84e4a4bef628ec09e29aacc4665693c43513",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "swap-length-angle-format",
+        "result": "mismatch",
+        "extent": 7020,
+        "matching": 6995,
+        "source_sha256": "7bf35c252339985ca1f585b3ee35f3ca8eade1ffb8d9103eb0dd33ee24fa28bd",
+        "reference_receipt_sha256": "8e48ce0cdf9f13e0fdcc85b0036ea341addcc1a5f62ef782ec663759a6c23e04",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "format-decl",
+        "result": "mismatch",
+        "extent": 7020,
+        "matching": 6995,
+        "source_sha256": "08eb0cfc43b891fb2dcc7658867b580ec96aa0d5ecc7f550d9f444460bfd721a",
+        "reference_receipt_sha256": "1b455a59cc77057ea313b42aec1ca6bb8dc9ac0650324414b5f7bc133fae9d6c",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "advance-inline",
+        "result": "mismatch",
+        "extent": 7020,
+        "matching": 6995,
+        "source_sha256": "2242720636839c3d83404bf840fb001f7f9e881ec1902f7cfd492b61eaf86e25",
+        "reference_receipt_sha256": "7da464a81b060765e33eaf4206a9f062d59e58665be6db318823149d32192b9e",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "thread-intermediates",
+        "result": "unscored-link-field-rejection",
+        "extent": null,
+        "matching": null,
+        "source_sha256": "aba5adee697f1d9ae18b7c7f3ed2e1ab470b62c7f902fcc9b8712ffc20068d69",
+        "reference_receipt_sha256": "1e0c7ca77603623c9eac9ff36b5b73ce0cc8d45481e1b9b2a6e3912d99a5b705",
+        "control_objects_unchanged": true,
+        "error": "external field lacks one prebound target: {'offset': 245, 'width': 4, 'type': 'REL32', 'instruction': 'call', 'candidate_target': '0x00406350', 'candidate_symbols': ['?ReadIntValue@EclVmContext@@QAEHIH@Z'], 'instruction_"
+      }
+    ],
+    "anm": [
+      {
+        "variant": "reverse-second",
+        "result": "mismatch",
+        "extent": 9964,
+        "matching": 9958,
+        "source_sha256": "9263202ae7b1e961b5a931dd71a20cbc6eee348e068e6cbaad9812c1c124b5dc",
+        "reference_receipt_sha256": "3b1cca639be95c706c861d31a93b2db232d6d19cefd28e26ea0e522240c55ae7",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "explicit-z",
+        "result": "mismatch",
+        "extent": 9964,
+        "matching": 9958,
+        "source_sha256": "9ebcb0e428d140e4530fee93b5e96352bc3f7552beb26bd3725d3b3fd367f4a4",
+        "reference_receipt_sha256": "0c3f89174ee162047e233b8b23ec148747c4f880eef74c9022c033bd97e9c608",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "retarget-z",
+        "result": "mismatch",
+        "extent": 9964,
+        "matching": 9958,
+        "source_sha256": "6cd7159e6405dcb860488dbd5ebc858bfdc43b73b1ec686abed2780ad1326244",
+        "reference_receipt_sha256": "d5b47e87c55783e30c2d308a85cc650c4e65ee7540d7a50edb526a0d4b686d25",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "combo-001",
+        "result": "mismatch",
+        "extent": 9964,
+        "matching": 9958,
+        "source_sha256": "6cd7159e6405dcb860488dbd5ebc858bfdc43b73b1ec686abed2780ad1326244",
+        "reference_receipt_sha256": "899b8fb41c1b812acc1ae05077b81c02a26192e60d109708c0cb18eadca329ea",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "combo-010",
+        "result": "mismatch",
+        "extent": 9964,
+        "matching": 9958,
+        "source_sha256": "f299a62e730da04d75608bdcc8d033091e4d16471f76123467c2ed88e2bbdd31",
+        "reference_receipt_sha256": "e57058599f7f36408777b52c6c7533b6502f823f8f90d23001b5d14f1a603a96",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "combo-011",
+        "result": "mismatch",
+        "extent": 9964,
+        "matching": 9958,
+        "source_sha256": "43117107d7d6bca910114affaacaffd2ef518f3bf79ceb2f9883f0c21a5a245c",
+        "reference_receipt_sha256": "c3e568573340205580de5b984ae6ff096e3c91ccddfb78a8fce9ab1d023b2c13",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "combo-100",
+        "result": "mismatch",
+        "extent": 9964,
+        "matching": 9958,
+        "source_sha256": "c3a176adaa8d4e974e371b228d3fc97b3a5de057f28f24f29a02d0ee7b574a0b",
+        "reference_receipt_sha256": "6a5361b38e4504551fcc0a52d789b2616937f7dc845bb03e70e58e1a4123c2af",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "child-aggregate-separated",
+        "result": "mismatch",
+        "extent": 9964,
+        "matching": 9960,
+        "source_sha256": "79a236061d779e7fe0f7b2405e8631de4c0c7c45db5ab72b5131e451bcb70afc",
+        "reference_receipt_sha256": "70f916cd8440a3ecaff6fd8d2f4e5eb82dbeebe122a2c51b33347842f8a5b11d",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "child-file-capture",
+        "result": "mismatch",
+        "extent": 9964,
+        "matching": 9958,
+        "source_sha256": "c985eb0fefec214614da3f0c5d3d31a3af1e789f0516710e620f832fd9bdb3e0",
+        "reference_receipt_sha256": "ba4b36d17fa2430c3f2148a55db503bb6923e07932cf65a2e8270fdfe0cfc1ce",
+        "control_objects_unchanged": true
+      },
+      {
+        "variant": "child-reverse-record-layout",
+        "result": "unscored-structural-rejection",
+        "trace_prefix": "Traceback (most recent call last):\n  File \"/home/pentester/coding/codex_ida/th10-reconstruction/th10/.analysis/gpt-web-ecl20261026/anm_probe.py\", line 91, in <module>\n    res=cmp.compare_unit('anm-execute-script-diagnostic')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/pentester/coding/codex_ida/th10-r"
+      }
+    ]
+  },
+  "ci_limits": {
+    "prior_unbounded_attempt": {
+      "outcome": "incomplete-sanitizer-output-storm",
+      "failure_stage": "Validate Spt Test helper contracts",
+      "original_output_bytes": 28837623836,
+      "retained_log_prefix_sha256": "ac8736ff9ac73f7340513e72c5dede1f4c8d3eba7fae6434ac6abec2d91a39d8",
+      "retained_log_tail_sha256": "3a7bd89becaf0d8d7aaffc3243de5622ab89430565f3074084f3ad0b9c1c6631"
+    },
+    "new_bounded_attempt": {
+      "outcome": "timeout",
+      "time_limit_seconds": 240,
+      "observed_stage_count": 37,
+      "observed_output_bytes": 29173,
+      "return_code": -9
+    },
+    "isolated_spt_test": {
+      "outcome": "pass",
+      "log_sha256": "15f5a31607d5448d65259827ef3eca27bc082daeb96f9b708e18efe113f8fb6b",
+      "scope": "one source-extracted sanitizer host test, not complete CI"
+    }
+  },
+  "scope": "Fresh final linked-image parent diagnoses and private input-preserving source controls only; rejected panels get zero byte credit. CI incomplete; exact helper independently admitted in earlier commit."
+}

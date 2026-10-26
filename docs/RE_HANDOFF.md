@@ -1,5 +1,21 @@
 # TH10 reconstruction handoff
 
+## Live source-current checkpoint — 2026-10-26
+
+The latest committed Enemy viewport-helper admission (`2c5a96f`, supplemental
+`3b7daa8`) adds one complete **60-byte authored exact owner**, with two cold
+links and a source-current strict linked-PE comparator. Existing D3D adapter
+format dirty evidence has also been inspected and preserved as a source-model
+record (`9191dab`), without native exact credit. See
+[evidence](evidence/ecl-anm-live-residuals-20261026/README.md) for fresh
+current-image ECL Run **6995/7020, 25 differences, 189 fields, 62 locals** and
+ANM ExecuteScript **9960/9964, four differences, 350 fields**. ECL/ANM
+private source-lifetime controls do not improve these whole owners. Enemy
+Dispatcher remains nonexact at native14336 versus target14416. Complete CI is
+**not** claimed: a historical attempt produced an ASan output storm and a
+subsequent bounded 240-second attempt reached37 stages before its limit.
+
+
 **2026-10-26 exact checkpoint:** [Enemy projection helper](evidence/enemy-prepare-projection-20261026/README.md)
 closes **60 authored bytes / one complete owner**, `EnemyPrepareProjection @
 00401D20`, in two independent ten-TU `/GL /GS` cold replays, one bound callee
