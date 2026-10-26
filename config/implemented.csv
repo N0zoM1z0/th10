@@ -1122,3 +1122,4 @@ ScriptViewerCreateGui
 EnemyLaserManagerStorageView::Initialize
 GameCleanupLinked41C1C0
 GameCreateOwner41C290
+EnemyPrepareProjection

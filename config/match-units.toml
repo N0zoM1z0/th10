@@ -24652,3 +24652,24 @@ offset = 76
 type = "REL32"
 symbol = "??3@YAXPAX@Z"
 target = 4531361
+
+# Whole 0x00401D20 camera projection helper in the real Enemy dispatcher graph.
+# The internal ESI/EBX ABI is selected naturally by the caller, not hand-forced.
+[units.enemy-prepare-projection]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/AnmInt3Scale.cpp", "src/ItemManager.cpp"]
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+output_dir = "build/match-linked/EnemyItemDrops"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/EnemyEclDispatcher.cpp"
+functions = ["EnemyPrepareProjection"]
+symbol = "?EnemyPrepareProjection@@YAXPAUMainSupervisorView@@H@Z"
+target_address = 0x00401D20
+size = 60
+linkages = [
+  { offset = 0x17, type = "REL32", symbol = "?EnemyConfigureViewportOwner@@YAXPAUAnmViewportOwnerView@@@Z", target = 0x004215A0 },
+]

@@ -202,7 +202,7 @@ extern "C" AnmMatrixView *__stdcall D3DXMatrixPerspectiveFovLH(
     AnmMatrixView *output, float fov, float aspect,
     float nearPlane, float farPlane);
 
-static __declspec(noinline) void EnemyConfigureViewportOwner(
+__declspec(noinline) void EnemyConfigureViewportOwner(
     AnmViewportOwnerView *viewport)
 {
     if (g_AnmRenderManagerView != 0) {
@@ -252,7 +252,7 @@ static __declspec(noinline) void EnemyConfigureViewportOwner(
     }
 }
 
-static __declspec(noinline) void EnemyPrepareProjection(
+__declspec(noinline) void EnemyPrepareProjection(
     MainSupervisorView *supervisor, int viewportIndex)
 {
     AnmViewportOwnerView *viewport =

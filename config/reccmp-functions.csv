@@ -1123,3 +1123,4 @@ ScriptViewerCreateGui,0x00414830,function
 EnemyLaserManagerStorageView::Initialize,0x0041C120,function
 GameCleanupLinked41C1C0,0x0041C1C0,function
 GameCreateOwner41C290,0x0041C290,function
+EnemyPrepareProjection,0x00401D20,function

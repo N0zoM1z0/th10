@@ -6148,3 +6148,15 @@ precede virtual slot4 Unlink; links are reread afterward, with no ANM unload.
 See [complete evidence and preservation limits](evidence/enemy-laser-manager-20261025/README.md).
 Standalone41C100 remains unclassified/no new credit; base98's old origin/mapping
 is unchanged. The factory diagnostic is not a recovered GameManager product graph.
+
+## Enemy projection helper — 2026-10-26
+
+At target `0x00401D20..0x00401D5B`, the 60-byte reviewed authored viewport
+selection helper is mapped to maintained `EnemyPrepareProjection` (private ESI
+supervisor/EBX index). Two independent ten-TU VC7.1 SP1 `/GL /GS` cold runs
+reproduce its complete PDB-owned body, including the sole `REL32` call to the
+330-byte `StageConfigureCamera @ 0x004215A0`. The native same-role callee
+`EnemyConfigureViewportOwner` is **not exact**, and target `0x00405300` has a
+different callee: neither gets collateral credit. This adds 60 authored exact
+bytes/one mapped owner, without whole-image or runtime claims. See
+[full evidence](evidence/enemy-prepare-projection-20261026/README.md).

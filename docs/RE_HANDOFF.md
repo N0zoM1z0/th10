@@ -1,5 +1,14 @@
 # TH10 reconstruction handoff
 
+**2026-10-26 exact checkpoint:** [Enemy projection helper](evidence/enemy-prepare-projection-20261026/README.md)
+closes **60 authored bytes / one complete owner**, `EnemyPrepareProjection @
+00401D20`, in two independent ten-TU `/GL /GS` cold replays, one bound callee
+field, exact 60-byte PDB extent and 52 ANM/ECL plus two Enemy exact guards.
+Authored exact 77,331/275,055, 427 owners; authored source-present 638.
+Fresh full owner baselines: ECL Run6995/7020/all189, ANM ExecuteScript9960/9964/
+all350; Enemy Dispatcher remains 14336/14416, no exact claim. Older source/artifact hashes below are historical; recompile before new experiments. Untracked D3D
+assets preserved. See evidence for falsified compiler/source controls and limits.
+
 Updated 2026-10-25 for the operator-approved
 [exact-first method](TH10_EXACT_FIRST_METHOD_20261024.md) and Web/Factory resume.
 Method checkpoint: **07424cf**; ANM/ECL source checkpoint: **00c7466**.
