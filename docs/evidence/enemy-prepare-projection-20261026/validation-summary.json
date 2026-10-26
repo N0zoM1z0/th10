@@ -1,0 +1,112 @@
+{
+  "scope": "complete 60-byte local canonical linked PE exact only; original TU, factory acceptance receipt, whole product, runtime, portability remain unknown",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "78c8037c81f51ca558ff4e9403d4d2721d410c2f3f56571091b5c2694827aba5",
+  "target_address": "0x00401D20",
+  "size": 60,
+  "target_raw_sha256": "dddfbe7321945b40bb2019420c23fd9740473f7182a7aa85f700bea0433bb77a",
+  "unit": "enemy-prepare-projection",
+  "cold_replays": [
+    {
+      "ordinal": 1,
+      "result": "exact",
+      "build_exit": 0,
+      "matched_bytes": 60,
+      "extent_bytes": 60,
+      "image_sha256": "327205224ccce9cc3d3ae30bd0b6671873483473d787125ff6f520e48f6b679e",
+      "candidate_address": "0x004012D0",
+      "pdb_owner_source": "pdb-section-contribution",
+      "linkages": [
+        {
+          "addend": 0,
+          "candidate_target": "0x00401180",
+          "linked_symbol": "?EnemyConfigureViewportOwner@@YAXPAUAnmViewportOwnerView@@@Z",
+          "local": false,
+          "offset": "0x17",
+          "symbol": "?EnemyConfigureViewportOwner@@YAXPAUAnmViewportOwnerView@@@Z",
+          "target": "0x004215A0",
+          "target_encoded_value": "0x0001F865",
+          "type": "REL32",
+          "width": 4
+        }
+      ]
+    },
+    {
+      "ordinal": 2,
+      "result": "exact",
+      "build_exit": 0,
+      "matched_bytes": 60,
+      "extent_bytes": 60,
+      "image_sha256": "95a546f62ffeb8adf890a214149434b13582cc29988330b298ff15b4365616fd",
+      "candidate_address": "0x004012D0",
+      "pdb_owner_source": "pdb-section-contribution",
+      "linkages": [
+        {
+          "addend": 0,
+          "candidate_target": "0x00401180",
+          "linked_symbol": "?EnemyConfigureViewportOwner@@YAXPAUAnmViewportOwnerView@@@Z",
+          "local": false,
+          "offset": "0x17",
+          "symbol": "?EnemyConfigureViewportOwner@@YAXPAUAnmViewportOwnerView@@@Z",
+          "target": "0x004215A0",
+          "target_encoded_value": "0x0001F865",
+          "type": "REL32",
+          "width": 4
+        }
+      ]
+    }
+  ],
+  "same_image_guards": {
+    "anm": {
+      "count": 36,
+      "bytes": 4618,
+      "fields": 121
+    },
+    "ecl": {
+      "count": 16,
+      "bytes": 1617,
+      "fields": 21
+    },
+    "enemy-drop-item-counts": {
+      "result": "exact",
+      "bytes": 48,
+      "fields": 3
+    },
+    "enemy-drop-item-counts-core": {
+      "result": "exact",
+      "bytes": 503,
+      "fields": 27
+    },
+    "enemy-prepare-projection": {
+      "result": "exact",
+      "bytes": 60,
+      "fields": 1
+    }
+  },
+  "live_large_parents": {
+    "ECL_Run": {
+      "matched": 6995,
+      "extent": 7020,
+      "fields": 189,
+      "ordinary_differences": 25
+    },
+    "ANM_ExecuteScript": {
+      "matched": 9960,
+      "extent": 9964,
+      "fields": 350,
+      "ordinary_differences": 4,
+      "offsets": [
+        "0x113",
+        "0x115",
+        "0x249A",
+        "0x24A0"
+      ]
+    },
+    "Enemy_Dispatcher": {
+      "native_extent": 14336,
+      "target_extent": 14416,
+      "exact": false
+    }
+  },
+  "untracked_D3D_evidence": "preserved and not staged"
+}
