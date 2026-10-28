@@ -1,0 +1,325 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_exact": {
+    "bytes": 1665,
+    "owners": 2,
+    "units": {
+      "sound-process-queues": {
+        "address": "0x0043DDF0",
+        "bytes": 1452,
+        "fields": 43,
+        "fixed_local_fields": 9
+      },
+      "streaming-sound-reset": {
+        "address": "0x0044DAD0",
+        "bytes": 213,
+        "fields": 4
+      }
+    }
+  },
+  "source_pins": {
+    "src/Sound.cpp": "68640f4b836c7dd9b304166e3aaddbca594017e8b6ae8d985292ec9e3b815504",
+    "src/Sound.hpp": "041c12afbd15ce2670728e0b705cd599f5be722d685171900017487d5ab10645",
+    "src/ZWave.cpp": "ac2feb5e385e625ee8d0c51961cc2405aaf9338493e4de25e61d0744f579b5e8",
+    "src/Main.cpp": "8db469e67541ea2a45be69c89c9f20375ea217b0c6976d4177d3c5e2b0a0a857"
+  },
+  "target_boundary": {
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "owner": "0x0043DDF0",
+    "code_bytes": 1419,
+    "code_end": "0x0043E37A",
+    "alignment": {
+      "address": "0x0043E37B",
+      "bytes": 1,
+      "value": "NOP"
+    },
+    "table": {
+      "address": "0x0043E37C",
+      "entries": 8,
+      "bytes": 32,
+      "end": "0x0043E39B",
+      "targets": [
+        "0x0043DE64",
+        "0x0043DEAB",
+        "0x0043E053",
+        "0x0043DFF0",
+        "0x0043E076",
+        "0x0043E099",
+        "0x0043E0BE",
+        "0x0043DE45"
+      ],
+      "all_targets_instruction_starts": true,
+      "only_base_xref": "0x0043DE3E"
+    },
+    "owned_bytes": 1452,
+    "following_bytes": "four CC then independent BGM worker0x0043E3A0",
+    "extent_sha256": "21931225958524d298a7529133ceaf65d1e3764598bc9325a0aa7d0ca38782d5"
+  },
+  "proofs": [
+    {
+      "variant": "final-cold-a",
+      "graph_inputs": 2,
+      "reused_inputs": 0,
+      "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/sound-queues-20261028/final-cold-a/source.exe",
+      "image_sha256": "7b600043597ce9a7035b58663135b9863c68749bc246a31239bdcb2bd76638db",
+      "strict": {
+        "streaming-sound-init-buffers": {
+          "bytes": 338,
+          "fields": 6
+        },
+        "sound-bgm-player-thread": {
+          "bytes": 189,
+          "fields": 7
+        },
+        "sound-process-queues": {
+          "bytes": 1452,
+          "fields": 43
+        },
+        "streaming-sound-reset": {
+          "bytes": 213,
+          "fields": 4
+        }
+      },
+      "total_bytes": 2192,
+      "total_fields": 60
+    },
+    {
+      "variant": "final-cold-b",
+      "graph_inputs": 2,
+      "reused_inputs": 0,
+      "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/SoundInitBuffers/source.exe",
+      "image_sha256": "176584dab2e1040f915f0aa90110d5248e060b907753d583e4cef619a5e6a437",
+      "strict": {
+        "streaming-sound-init-buffers": {
+          "bytes": 338,
+          "fields": 6
+        },
+        "sound-bgm-player-thread": {
+          "bytes": 189,
+          "fields": 7
+        },
+        "sound-process-queues": {
+          "bytes": 1452,
+          "fields": 43
+        },
+        "streaming-sound-reset": {
+          "bytes": 213,
+          "fields": 4
+        }
+      },
+      "total_bytes": 2192,
+      "total_fields": 60
+    },
+    {
+      "variant": "final-main-current",
+      "graph_inputs": 15,
+      "reused_inputs": 12,
+      "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/sound-queues-20261028/final-main-current/source.exe",
+      "image_sha256": "07432d6c809149c3f30328eb65c1ac787b65999d96f1a3a1cbc740f5c6d4e965",
+      "strict": {
+        "streaming-sound-init-buffers": {
+          "bytes": 338,
+          "fields": 6
+        },
+        "sound-bgm-player-thread": {
+          "bytes": 189,
+          "fields": 7
+        },
+        "sound-process-queues": {
+          "bytes": 1452,
+          "fields": 43
+        },
+        "streaming-sound-reset": {
+          "bytes": 213,
+          "fields": 4
+        },
+        "main-present": {
+          "bytes": 236,
+          "fields": 20
+        },
+        "main-release-anm-surfaces": {
+          "bytes": 43,
+          "fields": 0
+        },
+        "main-service-anm-screenshots": {
+          "bytes": 111,
+          "fields": 2
+        }
+      },
+      "total_bytes": 2582,
+      "total_fields": 82
+    }
+  ],
+  "models": [
+    {
+      "model": "baseline",
+      "native_owned_bytes": 1372,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "real-reset",
+      "native_owned_bytes": 1380,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "real-caller",
+      "native_owned_bytes": 1384,
+      "scope_inputs": 15,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "int-flag",
+      "native_owned_bytes": 1404,
+      "scope_inputs": 15,
+      "reused_inputs": 14,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "volume-first",
+      "native_owned_bytes": 1416,
+      "scope_inputs": 15,
+      "reused_inputs": 14,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "branch-preload",
+      "native_owned_bytes": 1416,
+      "scope_inputs": 15,
+      "reused_inputs": 14,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "release-tail-actual",
+      "native_owned_bytes": 1420,
+      "scope_inputs": 15,
+      "reused_inputs": 14,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "stdcall",
+      "native_owned_bytes": 1420,
+      "scope_inputs": 15,
+      "reused_inputs": 13,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "stdcall-root",
+      "native_owned_bytes": 1440,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "live-sfx",
+      "native_owned_bytes": 1468,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "live-count",
+      "native_owned_bytes": 1472,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "field-count",
+      "native_owned_bytes": 1448,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "buffer-range",
+      "native_owned_bytes": 1448,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "fade-argument",
+      "native_owned_bytes": 1452,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "release-order",
+      "native_owned_bytes": 1452,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "buffer-result",
+      "native_owned_bytes": 1448,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": false
+    },
+    {
+      "model": "buffer-sdk",
+      "native_owned_bytes": 1452,
+      "scope_inputs": 2,
+      "reused_inputs": 0,
+      "parent_structural_exact": true
+    }
+  ],
+  "observer_corrections": [
+    "Baseline code-only1419 scope is superseded by complete1452 owned extent.",
+    "Baseline LoadBgm target was misrouted to43DB60; corrected retained-image observer uses43D950.",
+    "Private release-tail receipt contains unchanged branch-preload source after an earlier assertion prevented the intended edit; excluded as a distinct model.",
+    "Equal size did not imply a byte-neutral preload split: its two direct PreloadBgm sites differ from the prior single site."
+  ],
+  "new_sdk_candidates": {
+    "entries": [
+      {
+        "address": "0x44d3e0",
+        "size": 19,
+        "end": "0x44d3f2",
+        "code_sha256": "1ce48e475ba8467717b59bda09cfa9779d0ac07ed9f6f7c97a271f272519025f",
+        "local_branches": "all instruction starts",
+        "references": "none over every code byte",
+        "origin": "indeterminate",
+        "source_mapped": false,
+        "exact": false
+      },
+      {
+        "address": "0x44d400",
+        "size": 52,
+        "end": "0x44d433",
+        "code_sha256": "d705946114d6b8813a48eaab766dff44705f58284dc1f0cd3ccd4af0a5e38cd2",
+        "local_branches": "all instruction starts",
+        "references": "none over every code byte",
+        "origin": "indeterminate",
+        "source_mapped": false,
+        "exact": false
+      }
+    ],
+    "get3dbuffer_iid": {
+      "address": "0x0046747C",
+      "identity": "IID_IDirectSound3DBuffer",
+      "value": "279afa86-4981-11ce-a521-0020af0be560",
+      "evidence": "raw target bytes match pinned PlatformSDK dsound.h DEFINE_GUID"
+    }
+  },
+  "remaining_nonexact": {
+    "PreloadBgm": "369/369",
+    "LoadBgm": "304/298",
+    "Initialize": "754/786",
+    "LoadSoundSample": "684/684",
+    "WinMain": "1533/1389",
+    "GameWindowView::Render": "419/425"
+  },
+  "validation_scope": "Only new/affected complete byte comparisons; no host simulation, sanitizer, mutation campaign or historical full-cohort replay.",
+  "lightweight_ci": {
+    "stages": 7,
+    "exit": 0
+  }
+}

@@ -6332,3 +6332,25 @@ reproduce the complete192-byte owner/all4 fields in two independent18-TU colds,
 with existing648-byte construction intact. Original exception-specification
 spelling/TU remains unknown. `/EHsc` controls are neutral and not adopted.
 See [the exact destruction proof](evidence/ending-teardown-20261028/README.md).
+
+## 2026-10-28 Complete Sound queue and streaming reset
+
+ProcessQueues43DDF0 owns1419 code bytes, one NOP and an eight-word32-byte switch table
+through43E39B:1452 owned bytes. The selector is opcode-1 bounded by7; all8
+entries target owned instruction starts and the dispatch is the only reference
+to any suffix byte. Four CC bytes precede the next worker. The old adjacent-table
+uncertainty is closed, increasing the authored denominator33.
+
+Actual WinMain/Render calls push the owner and the target returns RET4. Typed
+member __stdcall, live COM slot/count/global-volume reads, fade argument capture
+and separate GetBuffer early checks reproduce the whole1452-byte owner/all43
+fields. Missing CStreamingSound Reset44DAD0 is now complete213/all4 exact; the
+restored BOOL is a local output, not a formal parameter. Two independent2-TU
+colds and the real maintained15-input Main context reproduce both. Original
+source spelling/classes/TU/storage and runtime remain unknown. See
+[the complete proof](evidence/sound-queues-20261028/README.md).
+
+Additional raw utility bodies at44D3E0/19 and44D400/52 are now individually
+boundary-reviewed, origin indeterminate and unmapped. The latter uses the
+verified target IID_IDirectSound3DBuffer. No references to their code bytes are
+observed; SDK resemblance alone does not classify authorship or grant credit.

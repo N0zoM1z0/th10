@@ -1147,3 +1147,4 @@ AnmRenderManagerView::DrawLayer14,0x00448740,function
 AnmRenderManagerView::DrawLayer15,0x00448770,function
 AnmRenderManagerView::DrawLayer16,0x004487C0,function
 AnmRenderManagerView::DrawLayer19,0x00448810,function
+CStreamingSound::Reset,0x0044DAD0,function

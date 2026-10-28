@@ -173,6 +173,7 @@ public:
         CWaveFile *waveFile, DWORD notifySize);
     virtual ~CStreamingSound();
     HRESULT InitSoundBuffers();
+    HRESULT Reset();
     HRESULT HandleWaveStreamNotification(BOOL loopedPlay);
 };
 
@@ -687,6 +688,31 @@ HRESULT CStreamingSound::InitSoundBuffers()
         delete[] notifications;
     }
     return S_OK;
+}
+
+// Target 0x0044DAD0: reset the streaming counters, restore/refill if needed,
+// rewind the wave and seek the primary buffer. The incoming receiver is private.
+HRESULT CStreamingSound::Reset()
+{
+    HRESULT result;
+    if (m_apDSBuffer[0] == NULL || m_pWaveFile == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    m_dwLastPlayPos = 0;
+    m_dwPlayProgress = 0;
+    m_dwNextWriteOffset = 0;
+    m_bFillNextNotificationWithSilence = FALSE;
+
+    BOOL restored;
+    if (FAILED(result = RestoreBuffer(m_apDSBuffer[0], &restored)))
+        return result;
+    if (restored)
+    {
+        if (FAILED(result = FillBufferWithSound(m_apDSBuffer[0], FALSE)))
+            return result;
+    }
+    m_pWaveFile->ResetFile(false);
+    return m_apDSBuffer[0]->SetCurrentPosition(0);
 }
 
 // Target 0x0044D850. First cursor query and Unlock results are unchecked;

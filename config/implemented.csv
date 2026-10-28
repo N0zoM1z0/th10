@@ -1146,3 +1146,4 @@ AnmRenderManagerView::DrawLayer14
 AnmRenderManagerView::DrawLayer15
 AnmRenderManagerView::DrawLayer16
 AnmRenderManagerView::DrawLayer19
+CStreamingSound::Reset

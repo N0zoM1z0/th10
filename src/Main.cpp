@@ -3,6 +3,7 @@
 #include "MainViewport.hpp"
 #include "FileSystem.hpp"
 #include "Midi.hpp"
+#include "Sound.hpp"
 
 #include <shlobj.h>
 #include <direct.h>
@@ -109,7 +110,6 @@ __declspec(noinline) void MainReleaseAnmSurfaces(AnmRenderManagerView *manager)
 extern void MainServiceAnmScreenshots(AnmRenderManagerView *manager);
 int MainTakeScreenshot(MainSupervisorView *supervisor, const char *path);
 extern void MainStartSoundThread(unsigned char *soundOwner, HWND window);
-extern int MainProcessSoundQueues(unsigned char *soundOwner);
 extern void MainRequestSoundThreadStop(unsigned char *soundOwner);
 extern int MainJoinSoundThread(unsigned char *soundOwner);
 extern int MainReleaseSound(unsigned char *soundOwner);
@@ -433,7 +433,7 @@ releaseGame:
         MainDestroyCallbackOwner(g_MainCallbackOwner);
         g_MainCallbackOwner = NULL;
     }
-    while (MainProcessSoundQueues(g_MainSoundOwner) != 0)
+    while (reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->ProcessQueues() != 0)
         ;
 
 stop:
@@ -652,7 +652,7 @@ int __stdcall GameWindowView::Render(GameWindowView *window)
     g_MainSupervisorView.viewportConfigured = 1;
 
     calcResult = MainRunCalcChain(g_MainCallbackOwner);
-    MainProcessSoundQueues(g_MainSoundOwner);
+    reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->ProcessQueues();
     if (calcResult == 0)
     {
         MainStopReplayScan();

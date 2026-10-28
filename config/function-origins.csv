@@ -1267,6 +1267,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044D110,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D300,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D370,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0044D3E0,unknown,ZWave,indeterminate,unknown,sound-sdk-gap-target-review-2026-10-28
+0x0044D400,unknown,ZWave,indeterminate,unknown,sound-sdk-gap-target-review-2026-10-28
 0x0044D440,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D4E0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D550,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17

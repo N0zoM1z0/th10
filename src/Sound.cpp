@@ -119,7 +119,9 @@ public:
 
     LPDIRECTSOUNDBUFFER GetBuffer(DWORD index)
     {
-        if (soundBuffers == NULL || index >= bufferCount)
+        if (soundBuffers == NULL)
+            return NULL;
+        if (index >= bufferCount)
             return NULL;
         return soundBuffers[index];
     }
@@ -203,6 +205,14 @@ struct SoundCueMetadata
     int unknown004;
 };
 extern SoundCueMetadata g_SoundCueMetadata[];
+
+// Evaluate the fade argument before testing the current global BGM slot.
+static void FadeCurrentBgm(float seconds)
+{
+    CSound *sound = reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->bgm;
+    if (sound != NULL)
+        sound->FadeOut(seconds);
+}
 
 typedef char SoundPlayerViewSizeIs52D0[
     (sizeof(SoundPlayerView) == 0x52d0) ? 1 : -1];
@@ -703,7 +713,7 @@ int SoundPlayerView::LoadBgm(int index)
     return 0;
 }
 
-int SoundPlayerView::ProcessQueues()
+int __stdcall SoundPlayerView::ProcessQueues()
 {
     if (manager == NULL)
         return 0;
@@ -711,9 +721,14 @@ int SoundPlayerView::ProcessQueues()
     SoundPlayerCommand *command = commandQueue;
 
 process_command:
-    bool processNext = false;
+    int processNext = 0;
     switch (command->opcode)
     {
+    case SOUND_COMMAND_SET_BGM_VOLUME:
+        if (bgm != NULL)
+            bgm->SetVolume(bgmVolume);
+        goto remove_command;
+
     case SOUND_COMMAND_PRELOAD_BGM:
         if ((g_MainSupervisorView.options & 0x10) != 0)
         {
@@ -723,10 +738,16 @@ process_command:
                 break;
             }
             StopBgm();
+            PreloadBgm(command->argument, command->path);
+            processNext = 1;
+            goto remove_command;
         }
-        PreloadBgm(command->argument, command->path);
-        processNext = true;
-        goto remove_command;
+        else
+        {
+            PreloadBgm(command->argument, command->path);
+            processNext = 1;
+            goto remove_command;
+        }
 
     case SOUND_COMMAND_LOAD_BGM:
         if ((g_MainSupervisorView.options & 0x10) != 0 &&
@@ -796,16 +817,6 @@ process_command:
         ++command->step;
         break;
 
-    case SOUND_COMMAND_STOP_BGM:
-        if (bgm == NULL)
-            goto remove_command;
-        if (command->step == 0)
-            bgm->Stop();
-        else if (command->step == 1)
-            goto remove_command;
-        ++command->step;
-        break;
-
     case SOUND_COMMAND_RELEASE_BGM:
         if (bgm == NULL)
             goto remove_command;
@@ -837,16 +848,25 @@ process_command:
                 delete bgm;
                 bgm = NULL;
             }
+            bgm = NULL;
         }
         else if (command->step == 10)
             goto remove_command;
         ++command->step;
         break;
 
+    case SOUND_COMMAND_STOP_BGM:
+        if (bgm == NULL)
+            goto remove_command;
+        if (command->step == 0)
+            bgm->Stop();
+        else if (command->step == 1)
+            goto remove_command;
+        ++command->step;
+        break;
+
     case SOUND_COMMAND_FADE_BGM:
-        if (reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->bgm != NULL)
-            reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->bgm->FadeOut(
-                static_cast<float>(command->argument));
+        FadeCurrentBgm(static_cast<float>(command->argument));
         goto remove_command;
 
     case SOUND_COMMAND_PAUSE_BGM:
@@ -867,11 +887,6 @@ process_command:
             if (bgm != NULL)
                 bgm->Unpause();
         }
-        goto remove_command;
-
-    case SOUND_COMMAND_SET_BGM_VOLUME:
-        if (bgm != NULL)
-            bgm->SetVolume(bgmVolume);
         goto remove_command;
 
     default:
@@ -897,9 +912,8 @@ process_command:
         if (soundIndex < 0)
             break;
 
-        int count = soundQueueRequestCounts[i];
         soundQueue[i] = -1;
-        if (count < 0)
+        if (soundQueueRequestCounts[i] < 0)
         {
             if (duplicateSoundBuffers[soundIndex] != NULL)
                 duplicateSoundBuffers[soundIndex]->Stop();
@@ -908,31 +922,29 @@ process_command:
         }
 
         int pan = 0;
-        for (int j = 0; j < count; ++j)
+        for (int j = 0; j < soundQueueRequestCounts[i]; ++j)
             pan += soundQueuePanData[i][j];
-        pan /= count;
+        pan /= soundQueueRequestCounts[i];
         soundQueueRequestCounts[i] = 0;
 
-        LPDIRECTSOUNDBUFFER buffer = duplicateSoundBuffers[soundIndex];
-        if (buffer == NULL)
+        if (duplicateSoundBuffers[soundIndex] == NULL)
             continue;
 
-        buffer->Stop();
-        buffer->SetCurrentPosition(0);
-        buffer->SetPan(pan);
+        duplicateSoundBuffers[soundIndex]->Stop();
+        duplicateSoundBuffers[soundIndex]->SetCurrentPosition(0);
+        duplicateSoundBuffers[soundIndex]->SetPan(pan);
 
-        const int volume = reinterpret_cast<SoundPlayerView *>(
-            g_MainSoundOwner)->sfxVolume;
-        if (volume == 0)
-            buffer->SetVolume(-10000);
-        else
+        if (reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->sfxVolume != 0)
         {
-            float remaining = 1.0f - static_cast<float>(volume) * 0.01f;
+            float remaining = 1.0f - static_cast<float>(
+                reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->sfxVolume) * 0.01f;
             float scale = 1.0f - remaining * remaining * remaining;
-            buffer->SetVolume(static_cast<int>(
+            duplicateSoundBuffers[soundIndex]->SetVolume(static_cast<int>(
                 (g_SoundCueMetadata[soundIndex].volume + 5000) * scale) - 5000);
         }
-        buffer->Play(0, 0, 0);
+        else
+            duplicateSoundBuffers[soundIndex]->SetVolume(-10000);
+        duplicateSoundBuffers[soundIndex]->Play(0, 0, 0);
     }
     return commandQueue[0].opcode;
 }

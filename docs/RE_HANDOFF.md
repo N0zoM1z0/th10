@@ -1,5 +1,31 @@
 # TH10 reconstruction handoff
 
+## Complete Sound queue exact — 2026-10-28
+
+[Sound queue and streaming reset](evidence/sound-queues-20261028/README.md)
+add **1665 authored exact bytes /two complete owners**: ProcessQueues1452/all43
+and Reset213/all4. Two independent final-source2-TU `/GL /GS /EHsc` colds pass
+2192/all60 including two existing guards. The real Main15-input context also
+passes both plus five old guards:2582/all82; three inputs recompiled,12 retained.
+No full historical cohort or host/sanitizer/mutation test was run.
+
+Source recovery removes the unimplemented Main queue seam and false captures
+of COM slots, counts and global volume; fixes fade-argument capture and branch
+shape; supplies real streaming Reset; and restores separate SDK-family getter
+checks. A standard __stdcall member expresses the observed stack/RET4 interface.
+Original classes/spelling/TU and runtime remain unknown.
+
+Complete ownership includes the old unresolved33-byte NOP/table suffix, so the
+authored denominator increases33. Authored exact is **80,328/275,467 bytes,
+438 owners**; authored source647. Two additional19/52-byte SDK-family entries
+are reviewed but remain indeterminate/unmapped/nonexact. Totals:1807 candidates,
+1149 mappings,1298 exact. Source/ownership and codegen credit remain separate.
+
+Next investigate a concrete remaining Sound initialization/sample/format flow
+or another substantial owner. Preload369/369, LoadBgm304/298, Initialize754/786,
+sample loader684/684, WinMain1533/1389 and Render419/425 remain nonexact; no prefix
+or near-size credit. Preserve the parked register-only models.
+
 ## Ending text destruction exact — 2026-10-28
 
 [Complete Ending text destruction](evidence/ending-teardown-20261028/README.md)

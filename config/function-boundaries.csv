@@ -1028,7 +1028,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043DB60,0x0043DC86,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043DC90,0x0043DD0A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=93; no overlap or external interior branch
 0x0043DD10,0x0043DDA4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=14; no overlap or external interior branch
-0x0043DDF0,0x0043E37A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
+0x0043DDF0,0x0043E39B,reviewed,high,sound-queues-owned-table-2026-10-28,1419 code bytes + one NOP + eight complete DIR32 switch words. DEC/CMP7 bounds the selector; every destination is an internal instruction start. Read-only xrefs over all33 suffix bytes find only the owner indexed dispatch. Four CC bytes precede independent worker43E3A0.
 0x0043E3A0,0x0043E45C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=2; no overlap or external interior branch
 0x0043E460,0x0043E4C7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=20; no overlap or external interior branch
 0x0043E520,0x0043E526,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
@@ -1267,6 +1267,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x0044D110,0x0044D2F2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
 0x0044D300,0x0044D361,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x0044D370,0x0044D3D6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0044D3E0,0x0044D3F2,reviewed,high,sound-sdk-gap-target-review-2026-10-28,"Complete dense target decode; entry and terminal RET are CC-delimited, all local branches target instruction starts, no references to any code byte in read-only Ghidra. Disjoint from GetFreeBuffer and Play; no origin or exactness promotion."
+0x0044D400,0x0044D433,reviewed,high,sound-sdk-gap-target-review-2026-10-28,"Complete dense target decode; entry and terminal RET are CC-delimited, all local branches target instruction starts, no references to any code byte in read-only Ghidra. Disjoint from GetFreeBuffer and Play; no origin or exactness promotion."
 0x0044D440,0x0044D4D0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0044D4E0,0x0044D549,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
 0x0044D550,0x0044D5A1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
