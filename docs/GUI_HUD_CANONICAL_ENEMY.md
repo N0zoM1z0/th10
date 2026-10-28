@@ -52,7 +52,7 @@ reload. Do not add volatile, aliasing casts, ABI controls, or forced reloads.
 
 ## Enemy migration: validation and regression boundary
 
-[`test-gui-boss-gauge-phase.py`](../scripts/test-gui-boss-gauge-phase.py) and [`test-gui-hud-lifetimes.py`](../scripts/test-gui-hud-lifetimes.py)
+`test-gui-boss-gauge-phase.py` (`e1c4075:scripts/test-gui-boss-gauge-phase.py`, retired host tooling) and `test-gui-hud-lifetimes.py` (`e1c4075:scripts/test-gui-hud-lifetimes.py`, retired host tooling)
 use canonical nested fields and retain callback-replacement and retained-boss
 negative mutations. Obsolete declarations are removed from
 `scripts/fixtures/gui-message-run.cpp` and `scripts/fixtures/gui-message-lifecycle.cpp`.

@@ -68,7 +68,7 @@ show why annotations alone and separate position temporaries do not close the
 core. Exact source deltas and bounded failure receipts remain in private
 working evidence.
 
-The maintained [host projection](../../../scripts/test-enemy-item-scatter.py)
+The maintained host projection (`e1c4075:scripts/test-enemy-item-scatter.py`, retired host tooling)
 passes228 scenarios under address/undefined/leak sanitizers and rejects four
 mutants: duplicated radius correction, duplicated angle correction, clearing
 eleven words and wrong manager. It extracts the complete core/vector/wrap,

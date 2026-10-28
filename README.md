@@ -60,7 +60,8 @@ scripts/repo-python scripts/progress.py
 scripts/repo-python scripts/ci.py
 ```
 
-Default CI runs seven lightweight repository checks and no host C++ fixtures.
+Default CI runs seven lightweight repository checks. The host simulation suites,
+fixtures and mutation runners have been removed; older reports are historical.
 Exact reconstruction uses complete native byte comparisons and cold replays of
 explicitly selected affected units. Allocation-failure/null/exception host
 scenarios, sanitizer/leak sweeps and mutation campaigns are not checkpoint

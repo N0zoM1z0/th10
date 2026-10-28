@@ -92,45 +92,12 @@ Canonical replay still owns exactness. A native factory diagnostic should report
 all linked extents and actual global/REL32 targets, including whether cleanup
 and exporter survived optimization, rather than reporting similarity alone.
 
-## Regression gates
+## Validation
 
-Run existing test-hint-load.py, test-hint-export.py, test-hint-frame.py, and
-test-hint-frame-arithmetic.py against this tree, at both ordinary and optimized
-host configurations supported by their runners. Preserve every prior mutation
-control. The fixture changes must use actual constructor extraction and correct
-object lifetimes; copying a temporary owner leaves stale sentinel self-pointers
-and is not an acceptable reset strategy.
-
-Run the lifecycle runner's unchanged baseline and every strict intended-CHECK
-mutation. Compile failure, sanitizer output, timeout, signal, or the wrong CHECK
-must be reported as a harness failure, never as a mutation kill. Test dependency
-substitutions remain confined to isolated fixtures, including the explicit
-failed-initializer seam needed to exercise the otherwise unreachable factory
-failure arm. No seam may become a production or diagnostic contribution.
-
-Affected wider regressions: GameManagerInitialize startup factory sequencing and
-GameManager reset chain flags; Chain registration/removal units using the shared
-Main lock aliases; ANM FindVm/MarkVmForDeletion units. Their unchanged source
-should be exercised with the corrected Hint declaration and updated fixture
-bindings. Run any source provenance/lint gate that validates GameManager's
-shared-global declarations. Do not run unrelated compiler-option sweeps.
-
-## Local validation of this proposal
-
-The new lifecycle baseline and all65 intended-CHECK controls pass at O0/O1 with
-ASan/UBSan. Independent review also passes all65 with Python -O and C++ O2 under
-ASan/UBSan. The source integration/null-guard audit is reported separately.
-The original22 loader,12 exporter,49 frame controls all pass at O0/O2, preserving
-their prior sanitizer settings and failure classifiers. The unchanged arithmetic
-model passes normal Python and Python -O. A separate32-bit host syntax-only
-check passes the actual header's layout assertions with calling-convention
-macros erased; this establishes no native calling-convention evidence.
-
-After generating the CRLF-preserving patch against byte-identical7c845941
-baselines, git apply --check and application succeeded, all12 files matched
-proposal bytes, and all four suite baselines passed again from the applied tree.
-No target runtime or exactness claim follows from these checks.
-
+Use complete native byte comparisons for changed owners and directly affected
+exact interfaces. The former host lifecycle, failure-injection, sanitizer and
+mutation suites were retired on 2026-10-28. Their historical reports are
+recoverable at `e1c4075`; they impose no current checkpoint requirements.
 
 ## Native integration and canonical migration (2026-10-16)
 

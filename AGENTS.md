@@ -61,7 +61,8 @@ call is needed for a documentation/test-maintenance batch.
   is appropriate only when it resolves a specific current exact mismatch.
 - Comparator self-tests are needed when that comparator changes, limited to the
   affected mechanism. EH address/metadata binding checks are exactness checks;
-  they do not require executing failure scenarios.
+  they do not require executing failure scenarios. Historical test reports and
+  archived commands are evidence, not current checkpoint requirements.
 
 ## Evidence and later phases
 

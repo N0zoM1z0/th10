@@ -167,8 +167,8 @@ initialization, frame-scaled motion and attachment, phase boundaries/resets/
 fallthrough/fractional interpolation, retirement, collision taper and gates,
 box arguments, signed graze modulo, sprite axes/flags and live script/draw
 state. Compiler errors, sanitizers and unrelated CHECKs do not count as mutant
-kills. [Runner](../../../scripts/test-laser-type1.py),
-[fixture](../../../scripts/fixtures/laser-type1.cpp).
+kills. Runner (`e1c4075:scripts/test-laser-type1.py`, retired host tooling),
+fixture (`e1c4075:scripts/fixtures/laser-type1.cpp`, retired host tooling).
 
 These checks do not establish original C++ union/object lifetime, native x87
 precision/exceptions, invalid indices, unbounded arithmetic, allocation/assets,

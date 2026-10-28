@@ -94,8 +94,8 @@ Twenty-five strict named-CHECK mutants pass ASan/UBSan/leak checks. They cover s
 loop boundaries, live length/color/resource/Item owner, mode/bounds/NaN rules,
 script/world coordinates, kind/velocity, retirement order/state and return.
 The runner rejects compile errors, sanitizer failures and unrelated CHECKs as
-mutation evidence. See [the test](../../../scripts/test-laser-clear.py) and
-[fixture](../../../scripts/fixtures/laser-clear.cpp). Assets, allocation failure,
+mutation evidence. See the test (`e1c4075:scripts/test-laser-clear.py`, retired host tooling) and
+fixture (`e1c4075:scripts/fixtures/laser-clear.cpp`, retired host tooling). Assets, allocation failure,
 native x87 precision/exceptions, invalid/unbounded counters, original object
 lifetimes and game runtime reachability remain open.
 

@@ -72,7 +72,7 @@ home18->14 (161/162); and the complete pre-lifetime165-byte extent. Only the
 copied diagnostic image is mutated; the original executable remains read-only.
 The full165-byte PDB contribution cannot be cropped to claim162 bytes.
 
-The [maintained host projection](../../../scripts/test-enemy-finalize-death.py)
+The maintained host projection (`e1c4075:scripts/test-enemy-finalize-death.py`, retired host tooling)
 passes432 scenarios under address/undefined/leak sanitizers and rejects seven
 strict intended-assertion mutants. Mutable sound/effect/item/scatter sinks check
 receiver identity, field reloads, actual position/block aliases, unconditional

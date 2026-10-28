@@ -91,7 +91,7 @@ an ordinary-byte score. Only diagnostic image copies are mutated; the original
 target stays unchanged. Superseded215-byte controls and a duplicate private
 exact image are pruned; their source/producer/strict/guard receipts remain.
 
-The [maintained host projection](../../../scripts/test-enemy-circle-cancel.py)
+The maintained host projection (`e1c4075:scripts/test-enemy-circle-cancel.py`, retired host tooling)
 passes6480 scenarios and ten strict intended-assertion mutants under address,
 undefined and leak sanitizers. It preserves the complete member/value source,
 actual logical pointer identities and2000-row traversal. Finite boundary

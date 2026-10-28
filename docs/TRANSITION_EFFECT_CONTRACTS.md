@@ -21,22 +21,11 @@ This original proposal does not supply whole-product or runtime closure.
 - Game-manager partial declaration is identical to existing FrontEnd.cpp ResultGameManagerView. Consolidation into one shared header is an integration concern; this packet does not modify the existing owner.
 - Kind1 advances RNG four times, duplicating second half per axis; kind8 calls the canonical bounded RNG twice. The apparent kind1 defect is preserved.
 
-## Host test contract inventory
+## Validation
 
-Tests must compile actual proposed source bodies and canonical reused dependencies, not a parallel reference implementation. Test harness adaptation of 32-bit raw Chain allocation accesses to host pointer fields must be explicit and narrow. Scheduler, allocation observation, graphics device, and recursive lock instrumentation are labeled host seams.
-
-Required observations:
-1. All nine selectors, priorities, callback identities, node flags/arguments/deletion hook, and publication-before-parameter-write ordering; all seventeen zeroed words when applicable.
-2. Allocation failure: no object/registration; valid factory returns flags2 with initialized timer and exact payloads.
-3. Falling/rising alpha: finite positive/negative/truncating values, zero frames, terminal thresholds, startup abort, null GM, flags1/4 pause, unrelated flags continue.
-4. Dim: inclusive current<=frames, indefinite persistence, release timer reset, current8 active/current9 deleted, no invented startup/pause gate.
-5. Pulse: ARGB alpha source, masked RGB, repeat count/reset/tick ordering, return0 on finish/abort. Observe stale update pointer without dereferencing it; do not run fictional safe cleanup on a freed node.
-6. Kind1: tick before expiry, initial/final interpolation, duplicated-half RNG sequence, generation counts, choices0/1/2 and unchanged shake on expiry.
-7. Kind8: null GM and flags0x77 gates, attack/hold/decay thresholds, signed comparisons/unsigned decay conversion, two real bounded RNG calls, unchanged shake on terminal/paused paths.
-8. All five draw entries: exact rectangle/color, screen fade flush+viewport ordering and retained depth fields, dim screen's lack of reset, post-callback manager reload performed by canonical rectangle dependency when modeled.
-9. Return7: observed calc-dispatch protocol caches next before call, reacquires lock before deletion callback; recursive nested lock works, both nodes removed, effect deleted once, no current-node dereference afterward.
-10. Cleanup: separate lock/nesting cycles, chain reload between nodes, null-node branches; no pointer clearing; deletion callback null argument returns0.
-11. Strict mutation runner: exactly one intended replacement, successful compile, expected assertion identifier, nonzero assertion failure. Compilation errors/timeouts/unrelated failures are not successful kills.
+Use the complete native byte comparison for each affected owner. The former
+host scenarios, allocation-failure checks and mutation campaign were retired
+on 2026-10-28; their source and reports remain in Git history at `e1c4075`.
 
 ## Numeric and runtime boundaries
 
@@ -88,15 +77,3 @@ freed update-node address without dereferencing it if that address is absent.
 Address reuse can instead match a different newly allocated node. The proposal
 preserves this stale-identity hazard; it does not claim every later Cleanup is
 an immediate use-after-free, nor that repeated cleanup is generally safe.
-
-## Executed host evidence (2026-10-17)
-
-The frozen maintained baseline and ASan/UBSan run each passed14 scenarios and
-843 assertions. The serial strict run compiled all38 runtime mutants, each
-failing at exactly its expected assertion; one source-order control and one
-known-precision-gap observation control passed separately. The classifier
-requires exit86, empty stdout and exactly the expected assertion plus newline;
-noise, compile failure, timeout, signal or unrelated assertion is rejected.
-These are bounded host observations under the disclosed seams and numeric gap.
-No target/native execution or exactness credit is implied. The same baseline
-also passed after actual git application with repository CRLF attributes.

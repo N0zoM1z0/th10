@@ -82,7 +82,7 @@ toolchain, progress, documentation and whitespace checks also pass.
 
 ## Host evidence and limits
 
-[The source-extracted fixture](../../../scripts/test-laser-type1-clear.py)
+The source-extracted fixture (`e1c4075:scripts/test-laser-type1-clear.py`, retired host tooling)
 executes the actual Clear, allocator, registrar, node insertion and full Item
 Spawn bodies. The actual world creator closes unexercised non-kind8 branches
 of full Spawn. Polar math and script execution are explicit host roles; script

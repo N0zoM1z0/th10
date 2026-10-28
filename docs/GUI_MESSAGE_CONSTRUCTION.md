@@ -95,7 +95,7 @@ that maintained model; seeding backing storage does not establish a defined
 initialized subobject value. Member construction here leaves that representation
 unchanged. The retained minimal GCC14.2 -std=c++17 -O1 -Wall -Wextra probe warns
 of uninitialized flags and fails CHECK timer.constructor_flags with exit1.
-Its source is scripts/fixtures/gui-message-timer-construction-diagnostic.cpp;
+Its retired source is available at `e1c4075:scripts/fixtures/gui-message-timer-construction-diagnostic.cpp`;
 raw probe/log are retained as local handoff evidence outside this repository patch. This is a diagnostic failure of
 inherited construction coverage, never a strict mutation kill or proof for all
 compilers. No -fno-lifetime-dse or opaque/volatile workaround is used.
@@ -108,52 +108,11 @@ The bitfield hypothesis above and pinned reference SlotTimer audit do not resolv
 this maintained-model issue or prove original game-source UB. No timer rewrite
 is included.
 
-## Host evidence and seams
+## Retired host validation
 
-The constructor suite extracts the real member body, real EnemyKillAll and typed
-EnemyReadDialog. Its external dependencies are explicit test seams. Successful
-lookup/allocation domains, safe distinct owners, callback mutations and timer
-boundaries remain covered. Throw tests are a separate ownership check, retaining
-earlier external effects and requiring exactly one allocation release with no
-whole-message destructor or publication/global updates.
-
-The lifecycle suite copies actual GuiMessageVmView declaration but explicitly
-supplies a test-only record constructor seam. This preserves valid lifetimes
-for destructor testing without adding an unsupported production default ctor.
-That seam is counted and visible; lifecycle success is not real construction
-coverage. Runtime-tail's existing reduced fixture now exposes canonical GUI
-bossPositionVm.flags35C. Other independent reduced GUI fixture types do not
-justify a production default constructor.
-
-Strict behavioral mutations require successful compilation, exit1, empty stdout
-and the single exact assigned CHECK stderr line. Compiler failures, signals,
-crashes and unexpected checks are failures, not successful kills. Static source
-controls are separately labeled. Final exact commands/results and independent
-review disposition are in GUI_MESSAGE_CONSTRUCTION_REVIEW.md.
-
-## Explicit host dependency seams
-
-Out-of-line lifecycle stubs:
-
-- AnmVmView constructor/destructor
-- AnmLoadedView constructor
-- AnmRenderManagerView constructor/destructor
-- AsciiManagerView constructor/destructor and GetSize
-- GuiView destructor
-- GuiMessageVmView destructor, which only counts complete-object destructor entry
-- EnemyManagerView constructor/destructor
-- EnemyEclContextView constructor
-- EnemyBulletPatternView constructor
-- EnemyEclHostBaseView constructor/destructor and ECL virtual methods
-- EnemyFullObjectView constructor/destructor and ECL virtual methods
-
-Additional host seams:
-
-- AllocateVm, InitializeVm, AddVmVariant0, FindVm, EnemyCancelBulletRecord, and CreateVmAtWorldVariant0 record bounded effects and return distinct live objects.
-- Known EnemyEffectWaitNode virtual declarations use fixture definitions; HostLaser supplies the exercised ApplyClear override. No target concrete vtable or laser cancellation body is executed.
-- Global operator new/delete use malloc/free and observe one message allocation while armed. They do not perform constructor cleanup themselves: the language's ordinary-new exception behavior invokes deallocation. The complete-message destructor stub is not called for an uncompleted object.
-
-Every instantiated GuiView, AnmVmView, and message has a real host C++ lifetime. Live<T> placement-constructs complete declared objects, then destroys and frees them normally; all consumed fields are explicitly initialized after construction. Message objects are constructed with ordinary new. HostDialogFile has live int table entries and a live instruction-record subobject; caller offset reads are aligned and in bounds. No unsafe failed allocation or null FindVm case is run.
+The host constructor/lifecycle suites and their exception/mutation requirements
+have been removed. Historical seams and reports are recoverable at `47d9993`.
+Use complete native byte comparisons for current acceptance.
 
 ## Completed isolated native baseline and remaining gates
 
@@ -169,18 +128,9 @@ No retained member stores, inlining or schedule is manually forced to match.
 The tracked scripts/diagnose-gui-message-member-native.py preserves the exact
 fixed graph/profile/hash gates and refuses a nonempty output directory. Its
 promotion does not authorize a rerun or deletion of retained native artifacts.
-config/gui-message-producer-impact.json contains the complete90-unit/41-producer
-canonical replay selection. Scoped cold regressions and CI remain the integration
-gate; these docs do not pre-claim their success. Canonical profiles are unchanged.
-
-## Host alias qualification
-
-The constructor suite deliberately compiles with -fno-strict-aliasing. Genuine
-host object lifetimes do not establish general portable ISO C++ alias legality
-for the maintained view casts, including PlayerFloat3 storage passed through an
-AnmFloat3View pointer. These are separate claims. Host success is conditional on
-the disclosed compiler mode and seams; preserve target pointer identity rather
-than replacing those pointers with copies to conceal the unresolved alias model.
+config/gui-message-producer-impact.json records a historical90-unit/41-producer
+selection. Current checkpoints replay only changed exact owners and affected
+interfaces, followed by lightweight CI. Canonical profiles are unchanged.
 
 ## Integration verification (2026-10-17)
 

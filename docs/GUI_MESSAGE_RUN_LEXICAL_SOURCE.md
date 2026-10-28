@@ -30,10 +30,13 @@ Maintained downstream ANM, interrupt, score, music, timer, supervisor and stage-
 - Completion unlock stores precede early transition. Stage-six difficulty is selected after the initial score addition. Stage-six and stage-seven effects, mode exits and count publication remain distinct. Count accesses retain signed, capped memcpy operations on live bytes. Former helper returns become outer-case breaks reaching common advance.
 - Shared byte-record accessors, canonical scalar/storage contracts and downstream transition/scaled-audio implementations are unchanged.
 
-## Maintained validation
+## Validation
 
-The interpreter suite retains all 13 positive selections and all 28 strict mutations. Its static catalog fails closed on changed anchors and records actual driver/catalog hashes. Existing classifier negative controls and non-PIE sanitizer handling remain intact. Sanitized interpreter and actual constructor/factory–WAIT–END–destructor lifecycle tests pass under their documented host seams.
+The former host interpreter/lifecycle and mutation suites have been removed.
+Historical reports are recoverable at `e1c4075`. Current acceptance uses complete
+native comparisons under [the Oracle policy](ORACLES.md).
 
-The result-transition suite retains all 32 mutations and 12 classifier negatives. It now extracts the actual braced completion arm from Run into an explicitly host-only do/while wrapper. Both transition routes and inline count ordering execute; the whole Run walker and common advance/tick do not execute in that suite. The wrapper's boundary and hash are checked. See [result-transition contracts](RESULT_TRANSITION_CONTRACTS.md).
-
-These host results do not prove native calling convention, target storage aliases or generated-code equivalence. The earlier fixed graph used EAX/plain RET where the target uses a stack argument/RET 4. Keeping the stdcall declaration does not establish a repair. The transition effect's private ABI and downstream runtime boundaries remain unresolved. Any new native result requires separate complete-owner, selector, actual-caller and dependency review; none is claimed here.
+The earlier fixed graph used EAX/plain RET where the target uses a stack
+argument/RET 4. Keeping the stdcall declaration alone does not establish a
+repair. The transition effect's private ABI and runtime boundaries remain
+unresolved; no new native exactness is claimed here.

@@ -61,11 +61,12 @@ scripts/repo-python scripts/ci.py --only 'Validate internal linked destinations'
 ```
 
 The retained Oracle self-tests protect byte/field/owner acceptance, including
-EH address binding; they are not game failure-path tests. Historical host suites
-outside CI are optional reference tools, not checkpoint gates. Seven redundant
-construction/lifecycle suites and four fixtures were removed on 2026-10-28.
-Their earlier results remain historical observations, recoverable at commit
-`47d9993`; old evidence commands do not impose current requirements.
+EH address binding; they are not game failure-path tests. The remaining active
+host simulation suites, fixtures and mutation runners were removed on 2026-10-28.
+Their historical reports and commands are recoverable at `e1c4075`; the earlier
+construction/lifecycle suites are recoverable at `47d9993`. Retained arithmetic,
+layout and inventory diagnostics are optional tools for concrete mismatches.
+Archived evidence commands do not impose current requirements.
 
 A docs/test-maintenance batch needs no game rebuild, Ghidra call, cold replay,
 whole-build graph validation or unchanged progress regeneration. Run only the

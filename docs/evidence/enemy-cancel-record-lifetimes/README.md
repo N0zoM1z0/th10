@@ -69,7 +69,7 @@ Four controls reject: resource slot+4, a copied-native state3->2 byte, complete
 same-size reversed-store193/199, and complete200/199 extent. Only the copied
 diagnostic image is mutated; the original target remains unchanged.
 
-The [maintained host projection](../../../scripts/test-enemy-cancel-record.py)
+The maintained host projection (`e1c4075:scripts/test-enemy-cancel-record.py`, retired host tooling)
 passes288 scenarios under address/undefined/leak sanitizers and rejects eight
 strict intended-assertion mutants. Logical live Bullet/Timer/resource/position
 objects preserve actual pointer identities and source operations while mapping

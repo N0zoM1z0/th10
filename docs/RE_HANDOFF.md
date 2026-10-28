@@ -1,5 +1,25 @@
 # TH10 reconstruction handoff
 
+## Remaining host-suite retirement — 2026-10-28
+
+Removed 88 remaining host simulation suites, four host/mutation helper runners
+and 32 fixtures (21,368 lines), plus six obsolete host test guides and their
+review hash inventory. Retained all eleven explicitly selected Oracle self-tests,
+their static-owner fixture, native replay tools and focused arithmetic/layout/
+inventory diagnostics. No retained active script references a removed runner
+or fixture. Historical host source is recoverable at `e1c4075`; earlier deleted
+construction/lifecycle suites are recoverable at `47d9993`.
+
+Removed host reproduction commands, mandatory mutation/sanitizer matrices and
+blanket producer-cohort replay requirements from GUI, Hint, transition-effect
+and result-transition docs. Target/source facts and native evidence remain.
+AGENTS and the workflow make archived test commands historical evidence rather
+than current acceptance requirements. Default CI remains seven lightweight
+checks; game source, ledgers, exact totals and unrelated work are untouched.
+Validation: all seven lightweight CI checks and `git diff --check` pass in an
+isolated checkout containing only this cleanup. Retained script dependencies and links to retired tooling were reviewed; old
+host links now name their Git revision. No game build or host suite was run.
+
 ## Exact-only validation scope — 2026-10-28
 
 Operator direction: focus on exact reconstruction and remove unrelated tests

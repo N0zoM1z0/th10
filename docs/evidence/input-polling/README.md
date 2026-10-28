@@ -118,7 +118,7 @@ checks also pass; the predecessor helper-padding audit is rerun after CI.
 
 ## Host evidence
 
-[The test](../../../scripts/test-input-polling.py) runs all three complete
+The test (`e1c4075:scripts/test-input-polling.py`, retired host tooling) runs all three complete
 owners and both actual helper bodies. Scripted OS/COM roles exercise both
 keyboard mappings for every key/high-bit/toggle case, unsigned/signed strict
 axis boundaries, binding stride, 26/8 counters and wrap, edge publication,

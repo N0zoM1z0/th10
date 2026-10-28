@@ -79,54 +79,12 @@ or physical aliasing. Missing/inlined standalone Run or uncertain ownership is
 inconclusive. Compile/link/input/required-real-anchor failure remains failure.
 No equal-size or successful-build observation grants exactness.
 
-## Host CI and full local commands
+## Historical replay inventory
 
-CI adds only the two unsanitized positive baselines, serially. Drivers retain
-flock plus nice for host compiler resource use, and place generated inputs,
-logs and binaries under ignored build/. Full local verification commands are:
-
-```
-scripts/repo-python scripts/test-gui-message-run.py --root . --no-mutations --out build/host-tests/gui-message-run-ci
-scripts/repo-python scripts/test-gui-message-lifecycle.py --root . --no-mutations --out build/host-tests/gui-message-lifecycle-ci
-scripts/repo-python scripts/test-gui-message-run.py --root . --out build/host-tests/gui-message-run-mutants
-scripts/repo-python scripts/test-gui-message-run.py --root . --sanitize --no-mutations --out build/host-tests/gui-message-run-sanitized
-scripts/repo-python scripts/test-gui-message-lifecycle.py --root . --sanitize --out build/host-tests/gui-message-lifecycle-sanitized
-scripts/repo-python scripts/test-gui-message-constructor.py --root . --no-mutations
-scripts/repo-python scripts/test-gui-message-dependency-linkage.py --root .
-```
-
-The lifecycle driver's summary now reports `0 strict controls executed
-(--no-mutations)` for the CI baseline and `1 strict control accepted` for a
-successful full run. This is a reporting-only change, separate from sanitizer
-portability: no test, extraction, assertion or failure classifier changed.
-A fresh local baseline exits 0, records zero negative controls and accepts the
-positive lifecycle. The existing non-PIE flags remain intact.
-
-The new Run/lifecycle drivers use actual -O1 host commands; their sanitizer
-variants add fatal ASan+UBSan and host-only -fno-pie/-no-pie. LeakSanitizer is
-explicitly disabled. The existing constructor driver has its own disclosed
--fno-strict-aliasing scope. Neither host optimization mode, live-object fixtures
-nor sanitizer success proves general ISO alias legality, native layout, unchanged
-raw-integer timer default construction, original-language UB, runtime closure,
-leak freedom or byte exactness. Keep all dependency/lifetime seams in the existing
-test docs. Original failed PIE evidence is preserved separately; see
-GUI_MESSAGE_RUN_SANITIZER_PORTABILITY.md.
-
-## Conservative canonical replay selection
-
-config/gui-message-run-producer-impact.json selects 89 units / 40 producers
-(37 linked PE, 3 COFF). It binds the four changed source hashes and full canonical
-manifest; build settings remain solely in that manifest. The computation follows
-transitive quoted-include closure over the union of baseline and candidate graphs
-without pruning conditional includes, and tests every primary/support/normal
-support source. It expands to every canonical unit sharing an affected producer.
-No Gui.hpp consumer is excluded; no quoted include is unresolved or producer
-setting conflicts found. Unlike the previous constructor 90/41 set, Enemy.hpp is
-unchanged, so the independent EnemyMotion COFF producer is no longer affected.
-
-Serially replay each group's canonical unit names with existing settings and
-retain failure receipts. No replay or full CI success is asserted by this
-integration preparation; parent records those outcomes after execution.
+`config/gui-message-run-producer-impact.json` records the former conservative
+89-unit/40-producer selection. It is historical evidence, not a current replay
+requirement. Select changed exact owners and affected interfaces according to
+[the current workflow](RE_WORKFLOW.md). Host CI suites have been removed.
 
 ## Integration regression result (2026-10-17)
 
