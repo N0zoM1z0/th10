@@ -277,8 +277,8 @@ struct MainSupervisorView
     CRITICAL_SECTION criticalSections[7];       // +0x64C
     unsigned char criticalSectionLockCounts[7]; // +0x6F4
     unsigned char unknown6FB[0x055];
-    unsigned char cachedRenderState;            // +0x750
-    unsigned char unknown751[0x027];
+    unsigned int cachedFogEnabled;              // +0x750, full-word cache
+    unsigned char unknown754[0x024];
     double lastFrameDuration;                   // +0x778
 };
 
@@ -308,6 +308,9 @@ typedef char MainSupervisorCriticalSectionsAt64C[
      offsetof(MainSupervisorView, criticalSectionLockCounts) == 0x6f4) ? 1 : -1];
 typedef char MainSupervisorFrameDurationAt778[
     (offsetof(MainSupervisorView, lastFrameDuration) == 0x778) ? 1 : -1];
+typedef char MainSupervisorFogCacheAt750[
+    (offsetof(MainSupervisorView, cachedFogEnabled) == 0x750 &&
+     sizeof(((MainSupervisorView *)0)->cachedFogEnabled) == 4) ? 1 : -1];
 
 struct MainAllocationRegistryView
 {

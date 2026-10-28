@@ -1,4 +1,5 @@
 #include "StageScript.hpp"
+#include "MainViewport.hpp"
 #include <string.h>
 
 // Official D3DX9 array/translation contracts; the target import thunks are
@@ -179,13 +180,11 @@ int __stdcall StageDrawInstances(StageScriptView *stage, int layer)
     return 0;
 }
 
-// Target0x405300: ESI supervisor, EBX viewport index. Existing Main spelling
-// retains the logical index; an ordinary extern does not close its private ABI.
-void MainConfigureGameplayViewport(int viewportIndex);
+// Target0x405300: ESI supervisor, EBX viewport index. The shared declaration
+// keeps this selector distinct from the camera configurator at0x421480.
 struct MainSupervisorView;
 extern MainSupervisorView g_MainSupervisorView;
 // Target0x420CD0: EDI supervisor, clears the full-dword fog cache if necessary.
-void StageDisableSupervisorFog(MainSupervisorView *supervisor);
 // Target0x43C8B0: EBX draw priority plus five stack arguments, RET20. The
 // allocation/registration implementation remains external; the caller ignores
 // allocation failure and still proceeds with its transition state writes.
@@ -290,7 +289,7 @@ int __stdcall StageDrawEarly(StageScriptView *stage)
     {
         if (stage->scriptVms[0].loadedSprite != NULL)
         {
-            MainConfigureGameplayViewport(0);
+            MainConfigureGameplayViewport(&g_MainSupervisorView, 0);
             StageDisableSupervisorFog(&g_MainSupervisorView);
             g_AnmRenderManagerView->FlushVertexBuffer();
             StageSetRenderState(14, 0);

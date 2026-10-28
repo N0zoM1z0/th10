@@ -1,5 +1,33 @@
 # TH10 reconstruction handoff
 
+## Direct-local viewport dependency closure — 2026-10-28
+
+[Main viewport dependencies](evidence/stage-viewport-dependencies-20261028/README.md)
+add **113 authored exact bytes / two complete owners**: viewport selection60
+at0x405300 and fog disable53 at0x420CD0. Two independent final-source ten-TU
+StageCreate `/GL /GS` cold links pass113/all3 fields and five Stage guards397/all18.
+Canonical units are `main-select-viewport` and `main-disable-fog`. New maintained
+source is400 bytes/three owners, including nonexact camera290/287 at0x421480.
+Authored exact is now **77,444/275,055 bytes,429 owners**; authored source641.
+
+Fresh caller review separates Main Render's camera call from Stage's selector;
+the old shared declaration conflated different targets. Main Render also calls
+the real fog disable and writes a **DWORD**0xFF cache at supervisor+0x750.
+The old Main.hpp byte cache is corrected without changing later offsets.
+Complete Main Render remains422/425 in its actual11-TU graph; three Main guards
+390/all22 pass. Stage early1098/1099 and late933/929 remain nonexact. No parent,
+camera, production-TU, shared-storage or runtime promotion follows.
+
+Four host groups and four deliberate assertion-rejected source controls pass.
+`scripts/ci.py --only 'EXACT STAGE LABEL'` now supports repeatable explicit
+selection; omitted selection retains all119 stages in the original order plus
+the new camera test. Unknown labels fail closed. This checkpoint's **13 selected
+CI stages pass**; no full-CI pass is claimed. The old Main corridor reporter's
+10-versus14-marker failure reproduces on prechange source and remains unresolved.
+Next substantial route: camera FP temporaries/ANM camera callers or a new full
+representative; do not infer ordinary-byte distance from near-equal extents.
+Direct local tools, `gpt-6.1-sol:` commits; goal remains **active-incomplete**.
+
 ## Direct-local Stage draw checkpoint — 2026-10-28
 
 Current operator direction: call local tools directly, without Factory; use

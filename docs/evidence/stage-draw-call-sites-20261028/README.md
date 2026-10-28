@@ -1,5 +1,9 @@
 # Stage draw call sites and fog-word recovery, 2026-10-28
 
+Later same-day [dependency recovery](../stage-viewport-dependencies-20261028/README.md)
+resolves the viewport/fog declarations and corrects Main's full-word cache.
+The measurements and source hashes below describe the earlier checkpoint.
+
 The complete early (0x402850, 1099 bytes) and late (0x402CA0, 929 bytes)
 draw owners remain **nonexact**. This checkpoint recovers their target-backed
 call sites, temporary scopes and raw-word accesses. It adds **zero exact bytes**

@@ -1,5 +1,6 @@
 #include "GameErrorContext.hpp"
 #include "Main.hpp"
+#include "MainViewport.hpp"
 #include "FileSystem.hpp"
 #include "Midi.hpp"
 
@@ -90,8 +91,6 @@ extern int __stdcall MainRunCalcChain(void *owner);
 extern int __stdcall MainRunDrawChain(void *owner);
 extern void MainInitializeControllerCaps();
 extern void MainResetInput();
-extern void MainConfigureGameplayViewport(int viewportIndex);
-extern void MainPrepareDraw();
 extern void MainStopReplayScan();
 extern void __stdcall MainSetScreenColor(unsigned int color);
 // Target 0x00438A30 releases and clears the 32 primary surfaces.
@@ -646,7 +645,7 @@ int __stdcall GameWindowView::Render(GameWindowView *window)
     g_AnmRenderManagerView->FlushVertexBuffer();
     g_MainSupervisorView.activeViewport =
         &g_MainSupervisorView.gameplayViewport;
-    MainConfigureGameplayViewport(1);
+    MainConfigureCamera(g_MainSupervisorView.activeViewport);
     g_MainSupervisorView.d3dDevice->vtable->SetViewport(
         g_MainSupervisorView.d3dDevice,
         &g_MainSupervisorView.activeViewport->viewport);
@@ -676,8 +675,8 @@ int __stdcall GameWindowView::Render(GameWindowView *window)
             g_AnmRenderManagerView->vertexBuffer;
         g_AnmRenderManagerView->vertexBufferStart =
             g_AnmRenderManagerView->vertexBuffer;
-        g_MainSupervisorView.cachedRenderState = 0xff;
-        MainPrepareDraw();
+        g_MainSupervisorView.cachedFogEnabled = 0xff;
+        StageDisableSupervisorFog(&g_MainSupervisorView);
         MainRunDrawChain(g_MainCallbackOwner);
         g_AnmRenderManagerView->FlushVertexBuffer();
         g_MainSupervisorView.d3dDevice->vtable->SetTexture(

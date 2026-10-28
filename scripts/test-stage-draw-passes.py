@@ -70,8 +70,8 @@ static void onFlush(){if(mutateFog&&!trace.empty()&&trace.back()=="S23=4"){
 
 void StageConfigureCamera(StageCameraStateView*c){assert(c==&g_StagePublishedCamera);assert(g_AnmViewportOwner==reinterpret_cast<AnmViewportOwnerView*>(c));trace.push_back("camera");}
 struct MainSupervisorView {} g_MainSupervisorView;
-void MainConfigureGameplayViewport(int n){assert(n==0);trace.push_back("viewport0");}
-void StageDisableSupervisorFog(MainSupervisorView*p){assert(p==&g_MainSupervisorView);g_StageFogEnabled=0;trace.push_back("disable-fog");}
+void MainConfigureGameplayViewport(MainSupervisorView*p,int n){assert(p==&g_MainSupervisorView&&n==0);trace.push_back("viewport0");}
+long StageDisableSupervisorFog(MainSupervisorView*p){assert(p==&g_MainSupervisorView);g_StageFogEnabled=0;trace.push_back("disable-fog");return 0;}
 void *StageCreateTransitionEffect(int priority,int kind,int frames,unsigned a,unsigned b,unsigned c){assert(priority==15&&kind==3&&frames==30&&a==0&&b==0&&c==0);trace.push_back("effect-failed");return nullptr;}
 int StageDrawInstances(StageScriptView*s,int layer){assert(s==active);if(checkTint)assert(renderer.useMixColor==1&&renderer.mixColor.value==s->tint);trace.push_back("layer"+std::to_string(layer));++s->visibleObjectCount;s->drawCount+=2;return 0;}
 """+s+r"""

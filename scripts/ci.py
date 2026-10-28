@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import os
 from pathlib import Path
 import subprocess
@@ -11,6 +12,8 @@ import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SELECTED_LABELS: set[str] | None = None
+COMPLETED_LABELS: set[str] = set()
 
 
 def tracked(pattern: str) -> list[str]:
@@ -24,10 +27,13 @@ def tracked(pattern: str) -> list[str]:
 
 
 def run(label: str, command: list[str]) -> None:
+    if SELECTED_LABELS is not None and label not in SELECTED_LABELS:
+        return
     print(f"\n==> {label}", flush=True)
     environment = os.environ.copy()
     environment["PYTHONPYCACHEPREFIX"] = str(ROOT / "build" / "pycache")
     subprocess.run(command, cwd=ROOT, env=environment, check=True)
+    COMPLETED_LABELS.add(label)
 
 
 def validate_public_tree() -> None:
@@ -38,6 +44,13 @@ def validate_public_tree() -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--only", action="append", metavar="STAGE",
+                        help="run an exact stage label (repeatable); default: all stages")
+    args = parser.parse_args()
+    global SELECTED_LABELS
+    SELECTED_LABELS = set(args.only) if args.only is not None else None
+    COMPLETED_LABELS.clear()
     try:
         validate_public_tree()
         run("Compile workflow Python", [sys.executable, "-m", "py_compile", *tracked("scripts/*.py")])
@@ -101,6 +114,7 @@ def main() -> int:
         run("Validate stage script state and callback", [sys.executable, "scripts/test-stage-script-state.py"])
         run("Validate stage projected bounds and draw", [sys.executable, "scripts/test-stage-draw.py"])
         run("Validate stage camera setup", [sys.executable, "scripts/test-stage-camera.py"])
+        run("Validate Main camera and viewport contracts", [sys.executable, "scripts/test-main-viewport.py"])
         run("Validate ASCII viewport transitions", [sys.executable, "scripts/test-ascii-viewport.py", "--sanitize"])
         run("Validate ASCII glyph paths", [sys.executable, "scripts/test-ascii-glyphs.py", "--sanitize"])
         run("Validate stage draw passes", [sys.executable, "scripts/test-stage-draw-passes.py"])
@@ -178,10 +192,17 @@ def main() -> int:
         run("Validate open whole-build graph", [sys.executable, "scripts/build.py", "--check"])
         run("Check generated progress", [sys.executable, "scripts/progress.py", "--check"])
         run("Check whitespace", ["git", "diff", "--check"])
+        if SELECTED_LABELS is not None:
+            missing = SELECTED_LABELS - COMPLETED_LABELS
+            if missing:
+                raise ValueError(f"unknown or uncompleted CI stage(s): {sorted(missing)}")
     except (OSError, ValueError, subprocess.CalledProcessError) as exc:
         print(f"error: CI validation failed: {exc}", file=sys.stderr)
         return 1
-    print("\nTH10 target-independent checks passed")
+    if SELECTED_LABELS is None:
+        print("\nTH10 target-independent checks passed")
+    else:
+        print(f"\nTH10 focused checks passed ({len(COMPLETED_LABELS)} stages)")
     return 0
 
 

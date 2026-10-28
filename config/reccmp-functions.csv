@@ -1124,3 +1124,6 @@ EnemyLaserManagerStorageView::Initialize,0x0041C120,function
 GameCleanupLinked41C1C0,0x0041C1C0,function
 GameCreateOwner41C290,0x0041C290,function
 EnemyPrepareProjection,0x00401D20,function
+MainConfigureGameplayViewport,0x00405300,function
+StageDisableSupervisorFog,0x00420CD0,function
+MainConfigureCamera,0x00421480,function

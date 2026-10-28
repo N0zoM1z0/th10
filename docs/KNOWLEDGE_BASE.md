@@ -6189,3 +6189,39 @@ through supervisor+8, then stores the index to+0x388. Existing resource-attachme
 ledger prose is unsupported.0x420CD0/53 reads/clears a DWORD at supervisor+0x750,
 flushes, and sets render state28 to0; Main.hpp currently exposes a byte there.
 Shared-owner type/width and private-caller closure require further review.
+
+## 2026-10-28 Main viewport selector, camera and fog cache
+
+[The direct-local dependency packet](evidence/stage-viewport-dependencies-20261028/README.md)
+closes113 authored exact bytes/two complete owners in two frozen-source cold
+StageCreate links: selector0x405300/60/all1 field and fog disable0x420CD0/53/all2.
+The camera0x421480/287 is maintained source only, with first294 and corrected290
+native extents; its complete target FP scheduling remains unreproduced.
+Five existing Stage guards397/all18 pass in both independent final images.
+
+Main Render0x4393FF calls the camera withEDI=0x491E94; Stage0x402AEC calls the
+selector withESI supervisor/EBX index. A single old declaration conflated them.
+Main0x4394C2 writes DWORD0xFF at0x492378 and0x4394CC calls the same fog-disable
+helper as Stage. Thus the old Main.hpp byte cache was incorrect: both invalidation
+and helper test/clear use a full DWORD at supervisor+0x750. The following0x778
+member retains its offset. Fog's zero branch returns0; nonzero returns SetRenderState's
+result. A natural long-return model reproduces53 bytes; original return spelling,
+production TU, initialized data ownership and runtime stay unknown.
+
+The selector chooses supervisor+0x154+index*0x118, publishes+0x384, configures the
+camera, then reloads the active pointer/device for SetViewport and stores the
+index at+0x388. The screen camera uses unsigned dimensions, eye/at centered on
+positive half-width/height, up(0,-1,0), eyeZ=half-height/tan(pi/20), FOV pi/10,
+near1/far10000, both real matrix imports, transform states2/3 and post-call
+renderer reload. Six camera call sites were freshly observed; four ANM sites
+are outside this source change. Source object layout views do not allocate or
+establish the original storage/lifetime.
+
+Complete Stage parents1098/1099 and933/929 and Main Render422/425 remain
+nonexact. Main's separate actual eleven-TU graph preserves Present/release/service
+390 bytes/all22 fields. Host checks plus four intended assertion failures cover
+unsigned width, full-word high-bit cache, HRESULT result and active-pointer reload.
+All thirteen selected CI stages pass; no full-suite or native-runtime claim.
+The opt-in CI selector preserves the full default schedule and rejects unknown
+labels; default collection control is not a full-CI pass. The old Main corridor
+marker-order check independently fails on prechange source as well.

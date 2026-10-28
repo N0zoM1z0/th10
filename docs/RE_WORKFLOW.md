@@ -144,6 +144,10 @@ direct-local-only/no-subagent instructions do not govern this session.
    actual completed validation scope and any cancelled broader checks. Then
    regenerate progress, update the handoff and per-game knowledge, inspect the
    final diff, and commit one coherent local checkpoint.
+   `scripts/ci.py --only 'EXACT STAGE LABEL'` can select affected host/workflow
+   stages (repeatable); unknown labels fail. With no selector all stages run.
+   Report selected CI as focused coverage, not a full-suite pass or a substitute
+   for the required native exact comparisons.
 
 ## Product and semantic gates
 
