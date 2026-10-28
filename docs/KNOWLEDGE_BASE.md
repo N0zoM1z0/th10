@@ -6160,3 +6160,32 @@ reproduce its complete PDB-owned body, including the sole `REL32` call to the
 different callee: neither gets collateral credit. This adds 60 authored exact
 bytes/one mapped owner, without whole-image or runtime claims. See
 [full evidence](evidence/enemy-prepare-projection-20261026/README.md).
+
+## 2026-10-28 Stage draw call-site and raw fog-word evidence
+
+Target-local decode and direct local Ghidra six-sample attestation support the
+[complete Stage draw recovery packet](evidence/stage-draw-call-sites-20261028/README.md).
+Early0x402850 owns1099 bytes; late0x402CA0 owns929. Separate branch-local clear
+rectangles restore early's0x20 frame. Eight early and four late instance-render
+calls replace source loops. Both parents contain actual fog setters34/36/37;
+the old StagePublishFog source boundary incorrectly outlined this sequence.
+Alpha is accessed as a byte at stage+0x1EEB. Fog start/end are raw DWORD captures
+before their individual Flush calls, not numeric float conversions. A by-value
+float/union source model spills the captured argument; a representation copy
+from the original member restores target-like integer-register capture.
+
+Five serial nine-TU /GL /GS cold images distinguish each model. Final complete
+sizes1080/1099 and933/929 remain structural rejections, with zero new exact or
+source-present credit. All five images retain the same397 exact guard bytes /
+18 fields. Host raw-bit and Flush-mutation witnesses plus two assertion-rejected
+negative controls verify only synthetic source contracts, not D3D/game runtime.
+The late four-byte extent excess is not a four-byte mismatch score: its pointer
+store and four cache/vtable scheduling sites still differ.
+
+A separate fresh raw target read corrects a dependency lead, without admitting
+source or exactness:0x405300/60 uses ESI supervisor and EBX index, selects
+supervisor+0x154+index*0x118, publishes+0x384, calls0x421480, sets the viewport
+through supervisor+8, then stores the index to+0x388. Existing resource-attachment
+ledger prose is unsupported.0x420CD0/53 reads/clears a DWORD at supervisor+0x750,
+flushes, and sets render state28 to0; Main.hpp currently exposes a byte there.
+Shared-owner type/width and private-caller closure require further review.

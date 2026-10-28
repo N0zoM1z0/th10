@@ -1,4 +1,5 @@
 #include "StageScript.hpp"
+#include <string.h>
 
 // Official D3DX9 array/translation contracts; the target import thunks are
 // 0x452188 and 0x452182 respectively. No host projection substitute is used.
@@ -212,17 +213,13 @@ static void StageInstallPublishedCamera()
     g_Direct3DDevice->vtable->SetViewport(g_Direct3DDevice, &g_AnmViewportOwner->viewport);
     g_StageViewportConfigured = 0;
 }
-static unsigned int StageFloatBits(float value)
+// Render-state arguments carry the member's raw DWORD, including NaN payloads.
+// The target captures that word before Flush; it performs no float operation.
+static unsigned int StageFloatBits(const float &value)
 {
-    union { float value; unsigned int bits; } converted;
-    converted.value = value;
-    return converted.bits;
-}
-static void StagePublishFog(StageScriptView *stage)
-{
-    StageSetRenderState(34, stage->camera.fog.color);
-    StageSetRenderState(36, StageFloatBits(stage->camera.fog.start));
-    StageSetRenderState(37, StageFloatBits(stage->camera.fog.end));
+    unsigned int bits;
+    memcpy(&bits, &value, sizeof(bits));
+    return bits;
 }
 static void StageRestoreMixColor(StageScriptView *stage)
 {
@@ -251,14 +248,21 @@ int __stdcall StageDrawEarly(StageScriptView *stage)
         StageInstallPublishedCamera();
         StageSetRenderState(14, 1);
         StageSetRenderState(23, 4);
-        StagePublishFog(stage);
+        StageSetRenderState(34, stage->camera.fog.color);
+        StageSetRenderState(36, StageFloatBits(stage->camera.fog.start));
+        StageSetRenderState(37, StageFloatBits(stage->camera.fog.end));
         g_Direct3DDevice->vtable->Clear(g_Direct3DDevice, 0, NULL, 2, 0, 1.0f, 0);
-        D3d9ClearRectView rectangle = {32, 16, 416, 464};
         if ((stage->flags & 4) != 0 && stage->frame < 34)
+        {
+            D3d9ClearRectView rectangle = {32, 16, 416, 464};
             g_Direct3DDevice->vtable->Clear(g_Direct3DDevice, 1, &rectangle, 1, 0, 1.0f, 0);
+        }
         else
+        {
+            D3d9ClearRectView rectangle = {32, 16, 416, 464};
             g_Direct3DDevice->vtable->Clear(g_Direct3DDevice, 1, &rectangle, 1,
                 stage->camera.fog.color & 0xffffff, 1.0f, 0);
+        }
     }
     if ((stage->flags & 4) != 0)
     {
@@ -270,11 +274,11 @@ int __stdcall StageDrawEarly(StageScriptView *stage)
         }
         else
         {
-            stage->tint &= 0x00ffffff;
+            reinterpret_cast<unsigned char *>(&stage->tint)[3] = 0;
             stage->flags &= ~1u;
         }
     }
-    if ((stage->tint >> 24) != 0)
+    if (reinterpret_cast<unsigned char *>(&stage->tint)[3] != 0)
     {
         g_AnmRenderManagerView->useMixColor = 1;
         g_AnmRenderManagerView->mixColor.value = stage->tint;
@@ -297,8 +301,14 @@ int __stdcall StageDrawEarly(StageScriptView *stage)
             StageInstallPublishedCamera();
         }
         StageSetFogState(1);
-        for (int layer = 0; layer < 8; ++layer)
-            StageDrawInstances(stage, layer);
+        StageDrawInstances(stage, 0);
+        StageDrawInstances(stage, 1);
+        StageDrawInstances(stage, 2);
+        StageDrawInstances(stage, 3);
+        StageDrawInstances(stage, 4);
+        StageDrawInstances(stage, 5);
+        StageDrawInstances(stage, 6);
+        StageDrawInstances(stage, 7);
         g_AnmRenderManagerView->FlushVertexBuffer();
         if (stage->unknown1EE4 != 0)
             ++stage->unknown1EE4;
@@ -329,16 +339,20 @@ int __stdcall StageDrawLate(StageScriptView *stage)
         StageSetFogState(0);
         g_AnmRenderManagerView->DrawLayer(18);
         StageSetRenderState(23, 4);
-        StagePublishFog(stage);
+        StageSetRenderState(34, stage->camera.fog.color);
+        StageSetRenderState(36, StageFloatBits(stage->camera.fog.start));
+        StageSetRenderState(37, StageFloatBits(stage->camera.fog.end));
     }
     if ((stage->flags & 4) != 0 && stage->transitionTimer.current >= 30)
-        stage->tint &= 0x00ffffff;
+        reinterpret_cast<unsigned char *>(&stage->tint)[3] = 0;
     if ((stage->flags & 1) != 0)
     {
         StageSetRenderState(14, 0);
         StageSetFogState(1);
-        for (int layer = 8; layer < 12; ++layer)
-            StageDrawInstances(stage, layer);
+        StageDrawInstances(stage, 8);
+        StageDrawInstances(stage, 9);
+        StageDrawInstances(stage, 10);
+        StageDrawInstances(stage, 11);
         g_AnmRenderManagerView->FlushVertexBuffer();
     }
     StageRestoreMixColor(stage);
@@ -349,7 +363,7 @@ int __stdcall StageDrawLate(StageScriptView *stage)
         stage->transitionTimer.Add(-1.0f);
         if (stage->transitionTimer.current <= 0)
         {
-            stage->tint |= 0xff000000;
+            reinterpret_cast<unsigned char *>(&stage->tint)[3] = 0xff;
             if ((stage->flags & 2) != 0)
                 stage->flags |= 8;
             stage->tint = 0x00ffffff;

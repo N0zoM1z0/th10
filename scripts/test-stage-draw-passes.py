@@ -28,7 +28,7 @@ struct AnmVmView {void *loadedSprite=nullptr;};
 struct StageScriptView {unsigned flags=0,tint=0;AnmVmTimerView transitionTimer;int frame=0,auxiliaryActive=0,unknown1EE4=0;int visibleObjectCount=0,culledObjectCount=0,drawCount=0;StageCameraStateView camera={};AnmVmView scriptVms[8];};
 static std::vector<std::string> trace;
 static StageScriptView *active;
-static bool checkTint=false,mutateFog=false,expectReplacement=false;
+static bool checkTint=false,mutateFog=false,mutateFogWords=false,expectReplacement=false;
 static void onFlush();
 struct Color {unsigned value=0;};
 struct AnmRenderManagerView {
@@ -63,6 +63,9 @@ D3d9DeviceView replacement={&table};
 static void checkDevice(D3d9DeviceView*d){if(expectReplacement)assert(d==&replacement);}
 static void onFlush(){if(mutateFog&&!trace.empty()&&trace.back()=="S23=4"){
  mutateFog=false;active->camera.fog.color=0x44556677;g_Direct3DDevice=&replacement;expectReplacement=true;
+}if(mutateFogWords&&!trace.empty()&&trace.back()=="S34="+std::to_string(active->camera.fog.color)){
+ mutateFogWords=false;unsigned start=0x7fa54321,end=0x80000000;
+ memcpy(&active->camera.fog.start,&start,4);memcpy(&active->camera.fog.end,&end,4);
 }}
 
 void StageConfigureCamera(StageCameraStateView*c){assert(c==&g_StagePublishedCamera);assert(g_AnmViewportOwner==reinterpret_cast<AnmViewportOwnerView*>(c));trace.push_back("camera");}
@@ -73,7 +76,7 @@ void *StageCreateTransitionEffect(int priority,int kind,int frames,unsigned a,un
 int StageDrawInstances(StageScriptView*s,int layer){assert(s==active);if(checkTint)assert(renderer.useMixColor==1&&renderer.mixColor.value==s->tint);trace.push_back("layer"+std::to_string(layer));++s->visibleObjectCount;s->drawCount+=2;return 0;}
 """+s+r"""
 static void setup(StageScriptView&s,unsigned flags,int time){
- active=&s;checkTint=false;mutateFog=false;expectReplacement=false;g_Direct3DDevice=&device;g_AnmGameSpeed=1.0f;s.flags=flags;s.transitionTimer.flags=0;s.transitionTimer.SetCurrent(time);
+ active=&s;checkTint=false;mutateFog=false;mutateFogWords=false;expectReplacement=false;g_Direct3DDevice=&device;g_AnmGameSpeed=1.0f;s.flags=flags;s.transitionTimer.flags=0;s.transitionTimer.SetCurrent(time);
  s.tint=0xff123456;s.frame=40;s.auxiliaryActive=0;s.unknown1EE4=0;
  s.visibleObjectCount=91;s.culledObjectCount=92;s.drawCount=93;
  s.camera.fog.start=30;s.camera.fog.end=1800;s.camera.fog.color=0xab112233;
@@ -127,6 +130,24 @@ int main(){
  setup(s,0,0);mutateFog=true;StageDrawEarly(&s);
  assert(expectReplacement&&s.camera.fog.color==0x44556677);
  assert(std::find(trace.begin(),trace.end(),"S34="+std::to_string(0xab112233))!=trace.end());
+ // Both passes send raw fog words: signed zero, infinity and signaling-NaN payload.
+ // A Flush mutation occurs after the start-word capture and before the end capture.
+ for(int pass=0;pass<2;++pass){
+  const unsigned starts[]={0x80000000,0x7f800000,0x7fa12345};
+  for(unsigned word:starts){
+   setup(s,0,0);unsigned end=0xffa76543;
+   memcpy(&s.camera.fog.start,&word,4);memcpy(&s.camera.fog.end,&end,4);
+   if(pass==0)StageDrawEarly(&s);else StageDrawLate(&s);
+   assert(std::find(trace.begin(),trace.end(),"S36="+std::to_string(word))!=trace.end());
+   assert(std::find(trace.begin(),trace.end(),"S37="+std::to_string(end))!=trace.end());
+  }
+  setup(s,0,0);unsigned before=0xffa12345;
+  memcpy(&s.camera.fog.start,&before,4);mutateFogWords=true;
+  if(pass==0)StageDrawEarly(&s);else StageDrawLate(&s);
+  assert(!mutateFogWords);
+  assert(std::find(trace.begin(),trace.end(),"S36="+std::to_string(before))!=trace.end());
+  assert(std::find(trace.begin(),trace.end(),"S37="+std::to_string(0x80000000u))!=trace.end());
+ }
  // VM0 is the outer gate even when another script VM is loaded.
  setup(s,1,0);s.scriptVms[2].loadedSprite=&s;checkTint=true;StageDrawEarly(&s);
  assert(std::find(trace.begin(),trace.end(),"VM2")==trace.end());

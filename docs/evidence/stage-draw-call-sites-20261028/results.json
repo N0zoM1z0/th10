@@ -1,0 +1,482 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "8d53b4e",
+  "new_exact_bytes": 0,
+  "new_source_present_owners": 0,
+  "graph": {
+    "source": "src/StageScript.cpp",
+    "support_sources": [
+      "src/StageLifecycle.cpp",
+      "src/StageDraw.cpp",
+      "src/Chain.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/FileSystem.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+  },
+  "unchanged_conservative_input_pins": {
+    "src/StageScript.cpp": "5f85456c235e4c10a5a89e33ad4748ef2e28b5abe7864fbe7139e8dd549fd764",
+    "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+    "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "src/AnmManager.cpp": "5b3545b319d18e3c0fa869f5a11390d9b5534148cc0fa867803d08796fe640c6",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/EnemyLaserType1.hpp": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/ScriptViewerOwners.hpp": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/GameStatistics.hpp": "8bfbbb20964de4304e1b77196a6fcafaad2ba4aba7264d3e522fc7307860496f",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/TextRenderer.hpp": "c6a1cd20c8a5aec2bba5aadb7915cda9f6665a7bcce2375622dd95061b4a8ea0",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ScriptViewer.hpp": "ef3f7a2120f99201dcd5790de136aa2f6782deb4b89e96e2ed5528bce3e7657e",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Ending.hpp": "4f8e62b1d23eb8b2cf9074cba791d7212f04317792529e4ac0f32e83b99248f5",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/Sound.hpp": "7cf5dcc2362427a8e276c08f25a4db4d9d6152f42751320d6e6243c1e7bb9c49",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/EnemyLaserLine.hpp": "7fded6867889d41110085110f9ec39a75a7139488ce00475e881f7de27ef58dc",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/GameErrorContext.hpp": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/SptTest.hpp": "b758acf731eac40adfd8210ed34d70a4116617e1bd7063be4f855fbc24315500"
+  },
+  "trials": [
+    {
+      "model": "baseline",
+      "producer_exit": 0,
+      "stage_draw_source_sha256": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+      "image_sha256": "a24102f973eb19f4235b53c958f46fa4e811ab856433fd1b3f0a04574d250f88",
+      "parents": [
+        {
+          "name": "StageDrawEarly",
+          "candidate_size": 918,
+          "target_size": 1099,
+          "candidate_link_fields": 58,
+          "result": "structural-rejection; no exactness score"
+        },
+        {
+          "name": "StageDrawLate",
+          "candidate_size": 917,
+          "target_size": 929,
+          "candidate_link_fields": 71,
+          "result": "structural-rejection; no exactness score"
+        }
+      ],
+      "guards": {
+        "stage-update": {
+          "result": "exact",
+          "size": 304,
+          "fields": 11,
+          "pdb_guid": "62a5162cf7157a4f8d2f60326aee36c0",
+          "pdb_age": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "fields": 4,
+          "pdb_guid": "62a5162cf7157a4f8d2f60326aee36c0",
+          "pdb_age": 1
+        },
+        "stage-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "62a5162cf7157a4f8d2f60326aee36c0",
+          "pdb_age": 1
+        },
+        "stage-draw-early-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "62a5162cf7157a4f8d2f60326aee36c0",
+          "pdb_age": 1
+        },
+        "stage-draw-late-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "62a5162cf7157a4f8d2f60326aee36c0",
+          "pdb_age": 1
+        }
+      },
+      "receipts": {
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/baseline.json": "5562fb583d4e3c56d845f380046ecceb8ff54c9b9f7d387cee8edd69ee612d8f",
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/baseline-guards.json": "1a39cffcfbbcbe2e3eb69f265fa19dc4ee9b11e8f3eb4f2aea532475abbd1e3c"
+      }
+    },
+    {
+      "model": "draw-sites",
+      "producer_exit": 0,
+      "stage_draw_source_sha256": "7977627fec9acf6b9137cd5ac21e6db0d0d1a2492017c86afed31ff509110254",
+      "image_sha256": "9568d896b304e671f835b5111bd6f39bb25a1727a5002c2b6166fc39ba71e3e1",
+      "parents": [
+        {
+          "name": "StageDrawEarly",
+          "candidate_size": 994,
+          "target_size": 1099,
+          "candidate_link_fields": 65,
+          "result": "structural-rejection; no exactness score"
+        },
+        {
+          "name": "StageDrawLate",
+          "candidate_size": 849,
+          "target_size": 929,
+          "candidate_link_fields": 71,
+          "result": "structural-rejection; no exactness score"
+        }
+      ],
+      "guards": {
+        "stage-update": {
+          "result": "exact",
+          "size": 304,
+          "fields": 11,
+          "pdb_guid": "0872ba51f9b8ca4785495bd38f8e9dfd",
+          "pdb_age": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "fields": 4,
+          "pdb_guid": "0872ba51f9b8ca4785495bd38f8e9dfd",
+          "pdb_age": 1
+        },
+        "stage-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "0872ba51f9b8ca4785495bd38f8e9dfd",
+          "pdb_age": 1
+        },
+        "stage-draw-early-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "0872ba51f9b8ca4785495bd38f8e9dfd",
+          "pdb_age": 1
+        },
+        "stage-draw-late-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "0872ba51f9b8ca4785495bd38f8e9dfd",
+          "pdb_age": 1
+        }
+      },
+      "receipts": {
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/draw-sites.json": "2619f8ea04d36febd83a8dc15c67c0e964e56bda77081f91af9cda04af6dc796",
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/draw-sites-guards.json": "c5cf2593d41151a386b79a675b34c4cb143dac7aa293c1f76589369043bb4571"
+      }
+    },
+    {
+      "model": "fog-sites",
+      "producer_exit": 0,
+      "stage_draw_source_sha256": "07deb92aeaa3bed73e98af07e5b3cacd723a8e42302a7dd3f4d7b2a67b512cb5",
+      "image_sha256": "b509b743d99c054cebf7b99aea0be6aebcbaaab6cd19b156377c69d59e308b2a",
+      "parents": [
+        {
+          "name": "StageDrawEarly",
+          "candidate_size": 1106,
+          "target_size": 1099,
+          "candidate_link_fields": 73,
+          "result": "structural-rejection; no exactness score"
+        },
+        {
+          "name": "StageDrawLate",
+          "candidate_size": 960,
+          "target_size": 929,
+          "candidate_link_fields": 79,
+          "result": "structural-rejection; no exactness score"
+        }
+      ],
+      "guards": {
+        "stage-update": {
+          "result": "exact",
+          "size": 304,
+          "fields": 11,
+          "pdb_guid": "c8b76935ce95e34d993d17ec41bff766",
+          "pdb_age": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "fields": 4,
+          "pdb_guid": "c8b76935ce95e34d993d17ec41bff766",
+          "pdb_age": 1
+        },
+        "stage-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "c8b76935ce95e34d993d17ec41bff766",
+          "pdb_age": 1
+        },
+        "stage-draw-early-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "c8b76935ce95e34d993d17ec41bff766",
+          "pdb_age": 1
+        },
+        "stage-draw-late-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "c8b76935ce95e34d993d17ec41bff766",
+          "pdb_age": 1
+        }
+      },
+      "receipts": {
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/fog-sites.json": "226152460c55cd6f85e58abaa4ce65796b0c1c5ecab2840c0c0ebc0e78b973b2",
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/fog-sites-guards.json": "63c03253c8a1d320f542afece2ce64a3e0399943de54e41e158e2bd26aeae4d9"
+      }
+    },
+    {
+      "model": "alpha-byte",
+      "producer_exit": 0,
+      "stage_draw_source_sha256": "ce0fb1c8f5efa52efe904bc20f449816f92af8f040424e2c6b048680b288c6f1",
+      "image_sha256": "8f39c880d6d660f32db281174af41c093de7820eb58f7af8a040dd39e9336f7d",
+      "parents": [
+        {
+          "name": "StageDrawEarly",
+          "candidate_size": 1096,
+          "target_size": 1099,
+          "candidate_link_fields": 73,
+          "result": "structural-rejection; no exactness score"
+        },
+        {
+          "name": "StageDrawLate",
+          "candidate_size": 949,
+          "target_size": 929,
+          "candidate_link_fields": 79,
+          "result": "structural-rejection; no exactness score"
+        }
+      ],
+      "guards": {
+        "stage-update": {
+          "result": "exact",
+          "size": 304,
+          "fields": 11,
+          "pdb_guid": "0ab6baab526941428ba6f67a964f87fc",
+          "pdb_age": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "fields": 4,
+          "pdb_guid": "0ab6baab526941428ba6f67a964f87fc",
+          "pdb_age": 1
+        },
+        "stage-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "0ab6baab526941428ba6f67a964f87fc",
+          "pdb_age": 1
+        },
+        "stage-draw-early-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "0ab6baab526941428ba6f67a964f87fc",
+          "pdb_age": 1
+        },
+        "stage-draw-late-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "0ab6baab526941428ba6f67a964f87fc",
+          "pdb_age": 1
+        }
+      },
+      "receipts": {
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/alpha-byte.json": "a70307841c6e91e70229b5342b532bd7e09b4ebd37db3ad3d0e680ace911f17a",
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/alpha-byte-guards.json": "94536962ef91c508a815ff6721ee2ea34f97535a2ca5378108f0032cf9a0fb2b"
+      }
+    },
+    {
+      "model": "fog-words",
+      "producer_exit": 0,
+      "stage_draw_source_sha256": "4006cd5aab061ba2d02a94e6d061287bd8aa52c1a35a85e300175477e22568e5",
+      "image_sha256": "675c1e5b161a3d44eb30a7ba20339d441891c1e24e0943ef1685834a08777dcf",
+      "parents": [
+        {
+          "name": "StageDrawEarly",
+          "candidate_size": 1080,
+          "target_size": 1099,
+          "candidate_link_fields": 73,
+          "result": "structural-rejection; no exactness score"
+        },
+        {
+          "name": "StageDrawLate",
+          "candidate_size": 933,
+          "target_size": 929,
+          "candidate_link_fields": 79,
+          "result": "structural-rejection; no exactness score"
+        }
+      ],
+      "guards": {
+        "stage-update": {
+          "result": "exact",
+          "size": 304,
+          "fields": 11,
+          "pdb_guid": "8c7b181dd5403747aef02e4a267590ec",
+          "pdb_age": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "fields": 4,
+          "pdb_guid": "8c7b181dd5403747aef02e4a267590ec",
+          "pdb_age": 1
+        },
+        "stage-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "8c7b181dd5403747aef02e4a267590ec",
+          "pdb_age": 1
+        },
+        "stage-draw-early-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "8c7b181dd5403747aef02e4a267590ec",
+          "pdb_age": 1
+        },
+        "stage-draw-late-callback": {
+          "result": "exact",
+          "size": 7,
+          "fields": 1,
+          "pdb_guid": "8c7b181dd5403747aef02e4a267590ec",
+          "pdb_age": 1
+        }
+      },
+      "receipts": {
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/fog-words.json": "24aea24a10271a6047ce5b320b99a2c500967bb401219f0c39f710f66192b03e",
+        ".analysis/gpt-6.1-sol/stage-draw-20261028/fog-words-guards.json": "c8b144739bdd020c10eb3af58c584ab139f1685b92de6c88f8f109b4da73472d"
+      }
+    }
+  ],
+  "toolchain": {
+    "compiler_sha256": "333254d73ee602f6ec14b00e9bf40f533a1b181429943e3634971642af00c9f7",
+    "linker_sha256": "3e6526234cce5ce962d22f267f84f01d3c540b8ee9129c53f127c5e124fa2b20"
+  },
+  "comparison_inputs": {
+    "config/match-units.toml": "502f8b50907bd7d561554581633dcd8e4b0fddd555295201229034ec4d988d21",
+    "scripts/compare-linked-function.py": "742015ca74c20e68b5f69877fbf89bd5356b760b19f6c392a34c17972ca5c940",
+    "scripts/linked_image.py": "f65c6ac8878d46323daae75e249b60527035dae30f40752871ee86af0a89a533",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9"
+  },
+  "target_inventory": {
+    "StageDrawEarly": {
+      "size": 1099,
+      "sha256": "89c0ab99cd05edcb2f57119e853defa5a2d48dc54b5d92b0cbc9ea4b369ff473",
+      "instruction_count": 288,
+      "address_operands": 72,
+      "fixed_local_branches": 18,
+      "calls": 43
+    },
+    "StageDrawLate": {
+      "size": 929,
+      "sha256": "d1141a2a64d2203d4ae12908ab166a6368780f34b63bd536817fd135a0c2d04d",
+      "instruction_count": 243,
+      "address_operands": 78,
+      "fixed_local_branches": 15,
+      "calls": 43
+    }
+  },
+  "host_tests": {
+    "stage_draw_passes": "passed, including eight new raw-word/capture scenarios",
+    "stage_camera": "passed",
+    "stage_draw": "passed",
+    "negative_controls": {
+      "discard-sign": {
+        "expected_assertion_rejection": true,
+        "errors": "Traceback (most recent call last):\n  File \"scripts/test-stage-draw-passes.py\", line 169, in test_actual_pass_source\n    subprocess.run([str(p/'test')],check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/pentester/miniconda3/lib/python3.13/subprocess.py\", line 577, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/stage-draw-20261028/host-mutants/discard-sign/build/stage-passes-u8qk6w6_/test']' died with <Signals.SIGABRT: 6>.\n"
+      },
+      "early-end-capture": {
+        "expected_assertion_rejection": true,
+        "errors": "Traceback (most recent call last):\n  File \"scripts/test-stage-draw-passes.py\", line 169, in test_actual_pass_source\n    subprocess.run([str(p/'test')],check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/pentester/miniconda3/lib/python3.13/subprocess.py\", line 577, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/stage-draw-20261028/host-mutants/early-end-capture/build/stage-passes-01i2mvyo/test']' died with <Signals.SIGABRT: 6>.\n"
+      }
+    }
+  },
+  "ci": {
+    "result": "incomplete-time-limit",
+    "exit_code": 124,
+    "limit_seconds": 420,
+    "stages_started": 37,
+    "preceding_stages_completed": 36,
+    "last_started_stage": "Validate direct creation caller controls",
+    "log_path": ".analysis/gpt-6.1-sol/stage-draw-20261028/ci.log",
+    "log_sha256": "aef36b09254cdabb9968f90456a0b2c85892e3da0f9c1ee2bdc10949ed7cf9ec",
+    "log_bytes": 29175,
+    "full_pass_claim": false,
+    "whole_input_freeze_claim": false
+  },
+  "phase": "exact reconstruction; product/runtime open"
+}

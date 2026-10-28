@@ -1,5 +1,31 @@
 # TH10 reconstruction handoff
 
+## Direct-local Stage draw checkpoint — 2026-10-28
+
+Current operator direction: call local tools directly, without Factory; use
+`gpt-6.1-sol: ...` commits. The worktree was clean at starting HEAD `8d53b4e`.
+Target/toolchain execution/tracking pass; local Ghidra full six-sample
+attestation passes. Factory's earlier `check` returned `not-checked`, not a pass.
+
+[Stage draw recovery](evidence/stage-draw-call-sites-20261028/README.md) advances
+both complete1099/929-byte owners through five fresh nine-TU `/GL /GS` images.
+Branch-local rectangles, explicit8+4 layer calls, real in-parent fog setters,
+alpha-byte accesses and raw-member fog DWORD copies are retained. Final sizes
+are **1080/1099 and933/929, both nonexact**; size gaps are not mismatch counts.
+Five complete canonical contracts cold-pass in every image using output-path
+overrides:397 bytes/all18 fields. Three focused host groups and two intentional
+bit/capture assertion rejections pass. No new exact/source owners or metric
+credit; no product/runtime claim. See the packet for the actual CI outcome.
+
+Next evidence-backed route: recover the real0x405300 viewport-selector and
+0x420CD0 fog-disable dependencies against existing Main ownership. Fresh raw
+decode shows two280-byte camera slots starting at supervisor+0x154 and a
+DWORD cache at+0x750, contradicting the old resource-attachment prose and
+requiring review of Main.hpp's byte cache view. Those helpers are not admitted.
+Late still differs in pointer publication and fog-cache/vtable scheduling;
+early also retains external private-ABI/rectangle/VM-loop differences. Avoid
+unsupported register/flag/spelling panels. Goal remains **active-incomplete**.
+
 ## Live source-current checkpoint — 2026-10-26
 
 The latest committed Enemy viewport-helper admission (`2c5a96f`, supplemental
