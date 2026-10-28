@@ -24710,3 +24710,416 @@ linkages = [
   { offset = 0xD, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
   { offset = 0x12, type = "REL32", symbol = "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ", target = 0x00442F50 },
 ]
+
+# Direct-local ANM chain callbacks; provenance remains a separate ledger.
+[units.anm-callback-update-primary]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::OnUpdatePrimary"]
+symbol = "?OnUpdatePrimary@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4485d0
+size = 7
+linkages = [
+  { offset = 0x3, type = "REL32", symbol = "?UpdatePrimaryVms@AnmRenderManagerView@@QAEHXZ", target = 0x448860 },
+]
+
+[units.anm-callback-update-secondary]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::OnUpdateSecondary"]
+symbol = "?OnUpdateSecondary@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4485e0
+size = 7
+linkages = [
+  { offset = 0x3, type = "REL32", symbol = "?UpdateSecondaryVms@AnmRenderManagerView@@QAEHXZ", target = 0x448900 },
+]
+
+[units.anm-callback-layer-0]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer0"]
+symbol = "?DrawLayer0@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4485f0
+size = 12
+linkages = [
+  { offset = 0x6, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-1]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer1"]
+symbol = "?DrawLayer1@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448600
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-2]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer2"]
+symbol = "?DrawLayer2@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448610
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-3]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer3"]
+symbol = "?DrawLayer3@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448620
+size = 115
+linkages = [
+  { offset = 0x3, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x154 },
+  { offset = 0xb, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x384 },
+  { offset = 0x10, type = "REL32", symbol = "?MainConfigureCamera@@YAXPAUAnmViewportOwnerView@@@Z", target = 0x421480 },
+  { offset = 0x16, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x384 },
+  { offset = 0x1b, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x8 },
+  { offset = 0x30, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x750 },
+  { offset = 0x3a, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x388 },
+  { offset = 0x43, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x491c10 },
+  { offset = 0x48, type = "REL32", symbol = "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ", target = 0x442f50 },
+  { offset = 0x4d, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x8 },
+  { offset = 0x56, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x750 },
+  { offset = 0x6c, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-4]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer4"]
+symbol = "?DrawLayer4@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4486a0
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-5]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer5"]
+symbol = "?DrawLayer5@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4486b0
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-6]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer6"]
+symbol = "?DrawLayer6@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4486c0
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-7]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer7"]
+symbol = "?DrawLayer7@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4486d0
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-8]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer8"]
+symbol = "?DrawLayer8@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4486e0
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-9]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer9"]
+symbol = "?DrawLayer9@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4486f0
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-10]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer10"]
+symbol = "?DrawLayer10@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448700
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-11]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer11"]
+symbol = "?DrawLayer11@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448710
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-12]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer12"]
+symbol = "?DrawLayer12@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448720
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-13]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer13"]
+symbol = "?DrawLayer13@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448730
+size = 15
+linkages = [
+  { offset = 0x9, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-14]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer14"]
+symbol = "?DrawLayer14@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448740
+size = 48
+linkages = [
+  { offset = 0x1, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x491c10 },
+  { offset = 0x9, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x23c },
+  { offset = 0x13, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x240 },
+  { offset = 0x2a, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-15]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer15"]
+symbol = "?DrawLayer15@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448770
+size = 72
+linkages = [
+  { offset = 0x3, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x26c },
+  { offset = 0xb, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x384 },
+  { offset = 0x10, type = "REL32", symbol = "?MainConfigureCamera@@YAXPAUAnmViewportOwnerView@@@Z", target = 0x421480 },
+  { offset = 0x16, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x384 },
+  { offset = 0x1b, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x8 },
+  { offset = 0x38, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x388 },
+  { offset = 0x41, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-16]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer16"]
+symbol = "?DrawLayer16@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x4487c0
+size = 72
+linkages = [
+  { offset = 0x3, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x26c },
+  { offset = 0xb, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x384 },
+  { offset = 0x10, type = "REL32", symbol = "?MainConfigureCamera@@YAXPAUAnmViewportOwnerView@@@Z", target = 0x421480 },
+  { offset = 0x16, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x384 },
+  { offset = 0x1b, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x8 },
+  { offset = 0x38, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x388 },
+  { offset = 0x41, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]
+
+[units.anm-callback-layer-19]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/AnmDrawCallbacks.cpp"
+output_dir = "build/match-linked/AnmDrawCallbacks"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["AnmRenderManagerView::DrawLayer19"]
+symbol = "?DrawLayer19@AnmRenderManagerView@@SIHPAU1@@Z"
+target_address = 0x448810
+size = 72
+linkages = [
+  { offset = 0x3, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x26c },
+  { offset = 0xb, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x384 },
+  { offset = 0x10, type = "REL32", symbol = "?MainConfigureCamera@@YAXPAUAnmViewportOwnerView@@@Z", target = 0x421480 },
+  { offset = 0x16, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x384 },
+  { offset = 0x1b, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x8 },
+  { offset = 0x38, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x491c28, addend = 0x388 },
+  { offset = 0x41, type = "REL32", symbol = "?DrawLayer@AnmRenderManagerView@@QAEHH@Z", target = 0x448980 },
+]

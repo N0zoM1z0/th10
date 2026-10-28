@@ -1,5 +1,35 @@
 # TH10 reconstruction handoff
 
+## Direct-local ANM callbacks and constructor — 2026-10-28
+
+[ANM callback evidence](evidence/anm-draw-callbacks-20261028/README.md) adds
+**585 exact bytes /20 complete owners**, including **379 authored bytes /5
+owners**. Fifteen plain adapters/206 bytes remain origin indeterminate. All20
+strict contracts pass585/all52 fields in two independently cold-compiled real
+WinMain13-TU `/GL /GS` images. The second invocation failed linking after all13
+objects compiled because Wine diagnostics contaminated a path; separately logged
+retained-object recovery succeeds without recompiling those objects. Both final
+images retain six Main/ANM guards729/all29. Original failed exit1 is preserved.
+
+The complete2315-byte manager constructor now uses actual ChainElem allocations,
+low flags3 and real two-calc/eighteen-draw registrations. Full contributions
+progress1284 before closure,1884 with real calls,2408 with Chain.cpp and2308
+with target-supported AnmManager-only `/EHs`; it remains **nonexact**, with no
+parent credit. Existing global profiles/old recipes are unchanged. New concrete
+lead: capture-ID default-construction before the manager clear, then EH frame,
+VM initialization/loop and Chain flag scheduling. Do not read size gaps as
+ordinary-byte mismatch counts or change the shared ID constructor blindly.
+
+All1805 candidates have focused ledger rows; the global boundary-audit text check
+still fails on old row3 and is not claimed passed. Target-local decode and
+read-only instruction-start xrefs support the20 new disjoint extents. Authored
+exact is now **77,823/275,434 bytes,434 owners**; authored source646. Two host
+groups check callback/camera/cache effects and all20 constructor registrations,
+with seven assertion-rejected source controls. All16 selected CI stages pass;
+the strict host pin refresh and failed first selection are recorded in the
+packet. No full-CI/product/runtime claim. Direct local tools and
+`gpt-6.1-sol:` commits continue; goal remains **active-incomplete**.
+
 ## Direct-local viewport dependency closure — 2026-10-28
 
 [Main viewport dependencies](evidence/stage-viewport-dependencies-20261028/README.md)

@@ -6225,3 +6225,39 @@ All thirteen selected CI stages pass; no full-suite or native-runtime claim.
 The opt-in CI selector preserves the full default schedule and rejects unknown
 labels; default collection control is not a full-CI pass. The old Main corridor
 marker-order check independently fails on prechange source as well.
+
+## 2026-10-28 ANM registered callbacks and real Chain construction
+
+The [direct-local ANM packet](evidence/anm-draw-callbacks-20261028/README.md)
+reviews twenty previously untracked callback extents0x4485D0-0x448857,585 owned
+bytes with63 excluded CC padding bytes. Each is a constructor DATA target;
+Ghidra reference queries over all decoded instruction starts find no external
+interior references. Five stateful callbacks/379 bytes are authored at medium
+confidence; fifteen argument/return adapters/206 bytes retain indeterminate
+origin. Exact reproduction does not resolve source-versus-LTCG provenance.
+
+Layer3 publishes the first screen camera and calls0x421480, reloads the active
+pointer/device, stores viewport flag0, then guards fog disable on the full
+supervisor+0x750 DWORD. Layer14 clears camera+0xE8/+0xEC and the global ANM
+renderer's two shake components before invoking the incoming manager's layer14.
+Layers15/16/19 use the second Main screen camera and viewport flag1. Complete
+PDB contributions pass585 bytes/all52 independently bound fields in two source
+compilations, with six same-image Main/ANM guards729/all29. The second link
+requires separately recorded recovery after a Wine path-conversion failure;
+its13 fresh source objects are retained and hash-checked, not recompiled.
+
+The2315-byte manager constructor allocates twenty ChainElem objects and sets
+callback, null added/deleted callbacks, low flag bits3 and incoming manager arg
+before the real Chain Add calls. Removing unresolved source facades and adding
+actual Chain.cpp gives complete native2408; AnmManager-only `/EHs`, motivated by
+target EH/member-array construction, gives2308. Both are nonexact. The source
+captureVmId default constructor adds a pre-clear+0x732454 store absent target;
+EH frame, VM flag/loop and repeated Chain scheduling also differ. This is a
+representation/lifetime lead, not authorization to change all ID construction
+or force an ABI. Source-only MainConfigureCamera remains nonexact as well.
+
+The new20 exact owners include only5 authored owners; total authored exact is
+77,823/275,434 bytes,434 owners. Host source contracts and seven rejected mutants
+cover ordering, pointer reloads, word cache, shake separation, callback identity,
+priorities and flags. Neither these checks nor diagnostic anchored links close
+native runtime, allocation initialization, production ownership or product build.

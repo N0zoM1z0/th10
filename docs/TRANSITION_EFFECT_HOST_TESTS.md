@@ -4,6 +4,12 @@ These are LOCAL-ONLY semantic tests, not a target build, target execution, exact
 
 ## Run
 
+The2026-10-28 [ANM constructor update](evidence/anm-draw-callbacks-20261028/README.md)
+refreshes only AnmManager.cpp's active LF pin. Substituting the old complete
+constructor reconstructs the whole previous file; the extracted RNG helper and
+all six other active inputs are unchanged. Strict normalization and rejection
+rules are retained, with the review recorded in the input manifest.
+
 In an installed repository containing the pinned dependencies:
 
 ```

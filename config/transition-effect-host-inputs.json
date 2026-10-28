@@ -5,7 +5,7 @@
   "sha256_lf": {
     "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
     "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
-    "src/AnmManager.cpp": "e3764604ae06c8d0130cb8713f765c13d4fda074e87d67e27e8745f0e154e2fd",
+    "src/AnmManager.cpp": "3e26590430c1cf732225a4f2199689f92a7b621fc81ae0172a51cb8f43082a99",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
@@ -379,5 +379,26 @@
     "current_raw_sha256": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
     "scope": "Reviewed scalar-delete identity repair: explicit raw operator delete after unchanged callback cleanup; host deallocation seam token updated; all other pins unchanged",
     "evidence": ".analysis/gpt-dots/free-delete-binding-audit-20261024/repair-validation/final-acceptance-review.json"
+  },
+  "reviewed_anm_chain_construction_20261028": {
+    "date": "2026-10-28",
+    "starting_head": "43d733754456246e1f9071d778526c71fe4f4b7d",
+    "input": "src/AnmManager.cpp",
+    "old_sha256_lf": "e3764604ae06c8d0130cb8713f765c13d4fda074e87d67e27e8745f0e154e2fd",
+    "new_sha256_lf": "3e26590430c1cf732225a4f2199689f92a7b621fc81ae0172a51cb8f43082a99",
+    "new_raw_sha256": "3e26590430c1cf732225a4f2199689f92a7b621fc81ae0172a51cb8f43082a99",
+    "whole_file_inverse_verified": true,
+    "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "other_six_active_dependencies_unchanged": {
+      "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+      "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+      "src/Rng.hpp": "fac62da48e3fc475d488c987e32ff6856c1d2776b7e311565231ae59bbd70f3d",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15"
+    },
+    "strict_normalization_and_rejection_policy_unchanged": true,
+    "reason": "Only the complete AnmRenderManagerView constructor changes: use actual ChainElem allocations, low flags3 and real Chain Add entries. Restoring the previous complete constructor reconstructs the entire prior LF-normalized file. The transition fixture consumes only the unchanged RNG helper from this file; host algorithms and rejection policy remain unchanged.",
+    "evidence": "docs/evidence/anm-draw-callbacks-20261028/README.md"
   }
 }

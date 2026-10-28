@@ -115,6 +115,8 @@ def main() -> int:
         run("Validate stage projected bounds and draw", [sys.executable, "scripts/test-stage-draw.py"])
         run("Validate stage camera setup", [sys.executable, "scripts/test-stage-camera.py"])
         run("Validate Main camera and viewport contracts", [sys.executable, "scripts/test-main-viewport.py"])
+        run("Validate ANM draw callback contracts", [sys.executable, "scripts/test-anm-draw-callbacks.py"])
+        run("Validate ANM manager construction", [sys.executable, "scripts/test-anm-manager-construction.py"])
         run("Validate ASCII viewport transitions", [sys.executable, "scripts/test-ascii-viewport.py", "--sanitize"])
         run("Validate ASCII glyph paths", [sys.executable, "scripts/test-ascii-glyphs.py", "--sanitize"])
         run("Validate stage draw passes", [sys.executable, "scripts/test-stage-draw-passes.py"])

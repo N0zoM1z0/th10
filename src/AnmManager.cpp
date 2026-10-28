@@ -1189,7 +1189,7 @@ int AnmRenderManagerView::RemoveVm(AnmVmView *vm)
 // hypothesis for the repeated chain registration shape.
 AnmRenderManagerView::AnmRenderManagerView()
 {
-    AnmChainElementView *element;
+    th10::ChainElem *element;
 
     memset(this, 0, sizeof(AnmRenderManagerView));
 
@@ -1232,88 +1232,148 @@ AnmRenderManagerView::AnmRenderManagerView()
     for (int i = 0; i < 0x1000; ++i)
         vmPool[i].Initialize();
 
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(OnUpdatePrimary));
-    element->argument = this;
-    AnmAddCalcChainElement(element, 0x1a, g_AnmChainView);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(OnUpdatePrimary);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToCalcChain(element, 0x1a, th10::g_Chain);
 
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(OnUpdateSecondary));
-    element->argument = this;
-    AnmAddCalcChainElement(element, 0x08, g_AnmChainView);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(OnUpdateSecondary);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToCalcChain(element, 0x08, th10::g_Chain);
 
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer0));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x09, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer1));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x0b, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer2));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x0d, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer3));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x0f, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer4));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x10, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer5));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x11, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer6));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x12, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer7));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x13, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer8));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x15, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer9));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x17, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer10));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x18, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer11));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x1a, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer12));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x1c, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer13));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x21, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer14));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x24, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer15));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x29, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer16));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x2a, g_AnmChainView);
-    element = AnmCreateChainElement(
-        reinterpret_cast<AnmChainCallback>(DrawLayer19));
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x2d, g_AnmChainView);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer0);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x09, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer1);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x0b, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer2);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x0d, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer3);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x0f, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer4);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x10, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer5);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x11, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer6);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x12, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer7);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x13, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer8);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x15, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer9);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x17, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer10);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x18, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer11);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x1a, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer12);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x1c, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer13);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x21, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer14);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x24, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer15);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x29, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer16);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x2a, th10::g_Chain);
+    element = new th10::ChainElem;
+    element->callback = reinterpret_cast<th10::ChainCallback>(DrawLayer19);
+    element->addedCallback = NULL;
+    element->deletedCallback = NULL;
+    element->flags |= 3u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 0x2d, th10::g_Chain);
 
     g_Direct3DDevice->vtable->SetVertexShader(g_Direct3DDevice, NULL);
 }

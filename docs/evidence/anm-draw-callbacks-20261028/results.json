@@ -1,0 +1,1091 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "direct local tools; twenty complete ANM callbacks and source-only2315-byte constructor; no Factory operations",
+  "new_owners": [
+    {
+      "name": "AnmRenderManagerView::OnUpdatePrimary",
+      "address": "0x4485d0",
+      "size": 7,
+      "end": "0x4485d6",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445b3a",
+      "local_branches": [],
+      "following_cc_bytes": 9
+    },
+    {
+      "name": "AnmRenderManagerView::OnUpdateSecondary",
+      "address": "0x4485e0",
+      "size": 7,
+      "end": "0x4485e6",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445b95",
+      "local_branches": [],
+      "following_cc_bytes": 9
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer0",
+      "address": "0x4485f0",
+      "size": 12,
+      "end": "0x4485fb",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445bee",
+      "local_branches": [],
+      "following_cc_bytes": 4
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer1",
+      "address": "0x448600",
+      "size": 15,
+      "end": "0x44860e",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445c46",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer2",
+      "address": "0x448610",
+      "size": 15,
+      "end": "0x44861e",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445c9f",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer3",
+      "address": "0x448620",
+      "size": 115,
+      "end": "0x448692",
+      "origin_proposal": "authored",
+      "ctor_reference": "0x445cf7",
+      "local_branches": [
+        [
+          "0x44865e",
+          "0x448684"
+        ]
+      ],
+      "following_cc_bytes": 13
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer4",
+      "address": "0x4486a0",
+      "size": 15,
+      "end": "0x4486ae",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445d50",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer5",
+      "address": "0x4486b0",
+      "size": 15,
+      "end": "0x4486be",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445da8",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer6",
+      "address": "0x4486c0",
+      "size": 15,
+      "end": "0x4486ce",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445e01",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer7",
+      "address": "0x4486d0",
+      "size": 15,
+      "end": "0x4486de",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445e59",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer8",
+      "address": "0x4486e0",
+      "size": 15,
+      "end": "0x4486ee",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445eb2",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer9",
+      "address": "0x4486f0",
+      "size": 15,
+      "end": "0x4486fe",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445f0a",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer10",
+      "address": "0x448700",
+      "size": 15,
+      "end": "0x44870e",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445f63",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer11",
+      "address": "0x448710",
+      "size": 15,
+      "end": "0x44871e",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x445fbb",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer12",
+      "address": "0x448720",
+      "size": 15,
+      "end": "0x44872e",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x446014",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer13",
+      "address": "0x448730",
+      "size": 15,
+      "end": "0x44873e",
+      "origin_proposal": "indeterminate",
+      "ctor_reference": "0x44606c",
+      "local_branches": [],
+      "following_cc_bytes": 1
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer14",
+      "address": "0x448740",
+      "size": 48,
+      "end": "0x44876f",
+      "origin_proposal": "authored",
+      "ctor_reference": "0x4460c5",
+      "local_branches": [],
+      "following_cc_bytes": 0
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer15",
+      "address": "0x448770",
+      "size": 72,
+      "end": "0x4487b7",
+      "origin_proposal": "authored",
+      "ctor_reference": "0x44611c",
+      "local_branches": [],
+      "following_cc_bytes": 8
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer16",
+      "address": "0x4487c0",
+      "size": 72,
+      "end": "0x448807",
+      "origin_proposal": "authored",
+      "ctor_reference": "0x446175",
+      "local_branches": [],
+      "following_cc_bytes": 8
+    },
+    {
+      "name": "AnmRenderManagerView::DrawLayer19",
+      "address": "0x448810",
+      "size": 72,
+      "end": "0x448857",
+      "origin_proposal": "authored",
+      "ctor_reference": "0x4461cd",
+      "local_branches": [],
+      "following_cc_bytes": 8
+    }
+  ],
+  "reference_review": {
+    "entry_data_references": 20,
+    "internal_branches": 1,
+    "outside_interior_references": 0,
+    "coverage": "all Capstone instruction starts in all20 complete extents; not every possible computed runtime reference"
+  },
+  "boundary_global_check": {
+    "exit": 1,
+    "reason": "preexisting evidence-text discrepancy at row3 /0x401100; no global audit pass claimed"
+  },
+  "credit": {
+    "source_owners": 20,
+    "source_bytes": 585,
+    "exact_owners": 20,
+    "exact_bytes": 585,
+    "new_authored_owners": 5,
+    "new_authored_bytes": 379,
+    "new_indeterminate_owners": 15,
+    "new_indeterminate_bytes": 206,
+    "authored_exact_bytes_total": 77823,
+    "reviewed_authored_bytes_total": 275434,
+    "authored_exact_owners_total": 434,
+    "authored_source_owners_total": 646,
+    "constructor_exact_credit": 0
+  },
+  "source_pins": {
+    "src/Main.cpp": "88c3811c147df27b4d15344d0a705db565369a340ab37d321024b7ff2651f525",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/Midi.cpp": "7871c32b29e1d81a2db45a91d08bc65e0a314f37885fb3befbbea81859475439",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/AnmManager.cpp": "3e26590430c1cf732225a4f2199689f92a7b621fc81ae0172a51cb8f43082a99",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/MainViewport.cpp": "cbc513421b43a770c5d2254fd1cae140554c2abfdbe70c36e0f36ca5a3848799",
+    "src/AnmDrawCallbacks.cpp": "49cb0da52c3a1fbd8d6a6fdf403a54b10737ef003d050615bc4af5c62612ad37",
+    "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/EnemyLaserType1.hpp": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/ScriptViewerOwners.hpp": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/GameStatistics.hpp": "8bfbbb20964de4304e1b77196a6fcafaad2ba4aba7264d3e522fc7307860496f",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/TextRenderer.hpp": "c6a1cd20c8a5aec2bba5aadb7915cda9f6665a7bcce2375622dd95061b4a8ea0",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ScriptViewer.hpp": "ef3f7a2120f99201dcd5790de136aa2f6782deb4b89e96e2ed5528bce3e7657e",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/Main.hpp": "128274b3122e4c4af9aa4d5adf2e3bc59f4b1e455a6d3677ee51f14a46b0e4fb",
+    "src/Ending.hpp": "4f8e62b1d23eb8b2cf9074cba791d7212f04317792529e4ac0f32e83b99248f5",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/Sound.hpp": "7cf5dcc2362427a8e276c08f25a4db4d9d6152f42751320d6e6243c1e7bb9c49",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/EnemyLaserLine.hpp": "7fded6867889d41110085110f9ec39a75a7139488ce00475e881f7de27ef58dc",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/GameErrorContext.hpp": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/SptTest.hpp": "b758acf731eac40adfd8210ed34d70a4116617e1bd7063be4f855fbc24315500"
+  },
+  "canonical_graph": {
+    "artifact_kind": "linked-pe",
+    "source": "src/Main.cpp",
+    "support_sources": [
+      "src/GameErrorContext.cpp",
+      "src/FileSystem.cpp",
+      "src/Midi.cpp",
+      "src/PbgArchive.cpp",
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/MainViewport.cpp",
+      "src/AnmDrawCallbacks.cpp",
+      "src/Chain.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "entry_symbol": "WinMain@16",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "pdb_source": "src/AnmDrawCallbacks.cpp",
+    "output_dir": "build/match-linked/AnmDrawCallbacks",
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ]
+    },
+    "functions": [
+      "AnmRenderManagerView::OnUpdatePrimary"
+    ],
+    "symbol": "?OnUpdatePrimary@AnmRenderManagerView@@SIHPAU1@@Z",
+    "target_address": 4490704,
+    "size": 7,
+    "linkages": [
+      {
+        "offset": 3,
+        "type": "REL32",
+        "symbol": "?UpdatePrimaryVms@AnmRenderManagerView@@QAEHXZ",
+        "target": 4491360
+      }
+    ]
+  },
+  "constructor_models": [
+    {
+      "name": "callbacks",
+      "translation_units": 12,
+      "constructor_native_bytes": 1284,
+      "constructor_target_bytes": 2315,
+      "constructor_result": "mismatch",
+      "callback_structural_exact_owners": 20,
+      "main_guard_bytes": 390,
+      "image_sha256": "e65ac8788f3fc4729786b25b043a55801f5b56c8d3532a83852c60c3abe8695f",
+      "terminal_exit": 0
+    },
+    {
+      "name": "constructor",
+      "translation_units": 12,
+      "constructor_native_bytes": 1884,
+      "constructor_target_bytes": 2315,
+      "constructor_result": "mismatch",
+      "callback_structural_exact_owners": 20,
+      "main_guard_bytes": 390,
+      "image_sha256": "23f99e4c6c7990bea225ac583061dc047be850b1c740afa03867dd9df5388c6c",
+      "terminal_exit": 0
+    },
+    {
+      "name": "real-chain",
+      "translation_units": 13,
+      "constructor_native_bytes": 2408,
+      "constructor_target_bytes": 2315,
+      "constructor_result": "mismatch",
+      "callback_structural_exact_owners": 20,
+      "main_guard_bytes": 390,
+      "image_sha256": "24c59d265e924d655fed86b01d215591f749cde1b6c7e85087607fdabda2a80e",
+      "terminal_exit": 0
+    },
+    {
+      "name": "eh-members",
+      "translation_units": 13,
+      "constructor_native_bytes": 2308,
+      "constructor_target_bytes": 2315,
+      "constructor_result": "mismatch",
+      "callback_structural_exact_owners": 20,
+      "main_guard_bytes": 390,
+      "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+      "terminal_exit": 0
+    }
+  ],
+  "first_image": {
+    "callbacks": {
+      "anm-callback-update-primary": {
+        "result": "exact",
+        "size": 7,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 7,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-update-secondary": {
+        "result": "exact",
+        "size": 7,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 7,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-0": {
+        "result": "exact",
+        "size": 12,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 12,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-1": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-2": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-3": {
+        "result": "exact",
+        "size": 115,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 115,
+        "normalization_complete": true,
+        "fields": 12
+      },
+      "anm-callback-layer-4": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-5": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-6": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-7": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-8": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-9": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-10": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-11": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-12": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-13": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-14": {
+        "result": "exact",
+        "size": 48,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 48,
+        "normalization_complete": true,
+        "fields": 4
+      },
+      "anm-callback-layer-15": {
+        "result": "exact",
+        "size": 72,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 72,
+        "normalization_complete": true,
+        "fields": 7
+      },
+      "anm-callback-layer-16": {
+        "result": "exact",
+        "size": 72,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 72,
+        "normalization_complete": true,
+        "fields": 7
+      },
+      "anm-callback-layer-19": {
+        "result": "exact",
+        "size": 72,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 72,
+        "normalization_complete": true,
+        "fields": 7
+      }
+    },
+    "guards": {
+      "main-present": {
+        "result": "exact",
+        "size": 236,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 236,
+        "normalization_complete": true,
+        "fields": 20
+      },
+      "main-release-anm-surfaces": {
+        "result": "exact",
+        "size": 43,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 43,
+        "normalization_complete": true,
+        "fields": 0
+      },
+      "main-service-anm-screenshots": {
+        "result": "exact",
+        "size": 111,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 111,
+        "normalization_complete": true,
+        "fields": 2
+      },
+      "anm-manager-update-primary-vms": {
+        "result": "exact",
+        "size": 149,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 149,
+        "normalization_complete": true,
+        "fields": 3
+      },
+      "anm-manager-update-secondary-vms": {
+        "result": "exact",
+        "size": 123,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 123,
+        "normalization_complete": true,
+        "fields": 3
+      },
+      "anm-manager-draw-layer": {
+        "result": "exact",
+        "size": 67,
+        "image_sha256": "fdbdbadd184c16f394fa312f5205826d70b3db2ba0d965082f435139d5cca398",
+        "pdb_guid": "146cdc661a55754f87c9f5238bfd9c7b",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 67,
+        "normalization_complete": true,
+        "fields": 1
+      }
+    }
+  },
+  "second_image": {
+    "original_cold_exit": 1,
+    "original_failure": "LNK1104 from winepath crash text contaminating source object Windows path after all13 source objects compiled",
+    "retained_source_objects": 13,
+    "object_pins_unchanged_during_recovery": true,
+    "recovery_exit": 0,
+    "entry_identity": {
+      "requested": "WinMain@16",
+      "symbol": "_WinMain@16",
+      "address": "0x00401440",
+      "rva": 5184,
+      "object": "source.ltcg.obj",
+      "size": 1502
+    },
+    "callbacks": {
+      "anm-callback-update-primary": {
+        "result": "exact",
+        "size": 7,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 7,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-update-secondary": {
+        "result": "exact",
+        "size": 7,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 7,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-0": {
+        "result": "exact",
+        "size": 12,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 12,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-1": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-2": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-3": {
+        "result": "exact",
+        "size": 115,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 115,
+        "normalization_complete": true,
+        "fields": 12
+      },
+      "anm-callback-layer-4": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-5": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-6": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-7": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-8": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-9": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-10": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-11": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-12": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-13": {
+        "result": "exact",
+        "size": 15,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 15,
+        "normalization_complete": true,
+        "fields": 1
+      },
+      "anm-callback-layer-14": {
+        "result": "exact",
+        "size": 48,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 48,
+        "normalization_complete": true,
+        "fields": 4
+      },
+      "anm-callback-layer-15": {
+        "result": "exact",
+        "size": 72,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 72,
+        "normalization_complete": true,
+        "fields": 7
+      },
+      "anm-callback-layer-16": {
+        "result": "exact",
+        "size": 72,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 72,
+        "normalization_complete": true,
+        "fields": 7
+      },
+      "anm-callback-layer-19": {
+        "result": "exact",
+        "size": 72,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 72,
+        "normalization_complete": true,
+        "fields": 7
+      }
+    },
+    "guards": {
+      "main-present": {
+        "result": "exact",
+        "size": 236,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 236,
+        "normalization_complete": true,
+        "fields": 20
+      },
+      "main-release-anm-surfaces": {
+        "result": "exact",
+        "size": 43,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 43,
+        "normalization_complete": true,
+        "fields": 0
+      },
+      "main-service-anm-screenshots": {
+        "result": "exact",
+        "size": 111,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 111,
+        "normalization_complete": true,
+        "fields": 2
+      },
+      "anm-manager-update-primary-vms": {
+        "result": "exact",
+        "size": 149,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 149,
+        "normalization_complete": true,
+        "fields": 3
+      },
+      "anm-manager-update-secondary-vms": {
+        "result": "exact",
+        "size": 123,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 123,
+        "normalization_complete": true,
+        "fields": 3
+      },
+      "anm-manager-draw-layer": {
+        "result": "exact",
+        "size": 67,
+        "image_sha256": "85c4ad39c3ff211e915d04a26088a38293138d28d36776fe34ec4cdb18bf42eb",
+        "pdb_guid": "2efa35f19d3e584aa7cdc52841f9d81e",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "decoded_bytes": 67,
+        "normalization_complete": true,
+        "fields": 1
+      }
+    },
+    "constructor_size": 2308
+  },
+  "host_checks": {
+    "callback_positive": true,
+    "callback_assertion_rejected_mutants": 4,
+    "constructor_positive": true,
+    "constructor_assertion_rejected_mutants": 3,
+    "limitations": "synthetic source contracts with explicit dependency seams; no target runtime/layout/ABI or uninitialized allocator claim"
+  },
+  "validation": {
+    "focused_ci": {
+      "exit": 0,
+      "stages": [
+        "Compile workflow Python",
+        "Validate Main camera and viewport contracts",
+        "Validate ANM draw callback contracts",
+        "Validate ANM manager construction",
+        "Validate transition-effect logical baseline",
+        "Validate transition-effect pin portability",
+        "Validate actual Chain dispatcher status controls",
+        "Validate supervisor binding identity",
+        "Validate documentation references",
+        "Validate ledgers",
+        "Validate ANM/ECL core source completeness",
+        "Validate toolchain declarations",
+        "Validate canonical match graph",
+        "Validate open whole-build graph",
+        "Check generated progress",
+        "Check whitespace"
+      ],
+      "stage_count": 16,
+      "default_stage_count": 121,
+      "log_sha256": "edfb405ca0c6e78a8f6b3897847981b16667cc30a8a5ed36903bbe0b4fbe40ed"
+    },
+    "full_ci": false,
+    "full_exact_cohort_replay": false,
+    "whole_product": false,
+    "native_runtime": false,
+    "first_ci_attempt": {
+      "exit": 1,
+      "stopped_stage": "Validate actual Chain dispatcher status controls",
+      "reason": "strict AnmManager.cpp LF pin changed by reviewed constructor; no host execution at this failed stage",
+      "resolution": "inverse whole-file check and unchanged helper/other-six dependencies justify a single active LF pin update; final stage passes unchanged rejection rules"
+    },
+    "canonical_focused_oracle": {
+      "owners": 20,
+      "bytes": 585,
+      "fields": 52,
+      "result": "exact"
+    },
+    "toolchain_check": 0,
+    "tracking": 0,
+    "generated_progress_check": 0,
+    "git_diff_check": 0,
+    "known_host_limitation": "transition-effect baseline retains its existing kind8 FP rounding gap; no target/native FP/runtime promotion"
+  }
+}
