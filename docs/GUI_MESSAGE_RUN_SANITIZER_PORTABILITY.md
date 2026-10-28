@@ -1,5 +1,10 @@
 # Host sanitizer portability follow-up
 
+Historical test record: the construction/lifecycle host suites cited here were
+retired on 2026-10-28. Commands for deleted scripts apply to commit `47d9993`,
+not the current tree. Their results are historical evidence, not requirements
+for exact reconstruction; follow [the current workflow](RE_WORKFLOW.md).
+
 The initially applied fresh v2 remote ASan+UBSan campaign failed: command
 c902306744714edca1799035dab714a0 (2026-10-17 05:41:35–05:42:16 UTC)
 timed out after 30 seconds while running the `sides` selection. This is not a

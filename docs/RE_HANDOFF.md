@@ -1,5 +1,30 @@
 # TH10 reconstruction handoff
 
+## Exact-only validation scope — 2026-10-28
+
+Operator direction: focus on exact reconstruction and remove unrelated tests
+and requirements. Use local tools directly, `gpt-6.1-sol:` commits, no push.
+[AGENTS.md](../AGENTS.md), the [workflow](RE_WORKFLOW.md), exact-first method,
+Oracle policy and repository skill now agree on this scope.
+
+Default CI is **seven lightweight checks**, down from123. Eleven comparator
+self-tests remain available through explicit `--only` selection when that
+mechanism changes. Host C++ simulations, failure/null/exception scenarios,
+lifecycle suites, sanitizer/leak runs and mutation campaigns are no longer CI
+or checkpoint requirements. Seven construction/lifecycle test scripts and four
+fixtures were deleted (3019 lines); earlier commands/results are historical and
+recoverable at commit `47d9993`. Other retained host tools are optional references.
+
+Keep complete-owner bytes, fields/local targets, callee bindings, ABI, verified
+target/toolchain and cold reproducibility strict. Replay only new/affected exact
+owners. Do not require whole-subsystem source completeness, whole-product build
+graphs, Factory attestations or a fresh toolchain execution smoke per unit.
+Target error/cleanup branches are still reconstructed in the ordinary byte Oracle.
+This maintenance batch changes no game source, match ledger or exact totals.
+Validation: all seven default checks pass; explicit internal-destination
+selection passes its five existing checks; an unknown/retired stage is rejected
+before any check runs. No host suite or native rebuild was run.
+
 ## Direct-local Ending construction exact — 2026-10-28
 
 [Ending ID storage](evidence/ending-id-storage-20261028/README.md) admits

@@ -1,5 +1,10 @@
 # Revised member-construction validation
 
+Historical test record: the construction/lifecycle host suites cited here were
+retired on 2026-10-28. Commands for deleted scripts apply to commit `47d9993`,
+not the current tree. Their results are historical evidence, not requirements
+for exact reconstruction; follow [the current workflow](RE_WORKFLOW.md).
+
 ## Scope
 
 Clean baseline24039fa95a52fa2668294e81cbad67cb10ad131d. All79 retained source

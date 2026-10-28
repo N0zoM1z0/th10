@@ -1,5 +1,16 @@
 # TH10 exact-first method, 2026-10-24
 
+## Current execution — 2026-10-28
+
+Use local tools directly and `gpt-6.1-sol:` commits; never push. Exact work
+requires complete native byte/field/ABI comparison and cold reproducibility.
+Host allocation-failure/null/exception simulations, lifecycle suites,
+sanitizer/leak runs and mutation campaigns are not checkpoint requirements.
+Replay only affected exact owners. Default CI is seven lightweight repository
+checks; select comparator self-tests only when changing that mechanism.
+See [the current workflow](RE_WORKFLOW.md). Earlier validation reports below
+are historical observations, not a checklist to repeat.
+
 ## Decision and scope
 
 The operator approved this method on 2026-10-24: document it, then advance the
@@ -95,7 +106,7 @@ addresses, data, layouts, ownership or exactness claims.
    fragment is not exact credit. Retain TH10's `/GL` where applicable.
 6. **Accept only whole-owner exactness.** An apparently exact trial still
    requires canonical cold reproducibility and the existing full comparison
-   contract. Keep Factory acceptance separate when that transport is used.
+   contract. Use the local canonical comparison tools.
    Retained-artifact replay, a successful build and a local commit each have
    zero new exactness authority by themselves.
 7. **Make readable source after stable exactness.** Improve names, types,
@@ -123,26 +134,13 @@ the comparator until it accepts a preferred source. No copied target bytes,
 fake ABI/returns, inert padding, register hints used merely to force allocation,
 or weakened masks/extent/local-target/callee rules are permitted.
 
-## Hypothesis checklist
+## Experiment notes
 
-Record this small packet before an experiment:
-
-- Owner ID, reviewed target extent, origin and source mapping; unknowns remain
-  explicit. State why this medium/large representative is useful.
-- Source checkpoint, target identity, compiler/profile and full input graph.
-  Distinguish the actual maintained caller/support context from a private probe.
-- Concrete TH10 observation and one coherent source/context model. Identify the
-  uncertainty: value/width, capture/lifetime, rounding, branch/loop endpoint,
-  packet/state/metadata, actual callee declaration, or supported graph context.
-- Predicted effect and falsifier: affected operation/field/local target and the
-  expected full-owner outcome. Explain how this differs from prior controls.
-- Baseline and candidate paths/hashes, complete comparison command and all
-  extent/field/local-target/callee/guard gates.
-- Result category: structural failure, valid nonexact, byte-identical control,
-  exact candidate awaiting cold replay, or accepted complete exact owner.
-  Separate observation from inferred cause.
-- Next decision: retain, reject/revert, refine using new evidence, or park and
-  switch. State the reopening condition, not an unbounded list of guesses.
+Keep a short note of the complete owner, target/source/build identity, the
+concrete observation and predicted change, then its full comparison result.
+An existing receipt or script may supply those details; do not create a separate
+checklist, host-test matrix or report merely to satisfy process. Record whether
+the model was retained, rejected or parked. Unknowns remain explicit.
 
 ## Candidate-selection space
 
@@ -188,17 +186,12 @@ Every checkpoint reports separately:
    matches, structural rejections and useful negative controls. Never add their
    fragments or ordinary equal-byte counts to the exact total.
 
-Current execution uses the Web/Factory registered `th10` repository. The
-coordinator owns compiler scheduling, gates and local commits: native builds
-run serially, on one CPU, at niceness 10. Read-only analysis and disjoint
-documentation work may be delegated without starting competing builds.
-Use commit prefix `gpt-dots: ...`; local commits only, no push. Earlier
-`gpt-6.1-sol`, direct-local-only and no-subagent session directions are
-historical context, not the current routing policy. Preserve the nine unrelated
-untracked files under `docs/evidence/d3d-adapter-format/`; they are not part of
-this method change.
+Run compiler/linker jobs locally, serially on one CPU at niceness 10, with
+bounded runtime and retained exit logs. Use `gpt-6.1-sol:` local commits and never
+push. Preserve unrelated work, including D3D adapter evidence. No Factory
+transport, coordinator or parallel-agent requirement applies.
 
-## Method checkpoint validation
+## Historical method checkpoint validation
 
 This checkpoint changes routing and documentation only. Source, headers,
 compiler profiles, comparison contracts and exactness ledgers remain unchanged.

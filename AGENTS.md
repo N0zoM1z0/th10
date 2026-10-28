@@ -1,141 +1,96 @@
 # TH10 reconstruction agent rules
 
-This repository targets only the original Japanese TH10 version 1.00a
-executable identified by SHA-256
-`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
-Never substitute a localized, modified, Steam, trial, or earlier executable.
+## Current direction — October 28, 2026
 
-The canonical private game file is
-`/home/pentester/coding/codex_ida/th10-reconstruction/th10/resources/th10.exe`
-(`resources/th10.exe` from the repository root). It is a read-only, ignored
-operator input copied into WSL from the Windows game directory; it must never be
-committed. Repository tools use this path by default. Do not search `/mnt`, add
-a Windows game-directory mount, or set `TH10_TARGET_PATH` during normal Factory
-work. That environment variable is only an explicit local override.
+The current task is exact reconstruction. Target at least 98% of reviewed
+authored owned bytes exact. Prioritize complete medium/large representatives
+alongside useful leaves, and compare the first complete source early. Natural
+low-level C/C++ and provisional numeric/offset names are acceptable.
 
-## Current operator direction — October 24, 2026
+Call local tools directly. Do not route through Factory providers, require
+Factory receipts, or read Factory guidance as a session prerequisite. Use
+`scripts/ghidra.py` for read-only local Ghidra analysis when needed.
 
-The operator resumed TH10 through Factory after pausing TH09, then explicitly
-approved the exact-first method learned from a read-only review of recent TH105
-commits. Target at least 98% of reviewed authored owned bytes exact. Prioritize
-complete medium/large representatives; compare the first complete source early.
-Permit provisional offset/numeric names and natural low-level C/C++ rather than
-requiring readable abstractions first. Repeated byte-neutral controls should be
-parked with receipts; reopen only with new independent evidence and a falsifiable
-prediction. Preserve strict whole-owner, field/local-target and ABI checks.
-See docs/TH10_EXACT_FIRST_METHOD_20261024.md for the operational checklist.
-
-This is the resumed Factory Web workflow. Earlier direct-local routing is
-historical. Keep all compiler/linker jobs serial, one CPU at nice10, with bounded
-runtime and retained exit logs. Do not transplant TH105's VC8 profiles into TH10.
-Use English local commits prefixed `gpt-dots:`, author
+Use English local commits prefixed `gpt-6.1-sol:`, author
 `N0zoM1z0 <1705004398@qq.com>`, with trailer
 `Co-authored-by: gensokyo-dev <342580529+gensokyo-dev@users.noreply.github.com>`.
-Never push. Preserve the nine unrelated untracked D3D adapter evidence files.
+Never push. Preserve unrelated work, including D3D adapter evidence.
 
-## Mandatory session recovery
+## Target and recovery
 
-Before changing anything:
+Only the original Japanese TH10 v1.00a executable is valid, SHA-256
+`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+The canonical private input is `resources/th10.exe` under this repository.
+Keep it read-only, ignored, and uncommitted. Do not search `/mnt`, add Windows
+mounts, or set `TH10_TARGET_PATH` without an explicit operator override.
 
-1. Read `docs/RE_HANDOFF.md`, `docs/RE_WORKFLOW.md`, `docs/ORACLES.md`, and the
-   relevant source or ledger rows.
-2. Run `git status --short --branch`, inspect tracked and untracked work, and
-   review the diff. A previous Web session may have disconnected while leaving
-   valuable dirty work. Understand, recover, finish, or deliberately supersede
-   it; do not silently work around it.
-3. In the repository shell, use `scripts/repo-python` for repository Python
-   commands. It selects an interpreter only after verifying the exact pinned
-   Capstone decoder in `config/tools.lock.toml`; a Web shell may otherwise use
-   `/usr/bin/python3` with Ubuntu's incompatible Capstone 4.0.2. Run
-   `scripts/repo-python scripts/verify-target.py`,
-   `scripts/repo-python scripts/verify-toolchain.py --execute`,
-   `scripts/repo-python scripts/validate-tracking.py --require-target`, and
-   `scripts/repo-python scripts/report-reconstruction-status.py` before
-   target-dependent work. From GPT-web, attest Ghidra separately through the Factory-native
-   `th10-ghidra` provider: discover its operation schemas, then call
-   `check` and require a passed attestation for `target:th10-main` with
-   `attestation.provider_transport=factory-native-command`. The preflight call's
-   arguments are exactly `{}`.
-4. Work on one bounded unit or one coherent infrastructure batch and leave a
-   reviewable local checkpoint.
+At session entry, inspect `git status --short --branch`, tracked/untracked work
+and the diff. Recover dirty work before proceeding. Read the current handoff
+and relevant source/ledger rows; consult workflow and Oracle details for the
+lane being used rather than rereading every historical document.
 
-When available, also read the Factory guidance at
-`/home/pentester/coding/codex_ida/touhou-reconstruction-factory/docs/ontology.md`,
-`docs/semantic-reconstruction.md`, `docs/agent-autonomy.md`, and
-`docs/worktree-recovery-and-analysis-artifacts.md` below that Factory root.
-These explicit paths are authoritative even when a client does not inject a
-plugin skill.
+Use `scripts/repo-python` for repository Python. Before target-dependent work,
+run `scripts/repo-python scripts/verify-target.py`. Check toolchain declarations
+with `scripts/repo-python scripts/verify-toolchain.py --check`; run its
+`--execute` smoke on setup, toolchain changes, or a compiler/Wine problem, not
+before every unit. Attest local Ghidra before using its observations; no Ghidra
+call is needed for a documentation/test-maintenance batch.
 
-## Adjacent-game hypothesis sources
+## Exact work and acceptance
 
-The Factory mounts three adjacent reconstructions read-only for TH10 work:
-
-- `/home/pentester/coding/codex_ida/th08-reconstruction/th08`
-- `/home/pentester/coding/codex_ida/th09-reconstruction/th09`
-- `/home/pentester/coding/codex_ida/th095-reconstruction/th095`
-
-Inspect their source, history, scripts, and game-local knowledge when a TH10
-subsystem has a plausible analogue. They may suggest source shape, names, engine
-structure, compiler idioms, and useful probes, but they are hypothesis material
-only. TH095 is itself undergoing semantic reconstruction, so its semantic names,
-owners, layouts, and abstractions are especially provisional. No adjacent
-game's addresses, bytes, layouts, ownership, behavior, or exactness claims are
-TH10 evidence. Accept every TH10 conclusion only from TH10-local target, Ghidra,
-xref, ABI, compiler, exact-byte, build, or runtime evidence. When the games
-differ or the comparison is inconclusive, keep the TH10 fact unknown.
-
-## Evidence and state
-
-- Keep target observations, Ghidra observations, compiler observations, runtime
-  observations, cross-game corroboration, inference, and unknowns distinct.
-- Ghidra names, types, boundaries, and decompilation are provisional semantic
-  evidence. They do not establish authorship, object ownership, or exactness.
-- Keep boundary review, origin, source presence, exact codegen, native build
-  closure, runtime validation, and port status independent.
-- Only a target-bound, complete, reproducible VC7.1 comparison may enter
+- Work on one bounded owner or coherent infrastructure batch and leave a
+  reviewable local checkpoint. Prefer complete comparisons over speculative
+  test matrices. Park repeated byte-neutral controls; reopen with new evidence
+  and a falsifiable prediction.
+- Keep compiler/linker jobs serial, one CPU at nice10, with bounded runtime and
+  retained exit logs. Preserve TH10's pinned VC7.1 profiles and LTCG `/GL` where
+  applicable; do not transplant another game's compiler flags.
+- Preserve strict complete-owner bytes, every relocation/resolved field, fixed
+  local destinations, required callee bindings and actual ABI. Only a complete,
+  target-bound, cold-reproducible zero-difference comparison may enter
   `config/matches.csv`. Near matches remain candidates.
-- The target contains normal C, normal C++, and LTCG C++ build-6030 inputs.
-  `scripts/compare-coff-function.py` proves only declared normal-COFF units.
-  Never remove `/GL` merely to make an LTCG-owned function fit that Oracle;
-  keep its exact state unknown until a linked-image extent workflow exists.
-- Use natural source. Never copy target bytes, manufacture fake returns, add
-  inert padding, lie about the ABI, or patch target code to force equality.
-- Record durable TH10 facts in `docs/KNOWLEDGE_BASE.md`. Cross-game promotion
-  belongs to a later Factory review and is not performed by a game session.
+- Use natural source. Never copy target bytes, manufacture returns, add inert
+  padding, force registers through fake ABI declarations, or patch target code.
+- Replay new exact owners and affected existing exact bodies/interfaces with
+  explicit `--unit` selectors. Do not replay the full historical cohort or all
+  consumers merely because they share a source/header/build graph.
+- Do not add or require host simulations of allocation failure, null-pointer
+  paths, exception injection, ownership/lifecycle scenarios, sanitizer/leak runs,
+  or mutation campaigns for ordinary exact work. The target's actual branches
+  and cleanup code still belong in its complete byte comparison. A small probe
+  is appropriate only when it resolves a specific current exact mismatch.
+- Comparator self-tests are needed when that comparator changes, limited to the
+  affected mechanism. EH address/metadata binding checks are exactness checks;
+  they do not require executing failure scenarios.
 
-## Phase gates
+## Evidence and later phases
 
-The required order is exact reconstruction, faithful Windows i386 product
-closure, semantic reconstruction with target-plus-native dual Oracles, and only
-then portability. Do not treat exact units as proof that the executable builds
-or runs. Audit data owners, static initialization, resources, library objects,
-link order, and exercised runtime paths before opening the semantic gate.
+Keep boundary review, origin, source presence, exact codegen, product closure,
+runtime validation and portability independent. Ghidra names/types/boundaries
+are provisional. Record durable TH10 facts in `docs/KNOWLEDGE_BASE.md` and the
+current handoff; retain compact reproducible evidence rather than test reports
+unrelated to the exact claim.
 
-## Autonomy and tools
+Adjacent TH08/TH09/TH095 reconstructions may suggest hypotheses, never TH10
+bytes, layouts, ownership or exactness. Consult them only for a concrete lead.
+Unknown TH10 facts stay unknown.
 
-Agents may use broad repository Bash and compose small Ghidra, compiler, Wine,
-comparison, and Git tools as needed. The framework exists to improve feedback,
-accuracy, and resumability, not to restrict competent investigation. Each
-important operation must still fail closed on the wrong target.
+Product build/runtime closure, semantic dual-Oracle work and portability are
+later phases. Do not require their tests or whole-build/source-completeness
+reports to finish an exact unit. Do not claim these phases from exactness.
 
-The current Factory-native Ghidra provider is read-only. Never patch target
-bytes. The private database is working state; mirror durable conclusions into
-the repository.
+## Checkpoint
 
-## Checkpoints and artifacts
+For source changes, finish with the affected native exact comparison. For
+metadata/docs/test-only changes, do not rebuild game code. Run the lightweight
+`scripts/repo-python scripts/ci.py` and `git diff --check`. Its default seven
+checks cover Python syntax, docs, ledgers, toolchain declarations, canonical
+match graph, generated progress and whitespace. Select affected Oracle
+self-tests explicitly with `--only` when changing comparison infrastructure.
+Regenerate progress only when its ledger inputs change.
 
-- Use concise, coherent local commits. Follow an operator-specified commit
-  prefix when one is given; otherwise use `gpt-web: ...` for Web-authored
-  checkpoints. Web agents may commit in this repository but must not push.
-- Keep decompiler dumps, logs, experiments, screenshots, and generated reports
-  below `.analysis/`; keep builds below `build/`, shared-tool links below
-  `.tools/`, and the private database below `ghidra-project/`.
-- Do not accumulate scratch indefinitely. At the end of a bounded unit, retain
-  only evidence needed to reproduce an unresolved claim, turn reusable work
-  into a script or durable note, and remove superseded disposable artifacts.
-- Never commit the original executable, game archives/data, Ghidra databases,
-  toolchains, generated decompiler text, credentials, or private endpoints.
-- Finish with the focused Oracle, `scripts/repo-python scripts/verify-toolchain.py --check`,
-  `scripts/repo-python scripts/validate-tracking.py`,
-  `scripts/repo-python scripts/progress.py`, `scripts/repo-python scripts/ci.py`,
-  and `git diff --check`.
+Keep scratch/logs below `.analysis/`, builds below `build/`, shared-tool links
+below `.tools/`, and the private database below `ghidra-project/`. Remove
+superseded experiments after retaining useful evidence. Never commit original
+game binaries/data, databases, toolchains, generated decompiler text,
+credentials or private endpoints.

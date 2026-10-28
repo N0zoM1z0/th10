@@ -1,5 +1,10 @@
 # GUI lifecycle source recovery
 
+Historical test record: the construction/lifecycle host suites cited here were
+retired on 2026-10-28. Commands for deleted scripts apply to commit `47d9993`,
+not the current tree. Their results are historical evidence, not requirements
+for exact reconstruction; follow [the current workflow](RE_WORKFLOW.md).
+
 ## Scope and target identity
 
 This proposal maintains three complete genuine owners: GuiView::~GuiView at 4145F0–41482D (574 bytes), GuiCleanupResources at 414370–41454B (476 bytes), and the necessary GuiMessageVmView::~GuiMessageVmView dependency at 4136C0–413720 (97 bytes). Total 1147 target bytes of source coverage; this is not accepted exact-byte credit. The 97-byte body closes a real dependency rather than serving as a count-oriented milestone.

@@ -1,5 +1,10 @@
 # Fresh constructor / interpreter / destructor host integration
 
+Historical test record: the construction/lifecycle host suites cited here were
+retired on 2026-10-28. Commands for deleted scripts apply to commit `47d9993`,
+not the current tree. Their results are historical evidence, not requirements
+for exact reconstruction; follow [the current workflow](RE_WORKFLOW.md).
+
 These files and evidence were rebuilt after the workspace replacement. No lost v1 output is presented as fresh evidence.
 
 This is local host semantic coverage. It does not build or execute the native target or establish target ABI/layout, runtime dependency closure, binary equivalence, original source identity or exactness.

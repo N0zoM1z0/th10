@@ -1,5 +1,10 @@
 # Whole-dispatcher fixed native observation
 
+Historical test record: the construction/lifecycle host suites cited here were
+retired on 2026-10-28. Commands for deleted scripts apply to commit `47d9993`,
+not the current tree. Their results are historical evidence, not requirements
+for exact reconstruction; follow [the current workflow](RE_WORKFLOW.md).
+
 ## Result and scope
 
 One fixed ten-TU `/GL` diagnostic links successfully. The naturally emitted Run owner is **4,136 bytes**, versus the target's 4,480. Its actual caller now pushes the message pointer and both Run exits use `RET 4`; the previous EAX/plain-RET boundary mismatch is gone in this observation. This is a code-generation observation, not whole-owner equivalence, canonical byte credit, or permission to execute the diagnostic image.

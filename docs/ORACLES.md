@@ -196,6 +196,21 @@ If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent
 completion.
 
+## Validation scope during exact reconstruction
+
+The current checkpoint Oracle is the affected complete native byte comparison,
+including every relocation/resolved field, local destination, callee binding and
+ABI, with cold reproducibility for accepted owners. Execute only the affected
+canonical units. These acceptance checks remain strict.
+
+Host allocation-failure, null-pointer and exception-injection scenarios,
+lifecycle simulations, sanitizer/leak runs and mutation campaigns are not
+requirements for exact reconstruction. Target cleanup/error instructions remain
+part of the complete byte comparison. EH handler/metadata checks below bind
+addresses for that comparison; they do not require exercising exceptions.
+Comparator changes use only their affected self-tests, selected explicitly.
+Product/runtime/semantic Oracles in the table are later-phase requirements.
+
 ## TH10 authored-byte metric
 
 The existing progress metric sums `functions.csv.size` for authored rows and

@@ -60,12 +60,21 @@ scripts/repo-python scripts/progress.py
 scripts/repo-python scripts/ci.py
 ```
 
+Default CI runs seven lightweight repository checks and no host C++ fixtures.
+Exact reconstruction uses complete native byte comparisons and cold replays of
+explicitly selected affected units. Allocation-failure/null/exception host
+scenarios, sanitizer/leak sweeps and mutation campaigns are not checkpoint
+requirements. Comparator self-tests are opt-in with `ci.py --only 'STAGE'` when
+that mechanism changes. See [the current workflow](docs/RE_WORKFLOW.md).
+
 The repository pins a VC7.1 SP1 candidate reporting compiler/linker build 6030
 and provides a headless-Wine verifier. Its smoke covers normal C/C++ COFF, C++
 LTCG, resources, and a PE32 link. Target Rich records independently show 131
 normal C, 15 normal C++, and 52 LTCG C++ inputs. Accepted exact units bind their
-own compiler contexts; production translation-unit partition, libraries,
-resources, data owners, and link order remain open.
+own compiler contexts. Run `verify-toolchain.py --execute` on setup, toolchain
+changes or compiler/Wine problems; it is not a per-owner prerequisite. Production
+translation-unit partition, libraries, resources, data owners, and link order
+remain open.
 
 Use `scripts/repo-python` for repository Python commands. It selects an
 interpreter only when its Capstone package matches all four hashes in
@@ -76,9 +85,8 @@ only for a candidate execution and still verifies the same four locked files
 before running the requested command.
 
 ```bash
-scripts/repo-python scripts/verify-toolchain.py --execute
+scripts/repo-python scripts/verify-toolchain.py --check
 scripts/repo-python scripts/build-match-unit.py --check
-scripts/repo-python scripts/report-source-completeness.py --module AnmManager --require-complete
 scripts/repo-python scripts/report-exact-backlog.py
 scripts/repo-python scripts/rank-exact-backlog.py --source src/PbgArchive.cpp
 scripts/repo-python scripts/probe-exact-backlog.py --source src/PbgArchive.cpp

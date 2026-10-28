@@ -1,5 +1,10 @@
 # Fresh v2 independent host methodology review
 
+Historical test record: the construction/lifecycle host suites cited here were
+retired on 2026-10-28. Commands for deleted scripts apply to commit `47d9993`,
+not the current tree. Their results are historical evidence, not requirements
+for exact reconstruction; follow [the current workflow](RE_WORKFLOW.md).
+
 Final evidence-qualified disposition: no blocking type, lifetime, domain, extraction, or strict-classifier issue found in inspected exercised paths. Independently checked all seven fresh manifests against current source-input hashes and raw run logs, the packaged broad driver/fixture/catalog copies, all four signed production hashes, and all 28 exact mutation transforms. No old-v1 results are used. This reviewer did not build or run tests.
 
 Fresh evidence confirms 13 broad positive selections both unsanitized and ASan+UBSan, 28 strict unsanitized mutants, and a packaged unsanitized 13-selection smoke run. Both baseline modes show the control passing and the three assigned source failures. Both lifecycle modes show the exact positive success line and the strict sixth-deletion omission failure. Detailed independently checked manifest hashes are in GUI_MESSAGE_RUN_TEST_REVIEW_HASHES.json. These are scoped host semantic results under the seams below, not native acceptance or exactness.

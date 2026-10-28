@@ -1,5 +1,10 @@
 # GUI message Run: fixed native reproduction and integration gates
 
+Historical test record: the construction/lifecycle host suites cited here were
+retired on 2026-10-28. Commands for deleted scripts apply to commit `47d9993`,
+not the current tree. Their results are historical evidence, not requirements
+for exact reconstruction; follow [the current workflow](RE_WORKFLOW.md).
+
 The tracked diagnostic is `scripts/diagnostics/gui-message-run/diagnose-gui-message-run-native.py`,
 with adjacent `native-inputs.json`. Both are byte-identical to the executed v2
 baseline. This is a code-generation diagnostic, not a runnable rebuilt game or
