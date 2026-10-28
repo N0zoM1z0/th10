@@ -6251,7 +6251,7 @@ callback, null added/deleted callbacks, low flag bits3 and incoming manager arg
 before the real Chain Add calls. Removing unresolved source facades and adding
 actual Chain.cpp gives complete native2408; AnmManager-only `/EHs`, motivated by
 target EH/member-array construction, gives2308. Both are nonexact. The source
-captureVmId default constructor adds a pre-clear+0x732454 store absent target;
+nextVmId default constructor adds a pre-clear+0x732454 store absent target;
 EH frame, VM flag/loop and repeated Chain scheduling also differ. This is a
 representation/lifetime lead, not authorization to change all ID construction
 or force an ABI. Source-only MainConfigureCamera remains nonexact as well.
@@ -6261,3 +6261,28 @@ The new20 exact owners include only5 authored owners; total authored exact is
 cover ordering, pointer reloads, word cache, shake separation, callback identity,
 priorities and flags. Neither these checks nor diagnostic anchored links close
 native runtime, allocation initialization, production ownership or product build.
+
+## 2026-10-28 Complete ANM constructor falsifiers and CRT absolute symbol
+
+The [constructor follow-up](evidence/anm-constructor-controls-20261028/README.md)
+corrects the old capture-ID label: manager+0x732454 is the maintained `nextVmId`
+serial handle. A plain unsigned counter removes the unwanted pre-clear store
+but loses every complete AddVm body: tail117/118,head102/112. Source/header/HUD
+changes are restored; this falsifies that direct scalar source model in the
+reviewed context, without establishing the original physical field type.
+
+The target constructor has no post-clear byte store at+0x3ADA6E. Removing the
+source's redundant currentTextureFilter assignment eliminates that instruction
+while the whole-object clear retains zero. Fresh full13-TU `/GL /GS` output is
+2305/2315, nonexact. Its31 complete existing guards pass2047 bytes/all81 fields.
+The actual273-byte Initialize callee is raw-equal. A natural descending pointer
+loop is complete-native-body byte-identical to the indexed loop; it is restored
+and parked, with no allocator/register/volatile workaround justified.
+
+Hash-attested libcmt.lib's unmodified exsup.obj defines `__except_list` as COFF
+absolute(section=-1),value=0. Adding the entire normal-COFF member to a private
+relink of all13 retained source objects restores the constructor's three FS:[0]
+operands. Size2305 and initial instruction order remain unchanged;31 guards
+still pass. This is a concrete CRT integration fact, not a new exact parent,
+production link order, metadata ownership or EH-runtime proof. No source/profile
+or canonical recipe migration follows. New exact/source bytes are both zero.

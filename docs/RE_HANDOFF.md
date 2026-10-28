@@ -1,5 +1,29 @@
 # TH10 reconstruction handoff
 
+## Direct-local complete ANM constructor controls — 2026-10-28
+
+[The follow-up packet](evidence/anm-constructor-controls-20261028/README.md)
+removes one redundant texture-filter cache write absent target. Complete native
+constructor2305/2315 remains nonexact; **zero new exact/source bytes**. A fresh
+13-TU cold image and two incremental controls retain31 complete guards2047/all81.
+The four registration owners460 and Initialize273 are separately included.
+
+The old capture-ID label was wrong: +0x732454 is `nextVmId`. A plain unsigned
+counter removes its pre-clear constructor store but rejects all four exact
+AddVm owners (117/118 tail,102/112 head); source/header/HUD changes are restored.
+The natural descending pointer loop is complete-body byte-identical to the index
+loop, so restored and parked. A pinned unmodified CRT exsup.obj defines
+`__except_list` absolute0; relinking the retained13 objects restores all three
+FS:[0] operands but leaves EH order/frame/loop differences. This is private
+library-integration evidence, not an adopted parent recipe or runtime claim.
+
+Do not repeat scalar-counter/loop spelling controls without new independent
+evidence. Next triage a substantial complete owner, including the queued1568-byte
+EndingRun, for a concrete semantic uncertainty. Exact totals remain77,823/275,434
+authored bytes,434 owners; source646. All16 selected CI stages pass.
+Only a one-line source deletion and reviewed host pin refresh are retained.
+Direct local tools, `gpt-6.1-sol:` commits, goal **active-incomplete**.
+
 ## Direct-local ANM callbacks and constructor — 2026-10-28
 
 [ANM callback evidence](evidence/anm-draw-callbacks-20261028/README.md) adds
@@ -16,7 +40,7 @@ low flags3 and real two-calc/eighteen-draw registrations. Full contributions
 progress1284 before closure,1884 with real calls,2408 with Chain.cpp and2308
 with target-supported AnmManager-only `/EHs`; it remains **nonexact**, with no
 parent credit. Existing global profiles/old recipes are unchanged. New concrete
-lead: capture-ID default-construction before the manager clear, then EH frame,
+lead: nextVmId default-construction before the manager clear, then EH frame,
 VM initialization/loop and Chain flag scheduling. Do not read size gaps as
 ordinary-byte mismatch counts or change the shared ID constructor blindly.
 

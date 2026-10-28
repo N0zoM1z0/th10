@@ -5,7 +5,7 @@
   "sha256_lf": {
     "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
     "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
-    "src/AnmManager.cpp": "3e26590430c1cf732225a4f2199689f92a7b621fc81ae0172a51cb8f43082a99",
+    "src/AnmManager.cpp": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
@@ -400,5 +400,17 @@
     "strict_normalization_and_rejection_policy_unchanged": true,
     "reason": "Only the complete AnmRenderManagerView constructor changes: use actual ChainElem allocations, low flags3 and real Chain Add entries. Restoring the previous complete constructor reconstructs the entire prior LF-normalized file. The transition fixture consumes only the unchanged RNG helper from this file; host algorithms and rejection policy remain unchanged.",
     "evidence": "docs/evidence/anm-draw-callbacks-20261028/README.md"
+  },
+  "reviewed_anm_redundant_cache_clear_20261028": {
+    "starting_head": "d1d5fd61012fd23115bb7501675dd1273e924525",
+    "input": "src/AnmManager.cpp",
+    "old_sha256_lf": "3e26590430c1cf732225a4f2199689f92a7b621fc81ae0172a51cb8f43082a99",
+    "new_sha256_lf": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+    "whole_file_one_deletion_verified": true,
+    "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "other_six_active_dependencies_unchanged": true,
+    "strict_normalization_and_rejection_policy_unchanged": true,
+    "reason": "Remove only the constructor texture-filter cache write absent from the complete target body; the preceding whole-object clear already establishes zero. No host-consumed algorithm changes. Scalar counter and pointer-loop controls are rejected/restored.",
+    "evidence": "docs/evidence/anm-constructor-controls-20261028/README.md"
   }
 }

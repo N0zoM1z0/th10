@@ -1,0 +1,503 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "d1d5fd61012fd23115bb7501675dd1273e924525",
+  "scope": "complete ANM manager constructor2315; source-only one redundant store deletion; direct local tools",
+  "new_exact_bytes": 0,
+  "new_source_bytes": 0,
+  "authored_exact_bytes": 77823,
+  "reviewed_authored_bytes": 275434,
+  "authored_exact_owners": 434,
+  "baseline_source_sha256": "3e26590430c1cf732225a4f2199689f92a7b621fc81ae0172a51cb8f43082a99",
+  "maintained_source_sha256": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+  "native_controls": {
+    "raw-counter": {
+      "native_size": 2305,
+      "fs_operands": [
+        "eax, dword ptr fs:[0x413224]",
+        "dword ptr fs:[0x413224], esp",
+        "dword ptr fs:[0x413224], ecx"
+      ],
+      "texture_filter_direct_accesses": 1,
+      "preclear_counter_accesses": 0,
+      "constructor_first_mnemonics": [
+        "mov",
+        "push",
+        "push",
+        "push",
+        "mov",
+        "push",
+        "push",
+        "mov"
+      ],
+      "strict_exact_owners": 26,
+      "strict_exact_bytes": 1314,
+      "strict_fields": 81,
+      "source_sha256": "e9448be093f0cb42237ca8fee63e53aa231a239e11d7733f853f828e4f5c6cd3",
+      "image_sha256": "77b35b7dab67c1b013aa0171ffd74a68a07d60f9df84cc760d45c9466155fb22",
+      "exit": 0,
+      "build_kind": "independent cold compilation",
+      "reused_source_object_count": 0,
+      "disposition": "rejected: all four complete registration owners regress"
+    },
+    "cache-only": {
+      "native_size": 2305,
+      "fs_operands": [
+        "eax, dword ptr fs:[0x413224]",
+        "dword ptr fs:[0x413224], esp",
+        "dword ptr fs:[0x413224], ecx"
+      ],
+      "texture_filter_direct_accesses": 0,
+      "preclear_counter_accesses": 1,
+      "constructor_first_mnemonics": [
+        "mov",
+        "push",
+        "push",
+        "push",
+        "mov",
+        "push",
+        "push",
+        "mov"
+      ],
+      "strict_exact_owners": 31,
+      "strict_exact_bytes": 2047,
+      "strict_fields": 81,
+      "source_sha256": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+      "image_sha256": "f6b562453642dd5681af886f1f821da62d64bf840cad45c53fc6771403f7a2f8",
+      "exit": 0,
+      "build_kind": "independent cold compilation",
+      "reused_source_object_count": 0,
+      "disposition": "retained one-line source correction; complete parent remains nonexact"
+    },
+    "pointer-loop": {
+      "native_size": 2305,
+      "fs_operands": [
+        "eax, dword ptr fs:[0x413224]",
+        "dword ptr fs:[0x413224], esp",
+        "dword ptr fs:[0x413224], ecx"
+      ],
+      "texture_filter_direct_accesses": 0,
+      "preclear_counter_accesses": 1,
+      "constructor_first_mnemonics": [
+        "mov",
+        "push",
+        "push",
+        "push",
+        "mov",
+        "push",
+        "push",
+        "mov"
+      ],
+      "strict_exact_owners": 31,
+      "strict_exact_bytes": 2047,
+      "strict_fields": 81,
+      "source_sha256": "4a63853512ff90fe5476779c9c4173a41244fda3e783491e636f9d0a7d64a686",
+      "image_sha256": "fdeb9c60adec77da24d0dbbd29595ac28e9ae1049f7995b88c8fb656822b083d",
+      "exit": 0,
+      "build_kind": "incremental one-TU control",
+      "reused_source_object_count": 12,
+      "disposition": "complete native body byte-identical; source restored and control parked"
+    },
+    "crt-absolute": {
+      "native_size": 2305,
+      "fs_operands": [
+        "eax, dword ptr fs:[0]",
+        "dword ptr fs:[0], esp",
+        "dword ptr fs:[0], ecx"
+      ],
+      "texture_filter_direct_accesses": 0,
+      "preclear_counter_accesses": 1,
+      "constructor_first_mnemonics": [
+        "mov",
+        "push",
+        "push",
+        "push",
+        "mov",
+        "push",
+        "push",
+        "mov"
+      ],
+      "strict_exact_owners": 31,
+      "strict_exact_bytes": 2047,
+      "strict_fields": 81,
+      "source_sha256": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+      "image_sha256": "5844e04f3f5e3d8746f6bc831c9b534a5d7409f9e5a9606658cc7bb927839d61",
+      "exit": 0,
+      "build_kind": "retained-object relink with pinned CRT member",
+      "reused_source_object_count": 13,
+      "disposition": "private real-library relink evidence; no canonical recipe or parent exact adoption"
+    }
+  },
+  "raw_counter_full_registration_rejections": {
+    "anm-manager-add-vm-primary-tail": {
+      "result": "error",
+      "error": "PDB contribution size 0x75 differs from manifest 0x76"
+    },
+    "anm-manager-add-vm-primary-head": {
+      "result": "error",
+      "error": "PDB contribution size 0x66 differs from manifest 0x70"
+    },
+    "anm-manager-add-vm-secondary-tail": {
+      "result": "error",
+      "error": "PDB contribution size 0x75 differs from manifest 0x76"
+    },
+    "anm-manager-add-vm-secondary-head": {
+      "result": "error",
+      "error": "PDB contribution size 0x66 differs from manifest 0x70"
+    }
+  },
+  "pointer_loop_control": {
+    "scope": "complete native constructor vs complete native constructor; no target exact acceptance",
+    "raw_equal": true,
+    "sizes": [
+      2305,
+      2305
+    ],
+    "code_sha256": [
+      "0fb2669e314b35161d80e12040866798905d4016773285dc6b554d2481f26aa4",
+      "0fb2669e314b35161d80e12040866798905d4016773285dc6b554d2481f26aa4"
+    ],
+    "reused_objects": 12
+  },
+  "crt_member": {
+    "archive_sha256": "6bed2e73e7ecf52818133011058e240cd38b122f51302c0c0194d5ff3167357e",
+    "member": "build\\intel\\mt_obj\\exsup.obj",
+    "member_sha256": "a8b09bf5b3d20790c9a906296c97955b4b8d6356f0f51df854b5e7cc46c3e08b",
+    "definitions": [
+      {
+        "name": "__NLG_Dispatch",
+        "value": 233,
+        "section": 1,
+        "type": 0,
+        "storage": 2
+      },
+      {
+        "name": "__NLG_Return2",
+        "value": 154,
+        "section": 1,
+        "type": 0,
+        "storage": 2
+      },
+      {
+        "name": "__NLG_Destination",
+        "value": 0,
+        "section": 2,
+        "type": 0,
+        "storage": 2
+      },
+      {
+        "name": "__except_list",
+        "value": 0,
+        "section": -1,
+        "type": 0,
+        "storage": 2
+      },
+      {
+        "name": "__global_unwind2",
+        "value": 0,
+        "section": 1,
+        "type": 32,
+        "storage": 2
+      },
+      {
+        "name": "__local_unwind2",
+        "value": 66,
+        "section": 1,
+        "type": 32,
+        "storage": 2
+      },
+      {
+        "name": "__abnormal_termination",
+        "value": 170,
+        "section": 1,
+        "type": 32,
+        "storage": 2
+      },
+      {
+        "name": "__NLG_Notify1",
+        "value": 205,
+        "section": 1,
+        "type": 32,
+        "storage": 2
+      },
+      {
+        "name": "__NLG_Notify",
+        "value": 214,
+        "section": 1,
+        "type": 32,
+        "storage": 2
+      }
+    ]
+  },
+  "maintained_source_guards": {
+    "anm-callback-update-primary": {
+      "result": "exact",
+      "bytes": 7,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-update-secondary": {
+      "result": "exact",
+      "bytes": 7,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-0": {
+      "result": "exact",
+      "bytes": 12,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-1": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-2": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-3": {
+      "result": "exact",
+      "bytes": 115,
+      "fields": 12,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-4": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-5": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-6": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-7": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-8": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-9": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-10": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-11": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-12": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-13": {
+      "result": "exact",
+      "bytes": 15,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-14": {
+      "result": "exact",
+      "bytes": 48,
+      "fields": 4,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-15": {
+      "result": "exact",
+      "bytes": 72,
+      "fields": 7,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-16": {
+      "result": "exact",
+      "bytes": 72,
+      "fields": 7,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-callback-layer-19": {
+      "result": "exact",
+      "bytes": 72,
+      "fields": 7,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "main-present": {
+      "result": "exact",
+      "bytes": 236,
+      "fields": 20,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "main-release-anm-surfaces": {
+      "result": "exact",
+      "bytes": 43,
+      "fields": 0,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "main-service-anm-screenshots": {
+      "result": "exact",
+      "bytes": 111,
+      "fields": 2,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-manager-update-primary-vms": {
+      "result": "exact",
+      "bytes": 149,
+      "fields": 3,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-manager-update-secondary-vms": {
+      "result": "exact",
+      "bytes": 123,
+      "fields": 3,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-manager-draw-layer": {
+      "result": "exact",
+      "bytes": 67,
+      "fields": 1,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-manager-add-vm-primary-tail": {
+      "result": "exact",
+      "bytes": 118,
+      "fields": 0,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-manager-add-vm-primary-head": {
+      "result": "exact",
+      "bytes": 112,
+      "fields": 0,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-manager-add-vm-secondary-tail": {
+      "result": "exact",
+      "bytes": 118,
+      "fields": 0,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-manager-add-vm-secondary-head": {
+      "result": "exact",
+      "bytes": 112,
+      "fields": 0,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    },
+    "anm-vm-initialize-private": {
+      "result": "exact",
+      "bytes": 273,
+      "fields": 0,
+      "pdb_guid": "acd5e0438388e54784f9353dc6d07ee3",
+      "pdb_age": 1
+    }
+  },
+  "crt_object_reuse_hashes": {
+    "src/Main.cpp": "b10917c26d2e142a91d9dcb22827594f5908cfae8a7307d4cfb21146b7a18a3f",
+    "src/GameErrorContext.cpp": "57fe540ca9ac0335ae95d08badcd1296e35e995f2154ef032bac637b09236096",
+    "src/FileSystem.cpp": "d841386ec1c4f2a0fb25c7823df9ef19e99d33fc02002c433e5c3804c27a3e92",
+    "src/Midi.cpp": "e03f5e817bee35ae2db05dc24ab47095ccf560ed3d03ac1dbe8dafcf2f432725",
+    "src/PbgArchive.cpp": "37072939240ab3c4ea54e4dc73994ea6541b661b624ef00e4236ac9abbc8b4e4",
+    "src/AnmManager.cpp": "edcde838399bf29a2770fa411332abb6e39b4fb4ce0dbfe5f867b689aa1753ce",
+    "src/RandomMath.cpp": "5836ef780261a1ab11549124cd181a74380bd1dd211de024cefb7d4fe59f38fd",
+    "src/AnmVmCreate.cpp": "495ad0cba44a3f5784923bb0f89da2380edd26578cc5f3cb85edc1727511900f",
+    "src/AnmVmId.cpp": "8dad2987ccbbc3b06e6b0b3659c5a10f1548326f0b7b6cad8524fd73442fc6d4",
+    "src/AnmInt3Scale.cpp": "5b97a40e8472de9a326ed9f605c88e083bf5fdd0613ce135a49a46ade931f886",
+    "src/MainViewport.cpp": "4877c9bf4c093f2c450734d1392ac37e20ebf523733c30a5f6c774a25f81e2d4",
+    "src/AnmDrawCallbacks.cpp": "a0d32a474e778a7de2c0dae36380b2c79d52253ae68895e918cab9c1043f68d7",
+    "src/Chain.cpp": "59f283b2886a7be66228656781fb8bf09322126ce44a8654f7df7d5c9a687b85"
+  },
+  "validation": {
+    "preflight_exit": 0,
+    "local_ghidra_check_exit": 0,
+    "local_ghidra_review_exit": 0,
+    "focused_ci": {
+      "exit": 0,
+      "stages": [
+        "Compile workflow Python",
+        "Validate Main camera and viewport contracts",
+        "Validate ANM draw callback contracts",
+        "Validate ANM manager construction",
+        "Validate transition-effect logical baseline",
+        "Validate transition-effect pin portability",
+        "Validate actual Chain dispatcher status controls",
+        "Validate supervisor binding identity",
+        "Validate documentation references",
+        "Validate ledgers",
+        "Validate ANM/ECL core source completeness",
+        "Validate toolchain declarations",
+        "Validate canonical match graph",
+        "Validate open whole-build graph",
+        "Check generated progress",
+        "Check whitespace"
+      ],
+      "stage_count": 16,
+      "log_sha256": "744edaecb7c1618e5ba8aac2527e6cf56169ed64c0b3fe2b8b0c8ceeb8b56299"
+    },
+    "full_ci": false,
+    "full_cold_cohort": false,
+    "parent_exact": false,
+    "whole_product": false,
+    "runtime": false,
+    "toolchain_check": 0,
+    "tracking_check": 0,
+    "generated_progress_check": 0,
+    "whitespace_check": 0,
+    "known_host_limitation": "existing transition kind8 FP precision gap remains documented; no native FP/runtime claim"
+  }
+}

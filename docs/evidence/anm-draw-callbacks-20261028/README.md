@@ -89,11 +89,11 @@ The target's EH prologue and EH array-construction calls motivate the isolated
 AnmManager `/EHs` profile in this new diagnostic context. `/GL /GS` remains on;
 AnmInt3Scale retains its existing `/Ob1` override. Older recipes and global
 profiles are not migrated. Remaining constructor differences include EH frame
-order/stack locals, a pre-clear capture-ID member constructor store, VM flag
+order/stack locals, a pre-clear nextVmId member constructor store, VM flag
 initialization, loop pointer/counter allocation and Chain flag-store scheduling.
 The diagnostic anchor for FS storage and complex constructor EH metadata do not
 establish a valid exact contract. The near-equal extent grants no parent credit.
-The capture-ID representation/default-construction boundary is a new concrete
+The nextVmId representation/default-construction boundary is a new concrete
 lead; avoid broad ID constructor changes without caller evidence.
 
 ## Strict callback proof and recovery

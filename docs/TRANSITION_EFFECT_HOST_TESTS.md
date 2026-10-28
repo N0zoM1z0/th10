@@ -10,6 +10,10 @@ constructor reconstructs the whole previous file; the extracted RNG helper and
 all six other active inputs are unchanged. Strict normalization and rejection
 rules are retained, with the review recorded in the input manifest.
 
+The same-day [constructor follow-up](evidence/anm-constructor-controls-20261028/README.md)
+refreshes that one LF pin after exactly one redundant cache-store deletion;
+the extracted helper and all six other active inputs remain unchanged.
+
 In an installed repository containing the pinned dependencies:
 
 ```

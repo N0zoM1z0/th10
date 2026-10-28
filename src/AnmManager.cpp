@@ -1225,7 +1225,6 @@ AnmRenderManagerView::AnmRenderManagerView()
     currentVertexShader = 0;
     currentCameraMode = 0xff;
     currentZWrite = 0;
-    currentTextureFilter = 0;
     captureAnmIndex = -1;
     captureSurfaceIndex = -1;
 
