@@ -44,6 +44,9 @@ downloaded tools are private and never committed.
 
 ## Current status
 
+New agents should start with [the current handoff](docs/RE_HANDOFF.md). It
+summarizes the accepted baseline, pending experiment and retained local artifacts.
+
 The tracked function candidates have reviewed boundaries and origins, but some
 origins remain indeterminate and unresolved `.text` gaps can still change the
 inventory. Maintained source and canonical exact units are tracked separately;
