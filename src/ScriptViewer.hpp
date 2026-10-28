@@ -19,7 +19,8 @@ struct ScriptViewerWorkerView
     void *entry018;
     ScriptViewerWorkerView();
     virtual ~ScriptViewerWorkerView();
-    __declspec(noinline) void Stop();
+    // Target Ending destruction has no unwind edge around this wait/close role.
+    __declspec(noinline) void Stop() throw();
     __declspec(noinline) void Start(void *context, int (*entry)());
 };
 

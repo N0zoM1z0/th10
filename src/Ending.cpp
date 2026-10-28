@@ -44,7 +44,7 @@ inline AnmVmView *ResolveEndingTextVm(AnmRenderManagerView *manager, int &id)
 }
 inline void ReleaseEndingTextVm(AnmRenderManagerView *manager, int &id)
 {
-    AnmVmView *vm = ResolveEndingTextVm(manager, id);
+    AnmVmView *vm = manager->FindVm(AnmVmIdView(id));
     if (vm)
     {
         vm->flags35C |= 0x04000000u;

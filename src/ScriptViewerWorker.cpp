@@ -11,7 +11,7 @@ ScriptViewerWorkerView::~ScriptViewerWorkerView()
     Stop();
 }
 
-void ScriptViewerWorkerView::Stop()
+void ScriptViewerWorkerView::Stop() throw()
 {
     if (thread)
     {

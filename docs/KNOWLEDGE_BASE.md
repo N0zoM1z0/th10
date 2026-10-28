@@ -6320,3 +6320,15 @@ raw reads unchanged; no BSS initializer contents are inferred. Full code,
 18 table words, local destinations and native authoritative field coverage are
 inventoried. This is diagnostic address coverage, not full Run semantic binding.
 Authored exact totals78,471/275,434 bytes,435 owners; source coverage is unchanged.
+
+## 2026-10-28 Ending release tail and worker nonthrowing contract
+
+Target40B3A0 releases five text IDs, clearing each only at the common tail,
+and calls worker Stop before the loop and through final member destruction.
+It has an EAX receiver/plain RET and no exceptional member-cleanup edge.
+The exact101-byte Stop body calls only WaitForSingleObject/Sleep/CloseHandle.
+Direct FindVm in the release helper plus a standard `throw()` Stop contract
+reproduce the complete192-byte owner/all4 fields in two independent18-TU colds,
+with existing648-byte construction intact. Original exception-specification
+spelling/TU remains unknown. `/EHsc` controls are neutral and not adopted.
+See [the exact destruction proof](evidence/ending-teardown-20261028/README.md).

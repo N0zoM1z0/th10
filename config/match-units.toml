@@ -25151,3 +25151,23 @@ linkages = [
   { offset = 0x1f7, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
   { offset = 0x27e, type = "DIR32", symbol = "__except_list", target = 0x0 },
 ]
+
+[units.ending-text-destructor]
+source = "src/Ending.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/FrontEnd.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/FileSystem.cpp", "src/Main.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/DecomphelpLeafAccessors.cpp", "src/TransitionEffect.cpp", "src/Sound.cpp", "src/Player.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+entry_symbol = "?CalcExecutableChecksum@GameWindowView@@SAHXZ"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/EndingLoadScript"
+functions = ["EndingTextVmView::~EndingTextVmView"]
+symbol = "??1EndingTextVmView@@QAE@XZ"
+target_address = 0x0040B3A0
+size = 192
+linkages = [
+  { offset = 0x12, type = "REL32", symbol = "?Stop@ScriptViewerWorkerView@@QAEXXZ", target = 0x44C150 },
+  { offset = 0x18, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x491C10 },
+  { offset = 0xB1, type = "DIR32", symbol = "??_7ScriptViewerWorkerView@@6B@", target = 0x4703E4 },
+  { offset = 0xB6, type = "REL32", symbol = "?Stop@ScriptViewerWorkerView@@QAEXXZ", target = 0x44C150 },
+]

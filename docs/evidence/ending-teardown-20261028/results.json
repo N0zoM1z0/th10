@@ -1,0 +1,214 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "unit": "ending-text-destructor",
+  "target_extent": [
+    "0x0040B3A0",
+    "0x0040B45F"
+  ],
+  "source_pins": {
+    "src/Ending.cpp": "fdbc89e9f21f5b90a247a37fa25486c797dc4d5959c4b3e9e669a065bfc38627",
+    "src/ScriptViewer.hpp": "3b436665dac628f6dcbb525d1bd7788a4b2b83b9996facd2ee290e446e498fc9",
+    "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157"
+  },
+  "controls": [
+    {
+      "model": "direct-lookup",
+      "text_destructor_size": 232,
+      "strict_existing_passes": 10,
+      "image_sha256": "8596ba6ce7a20fc570a2237d40ec6281ef7049db20bb249661fc8f5bb6e816c0"
+    },
+    {
+      "model": "worker-c",
+      "text_destructor_size": 232,
+      "strict_existing_passes": 10,
+      "image_sha256": "c1f9c587e21d9ec129f79ac08922f73684b4c111f1d530fed07eb653dc8fdef2"
+    },
+    {
+      "model": "both-c",
+      "text_destructor_size": 232,
+      "strict_existing_passes": 10,
+      "image_sha256": "1445d7b81f4037ce9c030e81ce09031a8ec77a9a0b81ec314c0aae2d13d7661d"
+    },
+    {
+      "model": "stop-contract",
+      "text_destructor_size": 192,
+      "strict_existing_passes": 10,
+      "image_sha256": "6a186db405fb8a871420edf7e23c43513115dfa353d7dcbfabf5df77136b6bc8"
+    }
+  ],
+  "cold_proofs": [
+    {
+      "model": "cold-a",
+      "build": "18 independently compiled TUs; no object reuse",
+      "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ending-teardown-20261028/cold-a/source.exe",
+      "image_sha256": "ab5a9fd069f4608998084e3078a8e2ee0657f348ae551fdada54539f9b7e66f4",
+      "new_exact_bytes": 192,
+      "new_fields": 4,
+      "existing_guard_bytes": 1276,
+      "existing_guard_fields": 43,
+      "strict_units": {
+        "ending-create": {
+          "bytes": 99,
+          "fields": 5
+        },
+        "ending-delete": {
+          "bytes": 18,
+          "fields": 2
+        },
+        "ending-update": {
+          "bytes": 111,
+          "fields": 4
+        },
+        "ending-update-callback": {
+          "bytes": 10,
+          "fields": 1
+        },
+        "ending-text-tick": {
+          "bytes": 93,
+          "fields": 5
+        },
+        "ending-load-animation-callback": {
+          "bytes": 18,
+          "fields": 2
+        },
+        "ending-load-script": {
+          "bytes": 106,
+          "fields": 5
+        },
+        "ending-text-constructor": {
+          "bytes": 648,
+          "fields": 12
+        },
+        "ending-text-destructor": {
+          "bytes": 192,
+          "fields": 4
+        },
+        "script-viewer-worker-destructor": {
+          "bytes": 16,
+          "fields": 2
+        },
+        "script-viewer-worker-stop": {
+          "bytes": 101,
+          "fields": 3
+        },
+        "script-viewer-worker-start": {
+          "bytes": 56,
+          "fields": 2
+        }
+      }
+    },
+    {
+      "model": "cold-b",
+      "build": "18 independently compiled TUs; no object reuse",
+      "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/EndingLoadScript/source.exe",
+      "image_sha256": "3bdac9886f9c1e53ccd75959c61e9b7f3fb11430305420aae39cbd8ed25330b0",
+      "new_exact_bytes": 192,
+      "new_fields": 4,
+      "existing_guard_bytes": 1276,
+      "existing_guard_fields": 43,
+      "strict_units": {
+        "ending-create": {
+          "bytes": 99,
+          "fields": 5
+        },
+        "ending-delete": {
+          "bytes": 18,
+          "fields": 2
+        },
+        "ending-update": {
+          "bytes": 111,
+          "fields": 4
+        },
+        "ending-update-callback": {
+          "bytes": 10,
+          "fields": 1
+        },
+        "ending-text-tick": {
+          "bytes": 93,
+          "fields": 5
+        },
+        "ending-load-animation-callback": {
+          "bytes": 18,
+          "fields": 2
+        },
+        "ending-load-script": {
+          "bytes": 106,
+          "fields": 5
+        },
+        "ending-text-constructor": {
+          "bytes": 648,
+          "fields": 12
+        },
+        "ending-text-destructor": {
+          "bytes": 192,
+          "fields": 4
+        },
+        "script-viewer-worker-destructor": {
+          "bytes": 16,
+          "fields": 2
+        },
+        "script-viewer-worker-stop": {
+          "bytes": 101,
+          "fields": 3
+        },
+        "script-viewer-worker-start": {
+          "bytes": 56,
+          "fields": 2
+        }
+      }
+    }
+  ],
+  "remaining_nonexact": {
+    "EndingTextVmView::Run": "1564/1568",
+    "EndingView::Initialize": "584/584",
+    "EndingView::~EndingView": "362/362; four diagnostic operand-byte differences",
+    "EndingTextVmView::LoadAnimation": "131/126"
+  },
+  "rejected_anm_storage_model": {
+    "constructor": "2296/2315 nonexact",
+    "add_vm_sizes": [
+      117,
+      117,
+      102,
+      102
+    ],
+    "target_sizes": [
+      118,
+      118,
+      112,
+      112
+    ],
+    "restored": true
+  },
+  "validation_scope": "No host/failure/sanitizer/mutation tests or full historical cohort replay.",
+  "target_stop_call_sites": [
+    {
+      "at": "0x44c171",
+      "slot": "0x46611c",
+      "dll": "KERNEL32.dll",
+      "name": "WaitForSingleObject"
+    },
+    {
+      "at": "0x44c18d",
+      "slot": "0x4660ac",
+      "dll": "KERNEL32.dll",
+      "name": "Sleep"
+    },
+    {
+      "at": "0x44c198",
+      "slot": "0x46611c",
+      "dll": "KERNEL32.dll",
+      "name": "WaitForSingleObject"
+    },
+    {
+      "at": "0x44c1a6",
+      "slot": "0x4660cc",
+      "dll": "KERNEL32.dll",
+      "name": "CloseHandle"
+    }
+  ],
+  "lightweight_ci": {
+    "stages": 7,
+    "exit": 0
+  }
+}

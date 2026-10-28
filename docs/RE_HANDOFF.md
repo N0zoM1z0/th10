@@ -1,5 +1,28 @@
 # TH10 reconstruction handoff
 
+## Ending text destruction exact — 2026-10-28
+
+[Complete Ending text destruction](evidence/ending-teardown-20261028/README.md)
+adds **192 authored exact bytes /one owner**, canonical `ending-text-destructor`.
+Two independent18-TU final-source `/GL /GS /EHs` colds pass192/all4 and retain
+eleven existing contracts1276/all43, including648-byte construction and
+all already exact direct Stop callers. Authored exact
+is **78,663/275,434 bytes,436 owners**; source646 unchanged.
+
+Direct FindVm removes an early duplicate ID clear. A standard nonthrowing Stop
+contract removes the source-only EH frame and recovers the target EAX receiver;
+its actual body only waits/sleeps/closes. Original spelling/TU is unknown.
+`/EHsc` controls were neutral; no profile changes were adopted. Whole Run1564/1568
+and Initialize584/584 remain nonexact. Outer destruction362/362 still differs
+at four diagnostic operand bytes in UnregisterElem argument preparation; park
+register-spelling panels without a new semantic/context premise.
+
+The ANM passive-counter/operator-view model still rejects all four complete
+AddVm owners; AnmManager.cpp/.hpp and Gui.cpp were restored. Do not repeat this
+representation control without a new premise. All seven lightweight CI checks
+pass. No host suite, failure scenario,
+sanitizer/mutation campaign or full historical cohort was run.
+
 ## Remaining host-suite retirement — 2026-10-28
 
 Removed 88 remaining host simulation suites, four host/mutation helper runners
