@@ -63,6 +63,8 @@ def main() -> int:
         run("Validate ECL diagnostic source routing", [sys.executable, "scripts/test-ecl-run-source-selection.py"])
         run("Validate allocation EH address binding", [sys.executable, "scripts/test-linked-allocation-eh.py"])
         run("Validate stack-file EH address binding", [sys.executable, "scripts/test-linked-stack-file-eh.py"])
+        run("Validate worker-member EH address binding", [sys.executable, "scripts/test-linked-worker-member-eh.py"])
+        run("Validate Ending complete address inventory", [sys.executable, "scripts/test-ending-address-inventory.py"])
         run("Validate replay payload order", [sys.executable, "scripts/test-replay-payload-order.py"])
         run("Validate Enemy dispatch case scopes", [sys.executable, "scripts/test-ecl-dispatch-table.py"])
         run("Validate ECL FORMAT argument consumption", [sys.executable, "scripts/test-ecl-format.py", "--sanitize"])

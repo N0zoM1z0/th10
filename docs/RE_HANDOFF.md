@@ -1,5 +1,38 @@
 # TH10 reconstruction handoff
 
+## Direct-local Ending construction exact — 2026-10-28
+
+[Ending ID storage](evidence/ending-id-storage-20261028/README.md) admits
+**648 authored exact bytes /one complete constructor** at40BA90. Two independent
+final-source18-TU `/GL /GS /EHs` cold images pass648/all12 semantic fields and
+twelve existing guards1060/all62. Canonical unit is `ending-text-constructor`.
+Authored exact is now **78,471/275,434 bytes,435 owners**; source646 unchanged.
+
+Fresh target construction has three timer flag initializations and worker setup
+but no21 ID zero stores before the wholeEC clear. Passive five/sixteen ID word
+intervals, explicit existing-handle API views and returned-value lifetime,
+actual FindVm and the observed unsigned loop reduce constructor772→660→648.
+The original types/capacity/lifetime remain unknown. An ordinary publication
+helper sequences Run creation before its live destination read; native audits
+pass all four creators plus two initializer sampling contracts. Full Run is
+**1564/1568**, not exact; bank loader131/126, text destructor253/192 (baseline275),
+controller initializer584/584 and destructor361/362 also remain nonexact.
+
+The narrow worker-member EH opt-in proves same-parent24-byte PDB code, immutable
+one-state metadata, saved-this+4/member+D0 cleanup and real16-byte worker
+destructor/all2 fields. Four synthetic positives and39 rejection controls pass;
+old EH lanes stay separate. The complete Run inventory also corrects old
+target90 to92: two BSS sound-owner immediates at+204/+284 were wrongly excluded
+by a file-byte-read heuristic. Both target/native counts are92, not exactness.
+All18 table words and fixed local destinations remain intact.
+
+Actual-source ASan/UBSan/leak checks and seven strict mutants pass. All16 selected
+CI stages pass; exact labels are recorded in the packet. No full-cohort replay,
+full-suite, product/runtime or phase-gate promotion. Direct local tools and
+`gpt-6.1-sol:` commits continue; goal remains **active-incomplete**. Park further
+Run return-buffer/register panels until new evidence identifies a falsifiable
+source/callee/lifetime distinction; do not infer a four-byte mismatch score.
+
 ## Direct-local complete ANM constructor controls — 2026-10-28
 
 [The follow-up packet](evidence/anm-constructor-controls-20261028/README.md)

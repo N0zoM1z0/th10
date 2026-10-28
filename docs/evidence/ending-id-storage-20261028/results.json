@@ -1,0 +1,712 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "7c1debd",
+  "new_authored_exact_bytes": 648,
+  "new_authored_exact_owners": 1,
+  "new_source_bytes": 0,
+  "authored_exact_bytes": 78471,
+  "reviewed_authored_bytes": 275434,
+  "authored_exact_owners": 435,
+  "source_pins": {
+    "src/AnmManager.cpp": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/DecomphelpLeafAccessors.cpp": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Ending.cpp": "75f9405f33f25595f41a9ee237c21f6109f1f317d95f7339061f588b05300221",
+    "src/Ending.hpp": "39ba42ed24dd3653f58d12eb7bc58aae6c60da420ad3224cd50195d8a658cb41",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "78c8037c81f51ca558ff4e9403d4d2721d410c2f3f56571091b5c2694827aba5",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.cpp": "c99267034a509201f2eba34c26ce5b8a05a1e58a2b23f3830b2225220042db31",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/GameErrorContext.hpp": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.cpp": "88c3811c147df27b4d15344d0a705db565369a340ab37d321024b7ff2651f525",
+    "src/Main.hpp": "128274b3122e4c4af9aa4d5adf2e3bc59f4b1e455a6d3677ee51f14a46b0e4fb",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.cpp": "86377639fde184c3d1576386a238a796e91f3ef829736eb553725875190db051",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.cpp": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7",
+    "src/ScriptViewer.hpp": "ef3f7a2120f99201dcd5790de136aa2f6782deb4b89e96e2ed5528bce3e7657e",
+    "src/ScriptViewerOwners.hpp": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+    "src/ScriptViewerWorker.cpp": "a1d103a8c3d5770d9902b0b520f484720e6a4be9e83dfe79b5a218e619e338a9",
+    "src/Sound.cpp": "0fece6ced771b6bd9871b736669fac04b31c6ba49d1314be82fab39b31da5102",
+    "src/Sound.hpp": "7cf5dcc2362427a8e276c08f25a4db4d9d6152f42751320d6e6243c1e7bb9c49",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+    "src/TransitionEffect.cpp": "57475c2b9ef35961ddad413ce5479e3c415b99fbd1af9742dab85796cc6f0e10",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e"
+  },
+  "models": [
+    {
+      "name": "baseline",
+      "build_kind": "independent cold18-TU compilation",
+      "reused_support_objects": 0,
+      "constructor_size": 772,
+      "constructor_result": "PDB size observation",
+      "run_size": 1576,
+      "run_result": "mismatch",
+      "load_animation_size": 131,
+      "image_sha256": "347277bb77425dc69a3b9ac44069b762e3ca3faecbde7dee370ed6f65161fbf6",
+      "exit": 0
+    },
+    {
+      "name": "passive-ids",
+      "build_kind": "incremental Ending-only control",
+      "reused_support_objects": 17,
+      "constructor_size": 660,
+      "constructor_result": "mismatch",
+      "run_size": 1576,
+      "run_result": "mismatch",
+      "load_animation_size": 131,
+      "image_sha256": "6748eced5106f014b1fa376c07de5e2206ebb7ed316f4bc1042f99b42f56123f",
+      "exit": 0
+    },
+    {
+      "name": "lookup-return",
+      "build_kind": "incremental Ending-only control",
+      "reused_support_objects": 17,
+      "constructor_size": 660,
+      "constructor_result": "mismatch",
+      "run_size": 1576,
+      "run_result": "mismatch",
+      "load_animation_size": 131,
+      "image_sha256": "6fc53565a39c7a23504caf6258c2b1f20b5bb0f84fc45b9bd6f6e72627f672cc",
+      "exit": 0
+    },
+    {
+      "name": "id-result-lifetime",
+      "build_kind": "incremental Ending-only control",
+      "reused_support_objects": 17,
+      "constructor_size": 660,
+      "constructor_result": "mismatch",
+      "run_size": 1564,
+      "run_result": "mismatch",
+      "load_animation_size": 131,
+      "image_sha256": "e0a5bdbdfc10c7dbc6a5107b1183d6d5f49efed80923c9f969a105c6c3048d7f",
+      "exit": 0
+    },
+    {
+      "name": "real-lookup",
+      "build_kind": "incremental Ending-only control",
+      "reused_support_objects": 17,
+      "constructor_size": 648,
+      "constructor_result": "mismatch",
+      "run_size": 1564,
+      "run_result": "mismatch",
+      "load_animation_size": 131,
+      "image_sha256": "69dc0a9630ffba5852b248009df456c6f70b969ec48ecd37622be41ae6610378",
+      "exit": 0
+    },
+    {
+      "name": "unsigned-index",
+      "build_kind": "incremental Ending-only control",
+      "reused_support_objects": 17,
+      "constructor_size": 648,
+      "constructor_result": "structural-exact",
+      "run_size": 1564,
+      "run_result": "mismatch",
+      "load_animation_size": 131,
+      "image_sha256": "04e9934bcde2684043ee05f7c4525e42c38d63ff19f4d9d55e141df98d9de32c",
+      "exit": 0
+    },
+    {
+      "name": "cold-a",
+      "build_kind": "independent cold18-TU compilation",
+      "reused_support_objects": 0,
+      "constructor_size": 648,
+      "constructor_result": "structural-exact",
+      "run_size": 1564,
+      "run_result": "mismatch",
+      "load_animation_size": 131,
+      "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+      "exit": 0
+    },
+    {
+      "name": "cold-b",
+      "build_kind": "independent cold18-TU compilation",
+      "reused_support_objects": 0,
+      "constructor_size": 648,
+      "constructor_result": "structural-exact",
+      "run_size": 1564,
+      "run_result": "mismatch",
+      "load_animation_size": 131,
+      "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+      "exit": 0
+    }
+  ],
+  "cold_a": {
+    "constructor": {
+      "result": "exact",
+      "size": 648,
+      "fields": 12,
+      "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+      "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution"
+    },
+    "guards": {
+      "ending-create": {
+        "result": "exact",
+        "size": 99,
+        "fields": 5,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-delete": {
+        "result": "exact",
+        "size": 18,
+        "fields": 2,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-update": {
+        "result": "exact",
+        "size": 111,
+        "fields": 4,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-update-callback": {
+        "result": "exact",
+        "size": 10,
+        "fields": 1,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-text-tick": {
+        "result": "exact",
+        "size": 93,
+        "fields": 5,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-load-animation-callback": {
+        "result": "exact",
+        "size": 18,
+        "fields": 2,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-load-script": {
+        "result": "exact",
+        "size": 106,
+        "fields": 5,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "file-system-open-file": {
+        "result": "exact",
+        "size": 360,
+        "fields": 26,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "anm-loaded-create-vm-variant0": {
+        "result": "exact",
+        "size": 73,
+        "fields": 5,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "anm-release-slot": {
+        "result": "exact",
+        "size": 55,
+        "fields": 2,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "script-viewer-worker-destructor": {
+        "result": "exact",
+        "size": 16,
+        "fields": 2,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "script-viewer-worker-stop": {
+        "result": "exact",
+        "size": 101,
+        "fields": 3,
+        "image_sha256": "13c2e0ae5666af0bf50c2a595ac0957c388465ab8b0f051e4a43ea79efd253be",
+        "pdb_guid": "61f360838334ce43a7ca0e375a0d88e9",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      }
+    },
+    "guard_bytes": 1060,
+    "guard_fields": 62,
+    "eh_binding": {
+      "symbol": "__ehhandler$??0EndingTextVmView@@QAE@PAE@Z",
+      "parent_symbol": "??0EndingTextVmView@@QAE@PAE@Z",
+      "pdb_module_index": 4,
+      "cleanup_symbol": "??1ScriptViewerWorkerView@@UAE@XZ",
+      "cleanup_owner": {
+        "symbol": "??1ScriptViewerWorkerView@@UAE@XZ",
+        "address": "0x0041E030",
+        "size": 16,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 118832,
+        "map_object": "support-06-ScriptViewerWorker.ltcg.obj",
+        "pdb_module_index": 14,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\ending-run-20261028\\cold-a\\support-06-ScriptViewerWorker.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\ending-run-20261028\\cold-a\\support-06-ScriptViewerWorker.ltcg.obj",
+        "sha256": "0e0c021887ba8dc5610fa8c9377fe24b13e35615cbb59fd07c72fee2265b30d7"
+      },
+      "cleanup_proof": {
+        "bytes": 16,
+        "fields": 2,
+        "result": "exact",
+        "vtable_symbol": "??_7ScriptViewerWorkerView@@6B@",
+        "stop_symbol": "?Stop@ScriptViewerWorkerView@@QAEXXZ"
+      },
+      "candidate": {
+        "handler": "0x42d29e",
+        "unwind_action": "0x42d290",
+        "func_info": "0x42edd0",
+        "unwind_map": "0x42edc8",
+        "saved_this_offset": 4,
+        "member_offset": 208,
+        "region_bytes": 24,
+        "unwind_states": 1,
+        "func_info_bytes": 28
+      },
+      "target": {
+        "handler": "0x4654ce",
+        "unwind_action": "0x4654c0",
+        "func_info": "0x471564",
+        "unwind_map": "0x47155c",
+        "saved_this_offset": 4,
+        "member_offset": 208,
+        "region_bytes": 24,
+        "unwind_states": 1,
+        "func_info_bytes": 28
+      },
+      "authority": "address binding only; no generated-code/runtime credit"
+    }
+  },
+  "cold_b": {
+    "constructor": {
+      "result": "exact",
+      "size": 648,
+      "fields": 12,
+      "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+      "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution"
+    },
+    "guards": {
+      "ending-create": {
+        "result": "exact",
+        "size": 99,
+        "fields": 5,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-delete": {
+        "result": "exact",
+        "size": 18,
+        "fields": 2,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-update": {
+        "result": "exact",
+        "size": 111,
+        "fields": 4,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-update-callback": {
+        "result": "exact",
+        "size": 10,
+        "fields": 1,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-text-tick": {
+        "result": "exact",
+        "size": 93,
+        "fields": 5,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-load-animation-callback": {
+        "result": "exact",
+        "size": 18,
+        "fields": 2,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "ending-load-script": {
+        "result": "exact",
+        "size": 106,
+        "fields": 5,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "file-system-open-file": {
+        "result": "exact",
+        "size": 360,
+        "fields": 26,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "anm-loaded-create-vm-variant0": {
+        "result": "exact",
+        "size": 73,
+        "fields": 5,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "anm-release-slot": {
+        "result": "exact",
+        "size": 55,
+        "fields": 2,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "script-viewer-worker-destructor": {
+        "result": "exact",
+        "size": 16,
+        "fields": 2,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      },
+      "script-viewer-worker-stop": {
+        "result": "exact",
+        "size": 101,
+        "fields": 3,
+        "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+        "pdb_guid": "7dcff12c99d07a42bb06142709533c9f",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution"
+      }
+    },
+    "guard_bytes": 1060,
+    "guard_fields": 62,
+    "eh_binding": {
+      "symbol": "__ehhandler$??0EndingTextVmView@@QAE@PAE@Z",
+      "parent_symbol": "??0EndingTextVmView@@QAE@PAE@Z",
+      "pdb_module_index": 4,
+      "cleanup_symbol": "??1ScriptViewerWorkerView@@UAE@XZ",
+      "cleanup_owner": {
+        "symbol": "??1ScriptViewerWorkerView@@UAE@XZ",
+        "address": "0x0041E030",
+        "size": 16,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 118832,
+        "map_object": "support-06-ScriptViewerWorker.ltcg.obj",
+        "pdb_module_index": 14,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EndingTextConstructor\\support-06-ScriptViewerWorker.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EndingTextConstructor\\support-06-ScriptViewerWorker.ltcg.obj",
+        "sha256": "0e0c021887ba8dc5610fa8c9377fe24b13e35615cbb59fd07c72fee2265b30d7"
+      },
+      "cleanup_proof": {
+        "bytes": 16,
+        "fields": 2,
+        "result": "exact",
+        "vtable_symbol": "??_7ScriptViewerWorkerView@@6B@",
+        "stop_symbol": "?Stop@ScriptViewerWorkerView@@QAEXXZ"
+      },
+      "candidate": {
+        "handler": "0x42d29e",
+        "unwind_action": "0x42d290",
+        "func_info": "0x42edcc",
+        "unwind_map": "0x42edc4",
+        "saved_this_offset": 4,
+        "member_offset": 208,
+        "region_bytes": 24,
+        "unwind_states": 1,
+        "func_info_bytes": 28
+      },
+      "target": {
+        "handler": "0x4654ce",
+        "unwind_action": "0x4654c0",
+        "func_info": "0x471564",
+        "unwind_map": "0x47155c",
+        "saved_this_offset": 4,
+        "member_offset": 208,
+        "region_bytes": 24,
+        "unwind_states": 1,
+        "func_info_bytes": 28
+      },
+      "authority": "address binding only; no generated-code/runtime credit"
+    }
+  },
+  "inventory_correction": {
+    "old_reported_target_fields": 90,
+    "corrected_target_fields": 92,
+    "native_fields": 92,
+    "omitted_bss_fields": [
+      {
+        "offset": 516,
+        "width": 4,
+        "type": "DIR32",
+        "destination": "0x492590",
+        "section": ".data"
+      },
+      {
+        "offset": 644,
+        "width": 4,
+        "type": "DIR32",
+        "destination": "0x492590",
+        "section": ".data"
+      }
+    ],
+    "target_local_branches": 53,
+    "native_local_branches": 53,
+    "owned_table_words": 18,
+    "semantic_binding_or_parent_exactness": false
+  },
+  "baseline_observer_correction": {
+    "original_two_PDB_source_errors_preserved": true,
+    "source_or_native_build_failure": false,
+    "same_image_ten_guard_supplement": {
+      "bytes": 943,
+      "fields": 57,
+      "result": "exact"
+    },
+    "compiler_rerun_for_correction": false
+  },
+  "other_nonexact_owners": {
+    "??1EndingTextVmView@@": {
+      "native_size": 253,
+      "target_size": 192,
+      "result": "mismatch"
+    },
+    "?Initialize@EndingView@@": {
+      "native_size": 584,
+      "target_size": 584,
+      "result": "mismatch"
+    },
+    "??1EndingView@@": {
+      "native_size": 361,
+      "target_size": 362,
+      "result": "mismatch"
+    }
+  },
+  "host": {
+    "exit": 0,
+    "sanitizers": [
+      "ASan",
+      "UBSan",
+      "leak detection"
+    ],
+    "positive": true,
+    "strict_mutants": 7,
+    "limitations": "explicit vptr-preserving clear/allocation/thread/SDK/asset seams; no native ABI/lifetime/runtime claim"
+  },
+  "synthetic": {
+    "worker_eh_positives": 4,
+    "worker_eh_rejections": 39,
+    "existing_allocation_rejections": 37,
+    "existing_stack_file_rejections": 45,
+    "BSS_inventory_controls": true
+  },
+  "validation": {
+    "preflight_exit": 0,
+    "local_ghidra_exit": 0,
+    "canonical_constructor_exit": 0,
+    "native_sampling_contracts_per_image": 6,
+    "focused_ci": {
+      "exit": 0,
+      "stages": [
+        "Compile workflow Python",
+        "Validate linked profiles and static callees",
+        "Validate internal linked destinations",
+        "Validate linked table and selector coverage",
+        "Validate allocation EH address binding",
+        "Validate stack-file EH address binding",
+        "Validate worker-member EH address binding",
+        "Validate Ending complete address inventory",
+        "Validate supervisor binding identity",
+        "Validate documentation references",
+        "Validate ledgers",
+        "Validate toolchain declarations",
+        "Validate canonical match graph",
+        "Validate open whole-build graph",
+        "Check generated progress",
+        "Check whitespace"
+      ],
+      "stage_count": 16,
+      "default_stage_count": 123,
+      "log_sha256": "ff6a4501778d3be5d2870f1e4ce5c29b159a03a79f55980d1818969e1d42429d"
+    },
+    "full_ci": false,
+    "full_prior_cohort": false,
+    "whole_product": false,
+    "runtime": false,
+    "toolchain_check": 0,
+    "tracking": 0,
+    "progress_check": 0,
+    "git_diff_check": 0
+  },
+  "artifact_adoption": {
+    "reason": "identical build-group recipes must share the existing EndingLoadScript output; no compiler/source/context change",
+    "cold_b_producer": "build/match-linked/EndingTextConstructor",
+    "canonical_output": "build/match-linked/EndingLoadScript",
+    "preserved_previous_output": "build/gpt-6.1-sol/ending-run-20261028/previous-loader",
+    "previous_file_hashes": {
+      "source.map": "94c3aca65994ccccbe59bbb23374ed40b3559625c123fc94fa6129c12b9a67a0",
+      "support-13-Sound.ltcg.obj": "e4db78e1a0004fb232da29905f887875b6dd5311aa36301cf4d91d74784fb258",
+      "link-attempt-2.log": "47168b0f4e9de145e76d1e1e981d26c9f8de5c649b176a95d903ffaa79ed3f77",
+      "support-01-AnmVmCreate.ltcg.obj": "383823aae2f41502d9b3f6bd9f34995d02bf53d69a9a357bc0dab731958becc6",
+      "support-03-EnemyEclDispatcher.ltcg.obj": "ad973a309eb79f6f7a6c84b589f9aa7655166e8c8b6a4d9ac15eea54091f2d53",
+      "source.exe": "4cadf129f8884387efcdffa5f5a3157e19bafe933d3a78c295a5802e7bb0b22e",
+      "source.ltcg.obj": "be4f32414b9e9f7402d498f392fed17d976ab04b317b1827234faee678e6f082",
+      "link-attempt-3.log": "346b6ab5c93377181a54b4dd5a9865c4f2d30755698bb9c18623cc50acaaf830",
+      "support-15-GameErrorContext.ltcg.obj": "5ccc478315b34298bf0bd2e1ec729d559d6d7fde3e77234c8a569e7b2258a24a",
+      "support-05-ScriptViewer.ltcg.obj": "b24ee1b9b4696f0724e39791c53ae4d00b2fd6c75de9950dfa623b64dcf8ee02",
+      "support-14-Player.ltcg.obj": "9cb77506a00e6229ce4da33cff9ff83896ea8564849d8426b55aee02d66c7fa3",
+      "support-10-RandomMath.ltcg.obj": "cc77a880039b0790b63fc7b66622ba0dfe8e5ef3a21e2d61c2b3b6e4174b3434",
+      "support-00-AnmManager.ltcg.obj": "e70342d1f3b8c75efa68e96020fb144fe40ac219f223437142d6295ed25e28ee",
+      "support-07-FileSystem.ltcg.obj": "b0a3a4e84e6af9dc344b3dcb12f26d1ee5c17260a818d0974e2dcfb7e7cfd892",
+      "link-attempt-1.log": "e0f6e35585cdacc2bc3425532c90508d5f7d71347be5b697764a56eab208f3b0",
+      "support-12-TransitionEffect.ltcg.obj": "d4f4b25e48fa7f8c6ec81cccdc73254fe496b9e4b4843ffc1544fed2b5f247d1",
+      "support-02-AnmVmId.ltcg.obj": "a085889cf3689eacf9a25aa052574071523dcd2d227a2941864c5a459d7c9752",
+      "support-16-PbgArchive.ltcg.obj": "8eaa6244c7bba8fb4c7c6440a250eb0fb612302a9d129cb6d111aab31ecb8b8a",
+      "support-09-Chain.ltcg.obj": "b77f0beee5a9fade733833b5322444a6a03fd67afda0de8633e4ee8f0ff95a2b",
+      "support-06-ScriptViewerWorker.ltcg.obj": "6200db379b7ea1dd2986b5ee2d8b04f653aeb655210050cde19a209be8c8aa2b",
+      "support-11-DecomphelpLeafAccessors.ltcg.obj": "4bc942f4478af7f25996f6d5221272e07d67d42ce63f545f4d6fb35c81eb75d2",
+      "link-aliases.rsp": "95da47a1521d513176b24682d334a1c3b757169581b92a08f897ee8e859ab5aa",
+      "link-anchors.obj": "f93ad02e4412300c969df4a5f233d4688e48a789f390023acd59d05b99eae50f",
+      "link-anchors.c": "ffab9c1dc2365fea55f5320d530ed99110218964f4e2b006e8e20561153aa1c8",
+      "support-08-Main.ltcg.obj": "611a9734d30c544a5e9fd2c29399b71a7b3a9c2d54ac12bd30b39e00fab6cff5",
+      "support-04-FrontEnd.ltcg.obj": "1443e8c41a05cc12c171325e7f1148ddc5eda45c3a408e8f523d029e1ec302af",
+      "source.pdb": "eb852354af28d944f4171ab1ce2081255c0594d5c4ebd7415d595c2a90f55cde"
+    },
+    "new_primary_artifact_hashes": {
+      "source.exe": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33",
+      "source.map": "8ce5f7c35c58ed6671d2f3c29efd4e64b100da3c72ffb16edbaa7d44774b053f",
+      "source.pdb": "2d3071a94fe9c8375a67f2c01cc02a4ecec6e37962acca1785630ac94ad91726"
+    }
+  },
+  "canonical_adopted_proofs": {
+    "constructor": {
+      "result": "exact",
+      "bytes": 648,
+      "fields": 12,
+      "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33"
+    },
+    "loader": {
+      "result": "exact",
+      "bytes": 106,
+      "fields": 5,
+      "image_sha256": "7e09985a1a1434794d5e557848f83064da28dd32a633aa16ed99b0809d5f3c33"
+    }
+  },
+  "artifact_cleanup": {
+    "removed_intermediate_builds": [
+      {
+        "directory": "build/gpt-6.1-sol/ending-run-20261028/passive-ids",
+        "bytes": 2400014
+      },
+      {
+        "directory": "build/gpt-6.1-sol/ending-run-20261028/lookup-return",
+        "bytes": 2399901
+      },
+      {
+        "directory": "build/gpt-6.1-sol/ending-run-20261028/id-result-lifetime",
+        "bytes": 2400248
+      },
+      {
+        "directory": "build/gpt-6.1-sol/ending-run-20261028/real-lookup",
+        "bytes": 2399627
+      },
+      {
+        "directory": "build/gpt-6.1-sol/ending-run-20261028/unsigned-index",
+        "bytes": 2399664
+      }
+    ],
+    "retained": "baseline, both final independent cold images, preserved previous loader, source snapshots/producers/structured receipts and current Run/constructor target listings",
+    "budget_mib": 256
+  },
+  "validation_tool_sha256": {
+    "scripts/linked_worker_member_eh.py": "304b2b85d631858a92275c0b60767a03fb10ee2102b2eb3948b3598afb8dd3ee",
+    "scripts/compare-linked-function.py": "596172725318b2c9249f92e1491e2e4f7c127f0c6e63c85bf98a9da73dc7936c",
+    "scripts/build-match-unit.py": "eb410039bd2db212544831b7d7f725046ef899d6b0f7052b0710f5b20a5aef21",
+    "scripts/audit-ending-run-native.py": "4d88a5cf62bf3e2fb4895a038d9fa931686e118a73d94d5692ee4fe50053d87e",
+    "scripts/test-linked-worker-member-eh.py": "38369046c956038ad38e2701d57b785e84574af841eca13f620c48845815d0f3",
+    "scripts/test-ending-address-inventory.py": "9758b8b134f39300017d0212cac955b7ff07f71881652835bceac16058801a79",
+    "scripts/test-ending-state.py": "6a2802f1d74731c2371be1306574682a98be95f6033f37a6ea64e65fc5ee786e"
+  }
+}

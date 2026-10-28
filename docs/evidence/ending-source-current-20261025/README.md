@@ -7,7 +7,9 @@ Ending without changing Ending.cpp. Root, cold build, comparison and sampling
 all exit 0; independent replay and historical/current identity review pass.
 Complete Run remains **1576 versus target 1568 bytes, nonexact**. Alignment,
 all **18 owned table words** and **53 local branches** are retained. Current
-inventory has 92 fields; target has 90. These are not accepted parent bindings,
+inventory has92 fields; the historical observer reports target90. The
+[2026-10-28 correction](../ending-id-storage-20261028/README.md) finds two omitted
+BSS sound-owner immediates, so the correct target count is92. These are not accepted parent bindings,
 and the eight-byte extent gap is not a mismatch-byte count.
 
 Ten strict guards retain **943 exact bytes / all 57 fields**, and all six

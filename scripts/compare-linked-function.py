@@ -27,6 +27,7 @@ from linked_image import (
 from ltcg_link import ANCHOR_PREFIX, support_profile_overrides
 from linked_allocation_eh import allocation_eh_selector, allocation_eh_target
 from linked_stack_file_eh import stack_file_eh_selector, stack_file_eh_target
+from linked_worker_member_eh import worker_member_eh_selector, worker_member_eh_target
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -88,6 +89,7 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
             raise ValueError("linked unit contains an invalid linkage row")
         allocation_eh_selector(unit, raw)
         stack_file_eh_selector(unit, raw)
+        worker_member_eh_selector(unit, raw)
         kind = str(raw["type"])
         width = int(raw.get("width", FIELD_WIDTHS.get(kind, 0)))
         if kind not in FIELD_WIDTHS or width != FIELD_WIDTHS[kind]:
@@ -103,6 +105,7 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
                 "addend": int(raw.get("addend", 0)),
                 **({"allocation_eh_handler": True} if raw.get("allocation_eh_handler") else {}),
                 **({"stack_file_eh_handler": True} if raw.get("stack_file_eh_handler") else {}),
+                **({"worker_member_eh_handler": True} if raw.get("worker_member_eh_handler") else {}),
                 **({"static_source": raw["static_source"], "static_size": raw["static_size"]}
                    if static_linkage_selector(unit, raw) is not None else {}),
                 **({"static_callee_unit": raw["static_callee_unit"]} if "static_callee_unit" in raw else {}),
@@ -490,6 +493,11 @@ def compare_unit(name: str, *, _active_units=(), _unit_manifest=None) -> dict[st
                 unit, field, directory, candidate_image, publics, aliases,
                 target, parent_function, expected_candidate_address)
             linked_symbol = semantic
+        elif field.get("worker_member_eh_handler"):
+            worker_member_eh_evidence = worker_member_eh_target(
+                unit, field, directory, candidate_image, publics, aliases,
+                target, parent_function, expected_candidate_address)
+            linked_symbol = semantic
         elif "static_source" in field:
             instruction = "jmp" if field.get("static_tail_jump") else "call"
             if observed.get("instruction") != instruction:
@@ -550,6 +558,7 @@ def compare_unit(name: str, *, _active_units=(), _unit_manifest=None) -> dict[st
                 "target_encoded_value": encoded_text,
                 **({"allocation_eh": allocation_eh_evidence} if field.get("allocation_eh_handler") else {}),
                 **({"stack_file_eh": stack_file_eh_evidence} if field.get("stack_file_eh_handler") else {}),
+                **({"worker_member_eh": worker_member_eh_evidence} if field.get("worker_member_eh_handler") else {}),
                 **({"static_owner": static_calls[static_key]}
                    if "static_source" in field else {}),
                 **({"static_tail_jump": True} if field.get("static_tail_jump") else {}),

@@ -37,7 +37,8 @@ struct EndingTextVmView
     AnmVmTimerView frameTimer;
     AnmVmTimerView instructionTimer;
     AnmVmTimerView waitTimer;
-    AnmVmIdView textIds[5];
+    // Target construction does not run ID constructors for these word slots.
+    int textIds[5];
     unsigned char *instruction;
     unsigned char unknown058[0x18];
     const char *backgroundPath;
@@ -46,7 +47,7 @@ struct EndingTextVmView
     unsigned int color;
     AnmLoadedView *resources[4];
     // Descriptive interval before the worker, not proof of original capacity.
-    AnmVmIdView animationIds[16];
+    int animationIds[16];
     ScriptViewerWorkerView worker;
 
     explicit EndingTextVmView(unsigned char *command);

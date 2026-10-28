@@ -35,24 +35,14 @@ unsigned char *Fn00417010(unsigned char *payload);
 namespace
 {
 // Ordinary shared lookup used by the constructor's three direct consumers.
-inline AnmVmView *ResolveEndingTextVm(AnmRenderManagerView *manager, AnmVmIdView &id)
+inline AnmVmView *ResolveEndingTextVm(AnmRenderManagerView *manager, int &id)
 {
-    AnmVmView *vm = NULL;
-    if (id.value != 0)
-    {
-        AnmVmLayerNodeView *node;
-        for (node = manager->primaryVmListHead; node; node = node->next)
-            if (static_cast<AnmVmView *>(node->owner)->id == id.value)
-            { vm = static_cast<AnmVmView *>(node->owner); break; }
-        if (!vm)
-            for (node = manager->secondaryVmListHead; node; node = node->next)
-                if (static_cast<AnmVmView *>(node->owner)->id == id.value)
-                { vm = static_cast<AnmVmView *>(node->owner); break; }
-    }
-    if (!vm) id.value = 0;
+    AnmVmView *vm = manager->FindVm(AnmVmIdView(id));
+    if (vm == NULL)
+        id = 0;
     return vm;
 }
-inline void ReleaseEndingTextVm(AnmRenderManagerView *manager, AnmVmIdView &id)
+inline void ReleaseEndingTextVm(AnmRenderManagerView *manager, int &id)
 {
     AnmVmView *vm = ResolveEndingTextVm(manager, id);
     if (vm)
@@ -62,12 +52,17 @@ inline void ReleaseEndingTextVm(AnmRenderManagerView *manager, AnmVmIdView &id)
             for (AnmVmLayerNodeView *node = vm->layerNode.next; node; node = node->next)
                 static_cast<AnmVmView *>(node->owner)->flags35C |= 0x04000000u;
     }
-    id.value = 0;
+    id = 0;
 }
 // File header+4 supplies the first instruction offset.
 inline unsigned char *EndingScriptStart(unsigned char *file)
 {
     return file + EndingRecordInt(file);
+}
+// Creation completes before this helper reads the current destination cursor.
+inline void PublishEndingAnimation(EndingTextVmView *text, const AnmVmIdView &created)
+{
+    text->animationIds[EndingRecordInt(text->instruction)] = created.value;
 }
 // Observed common node construction; no extra fields or virtual interface.
 struct EndingTaskView : th10::ChainElem
@@ -234,14 +229,15 @@ int __fastcall EndingUpdateCallback(EndingView *ending) { return ending->Update(
 EndingTextVmView::EndingTextVmView(unsigned char *command)
 {
     memset(this, 0, sizeof(*this));
-    for (int i = 0; i < 5; ++i)
+    for (unsigned int i = 0; i < 5; ++i)
     {
         AnmLoadedView *bank = g_AsciiManagerView->textAnm;
         AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
         vm->renderLayer = 15;
         vm->flags35C |= 0x40000000u;
         bank->InitializeVm(vm, i + 0x42);
-        textIds[i] = g_AnmRenderManagerView->AddVmVariant0(vm);
+        AnmVmIdView created = g_AnmRenderManagerView->AddVmVariant0(vm);
+        textIds[i] = created.value;
         AnmRenderManagerView *manager = g_AnmRenderManagerView;
         ResolveEndingTextVm(manager, textIds[i])->glyphWidth = 16;
         ResolveEndingTextVm(manager, textIds[i])->glyphHeight = 16;
@@ -282,18 +278,18 @@ int __stdcall EndingTextVmView::Run()
                 for (int i = 0; i < 5; ++i)
                 {
                     AnmRenderManagerView *manager = g_AnmRenderManagerView;
-                    AnmVmView *vm = manager->FindVm(textIds[i]);
-                    if (!vm) textIds[i].value = 0;
+                    AnmVmView *vm = manager->FindVm(AnmVmIdView(textIds[i]));
+                    if (!vm) textIds[i] = 0;
                     manager->DrawTextLeft(vm, 0xffffff, " ");
-                    ResultMenuPendingThree(&textIds[i]);
+                    ResultMenuPendingThree(reinterpret_cast<AnmVmIdView *>(&textIds[i]));
                 }
                 AnmRenderManagerView *manager = g_AnmRenderManagerView;
-                AnmVmView *vm = manager->FindVm(textIds[0]);
-                if (!vm) textIds[0].value = 0;
+                AnmVmView *vm = manager->FindVm(AnmVmIdView(textIds[0]));
+                if (!vm) textIds[0] = 0;
                 const char *text = reinterpret_cast<const char *>(
                     th10::leaf::Fn00417010(instruction + 4));
                 manager->DrawTextLeft(vm, color, text);
-                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&textIds[0].value));
+                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&textIds[0]));
                 ++textLine;
             }
             else
@@ -301,13 +297,13 @@ int __stdcall EndingTextVmView::Run()
                 const char *text = reinterpret_cast<const char *>(
                     th10::leaf::Fn00417010(command + 4));
                 unsigned int currentColor = color;
-                g_AnmRenderManagerView->DrawTextLeft(textIds[textLine].GetVm(), currentColor, text);
-                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&textIds[textLine].value));
+                g_AnmRenderManagerView->DrawTextLeft(reinterpret_cast<AnmVmIdView *>(&textIds[textLine])->GetVm(), currentColor, text);
+                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&textIds[textLine]));
                 if (++textLine >= 5) textLine = 0;
             }
             break;
         case 4:
-            for (int i = 0; i < 5; ++i) ResultMenuPendingThree(&textIds[i]);
+            for (int i = 0; i < 5; ++i) ResultMenuPendingThree(reinterpret_cast<AnmVmIdView *>(&textIds[i]));
             break;
         case 5:
             if (waitTimer.current <= 0) waitTimer.SetCurrent(EndingRecordInt(command));
@@ -352,39 +348,42 @@ int __stdcall EndingTextVmView::Run()
         // Creation may change instruction; resolve its destination afterwards.
         case 8:
             {
-                AnmVmIdView &oldId = animationIds[EndingRecordInt(command)];
-                g_AnmRenderManagerView->MarkVmForDeletion(oldId);
-                oldId.value = 0;
-                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->
-                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);
-                animationIds[EndingRecordInt(instruction)] = created;
+                int &oldId = animationIds[EndingRecordInt(command)];
+                g_AnmRenderManagerView->MarkVmForDeletion(AnmVmIdView(oldId));
+                oldId = 0;
+                PublishEndingAnimation(this,
+                    resources[EndingRecordInt(instruction, 1)]->
+                        CreateVmVariant0(EndingRecordInt(instruction, 2), 15));
             }
             break;
         case 15:
             if (g_GuiDifficulty == 1)
             {
-                animationIds[EndingRecordInt(instruction)].Release();
-                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->
-                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);
-                animationIds[EndingRecordInt(instruction)] = created;
+                reinterpret_cast<AnmVmIdView *>(
+                    &animationIds[EndingRecordInt(instruction)])->Release();
+                PublishEndingAnimation(this,
+                    resources[EndingRecordInt(instruction, 1)]->
+                        CreateVmVariant0(EndingRecordInt(instruction, 2), 15));
             }
             break;
         case 16:
             if (g_GuiDifficulty == 2)
             {
-                animationIds[EndingRecordInt(instruction)].Release();
-                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->
-                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);
-                animationIds[EndingRecordInt(instruction)] = created;
+                reinterpret_cast<AnmVmIdView *>(
+                    &animationIds[EndingRecordInt(instruction)])->Release();
+                PublishEndingAnimation(this,
+                    resources[EndingRecordInt(instruction, 1)]->
+                        CreateVmVariant0(EndingRecordInt(instruction, 2), 15));
             }
             break;
         case 17:
             if (g_GuiDifficulty == 3)
             {
-                animationIds[EndingRecordInt(instruction)].Release();
-                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->
-                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);
-                animationIds[EndingRecordInt(instruction)] = created;
+                reinterpret_cast<AnmVmIdView *>(
+                    &animationIds[EndingRecordInt(instruction)])->Release();
+                PublishEndingAnimation(this,
+                    resources[EndingRecordInt(instruction, 1)]->
+                        CreateVmVariant0(EndingRecordInt(instruction, 2), 15));
             }
             break;
         case 9: color = EndingRecordInt(command); break;
@@ -404,8 +403,8 @@ int __stdcall EndingTextVmView::Run()
                 AnmRenderManagerView *manager = g_AnmRenderManagerView;
                 for (int i = 0; i < 5; ++i)
                 {
-                    manager->MarkVmForDeletion(textIds[i]);
-                    textIds[i].value = 0;
+                    manager->MarkVmForDeletion(AnmVmIdView(textIds[i]));
+                    textIds[i] = 0;
                 }
                 unsigned char *loaded = g_EndingView->LoadScript(
                     reinterpret_cast<const char *>(instruction + 4));

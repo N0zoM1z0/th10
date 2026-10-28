@@ -25,7 +25,7 @@ def stack_file_eh_selector(unit, field):
     require(unit.get('artifact_kind') == 'linked-pe', 'linked-pe required')
     require(field.get('type') == 'DIR32' and not field.get('local', False)
             and field.get('addend', 0) == 0
-            and 'allocation_eh_handler' not in field
+            and 'allocation_eh_handler' not in field and 'worker_member_eh_handler' not in field
             and not any(k.startswith('static_') for k in field), 'separate DIR32 entry required')
     require(field.get('symbol') == '__ehhandler$' + str(unit.get('symbol')), 'parent symbol differs')
     return True

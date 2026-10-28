@@ -15,9 +15,9 @@ import json
 import struct
 import tomllib
 
-from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_CALL, CS_GRP_JUMP
 from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EBP
-from linked_image import PEImage, linked_functions, map_publics, verify_capstone
+from linked_image import PEImage, linked_functions, map_publics, verify_capstone, linked_code_fields
 
 ROOT = Path(__file__).resolve().parents[1]
 RUN_SYMBOL = '?Run@EndingTextVmView@@QAGHXZ'
@@ -26,6 +26,85 @@ SECONDARY_SYMBOL = '?CreateVmVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z'
 INITIALIZE_SYMBOL = '?Initialize@EndingView@@QAEHXZ'
 TEXT_CONSTRUCTOR = '??0EndingTextVmView@@QAE@PAE@Z'
 SCREEN_CREATOR = '?CreateVmAtScreenVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z'
+
+
+def mapped_section(image, address):
+    """Recognize section addresses independently of readable file bytes.
+
+    BSS symbols are address identities even though read_address deliberately
+    refuses to manufacture their initializer bytes.
+    """
+    rva = address - image.image_base
+    for section in image.sections:
+        span = section.virtual_size or section.raw_size
+        if section.rva <= rva < section.rva + span:
+            return section
+    return None
+
+
+def inventory_run(image, address, size):
+    """Inventory complete code, fixed local destinations and the owned table.
+
+    Syntactic address recognition is diagnostic; it is not semantic binding
+    or permission to normalize a changed local offset.
+    """
+    table = address + size - 18 * 4
+    words = struct.unpack('<18I', image.read_address(table, 72))
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    decoder.detail = True
+    instructions = list(decoder.disasm(image.read_address(address, size - 72), address))
+    if sum(i.size for i in instructions) != size - 72:
+        raise ValueError('complete Run code/alignment does not densely decode')
+    starts = {i.address for i in instructions}
+    if not all(word in starts for word in words):
+        raise ValueError('Run table destination is not an owned instruction start')
+    fields, locals_, unbacked = [], [], []
+    dispatchers = 0
+    def field(offset, width, kind, destination):
+        if width != 4:
+            raise ValueError('unsupported linked field width in complete Run')
+        row = dict(offset=offset, width=width, type=kind, destination=hex(destination))
+        fields.append(row)
+        return row
+    for i in instructions:
+        control = i.group(CS_GRP_CALL) or i.group(CS_GRP_JUMP)
+        if control and i.operands and i.operands[0].type == X86_OP_IMM:
+            destination = i.operands[0].imm & 0xffffffff
+            if address <= destination < table:
+                if destination not in starts:
+                    raise ValueError('Run local branch leaves instruction boundaries')
+                locals_.append(dict(offset=i.address - address,
+                                    destination_offset=destination - address))
+            else:
+                field(i.address - address + i.imm_offset, i.imm_size, 'REL32', destination)
+        for op in i.operands:
+            if op.type == X86_OP_MEM and not op.mem.base:
+                destination = op.mem.disp & 0xffffffff
+                if mapped_section(image, destination) is not None:
+                    field(i.address - address + i.disp_offset, i.disp_size, 'DIR32', destination)
+                    if i.mnemonic == 'jmp' and op.mem.index:
+                        if destination != table or op.mem.scale != 4:
+                            raise ValueError('Run dispatcher does not select the complete trailing table')
+                        dispatchers += 1
+            elif op.type == X86_OP_IMM and not control:
+                destination = op.imm & 0xffffffff
+                section = mapped_section(image, destination)
+                if section is not None:
+                    row = field(i.address - address + i.imm_offset, i.imm_size, 'DIR32', destination)
+                    if destination - image.image_base - section.rva >= section.raw_size:
+                        unbacked.append(dict(row, section=section.name))
+    if dispatchers != 1:
+        raise ValueError('Run lacks one complete indexed dispatcher')
+    for index, destination in enumerate(words):
+        field(table - address + index * 4, 4, 'DIR32', destination)
+    keys = [(f['offset'], f['width'], f['type']) for f in fields]
+    if len(set(keys)) != len(keys):
+        raise ValueError('duplicate linked field in Run inventory')
+    return dict(size=size, code_and_alignment_size=size - 72, table_words=18,
+                fields=sorted(fields, key=lambda f: f['offset']),
+                linked_field_count=len(fields), local_branches=locals_,
+                table_local_offsets=[word - address for word in words],
+                virtual_only_immediate_fields=unbacked)
 
 
 def register_load(instruction, base, displacement):
@@ -172,6 +251,8 @@ def main():
     parser.add_argument('--json', type=Path)
     parser.add_argument('--include-initialize', action='store_true',
                         help='also audit selection-owner and allocation/header sampling')
+    parser.add_argument('--inventory', action='store_true',
+                        help='inventory all Run fields and fixed locals, including BSS addresses')
     args = parser.parse_args()
     with (ROOT/'config/tools.lock.toml').open('rb') as stream:
         verify_capstone(tomllib.load(stream)['capstone'])
@@ -206,6 +287,20 @@ def main():
                   native=result, run_owner=run, passed=result['passed'],
                   artifact_sha256=hashes,
                   exactness_authority='none; complete-owner canonical replay is separate')
+    if args.inventory:
+        native_image = PEImage(directory/'source.exe')
+        native_inventory = inventory_run(native_image, int(run['address'], 0), run['size'])
+        linked = linked_code_fields(native_image, map_publics(directory/'source.map'),
+                                    int(run['address'], 0), run['size'])
+        keys = lambda rows: {(r['offset'], r['width'], r['type']) for r in rows}
+        if not linked['normalization_complete'] or keys(linked['fields']) != keys(native_inventory['fields']):
+            raise ValueError('complete native syntax and authoritative linked fields disagree')
+        report['inventory'] = dict(target=inventory_run(PEImage(path), 0x40bd80, 1568),
+                                   native=native_inventory,
+                                   native_linked_field_coverage=True,
+                                   authority='inventory only; no parent exactness or semantic binding')
+        if artifact_hashes() != hashes:
+            raise ValueError('native carrier changed during complete inventory')
     if args.include_initialize:
         target_init = inspect_initialize(PEImage(path), 0x40b560, 584,
                                          0x448d50, 0x452493, 0x40ba90)
@@ -234,6 +329,10 @@ def main():
     if args.include_initialize:
         print('PASS' if native_init['passed'] else 'FAIL',
               'native Ending selection-owner and allocation/header contracts')
+    if args.inventory:
+        print('PASS complete Run inventory; target', report['inventory']['target']['linked_field_count'],
+              'native', native_inventory['linked_field_count'],
+              'fields; no complete-owner exactness claim')
     return 0 if report['passed'] else 1
 
 

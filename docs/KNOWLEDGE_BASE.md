@@ -6286,3 +6286,37 @@ operands. Size2305 and initial instruction order remain unchanged;31 guards
 still pass. This is a concrete CRT integration fact, not a new exact parent,
 production link order, metadata ownership or EH-runtime proof. No source/profile
 or canonical recipe migration follows. New exact/source bytes are both zero.
+
+## 2026-10-28 Ending passive ID storage and exact text construction
+
+The [Ending storage proof](evidence/ending-id-storage-20261028/README.md) closes
+the complete648-byte text constructor40BA90..40BD17/all12 semantic fields in
+two independent source-identical18-TU `/GL /GS /EHs` cold images. Before the
+wholeEC-byte clear, target initializes three timer flags and its worker, with
+no21 ID-zero stores. Local passive five/sixteen word intervals remove those stores and reduce the
+complete native size772 to660; original C++ types/capacity stay unknown.
+Named ID-result lifetime, real shared FindVm and target JB's unsigned loop close
+the remaining constructor bytes. Shared ID constructors/ABI are unchanged.
+
+Worker-member EH field identity requires the same parent's complete24-byte
+generated PDB region, one-state immutable28-byte FuncInfo and saved-thisEBP+4 /
+memberD0 destructor-tail protocol. The real16-byte worker destructor is itself
+compared/all2 fields; qualified Stop101 and actual vtable/Stop symbols are
+required. Four positives and39 strict synthetic rejections pass. Parent648
+is the only new credit: generated helper/metadata/runtime receive none. Twelve
+same-image existing contracts1060/all62 pass in both cold images.
+
+Run uses an ordinary by-reference publication helper after VM creation, preserving
+the live destination read and the actual returned-word consumption. Four native
+creation audits and two initializer sampling audits pass. Complete Run1564/1568,
+text destructor253/192, controller initializer584/584 and destructor361/362,
+and bank loader131/126 remain nonexact. Host positive and seven named mutants
+pass ASan/UBSan/leak checks with the documented worker/SDK/allocation seams.
+
+The old target90/native92 Run-field count was false: immediate references to
+sound owner492590 at offsets204/284 land in virtual BSS and were discarded by
+the old file-byte-read test. Virtual section recognition gives92/92 while leaving
+raw reads unchanged; no BSS initializer contents are inferred. Full code,
+18 table words, local destinations and native authoritative field coverage are
+inventoried. This is diagnostic address coverage, not full Run semantic binding.
+Authored exact totals78,471/275,434 bytes,435 owners; source coverage is unchanged.

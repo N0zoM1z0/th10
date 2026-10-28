@@ -84,8 +84,17 @@ extern "C" int CloseHandle(void *);
     if not args.no_mutations:
         old='th10::leaf::Fn00417010(instruction + 4)'; assert source.count(old)==1
         variants.append(('stale_text',source.replace(old,'th10::leaf::Fn00417010(command + 4)'),'text-live-cursor'))
-        old='animationIds[EndingRecordInt(instruction)] = created;'; assert source.count(old)==4
-        variants.append(('stale_animation',source.replace(old,'animationIds[EndingRecordInt(command)] = created;'),'animation-live-destination'))
+        # Deliberately pass the captured pre-creation cursor to a faulty copy
+        # of the ordinary publication helper. Production reads the live cursor
+        # inside the helper after creation completes, including under C++03.
+        old='text->animationIds[EndingRecordInt(text->instruction)] = created.value;'
+        assert source.count(old)==1
+        stale=source.replace(old,'text->animationIds[EndingRecordInt(oldCursor)] = created.value;')
+        signature='const AnmVmIdView &created)'; assert stale.count(signature)==1
+        stale=stale.replace(signature,'const AnmVmIdView &created, const unsigned char *oldCursor)')
+        call='CreateVmVariant0(EndingRecordInt(instruction, 2), 15));'; assert stale.count(call)==4
+        stale=stale.replace(call,'CreateVmVariant0(EndingRecordInt(instruction, 2), 15), command);')
+        variants.append(('stale_animation',stale,'animation-live-destination'))
         old='CreateVmVariant0(EndingRecordInt(instruction, 2), 15)'; assert source.count(old)==4
         variants.append(('secondary_chain',source.replace(old,'CreateVmVariant1(EndingRecordInt(instruction, 2), 15)'),'animation-primary-chain'))
         old='flags |= 2;\n                continue;'; assert source.count(old)==1
