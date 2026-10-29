@@ -2,12 +2,13 @@
 
 ## Start here
 
-Current checkpoint restores the actual GameManager creation/worker call graph.
-Three new complete owners237 bytes (225 authored,12 indeterminate) pass two
-independent28-input colds. Main worker+62C/running+63C and the34-byte configuration
-view replace old anonymous storage. Configuration reset remains125/125 with nine
-ordinary byte differences; no partial credit. FrontEnd491C00 alias is unified,
-but the complete controller remains1076/1128 and Supervisor mode remains678/666.
+Current checkpoint adds the complete534-byte Main configuration reader, exact
+with all60 semantic fields in two independent29-input cold links. The real
+WinMain caller establishes path-in-EBX/stack-Main/RET4; the previous cdecl
+external declaration was wrong. Seven direct/ABI guards1217 bytes pass per image.
+Configuration reset remains125/125 with nine differences and WinMain1438/1389
+remains nonexact. Next concrete leads are Main construction421F00 and replay
+creation428FEA; preserve actual member construction order rather than forcing ABI.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -35,9 +36,26 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**85,075/275,729 reviewed authored owned bytes exact, 461 exact authored owners**;
-673 authored source mappings. Total: 1818 candidates, 1186 mappings, 1331 exact.
+**85,609/275,729 reviewed authored owned bytes exact, 462 exact authored owners**;
+674 authored source mappings. Total: 1818 candidates, 1187 mappings, 1332 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [Main configuration proof](evidence/main-configuration-20261029/README.md):
+
+- MainLoadConfiguration420870..420A85 owns534 bytes and60 address fields. Reset,
+  file read/copy/free, six byte-domain/version/size checks, key-map publication,
+  options/logging, vsync and unconditional writeback/error reporting are complete.
+  Adds534 authored exact bytes and one mapping; reviewed denominator unchanged.
+- Existing WinMain438B5C pushes Main and supplies EBX path. Natural stdcall source
+  replaces the old cdecl extern; first530/534 had two plain RETs, corrected534
+  reproduces target RET4 and every ordinary byte through the actual caller.
+- Every configuration field binds Main491C28+120; the default table binds474E88
+  plus0/4/8/C/10. Nearest anchor labels are not semantic evidence. Original key
+  data/log storage, identifiers, TU and product/runtime remain open.
+- Two independent canonical29-input colds pass the new owner and seven selected
+  direct/ABI guards1217 bytes. Reset remains125/125 with nine differences;
+  WinMain1438/1389 is still nonexact and unchanged in size from the prior graph.
+  No full cohort, comparison-infrastructure change or host scenario is claimed.
 
 Latest [GameManager launch proof](evidence/game-manager-launch-20261029/README.md):
 

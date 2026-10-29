@@ -1185,3 +1185,4 @@ GameManagerCreate,0x004180E0,function
 MainSupervisorView::StartModeThread,0x00420EA0,function
 GameManagerLoadThread,0x00417C70,function
 GameConfigurationView::ResetDefaults,0x00418C40,function
+MainLoadConfiguration,0x00420870,function

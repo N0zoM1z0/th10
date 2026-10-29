@@ -6664,3 +6664,35 @@ bytes with no authored-denominator change. Four mappings362 include the nonexact
 reset125. Forty-four explicit old contracts10922/all402 pass in both colds.
 No comparator, host-scenario, product or runtime claim is introduced. See
 [the complete proof](evidence/game-manager-launch-20261029/README.md).
+
+
+## 2026-10-29 Main configuration load and actual callee cleanup
+
+MainLoadConfiguration420870..420A85 is a complete534-byte authored owner. It
+resets the global52-byte configuration at Main491C28+120, opens the supplied
+path, copies/frees the buffer, validates six byte domains/version100003/size34h,
+and copies nine16-bit key bindings to474E88 only after validation. Missing or
+invalid data logs and resets defaults. Option bits/window mode are logged from
+the passed Main pointer; option20 writes global Main.disableVsync+3B4. Settings
+are always written back. Write failure logs both fatal messages, including the
+actual path argument to the first, and returns-1; success returns0.
+
+The target WinMain438B5C pushes Main, loads the path into EBX and calls420870.
+Both reader exits end RET4. The old maintained cdecl extern was incorrect:
+the first complete natural source was530/534, with plain RETs. Correcting it to
+stdcall through the actual source caller gives all534 bytes and60 fields. The
+optimizer promotes the path while retaining the Main pointer on the stack;
+no fake ABI/context/return is introduced. The source spelling and original TU
+remain provisional even when their complete emitted contract is exact.
+
+Semantic field bases matter: all configuration operands bind Main491C28+120
+and its offsets; key-map operands bind474E88 plus0/4/8/C/10. Nearest diagnostic
+D3D/Ending labels arise from small adjacent data anchors and do not identify
+those fields. The provisional Default key-table name does not mean immutable
+defaults: this loader writes the validated user bindings into the same table
+read by subsequent resets. Original data storage remains open. Two independent
+canonical29-input colds and seven selected direct/ABI guards1217 bytes pass. Configuration
+reset125/125 retains nine differences, and WinMain1438/1389 remains nonexact;
+neither is credited by its exact caller/callee. Main initialization421F00 must
+still preserve configuration-before-worker construction. See
+[the complete proof](evidence/main-configuration-20261029/README.md).

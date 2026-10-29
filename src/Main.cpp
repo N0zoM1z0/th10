@@ -80,7 +80,7 @@ extern void MainFatal(const char *message);
 extern void MainResetLog();
 extern void MainFlushLog();
 extern void MainInitializeSystemParameters();
-extern int MainLoadConfiguration(
+extern int __stdcall MainLoadConfiguration(
     const char *path, MainSupervisorView *supervisor);
 extern INT_PTR CALLBACK MainConfigurationDialogProc(
     HWND dialog, UINT message, WPARAM wparam, LPARAM lparam);
