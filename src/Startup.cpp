@@ -198,21 +198,7 @@ StartupWorkerView::~StartupWorkerView()
         delete ascii;
     g_AnmRenderManagerView->ReleaseAnm(0);
     GameFinalizeStatistics42B1E0(g_GameStatisticsRows);
-    GameStatisticsOwner *statistics = g_GameStatisticsRows;
-    if (statistics != NULL)
-    {
-        if (statistics->header != NULL)
-        {
-            free(statistics->header);
-            statistics->header = NULL;
-        }
-        if (statistics->loadedPayload != NULL)
-        {
-            free(statistics->loadedPayload);
-            statistics->loadedPayload = NULL;
-        }
-        delete statistics;
-    }
+    delete g_GameStatisticsRows;
     g_GameStatisticsRows = NULL;
 }
 

@@ -1165,3 +1165,5 @@ StartupWorkerView::Draw,0x0041FDD0,function
 StartupWorkerView::OnUpdate,0x0041FEB0,function
 StartupWorkerView::OnDraw,0x0041FEF0,function
 th10::leaf::Fn0041FD90,0x0041FD90,function
+GameStatisticsOwner::~GameStatisticsOwner,0x0042AEF0,function
+ReleaseGameStatistics,0x0042AF90,function

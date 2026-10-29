@@ -6450,3 +6450,29 @@ worker+10 then VM+30, matching diagnostic action shapes but granting no accepted
 EH address/metadata/runtime claim. ASCII capture before global clear is retained.
 Named Draw result control222 is restored. No normal-path or exception-path host
 simulations, hidden-slot forcing or register/profile sweep is warranted.
+
+
+## 2026-10-29 Statistics cleanup and Startup source model
+
+Complete destructor42AEF0/45 and global release42AF90/76 pass121 bytes/all7
+fields in two independent canonical nineteen-input colds. The destructor owns
+both nullable buffers, clearing each after free. The release deletes the nullable
+owner and then clears47783C. Natural source preserves the observed private ESI
+receiver through LTCG without a forced ABI. Startup now uses that destructor via
+delete; its complete parent remains433/417. Five affected existing Startup owners
+435/all26 and23 older contracts6235/all179 pass in each image.
+
+Both entries were missing from the ledger/Ghidra inventory. Complete raw decoding
+and CC separation establish their boundaries; every-byte Ghidra queries find no
+observed references. The adjacent42AFE0..42B020 scalar deleting body is65 bytes,
+including flag1 test, conditional scalar delete, returned owner and RET4. It is
+compiler-excluded without exact or source-mapping credit. The45/76-byte bodies
+retain indeterminate origin; no authored exact/denominator change follows. See
+[the complete proof](evidence/statistics-cleanup-20261029/README.md).
+
+The global state slot491FB8 equals supervisor491C28+390, already modeled as
+MainSupervisorView::nextGameMode. Startup's separate external int declaration is
+a concrete storage-model question for the next native comparison; no equality
+of source globals/storage is claimed from diagnostic anchors alone. The actual
+factory caller4218D0 changes these supervisor mode fields and uses lock5; its
+complete source and switch-table ownership remain open.

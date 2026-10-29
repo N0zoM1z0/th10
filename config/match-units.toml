@@ -25578,3 +25578,46 @@ size = 7
 linkages = [
   { offset = 0x2, type = "REL32", symbol = "?Draw@StartupWorkerView@@QAGHXZ", target = 0x41fdd0 },
 ]
+
+[units.statistics-owner-destructor]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/StartupWorkerLifecycle"
+pdb_source = "src/GameStatistics.cpp"
+functions = ["GameStatisticsOwner::~GameStatisticsOwner"]
+symbol = "??1GameStatisticsOwner@@QAE@XZ"
+target_address = 4370160
+size = 45
+linkages = [
+  { "offset" = 8, "type" = "REL32", "symbol" = "_free", "target" = 4531234 },
+  { "offset" = 30, "type" = "REL32", "symbol" = "_free", "target" = 4531234 },
+]
+
+[units.statistics-release]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/StartupWorkerLifecycle"
+pdb_source = "src/GameStatistics.cpp"
+functions = ["ReleaseGameStatistics"]
+symbol = "?ReleaseGameStatistics@@YAXXZ"
+target_address = 4370320
+size = 76
+linkages = [
+  { "offset" = 3, "type" = "DIR32", "symbol" = "?g_GameStatisticsRows@@3PAUGameStatisticsOwner@@A", "target" = 4683836 },
+  { "offset" = 19, "type" = "REL32", "symbol" = "_free", "target" = 4531234 },
+  { "offset" = 41, "type" = "REL32", "symbol" = "_free", "target" = 4531234 },
+  { "offset" = 57, "type" = "REL32", "symbol" = "??3@YAXPAX@Z", "target" = 4531361 },
+  { "offset" = 66, "type" = "DIR32", "symbol" = "?g_GameStatisticsRows@@3PAUGameStatisticsOwner@@A", "target" = 4683836 },
+]

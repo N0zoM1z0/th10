@@ -1,0 +1,267 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_owned_bytes": 121,
+  "new_exact_owners": 2,
+  "new_authored_exact_bytes": 0,
+  "new_indeterminate_exact_bytes": 121,
+  "new_candidates": 3,
+  "new_reviewed_owned_bytes": 186,
+  "new_compiler_excluded_bytes": 65,
+  "authored_denominator_change": 0,
+  "new_source_mappings": 2,
+  "new_source_mapping_owned_bytes": 121,
+  "source_pins": {
+    "src/AnmDrawCallbacks.cpp": "49cb0da52c3a1fbd8d6a6fdf403a54b10737ef003d050615bc4af5c62612ad37",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/GameErrorContext.hpp": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37",
+    "src/GameStatistics.cpp": "e672f35c5d6e944b304b020f231b0ebb5eea1f83f2dab5cd5a47635dde9a5dc0",
+    "src/GameStatistics.hpp": "3db83612f100ae38b109e358bbf777f897fab2e760520bc92c52fbec1b4823bc",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "8db469e67541ea2a45be69c89c9f20375ea217b0c6976d4177d3c5e2b0a0a857",
+    "src/Main.hpp": "128274b3122e4c4af9aa4d5adf2e3bc59f4b1e455a6d3677ee51f14a46b0e4fb",
+    "src/MainViewport.cpp": "cbc513421b43a770c5d2254fd1cae140554c2abfdbe70c36e0f36ca5a3848799",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.cpp": "7871c32b29e1d81a2db45a91d08bc65e0a314f37885fb3befbbea81859475439",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.cpp": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7",
+    "src/ScriptViewer.hpp": "3b436665dac628f6dcbb525d1bd7788a4b2b83b9996facd2ee290e446e498fc9",
+    "src/ScriptViewerOwners.hpp": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+    "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157",
+    "src/Sound.cpp": "be8f8af5725bf0fa90b83841729a44d0197863725f2d3e08e7151a61797b0a6f",
+    "src/Sound.hpp": "9cb28ca14d02ee6052bf8d97bb46630f1000715b06d14b4a8e87793325321938",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+    "src/Startup.cpp": "e46785202af19fe9e001a03270e200a634ccc10ed3530cf7b163f99dcee07c41",
+    "src/ZWave.cpp": "eef1e940196f84fc5118bf0b5ebf2e95c36044e2c5cfc78da75bffb1d599e87e"
+  },
+  "cold_runs": [
+    {
+      "label": "cold-a",
+      "artifacts": {
+        "exe": "3cbee6d315cf9de9a63c1717fbaace6f8bb8a71ba271df29efcb69c1206ff50b",
+        "map": "9e847e18312f1fb0d179c89571a8c78f6dc5ee37b35e3c6a2453faf5dd308217",
+        "pdb": "a60b0ad00bfdb20cde31da70fba88dd4fc1b7107c55297ff769a8a86a9c7459f"
+      },
+      "selected": [
+        {
+          "unit": "startup-worker-constructor",
+          "size": 128,
+          "result": "exact",
+          "symbol": "??0StartupWorkerView@@QAE@XZ",
+          "target_address": "0x0041F850",
+          "matched_bytes": 128,
+          "normalization_complete": true,
+          "image_sha256": "3cbee6d315cf9de9a63c1717fbaace6f8bb8a71ba271df29efcb69c1206ff50b",
+          "fields": 2
+        },
+        {
+          "unit": "startup-register-tasks",
+          "size": 140,
+          "result": "exact",
+          "symbol": "?RegisterTasks@StartupWorkerView@@QAEHXZ",
+          "target_address": "0x0041FAC0",
+          "matched_bytes": 140,
+          "normalization_complete": true,
+          "image_sha256": "3cbee6d315cf9de9a63c1717fbaace6f8bb8a71ba271df29efcb69c1206ff50b",
+          "fields": 12
+        },
+        {
+          "unit": "startup-worker-create",
+          "size": 69,
+          "result": "exact",
+          "symbol": "?CreateStartupWorker@@YAPAUStartupWorkerView@@XZ",
+          "target_address": "0x0041FD00",
+          "matched_bytes": 69,
+          "normalization_complete": true,
+          "image_sha256": "3cbee6d315cf9de9a63c1717fbaace6f8bb8a71ba271df29efcb69c1206ff50b",
+          "fields": 5
+        },
+        {
+          "unit": "startup-release-resources",
+          "size": 91,
+          "result": "exact",
+          "symbol": "?ReleaseStartupResources@@YAHXZ",
+          "target_address": "0x0041F930",
+          "matched_bytes": 91,
+          "normalization_complete": true,
+          "image_sha256": "3cbee6d315cf9de9a63c1717fbaace6f8bb8a71ba271df29efcb69c1206ff50b",
+          "fields": 6
+        },
+        {
+          "unit": "startup-draw-callback",
+          "size": 7,
+          "result": "exact",
+          "symbol": "?OnDraw@StartupWorkerView@@SIHPAU1@@Z",
+          "target_address": "0x0041FEF0",
+          "matched_bytes": 7,
+          "normalization_complete": true,
+          "image_sha256": "3cbee6d315cf9de9a63c1717fbaace6f8bb8a71ba271df29efcb69c1206ff50b",
+          "fields": 1
+        },
+        {
+          "unit": "statistics-owner-destructor",
+          "size": 45,
+          "result": "exact",
+          "symbol": "??1GameStatisticsOwner@@QAE@XZ",
+          "target_address": "0x0042AEF0",
+          "matched_bytes": 45,
+          "normalization_complete": true,
+          "image_sha256": "3cbee6d315cf9de9a63c1717fbaace6f8bb8a71ba271df29efcb69c1206ff50b",
+          "fields": 2
+        },
+        {
+          "unit": "statistics-release",
+          "size": 76,
+          "result": "exact",
+          "symbol": "?ReleaseGameStatistics@@YAXXZ",
+          "target_address": "0x0042AF90",
+          "matched_bytes": 76,
+          "normalization_complete": true,
+          "image_sha256": "3cbee6d315cf9de9a63c1717fbaace6f8bb8a71ba271df29efcb69c1206ff50b",
+          "fields": 5
+        }
+      ],
+      "old_guard_owners": 23,
+      "old_guard_bytes": 6235,
+      "old_guard_fields": 179,
+      "objects_reused": 0
+    },
+    {
+      "label": "cold-b",
+      "artifacts": {
+        "exe": "91f3383452ce405b0e9b49177eca6b72eb9d889934272221bdcd21ee2af4b664",
+        "map": "d4cce07f09ae5387a54efc0e327de967bb415c73bd04261faca92bde1d849d98",
+        "pdb": "fc1321ad9ce0ac8dd44040b749dc4ca8a304528afbf32bdca847f4cffae80105"
+      },
+      "selected": [
+        {
+          "unit": "startup-worker-constructor",
+          "size": 128,
+          "result": "exact",
+          "symbol": "??0StartupWorkerView@@QAE@XZ",
+          "target_address": "0x0041F850",
+          "matched_bytes": 128,
+          "normalization_complete": true,
+          "image_sha256": "91f3383452ce405b0e9b49177eca6b72eb9d889934272221bdcd21ee2af4b664",
+          "fields": 2
+        },
+        {
+          "unit": "startup-register-tasks",
+          "size": 140,
+          "result": "exact",
+          "symbol": "?RegisterTasks@StartupWorkerView@@QAEHXZ",
+          "target_address": "0x0041FAC0",
+          "matched_bytes": 140,
+          "normalization_complete": true,
+          "image_sha256": "91f3383452ce405b0e9b49177eca6b72eb9d889934272221bdcd21ee2af4b664",
+          "fields": 12
+        },
+        {
+          "unit": "startup-worker-create",
+          "size": 69,
+          "result": "exact",
+          "symbol": "?CreateStartupWorker@@YAPAUStartupWorkerView@@XZ",
+          "target_address": "0x0041FD00",
+          "matched_bytes": 69,
+          "normalization_complete": true,
+          "image_sha256": "91f3383452ce405b0e9b49177eca6b72eb9d889934272221bdcd21ee2af4b664",
+          "fields": 5
+        },
+        {
+          "unit": "startup-release-resources",
+          "size": 91,
+          "result": "exact",
+          "symbol": "?ReleaseStartupResources@@YAHXZ",
+          "target_address": "0x0041F930",
+          "matched_bytes": 91,
+          "normalization_complete": true,
+          "image_sha256": "91f3383452ce405b0e9b49177eca6b72eb9d889934272221bdcd21ee2af4b664",
+          "fields": 6
+        },
+        {
+          "unit": "startup-draw-callback",
+          "size": 7,
+          "result": "exact",
+          "symbol": "?OnDraw@StartupWorkerView@@SIHPAU1@@Z",
+          "target_address": "0x0041FEF0",
+          "matched_bytes": 7,
+          "normalization_complete": true,
+          "image_sha256": "91f3383452ce405b0e9b49177eca6b72eb9d889934272221bdcd21ee2af4b664",
+          "fields": 1
+        },
+        {
+          "unit": "statistics-owner-destructor",
+          "size": 45,
+          "result": "exact",
+          "symbol": "??1GameStatisticsOwner@@QAE@XZ",
+          "target_address": "0x0042AEF0",
+          "matched_bytes": 45,
+          "normalization_complete": true,
+          "image_sha256": "91f3383452ce405b0e9b49177eca6b72eb9d889934272221bdcd21ee2af4b664",
+          "fields": 2
+        },
+        {
+          "unit": "statistics-release",
+          "size": 76,
+          "result": "exact",
+          "symbol": "?ReleaseGameStatistics@@YAXXZ",
+          "target_address": "0x0042AF90",
+          "matched_bytes": 76,
+          "normalization_complete": true,
+          "image_sha256": "91f3383452ce405b0e9b49177eca6b72eb9d889934272221bdcd21ee2af4b664",
+          "fields": 5
+        }
+      ],
+      "old_guard_owners": 23,
+      "old_guard_bytes": 6235,
+      "old_guard_fields": 179,
+      "objects_reused": 0
+    }
+  ],
+  "startup_candidates": {
+    "destructor": {
+      "native": 433,
+      "target": 417
+    },
+    "update": {
+      "native": 67,
+      "target": 63
+    },
+    "draw": {
+      "native": 218,
+      "target": 220
+    },
+    "thread": {
+      "native": 292,
+      "target": 299
+    }
+  },
+  "phase_scope": "exact codegen only; original origin/TU, product/runtime and portability remain independent"
+}

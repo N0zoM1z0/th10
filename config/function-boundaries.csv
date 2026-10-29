@@ -773,7 +773,10 @@ address,span_end,state,confidence,evidence_id,notes
 0x0042ACB0,0x0042ADC1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042ADD0,0x0042AE5D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042AE60,0x0042AEE3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0042AEF0,0x0042AF1C,reviewed,high,statistics-cleanup-20261029,Complete dense raw decode; CC-delimited whole extent; internal conditional destinations remain fixed; every-byte Ghidra query finds no references; no overlap.
 0x0042AF20,0x0042AF80,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0042AF90,0x0042AFDB,reviewed,high,statistics-cleanup-20261029,Complete dense raw decode; CC-delimited whole extent; internal conditional destinations remain fixed; every-byte Ghidra query finds no references; no overlap.
+0x0042AFE0,0x0042B020,reviewed,high,statistics-cleanup-20261029,Complete65-byte dense raw scalar-delete protocol ends RET4; CC padding follows; no overlap or observed references across the extent.
 0x0042B030,0x0042B1D6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042B1E0,0x0042B413,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0042B420,0x0042B420,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

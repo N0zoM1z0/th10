@@ -54,6 +54,7 @@ struct GameStatisticsTail
 struct GameStatisticsOwner
 {
     GameStatisticsOwner();
+    ~GameStatisticsOwner();
     int Load42B030();
     GameStatisticsFileHeader *header;
     unsigned char *loadedPayload; // Separately freed at42AEF0; meaning unresolved.
@@ -86,3 +87,4 @@ extern GameStatisticsOwner *g_GameStatisticsRows;
 int GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics);
 
 GameStatisticsOwner *CreateStatistics42AF20();
+void ReleaseGameStatistics();

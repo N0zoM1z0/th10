@@ -1164,3 +1164,5 @@ StartupWorkerView::Draw
 StartupWorkerView::OnUpdate
 StartupWorkerView::OnDraw
 th10::leaf::Fn0041FD90
+GameStatisticsOwner::~GameStatisticsOwner
+ReleaseGameStatistics

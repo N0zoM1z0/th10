@@ -56,3 +56,25 @@ int GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics)
     free(scratch);
     return 0;
 }
+
+// Target42AEF0..42AF1C owns both loaded buffers.
+GameStatisticsOwner::~GameStatisticsOwner()
+{
+    if (header != NULL)
+    {
+        free(header);
+        header = NULL;
+    }
+    if (loadedPayload != NULL)
+    {
+        free(loadedPayload);
+        loadedPayload = NULL;
+    }
+}
+
+// Target42AF90..42AFDB clears the global after deleting the nullable owner.
+void ReleaseGameStatistics()
+{
+    delete g_GameStatisticsRows;
+    g_GameStatisticsRows = NULL;
+}

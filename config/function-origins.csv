@@ -773,7 +773,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0042ACB0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0042ADD0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0042AE60,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
+0x0042AEF0,unknown,GameStatistics,indeterminate,unknown,statistics-cleanup-20261029
 0x0042AF20,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
+0x0042AF90,unknown,GameStatistics,indeterminate,unknown,statistics-cleanup-20261029
+0x0042AFE0,compiler_generated,GameStatistics,exclude,high,statistics-cleanup-20261029
 0x0042B030,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
 0x0042B1E0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0042B420,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
