@@ -905,7 +905,7 @@ FrontEndUpdateMusicRoom
 FrontEndMusicSkipLine
 FrontEndMusicCopyLine
 AnmVmView::StartPositionInterpolation
-FrontEndMarkVmInterrupt
+FrontEndControllerView::MarkVmInterrupt
 FrontEndLoadMusic
 FrontEndPlayMusic
 SoundPlayerView::QueueCommand
@@ -1177,3 +1177,6 @@ FrontEndControllerView::GetSize
 FrontEndControllerView::FrontEndControllerView
 FrontEndControllerView::~FrontEndControllerView
 FrontEndCreate
+FrontEndLoadThread
+FrontEndControllerView::RegisterTasks
+FrontEndControllerView::CreateVm

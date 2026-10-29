@@ -274,6 +274,9 @@ struct FrontEndControllerView
     FrontEndControllerView();
     ~FrontEndControllerView();
     virtual unsigned int GetSize();
+    int RegisterTasks();
+    void CreateVm(int scriptIndex);
+    void MarkVmInterrupt(int index, short interrupt);
     int Update();
     int Draw();
     static int __stdcall UpdateOptions(FrontEndControllerView *controller);
@@ -306,6 +309,8 @@ struct FrontEndControllerView
 extern FrontEndControllerView *g_FrontEndControllerView;
 FrontEndControllerView *FrontEndCreate();
 int FrontEndLoadThread();
+int __fastcall FrontEndUpdateCallback(FrontEndControllerView *controller);
+int __fastcall FrontEndDrawCallback(FrontEndControllerView *controller);
 
 typedef char FrontEndControllerLifecycleOffsets[
     (offsetof(FrontEndControllerView, flags) == 4 &&

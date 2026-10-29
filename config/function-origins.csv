@@ -810,6 +810,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0042C850,authored_game,FrontEnd,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x0042C8C0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0042C920,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x0042C9F0,authored_game,FrontEnd,authored,high,frontend-launch-20261029-target-game-thread-control
 0x0042CAA0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0042CB60,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0042CD50,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17

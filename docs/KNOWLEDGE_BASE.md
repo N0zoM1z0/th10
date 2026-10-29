@@ -6573,3 +6573,49 @@ old Ending constructor cold pass. Handler identity grants no generated/runtime
 credit. Existing origins add949 authored and210 indeterminate exact bytes;
 the reviewed authored denominator is unchanged. Four new source mappings cover
 797 bytes. See [the complete proof](evidence/frontend-lifecycle-20261029/README.md).
+
+
+## 2026-10-29 FrontEnd launch, shared VM retirement and actual receivers
+
+FrontEnd thread42C9F0..42CA97 is a complete168-byte game-specific callback, missed
+by the prior inventory/database functions. Factory data refs42CD82/42CD8B reach
+its entry; all-byte read-only Ghidra queries find only owning interior jumps.
+Four preceding/eight following CC bytes delimit it; three internal alignment
+bytes remain in the full comparison. Game-specific registration and mode/Startup
+control establish authored origin independently of codegen. This adds168 reviewed
+authored denominator bytes. The old handoff's statistics label at477820 is wrong:
+this is the actual Startup worker, and the wait reads frames+3EC. The unchanged
+3F0 view now has a shared header and an explicit field assertion.
+
+Task registration42CAA0/192 creates priorities6/3, stores+C/+10 and clears initial
+flag2 before preloading ANM25/26 via447280. Synchronous LoadAnm447080 is a different
+callee and produced261/192. Correct PreloadAnm binding and second-task store order
+recover the whole192. Failure reports the actual data-corruption message; success
+sets cursor wrapping and clears4918A4. Thread failure selects mode2/3 from flag1000;
+success waits to300 frames or flag80, releases ANM1 and sets update task flag2.
+The launch argument is unused and the actual callback ends with plain RET.
+
+FrontEnd CreateVm42C670/95 is a natural member with a promoted stack receiver,
+EDI script and RET4; no forced register ABI is declared. The old static cdecl
+helper added stack cleanup absent from the caller. Member MarkVmInterrupt42C770/65
+uses EAX receiver/ECX index/SI interrupt; explicit value ID copy before FindVm
+recovers its ordinary operand bytes. Both complete owners include every field.
+The already exact409E50 pending-interrupt helper also serves FrontEnd's ASCII ID;
+its unchanged definition moves from EnemyEclDispatcher.cpp to VmIdInterrupt.cpp.
+Its canonical mapping is retargeted without extra bytes or origin changes.
+
+Complete update42CDF0/1128 owns1059 code +1 alignment +68 table bytes. Restoring
+its in-place demo/initialization logic moves372 ->1100; real receiver/helper
+context gives1076. Mode2 actually returns to replay screen12/4315C0, not practice
+screen11/431EE0. Cursor clamping and draw-task flag2 belong to the body. Raw demo
+stage search uses a local EAX count and publishes it only afterward; the apparent
+global counter in the decompiler is misleading. Main state fields share their
+existing Supervisor view. Inline void setter and mode controls are structurally
+byte-neutral for the full parent; setter restored. Parent, Practice1524/1968 and
+Draw112/116 remain nonexact and get no partial code or table credit.
+
+Two independent canonical27-input colds reproduce four new authored owners520
+bytes/all37 fields plus retargeted shared65/all2. Thirty-four selected affected
+old contracts10143/all351 pass per image. Three new mappings cover455 bytes;
+FrontEnd65 is a renamed existing mapping. No comparator mechanism, host-scenario,
+product or runtime claim is made. See [the complete proof](evidence/frontend-launch-20261029/README.md).

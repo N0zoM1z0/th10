@@ -2,14 +2,12 @@
 
 ## Start here
 
-Current checkpoint reconstructs the complete FrontEnd lifecycle and adds1159
-exact bytes:949 authored and210 indeterminate. The491-byte FrontEnd and362-byte
-Ending destructors,
-204-byte constructor,96-byte factory and newly inventoried6-byte size query pass
-two independent canonical25-input colds. A natural Chain member receiver solves
-the last four ordinary cleanup bytes while retaining existing callee/scheduler
-exactness. Existing18-byte nullable deletion binds the real destructor; no extra
-credit is granted. Supervisor mode678/666 remains nonexact.
+Current checkpoint adds520 complete exact authored bytes: FrontEnd load thread168,
+task/resource registration192, VM creation95 and deferred interrupt65. The shared
+old65-byte interrupt helper moves unchanged to its own source without added
+credit. New game-specific thread review adds168 authored denominator bytes.
+The complete1128-byte controller now has in-place demo/initialization source,
+correct replay-return behavior and real VM receivers;1076/1128 remains nonexact.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -37,9 +35,34 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**84,330/275,561 reviewed authored owned bytes exact, 455 exact authored owners**;
-667 authored source mappings. Total: 1816 candidates, 1179 mappings, 1324 exact.
+**84,850/275,729 reviewed authored owned bytes exact, 459 exact authored owners**;
+670 authored source mappings. Total: 1817 candidates, 1182 mappings, 1328 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [FrontEnd launch proof](evidence/frontend-launch-20261029/README.md):
+
+- Four new authored owners520/all37 and retargeted old helper65/all2 pass two
+  independent canonical27-input colds. Three new mappings cover455 target bytes;
+  existing65-byte FrontEnd mapping becomes its member name. New168-byte callback
+  is game-authored by its actual game-specific control/refs, independently of
+  compiler equality; denominator increases168. All-byte refs find only owning
+  branches and the two factory entry data references. Boundaries/CC gaps are strict.
+- 477820 is the existing Startup object, correcting the prior statistics label.
+  The actual wait uses frames+3EC; its unchanged3F0 view moves to Startup.hpp.
+  Registration preloads slots25/26 through447280, not synchronous LoadAnm447080.
+  Both actual registered callbacks retain their old7-byte exact adapters.
+- Natural member receivers recover CreateVm's stack-owner/EDI/RET4 and the
+  interrupt method's EAX-owner/ECX-index/SI ABI. Explicit value ID copy fixes its
+  remaining operand differences. No register annotations or fake arguments.
+- The1128-byte parent moves372 ->1100 ->1076 through complete in-place logic and
+  real callees. Mode2 returns to replay screen12/4315C0, not practice11/431EE0.
+  Raw demo loop has a local index, contradicting the decompiler's global-loop
+  presentation. Draw-task flag2 replaces the old transition navigation label.
+  The parent remains nonexact; no partial code/table credit. Inline void setter
+  and mode-spelling controls are byte-neutral and parked; setter restored.
+- Thirty-four explicit affected old contracts10143/all351 pass in each image.
+  VM dependencies, lifecycle, callbacks, displays, Startup and worker interfaces
+  are preserved. No full historical replay, comparator or host-scenario campaign.
 
 Latest [FrontEnd lifecycle proof](evidence/frontend-lifecycle-20261029/README.md):
 
@@ -163,36 +186,43 @@ owns 1419 code + 1 NOP + 32 table bytes, resolving the old adjacent-table
 uncertainty. New SDK-family 19/52-byte candidates at `44D3E0`/`44D400` stay
 indeterminate, unmapped and nonexact.
 
-## Immediate continuation: actual launch callbacks and mode context
+## Immediate continuation: complete controller and actual lifecycle context
 
-The complete666-byte Supervisor mode source remains678, with a common
-FrontEndCreate call but different block/epilogue placement, branch distances
-and stage-store scheduling. Initial686 becomes678 through the outer change
-guard; grouped/fallthrough/common-cleanup694 controls are restored. Registration
-420470 is actually global/no-argument and remains204/204 with EBX/EBP allocations
-swapped. Park the repeated block/register spellings; lifecycle context is the
-useful premise. FrontEnd's actual factory96 and cleanup491 now pass completely.
+FrontEnd update42CDF0 owns1128 bytes:1059 code +1 alignment +68 table. Complete
+in-place source is1076/1128 in the current27-input Main graph. The old split
+helpers emitted372; restoring parent-local code gave1100, then actual VM receiver
+and shared helper context gave1076. Preserve the new mode2 replay return, clamped
+cursor selection, actual draw-task flag role and local demo search. The target
+keeps more distinct clamp branches, different block placement and register/constant
+lifetimes. Inline void setter is structurally byte-neutral and restored. Park it.
+The unsigned mode expression agrees with the thread but is neutral for this
+parent. Do not repeat register/branch spelling panels without a new premise.
+One concrete alias lead is491C00: FrontEnd still names it g_FrontEndMode while
+SupervisorModes names it g_MainModeTransitionCounter. Review actual shared-slot
+visibility before further block controls; current separate externs are an open
+physical alias obligation, not two target allocations.
 
-The actual FrontEndLoadThread42C9F0 remains a declaration and is absent from the
-old function inventory/database functions. Fresh raw decoding reaches RET42CA97,
-then eight CC bytes before the existing192-byte42CAA0 registration owner. The
-complete168-byte thread calls registration using global47784C, selects next mode
-from Supervisor flags, waits on the statistics+3EC counter or flag80, releases ANM
-slot1 and sets flag2 on the current update task. This is a raw lead, not an accepted
-boundary/origin or new source mapping. Review all references before inventorying;
-Ghidra autoanalysis silence is not evidence that the function is absent.
+Actual launch/registration and VM helper interfaces now pass completely. Shared
+409E50 pending interrupt is in VmIdInterrupt.cpp; do not restore the opaque
+FrontEndResetAsciiAuxiliary seam or duplicate its body. Startup.hpp contains the
+unchanged3F0 view and explicit frames+3EC assertion. Its old exact units pass.
+Practice remains1524/1968, Draw112/116. Their size equality/near behavior gives
+no credit. Source/domain/origin and complete product/storage/runtime stay separate.
 
-Main GameManagerCreate4180E0/107 remains opaque with logical stack mode/RET4 and
-owner mode+5C. ReleaseModeOwners4203F0/128 and Main added/draw callbacks remain
-unreconstructed. Source-backed real caller interfaces can change private LTCG
-selection; do not add fake register declarations or unused arguments.
+Supervisor mode4218D0 remains678/666, with different menu-call block and stage
+store placement. Registration420470 remains204/204 with EBX/EBP allocations swapped.
+These are parked controls, not exact matches. A concrete remaining actual callee
+lead is GameManagerCreate4180E0/107 (stack mode/RET4, mode+5C), still opaque.
+ReleaseModeOwners4203F0/128 and Main added/draw callbacks are also unreconstructed.
+Restore actual call graphs before considering codegen controls.
 
 Current warm context:
-`.analysis/gpt-6.1-sol/frontend-lifecycle-20261029/final-cold-b-context.json`.
-It is the25-input Main graph, adding FrontEndLifecycle/FrontEnd/ReplayManager to
-the prior22-input graph. Preserve source profiles, quoted-include hashes and
-accepted artifacts. Rebuild only changed/new inputs for diagnosis; acceptance
-colds reuse none. Replay only newly exact and actually affected existing units.
+`.analysis/gpt-6.1-sol/frontend-launch-20261029/final-cold-b-context.json`.
+It is the27-input Main graph, adding FrontEndLaunch and VmIdInterrupt to the
+prior25-input graph. Preserve pinned profiles and recursive include hashes;
+VmIdInterrupt retains the original profile without an explicit /EH switch.
+Rebuild only changed/new inputs for diagnosis; canonical acceptance reuses none.
+Replay only new/actually affected explicit selectors.
 
 ## Startup residuals
 
@@ -212,7 +242,7 @@ worker+10 and VM+30, with states[-1,0]; this is diagnostic metadata evidence,
 not an accepted handler binding or parent match. Normal-path state updates,
 zero-register lifetime and argument scheduling still differ. Park flag controls.
 
-Draw is218/220 in the current25-input context (210/220 in the prior22-input
+Draw is218/220 in the current27-input context (210/220 in the prior22-input
 context), with different hidden-return/frame reuse. Named result temporaries
 produce222 and are restored. OnUpdate is now63/63 exact through the state-field
 repair above. Raw EDX counterpart41FD90 and registered ECX copy41FEB0 have the
@@ -234,8 +264,8 @@ Its seven missing ECX homing/allocation/pop bytes and error-store scheduling are
 still unexplained. Do not force an unused argument or callback ABI. The actual
 _beginthreadex callback type and the observed plain RET stay separate.
 
-Active recipes/listings/logs: `.analysis/gpt-6.1-sol/frontend-lifecycle-20261029/`.
-Its `final-cold-b-context.json` records the current25-input warm graph. The
+Active recipes/listings/logs: `.analysis/gpt-6.1-sol/frontend-launch-20261029/`.
+Its `final-cold-b-context.json` records the current27-input warm graph. The
 private producer compares recursive include and profile pins, rebuilding only
 affected/new inputs. Cold acceptance reuses no objects. Superseded
 private images are removed after retaining source snapshots, receipts/listings;
@@ -267,10 +297,11 @@ is allowed when it has a concrete uncertainty and a complete comparison path.
 
 Current active artifacts and the verified historical archive are indexed in
 `.analysis/README.md`; cleanup audit is `.analysis/handoff-20261028/`.
-Newest logs/receipts are `.analysis/gpt-6.1-sol/frontend-lifecycle-20261029/`;
+Newest logs/receipts are `.analysis/gpt-6.1-sol/frontend-launch-20261029/`;
 the independent first witness is
-`build/gpt-6.1-sol/frontend-lifecycle-20261029/cold-a/` and the second is canonical
-`build/match-linked/FrontEndLifecycle/`. Prior Supervisor witnesses remain retained. Source/include hashes agree.
+`build/gpt-6.1-sol/frontend-launch-20261029/cold-a/` and the second is canonical
+`build/match-linked/FrontEndLaunch/`. Prior FrontEnd lifecycle and Supervisor
+witnesses remain retained. Source/include hashes agree.
 Earlier SoundDiskStartup and primary-format witnesses remain retained separately.
 Canonical `build/match-linked`, `build/match` and `build/match-runtime` caches,
 current Sound witnesses and warm Main inputs are retained. Obsolete host/probe

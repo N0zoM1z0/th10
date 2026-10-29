@@ -911,7 +911,7 @@ FrontEndUpdateMusicRoom,0x00433EF0,function
 FrontEndMusicSkipLine,0x004349E0,function
 FrontEndMusicCopyLine,0x00434A20,function
 AnmVmView::StartPositionInterpolation,0x00434A80,function
-FrontEndMarkVmInterrupt,0x0042C770,function
+FrontEndControllerView::MarkVmInterrupt,0x0042C770,function
 FrontEndLoadMusic,0x00420A90,function
 FrontEndPlayMusic,0x00420B10,function
 SoundPlayerView::QueueCommand,0x0043E460,function
@@ -1178,3 +1178,6 @@ FrontEndControllerView::GetSize,0x0042C5B0,function
 FrontEndControllerView::FrontEndControllerView,0x0042C920,function
 FrontEndControllerView::~FrontEndControllerView,0x0042CB60,function
 FrontEndCreate,0x0042CD50,function
+FrontEndLoadThread,0x0042C9F0,function
+FrontEndControllerView::RegisterTasks,0x0042CAA0,function
+FrontEndControllerView::CreateVm,0x0042C670,function

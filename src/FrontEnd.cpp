@@ -4,6 +4,7 @@
 #include "InputState.hpp"
 #include "ReplayManager.hpp"
 #include "FileSystem.hpp"
+#include "VmIdInterrupt.hpp"
 #include <stdlib.h>
 #include <math.h>
 
@@ -147,11 +148,8 @@ extern FrontEndControllerMappingView g_FrontEndSavedControllerMapping;
 extern void FrontEndQueueSoundCommand(
     const char *command, int parameter0, int parameter1);
 extern void FrontEndPlaySound(int soundId);
-void FrontEndMarkVmInterrupt(
-    FrontEndControllerView *controller, int index, short interrupt);
 int __stdcall FrontEndLoadMusic(int slot, const char *path);
 int __stdcall FrontEndPlayMusic(int slot, int trackIndex);
-extern void FrontEndResetAsciiAuxiliary(int *state);
 extern signed char *__fastcall FrontEndGetControllerState(int controllerIndex);
 extern int FrontEndReadKeyboardState(unsigned char *keyboardState);
 
@@ -159,7 +157,6 @@ int __stdcall FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
 int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
-extern void EnemyMarkPendingInterrupt(int *vmId);
 // TH10 practice unlock helper: 0x0042C8C0, reviewed 93-byte extent.
 // The source signature preserves the observed explicit profile receiver;
 // The target passes it in EAX; source-to-native ABI correspondence and
@@ -214,7 +211,7 @@ namespace
 enum
 {
     FRONT_END_FLAG_DEMO_TRANSITION = 0x20,
-    FRONT_END_TRANSITION_ACTIVE = 0x02,
+    FRONT_END_DRAW_CALLBACK_UNLOCKED = 0x02,
     FRONT_END_ROOT_VM = 1,
     FRONT_END_RENDER_LAYER = 15,
     FRONT_END_INPUT_UP = 0x10,
@@ -300,12 +297,7 @@ static void SetScreenState(FrontEndControllerView *controller, int state)
     ResetStateTimer(controller);
 }
 
-static void CreateVm(FrontEndControllerView *controller, int scriptIndex)
-{
-    controller->vmIds[scriptIndex] =
-        controller->frontAnm->CreateVmVariant0(
-            scriptIndex, FRONT_END_RENDER_LAYER);
-}
+
 
 static void InterruptVmNow(
     FrontEndControllerView *controller, int index, short interrupt)
@@ -660,131 +652,15 @@ static __forceinline AnmVmView *FindKeyConfigChildVm(
     return manager->FindVm(FindKeyConfigChildId(controller, manager, scriptIndex));
 }
 
-static void InitializeFrontEndScreen(FrontEndControllerView *controller)
-{
-    int mode = g_FrontEndMode;
-
-    g_AnmRenderManagerView->MarkLoadedVmsForDeletion(
-        g_AnmRenderManagerView->loadedAnms[6]);
-    g_AnmRenderManagerView->MarkLoadedVmsForDeletion(
-        g_AnmRenderManagerView->loadedAnms[7]);
-    g_AnmRenderManagerView->MarkLoadedVmsForDeletion(
-        g_AnmRenderManagerView->loadedAnms[2]);
-    g_AnmRenderManagerView->MarkLoadedVmsForDeletion(
-        g_AnmRenderManagerView->loadedAnms[3]);
-    g_AnmRenderManagerView->MarkLoadedVmsForDeletion(
-        g_AnmRenderManagerView->loadedAnms[0]);
-
-    int *asciiAuxiliary = &g_AsciiManagerView->auxiliaryVm89A4;
-    FrontEndResetAsciiAuxiliary(asciiAuxiliary);
-    *asciiAuxiliary = 0;
-
-    if (mode == 3)
-    {
-        controller->cursor.count = 10;
-        controller->cursor.current = 0;
-        controller->cursor.Push();
-        SetScreen(controller, FRONT_END_SCREEN_SCORE_ENTRY);
-        CreateVm(controller, 0x5b);
-        InterruptVm(controller, 0x5b, 9);
-        controller->transitionOwner->flags004 |= FRONT_END_TRANSITION_ACTIVE;
-        g_FrontEndMode = 1;
-        FrontEndControllerView::UpdateScoreEntry(controller);
-        return;
-    }
-
-    if ((g_FrontEndFlags & FRONT_END_FLAG_DEMO_TRANSITION) == 0)
-    {
-        FrontEndLoadMusic(0, "bgm/th10_02.wav");
-        FrontEndPlayMusic(0, 0);
-        mode = g_FrontEndMode;
-    }
-    else
-    {
-        g_ReplayDifficulty = g_FrontEndSavedDifficulty;
-    }
-    g_FrontEndFlags &= ~FRONT_END_FLAG_DEMO_TRANSITION;
-
-    if (mode == 0)
-    {
-        SetScreen(controller, FRONT_END_SCREEN_MAIN_MENU);
-        g_FrontEndMode = 1;
-        FrontEndUpdateMainMenu(controller);
-    }
-    else if (mode == 1)
-    {
-        if (g_ReplayDifficulty == 4)
-        {
-            if (controller->cursor.count == 0)
-                controller->cursor.current = 1;
-            else if (controller->cursor.count <= 1)
-                controller->cursor.current = controller->cursor.count - 1;
-            else
-                controller->cursor.current = 1;
-        }
-        SetScreen(controller, FRONT_END_SCREEN_MAIN_MENU_RETURN);
-        CreateVm(controller, 0x5b);
-        controller->transitionOwner->flags004 |= FRONT_END_TRANSITION_ACTIVE;
-        FrontEndUpdateMainMenuReturn(controller);
-    }
-    else if (mode == 2)
-    {
-        controller->cursor.count = 10;
-        controller->cursor.current = 3;
-        controller->cursor.Push();
-        SetScreen(controller, FRONT_END_SCREEN_PRACTICE);
-        CreateVm(controller, 0x5b);
-        InterruptVm(controller, 0x5b, 9);
-        controller->transitionOwner->flags004 |= FRONT_END_TRANSITION_ACTIVE;
-        g_FrontEndMode = 1;
-        FrontEndControllerView::UpdatePractice(controller);
-    }
-    else
-    {
-        FrontEndUpdateMainMenu(controller);
-    }
-}
-
-static void RotateDemoReplay(FrontEndControllerView *controller)
-{
-    int stage;
-    ReplayManager *replay;
-
-    ++g_FrontEndDemoFrames;
-    if ((g_FrontEndInput.current & 0x160b) != 0)
-    {
-        g_FrontEndDemoFrames = 0;
-        return;
-    }
-    if (g_FrontEndDemoFrames < 900)
-        return;
-
-    g_FrontEndFlags &= ~0x40u;
-    g_FrontEndFlags |= FRONT_END_FLAG_DEMO_TRANSITION;
-    strcpy(g_FrontEndDemoPath, g_FrontEndDemoPaths[g_FrontEndDemoIndex]);
-    replay = ReplayManager::Load(g_FrontEndDemoPath);
-    g_FrontEndDemoIndex = (g_FrontEndDemoIndex + 1) % 4;
-
-    for (stage = 0; stage < 8; ++stage)
-    {
-        if (replay->stageStates[stage].header != NULL)
-            break;
-    }
-    g_FrontEndSelectedStage = stage;
-    g_FrontEndSelectedStageMirror = stage;
-    g_FrontEndNextGameMode = 12;
-    g_ReplayCharacter = replay->replayData->character;
-    g_ReplayShotType = replay->replayData->shotType;
-    g_FrontEndSavedDifficulty = g_ReplayDifficulty;
-    g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[stage];
-    g_ReplayDifficulty = replay->replayData->difficulty;
-    ReplayManager::Destroy(replay);
-
-    g_FrontEndDemoFrames = 0;
-    g_FrontEndMode = controller->screen != FRONT_END_SCREEN_MAIN_MENU;
-}
 
 } // namespace
+
+// Target42C670..42C6CE retains the receiver on the stack and script in EDI.
+void FrontEndControllerView::CreateVm(int scriptIndex)
+{
+    vmIds[scriptIndex] = frontAnm->CreateVmVariant0(scriptIndex, FRONT_END_RENDER_LAYER);
+}
+
 
 __declspec(noinline) void FrontEndControllerView::SetScreenStateTarget(
     int state)
@@ -834,8 +710,8 @@ int __stdcall FrontEndUpdateMainMenu(FrontEndControllerView *controller)
     case 0:
         if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x58]) == NULL)
         {
-            CreateVm(controller, 0x58);
-            CreateVm(controller, 0x5a);
+            controller->CreateVm(0x58);
+            controller->CreateVm(0x5a);
             controller->titleAuxVmId =
                 controller->titleAnm->CreateVmVariant0(0, 15);
         }
@@ -849,7 +725,7 @@ int __stdcall FrontEndUpdateMainMenu(FrontEndControllerView *controller)
     case 2:
         if ((g_FrontEndInput.pressed & 0x160b) != 0)
         {
-            FrontEndMarkVmInterrupt(controller, 0x5a, 6);
+            controller->MarkVmInterrupt(0x5a, 6);
             controller->SetScreenStateTarget(4);
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 0x20, 0);
@@ -880,16 +756,15 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
             g_FrontEndFlags &= ~0x10u;
         }
         if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x58]) == NULL)
-            CreateVm(controller, 0x58);
-        CreateVm(controller, 0);
+            controller->CreateVm(0x58);
+        controller->CreateVm(0);
         controller->SetScreenStateTarget(1);
     case 1:
         if (controller->stateTimer.current > 10)
         {
             controller->SetScreenStateTarget(2);
             InterruptVmNow(controller, 0, 3);
-            FrontEndMarkVmInterrupt(
-                controller, 0, static_cast<short>(controller->cursor.current + 0x11));
+            controller->MarkVmInterrupt(0, static_cast<short>(controller->cursor.current + 0x11));
         }
         break;
     case 2:
@@ -905,8 +780,7 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_MOVE, 0);
             InterruptVmNow(controller, 0, 3);
-            FrontEndMarkVmInterrupt(
-                controller, 0, static_cast<short>(cursor->current + 7));
+            controller->MarkVmInterrupt(0, static_cast<short>(cursor->current + 7));
         }
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
@@ -916,12 +790,11 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
                 FRONT_END_SOUND_CANCEL, 0);
             cursor->SetCurrent(7);
             InterruptVmNow(controller, 0, 3);
-            FrontEndMarkVmInterrupt(
-                controller, 0, static_cast<short>(cursor->current + 7));
+            controller->MarkVmInterrupt(0, static_cast<short>(cursor->current + 7));
         }
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
         {
-            FrontEndMarkVmInterrupt(controller, 0, 6);
+            controller->MarkVmInterrupt(0, 6);
             switch (cursor->current)
             {
             case 0:
@@ -931,15 +804,15 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
             case 4:
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                     FRONT_END_SOUND_SELECT, 0);
-                FrontEndMarkVmInterrupt(controller, 0x5a, 7);
-                FrontEndMarkVmInterrupt(controller, 0x5b, 7);
+                controller->MarkVmInterrupt(0x5a, 7);
+                controller->MarkVmInterrupt(0x5b, 7);
                 controller->SetScreenStateTarget(4);
                 break;
             case 5:
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                     FRONT_END_SOUND_SELECT, 0);
-                FrontEndMarkVmInterrupt(controller, 0x5a, 7);
-                FrontEndMarkVmInterrupt(controller, 0x5b, 7);
+                controller->MarkVmInterrupt(0x5a, 7);
+                controller->MarkVmInterrupt(0x5b, 7);
                 controller->SetScreenStateTarget(4);
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                     FRONT_END_SOUND_SELECT, 0);
@@ -1030,24 +903,138 @@ int FrontEndControllerView::Update()
     if (screen == FRONT_END_SCREEN_MAIN_MENU ||
         screen == FRONT_END_SCREEN_MAIN_MENU_RETURN)
     {
-        RotateDemoReplay(this);
+        ++g_FrontEndDemoFrames;
+        if ((g_FrontEndInput.current & 0x160b) != 0)
+            g_FrontEndDemoFrames = 0;
+        else if (g_FrontEndDemoFrames >= 900)
+        {
+            ReplayManager *replay;
+            int stage;
+            g_FrontEndFlags &= ~0x40u;
+            g_FrontEndFlags |= FRONT_END_FLAG_DEMO_TRANSITION;
+            strcpy(g_FrontEndDemoPath, g_FrontEndDemoPaths[g_FrontEndDemoIndex]);
+            replay = ReplayManager::Load(g_FrontEndDemoPath);
+            g_FrontEndDemoIndex = (g_FrontEndDemoIndex + 1) % 4;
+
+            for (stage = 0; stage < 8; ++stage)
+            {
+                if (replay->stageStates[stage].header != NULL)
+                    break;
+            }
+            g_FrontEndSelectedStage = stage;
+            g_FrontEndSelectedStageMirror = stage;
+            g_MainSupervisorView.nextGameMode = 12;
+            g_ReplayCharacter = replay->replayData->character;
+            g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[stage];
+            g_ReplayShotType = replay->replayData->shotType;
+            g_FrontEndSavedDifficulty = g_ReplayDifficulty;
+            g_ReplayDifficulty = replay->replayData->difficulty;
+            ReplayManager::Destroy(replay);
+
+            g_FrontEndDemoFrames = 0;
+            g_FrontEndMode = screen != FRONT_END_SCREEN_MAIN_MENU;
+        }
     }
 
+    int mode = g_FrontEndMode;
     switch (screen)
     {
     case FRONT_END_SCREEN_INITIALIZE:
-        InitializeFrontEndScreen(this);
+    {
+        FrontEndControllerView *controller = this;
+        AnmRenderManagerView *manager = g_AnmRenderManagerView;
+
+        manager->MarkLoadedVmsForDeletion(
+            manager->loadedAnms[6]);
+        manager->MarkLoadedVmsForDeletion(
+            manager->loadedAnms[7]);
+        manager->MarkLoadedVmsForDeletion(
+            manager->loadedAnms[2]);
+        manager->MarkLoadedVmsForDeletion(
+            manager->loadedAnms[3]);
+        manager->MarkLoadedVmsForDeletion(
+            manager->loadedAnms[0]);
+
+        int *asciiAuxiliary = &g_AsciiManagerView->auxiliaryVm89A4;
+        EnemyMarkPendingInterrupt(asciiAuxiliary);
+        *asciiAuxiliary = 0;
+
+        if (mode == 3)
+        {
+            controller->cursor.count = 10;
+            controller->cursor.SetCurrent(0);
+            controller->cursor.Push();
+            controller->SetScreenTarget(FRONT_END_SCREEN_SCORE_ENTRY);
+            controller->CreateVm(0x5b);
+            controller->MarkVmInterrupt(0x5b, 9);
+            controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
+            g_FrontEndMode = 1;
+            FrontEndControllerView::UpdateScoreEntry(controller);
+            break;
+        }
+
+        if ((g_FrontEndFlags & FRONT_END_FLAG_DEMO_TRANSITION) == 0)
+        {
+            FrontEndLoadMusic(0, "bgm/th10_02.wav");
+            FrontEndPlayMusic(0, 0);
+            mode = g_FrontEndMode;
+        }
+        else
+        {
+            g_ReplayDifficulty = g_FrontEndSavedDifficulty;
+        }
+        g_FrontEndFlags &= ~FRONT_END_FLAG_DEMO_TRANSITION;
+
+        if (mode == 0)
+        {
+            controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU);
+            g_FrontEndMode = 1;
+            FrontEndUpdateMainMenu(controller);
+        }
+        else if (mode == 1)
+        {
+            if (g_ReplayDifficulty == 4)
+            {
+                if (controller->cursor.count == 0)
+                    controller->cursor.current = 1;
+                else if (controller->cursor.count <= 1)
+                    controller->cursor.current = controller->cursor.count - 1;
+                else
+                    controller->cursor.current = 1;
+            }
+            controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
+            controller->CreateVm(0x5b);
+            controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
+            FrontEndUpdateMainMenuReturn(controller);
+        }
+        else if (mode == 2)
+        {
+            controller->cursor.count = 10;
+            controller->cursor.SetCurrent(3);
+            controller->cursor.Push();
+            controller->SetScreenTarget(FRONT_END_SCREEN_REPLAY);
+            controller->CreateVm(0x5b);
+            controller->MarkVmInterrupt(0x5b, 9);
+            controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
+            g_FrontEndMode = 1;
+            FrontEndControllerView::UpdateReplay(controller);
+        }
+        else
+        {
+            FrontEndUpdateMainMenu(controller);
+        }
         break;
+    }
     case FRONT_END_SCREEN_MAIN_MENU:
         FrontEndUpdateMainMenu(this);
         break;
     case FRONT_END_SCREEN_MAIN_MENU_RETURN:
-        transitionOwner->flags004 |= FRONT_END_TRANSITION_ACTIVE;
+        drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
         FrontEndUpdateMainMenuReturn(this);
         break;
     case FRONT_END_SCREEN_START_GAME:
-        g_FrontEndNextGameMode =
-            ((g_FrontEndSupervisorFlags & 0x1000) == 0 ? 1 : 0) | 2;
+        g_MainSupervisorView.nextGameMode =
+            ((~(g_MainSupervisorView.flags >> 12)) & 1) | 2;
         FrontEndBeginGame();
         break;
     case FRONT_END_SCREEN_OPTIONS:
@@ -1140,7 +1127,7 @@ int __stdcall FrontEndControllerView::UpdateOptions(
     case FRONT_END_OPTIONS_INITIALIZE:
         controller->cursor.count = 6;
         controller->cursor.SetCurrent(0);
-        CreateVm(controller, FRONT_END_ROOT_VM);
+        controller->CreateVm(FRONT_END_ROOT_VM);
         controller->RefreshOptionsDisplay();
         controller->SetScreenStateTarget(FRONT_END_OPTIONS_OPENING);
         // The target intentionally falls through into the opening wait.
@@ -1151,8 +1138,7 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             controller->SetScreenStateTarget(FRONT_END_OPTIONS_ACTIVE);
             InterruptVmNow(controller, FRONT_END_ROOT_VM, 3);
             SetHintModeSprites(controller, g_AnmRenderManagerView);
-            FrontEndMarkVmInterrupt(
-                controller, FRONT_END_ROOT_VM,
+            controller->MarkVmInterrupt(FRONT_END_ROOT_VM,
                 static_cast<short>(static_cast<short>(controller->cursor.current) + 0x11));
             return 1;
         }
@@ -1170,8 +1156,7 @@ int __stdcall FrontEndControllerView::UpdateOptions(
         {
             QueueOptionsSound(FRONT_END_SOUND_MOVE);
             InterruptVmNow(controller, FRONT_END_ROOT_VM, 3);
-            FrontEndMarkVmInterrupt(
-                controller, FRONT_END_ROOT_VM,
+            controller->MarkVmInterrupt(FRONT_END_ROOT_VM,
                 static_cast<short>(static_cast<short>(controller->cursor.current) + 7));
         }
 
@@ -1182,12 +1167,11 @@ int __stdcall FrontEndControllerView::UpdateOptions(
                 QueueOptionsSound(FRONT_END_SOUND_CANCEL);
                 controller->cursor.SetCurrent(5);
                 InterruptVmNow(controller, FRONT_END_ROOT_VM, 3);
-                FrontEndMarkVmInterrupt(
-                    controller, FRONT_END_ROOT_VM,
+                controller->MarkVmInterrupt(FRONT_END_ROOT_VM,
                     static_cast<short>(static_cast<short>(controller->cursor.current) + 7));
                 return 1;
             }
-            FrontEndMarkVmInterrupt(controller, FRONT_END_ROOT_VM, 6);
+            controller->MarkVmInterrupt(FRONT_END_ROOT_VM, 6);
             QueueOptionsSound(FRONT_END_SOUND_CANCEL);
             controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
             return 1;
@@ -1262,7 +1246,7 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             switch (controller->cursor.current)
             {
             case 3:
-                FrontEndMarkVmInterrupt(controller, FRONT_END_ROOT_VM, 6);
+                controller->MarkVmInterrupt(FRONT_END_ROOT_VM, 6);
                 QueueOptionsSound(FRONT_END_SOUND_SELECT);
                 controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
                 return 1;
@@ -1275,7 +1259,7 @@ int __stdcall FrontEndControllerView::UpdateOptions(
                 QueueOptionsSound(FRONT_END_SOUND_SELECT);
                 return 1;
             case 5:
-                FrontEndMarkVmInterrupt(controller, FRONT_END_ROOT_VM, 6);
+                controller->MarkVmInterrupt(FRONT_END_ROOT_VM, 6);
                 QueueOptionsSound(FRONT_END_SOUND_CANCEL);
                 controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
                 return 1;
@@ -1444,7 +1428,7 @@ int __stdcall FrontEndControllerView::UpdateKeyConfig(
     case FRONT_END_KEY_CONFIG_INITIALIZE:
         controller->cursor.count = 7;
         controller->cursor.SetCurrent(0);
-        CreateVm(controller, FRONT_END_KEY_CONFIG_ROOT_VM);
+        controller->CreateVm(FRONT_END_KEY_CONFIG_ROOT_VM);
         SetScreenState(controller, FRONT_END_KEY_CONFIG_OPENING);
         CopyKeyConfigBindingsFromGlobal(controller);
         controller->RefreshKeyConfigDisplay();
@@ -1700,7 +1684,7 @@ int __stdcall FrontEndControllerView::UpdateDifficulty(
     case FRONT_END_SELECTION_INITIALIZE:
         if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
         {
-            CreateVm(controller, 0x5e);
+            controller->CreateVm(0x5e);
             controller->difficultyAuxVmId =
                 g_AsciiManagerView->asciiAnm->CreateVmVariant0(
                     8, FRONT_END_RENDER_LAYER);
@@ -1708,12 +1692,12 @@ int __stdcall FrontEndControllerView::UpdateDifficulty(
 
         controller->cursor.count = g_ReplayDifficulty < 4 ? 4 : 1;
         DeleteVm(controller, 0x62);
-        CreateVm(controller, rootIndex);
+        controller->CreateVm(rootIndex);
         InterruptVmNow(controller, rootIndex, 3);
         InterruptVm(
             controller, rootIndex,
             static_cast<short>(controller->cursor.current + 0x11));
-        CreateVm(controller, 0x62);
+        controller->CreateVm(0x62);
         SetScreenState(controller, FRONT_END_SELECTION_OPENING);
         break;
 
@@ -1828,9 +1812,9 @@ int __stdcall FrontEndControllerView::UpdateCharacter(
             }
         }
 
-        CreateVm(controller, 0x63);
+        controller->CreateVm(0x63);
         DeleteVm(controller, 0x7d);
-        CreateVm(controller, 0x7d);
+        controller->CreateVm(0x7d);
         InterruptVmNow(controller, 0x7d, 3);
         InterruptVm(
             controller, 0x7d,
@@ -1956,9 +1940,9 @@ int __stdcall FrontEndControllerView::UpdateShotType(
             }
         }
 
-        CreateVm(controller, 0x64);
+        controller->CreateVm(0x64);
         DeleteVm(controller, rootIndex);
-        CreateVm(controller, rootIndex);
+        controller->CreateVm(rootIndex);
         InterruptVmNow(controller, rootIndex, 3);
         InterruptVm(
             controller, rootIndex,
@@ -2098,8 +2082,8 @@ int __stdcall FrontEndControllerView::UpdateStage(
     case FRONT_END_SELECTION_INITIALIZE:
         controller->cursor.count = 6;
         controller->cursor.SetCurrent(g_FrontEndStageCursor);
-        CreateVm(controller, 0x6a);
-        CreateVm(controller, 0x6b + g_ReplayCharacter);
+        controller->CreateVm(0x6a);
+        controller->CreateVm(0x6b + g_ReplayCharacter);
         SetScreenState(controller, FRONT_END_SELECTION_OPENING);
         break;
 
@@ -2257,12 +2241,12 @@ int __stdcall FrontEndControllerView::UpdateReplay(
 
         if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
         {
-            CreateVm(controller, 0x5e);
+            controller->CreateVm(0x5e);
             controller->difficultyAuxVmId =
                 g_AsciiManagerView->asciiAnm->CreateVmVariant0(
                     8, FRONT_END_RENDER_LAYER);
         }
-        CreateVm(controller, 0x65);
+        controller->CreateVm(0x65);
         SetScreenState(controller, FRONT_END_REPLAY_OPENING);
 
         memset(controller->replayFiles, 0, sizeof(controller->replayFiles));
@@ -2544,27 +2528,25 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         if (g_AnmRenderManagerView->FindVm(
                 controller->vmIds[0x5e]) == NULL)
         {
-            CreateVm(controller, 0x5e);
+            controller->CreateVm(0x5e);
             controller->difficultyAuxVmId =
                 g_AsciiManagerView->asciiAnm->CreateVmVariant0(
                     8, FRONT_END_RENDER_LAYER);
         }
 
-        CreateVm(controller, 0x66);
+        controller->CreateVm(0x66);
         SetScreenState(controller, FRONT_END_PRACTICE_OPENING);
-        CreateVm(controller, 0x98 + controller->cursor.current / 3);
-        CreateVm(controller, 0x9a + controller->cursor.current);
-        CreateVm(
-            controller,
-            0xa0 + controller->practiceDifficultyCursor.current);
-        CreateVm(controller, 0xa8);
-        CreateVm(controller, 0xa9);
-        CreateVm(controller, 0xaa);
-        CreateVm(controller, 0xab);
-        CreateVm(controller, 0xa5);
-        CreateVm(controller, 0xa6);
-        CreateVm(controller, 0xa7);
-        CreateVm(controller, 0xac);
+        controller->CreateVm(0x98 + controller->cursor.current / 3);
+        controller->CreateVm(0x9a + controller->cursor.current);
+        controller->CreateVm(0xa0 + controller->practiceDifficultyCursor.current);
+        controller->CreateVm(0xa8);
+        controller->CreateVm(0xa9);
+        controller->CreateVm(0xaa);
+        controller->CreateVm(0xab);
+        controller->CreateVm(0xa5);
+        controller->CreateVm(0xa6);
+        controller->CreateVm(0xa7);
+        controller->CreateVm(0xac);
         // Fall through: creation callbacks can advance the opening timer.
 
     case FRONT_END_PRACTICE_OPENING:
@@ -2600,7 +2582,7 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         {
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
             DeleteVm(controller, 0xa0 + difficulty->previous);
-            CreateVm(controller, 0xa0 + difficulty->current);
+            controller->CreateVm(0xa0 + difficulty->current);
             if (page->current > 0)
             {
                 page->SetCurrent(1);
@@ -2630,11 +2612,10 @@ int __stdcall FrontEndControllerView::UpdatePractice(
             {
                 DeleteVm(
                     controller, 0x98 + controller->cursor.previous / 3);
-                CreateVm(
-                    controller, 0x98 + controller->cursor.current / 3);
+                controller->CreateVm(0x98 + controller->cursor.current / 3);
             }
             DeleteVm(controller, 0x9a + controller->cursor.previous);
-            CreateVm(controller, 0x9a + controller->cursor.current);
+            controller->CreateVm(0x9a + controller->cursor.current);
             if (page->current > 0)
                 controller->RefreshPracticeRecords();
         }
@@ -2868,19 +2849,19 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
 
         if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
         {
-            CreateVm(controller, 0x5e);
+            controller->CreateVm(0x5e);
             controller->difficultyAuxVmId =
                 g_AsciiManagerView->asciiAnm->CreateVmVariant0(
                     8, FRONT_END_RENDER_LAYER);
         }
 
-        CreateVm(controller, 0x68);
+        controller->CreateVm(0x68);
         controller->SetScreenStateTarget(
             FRONT_END_SCORE_ENTRY_OPENING);
-        CreateVm(controller, 0x98 + g_ReplayCharacter);
+        controller->CreateVm(0x98 + g_ReplayCharacter);
         int shot = g_ReplayShotType + g_ReplayCharacter * 3;
-        CreateVm(controller, 0x9a + shot);
-        CreateVm(controller, 0xa0 + g_ReplayDifficulty);
+        controller->CreateVm(0x9a + shot);
+        controller->CreateVm(0xa0 + g_ReplayDifficulty);
 
         g_FrontEndSelectedStage = FRONT_END_SCORE_ENTRY_NAME_LENGTH;
         g_FrontEndSelectedStageMirror = FRONT_END_SCORE_ENTRY_NAME_LENGTH;
@@ -3204,7 +3185,7 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
             controller->replayFiles[replayNumber - 1] =
                 ReplayManager::Load(replayPath);
         }
-        CreateVm(controller, 0x69);
+        controller->CreateVm(0x69);
         controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_OPENING);
         // The opening timer is tested on the initialization frame too.
     case FRONT_END_REPLAY_SAVE_OPENING:
@@ -3361,8 +3342,8 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
         if (controller->stateTimer.current >= 6)
         {
             DeleteVm(controller, 0x69);
-            FrontEndMarkVmInterrupt(controller, 0x5a, 8);
-            FrontEndMarkVmInterrupt(controller, 0x5b, 8);
+            controller->MarkVmInterrupt(0x5a, 8);
+            controller->MarkVmInterrupt(0x5b, 8);
             DeleteVm(controller, 0x5e);
             EnemyMarkPendingInterrupt(&controller->difficultyAuxVmId.value);
             controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
@@ -3506,7 +3487,6 @@ static const char *g_MusicWarningLines[8] = {
 };
 
 extern AnmLoadedView *g_FrontEndMusicCommentAnm; // target 0x00491FEC
-extern void EnemyMarkPendingInterrupt(int *vmId);
 
 // These parsers deliberately retain the target's read-before-count check,
 // destructive delimiter replacement and unbounded copy. They are not safe
@@ -3612,10 +3592,10 @@ int __stdcall GameQueueScaledSoundCommand(float magnitude)
 
 // Target 0x0042C770 marks pending interrupts only; ANM execution is deferred.
 // Other historical InterruptVmNow callers have not been audited in this batch.
-void FrontEndMarkVmInterrupt(
-    FrontEndControllerView *controller, int index, short interrupt)
+void FrontEndControllerView::MarkVmInterrupt(int index, short interrupt)
 {
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(controller->vmIds[index]);
+    AnmVmIdView id(vmIds[index].value);
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id);
     if (vm != NULL)
     {
         vm->pendingInterrupt = interrupt;
@@ -3645,11 +3625,11 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
             controller->cursor.SetCurrent(0);
             if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x5f]) == NULL)
             {
-                CreateVm(controller, 0x5f);
+                controller->CreateVm(0x5f);
                 controller->difficultyAuxVmId =
                     g_AsciiManagerView->asciiAnm->CreateVmVariant0(8, 15);
             }
-            CreateVm(controller, 0x67);
+            controller->CreateVm(0x67);
             int remaining;
             int count = 0;
             char *cursor = reinterpret_cast<char *>(
@@ -3879,8 +3859,8 @@ closeMusicRoom:
         if (controller->stateTimer.current >= 10)
         {
             DeleteVm(controller, 0x67);
-            FrontEndMarkVmInterrupt(controller, 0x5a, 8);
-            FrontEndMarkVmInterrupt(controller, 0x5b, 8);
+            controller->MarkVmInterrupt(0x5a, 8);
+            controller->MarkVmInterrupt(0x5b, 8);
             DeleteVm(controller, 0x5f);
             EnemyMarkPendingInterrupt(&controller->difficultyAuxVmId.value);
             controller->SetScreenTarget(2);
