@@ -2,6 +2,15 @@
 
 ## Current checkpoint
 
+PlayerUpdateInputAction4281D0 is complete174/all7 exact in two independent
+canonical12-source /GL cold links, preserving all55 instructions, six local
+branches and the private EAX Player / RET interface. An inline changed-frame
+predicate and separate timer branch returns restore the frame reload, delayed
+ESI save and short early exit. First scoped cold174+717+105 passes996/all26;
+second174/all7 passes independently. Eighteen same-image bodies pass2265/all60;
+nine previous native candidates remain byte/field-identical. See the
+[complete input timer proof](evidence/player-input-exact-20261030/README.md).
+
 Player::SpawnShot427E90 is complete717/all17 exact in two independent
 canonical12-source /GL cold links, with all25 fixed local destinations and the
 natural three-stack-value/RET12 interface. First scoped cold includes its105-byte
@@ -12,10 +21,10 @@ pass2091/all53; ten previous candidates remain byte/field-identical. See the
 [complete producer proof](evidence/player-spawn-exact-20261030/README.md).
 
 PlayerEmitShotRows428160 remains complete105/all2 exact in its existing
-three-input Player-constructor recipe. Input174 still emits153 nonexact; its
-central Player input call uses the observed EAX interface. The complete prior
-2820-byte central native contribution is preserved; the3089-byte target parent
-remains unclosed. The [preceding source proof](evidence/player-shot-producer-20261030/README.md)
+three-input Player-constructor recipe and passes the current scoped cold.
+Its input174 caller is now separately exact in the12-source recipe. The complete
+prior2820-byte central native contribution is preserved; its3089-byte target
+parent remains unclosed. The [preceding source proof](evidence/player-shot-producer-20261030/README.md)
 retains its original source epoch.
 
 PlayerUpdateShots428280 now emits the complete876-byte owner, versus738 at
@@ -59,9 +68,9 @@ constructor188, Initialize522, destructor499, StageCreate151 and LoadData308.
 All1668 bytes/all91 fields pass. This adds1480 authored exact bytes; constructor
 origin remains indeterminate. See the [complete proof](evidence/stage-initialize-context-20261029/README.md).
 
-Current generated [progress](PROGRESS.md): **97,547/275,729 authored owned bytes
-exact,485 authored exact owners**. Total1361 exact owners/165,644 codegen bytes;
-1202 mappings,684 authored mappings,199 authored mapped backlog. Inventory and
+Current generated [progress](PROGRESS.md): **97,721/275,729 authored owned bytes
+exact,486 authored exact owners**. Total1362 exact owners/165,818 codegen bytes;
+1202 mappings,684 authored mappings,198 authored mapped backlog. Inventory and
 whole-product/runtime/portability closure remain separate and incomplete.
 
 The affected old selection passes14 units/2262 bytes/all156 fields in its existing
@@ -120,15 +129,16 @@ rebuildable outputs are disposable, not dependencies of the current workflow.
 ## Working inputs
 
 The current twelve-input Enemy/Player warm context is:
-`.analysis/gpt-6.1-sol/player-spawn-context-20261030/final-context.json`.
+`.analysis/gpt-6.1-sol/player-input-context-20261030/final-context.json`.
 Revalidate all43 recursive project pins,12 object hashes and image hash before
 reuse. Actual VmIdInterrupt/FrontEnd definitions use their recorded pinned
-profiles; no optimizer flags were swept. The accepted717-byte context is
-`canonical-context.json` beside it, with43 pins/12 objects and two cold witnesses.
+profiles; no optimizer flags were swept. The accepted174-byte second-cold
+context is `canonical-context.json` beside it, with43 pins/12 objects in the
+shared producer717 recipe. First scoped cold retains717 and174 in the same image;
 `caller-context.json` retains the current three-input105 recipe with28 pins/three
-objects. Old player-motion/player-shots and ten-input contexts retain their source
-epochs; the producer changes invalidate their Player.cpp pin. Rebuild changed
-inputs before reuse.
+objects. The previous player-spawn/player-motion/player-shots and ten-input
+contexts retain their source epochs; input changes invalidate their Player.cpp/
+Player.hpp pins. Rebuild changed inputs before reuse.
 
 The current five-input ANM warm context is:
 `.analysis/gpt-6.1-sol/anm-executor-context-20261030/final-context.json`.
@@ -240,12 +250,15 @@ The producer is now closed717/all17 in its coupled12-input recipe. Earlier
 765/708/709 sizes describe older source/graph epochs. The direct-coordinate source
 and initialization within the search loop are essential to the current proof.
 Assignment-result position712 and direct ID assignment706/frame18 are rejected.
-Input153/174 still has constant-one, timer read and callee-save differences; its
-typed timer/guard control138 is parked. The earlier SpawnShot member/global
-neutral control does not settle source shapes for other owners. Complete vector,
-constructor and normal-COFF partition controls do not fix motion's zero-Z store
-or shot-update's LEA; all remain restored and parked. No new exact credit attaches
-to input, larger parents or the motion/resource helpers.
+Input is now closed174/all7: a natural HasChanged predicate plus separate
+wrap/stop/tick returns restore its remaining lifetimes and early exit. Shared
+exit175, common active return178 and gated work182 are rejected. Bool/int and
+force-inline controls are byte-neutral; interval-one inlining175 is restored.
+The old interval predicate/damage call boundary stays intact. The earlier
+SpawnShot member/global neutral control does not settle source shapes for other
+owners. Complete vector, constructor and normal-COFF partition controls do not
+fix motion's zero-Z store or shot-update's LEA; all remain restored and parked.
+No new exact credit attaches to larger parents or the motion/resource helpers.
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed

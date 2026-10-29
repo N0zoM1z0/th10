@@ -1,0 +1,1318 @@
+{
+  "scope": "174 new authored exact bytes; existing reviewed boundary/origin retained. Parent exactness, original method spelling, product/runtime/portability remain separate.",
+  "target": {
+    "address": "0x004281D0",
+    "end": "0x0042827D",
+    "size": 174,
+    "decoded_instructions": 55,
+    "following_alignment_bytes": 2,
+    "abi": "private EAX Player* / RET; EAX zero on all exits",
+    "local_branches": [
+      {
+        "offset": 17,
+        "instruction": "jne",
+        "destination": 152,
+        "bytes": "0f8581000000"
+      },
+      {
+        "offset": 31,
+        "instruction": "jge",
+        "destination": 54,
+        "bytes": "7d15"
+      },
+      {
+        "offset": 39,
+        "instruction": "je",
+        "destination": 121,
+        "bytes": "7450"
+      },
+      {
+        "offset": 75,
+        "instruction": "je",
+        "destination": 93,
+        "bytes": "7410"
+      },
+      {
+        "offset": 100,
+        "instruction": "jl",
+        "destination": 141,
+        "bytes": "7c27"
+      },
+      {
+        "offset": 108,
+        "instruction": "je",
+        "destination": 126,
+        "bytes": "7410"
+      }
+    ]
+  },
+  "canonical_colds": [
+    {
+      "artifact_count": 2,
+      "groups": [
+        {
+          "artifact": "build/match-linked/PlayerResetRuntimeState",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "player-emit-shot-rows",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "source": "src/Player.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00403080",
+              "capstone_version": "5.0.6",
+              "compared_size": 105,
+              "data_spans": [],
+              "decoded_bytes": 105,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerResetRuntimeState/source.exe",
+              "image_sha256": "56d5eb0e7f1c507d82bdae031c9ae579155d41377cecea293d5cbdf882829015",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004152AC",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0171",
+                  "local": false,
+                  "offset": "0x3",
+                  "symbol": "?g_PlayerPower@@3FA",
+                  "target": "0x00474C48",
+                  "target_encoded_value": "0x00474C48",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00402DB0",
+                  "linked_symbol": "?SpawnShot@Player@@QAEHPBUPlayerShotDescriptorView@@H@Z",
+                  "local": false,
+                  "offset": "0x57",
+                  "symbol": "?SpawnShot@Player@@QAEHPBUPlayerShotDescriptorView@@H@Z",
+                  "target": "0x00427E90",
+                  "target_encoded_value": "0xFFFFFCD5",
+                  "type": "REL32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 105,
+              "matched_compared_bytes": 105,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "57146ab0682caf4b9025b341c66eea70",
+              "pdb_module_index": 1,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 105,
+              "symbol": "?PlayerEmitShotRows@@YAHPAUPlayer@@H@Z",
+              "target_address": "0x00428160",
+              "unit": "player-emit-shot-rows"
+            }
+          ]
+        },
+        {
+          "artifact": "build/match-linked/PlayerSpawnShot",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "player-spawn-shot",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x004138C0",
+              "capstone_version": "5.0.6",
+              "compared_size": 717,
+              "data_spans": [],
+              "decoded_bytes": 717,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerSpawnShot/source.exe",
+              "image_sha256": "9d14e1ec6253f2975be76e64d868791c657aa5627dd53f727f36e1a90a339fa3",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004261EC",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0109",
+                  "local": false,
+                  "offset": "0x6E",
+                  "symbol": "?g_AnmGameSpeed@@3MA",
+                  "target": "0x00476F78",
+                  "target_encoded_value": "0x00476F78",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004256F0",
+                  "linked_symbol": "__real@3c23d70a",
+                  "local": false,
+                  "offset": "0xBC",
+                  "symbol": "__real@3c23d70a",
+                  "target": "0x00470B00",
+                  "target_encoded_value": "0x00470B00",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004256F0",
+                  "linked_symbol": "__real@3c23d70a",
+                  "local": false,
+                  "offset": "0xDB",
+                  "symbol": "__real@3c23d70a",
+                  "target": "0x00470B00",
+                  "target_encoded_value": "0x00470B00",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004171D0",
+                  "linked_symbol": "?EnemyWrapAngle@@YGMM@Z",
+                  "local": false,
+                  "offset": "0x121",
+                  "symbol": "?EnemyWrapAngle@@YGMM@Z",
+                  "target": "0x0044BC70",
+                  "target_encoded_value": "0x00023CBB",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00401C00",
+                  "linked_symbol": "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z",
+                  "local": false,
+                  "offset": "0x13A",
+                  "symbol": "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z",
+                  "target": "0x0044C5D0",
+                  "target_encoded_value": "0x00024602",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004171D0",
+                  "linked_symbol": "?EnemyWrapAngle@@YGMM@Z",
+                  "local": false,
+                  "offset": "0x15B",
+                  "symbol": "?EnemyWrapAngle@@YGMM@Z",
+                  "target": "0x0044BC70",
+                  "target_encoded_value": "0x00023C81",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0042620C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0117",
+                  "local": false,
+                  "offset": "0x183",
+                  "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                  "target": "0x00491C10",
+                  "target_encoded_value": "0x00491C10",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00405310",
+                  "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+                  "local": false,
+                  "offset": "0x18F",
+                  "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+                  "target": "0x00449950",
+                  "target_encoded_value": "0x0002192D",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0040F210",
+                  "linked_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+                  "local": false,
+                  "offset": "0x1B4",
+                  "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+                  "target": "0x00449870",
+                  "target_encoded_value": "0x00021828",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0042620C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0117",
+                  "local": false,
+                  "offset": "0x1BA",
+                  "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                  "target": "0x00491C10",
+                  "target_encoded_value": "0x00491C10",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004053B0",
+                  "linked_symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+                  "local": false,
+                  "offset": "0x1C5",
+                  "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+                  "target": "0x004489D0",
+                  "target_encoded_value": "0x00020977",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00405310",
+                  "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+                  "local": false,
+                  "offset": "0x248",
+                  "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+                  "target": "0x00449950",
+                  "target_encoded_value": "0x00021874",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0040F210",
+                  "linked_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+                  "local": false,
+                  "offset": "0x26D",
+                  "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+                  "target": "0x00449870",
+                  "target_encoded_value": "0x0002176F",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0042620C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0117",
+                  "local": false,
+                  "offset": "0x273",
+                  "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                  "target": "0x00491C10",
+                  "target_encoded_value": "0x00491C10",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004053B0",
+                  "linked_symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+                  "local": false,
+                  "offset": "0x27C",
+                  "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+                  "target": "0x004489D0",
+                  "target_encoded_value": "0x000208C0",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00426390",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0214",
+                  "local": false,
+                  "offset": "0x2B9",
+                  "symbol": "?g_MainSoundOwner@@3PAEA",
+                  "target": "0x00492590",
+                  "target_encoded_value": "0x00492590",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00416490",
+                  "linked_symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+                  "local": false,
+                  "offset": "0x2BE",
+                  "symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+                  "target": "0x0043DD10",
+                  "target_encoded_value": "0x00015BBE",
+                  "type": "REL32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 717,
+              "matched_compared_bytes": 717,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "da895277f79e0046a4a8ba017e1519da",
+              "pdb_module_index": 7,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 717,
+              "symbol": "?SpawnShot@Player@@QAEHPBUPlayerShotDescriptorView@@H@Z",
+              "target_address": "0x00427E90",
+              "unit": "player-spawn-shot"
+            },
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00413C00",
+              "capstone_version": "5.0.6",
+              "compared_size": 174,
+              "data_spans": [],
+              "decoded_bytes": 174,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerSpawnShot/source.exe",
+              "image_sha256": "9d14e1ec6253f2975be76e64d868791c657aa5627dd53f727f36e1a90a339fa3",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004263C8",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0228",
+                  "local": false,
+                  "offset": "0x23",
+                  "symbol": "?g_PlayerInputBits@@3IA",
+                  "target": "0x00474E5C",
+                  "target_encoded_value": "0x00474E5C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00403AA0",
+                  "linked_symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+                  "local": false,
+                  "offset": "0x32",
+                  "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+                  "target": "0x00405410",
+                  "target_encoded_value": "0xFFFDD20A",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00413B90",
+                  "linked_symbol": "?PlayerEmitShotRows@@YAHPAUPlayer@@H@Z",
+                  "local": false,
+                  "offset": "0x54",
+                  "symbol": "?PlayerEmitShotRows@@YAHPAUPlayer@@H@Z",
+                  "target": "0x00428160",
+                  "target_encoded_value": "0xFFFFFF38",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004263C8",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0228",
+                  "local": false,
+                  "offset": "0x68",
+                  "symbol": "?g_PlayerInputBits@@3IA",
+                  "target": "0x00474E5C",
+                  "target_encoded_value": "0x00474E5C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0040B380",
+                  "linked_symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+                  "local": false,
+                  "offset": "0x74",
+                  "symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+                  "target": "0x0044BF40",
+                  "target_encoded_value": "0x00023CF8",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00403AA0",
+                  "linked_symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+                  "local": false,
+                  "offset": "0x83",
+                  "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+                  "target": "0x00405410",
+                  "target_encoded_value": "0xFFFDD1B9",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00401080",
+                  "linked_symbol": "?Tick@AnmVmTimerView@@QAEXXZ",
+                  "local": false,
+                  "offset": "0x8E",
+                  "symbol": "?Tick@AnmVmTimerView@@QAEXXZ",
+                  "target": "0x00404ED0",
+                  "target_encoded_value": "0xFFFDCC6E",
+                  "type": "REL32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 174,
+              "matched_compared_bytes": 174,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "da895277f79e0046a4a8ba017e1519da",
+              "pdb_module_index": 7,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 174,
+              "symbol": "?PlayerUpdateInputAction@@YAHPAUPlayer@@@Z",
+              "target_address": "0x004281D0",
+              "unit": "player-update-input-action"
+            }
+          ]
+        }
+      ],
+      "matched_bytes": 996,
+      "result": "exact",
+      "source_count": 2,
+      "unit_count": 3,
+      "retained_artifacts": [
+        {
+          "directory": "build/gpt-6.1-sol/player-input-context-20261030/canonical-cold-a-0",
+          "image_sha256": "56d5eb0e7f1c507d82bdae031c9ae579155d41377cecea293d5cbdf882829015",
+          "units": [
+            "player-emit-shot-rows"
+          ]
+        },
+        {
+          "directory": "build/gpt-6.1-sol/player-input-context-20261030/canonical-cold-a-1",
+          "image_sha256": "9d14e1ec6253f2975be76e64d868791c657aa5627dd53f727f36e1a90a339fa3",
+          "units": [
+            "player-spawn-shot",
+            "player-update-input-action"
+          ]
+        }
+      ],
+      "freeze_record": ".analysis/gpt-6.1-sol/player-input-context-20261030/canonical-cold-a-freeze.json",
+      "freeze_sha256": "b9daec8550b95de31d74dd3d4a9b48ec0762d8640ef7a101d927ca9895962930"
+    },
+    {
+      "artifact_count": 1,
+      "groups": [
+        {
+          "artifact": "build/match-linked/PlayerSpawnShot",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "player-update-input-action",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00413C00",
+              "capstone_version": "5.0.6",
+              "compared_size": 174,
+              "data_spans": [],
+              "decoded_bytes": 174,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerSpawnShot/source.exe",
+              "image_sha256": "b7ae04108385dca9a1f8b9a85a2c5397712a7faa6f43dbdce5a51fd46f65f2e5",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004263C8",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0228",
+                  "local": false,
+                  "offset": "0x23",
+                  "symbol": "?g_PlayerInputBits@@3IA",
+                  "target": "0x00474E5C",
+                  "target_encoded_value": "0x00474E5C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00403AA0",
+                  "linked_symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+                  "local": false,
+                  "offset": "0x32",
+                  "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+                  "target": "0x00405410",
+                  "target_encoded_value": "0xFFFDD20A",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00413B90",
+                  "linked_symbol": "?PlayerEmitShotRows@@YAHPAUPlayer@@H@Z",
+                  "local": false,
+                  "offset": "0x54",
+                  "symbol": "?PlayerEmitShotRows@@YAHPAUPlayer@@H@Z",
+                  "target": "0x00428160",
+                  "target_encoded_value": "0xFFFFFF38",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004263C8",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0228",
+                  "local": false,
+                  "offset": "0x68",
+                  "symbol": "?g_PlayerInputBits@@3IA",
+                  "target": "0x00474E5C",
+                  "target_encoded_value": "0x00474E5C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0040B380",
+                  "linked_symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+                  "local": false,
+                  "offset": "0x74",
+                  "symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+                  "target": "0x0044BF40",
+                  "target_encoded_value": "0x00023CF8",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00403AA0",
+                  "linked_symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+                  "local": false,
+                  "offset": "0x83",
+                  "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+                  "target": "0x00405410",
+                  "target_encoded_value": "0xFFFDD1B9",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00401080",
+                  "linked_symbol": "?Tick@AnmVmTimerView@@QAEXXZ",
+                  "local": false,
+                  "offset": "0x8E",
+                  "symbol": "?Tick@AnmVmTimerView@@QAEXXZ",
+                  "target": "0x00404ED0",
+                  "target_encoded_value": "0xFFFDCC6E",
+                  "type": "REL32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 174,
+              "matched_compared_bytes": 174,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "f993c6d218d5ba41b9f8d47461a39291",
+              "pdb_module_index": 7,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 174,
+              "symbol": "?PlayerUpdateInputAction@@YAHPAUPlayer@@@Z",
+              "target_address": "0x004281D0",
+              "unit": "player-update-input-action"
+            }
+          ]
+        }
+      ],
+      "matched_bytes": 174,
+      "result": "exact",
+      "source_count": 1,
+      "unit_count": 1,
+      "retained_artifacts": [
+        {
+          "directory": "build/gpt-6.1-sol/player-input-context-20261030/canonical-cold-b",
+          "image_sha256": "b7ae04108385dca9a1f8b9a85a2c5397712a7faa6f43dbdce5a51fd46f65f2e5",
+          "units": [
+            "player-update-input-action"
+          ]
+        }
+      ],
+      "freeze_record": ".analysis/gpt-6.1-sol/player-input-context-20261030/canonical-cold-b-freeze.json",
+      "freeze_sha256": "b9daec8550b95de31d74dd3d4a9b48ec0762d8640ef7a101d927ca9895962930"
+    }
+  ],
+  "warm_graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FrontEnd.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z"
+  },
+  "warm_source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "e6c8e3bfa2f33d07ec07fc363127229f3cb974a2c8aea6b48983180aa14a1499",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "bd9a3a3ef595569aa90c1acf4999271b79f03c44e6562b1f9544c111a8892fff",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyEclDispatcher.cpp": "cdbeca418b3d1b06b1912b6545977eace64fe28e367bbf0f15ec2f54d80c765f",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.cpp": "f67b859fc0e22d9747052fc85f6cb9367d2bea58a682c170978087fb547de9c8",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/Player.cpp": "235eadd4a1c256318e47556282bef11d0fb56d59c6ed0c0ba690cfbe33340fa3",
+    "src/Player.hpp": "b28b9d7d0b65a02f380e34936b1cf975cc17c99474b4e66e045ffb5de9bc7c0f",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "warm_object_sha256": {
+    "src/Enemy.cpp": "90175ec4cc1534730b3e00333d9e11d97dfcdeeb2b7403a2f45c97c5362e2534",
+    "src/AnmManager.cpp": "04e32b9bfb172755593649a92cd28f0899e0f985b2f0ef0811ff8118823e30b0",
+    "src/RandomMath.cpp": "eded3ce58100a40671c292c3591f09756f47bd38d8b1f5e98c537d3c7375b393",
+    "src/AnmVmCreate.cpp": "aaaf7041d71b17a581aec9cd6d4e3d596c9b4a60e604a4820fb89689e9d34958",
+    "src/AnmVmId.cpp": "a18f2ab189b3e26a543c08405a34fc56598c0bd23c9e6feb14518c2c46129078",
+    "src/AnmInt3Scale.cpp": "2a48478999b50fd612141132b7cacacdba76cb56809b682e17baae272cf07e42",
+    "src/EclVm.cpp": "217e6207adecaa0dc843357ccb83313c884c4e8fa585ea2cb27813deef34b8fa",
+    "src/Player.cpp": "f2b3802f52276753c78cd0213d60f8f331b59e44c42a796e046c731b836a4863",
+    "src/PlayerCollision.cpp": "efd997beeb1380c47f63eabd0bc77c7b96a124352ef2882a6866d2e15c09a31a",
+    "src/EnemyEclDispatcher.cpp": "241f7729e29a017c39952096bdf54338f9fa9e0feed04d9f2880ea19e853259a",
+    "src/VmIdInterrupt.cpp": "1b26faee7e83d21ecee3170ca84af9e1a3b3eda29bda0f2e47d13ff0982967af",
+    "src/FrontEnd.cpp": "f2b8168db9f7ab1b2e47c31d10986876986e94f8c606e122bf97416b11800841"
+  },
+  "warm_image_sha256": "2f0dede0489447e2e4b84d263936eeaa10fbf12f942b59256f4638ee3c66876d",
+  "warm_strict_comparison": {
+    "unit": "probe-player-update-input-action",
+    "artifact_kind": "linked-pe",
+    "result": "exact",
+    "symbol": "?PlayerUpdateInputAction@@YAHPAUPlayer@@@Z",
+    "target_address": "0x004281D0",
+    "size": 174,
+    "matched_bytes": 174,
+    "compared_size": 174,
+    "matched_compared_bytes": 174,
+    "image": "build/gpt-6.1-sol/player-input-context-20261030/timer-branch-returns-fixed/source.exe",
+    "image_sha256": "2f0dede0489447e2e4b84d263936eeaa10fbf12f942b59256f4638ee3c66876d",
+    "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413",
+    "pdb_age": 1,
+    "candidate_address": "0x00413C00",
+    "extent_source": "pdb-section-contribution",
+    "pdb_module_index": 7,
+    "decoded_bytes": 174,
+    "normalization_complete": true,
+    "data_spans": [],
+    "linkages": [
+      {
+        "offset": "0x23",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_PlayerInputBits@@3IA",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0228",
+        "local": false,
+        "candidate_target": "0x004263C8",
+        "target": "0x00474E5C",
+        "addend": 0,
+        "target_encoded_value": "0x00474E5C"
+      },
+      {
+        "offset": "0x32",
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+        "linked_symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+        "local": false,
+        "candidate_target": "0x00403AA0",
+        "target": "0x00405410",
+        "addend": 0,
+        "target_encoded_value": "0xFFFDD20A"
+      },
+      {
+        "offset": "0x54",
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?PlayerEmitShotRows@@YAHPAUPlayer@@H@Z",
+        "linked_symbol": "?PlayerEmitShotRows@@YAHPAUPlayer@@H@Z",
+        "local": false,
+        "candidate_target": "0x00413B90",
+        "target": "0x00428160",
+        "addend": 0,
+        "target_encoded_value": "0xFFFFFF38"
+      },
+      {
+        "offset": "0x68",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_PlayerInputBits@@3IA",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0228",
+        "local": false,
+        "candidate_target": "0x004263C8",
+        "target": "0x00474E5C",
+        "addend": 0,
+        "target_encoded_value": "0x00474E5C"
+      },
+      {
+        "offset": "0x74",
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+        "linked_symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+        "local": false,
+        "candidate_target": "0x0040B380",
+        "target": "0x0044BF40",
+        "addend": 0,
+        "target_encoded_value": "0x00023CF8"
+      },
+      {
+        "offset": "0x83",
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+        "linked_symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+        "local": false,
+        "candidate_target": "0x00403AA0",
+        "target": "0x00405410",
+        "addend": 0,
+        "target_encoded_value": "0xFFFDD1B9"
+      },
+      {
+        "offset": "0x8E",
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Tick@AnmVmTimerView@@QAEXXZ",
+        "linked_symbol": "?Tick@AnmVmTimerView@@QAEXXZ",
+        "local": false,
+        "candidate_target": "0x00401080",
+        "target": "0x00404ED0",
+        "addend": 0,
+        "target_encoded_value": "0xFFFDCC6E"
+      }
+    ],
+    "raw_equal": false,
+    "first_differences": [],
+    "capstone_version": "5.0.6"
+  },
+  "same_image_guards": {
+    "enemy-runtime-vector": {
+      "result": "exact",
+      "matched_bytes": 30,
+      "field_count": 0,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "player-shot-outside-playfield": {
+      "result": "exact",
+      "matched_bytes": 91,
+      "field_count": 4,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "player-spawn-effect-row": {
+      "result": "exact",
+      "matched_bytes": 181,
+      "field_count": 1,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "player-planar-bounds": {
+      "result": "exact",
+      "matched_bytes": 55,
+      "field_count": 4,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "player-set-shot-vm-interrupt2": {
+      "result": "exact",
+      "matched_bytes": 65,
+      "field_count": 2,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "enemy-mark-pending-interrupt": {
+      "result": "exact",
+      "matched_bytes": 65,
+      "field_count": 2,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "result-menu-pending-three": {
+      "result": "exact",
+      "matched_bytes": 65,
+      "field_count": 2,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "enemy-wrap-angle": {
+      "result": "exact",
+      "matched_bytes": 94,
+      "field_count": 6,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "anm-manager-find-vm": {
+      "result": "exact",
+      "matched_bytes": 73,
+      "field_count": 0,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "anm-manager-mark-vm-for-deletion": {
+      "result": "exact",
+      "matched_bytes": 66,
+      "field_count": 1,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "player-emit-shot-rows": {
+      "result": "exact",
+      "matched_bytes": 105,
+      "field_count": 2,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "anm-manager-add-vm-primary-tail": {
+      "result": "exact",
+      "matched_bytes": 118,
+      "field_count": 0,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "enemy-sound-queue-cue": {
+      "result": "exact",
+      "matched_bytes": 149,
+      "field_count": 3,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "anm-vm-timer-add": {
+      "result": "exact",
+      "matched_bytes": 88,
+      "field_count": 4,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "anm-vm-timer-set-current": {
+      "result": "exact",
+      "matched_bytes": 57,
+      "field_count": 1,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "anm-timer-tick": {
+      "result": "exact",
+      "matched_bytes": 72,
+      "field_count": 4,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "player-spawn-shot": {
+      "result": "exact",
+      "matched_bytes": 717,
+      "field_count": 17,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    },
+    "player-update-input-action": {
+      "result": "exact",
+      "matched_bytes": 174,
+      "field_count": 7,
+      "pdb_guid": "88e31375cfa5a546a4e99114a1ff6413"
+    }
+  },
+  "previous_native_preservation": {
+    "shots": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "size": 876,
+      "symbol": "?PlayerUpdateShots@@YGHPAUPlayer@@@Z",
+      "normalized_sha256": "850f6199b07010806c11c61c4e9b074adf05c3a4305bc9007b28a2250d05ea81",
+      "field_count": 22,
+      "field_identity_sha256": "a0cc5ef727ea84bb5a057b8316ae1ebbfb68e983edbe0ad835843df9680f4156"
+    },
+    "runtime": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "size": 2412,
+      "symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+      "normalized_sha256": "5799c578ff34e4ed16bd5baa8bd2348b80e9c78c212781f26fc0fc6fdfe0c59b",
+      "field_count": 69,
+      "field_identity_sha256": "d8af337f2493886f7f10543cca512c8f54a17362126a886641f297f8037039d7"
+    },
+    "damage": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "size": 1172,
+      "symbol": "?CalculateDamageToTarget@Player@@QAEHPBUPlayerFloat3@@0PAH@Z",
+      "normalized_sha256": "2d464cf1b31b9cf7fcb0e1c7933f3881ed0aee72ba4db2a67acc230e64f9faec",
+      "field_count": 28,
+      "field_identity_sha256": "df235f1b8aec9878b3081476e24db2ac76dfe2655b8785a5c6578799ae3f2e65"
+    },
+    "scalar": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "size": 652,
+      "symbol": "?Evaluate@EnemyScalarInterpolationView@@QAEPAUEnemyFloat2@@PAU2@@Z",
+      "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+      "field_count": 10,
+      "field_identity_sha256": "c072aaf295923d956d9b70b517fa62087de4606af8dbe7103ddf8f3bcc0877c7"
+    },
+    "motion": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "size": 160,
+      "symbol": "?EnemyAdvanceMotion@@YAXPAUEnemyMotionView@@@Z",
+      "normalized_sha256": "9dc49d5961959f424b4ef834845b814bf149bda52940886ef95c32b79550c740",
+      "field_count": 7,
+      "field_identity_sha256": "1d75686fd8fbdc2eefc7e6bc99630d961b7e4a2b7eb2a1b07b5f0d9d4c33d885"
+    },
+    "setsub": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "size": 30,
+      "symbol": "?SetSubroutine@EnemyEclHostBaseView@@QAEHPBD@Z",
+      "normalized_sha256": "c76de40cfa91114ae8438335c0a493715d6c0f3fd937988f9c65d0da499ffe16",
+      "field_count": 1,
+      "field_identity_sha256": "078c5445a0c9a74ad4035380070cadec401cf958e5cba70b2b05c87b0305eb9f"
+    },
+    "easing": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "size": 576,
+      "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+      "normalized_sha256": "f9a47c62349f89ab12ab10c4804930806a38bfbbac0594a806cf33571f25386a",
+      "field_count": 55,
+      "field_identity_sha256": "c81bcfb7355da751bef2dc6c7bbe15980908686d79a665488031bcc709873ae6"
+    },
+    "anmfloat2": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "size": 652,
+      "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+      "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+      "field_count": 10,
+      "field_identity_sha256": "c072aaf295923d956d9b70b517fa62087de4606af8dbe7103ddf8f3bcc0877c7"
+    },
+    "playerroot": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "size": 2820,
+      "symbol": "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z",
+      "normalized_sha256": "3af366f06ae48d9b777cf9d0a33879707a3a21bdcf8cd48fe0f4b19407aeaf51",
+      "field_count": 99,
+      "field_identity_sha256": "a16d57a2b8cfbd49cc90182be61e1a2a905de1b512f314170c5ba0b19fa428ad"
+    }
+  },
+  "controls": {
+    "input-member-owner": {
+      "candidate_size": 153,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "9ae68776bc8ee7ada987e6f7ca9dd7308dad7323b5463a87e00762b0ae133ef1",
+      "header_sha256": "b37041eca44093690206d85ae36e6427d4355761b3fb0cfd00f6442267e366e2"
+    },
+    "timer-change-member": {
+      "candidate_size": 175,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "5872510a6a956ca9c4397637a5b1a619b51b9c72cfe9a2d885ae1d69962ba7b6",
+      "header_sha256": "b28b9d7d0b65a02f380e34936b1cf975cc17c99474b4e66e045ffb5de9bc7c0f"
+    },
+    "timer-change-early-inline": {
+      "candidate_size": 175,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "5872510a6a956ca9c4397637a5b1a619b51b9c72cfe9a2d885ae1d69962ba7b6",
+      "header_sha256": "1669cd0778d1378d5eab7393327de63536b63a51ee9e0f5b3d03870137ce202f"
+    },
+    "change-method-early-guard": {
+      "candidate_size": 170,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "5d118e78a5abe85c20c1eccdb78009b0ecf716838e146de888a9ea9caabd208a",
+      "header_sha256": "b28b9d7d0b65a02f380e34936b1cf975cc17c99474b4e66e045ffb5de9bc7c0f"
+    },
+    "active-return-scope": {
+      "candidate_size": 178,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "2df570ff4319561c283f9cdbc2415d3b29eb59af6be7bae2e1f0cb738982a27b",
+      "header_sha256": "b28b9d7d0b65a02f380e34936b1cf975cc17c99474b4e66e045ffb5de9bc7c0f"
+    },
+    "gated-active-work": {
+      "candidate_size": 182,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "9152fd511e697eb70379273d06f31805a2cfb26bb062c6d2e930072e246a0775",
+      "header_sha256": "b28b9d7d0b65a02f380e34936b1cf975cc17c99474b4e66e045ffb5de9bc7c0f"
+    },
+    "shared-active-exit": {
+      "candidate_size": 178,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "6b2286c7f9e58a2d229ce91e51a580693c064e57afee7203374c97af4b49142f",
+      "header_sha256": "b28b9d7d0b65a02f380e34936b1cf975cc17c99474b4e66e045ffb5de9bc7c0f"
+    },
+    "timer-change-integer": {
+      "candidate_size": 175,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "5872510a6a956ca9c4397637a5b1a619b51b9c72cfe9a2d885ae1d69962ba7b6",
+      "header_sha256": "45ae8d7d8a9743f64fa84bd5e63e6828bffe7ad28c2c83094b3a17412217df5f"
+    },
+    "timer-change-guard": {
+      "candidate_size": 175,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "5872510a6a956ca9c4397637a5b1a619b51b9c72cfe9a2d885ae1d69962ba7b6",
+      "header_sha256": "74f32c3dd60a3d93ad2e87c14253b997065898cc9c959e7563a99ed2ad859c9c"
+    },
+    "interval-one-boundary": {
+      "candidate_size": 175,
+      "target_size": 174,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "source_sha256": "97abd244f00b57240af3ee24773d813d5fffda57df02b790072895f6a7535b26",
+      "header_sha256": "7cce1d89883ef198253e91e77f4ad65b7ecd26b39117eace4a7a93892cbc5d70"
+    },
+    "timer-branch-returns-fixed": {
+      "candidate_size": 174,
+      "target_size": 174,
+      "result": "structural-exact",
+      "acceptance_authority": "none",
+      "source_sha256": "235eadd4a1c256318e47556282bef11d0fb56d59c6ed0c0ba690cfbe33340fa3",
+      "header_sha256": "b28b9d7d0b65a02f380e34936b1cf975cc17c99474b4e66e045ffb5de9bc7c0f"
+    }
+  },
+  "private_retention": {
+    "record": ".analysis/gpt-6.1-sol/player-input-context-20261030/source-controls.json",
+    "sha256": "da7d19269e669baf1c9d69ef344e01f2fa1e7b1ead5eb8c31112fc6e7101fd9f",
+    "source_controls": 21,
+    "removed_bytes": 16826967,
+    "retained_builds": [
+      "canonical-cold-a-0",
+      "canonical-cold-a-1",
+      "canonical-cold-b",
+      "timer-branch-returns-fixed"
+    ]
+  },
+  "contexts": {
+    "final": {
+      "path": ".analysis/gpt-6.1-sol/player-input-context-20261030/final-context.json",
+      "sha256": "46ed1488dc8c46e155a49be3b19bc2becad72a33f2a8731d1a7cd0d65134d635"
+    },
+    "canonical": {
+      "path": ".analysis/gpt-6.1-sol/player-input-context-20261030/canonical-context.json",
+      "sha256": "9ca4f990bf0a12d00c65bca125e03ac1819defc1fedcf2914d8352fe91cfec3d"
+    },
+    "caller": {
+      "path": ".analysis/gpt-6.1-sol/player-input-context-20261030/caller-context.json",
+      "sha256": "e737bbd79ba12e38b5afa0e51dfac18010eddf0936c110c69ac11f31c1a748f8"
+    }
+  },
+  "reproduction_scripts": {
+    ".analysis/gpt-6.1-sol/player-input-context-20261030/probe.py": "fed96afcd569f09f7c28231b77568675ca5287dc25d15e964fba440cbab6a413",
+    ".analysis/gpt-6.1-sol/player-input-context-20261030/analyze.py": "89f45173f81ef744a99609b2d65aae00f27667b87bf9a31e371c65501892ab57",
+    ".analysis/gpt-6.1-sol/player-input-context-20261030/run-probe.py": "61b7af13710d734caa205b895f9f75f5167a84167f4b18fe4cf7e914b7aeaf02",
+    ".analysis/gpt-6.1-sol/player-input-context-20261030/cold.py": "182b989ad8d762a72e3643d23b3856db44ba3dd921366ada8c857bbf0d6247d6",
+    ".analysis/gpt-6.1-sol/player-input-context-20261030/strict-guards.py": "f00504b6403d597ca13b11e69ba1d194d0129f4fe85b2d6179a666445318d05c",
+    ".analysis/gpt-6.1-sol/player-input-context-20261030/preserve-parents.py": "131da249b0d7997fe63ed6d648651ee0577e1a7ff1b61507fc79983b847a3f01",
+    ".analysis/gpt-6.1-sol/player-input-context-20261030/compact-controls.py": "c90e33093eeb2c0088d5ef2e2d1ddef55fc6a66a9bfb3d3a889670c2527ef744"
+  }
+}

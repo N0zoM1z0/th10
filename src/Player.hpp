@@ -89,6 +89,11 @@ struct PlayerTimerView
         subframe += value;
         current = static_cast<int>(subframe);
     }
+    bool HasChanged() const
+    {
+        return current != previous;
+    }
+
     void SetCurrent(int value)
     {
         extern float g_AnmGameSpeed;

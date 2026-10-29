@@ -1514,25 +1514,23 @@ int PlayerUpdateInputAction(Player *player)
                 return 0;
             reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->SetCurrent(0);
         }
-        if (player->updateTimer0.current != player->updateTimer0.previous)
+        if (player->updateTimer0.HasChanged())
             PlayerEmitShotRows(player, player->updateTimer0.current);
         if (player->updateTimer0.current >= 15)
         {
             if ((g_PlayerInputBits & 1u) != 0)
+            {
                 reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->Add(-15.0f);
-            else
-                reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->SetCurrent(-1);
+                return 0;
+            }
+            reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->SetCurrent(-1);
+            return 0;
         }
-        else
-        {
-            reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->Tick();
-        }
+        reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->Tick();
+        return 0;
     }
-    else
-    {
-        player->trackedEnemy = NULL;
-        player->trackedEnemyValid = 0;
-    }
+    player->trackedEnemy = NULL;
+    player->trackedEnemyValid = 0;
     return 0;
 }
 

@@ -27317,3 +27317,29 @@ functions = ["Player::SpawnShot"]
 target_address = 0x427e90
 size = 0x2cd
 linkages = [{ "offset" = 0x6e, "type" = "DIR32", "symbol" = "?g_AnmGameSpeed@@3MA", "target" = 0x476f78 }, { "offset" = 0xbc, "type" = "DIR32", "symbol" = "__real@3c23d70a", "target" = 0x470b00 }, { "offset" = 0xdb, "type" = "DIR32", "symbol" = "__real@3c23d70a", "target" = 0x470b00 }, { "offset" = 0x121, "type" = "REL32", "symbol" = "?EnemyWrapAngle@@YGMM@Z", "target" = 0x44bc70 }, { "offset" = 0x13a, "type" = "REL32", "symbol" = "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z", "target" = 0x44c5d0 }, { "offset" = 0x15b, "type" = "REL32", "symbol" = "?EnemyWrapAngle@@YGMM@Z", "target" = 0x44bc70 }, { "offset" = 0x183, "type" = "DIR32", "symbol" = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", "target" = 0x491c10 }, { "offset" = 0x18f, "type" = "REL32", "symbol" = "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ", "target" = 0x449950 }, { "offset" = 0x1b4, "type" = "REL32", "symbol" = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z", "target" = 0x449870 }, { "offset" = 0x1ba, "type" = "DIR32", "symbol" = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", "target" = 0x491c10 }, { "offset" = 0x1c5, "type" = "REL32", "symbol" = "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z", "target" = 0x4489d0 }, { "offset" = 0x248, "type" = "REL32", "symbol" = "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ", "target" = 0x449950 }, { "offset" = 0x26d, "type" = "REL32", "symbol" = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z", "target" = 0x449870 }, { "offset" = 0x273, "type" = "DIR32", "symbol" = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", "target" = 0x491c10 }, { "offset" = 0x27c, "type" = "REL32", "symbol" = "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z", "target" = 0x4489d0 }, { "offset" = 0x2b9, "type" = "DIR32", "symbol" = "?g_MainSoundOwner@@3PAEA", "target" = 0x492590 }, { "offset" = 0x2be, "type" = "REL32", "symbol" = "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z", "target" = 0x43dd10 }]
+
+# Complete input-driven Player timer owner in the coupled Enemy/Player graph.
+[units.player-update-input-action]
+source = "src/Enemy.cpp"
+support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp"]
+support_profiles = { "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/RandomMath.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmCreate.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmId.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/Player.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/PlayerCollision.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/EnemyEclDispatcher.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/VmIdInterrupt.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z"
+artifact_kind = "linked-pe"
+pdb_source = "src/Player.cpp"
+output_dir = "build/match-linked/PlayerSpawnShot"
+symbol = "?PlayerUpdateInputAction@@YAHPAUPlayer@@@Z"
+functions = ["PlayerUpdateInputAction"]
+target_address = 0x004281D0
+size = 174
+linkages = [
+  { offset = 0x23, type = "DIR32", symbol = "?g_PlayerInputBits@@3IA", target = 0x00474E5C },
+  { offset = 0x32, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x54, type = "REL32", symbol = "?PlayerEmitShotRows@@YAHPAUPlayer@@H@Z", target = 0x00428160 },
+  { offset = 0x68, type = "DIR32", symbol = "?g_PlayerInputBits@@3IA", target = 0x00474E5C },
+  { offset = 0x74, type = "REL32", symbol = "?Add@AnmVmTimerView@@QAEXM@Z", target = 0x0044BF40 },
+  { offset = 0x83, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x00405410 },
+  { offset = 0x8e, type = "REL32", symbol = "?Tick@AnmVmTimerView@@QAEXXZ", target = 0x00404ED0 },
+]

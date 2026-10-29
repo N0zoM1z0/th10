@@ -7466,3 +7466,30 @@ field identities; none receives parent exactness credit. Assignment-result
 position capture712 and direct ID assignment706/frame18 are rejected. The
 shot-update moved LEA and input174 remain open. See the
 [complete producer proof](evidence/player-spawn-exact-20261030/README.md).
+
+
+## 2026-10-30 Complete Player input timer exact
+
+PlayerUpdateInputAction4281D0..42827D is complete174/all7 exact in two independent
+canonical12-source /GL cold links. All55 instructions and six fixed local branch
+destinations match. It naturally receives Player in EAX, returns zero through
+RET, and has two following CC bytes before428280. The existing authored origin
+and reviewed174-byte boundary are retained, adding174 authored exact bytes.
+
+An inline HasChanged current/previous predicate restores the target constant-one
+and frame reload schedule. Separate wrap/stop/tick returns restore delayed ESI
+save+44 and short early JE+27→79, sharing the Add return after its POP ESI.
+Shared exit175 saves ESI too early; common active return178 branches near to the
+inactive exit. Masking local operands makes that178 control look instruction-
+equal but cannot prove exactness. Force-inline and bool/int return controls are
+neutral. Existing interval-one predicate175 and its callsite depth control are
+restored; old interval/damage boundaries remain unchanged. These observations
+do not identify original class/method names, TU or inline ancestry.
+
+First scoped cold174+717+105 passes996/all26; second174/all7 passes independently.
+Eighteen strict same-image bodies pass2265/all60. Nine previous native candidates
+preserve ordinary bytes and field identities, including shots876, damage1172,
+EnemyRuntime2412 and central Player2820. Target central3089 and shot-update's
+moved LEA remain open, with no parent/product/runtime/portability credit. Earlier
+input153/nonexact statements above describe their recorded source epochs. See
+the [complete input timer proof](evidence/player-input-exact-20261030/README.md).

@@ -1,5 +1,9 @@
 # Complete Player shot producer exact — 2026-10-30
 
+Input153/nonexact below describes this producer checkpoint source epoch. The
+[complete input timer proof](../player-input-exact-20261030/README.md) supersedes
+that status and replays the717-byte producer with the current source.
+
 Player::SpawnShot **00427E90..0042815C** is now complete717-byte exact in two
 independent canonical cold links. All17 address fields and25 fixed local branch
 destinations match. This adds **717 authored exact bytes**; the existing reviewed
