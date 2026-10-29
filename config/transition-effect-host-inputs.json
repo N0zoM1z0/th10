@@ -5,7 +5,7 @@
   "sha256_lf": {
     "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
     "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
-    "src/AnmManager.cpp": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+    "src/AnmManager.cpp": "61fbb16d0f848c61ceb12b129fd20f017c4b189e949a717bea4453e190e51220",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
@@ -412,5 +412,19 @@
     "strict_normalization_and_rejection_policy_unchanged": true,
     "reason": "Remove only the constructor texture-filter cache write absent from the complete target body; the preceding whole-object clear already establishes zero. No host-consumed algorithm changes. Scalar counter and pointer-loop controls are rejected/restored.",
     "evidence": "docs/evidence/anm-constructor-controls-20261028/README.md"
+  },
+  "reviewed_easing_conditional_results_20261029": {
+    "starting_head": "e1ce2a3ee4ae0bd98d47b974b6e69be99853ded1",
+    "input": "src/AnmManager.cpp",
+    "old_pinned_sha256_lf": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+    "entry_sha256_lf": "1db15e643546c99327224b5b656cfd39c483e067cd8bf7f26da157f72e01b7e3",
+    "new_sha256_lf": "61fbb16d0f848c61ceb12b129fd20f017c4b189e949a717bea4453e190e51220",
+    "new_raw_sha256": "61fbb16d0f848c61ceb12b129fd20f017c4b189e949a717bea4453e190e51220",
+    "whole_file_inverse_to_entry_verified": true,
+    "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "other_six_dependency_sources_unchanged_from_entry_head": true,
+    "strict_normalization_and_rejection_policy_unchanged": true,
+    "reason": "Only five CalculateAnmInterpolation branch pairs change to conditional result expressions this batch. Restoring the prior complete function reconstructs the whole entry LF-normalized source. The older pin also predates b53c7d1 camera-member migration. Pinned/entry/final RNG extraction is identical. Six other dependency sources are unchanged from entry HEAD; their historical pins are not recertified here. No host algorithm, rejection policy or later-phase host-validation claim changes.",
+    "evidence": "docs/evidence/easing-context-20261029/README.md"
   }
 }

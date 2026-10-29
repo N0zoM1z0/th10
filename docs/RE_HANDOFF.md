@@ -2,12 +2,12 @@
 
 ## Start here
 
-Current checkpoint reconstructs complete Fog evaluation4049A0..404C4F:688 bytes,
-all22 fields and13 fixed local destinations pass two independent five-input
-colds. Seven real Fog work values and meaningful destination operations restore
-all storage/copy schedules. Old arithmetic92/92/101 and constructor94 stay exact;
-no duplicate helper credit. Five old533/all17 pass twice; original Update/Tick
-376/all15 also pass. Dispatcher1868 and easing612/576 remain nonexact.
+Current checkpoint reconstructs complete CalculateAnmInterpolation44C350..44C58F:
+576 bytes, all55 fields and the complete16-entry table pass two independent
+five-input colds. Five ordinary conditional result expressions recover the
+three shared cubic/quartic tails. Affected Fog688/all22 passes twice; four ANM
+interpolation callers2729/all49 pass their original two recipes. Dispatcher1868
+remains nonexact. No new source mapping, boundary or origin change.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -35,15 +35,41 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**93,836/275,729 reviewed authored owned bytes exact, 476 exact authored owners**;
-681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1349 exact.
+**94,412/275,729 reviewed authored owned bytes exact, 477 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1350 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [complete shared easing proof](evidence/easing-context-20261029/README.md):
+
+- CalculateAnmInterpolation576 is exact twice in the existing five-input Fog
+  recipe, AnmManager.cpp PDB owner, real Stage Update entry, pinned GL/GS flags.
+  All509 code bytes,3 internal alignment bytes and64 table bytes are owned.
+  Adds576 authored exact bytes/one owner; mapped backlog204. No new mappings.
+- Baseline612 already has the actual arithmetic. Five conditional result
+  expressions naturally recover forward tails11F->17D,13C->1AF,14A->1D2.
+  Case order, formulas, EAX mode/two stack floats and all17 RET8 sites survive.
+  This does not uniquely establish original source spelling or TU ownership.
+- All55 fields are strict:38 real scalar-address occurrences with raw-equal
+  payloads twice, plus17 local table-base/entry fields with fixed relative
+  destinations. All10 ordinary local branch destinations and alignment match.
+  Existing comparator/profile unchanged; no self-test campaign or host failure
+  simulation is added. Rejected controls are recorded and parked in the proof.
+- Both new canonical colds also select Fog688/all22. The four affected old ANM
+  interpolation callers replay2729/all49 in their two original recipes; no full
+  source/cohort replay. Product/runtime and portability claims remain open.
+- Current warm eleven-input context is
+  `.analysis/gpt-6.1-sol/easing-context-20261029/final-context.json`.
+  Earlier Fog contexts contain the prior easing source hash and need validation
+  before reuse. New accepted independent five-input witnesses are cold-a/cold-b
+  in the easing batch. Next coherent substantial owner is the complete Stage
+  dispatcher/lifecycle family; do not reopen parked arithmetic/flag controls
+  without new TH10 evidence and a falsifiable prediction.
 
 Latest [complete Fog evaluator proof](evidence/stage-fog-evaluate-context-20261029/README.md):
 
 - Fog4049A0..404C4F/688 is exact twice, all22 fields and13 fixed local branches,
   frameD4/EBX state/stack output/RET4. Adds688 authored bytes and one owner;
-  mapping, reviewed boundary/origin and denominator unchanged. Mapped backlog205.
+  mapping, reviewed boundary/origin and denominator unchanged. Backlog was205.
 - Fresh complete baseline was691/688, not the old664-byte candidate. Differences
   were six aggregate-result destinations. Seven actual Fog values hold four
   scaled Hermite terms and three sums; short modes reuse the first snapshot/
@@ -66,20 +92,16 @@ Latest [complete Fog evaluator proof](evidence/stage-fog-evaluate-context-202610
   contracts in their existing five-input recipe. Five old same-image contracts
   533/all17 pass twice, including UpdateObjectVms154. Original nine-input
   Update304/Tick72 pass376/all15 in one explicit cold. Twenty-two old contracts
-  6613/all282 also pass in the current eleven-input image, with the attested
+  6613/all282 also pass in that eleven-input image, with the attested
   StageScript.cpp inline SetCurrent PDB owner. No full cohort or Main replay.
 - All seven scalar occurrences are raw-equal twice. Easing binds actual EAX mode,
   two stack floats/RET8 and target44C350 only; its full native612/target576 owner
-  stays nonexact. Dispatcher1868, wrapper200/202, binder197/203 and default
-  camera282/287 remain nonexact. Source/class/TU, physical aliases and all later
+  was nonexact at that checkpoint and is now closed above. Dispatcher1868,
+  wrapper200/202, binder197/203 and default camera282/287 remain nonexact. Source/class/TU, physical aliases and all later
   product/runtime/portability phases remain independent.
-- Current Stage warm context is
-  `.analysis/gpt-6.1-sol/stage-fog-evaluate-context-20261029/final-context.json`.
-  It deliberately retains the current eleven-input warm artifact/input pins;
-  accepted independent Fog five-input witnesses are cold-a/cold-b in that batch.
-  Revalidate old contexts before reuse. Next coherent dependency is complete
-  CalculateAnmInterpolation44C350/576 with its16-slot table, now freshly612/576,
-  or a larger Stage lifecycle owner. Reopen parked controls only with new evidence.
+- The Fog batch's historical eleven-input and two independent five-input
+  artifacts remain retained. Use the current easing warm context above for
+  further source work; its frozen AnmManager.cpp pins include this checkpoint.
 
 Latest [Stage dispatcher source/alias review](evidence/stage-dispatch-context-20261029/README.md):
 

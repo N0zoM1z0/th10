@@ -274,9 +274,9 @@ float __stdcall CalculateAnmInterpolation(int mode, float current, float duratio
             (1.0f - value) * (1.0f - value);
     case ANM_INTERPOLATION_EASE_IN_OUT:
         value += value;
-        if (value < 1.0f)
-            return value * value * 0.5f;
-        return (2.0f - (2.0f - value) * (2.0f - value)) * 0.5f;
+        return value < 1.0f
+            ? value * value * 0.5f
+            : (2.0f - (2.0f - value) * (2.0f - value)) * 0.5f;
     case ANM_INTERPOLATION_EASE_OUT_IN:
         value += value;
         if (value < 1.0f)
@@ -285,24 +285,24 @@ float __stdcall CalculateAnmInterpolation(int mode, float current, float duratio
         return value * value * 0.5f + 0.5f;
     case ANM_INTERPOLATION_EASE_IN_OUT_CUBIC:
         value += value;
-        if (value < 1.0f)
-            return value * value * value * 0.5f;
-        return (2.0f - (2.0f - value) * (2.0f - value) * (2.0f - value)) * 0.5f;
+        return value < 1.0f
+            ? value * value * value * 0.5f
+            : (2.0f - (2.0f - value) * (2.0f - value) * (2.0f - value)) * 0.5f;
     case ANM_INTERPOLATION_EASE_OUT_IN_CUBIC:
         value += value;
-        if (value < 1.0f)
-            return 0.5f - (1.0f - value) * (1.0f - value) * (1.0f - value) * 0.5f;
-        return (value - 1.0f) * (value - 1.0f) * (value - 1.0f) * 0.5f + 0.5f;
+        return value < 1.0f
+            ? 0.5f - (1.0f - value) * (1.0f - value) * (1.0f - value) * 0.5f
+            : (value - 1.0f) * (value - 1.0f) * (value - 1.0f) * 0.5f + 0.5f;
     case ANM_INTERPOLATION_EASE_IN_OUT_QUARTIC:
         value += value;
-        if (value < 1.0f)
-            return value * value * value * value * 0.5f;
-        return (2.0f - (2.0f - value) * (2.0f - value) * (2.0f - value) * (2.0f - value)) * 0.5f;
+        return value < 1.0f
+            ? value * value * value * value * 0.5f
+            : (2.0f - (2.0f - value) * (2.0f - value) * (2.0f - value) * (2.0f - value)) * 0.5f;
     case ANM_INTERPOLATION_EASE_OUT_IN_QUARTIC:
         value += value;
-        if (value < 1.0f)
-            return 0.5f - (1.0f - value) * (1.0f - value) * (1.0f - value) * (1.0f - value) * 0.5f;
-        return (value - 1.0f) * (value - 1.0f) * (value - 1.0f) * (value - 1.0f) * 0.5f + 0.5f;
+        return value < 1.0f
+            ? 0.5f - (1.0f - value) * (1.0f - value) * (1.0f - value) * (1.0f - value) * 0.5f
+            : (value - 1.0f) * (value - 1.0f) * (value - 1.0f) * (value - 1.0f) * 0.5f + 0.5f;
     case ANM_INTERPOLATION_CONSTANT_ZERO:
         return 0.0f;
     case ANM_INTERPOLATION_CONSTANT_ONE:

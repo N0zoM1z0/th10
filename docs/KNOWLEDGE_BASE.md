@@ -7161,3 +7161,28 @@ are used; no full cohort. Easing's EAX mode/two stack floats/RET8 and44C350 addr
 are bound, but complete612/576 easing remains nonexact. Dispatcher1868 and other
 coupled candidates stay open. Physical aliases, product/runtime and portability
 are independent. See [the complete Fog evaluator proof](evidence/stage-fog-evaluate-context-20261029/README.md).
+
+
+## Complete shared easing calculation (2026-10-29)
+
+[CalculateAnmInterpolation proof](evidence/easing-context-20261029/README.md)
+closes the entire44C350..44C58F/576-byte owner, not only its509 executable bytes.
+Five ordinary conditional result expressions recover the three shared forward
+cubic/quartic tails at11F->17D,13C->1AF and14A->1D2. The earlier immediate-return
+source remains612; explicit else/result-break and reciprocal-scaling controls
+do not repair it. Numeric source ordering gives572 with wrong block ordering;
+named shared products give584/592 or spills. Those controls are parked.
+
+Two independent canonical five-input Stage Update GL/GS cold links reproduce
+all55 fields, including38 real float-address occurrences with raw-equal scalar
+payloads and17 fixed local table-base/entry fields. All10 relative destinations,
+17 RET8 sites,3 alignment bytes and16 table destinations are checked. Actual
+private ABI remains EAX mode and two stack floats. PDB contribution ownership is
+support-00-AnmManager.ltcg.obj; original source/TU/compiler partition is unknown.
+Boundary/origin, scalar source names and later product/runtime/portability claims
+remain separate. No comparator or compiler profile change is needed.
+
+Both colds select the affected complete Fog688/all22 caller. Four other exact
+interpolation callers replay2729/all49 in their two existing ANM recipes.
+Adds576 authored exact bytes and one owner, no new source mapping or denominator
+change:94,412/275,729 bytes,477 authored exact owners,204 mapped authored backlog.
