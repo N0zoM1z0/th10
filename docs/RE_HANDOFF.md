@@ -2,11 +2,12 @@
 
 ## Start here
 
-Current checkpoint reconstructs complete WinMain438AD0..43903C:1389 bytes/all146
-fields pass two independent30-input colds. Countdown critical-section walks,
-registry lifetime, typed allocation-result locals and log-buffer reset recover
-its actual stack/register/control flow naturally. Eight selected old owners1935 /
-all160 also pass; camera290/287 and single-image/product closure remain open.
+Current checkpoint reconstructs complete Stage camera4215A0..4216E9:330 bytes/
+all10 fields pass two independent ten-input colds. Natural member camera setup,
+direct target XYZ construction and alias-safe cross helper recover the full
+x87/copy sequence. Five old owners260/all9 pass twice; affected WinMain1389 and
+Render425 remain exact in one explicit30-input cold. Default camera282/287 and
+single-image/product closure remain open.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -34,9 +35,38 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**88,214/275,729 reviewed authored owned bytes exact, 470 exact authored owners**;
-681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1343 exact.
+**88,544/275,729 reviewed authored owned bytes exact, 471 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1344 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [complete Stage camera proof](evidence/stage-camera-context-20261029/README.md):
+
+- Stage4215A0/330, renamed `StageCameraStateView::ConfigureCamera`, is exact twice
+  in the unchanged ten-input StageCreate recipe, with all10 fields. Adds330
+  authored bytes, no new mapping or denominator; authored mapped backlog is210.
+- The real draw and ASCII callers retain the camera operation as a member. An
+  ordinary inline cross helper computes all components before output copy. That
+  recovers all but two multiplication pairs; local device/member context and
+  direct XYZ target construction finish the complete match. Natural private EDI
+  receiver/plain RET and actual D3DX stdcall calls remain; no volatile, forced
+  register/ABI, padding, profile change or synthetic caller is used.
+- Old viewport60, fog53, draw adapters7+7 and real Flush133 pass260/all9 in both
+  images. New330 plus viewport/fog are the three canonical cold selectors;
+  adapters/Flush use complete old contracts in each same image. Affected WinMain
+  and Render pass1814/all180 in one explicit canonical30-input cold.
+- Default camera now282/287: source captures width/height and moves float
+  conversion onto the tan result, recovering target FPTAN/FDIVR without duplicate
+  height. Aspect still executes after LookAt instead of before it. All natural
+  temporary/precision/parameter-object controls fail; /Op is restored and no
+  volatile shape is adopted. These controls add no exact credit.
+- Stage drawing cores remain1102/1099 and933/929. Final diagnostics use actual
+  402850/402CA0 entries; earlier private ordinary comparisons used interior
+  addresses and are discarded, with no effect on camera proofs or PDB extents.
+- Next bounded lead is default camera421480/287 or another complete substantive
+  owner. Reopen parked expression/flag controls only with discriminating evidence.
+  Source class/TU names, data/global alias owners and later product/runtime/port
+  phases remain independent. The MIT reference supplies source-shape hypotheses;
+  only local full target-bound comparisons grant credit.
 
 Latest [complete WinMain proof](evidence/main-winmain-context-20261029/README.md):
 
@@ -54,7 +84,8 @@ Latest [complete WinMain proof](evidence/main-winmain-context-20261029/README.md
   and MIDI156 pass full1935/all160 in each image. Only these explicit related
   contracts are checked; the canonical cold selection is WinMain plus Render.
 - Camera controls305/292/290/286 and omission of explicit /GS (290) fail the
-  complete287-byte comparison and are restored. The remaining actual camera body is290/287. Full-graph
+  complete287-byte comparison and are restored. The camera was290/287 at that
+  checkpoint and is now282/287 as above. Full-graph
   shutdown321/293 and timestamp282/282 stay nonexact; accepted recipes elsewhere
   remain distinct. No single-image/product/runtime/portability claim follows.
 - Next concrete dependency is camera421480/287: floating-point expression and
@@ -425,7 +456,7 @@ claims remain independent.
 | --- | --- | --- |
 | Sound PreloadBgm / LoadBgm | 369/369; 304/298 | Nonexact; parked scratch-register controls |
 | Sound sample loader | 684/684 | Nonexact; size equality grants nothing |
-| WinMain / Render | 1533/1389; 419/425 | Nonexact, real queue call now connected |
+| Default camera | 282/287 | Nonexact; aspect lifetime before LookAt remains open |
 | Ending Run | 1564/1568 | Nonexact; outer destructor362 is now exact |
 | ANM manager constructor | 2305/2315 | Nonexact; counter/operator-view and neutral loop controls rejected |
 | Large ANM/ECL interpreters | See exact-first method and evidence | Parked residuals; require a new premise |

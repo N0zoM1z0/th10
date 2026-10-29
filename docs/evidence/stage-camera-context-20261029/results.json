@@ -1,0 +1,857 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_extent_sha256": "ce13b8109946afb7eaff5b7191f013f485a9d0530e615c199d72166d1f71f0c6",
+  "unit": "stage-configure-camera",
+  "new_authored_exact_bytes": 330,
+  "new_exact_owners": 1,
+  "new_source_mappings": 0,
+  "authored_denominator_change": 0,
+  "field_count": 10,
+  "field_contract_sha256": "96ad7c5909c5adebcead00b86350d4801896f743ff8f6b3b4b83fc4734205510",
+  "field_contract_source": "config/match-units.toml:units.stage-configure-camera.linkages",
+  "source_include_sha256": {
+    "src/AnmManager.cpp": "1db15e643546c99327224b5b656cfd39c483e067cd8bf7f26da157f72e01b7e3",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/Chain.cpp": "7e09a9336183aa995bfb5cb2829ab97f3fa38adf0ee1c2b27b47aee94d0cfd3c",
+    "src/Chain.hpp": "7a92cae0e7b47d276749d00ad41c030f76e656f0e80d77ade2cbfe844a2de91e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/Main.hpp": "4b91d70ee52783c39dc7796eafdedbae158a09d9024c698d92c9dfb9dd55feb4",
+    "src/MainViewport.cpp": "6fc26a2ce9a19841a13ed5fa4d9421e44959ead5e77652a2baf9d06272ec14d3",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageDraw.cpp": "ed59b8a5cde0280175e477318bbd9d41ac3b84c41c22b7bb5c3a7ad882c451a3",
+    "src/StageLifecycle.cpp": "9a9281790d661bc3b108e125466bd6fc50ec70fbc991b9d01c17ba3124f38af5",
+    "src/StageScript.cpp": "5f85456c235e4c10a5a89e33ad4748ef2e28b5abe7864fbe7139e8dd549fd764",
+    "src/StageScript.hpp": "ec9ade0a612ca99c39e0992feb7517768c6b645b184e04de688466eae83498c0"
+  },
+  "graph": {
+    "source": "src/StageScript.cpp",
+    "support_sources": [
+      "src/StageLifecycle.cpp",
+      "src/StageDraw.cpp",
+      "src/Chain.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/FileSystem.cpp",
+      "src/MainViewport.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "support_profiles": {}
+  },
+  "cold_builds": [
+    {
+      "result": "exact",
+      "symbol": "?ConfigureCamera@StageCameraStateView@@QAEXXZ",
+      "target_address": "0x004215A0",
+      "candidate_address": "0x00402690",
+      "size": 330,
+      "extent_source": "pdb-section-contribution",
+      "pdb_guid": "c040ce86de765a42999ab3f66312baad",
+      "pdb_age": 1,
+      "pdb_module_index": 7,
+      "normalization_complete": true,
+      "decoded_bytes": 330,
+      "first_differences": [],
+      "artifact_dir": "build/gpt-6.1-sol/camera-fp-20261029/cold-a",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "maintained_source_input_count": 10,
+      "compiled_afresh": true,
+      "reused_objects": 0,
+      "field_count": 10,
+      "field_contract_sha256": "96ad7c5909c5adebcead00b86350d4801896f743ff8f6b3b4b83fc4734205510",
+      "canonical_report_sha256": "47eb01c9b7b517d03d3efa533ef5ae77dcaec4f2d3b7d9ce704ecf49f815ba74",
+      "artifact_sha256": {
+        "image": "273dae9ce007bf8761f10d44f274650304cf0e1915cc4752778a5b9217aed574",
+        "map": "d79babe0c0945b679278cec23de5ce348a911559db1d4ccddae3e8e1ddf7cf0e",
+        "pdb": "815be5f0f022832bc2de9e762d435e1dd9e4355ae2ad0db8b06ee75a78545b08"
+      },
+      "selected_same_image": [
+        {
+          "unit": "main-select-viewport",
+          "result": "exact",
+          "size": 60,
+          "fields": 1
+        },
+        {
+          "unit": "main-disable-fog",
+          "result": "exact",
+          "size": 53,
+          "fields": 2
+        },
+        {
+          "unit": "stage-draw-early-callback",
+          "result": "exact",
+          "size": 7,
+          "fields": 1
+        },
+        {
+          "unit": "stage-draw-late-callback",
+          "result": "exact",
+          "size": 7,
+          "fields": 1
+        },
+        {
+          "unit": "anm-render-flush-vertex-buffer",
+          "result": "exact",
+          "size": 133,
+          "fields": 4
+        }
+      ],
+      "scalar_occurrences": [
+        {
+          "offset": "0x88",
+          "symbol": "__real@4f800000",
+          "size": 4,
+          "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96",
+          "result": "raw-equal"
+        },
+        {
+          "offset": "0x9E",
+          "symbol": "__real@4f800000",
+          "size": 4,
+          "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96",
+          "result": "raw-equal"
+        }
+      ]
+    },
+    {
+      "result": "exact",
+      "symbol": "?ConfigureCamera@StageCameraStateView@@QAEXXZ",
+      "target_address": "0x004215A0",
+      "candidate_address": "0x00402690",
+      "size": 330,
+      "extent_source": "pdb-section-contribution",
+      "pdb_guid": "ccfe23238f5d3c45b6c9818a46ed30bf",
+      "pdb_age": 1,
+      "pdb_module_index": 7,
+      "normalization_complete": true,
+      "decoded_bytes": 330,
+      "first_differences": [],
+      "artifact_dir": "build/gpt-6.1-sol/camera-fp-20261029/cold-b",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "maintained_source_input_count": 10,
+      "compiled_afresh": true,
+      "reused_objects": 0,
+      "field_count": 10,
+      "field_contract_sha256": "96ad7c5909c5adebcead00b86350d4801896f743ff8f6b3b4b83fc4734205510",
+      "canonical_report_sha256": "a2377672d0f20d61ee77e7d2c4d779ca689b7d4e32d0b707a7aa24b8b3d6c2bf",
+      "artifact_sha256": {
+        "image": "7164934db1f4ad1e4a35c2b56616b2dabecfd15d0152a85e268318c12ee07441",
+        "map": "1d48dd860f2c66b06a44cb05ca36aa46334f692e6fb8d58e5b62f903fae1467d",
+        "pdb": "7ba2c6481e553839ae5872f02cd183badd664d9d2cb2a1da96a5d2637ecd43d4"
+      },
+      "selected_same_image": [
+        {
+          "unit": "main-select-viewport",
+          "result": "exact",
+          "size": 60,
+          "fields": 1
+        },
+        {
+          "unit": "main-disable-fog",
+          "result": "exact",
+          "size": 53,
+          "fields": 2
+        },
+        {
+          "unit": "stage-draw-early-callback",
+          "result": "exact",
+          "size": 7,
+          "fields": 1
+        },
+        {
+          "unit": "stage-draw-late-callback",
+          "result": "exact",
+          "size": 7,
+          "fields": 1
+        },
+        {
+          "unit": "anm-render-flush-vertex-buffer",
+          "result": "exact",
+          "size": 133,
+          "fields": 4
+        }
+      ],
+      "scalar_occurrences": [
+        {
+          "offset": "0x88",
+          "symbol": "__real@4f800000",
+          "size": 4,
+          "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96",
+          "result": "raw-equal"
+        },
+        {
+          "offset": "0x9E",
+          "symbol": "__real@4f800000",
+          "size": 4,
+          "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96",
+          "result": "raw-equal"
+        }
+      ]
+    }
+  ],
+  "affected_main_cold": {
+    "graph": {
+      "source": "src/Main.cpp",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp",
+        "src/PbgArchive.cpp",
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/MainViewport.cpp",
+        "src/AnmDrawCallbacks.cpp",
+        "src/Chain.cpp",
+        "src/Sound.cpp",
+        "src/ZWave.cpp",
+        "src/Startup.cpp",
+        "src/ScriptViewer.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/GameStatistics.cpp",
+        "src/Ending.cpp",
+        "src/GameManager.cpp",
+        "src/SupervisorModes.cpp",
+        "src/FrontEndLifecycle.cpp",
+        "src/FrontEnd.cpp",
+        "src/ReplayManager.cpp",
+        "src/FrontEndLaunch.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/GameManagerLifecycle.cpp",
+        "src/MainConfiguration.cpp",
+        "src/MainLifecycle.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "entry_symbol": "WinMain@16",
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ],
+        "src/AnmManager.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/Sound.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHsc"
+        ],
+        "src/ZWave.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHsc"
+        ],
+        "src/Startup.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/Ending.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/FrontEndLifecycle.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/FrontEnd.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/ReplayManager.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/FrontEndLaunch.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/VmIdInterrupt.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/GameManagerLifecycle.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/PbgArchive.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/EHsc",
+          "/Ob1"
+        ],
+        "src/Chain.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/Midi.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ]
+      }
+    },
+    "source_include_sha256": {
+      "src/AnmDrawCallbacks.cpp": "49cb0da52c3a1fbd8d6a6fdf403a54b10737ef003d050615bc4af5c62612ad37",
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+      "src/AnmManager.cpp": "1db15e643546c99327224b5b656cfd39c483e067cd8bf7f26da157f72e01b7e3",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+      "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+      "src/Chain.cpp": "7e09a9336183aa995bfb5cb2829ab97f3fa38adf0ee1c2b27b47aee94d0cfd3c",
+      "src/Chain.hpp": "7a92cae0e7b47d276749d00ad41c030f76e656f0e80d77ade2cbfe844a2de91e",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+      "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+      "src/Ending.cpp": "78bc83fb08fa871e712d52e509d713312c83edca2c70fbcdd48fa6c22cac4c5d",
+      "src/Ending.hpp": "39ba42ed24dd3653f58d12eb7bc58aae6c60da420ad3224cd50195d8a658cb41",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+      "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+      "src/FrontEnd.cpp": "f67b859fc0e22d9747052fc85f6cb9367d2bea58a682c170978087fb547de9c8",
+      "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+      "src/FrontEndLaunch.cpp": "4983ada9af90f1350208b92d11b3efb60ff04c169af68ca720fff2c75cb56ef6",
+      "src/FrontEndLifecycle.cpp": "61aa8150e9d4584c08192d150a4a0ab9279887060ed10a79d08f668f491e0fb2",
+      "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+      "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+      "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+      "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+      "src/GameManager.cpp": "f7d29b68e050af91a7970207b85465751ae0d055b7c81e9e43ba090bb9ffa48e",
+      "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+      "src/GameManagerLifecycle.cpp": "d410c13b4cd362bfa0e49173cec3abb53923bc1c0008337b89549d807f4e1028",
+      "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+      "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+      "src/GameStatistics.cpp": "e672f35c5d6e944b304b020f231b0ebb5eea1f83f2dab5cd5a47635dde9a5dc0",
+      "src/GameStatistics.hpp": "3db83612f100ae38b109e358bbf777f897fab2e760520bc92c52fbec1b4823bc",
+      "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+      "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+      "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+      "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+      "src/Main.cpp": "b1cec581cc8763bc2bcd6a0ff8056cdf0a3b43484dcf3b29d3dbccd13ed15102",
+      "src/Main.hpp": "4b91d70ee52783c39dc7796eafdedbae158a09d9024c698d92c9dfb9dd55feb4",
+      "src/MainConfiguration.cpp": "a894536a471f8d87794f04e39ca527aa7ec1664f531322620f7e9b94fe7bc03b",
+      "src/MainLifecycle.cpp": "3b4699e1467346a12e3e0b72ff9773a88f96b952901d478923d6006a917cd13a",
+      "src/MainViewport.cpp": "6fc26a2ce9a19841a13ed5fa4d9421e44959ead5e77652a2baf9d06272ec14d3",
+      "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+      "src/Midi.cpp": "091050ca5bd02a7c65ca548a5b259e57fee5c44938e546b0f3bde27d75cbeaaa",
+      "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+      "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+      "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+      "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+      "src/ReplayManager.cpp": "c36918f724269293acb48c0bb8f61a945df84de7559e634fe19a6adcaf18cac0",
+      "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+      "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+      "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+      "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/ScriptViewer.cpp": "2ffd509cf2bcff9fcc1dafa9e1bc4a2f805c5a7262959a22618287e498e15e7a",
+      "src/ScriptViewer.hpp": "d2bdd5dc267c1f76a32df7d0ee7b0507fc1854933c33e2bd8075d2b318ee5ab2",
+      "src/ScriptViewerOwners.hpp": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+      "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157",
+      "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+      "src/Sound.cpp": "f54cc701c28e6c27446f054b9234be57531a666c646a69a3e4639458a7411562",
+      "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+      "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+      "src/StageScript.hpp": "ec9ade0a612ca99c39e0992feb7517768c6b645b184e04de688466eae83498c0",
+      "src/Startup.cpp": "7e2b36be30f7f9ac3860e3267975facc0cd0da2e58461556bc1612dca4998c5d",
+      "src/Startup.hpp": "e374093c7f99c60292c040399810949b54d55526ed4a5d05c2d1e7cfe081a6e7",
+      "src/SupervisorModes.cpp": "5a1c5a762a61bb931b33aa25f9526c4eac15ebcb4e4beffe101e3989c0858a1d",
+      "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+      "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+      "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5",
+      "src/ZWave.cpp": "eef1e940196f84fc5118bf0b5ebf2e95c36044e2c5cfc78da75bffb1d599e87e"
+    },
+    "compiled_afresh": true,
+    "reused_objects": 0,
+    "maintained_source_input_count": 30,
+    "artifact_dir": "build/gpt-6.1-sol/camera-fp-20261029/main-affected-cold",
+    "selected": [
+      {
+        "unit": "main-render",
+        "result": "exact",
+        "size": 425,
+        "pdb_guid": "d61b2ab4b1725346a8a207b6671e0d41"
+      },
+      {
+        "unit": "main-winmain",
+        "result": "exact",
+        "size": 1389,
+        "pdb_guid": "d61b2ab4b1725346a8a207b6671e0d41"
+      }
+    ],
+    "matched_bytes": 1814,
+    "field_count": 180,
+    "canonical_report_sha256": "c49662b37c7ecdf668f877ff475b1031c4885d7d6c04be99b11db93c4d4d49e5"
+  },
+  "source_models": [
+    {
+      "model": "stage-baseline",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 40,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-up-reference",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 31,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-components",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 23,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-cross-product",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 8,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-cross-order",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 8,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-cross-sdk",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 8,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-right-role",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 16,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-cross-value",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 8,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-right-value",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 16,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-cross-captured",
+      "native_size": 385,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 125,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-cross-constructed",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 8,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-cross-inline",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 8,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-cross-sdk-inline",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 8,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-camera-right",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 40,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-device-local",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 8,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-camera-member",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "mismatch",
+      "ordinary_differences": 8,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "stage-member-target",
+      "native_size": 330,
+      "target_size": 330,
+      "result": "structural-exact",
+      "ordinary_differences": 0,
+      "acceptance_authority": "none"
+    }
+  ],
+  "default_camera_models": [
+    {
+      "model": "double-aspect",
+      "native_size": 290,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "temporary-vectors",
+      "native_size": 289,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "float-temporaries",
+      "native_size": 298,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "camera-op",
+      "native_size": 326,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "vector-dimensions",
+      "native_size": 298,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "distance-value",
+      "native_size": 298,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "double-tan",
+      "native_size": 291,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "named-halves",
+      "native_size": 285,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "float-divisor",
+      "native_size": 282,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "camera-parameters",
+      "native_size": 359,
+      "target_size": 287,
+      "result": "mismatch"
+    },
+    {
+      "model": "final-main",
+      "native_size": 282,
+      "target_size": 287,
+      "result": "mismatch"
+    }
+  ],
+  "other_complete_candidates": {
+    "camera": {
+      "result": "mismatch",
+      "candidate_size": 282,
+      "target_size": 287
+    },
+    "early": {
+      "result": "mismatch",
+      "candidate_size": 1102,
+      "target_size": 1099
+    },
+    "late": {
+      "result": "mismatch",
+      "candidate_size": 933,
+      "target_size": 929
+    }
+  },
+  "discarded_private_diagnostics": {
+    "affected": [
+      "early",
+      "late"
+    ],
+    "incorrect_interior_starts": [
+      "0x00402A50",
+      "0x00402EA0"
+    ],
+    "correct_starts": [
+      "0x00402850",
+      "0x00402CA0"
+    ],
+    "scope": "Before final-stage, earlier ordinary comparisons of these two rows are invalid; PDB extents and camera comparisons remain valid. No exact credit was based on them."
+  },
+  "oracle_sha256": {
+    "scripts/compare-linked-function.py": "cd4a1c5a34e427bb2ca257e37280c34e9731ab010d0f9c15568128acfab5d414",
+    "scripts/linked_image.py": "f65c6ac8878d46323daae75e249b60527035dae30f40752871ee86af0a89a533",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/build-match-unit.py": "0da61513525eb2411a57210bd0ce7bd258dca42b54f28db7bbcb11032f05f4fd"
+  },
+  "references": [
+    {
+      "repository": "levzzz5154/th10-decomp",
+      "commit": "f51eec86d81064788b6d2ff80c0be28d96095d27",
+      "source": "matching2/msvc/src/game/mother/camera_apply.cpp",
+      "scope": "Natural member, target-point construction, device-local and cross-helper hypotheses only; no source bytes, flags, placement, noinline or synthetic caller imported.",
+      "license": "docs/licenses/th10-decomp-MIT.txt"
+    },
+    {
+      "local_header": ".tools/msvc710-sp1/Vc7/PlatformSDK/Include/d3dx8math.inl",
+      "scope": "Alias-safe cross-product source-shape lead; target is D3D9. SDK forceinline control is neutral and restored.",
+      "sha256": "1e80e1577e74f6aac96231c26f31882446c0af9b2c413f754b713c893ecbcdb9"
+    }
+  ],
+  "limits": {
+    "original_class_name": "unknown",
+    "production_translation_units": "unknown",
+    "data_owner_closure": "not claimed",
+    "single_image_exact_closure": "not claimed",
+    "runtime_validation": "not claimed",
+    "portability": "not claimed"
+  }
+}

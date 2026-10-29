@@ -25,33 +25,45 @@ extern "C" AnmMatrixView *__stdcall D3DXMatrixPerspectiveFovLH(
 extern "C" AnmFloat3View *__stdcall D3DXVec3Normalize(
     AnmFloat3View *output, const AnmFloat3View *input);
 
-// Target 0x4215A0-0x4216E9 uses EDI camera, plain RET. Genuine draw caller
-// visibility is retained; source alone does not establish private ABI equality.
-void StageConfigureCamera(StageCameraStateView *camera)
+// Alias-safe inline cross product following the D3DX vector contract.
+inline AnmFloat3View *StageCrossProduct(AnmFloat3View *output,
+    const AnmFloat3View *first, const AnmFloat3View *second)
+{
+    AnmFloat3View value;
+    value.x = first->y * second->z - first->z * second->y;
+    value.y = first->z * second->x - first->x * second->z;
+    value.z = first->x * second->y - first->y * second->x;
+    *output = value;
+    return output;
+}
+
+// Target 0x4215A0-0x4216E9 uses EDI camera, plain RET. The real draw
+// callers supply the private receiver convention under the pinned LTCG graph.
+void StageCameraStateView::ConfigureCamera()
 {
     if (g_AnmRenderManagerView != NULL)
         g_AnmRenderManagerView->FlushVertexBuffer();
-    AnmFloat3View at = camera->direction + camera->position;
-    AnmFloat3View eye(camera->rockingOffset + camera->position.x,
-        camera->rockingOffsetY + camera->position.y,
-        camera->rockingOffsetZ + camera->position.z);
-    D3DXMatrixLookAtLH(&camera->viewMatrix, &eye, &at, &camera->up);
-    D3DXMatrixPerspectiveFovLH(&camera->projectionMatrix, camera->value048,
-        static_cast<float>(camera->viewport.width) /
-            static_cast<float>(camera->viewport.height), 30.0f, 1800.0f);
-    g_Direct3DDevice->vtable->SetTransform(g_Direct3DDevice, 2, &camera->viewMatrix);
-    g_Direct3DDevice->vtable->SetTransform(g_Direct3DDevice, 3, &camera->projectionMatrix);
-    AnmFloat3View right(
-        camera->up.z * camera->direction.y - camera->up.y * camera->direction.z,
-        camera->up.x * camera->direction.z - camera->up.z * camera->direction.x,
-        camera->up.y * camera->direction.x - camera->up.x * camera->direction.y);
-    camera->cameraRight = right;
-    D3DXVec3Normalize(&camera->cameraRight, &camera->cameraRight);
+    AnmFloat3View at(this->direction.x + this->position.x,
+        this->direction.y + this->position.y,
+        this->direction.z + this->position.z);
+    AnmFloat3View eye(this->rockingOffset + this->position.x,
+        this->rockingOffsetY + this->position.y,
+        this->rockingOffsetZ + this->position.z);
+    D3DXMatrixLookAtLH(&this->viewMatrix, &eye, &at, &this->up);
+    D3DXMatrixPerspectiveFovLH(&this->projectionMatrix, this->value048,
+        static_cast<float>(this->viewport.width) /
+            static_cast<float>(this->viewport.height), 30.0f, 1800.0f);
+    D3d9DeviceView *device = g_Direct3DDevice;
+    device->vtable->SetTransform(device, 2, &this->viewMatrix);
+    device = g_Direct3DDevice;
+    device->vtable->SetTransform(device, 3, &this->projectionMatrix);
+    StageCrossProduct(&this->cameraRight, &this->direction, &this->up);
+    D3DXVec3Normalize(&this->cameraRight, &this->cameraRight);
     // Reload the renderer after external calls, as the target does.
     if (g_AnmRenderManagerView != NULL)
     {
-        g_AnmRenderManagerView->screenShakeX = camera->value0E8;
-        g_AnmRenderManagerView->screenShakeY = camera->value0EC;
+        g_AnmRenderManagerView->screenShakeX = this->value0E8;
+        g_AnmRenderManagerView->screenShakeY = this->value0EC;
     }
 }
 
@@ -121,7 +133,7 @@ int __stdcall StageDrawInstances(StageScriptView *stage, int layer)
 {
     StageInstanceView *instance = stage->instances;
     g_AnmViewportOwner = reinterpret_cast<AnmViewportOwnerView *>(&g_StagePublishedCamera);
-    StageConfigureCamera(&g_StagePublishedCamera);
+    g_StagePublishedCamera.ConfigureCamera();
     g_Direct3DDevice->vtable->SetViewport(g_Direct3DDevice,
         &g_AnmViewportOwner->viewport);
     g_StageViewportConfigured = 0;
@@ -208,7 +220,7 @@ static void StageSetFogState(int value)
 static void StageInstallPublishedCamera()
 {
     g_AnmViewportOwner = reinterpret_cast<AnmViewportOwnerView *>(&g_StagePublishedCamera);
-    StageConfigureCamera(&g_StagePublishedCamera);
+    g_StagePublishedCamera.ConfigureCamera();
     g_Direct3DDevice->vtable->SetViewport(g_Direct3DDevice, &g_AnmViewportOwner->viewport);
     g_StageViewportConfigured = 0;
 }

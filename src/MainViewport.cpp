@@ -29,17 +29,19 @@ void MainConfigureCamera(AnmViewportOwnerView *camera)
     if (g_AnmRenderManagerView != NULL)
         g_AnmRenderManagerView->FlushVertexBuffer();
     float width = static_cast<float>(camera->viewport.width);
+    float halfWidth = width * 0.5f;
     float height = static_cast<float>(camera->viewport.height);
+    float halfHeight = height * 0.5f;
     float aspect = width / height;
-    AnmFloat3View eye(width * 0.5f, height * 0.5f,
-        static_cast<float>(height * 0.5f / tan(3.1415927f / 20.0)));
-    AnmFloat3View at(width * 0.5f, height * 0.5f, 0.0f);
+    AnmFloat3View eye(halfWidth, halfHeight,
+        halfHeight / static_cast<float>(tan(3.1415927f / 20.0)));
+    AnmFloat3View at(halfWidth, halfHeight, 0.0f);
     AnmFloat3View up(0.0f, -1.0f, 0.0f);
     D3DXMatrixLookAtLH(&camera->viewMatrix, &eye, &at, &up);
     D3DXMatrixPerspectiveFovLH(&camera->projectionMatrix,
         3.1415927f / 10.0f, aspect, 1.0f, 10000.0f);
-    g_Direct3DDevice->vtable->SetTransform(g_Direct3DDevice, 2, &camera->viewMatrix);
-    g_Direct3DDevice->vtable->SetTransform(g_Direct3DDevice, 3, &camera->projectionMatrix);
+    g_MainSupervisorView.d3dDevice->vtable->SetTransform(g_MainSupervisorView.d3dDevice, 2, &camera->viewMatrix);
+    g_MainSupervisorView.d3dDevice->vtable->SetTransform(g_MainSupervisorView.d3dDevice, 3, &camera->projectionMatrix);
     if (g_AnmRenderManagerView != NULL)
     {
         const MainCameraRecordView *record =

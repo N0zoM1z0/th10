@@ -4321,8 +4321,6 @@ int AsciiManagerView::AddGuiFormatText(
     return strlen(buffer);
 }
 
-void StageConfigureCamera(StageCameraStateView *camera);
-
 // The target expands these camera/viewport effects at the draw sites.
 #define CONFIGURE_ASCII_VIEWPORT(viewportIndex) \
     do \
@@ -4333,7 +4331,7 @@ void StageConfigureCamera(StageCameraStateView *camera);
         { \
             StageCameraStateView *camera = &main->backgroundCamera; \
             main->activeViewport = reinterpret_cast<AnmViewportOwnerView *>(camera); \
-            StageConfigureCamera(camera); \
+            camera->ConfigureCamera(); \
             g_Direct3DDevice->vtable->SetViewport( \
                 g_Direct3DDevice, &main->activeViewport->viewport); \
             main->viewportConfigured = 0; \
@@ -4342,7 +4340,7 @@ void StageConfigureCamera(StageCameraStateView *camera);
         { \
             StageCameraStateView *camera = &main->gameplayCamera; \
             main->activeViewport = reinterpret_cast<AnmViewportOwnerView *>(camera); \
-            StageConfigureCamera(camera); \
+            camera->ConfigureCamera(); \
             g_Direct3DDevice->vtable->SetViewport( \
                 g_Direct3DDevice, &main->activeViewport->viewport); \
             main->viewportConfigured = 1; \

@@ -6874,3 +6874,42 @@ a concrete unresolved lead. Full-graph shutdown321/293 and timestamp282/282
 remain nonexact; other accepted recipes are separate. Data ownership, original
 names/TUs and whole-product/runtime/portability closure remain open. See
 [the complete WinMain proof](evidence/main-winmain-context-20261029/README.md).
+
+
+## 2026-10-29 Complete Stage camera and cross-product context
+
+Camera4215A0..4216E9 owns330 bytes and ends in plain RET; EDI is the real camera
+receiver. Target Stage calls403A48,4028C1,402B78 and402D0D, plus ASCII viewport
+calls40183B/401872/4019FF, establish this receiver and the published491D7C/491E94
+records. The maintained118-byte layout is unchanged; introducing a method does
+not identify the original source class or allocate its storage.
+
+Two independent canonical ten-input StageCreate colds reproduce330/all10 fields.
+The natural member setup constructs the look-at target directly from the three
+direction+position components and reloads a local device pointer for each
+SetTransform. An ordinary inline cross helper calculates direction × up into a
+local vector before aggregate output copy. Generic cross-only controls restored
+all but two product-load pairs; the final direct XYZ target constructor in the
+member context removes those remaining differences. Near/far30/1800 and actual
+D3DX stdcall boundaries remain. Both470B98 unsigned-correction constant
+occurrences are raw-equal. No fake ABI/register/spill, volatile, padding,
+noinline, code patch or compiler-profile change is used.
+
+Five old same-image contracts260/all9 pass in both colds: selector60, fog53,
+draw adapters7 each and actual Flush133. New camera330 plus viewport/fog are
+canonical cold selectors. The30-input Main recipe is replayed only for affected
+WinMain1389/Render425; both remain exact1814/all180. This adds330 authored bytes
+with one existing source mapping renamed, no new denominator or mapping. Source
+class/TU, global/data alias owners, single-image/product/runtime and port closure
+remain open. The MIT reference supplies source-shape leads, not acceptance.
+
+Default421480 source now produces282/287, NONEXACT. Explicit width/height
+captures retain target float stores; float conversion of tan's result restores
+FPTAN/FDIVR without the extra height copy. Aspect evaluation remains after
+LookAt, whereas the target evaluates/stores it first. Natural temporary-vector,
+precision and parameter-object controls all fail; /Op and SDK forceinline
+controls are restored. Stage draw cores1102/1099 and933/929 also remain nonexact.
+Earlier private comparisons of those cores used interior402A50/402EA0 addresses;
+only final402850/402CA0 diagnostics are valid. No exact ledger claim used the
+invalid reads; the camera comparisons and PDB sizes were unaffected. See
+[the complete Stage camera proof](evidence/stage-camera-context-20261029/README.md).

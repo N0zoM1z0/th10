@@ -919,7 +919,7 @@ StageFogView::operator*
 StageFogView::operator+
 StageBoundsCulled
 StageDrawInstances
-StageConfigureCamera
+StageCameraStateView::ConfigureCamera
 StageDrawEarly
 StageDrawLate
 StageScriptView::StageScriptView
