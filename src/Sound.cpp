@@ -287,6 +287,7 @@ int SoundPlayerView::Initialize(HWND window)
     format.nAvgBytesPerSec = 176400;
     format.nBlockAlign = 4;
     format.wBitsPerSample = 16;
+    format.cbSize = 0;
     description.dwSize = sizeof(description);
     description.dwFlags = DSBCAPS_LOCSOFTWARE | DSBCAPS_GLOBALFOCUS;
     description.dwBufferBytes = 0x8000;

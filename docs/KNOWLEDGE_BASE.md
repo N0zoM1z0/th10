@@ -6354,3 +6354,25 @@ Additional raw utility bodies at44D3E0/19 and44D400/52 are now individually
 boundary-reviewed, origin indeterminate and unmapped. The latter uses the
 verified target IID_IDirectSound3DBuffer. No references to their code bytes are
 observed; SDK resemblance alone does not classify authorship or grant credit.
+
+## 2026-10-29 Complete primary-buffer format callee
+
+SetPrimaryBufferFormat44C7E0..44C8E3 is complete260/all3 exact in the unchanged
+Sound+ZWave LTCG graph, reproduced in two independent final-source colds. The
+real initializer supplies stack owner, EBX channels, EDI rate and ECX bits;
+ordinary member source reproduces this private ABI. All260 bytes decode, with
+only cookie473660 at+4 and check458EA5 calls at+30/+FA requiring link binding.
+The existing source preserves the immediate SetFormat failure return without
+primary release. Strict comparison also passes in the retained real15-input
+Main image. Existing origin attribution is unchanged; exact codegen does not
+establish original SDK authorship, source spelling, TU or product/runtime closure.
+See [the complete proof](evidence/sound-primary-format-20261029/README.md).
+
+Initialize43CD30 remains755/786 nonexact. Raw43CE4D and43CE92 both zero the
+WAVEFORMATEX cbSize word; the explicit assignment is retained. The old producer
+failure was a private cache-runner error and is now resolved. Eight complete
+CFG/order diagnostics remain nonexact, with all selected strict guards intact.
+A common failure label moves EBX's save to entry, contradicting its conditional
+save after successful manager setup in the target. Speculative CFG/order edits
+are restored. Original source spelling and the remaining scheduling/layout
+questions stay unresolved; no partial parent credit is granted.

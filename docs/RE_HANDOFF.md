@@ -1,10 +1,10 @@
-# TH10 agent handoff — 2026-10-28
+# TH10 agent handoff — 2026-10-29
 
 ## Start here
 
-Exact source baseline: **`fb521c1`**, complete Sound queue and streaming reset.
-The subsequent handoff cleanup changes documentation/artifacts only. Source
-matches that baseline; the unfinished experiment is preserved as a patch.
+Current checkpoint adds the complete260-byte primary-format callee to the
+`fb521c1` Sound baseline. Source retains one explicit cbSize zero in Initialize;
+all speculative CFG/order controls have been restored. The parent stays nonexact.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -32,9 +32,16 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**80,328/275,467 reviewed authored owned bytes exact, 438 exact authored owners**;
-647 authored source mappings. Total: 1807 candidates, 1149 mappings, 1298 exact.
+**80,588/275,467 reviewed authored owned bytes exact, 439 exact authored owners**;
+647 authored source mappings. Total: 1807 candidates, 1149 mappings, 1299 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [primary-format proof](evidence/sound-primary-format-20261029/README.md):
+SetPrimaryBufferFormat44C7E0..44C8E3 is260/all3 exact in two independent
+final-source canonical Sound+ZWave colds and a retained real15-input Main image.
+The first cold also passes four old Sound/streaming guards and the affected
+setup-thread interface:2509/all70/six owners. This establishes exactness of
+existing maintained source; original origin/TU and product/runtime stay separate.
 
 Latest [Sound proof](evidence/sound-queues-20261028/README.md):
 
@@ -53,15 +60,20 @@ indeterminate, unmapped and nonexact.
 
 ## Immediate continuation: Sound Initialize
 
-Target **43CD30..43D041/786**, retained native 754; still nonexact.
-[Pending experiment and patch](evidence/sound-initialize-pending-20261028/README.md)
-preserve the one-line explicit `format.cbSize = 0` hypothesis. The working source
-is clean at the proven baseline. Apply the patch deliberately before a new trial.
+Target **43CD30..43D041/786**, retained native755; still nonexact.
+The [old pending experiment](evidence/sound-initialize-pending-20261028/README.md)
+now completes successfully. Raw43CE4D/43CE92 writes cbSize twice; the explicit
+assignment is retained, but does not establish the original spelling. Do not
+apply the historical patch again. All eight current models and exact guard
+results are recorded in the [new proof](evidence/sound-primary-format-20261029/README.md).
 
-The original producer ended with exit 1 at a cache-runner KeyError for generated
-`link-anchors.c`; it produced no linked comparison. It does not falsify the
-source hypothesis. The private runner's known-map guard is repaired and syntax
-checked, **not rerun**. Use a new variant name and keep the original failed log.
+Success-first if/else gives763; a tail cleanup goto returns755; descriptor
+assignment/zero ordering and else-less success block remain763. A common failure
+exit gives746 and incorrectly saves EBX at entry; the target saves it only after
+manager initialization succeeds. Separating the exits returns763. These models
+remain nonexact and their rewrites are restored. Do not repeat neutral controls
+without new evidence. Target store scheduling/register choice, cold-block order
+and loop alignment remain unresolved; a nested success-path model is untested.
 
 Active recipe/listings/logs:
 `.analysis/gpt-6.1-sol/sound-initialize-20261028/`.
@@ -71,9 +83,9 @@ Only Sound.cpp may change when reusing all 14 other objects; header/other-input
 changes need an affected rebuild. The real Main context supplies Log's actual
 ECX ABI; the two-input anchor diagnostic cannot establish that ABI.
 
-Target raw writes suggest the explicit cbSize zero; target cleanup is also a
-cold tail after the success body. These are untested source models. Start with
-one change and a complete comparison, not a register/flag sweep.
+SetPrimaryBufferFormat is now a verified complete callee, with stack owner,
+EBX channels, EDI rate and ECX bits; it needs no guessed ABI. The two-input graph
+cannot prove Log's ABI; retain the actual GameErrorContext in parent diagnosis.
 
 ## Other open work
 
@@ -96,6 +108,10 @@ is allowed when it has a concrete uncertainty and a complete comparison path.
 
 Current active artifacts and the verified historical archive are indexed in
 `.analysis/README.md`; cleanup audit is `.analysis/handoff-20261028/`.
+New cold logs/receipts are `.analysis/gpt-6.1-sol/sound-primary-format-20261029/`;
+the first independent native witness is
+`build/gpt-6.1-sol/sound-primary-format-20261029/cold-a/` and the second is the
+canonical `build/match-linked/SoundInitBuffers/`. Source/include hashes agree.
 Canonical `build/match-linked`, `build/match` and `build/match-runtime` caches,
 current Sound witnesses and warm Main inputs are retained. Obsolete host/probe
 builds are removed. Old analysis is hash-verified before compression/removal;

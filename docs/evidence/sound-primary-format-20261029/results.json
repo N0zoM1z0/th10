@@ -1,0 +1,254 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_owned_bytes": 260,
+  "new_exact_owners": 1,
+  "source_recovery_credit": 0,
+  "source_pins": {
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameErrorContext.hpp": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37",
+    "src/Main.hpp": "128274b3122e4c4af9aa4d5adf2e3bc59f4b1e455a6d3677ee51f14a46b0e4fb",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/Sound.cpp": "40ba64a4b411b16adf2ab8bc003a62b660b57be8861f87cc663007afe85b48dd",
+    "src/Sound.hpp": "041c12afbd15ce2670728e0b705cd599f5be722d685171900017487d5ab10645",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/ZWave.cpp": "ac2feb5e385e625ee8d0c51961cc2405aaf9338493e4de25e61d0744f579b5e8"
+  },
+  "canonical_colds": {
+    "a": {
+      "result": "exact",
+      "unit_count": 6,
+      "matched_bytes": 2509,
+      "groups": [
+        {
+          "artifact": "build/match-linked/SoundInitBuffers",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "streaming-sound-init-buffers",
+              "result": "exact",
+              "size": 338,
+              "matched_compared_bytes": 338,
+              "decoded_bytes": 338,
+              "normalization_complete": true,
+              "image_sha256": "35541c62fb7cf3c4e0c0969c7425f214d1c5ff41065791580f55742368965733",
+              "pdb_guid": "60300cfb50ef0d48aeda4be42e10f706",
+              "pdb_age": 1,
+              "candidate_address": "0x004030C0",
+              "fields": 6
+            },
+            {
+              "unit": "sound-bgm-player-thread",
+              "result": "exact",
+              "size": 189,
+              "matched_compared_bytes": 189,
+              "decoded_bytes": 189,
+              "normalization_complete": true,
+              "image_sha256": "35541c62fb7cf3c4e0c0969c7425f214d1c5ff41065791580f55742368965733",
+              "pdb_guid": "60300cfb50ef0d48aeda4be42e10f706",
+              "pdb_age": 1,
+              "candidate_address": "0x00402470",
+              "fields": 7
+            },
+            {
+              "unit": "sound-process-queues",
+              "result": "exact",
+              "size": 1452,
+              "matched_compared_bytes": 1452,
+              "decoded_bytes": 1451,
+              "normalization_complete": true,
+              "image_sha256": "35541c62fb7cf3c4e0c0969c7425f214d1c5ff41065791580f55742368965733",
+              "pdb_guid": "60300cfb50ef0d48aeda4be42e10f706",
+              "pdb_age": 1,
+              "candidate_address": "0x00401EC0",
+              "fields": 43
+            },
+            {
+              "unit": "streaming-sound-reset",
+              "result": "exact",
+              "size": 213,
+              "matched_compared_bytes": 213,
+              "decoded_bytes": 213,
+              "normalization_complete": true,
+              "image_sha256": "35541c62fb7cf3c4e0c0969c7425f214d1c5ff41065791580f55742368965733",
+              "pdb_guid": "60300cfb50ef0d48aeda4be42e10f706",
+              "pdb_age": 1,
+              "candidate_address": "0x00403220",
+              "fields": 4
+            },
+            {
+              "unit": "sound-manager-set-primary-buffer-format",
+              "result": "exact",
+              "size": 260,
+              "matched_compared_bytes": 260,
+              "decoded_bytes": 260,
+              "normalization_complete": true,
+              "image_sha256": "35541c62fb7cf3c4e0c0969c7425f214d1c5ff41065791580f55742368965733",
+              "pdb_guid": "60300cfb50ef0d48aeda4be42e10f706",
+              "pdb_age": 1,
+              "candidate_address": "0x00403580",
+              "fields": 3
+            }
+          ]
+        },
+        {
+          "artifact": "build/match-linked/SoundSetupRealMain",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "sound-setup-thread",
+              "result": "exact",
+              "size": 57,
+              "matched_compared_bytes": 57,
+              "decoded_bytes": 57,
+              "normalization_complete": true,
+              "image_sha256": "6e1934735c7cc55f339070ec2b8bde124d2d8a5fef4e103c82fc644a342db48f",
+              "pdb_guid": "557e1cc7bccccc469ff3d3c446b98bf1",
+              "pdb_age": 1,
+              "candidate_address": "0x00401750",
+              "fields": 7
+            }
+          ]
+        }
+      ]
+    },
+    "b": {
+      "result": "exact",
+      "unit_count": 1,
+      "matched_bytes": 260,
+      "groups": [
+        {
+          "artifact": "build/match-linked/SoundInitBuffers",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "sound-manager-set-primary-buffer-format",
+              "result": "exact",
+              "size": 260,
+              "matched_compared_bytes": 260,
+              "decoded_bytes": 260,
+              "normalization_complete": true,
+              "image_sha256": "6369fbb3f4f7966834ed86390329e9d4b463c0497864d2c5cb9dd7110885021c",
+              "pdb_guid": "030a8161b60dff478756470f28a217f5",
+              "pdb_age": 1,
+              "candidate_address": "0x00403580",
+              "fields": 3
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "retained_image_proofs": {
+    "final-cold-a": {
+      "result": "exact",
+      "size": 260,
+      "matched_compared_bytes": 260,
+      "image_sha256": "7b600043597ce9a7035b58663135b9863c68749bc246a31239bdcb2bd76638db",
+      "pdb_guid": "785d9a442170d641a179e9f9ead14bb3",
+      "pdb_age": 1,
+      "candidate_address": "0x00403580",
+      "fields": 3
+    },
+    "final-main-current": {
+      "result": "exact",
+      "size": 260,
+      "matched_compared_bytes": 260,
+      "image_sha256": "07432d6c809149c3f30328eb65c1ac787b65999d96f1a3a1cbc740f5c6d4e965",
+      "pdb_guid": "d7b6e262876f964287ea927df077a5df",
+      "pdb_age": 1,
+      "candidate_address": "0x00413E00",
+      "fields": 3
+    }
+  },
+  "initialize_models": [
+    {
+      "variant": "explicit-cbsize-retry",
+      "source_sha256": "40ba64a4b411b16adf2ab8bc003a62b660b57be8861f87cc663007afe85b48dd",
+      "candidate_size": 755,
+      "target_size": 786,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "strict_guard_count": 8,
+      "all_strict_guards_exact": true
+    },
+    {
+      "variant": "success-first-cbsize",
+      "source_sha256": "9958add1191a27bec24b8d77cc516f29876db1f250ae9f7dc1860c5809d38506",
+      "candidate_size": 763,
+      "target_size": 786,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "strict_guard_count": 8,
+      "all_strict_guards_exact": true
+    },
+    {
+      "variant": "cleanup-tail-cbsize",
+      "source_sha256": "87fe5c3f520015a38966a6dd41b9aab776f3f76934441553b07d5b6415a65f5d",
+      "candidate_size": 755,
+      "target_size": 786,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "strict_guard_count": 8,
+      "all_strict_guards_exact": true
+    },
+    {
+      "variant": "description-first",
+      "source_sha256": "43d3d2303459474c6a9080c24fc821825f4296b781d94f3095be072872522ae6",
+      "candidate_size": 763,
+      "target_size": 786,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "strict_guard_count": 8,
+      "all_strict_guards_exact": true
+    },
+    {
+      "variant": "zero-description-first",
+      "source_sha256": "706fe280448dc10f6ef2b9c5ab8a33ca6e2647e6064524384874abbc98a986b7",
+      "candidate_size": 763,
+      "target_size": 786,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "strict_guard_count": 8,
+      "all_strict_guards_exact": true
+    },
+    {
+      "variant": "success-block-cleanup",
+      "source_sha256": "0687d0f1f1ea56aa87d7d88a1c74fa54647fc5184c24472f9f5e04b0e9634f7f",
+      "candidate_size": 763,
+      "target_size": 786,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "strict_guard_count": 8,
+      "all_strict_guards_exact": true
+    },
+    {
+      "variant": "common-failure",
+      "source_sha256": "d23e6739210cb4083ecfb20e67e51bae8872d66850bac3a7250723a05c47a668",
+      "candidate_size": 746,
+      "target_size": 786,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "strict_guard_count": 8,
+      "all_strict_guards_exact": true
+    },
+    {
+      "variant": "separate-failures",
+      "source_sha256": "9677d4a276491ea7b946081dfdf788ecb394ccad5ce8c82f36422d58fc39c564",
+      "candidate_size": 763,
+      "target_size": 786,
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "strict_guard_count": 9,
+      "all_strict_guards_exact": true
+    }
+  ],
+  "retained_initialize_model": "explicit-cbsize-retry",
+  "origin_attribution_changed": false,
+  "product_runtime_claim": false
+}

@@ -1,4 +1,14 @@
-# Pending Sound initialization experiment
+# Sound initialization experiment, resumed 2026-10-29
+
+**The pending producer has now been run successfully.** The explicit cbSize
+assignment produces755/786 bytes and remains nonexact. It is retained in the
+source because raw target43CE4D/43CE92 writes that field twice. Do not apply the
+historical patch again to the current source. Subsequent CFG/order controls are
+also nonexact and have been restored. The complete primary-format callee260/all3
+is now independently proven exact; see the
+[continuation proof](../sound-primary-format-20261029/README.md) and its results.
+
+The following records the original stopped state before that continuation.
 
 This is **unverified work**, preserved when automatic goal work stopped after
 `fb521c1`. No new match or source credit is claimed. The production source has
