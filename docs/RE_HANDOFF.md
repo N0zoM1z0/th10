@@ -87,12 +87,14 @@ document/verification records, the existing record archive and D3D evidence.
 No new compressed archive or historical input dependency is introduced.
 
 The current ten-input Enemy runtime context is separately pinned at
-`.analysis/gpt-6.1-sol/enemy-world-context-20261030/final-context.json`.
+`.analysis/gpt-6.1-sol/enemy-residual-context-20261030/final-context.json`.
 Its36 project inputs, actual profiles and ten object hashes must be revalidated
 before cache reuse. All ten game sources were freshly compiled with no object
-reuse. Scalar652/all10 and ECL Host Run146/all4 pass same-image strict checks
-and explicit original-recipe canonical colds. Older scalar/motion contexts
-describe frozen source epochs; their witnesses remain retained.
+reuse. Current Player damage source recovers frame40 but remains1175/1170
+nonexact. Its direct interrupt helper65/all2 passes same-image and original-recipe
+cold checks. The preceding world checkpoint's scalar652/all10 and ECL Host
+Run146/all4 witnesses remain retained with their own graph/source epochs.
+Older scalar/motion/world contexts are historical inputs; revalidate pins before use.
 
 The private probe accepts a prior context and optional desired graph separately.
 Cache objects are identified using the prior source order, and desired profiles
@@ -136,6 +138,16 @@ lifetimes, SetSubroutine name ABI and life-register scheduling. A vector snapsho
 grows the body2432; a database capture is neutral. Both are restored and parked.
 Motion160/171 is unchanged. See the [current complete runtime record](evidence/enemy-runtime-world-20261030/README.md)
 and the earlier [vector recovery](evidence/enemy-runtime-vectors-20261030/README.md).
+
+The early eight-count move is neutral and restored. The damage callee preserves
+EBX already; its missing caller count is not explained by simple EBX destruction.
+Four full-vector bound homes and a consumed shot iterator recover damage frame40
+from2C, with247/355 to276/355 diagnostic alignment. Damage remains1175/1170;
+bound homes are permuted, with accumulation/factory/geometry scheduling still open.
+The runtime candidate retains all normalized ordinary bytes and89 local jump
+destinations versus its previous candidate, without target exact credit.
+Scope/declaration, empty-constructor and accumulation controls are neutral and
+restored. See the [damage bounds proof and limits](evidence/player-damage-bounds-20261030/README.md).
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed

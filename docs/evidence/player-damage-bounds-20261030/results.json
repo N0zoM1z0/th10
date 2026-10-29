@@ -1,0 +1,382 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owner": "Player::CalculateDamageToTarget",
+  "target_address": "0x00428630",
+  "target_size": 1170,
+  "new_exact_bytes": 0,
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z"
+  },
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "85062d20044569184c1b6b29fd3923d205c7711555decdf57e7a91a5cf9aee3d",
+    "src/Enemy.hpp": "da605cc7556ffd789c88502ac2bf0e8b7ec51d41a78bead82d51c6773dd21726",
+    "src/EnemyEclDispatcher.cpp": "cdbeca418b3d1b06b1912b6545977eace64fe28e367bbf0f15ec2f54d80c765f",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/Player.cpp": "e9f83733d63c654554374990af760e7671186f5d7f647633b0884d481b1ba403",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "project_input_count": 36,
+  "cold_compiled_game_sources": [
+    "src/Enemy.cpp",
+    "src/AnmManager.cpp",
+    "src/RandomMath.cpp",
+    "src/AnmVmCreate.cpp",
+    "src/AnmVmId.cpp",
+    "src/AnmInt3Scale.cpp",
+    "src/EclVm.cpp",
+    "src/Player.cpp",
+    "src/PlayerCollision.cpp",
+    "src/EnemyEclDispatcher.cpp"
+  ],
+  "reused_objects": 0,
+  "image_sha256": "e789544d7e36ac46d86576b20500918cd9bedbe3705f94184e4fc50505f6f485",
+  "map_sha256": "a0322766dd96f217b6eb75a2f5169c5ab5a2421da16d2cbbfb1c5eebd2df4a67",
+  "pdb_sha256": "3560e8c9eed8fe583032b3c3a19bf40342021977ee13a0f0a9c2394e32165830",
+  "damage": {
+    "candidate_size": 1175,
+    "target_size": 1170,
+    "result": "mismatch",
+    "decoded_candidate_bytes": 1175,
+    "normalization_complete": true,
+    "acceptance_authority": "none"
+  },
+  "runtime": {
+    "candidate_size": 2412,
+    "target_size": 2412,
+    "result": "mismatch",
+    "decoded_candidate_bytes": 2412,
+    "normalization_complete": true,
+    "acceptance_authority": "none"
+  },
+  "frames": {
+    "target": "0x40",
+    "entry": "0x2c",
+    "shot_iterator": "0x30",
+    "current": "0x40"
+  },
+  "xy_slots": {
+    "target": {
+      "target_min": [
+        56,
+        60
+      ],
+      "target_max": [
+        44,
+        48
+      ],
+      "shot_min": [
+        68,
+        72
+      ],
+      "shot_max_x": 32,
+      "shot_max_y": "retained x87"
+    },
+    "candidate": {
+      "target_min": [
+        44,
+        48
+      ],
+      "target_max": [
+        32,
+        36
+      ],
+      "shot_min": [
+        56,
+        60
+      ],
+      "shot_max_x": 68,
+      "shot_max_y": "retained x87"
+    }
+  },
+  "controls": [
+    {
+      "label": "entry",
+      "size": 1162,
+      "frame": "0x2c",
+      "aligned_instructions": 247,
+      "target_instruction_count": 355,
+      "runtime_size": 2412,
+      "result": "nonexact",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "damage-shot-iterator",
+      "size": 1175,
+      "frame": "0x30",
+      "aligned_instructions": 253,
+      "target_instruction_count": 355,
+      "runtime_size": 2412,
+      "result": "nonexact",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "damage-axis-order",
+      "size": 1175,
+      "frame": "0x30",
+      "aligned_instructions": 256,
+      "target_instruction_count": 355,
+      "runtime_size": 2412,
+      "result": "nonexact",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "damage-vector-bounds",
+      "size": 1175,
+      "frame": "0x40",
+      "aligned_instructions": 272,
+      "target_instruction_count": 355,
+      "runtime_size": 2412,
+      "result": "nonexact",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "damage-bounds-order",
+      "size": 1175,
+      "frame": "0x40",
+      "aligned_instructions": 276,
+      "target_instruction_count": 355,
+      "runtime_size": 2412,
+      "result": "nonexact",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "damage-shared-bounds",
+      "size": 1175,
+      "frame": "0x40",
+      "aligned_instructions": 276,
+      "target_instruction_count": 355,
+      "runtime_size": 2412,
+      "result": "nonexact",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "damage-constructed-bounds",
+      "size": 1175,
+      "frame": "0x40",
+      "aligned_instructions": 276,
+      "target_instruction_count": 355,
+      "runtime_size": 2412,
+      "result": "nonexact",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "damage-accumulation",
+      "size": 1175,
+      "frame": "0x40",
+      "aligned_instructions": 276,
+      "target_instruction_count": 355,
+      "runtime_size": 2412,
+      "result": "nonexact",
+      "acceptance_authority": "none"
+    }
+  ],
+  "runtime_preservation": [
+    {
+      "label": "early-vm-count",
+      "result": "structural-exact",
+      "comparable": 2136,
+      "matched": 2136,
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "final-cold",
+      "result": "structural-exact",
+      "comparable": 2136,
+      "matched": 2136,
+      "acceptance_authority": "none"
+    }
+  ],
+  "same_image_guard": {
+    "unit": "player-set-shot-vm-interrupt2",
+    "size": 65,
+    "matched_bytes": 65,
+    "result": "exact",
+    "image_sha256": "e789544d7e36ac46d86576b20500918cd9bedbe3705f94184e4fc50505f6f485",
+    "pdb_guid": "b512c34ca4a43a4d810d91d4cff3a772",
+    "fields": 2
+  },
+  "canonical_guards": [
+    {
+      "unit": "player-set-shot-vm-interrupt2",
+      "size": 65,
+      "matched_bytes": 65,
+      "result": "exact",
+      "image_sha256": "e98e778fc2ce0102c54c842867c8643fa782f8321b6aa58729f4e52ccd96592c",
+      "pdb_guid": "f0c9ddeaa59e854c9b43a30b12fa3475",
+      "fields": 2
+    }
+  ],
+  "limits": "Full1175-byte PDB extent differs from target1170; no exact acceptance. Bound-slot order, accumulation and later helper/geometry schedule remain unequal. Original temporary vector class remains unknown.",
+  "runtime_fixed_local_preservation": {
+    "result": "structural-exact",
+    "comparable": 2136,
+    "matched": 2136,
+    "fixed_local_fields": 0,
+    "acceptance_authority": "none",
+    "decoded_fixed_branches": 89
+  }
+}

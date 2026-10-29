@@ -7288,3 +7288,27 @@ Remaining world Y/Z load order, early eight-count/manager lifetimes, subroutine
 name ABI and life-register schedule keep the owner open. Snapshot2432 and neutral
 database-capture controls are restored and parked. Motion160/171 is unchanged.
 See the [complete runtime proof and limits](evidence/enemy-runtime-world-20261030/README.md).
+
+## 2026-10-30 Player damage full-vector bound storage
+
+Player::CalculateDamageToTarget428630/1170 remains nonexact. Its four observed
+bound homes have twelve-byte spacing: target min38/3C, target max2C/30, shot
+min44/48 and shot max-X20, with max-Y retained on x87. Existing PlayerFloat3
+records, a consumed128-shot iterator and axis-ordered assignments restore frame40
+from the old2C. The original temporary class remains a hypothesis; only XY is
+consumed, with no Z access. Complete cold contribution1175 exceeds target1170
+and remains rejected. Diagnostic alignment247/355 becomes276/355 without credit.
+
+The real early-eight-count move in the caller is neutral and restored. The old
+callee already preserves EBX on paths that use it, invalidating simple-clobber
+attribution. New damage source preserves the previous nonexact runtime candidate:
+2136/2136 normalized ordinary bytes and all89 decoded local branch offsets agree.
+Neither proves equality to the game. Affected old interrupt helper65/all2 passes
+same-image strict comparison and an explicit original-recipe canonical cold.
+All ten game inputs are freshly compiled;36 recursive source pins stay fixed.
+
+Bound-slot order, accumulation, factory temporaries and later geometry/helper
+scheduling remain open. Shared scope/declaration, empty-constructor and alternate
+accumulation controls are neutral and restored. No match, denominator, boundary,
+origin, interface, profile or comparator changes. See the
+[damage bounds record](evidence/player-damage-bounds-20261030/README.md).
