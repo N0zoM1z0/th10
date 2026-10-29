@@ -21703,8 +21703,8 @@ profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL",
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?Update@StageScriptView@@QAEHXZ"
-functions = ["StageFogView::operator-"]
-symbol = "??GStageFogView@@QBE?AU0@ABU0@@Z"
+functions = ["StageFogView::SubtractTo"]
+symbol = "?SubtractTo@StageFogView@@QBEPAU1@AAU1@ABU1@@Z"
 target_address = 0x00404D40
 size = 92
 linkages = [
@@ -21723,8 +21723,8 @@ profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL",
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?Update@StageScriptView@@QAEHXZ"
-functions = ["StageFogView::operator+"]
-symbol = "??HStageFogView@@QBE?AU0@ABU0@@Z"
+functions = ["StageFogView::AddTo"]
+symbol = "?AddTo@StageFogView@@QBEPAU1@AAU1@ABU1@@Z"
 target_address = 0x00404E10
 size = 92
 linkages = [
@@ -21743,8 +21743,8 @@ profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL",
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?Update@StageScriptView@@QAEHXZ"
-functions = ["StageFogView::operator*"]
-symbol = "??DStageFogView@@QBE?AU0@M@Z"
+functions = ["StageFogView::ScaleTo"]
+symbol = "?ScaleTo@StageFogView@@QBEPAU1@AAU1@M@Z"
 target_address = 0x00404DA0
 size = 101
 linkages = [
@@ -26914,4 +26914,42 @@ linkages = [
   { offset = 0x778, type = "DIR32", symbol = "__real@43d00000", target = 0x00470BDC },
   { offset = 0x789, type = "DIR32", symbol = "__real@41800000", target = 0x00470B48 },
   { offset = 0x79A, type = "DIR32", symbol = "__real@43e80000", target = 0x00470BD8 },
+]
+
+[units.stage-fog-evaluate]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp"]
+output_dir = "build/match-linked/StageFog"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Update@StageScriptView@@QAEHXZ"
+functions = ["StageFogInterpolationView::Evaluate"]
+symbol = "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z"
+target_address = 0x004049A0
+size = 688
+linkages = [
+  { offset = 0x31, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x00470B68 },
+  { offset = 0x40, type = "DIR32", symbol = "__real@3f8147ae", target = 0x00470B64 },
+  { offset = 0x51, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x66, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x9D, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0x110, type = "REL32", symbol = "?AddTo@StageFogView@@QBEPAU1@AAU1@ABU1@@Z", target = 0x00404E10 },
+  { offset = 0x144, type = "REL32", symbol = "?AddTo@StageFogView@@QBEPAU1@AAU1@ABU1@@Z", target = 0x00404E10 },
+  { offset = 0x160, type = "REL32", symbol = "?AddTo@StageFogView@@QBEPAU1@AAU1@ABU1@@Z", target = 0x00404E10 },
+  { offset = 0x190, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x19A, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x1AE, type = "DIR32", symbol = "__real@40400000", target = 0x00470BD4 },
+  { offset = 0x1C0, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x1E9, type = "REL32", symbol = "?ScaleTo@StageFogView@@QBEPAU1@AAU1@M@Z", target = 0x00404DA0 },
+  { offset = 0x1FC, type = "REL32", symbol = "?ScaleTo@StageFogView@@QBEPAU1@AAU1@M@Z", target = 0x00404DA0 },
+  { offset = 0x214, type = "REL32", symbol = "?ScaleTo@StageFogView@@QBEPAU1@AAU1@M@Z", target = 0x00404DA0 },
+  { offset = 0x22B, type = "REL32", symbol = "?ScaleTo@StageFogView@@QBEPAU1@AAU1@M@Z", target = 0x00404DA0 },
+  { offset = 0x23A, type = "REL32", symbol = "?AddTo@StageFogView@@QBEPAU1@AAU1@ABU1@@Z", target = 0x00404E10 },
+  { offset = 0x24C, type = "REL32", symbol = "?AddTo@StageFogView@@QBEPAU1@AAU1@ABU1@@Z", target = 0x00404E10 },
+  { offset = 0x263, type = "REL32", symbol = "?CalculateAnmInterpolation@@YGMHMM@Z", target = 0x0044C350 },
+  { offset = 0x27A, type = "REL32", symbol = "?SubtractTo@StageFogView@@QBEPAU1@AAU1@ABU1@@Z", target = 0x00404D40 },
+  { offset = 0x286, type = "REL32", symbol = "?ScaleTo@StageFogView@@QBEPAU1@AAU1@M@Z", target = 0x00404DA0 },
+  { offset = 0x293, type = "REL32", symbol = "?AddTo@StageFogView@@QBEPAU1@AAU1@ABU1@@Z", target = 0x00404E10 },
 ]

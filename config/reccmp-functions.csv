@@ -920,9 +920,9 @@ StageScriptView::Update,0x00402720,function
 StageScriptView::UpdateObjectVms,0x00403990,function
 StageFogView::StageFogView,0x00405040,function
 StageFogInterpolationView::Evaluate,0x004049A0,function
-StageFogView::operator-,0x00404D40,function
-StageFogView::operator*,0x00404DA0,function
-StageFogView::operator+,0x00404E10,function
+StageFogView::SubtractTo,0x00404D40,function
+StageFogView::ScaleTo,0x00404DA0,function
+StageFogView::AddTo,0x00404E10,function
 StageObjectView::BoundsCulled,0x00403090,function
 StageDrawInstances,0x00403A30,function
 StageCameraStateView::ConfigureCamera,0x004215A0,function

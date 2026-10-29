@@ -13,17 +13,7 @@ extern StageCameraStateView g_StagePublishedCamera; // 0x00491D7C
 StageFogView::StageFogView(float start, float end, float blue, float green,
     float red, float alpha)
 {
-    this->start = start;
-    this->end = end;
-    this->blue = blue;
-    this->green = green;
-    this->red = red;
-    this->alpha = alpha;
-    unsigned char *bytes = reinterpret_cast<unsigned char *>(&color);
-    bytes[0] = static_cast<unsigned char>(static_cast<int>(blue));
-    bytes[1] = static_cast<unsigned char>(static_cast<int>(green));
-    bytes[2] = static_cast<unsigned char>(static_cast<int>(red));
-    bytes[3] = static_cast<unsigned char>(static_cast<int>(alpha));
+    Set(start, end, blue, green, red, alpha);
 }
 
 // Target 0x00403990. Object/primitive counts, signed sizes and VM indices
@@ -251,23 +241,23 @@ int StageScriptView::Update()
 
 // Six float channels plus a derived packed-color dword, not seven independent
 // floats. Every arithmetic result repacks truncating low bytes with no clamp.
-StageFogView StageFogView::operator-(const StageFogView &other) const
+StageFogView *StageFogView::SubtractTo(StageFogView &output, const StageFogView &other) const
 {
-    return StageFogView(start - other.start, end - other.end,
+    output.Set(start - other.start, end - other.end,
         blue - other.blue, green - other.green, red - other.red, alpha - other.alpha);
+    return &output;
 }
-#if defined(_MSC_VER)
-__declspec(noinline)
-#endif
-StageFogView StageFogView::operator+(const StageFogView &other) const
+StageFogView *StageFogView::AddTo(StageFogView &output, const StageFogView &other) const
 {
-    return StageFogView(start + other.start, end + other.end,
+    output.Set(start + other.start, end + other.end,
         blue + other.blue, green + other.green, red + other.red, alpha + other.alpha);
+    return &output;
 }
-StageFogView StageFogView::operator*(float scale) const
+StageFogView *StageFogView::ScaleTo(StageFogView &output, float scale) const
 {
-    return StageFogView(start * scale, end * scale,
+    output.Set(start * scale, end * scale,
         blue * scale, green * scale, red * scale, alpha * scale);
+    return &output;
 }
 
 // Target0x004049A0. Positive durations tick before completion; additive mode7
@@ -293,19 +283,22 @@ StageFogView *StageFogInterpolationView::Evaluate(
         }
     }
 
+    // Four Hermite terms and their three successive sums. The short update
+    // modes reuse work[0] for the snapshot and work[1] for the computed value.
+    StageFogView work[7];
     if (mode == ANM_INTERPOLATION_ADD)
     {
-        const StageFogView initialValue = initial;
-        initial = initialValue + final;
+        work[0] = initial;
+        initial = *work[0].AddTo(work[1], final);
         *output = initial;
         return output;
     }
 
     if (mode == ANM_INTERPOLATION_ACCELERATE)
     {
-        const StageFogView initialValue = initial;
-        initial = initialValue + finalTangent;
-        finalTangent = finalTangent + final;
+        work[0] = initial;
+        initial = *work[0].AddTo(work[1], finalTangent);
+        finalTangent = *finalTangent.AddTo(work[1], final);
         *output = initial;
         return output;
     }
@@ -320,18 +313,16 @@ StageFogView *StageFogInterpolationView::Evaluate(
         float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
         float finalTangentWeight = minusOne * value * value;
 
-        StageFogView result;
-        result = initial * initialWeight + final * finalWeight +
-            initialTangent * initialTangentWeight +
-            finalTangent * finalTangentWeight;
-        *output = result;
+        *output = *initial.ScaleTo(work[6], initialWeight)
+            ->AddTo(work[2], *final.ScaleTo(work[5], finalWeight))
+            ->AddTo(work[4], *initialTangent.ScaleTo(work[0], initialTangentWeight))
+            ->AddTo(work[3], *finalTangent.ScaleTo(work[1], finalTangentWeight));
         return output;
     }
 
     float value = CalculateAnmInterpolation(
         mode, timer.subframe, static_cast<float>(duration));
-    StageFogView result;
-    result = (final - initial) * value + initial;
-    *output = result;
+    *output = *final.SubtractTo(work[3], initial)
+        ->ScaleTo(work[4], value)->AddTo(work[2], initial);
     return output;
 }

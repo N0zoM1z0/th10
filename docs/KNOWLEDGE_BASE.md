@@ -7120,3 +7120,44 @@ three recipes, with22 old same-image contracts6613/all282. No manifest/match,
 source-profile, source-mapping or denominator change and no exact credit.
 Original source names/classes/TUs, physical aliases, product/runtime and portability
 remain independent. See [the dispatcher source/alias review](evidence/stage-dispatch-context-20261029/README.md).
+
+
+## 2026-10-29 Complete Fog evaluation and real result destinations
+
+Fog4049A0..404C4F owns688 bytes, all22 fields and13 local branches. Two independent
+canonical five-input Stage Update colds reproduce the full PDB owner, frameD4,
+EBX state/stack output/RET4 and14 actual calls. Positive-duration completion,
+additive7, accelerating17, Hermite8 and the easing path all belong to the byte
+comparison. Adds688 authored exact bytes, no mapping or denominator change.
+
+The current baseline was691/688, rather than the historical664. Six aggregate
+result destinations differed. Seven real28-byte Fog values express four scaled
+Hermite terms and three sums; modes7/17 reuse the first snapshot/result pair.
+All seven are used, with target offsets1C/38/54/70/8C/A8/C4. This is meaningful
+calculation storage, not padding or a fabricated register/stack interface.
+
+SubtractTo/AddTo/ScaleTo now accept a real result reference and return its computed
+address. Shared ordinary Set writes six float channels and their derived packed
+BGRA without allocation; constructor94 stays exact. All old arithmetic92/92/101
+bodies/all4 conversion fields remain exact, with the same actual input/result
+registers and scale RET4. Source-facing names/symbols change; these old bodies
+receive no additional exact credit. The legacy addition noinline annotation is
+unnecessary and removed. No new ABI attributes, asm, unused inputs, fabricated
+results or copied target bytes are used.
+
+Placement-new prototypes matched the688 caller but added null branches to its
+callees; they are rejected. Ordinary value assignment added an aggregate copy.
+Named/reference sum controls gave686 with the wrong buffer and missing copy
+preparation. Compound/shared/default assignment and scope/const/value-return
+controls did not close the owner. Value-return and explicit-output Evaluate
+forms produced the same old691 body, so the original source interface is not
+uniquely identified. The accepted low-level workspace/API is a complete source
+reconstruction, without original class/TU or workspace-spelling claims.
+
+Seven scalar occurrences are independently raw-equal twice. Five old owners533/
+all17 pass in each five-input image; original Update/Tick376/all15 and22 current
+eleven-input old contracts6613/all282 also pass. Only explicit affected selectors
+are used; no full cohort. Easing's EAX mode/two stack floats/RET8 and44C350 address
+are bound, but complete612/576 easing remains nonexact. Dispatcher1868 and other
+coupled candidates stay open. Physical aliases, product/runtime and portability
+are independent. See [the complete Fog evaluator proof](evidence/stage-fog-evaluate-context-20261029/README.md).

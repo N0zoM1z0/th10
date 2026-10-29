@@ -914,9 +914,9 @@ StageScriptView::Update
 StageScriptView::UpdateObjectVms
 StageFogView::StageFogView
 StageFogInterpolationView::Evaluate
-StageFogView::operator-
-StageFogView::operator*
-StageFogView::operator+
+StageFogView::SubtractTo
+StageFogView::ScaleTo
+StageFogView::AddTo
 StageObjectView::BoundsCulled
 StageDrawInstances
 StageCameraStateView::ConfigureCamera

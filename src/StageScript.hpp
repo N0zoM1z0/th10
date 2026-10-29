@@ -15,10 +15,26 @@ struct StageFogView
     float start, end, blue, green, red, alpha;
     union { unsigned int color; AnmColorView packedColor; };
     StageFogView() {}
+    // Initialize the six channels and their derived packed color in place.
+    void Set(float start, float end, float blue, float green,
+        float red, float alpha)
+    {
+        this->start = start;
+        this->end = end;
+        this->blue = blue;
+        this->green = green;
+        this->red = red;
+        this->alpha = alpha;
+        unsigned char *bytes = reinterpret_cast<unsigned char *>(&color);
+        bytes[0] = static_cast<unsigned char>(static_cast<int>(blue));
+        bytes[1] = static_cast<unsigned char>(static_cast<int>(green));
+        bytes[2] = static_cast<unsigned char>(static_cast<int>(red));
+        bytes[3] = static_cast<unsigned char>(static_cast<int>(alpha));
+    }
     StageFogView(float start, float end, float blue, float green, float red, float alpha);
-    StageFogView operator-(const StageFogView &other) const;
-    StageFogView operator+(const StageFogView &other) const;
-    StageFogView operator*(float scale) const;
+    StageFogView *SubtractTo(StageFogView &output, const StageFogView &other) const;
+    StageFogView *AddTo(StageFogView &output, const StageFogView &other) const;
+    StageFogView *ScaleTo(StageFogView &output, float scale) const;
 };
 typedef char StageFogSizeIs1C[
     (sizeof(StageFogView) == 0x1c) ? 1 : -1];
@@ -30,8 +46,8 @@ struct StageFogInterpolationView
     StageFogView initial, final, initialTangent, finalTangent;
     AnmVmTimerView timer;
     int duration, mode;
-    // Target 0x004049A0: EBX receiver, stack output, RET4. Emitted ABI and
-    // extended-precision conversion behavior require independent comparison.
+    // Target 0x004049A0: EBX receiver, stack output and RET4. Each result
+    // remains a full six-channel value plus its derived packed color.
     StageFogView *Evaluate(StageFogView *output);
 };
 struct StageCameraStateView

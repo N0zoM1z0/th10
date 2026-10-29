@@ -2,12 +2,12 @@
 
 ## Start here
 
-Current checkpoint improves Stage dispatcher source/alias modeling. Its complete
-1868-byte owner remains NONEXACT: typed direct Fog color members recover the
-channel capture/store schedule, and opcode13 uses actual Main.clearColor+780.
-Nine affected canonical units4430/all155 and22 selected same-image contracts
-6613/all282 pass. Adds zero exact bytes; the last accepted large owner is
-Bounds1984. Coupled dispatcher/VM register conventions remain open.
+Current checkpoint reconstructs complete Fog evaluation4049A0..404C4F:688 bytes,
+all22 fields and13 fixed local destinations pass two independent five-input
+colds. Seven real Fog work values and meaningful destination operations restore
+all storage/copy schedules. Old arithmetic92/92/101 and constructor94 stay exact;
+no duplicate helper credit. Five old533/all17 pass twice; original Update/Tick
+376/all15 also pass. Dispatcher1868 and easing612/576 remain nonexact.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -35,9 +35,51 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**93,148/275,729 reviewed authored owned bytes exact, 475 exact authored owners**;
-681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1348 exact.
+**93,836/275,729 reviewed authored owned bytes exact, 476 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1349 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [complete Fog evaluator proof](evidence/stage-fog-evaluate-context-20261029/README.md):
+
+- Fog4049A0..404C4F/688 is exact twice, all22 fields and13 fixed local branches,
+  frameD4/EBX state/stack output/RET4. Adds688 authored bytes and one owner;
+  mapping, reviewed boundary/origin and denominator unchanged. Mapped backlog205.
+- Fresh complete baseline was691/688, not the old664-byte candidate. Differences
+  were six aggregate-result destinations. Seven actual Fog values hold four
+  scaled Hermite terms and three sums; short modes reuse the first snapshot/
+  result pair. All seven participate in the calculation, with no padding or
+  unused local. Target offsets1C/38/54/70/8C/A8/C4 and full copy order are exact.
+- Arithmetic now uses meaningful destination references and returns the computed
+  result address: SubtractTo/AddTo/ScaleTo. All old92/92/101 bodies and four
+  conversion fields each stay exact with the unchanged actual physical ABI.
+  Constructor94/all4 also stays exact through shared ordinary Set. No extra
+  arithmetic, constructor or inlined-source-helper credit. No forced registers,
+  fake ABI/input, fabricated return, placement new or noinline annotation remains.
+- Placement-new versions matched the caller but added non-target null branches
+  in the arithmetic functions, so they were rejected. Ordinary assignment added
+  a real aggregate copy and was rejected. Named sum/reference gave686 but lost
+  a required copy-preparation instruction. Compound/assigned/shared-result,
+  snapshot-scope and aggregate-return controls did not recover the whole owner.
+  These controls are parked; value-return versus explicit-output Evaluate gave
+  the same old691 bytes and does not establish original source spelling.
+- Two canonical colds select new Fog688 plus four affected old constructor/math
+  contracts in their existing five-input recipe. Five old same-image contracts
+  533/all17 pass twice, including UpdateObjectVms154. Original nine-input
+  Update304/Tick72 pass376/all15 in one explicit cold. Twenty-two old contracts
+  6613/all282 also pass in the current eleven-input image, with the attested
+  StageScript.cpp inline SetCurrent PDB owner. No full cohort or Main replay.
+- All seven scalar occurrences are raw-equal twice. Easing binds actual EAX mode,
+  two stack floats/RET8 and target44C350 only; its full native612/target576 owner
+  stays nonexact. Dispatcher1868, wrapper200/202, binder197/203 and default
+  camera282/287 remain nonexact. Source/class/TU, physical aliases and all later
+  product/runtime/portability phases remain independent.
+- Current Stage warm context is
+  `.analysis/gpt-6.1-sol/stage-fog-evaluate-context-20261029/final-context.json`.
+  It deliberately retains the current eleven-input warm artifact/input pins;
+  accepted independent Fog five-input witnesses are cold-a/cold-b in that batch.
+  Revalidate old contexts before reuse. Next coherent dependency is complete
+  CalculateAnmInterpolation44C350/576 with its16-slot table, now freshly612/576,
+  or a larger Stage lifecycle owner. Reopen parked controls only with new evidence.
 
 Latest [Stage dispatcher source/alias review](evidence/stage-dispatch-context-20261029/README.md):
 
@@ -70,7 +112,7 @@ Latest [Stage dispatcher source/alias review](evidence/stage-dispatch-context-20
   old same-image contracts6613/all282 pass in the eleven-input image, with the
   verified StageScript.cpp inline SetCurrent PDB owner. The manifest/matches,
   source profiles and comparator are unchanged. No full cohort or Main replay.
-- Current Stage warm context is
+- That checkpoint's Stage warm context was
   `.analysis/gpt-6.1-sol/stage-dispatch-context-20261029/final-context.json`.
   Source/include pins supersede older contexts; accepted old witnesses remain.
   A next substantial owner can be the coupled VM initializer202/binder203 with
