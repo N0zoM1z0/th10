@@ -2,12 +2,11 @@
 
 ## Start here
 
-Current checkpoint reconstructs complete Stage camera4215A0..4216E9:330 bytes/
-all10 fields pass two independent ten-input colds. Natural member camera setup,
-direct target XYZ construction and alias-safe cross helper recover the full
-x87/copy sequence. Five old owners260/all9 pass twice; affected WinMain1389 and
-Render425 remain exact in one explicit30-input cold. Default camera282/287 and
-single-image/product closure remain open.
+Current checkpoint reconstructs complete Stage late draw402CA0..403040:929 bytes/
+all78 fields and15 local destinations pass two independent ten-input colds.
+Typed Main fog-cache/device setup and natural camera viewport installation
+restore the complete owner. Eight old owners745/all24 pass twice. Early1088/1099,
+default camera282/287 and single-image/product closure remain open.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -35,9 +34,42 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**88,544/275,729 reviewed authored owned bytes exact, 471 exact authored owners**;
-681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1344 exact.
+**89,473/275,729 reviewed authored owned bytes exact, 472 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1345 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [complete Stage late draw proof](evidence/stage-late-context-20261029/README.md):
+
+- Late402CA0..403040/929, stack owner/RET4, is exact in two independent ten-input
+  StageCreate colds, all78 fields and15 fixed local destinations. Adds929 authored
+  bytes, no new mapping/denominator; authored mapped exact backlog is209.
+- Real Main cache+750/device+8 member setup fixes all four fog-update schedules.
+  Generic argument/local-device/COM-wrapper controls were neutral and restored.
+  The camera's natural InstallViewport member publishes this, configures the
+  camera and installs the active viewport; this replaces the literal-pointer
+  publication with the target EDI store. No fake ABI/register, volatile, padding,
+  code-byte patch or profile change is used. Both helpers are source operations;
+  no separate target owners or original class names are inferred.
+- The complete semantic field contract binds Main+8/+750 and camera+E8/+EC.
+  One diagnostic Main+8 address coincides with a PbgArchives anchor label;
+  the actual Main base/addend, not that label, determines the binding.
+- Eight old same-image contracts745/all24 pass twice: camera330, selector60,
+  fog53, adapters7 each, real Flush133, DrawLayer67 and timer Add88. New Late
+  plus camera/viewport/fog are the four canonical cold selectors. No unrelated
+  Main/WinMain cohort is rebuilt solely for new unused header methods.
+- Early remains1088/1099 and default camera282/287, NONEXACT. Instance drawing
+  remains nonexact; Late's four real two-stack-argument/RET8 calls bind its
+  address/ABI only. Global alias/data ownership and later phases remain open.
+- Next concrete substantial lead: Early's actual43C8B0 factory uses EBX priority
+  and five stack operands/RET20. Its genuine maintained82-byte definition is
+  absent from this ten-input graph. Connect real callee visibility and compare
+  all1099 bytes; do not force its register through a fake declaration. Rectangle
+  scheduling and other differences also remain; source-size proximity proves
+  nothing. The factory already has a separate exact recipe, so adds no new credit.
+- An initial declaration-cleanup error failed compilation before any byte
+  comparison. The still-used instance fog alias was restored; the two accepted
+  colds compile the corrected final source afresh. Failed logs are retained and
+  excluded from acceptance. The comparator is unchanged.
 
 Latest [complete Stage camera proof](evidence/stage-camera-context-20261029/README.md):
 
@@ -59,7 +91,7 @@ Latest [complete Stage camera proof](evidence/stage-camera-context-20261029/READ
   height. Aspect still executes after LookAt instead of before it. All natural
   temporary/precision/parameter-object controls fail; /Op is restored and no
   volatile shape is adopted. These controls add no exact credit.
-- Stage drawing cores remain1102/1099 and933/929. Final diagnostics use actual
+- At the camera checkpoint, drawing cores were1102/1099 and933/929. Final diagnostics used actual
   402850/402CA0 entries; earlier private ordinary comparisons used interior
   addresses and are discarded, with no effect on camera proofs or PDB extents.
 - Next bounded lead is default camera421480/287 or another complete substantive

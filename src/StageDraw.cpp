@@ -1,3 +1,4 @@
+#include "Main.hpp"
 #include "StageScript.hpp"
 #include "MainViewport.hpp"
 #include <string.h>
@@ -14,9 +15,8 @@ extern "C" AnmFloat3View *__stdcall D3DXVec3ProjectArray(
 
 extern StageCameraStateView g_StagePublishedCamera; // 0x491D7C, alias storage open
 extern int g_StageViewportConfigured; // 0x491FB0, same storage as Main +0x388
-// Target accesses a full dword. Main's existing byte view at this address is
-// not widened here; neither extern supplies allocated/alias-coherent storage.
-extern int g_StageFogEnabled; // 0x492378
+// Instance drawing retains this full-word alias; draw-pass setters use Main.
+extern int g_StageFogEnabled; // 0x492378 = Main+750, storage closure open
 extern "C" AnmMatrixView *__stdcall D3DXMatrixLookAtLH(
     AnmMatrixView *output, const AnmFloat3View *eye,
     const AnmFloat3View *at, const AnmFloat3View *up);
@@ -208,19 +208,17 @@ static void StageSetRenderState(unsigned int state, unsigned int value)
     g_AnmRenderManagerView->FlushVertexBuffer();
     g_Direct3DDevice->vtable->SetRenderState(g_Direct3DDevice, state, value);
 }
+// Main owns the full-word fog cache at+750 and the device pointer at+8.
 static void StageSetFogState(int value)
 {
-    if (g_StageFogEnabled != value)
-    {
-        g_AnmRenderManagerView->FlushVertexBuffer();
-        g_StageFogEnabled = value;
-        g_Direct3DDevice->vtable->SetRenderState(g_Direct3DDevice, 28, value);
-    }
+    g_MainSupervisorView.SetFogEnabled(value);
 }
-static void StageInstallPublishedCamera()
+// This shared source operation expands at the real draw sites. A separate
+// original target helper or source-class identity is not inferred.
+void StageCameraStateView::InstallViewport()
 {
-    g_AnmViewportOwner = reinterpret_cast<AnmViewportOwnerView *>(&g_StagePublishedCamera);
-    g_StagePublishedCamera.ConfigureCamera();
+    g_AnmViewportOwner = reinterpret_cast<AnmViewportOwnerView *>(this);
+    ConfigureCamera();
     g_Direct3DDevice->vtable->SetViewport(g_Direct3DDevice, &g_AnmViewportOwner->viewport);
     g_StageViewportConfigured = 0;
 }
@@ -256,7 +254,7 @@ int __stdcall StageDrawEarly(StageScriptView *stage)
         stage->camera.value0E8 = g_StagePublishedCamera.value0E8;
         stage->camera.value0EC = g_StagePublishedCamera.value0EC;
         g_StagePublishedCamera = stage->camera;
-        StageInstallPublishedCamera();
+        g_StagePublishedCamera.InstallViewport();
         StageSetRenderState(14, 1);
         StageSetRenderState(23, 4);
         StageSetRenderState(34, stage->camera.fog.color);
@@ -309,7 +307,7 @@ int __stdcall StageDrawEarly(StageScriptView *stage)
                 if (stage->scriptVms[i].loadedSprite != NULL)
                     g_AnmRenderManagerView->Draw(&stage->scriptVms[i]);
             StageSetRenderState(14, 1);
-            StageInstallPublishedCamera();
+            g_StagePublishedCamera.InstallViewport();
         }
         StageSetFogState(1);
         StageDrawInstances(stage, 0);
@@ -341,7 +339,7 @@ int __stdcall StageDrawLate(StageScriptView *stage)
         stage->camera.value0E8 = g_StagePublishedCamera.value0E8;
         stage->camera.value0EC = g_StagePublishedCamera.value0EC;
         g_StagePublishedCamera = stage->camera;
-        StageInstallPublishedCamera();
+        g_StagePublishedCamera.InstallViewport();
         StageSetFogState(1);
         StageSetRenderState(14, 0);
         StageSetRenderState(23, 8);

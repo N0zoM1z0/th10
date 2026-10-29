@@ -32,6 +32,7 @@ struct StageFogInterpolationView
 struct StageCameraStateView
 {
     void ConfigureCamera();
+    void InstallViewport();
     AnmFloat3View position;
     AnmFloat3View direction;
     AnmFloat3View up;

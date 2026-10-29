@@ -6913,3 +6913,48 @@ Earlier private comparisons of those cores used interior402A50/402EA0 addresses;
 only final402850/402CA0 diagnostics are valid. No exact ledger claim used the
 invalid reads; the camera comparisons and PDB sizes were unaffected. See
 [the complete Stage camera proof](evidence/stage-camera-context-20261029/README.md).
+
+
+## 2026-10-29 Complete Stage late draw and real state owners
+
+Late402CA0..403040 owns929 bytes,243 instructions and15 fixed local branches;
+both exits retain the stack owner/RET4 interface. Two independent canonical
+ten-input StageCreate colds reproduce all929 bytes/all78 semantic fields and
+those local destinations. The complete body covers flag8 early return, camera
+copy/publication, fog and render-state changes, layers17/18 and instance8..11,
+mix color, countdown/transition flag handling and final state restoration.
+
+Four fog-update sites schedule the cache store before vtable retrieval in the
+target. Direct argument assignment, local device and a generic COM member
+wrapper are byte-neutral nonmatches. Expressing the actual Main cache+750 and
+device+8 through a natural SetFogEnabled member recovers all four schedules.
+The remaining933-byte candidate differs by a literal active-camera-pointer
+store. A natural camera InstallViewport member publishes this, calls the real
+ConfigureCamera and installs the viewport, recovering the target EDI store and
+full929-byte owner. A pointer-parameter helper and consumed memcpy return did
+not recover it. No forced ABI/register, volatile, padding or profile change is
+used. Source helpers do not infer separate target functions or original classes.
+
+Eight old same-image contracts745/all24 pass twice: camera330, viewport60,
+fog53, draw adapters7 each, Flush133, DrawLayer67 and timer Add88. New Late plus
+camera/viewport/fog are the four canonical cold selectors; other five compare
+complete old contracts by explicit unit name in each image. Both camera scalar
+occurrences and both timer threshold constants are independently raw-equal.
+The78-field contract includes Main+8/+750 and camera+E8/+EC; an unrelated
+PbgArchives anchor happens to label four candidate Main+8 values. Bind the real
+semantic base/member offset, never the coincident diagnostic label.
+
+This adds929 authored exact bytes without new mappings or denominator changes.
+Early1088/1099 and default camera282/287 remain nonexact. Late's instance-render
+callee remains nonexact; four calls bind its real two-stack-argument/RET8 ABI and
+address, not its bytes. Instance drawing still uses a separate full-word fog
+alias, so data/global alias closure remains open. Unused new header methods do
+not require rebuilding the unrelated Main graph. Whole-product/runtime and port
+closure remain independent.
+
+Early has a concrete next visibility lead: maintained exact82-byte factory
+43C8B0 takes priority in EBX, five stack arguments and RET20. It is absent from
+the current ten-input link, whose unresolved declaration keeps all six stack
+arguments. Connect the actual definition before altering caller spelling or ABI.
+No extra exact credit follows from the already accepted factory. See
+[the complete late draw proof](evidence/stage-late-context-20261029/README.md).

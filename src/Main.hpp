@@ -250,6 +250,15 @@ struct MidiTimerView;
 struct MainSupervisorView
 {
     MainSupervisorView();
+    void SetFogEnabled(unsigned int value)
+    {
+        if (cachedFogEnabled != value)
+        {
+            g_AnmRenderManagerView->FlushVertexBuffer();
+            cachedFogEnabled = value;
+            d3dDevice->vtable->SetRenderState(d3dDevice, 28, value);
+        }
+    }
     void SetNextGameMode(int mode);
     int StartModeThread(int (*entry)(), void *context);
     int UpdateGameMode();
