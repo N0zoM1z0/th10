@@ -2,14 +2,21 @@
 
 ## Current checkpoint
 
-PlayerEmitShotRows428160 is complete105/all2 exact in two independent
-canonical three-input Player-constructor cold links. Complete producer717 and
-input174 source is newly mapped, remaining708/717 and153/174 nonexact in the
-12-input context. The central3089-byte Player owner's actual input call now
-uses EAX as in the target; its native contribution stays2820. First cold plus
-three existing helpers passes406/all9;16 same-image target guards pass1374/all36.
-Eight prior candidates, including shots876 and root2412, remain byte/field-
-identical. See the [producer proof](evidence/player-shot-producer-20261030/README.md).
+Player::SpawnShot427E90 is complete717/all17 exact in two independent
+canonical12-source /GL cold links, with all25 fixed local destinations and the
+natural three-stack-value/RET12 interface. First scoped cold includes its105-byte
+direct caller:822/all19 passes; second717/all17 passes independently. Initializing
+inside the free-row loop and direct coordinate fields restore the target search,
+registers, stack homes and callback/sound lifetimes. Seventeen same-image bodies
+pass2091/all53; ten previous candidates remain byte/field-identical. See the
+[complete producer proof](evidence/player-spawn-exact-20261030/README.md).
+
+PlayerEmitShotRows428160 remains complete105/all2 exact in its existing
+three-input Player-constructor recipe. Input174 still emits153 nonexact; its
+central Player input call uses the observed EAX interface. The complete prior
+2820-byte central native contribution is preserved; the3089-byte target parent
+remains unclosed. The [preceding source proof](evidence/player-shot-producer-20261030/README.md)
+retains its original source epoch.
 
 PlayerUpdateShots428280 now emits the complete876-byte owner, versus738 at
 entry, and a fresh12-source cold compilation reproduces all876 native bytes.
@@ -52,9 +59,9 @@ constructor188, Initialize522, destructor499, StageCreate151 and LoadData308.
 All1668 bytes/all91 fields pass. This adds1480 authored exact bytes; constructor
 origin remains indeterminate. See the [complete proof](evidence/stage-initialize-context-20261029/README.md).
 
-Current generated [progress](PROGRESS.md): **96,830/275,729 authored owned bytes
-exact,484 authored exact owners**. Total1360 exact owners/164,927 codegen bytes;
-1202 mappings,684 authored mappings,200 authored mapped backlog. Inventory and
+Current generated [progress](PROGRESS.md): **97,547/275,729 authored owned bytes
+exact,485 authored exact owners**. Total1361 exact owners/165,644 codegen bytes;
+1202 mappings,684 authored mappings,199 authored mapped backlog. Inventory and
 whole-product/runtime/portability closure remain separate and incomplete.
 
 The affected old selection passes14 units/2262 bytes/all156 fields in its existing
@@ -113,14 +120,15 @@ rebuildable outputs are disposable, not dependencies of the current workflow.
 ## Working inputs
 
 The current twelve-input Enemy/Player warm context is:
-`.analysis/gpt-6.1-sol/player-motion-context-20261030/final-context.json`.
+`.analysis/gpt-6.1-sol/player-spawn-context-20261030/final-context.json`.
 Revalidate all43 recursive project pins,12 object hashes and image hash before
 reuse. Actual VmIdInterrupt/FrontEnd definitions use their recorded pinned
-profiles; no optimizer flags were swept. The accepted three-input context is
-`canonical-context.json` beside it, with28 pins/three objects and two105-byte
-cold witnesses. The old player-shots context and older ten-input context retain
-their source epochs; the new Player producer/header changes invalidate their
-Player-related pins. Rebuild changed inputs before reuse.
+profiles; no optimizer flags were swept. The accepted717-byte context is
+`canonical-context.json` beside it, with43 pins/12 objects and two cold witnesses.
+`caller-context.json` retains the current three-input105 recipe with28 pins/three
+objects. Old player-motion/player-shots and ten-input contexts retain their source
+epochs; the producer changes invalidate their Player.cpp pin. Rebuild changed
+inputs before reuse.
 
 The current five-input ANM warm context is:
 `.analysis/gpt-6.1-sol/anm-executor-context-20261030/final-context.json`.
@@ -228,16 +236,16 @@ ABI to accept the near match. The shared motion helper160/171 is still open.
 The full secondary release must clear its ID even on zero input. The current
 43-pin/12-object context and scoped cold proofs are linked above.
 
-The producer emits708/717 in12 inputs (709 in the canonical three-input graph),
-with search block placement, descriptor/position registers and temporary homes
-still open. Its first complete765-byte source unrolled the search four ways;
-early exhaustion and complete early-return lookup recover the target structure.
-Input153/174 has constant-one, timer read and callee-save differences. The typed
-timer/guard control138 and branch-local position control722 are rejected.
-Member versus global stdcall is neutral; keep the natural ordinary member.
-Complete vector/constructor/normal-COFF partition controls do not fix motion's
-zero-Z store or shot-update's LEA; all are restored and parked. No new exact
-credit attaches to these larger parents or the motion/resource helpers.
+The producer is now closed717/all17 in its coupled12-input recipe. Earlier
+765/708/709 sizes describe older source/graph epochs. The direct-coordinate source
+and initialization within the search loop are essential to the current proof.
+Assignment-result position712 and direct ID assignment706/frame18 are rejected.
+Input153/174 still has constant-one, timer read and callee-save differences; its
+typed timer/guard control138 is parked. The earlier SpawnShot member/global
+neutral control does not settle source shapes for other owners. Complete vector,
+constructor and normal-COFF partition controls do not fix motion's zero-Z store
+or shot-update's LEA; all remain restored and parked. No new exact credit attaches
+to input, larger parents or the motion/resource helpers.
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed

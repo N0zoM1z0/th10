@@ -1,5 +1,9 @@
 # Player shot producer and complete row firing — 2026-10-30
 
+The717-byte producer status below describes checkpoint2b95c23 and is superseded
+by the [complete717-byte exact proof](../player-spawn-exact-20261030/README.md).
+The174-byte input owner remains nonexact.
+
 PlayerEmitShotRows **00428160..004281C8** is complete105-byte exact in two
 independent canonical cold compilations, including both fields. This adds
 **105 authored exact bytes** with the existing authored origin retained.

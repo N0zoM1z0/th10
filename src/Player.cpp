@@ -1400,88 +1400,85 @@ int Player::SpawnShot(const PlayerShotDescriptorView *descriptor, int frame)
     if (descriptor->type == PLAYER_SHOT_TYPE_3 &&
         player->shotSourceActive[descriptor->sourceIndex - 1] != 0)
         return 0;
-    int count = 0;
-    while (shot->state != PLAYER_SHOT_INACTIVE)
+    for (int count = 0; count < 128; ++count, ++shot)
     {
-        ++count;
-        ++shot;
-        if (count >= 128)
-            return 0;
-    }
+        if (shot->state != PLAYER_SHOT_INACTIVE)
+            continue;
 
-    shot->state = PLAYER_SHOT_ACTIVE;
-    shot->descriptor = descriptor;
-    shot->timer.SetCurrent(0);
-    PlayerFloat3 *position = &shot->motion.position;
-    if (descriptor->sourceIndex == 0)
-    {
-        *position = player->drawPosition;
-    }
-    else
-    {
-        const PlayerPositionPair *source =
-            &player->options[descriptor->sourceIndex - 1].replayPair1;
-        PlayerFloat3 point;
-        point.x = static_cast<float>(source->x) * 0.01f;
-        point.y = static_cast<float>(source->y) * 0.01f;
-        point.z = 0.0f;
-        *position = point;
-    }
-    if (descriptor->type == PLAYER_SHOT_TYPE_3)
-        player->shotSourceActive[descriptor->sourceIndex - 1] = 1;
-    shot->motion.speedOrAngleStep = descriptor->speed;
-    shot->motion.angle = EnemyWrapAngle(descriptor->angle);
-    PlayerShotMotionView *motion = &shot->motion;
-    if ((motion->flags & PLAYER_SHOT_POLAR_MOTION) == 0)
-    {
-        reinterpret_cast<EnemyRuntimeVectorView *>(
-            &motion->velocity)->FromAngleMagnitude(
-                motion->angle, motion->speedOrAngleStep);
-        motion->velocity.z = 0.0f;
-    }
-    else
-    {
-        motion->polarMagnitude += motion->polarMagnitudeDelta;
-        motion->angle = EnemyWrapAngle(motion->speedOrAngleStep + motion->angle);
-    }
-    position->x += descriptor->spawnOffsetX - motion->velocity.x;
-    shot->motion.position.y += descriptor->spawnOffsetY - motion->velocity.y;
+        shot->state = PLAYER_SHOT_ACTIVE;
+        shot->descriptor = descriptor;
+        shot->timer.SetCurrent(0);
+        if (descriptor->sourceIndex == 0)
+        {
+            shot->motion.position = player->drawPosition;
+        }
+        else
+        {
+            const PlayerPositionPair *source =
+                &player->options[descriptor->sourceIndex - 1].replayPair1;
+            PlayerFloat3 point;
+            point.x = static_cast<float>(source->x) * 0.01f;
+            point.y = static_cast<float>(source->y) * 0.01f;
+            point.z = 0.0f;
+            shot->motion.position = point;
+        }
+        if (descriptor->type == PLAYER_SHOT_TYPE_3)
+            player->shotSourceActive[descriptor->sourceIndex - 1] = 1;
+        shot->motion.speedOrAngleStep = descriptor->speed;
+        shot->motion.angle = EnemyWrapAngle(descriptor->angle);
+        PlayerShotMotionView *motion = &shot->motion;
+        if ((motion->flags & PLAYER_SHOT_POLAR_MOTION) == 0)
+        {
+            reinterpret_cast<EnemyRuntimeVectorView *>(
+                &motion->velocity)->FromAngleMagnitude(
+                    motion->angle, motion->speedOrAngleStep);
+            motion->velocity.z = 0.0f;
+        }
+        else
+        {
+            motion->polarMagnitude += motion->polarMagnitudeDelta;
+            motion->angle = EnemyWrapAngle(motion->speedOrAngleStep + motion->angle);
+        }
+        shot->motion.position.x += descriptor->spawnOffsetX - shot->motion.velocity.x;
+        shot->motion.position.y += descriptor->spawnOffsetY - shot->motion.velocity.y;
 
-    int script = descriptor->animationScript + 5;
-    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(player->resource);
-    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
-    vm->renderLayer = PLAYER_VM_LAYER;
-    vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
-    loaded->InitializeVm(vm, script);
-    AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
-    shot->primaryVmId = id.value;
-    vm = FindPlayerSpawnedShotVm(
-        reinterpret_cast<AnmVmIdView *>(&shot->primaryVmId));
-    if ((vm->flags35C & PLAYER_VM_SHOT_ANGLE_SOURCE) != 0)
-    {
-        reinterpret_cast<PlayerVm *>(vm)->angle2C = descriptor->angle;
-        vm->flags35C |= PLAYER_VM_SHOT_ANGLE_DIRTY;
-    }
-    if (descriptor->type == PLAYER_SHOT_TYPE_3)
-    {
-        loaded = static_cast<AnmLoadedView *>(player->resource);
-        vm = g_AnmRenderManagerView->AllocateVm();
+        int script = descriptor->animationScript + 5;
+        AnmLoadedView *loaded = static_cast<AnmLoadedView *>(player->resource);
+        AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
         vm->renderLayer = PLAYER_VM_LAYER;
         vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
-        loaded->InitializeVm(vm, 16);
-        AnmVmIdView secondary = g_AnmRenderManagerView->AddVmVariant0(vm);
-        shot->secondaryVmId = secondary.value;
+        loaded->InitializeVm(vm, script);
+        AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+        shot->primaryVmId = id.value;
+        vm = FindPlayerSpawnedShotVm(
+            reinterpret_cast<AnmVmIdView *>(&shot->primaryVmId));
+        if ((vm->flags35C & PLAYER_VM_SHOT_ANGLE_SOURCE) != 0)
+        {
+            reinterpret_cast<PlayerVm *>(vm)->angle2C = descriptor->angle;
+            vm->flags35C |= PLAYER_VM_SHOT_ANGLE_DIRTY;
+        }
+        if (descriptor->type == PLAYER_SHOT_TYPE_3)
+        {
+            loaded = static_cast<AnmLoadedView *>(player->resource);
+            vm = g_AnmRenderManagerView->AllocateVm();
+            vm->renderLayer = PLAYER_VM_LAYER;
+            vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+            loaded->InitializeVm(vm, 16);
+            AnmVmIdView secondary = g_AnmRenderManagerView->AddVmVariant0(vm);
+            shot->secondaryVmId = secondary.value;
+        }
+        else
+        {
+            shot->secondaryVmId = 0;
+        }
+        if (descriptor->spawnCallback != NULL)
+            reinterpret_cast<PlayerShotSpawnCallback>(descriptor->spawnCallback)(
+                player, shot, frame);
+        if (descriptor->soundId >= 0)
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundCue(
+                descriptor->soundId, shot->motion.position.x);
+        return 0;
     }
-    else
-    {
-        shot->secondaryVmId = 0;
-    }
-    if (descriptor->spawnCallback != NULL)
-        reinterpret_cast<PlayerShotSpawnCallback>(descriptor->spawnCallback)(
-            player, shot, frame);
-    if (descriptor->soundId >= 0)
-        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundCue(
-            descriptor->soundId, position->x);
     return 0;
 }
 

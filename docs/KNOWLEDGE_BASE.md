@@ -7441,3 +7441,28 @@ exhaustion avoids a four-way unroll; early-return lookup improves the complete
 candidate, while position/typed-timer controls regress. The ordinary member
 and global stdcall producer forms are byte-neutral. Park these controls until
 new target evidence discriminates them. See [producer proof](evidence/player-shot-producer-20261030/README.md).
+
+
+## 2026-10-30 Complete Player shot producer exact
+
+Player::SpawnShot427E90..42815C is complete717/all17 exact in two independent
+12-source /GL cold links. All218 decoded instructions and25 fixed local branch
+destinations match, including RET12 and internal alignment. Existing authored
+origin/boundary are retained:717 new authored bytes, no denominator promotion.
+The older708/709 producer status above describes the predecessor source epoch.
+
+Initializing inside the first-inactive-row loop restores target search and
+exhaustion blocks. Direct coordinate fields recover ESI descriptor/EBP motion,
+10/14 stack homes, copy/offset scheduling and callback/sound lifetimes. The
+ordinary member retains its actual three-stack-value/RET12 interface without
+ABI hints. Every timer, literal, manager, vector, wrap, VM and sound field binds
+through maintained identities. AllocateVm/InitializeVm remain nonexact; original
+names/TUs/inline ancestry and product/runtime/portability remain unproved.
+
+First scoped cold717+105 passes822/all19, then717/all17 passes independently.
+Seventeen same-image comparisons pass2091/all53. Ten previous native candidates,
+including input153 and central Player2820, preserve ordinary bytes and complete
+field identities; none receives parent exactness credit. Assignment-result
+position capture712 and direct ID assignment706/frame18 are rejected. The
+shot-update moved LEA and input174 remain open. See the
+[complete producer proof](evidence/player-spawn-exact-20261030/README.md).
