@@ -206,7 +206,7 @@ struct GameWindowView
         HWND window, UINT message, WPARAM wparam, LPARAM lparam);
     static void ActivateWindow(HWND window);
     static void Present();
-    static int __stdcall Render(GameWindowView *window);
+    int __stdcall Render();
     static double GetTimestamp();
     static int CreateGameWindow(HINSTANCE instance);
     static int InitD3DInterface();

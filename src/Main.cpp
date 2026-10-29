@@ -91,7 +91,6 @@ extern int __stdcall MainRunCalcChain(void *owner);
 extern int __stdcall MainRunDrawChain(void *owner);
 extern void MainInitializeControllerCaps();
 extern void MainResetInput();
-extern void MainStopReplayScan();
 extern void __stdcall MainSetScreenColor(unsigned int color);
 // Target 0x00438A30 releases and clears the 32 primary surfaces.
 // Outlining reproduces the two physical target calls; original spelling is unknown.
@@ -403,7 +402,7 @@ restart:
                     g_MainSupervisorView.d3dDevice);
             if (deviceStatus == 0)
             {
-                renderResult = GameWindowView::Render(&g_GameWindowView);
+                renderResult = g_GameWindowView.Render();
                 if (renderResult != MAIN_RENDER_KEEP_RUNNING)
                     break;
                 g_MainSupervisorView.flags &= ~MAIN_FLAG_DEVICE_NEEDS_RESET;
@@ -616,73 +615,72 @@ void GameWindowView::Present()
 // TH10_MAIN_FUNCTION: 0x00439390 GameWindowView::Render
 // The physical target entry receives one GameWindowView pointer on the stack
 // and ends in RET 4.
-int __stdcall GameWindowView::Render(GameWindowView *window)
+int __stdcall GameWindowView::Render()
 {
     int calcResult;
 
-    window->currentTimestamp = GetTimestamp();
-    if (window->currentTimestamp < window->lastTimestamp)
-        window->lastFrameTime = window->currentTimestamp;
-    window->lastTimestamp = window->currentTimestamp;
+    this->currentTimestamp = GetTimestamp();
+    if (this->currentTimestamp < this->lastTimestamp)
+        this->lastFrameTime = this->currentTimestamp;
+    this->lastTimestamp = this->currentTimestamp;
 
-    if (window->currentTimestamp <= window->lastFrameTime)
+    if (this->currentTimestamp > this->lastFrameTime)
+    {
+        while (this->lastFrameTime < this->currentTimestamp)
+            this->lastFrameTime += 1.0 / 60.0;
+
+        g_AnmRenderManagerView->FlushVertexBuffer();
+        g_MainSupervisorView.activeViewport =
+            &g_MainSupervisorView.gameplayViewport;
+        MainConfigureCamera(g_MainSupervisorView.activeViewport);
+        g_MainSupervisorView.d3dDevice->vtable->SetViewport(
+            g_MainSupervisorView.d3dDevice,
+            &g_MainSupervisorView.activeViewport->viewport);
+        g_MainSupervisorView.viewportConfigured = 1;
+
+        calcResult = MainRunCalcChain(th10::g_Chain);
+        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->ProcessQueues();
+        if (calcResult == 0)
+        {
+            g_MainSupervisorView.modeWorker.Stop();
+            return MAIN_RENDER_EXIT;
+        }
+        if (calcResult == -1)
+        {
+            g_MainSupervisorView.modeWorker.Stop();
+            return MAIN_RENDER_RESTART;
+        }
+
+        ++this->framesSinceRedraw;
+        if ((int)g_MainSupervisorView.configuration.frameskip + 1 <=
+            (int)this->framesSinceRedraw)
+        {
+            g_MainSupervisorView.d3dDevice->vtable->BeginScene(
+                g_MainSupervisorView.d3dDevice);
+            g_AnmRenderManagerView->spritesToDraw = 0;
+            g_AnmRenderManagerView->vertexBufferEnd =
+                g_AnmRenderManagerView->vertexBuffer;
+            g_AnmRenderManagerView->vertexBufferStart =
+                g_AnmRenderManagerView->vertexBuffer;
+            g_MainSupervisorView.cachedFogEnabled = 0xff;
+            StageDisableSupervisorFog(&g_MainSupervisorView);
+            MainRunDrawChain(th10::g_Chain);
+            g_AnmRenderManagerView->FlushVertexBuffer();
+            g_MainSupervisorView.d3dDevice->vtable->SetTexture(
+                g_MainSupervisorView.d3dDevice, 0, NULL);
+            g_MainSupervisorView.d3dDevice->vtable->EndScene(
+                g_MainSupervisorView.d3dDevice);
+            this->framesSinceRedraw = 0;
+            Present();
+        }
+
+        g_MainSupervisorView.lastFrameDuration =
+            GetTimestamp() - this->currentTimestamp;
+    }
+    else
     {
         Sleep(0);
-        return MAIN_RENDER_KEEP_RUNNING;
     }
-
-    do
-    {
-        window->lastFrameTime += 1.0 / 60.0;
-    } while (window->lastFrameTime < window->currentTimestamp);
-
-    g_AnmRenderManagerView->FlushVertexBuffer();
-    g_MainSupervisorView.activeViewport =
-        &g_MainSupervisorView.gameplayViewport;
-    MainConfigureCamera(g_MainSupervisorView.activeViewport);
-    g_MainSupervisorView.d3dDevice->vtable->SetViewport(
-        g_MainSupervisorView.d3dDevice,
-        &g_MainSupervisorView.activeViewport->viewport);
-    g_MainSupervisorView.viewportConfigured = 1;
-
-    calcResult = MainRunCalcChain(th10::g_Chain);
-    reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->ProcessQueues();
-    if (calcResult == 0)
-    {
-        MainStopReplayScan();
-        return MAIN_RENDER_EXIT;
-    }
-    if (calcResult == -1)
-    {
-        MainStopReplayScan();
-        return MAIN_RENDER_RESTART;
-    }
-
-    ++window->framesSinceRedraw;
-    if ((int)window->framesSinceRedraw >=
-        (int)g_MainSupervisorView.configuration.frameskip + 1)
-    {
-        g_MainSupervisorView.d3dDevice->vtable->BeginScene(
-            g_MainSupervisorView.d3dDevice);
-        g_AnmRenderManagerView->spritesToDraw = 0;
-        g_AnmRenderManagerView->vertexBufferEnd =
-            g_AnmRenderManagerView->vertexBuffer;
-        g_AnmRenderManagerView->vertexBufferStart =
-            g_AnmRenderManagerView->vertexBuffer;
-        g_MainSupervisorView.cachedFogEnabled = 0xff;
-        StageDisableSupervisorFog(&g_MainSupervisorView);
-        MainRunDrawChain(th10::g_Chain);
-        g_AnmRenderManagerView->FlushVertexBuffer();
-        g_MainSupervisorView.d3dDevice->vtable->SetTexture(
-            g_MainSupervisorView.d3dDevice, 0, NULL);
-        g_MainSupervisorView.d3dDevice->vtable->EndScene(
-            g_MainSupervisorView.d3dDevice);
-        window->framesSinceRedraw = 0;
-        Present();
-    }
-
-    g_MainSupervisorView.lastFrameDuration =
-        GetTimestamp() - window->currentTimestamp;
     return MAIN_RENDER_KEEP_RUNNING;
 }
 

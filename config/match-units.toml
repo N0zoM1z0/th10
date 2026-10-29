@@ -26398,3 +26398,54 @@ linkages = [
   { "offset" = 35, "type" = "REL32", "symbol" = "_free", "target" = 4531234 },
   { "offset" = 79, "type" = "REL32", "symbol" = "_free", "target" = 4531234 },
 ]
+
+[units.main-render]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp", "src/Ending.cpp", "src/GameManager.cpp", "src/SupervisorModes.cpp", "src/FrontEndLifecycle.cpp", "src/FrontEnd.cpp", "src/ReplayManager.cpp", "src/FrontEndLaunch.cpp", "src/VmIdInterrupt.cpp", "src/GameManagerLifecycle.cpp", "src/MainConfiguration.cpp", "src/MainLifecycle.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Ending.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/FrontEndLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ReplayManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/FrontEndLaunch.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/VmIdInterrupt.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/GameManagerLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/PbgArchive.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/EHsc", "/Ob1"], "src/Chain.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Midi.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"] }
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/ChainLifetime"
+functions = ["GameWindowView::Render"]
+symbol = "?Render@GameWindowView@@QAGHXZ"
+target_address = 4428688
+size = 425
+linkages = [
+  { "offset" = 8, "type" = "REL32", "symbol" = "?GetTimestamp@GameWindowView@@SANXZ", "target" = 4429120 },
+  { "offset" = 69, "type" = "DIR32", "symbol" = "__real@3f91111111111111", "target" = 4656272 },
+  { "offset" = 91, "type" = "DIR32", "symbol" = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", "target" = 4791312 },
+  { "offset" = 96, "type" = "REL32", "symbol" = "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ", "target" = 4468560 },
+  { "offset" = 101, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 620 },
+  { "offset" = 107, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 900 },
+  { "offset" = 112, "type" = "REL32", "symbol" = "?MainConfigureCamera@@YAXPAUAnmViewportOwnerView@@@Z", "target" = 4330624 },
+  { "offset" = 118, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 900 },
+  { "offset" = 123, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 8 },
+  { "offset" = 144, "type" = "DIR32", "symbol" = "?g_Chain@th10@@3PAUChain@1@A", "target" = 4791268 },
+  { "offset" = 151, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 904 },
+  { "offset" = 160, "type" = "REL32", "symbol" = "?MainRunCalcChain@@YGHPAX@Z", "target" = 4496384 },
+  { "offset" = 165, "type" = "DIR32", "symbol" = "?g_MainSoundOwner@@3PAEA", "target" = 4793744 },
+  { "offset" = 172, "type" = "REL32", "symbol" = "?ProcessQueues@SoundPlayerView@@QAGHXZ", "target" = 4447728 },
+  { "offset" = 181, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 1580 },
+  { "offset" = 186, "type" = "REL32", "symbol" = "?Stop@ScriptViewerWorkerView@@QAEXXZ", "target" = 4505936 },
+  { "offset" = 207, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 1580 },
+  { "offset" = 212, "type" = "REL32", "symbol" = "?Stop@ScriptViewerWorkerView@@QAEXXZ", "target" = 4505936 },
+  { "offset" = 238, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 318 },
+  { "offset" = 255, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 8 },
+  { "offset" = 269, "type" = "DIR32", "symbol" = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", "target" = 4791312 },
+  { "offset" = 302, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336 },
+  { "offset" = 308, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 1872 },
+  { "offset" = 317, "type" = "REL32", "symbol" = "?StageDisableSupervisorFog@@YAJPAUMainSupervisorView@@@Z", "target" = 4328656 },
+  { "offset" = 323, "type" = "DIR32", "symbol" = "?g_Chain@th10@@3PAUChain@1@A", "target" = 4791268 },
+  { "offset" = 329, "type" = "REL32", "symbol" = "?MainRunDrawChain@@YGHPAX@Z", "target" = 4496704 },
+  { "offset" = 335, "type" = "DIR32", "symbol" = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", "target" = 4791312 },
+  { "offset" = 340, "type" = "REL32", "symbol" = "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ", "target" = 4468560 },
+  { "offset" = 345, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 8 },
+  { "offset" = 363, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 8 },
+  { "offset" = 381, "type" = "REL32", "symbol" = "?Present@GameWindowView@@SAXXZ", "target" = 4428272 },
+  { "offset" = 386, "type" = "REL32", "symbol" = "?GetTimestamp@GameWindowView@@SANXZ", "target" = 4429120 },
+  { "offset" = 397, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 1912 },
+  { "offset" = 413, "type" = "DIR32", "symbol" = "__imp__Sleep@4", "target" = 4612268 },
+]

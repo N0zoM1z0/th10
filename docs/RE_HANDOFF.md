@@ -2,12 +2,11 @@
 
 ## Start here
 
-Current checkpoint restores actual Chain and MIDI destruction through WinMain.
-Four new complete owners378/all19 pass two independent colds:366 authored and12
-indeterminate. Chain's two-state EH entry binds its real member cleanup/metadata.
-Global timer noinline is removed; the existing293-byte Main exit is replayed
-separately with Midi.cpp /Ob1. WinMain1390/1389 remains nonexact. Do not combine
-these two profile contexts into a whole-program exactness claim.
+Current checkpoint reconstructs the complete425-byte Render dispatcher at439390.
+Its34 fields and full extent pass two independent30-input colds. Positive timing,
+pretested stored-clock catch-up, actual Main worker cleanup and a shared normal /
+Sleep return reproduce the target naturally. WinMain1390/1389 remains nonexact;
+original static/member spelling and product closure are still unproven.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -35,9 +34,30 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**86,400/275,729 reviewed authored owned bytes exact, 468 exact authored owners**;
-681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1341 exact.
+**86,825/275,729 reviewed authored owned bytes exact, 469 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1342 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [complete Render proof](evidence/main-render-context-20261029/README.md):
+
+- Render439390..439538 is425 bytes/all34 fields exact in two independent canonical
+  30-input colds. Adds425 authored bytes; this was already a mapping, so mappings
+  and denominator stay fixed and the authored mapped exact backlog falls to212.
+- WinMain438D31 pushes4924F0; natural stdcall member source retains stack receiver
+  and RET4. Receiver-only change is complete normalized419-byte neutral; it does
+  not establish the original member/static declaration.
+- Positive time branch includes unordered values on Sleep; a pretested while
+  retains the target clock writes/reloads. Real modeWorker.Stop supplies Main+62C.
+  Sharing the normal/Sleep source return recovers register saves/alignment with
+  no fabricated registers, padding or profile changes. Other complete controls
+  425/410 remain nonexact and are parked.
+- Same-image Present236/all20 and worker Stop101/all3 pass in both colds. Existing
+  timestamp282 passes its original one-input FPS recipe separately; its full
+  Render-graph282-byte body remains nonexact in frame allocation. No full cohort,
+  comparator change, host scenario or product/runtime claim is introduced.
+- WinMain remains1390/1389. Continue with its actual status/lifetime context or
+  complete real camera callee421480/287; do not force status spills/registers or
+  repeat the parked registry/flag controls.
 
 Latest [Chain/MIDI lifetime proof](evidence/chain-midi-lifetime-20261029/README.md):
 

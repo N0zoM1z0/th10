@@ -6810,3 +6810,30 @@ passes independently twice and three other relevant contracts pass their origina
 recipes. Four mappings378 added. No historical full cohort, generated-byte,
 product/runtime or portability credit is implied. See
 [the complete proof](evidence/chain-midi-lifetime-20261029/README.md).
+
+
+## 2026-10-29 Complete Render timing and worker teardown
+
+Render439390..439538 owns425 bytes. WinMain438D31 is its single recorded entry
+reference and pushes window/timing storage4924F0; RET4 consumes that pointer.
+Natural explicit-stdcall member source preserves this machine ABI. The initial
+receiver-only control is complete normalized419-byte neutral, so original
+static/member spelling and source names remain unproven.
+
+The target tests the positive currentTimestamp > lastFrameTime predicate; unordered
+values reach Sleep. A previous early <= spelling had different x87 unordered
+handling. Catch-up is a pretested while with stored/reloaded lastFrameTime+48 and
+currentTimestamp+38, using the raw-equal8-byte 1/60 constant470C90. Prior do/while
+source allowed register accumulation and16 spill bytes, changing both control and
+floating-point storage. Exit/restart stop the actual Main worker491C28+62C; the
+no-argument MainStopReplayScan bridge is removed. Shared normal/Sleep source
+return naturally restores entry saves and loop alignment. Separate early-return
+425 and negated-guard410 controls are complete nonmatches and remain parked.
+
+Both independent canonical30-input colds pass all425 bytes/all34 fields, with
+same-image Present236/all20 and worker Stop101/all3. Timestamp282 passes its
+existing one-input FPS recipe separately; its282-byte full-Render contribution
+still differs in frame allocation. WinMain1390/1389 remains nonexact. Adds425
+authored exact bytes with no new mapping or denominator change; no comparator,
+whole-product, runtime or portability claim. See
+[the complete Render proof](evidence/main-render-context-20261029/README.md).
