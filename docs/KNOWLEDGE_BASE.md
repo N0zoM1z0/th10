@@ -7042,3 +7042,44 @@ default camera287 remain nonexact; complete-caller equality does not promote a
 callee. Class/method names and production TUs, physical data ownership,
 single-image/product/runtime and portability remain independent. See
 [the complete instance drawing proof](evidence/stage-instances-context-20261029/README.md).
+
+
+## 2026-10-29 Complete Stage projected-bounds culling
+
+StageObjectView::BoundsCulled403090..40384F owns1984 bytes/518 instructions,
+all30 link fields and69 fixed local branches. Two independent canonical
+eleven-input StageCreate colds reproduce the complete PDB owner. Actual inputs
+remain meaningful objectECX/positionEDX/cameraEAX/stackdistanceSquared and RET4
+at both exits. Only this owner adds1984 authored exact bytes; mapping, reviewed
+boundary/origin and authored denominator remain unchanged.
+
+Fresh native baseline1929/1984 corrects the applicability of older1855/1925
+reports. Direct corner component expressions recover target minimum-Z, then Y,
+then X evaluation while populating the eight entries. A separate minimum vector
+had evaluated XYZ before filling them. Ordinary half-extent vector assignment
+restores rounded result copies omitted by direct initialization. Reusing the
+actual first corner for the translated-center/delta distance test recovers
+shared8C, half10, projected output1C, half-result temporary7C, matrixEC and frame128.
+All eight corners are repopulated before projection. No inert local, forced
+register/spill, fake ABI/input, padding, volatile, noinline or profile change is
+used. Moving the matrix declaration alone was neutral and restored. The exact
+maintained source does not establish unique original source spelling/classes/TUs.
+
+The complete body retains rounded center/delta XYZ, native (Z²+Y²)+X² distance,
+eight half-extent corners, actual identity setup and instance translation,
+12-byte projection strides, inclusive0<=Z<=1, original else-if extrema and
+inclusive overlap32..416/16..464. Its28 float-constant occurrences are raw-equal
+in both images. Target452182/452188 are JMP-IAT thunks for actual d3dx9_31.dll
+D3DXMatrixTranslation/D3DXVec3ProjectArray imports, matching four/nine stack words.
+The external DLL implementation/runtime is not reconstructed or executed.
+
+Fourteen old same-image owners3720/all220 pass twice: Instances592, Early1099,
+Late929, camera330, selector/fog113, two7-byte callbacks, Flush133/DrawLayer67,
+timers88/57, factory82 and Draw216/table. Canonical colds select Bounds plus its
+actual instance caller only, sharing one unchanged eleven-input graph. No full
+cohort or unchanged original recipe is replayed merely for source/graph sharing.
+SetCurrent's physical inline PDB owner remains StageScript.cpp with its complete
+old contract. Default camera282/287, physical globals/aliases, single-image,
+product/runtime and portability remain open. The next substantial dispatcher
+lead is403C80/1868; fresh complete comparison takes priority over old opcode
+notes. See [the complete projected-bounds proof](evidence/stage-bounds-context-20261029/README.md).

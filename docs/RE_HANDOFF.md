@@ -2,12 +2,12 @@
 
 ## Start here
 
-Current checkpoint reconstructs complete Stage instance draw403A30..403C7F:592
-bytes/all22 fields and18 local destinations pass two independent eleven-input
-colds. VM positionOffset, explicit XYZ snapshot and real camera/Main/bounds
-operations restore the full owner. Thirteen old owners3128/all198 pass twice;
-original ten-input Late929/all78 also passes. Bounds1929/1984, default camera
-282/287 and single-image/product closure remain open.
+Current checkpoint reconstructs complete Stage projected-bounds culling403090..
+40384F:1984 bytes/all30 fields and69 local destinations pass two independent
+eleven-input colds. Real corner-workspace reuse, rounded half extent and direct
+corner components restore the full owner. Fourteen old owners3720/all220 pass
+twice, including Instances592/Early1099/Late929. Default camera282/287 and
+single-image/product closure remain open.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -35,9 +35,44 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**91,164/275,729 reviewed authored owned bytes exact, 474 exact authored owners**;
-681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1347 exact.
+**93,148/275,729 reviewed authored owned bytes exact, 475 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1348 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [complete Stage projected-bounds proof](evidence/stage-bounds-context-20261029/README.md):
+
+- Bounds403090..40384F/1984 is exact twice:518 instructions, all30 semantic
+  fields and69 fixed local branch destinations. Frame128 and actual meaningful
+  ECXobject/EDXposition/EAXcamera/stackdistance/RET4 remain. Adds1984 authored
+  exact bytes, no mapping or denominator; authored mapped backlog206.
+- Fresh native baseline was1929/1984. Direct corner components recover the
+  target minimum-Z/Y/X evaluation and x87 reuse; assigning the half-extent
+  vector restores rounded result copies. Reusing the real first corner for
+  translated-center/delta distance testing restores target slot8C, half10,
+  projected1C, half-result temporary7C, matrixEC and the complete frame128.
+  All eight corners are repopulated before projection. Moving only the matrix
+  declaration earlier was byte-neutral and restored. No padding, forced
+  registers/spills, fake ABI/inputs, volatile, noinline or profile change is used.
+- Both distance and projected-extrema tests, all corners, identity/translation
+  setup, inclusive depth/overlap and both returns belong to the full comparison.
+  All28 scalar occurrences are independently raw-equal twice. The two target
+  JMP-IAT thunks452182/452188 bind actual d3dx9_31.dll translation/project-array
+  imports and four/nine meaningful stack words; external D3DX runtime is separate.
+- Two canonical colds select only Bounds plus its actual Instances caller in
+  the unchanged eleven-input graph. Fourteen old same-image contracts3720/all220
+  pass twice: Instances592, Early1099, Late929, camera330, selector60, fog53,
+  adapters7 each, Flush133, DrawLayer67, timers88/57, factory82 and Draw216/table.
+  SetCurrent retains its actual header-inline StageScript.cpp PDB owner in this
+  image. No full cohort or unchanged original recipe is replayed for graph sharing.
+- Current Stage warm context is
+  `.analysis/gpt-6.1-sol/stage-bounds-context-20261029/final-context.json`.
+  Fresh source/include/profile pins supersede older warm contexts. Default
+  camera remains282/287; original class/TU names, physical data aliases and
+  single-image/product/runtime/portability remain independent.
+- Next coherent large lead is StageExecuteScript403C80/1868 with its complete
+  indexed table. Recompare the current complete native body before relying on
+  historical opcode/register notes. Park the neutral matrix-declaration and
+  older camera controls until new evidence supplies a discriminating prediction.
 
 Latest [complete Stage instance draw proof](evidence/stage-instances-context-20261029/README.md):
 
@@ -54,7 +89,7 @@ Latest [complete Stage instance draw proof](evidence/stage-instances-context-202
   meaningful object/thisECX, positionEDX, cameraEAX and stackdistance/RET4. This
   matches actual call setup without fake ABI/registers, unused inputs, forced
   spills, volatile, noinline, code bytes, padding or compiler-profile changes.
-  Its body remains1929/1984 NONEXACT; no callee credit follows from the caller.
+  Its body was1929/1984 NONEXACT at that checkpoint; it is now1984 exact above.
 - Shared camera activation uses InstallViewport with Main+388 cache. Fog uses
   real Main+750 cache/device+8 operations in the two constant branches. Unused
   viewport/fog alias declarations are removed; camera/active-pointer aliases
@@ -66,15 +101,14 @@ Latest [complete Stage instance draw proof](evidence/stage-instances-context-202
   timers88/57, factory82, Draw216/table. Inline SetCurrent uses its actual
   StageScript.cpp PDB owner. Original ten-input Late passes929/all78 in one
   separate explicit cold. No full cohort or unaffected Main graph is replayed.
-- Current Stage warm context is
+- That checkpoint's Stage warm context was
   `.analysis/gpt-6.1-sol/stage-instances-context-20261029/final-context.json`.
   Fresh source/include/profile pins supersede older warm contexts; independent
   accepted old artifacts remain evidence. Default camera stays282/287. Class/TU
   identity, physical data aliases and product/runtime/portability remain open.
-- Next coherent large owner is Bounds403090/1984, now freshly1929/1984 in its
-  real caller context, or StageExecuteScript/1868. Compare the full body and
-  challenge old shape/precision assumptions. Do not repeat parked neutral
-  instance-boundary or camera-receiver controls without discriminating evidence.
+- The Bounds lead is now closed above; StageExecuteScript/1868 remains a
+  substantive owner. Do not repeat parked neutral instance-boundary or
+  camera-receiver controls without discriminating evidence.
 
 Latest [complete Stage early draw proof](evidence/stage-early-context-20261029/README.md):
 

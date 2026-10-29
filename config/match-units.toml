@@ -26867,3 +26867,51 @@ linkages = [
   { offset = 0x1F9, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
   { offset = 0x200, type = "REL32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0 },
 ]
+
+[units.stage-object-bounds-culled]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp", "src/TransitionEffect.cpp"]
+pdb_source = "src/StageDraw.cpp"
+output_dir = "build/match-linked/StageTransitionDraw"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+support_profiles = { "src/TransitionEffect.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+functions = ["StageObjectView::BoundsCulled"]
+symbol = "?BoundsCulled@StageObjectView@@QBEHPBUAnmFloat3View@@PBUStageCameraStateView@@M@Z"
+target_address = 0x00403090
+size = 1984
+linkages = [
+  { offset = 0x100, type = "DIR32", symbol = "__real@3f000000", target = 0x00470B0C },
+  { offset = 0x136, type = "DIR32", symbol = "__real@3f000000", target = 0x00470B0C },
+  { offset = 0x172, type = "DIR32", symbol = "__real@3f000000", target = 0x00470B0C },
+  { offset = 0x317, type = "REL32", symbol = "_D3DXMatrixTranslation@16", target = 0x00452182 },
+  { offset = 0x349, type = "REL32", symbol = "_D3DXVec3ProjectArray@36", target = 0x00452188 },
+  { offset = 0x34F, type = "DIR32", symbol = "__real@41c00000", target = 0x00470BE8 },
+  { offset = 0x361, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x382, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x393, type = "DIR32", symbol = "__real@43d40000", target = 0x00470BE4 },
+  { offset = 0x3AE, type = "DIR32", symbol = "__real@41c00000", target = 0x00470BE8 },
+  { offset = 0x3C5, type = "DIR32", symbol = "__real@43ec0000", target = 0x00470BE0 },
+  { offset = 0x3E0, type = "DIR32", symbol = "__real@41000000", target = 0x00470BD0 },
+  { offset = 0x3F9, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x40A, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x477, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x488, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x4F5, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x506, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x573, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x584, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x5F1, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x602, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x66F, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x680, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x6ED, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x6FE, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x767, type = "DIR32", symbol = "__real@42000000", target = 0x00470BCC },
+  { offset = 0x778, type = "DIR32", symbol = "__real@43d00000", target = 0x00470BDC },
+  { offset = 0x789, type = "DIR32", symbol = "__real@41800000", target = 0x00470B48 },
+  { offset = 0x79A, type = "DIR32", symbol = "__real@43e80000", target = 0x00470BD8 },
+]

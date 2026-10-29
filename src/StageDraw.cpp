@@ -68,13 +68,15 @@ void StageCameraStateView::ConfigureCamera()
 
 
 // Target 0x403090-0x40384F. Object/this ECX, position EDX, camera EAX,
-// distance on stack and RET4. The complete bounds body remains nonexact.
+// distance on stack and RET4. The full 1984-byte owner includes both tests.
 int StageObjectView::BoundsCulled(const AnmFloat3View *position,
     const StageCameraStateView *camera, float distanceSquared) const
 {
-    // Reuse the aggregate: pinned VC7.1 must round center and delta XYZ
-    // through float storage before the distance test (target 0x40309E..0x403139).
-    AnmFloat3View delta;
+    // Use the first corner as the translated center/delta for the distance
+    // test, then replace every corner before projection. Vector assignments
+    // retain the target float rounding of center and delta components.
+    AnmFloat3View corners[8];
+    AnmFloat3View &delta = corners[0];
     delta = this->position + *position;
     AnmFloat3View eye(camera->position.x + camera->rockingOffset,
         camera->position.y + camera->rockingOffsetY,
@@ -85,19 +87,32 @@ int StageObjectView::BoundsCulled(const AnmFloat3View *position,
     if (delta.x * delta.x + delta.y * delta.y + delta.z * delta.z > distanceSquared)
         return 1;
 
-    AnmFloat3View half = this->extent * 0.5f;
-    AnmFloat3View maximum = half + this->position;
-    AnmFloat3View minimum = this->position - half;
-    AnmFloat3View corners[8] = {
-        AnmFloat3View(maximum.x, maximum.y, maximum.z),
-        AnmFloat3View(maximum.x, maximum.y, minimum.z),
-        AnmFloat3View(maximum.x, minimum.y, maximum.z),
-        AnmFloat3View(maximum.x, minimum.y, minimum.z),
-        AnmFloat3View(minimum.x, maximum.y, maximum.z),
-        AnmFloat3View(minimum.x, maximum.y, minimum.z),
-        AnmFloat3View(minimum.x, minimum.y, maximum.z),
-        AnmFloat3View(minimum.x, minimum.y, minimum.z)
-    };
+    AnmFloat3View half;
+    half = this->extent * 0.5f;
+    corners[0].x = half.x + this->position.x;
+    corners[0].y = half.y + this->position.y;
+    corners[0].z = half.z + this->position.z;
+    corners[1].x = half.x + this->position.x;
+    corners[1].y = half.y + this->position.y;
+    corners[1].z = this->position.z - half.z;
+    corners[2].x = half.x + this->position.x;
+    corners[2].y = this->position.y - half.y;
+    corners[2].z = half.z + this->position.z;
+    corners[3].x = half.x + this->position.x;
+    corners[3].y = this->position.y - half.y;
+    corners[3].z = this->position.z - half.z;
+    corners[4].x = this->position.x - half.x;
+    corners[4].y = half.y + this->position.y;
+    corners[4].z = half.z + this->position.z;
+    corners[5].x = this->position.x - half.x;
+    corners[5].y = half.y + this->position.y;
+    corners[5].z = this->position.z - half.z;
+    corners[6].x = this->position.x - half.x;
+    corners[6].y = this->position.y - half.y;
+    corners[6].z = half.z + this->position.z;
+    corners[7].x = this->position.x - half.x;
+    corners[7].y = this->position.y - half.y;
+    corners[7].z = this->position.z - half.z;
     AnmMatrixView world;
     world.SetIdentity();
     D3DXMatrixTranslation(&world, position->x, position->y, position->z);
