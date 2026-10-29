@@ -44,7 +44,6 @@ typedef char StartupWorkerSignatureAt3E0[
 
 extern StartupWorkerView *g_StartupWorker;
 extern AnmLoadedView *g_FrontEndMusicCommentAnm;
-extern int g_GameTransitionState;
 extern AsciiManagerView *AsciiManagerCreate();
 extern GameStatisticsOwner *CreateStatistics42AF20();
 int FinalizeStartupResources();
@@ -94,7 +93,7 @@ int StartupWorkerView::StartupThread()
     return 0;
 
 fail:
-    g_GameTransitionState = 3;
+    g_MainSupervisorView.nextGameMode = 3;
     worker->calcElement->flags |= 2;
     return 0;
 }
@@ -211,7 +210,7 @@ int __fastcall StartupWorkerView::OnUpdate(StartupWorkerView *owner)
         static_cast<th10::ChainElem *>(g_AsciiManagerView->drawChainElement0)->flags |= 2;
         static_cast<th10::ChainElem *>(g_AsciiManagerView->drawChainElement)->flags |= 2;
         g_MainSupervisorView.flags &= ~0x1000u;
-        g_GameTransitionState = 4;
+        g_MainSupervisorView.nextGameMode = 4;
         owner->flags &= ~2u;
     }
     return 1;

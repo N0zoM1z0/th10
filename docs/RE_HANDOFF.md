@@ -2,11 +2,11 @@
 
 ## Start here
 
-Current checkpoint restores the statistics owner's real destructor and global
-release:121 exact bytes/all7 fields in two independent19-input colds. Both
-remain origin indeterminate; authored totals are unchanged. Startup teardown
-uses the actual destructor but remains433/417. Update/exception-contract probes
-are measured and restored; no partial exact credit is claimed.
+Current checkpoint makes Startup's registered update callback complete/exact:
+63 bytes/all3 fields after replacing the separate state global with the actual
+Supervisor nextGameMode+390 field. Prior statistics cleanup121/all7 remains
+exact. All three owners retain indeterminate origin; authored totals are unchanged.
+Startup teardown433/417, Draw218/220 and thread292/299 remain nonexact.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -35,8 +35,18 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
 **83,018/275,467 reviewed authored owned bytes exact, 449 exact authored owners**;
-660 authored source mappings. Total: 1815 candidates, 1168 mappings, 1313 exact.
+660 authored source mappings. Total: 1815 candidates, 1168 mappings, 1314 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [Startup state-field proof](evidence/startup-state-field-20261029/README.md):
+
+- Registered callback41FEB0/63 and all3 fields pass two independent canonical
+  nineteen-input colds. State slot491FB8 is existing Supervisor base491C28+390.
+  Correctly using nextGameMode removes the old independent state external and
+  recovers the direct final flag clear; no register or profile control is used.
+- Seven prior explicit selectors556/all33 pass in both images, plus23 older
+  same-image contracts6235/all179. The EDX update copy41FD90 remains nonexact;
+  existing origin and boundary decisions are retained. No authored credit.
 
 Latest [statistics cleanup proof](evidence/statistics-cleanup-20261029/README.md):
 
@@ -123,10 +133,12 @@ not an accepted handler binding or parent match. Normal-path state updates,
 zero-register lifetime and argument scheduling still differ. Park flag controls.
 
 Draw218/220 has different hidden-return/frame reuse. Named result temporaries
-produce222 and are restored. OnUpdate67/63 is nonexact; raw EDX counterpart41FD90
-and ECX registered copy41FEB0 have the same transitions, but their original
+produce222 and are restored. OnUpdate is now63/63 exact through the state-field
+repair above. Raw EDX counterpart41FD90 and registered ECX copy41FEB0 have the
+same transitions, but their original
 member/adapter/LTCG relationship stays unknown. An ordinary member Update plus
-an inlined fastcall adapter still produces67/63 for both and is restored.
+an inlined fastcall adapter produced67/63 for both before the state-field repair
+and is restored.
 Readiness bitfield remains67; volatile readiness also remains67 and breaks the
 exact constructor (132/128), so both are restored. Explicit throw() on the VM
 destructor leaves teardown433 and the extra normal-path state write; restored.
@@ -135,19 +147,18 @@ exact credit follows from their game-specific logic or legacy source presence.
 The factory's actual caller is4218D0, independently queried. Do not identify the
 unresolved MainCreateCallbackOwner seam with this factory without new evidence. New
 read-only decompilation of the complete572-byte caller confirms supervisor-like
-mode fields38C/390, lock5 and startup storage768. A concrete next test is Startup's
-state-slot representation:491FB8 = supervisor491C28+390, the existing
-MainSupervisorView::nextGameMode. Startup still declares a separate int global
-for that physical field. Compare the actual shared-field spelling before revisiting
-instruction scheduling. The caller's full table ownership/ABI remain to review;
-its maintained source is not yet reconstructed.
+mode fields38C/390, lock5 and startup storage768. The next bounded larger owner
+can be this actual caller: review its full table ownership/ABI and reconstruct
+its complete source before broad scheduling controls. The typed state-field
+repair resolves the registered update but does not settle this caller, the EDX
+copy, or physical alias ownership in other legacy TUs.
 
 StartupThread stays292/299 after real callback escape and launcher definitions.
 Its seven missing ECX homing/allocation/pop bytes and error-store scheduling are
 still unexplained. Do not force an unused argument or callback ABI. The actual
 _beginthreadex callback type and the observed plain RET stay separate.
 
-Active recipes/listings/logs: `.analysis/gpt-6.1-sol/startup-update-20261029/`.
+Active recipes/listings/logs: `.analysis/gpt-6.1-sol/startup-state-field-20261029/`.
 Its `final-cold-b-context.json` records the current nineteen-input warm graph. The
 private producer compares recursive include and profile pins, rebuilding only
 Startup and new/changed supports. Cold acceptance reuses no objects. Superseded
@@ -180,9 +191,9 @@ is allowed when it has a concrete uncertainty and a complete comparison path.
 
 Current active artifacts and the verified historical archive are indexed in
 `.analysis/README.md`; cleanup audit is `.analysis/handoff-20261028/`.
-Newest logs/receipts are `.analysis/gpt-6.1-sol/startup-update-20261029/`;
+Newest logs/receipts are `.analysis/gpt-6.1-sol/startup-state-field-20261029/`;
 the independent first witness is
-`build/gpt-6.1-sol/startup-update-20261029/cold-a/` and the second is canonical
+`build/gpt-6.1-sol/startup-state-field-20261029/cold-a/` and the second is canonical
 `build/match-linked/StartupWorkerLifecycle/`. Source/include hashes agree.
 Earlier SoundDiskStartup and primary-format witnesses remain retained separately.
 Canonical `build/match-linked`, `build/match` and `build/match-runtime` caches,

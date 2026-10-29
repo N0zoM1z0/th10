@@ -6471,8 +6471,22 @@ retain indeterminate origin; no authored exact/denominator change follows. See
 [the complete proof](evidence/statistics-cleanup-20261029/README.md).
 
 The global state slot491FB8 equals supervisor491C28+390, already modeled as
-MainSupervisorView::nextGameMode. Startup's separate external int declaration is
-a concrete storage-model question for the next native comparison; no equality
-of source globals/storage is claimed from diagnostic anchors alone. The actual
-factory caller4218D0 changes these supervisor mode fields and uses lock5; its
-complete source and switch-table ownership remain open.
+MainSupervisorView::nextGameMode. The actual factory caller4218D0 changes these
+supervisor mode fields and uses lock5; its complete source and switch-table
+ownership remain open.
+
+## 2026-10-29 Startup update and Supervisor state storage
+
+Replacing Startup's independent external state int with the existing Supervisor
+nextGameMode+390 field recovers the complete registered update41FEB0/63 from67.
+The target's direct final flags clear now agrees without volatile/bitfield,
+register, ABI or compiler-profile controls. State3 in the startup thread uses the
+same actual field; that thread remains292/299. The strict callback unit binds
+ASCII manager4776E0 and Supervisor base491C28 with addends3CC and390; each local
+destination and ordinary byte is preserved. Two independent nineteen-input colds
+pass all63 bytes/all3 fields, seven prior contracts556/all33 and23 older
+contracts6235/all179 per image. See [the complete proof](evidence/startup-state-field-20261029/README.md).
+
+The previously reviewed registered entry/boundary and indeterminate origin are
+retained. The unreferenced EDX body41FD90, original class/TU/copy relationship,
+other legacy aliases and product/runtime closure are separate open claims.
