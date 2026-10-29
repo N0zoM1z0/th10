@@ -114,6 +114,25 @@ extern int MainReleaseSound(unsigned char *soundOwner);
 extern void MainStopMusic(void *musicOwner);
 extern void MainFreeRegisteredAllocation(void *allocation);
 
+// WinMain expands the allocation registry's complete construction/destruction.
+MainAllocationRegistryView::MainAllocationRegistryView()
+{
+    memset(this, 0, sizeof(*this));
+    hasEntries = 0;
+}
+
+MainAllocationRegistryView::~MainAllocationRegistryView()
+{
+    if (hasEntries != 0)
+    {
+        for (int i = 0; i < 0x2800; ++i)
+        {
+            if (entries[i] != NULL)
+                free(entries[i]);
+        }
+    }
+}
+
 static __forceinline int MainD3dFailed(long result)
 {
     return result < 0;
@@ -318,16 +337,14 @@ int WINAPI WinMain(
     g_GameWindowView.instance = instance;
     {
         MainAllocationRegistryView *registry = new MainAllocationRegistryView;
-        if (registry != NULL)
-        {
-            memset(registry, 0, sizeof(MainAllocationRegistryView));
-            registry->hasEntries = 0;
-        }
         g_MainAllocationRegistry = registry;
     }
 
-    for (i = 0; i < 7; ++i)
-        InitializeCriticalSection(&g_MainSupervisorView.criticalSections[i]);
+    {
+        CRITICAL_SECTION *section = g_MainSupervisorView.criticalSections;
+        for (i = 7; i != 0; --i)
+            InitializeCriticalSection(section++);
+    }
     th10::g_GameErrorContext.Log(const_cast<char *>(g_MainStartupLog));
 
     if (GameWindowView::CheckForRunningGameInstance() == MAIN_RENDER_ERROR)
@@ -348,7 +365,10 @@ int WINAPI WinMain(
     GameWindowView::CalcExecutableChecksum();
 
 restart:
-    th10::g_Chain = new th10::Chain;
+    {
+        th10::Chain *chain = new th10::Chain;
+        th10::g_Chain = chain;
+    }
     if (GameWindowView::InitD3DInterface() != 0)
         goto stop;
 
@@ -362,7 +382,10 @@ restart:
 
     MainInitializeControllerCaps();
     MainResetInput();
-    g_AnmRenderManagerView = new AnmRenderManagerView;
+    {
+        AnmRenderManagerView *manager = new AnmRenderManagerView;
+        g_AnmRenderManagerView = manager;
+    }
 
     if (g_MainSupervisorView.configuration.windowed == 0)
     {
@@ -467,9 +490,7 @@ stop:
 
     if (renderResult == MAIN_RENDER_RESTART)
     {
-        th10::g_GameErrorContext.m_BufferEnd =
-            th10::g_GameErrorContext.m_Buffer;
-        th10::g_GameErrorContext.m_Buffer[0] = 0;
+        th10::g_GameErrorContext.ResetBuffer();
         th10::g_GameErrorContext.Log(const_cast<char *>(g_MainRestartLog));
         if (g_MainSupervisorView.configuration.windowed == 0)
             WINNLSEnableIME(NULL, TRUE);
@@ -495,8 +516,11 @@ stop:
     }
     th10::g_GameErrorContext.Flush();
 
-    for (i = 0; i < 7; ++i)
-        DeleteCriticalSection(&g_MainSupervisorView.criticalSections[i]);
+    {
+        CRITICAL_SECTION *section = g_MainSupervisorView.criticalSections;
+        for (i = 7; i != 0; --i)
+            DeleteCriticalSection(section++);
+    }
     SystemParametersInfoA(
         SPI_SETSCREENSAVEACTIVE, g_GameWindowView.screenSaveActive,
         NULL, SPIF_SENDCHANGE);
@@ -508,21 +532,7 @@ stop:
         NULL, SPIF_SENDCHANGE);
     WINNLSEnableIME(NULL, TRUE);
 
-    {
-        MainAllocationRegistryView *registry = g_MainAllocationRegistry;
-        if (registry != NULL)
-        {
-            if (registry->hasEntries != 0)
-            {
-                for (i = 0; i < 0x2800; ++i)
-                {
-                    if (registry->entries[i] != NULL)
-                        free(registry->entries[i]);
-                }
-            }
-            delete registry;
-        }
-    }
+    delete g_MainAllocationRegistry;
     return 0;
 }
 

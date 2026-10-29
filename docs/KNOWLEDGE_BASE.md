@@ -6837,3 +6837,40 @@ still differs in frame allocation. WinMain1390/1389 remains nonexact. Adds425
 authored exact bytes with no new mapping or denominator change; no comparator,
 whole-product, runtime or portability claim. See
 [the complete Render proof](evidence/main-render-context-20261029/README.md).
+
+
+## 2026-10-29 Complete WinMain and source lifetime joins
+
+WinMain438AD0..43903C owns1389 bytes and ends in `RET 0x10`; actual CRT call45395B
+supplies four arguments. Following padding and439040/60/80/A0 fragments remain
+outside the reviewed owner and uncredited. Two independent canonical30-input
+colds reproduce the full primary owner and all146 fields. Adds1389 authored
+exact bytes with no new mapping or denominator change.
+
+Both critical-section loops advance seven records with a remaining-count test.
+Restoring that form naturally changes the former1390-byte end-pointer candidate
+to the target0x20 frame, entry saves and stack status local. This new context
+justifies reopening the allocation-registry lifetime role: its constructor keeps
+the 0xA004-byte clear plus hasEntries reset; its destructor frees0x2800 nullable
+entries under the actual flag and restores the target delete tail. Three typed
+new results then enter locals before global publication, reproducing the real
+null-result joins/common stores. Registry-only1405 and local-allocation1389 were
+still complete nonmatches. Ordinary ResetBuffer resets only the existing log
+buffer/end pointer, preserves fatal state and lets the compiler reuse the log
+receiver; the full1389-byte comparison then becomes exact. No forced spill,
+register, ABI, padding or compiler-profile change is involved.
+
+All146 fields bind known objects/member offsets, including Main, window/timing,
+sound and error-buffer views. An anchor's nearby public name is not semantic
+identity. Six literal/scalar occurrences are independently raw-equal in both
+images. Eight selected existing contracts1935/all160 pass in each cold; only
+WinMain and Render are canonical cold selectors for this batch. The comparator
+is unchanged, and no host lifecycle/failure campaign is added.
+
+Camera remains290/287. Complete direct-dimension305, half-dimension292,
+ratio-lifetime290, unsigned-dimension286 and a variant omitting explicit /GS (290) do not match and
+are restored. Width/height conversion and aspect placement before LookAt remain
+a concrete unresolved lead. Full-graph shutdown321/293 and timestamp282/282
+remain nonexact; other accepted recipes are separate. Data ownership, original
+names/TUs and whole-product/runtime/portability closure remain open. See
+[the complete WinMain proof](evidence/main-winmain-context-20261029/README.md).

@@ -9,6 +9,12 @@ struct GameErrorContext
     char *m_BufferEnd;
     unsigned char m_Fatal;
 
+    void ResetBuffer()
+    {
+        m_BufferEnd = m_Buffer;
+        m_Buffer[0] = 0;
+    }
+
     char * __fastcall Log(char *fmt, ...);
     char * __fastcall Fatal(char *fmt, ...);
     void Flush();

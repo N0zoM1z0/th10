@@ -368,6 +368,8 @@ typedef char MainSupervisorFogCacheAt750[
 
 struct MainAllocationRegistryView
 {
+    MainAllocationRegistryView();
+    ~MainAllocationRegistryView();
     void *entries[0x2800];
     int hasEntries;
 };

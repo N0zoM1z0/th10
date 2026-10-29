@@ -2,11 +2,11 @@
 
 ## Start here
 
-Current checkpoint reconstructs the complete425-byte Render dispatcher at439390.
-Its34 fields and full extent pass two independent30-input colds. Positive timing,
-pretested stored-clock catch-up, actual Main worker cleanup and a shared normal /
-Sleep return reproduce the target naturally. WinMain1390/1389 remains nonexact;
-original static/member spelling and product closure are still unproven.
+Current checkpoint reconstructs complete WinMain438AD0..43903C:1389 bytes/all146
+fields pass two independent30-input colds. Countdown critical-section walks,
+registry lifetime, typed allocation-result locals and log-buffer reset recover
+its actual stack/register/control flow naturally. Eight selected old owners1935 /
+all160 also pass; camera290/287 and single-image/product closure remain open.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -34,9 +34,32 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**86,825/275,729 reviewed authored owned bytes exact, 469 exact authored owners**;
-681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1342 exact.
+**88,214/275,729 reviewed authored owned bytes exact, 470 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1343 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [complete WinMain proof](evidence/main-winmain-context-20261029/README.md):
+
+- WinMain1389/all146 is exact twice under the existing default30-input recipe.
+  Adds1389 authored bytes; this was already mapped. Authored mapped exact backlog
+  is211; mappings and denominator are unchanged. Actual CRT entry call45395B and
+  `RET 0x10` retain all four arguments. Adjacent439040/60/80/A0 remain uncredited.
+- Seven-count forward critical-section walks restore the target0x20 frame and
+  status local naturally. This is new evidence to reopen the old registry-role
+  control: its real destructor fixes the delete tail in the corrected context.
+  Typed locals before global publication recover all three new-expression joins;
+  ordinary GameErrorContext::ResetBuffer reuses the log receiver and finishes the
+  full match. No fake ABI/register/spill, padding or profile changes are used.
+- Render425, Present236, configuration534, Log/Fatal201 each, Flush79, Chain103
+  and MIDI156 pass full1935/all160 in each image. Only these explicit related
+  contracts are checked; the canonical cold selection is WinMain plus Render.
+- Camera controls305/292/290/286 and omission of explicit /GS (290) fail the
+  complete287-byte comparison and are restored. The remaining actual camera body is290/287. Full-graph
+  shutdown321/293 and timestamp282/282 stay nonexact; accepted recipes elsewhere
+  remain distinct. No single-image/product/runtime/portability claim follows.
+- Next concrete dependency is camera421480/287: floating-point expression and
+  aspect lifetime before LookAt remain unresolved. Do not repeat parked direct /
+  half / unsigned dimensions or /GS omission without new discriminating evidence.
 
 Latest [complete Render proof](evidence/main-render-context-20261029/README.md):
 
