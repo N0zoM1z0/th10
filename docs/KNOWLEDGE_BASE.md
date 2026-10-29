@@ -7357,3 +7357,25 @@ retains all2136 normalized bytes/89 destinations, still nonexact. Separate shot
 branches1169, vector arithmetic1172 and in-place rotation1174 are rejected;
 nested hit scope and coordinate-first products are neutral. None fixes stack
 homes; no partial large-owner exactness credit is granted.
+
+
+## 2026-10-30 ANM integer decrement call boundary
+
+The full ExecuteScript contract's WAIT field7CE calls428DD0. Fresh decode shows
+its complete20 bytes negate EAX, convert to float stack argument, call Add44BF40
+and return with ESI timer. The existing ordinary source produced68 by inlining
+Add. Preserving Add's actual noinline boundary naturally restores20/all1 without
+register/ABI annotations or new operations. Add88/all4 remains exact. Both bodies
+pass two independent canonical /GL cold compilations and the five-input /GL /GS
+same-image checks. The inline member is maintained in AnmManager.hpp and emits
+in the declared AnmManager.cpp TU. Original annotation/TU spelling is unknown.
+Wrapper origin remains indeterminate:20 new codegen bytes, zero authored credit.
+
+The full parent before/after still compares9960/9964, all350 fields/95 locals,
+with the same four child91/radial-Z bytes. No parent credit. Six direct existing
+Add callers, including BulletRuntime885, LaserLine1001 and StageDrawLate929,
+pass scoped exact replays; combined with20/88 this is3229/all164. A Wine failure
+in the initial batch is reported separately: completed three units were frozen
+and revalidated, required toolchain smoke passed, and only the remaining five
+were rebuilt. No failed command is reported as passing and no historical cohort
+was repeated. See [timer boundary proof](evidence/anm-timer-boundary-20261030/README.md).

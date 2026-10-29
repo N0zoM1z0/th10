@@ -310,7 +310,7 @@ struct AnmVmTimerView
 
     AnmVmTimerView() { flags &= ~1u; }
     void Initialize();
-    void Add(float value);
+    TH10_ANM_NOINLINE void Add(float value);
     void Decrement(int value)
     {
         Add(static_cast<float>(-value));

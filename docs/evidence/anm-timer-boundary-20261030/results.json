@@ -1,0 +1,544 @@
+{
+  "target": {
+    "address": "0x428dd0",
+    "size": 20,
+    "end": "0x428de3",
+    "preceding_cc": 5,
+    "following_cc": 12,
+    "decoded_bytes": 20,
+    "return_offset": 19,
+    "abi": "ESI timer, EAX signed integer, RET",
+    "call_field": {
+      "offset": 14,
+      "target": "0x0044BF40",
+      "symbol": "?Add@AnmVmTimerView@@QAEXM@Z"
+    },
+    "parent_call_fields": [
+      1998
+    ],
+    "origin": "indeterminate, independent of source/codegen"
+  },
+  "first_cold_scope": {
+    "coverage": "Three completed units revalidated after initial Wine failure, then only the remaining five replayed. The initial eight-unit command returned nonzero.",
+    "units": [
+      {
+        "unit": "anm-vm-timer-decrement",
+        "result": "exact",
+        "size": 20,
+        "matched_bytes": 20,
+        "image_sha256": "29e13ad357ff8de281a6f37b1b05c8767198ecc6484e79759eedfb2462c15b80",
+        "pdb_guid": "055dcadc5247ac4a916e421cd64b41af",
+        "pdb_age": 1,
+        "first_differences": [],
+        "field_count": 1
+      },
+      {
+        "unit": "anm-vm-timer-add",
+        "result": "exact",
+        "size": 88,
+        "matched_bytes": 88,
+        "image_sha256": "29e13ad357ff8de281a6f37b1b05c8767198ecc6484e79759eedfb2462c15b80",
+        "pdb_guid": "055dcadc5247ac4a916e421cd64b41af",
+        "pdb_age": 1,
+        "first_differences": [],
+        "field_count": 4
+      },
+      {
+        "unit": "bullet-update-horizontal-wrap",
+        "result": "exact",
+        "size": 148,
+        "matched_bytes": 148,
+        "image_sha256": "9ce87a31b8ecfde52307bc7d7bc1df24be5247e21d504e8688a9db153d9e1c9d",
+        "pdb_guid": "114f2b8b082f4743bbcc6b053f7acfd4",
+        "pdb_age": 1,
+        "first_differences": [],
+        "field_count": 8
+      },
+      {
+        "unit": "bullet-runtime-update",
+        "result": "exact",
+        "size": 885,
+        "matched_bytes": 885,
+        "image_sha256": "057099f4fd3f170763923418e66eaf028d3e9979e896df018ecc0a3961974a94",
+        "pdb_guid": "5746f94ec816654691841fdbe0d4ef52",
+        "pdb_age": 1,
+        "first_differences": [],
+        "field_count": 39
+      },
+      {
+        "unit": "game-score-extend-faith-timer",
+        "result": "exact",
+        "size": 93,
+        "matched_bytes": 93,
+        "image_sha256": "af771c02496cc3b7f3254bca0487730db00b4b8da718842f558a69904657d758",
+        "pdb_guid": "b3b147ae844ec24ab0004eeb4b7722d3",
+        "pdb_age": 1,
+        "first_differences": [],
+        "field_count": 2
+      },
+      {
+        "unit": "laser-line-update",
+        "result": "exact",
+        "size": 1001,
+        "matched_bytes": 1001,
+        "image_sha256": "c7c6a90d29ccb29674b6ccbe97e26fe4b0d163618a266d3de8fd77c81512ff83",
+        "pdb_guid": "84eb8789af30d6439d97bf3910ea17cc",
+        "pdb_age": 1,
+        "first_differences": [],
+        "field_count": 31
+      },
+      {
+        "unit": "game-update-faith-decay",
+        "result": "exact",
+        "size": 65,
+        "matched_bytes": 65,
+        "image_sha256": "b26b3376ccbddf1d8bbe85c4be75c6deefe7dd03ddb60ef96112b7a15628160c",
+        "pdb_guid": "f38113792c34bf4e9a00560b26831451",
+        "pdb_age": 1,
+        "first_differences": [],
+        "field_count": 1
+      },
+      {
+        "unit": "stage-draw-late",
+        "result": "exact",
+        "size": 929,
+        "matched_bytes": 929,
+        "image_sha256": "98a2850aad3841b7e8adf6588dd6ee03fccbad166e9c9dcf44dbdc577cc5d740",
+        "pdb_guid": "070c4c08f684c34eac427ed329ea9a7c",
+        "pdb_age": 1,
+        "first_differences": [],
+        "field_count": 78
+      }
+    ],
+    "matched_bytes": 3229,
+    "field_count": 164,
+    "initial_report": ".analysis/gpt-6.1-sol/anm-executor-context-20261030/cold-a.json",
+    "recovered_report": ".analysis/gpt-6.1-sol/anm-executor-context-20261030/cold-a-recovered.json",
+    "remainder_report": ".analysis/gpt-6.1-sol/anm-executor-context-20261030/cold-remainder.json",
+    "retained_artifacts": {
+      "anm-vm-timer-decrement": "build/gpt-6.1-sol/anm-executor-context-20261030/cold-a-recovered-0/source.exe",
+      "anm-vm-timer-add": "build/gpt-6.1-sol/anm-executor-context-20261030/cold-a-recovered-0/source.exe",
+      "bullet-update-horizontal-wrap": "build/gpt-6.1-sol/anm-executor-context-20261030/cold-a-recovered-1/source.exe",
+      "bullet-runtime-update": "build/gpt-6.1-sol/anm-executor-context-20261030/cold-remainder-0/source.exe",
+      "game-score-extend-faith-timer": "build/gpt-6.1-sol/anm-executor-context-20261030/cold-remainder-1/source.exe",
+      "laser-line-update": "build/gpt-6.1-sol/anm-executor-context-20261030/cold-remainder-2/source.exe",
+      "game-update-faith-decay": "build/gpt-6.1-sol/anm-executor-context-20261030/cold-remainder-3/source.exe",
+      "stage-draw-late": "build/gpt-6.1-sol/anm-executor-context-20261030/cold-remainder-4/source.exe"
+    }
+  },
+  "second_cold": {
+    "artifact_count": 1,
+    "groups": [
+      {
+        "artifact": "build/match-linked/AnmExecutor",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "anm-vm-timer-add",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/AnmManager.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00408AE0",
+            "capstone_version": "5.0.6",
+            "compared_size": 88,
+            "data_spans": [],
+            "decoded_bytes": 88,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/AnmExecutor/source.exe",
+            "image_sha256": "ef67e03f4c188fd939d2ddcd8a2b776ed8694b1602f741d07e625a34072cd1a8",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D1D0",
+                "linked_symbol": "__real@3f7d70a4",
+                "local": false,
+                "offset": "0xC",
+                "symbol": "__real@3f7d70a4",
+                "target": "0x00470B68",
+                "target_encoded_value": "0x00470B68",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D1CC",
+                "linked_symbol": "__real@3f8147ae",
+                "local": false,
+                "offset": "0x1B",
+                "symbol": "__real@3f8147ae",
+                "target": "0x00470B64",
+                "target_encoded_value": "0x00470B64",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040E150",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0084",
+                "local": false,
+                "offset": "0x34",
+                "symbol": "__ftol2",
+                "target": "0x00463B2C",
+                "target_encoded_value": "0x00017BB4",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040E150",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0084",
+                "local": false,
+                "offset": "0x4E",
+                "symbol": "__ftol2",
+                "target": "0x00463B2C",
+                "target_encoded_value": "0x00017B9A",
+                "type": "REL32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 88,
+            "matched_compared_bytes": 88,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "8af841d17098414fb2541f169ce05284",
+            "pdb_module_index": 1,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 88,
+            "symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+            "target_address": "0x0044BF40",
+            "unit": "anm-vm-timer-add"
+          },
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00401240",
+            "capstone_version": "5.0.6",
+            "compared_size": 20,
+            "data_spans": [],
+            "decoded_bytes": 20,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/AnmExecutor/source.exe",
+            "image_sha256": "ef67e03f4c188fd939d2ddcd8a2b776ed8694b1602f741d07e625a34072cd1a8",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x00408AE0",
+                "linked_symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+                "local": false,
+                "offset": "0xE",
+                "symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+                "target": "0x0044BF40",
+                "target_encoded_value": "0x0002315E",
+                "type": "REL32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 20,
+            "matched_compared_bytes": 20,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "8af841d17098414fb2541f169ce05284",
+            "pdb_module_index": 1,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 20,
+            "symbol": "?Decrement@AnmVmTimerView@@QAEXH@Z",
+            "target_address": "0x00428DD0",
+            "unit": "anm-vm-timer-decrement"
+          }
+        ]
+      }
+    ],
+    "matched_bytes": 108,
+    "result": "exact",
+    "source_count": 1,
+    "unit_count": 2,
+    "retained_artifact": "build/gpt-6.1-sol/anm-executor-context-20261030/cold-b/source.exe"
+  },
+  "same_image": {
+    "anm-vm-timer-decrement": {
+      "unit": "anm-vm-timer-decrement",
+      "artifact_kind": "linked-pe",
+      "result": "exact",
+      "symbol": "?Decrement@AnmVmTimerView@@QAEXH@Z",
+      "target_address": "0x00428DD0",
+      "size": 20,
+      "matched_bytes": 20,
+      "compared_size": 20,
+      "matched_compared_bytes": 20,
+      "image": "build/gpt-6.1-sol/anm-executor-context-20261030/timer-add-boundary/source.exe",
+      "image_sha256": "77405d2d82626a725f0660cd2239c53659495ab3dcc6885f69397c68140fd25c",
+      "pdb_guid": "2a28867029ad4d47b6ba366e9d7b9309",
+      "pdb_age": 1,
+      "candidate_address": "0x00401240",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 2,
+      "decoded_bytes": 20,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0xE",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+          "linked_symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+          "local": false,
+          "candidate_target": "0x00408C10",
+          "target": "0x0044BF40",
+          "addend": 0,
+          "target_encoded_value": "0x0002315E"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [],
+      "capstone_version": "5.0.6"
+    },
+    "anm-vm-timer-add": {
+      "unit": "anm-vm-timer-add",
+      "artifact_kind": "linked-pe",
+      "result": "exact",
+      "symbol": "?Add@AnmVmTimerView@@QAEXM@Z",
+      "target_address": "0x0044BF40",
+      "size": 88,
+      "matched_bytes": 88,
+      "compared_size": 88,
+      "matched_compared_bytes": 88,
+      "image": "build/gpt-6.1-sol/anm-executor-context-20261030/timer-add-boundary/source.exe",
+      "image_sha256": "77405d2d82626a725f0660cd2239c53659495ab3dcc6885f69397c68140fd25c",
+      "pdb_guid": "2a28867029ad4d47b6ba366e9d7b9309",
+      "pdb_age": 1,
+      "candidate_address": "0x00408C10",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 2,
+      "decoded_bytes": 88,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0xC",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@3f7d70a4",
+          "linked_symbol": "__real@3f7d70a4",
+          "local": false,
+          "candidate_target": "0x0040D1D0",
+          "target": "0x00470B68",
+          "addend": 0,
+          "target_encoded_value": "0x00470B68"
+        },
+        {
+          "offset": "0x1B",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@3f8147ae",
+          "linked_symbol": "__real@3f8147ae",
+          "local": false,
+          "candidate_target": "0x0040D1CC",
+          "target": "0x00470B64",
+          "addend": 0,
+          "target_encoded_value": "0x00470B64"
+        },
+        {
+          "offset": "0x34",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "__ftol2",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0080",
+          "local": false,
+          "candidate_target": "0x0040E140",
+          "target": "0x00463B2C",
+          "addend": 0,
+          "target_encoded_value": "0x00017BB4"
+        },
+        {
+          "offset": "0x4E",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "__ftol2",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0080",
+          "local": false,
+          "candidate_target": "0x0040E140",
+          "target": "0x00463B2C",
+          "addend": 0,
+          "target_encoded_value": "0x00017B9A"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [],
+      "capstone_version": "5.0.6"
+    }
+  },
+  "parent_before_after": {
+    "entry": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ],
+      "image_sha256": "5cd0a6c50628e501ac9164786ba8781e9d3b7cfa14ec55f8c552c72d53deebf4",
+      "pdb_guid": "38288c1d940ad3428eb05eafc598d834",
+      "candidate_address": "0x004064A0",
+      "decoded_bytes": 9963,
+      "normalization_complete": true,
+      "field_count": 350,
+      "local_field_count": 95
+    },
+    "timer-add-boundary": {
+      "result": "mismatch",
+      "size": 9964,
+      "matched_bytes": 9960,
+      "first_differences": [
+        {
+          "offset": "0x113",
+          "linked": 77,
+          "target": 85
+        },
+        {
+          "offset": "0x115",
+          "linked": 81,
+          "target": 82
+        },
+        {
+          "offset": "0x249A",
+          "linked": 72,
+          "target": 60
+        },
+        {
+          "offset": "0x24A0",
+          "linked": 60,
+          "target": 72
+        }
+      ],
+      "image_sha256": "77405d2d82626a725f0660cd2239c53659495ab3dcc6885f69397c68140fd25c",
+      "pdb_guid": "2a28867029ad4d47b6ba366e9d7b9309",
+      "candidate_address": "0x00406470",
+      "decoded_bytes": 9963,
+      "normalization_complete": true,
+      "field_count": 350,
+      "local_field_count": 95
+    }
+  },
+  "binding_contract": "docs/evidence/anm-child-request-record/binding-contract.json",
+  "binding_contract_sha256": "75c7058f3d345de6f7b69d8b30c47772e3d1653e8fd4887c47caf722053b1d69",
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "e6c8e3bfa2f33d07ec07fc363127229f3cb974a2c8aea6b48983180aa14a1499",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef"
+  },
+  "diagnostic_graph": {
+    "source": "src/AnmManager.cpp",
+    "support_sources": [
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    }
+  },
+  "diagnostic_artifacts": {
+    "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/anm-executor-context-20261030/timer-add-boundary/source.exe",
+    "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/anm-executor-context-20261030/timer-add-boundary/source.map",
+    "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/anm-executor-context-20261030/timer-add-boundary/source.pdb"
+  },
+  "source_object_hashes": {
+    "src/AnmManager.cpp": "11e218d61cea5810c7d91c40479070893271ab110a44e0607cac860833b976b0",
+    "src/RandomMath.cpp": "013b6db27963f1fc736b233cb90e027c3cf14b5acf05b567ccdf3559851c2a86",
+    "src/AnmVmCreate.cpp": "628f62eda765eecb5bd9c5457856a06e0c5e7c206f03ae02ce05d2c3b790a32d",
+    "src/AnmVmId.cpp": "47bdd1a347d82ddfdf8784df365e336c3304d676fb07538cb63865ea9bb05ce2",
+    "src/AnmInt3Scale.cpp": "9e64ba6139f58e12464d21997dd30e86c25a58d5e9aab1189ffec48be9b30dd1"
+  },
+  "toolchain_smoke": {
+    "exit": 0,
+    "log": ".analysis/gpt-6.1-sol/anm-executor-context-20261030/toolchain-smoke.log",
+    "sha256": "3e01cd92172d9bd921b55101c975ff5f0611807d38e2ab5177f66c58d03017e7"
+  },
+  "scope": "20 new complete codegen bytes; zero authored credit. Parent9960/9964 remains nonexact. Boundary/origin/denominator and product/runtime/portability claims are unchanged."
+}

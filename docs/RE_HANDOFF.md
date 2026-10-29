@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+The actual ANM WAIT callee Decrement428DD0 is complete20/all1 exact in two
+independent canonical cold compilations after preserving Add's observed call
+boundary. Add88/all4 and six direct existing exact callers remain exact: combined
+3229/all164. Parent ExecuteScript remains9960/9964 with the same four residual
+bytes, all350 fields/95 locals. Wrapper origin remains indeterminate; authored
+bytes do not increase. See the [call-boundary proof and Wine recovery](evidence/anm-timer-boundary-20261030/README.md).
+
 PlayerFloat3::GetPlanarBounds4285F0 is complete55/all4 exact in two independent
 canonical colds. Shared planar member calls preserve the previous nonexact
 1172-byte damage and2412-byte root candidates. Origin remains indeterminate;
@@ -27,8 +34,8 @@ All1668 bytes/all91 fields pass. This adds1480 authored exact bytes; constructor
 origin remains indeterminate. See the [complete proof](evidence/stage-initialize-context-20261029/README.md).
 
 Current generated [progress](PROGRESS.md): **96,725/275,729 authored owned bytes
-exact,483 authored exact owners**. Total1358 exact owners/164,802 codegen bytes;
-1198 mappings,681 authored mappings,198 authored mapped backlog. Inventory and
+exact,483 authored exact owners**. Total1359 exact owners/164,822 codegen bytes;
+1199 mappings,681 authored mappings,198 authored mapped backlog. Inventory and
 whole-product/runtime/portability closure remain separate and incomplete.
 
 The affected old selection passes14 units/2262 bytes/all156 fields in its existing
@@ -86,11 +93,18 @@ rebuildable outputs are disposable, not dependencies of the current workflow.
 
 ## Working inputs
 
-The current Stage warm context is:
+The current five-input ANM warm context is:
+`.analysis/gpt-6.1-sol/anm-executor-context-20261030/final-context.json`.
+All13 project pins/five object hashes must be revalidated. It retains the actual
+/O2 /GL /GS graph and four parent residuals;20/88 pass strict same-image binding.
+The older Stage and Player contexts below predate Add's boundary annotation and
+retain their own header/source epochs; rebuild changed inputs before reuse.
+
+The retained Stage warm context is:
 
 `.analysis/gpt-6.1-sol/stage-initialize-context-20261029/final-context.json`
 
-It pins current source/includes, actual prior build profiles and cached objects.
+It pins source/includes at its recorded epoch, actual profiles and cached objects.
 Revalidate every pin before reuse. Its thirteen-input image is diagnostic, not
 an executable product. Canonical acceptance remains in config/match-units.toml.
 Two independent lifecycle cold witnesses and current records are retained;
@@ -99,16 +113,16 @@ Cleanup removed4942 unused code/build files (198,807,947 bytes), preserving all
 document/verification records, the existing record archive and D3D evidence.
 No new compressed archive or historical input dependency is introduced.
 
-The current ten-input Enemy runtime warm context is separately pinned at
+The retained ten-input Enemy runtime warm context is separately pinned at
 `.analysis/gpt-6.1-sol/player-damage-context-20261030/final-context.json`.
 Its36 project inputs, actual profiles and ten object hashes must be revalidated
 before cache reuse. It descends from the retained ten-input cold context, recompiling
 changed Player/header consumers and reusing only unchanged pinned objects.
-Damage1172/1170 remains nonexact. New planar55/all4, allocator181/all1 and
-interrupt65/all2 pass strict same-image checks. Both new helper families have two independent colds in
-the three-input Player-constructor recipe; current first selection55+181+65
-passes301/all7, followed by planar55/all4 alone. Older scalar/ECL witnesses
-remain retained with their own source epochs.
+At its recorded epoch, damage1172/1170 remains nonexact; planar55/all4,
+allocator181/all1 and interrupt65/all2 pass strict same-image checks. Both helper
+families have two recorded colds in the three-input Player-constructor recipe:
+first55+181+65 passes301/all7, followed by planar55/all4 alone. Older scalar/ECL
+witnesses remain retained with their own source epochs.
 Older scalar/motion/world/damage contexts are historical inputs; revalidate pins.
 
 The private probe accepts a prior context and optional desired graph separately.
@@ -142,6 +156,8 @@ Fresh diagnostics on2026-10-30 restore all Stage/ANM experiments. Stage remains
 placement are neutral, while a precomputed cubic member pointer grows it1904.
 The real RGB callee graph reproduces ANM's previously bound9960/9964 frontier;
 five-input and fourteen-input images have the same four residual offsets.
+The current Add-boundary successor retains them while closing Decrement20; older
+68-byte callee records describe previous source epochs.
 Record/value/whole-vector permutations repeat old closed controls and are parked.
 The current runtime caller emits2412/2412 bytes but remains nonexact. World-vector
 composition, bounds, readonly literals, direct direction predicates, animation,

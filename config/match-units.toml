@@ -27264,3 +27264,18 @@ linkages = [
   { offset = 0x1f, type = "DIR32", symbol = "__real@3f000000", target = 0x00470B0C },
   { offset = 0x2c, type = "DIR32", symbol = "__real@3f000000", target = 0x00470B0C },
 ]
+
+# Complete target timer decrement wrapper; preserve the observed Add boundary.
+[units.anm-vm-timer-decrement]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmExecutor"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+functions = ["AnmVmTimerView::Decrement"]
+symbol = "?Decrement@AnmVmTimerView@@QAEXH@Z"
+target_address = 4361680
+size = 20
+linkages = [{ offset = 0xE, type = "REL32", symbol = "?Add@AnmVmTimerView@@QAEXM@Z", target = 0x0044BF40 }]

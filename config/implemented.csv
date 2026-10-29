@@ -1196,3 +1196,4 @@ th10::Chain::~Chain
 th10::ChainElem::~ChainElem
 MidiOutputView::~MidiOutputView
 MidiOutputView::ReleaseTracks
+AnmVmTimerView::Decrement
