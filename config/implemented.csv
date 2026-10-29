@@ -1180,3 +1180,7 @@ FrontEndCreate
 FrontEndLoadThread
 FrontEndControllerView::RegisterTasks
 FrontEndControllerView::CreateVm
+GameManagerCreate
+MainSupervisorView::StartModeThread
+GameManagerLoadThread
+GameConfigurationView::ResetDefaults

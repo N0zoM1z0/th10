@@ -463,6 +463,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004177E0,0x004177F8,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
 0x00417800,0x00417839,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00417870,0x00417C60,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x417c76 to entry; independent IDA MCP extent agrees"
+0x00417C70,0x00417C7B,reviewed,high,game-manager-launch-20261029,"Complete12-byte global-load/push/call/RET callback; sole factory data reference41812C reaches entry and all-byte queries find no interior references. Prior initializer ends417C60,15 CC precede;4 CC follow before independent417C80."
 0x00417C80,0x004180D0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004180E0,0x0041814A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00418150,0x00418161,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch

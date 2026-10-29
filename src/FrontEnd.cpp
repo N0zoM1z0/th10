@@ -101,7 +101,7 @@ int FrontEndInputView::IsRepeated(unsigned short mask)
 
 extern FrontEndInputView g_FrontEndInput;
 extern unsigned int g_FrontEndFlags;
-extern int g_FrontEndMode;
+extern int g_MainModeTransitionCounter;
 extern int g_FrontEndDemoFrames;
 extern int g_FrontEndDemoIndex;
 extern const char *g_FrontEndDemoPaths[4];
@@ -932,11 +932,11 @@ int FrontEndControllerView::Update()
             ReplayManager::Destroy(replay);
 
             g_FrontEndDemoFrames = 0;
-            g_FrontEndMode = screen != FRONT_END_SCREEN_MAIN_MENU;
+            g_MainModeTransitionCounter = screen != FRONT_END_SCREEN_MAIN_MENU;
         }
     }
 
-    int mode = g_FrontEndMode;
+    int mode = g_MainModeTransitionCounter;
     switch (screen)
     {
     case FRONT_END_SCREEN_INITIALIZE:
@@ -968,7 +968,7 @@ int FrontEndControllerView::Update()
             controller->CreateVm(0x5b);
             controller->MarkVmInterrupt(0x5b, 9);
             controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
-            g_FrontEndMode = 1;
+            g_MainModeTransitionCounter = 1;
             FrontEndControllerView::UpdateScoreEntry(controller);
             break;
         }
@@ -977,7 +977,7 @@ int FrontEndControllerView::Update()
         {
             FrontEndLoadMusic(0, "bgm/th10_02.wav");
             FrontEndPlayMusic(0, 0);
-            mode = g_FrontEndMode;
+            mode = g_MainModeTransitionCounter;
         }
         else
         {
@@ -988,7 +988,7 @@ int FrontEndControllerView::Update()
         if (mode == 0)
         {
             controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU);
-            g_FrontEndMode = 1;
+            g_MainModeTransitionCounter = 1;
             FrontEndUpdateMainMenu(controller);
         }
         else if (mode == 1)
@@ -1016,7 +1016,7 @@ int FrontEndControllerView::Update()
             controller->CreateVm(0x5b);
             controller->MarkVmInterrupt(0x5b, 9);
             controller->drawTask->flags |= FRONT_END_DRAW_CALLBACK_UNLOCKED;
-            g_FrontEndMode = 1;
+            g_MainModeTransitionCounter = 1;
             FrontEndControllerView::UpdateReplay(controller);
         }
         else
@@ -2385,7 +2385,7 @@ int __stdcall FrontEndControllerView::UpdateReplay(
             g_ReplayCharacter = replay->replayData->character;
             g_ReplayShotType = replay->replayData->shotType;
             g_ReplayDifficulty = replay->replayData->difficulty;
-            g_FrontEndMode = 2;
+            g_MainModeTransitionCounter = 2;
             g_FrontEndReplayCursor = controller->selectedReplay;
         }
         break;

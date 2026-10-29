@@ -1181,3 +1181,7 @@ FrontEndCreate,0x0042CD50,function
 FrontEndLoadThread,0x0042C9F0,function
 FrontEndControllerView::RegisterTasks,0x0042CAA0,function
 FrontEndControllerView::CreateVm,0x0042C670,function
+GameManagerCreate,0x004180E0,function
+MainSupervisorView::StartModeThread,0x00420EA0,function
+GameManagerLoadThread,0x00417C70,function
+GameConfigurationView::ResetDefaults,0x00418C40,function

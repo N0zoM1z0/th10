@@ -152,7 +152,7 @@ int MainSupervisorView::UpdateGameMode()
 // Sound fade maintenance uses the already established global Sound owner.
 int __fastcall MainSupervisorView::OnUpdate(MainSupervisorView *supervisor)
 {
-    if ((supervisor->flags & 0x80) != 0 && supervisor->closeRequestBlocked == 0)
+    if ((supervisor->flags & 0x80) != 0 && supervisor->modeWorker.running == 0)
         g_MainSupervisorView.nextGameMode = 3;
     reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->ServiceBgmFades();
     PollInputFrame(0);

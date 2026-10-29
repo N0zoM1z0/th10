@@ -16,6 +16,7 @@
 #undef Sleep
 
 #include <windows.h>
+#include "ScriptViewerWorker.hpp"
 
 enum MainRenderResult
 {
@@ -91,6 +92,8 @@ struct MainD3d9InterfaceView
     MainD3d9InterfaceVtableView *vtable;
 };
 
+typedef long (__stdcall *MainD3d9DeviceCall014)(MainD3d9DeviceView *device);
+
 typedef long (__stdcall *MainD3d9TestCooperativeLevel)(
     MainD3d9DeviceView *device);
 typedef long (__stdcall *MainD3d9GetDeviceCaps)(
@@ -127,7 +130,9 @@ struct MainD3d9DeviceVtableView
     void *AddRef;
     MainD3d9Release Release;                       // +0x008
     MainD3d9TestCooperativeLevel TestCooperativeLevel; // +0x00C
-    void *slots010To018[3];
+    void *slot010;
+    MainD3d9DeviceCall014 Call014;                // +0x014
+    void *slot018;
     MainD3d9GetDeviceCaps GetDeviceCaps;           // +0x01C
     void *slots020To03C[8];
     MainD3d9Reset Reset;                           // +0x040
@@ -157,6 +162,8 @@ struct MainD3d9DeviceView
 
 typedef char MainD3d9InterfaceCreateDeviceAt40[
     (offsetof(MainD3d9InterfaceVtableView, CreateDevice) == 0x40) ? 1 : -1];
+typedef char MainD3d9DeviceCallAt14[
+    (offsetof(MainD3d9DeviceVtableView, Call014) == 0x14) ? 1 : -1];
 typedef char MainD3d9DeviceResetPresentAt40[
     (offsetof(MainD3d9DeviceVtableView, Reset) == 0x40 &&
      offsetof(MainD3d9DeviceVtableView, Present) == 0x44) ? 1 : -1];
@@ -228,6 +235,7 @@ struct StartupWorkerView;
 struct MainSupervisorView
 {
     void SetNextGameMode(int mode);
+    int StartModeThread(int (*entry)(), void *context);
     int UpdateGameMode();
     void LeaveLock(int index);
     static int __fastcall OnUpdate(MainSupervisorView *supervisor);
@@ -281,9 +289,8 @@ struct MainSupervisorView
     unsigned int flags;                         // +0x3CC
     unsigned char unknown3D0[0x008];
     unsigned char d3dCaps[0x130];               // +0x3D8
-    unsigned char unknown508[0x134];
-    int closeRequestBlocked;                    // +0x63C
-    unsigned char unknown640[8];
+    unsigned char unknown508[0x124];
+    ScriptViewerWorkerView modeWorker;           // +0x62C; running at+0x63C
     int updateGate;                             // +0x648
     CRITICAL_SECTION criticalSections[7];       // +0x64C
     unsigned char criticalSectionLockCounts[7]; // +0x6F4
@@ -320,7 +327,9 @@ typedef char MainSupervisorFlagsAt3CC[
      offsetof(MainSupervisorView, currentGameMode) == 0x38c &&
      offsetof(MainSupervisorView, previousGameMode) == 0x394 &&
      offsetof(MainSupervisorView, newGameSession) == 0x39c &&
-     offsetof(MainSupervisorView, closeRequestBlocked) == 0x63c &&
+     (offsetof(MainSupervisorView, modeWorker) == 0x62c &&
+      offsetof(MainSupervisorView, modeWorker) +
+      offsetof(ScriptViewerWorkerView, running) == 0x63c) &&
      offsetof(MainSupervisorView, updateGate) == 0x648 &&
      offsetof(MainSupervisorView, startupWorker) == 0x768 &&
      offsetof(MainSupervisorView, clearColor) == 0x780) ? 1 : -1];

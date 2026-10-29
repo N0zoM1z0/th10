@@ -414,7 +414,7 @@ int __stdcall GameManagerInitialize(GameManager *manager)
     element->owner = manager;
     GameRegisterDrawChain(g_GameMainChain, 4, element);
     manager->drawChain = element;
-    memcpy(manager->configuration, g_GameConfigurationSnapshot, 0x34);
+    memcpy(&manager->configuration, g_GameConfigurationSnapshot, 0x34);
     manager->stageResourceIndex = g_GameStageUpdate->resourceIndex;
 
     if ((g_GameRuntimeFlags & 2) == 0)

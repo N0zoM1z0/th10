@@ -1,5 +1,6 @@
 #pragma once
 #include "AnmManager.hpp"
+#include "GameConfiguration.hpp"
 
 struct GameChainElementView;
 struct GameManager
@@ -9,10 +10,11 @@ struct GameManager
     GameChainElementView *updateChain;
     GameChainElementView *drawChain;
     AnmVmTimerView stageTimer;
-    unsigned int configuration[13];
+    GameConfigurationView configuration;
     unsigned int m_Flags;
     int initializationMode;
 
+    GameManager();
     unsigned int __fastcall OnDraw();
     static unsigned int __fastcall OnUpdate(GameManager *manager);
 };

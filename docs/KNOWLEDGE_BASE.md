@@ -6619,3 +6619,48 @@ bytes/all37 fields plus retargeted shared65/all2. Thirty-four selected affected
 old contracts10143/all351 pass per image. Three new mappings cover455 bytes;
 FrontEnd65 is a renamed existing mapping. No comparator mechanism, host-scenario,
 product or runtime claim is made. See [the complete proof](evidence/frontend-launch-20261029/README.md).
+
+
+## 2026-10-29 GameManager factory, Main worker and shared configuration
+
+Complete GameManagerCreate4180E0/107 and MainSupervisorView::StartModeThread420EA0/118
+are exact in independent28-input colds. The factory constructs timer/configuration
+before clearing60 bytes, calls device vtable14, stores mode+5C, publishes477810,
+sets flag4 and launches actual417C70. That12-byte callback was absent from inventory;
+its sole entry data ref is41812C and all-byte queries find no interior references.
+Fifteen preceding/four following CC bytes separate it. Forwarder source versus
+compiler outline stays indeterminate. It forwards the maintained initializer
+result; initializer1039/1009 and cleanup1120/1105 remain nonexact.
+
+The Main worker begins+62C and has the shared1C layout. Its running member at63C
+supersedes the old closeRequestBlocked label; the actual113-byte Supervisor
+callback now reads modeWorker.running and still matches completely. Launch holds
+critical section6/counter6, calls Stop, expands beginthreadex with entry/context
+and publishes the handle before unlock. Natural member code gives EDI this plus
+two stack arguments/RET8. No forced register ABI is added. All known later Main
+and GameManager offsets remain asserted; complete Main construction/storage
+is a separate open claim. Unrelated D3D adapter evidence is untouched.
+
+Configuration418C40 covers a34-byte serialized view, nine16-bit default bindings,
+two600 fields, byte settings and options+30. Constructor127 imposed a returned
+receiver; void reset is125/125 with nine ordinary prologue/register differences.
+Unsigned storage recovers format/hint ordering. A natural free-function role is
+neutral and restored. Loader420870 permits three values at+1B, rejecting bool
+there. Five actual callers do not establish a consumed return contract, so no
+zero return is manufactured. Reset remains source-only with no partial credit.
+Main load420870, Main init421F00 and replay-object creation428FEA are concrete
+actual-context leads. Original serialized types remain provisional.
+
+FrontEnd's491C00 mode now shares the existing SupervisorModes symbol; a complete
+native control remains structurally identical1076/1128. The alias closes without
+new exact bytes. Supervisor mode678/666 remains nonexact. Diagnostic address
+labels can be misleading when a structured-base addend lands on another small
+anchor: factory device is Main491C28+8, not the unrelated nearest-public label.
+Default-key fields similarly belong to474E88 plus0/4/8/C/10. Semantic field
+bindings and actual ABI are required; these images do not prove data ownership.
+
+Three new complete owners237 bytes/all13 fields add225 authored and12 indeterminate
+bytes with no authored-denominator change. Four mappings362 include the nonexact
+reset125. Forty-four explicit old contracts10922/all402 pass in both colds.
+No comparator, host-scenario, product or runtime claim is introduced. See
+[the complete proof](evidence/game-manager-launch-20261029/README.md).
