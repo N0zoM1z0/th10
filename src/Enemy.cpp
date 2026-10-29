@@ -688,87 +688,56 @@ EnemyFloat2 *EnemyScalarInterpolationView::Evaluate(EnemyFloat2 *output)
 {
     if (duration > 0)
     {
-        timer.previous = timer.current;
-        if (*timer.scale > 0.99f && *timer.scale < 1.01f)
-        {
-            ++timer.current;
-            timer.subframe += 1.0f;
-        }
-        else
-        {
-            timer.subframe = *timer.scale + timer.subframe;
-            timer.current = static_cast<int>(timer.subframe);
-        }
+        timer.Tick();
         if (timer.current >= duration)
         {
-            const int end = duration;
-            if ((timer.flags & 1u) == 0)
-            {
-                timer.current = 0;
-                timer.previous = -999999;
-                timer.subframe = 0.0f;
-                timer.scale = &g_AnmGameSpeed;
-                timer.flags |= 1u;
-            }
-            timer.current = end;
-            timer.subframe = static_cast<float>(end);
-            timer.previous = end - 1;
+            timer.SetCurrent(duration);
             duration = 0;
-            *output = mode == ANM_INTERPOLATION_ADD ? initial : final;
+            if (mode != ANM_INTERPOLATION_ADD)
+            {
+                *output = final;
+                return output;
+            }
+            *output = initial;
             return output;
         }
     }
+
     if (mode == ANM_INTERPOLATION_ADD)
     {
-        EnemyFloat2 next;
-        next.x = initial.x + final.x;
-        next.y = initial.y + final.y;
-        initial = next;
-        *output = next;
+        const EnemyFloat2 initialValue = initial;
+        initial = initialValue + final;
+        *output = initial;
         return output;
     }
+
     if (mode == ANM_INTERPOLATION_ACCELERATE)
     {
-        EnemyFloat2 next;
-        next.x = initial.x + finalTangent.x;
-        next.y = initial.y + finalTangent.y;
-        initial = next;
-        finalTangent.x = finalTangent.x + final.x;
-        finalTangent.y = final.y + finalTangent.y;
-        *output = next;
+        const EnemyFloat2 initialValue = initial;
+        initial = initialValue + finalTangent;
+        finalTangent = finalTangent + final;
+        *output = initial;
         return output;
     }
+
     if (mode == ANM_INTERPOLATION_HERMITE)
     {
         float value = timer.subframe / static_cast<float>(duration);
-        float twice = value + value;
+        float twiceValue = value + value;
         float minusOne = value - 1.0f;
-        float initialWeight = (1.0f + twice) * minusOne * minusOne;
-        float finalWeight = (3.0f - twice) * value * value;
+        float initialWeight = (1.0f + twiceValue) * minusOne * minusOne;
+        float finalWeight = (3.0f - twiceValue) * value * value;
         float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
         float finalTangentWeight = minusOne * value * value;
-        const float finalTangentX = finalTangentWeight * finalTangent.x;
-        const float finalTangentY = finalTangentWeight * finalTangent.y;
-        const float initialTangentX = initialTangentWeight * initialTangent.x;
-        const float initialTangentY = initialTangentWeight * initialTangent.y;
-        const float finalX = finalWeight * final.x;
-        const float finalY = finalWeight * final.y;
-        const float initialY = initialWeight * initial.y;
-        const float sumY = initialY + finalY;
-        EnemyFloat2 result;
-        result.x = initialWeight * initial.x + finalX + initialTangentX + finalTangentX;
-        result.y = sumY + initialTangentY + finalTangentY;
-        *output = result;
+        *output = initial * initialWeight + final * finalWeight +
+            initialTangent * initialTangentWeight +
+            finalTangent * finalTangentWeight;
         return output;
     }
-    float value = CalculateAnmInterpolation(mode, timer.subframe,
-        static_cast<float>(duration));
-    const float differenceY = final.y - initial.y;
-    const float scaledY = differenceY * value;
-    EnemyFloat2 result;
-    result.x = (final.x - initial.x) * value + initial.x;
-    result.y = scaledY + initial.y;
-    *output = result;
+
+    float value = CalculateAnmInterpolation(
+        mode, timer.subframe, static_cast<float>(duration));
+    *output = (final - initial) * value + initial;
     return output;
 }
 

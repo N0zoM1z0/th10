@@ -27209,3 +27209,19 @@ linkages = [
   { offset = 0x1DA, type = "REL32", symbol = "??_M@YGXPAXIHP6EX0@Z@Z", target = 0x004525FF },
   { offset = 0x1E9, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
 ]
+
+[units.enemy-evaluate-scalar-interpolation]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z"
+support_profiles = { "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/RandomMath.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmCreate.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmId.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"] }
+output_dir = "build/match-linked/EnemyScalarInterpolation"
+functions = ["EnemyScalarInterpolationView::Evaluate"]
+symbol = "?Evaluate@EnemyScalarInterpolationView@@QAEPAUEnemyFloat2@@PAU2@@Z"
+target_address = 0x412ac0
+size = 0x28c
+linkages = [{ "offset" = 0x1e, "type" = "DIR32", "symbol" = "__real@3f7d70a4", "target" = 0x470b68 }, { "offset" = 0x2d, "type" = "DIR32", "symbol" = "__real@3f8147ae", "target" = 0x470b64 }, { "offset" = 0x3e, "type" = "DIR32", "symbol" = "__real@3f800000", "target" = 0x470afc }, { "offset" = 0x53, "type" = "REL32", "symbol" = "__ftol2", "target" = 0x463b2c }, { "offset" = 0x8b, "type" = "DIR32", "symbol" = "?g_AnmGameSpeed@@3MA", "target" = 0x476f78 }, { "offset" = 0x188, "type" = "DIR32", "symbol" = "__real@3f800000", "target" = 0x470afc }, { "offset" = 0x191, "type" = "DIR32", "symbol" = "__real@3f800000", "target" = 0x470afc }, { "offset" = 0x1a3, "type" = "DIR32", "symbol" = "__real@40400000", "target" = 0x470bd4 }, { "offset" = 0x1ad, "type" = "DIR32", "symbol" = "__real@3f800000", "target" = 0x470afc }, { "offset" = 0x247, "type" = "REL32", "symbol" = "?CalculateAnmInterpolation@@YGMHMM@Z", "target" = 0x44c350 }]

@@ -7225,3 +7225,27 @@ code. It now says so explicitly; this batch preserves its old epochs instead
 of recertifying obsolete pins. Source transformations and unchanged RNG
 extraction remain useful source-scope evidence. Document/verification records
 are retained; unused old source copies and rebuildable outputs are removed.
+
+## 2026-10-30 Complete enemy scalar interpolation
+
+EnemyScalarInterpolationView::Evaluate412AC0..412D4B is exact across all652
+bytes and ten fields in two independent six-input canonical cold links. TH10's
+441AD0 Float2 evaluator has the same complete instruction/absolute-field bytes,
+with only the two encoded REL32 displacements different; independently read
+call targets agree. This target-local observation identifies the shared value
+operation shape without merging the two physical owners.
+
+EnemyFloat2 constructor returns and ordinary +, -, * operations restore actual
+intermediate values, Hermite weighted sums and eased-Y rounding. Initial-value
+snapshots, separate completion returns and Timer Tick/SetCurrent member methods
+recover the target copies and natural ESI receiver/EDI output/RET convention.
+The first complete rewritten body is652/652 structurally equal; canonical
+replays bind all eight DIR32 and two REL32 fields. Both colds freeze24 recursive
+project inputs and retain distinct images/PDB identities. The affected old
+runtime constructor145 remains exact in its original EnemySpawn recipe.
+
+Current EnemyRuntimeUpdate2362/2412 and EnemyAdvanceMotion160/171 remain nonexact.
+No parent, original class/TU, global storage, product or runtime credit is added.
+Stage/ANM experimental changes are restored; ANM's five-input real RGB graph
+reproduces the already recorded four-byte frontier, so old record/vector
+permutations remain parked. See the [complete proof](evidence/enemy-scalar-context-20261030/README.md).

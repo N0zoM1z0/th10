@@ -10,11 +10,30 @@ struct EnemyEclHostBaseView;
 struct EnemyListNodeView;
 struct EnemyManagerView;
 
+extern float g_AnmGameSpeed;
+
 struct EnemyFloat2
 {
+    EnemyFloat2() {}
+    EnemyFloat2(float x, float y) : x(x), y(y) {}
+
+    EnemyFloat2 operator-(const EnemyFloat2 &other) const
+    {
+        return EnemyFloat2(x - other.x, y - other.y);
+    }
+    EnemyFloat2 operator+(const EnemyFloat2 &other) const
+    {
+        return EnemyFloat2(x + other.x, y + other.y);
+    }
+    EnemyFloat2 operator*(float scale) const
+    {
+        return EnemyFloat2(x * scale, y * scale);
+    }
+
     float x;
     float y;
 };
+
 typedef char EnemyFloat2SizeIs08[(sizeof(EnemyFloat2) == 0x08) ? 1 : -1];
 
 // Maintained view of the 0x2C movement records consumed by the reviewed TH10
@@ -43,6 +62,35 @@ typedef char EnemyMotionFlagsAt28[(offsetof(EnemyMotionView, flags) == 0x28) ? 1
 struct EnemyInterpolationTimerView
 {
     EnemyInterpolationTimerView() { flags &= ~1u; }
+    void Tick()
+    {
+        previous = current;
+        if (*scale > 0.99f && *scale < 1.01f)
+        {
+            ++current;
+            subframe += 1.0f;
+        }
+        else
+        {
+            subframe = *scale + subframe;
+            current = static_cast<int>(subframe);
+        }
+    }
+    void SetCurrent(int value)
+    {
+        if ((flags & 1u) == 0)
+        {
+            current = 0;
+            previous = -999999;
+            subframe = 0.0f;
+            scale = &g_AnmGameSpeed;
+            flags |= 1u;
+        }
+
+        current = value;
+        subframe = static_cast<float>(value);
+        previous = value - 1;
+    }
 
     int previous;
     int current;

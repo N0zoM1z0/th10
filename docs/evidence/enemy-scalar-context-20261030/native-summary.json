@@ -1,0 +1,199 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "unit": "enemy-evaluate-scalar-interpolation",
+  "target_address": "0x00412AC0",
+  "size": 652,
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z"
+  },
+  "project_input_count": 24,
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "a089954abab23ae97364838124065c45d00dddd3f50314e3a2800038cef68d5d",
+    "src/Enemy.hpp": "da605cc7556ffd789c88502ac2bf0e8b7ec51d41a78bead82d51c6773dd21726",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef"
+  },
+  "witnesses": [
+    {
+      "label": "cold-a",
+      "unit": "enemy-evaluate-scalar-interpolation",
+      "matched_bytes": 652,
+      "fields": 10,
+      "image_sha256": "e97ac02c65ddd6e3df0ab6b7c17476009aa5e675780c90da293d818b27747baa",
+      "map_sha256": "d962713a774b458affecce79daa9a2d95352b13f34e0f9fc61b71b49f22d002f",
+      "pdb_sha256": "37e02a8e17d67e9bdce9bf77994344e42f1cad663ac98bea7765989d66c52443",
+      "pdb_guid": "d58eb0b4c2658e41bd17933e262393aa",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution",
+      "candidate_address": "0x00401B70",
+      "decoded_bytes": 652,
+      "normalization_complete": true,
+      "result": "exact"
+    },
+    {
+      "label": "cold-b",
+      "unit": "enemy-runtime-constructor",
+      "matched_bytes": 145,
+      "fields": 0,
+      "image_sha256": "f6660056aa913c472f982640b98a8253418c1c797cac3e919386a78700177746",
+      "map_sha256": "ebe12d5991baa8448d7897e23bee44a760b246af2a485ef7d3e239b99a54e946",
+      "pdb_sha256": "23d0bccc749b5a721fe706c7de62f0220c0288eb82f0a79800f377ded723e51b",
+      "pdb_guid": "4bc58f4cbbb4794eb7db9d5e1021dc45",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution",
+      "candidate_address": "0x00403090",
+      "decoded_bytes": 145,
+      "normalization_complete": true,
+      "result": "exact"
+    },
+    {
+      "label": "cold-b",
+      "unit": "enemy-evaluate-scalar-interpolation",
+      "matched_bytes": 652,
+      "fields": 10,
+      "image_sha256": "de069f8f7ddc70e5e43559d6c27f3ebf8471ec99acecef88702ec281aa4ff876",
+      "map_sha256": "42d61e0bccd977f63904d61db6ab1c35852ca29bffefbf1677a483b31e055345",
+      "pdb_sha256": "dc281cf4ee76353a46f6559cfd60e5a5fc4303eb20730b4db0eedfe8b5b87806",
+      "pdb_guid": "b42533a9e07d4245abed6cc8d9da3361",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution",
+      "candidate_address": "0x00401B70",
+      "decoded_bytes": 652,
+      "normalization_complete": true,
+      "result": "exact"
+    }
+  ],
+  "baseline": {
+    "scalar_candidate_size": 548,
+    "target_size": 652,
+    "result": "nonexact"
+  },
+  "remaining": {
+    "EnemyRuntimeUpdate": {
+      "candidate_size": 2362,
+      "target_size": 2412,
+      "result": "nonexact"
+    },
+    "EnemyAdvanceMotion": {
+      "candidate_size": 160,
+      "target_size": 171,
+      "result": "nonexact"
+    }
+  }
+}

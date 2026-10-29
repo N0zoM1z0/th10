@@ -2,14 +2,20 @@
 
 ## Current checkpoint
 
+EnemyScalarInterpolationView::Evaluate412AC0 is now complete652-byte exact,
+including all10 fields, in two independent six-input canonical cold links.
+Natural Float2 value operations recover the target temporary/rounding schedule
+and ESI/EDI ABI. Its directly affected old runtime constructor145 remains exact
+in the unchanged EnemySpawn recipe. See the [scalar proof](evidence/enemy-scalar-context-20261030/README.md).
+
 The complete Stage lifecycle is exact in two independent canonical cold links:
 constructor188, Initialize522, destructor499, StageCreate151 and LoadData308.
 All1668 bytes/all91 fields pass. This adds1480 authored exact bytes; constructor
 origin remains indeterminate. See the [complete proof](evidence/stage-initialize-context-20261029/README.md).
 
-Current generated [progress](PROGRESS.md): **95,892/275,729 authored owned bytes
-exact,481 authored exact owners**. Total1355 exact owners/163,914 codegen bytes;
-1197 mappings,681 authored mappings,200 authored mapped backlog. Inventory and
+Current generated [progress](PROGRESS.md): **96,544/275,729 authored owned bytes
+exact,482 authored exact owners**. Total1356 exact owners/164,566 codegen bytes;
+1197 mappings,681 authored mappings,199 authored mapped backlog. Inventory and
 whole-product/runtime/portability closure remain separate and incomplete.
 
 The affected old selection passes14 units/2262 bytes/all156 fields in its existing
@@ -67,7 +73,7 @@ rebuildable outputs are disposable, not dependencies of the current workflow.
 
 ## Working inputs
 
-The one current warm context is:
+The current Stage warm context is:
 
 `.analysis/gpt-6.1-sol/stage-initialize-context-20261029/final-context.json`
 
@@ -79,6 +85,13 @@ older snapshot code/compiled outputs can be regenerated rather than restored.
 Cleanup removed4942 unused code/build files (198,807,947 bytes), preserving all
 document/verification records, the existing record archive and D3D evidence.
 No new compressed archive or historical input dependency is introduced.
+
+The current six-input Enemy scalar context is separately pinned at
+`.analysis/gpt-6.1-sol/enemy-scalar-context-20261030/final-context.json`.
+Its24 project inputs, actual profiles and six object hashes must be revalidated
+before cache reuse. Both canonical scalar witnesses and the old-constructor
+witness are retained; acceptance selects enemy-evaluate-scalar-interpolation
+and the affected enemy-runtime-constructor explicitly.
 
 The private probe accepts a prior context and optional desired graph separately.
 Cache objects are identified using the prior source order, and desired profiles
@@ -105,6 +118,15 @@ residuals or archived native sizes still describe current sources. Useful older
 [fog](evidence/stage-fog-evaluate-context-20261029/README.md) and
 [projected-bounds](evidence/stage-bounds-context-20261029/README.md) proofs remain
 records; their old warm contexts are not current inputs.
+
+Fresh diagnostics on2026-10-30 restore all Stage/ANM experiments. Stage remains
+1868/1868 nonexact; definition order, typed instruction colors and initializer TU
+placement are neutral, while a precomputed cubic member pointer grows it1904.
+The real RGB callee graph reproduces ANM's previously bound9960/9964 frontier;
+five-input and fourteen-input images have the same four residual offsets.
+Record/value/whole-vector permutations repeat old closed controls and are parked.
+The next movement lead is EnemyAdvanceMotion160/171 or its complete2412-byte
+runtime caller; scalar652 is now closed, superseding its old551/652 notes.
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed
