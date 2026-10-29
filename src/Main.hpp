@@ -108,6 +108,10 @@ typedef long (__stdcall *MainD3d9Present)(
     const void *dirtyRegion);
 typedef long (__stdcall *MainD3d9BeginScene)(MainD3d9DeviceView *device);
 typedef long (__stdcall *MainD3d9EndScene)(MainD3d9DeviceView *device);
+typedef long (__stdcall *MainD3d9Clear)(
+    MainD3d9DeviceView *device, unsigned int count,
+    const D3d9ClearRectView *rectangles, unsigned int flags,
+    unsigned int color, float z, unsigned int stencil);
 typedef long (__stdcall *MainD3d9SetTransform)(
     MainD3d9DeviceView *device, unsigned int state, const void *matrix);
 typedef long (__stdcall *MainD3d9SetViewport)(
@@ -141,7 +145,7 @@ struct MainD3d9DeviceVtableView
     void *slots048To0A0[23];
     MainD3d9BeginScene BeginScene;                 // +0x0A4
     MainD3d9EndScene EndScene;                     // +0x0A8
-    void *slot0AC;
+    MainD3d9Clear Clear;                         // +0x0AC
     MainD3d9SetTransform SetTransform;             // +0x0B0
     void *slots0B4To0B8[2];
     MainD3d9SetViewport SetViewport;               // +0x0BC
@@ -171,6 +175,8 @@ typedef char MainD3d9DeviceResetPresentAt40[
 typedef char MainD3d9DeviceSceneAtA4[
     (offsetof(MainD3d9DeviceVtableView, BeginScene) == 0xa4 &&
      offsetof(MainD3d9DeviceVtableView, EndScene) == 0xa8) ? 1 : -1];
+typedef char MainD3d9DeviceClearAtAC[
+    (offsetof(MainD3d9DeviceVtableView, Clear) == 0xac) ? 1 : -1];
 typedef char MainD3d9DeviceViewportAtBC[
     (offsetof(MainD3d9DeviceVtableView, SetViewport) == 0xbc &&
      offsetof(MainD3d9DeviceVtableView, GetViewport) == 0xc0) ? 1 : -1];

@@ -1,0 +1,923 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_extent_sha256": "89c0ab99cd05edcb2f57119e853defa5a2d48dc54b5d92b0cbc9ea4b369ff473",
+  "unit": "stage-draw-early",
+  "new_authored_exact_bytes": 1099,
+  "new_exact_owners": 1,
+  "new_source_mappings": 0,
+  "authored_denominator_change": 0,
+  "field_count": 72,
+  "field_contract_sha256": "088f3ae63eec4f9370508275f88b9f605bd85100e99bdcfda4c40d279cbcfce8",
+  "field_contract_source": "config/match-units.toml:units.stage-draw-early.linkages",
+  "source_include_sha256": {
+    "src/AnmManager.cpp": "1db15e643546c99327224b5b656cfd39c483e067cd8bf7f26da157f72e01b7e3",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/Chain.cpp": "7e09a9336183aa995bfb5cb2829ab97f3fa38adf0ee1c2b27b47aee94d0cfd3c",
+    "src/Chain.hpp": "7a92cae0e7b47d276749d00ad41c030f76e656f0e80d77ade2cbfe844a2de91e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.cpp": "6fc26a2ce9a19841a13ed5fa4d9421e44959ead5e77652a2baf9d06272ec14d3",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageDraw.cpp": "f2a5ee36b6b5e6cd81e510e25fae09434e1d38f428099e856ae9b3648fc4c772",
+    "src/StageLifecycle.cpp": "9a9281790d661bc3b108e125466bd6fc50ec70fbc991b9d01c17ba3124f38af5",
+    "src/StageScript.cpp": "5f85456c235e4c10a5a89e33ad4748ef2e28b5abe7864fbe7139e8dd549fd764",
+    "src/StageScript.hpp": "9c1b4b1f644bf1bebec1e7d255982ff0a17cb9b59196a0af37562dfdee683ffa",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e"
+  },
+  "graph": {
+    "source": "src/StageScript.cpp",
+    "support_sources": [
+      "src/StageLifecycle.cpp",
+      "src/StageDraw.cpp",
+      "src/Chain.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/FileSystem.cpp",
+      "src/MainViewport.cpp",
+      "src/TransitionEffect.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_profiles": {
+      "src/TransitionEffect.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ]
+    },
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "target_review": {
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "address": "0x00402850",
+    "span_end": "0x00402C9A",
+    "size": 1099,
+    "instructions": 288,
+    "return_cleanup": 4,
+    "local_branch_destinations": [
+      {
+        "offset": 16,
+        "destination_offset": 30,
+        "mnemonic": "je",
+        "size": 2
+      },
+      {
+        "offset": 35,
+        "destination_offset": 50,
+        "mnemonic": "je",
+        "size": 2
+      },
+      {
+        "offset": 44,
+        "destination_offset": 496,
+        "mnemonic": "jge",
+        "size": 6
+      },
+      {
+        "offset": 345,
+        "destination_offset": 420,
+        "mnemonic": "je",
+        "size": 2
+      },
+      {
+        "offset": 354,
+        "destination_offset": 420,
+        "mnemonic": "jge",
+        "size": 2
+      },
+      {
+        "offset": 418,
+        "destination_offset": 498,
+        "mnemonic": "jmp",
+        "size": 2
+      },
+      {
+        "offset": 494,
+        "destination_offset": 498,
+        "mnemonic": "jmp",
+        "size": 2
+      },
+      {
+        "offset": 506,
+        "destination_offset": 581,
+        "mnemonic": "je",
+        "size": 2
+      },
+      {
+        "offset": 515,
+        "destination_offset": 566,
+        "mnemonic": "jge",
+        "size": 2
+      },
+      {
+        "offset": 564,
+        "destination_offset": 581,
+        "mnemonic": "jmp",
+        "size": 2
+      },
+      {
+        "offset": 598,
+        "destination_offset": 618,
+        "mnemonic": "je",
+        "size": 2
+      },
+      {
+        "offset": 643,
+        "destination_offset": 996,
+        "mnemonic": "je",
+        "size": 6
+      },
+      {
+        "offset": 655,
+        "destination_offset": 858,
+        "mnemonic": "je",
+        "size": 6
+      },
+      {
+        "offset": 744,
+        "destination_offset": 759,
+        "mnemonic": "je",
+        "size": 2
+      },
+      {
+        "offset": 766,
+        "destination_offset": 736,
+        "mnemonic": "jne",
+        "size": 2
+      },
+      {
+        "offset": 870,
+        "destination_offset": 900,
+        "mnemonic": "je",
+        "size": 2
+      },
+      {
+        "offset": 987,
+        "destination_offset": 996,
+        "mnemonic": "je",
+        "size": 2
+      },
+      {
+        "offset": 1018,
+        "destination_offset": 1036,
+        "mnemonic": "je",
+        "size": 2
+      }
+    ],
+    "direct_calls": [
+      {
+        "offset": 56,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 113,
+        "destination": "0x4215a0"
+      },
+      {
+        "offset": 159,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 188,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 223,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 257,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 291,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 529,
+        "destination": "0x43c8b0"
+      },
+      {
+        "offset": 557,
+        "destination": "0x405410"
+      },
+      {
+        "offset": 668,
+        "destination": "0x405300"
+      },
+      {
+        "offset": 675,
+        "destination": "0x420cd0"
+      },
+      {
+        "offset": 686,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 697,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 754,
+        "destination": "0x4451c0"
+      },
+      {
+        "offset": 774,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 808,
+        "destination": "0x4215a0"
+      },
+      {
+        "offset": 872,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 902,
+        "destination": "0x403a30"
+      },
+      {
+        "offset": 909,
+        "destination": "0x403a30"
+      },
+      {
+        "offset": 917,
+        "destination": "0x403a30"
+      },
+      {
+        "offset": 925,
+        "destination": "0x403a30"
+      },
+      {
+        "offset": 933,
+        "destination": "0x403a30"
+      },
+      {
+        "offset": 941,
+        "destination": "0x403a30"
+      },
+      {
+        "offset": 949,
+        "destination": "0x403a30"
+      },
+      {
+        "offset": 957,
+        "destination": "0x403a30"
+      },
+      {
+        "offset": 968,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 1036,
+        "destination": "0x442f50"
+      },
+      {
+        "offset": 1064,
+        "destination": "0x442f50"
+      }
+    ]
+  },
+  "local_branch_destinations": [
+    {
+      "offset": 16,
+      "destination_offset": 30,
+      "size": 2,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 35,
+      "destination_offset": 50,
+      "size": 2,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 44,
+      "destination_offset": 496,
+      "size": 6,
+      "mnemonic": "jge"
+    },
+    {
+      "offset": 345,
+      "destination_offset": 420,
+      "size": 2,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 354,
+      "destination_offset": 420,
+      "size": 2,
+      "mnemonic": "jge"
+    },
+    {
+      "offset": 418,
+      "destination_offset": 498,
+      "size": 2,
+      "mnemonic": "jmp"
+    },
+    {
+      "offset": 494,
+      "destination_offset": 498,
+      "size": 2,
+      "mnemonic": "jmp"
+    },
+    {
+      "offset": 506,
+      "destination_offset": 581,
+      "size": 2,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 515,
+      "destination_offset": 566,
+      "size": 2,
+      "mnemonic": "jge"
+    },
+    {
+      "offset": 564,
+      "destination_offset": 581,
+      "size": 2,
+      "mnemonic": "jmp"
+    },
+    {
+      "offset": 598,
+      "destination_offset": 618,
+      "size": 2,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 643,
+      "destination_offset": 996,
+      "size": 6,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 655,
+      "destination_offset": 858,
+      "size": 6,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 744,
+      "destination_offset": 759,
+      "size": 2,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 766,
+      "destination_offset": 736,
+      "size": 2,
+      "mnemonic": "jne"
+    },
+    {
+      "offset": 870,
+      "destination_offset": 900,
+      "size": 2,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 987,
+      "destination_offset": 996,
+      "size": 2,
+      "mnemonic": "je"
+    },
+    {
+      "offset": 1018,
+      "destination_offset": 1036,
+      "size": 2,
+      "mnemonic": "je"
+    }
+  ],
+  "semantic_member_bindings": [
+    {
+      "offset": 62,
+      "width": 4,
+      "type": "DIR32",
+      "symbol": "?g_StagePublishedCamera@@3UStageCameraStateView@@A",
+      "local": false,
+      "target": 4791676,
+      "addend": 232
+    },
+    {
+      "offset": 74,
+      "width": 4,
+      "type": "DIR32",
+      "symbol": "?g_StagePublishedCamera@@3UStageCameraStateView@@A",
+      "local": false,
+      "target": 4791676,
+      "addend": 236
+    },
+    {
+      "offset": 314,
+      "width": 4,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "local": false,
+      "target": 4791336,
+      "addend": 8
+    },
+    {
+      "offset": 357,
+      "width": 4,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "local": false,
+      "target": 4791336,
+      "addend": 8
+    },
+    {
+      "offset": 427,
+      "width": 4,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "local": false,
+      "target": 4791336,
+      "addend": 8
+    },
+    {
+      "offset": 859,
+      "width": 4,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "local": false,
+      "target": 4791336,
+      "addend": 1872
+    },
+    {
+      "offset": 878,
+      "width": 4,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "local": false,
+      "target": 4791336,
+      "addend": 8
+    },
+    {
+      "offset": 887,
+      "width": 4,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "local": false,
+      "target": 4791336,
+      "addend": 1872
+    }
+  ],
+  "cold_builds": [
+    {
+      "result": "exact",
+      "symbol": "?StageDrawEarly@@YGHPAUStageScriptView@@@Z",
+      "target_address": "0x00402850",
+      "candidate_address": "0x004032D0",
+      "size": 1099,
+      "extent_source": "pdb-section-contribution",
+      "pdb_guid": "968b4b220c5b104b9a68033a260804ad",
+      "pdb_age": 1,
+      "pdb_module_index": 7,
+      "normalization_complete": true,
+      "decoded_bytes": 1099,
+      "first_differences": [],
+      "artifact_dir": "build/gpt-6.1-sol/stage-early-context-20261029/cold-a",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "maintained_source_input_count": 11,
+      "compiled_afresh": true,
+      "reused_objects": 0,
+      "field_count": 72,
+      "field_contract_sha256": "088f3ae63eec4f9370508275f88b9f605bd85100e99bdcfda4c40d279cbcfce8",
+      "canonical_report_sha256": "334af1f43dfce5875333cf9da2f4318d8cd70e8bd9a803056c296f3f43a82fae",
+      "artifact_sha256": {
+        "image": "90809e9440adb6b080ed041a5cc0f761094c41dd64d102d962c2749c7e9aa00a",
+        "map": "69f65ecad679e3fb9b17a3c1bf2592d9f66d3f6a7f389c79561abc33c6420b91",
+        "pdb": "18696527f35dcd3920f2b47a093d91256a65ccdb149b38dc652e67954501d18f"
+      },
+      "selected_same_image": [
+        {
+          "unit": "stage-draw-late",
+          "result": "exact",
+          "size": 929,
+          "fields": 78
+        },
+        {
+          "unit": "stage-configure-camera",
+          "result": "exact",
+          "size": 330,
+          "fields": 10
+        },
+        {
+          "unit": "main-select-viewport",
+          "result": "exact",
+          "size": 60,
+          "fields": 1
+        },
+        {
+          "unit": "main-disable-fog",
+          "result": "exact",
+          "size": 53,
+          "fields": 2
+        },
+        {
+          "unit": "stage-draw-early-callback",
+          "result": "exact",
+          "size": 7,
+          "fields": 1
+        },
+        {
+          "unit": "stage-draw-late-callback",
+          "result": "exact",
+          "size": 7,
+          "fields": 1
+        },
+        {
+          "unit": "anm-render-flush-vertex-buffer",
+          "result": "exact",
+          "size": 133,
+          "fields": 4
+        },
+        {
+          "unit": "anm-manager-draw-layer",
+          "result": "exact",
+          "size": 67,
+          "fields": 1
+        },
+        {
+          "unit": "anm-vm-timer-add",
+          "result": "exact",
+          "size": 88,
+          "fields": 4
+        },
+        {
+          "unit": "anm-vm-timer-set-current",
+          "result": "exact",
+          "size": 57,
+          "fields": 1
+        },
+        {
+          "unit": "transition-effect-factory",
+          "result": "exact",
+          "size": 82,
+          "fields": 2
+        },
+        {
+          "unit": "anm-render-draw",
+          "result": "exact",
+          "size": 216,
+          "fields": 21
+        }
+      ],
+      "local_branch_count": 18,
+      "callee_scalar_occurrences": [
+        {
+          "unit": "stage-configure-camera",
+          "offset": "0x88",
+          "symbol": "__real@4f800000",
+          "size": 4,
+          "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96",
+          "result": "raw-equal"
+        },
+        {
+          "unit": "stage-configure-camera",
+          "offset": "0x9E",
+          "symbol": "__real@4f800000",
+          "size": 4,
+          "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96",
+          "result": "raw-equal"
+        },
+        {
+          "unit": "anm-vm-timer-add",
+          "offset": "0xC",
+          "symbol": "__real@3f7d70a4",
+          "size": 4,
+          "sha256": "5f8618f85b706805a449be464fb9446b864b08dc5f23bf7e53be320f3448dba7",
+          "result": "raw-equal"
+        },
+        {
+          "unit": "anm-vm-timer-add",
+          "offset": "0x1B",
+          "symbol": "__real@3f8147ae",
+          "size": 4,
+          "sha256": "936d9b2b79be533be11269a05a5bdbed7c89683d241dff467de67af35b9afce4",
+          "result": "raw-equal"
+        }
+      ],
+      "nonexact_instance_callee": {
+        "symbol": "?StageDrawInstances@@YGHPAUStageScriptView@@H@Z",
+        "native_size": 564,
+        "target_size": 592,
+        "return_cleanup": 8,
+        "binding_scope": "Actual two-stack-argument ABI and address only; no callee byte-equality claim."
+      }
+    },
+    {
+      "result": "exact",
+      "symbol": "?StageDrawEarly@@YGHPAUStageScriptView@@@Z",
+      "target_address": "0x00402850",
+      "candidate_address": "0x004032D0",
+      "size": 1099,
+      "extent_source": "pdb-section-contribution",
+      "pdb_guid": "5bdbc7971b28664cb091166768c2382c",
+      "pdb_age": 1,
+      "pdb_module_index": 7,
+      "normalization_complete": true,
+      "decoded_bytes": 1099,
+      "first_differences": [],
+      "artifact_dir": "build/gpt-6.1-sol/stage-early-context-20261029/cold-b",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "maintained_source_input_count": 11,
+      "compiled_afresh": true,
+      "reused_objects": 0,
+      "field_count": 72,
+      "field_contract_sha256": "088f3ae63eec4f9370508275f88b9f605bd85100e99bdcfda4c40d279cbcfce8",
+      "canonical_report_sha256": "7c32307313b092e91aae6b0fcb9e69d4af61b1ae3a9ca10fdf3e4ce818926504",
+      "artifact_sha256": {
+        "image": "e3bb71668204f8e4febf655fc091f694913f54bc52737cb3aa0d4b079e7cc820",
+        "map": "48b39e3c4935344953aa870b6cf93db06786cfba56ecc8517db25bdba06c71e5",
+        "pdb": "be880e081b65940b03cb1f032fa97658e6014898807717977f28d9f18ce73f8d"
+      },
+      "selected_same_image": [
+        {
+          "unit": "stage-draw-late",
+          "result": "exact",
+          "size": 929,
+          "fields": 78
+        },
+        {
+          "unit": "stage-configure-camera",
+          "result": "exact",
+          "size": 330,
+          "fields": 10
+        },
+        {
+          "unit": "main-select-viewport",
+          "result": "exact",
+          "size": 60,
+          "fields": 1
+        },
+        {
+          "unit": "main-disable-fog",
+          "result": "exact",
+          "size": 53,
+          "fields": 2
+        },
+        {
+          "unit": "stage-draw-early-callback",
+          "result": "exact",
+          "size": 7,
+          "fields": 1
+        },
+        {
+          "unit": "stage-draw-late-callback",
+          "result": "exact",
+          "size": 7,
+          "fields": 1
+        },
+        {
+          "unit": "anm-render-flush-vertex-buffer",
+          "result": "exact",
+          "size": 133,
+          "fields": 4
+        },
+        {
+          "unit": "anm-manager-draw-layer",
+          "result": "exact",
+          "size": 67,
+          "fields": 1
+        },
+        {
+          "unit": "anm-vm-timer-add",
+          "result": "exact",
+          "size": 88,
+          "fields": 4
+        },
+        {
+          "unit": "anm-vm-timer-set-current",
+          "result": "exact",
+          "size": 57,
+          "fields": 1
+        },
+        {
+          "unit": "transition-effect-factory",
+          "result": "exact",
+          "size": 82,
+          "fields": 2
+        },
+        {
+          "unit": "anm-render-draw",
+          "result": "exact",
+          "size": 216,
+          "fields": 21
+        }
+      ],
+      "local_branch_count": 18,
+      "callee_scalar_occurrences": [
+        {
+          "unit": "stage-configure-camera",
+          "offset": "0x88",
+          "symbol": "__real@4f800000",
+          "size": 4,
+          "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96",
+          "result": "raw-equal"
+        },
+        {
+          "unit": "stage-configure-camera",
+          "offset": "0x9E",
+          "symbol": "__real@4f800000",
+          "size": 4,
+          "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96",
+          "result": "raw-equal"
+        },
+        {
+          "unit": "anm-vm-timer-add",
+          "offset": "0xC",
+          "symbol": "__real@3f7d70a4",
+          "size": 4,
+          "sha256": "5f8618f85b706805a449be464fb9446b864b08dc5f23bf7e53be320f3448dba7",
+          "result": "raw-equal"
+        },
+        {
+          "unit": "anm-vm-timer-add",
+          "offset": "0x1B",
+          "symbol": "__real@3f8147ae",
+          "size": 4,
+          "sha256": "936d9b2b79be533be11269a05a5bdbed7c89683d241dff467de67af35b9afce4",
+          "result": "raw-equal"
+        }
+      ],
+      "nonexact_instance_callee": {
+        "symbol": "?StageDrawInstances@@YGHPAUStageScriptView@@H@Z",
+        "native_size": 564,
+        "target_size": 592,
+        "return_cleanup": 8,
+        "binding_scope": "Actual two-stack-argument ABI and address only; no callee byte-equality claim."
+      }
+    }
+  ],
+  "source_models": [
+    {
+      "model": "entry",
+      "early_size": 1088,
+      "target_size": 1099,
+      "result": "mismatch",
+      "late_size": 929,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "transition-definition",
+      "early_size": 1099,
+      "target_size": 1099,
+      "result": "mismatch",
+      "late_size": 929,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "tint-capture",
+      "early_size": 1099,
+      "target_size": 1099,
+      "result": "mismatch",
+      "late_size": 929,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "rectangle-long",
+      "early_size": 1099,
+      "target_size": 1099,
+      "result": "mismatch",
+      "late_size": 929,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "clear-member",
+      "early_size": 1099,
+      "target_size": 1099,
+      "result": "mismatch",
+      "late_size": 929,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "rectangle-temporaries",
+      "early_size": 1099,
+      "target_size": 1099,
+      "result": "mismatch",
+      "late_size": 929,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "clear-virtual",
+      "early_size": 1099,
+      "target_size": 1099,
+      "result": "mismatch",
+      "late_size": 929,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "clear-main-device",
+      "early_size": 1099,
+      "target_size": 1099,
+      "result": "structural-exact",
+      "late_size": 929,
+      "acceptance_authority": "none"
+    },
+    {
+      "model": "final-source",
+      "early_size": 1099,
+      "target_size": 1099,
+      "result": "structural-exact",
+      "late_size": 929,
+      "acceptance_authority": "none"
+    }
+  ],
+  "other_complete_candidates": {
+    "camera": {
+      "result": "mismatch",
+      "candidate_size": 282,
+      "target_size": 287
+    }
+  },
+  "inline_callee_materialization": {
+    "unit": "anm-vm-timer-set-current",
+    "source_definition": "src/AnmManager.hpp",
+    "artifact_owner": "src/StageScript.cpp",
+    "extent": 57,
+    "fields": 1,
+    "scope": "Same complete canonical byte/field contract in this image; only the header-inline PDB owner is selected explicitly. Original recipe and target binding are unchanged."
+  },
+  "map_label_limit": "Four Main+8 values coincide with an unrelated PbgArchives diagnostic-anchor label. Bind the true Main symbol plus eight; camera+E8/+EC and Main+750 also use explicit semantic bases/addends.",
+  "factory_profile_source": "config/match-units.toml:units.transition-effect-factory.profile; no explicit /GS does not mean /GS-.",
+  "restored_controls": [
+    "LONG rectangle fields",
+    "generic Clear member wrapper",
+    "temporary rectangle constructor",
+    "actual COM virtual-prefix view"
+  ],
+  "references": [
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3drect",
+      "scope": "LONG rectangle-field source hypothesis; neutral and restored."
+    },
+    {
+      "url": "https://github.com/microsoft/win32metadata/blob/64ed9177fb76eb244fc9051c74b8a93fdfe20873/generation/WinSDK/RecompiledIdlHeaders/um/d3d9helper.h",
+      "scope": "Actual COM slot/signature prefix for a neutral virtual-call control; no SDK/header copied into the maintained source or toolchain."
+    }
+  ],
+  "oracle_sha256": {
+    "scripts/compare-linked-function.py": "cd4a1c5a34e427bb2ca257e37280c34e9731ab010d0f9c15568128acfab5d414",
+    "scripts/linked_image.py": "f65c6ac8878d46323daae75e249b60527035dae30f40752871ee86af0a89a533",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/build-match-unit.py": "0da61513525eb2411a57210bd0ce7bd258dca42b54f28db7bbcb11032f05f4fd"
+  },
+  "limits": {
+    "original_source_class_names": "unknown",
+    "production_translation_units": "unknown",
+    "data_global_alias_ownership": "not closed; instance draw retains a separate fog alias",
+    "single_image_exact_closure": "not claimed",
+    "runtime_validation": "not claimed",
+    "portability": "not claimed",
+    "unaffected_main_graph": "not rebuilt solely for new unused header methods"
+  }
+}

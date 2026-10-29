@@ -2,11 +2,11 @@
 
 ## Start here
 
-Current checkpoint reconstructs complete Stage late draw402CA0..403040:929 bytes/
-all78 fields and15 local destinations pass two independent ten-input colds.
-Typed Main fog-cache/device setup and natural camera viewport installation
-restore the complete owner. Eight old owners745/all24 pass twice. Early1088/1099,
-default camera282/287 and single-image/product closure remain open.
+Current checkpoint reconstructs complete Stage early draw402850..402C9A:1099
+bytes/all72 fields and18 local destinations pass two independent eleven-input
+colds. Real factory visibility, tint capture and Main's typed Clear interface
+restore the full owner. Twelve old owners2029/all126 pass twice. Default camera
+282/287, instance drawing and single-image/product closure remain open.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -34,9 +34,41 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**89,473/275,729 reviewed authored owned bytes exact, 472 exact authored owners**;
-681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1345 exact.
+**90,572/275,729 reviewed authored owned bytes exact, 473 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1346 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [complete Stage early draw proof](evidence/stage-early-context-20261029/README.md):
+
+- Early402850..402C9A/1099, stack owner/RET4, is exact twice with all72 fields
+  and18 fixed local destinations. Adds1099 authored bytes, no new mapping or
+  denominator; authored mapped exact backlog is208.
+- An eleven-input StageCreate recipe adds real TransitionEffect.cpp visibility
+  using its existing /GL profile. The original ten source profiles stay fixed.
+  This restores actual factory EBX priority/five stack operands/RET20 naturally;
+  its complete82-byte owner also passes without extra credit.
+- Tint is captured before writing useMixColor, matching the target read/store
+  order. All three clears use the actual Main+8 device and typed vtable Clear+AC.
+  This restores both rectangle initialization/vtable schedules. LONG fields,
+  generic member wrappers, temporary constructors and a real virtual COM prefix
+  were byte-neutral and restored. No fake ABI/register, volatile, padding,
+  source-byte patch or foreign/new compiler flags are used.
+- Twelve old same-image contracts2029/all126 pass twice: Late929, camera330,
+  selector60, fog53, adapters7 each, Flush133, DrawLayer67, timer Add88,
+  SetCurrent57, factory82 and Draw216 including its complete table. Only Early
+  is a canonical cold selector in this new graph. The inline SetCurrent body
+  materializes in StageScript.cpp from AnmManager.hpp; its full old contract
+  uses that explicitly verified PDB owner here. Original recipes remain separate.
+- Default camera remains282/287 and instance rendering remains nonexact. The
+  current warm Stage graph is `.analysis/gpt-6.1-sol/stage-early-context-20261029/final-context.json`.
+  Do not reuse older Main/header pins blindly. Original classes/TUs, physical
+  global alias storage and product/runtime/portability closure remain independent.
+- Next coherent medium/large lead is the actual592-byte instance renderer or
+  its1984-byte bounds callee. Recheck current complete bodies/real ABI before
+  treating old size or decompiler notes as facts. The Main fog/device and camera
+  activation operations are now available; retain the exact early/late callers
+  while recovering their shared dependency. Do not reopen byte-neutral controls
+  without new evidence.
 
 Latest [complete Stage late draw proof](evidence/stage-late-context-20261029/README.md):
 
@@ -57,10 +89,11 @@ Latest [complete Stage late draw proof](evidence/stage-late-context-20261029/REA
   fog53, adapters7 each, real Flush133, DrawLayer67 and timer Add88. New Late
   plus camera/viewport/fog are the four canonical cold selectors. No unrelated
   Main/WinMain cohort is rebuilt solely for new unused header methods.
-- Early remains1088/1099 and default camera282/287, NONEXACT. Instance drawing
+- At the late checkpoint Early was1088/1099; it is now exact above. Default
+  camera282/287 is NONEXACT. Instance drawing
   remains nonexact; Late's four real two-stack-argument/RET8 calls bind its
   address/ABI only. Global alias/data ownership and later phases remain open.
-- Next concrete substantial lead: Early's actual43C8B0 factory uses EBX priority
+- The then-open Early visibility lead is closed above: actual43C8B0 uses EBX priority
   and five stack operands/RET20. Its genuine maintained82-byte definition is
   absent from this ten-input graph. Connect real callee visibility and compare
   all1099 bytes; do not force its register through a fake declaration. Rectangle

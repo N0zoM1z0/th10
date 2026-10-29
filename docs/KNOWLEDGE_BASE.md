@@ -6958,3 +6958,43 @@ the current ten-input link, whose unresolved declaration keeps all six stack
 arguments. Connect the actual definition before altering caller spelling or ABI.
 No extra exact credit follows from the already accepted factory. See
 [the complete late draw proof](evidence/stage-late-context-20261029/README.md).
+
+
+## 2026-10-29 Complete Stage early draw and real callee visibility
+
+Early402850..402C9A owns1099 bytes/288 instructions and18 fixed local branches,
+with a stack StageScript pointer and RET4 on both exits. Two independent canonical
+eleven-input StageCreate colds reproduce the complete owner/all72 semantic fields.
+It covers camera setup, depth/color clears, transition factory/timer, tint,
+eight script-VM slots, instance layers0..7, counters and final state restoration.
+
+Adding the real TransitionEffect.cpp definition changes the prior1088-byte
+caller to1099 and naturally restores factory priority in EBX, five stack operands
+and RET20. The existing factory /GL profile is retained; omission of explicit
+/GS is not /GS-. Original ten-source flags stay fixed. The real82-byte factory
+passes its full old contract here and adds no new exact credit.
+
+The target reads tint before writing the renderer's useMixColor flag. Explicit
+capture restores that order and the later register allocation. Two remaining
+rectangle-clear schedules are recovered by using Main's actual device+8 and a
+typed Clear+AC vtable member. Generic wrappers, LONG coordinates, temporaries and
+a genuine COM virtual-prefix control are byte-neutral and restored. All three
+actual clear calls keep their real argument/COM ABI; no artificial register,
+volatile, padding, noinline or profile controls are used. Main's new typed slot
+keeps the vtable layout and has a native offsetof assertion.
+
+Twelve old same-image owners2029/all126 pass in each cold, including Late929,
+camera330, selector/fog113, two7-byte callbacks, actual Flush133/DrawLayer67,
+timers88/57, factory82 and the complete216-byte Draw table owner. SetCurrent's
+header-inline57-byte body is physically contributed by StageScript.cpp in this
+image; selecting that attested PDB owner changes no target/byte/field contract or
+canonical original recipe. All18 local destinations are preserved, and four
+Main+8 operands bind the real Main base even when an unrelated diagnostic anchor
+shares that numerical address. Full field binding is independent of map labels.
+
+Adds1099 authored exact bytes, no new source mapping or denominator. Default
+camera282/287 and instance drawing remain nonexact. The shared592-byte instance
+renderer and1984-byte bounds owner are concrete next dependencies; current native
+extents and ABI need fresh review. Original source classes/TUs, data/global alias
+ownership, one-image/product/runtime and portability remain open. See
+[the complete early draw proof](evidence/stage-early-context-20261029/README.md).

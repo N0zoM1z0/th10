@@ -1,6 +1,7 @@
 #include "Main.hpp"
 #include "StageScript.hpp"
 #include "MainViewport.hpp"
+#include "TransitionEffect.hpp"
 #include <string.h>
 
 // Official D3DX9 array/translation contracts; the target import thunks are
@@ -197,11 +198,8 @@ int __stdcall StageDrawInstances(StageScriptView *stage, int layer)
 struct MainSupervisorView;
 extern MainSupervisorView g_MainSupervisorView;
 // Target0x420CD0: EDI supervisor, clears the full-dword fog cache if necessary.
-// Target0x43C8B0: EBX draw priority plus five stack arguments, RET20. The
-// allocation/registration implementation remains external; the caller ignores
-// allocation failure and still proceeds with its transition state writes.
-void *__stdcall StageCreateTransitionEffect(int drawPriority, int kind, int frames,
-    unsigned int value0, unsigned int value1, unsigned int value2);
+// Target0x43C8B0 takes EBX priority and five stack arguments, RET20. The
+// exact Early recipe includes the real factory definition for LTCG visibility.
 
 static void StageSetRenderState(unsigned int state, unsigned int value)
 {
@@ -260,16 +258,19 @@ int __stdcall StageDrawEarly(StageScriptView *stage)
         StageSetRenderState(34, stage->camera.fog.color);
         StageSetRenderState(36, StageFloatBits(stage->camera.fog.start));
         StageSetRenderState(37, StageFloatBits(stage->camera.fog.end));
-        g_Direct3DDevice->vtable->Clear(g_Direct3DDevice, 0, NULL, 2, 0, 1.0f, 0);
+        g_MainSupervisorView.d3dDevice->vtable->Clear(
+            g_MainSupervisorView.d3dDevice, 0, NULL, 2, 0, 1.0f, 0);
         if ((stage->flags & 4) != 0 && stage->frame < 34)
         {
             D3d9ClearRectView rectangle = {32, 16, 416, 464};
-            g_Direct3DDevice->vtable->Clear(g_Direct3DDevice, 1, &rectangle, 1, 0, 1.0f, 0);
+            g_MainSupervisorView.d3dDevice->vtable->Clear(
+                g_MainSupervisorView.d3dDevice, 1, &rectangle, 1, 0, 1.0f, 0);
         }
         else
         {
             D3d9ClearRectView rectangle = {32, 16, 416, 464};
-            g_Direct3DDevice->vtable->Clear(g_Direct3DDevice, 1, &rectangle, 1,
+            g_MainSupervisorView.d3dDevice->vtable->Clear(
+                g_MainSupervisorView.d3dDevice, 1, &rectangle, 1,
                 stage->camera.fog.color & 0xffffff, 1.0f, 0);
         }
     }
@@ -289,8 +290,9 @@ int __stdcall StageDrawEarly(StageScriptView *stage)
     }
     if (reinterpret_cast<unsigned char *>(&stage->tint)[3] != 0)
     {
+        unsigned int tint = stage->tint;
         g_AnmRenderManagerView->useMixColor = 1;
-        g_AnmRenderManagerView->mixColor.value = stage->tint;
+        g_AnmRenderManagerView->mixColor.value = tint;
     }
     stage->visibleObjectCount = 0;
     stage->culledObjectCount = 0;
