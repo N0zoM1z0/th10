@@ -25460,3 +25460,121 @@ linkages = [
   { offset = 0x3b, type = "REL32", symbol = "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z", target = 0x44d110 },
   { offset = 0x60, type = "DIR32", symbol = "??_7CStreamingSound@@6B@", target = 0x4705d4 },
 ]
+
+# Startup factory, worker launch and callback extents in their maintained context.
+
+[units.startup-worker-constructor]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+pdb_source = "src/Startup.cpp"
+output_dir = "build/match-linked/StartupWorkerLifecycle"
+functions = ["StartupWorkerView::StartupWorkerView"]
+symbol = "??0StartupWorkerView@@QAE@XZ"
+target_address = 0x41f850
+size = 128
+linkages = [
+  { offset = 0x3, type = "DIR32", symbol = "??_7ScriptViewerWorkerView@@6B@", target = 0x4703e4 },
+  { offset = 0x78, type = "DIR32", symbol = "?g_StartupWorker@@3PAUStartupWorkerView@@A", target = 0x477820 },
+]
+
+[units.startup-register-tasks]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+pdb_source = "src/Startup.cpp"
+output_dir = "build/match-linked/StartupWorkerLifecycle"
+functions = ["StartupWorkerView::RegisterTasks"]
+symbol = "?RegisterTasks@StartupWorkerView@@QAEHXZ"
+target_address = 0x41fac0
+size = 140
+linkages = [
+  { offset = 0x3, type = "DIR32", symbol = "?OnUpdate@StartupWorkerView@@SIHPAU1@@Z", target = 0x41feb0 },
+  { offset = 0x8, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x449ed0 },
+  { offset = 0x13, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x491be4 },
+  { offset = 0x21, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x449ae0 },
+  { offset = 0x26, type = "DIR32", symbol = "?OnDraw@StartupWorkerView@@SIHPAU1@@Z", target = 0x41fef0 },
+  { offset = 0x2e, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x449ed0 },
+  { offset = 0x3a, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x491be4 },
+  { offset = 0x48, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x449b70 },
+  { offset = 0x53, type = "REL32", symbol = "?Stop@ScriptViewerWorkerView@@QAEXXZ", target = 0x44c150 },
+  { offset = 0x5f, type = "DIR32", symbol = "?StartupThread@StartupWorkerView@@SAHXZ", target = 0x41f990 },
+  { offset = 0x6a, type = "DIR32", symbol = "?StartupThread@StartupWorkerView@@SAHXZ", target = 0x41f990 },
+  { offset = 0x7d, type = "REL32", symbol = "__beginthreadex", target = 0x453683 },
+]
+
+[units.startup-worker-create]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+pdb_source = "src/Startup.cpp"
+output_dir = "build/match-linked/StartupWorkerLifecycle"
+functions = ["CreateStartupWorker"]
+symbol = "?CreateStartupWorker@@YAPAUStartupWorkerView@@XZ"
+target_address = 0x41fd00
+size = 69
+linkages = [
+  { offset = 0x7, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x452493 },
+  { offset = 0x16, type = "REL32", symbol = "??0StartupWorkerView@@QAE@XZ", target = 0x41f850 },
+  { offset = 0x22, type = "REL32", symbol = "?RegisterTasks@StartupWorkerView@@QAEHXZ", target = 0x41fac0 },
+  { offset = 0x30, type = "REL32", symbol = "??1StartupWorkerView@@QAE@XZ", target = 0x41fb50 },
+  { offset = 0x36, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x4524a1 },
+]
+
+[units.startup-release-resources]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+pdb_source = "src/Startup.cpp"
+output_dir = "build/match-linked/StartupWorkerLifecycle"
+functions = ["ReleaseStartupResources"]
+symbol = "?ReleaseStartupResources@@YAHXZ"
+target_address = 0x41f930
+size = 91
+linkages = [
+  { offset = 0x3, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x491c10 },
+  { offset = 0x15, type = "REL32", symbol = "?Release@AnmLoadedView@@QAEXXZ", target = 0x447810 },
+  { offset = 0x1d, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x4524a1 },
+  { offset = 0x2c, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x491c10 },
+  { offset = 0x41, type = "REL32", symbol = "?Release@AnmLoadedView@@QAEXXZ", target = 0x447810 },
+  { offset = 0x49, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x4524a1 },
+]
+
+[units.startup-draw-callback]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+pdb_source = "src/Startup.cpp"
+output_dir = "build/match-linked/StartupWorkerLifecycle"
+functions = ["StartupWorkerView::OnDraw"]
+symbol = "?OnDraw@StartupWorkerView@@SIHPAU1@@Z"
+target_address = 0x41fef0
+size = 7
+linkages = [
+  { offset = 0x2, type = "REL32", symbol = "?Draw@StartupWorkerView@@QAGHXZ", target = 0x41fdd0 },
+]

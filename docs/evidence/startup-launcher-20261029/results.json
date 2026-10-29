@@ -1,0 +1,1114 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_owned_bytes": 435,
+  "new_exact_owners": 5,
+  "new_authored_exact_bytes": 300,
+  "new_indeterminate_exact_bytes": 135,
+  "new_candidates": 5,
+  "new_reviewed_owned_bytes": 178,
+  "new_compiler_excluded_bytes": 27,
+  "new_indeterminate_owned_bytes": 151,
+  "authored_denominator_change": 0,
+  "new_source_mappings": 9,
+  "new_source_mapping_owned_bytes": 1198,
+  "source_pins": {
+    "src/AnmDrawCallbacks.cpp": "49cb0da52c3a1fbd8d6a6fdf403a54b10737ef003d050615bc4af5c62612ad37",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/GameErrorContext.hpp": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37",
+    "src/GameStatistics.cpp": "60eb7f57910372a78e6d6bba45c22af8e758bc5114aaa8bb00faf7a43eb1f13b",
+    "src/GameStatistics.hpp": "8bfbbb20964de4304e1b77196a6fcafaad2ba4aba7264d3e522fc7307860496f",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "8db469e67541ea2a45be69c89c9f20375ea217b0c6976d4177d3c5e2b0a0a857",
+    "src/Main.hpp": "128274b3122e4c4af9aa4d5adf2e3bc59f4b1e455a6d3677ee51f14a46b0e4fb",
+    "src/MainViewport.cpp": "cbc513421b43a770c5d2254fd1cae140554c2abfdbe70c36e0f36ca5a3848799",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.cpp": "7871c32b29e1d81a2db45a91d08bc65e0a314f37885fb3befbbea81859475439",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.cpp": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7",
+    "src/ScriptViewer.hpp": "3b436665dac628f6dcbb525d1bd7788a4b2b83b9996facd2ee290e446e498fc9",
+    "src/ScriptViewerOwners.hpp": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+    "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157",
+    "src/Sound.cpp": "be8f8af5725bf0fa90b83841729a44d0197863725f2d3e08e7151a61797b0a6f",
+    "src/Sound.hpp": "9cb28ca14d02ee6052bf8d97bb46630f1000715b06d14b4a8e87793325321938",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+    "src/Startup.cpp": "af29d74b0323ea35c01c578a82c51c4d16a8a3a0734e318d40cdaf6b3d310201",
+    "src/ZWave.cpp": "eef1e940196f84fc5118bf0b5ebf2e95c36044e2c5cfc78da75bffb1d599e87e"
+  },
+  "comparison_pins": {
+    "scripts/compare-linked-function.py": "22291f2d7e6724ac0836582ddd9c4fe6ba240e57a70797a743135411ae759238",
+    "config/match-units.toml": "936489bf3aadc4a7fb8cabdd2cfa2e1a3dffbe44ef8b42c4dd4f94be4eb842b7",
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f"
+  },
+  "canonical_colds": {
+    "a": {
+      "result": "exact",
+      "unit_count": 5,
+      "matched_bytes": 435,
+      "groups": [
+        {
+          "artifact": "build/match-linked/StartupWorkerLifecycle",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "image_sha256": "c2df4908ac62420f91e9482efd9b7d0d32db87ddd8dd967db8faea7b6adeb20e",
+          "pdb_guid": "064d41d6e841aa458cfb87e57b1e5829",
+          "pdb_age": 1,
+          "units": [
+            {
+              "unit": "startup-worker-constructor",
+              "result": "exact",
+              "size": 128,
+              "target_address": "0x0041F850",
+              "matched_compared_bytes": 128,
+              "decoded_bytes": 128,
+              "normalization_complete": true,
+              "candidate_address": "0x00414730",
+              "fields": 2
+            },
+            {
+              "unit": "startup-register-tasks",
+              "result": "exact",
+              "size": 140,
+              "target_address": "0x0041FAC0",
+              "matched_compared_bytes": 140,
+              "decoded_bytes": 140,
+              "normalization_complete": true,
+              "candidate_address": "0x004147B0",
+              "fields": 12
+            },
+            {
+              "unit": "startup-worker-create",
+              "result": "exact",
+              "size": 69,
+              "target_address": "0x0041FD00",
+              "matched_compared_bytes": 69,
+              "decoded_bytes": 69,
+              "normalization_complete": true,
+              "candidate_address": "0x00414840",
+              "fields": 5
+            },
+            {
+              "unit": "startup-release-resources",
+              "result": "exact",
+              "size": 91,
+              "target_address": "0x0041F930",
+              "matched_compared_bytes": 91,
+              "decoded_bytes": 91,
+              "normalization_complete": true,
+              "candidate_address": "0x004148B0",
+              "fields": 6
+            },
+            {
+              "unit": "startup-draw-callback",
+              "result": "exact",
+              "size": 7,
+              "target_address": "0x0041FEF0",
+              "matched_compared_bytes": 7,
+              "decoded_bytes": 7,
+              "normalization_complete": true,
+              "candidate_address": "0x00414B60",
+              "fields": 1
+            }
+          ]
+        }
+      ]
+    },
+    "b": {
+      "result": "exact",
+      "unit_count": 5,
+      "matched_bytes": 435,
+      "groups": [
+        {
+          "artifact": "build/match-linked/StartupWorkerLifecycle",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "image_sha256": "51f4771c9263b5d71857e15838e827c987f4456f86db9ccd3f332dae8a481bfb",
+          "pdb_guid": "7cde1d07132cac43b256e70c7c7f8da5",
+          "pdb_age": 1,
+          "units": [
+            {
+              "unit": "startup-worker-constructor",
+              "result": "exact",
+              "size": 128,
+              "target_address": "0x0041F850",
+              "matched_compared_bytes": 128,
+              "decoded_bytes": 128,
+              "normalization_complete": true,
+              "candidate_address": "0x00414730",
+              "fields": 2
+            },
+            {
+              "unit": "startup-register-tasks",
+              "result": "exact",
+              "size": 140,
+              "target_address": "0x0041FAC0",
+              "matched_compared_bytes": 140,
+              "decoded_bytes": 140,
+              "normalization_complete": true,
+              "candidate_address": "0x004147B0",
+              "fields": 12
+            },
+            {
+              "unit": "startup-worker-create",
+              "result": "exact",
+              "size": 69,
+              "target_address": "0x0041FD00",
+              "matched_compared_bytes": 69,
+              "decoded_bytes": 69,
+              "normalization_complete": true,
+              "candidate_address": "0x00414840",
+              "fields": 5
+            },
+            {
+              "unit": "startup-release-resources",
+              "result": "exact",
+              "size": 91,
+              "target_address": "0x0041F930",
+              "matched_compared_bytes": 91,
+              "decoded_bytes": 91,
+              "normalization_complete": true,
+              "candidate_address": "0x004148B0",
+              "fields": 6
+            },
+            {
+              "unit": "startup-draw-callback",
+              "result": "exact",
+              "size": 7,
+              "target_address": "0x0041FEF0",
+              "matched_compared_bytes": 7,
+              "decoded_bytes": 7,
+              "normalization_complete": true,
+              "candidate_address": "0x00414B60",
+              "fields": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "old_guards": {
+    "cold-a": {
+      "result": "exact",
+      "unit_count": 23,
+      "bytes": 6235,
+      "fields": 179,
+      "image_sha256": "c2df4908ac62420f91e9482efd9b7d0d32db87ddd8dd967db8faea7b6adeb20e",
+      "pdb_guid": "064d41d6e841aa458cfb87e57b1e5829",
+      "pdb_age": 1,
+      "units": {
+        "startup-preload-resources": {
+          "size": 82,
+          "fields": 10
+        },
+        "script-viewer-worker-stop": {
+          "size": 101,
+          "fields": 3
+        },
+        "script-viewer-worker-start": {
+          "size": 56,
+          "fields": 2
+        },
+        "script-viewer-worker-destructor": {
+          "size": 16,
+          "fields": 2
+        },
+        "sound-prepare-playback": {
+          "size": 295,
+          "fields": 11
+        },
+        "sound-manager-create-streaming": {
+          "size": 702,
+          "fields": 16
+        },
+        "sound-manager-create-streaming-memory": {
+          "size": 651,
+          "fields": 13
+        },
+        "wave-file-open": {
+          "size": 173,
+          "fields": 3
+        },
+        "csound-constructor": {
+          "size": 118,
+          "fields": 3
+        },
+        "streaming-sound-constructor": {
+          "size": 109,
+          "fields": 4
+        },
+        "sound-manager-set-primary-buffer-format": {
+          "size": 260,
+          "fields": 3
+        },
+        "streaming-sound-init-buffers": {
+          "size": 338,
+          "fields": 6
+        },
+        "sound-bgm-player-thread": {
+          "size": 189,
+          "fields": 7
+        },
+        "sound-process-queues": {
+          "size": 1452,
+          "fields": 43
+        },
+        "streaming-sound-reset": {
+          "size": 213,
+          "fields": 4
+        },
+        "main-present": {
+          "size": 236,
+          "fields": 20
+        },
+        "main-release-anm-surfaces": {
+          "size": 43,
+          "fields": 0
+        },
+        "main-service-anm-screenshots": {
+          "size": 111,
+          "fields": 2
+        },
+        "decomphelp-game-error-log": {
+          "size": 201,
+          "fields": 12
+        },
+        "sound-join-worker-threads": {
+          "size": 175,
+          "fields": 3
+        },
+        "sound-player-stop-bgm": {
+          "size": 176,
+          "fields": 4
+        },
+        "sound-player-reopen-bgm": {
+          "size": 55,
+          "fields": 2
+        },
+        "zwave-csound-fill": {
+          "size": 483,
+          "fields": 6
+        }
+      }
+    },
+    "cold-b": {
+      "result": "exact",
+      "unit_count": 23,
+      "bytes": 6235,
+      "fields": 179,
+      "image_sha256": "51f4771c9263b5d71857e15838e827c987f4456f86db9ccd3f332dae8a481bfb",
+      "pdb_guid": "7cde1d07132cac43b256e70c7c7f8da5",
+      "pdb_age": 1,
+      "units": {
+        "startup-preload-resources": {
+          "size": 82,
+          "fields": 10
+        },
+        "script-viewer-worker-stop": {
+          "size": 101,
+          "fields": 3
+        },
+        "script-viewer-worker-start": {
+          "size": 56,
+          "fields": 2
+        },
+        "script-viewer-worker-destructor": {
+          "size": 16,
+          "fields": 2
+        },
+        "sound-prepare-playback": {
+          "size": 295,
+          "fields": 11
+        },
+        "sound-manager-create-streaming": {
+          "size": 702,
+          "fields": 16
+        },
+        "sound-manager-create-streaming-memory": {
+          "size": 651,
+          "fields": 13
+        },
+        "wave-file-open": {
+          "size": 173,
+          "fields": 3
+        },
+        "csound-constructor": {
+          "size": 118,
+          "fields": 3
+        },
+        "streaming-sound-constructor": {
+          "size": 109,
+          "fields": 4
+        },
+        "sound-manager-set-primary-buffer-format": {
+          "size": 260,
+          "fields": 3
+        },
+        "streaming-sound-init-buffers": {
+          "size": 338,
+          "fields": 6
+        },
+        "sound-bgm-player-thread": {
+          "size": 189,
+          "fields": 7
+        },
+        "sound-process-queues": {
+          "size": 1452,
+          "fields": 43
+        },
+        "streaming-sound-reset": {
+          "size": 213,
+          "fields": 4
+        },
+        "main-present": {
+          "size": 236,
+          "fields": 20
+        },
+        "main-release-anm-surfaces": {
+          "size": 43,
+          "fields": 0
+        },
+        "main-service-anm-screenshots": {
+          "size": 111,
+          "fields": 2
+        },
+        "decomphelp-game-error-log": {
+          "size": 201,
+          "fields": 12
+        },
+        "sound-join-worker-threads": {
+          "size": 175,
+          "fields": 3
+        },
+        "sound-player-stop-bgm": {
+          "size": 176,
+          "fields": 4
+        },
+        "sound-player-reopen-bgm": {
+          "size": 55,
+          "fields": 2
+        },
+        "zwave-csound-fill": {
+          "size": 483,
+          "fields": 6
+        }
+      }
+    }
+  },
+  "models": [
+    {
+      "variant": "complete-typed-callbacks",
+      "source_sha256": "b0c28a2f3338efeb147d7f9245e1896cdb0d8d1c9b07feeceea8b020121f9d70",
+      "changed_inputs": [
+        "src/GameStatistics.cpp",
+        "src/ScriptViewer.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/Startup.cpp"
+      ],
+      "reused_objects": 15,
+      "startup_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "anm_manager_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "complete": {
+        "??0StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 135,
+          "target_size": 128,
+          "acceptance_authority": "none"
+        },
+        "??1StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 376,
+          "target_size": 417,
+          "acceptance_authority": "none"
+        },
+        "?RegisterTasks@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 150,
+          "target_size": 140,
+          "acceptance_authority": "none"
+        },
+        "?CreateStartupWorker@@": {
+          "result": "structural-exact",
+          "candidate_size": 69,
+          "target_size": 69,
+          "acceptance_authority": "none"
+        },
+        "?ReleaseStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 91,
+          "target_size": 91,
+          "acceptance_authority": "none"
+        },
+        "?Draw@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 218,
+          "target_size": 220,
+          "acceptance_authority": "none"
+        },
+        "?OnUpdate@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 67,
+          "target_size": 63,
+          "acceptance_authority": "none"
+        },
+        "?OnDraw@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 7,
+          "target_size": 7,
+          "acceptance_authority": "none"
+        },
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 20,
+      "all_old_guards_exact": true
+    },
+    {
+      "variant": "scalar-id-ehs",
+      "source_sha256": "480ae9d16f5f834c10de7ccc7b001bd322855b8b05900272ca99d2107123da11",
+      "changed_inputs": [
+        "src/GameStatistics.cpp",
+        "src/ScriptViewer.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/Startup.cpp"
+      ],
+      "reused_objects": 15,
+      "startup_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "anm_manager_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "complete": {
+        "??0StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 128,
+          "target_size": 128,
+          "acceptance_authority": "none"
+        },
+        "??1StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 434,
+          "target_size": 417,
+          "acceptance_authority": "none"
+        },
+        "?RegisterTasks@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 140,
+          "target_size": 140,
+          "acceptance_authority": "none"
+        },
+        "?CreateStartupWorker@@": {
+          "result": "structural-exact",
+          "candidate_size": 69,
+          "target_size": 69,
+          "acceptance_authority": "none"
+        },
+        "?ReleaseStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 91,
+          "target_size": 91,
+          "acceptance_authority": "none"
+        },
+        "?Draw@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 218,
+          "target_size": 220,
+          "acceptance_authority": "none"
+        },
+        "?OnUpdate@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 67,
+          "target_size": 63,
+          "acceptance_authority": "none"
+        },
+        "?OnDraw@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 7,
+          "target_size": 7,
+          "acceptance_authority": "none"
+        },
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 20,
+      "all_old_guards_exact": true
+    },
+    {
+      "variant": "scalar-id-ehsc",
+      "source_sha256": "480ae9d16f5f834c10de7ccc7b001bd322855b8b05900272ca99d2107123da11",
+      "changed_inputs": [
+        "src/GameStatistics.cpp",
+        "src/ScriptViewer.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/Startup.cpp"
+      ],
+      "reused_objects": 15,
+      "startup_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHsc"
+      ],
+      "anm_manager_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "complete": {
+        "??0StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 128,
+          "target_size": 128,
+          "acceptance_authority": "none"
+        },
+        "??1StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 434,
+          "target_size": 417,
+          "acceptance_authority": "none"
+        },
+        "?RegisterTasks@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 140,
+          "target_size": 140,
+          "acceptance_authority": "none"
+        },
+        "?CreateStartupWorker@@": {
+          "result": "structural-exact",
+          "candidate_size": 69,
+          "target_size": 69,
+          "acceptance_authority": "none"
+        },
+        "?ReleaseStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 91,
+          "target_size": 91,
+          "acceptance_authority": "none"
+        },
+        "?Draw@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 218,
+          "target_size": 220,
+          "acceptance_authority": "none"
+        },
+        "?OnUpdate@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 67,
+          "target_size": 63,
+          "acceptance_authority": "none"
+        },
+        "?OnDraw@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 7,
+          "target_size": 7,
+          "acceptance_authority": "none"
+        },
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 20,
+      "all_old_guards_exact": true
+    },
+    {
+      "variant": "ascii-capture",
+      "source_sha256": "af29d74b0323ea35c01c578a82c51c4d16a8a3a0734e318d40cdaf6b3d310201",
+      "changed_inputs": [
+        "src/GameStatistics.cpp",
+        "src/ScriptViewer.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/Startup.cpp"
+      ],
+      "reused_objects": 15,
+      "startup_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "anm_manager_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "complete": {
+        "??0StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 128,
+          "target_size": 128,
+          "acceptance_authority": "none"
+        },
+        "??1StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 433,
+          "target_size": 417,
+          "acceptance_authority": "none"
+        },
+        "?RegisterTasks@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 140,
+          "target_size": 140,
+          "acceptance_authority": "none"
+        },
+        "?CreateStartupWorker@@": {
+          "result": "structural-exact",
+          "candidate_size": 69,
+          "target_size": 69,
+          "acceptance_authority": "none"
+        },
+        "?ReleaseStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 91,
+          "target_size": 91,
+          "acceptance_authority": "none"
+        },
+        "?Draw@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 218,
+          "target_size": 220,
+          "acceptance_authority": "none"
+        },
+        "?OnUpdate@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 67,
+          "target_size": 63,
+          "acceptance_authority": "none"
+        },
+        "?OnDraw@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 7,
+          "target_size": 7,
+          "acceptance_authority": "none"
+        },
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 20,
+      "all_old_guards_exact": true
+    },
+    {
+      "variant": "vm-c-throw-contract",
+      "source_sha256": "af29d74b0323ea35c01c578a82c51c4d16a8a3a0734e318d40cdaf6b3d310201",
+      "changed_inputs": [
+        "src/AnmManager.cpp",
+        "src/GameStatistics.cpp",
+        "src/ScriptViewer.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/Startup.cpp"
+      ],
+      "reused_objects": 14,
+      "startup_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "anm_manager_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHsc"
+      ],
+      "complete": {
+        "??0StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 128,
+          "target_size": 128,
+          "acceptance_authority": "none"
+        },
+        "??1StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 433,
+          "target_size": 417,
+          "acceptance_authority": "none"
+        },
+        "?RegisterTasks@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 140,
+          "target_size": 140,
+          "acceptance_authority": "none"
+        },
+        "?CreateStartupWorker@@": {
+          "result": "structural-exact",
+          "candidate_size": 69,
+          "target_size": 69,
+          "acceptance_authority": "none"
+        },
+        "?ReleaseStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 91,
+          "target_size": 91,
+          "acceptance_authority": "none"
+        },
+        "?Draw@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 218,
+          "target_size": 220,
+          "acceptance_authority": "none"
+        },
+        "?OnUpdate@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 67,
+          "target_size": 63,
+          "acceptance_authority": "none"
+        },
+        "?OnDraw@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 7,
+          "target_size": 7,
+          "acceptance_authority": "none"
+        },
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 20,
+      "all_old_guards_exact": true
+    },
+    {
+      "variant": "named-draw-results",
+      "source_sha256": "cb43f37fd42d1dcf7eb8382fe2802240077ff5b7aa1e986ede98e60970e670dd",
+      "changed_inputs": [
+        "src/GameStatistics.cpp",
+        "src/ScriptViewer.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/Startup.cpp"
+      ],
+      "reused_objects": 15,
+      "startup_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "anm_manager_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "complete": {
+        "??0StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 128,
+          "target_size": 128,
+          "acceptance_authority": "none"
+        },
+        "??1StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 433,
+          "target_size": 417,
+          "acceptance_authority": "none"
+        },
+        "?RegisterTasks@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 140,
+          "target_size": 140,
+          "acceptance_authority": "none"
+        },
+        "?CreateStartupWorker@@": {
+          "result": "structural-exact",
+          "candidate_size": 69,
+          "target_size": 69,
+          "acceptance_authority": "none"
+        },
+        "?ReleaseStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 91,
+          "target_size": 91,
+          "acceptance_authority": "none"
+        },
+        "?Draw@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 222,
+          "target_size": 220,
+          "acceptance_authority": "none"
+        },
+        "?OnUpdate@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 67,
+          "target_size": 63,
+          "acceptance_authority": "none"
+        },
+        "?OnDraw@StartupWorkerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 7,
+          "target_size": 7,
+          "acceptance_authority": "none"
+        },
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 20,
+      "all_old_guards_exact": true
+    }
+  ],
+  "rejected_compile": {
+    "variant": "first-complete",
+    "exit": 1,
+    "reason": "Typed fastcall callbacks require an explicit ChainCallback pointer adaptation; no comparison produced"
+  },
+  "retained_model": "ascii-capture",
+  "origin_facts": {
+    "constructor_origin_unchanged": "indeterminate",
+    "registered_update_copy_origin": "indeterminate; same63-byte EDX counterpart and legacy source exist",
+    "draw_adapter_origin": "indeterminate",
+    "legacy_helper": "th10::leaf::Fn0041FD90; mapped without modifying the legacy TU",
+    "factory_real_caller": "0x004218D0"
+  },
+  "teardown_metadata_observation": {
+    "target": {
+      "handler": "0x465696",
+      "func_info": "0x4716ec",
+      "header": [
+        "0x19930520",
+        "0x2",
+        "0x4716dc",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0"
+      ],
+      "entries": [
+        {
+          "state": -1,
+          "action": "0x465680",
+          "code_shape": [
+            "mov ecx, dword ptr [ebp + 4]",
+            "add ecx, 0x10",
+            "jmp 0x44c130"
+          ]
+        },
+        {
+          "state": 0,
+          "action": "0x46568b",
+          "code_shape": [
+            "mov ecx, dword ptr [ebp + 4]",
+            "add ecx, 0x30",
+            "jmp 0x401ff0"
+          ]
+        }
+      ]
+    },
+    "candidate": {
+      "handler": "0x415ee6",
+      "func_info": "0x4167cc",
+      "header": [
+        "0x19930520",
+        "0x2",
+        "0x4167bc",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0"
+      ],
+      "entries": [
+        {
+          "state": -1,
+          "action": "0x415ed0",
+          "code_shape": [
+            "mov ecx, dword ptr [ebp + 4]",
+            "add ecx, 0x10",
+            "jmp 0x415b50"
+          ]
+        },
+        {
+          "state": 0,
+          "action": "0x415edb",
+          "code_shape": [
+            "mov ecx, dword ptr [ebp + 4]",
+            "add ecx, 0x30",
+            "jmp 0x40cdb0"
+          ]
+        }
+      ]
+    }
+  },
+  "product_runtime_claim": false
+}

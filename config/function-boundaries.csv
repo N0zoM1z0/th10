@@ -590,7 +590,12 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041FAC0,0x0041FB4B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041FB50,0x0041FCF0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0041FD00,0x0041FD44,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0041FD50,0x0041FD6A,reviewed,high,startup-gap-full-byte-review-2026-10-29,Complete dense decode ends RET; independent CC-delimited extent. All-byte read-only Ghidra reference inventory finds no references.
+0x0041FD70,0x0041FD81,reviewed,high,startup-gap-full-byte-review-2026-10-29,Complete dense decode ends RET; independent CC-delimited extent. All-byte read-only Ghidra reference inventory finds no references.
+0x0041FD90,0x0041FDCE,reviewed,high,startup-gap-full-byte-review-2026-10-29,Complete dense decode ends RET; independent CC-delimited extent. All-byte read-only Ghidra reference inventory finds no references.
 0x0041FDD0,0x0041FEAB,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x41fef1 to entry; independent IDA MCP extent agrees"
+0x0041FEB0,0x0041FEEE,reviewed,high,startup-callback-byte-boundary-2026-10-29,"Complete63-byte dense decode ends RET; four CC bytes before entry, one after. Launcher41FAC2 pushes entry; sole interior reference is owned conditional branch41FEB3 to41FEE9. No external interior reference."
+0x0041FEF0,0x0041FEF6,reviewed,high,startup-callback-byte-boundary-2026-10-29,Complete7-byte dense ECX-to-stack callback adapter ends RET. Launcher41FAE5 pushes entry; no interior references. One CC before entry and nine after; independent next owner41FF00.
 0x0041FF00,0x0041FF21,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0041FF30,0x0041FF36,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0041FF40,0x0041FF4C,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

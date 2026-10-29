@@ -590,7 +590,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041FAC0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x0041FB50,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0041FD00,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
+0x0041FD50,compiler_generated,Startup,exclude,high,startup-scalar-delete-2026-10-29
+0x0041FD70,unknown,Startup,indeterminate,unknown,startup-unreferenced-copy-2026-10-29
+0x0041FD90,unknown,Startup,indeterminate,unknown,startup-unreferenced-copy-2026-10-29
 0x0041FDD0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x0041FEB0,unknown,Startup,indeterminate,unknown,startup-callback-copy-2026-10-29
+0x0041FEF0,unknown,Startup,indeterminate,unknown,startup-callback-adapter-2026-10-29
 0x0041FF00,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0041FF30,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0041FF40,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29

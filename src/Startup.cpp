@@ -4,25 +4,43 @@
 #include "FileSystem.hpp"
 #include "GameErrorContext.hpp"
 #include "GameStatistics.hpp"
+#include "ScriptViewer.hpp"
+#include <process.h>
+#include <stdlib.h>
 #include <string.h>
 
 // Partial view of the owner published at477820. Names are descriptive; the
 // startup callback ignores the argument supplied by its thread launcher.
 struct StartupWorkerView
 {
-    unsigned char unknown000[8];
+    unsigned int flags;
+    unsigned int unknown004;
     th10::ChainElem *calcElement;
     th10::ChainElem *drawElement;
-    unsigned char unknown010[0x3e0 - 0x10];
+    ScriptViewerWorkerView worker;
+    unsigned int unknown02C;
+    AnmVmView vm;
+    int signatureVmId;
     AnmLoadedView *signatureAnm;
     int signatureReady;
     int textReady;
+    int frames;
 
+    StartupWorkerView();
+    ~StartupWorkerView();
+    int RegisterTasks();
+    int __stdcall Draw();
     static int StartupThread();
+    static int __fastcall OnUpdate(StartupWorkerView *owner);
+    static int __fastcall OnDraw(StartupWorkerView *owner);
 };
 
 typedef char StartupWorkerSignatureAt3E0[
-    (offsetof(StartupWorkerView, signatureAnm) == 0x3e0) ? 1 : -1];
+    (offsetof(StartupWorkerView, worker) == 0x10 &&
+     offsetof(StartupWorkerView, vm) == 0x30 &&
+     offsetof(StartupWorkerView, signatureVmId) == 0x3dc &&
+     offsetof(StartupWorkerView, signatureAnm) == 0x3e0 &&
+     sizeof(StartupWorkerView) == 0x3f0) ? 1 : -1];
 
 extern StartupWorkerView *g_StartupWorker;
 extern AnmLoadedView *g_FrontEndMusicCommentAnm;
@@ -100,4 +118,145 @@ int FinalizeStartupResources()
         return -1;
     }
     return 0;
+}
+
+
+// Target41F850..41F8CF. Member construction precedes the full-owner clear.
+StartupWorkerView::StartupWorkerView()
+{
+    memset(this, 0, sizeof(*this));
+    flags |= 2;
+    g_StartupWorker = this;
+}
+
+// Target41FAC0..41FB4B. The target expands the worker launch protocol here.
+int StartupWorkerView::RegisterTasks()
+{
+    th10::ChainElem *element = th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(OnUpdate));
+    element->flags &= ~2u;
+    element->arg = this;
+    th10::Chain::AddToCalcChain(element, 3, th10::g_Chain);
+    calcElement = element;
+    element = th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(OnDraw));
+    element->flags &= ~2u;
+    element->arg = this;
+    th10::Chain::AddToDrawChain(element, 2, th10::g_Chain);
+    drawElement = element;
+    ScriptViewerWorkerView &threadWorker = worker;
+    threadWorker.Stop();
+    threadWorker.entry018 = reinterpret_cast<void *>(StartupThread);
+    threadWorker.running = 1;
+    threadWorker.stopRequested = 0;
+    threadWorker.thread = reinterpret_cast<void *>(_beginthreadex(
+        NULL, 0, reinterpret_cast<unsigned (__stdcall *)(void *)>(StartupThread),
+        this, 0, &threadWorker.threadId));
+    return 0;
+}
+
+// Target41FD00..41FD44. RegisterTasks is still called after a null allocation.
+StartupWorkerView *CreateStartupWorker()
+{
+    StartupWorkerView *owner = new StartupWorkerView;
+    if (owner->RegisterTasks() != 0)
+    {
+        delete owner;
+        return NULL;
+    }
+    return owner;
+}
+
+// Target41F930..41F98A: matching front/bullet preloads are slots6/7.
+int ReleaseStartupResources()
+{
+    g_AnmRenderManagerView->ReleaseAnm(6);
+    g_AnmRenderManagerView->ReleaseAnm(7);
+    return 0;
+}
+
+static void RemoveStartupElement(th10::ChainElem *element, th10::Chain *chain)
+{
+    if (element == NULL)
+        return;
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[0];
+    th10::Chain::UnregisterElem(element, chain);
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    --g_MainSupervisorView.criticalSectionLockCounts[0];
+}
+
+// Target41FB50..41FCF0, including the automatic VM/worker member cleanup.
+StartupWorkerView::~StartupWorkerView()
+{
+    worker.Stop();
+    RemoveStartupElement(calcElement, th10::g_Chain);
+    RemoveStartupElement(drawElement, th10::g_Chain);
+    ReleaseStartupResources();
+    g_AnmRenderManagerView->ReleaseAnm(1);
+    AsciiManagerView *ascii = g_AsciiManagerView;
+    g_StartupWorker = NULL;
+    if (ascii != NULL)
+        delete ascii;
+    g_AnmRenderManagerView->ReleaseAnm(0);
+    GameFinalizeStatistics42B1E0(g_GameStatisticsRows);
+    GameStatisticsOwner *statistics = g_GameStatisticsRows;
+    if (statistics != NULL)
+    {
+        if (statistics->header != NULL)
+        {
+            free(statistics->header);
+            statistics->header = NULL;
+        }
+        if (statistics->loadedPayload != NULL)
+        {
+            free(statistics->loadedPayload);
+            statistics->loadedPayload = NULL;
+        }
+        delete statistics;
+    }
+    g_GameStatisticsRows = NULL;
+}
+
+// Direct callback entries41FEB0/41FEF0 are not present in Ghidra's inventory.
+int __fastcall StartupWorkerView::OnUpdate(StartupWorkerView *owner)
+{
+    if ((owner->flags & 2) != 0)
+    {
+        static_cast<th10::ChainElem *>(g_AsciiManagerView->calcChainElement)->flags |= 2;
+        static_cast<th10::ChainElem *>(g_AsciiManagerView->drawChainElement0)->flags |= 2;
+        static_cast<th10::ChainElem *>(g_AsciiManagerView->drawChainElement)->flags |= 2;
+        g_MainSupervisorView.flags &= ~0x1000u;
+        g_GameTransitionState = 4;
+        owner->flags &= ~2u;
+    }
+    return 1;
+}
+
+int __fastcall StartupWorkerView::OnDraw(StartupWorkerView *owner)
+{
+    return owner->Draw();
+}
+
+// Target41FDD0..41FEAB: resource capture precedes allocation and VM setup.
+int __stdcall StartupWorkerView::Draw()
+{
+    if (signatureReady == 1)
+    {
+        AnmLoadedView *loaded = signatureAnm;
+        AnmVmView *created = g_AnmRenderManagerView->AllocateVm();
+        created->renderLayer = 15;
+        created->useAlternateRng = 1;
+        loaded->InitializeVm(created, 0);
+        signatureVmId = g_AnmRenderManagerView->AddVmVariant0(created).value;
+        ++signatureReady;
+    }
+    if (textReady == 1)
+    {
+        AnmFloat3View position(480.0f, 392.0f, 0.0f);
+        int *id = &g_AsciiManagerView->auxiliaryVm89A4;
+        if (*id == 0)
+            *id = g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
+        ++textReady;
+    }
+    ++frames;
+    return 1;
 }

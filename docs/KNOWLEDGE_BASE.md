@@ -6415,3 +6415,38 @@ reviewed target bytes. Outer Startup41F990 remains292/299, disk caller43D690
 startup member and disk positive-gate controls are neutral and restored. Nested
 Initialize success also returns763 and is restored. No partial caller credit or
 new original-origin conclusion follows. See [the complete proof](evidence/sound-disk-startup-20261029/README.md).
+
+
+## 2026-10-29 Startup construction, launch and missing-entry audit
+
+Complete constructor41F850/128, RegisterTasks41FAC0/140, factory41FD00/69,
+ReleaseStartupResources41F930/91 and Draw callback41FEF0/7 add435 exact bytes/
+all26 fields in two independent nineteen-input canonical colds. Existing origins
+credit300 authored bytes; constructor128 and adapter7 remain indeterminate.
+Twenty-three relevant old linked contracts6235/all179 pass per cold. See
+[the complete proof](evidence/startup-launcher-20261029/README.md).
+
+Worker+10, VM+30, scalar id+3DC and full3F0 clear are supported independently by
+construction/launch/cleanup; size is not inferred solely from allocation. Member
+construction runs before the whole-owner clear. Removing a wrapper id's extra
+zero and retaining the worker subobject across Stop/launch recover both complete
+bodies without padding or register controls. Callback/thread address binding does
+not grant child body exactness. Actual factory caller is4218D0, not a proven Main
+callback-owner seam. Source names/class/TU and physical storage remain provisional.
+
+Five missing independent extents are now reviewed. Scalar-deleting wrapper41FD50/
+27 is compiler-excluded. Nullable deletion41FD70/18, unreferenced EDX update41FD90/
+63, registered ECX update41FEB0/63 and Draw adapter41FEF0/7 stay indeterminate.
+All are complete dense RET bodies with separating CC spans; all-byte Ghidra refs
+find only launcher41FAC2/41FAE5 and the update's internal branch. Legacy Decomphelp
+already has both update helpers; mapping Fn0041FD90 does not claim new recovered
+code. Nine mappings cover1198 target bytes; authored denominator remains275467.
+Game-specific logic and duplicate source do not settle original body/copy origin.
+
+Teardown433/417, Draw218/220, update67/63 and thread292/299 remain nonexact. /EHs
+recovers teardown's two-state frame but not complete bytes; /EHsc caller and VM
+controls are neutral and restored. Target's cleanup actions use saved thisEBP+4,
+worker+10 then VM+30, matching diagnostic action shapes but granting no accepted
+EH address/metadata/runtime claim. ASCII capture before global clear is retained.
+Named Draw result control222 is restored. No normal-path or exception-path host
+simulations, hidden-slot forcing or register/profile sweep is warranted.

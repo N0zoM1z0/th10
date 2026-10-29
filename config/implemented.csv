@@ -1155,3 +1155,12 @@ CSoundManager::CreateStreaming
 CWaveFile::Open
 CSound::CSound
 CStreamingSound::CStreamingSound
+StartupWorkerView::StartupWorkerView
+ReleaseStartupResources
+StartupWorkerView::RegisterTasks
+StartupWorkerView::~StartupWorkerView
+CreateStartupWorker
+StartupWorkerView::Draw
+StartupWorkerView::OnUpdate
+StartupWorkerView::OnDraw
+th10::leaf::Fn0041FD90

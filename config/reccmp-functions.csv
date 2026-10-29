@@ -1156,3 +1156,12 @@ CSoundManager::CreateStreaming,0x0044C8F0,function
 CWaveFile::Open,0x0044DBF0,function
 CSound::CSound,0x0044CE80,function
 CStreamingSound::CStreamingSound,0x0044D6A0,function
+StartupWorkerView::StartupWorkerView,0x0041F850,function
+ReleaseStartupResources,0x0041F930,function
+StartupWorkerView::RegisterTasks,0x0041FAC0,function
+StartupWorkerView::~StartupWorkerView,0x0041FB50,function
+CreateStartupWorker,0x0041FD00,function
+StartupWorkerView::Draw,0x0041FDD0,function
+StartupWorkerView::OnUpdate,0x0041FEB0,function
+StartupWorkerView::OnDraw,0x0041FEF0,function
+th10::leaf::Fn0041FD90,0x0041FD90,function
