@@ -1,3 +1,4 @@
+#include "Main.hpp"
 #include "StageScript.hpp"
 #include <math.h>
 
@@ -6,7 +7,6 @@ extern "C" AnmFloat3View *__stdcall D3DXVec3Normalize(
 // Same target address as several smaller ANM camera views; this declaration
 // does not supply storage or prove alias/runtime closure across those views.
 extern StageCameraStateView g_StagePublishedCamera; // 0x00491D7C
-extern int g_StageScriptGlobal4923A8;
 
 // Target 0x00405040. Packed bytes use truncating integer conversion, not
 // saturating color conversion. Input-domain safety is not established.
@@ -114,12 +114,11 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             break;
         case 8:
         {
-            AnmColorView &color = *reinterpret_cast<AnmColorView *>(&stage->camera.fog.color);
-            color.value = integers[0];
-            stage->camera.fog.blue = static_cast<float>(color.blue);
-            stage->camera.fog.green = static_cast<float>(color.green);
-            stage->camera.fog.red = static_cast<float>(color.red);
-            stage->camera.fog.alpha = static_cast<float>(color.alpha);
+            stage->camera.fog.packedColor.value = integers[0];
+            stage->camera.fog.blue = static_cast<float>(stage->camera.fog.packedColor.blue);
+            stage->camera.fog.green = static_cast<float>(stage->camera.fog.packedColor.green);
+            stage->camera.fog.red = static_cast<float>(stage->camera.fog.packedColor.red);
+            stage->camera.fog.alpha = static_cast<float>(stage->camera.fog.packedColor.alpha);
             stage->camera.fog.start = values[1];
             stage->camera.fog.end = values[2];
             break;
@@ -171,7 +170,8 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             stage->rockingTimer.SetCurrent(0);
             break;
         case 13:
-            g_StageScriptGlobal4923A8 = integers[0];
+            // Target4923A8 is the maintained Main clear color at+780.
+            g_MainSupervisorView.clearColor = integers[0];
             break;
         case 14:
             if (integers[1] >= 0)

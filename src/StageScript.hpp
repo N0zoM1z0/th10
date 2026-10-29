@@ -13,13 +13,18 @@ struct StageInstructionView
 struct StageFogView
 {
     float start, end, blue, green, red, alpha;
-    unsigned int color;
+    union { unsigned int color; AnmColorView packedColor; };
     StageFogView() {}
     StageFogView(float start, float end, float blue, float green, float red, float alpha);
     StageFogView operator-(const StageFogView &other) const;
     StageFogView operator+(const StageFogView &other) const;
     StageFogView operator*(float scale) const;
 };
+typedef char StageFogSizeIs1C[
+    (sizeof(StageFogView) == 0x1c) ? 1 : -1];
+typedef char StageFogColorAt18[
+    (offsetof(StageFogView, color) == 0x18 &&
+     offsetof(StageFogView, packedColor) == 0x18) ? 1 : -1];
 struct StageFogInterpolationView
 {
     StageFogView initial, final, initialTangent, finalTangent;

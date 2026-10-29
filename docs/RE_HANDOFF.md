@@ -2,12 +2,12 @@
 
 ## Start here
 
-Current checkpoint reconstructs complete Stage projected-bounds culling403090..
-40384F:1984 bytes/all30 fields and69 local destinations pass two independent
-eleven-input colds. Real corner-workspace reuse, rounded half extent and direct
-corner components restore the full owner. Fourteen old owners3720/all220 pass
-twice, including Instances592/Early1099/Late929. Default camera282/287 and
-single-image/product closure remain open.
+Current checkpoint improves Stage dispatcher source/alias modeling. Its complete
+1868-byte owner remains NONEXACT: typed direct Fog color members recover the
+channel capture/store schedule, and opcode13 uses actual Main.clearColor+780.
+Nine affected canonical units4430/all155 and22 selected same-image contracts
+6613/all282 pass. Adds zero exact bytes; the last accepted large owner is
+Bounds1984. Coupled dispatcher/VM register conventions remain open.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -39,6 +39,45 @@ Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
 681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1348 exact.
 The denominator remains provisional; product build/runtime closure is still open.
 
+Latest [Stage dispatcher source/alias review](evidence/stage-dispatch-context-20261029/README.md):
+
+- Complete dispatcher403C80..4043CB remains1868/1868 NONEXACT, with target1806
+  code+MOV EDI,EDI2+table60 versus candidate1807+NOP1+table60. Both have frame8C,
+  stack StageScript/RET4 and15 slots at+710; every slot is checked against its
+  own image's instruction starts. Adds zero exact bytes, owners or mappings.
+- Actual28-byte Fog packed-color members at18, used directly, recover all four
+  byte captures before float stores. A local typed reference recreates the old
+  interleaving. This is a concrete alias-analysis distinction, with native layout
+  assertions. The107-byte prefix at+1FF is raw-equal; its final branch/local
+  destination and the complete owner remain unequal. No case/prefix credit.
+- Opcode13's4923A8 is actual maintained Main.clearColor+780. The corrected member
+  binding is byte-neutral here; the separate GameManager alias/storage is open.
+  Unbound same-offset diagnosis1301/1724 versus1241 is not acceptance, especially
+  where later field offsets shift.
+- Real Hermite helper outlines (1704); implicit vector copies change frame74 and
+  owner1824; both are restored. Duration capture is neutral. Seven actual GUI
+  binder calls are independently verified, but its real CPP/existing-profile
+  addition is neutral for all three coupled bodies. That twelve-input graph is
+  removed. Meaningful initializer argument order/stdcall-operation controls are
+  also neutral and fully restored, including original member/prototype/callers.
+- Current initializer200/202 and binder197/203 have unlike incoming conventions;
+  opcode14's target wants ESI VM while native consumes EDX. Later10/11/12/13
+  register cycles and this coupled ABI remain the concrete dispatcher frontier.
+  Do not repeat parked caller/prototype/wrapper/duration controls without new
+  discriminating source/ABI evidence or force registers through declarations.
+- Nine old canonical units4430/all155 pass in their original three recipes:
+  Early/Instances/Bounds, Update/Tick and four Fog helpers. Twenty-two selected
+  old same-image contracts6613/all282 pass in the eleven-input image, with the
+  verified StageScript.cpp inline SetCurrent PDB owner. The manifest/matches,
+  source profiles and comparator are unchanged. No full cohort or Main replay.
+- Current Stage warm context is
+  `.analysis/gpt-6.1-sol/stage-dispatch-context-20261029/final-context.json`.
+  Source/include pins supersede older contexts; accepted old witnesses remain.
+  A next substantial owner can be the coupled VM initializer202/binder203 with
+  genuinely new source evidence, or a fresh complete Stage lifecycle/fog owner.
+  Park this dispatcher's byte-neutral controls; default camera282/287, physical
+  data aliases and later product/runtime/portability remain open.
+
 Latest [complete Stage projected-bounds proof](evidence/stage-bounds-context-20261029/README.md):
 
 - Bounds403090..40384F/1984 is exact twice:518 instructions, all30 semantic
@@ -64,15 +103,14 @@ Latest [complete Stage projected-bounds proof](evidence/stage-bounds-context-202
   adapters7 each, Flush133, DrawLayer67, timers88/57, factory82 and Draw216/table.
   SetCurrent retains its actual header-inline StageScript.cpp PDB owner in this
   image. No full cohort or unchanged original recipe is replayed for graph sharing.
-- Current Stage warm context is
+- That checkpoint's Stage warm context was
   `.analysis/gpt-6.1-sol/stage-bounds-context-20261029/final-context.json`.
   Fresh source/include/profile pins supersede older warm contexts. Default
   camera remains282/287; original class/TU names, physical data aliases and
   single-image/product/runtime/portability remain independent.
-- Next coherent large lead is StageExecuteScript403C80/1868 with its complete
-  indexed table. Recompare the current complete native body before relying on
-  historical opcode/register notes. Park the neutral matrix-declaration and
-  older camera controls until new evidence supplies a discriminating prediction.
+- The dispatcher lead has now been freshly compared above; the whole owner is
+  still nonexact. Park matrix-declaration, camera and new neutral dispatcher
+  controls until new evidence supplies a discriminating prediction.
 
 Latest [complete Stage instance draw proof](evidence/stage-instances-context-20261029/README.md):
 

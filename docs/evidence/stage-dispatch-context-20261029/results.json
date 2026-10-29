@@ -1,0 +1,742 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_bytes": 0,
+  "new_exact_owners": 0,
+  "new_source_mappings": 0,
+  "authored_denominator_change": 0,
+  "matches_ledger_change": false,
+  "manifest_change": false,
+  "source_include_sha256": {
+    "src/AnmManager.cpp": "1db15e643546c99327224b5b656cfd39c483e067cd8bf7f26da157f72e01b7e3",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/Chain.cpp": "7e09a9336183aa995bfb5cb2829ab97f3fa38adf0ee1c2b27b47aee94d0cfd3c",
+    "src/Chain.hpp": "7a92cae0e7b47d276749d00ad41c030f76e656f0e80d77ade2cbfe844a2de91e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.cpp": "6fc26a2ce9a19841a13ed5fa4d9421e44959ead5e77652a2baf9d06272ec14d3",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageDraw.cpp": "4ef66c312a131e629e93c699e0e2b00e38e9d36d1645ca48a0832eaccbbfaf9a",
+    "src/StageLifecycle.cpp": "9a9281790d661bc3b108e125466bd6fc50ec70fbc991b9d01c17ba3124f38af5",
+    "src/StageScript.cpp": "933d0448f8859a1555351c1e614c67c2bd0a9e1388d91ba05da11465e7a6a0e5",
+    "src/StageScript.hpp": "1ebc8094e1a16d9876ffe3a1e25a8c2a465737df803181b0fd04d7b4e4e6333f",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e"
+  },
+  "retained_graph": {
+    "source": "src/StageScript.cpp",
+    "support_sources": [
+      "src/StageLifecycle.cpp",
+      "src/StageDraw.cpp",
+      "src/Chain.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/FileSystem.cpp",
+      "src/MainViewport.cpp",
+      "src/TransitionEffect.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_profiles": {
+      "src/TransitionEffect.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ]
+    },
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "affected_canonical_replay": [
+    {
+      "source": "src/StageScript.cpp",
+      "artifact_dir": "build/gpt-6.1-sol/stage-dispatch-context-20261029/cold-StageFog",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "compiled_afresh": true,
+      "reused_objects": 0,
+      "artifact_sha256": {
+        "image": "b69f2b41d57bf20249b41167d49f83aeff6e83d17ee12df9707cab2b93920d6c",
+        "map": "23b8f997a881323ecf7454822a3f24e0d3cc88deaa8ebcae9bc33a2b43722f7f",
+        "pdb": "70a18304f4e933a18b91a3ecc5ee793413a8941dfbcadb7cd5028306d8aaf504"
+      },
+      "units": [
+        {
+          "unit": "stage-fog-constructor",
+          "result": "exact",
+          "size": 94,
+          "field_count": 4,
+          "pdb_guid": "c42814207d1fa644833c4a4f2a86c5e1"
+        },
+        {
+          "unit": "stage-fog-subtract",
+          "result": "exact",
+          "size": 92,
+          "field_count": 4,
+          "pdb_guid": "c42814207d1fa644833c4a4f2a86c5e1"
+        },
+        {
+          "unit": "stage-fog-add",
+          "result": "exact",
+          "size": 92,
+          "field_count": 4,
+          "pdb_guid": "c42814207d1fa644833c4a4f2a86c5e1"
+        },
+        {
+          "unit": "stage-fog-scale",
+          "result": "exact",
+          "size": 101,
+          "field_count": 4,
+          "pdb_guid": "c42814207d1fa644833c4a4f2a86c5e1"
+        }
+      ]
+    },
+    {
+      "source": "src/StageScript.cpp",
+      "artifact_dir": "build/gpt-6.1-sol/stage-dispatch-context-20261029/cold-StageRealCallback",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "compiled_afresh": true,
+      "reused_objects": 0,
+      "artifact_sha256": {
+        "image": "df3a9910cae832e48f321ef457175a02bed9cc9e840820e2c6f1801308b3a9d3",
+        "map": "2af54645c9149cc4d4319739fb4d54e7480a5cc4560e1120f2b1bf041d83a188",
+        "pdb": "43ee16dfab2da5faf9828fd1da4278f88731513bb81772692683e1adf023752c"
+      },
+      "units": [
+        {
+          "unit": "stage-update",
+          "result": "exact",
+          "size": 304,
+          "field_count": 11,
+          "pdb_guid": "fb7de1676ad67e47b57be1a1a366bb5a"
+        },
+        {
+          "unit": "anm-timer-tick",
+          "result": "exact",
+          "size": 72,
+          "field_count": 4,
+          "pdb_guid": "fb7de1676ad67e47b57be1a1a366bb5a"
+        }
+      ]
+    },
+    {
+      "source": "src/StageScript.cpp",
+      "artifact_dir": "build/gpt-6.1-sol/stage-dispatch-context-20261029/cold-StageTransitionDraw",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "compiled_afresh": true,
+      "reused_objects": 0,
+      "artifact_sha256": {
+        "image": "8201fb273014e3f9a9c93dd06dd68d6c2970b5e106075fda458b4c784d388c66",
+        "map": "1b2b1ea41db27fea3f30b06aab3cb6287f808bdbaeb31f803306661df446ee2b",
+        "pdb": "0563f0881d6c4c17bc53c3a4444469c2a0bf99cce74998e474e5724b8088dbc0"
+      },
+      "units": [
+        {
+          "unit": "stage-draw-early",
+          "result": "exact",
+          "size": 1099,
+          "field_count": 72,
+          "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+        },
+        {
+          "unit": "stage-draw-instances",
+          "result": "exact",
+          "size": 592,
+          "field_count": 22,
+          "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+        },
+        {
+          "unit": "stage-object-bounds-culled",
+          "result": "exact",
+          "size": 1984,
+          "field_count": 30,
+          "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+        }
+      ]
+    }
+  ],
+  "selected_same_image": [
+    {
+      "unit": "stage-object-bounds-culled",
+      "result": "exact",
+      "size": 1984,
+      "field_count": 30,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-draw-instances",
+      "result": "exact",
+      "size": 592,
+      "field_count": 22,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-draw-early",
+      "result": "exact",
+      "size": 1099,
+      "field_count": 72,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-draw-late",
+      "result": "exact",
+      "size": 929,
+      "field_count": 78,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-configure-camera",
+      "result": "exact",
+      "size": 330,
+      "field_count": 10,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "main-select-viewport",
+      "result": "exact",
+      "size": 60,
+      "field_count": 1,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "main-disable-fog",
+      "result": "exact",
+      "size": 53,
+      "field_count": 2,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-draw-early-callback",
+      "result": "exact",
+      "size": 7,
+      "field_count": 1,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-draw-late-callback",
+      "result": "exact",
+      "size": 7,
+      "field_count": 1,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "anm-render-flush-vertex-buffer",
+      "result": "exact",
+      "size": 133,
+      "field_count": 4,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "anm-manager-draw-layer",
+      "result": "exact",
+      "size": 67,
+      "field_count": 1,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "anm-vm-timer-add",
+      "result": "exact",
+      "size": 88,
+      "field_count": 4,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "anm-vm-timer-set-current",
+      "result": "exact",
+      "size": 57,
+      "field_count": 1,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "transition-effect-factory",
+      "result": "exact",
+      "size": 82,
+      "field_count": 2,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "anm-render-draw",
+      "result": "exact",
+      "size": 216,
+      "field_count": 21,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-update",
+      "result": "exact",
+      "size": 304,
+      "field_count": 11,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-update-object-vms",
+      "result": "exact",
+      "size": 154,
+      "field_count": 1,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "anm-timer-tick",
+      "result": "exact",
+      "size": 72,
+      "field_count": 4,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-fog-constructor",
+      "result": "exact",
+      "size": 94,
+      "field_count": 4,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-fog-add",
+      "result": "exact",
+      "size": 92,
+      "field_count": 4,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-fog-subtract",
+      "result": "exact",
+      "size": 92,
+      "field_count": 4,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    },
+    {
+      "unit": "stage-fog-scale",
+      "result": "exact",
+      "size": 101,
+      "field_count": 4,
+      "pdb_guid": "8e15d833e66bb848ab88beea7c9dcf28"
+    }
+  ],
+  "source_models": [
+    {
+      "model": "entry",
+      "size": 1868,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 1241,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": null,
+      "binder_size": null
+    },
+    {
+      "model": "typed-fog-color",
+      "size": 1868,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 1301,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": null,
+      "binder_size": null
+    },
+    {
+      "model": "real-hermite-operation",
+      "size": 1704,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 373,
+      "unbound_same_offset_comparable_positions": 1716,
+      "acceptance_authority": "none",
+      "initializer_size": 200,
+      "binder_size": null
+    },
+    {
+      "model": "cubic-vector-records",
+      "size": 1824,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 135,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": 200,
+      "binder_size": null
+    },
+    {
+      "model": "capture-cubic-duration",
+      "size": 1868,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 1301,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": 200,
+      "binder_size": 197
+    },
+    {
+      "model": "actual-gui-binder-callers",
+      "size": 1868,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 1301,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": 200,
+      "binder_size": 197
+    },
+    {
+      "model": "actual-main-clear-color",
+      "size": 1868,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 1301,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": 200,
+      "binder_size": 197
+    },
+    {
+      "model": "initializer-real-argument-order",
+      "size": 1868,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 1301,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": 200,
+      "binder_size": 197
+    },
+    {
+      "model": "typed-color-reference",
+      "size": 1868,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 1241,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": 200,
+      "binder_size": 197
+    },
+    {
+      "model": "meaningful-stdcall-initializer",
+      "size": 1868,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 1301,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": 200,
+      "binder_size": 197
+    },
+    {
+      "model": "final-source",
+      "size": 1868,
+      "target_size": 1868,
+      "result": "mismatch",
+      "unbound_same_offset_matched_positions": 1301,
+      "unbound_same_offset_comparable_positions": 1724,
+      "acceptance_authority": "none",
+      "initializer_size": 200,
+      "binder_size": 197
+    }
+  ],
+  "target_owner": {
+    "address": "0x00403C80",
+    "size": 1868,
+    "code_size": 1806,
+    "alignment_size": 2,
+    "table_offset": 1808,
+    "table_slots": 15,
+    "table_size": 60,
+    "selector_upper_bound": 14,
+    "frame_bytes": 140,
+    "stack_arguments": 1,
+    "return_cleanup": 4,
+    "sha256": "85ba20e44d65bc67a3cd8fb38b747ed98f9c8440ea37b9072b21c08f1251a770"
+  },
+  "bounded_opcode8_observation": {
+    "target_start": "0x00403E7F",
+    "owner_offset": 511,
+    "ordinary_prefix_size": 107,
+    "prefix_sha256": "b5cc8f0c69400dd19a18f51f82912c91f34265c83b695e35553d52d9866351f4",
+    "result": "raw-equal prefix; no case or owner exact credit",
+    "scope": "Four packed byte reads precede float-channel stores. The following jump still has a different local destination offset because the complete owner differs later."
+  },
+  "target_table": {
+    "offset": 1808,
+    "slots": [
+      1588,
+      59,
+      130,
+      243,
+      341,
+      373,
+      465,
+      497,
+      511,
+      623,
+      842,
+      1106,
+      1358,
+      1410,
+      1420
+    ],
+    "all_destinations_are_instruction_starts": true,
+    "alignment_instruction": {
+      "offset": 1806,
+      "mnemonic": "mov",
+      "operand": "edi, edi",
+      "size": 2
+    },
+    "returns": [
+      {
+        "offset": 1803,
+        "operand": "4"
+      }
+    ]
+  },
+  "candidate_table": {
+    "offset": 1808,
+    "slots": [
+      1589,
+      59,
+      130,
+      243,
+      341,
+      373,
+      465,
+      497,
+      511,
+      623,
+      842,
+      1106,
+      1358,
+      1410,
+      1421
+    ],
+    "all_destinations_are_instruction_starts": true,
+    "alignment_instruction": {
+      "offset": 1807,
+      "mnemonic": "nop",
+      "operand": "",
+      "size": 1
+    },
+    "returns": [
+      {
+        "offset": 1804,
+        "operand": "4"
+      }
+    ]
+  },
+  "diagnostic_limit": "Same-offset structural scores are not acceptance: later instructions/fields and local destinations shift. The 1868-byte complete code/alignment/table remains unequal; no partial exact credit.",
+  "clear_color_binding": {
+    "maintained_symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+    "target_base": "0x00491C28",
+    "addend": 1920,
+    "destination": "0x004923A8",
+    "member": "clearColor",
+    "existing_native_offset_assertion": "src/Main.hpp:MainSupervisorFlagsAt3CC",
+    "scope": "Semantic member identity for this source access; physical alias/storage and original class ownership remain open. Other GameManager standalone alias use is unchanged."
+  },
+  "gui_binder_callers": [
+    {
+      "address": "0x413cbf",
+      "setup": [
+        "00413CA3 jmp 0x413cb0",
+        "00413CA5 lea esp, [esp]",
+        "00413CAC lea esp, [esp]",
+        "00413CB0 mov ecx, dword ptr [edi + 0x9ec8]",
+        "00413CB6 lea ebx, [esi - 0xa]",
+        "00413CB9 lea eax, [ebp - 0x24b8]"
+      ]
+    },
+    {
+      "address": "0x413cce",
+      "setup": [
+        "00413CB6 lea ebx, [esi - 0xa]",
+        "00413CB9 lea eax, [ebp - 0x24b8]",
+        "00413CBF call 0x43e710",
+        "00413CC4 mov ecx, dword ptr [edi + 0x9ec8]",
+        "00413CCA mov ebx, esi",
+        "00413CCC mov eax, ebp"
+      ]
+    },
+    {
+      "address": "0x413cfb",
+      "setup": [
+        "00413CE5 xor esi, esi",
+        "00413CE7 lea ebp, [edi + 0x4980]",
+        "00413CED lea ecx, [ecx]",
+        "00413CF0 mov ecx, dword ptr [edi + 0x9ec8]",
+        "00413CF6 lea ebx, [esi + 0x1e]",
+        "00413CF9 mov eax, ebp"
+      ]
+    },
+    {
+      "address": "0x413d1f",
+      "setup": [
+        "00413D0A jl 0x413cf0",
+        "00413D0C xor esi, esi",
+        "00413D0E lea ebp, [edi + 0x6a8c]",
+        "00413D14 mov ecx, dword ptr [edi + 0x9ec8]",
+        "00413D1A lea ebx, [esi + 0x2f]",
+        "00413D1D mov eax, ebp"
+      ]
+    },
+    {
+      "address": "0x413d4b",
+      "setup": [
+        "00413D32 lea ebp, [edi + 0x793c]",
+        "00413D38 jmp 0x413d40",
+        "00413D3A lea ebx, [ebx]",
+        "00413D40 mov ecx, dword ptr [edi + 0x9ec8]",
+        "00413D46 lea ebx, [esi + 0x50]",
+        "00413D49 mov eax, ebp"
+      ]
+    },
+    {
+      "address": "0x413d6f",
+      "setup": [
+        "00413D5A jl 0x413d40",
+        "00413D5C xor esi, esi",
+        "00413D5E lea ebp, [edi + 0x8094]",
+        "00413D64 mov ecx, dword ptr [edi + 0x9ec8]",
+        "00413D6A lea ebx, [esi + 0x33]",
+        "00413D6D mov eax, ebp"
+      ]
+    },
+    {
+      "address": "0x41403f",
+      "setup": [
+        "00414023 mov ecx, dword ptr [ecx + 0x732454]",
+        "00414029 mov dword ptr [esi], ecx",
+        "0041402B mov edx, dword ptr [0x4776e0]",
+        "00414031 mov ecx, dword ptr [edx + 0x8994]",
+        "00414037 lea eax, [edi + 0x9a48]",
+        "0041403D xor ebx, ebx"
+      ]
+    }
+  ],
+  "retained_controls": [
+    "Direct typed packed-color members; 28-byte Fog layout/color offset18 asserted.",
+    "Actual Main clearColor+780 member."
+  ],
+  "restored_controls": [
+    "Large Hermite helper outlines, dispatcher1704.",
+    "Implicit vector-record copies alter frame to74, dispatcher1824.",
+    "Cubic duration capture is byte-neutral.",
+    "Seven actual GUI binder calls, using its existing profile, leave the three coupled bodies neutral; twelve-input graph not retained.",
+    "Initializer meaningful argument reorder and three-meaningful-input stdcall operation are neutral; original member/prototype/callers restored.",
+    "Typed local color reference recreates the old alias-sensitive channel schedule; direct member access retained."
+  ],
+  "remaining_complete_candidates": {
+    "binder": {
+      "result": "mismatch",
+      "candidate_size": 197,
+      "target_size": 203
+    },
+    "initializer": {
+      "result": "mismatch",
+      "candidate_size": 200,
+      "target_size": 202
+    },
+    "dispatch": {
+      "result": "mismatch",
+      "candidate_size": 1868,
+      "target_size": 1868
+    },
+    "camera": {
+      "result": "mismatch",
+      "candidate_size": 282,
+      "target_size": 287
+    }
+  },
+  "oracle_sha256": {
+    "scripts/compare-linked-function.py": "cd4a1c5a34e427bb2ca257e37280c34e9731ab010d0f9c15568128acfab5d414",
+    "scripts/linked_image.py": "f65c6ac8878d46323daae75e249b60527035dae30f40752871ee86af0a89a533",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/build-match-unit.py": "0da61513525eb2411a57210bd0ce7bd258dca42b54f28db7bbcb11032f05f4fd"
+  },
+  "limits": {
+    "original_source_spelling": "unknown",
+    "production_translation_units": "unknown",
+    "global_data_alias_ownership": "not closed",
+    "product_runtime": "not claimed",
+    "portability": "not claimed",
+    "new_exact_credit": "none; complete dispatcher/initializer/binder remain nonexact"
+  },
+  "canonical_report_sha256": "b4c6e9f2383b45cd9ea1bfd193728f27ce2586d59373eb94e09754ff06cd4d96"
+}

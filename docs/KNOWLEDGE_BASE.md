@@ -7083,3 +7083,40 @@ old contract. Default camera282/287, physical globals/aliases, single-image,
 product/runtime and portability remain open. The next substantial dispatcher
 lead is403C80/1868; fresh complete comparison takes priority over old opcode
 notes. See [the complete projected-bounds proof](evidence/stage-bounds-context-20261029/README.md).
+
+
+## 2026-10-29 Stage dispatcher packed-color alias sensitivity
+
+The current complete StageExecuteScript403C80..4043CB remains1868/1868 NONEXACT.
+Its28-byte StageFogView now has an actual packed-color union member at18.
+Direct member access recovers four byte captures before float conversions/stores.
+Even a local reference to that typed member recreates the old interleaving,
+isolating a compiler alias-analysis distinction. Native size/offset assertions
+preserve the layout. The107-byte ordinary prefix at+1FF is raw-equal, but its
+following branch destination and full owner differ; no prefix/case credit.
+
+Opcode13's4923A8 destination equals maintained Main.clearColor at491C28+780,
+already represented in the maintained supervisor view. Using that actual member is byte-neutral here.
+The separate GameManager alias and physical storage ownership remain open.
+The unbound same-offset score improves1241/1724 to1301/1724; shifted fields make
+it unsuitable for acceptance. Target code1806+MOV EDI,EDI2+table60 contrasts with
+candidate1807+NOP1+table60. Both table extents are complete and all15 targets are
+checked against each image's own instruction starts. Frame8C/stackstage/RET4 is
+preserved. Later opcode10/11/12/13 registers and opcode14's ESI-versus-EDX VM
+input remain unequal. Complete initializer200/202 and binder197/203 remain open.
+
+A Hermite setup helper outlines and gives dispatcher1704; implicit vector copies
+change frame74 and owner1824. Duration capture is neutral. Seven actual GUI-reset
+binder calls supply target ECXresource/EAXvm/EBXindex; adding real Gui.cpp with
+its existing profile is neutral for the three coupled bodies, so the twelve-input
+graph is restored. This is distinct from historical callers of the upper wrapper,
+but earns no ABI or exactness credit. Meaningful initializer argument-order and
+three-input stdcall-operation controls are also neutral and restored completely.
+No unused context, forced register, fabricated return or synthetic caller remains.
+Park these controls until new discriminating source/ABI evidence exists.
+
+Nine explicitly affected canonical old units4430/all155 pass in their original
+three recipes, with22 old same-image contracts6613/all282. No manifest/match,
+source-profile, source-mapping or denominator change and no exact credit.
+Original source names/classes/TUs, physical aliases, product/runtime and portability
+remain independent. See [the dispatcher source/alias review](evidence/stage-dispatch-context-20261029/README.md).
