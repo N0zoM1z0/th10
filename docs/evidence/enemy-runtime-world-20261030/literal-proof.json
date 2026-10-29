@@ -1,0 +1,44 @@
+[
+  {
+    "address": "0x470b40",
+    "bits": "0xc3400000",
+    "value": -192.0,
+    "section": ".rdata",
+    "section_characteristics": "0x40000040"
+  },
+  {
+    "address": "0x470b3c",
+    "bits": "0x43400000",
+    "value": 192.0,
+    "section": ".rdata",
+    "section_characteristics": "0x40000040"
+  },
+  {
+    "address": "0x470b04",
+    "bits": "0x0",
+    "value": 0.0,
+    "section": ".rdata",
+    "section_characteristics": "0x40000040"
+  },
+  {
+    "address": "0x470b38",
+    "bits": "0x43e00000",
+    "value": 448.0,
+    "section": ".rdata",
+    "section_characteristics": "0x40000040"
+  },
+  {
+    "address": "0x470d30",
+    "bits": "0xbdcccccd",
+    "value": -0.10000000149011612,
+    "section": ".rdata",
+    "section_characteristics": "0x40000040"
+  },
+  {
+    "address": "0x470c18",
+    "bits": "0x3dcccccd",
+    "value": 0.10000000149011612,
+    "section": ".rdata",
+    "section_characteristics": "0x40000040"
+  }
+]

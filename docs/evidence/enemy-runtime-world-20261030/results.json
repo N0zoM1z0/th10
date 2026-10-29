@@ -1,0 +1,370 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owner": "EnemyRuntimeUpdate",
+  "target_address": "0x0040DC80",
+  "target_size": 2412,
+  "new_exact_bytes": 0,
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z"
+  },
+  "project_input_count": 36,
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "85062d20044569184c1b6b29fd3923d205c7711555decdf57e7a91a5cf9aee3d",
+    "src/Enemy.hpp": "da605cc7556ffd789c88502ac2bf0e8b7ec51d41a78bead82d51c6773dd21726",
+    "src/EnemyEclDispatcher.cpp": "cdbeca418b3d1b06b1912b6545977eace64fe28e367bbf0f15ec2f54d80c765f",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/Player.cpp": "2aadeef20481ae730bf9ddffe130b72c9eeceeb866f50f940d66c71b9a56c4e0",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "cold_compiled_game_sources": [
+    "src/Enemy.cpp",
+    "src/AnmManager.cpp",
+    "src/RandomMath.cpp",
+    "src/AnmVmCreate.cpp",
+    "src/AnmVmId.cpp",
+    "src/AnmInt3Scale.cpp",
+    "src/EclVm.cpp",
+    "src/Player.cpp",
+    "src/PlayerCollision.cpp",
+    "src/EnemyEclDispatcher.cpp"
+  ],
+  "reused_object_count": 0,
+  "image_sha256": "04762e1e175ae991a448d643174ac4cd6a12a48b4934419518ddcdc2e0bfd44d",
+  "map_sha256": "82c3cd7647016d6055b9f1f4b3f79fb5fc143b050ee360c71356c73ea4666be8",
+  "pdb_sha256": "4ec10aa49410c1f6c062b02031ad7680af056a644098e55188b9556ecf489117",
+  "diagnostic": {
+    "result": "mismatch",
+    "candidate_size": 2412,
+    "target_size": 2412,
+    "decoded_candidate_bytes": 2412,
+    "normalization_complete": true,
+    "matched_comparable_bytes": 1575,
+    "comparable_bytes": 2136,
+    "acceptance_authority": "none"
+  },
+  "normalized_aligned_instructions": 647,
+  "target_instruction_count": 671,
+  "same_image_guards": [
+    {
+      "unit": "enemy-evaluate-scalar-interpolation",
+      "result": "exact",
+      "matched_bytes": 652,
+      "size": 652,
+      "image_sha256": "04762e1e175ae991a448d643174ac4cd6a12a48b4934419518ddcdc2e0bfd44d",
+      "pdb_guid": "77c13fea06b5fe4baad68a531319e257",
+      "target_address": "0x00412AC0",
+      "fields": 10
+    },
+    {
+      "unit": "ecl-vm-host-run",
+      "result": "exact",
+      "matched_bytes": 146,
+      "size": 146,
+      "image_sha256": "04762e1e175ae991a448d643174ac4cd6a12a48b4934419518ddcdc2e0bfd44d",
+      "pdb_guid": "77c13fea06b5fe4baad68a531319e257",
+      "target_address": "0x0044FD10",
+      "fields": 4
+    }
+  ],
+  "canonical_guards": [
+    {
+      "unit": "ecl-vm-host-run",
+      "result": "exact",
+      "matched_bytes": 146,
+      "size": 146,
+      "image_sha256": "b44ed1f155ea814f39b32ee7ca2fe19f59924f0abb1da52bfde629fa491f0cd1",
+      "pdb_guid": "3c96ad03337d6f4484018c2d40048b2f",
+      "target_address": "0x0044FD10",
+      "fields": 4
+    },
+    {
+      "unit": "enemy-evaluate-scalar-interpolation",
+      "result": "exact",
+      "matched_bytes": 652,
+      "size": 652,
+      "image_sha256": "ed334d2668398510eff2356f8393cf5907e7e0cf2d47c688b22a4c36b642c72d",
+      "pdb_guid": "208113c556ab88488a406176f64f4a4f",
+      "target_address": "0x00412AC0",
+      "fields": 10
+    }
+  ],
+  "controls": [
+    {
+      "label": "world-vector",
+      "size": 2378,
+      "aligned_instructions": 457,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "bounds-values",
+      "size": 2363,
+      "aligned_instructions": 488,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "real-ecl",
+      "size": 2355,
+      "aligned_instructions": 515,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "runtime-tail",
+      "size": 2364,
+      "aligned_instructions": 547,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "real-callers",
+      "size": 2373,
+      "aligned_instructions": 558,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "literal-bounds",
+      "size": 2363,
+      "aligned_instructions": 564,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "flash-branch",
+      "size": 2378,
+      "aligned_instructions": 577,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "direction-cue",
+      "size": 2404,
+      "aligned_instructions": 590,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "counted-vms",
+      "size": 2404,
+      "aligned_instructions": 580,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "position-snapshot",
+      "size": 2432,
+      "aligned_instructions": 566,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "tracking-comparison",
+      "size": 2400,
+      "aligned_instructions": 588,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "animation-predicates",
+      "size": 2403,
+      "aligned_instructions": 613,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "direction-result-lifetime",
+      "size": 2412,
+      "aligned_instructions": 647,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    },
+    {
+      "label": "subroutine-database",
+      "size": 2412,
+      "aligned_instructions": 647,
+      "target_instructions": 671,
+      "result": "mismatch",
+      "acceptance_authority": "none"
+    }
+  ],
+  "limits": "Parent linkage fields/local destinations remain unaccepted. Equal sizes and address-masked aligned instructions grant no exact owner credit. Motion160/171 and SetSubroutine30/30 remain nonexact."
+}

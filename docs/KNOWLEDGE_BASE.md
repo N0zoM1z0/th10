@@ -7265,3 +7265,26 @@ bounds, callbacks and timer codegen also remain open. Motion160/171 is unchanged
 a complete vector-sum control is neutral and restored. No profile, comparator,
 match, boundary, origin or phase credit changes. See the
 [runtime vector record](evidence/enemy-runtime-vectors-20261030/README.md).
+
+## 2026-10-30 Enemy runtime world/bounds and predicate recovery
+
+The complete2412-byte40DC80 runtime now has a2412-byte candidate and647/671
+address-normalized aligned instructions. A full ten-input cold rebuild reuses no
+objects and freezes36 project inputs. It remains nonexact; matches and progress
+are unchanged. World composition and bounds use complete vector values/copies.
+Target readonly float literals are-192/192/0/448 and-0.1/+0.1, with exact bits
+and section observations recorded. Six undefined writable-global aliases are
+removed without claiming original data names or physical ownership.
+
+Direct direction predicates recover the target unordered-to-zero route; the old
+inverse nesting selected the negative direction. Tracking retains separate Player-X
+reads; mode/flag predicates, previous-direction switch, flash/cue alternatives,
+full-owner threshold reads and timer Tick restore further target scheduling.
+Actual ECL, Player, collision and sound source visibility restores outgoing calls.
+Two old exact guards652/10 and146/4 pass both same-image strict comparison and
+explicit original canonical colds. No whole cohort or runtime scenarios run.
+
+Remaining world Y/Z load order, early eight-count/manager lifetimes, subroutine
+name ABI and life-register schedule keep the owner open. Snapshot2432 and neutral
+database-capture controls are restored and parked. Motion160/171 is unchanged.
+See the [complete runtime proof and limits](evidence/enemy-runtime-world-20261030/README.md).

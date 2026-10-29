@@ -86,14 +86,13 @@ Cleanup removed4942 unused code/build files (198,807,947 bytes), preserving all
 document/verification records, the existing record archive and D3D evidence.
 No new compressed archive or historical input dependency is introduced.
 
-The current six-input Enemy runtime context is separately pinned at
-`.analysis/gpt-6.1-sol/enemy-motion-context-20261030/final-context.json`.
-Its24 project inputs, actual profiles and six object hashes must be revalidated
-before cache reuse. Both canonical scalar witnesses and the old-constructor
-witness are retained; acceptance selects enemy-evaluate-scalar-interpolation
-and the affected enemy-runtime-constructor explicitly.
-The older scalar context describes its frozen source epoch. Current runtime
-source changes preserve scalar652/all10 in one explicit canonical cold replay.
+The current ten-input Enemy runtime context is separately pinned at
+`.analysis/gpt-6.1-sol/enemy-world-context-20261030/final-context.json`.
+Its36 project inputs, actual profiles and ten object hashes must be revalidated
+before cache reuse. All ten game sources were freshly compiled with no object
+reuse. Scalar652/all10 and ECL Host Run146/all4 pass same-image strict checks
+and explicit original-recipe canonical colds. Older scalar/motion contexts
+describe frozen source epochs; their witnesses remain retained.
 
 The private probe accepts a prior context and optional desired graph separately.
 Cache objects are identified using the prior source order, and desired profiles
@@ -127,14 +126,16 @@ placement are neutral, while a precomputed cubic member pointer grows it1904.
 The real RGB callee graph reproduces ANM's previously bound9960/9964 frontier;
 five-input and fourteen-input images have the same four residual offsets.
 Record/value/whole-vector permutations repeat old closed controls and are parked.
-The current2412-byte runtime caller has2346 native bytes and remains nonexact.
-Float3 difference values and nonzero-duration-first branches restore frame18;
-a consumed baseMotion pointer recovers early target scheduling. Normalized
-instruction alignment improves337/671 to440/671, without exact credit.
-The next concrete lead is its world-velocity vector sum/subtraction before copy;
-later bounds, callbacks and timer scheduling also differ. Motion160/171 is
-unchanged; the vector-sum control is restored. Scalar652 is closed. See the
-[runtime vector evidence](evidence/enemy-runtime-vectors-20261030/README.md).
+The current runtime caller emits2412/2412 bytes but remains nonexact. World-vector
+composition, bounds, readonly literals, direct direction predicates, animation,
+flash/cue and timer forms recover647/671 address-normalized instructions, versus
+440/671 at the previous2346-byte checkpoint. Direction's unordered route now
+selects zero as in the target. No partial owner or exact-byte credit is granted.
+Remaining leads are world Y/Z operand order, early eight-entry count/manager
+lifetimes, SetSubroutine name ABI and life-register scheduling. A vector snapshot
+grows the body2432; a database capture is neutral. Both are restored and parked.
+Motion160/171 is unchanged. See the [current complete runtime record](evidence/enemy-runtime-world-20261030/README.md)
+and the earlier [vector recovery](evidence/enemy-runtime-vectors-20261030/README.md).
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed

@@ -257,12 +257,6 @@ struct EnemyCriticalSectionView
 // Same target storage declaration as Main.hpp and Sound.cpp.
 extern unsigned char g_MainSoundOwner[0x52d0];
 extern PlayerFloat3 g_EnemyGlobalPositionOffset;
-extern float g_EnemyPlayfieldMinX;
-extern float g_EnemyPlayfieldMaxX;
-extern float g_EnemyPlayfieldMinY;
-extern float g_EnemyPlayfieldMaxY;
-extern float g_EnemyDirectionNegativeThreshold;
-extern float g_EnemyDirectionPositiveThreshold;
 extern int g_EnemyDamageProcessedFlag;
 extern float g_PlayerTimerScale;
 extern int g_EnemySpawnLayerIndex;
@@ -839,7 +833,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         const AnmFloat3View *target =
             reinterpret_cast<AnmVmFloat3InterpolationView *>(
                 &enemy->positionInterpolation1)->Evaluate(&output);
-        *reinterpret_cast<AnmFloat3View *>(&baseMotion->velocity) =
+        *reinterpret_cast<AnmFloat3View *>(&enemy->baseMotion.velocity) =
             *target - *reinterpret_cast<const AnmFloat3View *>(
                 &baseMotion->position);
     }
@@ -870,49 +864,36 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     }
     EnemyAdvanceMotion(baseMotion);
 
-    enemy->worldMotion.velocity.x =
-        baseMotion->position.x + enemy->offsetMotion.position.x -
-        enemy->worldMotion.position.x;
-    enemy->worldMotion.velocity.y =
-        baseMotion->position.y + enemy->offsetMotion.position.y -
-        enemy->worldMotion.position.y;
-    enemy->worldMotion.velocity.z =
-        baseMotion->position.z + enemy->offsetMotion.position.z -
-        enemy->worldMotion.position.z;
+    *reinterpret_cast<AnmFloat3View *>(&enemy->worldMotion.velocity) =
+        (*reinterpret_cast<const AnmFloat3View *>(&enemy->offsetMotion.position) +
+         *reinterpret_cast<const AnmFloat3View *>(&baseMotion->position)) -
+        *reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position);
     EnemyAdvanceMotion(&enemy->worldMotion);
 
     if ((enemy->flags & 0x200u) != 0)
     {
-        const float halfWidth = enemy->movementBoundsSizeX * 0.5f;
-        const float minimumX = enemy->movementBoundsCenterX - halfWidth;
-        const float maximumX = enemy->movementBoundsCenterX + halfWidth;
-        if (enemy->worldMotion.position.x < minimumX)
-            enemy->worldMotion.position.x = minimumX;
-        else if (maximumX < enemy->worldMotion.position.x)
-            enemy->worldMotion.position.x = maximumX;
+        float halfSize = enemy->movementBoundsSizeX * 0.5f;
+        if (enemy->movementBoundsCenterX - halfSize > enemy->worldMotion.position.x)
+            enemy->worldMotion.position.x = enemy->movementBoundsCenterX - halfSize;
+        else if (enemy->movementBoundsCenterX + halfSize < enemy->worldMotion.position.x)
+            enemy->worldMotion.position.x = enemy->movementBoundsCenterX + halfSize;
 
-        const float halfHeight = enemy->movementBoundsSizeY * 0.5f;
-        const float minimumY = enemy->movementBoundsCenterY - halfHeight;
-        const float maximumY = enemy->movementBoundsCenterY + halfHeight;
-        if (enemy->worldMotion.position.y < minimumY)
-            enemy->worldMotion.position.y = minimumY;
-        else if (maximumY < enemy->worldMotion.position.y)
-            enemy->worldMotion.position.y = maximumY;
+        halfSize = enemy->movementBoundsSizeY * 0.5f;
+        if (enemy->movementBoundsCenterY - halfSize > enemy->worldMotion.position.y)
+            enemy->worldMotion.position.y = enemy->movementBoundsCenterY - halfSize;
+        else if (enemy->movementBoundsCenterY + halfSize < enemy->worldMotion.position.y)
+            enemy->worldMotion.position.y = enemy->movementBoundsCenterY + halfSize;
 
-        enemy->offsetMotion.position.x =
-            enemy->worldMotion.position.x - baseMotion->position.x;
-        enemy->offsetMotion.position.y =
-            enemy->worldMotion.position.y - baseMotion->position.y;
-        enemy->offsetMotion.position.z =
-            enemy->worldMotion.position.z - baseMotion->position.z;
+        *reinterpret_cast<AnmFloat3View *>(&enemy->offsetMotion.position) =
+            *reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position) -
+            *reinterpret_cast<const AnmFloat3View *>(&baseMotion->position);
     }
 
     const float visibilityHalfWidth = enemy->visibilityExtentX * 0.5f;
-    const float visibilityHalfHeight = enemy->visibilityExtentY * 0.5f;
-    if (enemy->worldMotion.position.x + visibilityHalfWidth < g_EnemyPlayfieldMinX ||
-        g_EnemyPlayfieldMaxX < enemy->worldMotion.position.x - visibilityHalfWidth ||
-        enemy->worldMotion.position.y + visibilityHalfHeight < g_EnemyPlayfieldMinY ||
-        g_EnemyPlayfieldMaxY < enemy->worldMotion.position.y - visibilityHalfHeight)
+    if (enemy->worldMotion.position.x + visibilityHalfWidth < -192.0f ||
+        enemy->worldMotion.position.x - visibilityHalfWidth > 192.0f ||
+        enemy->worldMotion.position.y + (enemy->visibilityExtentY * 0.5f) < 0.0f ||
+        enemy->worldMotion.position.y - (enemy->visibilityExtentY * 0.5f) > 448.0f)
     {
         if ((enemy->flags & 0x100u) != 0 && (enemy->flags & 4u) == 0)
             return -1;
@@ -924,17 +905,16 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
 
     if ((enemy->flags & 0x100000u) != 0)
     {
-        if (g_EnemyAnimationMode->value28 != 0)
+        if (g_EnemyAnimationMode->value28 != 0 &&
+            (enemy->flags & 0x200000u) == 0)
         {
-            if ((enemy->flags & 0x200000u) == 0)
-            {
-                enemy->animationBaseScript = enemy->animationScriptPrimary;
-                AnmSetVmScriptIndexAndExecute(
-                    &enemy->managedVmIds[0], enemy->animationScriptPrimary);
-                enemy->flags |= 0x200001u;
-            }
+            enemy->animationBaseScript = enemy->animationScriptPrimary;
+            AnmSetVmScriptIndexAndExecute(
+                &enemy->managedVmIds[0], enemy->animationScriptPrimary);
+            enemy->flags |= 0x200001u;
         }
-        else if ((enemy->flags & 0x200000u) != 0)
+        else if (g_EnemyAnimationMode->value28 == 0 &&
+            (enemy->flags & 0x200000u) != 0)
         {
             enemy->animationBaseScript = enemy->animationScriptAlternate;
             AnmSetVmScriptIndexAndExecute(
@@ -963,12 +943,12 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
                 (enemy->flags & 0x8000u) != 0)
             {
                 damage /= 5;
-                if (damage < 1)
+                if (damage <= 0)
                     damage = 1;
             }
 
             if ((enemy->flags & 8u) == 0 &&
-                enemy->damageReductionTimer.current < 1)
+                enemy->damageReductionTimer.current <= 0)
             {
                 enemy->life -= damage;
             }
@@ -986,7 +966,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
                     return -1;
             }
 
-            if (enemy->life < 1 && (enemy->flags & 0x40u) == 0)
+            if ((enemy->life <= 0) & ((enemy->flags & 0x40u) == 0))
             {
                 g_GuiScore.Add(enemy->scoreReward);
                 if (EnemyFinalizeDeath(enemy->owner) != 0)
@@ -1006,7 +986,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     }
 
     if ((enemy->flags & 0x12u) == 0 &&
-        enemy->playerCollisionTimer.current < 1)
+        enemy->playerCollisionTimer.current <= 0)
     {
         reinterpret_cast<PlayerCollisionPositionView *>(
             &enemy->worldMotion.position)->CheckPlayerCollision(
@@ -1016,28 +996,29 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     if ((enemy->flags & 0x1000u) != 0)
     {
         int direction;
-        if (g_EnemyDirectionNegativeThreshold <= enemy->worldMotion.velocity.x)
-        {
-            if (enemy->worldMotion.velocity.x <= g_EnemyDirectionPositiveThreshold)
-                direction = 0;
-            else
-                direction = 1;
-        }
-        else
-        {
+        int scriptOffset = 0;
+        if (enemy->worldMotion.velocity.x < -0.1f)
             direction = -1;
-        }
+        else if (enemy->worldMotion.velocity.x > 0.1f)
+            direction = 1;
+        else
+            direction = 0;
 
         const int previousDirection = enemy->animationDirection;
         if (previousDirection != direction)
         {
-            int scriptOffset = 0;
-            if (previousDirection == -1)
-                scriptOffset = 3 - (direction != 0);
-            else if (previousDirection == 0)
+            switch (previousDirection)
+            {
+            case -1:
+                scriptOffset = direction == 0 ? 3 : 2;
+                break;
+            case 0:
                 scriptOffset = (direction != -1) + 1;
-            else if (previousDirection == 1)
+                break;
+            case 1:
                 scriptOffset = direction == 0 ? 4 : 1;
+                break;
+            }
 
             enemy->animationDirection = direction;
             AnmSetVmScriptIndexAndExecute(
@@ -1046,19 +1027,20 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         }
     }
 
-    // Target keeps this manager across the selected loop and the later lookup.
-    AnmRenderManagerView *const manager = g_AnmRenderManagerView;
-    int i;
+    AnmRenderManagerView *manager;
+    int remaining = 8;
     if ((enemy->flags & 0x40000u) == 0)
     {
-        for (i = 0; i < 8; ++i)
-            manager->SetVmWorldPosition(AnmVmIdView(enemy->managedVmIds[i]),
+        manager = g_AnmRenderManagerView;
+        for (unsigned int *id = &enemy->managedVmIds[0]; remaining != 0; --remaining, ++id)
+            manager->SetVmWorldPosition(AnmVmIdView(*id),
                 reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position));
     }
     else
     {
-        for (i = 0; i < 8; ++i)
-            manager->SetVmPosition(AnmVmIdView(enemy->managedVmIds[i]),
+        manager = g_AnmRenderManagerView;
+        for (unsigned int *id = &enemy->managedVmIds[0]; remaining != 0; --remaining, ++id)
+            manager->SetVmPosition(AnmVmIdView(*id),
                 reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position));
     }
 
@@ -1066,10 +1048,9 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         (enemy->flags & 0xc0000u) == 0)
     {
         EnemyFullObjectView *tracked = g_Player->trackedEnemy;
-        const float playerX = g_Player->drawPosition.x;
         if (tracked == NULL ||
-            (float)fabs(enemy->worldMotion.position.x - playerX) >
-                (float)fabs(tracked->runtime.worldMotion.position.x - playerX))
+            (float)fabs(tracked->runtime.worldMotion.position.x - g_Player->drawPosition.x) <
+                (float)fabs(enemy->worldMotion.position.x - g_Player->drawPosition.x))
         {
             if (g_Player->trackedEnemyValid == 0)
                 g_Player->trackedEnemy = enemy->owner;
@@ -1082,38 +1063,37 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     if (primaryVm == NULL)
         enemy->managedVmIds[0] = 0;
 
-    if (enemy->damageFlashFrames != 0)
+    if (enemy->damageFlashFrames == 0)
+    {
+        if ((enemy->flags & 0x2000u) != 0)
+        {
+            primaryVm->color = 0xff0000ffu;
+            primaryVm->flags |= 0x8000u;
+            enemy->damageFlashFrames = 4;
+
+            bool lowLifeCue = false;
+            if ((enemy->flags & 0x8000u) != 0)
+            {
+                const unsigned int gameFlags = g_EnemyGameState->flags378C;
+                if (((gameFlags & 1u) == 0 || (gameFlags & 8u) == 0) &&
+                    (((gameFlags & 1u) != 0 && enemy->owner->runtime.value13C8 < 300) ||
+                     ((gameFlags & 1u) == 0 && enemy->owner->runtime.value13C8 < 900)))
+                    lowLifeCue = true;
+            }
+            if (lowLifeCue)
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                    QueueSoundCue(0x23, enemy->worldMotion.position.x);
+            else
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                    QueueSoundCue(0x13, enemy->worldMotion.position.x);
+        }
+    }
+    else
     {
         primaryVm->flags &= ~0x8000u;
         if ((enemy->flags & 0x8000u) != 0)
             g_GuiView->bossPositionVm.flags35C &= ~0x8000u;
         enemy->damageFlashFrames--;
-    }
-    else if ((enemy->flags & 0x2000u) != 0)
-    {
-        primaryVm->color = 0xff0000ffu;
-        primaryVm->flags |= 0x8000u;
-        enemy->damageFlashFrames = 4;
-
-        int soundId = 0x13;
-        if ((enemy->flags & 0x8000u) != 0)
-        {
-            const unsigned int gameFlags = g_EnemyGameState->flags378C;
-            if ((gameFlags & 1u) == 0 || (gameFlags & 8u) == 0)
-            {
-                if ((gameFlags & 1u) == 0)
-                {
-                    if (enemy->value13C8 < 900)
-                        soundId = 0x23;
-                }
-                else if (enemy->value13C8 < 300)
-                {
-                    soundId = 0x23;
-                }
-            }
-        }
-        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-            QueueSoundCue(soundId, enemy->worldMotion.position.x);
     }
 
     if (enemy->damageReductionTimer.current > 0)
@@ -1121,19 +1101,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     if (enemy->playerCollisionTimer.current > 0)
         reinterpret_cast<AnmVmTimerView *>(&enemy->playerCollisionTimer)->Add(-1.0f);
 
-    enemy->updateTimer.previous = enemy->updateTimer.current;
-    const float updateScale = *enemy->updateTimer.scale;
-    if (updateScale > 0.9900000095367432f &&
-        updateScale < 1.0099999904632568f)
-    {
-        ++enemy->updateTimer.current;
-        enemy->updateTimer.subframe += 1.0f;
-    }
-    else
-    {
-        enemy->updateTimer.subframe += updateScale;
-        enemy->updateTimer.current = (int)enemy->updateTimer.subframe;
-    }
+    reinterpret_cast<AnmVmTimerView *>(&enemy->updateTimer)->Tick();
 
     return 0;
 }
