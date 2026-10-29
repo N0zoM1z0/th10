@@ -7249,3 +7249,19 @@ No parent, original class/TU, global storage, product or runtime credit is added
 Stage/ANM experimental changes are restored; ANM's five-input real RGB graph
 reproduces the already recorded four-byte frontier, so old record/vector
 permutations remain parked. See the [complete proof](evidence/enemy-scalar-context-20261030/README.md).
+
+## 2026-10-30 Enemy runtime vector temporary recovery
+
+Complete EnemyRuntimeUpdate40DC80/2412 remains nonexact. The target's two
+position-interpolation paths precede their ordinary alternatives and assign
+complete Float3 subtraction values to velocity. Restoring those operations and
+reusing the baseMotion pointer recovers frame18 and early copy/call scheduling.
+The current complete cold candidate2346/2412 aligns440/671 address-normalized
+instructions versus337/671 for the old2362-byte source; these are diagnostics,
+not partial exact credit. Scalar652/all10 remains exact in one selected cold.
+
+World velocity still needs the target vector sum then subtraction before copy;
+bounds, callbacks and timer codegen also remain open. Motion160/171 is unchanged;
+a complete vector-sum control is neutral and restored. No profile, comparator,
+match, boundary, origin or phase credit changes. See the
+[runtime vector record](evidence/enemy-runtime-vectors-20261030/README.md).

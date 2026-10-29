@@ -804,7 +804,17 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         enemy->baseMotion.value24 = interpolation.y;
     }
 
-    if (enemy->positionInterpolation0.duration == 0)
+    if (enemy->positionInterpolation0.duration != 0)
+    {
+        AnmFloat3View output;
+        const AnmFloat3View *target =
+            reinterpret_cast<AnmVmFloat3InterpolationView *>(
+                &enemy->positionInterpolation0)->Evaluate(&output);
+        *reinterpret_cast<AnmFloat3View *>(&enemy->offsetMotion.velocity) =
+            *target - *reinterpret_cast<const AnmFloat3View *>(
+                &enemy->offsetMotion.position);
+    }
+    else
     {
         if ((enemy->offsetMotion.flags & 1u) == 0)
         {
@@ -821,62 +831,53 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
                 enemy->offsetMotion.value1C + enemy->offsetMotion.value18);
         }
     }
-    else
-    {
-        AnmFloat3View output;
-        const AnmFloat3View *target =
-            reinterpret_cast<AnmVmFloat3InterpolationView *>(
-                &enemy->positionInterpolation0)->Evaluate(&output);
-        enemy->offsetMotion.velocity.x = target->x - enemy->offsetMotion.position.x;
-        enemy->offsetMotion.velocity.y = target->y - enemy->offsetMotion.position.y;
-        enemy->offsetMotion.velocity.z = target->z - enemy->offsetMotion.position.z;
-    }
 
-    if (enemy->positionInterpolation1.duration == 0)
-    {
-        if ((enemy->baseMotion.flags & 1u) == 0)
-        {
-            reinterpret_cast<EnemyRuntimeVectorView *>(
-                &enemy->baseMotion.velocity)->FromAngleMagnitude(
-                    enemy->baseMotion.value1C,
-                    enemy->baseMotion.value18);
-            enemy->baseMotion.velocity.z = 0.0f;
-        }
-        else
-        {
-            enemy->baseMotion.value20 += enemy->baseMotion.value24;
-            enemy->baseMotion.value1C = EnemyWrapAngle(
-                enemy->baseMotion.value1C + enemy->baseMotion.value18);
-        }
-    }
-    else
+    EnemyMotionView *baseMotion = &enemy->baseMotion;
+    if (enemy->positionInterpolation1.duration != 0)
     {
         AnmFloat3View output;
         const AnmFloat3View *target =
             reinterpret_cast<AnmVmFloat3InterpolationView *>(
                 &enemy->positionInterpolation1)->Evaluate(&output);
-        enemy->baseMotion.velocity.x = target->x - enemy->baseMotion.position.x;
-        enemy->baseMotion.velocity.y = target->y - enemy->baseMotion.position.y;
-        enemy->baseMotion.velocity.z = target->z - enemy->baseMotion.position.z;
+        *reinterpret_cast<AnmFloat3View *>(&baseMotion->velocity) =
+            *target - *reinterpret_cast<const AnmFloat3View *>(
+                &baseMotion->position);
+    }
+    else
+    {
+        if ((baseMotion->flags & 1u) == 0)
+        {
+            reinterpret_cast<EnemyRuntimeVectorView *>(
+                &baseMotion->velocity)->FromAngleMagnitude(
+                    baseMotion->value1C,
+                    baseMotion->value18);
+            baseMotion->velocity.z = 0.0f;
+        }
+        else
+        {
+            baseMotion->value20 += baseMotion->value24;
+            baseMotion->value1C = EnemyWrapAngle(
+                baseMotion->value1C + baseMotion->value18);
+        }
     }
 
     EnemyAdvanceMotion(&enemy->offsetMotion);
     if ((enemy->flags & 0x40000u) != 0)
     {
-        enemy->baseMotion.position.x += g_EnemyGlobalPositionOffset.x;
-        enemy->baseMotion.position.y += g_EnemyGlobalPositionOffset.y;
-        enemy->baseMotion.position.z += g_EnemyGlobalPositionOffset.z;
+        baseMotion->position.x += g_EnemyGlobalPositionOffset.x;
+        baseMotion->position.y += g_EnemyGlobalPositionOffset.y;
+        baseMotion->position.z += g_EnemyGlobalPositionOffset.z;
     }
-    EnemyAdvanceMotion(&enemy->baseMotion);
+    EnemyAdvanceMotion(baseMotion);
 
     enemy->worldMotion.velocity.x =
-        enemy->baseMotion.position.x + enemy->offsetMotion.position.x -
+        baseMotion->position.x + enemy->offsetMotion.position.x -
         enemy->worldMotion.position.x;
     enemy->worldMotion.velocity.y =
-        enemy->baseMotion.position.y + enemy->offsetMotion.position.y -
+        baseMotion->position.y + enemy->offsetMotion.position.y -
         enemy->worldMotion.position.y;
     enemy->worldMotion.velocity.z =
-        enemy->baseMotion.position.z + enemy->offsetMotion.position.z -
+        baseMotion->position.z + enemy->offsetMotion.position.z -
         enemy->worldMotion.position.z;
     EnemyAdvanceMotion(&enemy->worldMotion);
 
@@ -899,11 +900,11 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
             enemy->worldMotion.position.y = maximumY;
 
         enemy->offsetMotion.position.x =
-            enemy->worldMotion.position.x - enemy->baseMotion.position.x;
+            enemy->worldMotion.position.x - baseMotion->position.x;
         enemy->offsetMotion.position.y =
-            enemy->worldMotion.position.y - enemy->baseMotion.position.y;
+            enemy->worldMotion.position.y - baseMotion->position.y;
         enemy->offsetMotion.position.z =
-            enemy->worldMotion.position.z - enemy->baseMotion.position.z;
+            enemy->worldMotion.position.z - baseMotion->position.z;
     }
 
     const float visibilityHalfWidth = enemy->visibilityExtentX * 0.5f;

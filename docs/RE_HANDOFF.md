@@ -86,12 +86,14 @@ Cleanup removed4942 unused code/build files (198,807,947 bytes), preserving all
 document/verification records, the existing record archive and D3D evidence.
 No new compressed archive or historical input dependency is introduced.
 
-The current six-input Enemy scalar context is separately pinned at
-`.analysis/gpt-6.1-sol/enemy-scalar-context-20261030/final-context.json`.
+The current six-input Enemy runtime context is separately pinned at
+`.analysis/gpt-6.1-sol/enemy-motion-context-20261030/final-context.json`.
 Its24 project inputs, actual profiles and six object hashes must be revalidated
 before cache reuse. Both canonical scalar witnesses and the old-constructor
 witness are retained; acceptance selects enemy-evaluate-scalar-interpolation
 and the affected enemy-runtime-constructor explicitly.
+The older scalar context describes its frozen source epoch. Current runtime
+source changes preserve scalar652/all10 in one explicit canonical cold replay.
 
 The private probe accepts a prior context and optional desired graph separately.
 Cache objects are identified using the prior source order, and desired profiles
@@ -125,8 +127,14 @@ placement are neutral, while a precomputed cubic member pointer grows it1904.
 The real RGB callee graph reproduces ANM's previously bound9960/9964 frontier;
 five-input and fourteen-input images have the same four residual offsets.
 Record/value/whole-vector permutations repeat old closed controls and are parked.
-The next movement lead is EnemyAdvanceMotion160/171 or its complete2412-byte
-runtime caller; scalar652 is now closed, superseding its old551/652 notes.
+The current2412-byte runtime caller has2346 native bytes and remains nonexact.
+Float3 difference values and nonzero-duration-first branches restore frame18;
+a consumed baseMotion pointer recovers early target scheduling. Normalized
+instruction alignment improves337/671 to440/671, without exact credit.
+The next concrete lead is its world-velocity vector sum/subtraction before copy;
+later bounds, callbacks and timer scheduling also differ. Motion160/171 is
+unchanged; the vector-sum control is restored. Scalar652 is closed. See the
+[runtime vector evidence](evidence/enemy-runtime-vectors-20261030/README.md).
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed
