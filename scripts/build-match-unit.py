@@ -7,6 +7,7 @@ from linked_image import static_owner_selector, static_linkage_selector, static_
 from linked_allocation_eh import allocation_eh_selector
 from linked_stack_file_eh import stack_file_eh_selector
 from linked_worker_member_eh import worker_member_eh_selector
+from linked_chain_member_eh import chain_member_eh_selector
 
 import argparse
 from collections import Counter
@@ -48,6 +49,7 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
         allocation_eh_selector(unit, field)
         stack_file_eh_selector(unit, field)
         worker_member_eh_selector(unit, field)
+        chain_member_eh_selector(unit, field)
         kind = str(field.get("type", ""))
         width = int(field.get("width", SUPPORTED_FIELDS.get(kind, 0)))
         if kind not in SUPPORTED_FIELDS or width != SUPPORTED_FIELDS[kind]:

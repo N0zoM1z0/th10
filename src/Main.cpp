@@ -86,8 +86,6 @@ extern int __stdcall MainLoadConfiguration(
     const char *path, MainSupervisorView *supervisor);
 extern INT_PTR CALLBACK MainConfigurationDialogProc(
     HWND dialog, UINT message, WPARAM wparam, LPARAM lparam);
-extern void *MainCreateCallbackOwner();
-extern void MainDestroyCallbackOwner(void *owner);
 extern int MainRegisterChain();
 extern int __stdcall MainRunCalcChain(void *owner);
 extern int __stdcall MainRunDrawChain(void *owner);
@@ -115,7 +113,6 @@ extern void MainRequestSoundThreadStop(unsigned char *soundOwner);
 extern int MainJoinSoundThread(unsigned char *soundOwner);
 extern int MainReleaseSound(unsigned char *soundOwner);
 extern void MainStopMusic(void *musicOwner);
-extern void MainDestroyMusic(void *musicOwner);
 extern void MainFreeRegisteredAllocation(void *allocation);
 
 static __forceinline int MainD3dFailed(long result)
@@ -352,7 +349,7 @@ int WINAPI WinMain(
     GameWindowView::CalcExecutableChecksum();
 
 restart:
-    g_MainCallbackOwner = MainCreateCallbackOwner();
+    th10::g_Chain = new th10::Chain;
     if (GameWindowView::InitD3DInterface() != 0)
         goto stop;
 
@@ -429,11 +426,8 @@ restart:
 
 releaseGame:
     g_MainSupervisorView.ReleaseGame();
-    if (g_MainCallbackOwner != NULL)
-    {
-        MainDestroyCallbackOwner(g_MainCallbackOwner);
-        g_MainCallbackOwner = NULL;
-    }
+    delete th10::g_Chain;
+    th10::g_Chain = NULL;
     while (reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->ProcessQueues() != 0)
         ;
 
@@ -497,8 +491,7 @@ stop:
     {
         static_cast<MidiOutputView *>(g_MainSupervisorView.musicOwner)
             ->StopPlayback();
-        if (g_MainSupervisorView.musicOwner != NULL)
-            MainDestroyMusic(g_MainSupervisorView.musicOwner);
+        delete static_cast<MidiOutputView *>(g_MainSupervisorView.musicOwner);
         g_MainSupervisorView.musicOwner = NULL;
     }
     th10::g_GameErrorContext.Flush();
@@ -652,7 +645,7 @@ int __stdcall GameWindowView::Render(GameWindowView *window)
         &g_MainSupervisorView.activeViewport->viewport);
     g_MainSupervisorView.viewportConfigured = 1;
 
-    calcResult = MainRunCalcChain(g_MainCallbackOwner);
+    calcResult = MainRunCalcChain(th10::g_Chain);
     reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->ProcessQueues();
     if (calcResult == 0)
     {
@@ -678,7 +671,7 @@ int __stdcall GameWindowView::Render(GameWindowView *window)
             g_AnmRenderManagerView->vertexBuffer;
         g_MainSupervisorView.cachedFogEnabled = 0xff;
         StageDisableSupervisorFog(&g_MainSupervisorView);
-        MainRunDrawChain(g_MainCallbackOwner);
+        MainRunDrawChain(th10::g_Chain);
         g_AnmRenderManagerView->FlushVertexBuffer();
         g_MainSupervisorView.d3dDevice->vtable->SetTexture(
             g_MainSupervisorView.d3dDevice, 0, NULL);

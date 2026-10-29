@@ -9,6 +9,7 @@ typedef int (__fastcall *ChainCallback)(void *arg);
 struct ChainElem
 {
     ChainElem();
+    ~ChainElem();
 
     int prio;
     union
@@ -41,7 +42,8 @@ struct Chain
     ChainElem calcHead;
     ChainElem drawHead;
 
-    Chain();
+    __declspec(noinline) Chain();
+    __declspec(noinline) ~Chain();
 
     ListNode *CalcList()
     {

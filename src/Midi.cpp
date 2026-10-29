@@ -12,18 +12,52 @@ void MidiTimerView::Tick()
 }
 
 // Target4203C0..4203EF retains both period-end calls.
-void MidiTimerView::StopTimer()
-{
-    if (timerId != 0)
-        timeKillEvent(timerId);
-    timeEndPeriod(timerPeriod);
-    timerId = 0;
-}
-
 MidiTimerView::~MidiTimerView()
 {
     StopTimer();
     timeEndPeriod(timerPeriod);
+}
+
+// Target43A910..43A9AB retains both derived cleanup and automatic timer cleanup.
+MidiOutputView::~MidiOutputView()
+{
+    StopPlayback();
+    ReleaseTracks();
+    for (int i = 0; i < 32; ++i)
+    {
+        if (fileData[i] != NULL)
+        {
+            free(fileData[i]);
+            fileData[i] = NULL;
+        }
+        fileData[i] = NULL;
+    }
+    if (outputHandle != NULL)
+    {
+        midiOutReset(outputHandle);
+        midiOutClose(outputHandle);
+        outputHandle = NULL;
+    }
+}
+
+// Target43AA60..43AACA reloads track storage after each external free.
+void MidiOutputView::ReleaseTracks()
+{
+    for (int i = 0; i < trackCount; ++i)
+    {
+        if (tracks[i].data != NULL)
+        {
+            free(tracks[i].data);
+            tracks[i].data = NULL;
+        }
+    }
+    if (tracks != NULL)
+    {
+        free(tracks);
+        tracks = NULL;
+    }
+    tracks = NULL;
+    trackCount = 0;
 }
 
 int MidiOutputView::UnprepareHeader(MIDIHDR *header)

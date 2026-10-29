@@ -34,8 +34,14 @@ struct MidiChannelView
 // keeps the derived 64-bit playback fields from changing the timer offsets.
 struct MidiTimerView
 {
-    void StopTimer();
-    __declspec(noinline) ~MidiTimerView();
+    void StopTimer()
+    {
+        if (timerId != 0)
+            timeKillEvent(timerId);
+        timeEndPeriod(timerPeriod);
+        timerId = 0;
+    }
+    ~MidiTimerView();
     virtual void Tick();
     unsigned int timerId;
     unsigned int timerPeriod;
@@ -76,6 +82,8 @@ public:
     unsigned __int64 loopElapsedTimerTicks;
     unsigned __int64 loopEventTickBase;
 
+    ~MidiOutputView();
+    void ReleaseTracks();
     int UnprepareHeader(MIDIHDR *header);
     int StopPlayback();
     void ResetTracks();

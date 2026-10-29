@@ -59,6 +59,7 @@ ORACLE_CHECKS = {
     'Validate allocation EH address binding': [sys.executable, "scripts/test-linked-allocation-eh.py"],
     'Validate stack-file EH address binding': [sys.executable, "scripts/test-linked-stack-file-eh.py"],
     'Validate worker-member EH address binding': [sys.executable, "scripts/test-linked-worker-member-eh.py"],
+    'Validate chain-member EH address binding': [sys.executable, "scripts/test-linked-chain-member-eh.py"],
     'Validate Ending complete address inventory': [sys.executable, "scripts/test-ending-address-inventory.py"],
 }
 

@@ -6752,3 +6752,61 @@ nonmatches; address/interface binding does not imply callee bytes. Six mappings
 646 include the nonexact128 mode owner. No full-cohort, comparator, host-scenario,
 product/runtime or portability claim is made. See
 [the complete proof](evidence/main-lifetime-20261029/README.md).
+
+
+## 2026-10-29 Chain/MIDI lifetime, two-sentinel EH and timer inline contexts
+
+WinMain438DAB passes its allocated48-byte Chain to438880..4388E6. Natural
+Chain destruction stops Main worker+62C, removes both24-byte sentinel lists and
+then destroys draw/calc members in reverse order. Each12-byte ChainElem destructor
+clears all three callbacks+8/C/10, contradicting the old two-field navigation note.
+The member's original source versus generated/outlined origin remains unknown.
+WinMain now uses typed new/delete and the existing th10::g_Chain491BE4; the
+separate g_MainCallbackOwner alias and untyped lifetime bridge are removed.
+Original data storage and all other physical aliases remain separate claims.
+
+The103-byte destructor's handler field+9 requires a new narrowly named binding.
+Actual465363 is preceded by two8/11-byte actions, forming a complete29-byte
+region with dispatch. Immutable FuncInfo4713C4 is28 bytes with two states; the
+16-byte unwind map4713B4 has rows(-1,465350)/(0,465358), for states0/1. Both actions load
+saved this atEBP+4, the second adds24h, and both tail-jump to actual449A90. The
+new binding joins unique generated MAP/PDB ownership to the parent Chain object,
+checks both image protocols and the entire qualified raw-equal12-byte child,
+and binds CxxFrameHandler. It supplies the handler address only; no generated
+code/metadata or EH runtime credit. The affected Oracle self-test passes positive,
+neighbor-tail and33 targeted rejection controls without running game scenarios.
+
+MIDI output destruction43A910/156 calls StopPlayback/ReleaseTracks, frees32 saved
+file buffers with conditional plus unconditional clears, closes the output and
+automatically destroys its timer base. Track release43AA60/107 reloads track
+storage/count after each free, clears each data pointer, frees the array and
+retains both terminal clears/count reset. All actual null/error branches belong
+to full code comparison; no host failure campaign is added.
+
+The global noinline annotation on timer destruction was a provisional source
+choice that cannot reproduce MIDI's automatic156-byte body. It is removed.
+The ordinary inline StopTimer operation is shared from the header. Default
+Midi.cpp /O2 /GL /GS gives MIDI156 exact and Main shutdown321/293 nonexact;
+its /Ob1 recipe gives Main293 exact and MIDI116/156 nonexact. The latter is the
+updated existing Main contract and passes two new independent colds. A caller
+/Ob1 source partition did not change321 and is removed. These are distinct
+bounded codegen contexts; original production flags/TU partition and single-image
+closure remain unknown. No macro, fake ABI, manual vptr write or copied code is
+used to bridge them.
+
+Full WinMain is1390/1389, with local/register lifetime differences still present.
+Allocation-registry lifecycle factoring changes code but produces no exact parent
+and is restored. StopPlayback is129/129 with13 ordinary scheduling differences;
+using StopTimer there gives no exact gain and is restored. Whole-word versus
+bitfield Chain-constructor initialization has identical complete59-byte raw hashes
+and is restored. These controls are parked. Render439390/425 and its actual
+WinMain receiver remain a concrete parent lead: current419/425, old11-TU422/425
+is historical.
+
+Two independent default30-input colds reproduce four new owners378/all19:
+366 authored/12 indeterminate, with no authored-denominator change. Twenty-one
+selected old same-image contracts9290/all373 pass; the existing Main293 context
+passes independently twice and three other relevant contracts pass their original
+recipes. Four mappings378 added. No historical full cohort, generated-byte,
+product/runtime or portability credit is implied. See
+[the complete proof](evidence/chain-midi-lifetime-20261029/README.md).

@@ -31,8 +31,23 @@ ChainElem::ChainElem()
     prev = NULL;
 }
 
+ChainElem::~ChainElem()
+{
+    callback = NULL;
+    addedCallback = NULL;
+    deletedCallback = NULL;
+}
+
 Chain::Chain()
 {
+}
+
+// Target438880..4388E6 destroys the two sentinels after removing their lists.
+Chain::~Chain()
+{
+    g_MainSupervisorView.modeWorker.Stop();
+    RemoveAllFromList(reinterpret_cast<u8 *>(&calcHead), this);
+    RemoveAllFromList(reinterpret_cast<u8 *>(&drawHead), this);
 }
 
 __declspec(noinline) ChainElem * __stdcall Chain::AllocElem(ChainCallback callback)
@@ -212,12 +227,6 @@ ChainElem *__stdcall Chain::RegisterDraw(void *arg, i32 prio, ChainCallback call
 }
 
 } // namespace th10
-
-// WinMain's existing creation expression allocates the complete two-head owner.
-void *MainCreateCallbackOwner()
-{
-    return new th10::Chain;
-}
 
 // TH10 frame dispatchers. The names are descriptive; original source ownership
 // is unknown. Both target entries take one stack argument and end in RET 4.

@@ -291,3 +291,19 @@ field and extent still passes the normal comparator. The selector supplies
 handler address identity only, with no generated-code, metadata, storage or
 EH-runtime credit. See [the Ending proof](evidence/ending-id-storage-20261028/README.md)
 and [the FrontEnd proof](evidence/frontend-lifecycle-20261029/README.md).
+
+## Two-sentinel Chain EH address binding
+
+`chain_member_eh_handler = true` is restricted to the Chain destructor's DIR32
+handler field at+9. A unique unaliased generated MAP entry must join its complete
+29-byte code contribution in the same qualified Chain PDB module/object. Both
+images require immutable28-byte FuncInfo with two states and the exact unwind
+predecessor states-1/0 and the two corresponding actions. Each action loads saved this atEBP+4; the second adds
+24h for the draw sentinel. Both tail-jump to the real qualified12-byte ChainElem
+destructor, whose complete zero-field body must be raw-equal to the reviewed
+449A90 owner. The handler must name its FuncInfo and dispatch to CxxFrameHandler.
+Allocation, stack-file, worker-member and static selectors cannot combine with
+this selector. Every parent byte, field and complete extent still passes the
+normal comparator. This binds the handler address only and grants no generated
+code/metadata, storage or EH-runtime credit. The affected synthetic controls are
+`scripts/test-linked-chain-member-eh.py`; native colds prove the actual owner.

@@ -2,12 +2,12 @@
 
 ## Start here
 
-Current checkpoint restores Main's actual lifetime and complete293-byte shutdown.
-Five new complete owners518 bytes/all42 fields pass two independent30-input colds:
-425 authored and93 indeterminate. Typed configuration construction, automatic
-worker destruction, FPS teardown and MIDI timer cleanup are source-backed.
-WinMain1422/1389 and Options3196/3188 remain nonexact. The next concrete WinMain
-lead is its103-byte Chain destructor438880; the old window-init label is wrong.
+Current checkpoint restores actual Chain and MIDI destruction through WinMain.
+Four new complete owners378/all19 pass two independent colds:366 authored and12
+indeterminate. Chain's two-state EH entry binds its real member cleanup/metadata.
+Global timer noinline is removed; the existing293-byte Main exit is replayed
+separately with Midi.cpp /Ob1. WinMain1390/1389 remains nonexact. Do not combine
+these two profile contexts into a whole-program exactness claim.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -35,9 +35,40 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**86,034/275,729 reviewed authored owned bytes exact, 465 exact authored owners**;
-678 authored source mappings. Total: 1819 candidates, 1193 mappings, 1337 exact.
+**86,400/275,729 reviewed authored owned bytes exact, 468 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1341 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [Chain/MIDI lifetime proof](evidence/chain-midi-lifetime-20261029/README.md):
+
+- Chain destructor438880/103, callback-member destructor449A90/12, MIDI output
+  destructor43A910/156 and track release43AA60/107 pass all378 bytes/all19 fields
+  in two independent default30-input colds. Adds366 authored/12 indeterminate
+  bytes and four mappings; reviewed authored denominator unchanged.
+- WinMain uses the real Chain new/delete and existing th10::g_Chain491BE4. The
+  untyped bridge and separate callback-owner alias are removed. Member teardown
+  clears three callbacks+8/C/10; the old two-field note is corrected.12-byte
+  origin remains indeterminate, independent of its generated EH references.
+- New chain_member_eh_handler binding checks one complete29-byte generated PDB
+  region in its parent Chain object, immutable28-byte/two-state FuncInfo, exact
+  saved-this+4/sentinel0/24h tails and the real raw-equal12-byte member destructor.
+  Handler identity only; generated code/metadata/runtime receive no extra credit.
+  The affected synthetic Oracle test passes33 negative and positive/tail controls.
+- Natural MIDI output destruction inlines timer cleanup. The prior global timer
+  noinline annotation prevented this156-byte body and is removed. Existing Main
+  exit293 is separately cold-replayed twice under Midi.cpp /Ob1. Default context
+  has Main321/293; /Ob1 has MIDI116/156. Original production partition is unknown.
+- Twenty-one selected old same-image guards9290/all373 pass; RemoveAllFromList,
+  UnprepareHeader and FrontEnd CreateVm also pass their original recipes. Only
+  these explicit involved selectors are replayed, not the historical cohort.
+- WinMain1390/1389 and StopPlayback129/129 (13 ordinary scheduling bytes) remain
+  nonexact. Registry lifetime role and StopTimer refactor produce no exact gain
+  and are restored; Chain flag spelling is a complete byte-neutral control and
+  restored. Caller-only /Ob1 partition was neutral for Main321 and removed.
+- Next concrete Main lead: current full Render425 at439390 and its real WinMain
+  call/receiver context; its static explicit stdcall receiver is provisional.
+  Current30-input Render is419/425; eleven-TU422/425 is historical. Do not
+  force status spilling/registers or repeat parked registry/flag controls.
 
 Latest [Main lifetime proof](evidence/main-lifetime-20261029/README.md):
 

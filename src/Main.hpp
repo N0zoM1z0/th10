@@ -378,7 +378,6 @@ typedef char MainAllocationRegistrySizeIsA004[
 extern GameWindowView g_GameWindowView;
 extern MainSupervisorView g_MainSupervisorView;
 extern MainAllocationRegistryView *g_MainAllocationRegistry;
-extern void *g_MainCallbackOwner;
 extern unsigned char g_MainSoundOwner[0x52d0];
 extern HANDLE g_MainExclusiveMutex;
 extern unsigned short g_MainInputEdges;
