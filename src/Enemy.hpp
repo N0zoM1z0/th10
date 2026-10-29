@@ -54,6 +54,21 @@ typedef char EnemyMotionViewSizeIs2C[(sizeof(EnemyMotionView) == 0x2c) ? 1 : -1]
 typedef char EnemyMotionVelocityAt0C[(offsetof(EnemyMotionView, velocity) == 0x0c) ? 1 : -1];
 typedef char EnemyMotionFlagsAt28[(offsetof(EnemyMotionView, flags) == 0x28) ? 1 : -1];
 
+// Target 0x44C5D0 is shared by Enemy and Player shot motion. The original
+// vector class name and source owner remain unknown.
+struct EnemyRuntimeVectorView
+{
+    float x;
+    float y;
+    float z;
+
+    void FromAngleMagnitude(float angle, float magnitude);
+};
+typedef char EnemyRuntimeVectorViewSizeIs0C[
+    (sizeof(EnemyRuntimeVectorView) == 0x0c) ? 1 : -1];
+
+void EnemyAdvanceMotion(EnemyMotionView *motion);
+
 // TH10's Enemy interpolation records use the same four-value plus timer
 // layout observed independently in their evaluator and initializer bodies.
 // The target runtime default constructor clears bit zero in each embedded timer,

@@ -7379,3 +7379,33 @@ in the initial batch is reported separately: completed three units were frozen
 and revalidated, required toolchain smoke passed, and only the remaining five
 were rebuilt. No failed command is reported as passing and no historical cohort
 was repeated. See [timer boundary proof](evidence/anm-timer-boundary-20261030/README.md).
+
+
+## 2026-10-30 Complete Player shot-update caller recovery
+
+PlayerUpdateShots428280..4285EB now emits876 bytes in a12-source /GL graph,
+versus738 at entry. A fresh compilation of all12 inputs, reusing no objects,
+reproduces all876 native bytes. The owner remains nonexact: the motion-pointer
+LEA is scheduled at+111 instead of+142, its ordinary-motion skip enters+145
+instead of+142, and two call fields move three bytes. The strict22-field
+comparison rejects it. An explicit instruction-span diagnostic checks all22
+bindings and53 local destinations; it is not a relaxed acceptance rule.
+
+Actual callees are pending1 409E50, PendingThree40C4D0, vector44C5D0,
+wrap44BC70, motion44C2A0, lookup4491C0 and deletion4492A0. The vector class
+view is shared through Enemy.hpp; all2C motion fields are checked. The caller
+has one stack Player argument/RET4 and callbacks use ECX Player/EDX shot.
+Typed four-byte VM ID values and a captured callback restore the observed
+register lifetimes. The secondary release includes both lists, root children
+and an unconditional ID clear, even if input ID is zero. An outer nonzero guard
+is an incorrect reconstruction of this inline path's writes. No helper identity
+is inferred merely from a former descriptive name.
+
+Ten same-image exact helper guards pass785/all22. Five existing canonical cold
+units pass422/all11, using explicit selectors. Seven previous native candidates
+preserve ordinary bytes, fixed local offsets and symbol/field identities;
+root2412/2412, damage1172/1170 and motion160/171 remain nonexact. Delayed motion
+or velocity-only pointers lose the frame/iterator anchor and emit829; member,
+manager, bounds-boundary and timer controls are parked at their recorded epochs.
+No exact-byte, boundary/origin, product, runtime or portability promotion occurs.
+See [complete shot-update evidence](evidence/player-shots-context-20261030/README.md).

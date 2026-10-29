@@ -1,4 +1,6 @@
 #include "EnemyGameState.hpp"
+#include "Enemy.hpp"
+#include "VmIdInterrupt.hpp"
 #include "Player.hpp"
 #include "Chain.hpp"
 #include "GameErrorContext.hpp"
@@ -290,16 +292,11 @@ float PlayerWrapEffectAngle(float value);
 void PlayerAdvanceEffectRegion(PlayerFloat3 *position);
 void PlayerUpdateDrawVmState(PlayerDrawVmView *vm);
 void PlayerUpdateInputAction(Player *player);
-int PlayerUpdateShots(Player *player);
+int __stdcall PlayerUpdateShots(Player *player);
 
-// Descriptive interfaces for the target-observed shot-motion helpers. Their
-// physical callees use private register contracts; these ordinary declarations
-// are maintained source spellings, not original ABI claims.
-float PlayerWrapShotAngle(float value);
-void PlayerSetShotVelocityFromPolar(
-    PlayerFloat3 *velocity, float angle, float magnitude);
-void PlayerAdvanceShotMotion(PlayerShotMotionView *motion);
-void PlayerSetShotVmDeleteState1(unsigned int *vmId);
+// Shared target 0x44BC70 uses a float stack argument and RET 4. The vector,
+// movement and pending-interrupt calls use their maintained source interfaces.
+float __stdcall EnemyWrapAngle(float value);
 // Target 0x40C480 publishes pending interrupt 2 without executing or clearing ID.
 void PlayerSetShotVmInterrupt2(unsigned int *vmId)
 {
@@ -317,7 +314,6 @@ void PlayerSetShotVmInterrupt2(unsigned int *vmId)
     }
 }
 extern void ResultMenuPendingThree(AnmVmIdView *id);
-void PlayerMarkShotVmPending(unsigned int vmId);
 extern int g_GameStatisticsIndex0; // target 0x474C68, shared GameManager identity
 
 // Target 0x4059F0: read-only auxiliary damage, private ECX owner/EAX position.
@@ -469,6 +465,50 @@ static void MarkPlayerVmFlag(unsigned int id)
             node->value->flags |= PLAYER_VM_PENDING_FLAG;
         }
     }
+}
+
+// The shot update's inlined release resolves both VM lists, marks a live root
+// and its children, then clears the ID even when its input was already zero.
+static __forceinline void ReleasePlayerShotVm(AnmVmIdView *id)
+{
+    const AnmVmIdView key = *id;
+    AnmVmView *vm = NULL;
+    if (key.value != 0)
+    {
+        AnmVmLayerNodeView *entry = g_AnmRenderManagerView->primaryVmListHead;
+        while (entry != NULL)
+        {
+            if (static_cast<AnmVmView *>(entry->owner)->id == key.value)
+                break;
+            entry = entry->next;
+        }
+        if (entry == NULL)
+        {
+            entry = g_AnmRenderManagerView->secondaryVmListHead;
+            while (entry != NULL)
+            {
+                if (static_cast<AnmVmView *>(entry->owner)->id == key.value)
+                    break;
+                entry = entry->next;
+            }
+        }
+        if (entry != NULL)
+            vm = static_cast<AnmVmView *>(entry->owner);
+    }
+    if (vm != NULL)
+    {
+        vm->flags35C |= PLAYER_VM_PENDING_FLAG;
+        if (vm->layerNode.previous == NULL)
+        {
+            AnmVmLayerNodeView *node = vm->layerNode.next;
+            while (node != NULL)
+            {
+                static_cast<AnmVmView *>(node->owner)->flags35C |= PLAYER_VM_PENDING_FLAG;
+                node = node->next;
+            }
+        }
+    }
+    id->value = 0;
 }
 
 static void MarkPlayerVmDeleteState(unsigned int id, unsigned short state)
@@ -1311,18 +1351,27 @@ int PlayerShotBoundsView::IsOutsidePlayfield(
     return 1;
 }
 
+// Both target callers pass the same 0x2C motion layout to 0x44C2A0.
+typedef char PlayerShotMotionMatchesEnemyMotion[
+    (sizeof(PlayerShotMotionView) == sizeof(EnemyMotionView) &&
+     offsetof(PlayerShotMotionView, position) == offsetof(EnemyMotionView, position) &&
+     offsetof(PlayerShotMotionView, velocity) == offsetof(EnemyMotionView, velocity) &&
+     offsetof(PlayerShotMotionView, speedOrAngleStep) == offsetof(EnemyMotionView, value18) &&
+     offsetof(PlayerShotMotionView, angle) == offsetof(EnemyMotionView, value1C) &&
+     offsetof(PlayerShotMotionView, polarMagnitude) == offsetof(EnemyMotionView, value20) &&
+     offsetof(PlayerShotMotionView, polarMagnitudeDelta) == offsetof(EnemyMotionView, value24) &&
+     offsetof(PlayerShotMotionView, flags) == offsetof(EnemyMotionView, flags)) ? 1 : -1];
+
 // Maintained source for the 128-row Player shot-update owner at
 // 0x00428280-0x004285EB. The target receives one stack Player* and returns zero
 // with RET 4. The 0x004282AA-0x004282AF gap is unreachable compiler alignment,
-// not a separate data owner. Helper declarations above hide private machine
-// ABIs rather than claiming original source conventions.
-int PlayerUpdateShots(Player *player)
+// not a separate data owner. Shared callees are backed by maintained source;
+// the original owner name, translation unit and inline boundaries remain unknown.
+int __stdcall PlayerUpdateShots(Player *player)
 {
-    int i;
-
-    for (i = 0; i < 128; ++i)
+    PlayerShotRuntimeView *shot = &player->shots[0];
+    for (int remainingShots = 128; remainingShots != 0; --remainingShots, ++shot)
     {
-        PlayerShotRuntimeView *shot = &player->shots[i];
         if (shot->state == PLAYER_SHOT_INACTIVE)
             continue;
 
@@ -1330,10 +1379,10 @@ int PlayerUpdateShots(Player *player)
         if (descriptor->type == PLAYER_SHOT_TYPE_3 &&
             shot->state == PLAYER_SHOT_ACTIVE &&
             (player->updateTimer0.current < 0 ||
-             player->optionCount <= (int)descriptor->sourceIndex - 1))
+             (int)descriptor->sourceIndex - 1 >= player->optionCount))
         {
-            PlayerSetShotVmDeleteState1(&shot->primaryVmId);
-            PlayerSetShotVmDeleteState1(&shot->secondaryVmId);
+            EnemyMarkPendingInterrupt(reinterpret_cast<int *>(&shot->primaryVmId));
+            EnemyMarkPendingInterrupt(reinterpret_cast<int *>(&shot->secondaryVmId));
             descriptor = shot->descriptor;
             shot->state = PLAYER_SHOT_HIT_TRANSITION;
             player->shotSourceActive[(int)descriptor->sourceIndex - 1] = 0;
@@ -1347,8 +1396,8 @@ int PlayerUpdateShots(Player *player)
              g_PlayerDrawGate10 == NULL))
         {
             shot->state = PLAYER_SHOT_HIT_TRANSITION;
-            PlayerSetShotVmDeleteState1(&shot->primaryVmId);
-            PlayerSetShotVmDeleteState1(&shot->secondaryVmId);
+            EnemyMarkPendingInterrupt(reinterpret_cast<int *>(&shot->primaryVmId));
+            EnemyMarkPendingInterrupt(reinterpret_cast<int *>(&shot->secondaryVmId));
             descriptor = shot->descriptor;
             player->shotSourceActive[(int)descriptor->sourceIndex - 1] = 0;
         }
@@ -1366,32 +1415,33 @@ int PlayerUpdateShots(Player *player)
         descriptor = shot->descriptor;
         shot->collidedThisFrame = 0;
 
-        if (descriptor->updateCallback != NULL)
-            descriptor->updateCallback(player, shot);
+        PlayerShotUpdateCallback updateCallback = descriptor->updateCallback;
+        if (updateCallback != NULL)
+            updateCallback(player, shot);
 
-        if ((shot->motion.flags & PLAYER_SHOT_POLAR_MOTION) == 0)
+        PlayerShotMotionView *motion = &shot->motion;
+        if ((motion->flags & PLAYER_SHOT_POLAR_MOTION) == 0)
         {
-            PlayerSetShotVelocityFromPolar(
-                &shot->motion.velocity,
-                shot->motion.angle,
-                shot->motion.speedOrAngleStep);
-            shot->motion.velocity.z = 0.0f;
+            reinterpret_cast<EnemyRuntimeVectorView *>(
+                &motion->velocity)->FromAngleMagnitude(
+                    motion->angle, motion->speedOrAngleStep);
+            motion->velocity.z = 0.0f;
         }
         else
         {
-            shot->motion.polarMagnitude += shot->motion.polarMagnitudeDelta;
-            shot->motion.angle = PlayerWrapShotAngle(
-                shot->motion.speedOrAngleStep + shot->motion.angle);
+            motion->polarMagnitude += motion->polarMagnitudeDelta;
+            motion->angle = EnemyWrapAngle(
+                motion->speedOrAngleStep + motion->angle);
         }
 
-        PlayerAdvanceShotMotion(&shot->motion);
+        EnemyAdvanceMotion(reinterpret_cast<EnemyMotionView *>(motion));
 
-        PlayerVm *primaryVm = FindPlayerVm(shot->primaryVmId);
+        PlayerVm *primaryVm = reinterpret_cast<PlayerVm *>(
+            g_AnmRenderManagerView->FindVm(*reinterpret_cast<AnmVmIdView *>(&shot->primaryVmId)));
         if (primaryVm == NULL)
         {
             shot->state = PLAYER_SHOT_INACTIVE;
-            if (shot->secondaryVmId != 0)
-                PlayerMarkShotVmPending(shot->secondaryVmId);
+            ReleasePlayerShotVm(reinterpret_cast<AnmVmIdView *>(&shot->secondaryVmId));
             shot->primaryVmId = 0;
             shot->secondaryVmId = 0;
             continue;
@@ -1407,30 +1457,31 @@ int PlayerUpdateShots(Player *player)
             const float extentY =
                 primaryVm->sprite->extent30 * primaryVm->scale40;
             if (reinterpret_cast<PlayerShotBoundsView *>(
-                    &shot->motion.position)->IsOutsidePlayfield(
+                    &motion->position)->IsOutsidePlayfield(
                     extentX, extentY) != 0)
             {
-                PlayerMarkShotVmPending(shot->primaryVmId);
+                g_AnmRenderManagerView->MarkVmForDeletion(*reinterpret_cast<AnmVmIdView *>(&shot->primaryVmId));
                 shot->primaryVmId = 0;
                 shot->state = PLAYER_SHOT_INACTIVE;
                 continue;
             }
         }
 
-        primaryVm->position.x = shot->motion.position.x + 224.0f;
+        primaryVm->position.x = motion->position.x + 224.0f;
         primaryVm->position.y = shot->motion.position.y + 16.0f;
         primaryVm->position.z = shot->motion.position.z;
 
-        if (shot->secondaryVmId != 0)
+        if (reinterpret_cast<AnmVmIdView *>(&shot->secondaryVmId)->value != 0)
         {
-            PlayerVm *secondaryVm = FindPlayerVm(shot->secondaryVmId);
+            PlayerVm *secondaryVm = reinterpret_cast<PlayerVm *>(
+                g_AnmRenderManagerView->FindVm(*reinterpret_cast<AnmVmIdView *>(&shot->secondaryVmId)));
             if (secondaryVm == NULL)
             {
                 shot->secondaryVmId = 0;
             }
             else
             {
-                secondaryVm->position.x = shot->motion.position.x + 224.0f;
+                secondaryVm->position.x = motion->position.x + 224.0f;
                 secondaryVm->position.y = shot->motion.position.y + 16.0f;
                 secondaryVm->position.z = shot->motion.position.z;
             }
@@ -1443,17 +1494,14 @@ int PlayerUpdateShots(Player *player)
         }
 
         shot->timer.previous = shot->timer.current;
-        const float timerScale = *shot->timer.scale;
-        if (timerScale > 0.9900000095367432f &&
-            timerScale < 1.0099999904632568f)
+        if (*shot->timer.scale > 0.99f && *shot->timer.scale < 1.01f)
         {
             ++shot->timer.current;
             shot->timer.subframe += 1.0f;
         }
         else
         {
-            shot->timer.subframe += timerScale;
-            shot->timer.current = (int)shot->timer.subframe;
+            shot->timer.Add(*shot->timer.scale);
         }
     }
 

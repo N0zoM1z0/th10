@@ -2,6 +2,16 @@
 
 ## Current checkpoint
 
+PlayerUpdateShots428280 now emits the complete876-byte owner, versus738 at
+entry, and a fresh12-source cold compilation reproduces all876 native bytes.
+It remains nonexact: one LEA is at+111 instead of+142, its skip edge enters+145
+instead of+142, and two call fields shift3. Real shared callees, full two-list
+secondary release including zero-ID clear, typed ID values and callback/row/
+motion lifetimes are restored. Ten strict same-image helpers pass785/all22;
+five explicit canonical cold guards pass422/all11. Seven previous native
+candidates remain byte/field-identical. No new exact-byte credit. See the
+[complete caller evidence](evidence/player-shots-context-20261030/README.md).
+
 The actual ANM WAIT callee Decrement428DD0 is complete20/all1 exact in two
 independent canonical cold compilations after preserving Add's observed call
 boundary. Add88/all4 and six direct existing exact callers remain exact: combined
@@ -92,6 +102,14 @@ rebuildable outputs are disposable, not dependencies of the current workflow.
   evidence are unchanged. The full old135-byte helper remains exact.
 
 ## Working inputs
+
+The current twelve-input Enemy/Player warm context is:
+`.analysis/gpt-6.1-sol/player-shots-context-20261030/final-context.json`.
+Revalidate all43 recursive project pins,12 object hashes and image hash before
+reuse. Actual VmIdInterrupt/FrontEnd definitions use their recorded pinned
+profiles; no optimizer flags were swept. A no-reuse cold context is retained
+beside it. The older ten-input Player/Enemy context below is historical after
+the shared Enemy vector declaration and shot caller changes.
 
 The current five-input ANM warm context is:
 `.analysis/gpt-6.1-sol/anm-executor-context-20261030/final-context.json`.
@@ -190,6 +208,14 @@ ancestry and helper origin remain unknown. Separate shot-type branches1169,
 whole-vector arithmetic1172 and in-place rotation1174 are rejected; nested hit
 scope and coordinate-first multiplication are neutral. These controls are parked.
 See [current planar evidence](evidence/player-planar-bounds-20261030/README.md).
+
+Player shots now have the complete target-sized876-byte candidate with one
+moved motion-pointer LEA and its changed skip destination. Moving the pointer
+later or retaining only velocity changes the induction anchor and emits829;
+these controls are parked. Do not relax field offsets, branch destinations or
+ABI to accept the near match. The shared motion helper160/171 is still open.
+The full secondary release must clear its ID even on zero input. The current
+43-pin/12-object context and scoped cold proofs are linked above.
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed

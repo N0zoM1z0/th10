@@ -644,19 +644,8 @@ float *EnemyFullObjectView::ResolveFloatOperand(int operand)
     }
 }
 
-// Target 0x0044C5D0 is called by EnemyRuntimeUpdate to build the velocity's
-// XY components from angle and magnitude. Its original class name is unknown.
-struct EnemyRuntimeVectorView
-{
-    float x;
-    float y;
-    float z;
-
-    void FromAngleMagnitude(float angle, float magnitude);
-};
-typedef char EnemyRuntimeVectorViewSizeIs0C[
-    (sizeof(EnemyRuntimeVectorView) == 0x0c) ? 1 : -1];
-
+// Target 0x0044C5D0 builds velocity XY from angle and magnitude for the
+// Enemy runtime and Player shot update. Its original class name is unknown.
 void EnemyRuntimeVectorView::FromAngleMagnitude(
     float angle, float magnitude)
 {
