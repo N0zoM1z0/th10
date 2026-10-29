@@ -1,0 +1,564 @@
+{
+  "target": {
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "address": "0x00427B50",
+    "size": 181,
+    "end": "0x00427C04",
+    "before": "cccccccccccccccccccccccccc",
+    "after": "cccccccccccccccccccccc",
+    "local_branches": [
+      {
+        "offset": 20,
+        "destination": "0x427b75"
+      },
+      {
+        "offset": 29,
+        "destination": "0x427b60"
+      },
+      {
+        "offset": 105,
+        "destination": "0x427bd5"
+      }
+    ],
+    "returns": [
+      {
+        "offset": 34,
+        "cleanup": "0x14"
+      },
+      {
+        "offset": 178,
+        "cleanup": "0x14"
+      }
+    ],
+    "direct_callers": [
+      {
+        "owner": "PlayerUpdateCallbackBody",
+        "address": "0x425cce"
+      },
+      {
+        "owner": "Player::CalculateDamageToTarget",
+        "address": "0x428863"
+      }
+    ]
+  },
+  "canonical_cold": {
+    "cold-a": {
+      "artifact_count": 1,
+      "groups": [
+        {
+          "artifact": "build/match-linked/PlayerResetRuntimeState",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "player-set-shot-vm-interrupt2",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "source": "src/Player.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x004012E0",
+              "capstone_version": "5.0.6",
+              "compared_size": 65,
+              "data_spans": [],
+              "decoded_bytes": 65,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerResetRuntimeState/source.exe",
+              "image_sha256": "ed81c6da55a127704cfbefb2c5c7fdd34fde6380cc25bfd4a7d2d5eeec4e0f04",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004151A4",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0105",
+                  "local": false,
+                  "offset": "0x4",
+                  "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                  "target": "0x00491C10",
+                  "target_encoded_value": "0x00491C10",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00406110",
+                  "linked_symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0xA",
+                  "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+                  "target": "0x004491C0",
+                  "target_encoded_value": "0x0003CD32",
+                  "type": "REL32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 65,
+              "matched_compared_bytes": 65,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "9e1cb94431cde54cb34c779160714e0a",
+              "pdb_module_index": 1,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 65,
+              "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+              "target_address": "0x0040C480",
+              "unit": "player-set-shot-vm-interrupt2"
+            },
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00401220",
+              "capstone_version": "5.0.6",
+              "compared_size": 181,
+              "data_spans": [],
+              "decoded_bytes": 181,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerResetRuntimeState/source.exe",
+              "image_sha256": "ed81c6da55a127704cfbefb2c5c7fdd34fde6380cc25bfd4a7d2d5eeec4e0f04",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00415184",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0097",
+                  "local": false,
+                  "offset": "0x7E",
+                  "symbol": "?g_AnmGameSpeed@@3MA",
+                  "target": "0x00476F78",
+                  "target_encoded_value": "0x00476F78",
+                  "type": "DIR32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 181,
+              "matched_compared_bytes": 181,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "9e1cb94431cde54cb34c779160714e0a",
+              "pdb_module_index": 1,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 181,
+              "symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+              "target_address": "0x00427B50",
+              "unit": "player-spawn-effect-row"
+            }
+          ]
+        }
+      ],
+      "matched_bytes": 246,
+      "result": "exact",
+      "source_count": 1,
+      "unit_count": 2
+    },
+    "cold-b": {
+      "artifact_count": 1,
+      "groups": [
+        {
+          "artifact": "build/match-linked/PlayerResetRuntimeState",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "player-spawn-effect-row",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "source": "src/Player.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00401220",
+              "capstone_version": "5.0.6",
+              "compared_size": 181,
+              "data_spans": [],
+              "decoded_bytes": 181,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerResetRuntimeState/source.exe",
+              "image_sha256": "d53732268081d8734c53fcfba03a2e0a7e3be14b26a5087f5e0767a8c2f4beaf",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00415184",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0097",
+                  "local": false,
+                  "offset": "0x7E",
+                  "symbol": "?g_AnmGameSpeed@@3MA",
+                  "target": "0x00476F78",
+                  "target_encoded_value": "0x00476F78",
+                  "type": "DIR32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 181,
+              "matched_compared_bytes": 181,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "779395f84c94e842991feaa15f611601",
+              "pdb_module_index": 1,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 181,
+              "symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+              "target_address": "0x00427B50",
+              "unit": "player-spawn-effect-row"
+            }
+          ]
+        }
+      ],
+      "matched_bytes": 181,
+      "result": "exact",
+      "source_count": 1,
+      "unit_count": 1
+    }
+  },
+  "same_image": {
+    "player-spawn-effect-row": {
+      "unit": "player-spawn-effect-row",
+      "artifact_kind": "linked-pe",
+      "result": "exact",
+      "symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+      "target_address": "0x00427B50",
+      "size": 181,
+      "matched_bytes": 181,
+      "compared_size": 181,
+      "matched_compared_bytes": 181,
+      "image": "build/gpt-6.1-sol/enemy-residual2-context-20261030/damage-created-temporary/source.exe",
+      "image_sha256": "37a7c25b1ab19c5da8aa2bb53593eacccd9cda3b5df5a8d8499f6c7dd85a7f89",
+      "pdb_guid": "4854d298929eb040b5836c2f2d09f369",
+      "pdb_age": 1,
+      "candidate_address": "0x00411E70",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 6,
+      "decoded_bytes": 181,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x7E",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmGameSpeed@@3MA",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0104",
+          "local": false,
+          "candidate_target": "0x0041C1B8",
+          "target": "0x00476F78",
+          "addend": 0,
+          "target_encoded_value": "0x00476F78"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [],
+      "capstone_version": "5.0.6"
+    },
+    "player-set-shot-vm-interrupt2": {
+      "unit": "player-set-shot-vm-interrupt2",
+      "artifact_kind": "linked-pe",
+      "result": "exact",
+      "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+      "target_address": "0x0040C480",
+      "size": 65,
+      "matched_bytes": 65,
+      "compared_size": 65,
+      "matched_compared_bytes": 65,
+      "image": "build/gpt-6.1-sol/enemy-residual2-context-20261030/damage-created-temporary/source.exe",
+      "image_sha256": "37a7c25b1ab19c5da8aa2bb53593eacccd9cda3b5df5a8d8499f6c7dd85a7f89",
+      "pdb_guid": "4854d298929eb040b5836c2f2d09f369",
+      "pdb_age": 1,
+      "candidate_address": "0x00411F30",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 6,
+      "decoded_bytes": 65,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x4",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0112",
+          "local": false,
+          "candidate_target": "0x0041C1D8",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0xA",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+          "linked_symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+          "local": false,
+          "candidate_target": "0x00405070",
+          "target": "0x004491C0",
+          "addend": 0,
+          "target_encoded_value": "0x0003CD32"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [],
+      "capstone_version": "5.0.6"
+    }
+  },
+  "diagnostic_graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z"
+  },
+  "diagnostic_source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "85062d20044569184c1b6b29fd3923d205c7711555decdf57e7a91a5cf9aee3d",
+    "src/Enemy.hpp": "da605cc7556ffd789c88502ac2bf0e8b7ec51d41a78bead82d51c6773dd21726",
+    "src/EnemyEclDispatcher.cpp": "cdbeca418b3d1b06b1912b6545977eace64fe28e367bbf0f15ec2f54d80c765f",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/Player.cpp": "59ef7681548f2b98aff5564cac3ca27f0d5271073504f46893ffc59cd3a70173",
+    "src/Player.hpp": "8a448b80e51837cf89e8efee616f9791041f73526297ca260d54730198a9c770",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "diagnostic_artifacts": {
+    "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/enemy-residual2-context-20261030/damage-created-temporary/source.exe",
+    "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/enemy-residual2-context-20261030/damage-created-temporary/source.map",
+    "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/enemy-residual2-context-20261030/damage-created-temporary/source.pdb"
+  },
+  "diagnostic_image_sha256": "37a7c25b1ab19c5da8aa2bb53593eacccd9cda3b5df5a8d8499f6c7dd85a7f89",
+  "damage_alignment": {
+    "final-cold": {
+      "aligned": 276,
+      "target_instructions": 355,
+      "candidate_instructions": 361
+    },
+    "damage-geometry": {
+      "aligned": 313,
+      "target_instructions": 355,
+      "candidate_instructions": 361
+    },
+    "damage-member-spawn": {
+      "aligned": 314,
+      "target_instructions": 355,
+      "candidate_instructions": 362
+    },
+    "spawn-position-pointer": {
+      "aligned": 314,
+      "target_instructions": 355,
+      "candidate_instructions": 362
+    },
+    "damage-rotation-value": {
+      "aligned": 314,
+      "target_instructions": 355,
+      "candidate_instructions": 362
+    },
+    "damage-positive-left": {
+      "aligned": 321,
+      "target_instructions": 355,
+      "candidate_instructions": 358
+    },
+    "damage-created-temporary": {
+      "aligned": 325,
+      "target_instructions": 355,
+      "candidate_instructions": 355
+    }
+  },
+  "caller_preservation": {
+    "result": "structural-exact",
+    "candidate_address": "0x00401F50",
+    "candidate_size": 2412,
+    "target_address": "0x00401F50",
+    "target_size": 2412,
+    "decoded_candidate_bytes": 2412,
+    "normalization_complete": true,
+    "raw_matched_bytes": 2412,
+    "comparable_bytes": 2136,
+    "matched_comparable_bytes": 2136,
+    "first_differences": [],
+    "acceptance_authority": "none",
+    "local_branch_count": 89,
+    "all_local_destinations_equal": true,
+    "linkage_field_count": 69,
+    "comparison_target": "Previous native candidate, not original TH10",
+    "previous_context": ".analysis/gpt-6.1-sol/enemy-residual-context-20261030/final-context.json",
+    "full_private_report": ".analysis/gpt-6.1-sol/enemy-residual2-context-20261030/caller-preservation.json"
+  },
+  "scope": "Only181 new complete authored bytes. Damage1172 and EnemyRuntimeUpdate2412 remain nonexact; normalized alignment is diagnostic. No origin, boundary, denominator, runtime, product or portability promotion."
+}

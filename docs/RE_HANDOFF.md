@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+Player::SpawnEffectRow427B50 is complete181/all1 exact in two independent
+three-input canonical cold links. Natural member source restores EDX receiver
+and RET20; a captured position pointer restores the remaining stores. The first
+cold also preserves the old interrupt helper65/all2. Damage improves to1172/1170
+with325/355 diagnostic instructions, still nonexact. See the
+[effect-row proof and damage frontier](evidence/player-effect-row-context-20261030/README.md).
+
 EnemyScalarInterpolationView::Evaluate412AC0 is now complete652-byte exact,
 including all10 fields, in two independent six-input canonical cold links.
 Natural Float2 value operations recover the target temporary/rounding schedule
@@ -13,9 +20,9 @@ constructor188, Initialize522, destructor499, StageCreate151 and LoadData308.
 All1668 bytes/all91 fields pass. This adds1480 authored exact bytes; constructor
 origin remains indeterminate. See the [complete proof](evidence/stage-initialize-context-20261029/README.md).
 
-Current generated [progress](PROGRESS.md): **96,544/275,729 authored owned bytes
-exact,482 authored exact owners**. Total1356 exact owners/164,566 codegen bytes;
-1197 mappings,681 authored mappings,199 authored mapped backlog. Inventory and
+Current generated [progress](PROGRESS.md): **96,725/275,729 authored owned bytes
+exact,483 authored exact owners**. Total1357 exact owners/164,747 codegen bytes;
+1197 mappings,681 authored mappings,198 authored mapped backlog. Inventory and
 whole-product/runtime/portability closure remain separate and incomplete.
 
 The affected old selection passes14 units/2262 bytes/all156 fields in its existing
@@ -86,15 +93,16 @@ Cleanup removed4942 unused code/build files (198,807,947 bytes), preserving all
 document/verification records, the existing record archive and D3D evidence.
 No new compressed archive or historical input dependency is introduced.
 
-The current ten-input Enemy runtime context is separately pinned at
-`.analysis/gpt-6.1-sol/enemy-residual-context-20261030/final-context.json`.
+The current ten-input Enemy runtime warm context is separately pinned at
+`.analysis/gpt-6.1-sol/enemy-residual2-context-20261030/final-context.json`.
 Its36 project inputs, actual profiles and ten object hashes must be revalidated
-before cache reuse. All ten game sources were freshly compiled with no object
-reuse. Current Player damage source recovers frame40 but remains1175/1170
-nonexact. Its direct interrupt helper65/all2 passes same-image and original-recipe
-cold checks. The preceding world checkpoint's scalar652/all10 and ECL Host
-Run146/all4 witnesses remain retained with their own graph/source epochs.
-Older scalar/motion/world contexts are historical inputs; revalidate pins before use.
+before cache reuse. It succeeds the preceding ten-input cold context, recompiling
+changed Player/header consumers and reusing only unchanged pinned objects.
+Damage1172/1170 remains nonexact. New allocator181/all1 and interrupt65/all2 pass
+strict same-image checks; the allocator's two independent canonical colds use the
+separate three-input Player-constructor recipe, with interrupt included in the
+first. Older scalar/ECL witnesses remain retained with their own source epochs.
+Older scalar/motion/world/damage contexts are historical inputs; revalidate pins.
 
 The private probe accepts a prior context and optional desired graph separately.
 Cache objects are identified using the prior source order, and desired profiles
@@ -141,13 +149,17 @@ and the earlier [vector recovery](evidence/enemy-runtime-vectors-20261030/README
 
 The early eight-count move is neutral and restored. The damage callee preserves
 EBX already; its missing caller count is not explained by simple EBX destruction.
-Four full-vector bound homes and a consumed shot iterator recover damage frame40
-from2C, with247/355 to276/355 diagnostic alignment. Damage remains1175/1170;
-bound homes are permuted, with accumulation/factory/geometry scheduling still open.
-The runtime candidate retains all normalized ordinary bytes and89 local jump
-destinations versus its previous candidate, without target exact credit.
-Scope/declaration, empty-constructor and accumulation controls are neutral and
-restored. See the [damage bounds proof and limits](evidence/player-damage-bounds-20261030/README.md).
+Four full-vector bound homes and a consumed shot iterator retain damage frame40.
+The new rectangle-first geometry, lazy Y extents, negative-half literals, row/radius
+iterator and direct VM return temporary recover325/355 diagnostic instructions,
+versus276 at the preceding1175-byte checkpoint. Damage now1172/1170 remains
+nonexact: bound homes, memory-add, rotated Y arithmetic and alignment still differ.
+The allocator member is now181 exact, with its actual EDX/RET20 interface.
+The root retains its prior normalized bytes and89 local destinations. Whole-vector
+operand swap fixes no Y/Z difference; compound snapshot grows2435 and is restored.
+Constructed rotation/separated comparison controls are parked. See the
+[effect-row evidence](evidence/player-effect-row-context-20261030/README.md) and
+[previous bound-storage checkpoint](evidence/player-damage-bounds-20261030/README.md).
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed

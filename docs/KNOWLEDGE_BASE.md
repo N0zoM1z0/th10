@@ -7312,3 +7312,27 @@ scheduling remain open. Shared scope/declaration, empty-constructor and alternat
 accumulation controls are neutral and restored. No match, denominator, boundary,
 origin, interface, profile or comparator changes. See the
 [damage bounds record](evidence/player-damage-bounds-20261030/README.md).
+
+
+## 2026-10-30 Player effect-row member and damage geometry
+
+Player::SpawnEffectRow427B50 is complete181/all1 exact in two independent canonical
+three-input Player-constructor /GL cold links. Its ordinary member declaration
+recovers private EDX Player, five stack arguments and both RET20 exits; the old
+free function emitted177 with caller cleanup. Capturing the position subobject
+before its second clear recovers all three target ESI-relative stores. The sole
+DIR32 at7E binds g_AnmGameSpeed476F78. Actual target callers425CCE/428863, both
+exits and padding corroborate the complete extent. Existing interrupt65/all2
+passes the first cold; both bodies also pass strict ten-input same-image checks.
+This adds181 authored bytes, without settling original class/TU or data ownership.
+
+The complete damage candidate is now1172/1170, frame40 retained. Rectangle-first
+geometry, lazy Y half-extent, separate negative-half expressions and the consumed
+row iterator restore target x87/branch/pointer lifetimes. Direct VM return-value
+consumption recovers returned-pointer read and saved-angle/output homes. Diagnostic
+alignment rises276/355 to325/355; bound homes, memory-add, rotated Y scheduling and
+alignment still differ. No damage-owner exact credit is granted. Descriptor and
+late target-size reloads remain. EnemyRuntimeUpdate preserves its prior2412-byte
+normalized candidate and89 local destinations, still nonexact. Whole operand swap
+and compound-vector snapshot controls are rejected/restored. The new exact proof
+and scope are in [effect-row evidence](evidence/player-effect-row-context-20261030/README.md).

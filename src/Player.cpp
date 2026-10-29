@@ -255,11 +255,11 @@ void PlayerSpawnDirectionalEffect(
 void PlayerRequestRuntimeTransition(int value);
 void PlayerFallbackRuntimeTransition();
 // Target 0x427B50 scans 32 usable rows; exhaustion returns row 32 unchanged.
-PlayerEffectRowView *PlayerSpawnEffectRow(
-    Player *player, const PlayerFloat3 *position,
+PlayerEffectRowView *Player::SpawnEffectRow(
+    const PlayerFloat3 *position,
     float radius, float radiusDelta, int frames, int damage)
 {
-    PlayerEffectRowView *row = player->effectRows;
+    PlayerEffectRowView *row = effectRows;
     for (int i = 0; i < 32; ++i, ++row)
     {
         if ((row->motion.activeFlags & 1u) != 0)
@@ -268,10 +268,11 @@ PlayerEffectRowView *PlayerSpawnEffectRow(
         memset(row, 0, sizeof(*row));
         row->motion.activeFlags |= 3u;
         // Preserve the target's second clear before reading possibly overlapping XYZ.
-        memset(&row->position, 0, 0x2c);
-        row->position.x = position->x;
-        row->position.y = position->y;
-        row->position.z = position->z;
+        PlayerFloat3 *const rowPosition = &row->position;
+        memset(rowPosition, 0, 0x2c);
+        rowPosition->x = position->x;
+        rowPosition->y = position->y;
+        rowPosition->z = position->z;
         row->radius = radius;
         row->radiusDelta = radiusDelta;
         row->motion.timer.SetCurrent(frames);
@@ -1471,7 +1472,6 @@ int Player::CalculateDamageToTarget(
     int *optionalHitFlag)
 {
     int damage = 0;
-    int i;
 
     if (updateTimer1.current == updateTimer1.previous)
         return 0;
@@ -1551,10 +1551,9 @@ int Player::CalculateDamageToTarget(
 
             vmId->Release();
 
-            const AnmVmIdView createdId =
+            shot->primaryVmId =
                 static_cast<AnmLoadedView *>(resource)->CreateVmVariant0(
-                    shot->descriptor->hitAnimationScript + 5, PLAYER_VM_LAYER);
-            shot->primaryVmId = createdId.value;
+                    shot->descriptor->hitAnimationScript + 5, PLAYER_VM_LAYER).value;
             AnmVmView *hitVm = vmId->GetVm();
             hitVm->rotation.z = savedAngle;
             hitVm->flags35C |= PLAYER_VM_SHOT_ANGLE_DIRTY;
@@ -1567,17 +1566,17 @@ int Player::CalculateDamageToTarget(
         descriptor = shot->descriptor;
         if (descriptor->type == 2)
         {
-            PlayerSpawnEffectRow(
-                this, &shot->motion.position,
+            SpawnEffectRow(
+                &shot->motion.position,
                 32.0f, 1.3999999761581421f, 13, descriptor->damage / 3);
         }
     }
 
     damage += g_PlayerUpdateGate28->GetDamageAtPosition(targetPosition);
 
-    for (i = 0; i < 32; ++i)
+    PlayerEffectRowView *row = &effectRows[0];
+    for (int remainingRows = 32; remainingRows != 0; --remainingRows, ++row)
     {
-        PlayerEffectRowView *row = &effectRows[i];
         PlayerEffectMotionView *motion = &row->motion;
         if ((motion->activeFlags & 1) == 0)
             continue;
@@ -1588,55 +1587,62 @@ int Player::CalculateDamageToTarget(
             continue;
         }
 
-        if ((motion->activeFlags & 2) != 0)
+        if ((motion->activeFlags & 2) == 0)
         {
-            const float dx = row->position.x - targetPosition->x;
-            const float dy = row->position.y - targetPosition->y;
-            if (row->radius * row->radius < dx * dx + dy * dy)
-                continue;
-        }
-        else if (row->angle == 0.0f)
-        {
-            const float halfExtentX = row->extentX * 0.5f;
-            const float halfExtentY = row->extentY * 0.5f;
-            if (row->position.x - halfExtentX > targetMax.x ||
-                row->position.x + halfExtentX < targetMin.x ||
-                row->position.y - halfExtentY > targetMax.y ||
-                row->position.y + halfExtentY < targetMin.y)
+            if (row->angle == 0.0f)
             {
-                continue;
+                const float halfExtentX = row->extentX * 0.5f;
+                if (row->position.x - halfExtentX > targetMax.x ||
+                    row->position.x + halfExtentX < targetMin.x)
+                {
+                    continue;
+                }
+                const float halfExtentY = row->extentY * 0.5f;
+                if (row->position.y - halfExtentY > targetMax.y ||
+                    row->position.y + halfExtentY < targetMin.y)
+                {
+                    continue;
+                }
+            }
+            else
+            {
+                const float dx = targetPosition->x - row->position.x;
+                const float dy = targetPosition->y - row->position.y;
+                const float sine = (float)sin(-(double)row->angle);
+                const float cosine = (float)cos(-(double)row->angle);
+                PlayerFloat3 rotated;
+                rotated.x = cosine * dx - sine * dy;
+                rotated.y = sine * dx + cosine * dy;
+                // Rotated collision reads the current target size after the
+                // shot callbacks; the axis-aligned bounds are cached earlier.
+                const float rotatedTargetHalfX = targetSize->x * 0.5f;
+                if (row->extentX * -0.5f > rotatedTargetHalfX + rotated.x ||
+                    row->extentX * 0.5f < rotated.x - rotatedTargetHalfX)
+                {
+                    continue;
+                }
+                const float rotatedTargetHalfY = targetSize->y * 0.5f;
+                if (row->extentY * -0.5f > rotatedTargetHalfY + rotated.y ||
+                    row->extentY * 0.5f < rotated.y - rotatedTargetHalfY)
+                {
+                    continue;
+                }
             }
         }
         else
         {
-            const float dx = targetPosition->x - row->position.x;
-            const float dy = targetPosition->y - row->position.y;
-            const float sine = (float)sin(-(double)row->angle);
-            const float cosine = (float)cos(-(double)row->angle);
-            const float rotatedX = cosine * dx - sine * dy;
-            const float rotatedY = cosine * dy + sine * dx;
-            // Unlike the cached axis-aligned bounds, rotated collision reads
-            // the current target size after the shot callbacks have run.
-            const float rotatedTargetHalfX = targetSize->x * 0.5f;
-            const float halfExtentX = row->extentX * 0.5f;
-            if (-halfExtentX > rotatedTargetHalfX + rotatedX ||
-                halfExtentX < rotatedX - rotatedTargetHalfX)
-            {
+            const float radius = row->radius;
+            const float dy = row->position.y - targetPosition->y;
+            const float dx = row->position.x - targetPosition->x;
+            if (radius * radius < dx * dx + dy * dy)
                 continue;
-            }
-            const float rotatedTargetHalfY = targetSize->y * 0.5f;
-            const float halfExtentY = row->extentY * 0.5f;
-            if (-halfExtentY > rotatedTargetHalfY + rotatedY ||
-                halfExtentY < rotatedY - rotatedTargetHalfY)
-            {
-                continue;
-            }
         }
 
         damage += motion->damage;
         motion->hitAccumulator += motion->damage;
-        if (motion->hitAccumulator >= motion->hitCap)
-            motion->damage = 0;
+        if (motion->hitCap > motion->hitAccumulator)
+            continue;
+        motion->damage = 0;
     }
 
     if (damage != 0)
@@ -1828,8 +1834,8 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             {
                 player->runtimeState = 0;
                 g_PlayerTimerScale = 1.0f;
-                PlayerSpawnEffectRow(
-                    player, &player->drawPosition, 32.0f, 16.0f, 30, 150);
+                player->SpawnEffectRow(
+                    &player->drawPosition, 32.0f, 16.0f, 30, 150);
                 player->savedDrawPosition = player->drawPosition;
                 player->positionX = 0;
                 player->positionY = 48000;

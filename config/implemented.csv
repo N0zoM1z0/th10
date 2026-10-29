@@ -931,7 +931,7 @@ EnemyEclHostBaseView::SetSubroutine
 EnemyScalarInterpolationView::Evaluate
 EnemyAdvanceMotion
 PlayerSetShotVmInterrupt2
-PlayerSpawnEffectRow
+Player::SpawnEffectRow
 PlayerUpdateGate28::GetDamageAtPosition
 ResultMenuUpdate
 ResultMenuUpdateResult
