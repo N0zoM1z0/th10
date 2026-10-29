@@ -22,6 +22,7 @@ struct EnemyGameStateView
     AnmFloat3View effectPosition;
 
     int UpdateSpellPanel();
+    void InvalidateSpellBonus();
 };
 typedef char EnemySpellEmbeddedVmsAt10[
     (offsetof(EnemyGameStateView, stageVms) == 0x10) ? 1 : -1];

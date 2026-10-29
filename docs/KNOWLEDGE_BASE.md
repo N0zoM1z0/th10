@@ -7493,3 +7493,53 @@ EnemyRuntime2412 and central Player2820. Target central3089 and shot-update's
 moved LEA remain open, with no parent/product/runtime/portability credit. Earlier
 input153/nonexact statements above describe their recorded source epochs. See
 the [complete input timer proof](evidence/player-input-exact-20261030/README.md).
+
+
+## 2026-10-30 Player main owner, transition source and exact bonus helper
+
+PlayerUpdateCallbackBody owns425730..426357,3112 bytes:3089 code (including29
+retained loop-alignment bytes),3 unreachable LEA ECX,[ECX] bytes and20 bytes of
+five-state dispatch data. The only absolute table-base reference is its indexed
+JMP42574A/address field42574D; state0/1/2/3/4 entries target425751/425964/425AA9/
+425D25/425A96. Eight CC bytes precede426360. This corrects old code-only3089
+comparison scope and adds23 reviewed owned denominator bytes. Origin is retained.
+
+The real Player entry restores the stack argument/RET4 and outer adapter7.
+Natural Float3 arithmetic results retain POD storage for command unions and
+recover the half-extent x87 schedule. History migration rereads optionCount and
+carries its exit index into the second loop. Counted row cursors, real saved-
+position cancels, slot14 virtual clears with mode0, polar/wrap/motion, power/
+faith/item/ANM/Main calls and shared state3 clear restore maintained interfaces.
+The SDK critical-section bridge leaves the prior262-byte destructor candidate
+unchanged; it is still nonexact to target325.
+
+A zero-reuse14-input cold reproduces the complete3064-byte native main/all109
+fields and397-byte transition/all17 fields. Neither parent is exact. Independent
+target instruction/operand and owned-table review counts112 main fields,38 REL32
+plus74 DIR32. The count gaps are two FMUL float1 fields in scaled decrements and
+the fallback object's477830 load. Native literal1 fields number4 versus target6.
+Other ordinary bytes, EDI/EBP lifetimes, guards and alignment still differ. A
+falsifiable next probe is a separate /GL Subtract TU to test late-inlining
+behavior; repeat spelling/parameter/bool controls only with new evidence.
+
+PlayerUpdateGate28::StartPowerTransition405860..4059EC is newly source-mapped,
+397/397 nonexact. Actual stack owner/RET4, returns-1/0, timer14/state28/VM2C,
+XYZ30, radius32/value40=4, character/spell scripts400/407/441, world VM, sound38,
+power display, bonus invalidation, rank-128 clamp and mode44 are complete. EBX
+save4F versusBD, EAX state/ECX rank and early ESI/EDI restores remain open. Its
+loop-based helper EnemyGameStateView::InvalidateSpellBonus405500..405550 is81 raw
+bytes exact in two independent12-input canonical colds:15 instructions, one
+local branch, zero fields. It invalidates bonus/bit1 at frame60 or later and
+clears front VM slots0/1/3/4/5/6/7, deliberately retaining slot2. Explicit stores
+emit89; the counted loop recovers the target store order. New authored credit81.
+Names/classes/TU and full runtime behavior remain independent.
+
+EnemyApplyBulletClear is shared with the real Player caller and retains all44
+raw bytes/EAX manager/EBX mode in both /GL colds; its old static normal-COFF
+recipe is superseded, with no new44-byte credit. First scoped cold passes1121/
+all26, second81+44 passes125 raw bytes; five affected old units pass612/all16.
+Twenty same-image bodies pass2390/all60. Nine previous native candidates retain
+ordinary bytes and complete field identities. The14-input diagnostic emits707
+for the producer; its accepted12-input717/all17 recipe passes the current cold.
+No full-cohort replay or parent/product/runtime/portability closure follows.
+See the [complete owner evidence](evidence/player-update-owner-20261030/README.md).

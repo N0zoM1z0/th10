@@ -695,7 +695,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00425070,0x0042508A,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 27/27, tail ret"
 0x00425090,0x004250A1,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 18/18, tail ret"
 0x004250B0,0x004256E6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 1591/1591, tail ret"
-0x00425730,0x00426340,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 3089/3089, tail ret"
+0x00425730,0x00426357,reviewed,high,player-state-table-owner-20261030,"Complete3112-byte owner:3089 code bytes (including29 unreachable loop-alignment bytes),3-byte unreachable LEA ECX,[ECX], and20-byte five-state dispatch table. The only absolute table-address reference is its indexed JMP at42574A; all entries target this owner. Eight following CC bytes separate426360. No neighboring function overlap."
 0x00426360,0x004264F8,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 409/409, tail ret"
 0x00426500,0x00426506,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7/7, tail ret"
 0x00426510,0x00426516,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7/7, tail jmp"

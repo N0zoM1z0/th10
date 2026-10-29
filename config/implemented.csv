@@ -1200,3 +1200,5 @@ AnmVmTimerView::Decrement
 Player::SpawnShot
 PlayerEmitShotRows
 PlayerUpdateInputAction
+EnemyGameStateView::InvalidateSpellBonus
+PlayerUpdateGate28::StartPowerTransition

@@ -1201,3 +1201,5 @@ AnmVmTimerView::Decrement,0x00428DD0,function
 Player::SpawnShot,0x00427E90,function
 PlayerEmitShotRows,0x00428160,function
 PlayerUpdateInputAction,0x004281D0,function
+EnemyGameStateView::InvalidateSpellBonus,0x00405500,function
+PlayerUpdateGate28::StartPowerTransition,0x00405860,function

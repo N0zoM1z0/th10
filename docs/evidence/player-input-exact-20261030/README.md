@@ -1,5 +1,9 @@
 # Complete Player input timer exact — 2026-10-30
 
+The current source replays input174 in the
+[Player main owner batch](../player-update-owner-20261030/README.md). That batch
+corrects the main target boundary from3089 code bytes to3112 owned bytes.
+
 PlayerUpdateInputAction **004281D0..0042827D** is complete174-byte exact in two
 independent canonical12-source /GL cold links. All7 address fields,55 decoded
 instructions and6 fixed local branch destinations match. This adds **174 authored

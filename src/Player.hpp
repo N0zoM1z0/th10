@@ -61,15 +61,43 @@ typedef char PlayerOptionRuntimeCallbackAt90[
 typedef char PlayerOptionRuntimeDrawCallbackAt94[
     (offsetof(PlayerOptionRuntime, drawCallback) == 0x94) ? 1 : -1];
 
+struct PlayerFloat3Value;
+
 struct PlayerFloat3
 {
     float x;
     float y;
     float z;
 
+    PlayerFloat3Value operator-(const PlayerFloat3 &other) const;
+    PlayerFloat3Value operator+(const PlayerFloat3 &other) const;
+    PlayerFloat3Value operator*(float scale) const;
+
     void GetPlanarBounds(PlayerFloat3 *minimum, PlayerFloat3 *maximum,
         const float *extent) const;
 };
+// Arithmetic results retain the aggregate storage view used by command unions.
+struct PlayerFloat3Value : PlayerFloat3
+{
+    PlayerFloat3Value(float xValue, float yValue, float zValue)
+    {
+        x = xValue;
+        y = yValue;
+        z = zValue;
+    }
+};
+inline PlayerFloat3Value PlayerFloat3::operator-(const PlayerFloat3 &other) const
+{
+    return PlayerFloat3Value(x - other.x, y - other.y, z - other.z);
+}
+inline PlayerFloat3Value PlayerFloat3::operator+(const PlayerFloat3 &other) const
+{
+    return PlayerFloat3Value(x + other.x, y + other.y, z + other.z);
+}
+inline PlayerFloat3Value PlayerFloat3::operator*(float scale) const
+{
+    return PlayerFloat3Value(x * scale, y * scale, z * scale);
+}
 typedef char PlayerFloat3SizeIs0C[
     (sizeof(PlayerFloat3) == 0x0c) ? 1 : -1];
 
@@ -88,6 +116,21 @@ struct PlayerTimerView
     {
         subframe += value;
         current = static_cast<int>(subframe);
+    }
+    void Subtract(float value);
+    void Tick()
+    {
+        previous = current;
+        if (*scale > 0.99f && *scale < 1.01f)
+        {
+            ++current;
+            subframe += 1.0f;
+        }
+        else
+        {
+            subframe = *scale + subframe;
+            current = static_cast<int>(subframe);
+        }
     }
     bool HasChanged() const
     {

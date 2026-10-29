@@ -1,5 +1,9 @@
+#include "Main.hpp"
 #include "EnemyGameState.hpp"
 #include "Enemy.hpp"
+#include "EnemyCancel.hpp"
+#include "EnemyLaser.hpp"
+#include "EnemyPrimaryResources.hpp"
 #include "EnemySoundQueue.hpp"
 #include "VmIdInterrupt.hpp"
 #include "Player.hpp"
@@ -10,6 +14,8 @@
 #include "BulletManager.hpp"
 #include "GameScoreState.hpp"
 #include "Hint.hpp"
+#include "ItemManager.hpp"
+#include "ItemPowerDisplay.hpp"
 
 #include <stddef.h>
 #include <math.h>
@@ -158,14 +164,16 @@ struct PlayerDrawGate4
 
 struct PlayerUpdateGate28
 {
-    unsigned char unknown000[0x28];
+    unsigned char unknown000[0x14];
+    PlayerTimerView timer;
     int value28;
-    unsigned char unknown02C[4];
+    AnmVmIdView vmId;
     PlayerFloat3 position;
     float radius;
-    unsigned char unknown040[4];
+    float value40;
     int mode;
 
+    int StartPowerTransition();
     int GetDamageAtPosition(const PlayerFloat3 *targetPosition);
 };
 typedef char PlayerAuxiliaryDamageOffsets[
@@ -199,20 +207,6 @@ struct PlayerHostileManagerView
     PlayerHostileRowView rows[2000];
 };
 
-struct PlayerLinkedObjectView
-{
-    void *vtable;
-    unsigned int unknown004;
-    PlayerLinkedObjectView *next;
-    int value0C;
-};
-
-struct PlayerLinkedListOwnerView
-{
-    unsigned char unknown000[0x18];
-    PlayerLinkedObjectView *head;
-};
-
 extern PlayerDrawGate54 *g_PlayerDrawGate54;
 extern PlayerDrawGate10 *g_PlayerDrawGate10;
 extern PlayerDrawGate9EB8 *g_PlayerDrawGate9EB8;
@@ -223,8 +217,6 @@ extern int g_PlayerRuntimeGateValue;
 extern int g_PlayerPeriodicCounter;
 extern float g_PlayerTimerScale;
 extern PlayerUpdateGate28 *g_PlayerUpdateGate28;
-extern PlayerHostileManagerView *g_PlayerHostileManager;
-extern PlayerLinkedListOwnerView *g_PlayerLinkedListOwner;
 extern PlayerUpdateGate10 *g_PlayerUpdateGate10;
 
 // Descriptive interfaces for target-observed draw callees. The target machine
@@ -235,14 +227,6 @@ void PlayerDrawAuxiliaryRectangle(const float *bounds, unsigned int color);
 
 // Descriptive interfaces for target-observed Player update callees. Their
 // original identifiers and private register conventions remain unproven.
-void PlayerNotifyPowerTransition(PlayerUpdateGate28 *gate);
-void PlayerUpdatePowerDisplay(int value, int valueAgain, int percent);
-void PlayerStartPowerDisplayTimer(int frames);
-void PlayerEmitStateTransitionEffect(float value, int mode, int variant);
-void PlayerCommitStateTransitionEffect(float value, int mode);
-void PlayerFinalizeState3Transition();
-void PlayerInvokeHostileCleanup(PlayerHostileRowView *row);
-void PlayerInvokeLinkedObjectCallback(PlayerLinkedObjectView *object);
 void PlayerTransitionToState2(Player *player);
 float PlayerAngleToPoint(Player *player, const PlayerFloat3 *point)
 {
@@ -252,10 +236,6 @@ float PlayerAngleToPoint(Player *player, const PlayerFloat3 *point)
         return 1.5707964f;
     return (float)atan2(dy, dx);
 }
-void PlayerSpawnDirectionalEffect(
-    const PlayerFloat3 *position, int kind, unsigned int color,
-    float angle, float scale);
-void PlayerRequestRuntimeTransition(int value);
 void PlayerFallbackRuntimeTransition();
 // Target 0x427B50 scans 32 usable rows; exhaustion returns row 32 unchanged.
 PlayerEffectRowView *Player::SpawnEffectRow(
@@ -287,11 +267,6 @@ PlayerEffectRowView *Player::SpawnEffectRow(
     }
     return row;
 }
-void PlayerSetEffectVelocityFromPolar(
-    PlayerFloat3 *velocity, float angularStep, float angle);
-float PlayerWrapEffectAngle(float value);
-void PlayerAdvanceEffectRegion(PlayerFloat3 *position);
-void PlayerUpdateDrawVmState(PlayerDrawVmView *vm);
 int PlayerUpdateInputAction(Player *player);
 int __stdcall PlayerUpdateShots(Player *player);
 
@@ -390,6 +365,8 @@ extern GuiView *g_GuiView;
 extern volatile int g_PlayerLivesDisplayCount;
 extern unsigned char g_PlayerCallbackLockDepth;
 struct PlayerCriticalSectionView { unsigned char storage[0x18]; };
+typedef char PlayerCriticalSectionMatchesSdk[
+    (sizeof(PlayerCriticalSectionView) == sizeof(CRITICAL_SECTION)) ? 1 : -1];
 extern PlayerCriticalSectionView g_PlayerCallbackCriticalSection;
 void __fastcall PlayerUnlinkCallbackNode(
     PlayerCallbackNodeView *node, void *manager);
@@ -772,10 +749,12 @@ static void RemovePlayerCallbackNode(PlayerCallbackNodeView *node)
     if (node == NULL)
         return;
 
-    EnterCriticalSection(&g_PlayerCallbackCriticalSection);
+    EnterCriticalSection(
+        reinterpret_cast<LPCRITICAL_SECTION>(&g_PlayerCallbackCriticalSection));
     ++g_PlayerCallbackLockDepth;
     PlayerUnlinkCallbackNode(node, g_PlayerCallbackManager);
-    LeaveCriticalSection(&g_PlayerCallbackCriticalSection);
+    LeaveCriticalSection(
+        reinterpret_cast<LPCRITICAL_SECTION>(&g_PlayerCallbackCriticalSection));
     --g_PlayerCallbackLockDepth;
 }
 
@@ -1899,42 +1878,50 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         player->options[2].resetFlag = 1;
         player->options[3].resetFlag = 1;
 
-        int historyLimit = player->optionCount * 8;
-        for (i = 32; i > historyLimit; --i)
+        for (i = 32; i > player->optionCount * 8; --i)
             player->replayPositionHistory[i] =
-                player->replayPositionHistory[historyLimit];
-        for (i = historyLimit; i > 0; --i)
+                player->replayPositionHistory[player->optionCount * 8];
+        for (; i > 0; --i)
             player->replayPositionHistory[i] =
                 player->replayPositionHistory[i - 1];
         player->replayPositionHistory[0].x = player->positionX;
         player->replayPositionHistory[0].y = player->positionY;
 
-        if (player->updateTimer1.current < 30)
+        if (player->updateTimer1.current >= 30)
+        {
+            PlayerHostileRowView *row =
+                reinterpret_cast<PlayerHostileManagerView *>(
+                    g_EnemyPrimaryResourceOwner)->rows;
+            for (i = 0; i < 2000; ++i, ++row)
+            {
+                if (row->state446 != 0 && row->state446 != 3 && row->value4 == 0)
+                    EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(row));
+            }
+
+            EnemyEffectWaitNode *object =
+                reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyLaserManager)->head;
+            while (object != NULL)
+            {
+                EnemyEffectWaitNode *next = object->next;
+                if (object->state != 1)
+                    object->ApplyClear(0);
+                object = next;
+            }
+        }
+        else
         {
             float value =
                 (float)player->updateTimer1.current * 17.066667556762695f +
                 64.0f;
-            PlayerEmitStateTransitionEffect(value, 0, 1);
-            PlayerEmitStateTransitionEffect(value * 0.25f, 0, 0);
-            PlayerCommitStateTransitionEffect(value, 0);
-        }
-        else
-        {
-            for (i = 0; i < 2000; ++i)
-            {
-                PlayerHostileRowView &row = g_PlayerHostileManager->rows[i];
-                if (row.state446 != 0 && row.state446 != 3 && row.value4 == 0)
-                    PlayerInvokeHostileCleanup(&row);
-            }
-
-            PlayerLinkedObjectView *object = g_PlayerLinkedListOwner->head;
-            while (object != NULL)
-            {
-                PlayerLinkedObjectView *next = object->next;
-                if (object->value0C != 1)
-                    PlayerInvokeLinkedObjectCallback(object);
-                object = next;
-            }
+            reinterpret_cast<EnemyCancelManagerView *>(
+                g_EnemyPrimaryResourceOwner)->CancelBulletPattern(
+                    &player->savedDrawPosition, value, 0, 1);
+            reinterpret_cast<EnemyCancelManagerView *>(
+                g_EnemyPrimaryResourceOwner)->CancelBulletPattern(
+                    &player->savedDrawPosition, value * 0.25f, 0, 0);
+            reinterpret_cast<EnemyEffectWaitManager *>(
+                g_EnemyLaserManager)->ApplyPatternCancel(
+                    &player->savedDrawPosition, value, 0);
         }
 
         if (player->updateTimer1.current < 60)
@@ -1946,7 +1933,7 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             player->updateTimer1.current = 0;
             player->updateTimer1.previous = 0xfff0bdc1;
             player->updateTimer1.subframe = 0.0f;
-            player->updateTimer1.scale = &g_PlayerTimerScale;
+            player->updateTimer1.scale = &g_AnmGameSpeed;
             player->updateTimer1.flags |= 1;
         }
         player->updateTimer1.current = 0;
@@ -1962,31 +1949,34 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             g_PlayerPower / 20 != 0 &&
             (g_PlayerInputBits & 2) != 0)
         {
-            player->highlightTimer.SetCurrent(0x10e);
-            PlayerNotifyPowerTransition(g_PlayerUpdateGate28);
+            reinterpret_cast<AnmVmTimerView *>(&player->highlightTimer)->SetCurrent(0x10e);
+            g_PlayerUpdateGate28->StartPowerTransition();
             g_PlayerPower -= 20;
             RebuildPlayerOptions(player);
             int power = g_PlayerPower;
-            PlayerUpdatePowerDisplay(
-                power / 20, power / 20, ((power % 20) * 100) / 20);
-            PlayerStartPowerDisplayTimer(3000);
+            g_ItemPowerDisplayOwner->UpdatePowerDisplay(
+                power / 20, ((power % 20) * 100) / 20);
+            g_GameScoreState.DecayFaith(3000);
         }
 
         if (player->updateTimer1.current < 30)
         {
-            for (i = 0; i < 2000; ++i)
+            PlayerHostileRowView *row =
+                reinterpret_cast<PlayerHostileManagerView *>(
+                    g_EnemyPrimaryResourceOwner)->rows;
+            for (i = 0; i < 2000; ++i, ++row)
             {
-                PlayerHostileRowView &row = g_PlayerHostileManager->rows[i];
-                if (row.state446 != 0 && row.state446 != 3 && row.value4 == 0)
-                    PlayerInvokeHostileCleanup(&row);
+                if (row->state446 != 0 && row->state446 != 3 && row->value4 == 0)
+                    EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(row));
             }
 
-            PlayerLinkedObjectView *object = g_PlayerLinkedListOwner->head;
+            EnemyEffectWaitNode *object =
+                reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyLaserManager)->head;
             while (object != NULL)
             {
-                PlayerLinkedObjectView *next = object->next;
-                if (object->value0C != 1)
-                    PlayerInvokeLinkedObjectCallback(object);
+                EnemyEffectWaitNode *next = object->next;
+                if (object->state != 1)
+                    object->ApplyClear(0);
                 object = next;
             }
         }
@@ -1994,26 +1984,29 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         break;
 
     case 4:
-        if (player->updateTimer1.current < 8)
+        if (player->updateTimer1.current >= 8)
+        {
+            PlayerTransitionToState2(player);
+        }
+        else
         {
             if (g_PlayerUpdateGate28 != NULL &&
                 g_PlayerUpdateGate28->value28 == 0 &&
                 g_PlayerPower / 20 != 0 &&
                 (g_PlayerInputBits & 2) != 0)
             {
-                player->updateTimer1.SetCurrent(0x3c);
-                player->highlightTimer.SetCurrent(200);
-                PlayerNotifyPowerTransition(g_PlayerUpdateGate28);
+                reinterpret_cast<AnmVmTimerView *>(&player->updateTimer1)->SetCurrent(0x3c);
+                reinterpret_cast<AnmVmTimerView *>(&player->highlightTimer)->SetCurrent(200);
+                g_PlayerUpdateGate28->StartPowerTransition();
                 g_PlayerPower -= 20;
                 RebuildPlayerOptions(player);
                 int power = g_PlayerPower;
-                PlayerUpdatePowerDisplay(
-                    power / 20, power / 20, ((power % 20) * 100) / 20);
+                g_ItemPowerDisplayOwner->UpdatePowerDisplay(
+                    power / 20, ((power % 20) * 100) / 20);
                 player->runtimeState = 1;
             }
             break;
         }
-        PlayerTransitionToState2(player);
         // Fall through after the transition, matching the target state-4 block.
 
     case 2:
@@ -2023,8 +2016,8 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             if (g_PlayerPower < 0)
                 g_PlayerPower = 0;
             int power = g_PlayerPower;
-            PlayerUpdatePowerDisplay(
-                power / 20, power / 20, ((power % 20) * 100) / 20);
+            g_ItemPowerDisplayOwner->UpdatePowerDisplay(
+                power / 20, ((power % 20) * 100) / 20);
 
             PlayerFloat3 target;
             target.x = 0.0f;
@@ -2034,8 +2027,9 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             for (i = 0; i < 7; ++i)
             {
                 int kind = (i == 1 || i == 3 || i == 5) ? 4 : 1;
-                PlayerSpawnDirectionalEffect(
-                    &player->drawPosition, kind, 0x00ffffff,
+                g_ItemManager->Spawn(
+                    reinterpret_cast<const AnmFloat3View *>(&player->drawPosition),
+                    kind, 0x00ffffff,
                     (float)i * 0.11219973862171173f + angle -
                         0.39269909262657166f,
                     3.0f);
@@ -2048,14 +2042,14 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             if (g_PlayerRuntimeGateValue < 0)
             {
                 if (g_PlayerUpdateGate10->value10 == 1)
-                    PlayerRequestRuntimeTransition(4);
+                    g_MainSupervisorView.SetNextGameMode(4);
                 else
                     PlayerFallbackRuntimeTransition();
             }
             else
             {
                 player->runtimeState = 0;
-                g_PlayerTimerScale = 1.0f;
+                g_AnmGameSpeed = 1.0f;
                 player->SpawnEffectRow(
                     &player->drawPosition, 32.0f, 16.0f, 30, 150);
                 player->savedDrawPosition = player->drawPosition;
@@ -2063,8 +2057,8 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
                 player->positionY = 48000;
                 player->drawPosition.x = 0.0f;
                 player->drawPosition.y = 480.0f;
-                player->highlightTimer.SetCurrent(0x118);
-                player->updateTimer1.SetCurrent(0);
+                reinterpret_cast<AnmVmTimerView *>(&player->highlightTimer)->SetCurrent(0x118);
+                reinterpret_cast<AnmVmTimerView *>(&player->updateTimer1)->SetCurrent(0);
             }
         }
         break;
@@ -2073,61 +2067,53 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         if (player->updateTimer1.current != 4 &&
             player->updateTimer1.current == 15)
         {
-            for (i = 0; i < 2000; ++i)
+            PlayerHostileRowView *row =
+                reinterpret_cast<PlayerHostileManagerView *>(
+                    g_EnemyPrimaryResourceOwner)->rows;
+            for (i = 0; i < 2000; ++i, ++row)
             {
-                PlayerHostileRowView &row = g_PlayerHostileManager->rows[i];
-                if (row.state446 != 0 && row.state446 != 3)
-                    PlayerInvokeHostileCleanup(&row);
+                if (row->state446 != 0 && row->state446 != 3)
+                    EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(row));
             }
-            PlayerFinalizeState3Transition();
+            EnemyApplyBulletClear(
+                reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyLaserManager), 1);
         }
         break;
     }
 
-    for (i = 0; i < 32; ++i)
+    PlayerEffectRowView *row = player->effectRows;
+    for (i = 0; i < 32; ++i, ++row)
     {
-        PlayerEffectRowView &row = player->effectRows[i];
-        PlayerEffectMotionView &motion = row.motion;
+        PlayerEffectMotionView &motion = row->motion;
         if ((motion.activeFlags & 1) == 0)
             continue;
 
         if ((motion.motionFlags & 1) == 0)
         {
-            PlayerSetEffectVelocityFromPolar(
-                &motion.velocity, motion.angularStep, motion.angle);
+            reinterpret_cast<EnemyRuntimeVectorView *>(
+                &motion.velocity)->FromAngleMagnitude(
+                    motion.angularStep, motion.angle);
             motion.velocity.z = 0.0f;
         }
         else
         {
             motion.timerStep += motion.timerStepDelta;
             motion.angularStep =
-                PlayerWrapEffectAngle(motion.angle + motion.angularStep);
+                EnemyWrapAngle(motion.angle + motion.angularStep);
         }
 
-        PlayerAdvanceEffectRegion(&row.position);
-        row.radius += row.radiusDelta;
-        row.angle += row.angleDelta;
+        EnemyAdvanceMotion(reinterpret_cast<EnemyMotionView *>(&row->position));
+        row->radius += row->radiusDelta;
+        row->angle += row->angleDelta;
 
-        motion.timer.previous = motion.timer.current;
-        float scale = *motion.timer.scale;
-        if (scale > 0.9900000095367432f && scale < 1.0099999904632568f)
-            motion.timer.subframe -= 1.0f;
-        else
-            motion.timer.subframe -= scale * 1.0f;
-        motion.timer.current = (int)motion.timer.subframe;
+        motion.timer.Subtract(1.0f);
         if (motion.timer.current < 1)
             motion.activeFlags &= ~1u;
     }
 
     if (player->highlightTimer.current > 0)
     {
-        player->highlightTimer.previous = player->highlightTimer.current;
-        float scale = *player->highlightTimer.scale;
-        if (scale > 0.9900000095367432f && scale < 1.0099999904632568f)
-            player->highlightTimer.subframe -= 1.0f;
-        else
-            player->highlightTimer.subframe -= scale * 1.0f;
-        player->highlightTimer.current = (int)player->highlightTimer.subframe;
+        player->highlightTimer.Subtract(1.0f);
 
         if (player->updateTimer1.current != player->updateTimer1.previous &&
             player->updateTimer1.current % 3 == 0)
@@ -2145,72 +2131,27 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         player->drawVm.flags &= ~0x8000u;
     }
 
-    PlayerUpdateDrawVmState(&player->drawVm);
+    AnmRenderManagerView::ExecuteScript(
+        reinterpret_cast<AnmVmView *>(&player->drawVm));
 
-    player->derivedMin0.x = player->drawPosition.x - player->extent0.x;
-    player->derivedMin0.y = player->drawPosition.y - player->extent0.y;
-    player->derivedMin0.z = player->drawPosition.z - player->extent0.z;
-    player->derivedMax0.x = player->drawPosition.x + player->extent0.x;
-    player->derivedMax0.y = player->drawPosition.y + player->extent0.y;
-    player->derivedMax0.z = player->drawPosition.z + player->extent0.z;
+    player->derivedMin0 = player->drawPosition - player->extent0;
+    player->derivedMax0 = player->drawPosition + player->extent0;
+    player->derivedVectors[0] = player->drawPosition - player->extent1 * 0.5f;
+    player->derivedVectors[1] = player->drawPosition + player->extent1 * 0.5f;
+    player->derivedVectors[2] = player->drawPosition - player->extent2;
+    player->derivedVectors[3] = player->drawPosition + player->extent2;
+    player->derivedVectors[4] = player->drawPosition - player->extent1;
+    player->derivedVectors[5] = player->drawPosition + player->extent1;
 
-    player->derivedVectors[0].x = player->drawPosition.x - player->extent1.x * 0.5f;
-    player->derivedVectors[0].y = player->drawPosition.y - player->extent1.y * 0.5f;
-    player->derivedVectors[0].z = player->drawPosition.z - player->extent1.z * 0.5f;
-    player->derivedVectors[1].x = player->drawPosition.x + player->extent1.x * 0.5f;
-    player->derivedVectors[1].y = player->drawPosition.y + player->extent1.y * 0.5f;
-    player->derivedVectors[1].z = player->drawPosition.z + player->extent1.z * 0.5f;
-    player->derivedVectors[2].x = player->drawPosition.x - player->extent2.x;
-    player->derivedVectors[2].y = player->drawPosition.y - player->extent2.y;
-    player->derivedVectors[2].z = player->drawPosition.z - player->extent2.z;
-    player->derivedVectors[3].x = player->drawPosition.x + player->extent2.x;
-    player->derivedVectors[3].y = player->drawPosition.y + player->extent2.y;
-    player->derivedVectors[3].z = player->drawPosition.z + player->extent2.z;
-    player->derivedVectors[4].x = player->drawPosition.x - player->extent1.x;
-    player->derivedVectors[4].y = player->drawPosition.y - player->extent1.y;
-    player->derivedVectors[4].z = player->drawPosition.z - player->extent1.z;
-    player->derivedVectors[5].x = player->drawPosition.x + player->extent1.x;
-    player->derivedVectors[5].y = player->drawPosition.y + player->extent1.y;
-    player->derivedVectors[5].z = player->drawPosition.z + player->extent1.z;
-
-    player->updateTimer1.previous = player->updateTimer1.current;
-    float timerScale = *player->updateTimer1.scale;
-    if (timerScale > 0.9900000095367432f &&
-        timerScale < 1.0099999904632568f)
-    {
-        ++player->updateTimer1.current;
-        player->updateTimer1.subframe += 1.0f;
-    }
-    else
-    {
-        player->updateTimer1.subframe += timerScale;
-        player->updateTimer1.current = (int)player->updateTimer1.subframe;
-    }
-
-    player->updateTimer2.previous = player->updateTimer2.current;
-    timerScale = *player->updateTimer2.scale;
-    if (timerScale > 0.9900000095367432f &&
-        timerScale < 1.0099999904632568f)
-    {
-        ++player->updateTimer2.current;
-        player->updateTimer2.subframe += 1.0f;
-    }
-    else
-    {
-        player->updateTimer2.subframe += timerScale;
-        player->updateTimer2.current = (int)player->updateTimer2.subframe;
-    }
+    player->updateTimer1.Tick();
+    player->updateTimer2.Tick();
 
     if (g_PlayerDrawGate9EB8->value9EB8 == 0 &&
         g_PlayerDrawGate10 != NULL &&
         g_PlayerDrawGate10->value60 != 0 &&
         player->updateTimer1.current % 60 == 0)
     {
-        ++g_PlayerPeriodicCounter;
-        if (g_PlayerPeriodicCounter > 0x400)
-            g_PlayerPeriodicCounter = 0x400;
-        else if (g_PlayerPeriodicCounter < -0x400)
-            g_PlayerPeriodicCounter = -0x400;
+        g_GameScoreState.AddRank(1);
     }
 
     if (g_PlayerDrawGate9EB8->value9EB8 == 0 &&
@@ -2226,7 +2167,7 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             player->updateTimer0.current = 0;
             player->updateTimer0.previous = 0xfff0bdc1;
             player->updateTimer0.subframe = 0.0f;
-            player->updateTimer0.scale = &g_PlayerTimerScale;
+            player->updateTimer0.scale = &g_AnmGameSpeed;
             player->updateTimer0.flags |= 1;
         }
         player->updateTimer0.current = -1;
@@ -2547,4 +2488,64 @@ void PlayerFloat3::GetPlanarBounds(
     minimum->y = y - extent[1] * 0.5f;
     maximum->x = x + extent[0] * 0.5f;
     maximum->y = y + extent[1] * 0.5f;
+}
+
+void PlayerTimerView::Subtract(float value)
+{
+    previous = current;
+    if (*scale > 0.99f && *scale < 1.01f)
+        subframe -= value;
+    else
+        subframe -= value * *scale;
+    current = static_cast<int>(subframe);
+}
+
+// Target405500: invalidate the timed spell bonus, retaining front VM slot two.
+void EnemyGameStateView::InvalidateSpellBonus()
+{
+    if (spellTimer.current < 60)
+        return;
+    currentSpellBonus = 0;
+    flags378C &= ~2u;
+    for (int slot = 0; slot < 8; ++slot)
+    {
+        if (slot != 2)
+            frontVms[slot].flags35C &= ~2u;
+    }
+}
+
+// Target405860: begin the input-triggered power transition and its effect VM.
+int PlayerUpdateGate28::StartPowerTransition()
+{
+    if (value28 != 0)
+        return -1;
+    value28 = 1;
+    timer.SetCurrent(0);
+    radius = 32.0f;
+    value40 = 4.0f;
+    position = g_Player->drawPosition;
+
+    EnemyGameStateView *state = g_EnemyGameState;
+    int script;
+    if (((state->flags378C & 1u) == 0 ||
+            state->spellId < 93 || state->spellId > 96) &&
+        state->spellId != 109)
+        script = g_PlayerCharacter != 0 ? 407 : 400;
+    else
+        script = 441;
+    vmId = g_EnemyPrimaryResourceOwner->primaryEnemyResource->CreateVmAtWorldVariant0(
+        script, reinterpret_cast<const AnmFloat3View *>(&position));
+    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundCue(
+        38, position.x);
+    int power = g_PlayerPower;
+    g_ItemPowerDisplayOwner->UpdatePowerDisplay(
+        power / 20, ((power % 20) * 100) / 20);
+    EnemyGameStateView *panel = g_EnemyGameState;
+    panel->InvalidateSpellBonus();
+    g_GameScoreState.AddRank(-128);
+    if ((panel->flags378C & 1u) != 0 && panel->spellTimer.current >= 60)
+        mode = 1;
+    else
+        mode = 0;
+    return 0;
 }

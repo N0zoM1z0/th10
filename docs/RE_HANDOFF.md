@@ -2,6 +2,28 @@
 
 ## Current checkpoint
 
+The complete Player main owner is now reviewed3112 bytes:3089 code,3 unreachable
+LEA-alignment bytes and its20-byte five-state table. The old3089 code-only
+comparison excluded owned data. Fourteen-input Player-entry /GL source emits
+3064/3112, still nonexact; a full14-source cold with zero reuse reproduces all3064
+native bytes/all109 fields. Target review counts112 fields; the three count gaps
+are two scaled-decrement multiply-by-one fields and the fallback owner477830.
+Other registers, guards and scheduling also remain open. The real entry restores
+the stack/RET4 interface and seven-byte adapter. See the
+[complete owner and callee evidence](evidence/player-update-owner-20261030/README.md).
+
+Complete397-byte StartPowerTransition source is newly mapped,397/397 nonexact.
+Its actual spell-bonus helper405500 is81 raw bytes exact in two independent
+canonical12-input colds. A counted loop restores the early bonus store and seven
+VM clears, keeping slot2. Shared EnemyApplyBulletClear44 remains raw exact in
+both colds after exposing the genuine Player/dispatcher call and replacing its
+static normal-COFF recipe with /GL. First scoped81+44+717+174+105 passes1121/all26;
+second81+44 passes125 raw bytes. Five other affected old units pass612/all16.
+Twenty strict same-image bodies pass2390/all60; nine prior native candidates,
+including the explicitly SDK-bridged destructor262, remain byte/field-identical.
+New authored credit81; boundary ownership adds23 denominator bytes, with no
+origin promotion or exact-parent credit.
+
 PlayerUpdateInputAction4281D0 is complete174/all7 exact in two independent
 canonical12-source /GL cold links, preserving all55 instructions, six local
 branches and the private EAX Player / RET interface. An inline changed-frame
@@ -22,9 +44,9 @@ pass2091/all53; ten previous candidates remain byte/field-identical. See the
 
 PlayerEmitShotRows428160 remains complete105/all2 exact in its existing
 three-input Player-constructor recipe and passes the current scoped cold.
-Its input174 caller is now separately exact in the12-source recipe. The complete
-prior2820-byte central native contribution is preserved; its3089-byte target
-parent remains unclosed. The [preceding source proof](evidence/player-shot-producer-20261030/README.md)
+Its input174 caller stays exact in the12-source recipe. The main source now emits
+3064 in14 inputs, against the corrected complete3112-byte owner. Older2820/3089
+statements describe the preceding native/code-only target epochs. The [preceding source proof](evidence/player-shot-producer-20261030/README.md)
 retains its original source epoch.
 
 PlayerUpdateShots428280 now emits the complete876-byte owner, versus738 at
@@ -68,9 +90,9 @@ constructor188, Initialize522, destructor499, StageCreate151 and LoadData308.
 All1668 bytes/all91 fields pass. This adds1480 authored exact bytes; constructor
 origin remains indeterminate. See the [complete proof](evidence/stage-initialize-context-20261029/README.md).
 
-Current generated [progress](PROGRESS.md): **97,721/275,729 authored owned bytes
-exact,486 authored exact owners**. Total1362 exact owners/165,818 codegen bytes;
-1202 mappings,684 authored mappings,198 authored mapped backlog. Inventory and
+Current generated [progress](PROGRESS.md): **97,802/275,752 authored owned bytes
+exact,487 authored exact owners**. Total1363 exact owners/165,899 codegen bytes;
+1204 mappings,686 authored mappings,199 authored mapped backlog. Inventory and
 whole-product/runtime/portability closure remain separate and incomplete.
 
 The affected old selection passes14 units/2262 bytes/all156 fields in its existing
@@ -128,17 +150,22 @@ rebuildable outputs are disposable, not dependencies of the current workflow.
 
 ## Working inputs
 
-The current twelve-input Enemy/Player warm context is:
-`.analysis/gpt-6.1-sol/player-input-context-20261030/final-context.json`.
-Revalidate all43 recursive project pins,12 object hashes and image hash before
-reuse. Actual VmIdInterrupt/FrontEnd definitions use their recorded pinned
-profiles; no optimizer flags were swept. The accepted174-byte second-cold
-context is `canonical-context.json` beside it, with43 pins/12 objects in the
-shared producer717 recipe. First scoped cold retains717 and174 in the same image;
-`caller-context.json` retains the current three-input105 recipe with28 pins/three
-objects. The previous player-spawn/player-motion/player-shots and ten-input
-contexts retain their source epochs; input changes invalidate their Player.cpp/
-Player.hpp pins. Rebuild changed inputs before reuse.
+The current14-input Player-entry parent warm context is:
+`.analysis/gpt-6.1-sol/player-update-context-20261030/final-context.json`.
+Revalidate all51 recursive project pins,14 object hashes and image hash before
+reuse. `parent-cold-context.json` beside it retains its full zero-reuse native
+reproduction. It emits the nonexact3064-byte main and397-byte transition; its
+producer707 does not establish the separately accepted717-byte unit.
+
+`canonical-twelve-context.json` beside it is the current45-pin/12-object
+Enemy-entry warm context. `canonical-context.json` pins the second canonical
+cold for81/44 and the shared717/174 recipe. `caller-context.json` pins the current
+three-input105 recipe,33 pins/three objects. Existing pinned profiles and source
+order remain intact; new Item/Main supports use their established plain /GL
+profiles. The preceding player-input/player-spawn/player-motion/player-shots
+contexts retain older Player.cpp/Player.hpp and shared-header epochs. Rebuild
+changed inputs before reuse; do not mix the14-input diagnostic with12-input
+canonical producer claims.
 
 The current five-input ANM warm context is:
 `.analysis/gpt-6.1-sol/anm-executor-context-20261030/final-context.json`.
@@ -259,6 +286,21 @@ SpawnShot member/global neutral control does not settle source shapes for other
 owners. Complete vector, constructor and normal-COFF partition controls do not
 fix motion's zero-Z store or shot-update's LEA; all remain restored and parked.
 No new exact credit attaches to larger parents or the motion/resource helpers.
+
+For the main owner, do not compare a table-bearing native contribution to the
+old3089-byte code-only boundary. The correct owned target is3112. Natural
+Float3 result values recover the x87 half-extent schedule while leaving the
+storage type aggregate-compatible. A live history bound/carried index, row
+cursors, actual cancel/virtual/Item/VM/Main/clear interfaces and shared rank/timer
+operations replace old shortcuts. The fallback4231D0 call still lacks its observed receiver; all38 direct-call
+roles require actual interface binding before parent acceptance. Next concrete
+probes: cross-TU /GL Subtract, predicting both missing FMUL1 fields will survive
+late inlining; and the real fallback owner477830/411-byte body. Same-TU float/int,
+free/member bonus, noinline, bool and separate-exit controls are neutral/parked.
+The397-byte transition's EBX save/state/rank/restore schedule remains open. Also
+review the target's explicit state3 frame4 exit and16-bit power-level tests;
+compare those explicit target conditions against the current compound/int forms.
+
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed
