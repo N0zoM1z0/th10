@@ -54,6 +54,8 @@ struct StageObjectPrimitiveView
 };
 struct StageObjectView
 {
+    int BoundsCulled(const AnmFloat3View *position,
+        const StageCameraStateView *camera, float distanceSquared) const;
     short id;
     unsigned char layer, flags;
     AnmFloat3View position, extent;
@@ -125,8 +127,6 @@ struct StageScriptView
 StageScriptView *__stdcall StageCreate(const char *path, int priorityOffset);
 int __fastcall StageUpdateCallback(StageScriptView *stage);
 int __stdcall StageExecuteScript(StageScriptView *stage);
-int StageBoundsCulled(const StageCameraStateView *camera,
-    const StageObjectView *object, const AnmFloat3View *position, float distanceSquared);
 int __stdcall StageDrawInstances(StageScriptView *stage, int layer);
 int __stdcall StageDrawEarly(StageScriptView *stage);
 int __stdcall StageDrawLate(StageScriptView *stage);

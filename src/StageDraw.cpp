@@ -15,9 +15,7 @@ extern "C" AnmFloat3View *__stdcall D3DXVec3ProjectArray(
     const AnmMatrixView *view, const AnmMatrixView *world, unsigned int count);
 
 extern StageCameraStateView g_StagePublishedCamera; // 0x491D7C, alias storage open
-extern int g_StageViewportConfigured; // 0x491FB0, same storage as Main +0x388
-// Instance drawing retains this full-word alias; draw-pass setters use Main.
-extern int g_StageFogEnabled; // 0x492378 = Main+750, storage closure open
+// Viewport and fog caches use the maintained Main+388/+750 members.
 extern "C" AnmMatrixView *__stdcall D3DXMatrixLookAtLH(
     AnmMatrixView *output, const AnmFloat3View *eye,
     const AnmFloat3View *at, const AnmFloat3View *up);
@@ -69,16 +67,15 @@ void StageCameraStateView::ConfigureCamera()
 }
 
 
-// Target 0x403090-0x40384F. Camera EAX, object ECX, position EDX, distance
-// on stack, RET4. Natural source below does not impose that private convention.
-int StageBoundsCulled(const StageCameraStateView *camera,
-    const StageObjectView *object, const AnmFloat3View *position,
-    float distanceSquared)
+// Target 0x403090-0x40384F. Object/this ECX, position EDX, camera EAX,
+// distance on stack and RET4. The complete bounds body remains nonexact.
+int StageObjectView::BoundsCulled(const AnmFloat3View *position,
+    const StageCameraStateView *camera, float distanceSquared) const
 {
     // Reuse the aggregate: pinned VC7.1 must round center and delta XYZ
     // through float storage before the distance test (target 0x40309E..0x403139).
     AnmFloat3View delta;
-    delta = object->position + *position;
+    delta = this->position + *position;
     AnmFloat3View eye(camera->position.x + camera->rockingOffset,
         camera->position.y + camera->rockingOffsetY,
         camera->position.z + camera->rockingOffsetZ);
@@ -88,9 +85,9 @@ int StageBoundsCulled(const StageCameraStateView *camera,
     if (delta.x * delta.x + delta.y * delta.y + delta.z * delta.z > distanceSquared)
         return 1;
 
-    AnmFloat3View half = object->extent * 0.5f;
-    AnmFloat3View maximum = half + object->position;
-    AnmFloat3View minimum = object->position - half;
+    AnmFloat3View half = this->extent * 0.5f;
+    AnmFloat3View maximum = half + this->position;
+    AnmFloat3View minimum = this->position - half;
     AnmFloat3View corners[8] = {
         AnmFloat3View(maximum.x, maximum.y, maximum.z),
         AnmFloat3View(maximum.x, maximum.y, minimum.z),
@@ -128,24 +125,21 @@ int StageBoundsCulled(const StageCameraStateView *camera,
         maximumY >= 16.0f && minimumY <= 464.0f ? 0 : 1;
 }
 
-// Target 0x403A30-0x403C7F: two stack arguments, RET8. This genuine caller
-// supplies the bounds object's actual use; upstream draw registration is open.
+// Target 0x403A30-0x403C7F: stack stage/layer, RET8. The real early/late
+// callers preserve this interface; bounds bytes are a separate obligation.
 int __stdcall StageDrawInstances(StageScriptView *stage, int layer)
 {
     StageInstanceView *instance = stage->instances;
-    g_AnmViewportOwner = reinterpret_cast<AnmViewportOwnerView *>(&g_StagePublishedCamera);
-    g_StagePublishedCamera.ConfigureCamera();
-    g_Direct3DDevice->vtable->SetViewport(g_Direct3DDevice,
-        &g_AnmViewportOwner->viewport);
-    g_StageViewportConfigured = 0;
+    g_StagePublishedCamera.InstallViewport();
     g_AnmRenderManagerView->currentCameraMode = 1;
     for (; instance->objectIndex >= 0; ++instance)
     {
         StageObjectView *object = stage->objects[instance->objectIndex];
         if (static_cast<signed char>(object->layer) != layer)
             continue;
-        AnmFloat3View position = instance->position;
-        if (StageBoundsCulled(&g_StagePublishedCamera, object, &position,
+        AnmFloat3View position(instance->position.x,
+            instance->position.y, instance->position.z);
+        if (object->BoundsCulled(&position, &g_StagePublishedCamera,
                 stage->cullDistanceSquared) != 0)
         {
             ++stage->culledObjectCount;
@@ -161,9 +155,9 @@ int __stdcall StageDrawInstances(StageScriptView *stage, int layer)
                 StageQuadPrimitiveView *quad = reinterpret_cast<StageQuadPrimitiveView *>(primitive);
                 if ((vm->flags35C & 0x3c00000u) >= 0x1000000u)
                 {
-                    vm->position.x = quad->position.x + instance->position.x;
-                    vm->position.y = quad->position.y + instance->position.y;
-                    vm->position.z = quad->position.z + instance->position.z;
+                    vm->positionOffset.x = quad->position.x + instance->position.x;
+                    vm->positionOffset.y = quad->position.y + instance->position.y;
+                    vm->positionOffset.z = quad->position.z + instance->position.z;
                     if (quad->width != 0.0f)
                     {
                         vm->scaleX = quad->width / vm->loadedSprite->width;
@@ -175,13 +169,10 @@ int __stdcall StageDrawInstances(StageScriptView *stage, int layer)
                         vm->flags35C |= 8;
                     }
                 }
-                int fog = (vm->flags35C & 0x3c00000u) == 0x2000000u ? 1 : 0;
-                if (g_StageFogEnabled != fog)
-                {
-                    g_AnmRenderManagerView->FlushVertexBuffer();
-                    g_StageFogEnabled = fog;
-                    g_Direct3DDevice->vtable->SetRenderState(g_Direct3DDevice, 28, fog);
-                }
+                if ((vm->flags35C & 0x3c00000u) == 0x2000000u)
+                    g_MainSupervisorView.SetFogEnabled(1);
+                else
+                    g_MainSupervisorView.SetFogEnabled(0);
                 g_AnmRenderManagerView->Draw(vm);
                 ++stage->drawCount;
             }
@@ -218,7 +209,7 @@ void StageCameraStateView::InstallViewport()
     g_AnmViewportOwner = reinterpret_cast<AnmViewportOwnerView *>(this);
     ConfigureCamera();
     g_Direct3DDevice->vtable->SetViewport(g_Direct3DDevice, &g_AnmViewportOwner->viewport);
-    g_StageViewportConfigured = 0;
+    g_MainSupervisorView.viewportConfigured = 0;
 }
 // Render-state arguments carry the member's raw DWORD, including NaN payloads.
 // The target captures that word before Flush; it performs no float operation.

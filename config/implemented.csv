@@ -917,7 +917,7 @@ StageFogInterpolationView::Evaluate
 StageFogView::operator-
 StageFogView::operator*
 StageFogView::operator+
-StageBoundsCulled
+StageObjectView::BoundsCulled
 StageDrawInstances
 StageCameraStateView::ConfigureCamera
 StageDrawEarly

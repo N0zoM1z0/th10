@@ -6998,3 +6998,47 @@ renderer and1984-byte bounds owner are concrete next dependencies; current nativ
 extents and ABI need fresh review. Original source classes/TUs, data/global alias
 ownership, one-image/product/runtime and portability remain open. See
 [the complete early draw proof](evidence/stage-early-context-20261029/README.md).
+
+
+## 2026-10-29 Complete Stage instance drawing and actual bounds inputs
+
+StageDrawInstances403A30..403C7F owns592 bytes/156 instructions,18 fixed local
+branches, frameC, two stack arguments (stage/layer) and RET8. Two independent
+canonical eleven-input StageCreate colds reproduce all bytes/all22 semantic
+fields. Complete instance/primitive loops, culling, flags, quad VM offsets and
+scales, fog, drawing and counts belong to this comparison.
+
+The target writes VM positionOffset340/344/348, correcting the previous source
+position334/338/33C. An explicit XYZ value snapshot for culling removes an extra
+position induction pointer/spills. This restores the real stack stage/layer
+boundary and exact Early1099/Late929 callers. The implicit-copy source had let
+LTCG promote stage to EBX/RET4; a StageScript member boundary was byte-neutral
+there and is restored. No synthetic address-escape or fake ABI is introduced.
+
+The real bounds callee takes objectECX, positionEDX, cameraEAX and distanceSquared
+on stack/RET4. A natural const StageObjectView member with all meaningful inputs
+recovers that argument setup schedule. The prior global cdecl shape was wrong
+about cleanup; camera-member placement did not recover the final scheduling.
+The complete bounds body stays1929/1984 NONEXACT and gains no byte credit.
+
+Camera activation uses the existing InstallViewport operation. The final cache
+write now uses Main+388; fog uses Main+750/device+8 in its actual two constant
+branches. Unused standalone fog/viewport aliases are removed. The two Early
+cache fields and one Late field bind Main+388 explicitly, retaining target
+491FB0 and every encoded byte. Unrelated diagnostic anchor labels are not source
+identity; all member bases/addends remain strict. Camera/active-pointer physical
+alias storage remains open.
+
+Thirteen old same-image owners3128/all198 pass in both colds, and Late929/all78
+passes a separate explicit cold in its original ten-input recipe. Only Instances
+and affected Early select the eleven-input canonical colds; no full historical
+cohort or unrelated Main build is required. Both zero scalar occurrences in the
+new owner and four callee scalars are independently raw-equal. SetCurrent's
+inline physical PDB owner remains StageScript.cpp in this graph, with its full
+old byte/field contract unchanged.
+
+Adds592 authored exact bytes without mapping/denominator change. Bounds1984 and
+default camera287 remain nonexact; complete-caller equality does not promote a
+callee. Class/method names and production TUs, physical data ownership,
+single-image/product/runtime and portability remain independent. See
+[the complete instance drawing proof](evidence/stage-instances-context-20261029/README.md).

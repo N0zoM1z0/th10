@@ -2,11 +2,12 @@
 
 ## Start here
 
-Current checkpoint reconstructs complete Stage early draw402850..402C9A:1099
-bytes/all72 fields and18 local destinations pass two independent eleven-input
-colds. Real factory visibility, tint capture and Main's typed Clear interface
-restore the full owner. Twelve old owners2029/all126 pass twice. Default camera
-282/287, instance drawing and single-image/product closure remain open.
+Current checkpoint reconstructs complete Stage instance draw403A30..403C7F:592
+bytes/all22 fields and18 local destinations pass two independent eleven-input
+colds. VM positionOffset, explicit XYZ snapshot and real camera/Main/bounds
+operations restore the full owner. Thirteen old owners3128/all198 pass twice;
+original ten-input Late929/all78 also passes. Bounds1929/1984, default camera
+282/287 and single-image/product closure remain open.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -34,9 +35,46 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**90,572/275,729 reviewed authored owned bytes exact, 473 exact authored owners**;
-681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1346 exact.
+**91,164/275,729 reviewed authored owned bytes exact, 474 exact authored owners**;
+681 authored source mappings. Total: 1819 candidates, 1197 mappings, 1347 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [complete Stage instance draw proof](evidence/stage-instances-context-20261029/README.md):
+
+- Instances403A30..403C7F/592 is exact twice, all22 semantic fields and18 fixed
+  local destinations. The156-instruction owner retains frameC, stack stage/layer
+  and RET8. Adds592 authored bytes, no mapping or denominator; mapped backlog207.
+- Fresh target writes VM positionOffset340/344/348, correcting the old position
+  field. Explicit instance XYZ construction avoids an extra induction pointer
+  and spills, restoring the real stack interface and exact Early/Late callers.
+  The earlier implicit-copy control let LTCG promote stage into EBX/RET4 and
+  changed both parents; explicit construction restores target codegen. Source
+  shape alone earns no credit.
+- The complete bounds callee is naturally a const StageObjectView member with
+  meaningful object/thisECX, positionEDX, cameraEAX and stackdistance/RET4. This
+  matches actual call setup without fake ABI/registers, unused inputs, forced
+  spills, volatile, noinline, code bytes, padding or compiler-profile changes.
+  Its body remains1929/1984 NONEXACT; no callee credit follows from the caller.
+- Shared camera activation uses InstallViewport with Main+388 cache. Fog uses
+  real Main+750 cache/device+8 operations in the two constant branches. Unused
+  viewport/fog alias declarations are removed; camera/active-pointer aliases
+  stay open. Existing Early fields9B/350 and Late9B now bind actual Main+388,
+  preserving their old target destination491FB0 and every byte.
+- Two canonical colds select Instances plus affected Early in the same unchanged
+  eleven-input graph. Thirteen old contracts3128/all198 pass twice: Early1099,
+  Late929, camera330, selector60, fog53, adapters7 each, Flush133, DrawLayer67,
+  timers88/57, factory82, Draw216/table. Inline SetCurrent uses its actual
+  StageScript.cpp PDB owner. Original ten-input Late passes929/all78 in one
+  separate explicit cold. No full cohort or unaffected Main graph is replayed.
+- Current Stage warm context is
+  `.analysis/gpt-6.1-sol/stage-instances-context-20261029/final-context.json`.
+  Fresh source/include/profile pins supersede older warm contexts; independent
+  accepted old artifacts remain evidence. Default camera stays282/287. Class/TU
+  identity, physical data aliases and product/runtime/portability remain open.
+- Next coherent large owner is Bounds403090/1984, now freshly1929/1984 in its
+  real caller context, or StageExecuteScript/1868. Compare the full body and
+  challenge old shape/precision assumptions. Do not repeat parked neutral
+  instance-boundary or camera-receiver controls without discriminating evidence.
 
 Latest [complete Stage early draw proof](evidence/stage-early-context-20261029/README.md):
 
@@ -59,12 +97,13 @@ Latest [complete Stage early draw proof](evidence/stage-early-context-20261029/R
   is a canonical cold selector in this new graph. The inline SetCurrent body
   materializes in StageScript.cpp from AnmManager.hpp; its full old contract
   uses that explicitly verified PDB owner here. Original recipes remain separate.
-- Default camera remains282/287 and instance rendering remains nonexact. The
-  current warm Stage graph is `.analysis/gpt-6.1-sol/stage-early-context-20261029/final-context.json`.
+- At that checkpoint default camera remained282/287 and instances were nonexact;
+  instances are now592 exact above. That warm graph was
+  `.analysis/gpt-6.1-sol/stage-early-context-20261029/final-context.json`.
   Do not reuse older Main/header pins blindly. Original classes/TUs, physical
   global alias storage and product/runtime/portability closure remain independent.
-- Next coherent medium/large lead is the actual592-byte instance renderer or
-  its1984-byte bounds callee. Recheck current complete bodies/real ABI before
+- The instance renderer lead is now closed above; its remaining dependency is
+  the1984-byte bounds callee. Recheck current complete bodies/real ABI before
   treating old size or decompiler notes as facts. The Main fog/device and camera
   activation operations are now available; retain the exact early/late callers
   while recovering their shared dependency. Do not reopen byte-neutral controls
@@ -90,9 +129,8 @@ Latest [complete Stage late draw proof](evidence/stage-late-context-20261029/REA
   plus camera/viewport/fog are the four canonical cold selectors. No unrelated
   Main/WinMain cohort is rebuilt solely for new unused header methods.
 - At the late checkpoint Early was1088/1099; it is now exact above. Default
-  camera282/287 is NONEXACT. Instance drawing
-  remains nonexact; Late's four real two-stack-argument/RET8 calls bind its
-  address/ABI only. Global alias/data ownership and later phases remain open.
+  camera282/287 is NONEXACT. Instance drawing is now592 exact above; Late's four
+  real two-stack-argument/RET8 calls bind its address/ABI in the old recipe. Global alias/data ownership and later phases remain open.
 - The then-open Early visibility lead is closed above: actual43C8B0 uses EBX priority
   and five stack operands/RET20. Its genuine maintained82-byte definition is
   absent from this ten-input graph. Connect real callee visibility and compare
