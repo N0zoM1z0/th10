@@ -1,4 +1,5 @@
 #include "Main.hpp"
+#include "ResultMenu.hpp"
 #include "EnemyGameState.hpp"
 #include "Enemy.hpp"
 #include "EnemyCancel.hpp"
@@ -236,7 +237,8 @@ float PlayerAngleToPoint(Player *player, const PlayerFloat3 *point)
         return 1.5707964f;
     return (float)atan2(dy, dx);
 }
-void PlayerFallbackRuntimeTransition();
+struct GameChainOwnerView;
+extern GameChainOwnerView *g_GameOwner477830;
 // Target 0x427B50 scans 32 usable rows; exhaustion returns row 32 unchanged.
 PlayerEffectRowView *Player::SpawnEffectRow(
     const PlayerFloat3 *position,
@@ -1856,8 +1858,8 @@ int Player::CalculateDamageToTarget(
     return damage;
 }
 
-// Target 0x00425730-0x00426340 receives the Player owner on the stack and owns
-// the complete update state machine. PlayerUpdateCallback is its separately
+// Target 0x00425730-0x00426357 receives the Player owner on the stack and owns
+// the complete update state machine and its state table. PlayerUpdateCallback is its separately
 // retained ECX-bound chain adapter at 0x00426500.
 int __stdcall PlayerUpdateCallbackBody(Player *player)
 {
@@ -1946,7 +1948,7 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             g_PlayerDrawGate9EB8->value9EB8 == 0 &&
             g_PlayerUpdateGate28 != NULL &&
             g_PlayerUpdateGate28->value28 == 0 &&
-            g_PlayerPower / 20 != 0 &&
+            static_cast<short>(g_PlayerPower / 20) != 0 &&
             (g_PlayerInputBits & 2) != 0)
         {
             reinterpret_cast<AnmVmTimerView *>(&player->highlightTimer)->SetCurrent(0x10e);
@@ -1992,7 +1994,7 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         {
             if (g_PlayerUpdateGate28 != NULL &&
                 g_PlayerUpdateGate28->value28 == 0 &&
-                g_PlayerPower / 20 != 0 &&
+                static_cast<short>(g_PlayerPower / 20) != 0 &&
                 (g_PlayerInputBits & 2) != 0)
             {
                 reinterpret_cast<AnmVmTimerView *>(&player->updateTimer1)->SetCurrent(0x3c);
@@ -2026,12 +2028,14 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             float angle = PlayerAngleToPoint(player, &target);
             for (i = 0; i < 7; ++i)
             {
+                float itemAngle =
+                    (float)i * 0.11219973862171173f + angle -
+                        0.39269909262657166f;
                 int kind = (i == 1 || i == 3 || i == 5) ? 4 : 1;
                 g_ItemManager->Spawn(
                     reinterpret_cast<const AnmFloat3View *>(&player->drawPosition),
                     kind, 0x00ffffff,
-                    (float)i * 0.11219973862171173f + angle -
-                        0.39269909262657166f,
+                    itemAngle,
                     3.0f);
             }
             RebuildPlayerOptions(player);
@@ -2041,10 +2045,11 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         {
             if (g_PlayerRuntimeGateValue < 0)
             {
-                if (g_PlayerUpdateGate10->value10 == 1)
-                    g_MainSupervisorView.SetNextGameMode(4);
+                if (g_PlayerUpdateGate10->value10 != 1)
+                    ResultMenuOpenGameOver(
+                        reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
                 else
-                    PlayerFallbackRuntimeTransition();
+                    g_MainSupervisorView.SetNextGameMode(4);
             }
             else
             {
@@ -2107,7 +2112,7 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         row->angle += row->angleDelta;
 
         motion.timer.Subtract(1.0f);
-        if (motion.timer.current < 1)
+        if (motion.timer.current <= 0)
             motion.activeFlags &= ~1u;
     }
 

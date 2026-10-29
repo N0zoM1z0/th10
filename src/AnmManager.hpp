@@ -1100,7 +1100,7 @@ struct AnmRenderManagerView
     int UpdatePrimaryVms();
     int UpdateSecondaryVms();
     int DrawLayer(int layer);
-    int RequestCaptureRectangle(int id, int x, int y, int width, int height);
+    int RequestCaptureRectangle(AnmVmIdView id, int x, int y, int width, int height);
     AnmVmView *AllocateVm();
     AnmVmIdView AddVmVariant0(AnmVmView *vm);
     AnmVmIdView AddVmVariant1(AnmVmView *vm);

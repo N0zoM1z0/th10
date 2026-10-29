@@ -31,7 +31,8 @@ typedef char ResultMenuFlagsAt1E0[(offsetof(ResultMenuView,nameIndex)==0x1e0 && 
 typedef char ResultMenuFilesAt1EC[(offsetof(ResultMenuView,replayFiles)==0x1ec)?1:-1];
 typedef char ResultMenuNameAt2B4[(offsetof(ResultMenuView,name)==0x2b4 && offsetof(ResultMenuView,savedSpeed)==0x2c0)?1:-1];
 typedef char ResultMenuPauseFields[(offsetof(ResultMenuView,auxiliaryVm)==0x1dc && offsetof(ResultMenuView,frontAnm)==0x2c4 && sizeof(ResultMenuView)==0x2c8)?1:-1];
-// Logical interface for target 0x423370; native EDI receiver remains open.
+// Result openings at 0x4231D0/0x423370; LTCG supplies the private EDI receiver.
+void ResultMenuOpenGameOver(ResultMenuView *menu);
 void GameCompleteStageTransition(ResultMenuView *menu);
 void __stdcall ResultMenuUpdateResult(ResultMenuView *menu);
 int ResultMenuUpdate(ResultMenuView *menu);

@@ -2,15 +2,32 @@
 
 ## Current checkpoint
 
-The complete Player main owner is now reviewed3112 bytes:3089 code,3 unreachable
-LEA-alignment bytes and its20-byte five-state table. The old3089 code-only
-comparison excluded owned data. Fourteen-input Player-entry /GL source emits
-3064/3112, still nonexact; a full14-source cold with zero reuse reproduces all3064
-native bytes/all109 fields. Target review counts112 fields; the three count gaps
-are two scaled-decrement multiply-by-one fields and the fallback owner477830.
-Other registers, guards and scheduling also remain open. The real entry restores
-the stack/RET4 interface and seven-byte adapter. See the
-[complete owner and callee evidence](evidence/player-update-owner-20261030/README.md).
+Two complete result openings are newly exact in two independent canonical15-input
+/GL colds: ResultMenuOpenGameOver4231D0/411 and
+GameCompleteStageTransition423370/411, **822 authored bytes/all56 fields**.
+Each retains all3 fixed local branches and natural EDI receiver/plainRET.
+Real CreateVmVariant1 calls and typed AnmVmIdView capture restore the shared
+four-byte result slot and five-stack-value capture ABI. Fresh instruction counts
+are102/103, correcting the old isolated pilot's108 game-over count. Capture162
+itself stays nonexact. See the [result and main-caller proof](evidence/player-main-callees-20261030/README.md).
+
+The complete Player main remains3112 owned bytes:3089 code,3 alignment bytes
+and its20-byte five-state table. Real fallback owner477830 restores EBP Player,
+target1C frame/save order and the missing owner field. Short power guards,
+preselected item angle, zero timer guard and fallback block order restore more
+instructions. Native3080/3112/all110 fields is cold-reproducible in the15-input
+initializer-entry context; target112 fields includes two still-missing FMUL-one
+fields. History/motion/vector scheduling and alignment remain nonexact. No main
+credit. The preceding14-input Player-entry source epoch was3064/all109; its
+[ownership review](evidence/player-update-owner-20261030/README.md) still defines
+all3112 bytes, including each fixed table destination.
+
+Twenty-one same-image exact bodies pass2508/all60; nine old nonexact candidates,
+including destructor262, retain their complete bytes/field identities. Selected
+old canonical owners pass1386/all30; with the new pair,11 selected units pass
+2208/all86. Separate-/GL-TU, reference/integer decrement and operand-order controls
+are neutral and reverted; extra Gui callers are neutral and omitted. Do not repeat
+those controls without new evidence. Native product/runtime/portability remain open.
 
 Complete397-byte StartPowerTransition source is newly mapped,397/397 nonexact.
 Its actual spell-bonus helper405500 is81 raw bytes exact in two independent
@@ -45,8 +62,8 @@ pass2091/all53; ten previous candidates remain byte/field-identical. See the
 PlayerEmitShotRows428160 remains complete105/all2 exact in its existing
 three-input Player-constructor recipe and passes the current scoped cold.
 Its input174 caller stays exact in the12-source recipe. The main source now emits
-3064 in14 inputs, against the corrected complete3112-byte owner. Older2820/3089
-statements describe the preceding native/code-only target epochs. The [preceding source proof](evidence/player-shot-producer-20261030/README.md)
+3080 in15 inputs, against the corrected complete3112-byte owner. Older3064/14-input
+and2820/3089 statements describe preceding native/code-only target epochs. The [preceding source proof](evidence/player-shot-producer-20261030/README.md)
 retains its original source epoch.
 
 PlayerUpdateShots428280 now emits the complete876-byte owner, versus738 at
@@ -90,12 +107,12 @@ constructor188, Initialize522, destructor499, StageCreate151 and LoadData308.
 All1668 bytes/all91 fields pass. This adds1480 authored exact bytes; constructor
 origin remains indeterminate. See the [complete proof](evidence/stage-initialize-context-20261029/README.md).
 
-Current generated [progress](PROGRESS.md): **97,802/275,752 authored owned bytes
-exact,487 authored exact owners**. Total1363 exact owners/165,899 codegen bytes;
-1204 mappings,686 authored mappings,199 authored mapped backlog. Inventory and
+Current generated [progress](PROGRESS.md): **98,624/275,752 authored owned bytes
+exact,489 authored exact owners**. Total1365 exact owners/166,721 codegen bytes;
+1205 mappings,687 authored mappings,198 authored mapped backlog. Inventory and
 whole-product/runtime/portability closure remain separate and incomplete.
 
-The affected old selection passes14 units/2262 bytes/all156 fields in its existing
+The preceding Stage/Chain selection passed14 units/2262 bytes/all156 fields in its existing
 recipes. It includes the actual Chain interface callers, camera330, Update304
 and MainClearPresentTwice135. The900-second multi-recipe batch stopped in its
 last FrontEnd build; seven completed units were revalidated from frozen native

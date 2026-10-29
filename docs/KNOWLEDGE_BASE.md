@@ -7543,3 +7543,43 @@ ordinary bytes and complete field identities. The14-input diagnostic emits707
 for the producer; its accepted12-input717/all17 recipe passes the current cold.
 No full-cohort replay or parent/product/runtime/portability closure follows.
 See the [complete owner evidence](evidence/player-update-owner-20261030/README.md).
+
+
+## 2026-10-30 Exact game-over/completion openings and real Player fallback
+
+Complete4231D0..42336A and423370..42350A are each411 bytes exact in two independent
+canonical15-input /GL cold links:822 newly exact authored bytes/all56 fields and
+all6 fixed locals. Fresh complete target decode counts102/103 instructions;
+the isolated game-over pilot's108 count is wrong, while its boundary and authored
+origin remain valid. Both ordinary pointer bodies naturally receive EDI/RET.
+Each independently retains all18 DIR32 and10 REL32 fields, final RET and all3
+local branches. Game-over selects script128/completed0, completion129/1. Other
+capture/music/sound/profile/speed operations are inside the complete comparison.
+
+Real CreateVmVariant1 calls recover the four-byte reused VM-ID result slot.
+RequestCaptureRectangle now takes the existing AnmVmIdView value and passes it
+directly to FindVm. The old bare int introduced a conversion/temporary store;
+typed capture restores ESI manager/five stack values/RET20. Capture itself is
+162/162 nonexact because ordinary stores still differ; no capture-owner credit.
+Real Sound.cpp restores QueueCommand visibility, and the real InitializeVm entry
+preserves its observed ECX resource/two stack values/RET8. Pinned source profiles
+retain /GL unchanged; no fake ABI, padding, new options or normal-support claim.
+The15-input anchor image is diagnostic, not a runnable product.
+
+The main owner remains3112 including its five-entry table. Actual fallback from
+477830 restores EBP Player, target1C frame/save order and the missing global-load
+field. Short power quotient tests, precomputed item angles, zero timer guard and
+fallback branch order restore additional target instructions. Native3080/all110
+is fully reproduced by the first canonical cold, versus prior3064/all109; target
+has112 fields, with the two scaled FMUL-one fields still missing. Main remains
+nonexact. Its actual fallback is exact411, independently of the parent.
+
+Separate-/GL-TU Subtract, const-reference/integer parameter and scale/value operand
+controls are byte-neutral and reverted. Adding real Gui callers is neutral and
+omitted. A named VM-ID result variable emits415; real creation plus typed capture
+closes411 instead. Park these controls until a new prediction distinguishes them.
+Nine previous native candidates retain bytes/field identities;21 same-image exact
+bodies pass2508/all60. Nine selected old canonical owners pass1386/all30; the full
+current selection including the new pair is11 units/2208/all86, not a cohort.
+No origin change, target-byte ownership expansion, whole-product, runtime or
+portability claim follows. See the [complete proof](evidence/player-main-callees-20261030/README.md).
