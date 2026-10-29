@@ -440,12 +440,12 @@ int HintOwnerView::Initialize()
     th10::ChainElem *element = th10::Chain::AllocElem(OnUpdate);
     element->arg = this;
     element->flags &= ~2u;
-    th10::Chain::AddToCalcChain(element, 25, th10::g_Chain);
+    th10::g_Chain->AddToCalcChain(element, 25);
     updateChain = element;
     element = th10::Chain::AllocElem(OnDraw);
     element->arg = this;
     element->flags &= ~2u;
-    th10::Chain::AddToDrawChain(element, 44, th10::g_Chain);
+    th10::g_Chain->AddToDrawChain(element, 44);
     drawChain = element;
     counter10 = 0;
     if (g_MainSupervisorView.configuration.hintMode != 0)

@@ -1486,7 +1486,7 @@ typedef long (__stdcall *MainD3d9ClearForScreenColor)(
 static void MainClearPresentTwice(unsigned int color)
 {
     MainD3d9DeviceView *device = g_MainSupervisorView.d3dDevice;
-    reinterpret_cast<MainD3d9ClearForScreenColor>(device->vtable->slot0AC)(
+    reinterpret_cast<MainD3d9ClearForScreenColor>(device->vtable->Clear)(
         device, 0, NULL, 3, color, 1.0f, 0);
     device = g_MainSupervisorView.d3dDevice;
     if (device->vtable->Present(device, NULL, NULL, NULL, NULL) < 0)
@@ -1496,7 +1496,7 @@ static void MainClearPresentTwice(unsigned int color)
     }
 
     device = g_MainSupervisorView.d3dDevice;
-    reinterpret_cast<MainD3d9ClearForScreenColor>(device->vtable->slot0AC)(
+    reinterpret_cast<MainD3d9ClearForScreenColor>(device->vtable->Clear)(
         device, 0, NULL, 3, color, 1.0f, 0);
     device = g_MainSupervisorView.d3dDevice;
     if (device->vtable->Present(device, NULL, NULL, NULL, NULL) < 0)

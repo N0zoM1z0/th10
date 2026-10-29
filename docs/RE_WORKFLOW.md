@@ -66,7 +66,9 @@ host simulation suites, fixtures and mutation runners were removed on 2026-10-28
 Their historical reports and commands are recoverable at `e1c4075`; the earlier
 construction/lifecycle suites are recoverable at `47d9993`. Retained arithmetic,
 layout and inventory diagnostics are optional tools for concrete mismatches.
-Archived evidence commands do not impose current requirements.
+Archived evidence commands do not impose current requirements. In particular,
+`config/transition-effect-host-inputs.json` is retired provenance; ordinary exact
+work must not refresh its old pins or treat it as an acceptance gate.
 
 A docs/test-maintenance batch needs no game rebuild, Ghidra call, cold replay,
 whole-build graph validation or unchanged progress regeneration. Run only the

@@ -45,14 +45,14 @@ downloaded tools are private and never committed.
 ## Current status
 
 New agents should start with [the current handoff](docs/RE_HANDOFF.md). It
-summarizes the accepted baseline, pending experiment and retained local artifacts.
+summarizes current exact owners, remaining work and the retained working context.
 
 The tracked function candidates have reviewed boundaries and origins, but some
 origins remain indeterminate and unresolved `.text` gaps can still change the
 inventory. Maintained source and canonical exact units are tracked separately;
 see the generated [`docs/PROGRESS.md`](docs/PROGRESS.md) for live counts. The
-whole Windows i386 build graph is still open, and semantic reconstruction and
-portability have not started.
+whole Windows i386 build graph, runtime/semantic acceptance and portability
+remain open.
 
 After changing a function, origin, mapping, implementation, or match ledger,
 regenerate the committed progress artifacts before committing. Public CI checks
@@ -83,7 +83,7 @@ remain open.
 Use `scripts/repo-python` for repository Python commands. It selects an
 interpreter only when its Capstone package matches all four hashes in
 `config/tools.lock.toml`; this avoids the system Python/Conda decoder mismatch
-in Web shells without changing the decoder lock. A Factory shell may expose the
+in Web shells without changing the decoder lock. A local environment may expose the
 ignored `.tools/capstone` Python-package root; the wrapper prepends that root
 only for a candidate execution and still verifies the same four locked files
 before running the requested command.
@@ -101,8 +101,8 @@ scripts/repo-python scripts/replay-exact-units.py \
   --unit anm-evaluate-rgb-interpolation --unit anm-int3-scale
 ```
 
-Canonical units that share one source, compiler profile, and artifact context
-are built once. The replay command cold-builds each normal-COFF object or LTCG
+Selected units sharing the same complete build recipe use one cold artifact.
+Sharing a source or header does not require replaying every consumer. The replay command cold-builds each normal-COFF object or LTCG
 linked image and checks every selected function against the target. COFF units
 declare relocations; linked-PE units declare every link-resolved code field.
 Select the affected units for a bounded change; omitting selectors rebuilds

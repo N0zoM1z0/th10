@@ -196,6 +196,23 @@ If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent
 completion.
 
+## Stage array-member EH address binding
+
+The explicit `stage_array_eh_handler = true` descriptor is restricted to the
+reviewed StageScriptView constructor188 and destructor499, including their exact
+parent symbols, target entries/extents, field offsets and handler addresses.
+The complete37/64-byte generated regions must share the parent's qualified
+StageLifecycle PDB object and unique MAP handler entry. Their four/six fields,
+immutable28-byte FuncInfo, one/two unwind rows, predecessor edges, saved this at
+EBP+4, array offsets180/1F08, counts8/3 and stride3AC are checked in both images.
+The VM destructor must be a real uniquely qualified34-byte AnmManager contribution;
+its full bytes and sole free field are independently bound. Vector-destructor
+and CxxFrameHandler entries are also checked. This is address/metadata identity,
+not generated-code credit or exception execution. See the
+[Stage lifecycle proof](evidence/stage-initialize-context-20261029/README.md).
+Only the affected Stage array-binding self-test is added to the optional Oracle
+selection; unrelated comparison mechanisms retain their current contracts.
+
 ## Validation scope during exact reconstruction
 
 The current checkpoint Oracle is the affected complete native byte comparison,

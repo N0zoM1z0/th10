@@ -59,8 +59,7 @@ struct StageCameraStateView
     AnmFloat3View up;
     AnmFloat3View normalizedDirection;
     AnmFloat3View cameraRight;
-    float rockingOffset;
-    float rockingOffsetY, rockingOffsetZ;
+    AnmFloat3View rockingOffset;
     float value048;
     AnmMatrixView viewMatrix, projectionMatrix;
     AnmViewportView viewport;
@@ -162,6 +161,7 @@ typedef char StageScriptLayoutChecks[
      offsetof(StageFogInterpolationView, duration) == 0x84 &&
      sizeof(StageCameraStateView) == 0x118 &&
      offsetof(StageCameraStateView, cameraRight) == 0x30 &&
+     offsetof(StageCameraStateView, rockingOffset) == 0x3c &&
      offsetof(StageCameraStateView, value0E8) == 0xe8 &&
      offsetof(StageCameraStateView, value0EC) == 0xec &&
      offsetof(StageCameraStateView, viewMatrix) == 0x4c &&

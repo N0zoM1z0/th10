@@ -2098,13 +2098,13 @@ int GuiView::Initialize()
     task->flags &= ~2u;
     th10::Chain *chain = th10::g_Chain;
     task->arg = this;
-    th10::Chain::AddToCalcChain(task, 0x18, chain);
+    chain->AddToCalcChain(task, 0x18);
     updateCallback = task;
     task = th10::Chain::AllocElem(GuiDrawCallback);
     task->flags &= ~2u;
     chain = th10::g_Chain;
     task->arg = this;
-    th10::Chain::AddToDrawChain(task, 0x2b, chain);
+    chain->AddToDrawChain(task, 0x2b);
     drawCallback = task;
     return 0;
 }

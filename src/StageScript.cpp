@@ -198,7 +198,7 @@ updateInterpolations:
         switch (stage->rockingMode)
         {
         case 1:
-            stage->camera.rockingOffset = static_cast<float>(
+            stage->camera.rockingOffset.x = static_cast<float>(
                 sin(stage->rockingTimer.subframe * 0.012271846644580364f - 3.1415927410125732f) * -100.0f);
             stage->rockingTimer.Tick();
             if (stage->rockingTimer.current >= 512)

@@ -19,13 +19,13 @@ int EnemyLaserManagerStorageView::Initialize()
     task->flags &= ~2u;
     th10::Chain *chain = th10::g_Chain;
     task->arg = this;
-    th10::Chain::AddToCalcChain(task, 0x13, chain);
+    chain->AddToCalcChain(task, 0x13);
     updateTask = task;
     task = th10::Chain::AllocElem(EnemyLaserDrawCallback);
     task->flags &= ~2u;
     chain = th10::g_Chain;
     task->arg = this;
-    th10::Chain::AddToDrawChain(task, 0x1b, chain);
+    chain->AddToDrawChain(task, 0x1b);
     drawTask = task;
     tail = reinterpret_cast<EnemyLaserCommonStorageView *>(&sentinel);
     return 0;

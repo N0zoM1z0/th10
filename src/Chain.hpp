@@ -55,8 +55,8 @@ struct Chain
     }
 
     __declspec(noinline) static ChainElem * __stdcall AllocElem(ChainCallback callback);
-    __declspec(noinline) static int __stdcall AddToCalcChain(ChainElem *elem, int prio, Chain *chain);
-    __declspec(noinline) static int __stdcall AddToDrawChain(ChainElem *elem, int prio, Chain *chain);
+    __declspec(noinline) int AddToCalcChain(ChainElem *elem, int prio);
+    __declspec(noinline) int AddToDrawChain(ChainElem *elem, int prio);
     void UnregisterElem(ChainElem *elem);
     static void __stdcall RemoveAllFromList(unsigned char *listBase, Chain *chain);
     static ChainElem *__stdcall RegisterCalc(void *arg, int prio, ChainCallback callback);

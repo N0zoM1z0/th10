@@ -101,12 +101,12 @@ int StartupWorkerView::RegisterTasks()
     th10::ChainElem *element = th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(OnUpdate));
     element->flags &= ~2u;
     element->arg = this;
-    th10::Chain::AddToCalcChain(element, 3, th10::g_Chain);
+    th10::g_Chain->AddToCalcChain(element, 3);
     calcElement = element;
     element = th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(OnDraw));
     element->flags &= ~2u;
     element->arg = this;
-    th10::Chain::AddToDrawChain(element, 2, th10::g_Chain);
+    th10::g_Chain->AddToDrawChain(element, 2);
     drawElement = element;
     ScriptViewerWorkerView &threadWorker = worker;
     threadWorker.Stop();

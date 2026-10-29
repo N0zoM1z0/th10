@@ -1,4 +1,6 @@
 {
+  "current_role": "historical provenance only",
+  "retirement_note": "Host simulation suites were removed on2026-10-28. No active exact-stage Python workflow consumes these source pins. Preserve their original epochs; do not refresh them for ordinary exact work. Historical reproduction plans belong to their pinned commits.",
   "schema_version": 2,
   "normalization": "crlf-to-lf-only",
   "committed_base": "67ced17fff5dfe758a33000b3f83c92002187373",

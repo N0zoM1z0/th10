@@ -72,12 +72,12 @@ int SptTestView::RegisterTasks()
     th10::ChainElem *task = th10::Chain::AllocElem(SptTestUpdateCallback);
     task->flags |= 2;
     task->arg = this;
-    th10::Chain::AddToCalcChain(task, 5, th10::g_Chain);
+    th10::g_Chain->AddToCalcChain(task, 5);
     updateTask = task;
     task = th10::Chain::AllocElem(SptTestDrawCallback);
     task->flags |= 2;
     task->arg = this;
-    th10::Chain::AddToDrawChain(task, 0x27, th10::g_Chain);
+    th10::g_Chain->AddToDrawChain(task, 0x27);
     drawTask = task;
     return 0;
 }

@@ -45,9 +45,9 @@ void StageCameraStateView::ConfigureCamera()
     AnmFloat3View at(this->direction.x + this->position.x,
         this->direction.y + this->position.y,
         this->direction.z + this->position.z);
-    AnmFloat3View eye(this->rockingOffset + this->position.x,
-        this->rockingOffsetY + this->position.y,
-        this->rockingOffsetZ + this->position.z);
+    AnmFloat3View eye(this->rockingOffset.x + this->position.x,
+        this->rockingOffset.y + this->position.y,
+        this->rockingOffset.z + this->position.z);
     D3DXMatrixLookAtLH(&this->viewMatrix, &eye, &at, &this->up);
     D3DXMatrixPerspectiveFovLH(&this->projectionMatrix, this->value048,
         static_cast<float>(this->viewport.width) /
@@ -78,9 +78,9 @@ int StageObjectView::BoundsCulled(const AnmFloat3View *position,
     AnmFloat3View corners[8];
     AnmFloat3View &delta = corners[0];
     delta = this->position + *position;
-    AnmFloat3View eye(camera->position.x + camera->rockingOffset,
-        camera->position.y + camera->rockingOffsetY,
-        camera->position.z + camera->rockingOffsetZ);
+    AnmFloat3View eye(camera->position.x + camera->rockingOffset.x,
+        camera->position.y + camera->rockingOffset.y,
+        camera->position.z + camera->rockingOffset.z);
     delta = delta - eye;
     // In this pinned graph the ordinary XYZ dot expression evaluates Z,Y,X,
     // matching the target x87 accumulation; host reassociation is not proof.

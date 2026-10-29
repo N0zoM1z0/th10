@@ -1,0 +1,2105 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_codegen_exact_bytes": 1668,
+  "new_authored_exact_bytes": 1480,
+  "new_exact_owners": 5,
+  "new_authored_exact_owners": 4,
+  "new_source_mappings": 0,
+  "authored_denominator_change": 0,
+  "constructor_origin": "indeterminate; preserved",
+  "contracts": {
+    "stage-lifecycle-initialize": {
+      "bytes": 522,
+      "target_address": "0x402230",
+      "field_count": 21,
+      "contract_sha256": "1081f7594f4a90e437aa47bc9bfc4016d448def62dfa3edebf286f3ea6c58106"
+    },
+    "stage-lifecycle-load-data": {
+      "bytes": 308,
+      "target_address": "0x403850",
+      "field_count": 11,
+      "contract_sha256": "b96a88de39887cad492e9dd93c14138bb077e23ade40d815efcd92b3330d6bb9"
+    },
+    "stage-lifecycle-create": {
+      "bytes": 151,
+      "target_address": "0x402640",
+      "field_count": 10,
+      "contract_sha256": "c36d7d99e4e1c5695d443045d22336fb627f45b096c4dae555c2ae766b720267"
+    },
+    "stage-lifecycle-constructor": {
+      "bytes": 188,
+      "target_address": "0x402160",
+      "field_count": 10,
+      "contract_sha256": "b2ecec11a534f2c9ab6d5dba54f3b2bbf9982423966af8d8612ca0db71694fe6"
+    },
+    "stage-lifecycle-destructor": {
+      "bytes": 499,
+      "target_address": "0x402440",
+      "field_count": 39,
+      "contract_sha256": "5baf5621490f880c93a895f9286d1789fafbeea3d419f720c72941ec70c0c427"
+    }
+  },
+  "canonical_graph": {
+    "source": "src/StageScript.cpp",
+    "support_sources": [
+      "src/StageLifecycle.cpp",
+      "src/StageDraw.cpp",
+      "src/Chain.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/FileSystem.cpp",
+      "src/MainViewport.cpp",
+      "src/TransitionEffect.cpp",
+      "src/GameErrorContext.cpp",
+      "src/PbgArchive.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_profiles": {
+      "src/TransitionEffect.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/GameErrorContext.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/StageLifecycle.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ]
+    },
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+    "pdb_source": "src/StageLifecycle.cpp"
+  },
+  "frozen_inputs": {
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.cpp": "6fc26a2ce9a19841a13ed5fa4d9421e44959ead5e77652a2baf9d06272ec14d3",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageDraw.cpp": "63ea9f8943d05c42fd0e2a57c444d585c86d2ca4673617a2081e201a78e739c5",
+    "src/StageLifecycle.cpp": "dff4a52c4f41f0e8a478d9753d1d54a957dcd314cc9d83c9436c66e98fed0558",
+    "src/StageScript.cpp": "a58debfc20987e007072f9ca13e919b770eb83bd1ca05f737a78ba1c4e636f3e",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e"
+  },
+  "target_review": {
+    "stage-lifecycle-initialize": {
+      "address": "0x402230",
+      "size": 522,
+      "sha256": "b1046bb3e73ae16e093ab36086f6bbc146a4556df9fa09fc3dd1079e0a5fc191",
+      "instruction_count": 133,
+      "fixed_local_branches": [
+        {
+          "offset": 14,
+          "destination_offset": 24,
+          "size": 2,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 22,
+          "destination_offset": 30,
+          "size": 2,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 49,
+          "destination_offset": 81,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 443,
+          "destination_offset": 471,
+          "size": 2,
+          "mnemonic": "jne"
+        }
+      ],
+      "returns": [
+        {
+          "offset": 78,
+          "pop_bytes": 4
+        },
+        {
+          "offset": 519,
+          "pop_bytes": 4
+        }
+      ],
+      "field_count": 21
+    },
+    "stage-lifecycle-load-data": {
+      "address": "0x403850",
+      "size": 308,
+      "sha256": "4a307c69f4e68477e240ca84db063d16995c9d8f61342e849ea745c83129ca71",
+      "instruction_count": 102,
+      "fixed_local_branches": [
+        {
+          "offset": 10,
+          "destination_offset": 99,
+          "size": 2,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 37,
+          "destination_offset": 32,
+          "size": 2,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 54,
+          "destination_offset": 48,
+          "size": 2,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 97,
+          "destination_offset": 203,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 183,
+          "destination_offset": 211,
+          "size": 2,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 244,
+          "destination_offset": 273,
+          "size": 2,
+          "mnemonic": "jle"
+        },
+        {
+          "offset": 271,
+          "destination_offset": 246,
+          "size": 2,
+          "mnemonic": "jl"
+        }
+      ],
+      "returns": [
+        {
+          "offset": 208,
+          "pop_bytes": 4
+        },
+        {
+          "offset": 305,
+          "pop_bytes": 4
+        }
+      ],
+      "field_count": 11
+    },
+    "stage-lifecycle-create": {
+      "address": "0x402640",
+      "size": 151,
+      "sha256": "f843522738e31b441c3861ffaa902d7ab068995bba1e1bf9890be7a8d228a9d6",
+      "instruction_count": 46,
+      "fixed_local_branches": [
+        {
+          "offset": 50,
+          "destination_offset": 62,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 60,
+          "destination_offset": 64,
+          "size": 2,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 90,
+          "destination_offset": 131,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 94,
+          "destination_offset": 111,
+          "size": 2,
+          "mnemonic": "je"
+        }
+      ],
+      "returns": [
+        {
+          "offset": 128,
+          "pop_bytes": 8
+        },
+        {
+          "offset": 148,
+          "pop_bytes": 8
+        }
+      ],
+      "field_count": 10
+    },
+    "stage-lifecycle-constructor": {
+      "address": "0x402160",
+      "size": 188,
+      "sha256": "bfa9201af288d4c142b8bc715a4cf047a2b0d82f0d4332392e45a96b135f633c",
+      "instruction_count": 50,
+      "fixed_local_branches": [],
+      "returns": [
+        {
+          "offset": 185,
+          "pop_bytes": 4
+        }
+      ],
+      "field_count": 10
+    },
+    "stage-lifecycle-destructor": {
+      "address": "0x402440",
+      "size": 499,
+      "sha256": "69a2c110bd16e7b8442fa5da39390df8d9a55eb47fc17b6e70ac7af17cec2fb5",
+      "instruction_count": 125,
+      "fixed_local_branches": [
+        {
+          "offset": 64,
+          "destination_offset": 103,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 118,
+          "destination_offset": 157,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 175,
+          "destination_offset": 214,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 219,
+          "destination_offset": 237,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 245,
+          "destination_offset": 266,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 284,
+          "destination_offset": 305,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 312,
+          "destination_offset": 381,
+          "size": 2,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 326,
+          "destination_offset": 381,
+          "size": 2,
+          "mnemonic": "js"
+        },
+        {
+          "offset": 331,
+          "destination_offset": 381,
+          "size": 2,
+          "mnemonic": "jae"
+        },
+        {
+          "offset": 355,
+          "destination_offset": 381,
+          "size": 2,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 387,
+          "destination_offset": 399,
+          "size": 2,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 405,
+          "destination_offset": 417,
+          "size": 2,
+          "mnemonic": "jne"
+        }
+      ],
+      "returns": [
+        {
+          "offset": 496,
+          "pop_bytes": 4
+        }
+      ],
+      "field_count": 39
+    }
+  },
+  "witnesses": [
+    {
+      "label": "cold-a",
+      "artifact_directory": "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-a",
+      "image_sha256": "870f26e30393cd896b491e2f273d96df3201ed9928cff0940e1f15a75440f77f",
+      "pdb_guid": "ea0f6d536f6cc3479d9f4df7e52268af",
+      "pdb_age": 1,
+      "matched_bytes": 1668,
+      "fields": 91,
+      "units": [
+        {
+          "unit": "stage-lifecycle-initialize",
+          "result": "exact",
+          "size": 522,
+          "matched_bytes": 522,
+          "field_count": 21,
+          "candidate_address": "0x00402130",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "aa372f7d08c4f0e97f9e7617e701b7ea5ddf78c47417f54f869024cb9f92517c",
+          "message_payloads": [
+            {
+              "offset": "0x34",
+              "bytes": 55,
+              "sha256": "61decbdc328f0bc7b2775f5e3e63c638631c75f926e55f3a9d7220d083a15304",
+              "raw_equal": true
+            }
+          ],
+          "eh_bindings": []
+        },
+        {
+          "unit": "stage-lifecycle-load-data",
+          "result": "exact",
+          "size": 308,
+          "matched_bytes": 308,
+          "field_count": 11,
+          "candidate_address": "0x00401FF0",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "d3668df459b2bfb9b1ac35c6acedb2046ba3b9996a97ae009aa3f5fe57f20145",
+          "message_payloads": [
+            {
+              "offset": "0xBA",
+              "bytes": 55,
+              "sha256": "d95bc0ad70b480c9de3f5932561e0404a2058b2311d4f93f2e18f35e5d7cf13f",
+              "raw_equal": true
+            }
+          ],
+          "eh_bindings": []
+        },
+        {
+          "unit": "stage-lifecycle-create",
+          "result": "exact",
+          "size": 151,
+          "matched_bytes": 151,
+          "field_count": 10,
+          "candidate_address": "0x00402580",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "ebc570b939a090e1a8ee57a5fe4f342b42a98d259a68ee0c29a7ca844355d0c4",
+          "message_payloads": [],
+          "eh_bindings": [
+            {
+              "offset": "0x3",
+              "kind": "allocation_eh",
+              "proof": {
+                "symbol": "__ehhandler$?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+                "parent_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+                "pdb_module_index": 2,
+                "candidate": {
+                  "handler": "0x411eab",
+                  "unwind_action": "0x411ea0",
+                  "func_info": "0x41243c",
+                  "unwind_map": "0x412434",
+                  "saved_storage_offset": -16,
+                  "region_bytes": 21,
+                  "unwind_states": 1,
+                  "func_info_bytes": 28
+                },
+                "target": {
+                  "handler": "0x46588b",
+                  "unwind_action": "0x465880",
+                  "func_info": "0x471878",
+                  "unwind_map": "0x471870",
+                  "saved_storage_offset": -16,
+                  "region_bytes": 21,
+                  "unwind_states": 1,
+                  "func_info_bytes": 28
+                },
+                "authority": "address binding only; no generated-code/runtime credit"
+              }
+            }
+          ]
+        },
+        {
+          "unit": "stage-lifecycle-constructor",
+          "result": "exact",
+          "size": 188,
+          "matched_bytes": 188,
+          "field_count": 10,
+          "candidate_address": "0x00401F00",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "7a3ac025afcc6bd50e1b3243b8032656756dfcca5c12ab56c0172ea2fbc6c3cf",
+          "message_payloads": [],
+          "eh_bindings": [
+            {
+              "offset": "0x9",
+              "kind": "stage_array_eh",
+              "proof": {
+                "symbol": "__ehhandler$??0StageScriptView@@QAE@XZ",
+                "parent_symbol": "??0StageScriptView@@QAE@XZ",
+                "pdb_module_index": 2,
+                "candidate": {
+                  "handler": "0x411e8b",
+                  "func_info": "0x412418",
+                  "unwind_map": "0x412410",
+                  "unwind_states": 1,
+                  "region_bytes": 37,
+                  "func_info_bytes": 28,
+                  "saved_this_offset": 4,
+                  "actions": [
+                    {
+                      "state": 0,
+                      "predecessor": -1,
+                      "address": "0x411e70",
+                      "member_offset": 384,
+                      "count": 8,
+                      "stride": 940
+                    }
+                  ]
+                },
+                "target": {
+                  "handler": "0x46556b",
+                  "func_info": "0x4715d8",
+                  "unwind_map": "0x4715d0",
+                  "unwind_states": 1,
+                  "region_bytes": 37,
+                  "func_info_bytes": 28,
+                  "saved_this_offset": 4,
+                  "actions": [
+                    {
+                      "state": 0,
+                      "predecessor": -1,
+                      "address": "0x465550",
+                      "member_offset": 384,
+                      "count": 8,
+                      "stride": 940
+                    }
+                  ]
+                },
+                "generated_region_fields": 4,
+                "cleanup_owner": {
+                  "symbol": "??1AnmVmView@@QAE@XZ",
+                  "address": "0x0040BED0",
+                  "size": 34,
+                  "extent_source": "pdb-section-contribution",
+                  "section": ".text",
+                  "section_number": 1,
+                  "section_offset": 44752,
+                  "map_object": "support-03-AnmManager.ltcg.obj",
+                  "pdb_module_index": 4,
+                  "sha256": "0823ed5031f6a6bd9b0a670b5955e7c8a37d4466ebbde67e3a7382937a695ba8"
+                },
+                "cleanup_proof": {
+                  "bytes": 34,
+                  "fields": 1,
+                  "result": "exact"
+                },
+                "authority": "address binding only; no generated-code or runtime credit"
+              }
+            }
+          ]
+        },
+        {
+          "unit": "stage-lifecycle-destructor",
+          "result": "exact",
+          "size": 499,
+          "matched_bytes": 499,
+          "field_count": 39,
+          "candidate_address": "0x00402380",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "427fa41d1c946a2da16fd21a305c52ed960dd461299565903f0ac3cc521351f7",
+          "message_payloads": [],
+          "eh_bindings": [
+            {
+              "offset": "0x3",
+              "kind": "stage_array_eh",
+              "proof": {
+                "symbol": "__ehhandler$??1StageScriptView@@QAE@XZ",
+                "parent_symbol": "??1StageScriptView@@QAE@XZ",
+                "pdb_module_index": 2,
+                "candidate": {
+                  "handler": "0x411e66",
+                  "func_info": "0x4123f4",
+                  "unwind_map": "0x4123e4",
+                  "unwind_states": 2,
+                  "region_bytes": 64,
+                  "func_info_bytes": 28,
+                  "saved_this_offset": 4,
+                  "actions": [
+                    {
+                      "state": 0,
+                      "predecessor": -1,
+                      "address": "0x411e30",
+                      "member_offset": 384,
+                      "count": 8,
+                      "stride": 940
+                    },
+                    {
+                      "state": 1,
+                      "predecessor": 0,
+                      "address": "0x411e4b",
+                      "member_offset": 7944,
+                      "count": 3,
+                      "stride": 940
+                    }
+                  ]
+                },
+                "target": {
+                  "handler": "0x4652d6",
+                  "func_info": "0x471324",
+                  "unwind_map": "0x471314",
+                  "unwind_states": 2,
+                  "region_bytes": 64,
+                  "func_info_bytes": 28,
+                  "saved_this_offset": 4,
+                  "actions": [
+                    {
+                      "state": 0,
+                      "predecessor": -1,
+                      "address": "0x4652a0",
+                      "member_offset": 384,
+                      "count": 8,
+                      "stride": 940
+                    },
+                    {
+                      "state": 1,
+                      "predecessor": 0,
+                      "address": "0x4652bb",
+                      "member_offset": 7944,
+                      "count": 3,
+                      "stride": 940
+                    }
+                  ]
+                },
+                "generated_region_fields": 6,
+                "cleanup_owner": {
+                  "symbol": "??1AnmVmView@@QAE@XZ",
+                  "address": "0x0040BED0",
+                  "size": 34,
+                  "extent_source": "pdb-section-contribution",
+                  "section": ".text",
+                  "section_number": 1,
+                  "section_offset": 44752,
+                  "map_object": "support-03-AnmManager.ltcg.obj",
+                  "pdb_module_index": 4,
+                  "sha256": "0823ed5031f6a6bd9b0a670b5955e7c8a37d4466ebbde67e3a7382937a695ba8"
+                },
+                "cleanup_proof": {
+                  "bytes": 34,
+                  "fields": 1,
+                  "result": "exact"
+                },
+                "authority": "address binding only; no generated-code or runtime credit"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "cold-b",
+      "artifact_directory": "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-b",
+      "image_sha256": "bebec9de79e089e463436b8492c68a0052d0da582f4119a758535fc3f90ddb01",
+      "pdb_guid": "0873ffda3f20d04a81925743228c7539",
+      "pdb_age": 1,
+      "matched_bytes": 1668,
+      "fields": 91,
+      "units": [
+        {
+          "unit": "stage-lifecycle-initialize",
+          "result": "exact",
+          "size": 522,
+          "matched_bytes": 522,
+          "field_count": 21,
+          "candidate_address": "0x00402130",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "aa372f7d08c4f0e97f9e7617e701b7ea5ddf78c47417f54f869024cb9f92517c",
+          "message_payloads": [
+            {
+              "offset": "0x34",
+              "bytes": 55,
+              "sha256": "61decbdc328f0bc7b2775f5e3e63c638631c75f926e55f3a9d7220d083a15304",
+              "raw_equal": true
+            }
+          ],
+          "eh_bindings": []
+        },
+        {
+          "unit": "stage-lifecycle-load-data",
+          "result": "exact",
+          "size": 308,
+          "matched_bytes": 308,
+          "field_count": 11,
+          "candidate_address": "0x00401FF0",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "d3668df459b2bfb9b1ac35c6acedb2046ba3b9996a97ae009aa3f5fe57f20145",
+          "message_payloads": [
+            {
+              "offset": "0xBA",
+              "bytes": 55,
+              "sha256": "d95bc0ad70b480c9de3f5932561e0404a2058b2311d4f93f2e18f35e5d7cf13f",
+              "raw_equal": true
+            }
+          ],
+          "eh_bindings": []
+        },
+        {
+          "unit": "stage-lifecycle-create",
+          "result": "exact",
+          "size": 151,
+          "matched_bytes": 151,
+          "field_count": 10,
+          "candidate_address": "0x00402580",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "ebc570b939a090e1a8ee57a5fe4f342b42a98d259a68ee0c29a7ca844355d0c4",
+          "message_payloads": [],
+          "eh_bindings": [
+            {
+              "offset": "0x3",
+              "kind": "allocation_eh",
+              "proof": {
+                "symbol": "__ehhandler$?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+                "parent_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+                "pdb_module_index": 2,
+                "candidate": {
+                  "handler": "0x411eab",
+                  "unwind_action": "0x411ea0",
+                  "func_info": "0x41243c",
+                  "unwind_map": "0x412434",
+                  "saved_storage_offset": -16,
+                  "region_bytes": 21,
+                  "unwind_states": 1,
+                  "func_info_bytes": 28
+                },
+                "target": {
+                  "handler": "0x46588b",
+                  "unwind_action": "0x465880",
+                  "func_info": "0x471878",
+                  "unwind_map": "0x471870",
+                  "saved_storage_offset": -16,
+                  "region_bytes": 21,
+                  "unwind_states": 1,
+                  "func_info_bytes": 28
+                },
+                "authority": "address binding only; no generated-code/runtime credit"
+              }
+            }
+          ]
+        },
+        {
+          "unit": "stage-lifecycle-constructor",
+          "result": "exact",
+          "size": 188,
+          "matched_bytes": 188,
+          "field_count": 10,
+          "candidate_address": "0x00401F00",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "7a3ac025afcc6bd50e1b3243b8032656756dfcca5c12ab56c0172ea2fbc6c3cf",
+          "message_payloads": [],
+          "eh_bindings": [
+            {
+              "offset": "0x9",
+              "kind": "stage_array_eh",
+              "proof": {
+                "symbol": "__ehhandler$??0StageScriptView@@QAE@XZ",
+                "parent_symbol": "??0StageScriptView@@QAE@XZ",
+                "pdb_module_index": 2,
+                "candidate": {
+                  "handler": "0x411e8b",
+                  "func_info": "0x412418",
+                  "unwind_map": "0x412410",
+                  "unwind_states": 1,
+                  "region_bytes": 37,
+                  "func_info_bytes": 28,
+                  "saved_this_offset": 4,
+                  "actions": [
+                    {
+                      "state": 0,
+                      "predecessor": -1,
+                      "address": "0x411e70",
+                      "member_offset": 384,
+                      "count": 8,
+                      "stride": 940
+                    }
+                  ]
+                },
+                "target": {
+                  "handler": "0x46556b",
+                  "func_info": "0x4715d8",
+                  "unwind_map": "0x4715d0",
+                  "unwind_states": 1,
+                  "region_bytes": 37,
+                  "func_info_bytes": 28,
+                  "saved_this_offset": 4,
+                  "actions": [
+                    {
+                      "state": 0,
+                      "predecessor": -1,
+                      "address": "0x465550",
+                      "member_offset": 384,
+                      "count": 8,
+                      "stride": 940
+                    }
+                  ]
+                },
+                "generated_region_fields": 4,
+                "cleanup_owner": {
+                  "symbol": "??1AnmVmView@@QAE@XZ",
+                  "address": "0x0040BED0",
+                  "size": 34,
+                  "extent_source": "pdb-section-contribution",
+                  "section": ".text",
+                  "section_number": 1,
+                  "section_offset": 44752,
+                  "map_object": "support-03-AnmManager.ltcg.obj",
+                  "pdb_module_index": 4,
+                  "sha256": "0823ed5031f6a6bd9b0a670b5955e7c8a37d4466ebbde67e3a7382937a695ba8"
+                },
+                "cleanup_proof": {
+                  "bytes": 34,
+                  "fields": 1,
+                  "result": "exact"
+                },
+                "authority": "address binding only; no generated-code or runtime credit"
+              }
+            }
+          ]
+        },
+        {
+          "unit": "stage-lifecycle-destructor",
+          "result": "exact",
+          "size": 499,
+          "matched_bytes": 499,
+          "field_count": 39,
+          "candidate_address": "0x00402380",
+          "pdb_module_index": 2,
+          "field_replay_sha256": "427fa41d1c946a2da16fd21a305c52ed960dd461299565903f0ac3cc521351f7",
+          "message_payloads": [],
+          "eh_bindings": [
+            {
+              "offset": "0x3",
+              "kind": "stage_array_eh",
+              "proof": {
+                "symbol": "__ehhandler$??1StageScriptView@@QAE@XZ",
+                "parent_symbol": "??1StageScriptView@@QAE@XZ",
+                "pdb_module_index": 2,
+                "candidate": {
+                  "handler": "0x411e66",
+                  "func_info": "0x4123f4",
+                  "unwind_map": "0x4123e4",
+                  "unwind_states": 2,
+                  "region_bytes": 64,
+                  "func_info_bytes": 28,
+                  "saved_this_offset": 4,
+                  "actions": [
+                    {
+                      "state": 0,
+                      "predecessor": -1,
+                      "address": "0x411e30",
+                      "member_offset": 384,
+                      "count": 8,
+                      "stride": 940
+                    },
+                    {
+                      "state": 1,
+                      "predecessor": 0,
+                      "address": "0x411e4b",
+                      "member_offset": 7944,
+                      "count": 3,
+                      "stride": 940
+                    }
+                  ]
+                },
+                "target": {
+                  "handler": "0x4652d6",
+                  "func_info": "0x471324",
+                  "unwind_map": "0x471314",
+                  "unwind_states": 2,
+                  "region_bytes": 64,
+                  "func_info_bytes": 28,
+                  "saved_this_offset": 4,
+                  "actions": [
+                    {
+                      "state": 0,
+                      "predecessor": -1,
+                      "address": "0x4652a0",
+                      "member_offset": 384,
+                      "count": 8,
+                      "stride": 940
+                    },
+                    {
+                      "state": 1,
+                      "predecessor": 0,
+                      "address": "0x4652bb",
+                      "member_offset": 7944,
+                      "count": 3,
+                      "stride": 940
+                    }
+                  ]
+                },
+                "generated_region_fields": 6,
+                "cleanup_owner": {
+                  "symbol": "??1AnmVmView@@QAE@XZ",
+                  "address": "0x0040BED0",
+                  "size": 34,
+                  "extent_source": "pdb-section-contribution",
+                  "section": ".text",
+                  "section_number": 1,
+                  "section_offset": 44752,
+                  "map_object": "support-03-AnmManager.ltcg.obj",
+                  "pdb_module_index": 4,
+                  "sha256": "0823ed5031f6a6bd9b0a670b5955e7c8a37d4466ebbde67e3a7382937a695ba8"
+                },
+                "cleanup_proof": {
+                  "bytes": 34,
+                  "fields": 1,
+                  "result": "exact"
+                },
+                "authority": "address binding only; no generated-code or runtime credit"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "diagnostic_graphs": {
+    "242c6d18666ae4126d3a41add69947043ba87bda66e0327106d7a1280a9fd8e8": {
+      "source": "src/StageScript.cpp",
+      "support_sources": [
+        "src/StageLifecycle.cpp",
+        "src/StageDraw.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/FileSystem.cpp",
+        "src/MainViewport.cpp",
+        "src/TransitionEffect.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/TransitionEffect.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ]
+      },
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+    },
+    "3bd200693dbb638f193e0c42f7ffd87c51f2d9a0fe57432507e8593cc034e1ea": {
+      "source": "src/StageScript.cpp",
+      "support_sources": [
+        "src/StageLifecycle.cpp",
+        "src/StageDraw.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/FileSystem.cpp",
+        "src/MainViewport.cpp",
+        "src/TransitionEffect.cpp",
+        "src/GameErrorContext.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/TransitionEffect.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/GameErrorContext.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ]
+      },
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+    },
+    "a18f194126cd4ddfd48e6d5b40b94040c0331f4696103ed0a38b6eff22bf3198": {
+      "source": "src/StageScript.cpp",
+      "support_sources": [
+        "src/StageLifecycle.cpp",
+        "src/StageDraw.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/FileSystem.cpp",
+        "src/MainViewport.cpp",
+        "src/TransitionEffect.cpp",
+        "src/GameErrorContext.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/TransitionEffect.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/GameErrorContext.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/StageLifecycle.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ]
+      },
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+    },
+    "e750bca31f1fcb37622df6784d8c4fabb1c1ac009d1a0eb3502c3464cbfcbd80": {
+      "source": "src/StageScript.cpp",
+      "support_sources": [
+        "src/StageLifecycle.cpp",
+        "src/StageDraw.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/FileSystem.cpp",
+        "src/MainViewport.cpp",
+        "src/TransitionEffect.cpp",
+        "src/GameErrorContext.cpp",
+        "src/PbgArchive.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/TransitionEffect.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/GameErrorContext.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/StageLifecycle.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ]
+      },
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+    }
+  },
+  "rejected_or_diagnostic_controls": [
+    {
+      "label": "entry",
+      "source_pins_sha256": "9e8cec3c7d9a58dcfd592cd83d19b08fec431b61527a10dba782e15a56a7003d",
+      "graph_sha256": "242c6d18666ae4126d3a41add69947043ba87bda66e0327106d7a1280a9fd8e8",
+      "compiled": [
+        "src/AnmManager.cpp",
+        "build/gpt-6.1-sol/easing-context-20261029/conditional-results/link-anchors.c",
+        "build/gpt-6.1-sol/easing-context-20261029/conditional-results/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 474,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "load": {
+          "size": 319,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 291,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 451,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "create": {
+          "size": 81,
+          "result": "mismatch",
+          "authority": "none"
+        }
+      }
+    },
+    {
+      "label": "error-gs-rebuilt",
+      "source_pins_sha256": "2c5d840b92548e0fbb86ac0acb1c2ede6b0b21fdead66f42268de2dd7e7a6995",
+      "graph_sha256": "3bd200693dbb638f193e0c42f7ffd87c51f2d9a0fe57432507e8593cc034e1ea",
+      "compiled": [
+        "src/GameErrorContext.cpp",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/error-gs-rebuilt/link-anchors.c",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/error-gs-rebuilt/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 483,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "load": {
+          "size": 319,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 291,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 451,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "create": {
+          "size": 81,
+          "result": "mismatch",
+          "authority": "none"
+        }
+      }
+    },
+    {
+      "label": "rocking-vector",
+      "source_pins_sha256": "d9786ef0947976002937a556a070057d85a9a611a657b383c397c1a30124739b",
+      "graph_sha256": "3bd200693dbb638f193e0c42f7ffd87c51f2d9a0fe57432507e8593cc034e1ea",
+      "compiled": [
+        "src/StageScript.cpp",
+        "src/StageLifecycle.cpp",
+        "src/StageDraw.cpp",
+        "src/AnmManager.cpp",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/rocking-vector/link-anchors.c",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/rocking-vector/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 518,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "load": {
+          "size": 319,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 291,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 451,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "create": {
+          "size": 81,
+          "result": "mismatch",
+          "authority": "none"
+        }
+      }
+    },
+    {
+      "label": "lifecycle-eh",
+      "source_pins_sha256": "d9786ef0947976002937a556a070057d85a9a611a657b383c397c1a30124739b",
+      "graph_sha256": "a18f194126cd4ddfd48e6d5b40b94040c0331f4696103ed0a38b6eff22bf3198",
+      "compiled": [
+        "src/StageLifecycle.cpp",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/lifecycle-eh/link-anchors.c",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/lifecycle-eh/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 518,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "load": {
+          "size": 319,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 188,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 460,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "create": {
+          "size": 149,
+          "result": "mismatch",
+          "authority": "none"
+        }
+      }
+    },
+    {
+      "label": "archive-visible",
+      "source_pins_sha256": "d87208118646ba68ec5aa77bf93437e4231c10a524220329d18c0e8467cc7dda",
+      "graph_sha256": "e750bca31f1fcb37622df6784d8c4fabb1c1ac009d1a0eb3502c3464cbfcbd80",
+      "compiled": [
+        "src/PbgArchive.cpp",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/archive-visible/link-anchors.c",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/archive-visible/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 522,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "load": {
+          "size": 308,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 188,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 460,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "create": {
+          "size": 151,
+          "result": "structural-exact",
+          "authority": "none"
+        }
+      }
+    },
+    {
+      "label": "named-priorities",
+      "source_pins_sha256": "fc8038a4ad356c6d27c2a2fce015333b7cd5aea90e3455d39ba281e7039bb27d",
+      "graph_sha256": "e750bca31f1fcb37622df6784d8c4fabb1c1ac009d1a0eb3502c3464cbfcbd80",
+      "compiled": [
+        "src/StageLifecycle.cpp",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/named-priorities/link-anchors.c",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/named-priorities/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 522,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "load": {
+          "size": 308,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 188,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 460,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "create": {
+          "size": 151,
+          "result": "structural-exact",
+          "authority": "none"
+        }
+      }
+    },
+    {
+      "label": "member-registration",
+      "source_pins_sha256": "938727f37b3321d81cd7a4f5d77a41eb9c93965d9d243501390195faf2cb1da5",
+      "graph_sha256": "e750bca31f1fcb37622df6784d8c4fabb1c1ac009d1a0eb3502c3464cbfcbd80",
+      "compiled": [
+        "src/StageLifecycle.cpp",
+        "src/StageDraw.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/TransitionEffect.cpp",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/member-registration/link-anchors.c",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/member-registration/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 522,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "load": {
+          "size": 308,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 188,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 460,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "create": {
+          "size": 151,
+          "result": "structural-exact",
+          "authority": "none"
+        }
+      }
+    },
+    {
+      "label": "member-operations-fixed",
+      "source_pins_sha256": "b174d3001abb77fa70cdf92a732d6066d071292b1dd3016cc870beb32d1d1289",
+      "graph_sha256": "e750bca31f1fcb37622df6784d8c4fabb1c1ac009d1a0eb3502c3464cbfcbd80",
+      "compiled": [
+        "src/StageLifecycle.cpp",
+        "src/StageDraw.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/TransitionEffect.cpp",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/member-operations-fixed/link-anchors.c",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/member-operations-fixed/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 522,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "load": {
+          "size": 308,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 188,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 460,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "create": {
+          "size": 151,
+          "result": "structural-exact",
+          "authority": "none"
+        }
+      }
+    },
+    {
+      "label": "lifecycle-typed-imports",
+      "source_pins_sha256": "2f988ad199c9a9f3dfd7e05f2ff0cd49f7ea7f577dcd7e5c664070344f5fcb0b",
+      "graph_sha256": "e750bca31f1fcb37622df6784d8c4fabb1c1ac009d1a0eb3502c3464cbfcbd80",
+      "compiled": [
+        "src/StageLifecycle.cpp",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/lifecycle-typed-imports/link-anchors.c",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/lifecycle-typed-imports/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 522,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "load": {
+          "size": 308,
+          "result": "mismatch",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 188,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 499,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "create": {
+          "size": 151,
+          "result": "structural-exact",
+          "authority": "none"
+        }
+      }
+    },
+    {
+      "label": "allocated-sizes",
+      "source_pins_sha256": "455828a63db68c2068b8d53e56c658371c5c9e420f9e13cdc5df3efe81504ab3",
+      "graph_sha256": "e750bca31f1fcb37622df6784d8c4fabb1c1ac009d1a0eb3502c3464cbfcbd80",
+      "compiled": [
+        "src/StageLifecycle.cpp",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/allocated-sizes/link-anchors.c",
+        "build/gpt-6.1-sol/stage-initialize-context-20261029/allocated-sizes/link-anchors.c"
+      ],
+      "owners": {
+        "initialize": {
+          "size": 522,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "load": {
+          "size": 308,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "constructor": {
+          "size": 188,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "destructor": {
+          "size": 499,
+          "result": "structural-exact",
+          "authority": "none"
+        },
+        "create": {
+          "size": 151,
+          "result": "structural-exact",
+          "authority": "none"
+        }
+      }
+    }
+  ],
+  "invalid_controls": {
+    "logging_profile": [
+      "error-visible",
+      "error-visible-gs"
+    ],
+    "source_conversion": [
+      "member-operations"
+    ],
+    "main_compile_failure": "file-context"
+  },
+  "affected_old_replays": {
+    "cold-core": {
+      "result": "exact",
+      "matched_bytes": 368,
+      "unit_count": 3,
+      "artifact_count": 1,
+      "groups": [
+        {
+          "source": "src/ScriptViewer.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "artifact": "build/match-linked/ScriptViewerLifecycle-cold-2",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "script-viewer-register-tasks",
+              "result": "exact",
+              "size": 106,
+              "matched_bytes": 106,
+              "image_sha256": "b9a99d2c41aa3f4776a194cfe27aa2c9e3f4e246688bcf7424d897a5ed8f7def",
+              "pdb_guid": "f826414f221b3c459f0459c8f8274730",
+              "symbol": "?RegisterTasks@ScriptViewerView@@QAEHXZ"
+            },
+            {
+              "unit": "chain-add-calc",
+              "result": "exact",
+              "size": 131,
+              "matched_bytes": 131,
+              "image_sha256": "b9a99d2c41aa3f4776a194cfe27aa2c9e3f4e246688bcf7424d897a5ed8f7def",
+              "pdb_guid": "f826414f221b3c459f0459c8f8274730",
+              "symbol": "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
+            },
+            {
+              "unit": "chain-add-draw",
+              "result": "exact",
+              "size": 131,
+              "matched_bytes": 131,
+              "image_sha256": "b9a99d2c41aa3f4776a194cfe27aa2c9e3f4e246688bcf7424d897a5ed8f7def",
+              "pdb_guid": "f826414f221b3c459f0459c8f8274730",
+              "symbol": "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
+            }
+          ]
+        }
+      ]
+    },
+    "cold-interface-prefix": {
+      "result": "exact",
+      "matched_bytes": 933,
+      "unit_count": 7,
+      "artifact_count": 6,
+      "groups": [
+        {
+          "source": "src/AnmManager.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "artifact": "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-interface-prefix-0",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "ascii-manager-initialize",
+              "result": "exact",
+              "size": 330,
+              "matched_bytes": 330,
+              "image_sha256": "a01eafacbfc394e431778380f783093483727989b205b78d8453ff9b3186833b",
+              "pdb_guid": "c0337b4bd9012a4d8497af2171ed3bca",
+              "symbol": "?Initialize@AsciiManagerView@@QAEHXZ"
+            }
+          ]
+        },
+        {
+          "source": "src/Gui.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "artifact": "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-interface-prefix-1",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "chain-register-calc",
+              "result": "exact",
+              "size": 43,
+              "matched_bytes": 43,
+              "image_sha256": "8c99f21fb6c4b4290ffea6daf7b184cd22abf6ce0a4deca7e78e1e3925f90d55",
+              "pdb_guid": "313c91db7563f34aa48fecef8af0466d",
+              "symbol": "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+            },
+            {
+              "unit": "chain-register-draw",
+              "result": "exact",
+              "size": 43,
+              "matched_bytes": 43,
+              "image_sha256": "8c99f21fb6c4b4290ffea6daf7b184cd22abf6ce0a4deca7e78e1e3925f90d55",
+              "pdb_guid": "313c91db7563f34aa48fecef8af0466d",
+              "symbol": "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+            }
+          ]
+        },
+        {
+          "source": "src/SptTest.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "artifact": "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-interface-prefix-2",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "spt-test-register-tasks",
+              "result": "exact",
+              "size": 84,
+              "matched_bytes": 84,
+              "image_sha256": "b32b5feb61105f2a163e6c8e2fd995f9d34aa637feb4e29541e631011247bd6a",
+              "pdb_guid": "10a0be5812565443832ecf19d2057c3c",
+              "symbol": "?RegisterTasks@SptTestView@@QAEHXZ"
+            }
+          ]
+        },
+        {
+          "source": "src/ScriptViewer.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "artifact": "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-interface-prefix-3",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "gui-creation-initialize",
+              "result": "exact",
+              "size": 147,
+              "matched_bytes": 147,
+              "image_sha256": "33e28c5c2a37ac2f158c6dcec6934be26a092d6c8e1fd67ba62fe180f58d5b24",
+              "pdb_guid": "004514245a35504c8098521ea9c564fc",
+              "symbol": "?Initialize@GuiView@@QAEHXZ"
+            }
+          ]
+        },
+        {
+          "source": "src/EnemyLaserManager.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "artifact": "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-interface-prefix-4",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "enemy-laser-manager-initialize",
+              "result": "exact",
+              "size": 146,
+              "matched_bytes": 146,
+              "image_sha256": "6793141c028e53626a592e9dcd8454f6d3cc3b44b0cb5c03288e321e14883e9d",
+              "pdb_guid": "088e82f8367fb14688369e318af45c6f",
+              "symbol": "?Initialize@EnemyLaserManagerStorageView@@QAEHXZ"
+            }
+          ]
+        },
+        {
+          "source": "src/Main.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "artifact": "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-interface-prefix-5",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "startup-register-tasks",
+              "result": "exact",
+              "size": 140,
+              "matched_bytes": 140,
+              "image_sha256": "14664c907ac0c5ad269f4d79777d38c6a23c1b907fb1d2fc1269fbe248a6e377",
+              "pdb_guid": "4c983078cf94d148bc65935bfb4edcdf",
+              "symbol": "?RegisterTasks@StartupWorkerView@@QAEHXZ"
+            }
+          ]
+        }
+      ]
+    },
+    "cold-frontend": {
+      "result": "exact",
+      "matched_bytes": 192,
+      "unit_count": 1,
+      "artifact_count": 1,
+      "groups": [
+        {
+          "source": "src/Main.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "artifact": "build/match-linked/FrontEndLaunch",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "frontend-register-tasks",
+              "result": "exact",
+              "size": 192,
+              "matched_bytes": 192,
+              "image_sha256": "b873d392a58e9accbe7cc645802faed056340d11d87904c990428318b67030e6",
+              "pdb_guid": "99c6f3a7cc63fd4a9899423b362e8071",
+              "symbol": "?RegisterTasks@FrontEndControllerView@@QAEHXZ"
+            }
+          ]
+        }
+      ]
+    },
+    "cold-views": {
+      "result": "exact",
+      "matched_bytes": 769,
+      "unit_count": 3,
+      "artifact_count": 3,
+      "groups": [
+        {
+          "source": "src/StageScript.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "artifact": "build/match-linked/StageRealCallback",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "stage-update",
+              "result": "exact",
+              "size": 304,
+              "matched_bytes": 304,
+              "image_sha256": "4d4a7083c4520c4e05b166f0bd46905a75b3eb0a9ce8112be9a3089bf4d6d32e",
+              "pdb_guid": "ddee89c7ac43ab4d85c3f974c20d1f78",
+              "symbol": "?Update@StageScriptView@@QAEHXZ"
+            }
+          ]
+        },
+        {
+          "source": "src/Main.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "artifact": "build/match-linked/MainScreenColor",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "main-clear-present-twice",
+              "result": "exact",
+              "size": 135,
+              "matched_bytes": 135,
+              "image_sha256": "79f560d05466c980f0a7bd94853c20a3c3f2f71b3a799de6c2073f19e08fe355",
+              "pdb_guid": "c7637e242283f14d9d139cbd01abb68b",
+              "symbol": "?MainClearPresentTwice@@YAXI@Z"
+            }
+          ]
+        },
+        {
+          "source": "src/StageScript.cpp",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "artifact": "build/match-linked/StageViewport",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "stage-configure-camera",
+              "result": "exact",
+              "size": 330,
+              "matched_bytes": 330,
+              "image_sha256": "20e7c178fdf7bf037f2fbca6b26ebe01cb365d129f3fab8a9080adc48c77fc8d",
+              "pdb_guid": "a487b8c18096ca4d97030868643628f9",
+              "symbol": "?ConfigureCamera@StageCameraStateView@@QAEXXZ"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "oracle_selftests": {
+    "protocols": 2,
+    "focused_rejections": 68,
+    "normal": true,
+    "optimized_python": true,
+    "existing_mechanisms_unchanged": true
+  },
+  "source_api_migration_review": {
+    "starting_head": "f36f86f1bfb69f8f9d57a488621f9bcc0db41d4b",
+    "inputs": {
+      "src/Chain.hpp": {
+        "previous_pin": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+        "entry_sha256_lf": "7a92cae0e7b47d276749d00ad41c030f76e656f0e80d77ade2cbfe844a2de91e",
+        "current_sha256_lf": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+        "whole_file_forward_transform_verified": true
+      },
+      "src/Chain.cpp": {
+        "previous_pin": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+        "entry_sha256_lf": "7e09a9336183aa995bfb5cb2829ab97f3fa38adf0ee1c2b27b47aee94d0cfd3c",
+        "current_sha256_lf": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+        "whole_file_forward_transform_verified": true
+      },
+      "src/AnmManager.cpp": {
+        "previous_pin": "61fbb16d0f848c61ceb12b129fd20f017c4b189e949a717bea4453e190e51220",
+        "entry_sha256_lf": "61fbb16d0f848c61ceb12b129fd20f017c4b189e949a717bea4453e190e51220",
+        "current_sha256_lf": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "whole_file_forward_transform_verified": true
+      }
+    },
+    "unchanged_extracted_rng_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "reason": "Whole-file source transformations verify the Chain member API migration and unchanged RNG extraction. Former host pin values are historical provenance only; no host pin is refreshed or required by this checkpoint.",
+    "evidence": "docs/evidence/stage-initialize-context-20261029/README.md",
+    "active_host_pin_gate": false
+  },
+  "cleanup": {
+    "files": 4942,
+    "bytes": 198807947,
+    "categories": {
+      "regenerable Python cache": {
+        "files": 302,
+        "bytes": 5828519
+      },
+      "superseded experiment/source copy": {
+        "files": 2057,
+        "bytes": 41317534
+      },
+      "superseded private experiment generator": {
+        "files": 155,
+        "bytes": 622931
+      },
+      "unused generated compiler/linker output": {
+        "files": 2428,
+        "bytes": 151038963
+      }
+    },
+    "protected_record_and_source_count": 5495,
+    "protected_hashes_unchanged": true,
+    "no_new_archives": true,
+    "existing_record_archive_preserved": true,
+    "d3d_evidence_preserved": true,
+    "retained_current_carriers": [
+      "build/match-linked/StageLifecycleInitialize",
+      "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-a",
+      "build/gpt-6.1-sol/stage-initialize-context-20261029/cold-b",
+      "build/gpt-6.1-sol/stage-initialize-context-20261029/allocated-sizes"
+    ],
+    "policy": "Delete unused old source copies, private experiment generators and rebuildable compiler outputs. Preserve documents, verification records and unrelated D3D evidence. No new archive."
+  },
+  "affected_old_replay_total": {
+    "units": 14,
+    "bytes": 2262,
+    "fields": 156
+  },
+  "post_cleanup_native_recheck": {
+    "stage-lifecycle-initialize": {
+      "result": "exact",
+      "bytes": 522,
+      "image_sha256": "bebec9de79e089e463436b8492c68a0052d0da582f4119a758535fc3f90ddb01",
+      "pdb_guid": "0873ffda3f20d04a81925743228c7539"
+    },
+    "stage-lifecycle-load-data": {
+      "result": "exact",
+      "bytes": 308,
+      "image_sha256": "bebec9de79e089e463436b8492c68a0052d0da582f4119a758535fc3f90ddb01",
+      "pdb_guid": "0873ffda3f20d04a81925743228c7539"
+    },
+    "stage-lifecycle-create": {
+      "result": "exact",
+      "bytes": 151,
+      "image_sha256": "bebec9de79e089e463436b8492c68a0052d0da582f4119a758535fc3f90ddb01",
+      "pdb_guid": "0873ffda3f20d04a81925743228c7539"
+    },
+    "stage-lifecycle-constructor": {
+      "result": "exact",
+      "bytes": 188,
+      "image_sha256": "bebec9de79e089e463436b8492c68a0052d0da582f4119a758535fc3f90ddb01",
+      "pdb_guid": "0873ffda3f20d04a81925743228c7539"
+    },
+    "stage-lifecycle-destructor": {
+      "result": "exact",
+      "bytes": 499,
+      "image_sha256": "bebec9de79e089e463436b8492c68a0052d0da582f4119a758535fc3f90ddb01",
+      "pdb_guid": "0873ffda3f20d04a81925743228c7539"
+    }
+  },
+  "validation": {
+    "lightweight_ci_stages": 7,
+    "stage_array_eh_rejections": 68,
+    "optimized_python_passed": true,
+    "whitespace_passed": true
+  }
+}

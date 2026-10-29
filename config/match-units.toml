@@ -19074,15 +19074,15 @@ linkages = [
   { offset = 0x77, type = "DIR32", symbol = "?OnUpdate@AsciiManagerView@@SIHPAU1@@Z", target = 0x004014F0 },
   { offset = 0x7C, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
   { offset = 0x86, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
-  { offset = 0x9A, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x00449AE0 },
+  { offset = 0x9A, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449AE0 },
   { offset = 0x9F, type = "DIR32", symbol = "?OnDrawLowPriority@AsciiManagerView@@SIHPAU1@@Z", target = 0x00401510 },
   { offset = 0xA7, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
   { offset = 0xAD, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
-  { offset = 0xC6, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x00449B70 },
+  { offset = 0xC6, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
   { offset = 0xCB, type = "DIR32", symbol = "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z", target = 0x00401520 },
   { offset = 0xD3, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
   { offset = 0xD9, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
-  { offset = 0xF2, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x00449B70 },
+  { offset = 0xF2, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
   { offset = 0x108, type = "REL32", symbol = "?Initialize@AnmVmView@@QAEXXZ", target = 0x00401DE0 },
   { offset = 0x119, type = "REL32", symbol = "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z", target = 0x0043E5A0 },
   { offset = 0x12C, type = "REL32", symbol = "?Initialize@AnmVmView@@QAEXXZ", target = 0x00401DE0 },
@@ -20228,7 +20228,7 @@ target = 4791268
 [[units.script-viewer-register-tasks.linkages]]
 offset = 55
 type = "REL32"
-symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
 target = 4496096
 
 [[units.script-viewer-register-tasks.linkages]]
@@ -20252,7 +20252,7 @@ target = 4791268
 [[units.script-viewer-register-tasks.linkages]]
 offset = 94
 type = "REL32"
-symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
 target = 4496240
 
 [units.script-viewer-clear-names]
@@ -21900,7 +21900,7 @@ functions = ["th10::Chain::RegisterCalc"]
 symbol = "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
 target_address = 4497408
 size = 43
-linkages = [{ offset = 3, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 4497104 }, { offset = 13, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 4791268 }, { offset = 33, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 4496096 }]
+linkages = [{ offset = 3, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 4497104 }, { offset = 13, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 4791268 }, { offset = 33, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 4496096 }]
 
 [units.chain-register-draw]
 artifact_kind = "linked-pe"
@@ -21916,7 +21916,7 @@ functions = ["th10::Chain::RegisterDraw"]
 symbol = "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
 target_address = 4497456
 size = 43
-linkages = [{ offset = 3, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 4497104 }, { offset = 13, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 4791268 }, { offset = 33, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 4496240 }]
+linkages = [{ offset = 3, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 4497104 }, { offset = 13, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 4791268 }, { offset = 33, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 4496240 }]
 
 [units.transition-fade-out]
 artifact_kind = "linked-pe"
@@ -23567,7 +23567,7 @@ entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
 harness = "unresolved-symbol-data-anchors-v1"
 output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
 functions = ["th10::Chain::AddToCalcChain"]
-symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
 pdb_source = "src/Chain.cpp"
 target_address = 4496096
 size = 131
@@ -23623,7 +23623,7 @@ entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
 harness = "unresolved-symbol-data-anchors-v1"
 output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
 functions = ["th10::Chain::AddToDrawChain"]
-symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
 pdb_source = "src/Chain.cpp"
 target_address = 4496240
 size = 131
@@ -24232,7 +24232,7 @@ symbol = "?RegisterTasks@SptTestView@@QAEHXZ"
 functions = ["SptTestView::RegisterTasks"]
 size = 84
 target_address = 4373456
-linkages = [{ "offset" = 3, "type" = "DIR32", "target" = 4375936, "symbol" = "?SptTestUpdateCallback@@YIHPAX@Z" }, { "offset" = 8, "type" = "REL32", "target" = 4497104, "symbol" = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z" }, { "offset" = 19, "type" = "DIR32", "target" = 4791268, "symbol" = "?g_Chain@th10@@3PAUChain@1@A" }, { "offset" = 33, "type" = "REL32", "target" = 4496096, "symbol" = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z" }, { "offset" = 38, "type" = "DIR32", "target" = 4375952, "symbol" = "?SptTestDrawCallback@@YIHPAX@Z" }, { "offset" = 46, "type" = "REL32", "target" = 4497104, "symbol" = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z" }, { "offset" = 58, "type" = "DIR32", "target" = 4791268, "symbol" = "?g_Chain@th10@@3PAUChain@1@A" }, { "offset" = 72, "type" = "REL32", "target" = 4496240, "symbol" = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z" }]
+linkages = [{ "offset" = 3, "type" = "DIR32", "target" = 4375936, "symbol" = "?SptTestUpdateCallback@@YIHPAX@Z" }, { "offset" = 8, "type" = "REL32", "target" = 4497104, "symbol" = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z" }, { "offset" = 19, "type" = "DIR32", "target" = 4791268, "symbol" = "?g_Chain@th10@@3PAUChain@1@A" }, { "offset" = 33, "type" = "REL32", "target" = 4496096, "symbol" = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z" }, { "offset" = 38, "type" = "DIR32", "target" = 4375952, "symbol" = "?SptTestDrawCallback@@YIHPAX@Z" }, { "offset" = 46, "type" = "REL32", "target" = 4497104, "symbol" = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z" }, { "offset" = 58, "type" = "DIR32", "target" = 4791268, "symbol" = "?g_Chain@th10@@3PAUChain@1@A" }, { "offset" = 72, "type" = "REL32", "target" = 4496240, "symbol" = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z" }]
 
 [units.spt-test-clear-script-names]
 artifact_kind = "linked-pe"
@@ -24460,7 +24460,7 @@ target = 4791268
 [[units.gui-creation-initialize.linkages]]
 offset = 96
 type = "REL32"
-symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
 target = 4496096
 
 [[units.gui-creation-initialize.linkages]]
@@ -24484,7 +24484,7 @@ target = 4791268
 [[units.gui-creation-initialize.linkages]]
 offset = 135
 type = "REL32"
-symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
 target = 4496240
 
 # 2026-10-25 real laser-manager factory graph; original production graph unknown.
@@ -24562,7 +24562,7 @@ target = 4791268
 [[units.enemy-laser-manager-initialize.linkages]]
 offset = 86
 type = "REL32"
-symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
 target = 4496096
 
 [[units.enemy-laser-manager-initialize.linkages]]
@@ -24586,7 +24586,7 @@ target = 4791268
 [[units.enemy-laser-manager-initialize.linkages]]
 offset = 125
 type = "REL32"
-symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z"
 target = 4496240
 
 [units.enemy-laser-manager-create]
@@ -25490,11 +25490,11 @@ linkages = [
   { offset = 0x3, type = "DIR32", symbol = "?OnUpdate@StartupWorkerView@@SIHPAU1@@Z", target = 0x41feb0 },
   { offset = 0x8, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x449ed0 },
   { offset = 0x13, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x491be4 },
-  { offset = 0x21, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x449ae0 },
+  { offset = 0x21, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x449ae0 },
   { offset = 0x26, type = "DIR32", symbol = "?OnDraw@StartupWorkerView@@SIHPAU1@@Z", target = 0x41fef0 },
   { offset = 0x2e, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x449ed0 },
   { offset = 0x3a, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x491be4 },
-  { offset = 0x48, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x449b70 },
+  { offset = 0x48, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x449b70 },
   { offset = 0x53, type = "REL32", symbol = "?Stop@ScriptViewerWorkerView@@QAEXXZ", target = 0x44c150 },
   { offset = 0x5f, type = "DIR32", symbol = "?StartupThread@StartupWorkerView@@SAHXZ", target = 0x41f990 },
   { offset = 0x6a, type = "DIR32", symbol = "?StartupThread@StartupWorkerView@@SAHXZ", target = 0x41f990 },
@@ -25971,11 +25971,11 @@ linkages = [
   { "offset" = 3, "type" = "DIR32", "symbol" = "?FrontEndUpdateCallback@@YIHPAUFrontEndControllerView@@@Z", "target" = 4379360 },
   { "offset" = 8, "type" = "REL32", "symbol" = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", "target" = 4497104 },
   { "offset" = 18, "type" = "DIR32", "symbol" = "?g_Chain@th10@@3PAUChain@1@A", "target" = 4791268 },
-  { "offset" = 38, "type" = "REL32", "symbol" = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", "target" = 4496096 },
+  { "offset" = 38, "type" = "REL32", "symbol" = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", "target" = 4496096 },
   { "offset" = 43, "type" = "DIR32", "symbol" = "?FrontEndDrawCallback@@YIHPAUFrontEndControllerView@@@Z", "target" = 4379376 },
   { "offset" = 51, "type" = "REL32", "symbol" = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", "target" = 4497104 },
   { "offset" = 57, "type" = "DIR32", "symbol" = "?g_Chain@th10@@3PAUChain@1@A", "target" = 4791268 },
-  { "offset" = 82, "type" = "REL32", "symbol" = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", "target" = 4496240 },
+  { "offset" = 82, "type" = "REL32", "symbol" = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", "target" = 4496240 },
   { "offset" = 88, "type" = "DIR32", "symbol" = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", "target" = 4791312 },
   { "offset" = 93, "type" = "DIR32", "symbol" = "??_C@_09EAFDFAEF@title?4anm?$AA@", "target" = 4649132 },
   { "offset" = 106, "type" = "REL32", "symbol" = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z", "target" = 4485760 },
@@ -27024,4 +27024,188 @@ linkages = [
   { offset = 0x234, type = "DIR32", target = 0x0044C4E2, local = true },
   { offset = 0x238, type = "DIR32", target = 0x0044C537, local = true },
   { offset = 0x23C, type = "DIR32", target = 0x0044C542, local = true },
+]
+
+[units.stage-lifecycle-initialize]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp", "src/TransitionEffect.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+output_dir = "build/match-linked/StageLifecycleInitialize"
+pdb_source = "src/StageLifecycle.cpp"
+functions = ["StageScriptView::Initialize"]
+symbol = "?Initialize@StageScriptView@@QAEHPBDH@Z"
+target_address = 0x00402230
+size = 522
+support_profiles = { "src/TransitionEffect.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/GameErrorContext.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/StageLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+linkages = [
+  { offset = 0x12, type = "DIR32", symbol = "?g_StagePrimary@@3PAUStageScriptView@@A", target = 0x004776E8 },
+  { offset = 0x1A, type = "DIR32", symbol = "?g_StageSecondary@@3PAUStageScriptView@@A", target = 0x004776E4 },
+  { offset = 0x1F, type = "DIR32", symbol = "?g_GameStartupMode@@3HA", target = 0x00474C7C },
+  { offset = 0x2B, type = "REL32", symbol = "?LoadData@StageScriptView@@QAEHPBD@Z", target = 0x00403850 },
+  { offset = 0x34, type = "DIR32", symbol = "??_C@_0DH@DGEHEBIN@?$IDX?$IDe?$IB?$FL?$IDW?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$JD?G?$IC?$NN?$IN?$JO?$IC?$NP?$IC?$NM?$IC?$LJ?$IC?q?$IBB@", target = 0x0046CC70 },
+  { offset = 0x39, type = "DIR32", symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", target = 0x00474F70 },
+  { offset = 0x3E, type = "REL32", symbol = "?Fatal@GameErrorContext@th10@@QAAPADPADZZ", target = 0x0044B8E0 },
+  { offset = 0x6C, type = "DIR32", symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A", target = 0x00491D7C },
+  { offset = 0x126, type = "DIR32", symbol = "?StageUpdateCallback@@YIHPAUStageScriptView@@@Z", target = 0x00403050 },
+  { offset = 0x138, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x142, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x154, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449AE0 },
+  { offset = 0x159, type = "DIR32", symbol = "?StageDrawEarlyCallback@@YIHPAUStageScriptView@@@Z", target = 0x00403060 },
+  { offset = 0x161, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x167, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x179, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x17E, type = "DIR32", symbol = "?StageDrawLateCallback@@YIHPAUStageScriptView@@@Z", target = 0x00403070 },
+  { offset = 0x186, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x18C, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x1A3, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+  { offset = 0x1D0, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+]
+
+[units.stage-lifecycle-load-data]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp", "src/TransitionEffect.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+output_dir = "build/match-linked/StageLifecycleInitialize"
+pdb_source = "src/StageLifecycle.cpp"
+support_profiles = { "src/TransitionEffect.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/GameErrorContext.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/StageLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["StageScriptView::LoadData"]
+symbol = "?LoadData@StageScriptView@@QAEHPBD@Z"
+target_address = 0x00403850
+size = 308
+linkages = [
+  { offset = 0x12, type = "DIR32", symbol = "?g_StageFilePath@@3PADA", target = 0x00497C38 },
+  { offset = 0x28, type = "DIR32", symbol = "?g_StageFilePath@@3PADA", target = 0x00497C38 },
+  { offset = 0x4E, type = "DIR32", symbol = "?g_StageFilePath@@3PADA", target = 0x00497C38 },
+  { offset = 0x55, type = "REL32", symbol = "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z", target = 0x0044B360 },
+  { offset = 0x6B, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 0x8B, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0xAB, type = "REL32", symbol = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z", target = 0x00447280 },
+  { offset = 0xBA, type = "DIR32", symbol = "??_C@_0DH@DGPFANG@?$IDX?$IDe?$IB?$FL?$IDW?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IM?$KJ?$IC?B?$IC?$KJ?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$IBB@", target = 0x0046CBC0 },
+  { offset = 0xBF, type = "DIR32", symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", target = 0x00474F70 },
+  { offset = 0xC4, type = "REL32", symbol = "?Log@GameErrorContext@th10@@QAAPADPADZZ", target = 0x0044B810 },
+  { offset = 0x120, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+]
+
+
+[units.stage-lifecycle-create]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp", "src/TransitionEffect.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+output_dir = "build/match-linked/StageLifecycleInitialize"
+pdb_source = "src/StageLifecycle.cpp"
+support_profiles = { "src/TransitionEffect.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/GameErrorContext.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/StageLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["StageCreate"]
+symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+target_address = 0x00402640
+size = 151
+linkages = [
+  { offset = 0x3, type = "DIR32", symbol = "__ehhandler$?StageCreate@@YGPAUStageScriptView@@PBDH@Z", target = 0x0046588B, allocation_eh_handler = true },
+  { offset = 0x9, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x11, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x1D, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x36, type = "REL32", symbol = "??0StageScriptView@@QAE@XZ", target = 0x00402160 },
+  { offset = 0x54, type = "REL32", symbol = "?Initialize@StageScriptView@@QAEHPBDH@Z", target = 0x00402230 },
+  { offset = 0x62, type = "REL32", symbol = "??1StageScriptView@@QAE@XZ", target = 0x00402440 },
+  { offset = 0x68, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0x79, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x8D, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+]
+
+
+[units.stage-lifecycle-constructor]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp", "src/TransitionEffect.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+output_dir = "build/match-linked/StageLifecycleInitialize"
+pdb_source = "src/StageLifecycle.cpp"
+support_profiles = { "src/TransitionEffect.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/GameErrorContext.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/StageLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["StageScriptView::StageScriptView"]
+symbol = "??0StageScriptView@@QAE@XZ"
+target_address = 0x00402160
+size = 188
+linkages = [
+  { offset = 0x2, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x9, type = "DIR32", symbol = "__ehhandler$??0StageScriptView@@QAE@XZ", target = 0x0046556B, stage_array_eh_handler = true },
+  { offset = 0x11, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x38, type = "DIR32", symbol = "??1AnmVmView@@QAE@XZ", target = 0x00401FF0 },
+  { offset = 0x4B, type = "DIR32", symbol = "??0AnmVmView@@QAE@XZ", target = 0x00402050 },
+  { offset = 0x66, type = "REL32", symbol = "??_L@YGXPAXIHP6EX0@Z1@Z", target = 0x0045252D },
+  { offset = 0x6B, type = "DIR32", symbol = "??1AnmVmView@@QAE@XZ", target = 0x00401FF0 },
+  { offset = 0x70, type = "DIR32", symbol = "??0AnmVmView@@QAE@XZ", target = 0x00402050 },
+  { offset = 0x8B, type = "REL32", symbol = "??_L@YGXPAXIHP6EX0@Z1@Z", target = 0x0045252D },
+  { offset = 0xB1, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+]
+
+
+[units.stage-lifecycle-destructor]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp", "src/TransitionEffect.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+output_dir = "build/match-linked/StageLifecycleInitialize"
+pdb_source = "src/StageLifecycle.cpp"
+support_profiles = { "src/TransitionEffect.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/GameErrorContext.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/StageLifecycle.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+functions = ["StageScriptView::~StageScriptView"]
+symbol = "??1StageScriptView@@QAE@XZ"
+target_address = 0x00402440
+size = 499
+linkages = [
+  { offset = 0x3, type = "DIR32", symbol = "__ehhandler$??1StageScriptView@@QAE@XZ", target = 0x004652D6, stage_array_eh_handler = true },
+  { offset = 0x9, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x11, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x2C, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x32, type = "DIR32", symbol = "__imp__EnterCriticalSection@4", target = 0x004660B0 },
+  { offset = 0x38, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0x43, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x4B, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0x56, type = "REL32", symbol = "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z", target = 0x00449F60 },
+  { offset = 0x5B, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x63, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0x6E, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x79, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x81, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0x8C, type = "REL32", symbol = "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z", target = 0x00449F60 },
+  { offset = 0x91, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x99, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0xA7, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0xB2, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0xBA, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0xC5, type = "REL32", symbol = "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z", target = 0x00449F60 },
+  { offset = 0xCA, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0xD2, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0xDF, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0xF9, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x120, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x133, type = "DIR32", symbol = "?g_GameRuntimeFlags@@3IA", target = 0x00474CA0 },
+  { offset = 0x14F, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x166, type = "REL32", symbol = "?Release@AnmLoadedView@@QAEXXZ", target = 0x00447810 },
+  { offset = 0x16F, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0x17F, type = "DIR32", symbol = "?g_StagePrimary@@3PAUStageScriptView@@A", target = 0x004776E8 },
+  { offset = 0x187, type = "DIR32", symbol = "?g_StagePrimary@@3PAUStageScriptView@@A", target = 0x004776E8 },
+  { offset = 0x191, type = "DIR32", symbol = "?g_StageSecondary@@3PAUStageScriptView@@A", target = 0x004776E4 },
+  { offset = 0x199, type = "DIR32", symbol = "?g_StageSecondary@@3PAUStageScriptView@@A", target = 0x004776E4 },
+  { offset = 0x1A2, type = "DIR32", symbol = "??1AnmVmView@@QAE@XZ", target = 0x00401FF0 },
+  { offset = 0x1BA, type = "REL32", symbol = "??_M@YGXPAXIHP6EX0@Z@Z", target = 0x004525FF },
+  { offset = 0x1BF, type = "DIR32", symbol = "??1AnmVmView@@QAE@XZ", target = 0x00401FF0 },
+  { offset = 0x1DA, type = "REL32", symbol = "??_M@YGXPAXIHP6EX0@Z@Z", target = 0x004525FF },
+  { offset = 0x1E9, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
 ]

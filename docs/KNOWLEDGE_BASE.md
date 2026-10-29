@@ -10,6 +10,10 @@ ledgers. For current non-exact owner diagnostics and next steps, use
 [RE_HANDOFF.md](RE_HANDOFF.md). A matching size, old score, or commit does not
 establish codegen exactness: only canonical replay can do that.
 
+Dated checkpoint sections record their original source/build epochs; old sizes
+and open statuses can be superseded by later complete proofs. They are records,
+not current prerequisites.
+
 The ignored `build/` and `.analysis/` directories are disposable. Removed
 historical scratch paths are not expected to exist; recheck a claim against the
 target and maintained source before using it as an implementation constraint.
@@ -30,8 +34,8 @@ target and maintained source before using it as an implementation constraint.
 
 | ID | State | Durable fact or constraint | Evidence |
 | --- | --- | --- | --- |
-| ANALYSIS-001 | observed | The private Ghidra project is bound to the target by SHA-256/MD5, image layout, entry function, and distributed mapped-byte samples. | `scripts/repo-python scripts/ghidra.py check`; Factory `th10-ghidra` check |
-| ANALYSIS-002 | observed | The Factory-native `th10-ghidra` provider binds the registered implementation files by aggregate SHA-256. Editing `scripts/ghidra.py` or a registered Java script deliberately makes provider discovery/check fail with “native Ghidra implementation differs from its operator binding” until the private operator binding is reviewed and refreshed. After adding address-set range export, the reviewed private binding became `c001f8ef3d9a64e96664d999c14891d9c92fa12f393bca64cc77bb087c0e2143`, and the Factory-native `check {}` again passed with `provider_transport=factory-native-command`. | Factory provider renderer and validator; private ignored `service.toml`; Factory-native `th10-ghidra` check |
+| ANALYSIS-001 | observed | The private Ghidra project is bound to the target by SHA-256/MD5, image layout, entry function, and distributed mapped-byte samples. | `scripts/repo-python scripts/ghidra.py check` |
+| ANALYSIS-002 | historical / retired transport | Former Factory implementation bindings are historical transport provenance, not a local-tool prerequisite. Use scripts/ghidra.py directly and attest the local project before observations; no provider receipt or private binding refresh is required. The old c001f8ef3d9a64e96664d999c14891d9c92fa12f393bca64cc77bb087c0e2143 digest describes its former epoch only. | Current AGENTS.md and RE_WORKFLOW.md; older transport records remain historical |
 
 ## Inventory
 
@@ -924,6 +928,8 @@ passes-test.log. Complete source retention is provisional and nonexact.
 
 
 ## 2026-10-15 Stage lifecycle supporting the full draw/script graph
+
+Superseded for current exact status by the [complete lifecycle proof](evidence/stage-initialize-context-20261029/README.md) on2026-10-30. The sizes and host reports below describe the original October15 checkpoint.
 
 StageLifecycle.cpp recovers the coherent five-owner graph: constructor
 0x402160/188, Initialize0x402230/522, destructor0x402440/499,
@@ -7186,3 +7192,36 @@ Both colds select the affected complete Fog688/all22 caller. Four other exact
 interpolation callers replay2729/all49 in their two existing ANM recipes.
 Adds576 authored exact bytes and one owner, no new source mapping or denominator
 change:94,412/275,729 bytes,477 authored exact owners,204 mapped authored backlog.
+
+
+## Complete Stage lifecycle and handoff cleanup (2026-10-30)
+
+[Five complete lifecycle owners](evidence/stage-initialize-context-20261029/README.md)
+pass two independent13-input canonical StageCreate colds: constructor188,
+Initialize522, destructor499, factory151 and LoadData308; all1668 bytes/all91 fields.
+Adds1480 authored exact bytes/four authored owners. Constructor188 keeps its
+existing indeterminate origin, adding only codegen exact credit. No mapping,
+boundary, origin or denominator promotion:95,892/275,729 authored bytes,481
+exact authored owners,200 mapped authored backlog,1355 total exact owners.
+
+Rocking offset is a real Float3 at camera+3C. Ordinary four-vector assignments
+and meaningful copySize/vmBytes allocation captures recover the target schedules.
+Actual Chain member operations retain all three physical inputs and old131-byte
+bodies while restoring priority/receiver preparation. SDK IAT declarations and
+real Main lock fields plus ReleaseAnm restore the full destructor. Only the
+StageLifecycle support profile adds /EHs for observed C++ unwind frames; the
+other pinned profiles and real StageCreate entry are preserved.
+
+The new strict Stage-array EH descriptor checks complete37/64-byte generated
+regions, all four/six fields, immutable28-byte FuncInfo, one/two predecessor
+states, saved this at EBP+4, member offsets180/1F08, counts8/3, stride3AC and
+actual vector-destructor/frame-handler entries. It independently verifies the
+qualified34-byte VM destructor and its free field. Factory reuses the existing
+21-byte allocation binding. No generated-helper or runtime credit is added.
+Both protocols and68 focused rejection controls pass normally and under -O.
+
+The retired transition host-pin file is not consumed by current exact-stage
+code. It now says so explicitly; this batch preserves its old epochs instead
+of recertifying obsolete pins. Source transformations and unchanged RNG
+extraction remain useful source-scope evidence. Document/verification records
+are retained; unused old source copies and rebuildable outputs are removed.

@@ -121,14 +121,14 @@ int EndingView::Initialize()
     task->callback = reinterpret_cast<th10::ChainCallback>(EndingUpdateCallback);
     task->deletedCallback = task->addedCallback = NULL;
     task->arg = this;
-    th10::Chain::AddToCalcChain(task, 28, th10::g_Chain);
+    th10::g_Chain->AddToCalcChain(task, 28);
     updateTask = task;
     task = new EndingTaskView;
     task->flags |= 3;
     task->callback = reinterpret_cast<th10::ChainCallback>(th10::leaf::Fn0040BA80);
     task->deletedCallback = task->addedCallback = NULL;
     task->arg = this;
-    th10::Chain::AddToDrawChain(task, 6, th10::g_Chain);
+    th10::g_Chain->AddToDrawChain(task, 6);
     drawTask = task;
 
     AnmFloat3View position(480.0f, 392.0f, 0.0f);

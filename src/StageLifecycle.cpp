@@ -1,3 +1,4 @@
+#include "Main.hpp"
 #include "StageScript.hpp"
 #include "Chain.hpp"
 #include "FileSystem.hpp"
@@ -34,7 +35,8 @@ int StageScriptView::LoadData(const char *path)
         if (originalData == NULL)
             return -1;
     }
-    data = static_cast<StageDataHeaderView *>(malloc(originalDataSize));
+    const size_t copySize = originalDataSize;
+    data = static_cast<StageDataHeaderView *>(malloc(copySize));
     memcpy(data, originalData, originalDataSize);
     anm = g_AnmRenderManagerView->PreloadAnm((unknown2A30 & 1) + 4, data->anmPath);
     if (anm == NULL)
@@ -48,7 +50,8 @@ int StageScriptView::LoadData(const char *path)
     scriptBase = reinterpret_cast<unsigned char *>(data) + data->scriptOffset;
     for (int i = 0; i < data->objectCount; ++i)
         objects[i] = reinterpret_cast<StageObjectView *>(reinterpret_cast<unsigned char *>(data) + reinterpret_cast<size_t>(objects[i]));
-    objectVms = static_cast<AnmVmView *>(malloc(data->objectVmCount * sizeof(AnmVmView)));
+    const size_t vmBytes = data->objectVmCount * sizeof(AnmVmView);
+    objectVms = static_cast<AnmVmView *>(malloc(vmBytes));
     return 0;
 }
 
@@ -70,22 +73,22 @@ int StageScriptView::Initialize(const char *path, int priorityOffset)
     camera.position = AnmFloat3View(0, 0, -600);
     camera.direction = AnmFloat3View(0, 300, 600);
     camera.up = AnmFloat3View(0, 1, 0);
-    camera.rockingOffset = camera.rockingOffsetY = camera.rockingOffsetZ = 0;
+    camera.rockingOffset = AnmFloat3View(0, 0, 0);
     cullDistanceSquared = 9610000.0f;
     th10::ChainElem *element = th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(StageUpdateCallback));
     element->arg = this;
     element->flags &= ~2u;
-    th10::Chain::AddToCalcChain(element, priorityOffset + 12, th10::g_Chain);
+    th10::g_Chain->AddToCalcChain(element, priorityOffset + 12);
     updateChain = element;
     element = th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(StageDrawEarlyCallback));
     element->flags &= ~2u;
     element->arg = this;
-    th10::Chain::AddToDrawChain(element, priorityOffset + 7, th10::g_Chain);
+    th10::g_Chain->AddToDrawChain(element, priorityOffset + 7);
     earlyDrawChain = element;
     element = th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(StageDrawLateCallback));
     element->arg = this;
     element->flags &= ~2u;
-    th10::Chain::AddToDrawChain(element, priorityOffset + 10, th10::g_Chain);
+    th10::g_Chain->AddToDrawChain(element, priorityOffset + 10);
     lateDrawChain = element;
     frame = 0;
     scriptTimer.SetCurrent(0);
@@ -100,11 +103,11 @@ static void StageRemoveChain(th10::ChainElem *element)
     th10::Chain *chain = th10::g_Chain;
     if (element != NULL)
     {
-        EnterCriticalSection(g_AnmChainCriticalSection);
-        ++g_AnmChainMutationDepth;
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
         chain->UnregisterElem(element);
-        LeaveCriticalSection(g_AnmChainCriticalSection);
-        --g_AnmChainMutationDepth;
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
 }
 // Target0x402440/499. Dynamically allocated objectVms are raw storage here;
@@ -119,20 +122,7 @@ StageScriptView::~StageScriptView()
     originalData = NULL;
     if (objectVms != NULL) { free(objectVms); objectVms = NULL; }
     if ((g_GameRuntimeFlags & 1) == 0)
-    {
-        int index = (unknown2A30 & 1) + 4;
-        if (index >= 0 && index < 33)
-        {
-            AnmLoadedView **slot = &g_AnmRenderManagerView->loadedAnms[index];
-            AnmLoadedView *loaded = *slot;
-            if (loaded != NULL)
-            {
-                loaded->Release();
-                delete *slot; // target reloads the slot after Release
-                *slot = NULL;
-            }
-        }
-    }
+        g_AnmRenderManagerView->ReleaseAnm((unknown2A30 & 1) + 4);
     if (g_StagePrimary == this) g_StagePrimary = NULL;
     if (g_StageSecondary == this) g_StageSecondary = NULL;
 }

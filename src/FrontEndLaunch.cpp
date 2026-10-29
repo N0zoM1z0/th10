@@ -12,13 +12,13 @@ int FrontEndControllerView::RegisterTasks()
         reinterpret_cast<th10::ChainCallback>(FrontEndUpdateCallback));
     element->flags &= ~2u;
     element->arg = this;
-    th10::Chain::AddToCalcChain(element, 6, th10::g_Chain);
+    th10::g_Chain->AddToCalcChain(element, 6);
     updateTask = element;
     element = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(FrontEndDrawCallback));
     element->arg = this;
     element->flags &= ~2u;
-    th10::Chain::AddToDrawChain(element, 3, th10::g_Chain);
+    th10::g_Chain->AddToDrawChain(element, 3);
     drawTask = element;
     frontAnm = g_AnmRenderManagerView->PreloadAnm(25, "title.anm");
     if (frontAnm == NULL)

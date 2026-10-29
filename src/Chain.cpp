@@ -66,8 +66,9 @@ __declspec(noinline) ChainElem * __stdcall Chain::AllocElem(ChainCallback callba
 }
 
 
-__declspec(noinline) i32 __stdcall Chain::AddToCalcChain(ChainElem *elem, i32 prio, Chain *chain)
+__declspec(noinline) i32 Chain::AddToCalcChain(ChainElem *elem, i32 prio)
 {
+    Chain *chain = this;
     i32 result;
     result = 0;
     if (elem->addedCallback != NULL)
@@ -102,8 +103,9 @@ __declspec(noinline) i32 __stdcall Chain::AddToCalcChain(ChainElem *elem, i32 pr
     return result;
 }
 
-__declspec(noinline) i32 __stdcall Chain::AddToDrawChain(ChainElem *elem, i32 prio, Chain *chain)
+__declspec(noinline) i32 Chain::AddToDrawChain(ChainElem *elem, i32 prio)
 {
+    Chain *chain = this;
     i32 result;
     result = 0;
     if (elem->addedCallback != NULL)
@@ -212,7 +214,7 @@ ChainElem *__stdcall Chain::RegisterCalc(void *arg, i32 prio, ChainCallback call
     elem = Chain::AllocElem(callback);
     elem->arg = arg;
     elem->flags |= 2;
-    Chain::AddToCalcChain(elem, prio, g_Chain);
+    g_Chain->AddToCalcChain(elem, prio);
     return elem;
 }
 
@@ -222,7 +224,7 @@ ChainElem *__stdcall Chain::RegisterDraw(void *arg, i32 prio, ChainCallback call
     elem = Chain::AllocElem(callback);
     elem->arg = arg;
     elem->flags |= 2;
-    Chain::AddToDrawChain(elem, prio, g_Chain);
+    g_Chain->AddToDrawChain(elem, prio);
     return elem;
 }
 

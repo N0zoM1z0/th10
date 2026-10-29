@@ -889,7 +889,7 @@ int PlayerInitialize(Player *player)
         *reinterpret_cast<void *volatile *>(&g_PlayerCallbackManager));
     updateNode->arg = player;
     updateNode->flags = updateFlags & ~2u;
-    th10::Chain::AddToCalcChain(updateNode, 0x10, updateManager);
+    updateManager->AddToCalcChain(updateNode, 0x10);
     player->updateCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(updateNode);
 
     th10::ChainElem *drawNode = th10::Chain::AllocElem(
@@ -898,7 +898,7 @@ int PlayerInitialize(Player *player)
     // Complete the flags update before publishing the callback argument.
     _ReadWriteBarrier();
     drawNode->arg = player;
-    th10::Chain::AddToDrawChain(drawNode, 0x16, th10::g_Chain);
+    th10::g_Chain->AddToDrawChain(drawNode, 0x16);
     player->drawCallbackNode = reinterpret_cast<PlayerCallbackNodeView *>(drawNode);
 
     // Target 0x4248B1 calls the real VM initializer at 0x404F30 with

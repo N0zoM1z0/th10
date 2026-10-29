@@ -2,6 +2,10 @@
 
 ## Scope and status
 
+This is a historical proposal. Current exact status comes from the ledgers and
+per-owner evidence. Its host input hashes describe old source epochs and are
+not active validation requirements.
+
 Local-only proposal atop committed67ced17fff5dfe758a33000b3f83c92002187373 (lexical Gui Run). Existing dependency bodies were read from the clean exported50b971f source and applied-current-prefix; source hashes in config/transition-effect-host-inputs.json pin exactly what was consumed. This packet adds ordinary source only, not production integration, native ABI closure, target execution, exact-byte credit, or a recovered original class/TU.
 
 Two production files implement the shared complete nine-kind initializer, eleven update/draw callbacks, factory, release trigger, cleanup and required scheduler deletion entry. `TRANSITION_EFFECT_TARGET_MATRIX.md` lists every target extent. Small scalar-deleting adapter43C890 is not manually emitted: no forcedABI or guessed virtual class is introduced. Source-level explicit destruction covers the logical cleanup/free behavior, with compiler-emitted boundary ownership unresolved.
