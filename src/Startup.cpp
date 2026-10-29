@@ -178,7 +178,7 @@ static void RemoveStartupElement(th10::ChainElem *element, th10::Chain *chain)
         return;
     EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
     ++g_MainSupervisorView.criticalSectionLockCounts[0];
-    th10::Chain::UnregisterElem(element, chain);
+    chain->UnregisterElem(element);
     LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
     --g_MainSupervisorView.criticalSectionLockCounts[0];
 }

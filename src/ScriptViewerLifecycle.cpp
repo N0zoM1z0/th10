@@ -19,7 +19,7 @@ ScriptViewerBombOwnerView::~ScriptViewerBombOwnerView()
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
@@ -29,7 +29,7 @@ ScriptViewerBombOwnerView::~ScriptViewerBombOwnerView()
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
@@ -44,7 +44,7 @@ ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView()
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
@@ -54,7 +54,7 @@ ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView()
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
@@ -69,7 +69,7 @@ BulletManagerView::~BulletManagerView()
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
@@ -79,7 +79,7 @@ BulletManagerView::~BulletManagerView()
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }

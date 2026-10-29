@@ -1173,3 +1173,7 @@ MainSupervisorView::LeaveLock
 SoundPlayerView::ServiceBgmFades
 GameManagerDelete
 FrontEndDelete
+FrontEndControllerView::GetSize
+FrontEndControllerView::FrontEndControllerView
+FrontEndControllerView::~FrontEndControllerView
+FrontEndCreate

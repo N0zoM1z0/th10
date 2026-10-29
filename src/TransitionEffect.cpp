@@ -270,7 +270,7 @@ void TransitionEffectView::Cleanup()
     {
         EnterCriticalSection(&th10::g_CriticalSections[0]);
         ++th10::g_ChainNestCounter;
-        th10::Chain::UnregisterElem(node, chain);
+        chain->UnregisterElem(node);
         LeaveCriticalSection(&th10::g_CriticalSections[0]);
         --th10::g_ChainNestCounter;
     }
@@ -280,7 +280,7 @@ void TransitionEffectView::Cleanup()
     {
         EnterCriticalSection(&th10::g_CriticalSections[0]);
         ++th10::g_ChainNestCounter;
-        th10::Chain::UnregisterElem(node, chain);
+        chain->UnregisterElem(node);
         LeaveCriticalSection(&th10::g_CriticalSections[0]);
         --th10::g_ChainNestCounter;
     }

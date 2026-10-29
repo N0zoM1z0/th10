@@ -275,17 +275,19 @@ lane likewise supplies address identity only; the enclosing owner must still
 compare every byte and every field. See the
 [archive size proof](evidence/filesystem-path-size/README.md).
 
-## Ending worker-member EH address binding
+## Worker-member EH address binding
 
 The opt-in `worker_member_eh_handler = true` is restricted to the named Ending
-text constructor's DIR32 handler field at+3. Its unique unaliased MAP entry
+text constructor and FrontEnd destructor DIR32 handler fields at+3. Its unique unaliased MAP entry
 must join one complete24-byte generated PDB region in the same parent module
 and object. Both images require immutable one-state28-byte FuncInfo, the exact
-unwind action, saved this atEBP+4, member offsetD0, real worker destructor tail
+unwind action, saved this atEBP+4, member offsetD0 for Ending or5AB0 for
+FrontEnd, real worker destructor tail
 and CxxFrameHandler dispatch. Allocation, stack-file and static selectors cannot
 combine with it. The real16-byte worker destructor must match all ordinary bytes
 and its two semantically bound fields; the qualified101-byte Stop contribution
 and real vtable/Stop symbols cannot be replaced by anchors. Every parent byte,
 field and extent still passes the normal comparator. The selector supplies
 handler address identity only, with no generated-code, metadata, storage or
-EH-runtime credit. See [the complete Ending proof](evidence/ending-id-storage-20261028/README.md).
+EH-runtime credit. See [the Ending proof](evidence/ending-id-storage-20261028/README.md)
+and [the FrontEnd proof](evidence/frontend-lifecycle-20261029/README.md).

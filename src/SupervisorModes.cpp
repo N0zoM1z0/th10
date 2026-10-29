@@ -9,9 +9,6 @@
 #include "Sound.hpp"
 #include <new>
 
-extern FrontEndControllerView *g_FrontEndControllerView;
-extern FrontEndControllerView *FrontEndCreate();
-extern void __stdcall FrontEndDestroy(FrontEndControllerView *controller);
 extern void ReleaseModeOwners();
 extern int g_MainModeTransitionCounter; //491C00, original role unknown.
 extern unsigned char g_ScriptViewerRouteDescriptor[];
@@ -31,11 +28,7 @@ void GameManagerDelete(GameManager *manager)
 
 void FrontEndDelete(FrontEndControllerView *controller)
 {
-    if (controller != NULL)
-    {
-        FrontEndDestroy(controller);
-        ::operator delete(controller);
-    }
+    delete controller;
 }
 
 // Target421C50..421C68.

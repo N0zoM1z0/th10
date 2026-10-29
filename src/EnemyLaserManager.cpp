@@ -40,7 +40,7 @@ void __stdcall GameCleanupLinked41C1C0(GameChainOwnerView *owner)
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
@@ -50,7 +50,7 @@ void __stdcall GameCleanupLinked41C1C0(GameChainOwnerView *owner)
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }

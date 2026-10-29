@@ -189,7 +189,7 @@ extern int __stdcall FrontEndFinalizeGameSelection(float value);
 // receiver ABI.
 void DeleteVm(FrontEndControllerView *controller, int index)
 {
-    AnmVmIdView *id = &controller->vmIds[index];
+    FrontEndVmIdStorageView *id = &controller->vmIds[index];
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(*id);
     if (vm != NULL)
     {
@@ -337,7 +337,7 @@ static int TimerReachedMultiple(
         timer->current % divisor == 0;
 }
 
-static AnmVmView *ResolveVm(AnmVmIdView *id)
+static AnmVmView *ResolveVm(FrontEndVmIdStorageView *id)
 {
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(id->value);
     if (vm == NULL)
@@ -346,7 +346,7 @@ static AnmVmView *ResolveVm(AnmVmIdView *id)
 }
 
 static int FindChildVmId(
-    AnmVmIdView *parentId, short scriptIndex)
+    FrontEndVmIdStorageView *parentId, short scriptIndex)
 {
     AnmVmView *parent = ResolveVm(parentId);
     if (parent == NULL)
@@ -556,7 +556,7 @@ static __forceinline AnmVmIdView FindOptionsChildId(
     FrontEndControllerView *controller, AnmRenderManagerView *manager,
     short scriptIndex)
 {
-    AnmVmIdView *parentId = &controller->vmIds[FRONT_END_ROOT_VM];
+    FrontEndVmIdStorageView *parentId = &controller->vmIds[FRONT_END_ROOT_VM];
     AnmVmView *parent = manager->FindVm(*parentId);
     if (parent == NULL)
         parentId->value = 0;
@@ -637,7 +637,7 @@ static __forceinline AnmVmIdView FindKeyConfigChildId(
     FrontEndControllerView *controller, AnmRenderManagerView *manager,
     short scriptIndex)
 {
-    AnmVmIdView *parentId = &controller->vmIds[FRONT_END_KEY_CONFIG_ROOT_VM];
+    FrontEndVmIdStorageView *parentId = &controller->vmIds[FRONT_END_KEY_CONFIG_ROOT_VM];
     AnmVmView *parent = manager->FindVm(*parentId);
     if (parent == NULL)
         parentId->value = 0;

@@ -1174,3 +1174,7 @@ MainSupervisorView::LeaveLock,0x00421C50,function
 SoundPlayerView::ServiceBgmFades,0x00421E00,function
 GameManagerDelete,0x00418150,function
 FrontEndDelete,0x0042CDB0,function
+FrontEndControllerView::GetSize,0x0042C5B0,function
+FrontEndControllerView::FrontEndControllerView,0x0042C920,function
+FrontEndControllerView::~FrontEndControllerView,0x0042CB60,function
+FrontEndCreate,0x0042CD50,function

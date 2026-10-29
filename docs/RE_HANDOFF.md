@@ -2,11 +2,14 @@
 
 ## Start here
 
-Current checkpoint restores the complete Supervisor mode call graph and adds
-399 exact bytes:363 authored plus36 indeterminate. The existing23-byte stage
-helper moves to typed source without extra credit. Actual mode owner4218D0 is
-666 bytes (old ledger omitted94 table bytes); its complete candidate678/666 and
-registration204/204 remain nonexact. No partial owner credit is granted.
+Current checkpoint reconstructs the complete FrontEnd lifecycle and adds1159
+exact bytes:949 authored and210 indeterminate. The491-byte FrontEnd and362-byte
+Ending destructors,
+204-byte constructor,96-byte factory and newly inventoried6-byte size query pass
+two independent canonical25-input colds. A natural Chain member receiver solves
+the last four ordinary cleanup bytes while retaining existing callee/scheduler
+exactness. Existing18-byte nullable deletion binds the real destructor; no extra
+credit is granted. Supervisor mode678/666 remains nonexact.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -34,9 +37,32 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**83,381/275,561 reviewed authored owned bytes exact, 452 exact authored owners**;
-665 authored source mappings. Total: 1815 candidates, 1175 mappings, 1319 exact.
+**84,330/275,561 reviewed authored owned bytes exact, 455 exact authored owners**;
+667 authored source mappings. Total: 1816 candidates, 1179 mappings, 1324 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [FrontEnd lifecycle proof](evidence/frontend-lifecycle-20261029/README.md):
+
+- Five new complete owners1159/all75 plus existing nullable delete18/all2 pass
+  independent canonical25-input colds. Constructor204 and new size6 retain
+  indeterminate origin; FrontEnd destructor491, Ending destructor362 and factory96
+  retain authored origin.
+  The authored denominator is unchanged. Four new mappings cover797 bytes; Ending
+  already had its mapping.
+- Sole vtable46ECF0 points to42C5B0, a size query returning sizeof5ACC; the
+  destructor is nonvirtual. Target worker is+5AB0, tasks+C/+10, flags+4.
+  Plain ID storage avoids default zero writes before the full clear. Existing
+  UI and ScriptViewer contracts retain their complete bytes.
+- Static fastcall/cdecl and node-wrapper controls were neutral for four remaining
+  destructor bytes. Ordinary chain->UnregisterElem(element) naturally selects the
+  actual promoted element-ECX/chain-EDX interface and solves all four. Every source
+  call site uses it. Its canonical prior four units772 pass a separate cold.
+- The handler binder adds only this named destructor with literal member+5AB0;
+  Ending remains fixed+D0. Complete same-module24-byte region, immutable metadata,
+  saved-this+4 and actual16-byte worker cleanup stay strict. Five positives/41
+  rejection controls and the prior Ending constructor cold pass. Address binding
+  grants no generated-code, EH-runtime or product credit. Explicit old same-image
+  guards pass in both FrontEnd colds; public proof records the counts.
 
 Latest [Supervisor mode proof](evidence/supervisor-modes-20261029/README.md):
 
@@ -137,36 +163,36 @@ owns 1419 code + 1 NOP + 32 table bytes, resolving the old adjacent-table
 uncertainty. New SDK-family 19/52-byte candidates at `44D3E0`/`44D400` stay
 indeterminate, unmapped and nonexact.
 
-## Immediate continuation: Supervisor mode and actual lifecycle callees
+## Immediate continuation: actual launch callbacks and mode context
 
-The complete666-byte mode source remains678, with one common FrontEndCreate call
-but different block/epilogue placement, branch distances and stage-store scheduling.
-Initial686 becomes678 through the outer change guard; grouped/fallthrough/common
-cleanup controls694 are restored. Generic normal-unlock spelling is byte-neutral
-and restored. Park these block controls. Registration420470 is actually global/
-no-argument; correcting the old pointer seam gives204/204, but EBX/EBP allocations
-still differ. Direct-global versus retained pointer spelling is neutral; park it.
+The complete666-byte Supervisor mode source remains678, with a common
+FrontEndCreate call but different block/epilogue placement, branch distances
+and stage-store scheduling. Initial686 becomes678 through the outer change
+guard; grouped/fallthrough/common-cleanup694 controls are restored. Registration
+420470 is actually global/no-argument and remains204/204 with EBX/EBP allocations
+swapped. Park the repeated block/register spellings; lifecycle context is the
+useful premise. FrontEnd's actual factory96 and cleanup491 now pass completely.
 
-The next useful premise is actual lifecycle callee source, not register/flag
-sweeps. FrontEndCreate42CD50/96 is still opaque. Fresh raw constructor42C920/204
-writes a vtable at+0, constructs cursor/timer state and worker+5AB0, then clears
-5ACC and sets flag+4 bit2/global47784C. The current FrontEndController view ends
-at5AB0; do not append a worker or introduce virtual layout without reconciling
-all observed offsets and the491-byte cleanup42CB60. Constructor/raw/decompile
-leads are retained in the active campaign. GameManagerCreate4180E0/107 is also
-opaque; its logical stack mode/RET4 and owner mode+5C are independently observed.
-ReleaseModeOwners4203F0/128 and added/draw callbacks remain declarations only.
+The actual FrontEndLoadThread42C9F0 remains a declaration and is absent from the
+old function inventory/database functions. Fresh raw decoding reaches RET42CA97,
+then eight CC bytes before the existing192-byte42CAA0 registration owner. The
+complete168-byte thread calls registration using global47784C, selects next mode
+from Supervisor flags, waits on the statistics+3EC counter or flag80, releases ANM
+slot1 and sets flag2 on the current update task. This is a raw lead, not an accepted
+boundary/origin or new source mapping. Review all references before inventorying;
+Ghidra autoanalysis silence is not evidence that the function is absent.
 
-The source-backed actual callback41FF80 and stage method421B70 now reproduce
-complete bytes/fields. This does not prove the mode callee's bytes, original
-class/TU or physical ownership of all legacy global aliases. ScoreState fields
-selectedStage+3C/nextStage+40 preserve the existing5C layout. GameManager's
-existing60-byte view is shared through GameManager.hpp; its old adapters pass.
+Main GameManagerCreate4180E0/107 remains opaque with logical stack mode/RET4 and
+owner mode+5C. ReleaseModeOwners4203F0/128 and Main added/draw callbacks remain
+unreconstructed. Source-backed real caller interfaces can change private LTCG
+selection; do not add fake register declarations or unused arguments.
 
-Current warm context: `.analysis/gpt-6.1-sol/supervisor-modes-20261029/final-cold-b-context.json`.
-It is the22-input Main graph with actual Ending/GameManager/SupervisorModes
-supports. Preserve all pinned per-source profiles and recursive include hashes.
-Only rebuild changed/new inputs during diagnosis; cold acceptance reuses none.
+Current warm context:
+`.analysis/gpt-6.1-sol/frontend-lifecycle-20261029/final-cold-b-context.json`.
+It is the25-input Main graph, adding FrontEndLifecycle/FrontEnd/ReplayManager to
+the prior22-input graph. Preserve source profiles, quoted-include hashes and
+accepted artifacts. Rebuild only changed/new inputs for diagnosis; acceptance
+colds reuse none. Replay only newly exact and actually affected existing units.
 
 ## Startup residuals
 
@@ -186,7 +212,7 @@ worker+10 and VM+30, with states[-1,0]; this is diagnostic metadata evidence,
 not an accepted handler binding or parent match. Normal-path state updates,
 zero-register lifetime and argument scheduling still differ. Park flag controls.
 
-Draw is210/220 in the new22-input context (218/220 in the retained19-input
+Draw is218/220 in the current25-input context (210/220 in the prior22-input
 context), with different hidden-return/frame reuse. Named result temporaries
 produce222 and are restored. OnUpdate is now63/63 exact through the state-field
 repair above. Raw EDX counterpart41FD90 and registered ECX copy41FEB0 have the
@@ -208,8 +234,8 @@ Its seven missing ECX homing/allocation/pop bytes and error-store scheduling are
 still unexplained. Do not force an unused argument or callback ABI. The actual
 _beginthreadex callback type and the observed plain RET stay separate.
 
-Active recipes/listings/logs: `.analysis/gpt-6.1-sol/supervisor-modes-20261029/`.
-Its `final-cold-b-context.json` records the current22-input warm graph. The
+Active recipes/listings/logs: `.analysis/gpt-6.1-sol/frontend-lifecycle-20261029/`.
+Its `final-cold-b-context.json` records the current25-input warm graph. The
 private producer compares recursive include and profile pins, rebuilding only
 affected/new inputs. Cold acceptance reuses no objects. Superseded
 private images are removed after retaining source snapshots, receipts/listings;
@@ -227,7 +253,7 @@ claims remain independent.
 | Sound PreloadBgm / LoadBgm | 369/369; 304/298 | Nonexact; parked scratch-register controls |
 | Sound sample loader | 684/684 | Nonexact; size equality grants nothing |
 | WinMain / Render | 1533/1389; 419/425 | Nonexact, real queue call now connected |
-| Ending Run / outer destructor | 1564/1568; 362/362 | Nonexact; parked register/return-buffer panels |
+| Ending Run | 1564/1568 | Nonexact; outer destructor362 is now exact |
 | ANM manager constructor | 2305/2315 | Nonexact; counter/operator-view and neutral loop controls rejected |
 | Large ANM/ECL interpreters | See exact-first method and evidence | Parked residuals; require a new premise |
 
@@ -241,10 +267,10 @@ is allowed when it has a concrete uncertainty and a complete comparison path.
 
 Current active artifacts and the verified historical archive are indexed in
 `.analysis/README.md`; cleanup audit is `.analysis/handoff-20261028/`.
-Newest logs/receipts are `.analysis/gpt-6.1-sol/supervisor-modes-20261029/`;
+Newest logs/receipts are `.analysis/gpt-6.1-sol/frontend-lifecycle-20261029/`;
 the independent first witness is
-`build/gpt-6.1-sol/supervisor-modes-20261029/cold-a/` and the second is canonical
-`build/match-linked/SupervisorModes/`. Source/include hashes agree.
+`build/gpt-6.1-sol/frontend-lifecycle-20261029/cold-a/` and the second is canonical
+`build/match-linked/FrontEndLifecycle/`. Prior Supervisor witnesses remain retained. Source/include hashes agree.
 Earlier SoundDiskStartup and primary-format witnesses remain retained separately.
 Canonical `build/match-linked`, `build/match` and `build/match-runtime` caches,
 current Sound witnesses and warm Main inputs are retained. Obsolete host/probe

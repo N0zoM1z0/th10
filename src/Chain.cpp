@@ -123,19 +123,19 @@ __declspec(noinline) i32 __stdcall Chain::AddToDrawChain(ChainElem *elem, i32 pr
     return result;
 }
 
-void __fastcall Chain::UnregisterElem(ChainElem *elem, Chain *chain)
+void Chain::UnregisterElem(ChainElem *elem)
 {
     ListNode *node;
     if (elem == NULL)
         return;
-    node = chain->CalcList();
+    node = CalcList();
     while (node != NULL)
     {
         if (node->elem == elem)
             goto found;
         node = node->next;
     }
-    node = chain->DrawList();
+    node = DrawList();
     while (node != NULL)
     {
         if (node->elem == elem)
@@ -183,7 +183,7 @@ void __stdcall Chain::RemoveAllFromList(u8 *listBase, Chain *chain)
         {
             EnterCriticalSection(&g_CriticalSections[0]);
             g_ChainNestCounter++;
-            Chain::UnregisterElem(elem, chain);
+            chain->UnregisterElem(elem);
             LeaveCriticalSection(&g_CriticalSections[0]);
             g_ChainNestCounter--;
         }
@@ -252,7 +252,7 @@ execute_again:
                 switch (result)
                 {
                 case 0:
-                    th10::Chain::UnregisterElem(elem, chain);
+                    chain->UnregisterElem(elem);
                     ++updatedCount;
                     node = next;
                     continue;
@@ -315,7 +315,7 @@ execute_again:
                 switch (result)
                 {
                 case 0:
-                    th10::Chain::UnregisterElem(elem, chain);
+                    chain->UnregisterElem(elem);
                     break;
                 case 2:
                     goto execute_again;

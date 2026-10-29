@@ -6531,3 +6531,45 @@ Legacy source is unchanged; primary mapping/selector changes do not settle origi
 or add credit. GameManager's existing60-byte view now has one shared header.
 These layouts and mechanical stack-owner/RET4 interfaces do not establish original
 class/TU identity, all alias/storage ownership, product or runtime closure.
+
+
+## 2026-10-29 FrontEnd lifecycle and natural Chain receiver
+
+The complete FrontEnd owner is5ACC bytes, with flags+4, tasks+C/+10 and1C-byte
+worker+5AB0. Vtable46ECF0 has one entry42C5B0, a complete6-byte size query; it is
+not a deleting destructor. The method returns sizeof the owner. The destructor
+is nonvirtual and naturally uses the observed stack-owner/RET4 private interface.
+Every size-code/vtable byte was queried in attested read-only Ghidra; only the
+vtable reaches its entry, and constructor/destructor reach the vtable. Ten CC
+bytes follow the6-byte body; the previous leaf and its15 CC bytes are separate.
+This previously omitted candidate retains indeterminate origin.
+
+Constructor42C920/204 initializes four cursor states, timer and worker before
+clearing the whole object, setting flag2 and publishing47784C. Plain four-byte
+ID storage avoids target-absent per-ID default stores. Reference-based access
+to the existing ID operations preserves prior UI codegen. Factory42CD50/96
+retains its worker reference, stops it and expands the real `_beginthreadex` launch.
+Callback42C9F0 is still a declaration; its source/boundary/origin remain separate.
+
+Destructor42CB60/491 includes both task removals, ANM slots25/26,50 replay deletes,
+auxiliary VM/root-child interrupt1, music text free/null, global clear and automatic
+worker destruction. Last four ordinary byte differences were reversed argument
+moves in the two removals. Static fastcall-to-cdecl, helper argument and node
+wrapper controls were neutral. A natural Chain member call removes all four
+without changing the real114-byte unregister or its promoted element-ECX/chain-EDX
+ABI. This supersedes the old static fastcall spelling as the maintained API;
+it does not prove the original declaration. All call sites migrate consistently.
+
+The same member call solves the old Ending destructor40B7B0/362, including its
+33 fields and stack-owner/RET4 ABI. Its prior source mapping is retained.
+Independent25-input colds reproduce all1159 new bytes/all75 fields plus the old
+18-byte nullable delete/all2 with the actual destructor edge. The four directly
+affected prior Chain selectors114/82/308/268 pass their own canonical cold.
+The handler binder permits the named FrontEnd destructor with literal+5AB0 and
+keeps Ending fixed+D0: complete same-parent24-byte region, immutable one-state
+FuncInfo, saved thisEBP+4 and complete16-byte real worker destructor are required
+in both images. Five synthetic positives/41 rejection controls and the affected
+old Ending constructor cold pass. Handler identity grants no generated/runtime
+credit. Existing origins add949 authored and210 indeterminate exact bytes;
+the reviewed authored denominator is unchanged. Four new source mappings cover
+797 bytes. See [the complete proof](evidence/frontend-lifecycle-20261029/README.md).

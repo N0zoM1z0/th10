@@ -166,7 +166,7 @@ EndingView::~EndingView()
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
@@ -176,7 +176,7 @@ EndingView::~EndingView()
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(task, chain);
+        chain->UnregisterElem(task);
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }

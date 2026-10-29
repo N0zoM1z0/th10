@@ -133,7 +133,21 @@ def main():
         try:bind(f)
         except LinkedImageError as error: assert message in str(error),(name,str(error))
         else:raise AssertionError('accepted '+name)
-    print(f'Worker-member EH:4 synthetic positives and{len(controls)} strict rejection controls pass')
+    frontend = fixture()
+    symbol = '??1FrontEndControllerView@@QAE@XZ'
+    frontend['unit']['symbol'] = frontend['parent']['symbol'] = symbol
+    frontend['field']['symbol'] = frontend['statics'][0]['symbol'] = '__ehhandler$'+symbol
+    for side, address in [('native',0x1105),('target',0x1205)]:
+        word(frontend,side,address,0x5ab0)
+    result = bind(frontend)
+    assert result['candidate']['member_offset'] == result['target']['member_offset'] == 0x5ab0
+    for side, address in [('native',0x1105),('target',0x1205)]:
+        f = copy.deepcopy(frontend)
+        word(f,side,address,0xd0)
+        try: bind(f)
+        except LinkedImageError as error: assert 'saved-this/member' in str(error)
+        else: raise AssertionError('accepted Ending offset for FrontEnd '+side)
+    print(f'Worker-member EH:5 synthetic positives and{len(controls)+2} strict rejection controls pass')
 
 
 if __name__=='__main__': main()

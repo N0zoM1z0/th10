@@ -102,7 +102,7 @@ static void StageRemoveChain(th10::ChainElem *element)
     {
         EnterCriticalSection(g_AnmChainCriticalSection);
         ++g_AnmChainMutationDepth;
-        th10::Chain::UnregisterElem(element, chain);
+        chain->UnregisterElem(element);
         LeaveCriticalSection(g_AnmChainCriticalSection);
         --g_AnmChainMutationDepth;
     }

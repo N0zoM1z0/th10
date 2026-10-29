@@ -1,6 +1,6 @@
-"""Bind Ending's one-state worker-member cleanup without changing codegen.
+"""Bind reviewed one-state worker-member cleanups without changing codegen.
 
-The named parent, complete24-byte PDB region, saved-this+4/member+D0 protocol,
+The named parent, complete24-byte PDB region, saved-this+4/member protocol,
 immutable one-state28-byte metadata and real complete16-byte worker destructor
 must agree in both images. This grants handler address identity only.
 """
@@ -15,6 +15,10 @@ TARGET_DESTRUCTOR = 0x0044C130
 TARGET_STOP = 0x0044C150
 TARGET_VTABLE = 0x004703E4
 PARENT_SYMBOL = '??0EndingTextVmView@@QAE@PAE@Z'
+PARENT_MEMBERS = {
+    PARENT_SYMBOL: 0xd0,
+    '??1FrontEndControllerView@@QAE@XZ': 0x5ab0,
+}
 STOP_SYMBOL = '?Stop@ScriptViewerWorkerView@@QAEXXZ'
 VTABLE_SYMBOL = '??_7ScriptViewerWorkerView@@6B@'
 DESTRUCTOR_SYMBOL = '??1ScriptViewerWorkerView@@UAE@XZ'
@@ -28,7 +32,7 @@ def worker_member_eh_selector(unit, field):
     if 'worker_member_eh_handler' not in field: return False
     require(field['worker_member_eh_handler'] is True, 'explicit true opt-in required')
     require(unit.get('artifact_kind') == 'linked-pe', 'linked-pe required')
-    require(unit.get('symbol') == PARENT_SYMBOL, 'unsupported parent constructor')
+    require(unit.get('symbol') in PARENT_MEMBERS, 'unsupported parent')
     require(field.get('type') == 'DIR32' and not field.get('local', False)
             and field.get('addend', 0) == 0
             and int(field.get('width', 4)) == 4 and int(field.get('offset', 3)) == 3
@@ -54,7 +58,7 @@ def section_range(image, address, size, code):
     require(bool(flags & 0x20000000) == code, 'code/data section role differs')
 
 
-def protocol(image, handler, frame_handler, destructor):
+def protocol(image, handler, frame_handler, destructor, member_offset):
     section_range(image, handler-14, 24, True)
     decoder = Cs(CS_ARCH_X86, CS_MODE_32); decoder.detail = True
     instructions = list(decoder.disasm(image.read_address(handler, 10), handler))
@@ -81,11 +85,11 @@ def protocol(image, handler, frame_handler, destructor):
             and load.operands[1].mem.base == X86_REG_EBP and load.operands[1].mem.index == 0
             and load.operands[1].mem.disp == 4
             and member.operands[0].reg == X86_REG_ECX
-            and member.operands[1].type == X86_OP_IMM and member.operands[1].imm == 0xd0
+            and member.operands[1].type == X86_OP_IMM and member.operands[1].imm == member_offset
             and tail.operands[0].type == X86_OP_IMM and tail.operands[0].imm == destructor,
             'saved-this/member/destructor-tail protocol differs')
     return {'handler':hex(handler),'unwind_action':hex(action),'func_info':hex(info),
-            'unwind_map':hex(header[2]),'saved_this_offset':4,'member_offset':0xd0,
+            'unwind_map':hex(header[2]),'saved_this_offset':4,'member_offset':member_offset,
             'region_bytes':24,'unwind_states':1,'func_info_bytes':28}
 
 
@@ -165,8 +169,9 @@ def worker_member_eh_target(unit, field, directory, image, publics, aliases,
             'parent PDB module differs')
     destructor, cleanup = destructor_identity(unit,directory,publics,aliases)
     cleanup_proof = destructor_bytes(image,target,destructor,publics,aliases)
-    candidate_protocol = protocol(image,address,address_for(publics,aliases,'___CxxFrameHandler'),destructor)
-    target_protocol = protocol(target,int(field['target']),TARGET_FRAME_HANDLER,TARGET_DESTRUCTOR)
+    member_offset = PARENT_MEMBERS[unit['symbol']]
+    candidate_protocol = protocol(image,address,address_for(publics,aliases,'___CxxFrameHandler'),destructor,member_offset)
+    target_protocol = protocol(target,int(field['target']),TARGET_FRAME_HANDLER,TARGET_DESTRUCTOR,member_offset)
     return {'symbol':field['symbol'],'parent_symbol':unit['symbol'],
             'pdb_module_index':contribution['module_index'],'cleanup_symbol':DESTRUCTOR_SYMBOL,
             'cleanup_owner':cleanup,'cleanup_proof':cleanup_proof,'candidate':candidate_protocol,

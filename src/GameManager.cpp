@@ -655,7 +655,7 @@ void __stdcall GameManagerCleanup(GameManager *manager)
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(reinterpret_cast<th10::ChainElem *>(element), chain);
+        chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(element));
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
@@ -665,7 +665,7 @@ void __stdcall GameManagerCleanup(GameManager *manager)
     {
         EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         ++g_MainSupervisorView.criticalSectionLockCounts[0];
-        th10::Chain::UnregisterElem(reinterpret_cast<th10::ChainElem *>(element), chain);
+        chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(element));
         LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }

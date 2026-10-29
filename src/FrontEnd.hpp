@@ -2,6 +2,8 @@
 #define TH10_RECONSTRUCTION_FRONT_END_HPP
 
 #include "AnmManager.hpp"
+#include "Chain.hpp"
+#include "ScriptViewerWorker.hpp"
 
 #include <stddef.h>
 
@@ -53,6 +55,18 @@ typedef char FrontEndCursorDisabledAt90[
      offsetof(FrontEndCursorView, wraps) == 0xd0 &&
      offsetof(FrontEndCursorView, disabledEntryCount) == 0xd4) ? 1 : -1];
 
+
+struct ScriptViewerCursorView : FrontEndCursorView
+{
+    ScriptViewerCursorView()
+    {
+        saveDepth = 0;
+        current = 0;
+        disabledEntryCount = 0;
+        wraps = 1;
+        count = 999;
+    }
+};
 
 struct FrontEndTransitionOwnerView
 {
@@ -172,33 +186,68 @@ typedef char FrontEndControllerMappingSizeIs12[
     (sizeof(FrontEndControllerMappingView) == 0x12) ? 1 : -1];
 
 
-// This maintained partial view reaches the highest VM slot consumed by the
-// reviewed update paths, key-configuration scratch bindings, and replay-list
-// storage. It does not claim the complete front-end allocation.
+// This owner has plain four-byte ID storage before its whole-object clear.
+// Keep the maintained VM-id operations without introducing default zero writes.
+struct FrontEndVmIdStorageView
+{
+    int value;
+    FrontEndVmIdStorageView &operator=(AnmVmIdView id)
+    {
+        value = id.value;
+        return *this;
+    }
+    operator AnmVmIdView &()
+    {
+        return *reinterpret_cast<AnmVmIdView *>(this);
+    }
+    operator const AnmVmIdView &() const
+    {
+        return *reinterpret_cast<const AnmVmIdView *>(this);
+    }
+    void SetInterrupt(short interrupt)
+    {
+        static_cast<AnmVmIdView &>(*this).SetInterrupt(interrupt);
+    }
+    AnmVmView *GetVm()
+    {
+        return static_cast<AnmVmIdView &>(*this).GetVm();
+    }
+};
+typedef char FrontEndVmIdStorageIs04[
+    (sizeof(FrontEndVmIdStorageView) == 4) ? 1 : -1];
+
+// Target-backed storage view, now including the observed worker at+5AB0.
+// Natural C++ construction is compared independently of original class/TU identity.
 struct FrontEndControllerView
 {
-    unsigned char unknown000[0x010];
-    FrontEndTransitionOwnerView *transitionOwner;
+    unsigned int flags; // +4; GetSize occupies the sole virtual slot.
+    unsigned int unknown008;
+    th10::ChainElem *updateTask;
+    union
+    {
+        FrontEndTransitionOwnerView *transitionOwner;
+        th10::ChainElem *drawTask;
+    };
     AnmLoadedView *frontAnm;
     AnmLoadedView *titleAnm;
     int screen;
     int screenState;
-    FrontEndCursorView cursor;
-    FrontEndCursorView practiceDifficultyCursor;
-    FrontEndCursorView practicePageCursor;
+    ScriptViewerCursorView cursor;
+    ScriptViewerCursorView practiceDifficultyCursor;
+    ScriptViewerCursorView practicePageCursor;
     int practiceDisplayedEntries;
     AnmVmTimerView stateTimer;
     // Native CreateVm/DeleteVm index from +0x2c4 through the practice
     // script slot 0xac at +0x574. This is a minimum reviewed extent;
     // consume anonymous padding without moving any following field.
-    AnmVmIdView vmIds[0xad];
+    FrontEndVmIdStorageView vmIds[0xad];
     unsigned char unknown578[0x058];
-    AnmVmIdView difficultyAuxVmId;
-    AnmVmIdView practiceRowVmIds[10];
+    FrontEndVmIdStorageView difficultyAuxVmId;
+    FrontEndVmIdStorageView practiceRowVmIds[10];
     unsigned char unknown5FC[0x18];
-    AnmVmIdView musicRowVmIds[20];
-    AnmVmIdView musicCommentVmIds[8];
-    AnmVmIdView titleAuxVmId;
+    FrontEndVmIdStorageView musicRowVmIds[20];
+    FrontEndVmIdStorageView musicCommentVmIds[8];
+    FrontEndVmIdStorageView titleAuxVmId;
     int musicTrackCount;
     int musicCommentLine;
     int musicSelectedTrack;
@@ -212,7 +261,7 @@ struct FrontEndControllerView
     int scoreEntryNameCursor;
     int scoreEntryUnavailable;
     int savedDifficulty;
-    FrontEndCursorView scoreEntryKeyboardCursor;
+    ScriptViewerCursorView scoreEntryKeyboardCursor;
     short keyConfigBindings[5];
     unsigned char unknown59D6[2];
     int replayListOffset;
@@ -220,7 +269,11 @@ struct FrontEndControllerView
     int selectedReplayStage;
     ReplayManager *replayFiles[50];
     char *musicText;
+    ScriptViewerWorkerView worker;
 
+    FrontEndControllerView();
+    ~FrontEndControllerView();
+    virtual unsigned int GetSize();
     int Update();
     int Draw();
     static int __stdcall UpdateOptions(FrontEndControllerView *controller);
@@ -249,6 +302,17 @@ struct FrontEndControllerView
     void SetScreenStateTarget(int state);
     void SetScreenTarget(int screen);
 };
+
+extern FrontEndControllerView *g_FrontEndControllerView;
+FrontEndControllerView *FrontEndCreate();
+int FrontEndLoadThread();
+
+typedef char FrontEndControllerLifecycleOffsets[
+    (offsetof(FrontEndControllerView, flags) == 4 &&
+     offsetof(FrontEndControllerView, updateTask) == 0x0c &&
+     offsetof(FrontEndControllerView, drawTask) == 0x10 &&
+     offsetof(FrontEndControllerView, worker) == 0x5ab0 &&
+     sizeof(FrontEndControllerView) == 0x5acc) ? 1 : -1];
 
 typedef char FrontEndControllerTitleSlots[
     (offsetof(FrontEndControllerView, titleAnm) == 0x18 &&
