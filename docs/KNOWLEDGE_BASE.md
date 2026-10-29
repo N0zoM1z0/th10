@@ -7336,3 +7336,24 @@ late target-size reloads remain. EnemyRuntimeUpdate preserves its prior2412-byte
 normalized candidate and89 local destinations, still nonexact. Whole operand swap
 and compound-vector snapshot controls are rejected/restored. The new exact proof
 and scope are in [effect-row evidence](evidence/player-effect-row-context-20261030/README.md).
+
+
+## 2026-10-30 Player planar bounds complete source recovery
+
+The raw55-byte entry4285F0 now maps to PlayerFloat3::GetPlanarBounds. A plain
+const member, shared by target/shot bound calculations, naturally reproduces
+ECX center/ESI minimum/EDX maximum/EAX extent and RET. All four DIR32 fields bind
+float0.5 at470B0C; two independent canonical three-input Player-constructor cold
+links are zero-difference. Existing181/all1 and65/all2 pass the first301-byte/all7
+cold selection. Four/nine CC bytes and complete decode corroborate the boundary.
+Source/codegen do not resolve original class/TU, authored-versus-compiler origin
+or original inline ancestry. Origin stays indeterminate:55 new codegen bytes,
+zero authored credit. See [planar proof](evidence/player-planar-bounds-20261030/README.md).
+
+The operation's post-store extent/center reloads preserve possible aliasing; Z
+is untouched. Current damage calls inline to all1060 ordinary normalized bytes
+and41 local destinations of the previous1172-byte nonexact candidate. The root
+retains all2136 normalized bytes/89 destinations, still nonexact. Separate shot
+branches1169, vector arithmetic1172 and in-place rotation1174 are rejected;
+nested hit scope and coordinate-first products are neutral. None fixes stack
+homes; no partial large-owner exactness credit is granted.

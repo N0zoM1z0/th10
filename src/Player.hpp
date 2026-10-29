@@ -66,6 +66,9 @@ struct PlayerFloat3
     float x;
     float y;
     float z;
+
+    void GetPlanarBounds(PlayerFloat3 *minimum, PlayerFloat3 *maximum,
+        const float *extent) const;
 };
 typedef char PlayerFloat3SizeIs0C[
     (sizeof(PlayerFloat3) == 0x0c) ? 1 : -1];

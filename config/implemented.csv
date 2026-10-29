@@ -932,6 +932,7 @@ EnemyScalarInterpolationView::Evaluate
 EnemyAdvanceMotion
 PlayerSetShotVmInterrupt2
 Player::SpawnEffectRow
+PlayerFloat3::GetPlanarBounds
 PlayerUpdateGate28::GetDamageAtPosition
 ResultMenuUpdate
 ResultMenuUpdateResult

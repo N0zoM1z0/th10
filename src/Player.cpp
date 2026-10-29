@@ -1479,12 +1479,7 @@ int Player::CalculateDamageToTarget(
     PlayerShotRuntimeView *shot = &shots[0];
     PlayerFloat3 targetMin;
     PlayerFloat3 targetMax;
-    const float targetHalfX = targetSize->x * 0.5f;
-    targetMin.x = targetPosition->x - targetHalfX;
-    const float targetHalfY = targetSize->y * 0.5f;
-    targetMin.y = targetPosition->y - targetHalfY;
-    targetMax.x = targetPosition->x + targetHalfX;
-    targetMax.y = targetPosition->y + targetHalfY;
+    targetPosition->GetPlanarBounds(&targetMin, &targetMax, &targetSize->x);
 
     if (optionalHitFlag != NULL)
         *optionalHitFlag = 0;
@@ -1503,12 +1498,8 @@ int Player::CalculateDamageToTarget(
         const PlayerShotDescriptorView *descriptor = shot->descriptor;
         PlayerFloat3 shotMin;
         PlayerFloat3 shotMax;
-        const float shotHalfX = descriptor->hitboxExtentX * 0.5f;
-        shotMin.x = shot->motion.position.x - shotHalfX;
-        const float shotHalfY = descriptor->hitboxExtentY * 0.5f;
-        shotMin.y = shot->motion.position.y - shotHalfY;
-        shotMax.x = shot->motion.position.x + shotHalfX;
-        shotMax.y = shot->motion.position.y + shotHalfY;
+        shot->motion.position.GetPlanarBounds(
+            &shotMin, &shotMax, &descriptor->hitboxExtentX);
 
         if (shotMin.y > targetMax.y || shotMin.x > targetMax.x ||
             shotMax.y < targetMin.y || shotMax.x < targetMin.x)
@@ -2314,4 +2305,15 @@ void __stdcall RebuildPlayerOptions(Player *player)
     player->optionCount = optionCount;
     for (i = 0; i < 4; ++i)
         player->options[i].resetFlag = 1;
+}
+
+// Target 0x004285F0 computes XY bounds while preserving possible input/output
+// overlap. The full vector's Z component is outside this planar operation.
+void PlayerFloat3::GetPlanarBounds(
+    PlayerFloat3 *minimum, PlayerFloat3 *maximum, const float *extent) const
+{
+    minimum->x = x - extent[0] * 0.5f;
+    minimum->y = y - extent[1] * 0.5f;
+    maximum->x = x + extent[0] * 0.5f;
+    maximum->y = y + extent[1] * 0.5f;
 }

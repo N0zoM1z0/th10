@@ -2,6 +2,12 @@
 
 ## Current checkpoint
 
+PlayerFloat3::GetPlanarBounds4285F0 is complete55/all4 exact in two independent
+canonical colds. Shared planar member calls preserve the previous nonexact
+1172-byte damage and2412-byte root candidates. Origin remains indeterminate;
+this adds55 codegen bytes and one mapping, with zero authored-byte credit.
+See the [planar source proof and rejected controls](evidence/player-planar-bounds-20261030/README.md).
+
 Player::SpawnEffectRow427B50 is complete181/all1 exact in two independent
 three-input canonical cold links. Natural member source restores EDX receiver
 and RET20; a captured position pointer restores the remaining stores. The first
@@ -21,8 +27,8 @@ All1668 bytes/all91 fields pass. This adds1480 authored exact bytes; constructor
 origin remains indeterminate. See the [complete proof](evidence/stage-initialize-context-20261029/README.md).
 
 Current generated [progress](PROGRESS.md): **96,725/275,729 authored owned bytes
-exact,483 authored exact owners**. Total1357 exact owners/164,747 codegen bytes;
-1197 mappings,681 authored mappings,198 authored mapped backlog. Inventory and
+exact,483 authored exact owners**. Total1358 exact owners/164,802 codegen bytes;
+1198 mappings,681 authored mappings,198 authored mapped backlog. Inventory and
 whole-product/runtime/portability closure remain separate and incomplete.
 
 The affected old selection passes14 units/2262 bytes/all156 fields in its existing
@@ -94,14 +100,15 @@ document/verification records, the existing record archive and D3D evidence.
 No new compressed archive or historical input dependency is introduced.
 
 The current ten-input Enemy runtime warm context is separately pinned at
-`.analysis/gpt-6.1-sol/enemy-residual2-context-20261030/final-context.json`.
+`.analysis/gpt-6.1-sol/player-damage-context-20261030/final-context.json`.
 Its36 project inputs, actual profiles and ten object hashes must be revalidated
-before cache reuse. It succeeds the preceding ten-input cold context, recompiling
+before cache reuse. It descends from the retained ten-input cold context, recompiling
 changed Player/header consumers and reusing only unchanged pinned objects.
-Damage1172/1170 remains nonexact. New allocator181/all1 and interrupt65/all2 pass
-strict same-image checks; the allocator's two independent canonical colds use the
-separate three-input Player-constructor recipe, with interrupt included in the
-first. Older scalar/ECL witnesses remain retained with their own source epochs.
+Damage1172/1170 remains nonexact. New planar55/all4, allocator181/all1 and
+interrupt65/all2 pass strict same-image checks. Both new helper families have two independent colds in
+the three-input Player-constructor recipe; current first selection55+181+65
+passes301/all7, followed by planar55/all4 alone. Older scalar/ECL witnesses
+remain retained with their own source epochs.
 Older scalar/motion/world/damage contexts are historical inputs; revalidate pins.
 
 The private probe accepts a prior context and optional desired graph separately.
@@ -160,6 +167,13 @@ operand swap fixes no Y/Z difference; compound snapshot grows2435 and is restore
 Constructed rotation/separated comparison controls are parked. See the
 [effect-row evidence](evidence/player-effect-row-context-20261030/README.md) and
 [previous bound-storage checkpoint](evidence/player-damage-bounds-20261030/README.md).
+
+Shared planar calls now preserve the complete damage candidate, including41 local
+branch destinations, while closing the separate55-byte helper. Original inline
+ancestry and helper origin remain unknown. Separate shot-type branches1169,
+whole-vector arithmetic1172 and in-place rotation1174 are rejected; nested hit
+scope and coordinate-first multiplication are neutral. These controls are parked.
+See [current planar evidence](evidence/player-planar-bounds-20261030/README.md).
 
 The unrelated [D3D adapter-format hypothesis](evidence/d3d-adapter-format/README.md)
 remains unadopted and its evidence is preserved. Do not resume its consumed
