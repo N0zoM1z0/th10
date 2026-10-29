@@ -567,7 +567,7 @@ th10::leaf::Fn0041FF30
 th10::leaf::Fn0041FF40
 th10::leaf::Fn004200C0
 th10::leaf::Fn00420DC0
-th10::leaf::Fn00421B70
+GameScoreStateView::SelectNextStage
 th10::leaf::Fn00421C90
 th10::leaf::Fn00421CA0
 th10::leaf::Fn00421CB0
@@ -1166,3 +1166,10 @@ StartupWorkerView::OnDraw
 th10::leaf::Fn0041FD90
 GameStatisticsOwner::~GameStatisticsOwner
 ReleaseGameStatistics
+MainSupervisorView::UpdateGameMode
+MainSupervisorView::OnUpdate
+MainRegisterChain
+MainSupervisorView::LeaveLock
+SoundPlayerView::ServiceBgmFades
+GameManagerDelete
+FrontEndDelete

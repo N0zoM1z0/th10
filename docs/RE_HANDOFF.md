@@ -2,11 +2,11 @@
 
 ## Start here
 
-Current checkpoint makes Startup's registered update callback complete/exact:
-63 bytes/all3 fields after replacing the separate state global with the actual
-Supervisor nextGameMode+390 field. Prior statistics cleanup121/all7 remains
-exact. All three owners retain indeterminate origin; authored totals are unchanged.
-Startup teardown433/417, Draw218/220 and thread292/299 remain nonexact.
+Current checkpoint restores the complete Supervisor mode call graph and adds
+399 exact bytes:363 authored plus36 indeterminate. The existing23-byte stage
+helper moves to typed source without extra credit. Actual mode owner4218D0 is
+666 bytes (old ledger omitted94 table bytes); its complete candidate678/666 and
+registration204/204 remain nonexact. No partial owner credit is granted.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -34,9 +34,30 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**83,018/275,467 reviewed authored owned bytes exact, 449 exact authored owners**;
-660 authored source mappings. Total: 1815 candidates, 1168 mappings, 1314 exact.
+**83,381/275,561 reviewed authored owned bytes exact, 452 exact authored owners**;
+665 authored source mappings. Total: 1815 candidates, 1175 mappings, 1319 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [Supervisor mode proof](evidence/supervisor-modes-20261029/README.md):
+
+- New complete exact owners: update41FF80/113, generic unlock421C50/25,
+  BGM fades421E00/225 and nullable deletes418150/18,42CDB0/18. The first three
+  retain authored origin; the last two remain indeterminate. Existing23-byte
+  stage helper421B70 is retargeted from unchanged legacy source to the typed
+  GameScoreState member, with no new bytes/mappings or origin change.
+- Two independent canonical22-input colds pass all six selected owners422/all18.
+  Thirty-four explicitly selected older same-image contracts6535/all221 pass
+  per image. No full historical replay, comparator or host-scenario campaign.
+- Full mode boundary is4218D0..421B69: code572 + tables64/16 + byte map14.
+  Every table slot reaches a body instruction; all-byte refs find only owning
+  reads. Raw MOVZX base421B5C supersedes Ghidra's provisional421B5B association.
+  Six CC bytes precede independent421B70. Reviewed authored denominator gains94
+  owned data bytes; the nonexact parent gets no exact/table credit.
+- Seven new complete source mappings cover1269 target bytes. Registration's real
+  callback escape changes update107/privateESI into113/ECX. Fade225 is Sound
+  owner492590 maintenance, superseding old generic-cleanup navigation labels.
+  Capturing the current sound per test recovers225 from273 and preserves reloads
+  between calls. Stack-owner/RET4 cleanup interfaces are independently checked.
 
 Latest [Startup state-field proof](evidence/startup-state-field-20261029/README.md):
 
@@ -116,7 +137,40 @@ owns 1419 code + 1 NOP + 32 table bytes, resolving the old adjacent-table
 uncertainty. New SDK-family 19/52-byte candidates at `44D3E0`/`44D400` stay
 indeterminate, unmapped and nonexact.
 
-## Immediate continuation: startup teardown and callback representation
+## Immediate continuation: Supervisor mode and actual lifecycle callees
+
+The complete666-byte mode source remains678, with one common FrontEndCreate call
+but different block/epilogue placement, branch distances and stage-store scheduling.
+Initial686 becomes678 through the outer change guard; grouped/fallthrough/common
+cleanup controls694 are restored. Generic normal-unlock spelling is byte-neutral
+and restored. Park these block controls. Registration420470 is actually global/
+no-argument; correcting the old pointer seam gives204/204, but EBX/EBP allocations
+still differ. Direct-global versus retained pointer spelling is neutral; park it.
+
+The next useful premise is actual lifecycle callee source, not register/flag
+sweeps. FrontEndCreate42CD50/96 is still opaque. Fresh raw constructor42C920/204
+writes a vtable at+0, constructs cursor/timer state and worker+5AB0, then clears
+5ACC and sets flag+4 bit2/global47784C. The current FrontEndController view ends
+at5AB0; do not append a worker or introduce virtual layout without reconciling
+all observed offsets and the491-byte cleanup42CB60. Constructor/raw/decompile
+leads are retained in the active campaign. GameManagerCreate4180E0/107 is also
+opaque; its logical stack mode/RET4 and owner mode+5C are independently observed.
+ReleaseModeOwners4203F0/128 and added/draw callbacks remain declarations only.
+
+The source-backed actual callback41FF80 and stage method421B70 now reproduce
+complete bytes/fields. This does not prove the mode callee's bytes, original
+class/TU or physical ownership of all legacy global aliases. ScoreState fields
+selectedStage+3C/nextStage+40 preserve the existing5C layout. GameManager's
+existing60-byte view is shared through GameManager.hpp; its old adapters pass.
+
+Current warm context: `.analysis/gpt-6.1-sol/supervisor-modes-20261029/final-cold-b-context.json`.
+It is the22-input Main graph with actual Ending/GameManager/SupervisorModes
+supports. Preserve all pinned per-source profiles and recursive include hashes.
+Only rebuild changed/new inputs during diagnosis; cold acceptance reuses none.
+
+## Startup residuals
+
+
 
 Complete Startup.cpp now contains the real3F0 layout, constructor128, task
 registration140, factory69, teardown417 proposal, release91, Draw220 and callback
@@ -132,7 +186,8 @@ worker+10 and VM+30, with states[-1,0]; this is diagnostic metadata evidence,
 not an accepted handler binding or parent match. Normal-path state updates,
 zero-register lifetime and argument scheduling still differ. Park flag controls.
 
-Draw218/220 has different hidden-return/frame reuse. Named result temporaries
+Draw is210/220 in the new22-input context (218/220 in the retained19-input
+context), with different hidden-return/frame reuse. Named result temporaries
 produce222 and are restored. OnUpdate is now63/63 exact through the state-field
 repair above. Raw EDX counterpart41FD90 and registered ECX copy41FEB0 have the
 same transitions, but their original
@@ -144,24 +199,19 @@ exact constructor (132/128), so both are restored. Explicit throw() on the VM
 destructor leaves teardown433 and the extra normal-path state write; restored.
 Park these controls pending new evidence. No authored-byte or partial
 exact credit follows from their game-specific logic or legacy source presence.
-The factory's actual caller is4218D0, independently queried. Do not identify the
-unresolved MainCreateCallbackOwner seam with this factory without new evidence. New
-read-only decompilation of the complete572-byte caller confirms supervisor-like
-mode fields38C/390, lock5 and startup storage768. The next bounded larger owner
-can be this actual caller: review its full table ownership/ABI and reconstruct
-its complete source before broad scheduling controls. The typed state-field
-repair resolves the registered update but does not settle this caller, the EDX
-copy, or physical alias ownership in other legacy TUs.
+The factory's actual caller4218D0 now has complete666-byte source and corrected
+table ownership, as above. The unresolved MainCreateCallbackOwner seam is still
+not identified with this startup factory.
 
 StartupThread stays292/299 after real callback escape and launcher definitions.
 Its seven missing ECX homing/allocation/pop bytes and error-store scheduling are
 still unexplained. Do not force an unused argument or callback ABI. The actual
 _beginthreadex callback type and the observed plain RET stay separate.
 
-Active recipes/listings/logs: `.analysis/gpt-6.1-sol/startup-state-field-20261029/`.
-Its `final-cold-b-context.json` records the current nineteen-input warm graph. The
+Active recipes/listings/logs: `.analysis/gpt-6.1-sol/supervisor-modes-20261029/`.
+Its `final-cold-b-context.json` records the current22-input warm graph. The
 private producer compares recursive include and profile pins, rebuilding only
-Startup and new/changed supports. Cold acceptance reuses no objects. Superseded
+affected/new inputs. Cold acceptance reuses no objects. Superseded
 private images are removed after retaining source snapshots, receipts/listings;
 only current canonical images and the independent first witness are retained.
 
@@ -191,10 +241,10 @@ is allowed when it has a concrete uncertainty and a complete comparison path.
 
 Current active artifacts and the verified historical archive are indexed in
 `.analysis/README.md`; cleanup audit is `.analysis/handoff-20261028/`.
-Newest logs/receipts are `.analysis/gpt-6.1-sol/startup-state-field-20261029/`;
+Newest logs/receipts are `.analysis/gpt-6.1-sol/supervisor-modes-20261029/`;
 the independent first witness is
-`build/gpt-6.1-sol/startup-state-field-20261029/cold-a/` and the second is canonical
-`build/match-linked/StartupWorkerLifecycle/`. Source/include hashes agree.
+`build/gpt-6.1-sol/supervisor-modes-20261029/cold-a/` and the second is canonical
+`build/match-linked/SupervisorModes/`. Source/include hashes agree.
 Earlier SoundDiskStartup and primary-format witnesses remain retained separately.
 Canonical `build/match-linked`, `build/match` and `build/match-runtime` caches,
 current Sound witnesses and warm Main inputs are retained. Obsolete host/probe

@@ -1,0 +1,460 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_owned_bytes": 399,
+  "new_exact_owners": 5,
+  "new_authored_exact_bytes": 363,
+  "new_indeterminate_exact_bytes": 36,
+  "new_candidates": 0,
+  "new_source_mappings": 7,
+  "new_source_mapping_owned_bytes": 1269,
+  "retargeted_existing_exact": {
+    "address": "0x00421B70",
+    "bytes": 23,
+    "prior_selector": "game-decomphelp-fulltu-00421b70",
+    "current_selector": "game-score-select-next-stage",
+    "prior_source_unchanged": true,
+    "new_exact_credit": 0
+  },
+  "authored_denominator_change": 94,
+  "reviewed_mode_boundary": {
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "entry": "0x4218d0",
+    "old_code_only_span": 572,
+    "code_bytes": 572,
+    "owned_table_bytes": 94,
+    "owned_bytes": 666,
+    "end": "0x421b69",
+    "following_padding_bytes": 6,
+    "next_independent_entry": "0x421B70",
+    "raw_sha256": "3ebb358672962bd42bc4621108dd6e6894d8fe57969ba06cf5e9369c5634b142",
+    "tables": [
+      {
+        "base": "0x421b0c",
+        "read": "0x421924",
+        "slots": [
+          "0x42192b",
+          "0x42198b",
+          "0x42198b",
+          "0x42194e",
+          "0x421967",
+          "0x42198b",
+          "0x42198b",
+          "0x4219f8",
+          "0x42198b",
+          "0x42198b",
+          "0x421a80",
+          "0x421a4e",
+          "0x421a1e",
+          "0x421ac7",
+          "0x421af2",
+          "0x4219bb"
+        ]
+      },
+      {
+        "base": "0x421b4c",
+        "read": "0x421974",
+        "slots": [
+          "0x421986",
+          "0x42197b",
+          "0x4219ae",
+          "0x42198b"
+        ]
+      }
+    ],
+    "byte_index_map": {
+      "base": "0x421B5C",
+      "read": "0x42196D",
+      "values": [
+        0,
+        0,
+        3,
+        3,
+        3,
+        3,
+        1,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2
+      ]
+    },
+    "fixed_direct_branches": [
+      {
+        "from": "0x4218e2",
+        "to": "0x4219a4"
+      },
+      {
+        "from": "0x421922",
+        "to": "0x42198b"
+      },
+      {
+        "from": "0x421942",
+        "to": "0x42198b"
+      },
+      {
+        "from": "0x42196b",
+        "to": "0x42198b"
+      },
+      {
+        "from": "0x4219b9",
+        "to": "0x421986"
+      },
+      {
+        "from": "0x4219be",
+        "to": "0x4219e2"
+      },
+      {
+        "from": "0x4219c3",
+        "to": "0x4219d7"
+      },
+      {
+        "from": "0x4219c8",
+        "to": "0x42198b"
+      },
+      {
+        "from": "0x4219d5",
+        "to": "0x4219e2"
+      },
+      {
+        "from": "0x4219f6",
+        "to": "0x421986"
+      },
+      {
+        "from": "0x4219fb",
+        "to": "0x421a08"
+      },
+      {
+        "from": "0x421a19",
+        "to": "0x42198b"
+      },
+      {
+        "from": "0x421a21",
+        "to": "0x421a2e"
+      },
+      {
+        "from": "0x421a49",
+        "to": "0x42198b"
+      },
+      {
+        "from": "0x421a64",
+        "to": "0x421a6b"
+      },
+      {
+        "from": "0x421a7b",
+        "to": "0x42198b"
+      },
+      {
+        "from": "0x421ac2",
+        "to": "0x42198b"
+      },
+      {
+        "from": "0x421aed",
+        "to": "0x42198b"
+      },
+      {
+        "from": "0x421af5",
+        "to": "0x421b02"
+      },
+      {
+        "from": "0x421b07",
+        "to": "0x42198b"
+      }
+    ],
+    "ghidra_references": [
+      "0x00421924 -> 0x00421B0C  DATA  switchD_00421924::switchdataD_00421b0c",
+      "0x00421974 -> 0x00421B4C  DATA  switchD_00421974::switchdataD_00421b4c",
+      "0x0042196D -> 0x00421B5B  DATA  PTR_caseD_1_00421b58+3"
+    ],
+    "ghidra_note": "Raw MOVZX displacement is421B5C; Ghidra associates its table reference at421B5B. Raw operands and bounded consumed ranges establish ownership; database labels are provisional."
+  },
+  "source_pins": {
+    "src/AnmDrawCallbacks.cpp": "49cb0da52c3a1fbd8d6a6fdf403a54b10737ef003d050615bc4af5c62612ad37",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Ending.cpp": "fdbc89e9f21f5b90a247a37fa25486c797dc4d5959c4b3e9e669a065bfc38627",
+    "src/Ending.hpp": "39ba42ed24dd3653f58d12eb7bc58aae6c60da420ad3224cd50195d8a658cb41",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/GameErrorContext.hpp": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37",
+    "src/GameManager.cpp": "66bc0435c2c623098765f4237001e9afea5644f0a9c42a4271afd21955685aee",
+    "src/GameManager.hpp": "d4daadac0905f164cb7296ad5330b78e5eb2d2556a279033c2026e34a11effdf",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/GameStatistics.cpp": "e672f35c5d6e944b304b020f231b0ebb5eea1f83f2dab5cd5a47635dde9a5dc0",
+    "src/GameStatistics.hpp": "3db83612f100ae38b109e358bbf777f897fab2e760520bc92c52fbec1b4823bc",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "c513a1d0d905d88a4968d390217453a4d28f8738bf75f295b81e4702ba5f837f",
+    "src/Main.hpp": "8371445cc782e1854da78a9eaae19341e5e36ec42830b282ba861db6dac0d3e5",
+    "src/MainViewport.cpp": "cbc513421b43a770c5d2254fd1cae140554c2abfdbe70c36e0f36ca5a3848799",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.cpp": "7871c32b29e1d81a2db45a91d08bc65e0a314f37885fb3befbbea81859475439",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.cpp": "2abb0944af98c1f4cd847ffe7f4db3e2d8e82692dc1b333d60d215398a3095f7",
+    "src/ScriptViewer.hpp": "3b436665dac628f6dcbb525d1bd7788a4b2b83b9996facd2ee290e446e498fc9",
+    "src/ScriptViewerOwners.hpp": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+    "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157",
+    "src/Sound.cpp": "796b9392ed35f84de30a2490e593036899771886d8e18d44ed79ff837548faab",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+    "src/Startup.cpp": "16b2d14331ef3b4159817ae72015b3bff7e1e519b763b0ef5dfc891d8a855cd9",
+    "src/SupervisorModes.cpp": "32b37eff27ba0d4586df741410fa5dc8af4613e1fea54e6fae8817669905a4eb",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/ZWave.cpp": "eef1e940196f84fc5118bf0b5ebf2e95c36044e2c5cfc78da75bffb1d599e87e"
+  },
+  "cold_runs": [
+    {
+      "label": "cold-a",
+      "artifacts": {
+        "exe": "3a8b8874c3de146347b6c11b2835b80a11a67df5bcb163494e3d3fd84eec120f",
+        "map": "d3c21e58097ba4849e6603432397af5425e9c8f46a2070435e8ea0cbf83f3cd1",
+        "pdb": "e472f26dce766433352ee68ee1e7ca49078754c04109432ae7c43c1ec303769c"
+      },
+      "selected": [
+        {
+          "unit": "supervisor-update-callback",
+          "size": 113,
+          "result": "exact",
+          "symbol": "?OnUpdate@MainSupervisorView@@SIHPAU1@@Z",
+          "target_address": "0x0041FF80",
+          "matched_bytes": 113,
+          "normalization_complete": true,
+          "image_sha256": "3a8b8874c3de146347b6c11b2835b80a11a67df5bcb163494e3d3fd84eec120f",
+          "fields": 7
+        },
+        {
+          "unit": "supervisor-leave-lock",
+          "size": 25,
+          "result": "exact",
+          "symbol": "?LeaveLock@MainSupervisorView@@QAEXH@Z",
+          "target_address": "0x00421C50",
+          "matched_bytes": 25,
+          "normalization_complete": true,
+          "image_sha256": "3a8b8874c3de146347b6c11b2835b80a11a67df5bcb163494e3d3fd84eec120f",
+          "fields": 1
+        },
+        {
+          "unit": "sound-service-bgm-fades",
+          "size": 225,
+          "result": "exact",
+          "symbol": "?ServiceBgmFades@SoundPlayerView@@QAEXXZ",
+          "target_address": "0x00421E00",
+          "matched_bytes": 225,
+          "normalization_complete": true,
+          "image_sha256": "3a8b8874c3de146347b6c11b2835b80a11a67df5bcb163494e3d3fd84eec120f",
+          "fields": 4
+        },
+        {
+          "unit": "game-manager-delete",
+          "size": 18,
+          "result": "exact",
+          "symbol": "?GameManagerDelete@@YAXPAUGameManager@@@Z",
+          "target_address": "0x00418150",
+          "matched_bytes": 18,
+          "normalization_complete": true,
+          "image_sha256": "3a8b8874c3de146347b6c11b2835b80a11a67df5bcb163494e3d3fd84eec120f",
+          "fields": 2
+        },
+        {
+          "unit": "frontend-delete",
+          "size": 18,
+          "result": "exact",
+          "symbol": "?FrontEndDelete@@YAXPAUFrontEndControllerView@@@Z",
+          "target_address": "0x0042CDB0",
+          "matched_bytes": 18,
+          "normalization_complete": true,
+          "image_sha256": "3a8b8874c3de146347b6c11b2835b80a11a67df5bcb163494e3d3fd84eec120f",
+          "fields": 2
+        },
+        {
+          "unit": "game-score-select-next-stage",
+          "size": 23,
+          "result": "exact",
+          "symbol": "?SelectNextStage@GameScoreStateView@@QAEXXZ",
+          "target_address": "0x00421B70",
+          "matched_bytes": 23,
+          "normalization_complete": true,
+          "image_sha256": "3a8b8874c3de146347b6c11b2835b80a11a67df5bcb163494e3d3fd84eec120f",
+          "fields": 2
+        }
+      ],
+      "old_guard_owners": 34,
+      "old_guard_bytes": 6535,
+      "old_guard_fields": 221,
+      "objects_reused": 0
+    },
+    {
+      "label": "cold-b",
+      "artifacts": {
+        "exe": "e1259ec40cbd9a4f3687312467475ee78c3ed586d7d4f906e4c7a6945a22b0b3",
+        "map": "bef0550399f4f49d5ea044b045a90661d7ba1efc4599372d5b077b68422badf9",
+        "pdb": "3c3d6c75a776f1bf92930d5fa8c1e0240b2d4342e17354effc07334bb10d7d02"
+      },
+      "selected": [
+        {
+          "unit": "supervisor-update-callback",
+          "size": 113,
+          "result": "exact",
+          "symbol": "?OnUpdate@MainSupervisorView@@SIHPAU1@@Z",
+          "target_address": "0x0041FF80",
+          "matched_bytes": 113,
+          "normalization_complete": true,
+          "image_sha256": "e1259ec40cbd9a4f3687312467475ee78c3ed586d7d4f906e4c7a6945a22b0b3",
+          "fields": 7
+        },
+        {
+          "unit": "supervisor-leave-lock",
+          "size": 25,
+          "result": "exact",
+          "symbol": "?LeaveLock@MainSupervisorView@@QAEXH@Z",
+          "target_address": "0x00421C50",
+          "matched_bytes": 25,
+          "normalization_complete": true,
+          "image_sha256": "e1259ec40cbd9a4f3687312467475ee78c3ed586d7d4f906e4c7a6945a22b0b3",
+          "fields": 1
+        },
+        {
+          "unit": "sound-service-bgm-fades",
+          "size": 225,
+          "result": "exact",
+          "symbol": "?ServiceBgmFades@SoundPlayerView@@QAEXXZ",
+          "target_address": "0x00421E00",
+          "matched_bytes": 225,
+          "normalization_complete": true,
+          "image_sha256": "e1259ec40cbd9a4f3687312467475ee78c3ed586d7d4f906e4c7a6945a22b0b3",
+          "fields": 4
+        },
+        {
+          "unit": "game-manager-delete",
+          "size": 18,
+          "result": "exact",
+          "symbol": "?GameManagerDelete@@YAXPAUGameManager@@@Z",
+          "target_address": "0x00418150",
+          "matched_bytes": 18,
+          "normalization_complete": true,
+          "image_sha256": "e1259ec40cbd9a4f3687312467475ee78c3ed586d7d4f906e4c7a6945a22b0b3",
+          "fields": 2
+        },
+        {
+          "unit": "frontend-delete",
+          "size": 18,
+          "result": "exact",
+          "symbol": "?FrontEndDelete@@YAXPAUFrontEndControllerView@@@Z",
+          "target_address": "0x0042CDB0",
+          "matched_bytes": 18,
+          "normalization_complete": true,
+          "image_sha256": "e1259ec40cbd9a4f3687312467475ee78c3ed586d7d4f906e4c7a6945a22b0b3",
+          "fields": 2
+        },
+        {
+          "unit": "game-score-select-next-stage",
+          "size": 23,
+          "result": "exact",
+          "symbol": "?SelectNextStage@GameScoreStateView@@QAEXXZ",
+          "target_address": "0x00421B70",
+          "matched_bytes": 23,
+          "normalization_complete": true,
+          "image_sha256": "e1259ec40cbd9a4f3687312467475ee78c3ed586d7d4f906e4c7a6945a22b0b3",
+          "fields": 2
+        }
+      ],
+      "old_guard_owners": 34,
+      "old_guard_bytes": 6535,
+      "old_guard_fields": 221,
+      "objects_reused": 0
+    }
+  ],
+  "old_guard_selectors": [
+    "startup-update-callback",
+    "decomphelp-game-manager-on-draw",
+    "game-manager-update-callback",
+    "ending-create",
+    "ending-delete",
+    "anm-resource-service-preloaded",
+    "zwave-csound-set-volume",
+    "statistics-owner-destructor",
+    "statistics-release",
+    "startup-worker-constructor",
+    "startup-register-tasks",
+    "startup-worker-create",
+    "startup-release-resources",
+    "startup-draw-callback",
+    "startup-preload-resources",
+    "sound-prepare-playback",
+    "sound-manager-create-streaming",
+    "sound-manager-create-streaming-memory",
+    "wave-file-open",
+    "csound-constructor",
+    "streaming-sound-constructor",
+    "script-viewer-worker-stop",
+    "script-viewer-worker-destructor",
+    "sound-player-reopen-bgm",
+    "sound-manager-set-primary-buffer-format",
+    "streaming-sound-init-buffers",
+    "sound-bgm-player-thread",
+    "sound-process-queues",
+    "streaming-sound-reset",
+    "main-present",
+    "main-release-anm-surfaces",
+    "main-service-anm-screenshots",
+    "decomphelp-game-error-log",
+    "sound-join-worker-threads"
+  ],
+  "open_candidates": {
+    "mode_transition": {
+      "native": 678,
+      "target": 666,
+      "result": "nonexact"
+    },
+    "registration": {
+      "native": 204,
+      "target": 204,
+      "result": "nonexact"
+    },
+    "startup_destructor": {
+      "native": 433,
+      "target": 417,
+      "result": "nonexact"
+    },
+    "startup_draw_in_this_context": {
+      "native": 210,
+      "target": 220,
+      "result": "nonexact"
+    }
+  },
+  "phase_scope": "exact codegen only; original origin/TU, all physical alias obligations, product/runtime and portability remain independent"
+}

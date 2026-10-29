@@ -7862,20 +7862,6 @@ target_address = 0x00420DC0
 size = 1
 linkages = []
 
-[units.game-decomphelp-fulltu-00421b70]
-artifact_kind = "linked-pe"
-source = "src/DecomphelpLeafAccessors.cpp"
-output_dir = "build/match-linked/DecomphelpLeafAccessors"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
-link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
-harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
-functions = ["th10::leaf::Fn00421B70"]
-symbol = "?Fn00421B70@leaf@th10@@YAIPAE@Z"
-target_address = 0x00421B70
-size = 23
-linkages = []
-
 [units.game-decomphelp-fulltu-00421c90]
 artifact_kind = "linked-pe"
 source = "src/DecomphelpLeafAccessors.cpp"
@@ -25641,4 +25627,130 @@ linkages = [
   { "offset" = 6, "type" = "DIR32", "symbol" = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", "target" = 4683488 },
   { "offset" = 36, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 972 },
   { "offset" = 46, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 912 },
+]
+
+[units.supervisor-update-callback]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp", "src/Ending.cpp", "src/GameManager.cpp", "src/SupervisorModes.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Ending.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/SupervisorModes"
+pdb_source = "src/SupervisorModes.cpp"
+functions = ["MainSupervisorView::OnUpdate"]
+symbol = "?OnUpdate@MainSupervisorView@@SIHPAU1@@Z"
+target_address = 4325248
+size = 113
+linkages = [
+  { "offset" = 25, "type" = "DIR32", "symbol" = "?g_MainSupervisorView@@3UMainSupervisorView@@A", "target" = 4791336, "addend" = 912 },
+  { "offset" = 34, "type" = "DIR32", "symbol" = "?g_MainSoundOwner@@3PAEA", "target" = 4793744 },
+  { "offset" = 39, "type" = "REL32", "symbol" = "?ServiceBgmFades@SoundPlayerView@@QAEXXZ", "target" = 4333056 },
+  { "offset" = 46, "type" = "REL32", "symbol" = "?PollInputFrame@@YIXH@Z", "target" = 4498928 },
+  { "offset" = 51, "type" = "DIR32", "symbol" = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", "target" = 4791312 },
+  { "offset" = 57, "type" = "REL32", "symbol" = "?ServicePreloadedAnms@AnmRenderManagerView@@QAGHXZ", "target" = 4486912 },
+  { "offset" = 102, "type" = "REL32", "symbol" = "?UpdateGameMode@MainSupervisorView@@QAEHXZ", "target" = 4331728 },
+]
+
+[units.supervisor-leave-lock]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp", "src/Ending.cpp", "src/GameManager.cpp", "src/SupervisorModes.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Ending.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/SupervisorModes"
+pdb_source = "src/SupervisorModes.cpp"
+functions = ["MainSupervisorView::LeaveLock"]
+symbol = "?LeaveLock@MainSupervisorView@@QAEXH@Z"
+target_address = 4332624
+size = 25
+linkages = [
+  { "offset" = 13, "type" = "DIR32", "symbol" = "__imp__LeaveCriticalSection@4", "target" = 4612276 },
+]
+
+[units.sound-service-bgm-fades]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp", "src/Ending.cpp", "src/GameManager.cpp", "src/SupervisorModes.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Ending.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/SupervisorModes"
+pdb_source = "src/Sound.cpp"
+functions = ["SoundPlayerView::ServiceBgmFades"]
+symbol = "?ServiceBgmFades@SoundPlayerView@@QAEXXZ"
+target_address = 4333056
+size = 225
+linkages = [
+  { "offset" = 72, "type" = "REL32", "symbol" = "?SetVolume@CSound@@QAEJH@Z", "target" = 4510944 },
+  { "offset" = 118, "type" = "REL32", "symbol" = "?SetVolume@CSound@@QAEJH@Z", "target" = 4510944 },
+  { "offset" = 169, "type" = "REL32", "symbol" = "?SetVolume@CSound@@QAEJH@Z", "target" = 4510944 },
+  { "offset" = 218, "type" = "REL32", "symbol" = "?SetVolume@CSound@@QAEJH@Z", "target" = 4510944 },
+]
+
+[units.game-manager-delete]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp", "src/Ending.cpp", "src/GameManager.cpp", "src/SupervisorModes.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Ending.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/SupervisorModes"
+pdb_source = "src/SupervisorModes.cpp"
+functions = ["GameManagerDelete"]
+symbol = "?GameManagerDelete@@YAXPAUGameManager@@@Z"
+target_address = 4292944
+size = 18
+linkages = [
+  { "offset" = 6, "type" = "REL32", "symbol" = "?GameManagerCleanup@@YGXPAUGameManager@@@Z", "target" = 4291712 },
+  { "offset" = 12, "type" = "REL32", "symbol" = "??3@YAXPAX@Z", "target" = 4531361 },
+]
+
+[units.frontend-delete]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp", "src/Ending.cpp", "src/GameManager.cpp", "src/SupervisorModes.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Ending.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/SupervisorModes"
+pdb_source = "src/SupervisorModes.cpp"
+functions = ["FrontEndDelete"]
+symbol = "?FrontEndDelete@@YAXPAUFrontEndControllerView@@@Z"
+target_address = 4378032
+size = 18
+linkages = [
+  { "offset" = 6, "type" = "REL32", "symbol" = "?FrontEndDestroy@@YGXPAUFrontEndControllerView@@@Z", "target" = 4377440 },
+  { "offset" = 12, "type" = "REL32", "symbol" = "??3@YAXPAX@Z", "target" = 4531361 },
+]
+
+[units.game-score-select-next-stage]
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp", "src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/MainViewport.cpp", "src/AnmDrawCallbacks.cpp", "src/Chain.cpp", "src/Sound.cpp", "src/ZWave.cpp", "src/Startup.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/GameStatistics.cpp", "src/Ending.cpp", "src/GameManager.cpp", "src/SupervisorModes.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "WinMain@16"
+harness = "unresolved-symbol-data-anchors-v1"
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/ZWave.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"], "src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/Ending.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"] }
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/SupervisorModes"
+pdb_source = "src/SupervisorModes.cpp"
+functions = ["GameScoreStateView::SelectNextStage"]
+symbol = "?SelectNextStage@GameScoreStateView@@QAEXXZ"
+target_address = 4332400
+size = 23
+linkages = [
+  { "offset" = 13, "type" = "DIR32", "symbol" = "?g_ScriptViewerRouteDescriptor@@3PAEA", "target" = 4671368 },
+  { "offset" = 18, "type" = "DIR32", "symbol" = "?g_GameStageUpdate@@3PAUGameStageUpdateView@@A", "target" = 4683848 },
 ]

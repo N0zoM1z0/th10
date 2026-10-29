@@ -112,6 +112,11 @@ public:
     HRESULT FillBufferWithSound(
         LPDIRECTSOUNDBUFFER buffer, BOOL repeatIfBufferLarger);
 
+    void StopFadeBuffer()
+    {
+        soundBuffers[0]->Stop();
+    }
+
     CWaveFile *GetWaveFile()
     {
         return waveFile;
@@ -1079,4 +1084,47 @@ int SoundPlayerView::PreparePlayback()
             unknown52CC = -10000;
     }
     return 0;
+}
+
+// Target421E00..421EE0. The four tests are independent and reload the current
+// sound after external calls; completed types clear without a final volume set.
+void SoundPlayerView::ServiceBgmFades()
+{
+    CSound *sound = bgm;
+    if (sound == NULL)
+        return;
+    if (sound->fadeType == 1)
+    {
+        if (--sound->fadeProgress <= 0)
+        {
+            sound->fadeType = 0;
+            sound->StopFadeBuffer();
+        }
+        else
+            sound->SetVolume(sound->fadeProgress * 5000 / sound->fadeTotal - 5000);
+    }
+    sound = bgm;
+    if (sound->fadeType == 2)
+    {
+        if (--sound->fadeProgress <= 0)
+            sound->fadeType = 0;
+        else
+            sound->SetVolume(sound->fadeProgress * -5000 / sound->fadeTotal);
+    }
+    sound = bgm;
+    if (sound->fadeType == 4)
+    {
+        if (--sound->fadeProgress <= 0)
+            sound->fadeType = 0;
+        else
+            sound->SetVolume(sound->fadeProgress * 1000 / sound->fadeTotal - 1000);
+    }
+    sound = bgm;
+    if (sound->fadeType == 3)
+    {
+        if (--sound->fadeProgress <= 0)
+            sound->fadeType = 0;
+        else
+            sound->SetVolume(sound->fadeProgress * -1000 / sound->fadeTotal);
+    }
 }

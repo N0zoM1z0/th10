@@ -29,22 +29,7 @@ typedef unsigned int u32;
 
 extern "C" void *g_AnmManagerPtr;
 
-struct GameChainElementView;
-
-struct GameManager
-{
-    u32 unknown000;
-    int stageResourceIndex;
-    GameChainElementView *updateChain;
-    GameChainElementView *drawChain;
-    AnmVmTimerView stageTimer;
-    u32 configuration[13];
-    u32 m_Flags;
-    int initializationMode;
-
-    ZunBool __fastcall OnDraw();
-    static ZunBool __fastcall OnUpdate(GameManager *manager);
-};
+#include "GameManager.hpp"
 
 ZunBool __fastcall GameManager::OnDraw()
 {

@@ -69,6 +69,7 @@ struct SoundPlayerView
     int __stdcall ProcessQueues();
     void QueueCommand(const char *path, int opcode, int argument);
     void StopBgm();
+    void ServiceBgmFades();
     static DWORD WINAPI BgmPlayerThread(LPVOID parameter);
 };
 

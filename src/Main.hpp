@@ -223,9 +223,14 @@ typedef char GameWindowViewCurrentTimestampAt38[
     (offsetof(GameWindowView, currentTimestamp) == 0x38 &&
      offsetof(GameWindowView, timeOrigin) == 0x50) ? 1 : -1];
 
+struct StartupWorkerView;
+
 struct MainSupervisorView
 {
     void SetNextGameMode(int mode);
+    int UpdateGameMode();
+    void LeaveLock(int index);
+    static int __fastcall OnUpdate(MainSupervisorView *supervisor);
 
     HINSTANCE instance;                         // +0x000
     MainD3d9InterfaceView *d3dInterface;        // +0x004
@@ -260,9 +265,12 @@ struct MainSupervisorView
     unsigned char unknown350[0x034];
     AnmViewportOwnerView *activeViewport;       // +0x384
     int viewportConfigured;                     // +0x388
-    unsigned char unknown38C[0x004];
+    int currentGameMode;                        // +0x38C
     int nextGameMode;                           // +0x390
-    unsigned char unknown394[0x018];
+    int previousGameMode;                       // +0x394
+    unsigned int unknown398;
+    int newGameSession;                         // +0x39C
+    unsigned char unknown3A0[0x00C];
     int screenTransitionCountdown;              // +0x3AC
     unsigned char unknown3B0[0x004];
     int disableVsync;                           // +0x3B4
@@ -273,13 +281,19 @@ struct MainSupervisorView
     unsigned int flags;                         // +0x3CC
     unsigned char unknown3D0[0x008];
     unsigned char d3dCaps[0x130];               // +0x3D8
-    unsigned char unknown508[0x144];
+    unsigned char unknown508[0x134];
+    int closeRequestBlocked;                    // +0x63C
+    unsigned char unknown640[8];
+    int updateGate;                             // +0x648
     CRITICAL_SECTION criticalSections[7];       // +0x64C
     unsigned char criticalSectionLockCounts[7]; // +0x6F4
     unsigned char unknown6FB[0x055];
     unsigned int cachedFogEnabled;              // +0x750, full-word cache
-    unsigned char unknown754[0x024];
+    unsigned char unknown754[0x014];
+    StartupWorkerView *startupWorker;            // +0x768
+    unsigned char unknown76C[0x00C];
     double lastFrameDuration;                   // +0x778
+    unsigned int clearColor;                    // +0x780
 };
 
 typedef char MainSupervisorD3dAt004[
@@ -302,7 +316,14 @@ typedef char MainSupervisorViewportAt26C[
 typedef char MainSupervisorFlagsAt3CC[
     (offsetof(MainSupervisorView, nextGameMode) == 0x390 &&
      offsetof(MainSupervisorView, screenTransitionCountdown) == 0x3ac &&
-     offsetof(MainSupervisorView, flags) == 0x3cc) ? 1 : -1];
+     offsetof(MainSupervisorView, flags) == 0x3cc &&
+     offsetof(MainSupervisorView, currentGameMode) == 0x38c &&
+     offsetof(MainSupervisorView, previousGameMode) == 0x394 &&
+     offsetof(MainSupervisorView, newGameSession) == 0x39c &&
+     offsetof(MainSupervisorView, closeRequestBlocked) == 0x63c &&
+     offsetof(MainSupervisorView, updateGate) == 0x648 &&
+     offsetof(MainSupervisorView, startupWorker) == 0x768 &&
+     offsetof(MainSupervisorView, clearColor) == 0x780) ? 1 : -1];
 typedef char MainSupervisorCriticalSectionsAt64C[
     (offsetof(MainSupervisorView, criticalSections) == 0x64c &&
      offsetof(MainSupervisorView, criticalSectionLockCounts) == 0x6f4) ? 1 : -1];

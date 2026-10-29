@@ -24,9 +24,13 @@ struct GameScoreStateView
     int faith;
     int unknown10;
     GameScoreTimerView timer;
-    unsigned char unknown28[0x30];
+    unsigned char unknown28[0x14];
+    int selectedStage;
+    int nextStage;
+    unsigned char unknown44[0x14];
     int rank;
 
+    void SelectNextStage();
     void AddFaith(int amount);
     void DecayFaith(int amount);
     void SetFaith(int amount);
@@ -44,6 +48,10 @@ typedef char GameScoreStateTimerAt14[
     (offsetof(GameScoreStateView, timer) == 0x14) ? 1 : -1];
 typedef char GameScoreStateRankAt58[
     (offsetof(GameScoreStateView, rank) == 0x58) ? 1 : -1];
+typedef char GameScoreStateStageFields[
+    (offsetof(GameScoreStateView, selectedStage) == 0x3c &&
+     offsetof(GameScoreStateView, nextStage) == 0x40) ? 1 : -1];
+
 typedef char GameScoreStateSizeIs5C[
     (sizeof(GameScoreStateView) == 0x5c) ? 1 : -1];
 

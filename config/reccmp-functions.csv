@@ -574,7 +574,7 @@ th10::leaf::Fn0041FF30,0x0041FF30,function
 th10::leaf::Fn0041FF40,0x0041FF40,function
 th10::leaf::Fn004200C0,0x004200C0,function
 th10::leaf::Fn00420DC0,0x00420DC0,function
-th10::leaf::Fn00421B70,0x00421B70,function
+GameScoreStateView::SelectNextStage,0x00421B70,function
 th10::leaf::Fn00421C90,0x00421C90,function
 th10::leaf::Fn00421CA0,0x00421CA0,function
 th10::leaf::Fn00421CB0,0x00421CB0,function
@@ -1167,3 +1167,10 @@ StartupWorkerView::OnDraw,0x0041FEF0,function
 th10::leaf::Fn0041FD90,0x0041FD90,function
 GameStatisticsOwner::~GameStatisticsOwner,0x0042AEF0,function
 ReleaseGameStatistics,0x0042AF90,function
+MainSupervisorView::UpdateGameMode,0x004218D0,function
+MainSupervisorView::OnUpdate,0x0041FF80,function
+MainRegisterChain,0x00420470,function
+MainSupervisorView::LeaveLock,0x00421C50,function
+SoundPlayerView::ServiceBgmFades,0x00421E00,function
+GameManagerDelete,0x00418150,function
+FrontEndDelete,0x0042CDB0,function

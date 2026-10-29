@@ -86,7 +86,7 @@ extern INT_PTR CALLBACK MainConfigurationDialogProc(
     HWND dialog, UINT message, WPARAM wparam, LPARAM lparam);
 extern void *MainCreateCallbackOwner();
 extern void MainDestroyCallbackOwner(void *owner);
-extern int MainRegisterChain(MainSupervisorView *supervisor);
+extern int MainRegisterChain();
 extern void MainReleaseChain(MainSupervisorView *supervisor);
 extern int __stdcall MainRunCalcChain(void *owner);
 extern int __stdcall MainRunDrawChain(void *owner);
@@ -381,7 +381,7 @@ restart:
         g_GameWindowView.timeOrigin = GameWindowView::GetTimestamp();
     SetForegroundWindow(g_GameWindowView.window);
 
-    renderResult = MainRegisterChain(&g_MainSupervisorView);
+    renderResult = MainRegisterChain();
     if (renderResult != MAIN_RENDER_KEEP_RUNNING)
     {
         if (renderResult != MAIN_RENDER_ERROR)

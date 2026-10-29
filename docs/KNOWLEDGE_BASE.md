@@ -6490,3 +6490,44 @@ contracts6235/all179 per image. See [the complete proof](evidence/startup-state-
 The previously reviewed registered entry/boundary and indeterminate origin are
 retained. The unreferenced EDX body41FD90, original class/TU/copy relationship,
 other legacy aliases and product/runtime closure are separate open claims.
+
+
+## 2026-10-29 Supervisor mode graph and Sound fades
+
+Mode transition4218D0 owns666 bytes through421B69:572 executable bytes plus
+16-slot main table64,4-slot inner table16 and14-byte compressed index map. Raw
+bounds are15/13 and all slots reach body instruction starts. All-byte Ghidra
+queries find only the three owning reads; raw MOVZX displacement421B5C establishes
+the byte map despite provisional database association421B5B. Six CC bytes precede
+independent421B70. Correcting the old code-only ledger adds94 reviewed authored
+owned data bytes, not exact credit; complete natural source remains678/666.
+
+Actual registered caller41FF80/113, indexed critical-section release421C50/25,
+Sound fade maintenance421E00/225 and nullable delete helpers418150/18,42CDB0/18
+add399 exact bytes in independent canonical22-input colds. All sixteen new
+fields are strict; existing stage helper23/all2 also passes under its natural
+typed source. Thirty-four old contracts6535/all221 pass per image. Existing
+origins credit363 authored bytes and36 indeterminate; stage23 is not new credit.
+See [the complete proof](evidence/supervisor-modes-20261029/README.md).
+
+Global registration420470 publishes41FF80, initializes mode38C=-2/390=0/398=0
+and installs draw priorities1/40/50. Its real address escape retains callback ECX
+save/restore, recovering113 from private-ESI107. Registration itself is204/204
+with a register permutation and stays nonexact. The callback binds the real EAX
+mode input without granting the child's body exactness. No fake ABI or unused
+argument is used. Complete mixed control-flow spelling tests are parked.
+
+The old421E00 navigation role is corrected: it uses Sound owner492590 and current
+CSound+5208. Independent fade tests1/2/4/3 use signed decrements and exact integer
+attenuation, clear terminal types without a final volume write, and stop only the
+primary DirectSound buffer for terminal type1. Per-test current-sound capture
+recovers225 from273 while preserving reloads between external calls. The actual
+SetVolume106-byte body and all four call fields pass in the same image.
+
+GameScoreState selectedStage+3C and nextStage+40 correspond to the existing
+474C7C/474C80 slots. Its retained SelectNextStage member copies the latter to the
+former and publishes474788+index*30 through477848, reproducing existing421B70/23.
+Legacy source is unchanged; primary mapping/selector changes do not settle origin
+or add credit. GameManager's existing60-byte view now has one shared header.
+These layouts and mechanical stack-owner/RET4 interfaces do not establish original
+class/TU identity, all alias/storage ownership, product or runtime closure.
