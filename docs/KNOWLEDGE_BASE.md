@@ -7409,3 +7409,35 @@ or velocity-only pointers lose the frame/iterator anchor and emit829; member,
 manager, bounds-boundary and timer controls are parked at their recorded epochs.
 No exact-byte, boundary/origin, product, runtime or portability promotion occurs.
 See [complete shot-update evidence](evidence/player-shots-context-20261030/README.md).
+
+
+## 2026-10-30 Complete Player shot producer and row firing
+
+PlayerEmitShotRows428160..4281C8 is complete105/all2 exact in two independent
+three-input Player-constructor /GL cold links. Unsigned16 power promotion,
+divide20/clamp4, optionMode+5 and .sht+110 entry selection match the target.
+Signed interval/frame remainder selects34-byte descriptor rows until a negative
+interval sentinel. Ordinary source gives EDI Player/EBX frame and RET; fields
+bind power474C48 and Player::SpawnShot427E90. Three/seven CC bytes and full
+105-byte decode corroborate the existing reviewed boundary. Existing authored
+origin is retained:105 new authored bytes, no denominator/origin promotion.
+
+The complete717-byte producer and174-byte input timer now have source mappings.
+The producer covers slot/occupancy/timer, body or delayed option coordinates,
+velocity/offsets, both VMs, complete lookup, callback and actual sound cue. Its
+ordinary member naturally gives three stack values/RET12, but the full owner
+remains708/717 in12 inputs and709/717 in the canonical three-input graph.
+Allocation/InitializeVm remain nonexact. Input153/174 is also nonexact. The
+central Player call now supplies EAX as at target4262C7; the full central
+candidate stays2820 against3089. Names/TUs/inline ancestry remain provisional.
+
+First cold105+55+181+65 passes406/all9, then105/all2 passes independently.
+Sixteen same-image target guards pass1374/all36. Eight previous candidates,
+including shots876, damage1172, root2412 and motion160, retain every ordinary
+normalized byte and field identity. No large-owner partial credit is granted.
+Vector/constructor/opaque-partition controls fail to restore motion's zero-Z
+write or shot-update's moved LEA and are restored. Early producer-search
+exhaustion avoids a four-way unroll; early-return lookup improves the complete
+candidate, while position/typed-timer controls regress. The ordinary member
+and global stdcall producer forms are byte-neutral. Park these controls until
+new target evidence discriminates them. See [producer proof](evidence/player-shot-producer-20261030/README.md).

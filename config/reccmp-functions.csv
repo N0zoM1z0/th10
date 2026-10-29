@@ -1198,3 +1198,6 @@ th10::ChainElem::~ChainElem,0x00449A90,function
 MidiOutputView::~MidiOutputView,0x0043A910,function
 MidiOutputView::ReleaseTracks,0x0043AA60,function
 AnmVmTimerView::Decrement,0x00428DD0,function
+Player::SpawnShot,0x00427E90,function
+PlayerEmitShotRows,0x00428160,function
+PlayerUpdateInputAction,0x004281D0,function

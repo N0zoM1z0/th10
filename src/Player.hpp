@@ -415,6 +415,7 @@ struct Player
     PlayerEffectRowView *SpawnEffectRow(
         const PlayerFloat3 *position,
         float radius, float radiusDelta, int frames, int damage);
+    int SpawnShot(const PlayerShotDescriptorView *descriptor, int frame);
     int CalculateDamageToTarget(
         const PlayerFloat3 *targetPosition,
         const PlayerFloat3 *targetSize,

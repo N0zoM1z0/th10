@@ -1,5 +1,6 @@
 #include "EnemyGameState.hpp"
 #include "Enemy.hpp"
+#include "EnemySoundQueue.hpp"
 #include "VmIdInterrupt.hpp"
 #include "Player.hpp"
 #include "Chain.hpp"
@@ -291,7 +292,7 @@ void PlayerSetEffectVelocityFromPolar(
 float PlayerWrapEffectAngle(float value);
 void PlayerAdvanceEffectRegion(PlayerFloat3 *position);
 void PlayerUpdateDrawVmState(PlayerDrawVmView *vm);
-void PlayerUpdateInputAction(Player *player);
+int PlayerUpdateInputAction(Player *player);
 int __stdcall PlayerUpdateShots(Player *player);
 
 // Shared target 0x44BC70 uses a float stack argument and RET 4. The vector,
@@ -1349,6 +1350,193 @@ int PlayerShotBoundsView::IsOutsidePlayfield(
         return 0;
     }
     return 1;
+}
+
+// Both loops and the zero-ID path are inlined in target0x427E90.
+static __forceinline AnmVmView *LookupPlayerSpawnedShotVm(AnmVmIdView id)
+{
+    if (id.value == 0)
+        return NULL;
+    AnmVmLayerNodeView *node = g_AnmRenderManagerView->primaryVmListHead;
+    while (node != NULL)
+    {
+        if (static_cast<AnmVmView *>(node->owner)->id == id.value)
+            return static_cast<AnmVmView *>(node->owner);
+        node = node->next;
+    }
+    node = g_AnmRenderManagerView->secondaryVmListHead;
+    while (node != NULL)
+    {
+        if (static_cast<AnmVmView *>(node->owner)->id == id.value)
+            return static_cast<AnmVmView *>(node->owner);
+        node = node->next;
+    }
+    return NULL;
+}
+
+static __forceinline AnmVmView *FindPlayerSpawnedShotVm(AnmVmIdView *id)
+{
+    AnmVmView *vm = LookupPlayerSpawnedShotVm(*id);
+    if (vm == NULL)
+        id->value = 0;
+    return vm;
+}
+
+typedef char PlayerShotOptionReplaySourceAt3244[
+    (offsetof(Player, options) + offsetof(PlayerOptionRuntime, replayPair1) -
+     sizeof(PlayerOptionRuntime) == 0x3244) ? 1 : -1];
+
+// Target 0x427E90..0x42815C. The original producer name and TU are unknown.
+// It selects one of the existing128 rows and initializes its descriptor/VMs.
+// The ordinary member currently lowers to three stack values and RET12.
+extern unsigned char g_MainSoundOwner[0x52d0]; // shared Main.hpp declaration
+typedef void (__fastcall *PlayerShotSpawnCallback)(
+    Player *player, PlayerShotRuntimeView *shot, int frame);
+
+int Player::SpawnShot(const PlayerShotDescriptorView *descriptor, int frame)
+{
+    Player *player = this;
+    PlayerShotRuntimeView *shot = &player->shots[0];
+    if (descriptor->type == PLAYER_SHOT_TYPE_3 &&
+        player->shotSourceActive[descriptor->sourceIndex - 1] != 0)
+        return 0;
+    int count = 0;
+    while (shot->state != PLAYER_SHOT_INACTIVE)
+    {
+        ++count;
+        ++shot;
+        if (count >= 128)
+            return 0;
+    }
+
+    shot->state = PLAYER_SHOT_ACTIVE;
+    shot->descriptor = descriptor;
+    shot->timer.SetCurrent(0);
+    PlayerFloat3 *position = &shot->motion.position;
+    if (descriptor->sourceIndex == 0)
+    {
+        *position = player->drawPosition;
+    }
+    else
+    {
+        const PlayerPositionPair *source =
+            &player->options[descriptor->sourceIndex - 1].replayPair1;
+        PlayerFloat3 point;
+        point.x = static_cast<float>(source->x) * 0.01f;
+        point.y = static_cast<float>(source->y) * 0.01f;
+        point.z = 0.0f;
+        *position = point;
+    }
+    if (descriptor->type == PLAYER_SHOT_TYPE_3)
+        player->shotSourceActive[descriptor->sourceIndex - 1] = 1;
+    shot->motion.speedOrAngleStep = descriptor->speed;
+    shot->motion.angle = EnemyWrapAngle(descriptor->angle);
+    PlayerShotMotionView *motion = &shot->motion;
+    if ((motion->flags & PLAYER_SHOT_POLAR_MOTION) == 0)
+    {
+        reinterpret_cast<EnemyRuntimeVectorView *>(
+            &motion->velocity)->FromAngleMagnitude(
+                motion->angle, motion->speedOrAngleStep);
+        motion->velocity.z = 0.0f;
+    }
+    else
+    {
+        motion->polarMagnitude += motion->polarMagnitudeDelta;
+        motion->angle = EnemyWrapAngle(motion->speedOrAngleStep + motion->angle);
+    }
+    position->x += descriptor->spawnOffsetX - motion->velocity.x;
+    shot->motion.position.y += descriptor->spawnOffsetY - motion->velocity.y;
+
+    int script = descriptor->animationScript + 5;
+    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(player->resource);
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->renderLayer = PLAYER_VM_LAYER;
+    vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+    loaded->InitializeVm(vm, script);
+    AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+    shot->primaryVmId = id.value;
+    vm = FindPlayerSpawnedShotVm(
+        reinterpret_cast<AnmVmIdView *>(&shot->primaryVmId));
+    if ((vm->flags35C & PLAYER_VM_SHOT_ANGLE_SOURCE) != 0)
+    {
+        reinterpret_cast<PlayerVm *>(vm)->angle2C = descriptor->angle;
+        vm->flags35C |= PLAYER_VM_SHOT_ANGLE_DIRTY;
+    }
+    if (descriptor->type == PLAYER_SHOT_TYPE_3)
+    {
+        loaded = static_cast<AnmLoadedView *>(player->resource);
+        vm = g_AnmRenderManagerView->AllocateVm();
+        vm->renderLayer = PLAYER_VM_LAYER;
+        vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+        loaded->InitializeVm(vm, 16);
+        AnmVmIdView secondary = g_AnmRenderManagerView->AddVmVariant0(vm);
+        shot->secondaryVmId = secondary.value;
+    }
+    else
+    {
+        shot->secondaryVmId = 0;
+    }
+    if (descriptor->spawnCallback != NULL)
+        reinterpret_cast<PlayerShotSpawnCallback>(descriptor->spawnCallback)(
+            player, shot, frame);
+    if (descriptor->soundId >= 0)
+        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundCue(
+            descriptor->soundId, position->x);
+    return 0;
+}
+
+// Target 0x428160: power/mode select one fixed-up descriptor list, with a
+// negative fireInterval sentinel. Each eligible row consumes the current frame.
+int PlayerEmitShotRows(Player *player, int frame)
+{
+    int index = static_cast<unsigned short>(g_PlayerPower) / 20;
+    if (index >= 5)
+        index = 4;
+    if (player->optionMode != 0)
+        index += 5;
+    PlayerShotDescriptorView *row =
+        reinterpret_cast<PlayerShotDataEntryBoundaryView *>(
+            reinterpret_cast<unsigned char *>(player->optionData) + 0x110)[index].descriptors;
+    while (row->fireInterval >= 0)
+    {
+        if (frame % row->fireInterval == row->fireFrame)
+            player->SpawnShot(row, frame);
+        ++row;
+    }
+    return 0;
+}
+
+// Target 0x4281D0: update the input-driven shot timer only in the active state.
+int PlayerUpdateInputAction(Player *player)
+{
+    if (player->runtimeState == 1)
+    {
+        if (player->updateTimer0.current < 0)
+        {
+            if ((g_PlayerInputBits & 1u) == 0)
+                return 0;
+            reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->SetCurrent(0);
+        }
+        if (player->updateTimer0.current != player->updateTimer0.previous)
+            PlayerEmitShotRows(player, player->updateTimer0.current);
+        if (player->updateTimer0.current >= 15)
+        {
+            if ((g_PlayerInputBits & 1u) != 0)
+                reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->Add(-15.0f);
+            else
+                reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->SetCurrent(-1);
+        }
+        else
+        {
+            reinterpret_cast<AnmVmTimerView *>(&player->updateTimer0)->Tick();
+        }
+    }
+    else
+    {
+        player->trackedEnemy = NULL;
+        player->trackedEnemyValid = 0;
+    }
+    return 0;
 }
 
 // Both target callers pass the same 0x2C motion layout to 0x44C2A0.
