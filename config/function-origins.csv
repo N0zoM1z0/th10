@@ -600,6 +600,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041FF00,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0041FF30,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0041FF40,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
+0x0041FF60,unknown,Main,indeterminate,unknown,main-lifetime-20261029-implicit-destruction-origin-indeterminate
 0x0041FF80,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x004200C0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00420100,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17

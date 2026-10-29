@@ -600,6 +600,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041FF00,0x0041FF21,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0041FF30,0x0041FF36,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0041FF40,0x0041FF4C,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x0041FF60,0x0041FF75,reviewed,high,main-lifetime-20261029,Complete22-byte Main cleanup reached by registered static-destructor thunk4659F5. All22 byte refs find only that entry jump;15 preceding/10 following CC bytes separate it from independent RET41FF50 and callback41FF80.
 0x0041FF80,0x0041FFF0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x004200C0,0x004200C5,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; data xrefs only at 0x004204EF
 0x00420100,0x004201AD,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x4201b2 to entry; independent IDA MCP extent agrees"

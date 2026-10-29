@@ -17,6 +17,7 @@
 
 #include <windows.h>
 #include "ScriptViewerWorker.hpp"
+#include "GameConfiguration.hpp"
 
 enum MainRenderResult
 {
@@ -232,42 +233,44 @@ typedef char GameWindowViewCurrentTimestampAt38[
 
 struct StartupWorkerView;
 
+// Only the Release and offset20 calls are observed by Main cleanup.
+struct MainInputObjectView;
+struct MainInputVtableView
+{
+    void *slots000To004[2];
+    unsigned long (__stdcall *Release)(MainInputObjectView *object);
+    void *slots00CTo01C[5];
+    long (__stdcall *Call020)(MainInputObjectView *object);
+};
+struct MainInputObjectView { MainInputVtableView *vtable; };
+struct MidiTimerView;
+
+// Target constructor clears784 bytes through clearColor; preserve that view extent.
+#pragma pack(push, 4)
 struct MainSupervisorView
 {
+    MainSupervisorView();
     void SetNextGameMode(int mode);
     int StartModeThread(int (*entry)(), void *context);
     int UpdateGameMode();
+    int ReleaseGame();
     void LeaveLock(int index);
     static int __fastcall OnUpdate(MainSupervisorView *supervisor);
 
     HINSTANCE instance;                         // +0x000
     MainD3d9InterfaceView *d3dInterface;        // +0x004
     MainD3d9DeviceView *d3dDevice;              // +0x008
-    unsigned char unknown00C[0x03C];
+    MainInputObjectView *inputInterface;       // +0x00C
+    MainInputObjectView *inputDevice0;         // +0x010
+    MainInputObjectView *inputDevice1;         // +0x014
+    unsigned char unknown018[0x030];
     HWND gameWindow;                            // +0x048
     AnmMatrixView viewMatrix;                   // +0x04C
     AnmMatrixView projectionMatrix;             // +0x08C
     AnmViewportView viewport;                   // +0x0CC
     MainD3d9PresentParametersView presentParameters; // +0x0E4
-    unsigned char unknown11C[0x004];
-    union
-    {
-        unsigned char serializedConfiguration[0x34]; // +0x120
-        struct
-        {
-            unsigned char configUnknown120[0x01A];
-            signed char colorMode;              // +0x13A; D3D color depth
-            unsigned char configUnknown13B[2];
-            unsigned char windowed;             // +0x13D
-            unsigned char frameskip;            // +0x13E
-            unsigned char configUnknown13F;
-            signed char bgmVolume;              // +0x140
-            signed char sfxVolume;              // +0x141
-            signed char hintMode;               // +0x142; front-end hint setting
-            unsigned char configUnknown143[0x00D];
-            unsigned int options;               // +0x150
-        };
-    };
+    MidiTimerView *timerOwner;                 // +0x11C
+    GameConfigurationView configuration;          // +0x120
     unsigned char unknown154[0x118];
     AnmViewportOwnerView gameplayViewport;      // +0x26C
     unsigned char unknown350[0x034];
@@ -296,27 +299,48 @@ struct MainSupervisorView
     unsigned char criticalSectionLockCounts[7]; // +0x6F4
     unsigned char unknown6FB[0x055];
     unsigned int cachedFogEnabled;              // +0x750, full-word cache
-    unsigned char unknown754[0x014];
+    unsigned char unknown754[0x010];
+    void *buffer764;                           // +0x764
     StartupWorkerView *startupWorker;            // +0x768
     unsigned char unknown76C[0x00C];
     double lastFrameDuration;                   // +0x778
     unsigned int clearColor;                    // +0x780
 };
+#pragma pack(pop)
 
 typedef char MainSupervisorD3dAt004[
     (offsetof(MainSupervisorView, d3dInterface) == 0x004 &&
      offsetof(MainSupervisorView, d3dDevice) == 0x008) ? 1 : -1];
+typedef char MainSupervisorCleanupFields[
+    (offsetof(MainInputVtableView, Release) == 8 &&
+     offsetof(MainInputVtableView, Call020) == 0x20 &&
+     offsetof(MainSupervisorView, inputInterface) == 0xc &&
+     offsetof(MainSupervisorView, inputDevice0) == 0x10 &&
+     offsetof(MainSupervisorView, inputDevice1) == 0x14 &&
+     offsetof(MainSupervisorView, timerOwner) == 0x11c &&
+     offsetof(MainSupervisorView, buffer764) == 0x764) ? 1 : -1];
+
+typedef char MainSupervisorSizeIs784[
+    (sizeof(MainSupervisorView) == 0x784) ? 1 : -1];
+
 typedef char MainSupervisorPresentationAt0E4[
     (offsetof(MainSupervisorView, presentParameters) == 0x0e4) ? 1 : -1];
 typedef char MainSupervisorConfigurationOffsets[
-    (offsetof(MainSupervisorView, serializedConfiguration) == 0x120 &&
-     offsetof(MainSupervisorView, bgmVolume) == 0x140 &&
-     offsetof(MainSupervisorView, sfxVolume) == 0x141 &&
-     offsetof(MainSupervisorView, colorMode) == 0x13a &&
-     offsetof(MainSupervisorView, hintMode) == 0x142 &&
-     offsetof(MainSupervisorView, windowed) == 0x13d &&
-     offsetof(MainSupervisorView, frameskip) == 0x13e &&
-     offsetof(MainSupervisorView, options) == 0x150) ? 1 : -1];
+    (offsetof(MainSupervisorView, configuration) == 0x120 &&
+     offsetof(MainSupervisorView, configuration) +
+     offsetof(GameConfigurationView, bgmVolume) == 0x140 &&
+     offsetof(MainSupervisorView, configuration) +
+     offsetof(GameConfigurationView, sfxVolume) == 0x141 &&
+     offsetof(MainSupervisorView, configuration) +
+     offsetof(GameConfigurationView, colorMode) == 0x13a &&
+     offsetof(MainSupervisorView, configuration) +
+     offsetof(GameConfigurationView, hintMode) == 0x142 &&
+     offsetof(MainSupervisorView, configuration) +
+     offsetof(GameConfigurationView, windowed) == 0x13d &&
+     offsetof(MainSupervisorView, configuration) +
+     offsetof(GameConfigurationView, frameskip) == 0x13e &&
+     offsetof(MainSupervisorView, configuration) +
+     offsetof(GameConfigurationView, options) == 0x150) ? 1 : -1];
 typedef char MainSupervisorViewportAt26C[
     (offsetof(MainSupervisorView, gameplayViewport) == 0x26c &&
      offsetof(MainSupervisorView, activeViewport) == 0x384) ? 1 : -1];

@@ -650,7 +650,7 @@ int SoundPlayerView::PreloadBgm(int index, const char *path)
 
     strcpy(reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)
                ->bgmFileNames[index], path);
-    if ((g_MainSupervisorView.options & 0x10) == 0 || manager == NULL)
+    if ((g_MainSupervisorView.configuration.options & 0x10) == 0 || manager == NULL)
         return 0;
 
     if (bgmPreloadAllocations[index] != NULL)
@@ -692,12 +692,12 @@ int SoundPlayerView::LoadBgm(int index)
 {
     if (manager == NULL)
         return -1;
-    if (g_MainSupervisorView.configUnknown13B[0] == 0)
+    if (g_MainSupervisorView.configuration.unknown01B == 0)
         return -1;
     if (directSound == NULL)
         return -1;
 
-    if ((g_MainSupervisorView.options & 0x10) == 0)
+    if ((g_MainSupervisorView.configuration.options & 0x10) == 0)
         return ReopenBgm(bgmFileNames[index]);
 
     if (bgmPreloadAllocations[index] == NULL)
@@ -741,7 +741,7 @@ process_command:
         goto remove_command;
 
     case SOUND_COMMAND_PRELOAD_BGM:
-        if ((g_MainSupervisorView.options & 0x10) != 0)
+        if ((g_MainSupervisorView.configuration.options & 0x10) != 0)
         {
             if (command->step != 0)
             {
@@ -761,7 +761,7 @@ process_command:
         }
 
     case SOUND_COMMAND_LOAD_BGM:
-        if ((g_MainSupervisorView.options & 0x10) != 0 &&
+        if ((g_MainSupervisorView.configuration.options & 0x10) != 0 &&
             command->argument >= 0)
         {
             if (command->step == 0)
@@ -881,7 +881,7 @@ process_command:
         goto remove_command;
 
     case SOUND_COMMAND_PAUSE_BGM:
-        if (g_MainSupervisorView.configUnknown13B[0] == 1)
+        if (g_MainSupervisorView.configuration.unknown01B == 1)
         {
             if (static_cast<CStreamingSound *>(bgm)->isLocked)
                 break;
@@ -891,7 +891,7 @@ process_command:
         goto remove_command;
 
     case SOUND_COMMAND_UNPAUSE_BGM:
-        if (g_MainSupervisorView.configUnknown13B[0] == 1)
+        if (g_MainSupervisorView.configuration.unknown01B == 1)
         {
             if (static_cast<CStreamingSound *>(bgm)->isLocked)
                 break;
@@ -914,7 +914,7 @@ process_command:
             goto process_command;
     }
 
-    if (g_MainSupervisorView.configUnknown13B[1] == 0)
+    if (g_MainSupervisorView.configuration.unknown01C == 0)
         return commandQueue[0].opcode;
 
     for (int i = 0; i < 12; ++i)
@@ -1072,8 +1072,8 @@ int SoundPlayerView::PreparePlayback()
             duplicateSoundBuffers[i]->SetCurrentPosition(0);
             duplicateSoundBuffers[i]->SetVolume(g_SoundPlaybackMetadata[i].volume);
         }
-        bgmVolume = g_MainSupervisorView.bgmVolume;
-        sfxVolume = g_MainSupervisorView.sfxVolume;
+        bgmVolume = g_MainSupervisorView.configuration.bgmVolume;
+        sfxVolume = g_MainSupervisorView.configuration.sfxVolume;
         if (sfxVolume != 0)
         {
             float scale = 1.0f - static_cast<float>(bgmVolume) / 100.0f;

@@ -48,7 +48,7 @@ int StartupWorkerView::StartupThread()
     reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->PreparePlayback();
     if (FileSystem::CheckIfFileAlreadyExists("thbgm.dat"))
     {
-        if ((g_MainSupervisorView.options & 0x10) == 0)
+        if ((g_MainSupervisorView.configuration.options & 0x10) == 0)
             reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->OpenDiskBgm("thbgm.dat");
         else
             strcpy(reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->unknownNameSlot,

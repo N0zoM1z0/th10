@@ -22,9 +22,7 @@ extern char g_MainConfigWriteAdvice[];
 // Target420870..420A85 reads the shared settings, validates and writes them back.
 int __stdcall MainLoadConfiguration(const char *path, MainSupervisorView *supervisor)
 {
-    GameConfigurationView &configuration =
-        *reinterpret_cast<GameConfigurationView *>(
-            g_MainSupervisorView.serializedConfiguration);
+    GameConfigurationView &configuration = g_MainSupervisorView.configuration;
     configuration.ResetDefaults();
     int size;
     unsigned char *data = FileSystem::OpenFile(path, &size, 1);
@@ -52,24 +50,24 @@ int __stdcall MainLoadConfiguration(const char *path, MainSupervisorView *superv
 
 configurationLoaded:
     supervisor->disableVsync = 0;
-    if ((supervisor->options & 4) != 0)
+    if ((supervisor->configuration.options & 4) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption004Log);
-    if ((supervisor->options & 1) != 0)
+    if ((supervisor->configuration.options & 1) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption001Log);
-    if (supervisor->windowed != 0)
+    if (supervisor->configuration.windowed != 0)
         th10::g_GameErrorContext.Log(g_MainConfigWindowedLog);
-    if ((supervisor->options & 2) != 0)
+    if ((supervisor->configuration.options & 2) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption002Log);
-    if ((supervisor->options & 8) != 0)
+    if ((supervisor->configuration.options & 8) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption008Log);
-    if ((supervisor->options & 0x10) != 0)
+    if ((supervisor->configuration.options & 0x10) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption010Log);
-    if ((supervisor->options & 0x20) != 0)
+    if ((supervisor->configuration.options & 0x20) != 0)
     {
         th10::g_GameErrorContext.Log(g_MainConfigOption020Log);
         g_MainSupervisorView.disableVsync = 1;
     }
-    if ((supervisor->options & 0x40) != 0)
+    if ((supervisor->configuration.options & 0x40) != 0)
         th10::g_GameErrorContext.Log(g_MainConfigOption040Log);
     if (FileSystem::WriteFile(path, &configuration, sizeof(configuration)) != 0)
     {

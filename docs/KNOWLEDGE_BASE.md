@@ -6696,3 +6696,59 @@ reset125/125 retains nine differences, and WinMain1438/1389 remains nonexact;
 neither is credited by its exact caller/callee. Main initialization421F00 must
 still preserve configuration-before-worker construction. See
 [the complete proof](evidence/main-configuration-20261029/README.md).
+
+
+## 2026-10-29 Main member lifetime, complete exit and actual timer context
+
+Static initializer4658F0 constructs Main491C28 and registers4659F0. The latter's
+jump at4659F5 reaches the previously omitted41FF60..41FF75 owner. All22 byte refs
+find only that entry escape;15 preceding/10 following CC bytes delimit it.
+Natural implicit destruction restores the shared worker vptr and calls Stop at
++62C. This and the existing71-byte Main constructor remain origin-indeterminate;
+source versus synthesized lifecycle contribution is not established by codegen.
+
+Construction initializes configuration+120 before worker+62C, then clears784h
+bytes and sets flags140h. The old anonymous POD configuration could not preserve
+that automatic member order. A real GameConfigurationView member replaces it;
+all consumers retain the same signed/unsigned domains and asserted offsets.
+The scoped packed4 consumed Main view reproduces the clear extent through
+clearColor+780. This alone does not prove original object size, stride, alignment,
+tail padding or a production packing directive. Product storage remains open.
+
+Main shutdown420270..420394 is a complete293-byte owner: scan/mode Stop calls,
+sound state2, temporary storage+764, five mode owners, FPS, ANM quad buffer,
+dummy sound command, text/GDI, input interface/device slots, timer and archive.
+Global fields and receiver-relative fields must stay distinct. Timer capture as
+a local reference still gives291/293. Factoring the actual StopTimer member
+operation supplies the target receiver/field lifetime and recovers all293 bytes.
+An outlined48-byte timer destructor restores its vptr, cancels a live timer,
+ends its period, clears timerId and ends its period again. Shutdown's preceding
+StopTimer adds the third period-end call; none is erased as redundant. The
+archive uses its existing pinned /GL /EHsc /Ob1 recipe; its86-byte Release callee
+also matches in the new graph. No foreign compiler profile is transplanted.
+
+FPS deletion413450/84 uses draw element+C under critical section0/counter0,
+clears the existing477708 replay-timing pointer and deletes the captured owner.
+The counter's14h timestamp and8Ch consumed layout remain asserted. Complete
+mode release4203F0/128 deletes GameManager, FrontEnd, Startup, Ending and Replay
+owners but emits133 bytes, so remains nonexact. A GameManager destructor-role
+attempt still emits1120/1105 and is restored to the existing free cleanup API.
+
+Full Options update now emits3196/3188 including its five-entry table. The1128
+measurement remains historical evidence from a different calling graph. A
+natural member versus static explicit-receiver control is structurally equal
+across the full native3196 bytes and is restored. WinMain improves1438 to1422
+against1389 through the actual shutdown source but remains nonexact. Its103-byte
+438880 cleanup is a Chain destructor, contrary to the old window-init note:
+WinMain passes the allocated48-byte Chain, stops Main worker+62C, removes both
+24-byte sentinel lists and clears their callback slots under the actual EH frame.
+This is the next concrete parent-source lead, not an accepted destructor body.
+
+Two independent30-input colds reproduce five new owners518/all42:425 authored
+and93 indeterminate, with no authored denominator change. Eighteen selected
+old contracts8415/all371 pass per new image; Hint and FrontEnd CreateVm also pass
+their original recipes. New-context CreateVm90/95 and OpenFile312/360 remain
+nonmatches; address/interface binding does not imply callee bytes. Six mappings
+646 include the nonexact128 mode owner. No full-cohort, comparator, host-scenario,
+product/runtime or portability claim is made. See
+[the complete proof](evidence/main-lifetime-20261029/README.md).

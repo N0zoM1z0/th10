@@ -2,13 +2,12 @@
 
 ## Start here
 
-Current checkpoint adds the complete534-byte Main configuration reader, exact
-with all60 semantic fields in two independent29-input cold links. The real
-WinMain caller establishes path-in-EBX/stack-Main/RET4; the previous cdecl
-external declaration was wrong. Seven direct/ABI guards1217 bytes pass per image.
-Configuration reset remains125/125 with nine differences and WinMain1438/1389
-remains nonexact. Next concrete leads are Main construction421F00 and replay
-creation428FEA; preserve actual member construction order rather than forcing ABI.
+Current checkpoint restores Main's actual lifetime and complete293-byte shutdown.
+Five new complete owners518 bytes/all42 fields pass two independent30-input colds:
+425 authored and93 indeterminate. Typed configuration construction, automatic
+worker destruction, FPS teardown and MIDI timer cleanup are source-backed.
+WinMain1422/1389 and Options3196/3188 remain nonexact. The next concrete WinMain
+lead is its103-byte Chain destructor438880; the old window-init label is wrong.
 
 Read [AGENTS.md](../AGENTS.md), this handoff and the relevant source/ledger rows.
 Consult [workflow](RE_WORKFLOW.md) and [Oracle policy](ORACLES.md) for the lane
@@ -36,9 +35,36 @@ Ghidra before using its observations. No `/mnt` search or target substitution.
 ## Current facts
 
 Authoritative counts are generated in [PROGRESS.md](PROGRESS.md):
-**85,609/275,729 reviewed authored owned bytes exact, 462 exact authored owners**;
-674 authored source mappings. Total: 1818 candidates, 1187 mappings, 1332 exact.
+**86,034/275,729 reviewed authored owned bytes exact, 465 exact authored owners**;
+678 authored source mappings. Total: 1819 candidates, 1193 mappings, 1337 exact.
 The denominator remains provisional; product build/runtime closure is still open.
+
+Latest [Main lifetime proof](evidence/main-lifetime-20261029/README.md):
+
+- Construction421F00/71, implicit destruction41FF60/22, game shutdown420270/293,
+  FPS deletion413450/84 and timer destruction4203C0/48 pass every byte/all42 fields
+  twice. The new22-byte destructor has one registered-thunk entry ref and no
+  interior refs. Construction/destruction remain origin-indeterminate;425 authored
+  and93 indeterminate bytes added with no authored denominator change.
+- Main now constructs the real configuration+120 before worker+62C. The consumed
+  packed4 view covers the784h-byte clear and preserves all offsets; original
+  allocation stride/tail/packing declaration remain unproven. Global491C28 has
+  real static construction/member destruction in the native graph.
+- Shutdown preserves global/receiver ownership and stops/frees mode, FPS, render,
+  text, input, timer and archive resources. Timer StopTimer member context recovers
+  293 from291; destructor48 retains both period-end calls. The archive source uses
+  its existing pinned /GL /EHsc /Ob1 recipe, with the complete86-byte callee exact.
+- Eighteen explicit old same-image guards8415/all371 pass; the changed Hint
+  interface and FrontEnd CreateVm also pass their original recipes. The new graph
+  has CreateVm90/95 and OpenFile312/360; these are not callee-byte exact claims.
+  No historical cohort or comparator/host-scenario campaign was run.
+- Full Options controller is3196/3188, not the historical1128-byte candidate.
+  Natural member role is a complete native-to-native neutral control and restored.
+  GameManager destructor role still1120/1105 and is restored. WinMain1422/1389,
+  mode release133/128, reset125/125 and D3D init1152/1159 remain nonexact.
+- Actual WinMain438DAB passes its48-byte Chain to438880/103. This stops Main worker,
+  removes both sentinel lists and destroys callback slots under EH. Restore the
+  real Chain lifecycle next; its old generic window-initialization label is wrong.
 
 Latest [Main configuration proof](evidence/main-configuration-20261029/README.md):
 

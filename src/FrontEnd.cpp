@@ -574,12 +574,12 @@ static __forceinline AnmVmView *FindOptionsChildVm(
 static __forceinline void SetHintModeSprites(
     FrontEndControllerView *controller, AnmRenderManagerView *manager)
 {
-    if (g_MainSupervisorView.hintMode == 0)
+    if (g_MainSupervisorView.configuration.hintMode == 0)
     {
         FindOptionsChildId(controller, manager, 0x1f).SetSprite(0x2e);
         FindOptionsChildId(controller, manager, 0x20).SetSprite(0x2f);
     }
-    else if (g_MainSupervisorView.hintMode == 1)
+    else if (g_MainSupervisorView.configuration.hintMode == 1)
     {
         FindOptionsChildId(controller, manager, 0x1f).SetSprite(0x30);
         FindOptionsChildId(controller, manager, 0x20).SetSprite(0x31);
@@ -1190,25 +1190,25 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             switch (controller->cursor.current)
             {
             case 0:
-                if (g_MainSupervisorView.hintMode == 0)
-                    g_MainSupervisorView.hintMode = 2;
+                if (g_MainSupervisorView.configuration.hintMode == 0)
+                    g_MainSupervisorView.configuration.hintMode = 2;
                 else
-                    --g_MainSupervisorView.hintMode;
+                    --g_MainSupervisorView.configuration.hintMode;
                 SetHintModeSprites(controller, manager);
                 QueueOptionsSound(FRONT_END_SOUND_MOVE);
                 break;
             case 1:
-                if (g_MainSupervisorView.bgmVolume < 5)
-                    g_MainSupervisorView.bgmVolume = 0;
+                if (g_MainSupervisorView.configuration.bgmVolume < 5)
+                    g_MainSupervisorView.configuration.bgmVolume = 0;
                 else
-                    g_MainSupervisorView.bgmVolume -= 5;
+                    g_MainSupervisorView.configuration.bgmVolume -= 5;
                 controller->RefreshOptionsDisplay();
                 break;
             case 2:
-                if (g_MainSupervisorView.sfxVolume < 5)
-                    g_MainSupervisorView.sfxVolume = 0;
+                if (g_MainSupervisorView.configuration.sfxVolume < 5)
+                    g_MainSupervisorView.configuration.sfxVolume = 0;
                 else
-                    g_MainSupervisorView.sfxVolume -= 5;
+                    g_MainSupervisorView.configuration.sfxVolume -= 5;
                 controller->RefreshOptionsDisplay();
                 break;
             }
@@ -1219,23 +1219,23 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             switch (controller->cursor.current)
             {
             case 0:
-                if (static_cast<unsigned char>(g_MainSupervisorView.hintMode) < 2)
-                    ++g_MainSupervisorView.hintMode;
+                if (static_cast<unsigned char>(g_MainSupervisorView.configuration.hintMode) < 2)
+                    ++g_MainSupervisorView.configuration.hintMode;
                 else
-                    g_MainSupervisorView.hintMode = 0;
+                    g_MainSupervisorView.configuration.hintMode = 0;
                 QueueOptionsSound(FRONT_END_SOUND_MOVE);
                 SetHintModeSprites(controller, manager);
                 break;
             case 1:
-                g_MainSupervisorView.bgmVolume += 5;
-                if (g_MainSupervisorView.bgmVolume > 100)
-                    g_MainSupervisorView.bgmVolume = 100;
+                g_MainSupervisorView.configuration.bgmVolume += 5;
+                if (g_MainSupervisorView.configuration.bgmVolume > 100)
+                    g_MainSupervisorView.configuration.bgmVolume = 100;
                 controller->RefreshOptionsDisplay();
                 break;
             case 2:
-                g_MainSupervisorView.sfxVolume += 5;
-                if (g_MainSupervisorView.sfxVolume > 100)
-                    g_MainSupervisorView.sfxVolume = 100;
+                g_MainSupervisorView.configuration.sfxVolume += 5;
+                if (g_MainSupervisorView.configuration.sfxVolume > 100)
+                    g_MainSupervisorView.configuration.sfxVolume = 100;
                 controller->RefreshOptionsDisplay();
                 break;
             }
@@ -1251,9 +1251,9 @@ int __stdcall FrontEndControllerView::UpdateOptions(
                 controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
                 return 1;
             case 4:
-                g_MainSupervisorView.bgmVolume = 100;
-                g_MainSupervisorView.sfxVolume = 80;
-                g_MainSupervisorView.hintMode = 0;
+                g_MainSupervisorView.configuration.bgmVolume = 100;
+                g_MainSupervisorView.configuration.sfxVolume = 80;
+                g_MainSupervisorView.configuration.hintMode = 0;
                 controller->RefreshOptionsDisplay();
                 SetHintModeSprites(controller, manager);
                 QueueOptionsSound(FRONT_END_SOUND_SELECT);
@@ -1298,9 +1298,9 @@ void FrontEndControllerView::RefreshOptionsDisplay()
 {
     float volume;
 
-    g_FrontEndSoundBgmVolume = g_MainSupervisorView.bgmVolume;
+    g_FrontEndSoundBgmVolume = g_MainSupervisorView.configuration.bgmVolume;
     FrontEndQueueSoundCommand("SetVol", 8, 0);
-    g_FrontEndSoundSfxVolume = g_MainSupervisorView.sfxVolume;
+    g_FrontEndSoundSfxVolume = g_MainSupervisorView.configuration.sfxVolume;
 
     if (g_FrontEndSoundSfxVolume != 0)
     {
@@ -1323,61 +1323,61 @@ void FrontEndControllerView::RefreshOptionsDisplay()
     vm = FindOptionsChildVm(this, manager, 0x25);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.bgmVolume / 100 + 0x33);
+            vm, g_MainSupervisorView.configuration.bgmVolume / 100 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x26);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.bgmVolume / 10 % 10 + 0x33);
+            vm, g_MainSupervisorView.configuration.bgmVolume / 10 % 10 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x27);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.bgmVolume % 10 + 0x33);
+            vm, g_MainSupervisorView.configuration.bgmVolume % 10 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x29);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.bgmVolume / 100 + 0x3d);
+            vm, g_MainSupervisorView.configuration.bgmVolume / 100 + 0x3d);
     vm = FindOptionsChildVm(this, manager, 0x2a);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.bgmVolume / 10 % 10 + 0x3d);
+            vm, g_MainSupervisorView.configuration.bgmVolume / 10 % 10 + 0x3d);
     vm = FindOptionsChildVm(this, manager, 0x2b);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.bgmVolume % 10 + 0x3d);
+            vm, g_MainSupervisorView.configuration.bgmVolume % 10 + 0x3d);
 
     vm = FindOptionsChildVm(this, manager, 0x2d);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.sfxVolume / 100 + 0x33);
+            vm, g_MainSupervisorView.configuration.sfxVolume / 100 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x2e);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.sfxVolume / 10 % 10 + 0x33);
+            vm, g_MainSupervisorView.configuration.sfxVolume / 10 % 10 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x2f);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.sfxVolume % 10 + 0x33);
+            vm, g_MainSupervisorView.configuration.sfxVolume % 10 + 0x33);
     vm = FindOptionsChildVm(this, manager, 0x31);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.sfxVolume / 100 + 0x3d);
+            vm, g_MainSupervisorView.configuration.sfxVolume / 100 + 0x3d);
     vm = FindOptionsChildVm(this, manager, 0x32);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.sfxVolume / 10 % 10 + 0x3d);
+            vm, g_MainSupervisorView.configuration.sfxVolume / 10 % 10 + 0x3d);
     vm = FindOptionsChildVm(this, manager, 0x33);
     if (vm != NULL)
         vm->anmFile->SetSprite(
-            vm, g_MainSupervisorView.sfxVolume % 10 + 0x3d);
+            vm, g_MainSupervisorView.configuration.sfxVolume % 10 + 0x3d);
 
-    if (g_MainSupervisorView.bgmVolume < 10)
+    if (g_MainSupervisorView.configuration.bgmVolume < 10)
     {
         FindOptionsChildVm(this, manager, 0x25)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x26)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x29)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x2a)->drawEnabled = 0;
     }
-    else if (g_MainSupervisorView.bgmVolume < 100)
+    else if (g_MainSupervisorView.configuration.bgmVolume < 100)
     {
         FindOptionsChildVm(this, manager, 0x25)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x26)->drawEnabled = 1;
@@ -1392,14 +1392,14 @@ void FrontEndControllerView::RefreshOptionsDisplay()
         FindOptionsChildVm(this, manager, 0x2a)->drawEnabled = 1;
     }
 
-    if (g_MainSupervisorView.sfxVolume < 10)
+    if (g_MainSupervisorView.configuration.sfxVolume < 10)
     {
         FindOptionsChildVm(this, manager, 0x2d)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x2e)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x31)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x32)->drawEnabled = 0;
     }
-    else if (g_MainSupervisorView.sfxVolume < 100)
+    else if (g_MainSupervisorView.configuration.sfxVolume < 100)
     {
         FindOptionsChildVm(this, manager, 0x2d)->drawEnabled = 0;
         FindOptionsChildVm(this, manager, 0x2e)->drawEnabled = 1;

@@ -1186,3 +1186,9 @@ MainSupervisorView::StartModeThread,0x00420EA0,function
 GameManagerLoadThread,0x00417C70,function
 GameConfigurationView::ResetDefaults,0x00418C40,function
 MainLoadConfiguration,0x00420870,function
+MainSupervisorView::MainSupervisorView,0x00421F00,function
+MainSupervisorView::~MainSupervisorView,0x0041FF60,function
+MainSupervisorView::ReleaseGame,0x00420270,function
+DeleteFpsCounter,0x00413450,function
+MidiTimerView::~MidiTimerView,0x004203C0,function
+ReleaseModeOwners,0x004203F0,function

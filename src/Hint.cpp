@@ -448,7 +448,7 @@ int HintOwnerView::Initialize()
     th10::Chain::AddToDrawChain(element, 44, th10::g_Chain);
     drawChain = element;
     counter10 = 0;
-    if (g_MainSupervisorView.hintMode != 0)
+    if (g_MainSupervisorView.configuration.hintMode != 0)
     {
         LoadHintFile(this, "hint/hint_auto.txt", 0);
         LoadHintFile(this, "hint/hint_user.txt", 1);
@@ -486,7 +486,7 @@ void __stdcall CleanupHintOwner(HintOwnerView *owner)
             manager->MarkVmForDeletion(owner->vmIds[index]);
         owner->vmIds[index].value = 0;
     }
-    if (g_MainSupervisorView.hintMode == 2)
+    if (g_MainSupervisorView.configuration.hintMode == 2)
         ExportAutomaticHints(owner, "hint/hint_auto.txt");
     ClearHintLists(owner);
     g_GameOwner477814 = NULL;

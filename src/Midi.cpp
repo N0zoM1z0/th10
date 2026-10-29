@@ -11,6 +11,21 @@ void MidiTimerView::Tick()
 {
 }
 
+// Target4203C0..4203EF retains both period-end calls.
+void MidiTimerView::StopTimer()
+{
+    if (timerId != 0)
+        timeKillEvent(timerId);
+    timeEndPeriod(timerPeriod);
+    timerId = 0;
+}
+
+MidiTimerView::~MidiTimerView()
+{
+    StopTimer();
+    timeEndPeriod(timerPeriod);
+}
+
 int MidiOutputView::UnprepareHeader(MIDIHDR *header)
 {
     int i;

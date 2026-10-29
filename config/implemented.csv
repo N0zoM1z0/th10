@@ -1185,3 +1185,9 @@ MainSupervisorView::StartModeThread
 GameManagerLoadThread
 GameConfigurationView::ResetDefaults
 MainLoadConfiguration
+MainSupervisorView::MainSupervisorView
+MainSupervisorView::~MainSupervisorView
+MainSupervisorView::ReleaseGame
+DeleteFpsCounter
+MidiTimerView::~MidiTimerView
+ReleaseModeOwners

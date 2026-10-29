@@ -4,6 +4,8 @@
 #include "FileSystem.hpp"
 #include "Midi.hpp"
 #include "Sound.hpp"
+#include "Chain.hpp"
+#include "ReplayTimingSource.hpp"
 
 #include <shlobj.h>
 #include <direct.h>
@@ -87,7 +89,6 @@ extern INT_PTR CALLBACK MainConfigurationDialogProc(
 extern void *MainCreateCallbackOwner();
 extern void MainDestroyCallbackOwner(void *owner);
 extern int MainRegisterChain();
-extern void MainReleaseChain(MainSupervisorView *supervisor);
 extern int __stdcall MainRunCalcChain(void *owner);
 extern int __stdcall MainRunDrawChain(void *owner);
 extern void MainInitializeControllerCaps();
@@ -341,12 +342,12 @@ int WINAPI WinMain(
     if (MainLoadConfiguration("th10.cfg", &g_MainSupervisorView) != 0)
         goto stop;
 
-    if ((g_MainSupervisorView.options & 0x100) != 0)
+    if ((g_MainSupervisorView.configuration.options & 0x100) != 0)
     {
         INT_PTR dialogResult = DialogBoxParamA(
             instance, MAKEINTRESOURCEA(203), NULL,
             MainConfigurationDialogProc, 0);
-        g_MainSupervisorView.windowed = dialogResult != 6;
+        g_MainSupervisorView.configuration.windowed = dialogResult != 6;
     }
     GameWindowView::CalcExecutableChecksum();
 
@@ -367,7 +368,7 @@ restart:
     MainResetInput();
     g_AnmRenderManagerView = new AnmRenderManagerView;
 
-    if (g_MainSupervisorView.windowed == 0)
+    if (g_MainSupervisorView.configuration.windowed == 0)
     {
         WINNLSEnableIME(NULL, FALSE);
         ShowCursor(FALSE);
@@ -427,7 +428,7 @@ restart:
     }
 
 releaseGame:
-    MainReleaseChain(&g_MainSupervisorView);
+    g_MainSupervisorView.ReleaseGame();
     if (g_MainCallbackOwner != NULL)
     {
         MainDestroyCallbackOwner(g_MainCallbackOwner);
@@ -477,7 +478,7 @@ stop:
             th10::g_GameErrorContext.m_Buffer;
         th10::g_GameErrorContext.m_Buffer[0] = 0;
         th10::g_GameErrorContext.Log(const_cast<char *>(g_MainRestartLog));
-        if (g_MainSupervisorView.windowed == 0)
+        if (g_MainSupervisorView.configuration.windowed == 0)
             WINNLSEnableIME(NULL, TRUE);
         for (i = 0; i < 60; ++i)
         {
@@ -491,7 +492,7 @@ stop:
     }
 
     FileSystem::WriteFile(
-        "th10.cfg", g_MainSupervisorView.serializedConfiguration, 0x34);
+        "th10.cfg", &g_MainSupervisorView.configuration, 0x34);
     if (g_MainSupervisorView.musicOwner != NULL)
     {
         static_cast<MidiOutputView *>(g_MainSupervisorView.musicOwner)
@@ -559,7 +560,7 @@ LRESULT __stdcall GameWindowView::WindowProc(
         }
         break;
     case WM_SETCURSOR:
-        if (g_MainSupervisorView.windowed == 0 &&
+        if (g_MainSupervisorView.configuration.windowed == 0 &&
             g_GameWindowView.windowIsInactive == 0)
         {
             ShowCursor(FALSE);
@@ -666,7 +667,7 @@ int __stdcall GameWindowView::Render(GameWindowView *window)
 
     ++window->framesSinceRedraw;
     if ((int)window->framesSinceRedraw >=
-        (int)g_MainSupervisorView.frameskip + 1)
+        (int)g_MainSupervisorView.configuration.frameskip + 1)
     {
         g_MainSupervisorView.d3dDevice->vtable->BeginScene(
             g_MainSupervisorView.d3dDevice);
@@ -749,7 +750,7 @@ int GameWindowView::CreateGameWindow(HINSTANCE instance)
     windowClass.lpszClassName = "BASE";
     RegisterClassA(&windowClass);
 
-    if (g_MainSupervisorView.windowed == 0)
+    if (g_MainSupervisorView.configuration.windowed == 0)
     {
         width = 640;
         height = 480;
@@ -812,24 +813,24 @@ int GameWindowView::InitD3DRendering()
     g_MainSupervisorView.d3dInterface->vtable->GetAdapterDisplayMode(
         g_MainSupervisorView.d3dInterface, 0, &displayMode);
 
-    if (g_MainSupervisorView.windowed == 0)
+    if (g_MainSupervisorView.configuration.windowed == 0)
     {
-        if ((g_MainSupervisorView.options & 1) != 0)
+        if ((g_MainSupervisorView.configuration.options & 1) != 0)
         {
             presentParameters.backBufferFormat = MAIN_D3D_FORMAT_R5G6B5;
-            g_MainSupervisorView.colorMode = 1;
+            g_MainSupervisorView.configuration.colorMode = 1;
         }
-        else if (g_MainSupervisorView.colorMode == -1)
+        else if (g_MainSupervisorView.configuration.colorMode == -1)
         {
             presentParameters.backBufferFormat = MAIN_D3D_FORMAT_X8R8G8B8;
-            g_MainSupervisorView.colorMode = 0;
+            g_MainSupervisorView.configuration.colorMode = 0;
             th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3d32BitLog));
         }
         else
         {
             presentParameters.backBufferFormat =
                 MAIN_D3D_FORMAT_X8R8G8B8 +
-                (g_MainSupervisorView.colorMode != 0);
+                (g_MainSupervisorView.configuration.colorMode != 0);
         }
 
         if (g_GameWindowView.usesRelativePath != 0)
@@ -869,7 +870,7 @@ int GameWindowView::InitD3DRendering()
 
     for (;;)
     {
-        if ((g_MainSupervisorView.options & 2) == 0)
+        if ((g_MainSupervisorView.configuration.options & 2) == 0)
         {
             if (!MainD3dFailed(
                     g_MainSupervisorView.d3dInterface->vtable->CreateDevice(
@@ -984,7 +985,7 @@ int GameWindowView::InitD3DRendering()
         th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dTextureSizeWarning));
     }
 
-    if ((g_MainSupervisorView.options & 1) == 0 && usingHardwareRenderer)
+    if ((g_MainSupervisorView.configuration.options & 1) == 0 && usingHardwareRenderer)
     {
         if (g_MainSupervisorView.d3dInterface->vtable->CheckDeviceFormat(
                 g_MainSupervisorView.d3dInterface, 0,
@@ -996,7 +997,7 @@ int GameWindowView::InitD3DRendering()
         }
         else
         {
-            g_MainSupervisorView.options |= 1;
+            g_MainSupervisorView.configuration.options |= 1;
             g_MainSupervisorView.flags &= ~MAIN_FLAG_32BIT_TEXTURES;
             th10::g_GameErrorContext.Log(const_cast<char *>(g_MainD3dTextureFormatWarning));
         }
@@ -1203,16 +1204,16 @@ INT_PTR CALLBACK MainConfigurationDialogProc(
         {
         case 201:
             if (IsDlgButtonChecked(dialog, 202) == BST_CHECKED)
-                g_MainSupervisorView.options |= 0x100;
+                g_MainSupervisorView.configuration.options |= 0x100;
             else
-                g_MainSupervisorView.options &= ~0x100u;
+                g_MainSupervisorView.configuration.options &= ~0x100u;
             EndDialog(dialog, IDYES);
             break;
         case 203:
             if (IsDlgButtonChecked(dialog, 202) == BST_CHECKED)
-                g_MainSupervisorView.options |= 0x100;
+                g_MainSupervisorView.configuration.options |= 0x100;
             else
-                g_MainSupervisorView.options &= ~0x100u;
+                g_MainSupervisorView.configuration.options &= ~0x100u;
             EndDialog(dialog, IDNO);
             break;
         }
@@ -1265,7 +1266,9 @@ struct FpsSampleGateView
 
 struct FpsCounterView
 {
-    unsigned char unknown000[0x14];
+    unsigned char unknown000[0x0c];
+    th10::ChainElem *drawElement;
+    unsigned char unknown010[4];
     double lastFpsTimestamp;       // +0x14
     int clockAnomalyCount;         // +0x1C
     unsigned int fpsFrameCount;    // +0x20
@@ -1287,6 +1290,26 @@ typedef char FpsCounterFrameCountAt20[
     (offsetof(FpsCounterView, fpsFrameCount) == 0x20) ? 1 : -1];
 typedef char FpsCounterCurrentFpsAt34[
     (offsetof(FpsCounterView, currentFps) == 0x34) ? 1 : -1];
+
+// Target413450..4134A3. The retained pointer global is shared with replay timing.
+void DeleteFpsCounter(FpsCounterView *counter)
+{
+    if (counter != NULL)
+    {
+        th10::ChainElem *element = counter->drawElement;
+        th10::Chain *chain = th10::g_Chain;
+        if (element != NULL)
+        {
+            EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+            ++g_MainSupervisorView.criticalSectionLockCounts[0];
+            chain->UnregisterElem(element);
+            LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+            --g_MainSupervisorView.criticalSectionLockCounts[0];
+        }
+        g_ReplayTimingSource = NULL;
+        delete counter;
+    }
+}
 
 extern FpsSampleGateView *g_FpsSampleGateView;
 extern int g_FpsDisplayMode;
@@ -1377,7 +1400,7 @@ int FpsCounterView::DrawFpsCounter()
             g_AsciiManagerView->color = 0xffffffffu;
         }
     }
-    fpsFrameCount += (unsigned int)g_MainSupervisorView.frameskip + 1u;
+    fpsFrameCount += (unsigned int)g_MainSupervisorView.configuration.frameskip + 1u;
     return 1;
 }
 
