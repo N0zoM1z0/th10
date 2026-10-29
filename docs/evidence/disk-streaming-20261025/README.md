@@ -1,5 +1,12 @@
 # Disk streaming: first complete owner and constructor visibility
 
+**Continued 2026-10-29:** the [maintained startup proof](../sound-disk-startup-20261029/README.md)
+rechecks these proposals against TH10, restores the real startup chain, and
+resolves the702-byte parent's mismatch through separate COM HRESULT checks.
+The651-byte memory parent is also exact. Source/codegen admission now follows
+the current independent-origin policy; the old separate-origin-decision condition
+below is historical. Existing origin rows remain unchanged.
+
 2026-10-25, source HEAD 7e60288. **Diagnostic proposals only.** No maintained
 source mapping, canonical unit, authored exact/source credit, origin row or
 denominator changes. Native product/runtime/semantic/port gates remain open.

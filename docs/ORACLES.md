@@ -236,11 +236,20 @@ A linked DIR32 field may explicitly opt into `allocation_eh_handler = true`
 for the supported VC7.1 single-allocation cleanup shape. Its exact parent-named
 MAP static entry must join one unaliased, complete21-byte generated PDB region
 in the same object/module as the already bound parent. Both images must expose
-the immutable one-state FuncInfo, saved storage atEBP-10, scalar-delete action
+the immutable one-state FuncInfo, saved storage atEBP-10 by default, scalar-delete action
 and CxxFrameHandler dispatch protocol. Ordinary public/static selectors remain
 unchanged. This supplies an address identity for the complete parent replay;
 it grants no child-code, metadata ownership or EH-runtime credit. Unsupported
 shapes stay unknown. See [the replay factory proof and limitations](evidence/replay-load/README.md).
+
+`allocation_eh_storage_offset` can explicitly declare another aligned negative
+disp8 frame slot. Both cleanup actions must load the identical declared offset;
+stack positions are never normalized. The default remains-0x10. Disk and memory
+stream creation use-0x48, with the same complete21-byte region, one-state28-byte
+FuncInfo, immutable metadata and qualified parent-object checks. This only binds
+the handler address for full-parent byte comparison; generated code/metadata and
+runtime receive no extra credit. Synthetic controls reject a wrong slot in either
+image and malformed declarations. See [the streaming proof](evidence/sound-disk-startup-20261029/README.md).
 
 ## Stack-file EH entry binding and metadata extent
 

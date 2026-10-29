@@ -5,7 +5,7 @@ These model generic i386 compiler metadata and code, not a TH10 byte fixture or
 runtime. Native/canonical cold comparisons provide the independent integration
 check. No compiler execution, private input or generated-code credit is needed.
 """
-import copy, struct
+import copy, runpy, struct
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -69,9 +69,31 @@ def main():
             f[side].memory[0x3000].extend(struct.pack('<I',neighbor))
         bind(f)
 
+    # The explicitly declared slot is an equality constraint, not a mask.
+    f=fixture();f['field']['allocation_eh_storage_offset']=-0x48
+    expected_fields=runpy.run_path(str(Path(__file__).with_name('compare-linked-function.py')))['expected_fields']
+    f['field']=expected_fields({**f['unit'],'linkages':[{**f['field'],'offset':3}]})[0]
+    assert f['field']['allocation_eh_storage_offset']==-0x48
+    for side in ['native','target']:
+        f[side].write((0x1100 if side=='native' else 0x1200)+2,b'\xb8')
+    result=bind(f)
+    assert result['candidate']['saved_storage_offset']==result['target']['saved_storage_offset']==-0x48
+    for side in ['native','target']:
+        wrong=copy.deepcopy(f)
+        wrong[side].write((0x1100 if side=='native' else 0x1200)+2,b'\xb4')
+        try:bind(wrong)
+        except LinkedImageError as error:assert 'saved-storage/scalar-delete' in str(error)
+        else:raise AssertionError('accepted a different declared storage slot in '+side)
+
     controls=[
         ('no-opt-in',lambda f:f['field'].pop('allocation_eh_handler'),'missing selector'),
         ('false-opt-in',lambda f:f['field'].update(allocation_eh_handler=False),'explicit true'),
+        ('offset-without-selector',lambda f:(f['field'].pop('allocation_eh_handler'),f['field'].update(allocation_eh_storage_offset=-0x48)),'storage offset requires'),
+        ('positive-slot',lambda f:f['field'].update(allocation_eh_storage_offset=4),'aligned negative disp8'),
+        ('unaligned-slot',lambda f:f['field'].update(allocation_eh_storage_offset=-0x47),'aligned negative disp8'),
+        ('wide-slot',lambda f:f['field'].update(allocation_eh_storage_offset=-0x84),'aligned negative disp8'),
+        ('boolean-slot',lambda f:f['field'].update(allocation_eh_storage_offset=False),'aligned negative disp8'),
+        ('wrong-declared-slot',lambda f:f['field'].update(allocation_eh_storage_offset=-0x48),'saved-storage/scalar-delete'),
         ('wrong-artifact',lambda f:f['unit'].update(artifact_kind='coff'),'linked-pe'),
         ('wrong-field-kind',lambda f:f['field'].update(type='REL32'),'separate DIR32'),
         ('local-field',lambda f:f['field'].update(local=True),'separate DIR32'),
@@ -114,6 +136,6 @@ def main():
         except LinkedImageError as error:
             assert message in str(error),(name,str(error))
         else:raise AssertionError('accepted '+name)
-    print(f'Allocation EH synthetic4 positives (28-byte section end/three neighbor values) and {len(controls)} rejection controls pass')
+    print(f'Allocation EH synthetic5 positives (section end/neighbors/declared slot) and {len(controls)+2} rejection controls pass')
 
 if __name__=='__main__':main()

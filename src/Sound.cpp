@@ -178,6 +178,11 @@ public:
 
     HRESULT SetPrimaryBufferFormat(DWORD channels, DWORD samplesPerSecond, DWORD bitsPerSample);
 
+    HRESULT CreateStreaming(
+        CSound **sound, const char *filename, DWORD creationFlags,
+        GUID algorithm, DWORD bufferCount, DWORD notifySize,
+        HANDLE notifyEvent, ThBgmFormat *format);
+
     HRESULT CreateStreamingFromMemory(
         CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
         DWORD creationFlags, GUID algorithm, DWORD bufferCount,
@@ -1010,4 +1015,68 @@ void FrontEndQueueSoundCommand(const char *path, int opcode, int argument)
 {
     reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand(
         path, opcode, argument);
+}
+
+// Target 0x0043D690..0x0043D780. Original identifiers remain provisional.
+int SoundPlayerView::OpenDiskBgm(const char *path)
+{
+    strcpy(unknownNameSlot, path);
+    if (manager == NULL || directSound == NULL)
+        return -1;
+    StopBgm();
+    ThBgmFormat *format = bgmFormats;
+    DWORD blockAlign = format->format.nBlockAlign;
+    DWORD notifySize = format->format.nSamplesPerSec * 4 * blockAlign / 16;
+    notifySize -= notifySize % blockAlign;
+    bgmUpdateEvent = CreateEventA(NULL, FALSE, FALSE, NULL);
+    bgmThreadHandle = CreateThread(
+        NULL, 0, BgmPlayerThread, g_MainSupervisorView.gameWindow,
+        0, &bgmThreadId);
+    HRESULT result = manager->CreateStreaming(
+        &bgm, path, 0x10100, GUID_NULL, 16, notifySize, bgmUpdateEvent, format);
+    if (result < 0)
+        return -1;
+    return 0;
+}
+
+
+struct SoundPlaybackMetadata
+{
+    int sampleIndex;
+    short volume;
+    short unknown006;
+};
+extern SoundPlaybackMetadata g_SoundPlaybackMetadata[47];
+
+// Target43DB60..43DC86: queue reset, loader join, then47 duplicate buffers.
+// The attenuation reads bgmVolume even though its zero gate reads sfxVolume.
+int SoundPlayerView::PreparePlayback()
+{
+    for (int i = 0; i < 12; ++i)
+        soundQueue[i] = -1;
+    MainJoinSoundThread(g_MainSoundOwner);
+    if (manager == NULL)
+        return -1;
+    if (directSound != NULL)
+    {
+        for (unsigned int i = 0; i < 47; ++i)
+        {
+            static_cast<LPDIRECTSOUND>(directSound)->DuplicateSoundBuffer(
+                soundBuffers[g_SoundPlaybackMetadata[i].sampleIndex],
+                &duplicateSoundBuffers[i]);
+            duplicateSoundBuffers[i]->SetCurrentPosition(0);
+            duplicateSoundBuffers[i]->SetVolume(g_SoundPlaybackMetadata[i].volume);
+        }
+        bgmVolume = g_MainSupervisorView.bgmVolume;
+        sfxVolume = g_MainSupervisorView.sfxVolume;
+        if (sfxVolume != 0)
+        {
+            float scale = 1.0f - static_cast<float>(bgmVolume) / 100.0f;
+            scale *= scale;
+            unknown52CC = -5000 - static_cast<int>((1.0f - scale * scale) * -5000.0f);
+        }
+        else
+            unknown52CC = -10000;
+    }
+    return 0;
 }

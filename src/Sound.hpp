@@ -62,6 +62,8 @@ struct SoundPlayerView
     int LoadSoundSample(int index, const char *path);
     int GetFmtIndexByName(const char *path);
     int ReopenBgm(const char *path);
+    int OpenDiskBgm(const char *path);
+    int PreparePlayback();
     int LoadBgm(int index);
     int PreloadBgm(int index, const char *path);
     int __stdcall ProcessQueues();

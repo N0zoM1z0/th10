@@ -6376,3 +6376,42 @@ A common failure label moves EBX's save to entry, contradicting its conditional
 save after successful manager setup in the target. Speculative CFG/order edits
 are restored. Original source spelling and the remaining scheduling/layout
 questions stay unresolved; no partial parent credit is granted.
+
+
+## 2026-10-29 Complete disk and memory streaming creators
+
+Seven whole owners add2130 exact bytes/all60 fields: disk CreateStreaming44C8F0/
+702, memory CreateStreamingFromMemory44CBF0/651, PreparePlayback43DB60/295,
+FinalizeStartupResources41F8D0/82, CWaveFile Open44DBF0/173, base constructor
+44CE80/118 and derived44D6A0/109. Two independent canonical16-input cold links
+reproduce every byte and field. The first also retains both COFF destructors147/
+all6;13 selected existing linked contracts3932/all112 pass in the new cold image.
+The actual generic FillBufferWithSound and the real startup/queue/Log interfaces
+are checked. This is bounded exactness, not original TU/storage or runtime proof.
+
+Separate HRESULT assignments/checks for CreateSoundBuffer and QueryInterface
+are decisive. The combined expression kept disk681/702 and memory651/651 with
+ordinary differences. Separate checks reproduce full cold tails, epilogues and
+all eleven owned disk alignment bytes. Natural base chaining recovers derived
+ESI/four-stack-argument/RET16 ABI; no register hints or copied target code.
+
+Both creator EH entries require one streaming-allocation cleanup atEBP-48.
+The explicit allocation_eh_storage_offset constrains the identical literal slot
+in both images; defaultEBP-10 and all parent/PDB/21-byte/immutable metadata/
+28-byte FuncInfo checks remain intact. Five positives/45 negative synthetic
+controls and the retained default-slot181-byte Replay contract pass. Handler
+binding gives no generated-code, metadata or EH-runtime credit.
+
+PreparePlayback's metadata has47 eight-byte rows at4749C8, with volume at+4.
+It joins the global loader owner even when its own receiver differs. Its quartic
+attenuation reads signed bgmVolume while the zero gate tests signed sfxVolume;
+this apparent asymmetry is preserved. Constructor count-zero behavior, Open's
+non-read-flags success and all observed asymmetric creator cleanup remain in
+complete code comparisons. No host failure/lifecycle simulations are required.
+
+Eight formerly unmapped owners now have complete natural source covering2019
+reviewed target bytes. Outer Startup41F990 remains292/299, disk caller43D690
+249/241, Initialize43CD30 755/786, LoadBgm304/298 and data-loader112/107. The
+startup member and disk positive-gate controls are neutral and restored. Nested
+Initialize success also returns763 and is restored. No partial caller credit or
+new original-origin conclusion follows. See [the complete proof](evidence/sound-disk-startup-20261029/README.md).

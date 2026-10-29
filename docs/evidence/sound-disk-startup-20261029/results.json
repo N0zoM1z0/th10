@@ -1,0 +1,955 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_owned_bytes": 2130,
+  "new_exact_owners": 7,
+  "new_source_mappings": 8,
+  "new_source_owned_bytes": 2019,
+  "origin_attribution_changed": false,
+  "owned_denominator_changed": false,
+  "source_pins": {
+    "src/AnmDrawCallbacks.cpp": "49cb0da52c3a1fbd8d6a6fdf403a54b10737ef003d050615bc4af5c62612ad37",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "cd82881521652d710a65e46d3db1b51f16cf92cf3b6dca9d13a20eeccd2b8f61",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/Chain.cpp": "85d4c3213ad6b4d317405fc67a7eaa4be21905a7fd1ce3d41f2a11b240a96b3c",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/GameErrorContext.hpp": "30d19e8ce426e832bbd1b7090885c2ced61da9a6fd52f7036f86e55195cd5a37",
+    "src/GameStatistics.hpp": "8bfbbb20964de4304e1b77196a6fcafaad2ba4aba7264d3e522fc7307860496f",
+    "src/Main.cpp": "8db469e67541ea2a45be69c89c9f20375ea217b0c6976d4177d3c5e2b0a0a857",
+    "src/Main.hpp": "128274b3122e4c4af9aa4d5adf2e3bc59f4b1e455a6d3677ee51f14a46b0e4fb",
+    "src/MainViewport.cpp": "cbc513421b43a770c5d2254fd1cae140554c2abfdbe70c36e0f36ca5a3848799",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.cpp": "7871c32b29e1d81a2db45a91d08bc65e0a314f37885fb3befbbea81859475439",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/Sound.cpp": "be8f8af5725bf0fa90b83841729a44d0197863725f2d3e08e7151a61797b0a6f",
+    "src/Sound.hpp": "9cb28ca14d02ee6052bf8d97bb46630f1000715b06d14b4a8e87793325321938",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+    "src/Startup.cpp": "fd9ed11275ae448022fe972ee17fe4068d9c0239176b097bef235b939f8380d9",
+    "src/ZWave.cpp": "eef1e940196f84fc5118bf0b5ebf2e95c36044e2c5cfc78da75bffb1d599e87e"
+  },
+  "comparison_pins": {
+    "scripts/compare-linked-function.py": "22291f2d7e6724ac0836582ddd9c4fe6ba240e57a70797a743135411ae759238",
+    "scripts/linked_allocation_eh.py": "5c2b8181ddc9a3766befffc8242fee4ed7110bd90b77deb20ca96fb055a000ac",
+    "scripts/linked_image.py": "f65c6ac8878d46323daae75e249b60527035dae30f40752871ee86af0a89a533",
+    "config/match-units.toml": "2247092de01899e25dbe0904cfd7ead6a8b598c85f403c4dab39c03ccad9c09a",
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f"
+  },
+  "canonical_colds": {
+    "a": {
+      "result": "exact",
+      "unit_count": 9,
+      "matched_bytes": 2277,
+      "groups": [
+        {
+          "artifact_kind": "coff",
+          "artifact": "build/match/ZWave.obj",
+          "cold_driver": null,
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "zwave-streaming-sound-destructor",
+              "result": "exact",
+              "size": 11,
+              "target_address": "0x0044D730",
+              "matched_compared_bytes": 11,
+              "fields": 2
+            },
+            {
+              "unit": "zwave-csound-destructor",
+              "result": "exact",
+              "size": 136,
+              "target_address": "0x0044D080",
+              "matched_compared_bytes": 136,
+              "fields": 4
+            }
+          ]
+        },
+        {
+          "artifact_kind": "linked-pe",
+          "artifact": "build/match-linked/SoundDiskStartup",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "startup-preload-resources",
+              "result": "exact",
+              "size": 82,
+              "target_address": "0x0041F8D0",
+              "matched_compared_bytes": 82,
+              "decoded_bytes": 82,
+              "normalization_complete": true,
+              "image_sha256": "71ed1fcfd8a82f77d94a728da7830e3bbe356723a44585f848a4d45c1a4c351c",
+              "pdb_guid": "d99999734be6c94581d8ec315fd58d8f",
+              "pdb_age": 1,
+              "candidate_address": "0x004146D0",
+              "fields": 10
+            },
+            {
+              "unit": "sound-prepare-playback",
+              "result": "exact",
+              "size": 295,
+              "target_address": "0x0043DB60",
+              "matched_compared_bytes": 295,
+              "decoded_bytes": 295,
+              "normalization_complete": true,
+              "image_sha256": "71ed1fcfd8a82f77d94a728da7830e3bbe356723a44585f848a4d45c1a4c351c",
+              "pdb_guid": "d99999734be6c94581d8ec315fd58d8f",
+              "pdb_age": 1,
+              "candidate_address": "0x00412F20",
+              "fields": 11
+            },
+            {
+              "unit": "sound-manager-create-streaming",
+              "result": "exact",
+              "size": 702,
+              "target_address": "0x0044C8F0",
+              "matched_compared_bytes": 702,
+              "decoded_bytes": 702,
+              "normalization_complete": true,
+              "image_sha256": "71ed1fcfd8a82f77d94a728da7830e3bbe356723a44585f848a4d45c1a4c351c",
+              "pdb_guid": "d99999734be6c94581d8ec315fd58d8f",
+              "pdb_age": 1,
+              "candidate_address": "0x00414140",
+              "fields": 16,
+              "allocation_eh": [
+                {
+                  "authority": "address binding only; no generated-code/runtime credit",
+                  "candidate": {
+                    "func_info": "0x41571c",
+                    "func_info_bytes": 28,
+                    "handler": "0x4147bb",
+                    "region_bytes": 21,
+                    "saved_storage_offset": -72,
+                    "unwind_action": "0x4147b0",
+                    "unwind_map": "0x415714",
+                    "unwind_states": 1
+                  },
+                  "parent_symbol": "?CreateStreaming@CSoundManager@@QAEJPAPAVCSound@@PBDKU_GUID@@KKPAXPAUThBgmFormat@@@Z",
+                  "pdb_module_index": 14,
+                  "symbol": "__ehhandler$?CreateStreaming@CSoundManager@@QAEJPAPAVCSound@@PBDKU_GUID@@KKPAXPAUThBgmFormat@@@Z",
+                  "target": {
+                    "func_info": "0x471398",
+                    "func_info_bytes": 28,
+                    "handler": "0x46533b",
+                    "region_bytes": 21,
+                    "saved_storage_offset": -72,
+                    "unwind_action": "0x465330",
+                    "unwind_map": "0x471390",
+                    "unwind_states": 1
+                  }
+                }
+              ]
+            },
+            {
+              "unit": "sound-manager-create-streaming-memory",
+              "result": "exact",
+              "size": 651,
+              "target_address": "0x0044CBF0",
+              "matched_compared_bytes": 651,
+              "decoded_bytes": 651,
+              "normalization_complete": true,
+              "image_sha256": "71ed1fcfd8a82f77d94a728da7830e3bbe356723a44585f848a4d45c1a4c351c",
+              "pdb_guid": "d99999734be6c94581d8ec315fd58d8f",
+              "pdb_age": 1,
+              "candidate_address": "0x00413100",
+              "fields": 13,
+              "allocation_eh": [
+                {
+                  "authority": "address binding only; no generated-code/runtime credit",
+                  "candidate": {
+                    "func_info": "0x415740",
+                    "func_info_bytes": 28,
+                    "handler": "0x4147db",
+                    "region_bytes": 21,
+                    "saved_storage_offset": -72,
+                    "unwind_action": "0x4147d0",
+                    "unwind_map": "0x415738",
+                    "unwind_states": 1
+                  },
+                  "parent_symbol": "?CreateStreamingFromMemory@CSoundManager@@QAEJPAPAVCSound@@PAEKPAUThBgmFormat@@KU_GUID@@KKPAX@Z",
+                  "pdb_module_index": 14,
+                  "symbol": "__ehhandler$?CreateStreamingFromMemory@CSoundManager@@QAEJPAPAVCSound@@PAEKPAUThBgmFormat@@KU_GUID@@KKPAX@Z",
+                  "target": {
+                    "func_info": "0x471374",
+                    "func_info_bytes": 28,
+                    "handler": "0x46531b",
+                    "region_bytes": 21,
+                    "saved_storage_offset": -72,
+                    "unwind_action": "0x465310",
+                    "unwind_map": "0x47136c",
+                    "unwind_states": 1
+                  }
+                }
+              ]
+            },
+            {
+              "unit": "wave-file-open",
+              "result": "exact",
+              "size": 173,
+              "target_address": "0x0044DBF0",
+              "matched_compared_bytes": 173,
+              "decoded_bytes": 173,
+              "normalization_complete": true,
+              "image_sha256": "71ed1fcfd8a82f77d94a728da7830e3bbe356723a44585f848a4d45c1a4c351c",
+              "pdb_guid": "d99999734be6c94581d8ec315fd58d8f",
+              "pdb_age": 1,
+              "candidate_address": "0x00414400",
+              "fields": 3
+            },
+            {
+              "unit": "csound-constructor",
+              "result": "exact",
+              "size": 118,
+              "target_address": "0x0044CE80",
+              "matched_compared_bytes": 118,
+              "decoded_bytes": 118,
+              "normalization_complete": true,
+              "image_sha256": "71ed1fcfd8a82f77d94a728da7830e3bbe356723a44585f848a4d45c1a4c351c",
+              "pdb_guid": "d99999734be6c94581d8ec315fd58d8f",
+              "pdb_age": 1,
+              "candidate_address": "0x004144B0",
+              "fields": 3
+            },
+            {
+              "unit": "streaming-sound-constructor",
+              "result": "exact",
+              "size": 109,
+              "target_address": "0x0044D6A0",
+              "matched_compared_bytes": 109,
+              "decoded_bytes": 109,
+              "normalization_complete": true,
+              "image_sha256": "71ed1fcfd8a82f77d94a728da7830e3bbe356723a44585f848a4d45c1a4c351c",
+              "pdb_guid": "d99999734be6c94581d8ec315fd58d8f",
+              "pdb_age": 1,
+              "candidate_address": "0x00414530",
+              "fields": 4
+            }
+          ]
+        }
+      ]
+    },
+    "b_retry": {
+      "result": "exact",
+      "unit_count": 7,
+      "matched_bytes": 2130,
+      "groups": [
+        {
+          "artifact_kind": "linked-pe",
+          "artifact": "build/match-linked/SoundDiskStartup",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "units": [
+            {
+              "unit": "startup-preload-resources",
+              "result": "exact",
+              "size": 82,
+              "target_address": "0x0041F8D0",
+              "matched_compared_bytes": 82,
+              "decoded_bytes": 82,
+              "normalization_complete": true,
+              "image_sha256": "afdb17886aca4df470e48b30a5de632cce5c825a6aa5e053012df25262684d33",
+              "pdb_guid": "898a54059f106640912075b8ab2816ea",
+              "pdb_age": 1,
+              "candidate_address": "0x004146D0",
+              "fields": 10
+            },
+            {
+              "unit": "sound-prepare-playback",
+              "result": "exact",
+              "size": 295,
+              "target_address": "0x0043DB60",
+              "matched_compared_bytes": 295,
+              "decoded_bytes": 295,
+              "normalization_complete": true,
+              "image_sha256": "afdb17886aca4df470e48b30a5de632cce5c825a6aa5e053012df25262684d33",
+              "pdb_guid": "898a54059f106640912075b8ab2816ea",
+              "pdb_age": 1,
+              "candidate_address": "0x00412F20",
+              "fields": 11
+            },
+            {
+              "unit": "sound-manager-create-streaming",
+              "result": "exact",
+              "size": 702,
+              "target_address": "0x0044C8F0",
+              "matched_compared_bytes": 702,
+              "decoded_bytes": 702,
+              "normalization_complete": true,
+              "image_sha256": "afdb17886aca4df470e48b30a5de632cce5c825a6aa5e053012df25262684d33",
+              "pdb_guid": "898a54059f106640912075b8ab2816ea",
+              "pdb_age": 1,
+              "candidate_address": "0x00414140",
+              "fields": 16,
+              "allocation_eh": [
+                {
+                  "authority": "address binding only; no generated-code/runtime credit",
+                  "candidate": {
+                    "func_info": "0x41571c",
+                    "func_info_bytes": 28,
+                    "handler": "0x4147bb",
+                    "region_bytes": 21,
+                    "saved_storage_offset": -72,
+                    "unwind_action": "0x4147b0",
+                    "unwind_map": "0x415714",
+                    "unwind_states": 1
+                  },
+                  "parent_symbol": "?CreateStreaming@CSoundManager@@QAEJPAPAVCSound@@PBDKU_GUID@@KKPAXPAUThBgmFormat@@@Z",
+                  "pdb_module_index": 14,
+                  "symbol": "__ehhandler$?CreateStreaming@CSoundManager@@QAEJPAPAVCSound@@PBDKU_GUID@@KKPAXPAUThBgmFormat@@@Z",
+                  "target": {
+                    "func_info": "0x471398",
+                    "func_info_bytes": 28,
+                    "handler": "0x46533b",
+                    "region_bytes": 21,
+                    "saved_storage_offset": -72,
+                    "unwind_action": "0x465330",
+                    "unwind_map": "0x471390",
+                    "unwind_states": 1
+                  }
+                }
+              ]
+            },
+            {
+              "unit": "sound-manager-create-streaming-memory",
+              "result": "exact",
+              "size": 651,
+              "target_address": "0x0044CBF0",
+              "matched_compared_bytes": 651,
+              "decoded_bytes": 651,
+              "normalization_complete": true,
+              "image_sha256": "afdb17886aca4df470e48b30a5de632cce5c825a6aa5e053012df25262684d33",
+              "pdb_guid": "898a54059f106640912075b8ab2816ea",
+              "pdb_age": 1,
+              "candidate_address": "0x00413100",
+              "fields": 13,
+              "allocation_eh": [
+                {
+                  "authority": "address binding only; no generated-code/runtime credit",
+                  "candidate": {
+                    "func_info": "0x415740",
+                    "func_info_bytes": 28,
+                    "handler": "0x4147db",
+                    "region_bytes": 21,
+                    "saved_storage_offset": -72,
+                    "unwind_action": "0x4147d0",
+                    "unwind_map": "0x415738",
+                    "unwind_states": 1
+                  },
+                  "parent_symbol": "?CreateStreamingFromMemory@CSoundManager@@QAEJPAPAVCSound@@PAEKPAUThBgmFormat@@KU_GUID@@KKPAX@Z",
+                  "pdb_module_index": 14,
+                  "symbol": "__ehhandler$?CreateStreamingFromMemory@CSoundManager@@QAEJPAPAVCSound@@PAEKPAUThBgmFormat@@KU_GUID@@KKPAX@Z",
+                  "target": {
+                    "func_info": "0x471374",
+                    "func_info_bytes": 28,
+                    "handler": "0x46531b",
+                    "region_bytes": 21,
+                    "saved_storage_offset": -72,
+                    "unwind_action": "0x465310",
+                    "unwind_map": "0x47136c",
+                    "unwind_states": 1
+                  }
+                }
+              ]
+            },
+            {
+              "unit": "wave-file-open",
+              "result": "exact",
+              "size": 173,
+              "target_address": "0x0044DBF0",
+              "matched_compared_bytes": 173,
+              "decoded_bytes": 173,
+              "normalization_complete": true,
+              "image_sha256": "afdb17886aca4df470e48b30a5de632cce5c825a6aa5e053012df25262684d33",
+              "pdb_guid": "898a54059f106640912075b8ab2816ea",
+              "pdb_age": 1,
+              "candidate_address": "0x00414400",
+              "fields": 3
+            },
+            {
+              "unit": "csound-constructor",
+              "result": "exact",
+              "size": 118,
+              "target_address": "0x0044CE80",
+              "matched_compared_bytes": 118,
+              "decoded_bytes": 118,
+              "normalization_complete": true,
+              "image_sha256": "afdb17886aca4df470e48b30a5de632cce5c825a6aa5e053012df25262684d33",
+              "pdb_guid": "898a54059f106640912075b8ab2816ea",
+              "pdb_age": 1,
+              "candidate_address": "0x004144B0",
+              "fields": 3
+            },
+            {
+              "unit": "streaming-sound-constructor",
+              "result": "exact",
+              "size": 109,
+              "target_address": "0x0044D6A0",
+              "matched_compared_bytes": 109,
+              "decoded_bytes": 109,
+              "normalization_complete": true,
+              "image_sha256": "afdb17886aca4df470e48b30a5de632cce5c825a6aa5e053012df25262684d33",
+              "pdb_guid": "898a54059f106640912075b8ab2816ea",
+              "pdb_age": 1,
+              "candidate_address": "0x00414530",
+              "fields": 4
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "failed_producer": {
+    "cold-b": {
+      "exit": 1,
+      "excluded_from_proof": true,
+      "reason": "Winepath process fault contaminated a linker input filename; no comparison produced"
+    },
+    "toolchain_execute_smoke_exit": 0
+  },
+  "old_same_image_guards": {
+    "cold-a": {
+      "bytes": 3932,
+      "fields": 112,
+      "units": {
+        "sound-manager-set-primary-buffer-format": {
+          "size": 260,
+          "fields": 3
+        },
+        "streaming-sound-init-buffers": {
+          "size": 338,
+          "fields": 6
+        },
+        "sound-bgm-player-thread": {
+          "size": 189,
+          "fields": 7
+        },
+        "sound-process-queues": {
+          "size": 1452,
+          "fields": 43
+        },
+        "streaming-sound-reset": {
+          "size": 213,
+          "fields": 4
+        },
+        "main-present": {
+          "size": 236,
+          "fields": 20
+        },
+        "main-release-anm-surfaces": {
+          "size": 43,
+          "fields": 0
+        },
+        "main-service-anm-screenshots": {
+          "size": 111,
+          "fields": 2
+        },
+        "decomphelp-game-error-log": {
+          "size": 201,
+          "fields": 12
+        },
+        "sound-join-worker-threads": {
+          "size": 175,
+          "fields": 3
+        },
+        "sound-player-stop-bgm": {
+          "size": 176,
+          "fields": 4
+        },
+        "sound-player-reopen-bgm": {
+          "size": 55,
+          "fields": 2
+        },
+        "zwave-csound-fill": {
+          "size": 483,
+          "fields": 6
+        }
+      },
+      "result": "exact",
+      "unit_count": 13,
+      "image_sha256": "71ed1fcfd8a82f77d94a728da7830e3bbe356723a44585f848a4d45c1a4c351c",
+      "pdb_guid": "d99999734be6c94581d8ec315fd58d8f",
+      "pdb_age": 1
+    },
+    "cold-b": {
+      "bytes": 3932,
+      "fields": 112,
+      "units": {
+        "sound-manager-set-primary-buffer-format": {
+          "size": 260,
+          "fields": 3
+        },
+        "streaming-sound-init-buffers": {
+          "size": 338,
+          "fields": 6
+        },
+        "sound-bgm-player-thread": {
+          "size": 189,
+          "fields": 7
+        },
+        "sound-process-queues": {
+          "size": 1452,
+          "fields": 43
+        },
+        "streaming-sound-reset": {
+          "size": 213,
+          "fields": 4
+        },
+        "main-present": {
+          "size": 236,
+          "fields": 20
+        },
+        "main-release-anm-surfaces": {
+          "size": 43,
+          "fields": 0
+        },
+        "main-service-anm-screenshots": {
+          "size": 111,
+          "fields": 2
+        },
+        "decomphelp-game-error-log": {
+          "size": 201,
+          "fields": 12
+        },
+        "sound-join-worker-threads": {
+          "size": 175,
+          "fields": 3
+        },
+        "sound-player-stop-bgm": {
+          "size": 176,
+          "fields": 4
+        },
+        "sound-player-reopen-bgm": {
+          "size": 55,
+          "fields": 2
+        },
+        "zwave-csound-fill": {
+          "size": 483,
+          "fields": 6
+        }
+      },
+      "result": "exact",
+      "unit_count": 13,
+      "image_sha256": "afdb17886aca4df470e48b30a5de632cce5c825a6aa5e053012df25262684d33",
+      "pdb_guid": "898a54059f106640912075b8ab2816ea",
+      "pdb_age": 1
+    }
+  },
+  "retained_default_slot_infrastructure_check": {
+    "unit": "replay-manager-load",
+    "result": "exact",
+    "size": 181,
+    "target_address": "0x004296F0",
+    "matched_compared_bytes": 181,
+    "decoded_bytes": 181,
+    "normalization_complete": true,
+    "image_sha256": "b307923511ff97f0c8fde3f44807c5c4c3abce0d78b211126f16d568903737ff",
+    "pdb_guid": "96483df0cc3b9e4bae2d03c7de70ff0e",
+    "pdb_age": 1,
+    "candidate_address": "0x0041C1D0",
+    "fields": 12,
+    "allocation_eh": [
+      {
+        "authority": "address binding only; no generated-code/runtime credit",
+        "candidate": {
+          "func_info": "0x42ee54",
+          "func_info_bytes": 28,
+          "handler": "0x42d29b",
+          "region_bytes": 21,
+          "saved_storage_offset": -16,
+          "unwind_action": "0x42d290",
+          "unwind_map": "0x42ee4c",
+          "unwind_states": 1
+        },
+        "parent_symbol": "?Load@ReplayManager@@SGPAV1@PBD@Z",
+        "pdb_module_index": 13,
+        "symbol": "__ehhandler$?Load@ReplayManager@@SGPAV1@PBD@Z",
+        "target": {
+          "func_info": "0x47169c",
+          "func_info_bytes": 28,
+          "handler": "0x46564b",
+          "region_bytes": 21,
+          "saved_storage_offset": -16,
+          "unwind_action": "0x465640",
+          "unwind_map": "0x471694",
+          "unwind_states": 1
+        }
+      }
+    ]
+  },
+  "allocation_eh_self_test": {
+    "positives": 5,
+    "rejections": 45,
+    "default_offset": -16,
+    "new_declared_offset": -72,
+    "address_binding_only": true
+  },
+  "models": [
+    {
+      "variant": "first-real-startup",
+      "changed_inputs": [
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Startup.cpp",
+        "src/ZWave.cpp"
+      ],
+      "reused_objects": 12,
+      "source_pins": {
+        "src/Sound.cpp": "6990cb37374769e6068e63eb171bec230c1439a73085890a6d510f27d5ca5809",
+        "src/Sound.hpp": "9cb28ca14d02ee6052bf8d97bb46630f1000715b06d14b4a8e87793325321938",
+        "src/ZWave.cpp": "0549643fd9d8f068340494cf70ae98e8202944752465cb933a5b01a16f09979f",
+        "src/Startup.cpp": "fd9ed11275ae448022fe972ee17fe4068d9c0239176b097bef235b939f8380d9"
+      },
+      "complete": {
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        },
+        "?PreparePlayback@SoundPlayerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 295,
+          "target_size": 295,
+          "acceptance_authority": "none"
+        },
+        "?OpenDiskBgm@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 249,
+          "target_size": 241,
+          "acceptance_authority": "none"
+        },
+        "?CreateStreaming@CSoundManager@@": {
+          "result": "mismatch",
+          "candidate_size": 681,
+          "target_size": 702,
+          "acceptance_authority": "none"
+        },
+        "?Open@CWaveFile@@": {
+          "result": "structural-exact",
+          "candidate_size": 173,
+          "target_size": 173,
+          "acceptance_authority": "none"
+        },
+        "??0CSound@@": {
+          "result": "structural-exact",
+          "candidate_size": 118,
+          "target_size": 118,
+          "acceptance_authority": "none"
+        },
+        "??0CStreamingSound@@": {
+          "result": "structural-exact",
+          "candidate_size": 109,
+          "target_size": 109,
+          "acceptance_authority": "none"
+        },
+        "?CreateStreamingFromMemory@CSoundManager@@": {
+          "result": "mismatch",
+          "candidate_size": 651,
+          "target_size": 651,
+          "acceptance_authority": "none"
+        },
+        "?Initialize@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 755,
+          "target_size": 786,
+          "acceptance_authority": "none"
+        },
+        "?LoadSoundSample@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 684,
+          "target_size": 684,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 10,
+      "all_old_guards_exact": true
+    },
+    {
+      "variant": "startup-member",
+      "changed_inputs": [
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Startup.cpp",
+        "src/ZWave.cpp"
+      ],
+      "reused_objects": 12,
+      "source_pins": {
+        "src/Sound.cpp": "6990cb37374769e6068e63eb171bec230c1439a73085890a6d510f27d5ca5809",
+        "src/Sound.hpp": "9cb28ca14d02ee6052bf8d97bb46630f1000715b06d14b4a8e87793325321938",
+        "src/ZWave.cpp": "0549643fd9d8f068340494cf70ae98e8202944752465cb933a5b01a16f09979f",
+        "src/Startup.cpp": "039ca91a2e8b38105f5259bb78605e815b7f2b262126d226cec91712773361b1"
+      },
+      "complete": {
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        },
+        "?PreparePlayback@SoundPlayerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 295,
+          "target_size": 295,
+          "acceptance_authority": "none"
+        },
+        "?OpenDiskBgm@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 249,
+          "target_size": 241,
+          "acceptance_authority": "none"
+        },
+        "?CreateStreaming@CSoundManager@@": {
+          "result": "mismatch",
+          "candidate_size": 681,
+          "target_size": 702,
+          "acceptance_authority": "none"
+        },
+        "?Open@CWaveFile@@": {
+          "result": "structural-exact",
+          "candidate_size": 173,
+          "target_size": 173,
+          "acceptance_authority": "none"
+        },
+        "??0CSound@@": {
+          "result": "structural-exact",
+          "candidate_size": 118,
+          "target_size": 118,
+          "acceptance_authority": "none"
+        },
+        "??0CStreamingSound@@": {
+          "result": "structural-exact",
+          "candidate_size": 109,
+          "target_size": 109,
+          "acceptance_authority": "none"
+        },
+        "?CreateStreamingFromMemory@CSoundManager@@": {
+          "result": "mismatch",
+          "candidate_size": 651,
+          "target_size": 651,
+          "acceptance_authority": "none"
+        },
+        "?Initialize@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 755,
+          "target_size": 786,
+          "acceptance_authority": "none"
+        },
+        "?LoadSoundSample@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 684,
+          "target_size": 684,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 10,
+      "all_old_guards_exact": true
+    },
+    {
+      "variant": "separate-com-checks",
+      "changed_inputs": [
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Startup.cpp",
+        "src/ZWave.cpp"
+      ],
+      "reused_objects": 12,
+      "source_pins": {
+        "src/Sound.cpp": "f7879e920a56b0e43e756094497a284b8bde9c89a96955e82ed1a936fbdbfe63",
+        "src/Sound.hpp": "9cb28ca14d02ee6052bf8d97bb46630f1000715b06d14b4a8e87793325321938",
+        "src/ZWave.cpp": "823c184b6e3a6f00a735631c1a82360fd78c3c7855b11e1912ef945327bdefd6",
+        "src/Startup.cpp": "fd9ed11275ae448022fe972ee17fe4068d9c0239176b097bef235b939f8380d9"
+      },
+      "complete": {
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        },
+        "?PreparePlayback@SoundPlayerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 295,
+          "target_size": 295,
+          "acceptance_authority": "none"
+        },
+        "?OpenDiskBgm@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 249,
+          "target_size": 241,
+          "acceptance_authority": "none"
+        },
+        "?CreateStreaming@CSoundManager@@": {
+          "result": "structural-exact",
+          "candidate_size": 702,
+          "target_size": 702,
+          "acceptance_authority": "none"
+        },
+        "?Open@CWaveFile@@": {
+          "result": "structural-exact",
+          "candidate_size": 173,
+          "target_size": 173,
+          "acceptance_authority": "none"
+        },
+        "??0CSound@@": {
+          "result": "structural-exact",
+          "candidate_size": 118,
+          "target_size": 118,
+          "acceptance_authority": "none"
+        },
+        "??0CStreamingSound@@": {
+          "result": "structural-exact",
+          "candidate_size": 109,
+          "target_size": 109,
+          "acceptance_authority": "none"
+        },
+        "?CreateStreamingFromMemory@CSoundManager@@": {
+          "result": "mismatch",
+          "candidate_size": 651,
+          "target_size": 651,
+          "acceptance_authority": "none"
+        },
+        "?Initialize@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 755,
+          "target_size": 786,
+          "acceptance_authority": "none"
+        },
+        "?LoadSoundSample@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 684,
+          "target_size": 684,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 10,
+      "all_old_guards_exact": true
+    },
+    {
+      "variant": "separate-memory-checks",
+      "changed_inputs": [
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Startup.cpp",
+        "src/ZWave.cpp"
+      ],
+      "reused_objects": 12,
+      "source_pins": {
+        "src/Sound.cpp": "be8f8af5725bf0fa90b83841729a44d0197863725f2d3e08e7151a61797b0a6f",
+        "src/Sound.hpp": "9cb28ca14d02ee6052bf8d97bb46630f1000715b06d14b4a8e87793325321938",
+        "src/ZWave.cpp": "eef1e940196f84fc5118bf0b5ebf2e95c36044e2c5cfc78da75bffb1d599e87e",
+        "src/Startup.cpp": "fd9ed11275ae448022fe972ee17fe4068d9c0239176b097bef235b939f8380d9"
+      },
+      "complete": {
+        "?StartupThread@StartupWorkerView@@": {
+          "result": "mismatch",
+          "candidate_size": 292,
+          "target_size": 299,
+          "acceptance_authority": "none"
+        },
+        "?FinalizeStartupResources@@": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "acceptance_authority": "none"
+        },
+        "?PreparePlayback@SoundPlayerView@@": {
+          "result": "structural-exact",
+          "candidate_size": 295,
+          "target_size": 295,
+          "acceptance_authority": "none"
+        },
+        "?OpenDiskBgm@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 249,
+          "target_size": 241,
+          "acceptance_authority": "none"
+        },
+        "?CreateStreaming@CSoundManager@@": {
+          "result": "structural-exact",
+          "candidate_size": 702,
+          "target_size": 702,
+          "acceptance_authority": "none"
+        },
+        "?Open@CWaveFile@@": {
+          "result": "structural-exact",
+          "candidate_size": 173,
+          "target_size": 173,
+          "acceptance_authority": "none"
+        },
+        "??0CSound@@": {
+          "result": "structural-exact",
+          "candidate_size": 118,
+          "target_size": 118,
+          "acceptance_authority": "none"
+        },
+        "??0CStreamingSound@@": {
+          "result": "structural-exact",
+          "candidate_size": 109,
+          "target_size": 109,
+          "acceptance_authority": "none"
+        },
+        "?CreateStreamingFromMemory@CSoundManager@@": {
+          "result": "structural-exact",
+          "candidate_size": 651,
+          "target_size": 651,
+          "acceptance_authority": "none"
+        },
+        "?Initialize@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 755,
+          "target_size": 786,
+          "acceptance_authority": "none"
+        },
+        "?LoadSoundSample@SoundPlayerView@@": {
+          "result": "mismatch",
+          "candidate_size": 684,
+          "target_size": 684,
+          "acceptance_authority": "none"
+        }
+      },
+      "old_guard_count": 10,
+      "all_old_guards_exact": true
+    }
+  ],
+  "nested_initialize_control": {
+    "result": "mismatch",
+    "candidate_size": 763,
+    "target_size": 786,
+    "acceptance_authority": "none"
+  },
+  "product_runtime_claim": false
+}

@@ -1148,3 +1148,11 @@ AnmRenderManagerView::DrawLayer15,0x00448770,function
 AnmRenderManagerView::DrawLayer16,0x004487C0,function
 AnmRenderManagerView::DrawLayer19,0x00448810,function
 CStreamingSound::Reset,0x0044DAD0,function
+StartupWorkerView::StartupThread,0x0041F990,function
+FinalizeStartupResources,0x0041F8D0,function
+SoundPlayerView::PreparePlayback,0x0043DB60,function
+SoundPlayerView::OpenDiskBgm,0x0043D690,function
+CSoundManager::CreateStreaming,0x0044C8F0,function
+CWaveFile::Open,0x0044DBF0,function
+CSound::CSound,0x0044CE80,function
+CStreamingSound::CStreamingSound,0x0044D6A0,function

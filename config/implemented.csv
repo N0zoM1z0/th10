@@ -1147,3 +1147,11 @@ AnmRenderManagerView::DrawLayer15
 AnmRenderManagerView::DrawLayer16
 AnmRenderManagerView::DrawLayer19
 CStreamingSound::Reset
+StartupWorkerView::StartupThread
+FinalizeStartupResources
+SoundPlayerView::PreparePlayback
+SoundPlayerView::OpenDiskBgm
+CSoundManager::CreateStreaming
+CWaveFile::Open
+CSound::CSound
+CStreamingSound::CStreamingSound

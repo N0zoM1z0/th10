@@ -3,7 +3,8 @@
 This is an opt-in DIR32 binding, not generated-code or runtime credit. The
 parent's named handler must share its PDB object. The complete 21-byte generated
 region, one-state FuncInfo and saved-storage deletion protocol are checked in
-both images. Other EH shapes remain unsupported. No caller or bytes are patched.
+both images. A declared frame slot must agree literally in both images; its
+default remains EBP-10. Other EH shapes remain unsupported. No bytes are patched.
 """
 from pathlib import Path
 import struct
@@ -20,6 +21,8 @@ def require(condition, message):
 
 
 def allocation_eh_selector(unit, field):
+    if 'allocation_eh_storage_offset' in field:
+        require('allocation_eh_handler' in field, 'storage offset requires allocation EH selector')
     if 'allocation_eh_handler' not in field: return False
     require(field['allocation_eh_handler'] is True, 'explicit true opt-in required')
     require(unit.get('artifact_kind') == 'linked-pe', 'linked-pe required')
@@ -28,6 +31,9 @@ def allocation_eh_selector(unit, field):
             and 'stack_file_eh_handler' not in field and 'worker_member_eh_handler' not in field
             and not any(k.startswith('static_') for k in field), 'separate DIR32 entry required')
     require(field.get('symbol') == '__ehhandler$' + str(unit.get('symbol')), 'parent symbol differs')
+    offset = field.get('allocation_eh_storage_offset', -0x10)
+    require(type(offset) is int and -0x80 <= offset <= -4 and offset % 4 == 0,
+            'saved-storage offset must be an aligned negative disp8 frame slot')
     return True
 
 
@@ -47,7 +53,7 @@ def section_range(image, address, size, code):
     require(bool(flags & 0x20000000) == code, 'code/data section role differs')
 
 
-def protocol(image, handler, frame_handler, deletion):
+def protocol(image, handler, frame_handler, deletion, storage_offset=-0x10):
     section_range(image, handler-11, 21, True)
     decoder = Cs(CS_ARCH_X86, CS_MODE_32); decoder.detail = True
     instructions = list(decoder.disasm(image.read_address(handler, 10), handler))
@@ -72,13 +78,13 @@ def protocol(image, handler, frame_handler, deletion):
     load,push,call,pop,ret = action_code
     require(load.operands[0].reg == X86_REG_EAX and load.operands[1].type == X86_OP_MEM
             and load.operands[1].mem.base == X86_REG_EBP and load.operands[1].mem.index == 0
-            and load.operands[1].mem.disp == -0x10
+            and load.operands[1].mem.disp == storage_offset
             and push.operands[0].reg == X86_REG_EAX
             and call.operands[0].type == X86_OP_IMM and call.operands[0].imm == deletion
             and pop.operands[0].reg == X86_REG_ECX and not ret.operands,
             'saved-storage/scalar-delete protocol differs')
     return {'handler':hex(handler),'unwind_action':hex(action),'func_info':hex(info),
-            'unwind_map':hex(header[2]),'saved_storage_offset':-16,
+            'unwind_map':hex(header[2]),'saved_storage_offset':storage_offset,
             'region_bytes':21,'unwind_states':1,'func_info_bytes':28}
 
 
@@ -110,9 +116,11 @@ def allocation_eh_target(unit, field, directory, image, publics, aliases,
     modules = [m for m in pdb['modules'] if m['index'] == contribution['module_index']]
     require(len(modules) == 1 and str(modules[0]['object']).lower() == str(parent['pdb_object']).lower(),
             'parent PDB module differs')
+    storage_offset = field.get('allocation_eh_storage_offset', -0x10)
     candidate_protocol = protocol(image,address,address_for(publics,aliases,'___CxxFrameHandler'),
-                                  address_for(publics,aliases,'??3@YAXPAX@Z'))
-    target_protocol = protocol(target,int(field['target']),TARGET_FRAME_HANDLER,TARGET_DELETE)
+                                  address_for(publics,aliases,'??3@YAXPAX@Z'), storage_offset)
+    target_protocol = protocol(target,int(field['target']),TARGET_FRAME_HANDLER,TARGET_DELETE,
+                               storage_offset)
     return {'symbol':field['symbol'],'parent_symbol':unit['symbol'],
             'pdb_module_index':contribution['module_index'],'candidate':candidate_protocol,
             'target':target_protocol,'authority':'address binding only; no generated-code/runtime credit'}

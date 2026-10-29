@@ -39,6 +39,11 @@ public:
 
     HRESULT SetPrimaryBufferFormat(DWORD channels, DWORD samplesPerSecond, DWORD bitsPerSample);
 
+
+    HRESULT CreateStreaming(
+        CSound **sound, const char *filename, DWORD creationFlags,
+        GUID algorithm, DWORD bufferCount, DWORD notifySize,
+        HANDLE notifyEvent, ThBgmFormat *format);
     HRESULT CreateStreamingFromMemory(
         CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
         DWORD creationFlags, GUID algorithm, DWORD bufferCount,
@@ -73,6 +78,8 @@ public:
         m_dwSize = 0;
         m_bIsReadingFromMemory = FALSE;
     }
+
+    HRESULT Open(const char *filename, ThBgmFormat *format, DWORD flags);
 
     HRESULT OpenFromMemory(
         BYTE *data, ULONG dataSize, ThBgmFormat *format, DWORD flags)
@@ -132,6 +139,8 @@ public:
     DSBUFFERDESC m_dsbd;
     CSoundManager *m_pSoundManager;
 
+    CSound(LPDIRECTSOUNDBUFFER *buffers, DWORD bufferSize,
+           DWORD bufferCount, CWaveFile *waveFile);
     virtual ~CSound();
 
     HRESULT RestoreBuffer(LPDIRECTSOUNDBUFFER buffer, BOOL *wasRestored);
@@ -207,10 +216,13 @@ HRESULT CSoundManager::CreateStreamingFromMemory(
     description.guid3DAlgorithm = algorithm;
     description.lpwfxFormat = &waveFile->m_pzwf->format;
 
-    if (FAILED(directSound->CreateSoundBuffer(
-            &description, &soundBuffer, NULL)) ||
-        FAILED(soundBuffer->QueryInterface(
-            IID_IDirectSoundNotify, reinterpret_cast<void **>(&notify))))
+    HRESULT result = directSound->CreateSoundBuffer(
+        &description, &soundBuffer, NULL);
+    if (FAILED(result))
+        return E_FAIL;
+    result = soundBuffer->QueryInterface(
+        IID_IDirectSoundNotify, reinterpret_cast<void **>(&notify));
+    if (FAILED(result))
         return E_FAIL;
 
     notifications = new DSBPOSITIONNOTIFY[bufferCount];
@@ -223,7 +235,7 @@ HRESULT CSoundManager::CreateStreamingFromMemory(
         notifications[i].hEventNotify = notifyEvent;
     }
 
-    HRESULT result = notify->SetNotificationPositions(bufferCount, notifications);
+    result = notify->SetNotificationPositions(bufferCount, notifications);
     if (FAILED(result))
     {
         if (notify != NULL)
@@ -809,8 +821,8 @@ HRESULT CStreamingSound::HandleWaveStreamNotification(BOOL loopedPlay)
     return S_OK;
 }
 
-// Target 0x0044C7E0-0x0044C8E3. SDK-derived origin is suspected and unresolved;
-// this semantic prerequisite carries no new authored-exact claim.
+// Target 0x0044C7E0-0x0044C8E3, complete canonical exact callee.
+// Original SDK ancestry, class names and physical TU remain unresolved.
 HRESULT CSoundManager::SetPrimaryBufferFormat(
     DWORD channels, DWORD samplesPerSecond, DWORD bitsPerSample)
 {
@@ -841,4 +853,134 @@ HRESULT CSoundManager::SetPrimaryBufferFormat(
     if (primary != NULL)
         primary->Release();
     return S_OK;
+}
+
+HRESULT CSoundManager::CreateStreaming(
+    CSound **sound, const char *filename, DWORD creationFlags,
+    GUID algorithm, DWORD bufferCount, DWORD notifySize,
+    HANDLE notifyEvent, ThBgmFormat *format)
+{
+    if (directSound == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    LPDIRECTSOUNDBUFFER soundBuffer = NULL;
+    LPDIRECTSOUNDNOTIFY notify = NULL;
+    DSBPOSITIONNOTIFY *notifications = NULL;
+    CWaveFile *waveFile = new CWaveFile();
+    if (waveFile->Open(filename, format, 1) != S_OK)
+    {
+        delete waveFile;
+        return E_FAIL;
+    }
+
+    DWORD bufferSize = notifySize * bufferCount;
+    DSBUFFERDESC description;
+    ZeroMemory(&description, sizeof(description));
+    description.dwSize = sizeof(description);
+    description.dwFlags = creationFlags | DSBCAPS_CTRLPOSITIONNOTIFY |
+        DSBCAPS_GLOBALFOCUS | DSBCAPS_GETCURRENTPOSITION2 |
+        DSBCAPS_CTRLVOLUME | DSBCAPS_LOCSOFTWARE;
+    description.dwBufferBytes = bufferSize;
+    description.guid3DAlgorithm = algorithm;
+    description.lpwfxFormat = &waveFile->m_pzwf->format;
+
+    HRESULT result = directSound->CreateSoundBuffer(
+        &description, &soundBuffer, NULL);
+    if (FAILED(result))
+        return E_FAIL;
+    result = soundBuffer->QueryInterface(
+        IID_IDirectSoundNotify, reinterpret_cast<void **>(&notify));
+    if (FAILED(result))
+        return E_FAIL;
+
+    notifications = new DSBPOSITIONNOTIFY[bufferCount];
+    if (notifications == NULL)
+        return E_OUTOFMEMORY;
+
+    for (DWORD i = 0; i < bufferCount; ++i)
+    {
+        notifications[i].dwOffset = notifySize * i + notifySize - 1;
+        notifications[i].hEventNotify = notifyEvent;
+    }
+
+    result = notify->SetNotificationPositions(bufferCount, notifications);
+    if (FAILED(result))
+    {
+        if (notify != NULL)
+        {
+            notify->Release();
+            notify = NULL;
+        }
+        delete[] notifications;
+        return E_FAIL;
+    }
+
+    if (notify != NULL)
+    {
+        notify->Release();
+        notify = NULL;
+    }
+    delete[] notifications;
+
+    *sound = new CStreamingSound(soundBuffer, bufferSize, waveFile, notifySize);
+    CopyMemory(&(*sound)->m_dsbd, &description, sizeof(description));
+    (*sound)->m_pSoundManager = this;
+    static_cast<CStreamingSound *>(*sound)->m_hNotifyEvent = notifyEvent;
+    static_cast<CStreamingSound *>(*sound)->m_bIsLocked = FALSE;
+    return S_OK;
+}
+
+
+
+
+// Target 0x0044DBF0..0x0044DC9C. Non-read flags return success directly.
+HRESULT CWaveFile::Open(const char *filename, ThBgmFormat *format, DWORD flags)
+{
+    m_dwFlags = flags;
+    m_bIsReadingFromMemory = FALSE;
+    if (flags == 1)
+    {
+        if (filename == NULL)
+            return E_INVALIDARG;
+        m_hWaveFile = CreateFileA(filename, GENERIC_READ, FILE_SHARE_READ,
+            NULL, OPEN_EXISTING,
+            FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+        if (m_hWaveFile == INVALID_HANDLE_VALUE)
+            return E_FAIL;
+        m_pzwf = format;
+        ResetFile(false);
+        m_dwSize = m_ck.cksize;
+    }
+    return S_OK;
+}
+
+
+// Target 0x0044CE80..0x0044CEF5.
+// Field initialization order follows allocation/copy; no added failure handling.
+CSound::CSound(LPDIRECTSOUNDBUFFER *buffers, DWORD bufferSize,
+               DWORD bufferCount, CWaveFile *waveFile)
+{
+    m_apDSBuffer = new LPDIRECTSOUNDBUFFER[bufferCount];
+    for (DWORD i = 0; i < bufferCount; ++i)
+        m_apDSBuffer[i] = buffers[i];
+    m_dwDSBufferSize = bufferSize;
+    m_dwNumBuffers = bufferCount;
+    m_pWaveFile = waveFile;
+    FillBufferWithSound(m_apDSBuffer[0], FALSE);
+    for (DWORD j = 0; j < bufferCount; ++j)
+        m_apDSBuffer[j]->SetCurrentPosition(0);
+    m_bIsPlaying = FALSE;
+}
+
+// Target 0x44D6A0: ordinary inheritance specializes the one-buffer base.
+CStreamingSound::CStreamingSound(
+    LPDIRECTSOUNDBUFFER buffer, DWORD bufferSize,
+    CWaveFile *waveFile, DWORD notifySize)
+    : CSound(&buffer, bufferSize, 1, waveFile)
+{
+    m_dwLastPlayPos = 0;
+    m_dwPlayProgress = 0;
+    m_dwNextWriteOffset = 0;
+    m_bFillNextNotificationWithSilence = FALSE;
+    m_dwNotifySize = notifySize;
 }

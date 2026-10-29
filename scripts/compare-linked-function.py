@@ -104,6 +104,8 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
                 "target": int(raw["target"]),
                 "addend": int(raw.get("addend", 0)),
                 **({"allocation_eh_handler": True} if raw.get("allocation_eh_handler") else {}),
+                **({"allocation_eh_storage_offset": raw["allocation_eh_storage_offset"]}
+                   if "allocation_eh_storage_offset" in raw else {}),
                 **({"stack_file_eh_handler": True} if raw.get("stack_file_eh_handler") else {}),
                 **({"worker_member_eh_handler": True} if raw.get("worker_member_eh_handler") else {}),
                 **({"static_source": raw["static_source"], "static_size": raw["static_size"]}
