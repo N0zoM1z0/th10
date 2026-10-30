@@ -2,6 +2,30 @@
 
 ## Current checkpoint
 
+PlayerDrawCallbackBody426360..4264F8 /409 is now complete exact:98 instructions,
+all23 fields,11 fixed local branches/plain RET. The registered426510 adapter is
+independently7/all1 exact, retaining indeterminate origin. Two zero-reuse
+three-input /GL colds pass both; actual manager Draw216 and Floor21 also pass,
+first scoped cold653/all46. Second scoped cold includes existing damage1170 and
+auxiliary202:1788/all58. Rectangle actual EDI/EBX ABI agrees, but its407/483 body
+remains NONEXACT. See the [complete Player drawing proof](evidence/player-draw-exact-20261030/README.md).
+
+The previous fused415-byte callback is split naturally. Genuine manager/rectangle
+calls replace descriptive aliases; a Float3 destination helper restores stores
+to VM positionOffset+340, and bit7 gate, captured rectangle width before Floor
+and left/right/top/bottom updates close the full body. Whole/horizontal bounds
+helpers outline and are restored; coordinate/gate-snapshot controls are neutral.
+No forced inline, ABI/register forcing, padding or flag change. Original helper/
+class/TU and adapter ancestry remain unknown. Native Player seventeen-input cold
+preserves main3108/all112, hit624/all21 and movement1616/all54 receipts. Its current
+source/header epoch is `.analysis/gpt-6.1-sol/player-draw-context-20261030/cold-b-player-context.json`.
+Do not substitute the smaller drawing context for those nonexact parents.
+
+New codegen416/two owners comprises authored409/one plus indeterminate adapter7.
+Authored exact101049/275817,494 owners; total codegen169153/1371. Source mappings
+1207/authored689/backlog195. Boundary/origin unchanged; product/runtime,
+original data/TU ownership and portability remain open.
+
 Complete Player main425730..426357 remains NONEXACT, now3108/3112/all112
 native fields versus3096/all110. Raw target data verifies470AFC is read-only
 float1 in `.rdata`, flags40000040. A provisional const operand view and ordinary

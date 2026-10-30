@@ -1204,3 +1204,4 @@ EnemyGameStateView::InvalidateSpellBonus
 PlayerUpdateGate28::StartPowerTransition
 ResultMenuOpenGameOver
 PlayerHandleCollisionHit
+PlayerDrawCallbackBody

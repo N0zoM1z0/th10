@@ -1,3 +1,4 @@
+#include "AnmRectangle.hpp"
 #include "Main.hpp"
 #include "GameManager.hpp"
 #include "ResultMenu.hpp"
@@ -220,12 +221,6 @@ extern int g_PlayerPeriodicCounter;
 extern float g_PlayerTimerScale;
 extern PlayerUpdateGate28 *g_PlayerUpdateGate28;
 extern PlayerUpdateGate10 *g_PlayerUpdateGate10;
-
-// Descriptive interfaces for target-observed draw callees. The target machine
-// boundaries use private register conventions; these declarations are
-// maintained source spellings, not original ABI claims.
-void PlayerDrawManagedVm(PlayerDrawVmView *vm);
-void PlayerDrawAuxiliaryRectangle(const float *bounds, unsigned int color);
 
 // Descriptive interfaces for target-observed Player update callees. Their
 // original identifiers and private register conventions remain unproven.
@@ -2272,18 +2267,26 @@ int __fastcall PlayerUpdateCallback(Player *player)
 }
 
 
-// Maintained spelling of the Player callback registered in the target's second
-// (draw-phase) chain. The physical target entry at 0x00426510 adapts ECX to an
-// EAX-bound body at 0x00426360; source-written thunk versus compiler/LTCG
-// adapter ownership remains unknown.
-int __fastcall PlayerDrawCallback(Player *player)
+static void SetPlayerScreenDrawPosition(
+    AnmFloat3View *destination, const PlayerFloat3 *position)
+{
+    destination->x = position->x + 224.0f;
+    destination->y = position->y + 16.0f;
+    destination->z = position->z;
+}
+
+// Complete drawing body at 0x00426360-0x004264F8. The registered entry below
+// adapts ECX to its private EAX Player argument. Original source/helper/TU
+// boundaries and source-written versus compiler-emitted adapter remain unknown.
+int PlayerDrawCallbackBody(Player *player)
 {
     if (player->runtimeState != 2)
     {
-        player->drawVm.positionX = player->drawPosition.x + 224.0f;
-        player->drawVm.positionY = player->drawPosition.y + 16.0f;
-        player->drawVm.positionZ = player->drawPosition.z;
-        PlayerDrawManagedVm(&player->drawVm);
+        SetPlayerScreenDrawPosition(
+            &reinterpret_cast<AnmVmView *>(&player->drawVm)->positionOffset,
+            &player->drawPosition);
+        g_AnmRenderManagerView->Draw(
+            reinterpret_cast<AnmVmView *>(&player->drawVm));
 
         for (int i = 0; i < 4; ++i)
         {
@@ -2292,8 +2295,9 @@ int __fastcall PlayerDrawCallback(Player *player)
                 option.drawCallback(&option);
         }
 
+        int span;
         if (g_PlayerDrawGate54 != NULL &&
-            g_PlayerDrawGate54->value54 < 0 &&
+            (g_PlayerDrawGate54->value54 & 0x80) != 0 &&
             g_PlayerDrawGate10 != NULL &&
             g_PlayerDrawGate9EB8 != NULL &&
             g_PlayerDrawGate10->value10 == 0 &&
@@ -2301,24 +2305,32 @@ int __fastcall PlayerDrawCallback(Player *player)
             g_PlayerDrawGate4->value4 == 0 &&
             g_PlayerAuxiliaryDrawSpan != 0)
         {
-            float bounds[4];
-            bounds[0] = static_cast<float>(PlayerFloor(
-                player->drawPosition.x + 225.0f - 16.0f));
-            bounds[2] = bounds[0] +
-                (float)g_PlayerAuxiliaryDrawSpan * 0.29230770468711853f;
-            bounds[1] = static_cast<float>(PlayerFloor(
+            AnmFloatRectView bounds;
+            // Capture this rectangle's span with the first coordinate, before Floor.
+            bounds.left = static_cast<float>(PlayerFloor(
+                (span = g_PlayerAuxiliaryDrawSpan,
+                 player->drawPosition.x + 225.0f - 16.0f)));
+            bounds.right = bounds.left +
+                (float)span * 0.29230770468711853f;
+            bounds.top = static_cast<float>(PlayerFloor(
                 player->drawPosition.y + 17.0f - 24.0f));
-            bounds[3] = bounds[1] + 2.0f;
+            bounds.bottom = bounds.top + 2.0f;
 
-            PlayerDrawAuxiliaryRectangle(bounds, 0x80000000u);
-            bounds[0] -= 1.0f;
-            bounds[1] -= 1.0f;
-            bounds[2] -= 1.0f;
-            bounds[3] -= 1.0f;
-            PlayerDrawAuxiliaryRectangle(bounds, 0xffffffffu);
+            DrawColoredRectangle(&bounds, 0x80000000u);
+            bounds.left -= 1.0f;
+            bounds.right -= 1.0f;
+            bounds.top -= 1.0f;
+            bounds.bottom -= 1.0f;
+            DrawColoredRectangle(&bounds, 0xffffffffu);
         }
     }
     return 1;
+}
+
+// Registered draw-chain entry at 0x00426510; ECX-to-EAX tail adapter.
+int __fastcall PlayerDrawCallback(Player *player)
+{
+    return PlayerDrawCallbackBody(player);
 }
 
 void __stdcall RebuildPlayerOptions(Player *player)

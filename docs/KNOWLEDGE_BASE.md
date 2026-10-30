@@ -7859,3 +7859,38 @@ scaling/lifetime/pointer helpers do not close the owner. Derived cursor3112
 changes prefix registers and loop addressing; by-value adds an FP difference.
 All controls are restored. No new exact/source/boundary/data credit; see the
 [complete timer operand evidence](evidence/player-main-timer-context-20261030/README.md).
+
+
+## 2026-10-30 Exact complete Player drawing body and registered adapter
+
+PlayerDrawCallbackBody426360..4264F8 owns409 bytes,98 instructions,23 address
+fields,11 direct fixed local branches and a plain RET. Eight CC precede and
+seven follow. The sole encoded E8/E9 entry/interior reference is the JMP426512
+from the registered426510..426516 adapter. The adapter is7 bytes/all1 field,
+ECX to EAX then tail JMP; nine CC surround it and registration immediate42487F
+contains its entry. The raw unaligned value470BA9=426400 overlaps float57 at
+470BA8/word42640000 and is not independently evidenced as an interior pointer.
+
+The body skips state2; stores screen position into VM+340/+344/+348 (maintained
+positionOffset), hence Player+354/+358/+35C; calls the real manager Draw; visits
+four option callbacks with ECX option base; then gates two rectangle passes.
+Bit7 of byte+54 controls the sign gate. Width is captured with the first floor
+coordinate, before Floor, then reused for right-edge expansion. Left/right/top/
+bottom second-pass updates each subtract1. Ordinary Float3 destination helper
+and actual source dependencies recover scheduling and register lifetimes.
+No forced inline, fake ABI, inert padding or profile change is used. Original
+helper/type/TU and source-written versus compiler adapter remain unproved.
+
+Actual callee interfaces are Draw216 ECX manager/EAX VM/plain RET; rectangle
+EDI bounds/EBX color/plain RET; and Floor21 stack float/ST0 double/RET4. Two
+independent canonical three-input /GL colds pass complete409/all23 and7/all1.
+Draw216 and Floor21 also pass strict same-image comparisons. Rectangle remains
+407/483 NONEXACT. Larger bounds helpers outline; gate-capture and coordinate
+helpers are neutral; all rejected controls are restored.
+
+First scoped cold passes653/all46; second with the existing damage1170 and
+auxiliary202 passes1788/all58. Seventeen-input cold also preserves complete
+main3108, hit624 and movement1616 native receipts, without exact parent credit.
+New authored credit409/one; adapter7 adds only indeterminate codegen credit.
+Source mappings grow one. Boundary/origin unchanged. See the
+[complete drawing evidence](evidence/player-draw-exact-20261030/README.md).

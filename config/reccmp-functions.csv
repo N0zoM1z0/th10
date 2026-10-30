@@ -1205,3 +1205,4 @@ EnemyGameStateView::InvalidateSpellBonus,0x00405500,function
 PlayerUpdateGate28::StartPowerTransition,0x00405860,function
 ResultMenuOpenGameOver,0x004231D0,function
 PlayerHandleCollisionHit,0x00426CF0,function
+PlayerDrawCallbackBody,0x00426360,function
