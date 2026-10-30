@@ -2,6 +2,37 @@
 
 ## Current checkpoint
 
+Three complete music helpers now close357/all7 fields/all20 local destinations:
+SkipLine4349E0/59, CopyLine434A20/92 and PositionInterpolation434A80/206. Two
+independent canonical20-input colds rebuild every input without reuse and pass
+both static parsers raw-equal plus the fully bound206-byte member. Game C++ is
+unchanged. Fresh122-instruction target review validates all exits and actual
+interfaces; six encoded entry refs from MusicRoom have no interior transfer.
+See the [complete helper proof](evidence/music-room-helpers-exact-20261030/README.md).
+
+Six tangent reads bind the existing vector491C14+0/4/8 twice. Native adjacent
+Chain/Device anchor labels are incidental; their actual target bindings are
+491BE4/491C30. Base+addends resolve the real operands without inventing aggregate
+ownership or substituting zeros. The12-byte range is PE .data virtual zero-fill,
+not raw-backed file data; current values/writes and physical ownership remain
+independent. Seventh field is the existing speed-address pointer476F78.
+
+Both parser recipes use MAP static/PDB producer qualification without changing
+visibility or retention. Static replay must use actual
+`build/match-linked/MusicRoomHelpers`; copied snapshots retain hashes/reports
+but fail producer qualification by design. Do not bypass that check. Current
+context is
+`.analysis/gpt-6.1-sol/music-room-helpers-context-20261030/cold-b-context.json`.
+Its active artifacts point to the original producer, with snapshot paths separate.
+All67 source/header pins agree across the two colds; the prior MusicRoom20 source
+epoch remains valid because no game source changes. No full cohort or host
+failure/lifecycle/mutation tests are required. Parent2788/all104 reproduces NE.
+
+Authored exact is102270/275835 across502 owners; codegen170374/1379. Source
+mappings1207/authored689/backlog187. Existing source mappings/boundaries/origins
+are unchanged. Original helper/class/TU/data, product/runtime and portability
+remain open; the helper closures do not give parent exactness credit.
+
 Complete MusicRoom433EF0..4349DB remains NONEXACT, current2788/2796. A fresh
 ownership audit closes2778 executable bytes/740 instructions,2 alignment and
 four owned selector words4349CC..4349DB; sole encoded base reference is the

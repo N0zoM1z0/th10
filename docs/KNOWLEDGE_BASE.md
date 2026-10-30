@@ -8079,3 +8079,37 @@ guards pass1753/all56. Current context and stale prior FrontEnd.cpp pins are
 identified in the handoff. See the
 [complete MusicRoom evidence](evidence/music-room-context-20261030/README.md).
 Authored exact remains101913/499 owners; codegen170017/1376, source/backlog unchanged.
+
+
+## 2026-10-30 Complete music parsers and interpolation exact; vector roles bound
+
+SkipLine4349E0..434A1A/59 and CopyLine434A20..434A7B/92 are complete static
+raw-equal owners. Explicit MAP Static symbols plus source/object-qualified PDB
+contributions select them naturally; no visibility/retention/ABI source change.
+Their actual boundaries are EAX cursor/EDX remaining/plain RET and ECX cursor/
+EDI remaining/stack destination/RET4. All read-before-count, copy and delimiter
+paths remain in the complete59/92-byte comparison.
+
+PositionInterpolation434A80..434B4D/206 now binds all seven fields and one fixed
+local branch, actual EAX VM/EDX initial/ECX final plus duration/mode stack/RET8.
+Six tangent reads address491C14/18/1C twice, represented by the already declared
+AnmFloat3View base491C14+0/4/8. Generic four-byte diagnostic anchors label native
++4/+8 as Chain/Device accidentally; actual canonical target bindings for those
+symbols are491BE4/491C30. Naming those unrelated labels as the vector's target
+roles would be wrong. Correct base+addends solve function binding while leaving
+original aggregate allocation/type/ownership unknown; no new data owner follows.
+
+The12-byte view lies wholly in PE .data's virtual tail beyond its raw extent.
+Raw-file reads therefore fail; section geometry establishes image zero-fill,
+not observed runtime contents or immutability. Existing source copies the mutable
+view and is unchanged. The speed-address field476F78 remains independent.
+
+Two canonical20-input zero-reuse colds pass357/all7/all20 local destinations;
+fresh target review covers122 instructions and six entry refs without interior
+refs. Static qualification must run in the actual producer directory; copied
+snapshots preserve hashes/reports and cannot bypass the PDB producer check.
+Current context is recorded in the handoff. Parent2788/all104 still reproduces
+NONEXACT. See the [complete helper proof](evidence/music-room-helpers-exact-20261030/README.md).
+Authored exact increases357 to102270/275835 across502 owners; codegen170374/1379.
+Source mappings1207/authored689/backlog187. No boundary/origin/data-owner or
+product/runtime/portability closure is inferred from these helper matches.
