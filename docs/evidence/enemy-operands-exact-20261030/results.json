@@ -1,0 +1,4651 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "input_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "65c7125f66818ed3bcc5ef18773bd615d98c9b8a54bd25a338d160ec05f88048",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "d632e60fefce7f3d830c4bad5faeb38f9f0ac2ea88a07d800485b37f9034f946",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "a2940382f3f8aff0e96dceb5262067eea5b36c85b1b503cae984505dffb38e91",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiMessageLeaves.cpp": "7f0b02c9037056b3613d8322b4da2adc524a10d17ca29f1247159fb5843edb12",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.cpp": "8b950fceecc041701f77b8a23726bb42e09d9ceb50503f91025e38ff761f5eaf",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.cpp": "3fa6b87037d280bcd7f25d05cf89b0f820aca16b3b47701a7d03372148e1587a",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/ReplayManager.cpp": "c36918f724269293acb48c0bb8f61a945df84de7559e634fe19a6adcaf18cac0",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "cold_builds": [
+    {
+      "label": "canonical-a",
+      "artifact_dir": "build/gpt-6.1-sol/enemy-operands-context-20261030/canonical-a",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "compiled_input_count": 21,
+      "reused_input_count": 0,
+      "exit": 0,
+      "matched_bytes": 820,
+      "field_count": 95,
+      "image_sha256": "d6a3bb3e68aa39d6e27d4e3f44e5b96275239e0078c0a4de0e30477444a4adcb",
+      "object_sha256": {
+        "src/Enemy.cpp": "b6fd069d24d7ddd15e378b7b8b35ef77dd21a7c0ac615238b1e90ebf4ac82c54",
+        "src/AnmManager.cpp": "c8a97ba0061e22d0d54190858b6fe8953e7aea5e91e26a38e2a6a8d03f68669b",
+        "src/RandomMath.cpp": "713248b7128349931199594fc6828eaad989f4aa8672dc71738e737b40deb0d0",
+        "src/AnmVmCreate.cpp": "8168e6831347ae7333404b76833491e749b07f9fb05744d640a2a20f27eb12b4",
+        "src/AnmVmId.cpp": "1691546a0cff0a23ac86ae9432e1704207ea2b718f1ed3f5910b85664d249425",
+        "src/AnmInt3Scale.cpp": "ca4b42a2de86f086da8a8293cb01994b3e324b30721f179116ad2fd434cd449a",
+        "src/EclVm.cpp": "347ca65fbd996aac2ff07ea64fbe88f50eb14f7a3350add8158ac12311734d56",
+        "src/Player.cpp": "2c99fa691bf6036d5550ce2c7b92c0c115673a542afbf79cb582d3a55d7fe6d7",
+        "src/PlayerCollision.cpp": "44be5aec471f7e20a352ac94cd216a5b8c740f5d2edf9d776ee4d26139a89efd",
+        "src/EnemyEclDispatcher.cpp": "c1963b43bac2164382baeb3682a234c4056e75b1fe725ff4c645ffddb906d5b7",
+        "src/VmIdInterrupt.cpp": "d5ef86c88f62731eb32718d9a0fc3b2d3dbd382d36be22a553ac1ccf7575e8fc",
+        "src/FrontEnd.cpp": "38d020d3565c583a7fd9c535d3808f3d20f34fd1ece910a70dcc84bd96f9b4d5",
+        "src/ItemManager.cpp": "2a07663ee4a27bc7db1d529e75bf88763e15db7710a76bb126d748f326cd2582",
+        "src/Main.cpp": "a3c18ae037885f9031f6cd7c694207a8a94f5b7b6b8b49e21c813faaca05ffaf",
+        "src/Sound.cpp": "12251161d7efc6915c869652c152cddd63e95942133d1b57fc15a78e0382e5c8",
+        "src/Gui.cpp": "0593e7ab94ee3d232418060f4a8b1f9f9527e467fdf2eac91de65c204f096b3a",
+        "src/Hint.cpp": "a0ebda3c96ea2355165367b092ecba91b5eef09052026b1055085fd562d65538",
+        "src/GuiMessageLeaves.cpp": "5a414b084a5a18df7d1e10ac8d56c05435e64fd37b244e73e7e319edf9979bf1",
+        "src/FileSystem.cpp": "0242289e1a7b47fdc276d4cfe6d2c5f121a7cc52ea41b526be318e781fa01c0e",
+        "src/PbgArchive.cpp": "686b2214c5aed3dad33002fcdf57c584fa8ffb74fe48279b3c5b9025c6c5852e",
+        "src/ReplayManager.cpp": "e184377bcfe03ec0547aed618628e119e1535ee4d5bdcfb5ab4e5db6f2324261"
+      },
+      "manifest_sha256": "fb4f6ee5c211ff9a73011c2bc29b6879f7fc719312e0d00f473f66ea246c5b46"
+    },
+    {
+      "label": "canonical-b",
+      "artifact_dir": "build/gpt-6.1-sol/enemy-operands-context-20261030/canonical-b",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "compiled_input_count": 21,
+      "reused_input_count": 0,
+      "exit": 0,
+      "matched_bytes": 820,
+      "field_count": 95,
+      "image_sha256": "d1a18d8b20e2703c8d13db7293518ca155e3752358bb8fb4c00902f6584e26aa",
+      "object_sha256": {
+        "src/Enemy.cpp": "b285ebe85e1e61db5fa7d33d8eed1d2d049260569d5e9ef46cad7e241ba78680",
+        "src/AnmManager.cpp": "b6b34921e29e3f7c50be6be1b9a573506ddd0e487dd27a79b35013809c14a654",
+        "src/RandomMath.cpp": "cc2a68f07432812cfbbb38c9893c8317bfd4e422c1552e6d8aecc28cf28dca74",
+        "src/AnmVmCreate.cpp": "e7a20ecf8a13a97e6a916fdb175e219892c04fe5f18bdd624eedcb5fdf08e6fa",
+        "src/AnmVmId.cpp": "efcea289631fb41ebcb2688c8fe5cac0a69c7625a788927397982e5945d8afdc",
+        "src/AnmInt3Scale.cpp": "852613cb0b7755916d2881776ab462e6674dc3dac14977cf2641ca0749384f39",
+        "src/EclVm.cpp": "2bf9a0c495861f6be89531f94b8bd351f3f32cd4c2897f1ac3556ca5c3abe153",
+        "src/Player.cpp": "5d94414ff49ab8a882979f5fcf876bcfc7d9868d51d8090fce6a1e39b6e38fc4",
+        "src/PlayerCollision.cpp": "f1bcee72d3c76856a43abf29f1dbbc3beef65c2efcb5e4bb92dbddafc7b030ce",
+        "src/EnemyEclDispatcher.cpp": "6bd0cc41ca3bce5b5e9dea171225fd746018a24a56fcbc6e68eb22121254f631",
+        "src/VmIdInterrupt.cpp": "c62f85c8af98003b6a207ac00ebf7246fc0effee1097a326aae3375cd1f3a89e",
+        "src/FrontEnd.cpp": "3645caf27a69eeaac7d4e3fe5ed61170418f4328e5d4efda867d5c07187cc812",
+        "src/ItemManager.cpp": "a53be7da0e9195d9a65b9c96cc1d8c3c192e6348dbecfe5604b88078b9594fa2",
+        "src/Main.cpp": "5cf3a2f637922d9750cf6917bb2924aefba5bd4eecad93e600ef7a7772bcacae",
+        "src/Sound.cpp": "e3d7b48a42e01a218a489cbe0300c396a149f6e288a7b36703c31dbf5bde06c4",
+        "src/Gui.cpp": "f65f2216b1d43a44f82bb8c58855d22ed47639fdf62d72dc0e36d399537b3766",
+        "src/Hint.cpp": "1f34eb34bf15558c501c81e55957a86f4ddfa4f7831e6e58eaf19a724a37755c",
+        "src/GuiMessageLeaves.cpp": "1dba798e55c5286553fe3984d88232d65b83644ee08609564815faed5a221187",
+        "src/FileSystem.cpp": "e1991f30bff81498c89bdbe59270fd05ecc72dd0328ce6a32d93339faec2c277",
+        "src/PbgArchive.cpp": "ead0bc83840db044d4cde7f8213190cdf8024fc6d0b6e9acbe9a61c37eb4aeeb",
+        "src/ReplayManager.cpp": "a0b709e1dfc08c8fb81274d8518fbc3e34e9d38c586f713af4dc7c7b787dcb0a"
+      },
+      "manifest_sha256": "fb4f6ee5c211ff9a73011c2bc29b6879f7fc719312e0d00f473f66ea246c5b46"
+    }
+  ],
+  "restored_controls": [
+    {
+      "label": "signed-flag",
+      "restored": true,
+      "int_result": "structural-exact",
+      "float_result": "mismatch",
+      "float_size": 876,
+      "float_matched_comparable_bytes": 286,
+      "float_comparable_bytes": 548,
+      "exit": 0
+    },
+    {
+      "label": "boolean-flag",
+      "restored": true,
+      "int_result": "structural-exact",
+      "float_result": "mismatch",
+      "float_size": 876,
+      "float_matched_comparable_bytes": 286,
+      "float_comparable_bytes": 548,
+      "exit": 0
+    },
+    {
+      "label": "float-player-families",
+      "restored": true,
+      "int_result": "structural-exact",
+      "float_result": "mismatch",
+      "float_size": 884,
+      "float_matched_comparable_bytes": 308,
+      "float_comparable_bytes": 548,
+      "exit": 0
+    },
+    {
+      "label": "float-family-order",
+      "restored": true,
+      "int_result": "structural-exact",
+      "float_result": "mismatch",
+      "float_size": 884,
+      "float_matched_comparable_bytes": 308,
+      "float_comparable_bytes": 548,
+      "exit": 0
+    }
+  ],
+  "review": {
+    "int": {
+      "target_review": {
+        "complete_owned_bytes": 820,
+        "code_and_alignment_bytes": 616,
+        "instruction_count": 142,
+        "normalized_sha256": "ce802bbff8a84d4fb07c5837cced2cd6925eedd46ff695638eea49c8cd4d86d9",
+        "field_identities": [
+          {
+            "offset": 21,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 616
+            }
+          },
+          {
+            "offset": 26,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x004918B0"
+            }
+          },
+          {
+            "offset": 31,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x0044B9E0"
+            }
+          },
+          {
+            "offset": 39,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x004918B0"
+            }
+          },
+          {
+            "offset": 44,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x0044BB20"
+            }
+          },
+          {
+            "offset": 49,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 57,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x004918B0"
+            }
+          },
+          {
+            "offset": 62,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x0044BB90"
+            }
+          },
+          {
+            "offset": 67,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 75,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477834"
+            }
+          },
+          {
+            "offset": 86,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 95,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477834"
+            }
+          },
+          {
+            "offset": 106,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 179,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 193,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 207,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 221,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 235,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 249,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 263,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 277,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 291,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 305,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 319,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 341,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 355,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 369,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 383,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 397,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 406,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477834"
+            }
+          },
+          {
+            "offset": 417,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 425,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477834"
+            }
+          },
+          {
+            "offset": 436,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 445,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477704"
+            }
+          },
+          {
+            "offset": 459,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 467,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477704"
+            }
+          },
+          {
+            "offset": 481,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00463B2C"
+            }
+          },
+          {
+            "offset": 496,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00449450"
+            }
+          },
+          {
+            "offset": 512,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C98"
+            }
+          },
+          {
+            "offset": 520,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 538,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 554,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 571,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 588,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 616,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 25
+            }
+          },
+          {
+            "offset": 620,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 38
+            }
+          },
+          {
+            "offset": 624,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 611
+            }
+          },
+          {
+            "offset": 628,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 228
+            }
+          },
+          {
+            "offset": 632,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 474
+            }
+          },
+          {
+            "offset": 636,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 242
+            }
+          },
+          {
+            "offset": 640,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 256
+            }
+          },
+          {
+            "offset": 644,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 270
+            }
+          },
+          {
+            "offset": 648,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 284
+            }
+          },
+          {
+            "offset": 652,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 74
+            }
+          },
+          {
+            "offset": 656,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 93
+            }
+          },
+          {
+            "offset": 660,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 611
+            }
+          },
+          {
+            "offset": 664,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 113
+            }
+          },
+          {
+            "offset": 668,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 56
+            }
+          },
+          {
+            "offset": 672,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 122
+            }
+          },
+          {
+            "offset": 676,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 136
+            }
+          },
+          {
+            "offset": 680,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 145
+            }
+          },
+          {
+            "offset": 684,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 154
+            }
+          },
+          {
+            "offset": 688,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 163
+            }
+          },
+          {
+            "offset": 692,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 172
+            }
+          },
+          {
+            "offset": 696,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 186
+            }
+          },
+          {
+            "offset": 700,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 200
+            }
+          },
+          {
+            "offset": 704,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 214
+            }
+          },
+          {
+            "offset": 708,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 228
+            }
+          },
+          {
+            "offset": 712,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 474
+            }
+          },
+          {
+            "offset": 716,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 242
+            }
+          },
+          {
+            "offset": 720,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 256
+            }
+          },
+          {
+            "offset": 724,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 270
+            }
+          },
+          {
+            "offset": 728,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 284
+            }
+          },
+          {
+            "offset": 732,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 298
+            }
+          },
+          {
+            "offset": 736,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 312
+            }
+          },
+          {
+            "offset": 740,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 348
+            }
+          },
+          {
+            "offset": 744,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 362
+            }
+          },
+          {
+            "offset": 748,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 376
+            }
+          },
+          {
+            "offset": 752,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 390
+            }
+          },
+          {
+            "offset": 756,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 404
+            }
+          },
+          {
+            "offset": 760,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 424
+            }
+          },
+          {
+            "offset": 764,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 443
+            }
+          },
+          {
+            "offset": 768,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 466
+            }
+          },
+          {
+            "offset": 772,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 488
+            }
+          },
+          {
+            "offset": 776,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 511
+            }
+          },
+          {
+            "offset": 780,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 519
+            }
+          },
+          {
+            "offset": 784,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 326
+            }
+          },
+          {
+            "offset": 788,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 603
+            }
+          },
+          {
+            "offset": 792,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 611
+            }
+          },
+          {
+            "offset": 796,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 611
+            }
+          },
+          {
+            "offset": 800,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 527
+            }
+          },
+          {
+            "offset": 804,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 536
+            }
+          },
+          {
+            "offset": 808,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 552
+            }
+          },
+          {
+            "offset": 812,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 569
+            }
+          },
+          {
+            "offset": 816,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 586
+            }
+          }
+        ],
+        "fixed_local_branches": [
+          {
+            "offset": 12,
+            "destination": 611,
+            "mnemonic": "ja"
+          }
+        ],
+        "table_entry_offsets": [
+          25,
+          38,
+          611,
+          228,
+          474,
+          242,
+          256,
+          270,
+          284,
+          74,
+          93,
+          611,
+          113,
+          56,
+          122,
+          136,
+          145,
+          154,
+          163,
+          172,
+          186,
+          200,
+          214,
+          228,
+          474,
+          242,
+          256,
+          270,
+          284,
+          298,
+          312,
+          348,
+          362,
+          376,
+          390,
+          404,
+          424,
+          443,
+          466,
+          488,
+          511,
+          519,
+          326,
+          603,
+          611,
+          611,
+          527,
+          536,
+          552,
+          569,
+          586
+        ],
+        "calls": [
+          {
+            "offset": 30,
+            "destination": "0x0044B9E0"
+          },
+          {
+            "offset": 43,
+            "destination": "0x0044BB20"
+          },
+          {
+            "offset": 48,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 61,
+            "destination": "0x0044BB90"
+          },
+          {
+            "offset": 66,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 85,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 105,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 178,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 192,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 206,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 220,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 234,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 248,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 262,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 276,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 290,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 304,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 318,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 340,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 354,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 368,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 382,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 396,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 416,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 435,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 458,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 480,
+            "destination": "0x00463B2C"
+          },
+          {
+            "offset": 495,
+            "destination": "0x00449450"
+          }
+        ],
+        "returns": [
+          {
+            "offset": 35,
+            "operand": "4"
+          },
+          {
+            "offset": 53,
+            "operand": "4"
+          },
+          {
+            "offset": 71,
+            "operand": "4"
+          },
+          {
+            "offset": 90,
+            "operand": "4"
+          },
+          {
+            "offset": 110,
+            "operand": "4"
+          },
+          {
+            "offset": 119,
+            "operand": "4"
+          },
+          {
+            "offset": 133,
+            "operand": "4"
+          },
+          {
+            "offset": 142,
+            "operand": "4"
+          },
+          {
+            "offset": 151,
+            "operand": "4"
+          },
+          {
+            "offset": 160,
+            "operand": "4"
+          },
+          {
+            "offset": 169,
+            "operand": "4"
+          },
+          {
+            "offset": 183,
+            "operand": "4"
+          },
+          {
+            "offset": 197,
+            "operand": "4"
+          },
+          {
+            "offset": 211,
+            "operand": "4"
+          },
+          {
+            "offset": 225,
+            "operand": "4"
+          },
+          {
+            "offset": 239,
+            "operand": "4"
+          },
+          {
+            "offset": 253,
+            "operand": "4"
+          },
+          {
+            "offset": 267,
+            "operand": "4"
+          },
+          {
+            "offset": 281,
+            "operand": "4"
+          },
+          {
+            "offset": 295,
+            "operand": "4"
+          },
+          {
+            "offset": 309,
+            "operand": "4"
+          },
+          {
+            "offset": 323,
+            "operand": "4"
+          },
+          {
+            "offset": 345,
+            "operand": "4"
+          },
+          {
+            "offset": 359,
+            "operand": "4"
+          },
+          {
+            "offset": 373,
+            "operand": "4"
+          },
+          {
+            "offset": 387,
+            "operand": "4"
+          },
+          {
+            "offset": 401,
+            "operand": "4"
+          },
+          {
+            "offset": 421,
+            "operand": "4"
+          },
+          {
+            "offset": 440,
+            "operand": "4"
+          },
+          {
+            "offset": 463,
+            "operand": "4"
+          },
+          {
+            "offset": 485,
+            "operand": "4"
+          },
+          {
+            "offset": 508,
+            "operand": "4"
+          },
+          {
+            "offset": 516,
+            "operand": "4"
+          },
+          {
+            "offset": 524,
+            "operand": "4"
+          },
+          {
+            "offset": 533,
+            "operand": "4"
+          },
+          {
+            "offset": 549,
+            "operand": "4"
+          },
+          {
+            "offset": 566,
+            "operand": "4"
+          },
+          {
+            "offset": 583,
+            "operand": "4"
+          },
+          {
+            "offset": 600,
+            "operand": "4"
+          },
+          {
+            "offset": 608,
+            "operand": "4"
+          },
+          {
+            "offset": 613,
+            "operand": "4"
+          }
+        ]
+      },
+      "native_reproduction": {
+        "complete_owned_bytes": 820,
+        "code_and_alignment_bytes": 616,
+        "instruction_count": 142,
+        "normalized_sha256": "ce802bbff8a84d4fb07c5837cced2cd6925eedd46ff695638eea49c8cd4d86d9",
+        "field_identities": [
+          {
+            "offset": 21,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 616
+            }
+          },
+          {
+            "offset": 26,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyRandom@@3UEnemyRandomView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 31,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?GetU32@EnemyRandomView@@QAEIXZ"
+              ]
+            }
+          },
+          {
+            "offset": 39,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyRandom@@3UEnemyRandomView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 44,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?GetUnitFloat@EnemyRandomView@@QAEMXZ"
+              ]
+            }
+          },
+          {
+            "offset": 49,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 57,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyRandom@@3UEnemyRandomView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 62,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?GetSignedUnitFloat@EnemyRandomView@@QAEMXZ"
+              ]
+            }
+          },
+          {
+            "offset": 67,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 75,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_Player@@3PAUPlayer@@A"
+              ]
+            }
+          },
+          {
+            "offset": 86,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 95,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_Player@@3PAUPlayer@@A"
+              ]
+            }
+          },
+          {
+            "offset": 106,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 179,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 193,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 207,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 221,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 235,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 249,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 263,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 277,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 291,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 305,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 319,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 341,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 355,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 369,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 383,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 397,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 406,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_Player@@3PAUPlayer@@A"
+              ]
+            }
+          },
+          {
+            "offset": 417,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 425,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_Player@@3PAUPlayer@@A"
+              ]
+            }
+          },
+          {
+            "offset": 436,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 445,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 459,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 467,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 481,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "__ftol2"
+              ]
+            }
+          },
+          {
+            "offset": 496,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+              ]
+            }
+          },
+          {
+            "offset": 512,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyRank@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 520,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 538,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 554,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 571,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 588,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 616,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 25
+            }
+          },
+          {
+            "offset": 620,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 38
+            }
+          },
+          {
+            "offset": 624,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 611
+            }
+          },
+          {
+            "offset": 628,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 228
+            }
+          },
+          {
+            "offset": 632,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 474
+            }
+          },
+          {
+            "offset": 636,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 242
+            }
+          },
+          {
+            "offset": 640,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 256
+            }
+          },
+          {
+            "offset": 644,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 270
+            }
+          },
+          {
+            "offset": 648,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 284
+            }
+          },
+          {
+            "offset": 652,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 74
+            }
+          },
+          {
+            "offset": 656,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 93
+            }
+          },
+          {
+            "offset": 660,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 611
+            }
+          },
+          {
+            "offset": 664,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 113
+            }
+          },
+          {
+            "offset": 668,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 56
+            }
+          },
+          {
+            "offset": 672,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 122
+            }
+          },
+          {
+            "offset": 676,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 136
+            }
+          },
+          {
+            "offset": 680,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 145
+            }
+          },
+          {
+            "offset": 684,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 154
+            }
+          },
+          {
+            "offset": 688,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 163
+            }
+          },
+          {
+            "offset": 692,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 172
+            }
+          },
+          {
+            "offset": 696,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 186
+            }
+          },
+          {
+            "offset": 700,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 200
+            }
+          },
+          {
+            "offset": 704,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 214
+            }
+          },
+          {
+            "offset": 708,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 228
+            }
+          },
+          {
+            "offset": 712,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 474
+            }
+          },
+          {
+            "offset": 716,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 242
+            }
+          },
+          {
+            "offset": 720,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 256
+            }
+          },
+          {
+            "offset": 724,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 270
+            }
+          },
+          {
+            "offset": 728,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 284
+            }
+          },
+          {
+            "offset": 732,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 298
+            }
+          },
+          {
+            "offset": 736,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 312
+            }
+          },
+          {
+            "offset": 740,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 348
+            }
+          },
+          {
+            "offset": 744,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 362
+            }
+          },
+          {
+            "offset": 748,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 376
+            }
+          },
+          {
+            "offset": 752,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 390
+            }
+          },
+          {
+            "offset": 756,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 404
+            }
+          },
+          {
+            "offset": 760,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 424
+            }
+          },
+          {
+            "offset": 764,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 443
+            }
+          },
+          {
+            "offset": 768,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 466
+            }
+          },
+          {
+            "offset": 772,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 488
+            }
+          },
+          {
+            "offset": 776,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 511
+            }
+          },
+          {
+            "offset": 780,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 519
+            }
+          },
+          {
+            "offset": 784,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 326
+            }
+          },
+          {
+            "offset": 788,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 603
+            }
+          },
+          {
+            "offset": 792,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 611
+            }
+          },
+          {
+            "offset": 796,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 611
+            }
+          },
+          {
+            "offset": 800,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 527
+            }
+          },
+          {
+            "offset": 804,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 536
+            }
+          },
+          {
+            "offset": 808,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 552
+            }
+          },
+          {
+            "offset": 812,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 569
+            }
+          },
+          {
+            "offset": 816,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 586
+            }
+          }
+        ],
+        "fixed_local_branches": [
+          {
+            "offset": 12,
+            "destination": 611,
+            "mnemonic": "ja"
+          }
+        ],
+        "table_entry_offsets": [
+          25,
+          38,
+          611,
+          228,
+          474,
+          242,
+          256,
+          270,
+          284,
+          74,
+          93,
+          611,
+          113,
+          56,
+          122,
+          136,
+          145,
+          154,
+          163,
+          172,
+          186,
+          200,
+          214,
+          228,
+          474,
+          242,
+          256,
+          270,
+          284,
+          298,
+          312,
+          348,
+          362,
+          376,
+          390,
+          404,
+          424,
+          443,
+          466,
+          488,
+          511,
+          519,
+          326,
+          603,
+          611,
+          611,
+          527,
+          536,
+          552,
+          569,
+          586
+        ],
+        "calls": null,
+        "returns": [
+          {
+            "offset": 35,
+            "operand": "4"
+          },
+          {
+            "offset": 53,
+            "operand": "4"
+          },
+          {
+            "offset": 71,
+            "operand": "4"
+          },
+          {
+            "offset": 90,
+            "operand": "4"
+          },
+          {
+            "offset": 110,
+            "operand": "4"
+          },
+          {
+            "offset": 119,
+            "operand": "4"
+          },
+          {
+            "offset": 133,
+            "operand": "4"
+          },
+          {
+            "offset": 142,
+            "operand": "4"
+          },
+          {
+            "offset": 151,
+            "operand": "4"
+          },
+          {
+            "offset": 160,
+            "operand": "4"
+          },
+          {
+            "offset": 169,
+            "operand": "4"
+          },
+          {
+            "offset": 183,
+            "operand": "4"
+          },
+          {
+            "offset": 197,
+            "operand": "4"
+          },
+          {
+            "offset": 211,
+            "operand": "4"
+          },
+          {
+            "offset": 225,
+            "operand": "4"
+          },
+          {
+            "offset": 239,
+            "operand": "4"
+          },
+          {
+            "offset": 253,
+            "operand": "4"
+          },
+          {
+            "offset": 267,
+            "operand": "4"
+          },
+          {
+            "offset": 281,
+            "operand": "4"
+          },
+          {
+            "offset": 295,
+            "operand": "4"
+          },
+          {
+            "offset": 309,
+            "operand": "4"
+          },
+          {
+            "offset": 323,
+            "operand": "4"
+          },
+          {
+            "offset": 345,
+            "operand": "4"
+          },
+          {
+            "offset": 359,
+            "operand": "4"
+          },
+          {
+            "offset": 373,
+            "operand": "4"
+          },
+          {
+            "offset": 387,
+            "operand": "4"
+          },
+          {
+            "offset": 401,
+            "operand": "4"
+          },
+          {
+            "offset": 421,
+            "operand": "4"
+          },
+          {
+            "offset": 440,
+            "operand": "4"
+          },
+          {
+            "offset": 463,
+            "operand": "4"
+          },
+          {
+            "offset": 485,
+            "operand": "4"
+          },
+          {
+            "offset": 508,
+            "operand": "4"
+          },
+          {
+            "offset": 516,
+            "operand": "4"
+          },
+          {
+            "offset": 524,
+            "operand": "4"
+          },
+          {
+            "offset": 533,
+            "operand": "4"
+          },
+          {
+            "offset": 549,
+            "operand": "4"
+          },
+          {
+            "offset": 566,
+            "operand": "4"
+          },
+          {
+            "offset": 583,
+            "operand": "4"
+          },
+          {
+            "offset": 600,
+            "operand": "4"
+          },
+          {
+            "offset": 608,
+            "operand": "4"
+          },
+          {
+            "offset": 613,
+            "operand": "4"
+          }
+        ]
+      }
+    },
+    "float": {
+      "target_review": {
+        "complete_owned_bytes": 884,
+        "code_and_alignment_bytes": 680,
+        "instruction_count": 152,
+        "normalized_sha256": "4ba4d66ddf7060e93138ddcb2829bbb6cb9550c58803dda39c271ccb57d73564",
+        "field_identities": [
+          {
+            "offset": 21,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 680
+            }
+          },
+          {
+            "offset": 26,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x004918B0"
+            }
+          },
+          {
+            "offset": 31,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x0044B9E0"
+            }
+          },
+          {
+            "offset": 53,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00470B98"
+            }
+          },
+          {
+            "offset": 61,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x004918B0"
+            }
+          },
+          {
+            "offset": 66,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x0044BB20"
+            }
+          },
+          {
+            "offset": 74,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x004918B0"
+            }
+          },
+          {
+            "offset": 79,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x0044BB90"
+            }
+          },
+          {
+            "offset": 87,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x004918B0"
+            }
+          },
+          {
+            "offset": 92,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x0044BB90"
+            }
+          },
+          {
+            "offset": 98,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00470B18"
+            }
+          },
+          {
+            "offset": 113,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477834"
+            }
+          },
+          {
+            "offset": 118,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00426660"
+            }
+          },
+          {
+            "offset": 354,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477834"
+            }
+          },
+          {
+            "offset": 369,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477834"
+            }
+          },
+          {
+            "offset": 384,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477704"
+            }
+          },
+          {
+            "offset": 402,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477704"
+            }
+          },
+          {
+            "offset": 420,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C98"
+            }
+          },
+          {
+            "offset": 429,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 438,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00470AFC"
+            }
+          },
+          {
+            "offset": 453,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477834"
+            }
+          },
+          {
+            "offset": 458,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00426660"
+            }
+          },
+          {
+            "offset": 473,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00477834"
+            }
+          },
+          {
+            "offset": 478,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "target_address": "0x00426660"
+            }
+          },
+          {
+            "offset": 496,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 510,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00470B04"
+            }
+          },
+          {
+            "offset": 540,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 554,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00470AFC"
+            }
+          },
+          {
+            "offset": 584,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 598,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00470B08"
+            }
+          },
+          {
+            "offset": 628,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00474C74"
+            }
+          },
+          {
+            "offset": 642,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00470BD4"
+            }
+          },
+          {
+            "offset": 672,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "target_address": "0x00470B04"
+            }
+          },
+          {
+            "offset": 680,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 25
+            }
+          },
+          {
+            "offset": 684,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 60
+            }
+          },
+          {
+            "offset": 688,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 86
+            }
+          },
+          {
+            "offset": 692,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 228
+            }
+          },
+          {
+            "offset": 696,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 237
+            }
+          },
+          {
+            "offset": 700,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 246
+            }
+          },
+          {
+            "offset": 704,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 255
+            }
+          },
+          {
+            "offset": 708,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 264
+            }
+          },
+          {
+            "offset": 712,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 273
+            }
+          },
+          {
+            "offset": 716,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 353
+            }
+          },
+          {
+            "offset": 720,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 367
+            }
+          },
+          {
+            "offset": 724,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 105
+            }
+          },
+          {
+            "offset": 728,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 125
+            }
+          },
+          {
+            "offset": 732,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 73
+            }
+          },
+          {
+            "offset": 736,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 134
+            }
+          },
+          {
+            "offset": 740,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 156
+            }
+          },
+          {
+            "offset": 744,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 165
+            }
+          },
+          {
+            "offset": 748,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 174
+            }
+          },
+          {
+            "offset": 752,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 183
+            }
+          },
+          {
+            "offset": 756,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 192
+            }
+          },
+          {
+            "offset": 760,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 201
+            }
+          },
+          {
+            "offset": 764,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 210
+            }
+          },
+          {
+            "offset": 768,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 219
+            }
+          },
+          {
+            "offset": 772,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 228
+            }
+          },
+          {
+            "offset": 776,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 237
+            }
+          },
+          {
+            "offset": 780,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 246
+            }
+          },
+          {
+            "offset": 784,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 255
+            }
+          },
+          {
+            "offset": 788,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 264
+            }
+          },
+          {
+            "offset": 792,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 273
+            }
+          },
+          {
+            "offset": 796,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 282
+            }
+          },
+          {
+            "offset": 800,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 291
+            }
+          },
+          {
+            "offset": 804,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 317
+            }
+          },
+          {
+            "offset": 808,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 326
+            }
+          },
+          {
+            "offset": 812,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 335
+            }
+          },
+          {
+            "offset": 816,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 344
+            }
+          },
+          {
+            "offset": 820,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 353
+            }
+          },
+          {
+            "offset": 824,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 367
+            }
+          },
+          {
+            "offset": 828,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 382
+            }
+          },
+          {
+            "offset": 832,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 400
+            }
+          },
+          {
+            "offset": 836,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 670
+            }
+          },
+          {
+            "offset": 840,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 418
+            }
+          },
+          {
+            "offset": 844,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 427
+            }
+          },
+          {
+            "offset": 848,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 300
+            }
+          },
+          {
+            "offset": 852,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 436
+            }
+          },
+          {
+            "offset": 856,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 445
+            }
+          },
+          {
+            "offset": 860,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 465
+            }
+          },
+          {
+            "offset": 864,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 485
+            }
+          },
+          {
+            "offset": 868,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 494
+            }
+          },
+          {
+            "offset": 872,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 538
+            }
+          },
+          {
+            "offset": 876,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 582
+            }
+          },
+          {
+            "offset": 880,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 626
+            }
+          }
+        ],
+        "fixed_local_branches": [
+          {
+            "offset": 12,
+            "destination": 670,
+            "mnemonic": "ja"
+          },
+          {
+            "offset": 45,
+            "destination": 676,
+            "mnemonic": "jge"
+          },
+          {
+            "offset": 521,
+            "destination": 531,
+            "mnemonic": "jnp"
+          },
+          {
+            "offset": 565,
+            "destination": 575,
+            "mnemonic": "jnp"
+          },
+          {
+            "offset": 609,
+            "destination": 619,
+            "mnemonic": "jnp"
+          },
+          {
+            "offset": 653,
+            "destination": 663,
+            "mnemonic": "jnp"
+          }
+        ],
+        "table_entry_offsets": [
+          25,
+          60,
+          86,
+          228,
+          237,
+          246,
+          255,
+          264,
+          273,
+          353,
+          367,
+          105,
+          125,
+          73,
+          134,
+          156,
+          165,
+          174,
+          183,
+          192,
+          201,
+          210,
+          219,
+          228,
+          237,
+          246,
+          255,
+          264,
+          273,
+          282,
+          291,
+          317,
+          326,
+          335,
+          344,
+          353,
+          367,
+          382,
+          400,
+          670,
+          418,
+          427,
+          300,
+          436,
+          445,
+          465,
+          485,
+          494,
+          538,
+          582,
+          626
+        ],
+        "calls": [
+          {
+            "offset": 30,
+            "destination": "0x0044B9E0"
+          },
+          {
+            "offset": 65,
+            "destination": "0x0044BB20"
+          },
+          {
+            "offset": 78,
+            "destination": "0x0044BB90"
+          },
+          {
+            "offset": 91,
+            "destination": "0x0044BB90"
+          },
+          {
+            "offset": 117,
+            "destination": "0x00426660"
+          },
+          {
+            "offset": 457,
+            "destination": "0x00426660"
+          },
+          {
+            "offset": 477,
+            "destination": "0x00426660"
+          }
+        ],
+        "returns": [
+          {
+            "offset": 57,
+            "operand": "4"
+          },
+          {
+            "offset": 70,
+            "operand": "4"
+          },
+          {
+            "offset": 83,
+            "operand": "4"
+          },
+          {
+            "offset": 102,
+            "operand": "4"
+          },
+          {
+            "offset": 122,
+            "operand": "4"
+          },
+          {
+            "offset": 131,
+            "operand": "4"
+          },
+          {
+            "offset": 153,
+            "operand": "4"
+          },
+          {
+            "offset": 162,
+            "operand": "4"
+          },
+          {
+            "offset": 171,
+            "operand": "4"
+          },
+          {
+            "offset": 180,
+            "operand": "4"
+          },
+          {
+            "offset": 189,
+            "operand": "4"
+          },
+          {
+            "offset": 198,
+            "operand": "4"
+          },
+          {
+            "offset": 207,
+            "operand": "4"
+          },
+          {
+            "offset": 216,
+            "operand": "4"
+          },
+          {
+            "offset": 225,
+            "operand": "4"
+          },
+          {
+            "offset": 234,
+            "operand": "4"
+          },
+          {
+            "offset": 243,
+            "operand": "4"
+          },
+          {
+            "offset": 252,
+            "operand": "4"
+          },
+          {
+            "offset": 261,
+            "operand": "4"
+          },
+          {
+            "offset": 270,
+            "operand": "4"
+          },
+          {
+            "offset": 279,
+            "operand": "4"
+          },
+          {
+            "offset": 288,
+            "operand": "4"
+          },
+          {
+            "offset": 297,
+            "operand": "4"
+          },
+          {
+            "offset": 314,
+            "operand": "4"
+          },
+          {
+            "offset": 323,
+            "operand": "4"
+          },
+          {
+            "offset": 332,
+            "operand": "4"
+          },
+          {
+            "offset": 341,
+            "operand": "4"
+          },
+          {
+            "offset": 350,
+            "operand": "4"
+          },
+          {
+            "offset": 364,
+            "operand": "4"
+          },
+          {
+            "offset": 379,
+            "operand": "4"
+          },
+          {
+            "offset": 397,
+            "operand": "4"
+          },
+          {
+            "offset": 415,
+            "operand": "4"
+          },
+          {
+            "offset": 424,
+            "operand": "4"
+          },
+          {
+            "offset": 433,
+            "operand": "4"
+          },
+          {
+            "offset": 442,
+            "operand": "4"
+          },
+          {
+            "offset": 462,
+            "operand": "4"
+          },
+          {
+            "offset": 482,
+            "operand": "4"
+          },
+          {
+            "offset": 491,
+            "operand": "4"
+          },
+          {
+            "offset": 535,
+            "operand": "4"
+          },
+          {
+            "offset": 579,
+            "operand": "4"
+          },
+          {
+            "offset": 623,
+            "operand": "4"
+          },
+          {
+            "offset": 667,
+            "operand": "4"
+          },
+          {
+            "offset": 676,
+            "operand": "4"
+          }
+        ]
+      },
+      "native_reproduction": {
+        "complete_owned_bytes": 876,
+        "code_and_alignment_bytes": 672,
+        "instruction_count": 150,
+        "normalized_sha256": "2ab2ef011a0f354561364993c69a680eedcb8cab6c712412021af7de60363650",
+        "field_identities": [
+          {
+            "offset": 21,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 672
+            }
+          },
+          {
+            "offset": 26,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyRandom@@3UEnemyRandomView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 31,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?GetU32@EnemyRandomView@@QAEIXZ"
+              ]
+            }
+          },
+          {
+            "offset": 53,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "__real@4f800000"
+              ]
+            }
+          },
+          {
+            "offset": 61,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyRandom@@3UEnemyRandomView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 66,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?GetUnitFloat@EnemyRandomView@@QAEMXZ"
+              ]
+            }
+          },
+          {
+            "offset": 74,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyRandom@@3UEnemyRandomView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 79,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?GetSignedUnitFloat@EnemyRandomView@@QAEMXZ"
+              ]
+            }
+          },
+          {
+            "offset": 87,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyRandom@@3UEnemyRandomView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 92,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?GetSignedUnitFloat@EnemyRandomView@@QAEMXZ"
+              ]
+            }
+          },
+          {
+            "offset": 98,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "__real@40490fdb"
+              ]
+            }
+          },
+          {
+            "offset": 113,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_Player@@3PAUPlayer@@A"
+              ]
+            }
+          },
+          {
+            "offset": 118,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?EnemyAngleFromPlayer@@YAMPAUPlayer@@PBUPlayerFloat3@@@Z"
+              ]
+            }
+          },
+          {
+            "offset": 346,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_Player@@3PAUPlayer@@A"
+              ]
+            }
+          },
+          {
+            "offset": 361,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_Player@@3PAUPlayer@@A"
+              ]
+            }
+          },
+          {
+            "offset": 375,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 393,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+              ]
+            }
+          },
+          {
+            "offset": 411,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyRank@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 420,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 429,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "__real@3f800000"
+              ]
+            }
+          },
+          {
+            "offset": 444,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_Player@@3PAUPlayer@@A"
+              ]
+            }
+          },
+          {
+            "offset": 449,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?EnemyAngleFromPlayer@@YAMPAUPlayer@@PBUPlayerFloat3@@@Z"
+              ]
+            }
+          },
+          {
+            "offset": 464,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_Player@@3PAUPlayer@@A"
+              ]
+            }
+          },
+          {
+            "offset": 469,
+            "width": 4,
+            "type": "REL32",
+            "destination": {
+              "symbols": [
+                "?EnemyAngleFromPlayer@@YAMPAUPlayer@@PBUPlayerFloat3@@@Z"
+              ]
+            }
+          },
+          {
+            "offset": 487,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 501,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "__real@00000000"
+              ]
+            }
+          },
+          {
+            "offset": 531,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 545,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "__real@3f800000"
+              ]
+            }
+          },
+          {
+            "offset": 575,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 589,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "__real@40000000"
+              ]
+            }
+          },
+          {
+            "offset": 619,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "?g_EnemyDifficulty@@3HA"
+              ]
+            }
+          },
+          {
+            "offset": 633,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "__real@40400000"
+              ]
+            }
+          },
+          {
+            "offset": 663,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "symbols": [
+                "__real@00000000"
+              ]
+            }
+          },
+          {
+            "offset": 672,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 25
+            }
+          },
+          {
+            "offset": 676,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 60
+            }
+          },
+          {
+            "offset": 680,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 86
+            }
+          },
+          {
+            "offset": 684,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 382
+            }
+          },
+          {
+            "offset": 688,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 228
+            }
+          },
+          {
+            "offset": 692,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 237
+            }
+          },
+          {
+            "offset": 696,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 246
+            }
+          },
+          {
+            "offset": 700,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 255
+            }
+          },
+          {
+            "offset": 704,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 264
+            }
+          },
+          {
+            "offset": 708,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 344
+            }
+          },
+          {
+            "offset": 712,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 359
+            }
+          },
+          {
+            "offset": 716,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 105
+            }
+          },
+          {
+            "offset": 720,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 125
+            }
+          },
+          {
+            "offset": 724,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 73
+            }
+          },
+          {
+            "offset": 728,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 134
+            }
+          },
+          {
+            "offset": 732,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 156
+            }
+          },
+          {
+            "offset": 736,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 165
+            }
+          },
+          {
+            "offset": 740,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 174
+            }
+          },
+          {
+            "offset": 744,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 183
+            }
+          },
+          {
+            "offset": 748,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 192
+            }
+          },
+          {
+            "offset": 752,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 201
+            }
+          },
+          {
+            "offset": 756,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 210
+            }
+          },
+          {
+            "offset": 760,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 219
+            }
+          },
+          {
+            "offset": 764,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 382
+            }
+          },
+          {
+            "offset": 768,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 228
+            }
+          },
+          {
+            "offset": 772,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 237
+            }
+          },
+          {
+            "offset": 776,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 246
+            }
+          },
+          {
+            "offset": 780,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 255
+            }
+          },
+          {
+            "offset": 784,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 264
+            }
+          },
+          {
+            "offset": 788,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 273
+            }
+          },
+          {
+            "offset": 792,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 282
+            }
+          },
+          {
+            "offset": 796,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 308
+            }
+          },
+          {
+            "offset": 800,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 317
+            }
+          },
+          {
+            "offset": 804,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 326
+            }
+          },
+          {
+            "offset": 808,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 335
+            }
+          },
+          {
+            "offset": 812,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 344
+            }
+          },
+          {
+            "offset": 816,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 359
+            }
+          },
+          {
+            "offset": 820,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 374
+            }
+          },
+          {
+            "offset": 824,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 391
+            }
+          },
+          {
+            "offset": 828,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 661
+            }
+          },
+          {
+            "offset": 832,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 409
+            }
+          },
+          {
+            "offset": 836,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 418
+            }
+          },
+          {
+            "offset": 840,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 291
+            }
+          },
+          {
+            "offset": 844,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 427
+            }
+          },
+          {
+            "offset": 848,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 436
+            }
+          },
+          {
+            "offset": 852,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 456
+            }
+          },
+          {
+            "offset": 856,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 476
+            }
+          },
+          {
+            "offset": 860,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 485
+            }
+          },
+          {
+            "offset": 864,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 529
+            }
+          },
+          {
+            "offset": 868,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 573
+            }
+          },
+          {
+            "offset": 872,
+            "width": 4,
+            "type": "DIR32",
+            "destination": {
+              "local_offset": 617
+            }
+          }
+        ],
+        "fixed_local_branches": [
+          {
+            "offset": 12,
+            "destination": 661,
+            "mnemonic": "ja"
+          },
+          {
+            "offset": 45,
+            "destination": 667,
+            "mnemonic": "jge"
+          },
+          {
+            "offset": 512,
+            "destination": 522,
+            "mnemonic": "jnp"
+          },
+          {
+            "offset": 556,
+            "destination": 566,
+            "mnemonic": "jnp"
+          },
+          {
+            "offset": 600,
+            "destination": 610,
+            "mnemonic": "jnp"
+          },
+          {
+            "offset": 644,
+            "destination": 654,
+            "mnemonic": "jnp"
+          }
+        ],
+        "table_entry_offsets": [
+          25,
+          60,
+          86,
+          382,
+          228,
+          237,
+          246,
+          255,
+          264,
+          344,
+          359,
+          105,
+          125,
+          73,
+          134,
+          156,
+          165,
+          174,
+          183,
+          192,
+          201,
+          210,
+          219,
+          382,
+          228,
+          237,
+          246,
+          255,
+          264,
+          273,
+          282,
+          308,
+          317,
+          326,
+          335,
+          344,
+          359,
+          374,
+          391,
+          661,
+          409,
+          418,
+          291,
+          427,
+          436,
+          456,
+          476,
+          485,
+          529,
+          573,
+          617
+        ],
+        "calls": null,
+        "returns": [
+          {
+            "offset": 57,
+            "operand": "4"
+          },
+          {
+            "offset": 70,
+            "operand": "4"
+          },
+          {
+            "offset": 83,
+            "operand": "4"
+          },
+          {
+            "offset": 102,
+            "operand": "4"
+          },
+          {
+            "offset": 122,
+            "operand": "4"
+          },
+          {
+            "offset": 131,
+            "operand": "4"
+          },
+          {
+            "offset": 153,
+            "operand": "4"
+          },
+          {
+            "offset": 162,
+            "operand": "4"
+          },
+          {
+            "offset": 171,
+            "operand": "4"
+          },
+          {
+            "offset": 180,
+            "operand": "4"
+          },
+          {
+            "offset": 189,
+            "operand": "4"
+          },
+          {
+            "offset": 198,
+            "operand": "4"
+          },
+          {
+            "offset": 207,
+            "operand": "4"
+          },
+          {
+            "offset": 216,
+            "operand": "4"
+          },
+          {
+            "offset": 225,
+            "operand": "4"
+          },
+          {
+            "offset": 234,
+            "operand": "4"
+          },
+          {
+            "offset": 243,
+            "operand": "4"
+          },
+          {
+            "offset": 252,
+            "operand": "4"
+          },
+          {
+            "offset": 261,
+            "operand": "4"
+          },
+          {
+            "offset": 270,
+            "operand": "4"
+          },
+          {
+            "offset": 279,
+            "operand": "4"
+          },
+          {
+            "offset": 288,
+            "operand": "4"
+          },
+          {
+            "offset": 305,
+            "operand": "4"
+          },
+          {
+            "offset": 314,
+            "operand": "4"
+          },
+          {
+            "offset": 323,
+            "operand": "4"
+          },
+          {
+            "offset": 332,
+            "operand": "4"
+          },
+          {
+            "offset": 341,
+            "operand": "4"
+          },
+          {
+            "offset": 356,
+            "operand": "4"
+          },
+          {
+            "offset": 371,
+            "operand": "4"
+          },
+          {
+            "offset": 388,
+            "operand": "4"
+          },
+          {
+            "offset": 406,
+            "operand": "4"
+          },
+          {
+            "offset": 415,
+            "operand": "4"
+          },
+          {
+            "offset": 424,
+            "operand": "4"
+          },
+          {
+            "offset": 433,
+            "operand": "4"
+          },
+          {
+            "offset": 453,
+            "operand": "4"
+          },
+          {
+            "offset": 473,
+            "operand": "4"
+          },
+          {
+            "offset": 482,
+            "operand": "4"
+          },
+          {
+            "offset": 526,
+            "operand": "4"
+          },
+          {
+            "offset": 570,
+            "operand": "4"
+          },
+          {
+            "offset": 614,
+            "operand": "4"
+          },
+          {
+            "offset": 658,
+            "operand": "4"
+          },
+          {
+            "offset": 667,
+            "operand": "4"
+          }
+        ]
+      }
+    },
+    "selected_strict_comparisons": {
+      "enemy-read-int-operand": {
+        "result": "exact",
+        "matched_bytes": 820,
+        "field_count": 95
+      },
+      "anm-vm-id-get-vm": {
+        "result": "exact",
+        "matched_bytes": 21,
+        "field_count": 2
+      },
+      "enemy-angle-from-player": {
+        "result": "exact",
+        "matched_bytes": 67,
+        "field_count": 3
+      }
+    }
+  },
+  "new_exact_bytes": 820,
+  "new_exact_owners": 1,
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp",
+      "src/GuiMessageLeaves.cpp",
+      "src/FileSystem.cpp",
+      "src/PbgArchive.cpp",
+      "src/ReplayManager.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FrontEnd.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ItemManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Main.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Sound.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Gui.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Hint.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/FileSystem.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/PbgArchive.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/ReplayManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+  },
+  "affected_canonical_selectors": [
+    {
+      "unit": "anm-vm-id-get-vm",
+      "result": "exact",
+      "matched_bytes": 21,
+      "field_count": 2
+    },
+    {
+      "unit": "enemy-angle-from-player",
+      "result": "exact",
+      "matched_bytes": 67,
+      "field_count": 3
+    }
+  ]
+}

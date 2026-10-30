@@ -290,7 +290,6 @@ void __stdcall AnmSetVmScriptIndexAndExecute(
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
 const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     EnemyFullObjectView *owner);
-EnemyManagedVmView *EnemyResolveManagedVmId(unsigned int *vmId);
 float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 EnemyEclInstructionView *EnemyLookupEclSubroutine(
     EnemyEclResourceView *scriptDatabase, const char *name);
@@ -432,34 +431,14 @@ int EnemyFullObjectView::ReadIntOperand(int operand)
         return (int)g_EnemyRandom.GetU32();
     case ENEMY_ECL_OPERAND_RANDOM_UNIT:
         return (int)g_EnemyRandom.GetUnitFloat();
-    case ENEMY_ECL_OPERAND_WORLD_X_A:
-    case ENEMY_ECL_OPERAND_WORLD_X_B:
-        return (int)runtime.worldMotion.position.x;
-    case ENEMY_ECL_OPERAND_POSITION_Y_A:
-    case ENEMY_ECL_OPERAND_POSITION_Y_B:
-        return (int)runtime.worldMotion.position.y;
-    case ENEMY_ECL_OPERAND_OFFSET_X_A:
-    case ENEMY_ECL_OPERAND_OFFSET_X_B:
-        return (int)runtime.offsetMotion.position.x;
-    case ENEMY_ECL_OPERAND_OFFSET_Y_A:
-    case ENEMY_ECL_OPERAND_OFFSET_Y_B:
-        return (int)runtime.offsetMotion.position.y;
-    case ENEMY_ECL_OPERAND_BASE_X_A:
-    case ENEMY_ECL_OPERAND_BASE_X_B:
-        return (int)runtime.baseMotion.position.x;
-    case ENEMY_ECL_OPERAND_BASE_Y_A:
-    case ENEMY_ECL_OPERAND_BASE_Y_B:
-        return (int)runtime.baseMotion.position.y;
+    case ENEMY_ECL_OPERAND_RANDOM_SIGNED:
+        return (int)g_EnemyRandom.GetSignedUnitFloat();
     case ENEMY_ECL_OPERAND_PLAYER_X_A:
-    case ENEMY_ECL_OPERAND_PLAYER_X_B:
         return (int)g_Player->drawPosition.x;
     case ENEMY_ECL_OPERAND_PLAYER_Y_A:
-    case ENEMY_ECL_OPERAND_PLAYER_Y_B:
         return (int)g_Player->drawPosition.y;
     case ENEMY_ECL_OPERAND_UPDATE_TIMER:
         return runtime.updateTimer.current;
-    case ENEMY_ECL_OPERAND_RANDOM_SIGNED:
-        return (int)g_EnemyRandom.GetSignedUnitFloat();
     case ENEMY_ECL_OPERAND_FLAG_10000:
         return (runtime.flags >> 16) & 1;
     case ENEMY_ECL_OPERAND_INT_0:
@@ -478,10 +457,30 @@ int EnemyFullObjectView::ReadIntOperand(int operand)
         return (int)runtime.eclVariables.floats[2];
     case ENEMY_ECL_OPERAND_FLOAT_3:
         return (int)runtime.eclVariables.floats[3];
+    case ENEMY_ECL_OPERAND_WORLD_X_A:
+    case ENEMY_ECL_OPERAND_WORLD_X_B:
+        return (int)runtime.worldMotion.position.x;
+    case ENEMY_ECL_OPERAND_POSITION_Y_A:
+    case ENEMY_ECL_OPERAND_POSITION_Y_B:
+        return (int)runtime.worldMotion.position.y;
+    case ENEMY_ECL_OPERAND_OFFSET_X_A:
+    case ENEMY_ECL_OPERAND_OFFSET_X_B:
+        return (int)runtime.offsetMotion.position.x;
+    case ENEMY_ECL_OPERAND_OFFSET_Y_A:
+    case ENEMY_ECL_OPERAND_OFFSET_Y_B:
+        return (int)runtime.offsetMotion.position.y;
+    case ENEMY_ECL_OPERAND_BASE_X_A:
+    case ENEMY_ECL_OPERAND_BASE_X_B:
+        return (int)runtime.baseMotion.position.x;
+    case ENEMY_ECL_OPERAND_BASE_Y_A:
+    case ENEMY_ECL_OPERAND_BASE_Y_B:
+        return (int)runtime.baseMotion.position.y;
     case ENEMY_ECL_OPERAND_OFFSET_VALUE1C:
         return (int)runtime.offsetMotion.value1C;
     case ENEMY_ECL_OPERAND_BASE_VALUE1C:
         return (int)runtime.baseMotion.value1C;
+    case ENEMY_ECL_OPERAND_WORLD_VELOCITY_ANGLE:
+        return (int)atan2(runtime.worldMotion.velocity.y, runtime.worldMotion.velocity.x);
     case ENEMY_ECL_OPERAND_OFFSET_VALUE18:
         return (int)runtime.offsetMotion.value18;
     case ENEMY_ECL_OPERAND_BASE_VALUE18:
@@ -490,20 +489,21 @@ int EnemyFullObjectView::ReadIntOperand(int operand)
         return (int)runtime.offsetMotion.value20;
     case ENEMY_ECL_OPERAND_BASE_VALUE20:
         return (int)runtime.baseMotion.value20;
+    case ENEMY_ECL_OPERAND_PLAYER_X_B:
+        return (int)g_Player->drawPosition.x;
+    case ENEMY_ECL_OPERAND_PLAYER_Y_B:
+        return (int)g_Player->drawPosition.y;
     case ENEMY_ECL_OPERAND_SPECIAL_ENEMY_X:
         return (int)g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position.x;
     case ENEMY_ECL_OPERAND_SPECIAL_ENEMY_Y:
         return (int)g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position.y;
     case ENEMY_ECL_OPERAND_PRIMARY_VM_VALUE38A:
-        return EnemyResolveManagedVmId(&runtime.managedVmIds[0])->value38A;
+        return reinterpret_cast<EnemyManagedVmView *>(
+            reinterpret_cast<AnmVmIdView *>(&runtime.managedVmIds[0])->GetVm())->value38A;
     case ENEMY_ECL_OPERAND_RANK:
         return g_EnemyRank;
     case ENEMY_ECL_OPERAND_DIFFICULTY:
         return g_EnemyDifficulty;
-    case ENEMY_ECL_OPERAND_WORLD_VELOCITY_ANGLE:
-        return (int)atan2(runtime.worldMotion.velocity.y, runtime.worldMotion.velocity.x);
-    case ENEMY_ECL_OPERAND_ONE:
-        return 1;
     case ENEMY_ECL_OPERAND_LIFE:
         return runtime.life;
     case ENEMY_ECL_OPERAND_DIFFICULTY_IS_0:
@@ -514,6 +514,8 @@ int EnemyFullObjectView::ReadIntOperand(int operand)
         return g_EnemyDifficulty == 2;
     case ENEMY_ECL_OPERAND_DIFFICULTY_IS_3:
         return g_EnemyDifficulty == 3;
+    case ENEMY_ECL_OPERAND_ONE:
+        return 1;
     default:
         return 0;
     }
@@ -539,38 +541,14 @@ float EnemyFullObjectView::ReadFloatOperand(int operand)
         return (float)g_EnemyRandom.GetU32();
     case ENEMY_ECL_OPERAND_RANDOM_UNIT:
         return g_EnemyRandom.GetUnitFloat();
+    case ENEMY_ECL_OPERAND_RANDOM_SIGNED:
+        return g_EnemyRandom.GetSignedUnitFloat();
     case ENEMY_ECL_OPERAND_RANDOM_ANGLE:
         return g_EnemyRandom.GetSignedUnitFloat() * 3.1415927f;
-    case ENEMY_ECL_OPERAND_WORLD_X_A:
-    case ENEMY_ECL_OPERAND_WORLD_X_B:
-        return runtime.worldMotion.position.x;
-    case ENEMY_ECL_OPERAND_POSITION_Y_A:
-    case ENEMY_ECL_OPERAND_POSITION_Y_B:
-        return runtime.worldMotion.position.y;
-    case ENEMY_ECL_OPERAND_OFFSET_X_A:
-    case ENEMY_ECL_OPERAND_OFFSET_X_B:
-        return runtime.offsetMotion.position.x;
-    case ENEMY_ECL_OPERAND_OFFSET_Y_A:
-    case ENEMY_ECL_OPERAND_OFFSET_Y_B:
-        return runtime.offsetMotion.position.y;
-    case ENEMY_ECL_OPERAND_BASE_X_A:
-    case ENEMY_ECL_OPERAND_BASE_X_B:
-        return runtime.baseMotion.position.x;
-    case ENEMY_ECL_OPERAND_BASE_Y_A:
-    case ENEMY_ECL_OPERAND_BASE_Y_B:
-        return runtime.baseMotion.position.y;
-    case ENEMY_ECL_OPERAND_PLAYER_X_A:
-    case ENEMY_ECL_OPERAND_PLAYER_X_B:
-        return g_Player->drawPosition.x;
-    case ENEMY_ECL_OPERAND_PLAYER_Y_A:
-    case ENEMY_ECL_OPERAND_PLAYER_Y_B:
-        return g_Player->drawPosition.y;
     case ENEMY_ECL_OPERAND_ANGLE_TO_PLAYER_WORLD:
         return EnemyAngleFromPlayer(g_Player, &runtime.worldMotion.position);
     case ENEMY_ECL_OPERAND_UPDATE_TIMER:
         return runtime.updateTimer.subframe;
-    case ENEMY_ECL_OPERAND_RANDOM_SIGNED:
-        return g_EnemyRandom.GetSignedUnitFloat();
     case ENEMY_ECL_OPERAND_FLAG_10000:
         return (float)((runtime.flags >> 16) & 1);
     case ENEMY_ECL_OPERAND_INT_0:
@@ -589,10 +567,30 @@ float EnemyFullObjectView::ReadFloatOperand(int operand)
         return runtime.eclVariables.floats[2];
     case ENEMY_ECL_OPERAND_FLOAT_3:
         return runtime.eclVariables.floats[3];
+    case ENEMY_ECL_OPERAND_WORLD_X_A:
+    case ENEMY_ECL_OPERAND_WORLD_X_B:
+        return runtime.worldMotion.position.x;
+    case ENEMY_ECL_OPERAND_POSITION_Y_A:
+    case ENEMY_ECL_OPERAND_POSITION_Y_B:
+        return runtime.worldMotion.position.y;
+    case ENEMY_ECL_OPERAND_OFFSET_X_A:
+    case ENEMY_ECL_OPERAND_OFFSET_X_B:
+        return runtime.offsetMotion.position.x;
+    case ENEMY_ECL_OPERAND_OFFSET_Y_A:
+    case ENEMY_ECL_OPERAND_OFFSET_Y_B:
+        return runtime.offsetMotion.position.y;
+    case ENEMY_ECL_OPERAND_BASE_X_A:
+    case ENEMY_ECL_OPERAND_BASE_X_B:
+        return runtime.baseMotion.position.x;
+    case ENEMY_ECL_OPERAND_BASE_Y_A:
+    case ENEMY_ECL_OPERAND_BASE_Y_B:
+        return runtime.baseMotion.position.y;
     case ENEMY_ECL_OPERAND_OFFSET_VALUE1C:
         return runtime.offsetMotion.value1C;
     case ENEMY_ECL_OPERAND_BASE_VALUE1C:
         return runtime.baseMotion.value1C;
+    case ENEMY_ECL_OPERAND_WORLD_VELOCITY_ANGLE:
+        return (float)atan2(runtime.worldMotion.velocity.y, runtime.worldMotion.velocity.x);
     case ENEMY_ECL_OPERAND_OFFSET_VALUE18:
         return runtime.offsetMotion.value18;
     case ENEMY_ECL_OPERAND_BASE_VALUE18:
@@ -601,6 +599,12 @@ float EnemyFullObjectView::ReadFloatOperand(int operand)
         return runtime.offsetMotion.value20;
     case ENEMY_ECL_OPERAND_BASE_VALUE20:
         return runtime.baseMotion.value20;
+    case ENEMY_ECL_OPERAND_PLAYER_X_A:
+    case ENEMY_ECL_OPERAND_PLAYER_X_B:
+        return g_Player->drawPosition.x;
+    case ENEMY_ECL_OPERAND_PLAYER_Y_A:
+    case ENEMY_ECL_OPERAND_PLAYER_Y_B:
+        return g_Player->drawPosition.y;
     case ENEMY_ECL_OPERAND_SPECIAL_ENEMY_X:
         return g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position.x;
     case ENEMY_ECL_OPERAND_SPECIAL_ENEMY_Y:
@@ -609,8 +613,6 @@ float EnemyFullObjectView::ReadFloatOperand(int operand)
         return (float)g_EnemyRank;
     case ENEMY_ECL_OPERAND_DIFFICULTY:
         return (float)g_EnemyDifficulty;
-    case ENEMY_ECL_OPERAND_WORLD_VELOCITY_ANGLE:
-        return (float)atan2(runtime.worldMotion.velocity.y, runtime.worldMotion.velocity.x);
     case ENEMY_ECL_OPERAND_ONE:
         return 1.0f;
     case ENEMY_ECL_OPERAND_ANGLE_TO_PLAYER_OFFSET:
@@ -620,13 +622,13 @@ float EnemyFullObjectView::ReadFloatOperand(int operand)
     case ENEMY_ECL_OPERAND_LIFE:
         return (float)runtime.life;
     case ENEMY_ECL_OPERAND_DIFFICULTY_IS_0:
-        return (float)g_EnemyDifficulty == 0.0f ? 1.0f : 0.0f;
+        return (float)((float)g_EnemyDifficulty == 0.0f);
     case ENEMY_ECL_OPERAND_DIFFICULTY_IS_1:
-        return (float)g_EnemyDifficulty == 1.0f ? 1.0f : 0.0f;
+        return (float)((float)g_EnemyDifficulty == 1.0f);
     case ENEMY_ECL_OPERAND_DIFFICULTY_IS_2:
-        return (float)g_EnemyDifficulty == 2.0f ? 1.0f : 0.0f;
+        return (float)((float)g_EnemyDifficulty == 2.0f);
     case ENEMY_ECL_OPERAND_DIFFICULTY_IS_3:
-        return (float)g_EnemyDifficulty == 3.0f ? 1.0f : 0.0f;
+        return (float)((float)g_EnemyDifficulty == 3.0f);
     default:
         return 0.0f;
     }

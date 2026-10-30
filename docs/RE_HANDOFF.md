@@ -2,6 +2,38 @@
 
 ## Current checkpoint
 
+Complete Enemy integer operand reader411FC0..4122F3 now closes820/all95:
+616 code/142ins/41RET4 plus204 bytes containing all51 selector words412228.
+All43 external fields and52 local destinations (table base plus51 entries)
+strictly pass in two independent canonical21-input zero-reuse colds. One direct
+local branch and every exit remain fixed. Target/source boundaries and all
+numeric selector semantics are reviewed without changing the denominator.
+See the [complete operand proof](evidence/enemy-operands-exact-20261030/README.md).
+
+Natural case grouping retains separate integer player A/B source cases. The
+VM case now uses actual AnmVmIdView::GetVm on stored ID storage, removing the
+unresolved cdecl shim without a temporary ID or header/ABI change. Same-image
+GetVm21 and EnemyAngleFromPlayer67 pass88/all5; explicit affected canonical
+callee selectors also pass. No forced registers/inline/profile/root changes.
+
+Adjacent float reader412350..4126C3 remains NONEXACT876/884. Four difficulty
+comparisons now convert integer booleans to float; whole source/code/table are
+retained. Both flag spellings are byte-neutral and restored. Separate early/
+late player cases recover884 bytes/target registers but retain shared player
+bodies too early; label-family swapping is neutral. These controls are restored
+and parked. Do not count equal extents or shared instructions as partial credit.
+
+Current new context is
+`.analysis/gpt-6.1-sol/enemy-operands-context-20261030/canonical-b-context.json`.
+All70 transitive source/header pins agree with both accepted colds. Older graphs
+containing Enemy.cpp now have a historical input pin; relink their actual graphs
+before incremental reuse. Authored exact103090/275835 across503 owners;
+codegen171194/1380; source1207/authored689/backlog186. Original class/TU/data,
+product/runtime and portability remain open. No full cohort or host failure/
+lifecycle/mutation campaign is needed for this complete exact owner.
+
+## Previous replay-save context checkpoint
+
 Complete replay-save433570..433B23 remains NONEXACT1444/1460. A fresh
 21-input graph adds the actual ReplayManager definitions under their existing
 /GL /GS /EHs profile and unchanged InitializeVm root. This restores target

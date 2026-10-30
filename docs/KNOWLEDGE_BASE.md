@@ -8138,3 +8138,36 @@ sound in target but retained by native code; the exact123-byte sound callee has
 no established missing effect. A boolean input-helper spelling control is
 restored/parked. Target semantics remain evidence-driven; no volatile/barrier/
 fake ABI is justified. See the [complete context proof](evidence/replay-save-context-20261030/README.md).
+
+
+## 2026-10-30 Complete Enemy integer operand reader
+
+411FC0..4122F3 is a complete820-byte owner:616 executable bytes/142 instructions,
+41RET4 exits,28 calls, one direct local branch and a204-byte51-selector table at
+412228. Unsigned(selector+10000)<=50 gates that table. All entries are internal
+instruction starts, including the shared world-Y load inside another case tail.
+The table has one encoded base reference;12CC precede independent412300. All95
+fields are independently enumerated:43 external and52 fixed local destinations.
+
+Separate integer player A/B cases and recovered case grouping reproduce the
+complete target. Its VM selector passes actual ID storage to existing GetVm449450
+using ESI and reads signed short+38A. Source now uses the real AnmVmIdView method,
+removing the old unresolved cdecl shim without altering header/ABI. Two canonical
+21-input zero-reuse colds reproduce all820/all95/table51, with70 source/header
+pins fixed. Same-image GetVm21 and EnemyAngleFromPlayer67 strictly pass88/all5;
+existing affected canonical selectors also pass. Original selector/class/TU/data
+ownership remains independent of maintained names and exact byte reproduction.
+
+The adjacent884-byte float owner retains679 executable bytes+one NOP+204-byte
+selector table4125F8. Source difficulty tests now convert integer booleans to
+float. In the same graph it remains NONEXACT876/884/all84 native identities,
+six direct locals and all51 native table entries. Signed/boolean flag spellings
+are byte-neutral. Early/late player-family cases restore884 bytes and target
+registers/world-X tail but place merged player code too early; swapping label
+families does not move it. Those controls are restored/parked, with no partial
+credit. See the [complete operand proof](evidence/enemy-operands-exact-20261030/README.md).
+
+This adds820 authored bytes/one owner:103090/275835 across503; codegen171194/1380.
+Source mappings stay1207/authored689; backlog186. No product/runtime/portability
+closure follows, and previous graph receipts containing Enemy.cpp have a
+historical pin until their actual graph is relinked.
