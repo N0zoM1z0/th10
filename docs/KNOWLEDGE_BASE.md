@@ -7979,3 +7979,38 @@ same-image callback context adds7/all1 without credit. The previous Player
 in the handoff. No canonical GUI unit/match, new boundary/source/origin credit,
 header/profile change or product/runtime/port claim follows. See the
 [complete evidence and parked models](evidence/gui-update-context-20261030/README.md).
+
+
+## 2026-10-30 Complete message interpreter physical groups and real leaves
+
+Fresh current-source comparison of Run415E90..41700F is4492/4480 at entry;
+historical4136 reports describe another source/context epoch. Target4306 code
+bytes/1146 instructions precede2 alignment and172 selector bytes in24/7/7/5
+tables. Its physical opcode order is14,15,16,17,3,1,2,22,23,4,5,6,7,8,9,12,13,
+10,11,18,19,20,21,0. Complete maintained cases now follow those physical groups.
+Six existing ID objects replace integer-to-ID temporaries; a decoded-time cursor
+restores the first text group's ID/color register schedule. Target has separate
+player-character creation arms and one shared replay mode4 action. Direct audio
+constant branches remove a real float temporary and recover D8 frame/slot10.
+
+Final4496/4480 remains NONEXACT. Native149 calls match target per-callee counts
+except SetCurrent2 versus3. Target's two wait zero-reset sites remain physically
+merged in the maintained output. Prefix registers, manager lifetimes, later
+branches/stores and physical field/table positions are open; neither equal121
+branch counts nor correct24-case ordering gives a zero-difference claim.
+
+The full old leaf TU cannot join the real GUI graph because four existing
+Enemy definitions collide. Actual decoder417010/41 and stage-state4175E0/32
+therefore move unchanged to GuiMessageLeaves.cpp. Existing bodies, annotations,
+barrier, fixed accesses/types/pragma are retained, with no original TU inference.
+Two current canonical two-input colds preserve both complete exact owners; the
+real18-input GUI image also passes them. Source mappings move without new credit.
+
+A zero-reuse18-input cold reproduces complete4496/all333 native link fields,
+121 local branches, both RET4 exits and four tables/all43 words. Same-image
+leaf73 plus damage1170/auxiliary202 comparisons pass1445/all34. Explicit
+canonical Player replay passes1372/all34; the complete GUI update receipt still
+reproduces3836/all72 and its four ordinary differences. Current18-input Run and
+separate17-input Player contexts are recorded in the handoff. See the
+[complete native evidence](evidence/gui-message-run-context-20261030/README.md).
+No new exact/source/origin/boundary credit or product/runtime/port closure follows.

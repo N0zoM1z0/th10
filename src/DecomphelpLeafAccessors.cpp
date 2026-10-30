@@ -4856,16 +4856,7 @@ __declspec(noinline) void Fn00412DB0(u8 *p0)
     return;
 }
 
-// 0x004175e0: ghidra (inventoried as FUN_004175E0)
-__declspec(noinline) void Fn004175E0(u8 *p0)
-{
-    u32 p0_ = (u32)(uintptr_t)p0;
-    if ((i32)(*(u32 *)(uintptr_t)(u32)(p0_ + 0x3c)) < 7) {
-        (*(u32 *)(uintptr_t)(u32)(p0_ + 0x3c)) = (*(u32 *)(uintptr_t)(u32)(p0_ + 0x3c)) + 1;
-    }
-    (*(u32 *)LEAF_GLOB(0x477848u)) = (*(u32 *)(uintptr_t)(u32)(p0_ + 0x3c)) * 0x30 + 0x474788;
-    return;
-}
+// Complete stage-state leaf 0x004175E0 is maintained in GuiMessageLeaves.cpp.
 
 // 0x00417800: ghidra (inventoried as FUN_00417800)
 __declspec(noinline) u32 Fn00417800(u8 *p0)
@@ -6726,23 +6717,7 @@ __declspec(noinline) u32 Fn004506D0(u8 *p0)
 // resources/th10.exe and matched on every randomized trial.
 // ---------------------------------------------------------------------------
 
-// 0x00417010: ghidra (inventoried as FUN_00417010)
-__declspec(noinline) u8 * Fn00417010(u8 *p0)
-{
-    u8 key = 0x77;
-    u8 increment = 7;
-    u8 *output = LEAF_GLOB(0x497d40u);
-    u8 decoded;
-    do {
-        decoded = static_cast<u8>(key ^ *p0);
-        *output++ = decoded;
-        _ReadWriteBarrier();
-        key = static_cast<u8>(key + increment);
-        ++p0;
-        increment = static_cast<u8>(increment + 0x10);
-    } while (decoded != 0);
-    return LEAF_GLOB(0x497d40u);
-}
+// Complete text decoder 0x00417010 is maintained in GuiMessageLeaves.cpp.
 
 // 0x00435fd0: ghidra (inventoried as FUN_00435FD0)
 __declspec(noinline) void Fn00435FD0(void)

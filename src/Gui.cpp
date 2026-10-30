@@ -157,25 +157,123 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
         message->instructionTimer.SetCurrent(GuiMessageInstructionTime(message->currentInstruction));
     }
 
-    while (GuiMessageInstructionTime(message->currentInstruction) <=
-           message->instructionTimer.current)
+    int instructionTime = GuiMessageInstructionTime(message->currentInstruction);
+    while (message->instructionTimer.current >= instructionTime)
     {
         GuiMessageInstructionView *instruction = message->currentInstruction;
+        // Retain the target's physical dispatch groups, starting with text output.
         switch (GuiMessageInstructionOpcode(instruction))
         {
-        case GUI_MSG_END:
-            if (g_GuiMessageState != 0)
-                g_GuiMessageStateAux = 0;
-            g_GuiMessageState = 0;
-            return -1;
-
-        case GUI_MSG_SHOW_PLAYER_PORTRAIT:
-            if (g_GuiCharacter == 0 || g_GuiCharacter == 1)
+        case GUI_MSG_TEXT_LINE_0:
+        {
+            AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            AnmVmView *line = manager->FindVm(*id);
+            if (line == NULL)
+                id->value = 0;
+            unsigned char *text = th10::leaf::Fn00417010(
+                GuiMessageInstructionPayload(message->currentInstruction));
+            manager->DrawTextLeft(line, message->textColors[message->activeSide],
+                reinterpret_cast<const char *>(text));
+            PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&id->value));
+            break;
+        }
+        case GUI_MSG_TEXT_LINE_1:
+        {
+            AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            AnmVmView *line = manager->FindVm(*id);
+            if (line == NULL)
+                id->value = 0;
+            unsigned char *text = th10::leaf::Fn00417010(
+                GuiMessageInstructionPayload(message->currentInstruction));
+            manager->DrawTextLeft(line, message->textColors[message->activeSide],
+                reinterpret_cast<const char *>(text));
+            PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&id->value));
+            break;
+        }
+        case GUI_MSG_TEXT_LINE_ALTERNATING:
+            if (message->alternatingLine == 0)
             {
                 {
-                    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_Player->resource);
-                    message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = loaded->CreateVmVariant0(0x1d, GUI_VM_RENDER_LAYER).value;
+                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    AnmVmView *line = manager->FindVm(*id);
+                    if (line == NULL)
+                        id->value = 0;
+                    manager->DrawTextLeft(line, message->textColors[message->activeSide], " ");
                 }
+                {
+                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    AnmVmView *line = manager->FindVm(*id);
+                    if (line == NULL)
+                        id->value = 0;
+                    manager->DrawTextLeft(line, message->textColors[message->activeSide], " ");
+                }
+                {
+                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    AnmVmView *line = manager->FindVm(*id);
+                    if (line == NULL)
+                        id->value = 0;
+                    unsigned char *text = th10::leaf::Fn00417010(
+                        GuiMessageInstructionPayload(message->currentInstruction));
+                    manager = g_AnmRenderManagerView;
+                    manager->DrawTextLeft(line, message->textColors[message->activeSide],
+                        reinterpret_cast<const char *>(text));
+                }
+                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value));
+                ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1]);
+                ++message->alternatingLine;
+            }
+            else
+            {
+                {
+                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    AnmVmView *line = manager->FindVm(*id);
+                    if (line == NULL)
+                        id->value = 0;
+                    unsigned char *text = th10::leaf::Fn00417010(
+                        GuiMessageInstructionPayload(message->currentInstruction));
+                    manager->DrawTextLeft(line, message->textColors[message->activeSide],
+                        reinterpret_cast<const char *>(text));
+                }
+                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value));
+                message->alternatingLine = 0;
+            }
+            break;
+
+        case GUI_MSG_HIDE_TEXT_LINES:
+            ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0]);
+            ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1]);
+            break;
+
+        case GUI_MSG_SHOW_TEXT_BOX:
+            {
+                {
+                    AnmLoadedView *loaded = g_GuiView->frontAnm;
+                    message->vmIds[GUI_MESSAGE_TEXT_BOX].value = loaded->CreateVmVariant0(0x5a, GUI_VM_RENDER_LAYER).value;
+                }
+            }
+            break;
+
+        case GUI_MSG_SHOW_PLAYER_PORTRAIT:
+            switch (g_GuiCharacter)
+            {
+            case 0:
+            {
+                AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_Player->resource);
+                message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = loaded->CreateVmVariant0(0x1d, GUI_VM_RENDER_LAYER).value;
+                break;
+            }
+            case 1:
+            {
+                AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_Player->resource);
+                message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = loaded->CreateVmVariant0(0x1d, GUI_VM_RENDER_LAYER).value;
+                break;
+            }
             }
             break;
 
@@ -236,15 +334,13 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             }
             break;
 
-        case GUI_MSG_SHOW_TEXT_BOX:
-            {
-                {
-                    AnmLoadedView *loaded = g_GuiView->frontAnm;
-                    message->vmIds[GUI_MESSAGE_TEXT_BOX].value = loaded->CreateVmVariant0(0x5a, GUI_VM_RENDER_LAYER).value;
-                }
-            }
+        case GUI_MSG_PLAYER_PORTRAIT_EXIT:
+            message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].SetInterrupt(7);
             break;
 
+        case GUI_MSG_ENEMY_PORTRAIT_EXIT:
+            message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].SetInterrupt(7);
+            break;
         case GUI_MSG_HIDE_PLAYER_PORTRAIT:
             EnemyMarkPendingInterrupt(&message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value);
             message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = 0;
@@ -297,34 +393,6 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
         case GUI_MSG_SET_SKIPPABLE:
             message->flags ^= (static_cast<unsigned int>(
                 GuiMessageInstructionPayload(instruction)[0]) ^ message->flags) & 1;
-            break;
-
-        case GUI_MSG_WAIT:
-            if (message->waitTimer.current < 1)
-                message->waitTimer.SetCurrent(GuiMessageInstructionIntArgument(instruction));
-            message->waitTimer.Add(-1.0f);
-            if ((g_GuiInputEdges & GUI_INPUT_CANCEL_MASK) == 0 &&
-                message->waitTimer.current > 0)
-            {
-                if ((message->flags & 1) == 0 ||
-                    (g_GuiInputCurrent & GUI_INPUT_ADVANCE) == 0)
-                {
-                    return 0;
-                }
-
-                message->waitTimer.SetCurrent(0);
-                message->alternatingLine = 0;
-            }
-            else
-            {
-                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(0, 0);
-                message->waitTimer.SetCurrent(0);
-                message->alternatingLine = 0;
-            }
-            break;
-
-        case GUI_MSG_INPUT_COOLDOWN:
-            message->inputCooldown = 1;
             break;
 
         case GUI_MSG_PLAYER_PORTRAIT_SPRITES:
@@ -621,90 +689,32 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
         }
 
-        case GUI_MSG_TEXT_LINE_0:
-        {
-            AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
-            AnmRenderManagerView *manager = g_AnmRenderManagerView;
-            AnmVmView *line = manager->FindVm(id->value);
-            if (line == NULL)
-                id->value = 0;
-            unsigned char *text = th10::leaf::Fn00417010(
-                GuiMessageInstructionPayload(message->currentInstruction));
-            manager->DrawTextLeft(line, message->textColors[message->activeSide],
-                reinterpret_cast<const char *>(text));
-            PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&id->value));
-            break;
-        }
-        case GUI_MSG_TEXT_LINE_1:
-        {
-            AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
-            AnmRenderManagerView *manager = g_AnmRenderManagerView;
-            AnmVmView *line = manager->FindVm(id->value);
-            if (line == NULL)
-                id->value = 0;
-            unsigned char *text = th10::leaf::Fn00417010(
-                GuiMessageInstructionPayload(message->currentInstruction));
-            manager->DrawTextLeft(line, message->textColors[message->activeSide],
-                reinterpret_cast<const char *>(text));
-            PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&id->value));
-            break;
-        }
-        case GUI_MSG_TEXT_LINE_ALTERNATING:
-            if (message->alternatingLine == 0)
+        case GUI_MSG_WAIT:
+            if (message->waitTimer.current < 1)
+                message->waitTimer.SetCurrent(GuiMessageInstructionIntArgument(instruction));
+            message->waitTimer.Add(-1.0f);
+            if ((g_GuiInputEdges & GUI_INPUT_CANCEL_MASK) == 0 &&
+                message->waitTimer.current > 0)
             {
+                if ((message->flags & 1) == 0 ||
+                    (g_GuiInputCurrent & GUI_INPUT_ADVANCE) == 0)
                 {
-                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
-                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
-                    AnmVmView *line = manager->FindVm(id->value);
-                    if (line == NULL)
-                        id->value = 0;
-                    manager->DrawTextLeft(line, message->textColors[message->activeSide], " ");
+                    return 0;
                 }
-                {
-                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
-                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
-                    AnmVmView *line = manager->FindVm(id->value);
-                    if (line == NULL)
-                        id->value = 0;
-                    manager->DrawTextLeft(line, message->textColors[message->activeSide], " ");
-                }
-                {
-                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
-                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
-                    AnmVmView *line = manager->FindVm(id->value);
-                    if (line == NULL)
-                        id->value = 0;
-                    unsigned char *text = th10::leaf::Fn00417010(
-                        GuiMessageInstructionPayload(message->currentInstruction));
-                    manager = g_AnmRenderManagerView;
-                    manager->DrawTextLeft(line, message->textColors[message->activeSide],
-                        reinterpret_cast<const char *>(text));
-                }
-                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value));
-                ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1]);
-                ++message->alternatingLine;
+
+                message->waitTimer.SetCurrent(0);
+                message->alternatingLine = 0;
             }
             else
             {
-                {
-                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
-                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
-                    AnmVmView *line = manager->FindVm(id->value);
-                    if (line == NULL)
-                        id->value = 0;
-                    unsigned char *text = th10::leaf::Fn00417010(
-                        GuiMessageInstructionPayload(message->currentInstruction));
-                    manager->DrawTextLeft(line, message->textColors[message->activeSide],
-                        reinterpret_cast<const char *>(text));
-                }
-                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value));
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(0, 0);
+                message->waitTimer.SetCurrent(0);
                 message->alternatingLine = 0;
             }
             break;
 
-        case GUI_MSG_HIDE_TEXT_LINES:
-            ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0]);
-            ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1]);
+        case GUI_MSG_INPUT_COOLDOWN:
+            message->inputCooldown = 1;
             break;
 
         case GUI_MSG_EVENT_18:
@@ -811,8 +821,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 if (g_ReplayManager->mode == 1)
                 {
-                    g_MainSupervisorView.SetNextGameMode(4);
-                    break;
+                    goto CompleteReplayStage;
                 }
                 StageCreateTransitionEffect(0x31, 5, 120, 0, 0, 0);
                 GuiView *gui = g_GuiView;
@@ -839,8 +848,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
                 if (g_ReplayManager->mode == 1)
                 {
-                    g_MainSupervisorView.SetNextGameMode(4);
-                    break;
+                    goto CompleteReplayStage;
                 }
                 GameCompleteStageTransition(
                     reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
@@ -870,22 +878,29 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 th10::leaf::Fn004175E0(g_GameStageState);
             }
             break;
+
+        CompleteReplayStage:
+            g_MainSupervisorView.SetNextGameMode(4);
+            break;
         }
 
         case GUI_MSG_EVENT_21:
-            GameQueueScaledSoundCommand(g_GuiStage == 6 ? 8.0f : 2.0f);
+            if (g_GuiStage != 6)
+                GameQueueScaledSoundCommand(2.0f);
+            else
+                GameQueueScaledSoundCommand(8.0f);
             break;
 
-        case GUI_MSG_PLAYER_PORTRAIT_EXIT:
-            message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].SetInterrupt(7);
-            break;
+        case GUI_MSG_END:
+            if (g_GuiMessageState != 0)
+                g_GuiMessageStateAux = 0;
+            g_GuiMessageState = 0;
+            return -1;
 
-        case GUI_MSG_ENEMY_PORTRAIT_EXIT:
-            message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].SetInterrupt(7);
-            break;
         }
 
         message->currentInstruction = GuiMessageInstructionNext(message->currentInstruction);
+        instructionTime = GuiMessageInstructionTime(message->currentInstruction);
     }
 
     message->instructionTimer.Tick();

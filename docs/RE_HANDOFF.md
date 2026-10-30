@@ -2,6 +2,42 @@
 
 ## Current checkpoint
 
+Complete GuiMessageVmView::Run415E90..41700F remains NONEXACT, now4496/4480
+in a genuine18-input context. Fresh target review records4306 code/1146
+instructions,2 alignment bytes, four24/7/7/5 tables,121 local branches and150
+direct calls. All24 physical opcode groups now follow the target ordering.
+Existing ID arguments, decoded-time cursor, distinct player-character arms,
+shared replay completion and direct audio arguments recover real dataflow/calls
+and D8 frame. Native149 calls agree with every target callee count except
+SetCurrent2 versus3. Branch counts do not establish destination equality;
+registers, merging and field/table positions remain open. See the
+[complete interpreter evidence](evidence/gui-message-run-context-20261030/README.md).
+
+The two actual leaf dependencies417010/41 and4175E0/32 move unchanged to
+GuiMessageLeaves.cpp; full old leaf inclusion exposed four duplicate Enemy
+symbols. Both canonical recipes retain their primary/entry/profile, add the
+real support, qualify PDB ownership and use a distinct output directory. Two
+current independent two-input colds pass73/zero fields each time. No new
+exact/source/origin/boundary credit is inferred from this source migration.
+
+A zero-reuse18-input cold reproduces native4496/all333 fields,121 branches,
+both RET4 exits and all43 table entries. Same-image strict leaf41/32 and
+Player damage1170/auxiliary202 checks pass1445/all34. The existing complete GUI
+updater receipt also reproduces3836/all72 and its same four ordinary differences.
+A separate explicit canonical Player cold passes1372/all34. Source is frozen;
+no full cohort or host failure/lifecycle/mutation campaign is required.
+Current interpreter context is
+`.analysis/gpt-6.1-sol/gui-message-run-context-20261030/candidate-cold-context.json`.
+Current separate17-input Player context is
+`.analysis/gpt-6.1-sol/gui-message-run-context-20261030/player-cold-context.json`.
+Older Gui.cpp pins below are historical. The two contexts are not interchangeable.
+
+An early-break wait control fails to restore the third reset and is parked.
+No fake ABI, new retention annotation, padding, volatile access or profile sweep.
+Original type/helper/TU/data ownership, product/runtime and portability remain
+open. Authored exact stays101532/275817 across495 owners; codegen169636/1372;
+source1207/authored689/backlog194. No canonical Run unit/match is added.
+
 Complete GUI update414900..4157FB remains NONEXACT, now3836/3836 versus3824
 at current-context entry. Flag-first overlap branches, direct stage allocation
 branches, branch-local phase, existing VM-ID operators, divisor lifetime and
