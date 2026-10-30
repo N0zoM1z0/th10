@@ -14,9 +14,12 @@ Dated checkpoint sections record their original source/build epochs; old sizes
 and open statuses can be superseded by later complete proofs. They are records,
 not current prerequisites.
 
-The ignored `build/` and `.analysis/` directories are disposable. Removed
-historical scratch paths are not expected to exist; recheck a claim against the
-target and maintained source before using it as an implementation constraint.
+Generated builds and superseded scratch are disposable after preserving useful
+evidence. Private archives, inventories and unresolved witnesses under ignored
+`.analysis/` are retained according to [RE_ARTIFACTS.md](RE_ARTIFACTS.md); do not
+delete that directory wholesale. Historical scratch paths may require selective
+restoration. Recheck their source/header pins before using a recorded claim as
+a constraint on the maintained implementation.
 
 ## Target
 
@@ -42,7 +45,7 @@ target and maintained source before using it as an implementation constraint.
 | ID | State | Durable fact or constraint | Evidence |
 | --- | --- | --- | --- |
 | INVENTORY-001 | observed / inferred | Ghidra supplied the initial navigation inventory, which has since been augmented by target review. Candidate entry, physical boundary, origin, source presence and exactness are independent claims recorded in separate ledgers; no Ghidra name or dense span alone establishes any of them. | `config/functions.csv`; `config/function-boundaries.csv`; `config/function-origins.csv`; `config/reccmp-functions.csv`; `config/matches.csv` |
-| INVENTORY-005 | observed / corrected | Eight reviewed owners were recorded one or two bytes short because their ledger spans ended on the `C2` opcode of `RET imm16` and omitted its two-byte immediate. Their corrected complete extents are `0x00425070-0x0042508A`, `0x004296D0-0x004296EA`, `0x00443680-0x004436B3`, `0x00444DC0-0x00444E50`, `0x00444E60-0x00444F9A`, `0x00444FA0-0x004450DA`, `0x00447C80-0x00447EBF`, and `0x00448360-0x00448442`. The boundary audit now classifies a one- or two-byte trailing `C2/CA` suffix as a truncated `RET imm16` and refuses to retain a reviewed state for that malformed span. Corrected tracking covers 340,424 target `.text` bytes; boundary-state counts remain 1,173 reviewed, 88 provisional and 51 needs-review. | Canonical target tail bytes; pinned Capstone dense decode; `scripts/report-boundary-inventory.py --check-ledger`; corrected function/boundary ledgers |
+| INVENTORY-005 | observed / corrected | Eight reviewed owners were recorded one or two bytes short because their ledger spans ended on the `C2` opcode of `RET imm16` and omitted its two-byte immediate. Their corrected complete extents are `0x00425070-0x0042508A`, `0x004296D0-0x004296EA`, `0x00443680-0x004436B3`, `0x00444DC0-0x00444E50`, `0x00444E60-0x00444F9A`, `0x00444FA0-0x004450DA`, `0x00447C80-0x00447EBF`, and `0x00448360-0x00448442`. The boundary audit classifies a one- or two-byte trailing `C2/CA` suffix as a truncated `RET imm16` and refuses to retain a reviewed state for that malformed span. At that historical correction checkpoint, tracking covered 340,424 target `.text` bytes with 1,173 reviewed, 88 provisional and 51 needs-review entries. Those inventory totals are superseded; use PROGRESS.md for current counts. | Canonical target tail bytes; pinned Capstone dense decode; `scripts/report-boundary-inventory.py --check-ledger`; corrected function/boundary ledgers |
 
 ## Boundaries
 

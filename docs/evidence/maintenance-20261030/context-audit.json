@@ -1,0 +1,123 @@
+{
+  "scope": "one-level *context.json files with a nonempty pins mapping in .analysis/gpt-6.1-sol; source/header equality only, not native acceptance",
+  "contexts": 584,
+  "matching_source_pins": 14,
+  "stale_source_pins": 570,
+  "rows_note": "All pin-compatible contexts plus selected stale contexts; full audit is retained privately at .analysis/maintenance-20261030/context-audit-full.json.gz.",
+  "rows": [
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-executor-context-20261030/final-context.json",
+      "pin_count": 13,
+      "changed_pins": [
+        "src/AnmManager.hpp"
+      ]
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-executor-inline-context-20261030/entry-current-context.json",
+      "pin_count": 13,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-script-data-20261030/actual-caller-context.json",
+      "pin_count": 17,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-script-data-20261030/entry-context.json",
+      "pin_count": 2,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ending-run-context-20261030/final-source-context.json",
+      "pin_count": 70,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-operands-context-20261030/canonical-a-context.json",
+      "pin_count": 70,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-operands-context-20261030/canonical-b-context.json",
+      "pin_count": 70,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-operands-context-20261030/case-flow-context.json",
+      "pin_count": 70,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold-context.json",
+      "pin_count": 15,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/final-context.json",
+      "pin_count": 15,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/laser-draw-context-20261030/final-context.json",
+      "pin_count": 19,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/laser-draw-context-20261030/position-field-helper-context.json",
+      "pin_count": 19,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/music-room-helpers-context-20261030/cold-b-context.json",
+      "pin_count": 67,
+      "changed_pins": [
+        "src/Enemy.cpp"
+      ]
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/player-main-callees-20261030/final-context.json",
+      "pin_count": 52,
+      "changed_pins": [
+        "src/Enemy.cpp",
+        "src/FrontEnd.cpp",
+        "src/Player.cpp",
+        "src/Player.hpp",
+        "src/Sound.cpp"
+      ]
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/player-update-context-20261030/final-context.json",
+      "pin_count": 51,
+      "changed_pins": [
+        "src/AnmManager.hpp",
+        "src/Enemy.cpp",
+        "src/FrontEnd.cpp",
+        "src/Player.cpp",
+        "src/Player.hpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/rectangle-vector-context-20261030/cold-a-context.json",
+      "pin_count": 31,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/rectangle-vector-context-20261030/cold-b-context.json",
+      "pin_count": 31,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/rectangle-vector-context-20261030/final-context.json",
+      "pin_count": 31,
+      "changed_pins": []
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/replay-save-context-20261030/cold-b-context.json",
+      "pin_count": 70,
+      "changed_pins": [
+        "src/Enemy.cpp"
+      ]
+    }
+  ]
+}

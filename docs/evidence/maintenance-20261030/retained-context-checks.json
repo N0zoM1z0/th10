@@ -1,0 +1,26 @@
+{
+  "scope": "Storage integrity of three primary retained contexts; no native comparison or acceptance claim",
+  "rows": [
+    {
+      "context": ".analysis/gpt-6.1-sol/ending-run-context-20261030/final-source-context.json",
+      "source_pins_match": true,
+      "image_hash_matches": true,
+      "all_recorded_object_hashes_present": true,
+      "map_pdb_present": true
+    },
+    {
+      "context": ".analysis/gpt-6.1-sol/enemy-operands-context-20261030/canonical-b-context.json",
+      "source_pins_match": true,
+      "image_hash_matches": true,
+      "all_recorded_object_hashes_present": true,
+      "map_pdb_present": true
+    },
+    {
+      "context": ".analysis/gpt-6.1-sol/ecl-script-data-20261030/actual-caller-context.json",
+      "source_pins_match": true,
+      "image_hash_matches": true,
+      "all_recorded_object_hashes_present": true,
+      "map_pdb_present": true
+    }
+  ]
+}

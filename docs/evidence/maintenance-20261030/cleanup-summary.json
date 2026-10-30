@@ -1,0 +1,47 @@
+{
+  "archive": ".analysis/archive/terminal-experiments-20261030.tar.xz",
+  "archive_sha256": "d1fb67af025897e2facf375b8f6e1a62646bd0fcea303a95586a791befd2179c",
+  "archive_bytes": 32495572,
+  "archived_files": 13305,
+  "original_payload_bytes": 396014930,
+  "inventory": ".analysis/maintenance-20261030/archive-inventory.json.gz",
+  "inventory_sha256": "4bdef05dd08aaae7573fbcf92f76739722a340f949a83cbf97a35a30f7d64474",
+  "all_archive_member_hashes_verified": true,
+  "source_hashes_rechecked_before_removal": true,
+  "single_member_restore_check": ".analysis/gpt-6.1-sol/anm-executor-context-20261030/entry-context.json",
+  "retained_campaigns": [
+    "anm-executor-inline-context-20261030",
+    "ecl-script-data-20261030",
+    "ending-run-context-20261030",
+    "enemy-operands-context-20261030",
+    "gui-draw-context-20261030",
+    "laser-draw-context-20261030",
+    "rectangle-vector-context-20261030"
+  ],
+  "retained_ending_build": "build/gpt-6.1-sol/ending-run-context-20261030/final-source",
+  "originals_removed": true,
+  "payload_bytes_saved": 363085386,
+  "removed_regenerable_files": [
+    {
+      "path": "build/pycache",
+      "files": 246,
+      "bytes": 4546881,
+      "reason": "regenerable Python bytecode"
+    },
+    {
+      "path": ".analysis/maintenance-20261030/historical-members.txt",
+      "files": 1,
+      "bytes": 1997065,
+      "reason": "temporary outer-archive member listing; archive and inventories retained"
+    }
+  ],
+  "total_payload_bytes_saved": 369629332,
+  "size_scope": "Uncompressed file payload savings minus new archive and inventory; excludes filesystem allocation and small maintenance metadata.",
+  "validation": {
+    "default_ci": "passed: 7 stages",
+    "game_source_or_ledger_changes": false,
+    "game_rebuild": false,
+    "new_archive_terminal_exit": 0,
+    "old_outer_archive_sha256_verified": "b7cf15be7f5f243e6b5bc0aeb9a0fa69924da3364dac8e27e5390aff27426e67"
+  }
+}

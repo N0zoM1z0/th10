@@ -1,0 +1,76 @@
+{
+  "acceptance_authority": "none; complete AddScriptData remains nonexact; no new match or source change",
+  "graph": {
+    "source": "src/EclVm.cpp",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "entry_symbol": "?Run@EclVmContext@@QAEHM@Z",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "support_sources": [
+      "src/Enemy.cpp"
+    ]
+  },
+  "pins": {
+    "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "65c7125f66818ed3bcc5ef18773bd615d98c9b8a54bd25a338d160ec05f88048",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "prior_one_source_candidate_size": 528,
+  "add": {
+    "result": "mismatch",
+    "candidate_size": 547,
+    "target_address": "0x00450220",
+    "target_size": 589,
+    "decoded_candidate_bytes": 547,
+    "normalization_complete": true
+  },
+  "find": {
+    "result": "structural-exact",
+    "candidate_size": 136,
+    "target_address": "0x00450470",
+    "target_size": 136,
+    "decoded_candidate_bytes": 136
+  },
+  "native_image_sha256": "5656c46d9df4f372e57242a7a87ca7138b0be186ac6b08f1817ffda7437632e8",
+  "object_sha256": {
+    "src/EclVm.cpp": "ea0fd16d603b8fa7ccc31e1f6915d986019b13be4c71e4a14d76b7c4d53a70b1",
+    "src/Enemy.cpp": "0289f3b8ada89a7ac55186d1eda0c96977e1cc77278c267578cfc601afd83082"
+  },
+  "retained_context": ".analysis/gpt-6.1-sol/ecl-script-data-20261030/actual-caller-context.json"
+}
