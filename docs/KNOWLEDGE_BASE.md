@@ -7625,3 +7625,44 @@ pair consumers initializer1404 and movement1588→1576 do change and remain none
 Twelve explicit existing canonical cold units pass2471/all94. No full-cohort replay,
 origin/boundary expansion, parent exactness or product/runtime/portability claim.
 See the [complete source/evidence checkpoint](evidence/player-main-shapes-20261030/README.md).
+
+
+## 2026-10-30 Complete Player damage/collision owner exact
+
+Player::CalculateDamageToTarget owns1170 bytes at428630..428AC1,355 instructions,
+with14 following CC bytes. Both exits are RET12. The sole direct caller40E13C
+pushes target size, target position and Player, then clears ECX. The observed
+private member interface is ECX optional-hit pointer, those three stack values,
+and EAX integer result. A natural member definition reproduces it under the
+pinned seventeen-input /GL recipe; no forced register declaration is necessary.
+
+The complete canonical comparison binds20 absolute references/eight relative
+calls and preserves all41 owner-local branch destinations. A separate target
+operand scan inventories every field. Two independent cold rebuilds reproduce
+all1170 PDB-owned bytes, including the MOV EDI,EDI loop alignment. The function's
+full timer,128-shot/callback/VM, auxiliary-damage,32-effect/geometry/hit-cap and
+capped-score paths participate; no partial-owner exemption is used.
+
+The vector home at ESP20/24 is shared by shot maximum and later rotated XY;
+shot minimum and target minimum/maximum have separate homes. One ordinary scratch
+value recovers that lifetime. A sine-product assignment followed by cosine-product
+addition recovers rotated Y's x87 schedule without an extra store. Rereading the
+shot descriptor type for the hit transition recovers the direct memory damage
+ADD, with the interval predicate's read-only actual definition visible. A cached
+kind, integer conditional and switch retain the expanded ADD; a bool temporary
+also emits SETNE/TEST. These are codegen constraints, not recovered original names
+or an original source spelling.
+
+Actual call bindings are interrupt40C480, interval427C70, lookup449450 (twice),
+release449630, creation448D00, allocation427B50 and auxiliary damage4059F0.
+The latter remains189/202 nonexact, but its ECX owner/EAX position/plain RET
+interface agrees. Complete owner exactness does not grant that callee or its
+larger EnemyRuntimeUpdate caller exact credit. Source/library origin and reviewed
+boundaries are unchanged; product/runtime/portability remain separate.
+
+First explicit canonical selection passes five units/1500 bytes/all35 fields;
+second independently passes1170/all28. Thirty strict bodies pass4825/all155 in
+the first cold image, and ten prior native candidates preserve full bytes/field
+identities. Shot-update and motion experiments are restored; their876/876 and
+160/171 candidates remain nonexact. The [complete proof and reproducible unit](evidence/player-damage-exact-20261030/README.md)
+retain the target review, source/object pins, controls and scoped cold reports.

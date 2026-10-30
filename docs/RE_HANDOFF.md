@@ -2,7 +2,34 @@
 
 ## Current checkpoint
 
-Latest main follow-up keeps the complete3112-byte scope and emits3096/all110,
+Complete Player::CalculateDamageToTarget428630..428AC1 is newly exact1170:
+355 instructions, all28 bound address fields and all41 fixed local destinations.
+Two independent canonical seventeen-input /GL colds reproduce the complete
+PDB contribution. Ordinary shared upper-bound/rotated-XY scratch, two-step rotated
+Y and a descriptor-kind reread close the remaining frame/FPU/memory-ADD differences.
+Both exits retain RET12 and the real ECX optional-hit pointer/three-stack-value
+interface. The auxiliary callee remains189/202 nonexact with its actual ECX/EAX
+interface. See the [complete damage proof](evidence/player-damage-exact-20261030/README.md).
+
+First scoped cold passes the new1170 plus bounds55/all4, allocator181/all1,
+interrupt65/all2 and interval29 raw:1500 bytes/all35 fields. Second independently
+passes1170/all28. Thirty same-image strict bodies pass4825/all155; ten prior native
+candidates, including main3096, state2 786, shots876 and EnemyRuntimeUpdate2412,
+preserve complete bytes/field identities. No full cohort. Authored exact totals
+are now99,794/275,752 bytes and490 owners, with unchanged ownership/mapping counts.
+
+Restored controls: lower-bound reuse does not restore the target frame; bool
+eligibility restores ADD but adds SETNE/TEST; integer/switch forms are neutral.
+Bounds-output order, bound arrays, cosine width, returned rotation, separate
+shot branches and reference-add controls do not close the owner. Do not repeat
+these without a distinguishing prediction. Shot reference/switch/shared-record
+controls retain the moved LEA; they are restored. Motion stays160/171: a shared
+vector operation changes Cartesian operands but does not recover polar Z store
+or split floor cleanup; all motion edits are restored. Only damage source changes
+are retained. The next substantial owner can return to main's two absent FMUL-one
+fields, state2 or another complete candidate; damage is no longer an open lead.
+
+The preceding main follow-up keeps the complete3112-byte scope and emits3096/all110,
 cold-reproduced with all17 inputs rebuilt. Ordinary pair value assignment restores
 both history loops/alignment, a paired first history slot restores store/load
 order, and the existing SetCurrent member restores state0 store order. The real

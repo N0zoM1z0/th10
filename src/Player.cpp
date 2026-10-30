@@ -1689,6 +1689,7 @@ int Player::CalculateDamageToTarget(
         return 0;
 
     PlayerShotRuntimeView *shot = &shots[0];
+    PlayerFloat3 scratch;
     PlayerFloat3 targetMin;
     PlayerFloat3 targetMax;
     targetPosition->GetPlanarBounds(&targetMin, &targetMax, &targetSize->x);
@@ -1709,12 +1710,11 @@ int Player::CalculateDamageToTarget(
 
         const PlayerShotDescriptorView *descriptor = shot->descriptor;
         PlayerFloat3 shotMin;
-        PlayerFloat3 shotMax;
         shot->motion.position.GetPlanarBounds(
-            &shotMin, &shotMax, &descriptor->hitboxExtentX);
+            &shotMin, &scratch, &descriptor->hitboxExtentX);
 
         if (shotMin.y > targetMax.y || shotMin.x > targetMax.x ||
-            shotMax.y < targetMin.y || shotMax.x < targetMin.x)
+            scratch.y < targetMin.y || scratch.x < targetMin.x)
         {
             continue;
         }
@@ -1745,7 +1745,7 @@ int Player::CalculateDamageToTarget(
             damage += descriptor->damage;
         }
 
-        if (collisionType != PLAYER_SHOT_TYPE_3)
+        if (descriptor->type != PLAYER_SHOT_TYPE_3)
         {
             AnmVmIdView *const vmId =
                 reinterpret_cast<AnmVmIdView *>(&shot->primaryVmId);
@@ -1813,20 +1813,20 @@ int Player::CalculateDamageToTarget(
                 const float dy = targetPosition->y - row->position.y;
                 const float sine = (float)sin(-(double)row->angle);
                 const float cosine = (float)cos(-(double)row->angle);
-                PlayerFloat3 rotated;
-                rotated.x = cosine * dx - sine * dy;
-                rotated.y = sine * dx + cosine * dy;
+                scratch.x = cosine * dx - sine * dy;
+                scratch.y = sine * dx;
+                scratch.y += cosine * dy;
                 // Rotated collision reads the current target size after the
                 // shot callbacks; the axis-aligned bounds are cached earlier.
                 const float rotatedTargetHalfX = targetSize->x * 0.5f;
-                if (row->extentX * -0.5f > rotatedTargetHalfX + rotated.x ||
-                    row->extentX * 0.5f < rotated.x - rotatedTargetHalfX)
+                if (row->extentX * -0.5f > rotatedTargetHalfX + scratch.x ||
+                    row->extentX * 0.5f < scratch.x - rotatedTargetHalfX)
                 {
                     continue;
                 }
                 const float rotatedTargetHalfY = targetSize->y * 0.5f;
-                if (row->extentY * -0.5f > rotatedTargetHalfY + rotated.y ||
-                    row->extentY * 0.5f < rotated.y - rotatedTargetHalfY)
+                if (row->extentY * -0.5f > rotatedTargetHalfY + scratch.y ||
+                    row->extentY * 0.5f < scratch.y - rotatedTargetHalfY)
                 {
                     continue;
                 }
