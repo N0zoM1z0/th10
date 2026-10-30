@@ -1,0 +1,917 @@
+{
+  "schema": "th10-complete-exact-owner-v1",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "claim": {
+    "name": "Player::CheckLaserContact",
+    "new_authored_exact_bytes": 471,
+    "new_exact_owners": 1,
+    "boundary_change": false,
+    "origin_change": false,
+    "source_mapping_change": false,
+    "original_helper_type_TU_ancestry": "unproved",
+    "product_runtime_portability": "not claimed"
+  },
+  "target_owner_review": {
+    "address": "0x4267f0",
+    "size": 471,
+    "end": "0x4269c6",
+    "instructions": 132,
+    "decoded_bytes": 471,
+    "branches": [
+      {
+        "offset": 243,
+        "destination": 463,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 268,
+        "destination": 379,
+        "mnemonic": "jnp"
+      },
+      {
+        "offset": 285,
+        "destination": 379,
+        "mnemonic": "jnp"
+      },
+      {
+        "offset": 306,
+        "destination": 379,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 315,
+        "destination": 331,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 325,
+        "destination": 463,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 340,
+        "destination": 463,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 345,
+        "destination": 463,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 350,
+        "destination": 463,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 360,
+        "destination": 463,
+        "mnemonic": "jg"
+      },
+      {
+        "offset": 391,
+        "destination": 463,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 408,
+        "destination": 463,
+        "mnemonic": "jnp"
+      },
+      {
+        "offset": 429,
+        "destination": 463,
+        "mnemonic": "jnp"
+      },
+      {
+        "offset": 450,
+        "destination": 463,
+        "mnemonic": "je"
+      }
+    ],
+    "returns": [
+      {
+        "offset": 376,
+        "operand": "0xc"
+      },
+      {
+        "offset": 460,
+        "operand": "0xc"
+      },
+      {
+        "offset": 468,
+        "operand": "0xc"
+      }
+    ],
+    "preceding_cc": 4,
+    "following_cc": 9,
+    "direct_references": [
+      {
+        "address": "0x41d6be",
+        "opcode": "0xe8",
+        "destination": "0x4267f0"
+      },
+      {
+        "address": "0x41e935",
+        "opcode": "0xe8",
+        "destination": "0x4267f0"
+      }
+    ],
+    "field_review": [
+      {
+        "offset": 255,
+        "type": "DIR32",
+        "width": 4,
+        "target": 4655884
+      },
+      {
+        "offset": 276,
+        "type": "DIR32",
+        "width": 4,
+        "target": 4655876
+      },
+      {
+        "offset": 293,
+        "type": "DIR32",
+        "width": 4,
+        "target": 4655992
+      },
+      {
+        "offset": 309,
+        "type": "DIR32",
+        "width": 4,
+        "target": 4683532
+      },
+      {
+        "offset": 364,
+        "type": "REL32",
+        "width": 4,
+        "target": 4353264
+      },
+      {
+        "offset": 399,
+        "type": "DIR32",
+        "width": 4,
+        "target": 4655876
+      },
+      {
+        "offset": 416,
+        "type": "DIR32",
+        "width": 4,
+        "target": 4656296
+      },
+      {
+        "offset": 437,
+        "type": "DIR32",
+        "width": 4,
+        "target": 4656292
+      }
+    ],
+    "constant_payloads": [
+      {
+        "address": "0x00470B0C",
+        "value": 0.5,
+        "ieee754_u32": "0x3F000000"
+      },
+      {
+        "address": "0x00470B04",
+        "value": 0.0,
+        "ieee754_u32": "0x00000000"
+      },
+      {
+        "address": "0x00470B78",
+        "value": -0.5,
+        "ieee754_u32": "0xBF000000"
+      },
+      {
+        "address": "0x00470CA8",
+        "value": 1.5,
+        "ieee754_u32": "0x3FC00000"
+      },
+      {
+        "address": "0x00470CA4",
+        "value": -1.5,
+        "ieee754_u32": "0xBFC00000"
+      }
+    ],
+    "caller_prefix_review": {
+      "0x41d6be": {
+        "owner_address": "0x41d3d0",
+        "reviewed_owner_size": 1001,
+        "decoded_prefix_size": 755,
+        "window": [
+          {
+            "offset": 714,
+            "mnemonic": "mov",
+            "operands": "edx, dword ptr [ebp + 0x3c]"
+          },
+          {
+            "offset": 717,
+            "mnemonic": "fstp",
+            "operands": "dword ptr [esp + 8]"
+          },
+          {
+            "offset": 721,
+            "mnemonic": "fld",
+            "operands": "dword ptr [ebp + 0x40]"
+          },
+          {
+            "offset": 724,
+            "mnemonic": "push",
+            "operands": "ecx"
+          },
+          {
+            "offset": 725,
+            "mnemonic": "fmul",
+            "operands": "dword ptr [0x470cc0]"
+          },
+          {
+            "offset": 731,
+            "mnemonic": "mov",
+            "operands": "ecx, dword ptr [esp + 0xc]"
+          },
+          {
+            "offset": 735,
+            "mnemonic": "lea",
+            "operands": "eax, [esp + 0x10]"
+          },
+          {
+            "offset": 739,
+            "mnemonic": "fstp",
+            "operands": "dword ptr [esp]"
+          },
+          {
+            "offset": 742,
+            "mnemonic": "push",
+            "operands": "ecx"
+          },
+          {
+            "offset": 743,
+            "mnemonic": "mov",
+            "operands": "ecx, dword ptr [0x477834]"
+          },
+          {
+            "offset": 749,
+            "mnemonic": "push",
+            "operands": "edx"
+          },
+          {
+            "offset": 750,
+            "mnemonic": "call",
+            "operands": "0x4267f0"
+          }
+        ]
+      },
+      "0x41e935": {
+        "owner_address": "0x41e700",
+        "reviewed_owner_size": 832,
+        "decoded_prefix_size": 570,
+        "window": [
+          {
+            "offset": 529,
+            "mnemonic": "mov",
+            "operands": "eax, dword ptr [ebp + 0x3c]"
+          },
+          {
+            "offset": 532,
+            "mnemonic": "fstp",
+            "operands": "dword ptr [esp + 8]"
+          },
+          {
+            "offset": 536,
+            "mnemonic": "fld",
+            "operands": "dword ptr [ebp + 0x40]"
+          },
+          {
+            "offset": 539,
+            "mnemonic": "mov",
+            "operands": "edx, dword ptr [esp + 8]"
+          },
+          {
+            "offset": 543,
+            "mnemonic": "fmul",
+            "operands": "dword ptr [0x470cc0]"
+          },
+          {
+            "offset": 549,
+            "mnemonic": "push",
+            "operands": "ecx"
+          },
+          {
+            "offset": 550,
+            "mnemonic": "mov",
+            "operands": "ecx, dword ptr [0x477834]"
+          },
+          {
+            "offset": 556,
+            "mnemonic": "fstp",
+            "operands": "dword ptr [esp]"
+          },
+          {
+            "offset": 559,
+            "mnemonic": "push",
+            "operands": "edx"
+          },
+          {
+            "offset": 560,
+            "mnemonic": "push",
+            "operands": "eax"
+          },
+          {
+            "offset": 561,
+            "mnemonic": "lea",
+            "operands": "eax, [esp + 0x18]"
+          },
+          {
+            "offset": 565,
+            "mnemonic": "call",
+            "operands": "0x4267f0"
+          }
+        ]
+      }
+    },
+    "actual_interface": "ECX Player / EAX origin / stack angle,width,length / EAX result / RET12"
+  },
+  "canonical_recipe": {
+    "artifact_kind": "linked-pe",
+    "source": "src/LaserLine.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/EnemyLaser.cpp",
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "output_dir": "build/match-linked/LaserLineUpdate",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?Update@EnemyLaserLineView@@UAEHXZ",
+    "functions": [
+      "Player::CheckLaserContact"
+    ],
+    "symbol": "?CheckLaserContact@Player@@QAEHPBUPlayerFloat3@@MMM@Z",
+    "target_address": 4351984,
+    "size": 471,
+    "linkages": [
+      {
+        "offset": 255,
+        "type": "DIR32",
+        "symbol": "__real@3f000000",
+        "target": 4655884
+      },
+      {
+        "offset": 276,
+        "type": "DIR32",
+        "symbol": "__real@00000000",
+        "target": 4655876
+      },
+      {
+        "offset": 293,
+        "type": "DIR32",
+        "symbol": "__real@bf000000",
+        "target": 4655992
+      },
+      {
+        "offset": 309,
+        "type": "DIR32",
+        "symbol": "?g_GuiView@@3PAUGuiView@@A",
+        "target": 4683532
+      },
+      {
+        "offset": 364,
+        "type": "REL32",
+        "symbol": "?PlayerHandleCollisionHit@@YGXPAUPlayer@@@Z",
+        "target": 4353264
+      },
+      {
+        "offset": 399,
+        "type": "DIR32",
+        "symbol": "__real@00000000",
+        "target": 4655876
+      },
+      {
+        "offset": 416,
+        "type": "DIR32",
+        "symbol": "__real@3fc00000",
+        "target": 4656296
+      },
+      {
+        "offset": 437,
+        "type": "DIR32",
+        "symbol": "__real@bfc00000",
+        "target": 4656292
+      }
+    ]
+  },
+  "final_source_pins": {
+    "src/LaserLine.cpp": "3f0977fc24ebb00689fde3421ed76ebddbb60b241ff60d3b79760714165dad4e",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+    "src/EnemyLaser.cpp": "d26d9c146ec7ae8401408e40293fe43233ac1d3f03b1bda254062fdeed9c1439",
+    "src/EnemyEclDispatcher.cpp": "d632e60fefce7f3d830c4bad5faeb38f9f0ac2ea88a07d800485b37f9034f946",
+    "config/match-units.toml": "7bd2208ebea682483e3dde45cfef848bce6d0a59c60e311c0a4353a94344c3ab",
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f"
+  },
+  "independent_colds": [
+    {
+      "cold": "cold-a",
+      "exit_status": 0,
+      "result": "exact",
+      "matched_bytes": 1472,
+      "unit_count": 2,
+      "complete_field_count": 39,
+      "source_freeze_sha256": "4c1173efd25a935140d27300518d63f79f7292edfbbd6df98681440afb549d93",
+      "manifest_sha256": "7bd2208ebea682483e3dde45cfef848bce6d0a59c60e311c0a4353a94344c3ab",
+      "groups": [
+        {
+          "build_unit": "laser-line-update",
+          "source": "src/LaserLine.cpp",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "fresh_inputs": [
+            "src/LaserLine.cpp",
+            "src/AnmManager.cpp",
+            "src/EnemyLaser.cpp",
+            "src/EnemyEclDispatcher.cpp"
+          ],
+          "reused_objects": 0,
+          "object_hashes": {
+            "src/LaserLine.cpp": "066242a6c50d0cd7e374f649220269032e547361d5cb2d1943e650274c4d60a2",
+            "src/AnmManager.cpp": "7c2a9b6e36f4aacaffa47c5f327e8951a340eacdaf471f8b50b43beb1632c603",
+            "src/EnemyLaser.cpp": "82e6116604d5c914ea8452caa8f85fbe17d001c25fc5fbe34cc5eb5b94afd4a9",
+            "src/EnemyEclDispatcher.cpp": "6588de6bb7115476135b7014fab0346785120aebd1aabaa9d46748c1de7b9282"
+          },
+          "units": [
+            {
+              "unit": "laser-line-update",
+              "result": "exact",
+              "size": 1001,
+              "matched_bytes": 1001,
+              "decoded_bytes": 1001,
+              "normalization_complete": true,
+              "extent_source": "pdb-section-contribution",
+              "image_sha256": "eac0104567acd420d24184e03e02301a5762dad289bb42410b656fc5595f85a0",
+              "pdb_guid": "eed4548bcd735642b35fc3c503d04452",
+              "pdb_age": 1,
+              "field_count": 31
+            },
+            {
+              "unit": "player-check-laser-contact",
+              "result": "exact",
+              "size": 471,
+              "matched_bytes": 471,
+              "decoded_bytes": 471,
+              "normalization_complete": true,
+              "extent_source": "pdb-section-contribution",
+              "image_sha256": "eac0104567acd420d24184e03e02301a5762dad289bb42410b656fc5595f85a0",
+              "pdb_guid": "eed4548bcd735642b35fc3c503d04452",
+              "pdb_age": 1,
+              "field_count": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cold": "cold-b",
+      "exit_status": 0,
+      "result": "exact",
+      "matched_bytes": 1303,
+      "unit_count": 2,
+      "complete_field_count": 42,
+      "source_freeze_sha256": "4c1173efd25a935140d27300518d63f79f7292edfbbd6df98681440afb549d93",
+      "manifest_sha256": "7bd2208ebea682483e3dde45cfef848bce6d0a59c60e311c0a4353a94344c3ab",
+      "groups": [
+        {
+          "build_unit": "laser-type1-update",
+          "source": "src/LaserType1.cpp",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "fresh_inputs": [
+            "src/LaserType1.cpp",
+            "src/AnmManager.cpp",
+            "src/EnemyLaser.cpp",
+            "src/LaserLine.cpp",
+            "src/EnemyEclDispatcher.cpp"
+          ],
+          "reused_objects": 0,
+          "object_hashes": {
+            "src/LaserType1.cpp": "28581f9fc253b7040f211f299091608f84731f718b4b1f26bb76fbee38e2561c",
+            "src/AnmManager.cpp": "c38549de7db4cf4fb7a7f492b5a4999fe94b09c355b35b67839bdcea4620c450",
+            "src/EnemyLaser.cpp": "a512ba45d6e4e8c340075a913087741b88168e22f70a2d8c975691bb7e7db0ab",
+            "src/LaserLine.cpp": "bb87603e5324ee904975456602e08b1eae03558a2b085a0013dce054a78be4d3",
+            "src/EnemyEclDispatcher.cpp": "2e104587580df61734ca78a1517685a4b38e3f4eef3bb3d79dde602205f005d5"
+          },
+          "units": [
+            {
+              "unit": "laser-type1-update",
+              "result": "exact",
+              "size": 832,
+              "matched_bytes": 832,
+              "decoded_bytes": 827,
+              "normalization_complete": true,
+              "extent_source": "pdb-section-contribution",
+              "image_sha256": "af6fda55064e951e56184c0b8193fa452a3162c8cc7ec262ec01ea32d7554c4a",
+              "pdb_guid": "402b2305bfb4ff498f939295e8c28b24",
+              "pdb_age": 1,
+              "field_count": 34
+            }
+          ]
+        },
+        {
+          "build_unit": "player-check-laser-contact",
+          "source": "src/LaserLine.cpp",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "build_returncode": 0,
+          "fresh_inputs": [
+            "src/LaserLine.cpp",
+            "src/AnmManager.cpp",
+            "src/EnemyLaser.cpp",
+            "src/EnemyEclDispatcher.cpp"
+          ],
+          "reused_objects": 0,
+          "object_hashes": {
+            "src/LaserLine.cpp": "d9cab36bda7c359de15a31cd2a5a20e34fab92b9b5527cc7356ddbeaa1e8d4d5",
+            "src/AnmManager.cpp": "6fb12a1844edebabed1cc962b830ade2b4ce6d2e94278a6ff99d41dce55a532a",
+            "src/EnemyLaser.cpp": "bde2302d74bd42c728607a26929eaab456069d8a955775faa0bd0e16ab4a6ac7",
+            "src/EnemyEclDispatcher.cpp": "9e77c86ae8192e1204a5bbb5e79e211333f476ea1c9ccbfcd6f87ec525baa335"
+          },
+          "units": [
+            {
+              "unit": "player-check-laser-contact",
+              "result": "exact",
+              "size": 471,
+              "matched_bytes": 471,
+              "decoded_bytes": 471,
+              "normalization_complete": true,
+              "extent_source": "pdb-section-contribution",
+              "image_sha256": "5fc781edadcc0b62223a967f654d6d50ab17866d11071d448f095d0c88f3c774",
+              "pdb_guid": "f859c6604e0f6b4c8279ec239658ff1a",
+              "pdb_age": 1,
+              "field_count": 8
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "native_complete_reviews": [
+    {
+      "cold": "cold-a",
+      "owner": {
+        "symbol": "?CheckLaserContact@Player@@QAEHPBUPlayerFloat3@@MMM@Z",
+        "address": "0x00401180",
+        "size": 471,
+        "map_object": "source.ltcg.obj",
+        "extent_source": "pdb-section-contribution"
+      },
+      "decoded_instructions": 132,
+      "fixed_local_branches_equal_target": true,
+      "all_RET12_offsets_equal_target": true,
+      "complete_field_count": 8,
+      "base_relocation_fields": 7,
+      "helper_materializations": 0,
+      "complete_bound_result": "exact",
+      "matched_bytes": 471,
+      "artifact_directory": "build/gpt-6.1-sol/player-laser-contact-context-20261030/cold-a"
+    },
+    {
+      "cold": "cold-b",
+      "owner": {
+        "symbol": "?CheckLaserContact@Player@@QAEHPBUPlayerFloat3@@MMM@Z",
+        "address": "0x00401180",
+        "size": 471,
+        "map_object": "source.ltcg.obj",
+        "extent_source": "pdb-section-contribution"
+      },
+      "decoded_instructions": 132,
+      "fixed_local_branches_equal_target": true,
+      "all_RET12_offsets_equal_target": true,
+      "complete_field_count": 8,
+      "base_relocation_fields": 7,
+      "helper_materializations": 0,
+      "complete_bound_result": "exact",
+      "matched_bytes": 471,
+      "artifact_directory": "build/gpt-6.1-sol/player-laser-contact-context-20261030/cold-b-1"
+    }
+  ],
+  "warm_real_player_laser_bridge": {
+    "source_inputs": 19,
+    "result": "exact",
+    "complete_bytes": 471,
+    "field_count": 8,
+    "strict_receipt_sha256": "a4cf23083e4212a38780fc7e94360a15c8d4508735848d791748ab6cd44bb2cd",
+    "hit_native_reproduction": {
+      "complete_bytes": 624,
+      "field_count": 21,
+      "result": "prior complete nonexact receipt reproduced"
+    },
+    "movement_native_reproduction": {
+      "complete_bytes": 1616,
+      "field_count": 54,
+      "result": "prior complete nonexact receipt reproduced"
+    },
+    "pre_comment_source_sha256": "6a202a2f7b9a78e102b9ea0c041b26235f9546a631d419fe9a84a1a8c69568d8",
+    "final_source_sha256": "3f0977fc24ebb00689fde3421ed76ebddbb60b241ff60d3b79760714165dad4e",
+    "comment_only_inverse_verified": true
+  },
+  "complete_linkages": [
+    {
+      "addend": 0,
+      "candidate_target": "0x004142E0",
+      "linked_symbol": "__real@3f000000",
+      "local": false,
+      "offset": "0xFF",
+      "symbol": "__real@3f000000",
+      "target": "0x00470B0C",
+      "target_encoded_value": "0x00470B0C",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004142C8",
+      "linked_symbol": "__real@00000000",
+      "local": false,
+      "offset": "0x114",
+      "symbol": "__real@00000000",
+      "target": "0x00470B04",
+      "target_encoded_value": "0x00470B04",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x0041433C",
+      "linked_symbol": "__real@bf000000",
+      "local": false,
+      "offset": "0x125",
+      "symbol": "__real@bf000000",
+      "target": "0x00470B78",
+      "target_encoded_value": "0x00470B78",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x0041527C",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0159",
+      "local": false,
+      "offset": "0x135",
+      "symbol": "?g_GuiView@@3PAUGuiView@@A",
+      "target": "0x0047770C",
+      "target_encoded_value": "0x0047770C",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x0041514C",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0083",
+      "local": false,
+      "offset": "0x16C",
+      "symbol": "?PlayerHandleCollisionHit@@YGXPAUPlayer@@@Z",
+      "target": "0x00426CF0",
+      "target_encoded_value": "0x00000390",
+      "type": "REL32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004142C8",
+      "linked_symbol": "__real@00000000",
+      "local": false,
+      "offset": "0x18F",
+      "symbol": "__real@00000000",
+      "target": "0x00470B04",
+      "target_encoded_value": "0x00470B04",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x00414338",
+      "linked_symbol": "__real@3fc00000",
+      "local": false,
+      "offset": "0x1A0",
+      "symbol": "__real@3fc00000",
+      "target": "0x00470CA8",
+      "target_encoded_value": "0x00470CA8",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x00414334",
+      "linked_symbol": "__real@bfc00000",
+      "local": false,
+      "offset": "0x1B5",
+      "symbol": "__real@bfc00000",
+      "target": "0x00470CA4",
+      "target_encoded_value": "0x00470CA4",
+      "type": "DIR32",
+      "width": 4
+    }
+  ],
+  "restored_controls": [
+    {
+      "label": "first-complete",
+      "candidate_size": 453,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "001ad4d1e0b6fe7f13e659b9c3e56a36d1c60f1ca8075241b331e9529b6bad03",
+      "game_objects_compiled": 2,
+      "game_objects_reused": 17
+    },
+    {
+      "label": "live-extent",
+      "candidate_size": 443,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "807b0cc868ac02cd87d83b56d04f78e5c29ceb36fef89f7bccfa0be42d47dd95",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "shared-upper",
+      "candidate_size": 479,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "404507a4c52b71dc0a4b0b498b273a4d61f2d90d3e357ca7a6a8b9d12c2a593c",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "shared-angle",
+      "candidate_size": 477,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "5fe431f547e7602743314285dbb7464cb38bd62fcd790e5bee3c46c0d3c4fdbf",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "split-rotated-y",
+      "candidate_size": 475,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "e7a4879c75be0b1cd01a71a5949c9be10f22a5eb7f8435396f131ea8015c3705",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "assigned-upper",
+      "candidate_size": 481,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "ab6d2742e1c9c4b113d03c59d06214681103c0a82a7cd5a913679ad4e521ed7f",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "promoted-angle-y",
+      "candidate_size": 480,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "27cb615b100f4535f353e6139cccc858888ecf5a0258a1bc3c92a7f884accea9",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "assigned-shared-angle",
+      "candidate_size": 479,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "576f9fb40f4b53993cbc7bbd028f1d10dde191c4d7cbe74dc2b4fb50408a3d2b",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "float-trig",
+      "candidate_size": 479,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "6059b5f4758c61ffd92645e05d22718b6422849e7fe4cc7d069d8d9e42a9b84f",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "scalar-rotation",
+      "candidate_size": 479,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "695f220338687770c038f05366c7618efa8db12582fca4e70373af01ec9b329c",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "const-trig",
+      "candidate_size": 479,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "854b56eaeb80ebdd785a34a12b8d88cd9c68b98fdabb4868a9159cd0ed5c9397",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "consumed-trig-products",
+      "candidate_size": 479,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "143c436b87ad9807a5cc08b9c4184d44697e1d60c483dec32637c54fe4be556a",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "rotation-helper",
+      "candidate_size": 471,
+      "target_size": 471,
+      "structural_result": "structural-exact",
+      "native_field_count": 8,
+      "source_sha256": "6a202a2f7b9a78e102b9ea0c041b26235f9546a631d419fe9a84a1a8c69568d8",
+      "game_objects_compiled": 1,
+      "game_objects_reused": 18
+    },
+    {
+      "label": "canonical-laser-context",
+      "candidate_size": 479,
+      "target_size": 471,
+      "structural_result": "mismatch",
+      "native_field_count": 8,
+      "source_sha256": "143c436b87ad9807a5cc08b9c4184d44697e1d60c483dec32637c54fe4be556a",
+      "game_objects_compiled": 0,
+      "game_objects_reused": 4
+    },
+    {
+      "label": "canonical-helper-context",
+      "candidate_size": 471,
+      "target_size": 471,
+      "structural_result": "structural-exact",
+      "native_field_count": 8,
+      "source_sha256": "6a202a2f7b9a78e102b9ea0c041b26235f9546a631d419fe9a84a1a8c69568d8",
+      "game_objects_compiled": 0,
+      "game_objects_reused": 4
+    }
+  ],
+  "progress": {
+    "authored_exact_bytes": 100467,
+    "authored_owned_bytes": 275817,
+    "authored_exact_owners": 492,
+    "canonical_codegen_bytes": 168564,
+    "canonical_exact_owners": 1368,
+    "source_present_mappings": 1206,
+    "source_present_authored": 688,
+    "authored_exact_backlog": 196
+  },
+  "closed_control_storage": {
+    "result": "losslessly-archived-and-verified-before-removal",
+    "members": 645,
+    "original_bytes": 29110697,
+    "archive_bytes": 512792,
+    "archive_sha256": "29801ebcdd5d31427d2a090308a3153410f2bb973a1ad9fcd1131a8e68cb4b9b",
+    "archive": ".analysis/gpt-6.1-sol/player-laser-contact-context-20261030/closed-native-controls.tar.xz",
+    "preserved_carriers": [
+      "first-complete",
+      "rotation-helper",
+      "canonical-helper-context",
+      "cold-a",
+      "cold-b-0",
+      "cold-b-1"
+    ]
+  }
+}

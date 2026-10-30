@@ -1,5 +1,12 @@
 # Type-0 laser update, draw and Player contact
 
+Follow-up2026-10-30: Player contact4267F0 now passes two independent complete
+canonical four-input cold comparisons,471/all8 fields/14 local branches and all
+three RET12 exits. The actual1001/832-byte laser callers stay exact. The hit
+boundary426CF0 has a separate complete624/627 nonexact implementation in Player.cpp.
+These supersede the contact453 and source-absent-hit statements below; see the
+[current complete contact proof](../player-laser-contact-exact-20261030/README.md).
+
 Follow-up2026-10-20: Update41D3D0 now passes two complete canonical four-TU
 colds with all1001 bytes/31 fields after ordinary used sprite snapshots restore
 the final read/store scheduling. The earlier nonexact diagnostics below remain

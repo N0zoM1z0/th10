@@ -6,7 +6,7 @@
 #include <math.h>
 
 extern unsigned char g_MainSoundOwner[0x52d0];
-// Target426CF0: one stack Player argument, RET4. Its body remains unrecovered.
+// Target426CF0: one stack Player argument, RET4; complete body in Player.cpp.
 extern void __stdcall PlayerHandleCollisionHit(Player *player);
 
 static inline EnemyLaserVectorView &AddLaserPosition(
@@ -25,6 +25,17 @@ static inline void SetLaserScaleComponent(
     component = value;
 }
 
+// Rotate X/Y while the caller retains relative Z for its complete bounds copies.
+static void RotateContactPosition(AnmFloat3View *result,
+    const AnmFloat3View *position, float angle)
+{
+    const double inverseAngle = -static_cast<double>(angle);
+    float sine = static_cast<float>(sin(inverseAngle));
+    float cosine = static_cast<float>(cos(inverseAngle));
+    result->x = static_cast<float>(position->x * cosine - sine * position->y);
+    result->y = static_cast<float>(sine * position->x + cosine * position->y);
+}
+
 // Target4267F0. Keep rejection polarity: unordered alone does not reject.
 int Player::CheckLaserContact(
     const PlayerFloat3 *origin, float angle, float width, float length)
@@ -32,13 +43,12 @@ int Player::CheckLaserContact(
     AnmFloat3View rotated(drawPosition.x - origin->x,
         drawPosition.y - origin->y, drawPosition.z - origin->z);
     AnmFloat3View lower = rotated;
-    double sine = sin(-angle);
-    double cosine = cos(-angle);
-    rotated.x = static_cast<float>(lower.x * cosine - sine * lower.y);
-    rotated.y = static_cast<float>(sine * lower.x + cosine * lower.y);
-    AnmFloat3View halfSize(extent0.x, extent0.y, extent0.z);
+    RotateContactPosition(&rotated, &lower, angle);
+    const AnmFloat3View &halfSize =
+        *reinterpret_cast<const AnmFloat3View *>(&extent0);
     lower = rotated - halfSize;
-    AnmFloat3View upper = rotated + halfSize;
+    AnmFloat3View upper;
+    upper = rotated + halfSize;
     if (!(lower.x > length) && !(width * 0.5f < lower.y) &&
         !(upper.x < 0.0f) && !(width * -0.5f > upper.y))
     {

@@ -2,6 +2,29 @@
 
 ## Current checkpoint
 
+Player::CheckLaserContact4267F0..4269C6 /471 is now complete exact:132
+instructions/all8 address fields/14 fixed local branches and all three RET12
+exits. Both actual callers41D6BE (type0) and41E935 (type1) supply ECX Player,
+EAX origin and three stack floats. A live extent reference and complete upper
+assignment restore frame24 and all XYZ work; an ordinary three-real-operand
+rotation helper fully inlines and restores the target x87 lifetime. No forced
+inlining, ABI/register annotation or profile change. Two independent canonical
+four-input /GL /GS colds pass471/all8. First includes type0 Update1001 (1472/all39);
+second also cold-replays type1 Update832 (1303/all42). Three distinct owners cover
+2304/all73. See the [complete laser contact proof](evidence/player-laser-contact-exact-20261030/README.md).
+
+The nineteen-input real-Player/laser bridge also strictly passes471/all8 with
+the real hit implementation. Hit624/all21 and movement1616/all54 native receipts
+remain unchanged; hit remains NONEXACT627 and no large-parent credit is granted.
+Its warm source differs from final only by two reviewed comments; both canonical
+colds build the final source. In-place upper storage changes homes; scalar Y,
+const/float trig and consumed-product controls do not restore the inline lifetime
+and are parked. No ANM executor/source initializer parked trial is repeated;
+no new evidence closes their residuals. Source presence/origin/boundaries stay
+unchanged. Authored exact is100,467/275,817 bytes across492 owners; total codegen
+is168,564/1368 owners. Source mappings1206/authored688/backlog196. Original
+helper/type/TU ancestry, product/runtime and portability remain open.
+
 Complete PlayerHandleCollisionHit426CF0..426F62 /627 now has maintained source
 in Player.cpp. Fresh local Ghidra attestation and complete raw review confirm141
 instructions,21 fields,7 local branches, RET4 and13 following CC bytes. Both

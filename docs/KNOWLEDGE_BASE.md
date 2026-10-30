@@ -7782,3 +7782,26 @@ Three explicit canonical colds pass1688/all42; eight scoped same-image exact
 checks pass2149/all50, including the actual collision caller bound to the new
 body. This adds source presence only; authored exact remains99,996/491.
 See [the full source/byte/field receipt](evidence/player-hit-context-20261030/README.md).
+
+## 2026-10-30 Player laser contact complete exact
+
+`Player::CheckLaserContact4267F0..4269C6 /471` closes132 instructions/all8 bound
+fields/all14 fixed local branches and three RET12 exits. Both actual entry calls
+41D6BE/41E935 pass ECX Player, EAX origin and three stack floats. Four CC bytes
+precede and nine follow; whole `.text` E8/E9 scanning finds no interior target.
+Live extent reference, full upper-vector assignment and an ordinary fully
+inlined three-real-operand rotation helper reproduce the frame24, all XYZ copies
+and x87 lifetime. No original helper/class/TU ancestry or runtime claim follows.
+Negative angle is promoted before negation; float sine/cosine remain naturally
+in registers. No forced-inline, register/ABI annotation, volatile or profile change.
+
+Two independent four-input /GL /GS canonical colds pass471/all8; the two actual
+existing Update callers1001/832 are explicitly replayed, three distinct owners
+2304/all73. A nineteen-input real-Player/laser bridge independently passes the
+full strict owner with the actual nonexact hit body. Existing complete hit624 and
+movement1616 native receipts stay unchanged. The inline-lifetime result is not
+recovered by const/float trig, separate scalar Y or consumed-product spelling;
+those controls are restored/parked. Authored exact gains471 to100,467/492 owners,
+with source presence/origin/boundaries unchanged. The new helper is not a new
+source mapping or proven original inline boundary. See the
+[complete cold/field/interface proof](evidence/player-laser-contact-exact-20261030/README.md).
