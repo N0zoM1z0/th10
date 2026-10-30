@@ -101,15 +101,14 @@ extern void *g_ReplayChainManager;
 void ReplayUpdateInputSource(ReplayInputSource *source);
 bool ReplayAppendRecord(ReplayFrameData *frameData, unsigned short input,
                         unsigned short auxiliaryInput, unsigned short inputFlags);
-ReplayListNode *ReplayAllocateFrameData(ReplayManager *manager, int stage);
+ReplayListNode *__stdcall ReplayAllocateFrameData(ReplayManager *manager, int stage);
 void ReplayClearStageFrameData(ReplayManager *manager, int stage);
 void ReplayCutChain(ReplayChainElement *element);
 
-// These interfaces describe calls observed from the stage-transition owner.
-// Their own target candidates remain origin/source/owner unknown in this packet.
+// Complete target-observed position restoration is maintained in
+// ReplayStageHelpers.cpp; original class/TU ownership remains unknown.
 void ReplayRestoreStagePosition(Player *runtime,
                                 const unsigned int *position);
-void ReplayResetStageRuntime(Player *runtime);
 
 int ReplayAddToCalcChain(void *chainManager, ReplayChainElement *element, int priority);
 int ReplayAddToDrawChain(void *chainManager, ReplayChainElement *element, int priority);
@@ -349,80 +348,83 @@ void ReplayManager::BeginStage()
 
     if (mode == REPLAY_MANAGER_RECORD)
     {
-        int stage = g_ReplayCurrentStage;
-        ReplayStageDataHeader *stageHeader = stageHeaders[stage];
+        ReplayStageDataHeader *stageHeader = stageHeaders[g_GameScoreState.selectedStage];
 
-        ReplayClearStageFrameData(this, stage);
-        currentFrameLink = ReplayAllocateFrameData(this, stage);
+        ReplayClearStageFrameData(this, g_GameScoreState.selectedStage);
+        currentFrameLink = ReplayAllocateFrameData(this, g_GameScoreState.selectedStage);
 
         if (g_ReplayStageFlags == 0)
         {
-            stageHeader->unknown00C = g_ReplayStageValue00C;
-            stageHeader->unknown010 = g_ReplayStageValue010;
-            stageHeader->unknown014 = g_ReplayStageValue014;
-            stageHeader->unknown018 = g_ReplayStageValue018;
-            stageHeader->unknown01C = g_ReplayStageValue01C;
-            stageHeader->unknown020 = g_ReplayStageValue020;
-            stageHeader->unknown1B4 = g_ReplayStageValue1B4;
+            stageHeader->unknown00C = g_GameScoreState.score;
+            stageHeader->unknown010 = g_GameScoreState.power;
+            stageHeader->unknown014 = g_GameScoreState.faith;
+            stageHeader->unknown018 = g_GameScoreState.timer.current;
+            stageHeader->unknown01C = *reinterpret_cast<const int *>(g_GameScoreState.unknown28 + 8);
+            stageHeader->unknown020 = g_GameScoreState.rank;
+            stageHeader->unknown1B4 = *reinterpret_cast<const int *>(g_GameScoreState.unknown44 + 12);
         }
 
         Player *runtime = g_Player;
-        stageHeader->unknown024 = runtime->positionX;
-        stageHeader->unknown028 = runtime->positionY;
-        memcpy(stageHeader->runtimeSnapshot, runtime->replayPositionHistory,
+        *reinterpret_cast<PlayerPositionPair *>(&stageHeader->unknown024) =
+            *reinterpret_cast<const PlayerPositionPair *>(&runtime->positionX);
+        memcpy(stageHeaders[g_GameScoreState.selectedStage]->runtimeSnapshot, runtime->replayPositionHistory,
                sizeof(stageHeader->runtimeSnapshot));
 
         for (int i = 0; i < 4; i++)
         {
             PlayerOptionRuntime &slot = runtime->options[i];
-            stageHeader->runtimePairs0[i].first = slot.replayPair0.x;
-            stageHeader->runtimePairs0[i].second = slot.replayPair0.y;
-            stageHeader->runtimePairs1[i].first = slot.replayPair1.x;
-            stageHeader->runtimePairs1[i].second = slot.replayPair1.y;
-            stageHeader->runtimePairs2[i].first = slot.replayPair2.x;
-            stageHeader->runtimePairs2[i].second = slot.replayPair2.y;
-            stageHeader->runtimePairs3[i].first = slot.replayPair3.x;
-            stageHeader->runtimePairs3[i].second = slot.replayPair3.y;
+            *reinterpret_cast<PlayerPositionPair *>(&stageHeader->runtimePairs0[i]) =
+                slot.replayPair0;
+            *reinterpret_cast<PlayerPositionPair *>(&stageHeader->runtimePairs1[i]) =
+                slot.replayPair1;
+            *reinterpret_cast<PlayerPositionPair *>(&stageHeader->runtimePairs2[i]) =
+                slot.replayPair2;
+            *reinterpret_cast<PlayerPositionPair *>(&stageHeader->runtimePairs3[i]) =
+                slot.replayPair3;
         }
 
         stageHeader->unknown1B8 = g_ReplayStageValue1B8;
+        int stage = g_GameScoreState.selectedStage;
         activeStage = stage;
-        stageHeader->unknown1BC = runtime->optionMode;
+        stageHeaders[stage]->unknown1BC = runtime->optionMode;
     }
     else if (mode == REPLAY_MANAGER_PLAYBACK)
     {
-        int stage = g_ReplayCurrentStage;
+        int stage = g_GameScoreState.selectedStage;
         ReplayStageDataHeader *stageHeader = stageStates[stage].header;
         Player *runtime = g_Player;
 
         activeStage = stage;
         ReplayRestoreStagePosition(runtime, &stageHeader->unknown024);
+        Player *updatedRuntime = g_Player;
         memcpy(runtime->replayPositionHistory, stageHeader->runtimeSnapshot,
                sizeof(stageHeader->runtimeSnapshot));
-        runtime->optionMode = stageHeader->unknown1BC;
-        RebuildPlayerOptions(runtime);
+        updatedRuntime->optionMode = stageHeader->unknown1BC;
+        RebuildPlayerOptions(updatedRuntime);
+        runtime = g_Player;
 
         for (int i = 0; i < 4; i++)
         {
             PlayerOptionRuntime &slot = runtime->options[i];
-            slot.replayPair0.x = stageHeader->runtimePairs0[i].first;
-            slot.replayPair0.y = stageHeader->runtimePairs0[i].second;
-            slot.replayPair1.x = stageHeader->runtimePairs1[i].first;
-            slot.replayPair1.y = stageHeader->runtimePairs1[i].second;
-            slot.replayPair2.x = stageHeader->runtimePairs2[i].first;
-            slot.replayPair2.y = stageHeader->runtimePairs2[i].second;
-            slot.replayPair3.x = stageHeader->runtimePairs3[i].first;
-            slot.replayPair3.y = stageHeader->runtimePairs3[i].second;
+            slot.replayPair0 =
+                *reinterpret_cast<const PlayerPositionPair *>(&stageHeader->runtimePairs0[i]);
+            slot.replayPair1 =
+                *reinterpret_cast<const PlayerPositionPair *>(&stageHeader->runtimePairs1[i]);
+            slot.replayPair2 =
+                *reinterpret_cast<const PlayerPositionPair *>(&stageHeader->runtimePairs2[i]);
+            slot.replayPair3 =
+                *reinterpret_cast<const PlayerPositionPair *>(&stageHeader->runtimePairs3[i]);
 
-            if (g_ReplayShotType + g_ReplayCharacter * 3 == 5)
+            if (*reinterpret_cast<const int *>(g_GameScoreState.unknown28 + 4) + *reinterpret_cast<const int *>(g_GameScoreState.unknown28) * 3 == 5)
             {
-                slot.replayPair3.x = stageHeader->runtimePairs0[i].first;
-                slot.replayPair3.y = stageHeader->runtimePairs0[i].second;
+                slot.replayPair3 =
+                    *reinterpret_cast<const PlayerPositionPair *>(&stageHeader->runtimePairs0[i]);
             }
-            slot.resetFlag = 0;
         }
+        for (int i = 0; i < 4; ++i)
+            runtime->options[i].resetFlag = 0;
 
-        ReplayResetStageRuntime(runtime);
+        PlayerResetRuntimeState(runtime);
     }
 
     frameCounter = 0;

@@ -4,26 +4,69 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint repairs the complete GameManager update's actual
-calls, adds66 exact list-cleanup bytes and restores its existing callback recipe
-in the actual dependency graph. The large update remains nonexact.
+selected lane. This checkpoint adds176 exact replay-helper bytes and repairs
+the complete582-byte BeginStage source to566 bytes. The parent and its139-byte
+allocator remain nonexact. Existing canonical recipes are unchanged.
 Compiler profiles and the comparator remain unchanged. No experiment is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 104,652 / 275,863 |
-| Authored exact owners | 509 |
-| Total canonical exact owners / codegen bytes | 1,386 / 172,756 |
-| Source mappings / authored mappings / authored exact backlog | 1,214 / 696 / 187 |
+| Reviewed authored owned bytes exact | 104,828 / 275,863 |
+| Authored exact owners | 511 |
+| Total canonical exact owners / codegen bytes | 1,388 / 172,932 |
+| Source mappings / authored mappings / authored exact backlog | 1,217 / 699 / 188 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: complete GameManager call binding repair
+## Latest source checkpoint: complete Replay stage helpers
+
+[The complete proof](evidence/replay-stage-helpers-20261031/README.md) adds
+ReplayClearStageFrameData42AB2093/all1 and ReplayRestoreStagePosition428E1083/all2:
+176 new exact authored bytes. Both meaningful helper operands are reviewed;
+Ghidra stack-only arity is provisional. Natural two-input source derives target
+ECX/EAX and EAX/ECX private interfaces without register declarations. Existing
+pair assignment preserves both coordinate copies before x87 conversion.
+
+The582-byte BeginStage owner evolves1000 to568 with actual helpers/index rereads/
+post-loop flags,565 with real frame construction/callee-pop,572 with shared
+GameScoreState aliasing and566 with a stage-index snapshot. Both counted loops
+and their base offsets, alternating recording loads/stores and selection reads
+inside playback are recovered. The former reset facade binds actual424D90.
+All five real callee identities remain in order. Current native566/582 has24
+fields/nine locals versus25/ten: Player reload, loop registers/alignment and
+final index scheduling remain unlike. No fragment credit.
+
+Frame allocation42AA50 has two meaningful inputs: ESI stage and stack manager,
+RET4. The genuine6284-byte constructor preserves the null branch, full reset,
+cursors and intrusive-link initialization. Complete139/139 remains NONEXACT:
+early fps-pointer LEA precedes the recordEnd store. Store-order, memcpy-pair and
+Player-member controls remain unequal/neutral, are restored and parked. Do not
+repeat them without distinguishing evidence or infer arity from stack words.
+
+Two independent29-input canonical colds reproduce full176/all3. Both frozen
+images pass24 existing contracts3120/all113; stage destructor460/499 explicitly
+rejects. The first scoped run cold-passes existing cleanup66 and callback7 in
+their unchanged28-input recipes. No recipe migration or full-cohort replay.
+Actual29-input GameManager1538/1544 and cleanup1108/1105 remain nonexact;
+BeginSpell2424/2432, stage reset184/214, embedded200/202 and binder197/203 remain
+unlike. No shared Player header, comparator or profile change is retained.
+
+Producer: build/match-linked/ReplayStageHelpers. Current76 transitive pins and
+independent target inventories are in the proof; frozen colds/final-source
+context are in the private replay-stage-20261031 campaign. Older28-input source
+freezes now predate ReplayManager changes; check pins before reuse. Three new
+source mappings retain existing authored origins and reviewed extents, with no
+denominator change. Original class/TU/data ownership and later phases stay open.
+Concrete next question: target Player reload and private register propagation
+require genuine alias/visibility evidence; fake clobbers and guessed volatile
+storage remain invalid. Allocator's only adjacent LEA/store mismatch is separate.
+
+## Previous source checkpoint: complete GameManager call binding repair
 
 [The complete proof](evidence/game-manager-bindings-20261031/README.md) adds
 GameClearLinkedObjects41777066/all1 exact in GameObjectReset.cpp. It captures next

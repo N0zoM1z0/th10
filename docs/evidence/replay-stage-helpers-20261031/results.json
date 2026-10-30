@@ -1,0 +1,1331 @@
+{
+  "date": "2026-10-31",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "local_ghidra": {
+    "read_only": true,
+    "target_attested": true,
+    "mapped_samples": 6,
+    "log_sha256": "a68dbc57aa0a9ce437457e6c48889fad041e891577c8c594433ae056617ea848"
+  },
+  "new_authored_exact_bytes": 176,
+  "new_authored_exact_owners": 2,
+  "new_source_mappings": 3,
+  "boundary_changes": 0,
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GameManager.cpp", "src/GuiScoreDisplay.cpp", "src/GuiSpellNotice.cpp", "src/StageAnimationSlots.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/BulletLifecycle.cpp", "src/ScriptViewerWorker.cpp", "src/StageLifecycle.cpp", "src/ReplayManager.cpp", "src/GameObjectReset.cpp", "src/ReplayStageHelpers.cpp"],
+    "support_profiles": {
+      "src/AnmManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/RandomMath.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/AnmVmCreate.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/AnmVmId.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/AnmInt3Scale.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"],
+      "src/Player.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/PlayerCollision.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/EnemyEclDispatcher.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/VmIdInterrupt.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/FrontEnd.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ItemManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Main.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Sound.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Gui.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Hint.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/TransitionEffect.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Chain.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/BulletLifecycle.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ScriptViewerWorker.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/StageLifecycle.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ReplayManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ReplayStageHelpers.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+    },
+    "profile": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+    "link_profile": ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"],
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "canonical_contracts": {
+    "replay-clear-stage-frame-data": {
+      "output_dir": "build/match-linked/ReplayStageHelpers",
+      "pdb_source": "src/ReplayStageHelpers.cpp",
+      "symbol": "?ReplayClearStageFrameData@@YAXPAVReplayManager@@H@Z",
+      "target_address": 4369184,
+      "size": 93,
+      "functions": ["ReplayClearStageFrameData"],
+      "linkages": [
+        {
+          "offset": 77,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "??3@YAXPAX@Z",
+          "target": 4531361
+        }
+      ]
+    },
+    "replay-restore-stage-position": {
+      "output_dir": "build/match-linked/ReplayStageHelpers",
+      "pdb_source": "src/ReplayStageHelpers.cpp",
+      "symbol": "?ReplayRestoreStagePosition@@YAXPAUPlayer@@PBI@Z",
+      "target_address": 4361744,
+      "size": 83,
+      "functions": ["ReplayRestoreStagePosition"],
+      "linkages": [
+        {
+          "offset": 30,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "__real@3c23d70a",
+          "target": 4655872
+        },
+        {
+          "offset": 48,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "__real@3c23d70a",
+          "target": 4655872
+        }
+      ]
+    }
+  },
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletLifecycle.cpp": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "65c7125f66818ed3bcc5ef18773bd615d98c9b8a54bd25a338d160ec05f88048",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.cpp": "85b968a41cac5b8bb506dc5e70e29ceaefba8405ad702b700afc0c35897918e1",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameObjectReset.cpp": "cf8d6de1488764355a394d04496ce690fa1fb41aad54b07a047bcaf6d4490593",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/GameStatistics.hpp": "3db83612f100ae38b109e358bbf777f897fab2e760520bc92c52fbec1b4823bc",
+    "src/Gui.cpp": "a2940382f3f8aff0e96dceb5262067eea5b36c85b1b503cae984505dffb38e91",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/GuiScoreDisplay.cpp": "037599d4e5aade1c81cc9ac8f728ef2725ce1be639e04c70b57995b4ffe06e7c",
+    "src/GuiSpellNotice.cpp": "3db80f14c123c18716e03b1b39400e4dce774e690d1d956fd11c673a3af160f2",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.cpp": "c7eb31442b087cb6062c9b62e7d9a1e48e6e442f111fc8238603680f4cbacffa",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/Player.cpp": "3fa6b87037d280bcd7f25d05cf89b0f820aca16b3b47701a7d03372148e1587a",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/ReplayManager.cpp": "cd74b61bd44b72e8172f4bca011bdd4f6a17a7ad8c73196806e7a9c3b951eb93",
+    "src/ReplayManager.hpp": "0a093ea560892765a2b04edd080ab89e200fd38fa080d69e2ec3bda484a2876f",
+    "src/ReplayStageHelpers.cpp": "da30b34a4656ef543f47b5be7ad54cb2cf1814ee5ab6c3f12ba841048899b7d2",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.hpp": "d2bdd5dc267c1f76a32df7d0ee7b0507fc1854933c33e2bd8075d2b318ee5ab2",
+    "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageAnimationSlots.cpp": "fd00235c85f114e2875907b1b7ead1c69bb72bac637f7ab96168c4a0f0f07208",
+    "src/StageLifecycle.cpp": "dff4a52c4f41f0e8a478d9753d1d54a957dcd314cc9d83c9436c66e98fed0558",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "independent_target_native_review": {
+    "allocate": {
+      "target": {
+        "address": 4368976,
+        "size": 139,
+        "sha256": "97d7f4265e073bb1258956d8823e61470c7ecc5c623ccffb1fd3c1602d0209dc",
+        "instructions": 40,
+        "fields": [
+          [6, "REL32", 4531347, 4531347]
+        ],
+        "locals": [
+          [17, 78],
+          [76, 80],
+          [102, 114],
+          [112, 104],
+          [119, 130]
+        ],
+        "calls": [
+          [5, 4531347]
+        ],
+        "returns": [
+          [136, "4"]
+        ]
+      },
+      "native": {
+        "address": 4406064,
+        "size": 139,
+        "sha256": "64f0636e00789b31306cc2381cc4888b490b9f34d822271e4992a2c2f4ee3b3f",
+        "instructions": 40,
+        "fields": [
+          [6, "REL32", 4415900, 4531347]
+        ],
+        "locals": [
+          [17, 78],
+          [76, 80],
+          [102, 114],
+          [112, 104],
+          [119, 130]
+        ],
+        "calls": [
+          [5, 4531347]
+        ],
+        "returns": [
+          [136, "4"]
+        ]
+      },
+      "callee_identities_in_order_equal": true
+    },
+    "clear": {
+      "target": {
+        "address": 4369184,
+        "size": 93,
+        "sha256": "84a48e66ece6617e49b9afd6239363056cb10f063279a5ccade7a4a9dcd6e82f",
+        "instructions": 33,
+        "fields": [
+          [77, "REL32", 4531361, 4531361]
+        ],
+        "locals": [
+          [12, 91],
+          [23, 84],
+          [33, 44],
+          [52, 63],
+          [88, 16]
+        ],
+        "calls": [
+          [76, 4531361]
+        ],
+        "returns": [
+          [92, ""]
+        ]
+      },
+      "native": {
+        "address": 4406208,
+        "size": 93,
+        "sha256": "17f6d55567042a4d74bd357ad4516a0f0f902935b553b3ef712fa1253d962fe2",
+        "instructions": 33,
+        "fields": [
+          [77, "REL32", 4415904, 4531361]
+        ],
+        "locals": [
+          [12, 91],
+          [23, 84],
+          [33, 44],
+          [52, 63],
+          [88, 16]
+        ],
+        "calls": [
+          [76, 4531361]
+        ],
+        "returns": [
+          [92, ""]
+        ]
+      },
+      "callee_identities_in_order_equal": true
+    },
+    "position": {
+      "target": {
+        "address": 4361744,
+        "size": 83,
+        "sha256": "55a90ef9754346b359ca3dbb0f240fc4fd7745d115426ea249a460703f5a63ac",
+        "instructions": 16,
+        "fields": [
+          [30, "DIR32", 4655872, 4655872],
+          [48, "DIR32", 4655872, 4655872]
+        ],
+        "locals": [],
+        "calls": [],
+        "returns": [
+          [82, ""]
+        ]
+      },
+      "native": {
+        "address": 4406304,
+        "size": 83,
+        "sha256": "982ddb42e1b3c6afebae1f5af82b9362368c6bb5ccb2570756ffb151f6b05a7b",
+        "instructions": 16,
+        "fields": [
+          [30, "DIR32", 4412044, 4655872],
+          [48, "DIR32", 4412044, 4655872]
+        ],
+        "locals": [],
+        "calls": [],
+        "returns": [
+          [82, ""]
+        ]
+      },
+      "callee_identities_in_order_equal": true
+    },
+    "replay": {
+      "target": {
+        "address": 4367440,
+        "size": 582,
+        "sha256": "3c3e5ed3e6264161342fab7e375ca0b11e50d082da0a7a46cc890b232a76952f",
+        "instructions": 157,
+        "fields": [
+          [53, "DIR32", 4672636, 4672636],
+          [64, "REL32", 4369184, 4369184],
+          [70, "DIR32", 4672636, 4672636],
+          [76, "REL32", 4368976, 4368976],
+          [87, "DIR32", 4792260, 4792260],
+          [96, "DIR32", 4672580, 4672580],
+          [106, "DIR32", 4672584, 4672584],
+          [116, "DIR32", 4672588, 4672588],
+          [124, "DIR32", 4672600, 4672600],
+          [133, "DIR32", 4672624, 4672624],
+          [142, "DIR32", 4672664, 4672664],
+          [150, "DIR32", 4672656, 4672656],
+          [162, "DIR32", 4683828, 4683828],
+          [186, "DIR32", 4672636, 4672636],
+          [285, "DIR32", 4672668, 4672668],
+          [297, "DIR32", 4672636, 4672636],
+          [345, "DIR32", 4672636, 4672636],
+          [351, "DIR32", 4683828, 4683828],
+          [377, "REL32", 4361744, 4361744],
+          [382, "DIR32", 4683828, 4683828],
+          [416, "REL32", 4353904, 4353904],
+          [422, "DIR32", 4683828, 4683828],
+          [496, "DIR32", 4672616, 4672616],
+          [502, "DIR32", 4672620, 4672620],
+          [568, "REL32", 4345232, 4345232]
+        ],
+        "locals": [
+          [10, 15],
+          [23, 28],
+          [33, 38],
+          [46, 339],
+          [93, 160],
+          [282, 227],
+          [342, 325],
+          [443, 448],
+          [515, 529],
+          [539, 448]
+        ],
+        "calls": [
+          [63, 4369184],
+          [75, 4368976],
+          [376, 4361744],
+          [415, 4353904],
+          [567, 4345232]
+        ],
+        "returns": [
+          [338, ""],
+          [581, ""]
+        ]
+      },
+      "native": {
+        "address": 4402592,
+        "size": 566,
+        "sha256": "9f09e4bc9e271afb751774d663168e72f80cfcdc03eb955fbf3ebfebcecf3fed",
+        "instructions": 152,
+        "fields": [
+          [53, "DIR32", 4417084, 4672636],
+          [64, "REL32", 4406208, 4369184],
+          [70, "DIR32", 4417084, 4672636],
+          [76, "REL32", 4406064, 4368976],
+          [87, "DIR32", 4417576, 4792260],
+          [96, "DIR32", 4417028, 4672580],
+          [106, "DIR32", 4417032, 4672584],
+          [116, "DIR32", 4417036, 4672588],
+          [124, "DIR32", 4417048, 4672600],
+          [133, "DIR32", 4417072, 4672624],
+          [142, "DIR32", 4417112, 4672664],
+          [150, "DIR32", 4417104, 4672656],
+          [162, "DIR32", 4417368, 4683828],
+          [186, "DIR32", 4417084, 4672636],
+          [285, "DIR32", 4417616, 4672668],
+          [296, "DIR32", 4417084, 4672636],
+          [343, "DIR32", 4417084, 4672636],
+          [358, "DIR32", 4417368, 4683828],
+          [372, "REL32", 4406304, 4361744],
+          [406, "REL32", 4282736, 4353904],
+          [412, "DIR32", 4417368, 4683828],
+          [481, "DIR32", 4417064, 4672616],
+          [487, "DIR32", 4417068, 4672620],
+          [552, "REL32", 4271632, 4345232]
+        ],
+        "locals": [
+          [10, 15],
+          [23, 28],
+          [33, 38],
+          [46, 336],
+          [93, 160],
+          [282, 227],
+          [339, 322],
+          [500, 514],
+          [523, 433]
+        ],
+        "calls": [
+          [63, 4369184],
+          [75, 4368976],
+          [371, 4361744],
+          [405, 4353904],
+          [551, 4345232]
+        ],
+        "returns": [
+          [335, ""],
+          [565, ""]
+        ]
+      },
+      "callee_identities_in_order_equal": true
+    }
+  },
+  "strict_diagnostic": {
+    "replay-clear-stage-frame-data": {
+      "result": "exact",
+      "symbol": "?ReplayClearStageFrameData@@YAXPAVReplayManager@@H@Z",
+      "size": 93,
+      "matched_bytes": 93,
+      "normalization_complete": true,
+      "first_differences": []
+    },
+    "replay-restore-stage-position": {
+      "result": "exact",
+      "symbol": "?ReplayRestoreStagePosition@@YAXPAUPlayer@@PBI@Z",
+      "size": 83,
+      "matched_bytes": 83,
+      "normalization_complete": true,
+      "first_differences": []
+    }
+  },
+  "cold_replays": [
+    {
+      "label": "cold-one",
+      "exit_code": 0,
+      "unit_count": 4,
+      "matched_bytes": 249,
+      "groups": [
+        {
+          "artifact": "build/match-linked/GameObjectReset",
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "unit": "game-manager-update-callback",
+              "symbol": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+              "result": "exact",
+              "size": 7,
+              "matched_bytes": 7,
+              "compared_size": 7,
+              "decoded_bytes": 7,
+              "normalization_complete": true,
+              "image_sha256": "8f3fc47fb8e848782369447f21fcc8744023b5474df8ae1586b4dee7fc4f74f3",
+              "pdb_guid": "e258ac7209abe94d9f3218c5ddc11cf3",
+              "pdb_age": 1,
+              "bound_fields": 1
+            },
+            {
+              "unit": "game-clear-linked-objects",
+              "symbol": "?GameClearLinkedObjects@@YAXPAUGameChainOwnerView@@@Z",
+              "result": "exact",
+              "size": 66,
+              "matched_bytes": 66,
+              "compared_size": 66,
+              "decoded_bytes": 66,
+              "normalization_complete": true,
+              "image_sha256": "8f3fc47fb8e848782369447f21fcc8744023b5474df8ae1586b4dee7fc4f74f3",
+              "pdb_guid": "e258ac7209abe94d9f3218c5ddc11cf3",
+              "pdb_age": 1,
+              "bound_fields": 1
+            }
+          ]
+        },
+        {
+          "artifact": "build/match-linked/ReplayStageHelpers",
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "unit": "replay-clear-stage-frame-data",
+              "symbol": "?ReplayClearStageFrameData@@YAXPAVReplayManager@@H@Z",
+              "result": "exact",
+              "size": 93,
+              "matched_bytes": 93,
+              "compared_size": 93,
+              "decoded_bytes": 93,
+              "normalization_complete": true,
+              "image_sha256": "6b02efdd09178027c7d99afa4cb3a0dd7c1727480a57dcd87e90691c128635c5",
+              "pdb_guid": "35daaeba665d2c448f2b32f82253ce87",
+              "pdb_age": 1,
+              "bound_fields": 1
+            },
+            {
+              "unit": "replay-restore-stage-position",
+              "symbol": "?ReplayRestoreStagePosition@@YAXPAUPlayer@@PBI@Z",
+              "result": "exact",
+              "size": 83,
+              "matched_bytes": 83,
+              "compared_size": 83,
+              "decoded_bytes": 83,
+              "normalization_complete": true,
+              "image_sha256": "6b02efdd09178027c7d99afa4cb3a0dd7c1727480a57dcd87e90691c128635c5",
+              "pdb_guid": "35daaeba665d2c448f2b32f82253ce87",
+              "pdb_age": 1,
+              "bound_fields": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "cold-two",
+      "exit_code": 0,
+      "unit_count": 2,
+      "matched_bytes": 176,
+      "groups": [
+        {
+          "artifact": "build/match-linked/ReplayStageHelpers",
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "unit": "replay-clear-stage-frame-data",
+              "symbol": "?ReplayClearStageFrameData@@YAXPAVReplayManager@@H@Z",
+              "result": "exact",
+              "size": 93,
+              "matched_bytes": 93,
+              "compared_size": 93,
+              "decoded_bytes": 93,
+              "normalization_complete": true,
+              "image_sha256": "31520a999b38753331c788c159edd8455359806b34f3aefb79d66647101f5737",
+              "pdb_guid": "f6df360eb27c6647a95aee67571f51e8",
+              "pdb_age": 1,
+              "bound_fields": 1
+            },
+            {
+              "unit": "replay-restore-stage-position",
+              "symbol": "?ReplayRestoreStagePosition@@YAXPAUPlayer@@PBI@Z",
+              "result": "exact",
+              "size": 83,
+              "matched_bytes": 83,
+              "compared_size": 83,
+              "decoded_bytes": 83,
+              "normalization_complete": true,
+              "image_sha256": "31520a999b38753331c788c159edd8455359806b34f3aefb79d66647101f5737",
+              "pdb_guid": "f6df360eb27c6647a95aee67571f51e8",
+              "pdb_age": 1,
+              "bound_fields": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "same_image_guards": {
+    "cold-one": {
+      "passed": {
+        "enemy-end-spell": {
+          "result": "exact",
+          "size": 399,
+          "bound_fields": 20
+        },
+        "game-score-add-power": {
+          "result": "exact",
+          "size": 166,
+          "bound_fields": 4
+        },
+        "item-rank-add": {
+          "result": "exact",
+          "size": 42,
+          "bound_fields": 0
+        },
+        "gui-update-score-display": {
+          "result": "exact",
+          "size": 671,
+          "bound_fields": 36
+        },
+        "game-add-lives": {
+          "result": "exact",
+          "size": 141,
+          "bound_fields": 12
+        },
+        "anm-loaded-create-vm-variant0": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 5
+        },
+        "anm-loaded-set-sprite": {
+          "result": "exact",
+          "size": 356,
+          "bound_fields": 2
+        },
+        "enemy-sound-queue-sample": {
+          "result": "exact",
+          "size": 123,
+          "bound_fields": 1
+        },
+        "enemy-mark-pending-interrupt": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 2
+        },
+        "anm-manager-find-vm": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 0
+        },
+        "anm-vm-id-set-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "anm-vm-id-clear-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "transition-effect-factory": {
+          "result": "exact",
+          "size": 82,
+          "bound_fields": 2
+        },
+        "game-stage-transition-delay": {
+          "result": "exact",
+          "size": 92,
+          "bound_fields": 1
+        },
+        "game-enter-menu-state": {
+          "result": "exact",
+          "size": 119,
+          "bound_fields": 2
+        },
+        "script-viewer-worker-stop": {
+          "result": "exact",
+          "size": 101,
+          "bound_fields": 3
+        },
+        "bullet-reset-pool": {
+          "result": "exact",
+          "size": 45,
+          "bound_fields": 2
+        },
+        "enemy-manager-clear": {
+          "result": "exact",
+          "size": 118,
+          "bound_fields": 2
+        },
+        "main-set-next-game-mode": {
+          "result": "exact",
+          "size": 37,
+          "bound_fields": 0
+        },
+        "front-end-play-music": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 8
+        },
+        "game-manager-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "bound_fields": 1
+        },
+        "game-clear-linked-objects": {
+          "result": "exact",
+          "size": 66,
+          "bound_fields": 1
+        },
+        "game-update-faith-decay": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "bound_fields": 4
+        }
+      },
+      "rejected": {
+        "stage-lifecycle-destructor": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x1cc differs from manifest 0x1f3"
+        }
+      }
+    },
+    "cold-two": {
+      "passed": {
+        "enemy-end-spell": {
+          "result": "exact",
+          "size": 399,
+          "bound_fields": 20
+        },
+        "game-score-add-power": {
+          "result": "exact",
+          "size": 166,
+          "bound_fields": 4
+        },
+        "item-rank-add": {
+          "result": "exact",
+          "size": 42,
+          "bound_fields": 0
+        },
+        "gui-update-score-display": {
+          "result": "exact",
+          "size": 671,
+          "bound_fields": 36
+        },
+        "game-add-lives": {
+          "result": "exact",
+          "size": 141,
+          "bound_fields": 12
+        },
+        "anm-loaded-create-vm-variant0": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 5
+        },
+        "anm-loaded-set-sprite": {
+          "result": "exact",
+          "size": 356,
+          "bound_fields": 2
+        },
+        "enemy-sound-queue-sample": {
+          "result": "exact",
+          "size": 123,
+          "bound_fields": 1
+        },
+        "enemy-mark-pending-interrupt": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 2
+        },
+        "anm-manager-find-vm": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 0
+        },
+        "anm-vm-id-set-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "anm-vm-id-clear-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "transition-effect-factory": {
+          "result": "exact",
+          "size": 82,
+          "bound_fields": 2
+        },
+        "game-stage-transition-delay": {
+          "result": "exact",
+          "size": 92,
+          "bound_fields": 1
+        },
+        "game-enter-menu-state": {
+          "result": "exact",
+          "size": 119,
+          "bound_fields": 2
+        },
+        "script-viewer-worker-stop": {
+          "result": "exact",
+          "size": 101,
+          "bound_fields": 3
+        },
+        "bullet-reset-pool": {
+          "result": "exact",
+          "size": 45,
+          "bound_fields": 2
+        },
+        "enemy-manager-clear": {
+          "result": "exact",
+          "size": 118,
+          "bound_fields": 2
+        },
+        "main-set-next-game-mode": {
+          "result": "exact",
+          "size": 37,
+          "bound_fields": 0
+        },
+        "front-end-play-music": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 8
+        },
+        "game-manager-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "bound_fields": 1
+        },
+        "game-clear-linked-objects": {
+          "result": "exact",
+          "size": 66,
+          "bound_fields": 1
+        },
+        "game-update-faith-decay": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "bound_fields": 4
+        }
+      },
+      "rejected": {
+        "stage-lifecycle-destructor": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x1cc differs from manifest 0x1f3"
+        }
+      }
+    }
+  },
+  "controls": [
+    {
+      "label": "first-complete",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 133,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "mismatch",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 568,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "frame-constructor",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "mismatch",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 565,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "pair-copies",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "structural-exact",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 886,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1535,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "constructor-store-order",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "structural-exact",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 565,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "pair-operators",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "structural-exact",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 565,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "score-state-alias",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "structural-exact",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 572,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "stage-index-snapshot",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "structural-exact",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 566,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "player-position-member",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "structural-exact",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 566,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "final-source",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "structural-exact",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 566,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "cold-one",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "structural-exact",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 566,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "cold-two",
+      "comparisons": {
+        "allocate": {
+          "result": "mismatch",
+          "candidate_size": 139,
+          "target_size": 139,
+          "normalization_complete": true
+        },
+        "clear": {
+          "result": "structural-exact",
+          "candidate_size": 93,
+          "target_size": 93,
+          "normalization_complete": true
+        },
+        "position": {
+          "result": "structural-exact",
+          "candidate_size": 83,
+          "target_size": 83,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 566,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        }
+      }
+    }
+  ],
+  "restored_controls": ["memcpy pairs", "constructor store order", "Player member spelling"],
+  "private_campaign": ".analysis/gpt-6.1-sol/replay-stage-20261031",
+  "limitations": "Full BeginStage566/582, allocator139/139 and GameManager1538/1544 remain nonexact. All fields and fixed local destinations are retained. No fragment, constructor, original class/TU/storage, product/runtime/portability credit."
+}

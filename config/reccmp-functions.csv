@@ -1213,3 +1213,6 @@ GuiShowScoreNotice,0x004172E0,function
 GamePrepareAnimationSlots,0x00404450,function
 GameEnterMenuState,0x00404530,function
 GameClearLinkedObjects,0x00417770,function
+ReplayRestoreStagePosition,0x00428E10,function
+ReplayAllocateFrameData,0x0042AA50,function
+ReplayClearStageFrameData,0x0042AB20,function

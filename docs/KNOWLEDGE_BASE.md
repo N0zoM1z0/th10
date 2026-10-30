@@ -8371,3 +8371,45 @@ counted loop is retained. Target reloads Player after position/rebuild helpers
 and current-stage indices across stage helpers. These are concrete next source/
 alias leads, not permission to guess helper arity from stack words: live registers
 may supply additional meaningful arguments.
+
+
+## 2026-10-31 Replay stage helpers and complete BeginStage
+
+ReplayClearStageFrameData42AB20..42AB7C is93/all1 exact with manager ECX and stage
+EAX, plain RET. The stage sentinel has stride0C/base3C. Traversal captures next
+before releasing nonnull payload, conditionally unlinks both neighbors, clears
+payload.link next/previous and scalar-deletes4524A1. ReplayRestoreStagePosition
+428E10..428E62 is83/all2 exact with Player EAX and source pair ECX, plain RET.
+Both signed3CC/3D0 coordinates are copied before x87 conversions using real0.01f
+470B00; draw3C0/3C4 and option reset flags332C/33C4/345C/34F4 are written. Existing
+PlayerPositionPair assignment recovers this schedule; scalar/memcpy does not.
+Neither helper needs register declarations. Original class/TU/names stay unknown.
+
+Frame allocator42AA50..42AADA has two meaningful inputs, ESI stage and one stack
+manager, RET4. It constructs6284 bytes with complete memset/cursor/link reset,
+retains null construction and the following unchecked embedded-link address,
+walks the stage list tail and retains conditional successor insertion. Natural
+constructor/stdcall source is139/139 NONEXACT: fps-pointer LEA precedes recordEnd
+store instead of following it. Sole new field and five local destinations are
+preserved; extent equality is insufficient. Store-order control is restored.
+Ghidra's one-stack-parameter metadata does not establish the actual arity.
+
+Full BeginStage42A450..42A695 includes the skipped3-byte LEA42A60D..42A60F, hence
+582 physical bytes versus579 reachable addresses. Actual helpers and rereads,
+post-loop reset flags, real424D90 runtime reset, existing pair assignment and
+shared GameScoreState storage move native1000 to566/582. Known score/power/faith/
+timer/rank and unknown-offset views use existing474C40 aggregate; character/shot
+at+28/+2C stay inside the playback loop, unlike scalar aliases that hoist them.
+Recording's load/store order and both induction bases now agree. All five real
+callee identities remain in order. Native24 fields/nine locals versus target25/
+ten still differ in Player reload, registers/alignment and final index schedule.
+No partial-owner credit. memcpy expands886 and member spelling stays566; both
+are restored and parked. No fake clobber, padding or volatile storage is inferred.
+
+Two independent29-input canonical colds pass176/all3 and24 same-image existing
+contracts3120/all113 twice. Complete stage destructor460/499 explicitly rejects.
+First scoped run cold-passes cleanup66/callback7 through unchanged28-input recipes;
+no recipe migrates. Current GameManager1538/1544 remains nonexact. Three new source
+mappings yield1217/authored699/backlog188; authored exact104828/275863 across511,
+canonical172932/1388. Extents/origins/denominator and later phases are unchanged.
+See the [complete proof](evidence/replay-stage-helpers-20261031/README.md).

@@ -1212,3 +1212,6 @@ GuiShowScoreNotice
 GamePrepareAnimationSlots
 GameEnterMenuState
 GameClearLinkedObjects
+ReplayRestoreStagePosition
+ReplayAllocateFrameData
+ReplayClearStageFrameData

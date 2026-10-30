@@ -127,6 +127,7 @@ typedef char ReplayListNodeSizeIs0C[
 
 struct ReplayFrameData
 {
+    ReplayFrameData();
     ReplayRecData records[3600];
     ReplayRecData *recordEnd;
     unsigned char fpsSamples[3600];
