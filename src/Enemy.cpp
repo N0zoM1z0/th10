@@ -1,6 +1,7 @@
 #include "EnemyGameState.hpp"
 #include "GameErrorContext.hpp"
 #include "Enemy.hpp"
+#include "Chain.hpp"
 #include "EclVm.hpp"
 #include "GameScoreState.hpp"
 #include "PlayerCollision.hpp"
@@ -213,7 +214,7 @@ typedef char EnemyEclResourceBaseLookupTableAt08C[
 struct EnemyEclResourceView : EnemyEclResourceBaseView
 {
     EnemyEclResourceView() {}
-    ~EnemyEclResourceView();
+    __declspec(noinline) ~EnemyEclResourceView();
 
     virtual int LoadPackage(const unsigned char *packageData);
     virtual int LoadFile(const char *filename);
@@ -266,7 +267,6 @@ extern EnemyManagedVmRegistryView *g_EnemyManagedVmRegistry;
 extern void *g_EnemyCallbackManager;
 extern EnemyCriticalSectionView g_EnemyCallbackCriticalSection;
 extern unsigned char g_EnemyCallbackLockDepth;
-extern unsigned char g_EnemyLifecycleFlags;
 extern EnemyAnimationOwnerView *g_EnemyAnimationOwner;
 extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
 extern char g_EnemyEclFilenameBuffer[];
@@ -296,8 +296,6 @@ EnemyEclInstructionView *EnemyLookupEclSubroutine(
 void __stdcall EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock);
 
-void __fastcall EnemyUnlinkCallbackNode(
-    EnemyCallbackNodeView *node, void *manager);
 void EnemyRegisterUpdateCallbackNode(
     EnemyCallbackNodeView *node, int priority, void *manager);
 void EnemyRegisterDrawCallbackNode(
@@ -1119,12 +1117,13 @@ static EnemyCallbackNodeView *CreateEnemyCallbackNode(EnemyChainCallback callbac
 
 static void RemoveEnemyCallbackNode(EnemyCallbackNodeView *node)
 {
+    th10::Chain *chain = th10::g_Chain;
     if (node == NULL)
         return;
 
     EnterCriticalSection(&g_EnemyCallbackCriticalSection);
     ++g_EnemyCallbackLockDepth;
-    EnemyUnlinkCallbackNode(node, g_EnemyCallbackManager);
+    chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(node));
     LeaveCriticalSection(&g_EnemyCallbackCriticalSection);
     --g_EnemyCallbackLockDepth;
 }
@@ -1306,29 +1305,22 @@ EnemyManagerView::~EnemyManagerView()
     RemoveEnemyCallbackNode(manager->updateCallbackNode);
     RemoveEnemyCallbackNode(manager->drawCallbackNode);
 
-    EnemyEclResourceView *resource = manager->scriptDatabase;
     for (int i = 0; i < 32; ++i)
     {
-        if (resource->files[i] != NULL)
-            free(resource->files[i]);
+        if (manager->scriptDatabase->files[i] != NULL)
+            free(manager->scriptDatabase->files[i]);
     }
 
+    EnemyEclResourceView *resource = manager->scriptDatabase;
+    // The complete target retains the real resource destructor out of line.
     if (resource != NULL)
         delete resource;
     manager->scriptDatabase = NULL;
 
-    if ((g_EnemyLifecycleFlags & 9u) == 0)
+    if ((g_GameStartupState.runtimeFlags & 9u) == 0)
     {
         for (int i = 0; i < 4; ++i)
-        {
-            void *loaded = g_EnemyAnimationOwner->resourceSlots[i];
-            if (loaded != NULL)
-            {
-                EnemyDestroyAnimationResource(g_EnemyAnimationOwner, loaded);
-                free(loaded);
-                g_EnemyAnimationOwner->resourceSlots[i] = NULL;
-            }
-        }
+            g_AnmRenderManagerView->ReleaseAnm(i + 9);
     }
 
     g_EnemyManager = NULL;

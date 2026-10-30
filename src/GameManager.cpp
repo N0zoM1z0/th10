@@ -369,18 +369,7 @@ int GamePrepareDummyMusic()
     return 0;
 }
 
-// Minimum shared-address view consumed by startup at 474C40..474CA3.
-// These observed offsets do not establish an original allocation or C++ owner.
-struct GameStartupStateView
-{
-    GameScoreStateView score;
-    int rankResetCounter;
-    unsigned int runtimeFlags;
-};
-typedef char GameStartupStateFlagsAt60[
-    (offsetof(GameStartupStateView, rankResetCounter) == 0x5c &&
-     offsetof(GameStartupStateView, runtimeFlags) == 0x60) ? 1 : -1];
-extern GameStartupStateView g_GameStartupState;
+// Shared startup-state offsets are maintained in GameScoreState.hpp.
 
 // 0x417870: actual registration and full startup/error paths. The two callback
 // pointer source types are hypotheses; VC7.1 represents this nonvirtual member
@@ -550,7 +539,17 @@ extern GameManager *g_GameManager;                         // 0x477810
 extern int g_GameComparison474C80;
 extern int g_StageScriptGlobal4923A8;
 namespace th10 { namespace leaf {
-    unsigned char *Fn00418A90(unsigned char *owner);
+// Existing complete418A90 owner: increment the observed value50 with a cap9.
+__declspec(noinline) unsigned char *Fn00418A90(unsigned char *owner)
+{
+    GameScoreStateView *state = reinterpret_cast<GameScoreStateView *>(owner);
+    unsigned int *value50 = reinterpret_cast<unsigned int *>(state->unknown44 + 12);
+    unsigned int value = *value50 + 1;
+    *value50 = value;
+    if (static_cast<int>(value) >= 10)
+        *value50 = 9;
+    return owner;
+}
 } }
 
 // Target417C80. Complete terminal/reuse transition owner, not an allocation release.
@@ -559,48 +558,44 @@ namespace th10 { namespace leaf {
 void __stdcall GameManagerCleanup(GameManager *manager)
 {
     GameFinalizeStatistics42B1E0(g_GameStatisticsRows);
-    g_GameRuntimeFlags &= ~3u;
-    int transition = g_GameTransitionState;
+    g_GameStartupState.runtimeFlags &= ~3u;
     g_PlayerTimerScale = 1.0f;
-    if (transition == 10)
+    if (g_MainSupervisorView.nextGameMode == 10)
     {
         AsciiManagerView *ascii = g_AsciiManagerView;
-        if (ascii->auxiliaryVm89A4 == 0)
+        int &vmId = ascii->auxiliaryVm89A4;
+        AnmFloat3View position(480.0f, 392.0f, 0.0f);
+        if (vmId == 0)
         {
-            AnmFloat3View position(480.0f, 392.0f, 0.0f);
-            ascii->auxiliaryVm89A4 =
-                ascii->asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
-            transition = g_GameTransitionState;
+            vmId =
+                g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
         }
-        if (g_GameComparison474C80 == g_GameStartupMode)
-            g_GameRuntimeFlags |= 1u;
+        if (g_GameStartupState.score.nextStage == g_GameStartupState.score.selectedStage)
+            g_GameStartupState.runtimeFlags |= 1u;
     }
-    else if (transition == 11)
+    else if (g_MainSupervisorView.nextGameMode == 11)
     {
         g_AsciiManagerView->EnsureSelectionVm(224.0f, 416.0f);
-        g_GameRuntimeFlags |= 2u;
-        transition = g_GameTransitionState;
+        g_GameStartupState.runtimeFlags |= 2u;
     }
-    else if (transition == 4 || transition == 15)
+    else if (g_MainSupervisorView.nextGameMode == 4 || g_MainSupervisorView.nextGameMode == 15)
     {
         g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
-        transition = g_GameTransitionState;
     }
-    else if (transition == 13)
+    else if (g_MainSupervisorView.nextGameMode == 13)
     {
         g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
-        if (g_GameComparison474C80 != g_GameStartupMode)
+        if (g_GameStartupState.score.nextStage != g_GameStartupState.score.selectedStage)
         {
             th10::leaf::Fn00418A90(g_GameStageState);
-            g_GameRuntimeFlags |= 8u;
+            g_GameStartupState.runtimeFlags |= 8u;
         }
-        g_GameRuntimeFlags |= 1u;
-        transition = g_GameTransitionState;
+        g_GameStartupState.runtimeFlags |= 1u;
     }
 
-    if ((g_GameRuntimeFlags & 2u) == 0)
+    if ((g_GameStartupState.runtimeFlags & 2u) == 0)
     {
-        if (transition != 14 && transition != 15)
+        if (g_MainSupervisorView.nextGameMode != 14 && g_MainSupervisorView.nextGameMode != 15)
         {
             ReplayManager *replay = g_ReplayManager;
             if (replay != NULL)
@@ -681,7 +676,7 @@ void __stdcall GameManagerCleanup(GameManager *manager)
         memset(items->items, 0, 0x21cea0);
     }
 
-    if ((g_GameRuntimeFlags & 9u) == 0)
+    if ((g_GameStartupState.runtimeFlags & 9u) == 0)
     {
         EnemyManagerView *enemy = g_EnemyManager;
         if (enemy != NULL)
@@ -729,10 +724,14 @@ void __stdcall GameManagerCleanup(GameManager *manager)
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
     g_GameManager = NULL;
-    if ((g_GameRuntimeFlags & 0x22u) == 0)
-        FrontEndQueueSoundCommand("dummy",
-            (g_GameConfigurationFlags491D78 & 0x10u) != 0 ? 4 : 3, 0);
-    unsigned int finalFlags = g_GameRuntimeFlags;
+    if ((g_GameStartupState.runtimeFlags & 0x22u) == 0)
+    {
+        if ((g_GameConfigurationFlags491D78 & 0x10u) != 0)
+            FrontEndQueueSoundCommand("dummy", 4, 0);
+        else
+            FrontEndQueueSoundCommand("dummy", 3, 0);
+    }
+    unsigned int finalFlags = g_GameStartupState.runtimeFlags;
     g_GameStartupCounter = 1;
     g_StageScriptGlobal4923A8 = (finalFlags & 1u) != 0 ? 0 : static_cast<int>(0xff000000u);
 }

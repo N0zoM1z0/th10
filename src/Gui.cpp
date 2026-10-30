@@ -1979,6 +1979,35 @@ void __stdcall GuiCleanupResources(GuiView *gui)
     gui->bossGaugeSegmentCount = 0;
 }
 
+// Target414570..4145E8 prepares the retained GUI for another stage.
+// Uses the same reviewed ANM slot28 and message storage as resource cleanup.
+void GamePrepareGuiReuse414570(GuiView *gui)
+{
+    GuiMessageVmView *message = gui->message;
+    if (message != NULL)
+    {
+        delete message;
+        gui->message = NULL;
+    }
+    if ((g_GuiGameFlags & 9u) == 0)
+    {
+        AnmLoadedView **slot = &g_AnmRenderManagerView->loadedAnms[28];
+        if (*slot != NULL)
+        {
+            (*slot)->Release();
+            ::operator delete(*slot);
+            *slot = NULL;
+        }
+        gui->stageUiAnm = NULL;
+        if (gui->messageFile != NULL)
+        {
+            free(gui->messageFile);
+            gui->messageFile = NULL;
+        }
+        gui->messageFile = NULL;
+    }
+}
+
 // Target 0x004145F0-0x0041482D. Member destruction follows this body naturally:
 // bossPositionVm, then displayVms5..displayVms0, each array in reverse order.
 GuiView::~GuiView()

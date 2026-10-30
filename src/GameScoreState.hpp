@@ -55,6 +55,19 @@ typedef char GameScoreStateStageFields[
 typedef char GameScoreStateSizeIs5C[
     (sizeof(GameScoreStateView) == 0x5c) ? 1 : -1];
 
+// Minimum shared-address view consumed by startup at 474C40..474CA3.
+// These observed offsets do not establish an original allocation or C++ owner.
+struct GameStartupStateView
+{
+    GameScoreStateView score;
+    int rankResetCounter;
+    unsigned int runtimeFlags;
+};
+typedef char GameStartupStateFlagsAt60[
+    (offsetof(GameStartupStateView, rankResetCounter) == 0x5c &&
+     offsetof(GameStartupStateView, runtimeFlags) == 0x60) ? 1 : -1];
+extern GameStartupStateView g_GameStartupState;
+
 extern GameScoreStateView g_GameScoreState;
 extern float g_PlayerTimerScale;
 

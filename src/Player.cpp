@@ -380,15 +380,11 @@ struct PlayerCriticalSectionView { unsigned char storage[0x18]; };
 typedef char PlayerCriticalSectionMatchesSdk[
     (sizeof(PlayerCriticalSectionView) == sizeof(CRITICAL_SECTION)) ? 1 : -1];
 extern PlayerCriticalSectionView g_PlayerCallbackCriticalSection;
-void __fastcall PlayerUnlinkCallbackNode(
-    PlayerCallbackNodeView *node, void *manager);
 void PlayerMarkManagedVmPending(unsigned int vmId);
 void PlayerMarkManagedVmPendingWithManager(
     AnmRenderManagerView *manager, unsigned int vmId);
 void GuiSetLivesDisplayCount(GuiView *gui, int count);
 void GuiSetLivesDisplayCountMember(GuiView *gui, int count);
-void PlayerMarkResourceVmsPending(void *resource);
-void PlayerDestroyAnimationCacheContents(void *cache);
 
 // Ordinary source spelling for the .sht loader reviewed at 0x426520.
 // The target/native linked graph uses ESI Player and EAX filename; the original
@@ -803,13 +799,14 @@ void PlayerResetRuntimeState(Player *player)
 
 static void RemovePlayerCallbackNode(PlayerCallbackNodeView *node)
 {
+    th10::Chain *chain = th10::g_Chain;
     if (node == NULL)
         return;
 
     EnterCriticalSection(
         reinterpret_cast<LPCRITICAL_SECTION>(&g_PlayerCallbackCriticalSection));
     ++g_PlayerCallbackLockDepth;
-    PlayerUnlinkCallbackNode(node, g_PlayerCallbackManager);
+    chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(node));
     LeaveCriticalSection(
         reinterpret_cast<LPCRITICAL_SECTION>(&g_PlayerCallbackCriticalSection));
     --g_PlayerCallbackLockDepth;
@@ -823,17 +820,13 @@ Player::~Player()
 
     if ((g_PlayerLifecycleFlags & 1) != 0)
     {
-        PlayerMarkResourceVmsPending(resource);
+        g_AnmRenderManagerView->MarkLoadedVmsForDeletion(
+            static_cast<AnmLoadedView *>(resource));
         g_PlayerSharedOptionData = optionData;
     }
     else
     {
-        if (g_PlayerVmManager->playerCache != NULL)
-        {
-            PlayerDestroyAnimationCacheContents(g_PlayerVmManager->playerCache);
-            free(g_PlayerVmManager->playerCache);
-            g_PlayerVmManager->playerCache = NULL;
-        }
+        g_AnmRenderManagerView->ReleaseAnm(8);
         if (optionData != NULL)
         {
             free(optionData);

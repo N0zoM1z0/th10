@@ -1333,8 +1333,8 @@ extern "C" AnmMatrixView *__stdcall D3DXMatrixMultiply(
     AnmMatrixView *output, const AnmMatrixView *left,
     const AnmMatrixView *right);
 
-extern "C" void __stdcall EnterCriticalSection(void *criticalSection);
-extern "C" void __stdcall LeaveCriticalSection(void *criticalSection);
+extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(void *criticalSection);
+extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void *criticalSection);
 extern "C" __declspec(dllimport) void __stdcall Sleep(
     unsigned long milliseconds);
 extern "C" long __stdcall D3DXCreateTexture(

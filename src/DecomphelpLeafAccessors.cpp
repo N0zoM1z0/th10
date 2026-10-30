@@ -2667,15 +2667,7 @@ __declspec(noinline) u8 * Fn0040CF90(u8 *p0, u32 p1)
     }
     return 0;
 }
-// 0x00418a90: generated
-__declspec(noinline) u8 * Fn00418A90(u8 *p0)
-{
-    u32 v = *(u32 *)(p0 + 0x50) + 1;
-    *(u32 *)(p0 + 0x50) = v;
-    if ((i32)v >= 0xa)
-        *(u32 *)(p0 + 0x50) = 9;
-    return p0;
-}
+// Complete value50 increment418A90 is maintained with its GameManager caller.
 // 0x004423c0: generated
 __declspec(noinline) u32 Fn004423C0(u32 p0, u32 p1)
 {

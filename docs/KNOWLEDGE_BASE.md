@@ -8530,3 +8530,39 @@ unchanged. No new mappings, origins, boundaries, denominator or later-phase
 claims. Authored exact becomes 107100/275863 across 517 owners; canonical codegen
 175214/1395, mappings1220/authored702/backlog185. See the
 [complete startup proof](evidence/game-startup-initialize-20261031/README.md).
+
+
+## 2026-10-31 Complete Enemy teardown and cleanup declaration repair
+
+EnemyManagerView teardown40D530..40D65B is complete300/all25 exact in two
+34-input colds: private EAX, ten fixed locals and two returns. Actual Chain
+unregister caches the chain before each lock. Each of32 script frees rereads
+the resource owner. Real ECL-resource destruction remains out of line and its
+existing36/all2 body stays exact. Target releases/deletes ANM slots9..12 with
+the real slot bounds/clear protocol; the former facade/free path was incorrect.
+Shared startup-state offsets0/5C/60 remove the final hoisted byte read without
+claiming an original allocation/class owner.
+
+Target KERNEL32 IAT4660B0/4660B4 is Enter/LeaveCriticalSection. Correcting the two
+missing dllimport declarations alone changes four strict same-graph comparisons
+from rejected to exact: Chain131 twice, laser91 and Stage499. Canonical GUI
+GL/GS/EHs also restores its factory136. Existing canonical profiles stay fixed.
+Player now uses actual Chain/ANM marking and slot8 Release/delete;333/325 remains
+nonexact. Encrypt has real AL/five-stack/RET20; ordinary stdcall corrects source
+cleanup but286/307 stays nonexact. Save564/564 has unlike checksum scheduling;
+its original source is retained after unsuccessful pointer/helper controls.
+
+GUI reuse414570..4145E8 is121/all7 exact: unconditional nullable message destroy/
+delete, conditional slot28 Release/delete, stageUiAnm clear and message-file
+free with both observed null stores. Private EBX, four fixed locals, one RET.
+Only value50 increment418A9020 moves from the legacy TU to its GameManager
+caller; raw equality and credit are retained. No original naming/TU/data claim.
+
+Both produced images pass46 existing contracts6261/all275 and protected startup
+1009/all102/static28. All prior five graph rejections now pass; none is waived.
+First scoped run also cold-passes old resource36, Chain262 and startup1009
+recipes. Full cleanup1098/1105, GUI579/574 and message97/97 remain nonexact.
+No comparator, runtime, product or portability closure is claimed. Authored
+exact becomes107521/275863 across519 owners; canonical175635/1397, mappings1221/
+authored703/backlog184. See the
+[complete teardown proof](evidence/enemy-manager-teardown-20261031/README.md).

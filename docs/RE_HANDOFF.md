@@ -4,27 +4,79 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint makes the complete1009-byte GameManager startup
-exact: all102 fields,40 fixed local destinations,30 direct calls and both RET4
-exits. A shared final creation result recovers control flow; an observed byte
-conversion and score comparison recover the last three opcode bytes.
-Compiler profiles and the comparator remain unchanged. No experiment is running.
+selected lane. This checkpoint closes complete Enemy teardown300 and GUI
+reuse121, adding421 authored exact bytes. Real lock imports and ANM allocation
+release replace incorrect declarations/facades. Existing value50 increment20
+retains its credit after consolidation. Full GameManager cleanup1098/1105 and
+Player teardown333/325 remain nonexact. No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 107,100 / 275,863 |
-| Authored exact owners | 517 |
-| Total canonical exact owners / codegen bytes | 1,395 / 175,214 |
-| Source mappings / authored mappings / authored exact backlog | 1,220 / 702 / 185 |
+| Reviewed authored owned bytes exact | 107,521 / 275,863 |
+| Authored exact owners | 519 |
+| Total canonical exact owners / codegen bytes | 1,397 / 175,635 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 184 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: complete GameManager startup
+## Latest source checkpoint: Enemy teardown and real lock imports
+
+[The complete proof](evidence/enemy-manager-teardown-20261031/README.md) adds
+EnemyManagerView teardown300/all25 and GUI reuse121/all7. Full target/native
+inventories agree on private EAX/EBX receivers,10/4 fixed locals and2/1 returns.
+Existing value50 increment20 remains raw-equal after moving into GameManager.cpp;
+only its stable recipe migrates. Other legacy bodies stay unchanged.
+
+Enemy now uses actual Chain unregister with a cached chain, rereads the script
+owner on each of32 frees, retains actual ECL-resource destruction out of line,
+and releases/deletes ANM slots9..12 through the real interface. The old facade
+and loaded-owner free were incorrect. The existing36-byte resource destructor
+retains its full exact proof. Sharing the existing startup-state view through
+GameScoreState.hpp removes the last two flag-load bytes; offsets5C/60 stay fixed.
+This minimum shared-address view is not original allocation/class ownership.
+
+Two missing dllimport declarations caused direct calls instead of target IAT
+lock calls. The controlled34-input before/after pair differs only in this
+header: both Chain insertions131, laser factory91 and Stage destructor499 switch
+from strict rejection to full equality. Canonical GUI /GL /GS /EHs restores its
+factory136 too. Player /EHs retains its real member-unwind/stack interface but
+does not close its body. Other old profiles/recipes remain unchanged.
+
+GUI reuse destroys the message and conditionally releases slot28, stageUiAnm
+and messageFile, retaining both observed null stores. Player now uses real
+Chain/ANM marking and slot8 release/scalar delete, replacing the same allocation
+mistake. Ordinary Encrypt stdcall recovers AL plus five stack operands/RET20;
+it remains286/307. Statistics source is unchanged; actual save/FileSystem
+definitions give564/564, still unequal in checksum scheduling.
+
+Two zero-reuse34-input colds pass441/all32:421 new plus20 retained. Both produced
+images pass46 selected existing contracts6261/all275, plus protected startup
+1009/all102 and qualified static28. Producer proofs retain their actual paths;
+frozen copies match PE/MAP/PDB identities and independent complete decoding.
+First run also explicitly replays old resource36, Chain262 and startup1009
+recipes. No comparator changes, host failure tests or historical full replay.
+
+Current84 source/header pins and full inventories are in the proof. Private
+campaign: cleanup-context-20261031. Earlier startup-controlflow/replay-restore
+freezes predate these declarations, source bodies and shared-view movement;
+verify pins before cache reuse. One mapping is new; boundaries, origins and the
+authored denominator stay fixed. Runtime/product/portability remain later work.
+
+Next large-owner residuals: cleanup1098/1105 differs in transition11/13 flag
+publication,4/15 block placement and the VM-call resource/position register
+schedule. Player333/325 retains an extra final EH-state store; GUI579/574 and
+message97/97 remain unequal. Save564/564 still differs in record-checksum cursor
+allocation and tail-unroll phase. Pointer/helper and bitfield controls were
+unhelpful and are parked. GameManager update1538/1544 remains open. Do not infer
+exactness from these lengths or repeat controls without a new prediction.
+
+## Previous source checkpoint: complete GameManager startup
+
 
 [The complete proof](evidence/game-startup-initialize-20261031/README.md) adds
 1009 authored exact bytes for GameManagerInitialize at 417870..417C60. Complete
