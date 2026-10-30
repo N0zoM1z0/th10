@@ -1,5 +1,10 @@
 # Type-0 laser update, draw and Player contact
 
+Follow-up2026-10-30: Draw41D7C0 now passes two independent complete two-input
+canonical colds,173/all10 fields and its fixed JP. Both actual angle/renderer
+callees remain complete exact. This supersedes the Draw168/172 diagnostics below;
+see the [current complete draw proof](../laser-draw-exact-20261030/README.md).
+
 Follow-up2026-10-30: Player contact4267F0 now passes two independent complete
 canonical four-input cold comparisons,471/all8 fields/14 local branches and all
 three RET12 exits. The actual1001/832-byte laser callers stay exact. The hit

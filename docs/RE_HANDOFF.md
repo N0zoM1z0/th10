@@ -2,6 +2,34 @@
 
 ## Current checkpoint
 
+EnemyLaserLineView::Draw41D7C0..41D86C /173 now closes44 instructions/all10
+fields/one fixed JP and plain RET. The sole absolute entry ref is pointer-table
+slot46DA6C; no direct E8/E9 entry/interior ref. A real primary VM pointer plus
+ordinary Float3 destination helper recovers cached VM lifetime and target stores,
+current-position/state/renderer reloads. Two independent canonical two-input
+/GL /GS colds pass173/all10. First also explicitly replays its actual angle94
+and renderer216 callees:483/all37. Four same-image strict guards include contact471,
+954/all45. No forced inline, ABI/register annotation or flag change. See the
+[complete drawing proof](evidence/laser-draw-exact-20261030/README.md).
+
+The new helper is not a separate mapping or proven original inline boundary.
+Authored exact is100,640/275,817 across493 owners; total codegen168,737/1369.
+Source presence1206/authored688/backlog195, with boundary/origin unchanged.
+Product/runtime, original type/TU/data ownership and portability remain open.
+
+The complete9964-byte executor was first revalidated after finding its old
+five-input cache's AnmManager.hpp pin stale. A current five-input warm relink
+reuses five verified newer Player-cold objects; all350 target bindings pass and
+exactly the old four ordinary differences remain. Seven bounded helper models
+from the preceding471-byte inline-lifetime result are all restored/rejected:
+conditional argument helpers and record Create retain unwanted calls/resize,
+trivial value factory is neutral, radial helpers reverse additional operands.
+No ANM source/header edit or parent credit remains. Current valid baseline is
+`.analysis/gpt-6.1-sol/anm-executor-inline-context-20261030/entry-current-context.json`.
+Do not reuse the older header epoch or reopen these specific controls without
+new evidence. Both restored CPP/header hashes and all native control exits are
+retained with the drawing receipt.
+
 Player::CheckLaserContact4267F0..4269C6 /471 is now complete exact:132
 instructions/all8 address fields/14 fixed local branches and all three RET12
 exits. Both actual callers41D6BE (type0) and41E935 (type1) supply ECX Player,

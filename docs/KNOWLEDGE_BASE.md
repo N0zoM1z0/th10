@@ -7805,3 +7805,29 @@ those controls are restored/parked. Authored exact gains471 to100,467/492 owners
 with source presence/origin/boundaries unchanged. The new helper is not a new
 source mapping or proven original inline boundary. See the
 [complete cold/field/interface proof](evidence/player-laser-contact-exact-20261030/README.md).
+
+## 2026-10-30 Type0 laser drawing complete exact and executor scope control
+
+`EnemyLaserLineView::Draw41D7C0..41D86C /173` closes44 instructions/all10 fields,
+one fixed JP6E->A8 and plain RET. Target has7 preceding/3 following CC bytes,
+sole absolute entry ref46DA6C and no E8/E9 entry/interior refs. Actual line ECX
+becomes ESI; primary VM is cached while rotation/flag4/rendering use it. Position
+stores are VM+334, and current traveled/position/global renderer are reread after
+the first renderer call. A real VM pointer and ordinary Float3 destination helper
+reproduce the exact schedule/address bases without forced inlining or ABI tricks.
+
+Two independent two-input /GL /GS colds pass173/all10; first explicitly includes
+its actual AddNormalizeAngle94/all6 and renderer216/all21 callees. Existing
+contact471/all8 also stays strict exact in that same image,954/all45 total.
+Source presence/origin/boundaries are unchanged; authored exact gains173 to
+100,640/493 owners. Original helper/class/TU/data ownership and runtime/portability
+remain independent. See [the complete draw proof](evidence/laser-draw-exact-20261030/README.md).
+
+The old five-input executor cache had a later-stale AnmManager.hpp pin. A fresh
+current-source five-object warm relink revalidates all350 bindings and the same
+four ordinary residual bytes,9960/9964. Seven new ordinary helper/record models
+motivated by the preceding rotation inline-lifetime evidence are rejected and
+fully restored. Conditional helpers/record Create retain calls or change extent;
+value factory is neutral; radial helpers reverse extra components. They add no
+exact credit or new current source. Use the new inline-context entry-current
+receipt instead of treating the older header epoch as current.

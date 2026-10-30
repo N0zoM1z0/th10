@@ -1,5 +1,12 @@
 # ANM timer call boundary — 2026-10-30
 
+Later2026-10-30 source-epoch note: the five-input cache below has an obsolete
+AnmManager.hpp pin after a subsequent header update. A current five-object warm
+relink preserves all350 parent bindings and the same four ordinary residuals;
+seven new helper controls are restored. Use the [current scope/control receipt](../laser-draw-exact-20261030/README.md)
+and its inline-context entry-current cache. The historical timer acceptance is
+unchanged; the old cache must not be treated as current without input validation.
+
 The actual WAIT callee AnmVmTimerView::Decrement at **00428DD0..00428DE3** is
 now complete20-byte exact, including its sole field, in two independent canonical
 cold compilations. Add remains88/all4 exact. **ExecuteScript remains9960/9964
