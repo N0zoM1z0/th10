@@ -17,11 +17,10 @@ inline unsigned short EndingRecordTime(const unsigned char *p)
     memcpy(&value, p, sizeof(value));
     return value;
 }
+// Native scalar view matching the observed i386 dword operand load.
 inline int EndingRecordInt(const unsigned char *p, int operand = 0)
 {
-    int value;
-    memcpy(&value, p + 4 + operand * 4, sizeof(value));
-    return value;
+    return *reinterpret_cast<const int *>(p + 4 + operand * 4);
 }
 inline unsigned char *EndingRecordNext(unsigned char *p)
 {

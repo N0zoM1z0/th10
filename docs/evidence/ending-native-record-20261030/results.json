@@ -1,0 +1,2688 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "graph": {
+    "source": "src/Ending.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/FrontEnd.cpp",
+      "src/ScriptViewer.cpp",
+      "src/ScriptViewerWorker.cpp",
+      "src/FileSystem.cpp",
+      "src/Main.cpp",
+      "src/Chain.cpp",
+      "src/RandomMath.cpp",
+      "src/DecomphelpLeafAccessors.cpp",
+      "src/TransitionEffect.cpp",
+      "src/Sound.cpp",
+      "src/Player.cpp",
+      "src/GameErrorContext.cpp",
+      "src/PbgArchive.cpp",
+      "src/GuiMessageLeaves.cpp",
+      "src/Gui.cpp",
+      "src/VmIdInterrupt.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS",
+      "/EHs"
+    ],
+    "entry_symbol": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "support_profiles": {
+      "src/GuiMessageLeaves.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Gui.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ]
+    }
+  },
+  "input_pins": {
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/DecomphelpLeafAccessors.cpp": "738c25b4736c20ddd041ac7b93f81c714d7aa27321853c0c7c6fa734ac26671f",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Ending.cpp": "3afddd4f66bc9bc665eee16061d59e86ae8e36ea2b92725cbddf25c3c88f6569",
+    "src/Ending.hpp": "db731c523902705e8d361893655b98d661b63f51faed45ae4d2010255a04b15a",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "d632e60fefce7f3d830c4bad5faeb38f9f0ac2ea88a07d800485b37f9034f946",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "a2940382f3f8aff0e96dceb5262067eea5b36c85b1b503cae984505dffb38e91",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiMessageLeaves.cpp": "7f0b02c9037056b3613d8322b4da2adc524a10d17ca29f1247159fb5843edb12",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.cpp": "3fa6b87037d280bcd7f25d05cf89b0f820aca16b3b47701a7d03372148e1587a",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.cpp": "b9804acbd14400dbf450bc819400caeb1e8fc45dc9a5c21f14ed8fdad9c575c1",
+    "src/ScriptViewer.hpp": "d2bdd5dc267c1f76a32df7d0ee7b0507fc1854933c33e2bd8075d2b318ee5ab2",
+    "src/ScriptViewerOwners.hpp": "d60658947239e71d21fbeab67dccaf541582e8cce0d12d6db689fe384d0b564d",
+    "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "diagnostic_receipt": {
+    "artifact_dir": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ending-run-context-20261030/final-source",
+    "compiled_inputs": [
+      "src/Ending.cpp",
+      "build/gpt-6.1-sol/ending-run-context-20261030/final-source/link-anchors.c",
+      "build/gpt-6.1-sol/ending-run-context-20261030/final-source/link-anchors.c"
+    ],
+    "reused_inputs": {
+      "src/AnmManager.cpp": "b3857558819a98fd1077aeb49637524350aa081ecda75d86a983c9ece7809f2d",
+      "src/AnmVmCreate.cpp": "5f50e01c57c80cfca7fd9648dc4363ceffd9b6efc40ba9bebf1ceb0b65ab60c9",
+      "src/AnmVmId.cpp": "1572970f1faf2db61ea3aba6588e7582f94fd94bac6a4705e9f5f1572cf9bf47",
+      "src/EnemyEclDispatcher.cpp": "caa65dc5306a75f94c16ab33567685d09f53fdb95c46dc47c590d7368f5519fe",
+      "src/FrontEnd.cpp": "ecfec1e6ff09da1ece743aefed3db4869d2ca2accf50fbb0e1f5527302af4235",
+      "src/ScriptViewer.cpp": "aec41d009f1e008d6c6376728248b47bcd28eb1776bf92d67167c565efb7e654",
+      "src/ScriptViewerWorker.cpp": "9d44726acb68a7ff261d693e69fcabab0b10e25ab010332b6d61856640ff1260",
+      "src/FileSystem.cpp": "0905a4c307232658f20175c6f427c12cfae3787974a968a31f39b0620692ee98",
+      "src/Main.cpp": "366ceaa82f502094f877a5719cbbd18f4ac53b38729c542c7189efcbffb060f8",
+      "src/Chain.cpp": "1f099f34a536cf50c9660c0081c79d8b78ea3eeb959d58f80cc0c3120decfed1",
+      "src/RandomMath.cpp": "73429ac5fcd0d86fe3409e6608707b5963e2d10f4570d3d902a9bdb4e9603d22",
+      "src/DecomphelpLeafAccessors.cpp": "a63ccf8f5b5e534cebca006e8f03a51ef10e4a4ec4bf64cbac1a5efdcd41ae31",
+      "src/TransitionEffect.cpp": "7fd1a785ba5c0deca576dc3002341d6625c142b8ef5eca2c150f26ee03e8546a",
+      "src/Sound.cpp": "84c1ec11d07ac244ddb42b6575bc1e0f8be25bb331ea81879a3ed55807ec02fd",
+      "src/Player.cpp": "3f63b8f7544fd5b920b04051f1e26b06d43bb01f80857f3b03e6a7bf3286a52f",
+      "src/GameErrorContext.cpp": "559f187e04e7b9f4eda08b2370065e50815e485ed426b206ce43852d0b270da1",
+      "src/PbgArchive.cpp": "cad1155cb4bb1da5cc4a49a596c727cfb0bbb4e2bd1d5ab0e89a8bd273d7699a",
+      "src/GuiMessageLeaves.cpp": "e33b516d1530bb44d0e71434cee3cb9d7faa4c132915ea4371bc2c1bc8dcfc16",
+      "src/Gui.cpp": "eb6746771de24df36582af244928cde459841839c4792ffec8bc599bbcd55ac4",
+      "src/VmIdInterrupt.cpp": "e7b80268bb7e2c1533f7dc20c4ebe25de27cf62299fb841f787f3e3ada099db6"
+    },
+    "image_sha256": "a6e491d04649a5e8446120d4861795872447513d0cfa857666e9f70901973f63",
+    "object_sha256": {
+      "src/Ending.cpp": "25cb56df26bdd085f2e26eae1357969b697006739bbff53ea231a97b07ea3531",
+      "src/AnmManager.cpp": "b3857558819a98fd1077aeb49637524350aa081ecda75d86a983c9ece7809f2d",
+      "src/AnmVmCreate.cpp": "5f50e01c57c80cfca7fd9648dc4363ceffd9b6efc40ba9bebf1ceb0b65ab60c9",
+      "src/AnmVmId.cpp": "1572970f1faf2db61ea3aba6588e7582f94fd94bac6a4705e9f5f1572cf9bf47",
+      "src/EnemyEclDispatcher.cpp": "caa65dc5306a75f94c16ab33567685d09f53fdb95c46dc47c590d7368f5519fe",
+      "src/FrontEnd.cpp": "ecfec1e6ff09da1ece743aefed3db4869d2ca2accf50fbb0e1f5527302af4235",
+      "src/ScriptViewer.cpp": "aec41d009f1e008d6c6376728248b47bcd28eb1776bf92d67167c565efb7e654",
+      "src/ScriptViewerWorker.cpp": "9d44726acb68a7ff261d693e69fcabab0b10e25ab010332b6d61856640ff1260",
+      "src/FileSystem.cpp": "0905a4c307232658f20175c6f427c12cfae3787974a968a31f39b0620692ee98",
+      "src/Main.cpp": "366ceaa82f502094f877a5719cbbd18f4ac53b38729c542c7189efcbffb060f8",
+      "src/Chain.cpp": "1f099f34a536cf50c9660c0081c79d8b78ea3eeb959d58f80cc0c3120decfed1",
+      "src/RandomMath.cpp": "73429ac5fcd0d86fe3409e6608707b5963e2d10f4570d3d902a9bdb4e9603d22",
+      "src/DecomphelpLeafAccessors.cpp": "a63ccf8f5b5e534cebca006e8f03a51ef10e4a4ec4bf64cbac1a5efdcd41ae31",
+      "src/TransitionEffect.cpp": "7fd1a785ba5c0deca576dc3002341d6625c142b8ef5eca2c150f26ee03e8546a",
+      "src/Sound.cpp": "84c1ec11d07ac244ddb42b6575bc1e0f8be25bb331ea81879a3ed55807ec02fd",
+      "src/Player.cpp": "3f63b8f7544fd5b920b04051f1e26b06d43bb01f80857f3b03e6a7bf3286a52f",
+      "src/GameErrorContext.cpp": "559f187e04e7b9f4eda08b2370065e50815e485ed426b206ce43852d0b270da1",
+      "src/PbgArchive.cpp": "cad1155cb4bb1da5cc4a49a596c727cfb0bbb4e2bd1d5ab0e89a8bd273d7699a",
+      "src/GuiMessageLeaves.cpp": "e33b516d1530bb44d0e71434cee3cb9d7faa4c132915ea4371bc2c1bc8dcfc16",
+      "src/Gui.cpp": "eb6746771de24df36582af244928cde459841839c4792ffec8bc599bbcd55ac4",
+      "src/VmIdInterrupt.cpp": "e7b80268bb7e2c1533f7dc20c4ebe25de27cf62299fb841f787f3e3ada099db6"
+    },
+    "exit": 0
+  },
+  "affected_canonical_selectors": {
+    "ending-create": {
+      "result": "exact",
+      "matched_bytes": 99,
+      "field_count": 5
+    },
+    "ending-delete": {
+      "result": "exact",
+      "matched_bytes": 18,
+      "field_count": 2
+    },
+    "ending-load-script": {
+      "result": "exact",
+      "matched_bytes": 106,
+      "field_count": 5
+    },
+    "ending-text-constructor": {
+      "result": "exact",
+      "matched_bytes": 648,
+      "field_count": 12
+    }
+  },
+  "canonical_cold_groups": [
+    {
+      "build_unit": "ending-create",
+      "artifact": "build/match-linked/Ending",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "build_returncode": 0
+    },
+    {
+      "build_unit": "ending-load-script",
+      "artifact": "build/match-linked/EndingTextContext",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "build_returncode": 0
+    }
+  ],
+  "models": [
+    {
+      "label": "release-operation",
+      "run_size": 1564,
+      "run_matched_ordinary": 523,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": null,
+      "retained": false
+    },
+    {
+      "label": "shared-release",
+      "run_size": 1564,
+      "run_matched_ordinary": 523,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": null,
+      "retained": false
+    },
+    {
+      "label": "actual-chain",
+      "run_size": 1564,
+      "run_matched_ordinary": 524,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": null,
+      "retained": false
+    },
+    {
+      "label": "before-pending",
+      "run_size": 1564,
+      "run_matched_ordinary": 524,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 133,
+      "retained": false
+    },
+    {
+      "label": "pending-definition",
+      "run_size": 1564,
+      "run_matched_ordinary": 524,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": false
+    },
+    {
+      "label": "sampled-values",
+      "run_size": 1564,
+      "run_matched_ordinary": 524,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": false
+    },
+    {
+      "label": "sampled-destination",
+      "run_size": 1564,
+      "run_matched_ordinary": 524,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": false
+    },
+    {
+      "label": "loading-bit",
+      "run_size": 1564,
+      "run_matched_ordinary": 524,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": false
+    },
+    {
+      "label": "scalar-record",
+      "run_size": 1568,
+      "run_matched_ordinary": 1142,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": false
+    },
+    {
+      "label": "text-operation",
+      "run_size": 1568,
+      "run_matched_ordinary": 1132,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": false
+    },
+    {
+      "label": "live-record",
+      "run_size": 1568,
+      "run_matched_ordinary": 1146,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": false
+    },
+    {
+      "label": "scalar-time",
+      "run_size": 1568,
+      "run_matched_ordinary": 1137,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": false
+    },
+    {
+      "label": "text-cursor",
+      "run_size": 1568,
+      "run_matched_ordinary": 1144,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": false
+    },
+    {
+      "label": "final-source",
+      "run_size": 1568,
+      "run_matched_ordinary": 1146,
+      "run_compared_ordinary": 1200,
+      "run_result": "mismatch",
+      "initialize_size": 584,
+      "bank_size": 131,
+      "retained": true
+    }
+  ],
+  "review": {
+    "strict_comparisons": {
+      "ending-text-constructor": {
+        "result": "exact",
+        "matched_bytes": 648,
+        "field_count": 12,
+        "worker_member_eh_binding": {
+          "authority": "address binding only; no generated-code/runtime credit",
+          "candidate": {
+            "saved_this_offset": 4,
+            "member_offset": 208,
+            "region_bytes": 24,
+            "unwind_states": 1,
+            "func_info_bytes": 28
+          },
+          "target": {
+            "saved_this_offset": 4,
+            "member_offset": 208,
+            "region_bytes": 24,
+            "unwind_states": 1,
+            "func_info_bytes": 28
+          }
+        }
+      },
+      "ending-load-script": {
+        "result": "exact",
+        "matched_bytes": 106,
+        "field_count": 5
+      },
+      "game-decomphelp-fulltu-00417010": {
+        "result": "exact",
+        "matched_bytes": 41,
+        "field_count": 0
+      },
+      "enemy-mark-pending-interrupt": {
+        "result": "exact",
+        "matched_bytes": 65,
+        "field_count": 2
+      }
+    },
+    "target_run_inventory": {
+      "size": 1568,
+      "code_and_alignment_size": 1496,
+      "table_words": 18,
+      "fields": [
+        {
+          "offset": 26,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x477700"
+        },
+        {
+          "offset": 42,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x474e30"
+        },
+        {
+          "offset": 66,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 115,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c358"
+        },
+        {
+          "offset": 148,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x491c10"
+        },
+        {
+          "offset": 156,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x4491c0"
+        },
+        {
+          "offset": 167,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x46cfd4"
+        },
+        {
+          "offset": 180,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x447a50"
+        },
+        {
+          "offset": 190,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x40c4d0"
+        },
+        {
+          "offset": 205,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x491c10"
+        },
+        {
+          "offset": 216,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x4491c0"
+        },
+        {
+          "offset": 235,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x417010"
+        },
+        {
+          "offset": 246,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x447a50"
+        },
+        {
+          "offset": 256,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x40c480"
+        },
+        {
+          "offset": 272,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x417010"
+        },
+        {
+          "offset": 289,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x449450"
+        },
+        {
+          "offset": 295,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x491c10"
+        },
+        {
+          "offset": 303,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x447a50"
+        },
+        {
+          "offset": 318,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x40c480"
+        },
+        {
+          "offset": 363,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x40c4d0"
+        },
+        {
+          "offset": 393,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 406,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x44bf40"
+        },
+        {
+          "offset": 428,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 434,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x474e36"
+        },
+        {
+          "offset": 453,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x477700"
+        },
+        {
+          "offset": 469,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x474e30"
+        },
+        {
+          "offset": 502,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 516,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x492590"
+        },
+        {
+          "offset": 521,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x43dc90"
+        },
+        {
+          "offset": 529,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 555,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 568,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x44bf40"
+        },
+        {
+          "offset": 574,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x474e36"
+        },
+        {
+          "offset": 593,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x477700"
+        },
+        {
+          "offset": 609,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x474e30"
+        },
+        {
+          "offset": 644,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x492590"
+        },
+        {
+          "offset": 649,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x43dc90"
+        },
+        {
+          "offset": 657,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 666,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x4918a4"
+        },
+        {
+          "offset": 694,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x491c10"
+        },
+        {
+          "offset": 700,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x4492a0"
+        },
+        {
+          "offset": 735,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x448d00"
+        },
+        {
+          "offset": 761,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x474c74"
+        },
+        {
+          "offset": 783,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x449630"
+        },
+        {
+          "offset": 812,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x448d00"
+        },
+        {
+          "offset": 838,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x474c74"
+        },
+        {
+          "offset": 860,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x449630"
+        },
+        {
+          "offset": 889,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x448d00"
+        },
+        {
+          "offset": 915,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x474c74"
+        },
+        {
+          "offset": 937,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x449630"
+        },
+        {
+          "offset": 966,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x448d00"
+        },
+        {
+          "offset": 1008,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x420a90"
+        },
+        {
+          "offset": 1019,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x46cfc4"
+        },
+        {
+          "offset": 1038,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x420b10"
+        },
+        {
+          "offset": 1052,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x420b10"
+        },
+        {
+          "offset": 1067,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x420c30"
+        },
+        {
+          "offset": 1082,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x491c10"
+        },
+        {
+          "offset": 1100,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x4492a0"
+        },
+        {
+          "offset": 1121,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x477700"
+        },
+        {
+          "offset": 1130,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x40b480"
+        },
+        {
+          "offset": 1169,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 1179,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 1189,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x405410"
+        },
+        {
+          "offset": 1243,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x43c8b0"
+        },
+        {
+          "offset": 1289,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x470b68"
+        },
+        {
+          "offset": 1308,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x470b64"
+        },
+        {
+          "offset": 1329,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x470afc"
+        },
+        {
+          "offset": 1366,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x4776e0"
+        },
+        {
+          "offset": 1381,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x40c540"
+        },
+        {
+          "offset": 1393,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x491c10"
+        },
+        {
+          "offset": 1401,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x4477d0"
+        },
+        {
+          "offset": 1428,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c3a0"
+        },
+        {
+          "offset": 1436,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x44c1c0"
+        },
+        {
+          "offset": 1475,
+          "width": 4,
+          "type": "REL32",
+          "destination": "0x463b2c"
+        },
+        {
+          "offset": 1496,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c2c7"
+        },
+        {
+          "offset": 1500,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c25f"
+        },
+        {
+          "offset": 1504,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c25f"
+        },
+        {
+          "offset": 1508,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40bdf7"
+        },
+        {
+          "offset": 1512,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40bee0"
+        },
+        {
+          "offset": 1516,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40befa"
+        },
+        {
+          "offset": 1520,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40bf9a"
+        },
+        {
+          "offset": 1524,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c2d4"
+        },
+        {
+          "offset": 1528,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c023"
+        },
+        {
+          "offset": 1532,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c15e"
+        },
+        {
+          "offset": 1536,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c169"
+        },
+        {
+          "offset": 1540,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c1a5"
+        },
+        {
+          "offset": 1544,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c1b8"
+        },
+        {
+          "offset": 1548,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c23b"
+        },
+        {
+          "offset": 1552,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c249"
+        },
+        {
+          "offset": 1556,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c077"
+        },
+        {
+          "offset": 1560,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c0c4"
+        },
+        {
+          "offset": 1564,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x40c111"
+        }
+      ],
+      "linked_field_count": 92,
+      "local_branches": [
+        {
+          "offset": 13,
+          "destination_offset": 24
+        },
+        {
+          "offset": 34,
+          "destination_offset": 70
+        },
+        {
+          "offset": 38,
+          "destination_offset": 70
+        },
+        {
+          "offset": 49,
+          "destination_offset": 70
+        },
+        {
+          "offset": 53,
+          "destination_offset": 70
+        },
+        {
+          "offset": 82,
+          "destination_offset": 1276
+        },
+        {
+          "offset": 88,
+          "destination_offset": 96
+        },
+        {
+          "offset": 106,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 124,
+          "destination_offset": 268
+        },
+        {
+          "offset": 162,
+          "destination_offset": 166
+        },
+        {
+          "offset": 198,
+          "destination_offset": 144
+        },
+        {
+          "offset": 224,
+          "destination_offset": 228
+        },
+        {
+          "offset": 263,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 334,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 347,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 371,
+          "destination_offset": 360
+        },
+        {
+          "offset": 373,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 383,
+          "destination_offset": 397
+        },
+        {
+          "offset": 418,
+          "destination_offset": 432
+        },
+        {
+          "offset": 442,
+          "destination_offset": 511
+        },
+        {
+          "offset": 449,
+          "destination_offset": 511
+        },
+        {
+          "offset": 461,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 476,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 492,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 506,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 533,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 545,
+          "destination_offset": 559
+        },
+        {
+          "offset": 582,
+          "destination_offset": 640
+        },
+        {
+          "offset": 589,
+          "destination_offset": 640
+        },
+        {
+          "offset": 601,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 616,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 632,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 638,
+          "destination_offset": 653
+        },
+        {
+          "offset": 670,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 754,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 766,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 831,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 843,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 908,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 920,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 985,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 996,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 1032,
+          "destination_offset": 1047
+        },
+        {
+          "offset": 1042,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 1056,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 1075,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 1114,
+          "destination_offset": 1094
+        },
+        {
+          "offset": 1138,
+          "destination_offset": 1351
+        },
+        {
+          "offset": 1209,
+          "destination_offset": 1261
+        },
+        {
+          "offset": 1223,
+          "destination_offset": 1237
+        },
+        {
+          "offset": 1270,
+          "destination_offset": 96
+        },
+        {
+          "offset": 1298,
+          "destination_offset": 1466
+        },
+        {
+          "offset": 1317,
+          "destination_offset": 1466
+        }
+      ],
+      "table_local_offsets": [
+        1351,
+        1247,
+        1247,
+        119,
+        352,
+        378,
+        538,
+        1364,
+        675,
+        990,
+        1001,
+        1061,
+        1080,
+        1211,
+        1225,
+        759,
+        836,
+        913
+      ],
+      "virtual_only_immediate_fields": [
+        {
+          "offset": 516,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x492590",
+          "section": ".data"
+        },
+        {
+          "offset": 644,
+          "width": 4,
+          "type": "DIR32",
+          "destination": "0x492590",
+          "section": ".data"
+        }
+      ]
+    },
+    "native_run_reproduction": {
+      "size": 1568,
+      "code_and_alignment_size": 1496,
+      "table_words": 18,
+      "linked_field_count": 92,
+      "local_branches": [
+        {
+          "offset": 13,
+          "destination_offset": 24
+        },
+        {
+          "offset": 34,
+          "destination_offset": 70
+        },
+        {
+          "offset": 38,
+          "destination_offset": 70
+        },
+        {
+          "offset": 49,
+          "destination_offset": 70
+        },
+        {
+          "offset": 53,
+          "destination_offset": 70
+        },
+        {
+          "offset": 82,
+          "destination_offset": 1276
+        },
+        {
+          "offset": 88,
+          "destination_offset": 96
+        },
+        {
+          "offset": 106,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 124,
+          "destination_offset": 268
+        },
+        {
+          "offset": 162,
+          "destination_offset": 166
+        },
+        {
+          "offset": 198,
+          "destination_offset": 144
+        },
+        {
+          "offset": 224,
+          "destination_offset": 228
+        },
+        {
+          "offset": 263,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 334,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 347,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 371,
+          "destination_offset": 360
+        },
+        {
+          "offset": 373,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 383,
+          "destination_offset": 397
+        },
+        {
+          "offset": 418,
+          "destination_offset": 432
+        },
+        {
+          "offset": 442,
+          "destination_offset": 511
+        },
+        {
+          "offset": 449,
+          "destination_offset": 511
+        },
+        {
+          "offset": 461,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 476,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 492,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 506,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 533,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 545,
+          "destination_offset": 559
+        },
+        {
+          "offset": 582,
+          "destination_offset": 640
+        },
+        {
+          "offset": 589,
+          "destination_offset": 640
+        },
+        {
+          "offset": 601,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 616,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 632,
+          "destination_offset": 1482
+        },
+        {
+          "offset": 638,
+          "destination_offset": 653
+        },
+        {
+          "offset": 670,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 754,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 766,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 831,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 843,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 908,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 920,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 985,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 996,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 1032,
+          "destination_offset": 1047
+        },
+        {
+          "offset": 1042,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 1056,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 1075,
+          "destination_offset": 1247
+        },
+        {
+          "offset": 1114,
+          "destination_offset": 1094
+        },
+        {
+          "offset": 1138,
+          "destination_offset": 1351
+        },
+        {
+          "offset": 1209,
+          "destination_offset": 1261
+        },
+        {
+          "offset": 1223,
+          "destination_offset": 1237
+        },
+        {
+          "offset": 1270,
+          "destination_offset": 96
+        },
+        {
+          "offset": 1298,
+          "destination_offset": 1466
+        },
+        {
+          "offset": 1317,
+          "destination_offset": 1466
+        }
+      ],
+      "table_local_offsets": [
+        1351,
+        1247,
+        1247,
+        119,
+        352,
+        378,
+        538,
+        1364,
+        675,
+        990,
+        1001,
+        1061,
+        1080,
+        1211,
+        1225,
+        759,
+        836,
+        913
+      ],
+      "field_identities": [
+        {
+          "offset": 26,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EndingView@@3PAUEndingView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 42,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndInput@@3UFrontEndInputView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 66,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 115,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1496
+          }
+        },
+        {
+          "offset": 148,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 156,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 167,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "??_C@_01CLKCMJKC@?5?$AA@"
+            ]
+          }
+        },
+        {
+          "offset": 180,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+            ]
+          }
+        },
+        {
+          "offset": 190,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 205,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 216,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 235,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Fn00417010@leaf@th10@@YAPAEPAE@Z"
+            ]
+          }
+        },
+        {
+          "offset": 246,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+            ]
+          }
+        },
+        {
+          "offset": 256,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+            ]
+          }
+        },
+        {
+          "offset": 272,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Fn00417010@leaf@th10@@YAPAEPAE@Z"
+            ]
+          }
+        },
+        {
+          "offset": 289,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+            ]
+          }
+        },
+        {
+          "offset": 295,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 303,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+            ]
+          }
+        },
+        {
+          "offset": 318,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+            ]
+          }
+        },
+        {
+          "offset": 363,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 393,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 406,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Add@AnmVmTimerView@@QAEXM@Z"
+            ]
+          }
+        },
+        {
+          "offset": 428,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 434,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 453,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EndingView@@3PAUEndingView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 469,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndInput@@3UFrontEndInputView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 502,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 516,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 521,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 529,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 555,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 568,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Add@AnmVmTimerView@@QAEXM@Z"
+            ]
+          }
+        },
+        {
+          "offset": 574,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 593,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EndingView@@3PAUEndingView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 609,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndInput@@3UFrontEndInputView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 644,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 649,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 657,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 666,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GameStartupCounter@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 694,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 700,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 735,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+            ]
+          }
+        },
+        {
+          "offset": 761,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiDifficulty@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 783,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Release@AnmVmIdView@@QAEXXZ"
+            ]
+          }
+        },
+        {
+          "offset": 812,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+            ]
+          }
+        },
+        {
+          "offset": 838,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiDifficulty@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 860,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Release@AnmVmIdView@@QAEXXZ"
+            ]
+          }
+        },
+        {
+          "offset": 889,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+            ]
+          }
+        },
+        {
+          "offset": 915,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiDifficulty@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 937,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Release@AnmVmIdView@@QAEXXZ"
+            ]
+          }
+        },
+        {
+          "offset": 966,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1008,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?FrontEndLoadMusic@@YGHHPBD@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1019,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "??_C@_0BA@HHNJPIP@bgm?1th10_13?4wav?$AA@"
+            ]
+          }
+        },
+        {
+          "offset": 1038,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?FrontEndPlayMusic@@YGHHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1052,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?FrontEndPlayMusic@@YGHHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1067,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?GameQueueScaledSoundCommand@@YGHM@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1082,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1100,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1121,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EndingView@@3PAUEndingView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1130,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?LoadScript@EndingView@@QAEPAEPBD@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1169,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1179,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1189,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1243,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?StageCreateTransitionEffect@@YGPAXHHHIII@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1289,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f7d70a4"
+            ]
+          }
+        },
+        {
+          "offset": 1308,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f8147ae"
+            ]
+          }
+        },
+        {
+          "offset": 1329,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f800000"
+            ]
+          }
+        },
+        {
+          "offset": 1366,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1381,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?EnsureSelectionVm@AsciiManagerView@@QAEHMM@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1393,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1401,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?ReleaseAnm@AnmRenderManagerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1428,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?EndingLoadAnimationCallback@@YAHXZ"
+            ]
+          }
+        },
+        {
+          "offset": 1436,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Start@ScriptViewerWorkerView@@QAEXPAXP6AHXZ@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1475,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "__ftol2"
+            ]
+          }
+        },
+        {
+          "offset": 1496,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1351
+          }
+        },
+        {
+          "offset": 1500,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1247
+          }
+        },
+        {
+          "offset": 1504,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1247
+          }
+        },
+        {
+          "offset": 1508,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 119
+          }
+        },
+        {
+          "offset": 1512,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 352
+          }
+        },
+        {
+          "offset": 1516,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 378
+          }
+        },
+        {
+          "offset": 1520,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 538
+          }
+        },
+        {
+          "offset": 1524,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1364
+          }
+        },
+        {
+          "offset": 1528,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 675
+          }
+        },
+        {
+          "offset": 1532,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 990
+          }
+        },
+        {
+          "offset": 1536,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1001
+          }
+        },
+        {
+          "offset": 1540,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1061
+          }
+        },
+        {
+          "offset": 1544,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1080
+          }
+        },
+        {
+          "offset": 1548,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1211
+          }
+        },
+        {
+          "offset": 1552,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1225
+          }
+        },
+        {
+          "offset": 1556,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 759
+          }
+        },
+        {
+          "offset": 1560,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 836
+          }
+        },
+        {
+          "offset": 1564,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 913
+          }
+        }
+      ],
+      "normalized_sha256": "52116ab3a41403682a6aaa35b897ad7ab0911744c20ae3fa322bc81c8ff0bc22"
+    },
+    "initializer_interface": {
+      "candidate_size": 207,
+      "target_size": 217,
+      "return_operand": "8",
+      "body_exact": false
+    },
+    "run_ordinary_comparison": {
+      "result": "mismatch",
+      "acceptance_authority": "none",
+      "compared_bytes": 1200,
+      "matched_bytes": 1146,
+      "differences": [
+        {
+          "offset": 201,
+          "candidate": 69,
+          "target": 77
+        },
+        {
+          "offset": 204,
+          "candidate": 61,
+          "target": 29
+        },
+        {
+          "offset": 210,
+          "candidate": 93,
+          "target": 125
+        },
+        {
+          "offset": 212,
+          "candidate": 80,
+          "target": 81
+        },
+        {
+          "offset": 214,
+          "candidate": 215,
+          "target": 211
+        },
+        {
+          "offset": 227,
+          "candidate": 3,
+          "target": 7
+        },
+        {
+          "offset": 239,
+          "candidate": 80,
+          "target": 139
+        },
+        {
+          "offset": 240,
+          "candidate": 139,
+          "target": 85
+        },
+        {
+          "offset": 241,
+          "candidate": 69,
+          "target": 124
+        },
+        {
+          "offset": 242,
+          "candidate": 124,
+          "target": 80
+        },
+        {
+          "offset": 243,
+          "candidate": 80,
+          "target": 82
+        },
+        {
+          "offset": 244,
+          "candidate": 87,
+          "target": 83
+        },
+        {
+          "offset": 254,
+          "candidate": 195,
+          "target": 199
+        },
+        {
+          "offset": 278,
+          "candidate": 124,
+          "target": 120
+        },
+        {
+          "offset": 280,
+          "candidate": 81,
+          "target": 139
+        },
+        {
+          "offset": 281,
+          "candidate": 139,
+          "target": 69
+        },
+        {
+          "offset": 282,
+          "candidate": 77,
+          "target": 124
+        },
+        {
+          "offset": 283,
+          "candidate": 120,
+          "target": 80
+        },
+        {
+          "offset": 717,
+          "candidate": 64,
+          "target": 80
+        },
+        {
+          "offset": 721,
+          "candidate": 133,
+          "target": 149
+        },
+        {
+          "offset": 791,
+          "candidate": 72,
+          "target": 80
+        },
+        {
+          "offset": 797,
+          "candidate": 148,
+          "target": 140
+        },
+        {
+          "offset": 805,
+          "candidate": 81,
+          "target": 82
+        },
+        {
+          "offset": 806,
+          "candidate": 82,
+          "target": 81
+        },
+        {
+          "offset": 817,
+          "candidate": 77,
+          "target": 85
+        },
+        {
+          "offset": 820,
+          "candidate": 81,
+          "target": 74
+        },
+        {
+          "offset": 823,
+          "candidate": 0,
+          "target": 16
+        },
+        {
+          "offset": 825,
+          "candidate": 132,
+          "target": 148
+        },
+        {
+          "offset": 826,
+          "candidate": 149,
+          "target": 141
+        },
+        {
+          "offset": 850,
+          "candidate": 72,
+          "target": 64
+        },
+        {
+          "offset": 854,
+          "candidate": 141,
+          "target": 133
+        },
+        {
+          "offset": 871,
+          "candidate": 64,
+          "target": 80
+        },
+        {
+          "offset": 874,
+          "candidate": 148,
+          "target": 132
+        },
+        {
+          "offset": 875,
+          "candidate": 133,
+          "target": 149
+        },
+        {
+          "offset": 883,
+          "candidate": 82,
+          "target": 80
+        },
+        {
+          "offset": 945,
+          "candidate": 72,
+          "target": 80
+        },
+        {
+          "offset": 951,
+          "candidate": 148,
+          "target": 140
+        },
+        {
+          "offset": 959,
+          "candidate": 81,
+          "target": 82
+        },
+        {
+          "offset": 960,
+          "candidate": 82,
+          "target": 81
+        },
+        {
+          "offset": 971,
+          "candidate": 77,
+          "target": 85
+        },
+        {
+          "offset": 974,
+          "candidate": 81,
+          "target": 74
+        },
+        {
+          "offset": 977,
+          "candidate": 0,
+          "target": 16
+        },
+        {
+          "offset": 979,
+          "candidate": 132,
+          "target": 148
+        },
+        {
+          "offset": 980,
+          "candidate": 149,
+          "target": 141
+        },
+        {
+          "offset": 991,
+          "candidate": 72,
+          "target": 64
+        },
+        {
+          "offset": 994,
+          "candidate": 77,
+          "target": 69
+        },
+        {
+          "offset": 1409,
+          "candidate": 77,
+          "target": 85
+        },
+        {
+          "offset": 1414,
+          "candidate": 137,
+          "target": 131
+        },
+        {
+          "offset": 1415,
+          "candidate": 69,
+          "target": 202
+        },
+        {
+          "offset": 1416,
+          "candidate": 112,
+          "target": 4
+        },
+        {
+          "offset": 1417,
+          "candidate": 131,
+          "target": 137
+        },
+        {
+          "offset": 1418,
+          "candidate": 201,
+          "target": 69
+        },
+        {
+          "offset": 1419,
+          "candidate": 4,
+          "target": 112
+        },
+        {
+          "offset": 1433,
+          "candidate": 77,
+          "target": 85
+        }
+      ]
+    },
+    "path_sampling": {
+      "initialize": {
+        "candidate_size": 584,
+        "target_size": 584,
+        "result": "nonexact",
+        "native_field_count": 30,
+        "normalized_native_sha256": "a7a96610462389c9e48eca259709a7d3fdd153369a36623342a7200ff6442c7c",
+        "native": {
+          "path_load_offset": 395,
+          "buffer_clear_offset": 402
+        },
+        "target": {
+          "path_load_offset": 395,
+          "buffer_clear_offset": 402
+        }
+      },
+      "load_animation": {
+        "candidate_size": 131,
+        "target_size": 126,
+        "result": "nonexact",
+        "native_field_count": 7,
+        "normalized_native_sha256": "ec9aefc853b7d8ef24d47f2135885b56b466570227a50827b10875e262776bd2",
+        "native": {
+          "path_load_offset": 0,
+          "buffer_clear_offset": 5
+        },
+        "target": {
+          "path_load_offset": 0,
+          "buffer_clear_offset": 5
+        }
+      }
+    }
+  },
+  "new_exact_credit": 0
+}

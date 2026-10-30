@@ -8199,3 +8199,32 @@ its ID storage address; subsequent destinations differ2 bytes plus alignment.
 Live-color, pointer-view and sampled-line controls did not close the complete
 owner and are restored/parked. No partial or equal-size credit follows. All69
 transitive input/header pins are fixed. See the [repair proof](evidence/ending-context-repair-20261030/README.md).
+
+
+## 2026-10-30 Ending native scalar record and path samples
+
+The pinned i386 dword view in EndingRecordInt changes full Run from1564 to1568,
+restoring command8's captured ID storage address across deletion. The original
+WORD timestamp copy is retained. Removing an unnecessary loop-level instruction
+pointer preserves the existing current-member reads after callbacks. Every use
+of the removed copy preceded its first side-effecting call. Full native/target
+field layouts92, direct local destinations53 and table destinations18 now agree;
+1146/1200 ordinary bytes match, with54 differences and no complete-owner credit.
+The native creation/publication and initializer sampling audits still pass.
+
+Both initializer and animation loader sample the source path before zeroing
+the global destination byte, as observed in target. Initialization uses real
+ChainElem and removes the duplicate derived constructor. Initializer584/584 is
+still NE. Adding actual VmIdInterrupt.cpp (existing /GL /GS) to the diagnostic
+restores EnemyMarkPendingInterrupt's EAX ID-pointer interface; its complete65
+bytes/all2 fields pass. Loader131/126 remains NE. Target and native use EBX this
+and plain RET. Neither source form nor scalar width proves original ownership,
+alignment, modern C++ semantics or portability.
+
+Ordinary/shared release, returned ID, pointer destination, loading-bit, scalar
+timestamp, lookup/text and cursor controls did not close the owner and are
+restored/parked. The shared ID header is restored byte-for-byte. Four explicit
+affected canonical selectors cold-pass871; same-image21 existing contracts pass
+860/all19. All70 final input/header pins match the canonical cold freeze. Exact
+inventory remains103090/275835 across503 authored owners, total171194/1380.
+See the [complete proof](evidence/ending-native-record-20261030/README.md).

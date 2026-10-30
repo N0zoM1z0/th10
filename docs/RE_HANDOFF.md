@@ -2,6 +2,37 @@
 
 ## Current checkpoint
 
+Run now has complete1568/1568 bytes,1496 code/alignment plus72 table bytes.
+Native scalar EndingRecordInt (no temporary copy) restores command8's storage
+address and full extent. Removing the unneeded loop-local instruction copy
+leaves1146/1200 ordinary bytes equal;54 still differ, so NO exact credit. All92
+field layouts,53 direct local destinations and18 table destinations coincide
+with target and are reproduced. See the [complete source proof](evidence/ending-native-record-20261030/README.md).
+
+Initialize uses real ChainElem instead of duplicate derived construction and
+samples the script pointer before clearing the destination buffer. Animation
+loading likewise captures backgroundPath before buffer clear. Initializer584/584
+and loader131/126 stay NE. Actual VmIdInterrupt.cpp under its existing /GL /GS
+profile restores pending-ID EAX in a21-input diagnostic; its65/all2 strictly
+passes. Root/checksum and earlier20 profiles are unchanged; diagnostic21 is not
+a migration of the canonical20 graph. Four native creation and initializer
+sampling contracts pass. Shared-ID noinline, ordinary release helper, return-ID,
+loading bit, timestamp, lookup/text and cursor controls are restored/parked.
+Do not repeat them without new evidence and a distinguishing prediction.
+
+Explicit affected canonical create99/delete18/text-constructor648/LoadScript106
+cold-pass871 in their actual17/20-input graphs. Same-image21 constructor/loader/
+decoder/pending contracts pass860/all19 with strict worker-member EH binding.
+No full cohort, host failure/lifecycle/mutation or runtime/product claim.
+Current final diagnostic is
+`.analysis/gpt-6.1-sol/ending-run-context-20261030/final-source-context.json`.
+Its70 source/header pins match the canonical freeze. Old Ending.cpp/Ending.hpp
+epochs are historical; relink actual graphs before incremental reuse. Exact
+totals stay103090/275835 across503 authored owners; codegen171194/1380 and
+source1207/authored689/backlog186. Original class/TU/data and portability stay open.
+
+## Previous Ending context repair
+
 Fresh Ending18-input replay exposed an existing constructor regression:648 bytes
 but17 ordinary differences, first+0x92. Actual text decoder definition was also
 missing after its move to GuiMessageLeaves.cpp, yielding Run1576/1568 and the

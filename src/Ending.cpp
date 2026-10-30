@@ -64,20 +64,6 @@ inline void PublishEndingAnimation(EndingTextVmView *text, const AnmVmIdView &cr
 {
     text->animationIds[EndingRecordInt(text->instruction)] = created.value;
 }
-// Observed common node construction; no extra fields or virtual interface.
-struct EndingTaskView : th10::ChainElem
-{
-    EndingTaskView()
-    {
-        callback = NULL;
-        addedCallback = NULL;
-        deletedCallback = NULL;
-        prio = 0;
-        flags &= ~1u;
-        self = this;
-        prev = next = NULL;
-    }
-};
 inline void ReleaseEndingBank(int slot)
 {
     AnmLoadedView *&bank = g_AnmRenderManagerView->loadedAnms[slot];
@@ -116,14 +102,14 @@ unsigned char *EndingView::LoadScript(const char *path)
 
 int EndingView::Initialize()
 {
-    th10::ChainElem *task = new EndingTaskView;
+    th10::ChainElem *task = new th10::ChainElem;
     task->flags |= 3;
     task->callback = reinterpret_cast<th10::ChainCallback>(EndingUpdateCallback);
     task->deletedCallback = task->addedCallback = NULL;
     task->arg = this;
     th10::g_Chain->AddToCalcChain(task, 28);
     updateTask = task;
-    task = new EndingTaskView;
+    task = new th10::ChainElem;
     task->flags |= 3;
     task->callback = reinterpret_cast<th10::ChainCallback>(th10::leaf::Fn0040BA80);
     task->deletedCallback = task->addedCallback = NULL;
@@ -146,8 +132,9 @@ int EndingView::Initialize()
     g_GuiPersistentData[0x1d882 + endingIndex] = 1;
     if (endingIndex >= 6)
         g_GuiPersistentData[0x1d88e] = 1;
+    const char *scriptPath = g_EndingScriptPaths[endingIndex];
     g_StageFilePath[0] = '\0';
-    strcat(g_StageFilePath, g_EndingScriptPaths[endingIndex]);
+    strcat(g_StageFilePath, scriptPath);
     scriptData = FileSystem::OpenFile(g_StageFilePath, NULL, 0);
     if (!scriptData)
     {
@@ -268,8 +255,7 @@ int __stdcall EndingTextVmView::Run()
         instructionTimer.SetCurrent(EndingRecordTime(instruction));
     while (instructionTimer.current >= EndingRecordTime(instruction))
     {
-        unsigned char *command = instruction;
-        switch (command[2])
+        switch (instruction[2])
         {
         case 0: return -1;
         case 3:
@@ -295,7 +281,7 @@ int __stdcall EndingTextVmView::Run()
             else
             {
                 const char *text = reinterpret_cast<const char *>(
-                    th10::leaf::Fn00417010(command + 4));
+                    th10::leaf::Fn00417010(instruction + 4));
                 unsigned int currentColor = color;
                 g_AnmRenderManagerView->DrawTextLeft(reinterpret_cast<AnmVmIdView *>(&textIds[textLine])->GetVm(), currentColor, text);
                 PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&textIds[textLine]));
@@ -306,7 +292,7 @@ int __stdcall EndingTextVmView::Run()
             for (int i = 0; i < 5; ++i) ResultMenuPendingThree(reinterpret_cast<AnmVmIdView *>(&textIds[i]));
             break;
         case 5:
-            if (waitTimer.current <= 0) waitTimer.SetCurrent(EndingRecordInt(command));
+            if (waitTimer.current <= 0) waitTimer.SetCurrent(EndingRecordInt(instruction));
             waitTimer.Add(-1.0f);
             if (EndingRecordInt(instruction) < 0) waitTimer.SetCurrent(999);
             if ((g_FrontEndInput.pressed & 0x1001) == 0 && waitTimer.current > 0)
@@ -323,7 +309,7 @@ int __stdcall EndingTextVmView::Run()
             }
             break;
         case 6:
-            if (waitTimer.current <= 0) waitTimer.SetCurrent(EndingRecordInt(command));
+            if (waitTimer.current <= 0) waitTimer.SetCurrent(EndingRecordInt(instruction));
             waitTimer.Add(-1.0f);
             if ((g_FrontEndInput.pressed & 0x1001) == 0 && waitTimer.current > 0)
             {
@@ -348,7 +334,7 @@ int __stdcall EndingTextVmView::Run()
         // Creation may change instruction; resolve its destination afterwards.
         case 8:
             {
-                int &oldId = animationIds[EndingRecordInt(command)];
+                int &oldId = animationIds[EndingRecordInt(instruction)];
                 g_AnmRenderManagerView->MarkVmForDeletion(AnmVmIdView(oldId));
                 oldId = 0;
                 PublishEndingAnimation(this,
@@ -386,9 +372,9 @@ int __stdcall EndingTextVmView::Run()
                         CreateVmVariant0(EndingRecordInt(instruction, 2), 15));
             }
             break;
-        case 9: color = EndingRecordInt(command); break;
+        case 9: color = EndingRecordInt(instruction); break;
         case 10:
-            FrontEndLoadMusic(0, reinterpret_cast<const char *>(command + 4));
+            FrontEndLoadMusic(0, reinterpret_cast<const char *>(instruction + 4));
             if (strcmp(reinterpret_cast<const char *>(instruction + 4), "bgm/th10_13.wav") == 0)
                 FrontEndPlayMusic(0, 15);
             else
@@ -418,8 +404,8 @@ int __stdcall EndingTextVmView::Run()
                 flags |= 2;
                 continue;
             }
-        case 13: StageCreateTransitionEffect(0x31, 0, EndingRecordInt(command), 0, 0, 0); break;
-        case 14: StageCreateTransitionEffect(0x31, 5, EndingRecordInt(command), 0, 0, 0); break;
+        case 13: StageCreateTransitionEffect(0x31, 0, EndingRecordInt(instruction), 0, 0, 0); break;
+        case 14: StageCreateTransitionEffect(0x31, 5, EndingRecordInt(instruction), 0, 0, 0); break;
         }
         instruction = EndingRecordNext(instruction);
     }
@@ -434,8 +420,9 @@ int EndingLoadAnimationCallback()
 }
 int EndingTextVmView::LoadAnimation()
 {
+    const char *path = backgroundPath;
     g_StageFilePath[0] = '\0';
-    strcat(g_StageFilePath, backgroundPath);
+    strcat(g_StageFilePath, path);
     AnmLoadedView *bank = g_AnmRenderManagerView->PreloadAnm(
         EndingRecordInt(instruction) + 29, g_StageFilePath);
     AsciiManagerView *ascii = g_AsciiManagerView;
