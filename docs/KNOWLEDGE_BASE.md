@@ -7707,3 +7707,52 @@ and the197-byte script initializer completely. These controls are restored and
 parked; earlier single-TU203-byte records are different contexts, not current
 source closure. State2 and its initializer remain nonexact. See the
 [complete source and evidence](evidence/player-aux-damage-exact-20261030/README.md).
+
+
+## 2026-10-30 Complete movement ownership and post-script decision recovery
+
+PlayerUpdateMovementAndOptions owns4250B0..425727 /1656 bytes:1591 code bytes
+(including retained three-byte LEA), one NOP and two32-byte direction tables.
+Each table has one encoded absolute base reference in the entire target file,
+from its scaled indexed JMP. All16 entries target decoded boundaries in this
+owner; no E8/E9 enters their data and the following Main prefix has no direct
+branch into them. Eight CC bytes separate425730. This corrects the old code-only
+ledger by65 bytes, with authored origin/review state unchanged. Generated table
+bytes belong to this complete authored owner, not a new source/exact owner.
+
+Fresh target prefix is1592 bytes/417 instructions, with54 complete address fields
+including all16 table entries and80 local branches. The sole direct caller425A8C
+places Player in EDI; the body returns zero with plain RET. Native PDB ownership
+also includes its two tables; target/candidate sizes must compare complete scopes.
+Original names, declaration/TU and production partition remain unproven.
+
+The old four-selection else-if chain skips an observed post-script decision.
+Target+317 calls script2, reloads EBX, then jumps to+326 and rereads Player+44C
+before independently testing it positive for script4. Source now preserves this
+read and shares the right-script call tail. Four logical selections have three
+physical target calls. This is a branch/source correction; game reachability or
+a user-visible runtime bug is not claimed or tested through host simulation.
+
+A byte storage view of the input restores the actual byte load and subsequent
+fresh word/byte reads. A narrowing value cast alone still shares the initial
+DWORD. Live optionCount history bounds recover per-iteration reads/cursors and
+the existing fixed-position pair assignment recovers history[0] store/load order.
+A named VM ID recovers its stack-home read. Complete source now emits1616/all54
+versus entry1576/all50, cold-reproduced with all17 inputs freshly compiled.
+Mode1's eight destinations match owner-relative offsets; Mode0's eight are one
+byte early. Both table bases610/630 remain40 bytes early versus638/658. Every
+changed local destination remains a rejection; no partial exact credit.
+
+The actual script initializer remains197/203 with ESI resource/EDX VM/EAX index,
+unlike target ECX/EAX/EBX. A VM-first real-operand helper emits197 plus adapter5
+and is restored. Pair products/value snapshots change cursor anchors or spill;
+position copies/constructors add moves or retain unlike extended values. Scalar
+staging and grouping zero-speed guards are verified whole-native neutral and
+restored. Do not repeat these controls without a new observation and prediction.
+
+Final scoped cold replays only1170+202 existing exact bytes/all34 fields. Thirty-four
+same-image bodies pass5282/all168; eleven preceding native candidates retain full
+bytes/field identities. Exact numerator stays99,996 bytes/491 owners; the corrected
+owned denominator is275,817. No compiler/Oracle/origin change, full historical
+replay, product/runtime/portability closure follows. See the [complete proof and
+native reproduction verifier](evidence/player-movement-context-20261030/README.md).

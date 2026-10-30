@@ -1058,22 +1058,24 @@ int PlayerUpdateMovementAndOptions(Player *player)
 {
     int horizontalSpeed = 0;
     int verticalSpeed = 0;
+    const unsigned char directionBits =
+        *reinterpret_cast<const unsigned char *>(&g_PlayerInputBits);
 
-    if ((g_PlayerInputBits & 0x50) == 0x50)
+    if ((directionBits & 0x50) == 0x50)
         player->movementDirection = PLAYER_DIRECTION_UP_LEFT;
-    else if ((g_PlayerInputBits & 0x60) == 0x60)
+    else if ((directionBits & 0x60) == 0x60)
         player->movementDirection = PLAYER_DIRECTION_DOWN_LEFT;
-    else if ((g_PlayerInputBits & 0x90) == 0x90)
+    else if ((directionBits & 0x90) == 0x90)
         player->movementDirection = PLAYER_DIRECTION_UP_RIGHT;
-    else if ((g_PlayerInputBits & 0xa0) == 0xa0)
+    else if ((directionBits & 0xa0) == 0xa0)
         player->movementDirection = PLAYER_DIRECTION_DOWN_RIGHT;
-    else if ((g_PlayerInputBits & 0x20) != 0)
+    else if ((directionBits & 0x20) != 0)
         player->movementDirection = PLAYER_DIRECTION_DOWN;
-    else if ((g_PlayerInputBits & 0x10) != 0)
+    else if ((directionBits & 0x10) != 0)
         player->movementDirection = PLAYER_DIRECTION_UP;
-    else if ((g_PlayerInputBits & 0x40) != 0)
+    else if ((directionBits & 0x40) != 0)
         player->movementDirection = PLAYER_DIRECTION_LEFT;
-    else if ((g_PlayerInputBits & 0x80) != 0)
+    else if ((directionBits & 0x80) != 0)
         player->movementDirection = PLAYER_DIRECTION_RIGHT;
     else
         player->movementDirection = PLAYER_DIRECTION_NONE;
@@ -1108,7 +1110,9 @@ int PlayerUpdateMovementAndOptions(Player *player)
             vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
             loaded->InitializeVm(
                 vm, PLAYER_MODE_VM_SCRIPT);
-            player->modeVmId = g_AnmRenderManagerView->AddVmVariant0(vm).value;
+            const AnmVmIdView modeVmId =
+                g_AnmRenderManagerView->AddVmVariant0(vm);
+            player->modeVmId = modeVmId.value;
         }
 
         // Lexical order follows the target's mode-1 switch body order. The
@@ -1195,21 +1199,32 @@ int PlayerUpdateMovementAndOptions(Player *player)
             InitializeAndExecuteScriptIndex(
                 reinterpret_cast<AnmVmView *>(&player->drawVm),
                 PLAYER_MAIN_VM_MOVE_LEFT);
-    else if (horizontalSpeed > 0 && player->previousHorizontalSpeed <= 0)
+    do
+    {
+        int scriptIndex;
+        if (horizontalSpeed > 0)
+        {
+            if (player->previousHorizontalSpeed > 0)
+                break;
+            scriptIndex = PLAYER_MAIN_VM_MOVE_RIGHT;
+        }
+        else
+        {
+            if (horizontalSpeed != 0)
+                break;
+            if (player->previousHorizontalSpeed < 0)
+                static_cast<AnmLoadedView *>(player->resource)->
+                    InitializeAndExecuteScriptIndex(
+                        reinterpret_cast<AnmVmView *>(&player->drawVm),
+                        PLAYER_MAIN_VM_STOP_LEFT);
+            if (player->previousHorizontalSpeed <= 0)
+                break;
+            scriptIndex = PLAYER_MAIN_VM_STOP_RIGHT;
+        }
         static_cast<AnmLoadedView *>(player->resource)->
             InitializeAndExecuteScriptIndex(
-                reinterpret_cast<AnmVmView *>(&player->drawVm),
-                PLAYER_MAIN_VM_MOVE_RIGHT);
-    else if (horizontalSpeed == 0 && player->previousHorizontalSpeed < 0)
-        static_cast<AnmLoadedView *>(player->resource)->
-            InitializeAndExecuteScriptIndex(
-                reinterpret_cast<AnmVmView *>(&player->drawVm),
-                PLAYER_MAIN_VM_STOP_LEFT);
-    else if (horizontalSpeed == 0 && player->previousHorizontalSpeed > 0)
-        static_cast<AnmLoadedView *>(player->resource)->
-            InitializeAndExecuteScriptIndex(
-                reinterpret_cast<AnmVmView *>(&player->drawVm),
-                PLAYER_MAIN_VM_STOP_RIGHT);
+                reinterpret_cast<AnmVmView *>(&player->drawVm), scriptIndex);
+    } while (false);
 
     player->previousHorizontalSpeed = horizontalSpeed;
     player->previousVerticalSpeed = verticalSpeed;
@@ -1248,16 +1263,15 @@ int PlayerUpdateMovementAndOptions(Player *player)
         (horizontalSpeed != 0 || verticalSpeed != 0))
     {
         int historyIndex = 32;
-        const int historyLimit = player->optionCount * 8;
-        for (; historyIndex > historyLimit; --historyIndex)
+        for (; historyIndex > player->optionCount * 8; --historyIndex)
             player->replayPositionHistory[historyIndex] =
-                player->replayPositionHistory[historyLimit];
+                player->replayPositionHistory[player->optionCount * 8];
         for (; historyIndex > 0; --historyIndex)
             player->replayPositionHistory[historyIndex] =
                 player->replayPositionHistory[historyIndex - 1];
     }
-    player->replayPositionHistory[0].x = player->positionX;
-    player->replayPositionHistory[0].y = player->positionY;
+    player->replayPositionHistory[0] =
+        *reinterpret_cast<const PlayerPositionPair *>(&player->positionX);
 
     for (int i = 0; i < 4; ++i)
     {

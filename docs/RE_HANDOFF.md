@@ -2,7 +2,36 @@
 
 ## Current checkpoint
 
-PlayerUpdateGate28::GetDamageAtPosition4059F0..405AB9 is newly exact202:
+Complete Player movement now owns1656 bytes4250B0..425727:1591 code bytes,
+one NOP and two32-byte direction tables. Each table has one encoded absolute
+base reference in this owner's scaled JMP; all16 entries land inside its code,
+with eight following CC bytes. This corrects the old1591 code-only window and
+adds65 authored owned denominator bytes. No new source/origin/exact owner.
+
+Current source emits1616/1656 NONEXACT, versus1576 at entry. Byte input storage
+view, live history bounds/paired first slot and named VM ID recover target
+schedules. Fresh CFG review finds the previous else-if chain wrong: after script2
+the target rereads previousHorizontalSpeed and independently decides script4.
+The source retains that decision and shares the right-script tail, reproducing
+three physical calls/all54 field roles. Four logical selections are not four
+physical target calls. Mode1 table destinations all match; Mode0 destinations
+remain one byte early, and both table bases remain40 bytes early. No local
+field or callee-ABI waiver. See the [complete movement scope/source proof](evidence/player-movement-context-20261030/README.md).
+
+A zero-reuse seventeen-input cold reproduces all1616 native bytes,54 field
+identities,78 local branches and both tables. Only two existing canonical units
+are replayed,1170+202=1372/all34;34 same-image exact guards pass5282/all168.
+Eleven previous native candidates, including main3096, state2 786 and the197-byte
+script initializer, preserve bytes/field identities. The initializer's private
+ESI/EDX/EAX interface remains unlike target ECX/EAX/EBX; float/option/ordinary
+schedules also remain open. Value/step/position, scalar staging and real-operand
+VM-first helper controls are restored/parked. The earlier1600 cold predates the
+later CFG correction, which justified the final rebuild. Exact numerator stays
+99,996/491 owners; corrected owned denominator is275,817. Product/runtime/port
+closure remains open. Main, movement, state2 and the script initializer remain
+substantial candidates; do not reopen neutral controls without new evidence.
+
+The preceding auxiliary damage checkpoint closed4059F0..405AB9 /202:
 76 instructions, six bound absolute fields, nine local branches and six plain-RET
 exits. The actual ECX owner/EAX position interface matches its sole direct
 caller428891. A post-gate result variable and direct-read mode switch/fallthrough
@@ -13,7 +42,7 @@ pass; first explicitly includes the existing1170-byte Player damage caller,
 
 Thirty-one exact bodies pass5027/all161 in the first cold image. Ten prior native
 candidates, including main3096, state2 786, shots876 and runtime2412, retain
-complete bytes/field identities. New authored exact totals are99,996/275,752
+complete bytes/field identities. At that checkpoint authored exact totals were99,996/275,752
 bytes and491 owners, with no boundary/origin/mapping change or parent credit.
 
 State2 manager caching and merged VM lookup are whole-native byte/field neutral.
