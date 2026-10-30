@@ -2,6 +2,25 @@
 
 ## Current checkpoint
 
+Latest main follow-up keeps the complete3112-byte scope and emits3096/all110,
+cold-reproduced with all17 inputs rebuilt. Ordinary pair value assignment restores
+both history loops/alignment, a paired first history slot restores store/load
+order, and the existing SetCurrent member restores state0 store order. The real
+state2 transition now models its observed stack/RET4 cleanup; the erroneous caller
+ADD ESP,4 is gone. All five state-table entry offsets match the target, but its
+base remains C04 versus targetC14. Main is still NONEXACT, with no new exact credit.
+State2 remains786/796/all19; actual Gui/Hint definitions restore its private call
+interfaces. See the [complete source-shape proof](evidence/player-main-shapes-20261030/README.md).
+
+Twenty-five same-image exact bodies pass3511/all118; nine prior native nonexact
+candidates retain bytes/field identities. Pair consumers are explicitly reviewed:
+constructor250 is unchanged, initializer1404 changes ordinary bytes/fields, and
+movement1588→1576; the latter two remain nonexact. Twelve selected canonical
+owners pass2471/all94 in their existing recipes. Effect/history method extraction,
+compound timer controls, shared-motion view and explicit dual-cursor models are
+rejected/restored; do not repeat them without a new distinguishing prediction.
+The retained source is3096, not the misleadingly close3116 spill-bearing control.
+
 Two complete result openings are newly exact in two independent canonical15-input
 /GL colds: ResultMenuOpenGameOver4231D0/411 and
 GameCompleteStageTransition423370/411, **822 authored bytes/all56 fields**.
@@ -11,11 +30,11 @@ four-byte result slot and five-stack-value capture ABI. Fresh instruction counts
 are102/103, correcting the old isolated pilot's108 game-over count. Capture162
 itself stays nonexact. See the [result and main-caller proof](evidence/player-main-callees-20261030/README.md).
 
-The complete Player main remains3112 owned bytes:3089 code,3 alignment bytes
+The preceding result-opening checkpoint kept3112 owned main bytes:3089 code,3 alignment bytes
 and its20-byte five-state table. Real fallback owner477830 restores EBP Player,
 target1C frame/save order and the missing owner field. Short power guards,
 preselected item angle, zero timer guard and fallback block order restore more
-instructions. Native3080/3112/all110 fields is cold-reproducible in the15-input
+instructions. That epoch's native3080/3112/all110 fields was cold-reproducible in the15-input
 initializer-entry context; target112 fields includes two still-missing FMUL-one
 fields. History/motion/vector scheduling and alignment remain nonexact. No main
 credit. The preceding14-input Player-entry source epoch was3064/all109; its
@@ -62,7 +81,7 @@ pass2091/all53; ten previous candidates remain byte/field-identical. See the
 PlayerEmitShotRows428160 remains complete105/all2 exact in its existing
 three-input Player-constructor recipe and passes the current scoped cold.
 Its input174 caller stays exact in the12-source recipe. The main source now emits
-3080 in15 inputs, against the corrected complete3112-byte owner. Older3064/14-input
+3096 in17 inputs, against the corrected complete3112-byte owner. Older3064/14-input
 and2820/3089 statements describe preceding native/code-only target epochs. The [preceding source proof](evidence/player-shot-producer-20261030/README.md)
 retains its original source epoch.
 

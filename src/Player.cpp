@@ -228,7 +228,7 @@ void PlayerDrawAuxiliaryRectangle(const float *bounds, unsigned int color);
 
 // Descriptive interfaces for target-observed Player update callees. Their
 // original identifiers and private register conventions remain unproven.
-void PlayerTransitionToState2(Player *player);
+void __stdcall PlayerTransitionToState2(Player *player);
 float PlayerAngleToPoint(Player *player, const PlayerFloat3 *point)
 {
     float dx = point->x - player->drawPosition.x;
@@ -511,7 +511,7 @@ static void MarkPlayerVmDeleteState(unsigned int id, unsigned short state)
 // Target4269D0. The maintained update caller enters state2 after its state4
 // timer reaches eight. Resource, timer, option and panel storage remain the
 // existing shared views; this body grants no original type/TU or exact claim.
-void PlayerTransitionToState2(Player *player)
+void __stdcall PlayerTransitionToState2(Player *player)
 {
     const int faithLoss = ((g_GameScoreState.faith - 5000) / 3) * 10;
     const int lives = g_PlayerLivesDisplayCount - 1;
@@ -1886,8 +1886,8 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         for (; i > 0; --i)
             player->replayPositionHistory[i] =
                 player->replayPositionHistory[i - 1];
-        player->replayPositionHistory[0].x = player->positionX;
-        player->replayPositionHistory[0].y = player->positionY;
+        player->replayPositionHistory[0] =
+            *reinterpret_cast<const PlayerPositionPair *>(&player->positionX);
 
         if (player->updateTimer1.current >= 30)
         {
@@ -1930,17 +1930,7 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             break;
 
         player->runtimeState = 1;
-        if ((player->updateTimer1.flags & 1) == 0)
-        {
-            player->updateTimer1.current = 0;
-            player->updateTimer1.previous = 0xfff0bdc1;
-            player->updateTimer1.subframe = 0.0f;
-            player->updateTimer1.scale = &g_AnmGameSpeed;
-            player->updateTimer1.flags |= 1;
-        }
-        player->updateTimer1.current = 0;
-        player->updateTimer1.subframe = 0.0f;
-        player->updateTimer1.previous = -1;
+        player->updateTimer1.SetCurrent(0);
         // Fall through into the target's physical state-1 block.
     }
     case 1:

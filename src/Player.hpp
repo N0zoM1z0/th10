@@ -8,6 +8,13 @@ struct PlayerPositionPair
 {
     int x;
     int y;
+
+    PlayerPositionPair &operator=(const PlayerPositionPair &other)
+    {
+        x = other.x;
+        y = other.y;
+        return *this;
+    }
 };
 typedef char PlayerPositionPairSizeIs08[
     (sizeof(PlayerPositionPair) == 0x08) ? 1 : -1];

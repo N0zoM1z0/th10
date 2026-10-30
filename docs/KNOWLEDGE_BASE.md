@@ -7583,3 +7583,45 @@ bodies pass2508/all60. Nine selected old canonical owners pass1386/all30; the fu
 current selection including the new pair is11 units/2208/all86, not a cohort.
 No origin change, target-byte ownership expansion, whole-product, runtime or
 portability claim follows. See the [complete proof](evidence/player-main-callees-20261030/README.md).
+
+
+## 2026-10-30 Player value copies, state0 timer and real state2 stack cleanup
+
+The complete Player main still owns3112 bytes. Explicit PlayerPositionPair value
+assignment (x, then y, return self) recovers both main history-copy loops and
+alignment. Applying that same existing fixed-position pair view to history[0]
+recovers X-store/Y-load order. Calling the existing updateTimer1.SetCurrent(0)
+member recovers state1 storage before timer flag loads. Ordinary source now emits
+3096/all110 in17 inputs, fully reproduced by a zero-reuse cold. No exact credit.
+
+Fresh target main review covers763 instructions/3089 code bytes,92 fixed local
+branches and112 fields including all5 dispatch entries. All five native table
+entry offsets now equal the target:21/234/379/5F5/366 for states0/1/2/3/4. The
+native table base remainsC04 versus targetC14, so a complete exact comparison
+must reject it. The two scaled FMUL-one fields are still absent; other early
+scheduling, motion and floating operand choices remain different. Neither the
+16-byte size gap nor matching case offsets establishes partial exactness.
+
+State2 target4269D0..426CEB is211 instructions/796 bytes/all19 fields, with33
+local branches and both exits RET4. Its sole main caller pushes one Player owner.
+The former cdecl source required ADD ESP,4 in the caller, contradicting that actual
+boundary. Source declaration/definition now model __stdcall cleanup; the original
+source annotation remains unknown. Real Gui/Hint definitions restore EAX GUI/ECX
+count and ESI Hint receiver, with raw-exact77 and existing exact104 bodies in the
+same image. Complete state2 remains786/796/all19, including option-loop/register/
+stack-home differences. Source completeness and correct cleanup do not close it.
+
+Forced-inline effect extraction and compound subtraction are verified whole-native
+neutral controls and are restored. Ordinary effect/history methods outline and
+are rejected. Compound Tick addition is whole-native neutral and restored.
+Shared EnemyMotion view changes ordinary operands but remains nonexact. A derived
+dual cursor restores the motion base yet regresses prefix/register/update choices;
+independent cursor stepping emits3116 with a spurious spill and wrong base. Both
+are restored instead of selecting by size. Reopen only with new source evidence.
+
+Twenty-five same-image exact bodies pass3511/all118. Nine preceding native nonexact
+candidates retain complete bytes/field identities. Constructor250 is also unchanged;
+pair consumers initializer1404 and movement1588→1576 do change and remain nonexact.
+Twelve explicit existing canonical cold units pass2471/all94. No full-cohort replay,
+origin/boundary expansion, parent exactness or product/runtime/portability claim.
+See the [complete source/evidence checkpoint](evidence/player-main-shapes-20261030/README.md).
