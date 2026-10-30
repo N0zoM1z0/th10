@@ -7666,3 +7666,44 @@ the first cold image, and ten prior native candidates preserve full bytes/field
 identities. Shot-update and motion experiments are restored; their876/876 and
 160/171 candidates remain nonexact. The [complete proof and reproducible unit](evidence/player-damage-exact-20261030/README.md)
 retain the target review, source/object pins, controls and scoped cold reports.
+
+
+## 2026-10-30 Complete auxiliary Player damage owner exact
+
+PlayerUpdateGate28::GetDamageAtPosition is202 owned bytes at4059F0..405AB9,
+76 instructions, with three preceding/six following CC bytes. All six exits
+are plain RET. A full412289-byte mapped-text E8/REL32 scan finds the sole direct
+caller428891; it loads owner4776EC in ECX and target position in EAX. Ordinary
+member source reproduces that actual private interface and EAX integer result.
+
+The complete canonical proof preserves nine fixed local branch destinations
+and six absolute fields:3D/79 ->4776F4 game-state pointer,64/A0 ->477704 gate
+pointer,8E/B5 ->474C68 integer. All fields are independently target-inventoried
+and symbol-bound, with full PDB extent. The inactive gate, strict XY radius
+comparison, mode/flag/gate result selections, late ESI save and every return
+participate in the comparison. No host simulation or partial-owner exemption.
+
+Initialize the integer result after the inactive early return. A mode switch
+with direct game-flag reads lets case zero select three or fall through into
+the common default, which selects38 or the gate-dependent38/5. Outside paths
+retain23/26,20/16 or zero. This recovers EDX zero/result, shared CL flag and
+mode-first scheduling. A cached switch197 removes the second global pointer
+load and remains nonexact. Compound predicates201 retain an extra mode test;
+duplicated nested defaults/early returns grow the complete owner. These are
+maintained codegen constraints, not original source/type/name identification.
+
+Two independent canonical seventeen-input /GL colds reproduce202/all6. The
+first explicitly replays the affected1170-byte Player damage caller as well,
+1372 bytes/all34 fields; its complete contract remains exact. Thirty-one strict
+bodies pass5027/all161 in that cold image. Ten previous native candidates retain
+full bytes/field identities. Reviewed boundary and authored origin are unchanged.
+Original wider type ownership, production partition, product/runtime/portability
+remain independent and unproven.
+
+State2 manager caching and a merged local VM lookup leave its complete786-byte
+native body and field identities unchanged. In the current seventeen-input
+real-InitializeVm context, the existing plain ANM profile also preserves state2
+and the197-byte script initializer completely. These controls are restored and
+parked; earlier single-TU203-byte records are different contexts, not current
+source closure. State2 and its initializer remain nonexact. See the
+[complete source and evidence](evidence/player-aux-damage-exact-20261030/README.md).

@@ -299,24 +299,38 @@ int PlayerUpdateGate28::GetDamageAtPosition(const PlayerFloat3 *targetPosition)
 {
     if (value28 == 0)
         return 0;
+    int damage = 0;
     const float dy = targetPosition->y - position.y;
     const float dx = targetPosition->x - position.x;
     if (dx * dx + dy * dy < radius * radius)
     {
-        if ((g_EnemyGameState->flags378C & 1u) != 0)
-            return mode == 0 ? 3 : 38;
-        return g_PlayerDrawGate10->value10 != 0 ? 38 : 5;
+        switch (mode)
+        {
+        case 0:
+            if ((g_EnemyGameState->flags378C & 1u) != 0)
+            {
+                damage = 3;
+                break;
+            }
+            // Fall through to the ordinary damage path.
+        default:
+            if ((g_EnemyGameState->flags378C & 1u) != 0)
+                damage = 38;
+            else
+                damage = g_PlayerDrawGate10->value10 != 0 ? 38 : 5;
+            break;
+        }
     }
-    if ((g_EnemyGameState->flags378C & 1u) != 0)
+    else if ((g_EnemyGameState->flags378C & 1u) != 0)
     {
         if (mode == 1)
-            return g_GameStatisticsIndex0 != 0 ? 23 : 26;
+            damage = g_GameStatisticsIndex0 != 0 ? 23 : 26;
     }
     else if (g_PlayerDrawGate10->value10 != 0 && mode == 0)
     {
-        return g_GameStatisticsIndex0 == 0 ? 20 : 16;
+        damage = g_GameStatisticsIndex0 == 0 ? 20 : 16;
     }
-    return 0;
+    return damage;
 }
 
 __declspec(noinline) double __stdcall PlayerFloor(float value)

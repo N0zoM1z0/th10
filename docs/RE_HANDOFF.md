@@ -2,21 +2,42 @@
 
 ## Current checkpoint
 
-Complete Player::CalculateDamageToTarget428630..428AC1 is newly exact1170:
+PlayerUpdateGate28::GetDamageAtPosition4059F0..405AB9 is newly exact202:
+76 instructions, six bound absolute fields, nine local branches and six plain-RET
+exits. The actual ECX owner/EAX position interface matches its sole direct
+caller428891. A post-gate result variable and direct-read mode switch/fallthrough
+restore the target schedule. Two independent canonical seventeen-input /GL colds
+pass; first explicitly includes the existing1170-byte Player damage caller,
+1372 bytes/all34 fields. Second independently passes202/all6. See the
+[complete auxiliary damage proof](evidence/player-aux-damage-exact-20261030/README.md).
+
+Thirty-one exact bodies pass5027/all161 in the first cold image. Ten prior native
+candidates, including main3096, state2 786, shots876 and runtime2412, retain
+complete bytes/field identities. New authored exact totals are99,996/275,752
+bytes and491 owners, with no boundary/origin/mapping change or parent credit.
+
+State2 manager caching and merged VM lookup are whole-native byte/field neutral.
+The existing plain ANM profile in this current graph is also neutral for state2
+and its197/203 initializer; it is restored. Do not reopen these without a new
+prediction. Aux controls with duplicated defaults, early returns or cached flags
+are rejected; the cached switch197 loses a global reload, so size is not a score.
+Only the direct-read202-byte auxiliary member source is retained. Main, state2,
+its script initializer and motion remain open substantial owners.
+
+The preceding Player::CalculateDamageToTarget428630..428AC1 checkpoint closed1170:
 355 instructions, all28 bound address fields and all41 fixed local destinations.
 Two independent canonical seventeen-input /GL colds reproduce the complete
 PDB contribution. Ordinary shared upper-bound/rotated-XY scratch, two-step rotated
 Y and a descriptor-kind reread close the remaining frame/FPU/memory-ADD differences.
 Both exits retain RET12 and the real ECX optional-hit pointer/three-stack-value
-interface. The auxiliary callee remains189/202 nonexact with its actual ECX/EAX
-interface. See the [complete damage proof](evidence/player-damage-exact-20261030/README.md).
+interface. The auxiliary callee was189/202 at that checkpoint; it is now closed above. See the [complete damage proof](evidence/player-damage-exact-20261030/README.md).
 
 First scoped cold passes the new1170 plus bounds55/all4, allocator181/all1,
 interrupt65/all2 and interval29 raw:1500 bytes/all35 fields. Second independently
 passes1170/all28. Thirty same-image strict bodies pass4825/all155; ten prior native
 candidates, including main3096, state2 786, shots876 and EnemyRuntimeUpdate2412,
-preserve complete bytes/field identities. No full cohort. Authored exact totals
-are now99,794/275,752 bytes and490 owners, with unchanged ownership/mapping counts.
+preserve complete bytes/field identities. No full cohort. At that checkpoint authored exact totals
+were99,794/275,752 bytes and490 owners, with unchanged ownership/mapping counts.
 
 Restored controls: lower-bound reuse does not restore the target frame; bool
 eligibility restores ADD but adds SETNE/TEST; integer/switch forms are neutral.

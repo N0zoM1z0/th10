@@ -1,0 +1,3420 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "claim": "Complete202-byte auxiliary Player damage owner codegen exactness only; no product/runtime/portability closure.",
+  "target_review": {
+    "address": "0x4059f0",
+    "size": 202,
+    "end": "0x405ab9",
+    "instruction_count": 76,
+    "decoded_bytes": 202,
+    "sha256": "65a18b997df4b896439672bbdf9abfbd2fb64cf29af75d0cd86c7d0b78f66ece",
+    "prefix": "cccccc",
+    "suffix": "cccccccccccc",
+    "return_offsets": [
+      9,
+      85,
+      98,
+      119,
+      158,
+      201
+    ],
+    "fields": [
+      {
+        "offset": 61,
+        "type": "DIR32",
+        "target": 4683508
+      },
+      {
+        "offset": 100,
+        "type": "DIR32",
+        "target": 4683524
+      },
+      {
+        "offset": 121,
+        "type": "DIR32",
+        "target": 4683508
+      },
+      {
+        "offset": 142,
+        "type": "DIR32",
+        "target": 4672616
+      },
+      {
+        "offset": 160,
+        "type": "DIR32",
+        "target": 4683524
+      },
+      {
+        "offset": 181,
+        "type": "DIR32",
+        "target": 4672616
+      }
+    ],
+    "local_branches": [
+      {
+        "offset": 5,
+        "destination": 10,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 53,
+        "destination": 120,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 71,
+        "destination": 86,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 76,
+        "destination": 99,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 89,
+        "destination": 99,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 132,
+        "destination": 159,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 138,
+        "destination": 199,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 171,
+        "destination": 199,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 178,
+        "destination": 199,
+        "mnemonic": "jne"
+      }
+    ],
+    "direct_callers": [
+      "0x428891"
+    ],
+    "caller_scan": "Exhaustive E8 + signed REL32 over all412289 mapped text bytes",
+    "caller_context": [
+      {
+        "address": "0x428889",
+        "instruction": "mov ecx, dword ptr [0x4776ec]"
+      },
+      {
+        "address": "0x42888f",
+        "instruction": "mov eax, edi"
+      },
+      {
+        "address": "0x428891",
+        "instruction": "call 0x4059f0"
+      },
+      {
+        "address": "0x428896",
+        "instruction": "mov ecx, dword ptr [esp + 0x54]"
+      },
+      {
+        "address": "0x42889a",
+        "instruction": "add ecx, eax"
+      }
+    ]
+  },
+  "canonical_unit": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FrontEnd.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ItemManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Main.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Sound.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Gui.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Hint.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+    "artifact_kind": "linked-pe",
+    "pdb_source": "src/Player.cpp",
+    "output_dir": "build/match-linked/PlayerCalculateDamage",
+    "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+    "functions": [
+      "PlayerUpdateGate28::GetDamageAtPosition"
+    ],
+    "target_address": 4217328,
+    "size": 202,
+    "linkages": [
+      {
+        "offset": 61,
+        "type": "DIR32",
+        "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+        "target": 4683508
+      },
+      {
+        "offset": 100,
+        "type": "DIR32",
+        "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+        "target": 4683524
+      },
+      {
+        "offset": 121,
+        "type": "DIR32",
+        "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+        "target": 4683508
+      },
+      {
+        "offset": 142,
+        "type": "DIR32",
+        "symbol": "?g_GameStatisticsIndex0@@3HA",
+        "target": 4672616
+      },
+      {
+        "offset": 160,
+        "type": "DIR32",
+        "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+        "target": 4683524
+      },
+      {
+        "offset": 181,
+        "type": "DIR32",
+        "symbol": "?g_GameStatisticsIndex0@@3HA",
+        "target": 4672616
+      }
+    ]
+  },
+  "canonical_cold": [
+    {
+      "artifact_count": 1,
+      "groups": [
+        {
+          "artifact": "build/match-linked/PlayerCalculateDamage",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "player-calculate-damage-to-target",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00414160",
+              "capstone_version": "5.0.6",
+              "compared_size": 1170,
+              "data_spans": [],
+              "decoded_bytes": 1170,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+              "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0x32",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0x53",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0x9E",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0xB0",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430104",
+                  "linked_symbol": "__real@00000000",
+                  "local": false,
+                  "offset": "0x11F",
+                  "symbol": "__real@00000000",
+                  "target": "0x00470B04",
+                  "target_encoded_value": "0x00470B04",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430104",
+                  "linked_symbol": "__real@00000000",
+                  "local": false,
+                  "offset": "0x139",
+                  "symbol": "__real@00000000",
+                  "target": "0x00470B04",
+                  "target_encoded_value": "0x00470B04",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00411FD0",
+                  "linked_symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+                  "local": false,
+                  "offset": "0x168",
+                  "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+                  "target": "0x0040C480",
+                  "target_encoded_value": "0xFFFE3CE4",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00412110",
+                  "linked_symbol": "?HasIntervalTick@PlayerTimerView@@QBEHH@Z",
+                  "local": false,
+                  "offset": "0x18C",
+                  "symbol": "?HasIntervalTick@PlayerTimerView@@QBEHH@Z",
+                  "target": "0x00427C70",
+                  "target_encoded_value": "0xFFFFF4B0",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0040F2E0",
+                  "linked_symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+                  "local": false,
+                  "offset": "0x1A2",
+                  "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+                  "target": "0x00449450",
+                  "target_encoded_value": "0x00020C7A",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0040F3F0",
+                  "linked_symbol": "?Release@AnmVmIdView@@QAEXXZ",
+                  "local": false,
+                  "offset": "0x1AE",
+                  "symbol": "?Release@AnmVmIdView@@QAEXXZ",
+                  "target": "0x00449630",
+                  "target_encoded_value": "0x00020E4E",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00408720",
+                  "linked_symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+                  "local": false,
+                  "offset": "0x1C8",
+                  "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+                  "target": "0x00448D00",
+                  "target_encoded_value": "0x00020504",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0040F2E0",
+                  "linked_symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+                  "local": false,
+                  "offset": "0x1D1",
+                  "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+                  "target": "0x00449450",
+                  "target_encoded_value": "0x00020C4B",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043016C",
+                  "linked_symbol": "__real@3e000000",
+                  "local": false,
+                  "offset": "0x1F0",
+                  "symbol": "__real@3e000000",
+                  "target": "0x00470B90",
+                  "target_encoded_value": "0x00470B90",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00411F10",
+                  "linked_symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+                  "local": false,
+                  "offset": "0x234",
+                  "symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+                  "target": "0x00427B50",
+                  "target_encoded_value": "0xFFFFF2E8",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004316DC",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0338",
+                  "local": false,
+                  "offset": "0x25B",
+                  "symbol": "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A",
+                  "target": "0x004776EC",
+                  "target_encoded_value": "0x004776EC",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00412020",
+                  "linked_symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+                  "local": false,
+                  "offset": "0x262",
+                  "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+                  "target": "0x004059F0",
+                  "target_encoded_value": "0xFFFDD15A",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430104",
+                  "linked_symbol": "__real@00000000",
+                  "local": false,
+                  "offset": "0x2AA",
+                  "symbol": "__real@00000000",
+                  "target": "0x00470B04",
+                  "target_encoded_value": "0x00470B04",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0x2BF",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0x2EE",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0x36A",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043020C",
+                  "linked_symbol": "__real@bf000000",
+                  "local": false,
+                  "offset": "0x373",
+                  "symbol": "__real@bf000000",
+                  "target": "0x00470B78",
+                  "target_encoded_value": "0x00470B78",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0x38F",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0x3AD",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043020C",
+                  "linked_symbol": "__real@bf000000",
+                  "local": false,
+                  "offset": "0x3B6",
+                  "symbol": "__real@bf000000",
+                  "target": "0x00470B78",
+                  "target_encoded_value": "0x00470B78",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00430110",
+                  "linked_symbol": "__real@3f000000",
+                  "local": false,
+                  "offset": "0x3CE",
+                  "symbol": "__real@3f000000",
+                  "target": "0x00470B0C",
+                  "target_encoded_value": "0x00470B0C",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00431540",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0235",
+                  "local": false,
+                  "offset": "0x460",
+                  "symbol": "?g_GameScore@@3HA",
+                  "target": "0x00474C44",
+                  "target_encoded_value": "0x00474C44",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00431540",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0235",
+                  "local": false,
+                  "offset": "0x476",
+                  "symbol": "?g_GameScore@@3HA",
+                  "target": "0x00474C44",
+                  "target_encoded_value": "0x00474C44",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00431540",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0235",
+                  "local": false,
+                  "offset": "0x47E",
+                  "symbol": "?g_GameScore@@3HA",
+                  "target": "0x00474C44",
+                  "target_encoded_value": "0x00474C44",
+                  "type": "DIR32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 1170,
+              "matched_compared_bytes": 1170,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+              "pdb_module_index": 13,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 1170,
+              "symbol": "?CalculateDamageToTarget@Player@@QAEHPBUPlayerFloat3@@0PAH@Z",
+              "target_address": "0x00428630",
+              "unit": "player-calculate-damage-to-target"
+            },
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00412020",
+              "capstone_version": "5.0.6",
+              "compared_size": 202,
+              "data_spans": [],
+              "decoded_bytes": 202,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+              "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00431420",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0163",
+                  "local": false,
+                  "offset": "0x3D",
+                  "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+                  "target": "0x004776F4",
+                  "target_encoded_value": "0x004776F4",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043167C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0314",
+                  "local": false,
+                  "offset": "0x64",
+                  "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+                  "target": "0x00477704",
+                  "target_encoded_value": "0x00477704",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00431420",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0163",
+                  "local": false,
+                  "offset": "0x79",
+                  "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+                  "target": "0x004776F4",
+                  "target_encoded_value": "0x004776F4",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043155C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0242",
+                  "local": false,
+                  "offset": "0x8E",
+                  "symbol": "?g_GameStatisticsIndex0@@3HA",
+                  "target": "0x00474C68",
+                  "target_encoded_value": "0x00474C68",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043167C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0314",
+                  "local": false,
+                  "offset": "0xA0",
+                  "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+                  "target": "0x00477704",
+                  "target_encoded_value": "0x00477704",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043155C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0242",
+                  "local": false,
+                  "offset": "0xB5",
+                  "symbol": "?g_GameStatisticsIndex0@@3HA",
+                  "target": "0x00474C68",
+                  "target_encoded_value": "0x00474C68",
+                  "type": "DIR32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 202,
+              "matched_compared_bytes": 202,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+              "pdb_module_index": 13,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 202,
+              "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+              "target_address": "0x004059F0",
+              "unit": "player-auxiliary-damage-at-position"
+            }
+          ]
+        }
+      ],
+      "matched_bytes": 1372,
+      "result": "exact",
+      "source_count": 1,
+      "unit_count": 2
+    },
+    {
+      "artifact_count": 1,
+      "groups": [
+        {
+          "artifact": "build/match-linked/PlayerCalculateDamage",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "player-auxiliary-damage-at-position",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00412020",
+              "capstone_version": "5.0.6",
+              "compared_size": 202,
+              "data_spans": [],
+              "decoded_bytes": 202,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+              "image_sha256": "39c21ef197f04616fc7e30a7c332668b0842c6191d531f3a7aca768d4b6d8800",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00431420",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0163",
+                  "local": false,
+                  "offset": "0x3D",
+                  "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+                  "target": "0x004776F4",
+                  "target_encoded_value": "0x004776F4",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043167C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0314",
+                  "local": false,
+                  "offset": "0x64",
+                  "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+                  "target": "0x00477704",
+                  "target_encoded_value": "0x00477704",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00431420",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0163",
+                  "local": false,
+                  "offset": "0x79",
+                  "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+                  "target": "0x004776F4",
+                  "target_encoded_value": "0x004776F4",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043155C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0242",
+                  "local": false,
+                  "offset": "0x8E",
+                  "symbol": "?g_GameStatisticsIndex0@@3HA",
+                  "target": "0x00474C68",
+                  "target_encoded_value": "0x00474C68",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043167C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0314",
+                  "local": false,
+                  "offset": "0xA0",
+                  "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+                  "target": "0x00477704",
+                  "target_encoded_value": "0x00477704",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043155C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0242",
+                  "local": false,
+                  "offset": "0xB5",
+                  "symbol": "?g_GameStatisticsIndex0@@3HA",
+                  "target": "0x00474C68",
+                  "target_encoded_value": "0x00474C68",
+                  "type": "DIR32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 202,
+              "matched_compared_bytes": 202,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "5ca79f5f46c30b459733d0fcc5e4104f",
+              "pdb_module_index": 13,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 202,
+              "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+              "target_address": "0x004059F0",
+              "unit": "player-auxiliary-damage-at-position"
+            }
+          ]
+        }
+      ],
+      "matched_bytes": 202,
+      "result": "exact",
+      "source_count": 1,
+      "unit_count": 1
+    }
+  ],
+  "canonical_contexts": {
+    "aux-cold-a": {
+      "variant": "aux-cold-a",
+      "forced_cold": true,
+      "graph": {
+        "source": "src/Enemy.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/EclVm.cpp",
+          "src/Player.cpp",
+          "src/PlayerCollision.cpp",
+          "src/EnemyEclDispatcher.cpp",
+          "src/VmIdInterrupt.cpp",
+          "src/FrontEnd.cpp",
+          "src/ItemManager.cpp",
+          "src/Main.cpp",
+          "src/Sound.cpp",
+          "src/Gui.cpp",
+          "src/Hint.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/RandomMath.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmCreate.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmId.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          "src/Player.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/PlayerCollision.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/EnemyEclDispatcher.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/VmIdInterrupt.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/FrontEnd.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "src/ItemManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Main.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Sound.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Gui.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Hint.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      },
+      "pins": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+        "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+        "src/Enemy.cpp": "bd9a3a3ef595569aa90c1acf4999271b79f03c44e6562b1f9544c111a8892fff",
+        "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+        "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+        "src/EnemyEclDispatcher.cpp": "d632e60fefce7f3d830c4bad5faeb38f9f0ac2ea88a07d800485b37f9034f946",
+        "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+        "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+        "src/FrontEnd.cpp": "82add76a8f165cc27785a0096281a8deefec65369fff93b2428faf4707caf770",
+        "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+        "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+        "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+        "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+        "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+        "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+        "src/Gui.cpp": "b42efb2a42b99a7dd84125f36235afb106c3b39f12e0320fcce400643a9d1eee",
+        "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+        "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+        "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+        "src/ItemManager.cpp": "8b950fceecc041701f77b8a23726bb42e09d9ceb50503f91025e38ff761f5eaf",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+        "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+        "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+        "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+        "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+        "src/Player.cpp": "4085e3273448c80dd60a59a0083df6e175f400479a7060cd9d86ffeca031c48d",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+        "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+        "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+        "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+        "src/Sound.cpp": "f54cc701c28e6c27446f054b9234be57531a666c646a69a3e4639458a7411562",
+        "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+        "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+        "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+        "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+        "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+      },
+      "changed_inputs": [
+        "src/Enemy.cpp",
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp"
+      ],
+      "compiled": [
+        "src/Enemy.cpp",
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp"
+      ],
+      "reused": {},
+      "artifacts": {
+        "image": "build/gpt-6.1-sol/player-state2-context-20261030/aux-cold-a/source.exe",
+        "map": "build/gpt-6.1-sol/player-state2-context-20261030/aux-cold-a/source.map",
+        "pdb": "build/gpt-6.1-sol/player-state2-context-20261030/aux-cold-a/source.pdb"
+      },
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "object_sha256": {
+        "src/Enemy.cpp": "0de86556b260d7255e63da210bb0852a066abf2003948743190b4c1977d1af7a",
+        "src/AnmManager.cpp": "a493bcf031707cdc4588eccb63934cfb14cbd6b376014fac0bf2b1b549de30c1",
+        "src/RandomMath.cpp": "5effdb9cbf0d264187b2323aeb05c4d90f1597de8a1d9cea7a97c70d12b09eaf",
+        "src/AnmVmCreate.cpp": "2c68ce6a283e2ba086a4d63ff9fa418e403cd33821813be8c57d0fe2d38a8610",
+        "src/AnmVmId.cpp": "394ec05cf8ab39132f256edc109436a96685628f07ae0ae7abc92d03d15133c7",
+        "src/AnmInt3Scale.cpp": "8e9dc86a1cab23345bc77bb5d370a0207e4166f770586de3d04636accd615b04",
+        "src/EclVm.cpp": "2f6a4277b1a9ee1f9ff249f7b3e45bda3c313d41bf1bab8f3553583666459e47",
+        "src/Player.cpp": "ad7f6bfcd87e7a8cd4cac4bf85417ceca50919e87ef57a27a24885a1e00809d7",
+        "src/PlayerCollision.cpp": "deae7377f20542a7f4bb2b9af1b40253e7c3c59e7318fb012b97683d6dbece41",
+        "src/EnemyEclDispatcher.cpp": "45e2462f31c465686ef50a88a450838e428558282dc9b03b8e5a294dd461bed0",
+        "src/VmIdInterrupt.cpp": "1584ecce5cd4130cbea8a9b0577c9f4a2031dba7abdc73437e898719683537ca",
+        "src/FrontEnd.cpp": "a0511667a83724fa8917a7b26d7f74bb1a5db39351571f3124af190b2d4fda45",
+        "src/ItemManager.cpp": "8f4d7592274b6382c66e1226bdf67d780981988b11bbc9ed12875ab8857e3323",
+        "src/Main.cpp": "b29ae317e8898ef034dfd1150101a657cd8cca2368c4134c879a8c1b99ae3d13",
+        "src/Sound.cpp": "e0247c6ebea25e3c02eb0899f73ef1dd04101035fec7c1bf8decb3ab092b143e",
+        "src/Gui.cpp": "6e544a7a3bef456fadf316ab27d8e3faa37c5ff3e3d017fe2824b85784289830",
+        "src/Hint.cpp": "417b46179c1d1c06b233872dea188ec2076b98d04bff904781d7b14859997d79"
+      }
+    },
+    "aux-cold-b": {
+      "variant": "aux-cold-b",
+      "forced_cold": true,
+      "graph": {
+        "source": "src/Enemy.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/EclVm.cpp",
+          "src/Player.cpp",
+          "src/PlayerCollision.cpp",
+          "src/EnemyEclDispatcher.cpp",
+          "src/VmIdInterrupt.cpp",
+          "src/FrontEnd.cpp",
+          "src/ItemManager.cpp",
+          "src/Main.cpp",
+          "src/Sound.cpp",
+          "src/Gui.cpp",
+          "src/Hint.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/RandomMath.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmCreate.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmId.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          "src/Player.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/PlayerCollision.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/EnemyEclDispatcher.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/VmIdInterrupt.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/FrontEnd.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "src/ItemManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Main.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Sound.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Gui.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Hint.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      },
+      "pins": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+        "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+        "src/Enemy.cpp": "bd9a3a3ef595569aa90c1acf4999271b79f03c44e6562b1f9544c111a8892fff",
+        "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+        "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+        "src/EnemyEclDispatcher.cpp": "d632e60fefce7f3d830c4bad5faeb38f9f0ac2ea88a07d800485b37f9034f946",
+        "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+        "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+        "src/FrontEnd.cpp": "82add76a8f165cc27785a0096281a8deefec65369fff93b2428faf4707caf770",
+        "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+        "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+        "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+        "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+        "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+        "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+        "src/Gui.cpp": "b42efb2a42b99a7dd84125f36235afb106c3b39f12e0320fcce400643a9d1eee",
+        "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+        "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+        "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+        "src/ItemManager.cpp": "8b950fceecc041701f77b8a23726bb42e09d9ceb50503f91025e38ff761f5eaf",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+        "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+        "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+        "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+        "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+        "src/Player.cpp": "4085e3273448c80dd60a59a0083df6e175f400479a7060cd9d86ffeca031c48d",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+        "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+        "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+        "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+        "src/Sound.cpp": "f54cc701c28e6c27446f054b9234be57531a666c646a69a3e4639458a7411562",
+        "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+        "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+        "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+        "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+        "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+      },
+      "changed_inputs": [
+        "src/Enemy.cpp",
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp"
+      ],
+      "compiled": [
+        "src/Enemy.cpp",
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp"
+      ],
+      "reused": {},
+      "artifacts": {
+        "image": "build/gpt-6.1-sol/player-state2-context-20261030/aux-cold-b/source.exe",
+        "map": "build/gpt-6.1-sol/player-state2-context-20261030/aux-cold-b/source.map",
+        "pdb": "build/gpt-6.1-sol/player-state2-context-20261030/aux-cold-b/source.pdb"
+      },
+      "image_sha256": "39c21ef197f04616fc7e30a7c332668b0842c6191d531f3a7aca768d4b6d8800",
+      "object_sha256": {
+        "src/Enemy.cpp": "28bc51606bf37372ec5474a379477324911f481b3b1da6d49082162128a66c72",
+        "src/AnmManager.cpp": "d22af9fcc1e8f2056c10802be1a970a278390e39f0ffe695d0dd37f7d10453a3",
+        "src/RandomMath.cpp": "23bfc31d2a8ea8c1cdb722cf49761beedc5165ec3ce7308b4876c256ce7ccddb",
+        "src/AnmVmCreate.cpp": "27c7653e520cfc0aa3b3ca77e62658983c9d9107a4f37e9637cabdb3f6de70a1",
+        "src/AnmVmId.cpp": "a9b8498a03c0cab20419a828490e064ecea91276773c3bf7e10762e019592103",
+        "src/AnmInt3Scale.cpp": "9d49d020293ffe8a1b142351ad807168dbec4363bcfac3f75396cc39ccad22e0",
+        "src/EclVm.cpp": "3224040b02fc6c95a423087789ce044124d19ff39a62244ebe693186705c5780",
+        "src/Player.cpp": "8d8f9b153fad0e531577f76649f4c11b473f82063d2a425e032649c402c571e1",
+        "src/PlayerCollision.cpp": "5b86c071183962f0f0b3612b032e37f05f53bdfa583d03303dbf82400dd09396",
+        "src/EnemyEclDispatcher.cpp": "d2f061adec6c711a4e564db5b0fa60269f38532947c5fa1857b1f760f5bf10b3",
+        "src/VmIdInterrupt.cpp": "512c33f497a1bcd23b22316912f8260600ae056f07a434d7273a886f17dd52c0",
+        "src/FrontEnd.cpp": "8854b9d8cbf7cb65aae803b8da1da7a3277b48cf85a9f5bb43396bc5ca2032f7",
+        "src/ItemManager.cpp": "8ae50751deb22d1c587557c756c361a6742ab44fe21214d6c58b05574574d8e7",
+        "src/Main.cpp": "2fe41f761930835ae15f5dbf3839b99ac2cae468871086ab6304d1da11f2c3e8",
+        "src/Sound.cpp": "b4e5d656a99aef6e32822d3ab9671781e86059d98c1bf5c3f82ced5b464c3e2a",
+        "src/Gui.cpp": "14914a57eff11bc5120f1323ce408a9f07e9241b5e29d52edbbb88891938fef7",
+        "src/Hint.cpp": "4e8c52fa0ba6af842031231c05a1f32edbf1972d3b5cf2488cd89456a0c34c40"
+      }
+    }
+  },
+  "cold_freezes": {
+    "aux-cold-a": {
+      "source_count": 131,
+      "source_pins_sha256": "a63535729a826cc010ee8794d40cbfc281e0499b0563a201e7fa00ce05ffd402",
+      "manifest_sha256": "60087ffef37c9c6d2e0b3a1a2ee4ff4bf27713da4137f0df808e218eafa4bc1a"
+    },
+    "aux-cold-b": {
+      "source_count": 131,
+      "source_pins_sha256": "a63535729a826cc010ee8794d40cbfc281e0499b0563a201e7fa00ce05ffd402",
+      "manifest_sha256": "60087ffef37c9c6d2e0b3a1a2ee4ff4bf27713da4137f0df808e218eafa4bc1a"
+    }
+  },
+  "warm_strict": {
+    "unit": "player-auxiliary-damage-at-position",
+    "artifact_kind": "linked-pe",
+    "result": "exact",
+    "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+    "target_address": "0x004059F0",
+    "size": 202,
+    "matched_bytes": 202,
+    "compared_size": 202,
+    "matched_compared_bytes": 202,
+    "image": "build/gpt-6.1-sol/player-state2-context-20261030/aux-direct-switch/source.exe",
+    "image_sha256": "788bcb989ce72e6b477415b313fbd870bdc9bd51a7b34214cdf47589e6cdf331",
+    "pdb_guid": "7e2435606479b847b4551d1c27264ce3",
+    "pdb_age": 1,
+    "candidate_address": "0x00412020",
+    "extent_source": "pdb-section-contribution",
+    "pdb_module_index": 13,
+    "decoded_bytes": 202,
+    "normalization_complete": true,
+    "data_spans": [],
+    "linkages": [
+      {
+        "offset": "0x3D",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0163",
+        "local": false,
+        "candidate_target": "0x00431420",
+        "target": "0x004776F4",
+        "addend": 0,
+        "target_encoded_value": "0x004776F4"
+      },
+      {
+        "offset": "0x64",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0314",
+        "local": false,
+        "candidate_target": "0x0043167C",
+        "target": "0x00477704",
+        "addend": 0,
+        "target_encoded_value": "0x00477704"
+      },
+      {
+        "offset": "0x79",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0163",
+        "local": false,
+        "candidate_target": "0x00431420",
+        "target": "0x004776F4",
+        "addend": 0,
+        "target_encoded_value": "0x004776F4"
+      },
+      {
+        "offset": "0x8E",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GameStatisticsIndex0@@3HA",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0242",
+        "local": false,
+        "candidate_target": "0x0043155C",
+        "target": "0x00474C68",
+        "addend": 0,
+        "target_encoded_value": "0x00474C68"
+      },
+      {
+        "offset": "0xA0",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0314",
+        "local": false,
+        "candidate_target": "0x0043167C",
+        "target": "0x00477704",
+        "addend": 0,
+        "target_encoded_value": "0x00477704"
+      },
+      {
+        "offset": "0xB5",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GameStatisticsIndex0@@3HA",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0242",
+        "local": false,
+        "candidate_target": "0x0043155C",
+        "target": "0x00474C68",
+        "addend": 0,
+        "target_encoded_value": "0x00474C68"
+      }
+    ],
+    "raw_equal": false,
+    "first_differences": [],
+    "capstone_version": "5.0.6"
+  },
+  "same_cold_image_guards": {
+    "enemy-runtime-vector": {
+      "result": "exact",
+      "size": 30,
+      "matched_bytes": 30,
+      "candidate_address": "0x00401C00",
+      "target_address": "0x0044C5D0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 30,
+      "normalization_complete": true,
+      "field_count": 0,
+      "field_bindings_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "player-shot-outside-playfield": {
+      "result": "exact",
+      "size": 91,
+      "matched_bytes": 91,
+      "candidate_address": "0x00413900",
+      "target_address": "0x00428D70",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 91,
+      "normalization_complete": true,
+      "field_count": 4,
+      "field_bindings_sha256": "6725b0229cc203be87d32ea7c482f0ef4ffc3f8d1a04ccaa06849cf952701fa9"
+    },
+    "player-spawn-effect-row": {
+      "result": "exact",
+      "size": 181,
+      "matched_bytes": 181,
+      "candidate_address": "0x00411F10",
+      "target_address": "0x00427B50",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 181,
+      "normalization_complete": true,
+      "field_count": 1,
+      "field_bindings_sha256": "7e4456d8a0931f1f64d457f67cd4536f13b35977588b45b929a1694dbb9abb6b"
+    },
+    "player-planar-bounds": {
+      "result": "exact",
+      "size": 55,
+      "matched_bytes": 55,
+      "candidate_address": "0x00415D50",
+      "target_address": "0x004285F0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 55,
+      "normalization_complete": true,
+      "field_count": 4,
+      "field_bindings_sha256": "ecfc7a272a921c7607abca77e96777eb6a962bae9919bb241ef056e8dce557a2"
+    },
+    "player-set-shot-vm-interrupt2": {
+      "result": "exact",
+      "size": 65,
+      "matched_bytes": 65,
+      "candidate_address": "0x00411FD0",
+      "target_address": "0x0040C480",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 65,
+      "normalization_complete": true,
+      "field_count": 2,
+      "field_bindings_sha256": "891ef34356b0293fb5c9b84f205942e1cc164c3ff5009c55e8f43e6d8e2a0709"
+    },
+    "enemy-mark-pending-interrupt": {
+      "result": "exact",
+      "size": 65,
+      "matched_bytes": 65,
+      "candidate_address": "0x0041AFB0",
+      "target_address": "0x00409E50",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 65,
+      "normalization_complete": true,
+      "field_count": 2,
+      "field_bindings_sha256": "ab1c5d96b683292cc5db8ab9b6a0a11319520c42d8ccc19665b1919e3c374ed6"
+    },
+    "result-menu-pending-three": {
+      "result": "exact",
+      "size": 65,
+      "matched_bytes": 65,
+      "candidate_address": "0x00423540",
+      "target_address": "0x0040C4D0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 65,
+      "normalization_complete": true,
+      "field_count": 2,
+      "field_bindings_sha256": "6d946b7546903fc5dcadf1ee3db05873962904d18872192208620e3ffe4aef50"
+    },
+    "enemy-wrap-angle": {
+      "result": "exact",
+      "size": 94,
+      "matched_bytes": 94,
+      "candidate_address": "0x00417680",
+      "target_address": "0x0044BC70",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 94,
+      "normalization_complete": true,
+      "field_count": 6,
+      "field_bindings_sha256": "c52a5a2ed73844de678924debcaf4709073ab29edd648ebdf392a0b7bacdbddf"
+    },
+    "anm-manager-find-vm": {
+      "result": "exact",
+      "size": 73,
+      "matched_bytes": 73,
+      "candidate_address": "0x00405040",
+      "target_address": "0x004491C0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 73,
+      "normalization_complete": true,
+      "field_count": 0,
+      "field_bindings_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "anm-manager-mark-vm-for-deletion": {
+      "result": "exact",
+      "size": 66,
+      "matched_bytes": 66,
+      "candidate_address": "0x00405150",
+      "target_address": "0x004492A0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 66,
+      "normalization_complete": true,
+      "field_count": 1,
+      "field_bindings_sha256": "69288cc59ec14fc0828bc009410809cf3d852cc2450efa0c0a1bfecdf4263ce2"
+    },
+    "player-emit-shot-rows": {
+      "result": "exact",
+      "size": 105,
+      "matched_bytes": 105,
+      "candidate_address": "0x00413CD0",
+      "target_address": "0x00428160",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 105,
+      "normalization_complete": true,
+      "field_count": 2,
+      "field_bindings_sha256": "4e9ea76522ee47ea4d0fa39dcd601aa80a0927085514afa2428fbb3b5d4c4803"
+    },
+    "anm-manager-add-vm-primary-tail": {
+      "result": "exact",
+      "size": 118,
+      "matched_bytes": 118,
+      "candidate_address": "0x004053B0",
+      "target_address": "0x004489D0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 118,
+      "normalization_complete": true,
+      "field_count": 0,
+      "field_bindings_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "enemy-sound-queue-cue": {
+      "result": "exact",
+      "size": 149,
+      "matched_bytes": 149,
+      "candidate_address": "0x00416940",
+      "target_address": "0x0043DD10",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 149,
+      "normalization_complete": true,
+      "field_count": 3,
+      "field_bindings_sha256": "3d0a4854c322d586b569ac62bf584ebf034486c8652ae4c6f05ea819da434df9"
+    },
+    "anm-vm-timer-add": {
+      "result": "exact",
+      "size": 88,
+      "matched_bytes": 88,
+      "candidate_address": "0x0040B380",
+      "target_address": "0x0044BF40",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 88,
+      "normalization_complete": true,
+      "field_count": 4,
+      "field_bindings_sha256": "3bfbeefdd027fb3bc589c78a7941cfae4290bb2095ce6209d632b147c156a1f7"
+    },
+    "anm-vm-timer-set-current": {
+      "result": "exact",
+      "size": 57,
+      "matched_bytes": 57,
+      "candidate_address": "0x00403AA0",
+      "target_address": "0x00405410",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 57,
+      "normalization_complete": true,
+      "field_count": 1,
+      "field_bindings_sha256": "e2a155dbdedecb559ad8a26531dd1d8cf70e4c3602c0d4babf6c99864f9a6184"
+    },
+    "anm-timer-tick": {
+      "result": "exact",
+      "size": 72,
+      "matched_bytes": 72,
+      "candidate_address": "0x00401080",
+      "target_address": "0x00404ED0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 72,
+      "normalization_complete": true,
+      "field_count": 4,
+      "field_bindings_sha256": "5ea1b4e42d5e26af88107bba5929d37036c4c7ec699b6d7be47cf4b08bf3db73"
+    },
+    "player-spawn-shot": {
+      "result": "exact",
+      "size": 717,
+      "matched_bytes": 717,
+      "candidate_address": "0x00413A00",
+      "target_address": "0x00427E90",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 717,
+      "normalization_complete": true,
+      "field_count": 17,
+      "field_bindings_sha256": "c2bdaa3e075758c605cba22eed3e1f53c831cde3e7c9ff240210b8f0c08b7a36"
+    },
+    "player-update-input-action": {
+      "result": "exact",
+      "size": 174,
+      "matched_bytes": 174,
+      "candidate_address": "0x00413D40",
+      "target_address": "0x004281D0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 174,
+      "normalization_complete": true,
+      "field_count": 7,
+      "field_bindings_sha256": "fcf012b117e15f8027e8661f55dba27d93e61e29e7ac6b1901b918504d7301d2"
+    },
+    "enemy-apply-bullet-clear": {
+      "result": "exact",
+      "size": 44,
+      "matched_bytes": 44,
+      "candidate_address": "0x00416910",
+      "target_address": "0x0041C850",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 44,
+      "normalization_complete": true,
+      "field_count": 0,
+      "field_bindings_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "enemy-invalidate-spell-bonus": {
+      "result": "exact",
+      "size": 81,
+      "matched_bytes": 81,
+      "candidate_address": "0x00415DF0",
+      "target_address": "0x00405500",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 81,
+      "normalization_complete": true,
+      "field_count": 0,
+      "field_bindings_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "anm-manager-add-vm-secondary-tail": {
+      "result": "exact",
+      "size": 118,
+      "matched_bytes": 118,
+      "candidate_address": "0x00405430",
+      "target_address": "0x00448AC0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 118,
+      "normalization_complete": true,
+      "field_count": 0,
+      "field_bindings_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "gui-set-lives-display-count": {
+      "result": "exact",
+      "size": 77,
+      "matched_bytes": 77,
+      "candidate_address": "0x0042B3B0",
+      "target_address": "0x00413790",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 77,
+      "normalization_complete": true,
+      "field_count": 0,
+      "field_bindings_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "hint-add-caution": {
+      "result": "exact",
+      "size": 104,
+      "matched_bytes": 104,
+      "candidate_address": "0x0042EE50",
+      "target_address": "0x00424650",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 104,
+      "normalization_complete": true,
+      "field_count": 2,
+      "field_bindings_sha256": "375b93beabe6d5356bdabe36cf41018838cfdb6c526f6b3ad73ac42c13a57269"
+    },
+    "result-menu-open-game-over": {
+      "result": "exact",
+      "size": 411,
+      "matched_bytes": 411,
+      "candidate_address": "0x00424C70",
+      "target_address": "0x004231D0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 411,
+      "normalization_complete": true,
+      "field_count": 28,
+      "field_bindings_sha256": "99a2a88e88cbe59c47bb74925d0eab3b966564efb892ac5461b704c4601fa3be"
+    },
+    "game-complete-stage-transition": {
+      "result": "exact",
+      "size": 411,
+      "matched_bytes": 411,
+      "candidate_address": "0x00424E10",
+      "target_address": "0x00423370",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 411,
+      "normalization_complete": true,
+      "field_count": 28,
+      "field_bindings_sha256": "5cf2b5e19fb6f94b40baa7a6999f38cf08c2598876eead4a0c9c26930ed78929"
+    },
+    "player-timer-interval": {
+      "result": "exact",
+      "size": 29,
+      "matched_bytes": 29,
+      "candidate_address": "0x00412110",
+      "target_address": "0x00427C70",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 29,
+      "normalization_complete": true,
+      "field_count": 0,
+      "field_bindings_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "anm-vm-id-get-vm": {
+      "result": "exact",
+      "size": 21,
+      "matched_bytes": 21,
+      "candidate_address": "0x0040F2E0",
+      "target_address": "0x00449450",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 21,
+      "normalization_complete": true,
+      "field_count": 2,
+      "field_bindings_sha256": "e28ddd6828a4507da2ce45a636c7119f740f6ea3db0b4cc652de632e12cc6142"
+    },
+    "anm-vm-id-release": {
+      "result": "exact",
+      "size": 21,
+      "matched_bytes": 21,
+      "candidate_address": "0x0040F3F0",
+      "target_address": "0x00449630",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 21,
+      "normalization_complete": true,
+      "field_count": 2,
+      "field_bindings_sha256": "e98096ee501abe5c7b197ec7e2b824bce18f669c261f1f8b5163c65249930d64"
+    },
+    "anm-loaded-create-vm-variant0": {
+      "result": "exact",
+      "size": 73,
+      "matched_bytes": 73,
+      "candidate_address": "0x00408720",
+      "target_address": "0x00448D00",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 73,
+      "normalization_complete": true,
+      "field_count": 5,
+      "field_bindings_sha256": "eb8721829e45ff9afb9ff3ed5cbdae76832ce5699df20b5aefe25e779075be30"
+    },
+    "player-calculate-damage-to-target": {
+      "result": "exact",
+      "size": 1170,
+      "matched_bytes": 1170,
+      "candidate_address": "0x00414160",
+      "target_address": "0x00428630",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 1170,
+      "normalization_complete": true,
+      "field_count": 28,
+      "field_bindings_sha256": "9f8580e32b3dd7f064ffe7e92efc5da191ec8b863845bf1a84a47154ea76c125"
+    },
+    "player-auxiliary-damage-at-position": {
+      "result": "exact",
+      "size": 202,
+      "matched_bytes": 202,
+      "candidate_address": "0x00412020",
+      "target_address": "0x004059F0",
+      "image_sha256": "7bbc7e3ac0d02c4daef947af4b088fca87a85ec4d966a13c3f5c1e88139137a0",
+      "pdb_guid": "7ce0f3d02b77be4e8759f64c874529f5",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 202,
+      "normalization_complete": true,
+      "field_count": 6,
+      "field_bindings_sha256": "4ad4b4a4fd2dddf4975006be9fc8329acd58a5e08122a1cf3f1bd9505af5c364"
+    }
+  },
+  "native_preservation": {
+    "playerroot": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z",
+          "address": "0x004145F0",
+          "size": 3096,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 79344,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "a1caa2fc2060a7557c76f30da2d5585da4c2c72257ffef31dc267ac2557ef6a6"
+        },
+        "normalized_sha256": "1210f10a755c7e29be1c133957ea8e2fc1b2c66aa224c2e4be43b62677472ce2",
+        "field_count": 110
+      },
+      "after": {
+        "owner": {
+          "symbol": "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z",
+          "address": "0x00414600",
+          "size": 3096,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 79360,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "881abcd2935e4b96faf1a497d399951880d52f48abdcc8f41ec172fabf4d5bb3"
+        },
+        "normalized_sha256": "1210f10a755c7e29be1c133957ea8e2fc1b2c66aa224c2e4be43b62677472ce2",
+        "field_count": 110
+      },
+      "field_identities_sha256": "c011465d888769e7953580f22368d35f9330b24bc1d5c3751384ba9c869b832a"
+    },
+    "state2": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "?PlayerTransitionToState2@@YGXPAUPlayer@@@Z",
+          "address": "0x00412260",
+          "size": 786,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 70240,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "d02edc964989c1d10ad9cbd4f5ff3a150437aacdadd00500a6ed3f51a977e690"
+        },
+        "normalized_sha256": "f5c3208f25a66a16b18f7b40bb6c8a238c035d7fb7717a76c759272c12627d55",
+        "field_count": 19
+      },
+      "after": {
+        "owner": {
+          "symbol": "?PlayerTransitionToState2@@YGXPAUPlayer@@@Z",
+          "address": "0x00412270",
+          "size": 786,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 70256,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "1cb086fe16c42ffd3c6e2d5c826a2d0c3f6345e08025e19138c571d19bdac794"
+        },
+        "normalized_sha256": "f5c3208f25a66a16b18f7b40bb6c8a238c035d7fb7717a76c759272c12627d55",
+        "field_count": 19
+      },
+      "field_identities_sha256": "787647bdcb35df22d6260465ae42e344d3baac8b99c4e2825be2b36877ea7422"
+    },
+    "destructor": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "??1Player@@QAE@XZ",
+          "address": "0x00412A90",
+          "size": 262,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 72336,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "b55e5a99824bdb175511a9de0e5f5a7129c9315dae6bdf7d9ca6dfbab146637c"
+        },
+        "normalized_sha256": "e8b2b21d8f0b283d9937194a847838c9e9810b626c20f57edc34948370f5f46f",
+        "field_count": 28
+      },
+      "after": {
+        "owner": {
+          "symbol": "??1Player@@QAE@XZ",
+          "address": "0x00412AA0",
+          "size": 262,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 72352,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "553ca64c2675abd41fc01b94083c401c15d63e5b6ef3a8646c1a57445da58b0f"
+        },
+        "normalized_sha256": "e8b2b21d8f0b283d9937194a847838c9e9810b626c20f57edc34948370f5f46f",
+        "field_count": 28
+      },
+      "field_identities_sha256": "3fe92bab1707101809716926102031dc74c55da8506153191f056870919462ac"
+    },
+    "shots": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "?PlayerUpdateShots@@YGHPAUPlayer@@@Z",
+          "address": "0x00413DE0",
+          "size": 876,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 77280,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "4c2c043688c9d13952712692459eb8f7a19cead96b604afa24122f74099b834b"
+        },
+        "normalized_sha256": "850f6199b07010806c11c61c4e9b074adf05c3a4305bc9007b28a2250d05ea81",
+        "field_count": 22
+      },
+      "after": {
+        "owner": {
+          "symbol": "?PlayerUpdateShots@@YGHPAUPlayer@@@Z",
+          "address": "0x00413DF0",
+          "size": 876,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 77296,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "90d297dd0a4aa4ecca45c032297f7142af045937ac11f8f47b702dae9c08aff7"
+        },
+        "normalized_sha256": "850f6199b07010806c11c61c4e9b074adf05c3a4305bc9007b28a2250d05ea81",
+        "field_count": 22
+      },
+      "field_identities_sha256": "a0cc5ef727ea84bb5a057b8316ae1ebbfb68e983edbe0ad835843df9680f4156"
+    },
+    "runtime": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+          "address": "0x00401F50",
+          "size": 2412,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3920,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "412c5967dd5257c1919bb2633b9e4ce4163959951990e1be933a41ca9b1fb329"
+        },
+        "normalized_sha256": "5799c578ff34e4ed16bd5baa8bd2348b80e9c78c212781f26fc0fc6fdfe0c59b",
+        "field_count": 69
+      },
+      "after": {
+        "owner": {
+          "symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+          "address": "0x00401F50",
+          "size": 2412,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3920,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "bdc13438ef6077b19b63a47146b0db00d830f1eda9bdb835f30d48ab7325214a"
+        },
+        "normalized_sha256": "5799c578ff34e4ed16bd5baa8bd2348b80e9c78c212781f26fc0fc6fdfe0c59b",
+        "field_count": 69
+      },
+      "field_identities_sha256": "d8af337f2493886f7f10543cca512c8f54a17362126a886641f297f8037039d7"
+    },
+    "scalar": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "?Evaluate@EnemyScalarInterpolationView@@QAEPAUEnemyFloat2@@PAU2@@Z",
+          "address": "0x00401C20",
+          "size": 652,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3104,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "86609719182b9327d9796eb351dfa705108c2c442fe54e6f202b38004e40dff1"
+        },
+        "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+        "field_count": 10
+      },
+      "after": {
+        "owner": {
+          "symbol": "?Evaluate@EnemyScalarInterpolationView@@QAEPAUEnemyFloat2@@PAU2@@Z",
+          "address": "0x00401C20",
+          "size": 652,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3104,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "86609719182b9327d9796eb351dfa705108c2c442fe54e6f202b38004e40dff1"
+        },
+        "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+        "field_count": 10
+      },
+      "field_identities_sha256": "c072aaf295923d956d9b70b517fa62087de4606af8dbe7103ddf8f3bcc0877c7"
+    },
+    "motion": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "?EnemyAdvanceMotion@@YAXPAUEnemyMotionView@@@Z",
+          "address": "0x00401EB0",
+          "size": 160,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3760,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "9ad3f145cf50407bb96172a284e13d49732faf58eaf487f76bf6b4f0079d00c9"
+        },
+        "normalized_sha256": "9dc49d5961959f424b4ef834845b814bf149bda52940886ef95c32b79550c740",
+        "field_count": 7
+      },
+      "after": {
+        "owner": {
+          "symbol": "?EnemyAdvanceMotion@@YAXPAUEnemyMotionView@@@Z",
+          "address": "0x00401EB0",
+          "size": 160,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3760,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "9ad3f145cf50407bb96172a284e13d49732faf58eaf487f76bf6b4f0079d00c9"
+        },
+        "normalized_sha256": "9dc49d5961959f424b4ef834845b814bf149bda52940886ef95c32b79550c740",
+        "field_count": 7
+      },
+      "field_identities_sha256": "1d75686fd8fbdc2eefc7e6bc99630d961b7e4a2b7eb2a1b07b5f0d9d4c33d885"
+    },
+    "setsub": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "?SetSubroutine@EnemyEclHostBaseView@@QAEHPBD@Z",
+          "address": "0x00401350",
+          "size": 30,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 848,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "9beb358151945b77c26127a6d673bd406c75f637339e2be91728b28d50326d62"
+        },
+        "normalized_sha256": "c76de40cfa91114ae8438335c0a493715d6c0f3fd937988f9c65d0da499ffe16",
+        "field_count": 1
+      },
+      "after": {
+        "owner": {
+          "symbol": "?SetSubroutine@EnemyEclHostBaseView@@QAEHPBD@Z",
+          "address": "0x00401350",
+          "size": 30,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 848,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "9beb358151945b77c26127a6d673bd406c75f637339e2be91728b28d50326d62"
+        },
+        "normalized_sha256": "c76de40cfa91114ae8438335c0a493715d6c0f3fd937988f9c65d0da499ffe16",
+        "field_count": 1
+      },
+      "field_identities_sha256": "078c5445a0c9a74ad4035380070cadec401cf958e5cba70b2b05c87b0305eb9f"
+    },
+    "easing": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+          "address": "0x00403F90",
+          "size": 576,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 12176,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "b4bd04002835c1450a994e72dbe6e2ae896166949e816cf41dcb0ffb0ef7f3ee"
+        },
+        "normalized_sha256": "f9a47c62349f89ab12ab10c4804930806a38bfbbac0594a806cf33571f25386a",
+        "field_count": 55
+      },
+      "after": {
+        "owner": {
+          "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+          "address": "0x00403F90",
+          "size": 576,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 12176,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "b4bd04002835c1450a994e72dbe6e2ae896166949e816cf41dcb0ffb0ef7f3ee"
+        },
+        "normalized_sha256": "f9a47c62349f89ab12ab10c4804930806a38bfbbac0594a806cf33571f25386a",
+        "field_count": 55
+      },
+      "field_identities_sha256": "c81bcfb7355da751bef2dc6c7bbe15980908686d79a665488031bcc709873ae6"
+    },
+    "anmfloat2": {
+      "result": "previous-native-candidate-preserved",
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "before": {
+        "owner": {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "address": "0x00404A50",
+          "size": 652,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 14928,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "a7c0d3c0dcb2448945f9fd34999e7a5037b21f38adf738d8f93f87949f0d62b1"
+        },
+        "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+        "field_count": 10
+      },
+      "after": {
+        "owner": {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "address": "0x00404A50",
+          "size": 652,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 14928,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "a7c0d3c0dcb2448945f9fd34999e7a5037b21f38adf738d8f93f87949f0d62b1"
+        },
+        "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+        "field_count": 10
+      },
+      "field_identities_sha256": "c072aaf295923d956d9b70b517fa62087de4606af8dbe7103ddf8f3bcc0877c7"
+    }
+  },
+  "neutral_controls": {
+    "entry": {
+      "state2": {
+        "size": 786,
+        "normalized_sha256": "f5c3208f25a66a16b18f7b40bb6c8a238c035d7fb7717a76c759272c12627d55",
+        "field_count": 19,
+        "field_identities_sha256": "65c0e694f1b0c1aa16cc981e135828c0b4a8d595504f5516cbd3c7f7f8d58c77"
+      },
+      "scriptinit": {
+        "size": 197,
+        "normalized_sha256": "9c7f234990808b09e449cc9b6fab338fa7e6820fa0f21e9a9c9c3ee569f03206",
+        "field_count": 4,
+        "field_identities_sha256": "9ec9709912455df783bc574ba44ff7889c3978a9a8befffdeb50e6a1302450ae"
+      }
+    },
+    "cached-manager": {
+      "state2": {
+        "size": 786,
+        "normalized_sha256": "f5c3208f25a66a16b18f7b40bb6c8a238c035d7fb7717a76c759272c12627d55",
+        "field_count": 19,
+        "field_identities_sha256": "65c0e694f1b0c1aa16cc981e135828c0b4a8d595504f5516cbd3c7f7f8d58c77"
+      },
+      "scriptinit": {
+        "size": 197,
+        "normalized_sha256": "9c7f234990808b09e449cc9b6fab338fa7e6820fa0f21e9a9c9c3ee569f03206",
+        "field_count": 4,
+        "field_identities_sha256": "9ec9709912455df783bc574ba44ff7889c3978a9a8befffdeb50e6a1302450ae"
+      }
+    },
+    "merged-vm-lookup": {
+      "state2": {
+        "size": 786,
+        "normalized_sha256": "f5c3208f25a66a16b18f7b40bb6c8a238c035d7fb7717a76c759272c12627d55",
+        "field_count": 19,
+        "field_identities_sha256": "65c0e694f1b0c1aa16cc981e135828c0b4a8d595504f5516cbd3c7f7f8d58c77"
+      },
+      "scriptinit": {
+        "size": 197,
+        "normalized_sha256": "9c7f234990808b09e449cc9b6fab338fa7e6820fa0f21e9a9c9c3ee569f03206",
+        "field_count": 4,
+        "field_identities_sha256": "9ec9709912455df783bc574ba44ff7889c3978a9a8befffdeb50e6a1302450ae"
+      }
+    },
+    "existing-plain-anm-context": {
+      "state2": {
+        "size": 786,
+        "normalized_sha256": "f5c3208f25a66a16b18f7b40bb6c8a238c035d7fb7717a76c759272c12627d55",
+        "field_count": 19,
+        "field_identities_sha256": "65c0e694f1b0c1aa16cc981e135828c0b4a8d595504f5516cbd3c7f7f8d58c77"
+      },
+      "scriptinit": {
+        "size": 197,
+        "normalized_sha256": "9c7f234990808b09e449cc9b6fab338fa7e6820fa0f21e9a9c9c3ee569f03206",
+        "field_count": 4,
+        "field_identities_sha256": "9ec9709912455df783bc574ba44ff7889c3978a9a8befffdeb50e6a1302450ae"
+      }
+    }
+  },
+  "controls": {
+    "aux-cached-nested": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "dbfad55148f24c53111d7045ab8f2f4ec892ce1346022d0ebfbe2f83d0d80b11",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "ea13b20765060e574d1ca0e2db59c2d4f84c30beca62f40720e62b11c2efde66",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 233,
+          "target_size": 202,
+          "decoded_candidate_bytes": 233,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "mismatch",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "aux-common-fallback": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "15dc0f32a0c129f499d976e9fed9a082493abd200110918a2c8d3c7c6b0bd385",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "36588688b1d6230a2b84e90fa3015f46160ec9e47f7aeec8ed5e4c6351ba0497",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 208,
+          "target_size": 202,
+          "decoded_candidate_bytes": 208,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "structural-exact",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "aux-direct-switch": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "4085e3273448c80dd60a59a0083df6e175f400479a7060cd9d86ffeca031c48d",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "788bcb989ce72e6b477415b313fbd870bdc9bd51a7b34214cdf47589e6cdf331",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "structural-exact",
+          "candidate_size": 202,
+          "target_size": 202,
+          "decoded_candidate_bytes": 202,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "structural-exact",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "aux-inner-return": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "145283d4989af172bce74160d6dab3139aea07ecc418eb1010fa44be9bad4e37",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "7cfc7525f8e87444ebd5dedb3dfe248fd16b241c39f28b13df3c9a6c94d05c6a",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 234,
+          "target_size": 202,
+          "decoded_candidate_bytes": 234,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "structural-exact",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "aux-mode-branches": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "a8f1e1f3bade064bb33006eba7ffbd6aae11813689d432501405e4c270a3a568",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "6881cd90e0084019e3527e098e873ec4a6cce105f225996d6250775d8450c379",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 211,
+          "target_size": 202,
+          "decoded_candidate_bytes": 211,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "structural-exact",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "aux-mode-switch": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "5ae5074c3c822565ed3e5668b579beea9679827f7e3c1412e33f398b0af27d16",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "4a5dcaf62d2b0318e0764757bc3dcaf62203b3a23b04a3bebd7e3dce4a06bc8e",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 202,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "structural-exact",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "aux-result-control": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "ae5e817bfabee29228e1ec427083565e62c66476903ac579753d434859ab30e4",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "6bf8c52bfa4beabc7bbbdbc3d5face8bc4d8274de6f9df14e872da9eea5304a0",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 246,
+          "target_size": 202,
+          "decoded_candidate_bytes": 246,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "mismatch",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "aux-shared-result": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "c44fb4e43fa114e961f5f3c1fb614435e569dd3245484cf51496cb5fa9148c9c",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "606bc43e95accf20354c638cd7853befe911b1f5ff0ad78f776140442612d82c",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 201,
+          "target_size": 202,
+          "decoded_candidate_bytes": 201,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "structural-exact",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "cached-manager": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "6366d7590c7ce19e1e95cf0cd0b7c1a815f5af10f97fda524e253209dc9b24b7",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "fab0dbd0be475bcba815bbb31068a0f39c893f470995f553da6c9374838446d6",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 189,
+          "target_size": 202,
+          "decoded_candidate_bytes": 189,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "structural-exact",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "existing-plain-anm-context": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "e356285a022fd28a04089cc0d7d6e816e1d3bbf5476902cb899e157f69201969",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "e5ebc588c366a50cde2aba8a9f805d39282a453ee269f8f8fbe1b7c72ac63f5f",
+      "graph": {
+        "source": "src/Enemy.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/EclVm.cpp",
+          "src/Player.cpp",
+          "src/PlayerCollision.cpp",
+          "src/EnemyEclDispatcher.cpp",
+          "src/VmIdInterrupt.cpp",
+          "src/FrontEnd.cpp",
+          "src/ItemManager.cpp",
+          "src/Main.cpp",
+          "src/Sound.cpp",
+          "src/Gui.cpp",
+          "src/Hint.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/RandomMath.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmCreate.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmId.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          "src/Player.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/PlayerCollision.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/EnemyEclDispatcher.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/VmIdInterrupt.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/FrontEnd.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "src/ItemManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Main.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Sound.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Gui.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Hint.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      },
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 189,
+          "target_size": 202,
+          "decoded_candidate_bytes": 189,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "structural-exact",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    },
+    "merged-vm-lookup": {
+      "source_pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/Player.cpp": "96085bf34f295b52eeb8a8437f649f957bf67953c2870b59b9ddb26ff0d170f4",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+      },
+      "image_sha256": "cdb2c723a627ee08d589918383c7101c6e6db86a28694dd6a8ae3ff39fd33683",
+      "graph": "same unchanged seventeen-input /GL graph as canonical auxiliary unit",
+      "owners": {
+        "state2": {
+          "result": "mismatch",
+          "candidate_size": 786,
+          "target_size": 796,
+          "decoded_candidate_bytes": 786,
+          "normalization_complete": true
+        },
+        "auxdamage": {
+          "result": "mismatch",
+          "candidate_size": 189,
+          "target_size": 202,
+          "decoded_candidate_bytes": 189,
+          "normalization_complete": true
+        },
+        "scriptinit": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "decoded_candidate_bytes": 197,
+          "normalization_complete": true
+        },
+        "damage": {
+          "result": "structural-exact",
+          "candidate_size": 1170,
+          "target_size": 1170,
+          "decoded_candidate_bytes": 1170,
+          "normalization_complete": true
+        }
+      },
+      "authority": "structural diagnostic only; canonical full-owner proof governs exactness"
+    }
+  },
+  "checkpoint": {
+    "new_authored_exact_bytes": 202,
+    "new_authored_exact_owners": 1,
+    "authored_exact_bytes": 99996,
+    "authored_owned_bytes": 275752,
+    "authored_exact_owners": 491,
+    "default_ci": {
+      "result": "passed",
+      "stages": 7,
+      "command": "scripts/repo-python scripts/ci.py",
+      "log_sha256": "a70c57117767454e31d19b0f9a06201a1abc687badb74da71d4200d48390c489"
+    },
+    "comparator_changed": false,
+    "ghidra_used": false,
+    "compiler_changed": false
+  },
+  "baseline_revision": "33706773e38ad9b9624fac83f79b3d35d4a48550"
+}
