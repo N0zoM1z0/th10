@@ -4,26 +4,59 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint refines the complete spell-start stage lifecycle
-and binds its actual operations; it adds no exact credit. The preceding checkpoint
-closed spell finish and power addition and completed the nonexact notice source.
+selected lane. This checkpoint completes two real GameManager stage dependencies
+and adds119 exact bytes after recovering the transition factory's actual Chain
+context. The preceding checkpoint refined the complete nonexact spell-start body.
 Compiler profiles and the comparator remain unchanged. No experiment is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 104,467 / 275,863 |
-| Authored exact owners | 507 |
-| Total canonical exact owners / codegen bytes | 1,384 / 172,571 |
-| Source mappings / authored mappings / authored exact backlog | 1,211 / 693 / 186 |
+| Reviewed authored owned bytes exact | 104,586 / 275,863 |
+| Authored exact owners | 508 |
+| Total canonical exact owners / codegen bytes | 1,385 / 172,690 |
+| Source mappings / authored mappings / authored exact backlog | 1,213 / 695 / 187 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: complete spell-start stage lifecycle
+## Latest source checkpoint: stage animation reset interfaces
+
+[The complete proof](evidence/stage-animation-slots-20261031/README.md) adds
+GameEnterMenuState404530119/all2 exact and complete nonexact
+GamePrepareAnimationSlots404450214 source in StageAnimationSlots.cpp. Both are
+actual GameManager dependencies; their former unresolved anchors disappear.
+The transition uses the stage-compatible timer30/flags2 layout and the real
+priority15/kind2 effect factory. Original names/classes/TU/storage remain unknown.
+
+With actual TransitionEffect but missing Chain, the caller118/factory81 use
+kindEBX instead of target priorityEBX. Adding existing Chain.cpp alone, reusing22
+verified inputs, recovers caller119/all2 and factory82/all2. No source/profile
+change or synthetic caller supplies that register choice. One local real factory
+boundary preserves the observed call; TransitionEffect/Chain use their existing
+canonical factory profiles. The new recipe retains the real InitializeVm entry.
+
+Two independent23-input canonical colds, with68 transitive source/header pins,
+pass the full119 bytes and both fields. Fourteen same-image existing contracts
+pass2417/all89 in each; the affected canonical stage-delay92 also cold-passes.
+Only game-enter-menu-state is new exact credit. No boundary or denominator change.
+Producer: build/match-linked/GameStageSlots; frozen images and logs are under the
+private anm-embedded-context-20261031 campaign. Other canonical graphs are unchanged.
+
+Reset remains184/214 with private EDI/plain RET versus target stack/RET4. Its
+actual-entry control204/214 is also nonexact and is not retained. GameManager
+remains1544/1544 nonexact. Begin2424/2432, embedded200/202 and binder197/203 are
+unchanged in this actual23-input context. Do not repeat the actual-entry or old
+formal-order/reset-boundary controls without new evidence. Unowned4415C0/41BE40
+raw call hints remain unpromoted; Ghidra has no function descriptors or known
+entry references there. No artificial callers were added. Earlier20-input
+freezes now predate the GameManager declaration/comment update; check pins before
+reusing them, and do not migrate their recipes merely to include these sources.
+
+## Previous source checkpoint: complete spell-start stage lifecycle
 
 [The complete review](evidence/enemy-spell-stage-20261031/README.md) retains a
 natural two-input lifecycle helper used by all nine stage choices. The full

@@ -104,11 +104,13 @@ extern int g_GameFrameCounter1;                        // 0x474C8C
 extern unsigned char g_GameStageState[];               // 0x474C40
 extern const char g_GameInitialEclName[];               // 0x46D278
 
+// Both stage reset interfaces are maintained in StageAnimationSlots.cpp.
+extern void __stdcall GamePrepareAnimationSlots(GameChainOwnerView *owner);
+extern void GameEnterMenuState(GameMenuView *menu);
+
 // Ordinary source interfaces for still-unreconstructed dependencies. Several
 // target bodies use private LTCG register receivers: their observed machine
 // live-ins remain in the ledger/analysis, rather than invented source ABIs.
-extern void __stdcall GamePrepareAnimationSlots(GameChainOwnerView *owner);
-extern void GameEnterMenuState(GameMenuView *menu);
 extern void GameResetAnimationSlots(GameChainOwnerView *owner);
 extern void GameResetAnimationOwner(GameChainOwnerView *owner);
 extern void __stdcall GameClearEnemyVms(EnemyManagerView *manager);

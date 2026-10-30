@@ -8274,3 +8274,45 @@ reproduce the retained full owner with64 source/header pins. Twelve same-image
 canonical owners pass2243/all86; selected canonical sound/shield colds pass159.
 No match/boundary/progress ledger change. See the
 [complete review](evidence/enemy-spell-stage-20261031/README.md).
+
+
+## 2026-10-31 Stage reset interfaces and actual Chain dependency
+
+The complete404530..4045A6 owner is GameEnterMenuState119/all2 exact. Its ESI
+receiver is a stage-compatible boundary view through the existing menu alias.
+It unconditionally creates a priority15/kind2/30-frame transition with three zero
+values, sets transitionTimer2A1C to30 and ORs2 into flags2A18. The actual factory
+call remains out of line through one scoped compiler boundary. Original names,
+menu semantics, class/TU and physical storage ownership remain unproven.
+
+An actual22-input graph with TransitionEffect but no Chain emits caller118 and
+factory81, passing kindEBX and priority on the stack. Adding existing Chain.cpp
+alone with22 input objects verified/reused restores target priorityEBX, five
+stack values and RET20. The complete factory82/all2 and caller119/all2 then pass
+strict comparison. The caller restores EBX at+1D and uses immediate OR2 at the
+tail instead of retaining kind2 in EBX for a register OR. No fake operands,
+forced-register declarations or changed compiler profiles produce this result.
+
+StageAnimationSlots.cpp also completes404450..404525: three callback flag OR2s,
+object flag assignment1, signed object/primitive traversal, signed script+4 and
+byte-size+2 reads, flattened VM index publication at+6, and instruction4C reset
+from scriptBase1C even when object count is nonpositive. It uses existing typed
+StageScriptView/ChainElem fields and new local native offset assertions. The
+target uses stack owner/RET4; actual graph native184 uses EDI/plain RET, while
+the actual-entry control204 retains stack/RET4 but still differs. Both are
+nonexact. The shared VM receiver and counter preservation remain unlike.
+
+GameManagerUpdateBody now has one real edge to each new body and both placeholder
+anchors disappear. Full GameManager1544/1544 is nonexact; Begin2424/2432,
+embedded200/202 and binder197/203 are unchanged. Raw41BE65/4415D5 E8 hints still
+lack reviewed owner boundaries. Ghidra has no descriptors/known entry references
+at41BE40/4415C0; these remain unpromoted, with no fabricated caller context.
+
+Two independent23-input canonical colds reproduce all119/all2 with68 transitive
+source/header pins. Fourteen existing same-image contracts pass2417/all89 twice,
+including full factory82; affected canonical stage delay92 also passes. Only the
+new transition recipe uses this graph; existing factory/Enemy/GUI recipes remain
+unchanged. Counts become104586/275863 across508 authored exact owners, total
+172690/1385, mappings1213/authored695 and backlog187. The two new source mappings
+do not change the reviewed denominator. Product/runtime/portability remain open.
+See the [complete proof](evidence/stage-animation-slots-20261031/README.md).
