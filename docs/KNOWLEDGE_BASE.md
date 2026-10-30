@@ -8413,3 +8413,48 @@ no recipe migrates. Current GameManager1538/1544 remains nonexact. Three new sou
 mappings yield1217/authored699/backlog188; authored exact104828/275863 across511,
 canonical172932/1388. Extents/origins/denominator and later phases are unchanged.
 See the [complete proof](evidence/replay-stage-helpers-20261031/README.md).
+
+
+## 2026-10-31 Complete Replay frame processing
+
+ProcessFrame4297D0..429A23 is596/all33 exact:142 instructions,14 fixed direct local
+branches, four actual calls and three RET exits. Its natural member receives
+EDI; unchanged ECX callback42A3D0..42A3D9 saves/restores EDI and is10/all1 exact.
+That adapter retains indeterminate origin and grants codegen credit only.
+
+The existing InputState474E30 view supplies replay hold2A, current/previous words
+2C/2E and masks32/34. Target42984E calls actual UpdateDebugRepeat40AC20; the old
+facade was unresolved. Only observed hold2A is exposed in the existing header,
+with unchanged size/offsets. Playback's missing previous-word store is repaired.
+Indexed stage/cursor accesses reread after aliased input writes. FPS publishes
+before recordCursor advancement; sampling every signed30 frames computes a wide
+unsigned-int sample before narrowing the final byte. A meaningful frame-payload
+local before append arguments restores target schedules. Native485 entry evolves
+472 with real helpers,591 with actual storage/rereads,597 with wide sample and
+596 final. All fields, fixed locals and full target-bound hashes agree.
+
+ReplayAppendRecord42A8A0..42A8F4 is85 bytes raw-equal. Four meaningful parameters
+derive frame EAX/input EDX/two stack values and RET8. It rereads recordEnd5460
+between three ushort stores, advances6 and returns signed pointer-count>=3600
+as int. No return/register hints or extra operands are used. Original names,
+class/TU/data ownership and later phases remain independent.
+
+Two independent30-input canonical colds reproduce691/all34 codegen bytes, with
+681 authored bytes/2 owners. Both pass27 existing contracts3405/all116; complete
+stage destructor460/499 explicitly rejects. First run cold-passes old stage
+helpers176 and input109 via unchanged29/14-input recipes. New InputState.cpp
+retains its existing pinned profile; no old recipe migrates.77 source/header
+pins are retained. Counts become105509/275863 across513 authored exact owners,
+canonical173623/1391, mappings1218/authored700/backlog187; no denominator changes.
+
+A reviewed-owner scan of477834 finds71 direct accesses and no immediate address
+operand; only Player ctor/dtor store it. This limited scan cannot rule out
+indirect/address-arithmetic aliases and supplies no volatile/clobber license.
+BeginStage566/582 and allocator139/139 stay nonexact, alongside Replay Initialize
+1297/1344, destructor237/367, Create181/185 and playback-control adapter62/68.
+See the [complete proof](evidence/replay-process-frame-20261031/README.md).
+
+Target GameManagerInitialize1009 has direct edge417AFB to source-absent42A6A0356;
+current actual30-input startup contribution is1024. Source still declares
+GameRestoreReplayState without a definition. This is a concrete next coupled
+large-owner lead, not ownership or exactness credit for either function.

@@ -69,3 +69,15 @@ void ReplayRestoreStagePosition(Player *runtime, const unsigned int *position)
     for (int i = 0; i < 4; ++i)
         runtime->options[i].resetFlag = 1;
 }
+
+// Target 42A8A0 appends all three record words before advancing the cursor.
+// The signed record count selects whether the caller allocates another block.
+int __stdcall ReplayAppendRecord(ReplayFrameData *frameData, unsigned short input,
+                                unsigned short auxiliaryInput, unsigned short inputFlags)
+{
+    frameData->recordEnd->input = input;
+    frameData->recordEnd->auxiliaryInput = auxiliaryInput;
+    frameData->recordEnd->inputFlags = inputFlags;
+    ++frameData->recordEnd;
+    return frameData->recordEnd - frameData->records >= 3600;
+}

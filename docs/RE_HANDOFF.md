@@ -4,26 +4,79 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint adds176 exact replay-helper bytes and repairs
-the complete582-byte BeginStage source to566 bytes. The parent and its139-byte
-allocator remain nonexact. Existing canonical recipes are unchanged.
+selected lane. This checkpoint makes the complete596-byte Replay ProcessFrame
+and85-byte append helper exact, adding681 authored bytes. Its10-byte callback
+adds codegen credit with indeterminate origin. Existing recipes stay unchanged.
 Compiler profiles and the comparator remain unchanged. No experiment is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 104,828 / 275,863 |
-| Authored exact owners | 511 |
-| Total canonical exact owners / codegen bytes | 1,388 / 172,932 |
-| Source mappings / authored mappings / authored exact backlog | 1,217 / 699 / 188 |
+| Reviewed authored owned bytes exact | 105,509 / 275,863 |
+| Authored exact owners | 513 |
+| Total canonical exact owners / codegen bytes | 1,391 / 173,623 |
+| Source mappings / authored mappings / authored exact backlog | 1,218 / 700 / 187 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: complete Replay stage helpers
+## Latest source checkpoint: complete Replay frame processing
+
+[The complete proof](evidence/replay-process-frame-20261031/README.md) adds
+ProcessFrame4297D0596/all33 and ReplayAppendRecord42A8A085/raw:681 new authored
+exact bytes. Existing ReplayProcessFrameCallback42A3D010/all1 also becomes exact;
+its source-written/compiler-adapter origin stays indeterminate, with codegen
+credit only. All reviewed boundaries/origins/denominator remain unchanged.
+
+The old input-update facade binds actual FrontEndInputView::UpdateDebugRepeat
+40AC20, whose complete109 bytes stay raw-equal. Existing input storage474E30
+supplies hold2A/current replay word2C/previous2E/masks32/34; only observed hold2A
+is newly exposed, with an offset assertion and unchanged size/existing offsets.
+Playback's missing previous-word store is restored. Indexed stage/cursor rereads
+after actual input writes, FPS-before-record-cursor publication, an unsigned-int
+FPS sample and a meaningful payload local recover the complete owner485 to472,
+591,597,596. All142 instructions,33 fields,14 fixed locals, four actual direct
+calls and three plain returns agree. No fake operands, registers or return slots.
+
+The append helper has four meaningful inputs: frame EAX, input EDX and two stack
+words/RET8. Ordinary int-return stdcall source writes three words, advances6,
+computes signed record count and returns >=3600. Its entire85 bytes are raw-equal.
+The existing unchanged fastcall callback naturally derives the target EDI member
+interface. The full parent and helpers pass strict comparisons before admission.
+
+Two independent30-input canonical colds reproduce all691/all34 codegen bytes.
+Both frozen images pass27 existing contracts3405/all116; stage destructor460/499
+explicitly rejects. First scoped run also cold-passes old stage helpers176 and
+input109 through their unchanged29/14-input recipes. Only three new recipes use
+the30-input graph/producer build/match-linked/ReplayFrame; InputState.cpp joins
+with its existing GL/GS/EHs profile and real InitializeVm entry. No recipe
+migration, comparator/profile changes, failure simulations or full-cohort replay.
+
+Current77 transitive source/header pins, full target/native inventories and cold
+identities are in the proof. Frozen images/context remain in the private
+replay-frame-20261031 campaign; previous29-input freezes now predate these Replay
+and input-header changes. Check source pins before cache reuse. One source
+mapping is new. Product/runtime/portability and original data/class/TU names stay
+open; exactness does not establish a runnable replay subsystem.
+
+A bounded reviewed-owner scan finds71 direct Player pointer477834 accesses, no
+immediate address-taking operand and only ctor/dtor stores. It cannot exclude
+indirect/address-arithmetic aliases. BeginStage566/582 and allocator139/139 remain
+nonexact; no guessed volatile/fake-clobber workaround is justified. Replay
+Initialize1297/1344, destructor237/367, Create181/185 and playback-control adapter
+62/68 remain complete nonexact comparisons in this actual graph.
+
+Concrete next large-owner lead: startup GameManagerInitialize417870 is1009
+bytes, current native1024. Target edge417AFB calls source-absent356-byte42A6A0;
+source still names the unresolved GameRestoreReplayState facade. Its target body
+allocates/resets the stage header in record mode and restores score/faith/timer/
+rank/cursors in playback. It shares actual GameScoreState helpers and the replay
+views now established here. Review the full owner, not just a call-sized window.
+
+## Previous source checkpoint: complete Replay stage helpers
 
 [The complete proof](evidence/replay-stage-helpers-20261031/README.md) adds
 ReplayClearStageFrameData42AB2093/all1 and ReplayRestoreStagePosition428E1083/all2:

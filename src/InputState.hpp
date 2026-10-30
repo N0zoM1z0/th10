@@ -16,7 +16,8 @@ struct FrontEndInputView
     unsigned short repeated;
     unsigned short pressed;
     unsigned int mask008;
-    unsigned char unknown00C[0x20];
+    unsigned char unknown00C[0x1e];
+    unsigned short replayHoldCounter;
     unsigned short previousRaw;
     unsigned short previousHeld;
     unsigned short repeatFlags;
@@ -38,6 +39,7 @@ typedef char InputStateObservedOffsets[
      offsetof(FrontEndInputView, repeated) == 4 &&
      offsetof(FrontEndInputView, pressed) == 6 &&
      offsetof(FrontEndInputView, mask008) == 8 &&
+     offsetof(FrontEndInputView, replayHoldCounter) == 0x2a &&
      offsetof(FrontEndInputView, previousRaw) == 0x2c &&
      offsetof(FrontEndInputView, repeatFlags) == 0x30 &&
      offsetof(FrontEndInputView, frameMask032) == 0x32 &&

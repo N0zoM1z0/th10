@@ -98,8 +98,7 @@ extern void *g_ReplayChainManager;
 
 // These names describe independently reviewed TH10 helpers. Their source/TU
 // ownership is not promoted by this lifecycle packet.
-void ReplayUpdateInputSource(ReplayInputSource *source);
-bool ReplayAppendRecord(ReplayFrameData *frameData, unsigned short input,
+int __stdcall ReplayAppendRecord(ReplayFrameData *frameData, unsigned short input,
                         unsigned short auxiliaryInput, unsigned short inputFlags);
 ReplayListNode *__stdcall ReplayAllocateFrameData(ReplayManager *manager, int stage);
 void ReplayClearStageFrameData(ReplayManager *manager, int stage);
@@ -437,73 +436,77 @@ int ReplayManager::ProcessFrame()
 
     if (mode == REPLAY_MANAGER_RECORD)
     {
-        g_ReplayInput.previous = g_ReplayInput.current;
+        g_FrontEndInput.previousHeld = g_FrontEndInput.previousRaw;
 
-        unsigned short input =
-            (unsigned short)(g_ReplayInputSource.currentInput & 0x01f7);
+        g_FrontEndInput.previousRaw =
+            (unsigned short)(g_FrontEndInput.current & 0x01f7);
         if ((g_ReplayInputBehaviorFlags & 0x0200) != 0)
         {
-            if ((input & 0x0001) != 0)
+            if ((g_FrontEndInput.previousRaw & 0x0001) != 0)
             {
-                g_ReplayInputHoldCounter++;
-                if (g_ReplayInputHoldCounter >= 8)
+                g_FrontEndInput.replayHoldCounter++;
+                if (g_FrontEndInput.replayHoldCounter >= 8)
                 {
-                    input |= 0x0004;
-                    g_ReplayInputHoldCounter = 8;
+                    g_FrontEndInput.previousRaw |= 0x0004;
+                    g_FrontEndInput.replayHoldCounter = 8;
                 }
             }
             else
             {
-                g_ReplayInputHoldCounter = 0;
+                g_FrontEndInput.replayHoldCounter = 0;
             }
         }
-        g_ReplayInput.current = input;
-        ReplayUpdateInputSource(&g_ReplayInputSource);
+        g_FrontEndInput.UpdateDebugRepeat();
 
-        ReplayFrameData *frameData =
-            (ReplayFrameData *)currentFrameLink->value;
         if (frameCounter % 30 == 0)
         {
             float fps = g_ReplayFpsSource->currentFps + 0.5f;
-            *frameData->fpsEnd =
+            unsigned int sample =
                 fps >= 256.0f ? 0xff : (unsigned char)fps;
+            ReplayFrameData *frameData =
+                static_cast<ReplayFrameData *>(currentFrameLink->value);
+            *frameData->fpsEnd = sample;
             frameData->fpsEnd++;
         }
 
-        if (ReplayAppendRecord(frameData, g_ReplayInput.current,
-                               g_ReplayAuxiliaryInput, g_ReplayInputFlags))
+        ReplayFrameData *frameData =
+            static_cast<ReplayFrameData *>(currentFrameLink->value);
+        if (ReplayAppendRecord(frameData, g_FrontEndInput.previousRaw,
+                               g_FrontEndInput.frameMask032, g_FrontEndInput.frameMask034))
         {
             currentFrameLink = ReplayAllocateFrameData(this, activeStage);
         }
     }
     else if (activeStage >= 0)
     {
-        ReplayStageState &stageState = stageStates[activeStage];
-        if (stageState.recordIndex < stageState.header->recordCount)
+        g_FrontEndInput.previousHeld = g_FrontEndInput.previousRaw;
+        if (stageStates[activeStage].recordIndex <
+            stageStates[activeStage].header->recordCount)
         {
-            ReplayRecData *record = (ReplayRecData *)stageState.recordCursor;
-            g_ReplayInput.current = record->input;
-            g_ReplayAuxiliaryInput = record->auxiliaryInput;
-            g_ReplayInputFlags = record->inputFlags;
-            stageState.recordCursor += sizeof(ReplayRecData);
-
-            replayFps = *stageState.fpsCursor;
+            g_FrontEndInput.previousRaw =
+                reinterpret_cast<ReplayRecData *>(stageStates[activeStage].recordCursor)->input;
+            g_FrontEndInput.frameMask032 =
+                reinterpret_cast<ReplayRecData *>(stageStates[activeStage].recordCursor)->auxiliaryInput;
+            g_FrontEndInput.frameMask034 =
+                reinterpret_cast<ReplayRecData *>(stageStates[activeStage].recordCursor)->inputFlags;
+            replayFps = *stageStates[activeStage].fpsCursor;
+            stageStates[activeStage].recordCursor += sizeof(ReplayRecData);
             if (frameCounter % 30 == 0)
-                stageState.fpsCursor++;
+                stageStates[activeStage].fpsCursor++;
         }
         else
         {
-            g_ReplayInput.current = 0;
-            g_ReplayAuxiliaryInput = 0;
-            g_ReplayInputFlags = 0;
+            g_FrontEndInput.previousRaw = 0;
+            g_FrontEndInput.frameMask032 = 0;
+            g_FrontEndInput.frameMask034 = 0;
         }
-        stageState.recordIndex++;
+        stageStates[activeStage].recordIndex++;
     }
     else
     {
-        g_ReplayInput.current = 0;
-        g_ReplayAuxiliaryInput = 0;
-        g_ReplayInputFlags = 0;
+        g_FrontEndInput.previousRaw = 0;
+        g_FrontEndInput.frameMask032 = 0;
+        g_FrontEndInput.frameMask034 = 0;
     }
 
     frameCounter++;
