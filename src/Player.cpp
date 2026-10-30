@@ -1932,6 +1932,20 @@ int Player::CalculateDamageToTarget(
     return damage;
 }
 
+// Read-only target operand at 0x470AFC. Original global/literal-pool ownership
+// and source spelling remain unknown.
+extern const float g_PlayerTimerUnitStep470AFC;
+
+static void SubtractPlayerTimerStep(PlayerTimerView *timer, const float &step)
+{
+    timer->previous = timer->current;
+    if (*timer->scale > 0.99f && *timer->scale < 1.01f)
+        timer->subframe -= step;
+    else
+        timer->subframe -= step * *timer->scale;
+    timer->current = static_cast<int>(timer->subframe);
+}
+
 // Target 0x00425730-0x00426357 receives the Player owner on the stack and owns
 // the complete update state machine and its state table. PlayerUpdateCallback is its separately
 // retained ECX-bound chain adapter at 0x00426500.
@@ -2175,14 +2189,14 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
         row->radius += row->radiusDelta;
         row->angle += row->angleDelta;
 
-        motion.timer.Subtract(1.0f);
+        SubtractPlayerTimerStep(&motion.timer, g_PlayerTimerUnitStep470AFC);
         if (motion.timer.current <= 0)
             motion.activeFlags &= ~1u;
     }
 
     if (player->highlightTimer.current > 0)
     {
-        player->highlightTimer.Subtract(1.0f);
+        SubtractPlayerTimerStep(&player->highlightTimer, g_PlayerTimerUnitStep470AFC);
 
         if (player->updateTimer1.current != player->updateTimer1.previous &&
             player->updateTimer1.current % 3 == 0)

@@ -1,0 +1,4006 @@
+{
+  "scope": "Complete nonexact Player main candidate reproduction only; zero target exact credit. No original data/global/literal-pool/TU ownership claim.",
+  "baseline_commit": "e0abd02",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_owner_review": {
+    "address": "0x425730",
+    "size": 3112,
+    "code_size": 3089,
+    "instruction_count": 763,
+    "sha256": "97e44e62b40983b076620939b5ba753c4dddbcf4fbabd3f7de2b650ba4718196",
+    "field_count": 112,
+    "fields": [
+      {
+        "offset": 29,
+        "type": "DIR32",
+        "target": "0x426344"
+      },
+      {
+        "offset": 97,
+        "type": "DIR32",
+        "target": "0x470b00"
+      },
+      {
+        "offset": 282,
+        "type": "DIR32",
+        "target": "0x4776f0"
+      },
+      {
+        "offset": 330,
+        "type": "REL32",
+        "target": "0x408030"
+      },
+      {
+        "offset": 345,
+        "type": "DIR32",
+        "target": "0x47781c"
+      },
+      {
+        "offset": 384,
+        "type": "DIR32",
+        "target": "0x4776f0"
+      },
+      {
+        "offset": 393,
+        "type": "DIR32",
+        "target": "0x470d44"
+      },
+      {
+        "offset": 407,
+        "type": "DIR32",
+        "target": "0x470bc8"
+      },
+      {
+        "offset": 421,
+        "type": "REL32",
+        "target": "0x408100"
+      },
+      {
+        "offset": 431,
+        "type": "DIR32",
+        "target": "0x470d40"
+      },
+      {
+        "offset": 436,
+        "type": "DIR32",
+        "target": "0x4776f0"
+      },
+      {
+        "offset": 449,
+        "type": "REL32",
+        "target": "0x408100"
+      },
+      {
+        "offset": 454,
+        "type": "DIR32",
+        "target": "0x47781c"
+      },
+      {
+        "offset": 462,
+        "type": "REL32",
+        "target": "0x41c800"
+      },
+      {
+        "offset": 532,
+        "type": "DIR32",
+        "target": "0x476f78"
+      },
+      {
+        "offset": 565,
+        "type": "DIR32",
+        "target": "0x47770c"
+      },
+      {
+        "offset": 593,
+        "type": "DIR32",
+        "target": "0x4776ec"
+      },
+      {
+        "offset": 619,
+        "type": "DIR32",
+        "target": "0x474c48"
+      },
+      {
+        "offset": 647,
+        "type": "DIR32",
+        "target": "0x474e5c"
+      },
+      {
+        "offset": 666,
+        "type": "REL32",
+        "target": "0x405410"
+      },
+      {
+        "offset": 672,
+        "type": "REL32",
+        "target": "0x405860"
+      },
+      {
+        "offset": 679,
+        "type": "DIR32",
+        "target": "0x474c48"
+      },
+      {
+        "offset": 686,
+        "type": "REL32",
+        "target": "0x426f70"
+      },
+      {
+        "offset": 693,
+        "type": "DIR32",
+        "target": "0x474c48"
+      },
+      {
+        "offset": 707,
+        "type": "DIR32",
+        "target": "0x47770c"
+      },
+      {
+        "offset": 737,
+        "type": "REL32",
+        "target": "0x4054b0"
+      },
+      {
+        "offset": 747,
+        "type": "DIR32",
+        "target": "0x474c40"
+      },
+      {
+        "offset": 752,
+        "type": "REL32",
+        "target": "0x412e70"
+      },
+      {
+        "offset": 767,
+        "type": "DIR32",
+        "target": "0x4776f0"
+      },
+      {
+        "offset": 810,
+        "type": "REL32",
+        "target": "0x408030"
+      },
+      {
+        "offset": 825,
+        "type": "DIR32",
+        "target": "0x47781c"
+      },
+      {
+        "offset": 861,
+        "type": "REL32",
+        "target": "0x4250b0"
+      },
+      {
+        "offset": 885,
+        "type": "REL32",
+        "target": "0x4269d0"
+      },
+      {
+        "offset": 905,
+        "type": "DIR32",
+        "target": "0x474c48"
+      },
+      {
+        "offset": 915,
+        "type": "DIR32",
+        "target": "0x474c48"
+      },
+      {
+        "offset": 924,
+        "type": "DIR32",
+        "target": "0x474c48"
+      },
+      {
+        "offset": 938,
+        "type": "DIR32",
+        "target": "0x47770c"
+      },
+      {
+        "offset": 968,
+        "type": "REL32",
+        "target": "0x4054b0"
+      },
+      {
+        "offset": 986,
+        "type": "DIR32",
+        "target": "0x470b4c"
+      },
+      {
+        "offset": 1011,
+        "type": "REL32",
+        "target": "0x426610"
+      },
+      {
+        "offset": 1049,
+        "type": "DIR32",
+        "target": "0x470d3c"
+      },
+      {
+        "offset": 1059,
+        "type": "DIR32",
+        "target": "0x470d38"
+      },
+      {
+        "offset": 1106,
+        "type": "DIR32",
+        "target": "0x477818"
+      },
+      {
+        "offset": 1113,
+        "type": "REL32",
+        "target": "0x41bb00"
+      },
+      {
+        "offset": 1129,
+        "type": "REL32",
+        "target": "0x426f70"
+      },
+      {
+        "offset": 1147,
+        "type": "DIR32",
+        "target": "0x474c70"
+      },
+      {
+        "offset": 1163,
+        "type": "DIR32",
+        "target": "0x477838"
+      },
+      {
+        "offset": 1179,
+        "type": "DIR32",
+        "target": "0x477830"
+      },
+      {
+        "offset": 1184,
+        "type": "REL32",
+        "target": "0x4231d0"
+      },
+      {
+        "offset": 1195,
+        "type": "DIR32",
+        "target": "0x4776ec"
+      },
+      {
+        "offset": 1221,
+        "type": "DIR32",
+        "target": "0x474c48"
+      },
+      {
+        "offset": 1253,
+        "type": "DIR32",
+        "target": "0x474e5c"
+      },
+      {
+        "offset": 1273,
+        "type": "REL32",
+        "target": "0x405410"
+      },
+      {
+        "offset": 1289,
+        "type": "REL32",
+        "target": "0x405410"
+      },
+      {
+        "offset": 1295,
+        "type": "REL32",
+        "target": "0x405860"
+      },
+      {
+        "offset": 1302,
+        "type": "DIR32",
+        "target": "0x474c48"
+      },
+      {
+        "offset": 1309,
+        "type": "REL32",
+        "target": "0x426f70"
+      },
+      {
+        "offset": 1316,
+        "type": "DIR32",
+        "target": "0x474c48"
+      },
+      {
+        "offset": 1330,
+        "type": "DIR32",
+        "target": "0x47770c"
+      },
+      {
+        "offset": 1360,
+        "type": "REL32",
+        "target": "0x4054b0"
+      },
+      {
+        "offset": 1382,
+        "type": "DIR32",
+        "target": "0x491c28"
+      },
+      {
+        "offset": 1387,
+        "type": "REL32",
+        "target": "0x40ac90"
+      },
+      {
+        "offset": 1430,
+        "type": "DIR32",
+        "target": "0x476f78"
+      },
+      {
+        "offset": 1439,
+        "type": "REL32",
+        "target": "0x427b50"
+      },
+      {
+        "offset": 1507,
+        "type": "REL32",
+        "target": "0x405410"
+      },
+      {
+        "offset": 1519,
+        "type": "REL32",
+        "target": "0x405410"
+      },
+      {
+        "offset": 1543,
+        "type": "DIR32",
+        "target": "0x4776f0"
+      },
+      {
+        "offset": 1574,
+        "type": "REL32",
+        "target": "0x408030"
+      },
+      {
+        "offset": 1588,
+        "type": "DIR32",
+        "target": "0x47781c"
+      },
+      {
+        "offset": 1598,
+        "type": "REL32",
+        "target": "0x41c850"
+      },
+      {
+        "offset": 1646,
+        "type": "REL32",
+        "target": "0x44c5d0"
+      },
+      {
+        "offset": 1679,
+        "type": "REL32",
+        "target": "0x44bc70"
+      },
+      {
+        "offset": 1690,
+        "type": "REL32",
+        "target": "0x44c2a0"
+      },
+      {
+        "offset": 1723,
+        "type": "DIR32",
+        "target": "0x470b68"
+      },
+      {
+        "offset": 1738,
+        "type": "DIR32",
+        "target": "0x470b64"
+      },
+      {
+        "offset": 1754,
+        "type": "DIR32",
+        "target": "0x470afc"
+      },
+      {
+        "offset": 1764,
+        "type": "DIR32",
+        "target": "0x470afc"
+      },
+      {
+        "offset": 1778,
+        "type": "REL32",
+        "target": "0x463b2c"
+      },
+      {
+        "offset": 1848,
+        "type": "DIR32",
+        "target": "0x470b68"
+      },
+      {
+        "offset": 1863,
+        "type": "DIR32",
+        "target": "0x470b64"
+      },
+      {
+        "offset": 1882,
+        "type": "DIR32",
+        "target": "0x470afc"
+      },
+      {
+        "offset": 1892,
+        "type": "DIR32",
+        "target": "0x470afc"
+      },
+      {
+        "offset": 1915,
+        "type": "REL32",
+        "target": "0x463b2c"
+      },
+      {
+        "offset": 1996,
+        "type": "REL32",
+        "target": "0x43ee30"
+      },
+      {
+        "offset": 2162,
+        "type": "DIR32",
+        "target": "0x470b0c"
+      },
+      {
+        "offset": 2174,
+        "type": "DIR32",
+        "target": "0x470b0c"
+      },
+      {
+        "offset": 2186,
+        "type": "DIR32",
+        "target": "0x470b0c"
+      },
+      {
+        "offset": 2270,
+        "type": "DIR32",
+        "target": "0x470b0c"
+      },
+      {
+        "offset": 2282,
+        "type": "DIR32",
+        "target": "0x470b0c"
+      },
+      {
+        "offset": 2294,
+        "type": "DIR32",
+        "target": "0x470b0c"
+      },
+      {
+        "offset": 2676,
+        "type": "DIR32",
+        "target": "0x470b68"
+      },
+      {
+        "offset": 2691,
+        "type": "DIR32",
+        "target": "0x470b64"
+      },
+      {
+        "offset": 2711,
+        "type": "DIR32",
+        "target": "0x470afc"
+      },
+      {
+        "offset": 2744,
+        "type": "REL32",
+        "target": "0x463b2c"
+      },
+      {
+        "offset": 2776,
+        "type": "DIR32",
+        "target": "0x470b68"
+      },
+      {
+        "offset": 2791,
+        "type": "DIR32",
+        "target": "0x470b64"
+      },
+      {
+        "offset": 2811,
+        "type": "DIR32",
+        "target": "0x470afc"
+      },
+      {
+        "offset": 2844,
+        "type": "REL32",
+        "target": "0x463b2c"
+      },
+      {
+        "offset": 2856,
+        "type": "DIR32",
+        "target": "0x47770c"
+      },
+      {
+        "offset": 2868,
+        "type": "DIR32",
+        "target": "0x477704"
+      },
+      {
+        "offset": 2902,
+        "type": "DIR32",
+        "target": "0x474c98"
+      },
+      {
+        "offset": 2913,
+        "type": "DIR32",
+        "target": "0x474c98"
+      },
+      {
+        "offset": 2921,
+        "type": "DIR32",
+        "target": "0x474c98"
+      },
+      {
+        "offset": 2940,
+        "type": "DIR32",
+        "target": "0x474c98"
+      },
+      {
+        "offset": 2968,
+        "type": "REL32",
+        "target": "0x4281d0"
+      },
+      {
+        "offset": 3015,
+        "type": "DIR32",
+        "target": "0x476f78"
+      },
+      {
+        "offset": 3070,
+        "type": "REL32",
+        "target": "0x428280"
+      },
+      {
+        "offset": 3092,
+        "type": "DIR32",
+        "target": "0x425751"
+      },
+      {
+        "offset": 3096,
+        "type": "DIR32",
+        "target": "0x425964"
+      },
+      {
+        "offset": 3100,
+        "type": "DIR32",
+        "target": "0x425aa9"
+      },
+      {
+        "offset": 3104,
+        "type": "DIR32",
+        "target": "0x425d25"
+      },
+      {
+        "offset": 3108,
+        "type": "DIR32",
+        "target": "0x425a96"
+      }
+    ],
+    "local_branch_count": 92,
+    "local_branches": [
+      {
+        "offset": 20,
+        "destination": 1602
+      },
+      {
+        "offset": 142,
+        "destination": 212
+      },
+      {
+        "offset": 150,
+        "destination": 160
+      },
+      {
+        "offset": 206,
+        "destination": 160
+      },
+      {
+        "offset": 210,
+        "destination": 241
+      },
+      {
+        "offset": 219,
+        "destination": 224
+      },
+      {
+        "offset": 239,
+        "destination": 224
+      },
+      {
+        "offset": 278,
+        "destination": 379
+      },
+      {
+        "offset": 294,
+        "destination": 304
+      },
+      {
+        "offset": 314,
+        "destination": 334
+      },
+      {
+        "offset": 320,
+        "destination": 334
+      },
+      {
+        "offset": 327,
+        "destination": 334
+      },
+      {
+        "offset": 341,
+        "destination": 304
+      },
+      {
+        "offset": 354,
+        "destination": 466
+      },
+      {
+        "offset": 362,
+        "destination": 371
+      },
+      {
+        "offset": 375,
+        "destination": 356
+      },
+      {
+        "offset": 377,
+        "destination": 466
+      },
+      {
+        "offset": 473,
+        "destination": 1602
+      },
+      {
+        "offset": 499,
+        "destination": 542
+      },
+      {
+        "offset": 571,
+        "destination": 756
+      },
+      {
+        "offset": 585,
+        "destination": 756
+      },
+      {
+        "offset": 599,
+        "destination": 756
+      },
+      {
+        "offset": 610,
+        "destination": 756
+      },
+      {
+        "offset": 643,
+        "destination": 756
+      },
+      {
+        "offset": 652,
+        "destination": 756
+      },
+      {
+        "offset": 763,
+        "destination": 858
+      },
+      {
+        "offset": 779,
+        "destination": 784
+      },
+      {
+        "offset": 794,
+        "destination": 814
+      },
+      {
+        "offset": 800,
+        "destination": 814
+      },
+      {
+        "offset": 807,
+        "destination": 814
+      },
+      {
+        "offset": 821,
+        "destination": 784
+      },
+      {
+        "offset": 834,
+        "destination": 858
+      },
+      {
+        "offset": 843,
+        "destination": 852
+      },
+      {
+        "offset": 856,
+        "destination": 836
+      },
+      {
+        "offset": 865,
+        "destination": 1602
+      },
+      {
+        "offset": 877,
+        "destination": 1193
+      },
+      {
+        "offset": 896,
+        "destination": 1133
+      },
+      {
+        "offset": 910,
+        "destination": 921
+      },
+      {
+        "offset": 1031,
+        "destination": 1040
+      },
+      {
+        "offset": 1067,
+        "destination": 1084
+      },
+      {
+        "offset": 1072,
+        "destination": 1084
+      },
+      {
+        "offset": 1082,
+        "destination": 1089
+      },
+      {
+        "offset": 1125,
+        "destination": 1040
+      },
+      {
+        "offset": 1140,
+        "destination": 1602
+      },
+      {
+        "offset": 1155,
+        "destination": 1396
+      },
+      {
+        "offset": 1171,
+        "destination": 1379
+      },
+      {
+        "offset": 1188,
+        "destination": 1602
+      },
+      {
+        "offset": 1201,
+        "destination": 1602
+      },
+      {
+        "offset": 1212,
+        "destination": 1602
+      },
+      {
+        "offset": 1245,
+        "destination": 1602
+      },
+      {
+        "offset": 1258,
+        "destination": 1602
+      },
+      {
+        "offset": 1374,
+        "destination": 1602
+      },
+      {
+        "offset": 1391,
+        "destination": 1602
+      },
+      {
+        "offset": 1523,
+        "destination": 1602
+      },
+      {
+        "offset": 1534,
+        "destination": 1602
+      },
+      {
+        "offset": 1539,
+        "destination": 1602
+      },
+      {
+        "offset": 1565,
+        "destination": 1578
+      },
+      {
+        "offset": 1571,
+        "destination": 1578
+      },
+      {
+        "offset": 1585,
+        "destination": 1555
+      },
+      {
+        "offset": 1623,
+        "destination": 1793
+      },
+      {
+        "offset": 1633,
+        "destination": 1659
+      },
+      {
+        "offset": 1657,
+        "destination": 1686
+      },
+      {
+        "offset": 1732,
+        "destination": 1760
+      },
+      {
+        "offset": 1747,
+        "destination": 1760
+      },
+      {
+        "offset": 1758,
+        "destination": 1771
+      },
+      {
+        "offset": 1787,
+        "destination": 1793
+      },
+      {
+        "offset": 1808,
+        "destination": 1619
+      },
+      {
+        "offset": 1824,
+        "destination": 1974
+      },
+      {
+        "offset": 1857,
+        "destination": 1888
+      },
+      {
+        "offset": 1872,
+        "destination": 1888
+      },
+      {
+        "offset": 1886,
+        "destination": 1902
+      },
+      {
+        "offset": 1937,
+        "destination": 1974
+      },
+      {
+        "offset": 1949,
+        "destination": 1974
+      },
+      {
+        "offset": 1972,
+        "destination": 1985
+      },
+      {
+        "offset": 2685,
+        "destination": 2729
+      },
+      {
+        "offset": 2700,
+        "destination": 2729
+      },
+      {
+        "offset": 2727,
+        "destination": 2754
+      },
+      {
+        "offset": 2785,
+        "destination": 2829
+      },
+      {
+        "offset": 2800,
+        "destination": 2829
+      },
+      {
+        "offset": 2827,
+        "destination": 2854
+      },
+      {
+        "offset": 2872,
+        "destination": 2974
+      },
+      {
+        "offset": 2876,
+        "destination": 2948
+      },
+      {
+        "offset": 2881,
+        "destination": 2948
+      },
+      {
+        "offset": 2899,
+        "destination": 2948
+      },
+      {
+        "offset": 2917,
+        "destination": 2931
+      },
+      {
+        "offset": 2929,
+        "destination": 2948
+      },
+      {
+        "offset": 2936,
+        "destination": 2948
+      },
+      {
+        "offset": 2954,
+        "destination": 2974
+      },
+      {
+        "offset": 2958,
+        "destination": 2974
+      },
+      {
+        "offset": 2963,
+        "destination": 2974
+      },
+      {
+        "offset": 2972,
+        "destination": 3068
+      },
+      {
+        "offset": 2982,
+        "destination": 3025
+      }
+    ],
+    "table": {
+      "base_offset": 3092,
+      "entry_offsets": [
+        33,
+        564,
+        889,
+        1525,
+        870
+      ]
+    },
+    "ret_sites": [
+      {
+        "offset": 3086,
+        "instruction": "ret 4"
+      }
+    ]
+  },
+  "readonly_operand": {
+    "address": "0x00470AFC",
+    "word": "0x3F800000",
+    "value": "float 1.0",
+    "section": ".rdata",
+    "section_flags": "0x40000040",
+    "view_symbol": "?g_PlayerTimerUnitStep470AFC@@3MB",
+    "native_view_field_offsets": [
+      1754,
+      1762,
+      1879,
+      1887
+    ],
+    "ownership": "Unknown original global versus compiler literal pool; provisional const operand view, no maintained definition or data-owner mapping.",
+    "target_slow_instructions": [
+      {
+        "fld_offset": "0x6E0",
+        "fmul_offset": "0x6E2"
+      },
+      {
+        "fld_offset": "0x760",
+        "fmul_offset": "0x762"
+      }
+    ],
+    "candidate_slow_order": "FLD view; FMUL scale[ECX], opposite target order."
+  },
+  "entry_candidate": {
+    "size": 3096,
+    "native_fields": 110,
+    "target_size": 3112,
+    "target_fields": 112
+  },
+  "final_cold_context": {
+    "variant": "final-cold",
+    "forced_cold": true,
+    "graph": {
+      "source": "src/Enemy.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp"
+      ],
+      "support_profiles": {
+        "src/AnmManager.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/RandomMath.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/AnmVmCreate.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/AnmVmId.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ],
+        "src/Player.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/PlayerCollision.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/EnemyEclDispatcher.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/VmIdInterrupt.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/FrontEnd.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/ItemManager.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/Main.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/Sound.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/Gui.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/Hint.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ]
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+    },
+    "pins": {
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+      "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+      "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+      "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+      "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+      "src/Enemy.cpp": "bd9a3a3ef595569aa90c1acf4999271b79f03c44e6562b1f9544c111a8892fff",
+      "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+      "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+      "src/EnemyEclDispatcher.cpp": "d632e60fefce7f3d830c4bad5faeb38f9f0ac2ea88a07d800485b37f9034f946",
+      "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+      "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+      "src/FrontEnd.cpp": "82add76a8f165cc27785a0096281a8deefec65369fff93b2428faf4707caf770",
+      "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+      "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+      "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+      "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+      "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+      "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+      "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+      "src/Gui.cpp": "b42efb2a42b99a7dd84125f36235afb106c3b39f12e0320fcce400643a9d1eee",
+      "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+      "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+      "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+      "src/ItemManager.cpp": "8b950fceecc041701f77b8a23726bb42e09d9ceb50503f91025e38ff761f5eaf",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+      "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+      "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+      "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+      "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+      "src/Player.cpp": "ddd0203e2d9342191d54930fb436aaec57c538255df61d4976256017b501c449",
+      "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+      "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+      "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+      "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+      "src/Sound.cpp": "f54cc701c28e6c27446f054b9234be57531a666c646a69a3e4639458a7411562",
+      "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+      "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+      "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+      "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+      "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+    },
+    "changed_inputs": [
+      "src/Enemy.cpp",
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp"
+    ],
+    "compiled": [
+      "src/Enemy.cpp",
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp"
+    ],
+    "reused": {},
+    "artifacts": {
+      "image": "build/gpt-6.1-sol/player-main-timer-context-20261030/final-cold-1/source.exe",
+      "map": "build/gpt-6.1-sol/player-main-timer-context-20261030/final-cold-1/source.map",
+      "pdb": "build/gpt-6.1-sol/player-main-timer-context-20261030/final-cold-1/source.pdb"
+    },
+    "image_sha256": "6f318717bb62ccff0ee6e3ca2e86d8fb209d9f0b1028f22f24d19a1ab17e1dbc",
+    "object_sha256": {
+      "src/Enemy.cpp": "5aef37a18a740b834814a61193b2a088de2187c093f7142b8cc6d6ff7c2249c1",
+      "src/AnmManager.cpp": "897c667838d37c23d256152e2479d67d6543c8c863b85905224fc2ee9fbc3880",
+      "src/RandomMath.cpp": "e27822ef7f2bc78f107670644211d1bba9ff0f81efdf4cd92c668082c8f3884a",
+      "src/AnmVmCreate.cpp": "9b826236df836aba7575df25d522c6336d2d928d0f5243b7fa7995548cdfc6f3",
+      "src/AnmVmId.cpp": "be6e823a8006aa567a6c7c5e8df5ded1778e577a375610eb059ba3553745fb05",
+      "src/AnmInt3Scale.cpp": "9192f5456e2eeec97ecf1e6fc0b383cfc99bd48ea9ae93303e44ab5a63ef1e87",
+      "src/EclVm.cpp": "263e11917c2787b295a754e04e83fb17647ef5580293ab85d7fd868bcd7dea69",
+      "src/Player.cpp": "800249ec5f786ce6d497bf9327dceaca72cd7c980b97625f2611e0522e4717d6",
+      "src/PlayerCollision.cpp": "b8d70025a4bcf7cd7e5fdccf36b9bbc2d9a1ce784446151debe8b0ceac8b3238",
+      "src/EnemyEclDispatcher.cpp": "736ae923b64651c3fff76cdb70139e57e9e6475a00400cf645f079940c689fb1",
+      "src/VmIdInterrupt.cpp": "22ae23333286e00663f9a1f43a901b16df18e65b865bf3d0a80853fef7a61a5f",
+      "src/FrontEnd.cpp": "ead6580fdda984d9443cf49c34d84f9ae21d8c9f62e16a7f8da094ecbfae9617",
+      "src/ItemManager.cpp": "fa3359f3f61efa88d93e40609a44004cc470c8e986db3c3c3bcd124a41a02e97",
+      "src/Main.cpp": "dc23f282ee6124ca2a1197fc9f8f6b529e3ed349e19d6e682b42d811aef43760",
+      "src/Sound.cpp": "e6eadf4423b1e02ddd0a82a46abd03017ad110d0f45ab485e9fe8a988d240c59",
+      "src/Gui.cpp": "1eb8075f58cd18381fa15506470f15ee297953b560024eb2fea33b9128053e97",
+      "src/Hint.cpp": "e73e2d5bc72512e527bf515d97086fe1e444d0ea9b7a46b7fa5e2ccf26961198"
+    }
+  },
+  "native_reproduction": {
+    "result": "all-owned-native-bytes-fields-locals-table-reproduced",
+    "before": {
+      "size": 3108,
+      "normalized_sha256": "eded710d7930e738bdd15d1f5d6849f33094f64643a1b97748e66f696136d2bb",
+      "scope": "Final warm source, identical full inventory to after."
+    },
+    "after": {
+      "complete_owned_bytes": 3108,
+      "code_and_alignment_bytes": 3088,
+      "decoded_instructions": 764,
+      "normalized_sha256": "eded710d7930e738bdd15d1f5d6849f33094f64643a1b97748e66f696136d2bb",
+      "field_identities": [
+        {
+          "offset": 29,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 3088
+          }
+        },
+        {
+          "offset": 108,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3c23d70a"
+            ]
+          }
+        },
+        {
+          "offset": 282,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 330,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?EnemyCancelBulletRecord@@YAIPAE@Z"
+            ]
+          }
+        },
+        {
+          "offset": 345,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 384,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 393,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@41888889"
+            ]
+          }
+        },
+        {
+          "offset": 407,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@42800000"
+            ]
+          }
+        },
+        {
+          "offset": 421,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?CancelBulletPattern@EnemyCancelManagerView@@QAEIPBUPlayerFloat3@@MHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 431,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3e800000"
+            ]
+          }
+        },
+        {
+          "offset": 436,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 449,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?CancelBulletPattern@EnemyCancelManagerView@@QAEIPBUPlayerFloat3@@MHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 454,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 462,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?ApplyPatternCancel@EnemyEffectWaitManager@@QAEIPBUPlayerFloat3@@MH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 532,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmGameSpeed@@3MA"
+            ]
+          }
+        },
+        {
+          "offset": 565,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerDrawGate9EB8@@3PAUPlayerDrawGate9EB8@@A"
+            ]
+          }
+        },
+        {
+          "offset": 593,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A"
+            ]
+          }
+        },
+        {
+          "offset": 619,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerPower@@3FA"
+            ]
+          }
+        },
+        {
+          "offset": 647,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerInputBits@@3IA"
+            ]
+          }
+        },
+        {
+          "offset": 666,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 672,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?StartPowerTransition@PlayerUpdateGate28@@QAEHXZ"
+            ]
+          }
+        },
+        {
+          "offset": 679,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerPower@@3FA"
+            ]
+          }
+        },
+        {
+          "offset": 686,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 693,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerPower@@3FA"
+            ]
+          }
+        },
+        {
+          "offset": 707,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_ItemPowerDisplayOwner@@3PAUItemPowerDisplayOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 737,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?UpdatePowerDisplay@ItemPowerDisplayOwnerView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 747,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GameScoreState@@3UGameScoreStateView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 752,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DecayFaith@GameScoreStateView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 767,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 810,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?EnemyCancelBulletRecord@@YAIPAE@Z"
+            ]
+          }
+        },
+        {
+          "offset": 825,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 861,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?PlayerUpdateMovementAndOptions@@YAHPAUPlayer@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 885,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?PlayerTransitionToState2@@YGXPAUPlayer@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 905,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerPower@@3FA"
+            ]
+          }
+        },
+        {
+          "offset": 915,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerPower@@3FA"
+            ]
+          }
+        },
+        {
+          "offset": 924,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerPower@@3FA"
+            ]
+          }
+        },
+        {
+          "offset": 938,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_ItemPowerDisplayOwner@@3PAUItemPowerDisplayOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 968,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?UpdatePowerDisplay@ItemPowerDisplayOwnerView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 986,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@43600000"
+            ]
+          }
+        },
+        {
+          "offset": 1011,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?PlayerAngleToPoint@@YAMPAUPlayer@@PBUPlayerFloat3@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1049,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3de5c8fa"
+            ]
+          }
+        },
+        {
+          "offset": 1059,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3ec90fdb"
+            ]
+          }
+        },
+        {
+          "offset": 1106,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_ItemManager@@3PAUItemManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1113,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1129,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1147,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerRuntimeGateValue@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 1163,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerUpdateGate10@@3PAUPlayerUpdateGate10@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1179,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GameOwner477830@@3PAUGameChainOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1184,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?ResultMenuOpenGameOver@@YAXPAUResultMenuView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1195,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1221,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerPower@@3FA"
+            ]
+          }
+        },
+        {
+          "offset": 1253,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerInputBits@@3IA"
+            ]
+          }
+        },
+        {
+          "offset": 1273,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1289,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1295,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?StartPowerTransition@PlayerUpdateGate28@@QAEHXZ"
+            ]
+          }
+        },
+        {
+          "offset": 1302,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerPower@@3FA"
+            ]
+          }
+        },
+        {
+          "offset": 1309,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1316,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerPower@@3FA"
+            ]
+          }
+        },
+        {
+          "offset": 1330,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_ItemPowerDisplayOwner@@3PAUItemPowerDisplayOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1360,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?UpdatePowerDisplay@ItemPowerDisplayOwnerView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1382,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1387,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetNextGameMode@MainSupervisorView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1430,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmGameSpeed@@3MA"
+            ]
+          }
+        },
+        {
+          "offset": 1439,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1507,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1519,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1543,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1574,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?EnemyCancelBulletRecord@@YAIPAE@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1588,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1598,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?EnemyApplyBulletClear@@YAIPAUEnemyEffectWaitManager@@H@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1647,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?FromAngleMagnitude@EnemyRuntimeVectorView@@QAEXMM@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1680,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?EnemyWrapAngle@@YGMM@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1691,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?EnemyAdvanceMotion@@YAXPAUEnemyMotionView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1724,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f7d70a4"
+            ]
+          }
+        },
+        {
+          "offset": 1739,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f8147ae"
+            ]
+          }
+        },
+        {
+          "offset": 1754,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerTimerUnitStep470AFC@@3MB"
+            ]
+          }
+        },
+        {
+          "offset": 1762,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerTimerUnitStep470AFC@@3MB"
+            ]
+          }
+        },
+        {
+          "offset": 1775,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "__ftol2"
+            ]
+          }
+        },
+        {
+          "offset": 1845,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f7d70a4"
+            ]
+          }
+        },
+        {
+          "offset": 1860,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f8147ae"
+            ]
+          }
+        },
+        {
+          "offset": 1879,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerTimerUnitStep470AFC@@3MB"
+            ]
+          }
+        },
+        {
+          "offset": 1887,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerTimerUnitStep470AFC@@3MB"
+            ]
+          }
+        },
+        {
+          "offset": 1912,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "__ftol2"
+            ]
+          }
+        },
+        {
+          "offset": 1993,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 2159,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f000000"
+            ]
+          }
+        },
+        {
+          "offset": 2171,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f000000"
+            ]
+          }
+        },
+        {
+          "offset": 2183,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f000000"
+            ]
+          }
+        },
+        {
+          "offset": 2267,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f000000"
+            ]
+          }
+        },
+        {
+          "offset": 2279,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f000000"
+            ]
+          }
+        },
+        {
+          "offset": 2291,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f000000"
+            ]
+          }
+        },
+        {
+          "offset": 2673,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f7d70a4"
+            ]
+          }
+        },
+        {
+          "offset": 2688,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f8147ae"
+            ]
+          }
+        },
+        {
+          "offset": 2708,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f800000"
+            ]
+          }
+        },
+        {
+          "offset": 2741,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "__ftol2"
+            ]
+          }
+        },
+        {
+          "offset": 2773,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f7d70a4"
+            ]
+          }
+        },
+        {
+          "offset": 2788,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f8147ae"
+            ]
+          }
+        },
+        {
+          "offset": 2808,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f800000"
+            ]
+          }
+        },
+        {
+          "offset": 2841,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "__ftol2"
+            ]
+          }
+        },
+        {
+          "offset": 2853,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerDrawGate9EB8@@3PAUPlayerDrawGate9EB8@@A"
+            ]
+          }
+        },
+        {
+          "offset": 2865,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A"
+            ]
+          }
+        },
+        {
+          "offset": 2899,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiResetSession@@3PAUGuiResetSessionView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 2910,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiResetSession@@3PAUGuiResetSessionView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 2918,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiResetSession@@3PAUGuiResetSessionView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 2937,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiResetSession@@3PAUGuiResetSessionView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 2965,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?PlayerUpdateInputAction@@YAHPAUPlayer@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 3012,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmGameSpeed@@3MA"
+            ]
+          }
+        },
+        {
+          "offset": 3067,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?PlayerUpdateShots@@YGHPAUPlayer@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 3088,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 33
+          }
+        },
+        {
+          "offset": 3092,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 564
+          }
+        },
+        {
+          "offset": 3096,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 889
+          }
+        },
+        {
+          "offset": 3100,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1525
+          }
+        },
+        {
+          "offset": 3104,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 870
+          }
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 20,
+          "destination": 1602,
+          "mnemonic": "ja"
+        },
+        {
+          "offset": 142,
+          "destination": 212,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 150,
+          "destination": 160,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 206,
+          "destination": 160,
+          "mnemonic": "jg"
+        },
+        {
+          "offset": 210,
+          "destination": 241,
+          "mnemonic": "jle"
+        },
+        {
+          "offset": 219,
+          "destination": 224,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 239,
+          "destination": 224,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 278,
+          "destination": 379,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 294,
+          "destination": 304,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 314,
+          "destination": 334,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 320,
+          "destination": 334,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 327,
+          "destination": 334,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 341,
+          "destination": 304,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 354,
+          "destination": 466,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 362,
+          "destination": 371,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 375,
+          "destination": 356,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 377,
+          "destination": 466,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 473,
+          "destination": 1602,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 499,
+          "destination": 542,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 571,
+          "destination": 756,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 585,
+          "destination": 756,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 599,
+          "destination": 756,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 610,
+          "destination": 756,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 643,
+          "destination": 756,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 652,
+          "destination": 756,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 763,
+          "destination": 858,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 779,
+          "destination": 784,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 794,
+          "destination": 814,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 800,
+          "destination": 814,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 807,
+          "destination": 814,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 821,
+          "destination": 784,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 834,
+          "destination": 858,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 843,
+          "destination": 852,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 856,
+          "destination": 836,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 865,
+          "destination": 1602,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 877,
+          "destination": 1193,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 896,
+          "destination": 1133,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 910,
+          "destination": 921,
+          "mnemonic": "jns"
+        },
+        {
+          "offset": 1031,
+          "destination": 1040,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1067,
+          "destination": 1084,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1072,
+          "destination": 1084,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1082,
+          "destination": 1089,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1125,
+          "destination": 1040,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 1140,
+          "destination": 1602,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 1155,
+          "destination": 1396,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 1171,
+          "destination": 1379,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1188,
+          "destination": 1602,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1201,
+          "destination": 1602,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1212,
+          "destination": 1602,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1245,
+          "destination": 1602,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1258,
+          "destination": 1602,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1374,
+          "destination": 1602,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1391,
+          "destination": 1602,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1523,
+          "destination": 1602,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1534,
+          "destination": 1602,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1539,
+          "destination": 1602,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1565,
+          "destination": 1578,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1571,
+          "destination": 1578,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1585,
+          "destination": 1555,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1623,
+          "destination": 1790,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1633,
+          "destination": 1660,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1658,
+          "destination": 1687,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1733,
+          "destination": 1760,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1748,
+          "destination": 1760,
+          "mnemonic": "jp"
+        },
+        {
+          "offset": 1758,
+          "destination": 1770,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1784,
+          "destination": 1790,
+          "mnemonic": "jg"
+        },
+        {
+          "offset": 1805,
+          "destination": 1619,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1821,
+          "destination": 1971,
+          "mnemonic": "jle"
+        },
+        {
+          "offset": 1854,
+          "destination": 1885,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1869,
+          "destination": 1885,
+          "mnemonic": "jp"
+        },
+        {
+          "offset": 1883,
+          "destination": 1899,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1934,
+          "destination": 1971,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1946,
+          "destination": 1971,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1969,
+          "destination": 1982,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 2682,
+          "destination": 2726,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 2697,
+          "destination": 2726,
+          "mnemonic": "jp"
+        },
+        {
+          "offset": 2724,
+          "destination": 2751,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 2782,
+          "destination": 2826,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 2797,
+          "destination": 2826,
+          "mnemonic": "jp"
+        },
+        {
+          "offset": 2824,
+          "destination": 2851,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 2869,
+          "destination": 2971,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 2873,
+          "destination": 2945,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 2878,
+          "destination": 2945,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 2896,
+          "destination": 2945,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 2914,
+          "destination": 2928,
+          "mnemonic": "jle"
+        },
+        {
+          "offset": 2926,
+          "destination": 2945,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 2933,
+          "destination": 2945,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 2951,
+          "destination": 2971,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 2955,
+          "destination": 2971,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 2960,
+          "destination": 2971,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 2969,
+          "destination": 3065,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 2979,
+          "destination": 3022,
+          "mnemonic": "jne"
+        }
+      ],
+      "table": {
+        "offset": 3088,
+        "entry_offsets": [
+          33,
+          564,
+          889,
+          1525,
+          870
+        ]
+      },
+      "returns": [
+        {
+          "offset": 3083,
+          "operand": "4"
+        }
+      ]
+    },
+    "exact_credit": 0
+  },
+  "canonical_affected_colds": {
+    "exit": 0,
+    "result": "exact",
+    "unit_count": 3,
+    "matched_bytes": 1379,
+    "units": [
+      {
+        "artifact_kind": "coff",
+        "compared_size": 7,
+        "first_differences": [],
+        "matched_bytes": 7,
+        "matched_compared_bytes": 7,
+        "object": "build/match/PlayerUpdateCallback.obj",
+        "relocations": [
+          {
+            "addend": "0x00000000",
+            "offset": "0x2",
+            "symbol": "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z",
+            "target": "0x00425730",
+            "type": "REL32"
+          }
+        ],
+        "result": "exact",
+        "returncode": 0,
+        "size": 7,
+        "symbol": "?PlayerUpdateCallback@@YIHPAUPlayer@@@Z",
+        "target_address": "0x00426500",
+        "unit": "player-update-callback"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x004143F0",
+        "capstone_version": "5.0.6",
+        "compared_size": 1170,
+        "data_spans": [],
+        "decoded_bytes": 1170,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+        "image_sha256": "6f318717bb62ccff0ee6e3ca2e86d8fb209d9f0b1028f22f24d19a1ab17e1dbc",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0x32",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0x53",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0x9E",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0xB0",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431104",
+            "linked_symbol": "__real@00000000",
+            "local": false,
+            "offset": "0x11F",
+            "symbol": "__real@00000000",
+            "target": "0x00470B04",
+            "target_encoded_value": "0x00470B04",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431104",
+            "linked_symbol": "__real@00000000",
+            "local": false,
+            "offset": "0x139",
+            "symbol": "__real@00000000",
+            "target": "0x00470B04",
+            "target_encoded_value": "0x00470B04",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00411FD0",
+            "linked_symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+            "local": false,
+            "offset": "0x168",
+            "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+            "target": "0x0040C480",
+            "target_encoded_value": "0xFFFE3CE4",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00412110",
+            "linked_symbol": "?HasIntervalTick@PlayerTimerView@@QBEHH@Z",
+            "local": false,
+            "offset": "0x18C",
+            "symbol": "?HasIntervalTick@PlayerTimerView@@QBEHH@Z",
+            "target": "0x00427C70",
+            "target_encoded_value": "0xFFFFF4B0",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F2E0",
+            "linked_symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+            "local": false,
+            "offset": "0x1A2",
+            "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+            "target": "0x00449450",
+            "target_encoded_value": "0x00020C7A",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F3F0",
+            "linked_symbol": "?Release@AnmVmIdView@@QAEXXZ",
+            "local": false,
+            "offset": "0x1AE",
+            "symbol": "?Release@AnmVmIdView@@QAEXXZ",
+            "target": "0x00449630",
+            "target_encoded_value": "0x00020E4E",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00408720",
+            "linked_symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "local": false,
+            "offset": "0x1C8",
+            "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "target": "0x00448D00",
+            "target_encoded_value": "0x00020504",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F2E0",
+            "linked_symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+            "local": false,
+            "offset": "0x1D1",
+            "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+            "target": "0x00449450",
+            "target_encoded_value": "0x00020C4B",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431164",
+            "linked_symbol": "__real@3e000000",
+            "local": false,
+            "offset": "0x1F0",
+            "symbol": "__real@3e000000",
+            "target": "0x00470B90",
+            "target_encoded_value": "0x00470B90",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00411F10",
+            "linked_symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+            "local": false,
+            "offset": "0x234",
+            "symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+            "target": "0x00427B50",
+            "target_encoded_value": "0xFFFFF2E8",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x004326E0",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0339",
+            "local": false,
+            "offset": "0x25B",
+            "symbol": "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A",
+            "target": "0x004776EC",
+            "target_encoded_value": "0x004776EC",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00412020",
+            "linked_symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+            "local": false,
+            "offset": "0x262",
+            "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+            "target": "0x004059F0",
+            "target_encoded_value": "0xFFFDD15A",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431104",
+            "linked_symbol": "__real@00000000",
+            "local": false,
+            "offset": "0x2AA",
+            "symbol": "__real@00000000",
+            "target": "0x00470B04",
+            "target_encoded_value": "0x00470B04",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0x2BF",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0x2EE",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0x36A",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431208",
+            "linked_symbol": "__real@bf000000",
+            "local": false,
+            "offset": "0x373",
+            "symbol": "__real@bf000000",
+            "target": "0x00470B78",
+            "target_encoded_value": "0x00470B78",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0x38F",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0x3AD",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431208",
+            "linked_symbol": "__real@bf000000",
+            "local": false,
+            "offset": "0x3B6",
+            "symbol": "__real@bf000000",
+            "target": "0x00470B78",
+            "target_encoded_value": "0x00470B78",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00431114",
+            "linked_symbol": "__real@3f000000",
+            "local": false,
+            "offset": "0x3CE",
+            "symbol": "__real@3f000000",
+            "target": "0x00470B0C",
+            "target_encoded_value": "0x00470B0C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00432540",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0235",
+            "local": false,
+            "offset": "0x460",
+            "symbol": "?g_GameScore@@3HA",
+            "target": "0x00474C44",
+            "target_encoded_value": "0x00474C44",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00432540",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0235",
+            "local": false,
+            "offset": "0x476",
+            "symbol": "?g_GameScore@@3HA",
+            "target": "0x00474C44",
+            "target_encoded_value": "0x00474C44",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x00432540",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0235",
+            "local": false,
+            "offset": "0x47E",
+            "symbol": "?g_GameScore@@3HA",
+            "target": "0x00474C44",
+            "target_encoded_value": "0x00474C44",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 1170,
+        "matched_compared_bytes": 1170,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "5be8782afb8ac94ca5924047fbc91e37",
+        "pdb_module_index": 13,
+        "raw_equal": false,
+        "result": "exact",
+        "returncode": 0,
+        "size": 1170,
+        "symbol": "?CalculateDamageToTarget@Player@@QAEHPBUPlayerFloat3@@0PAH@Z",
+        "target_address": "0x00428630",
+        "unit": "player-calculate-damage-to-target"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x00412020",
+        "capstone_version": "5.0.6",
+        "compared_size": 202,
+        "data_spans": [],
+        "decoded_bytes": 202,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+        "image_sha256": "6f318717bb62ccff0ee6e3ca2e86d8fb209d9f0b1028f22f24d19a1ab17e1dbc",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x0043241C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0162",
+            "local": false,
+            "offset": "0x3D",
+            "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+            "target": "0x004776F4",
+            "target_encoded_value": "0x004776F4",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0043267C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0314",
+            "local": false,
+            "offset": "0x64",
+            "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+            "target": "0x00477704",
+            "target_encoded_value": "0x00477704",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0043241C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0162",
+            "local": false,
+            "offset": "0x79",
+            "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+            "target": "0x004776F4",
+            "target_encoded_value": "0x004776F4",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0043255C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0242",
+            "local": false,
+            "offset": "0x8E",
+            "symbol": "?g_GameStatisticsIndex0@@3HA",
+            "target": "0x00474C68",
+            "target_encoded_value": "0x00474C68",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0043267C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0314",
+            "local": false,
+            "offset": "0xA0",
+            "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+            "target": "0x00477704",
+            "target_encoded_value": "0x00477704",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0043255C",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0242",
+            "local": false,
+            "offset": "0xB5",
+            "symbol": "?g_GameStatisticsIndex0@@3HA",
+            "target": "0x00474C68",
+            "target_encoded_value": "0x00474C68",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 202,
+        "matched_compared_bytes": 202,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "5be8782afb8ac94ca5924047fbc91e37",
+        "pdb_module_index": 13,
+        "raw_equal": false,
+        "result": "exact",
+        "returncode": 0,
+        "size": 202,
+        "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+        "target_address": "0x004059F0",
+        "unit": "player-auxiliary-damage-at-position"
+      }
+    ],
+    "source_freeze_manifest_sha256": "17c0a445e49d1022b25f391dd006bc85a81b6bed7f2e62183d6dea66f2324fa2"
+  },
+  "previous_native_preservation": {
+    "scriptinit": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "address": "0x00408530",
+          "size": 197,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 30000,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "f2739bc09e4efec1c1af37ebd95f9f75fc48b02eff3b8e40fff241052cb94356"
+        },
+        "normalized_sha256": "9c7f234990808b09e449cc9b6fab338fa7e6820fa0f21e9a9c9c3ee569f03206",
+        "field_count": 4
+      },
+      "after": {
+        "owner": {
+          "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "address": "0x00408530",
+          "size": 197,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 30000,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "f2739bc09e4efec1c1af37ebd95f9f75fc48b02eff3b8e40fff241052cb94356"
+        },
+        "normalized_sha256": "9c7f234990808b09e449cc9b6fab338fa7e6820fa0f21e9a9c9c3ee569f03206",
+        "field_count": 4
+      }
+    },
+    "state2": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "?PlayerTransitionToState2@@YGXPAUPlayer@@@Z",
+          "address": "0x004124E0",
+          "size": 786,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 70880,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "8b1bd42dd7fb96623331bdeb08d4d8c5c81cade82855a53d20428106bd6b5b0d"
+        },
+        "normalized_sha256": "f5c3208f25a66a16b18f7b40bb6c8a238c035d7fb7717a76c759272c12627d55",
+        "field_count": 19
+      },
+      "after": {
+        "owner": {
+          "symbol": "?PlayerTransitionToState2@@YGXPAUPlayer@@@Z",
+          "address": "0x004124E0",
+          "size": 786,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 70880,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "d9979545dc162208e7efb4cfc58953eb453d09b8872cabf73d283ac962f0e1c6"
+        },
+        "normalized_sha256": "f5c3208f25a66a16b18f7b40bb6c8a238c035d7fb7717a76c759272c12627d55",
+        "field_count": 19
+      }
+    },
+    "destructor": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "??1Player@@QAE@XZ",
+          "address": "0x00412D10",
+          "size": 262,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 72976,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "f8b3de22c175427de1debfc0ddf121e65b44bc4727fe04b069db3033be8e4a63"
+        },
+        "normalized_sha256": "e8b2b21d8f0b283d9937194a847838c9e9810b626c20f57edc34948370f5f46f",
+        "field_count": 28
+      },
+      "after": {
+        "owner": {
+          "symbol": "??1Player@@QAE@XZ",
+          "address": "0x00412D10",
+          "size": 262,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 72976,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "212b007d2c76e0526a3dd6fe589373a768632741691666870db8d6b223a9152f"
+        },
+        "normalized_sha256": "e8b2b21d8f0b283d9937194a847838c9e9810b626c20f57edc34948370f5f46f",
+        "field_count": 28
+      }
+    },
+    "shots": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "?PlayerUpdateShots@@YGHPAUPlayer@@@Z",
+          "address": "0x00414080",
+          "size": 876,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 77952,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "f8fdcc4c7c916b7053363b48e5c50ea544cc9b78cdffedd650fe00b1af2bc065"
+        },
+        "normalized_sha256": "850f6199b07010806c11c61c4e9b074adf05c3a4305bc9007b28a2250d05ea81",
+        "field_count": 22
+      },
+      "after": {
+        "owner": {
+          "symbol": "?PlayerUpdateShots@@YGHPAUPlayer@@@Z",
+          "address": "0x00414080",
+          "size": 876,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 77952,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 13,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-06-Player.ltcg.obj",
+          "sha256": "cdd8b6bb17dcc8d587e9e9a5777a7e9b14fb3c5f961ad1a88f18463bc12f5fd4"
+        },
+        "normalized_sha256": "850f6199b07010806c11c61c4e9b074adf05c3a4305bc9007b28a2250d05ea81",
+        "field_count": 22
+      }
+    },
+    "runtime": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+          "address": "0x00401F50",
+          "size": 2412,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3920,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "130605ca7cdbd6f2149fbe806b622fea86dcf7fadc00087e500682a5b3b6f719"
+        },
+        "normalized_sha256": "5799c578ff34e4ed16bd5baa8bd2348b80e9c78c212781f26fc0fc6fdfe0c59b",
+        "field_count": 69
+      },
+      "after": {
+        "owner": {
+          "symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+          "address": "0x00401F50",
+          "size": 2412,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3920,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "7cc3d0eb79e4168b7138c81be1211b61bb02c94eef2e9f114f3f08c2e65a4159"
+        },
+        "normalized_sha256": "5799c578ff34e4ed16bd5baa8bd2348b80e9c78c212781f26fc0fc6fdfe0c59b",
+        "field_count": 69
+      }
+    },
+    "scalar": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "?Evaluate@EnemyScalarInterpolationView@@QAEPAUEnemyFloat2@@PAU2@@Z",
+          "address": "0x00401C20",
+          "size": 652,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3104,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "ac03ef134921f88baeef54f14a481ac817e8aaf9fc2b60180298db4d85e83e16"
+        },
+        "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+        "field_count": 10
+      },
+      "after": {
+        "owner": {
+          "symbol": "?Evaluate@EnemyScalarInterpolationView@@QAEPAUEnemyFloat2@@PAU2@@Z",
+          "address": "0x00401C20",
+          "size": 652,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3104,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "914ed03407b786faae51560dd1bb85255997a765876f374fb05d8fa9da93066d"
+        },
+        "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+        "field_count": 10
+      }
+    },
+    "motion": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "?EnemyAdvanceMotion@@YAXPAUEnemyMotionView@@@Z",
+          "address": "0x00401EB0",
+          "size": 160,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3760,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "a0bdff13a72ba7bcaf4ae1346d1e9d98039c4612fefad1e8d577869a7c2bb23e"
+        },
+        "normalized_sha256": "9dc49d5961959f424b4ef834845b814bf149bda52940886ef95c32b79550c740",
+        "field_count": 7
+      },
+      "after": {
+        "owner": {
+          "symbol": "?EnemyAdvanceMotion@@YAXPAUEnemyMotionView@@@Z",
+          "address": "0x00401EB0",
+          "size": 160,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 3760,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "d40d1ad24a9edf1ad1c59013bc73dc60a94c89c7c87eec1083f422498dd4ff1f"
+        },
+        "normalized_sha256": "9dc49d5961959f424b4ef834845b814bf149bda52940886ef95c32b79550c740",
+        "field_count": 7
+      }
+    },
+    "setsub": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "?SetSubroutine@EnemyEclHostBaseView@@QAEHPBD@Z",
+          "address": "0x00401350",
+          "size": 30,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 848,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "9beb358151945b77c26127a6d673bd406c75f637339e2be91728b28d50326d62"
+        },
+        "normalized_sha256": "c76de40cfa91114ae8438335c0a493715d6c0f3fd937988f9c65d0da499ffe16",
+        "field_count": 1
+      },
+      "after": {
+        "owner": {
+          "symbol": "?SetSubroutine@EnemyEclHostBaseView@@QAEHPBD@Z",
+          "address": "0x00401350",
+          "size": 30,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 848,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\source.ltcg.obj",
+          "sha256": "9beb358151945b77c26127a6d673bd406c75f637339e2be91728b28d50326d62"
+        },
+        "normalized_sha256": "c76de40cfa91114ae8438335c0a493715d6c0f3fd937988f9c65d0da499ffe16",
+        "field_count": 1
+      }
+    },
+    "easing": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+          "address": "0x00403F90",
+          "size": 576,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 12176,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "02649dea0a14df4f3202dcba3acb7dd4762c139eafae7140b0b62dd7893239b4"
+        },
+        "normalized_sha256": "f9a47c62349f89ab12ab10c4804930806a38bfbbac0594a806cf33571f25386a",
+        "field_count": 55
+      },
+      "after": {
+        "owner": {
+          "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+          "address": "0x00403F90",
+          "size": 576,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 12176,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "02649dea0a14df4f3202dcba3acb7dd4762c139eafae7140b0b62dd7893239b4"
+        },
+        "normalized_sha256": "f9a47c62349f89ab12ab10c4804930806a38bfbbac0594a806cf33571f25386a",
+        "field_count": 55
+      }
+    },
+    "anmfloat2": {
+      "scope": "Native before/after identity only; does not establish equality with TH10.",
+      "result": "previous-native-candidate-preserved",
+      "before": {
+        "owner": {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "address": "0x00404A50",
+          "size": 652,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 14928,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "2feb3d50131a0d0dc6c8f21863763f819d1e641fce91c17bc6ac529e966b1f80"
+        },
+        "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+        "field_count": 10
+      },
+      "after": {
+        "owner": {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "address": "0x00404A50",
+          "size": 652,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 14928,
+          "map_object": "support-00-AnmManager.ltcg.obj",
+          "pdb_module_index": 6,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-00-AnmManager.ltcg.obj",
+          "sha256": "374651ba3f7075abb0a7798d6d9102b5e1e12bb23d8558268c5d3bd4a8af3f96"
+        },
+        "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+        "field_count": 10
+      }
+    }
+  },
+  "existing_complete_receipts": {
+    "hit": {
+      "size": 624,
+      "fields": 21,
+      "local_branches": 7,
+      "result": "prior-native-receipt-preserved-nonexact"
+    },
+    "movement": {
+      "size": 1616,
+      "fields": 54,
+      "local_branches": 78,
+      "result": "prior-native-receipt-preserved-nonexact"
+    }
+  },
+  "controls": [
+    {
+      "variant": "integer-timer-step",
+      "exit": 0,
+      "candidate_size": 3096,
+      "native_fields": 110,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "Real integer count; literal1 products remain folded.",
+      "retained": false
+    },
+    {
+      "variant": "referenced-timer-step",
+      "exit": 0,
+      "candidate_size": 3096,
+      "native_fields": 110,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "Literal float reference; products remain folded.",
+      "retained": false
+    },
+    {
+      "variant": "fixed-coordinate-helper",
+      "exit": 0,
+      "candidate_size": 3096,
+      "native_fields": 110,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "Value-coordinate output helper; early option-count schedule unchanged.",
+      "retained": false
+    },
+    {
+      "variant": "target-unit-operand",
+      "exit": 0,
+      "candidate_size": 3108,
+      "native_fields": 112,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "Retained operand model: provisional const view of independently verified read-only target1; two products recovered.",
+      "retained": true
+    },
+    {
+      "variant": "scale-first-operand",
+      "exit": 0,
+      "candidate_size": 3108,
+      "native_fields": 112,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "Reversed multiplication spelling is instruction-neutral.",
+      "retained": false
+    },
+    {
+      "variant": "scaled-step-helper",
+      "exit": 0,
+      "candidate_size": 3108,
+      "native_fields": 112,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "Nested real two-operand scaling helper does not restore target operand order.",
+      "retained": false
+    },
+    {
+      "variant": "fixed-coordinate-view",
+      "exit": 0,
+      "candidate_size": 3108,
+      "native_fields": 112,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "Pointer-coordinate output helper does not restore prefix.",
+      "retained": false
+    },
+    {
+      "variant": "effect-lifetime-helper",
+      "exit": 0,
+      "candidate_size": 3108,
+      "native_fields": 112,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "Coherent motion lifetime helper does not restore effect base.",
+      "retained": false
+    },
+    {
+      "variant": "operand-derived-cursor",
+      "exit": 0,
+      "candidate_size": 3112,
+      "native_fields": 112,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "3112 physical bytes but prefix register and loop-address regressions; restored.",
+      "retained": false
+    },
+    {
+      "variant": "operand-by-value",
+      "exit": 0,
+      "candidate_size": 3108,
+      "native_fields": 112,
+      "target_size": 3112,
+      "result": "nonexact",
+      "observation": "3108 bytes; adds another floating-order difference; restored.",
+      "retained": false
+    }
+  ],
+  "remaining": [
+    "Early option-count load and draw-Y scheduling",
+    "Effect-loop EDI subframe base instead of motion base; different displacements and helper receiver setup",
+    "Scale/unit operand load-multiply order",
+    "Later x87 operand orders",
+    "Final alignment and state table base four bytes early",
+    "Actual script initializer and state2 private interface/codegen remain nonexact"
+  ],
+  "progress": {
+    "new_exact_bytes": 0,
+    "new_exact_owners": 0,
+    "authored_exact_bytes": 100640,
+    "authored_owned_bytes": 275817,
+    "authored_exact_owners": 493,
+    "total_exact_codegen_bytes": 168737,
+    "total_exact_codegen_owners": 1369,
+    "source_present": 1206,
+    "source_present_authored": 688,
+    "source_backlog": 195
+  },
+  "private_retention": {
+    "directory": ".analysis/gpt-6.1-sol/player-main-timer-context-20261030",
+    "final_warm_context": ".analysis/gpt-6.1-sol/player-main-timer-context-20261030/final-context.json",
+    "final_cold_context": ".analysis/gpt-6.1-sol/player-main-timer-context-20261030/final-cold-context.json",
+    "entry_context": ".analysis/gpt-6.1-sol/player-main-timer-context-20261030/entry-context.json"
+  },
+  "verification": {
+    "native_receipt": "passed complete warm/cold inventory including table and alignment",
+    "affected_native_exact": "passed 1379 bytes/all35 fields",
+    "lightweight_ci": "passed all seven default stages; ci.exit=0",
+    "whitespace": "passed git diff --check"
+  },
+  "closed_control_storage": {
+    "result": "losslessly-archived-and-hash-verified-before-removal",
+    "archive": ".analysis/gpt-6.1-sol/player-main-timer-context-20261030/closed-native-controls.tar.xz",
+    "archive_sha256": "dd6277d0508b7fc965fda286be4158905283584d495cab57e9055c47aa8537ca",
+    "members": 530,
+    "original_bytes": 24077064,
+    "archive_bytes": 536424,
+    "preserved_carriers": [
+      "Entry17-input hit cold (external workbench), current pins verified",
+      "Final warm17-input",
+      "Final cold17-input",
+      "Final cold normal callback object"
+    ]
+  }
+}

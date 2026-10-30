@@ -2,6 +2,27 @@
 
 ## Current checkpoint
 
+Complete Player main425730..426357 remains NONEXACT, now3108/3112/all112
+native fields versus3096/all110. Raw target data verifies470AFC is read-only
+float1 in `.rdata`, flags40000040. A provisional const operand view and ordinary
+real two-operand timer helper recover both scaled multiplications; original
+global/literal-pool ownership and source spelling remain unknown. No data owner
+or target exact credit is inferred. Native slow paths still reverse FLD/FMUL
+operand order; effect EDI base, early option load and later FP order remain
+open. The five state destinations stay target-relative exact; table base is
+four bytes early. See the [complete timer operand candidate](evidence/player-main-timer-context-20261030/README.md).
+
+A zero-reuse seventeen-input cold reproduces complete3108 bytes/all112 fields,
+92 native local branches, RET4 and five table entries. Only explicit damage1170,
+auxiliary202 and callback7 units are replayed:1379/all35 exact. Existing hit624,
+movement1616 and ten other native candidate receipts remain unchanged. Derived
+cursor3112 changes register/address schedules and is restored; operand-by-value,
+coordinate/lifetime/scaling helpers and count/reference controls do not close
+this owner. No repeat of these models without new evidence. Current source pins
+are in the new receipt; previous main source-pinned records are historical.
+Authored exact remains100640/275817,493 owners; source1206/authored688/backlog195.
+Product/runtime, data/TU ownership and portability remain open.
+
 EnemyLaserLineView::Draw41D7C0..41D86C /173 now closes44 instructions/all10
 fields/one fixed JP and plain RET. The sole absolute entry ref is pointer-table
 slot46DA6C; no direct E8/E9 entry/interior ref. A real primary VM pointer plus

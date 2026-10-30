@@ -7831,3 +7831,31 @@ fully restored. Conditional helpers/record Create retain calls or change extent;
 value factory is neutral; radial helpers reverse extra components. They add no
 exact credit or new current source. Use the new inline-context entry-current
 receipt instead of treating the older header epoch as current.
+
+
+## 2026-10-30 Player main read-only timer operand candidate
+
+Target470AFC lies in `.rdata` (flags40000040, not writable), word3F800000/float1.
+The main's two scaled decrements explicitly FLD scale through ECX then FMUL
+this operand at+6E0/+6E2 and+760/+762. Two fast decrements and two increments
+also read470AFC. A provisional const external view plus ordinary real-operand
+helper retains those two products under the existing seventeen-input /GL graph.
+This does not prove original global/literal-pool ownership, source spelling or
+a production data definition. The candidate anchor image is not a runtime build.
+
+Complete main is3108/3112/all112 native fields, NONEXACT. Native FLD unit then
+FMUL scale reverses target operands; effect-loop EDI subframe versus motion base,
+early option-count load and later FP orders remain different. Table base C10
+versus target C14 is four bytes early; five target-relative entry offsets remain
+21/234/379/5F5/366. Fresh zero-reuse cold reproduces all3108 bytes,112 field
+identities,92 fixed local branches, RET4 and the entire table. Having112 native
+fields does not validate target bindings or waive ordinary/ABI differences.
+
+Explicit canonical damage1170, auxiliary202 and callback7 cold checks pass1379/
+all35. Hit624 and movement1616 retain full native receipts; ten other previous
+candidate identities stay unchanged. Integer/literal-reference/coordinate helpers
+stay3096; read-only operand3108 is retained. Multiplication spelling is neutral;
+scaling/lifetime/pointer helpers do not close the owner. Derived cursor3112
+changes prefix registers and loop addressing; by-value adds an FP difference.
+All controls are restored. No new exact/source/boundary/data credit; see the
+[complete timer operand evidence](evidence/player-main-timer-context-20261030/README.md).
