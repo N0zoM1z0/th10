@@ -8014,3 +8014,35 @@ reproduces3836/all72 and its four ordinary differences. Current18-input Run and
 separate17-input Player contexts are recorded in the handoff. See the
 [complete native evidence](evidence/gui-message-run-context-20261030/README.md).
 No new exact/source/origin/boundary credit or product/runtime/port closure follows.
+
+
+## 2026-10-30 Audio queue and music command complete exact closure
+
+QueueCommand43E460..43E4C7/104, LoadMusic420A90..420B07/120,
+PlayMusic420B10..420B58/73 and ScaledSound420C30..420C83/84 now pass complete
+canonical comparisons:381 bytes/all22 fields/all9 local destinations. Target
+dense decode has105 instructions and all exits. The actual queue ABI is EAX
+owner/EDX path plus opcode/argument on stack, RET8. Its caller interfaces and
+all strings/global/CRT/security fields agree. Two independent18-input colds
+rebuild without reuse under the retained profiles/root and frozen hashes.
+
+A bounded0..30 index scan and direct indexed command writes recover the full
+104-byte queue from90, including natural loop alignment and full-queue exit.
+Records are0x10C bytes at owner+1F88. Scaled command's source<=1 predicate
+incorrectly rejected unordered comparison via JP; targetJE skips only ordered
+speed>1 after the separate zero bypass. Branch-local selected double values
+restore both input loads and the entire84-byte x87/conversion schedule, versus
+78. Existing load120/play73 source bodies are unchanged and now fully bound to
+that real exact queue callee. No asm, forced registers, new alias/padding or
+compiler-profile sweep is involved. Native exactness remains separate from
+original source/TU/data ownership, product/runtime and portable numeric claims.
+
+Source-boundary instruction refs verify20 queue/10 load/9 play/5 scaled entry
+refs. Four additional encoded queue refs have unclassified caller boundaries;
+all address entry, with no encoded E8/E9 interior ref. Existing reviewed
+boundaries/origins remain unchanged. Same-image damage1170/auxiliary202 guards
+pass1372/all34. Run4496/all333 and updater3836/all72 native receipts reproduce
+without new parent credit. Current18-input context and the two stale source pins
+in prior GUI18/Player17 epochs are recorded in the handoff. See the
+[complete audio proof](evidence/front-end-music-exact-20261030/README.md).
+Authored exact increases381 to101913/275817 across499 owners; codegen170017/1376.

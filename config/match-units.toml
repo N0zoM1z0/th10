@@ -27587,3 +27587,200 @@ linkages = [
   { offset = 0x1B9, type = "DIR32", symbol = "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", target = 0x00491C30 },
   { offset = 0x1CC, type = "DIR32", symbol = "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", target = 0x00491C30 },
 ]
+
+[units.sound-player-queue-command]
+source = "src/Enemy.cpp"
+support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GuiMessageLeaves.cpp"]
+support_profiles = { "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/RandomMath.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmCreate.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmId.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/Player.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/PlayerCollision.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/EnemyEclDispatcher.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/VmIdInterrupt.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ItemManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Main.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Gui.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Hint.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/FrontEndMusic"
+pdb_source = "src/Sound.cpp"
+functions = ["SoundPlayerView::QueueCommand"]
+symbol = "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z"
+target_address = 0x43e460
+size = 104
+linkages = []
+
+[units.front-end-load-music]
+source = "src/Enemy.cpp"
+support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GuiMessageLeaves.cpp"]
+support_profiles = { "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/RandomMath.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmCreate.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmId.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/Player.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/PlayerCollision.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/EnemyEclDispatcher.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/VmIdInterrupt.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ItemManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Main.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Gui.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Hint.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/FrontEndMusic"
+pdb_source = "src/FrontEnd.cpp"
+functions = ["FrontEndLoadMusic"]
+symbol = "?FrontEndLoadMusic@@YGHHPBD@Z"
+target_address = 0x420a90
+size = 120
+
+[[units.front-end-load-music.linkages]]
+offset = 0x7
+type = "DIR32"
+symbol = "___security_cookie"
+target = 0x473660
+
+[[units.front-end-load-music.linkages]]
+offset = 0x31
+type = "REL32"
+symbol = "_strrchr"
+target = 0x452930
+
+[[units.front-end-load-music.linkages]]
+offset = 0x53
+type = "DIR32"
+symbol = "?g_MainSoundOwner@@3PAEA"
+target = 0x492590
+
+[[units.front-end-load-music.linkages]]
+offset = 0x58
+type = "REL32"
+symbol = "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z"
+target = 0x43e460
+
+[[units.front-end-load-music.linkages]]
+offset = 0x6b
+type = "REL32"
+symbol = "@__security_check_cookie@4"
+target = 0x458ea5
+
+[units.front-end-play-music]
+source = "src/Enemy.cpp"
+support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GuiMessageLeaves.cpp"]
+support_profiles = { "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/RandomMath.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmCreate.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmId.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/Player.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/PlayerCollision.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/EnemyEclDispatcher.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/VmIdInterrupt.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ItemManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Main.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Gui.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Hint.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/FrontEndMusic"
+pdb_source = "src/FrontEnd.cpp"
+functions = ["FrontEndPlayMusic"]
+symbol = "?FrontEndPlayMusic@@YGHHH@Z"
+target_address = 0x420b10
+size = 73
+
+[[units.front-end-play-music.linkages]]
+offset = 0x2
+type = "DIR32"
+symbol = "?g_FrontEndSupervisorFlags@@3IA"
+target = 0x491d78
+
+[[units.front-end-play-music.linkages]]
+offset = 0xe
+type = "DIR32"
+symbol = "??_C@_05JLNEMJLN@dummy?$AA@"
+target = 0x46df98
+
+[[units.front-end-play-music.linkages]]
+offset = 0x13
+type = "DIR32"
+symbol = "?g_MainSoundOwner@@3PAEA"
+target = 0x492590
+
+[[units.front-end-play-music.linkages]]
+offset = 0x18
+type = "REL32"
+symbol = "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z"
+target = 0x43e460
+
+[[units.front-end-play-music.linkages]]
+offset = 0x24
+type = "DIR32"
+symbol = "??_C@_05JLNEMJLN@dummy?$AA@"
+target = 0x46df98
+
+[[units.front-end-play-music.linkages]]
+offset = 0x29
+type = "DIR32"
+symbol = "?g_MainSoundOwner@@3PAEA"
+target = 0x492590
+
+[[units.front-end-play-music.linkages]]
+offset = 0x2e
+type = "REL32"
+symbol = "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z"
+target = 0x43e460
+
+[[units.front-end-play-music.linkages]]
+offset = 0x34
+type = "DIR32"
+symbol = "?g_FrontEndProfileData@@3PAEA"
+target = 0x47783c
+
+[units.front-end-queue-scaled-sound]
+source = "src/Enemy.cpp"
+support_sources = ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GuiMessageLeaves.cpp"]
+support_profiles = { "src/AnmManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/RandomMath.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmCreate.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmVmId.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"], "src/Player.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/PlayerCollision.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/EnemyEclDispatcher.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/VmIdInterrupt.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"], "src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"], "src/ItemManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Main.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Sound.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Gui.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"], "src/Hint.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+artifact_kind = "linked-pe"
+output_dir = "build/match-linked/FrontEndMusic"
+pdb_source = "src/FrontEnd.cpp"
+functions = ["GameQueueScaledSoundCommand"]
+symbol = "?GameQueueScaledSoundCommand@@YGHM@Z"
+target_address = 0x420c30
+size = 84
+
+[[units.front-end-queue-scaled-sound.linkages]]
+offset = 0x2
+type = "DIR32"
+symbol = "__real@00000000"
+target = 0x470b04
+
+[[units.front-end-queue-scaled-sound.linkages]]
+offset = 0x8
+type = "DIR32"
+symbol = "?g_AnmGameSpeed@@3MA"
+target = 0x476f78
+
+[[units.front-end-queue-scaled-sound.linkages]]
+offset = 0x1d
+type = "DIR32"
+symbol = "?g_AnmGameSpeed@@3MA"
+target = 0x476f78
+
+[[units.front-end-queue-scaled-sound.linkages]]
+offset = 0x23
+type = "DIR32"
+symbol = "__real@3f800000"
+target = 0x470afc
+
+[[units.front-end-queue-scaled-sound.linkages]]
+offset = 0x34
+type = "DIR32"
+symbol = "?g_AnmGameSpeed@@3MA"
+target = 0x476f78
+
+[[units.front-end-queue-scaled-sound.linkages]]
+offset = 0x39
+type = "REL32"
+symbol = "__ftol2"
+target = 0x463b2c
+
+[[units.front-end-queue-scaled-sound.linkages]]
+offset = 0x41
+type = "DIR32"
+symbol = "??_C@_00CNPNBAHC@?$AA@"
+target = 0x46d275
+
+[[units.front-end-queue-scaled-sound.linkages]]
+offset = 0x46
+type = "DIR32"
+symbol = "?g_MainSoundOwner@@3PAEA"
+target = 0x492590
+
+[[units.front-end-queue-scaled-sound.linkages]]
+offset = 0x4b
+type = "REL32"
+symbol = "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z"
+target = 0x43e460

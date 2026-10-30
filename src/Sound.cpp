@@ -1001,18 +1001,17 @@ DWORD WINAPI SoundPlayerView::BgmPlayerThread(LPVOID)
 // Original unbounded copy and silent full-queue drop are intentionally retained.
 void SoundPlayerView::QueueCommand(const char *path, int opcode, int argument)
 {
-    int index = 0;
-    while (commandQueue[index].opcode != 0)
+    for (int index = 0; index < 31; ++index)
     {
-        ++index;
-        if (index >= 31)
+        if (commandQueue[index].opcode == 0)
+        {
+            commandQueue[index].opcode = opcode;
+            commandQueue[index].argument = argument;
+            strcpy(commandQueue[index].path, path);
+            commandQueue[index].step = 0;
             return;
+        }
     }
-    SoundPlayerCommand *command = &commandQueue[index];
-    command->opcode = opcode;
-    command->argument = argument;
-    strcpy(command->path, path);
-    command->step = 0;
 }
 
 // Global target owner is 0x00492590; its storage remains extern-only.

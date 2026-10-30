@@ -2,6 +2,38 @@
 
 ## Current checkpoint
 
+Four complete audio command owners now close381/all22 fields/all9 fixed local
+destinations: QueueCommand43E460/104, LoadMusic420A90/120, PlayMusic420B10/73 and
+ScaledSound420C30/84. Two independent canonical18-input /GL colds rebuild every
+input without reuse and pass all four. Queue is raw-equal, actual EAX owner/EDX
+path plus two stack words/RET8. Load/play use stack pairs/RET8; scaled stack
+float/RET4. Source-boundary instruction refs plus four unclassified encoded queue
+entry refs have no encoded interior transfer. No new boundary/origin credit.
+See the [complete audio proof](evidence/front-end-music-exact-20261030/README.md).
+
+Queue's bounded0..30 index loop and direct indexed stores recover its target
+base offsets and natural loop alignment, versus90 at entry. Scaled's old78-byte
+body rejected unordered speed via JP. Explicit zero/ordered>1 bypasses plus
+branch-local quotient recover target JE and both input-load sites, complete84.
+Load120/play73 were unchanged structural matches and are now fully bound to the
+actual exact104-byte callee. No new asm, annotation, alias, padding or flags.
+
+Same-image explicit damage1170/auxiliary202 checks pass1372/all34; existing
+Run4496/all333 and updater3836/all72 receipts reproduce with their prior NE
+states. Only the four new canonical units are cold-replayed, twice. Current
+18-input context is
+`.analysis/gpt-6.1-sol/front-end-music-context-20261030/cold-b-context.json`.
+Earlier GUI18 and Player17 contexts below have historical FrontEnd.cpp/Sound.cpp
+pins. Before17-input work, relink its actual declared graph with those changed
+sources; do not substitute the18-input epoch. Smaller ANM/drawing epochs are
+unchanged. No full historical cohort or host failure/lifecycle/mutation tests.
+
+Authored exact is101913/275817 across499 owners; codegen170017/1376. Source
+mappings1207/authored689/backlog190. Source/boundary/origin totals unchanged.
+Original helper/type/TU/data ownership and product/runtime/portability remain
+open. The new precision/status evidence is exact pinned codegen, not a portable
+numeric or executable-runtime claim. Superseded two source controls are parked.
+
 Complete GuiMessageVmView::Run415E90..41700F remains NONEXACT, now4496/4480
 in a genuine18-input context. Fresh target review records4306 code/1146
 instructions,2 alignment bytes, four24/7/7/5 tables,121 local branches and150

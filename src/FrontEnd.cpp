@@ -3577,15 +3577,18 @@ int __stdcall FrontEndPlayMusic(int slot, int trackIndex)
     return 0;
 }
 
-// Target 0x00420C30..0x00420C83. Ordinary-domain source hypothesis only:
-// portable C++ does not establish x87 precision, unordered or overflow behavior
-// of runtime 0x463B2C. Even finite in-range quotients can round differently.
-// The double intermediate avoids a premature float round, not all x87 gaps.
+// Target 0x00420C30..0x00420C83. Zero and ordered speed > 1 bypass
+// scaling; unordered speed reaches division. Compute the selected double value
+// in its branch, retaining the quotient until the integer conversion.
 int __stdcall GameQueueScaledSoundCommand(float magnitude)
 {
-    double value = magnitude;
-    if (g_AnmGameSpeed != 0.0f && g_AnmGameSpeed <= 1.0f)
-        value /= g_AnmGameSpeed;
+    double value;
+    if (g_AnmGameSpeed == 0.0f)
+        value = magnitude;
+    else if (g_AnmGameSpeed > 1.0f)
+        value = magnitude;
+    else
+        value = static_cast<double>(magnitude) / g_AnmGameSpeed;
     FrontEndQueueSoundCommand("", 5, static_cast<int>(value));
     return 0;
 }
