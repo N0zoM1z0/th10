@@ -4,27 +4,58 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint adds582 exact authored bytes across Replay stage
-restoration356, callee-pop Create185 and dummy command41. Existing timer58 keeps
-its credit after narrow source consolidation and symbolic scale binding. The
-complete startup remains1023/1009 nonexact.
+selected lane. This checkpoint makes the complete1009-byte GameManager startup
+exact: all102 fields,40 fixed local destinations,30 direct calls and both RET4
+exits. A shared final creation result recovers control flow; an observed byte
+conversion and score comparison recover the last three opcode bytes.
 Compiler profiles and the comparator remain unchanged. No experiment is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 106,091 / 275,863 |
-| Authored exact owners | 516 |
-| Total canonical exact owners / codegen bytes | 1,394 / 174,205 |
-| Source mappings / authored mappings / authored exact backlog | 1,220 / 702 / 186 |
+| Reviewed authored owned bytes exact | 107,100 / 275,863 |
+| Authored exact owners | 517 |
+| Total canonical exact owners / codegen bytes | 1,395 / 175,214 |
+| Source mappings / authored mappings / authored exact backlog | 1,220 / 702 / 185 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: complete startup dependencies
+## Latest source checkpoint: complete GameManager startup
+
+[The complete proof](evidence/game-startup-initialize-20261031/README.md) adds
+1009 authored exact bytes for GameManagerInitialize at 417870..417C60. Complete
+target/native inventories agree on 102 fields, 40 fixed internal destinations,
+30 direct calls and two RET4 exits. The final static MarkGameChains callee
+passes its entire 28-byte body and qualified MAP/PDB producer selector, with
+no additional callee credit.
+
+The prior 1023-byte candidate tested the final factory separately in both modes.
+Target 42B660 and restored StageCreate converge on one result check at 417B1C.
+A meaningful creationResult local recovers the full 1009-byte layout and call
+order, leaving 598/601 non-field bytes equal. An unsigned-byte conversion for
+the rank flag and the observed score-comparison operand order recover the last
+three bytes. Previous dependency/layout repairs remain necessary source facts.
+
+Two independent zero-reuse 32-input canonical colds reproduce the entire owner.
+Both frozen images pass 39 existing contracts, 5123 bytes and 203 fields; the
+same five separate Chain/GUI/laser/Stage comparisons still reject. The first
+scoped run also replays old dummy41/update7/draw31/mark28 recipes; the second
+selects only the new parent. No other recipe/profile, comparator, mapping,
+origin or boundary changes. The proof retains 79 source/header pins and full
+inventories. All jobs are terminal. Private campaign: startup-controlflow-20261031.
+The preceding replay-restore freezes predate these source changes; check pins
+before reuse.
+
+Concrete next large-owner leads remain GameManagerUpdate1538/1544 and cleanup
+1107/1105 in the actual 32-input graph, and ReplayInitialize1316/1344. Their prior
+near matches grant no credit. Startup exactness does not establish original
+class/TU/data names, product closure, runtime behavior or portability.
+
+## Previous source checkpoint: complete startup dependencies
 
 [The complete proof](evidence/game-startup-restore-20261031/README.md) adds
 GameRestoreReplayState42A6A0356/all27, ReplayManager::Create429610185/all12 and

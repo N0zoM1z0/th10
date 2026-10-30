@@ -388,6 +388,7 @@ extern GameStartupStateView g_GameStartupState;
 int __stdcall GameManagerInitialize(GameManager *manager)
 {
     th10::ChainElem *element;
+    void *creationResult;
     manager->m_Flags |= 4;
     while (reinterpret_cast<int *>(g_AnmManagerPtr)[0] >= 0 ||
         reinterpret_cast<int *>(g_AnmManagerPtr)[1] >= 0)
@@ -436,9 +437,9 @@ int __stdcall GameManagerInitialize(GameManager *manager)
                 ++*sessionStarts;
         }
         g_GameStartupState.rankResetCounter = 0;
-        g_GameStartupState.score.rank = (g_GameStartupState.runtimeFlags & 8) != 0 ? -512 : 0;
+        g_GameStartupState.score.rank = (static_cast<unsigned char>(g_GameStartupState.runtimeFlags) & 8) != 0 ? -512 : 0;
     }
-    else if (g_GameStartupState.score.unknown00 < g_GameStartupState.score.score)
+    else if (g_GameStartupState.score.score > g_GameStartupState.score.unknown00)
         g_GameStartupState.score.unknown00 = g_GameStartupState.score.score;
 
     g_GameStartupState.score.unknown10 = 9;
@@ -466,16 +467,18 @@ int __stdcall GameManagerInitialize(GameManager *manager)
             ScriptViewerCreateGui() == NULL || PlayerCreate() == NULL ||
             GameCreateProjectilePool() == NULL || GameCreateItemManager() == NULL ||
             GameCreateOwner41C290() == NULL || GameCreateController() == NULL ||
-            CreateHintOwner() == NULL || GameCreateOwner42B660() == NULL)
+            CreateHintOwner() == NULL)
             goto failed;
+        creationResult = GameCreateOwner42B660();
     }
     else
     {
         GameRestoreReplayState(g_ReplayManager);
         g_GuiView->LoadData();
-        if (StageCreate(g_GameStageUpdate->menuPath, 0) == NULL)
-            goto failed;
+        creationResult = StageCreate(g_GameStageUpdate->menuPath, 0);
     }
+    if (creationResult == NULL)
+        goto failed;
     if ((g_GameStartupState.runtimeFlags & 9) == 0)
     {
         if (EnemyManagerCreate(g_GameStageUpdate->enemyPath) == NULL)

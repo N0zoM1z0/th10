@@ -8504,3 +8504,29 @@ block order, schedules and fixed destinations differ. No partial-owner credit.
 Counts become106091/275863 across516 authored exact owners, canonical174205/1394,
 mappings1220/authored702/backlog186. Existing extents/origins/denominator and later
 phases remain separate. See the [complete proof](evidence/game-startup-restore-20261031/README.md).
+
+
+## 2026-10-31 Complete GameManager initialization
+
+GameManagerInitialize at 417870..417C60 is complete and exact: 1009 bytes and all
+102 fields. Independent inventories agree on 40 fixed internal destinations,
+30 direct calls and both RET4 exits. Actual callbacks and Main/startup-state
+bases/addends are bound. The final static MarkGameChains call qualifies its
+real producer object and raw-equal complete 28-byte body, with no extra credit.
+
+Target 42B660 and restoration-path StageCreate converge on the result check at
+417B1C. A meaningful creationResult local removes the prior extra branch and
+restores complete failure-block/call order, reducing 1023 to 1009 bytes. That
+leaves 598/601 non-field bytes equal. An unsigned-byte conversion for the rank
+flag at 4179CC and current-score versus maximum operand order at 4179EE recover
+the last three opcode bytes. No forced register, branch hint or padding.
+
+Two independent zero-reuse 32-input canonical colds reproduce the entire owner.
+39 same-image existing contracts pass, 5123 bytes and 203 fields in each image.
+Both Chain129/131, GUI68/136, laser field positions and Stage460/499 explicitly
+reject in these separate contexts. The first scoped run also cold-replays old
+dummy41/update7/draw31/mark28 recipes. Comparator/profiles/existing recipes are
+unchanged. No new mappings, origins, boundaries, denominator or later-phase
+claims. Authored exact becomes 107100/275863 across 517 owners; canonical codegen
+175214/1395, mappings1220/authored702/backlog185. See the
+[complete startup proof](evidence/game-startup-initialize-20261031/README.md).
