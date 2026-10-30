@@ -1,0 +1,8791 @@
+{
+  "date": "2026-10-31",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_exact_bytes": 3836,
+  "new_authored_exact_owners": 1,
+  "new_codegen_bytes": 3836,
+  "new_source_mappings": 0,
+  "boundary_changes": 0,
+  "origin_changes": 0,
+  "denominator_changes": 0,
+  "contract": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FrontEnd.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ItemManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Main.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Sound.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Gui.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Hint.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+    "artifact_kind": "linked-pe",
+    "output_dir": "build/match-linked/PlayerCalculateDamage",
+    "pdb_source": "src/Gui.cpp",
+    "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+    "target_address": 4278528,
+    "size": 3836,
+    "functions": [
+      "GuiView::UpdateStageElements"
+    ],
+    "linkages": [
+      {
+        "offset": 36,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiSupervisorFlags@@3IA",
+        "target": 4792308
+      },
+      {
+        "offset": 56,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiGlobalMode@@3HA",
+        "target": 4792248
+      },
+      {
+        "offset": 82,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "target": 4451888
+      },
+      {
+        "offset": 114,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "target": 4451888
+      },
+      {
+        "offset": 146,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "target": 4451888
+      },
+      {
+        "offset": 168,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "target": 4683828
+      },
+      {
+        "offset": 190,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@43d00000",
+        "target": 4656092
+      },
+      {
+        "offset": 213,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@c060000000000000",
+        "target": 4656400
+      },
+      {
+        "offset": 276,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@43c80000",
+        "target": 4656392
+      },
+      {
+        "offset": 295,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@c05c000000000000",
+        "target": 4656384
+      },
+      {
+        "offset": 354,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiCounter4C4C@@3HA",
+        "target": 4672588
+      },
+      {
+        "offset": 371,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "target": 4451888
+      },
+      {
+        "offset": 409,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+        "target": 4449696
+      },
+      {
+        "offset": 434,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "target": 4451888
+      },
+      {
+        "offset": 459,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "target": 4451888
+      },
+      {
+        "offset": 464,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+        "target": 4683524
+      },
+      {
+        "offset": 554,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3ccccccd",
+        "target": 4656376
+      },
+      {
+        "offset": 604,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "target": 4683828
+      },
+      {
+        "offset": 610,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": 4791312
+      },
+      {
+        "offset": 628,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@42a00000",
+        "target": 4656168
+      },
+      {
+        "offset": 647,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@00000000",
+        "target": 4655876
+      },
+      {
+        "offset": 944,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@42800000",
+        "target": 4656072
+      },
+      {
+        "offset": 967,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@c2800000",
+        "target": 4655964
+      },
+      {
+        "offset": 1278,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiStage@@3HA",
+        "target": 4672636
+      },
+      {
+        "offset": 1296,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "target": 4278528,
+        "addend": 3808
+      },
+      {
+        "offset": 1302,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiMessageState@@3HA",
+        "target": 4672644
+      },
+      {
+        "offset": 1318,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiMessageState@@3HA",
+        "target": 4672644
+      },
+      {
+        "offset": 1338,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiMessageState@@3HA",
+        "target": 4672644
+      },
+      {
+        "offset": 1358,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiMessageState@@3HA",
+        "target": 4672644
+      },
+      {
+        "offset": 1395,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiMessageState@@3HA",
+        "target": 4672644
+      },
+      {
+        "offset": 1426,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+        "target": 4495696
+      },
+      {
+        "offset": 1462,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+        "target": 4495472
+      },
+      {
+        "offset": 1468,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": 4791312
+      },
+      {
+        "offset": 1632,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+        "target": 4495696
+      },
+      {
+        "offset": 1663,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+        "target": 4495472
+      },
+      {
+        "offset": 1669,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": 4791312
+      },
+      {
+        "offset": 1944,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": 4791312
+      },
+      {
+        "offset": 2124,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Run@GuiMessageVmView@@SGHPAU1@@Z",
+        "target": 4284048
+      },
+      {
+        "offset": 2145,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3f7d70a4",
+        "target": 4655976
+      },
+      {
+        "offset": 2160,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3f8147ae",
+        "target": 4655972
+      },
+      {
+        "offset": 2177,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3f800000",
+        "target": 4655868
+      },
+      {
+        "offset": 2201,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "__ftol2",
+        "target": 4602668
+      },
+      {
+        "offset": 2234,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": 4791312
+      },
+      {
+        "offset": 2953,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "??3@YAXPAX@Z",
+        "target": 4531361
+      },
+      {
+        "offset": 2972,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+        "target": 4683524
+      },
+      {
+        "offset": 3069,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_MainSoundOwner@@3PAEA",
+        "target": 4793744
+      },
+      {
+        "offset": 3074,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+        "target": 4447376
+      },
+      {
+        "offset": 3120,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_MainSoundOwner@@3PAEA",
+        "target": 4793744
+      },
+      {
+        "offset": 3125,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+        "target": 4447376
+      },
+      {
+        "offset": 3202,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+        "target": 4449696
+      },
+      {
+        "offset": 3236,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+        "target": 4449696
+      },
+      {
+        "offset": 3248,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+        "target": 4683524
+      },
+      {
+        "offset": 3303,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiGameOwner@@3PAUGuiGameOwnerView@@A",
+        "target": 4683508
+      },
+      {
+        "offset": 3542,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "target": 4451888
+      },
+      {
+        "offset": 3554,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@43600000",
+        "target": 4655948
+      },
+      {
+        "offset": 3560,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "target": 4683828
+      },
+      {
+        "offset": 3596,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@4050000000000000",
+        "target": 4656368
+      },
+      {
+        "offset": 3620,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@c03f0000",
+        "target": 4656360
+      },
+      {
+        "offset": 3625,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "__ftol2",
+        "target": 4602668
+      },
+      {
+        "offset": 3647,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@c3400000",
+        "target": 4655936
+      },
+      {
+        "offset": 3666,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@43400000",
+        "target": 4655932
+      },
+      {
+        "offset": 3706,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3f7d70a4",
+        "target": 4655976
+      },
+      {
+        "offset": 3724,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3f8147ae",
+        "target": 4655972
+      },
+      {
+        "offset": 3744,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3f800000",
+        "target": 4655868
+      },
+      {
+        "offset": 3785,
+        "type": "REL32",
+        "width": 4,
+        "symbol": "__ftol2",
+        "target": 4602668
+      },
+      {
+        "offset": 3808,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "target": 4278528,
+        "addend": 1300
+      },
+      {
+        "offset": 3812,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "target": 4278528,
+        "addend": 1316
+      },
+      {
+        "offset": 3816,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "target": 4278528,
+        "addend": 1336
+      },
+      {
+        "offset": 3820,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "target": 4278528,
+        "addend": 1356
+      },
+      {
+        "offset": 3824,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "target": 4278528,
+        "addend": 1379
+      },
+      {
+        "offset": 3828,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "target": 4278528,
+        "addend": 1386
+      },
+      {
+        "offset": 3832,
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "target": 4278528,
+        "addend": 1393
+      }
+    ]
+  },
+  "pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "fbab9120022c4cdcee384d0781dd2559960333f497bc6e0ab3a37c004c77012d",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameScoreState.hpp": "a07274bb81d0a34795d3325fd43e65c14ce118e7204dd7b0bb922822979f975b",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "be8a6bb72a87dfc3a9ece44dce1fd6b95af13c81b8fa1551d972a047eec54836",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "f3e9b10478ae60504441e60b272cd9f17284554ba59307373f1bb8523fe801f2",
+    "src/ItemManager.cpp": "c7eb31442b087cb6062c9b62e7d9a1e48e6e442f111fc8238603680f4cbacffa",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/Player.cpp": "0ea3456dfb07400146775dedc6f43091e10c07edd07194cb4311306c02e4a89f",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayManager.hpp": "530f31cae0e6766074864bd7504f278293df7e926a7faa931a038e6bdb91e256",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "gui_source_before_sha256": "b025c95cc758e593fb2a762c38b8a5143af11a2963339f4b840d1d37486a7919",
+  "gui_source_after_sha256": "be8a6bb72a87dfc3a9ece44dce1fd6b95af13c81b8fa1551d972a047eec54836",
+  "shared_timer_header_unchanged": true,
+  "target_base_relocation_directory": [
+    0,
+    0
+  ],
+  "target": {
+    "address": 4278528,
+    "size": 3836,
+    "sha256": "8010a918958dce15d47c90e86c842b22854c1be40d608fbeaf011d5597f54768",
+    "target_bound_sha256": "8010a918958dce15d47c90e86c842b22854c1be40d608fbeaf011d5597f54768",
+    "instructions": 1089,
+    "fields": [
+      [
+        36,
+        "DIR32",
+        4792308,
+        4792308
+      ],
+      [
+        56,
+        "DIR32",
+        4792248,
+        4792248
+      ],
+      [
+        82,
+        "REL32",
+        4451888,
+        4451888
+      ],
+      [
+        114,
+        "REL32",
+        4451888,
+        4451888
+      ],
+      [
+        146,
+        "REL32",
+        4451888,
+        4451888
+      ],
+      [
+        168,
+        "DIR32",
+        4683828,
+        4683828
+      ],
+      [
+        190,
+        "DIR32",
+        4656092,
+        4656092
+      ],
+      [
+        213,
+        "DIR32",
+        4656400,
+        4656400
+      ],
+      [
+        276,
+        "DIR32",
+        4656392,
+        4656392
+      ],
+      [
+        295,
+        "DIR32",
+        4656384,
+        4656384
+      ],
+      [
+        354,
+        "DIR32",
+        4672588,
+        4672588
+      ],
+      [
+        371,
+        "REL32",
+        4451888,
+        4451888
+      ],
+      [
+        409,
+        "REL32",
+        4449696,
+        4449696
+      ],
+      [
+        434,
+        "REL32",
+        4451888,
+        4451888
+      ],
+      [
+        459,
+        "REL32",
+        4451888,
+        4451888
+      ],
+      [
+        464,
+        "DIR32",
+        4683524,
+        4683524
+      ],
+      [
+        554,
+        "DIR32",
+        4656376,
+        4656376
+      ],
+      [
+        604,
+        "DIR32",
+        4683828,
+        4683828
+      ],
+      [
+        610,
+        "DIR32",
+        4791312,
+        4791312
+      ],
+      [
+        628,
+        "DIR32",
+        4656168,
+        4656168
+      ],
+      [
+        647,
+        "DIR32",
+        4655876,
+        4655876
+      ],
+      [
+        944,
+        "DIR32",
+        4656072,
+        4656072
+      ],
+      [
+        967,
+        "DIR32",
+        4655964,
+        4655964
+      ],
+      [
+        1278,
+        "DIR32",
+        4672636,
+        4672636
+      ],
+      [
+        1296,
+        "DIR32",
+        4282336,
+        4282336
+      ],
+      [
+        1302,
+        "DIR32",
+        4672644,
+        4672644
+      ],
+      [
+        1318,
+        "DIR32",
+        4672644,
+        4672644
+      ],
+      [
+        1338,
+        "DIR32",
+        4672644,
+        4672644
+      ],
+      [
+        1358,
+        "DIR32",
+        4672644,
+        4672644
+      ],
+      [
+        1395,
+        "DIR32",
+        4672644,
+        4672644
+      ],
+      [
+        1426,
+        "REL32",
+        4495696,
+        4495696
+      ],
+      [
+        1462,
+        "REL32",
+        4495472,
+        4495472
+      ],
+      [
+        1468,
+        "DIR32",
+        4791312,
+        4791312
+      ],
+      [
+        1632,
+        "REL32",
+        4495696,
+        4495696
+      ],
+      [
+        1663,
+        "REL32",
+        4495472,
+        4495472
+      ],
+      [
+        1669,
+        "DIR32",
+        4791312,
+        4791312
+      ],
+      [
+        1944,
+        "DIR32",
+        4791312,
+        4791312
+      ],
+      [
+        2124,
+        "REL32",
+        4284048,
+        4284048
+      ],
+      [
+        2145,
+        "DIR32",
+        4655976,
+        4655976
+      ],
+      [
+        2160,
+        "DIR32",
+        4655972,
+        4655972
+      ],
+      [
+        2177,
+        "DIR32",
+        4655868,
+        4655868
+      ],
+      [
+        2201,
+        "REL32",
+        4602668,
+        4602668
+      ],
+      [
+        2234,
+        "DIR32",
+        4791312,
+        4791312
+      ],
+      [
+        2953,
+        "REL32",
+        4531361,
+        4531361
+      ],
+      [
+        2972,
+        "DIR32",
+        4683524,
+        4683524
+      ],
+      [
+        3069,
+        "DIR32",
+        4793744,
+        4793744
+      ],
+      [
+        3074,
+        "REL32",
+        4447376,
+        4447376
+      ],
+      [
+        3120,
+        "DIR32",
+        4793744,
+        4793744
+      ],
+      [
+        3125,
+        "REL32",
+        4447376,
+        4447376
+      ],
+      [
+        3202,
+        "REL32",
+        4449696,
+        4449696
+      ],
+      [
+        3236,
+        "REL32",
+        4449696,
+        4449696
+      ],
+      [
+        3248,
+        "DIR32",
+        4683524,
+        4683524
+      ],
+      [
+        3303,
+        "DIR32",
+        4683508,
+        4683508
+      ],
+      [
+        3542,
+        "REL32",
+        4451888,
+        4451888
+      ],
+      [
+        3554,
+        "DIR32",
+        4655948,
+        4655948
+      ],
+      [
+        3560,
+        "DIR32",
+        4683828,
+        4683828
+      ],
+      [
+        3596,
+        "DIR32",
+        4656368,
+        4656368
+      ],
+      [
+        3620,
+        "DIR32",
+        4656360,
+        4656360
+      ],
+      [
+        3625,
+        "REL32",
+        4602668,
+        4602668
+      ],
+      [
+        3647,
+        "DIR32",
+        4655936,
+        4655936
+      ],
+      [
+        3666,
+        "DIR32",
+        4655932,
+        4655932
+      ],
+      [
+        3706,
+        "DIR32",
+        4655976,
+        4655976
+      ],
+      [
+        3724,
+        "DIR32",
+        4655972,
+        4655972
+      ],
+      [
+        3744,
+        "DIR32",
+        4655868,
+        4655868
+      ],
+      [
+        3785,
+        "REL32",
+        4602668,
+        4602668
+      ],
+      [
+        3808,
+        "DIR32",
+        4279828,
+        4279828
+      ],
+      [
+        3812,
+        "DIR32",
+        4279844,
+        4279844
+      ],
+      [
+        3816,
+        "DIR32",
+        4279864,
+        4279864
+      ],
+      [
+        3820,
+        "DIR32",
+        4279884,
+        4279884
+      ],
+      [
+        3824,
+        "DIR32",
+        4279907,
+        4279907
+      ],
+      [
+        3828,
+        "DIR32",
+        4279914,
+        4279914
+      ],
+      [
+        3832,
+        "DIR32",
+        4279921,
+        4279921
+      ]
+    ],
+    "fixed_locals": [
+      [
+        13,
+        60,
+        "je"
+      ],
+      [
+        33,
+        60,
+        "jl"
+      ],
+      [
+        93,
+        80,
+        "jne"
+      ],
+      [
+        125,
+        112,
+        "jne"
+      ],
+      [
+        157,
+        144,
+        "jne"
+      ],
+      [
+        172,
+        264,
+        "jne"
+      ],
+      [
+        176,
+        348,
+        "je"
+      ],
+      [
+        199,
+        348,
+        "jne"
+      ],
+      [
+        222,
+        348,
+        "jp"
+      ],
+      [
+        235,
+        240,
+        "jmp"
+      ],
+      [
+        251,
+        240,
+        "jne"
+      ],
+      [
+        262,
+        342,
+        "jmp"
+      ],
+      [
+        266,
+        348,
+        "je"
+      ],
+      [
+        285,
+        306,
+        "jnp"
+      ],
+      [
+        304,
+        348,
+        "jne"
+      ],
+      [
+        331,
+        320,
+        "jne"
+      ],
+      [
+        445,
+        386,
+        "jne"
+      ],
+      [
+        470,
+        1932,
+        "je"
+      ],
+      [
+        481,
+        1932,
+        "je"
+      ],
+      [
+        495,
+        1932,
+        "jne"
+      ],
+      [
+        544,
+        564,
+        "jne"
+      ],
+      [
+        581,
+        595,
+        "jne"
+      ],
+      [
+        620,
+        942,
+        "je"
+      ],
+      [
+        637,
+        662,
+        "je"
+      ],
+      [
+        656,
+        1263,
+        "jne"
+      ],
+      [
+        672,
+        798,
+        "jle"
+      ],
+      [
+        684,
+        784,
+        "je"
+      ],
+      [
+        694,
+        710,
+        "je"
+      ],
+      [
+        701,
+        736,
+        "je"
+      ],
+      [
+        708,
+        696,
+        "jne"
+      ],
+      [
+        718,
+        784,
+        "je"
+      ],
+      [
+        725,
+        736,
+        "je"
+      ],
+      [
+        732,
+        720,
+        "jne"
+      ],
+      [
+        734,
+        784,
+        "jmp"
+      ],
+      [
+        740,
+        784,
+        "je"
+      ],
+      [
+        759,
+        784,
+        "jne"
+      ],
+      [
+        766,
+        784,
+        "je"
+      ],
+      [
+        782,
+        768,
+        "jne"
+      ],
+      [
+        796,
+        680,
+        "jl"
+      ],
+      [
+        806,
+        928,
+        "je"
+      ],
+      [
+        816,
+        831,
+        "je"
+      ],
+      [
+        822,
+        875,
+        "je"
+      ],
+      [
+        829,
+        818,
+        "jne"
+      ],
+      [
+        839,
+        928,
+        "je"
+      ],
+      [
+        852,
+        875,
+        "je"
+      ],
+      [
+        859,
+        848,
+        "jne"
+      ],
+      [
+        870,
+        1257,
+        "jmp"
+      ],
+      [
+        879,
+        928,
+        "je"
+      ],
+      [
+        898,
+        928,
+        "jne"
+      ],
+      [
+        905,
+        928,
+        "je"
+      ],
+      [
+        907,
+        912,
+        "jmp"
+      ],
+      [
+        926,
+        912,
+        "jne"
+      ],
+      [
+        937,
+        1257,
+        "jmp"
+      ],
+      [
+        953,
+        1263,
+        "jp"
+      ],
+      [
+        976,
+        1263,
+        "jp"
+      ],
+      [
+        992,
+        1134,
+        "jle"
+      ],
+      [
+        1012,
+        1120,
+        "je"
+      ],
+      [
+        1022,
+        1038,
+        "je"
+      ],
+      [
+        1029,
+        1064,
+        "je"
+      ],
+      [
+        1036,
+        1024,
+        "jne"
+      ],
+      [
+        1046,
+        1120,
+        "je"
+      ],
+      [
+        1053,
+        1064,
+        "je"
+      ],
+      [
+        1060,
+        1048,
+        "jne"
+      ],
+      [
+        1062,
+        1120,
+        "jmp"
+      ],
+      [
+        1068,
+        1120,
+        "je"
+      ],
+      [
+        1087,
+        1120,
+        "jne"
+      ],
+      [
+        1094,
+        1120,
+        "je"
+      ],
+      [
+        1096,
+        1104,
+        "jmp"
+      ],
+      [
+        1118,
+        1104,
+        "jne"
+      ],
+      [
+        1132,
+        1008,
+        "jl"
+      ],
+      [
+        1142,
+        1248,
+        "je"
+      ],
+      [
+        1152,
+        1167,
+        "je"
+      ],
+      [
+        1158,
+        1199,
+        "je"
+      ],
+      [
+        1165,
+        1154,
+        "jne"
+      ],
+      [
+        1175,
+        1248,
+        "je"
+      ],
+      [
+        1188,
+        1199,
+        "je"
+      ],
+      [
+        1195,
+        1184,
+        "jne"
+      ],
+      [
+        1197,
+        1248,
+        "jmp"
+      ],
+      [
+        1203,
+        1248,
+        "je"
+      ],
+      [
+        1222,
+        1248,
+        "jne"
+      ],
+      [
+        1229,
+        1248,
+        "je"
+      ],
+      [
+        1246,
+        1232,
+        "jne"
+      ],
+      [
+        1271,
+        1587,
+        "jne"
+      ],
+      [
+        1291,
+        1415,
+        "ja"
+      ],
+      [
+        1307,
+        1415,
+        "jl"
+      ],
+      [
+        1314,
+        1415,
+        "jmp"
+      ],
+      [
+        1323,
+        1587,
+        "jl"
+      ],
+      [
+        1334,
+        1415,
+        "jmp"
+      ],
+      [
+        1343,
+        1587,
+        "jl"
+      ],
+      [
+        1354,
+        1415,
+        "jmp"
+      ],
+      [
+        1377,
+        1415,
+        "jmp"
+      ],
+      [
+        1384,
+        1415,
+        "jmp"
+      ],
+      [
+        1391,
+        1415,
+        "jmp"
+      ],
+      [
+        1491,
+        1501,
+        "jne"
+      ],
+      [
+        1499,
+        1529,
+        "jmp"
+      ],
+      [
+        1512,
+        1523,
+        "je"
+      ],
+      [
+        1552,
+        1561,
+        "jne"
+      ],
+      [
+        1606,
+        1788,
+        "jge"
+      ],
+      [
+        1615,
+        1910,
+        "jne"
+      ],
+      [
+        1692,
+        1702,
+        "jne"
+      ],
+      [
+        1700,
+        1730,
+        "jmp"
+      ],
+      [
+        1713,
+        1724,
+        "je"
+      ],
+      [
+        1753,
+        1762,
+        "jne"
+      ],
+      [
+        1786,
+        1910,
+        "jmp"
+      ],
+      [
+        1792,
+        1910,
+        "je"
+      ],
+      [
+        1802,
+        1822,
+        "je"
+      ],
+      [
+        1813,
+        1848,
+        "je"
+      ],
+      [
+        1820,
+        1808,
+        "jne"
+      ],
+      [
+        1830,
+        1904,
+        "je"
+      ],
+      [
+        1837,
+        1848,
+        "je"
+      ],
+      [
+        1844,
+        1832,
+        "jne"
+      ],
+      [
+        1846,
+        1904,
+        "jmp"
+      ],
+      [
+        1852,
+        1904,
+        "je"
+      ],
+      [
+        1871,
+        1904,
+        "jne"
+      ],
+      [
+        1878,
+        1904,
+        "je"
+      ],
+      [
+        1880,
+        1888,
+        "jmp"
+      ],
+      [
+        1902,
+        1888,
+        "jne"
+      ],
+      [
+        1921,
+        1600,
+        "jb"
+      ],
+      [
+        1927,
+        2108,
+        "jmp"
+      ],
+      [
+        1940,
+        2058,
+        "je"
+      ],
+      [
+        1956,
+        1971,
+        "je"
+      ],
+      [
+        1962,
+        1999,
+        "je"
+      ],
+      [
+        1969,
+        1958,
+        "jne"
+      ],
+      [
+        1979,
+        2048,
+        "je"
+      ],
+      [
+        1988,
+        1999,
+        "je"
+      ],
+      [
+        1995,
+        1984,
+        "jne"
+      ],
+      [
+        1997,
+        2048,
+        "jmp"
+      ],
+      [
+        2003,
+        2048,
+        "je"
+      ],
+      [
+        2022,
+        2048,
+        "jne"
+      ],
+      [
+        2029,
+        2048,
+        "je"
+      ],
+      [
+        2046,
+        2032,
+        "jne"
+      ],
+      [
+        2116,
+        2970,
+        "je"
+      ],
+      [
+        2130,
+        2213,
+        "jne"
+      ],
+      [
+        2154,
+        2192,
+        "jne"
+      ],
+      [
+        2169,
+        2192,
+        "jp"
+      ],
+      [
+        2187,
+        2970,
+        "jmp"
+      ],
+      [
+        2208,
+        2970,
+        "jmp"
+      ],
+      [
+        2221,
+        2960,
+        "je"
+      ],
+      [
+        2243,
+        2351,
+        "je"
+      ],
+      [
+        2253,
+        2270,
+        "je"
+      ],
+      [
+        2261,
+        2296,
+        "je"
+      ],
+      [
+        2268,
+        2256,
+        "jne"
+      ],
+      [
+        2278,
+        2351,
+        "je"
+      ],
+      [
+        2285,
+        2296,
+        "je"
+      ],
+      [
+        2292,
+        2280,
+        "jne"
+      ],
+      [
+        2294,
+        2351,
+        "jmp"
+      ],
+      [
+        2300,
+        2351,
+        "je"
+      ],
+      [
+        2321,
+        2351,
+        "jne"
+      ],
+      [
+        2328,
+        2351,
+        "je"
+      ],
+      [
+        2349,
+        2336,
+        "jne"
+      ],
+      [
+        2363,
+        2465,
+        "je"
+      ],
+      [
+        2373,
+        2389,
+        "je"
+      ],
+      [
+        2380,
+        2416,
+        "je"
+      ],
+      [
+        2387,
+        2375,
+        "jne"
+      ],
+      [
+        2397,
+        2465,
+        "je"
+      ],
+      [
+        2405,
+        2416,
+        "je"
+      ],
+      [
+        2412,
+        2400,
+        "jne"
+      ],
+      [
+        2414,
+        2465,
+        "jmp"
+      ],
+      [
+        2420,
+        2465,
+        "je"
+      ],
+      [
+        2441,
+        2465,
+        "jne"
+      ],
+      [
+        2448,
+        2465,
+        "je"
+      ],
+      [
+        2463,
+        2450,
+        "jne"
+      ],
+      [
+        2477,
+        2591,
+        "je"
+      ],
+      [
+        2487,
+        2510,
+        "je"
+      ],
+      [
+        2501,
+        2536,
+        "je"
+      ],
+      [
+        2508,
+        2496,
+        "jne"
+      ],
+      [
+        2518,
+        2591,
+        "je"
+      ],
+      [
+        2525,
+        2536,
+        "je"
+      ],
+      [
+        2532,
+        2520,
+        "jne"
+      ],
+      [
+        2534,
+        2591,
+        "jmp"
+      ],
+      [
+        2540,
+        2591,
+        "je"
+      ],
+      [
+        2561,
+        2591,
+        "jne"
+      ],
+      [
+        2568,
+        2591,
+        "je"
+      ],
+      [
+        2589,
+        2576,
+        "jne"
+      ],
+      [
+        2603,
+        2705,
+        "je"
+      ],
+      [
+        2613,
+        2629,
+        "je"
+      ],
+      [
+        2620,
+        2656,
+        "je"
+      ],
+      [
+        2627,
+        2615,
+        "jne"
+      ],
+      [
+        2637,
+        2705,
+        "je"
+      ],
+      [
+        2645,
+        2656,
+        "je"
+      ],
+      [
+        2652,
+        2640,
+        "jne"
+      ],
+      [
+        2654,
+        2705,
+        "jmp"
+      ],
+      [
+        2660,
+        2705,
+        "je"
+      ],
+      [
+        2681,
+        2705,
+        "jne"
+      ],
+      [
+        2688,
+        2705,
+        "je"
+      ],
+      [
+        2703,
+        2690,
+        "jne"
+      ],
+      [
+        2717,
+        2831,
+        "je"
+      ],
+      [
+        2727,
+        2750,
+        "je"
+      ],
+      [
+        2741,
+        2776,
+        "je"
+      ],
+      [
+        2748,
+        2736,
+        "jne"
+      ],
+      [
+        2758,
+        2831,
+        "je"
+      ],
+      [
+        2765,
+        2776,
+        "je"
+      ],
+      [
+        2772,
+        2760,
+        "jne"
+      ],
+      [
+        2774,
+        2831,
+        "jmp"
+      ],
+      [
+        2780,
+        2831,
+        "je"
+      ],
+      [
+        2801,
+        2831,
+        "jne"
+      ],
+      [
+        2808,
+        2831,
+        "je"
+      ],
+      [
+        2829,
+        2816,
+        "jne"
+      ],
+      [
+        2843,
+        2944,
+        "je"
+      ],
+      [
+        2853,
+        2869,
+        "je"
+      ],
+      [
+        2860,
+        2895,
+        "je"
+      ],
+      [
+        2867,
+        2855,
+        "jne"
+      ],
+      [
+        2877,
+        2944,
+        "je"
+      ],
+      [
+        2884,
+        2895,
+        "je"
+      ],
+      [
+        2891,
+        2880,
+        "jne"
+      ],
+      [
+        2893,
+        2944,
+        "jmp"
+      ],
+      [
+        2899,
+        2944,
+        "je"
+      ],
+      [
+        2920,
+        2944,
+        "jne"
+      ],
+      [
+        2927,
+        2944,
+        "je"
+      ],
+      [
+        2942,
+        2929,
+        "jne"
+      ],
+      [
+        2978,
+        3684,
+        "je"
+      ],
+      [
+        2992,
+        3258,
+        "jl"
+      ],
+      [
+        3003,
+        3258,
+        "je"
+      ],
+      [
+        3017,
+        3258,
+        "jne"
+      ],
+      [
+        3031,
+        3135,
+        "jge"
+      ],
+      [
+        3036,
+        3084,
+        "jg"
+      ],
+      [
+        3082,
+        3156,
+        "jmp"
+      ],
+      [
+        3087,
+        3156,
+        "jg"
+      ],
+      [
+        3133,
+        3156,
+        "jmp"
+      ],
+      [
+        3135,
+        3156,
+        "jle"
+      ],
+      [
+        3168,
+        3240,
+        "je"
+      ],
+      [
+        3263,
+        3684,
+        "je"
+      ],
+      [
+        3285,
+        3684,
+        "je"
+      ],
+      [
+        3295,
+        3684,
+        "je"
+      ],
+      [
+        3322,
+        3398,
+        "je"
+      ],
+      [
+        3329,
+        3343,
+        "jne"
+      ],
+      [
+        3341,
+        3415,
+        "jmp"
+      ],
+      [
+        3346,
+        3360,
+        "jne"
+      ],
+      [
+        3358,
+        3449,
+        "jmp"
+      ],
+      [
+        3363,
+        3377,
+        "jne"
+      ],
+      [
+        3375,
+        3483,
+        "jmp"
+      ],
+      [
+        3380,
+        3534,
+        "jne"
+      ],
+      [
+        3396,
+        3514,
+        "jmp"
+      ],
+      [
+        3403,
+        3434,
+        "jne"
+      ],
+      [
+        3415,
+        3534,
+        "jge"
+      ],
+      [
+        3432,
+        3528,
+        "jmp"
+      ],
+      [
+        3437,
+        3468,
+        "jne"
+      ],
+      [
+        3449,
+        3534,
+        "jge"
+      ],
+      [
+        3466,
+        3528,
+        "jmp"
+      ],
+      [
+        3471,
+        3499,
+        "jne"
+      ],
+      [
+        3483,
+        3534,
+        "jge"
+      ],
+      [
+        3497,
+        3528,
+        "jmp"
+      ],
+      [
+        3502,
+        3534,
+        "jne"
+      ],
+      [
+        3514,
+        3534,
+        "jle"
+      ],
+      [
+        3605,
+        3618,
+        "jne"
+      ],
+      [
+        3616,
+        3639,
+        "jmp"
+      ],
+      [
+        3656,
+        3677,
+        "jnp"
+      ],
+      [
+        3675,
+        3684,
+        "jne"
+      ],
+      [
+        3718,
+        3770,
+        "jne"
+      ],
+      [
+        3733,
+        3770,
+        "jp"
+      ]
+    ],
+    "calls": [
+      [
+        81,
+        4451888,
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      ],
+      [
+        113,
+        4451888,
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      ],
+      [
+        145,
+        4451888,
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      ],
+      [
+        370,
+        4451888,
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      ],
+      [
+        408,
+        4449696,
+        "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+      ],
+      [
+        433,
+        4451888,
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      ],
+      [
+        458,
+        4451888,
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      ],
+      [
+        1425,
+        4495696,
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+      ],
+      [
+        1461,
+        4495472,
+        "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      ],
+      [
+        1631,
+        4495696,
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+      ],
+      [
+        1662,
+        4495472,
+        "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      ],
+      [
+        2123,
+        4284048,
+        "?Run@GuiMessageVmView@@SGHPAU1@@Z"
+      ],
+      [
+        2200,
+        4602668,
+        "__ftol2"
+      ],
+      [
+        2952,
+        4531361,
+        "??3@YAXPAX@Z"
+      ],
+      [
+        3073,
+        4447376,
+        "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+      ],
+      [
+        3124,
+        4447376,
+        "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+      ],
+      [
+        3201,
+        4449696,
+        "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+      ],
+      [
+        3235,
+        4449696,
+        "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+      ],
+      [
+        3541,
+        4451888,
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      ],
+      [
+        3624,
+        4602668,
+        "__ftol2"
+      ],
+      [
+        3784,
+        4602668,
+        "__ftol2"
+      ]
+    ],
+    "returns": [
+      [
+        3767,
+        "4"
+      ],
+      [
+        3802,
+        "4"
+      ]
+    ],
+    "selector_offset": 3808,
+    "selector": [
+      1300,
+      1316,
+      1336,
+      1356,
+      1379,
+      1386,
+      1393
+    ],
+    "pe_relocation_offsets": [],
+    "scale_load_then_subframe_offsets": [
+      2192,
+      3770
+    ]
+  },
+  "controls": [
+    {
+      "label": "current-entry",
+      "image_sha256": "b152edb8fdb8aa8e91f8c5809fe11627ed5987ea02a10a381be9246c04ecfa3a",
+      "source_pins_sha256": "6215339bd06f831a612d5c31389de2c6a972d3e03a26bcf3fdbf742f383271b7",
+      "compiled": [
+        "src/Enemy.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/Player.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp"
+      ],
+      "reused_count": 3,
+      "size": 3836,
+      "fields": 72,
+      "result": "mismatch",
+      "first_differences": [
+        {
+          "offset": "0x891",
+          "linked": 70,
+          "target": 1
+        },
+        {
+          "offset": "0x892",
+          "linked": 12,
+          "target": 216
+        },
+        {
+          "offset": "0x893",
+          "linked": 216,
+          "target": 70
+        },
+        {
+          "offset": "0x894",
+          "linked": 1,
+          "target": 12
+        }
+      ]
+    },
+    {
+      "label": "observed-message-scale",
+      "image_sha256": "fa811e1986b7ff0a4334f74f46cd673e14d77dd5e43412f654f8dfa21a2fb085",
+      "source_pins_sha256": "d4c5f1aaba966b71cf40079d58b19bc0b161f453eca08f9b2ee09b6c553fae4e",
+      "compiled": [
+        "src/Gui.cpp"
+      ],
+      "reused_count": 16,
+      "size": 3836,
+      "fields": 72,
+      "result": "mismatch",
+      "first_differences": [
+        {
+          "offset": "0xEBB",
+          "linked": 135,
+          "target": 1
+        },
+        {
+          "offset": "0xEBC",
+          "linked": 104,
+          "target": 216
+        },
+        {
+          "offset": "0xEBD",
+          "linked": 158,
+          "target": 135
+        },
+        {
+          "offset": "0xEBE",
+          "linked": 0,
+          "target": 104
+        },
+        {
+          "offset": "0xEBF",
+          "linked": 0,
+          "target": 158
+        },
+        {
+          "offset": "0xEC0",
+          "linked": 216,
+          "target": 0
+        },
+        {
+          "offset": "0xEC1",
+          "linked": 1,
+          "target": 0
+        }
+      ]
+    },
+    {
+      "label": "ordered-scale-additions",
+      "image_sha256": "6c0f2ea94efd4a8b490d8ebbb23bb192d0d38eea2e41b8011c844d4bf802f782",
+      "source_pins_sha256": "9ab7ebebc1707efc127fca30081a3815597343cfc5d44e7d1ad213367e421ce8",
+      "compiled": [
+        "src/Gui.cpp"
+      ],
+      "reused_count": 16,
+      "size": 3836,
+      "fields": 72,
+      "result": "exact",
+      "first_differences": []
+    },
+    {
+      "label": "reviewed-timer-order",
+      "image_sha256": "685c2dfef1ec63b4b8b28c8df20bacb35f590d6a3fac2571dcd62d0539f9d135",
+      "source_pins_sha256": "de70bdb5e25dd8b85f5f35d13399934a6129fbbc83c7e4d65d0bf9d82992a59e",
+      "compiled": [
+        "src/Gui.cpp"
+      ],
+      "reused_count": 16,
+      "size": 3836,
+      "fields": 72,
+      "result": "exact",
+      "first_differences": []
+    }
+  ],
+  "cold_runs": [
+    {
+      "label": "cold-one",
+      "exit": 0,
+      "unit_count": 3,
+      "matched_bytes": 5208,
+      "manifest_sha256": "26747196b3c255a87a0ac2e13bacc1a01e7a84fabb65374d74b87743d2fcc0e8",
+      "producer": "build/match-linked/PlayerCalculateDamage",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "build_returncode": 0,
+      "units": [
+        {
+          "unit": "player-calculate-damage-to-target",
+          "size": 1170,
+          "result": "exact",
+          "image_sha256": "ecf7706baa5169cb1a8646c0bdfbb0c991849b1101d4dcf54a781d91bbac6c3e",
+          "pdb_guid": "6915d79f3a7c21458565ffaf989c1a9a"
+        },
+        {
+          "unit": "player-auxiliary-damage-at-position",
+          "size": 202,
+          "result": "exact",
+          "image_sha256": "ecf7706baa5169cb1a8646c0bdfbb0c991849b1101d4dcf54a781d91bbac6c3e",
+          "pdb_guid": "6915d79f3a7c21458565ffaf989c1a9a"
+        },
+        {
+          "unit": "gui-update-stage-elements",
+          "size": 3836,
+          "result": "exact",
+          "image_sha256": "ecf7706baa5169cb1a8646c0bdfbb0c991849b1101d4dcf54a781d91bbac6c3e",
+          "pdb_guid": "6915d79f3a7c21458565ffaf989c1a9a"
+        }
+      ],
+      "image_sha256": "ecf7706baa5169cb1a8646c0bdfbb0c991849b1101d4dcf54a781d91bbac6c3e",
+      "pdb_guid": "6915d79f3a7c21458565ffaf989c1a9a",
+      "native": {
+        "address": 4372560,
+        "size": 3836,
+        "sha256": "fb449c124f09216fa7cf1616ce55ef471959ca325ec0bd48f15851aefbe59cb6",
+        "target_bound_sha256": "8010a918958dce15d47c90e86c842b22854c1be40d608fbeaf011d5597f54768",
+        "instructions": 1089,
+        "fields": [
+          [
+            36,
+            "DIR32",
+            4400528,
+            4792308
+          ],
+          [
+            56,
+            "DIR32",
+            4400476,
+            4792248
+          ],
+          [
+            82,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            114,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            146,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            168,
+            "DIR32",
+            4400708,
+            4683828
+          ],
+          [
+            190,
+            "DIR32",
+            4395624,
+            4656092
+          ],
+          [
+            213,
+            "DIR32",
+            4395616,
+            4656400
+          ],
+          [
+            276,
+            "DIR32",
+            4395608,
+            4656392
+          ],
+          [
+            295,
+            "DIR32",
+            4395600,
+            4656384
+          ],
+          [
+            354,
+            "DIR32",
+            4400460,
+            4672588
+          ],
+          [
+            371,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            409,
+            "REL32",
+            4227776,
+            4449696
+          ],
+          [
+            434,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            459,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            464,
+            "DIR32",
+            4400148,
+            4683524
+          ],
+          [
+            554,
+            "DIR32",
+            4395596,
+            4656376
+          ],
+          [
+            604,
+            "DIR32",
+            4400708,
+            4683828
+          ],
+          [
+            610,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            628,
+            "DIR32",
+            4395492,
+            4656168
+          ],
+          [
+            647,
+            "DIR32",
+            4395268,
+            4655876
+          ],
+          [
+            944,
+            "DIR32",
+            4395504,
+            4656072
+          ],
+          [
+            967,
+            "DIR32",
+            4395592,
+            4655964
+          ],
+          [
+            1278,
+            "DIR32",
+            4400524,
+            4672636
+          ],
+          [
+            1296,
+            "DIR32",
+            4376368,
+            4282336
+          ],
+          [
+            1302,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1318,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1338,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1358,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1395,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1426,
+            "REL32",
+            4215728,
+            4495696
+          ],
+          [
+            1462,
+            "REL32",
+            4256480,
+            4495472
+          ],
+          [
+            1468,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            1632,
+            "REL32",
+            4215728,
+            4495696
+          ],
+          [
+            1663,
+            "REL32",
+            4256480,
+            4495472
+          ],
+          [
+            1669,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            1944,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            2124,
+            "REL32",
+            4367936,
+            4284048
+          ],
+          [
+            2145,
+            "DIR32",
+            4395280,
+            4655976
+          ],
+          [
+            2160,
+            "DIR32",
+            4395276,
+            4655972
+          ],
+          [
+            2177,
+            "DIR32",
+            4395296,
+            4655868
+          ],
+          [
+            2201,
+            "REL32",
+            4401012,
+            4602668
+          ],
+          [
+            2234,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            2953,
+            "REL32",
+            4399536,
+            4531361
+          ],
+          [
+            2972,
+            "DIR32",
+            4400148,
+            4683524
+          ],
+          [
+            3069,
+            "DIR32",
+            4400692,
+            4793744
+          ],
+          [
+            3074,
+            "REL32",
+            4287968,
+            4447376
+          ],
+          [
+            3120,
+            "DIR32",
+            4400692,
+            4793744
+          ],
+          [
+            3125,
+            "REL32",
+            4287968,
+            4447376
+          ],
+          [
+            3202,
+            "REL32",
+            4227776,
+            4449696
+          ],
+          [
+            3236,
+            "REL32",
+            4227776,
+            4449696
+          ],
+          [
+            3248,
+            "DIR32",
+            4400148,
+            4683524
+          ],
+          [
+            3303,
+            "DIR32",
+            4400472,
+            4683508
+          ],
+          [
+            3542,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            3554,
+            "DIR32",
+            4395292,
+            4655948
+          ],
+          [
+            3560,
+            "DIR32",
+            4400708,
+            4683828
+          ],
+          [
+            3596,
+            "DIR32",
+            4395584,
+            4656368
+          ],
+          [
+            3620,
+            "DIR32",
+            4395576,
+            4656360
+          ],
+          [
+            3625,
+            "REL32",
+            4401012,
+            4602668
+          ],
+          [
+            3647,
+            "DIR32",
+            4395572,
+            4655936
+          ],
+          [
+            3666,
+            "DIR32",
+            4395568,
+            4655932
+          ],
+          [
+            3706,
+            "DIR32",
+            4395280,
+            4655976
+          ],
+          [
+            3724,
+            "DIR32",
+            4395276,
+            4655972
+          ],
+          [
+            3744,
+            "DIR32",
+            4395296,
+            4655868
+          ],
+          [
+            3785,
+            "REL32",
+            4401012,
+            4602668
+          ],
+          [
+            3808,
+            "DIR32",
+            4373860,
+            4279828
+          ],
+          [
+            3812,
+            "DIR32",
+            4373876,
+            4279844
+          ],
+          [
+            3816,
+            "DIR32",
+            4373896,
+            4279864
+          ],
+          [
+            3820,
+            "DIR32",
+            4373916,
+            4279884
+          ],
+          [
+            3824,
+            "DIR32",
+            4373939,
+            4279907
+          ],
+          [
+            3828,
+            "DIR32",
+            4373946,
+            4279914
+          ],
+          [
+            3832,
+            "DIR32",
+            4373953,
+            4279921
+          ]
+        ],
+        "fixed_locals": [
+          [
+            13,
+            60,
+            "je"
+          ],
+          [
+            33,
+            60,
+            "jl"
+          ],
+          [
+            93,
+            80,
+            "jne"
+          ],
+          [
+            125,
+            112,
+            "jne"
+          ],
+          [
+            157,
+            144,
+            "jne"
+          ],
+          [
+            172,
+            264,
+            "jne"
+          ],
+          [
+            176,
+            348,
+            "je"
+          ],
+          [
+            199,
+            348,
+            "jne"
+          ],
+          [
+            222,
+            348,
+            "jp"
+          ],
+          [
+            235,
+            240,
+            "jmp"
+          ],
+          [
+            251,
+            240,
+            "jne"
+          ],
+          [
+            262,
+            342,
+            "jmp"
+          ],
+          [
+            266,
+            348,
+            "je"
+          ],
+          [
+            285,
+            306,
+            "jnp"
+          ],
+          [
+            304,
+            348,
+            "jne"
+          ],
+          [
+            331,
+            320,
+            "jne"
+          ],
+          [
+            445,
+            386,
+            "jne"
+          ],
+          [
+            470,
+            1932,
+            "je"
+          ],
+          [
+            481,
+            1932,
+            "je"
+          ],
+          [
+            495,
+            1932,
+            "jne"
+          ],
+          [
+            544,
+            564,
+            "jne"
+          ],
+          [
+            581,
+            595,
+            "jne"
+          ],
+          [
+            620,
+            942,
+            "je"
+          ],
+          [
+            637,
+            662,
+            "je"
+          ],
+          [
+            656,
+            1263,
+            "jne"
+          ],
+          [
+            672,
+            798,
+            "jle"
+          ],
+          [
+            684,
+            784,
+            "je"
+          ],
+          [
+            694,
+            710,
+            "je"
+          ],
+          [
+            701,
+            736,
+            "je"
+          ],
+          [
+            708,
+            696,
+            "jne"
+          ],
+          [
+            718,
+            784,
+            "je"
+          ],
+          [
+            725,
+            736,
+            "je"
+          ],
+          [
+            732,
+            720,
+            "jne"
+          ],
+          [
+            734,
+            784,
+            "jmp"
+          ],
+          [
+            740,
+            784,
+            "je"
+          ],
+          [
+            759,
+            784,
+            "jne"
+          ],
+          [
+            766,
+            784,
+            "je"
+          ],
+          [
+            782,
+            768,
+            "jne"
+          ],
+          [
+            796,
+            680,
+            "jl"
+          ],
+          [
+            806,
+            928,
+            "je"
+          ],
+          [
+            816,
+            831,
+            "je"
+          ],
+          [
+            822,
+            875,
+            "je"
+          ],
+          [
+            829,
+            818,
+            "jne"
+          ],
+          [
+            839,
+            928,
+            "je"
+          ],
+          [
+            852,
+            875,
+            "je"
+          ],
+          [
+            859,
+            848,
+            "jne"
+          ],
+          [
+            870,
+            1257,
+            "jmp"
+          ],
+          [
+            879,
+            928,
+            "je"
+          ],
+          [
+            898,
+            928,
+            "jne"
+          ],
+          [
+            905,
+            928,
+            "je"
+          ],
+          [
+            907,
+            912,
+            "jmp"
+          ],
+          [
+            926,
+            912,
+            "jne"
+          ],
+          [
+            937,
+            1257,
+            "jmp"
+          ],
+          [
+            953,
+            1263,
+            "jp"
+          ],
+          [
+            976,
+            1263,
+            "jp"
+          ],
+          [
+            992,
+            1134,
+            "jle"
+          ],
+          [
+            1012,
+            1120,
+            "je"
+          ],
+          [
+            1022,
+            1038,
+            "je"
+          ],
+          [
+            1029,
+            1064,
+            "je"
+          ],
+          [
+            1036,
+            1024,
+            "jne"
+          ],
+          [
+            1046,
+            1120,
+            "je"
+          ],
+          [
+            1053,
+            1064,
+            "je"
+          ],
+          [
+            1060,
+            1048,
+            "jne"
+          ],
+          [
+            1062,
+            1120,
+            "jmp"
+          ],
+          [
+            1068,
+            1120,
+            "je"
+          ],
+          [
+            1087,
+            1120,
+            "jne"
+          ],
+          [
+            1094,
+            1120,
+            "je"
+          ],
+          [
+            1096,
+            1104,
+            "jmp"
+          ],
+          [
+            1118,
+            1104,
+            "jne"
+          ],
+          [
+            1132,
+            1008,
+            "jl"
+          ],
+          [
+            1142,
+            1248,
+            "je"
+          ],
+          [
+            1152,
+            1167,
+            "je"
+          ],
+          [
+            1158,
+            1199,
+            "je"
+          ],
+          [
+            1165,
+            1154,
+            "jne"
+          ],
+          [
+            1175,
+            1248,
+            "je"
+          ],
+          [
+            1188,
+            1199,
+            "je"
+          ],
+          [
+            1195,
+            1184,
+            "jne"
+          ],
+          [
+            1197,
+            1248,
+            "jmp"
+          ],
+          [
+            1203,
+            1248,
+            "je"
+          ],
+          [
+            1222,
+            1248,
+            "jne"
+          ],
+          [
+            1229,
+            1248,
+            "je"
+          ],
+          [
+            1246,
+            1232,
+            "jne"
+          ],
+          [
+            1271,
+            1587,
+            "jne"
+          ],
+          [
+            1291,
+            1415,
+            "ja"
+          ],
+          [
+            1307,
+            1415,
+            "jl"
+          ],
+          [
+            1314,
+            1415,
+            "jmp"
+          ],
+          [
+            1323,
+            1587,
+            "jl"
+          ],
+          [
+            1334,
+            1415,
+            "jmp"
+          ],
+          [
+            1343,
+            1587,
+            "jl"
+          ],
+          [
+            1354,
+            1415,
+            "jmp"
+          ],
+          [
+            1377,
+            1415,
+            "jmp"
+          ],
+          [
+            1384,
+            1415,
+            "jmp"
+          ],
+          [
+            1391,
+            1415,
+            "jmp"
+          ],
+          [
+            1491,
+            1501,
+            "jne"
+          ],
+          [
+            1499,
+            1529,
+            "jmp"
+          ],
+          [
+            1512,
+            1523,
+            "je"
+          ],
+          [
+            1552,
+            1561,
+            "jne"
+          ],
+          [
+            1606,
+            1788,
+            "jge"
+          ],
+          [
+            1615,
+            1910,
+            "jne"
+          ],
+          [
+            1692,
+            1702,
+            "jne"
+          ],
+          [
+            1700,
+            1730,
+            "jmp"
+          ],
+          [
+            1713,
+            1724,
+            "je"
+          ],
+          [
+            1753,
+            1762,
+            "jne"
+          ],
+          [
+            1786,
+            1910,
+            "jmp"
+          ],
+          [
+            1792,
+            1910,
+            "je"
+          ],
+          [
+            1802,
+            1822,
+            "je"
+          ],
+          [
+            1813,
+            1848,
+            "je"
+          ],
+          [
+            1820,
+            1808,
+            "jne"
+          ],
+          [
+            1830,
+            1904,
+            "je"
+          ],
+          [
+            1837,
+            1848,
+            "je"
+          ],
+          [
+            1844,
+            1832,
+            "jne"
+          ],
+          [
+            1846,
+            1904,
+            "jmp"
+          ],
+          [
+            1852,
+            1904,
+            "je"
+          ],
+          [
+            1871,
+            1904,
+            "jne"
+          ],
+          [
+            1878,
+            1904,
+            "je"
+          ],
+          [
+            1880,
+            1888,
+            "jmp"
+          ],
+          [
+            1902,
+            1888,
+            "jne"
+          ],
+          [
+            1921,
+            1600,
+            "jb"
+          ],
+          [
+            1927,
+            2108,
+            "jmp"
+          ],
+          [
+            1940,
+            2058,
+            "je"
+          ],
+          [
+            1956,
+            1971,
+            "je"
+          ],
+          [
+            1962,
+            1999,
+            "je"
+          ],
+          [
+            1969,
+            1958,
+            "jne"
+          ],
+          [
+            1979,
+            2048,
+            "je"
+          ],
+          [
+            1988,
+            1999,
+            "je"
+          ],
+          [
+            1995,
+            1984,
+            "jne"
+          ],
+          [
+            1997,
+            2048,
+            "jmp"
+          ],
+          [
+            2003,
+            2048,
+            "je"
+          ],
+          [
+            2022,
+            2048,
+            "jne"
+          ],
+          [
+            2029,
+            2048,
+            "je"
+          ],
+          [
+            2046,
+            2032,
+            "jne"
+          ],
+          [
+            2116,
+            2970,
+            "je"
+          ],
+          [
+            2130,
+            2213,
+            "jne"
+          ],
+          [
+            2154,
+            2192,
+            "jne"
+          ],
+          [
+            2169,
+            2192,
+            "jp"
+          ],
+          [
+            2187,
+            2970,
+            "jmp"
+          ],
+          [
+            2208,
+            2970,
+            "jmp"
+          ],
+          [
+            2221,
+            2960,
+            "je"
+          ],
+          [
+            2243,
+            2351,
+            "je"
+          ],
+          [
+            2253,
+            2270,
+            "je"
+          ],
+          [
+            2261,
+            2296,
+            "je"
+          ],
+          [
+            2268,
+            2256,
+            "jne"
+          ],
+          [
+            2278,
+            2351,
+            "je"
+          ],
+          [
+            2285,
+            2296,
+            "je"
+          ],
+          [
+            2292,
+            2280,
+            "jne"
+          ],
+          [
+            2294,
+            2351,
+            "jmp"
+          ],
+          [
+            2300,
+            2351,
+            "je"
+          ],
+          [
+            2321,
+            2351,
+            "jne"
+          ],
+          [
+            2328,
+            2351,
+            "je"
+          ],
+          [
+            2349,
+            2336,
+            "jne"
+          ],
+          [
+            2363,
+            2465,
+            "je"
+          ],
+          [
+            2373,
+            2389,
+            "je"
+          ],
+          [
+            2380,
+            2416,
+            "je"
+          ],
+          [
+            2387,
+            2375,
+            "jne"
+          ],
+          [
+            2397,
+            2465,
+            "je"
+          ],
+          [
+            2405,
+            2416,
+            "je"
+          ],
+          [
+            2412,
+            2400,
+            "jne"
+          ],
+          [
+            2414,
+            2465,
+            "jmp"
+          ],
+          [
+            2420,
+            2465,
+            "je"
+          ],
+          [
+            2441,
+            2465,
+            "jne"
+          ],
+          [
+            2448,
+            2465,
+            "je"
+          ],
+          [
+            2463,
+            2450,
+            "jne"
+          ],
+          [
+            2477,
+            2591,
+            "je"
+          ],
+          [
+            2487,
+            2510,
+            "je"
+          ],
+          [
+            2501,
+            2536,
+            "je"
+          ],
+          [
+            2508,
+            2496,
+            "jne"
+          ],
+          [
+            2518,
+            2591,
+            "je"
+          ],
+          [
+            2525,
+            2536,
+            "je"
+          ],
+          [
+            2532,
+            2520,
+            "jne"
+          ],
+          [
+            2534,
+            2591,
+            "jmp"
+          ],
+          [
+            2540,
+            2591,
+            "je"
+          ],
+          [
+            2561,
+            2591,
+            "jne"
+          ],
+          [
+            2568,
+            2591,
+            "je"
+          ],
+          [
+            2589,
+            2576,
+            "jne"
+          ],
+          [
+            2603,
+            2705,
+            "je"
+          ],
+          [
+            2613,
+            2629,
+            "je"
+          ],
+          [
+            2620,
+            2656,
+            "je"
+          ],
+          [
+            2627,
+            2615,
+            "jne"
+          ],
+          [
+            2637,
+            2705,
+            "je"
+          ],
+          [
+            2645,
+            2656,
+            "je"
+          ],
+          [
+            2652,
+            2640,
+            "jne"
+          ],
+          [
+            2654,
+            2705,
+            "jmp"
+          ],
+          [
+            2660,
+            2705,
+            "je"
+          ],
+          [
+            2681,
+            2705,
+            "jne"
+          ],
+          [
+            2688,
+            2705,
+            "je"
+          ],
+          [
+            2703,
+            2690,
+            "jne"
+          ],
+          [
+            2717,
+            2831,
+            "je"
+          ],
+          [
+            2727,
+            2750,
+            "je"
+          ],
+          [
+            2741,
+            2776,
+            "je"
+          ],
+          [
+            2748,
+            2736,
+            "jne"
+          ],
+          [
+            2758,
+            2831,
+            "je"
+          ],
+          [
+            2765,
+            2776,
+            "je"
+          ],
+          [
+            2772,
+            2760,
+            "jne"
+          ],
+          [
+            2774,
+            2831,
+            "jmp"
+          ],
+          [
+            2780,
+            2831,
+            "je"
+          ],
+          [
+            2801,
+            2831,
+            "jne"
+          ],
+          [
+            2808,
+            2831,
+            "je"
+          ],
+          [
+            2829,
+            2816,
+            "jne"
+          ],
+          [
+            2843,
+            2944,
+            "je"
+          ],
+          [
+            2853,
+            2869,
+            "je"
+          ],
+          [
+            2860,
+            2895,
+            "je"
+          ],
+          [
+            2867,
+            2855,
+            "jne"
+          ],
+          [
+            2877,
+            2944,
+            "je"
+          ],
+          [
+            2884,
+            2895,
+            "je"
+          ],
+          [
+            2891,
+            2880,
+            "jne"
+          ],
+          [
+            2893,
+            2944,
+            "jmp"
+          ],
+          [
+            2899,
+            2944,
+            "je"
+          ],
+          [
+            2920,
+            2944,
+            "jne"
+          ],
+          [
+            2927,
+            2944,
+            "je"
+          ],
+          [
+            2942,
+            2929,
+            "jne"
+          ],
+          [
+            2978,
+            3684,
+            "je"
+          ],
+          [
+            2992,
+            3258,
+            "jl"
+          ],
+          [
+            3003,
+            3258,
+            "je"
+          ],
+          [
+            3017,
+            3258,
+            "jne"
+          ],
+          [
+            3031,
+            3135,
+            "jge"
+          ],
+          [
+            3036,
+            3084,
+            "jg"
+          ],
+          [
+            3082,
+            3156,
+            "jmp"
+          ],
+          [
+            3087,
+            3156,
+            "jg"
+          ],
+          [
+            3133,
+            3156,
+            "jmp"
+          ],
+          [
+            3135,
+            3156,
+            "jle"
+          ],
+          [
+            3168,
+            3240,
+            "je"
+          ],
+          [
+            3263,
+            3684,
+            "je"
+          ],
+          [
+            3285,
+            3684,
+            "je"
+          ],
+          [
+            3295,
+            3684,
+            "je"
+          ],
+          [
+            3322,
+            3398,
+            "je"
+          ],
+          [
+            3329,
+            3343,
+            "jne"
+          ],
+          [
+            3341,
+            3415,
+            "jmp"
+          ],
+          [
+            3346,
+            3360,
+            "jne"
+          ],
+          [
+            3358,
+            3449,
+            "jmp"
+          ],
+          [
+            3363,
+            3377,
+            "jne"
+          ],
+          [
+            3375,
+            3483,
+            "jmp"
+          ],
+          [
+            3380,
+            3534,
+            "jne"
+          ],
+          [
+            3396,
+            3514,
+            "jmp"
+          ],
+          [
+            3403,
+            3434,
+            "jne"
+          ],
+          [
+            3415,
+            3534,
+            "jge"
+          ],
+          [
+            3432,
+            3528,
+            "jmp"
+          ],
+          [
+            3437,
+            3468,
+            "jne"
+          ],
+          [
+            3449,
+            3534,
+            "jge"
+          ],
+          [
+            3466,
+            3528,
+            "jmp"
+          ],
+          [
+            3471,
+            3499,
+            "jne"
+          ],
+          [
+            3483,
+            3534,
+            "jge"
+          ],
+          [
+            3497,
+            3528,
+            "jmp"
+          ],
+          [
+            3502,
+            3534,
+            "jne"
+          ],
+          [
+            3514,
+            3534,
+            "jle"
+          ],
+          [
+            3605,
+            3618,
+            "jne"
+          ],
+          [
+            3616,
+            3639,
+            "jmp"
+          ],
+          [
+            3656,
+            3677,
+            "jnp"
+          ],
+          [
+            3675,
+            3684,
+            "jne"
+          ],
+          [
+            3718,
+            3770,
+            "jne"
+          ],
+          [
+            3733,
+            3770,
+            "jp"
+          ]
+        ],
+        "calls": [
+          [
+            81,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            113,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            145,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            370,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            408,
+            4449696,
+            "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+          ],
+          [
+            433,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            458,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            1425,
+            4495696,
+            "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+          ],
+          [
+            1461,
+            4495472,
+            "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+          ],
+          [
+            1631,
+            4495696,
+            "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+          ],
+          [
+            1662,
+            4495472,
+            "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+          ],
+          [
+            2123,
+            4284048,
+            "?Run@GuiMessageVmView@@SGHPAU1@@Z"
+          ],
+          [
+            2200,
+            4602668,
+            "__ftol2"
+          ],
+          [
+            2952,
+            4531361,
+            "??3@YAXPAX@Z"
+          ],
+          [
+            3073,
+            4447376,
+            "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+          ],
+          [
+            3124,
+            4447376,
+            "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+          ],
+          [
+            3201,
+            4449696,
+            "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+          ],
+          [
+            3235,
+            4449696,
+            "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+          ],
+          [
+            3541,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            3624,
+            4602668,
+            "__ftol2"
+          ],
+          [
+            3784,
+            4602668,
+            "__ftol2"
+          ]
+        ],
+        "returns": [
+          [
+            3767,
+            "4"
+          ],
+          [
+            3802,
+            "4"
+          ]
+        ],
+        "selector_offset": 3808,
+        "selector": [
+          1300,
+          1316,
+          1336,
+          1356,
+          1379,
+          1386,
+          1393
+        ],
+        "pe_relocation_offsets": [
+          36,
+          56,
+          168,
+          190,
+          213,
+          276,
+          295,
+          354,
+          464,
+          554,
+          604,
+          610,
+          628,
+          647,
+          944,
+          967,
+          1278,
+          1296,
+          1302,
+          1318,
+          1338,
+          1358,
+          1395,
+          1468,
+          1669,
+          1944,
+          2145,
+          2160,
+          2177,
+          2234,
+          2972,
+          3069,
+          3120,
+          3248,
+          3303,
+          3554,
+          3560,
+          3596,
+          3620,
+          3647,
+          3666,
+          3706,
+          3724,
+          3744,
+          3808,
+          3812,
+          3816,
+          3820,
+          3824,
+          3828,
+          3832
+        ],
+        "scale_load_then_subframe_offsets": [
+          2192,
+          3770
+        ]
+      },
+      "pdb_owner": {
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "address": "0x0042B850",
+        "size": 3836,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 174160,
+        "map_object": "support-14-Gui.ltcg.obj",
+        "pdb_module_index": 8,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-14-Gui.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-14-Gui.ltcg.obj",
+        "sha256": "fb449c124f09216fa7cf1616ce55ef471959ca325ec0bd48f15851aefbe59cb6"
+      },
+      "semantic_bindings": [
+        {
+          "offset": "0x24",
+          "type": "DIR32",
+          "symbol": "?g_GuiSupervisorFlags@@3IA",
+          "candidate_target": "0x00432590",
+          "target": "0x00491FF4",
+          "addend": 0
+        },
+        {
+          "offset": "0x38",
+          "type": "DIR32",
+          "symbol": "?g_GuiGlobalMode@@3HA",
+          "candidate_target": "0x0043255C",
+          "target": "0x00491FB8",
+          "addend": 0
+        },
+        {
+          "offset": "0x52",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x72",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x92",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0xA8",
+          "type": "DIR32",
+          "symbol": "?g_Player@@3PAUPlayer@@A",
+          "candidate_target": "0x00432644",
+          "target": "0x00477834",
+          "addend": 0
+        },
+        {
+          "offset": "0xBE",
+          "type": "DIR32",
+          "symbol": "__real@43d00000",
+          "candidate_target": "0x00431268",
+          "target": "0x00470BDC",
+          "addend": 0
+        },
+        {
+          "offset": "0xD5",
+          "type": "DIR32",
+          "symbol": "__real@c060000000000000",
+          "candidate_target": "0x00431260",
+          "target": "0x00470D10",
+          "addend": 0
+        },
+        {
+          "offset": "0x114",
+          "type": "DIR32",
+          "symbol": "__real@43c80000",
+          "candidate_target": "0x00431258",
+          "target": "0x00470D08",
+          "addend": 0
+        },
+        {
+          "offset": "0x127",
+          "type": "DIR32",
+          "symbol": "__real@c05c000000000000",
+          "candidate_target": "0x00431250",
+          "target": "0x00470D00",
+          "addend": 0
+        },
+        {
+          "offset": "0x162",
+          "type": "DIR32",
+          "symbol": "?g_GuiCounter4C4C@@3HA",
+          "candidate_target": "0x0043254C",
+          "target": "0x00474C4C",
+          "addend": 0
+        },
+        {
+          "offset": "0x173",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x199",
+          "type": "REL32",
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "candidate_target": "0x004082C0",
+          "target": "0x0043E5A0",
+          "addend": 0
+        },
+        {
+          "offset": "0x1B2",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x1CB",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x1D0",
+          "type": "DIR32",
+          "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+          "candidate_target": "0x00432414",
+          "target": "0x00477704",
+          "addend": 0
+        },
+        {
+          "offset": "0x22A",
+          "type": "DIR32",
+          "symbol": "__real@3ccccccd",
+          "candidate_target": "0x0043124C",
+          "target": "0x00470CF8",
+          "addend": 0
+        },
+        {
+          "offset": "0x25C",
+          "type": "DIR32",
+          "symbol": "?g_Player@@3PAUPlayer@@A",
+          "candidate_target": "0x00432644",
+          "target": "0x00477834",
+          "addend": 0
+        },
+        {
+          "offset": "0x262",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0x274",
+          "type": "DIR32",
+          "symbol": "__real@42a00000",
+          "candidate_target": "0x004311E4",
+          "target": "0x00470C28",
+          "addend": 0
+        },
+        {
+          "offset": "0x287",
+          "type": "DIR32",
+          "symbol": "__real@00000000",
+          "candidate_target": "0x00431104",
+          "target": "0x00470B04",
+          "addend": 0
+        },
+        {
+          "offset": "0x3B0",
+          "type": "DIR32",
+          "symbol": "__real@42800000",
+          "candidate_target": "0x004311F0",
+          "target": "0x00470BC8",
+          "addend": 0
+        },
+        {
+          "offset": "0x3C7",
+          "type": "DIR32",
+          "symbol": "__real@c2800000",
+          "candidate_target": "0x00431248",
+          "target": "0x00470B5C",
+          "addend": 0
+        },
+        {
+          "offset": "0x4FE",
+          "type": "DIR32",
+          "symbol": "?g_GuiStage@@3HA",
+          "candidate_target": "0x0043258C",
+          "target": "0x00474C7C",
+          "addend": 0
+        },
+        {
+          "offset": "0x510",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042C730",
+          "target": "0x00414900",
+          "addend": 3808
+        },
+        {
+          "offset": "0x516",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x526",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x53A",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x54E",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x573",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x592",
+          "type": "REL32",
+          "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "candidate_target": "0x004053B0",
+          "target": "0x00449950",
+          "addend": 0
+        },
+        {
+          "offset": "0x5B6",
+          "type": "REL32",
+          "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "candidate_target": "0x0040F2E0",
+          "target": "0x00449870",
+          "addend": 0
+        },
+        {
+          "offset": "0x5BC",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0x660",
+          "type": "REL32",
+          "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "candidate_target": "0x004053B0",
+          "target": "0x00449950",
+          "addend": 0
+        },
+        {
+          "offset": "0x67F",
+          "type": "REL32",
+          "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "candidate_target": "0x0040F2E0",
+          "target": "0x00449870",
+          "addend": 0
+        },
+        {
+          "offset": "0x685",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0x798",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0x84C",
+          "type": "REL32",
+          "symbol": "?Run@GuiMessageVmView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042A640",
+          "target": "0x00415E90",
+          "addend": 0
+        },
+        {
+          "offset": "0x861",
+          "type": "DIR32",
+          "symbol": "__real@3f7d70a4",
+          "candidate_target": "0x00431110",
+          "target": "0x00470B68",
+          "addend": 0
+        },
+        {
+          "offset": "0x870",
+          "type": "DIR32",
+          "symbol": "__real@3f8147ae",
+          "candidate_target": "0x0043110C",
+          "target": "0x00470B64",
+          "addend": 0
+        },
+        {
+          "offset": "0x881",
+          "type": "DIR32",
+          "symbol": "__real@3f800000",
+          "candidate_target": "0x00431120",
+          "target": "0x00470AFC",
+          "addend": 0
+        },
+        {
+          "offset": "0x899",
+          "type": "REL32",
+          "symbol": "__ftol2",
+          "candidate_target": "0x00432774",
+          "target": "0x00463B2C",
+          "addend": 0
+        },
+        {
+          "offset": "0x8BA",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0xB89",
+          "type": "REL32",
+          "symbol": "??3@YAXPAX@Z",
+          "candidate_target": "0x004321B0",
+          "target": "0x004524A1",
+          "addend": 0
+        },
+        {
+          "offset": "0xB9C",
+          "type": "DIR32",
+          "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+          "candidate_target": "0x00432414",
+          "target": "0x00477704",
+          "addend": 0
+        },
+        {
+          "offset": "0xBFD",
+          "type": "DIR32",
+          "symbol": "?g_MainSoundOwner@@3PAEA",
+          "candidate_target": "0x00432634",
+          "target": "0x00492590",
+          "addend": 0
+        },
+        {
+          "offset": "0xC02",
+          "type": "REL32",
+          "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+          "candidate_target": "0x00416DE0",
+          "target": "0x0043DC90",
+          "addend": 0
+        },
+        {
+          "offset": "0xC30",
+          "type": "DIR32",
+          "symbol": "?g_MainSoundOwner@@3PAEA",
+          "candidate_target": "0x00432634",
+          "target": "0x00492590",
+          "addend": 0
+        },
+        {
+          "offset": "0xC35",
+          "type": "REL32",
+          "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+          "candidate_target": "0x00416DE0",
+          "target": "0x0043DC90",
+          "addend": 0
+        },
+        {
+          "offset": "0xC82",
+          "type": "REL32",
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "candidate_target": "0x004082C0",
+          "target": "0x0043E5A0",
+          "addend": 0
+        },
+        {
+          "offset": "0xCA4",
+          "type": "REL32",
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "candidate_target": "0x004082C0",
+          "target": "0x0043E5A0",
+          "addend": 0
+        },
+        {
+          "offset": "0xCB0",
+          "type": "DIR32",
+          "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+          "candidate_target": "0x00432414",
+          "target": "0x00477704",
+          "addend": 0
+        },
+        {
+          "offset": "0xCE7",
+          "type": "DIR32",
+          "symbol": "?g_GuiGameOwner@@3PAUGuiGameOwnerView@@A",
+          "candidate_target": "0x00432558",
+          "target": "0x004776F4",
+          "addend": 0
+        },
+        {
+          "offset": "0xDD6",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0xDE2",
+          "type": "DIR32",
+          "symbol": "__real@43600000",
+          "candidate_target": "0x0043111C",
+          "target": "0x00470B4C",
+          "addend": 0
+        },
+        {
+          "offset": "0xDE8",
+          "type": "DIR32",
+          "symbol": "?g_Player@@3PAUPlayer@@A",
+          "candidate_target": "0x00432644",
+          "target": "0x00477834",
+          "addend": 0
+        },
+        {
+          "offset": "0xE0C",
+          "type": "DIR32",
+          "symbol": "__real@4050000000000000",
+          "candidate_target": "0x00431240",
+          "target": "0x00470CF0",
+          "addend": 0
+        },
+        {
+          "offset": "0xE24",
+          "type": "DIR32",
+          "symbol": "__real@c03f0000",
+          "candidate_target": "0x00431238",
+          "target": "0x00470CE8",
+          "addend": 0
+        },
+        {
+          "offset": "0xE29",
+          "type": "REL32",
+          "symbol": "__ftol2",
+          "candidate_target": "0x00432774",
+          "target": "0x00463B2C",
+          "addend": 0
+        },
+        {
+          "offset": "0xE3F",
+          "type": "DIR32",
+          "symbol": "__real@c3400000",
+          "candidate_target": "0x00431234",
+          "target": "0x00470B40",
+          "addend": 0
+        },
+        {
+          "offset": "0xE52",
+          "type": "DIR32",
+          "symbol": "__real@43400000",
+          "candidate_target": "0x00431230",
+          "target": "0x00470B3C",
+          "addend": 0
+        },
+        {
+          "offset": "0xE7A",
+          "type": "DIR32",
+          "symbol": "__real@3f7d70a4",
+          "candidate_target": "0x00431110",
+          "target": "0x00470B68",
+          "addend": 0
+        },
+        {
+          "offset": "0xE8C",
+          "type": "DIR32",
+          "symbol": "__real@3f8147ae",
+          "candidate_target": "0x0043110C",
+          "target": "0x00470B64",
+          "addend": 0
+        },
+        {
+          "offset": "0xEA0",
+          "type": "DIR32",
+          "symbol": "__real@3f800000",
+          "candidate_target": "0x00431120",
+          "target": "0x00470AFC",
+          "addend": 0
+        },
+        {
+          "offset": "0xEC9",
+          "type": "REL32",
+          "symbol": "__ftol2",
+          "candidate_target": "0x00432774",
+          "target": "0x00463B2C",
+          "addend": 0
+        },
+        {
+          "offset": "0xEE0",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BD64",
+          "target": "0x00414900",
+          "addend": 1300
+        },
+        {
+          "offset": "0xEE4",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BD74",
+          "target": "0x00414900",
+          "addend": 1316
+        },
+        {
+          "offset": "0xEE8",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BD88",
+          "target": "0x00414900",
+          "addend": 1336
+        },
+        {
+          "offset": "0xEEC",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BD9C",
+          "target": "0x00414900",
+          "addend": 1356
+        },
+        {
+          "offset": "0xEF0",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BDB3",
+          "target": "0x00414900",
+          "addend": 1379
+        },
+        {
+          "offset": "0xEF4",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BDBA",
+          "target": "0x00414900",
+          "addend": 1386
+        },
+        {
+          "offset": "0xEF8",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BDC1",
+          "target": "0x00414900",
+          "addend": 1393
+        }
+      ],
+      "guards": {
+        "player-calculate-damage-to-target": {
+          "unit": "player-calculate-damage-to-target",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?CalculateDamageToTarget@Player@@QAEHPBUPlayerFloat3@@0PAH@Z",
+          "target_address": "0x00428630",
+          "size": 1170,
+          "matched_bytes": 1170,
+          "compared_size": 1170,
+          "matched_compared_bytes": 1170,
+          "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+          "image_sha256": "ecf7706baa5169cb1a8646c0bdfbb0c991849b1101d4dcf54a781d91bbac6c3e",
+          "pdb_guid": "6915d79f3a7c21458565ffaf989c1a9a",
+          "pdb_age": 1,
+          "candidate_address": "0x004144D0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 13,
+          "decoded_bytes": 1170,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x32",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x53",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x9E",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0xB0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x11F",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@00000000",
+              "linked_symbol": "__real@00000000",
+              "local": false,
+              "candidate_target": "0x00431104",
+              "target": "0x00470B04",
+              "addend": 0,
+              "target_encoded_value": "0x00470B04"
+            },
+            {
+              "offset": "0x139",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@00000000",
+              "linked_symbol": "__real@00000000",
+              "local": false,
+              "candidate_target": "0x00431104",
+              "target": "0x00470B04",
+              "addend": 0,
+              "target_encoded_value": "0x00470B04"
+            },
+            {
+              "offset": "0x168",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+              "linked_symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+              "local": false,
+              "candidate_target": "0x004120A0",
+              "target": "0x0040C480",
+              "addend": 0,
+              "target_encoded_value": "0xFFFE3CE4"
+            },
+            {
+              "offset": "0x18C",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?HasIntervalTick@PlayerTimerView@@QBEHH@Z",
+              "linked_symbol": "?HasIntervalTick@PlayerTimerView@@QBEHH@Z",
+              "local": false,
+              "candidate_target": "0x004121E0",
+              "target": "0x00427C70",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF4B0"
+            },
+            {
+              "offset": "0x1A2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+              "linked_symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+              "local": false,
+              "candidate_target": "0x0040F3B0",
+              "target": "0x00449450",
+              "addend": 0,
+              "target_encoded_value": "0x00020C7A"
+            },
+            {
+              "offset": "0x1AE",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?Release@AnmVmIdView@@QAEXXZ",
+              "linked_symbol": "?Release@AnmVmIdView@@QAEXXZ",
+              "local": false,
+              "candidate_target": "0x0040F4C0",
+              "target": "0x00449630",
+              "addend": 0,
+              "target_encoded_value": "0x00020E4E"
+            },
+            {
+              "offset": "0x1C8",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "linked_symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "local": false,
+              "candidate_target": "0x004087C0",
+              "target": "0x00448D00",
+              "addend": 0,
+              "target_encoded_value": "0x00020504"
+            },
+            {
+              "offset": "0x1D1",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+              "linked_symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+              "local": false,
+              "candidate_target": "0x0040F3B0",
+              "target": "0x00449450",
+              "addend": 0,
+              "target_encoded_value": "0x00020C4B"
+            },
+            {
+              "offset": "0x1F0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3e000000",
+              "linked_symbol": "__real@3e000000",
+              "local": false,
+              "candidate_target": "0x00431164",
+              "target": "0x00470B90",
+              "addend": 0,
+              "target_encoded_value": "0x00470B90"
+            },
+            {
+              "offset": "0x234",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+              "linked_symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+              "local": false,
+              "candidate_target": "0x00411FE0",
+              "target": "0x00427B50",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF2E8"
+            },
+            {
+              "offset": "0x25B",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0331",
+              "local": false,
+              "candidate_target": "0x004326C0",
+              "target": "0x004776EC",
+              "addend": 0,
+              "target_encoded_value": "0x004776EC"
+            },
+            {
+              "offset": "0x262",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+              "linked_symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+              "local": false,
+              "candidate_target": "0x004120F0",
+              "target": "0x004059F0",
+              "addend": 0,
+              "target_encoded_value": "0xFFFDD15A"
+            },
+            {
+              "offset": "0x2AA",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@00000000",
+              "linked_symbol": "__real@00000000",
+              "local": false,
+              "candidate_target": "0x00431104",
+              "target": "0x00470B04",
+              "addend": 0,
+              "target_encoded_value": "0x00470B04"
+            },
+            {
+              "offset": "0x2BF",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x2EE",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x36A",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x373",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@bf000000",
+              "linked_symbol": "__real@bf000000",
+              "local": false,
+              "candidate_target": "0x004311F8",
+              "target": "0x00470B78",
+              "addend": 0,
+              "target_encoded_value": "0x00470B78"
+            },
+            {
+              "offset": "0x38F",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x3AD",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x3B6",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@bf000000",
+              "linked_symbol": "__real@bf000000",
+              "local": false,
+              "candidate_target": "0x004311F8",
+              "target": "0x00470B78",
+              "addend": 0,
+              "target_encoded_value": "0x00470B78"
+            },
+            {
+              "offset": "0x3CE",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x460",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameScore@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0226",
+              "local": false,
+              "candidate_target": "0x0043251C",
+              "target": "0x00474C44",
+              "addend": 0,
+              "target_encoded_value": "0x00474C44"
+            },
+            {
+              "offset": "0x476",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameScore@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0226",
+              "local": false,
+              "candidate_target": "0x0043251C",
+              "target": "0x00474C44",
+              "addend": 0,
+              "target_encoded_value": "0x00474C44"
+            },
+            {
+              "offset": "0x47E",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameScore@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0226",
+              "local": false,
+              "candidate_target": "0x0043251C",
+              "target": "0x00474C44",
+              "addend": 0,
+              "target_encoded_value": "0x00474C44"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        "player-auxiliary-damage-at-position": {
+          "unit": "player-auxiliary-damage-at-position",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+          "target_address": "0x004059F0",
+          "size": 202,
+          "matched_bytes": 202,
+          "compared_size": 202,
+          "matched_compared_bytes": 202,
+          "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+          "image_sha256": "ecf7706baa5169cb1a8646c0bdfbb0c991849b1101d4dcf54a781d91bbac6c3e",
+          "pdb_guid": "6915d79f3a7c21458565ffaf989c1a9a",
+          "pdb_age": 1,
+          "candidate_address": "0x004120F0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 13,
+          "decoded_bytes": 202,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x3D",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0154",
+              "local": false,
+              "candidate_target": "0x004323FC",
+              "target": "0x004776F4",
+              "addend": 0,
+              "target_encoded_value": "0x004776F4"
+            },
+            {
+              "offset": "0x64",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0306",
+              "local": false,
+              "candidate_target": "0x0043265C",
+              "target": "0x00477704",
+              "addend": 0,
+              "target_encoded_value": "0x00477704"
+            },
+            {
+              "offset": "0x79",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0154",
+              "local": false,
+              "candidate_target": "0x004323FC",
+              "target": "0x004776F4",
+              "addend": 0,
+              "target_encoded_value": "0x004776F4"
+            },
+            {
+              "offset": "0x8E",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameStatisticsIndex0@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0234",
+              "local": false,
+              "candidate_target": "0x0043253C",
+              "target": "0x00474C68",
+              "addend": 0,
+              "target_encoded_value": "0x00474C68"
+            },
+            {
+              "offset": "0xA0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0306",
+              "local": false,
+              "candidate_target": "0x0043265C",
+              "target": "0x00477704",
+              "addend": 0,
+              "target_encoded_value": "0x00477704"
+            },
+            {
+              "offset": "0xB5",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameStatisticsIndex0@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0234",
+              "local": false,
+              "candidate_target": "0x0043253C",
+              "target": "0x00474C68",
+              "addend": 0,
+              "target_encoded_value": "0x00474C68"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        "gui-update-callback-context": {
+          "unit": "gui-update-callback-context",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?GuiUpdateCallback@@YIHPAX@Z",
+          "target_address": "0x00415AE0",
+          "size": 7,
+          "matched_bytes": 7,
+          "compared_size": 7,
+          "matched_compared_bytes": 7,
+          "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+          "image_sha256": "ecf7706baa5169cb1a8646c0bdfbb0c991849b1101d4dcf54a781d91bbac6c3e",
+          "pdb_guid": "6915d79f3a7c21458565ffaf989c1a9a",
+          "pdb_age": 1,
+          "candidate_address": "0x0042C750",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 8,
+          "decoded_bytes": 7,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+              "linked_symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+              "local": false,
+              "candidate_target": "0x0042B850",
+              "target": "0x00414900",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFEE1A"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        }
+      }
+    },
+    {
+      "label": "cold-two",
+      "exit": 0,
+      "unit_count": 1,
+      "matched_bytes": 3836,
+      "manifest_sha256": "26747196b3c255a87a0ac2e13bacc1a01e7a84fabb65374d74b87743d2fcc0e8",
+      "producer": "build/match-linked/PlayerCalculateDamage",
+      "cold_driver": "scripts/ltcg_link.py:cold_link",
+      "build_returncode": 0,
+      "units": [
+        {
+          "unit": "gui-update-stage-elements",
+          "size": 3836,
+          "result": "exact",
+          "image_sha256": "817eff6847ccaad0e4c763a4fedb895c015e51d57073f306a59323c36ecc8e98",
+          "pdb_guid": "27bb37c25d95de459b290dc764b23b19"
+        }
+      ],
+      "image_sha256": "817eff6847ccaad0e4c763a4fedb895c015e51d57073f306a59323c36ecc8e98",
+      "pdb_guid": "27bb37c25d95de459b290dc764b23b19",
+      "native": {
+        "address": 4372560,
+        "size": 3836,
+        "sha256": "fb449c124f09216fa7cf1616ce55ef471959ca325ec0bd48f15851aefbe59cb6",
+        "target_bound_sha256": "8010a918958dce15d47c90e86c842b22854c1be40d608fbeaf011d5597f54768",
+        "instructions": 1089,
+        "fields": [
+          [
+            36,
+            "DIR32",
+            4400528,
+            4792308
+          ],
+          [
+            56,
+            "DIR32",
+            4400476,
+            4792248
+          ],
+          [
+            82,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            114,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            146,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            168,
+            "DIR32",
+            4400708,
+            4683828
+          ],
+          [
+            190,
+            "DIR32",
+            4395624,
+            4656092
+          ],
+          [
+            213,
+            "DIR32",
+            4395616,
+            4656400
+          ],
+          [
+            276,
+            "DIR32",
+            4395608,
+            4656392
+          ],
+          [
+            295,
+            "DIR32",
+            4395600,
+            4656384
+          ],
+          [
+            354,
+            "DIR32",
+            4400460,
+            4672588
+          ],
+          [
+            371,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            409,
+            "REL32",
+            4227776,
+            4449696
+          ],
+          [
+            434,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            459,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            464,
+            "DIR32",
+            4400148,
+            4683524
+          ],
+          [
+            554,
+            "DIR32",
+            4395596,
+            4656376
+          ],
+          [
+            604,
+            "DIR32",
+            4400708,
+            4683828
+          ],
+          [
+            610,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            628,
+            "DIR32",
+            4395492,
+            4656168
+          ],
+          [
+            647,
+            "DIR32",
+            4395268,
+            4655876
+          ],
+          [
+            944,
+            "DIR32",
+            4395504,
+            4656072
+          ],
+          [
+            967,
+            "DIR32",
+            4395592,
+            4655964
+          ],
+          [
+            1278,
+            "DIR32",
+            4400524,
+            4672636
+          ],
+          [
+            1296,
+            "DIR32",
+            4376368,
+            4282336
+          ],
+          [
+            1302,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1318,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1338,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1358,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1395,
+            "DIR32",
+            4400488,
+            4672644
+          ],
+          [
+            1426,
+            "REL32",
+            4215728,
+            4495696
+          ],
+          [
+            1462,
+            "REL32",
+            4256480,
+            4495472
+          ],
+          [
+            1468,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            1632,
+            "REL32",
+            4215728,
+            4495696
+          ],
+          [
+            1663,
+            "REL32",
+            4256480,
+            4495472
+          ],
+          [
+            1669,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            1944,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            2124,
+            "REL32",
+            4367936,
+            4284048
+          ],
+          [
+            2145,
+            "DIR32",
+            4395280,
+            4655976
+          ],
+          [
+            2160,
+            "DIR32",
+            4395276,
+            4655972
+          ],
+          [
+            2177,
+            "DIR32",
+            4395296,
+            4655868
+          ],
+          [
+            2201,
+            "REL32",
+            4401012,
+            4602668
+          ],
+          [
+            2234,
+            "DIR32",
+            4400024,
+            4791312
+          ],
+          [
+            2953,
+            "REL32",
+            4399536,
+            4531361
+          ],
+          [
+            2972,
+            "DIR32",
+            4400148,
+            4683524
+          ],
+          [
+            3069,
+            "DIR32",
+            4400692,
+            4793744
+          ],
+          [
+            3074,
+            "REL32",
+            4287968,
+            4447376
+          ],
+          [
+            3120,
+            "DIR32",
+            4400692,
+            4793744
+          ],
+          [
+            3125,
+            "REL32",
+            4287968,
+            4447376
+          ],
+          [
+            3202,
+            "REL32",
+            4227776,
+            4449696
+          ],
+          [
+            3236,
+            "REL32",
+            4227776,
+            4449696
+          ],
+          [
+            3248,
+            "DIR32",
+            4400148,
+            4683524
+          ],
+          [
+            3303,
+            "DIR32",
+            4400472,
+            4683508
+          ],
+          [
+            3542,
+            "REL32",
+            4230272,
+            4451888
+          ],
+          [
+            3554,
+            "DIR32",
+            4395292,
+            4655948
+          ],
+          [
+            3560,
+            "DIR32",
+            4400708,
+            4683828
+          ],
+          [
+            3596,
+            "DIR32",
+            4395584,
+            4656368
+          ],
+          [
+            3620,
+            "DIR32",
+            4395576,
+            4656360
+          ],
+          [
+            3625,
+            "REL32",
+            4401012,
+            4602668
+          ],
+          [
+            3647,
+            "DIR32",
+            4395572,
+            4655936
+          ],
+          [
+            3666,
+            "DIR32",
+            4395568,
+            4655932
+          ],
+          [
+            3706,
+            "DIR32",
+            4395280,
+            4655976
+          ],
+          [
+            3724,
+            "DIR32",
+            4395276,
+            4655972
+          ],
+          [
+            3744,
+            "DIR32",
+            4395296,
+            4655868
+          ],
+          [
+            3785,
+            "REL32",
+            4401012,
+            4602668
+          ],
+          [
+            3808,
+            "DIR32",
+            4373860,
+            4279828
+          ],
+          [
+            3812,
+            "DIR32",
+            4373876,
+            4279844
+          ],
+          [
+            3816,
+            "DIR32",
+            4373896,
+            4279864
+          ],
+          [
+            3820,
+            "DIR32",
+            4373916,
+            4279884
+          ],
+          [
+            3824,
+            "DIR32",
+            4373939,
+            4279907
+          ],
+          [
+            3828,
+            "DIR32",
+            4373946,
+            4279914
+          ],
+          [
+            3832,
+            "DIR32",
+            4373953,
+            4279921
+          ]
+        ],
+        "fixed_locals": [
+          [
+            13,
+            60,
+            "je"
+          ],
+          [
+            33,
+            60,
+            "jl"
+          ],
+          [
+            93,
+            80,
+            "jne"
+          ],
+          [
+            125,
+            112,
+            "jne"
+          ],
+          [
+            157,
+            144,
+            "jne"
+          ],
+          [
+            172,
+            264,
+            "jne"
+          ],
+          [
+            176,
+            348,
+            "je"
+          ],
+          [
+            199,
+            348,
+            "jne"
+          ],
+          [
+            222,
+            348,
+            "jp"
+          ],
+          [
+            235,
+            240,
+            "jmp"
+          ],
+          [
+            251,
+            240,
+            "jne"
+          ],
+          [
+            262,
+            342,
+            "jmp"
+          ],
+          [
+            266,
+            348,
+            "je"
+          ],
+          [
+            285,
+            306,
+            "jnp"
+          ],
+          [
+            304,
+            348,
+            "jne"
+          ],
+          [
+            331,
+            320,
+            "jne"
+          ],
+          [
+            445,
+            386,
+            "jne"
+          ],
+          [
+            470,
+            1932,
+            "je"
+          ],
+          [
+            481,
+            1932,
+            "je"
+          ],
+          [
+            495,
+            1932,
+            "jne"
+          ],
+          [
+            544,
+            564,
+            "jne"
+          ],
+          [
+            581,
+            595,
+            "jne"
+          ],
+          [
+            620,
+            942,
+            "je"
+          ],
+          [
+            637,
+            662,
+            "je"
+          ],
+          [
+            656,
+            1263,
+            "jne"
+          ],
+          [
+            672,
+            798,
+            "jle"
+          ],
+          [
+            684,
+            784,
+            "je"
+          ],
+          [
+            694,
+            710,
+            "je"
+          ],
+          [
+            701,
+            736,
+            "je"
+          ],
+          [
+            708,
+            696,
+            "jne"
+          ],
+          [
+            718,
+            784,
+            "je"
+          ],
+          [
+            725,
+            736,
+            "je"
+          ],
+          [
+            732,
+            720,
+            "jne"
+          ],
+          [
+            734,
+            784,
+            "jmp"
+          ],
+          [
+            740,
+            784,
+            "je"
+          ],
+          [
+            759,
+            784,
+            "jne"
+          ],
+          [
+            766,
+            784,
+            "je"
+          ],
+          [
+            782,
+            768,
+            "jne"
+          ],
+          [
+            796,
+            680,
+            "jl"
+          ],
+          [
+            806,
+            928,
+            "je"
+          ],
+          [
+            816,
+            831,
+            "je"
+          ],
+          [
+            822,
+            875,
+            "je"
+          ],
+          [
+            829,
+            818,
+            "jne"
+          ],
+          [
+            839,
+            928,
+            "je"
+          ],
+          [
+            852,
+            875,
+            "je"
+          ],
+          [
+            859,
+            848,
+            "jne"
+          ],
+          [
+            870,
+            1257,
+            "jmp"
+          ],
+          [
+            879,
+            928,
+            "je"
+          ],
+          [
+            898,
+            928,
+            "jne"
+          ],
+          [
+            905,
+            928,
+            "je"
+          ],
+          [
+            907,
+            912,
+            "jmp"
+          ],
+          [
+            926,
+            912,
+            "jne"
+          ],
+          [
+            937,
+            1257,
+            "jmp"
+          ],
+          [
+            953,
+            1263,
+            "jp"
+          ],
+          [
+            976,
+            1263,
+            "jp"
+          ],
+          [
+            992,
+            1134,
+            "jle"
+          ],
+          [
+            1012,
+            1120,
+            "je"
+          ],
+          [
+            1022,
+            1038,
+            "je"
+          ],
+          [
+            1029,
+            1064,
+            "je"
+          ],
+          [
+            1036,
+            1024,
+            "jne"
+          ],
+          [
+            1046,
+            1120,
+            "je"
+          ],
+          [
+            1053,
+            1064,
+            "je"
+          ],
+          [
+            1060,
+            1048,
+            "jne"
+          ],
+          [
+            1062,
+            1120,
+            "jmp"
+          ],
+          [
+            1068,
+            1120,
+            "je"
+          ],
+          [
+            1087,
+            1120,
+            "jne"
+          ],
+          [
+            1094,
+            1120,
+            "je"
+          ],
+          [
+            1096,
+            1104,
+            "jmp"
+          ],
+          [
+            1118,
+            1104,
+            "jne"
+          ],
+          [
+            1132,
+            1008,
+            "jl"
+          ],
+          [
+            1142,
+            1248,
+            "je"
+          ],
+          [
+            1152,
+            1167,
+            "je"
+          ],
+          [
+            1158,
+            1199,
+            "je"
+          ],
+          [
+            1165,
+            1154,
+            "jne"
+          ],
+          [
+            1175,
+            1248,
+            "je"
+          ],
+          [
+            1188,
+            1199,
+            "je"
+          ],
+          [
+            1195,
+            1184,
+            "jne"
+          ],
+          [
+            1197,
+            1248,
+            "jmp"
+          ],
+          [
+            1203,
+            1248,
+            "je"
+          ],
+          [
+            1222,
+            1248,
+            "jne"
+          ],
+          [
+            1229,
+            1248,
+            "je"
+          ],
+          [
+            1246,
+            1232,
+            "jne"
+          ],
+          [
+            1271,
+            1587,
+            "jne"
+          ],
+          [
+            1291,
+            1415,
+            "ja"
+          ],
+          [
+            1307,
+            1415,
+            "jl"
+          ],
+          [
+            1314,
+            1415,
+            "jmp"
+          ],
+          [
+            1323,
+            1587,
+            "jl"
+          ],
+          [
+            1334,
+            1415,
+            "jmp"
+          ],
+          [
+            1343,
+            1587,
+            "jl"
+          ],
+          [
+            1354,
+            1415,
+            "jmp"
+          ],
+          [
+            1377,
+            1415,
+            "jmp"
+          ],
+          [
+            1384,
+            1415,
+            "jmp"
+          ],
+          [
+            1391,
+            1415,
+            "jmp"
+          ],
+          [
+            1491,
+            1501,
+            "jne"
+          ],
+          [
+            1499,
+            1529,
+            "jmp"
+          ],
+          [
+            1512,
+            1523,
+            "je"
+          ],
+          [
+            1552,
+            1561,
+            "jne"
+          ],
+          [
+            1606,
+            1788,
+            "jge"
+          ],
+          [
+            1615,
+            1910,
+            "jne"
+          ],
+          [
+            1692,
+            1702,
+            "jne"
+          ],
+          [
+            1700,
+            1730,
+            "jmp"
+          ],
+          [
+            1713,
+            1724,
+            "je"
+          ],
+          [
+            1753,
+            1762,
+            "jne"
+          ],
+          [
+            1786,
+            1910,
+            "jmp"
+          ],
+          [
+            1792,
+            1910,
+            "je"
+          ],
+          [
+            1802,
+            1822,
+            "je"
+          ],
+          [
+            1813,
+            1848,
+            "je"
+          ],
+          [
+            1820,
+            1808,
+            "jne"
+          ],
+          [
+            1830,
+            1904,
+            "je"
+          ],
+          [
+            1837,
+            1848,
+            "je"
+          ],
+          [
+            1844,
+            1832,
+            "jne"
+          ],
+          [
+            1846,
+            1904,
+            "jmp"
+          ],
+          [
+            1852,
+            1904,
+            "je"
+          ],
+          [
+            1871,
+            1904,
+            "jne"
+          ],
+          [
+            1878,
+            1904,
+            "je"
+          ],
+          [
+            1880,
+            1888,
+            "jmp"
+          ],
+          [
+            1902,
+            1888,
+            "jne"
+          ],
+          [
+            1921,
+            1600,
+            "jb"
+          ],
+          [
+            1927,
+            2108,
+            "jmp"
+          ],
+          [
+            1940,
+            2058,
+            "je"
+          ],
+          [
+            1956,
+            1971,
+            "je"
+          ],
+          [
+            1962,
+            1999,
+            "je"
+          ],
+          [
+            1969,
+            1958,
+            "jne"
+          ],
+          [
+            1979,
+            2048,
+            "je"
+          ],
+          [
+            1988,
+            1999,
+            "je"
+          ],
+          [
+            1995,
+            1984,
+            "jne"
+          ],
+          [
+            1997,
+            2048,
+            "jmp"
+          ],
+          [
+            2003,
+            2048,
+            "je"
+          ],
+          [
+            2022,
+            2048,
+            "jne"
+          ],
+          [
+            2029,
+            2048,
+            "je"
+          ],
+          [
+            2046,
+            2032,
+            "jne"
+          ],
+          [
+            2116,
+            2970,
+            "je"
+          ],
+          [
+            2130,
+            2213,
+            "jne"
+          ],
+          [
+            2154,
+            2192,
+            "jne"
+          ],
+          [
+            2169,
+            2192,
+            "jp"
+          ],
+          [
+            2187,
+            2970,
+            "jmp"
+          ],
+          [
+            2208,
+            2970,
+            "jmp"
+          ],
+          [
+            2221,
+            2960,
+            "je"
+          ],
+          [
+            2243,
+            2351,
+            "je"
+          ],
+          [
+            2253,
+            2270,
+            "je"
+          ],
+          [
+            2261,
+            2296,
+            "je"
+          ],
+          [
+            2268,
+            2256,
+            "jne"
+          ],
+          [
+            2278,
+            2351,
+            "je"
+          ],
+          [
+            2285,
+            2296,
+            "je"
+          ],
+          [
+            2292,
+            2280,
+            "jne"
+          ],
+          [
+            2294,
+            2351,
+            "jmp"
+          ],
+          [
+            2300,
+            2351,
+            "je"
+          ],
+          [
+            2321,
+            2351,
+            "jne"
+          ],
+          [
+            2328,
+            2351,
+            "je"
+          ],
+          [
+            2349,
+            2336,
+            "jne"
+          ],
+          [
+            2363,
+            2465,
+            "je"
+          ],
+          [
+            2373,
+            2389,
+            "je"
+          ],
+          [
+            2380,
+            2416,
+            "je"
+          ],
+          [
+            2387,
+            2375,
+            "jne"
+          ],
+          [
+            2397,
+            2465,
+            "je"
+          ],
+          [
+            2405,
+            2416,
+            "je"
+          ],
+          [
+            2412,
+            2400,
+            "jne"
+          ],
+          [
+            2414,
+            2465,
+            "jmp"
+          ],
+          [
+            2420,
+            2465,
+            "je"
+          ],
+          [
+            2441,
+            2465,
+            "jne"
+          ],
+          [
+            2448,
+            2465,
+            "je"
+          ],
+          [
+            2463,
+            2450,
+            "jne"
+          ],
+          [
+            2477,
+            2591,
+            "je"
+          ],
+          [
+            2487,
+            2510,
+            "je"
+          ],
+          [
+            2501,
+            2536,
+            "je"
+          ],
+          [
+            2508,
+            2496,
+            "jne"
+          ],
+          [
+            2518,
+            2591,
+            "je"
+          ],
+          [
+            2525,
+            2536,
+            "je"
+          ],
+          [
+            2532,
+            2520,
+            "jne"
+          ],
+          [
+            2534,
+            2591,
+            "jmp"
+          ],
+          [
+            2540,
+            2591,
+            "je"
+          ],
+          [
+            2561,
+            2591,
+            "jne"
+          ],
+          [
+            2568,
+            2591,
+            "je"
+          ],
+          [
+            2589,
+            2576,
+            "jne"
+          ],
+          [
+            2603,
+            2705,
+            "je"
+          ],
+          [
+            2613,
+            2629,
+            "je"
+          ],
+          [
+            2620,
+            2656,
+            "je"
+          ],
+          [
+            2627,
+            2615,
+            "jne"
+          ],
+          [
+            2637,
+            2705,
+            "je"
+          ],
+          [
+            2645,
+            2656,
+            "je"
+          ],
+          [
+            2652,
+            2640,
+            "jne"
+          ],
+          [
+            2654,
+            2705,
+            "jmp"
+          ],
+          [
+            2660,
+            2705,
+            "je"
+          ],
+          [
+            2681,
+            2705,
+            "jne"
+          ],
+          [
+            2688,
+            2705,
+            "je"
+          ],
+          [
+            2703,
+            2690,
+            "jne"
+          ],
+          [
+            2717,
+            2831,
+            "je"
+          ],
+          [
+            2727,
+            2750,
+            "je"
+          ],
+          [
+            2741,
+            2776,
+            "je"
+          ],
+          [
+            2748,
+            2736,
+            "jne"
+          ],
+          [
+            2758,
+            2831,
+            "je"
+          ],
+          [
+            2765,
+            2776,
+            "je"
+          ],
+          [
+            2772,
+            2760,
+            "jne"
+          ],
+          [
+            2774,
+            2831,
+            "jmp"
+          ],
+          [
+            2780,
+            2831,
+            "je"
+          ],
+          [
+            2801,
+            2831,
+            "jne"
+          ],
+          [
+            2808,
+            2831,
+            "je"
+          ],
+          [
+            2829,
+            2816,
+            "jne"
+          ],
+          [
+            2843,
+            2944,
+            "je"
+          ],
+          [
+            2853,
+            2869,
+            "je"
+          ],
+          [
+            2860,
+            2895,
+            "je"
+          ],
+          [
+            2867,
+            2855,
+            "jne"
+          ],
+          [
+            2877,
+            2944,
+            "je"
+          ],
+          [
+            2884,
+            2895,
+            "je"
+          ],
+          [
+            2891,
+            2880,
+            "jne"
+          ],
+          [
+            2893,
+            2944,
+            "jmp"
+          ],
+          [
+            2899,
+            2944,
+            "je"
+          ],
+          [
+            2920,
+            2944,
+            "jne"
+          ],
+          [
+            2927,
+            2944,
+            "je"
+          ],
+          [
+            2942,
+            2929,
+            "jne"
+          ],
+          [
+            2978,
+            3684,
+            "je"
+          ],
+          [
+            2992,
+            3258,
+            "jl"
+          ],
+          [
+            3003,
+            3258,
+            "je"
+          ],
+          [
+            3017,
+            3258,
+            "jne"
+          ],
+          [
+            3031,
+            3135,
+            "jge"
+          ],
+          [
+            3036,
+            3084,
+            "jg"
+          ],
+          [
+            3082,
+            3156,
+            "jmp"
+          ],
+          [
+            3087,
+            3156,
+            "jg"
+          ],
+          [
+            3133,
+            3156,
+            "jmp"
+          ],
+          [
+            3135,
+            3156,
+            "jle"
+          ],
+          [
+            3168,
+            3240,
+            "je"
+          ],
+          [
+            3263,
+            3684,
+            "je"
+          ],
+          [
+            3285,
+            3684,
+            "je"
+          ],
+          [
+            3295,
+            3684,
+            "je"
+          ],
+          [
+            3322,
+            3398,
+            "je"
+          ],
+          [
+            3329,
+            3343,
+            "jne"
+          ],
+          [
+            3341,
+            3415,
+            "jmp"
+          ],
+          [
+            3346,
+            3360,
+            "jne"
+          ],
+          [
+            3358,
+            3449,
+            "jmp"
+          ],
+          [
+            3363,
+            3377,
+            "jne"
+          ],
+          [
+            3375,
+            3483,
+            "jmp"
+          ],
+          [
+            3380,
+            3534,
+            "jne"
+          ],
+          [
+            3396,
+            3514,
+            "jmp"
+          ],
+          [
+            3403,
+            3434,
+            "jne"
+          ],
+          [
+            3415,
+            3534,
+            "jge"
+          ],
+          [
+            3432,
+            3528,
+            "jmp"
+          ],
+          [
+            3437,
+            3468,
+            "jne"
+          ],
+          [
+            3449,
+            3534,
+            "jge"
+          ],
+          [
+            3466,
+            3528,
+            "jmp"
+          ],
+          [
+            3471,
+            3499,
+            "jne"
+          ],
+          [
+            3483,
+            3534,
+            "jge"
+          ],
+          [
+            3497,
+            3528,
+            "jmp"
+          ],
+          [
+            3502,
+            3534,
+            "jne"
+          ],
+          [
+            3514,
+            3534,
+            "jle"
+          ],
+          [
+            3605,
+            3618,
+            "jne"
+          ],
+          [
+            3616,
+            3639,
+            "jmp"
+          ],
+          [
+            3656,
+            3677,
+            "jnp"
+          ],
+          [
+            3675,
+            3684,
+            "jne"
+          ],
+          [
+            3718,
+            3770,
+            "jne"
+          ],
+          [
+            3733,
+            3770,
+            "jp"
+          ]
+        ],
+        "calls": [
+          [
+            81,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            113,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            145,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            370,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            408,
+            4449696,
+            "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+          ],
+          [
+            433,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            458,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            1425,
+            4495696,
+            "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+          ],
+          [
+            1461,
+            4495472,
+            "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+          ],
+          [
+            1631,
+            4495696,
+            "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+          ],
+          [
+            1662,
+            4495472,
+            "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+          ],
+          [
+            2123,
+            4284048,
+            "?Run@GuiMessageVmView@@SGHPAU1@@Z"
+          ],
+          [
+            2200,
+            4602668,
+            "__ftol2"
+          ],
+          [
+            2952,
+            4531361,
+            "??3@YAXPAX@Z"
+          ],
+          [
+            3073,
+            4447376,
+            "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+          ],
+          [
+            3124,
+            4447376,
+            "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+          ],
+          [
+            3201,
+            4449696,
+            "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+          ],
+          [
+            3235,
+            4449696,
+            "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
+          ],
+          [
+            3541,
+            4451888,
+            "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+          ],
+          [
+            3624,
+            4602668,
+            "__ftol2"
+          ],
+          [
+            3784,
+            4602668,
+            "__ftol2"
+          ]
+        ],
+        "returns": [
+          [
+            3767,
+            "4"
+          ],
+          [
+            3802,
+            "4"
+          ]
+        ],
+        "selector_offset": 3808,
+        "selector": [
+          1300,
+          1316,
+          1336,
+          1356,
+          1379,
+          1386,
+          1393
+        ],
+        "pe_relocation_offsets": [
+          36,
+          56,
+          168,
+          190,
+          213,
+          276,
+          295,
+          354,
+          464,
+          554,
+          604,
+          610,
+          628,
+          647,
+          944,
+          967,
+          1278,
+          1296,
+          1302,
+          1318,
+          1338,
+          1358,
+          1395,
+          1468,
+          1669,
+          1944,
+          2145,
+          2160,
+          2177,
+          2234,
+          2972,
+          3069,
+          3120,
+          3248,
+          3303,
+          3554,
+          3560,
+          3596,
+          3620,
+          3647,
+          3666,
+          3706,
+          3724,
+          3744,
+          3808,
+          3812,
+          3816,
+          3820,
+          3824,
+          3828,
+          3832
+        ],
+        "scale_load_then_subframe_offsets": [
+          2192,
+          3770
+        ]
+      },
+      "pdb_owner": {
+        "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+        "address": "0x0042B850",
+        "size": 3836,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 174160,
+        "map_object": "support-14-Gui.ltcg.obj",
+        "pdb_module_index": 8,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-14-Gui.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-14-Gui.ltcg.obj",
+        "sha256": "fb449c124f09216fa7cf1616ce55ef471959ca325ec0bd48f15851aefbe59cb6"
+      },
+      "semantic_bindings": [
+        {
+          "offset": "0x24",
+          "type": "DIR32",
+          "symbol": "?g_GuiSupervisorFlags@@3IA",
+          "candidate_target": "0x00432590",
+          "target": "0x00491FF4",
+          "addend": 0
+        },
+        {
+          "offset": "0x38",
+          "type": "DIR32",
+          "symbol": "?g_GuiGlobalMode@@3HA",
+          "candidate_target": "0x0043255C",
+          "target": "0x00491FB8",
+          "addend": 0
+        },
+        {
+          "offset": "0x52",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x72",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x92",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0xA8",
+          "type": "DIR32",
+          "symbol": "?g_Player@@3PAUPlayer@@A",
+          "candidate_target": "0x00432644",
+          "target": "0x00477834",
+          "addend": 0
+        },
+        {
+          "offset": "0xBE",
+          "type": "DIR32",
+          "symbol": "__real@43d00000",
+          "candidate_target": "0x00431268",
+          "target": "0x00470BDC",
+          "addend": 0
+        },
+        {
+          "offset": "0xD5",
+          "type": "DIR32",
+          "symbol": "__real@c060000000000000",
+          "candidate_target": "0x00431260",
+          "target": "0x00470D10",
+          "addend": 0
+        },
+        {
+          "offset": "0x114",
+          "type": "DIR32",
+          "symbol": "__real@43c80000",
+          "candidate_target": "0x00431258",
+          "target": "0x00470D08",
+          "addend": 0
+        },
+        {
+          "offset": "0x127",
+          "type": "DIR32",
+          "symbol": "__real@c05c000000000000",
+          "candidate_target": "0x00431250",
+          "target": "0x00470D00",
+          "addend": 0
+        },
+        {
+          "offset": "0x162",
+          "type": "DIR32",
+          "symbol": "?g_GuiCounter4C4C@@3HA",
+          "candidate_target": "0x0043254C",
+          "target": "0x00474C4C",
+          "addend": 0
+        },
+        {
+          "offset": "0x173",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x199",
+          "type": "REL32",
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "candidate_target": "0x004082C0",
+          "target": "0x0043E5A0",
+          "addend": 0
+        },
+        {
+          "offset": "0x1B2",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x1CB",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0x1D0",
+          "type": "DIR32",
+          "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+          "candidate_target": "0x00432414",
+          "target": "0x00477704",
+          "addend": 0
+        },
+        {
+          "offset": "0x22A",
+          "type": "DIR32",
+          "symbol": "__real@3ccccccd",
+          "candidate_target": "0x0043124C",
+          "target": "0x00470CF8",
+          "addend": 0
+        },
+        {
+          "offset": "0x25C",
+          "type": "DIR32",
+          "symbol": "?g_Player@@3PAUPlayer@@A",
+          "candidate_target": "0x00432644",
+          "target": "0x00477834",
+          "addend": 0
+        },
+        {
+          "offset": "0x262",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0x274",
+          "type": "DIR32",
+          "symbol": "__real@42a00000",
+          "candidate_target": "0x004311E4",
+          "target": "0x00470C28",
+          "addend": 0
+        },
+        {
+          "offset": "0x287",
+          "type": "DIR32",
+          "symbol": "__real@00000000",
+          "candidate_target": "0x00431104",
+          "target": "0x00470B04",
+          "addend": 0
+        },
+        {
+          "offset": "0x3B0",
+          "type": "DIR32",
+          "symbol": "__real@42800000",
+          "candidate_target": "0x004311F0",
+          "target": "0x00470BC8",
+          "addend": 0
+        },
+        {
+          "offset": "0x3C7",
+          "type": "DIR32",
+          "symbol": "__real@c2800000",
+          "candidate_target": "0x00431248",
+          "target": "0x00470B5C",
+          "addend": 0
+        },
+        {
+          "offset": "0x4FE",
+          "type": "DIR32",
+          "symbol": "?g_GuiStage@@3HA",
+          "candidate_target": "0x0043258C",
+          "target": "0x00474C7C",
+          "addend": 0
+        },
+        {
+          "offset": "0x510",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042C730",
+          "target": "0x00414900",
+          "addend": 3808
+        },
+        {
+          "offset": "0x516",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x526",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x53A",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x54E",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x573",
+          "type": "DIR32",
+          "symbol": "?g_GuiMessageState@@3HA",
+          "candidate_target": "0x00432568",
+          "target": "0x00474C84",
+          "addend": 0
+        },
+        {
+          "offset": "0x592",
+          "type": "REL32",
+          "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "candidate_target": "0x004053B0",
+          "target": "0x00449950",
+          "addend": 0
+        },
+        {
+          "offset": "0x5B6",
+          "type": "REL32",
+          "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "candidate_target": "0x0040F2E0",
+          "target": "0x00449870",
+          "addend": 0
+        },
+        {
+          "offset": "0x5BC",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0x660",
+          "type": "REL32",
+          "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "candidate_target": "0x004053B0",
+          "target": "0x00449950",
+          "addend": 0
+        },
+        {
+          "offset": "0x67F",
+          "type": "REL32",
+          "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "candidate_target": "0x0040F2E0",
+          "target": "0x00449870",
+          "addend": 0
+        },
+        {
+          "offset": "0x685",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0x798",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0x84C",
+          "type": "REL32",
+          "symbol": "?Run@GuiMessageVmView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042A640",
+          "target": "0x00415E90",
+          "addend": 0
+        },
+        {
+          "offset": "0x861",
+          "type": "DIR32",
+          "symbol": "__real@3f7d70a4",
+          "candidate_target": "0x00431110",
+          "target": "0x00470B68",
+          "addend": 0
+        },
+        {
+          "offset": "0x870",
+          "type": "DIR32",
+          "symbol": "__real@3f8147ae",
+          "candidate_target": "0x0043110C",
+          "target": "0x00470B64",
+          "addend": 0
+        },
+        {
+          "offset": "0x881",
+          "type": "DIR32",
+          "symbol": "__real@3f800000",
+          "candidate_target": "0x00431120",
+          "target": "0x00470AFC",
+          "addend": 0
+        },
+        {
+          "offset": "0x899",
+          "type": "REL32",
+          "symbol": "__ftol2",
+          "candidate_target": "0x00432774",
+          "target": "0x00463B2C",
+          "addend": 0
+        },
+        {
+          "offset": "0x8BA",
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "candidate_target": "0x00432398",
+          "target": "0x00491C10",
+          "addend": 0
+        },
+        {
+          "offset": "0xB89",
+          "type": "REL32",
+          "symbol": "??3@YAXPAX@Z",
+          "candidate_target": "0x004321B0",
+          "target": "0x004524A1",
+          "addend": 0
+        },
+        {
+          "offset": "0xB9C",
+          "type": "DIR32",
+          "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+          "candidate_target": "0x00432414",
+          "target": "0x00477704",
+          "addend": 0
+        },
+        {
+          "offset": "0xBFD",
+          "type": "DIR32",
+          "symbol": "?g_MainSoundOwner@@3PAEA",
+          "candidate_target": "0x00432634",
+          "target": "0x00492590",
+          "addend": 0
+        },
+        {
+          "offset": "0xC02",
+          "type": "REL32",
+          "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+          "candidate_target": "0x00416DE0",
+          "target": "0x0043DC90",
+          "addend": 0
+        },
+        {
+          "offset": "0xC30",
+          "type": "DIR32",
+          "symbol": "?g_MainSoundOwner@@3PAEA",
+          "candidate_target": "0x00432634",
+          "target": "0x00492590",
+          "addend": 0
+        },
+        {
+          "offset": "0xC35",
+          "type": "REL32",
+          "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+          "candidate_target": "0x00416DE0",
+          "target": "0x0043DC90",
+          "addend": 0
+        },
+        {
+          "offset": "0xC82",
+          "type": "REL32",
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "candidate_target": "0x004082C0",
+          "target": "0x0043E5A0",
+          "addend": 0
+        },
+        {
+          "offset": "0xCA4",
+          "type": "REL32",
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "candidate_target": "0x004082C0",
+          "target": "0x0043E5A0",
+          "addend": 0
+        },
+        {
+          "offset": "0xCB0",
+          "type": "DIR32",
+          "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+          "candidate_target": "0x00432414",
+          "target": "0x00477704",
+          "addend": 0
+        },
+        {
+          "offset": "0xCE7",
+          "type": "DIR32",
+          "symbol": "?g_GuiGameOwner@@3PAUGuiGameOwnerView@@A",
+          "candidate_target": "0x00432558",
+          "target": "0x004776F4",
+          "addend": 0
+        },
+        {
+          "offset": "0xDD6",
+          "type": "REL32",
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_target": "0x00408C80",
+          "target": "0x0043EE30",
+          "addend": 0
+        },
+        {
+          "offset": "0xDE2",
+          "type": "DIR32",
+          "symbol": "__real@43600000",
+          "candidate_target": "0x0043111C",
+          "target": "0x00470B4C",
+          "addend": 0
+        },
+        {
+          "offset": "0xDE8",
+          "type": "DIR32",
+          "symbol": "?g_Player@@3PAUPlayer@@A",
+          "candidate_target": "0x00432644",
+          "target": "0x00477834",
+          "addend": 0
+        },
+        {
+          "offset": "0xE0C",
+          "type": "DIR32",
+          "symbol": "__real@4050000000000000",
+          "candidate_target": "0x00431240",
+          "target": "0x00470CF0",
+          "addend": 0
+        },
+        {
+          "offset": "0xE24",
+          "type": "DIR32",
+          "symbol": "__real@c03f0000",
+          "candidate_target": "0x00431238",
+          "target": "0x00470CE8",
+          "addend": 0
+        },
+        {
+          "offset": "0xE29",
+          "type": "REL32",
+          "symbol": "__ftol2",
+          "candidate_target": "0x00432774",
+          "target": "0x00463B2C",
+          "addend": 0
+        },
+        {
+          "offset": "0xE3F",
+          "type": "DIR32",
+          "symbol": "__real@c3400000",
+          "candidate_target": "0x00431234",
+          "target": "0x00470B40",
+          "addend": 0
+        },
+        {
+          "offset": "0xE52",
+          "type": "DIR32",
+          "symbol": "__real@43400000",
+          "candidate_target": "0x00431230",
+          "target": "0x00470B3C",
+          "addend": 0
+        },
+        {
+          "offset": "0xE7A",
+          "type": "DIR32",
+          "symbol": "__real@3f7d70a4",
+          "candidate_target": "0x00431110",
+          "target": "0x00470B68",
+          "addend": 0
+        },
+        {
+          "offset": "0xE8C",
+          "type": "DIR32",
+          "symbol": "__real@3f8147ae",
+          "candidate_target": "0x0043110C",
+          "target": "0x00470B64",
+          "addend": 0
+        },
+        {
+          "offset": "0xEA0",
+          "type": "DIR32",
+          "symbol": "__real@3f800000",
+          "candidate_target": "0x00431120",
+          "target": "0x00470AFC",
+          "addend": 0
+        },
+        {
+          "offset": "0xEC9",
+          "type": "REL32",
+          "symbol": "__ftol2",
+          "candidate_target": "0x00432774",
+          "target": "0x00463B2C",
+          "addend": 0
+        },
+        {
+          "offset": "0xEE0",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BD64",
+          "target": "0x00414900",
+          "addend": 1300
+        },
+        {
+          "offset": "0xEE4",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BD74",
+          "target": "0x00414900",
+          "addend": 1316
+        },
+        {
+          "offset": "0xEE8",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BD88",
+          "target": "0x00414900",
+          "addend": 1336
+        },
+        {
+          "offset": "0xEEC",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BD9C",
+          "target": "0x00414900",
+          "addend": 1356
+        },
+        {
+          "offset": "0xEF0",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BDB3",
+          "target": "0x00414900",
+          "addend": 1379
+        },
+        {
+          "offset": "0xEF4",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BDBA",
+          "target": "0x00414900",
+          "addend": 1386
+        },
+        {
+          "offset": "0xEF8",
+          "type": "DIR32",
+          "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+          "candidate_target": "0x0042BDC1",
+          "target": "0x00414900",
+          "addend": 1393
+        }
+      ],
+      "guards": {
+        "player-calculate-damage-to-target": {
+          "unit": "player-calculate-damage-to-target",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?CalculateDamageToTarget@Player@@QAEHPBUPlayerFloat3@@0PAH@Z",
+          "target_address": "0x00428630",
+          "size": 1170,
+          "matched_bytes": 1170,
+          "compared_size": 1170,
+          "matched_compared_bytes": 1170,
+          "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+          "image_sha256": "817eff6847ccaad0e4c763a4fedb895c015e51d57073f306a59323c36ecc8e98",
+          "pdb_guid": "27bb37c25d95de459b290dc764b23b19",
+          "pdb_age": 1,
+          "candidate_address": "0x004144D0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 13,
+          "decoded_bytes": 1170,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x32",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x53",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x9E",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0xB0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x11F",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@00000000",
+              "linked_symbol": "__real@00000000",
+              "local": false,
+              "candidate_target": "0x00431104",
+              "target": "0x00470B04",
+              "addend": 0,
+              "target_encoded_value": "0x00470B04"
+            },
+            {
+              "offset": "0x139",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@00000000",
+              "linked_symbol": "__real@00000000",
+              "local": false,
+              "candidate_target": "0x00431104",
+              "target": "0x00470B04",
+              "addend": 0,
+              "target_encoded_value": "0x00470B04"
+            },
+            {
+              "offset": "0x168",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+              "linked_symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+              "local": false,
+              "candidate_target": "0x004120A0",
+              "target": "0x0040C480",
+              "addend": 0,
+              "target_encoded_value": "0xFFFE3CE4"
+            },
+            {
+              "offset": "0x18C",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?HasIntervalTick@PlayerTimerView@@QBEHH@Z",
+              "linked_symbol": "?HasIntervalTick@PlayerTimerView@@QBEHH@Z",
+              "local": false,
+              "candidate_target": "0x004121E0",
+              "target": "0x00427C70",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF4B0"
+            },
+            {
+              "offset": "0x1A2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+              "linked_symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+              "local": false,
+              "candidate_target": "0x0040F3B0",
+              "target": "0x00449450",
+              "addend": 0,
+              "target_encoded_value": "0x00020C7A"
+            },
+            {
+              "offset": "0x1AE",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?Release@AnmVmIdView@@QAEXXZ",
+              "linked_symbol": "?Release@AnmVmIdView@@QAEXXZ",
+              "local": false,
+              "candidate_target": "0x0040F4C0",
+              "target": "0x00449630",
+              "addend": 0,
+              "target_encoded_value": "0x00020E4E"
+            },
+            {
+              "offset": "0x1C8",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "linked_symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+              "local": false,
+              "candidate_target": "0x004087C0",
+              "target": "0x00448D00",
+              "addend": 0,
+              "target_encoded_value": "0x00020504"
+            },
+            {
+              "offset": "0x1D1",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+              "linked_symbol": "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ",
+              "local": false,
+              "candidate_target": "0x0040F3B0",
+              "target": "0x00449450",
+              "addend": 0,
+              "target_encoded_value": "0x00020C4B"
+            },
+            {
+              "offset": "0x1F0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3e000000",
+              "linked_symbol": "__real@3e000000",
+              "local": false,
+              "candidate_target": "0x00431164",
+              "target": "0x00470B90",
+              "addend": 0,
+              "target_encoded_value": "0x00470B90"
+            },
+            {
+              "offset": "0x234",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+              "linked_symbol": "?SpawnEffectRow@Player@@QAEPAUPlayerEffectRowView@@PBUPlayerFloat3@@MMHH@Z",
+              "local": false,
+              "candidate_target": "0x00411FE0",
+              "target": "0x00427B50",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF2E8"
+            },
+            {
+              "offset": "0x25B",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerUpdateGate28@@3PAUPlayerUpdateGate28@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0331",
+              "local": false,
+              "candidate_target": "0x004326C0",
+              "target": "0x004776EC",
+              "addend": 0,
+              "target_encoded_value": "0x004776EC"
+            },
+            {
+              "offset": "0x262",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+              "linked_symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+              "local": false,
+              "candidate_target": "0x004120F0",
+              "target": "0x004059F0",
+              "addend": 0,
+              "target_encoded_value": "0xFFFDD15A"
+            },
+            {
+              "offset": "0x2AA",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@00000000",
+              "linked_symbol": "__real@00000000",
+              "local": false,
+              "candidate_target": "0x00431104",
+              "target": "0x00470B04",
+              "addend": 0,
+              "target_encoded_value": "0x00470B04"
+            },
+            {
+              "offset": "0x2BF",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x2EE",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x36A",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x373",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@bf000000",
+              "linked_symbol": "__real@bf000000",
+              "local": false,
+              "candidate_target": "0x004311F8",
+              "target": "0x00470B78",
+              "addend": 0,
+              "target_encoded_value": "0x00470B78"
+            },
+            {
+              "offset": "0x38F",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x3AD",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x3B6",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@bf000000",
+              "linked_symbol": "__real@bf000000",
+              "local": false,
+              "candidate_target": "0x004311F8",
+              "target": "0x00470B78",
+              "addend": 0,
+              "target_encoded_value": "0x00470B78"
+            },
+            {
+              "offset": "0x3CE",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f000000",
+              "linked_symbol": "__real@3f000000",
+              "local": false,
+              "candidate_target": "0x00431114",
+              "target": "0x00470B0C",
+              "addend": 0,
+              "target_encoded_value": "0x00470B0C"
+            },
+            {
+              "offset": "0x460",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameScore@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0226",
+              "local": false,
+              "candidate_target": "0x0043251C",
+              "target": "0x00474C44",
+              "addend": 0,
+              "target_encoded_value": "0x00474C44"
+            },
+            {
+              "offset": "0x476",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameScore@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0226",
+              "local": false,
+              "candidate_target": "0x0043251C",
+              "target": "0x00474C44",
+              "addend": 0,
+              "target_encoded_value": "0x00474C44"
+            },
+            {
+              "offset": "0x47E",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameScore@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0226",
+              "local": false,
+              "candidate_target": "0x0043251C",
+              "target": "0x00474C44",
+              "addend": 0,
+              "target_encoded_value": "0x00474C44"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        "player-auxiliary-damage-at-position": {
+          "unit": "player-auxiliary-damage-at-position",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?GetDamageAtPosition@PlayerUpdateGate28@@QAEHPBUPlayerFloat3@@@Z",
+          "target_address": "0x004059F0",
+          "size": 202,
+          "matched_bytes": 202,
+          "compared_size": 202,
+          "matched_compared_bytes": 202,
+          "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+          "image_sha256": "817eff6847ccaad0e4c763a4fedb895c015e51d57073f306a59323c36ecc8e98",
+          "pdb_guid": "27bb37c25d95de459b290dc764b23b19",
+          "pdb_age": 1,
+          "candidate_address": "0x004120F0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 13,
+          "decoded_bytes": 202,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x3D",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0154",
+              "local": false,
+              "candidate_target": "0x004323FC",
+              "target": "0x004776F4",
+              "addend": 0,
+              "target_encoded_value": "0x004776F4"
+            },
+            {
+              "offset": "0x64",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0306",
+              "local": false,
+              "candidate_target": "0x0043265C",
+              "target": "0x00477704",
+              "addend": 0,
+              "target_encoded_value": "0x00477704"
+            },
+            {
+              "offset": "0x79",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0154",
+              "local": false,
+              "candidate_target": "0x004323FC",
+              "target": "0x004776F4",
+              "addend": 0,
+              "target_encoded_value": "0x004776F4"
+            },
+            {
+              "offset": "0x8E",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameStatisticsIndex0@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0234",
+              "local": false,
+              "candidate_target": "0x0043253C",
+              "target": "0x00474C68",
+              "addend": 0,
+              "target_encoded_value": "0x00474C68"
+            },
+            {
+              "offset": "0xA0",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerDrawGate10@@3PAUPlayerDrawGate10@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0306",
+              "local": false,
+              "candidate_target": "0x0043265C",
+              "target": "0x00477704",
+              "addend": 0,
+              "target_encoded_value": "0x00477704"
+            },
+            {
+              "offset": "0xB5",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GameStatisticsIndex0@@3HA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0234",
+              "local": false,
+              "candidate_target": "0x0043253C",
+              "target": "0x00474C68",
+              "addend": 0,
+              "target_encoded_value": "0x00474C68"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        "gui-update-callback-context": {
+          "unit": "gui-update-callback-context",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?GuiUpdateCallback@@YIHPAX@Z",
+          "target_address": "0x00415AE0",
+          "size": 7,
+          "matched_bytes": 7,
+          "compared_size": 7,
+          "matched_compared_bytes": 7,
+          "image": "build/match-linked/PlayerCalculateDamage/source.exe",
+          "image_sha256": "817eff6847ccaad0e4c763a4fedb895c015e51d57073f306a59323c36ecc8e98",
+          "pdb_guid": "27bb37c25d95de459b290dc764b23b19",
+          "pdb_age": 1,
+          "candidate_address": "0x0042C750",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 8,
+          "decoded_bytes": 7,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+              "linked_symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+              "local": false,
+              "candidate_target": "0x0042B850",
+              "target": "0x00414900",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFEE1A"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "serial": true,
+    "cpu": 0,
+    "nice": 10,
+    "cold_timeout_seconds": 900,
+    "zero_object_reuse": true
+  },
+  "claims": {
+    "complete3836": true,
+    "all72_fields": true,
+    "fixed_locals": 250,
+    "selector_entries": 7,
+    "ret4_exits": 2,
+    "direct_calls": 21,
+    "provisional_callback_new_credit": 0,
+    "original_source_qualifiers_or_barriers": false,
+    "original_class_tu_data": false,
+    "product": false,
+    "runtime": false,
+    "portability": false
+  }
+}

@@ -7975,8 +7975,10 @@ registered415AE0 callback now has source; its7-byte exact same-image body remain
 unadmitted context, with source-written/compiler ancestry unknown.
 
 Target executable code3805/1088 instructions is followed by3 alignment bytes
-and seven pointers atEE0. The70 target PE relocation/control fields omit two
-fixed sound-object addresses atBFD/C30; complete replay binds all72 operands.
+and seven pointers atEE0. Instruction/table decoding binds51 absolute-address
+fields and21 calls,72 total, including sound-object immediatesBFD/C30. The target
+PE relocation directory is empty; the earlier70-field attribution to target PE
+relocation/control data was incorrect (corrected2026-10-31).
 All250 fixed local branches, both RET4 exits and selector destinations
 514/524/538/54C/563/56A/571 agree. Four ordinary bytes891..894 still differ:
 message timer loads subframe before scale, where target loads scale before
@@ -8589,3 +8591,34 @@ parked; no current compiler/linker profile changes. Source mappings, boundaries,
 origins and authored denominator stay fixed. Authored exact107618/275863 across
 520 owners; canonical175732/1398, mappings1221/authored703/backlog183. See the
 [complete message teardown proof](evidence/gui-message-teardown-20261031/README.md).
+
+
+## 2026-10-31 Complete3836-byte GUI stage update exact
+
+GuiView::UpdateStageElements414900..4157FB is complete3836/all72 exact in two
+independent17-input canonical colds. Full target/native inventories agree on
+250 fixed local branches,21 direct calls, two RET4 exits and seven selector
+entries atEE0. Executable3805/1088 instructions plus three alignment bytes
+decode1089 instructions across3808 bytes, followed by the28-byte table.
+
+Current-source baseline retains the four-byte message addition reversal.
+Volatile message-scale capture moves the difference to seven frame bytes and
+is restored. Two owner-local ticks now load their float step before a compiler
+memory barrier, then add subframe and convert. Both scale-first additions match
+at890/EBA without extra instructions or stores. Shared Tick/header and all
+profiles stay fixed; original qualifiers/barriers/threading are unknown.
+
+Fresh target PE-header review corrects the old relocation attribution: the
+target base-relocation directory is empty. Decode/table review binds all51
+absolute fields and21 calls, including both sound-object immediates and seven
+self-symbol table fields. Native PE relocations cover the51 absolute fields.
+No field, local destination, literal or table word is waived. Old proof README
+and note are corrected; the comparison infrastructure is unchanged.
+
+First scoped cold also replays old damage1170/auxiliary202,5208/all106 total;
+second selects only3836. Both images preserve1372/all34 plus provisional
+callback7/all1 without new callback credit.58 source/header pins and independent
+PE/MAP/PDB inventories are retained. Authored exact becomes111454/275863 across
+521 owners; canonical179568/1399, mappings1221/authored703/backlog182. No mapping,
+boundary, origin, denominator, product/runtime or portability closure changes.
+See the [complete exact GUI update proof](evidence/gui-update-exact-20261031/README.md).

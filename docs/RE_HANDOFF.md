@@ -4,27 +4,68 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint closes the complete97-byte GUI message teardown
-by retaining the target's six ordered mark/clear pairs. Existing GUI reuse121
-remains exact. Full GameManager cleanup1098/1105, update1538/1544, Player333/325
-and GUI579/574 remain nonexact. Failed parent controls are restored and parked.
-No native job is running.
+selected lane. This checkpoint closes the complete3836-byte GUI stage update:
+all72 fields,250 fixed local branches,21 direct calls, two RET4 exits and seven
+selector entries. Two owner-local timer scale captures retain the target
+operand order. Shared timer/header/profiles stay fixed. Original source
+qualifiers/barriers remain unknown. No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 107,618 / 275,863 |
-| Authored exact owners | 520 |
-| Total canonical exact owners / codegen bytes | 1,398 / 175,732 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 183 |
+| Reviewed authored owned bytes exact | 111,454 / 275,863 |
+| Authored exact owners | 521 |
+| Total canonical exact owners / codegen bytes | 1,399 / 179,568 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 182 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: GUI message teardown memory order
+## Latest source checkpoint: complete GUI stage update exact
+
+[The complete proof](evidence/gui-update-exact-20261031/README.md) adds3836
+authored exact bytes for GuiView::UpdateStageElements414900..4157FB. Fresh
+current-source entry reproduces the old four-byte message-timer mismatch at
+891..894. A volatile scale observation closes that pair but reverses the frame
+pair, leaving seven ordinary bytes wrong atEBB..EC1. It is restored.
+
+The retained source spells out only these two owner-local ticks. Slow paths
+load a meaningful float step before a compiler memory barrier, add the actual
+subframe and convert. Both FLD-scale/FADD-subframe pairs now match at890/EBA,
+without extra instructions, stores, spills, calls or copied bytes. Fast paths
+and every target branch/store remain. Generic AnmVmTimerView::Tick and its
+header stay unchanged. Original barriers/qualifiers/threading are unknown.
+
+Independent complete decoding confirms3805 executable bytes/1088 instructions,
+three alignment bytes and28 selector bytes. With the alignment instruction,
+3808 bytes decode1089 instructions. All250 fixed locals,21 calls, both RET4
+exits atEB7/EDA and selector destinations514/524/538/54C/563/56A/571 agree.
+Every ordinary byte, literal and table word is compared after full binding.
+
+The old packet's target PE-relocation description was incorrect: the target
+directory is empty. Fresh instruction/table decoding binds51 absolute-address
+fields and21 calls; native PE relocation fields cover all51 absolute operands.
+Sound-object immediatesBFD/C30 and all seven self-symbol table fields remain
+mandatory. The old README and durable note are corrected; no comparator changes.
+
+The new unit shares the existing17-input PlayerCalculateDamage producer and
+genuine InitializeVm entry. All compiler profiles and old recipes stay fixed.
+First zero-reuse cold selects3836+1170+202=5208 bytes/all106 fields in one build;
+second selects only3836. Both images preserve1372/all34 existing damage guards
+and the provisional callback7/all1, with no new callback/mapping/origin credit.
+Frozen PE/MAP/PDB proofs and58 source/header pins are retained. No historical
+full replay or host lifecycle/failure tests. Private campaign:
+gui-update-close-20261031. Older GUI/Player context pins are historical.
+
+GameManager cleanup1098/1105, update1538/1544, Player333/325, GUI teardown579/574
+and script binder197/203 remain nonexact. Their parked controls still need new
+evidence before reopening. Product/runtime/portability remain later phases;
+this complete GUI owner does not close the whole subsystem or game.
+
+## Previous source checkpoint: GUI message teardown memory order
 
 [The complete proof](evidence/gui-message-teardown-20261031/README.md) adds97
 bytes/all7 for GuiMessageVmView destruction4136C0..413720. Each of six target

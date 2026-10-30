@@ -11,10 +11,12 @@ there is no new exact byte, owner, source mapping, boundary or origin credit.
 The target owns3805 executable bytes/1088 instructions, three alignment bytes
 and28 table bytes at offsetEE0. The table destinations are514,524,538,54C,563,
 56A,571. Fourteen CC bytes precede and four follow. Both exits consume one stack
-GUI pointer and return RET4. The target PE relocation/direct-call inventory has
-70 fields; two additional fixed ECX sound-object immediates atBFD/C30 are absent
-from its relocation table. They are still mandatory operands, giving72 explicit
-bindings. All literal payloads and21 direct call identities are checked.
+GUI pointer and return RET4. Independent instruction/table decoding binds51 absolute-address fields and21
+direct calls,72 in total. Both fixed ECX sound-object immediates atBFD/C30 are
+mandatory operands. The original target has no PE base-relocation directory;
+the earlier attribution of70 fields to target PE relocation/control inventory
+was incorrect. The retained native receipt inventories all72 fields. All
+literal payloads and21 direct call identities are checked.
 
 Real control-flow corrections put the GUI overlap flag before each independently
 null-checked Player branch, preserve both inverted boss DWORD bits, select boss

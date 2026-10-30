@@ -1359,7 +1359,25 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
         if (message != NULL)
         {
             if (GuiMessageVmView::Run(message) == 0)
-                message->lifetimeTimer.Tick();
+            {
+                AnmVmTimerView &timer = message->lifetimeTimer;
+                float *scale = timer.scale;
+                timer.previous = timer.current;
+                if (*scale > 0.99f && *scale < 1.01f)
+                {
+                    ++timer.current;
+                    timer.subframe += 1.0f;
+                }
+                else
+                {
+                    // Retain the target scale-read-before-subframe order.
+                    // Original source qualifiers or barriers are unknown.
+                    const float step = *scale;
+                    _ReadWriteBarrier();
+                    timer.subframe = step + timer.subframe;
+                    timer.current = static_cast<int>(timer.subframe);
+                }
+            }
             else
             {
                 // Run may replace the owner; retain this cleanup receiver through free.
@@ -1722,7 +1740,24 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
         }
     }
     // HUD spell-countdown and boss-marker phase end: target 0x00415764.
-    gui->frameTimer.Tick();
+    {
+        AnmVmTimerView &timer = gui->frameTimer;
+        float *scale = timer.scale;
+        timer.previous = timer.current;
+        if (*scale > 0.99f && *scale < 1.01f)
+        {
+            ++timer.current;
+            timer.subframe += 1.0f;
+        }
+        else
+        {
+            // The frame timer preserves the same observed operand order.
+            const float step = *scale;
+            _ReadWriteBarrier();
+            timer.subframe = step + timer.subframe;
+            timer.current = static_cast<int>(timer.subframe);
+        }
+    }
     return 1;
 }
 
