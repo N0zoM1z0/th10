@@ -1,4 +1,5 @@
 #include "Main.hpp"
+#include "GameManager.hpp"
 #include "ResultMenu.hpp"
 #include "EnemyGameState.hpp"
 #include "Enemy.hpp"
@@ -518,6 +519,51 @@ static void MarkPlayerVmDeleteState(unsigned int id, unsigned short state)
         for (node = vm->children; node != NULL; node = node->next)
         {
             node->value->deleteState = state;
+        }
+    }
+}
+
+// Target426CF0: complete collision-hit candidate, not an exact claim.
+// The observed boundary is one stack Player pointer and RET4.
+void __stdcall PlayerHandleCollisionHit(Player *player)
+{
+    player->runtimeState = 4;
+    AnmFloat3View position;
+    position.x = player->drawPosition.x + 224.0f;
+    position.y = player->drawPosition.y + 16.0f;
+    position.z = player->drawPosition.z;
+
+    {
+        AnmLoadedView *loaded = reinterpret_cast<BulletManagerView *>(
+            g_EnemyPrimaryResourceOwner)->bulletAnm;
+        const AnmVmIdView effect = loaded->CreateVmVariant0(0x162, 0);
+        g_AnmRenderManagerView->SetVmPosition(effect, &position);
+    }
+    // The resource owner is reread on every iteration in the target.
+    for (int remaining = 32; remaining != 0; --remaining)
+    {
+        AnmLoadedView *loaded = reinterpret_cast<BulletManagerView *>(
+            g_EnemyPrimaryResourceOwner)->bulletAnm;
+        const AnmVmIdView effect = loaded->CreateVmVariant0(0x163, 0);
+        g_AnmRenderManagerView->SetVmPosition(effect, &position);
+    }
+
+    player->updateTimer1.SetCurrent(0);
+    if (g_GameManager != NULL && (g_GameManager->m_Flags & 0x200u) == 0)
+        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(4, 0);
+    player->highlightTimer.SetCurrent(6);
+    static_cast<AnmLoadedView *>(player->resource)->InitializeAndExecuteScriptIndex(
+        reinterpret_cast<AnmVmView *>(&player->drawVm), 0);
+
+    EnemyGameStateView *panel = g_EnemyGameState;
+    if (panel->spellTimer.current >= 60)
+    {
+        panel->currentSpellBonus = 0;
+        panel->flags378C &= ~2u;
+        for (int slot = 0; slot < 8; ++slot)
+        {
+            if (slot != 2)
+                panel->frontVms[slot].flags35C &= ~2u;
         }
     }
 }

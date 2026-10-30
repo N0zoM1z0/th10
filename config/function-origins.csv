@@ -705,7 +705,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004266B0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x004267F0,authored_game,Player,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
 0x004269D0,authored_game,Player,authored,medium,target-authored-neighbor-and-global-2026-09-17
-0x00426CF0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
+0x00426CF0,authored_game,Player,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00426F70,authored_game,Player,authored,high,player-option-rebuild-2026-09-13
 0x00427950,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00427960,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18

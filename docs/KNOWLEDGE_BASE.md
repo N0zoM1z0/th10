@@ -7756,3 +7756,29 @@ bytes/field identities. Exact numerator stays99,996 bytes/491 owners; the correc
 owned denominator is275,817. No compiler/Oracle/origin change, full historical
 replay, product/runtime/portability closure follows. See the [complete proof and
 native reproduction verifier](evidence/player-movement-context-20261030/README.md).
+
+## 2026-10-30 Player collision-hit complete owner and script caller control
+
+`PlayerHandleCollisionHit426CF0..426F62` is a complete627-byte owner,141 decoded
+instructions/all21 fields/seven local branches, one stack Player pointer/RET4
+and13 following CC bytes. Two entry calls426761/42695B are from rectangle and
+laser contact checks; complete `.text` E8/E9 scan finds no interior destination.
+It creates one script162 and32 script163 screen effects at draw position+(224,16,0),
+reloading bullet ANM each iteration; then updates timers, conditionally queues
+sound4, initializes draw script0 and invalidates bonus/front flags except slot2
+when spell timer>=60. The MainSoundOwner symbol denotes array/object storage,
+not a pointer load. Existing origin classification is unchanged; module is Player.
+
+The complete natural source emits624/all21 and cold-reproduces with all17 inputs
+rebuilt. It remains NONEXACT, with entry/FPU/timer scheduling, panel store order
+and the real script-initializer interface open. Adding the three real laser
+source units brings all27 direct initializer calls into the native graph but
+does not alter the complete hit, initializer, state2 or movement identities.
+Caller count alone is not evidence for the missing ABI. Aggregate position
+copy627 is not progress: it adds moves and loses loop alignment. Constructor624
+is neutral; both controls are restored. The typed mode-ID getter and ordinary
+local resolver also remain nonexact and are restored. No profile/ABI waiver.
+Three explicit canonical colds pass1688/all42; eight scoped same-image exact
+checks pass2149/all50, including the actual collision caller bound to the new
+body. This adds source presence only; authored exact remains99,996/491.
+See [the full source/byte/field receipt](evidence/player-hit-context-20261030/README.md).

@@ -2,6 +2,29 @@
 
 ## Current checkpoint
 
+Complete PlayerHandleCollisionHit426CF0..426F62 /627 now has maintained source
+in Player.cpp. Fresh local Ghidra attestation and complete raw review confirm141
+instructions,21 fields,7 local branches, RET4 and13 following CC bytes. Both
+callers426761 (rectangle) and42695B (laser) pass one stack Player pointer. The
+source creates1+32 effects with live bullet-ANM reload, timers/sound/script and
+spell-panel invalidation. First complete source and a fresh17-input cold both
+emit624/all21, NONEXACT: entry/FPU scheduling, timer registers/constants, the
+197-byte initializer's actual interface and panel store order remain open.
+No exact owner/byte credit; see the [complete hit candidate proof](evidence/player-hit-context-20261030/README.md).
+
+Three explicit canonical cold units pass1688/all42 (damage1170, auxiliary202,
+collision316); eight scoped same-image exact checks pass2149/all50, including
+the real hit binding. All17 hit-graph objects rebuild without reuse. Eleven
+prior native candidates and the complete1616-byte movement receipt stay
+unchanged. Adding the three real laser sources supplies all27 direct script
+initializer calls but leaves complete hit/initializer/state2/movement identities
+unchanged; do not reopen missing-caller-count controls alone. Aggregate position
+copy627 loses alignment and adds moves; ordinary constructor624 is neutral;
+both restored. Typed mode-ID getter1620 and local resolver1648 also remain
+nonexact and are restored. Profiles stay pinned. Source-present mappings are
+1206/authored688/backlog197; exact stays99,996/491 of275,817 owned bytes.
+Original names/TU, product/runtime/portability remain open.
+
 Complete Player movement now owns1656 bytes4250B0..425727:1591 code bytes,
 one NOP and two32-byte direction tables. Each table has one encoded absolute
 base reference in this owner's scaled JMP; all16 entries land inside its code,

@@ -1,0 +1,1191 @@
+{
+  "schema": "th10-complete-native-candidate-v1",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "exact_credit": 0,
+  "target_owner_review": {
+    "address": "0x00426CF0",
+    "end": "0x00426F62",
+    "size": 627,
+    "decoded_instructions": 141,
+    "returns": [
+      {
+        "offset": 624,
+        "operand": "4"
+      }
+    ],
+    "following_cc_bytes": 13,
+    "unreachable_alignment": {
+      "offset": 169,
+      "size": 7,
+      "mnemonic": "lea"
+    },
+    "field_review": [
+      {
+        "offset": 5,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x004776F0",
+        "symbol": "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+      },
+      {
+        "offset": 33,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x00470B4C",
+        "symbol": "__real@43600000"
+      },
+      {
+        "offset": 46,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x00491C10",
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+      },
+      {
+        "offset": 69,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x00470B48",
+        "symbol": "__real@41800000"
+      },
+      {
+        "offset": 82,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x00449950",
+        "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+      },
+      {
+        "offset": 122,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x00449870",
+        "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      },
+      {
+        "offset": 128,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x00491C10",
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+      },
+      {
+        "offset": 139,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x004489D0",
+        "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+      },
+      {
+        "offset": 155,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x004492F0",
+        "symbol": "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+      },
+      {
+        "offset": 177,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x004776F0",
+        "symbol": "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+      },
+      {
+        "offset": 194,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x00449950",
+        "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+      },
+      {
+        "offset": 236,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x00449870",
+        "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      },
+      {
+        "offset": 242,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x00491C10",
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+      },
+      {
+        "offset": 253,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x004489D0",
+        "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+      },
+      {
+        "offset": 269,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x004492F0",
+        "symbol": "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+      },
+      {
+        "offset": 290,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x00476F78",
+        "symbol": "?g_AnmGameSpeed@@3MA"
+      },
+      {
+        "offset": 334,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x00477810",
+        "symbol": "?g_GameManager@@3PAUGameManager@@A"
+      },
+      {
+        "offset": 379,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x00492590",
+        "symbol": "?g_MainSoundOwner@@3PAEA"
+      },
+      {
+        "offset": 384,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x0043DC90",
+        "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+      },
+      {
+        "offset": 476,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x0043E710",
+        "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      },
+      {
+        "offset": 481,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x004776F4",
+        "symbol": "?g_EnemyGameState@@3PAUEnemyGameStateView@@A"
+      }
+    ],
+    "fixed_local_branches": [
+      {
+        "offset": 167,
+        "destination": 176,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 277,
+        "destination": 176,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 294,
+        "destination": 333,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 362,
+        "destination": 390,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 370,
+        "destination": 390,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 398,
+        "destination": 437,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 492,
+        "destination": 617,
+        "mnemonic": "jl"
+      }
+    ],
+    "direct_references": [
+      {
+        "address": "0x00426761",
+        "mnemonic": "call",
+        "target": "0x00426CF0"
+      },
+      {
+        "address": "0x0042695B",
+        "mnemonic": "call",
+        "target": "0x00426CF0"
+      }
+    ],
+    "actual_interface": "one stack Player pointer / RET4",
+    "origin": "existing authored classification retained; descriptive module refined to Player; no original type/TU claim"
+  },
+  "native_reproduction": {
+    "before": {
+      "owner": {
+        "symbol": "?PlayerHandleCollisionHit@@YGXPAUPlayer@@@Z",
+        "map_object": "support-06-Player.ltcg.obj",
+        "extent_source": "pdb-section-contribution"
+      },
+      "complete_owned_bytes": 624,
+      "decoded_instructions": 142,
+      "normalized_sha256": "a0f30c1e5929752216673e81a30fbd12c6a56e3214a3b391ad7f434f4dba8895",
+      "field_identities": [
+        {
+          "offset": 5,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 29,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@43600000"
+            ]
+          }
+        },
+        {
+          "offset": 36,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 69,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@41800000"
+            ]
+          }
+        },
+        {
+          "offset": 82,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+            ]
+          }
+        },
+        {
+          "offset": 122,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+            ]
+          }
+        },
+        {
+          "offset": 128,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 139,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 155,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 177,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 194,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+            ]
+          }
+        },
+        {
+          "offset": 236,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+            ]
+          }
+        },
+        {
+          "offset": 242,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 253,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 269,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 295,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmGameSpeed@@3MA"
+            ]
+          }
+        },
+        {
+          "offset": 335,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GameManager@@3PAUGameManager@@A"
+            ]
+          }
+        },
+        {
+          "offset": 380,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 385,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 473,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+            ]
+          }
+        },
+        {
+          "offset": 478,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyGameState@@3PAUEnemyGameStateView@@A"
+            ]
+          }
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 167,
+          "destination": 176,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 277,
+          "destination": 176,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 299,
+          "destination": 334,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 363,
+          "destination": 391,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 371,
+          "destination": 391,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 399,
+          "destination": 434,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 489,
+          "destination": 614,
+          "mnemonic": "jl"
+        }
+      ],
+      "returns": [
+        {
+          "offset": 621,
+          "operand": "4"
+        }
+      ]
+    },
+    "after": {
+      "owner": {
+        "symbol": "?PlayerHandleCollisionHit@@YGXPAUPlayer@@@Z",
+        "map_object": "support-06-Player.ltcg.obj",
+        "extent_source": "pdb-section-contribution"
+      },
+      "complete_owned_bytes": 624,
+      "decoded_instructions": 142,
+      "normalized_sha256": "a0f30c1e5929752216673e81a30fbd12c6a56e3214a3b391ad7f434f4dba8895",
+      "field_identities": [
+        {
+          "offset": 5,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 29,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@43600000"
+            ]
+          }
+        },
+        {
+          "offset": 36,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 69,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@41800000"
+            ]
+          }
+        },
+        {
+          "offset": 82,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+            ]
+          }
+        },
+        {
+          "offset": 122,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+            ]
+          }
+        },
+        {
+          "offset": 128,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 139,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 155,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 177,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 194,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+            ]
+          }
+        },
+        {
+          "offset": 236,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+            ]
+          }
+        },
+        {
+          "offset": 242,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 253,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 269,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 295,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmGameSpeed@@3MA"
+            ]
+          }
+        },
+        {
+          "offset": 335,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GameManager@@3PAUGameManager@@A"
+            ]
+          }
+        },
+        {
+          "offset": 380,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 385,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 473,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+            ]
+          }
+        },
+        {
+          "offset": 478,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyGameState@@3PAUEnemyGameStateView@@A"
+            ]
+          }
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 167,
+          "destination": 176,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 277,
+          "destination": 176,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 299,
+          "destination": 334,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 363,
+          "destination": 391,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 371,
+          "destination": 391,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 399,
+          "destination": 434,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 489,
+          "destination": 614,
+          "mnemonic": "jl"
+        }
+      ],
+      "returns": [
+        {
+          "offset": 621,
+          "operand": "4"
+        }
+      ]
+    }
+  },
+  "cold": {
+    "result": "exact",
+    "unit_count": 3,
+    "matched_bytes": 1688,
+    "selected_units": [
+      "player-collision-check",
+      "player-calculate-damage-to-target",
+      "player-auxiliary-damage-at-position"
+    ],
+    "complete_address_fields": 42,
+    "fresh_hit_graph_inputs": [
+      "src/Enemy.cpp",
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp"
+    ],
+    "reused_hit_graph_objects": 0,
+    "graph": {
+      "source": "src/Enemy.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp"
+      ],
+      "support_profiles": {
+        "src/AnmManager.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/RandomMath.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/AnmVmCreate.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/AnmVmId.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ],
+        "src/Player.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/PlayerCollision.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/EnemyEclDispatcher.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/VmIdInterrupt.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "src/FrontEnd.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "src/ItemManager.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/Main.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/Sound.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/Gui.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "src/Hint.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ]
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+    },
+    "image_sha256": "1ea1662e28c81fb7b13c8787ae614cff89161650e2f28c00f71eeda58eca0749",
+    "source_pins": {
+      "src/Player.cpp": "011bf69930334f4e9c5e473f25463f72584aac27ac75db4172c11498caffcca4",
+      "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+      "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+      "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+      "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+      "config/match-units.toml": "60087ffef37c9c6d2e0b3a1a2ee4ff4bf27713da4137f0df808e218eafa4bc1a",
+      "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f"
+    },
+    "manifest_sha256": "60087ffef37c9c6d2e0b3a1a2ee4ff4bf27713da4137f0df808e218eafa4bc1a"
+  },
+  "same_image_exact_checks": [
+    {
+      "unit": "player-collision-check",
+      "result": "exact",
+      "size": 316,
+      "field_count": 8
+    },
+    {
+      "unit": "player-calculate-damage-to-target",
+      "result": "exact",
+      "size": 1170,
+      "field_count": 28
+    },
+    {
+      "unit": "player-auxiliary-damage-at-position",
+      "result": "exact",
+      "size": 202,
+      "field_count": 6
+    },
+    {
+      "unit": "anm-manager-add-vm-primary-tail",
+      "result": "exact",
+      "size": 118,
+      "field_count": 0
+    },
+    {
+      "unit": "anm-loaded-create-vm-variant0",
+      "result": "exact",
+      "size": 73,
+      "field_count": 5
+    },
+    {
+      "unit": "anm-manager-set-vm-position",
+      "result": "exact",
+      "size": 90,
+      "field_count": 1
+    },
+    {
+      "unit": "enemy-sound-queue-sample",
+      "result": "exact",
+      "size": 123,
+      "field_count": 1
+    },
+    {
+      "unit": "anm-vm-timer-set-current",
+      "result": "exact",
+      "size": 57,
+      "field_count": 1
+    }
+  ],
+  "same_image_exact_bytes": 2149,
+  "same_image_exact_fields": 50,
+  "previous_native_preservation": [
+    {
+      "owner": "scriptinit",
+      "size": 197,
+      "normalized_sha256": "9c7f234990808b09e449cc9b6fab338fa7e6820fa0f21e9a9c9c3ee569f03206",
+      "field_count": 4
+    },
+    {
+      "owner": "playerroot",
+      "size": 3096,
+      "normalized_sha256": "1210f10a755c7e29be1c133957ea8e2fc1b2c66aa224c2e4be43b62677472ce2",
+      "field_count": 110
+    },
+    {
+      "owner": "state2",
+      "size": 786,
+      "normalized_sha256": "f5c3208f25a66a16b18f7b40bb6c8a238c035d7fb7717a76c759272c12627d55",
+      "field_count": 19
+    },
+    {
+      "owner": "destructor",
+      "size": 262,
+      "normalized_sha256": "e8b2b21d8f0b283d9937194a847838c9e9810b626c20f57edc34948370f5f46f",
+      "field_count": 28
+    },
+    {
+      "owner": "shots",
+      "size": 876,
+      "normalized_sha256": "850f6199b07010806c11c61c4e9b074adf05c3a4305bc9007b28a2250d05ea81",
+      "field_count": 22
+    },
+    {
+      "owner": "runtime",
+      "size": 2412,
+      "normalized_sha256": "5799c578ff34e4ed16bd5baa8bd2348b80e9c78c212781f26fc0fc6fdfe0c59b",
+      "field_count": 69
+    },
+    {
+      "owner": "scalar",
+      "size": 652,
+      "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+      "field_count": 10
+    },
+    {
+      "owner": "motion",
+      "size": 160,
+      "normalized_sha256": "9dc49d5961959f424b4ef834845b814bf149bda52940886ef95c32b79550c740",
+      "field_count": 7
+    },
+    {
+      "owner": "setsub",
+      "size": 30,
+      "normalized_sha256": "c76de40cfa91114ae8438335c0a493715d6c0f3fd937988f9c65d0da499ffe16",
+      "field_count": 1
+    },
+    {
+      "owner": "easing",
+      "size": 576,
+      "normalized_sha256": "f9a47c62349f89ab12ab10c4804930806a38bfbbac0594a806cf33571f25386a",
+      "field_count": 55
+    },
+    {
+      "owner": "anmfloat2",
+      "size": 652,
+      "normalized_sha256": "c88873017a2c175690748d2e2a703c41d21ea029a2b6fb3c28aeed17856cfc52",
+      "field_count": 10
+    }
+  ],
+  "movement_native_receipt": "Existing complete1616-byte movement verifier passes all54 fields,78 local branches and both tables in the final cold image.",
+  "controls": [
+    {
+      "name": "twenty-input-all-real-script-callers",
+      "initializer_direct_calls": 27,
+      "hit_size": 624,
+      "initializer_size": 197,
+      "state2_size": 786,
+      "result": "Complete native hit, initializer and state2 bytes/field identities unchanged; movement full receipt unchanged; not adopted.",
+      "extra_sources": [
+        "src/EnemyLaser.cpp",
+        "src/LaserClear.cpp",
+        "src/LaserType1Clear.cpp"
+      ]
+    },
+    {
+      "name": "aggregate-position-copy",
+      "hit_size": 627,
+      "result": "Nonexact: extra moves and missing loop alignment; restored."
+    },
+    {
+      "name": "three-argument-position-constructor",
+      "hit_size": 624,
+      "result": "Complete hit bytes and every field identity unchanged; restored."
+    },
+    {
+      "name": "typed-mode-id-getter",
+      "movement_size": 1620,
+      "result": "Nonexact: outlined getter versus target direct FindVm; restored."
+    },
+    {
+      "name": "ordinary-local-mode-id-resolver",
+      "movement_size": 1648,
+      "result": "Nonexact: extra zero/join and float schedule remain; restored."
+    }
+  ],
+  "remaining_mismatches": [
+    "Entry state store and x87/move scheduling.",
+    "Timer zero, sentinel and scale register allocation/hoisting.",
+    "Script initializer actual private interface: target ECX loaded/EAX VM/EBX script; native ESI loaded/EDX VM/EAX script.",
+    "Spell-panel zero store and flags load order."
+  ],
+  "progress": {
+    "authored_exact_bytes": 99996,
+    "authored_owned_bytes": 275817,
+    "authored_exact_owners": 491,
+    "source_present_mappings": 1206,
+    "source_present_authored": 688,
+    "authored_exact_backlog": 197
+  }
+}
