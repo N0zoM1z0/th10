@@ -130,9 +130,10 @@ extern unsigned int g_PlayerInputBits;
 extern short g_PlayerPower;
 extern int g_EnemyDifficulty;
 
-// TH10-local call contracts for still source-absent callees. Their target
-// private register assignments are evidence, not imposed source conventions.
-extern void ItemAddLives(GameScoreStateView *state, int amount); // 0x4188A0
+// Shared score/life operation reconstructed in GuiScoreDisplay.cpp.
+extern void GameAddLives(int amount, GameScoreStateView *state); // 0x4188A0
+
+// The target-private interface of the remaining source-absent callee is open.
 extern float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 
 // Target 0x4054B0 binds sprites for the integer and two fractional power
@@ -492,7 +493,7 @@ addScore:
             break;
         }
         case 7:
-            ItemAddLives(&g_GameScoreState, 1);
+            GameAddLives(1, &g_GameScoreState);
             g_GameScoreState.AddRank(256);
             break;
         case 8:

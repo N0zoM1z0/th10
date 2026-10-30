@@ -1205,3 +1205,5 @@ PlayerUpdateGate28::StartPowerTransition
 ResultMenuOpenGameOver
 PlayerHandleCollisionHit
 PlayerDrawCallbackBody
+GameUpdateGui
+GameAddLives

@@ -1,31 +1,57 @@
-# TH10 handoff — 2026-10-30
+# TH10 handoff — 2026-10-31
 
 ## Entry and current status
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint is documentation and storage maintenance;
-**no game source, compiler profile, canonical recipe or ledger was changed**.
-No owner experiment remains in progress.
+selected lane. This checkpoint reconstructs two complete score/life owners.
+Maintained source, two canonical recipes and ledgers change; compiler profiles and the
+comparator remain unchanged. No owner experiment remains in progress.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 103,090 / 275,835 |
-| Authored exact owners | 503 |
-| Total canonical exact owners / codegen bytes | 1,380 / 171,194 |
-| Source mappings / authored mappings / authored exact backlog | 1,207 / 689 / 186 |
+| Reviewed authored owned bytes exact | 103,902 / 275,835 |
+| Authored exact owners | 505 |
+| Total canonical exact owners / codegen bytes | 1,382 / 172,006 |
+| Source mappings / authored mappings / authored exact backlog | 1,209 / 691 / 186 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: Ending
+## Latest source checkpoint: score display and extra lives
+
+[The complete proof](evidence/gui-score-display-exact-20261031/README.md)
+adds GameUpdateGui671/all36 fields and GameAddLives141/all12 fields: **812 new
+exact authored bytes**. Both complete owners and every fixed local destination
+pass two independent19-input cold links. The first scoped cold additionally
+passes AddRank42; both images retain the selected eight-owner1490/all57 proof.
+
+GuiScoreDisplay.cpp completes the existing GameManager and Item caller
+interfaces. Reusing GameScoreState storage, full ID clears, two local creator
+call boundaries and a count-first free interface recover the actual private
+ABIs without shared-header/profile/ANM-source changes. Names, original class/TU,
+data ownership, product and runtime remain open.
+
+The refreshed17-input main GUI updater baseline remains3836 bytes with four
+ordinary timer differences.
+Message-result/frame-assignment/frame-order controls merely move that residual
+and are restored. ECL validation/release helpers, reference release, memcmp,
+late cross-TU helpers and direct clear controls remain547/589 and are restored.
+Do not repeat these models without new evidence.
+
+Canonical producer: `build/match-linked/GuiScoreDisplay`. Frozen cold images,
+logs and source pins remain under the private gui-score-display-20261030
+analysis/build campaign. Explicit new selectors are gui-update-score-display
+and game-add-lives; item-rank-add is the affected existing cold guard.
+
+## Previous source checkpoint: Ending
 
 [The complete Ending proof](evidence/ending-native-record-20261030/README.md)
-is the last source change, commit `58bb846`.
+is the previous source checkpoint, commit `58bb846`.
 
 - Run emits the complete 1,568-byte owner: 1,496 code/alignment plus 72 table
   bytes. All 92 field positions, 53 direct local destinations and 18 table
@@ -46,9 +72,9 @@ prediction that distinguishes the proposed source form.
 
 Expanded diagnostic context:
 `.analysis/gpt-6.1-sol/ending-run-context-20261030/final-source-context.json`.
-Its 70 source/header pins still agree with maintained source. Recheck pins,
-object hashes and image hash before incremental reuse; matching pins alone are
-not an exactness receipt.
+Its70 source/header pins predate the current ItemManager.cpp caller update.
+Recheck every input, object hash and image hash before incremental reuse; an
+old image or matching subset is not an exactness receipt.
 
 ## Most recent unfinished investigation: ECL script database
 
@@ -123,8 +149,7 @@ bypass the ownership check or overwrite historical pins to make a cache pass.
 
 Use `scripts/repo-python`; verify the private target before target-dependent
 work, check toolchain declarations and attest Ghidra before using observations.
-No target/Ghidra/compiler run is needed for this maintenance batch. Native
-jobs stay serial, CPU0/nice10, bounded and logged. Complete bytes, every field,
+Native jobs stay serial, CPU0/nice10, bounded and logged. Complete bytes, every field,
 fixed local destinations, required callees and actual ABI remain mandatory.
 
 Cold-replay only new/affected exact owners with explicit `--unit` selectors.
@@ -132,7 +157,7 @@ Do not replay every consumer merely because it shares a file. Ordinary exact
 work requires no host failure/lifecycle/sanitizer/mutation campaign.
 `config/transition-effect-host-inputs.json` remains retired provenance.
 
-Finish maintenance with the default seven lightweight `scripts/ci.py` checks
-and `git diff --check`. Do not regenerate unchanged progress or rebuild game
-code. Commit locally with the specified author/coauthor and `gpt-6.1-sol:`
+Finish with the affected native comparisons, the default seven lightweight
+`scripts/ci.py` checks and `git diff --check`. Regenerate progress when ledger
+inputs change. Commit locally with the specified author/coauthor and `gpt-6.1-sol:`
 prefix; never push.

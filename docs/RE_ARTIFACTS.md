@@ -1,4 +1,4 @@
-# Reconstruction artifacts and recovery — 2026-10-30
+# Reconstruction artifacts and recovery — 2026-10-31
 
 This index describes private local state. Use [RE_HANDOFF.md](RE_HANDOFF.md) for
 continuation and [PROGRESS.md](PROGRESS.md) for current counts. Ignored inputs,
@@ -18,7 +18,9 @@ These campaigns remain expanded under `.analysis/gpt-6.1-sol/` and the matching
 
 | Campaign | Retained purpose |
 | --- | --- |
-| `ending-run-context-20261030` | Latest 21-input diagnostic; only its `final-source` build remains expanded |
+| `gui-score-display-20261030` | New complete exact score/life owners,19-input graph and two frozen canonical colds |
+| `gui-update-context-20261030` | Selectively restored old final cold and current timer controls; no new exact credit |
+| `ending-run-context-20261030` | Previous21-input diagnostic; its ItemManager pin now predates the score/life caller update |
 | `enemy-operands-context-20261030` | Accepted integer reader, float candidate and canonical cold records |
 | `ecl-script-data-20261030` | Unfinished complete AddScriptData comparison and actual caller graph |
 | `anm-executor-inline-context-20261030` | Pin-compatible entry context; other controls remain historical |
