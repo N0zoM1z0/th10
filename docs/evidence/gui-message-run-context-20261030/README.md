@@ -1,6 +1,10 @@
 # Complete GUI message interpreter — 2026-10-30
 
-`GuiMessageVmView::Run` at415E90..41700F remains **NONEXACT**. The current
+Later source progress is recorded in the
+[2026-10-31 refinement](../gui-message-refinement-20261031/README.md); this packet
+retains its historical source epoch.
+
+`GuiMessageVmView::Run` at415E90..41700F remains **NONEXACT**. The recorded
 real-callee context emits4496/4480 bytes, with333 native link fields and121
 fixed local branches. A fresh18-input cold reproduces the complete native
 owner, both RET4 exits and all43 entries of its four tables. No new exact
@@ -13,8 +17,9 @@ The target owns4306 executable bytes/1146 instructions, two alignment bytes and
 entries. Every destination is an instruction start inside the owner. Fresh
 whole-owner decode records121 direct local branches,150 direct calls, both
 RET4 exits and337 decoded address/control operands including43 table words.
-These target operands are decoded explicitly; the target PE relocation table
-alone does not enumerate them. Names/types and original TU remain provisional.
+These target operands are decoded explicitly; fresh PE-header review confirms
+the target base-relocation directory is empty. Names/types and original TU
+remain provisional.
 
 The current17-input GUI image at entry emitted4492, rather than the historical
 4136/4480 source epoch. Its opcode groups followed numerical order. The target

@@ -4,11 +4,12 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint closes the complete3836-byte GUI stage update:
-all72 fields,250 fixed local branches,21 direct calls, two RET4 exits and seven
-selector entries. Two owner-local timer scale captures retain the target
-operand order. Shared timer/header/profiles stay fixed. Original source
-qualifiers/barriers remain unknown. No native job is running.
+selected lane. This checkpoint refines the complete GUI message interpreter:
+4464/4480 bytes remains NONEXACT. All54 hidden EDI return slots now agree,
+while the final149 calls still lack the target's third SetCurrent call. The
+complete GUI updater3836/all72 and existing damage contracts stay exact in a
+separate canonical cold. Shared headers/profiles stay fixed. Original source
+qualifiers/barriers/helper boundaries remain unknown. No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
@@ -24,7 +25,41 @@ The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: complete GUI stage update exact
+## Latest source checkpoint: complete GUI message interpreter refinement
+
+[The complete candidate proof](evidence/gui-message-refinement-20261031/README.md)
+records4464/4480 NONEXACT, with zero new exact credit. Five existing ID arguments
+remove actual integer-to-ID constructions. Chained player sprite lookups/setters
+recover all54 hidden EDI stack slots:18 creations and36 child lookups. Target
+and both final native images independently reproduce every per-callee output
+sequence. Matching slots does not close call offsets or surrounding bytes.
+
+Text14/15 share a body with entries8D/92. A scoped conditional manager read,
+flags7C bitfield, ordered enemy-resource/instruction observations and separate
+profile byte publications recover specific target schedules. Helpers inline
+without added calls. Original types/qualifiers/barriers/helper boundaries stay
+unknown. Shared headers, layout, profile and actual ABI are unchanged.
+
+Final warm and zero-reuse18-input cold have identical complete native receipts:
+4464 bytes,336 fields,121 local branches,149 calls, both RET4 and43 table entries.
+These are native receipts, not blanket target-bound fields/destinations. Target
+337 fields/150 calls still differs: SetCurrent2 versus3, plus ordinary registers,
+read/block schedules and field/table positions. The isolated <=0 wait control
+restores all three calls; later source context remerges one. A4480 intermediate
+also rejects. Complete length alone does not measure exact progress.
+
+Both images preserve six strict existing/provisional guards5288/all107. A
+separate17-input canonical cold selects only GUI3836 and the coupled damage
+1170/202 contracts, passing5208/all106.60 current source/header pins, graph,
+complete native identities, all54 slots and22 bounded observations are retained.
+The failed-generation `direct-enemy-sprite-indices` label is only an unchanged
+relink; the actual32-argument experiment is byte-neutral and restored. Typed
+creation assignments, encoded time and explicit wait-exit controls are parked.
+Private campaign: gui-message-close-20261031. Previous GUI/Player context pins
+are historical. Exact totals, mappings, boundaries, origins and later phases
+remain unchanged; no canonical Run recipe or match is added.
+
+## Previous source checkpoint: complete GUI stage update exact
 
 [The complete proof](evidence/gui-update-exact-20261031/README.md) adds3836
 authored exact bytes for GuiView::UpdateStageElements414900..4157FB. Fresh

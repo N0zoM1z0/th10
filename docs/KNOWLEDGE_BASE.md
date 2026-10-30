@@ -8622,3 +8622,36 @@ PE/MAP/PDB inventories are retained. Authored exact becomes111454/275863 across
 521 owners; canonical179568/1399, mappings1221/authored703/backlog182. No mapping,
 boundary, origin, denominator, product/runtime or portability closure changes.
 See the [complete exact GUI update proof](evidence/gui-update-exact-20261031/README.md).
+
+
+## 2026-10-31 Complete GUI message interpreter output slots and observations
+
+GuiMessageVmView::Run415E90..41700F remains NONEXACT: final4464/4480. Four
+SetVmPosition arguments and one MarkVmForDeletion argument pass the existing
+ID objects. Four chained player portrait child lookups/setters recover target
+argument-before-lookup scheduling and all54 hidden EDI stack outputs:18 VM
+creations and36 child lookups. Fresh target plus both final native images agree
+on each per-callee output sequence; call offsets and surrounding bytes remain
+unclosed. Existing source/header layouts and real interfaces stay fixed.
+
+Shared text14/15 recovers selector entries8D/92. Flags7C bitfield assignment
+recovers the18-byte copy/XOR form. Scoped observations retain conditional text
+manager capture, enemy resource-before-instruction reads and two profile BYTE
+publications with four fresh index-global reads between them. Two ordinary
+inline helpers emit no new calls. These are maintained source models; original
+source types, qualifiers, barriers, threading and helper boundaries are unknown.
+The wait <=0 spelling restores a third SetCurrent in isolation, but later
+source context merges it again. A4480 intermediate is still nonexact. Natural
+source spellings and equal size do not establish complete target equality.
+
+Final warm and zero-reuse18-input cold reproduce identical complete native
+4464/336 fields/121 locals/149 calls,43 table entries, D8 frame and both RET4.
+Target remains4480/337 fields/121 locals/150 calls. Native field/destination
+inventories are not blanket target bindings. Only SetCurrent's per-callee
+physical count differs (2/3); ordinary register/read/block schedules and table
+positions still reject. Both images preserve six guards5288/all107. Separate
+canonical direct GUI caller plus coupled damage cold passes5208/all106.60 source
+pins and22 bounded native observations remain. No comparator/profile, match,
+source mapping, boundary, origin, denominator or later-phase claim changes.
+Authored exact111454/275863 across521 owners; canonical179568/1399. See the
+[complete candidate proof](evidence/gui-message-refinement-20261031/README.md).
