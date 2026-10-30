@@ -1,0 +1,6514 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owner": {
+    "symbol": "?Run@GuiMessageVmView@@SGHPAU1@@Z",
+    "source": "src/Gui.cpp",
+    "address": "0x00415E90",
+    "size": 4480
+  },
+  "status": "complete-native-candidate-nonexact",
+  "exact_credit": 0,
+  "target_review_sha256": "6f2f3da789e2822c47eb9b36af0820db269b29752e042b10a0d66813b27ce88e",
+  "target_review_reference": "docs/evidence/gui-message-run-context-20261030/results.json",
+  "baseline": {
+    "source_sha256": "bf4566b450c7613c487c5e737c862c0b592dc2e0d973dcaac94e09c22b2488bc",
+    "complete_owned_bytes": 4464,
+    "native_fields": 336,
+    "native_direct_calls": 149,
+    "native_SetCurrent_calls": 2,
+    "fresh_artifact_verifier": "docs/evidence/gui-message-refinement-20261031/verify-native.py",
+    "artifact": "build/gpt-6.1-sol/gui-message-close-20261031/candidate-cold"
+  },
+  "target_counts": {
+    "owned_bytes": 4480,
+    "code_bytes": 4306,
+    "alignment_bytes": 2,
+    "selector_bytes": 172,
+    "fields": 337,
+    "direct_calls": 150,
+    "fixed_local_branches": 121,
+    "pe_base_relocation_directory": [
+      0,
+      0
+    ]
+  },
+  "native_reproduction": {
+    "complete_owned_bytes": 4476,
+    "code_and_alignment_bytes": 4304,
+    "decoded_instructions": 1146,
+    "normalized_sha256": "1ed2318f2800b2af056148b257d9b4a756fc757c527ea4e0a80f867a2846ed51",
+    "field_identities": [
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputCurrent@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 82,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ]
+        }
+      },
+      {
+        "offset": 137,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4304
+        }
+      },
+      {
+        "offset": 153,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 161,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 180,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Fn00417010@leaf@th10@@YAPAEPAE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 201,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 211,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 239,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 250,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 274,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "??_C@_01CLKCMJKC@?5?$AA@"
+          ]
+        }
+      },
+      {
+        "offset": 283,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 292,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 306,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 330,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "??_C@_01CLKCMJKC@?5?$AA@"
+          ]
+        }
+      },
+      {
+        "offset": 339,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 347,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 356,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 375,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Fn00417010@leaf@th10@@YAPAEPAE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 394,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 401,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 411,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 418,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 438,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 449,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 468,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Fn00417010@leaf@th10@@YAPAEPAE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 489,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 499,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 522,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 530,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 541,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 561,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 576,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 593,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_Player@@3PAUPlayer@@A"
+          ]
+        }
+      },
+      {
+        "offset": 613,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 629,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_Player@@3PAUPlayer@@A"
+          ]
+        }
+      },
+      {
+        "offset": 649,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 664,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiStage@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 674,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 692,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 709,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 724,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 744,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 770,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 788,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 805,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 821,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 841,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 856,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 873,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_Player@@3PAUPlayer@@A"
+          ]
+        }
+      },
+      {
+        "offset": 890,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 906,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_Player@@3PAUPlayer@@A"
+          ]
+        }
+      },
+      {
+        "offset": 926,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 949,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetInterrupt@AnmVmIdView@@QAEXF@Z"
+          ]
+        }
+      },
+      {
+        "offset": 967,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetInterrupt@AnmVmIdView@@QAEXF@Z"
+          ]
+        }
+      },
+      {
+        "offset": 982,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1003,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1017,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1030,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1038,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1046,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1059,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1067,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1084,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1095,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1122,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1141,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1149,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1168,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1179,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1206,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1252,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 1288,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1293,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSprite@AnmVmIdView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1320,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1325,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSprite@AnmVmIdView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1354,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1359,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSprite@AnmVmIdView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1386,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1391,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSprite@AnmVmIdView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1402,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiStage@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 1419,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4400
+        }
+      },
+      {
+        "offset": 1425,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 1446,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1471,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1476,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1482,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1513,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1518,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1532,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1557,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1562,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1568,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1599,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1604,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1615,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 1636,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1661,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1666,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1672,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1703,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1708,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1722,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1747,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1752,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1758,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1789,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1794,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1805,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 1826,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1851,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1856,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1862,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1893,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1898,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1912,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1937,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1942,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1948,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1979,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1984,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1995,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 2016,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2044,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2049,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2055,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2083,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2088,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2102,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2127,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2132,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2138,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2166,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2171,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2182,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 2203,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2228,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2233,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2239,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2267,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2272,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2286,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2311,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2316,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2322,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2350,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2355,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2366,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 2387,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2412,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2417,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2423,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2451,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2456,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2470,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2495,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2500,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2506,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2534,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2539,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2554,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 2581,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2606,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2611,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2617,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2645,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2650,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2664,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2689,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2694,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2700,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2731,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2736,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2762,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2790,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2795,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2801,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2832,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2837,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2851,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2879,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2884,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2890,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2921,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2926,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2952,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2965,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@AnmVmTimerView@@QAEXM@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2971,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputEdges@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 2997,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputCurrent@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3014,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3033,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_MainSoundOwner@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 3038,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3046,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3074,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GameStageUpdate@@3PAUGameStageUpdateView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3085,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndPlayMusic@@YGHHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3091,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3114,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3124,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiStage@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3141,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4428
+        }
+      },
+      {
+        "offset": 3147,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3167,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3182,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3202,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3218,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3238,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3254,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3274,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3289,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3309,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3325,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3345,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3361,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3381,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3397,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiDifficulty@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3407,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3413,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiShotType@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3419,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPersistentData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 3439,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiStage@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3457,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiDifficulty@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3463,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiShotType@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3469,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiStage@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3475,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3505,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGameFlags@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3514,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GameOwner477830@@3PAUGameChainOwnerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3519,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3529,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiStage@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3543,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3555,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3567,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3572,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3577,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiDifficulty@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3593,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4456
+        }
+      },
+      {
+        "offset": 3599,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3611,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3616,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3623,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3640,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3652,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3657,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3664,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3678,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3690,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3695,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3702,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3717,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3729,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3734,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3741,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3755,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3767,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3772,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3779,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3791,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3796,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3802,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_ReplayManager@@3PAVReplayManager@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3832,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?StageCreateTransitionEffect@@YGPAXHHHIII@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3837,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3867,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3873,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiShotType@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3879,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiDifficulty@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3889,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPersistentData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 3923,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3936,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3948,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3953,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3959,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3971,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3976,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3983,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3995,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4000,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4006,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_ReplayManager@@3PAVReplayManager@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4018,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GameOwner477830@@3PAUGameChainOwnerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4023,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4028,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCharacter@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4034,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiShotType@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4040,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiDifficulty@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4049,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPersistentData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 4092,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4097,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetNextGameMode@MainSupervisorView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4105,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4117,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4129,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4158,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4167,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4174,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetNextGameMode@MainSupervisorView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4179,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GameStageState@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 4184,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Fn004175E0@leaf@th10@@YAXPAE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4192,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiStage@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4212,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?GameQueueScaledSoundCommand@@YGHM@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4246,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Tick@AnmVmTimerView@@QAEXXZ"
+          ]
+        }
+      },
+      {
+        "offset": 4267,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiMessageState@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4278,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiMessageStateAux@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4286,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiMessageState@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4304,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4265
+        }
+      },
+      {
+        "offset": 4308,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 575
+        }
+      },
+      {
+        "offset": 4312,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 663
+        }
+      },
+      {
+        "offset": 4316,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 539
+        }
+      },
+      {
+        "offset": 4320,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 976
+        }
+      },
+      {
+        "offset": 4324,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 997
+        }
+      },
+      {
+        "offset": 4328,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1026
+        }
+      },
+      {
+        "offset": 4332,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1055
+        }
+      },
+      {
+        "offset": 4336,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1137
+        }
+      },
+      {
+        "offset": 4340,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1225
+        }
+      },
+      {
+        "offset": 4344,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2935
+        }
+      },
+      {
+        "offset": 4348,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3061
+        }
+      },
+      {
+        "offset": 4352,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1250
+        }
+      },
+      {
+        "offset": 4356,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1400
+        }
+      },
+      {
+        "offset": 4360,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 141
+        }
+      },
+      {
+        "offset": 4364,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 146
+        }
+      },
+      {
+        "offset": 4368,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 220
+        }
+      },
+      {
+        "offset": 4372,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 518
+        }
+      },
+      {
+        "offset": 4376,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3073
+        }
+      },
+      {
+        "offset": 4380,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3123
+        }
+      },
+      {
+        "offset": 4384,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3395
+        }
+      },
+      {
+        "offset": 4388,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4190
+        }
+      },
+      {
+        "offset": 4392,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 940
+        }
+      },
+      {
+        "offset": 4396,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 958
+        }
+      },
+      {
+        "offset": 4400,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1423
+        }
+      },
+      {
+        "offset": 4404,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1613
+        }
+      },
+      {
+        "offset": 4408,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1803
+        }
+      },
+      {
+        "offset": 4412,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1993
+        }
+      },
+      {
+        "offset": 4416,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2180
+        }
+      },
+      {
+        "offset": 4420,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2364
+        }
+      },
+      {
+        "offset": 4424,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2548
+        }
+      },
+      {
+        "offset": 4428,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3145
+        }
+      },
+      {
+        "offset": 4432,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3181
+        }
+      },
+      {
+        "offset": 4436,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3216
+        }
+      },
+      {
+        "offset": 4440,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3252
+        }
+      },
+      {
+        "offset": 4444,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3288
+        }
+      },
+      {
+        "offset": 4448,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3323
+        }
+      },
+      {
+        "offset": 4452,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3359
+        }
+      },
+      {
+        "offset": 4456,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3597
+        }
+      },
+      {
+        "offset": 4460,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3639
+        }
+      },
+      {
+        "offset": 4464,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3676
+        }
+      },
+      {
+        "offset": 4468,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3715
+        }
+      },
+      {
+        "offset": 4472,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3754
+        }
+      }
+    ],
+    "fixed_local_branches": [
+      {
+        "offset": 24,
+        "destination": 30,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 34,
+        "destination": 103,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 44,
+        "destination": 103,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 61,
+        "destination": 89,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 112,
+        "destination": 4242,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 128,
+        "destination": 4216,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 144,
+        "destination": 149,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 169,
+        "destination": 173,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 215,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 228,
+        "destination": 433,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 256,
+        "destination": 260,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 312,
+        "destination": 316,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 364,
+        "destination": 368,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 428,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 457,
+        "destination": 461,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 513,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 534,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 570,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 583,
+        "destination": 627,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 586,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 622,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 658,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 671,
+        "destination": 758,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 681,
+        "destination": 723,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 684,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 718,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 753,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 761,
+        "destination": 855,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 767,
+        "destination": 855,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 777,
+        "destination": 819,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 780,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 814,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 850,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 863,
+        "destination": 904,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 866,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 899,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 935,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 953,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 971,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 992,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1021,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1050,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1132,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1220,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1245,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1259,
+        "destination": 1334,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1262,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1329,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1395,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1410,
+        "destination": 4216,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 1432,
+        "destination": 1527,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1435,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1522,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1608,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1622,
+        "destination": 1717,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1625,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1712,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1798,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1812,
+        "destination": 1907,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1815,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1902,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1988,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2002,
+        "destination": 2097,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2005,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2092,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2175,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2189,
+        "destination": 2281,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2192,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2276,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2359,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2373,
+        "destination": 2465,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2376,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2460,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2543,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2558,
+        "destination": 2745,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 2567,
+        "destination": 2659,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2570,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2654,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2740,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2748,
+        "destination": 2846,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2751,
+        "destination": 4216,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2841,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2930,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2942,
+        "destination": 2956,
+        "mnemonic": "jg"
+      },
+      {
+        "offset": 2979,
+        "destination": 3029,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2984,
+        "destination": 3029,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 2990,
+        "destination": 4250,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3004,
+        "destination": 4250,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3024,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3056,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3068,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3118,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3132,
+        "destination": 4216,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 3176,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3211,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3247,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3283,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3318,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3354,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3390,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3404,
+        "destination": 3503,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3510,
+        "destination": 3528,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3523,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3536,
+        "destination": 3913,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 3584,
+        "destination": 3800,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 3634,
+        "destination": 3790,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3674,
+        "destination": 3789,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3713,
+        "destination": 3790,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3752,
+        "destination": 3790,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3810,
+        "destination": 4089,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3908,
+        "destination": 4070,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3916,
+        "destination": 4103,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 4014,
+        "destination": 4089,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 4078,
+        "destination": 4216,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 4087,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 4101,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 4188,
+        "destination": 4216,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 4197,
+        "destination": 4206,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 4204,
+        "destination": 4211,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 4236,
+        "destination": 118,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 4275,
+        "destination": 4282,
+        "mnemonic": "je"
+      }
+    ],
+    "tables": [
+      {
+        "instruction_offset": 134,
+        "offset": 4304,
+        "entry_offsets": [
+          4265,
+          575,
+          663,
+          539,
+          976,
+          997,
+          1026,
+          1055,
+          1137,
+          1225,
+          2935,
+          3061,
+          1250,
+          1400,
+          141,
+          146,
+          220,
+          518,
+          3073,
+          3123,
+          3395,
+          4190,
+          940,
+          958
+        ]
+      },
+      {
+        "instruction_offset": 1416,
+        "offset": 4400,
+        "entry_offsets": [
+          1423,
+          1613,
+          1803,
+          1993,
+          2180,
+          2364,
+          2548
+        ]
+      },
+      {
+        "instruction_offset": 3138,
+        "offset": 4428,
+        "entry_offsets": [
+          3145,
+          3181,
+          3216,
+          3252,
+          3288,
+          3323,
+          3359
+        ]
+      },
+      {
+        "instruction_offset": 3590,
+        "offset": 4456,
+        "entry_offsets": [
+          3597,
+          3639,
+          3676,
+          3715,
+          3754
+        ]
+      }
+    ],
+    "direct_call_counts": {
+      "?Add@AnmVmTimerView@@QAEXM@Z": 1,
+      "?Add@GuiScoreView@@QAEXH@Z": 10,
+      "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z": 18,
+      "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ": 5,
+      "?EnemyMarkPendingInterrupt@@YAXPAH@Z": 6,
+      "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z": 5,
+      "?Fn00417010@leaf@th10@@YAPAEPAE@Z": 3,
+      "?Fn004175E0@leaf@th10@@YAXPAE@Z": 1,
+      "?FrontEndPlayMusic@@YGHHH@Z": 1,
+      "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z": 2,
+      "?GameQueueScaledSoundCommand@@YGHM@Z": 1,
+      "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z": 1,
+      "?PlayerSetShotVmInterrupt2@@YAXPAI@Z": 5,
+      "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z": 1,
+      "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z": 36,
+      "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z": 5,
+      "?SetCurrent@AnmVmTimerView@@QAEXH@Z": 3,
+      "?SetInterrupt@AnmVmIdView@@QAEXF@Z": 2,
+      "?SetNextGameMode@MainSupervisorView@@QAEXH@Z": 2,
+      "?SetSprite@AnmVmIdView@@QAEXH@Z": 4,
+      "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z": 32,
+      "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z": 4,
+      "?StageCreateTransitionEffect@@YGPAXHHHIII@Z": 1,
+      "?Tick@AnmVmTimerView@@QAEXXZ": 1
+    },
+    "physical_opcode_order": [
+      14,
+      15,
+      16,
+      17,
+      3,
+      1,
+      2,
+      22,
+      23,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      13,
+      10,
+      11,
+      18,
+      19,
+      20,
+      21,
+      0
+    ],
+    "returns": [
+      {
+        "offset": 4262,
+        "operand": "4"
+      },
+      {
+        "offset": 4300,
+        "operand": "4"
+      }
+    ]
+  },
+  "direct_call_role_order": [
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?Fn00417010@leaf@th10@@YAPAEPAE@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?Fn00417010@leaf@th10@@YAPAEPAE@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?Fn00417010@leaf@th10@@YAPAEPAE@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?SetInterrupt@AnmVmIdView@@QAEXF@Z",
+    "?SetInterrupt@AnmVmIdView@@QAEXF@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+    "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+    "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSprite@AnmVmIdView@@QAEXH@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSprite@AnmVmIdView@@QAEXH@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSprite@AnmVmIdView@@QAEXH@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSprite@AnmVmIdView@@QAEXH@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+    "?Add@AnmVmTimerView@@QAEXM@Z",
+    "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+    "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+    "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+    "?FrontEndPlayMusic@@YGHHH@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?StageCreateTransitionEffect@@YGPAXHHHIII@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z",
+    "?SetNextGameMode@MainSupervisorView@@QAEXH@Z",
+    "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?SetNextGameMode@MainSupervisorView@@QAEXH@Z",
+    "?Fn004175E0@leaf@th10@@YAXPAE@Z",
+    "?GameQueueScaledSoundCommand@@YGHM@Z",
+    "?Tick@AnmVmTimerView@@QAEXXZ"
+  ],
+  "hidden_return_slots": {
+    "target": {
+      "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z": [
+        {
+          "call_offset": 560,
+          "output": "edi, [esp + 0x1c]"
+        },
+        {
+          "call_offset": 612,
+          "output": "edi, [esp + 0xbc]"
+        },
+        {
+          "call_offset": 648,
+          "output": "edi, [esp + 0x8c]"
+        },
+        {
+          "call_offset": 708,
+          "output": "edi, [esp + 0x2c]"
+        },
+        {
+          "call_offset": 743,
+          "output": "edi, [esp + 0xe4]"
+        },
+        {
+          "call_offset": 804,
+          "output": "edi, [esp + 0x34]"
+        },
+        {
+          "call_offset": 840,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 889,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 925,
+          "output": "edi, [esp + 0xc4]"
+        },
+        {
+          "call_offset": 3113,
+          "output": "edi, [esp + 0xb0]"
+        },
+        {
+          "call_offset": 3166,
+          "output": "edi, [esp + 0xb8]"
+        },
+        {
+          "call_offset": 3201,
+          "output": "edi, [esp + 0xc0]"
+        },
+        {
+          "call_offset": 3237,
+          "output": "edi, [esp + 0xc8]"
+        },
+        {
+          "call_offset": 3273,
+          "output": "edi, [esp + 0xd0]"
+        },
+        {
+          "call_offset": 3308,
+          "output": "edi, [esp + 0xd8]"
+        },
+        {
+          "call_offset": 3344,
+          "output": "edi, [esp + 0xe0]"
+        },
+        {
+          "call_offset": 3380,
+          "output": "edi, [esp + 0xe8]"
+        },
+        {
+          "call_offset": 4158,
+          "output": "edi, [esp + 0xf0]"
+        }
+      ],
+      "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z": [
+        {
+          "call_offset": 1287,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 1319,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 1353,
+          "output": "edi, [esp + 0x44]"
+        },
+        {
+          "call_offset": 1385,
+          "output": "edi, [esp + 0xd4]"
+        },
+        {
+          "call_offset": 1470,
+          "output": "edi, [esp + 0x50]"
+        },
+        {
+          "call_offset": 1512,
+          "output": "edi, [esp + 0xa0]"
+        },
+        {
+          "call_offset": 1556,
+          "output": "edi, [esp + 0x58]"
+        },
+        {
+          "call_offset": 1598,
+          "output": "edi, [esp + 0xc8]"
+        },
+        {
+          "call_offset": 1660,
+          "output": "edi, [esp + 0x60]"
+        },
+        {
+          "call_offset": 1702,
+          "output": "edi, [esp + 0xa8]"
+        },
+        {
+          "call_offset": 1746,
+          "output": "edi, [esp + 0x68]"
+        },
+        {
+          "call_offset": 1788,
+          "output": "edi, [esp + 0xe8]"
+        },
+        {
+          "call_offset": 1850,
+          "output": "edi, [esp + 0x70]"
+        },
+        {
+          "call_offset": 1892,
+          "output": "edi, [esp + 0xb0]"
+        },
+        {
+          "call_offset": 1936,
+          "output": "edi, [esp + 0x78]"
+        },
+        {
+          "call_offset": 1978,
+          "output": "edi, [esp + 0xd0]"
+        },
+        {
+          "call_offset": 2043,
+          "output": "edi, [esp + 0x80]"
+        },
+        {
+          "call_offset": 2082,
+          "output": "edi, [esp + 0x1c]"
+        },
+        {
+          "call_offset": 2126,
+          "output": "edi, [esp + 0x20]"
+        },
+        {
+          "call_offset": 2165,
+          "output": "edi, [esp + 0x24]"
+        },
+        {
+          "call_offset": 2227,
+          "output": "edi, [esp + 0x2c]"
+        },
+        {
+          "call_offset": 2266,
+          "output": "edi, [esp + 0x34]"
+        },
+        {
+          "call_offset": 2310,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 2349,
+          "output": "edi, [esp + 0x44]"
+        },
+        {
+          "call_offset": 2411,
+          "output": "edi, [esp + 0x4c]"
+        },
+        {
+          "call_offset": 2450,
+          "output": "edi, [esp + 0x54]"
+        },
+        {
+          "call_offset": 2494,
+          "output": "edi, [esp + 0x5c]"
+        },
+        {
+          "call_offset": 2533,
+          "output": "edi, [esp + 0x64]"
+        },
+        {
+          "call_offset": 2605,
+          "output": "edi, [esp + 0x6c]"
+        },
+        {
+          "call_offset": 2644,
+          "output": "edi, [esp + 0x74]"
+        },
+        {
+          "call_offset": 2688,
+          "output": "edi, [esp + 0x7c]"
+        },
+        {
+          "call_offset": 2730,
+          "output": "edi, [esp + 0x84]"
+        },
+        {
+          "call_offset": 2789,
+          "output": "edi, [esp + 0x8c]"
+        },
+        {
+          "call_offset": 2831,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 2878,
+          "output": "edi, [esp + 0x9c]"
+        },
+        {
+          "call_offset": 2920,
+          "output": "edi, [esp + 0xa4]"
+        }
+      ]
+    },
+    "native": {
+      "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z": [
+        {
+          "call_offset": 560,
+          "output": "edi, [esp + 0x1c]"
+        },
+        {
+          "call_offset": 612,
+          "output": "edi, [esp + 0xbc]"
+        },
+        {
+          "call_offset": 648,
+          "output": "edi, [esp + 0x8c]"
+        },
+        {
+          "call_offset": 708,
+          "output": "edi, [esp + 0x2c]"
+        },
+        {
+          "call_offset": 743,
+          "output": "edi, [esp + 0xe4]"
+        },
+        {
+          "call_offset": 804,
+          "output": "edi, [esp + 0x34]"
+        },
+        {
+          "call_offset": 840,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 889,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 925,
+          "output": "edi, [esp + 0xc4]"
+        },
+        {
+          "call_offset": 3113,
+          "output": "edi, [esp + 0xb0]"
+        },
+        {
+          "call_offset": 3166,
+          "output": "edi, [esp + 0xb8]"
+        },
+        {
+          "call_offset": 3201,
+          "output": "edi, [esp + 0xc0]"
+        },
+        {
+          "call_offset": 3237,
+          "output": "edi, [esp + 0xc8]"
+        },
+        {
+          "call_offset": 3273,
+          "output": "edi, [esp + 0xd0]"
+        },
+        {
+          "call_offset": 3308,
+          "output": "edi, [esp + 0xd8]"
+        },
+        {
+          "call_offset": 3344,
+          "output": "edi, [esp + 0xe0]"
+        },
+        {
+          "call_offset": 3380,
+          "output": "edi, [esp + 0xe8]"
+        },
+        {
+          "call_offset": 4157,
+          "output": "edi, [esp + 0xf0]"
+        }
+      ],
+      "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z": [
+        {
+          "call_offset": 1287,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 1319,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 1353,
+          "output": "edi, [esp + 0x44]"
+        },
+        {
+          "call_offset": 1385,
+          "output": "edi, [esp + 0xd4]"
+        },
+        {
+          "call_offset": 1470,
+          "output": "edi, [esp + 0x50]"
+        },
+        {
+          "call_offset": 1512,
+          "output": "edi, [esp + 0xa0]"
+        },
+        {
+          "call_offset": 1556,
+          "output": "edi, [esp + 0x58]"
+        },
+        {
+          "call_offset": 1598,
+          "output": "edi, [esp + 0xc8]"
+        },
+        {
+          "call_offset": 1660,
+          "output": "edi, [esp + 0x60]"
+        },
+        {
+          "call_offset": 1702,
+          "output": "edi, [esp + 0xa8]"
+        },
+        {
+          "call_offset": 1746,
+          "output": "edi, [esp + 0x68]"
+        },
+        {
+          "call_offset": 1788,
+          "output": "edi, [esp + 0xe8]"
+        },
+        {
+          "call_offset": 1850,
+          "output": "edi, [esp + 0x70]"
+        },
+        {
+          "call_offset": 1892,
+          "output": "edi, [esp + 0xb0]"
+        },
+        {
+          "call_offset": 1936,
+          "output": "edi, [esp + 0x78]"
+        },
+        {
+          "call_offset": 1978,
+          "output": "edi, [esp + 0xd0]"
+        },
+        {
+          "call_offset": 2043,
+          "output": "edi, [esp + 0x80]"
+        },
+        {
+          "call_offset": 2082,
+          "output": "edi, [esp + 0x1c]"
+        },
+        {
+          "call_offset": 2126,
+          "output": "edi, [esp + 0x20]"
+        },
+        {
+          "call_offset": 2165,
+          "output": "edi, [esp + 0x24]"
+        },
+        {
+          "call_offset": 2227,
+          "output": "edi, [esp + 0x2c]"
+        },
+        {
+          "call_offset": 2266,
+          "output": "edi, [esp + 0x34]"
+        },
+        {
+          "call_offset": 2310,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 2349,
+          "output": "edi, [esp + 0x44]"
+        },
+        {
+          "call_offset": 2411,
+          "output": "edi, [esp + 0x4c]"
+        },
+        {
+          "call_offset": 2450,
+          "output": "edi, [esp + 0x54]"
+        },
+        {
+          "call_offset": 2494,
+          "output": "edi, [esp + 0x5c]"
+        },
+        {
+          "call_offset": 2533,
+          "output": "edi, [esp + 0x64]"
+        },
+        {
+          "call_offset": 2605,
+          "output": "edi, [esp + 0x6c]"
+        },
+        {
+          "call_offset": 2644,
+          "output": "edi, [esp + 0x74]"
+        },
+        {
+          "call_offset": 2688,
+          "output": "edi, [esp + 0x7c]"
+        },
+        {
+          "call_offset": 2730,
+          "output": "edi, [esp + 0x84]"
+        },
+        {
+          "call_offset": 2789,
+          "output": "edi, [esp + 0x8c]"
+        },
+        {
+          "call_offset": 2831,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 2878,
+          "output": "edi, [esp + 0x9c]"
+        },
+        {
+          "call_offset": 2920,
+          "output": "edi, [esp + 0xa4]"
+        }
+      ]
+    }
+  },
+  "reviewed_code_events": {
+    "stage7_gate": "jge",
+    "stage7_operand_offsets": [
+      68,
+      77,
+      68,
+      77,
+      46,
+      55,
+      46,
+      55
+    ],
+    "stage7_script_ids": [
+      33,
+      36,
+      33,
+      36,
+      24,
+      27,
+      24,
+      27
+    ],
+    "flag_updates": [
+      "dword ptr [eax + 0x9eb4], 0x20",
+      "dword ptr [eax + 0x9eb4], 0x20"
+    ],
+    "transition_factory_setup": [
+      [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "mov ebx, 0x31"
+      ]
+    ],
+    "flag_before_score_reads": 2
+  },
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp",
+      "src/GuiMessageLeaves.cpp",
+      "src/TransitionEffect.cpp",
+      "src/Chain.cpp",
+      "src/AnmRectangle.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FrontEnd.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ItemManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Main.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Sound.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Gui.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Hint.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/TransitionEffect.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Chain.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/AnmRectangle.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+  },
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+    "src/AnmRectangle.cpp": "3e0687c228ab4b25c9a4255c0f4487975a6f65f7f390abb4ed4cc0d4d7620695",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "fbab9120022c4cdcee384d0781dd2559960333f497bc6e0ab3a37c004c77012d",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameScoreState.hpp": "a07274bb81d0a34795d3325fd43e65c14ce118e7204dd7b0bb922822979f975b",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "c4949db6dc69e600a97004a9e2a5a5f98d162bfa2b669a182d9cd3d4ceecd334",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiMessageLeaves.cpp": "7f0b02c9037056b3613d8322b4da2adc524a10d17ca29f1247159fb5843edb12",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "f3e9b10478ae60504441e60b272cd9f17284554ba59307373f1bb8523fe801f2",
+    "src/ItemManager.cpp": "c7eb31442b087cb6062c9b62e7d9a1e48e6e442f111fc8238603680f4cbacffa",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/Player.cpp": "0ea3456dfb07400146775dedc6f43091e10c07edd07194cb4311306c02e4a89f",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayManager.hpp": "530f31cae0e6766074864bd7504f278293df7e926a7faa931a038e6bdb91e256",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "controls": [
+    {
+      "label": "split-wait-barrier",
+      "complete_owned_bytes": 4480,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "93f0df2d2d1e02b1cac26cbad4d0de66bfdc93b6429b8aeba1aff624c2c4aea1",
+      "source_sha256": "cb47222b18100091cb1263c1c3160e7493f3af75ff76a17208a3927c8cf4d0e6",
+      "image_sha256": "ed981de838da9c51e9e697fa8dc5a02861e18698403529b0a2f551717db2b566",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "target-stage7-order",
+      "complete_owned_bytes": 4480,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "cfc6d165ea3246a69b816b231d0a82cfd135d8d42a6cc14554710996dbaf5358",
+      "source_sha256": "487ef9c79ae2816e7a42cb3f453b74ed1a2608ace7104b2b5aa45a424f3d96be",
+      "image_sha256": "da3a8db491c410ca2f99bd9dc8bace76abf29472fd791b2f3bdda3d658e79949",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "manager-before-side",
+      "complete_owned_bytes": 4480,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "abe57e2041bf9eac4a3f9e382b3cf69a7afe343ab371f187491fa9ba9a133e31",
+      "source_sha256": "8ef73f3df6aabc80278ee7bd732067ad3fa2d1862e98ca577fb6d70cc266e0d2",
+      "image_sha256": "51b6285ef16211e48f04c20340e32718c81911b8e8724df3f0f2813601b8bec0",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "captured-first-line-id",
+      "complete_owned_bytes": 4480,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "fb123bc8749038c7bfd272e9b9023eb36f1ef09da9260d2fbf5e9b08c0619a02",
+      "source_sha256": "6fe25b433d8363d4d49e7f8c5f26bb42f2e3fd14389e4e0ad591aeb011589acc",
+      "image_sha256": "b1b117700e217db60850bbb69a81f5bcff0c9a33fc1eddba8fa56983fc762469",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "ordinary-resource-owner",
+      "complete_owned_bytes": 4496,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "6a53d8d6d196745069999c9f87370f659bef558fde6c5c2f589a34ac57121f0e",
+      "source_sha256": "61386ae723f3461f79db598d2a6a6e8e372802885f555bb33c9618f2916540ad",
+      "image_sha256": "58f676070a2e5b3fd42c9a3eb5fa5de77d4d35e22b0df261c517943906acec5e",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "ordered-side-capture",
+      "complete_owned_bytes": 4496,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "f9819558afcd410bf216b1baea91f74deaa29aea18bd4206df744edb915eec81",
+      "source_sha256": "1d861cd01c5f996e0195bb67d8a6042568999383f3946a65154088b3f6400609",
+      "image_sha256": "e47a700ea4d554bc197d8b1cf3e0b1e1989ee8c048e98e563c81c938fb244b34",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "barrier-instruction-capture",
+      "complete_owned_bytes": 4484,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "873e222bae4d55a546cea4fe872b9c41836c26bef615b5d15edd67bd4edaefe0",
+      "source_sha256": "dd24bfd62a0d8772f754f81e0c5939b77c9f78cf2210c64f9975c6b2f93431fd",
+      "image_sha256": "b072550408edec001b8f9c2c7b6a0141241a1a9f648cecdfaf2d73d4a0303c9d",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "direct-integer-operands",
+      "complete_owned_bytes": 4496,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "2f4c9c75f74d16114682874e430b373b8327678d71250e4607a8d17b1de654d6",
+      "source_sha256": "b244c25b8b1ca34da06b3fde848d32dc11632467570b70c724d8b1ba5496fa33",
+      "image_sha256": "9a1e198c9c0ef8c5e48a7a83a934f23c273ce724931413995e7d9109cabc0b0e",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "replay-tail-placement",
+      "complete_owned_bytes": 4492,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "50c111a715c1bb2925dd665fac14b4794f23586f27db7fd46457d4db06c78100",
+      "source_sha256": "88003ccc7c9cfc3cc0ff32238924416aa1db4f134068ad7bc1d8d8e12000f3c8",
+      "image_sha256": "71e6f4f015f683a6b3fdb7dd6359abe8b0da775eac4bf25200b6b2dd7c0b1f74",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "observed-stage-flags",
+      "complete_owned_bytes": 4492,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "04db395633ab00af36273d8e1e7fac2d534f14ba79a30eaf880f9c37dfd2d21d",
+      "source_sha256": "c159d27d77958c0f689f3cd1a40c1a0701bffc9a34dd02dae5e40866989531a1",
+      "image_sha256": "3510d75f476ec8cb83c1a085e63a6281b4cb90f31723b558966292ee9be50739",
+      "source_inputs": 18,
+      "transition_factory_owned_bytes": null,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "push 0x31"
+      ],
+      "transition_factory_target_section": ".data"
+    },
+    {
+      "label": "real-transition-callee",
+      "complete_owned_bytes": 4484,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "fd53e7a3250c78af604c93bf6d405684366adbdbf1afde005d736f627ed87713",
+      "source_sha256": "88003ccc7c9cfc3cc0ff32238924416aa1db4f134068ad7bc1d8d8e12000f3c8",
+      "image_sha256": "5b940b9984db5f7a5441c8b303cc968df6cdad5f475aa87a0c5ceaabe9ad2014",
+      "source_inputs": 19,
+      "transition_factory_owned_bytes": 81,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 0x31",
+        "mov ebx, 5"
+      ],
+      "transition_factory_target_section": ".text"
+    },
+    {
+      "label": "real-effect-callees",
+      "complete_owned_bytes": 4484,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "39d7eb1a94b52c15b5c4c6aa4d571bdbd3b38e4df51b43a536cd3c6e740afb7f",
+      "source_sha256": "88003ccc7c9cfc3cc0ff32238924416aa1db4f134068ad7bc1d8d8e12000f3c8",
+      "image_sha256": "764f44af23f100821b0955cf5085299afd54339b502016c851c1bf7c6bc8873c",
+      "source_inputs": 21,
+      "transition_factory_owned_bytes": 82,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "mov ebx, 0x31"
+      ],
+      "transition_factory_target_section": ".text"
+    },
+    {
+      "label": "stage-flag-publication",
+      "complete_owned_bytes": 4476,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "1ed2318f2800b2af056148b257d9b4a756fc757c527ea4e0a80f867a2846ed51",
+      "source_sha256": "cec4acfac1a09d16af57f87c8b592827d16c25bbeb34f55850935ff35d2e4efe",
+      "image_sha256": "e5f0ea5239f4b8b06612180b9e8162b10dcd102740545addffaccbb41b9715b6",
+      "source_inputs": 21,
+      "transition_factory_owned_bytes": 82,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "mov ebx, 0x31"
+      ],
+      "transition_factory_target_section": ".text"
+    },
+    {
+      "label": "narrowed-profile-lifetimes",
+      "complete_owned_bytes": 4476,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "5f5e06785a0bf96be4ec401aa79a5d28d963eb06c2223fbc4140edca34c55105",
+      "source_sha256": "4f15504adb62ab1b3255ee50d3561d6426a7f44dc6309b40216ab65e835a30cf",
+      "image_sha256": "5a4dd5efa19a55d791cb824ee1bc651a9f00b945919ec66dc4b9eb514ab6db47",
+      "source_inputs": 21,
+      "transition_factory_owned_bytes": 82,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "mov ebx, 0x31"
+      ],
+      "transition_factory_target_section": ".text"
+    },
+    {
+      "label": "reviewed-candidate",
+      "complete_owned_bytes": 4476,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "1ed2318f2800b2af056148b257d9b4a756fc757c527ea4e0a80f867a2846ed51",
+      "source_sha256": "c4949db6dc69e600a97004a9e2a5a5f98d162bfa2b669a182d9cd3d4ceecd334",
+      "image_sha256": "b78fa2484c6b5de2654d5831f401c19f7fd3f7dc9deec9ab89a84f9d3a482407",
+      "source_inputs": 21,
+      "transition_factory_owned_bytes": 82,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "mov ebx, 0x31"
+      ],
+      "transition_factory_target_section": ".text"
+    },
+    {
+      "label": "candidate-cold",
+      "complete_owned_bytes": 4476,
+      "native_fields": 337,
+      "native_local_branches": 121,
+      "native_direct_calls": 150,
+      "native_SetCurrent_calls": 3,
+      "normalized_sha256": "1ed2318f2800b2af056148b257d9b4a756fc757c527ea4e0a80f867a2846ed51",
+      "source_sha256": "c4949db6dc69e600a97004a9e2a5a5f98d162bfa2b669a182d9cd3d4ceecd334",
+      "image_sha256": "e29da41967e5b98e009a2ba632f04cbf3c54e2f6aa2e123deb885ee3c4acaa52",
+      "source_inputs": 21,
+      "transition_factory_owned_bytes": 82,
+      "exit": 0,
+      "transition_factory_setup": [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "mov ebx, 0x31"
+      ],
+      "transition_factory_target_section": ".text"
+    }
+  ],
+  "native_runs": {
+    "reviewed-candidate": {
+      "variant": "reviewed-candidate",
+      "forced_cold": false,
+      "graph": {
+        "source": "src/Enemy.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/EclVm.cpp",
+          "src/Player.cpp",
+          "src/PlayerCollision.cpp",
+          "src/EnemyEclDispatcher.cpp",
+          "src/VmIdInterrupt.cpp",
+          "src/FrontEnd.cpp",
+          "src/ItemManager.cpp",
+          "src/Main.cpp",
+          "src/Sound.cpp",
+          "src/Gui.cpp",
+          "src/Hint.cpp",
+          "src/GuiMessageLeaves.cpp",
+          "src/TransitionEffect.cpp",
+          "src/Chain.cpp",
+          "src/AnmRectangle.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/RandomMath.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmCreate.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmId.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          "src/Player.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/PlayerCollision.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/EnemyEclDispatcher.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/VmIdInterrupt.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/FrontEnd.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "src/ItemManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Main.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Sound.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Gui.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Hint.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/TransitionEffect.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Chain.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/AnmRectangle.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      },
+      "pins": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+        "src/AnmRectangle.cpp": "3e0687c228ab4b25c9a4255c0f4487975a6f65f7f390abb4ed4cc0d4d7620695",
+        "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+        "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+        "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+        "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+        "src/Enemy.cpp": "fbab9120022c4cdcee384d0781dd2559960333f497bc6e0ab3a37c004c77012d",
+        "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+        "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+        "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+        "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+        "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+        "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+        "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+        "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+        "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+        "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+        "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+        "src/GameScoreState.hpp": "a07274bb81d0a34795d3325fd43e65c14ce118e7204dd7b0bb922822979f975b",
+        "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+        "src/Gui.cpp": "c4949db6dc69e600a97004a9e2a5a5f98d162bfa2b669a182d9cd3d4ceecd334",
+        "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+        "src/GuiMessageLeaves.cpp": "7f0b02c9037056b3613d8322b4da2adc524a10d17ca29f1247159fb5843edb12",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+        "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+        "src/InputState.hpp": "f3e9b10478ae60504441e60b272cd9f17284554ba59307373f1bb8523fe801f2",
+        "src/ItemManager.cpp": "c7eb31442b087cb6062c9b62e7d9a1e48e6e442f111fc8238603680f4cbacffa",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+        "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+        "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+        "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+        "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+        "src/Player.cpp": "0ea3456dfb07400146775dedc6f43091e10c07edd07194cb4311306c02e4a89f",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+        "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/ReplayManager.hpp": "530f31cae0e6766074864bd7504f278293df7e926a7faa931a038e6bdb91e256",
+        "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+        "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+        "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+        "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+        "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+        "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+        "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+        "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+        "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+        "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+      },
+      "changed_inputs": [
+        "src/Gui.cpp"
+      ],
+      "compiled": [
+        "src/Gui.cpp",
+        "build/gpt-6.1-sol/gui-message-wait-20261031/reviewed-candidate/link-anchors.c",
+        "build/gpt-6.1-sol/gui-message-wait-20261031/reviewed-candidate/link-anchors.c"
+      ],
+      "reused": {
+        "src/Enemy.cpp": "a568ed868ce139e2c53e0fbd1104d27a8317c706a4985b04729795aaf50edca7",
+        "src/AnmManager.cpp": "a6d56b1a7034eaaa6af3642ddaa860eb5ecfef257c4862fb4d991b8800af1a6c",
+        "src/RandomMath.cpp": "d0aa62239b594ed34bbbfca2d3886556e0524bb18c52d26c6f738c513a6d83a3",
+        "src/AnmVmCreate.cpp": "5d9ef21497bb15c15ab47db6dab17b44e640f628c67950f23649fbe8dfe21f95",
+        "src/AnmVmId.cpp": "f1e3a2a24bdf5dcf6f4eae918a7bcc3690ad7540b7e97a3e0d44f8084397286f",
+        "src/AnmInt3Scale.cpp": "8016d2782e0834348cf76880faab7a98b9666a87c983eae4414605854231f9ed",
+        "src/EclVm.cpp": "1dcf2f2d00417b252c9fd63a9606e98eed7ea9f030665e38db947c7c3d815f67",
+        "src/Player.cpp": "39c774500fcefc7fe86dd7c6bf8dc45bc72c00469a5a2393033441f30a9967fd",
+        "src/PlayerCollision.cpp": "fa305facfedf1113248dde3bfd0bfef46ecfc9fc2f0b7d3ff1d08655e3f80bd4",
+        "src/EnemyEclDispatcher.cpp": "7ba2f064ff69357aa0581fd8c2ed14c6e25573e1a7487df929c50faa28ea3d3e",
+        "src/VmIdInterrupt.cpp": "780e057a6b1c04eff965ad4dbe63ea73484ee5cae5afb1e355d81afe22e698f2",
+        "src/FrontEnd.cpp": "f301bb1ac4f39da1bae8c76fa461ab491074dfba0e54e3b6b2bf13287abba32d",
+        "src/ItemManager.cpp": "d1942de8e9e447f60111dcf9ec0e3931b99039bcaecebdd24759001d242ad309",
+        "src/Main.cpp": "e0b2c70ee27ceb2237af9da61a17479f075b045d29c2dc02af0ec89f084a2022",
+        "src/Sound.cpp": "8b6acae18ed202e519600e48abb38ebabe30fedc8509ace253a58e91a74ecbb4",
+        "src/Hint.cpp": "8f709f29d65daea3c9fba12c1f2252cfcb12be141f9858f48422a6a896e279cf",
+        "src/GuiMessageLeaves.cpp": "309acbfe98477a724cfd226329e7d6513dbd6f040dda579ae26b025ea3ebce06",
+        "src/TransitionEffect.cpp": "932367692a3856248a336c96113dcb209b566a757c7730093d586f4d8dcbba3a",
+        "src/Chain.cpp": "f37b93032b90d9ffa6034f525c28cc917a9cc33f159a488e80c827130c96e7de",
+        "src/AnmRectangle.cpp": "828a33d0bf5b0cebd2c3c42232753ea88a75ba161f44098b29bbb3102c66dc12"
+      },
+      "artifacts": {
+        "image": "build/gpt-6.1-sol/gui-message-wait-20261031/reviewed-candidate/source.exe",
+        "map": "build/gpt-6.1-sol/gui-message-wait-20261031/reviewed-candidate/source.map",
+        "pdb": "build/gpt-6.1-sol/gui-message-wait-20261031/reviewed-candidate/source.pdb"
+      },
+      "image_sha256": "b78fa2484c6b5de2654d5831f401c19f7fd3f7dc9deec9ab89a84f9d3a482407",
+      "object_sha256": {
+        "src/Enemy.cpp": "a568ed868ce139e2c53e0fbd1104d27a8317c706a4985b04729795aaf50edca7",
+        "src/AnmManager.cpp": "a6d56b1a7034eaaa6af3642ddaa860eb5ecfef257c4862fb4d991b8800af1a6c",
+        "src/RandomMath.cpp": "d0aa62239b594ed34bbbfca2d3886556e0524bb18c52d26c6f738c513a6d83a3",
+        "src/AnmVmCreate.cpp": "5d9ef21497bb15c15ab47db6dab17b44e640f628c67950f23649fbe8dfe21f95",
+        "src/AnmVmId.cpp": "f1e3a2a24bdf5dcf6f4eae918a7bcc3690ad7540b7e97a3e0d44f8084397286f",
+        "src/AnmInt3Scale.cpp": "8016d2782e0834348cf76880faab7a98b9666a87c983eae4414605854231f9ed",
+        "src/EclVm.cpp": "1dcf2f2d00417b252c9fd63a9606e98eed7ea9f030665e38db947c7c3d815f67",
+        "src/Player.cpp": "39c774500fcefc7fe86dd7c6bf8dc45bc72c00469a5a2393033441f30a9967fd",
+        "src/PlayerCollision.cpp": "fa305facfedf1113248dde3bfd0bfef46ecfc9fc2f0b7d3ff1d08655e3f80bd4",
+        "src/EnemyEclDispatcher.cpp": "7ba2f064ff69357aa0581fd8c2ed14c6e25573e1a7487df929c50faa28ea3d3e",
+        "src/VmIdInterrupt.cpp": "780e057a6b1c04eff965ad4dbe63ea73484ee5cae5afb1e355d81afe22e698f2",
+        "src/FrontEnd.cpp": "f301bb1ac4f39da1bae8c76fa461ab491074dfba0e54e3b6b2bf13287abba32d",
+        "src/ItemManager.cpp": "d1942de8e9e447f60111dcf9ec0e3931b99039bcaecebdd24759001d242ad309",
+        "src/Main.cpp": "e0b2c70ee27ceb2237af9da61a17479f075b045d29c2dc02af0ec89f084a2022",
+        "src/Sound.cpp": "8b6acae18ed202e519600e48abb38ebabe30fedc8509ace253a58e91a74ecbb4",
+        "src/Gui.cpp": "eb3987b1b36c8aac4ea02ec8ca6403f9d5992939d5e296fe6b7de7e430332b90",
+        "src/Hint.cpp": "8f709f29d65daea3c9fba12c1f2252cfcb12be141f9858f48422a6a896e279cf",
+        "src/GuiMessageLeaves.cpp": "309acbfe98477a724cfd226329e7d6513dbd6f040dda579ae26b025ea3ebce06",
+        "src/TransitionEffect.cpp": "932367692a3856248a336c96113dcb209b566a757c7730093d586f4d8dcbba3a",
+        "src/Chain.cpp": "f37b93032b90d9ffa6034f525c28cc917a9cc33f159a488e80c827130c96e7de",
+        "src/AnmRectangle.cpp": "828a33d0bf5b0cebd2c3c42232753ea88a75ba161f44098b29bbb3102c66dc12"
+      }
+    },
+    "candidate-cold": {
+      "variant": "candidate-cold",
+      "forced_cold": true,
+      "graph": {
+        "source": "src/Enemy.cpp",
+        "support_sources": [
+          "src/AnmManager.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/AnmVmId.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/EclVm.cpp",
+          "src/Player.cpp",
+          "src/PlayerCollision.cpp",
+          "src/EnemyEclDispatcher.cpp",
+          "src/VmIdInterrupt.cpp",
+          "src/FrontEnd.cpp",
+          "src/ItemManager.cpp",
+          "src/Main.cpp",
+          "src/Sound.cpp",
+          "src/Gui.cpp",
+          "src/Hint.cpp",
+          "src/GuiMessageLeaves.cpp",
+          "src/TransitionEffect.cpp",
+          "src/Chain.cpp",
+          "src/AnmRectangle.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/RandomMath.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmCreate.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmVmId.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          "src/Player.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/PlayerCollision.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/EnemyEclDispatcher.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/VmIdInterrupt.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "src/FrontEnd.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/EHs"
+          ],
+          "src/ItemManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Main.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Sound.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Gui.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Hint.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/TransitionEffect.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/Chain.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "src/AnmRectangle.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+      },
+      "pins": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+        "src/AnmRectangle.cpp": "3e0687c228ab4b25c9a4255c0f4487975a6f65f7f390abb4ed4cc0d4d7620695",
+        "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+        "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+        "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+        "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+        "src/Enemy.cpp": "fbab9120022c4cdcee384d0781dd2559960333f497bc6e0ab3a37c004c77012d",
+        "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+        "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+        "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+        "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+        "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+        "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+        "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+        "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+        "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+        "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+        "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+        "src/GameScoreState.hpp": "a07274bb81d0a34795d3325fd43e65c14ce118e7204dd7b0bb922822979f975b",
+        "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+        "src/Gui.cpp": "c4949db6dc69e600a97004a9e2a5a5f98d162bfa2b669a182d9cd3d4ceecd334",
+        "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+        "src/GuiMessageLeaves.cpp": "7f0b02c9037056b3613d8322b4da2adc524a10d17ca29f1247159fb5843edb12",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+        "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+        "src/InputState.hpp": "f3e9b10478ae60504441e60b272cd9f17284554ba59307373f1bb8523fe801f2",
+        "src/ItemManager.cpp": "c7eb31442b087cb6062c9b62e7d9a1e48e6e442f111fc8238603680f4cbacffa",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+        "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+        "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+        "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+        "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+        "src/Player.cpp": "0ea3456dfb07400146775dedc6f43091e10c07edd07194cb4311306c02e4a89f",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+        "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/ReplayManager.hpp": "530f31cae0e6766074864bd7504f278293df7e926a7faa931a038e6bdb91e256",
+        "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+        "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+        "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+        "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+        "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+        "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+        "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+        "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+        "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+        "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+      },
+      "changed_inputs": [
+        "src/AnmInt3Scale.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmRectangle.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/Chain.cpp",
+        "src/EclVm.cpp",
+        "src/Enemy.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/FrontEnd.cpp",
+        "src/Gui.cpp",
+        "src/GuiMessageLeaves.cpp",
+        "src/Hint.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/RandomMath.cpp",
+        "src/Sound.cpp",
+        "src/TransitionEffect.cpp",
+        "src/VmIdInterrupt.cpp"
+      ],
+      "compiled": [
+        "src/Enemy.cpp",
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp",
+        "src/GuiMessageLeaves.cpp",
+        "src/TransitionEffect.cpp",
+        "src/Chain.cpp",
+        "src/AnmRectangle.cpp",
+        "build/gpt-6.1-sol/gui-message-wait-20261031/candidate-cold/link-anchors.c",
+        "build/gpt-6.1-sol/gui-message-wait-20261031/candidate-cold/link-anchors.c"
+      ],
+      "reused": {},
+      "artifacts": {
+        "image": "build/gpt-6.1-sol/gui-message-wait-20261031/candidate-cold/source.exe",
+        "map": "build/gpt-6.1-sol/gui-message-wait-20261031/candidate-cold/source.map",
+        "pdb": "build/gpt-6.1-sol/gui-message-wait-20261031/candidate-cold/source.pdb"
+      },
+      "image_sha256": "e29da41967e5b98e009a2ba632f04cbf3c54e2f6aa2e123deb885ee3c4acaa52",
+      "object_sha256": {
+        "src/Enemy.cpp": "f7427d3763e8a2c8f7cee4e3327bcda1cc767bd6ee4eb7ec4d5173240ba3b269",
+        "src/AnmManager.cpp": "950aded53b9fc51a8734d2d792239857763b36b30450921eabbeab1e1117ce9f",
+        "src/RandomMath.cpp": "bb9650aef8cd1cfffd33ff9c923ffeea6bfeaf6c21cfde99d77c17abed57cfa8",
+        "src/AnmVmCreate.cpp": "1e5a46b42f54a9290019d3b9b082820d489178fa78e7bf155c86fe53abc91bc0",
+        "src/AnmVmId.cpp": "d4d480e17f5e27749a9cb202e0420514160bce4024f72103f51ab5be1449964e",
+        "src/AnmInt3Scale.cpp": "b30078b1735870158eb359b7c17776d9334146dc4651207000b12ea0caa51a27",
+        "src/EclVm.cpp": "8e309847f22cfb1817ce50f4012450fd1b65d74b2b528f950b35de3c9d1a5a9e",
+        "src/Player.cpp": "2fade65dceb5ae3a42c67e81f9ff8b0028e49ee45b2b0648ed3b06f087589db3",
+        "src/PlayerCollision.cpp": "221f431cdf40678a2ee2e13d74d111cb8a29586b1173b70f213ee15570cad392",
+        "src/EnemyEclDispatcher.cpp": "4c23111b110a81df4563ef03c754b4a5570b6c1ccc481b5799a8692f7c6a88a6",
+        "src/VmIdInterrupt.cpp": "824db601d872542d9e6bb0a09aaef06121944536ceda135f1023637cd70f71ab",
+        "src/FrontEnd.cpp": "abd907e0b7b6e08e8d1a01abe5d8515f0400f3ab1c1181080875d25ca2aa65e6",
+        "src/ItemManager.cpp": "36f6ee6cd3dc431aa6f5117a6e73b35abe8c29b1feffd7a7dc25e310cc3ebc94",
+        "src/Main.cpp": "93abc9d76a4c469df6a0901a03c9a55111256cd4ac573e4c7dc96ba6857de26c",
+        "src/Sound.cpp": "66cfacb9df7246bd6c91adda71185748c1219042ef5e8bb26430e95e8e23f6e8",
+        "src/Gui.cpp": "619c1612540b81bd997074fd79e7688ad5b9bd03a948db92761911462b9a2fae",
+        "src/Hint.cpp": "6f9422d7a38074a2fdc0c8be80b5f2a48c508a019d92b21a3c186c32e7e5bb48",
+        "src/GuiMessageLeaves.cpp": "70b28450a4e619fe3e15045a7cfc3a080788736b25fb16dc28c4f8227addf813",
+        "src/TransitionEffect.cpp": "92df5a7529554f5ece532b4a1e0b782b90e2a7b49c36468c4eba56d490e1ad7e",
+        "src/Chain.cpp": "6d4b842681c3cf774b361dfc792d13b2f7c632e5761385ac31a8e8872481e115",
+        "src/AnmRectangle.cpp": "19273fff7bcc927d57e55863a2345df07aae114e906ec99edf46a014e2de54d3"
+      }
+    }
+  },
+  "same_image_guards": {
+    "reviewed-candidate": [
+      {
+        "unit": "gui-update-stage-elements",
+        "result": "exact",
+        "size": 3836,
+        "matched_bytes": 3836,
+        "normalization_complete": true,
+        "image_sha256": "b78fa2484c6b5de2654d5831f401c19f7fd3f7dc9deec9ab89a84f9d3a482407",
+        "pdb_guid": "43756f633f9663459ad3e94917091f07",
+        "pdb_age": 1,
+        "fields": 72
+      },
+      {
+        "unit": "player-calculate-damage-to-target",
+        "result": "exact",
+        "size": 1170,
+        "matched_bytes": 1170,
+        "normalization_complete": true,
+        "image_sha256": "b78fa2484c6b5de2654d5831f401c19f7fd3f7dc9deec9ab89a84f9d3a482407",
+        "pdb_guid": "43756f633f9663459ad3e94917091f07",
+        "pdb_age": 1,
+        "fields": 28
+      },
+      {
+        "unit": "player-auxiliary-damage-at-position",
+        "result": "exact",
+        "size": 202,
+        "matched_bytes": 202,
+        "normalization_complete": true,
+        "image_sha256": "b78fa2484c6b5de2654d5831f401c19f7fd3f7dc9deec9ab89a84f9d3a482407",
+        "pdb_guid": "43756f633f9663459ad3e94917091f07",
+        "pdb_age": 1,
+        "fields": 6
+      },
+      {
+        "unit": "game-decomphelp-fulltu-00417010",
+        "result": "exact",
+        "size": 41,
+        "matched_bytes": 41,
+        "normalization_complete": true,
+        "image_sha256": "b78fa2484c6b5de2654d5831f401c19f7fd3f7dc9deec9ab89a84f9d3a482407",
+        "pdb_guid": "43756f633f9663459ad3e94917091f07",
+        "pdb_age": 1,
+        "fields": 0
+      },
+      {
+        "unit": "game-decomphelp-fulltu-004175e0",
+        "result": "exact",
+        "size": 32,
+        "matched_bytes": 32,
+        "normalization_complete": true,
+        "image_sha256": "b78fa2484c6b5de2654d5831f401c19f7fd3f7dc9deec9ab89a84f9d3a482407",
+        "pdb_guid": "43756f633f9663459ad3e94917091f07",
+        "pdb_age": 1,
+        "fields": 0
+      },
+      {
+        "unit": "transition-effect-factory",
+        "result": "exact",
+        "size": 82,
+        "matched_bytes": 82,
+        "normalization_complete": true,
+        "image_sha256": "b78fa2484c6b5de2654d5831f401c19f7fd3f7dc9deec9ab89a84f9d3a482407",
+        "pdb_guid": "43756f633f9663459ad3e94917091f07",
+        "pdb_age": 1,
+        "fields": 2
+      },
+      {
+        "unit": "gui-update-callback-context",
+        "result": "exact",
+        "size": 7,
+        "matched_bytes": 7,
+        "normalization_complete": true,
+        "image_sha256": "b78fa2484c6b5de2654d5831f401c19f7fd3f7dc9deec9ab89a84f9d3a482407",
+        "pdb_guid": "43756f633f9663459ad3e94917091f07",
+        "pdb_age": 1,
+        "fields": 1
+      }
+    ],
+    "candidate-cold": [
+      {
+        "unit": "gui-update-stage-elements",
+        "result": "exact",
+        "size": 3836,
+        "matched_bytes": 3836,
+        "normalization_complete": true,
+        "image_sha256": "e29da41967e5b98e009a2ba632f04cbf3c54e2f6aa2e123deb885ee3c4acaa52",
+        "pdb_guid": "bbaf82246c5da34b8b179900ff6bd723",
+        "pdb_age": 1,
+        "fields": 72
+      },
+      {
+        "unit": "player-calculate-damage-to-target",
+        "result": "exact",
+        "size": 1170,
+        "matched_bytes": 1170,
+        "normalization_complete": true,
+        "image_sha256": "e29da41967e5b98e009a2ba632f04cbf3c54e2f6aa2e123deb885ee3c4acaa52",
+        "pdb_guid": "bbaf82246c5da34b8b179900ff6bd723",
+        "pdb_age": 1,
+        "fields": 28
+      },
+      {
+        "unit": "player-auxiliary-damage-at-position",
+        "result": "exact",
+        "size": 202,
+        "matched_bytes": 202,
+        "normalization_complete": true,
+        "image_sha256": "e29da41967e5b98e009a2ba632f04cbf3c54e2f6aa2e123deb885ee3c4acaa52",
+        "pdb_guid": "bbaf82246c5da34b8b179900ff6bd723",
+        "pdb_age": 1,
+        "fields": 6
+      },
+      {
+        "unit": "game-decomphelp-fulltu-00417010",
+        "result": "exact",
+        "size": 41,
+        "matched_bytes": 41,
+        "normalization_complete": true,
+        "image_sha256": "e29da41967e5b98e009a2ba632f04cbf3c54e2f6aa2e123deb885ee3c4acaa52",
+        "pdb_guid": "bbaf82246c5da34b8b179900ff6bd723",
+        "pdb_age": 1,
+        "fields": 0
+      },
+      {
+        "unit": "game-decomphelp-fulltu-004175e0",
+        "result": "exact",
+        "size": 32,
+        "matched_bytes": 32,
+        "normalization_complete": true,
+        "image_sha256": "e29da41967e5b98e009a2ba632f04cbf3c54e2f6aa2e123deb885ee3c4acaa52",
+        "pdb_guid": "bbaf82246c5da34b8b179900ff6bd723",
+        "pdb_age": 1,
+        "fields": 0
+      },
+      {
+        "unit": "transition-effect-factory",
+        "result": "exact",
+        "size": 82,
+        "matched_bytes": 82,
+        "normalization_complete": true,
+        "image_sha256": "e29da41967e5b98e009a2ba632f04cbf3c54e2f6aa2e123deb885ee3c4acaa52",
+        "pdb_guid": "bbaf82246c5da34b8b179900ff6bd723",
+        "pdb_age": 1,
+        "fields": 2
+      },
+      {
+        "unit": "gui-update-callback-context",
+        "result": "exact",
+        "size": 7,
+        "matched_bytes": 7,
+        "normalization_complete": true,
+        "image_sha256": "e29da41967e5b98e009a2ba632f04cbf3c54e2f6aa2e123deb885ee3c4acaa52",
+        "pdb_guid": "bbaf82246c5da34b8b179900ff6bd723",
+        "pdb_age": 1,
+        "fields": 1
+      }
+    ]
+  },
+  "canonical_cold": {
+    "exit": 0,
+    "artifact_prefix": "build/gpt-6.1-sol/gui-message-wait-20261031/caller-cold",
+    "cold_drivers": [
+      "scripts/ltcg_link.py:cold_link",
+      "scripts/ltcg_link.py:cold_link"
+    ],
+    "unit_count": 4,
+    "artifact_count": 2,
+    "matched_bytes": 5290,
+    "fields": 108,
+    "units": [
+      {
+        "unit": "transition-effect-factory",
+        "result": "exact",
+        "size": 82,
+        "matched_bytes": 82,
+        "normalization_complete": true,
+        "image_sha256": "e914371b23d771be7d9fc99eb2d3196cbb8c811451cb5cfaa95606cd45bcc2b9",
+        "pdb_guid": "5a3c95770816cb4fba0ec8239589c606",
+        "pdb_age": 1,
+        "fields": 2
+      },
+      {
+        "unit": "player-calculate-damage-to-target",
+        "result": "exact",
+        "size": 1170,
+        "matched_bytes": 1170,
+        "normalization_complete": true,
+        "image_sha256": "c58810624ef485a2829447f38a5707b40eb4096e2674385d669b0d21a1902e2f",
+        "pdb_guid": "6c72f7fd23058143af61c769e02d7962",
+        "pdb_age": 1,
+        "fields": 28
+      },
+      {
+        "unit": "player-auxiliary-damage-at-position",
+        "result": "exact",
+        "size": 202,
+        "matched_bytes": 202,
+        "normalization_complete": true,
+        "image_sha256": "c58810624ef485a2829447f38a5707b40eb4096e2674385d669b0d21a1902e2f",
+        "pdb_guid": "6c72f7fd23058143af61c769e02d7962",
+        "pdb_age": 1,
+        "fields": 6
+      },
+      {
+        "unit": "gui-update-stage-elements",
+        "result": "exact",
+        "size": 3836,
+        "matched_bytes": 3836,
+        "normalization_complete": true,
+        "image_sha256": "c58810624ef485a2829447f38a5707b40eb4096e2674385d669b0d21a1902e2f",
+        "pdb_guid": "6c72f7fd23058143af61c769e02d7962",
+        "pdb_age": 1,
+        "fields": 72
+      }
+    ],
+    "manifest_sha256": "26747196b3c255a87a0ac2e13bacc1a01e7a84fabb65374d74b87743d2fcc0e8",
+    "report_sha256": "e662f93e4f9f8a2f2d7bd9fec397931b1b4402e831365d20fe63093065ae836f"
+  },
+  "claims": {
+    "new_exact_owners": 0,
+    "new_exact_bytes": 0,
+    "mappings_changed": false,
+    "boundaries_changed": false,
+    "origins_changed": false,
+    "profiles_changed": false,
+    "shared_headers_changed": false,
+    "runtime_validated": false,
+    "product_closed": false,
+    "portable": false
+  },
+  "cleanup": {
+    "retained_builds": [
+      "caller-cold-0",
+      "caller-cold-1",
+      "candidate-cold",
+      "reviewed-candidate"
+    ],
+    "removed_builds": [
+      {
+        "label": "split-wait-barrier",
+        "bytes": 2265799
+      },
+      {
+        "label": "target-stage7-order",
+        "bytes": 2265804
+      },
+      {
+        "label": "manager-before-side",
+        "bytes": 2265804
+      },
+      {
+        "label": "captured-first-line-id",
+        "bytes": 2265985
+      },
+      {
+        "label": "ordinary-resource-owner",
+        "bytes": 2265810
+      },
+      {
+        "label": "ordered-side-capture",
+        "bytes": 2265997
+      },
+      {
+        "label": "barrier-instruction-capture",
+        "bytes": 2265858
+      },
+      {
+        "label": "direct-integer-operands",
+        "bytes": 2266001
+      },
+      {
+        "label": "replay-tail-placement",
+        "bytes": 2265800
+      },
+      {
+        "label": "observed-stage-flags",
+        "bytes": 2265803
+      },
+      {
+        "label": "real-transition-callee",
+        "bytes": 2317913
+      },
+      {
+        "label": "real-effect-callees",
+        "bytes": 2371608
+      },
+      {
+        "label": "stage-flag-publication",
+        "bytes": 2371653
+      },
+      {
+        "label": "narrowed-profile-lifetimes",
+        "bytes": 2371747
+      }
+    ],
+    "removed_bytes": 32091582,
+    "scope": "only superseded builds and disassembly in this campaign; source/context/inventory/exit receipts and transition ABI counterexample retained"
+  },
+  "validation": {
+    "progress": {
+      "exit": 0,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    "verify-warm": {
+      "exit": 0,
+      "log_sha256": "bdb193ba91b23cb042d1740e54801808cd465773f9d72fbef1a958e07e14ba80"
+    },
+    "verify-cold": {
+      "exit": 0,
+      "log_sha256": "bdb193ba91b23cb042d1740e54801808cd465773f9d72fbef1a958e07e14ba80"
+    },
+    "ci": {
+      "exit": 0,
+      "log_sha256": "260c02195e4b56b3892bd49114356fd87ad82404ddec1423cd354ea0979d19d7"
+    },
+    "diff-check": {
+      "exit": 0,
+      "log_sha256": "e7102e87d179f8a0598694d86e8001b2bd5efa79852f0d4ebd7dd6ace446491c"
+    },
+    "default_ci_stages": 7
+  }
+}

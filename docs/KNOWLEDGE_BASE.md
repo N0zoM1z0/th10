@@ -8655,3 +8655,37 @@ pins and22 bounded native observations remain. No comparator/profile, match,
 source mapping, boundary, origin, denominator or later-phase claim changes.
 Authored exact111454/275863 across521 owners; canonical179568/1399. See the
 [complete candidate proof](evidence/gui-message-refinement-20261031/README.md).
+
+
+## 2026-10-31 GUI interpreter call sequence and real transition ABI
+
+GuiMessageVmView::Run415E90..41700F remains NONEXACT at4476/4480. One skip-path
+compiler memory barrier preserves the third SetCurrent call. Stage7's portrait
+selector emits <1 first, recovering target JGE and44/4D then2E/37 operand/script
+groups. Moving the shared replay mode4 label into stage7's replay arm restores
+all150 direct call identities in physical order. Two owner-local barriers after
+stage6/7 flags restore memory OR20 at9EB4 before score reads. Resource-field
+observations remain scoped; removing excess outer owner volatility restores
+separate loads at16 sites. Original qualifiers/barriers/threading are unknown.
+
+The old18-input graph leaves StageCreateTransitionEffect unresolved, so its
+caller pushes six declared arguments to a data anchor. A19-input graph with
+TransitionEffect.cpp makes all direct callees executable but selects the wrong
+private kind-in-EBX/five-stack ABI and an81-byte factory. Including its existing
+canonical Chain.cpp/AnmRectangle.cpp dependencies restores factory82/all2 and
+priority31 in EBX, with0/0/0/120/5 on the stack, as target requires. Actual
+visibility is necessary but does not by itself establish target ABI. Existing
+compiler profiles and real InitializeVm entry stay fixed; no canonical parent
+recipe is added. No original source/TU/data ownership follows.
+
+Final warm and zero-reuse21-input cold have identical complete native4476 bytes,
+337 identities,121 locals,150 calls, two RET4 exits and43 table entries. All54
+hidden outputs remain target-consistent. Native counts are not blanket target
+field/offset/destination acceptance. Ordinary registers, schedules, indexing,
+special-VM stores and the coalesced instruction-cursor move remain open. Both
+images preserve seven guards5370/all109; separate scoped canonical GUI/damage/
+factory cold passes5290/all108 in two existing producers.64 source/header pins
+and16 terminal observations remain. No new exact credit, match, mapping,
+boundary, origin, denominator, product/runtime or portability change. Authored
+exact111454/275863 across521 owners; canonical179568/1399. See the
+[complete call/ABI proof](evidence/gui-message-call-closure-20261031/README.md).

@@ -4,11 +4,12 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint refines the complete GUI message interpreter:
-4464/4480 bytes remains NONEXACT. All54 hidden EDI return slots now agree,
-while the final149 calls still lack the target's third SetCurrent call. The
-complete GUI updater3836/all72 and existing damage contracts stay exact in a
-separate canonical cold. Shared headers/profiles stay fixed. Original source
+selected lane. This checkpoint restores the complete GUI interpreter's150-call
+identity sequence, all54 hidden outputs, nested stage7 ordering, two flag memory
+updates and the real transition priority interface. The21-input candidate is
+4476/4480 NONEXACT; native337 fields/121 locals are not blanket target bindings.
+Seven guards5370/all109 and four scoped canonical contracts5290/all108 pass.
+Shared headers and existing profiles/recipes stay fixed. Original source
 qualifiers/barriers/helper boundaries remain unknown. No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
@@ -25,7 +26,45 @@ The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: complete GUI message interpreter refinement
+## Latest source checkpoint: GUI interpreter call order and transition interface
+
+[The complete candidate proof](evidence/gui-message-call-closure-20261031/README.md)
+records4476/4480 NONEXACT with zero new exact credit. A skip-path compiler memory
+barrier prevents reset-tail merging and recovers all three physical SetCurrent
+calls. Stage7's <1 portrait arm now precedes >=1, restoring JGE and the44/4D
+then2E/37 operand groups. The shared replay mode4 action lives after normal
+stage7 completion, restoring the full150-call identity sequence. Two barriers
+publish stage6/7 GUI flags before score reads and restore memory OR20 at9EB4.
+Original qualifiers/barriers/threading remain unknown.
+
+The old18-input graph omitted the transition definition and generated six
+stack arguments to a data anchor. Adding only TransitionEffect creates an81-byte
+factory with kind5 in EBX, still wrong. Its existing real Chain/AnmRectangle
+dependencies restore the82-byte/all2 factory and actual priority31-in-EBX/five
+stack argument setup in the21-input graph. Existing profiles and genuine
+InitializeVm entry remain. All24 interpreter callees now have executable
+bodies; the19-input counterexample shows why that does not alone prove ABI.
+No canonical graph is changed while the parent remains nonexact.
+
+Final warm and zero-reuse21-input cold reproduce the complete4476-byte native
+receipt,337 fields,121 fixed locals,150 calls, two RET4 exits and43 table words.
+All54 hidden EDI outputs still match target. These counts do not bind all
+fields/destinations or close ordinary bytes. Shared text setup, manager/sprite
+registers, side stores, wait zero caching, profile/counter indexing, special-VM
+clear and instruction advancement still differ. The cursor coalesces a target
+move; a meaningful next-instruction capture is a new untested lead, not credit.
+
+Both final images preserve seven existing/provisional guards5370/all109. The
+separate canonical cold selects only GUI3836, coupled damage1170/202 and
+transition factory82 in their two existing producers, passing5290/all108.
+64 source/header pins, complete native identities and16 terminal observations
+remain. Manager/ID capture, instruction barrier, direct integer loads, volatile
+flag updates and narrowed profile lifetime controls are restored and parked.
+The private mnemonic diff now excludes selector data; no Oracle changes.
+Private campaign: gui-message-wait-20261031. Exact totals, mappings, boundaries,
+origins and later phases remain unchanged. No canonical Run match or recipe.
+
+## Previous source checkpoint: complete GUI message interpreter refinement
 
 [The complete candidate proof](evidence/gui-message-refinement-20261031/README.md)
 records4464/4480 NONEXACT, with zero new exact credit. Five existing ID arguments

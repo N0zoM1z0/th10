@@ -1,6 +1,10 @@
 # Complete GUI message interpreter refinement — 2026-10-31
 
-GuiMessageVmView::Run415E90..41700F remains **NONEXACT**. Its complete current
+Later source/call-graph progress is recorded in the
+[call-closure packet](../gui-message-call-closure-20261031/README.md). This packet
+retains its historical source epoch.
+
+GuiMessageVmView::Run415E90..41700F remains **NONEXACT**. Its recorded complete
 candidate is4464 bytes against4480 target bytes. This checkpoint improves
 source expression, hidden return-slot layout and observed memory schedules;
 it adds zero exact owners or bytes. No Run match or canonical recipe is added.
