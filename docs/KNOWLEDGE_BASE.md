@@ -8239,3 +8239,38 @@ affected canonical selectors cold-pass871; same-image21 existing contracts pass
 860/all19. All70 final input/header pins match the canonical cold freeze. Exact
 inventory remains103090/275835 across503 authored owners, total171194/1380.
 See the [complete proof](evidence/ending-native-record-20261030/README.md).
+
+
+## 2026-10-31 Complete spell-start stage lifecycle
+
+EnemyBeginSpell409280..409BFF remains nonexact. The maintained natural per-arm
+lifecycle helper, layer-first source assignment and target branch/load order
+change the complete current20-input candidate2476 to2424/2432. The intermediate
+2432 result concealed a longer load/OR/store sequence; the retained source emits
+the target memory OR and sets layer15 before initialization. Original helper,
+class/TU and source provenance remain unknown.
+
+Independent target/native decoding finds108 address fields each:100 external
+identities including41 direct calls, plus the table base and seven local slots.
+All81 direct locals and all seven table destinations reach internal instruction
+starts. Nine selected stage walks agree on actual embedded VM/resource/script,
+allocation receiver, flag0x40000000, layer15, loaded initialization and final
+registration. This closes the older helper experiment's operation-coverage gap
+for the current image, without validating that older artifact or proving runtime.
+
+Both stage code spans, first case through RET16, are639 bytes with59 equally
+positioned external fields. Their48 ordinary differences are confined to14
+receiver LEAs (targetESI/nativeEDX) and eight adjacent PUSH schedules. Stage7
+shares one receiver LEA across the two first-script calls. Native cases are nine
+bytes early; its table is eight early due to different trailing alignment. These
+fixed local offsets remain nonexact, and no partial-body credit is claimed.
+Prefix string/register allocation and child-search layout/rereads remain open.
+
+Typed statistics/global noinline/local reset-boundary controls do not improve
+the full owner and are restored. The RNG bitfield spelling is neutral. Actual
+Initialize remains273 structurally equal; embedded200/202 and binder197/203
+retain unlike private interfaces. An incremental and a zero-reuse20-input cold
+reproduce the retained full owner with64 source/header pins. Twelve same-image
+canonical owners pass2243/all86; selected canonical sound/shield colds pass159.
+No match/boundary/progress ledger change. See the
+[complete review](evidence/enemy-spell-stage-20261031/README.md).

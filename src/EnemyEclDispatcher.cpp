@@ -706,6 +706,8 @@ extern unsigned char *g_EnemySpellStatistics;
 // Complete maintained body for target 0x00409280, including every stage arm.
 // The four-stack-argument stdcall surface is target-proven; original source
 // class, filename and declaration shape remain unknown.
+static void CreateSpellStageAnimation(AnmLoadedView *resource, int script);
+
 void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value)
 {
     EnemyGameStateView *state =
@@ -809,8 +811,6 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         CreateVmVariant0(0x1ab, 15);
 
     AnmLoadedView *stageResource;
-    AnmVmView *stageVm;
-    int stageScript;
     switch (g_EnemyChapterState.stage) {
     case 1:
         stageResource = reinterpret_cast<AnmLoadedView *>(
@@ -819,17 +819,15 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         stageResource = reinterpret_cast<AnmLoadedView *>(
             g_EnemyManager->effectResources[2]);
         state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0b);
-        if (spellId < 2) {
+        if (spellId >= 2) {
             stageResource = reinterpret_cast<AnmLoadedView *>(
                 g_EnemyManager->effectResources[2]);
-            stageVm = g_AnmRenderManagerView->AllocateVm();
-            stageScript = 0x0f;
+            CreateSpellStageAnimation(stageResource, 0x0e);
         }
         else {
             stageResource = reinterpret_cast<AnmLoadedView *>(
                 g_EnemyManager->effectResources[2]);
-            stageVm = g_AnmRenderManagerView->AllocateVm();
-            stageScript = 0x0e;
+            CreateSpellStageAnimation(stageResource, 0x0f);
         }
         break;
     case 2:
@@ -841,8 +839,7 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0f);
         stageResource = reinterpret_cast<AnmLoadedView *>(
             g_EnemyManager->effectResources[2]);
-        stageVm = g_AnmRenderManagerView->AllocateVm();
-        stageScript = 0x11;
+        CreateSpellStageAnimation(stageResource, 0x11);
         break;
     case 3:
         stageResource = reinterpret_cast<AnmLoadedView *>(
@@ -853,8 +850,7 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         state->stageVms[1].InitializeForLoadedScript(stageResource, 0x13);
         stageResource = reinterpret_cast<AnmLoadedView *>(
             g_EnemyManager->effectResources[2]);
-        stageVm = g_AnmRenderManagerView->AllocateVm();
-        stageScript = 0x15;
+        CreateSpellStageAnimation(stageResource, 0x15);
         break;
     case 4:
         stageResource = reinterpret_cast<AnmLoadedView *>(
@@ -865,8 +861,7 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         state->stageVms[1].InitializeForLoadedScript(stageResource, 0x14);
         stageResource = reinterpret_cast<AnmLoadedView *>(
             g_EnemyManager->effectResources[2]);
-        stageVm = g_AnmRenderManagerView->AllocateVm();
-        stageScript = 0x16;
+        CreateSpellStageAnimation(stageResource, 0x16);
         break;
     case 5:
         stageResource = reinterpret_cast<AnmLoadedView *>(
@@ -877,8 +872,7 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0d);
         stageResource = reinterpret_cast<AnmLoadedView *>(
             g_EnemyManager->effectResources[2]);
-        stageVm = g_AnmRenderManagerView->AllocateVm();
-        stageScript = 0x0f;
+        CreateSpellStageAnimation(stageResource, 0x0f);
         break;
     case 6:
         stageResource = reinterpret_cast<AnmLoadedView *>(
@@ -889,36 +883,40 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         state->stageVms[1].InitializeForLoadedScript(stageResource, 0x22);
         stageResource = reinterpret_cast<AnmLoadedView *>(
             g_EnemyManager->effectResources[2]);
-        stageVm = g_AnmRenderManagerView->AllocateVm();
-        stageScript = 0x24;
+        CreateSpellStageAnimation(stageResource, 0x24);
         break;
     case 7:
-        stageResource = reinterpret_cast<AnmLoadedView *>(
-            g_EnemyManager->effectResources[2]);
         if (g_EnemyChapterState.chapter < 24) {
+            stageResource = reinterpret_cast<AnmLoadedView *>(
+                g_EnemyManager->effectResources[2]);
             state->stageVms[0].InitializeForLoadedScript(stageResource, 0x26);
             stageResource = reinterpret_cast<AnmLoadedView *>(
                 g_EnemyManager->effectResources[2]);
-            stageVm = g_AnmRenderManagerView->AllocateVm();
-            stageScript = 0x28;
+            CreateSpellStageAnimation(stageResource, 0x28);
         }
         else {
+            stageResource = reinterpret_cast<AnmLoadedView *>(
+                g_EnemyManager->effectResources[2]);
             state->stageVms[0].InitializeForLoadedScript(stageResource, 0x1b);
             stageResource = reinterpret_cast<AnmLoadedView *>(
                 g_EnemyManager->effectResources[2]);
             state->stageVms[1].InitializeForLoadedScript(stageResource, 0x1c);
             stageResource = reinterpret_cast<AnmLoadedView *>(
                 g_EnemyManager->effectResources[2]);
-            stageVm = g_AnmRenderManagerView->AllocateVm();
-            stageScript = 0x1e;
+            CreateSpellStageAnimation(stageResource, 0x1e);
         }
         break;
     default:
         return;
     }
-    stageVm->flags35C |= 0x40000000u;
+}
+
+static void CreateSpellStageAnimation(AnmLoadedView *resource, int script)
+{
+    AnmVmView *stageVm = g_AnmRenderManagerView->AllocateVm();
     stageVm->renderLayer = 15;
-    stageResource->InitializeVm(stageVm, stageScript);
+    stageVm->flags35C |= 0x40000000u;
+    resource->InitializeVm(stageVm, script);
     // Target keeps this final insertion out of line after the initial creations.
     // This scoped compiler policy does not establish original TU/settings.
 #if defined(_MSC_VER)

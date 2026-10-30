@@ -4,8 +4,9 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint closes spell finish and power addition, adds the
-complete nonexact notice source and corrects its owned switch-table boundary.
+selected lane. This checkpoint refines the complete spell-start stage lifecycle
+and binds its actual operations; it adds no exact credit. The preceding checkpoint
+closed spell finish and power addition and completed the nonexact notice source.
 Compiler profiles and the comparator remain unchanged. No experiment is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
@@ -22,7 +23,38 @@ The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: spell finish, power and notice boundary
+## Latest source checkpoint: complete spell-start stage lifecycle
+
+[The complete review](evidence/enemy-spell-stage-20261031/README.md) retains a
+natural two-input lifecycle helper used by all nine stage choices. The full
+EnemyBeginSpell candidate changes2476 to2424/2432, still **NONEXACT**. The
+intermediate2432-byte result was accidental length agreement: layer-first source
+recovers the target memory OR and removes eight bytes. Stage1 arm order and
+stage7 condition/resource order now follow target. Existing insertion pragma,
+four actual stack arguments and RET16 are retained; no new ABI/inline controls.
+
+Independent full inventories bind108 fields each, including all41 actual calls,
+and validate81 direct locals plus seven table destinations. All nine selected
+stage paths carry the target resource/VM/script/flag/layer/registration events.
+The stage code is639 bytes with59 equally positioned bound fields and48 ordinary
+differences in14 ESI-versus-EDX receiver LEAs/eight adjacent PUSH schedules. Its
+cases are nine bytes early and table eight early; local offsets are not masked.
+Prefix strings/registers and child searches remain unlike. No fragment credit.
+
+An incremental and a zero-reuse20-input cold reproduce the same complete owner,
+with64 current source/header pins. Twelve same-image canonical contracts pass
+2243/all86; independent selected sound123 and shield36 colds pass159. No ledger
+input changes. Current frozen artifacts are in the private enemy-spell-begin-
+20261031 campaign; older20-input freezes now predate this Dispatcher.cpp change.
+
+Typed statistics, global/local reset-boundary and flag-bitfield controls are
+restored and parked. Initialize remains273 structurally equal, embedded reset
+200/202 and front binder197/203. Do not repeat these or the historical child-return
+helpers without new evidence. The stage residual is now localized to the genuine
+embedded initializer's private interface and associated caller scheduling; fake
+unused parameters/clobbers remain invalid.
+
+## Previous source checkpoint: spell finish, power and notice boundary
 
 [The complete proof](evidence/gui-spell-notice-20261031/README.md) adds
 EnemyEndSpell399/all20 fields and AddPower166/all4 fields: **565 new exact
