@@ -4,25 +4,55 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint reconstructs two complete score/life owners.
-Maintained source, two canonical recipes and ledgers change; compiler profiles and the
-comparator remain unchanged. No owner experiment remains in progress.
+selected lane. This checkpoint closes spell finish and power addition, adds the
+complete nonexact notice source and corrects its owned switch-table boundary.
+Compiler profiles and the comparator remain unchanged. No experiment is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 103,902 / 275,835 |
-| Authored exact owners | 505 |
-| Total canonical exact owners / codegen bytes | 1,382 / 172,006 |
-| Source mappings / authored mappings / authored exact backlog | 1,209 / 691 / 186 |
+| Reviewed authored owned bytes exact | 104,467 / 275,863 |
+| Authored exact owners | 507 |
+| Total canonical exact owners / codegen bytes | 1,384 / 172,571 |
+| Source mappings / authored mappings / authored exact backlog | 1,211 / 693 / 186 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: score display and extra lives
+## Latest source checkpoint: spell finish, power and notice boundary
+
+[The complete proof](evidence/gui-spell-notice-20261031/README.md) adds
+EnemyEndSpell399/all20 fields and AddPower166/all4 fields: **565 new exact
+authored bytes**. Two independent20-input colds reproduce both; the first also
+passes affected AddRank42. Twelve same-image owners2243/all86 pass in both.
+
+GuiSpellNotice.cpp completes the actual ECL spell-end interface and seven-case
+GUI notice source. Existing statistics records[group]/records[6] and a90-byte
+spell-record view recover the whole399-byte owner. Full ID clearing and one
+local genuine creator boundary recover AddPower224 to166. No shared header,
+ANM source, profile or comparator change is retained.
+
+Notice4172E0 owns640 code bytes plus its immediately following28-byte seven-way
+table through41757B. The old640-byte boundary omitted that owned table; the
+reviewed authored denominator increases28, with zero credit from that correction.
+Complete notice remains660/668, NONEXACT. Its frame28, actual EAX kind/two stack
+values/RET8 and all cases are maintained. Broad clears merge tails to576;
+flags/word-copy/whole-ID/named-script controls do not close the owner and are
+restored. Remaining leads are the loop load/OR/store versus memory OR, digit
+ID publication register and clear/resource-load schedules. No partial-case credit.
+
+Actual EnemyRuntime dispatcher14348/14416 retains one direct EndSpell call;
+Item update2208/2320 remains nonexact. New explicit canonical selectors are
+enemy-end-spell and game-score-add-power. Producer is
+`build/match-linked/GuiSpellNotice`; frozen colds and current64 source/header
+pins remain under the private gui-spell-notice-20261031 campaign. Old score
+contexts now predate the ItemManager.cpp AddPower update; recheck inputs before
+reuse. Both existing score/life owners remain exact in the current20-input image.
+
+## Previous source checkpoint: score display and extra lives
 
 [The complete proof](evidence/gui-score-display-exact-20261031/README.md)
 adds GameUpdateGui671/all36 fields and GameAddLives141/all12 fields: **812 new
@@ -48,7 +78,7 @@ logs and source pins remain under the private gui-score-display-20261030
 analysis/build campaign. Explicit new selectors are gui-update-score-display
 and game-add-lives; item-rank-add is the affected existing cold guard.
 
-## Previous source checkpoint: Ending
+## Earlier source checkpoint: Ending
 
 [The complete Ending proof](evidence/ending-native-record-20261030/README.md)
 is the previous source checkpoint, commit `58bb846`.
@@ -96,8 +126,8 @@ All 17 source/header pins still match. The adjacent entry context records the
 separate one-source graph; do not substitute it for the caller-bound graph.
 Target/native listings and bounded probe runners remain beside the contexts.
 Remaining leads concern the validation slot reload, old-table copy/free guard,
-unsigned positive-count branch and insertion-loop lifetimes. No proposed source
-rewrite has been tested; these are questions, not established fixes.
+unsigned positive-count branch and insertion-loop lifetimes. The helper controls
+listed above were tested and restored; no improved rewrite was retained.
 
 ## Other retained frontiers
 

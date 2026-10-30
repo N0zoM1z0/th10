@@ -172,8 +172,15 @@ int GameScoreStateView::AddPower(short amount)
         power = 100;
         ItemPowerDisplayOwnerView *gui = g_ItemPowerDisplayOwner;
         g_AnmRenderManagerView->MarkVmForDeletion(gui->powerNoticeVmId);
-        gui->powerNoticeVmId.value = 0;
-        gui->powerNoticeVmId = gui->frontAnm->CreateVmVariant0(0x49, 15);
+        memset(&gui->powerNoticeVmId, 0, sizeof(gui->powerNoticeVmId));
+        // Target retains the real creator call and its hidden ID return.
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
+        gui->powerNoticeVmId.value = gui->frontAnm->CreateVmVariant0(0x49, 15).value;
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     }
     return (static_cast<int>(power) - static_cast<int>(amount)) / 20 !=
         static_cast<int>(power) / 20;

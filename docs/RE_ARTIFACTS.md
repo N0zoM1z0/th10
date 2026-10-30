@@ -18,7 +18,8 @@ These campaigns remain expanded under `.analysis/gpt-6.1-sol/` and the matching
 
 | Campaign | Retained purpose |
 | --- | --- |
-| `gui-score-display-20261030` | New complete exact score/life owners,19-input graph and two frozen canonical colds |
+| `gui-spell-notice-20261031` | Current20-input spell-end/power proof, complete notice candidate and two canonical colds |
+| `gui-score-display-20261030` | Earlier score/life19-input proof; its ItemManager pin predates the current AddPower update |
 | `gui-update-context-20261030` | Selectively restored old final cold and current timer controls; no new exact credit |
 | `ending-run-context-20261030` | Previous21-input diagnostic; its ItemManager pin now predates the score/life caller update |
 | `enemy-operands-context-20261030` | Accepted integer reader, float candidate and canonical cold records |

@@ -434,7 +434,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00415E90,0x0041700F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 4479/4480; owned indirect control table at 0x00416F64
 0x00417010,0x00417038,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00417040,0x004172DE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x004172E0,0x0041755F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x004172E0,0x0041757B,reviewed,high,gui-notice-owned-table-2026-10-31,"Complete owned668-byte extent: dense640-byte code through RET8 at41755D, followed by seven DIR32 table slots417560..41757B referenced by JMP4172F2. Destinations+19/+161/+180/+1C0/+200/+278/+240 are instruction entries in this owner; four CC bytes precede independent417580. No code patch or exactness claim."
 0x00417580,0x00417583,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
 0x00417590,0x00417593,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
 0x004175A0,0x004175A3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers

@@ -1208,3 +1208,5 @@ PlayerHandleCollisionHit,0x00426CF0,function
 PlayerDrawCallbackBody,0x00426360,function
 GameUpdateGui,0x00417040,function
 GameAddLives,0x004188A0,function
+EnemyEndSpell,0x00409C00,function
+GuiShowScoreNotice,0x004172E0,function
