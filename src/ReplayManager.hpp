@@ -62,6 +62,7 @@ typedef char ReplayStageRuntimePairSizeIs08[
 
 struct ReplayStageDataHeader
 {
+    ReplayStageDataHeader();
     short stageIndex;
     unsigned short unknown002;
     int recordCount;
@@ -186,7 +187,7 @@ class ReplayManager
     int LoadReplay(const char *replayPath);
     int SaveReplay(const char *replayPath, const char *replayName);
 
-    static ReplayManager *Create(int mode, const char *replayPath);
+    static ReplayManager *__stdcall Create(int mode, const char *replayPath);
     static ReplayManager *__stdcall Load(const char *replayPath);
     static void Destroy(ReplayManager *replayManager);
     void BeginStage();

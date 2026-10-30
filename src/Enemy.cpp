@@ -1813,6 +1813,27 @@ __declspec(noinline) unsigned int Fn0040CC40(unsigned char *pThis)
     return *(unsigned int *)(*(unsigned char **)(pThis + 4) + 4);
 }
 
+// Target417800 resets the existing manager timer and both list cursors.
+// Keep the observed call boundary and bind the actual scale symbol.
+__declspec(noinline) unsigned int Fn00417800(unsigned char *owner)
+{
+    EnemyManagerView *manager = reinterpret_cast<EnemyManagerView *>(owner);
+    if ((manager->timer.flags & 1u) == 0)
+    {
+        manager->timer.current = 0;
+        manager->timer.previous = -999999;
+        manager->timer.subframe = 0.0f;
+        manager->timer.scale = &g_PlayerTimerScale;
+        manager->timer.flags |= 1u;
+    }
+    manager->timer.current = 0;
+    manager->timer.subframe = 0.0f;
+    manager->timer.previous = -1;
+    manager->enemyListHead = NULL;
+    manager->enemyListTail = NULL;
+    return 0;
+}
+
 }
 }
 

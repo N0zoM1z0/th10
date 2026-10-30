@@ -301,7 +301,7 @@ int ReplayManager::Initialize(int replayMode, const char *path)
     return 0;
 }
 
-ReplayManager *ReplayManager::Create(int replayMode, const char *path)
+ReplayManager *__stdcall ReplayManager::Create(int replayMode, const char *path)
 {
     ReplayManager *manager = new ReplayManager;
     if (manager->Initialize(replayMode, path) != 0)

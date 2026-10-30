@@ -1,6 +1,8 @@
 #include "Main.hpp" // Shield ANM imports before the Windows SDK.
 #include "ItemManager.hpp"
 #include "ReplayChain.hpp"
+#include "ReplayTimingSource.hpp"
+#include "Chain.hpp"
 #include "Hint.hpp"
 #include "GameEffectUpdate.hpp"
 #include <stddef.h>
@@ -313,25 +315,12 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
     return 1;
 }
 
-// The target clears these two eight-byte spans through floating zero stores;
-// their original member types are not established by this partial storage view.
-struct GameFpsResetView
-{
-    u8 unknown000[0x24];
-    double pair24;
-    double pair2C;
-};
 typedef char GameManagerModeAt5C[(offsetof(GameManager, initializationMode) == 0x5c) ? 1 : -1];
 typedef char GameChainOwnerAt20[(offsetof(GameChainElementView, owner) == 0x20) ? 1 : -1];
 
 typedef ZunBool (__fastcall *GameUpdateCallback)(GameManager *);
 typedef ZunBool (__fastcall GameManager::*GameDrawCallback)();
 typedef char GameDrawCallbackIsFourBytes[(sizeof(GameDrawCallback) == 4) ? 1 : -1];
-extern GameChainElementView *__stdcall GameCreateUpdateChain(GameUpdateCallback callback);
-extern GameChainElementView *__stdcall GameCreateDrawChain(GameDrawCallback callback);
-extern void GameRegisterUpdateChain(void *chain, int priority, GameChainElementView *element);
-extern void GameRegisterDrawChain(void *chain, int priority, GameChainElementView *element);
-extern void *g_GameMainChain;                              // 0x491BE4
 extern u32 g_GameConfigurationSnapshot[13];               // 0x491D48
 extern int g_GameNewSession;                              // 0x491FC4
 extern int g_GameStartingStage;                           // 0x474C74
@@ -345,104 +334,136 @@ extern int g_GameRankResetCounter;                        // 0x474C9C
 extern int g_EnemyRank;                                   // 0x474C98
 extern int g_GameShotStartupValue;                        // 0x474C50
 extern const char g_GameDefaultReplayPath[];              // 0x477710
-extern GameFpsResetView *g_GameFpsReset;                   // 0x477708
 extern int g_GameLoaderPending;                          // 0x494518
 extern int g_GameFrameRestorePending;                    // 0x474C84
 extern int g_GameWorkerReady;                            // 0x492260
 extern int g_GameWorkerCancelled;                        // 0x492264
 extern int g_GameStartupCounter;                         // 0x4918A4
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
-extern void *GameCreateGui();
+extern void *ScriptViewerCreateGui();
 extern void *GameCreateProjectilePool();
 extern void *GameCreateItemManager();
 extern void *GameCreateOwner41C290();
 extern void *GameCreateController();
 extern void *GameCreateOwner42B660();
 extern void GameRestoreReplayState(ReplayManager *replay);
-extern void __stdcall GameReloadGui(GuiView *gui);
 extern void *GameCreateOwner40AF90();
 extern void *GameCreateLoaderOwner();
 extern void *GameCreateOwner408C90();
-extern void GamePrepareDummyMusic();
-extern void __stdcall GamePrepareMusicPath(int slot, const char *path);
+int GamePrepareDummyMusic();
+extern int __stdcall FrontEndLoadMusic(int slot, const char *path);
 extern void __stdcall GameStartSoundState(unsigned char *sound);
 extern void __stdcall GameStopSoundState(unsigned char *sound);
-extern void GamePublishStartup(GameManager *manager);
 namespace th10 { namespace leaf {
     unsigned int Fn00417800(unsigned char *owner);
 } }
+
+// Complete41-byte target420C00: queue the selected dummy command and return
+// the observed zero success result. The actual SoundPlayer interface is used.
+int GamePrepareDummyMusic()
+{
+    if ((g_GameConfigurationFlags491D78 & 0x10) != 0)
+        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand("dummy", 4, 0);
+    else
+        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand("dummy", 3, 0);
+    return 0;
+}
+
+// Minimum shared-address view consumed by startup at 474C40..474CA3.
+// These observed offsets do not establish an original allocation or C++ owner.
+struct GameStartupStateView
+{
+    GameScoreStateView score;
+    int rankResetCounter;
+    unsigned int runtimeFlags;
+};
+typedef char GameStartupStateFlagsAt60[
+    (offsetof(GameStartupStateView, rankResetCounter) == 0x5c &&
+     offsetof(GameStartupStateView, runtimeFlags) == 0x60) ? 1 : -1];
+extern GameStartupStateView g_GameStartupState;
 
 // 0x417870: actual registration and full startup/error paths. The two callback
 // pointer source types are hypotheses; VC7.1 represents this nonvirtual member
 // pointer in four bytes, matching the observed draw registration argument.
 int __stdcall GameManagerInitialize(GameManager *manager)
 {
-    GameChainElementView *element;
+    th10::ChainElem *element;
     manager->m_Flags |= 4;
     while (reinterpret_cast<int *>(g_AnmManagerPtr)[0] >= 0 ||
         reinterpret_cast<int *>(g_AnmManagerPtr)[1] >= 0)
     {
-        if ((g_GameConfigurationFlags & 0x80) != 0)
+        if ((g_MainSupervisorView.flags & 0x80) != 0)
             goto failed;
         Sleep(1);
     }
     g_PlayerTimerScale = 1.0f;
-    g_GameFrameCounter0 = 0;
-    g_GameFrameCounter1 = 0;
-    if (g_GameNewSession != 0)
+    *reinterpret_cast<int *>(g_GameStartupState.score.unknown44 + 4) = 0;
+    *reinterpret_cast<int *>(g_GameStartupState.score.unknown44 + 8) = 0;
+    if (g_MainSupervisorView.newGameSession != 0)
     {
-        if (g_GameStartupMode == 7)
-            g_GameStartingStage = 4;
+        if (g_GameStartupState.score.selectedStage == 7)
+            *reinterpret_cast<int *>(g_GameStartupState.score.unknown28 + 12) = 4;
         GameStatisticsOwner *statistics = g_GameStatisticsRows;
-        GameStatisticsRecord &row =
-            statistics->records[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
-        int startingStage = g_GameStartingStage;
-        g_GameScoreState.unknown00 = row.StageInitialScore(startingStage);
-        g_GameStartupValue474C94 = row.StageStartupValue(startingStage);
-        if ((g_GameRuntimeFlags & 8) == 0)
-            g_GameStartupValue474C90 = 0;
-        g_GameScoreState.score = 0;
-        g_GameScoreState.SetFaith(50000);
-        if ((g_GameRuntimeFlags & 0x10) == 0)
+        int group = *reinterpret_cast<const int *>(g_GameStartupState.score.unknown28 + 4) +
+            *reinterpret_cast<const int *>(g_GameStartupState.score.unknown28) * 3;
+        unsigned char *rowBase = reinterpret_cast<unsigned char *>(statistics) +
+            group * sizeof(GameStatisticsRecord);
+        int startingStage = *reinterpret_cast<int *>(g_GameStartupState.score.unknown28 + 12);
+        unsigned char *stageValues = rowBase + startingStage * 0xf0;
+        g_GameStartupState.score.unknown00 = *reinterpret_cast<int *>(stageValues + 0x18);
+        *reinterpret_cast<int *>(g_GameStartupState.score.unknown44 + 16) =
+            *reinterpret_cast<signed char *>(stageValues + 0x1d);
+        if ((g_GameStartupState.runtimeFlags & 8) == 0)
+            *reinterpret_cast<int *>(g_GameStartupState.score.unknown44 + 12) = 0;
+        g_GameStartupState.score.score = 0;
+        g_GameStartupState.score.SetFaith(50000);
+        if ((g_GameStartupState.runtimeFlags & 0x10) == 0)
             g_PlayerLivesDisplayCount = 2;
         else if (g_GameLivesOverride == 0)
             g_PlayerLivesDisplayCount = 9;
         else
             g_PlayerLivesDisplayCount = g_GameLivesOverride - 1;
-        g_PlayerPower = g_GameStartupMode != 1 ? 80 : 0;
-        g_GameRuntimeFlags &= ~4;
+        g_GameStartupState.score.power = g_GameStartupState.score.selectedStage != 1 ? 80 : 0;
+        g_GameStartupState.runtimeFlags &= ~4;
         if (manager->initializationMode == 0)
         {
-            GameStatisticsRecord &startRow =
-                statistics->records[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
-            if (startRow.sessionStarts < 99999)
-                ++startRow.sessionStarts;
+            int group = *reinterpret_cast<const int *>(g_GameStartupState.score.unknown28 + 4) +
+                *reinterpret_cast<const int *>(g_GameStartupState.score.unknown28) * 3;
+            int *sessionStarts = reinterpret_cast<int *>(
+                reinterpret_cast<unsigned char *>(statistics) +
+                group * sizeof(GameStatisticsRecord) + 0x4c8);
+            if (*sessionStarts < 99999)
+                ++*sessionStarts;
         }
-        g_GameRankResetCounter = 0;
-        g_EnemyRank = (g_GameRuntimeFlags & 8) != 0 ? -512 : 0;
+        g_GameStartupState.rankResetCounter = 0;
+        g_GameStartupState.score.rank = (g_GameStartupState.runtimeFlags & 8) != 0 ? -512 : 0;
     }
-    else if (g_GameScoreState.unknown00 < g_GameScoreState.score)
-        g_GameScoreState.unknown00 = g_GameScoreState.score;
+    else if (g_GameStartupState.score.unknown00 < g_GameStartupState.score.score)
+        g_GameStartupState.score.unknown00 = g_GameStartupState.score.score;
 
-    g_GameShotStartupValue = 9;
-    element = GameCreateUpdateChain(&GameManager::OnUpdate);
+    g_GameStartupState.score.unknown10 = 9;
+    element = th10::Chain::AllocElem(
+        reinterpret_cast<th10::ChainCallback>(&GameManager::OnUpdate));
+    element->arg = manager;
     element->flags &= ~2;
-    element->owner = manager;
-    GameRegisterUpdateChain(g_GameMainChain, 10, element);
-    manager->updateChain = element;
-    element = GameCreateDrawChain(&GameManager::OnDraw);
+    th10::g_Chain->AddToCalcChain(element, 10);
+    manager->updateChain = reinterpret_cast<GameChainElementView *>(element);
+    // The reviewed simple-class fastcall member pointer is one code pointer.
+    union { GameDrawCallback member; th10::ChainCallback function; } drawCallback;
+    drawCallback.member = &GameManager::OnDraw;
+    element = th10::Chain::AllocElem(drawCallback.function);
     element->flags &= ~2;
-    element->owner = manager;
-    GameRegisterDrawChain(g_GameMainChain, 4, element);
-    manager->drawChain = element;
-    memcpy(&manager->configuration, g_GameConfigurationSnapshot, 0x34);
+    element->arg = manager;
+    th10::g_Chain->AddToDrawChain(element, 4);
+    manager->drawChain = reinterpret_cast<GameChainElementView *>(element);
+    memcpy(&manager->configuration, &g_MainSupervisorView.configuration, 0x34);
     manager->stageResourceIndex = g_GameStageUpdate->resourceIndex;
 
-    if ((g_GameRuntimeFlags & 2) == 0)
+    if ((g_GameStartupState.runtimeFlags & 2) == 0)
     {
         if (ReplayManager::Create(manager->initializationMode, g_GameDefaultReplayPath) == NULL ||
             StageCreate(g_GameStageUpdate->menuPath, 0) == NULL ||
-            GameCreateGui() == NULL || PlayerCreate() == NULL ||
+            ScriptViewerCreateGui() == NULL || PlayerCreate() == NULL ||
             GameCreateProjectilePool() == NULL || GameCreateItemManager() == NULL ||
             GameCreateOwner41C290() == NULL || GameCreateController() == NULL ||
             CreateHintOwner() == NULL || GameCreateOwner42B660() == NULL)
@@ -451,11 +472,11 @@ int __stdcall GameManagerInitialize(GameManager *manager)
     else
     {
         GameRestoreReplayState(g_ReplayManager);
-        GameReloadGui(g_GuiView);
+        g_GuiView->LoadData();
         if (StageCreate(g_GameStageUpdate->menuPath, 0) == NULL)
             goto failed;
     }
-    if ((g_GameRuntimeFlags & 9) == 0)
+    if ((g_GameStartupState.runtimeFlags & 9) == 0)
     {
         if (EnemyManagerCreate(g_GameStageUpdate->enemyPath) == NULL)
             goto failed;
@@ -465,34 +486,48 @@ int __stdcall GameManagerInitialize(GameManager *manager)
     if (GameCreateOwner40AF90() == NULL || GameCreateLoaderOwner() == NULL ||
         GameCreateOwner408C90() == NULL)
         goto failed;
-    if ((g_GameRuntimeFlags & 0x20) == 0)
+    if ((g_GameStartupState.runtimeFlags & 0x20) == 0)
     {
+        // Target417BAF retains this complete cue helper out of line.
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
         GamePrepareDummyMusic();
-        GamePrepareMusicPath(0, g_GameStageUpdate->musicPaths[0]);
-        GamePrepareMusicPath(1, g_GameStageUpdate->musicPaths[1]);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
+        FrontEndLoadMusic(0, g_GameStageUpdate->musicPaths[0]);
+        FrontEndLoadMusic(1, g_GameStageUpdate->musicPaths[1]);
     }
-    g_GameFpsReset->pair2C = 0.0;
-    g_GameFpsReset->pair24 = 0.0;
+    g_ReplayTimingSource->lagDenominator = 0.0;
+    g_ReplayTimingSource->lagNumerator = 0.0;
     manager->stageTimer.SetCurrent(0);
     while (g_GameLoaderPending != 0)
         Sleep(16);
-    if (g_GameFrameRestorePending != 0)
-        g_GameFrameCounter1 = 0;
-    g_GameFrameRestorePending = 0;
-    GameStartSoundState(g_GameSoundState);
+    if (*reinterpret_cast<int *>(g_GameStartupState.score.unknown44) != 0)
+        *reinterpret_cast<int *>(g_GameStartupState.score.unknown44 + 8) = 0;
+    *reinterpret_cast<int *>(g_GameStartupState.score.unknown44) = 0;
+    GameStartSoundState(reinterpret_cast<unsigned char *>(&g_MainSupervisorView));
     manager->m_Flags &= ~4;
-    g_GameRuntimeFlags &= ~0xb;
-    g_GameWorkerCancelled = 0;
-    g_GameWorkerReady = 1;
+    g_GameStartupState.runtimeFlags &= ~0xb;
+    g_MainSupervisorView.modeWorker.running = 0;
+    g_MainSupervisorView.modeWorker.stopRequested = 1;
     g_GameStartupCounter = 0;
-    GamePublishStartup(manager);
+    // Target417C53 calls the same complete helper that the failure arm inlines.
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
+    MarkGameChains(reinterpret_cast<GameChainOwnerView *>(manager));
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     return 0;
 
 failed:
     manager->m_Flags |= 8;
-    GameStopSoundState(g_GameSoundState);
-    g_GameWorkerCancelled = 0;
-    g_GameWorkerReady = 1;
+    GameStopSoundState(reinterpret_cast<unsigned char *>(&g_MainSupervisorView));
+    g_MainSupervisorView.modeWorker.running = 0;
+    g_MainSupervisorView.modeWorker.stopRequested = 1;
     MarkGameChains(reinterpret_cast<GameChainOwnerView *>(manager));
     return -1;
 }

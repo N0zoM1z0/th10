@@ -4858,24 +4858,7 @@ __declspec(noinline) void Fn00412DB0(u8 *p0)
 
 // Complete stage-state leaf 0x004175E0 is maintained in GuiMessageLeaves.cpp.
 
-// 0x00417800: ghidra (inventoried as FUN_00417800)
-__declspec(noinline) u32 Fn00417800(u8 *p0)
-{
-    u32 p0_ = (u32)(uintptr_t)p0;
-    if (((*(u32 *)(uintptr_t)(u32)(p0_ + 0x50)) & 1) == 0) {
-        (*(u32 *)(uintptr_t)(u32)(p0_ + 0x44)) = 0;
-        (*(u32 *)(uintptr_t)(u32)(p0_ + 0x40)) = 0xfff0bdc1;
-        (*(u32 *)(uintptr_t)(u32)(p0_ + 0x48)) = 0;
-        (*(u32 *)(uintptr_t)(u32)(p0_ + 0x4c)) = 0x476f78;
-        (*(u32 *)(uintptr_t)(u32)(p0_ + 0x50)) = (*(u32 *)(uintptr_t)(u32)(p0_ + 0x50)) | 1;
-    }
-    (*(u32 *)(uintptr_t)(u32)(p0_ + 0x44)) = 0;
-    (*(u32 *)(uintptr_t)(u32)(p0_ + 0x48)) = 0;
-    (*(u32 *)(uintptr_t)(u32)(p0_ + 0x40)) = 0xffffffff;
-    (*(u32 *)(uintptr_t)(u32)(p0_ + 0x58)) = 0;
-    (*(u32 *)(uintptr_t)(u32)(p0_ + 0x5c)) = 0;
-    return 0;
-}
+// Complete timer/list reset0x00417800 is maintained with its Enemy view in Enemy.cpp.
 
 // 0x00418b80: ghidra (inventoried as FUN_00418B80)
 __declspec(noinline) void Fn00418B80(u8 *p0, i32 p1)

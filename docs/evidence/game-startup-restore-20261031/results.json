@@ -1,0 +1,2632 @@
+{
+  "date": "2026-10-31",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_exact_bytes": 582,
+  "new_authored_exact_owners": 3,
+  "new_codegen_bytes": 582,
+  "new_codegen_owners": 3,
+  "retained_exact_bytes": 58,
+  "new_source_mappings": 2,
+  "boundary_changes": 0,
+  "origin_changes": 0,
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GameManager.cpp", "src/GuiScoreDisplay.cpp", "src/GuiSpellNotice.cpp", "src/StageAnimationSlots.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/BulletLifecycle.cpp", "src/ScriptViewerWorker.cpp", "src/StageLifecycle.cpp", "src/ReplayManager.cpp", "src/GameObjectReset.cpp", "src/ReplayStageHelpers.cpp", "src/InputState.cpp", "src/ReplayStageRestore.cpp", "src/EnemyLaserManager.cpp"],
+    "support_profiles": {
+      "src/AnmManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/RandomMath.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/AnmVmCreate.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/AnmVmId.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/AnmInt3Scale.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"],
+      "src/Player.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/PlayerCollision.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/EnemyEclDispatcher.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/VmIdInterrupt.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/FrontEnd.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ItemManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Main.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Sound.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Gui.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Hint.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/TransitionEffect.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Chain.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/BulletLifecycle.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ScriptViewerWorker.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/StageLifecycle.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ReplayManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ReplayStageHelpers.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/InputState.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ReplayStageRestore.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/EnemyLaserManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+    },
+    "profile": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+    "link_profile": ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"],
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "canonical_contracts": {
+    "replay-restore-stage-state": {
+      "output_dir": "build/match-linked/GameStartupRestore",
+      "pdb_source": "src/ReplayStageRestore.cpp",
+      "symbol": "?GameRestoreReplayState@@YAXPAVReplayManager@@@Z",
+      "target_address": 4368032,
+      "size": 356,
+      "functions": ["GameRestoreReplayState"],
+      "linkages": [
+        {
+          "offset": 15,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "??2@YAPAXI@Z",
+          "target": 4531347
+        },
+        {
+          "offset": 43,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 60
+        },
+        {
+          "offset": 53,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 60
+        },
+        {
+          "offset": 64,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_RngView@@3URngView@@A",
+          "target": 4790448
+        },
+        {
+          "offset": 75,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 60
+        },
+        {
+          "offset": 81,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_RngView@@3URngView@@A",
+          "target": 4790448,
+          "addend": 4
+        },
+        {
+          "offset": 100,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 924
+        },
+        {
+          "offset": 136,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 60
+        },
+        {
+          "offset": 183,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_RngView@@3URngView@@A",
+          "target": 4790448
+        },
+        {
+          "offset": 189,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_RngView@@3URngView@@A",
+          "target": 4790448,
+          "addend": 4
+        },
+        {
+          "offset": 202,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 4
+        },
+        {
+          "offset": 213,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 8
+        },
+        {
+          "offset": 227,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576
+        },
+        {
+          "offset": 232,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "?SetFaith@GameScoreStateView@@QAEXH@Z",
+          "target": 4295552
+        },
+        {
+          "offset": 238,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 36
+        },
+        {
+          "offset": 254,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 36
+        },
+        {
+          "offset": 263,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 32
+        },
+        {
+          "offset": 267,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_PlayerTimerScale@@3MA",
+          "target": 4681592
+        },
+        {
+          "offset": 273,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 36
+        },
+        {
+          "offset": 282,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 24
+        },
+        {
+          "offset": 288,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 20
+        },
+        {
+          "offset": 294,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 28
+        },
+        {
+          "offset": 303,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 48
+        },
+        {
+          "offset": 312,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 88
+        },
+        {
+          "offset": 323,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 80
+        },
+        {
+          "offset": 328,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameScoreState@@3UGameScoreStateView@@A",
+          "target": 4672576,
+          "addend": 60
+        },
+        {
+          "offset": 349,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_ReplayStageValue1B8@@3IA",
+          "target": 4672668
+        }
+      ]
+    },
+    "replay-manager-create": {
+      "output_dir": "build/match-linked/GameStartupRestore",
+      "pdb_source": "src/ReplayManager.cpp",
+      "symbol": "?Create@ReplayManager@@SGPAV1@HPBD@Z",
+      "target_address": 4363792,
+      "size": 185,
+      "functions": ["ReplayManager::Create"],
+      "linkages": [
+        {
+          "offset": 3,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "__ehhandler$?Create@ReplayManager@@SGPAV1@HPBD@Z",
+          "target": 4609643,
+          "allocation_eh_handler": true
+        },
+        {
+          "offset": 9,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "__except_list",
+          "target": 0
+        },
+        {
+          "offset": 17,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "__except_list",
+          "target": 0
+        },
+        {
+          "offset": 29,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "??2@YAPAXI@Z",
+          "target": 4531347
+        },
+        {
+          "offset": 56,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "??1ReplayStageState@@QAE@XZ",
+          "target": 4369504
+        },
+        {
+          "offset": 61,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "??0ReplayStageState@@QAE@XZ",
+          "target": 4369440
+        },
+        {
+          "offset": 77,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "??_L@YGXPAXIHP6EX0@Z1@Z",
+          "target": 4531501
+        },
+        {
+          "offset": 117,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "?Initialize@ReplayManager@@QAEHHPBD@Z",
+          "target": 4362080
+        },
+        {
+          "offset": 132,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "??1ReplayManager@@QAE@XZ",
+          "target": 4363424
+        },
+        {
+          "offset": 138,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "??3@YAXPAX@Z",
+          "target": 4531361
+        },
+        {
+          "offset": 155,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "__except_list",
+          "target": 0
+        },
+        {
+          "offset": 175,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "__except_list",
+          "target": 0
+        }
+      ]
+    },
+    "game-prepare-dummy-music": {
+      "output_dir": "build/match-linked/GameStartupRestore",
+      "pdb_source": "src/GameManager.cpp",
+      "symbol": "?GamePrepareDummyMusic@@YAHXZ",
+      "target_address": 4328448,
+      "size": 41,
+      "functions": ["GamePrepareDummyMusic"],
+      "linkages": [
+        {
+          "offset": 2,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_GameConfigurationFlags491D78@@3IA",
+          "target": 4791672
+        },
+        {
+          "offset": 8,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "??_C@_05JLNEMJLN@dummy?$AA@",
+          "target": 4644760
+        },
+        {
+          "offset": 15,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_MainSoundOwner@@3PAEA",
+          "target": 4793744
+        },
+        {
+          "offset": 24,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z",
+          "target": 4449376
+        },
+        {
+          "offset": 34,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z",
+          "target": 4449376
+        }
+      ]
+    },
+    "game-decomphelp-fulltu-00417800": {
+      "output_dir": "build/match-linked/GameStartupRestore",
+      "pdb_source": "src/Enemy.cpp",
+      "symbol": "?Fn00417800@leaf@th10@@YAIPAE@Z",
+      "target_address": 4290560,
+      "size": 58,
+      "functions": ["th10::leaf::Fn00417800"],
+      "linkages": [
+        {
+          "offset": 29,
+          "width": 4,
+          "type": "DIR32",
+          "symbol": "?g_PlayerTimerScale@@3MA",
+          "target": 4681592
+        }
+      ]
+    }
+  },
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletLifecycle.cpp": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "dca1df4019bcfb2450fb2cf602ff72e1447b1b7cefa613b758c17755ac66821f",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyLaserManager.cpp": "b528c4eb7a63e94878ac787ae044e8274889214b31443162684eafcf189ae23f",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.cpp": "358dba73dcb380ca49e339b287a76cf206f4ec428a5979ec11e74a50d374bb25",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameObjectReset.cpp": "cf8d6de1488764355a394d04496ce690fa1fb41aad54b07a047bcaf6d4490593",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/GameStatistics.hpp": "3db83612f100ae38b109e358bbf777f897fab2e760520bc92c52fbec1b4823bc",
+    "src/Gui.cpp": "a2940382f3f8aff0e96dceb5262067eea5b36c85b1b503cae984505dffb38e91",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/GuiScoreDisplay.cpp": "037599d4e5aade1c81cc9ac8f728ef2725ce1be639e04c70b57995b4ffe06e7c",
+    "src/GuiSpellNotice.cpp": "3db80f14c123c18716e03b1b39400e4dce774e690d1d956fd11c673a3af160f2",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.cpp": "48c48082b17c994d83cdc49ec370f2adcc35fca27e87813d7714089a01321007",
+    "src/InputState.hpp": "f3e9b10478ae60504441e60b272cd9f17284554ba59307373f1bb8523fe801f2",
+    "src/ItemManager.cpp": "c7eb31442b087cb6062c9b62e7d9a1e48e6e442f111fc8238603680f4cbacffa",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/Player.cpp": "3fa6b87037d280bcd7f25d05cf89b0f820aca16b3b47701a7d03372148e1587a",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/ReplayManager.cpp": "1324358513b45aa9586bae89ab2a4ae31cdc89059913bbab3718b20fd62aa624",
+    "src/ReplayManager.hpp": "530f31cae0e6766074864bd7504f278293df7e926a7faa931a038e6bdb91e256",
+    "src/ReplayStageHelpers.cpp": "9457f54fcfb4389df1f361eb5d72fa4d6348e558771e27b757b1417d4fe49638",
+    "src/ReplayStageRestore.cpp": "6dd21cc30949a08f9e8b8c0cc5d6c624c636075f391691a052fac9d159f2bf6c",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.hpp": "d2bdd5dc267c1f76a32df7d0ee7b0507fc1854933c33e2bd8075d2b318ee5ab2",
+    "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageAnimationSlots.cpp": "fd00235c85f114e2875907b1b7ead1c69bb72bac637f7ab96168c4a0f0f07208",
+    "src/StageLifecycle.cpp": "dff4a52c4f41f0e8a478d9753d1d54a957dcd314cc9d83c9436c66e98fed0558",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "independent_target_native_review": {
+    "restore": {
+      "target": {
+        "address": 4368032,
+        "size": 356,
+        "sha256": "cfa8ae24bf9dde0291379ff0f2466ff1d2ef84d82a5ed6c235a2a85828dc7d88",
+        "target_bound_sha256": "cfa8ae24bf9dde0291379ff0f2466ff1d2ef84d82a5ed6c235a2a85828dc7d88",
+        "instructions": 87,
+        "fields": [
+          [15, "REL32", 4531347, 4531347],
+          [43, "DIR32", 4672636, 4672636],
+          [53, "DIR32", 4672636, 4672636],
+          [64, "DIR32", 4790448, 4790448],
+          [75, "DIR32", 4672636, 4672636],
+          [81, "DIR32", 4790452, 4790452],
+          [100, "DIR32", 4792260, 4792260],
+          [136, "DIR32", 4672636, 4672636],
+          [183, "DIR32", 4790448, 4790448],
+          [189, "DIR32", 4790452, 4790452],
+          [202, "DIR32", 4672580, 4672580],
+          [213, "DIR32", 4672584, 4672584],
+          [227, "DIR32", 4672576, 4672576],
+          [232, "REL32", 4295552, 4295552],
+          [238, "DIR32", 4672612, 4672612],
+          [254, "DIR32", 4672612, 4672612],
+          [263, "DIR32", 4672608, 4672608],
+          [267, "DIR32", 4681592, 4681592],
+          [273, "DIR32", 4672612, 4672612],
+          [282, "DIR32", 4672600, 4672600],
+          [288, "DIR32", 4672596, 4672596],
+          [294, "DIR32", 4672604, 4672604],
+          [303, "DIR32", 4672624, 4672624],
+          [312, "DIR32", 4672664, 4672664],
+          [323, "DIR32", 4672656, 4672656],
+          [328, "DIR32", 4672636, 4672636],
+          [349, "DIR32", 4672668, 4672668]
+        ],
+        "locals": [
+          [6, 126],
+          [28, 41],
+          [129, 354],
+          [250, 277]
+        ],
+        "calls": [
+          [14, 4531347],
+          [231, 4295552]
+        ],
+        "returns": [
+          [125, ""],
+          [355, ""]
+        ]
+      },
+      "native": {
+        "address": 4406832,
+        "size": 356,
+        "sha256": "8b4b8127b689ceddda6b231f7de455b232837ddf0523b24bb598213876d40eea",
+        "target_bound_sha256": "cfa8ae24bf9dde0291379ff0f2466ff1d2ef84d82a5ed6c235a2a85828dc7d88",
+        "instructions": 87,
+        "fields": [
+          [15, "REL32", 4419996, 4531347],
+          [43, "DIR32", 4421188, 4672636],
+          [53, "DIR32", 4421188, 4672636],
+          [64, "DIR32", 4421704, 4790448],
+          [75, "DIR32", 4421188, 4672636],
+          [81, "DIR32", 4421708, 4790452],
+          [100, "DIR32", 4422372, 4792260],
+          [136, "DIR32", 4421188, 4672636],
+          [183, "DIR32", 4421704, 4790448],
+          [189, "DIR32", 4421708, 4790452],
+          [202, "DIR32", 4421132, 4672580],
+          [213, "DIR32", 4421136, 4672584],
+          [227, "DIR32", 4421128, 4672576],
+          [232, "REL32", 4348848, 4295552],
+          [238, "DIR32", 4421164, 4672612],
+          [254, "DIR32", 4421164, 4672612],
+          [263, "DIR32", 4421160, 4672608],
+          [267, "DIR32", 4421568, 4681592],
+          [273, "DIR32", 4421164, 4672612],
+          [282, "DIR32", 4421152, 4672600],
+          [288, "DIR32", 4421148, 4672596],
+          [294, "DIR32", 4421156, 4672604],
+          [303, "DIR32", 4421176, 4672624],
+          [312, "DIR32", 4421216, 4672664],
+          [323, "DIR32", 4421208, 4672656],
+          [328, "DIR32", 4421188, 4672636],
+          [349, "DIR32", 4421684, 4672668]
+        ],
+        "locals": [
+          [6, 126],
+          [28, 41],
+          [129, 354],
+          [250, 277]
+        ],
+        "calls": [
+          [14, 4531347],
+          [231, 4295552]
+        ],
+        "returns": [
+          [125, ""],
+          [355, ""]
+        ]
+      }
+    },
+    "replaycreate": {
+      "target": {
+        "address": 4363792,
+        "size": 185,
+        "sha256": "d37fba9c81cbc406326e2027e93e3cf4f2cf600d0febfde57066a267e728e4f5",
+        "target_bound_sha256": "d37fba9c81cbc406326e2027e93e3cf4f2cf600d0febfde57066a267e728e4f5",
+        "instructions": 58,
+        "fields": [
+          [3, "DIR32", 4609643, 4609643],
+          [9, "DIR32", 0, 0],
+          [17, "DIR32", 0, 0],
+          [29, "REL32", 4531347, 4531347],
+          [56, "DIR32", 4369504, 4369504],
+          [61, "DIR32", 4369440, 4369440],
+          [77, "REL32", 4531501, 4531501],
+          [117, "REL32", 4362080, 4362080],
+          [132, "REL32", 4363424, 4363424],
+          [138, "REL32", 4531361, 4531361],
+          [155, "DIR32", 0, 0],
+          [175, "DIR32", 0, 0]
+        ],
+        "locals": [
+          [52, 95],
+          [93, 97],
+          [124, 165],
+          [128, 145]
+        ],
+        "calls": [
+          [28, 4531347],
+          [76, 4531501],
+          [116, 4362080],
+          [131, 4363424],
+          [137, 4531361]
+        ],
+        "returns": [
+          [162, "8"],
+          [182, "8"]
+        ]
+      },
+      "native": {
+        "address": 4402272,
+        "size": 185,
+        "sha256": "fbbe148ff846306828685dffbdcf56c8887ee37c0fdffc42ee3e8ccd6dfe6d86",
+        "target_bound_sha256": "d37fba9c81cbc406326e2027e93e3cf4f2cf600d0febfde57066a267e728e4f5",
+        "instructions": 58,
+        "fields": [
+          [3, "DIR32", 4407947, 4609643],
+          [9, "DIR32", 4421880, 0],
+          [17, "DIR32", 4421880, 0],
+          [29, "REL32", 4419996, 4531347],
+          [56, "DIR32", 4400608, 4369504],
+          [61, "DIR32", 4400560, 4369440],
+          [77, "REL32", 4420004, 4531501],
+          [117, "REL32", 4400944, 4362080],
+          [132, "REL32", 4400704, 4363424],
+          [138, "REL32", 4420000, 4531361],
+          [155, "DIR32", 4421880, 0],
+          [175, "DIR32", 4421880, 0]
+        ],
+        "locals": [
+          [52, 95],
+          [93, 97],
+          [124, 165],
+          [128, 145]
+        ],
+        "calls": [
+          [28, 4531347],
+          [76, 4531501],
+          [116, 4362080],
+          [131, 4363424],
+          [137, 4531361]
+        ],
+        "returns": [
+          [162, "8"],
+          [182, "8"]
+        ]
+      }
+    },
+    "dummy": {
+      "target": {
+        "address": 4328448,
+        "size": 41,
+        "sha256": "31a80bd3abcc50962ae56e34d820a77299f9703b27487d54e9dec36bfe60e29d",
+        "target_bound_sha256": "31a80bd3abcc50962ae56e34d820a77299f9703b27487d54e9dec36bfe60e29d",
+        "instructions": 13,
+        "fields": [
+          [2, "DIR32", 4791672, 4791672],
+          [8, "DIR32", 4644760, 4644760],
+          [15, "DIR32", 4793744, 4793744],
+          [24, "REL32", 4449376, 4449376],
+          [34, "REL32", 4449376, 4449376]
+        ],
+        "locals": [
+          [19, 31]
+        ],
+        "calls": [
+          [23, 4449376],
+          [33, 4449376]
+        ],
+        "returns": [
+          [30, ""],
+          [40, ""]
+        ]
+      },
+      "native": {
+        "address": 4390112,
+        "size": 41,
+        "sha256": "610ba1f499b7c5daaa94be68099c731d87fd0d0dd3bcef625a7740aa0f863f34",
+        "target_bound_sha256": "31a80bd3abcc50962ae56e34d820a77299f9703b27487d54e9dec36bfe60e29d",
+        "instructions": 13,
+        "fields": [
+          [2, "DIR32", 4421028, 4791672],
+          [8, "DIR32", 4412812, 4644760],
+          [15, "DIR32", 4421440, 4793744],
+          [24, "REL32", 4367216, 4449376],
+          [34, "REL32", 4367216, 4449376]
+        ],
+        "locals": [
+          [19, 31]
+        ],
+        "calls": [
+          [23, 4449376],
+          [33, 4449376]
+        ],
+        "returns": [
+          [30, ""],
+          [40, ""]
+        ]
+      }
+    },
+    "enemytimer": {
+      "target": {
+        "address": 4290560,
+        "size": 58,
+        "sha256": "1c877b77434ec399faf05892cb3f0edc8f459ed9fa70b58e7cae52d42ecf85dc",
+        "target_bound_sha256": "1c877b77434ec399faf05892cb3f0edc8f459ed9fa70b58e7cae52d42ecf85dc",
+        "instructions": 17,
+        "fields": [
+          [29, "DIR32", 4681592, 4681592]
+        ],
+        "locals": [
+          [8, 36]
+        ],
+        "calls": [],
+        "returns": [
+          [57, ""]
+        ]
+      },
+      "native": {
+        "address": 4208848,
+        "size": 58,
+        "sha256": "9a67eba0084c825fc7f795bf02061d718d3c5edf8a9f2e3d07710c946d066fbc",
+        "target_bound_sha256": "1c877b77434ec399faf05892cb3f0edc8f459ed9fa70b58e7cae52d42ecf85dc",
+        "instructions": 17,
+        "fields": [
+          [29, "DIR32", 4421568, 4681592]
+        ],
+        "locals": [
+          [8, 36]
+        ],
+        "calls": [],
+        "returns": [
+          [57, ""]
+        ]
+      }
+    },
+    "gamestart": {
+      "result": "nonexact",
+      "complete": {
+        "target": {
+          "address": 4290672,
+          "size": 1009,
+          "sha256": "177320c96d3ef9ad36ed7d1a04824748c1cc584916943bd8c05a9f039d2a510e",
+          "instructions": 268,
+          "fields": [
+            [20, "DIR32", 4791312],
+            [39, "DIR32", 4792308],
+            [53, "DIR32", 4612268],
+            [61, "DIR32", 4792260],
+            [67, "DIR32", 4681592],
+            [77, "DIR32", 4672648],
+            [83, "DIR32", 4672652],
+            [95, "DIR32", 4672636],
+            [108, "DIR32", 4672628],
+            [115, "DIR32", 4672628],
+            [121, "DIR32", 4672616],
+            [133, "DIR32", 4672620],
+            [139, "DIR32", 4683836],
+            [164, "DIR32", 4672576],
+            [174, "DIR32", 4672672],
+            [181, "DIR32", 4672660],
+            [189, "DIR32", 4672656],
+            [199, "DIR32", 4672576],
+            [205, "DIR32", 4672580],
+            [210, "REL32", 4295552],
+            [216, "DIR32", 4672672],
+            [225, "DIR32", 4672624],
+            [236, "DIR32", 4672684],
+            [246, "DIR32", 4672624],
+            [258, "DIR32", 4672624],
+            [263, "DIR32", 4672636],
+            [269, "DIR32", 4672672],
+            [286, "DIR32", 4672584],
+            [292, "DIR32", 4672672],
+            [302, "DIR32", 4672616],
+            [308, "DIR32", 4672620],
+            [349, "DIR32", 4672672],
+            [359, "DIR32", 4672668],
+            [371, "DIR32", 4672664],
+            [378, "DIR32", 4672580],
+            [384, "DIR32", 4672576],
+            [391, "DIR32", 4672576],
+            [396, "DIR32", 4294592],
+            [402, "DIR32", 4672592],
+            [411, "REL32", 4497104],
+            [417, "DIR32", 4791268],
+            [446, "REL32", 4496096],
+            [451, "DIR32", 4294608],
+            [459, "REL32", 4497104],
+            [470, "DIR32", 4791268],
+            [484, "REL32", 4496240],
+            [489, "DIR32", 4683848],
+            [505, "DIR32", 4791624],
+            [518, "DIR32", 4672672],
+            [529, "DIR32", 4683536],
+            [535, "REL32", 4363792],
+            [548, "DIR32", 4683848],
+            [559, "REL32", 4204096],
+            [572, "REL32", 4278320],
+            [585, "REL32", 4345888],
+            [594, "REL32", 4218976],
+            [603, "REL32", 4304592],
+            [612, "REL32", 4309648],
+            [621, "REL32", 4334432],
+            [630, "REL32", 4296848],
+            [639, "REL32", 4372064],
+            [647, "DIR32", 4683832],
+            [652, "REL32", 4368032],
+            [658, "DIR32", 4683532],
+            [664, "REL32", 4274720],
+            [669, "DIR32", 4683848],
+            [680, "REL32", 4204096],
+            [690, "DIR32", 4672672],
+            [699, "DIR32", 4683848],
+            [708, "REL32", 4249264],
+            [725, "DIR32", 4791336],
+            [733, "REL32", 4330240],
+            [739, "DIR32", 4792932],
+            [745, "DIR32", 4792928],
+            [786, "DIR32", 4683524],
+            [791, "REL32", 4290560],
+            [796, "REL32", 4239248],
+            [805, "REL32", 4216496],
+            [814, "REL32", 4230288],
+            [824, "DIR32", 4672672],
+            [832, "REL32", 4328448],
+            [838, "DIR32", 4683848],
+            [850, "REL32", 4328080],
+            [855, "DIR32", 4683848],
+            [866, "REL32", 4328080],
+            [875, "DIR32", 4683528],
+            [881, "DIR32", 4655984],
+            [891, "DIR32", 4655984],
+            [902, "REL32", 4215824],
+            [908, "DIR32", 4801816],
+            [918, "DIR32", 4612268],
+            [924, "DIR32", 4801816],
+            [932, "DIR32", 4672644],
+            [940, "DIR32", 4672652],
+            [945, "DIR32", 4791336],
+            [951, "DIR32", 4672644],
+            [956, "REL32", 4329584],
+            [966, "DIR32", 4672672],
+            [975, "DIR32", 4792932],
+            [981, "DIR32", 4792928],
+            [991, "DIR32", 4790436],
+            [996, "REL32", 4234784]
+          ],
+          "locals": [
+            [30, 37],
+            [35, 59],
+            [43, 718],
+            [57, 19],
+            [87, 377],
+            [100, 114],
+            [112, 119],
+            [185, 193],
+            [221, 235],
+            [233, 262],
+            [242, 256],
+            [254, 262],
+            [299, 348],
+            [343, 348],
+            [375, 395],
+            [388, 395],
+            [523, 645],
+            [541, 716],
+            [565, 716],
+            [578, 716],
+            [591, 716],
+            [600, 716],
+            [609, 716],
+            [618, 716],
+            [627, 716],
+            [636, 716],
+            [643, 684],
+            [686, 716],
+            [695, 785],
+            [714, 795],
+            [758, 764],
+            [769, 775],
+            [802, 716],
+            [811, 716],
+            [820, 716],
+            [829, 872],
+            [870, 874],
+            [912, 930],
+            [928, 914],
+            [936, 944]
+          ],
+          "calls": [
+            [209, 4295552],
+            [410, 4497104],
+            [445, 4496096],
+            [458, 4497104],
+            [483, 4496240],
+            [534, 4363792],
+            [558, 4204096],
+            [571, 4278320],
+            [584, 4345888],
+            [593, 4218976],
+            [602, 4304592],
+            [611, 4309648],
+            [620, 4334432],
+            [629, 4296848],
+            [638, 4372064],
+            [651, 4368032],
+            [663, 4274720],
+            [679, 4204096],
+            [707, 4249264],
+            [732, 4330240],
+            [790, 4290560],
+            [795, 4239248],
+            [804, 4216496],
+            [813, 4230288],
+            [831, 4328448],
+            [849, 4328080],
+            [865, 4328080],
+            [901, 4215824],
+            [955, 4329584],
+            [995, 4234784]
+          ],
+          "returns": [
+            [782, "4"],
+            [1006, "4"]
+          ],
+          "qword_stores": [
+            [
+              885,
+              "qword ptr [eax + 0x2c]"
+            ],
+            [
+              895,
+              "qword ptr [eax + 0x24]"
+            ]
+          ]
+        },
+        "native": {
+          "address": 4390160,
+          "size": 1023,
+          "sha256": "03bbed159392dd7221b501fffab6194f21ea6b10dae18fb14ba02c2d8c4d7404",
+          "instructions": 271,
+          "fields": [
+            [20, "DIR32", 4422128],
+            [39, "DIR32", 4422420],
+            [53, "DIR32", 4422072],
+            [61, "DIR32", 4422372],
+            [67, "DIR32", 4421568],
+            [77, "DIR32", 4421224],
+            [83, "DIR32", 4421228],
+            [95, "DIR32", 4421212],
+            [108, "DIR32", 4421204],
+            [115, "DIR32", 4421204],
+            [121, "DIR32", 4421192],
+            [133, "DIR32", 4421196],
+            [139, "DIR32", 4421168],
+            [164, "DIR32", 4421152],
+            [174, "DIR32", 4421248],
+            [181, "DIR32", 4421236],
+            [189, "DIR32", 4421232],
+            [199, "DIR32", 4421152],
+            [205, "DIR32", 4421156],
+            [210, "REL32", 4348848],
+            [216, "DIR32", 4421248],
+            [225, "DIR32", 4421508],
+            [236, "DIR32", 4421068],
+            [246, "DIR32", 4421508],
+            [258, "DIR32", 4421508],
+            [263, "DIR32", 4421212],
+            [269, "DIR32", 4421248],
+            [286, "DIR32", 4421160],
+            [292, "DIR32", 4421248],
+            [302, "DIR32", 4421192],
+            [308, "DIR32", 4421196],
+            [349, "DIR32", 4421248],
+            [359, "DIR32", 4421244],
+            [371, "DIR32", 4421240],
+            [378, "DIR32", 4421156],
+            [384, "DIR32", 4421152],
+            [391, "DIR32", 4421152],
+            [396, "DIR32", 4388512],
+            [402, "DIR32", 4421168],
+            [411, "REL32", 4397280],
+            [417, "DIR32", 4420684],
+            [446, "REL32", 4397360],
+            [451, "DIR32", 4387824],
+            [459, "REL32", 4397280],
+            [470, "DIR32", 4420684],
+            [484, "REL32", 4397504],
+            [489, "DIR32", 4421136],
+            [505, "DIR32", 4421736],
+            [518, "DIR32", 4421248],
+            [533, "DIR32", 4421036],
+            [539, "REL32", 4402272],
+            [548, "DIR32", 4421136],
+            [559, "REL32", 4400352],
+            [568, "REL32", 4381296],
+            [577, "REL32", 4272320],
+            [586, "REL32", 4420332],
+            [595, "REL32", 4352688],
+            [604, "REL32", 4407712],
+            [613, "REL32", 4420312],
+            [622, "REL32", 4385584],
+            [631, "REL32", 4420328],
+            [648, "DIR32", 4421448],
+            [656, "REL32", 4420348],
+            [662, "DIR32", 4423044],
+            [668, "DIR32", 4423040],
+            [710, "DIR32", 4421628],
+            [715, "REL32", 4406832],
+            [721, "DIR32", 4421280],
+            [727, "REL32", 4380832],
+            [732, "DIR32", 4421136],
+            [743, "REL32", 4400352],
+            [753, "DIR32", 4421248],
+            [762, "DIR32", 4421136],
+            [771, "REL32", 4206240],
+            [786, "DIR32", 4420800],
+            [791, "REL32", 4208848],
+            [796, "REL32", 4420324],
+            [809, "REL32", 4420316],
+            [822, "REL32", 4420320],
+            [836, "DIR32", 4421248],
+            [844, "REL32", 4390112],
+            [850, "DIR32", 4421136],
+            [862, "REL32", 4337104],
+            [867, "DIR32", 4421136],
+            [878, "REL32", 4337104],
+            [887, "DIR32", 4421688],
+            [893, "DIR32", 4416360],
+            [903, "DIR32", 4416360],
+            [914, "REL32", 4209488],
+            [920, "DIR32", 4421072],
+            [932, "DIR32", 4422072],
+            [938, "DIR32", 4421072],
+            [946, "DIR32", 4421220],
+            [954, "DIR32", 4421228],
+            [959, "DIR32", 4421448],
+            [965, "DIR32", 4421220],
+            [970, "REL32", 4420344],
+            [980, "DIR32", 4421248],
+            [989, "DIR32", 4423044],
+            [995, "DIR32", 4423040],
+            [1005, "DIR32", 4421144],
+            [1010, "REL32", 4388032]
+          ],
+          "locals": [
+            [30, 37],
+            [35, 59],
+            [43, 641],
+            [57, 19],
+            [87, 377],
+            [100, 114],
+            [112, 119],
+            [185, 193],
+            [221, 235],
+            [233, 262],
+            [242, 256],
+            [254, 262],
+            [299, 348],
+            [343, 348],
+            [375, 395],
+            [388, 395],
+            [523, 708],
+            [545, 639],
+            [565, 639],
+            [574, 639],
+            [583, 639],
+            [592, 639],
+            [601, 639],
+            [610, 639],
+            [619, 639],
+            [628, 639],
+            [637, 751],
+            [681, 687],
+            [692, 698],
+            [749, 639],
+            [758, 785],
+            [777, 639],
+            [783, 795],
+            [802, 639],
+            [815, 639],
+            [828, 639],
+            [841, 884],
+            [882, 886],
+            [924, 944],
+            [942, 928],
+            [950, 958]
+          ],
+          "calls": [
+            [209, 4295552],
+            [410, 4497104],
+            [445, 4496096],
+            [458, 4497104],
+            [483, 4496240],
+            [538, 4363792],
+            [558, 4204096],
+            [567, 4278320],
+            [576, 4345888],
+            [585, 4218976],
+            [594, 4304592],
+            [603, 4309648],
+            [612, 4334432],
+            [621, 4296848],
+            [630, 4372064],
+            [655, 4330240],
+            [714, 4368032],
+            [726, 4274720],
+            [742, 4204096],
+            [770, 4249264],
+            [790, 4290560],
+            [795, 4239248],
+            [808, 4216496],
+            [821, 4230288],
+            [843, 4328448],
+            [861, 4328080],
+            [877, 4328080],
+            [913, 4215824],
+            [969, 4329584],
+            [1009, 4234784]
+          ],
+          "returns": [
+            [705, "4"],
+            [1020, "4"]
+          ],
+          "qword_stores": [
+            [
+              897,
+              "qword ptr [eax + 0x2c]"
+            ],
+            [
+              907,
+              "qword ptr [eax + 0x24]"
+            ]
+          ]
+        }
+      },
+      "actual_callee_identity_counts_equal": true,
+      "call_identity_order_equal": false,
+      "call_bindings": {
+        "?SetFaith@GameScoreStateView@@": 4295552,
+        "?AllocElem@Chain@th10@@": 4497104,
+        "?AddToCalcChain@Chain@th10@@": 4496096,
+        "?AddToDrawChain@Chain@th10@@": 4496240,
+        "?Create@ReplayManager@@": 4363792,
+        "?StageCreate@@": 4204096,
+        "?ScriptViewerCreateGui@@": 4278320,
+        "?PlayerCreate@@": 4345888,
+        "?GameCreateProjectilePool@@": 4218976,
+        "?GameCreateItemManager@@": 4304592,
+        "?GameCreateOwner41C290@@": 4309648,
+        "?GameCreateController@@": 4334432,
+        "?CreateHintOwner@@": 4296848,
+        "?GameCreateOwner42B660@@": 4372064,
+        "?GameRestoreReplayState@@": 4368032,
+        "?LoadData@GuiView@@": 4274720,
+        "?EnemyManagerCreate@@": 4249264,
+        "?GameStopSoundState@@": 4330240,
+        "?Fn00417800@leaf@th10@@": 4290560,
+        "?GameCreateOwner40AF90@@": 4239248,
+        "?GameCreateLoaderOwner@@": 4216496,
+        "?GameCreateOwner408C90@@": 4230288,
+        "?GamePrepareDummyMusic@@": 4328448,
+        "?FrontEndLoadMusic@@": 4328080,
+        "?SetCurrent@AnmVmTimerView@@": 4215824,
+        "?GameStartSoundState@@": 4329584,
+        "?MarkGameChains@@": 4234784
+      }
+    }
+  },
+  "strict_diagnostic": {
+    "replay-restore-stage-state": {
+      "result": "exact",
+      "symbol": "?GameRestoreReplayState@@YAXPAVReplayManager@@@Z",
+      "size": 356,
+      "matched_bytes": 356,
+      "normalization_complete": true,
+      "first_differences": []
+    },
+    "replay-manager-create": {
+      "result": "exact",
+      "symbol": "?Create@ReplayManager@@SGPAV1@HPBD@Z",
+      "size": 185,
+      "matched_bytes": 185,
+      "normalization_complete": true,
+      "first_differences": []
+    },
+    "game-prepare-dummy-music": {
+      "result": "exact",
+      "symbol": "?GamePrepareDummyMusic@@YAHXZ",
+      "size": 41,
+      "matched_bytes": 41,
+      "normalization_complete": true,
+      "first_differences": []
+    }
+  },
+  "cold_replays": [
+    {
+      "label": "cold-one",
+      "exit_code": 0,
+      "unit_count": 7,
+      "matched_bytes": 706,
+      "groups": [
+        {
+          "artifact": "build/match-linked/GameStartupRestore",
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "unit": "game-decomphelp-fulltu-00417800",
+              "symbol": "?Fn00417800@leaf@th10@@YAIPAE@Z",
+              "result": "exact",
+              "size": 58,
+              "matched_bytes": 58,
+              "compared_size": 58,
+              "decoded_bytes": 58,
+              "normalization_complete": true,
+              "image_sha256": "2994fcb342cf77a20b0da7cd0405e3db05f411623722a35a1026720f9a48fb26",
+              "pdb_guid": "ffe1aa0853116f4ab3f0c0c388a6d20b",
+              "pdb_age": 1,
+              "bound_fields": 1
+            },
+            {
+              "unit": "replay-restore-stage-state",
+              "symbol": "?GameRestoreReplayState@@YAXPAVReplayManager@@@Z",
+              "result": "exact",
+              "size": 356,
+              "matched_bytes": 356,
+              "compared_size": 356,
+              "decoded_bytes": 356,
+              "normalization_complete": true,
+              "image_sha256": "2994fcb342cf77a20b0da7cd0405e3db05f411623722a35a1026720f9a48fb26",
+              "pdb_guid": "ffe1aa0853116f4ab3f0c0c388a6d20b",
+              "pdb_age": 1,
+              "bound_fields": 27
+            },
+            {
+              "unit": "replay-manager-create",
+              "symbol": "?Create@ReplayManager@@SGPAV1@HPBD@Z",
+              "result": "exact",
+              "size": 185,
+              "matched_bytes": 185,
+              "compared_size": 185,
+              "decoded_bytes": 185,
+              "normalization_complete": true,
+              "image_sha256": "2994fcb342cf77a20b0da7cd0405e3db05f411623722a35a1026720f9a48fb26",
+              "pdb_guid": "ffe1aa0853116f4ab3f0c0c388a6d20b",
+              "pdb_age": 1,
+              "bound_fields": 12
+            },
+            {
+              "unit": "game-prepare-dummy-music",
+              "symbol": "?GamePrepareDummyMusic@@YAHXZ",
+              "result": "exact",
+              "size": 41,
+              "matched_bytes": 41,
+              "compared_size": 41,
+              "decoded_bytes": 41,
+              "normalization_complete": true,
+              "image_sha256": "2994fcb342cf77a20b0da7cd0405e3db05f411623722a35a1026720f9a48fb26",
+              "pdb_guid": "ffe1aa0853116f4ab3f0c0c388a6d20b",
+              "pdb_age": 1,
+              "bound_fields": 5
+            }
+          ]
+        },
+        {
+          "artifact": "build/match-linked/GameManagerOnDraw",
+          "source": "src/GameManager.cpp",
+          "units": [
+            {
+              "unit": "decomphelp-game-manager-on-draw",
+              "symbol": "?OnDraw@GameManager@@QAIIXZ",
+              "result": "exact",
+              "size": 31,
+              "matched_bytes": 31,
+              "compared_size": 31,
+              "decoded_bytes": 31,
+              "normalization_complete": true,
+              "image_sha256": "16ea374746d16da55d1fafd468af65e18b1be444ee9fc20f3df1abda1657e2ba",
+              "pdb_guid": "0fb333e1683dd144ba8480ee6d335510",
+              "pdb_age": 1,
+              "bound_fields": 1
+            }
+          ]
+        },
+        {
+          "artifact": "build/match-linked/GameObjectReset",
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "unit": "game-manager-update-callback",
+              "symbol": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+              "result": "exact",
+              "size": 7,
+              "matched_bytes": 7,
+              "compared_size": 7,
+              "decoded_bytes": 7,
+              "normalization_complete": true,
+              "image_sha256": "635477b950621a2eb35ad1a78fb3658d3880942fadf797ff1b2e83c8aad69dcf",
+              "pdb_guid": "ca05eb240dd7844d8dd8785d80d79efd",
+              "pdb_age": 1,
+              "bound_fields": 1
+            }
+          ]
+        },
+        {
+          "artifact": "build/match-linked/GameStageTransition",
+          "source": "src/GameManager.cpp",
+          "units": [
+            {
+              "unit": "game-manager-mark-chains",
+              "symbol": "?MarkGameChains@@YAXPAUGameChainOwnerView@@@Z",
+              "result": "exact",
+              "size": 28,
+              "matched_bytes": 28,
+              "compared_size": 28,
+              "decoded_bytes": 28,
+              "normalization_complete": true,
+              "image_sha256": "654a1b6189fbfef499cadfa93f11cab705f4ef5b40af307093c99b4ac302b5f5",
+              "pdb_guid": "811d484a830836488abc0d607fbbeb52",
+              "pdb_age": 1,
+              "bound_fields": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "cold-two",
+      "exit_code": 0,
+      "unit_count": 4,
+      "matched_bytes": 640,
+      "groups": [
+        {
+          "artifact": "build/match-linked/GameStartupRestore",
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "unit": "game-decomphelp-fulltu-00417800",
+              "symbol": "?Fn00417800@leaf@th10@@YAIPAE@Z",
+              "result": "exact",
+              "size": 58,
+              "matched_bytes": 58,
+              "compared_size": 58,
+              "decoded_bytes": 58,
+              "normalization_complete": true,
+              "image_sha256": "5a45820d5bb76182c5a53fe6b69870b7d31ba52637d4da7eacf3ed273fa8182e",
+              "pdb_guid": "be20238595e1fe4c808f905f87d2d7b1",
+              "pdb_age": 1,
+              "bound_fields": 1
+            },
+            {
+              "unit": "replay-restore-stage-state",
+              "symbol": "?GameRestoreReplayState@@YAXPAVReplayManager@@@Z",
+              "result": "exact",
+              "size": 356,
+              "matched_bytes": 356,
+              "compared_size": 356,
+              "decoded_bytes": 356,
+              "normalization_complete": true,
+              "image_sha256": "5a45820d5bb76182c5a53fe6b69870b7d31ba52637d4da7eacf3ed273fa8182e",
+              "pdb_guid": "be20238595e1fe4c808f905f87d2d7b1",
+              "pdb_age": 1,
+              "bound_fields": 27
+            },
+            {
+              "unit": "replay-manager-create",
+              "symbol": "?Create@ReplayManager@@SGPAV1@HPBD@Z",
+              "result": "exact",
+              "size": 185,
+              "matched_bytes": 185,
+              "compared_size": 185,
+              "decoded_bytes": 185,
+              "normalization_complete": true,
+              "image_sha256": "5a45820d5bb76182c5a53fe6b69870b7d31ba52637d4da7eacf3ed273fa8182e",
+              "pdb_guid": "be20238595e1fe4c808f905f87d2d7b1",
+              "pdb_age": 1,
+              "bound_fields": 12
+            },
+            {
+              "unit": "game-prepare-dummy-music",
+              "symbol": "?GamePrepareDummyMusic@@YAHXZ",
+              "result": "exact",
+              "size": 41,
+              "matched_bytes": 41,
+              "compared_size": 41,
+              "decoded_bytes": 41,
+              "normalization_complete": true,
+              "image_sha256": "5a45820d5bb76182c5a53fe6b69870b7d31ba52637d4da7eacf3ed273fa8182e",
+              "pdb_guid": "be20238595e1fe4c808f905f87d2d7b1",
+              "pdb_age": 1,
+              "bound_fields": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "same_image_guards": {
+    "cold-one": {
+      "passed": {
+        "enemy-end-spell": {
+          "result": "exact",
+          "size": 399,
+          "bound_fields": 20
+        },
+        "game-score-add-power": {
+          "result": "exact",
+          "size": 166,
+          "bound_fields": 4
+        },
+        "item-rank-add": {
+          "result": "exact",
+          "size": 42,
+          "bound_fields": 0
+        },
+        "gui-update-score-display": {
+          "result": "exact",
+          "size": 671,
+          "bound_fields": 36
+        },
+        "game-add-lives": {
+          "result": "exact",
+          "size": 141,
+          "bound_fields": 12
+        },
+        "anm-loaded-create-vm-variant0": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 5
+        },
+        "anm-loaded-set-sprite": {
+          "result": "exact",
+          "size": 356,
+          "bound_fields": 2
+        },
+        "enemy-sound-queue-sample": {
+          "result": "exact",
+          "size": 123,
+          "bound_fields": 1
+        },
+        "enemy-mark-pending-interrupt": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 2
+        },
+        "anm-manager-find-vm": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 0
+        },
+        "anm-vm-id-set-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "anm-vm-id-clear-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "transition-effect-factory": {
+          "result": "exact",
+          "size": 82,
+          "bound_fields": 2
+        },
+        "game-stage-transition-delay": {
+          "result": "exact",
+          "size": 92,
+          "bound_fields": 1
+        },
+        "game-enter-menu-state": {
+          "result": "exact",
+          "size": 119,
+          "bound_fields": 2
+        },
+        "script-viewer-worker-stop": {
+          "result": "exact",
+          "size": 101,
+          "bound_fields": 3
+        },
+        "bullet-reset-pool": {
+          "result": "exact",
+          "size": 45,
+          "bound_fields": 2
+        },
+        "enemy-manager-clear": {
+          "result": "exact",
+          "size": 118,
+          "bound_fields": 2
+        },
+        "main-set-next-game-mode": {
+          "result": "exact",
+          "size": 37,
+          "bound_fields": 0
+        },
+        "front-end-play-music": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 8
+        },
+        "game-manager-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "bound_fields": 1
+        },
+        "game-clear-linked-objects": {
+          "result": "exact",
+          "size": 66,
+          "bound_fields": 1
+        },
+        "replay-clear-stage-frame-data": {
+          "result": "exact",
+          "size": 93,
+          "bound_fields": 1
+        },
+        "replay-restore-stage-position": {
+          "result": "exact",
+          "size": 83,
+          "bound_fields": 2
+        },
+        "input-debug-repeat": {
+          "result": "exact",
+          "size": 109,
+          "bound_fields": 0
+        },
+        "game-update-faith-decay": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "bound_fields": 4
+        },
+        "replay-process-frame": {
+          "result": "exact",
+          "size": 596,
+          "bound_fields": 33
+        },
+        "replay-append-record": {
+          "result": "exact",
+          "size": 85,
+          "bound_fields": 0
+        },
+        "replay-process-frame-callback": {
+          "result": "exact",
+          "size": 10,
+          "bound_fields": 1
+        },
+        "decomphelp-game-manager-on-draw": {
+          "result": "exact",
+          "size": 31,
+          "bound_fields": 1
+        },
+        "front-end-load-music": {
+          "result": "exact",
+          "size": 120,
+          "bound_fields": 5
+        },
+        "game-score-set-faith": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 1
+        },
+        "game-score-set-timer-current": {
+          "result": "exact",
+          "size": 59,
+          "bound_fields": 1
+        },
+        "sound-player-queue-command": {
+          "result": "exact",
+          "size": 104,
+          "bound_fields": 0
+        },
+        "game-decomphelp-fulltu-00417800": {
+          "result": "exact",
+          "size": 58,
+          "bound_fields": 1
+        }
+      },
+      "rejected": {
+        "chain-add-calc": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x81 differs from manifest 0x83"
+        },
+        "chain-add-draw": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x81 differs from manifest 0x83"
+        },
+        "enemy-laser-manager-create": {
+          "result": "rejected",
+          "error": "linked fields differ from manifest: actual=[(8, 'REL32', 4), (26, 'REL32', 4), (43, 'DIR32', 4), (55, 'REL32', 4), (68, 'REL32', 4), (74, 'REL32', 4)] expected=[(7, 'REL32', 4), (25, 'REL32', 4), (42, 'DIR32', 4), (55, 'REL32', 4), (70, 'REL32', 4), (76, 'REL32', 4)]"
+        },
+        "gui-creation-factory": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x44 differs from manifest 0x88"
+        },
+        "stage-lifecycle-destructor": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x1cc differs from manifest 0x1f3"
+        }
+      }
+    },
+    "cold-two": {
+      "passed": {
+        "enemy-end-spell": {
+          "result": "exact",
+          "size": 399,
+          "bound_fields": 20
+        },
+        "game-score-add-power": {
+          "result": "exact",
+          "size": 166,
+          "bound_fields": 4
+        },
+        "item-rank-add": {
+          "result": "exact",
+          "size": 42,
+          "bound_fields": 0
+        },
+        "gui-update-score-display": {
+          "result": "exact",
+          "size": 671,
+          "bound_fields": 36
+        },
+        "game-add-lives": {
+          "result": "exact",
+          "size": 141,
+          "bound_fields": 12
+        },
+        "anm-loaded-create-vm-variant0": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 5
+        },
+        "anm-loaded-set-sprite": {
+          "result": "exact",
+          "size": 356,
+          "bound_fields": 2
+        },
+        "enemy-sound-queue-sample": {
+          "result": "exact",
+          "size": 123,
+          "bound_fields": 1
+        },
+        "enemy-mark-pending-interrupt": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 2
+        },
+        "anm-manager-find-vm": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 0
+        },
+        "anm-vm-id-set-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "anm-vm-id-clear-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "transition-effect-factory": {
+          "result": "exact",
+          "size": 82,
+          "bound_fields": 2
+        },
+        "game-stage-transition-delay": {
+          "result": "exact",
+          "size": 92,
+          "bound_fields": 1
+        },
+        "game-enter-menu-state": {
+          "result": "exact",
+          "size": 119,
+          "bound_fields": 2
+        },
+        "script-viewer-worker-stop": {
+          "result": "exact",
+          "size": 101,
+          "bound_fields": 3
+        },
+        "bullet-reset-pool": {
+          "result": "exact",
+          "size": 45,
+          "bound_fields": 2
+        },
+        "enemy-manager-clear": {
+          "result": "exact",
+          "size": 118,
+          "bound_fields": 2
+        },
+        "main-set-next-game-mode": {
+          "result": "exact",
+          "size": 37,
+          "bound_fields": 0
+        },
+        "front-end-play-music": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 8
+        },
+        "game-manager-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "bound_fields": 1
+        },
+        "game-clear-linked-objects": {
+          "result": "exact",
+          "size": 66,
+          "bound_fields": 1
+        },
+        "replay-clear-stage-frame-data": {
+          "result": "exact",
+          "size": 93,
+          "bound_fields": 1
+        },
+        "replay-restore-stage-position": {
+          "result": "exact",
+          "size": 83,
+          "bound_fields": 2
+        },
+        "input-debug-repeat": {
+          "result": "exact",
+          "size": 109,
+          "bound_fields": 0
+        },
+        "game-update-faith-decay": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "bound_fields": 4
+        },
+        "replay-process-frame": {
+          "result": "exact",
+          "size": 596,
+          "bound_fields": 33
+        },
+        "replay-append-record": {
+          "result": "exact",
+          "size": 85,
+          "bound_fields": 0
+        },
+        "replay-process-frame-callback": {
+          "result": "exact",
+          "size": 10,
+          "bound_fields": 1
+        },
+        "decomphelp-game-manager-on-draw": {
+          "result": "exact",
+          "size": 31,
+          "bound_fields": 1
+        },
+        "front-end-load-music": {
+          "result": "exact",
+          "size": 120,
+          "bound_fields": 5
+        },
+        "game-score-set-faith": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 1
+        },
+        "game-score-set-timer-current": {
+          "result": "exact",
+          "size": 59,
+          "bound_fields": 1
+        },
+        "sound-player-queue-command": {
+          "result": "exact",
+          "size": 104,
+          "bound_fields": 0
+        },
+        "game-decomphelp-fulltu-00417800": {
+          "result": "exact",
+          "size": 58,
+          "bound_fields": 1
+        }
+      },
+      "rejected": {
+        "chain-add-calc": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x81 differs from manifest 0x83"
+        },
+        "chain-add-draw": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x81 differs from manifest 0x83"
+        },
+        "enemy-laser-manager-create": {
+          "result": "rejected",
+          "error": "linked fields differ from manifest: actual=[(8, 'REL32', 4), (26, 'REL32', 4), (43, 'DIR32', 4), (55, 'REL32', 4), (68, 'REL32', 4), (74, 'REL32', 4)] expected=[(7, 'REL32', 4), (25, 'REL32', 4), (42, 'DIR32', 4), (55, 'REL32', 4), (70, 'REL32', 4), (76, 'REL32', 4)]"
+        },
+        "gui-creation-factory": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x44 differs from manifest 0x88"
+        },
+        "stage-lifecycle-destructor": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x1cc differs from manifest 0x1f3"
+        }
+      }
+    }
+  },
+  "allocation_eh": [
+    {
+      "label": "cold-one",
+      "proof": {
+        "authority": "address binding only; no generated-code/runtime credit",
+        "candidate": {
+          "func_info": "0x4365f0",
+          "func_info_bytes": 28,
+          "handler": "0x43428b",
+          "region_bytes": 21,
+          "saved_storage_offset": -16,
+          "unwind_action": "0x434280",
+          "unwind_map": "0x4365e8",
+          "unwind_states": 1
+        },
+        "parent_symbol": "?Create@ReplayManager@@SGPAV1@HPBD@Z",
+        "pdb_module_index": 10,
+        "symbol": "__ehhandler$?Create@ReplayManager@@SGPAV1@HPBD@Z",
+        "target": {
+          "func_info": "0x4716c0",
+          "func_info_bytes": 28,
+          "handler": "0x46566b",
+          "region_bytes": 21,
+          "saved_storage_offset": -16,
+          "unwind_action": "0x465660",
+          "unwind_map": "0x4716b8",
+          "unwind_states": 1
+        }
+      }
+    },
+    {
+      "label": "cold-two",
+      "proof": {
+        "authority": "address binding only; no generated-code/runtime credit",
+        "candidate": {
+          "func_info": "0x4365f0",
+          "func_info_bytes": 28,
+          "handler": "0x43428b",
+          "region_bytes": 21,
+          "saved_storage_offset": -16,
+          "unwind_action": "0x434280",
+          "unwind_map": "0x4365e8",
+          "unwind_states": 1
+        },
+        "parent_symbol": "?Create@ReplayManager@@SGPAV1@HPBD@Z",
+        "pdb_module_index": 10,
+        "symbol": "__ehhandler$?Create@ReplayManager@@SGPAV1@HPBD@Z",
+        "target": {
+          "func_info": "0x4716c0",
+          "func_info_bytes": 28,
+          "handler": "0x46566b",
+          "region_bytes": 21,
+          "saved_storage_offset": -16,
+          "unwind_action": "0x465660",
+          "unwind_map": "0x4716b8",
+          "unwind_states": 1
+        }
+      }
+    }
+  ],
+  "controls": [
+    {
+      "label": "entry",
+      "comparisons": {
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1024,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1297,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "mismatch",
+          "candidate_size": 181,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "first-complete",
+      "comparisons": {
+        "restore": {
+          "result": "mismatch",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1039,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "mismatch",
+          "candidate_size": 181,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "actual-rng-session-storage",
+      "comparisons": {
+        "restore": {
+          "result": "mismatch",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1039,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "mismatch",
+          "candidate_size": 181,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "seed-reset-order",
+      "comparisons": {
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1039,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "mismatch",
+          "candidate_size": 181,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "actual-chain-registration",
+      "comparisons": {
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1038,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "mismatch",
+          "candidate_size": 181,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "real-create-abi",
+      "comparisons": {
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1029,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "structural-exact",
+          "candidate_size": 185,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "actual-startup-calls",
+      "comparisons": {
+        "dummy": {
+          "result": "structural-exact",
+          "candidate_size": 41,
+          "target_size": 41,
+          "normalization_complete": true
+        },
+        "guiload": {
+          "result": "mismatch",
+          "candidate_size": 289,
+          "target_size": 289,
+          "normalization_complete": true
+        },
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1024,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "structural-exact",
+          "candidate_size": 185,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "actual-startup-state-views",
+      "comparisons": {
+        "dummy": {
+          "result": "structural-exact",
+          "candidate_size": 41,
+          "target_size": 41,
+          "normalization_complete": true
+        },
+        "guiload": {
+          "result": "mismatch",
+          "candidate_size": 289,
+          "target_size": 289,
+          "normalization_complete": true
+        },
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1034,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "structural-exact",
+          "candidate_size": 185,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "startup-shared-state-range",
+      "comparisons": {
+        "dummy": {
+          "result": "structural-exact",
+          "candidate_size": 41,
+          "target_size": 41,
+          "normalization_complete": true
+        },
+        "guiload": {
+          "result": "mismatch",
+          "candidate_size": 289,
+          "target_size": 289,
+          "normalization_complete": true
+        },
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1029,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "structural-exact",
+          "candidate_size": 185,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "owner-relative-statistics",
+      "comparisons": {
+        "dummy": {
+          "result": "structural-exact",
+          "candidate_size": 41,
+          "target_size": 41,
+          "normalization_complete": true
+        },
+        "guiload": {
+          "result": "mismatch",
+          "candidate_size": 289,
+          "target_size": 289,
+          "normalization_complete": true
+        },
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1027,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "structural-exact",
+          "candidate_size": 185,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "actual-startup-factories",
+      "comparisons": {
+        "dummy": {
+          "result": "structural-exact",
+          "candidate_size": 41,
+          "target_size": 41,
+          "normalization_complete": true
+        },
+        "guiload": {
+          "result": "mismatch",
+          "candidate_size": 289,
+          "target_size": 289,
+          "normalization_complete": true
+        },
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1027,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "structural-exact",
+          "candidate_size": 185,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1107,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "typed-enemy-timer",
+      "comparisons": {
+        "enemytimer": {
+          "result": "structural-exact",
+          "candidate_size": 58,
+          "target_size": 58,
+          "normalization_complete": true
+        },
+        "dummy": {
+          "result": "structural-exact",
+          "candidate_size": 41,
+          "target_size": 41,
+          "normalization_complete": true
+        },
+        "guiload": {
+          "result": "mismatch",
+          "candidate_size": 289,
+          "target_size": 289,
+          "normalization_complete": true
+        },
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1023,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "structural-exact",
+          "candidate_size": 185,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1107,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "cold-one",
+      "comparisons": {
+        "enemytimer": {
+          "result": "structural-exact",
+          "candidate_size": 58,
+          "target_size": 58,
+          "normalization_complete": true
+        },
+        "dummy": {
+          "result": "structural-exact",
+          "candidate_size": 41,
+          "target_size": 41,
+          "normalization_complete": true
+        },
+        "guiload": {
+          "result": "mismatch",
+          "candidate_size": 289,
+          "target_size": 289,
+          "normalization_complete": true
+        },
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1023,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "structural-exact",
+          "candidate_size": 185,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1107,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "cold-two",
+      "comparisons": {
+        "enemytimer": {
+          "result": "structural-exact",
+          "candidate_size": 58,
+          "target_size": 58,
+          "normalization_complete": true
+        },
+        "dummy": {
+          "result": "structural-exact",
+          "candidate_size": 41,
+          "target_size": 41,
+          "normalization_complete": true
+        },
+        "guiload": {
+          "result": "mismatch",
+          "candidate_size": 289,
+          "target_size": 289,
+          "normalization_complete": true
+        },
+        "restore": {
+          "result": "structural-exact",
+          "candidate_size": 356,
+          "target_size": 356,
+          "normalization_complete": true
+        },
+        "gamestart": {
+          "result": "mismatch",
+          "candidate_size": 1023,
+          "target_size": 1009,
+          "normalization_complete": true
+        },
+        "replayinitialize": {
+          "result": "mismatch",
+          "candidate_size": 1316,
+          "target_size": 1344,
+          "normalization_complete": true
+        },
+        "replaycreate": {
+          "result": "structural-exact",
+          "candidate_size": 185,
+          "target_size": 185,
+          "normalization_complete": true
+        },
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1107,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1538,
+          "target_size": 1544,
+          "normalization_complete": true
+        }
+      }
+    }
+  ],
+  "wine_recovery": {
+    "failed_attempt_exit": 1,
+    "failed_attempt_acceptance": "none",
+    "failed_report_sha256": "3e62afbb9013ddbb3d1fc5621206d948be00c7e38c5af4d167012297b1f6a489",
+    "smoke_exit": 0,
+    "smoke_log_sha256": "3e01cd92172d9bd921b55101c975ff5f0611807d38e2ab5177f66c58d03017e7",
+    "retry": "Only the four selected new/migrated units rerun; source/profiles/contracts unchanged."
+  },
+  "failed_duplicate_link": {
+    "exit_code": 1,
+    "errors": ["Fn0040CC10", "Fn0040CC20", "Fn0040CC30", "Fn0040CC40"],
+    "log_sha256": "537636f0bc56a64d86eb28ffd712d0bb219e8061dda49395606b172d959e4937",
+    "resolution": "Only417800 moves from the legacy aggregation to existing Enemy.cpp; no forced-multiple-definition link and no other leaf edits."
+  },
+  "source_consolidation": {
+    "legacy_aggregation_only_one_definition_removed": true,
+    "before_sha256": "738c25b4736c20ddd041ac7b93f81c714d7aa27321853c0c7c6fa734ac26671f",
+    "after_sha256": "1565bd06611600c47dfeee3dede75e0efe71515313b41eb9a76bf0fd1fd0e1fe",
+    "retained_original_function_text_sha256": "bfd3e0f65bef0ab782c1fdc424fd575ee62f6b7f54220269d491cc931a3072eb"
+  },
+  "layout_repair": {
+    "previous_fps_offsets": [40, 48],
+    "target_and_current_fps_offsets": [36, 44],
+    "view": "existing ReplayTimingSource",
+    "worker_fields": {
+      "stopRequested": 1592,
+      "running": 1596
+    },
+    "minimum_startup_state_view": {
+      "score": 0,
+      "rankResetCounter": 92,
+      "runtimeFlags": 96,
+      "original_allocation_ownership": "unproven"
+    }
+  },
+  "private_campaign": ".analysis/gpt-6.1-sol/replay-restore-20261031",
+  "limitations": "Startup1023/1009 remains nonexact with102 fields,41 versus40 locals and30 equal callee identity counts. Five same-image contracts explicitly reject. Only582 authored bytes are new;58 retains existing credit with stronger symbolic binding. Original class/TU/data ownership and product/runtime/portability remain open."
+}

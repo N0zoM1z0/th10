@@ -1216,3 +1216,5 @@ ReplayRestoreStagePosition
 ReplayAllocateFrameData
 ReplayClearStageFrameData
 ReplayAppendRecord
+GameRestoreReplayState
+GamePrepareDummyMusic

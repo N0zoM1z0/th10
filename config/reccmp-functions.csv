@@ -1217,3 +1217,5 @@ ReplayRestoreStagePosition,0x00428E10,function
 ReplayAllocateFrameData,0x0042AA50,function
 ReplayClearStageFrameData,0x0042AB20,function
 ReplayAppendRecord,0x0042A8A0,function
+GameRestoreReplayState,0x0042A6A0,function
+GamePrepareDummyMusic,0x00420C00,function
