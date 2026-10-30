@@ -1,0 +1,2678 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp",
+      "src/GuiMessageLeaves.cpp",
+      "src/FileSystem.cpp",
+      "src/PbgArchive.cpp",
+      "src/ReplayManager.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FrontEnd.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ItemManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Main.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Sound.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Gui.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Hint.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/FileSystem.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/PbgArchive.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/ReplayManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+  },
+  "input_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "bd9a3a3ef595569aa90c1acf4999271b79f03c44e6562b1f9544c111a8892fff",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "d632e60fefce7f3d830c4bad5faeb38f9f0ac2ea88a07d800485b37f9034f946",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "a2940382f3f8aff0e96dceb5262067eea5b36c85b1b503cae984505dffb38e91",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiMessageLeaves.cpp": "7f0b02c9037056b3613d8322b4da2adc524a10d17ca29f1247159fb5843edb12",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.cpp": "8b950fceecc041701f77b8a23726bb42e09d9ceb50503f91025e38ff761f5eaf",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.cpp": "3fa6b87037d280bcd7f25d05cf89b0f820aca16b3b47701a7d03372148e1587a",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/ReplayManager.cpp": "c36918f724269293acb48c0bb8f61a945df84de7559e634fe19a6adcaf18cac0",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "cold_builds": [
+    {
+      "label": "cold-a",
+      "artifact_dir": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/replay-save-context-20261030/cold-a",
+      "compiled_inputs": [
+        "src/Enemy.cpp",
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp",
+        "src/GuiMessageLeaves.cpp",
+        "src/FileSystem.cpp",
+        "src/PbgArchive.cpp",
+        "src/ReplayManager.cpp"
+      ],
+      "reused_inputs": 0,
+      "exit": 0,
+      "image_sha256": "d0b6a62515039e763f223e64f6d7efabe15481c0ca6c21709e6d41cc2475c92d",
+      "object_sha256": {
+        "src/Enemy.cpp": "5164bb8675d934a2ea51338910e3dfc5272ca07bbbd12588d61253876146b7f0",
+        "src/AnmManager.cpp": "b40f66eaa50f12d1d94b90dd8a055c378413fff490a10777e50ae75ed04defdf",
+        "src/RandomMath.cpp": "980e6d364a04f3ac1033ad5a0fc7bcc2e754aa7d68fa80469be73da14ca92f58",
+        "src/AnmVmCreate.cpp": "6b33599675564e735fb2b0070afe3a4164232064d49770adcb32abf01fffb2b8",
+        "src/AnmVmId.cpp": "64916f9a4072022e94443434ff73c96ece5a3d433dbee28dc8dfff1bf8577fcd",
+        "src/AnmInt3Scale.cpp": "370f5d3db88068d5c1e2ede5592c5f18ce3ba12874a9e197e9334eaec8946278",
+        "src/EclVm.cpp": "b58c599e116c249d18e654d4184f54c1b8ae9a2854e20970b3af9d1e3064a4a9",
+        "src/Player.cpp": "e1bc75451037f3dcfab5c3718dfbec87a8792f6d995c1d5c3b68221a1a1e0545",
+        "src/PlayerCollision.cpp": "caf5517beaab6390e4f9ce944ed917ae1fc8a28969d488ec1acf12d148899eae",
+        "src/EnemyEclDispatcher.cpp": "bdd7c673d44e173ef892628e6c1e2707acd7192761cb4fccbfb8bd1096c12f2d",
+        "src/VmIdInterrupt.cpp": "cfd260ea5c3fdb4f09af36b427877bf9cb678d0520a80df46df394f24312ce34",
+        "src/FrontEnd.cpp": "62c02a42fd83a8adec237817c68f544ea66c0c07dd0928364f26087097cc9d0b",
+        "src/ItemManager.cpp": "6919a174a0f7126d63ffcccf9f9c8873a14029130ea9693523f8914e72f55ae8",
+        "src/Main.cpp": "bedf065efded52322dc85d9147e9fb2d4b6413768adea997ec311db743d849c1",
+        "src/Sound.cpp": "7f7e6df2ecdb73985545e60135edea782bc7fd6510d7b13c395f40634bcab768",
+        "src/Gui.cpp": "78294b0e4847d648de2ea1f7760fdd5a3c4ac6dc0f66b478ea03b1cea11ccc2f",
+        "src/Hint.cpp": "787b197429ba94ccb9fcc7f874da81eaa6fc4b22493954f6fe52ce50758fc078",
+        "src/GuiMessageLeaves.cpp": "664a6a1ec31266b94300cfb8ab8be29a1ed8edd5c274e16a696bdc10e5202251",
+        "src/FileSystem.cpp": "65c9e22c128d3a3d06ad1ad3b2f401a550db065cb5ebb0856aa3cd2d88cc19df",
+        "src/PbgArchive.cpp": "4e0b4ae621597b0399e5d402efe47ccaedead232789edb0735eec22df2ec1002",
+        "src/ReplayManager.cpp": "8eb0e9316201939e915b7393586ae6220fce723a0491791a6253af33dceca0dd"
+      },
+      "log_sha256": "6cf580fc17182a69c3f664ba62b327e6feb7bc935afdce108edfaf1c970d65d7"
+    },
+    {
+      "label": "cold-b",
+      "artifact_dir": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/replay-save-context-20261030/cold-b",
+      "compiled_inputs": [
+        "src/Enemy.cpp",
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp",
+        "src/GuiMessageLeaves.cpp",
+        "src/FileSystem.cpp",
+        "src/PbgArchive.cpp",
+        "src/ReplayManager.cpp"
+      ],
+      "reused_inputs": 0,
+      "exit": 0,
+      "image_sha256": "0061066301a6c92e5ca532d043be294bc8c86af8cef05ddcab37121af92d3ba6",
+      "object_sha256": {
+        "src/Enemy.cpp": "3637c1618dd8626254769ca19ef8ee8514b734e3352d922668a98ab4118255ba",
+        "src/AnmManager.cpp": "d506dee26053579a70a7e43a143ebc7e6b0066d258d87e4036fdc3e31edd7a78",
+        "src/RandomMath.cpp": "c4305cb11bc410b9e951c05e9e43e7fb6f7aed0dca47312138f38479a8e3ea08",
+        "src/AnmVmCreate.cpp": "f66478e575fed41390baf774133f8b900262130193c77f7845c3f7e8f8eb6a72",
+        "src/AnmVmId.cpp": "3db5744040b5ad5f3608197b7214aeb7d462117abeaf86e98de8eb38ee8e0c4d",
+        "src/AnmInt3Scale.cpp": "4f70e296bffc23d29eec2dc33c7e7be2cf9925e04452f73f1a11de9139e2e3bc",
+        "src/EclVm.cpp": "b4fcedbb382a74594d66290753af07cbffcb5df297868f9ba1d2ae88bc76cd9e",
+        "src/Player.cpp": "f2d784af536d9e6e514451924d23b863e1208eeaa3146e71c540e67f5c243e9a",
+        "src/PlayerCollision.cpp": "f0eeb4c7461d25c5a7251f7332d5463465262757d1292d3324235fd97934dd78",
+        "src/EnemyEclDispatcher.cpp": "3d342488a1f93dc509e7b2d6dbf514dbcd6a797e5a044f9d6c065c4ad8979d64",
+        "src/VmIdInterrupt.cpp": "fd86a9cfb3a614009e074d16f1c85b04de58469f4d749cb4e5d0fda159bead47",
+        "src/FrontEnd.cpp": "3544e324dd06b27bb4b21443720b23512db6c4c0710ee6900f9364fbc49e0f5a",
+        "src/ItemManager.cpp": "1baf94f3b87fbe39d47ba587f7e0b4868e2a8d95c7333f3c01a57e95b4cd58ee",
+        "src/Main.cpp": "a4c5212b0a79d9225f79489b747f3485b0867419fbc41d31a67fed0e37c56919",
+        "src/Sound.cpp": "2e696edf358b7a610e2ff6a29da44719204ee38e9c9c666e362c0b0f558acba9",
+        "src/Gui.cpp": "0c42cfcf62ae0a5713acf718675c6a5c4fb6967545f8518ff9981f425abbf41b",
+        "src/Hint.cpp": "ee58289bcd30ee8caded007903e178284aca4b2408c8c72384cc715d4b91a23d",
+        "src/GuiMessageLeaves.cpp": "a0f4cd5d7afa4880902506f234028412a2d14d7fd53b7bc391d1a281d0504de6",
+        "src/FileSystem.cpp": "08b03ce2a684ffd6ea50449402383b52018fc92224ad123c40536b3a9fd99ef0",
+        "src/PbgArchive.cpp": "c6d358e2cdfdf69037544bb24cecaf7041615f4249b98087fdf7e8b5bc8869ad",
+        "src/ReplayManager.cpp": "764bc05a0eda4734d4f772016ed1850710c06c2c1e47dea67e2de6b01bf9b1c2"
+      },
+      "log_sha256": "683c72b7aaefa6edec9d67e1447ec4c831eb72ecd27df3d265fecb3ab5afb1f3"
+    }
+  ],
+  "review": {
+    "target_review": {
+      "complete_owned_bytes": 1460,
+      "code_bytes": 1440,
+      "raw_sha256": "10cfd6adab026e2cb16cfa8c9d765cc3d9740f019698797cd134215a600b7033",
+      "normalized_sha256": "fea6edb19ae7e16c492e5208c1e1176e0320f1fe7a424d298f9540f60b114bbc",
+      "instruction_count": 399,
+      "field_identities": [
+        {
+          "offset": 4,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00473660"
+          }
+        },
+        {
+          "offset": 37,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1440
+          }
+        },
+        {
+          "offset": 94,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00477848"
+          }
+        },
+        {
+          "offset": 98,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474908"
+          }
+        },
+        {
+          "offset": 103,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474C7C"
+          }
+        },
+        {
+          "offset": 108,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474C80"
+          }
+        },
+        {
+          "offset": 134,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x0046E0C8"
+          }
+        },
+        {
+          "offset": 140,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x00452AE8"
+          }
+        },
+        {
+          "offset": 153,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x004296F0"
+          }
+        },
+        {
+          "offset": 175,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C670"
+          }
+        },
+        {
+          "offset": 187,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C620"
+          }
+        },
+        {
+          "offset": 212,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C620"
+          }
+        },
+        {
+          "offset": 232,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E36"
+          }
+        },
+        {
+          "offset": 244,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E34"
+          }
+        },
+        {
+          "offset": 255,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0044BEA0"
+          }
+        },
+        {
+          "offset": 261,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E36"
+          }
+        },
+        {
+          "offset": 270,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E34"
+          }
+        },
+        {
+          "offset": 282,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0044BEA0"
+          }
+        },
+        {
+          "offset": 301,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00492590"
+          }
+        },
+        {
+          "offset": 306,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0043DC90"
+          }
+        },
+        {
+          "offset": 311,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E36"
+          }
+        },
+        {
+          "offset": 327,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C620"
+          }
+        },
+        {
+          "offset": 339,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00492590"
+          }
+        },
+        {
+          "offset": 344,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0043DC90"
+          }
+        },
+        {
+          "offset": 405,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x004746D8"
+          }
+        },
+        {
+          "offset": 425,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00477838"
+          }
+        },
+        {
+          "offset": 458,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x00452B71"
+          }
+        },
+        {
+          "offset": 472,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x0047783C"
+          }
+        },
+        {
+          "offset": 507,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x0046E354"
+          }
+        },
+        {
+          "offset": 537,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0044BEA0"
+          }
+        },
+        {
+          "offset": 569,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00492590"
+          }
+        },
+        {
+          "offset": 580,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0043DC90"
+          }
+        },
+        {
+          "offset": 592,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C620"
+          }
+        },
+        {
+          "offset": 618,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E36"
+          }
+        },
+        {
+          "offset": 630,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E34"
+          }
+        },
+        {
+          "offset": 641,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0044BEA0"
+          }
+        },
+        {
+          "offset": 647,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E36"
+          }
+        },
+        {
+          "offset": 656,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E34"
+          }
+        },
+        {
+          "offset": 668,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0044BEA0"
+          }
+        },
+        {
+          "offset": 674,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E36"
+          }
+        },
+        {
+          "offset": 686,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E34"
+          }
+        },
+        {
+          "offset": 715,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0044BEA0"
+          }
+        },
+        {
+          "offset": 721,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E36"
+          }
+        },
+        {
+          "offset": 733,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E34"
+          }
+        },
+        {
+          "offset": 763,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0044BEA0"
+          }
+        },
+        {
+          "offset": 782,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00492590"
+          }
+        },
+        {
+          "offset": 787,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0043DC90"
+          }
+        },
+        {
+          "offset": 793,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E36"
+          }
+        },
+        {
+          "offset": 809,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x004746D8"
+          }
+        },
+        {
+          "offset": 925,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0040AD20"
+          }
+        },
+        {
+          "offset": 1005,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00492590"
+          }
+        },
+        {
+          "offset": 1010,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0043DC90"
+          }
+        },
+        {
+          "offset": 1024,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x0046E0C8"
+          }
+        },
+        {
+          "offset": 1030,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x00452AE8"
+          }
+        },
+        {
+          "offset": 1048,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x004297B0"
+          }
+        },
+        {
+          "offset": 1054,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00477838"
+          }
+        },
+        {
+          "offset": 1070,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x00429B60"
+          }
+        },
+        {
+          "offset": 1083,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x004296F0"
+          }
+        },
+        {
+          "offset": 1089,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x0047783C"
+          }
+        },
+        {
+          "offset": 1128,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C620"
+          }
+        },
+        {
+          "offset": 1140,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00492590"
+          }
+        },
+        {
+          "offset": 1145,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0043DC90"
+          }
+        },
+        {
+          "offset": 1151,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00474E36"
+          }
+        },
+        {
+          "offset": 1184,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00492590"
+          }
+        },
+        {
+          "offset": 1189,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0043DC90"
+          }
+        },
+        {
+          "offset": 1240,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C6D0"
+          }
+        },
+        {
+          "offset": 1257,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C770"
+          }
+        },
+        {
+          "offset": 1269,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C770"
+          }
+        },
+        {
+          "offset": 1279,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C6D0"
+          }
+        },
+        {
+          "offset": 1290,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x00409E50"
+          }
+        },
+        {
+          "offset": 1302,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0042C5C0"
+          }
+        },
+        {
+          "offset": 1310,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x0044BE70"
+          }
+        },
+        {
+          "offset": 1316,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x00477838"
+          }
+        },
+        {
+          "offset": 1326,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x004294A0"
+          }
+        },
+        {
+          "offset": 1332,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x004524A1"
+          }
+        },
+        {
+          "offset": 1340,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "target_address": "0x0046F018"
+          }
+        },
+        {
+          "offset": 1347,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x00420A90"
+          }
+        },
+        {
+          "offset": 1356,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x00420B10"
+          }
+        },
+        {
+          "offset": 1384,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x004294A0"
+          }
+        },
+        {
+          "offset": 1390,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x004524A1"
+          }
+        },
+        {
+          "offset": 1430,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "target_address": "0x00458EA5"
+          }
+        },
+        {
+          "offset": 1440,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 41
+          }
+        },
+        {
+          "offset": 1444,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 191
+          }
+        },
+        {
+          "offset": 1448,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 221
+          }
+        },
+        {
+          "offset": 1452,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 601
+          }
+        },
+        {
+          "offset": 1456,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1219
+          }
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 25,
+          "destination": 1417,
+          "mnemonic": "ja"
+        },
+        {
+          "offset": 63,
+          "destination": 80,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 65,
+          "destination": 73,
+          "mnemonic": "jg"
+        },
+        {
+          "offset": 71,
+          "destination": 87,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 78,
+          "destination": 87,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 123,
+          "destination": 128,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 166,
+          "destination": 128,
+          "mnemonic": "jle"
+        },
+        {
+          "offset": 198,
+          "destination": 1414,
+          "mnemonic": "jle"
+        },
+        {
+          "offset": 216,
+          "destination": 1414,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 240,
+          "destination": 250,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 248,
+          "destination": 259,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 266,
+          "destination": 277,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 275,
+          "destination": 286,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 291,
+          "destination": 310,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 317,
+          "destination": 353,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 348,
+          "destination": 1414,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 358,
+          "destination": 1414,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 383,
+          "destination": 398,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 385,
+          "destination": 392,
+          "mnemonic": "jg"
+        },
+        {
+          "offset": 390,
+          "destination": 404,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 396,
+          "destination": 404,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 421,
+          "destination": 416,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 504,
+          "destination": 496,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 530,
+          "destination": 541,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 554,
+          "destination": 561,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 559,
+          "destination": 546,
+          "mnemonic": "jg"
+        },
+        {
+          "offset": 596,
+          "destination": 1414,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 626,
+          "destination": 636,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 634,
+          "destination": 645,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 652,
+          "destination": 663,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 661,
+          "destination": 672,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 682,
+          "destination": 692,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 690,
+          "destination": 719,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 706,
+          "destination": 712,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 710,
+          "destination": 714,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 729,
+          "destination": 739,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 737,
+          "destination": 767,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 754,
+          "destination": 760,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 758,
+          "destination": 762,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 772,
+          "destination": 791,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 801,
+          "destination": 1149,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 823,
+          "destination": 818,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 834,
+          "destination": 874,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 845,
+          "destination": 859,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 857,
+          "destination": 895,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 869,
+          "destination": 1132,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 874,
+          "destination": 947,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 885,
+          "destination": 934,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 913,
+          "destination": 1132,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 929,
+          "destination": 1132,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 942,
+          "destination": 1132,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 952,
+          "destination": 988,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 962,
+          "destination": 1414,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 983,
+          "destination": 1132,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 991,
+          "destination": 1132,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1118,
+          "destination": 1110,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1156,
+          "destination": 1414,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1170,
+          "destination": 204,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1214,
+          "destination": 1414,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1226,
+          "destination": 1414,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 1322,
+          "destination": 1339,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1380,
+          "destination": 1397,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1401,
+          "destination": 1376,
+          "mnemonic": "jne"
+        }
+      ],
+      "table_entry_offsets": [
+        41,
+        191,
+        221,
+        601,
+        1219
+      ],
+      "returns": [
+        {
+          "offset": 1437,
+          "operand": "4"
+        }
+      ]
+    },
+    "native_reproduction": {
+      "complete_owned_bytes": 1444,
+      "code_bytes": 1424,
+      "raw_sha256": null,
+      "normalized_sha256": "e9edc3ecc6c57496eae7d9ee58de7c91e371c155005ebc50a6399c5357141a88",
+      "instruction_count": 392,
+      "field_identities": [
+        {
+          "offset": 4,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "___security_cookie"
+            ]
+          }
+        },
+        {
+          "offset": 37,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1424
+          }
+        },
+        {
+          "offset": 85,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndSelectedStageRecord@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 89,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_PlayerCallbackManager@@3PAXA"
+            ]
+          }
+        },
+        {
+          "offset": 94,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndSelectedStage@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 99,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndSelectedStageMirror@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 120,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "??_C@_0O@PLEGECMF@th10_?$CF?42d?4rpy?$AA@"
+            ]
+          }
+        },
+        {
+          "offset": 126,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "_sprintf"
+            ]
+          }
+        },
+        {
+          "offset": 139,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Load@ReplayManager@@SGPAV1@PBD@Z"
+            ]
+          }
+        },
+        {
+          "offset": 161,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?CreateVm@FrontEndControllerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 173,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 198,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 218,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 230,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 4
+          }
+        },
+        {
+          "offset": 241,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Move@FrontEndCursorView@@QAEHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 247,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 258,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 4
+          }
+        },
+        {
+          "offset": 270,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Move@FrontEndCursorView@@QAEHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 276,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 295,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 300,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 317,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 329,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 334,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 390,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndScoreEntryAlphabet@@3PBDB"
+            ]
+          }
+        },
+        {
+          "offset": 409,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_ReplayManager@@3PAVReplayManager@@A"
+            ]
+          }
+        },
+        {
+          "offset": 436,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "_time"
+            ]
+          }
+        },
+        {
+          "offset": 451,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndProfileData@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 491,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "??_C@_08GGFKNFHG@?5?5?5?5?5?5?5?5?$AA@"
+            ]
+          }
+        },
+        {
+          "offset": 521,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Move@FrontEndCursorView@@QAEHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 553,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 564,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 576,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 602,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 614,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 4
+          }
+        },
+        {
+          "offset": 625,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Move@FrontEndCursorView@@QAEHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 631,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 640,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 4
+          }
+        },
+        {
+          "offset": 652,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Move@FrontEndCursorView@@QAEHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 658,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 670,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 4
+          }
+        },
+        {
+          "offset": 699,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Move@FrontEndCursorView@@QAEHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 705,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 717,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 4
+          }
+        },
+        {
+          "offset": 747,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Move@FrontEndCursorView@@QAEHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 766,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 771,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 777,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 793,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndScoreEntryAlphabet@@3PBDB"
+            ]
+          }
+        },
+        {
+          "offset": 909,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetCurrent@FrontEndCursorView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 989,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 994,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1008,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "??_C@_0O@PLEGECMF@th10_?$CF?42d?4rpy?$AA@"
+            ]
+          }
+        },
+        {
+          "offset": 1014,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "_sprintf"
+            ]
+          }
+        },
+        {
+          "offset": 1032,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Destroy@ReplayManager@@SAXPAV1@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1038,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_ReplayManager@@3PAVReplayManager@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1054,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SaveReplay@ReplayManager@@QAEHPBD0@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1067,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Load@ReplayManager@@SGPAV1@PBD@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1073,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_FrontEndProfileData@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 1112,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1124,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 1129,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1135,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+            "addend": 6
+          }
+        },
+        {
+          "offset": 1168,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_MainSoundOwner@@3PAEA"
+            ]
+          }
+        },
+        {
+          "offset": 1173,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1224,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DeleteVm@@YAXPAUFrontEndControllerView@@H@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1241,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?MarkVmInterrupt@FrontEndControllerView@@QAEXHF@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1253,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?MarkVmInterrupt@FrontEndControllerView@@QAEXHF@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1263,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DeleteVm@@YAXPAUFrontEndControllerView@@H@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1274,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1286,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?SetScreenTarget@FrontEndControllerView@@QAEXH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1294,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Pop@FrontEndCursorView@@QAEXXZ"
+            ]
+          }
+        },
+        {
+          "offset": 1300,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_ReplayManager@@3PAVReplayManager@@A"
+            ]
+          }
+        },
+        {
+          "offset": 1310,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "??1ReplayManager@@QAE@XZ"
+            ]
+          }
+        },
+        {
+          "offset": 1316,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "??3@YAXPAX@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1324,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "??_C@_0BA@GKFGEHJO@bgm?1th10_02?4wav?$AA@"
+            ]
+          }
+        },
+        {
+          "offset": 1331,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?FrontEndLoadMusic@@YGHHPBD@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1340,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?FrontEndPlayMusic@@YGHHH@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1368,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "??1ReplayManager@@QAE@XZ"
+            ]
+          }
+        },
+        {
+          "offset": 1374,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "??3@YAXPAX@Z"
+            ]
+          }
+        },
+        {
+          "offset": 1414,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "@__security_check_cookie@4"
+            ]
+          }
+        },
+        {
+          "offset": 1424,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 41
+          }
+        },
+        {
+          "offset": 1428,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 177
+          }
+        },
+        {
+          "offset": 1432,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 207
+          }
+        },
+        {
+          "offset": 1436,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 585
+          }
+        },
+        {
+          "offset": 1440,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "local_offset": 1203
+          }
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 25,
+          "destination": 1401,
+          "mnemonic": "ja"
+        },
+        {
+          "offset": 65,
+          "destination": 75,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 67,
+          "destination": 75,
+          "mnemonic": "jg"
+        },
+        {
+          "offset": 73,
+          "destination": 78,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 152,
+          "destination": 114,
+          "mnemonic": "jle"
+        },
+        {
+          "offset": 184,
+          "destination": 1398,
+          "mnemonic": "jle"
+        },
+        {
+          "offset": 202,
+          "destination": 1398,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 226,
+          "destination": 236,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 234,
+          "destination": 251,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 254,
+          "destination": 265,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 263,
+          "destination": 280,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 285,
+          "destination": 304,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 307,
+          "destination": 343,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 338,
+          "destination": 1398,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 349,
+          "destination": 1398,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 374,
+          "destination": 383,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 376,
+          "destination": 383,
+          "mnemonic": "jg"
+        },
+        {
+          "offset": 381,
+          "destination": 389,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 405,
+          "destination": 400,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 488,
+          "destination": 480,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 514,
+          "destination": 525,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 538,
+          "destination": 545,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 543,
+          "destination": 530,
+          "mnemonic": "jg"
+        },
+        {
+          "offset": 580,
+          "destination": 1398,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 610,
+          "destination": 620,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 618,
+          "destination": 629,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 636,
+          "destination": 647,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 645,
+          "destination": 656,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 666,
+          "destination": 676,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 674,
+          "destination": 703,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 690,
+          "destination": 696,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 694,
+          "destination": 698,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 713,
+          "destination": 723,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 721,
+          "destination": 751,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 738,
+          "destination": 744,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 742,
+          "destination": 746,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 756,
+          "destination": 775,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 785,
+          "destination": 1133,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 807,
+          "destination": 802,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 818,
+          "destination": 858,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 829,
+          "destination": 843,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 841,
+          "destination": 879,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 853,
+          "destination": 1116,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 858,
+          "destination": 931,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 869,
+          "destination": 918,
+          "mnemonic": "jge"
+        },
+        {
+          "offset": 897,
+          "destination": 1116,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 913,
+          "destination": 1116,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 926,
+          "destination": 1116,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 936,
+          "destination": 972,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 946,
+          "destination": 1398,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 967,
+          "destination": 1116,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 975,
+          "destination": 1116,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1102,
+          "destination": 1094,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 1140,
+          "destination": 1398,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1154,
+          "destination": 190,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1198,
+          "destination": 1398,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 1210,
+          "destination": 1398,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 1306,
+          "destination": 1323,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1364,
+          "destination": 1381,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 1385,
+          "destination": 1360,
+          "mnemonic": "jne"
+        }
+      ],
+      "table_entry_offsets": [
+        41,
+        177,
+        207,
+        585,
+        1203
+      ],
+      "returns": [
+        {
+          "offset": 1421,
+          "operand": "4"
+        }
+      ]
+    },
+    "selected_guards": {
+      "replay-manager-destroy": {
+        "result": "exact",
+        "matched_bytes": 18,
+        "field_count": 2,
+        "linkage_spec_sha256": "a6a3153e9ae1dd756674a0017aac763efcfdb0168e5babf466723cceba813cda"
+      },
+      "replay-manager-load": {
+        "result": "exact",
+        "matched_bytes": 181,
+        "field_count": 12,
+        "linkage_spec_sha256": "491a5299624fffe79c39d7cb5da7f8147fb51865330e3c2be3ba19acff8160f5",
+        "allocation_eh_binding": {
+          "candidate": {
+            "saved_storage_offset": -16,
+            "region_bytes": 21,
+            "unwind_states": 1,
+            "func_info_bytes": 28
+          },
+          "target": {
+            "saved_storage_offset": -16,
+            "region_bytes": 21,
+            "unwind_states": 1,
+            "func_info_bytes": 28
+          },
+          "authority": "address binding only; no generated-code/runtime credit"
+        }
+      },
+      "enemy-sound-queue-sample": {
+        "result": "exact",
+        "matched_bytes": 123,
+        "field_count": 1,
+        "linkage_spec_sha256": "0a05caa8f2108578aaadd6036079eec22d1c7c513474222dca02932ce06d3550"
+      },
+      "game-complete-stage-transition": {
+        "result": "exact",
+        "matched_bytes": 411,
+        "field_count": 28,
+        "linkage_spec_sha256": "247221724e7f390e33aa25900197f19c474037f5550caa80864c8c46b3d418c1"
+      }
+    }
+  },
+  "exact_credit": 0
+}

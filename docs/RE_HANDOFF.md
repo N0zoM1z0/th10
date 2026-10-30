@@ -2,6 +2,36 @@
 
 ## Current checkpoint
 
+Complete replay-save433570..433B23 remains NONEXACT1444/1460. A fresh
+21-input graph adds the actual ReplayManager definitions under their existing
+/GL /GS /EHs profile and unchanged InitializeVm root. This restores target
+Destroy ESI/plain-RET and SaveReplay ECX owner/EDX filename/one stack name/RET4;
+Load stays stack filename/RET4. No game source or ABI declarations change.
+See the [complete context proof](evidence/replay-save-context-20261030/README.md).
+
+Two zero-reuse21-input colds reproduce all86 native field identities,60 local
+branches, RET4 and all five table words. Target1460 includes1440 code/399ins,
+86 operands,63 locals and five table words433B10..23;12CC precede433B30. Native
+1444 includes1424 code/392ins. Count equality grants no byte/field equivalence.
+Same-image explicit Destroy18/Load181/QueueSoundSample123/StageTransition411
+selectors strictly pass733/all43, including Load allocation-EH binding. They
+already have canonical credit. Writer1664/1681 and MusicRoom2788/2796 remain NE.
+
+Pressed-input lifetime after sound remains unresolved; the exact sound callee
+has no established missing effect. Six boolean-helper replacements do not
+recover the target schedule and are restored/parked. Do not repeat cursor or
+input spelling controls absent new evidence. No host lifecycle/failure/mutation
+or full-cohort requirement. Authored exact stays102270/275835 across502 owners;
+codegen170374/1379. Source/origin/product/runtime/portability remain independent.
+
+Current21-input context is
+`.analysis/gpt-6.1-sol/replay-save-context-20261030/cold-b-context.json` with all70
+source/header pins fixed. The20-input helper/MusicRoom graph remains independent
+and valid because game source is unchanged. No match admission or denominator
+change occurs in this batch.
+
+## Previous helper checkpoint
+
 Three complete music helpers now close357/all7 fields/all20 local destinations:
 SkipLine4349E0/59, CopyLine434A20/92 and PositionInterpolation434A80/206. Two
 independent canonical20-input colds rebuild every input without reuse and pass

@@ -8113,3 +8113,28 @@ NONEXACT. See the [complete helper proof](evidence/music-room-helpers-exact-2026
 Authored exact increases357 to102270/275835 across502 owners; codegen170374/1379.
 Source mappings1207/authored689/backlog187. No boundary/origin/data-owner or
 product/runtime/portability closure is inferred from these helper matches.
+
+
+## 2026-10-30 Complete replay-save actual-definition context
+
+The complete1460-byte UpdateReplaySave owner remains NONEXACT. Fresh raw target
+review confirms1440 executable bytes/399 instructions,86 encoded image operands,
+63 fixed local branches and five internal table words433B10..433B23, followed
+by12CC before433B30. The existing boundary and authored denominator stay fixed.
+
+A21-input InitializeVm-root graph adds actual ReplayManager.cpp with its existing
+/GL /GS /EHs profile to the unchanged20-input MusicRoom graph. This recovers
+Destroy ESI/plain-RET and SaveReplay ECX owner/EDX path/one stack name/RET4 without
+forcing an ABI. Load preserves one stack filename/RET4. Target saved-slot sampling
+occurs after SaveReplay, then remains stable across Load. Writer1664/1681 stays
+nonexact; an observed interface is independent of complete body exactness.
+
+Two zero-reuse colds preserve all70 input/header pins and reproduce1444 bytes,
+all86 native identities,60 local branches, RET4 and all five native table words.
+Four explicit existing selectors pass733/all43 in those images: Destroy18,
+Load181 including allocation-EH binding, QueueSoundSample123 and StageTransition411.
+No new match credit follows. The pressed-input value is reloaded after movement
+sound in target but retained by native code; the exact123-byte sound callee has
+no established missing effect. A boolean input-helper spelling control is
+restored/parked. Target semantics remain evidence-driven; no volatile/barrier/
+fake ABI is justified. See the [complete context proof](evidence/replay-save-context-20261030/README.md).
