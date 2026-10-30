@@ -3614,9 +3614,9 @@ void FrontEndControllerView::MarkVmInterrupt(int index, short interrupt)
     }
 }
 
-// Four-state music-room owner at 0x00433EF0. The current ledger's 2778-byte
-// code extent ends at RET4; its four-entry table at 0x004349CC is separately
-// retained target evidence pending an ownership audit. No exact claim here.
+// Complete music-room owner 0x00433EF0..0x004349DB: 2778 executable
+// bytes, two alignment bytes and the four-entry table at 0x004349CC.
+// Original class/TU ownership and whole-owner exactness remain unproved.
 int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
 {
     switch (controller->screenState)
@@ -3687,12 +3687,16 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
                     break;
                 controller->musicRowVmIds[i] =
                     controller->frontAnm->CreateVmVariant0(i + 0xad, 15);
-                AnmVmView *vm = ResolveVm(&controller->musicRowVmIds[i]);
+                FrontEndVmIdStorageView *rowId = &controller->musicRowVmIds[i];
+                AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                AnmVmView *vm = manager->FindVm(*rowId);
+                if (vm == NULL)
+                    rowId->value = 0;
                 if (g_FrontEndProfileData[0x1d892 + i] != 0)
-                    g_AnmRenderManagerView->DrawTextLeft(
+                    manager->DrawTextLeft(
                         vm, 0xffffff, controller->musicTitles[i]);
                 else
-                    g_AnmRenderManagerView->DrawTextLeft(
+                    manager->DrawTextLeft(
                         vm, 0xffffff, g_MusicLockedTitleFormat, i + 1);
                 if (i >= controller->musicListOffset &&
                     i < controller->musicListOffset + 10)
@@ -3755,7 +3759,11 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
             AnmFloat3View position(64.0f, 96.0f - controller->musicListOffset * 20.0f, 0.0f);
             for (int i = 0; i < controller->musicTrackCount; ++i)
             {
-                AnmVmView *vm = ResolveVm(&controller->musicRowVmIds[i]);
+                FrontEndVmIdStorageView *rowId = &controller->musicRowVmIds[i];
+                AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                AnmVmView *vm = manager->FindVm(*rowId);
+                if (vm == NULL)
+                    rowId->value = 0;
                 if (i >= controller->musicListOffset && i < controller->musicListOffset + 10)
                     vm->flags35C |= 2;
                 else

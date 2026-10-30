@@ -1,0 +1,3227 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_review": {
+    "address": "0x00433EF0",
+    "complete_owned_bytes": 2796,
+    "code_bytes": 2778,
+    "alignment_bytes": 2,
+    "table_bytes": 16,
+    "following_cc_count": 4,
+    "next_independent_owner": "0x004349E0",
+    "instruction_count": 740,
+    "code_sha256": "3c33756288abbc2c9110130560dba0a67bde96f5a247df128664ec6491f8da35",
+    "fixed_local_branches": [
+      {
+        "offset": 14,
+        "destination": 2769,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 37,
+        "destination": 529,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 55,
+        "destination": 72,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 57,
+        "destination": 65,
+        "mnemonic": "jg"
+      },
+      {
+        "offset": 63,
+        "destination": 79,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 70,
+        "destination": 79,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 99,
+        "destination": 146,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 190,
+        "destination": 2323,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 202,
+        "destination": 356,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 245,
+        "destination": 339,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 250,
+        "destination": 339,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 304,
+        "destination": 288,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 337,
+        "destination": 348,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 354,
+        "destination": 240,
+        "mnemonic": "jg"
+      },
+      {
+        "offset": 369,
+        "destination": 386,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 371,
+        "destination": 379,
+        "mnemonic": "jg"
+      },
+      {
+        "offset": 377,
+        "destination": 389,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 384,
+        "destination": 389,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 411,
+        "destination": 416,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 505,
+        "destination": 416,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 527,
+        "destination": 531,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 540,
+        "destination": 1005,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 609,
+        "destination": 1005,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 648,
+        "destination": 1005,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 756,
+        "destination": 764,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 779,
+        "destination": 804,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 802,
+        "destination": 829,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 837,
+        "destination": 857,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 844,
+        "destination": 857,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 855,
+        "destination": 866,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 875,
+        "destination": 891,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 917,
+        "destination": 933,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 999,
+        "destination": 642,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1012,
+        "destination": 2766,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1033,
+        "destination": 1076,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1121,
+        "destination": 1128,
+        "mnemonic": "jns"
+      },
+      {
+        "offset": 1128,
+        "destination": 1286,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1143,
+        "destination": 1286,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 1184,
+        "destination": 1224,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1194,
+        "destination": 1224,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1222,
+        "destination": 1256,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1293,
+        "destination": 2766,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 1334,
+        "destination": 1341,
+        "mnemonic": "jns"
+      },
+      {
+        "offset": 1341,
+        "destination": 1501,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1356,
+        "destination": 1501,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 1399,
+        "destination": 1437,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1407,
+        "destination": 1437,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1435,
+        "destination": 1469,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1499,
+        "destination": 1503,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1519,
+        "destination": 1530,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1528,
+        "destination": 1539,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1549,
+        "destination": 1559,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1557,
+        "destination": 1568,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1573,
+        "destination": 1923,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1605,
+        "destination": 1617,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1612,
+        "destination": 1623,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1671,
+        "destination": 1911,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 1701,
+        "destination": 1705,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1713,
+        "destination": 1733,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1720,
+        "destination": 1733,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 1731,
+        "destination": 1742,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1751,
+        "destination": 1767,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1790,
+        "destination": 1815,
+        "mnemonic": "jp"
+      },
+      {
+        "offset": 1813,
+        "destination": 1841,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1846,
+        "destination": 1862,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1905,
+        "destination": 1683,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1933,
+        "destination": 2315,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1968,
+        "destination": 2016,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1985,
+        "destination": 2016,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1992,
+        "destination": 2016,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2014,
+        "destination": 2000,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2020,
+        "destination": 1952,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2045,
+        "destination": 2088,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2131,
+        "destination": 2219,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2139,
+        "destination": 2219,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2159,
+        "destination": 2190,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2246,
+        "destination": 2266,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2317,
+        "destination": 2766,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2333,
+        "destination": 2350,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2374,
+        "destination": 2405,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 2403,
+        "destination": 2384,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 2436,
+        "destination": 2532,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2446,
+        "destination": 2461,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2452,
+        "destination": 2486,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2459,
+        "destination": 2448,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2469,
+        "destination": 2532,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2475,
+        "destination": 2486,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2482,
+        "destination": 2471,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2484,
+        "destination": 2532,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2490,
+        "destination": 2532,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2507,
+        "destination": 2532,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2514,
+        "destination": 2532,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2530,
+        "destination": 2516,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2544,
+        "destination": 2432,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2577,
+        "destination": 2620,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2661,
+        "destination": 2766,
+        "mnemonic": "jl"
+      }
+    ],
+    "table": {
+      "instruction_offset": 23,
+      "offset": 2780,
+      "entry_offsets": [
+        30,
+        1110,
+        1323,
+        2654
+      ],
+      "encoded_base_ref_count": 1
+    },
+    "returns": [
+      {
+        "offset": 1107,
+        "operand": "4"
+      },
+      {
+        "offset": 1320,
+        "operand": "4"
+      },
+      {
+        "offset": 2187,
+        "operand": "4"
+      },
+      {
+        "offset": 2216,
+        "operand": "4"
+      },
+      {
+        "offset": 2312,
+        "operand": "4"
+      },
+      {
+        "offset": 2651,
+        "operand": "4"
+      },
+      {
+        "offset": 2775,
+        "operand": "4"
+      }
+    ],
+    "direct_calls": [
+      {
+        "offset": 92,
+        "target": "0x004491C0"
+      },
+      {
+        "offset": 107,
+        "target": "0x0042C670"
+      },
+      {
+        "offset": 133,
+        "target": "0x00448D00"
+      },
+      {
+        "offset": 152,
+        "target": "0x0042C670"
+      },
+      {
+        "offset": 177,
+        "target": "0x0044B360"
+      },
+      {
+        "offset": 264,
+        "target": "0x00434A20"
+      },
+      {
+        "offset": 276,
+        "target": "0x00434A20"
+      },
+      {
+        "offset": 295,
+        "target": "0x00434A20"
+      },
+      {
+        "offset": 343,
+        "target": "0x004349E0"
+      },
+      {
+        "offset": 431,
+        "target": "0x00449950"
+      },
+      {
+        "offset": 464,
+        "target": "0x00449870"
+      },
+      {
+        "offset": 479,
+        "target": "0x004489D0"
+      },
+      {
+        "offset": 667,
+        "target": "0x00449950"
+      },
+      {
+        "offset": 710,
+        "target": "0x00449870"
+      },
+      {
+        "offset": 727,
+        "target": "0x004489D0"
+      },
+      {
+        "offset": 747,
+        "target": "0x004491C0"
+      },
+      {
+        "offset": 794,
+        "target": "0x00447A50"
+      },
+      {
+        "offset": 821,
+        "target": "0x00447A50"
+      },
+      {
+        "offset": 907,
+        "target": "0x00434A80"
+      },
+      {
+        "offset": 1156,
+        "target": "0x00449450"
+      },
+      {
+        "offset": 1256,
+        "target": "0x00447A50"
+      },
+      {
+        "offset": 1306,
+        "target": "0x0042C620"
+      },
+      {
+        "offset": 1369,
+        "target": "0x00449450"
+      },
+      {
+        "offset": 1469,
+        "target": "0x00447A50"
+      },
+      {
+        "offset": 1534,
+        "target": "0x0044BEA0"
+      },
+      {
+        "offset": 1563,
+        "target": "0x0044BEA0"
+      },
+      {
+        "offset": 1590,
+        "target": "0x0043DC90"
+      },
+      {
+        "offset": 1692,
+        "target": "0x004491C0"
+      },
+      {
+        "offset": 1808,
+        "target": "0x00434A80"
+      },
+      {
+        "offset": 1961,
+        "target": "0x004491C0"
+      },
+      {
+        "offset": 2163,
+        "target": "0x0043E460"
+      },
+      {
+        "offset": 2192,
+        "target": "0x0043E460"
+      },
+      {
+        "offset": 2234,
+        "target": "0x00420A90"
+      },
+      {
+        "offset": 2261,
+        "target": "0x0043E460"
+      },
+      {
+        "offset": 2279,
+        "target": "0x0043E460"
+      },
+      {
+        "offset": 2336,
+        "target": "0x00452422"
+      },
+      {
+        "offset": 2359,
+        "target": "0x0044BE70"
+      },
+      {
+        "offset": 2386,
+        "target": "0x00409E50"
+      },
+      {
+        "offset": 2557,
+        "target": "0x0043DC90"
+      },
+      {
+        "offset": 2670,
+        "target": "0x0042C6D0"
+      },
+      {
+        "offset": 2687,
+        "target": "0x0042C770"
+      },
+      {
+        "offset": 2699,
+        "target": "0x0042C770"
+      },
+      {
+        "offset": 2709,
+        "target": "0x0042C6D0"
+      },
+      {
+        "offset": 2720,
+        "target": "0x00409E50"
+      },
+      {
+        "offset": 2732,
+        "target": "0x0042C5C0"
+      },
+      {
+        "offset": 2744,
+        "target": "0x00420A90"
+      },
+      {
+        "offset": 2753,
+        "target": "0x00420B10"
+      },
+      {
+        "offset": 2761,
+        "target": "0x0044BE70"
+      }
+    ],
+    "fields": [
+      {
+        "offset": 26,
+        "type": "DIR32",
+        "target": "0x004349CC"
+      },
+      {
+        "offset": 87,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 93,
+        "type": "REL32",
+        "target": "0x004491C0"
+      },
+      {
+        "offset": 108,
+        "type": "REL32",
+        "target": "0x0042C670"
+      },
+      {
+        "offset": 114,
+        "type": "DIR32",
+        "target": "0x004776E0"
+      },
+      {
+        "offset": 134,
+        "type": "REL32",
+        "target": "0x00448D00"
+      },
+      {
+        "offset": 153,
+        "type": "REL32",
+        "target": "0x0042C670"
+      },
+      {
+        "offset": 165,
+        "type": "DIR32",
+        "target": "0x0046ED14"
+      },
+      {
+        "offset": 178,
+        "type": "REL32",
+        "target": "0x0044B360"
+      },
+      {
+        "offset": 265,
+        "type": "REL32",
+        "target": "0x00434A20"
+      },
+      {
+        "offset": 277,
+        "type": "REL32",
+        "target": "0x00434A20"
+      },
+      {
+        "offset": 296,
+        "type": "REL32",
+        "target": "0x00434A20"
+      },
+      {
+        "offset": 344,
+        "type": "REL32",
+        "target": "0x004349E0"
+      },
+      {
+        "offset": 417,
+        "type": "DIR32",
+        "target": "0x00491FEC"
+      },
+      {
+        "offset": 423,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 432,
+        "type": "REL32",
+        "target": "0x00449950"
+      },
+      {
+        "offset": 465,
+        "type": "REL32",
+        "target": "0x00449870"
+      },
+      {
+        "offset": 471,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 480,
+        "type": "REL32",
+        "target": "0x004489D0"
+      },
+      {
+        "offset": 568,
+        "type": "DIR32",
+        "target": "0x00470CA0"
+      },
+      {
+        "offset": 581,
+        "type": "DIR32",
+        "target": "0x00470C80"
+      },
+      {
+        "offset": 659,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 668,
+        "type": "REL32",
+        "target": "0x00449950"
+      },
+      {
+        "offset": 711,
+        "type": "REL32",
+        "target": "0x00449870"
+      },
+      {
+        "offset": 717,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 728,
+        "type": "REL32",
+        "target": "0x004489D0"
+      },
+      {
+        "offset": 748,
+        "type": "REL32",
+        "target": "0x004491C0"
+      },
+      {
+        "offset": 766,
+        "type": "DIR32",
+        "target": "0x0047783C"
+      },
+      {
+        "offset": 795,
+        "type": "REL32",
+        "target": "0x00447A50"
+      },
+      {
+        "offset": 809,
+        "type": "DIR32",
+        "target": "0x0046ECF4"
+      },
+      {
+        "offset": 822,
+        "type": "REL32",
+        "target": "0x00447A50"
+      },
+      {
+        "offset": 883,
+        "type": "DIR32",
+        "target": "0x00470C98"
+      },
+      {
+        "offset": 908,
+        "type": "REL32",
+        "target": "0x00434A80"
+      },
+      {
+        "offset": 925,
+        "type": "DIR32",
+        "target": "0x00470C98"
+      },
+      {
+        "offset": 947,
+        "type": "DIR32",
+        "target": "0x00470CA0"
+      },
+      {
+        "offset": 1066,
+        "type": "DIR32",
+        "target": "0x00476F78"
+      },
+      {
+        "offset": 1157,
+        "type": "REL32",
+        "target": "0x00449450"
+      },
+      {
+        "offset": 1163,
+        "type": "DIR32",
+        "target": "0x0047783C"
+      },
+      {
+        "offset": 1205,
+        "type": "DIR32",
+        "target": "0x00476FD8"
+      },
+      {
+        "offset": 1211,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 1235,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 1257,
+        "type": "REL32",
+        "target": "0x00447A50"
+      },
+      {
+        "offset": 1307,
+        "type": "REL32",
+        "target": "0x0042C620"
+      },
+      {
+        "offset": 1370,
+        "type": "REL32",
+        "target": "0x00449450"
+      },
+      {
+        "offset": 1376,
+        "type": "DIR32",
+        "target": "0x0047783C"
+      },
+      {
+        "offset": 1418,
+        "type": "DIR32",
+        "target": "0x00476FD8"
+      },
+      {
+        "offset": 1424,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 1448,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 1470,
+        "type": "REL32",
+        "target": "0x00447A50"
+      },
+      {
+        "offset": 1514,
+        "type": "DIR32",
+        "target": "0x00474E36"
+      },
+      {
+        "offset": 1523,
+        "type": "DIR32",
+        "target": "0x00474E34"
+      },
+      {
+        "offset": 1535,
+        "type": "REL32",
+        "target": "0x0044BEA0"
+      },
+      {
+        "offset": 1541,
+        "type": "DIR32",
+        "target": "0x00474E36"
+      },
+      {
+        "offset": 1553,
+        "type": "DIR32",
+        "target": "0x00474E34"
+      },
+      {
+        "offset": 1564,
+        "type": "REL32",
+        "target": "0x0044BEA0"
+      },
+      {
+        "offset": 1586,
+        "type": "DIR32",
+        "target": "0x00492590"
+      },
+      {
+        "offset": 1591,
+        "type": "REL32",
+        "target": "0x0043DC90"
+      },
+      {
+        "offset": 1641,
+        "type": "DIR32",
+        "target": "0x00470CA0"
+      },
+      {
+        "offset": 1663,
+        "type": "DIR32",
+        "target": "0x00470C80"
+      },
+      {
+        "offset": 1688,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 1693,
+        "type": "REL32",
+        "target": "0x004491C0"
+      },
+      {
+        "offset": 1759,
+        "type": "DIR32",
+        "target": "0x00470C98"
+      },
+      {
+        "offset": 1781,
+        "type": "DIR32",
+        "target": "0x00470C64"
+      },
+      {
+        "offset": 1809,
+        "type": "REL32",
+        "target": "0x00434A80"
+      },
+      {
+        "offset": 1854,
+        "type": "DIR32",
+        "target": "0x00470C98"
+      },
+      {
+        "offset": 1870,
+        "type": "DIR32",
+        "target": "0x00470CA0"
+      },
+      {
+        "offset": 1924,
+        "type": "DIR32",
+        "target": "0x00474E36"
+      },
+      {
+        "offset": 1956,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 1962,
+        "type": "REL32",
+        "target": "0x004491C0"
+      },
+      {
+        "offset": 2078,
+        "type": "DIR32",
+        "target": "0x00476F78"
+      },
+      {
+        "offset": 2090,
+        "type": "DIR32",
+        "target": "0x0047783C"
+      },
+      {
+        "offset": 2143,
+        "type": "DIR32",
+        "target": "0x00491D78"
+      },
+      {
+        "offset": 2149,
+        "type": "DIR32",
+        "target": "0x0046DF98"
+      },
+      {
+        "offset": 2155,
+        "type": "DIR32",
+        "target": "0x00492590"
+      },
+      {
+        "offset": 2164,
+        "type": "REL32",
+        "target": "0x0043E460"
+      },
+      {
+        "offset": 2193,
+        "type": "REL32",
+        "target": "0x0043E460"
+      },
+      {
+        "offset": 2235,
+        "type": "REL32",
+        "target": "0x00420A90"
+      },
+      {
+        "offset": 2241,
+        "type": "DIR32",
+        "target": "0x00491D78"
+      },
+      {
+        "offset": 2252,
+        "type": "DIR32",
+        "target": "0x0046DF98"
+      },
+      {
+        "offset": 2257,
+        "type": "DIR32",
+        "target": "0x00492590"
+      },
+      {
+        "offset": 2262,
+        "type": "REL32",
+        "target": "0x0043E460"
+      },
+      {
+        "offset": 2270,
+        "type": "DIR32",
+        "target": "0x0046DF98"
+      },
+      {
+        "offset": 2275,
+        "type": "DIR32",
+        "target": "0x00492590"
+      },
+      {
+        "offset": 2280,
+        "type": "REL32",
+        "target": "0x0043E460"
+      },
+      {
+        "offset": 2286,
+        "type": "DIR32",
+        "target": "0x0047783C"
+      },
+      {
+        "offset": 2337,
+        "type": "REL32",
+        "target": "0x00452422"
+      },
+      {
+        "offset": 2360,
+        "type": "REL32",
+        "target": "0x0044BE70"
+      },
+      {
+        "offset": 2387,
+        "type": "REL32",
+        "target": "0x00409E50"
+      },
+      {
+        "offset": 2407,
+        "type": "DIR32",
+        "target": "0x00491C10"
+      },
+      {
+        "offset": 2553,
+        "type": "DIR32",
+        "target": "0x00492590"
+      },
+      {
+        "offset": 2558,
+        "type": "REL32",
+        "target": "0x0043DC90"
+      },
+      {
+        "offset": 2610,
+        "type": "DIR32",
+        "target": "0x00476F78"
+      },
+      {
+        "offset": 2671,
+        "type": "REL32",
+        "target": "0x0042C6D0"
+      },
+      {
+        "offset": 2688,
+        "type": "REL32",
+        "target": "0x0042C770"
+      },
+      {
+        "offset": 2700,
+        "type": "REL32",
+        "target": "0x0042C770"
+      },
+      {
+        "offset": 2710,
+        "type": "REL32",
+        "target": "0x0042C6D0"
+      },
+      {
+        "offset": 2721,
+        "type": "REL32",
+        "target": "0x00409E50"
+      },
+      {
+        "offset": 2733,
+        "type": "REL32",
+        "target": "0x0042C5C0"
+      },
+      {
+        "offset": 2738,
+        "type": "DIR32",
+        "target": "0x0046F018"
+      },
+      {
+        "offset": 2745,
+        "type": "REL32",
+        "target": "0x00420A90"
+      },
+      {
+        "offset": 2754,
+        "type": "REL32",
+        "target": "0x00420B10"
+      },
+      {
+        "offset": 2762,
+        "type": "REL32",
+        "target": "0x0044BE70"
+      },
+      {
+        "offset": 2780,
+        "type": "DIR32",
+        "target": "0x00433F0E"
+      },
+      {
+        "offset": 2784,
+        "type": "DIR32",
+        "target": "0x00434346"
+      },
+      {
+        "offset": 2788,
+        "type": "DIR32",
+        "target": "0x0043441B"
+      },
+      {
+        "offset": 2792,
+        "type": "DIR32",
+        "target": "0x0043494E"
+      }
+    ],
+    "field_count": 106
+  },
+  "status": "NONEXACT",
+  "exact_credit": 0,
+  "native_reproduction": {
+    "complete_owned_bytes": 2788,
+    "code_and_alignment_bytes": 2772,
+    "decoded_instructions": 740,
+    "normalized_sha256": "ce8adb8d7dde4ccb94e8e8b2fc5289a0ab1ce0eba72e6b19e6bbba420abeb280",
+    "field_identities": [
+      {
+        "offset": 26,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2772
+        }
+      },
+      {
+        "offset": 80,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 86,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 101,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVm@FrontEndControllerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 107,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 127,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 146,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVm@FrontEndControllerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 158,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "??_C@_0N@IFMKLFIO@musiccmt?4txt?$AA@"
+          ]
+        }
+      },
+      {
+        "offset": 171,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 249,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndMusicCopyLine@@YGPADPAD0PAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 261,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndMusicCopyLine@@YGPADPAD0PAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 280,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndMusicCopyLine@@YGPADPAD0PAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 328,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndMusicSkipLine@@YAPADPADPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 402,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndMusicCommentAnm@@3PAUAnmLoadedView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 408,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 417,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+          ]
+        }
+      },
+      {
+        "offset": 458,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 464,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 473,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 561,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@41a00000"
+          ]
+        }
+      },
+      {
+        "offset": 574,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@42c00000"
+          ]
+        }
+      },
+      {
+        "offset": 657,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 666,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ"
+          ]
+        }
+      },
+      {
+        "offset": 709,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 715,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 726,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 746,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 764,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndProfileData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 793,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 807,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "source_literal": "music-locked-title",
+          "size": 30,
+          "sha256": "bca928ee422ee0a980ae0cd909743a16a546c573cbd80eea64a2a415993df417"
+        }
+      },
+      {
+        "offset": 820,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 881,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@4010000000000000"
+          ]
+        }
+      },
+      {
+        "offset": 906,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?StartPositionInterpolation@AnmVmView@@QAEXPBUAnmFloat3View@@0HE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 923,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@4010000000000000"
+          ]
+        }
+      },
+      {
+        "offset": 945,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@41a00000"
+          ]
+        }
+      },
+      {
+        "offset": 1064,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ]
+        }
+      },
+      {
+        "offset": 1155,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+          ]
+        }
+      },
+      {
+        "offset": 1161,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndProfileData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 1203,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "source_pointer_table": "music-warning-lines",
+          "strings": [
+            {
+              "size": 3,
+              "sha256": "6d14cd9ddf49ed568184b4c64663499c195e352f4b95b130529c6b93803f28b4"
+            },
+            {
+              "size": 57,
+              "sha256": "0f97e2d69ffeaf10dea2eea4f975dde31e7f9b90a53177cb2d8b9d4abf4a391f"
+            },
+            {
+              "size": 2,
+              "sha256": "869f1dfb999a452f497a4cf7f44db2d6ee661f74a9e7e05251bc1420e50672d4"
+            },
+            {
+              "size": 53,
+              "sha256": "fe95e6c8be07fe1b109fe2c7623d3fd6c762a85b9bc9ac418af5636de7a2b813"
+            },
+            {
+              "size": 41,
+              "sha256": "93f0fbf72baf4ab079ee326259f74b59ed54daf652248c2cc7587f8c36e93a94"
+            },
+            {
+              "size": 3,
+              "sha256": "6d14cd9ddf49ed568184b4c64663499c195e352f4b95b130529c6b93803f28b4"
+            },
+            {
+              "size": 55,
+              "sha256": "7c5448392ed0b0b8162640d3ab3ca6e31c2d068b6d2df97d2ce75b970bcdfdab"
+            },
+            {
+              "size": 53,
+              "sha256": "1584cd1c99f4c1b8def346dedf0daed2fb620034413ca89ef6cff76fadb0a7d3"
+            }
+          ]
+        }
+      },
+      {
+        "offset": 1209,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1233,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1255,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 1305,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetScreenStateTarget@FrontEndControllerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1368,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+          ]
+        }
+      },
+      {
+        "offset": 1374,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndProfileData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 1416,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "source_pointer_table": "music-warning-lines",
+          "strings": [
+            {
+              "size": 3,
+              "sha256": "6d14cd9ddf49ed568184b4c64663499c195e352f4b95b130529c6b93803f28b4"
+            },
+            {
+              "size": 57,
+              "sha256": "0f97e2d69ffeaf10dea2eea4f975dde31e7f9b90a53177cb2d8b9d4abf4a391f"
+            },
+            {
+              "size": 2,
+              "sha256": "869f1dfb999a452f497a4cf7f44db2d6ee661f74a9e7e05251bc1420e50672d4"
+            },
+            {
+              "size": 53,
+              "sha256": "fe95e6c8be07fe1b109fe2c7623d3fd6c762a85b9bc9ac418af5636de7a2b813"
+            },
+            {
+              "size": 41,
+              "sha256": "93f0fbf72baf4ab079ee326259f74b59ed54daf652248c2cc7587f8c36e93a94"
+            },
+            {
+              "size": 3,
+              "sha256": "6d14cd9ddf49ed568184b4c64663499c195e352f4b95b130529c6b93803f28b4"
+            },
+            {
+              "size": 55,
+              "sha256": "7c5448392ed0b0b8162640d3ab3ca6e31c2d068b6d2df97d2ce75b970bcdfdab"
+            },
+            {
+              "size": 53,
+              "sha256": "1584cd1c99f4c1b8def346dedf0daed2fb620034413ca89ef6cff76fadb0a7d3"
+            }
+          ]
+        }
+      },
+      {
+        "offset": 1422,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1446,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1468,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 1512,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+          "addend": 6
+        }
+      },
+      {
+        "offset": 1521,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndKeyboardState@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 1533,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Move@FrontEndCursorView@@QAEHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1539,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+          "addend": 6
+        }
+      },
+      {
+        "offset": 1551,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndKeyboardState@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 1562,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Move@FrontEndCursorView@@QAEHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1580,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndPlaySound@@YAXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1633,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@41a00000"
+          ]
+        }
+      },
+      {
+        "offset": 1655,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@42c00000"
+          ]
+        }
+      },
+      {
+        "offset": 1685,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1690,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1756,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@4010000000000000"
+          ]
+        }
+      },
+      {
+        "offset": 1778,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@42200000"
+          ]
+        }
+      },
+      {
+        "offset": 1834,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?StartPositionInterpolation@AnmVmView@@QAEXPBUAnmFloat3View@@0HE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1851,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@4010000000000000"
+          ]
+        }
+      },
+      {
+        "offset": 1867,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@41a00000"
+          ]
+        }
+      },
+      {
+        "offset": 1921,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+          "addend": 6
+        }
+      },
+      {
+        "offset": 1956,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1962,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2078,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ]
+        }
+      },
+      {
+        "offset": 2090,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndProfileData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 2143,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndSupervisorFlags@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 2149,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "??_C@_05JLNEMJLN@dummy?$AA@"
+          ]
+        }
+      },
+      {
+        "offset": 2155,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_MainSoundOwner@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 2164,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2193,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2235,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndLoadMusic@@YGHHPBD@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2241,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndSupervisorFlags@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 2252,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "??_C@_05JLNEMJLN@dummy?$AA@"
+          ]
+        }
+      },
+      {
+        "offset": 2257,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_MainSoundOwner@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 2262,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2270,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "??_C@_05JLNEMJLN@dummy?$AA@"
+          ]
+        }
+      },
+      {
+        "offset": 2275,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_MainSoundOwner@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 2280,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2286,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_FrontEndProfileData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 2337,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "_free"
+          ]
+        }
+      },
+      {
+        "offset": 2360,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Pop@FrontEndCursorView@@QAEXXZ"
+          ]
+        }
+      },
+      {
+        "offset": 2387,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2407,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2549,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndPlaySound@@YAXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2604,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ]
+        }
+      },
+      {
+        "offset": 2665,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DeleteVm@@YAXPAUFrontEndControllerView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2682,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?MarkVmInterrupt@FrontEndControllerView@@QAEXHF@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2694,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?MarkVmInterrupt@FrontEndControllerView@@QAEXHF@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2704,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DeleteVm@@YAXPAUFrontEndControllerView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2715,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2727,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetScreenTarget@FrontEndControllerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2732,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "??_C@_0BA@GKFGEHJO@bgm?1th10_02?4wav?$AA@"
+          ]
+        }
+      },
+      {
+        "offset": 2739,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndLoadMusic@@YGHHPBD@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2748,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndPlayMusic@@YGHHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2756,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Pop@FrontEndCursorView@@QAEXXZ"
+          ]
+        }
+      },
+      {
+        "offset": 2772,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 30
+        }
+      },
+      {
+        "offset": 2776,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1108
+        }
+      },
+      {
+        "offset": 2780,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1321
+        }
+      },
+      {
+        "offset": 2784,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2648
+        }
+      }
+    ],
+    "fixed_local_branches": [
+      {
+        "offset": 17,
+        "destination": 2760,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 37,
+        "destination": 522,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 55,
+        "destination": 65,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 57,
+        "destination": 65,
+        "mnemonic": "jg"
+      },
+      {
+        "offset": 63,
+        "destination": 72,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 92,
+        "destination": 139,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 183,
+        "destination": 2323,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 221,
+        "destination": 340,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 229,
+        "destination": 323,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 234,
+        "destination": 323,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 288,
+        "destination": 272,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 321,
+        "destination": 332,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 338,
+        "destination": 224,
+        "mnemonic": "jg"
+      },
+      {
+        "offset": 353,
+        "destination": 363,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 355,
+        "destination": 363,
+        "mnemonic": "jg"
+      },
+      {
+        "offset": 361,
+        "destination": 366,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 388,
+        "destination": 400,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 498,
+        "destination": 400,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 520,
+        "destination": 524,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 533,
+        "destination": 1003,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 602,
+        "destination": 1003,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 635,
+        "destination": 640,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 646,
+        "destination": 1003,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 754,
+        "destination": 762,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 777,
+        "destination": 802,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 800,
+        "destination": 827,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 835,
+        "destination": 855,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 842,
+        "destination": 855,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 853,
+        "destination": 864,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 873,
+        "destination": 889,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 915,
+        "destination": 931,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 997,
+        "destination": 640,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1010,
+        "destination": 2760,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1031,
+        "destination": 1074,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1119,
+        "destination": 1126,
+        "mnemonic": "jns"
+      },
+      {
+        "offset": 1126,
+        "destination": 1284,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1141,
+        "destination": 1284,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 1182,
+        "destination": 1222,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1192,
+        "destination": 1222,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1220,
+        "destination": 1254,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1291,
+        "destination": 2760,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 1332,
+        "destination": 1339,
+        "mnemonic": "jns"
+      },
+      {
+        "offset": 1339,
+        "destination": 1499,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1354,
+        "destination": 1499,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 1397,
+        "destination": 1435,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1405,
+        "destination": 1435,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1433,
+        "destination": 1467,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1497,
+        "destination": 1501,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1517,
+        "destination": 1528,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1526,
+        "destination": 1537,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1547,
+        "destination": 1557,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1555,
+        "destination": 1566,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1571,
+        "destination": 1920,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1597,
+        "destination": 1609,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1604,
+        "destination": 1615,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1663,
+        "destination": 1908,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 1675,
+        "destination": 1680,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1698,
+        "destination": 1702,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1710,
+        "destination": 1730,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1717,
+        "destination": 1730,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 1728,
+        "destination": 1739,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1748,
+        "destination": 1764,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1787,
+        "destination": 1817,
+        "mnemonic": "jnp"
+      },
+      {
+        "offset": 1815,
+        "destination": 1838,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1843,
+        "destination": 1859,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1902,
+        "destination": 1680,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 1930,
+        "destination": 2315,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1947,
+        "destination": 1952,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1968,
+        "destination": 2016,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1985,
+        "destination": 2016,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1992,
+        "destination": 2016,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2014,
+        "destination": 2000,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2020,
+        "destination": 1952,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2045,
+        "destination": 2088,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2131,
+        "destination": 2219,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2139,
+        "destination": 2219,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2159,
+        "destination": 2190,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2246,
+        "destination": 2266,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2317,
+        "destination": 2760,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2333,
+        "destination": 2350,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2374,
+        "destination": 2405,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 2403,
+        "destination": 2384,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 2436,
+        "destination": 2532,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2446,
+        "destination": 2461,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2452,
+        "destination": 2486,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2459,
+        "destination": 2448,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2469,
+        "destination": 2532,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2475,
+        "destination": 2486,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2482,
+        "destination": 2471,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2484,
+        "destination": 2532,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2490,
+        "destination": 2532,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2507,
+        "destination": 2532,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2514,
+        "destination": 2532,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2530,
+        "destination": 2516,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2544,
+        "destination": 2432,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2571,
+        "destination": 2614,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2655,
+        "destination": 2760,
+        "mnemonic": "jl"
+      }
+    ],
+    "table": {
+      "offset": 2772,
+      "entry_offsets": [
+        30,
+        1108,
+        1321,
+        2648
+      ]
+    },
+    "returns": [
+      {
+        "offset": 1105,
+        "operand": "4"
+      },
+      {
+        "offset": 1318,
+        "operand": "4"
+      },
+      {
+        "offset": 2187,
+        "operand": "4"
+      },
+      {
+        "offset": 2216,
+        "operand": "4"
+      },
+      {
+        "offset": 2312,
+        "operand": "4"
+      },
+      {
+        "offset": 2645,
+        "operand": "4"
+      },
+      {
+        "offset": 2769,
+        "operand": "4"
+      }
+    ]
+  },
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp",
+      "src/GuiMessageLeaves.cpp",
+      "src/FileSystem.cpp",
+      "src/PbgArchive.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FrontEnd.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ItemManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Main.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Sound.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Gui.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Hint.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/FileSystem.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/PbgArchive.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+  },
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "bd9a3a3ef595569aa90c1acf4999271b79f03c44e6562b1f9544c111a8892fff",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "d632e60fefce7f3d830c4bad5faeb38f9f0ac2ea88a07d800485b37f9034f946",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "eb15c9602161498f2cb85861183f71ef0305bf1eec2109e2fe3206b171ceedc9",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "a2940382f3f8aff0e96dceb5262067eea5b36c85b1b503cae984505dffb38e91",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiMessageLeaves.cpp": "7f0b02c9037056b3613d8322b4da2adc524a10d17ca29f1247159fb5843edb12",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.cpp": "8b950fceecc041701f77b8a23726bb42e09d9ceb50503f91025e38ff761f5eaf",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.cpp": "3fa6b87037d280bcd7f25d05cf89b0f820aca16b3b47701a7d03372148e1587a",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "cold_reproduction": {
+    "compiled_inputs": 20,
+    "reused_inputs": 0,
+    "context": ".analysis/gpt-6.1-sol/music-room-context-20261030/candidate-cold-context.json",
+    "image_sha256": "b79347a8c1113472fee391c944780096081946988ece1167f27b8e8b671f4b0d"
+  },
+  "open_file_abi": {
+    "caller": "FrontEndUpdateMusicRoom",
+    "filename": "EAX",
+    "sizeOut": "stack",
+    "mode": "stack",
+    "callee_ret": "8",
+    "native_complete_bytes": 358,
+    "target_complete_bytes": 360,
+    "callee_byte_status": "NONEXACT"
+  }
+}

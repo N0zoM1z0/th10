@@ -8046,3 +8046,36 @@ without new parent credit. Current18-input context and the two stale source pins
 in prior GUI18/Player17 epochs are recorded in the handoff. See the
 [complete audio proof](evidence/front-end-music-exact-20261030/README.md).
 Authored exact increases381 to101913/275817 across499 owners; codegen170017/1376.
+
+
+## 2026-10-30 MusicRoom complete table ownership and row lifetimes
+
+The existing MusicRoom433EF0 row omitted its compiler-owned selector extent.
+Complete physical ownership ends4349DB:2778 code bytes/740 instructions through
+RET4,2 alignment bytes and four table words4349CC..4349DB. The only encoded
+base reference is its indexed JMP at17; entries1E/456/52B/A5E are code starts
+inside the owner. Four CC bytes precede independent4349E0. Extending this one
+reviewed boundary adds18 authored-owned inventory bytes, making denominator
+275835. It creates no new function, source/origin classification or exact credit.
+
+The current full candidate2788 remains NONEXACT. Its104 native fields/97 locals
+and target106 address operands/96 locals differ despite48 direct calls on both
+sides. Two row lookups now pass the existing ID object and retain the manager
+across lookup/draw; no shared ResolveVm/cursor/header changes are made. Standalone
+void/direct cursor, position-component and parser-scope controls are restored.
+
+A real FileSystem-only addition promotes sizeOut to EBX and fails the actual
+MusicRoom interface. Adding its already canonical PbgArchive dependency under
+existing profiles restores EAX filename plus stack sizeOut/mode/RET8 without a
+root change. Complete file callee358/360 is still nonexact in this20-input
+context; its separate canonical360-byte graph remains independent. No product,
+runtime, original helper/class/TU or data-owner inference follows.
+
+A zero-reuse20-input cold reproduces complete2788 bytes/all104 native identities,
+97 fixed locals, both exits and four table entries. Qualified static symbols,
+known input+6 and bounded literal hashes cover native unnamed fields without
+inventing target roles. Same-image explicit audio381/22 and Player1372/34
+guards pass1753/all56. Current context and stale prior FrontEnd.cpp pins are
+identified in the handoff. See the
+[complete MusicRoom evidence](evidence/music-room-context-20261030/README.md).
+Authored exact remains101913/499 owners; codegen170017/1376, source/backlog unchanged.

@@ -2,6 +2,41 @@
 
 ## Current checkpoint
 
+Complete MusicRoom433EF0..4349DB remains NONEXACT, current2788/2796. A fresh
+ownership audit closes2778 executable bytes/740 instructions,2 alignment and
+four owned selector words4349CC..4349DB; sole encoded base reference is the
+owner indexed JMP, all entries are internal. Four CC bytes precede independent
+4349E0. Existing boundary extends18 bytes; authored denominator is now275835.
+No new function, source/origin or exact credit. See the
+[complete MusicRoom proof](evidence/music-room-context-20261030/README.md).
+
+Two row loops now pass existing ID objects and retain the pre-lookup manager for
+text output. Shared ResolveVm/cursor/header definitions remain unchanged. A
+20-input graph adds the real FileSystem and PbgArchive definitions under their
+existing /GL /GS profiles and unchanged InitializeVm root. FileSystem alone
+promotes sizeOut to EBX incorrectly; both definitions restore actual EAX path,
+stack sizeOut/mode/RET8. File callee358/360 remains context-nonexact; its separate
+360-byte canonical graph is independent. No root/flags/ABI forcing is used.
+
+A zero-reuse20-input cold reproduces complete2788/all104 native identities,
+97 locals, both RET4 exits and all four table entries. Target has106 operands,
+96 locals and48 calls; native48 calls does not waive byte/field/destination
+mismatches. Static callees use MAP static qualification; pooled literals use
+bounded payload hashes. Same-image explicit audio381/all22 and Player1372/all34
+selectors pass1753/all56. No full cohort or host failure/lifecycle/mutation tests.
+Void/direct cursor, vector component and parser-scope controls are restored and
+parked. Reopen only with new evidence and a falsifiable prediction.
+
+Current MusicRoom context is
+`.analysis/gpt-6.1-sol/music-room-context-20261030/candidate-cold-context.json`.
+Previous18-input GUI/audio and17-input Player epochs have a historical
+FrontEnd.cpp pin; relink those actual declared graphs before reusing them.
+The20-input epoch is not a replacement for them. Authored exact stays101913
+across499 owners, over corrected275835 reviewed bytes; codegen170017/1376,
+source1207/authored689/backlog190. Original type/TU/data and product/runtime/
+portability remain open. Full ordinary bytes and all table destinations remain
+required; the corrected inventory alone is not exactness progress.
+
 Four complete audio command owners now close381/all22 fields/all9 fixed local
 destinations: QueueCommand43E460/104, LoadMusic420A90/120, PlayMusic420B10/73 and
 ScaledSound420C30/84. Two independent canonical18-input /GL colds rebuild every
