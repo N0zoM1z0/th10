@@ -13,6 +13,9 @@
 #include <stdlib.h>
 #include <new>
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 
 // These views expose game-state fields read by the reviewed GUI cores.
 struct GuiGameOwnerView
@@ -1879,17 +1882,24 @@ extern void *g_GuiRetainedMessageFile491BE8;
 // Target 0x004136C0-0x00413720. The owning caller releases the allocation.
 GuiMessageVmView::~GuiMessageVmView()
 {
+    // Preserve each target mark/clear pair before reading the next managed id.
+    // Original source qualifiers or barriers are unknown.
     AnmRenderManagerView *manager = g_AnmRenderManagerView;
     manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_PLAYER_PORTRAIT]);
     vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = 0;
+    _ReadWriteBarrier();
     manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_ENEMY_PORTRAIT]);
     vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = 0;
+    _ReadWriteBarrier();
     manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_TEXT_BOX]);
     vmIds[GUI_MESSAGE_TEXT_BOX].value = 0;
+    _ReadWriteBarrier();
     manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_TEXT_LINE_0]);
     vmIds[GUI_MESSAGE_TEXT_LINE_0].value = 0;
+    _ReadWriteBarrier();
     manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_TEXT_LINE_1]);
     vmIds[GUI_MESSAGE_TEXT_LINE_1].value = 0;
+    _ReadWriteBarrier();
     manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_ENEMY_NAME]);
     vmIds[GUI_MESSAGE_ENEMY_NAME].value = 0;
 }

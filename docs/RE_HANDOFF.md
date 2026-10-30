@@ -4,27 +4,62 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint closes complete Enemy teardown300 and GUI
-reuse121, adding421 authored exact bytes. Real lock imports and ANM allocation
-release replace incorrect declarations/facades. Existing value50 increment20
-retains its credit after consolidation. Full GameManager cleanup1098/1105 and
-Player teardown333/325 remain nonexact. No native job is running.
+selected lane. This checkpoint closes the complete97-byte GUI message teardown
+by retaining the target's six ordered mark/clear pairs. Existing GUI reuse121
+remains exact. Full GameManager cleanup1098/1105, update1538/1544, Player333/325
+and GUI579/574 remain nonexact. Failed parent controls are restored and parked.
+No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 107,521 / 275,863 |
-| Authored exact owners | 519 |
-| Total canonical exact owners / codegen bytes | 1,397 / 175,635 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 184 |
+| Reviewed authored owned bytes exact | 107,618 / 275,863 |
+| Authored exact owners | 520 |
+| Total canonical exact owners / codegen bytes | 1,398 / 175,732 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 183 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: Enemy teardown and real lock imports
+## Latest source checkpoint: GUI message teardown memory order
+
+[The complete proof](evidence/gui-message-teardown-20261031/README.md) adds97
+bytes/all7 for GuiMessageVmView destruction4136C0..413720. Each of six target
+operations reads an id, calls actual MarkVmForDeletion4492A0 and clears the id
+before the next read. Five compiler memory-order intrinsics preserve these
+adjacent pairs without adding instructions; the last clear remains between
+register pops. Private ESI, sole plain return, six calls and full bytes agree.
+This source model does not establish original barriers, qualifiers or threading.
+
+Volatile read/write capture gets the order but chooses EAX repeatedly and leaves
+eight opcode bytes wrong; volatile writes alone still hoist reads. Both are
+restored. The ten-control packet includes complete GameManager cleanup attempts:
+whole switch1120, nested tail switch1091, shared score owner1098, separate flag
+assignment1098 and branch-local publication1118, all against1105. None closes
+the parent. A nonthrowing Player VM member declaration leaves333/325 unchanged.
+All these edits are restored. Do not repeat them without a new prediction.
+
+Fresh complete update inspection confirms1538/1544 is not merely six wrong
+bytes: stage-helper stack/private EDI interface, manager registers, active-frame
+member addressing and a redundant target null check remain different. Stage
+reset214 and embedded VM202 dependencies still have private-interface mismatches.
+No new update source is retained; the parent flag-store and VM-call register
+questions recorded below remain open.
+
+First zero-reuse34-input cold selects new message97 and its direct GUI reuse121
+caller; second selects message97 only. Both produced images preserve46 existing
+contracts6261/all275 and protected startup1009/all102/static28 at the original
+qualified producer path. Independent complete decoding, six mark/clear events,
+source/header84 pins and independent PE/PDB identities are retained. No other
+canonical recipe/profile or comparison infrastructure changes. No mapping,
+boundary, origin, denominator, runtime/product or portability claim changes.
+Private campaign: cleanup-switch-20261031. Earlier context freezes predate the
+message-order source; check pins before cache reuse.
+
+## Previous source checkpoint: Enemy teardown and real lock imports
 
 [The complete proof](evidence/enemy-manager-teardown-20261031/README.md) adds
 EnemyManagerView teardown300/all25 and GUI reuse121/all7. Full target/native

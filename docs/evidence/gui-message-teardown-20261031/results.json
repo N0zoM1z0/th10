@@ -1,0 +1,2925 @@
+{
+  "date": "2026-10-31",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_exact_bytes": 97,
+  "new_authored_exact_owners": 1,
+  "new_source_mappings": 0,
+  "boundary_changes": 0,
+  "origin_changes": 0,
+  "denominator_changes": 0,
+  "contract": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp",
+      "src/GameManager.cpp",
+      "src/GuiScoreDisplay.cpp",
+      "src/GuiSpellNotice.cpp",
+      "src/StageAnimationSlots.cpp",
+      "src/TransitionEffect.cpp",
+      "src/Chain.cpp",
+      "src/BulletLifecycle.cpp",
+      "src/ScriptViewerWorker.cpp",
+      "src/StageLifecycle.cpp",
+      "src/ReplayManager.cpp",
+      "src/GameObjectReset.cpp",
+      "src/ReplayStageHelpers.cpp",
+      "src/InputState.cpp",
+      "src/ReplayStageRestore.cpp",
+      "src/EnemyLaserManager.cpp",
+      "src/GameStatistics.cpp",
+      "src/FileSystem.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/EHs"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FrontEnd.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ItemManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Main.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Sound.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Gui.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/Hint.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/TransitionEffect.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Chain.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/BulletLifecycle.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ScriptViewerWorker.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/StageLifecycle.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ReplayManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ReplayStageHelpers.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/InputState.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ReplayStageRestore.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/EnemyLaserManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/GameStatistics.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FileSystem.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "artifact_kind": "linked-pe",
+    "output_dir": "build/match-linked/GameCleanupContext",
+    "pdb_source": "src/Gui.cpp",
+    "symbol": "??1GuiMessageVmView@@QAE@XZ",
+    "target_address": 4273856,
+    "size": 97,
+    "functions": [
+      "GuiMessageVmView::~GuiMessageVmView"
+    ],
+    "linkages": [
+      {
+        "offset": 7,
+        "width": 4,
+        "type": "DIR32",
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": 4791312
+      },
+      {
+        "offset": 15,
+        "width": 4,
+        "type": "REL32",
+        "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+        "target": 4493984
+      },
+      {
+        "offset": 31,
+        "width": 4,
+        "type": "REL32",
+        "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+        "target": 4493984
+      },
+      {
+        "offset": 45,
+        "width": 4,
+        "type": "REL32",
+        "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+        "target": 4493984
+      },
+      {
+        "offset": 59,
+        "width": 4,
+        "type": "REL32",
+        "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+        "target": 4493984
+      },
+      {
+        "offset": 73,
+        "width": 4,
+        "type": "REL32",
+        "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+        "target": 4493984
+      },
+      {
+        "offset": 87,
+        "width": 4,
+        "type": "REL32",
+        "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+        "target": 4493984
+      }
+    ]
+  },
+  "pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletLifecycle.cpp": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "fbab9120022c4cdcee384d0781dd2559960333f497bc6e0ab3a37c004c77012d",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyLaserManager.cpp": "b528c4eb7a63e94878ac787ae044e8274889214b31443162684eafcf189ae23f",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "24b2522081ea8295cb0e293e9c26a9f7bce7b740ed41bbce858d86a630740f57",
+    "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.cpp": "908b8d539b1886a84ada68e9289f991abfaa0a003da6905094bacf7fd32ad205",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameObjectReset.cpp": "cf8d6de1488764355a394d04496ce690fa1fb41aad54b07a047bcaf6d4490593",
+    "src/GameScoreState.hpp": "a07274bb81d0a34795d3325fd43e65c14ce118e7204dd7b0bb922822979f975b",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/GameStatistics.cpp": "e672f35c5d6e944b304b020f231b0ebb5eea1f83f2dab5cd5a47635dde9a5dc0",
+    "src/GameStatistics.hpp": "3db83612f100ae38b109e358bbf777f897fab2e760520bc92c52fbec1b4823bc",
+    "src/Gui.cpp": "b025c95cc758e593fb2a762c38b8a5143af11a2963339f4b840d1d37486a7919",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/GuiScoreDisplay.cpp": "037599d4e5aade1c81cc9ac8f728ef2725ce1be639e04c70b57995b4ffe06e7c",
+    "src/GuiSpellNotice.cpp": "3db80f14c123c18716e03b1b39400e4dce774e690d1d956fd11c673a3af160f2",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.cpp": "48c48082b17c994d83cdc49ec370f2adcc35fca27e87813d7714089a01321007",
+    "src/InputState.hpp": "f3e9b10478ae60504441e60b272cd9f17284554ba59307373f1bb8523fe801f2",
+    "src/ItemManager.cpp": "c7eb31442b087cb6062c9b62e7d9a1e48e6e442f111fc8238603680f4cbacffa",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.cpp": "0ea3456dfb07400146775dedc6f43091e10c07edd07194cb4311306c02e4a89f",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/ReplayManager.cpp": "1324358513b45aa9586bae89ab2a4ae31cdc89059913bbab3718b20fd62aa624",
+    "src/ReplayManager.hpp": "530f31cae0e6766074864bd7504f278293df7e926a7faa931a038e6bdb91e256",
+    "src/ReplayStageHelpers.cpp": "9457f54fcfb4389df1f361eb5d72fa4d6348e558771e27b757b1417d4fe49638",
+    "src/ReplayStageRestore.cpp": "6dd21cc30949a08f9e8b8c0cc5d6c624c636075f391691a052fac9d159f2bf6c",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.hpp": "d2bdd5dc267c1f76a32df7d0ee7b0507fc1854933c33e2bd8075d2b318ee5ab2",
+    "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageAnimationSlots.cpp": "fd00235c85f114e2875907b1b7ead1c69bb72bac637f7ab96168c4a0f0f07208",
+    "src/StageLifecycle.cpp": "dff4a52c4f41f0e8a478d9753d1d54a957dcd314cc9d83c9436c66e98fed0558",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "gui_source_before_sha256": "debc368c86c42bc5542ac8947d9b32ee9732efb2e92a4225f668ebc69e59de64",
+  "gui_source_after_sha256": "b025c95cc758e593fb2a762c38b8a5143af11a2963339f4b840d1d37486a7919",
+  "target_mark_clear_events": [
+    [
+      "read",
+      0,
+      64
+    ],
+    [
+      "mark",
+      14
+    ],
+    [
+      "clear",
+      21,
+      64
+    ],
+    [
+      "read",
+      24,
+      68
+    ],
+    [
+      "mark",
+      30
+    ],
+    [
+      "clear",
+      35,
+      68
+    ],
+    [
+      "read",
+      38,
+      72
+    ],
+    [
+      "mark",
+      44
+    ],
+    [
+      "clear",
+      49,
+      72
+    ],
+    [
+      "read",
+      52,
+      76
+    ],
+    [
+      "mark",
+      58
+    ],
+    [
+      "clear",
+      63,
+      76
+    ],
+    [
+      "read",
+      66,
+      80
+    ],
+    [
+      "mark",
+      72
+    ],
+    [
+      "clear",
+      77,
+      80
+    ],
+    [
+      "read",
+      80,
+      84
+    ],
+    [
+      "mark",
+      86
+    ],
+    [
+      "clear",
+      92,
+      84
+    ]
+  ],
+  "controls": [
+    {
+      "label": "natural-mode-switch",
+      "image_sha256": "cc540912590a0063ced70803b43f218f7a3a203b080b353da579e8eeceff6110",
+      "source_pins_sha256": "f914d265933fb2d5fce1f0b24947b6fb9d63390c47c295820cbe3f6effa869b4",
+      "compiled": [
+        "src/GameManager.cpp"
+      ],
+      "reused_count": 33,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1120,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "mismatch"
+        }
+      }
+    },
+    {
+      "label": "nested-tail-switch",
+      "image_sha256": "2886b8ebf72d2ea9d5a0cbc0d5ca9f67fe2ae5ae5bdfabb4fa2206ebc97fa5e6",
+      "source_pins_sha256": "2df603d716fecffdb9ba73ea0b00bbc7b35082d5d436dd1f285be8d274324b89",
+      "compiled": [
+        "src/GameManager.cpp"
+      ],
+      "reused_count": 33,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1091,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "mismatch"
+        }
+      }
+    },
+    {
+      "label": "actual-score-owner",
+      "image_sha256": "adc66c5ed7de87250df8f223bd841e1340c9a261445423df89a5de98ad04a9bd",
+      "source_pins_sha256": "0ba67e86788adf5605bf6a5b356f988594e663a6c9e33680d5943ebfa4458cd6",
+      "compiled": [
+        "src/GameManager.cpp"
+      ],
+      "reused_count": 33,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1098,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "mismatch"
+        }
+      }
+    },
+    {
+      "label": "separate-flag-assignment",
+      "image_sha256": "61cc4cf9527b07b8a35d213a4fdfe817862bb74ffee39cdd296f814697bd6c45",
+      "source_pins_sha256": "8a53dcae2a0be3226346763abd25b5ba916473c643c3d98cf84c87a8bb8c4839",
+      "compiled": [
+        "src/GameManager.cpp"
+      ],
+      "reused_count": 33,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1098,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "mismatch"
+        }
+      }
+    },
+    {
+      "label": "branch-local-publish",
+      "image_sha256": "50e818572a35432b5850da086e61c911092eb7ac2732e866d09e91f77e67d950",
+      "source_pins_sha256": "5efb0e5d9e009d7781c23d3f3eb5e257c40f3e7ca1b6974b8552a5342021cf59",
+      "compiled": [
+        "src/GameManager.cpp"
+      ],
+      "reused_count": 33,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1118,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "mismatch"
+        }
+      }
+    },
+    {
+      "label": "nonthrowing-member-cleanup",
+      "image_sha256": "76db6eb05bc6a74c5777d27970fc5164a04e2c3022682c487bd1716142702d11",
+      "source_pins_sha256": "e296ef65972e8edbccc4aaf8fe65fee8df28872cb2172015b62f02b808c15821",
+      "compiled": [
+        "src/Enemy.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/ItemManager.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp",
+        "src/GameManager.cpp",
+        "src/BulletLifecycle.cpp",
+        "src/ReplayManager.cpp",
+        "src/GameObjectReset.cpp",
+        "src/ReplayStageHelpers.cpp",
+        "src/EnemyLaserManager.cpp"
+      ],
+      "reused_count": 21,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1098,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "mismatch"
+        }
+      }
+    },
+    {
+      "label": "ordered-message-ids",
+      "image_sha256": "be3ab6be8efc67d79eb94dbe1e3c853f5be6760f6f1b00951305b399274531f6",
+      "source_pins_sha256": "3017a4fceca25aeaf2a50fa9fcdb1a86141527140f1c0812578d54876e6d3b60",
+      "compiled": [
+        "src/Enemy.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/ItemManager.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp",
+        "src/GameManager.cpp",
+        "src/BulletLifecycle.cpp",
+        "src/ReplayManager.cpp",
+        "src/GameObjectReset.cpp",
+        "src/ReplayStageHelpers.cpp",
+        "src/EnemyLaserManager.cpp"
+      ],
+      "reused_count": 21,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1098,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "mismatch"
+        }
+      },
+      "strict_message_result": {
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0x19",
+            "linked": 70,
+            "target": 78
+          },
+          {
+            "offset": "0x1B",
+            "linked": 80,
+            "target": 81
+          },
+          {
+            "offset": "0x27",
+            "linked": 70,
+            "target": 86
+          },
+          {
+            "offset": "0x29",
+            "linked": 80,
+            "target": 82
+          },
+          {
+            "offset": "0x43",
+            "linked": 70,
+            "target": 78
+          },
+          {
+            "offset": "0x45",
+            "linked": 80,
+            "target": 81
+          },
+          {
+            "offset": "0x51",
+            "linked": 70,
+            "target": 86
+          },
+          {
+            "offset": "0x53",
+            "linked": 80,
+            "target": 82
+          }
+        ]
+      }
+    },
+    {
+      "label": "ordered-message-clears",
+      "image_sha256": "009307b714d61e684b966d4f0871e21f4cd1cac5fe85b756cbb2120f5a4b4980",
+      "source_pins_sha256": "709c70f717ad99d7c2f304233286f1ff6f15e5363f4d3d114f6005305f422786",
+      "compiled": [
+        "src/Gui.cpp"
+      ],
+      "reused_count": 33,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1098,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "mismatch"
+        }
+      },
+      "strict_message_result": {
+        "result": "mismatch",
+        "first_differences": [
+          {
+            "offset": "0x13",
+            "linked": 139,
+            "target": 51
+          },
+          {
+            "offset": "0x14",
+            "linked": 78,
+            "target": 219
+          },
+          {
+            "offset": "0x15",
+            "linked": 68,
+            "target": 137
+          },
+          {
+            "offset": "0x16",
+            "linked": 51,
+            "target": 94
+          },
+          {
+            "offset": "0x17",
+            "linked": 219,
+            "target": 64
+          },
+          {
+            "offset": "0x18",
+            "linked": 137,
+            "target": 139
+          },
+          {
+            "offset": "0x19",
+            "linked": 94,
+            "target": 78
+          },
+          {
+            "offset": "0x1A",
+            "linked": 64,
+            "target": 68
+          },
+          {
+            "offset": "0x23",
+            "linked": 139,
+            "target": 137
+          },
+          {
+            "offset": "0x24",
+            "linked": 86,
+            "target": 94
+          },
+          {
+            "offset": "0x25",
+            "linked": 72,
+            "target": 68
+          },
+          {
+            "offset": "0x26",
+            "linked": 82,
+            "target": 139
+          },
+          {
+            "offset": "0x27",
+            "linked": 137,
+            "target": 86
+          },
+          {
+            "offset": "0x28",
+            "linked": 94,
+            "target": 72
+          },
+          {
+            "offset": "0x29",
+            "linked": 68,
+            "target": 82
+          },
+          {
+            "offset": "0x31",
+            "linked": 139,
+            "target": 137
+          },
+          {
+            "offset": "0x32",
+            "linked": 70,
+            "target": 94
+          },
+          {
+            "offset": "0x33",
+            "linked": 76,
+            "target": 72
+          },
+          {
+            "offset": "0x34",
+            "linked": 137,
+            "target": 139
+          },
+          {
+            "offset": "0x35",
+            "linked": 94,
+            "target": 70
+          },
+          {
+            "offset": "0x36",
+            "linked": 72,
+            "target": 76
+          },
+          {
+            "offset": "0x3F",
+            "linked": 139,
+            "target": 137
+          },
+          {
+            "offset": "0x40",
+            "linked": 78,
+            "target": 94
+          },
+          {
+            "offset": "0x41",
+            "linked": 80,
+            "target": 76
+          },
+          {
+            "offset": "0x42",
+            "linked": 137,
+            "target": 139
+          },
+          {
+            "offset": "0x43",
+            "linked": 94,
+            "target": 78
+          },
+          {
+            "offset": "0x44",
+            "linked": 76,
+            "target": 80
+          },
+          {
+            "offset": "0x4D",
+            "linked": 139,
+            "target": 137
+          },
+          {
+            "offset": "0x4E",
+            "linked": 86,
+            "target": 94
+          },
+          {
+            "offset": "0x4F",
+            "linked": 84,
+            "target": 80
+          },
+          {
+            "offset": "0x50",
+            "linked": 82,
+            "target": 139
+          },
+          {
+            "offset": "0x51",
+            "linked": 137,
+            "target": 86
+          }
+        ]
+      }
+    },
+    {
+      "label": "message-pair-order",
+      "image_sha256": "18b2c79b8daad1db90fbfea7577ed3407e4a74079a927b36fab640fcb49ddd0f",
+      "source_pins_sha256": "4899d0e4ec78ac19fe7be4e1ec73e3a301c4e7a6e5731d3b45412507ecef616a",
+      "compiled": [
+        "src/Gui.cpp"
+      ],
+      "reused_count": 33,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1098,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "structural-exact"
+        }
+      }
+    },
+    {
+      "label": "reviewed-message-pairs",
+      "image_sha256": "9576e5750f4172c2053d86fbdb86a43e0d2ab0a5f0835ab74f9bde356f492e5c",
+      "source_pins_sha256": "c18b865800890dba1b301fe7606c794a132db7d2756c60d17ea39bd3c65d5635",
+      "compiled": [
+        "src/Gui.cpp"
+      ],
+      "reused_count": 33,
+      "owners": {
+        "gamecleanup": {
+          "native_size": 1098,
+          "target_size": 1105,
+          "result": "mismatch"
+        },
+        "game": {
+          "native_size": 1538,
+          "target_size": 1544,
+          "result": "mismatch"
+        },
+        "playerdestructor": {
+          "native_size": 333,
+          "target_size": 325,
+          "result": "mismatch"
+        },
+        "guidestructor": {
+          "native_size": 579,
+          "target_size": 574,
+          "result": "mismatch"
+        },
+        "guimessage": {
+          "native_size": 97,
+          "target_size": 97,
+          "result": "structural-exact"
+        }
+      },
+      "strict_message_result": {
+        "result": "exact",
+        "first_differences": []
+      }
+    }
+  ],
+  "cold_runs": [
+    {
+      "label": "cold-one",
+      "unit_count": 2,
+      "matched_bytes": 218,
+      "manifest_sha256": "e5d0750478767cb59f345138245958adb46a5ed805418090d4bf1467a955cc35",
+      "groups": [
+        {
+          "artifact": "build/match-linked/GameCleanupContext",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "gui-prepare-reuse",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x0042D410",
+              "capstone_version": "5.0.6",
+              "compared_size": 121,
+              "data_spans": [],
+              "decoded_bytes": 121,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/GameCleanupContext/source.exe",
+              "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0042D1B0",
+                  "linked_symbol": "??1GuiMessageVmView@@QAE@XZ",
+                  "local": false,
+                  "offset": "0xF",
+                  "symbol": "??1GuiMessageVmView@@QAE@XZ",
+                  "target": "0x004136C0",
+                  "target_encoded_value": "0xFFFFF13D",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004381A8",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0005",
+                  "local": false,
+                  "offset": "0x15",
+                  "symbol": "??3@YAXPAX@Z",
+                  "target": "0x004524A1",
+                  "target_encoded_value": "0x0003DF18",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043862C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0294",
+                  "local": false,
+                  "offset": "0x24",
+                  "symbol": "?g_GuiGameFlags@@3IA",
+                  "target": "0x00474CA0",
+                  "target_encoded_value": "0x00474CA0",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043841C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0162",
+                  "local": false,
+                  "offset": "0x2D",
+                  "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                  "target": "0x00491C10",
+                  "target_encoded_value": "0x00491C10",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x00407670",
+                  "linked_symbol": "?Release@AnmLoadedView@@QAEXXZ",
+                  "local": false,
+                  "offset": "0x3F",
+                  "symbol": "?Release@AnmLoadedView@@QAEXXZ",
+                  "target": "0x00447810",
+                  "target_encoded_value": "0x0003325D",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004381A8",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0005",
+                  "local": false,
+                  "offset": "0x47",
+                  "symbol": "??3@YAXPAX@Z",
+                  "target": "0x004524A1",
+                  "target_encoded_value": "0x0003DEE6",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004389E8",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0533",
+                  "local": false,
+                  "offset": "0x63",
+                  "symbol": "_free",
+                  "target": "0x00452422",
+                  "target_encoded_value": "0x0003DE4B",
+                  "type": "REL32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 121,
+              "matched_compared_bytes": 121,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75",
+              "pdb_module_index": 7,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 121,
+              "symbol": "?GamePrepareGuiReuse414570@@YAXPAUGuiView@@@Z",
+              "target_address": "0x00414570",
+              "unit": "gui-prepare-reuse"
+            },
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x0042D1B0",
+              "capstone_version": "5.0.6",
+              "compared_size": 97,
+              "data_spans": [],
+              "decoded_bytes": 97,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/GameCleanupContext/source.exe",
+              "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043841C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0162",
+                  "local": false,
+                  "offset": "0x7",
+                  "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                  "target": "0x00491C10",
+                  "target_encoded_value": "0x00491C10",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0xF",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035BCD",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x1F",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035BBD",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x2D",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035BAF",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x3B",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035BA1",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x49",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035B93",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x57",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035B85",
+                  "type": "REL32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 97,
+              "matched_compared_bytes": 97,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75",
+              "pdb_module_index": 7,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 97,
+              "symbol": "??1GuiMessageVmView@@QAE@XZ",
+              "target_address": "0x004136C0",
+              "unit": "gui-message-destructor"
+            }
+          ]
+        }
+      ],
+      "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+      "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75",
+      "message": {
+        "complete": {
+          "target": {
+            "address": 4273856,
+            "size": 97,
+            "sha256": "00e42e7495687ef4dfecfd8a2a96087b297d6e723b7ab864c6389b4e0ebfb7b1",
+            "target_bound_sha256": "00e42e7495687ef4dfecfd8a2a96087b297d6e723b7ab864c6389b4e0ebfb7b1",
+            "instructions": 37,
+            "fields": [
+              [
+                7,
+                "DIR32",
+                4791312,
+                4791312
+              ],
+              [
+                15,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                31,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                45,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                59,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                73,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                87,
+                "REL32",
+                4493984,
+                4493984
+              ]
+            ],
+            "locals": [],
+            "calls": [
+              [
+                14,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                30,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                44,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                58,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                72,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                86,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ]
+            ],
+            "returns": [
+              [
+                96,
+                ""
+              ]
+            ]
+          },
+          "native": {
+            "address": 4379056,
+            "size": 97,
+            "sha256": "26dd6c99d6141c8f50658b857c65debfb46a3ac9e826ddd71e17c63824865579",
+            "target_bound_sha256": "00e42e7495687ef4dfecfd8a2a96087b297d6e723b7ab864c6389b4e0ebfb7b1",
+            "instructions": 37,
+            "fields": [
+              [
+                7,
+                "DIR32",
+                4424732,
+                4791312
+              ],
+              [
+                15,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                31,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                45,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                59,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                73,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                87,
+                "REL32",
+                4215264,
+                4493984
+              ]
+            ],
+            "locals": [],
+            "calls": [
+              [
+                14,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                30,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                44,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                58,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                72,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                86,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ]
+            ],
+            "returns": [
+              [
+                96,
+                ""
+              ]
+            ]
+          }
+        },
+        "canonical": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x0042D1B0",
+          "capstone_version": "5.0.6",
+          "compared_size": 97,
+          "data_spans": [],
+          "decoded_bytes": 97,
+          "extent_source": "pdb-section-contribution",
+          "first_differences": [],
+          "image": "build/match-linked/GameCleanupContext/source.exe",
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "linkages": [
+            {
+              "addend": 0,
+              "candidate_target": "0x0043841C",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0162",
+              "local": false,
+              "offset": "0x7",
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "target": "0x00491C10",
+              "target_encoded_value": "0x00491C10",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0xF",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035BCD",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x1F",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035BBD",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x2D",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035BAF",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x3B",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035BA1",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x49",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035B93",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x57",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035B85",
+              "type": "REL32",
+              "width": 4
+            }
+          ],
+          "matched_bytes": 97,
+          "matched_compared_bytes": 97,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75",
+          "pdb_module_index": 7,
+          "raw_equal": false,
+          "result": "exact",
+          "returncode": 0,
+          "size": 97,
+          "symbol": "??1GuiMessageVmView@@QAE@XZ",
+          "target_address": "0x004136C0",
+          "unit": "gui-message-destructor"
+        }
+      },
+      "startup": {
+        "size": 1009,
+        "fields": 102,
+        "qualified_static": {
+          "symbol": "?MarkGameChains@@YAXPAUGameChainOwnerView@@@Z",
+          "address": "0x0042F8D0",
+          "size": 28,
+          "extent_source": "pdb-section-contribution",
+          "owner_visibility": "static",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 190672,
+          "map_object": "support-16-GameManager.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-16-GameManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-16-GameManager.ltcg.obj",
+          "sha256": "ff7169a1ffda26fb648d1b9021d0a6affadd599732ae8acf918d02ca1872f6d1"
+        }
+      },
+      "existing_contracts": {
+        "anm-manager-mark-vm-for-deletion": {
+          "size": 66,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "decomphelp-chain-unregister": {
+          "size": 114,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "enemy-ecl-resource-destructor": {
+          "size": 36,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "replay-restore-stage-state": {
+          "size": 356,
+          "fields": 27,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "replay-manager-create": {
+          "size": 185,
+          "fields": 12,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-prepare-dummy-music": {
+          "size": 41,
+          "fields": 5,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "enemy-end-spell": {
+          "size": 399,
+          "fields": 20,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-score-add-power": {
+          "size": 166,
+          "fields": 4,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "item-rank-add": {
+          "size": 42,
+          "fields": 0,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "gui-update-score-display": {
+          "size": 671,
+          "fields": 36,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-add-lives": {
+          "size": 141,
+          "fields": 12,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "anm-loaded-create-vm-variant0": {
+          "size": 73,
+          "fields": 5,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "anm-loaded-set-sprite": {
+          "size": 356,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "enemy-sound-queue-sample": {
+          "size": 123,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "enemy-mark-pending-interrupt": {
+          "size": 65,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "anm-manager-find-vm": {
+          "size": 73,
+          "fields": 0,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "anm-vm-id-set-flag2": {
+          "size": 67,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "anm-vm-id-clear-flag2": {
+          "size": 67,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "transition-effect-factory": {
+          "size": 82,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-stage-transition-delay": {
+          "size": 92,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-enter-menu-state": {
+          "size": 119,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "script-viewer-worker-stop": {
+          "size": 101,
+          "fields": 3,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "bullet-reset-pool": {
+          "size": 45,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "enemy-manager-clear": {
+          "size": 118,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "main-set-next-game-mode": {
+          "size": 37,
+          "fields": 0,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "front-end-play-music": {
+          "size": 73,
+          "fields": 8,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-manager-update-callback": {
+          "size": 7,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-clear-linked-objects": {
+          "size": 66,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "replay-clear-stage-frame-data": {
+          "size": 93,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "replay-restore-stage-position": {
+          "size": 83,
+          "fields": 2,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "input-debug-repeat": {
+          "size": 109,
+          "fields": 0,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-update-faith-decay": {
+          "size": 65,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "anm-timer-tick": {
+          "size": 72,
+          "fields": 4,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "replay-process-frame": {
+          "size": 596,
+          "fields": 33,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "replay-append-record": {
+          "size": 85,
+          "fields": 0,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "replay-process-frame-callback": {
+          "size": 10,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "decomphelp-game-manager-on-draw": {
+          "size": 31,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "chain-add-calc": {
+          "size": 131,
+          "fields": 7,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "chain-add-draw": {
+          "size": 131,
+          "fields": 7,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "front-end-load-music": {
+          "size": 120,
+          "fields": 5,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-score-set-faith": {
+          "size": 73,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-score-set-timer-current": {
+          "size": 59,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "enemy-laser-manager-create": {
+          "size": 91,
+          "fields": 6,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "sound-player-queue-command": {
+          "size": 104,
+          "fields": 0,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "gui-creation-factory": {
+          "size": 136,
+          "fields": 10,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "game-decomphelp-fulltu-00417800": {
+          "size": 58,
+          "fields": 1,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        },
+        "stage-lifecycle-destructor": {
+          "size": 499,
+          "fields": 39,
+          "image_sha256": "dd533713002cd83c8e76f567d6f728cfce270fa062c8fa6f70468d1542dd5952",
+          "pdb_guid": "a8c39863c6c91a43a9db761c9fbc9a75"
+        }
+      }
+    },
+    {
+      "label": "cold-two",
+      "unit_count": 1,
+      "matched_bytes": 97,
+      "manifest_sha256": "e5d0750478767cb59f345138245958adb46a5ed805418090d4bf1467a955cc35",
+      "groups": [
+        {
+          "artifact": "build/match-linked/GameCleanupContext",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "gui-message-destructor",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL"
+          ],
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x0042D1B0",
+              "capstone_version": "5.0.6",
+              "compared_size": 97,
+              "data_spans": [],
+              "decoded_bytes": 97,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/GameCleanupContext/source.exe",
+              "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+              "linkages": [
+                {
+                  "addend": 0,
+                  "candidate_target": "0x0043841C",
+                  "linked_symbol": "_th10_ltcg_probe_anchor_0162",
+                  "local": false,
+                  "offset": "0x7",
+                  "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                  "target": "0x00491C10",
+                  "target_encoded_value": "0x00491C10",
+                  "type": "DIR32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0xF",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035BCD",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x1F",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035BBD",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x2D",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035BAF",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x3B",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035BA1",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x49",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035B93",
+                  "type": "REL32",
+                  "width": 4
+                },
+                {
+                  "addend": 0,
+                  "candidate_target": "0x004051E0",
+                  "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "local": false,
+                  "offset": "0x57",
+                  "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+                  "target": "0x004492A0",
+                  "target_encoded_value": "0x00035B85",
+                  "type": "REL32",
+                  "width": 4
+                }
+              ],
+              "matched_bytes": 97,
+              "matched_compared_bytes": 97,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2",
+              "pdb_module_index": 7,
+              "raw_equal": false,
+              "result": "exact",
+              "returncode": 0,
+              "size": 97,
+              "symbol": "??1GuiMessageVmView@@QAE@XZ",
+              "target_address": "0x004136C0",
+              "unit": "gui-message-destructor"
+            }
+          ]
+        }
+      ],
+      "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+      "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2",
+      "message": {
+        "complete": {
+          "target": {
+            "address": 4273856,
+            "size": 97,
+            "sha256": "00e42e7495687ef4dfecfd8a2a96087b297d6e723b7ab864c6389b4e0ebfb7b1",
+            "target_bound_sha256": "00e42e7495687ef4dfecfd8a2a96087b297d6e723b7ab864c6389b4e0ebfb7b1",
+            "instructions": 37,
+            "fields": [
+              [
+                7,
+                "DIR32",
+                4791312,
+                4791312
+              ],
+              [
+                15,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                31,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                45,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                59,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                73,
+                "REL32",
+                4493984,
+                4493984
+              ],
+              [
+                87,
+                "REL32",
+                4493984,
+                4493984
+              ]
+            ],
+            "locals": [],
+            "calls": [
+              [
+                14,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                30,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                44,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                58,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                72,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                86,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ]
+            ],
+            "returns": [
+              [
+                96,
+                ""
+              ]
+            ]
+          },
+          "native": {
+            "address": 4379056,
+            "size": 97,
+            "sha256": "26dd6c99d6141c8f50658b857c65debfb46a3ac9e826ddd71e17c63824865579",
+            "target_bound_sha256": "00e42e7495687ef4dfecfd8a2a96087b297d6e723b7ab864c6389b4e0ebfb7b1",
+            "instructions": 37,
+            "fields": [
+              [
+                7,
+                "DIR32",
+                4424732,
+                4791312
+              ],
+              [
+                15,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                31,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                45,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                59,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                73,
+                "REL32",
+                4215264,
+                4493984
+              ],
+              [
+                87,
+                "REL32",
+                4215264,
+                4493984
+              ]
+            ],
+            "locals": [],
+            "calls": [
+              [
+                14,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                30,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                44,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                58,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                72,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ],
+              [
+                86,
+                4493984,
+                "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+              ]
+            ],
+            "returns": [
+              [
+                96,
+                ""
+              ]
+            ]
+          }
+        },
+        "canonical": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x0042D1B0",
+          "capstone_version": "5.0.6",
+          "compared_size": 97,
+          "data_spans": [],
+          "decoded_bytes": 97,
+          "extent_source": "pdb-section-contribution",
+          "first_differences": [],
+          "image": "build/match-linked/GameCleanupContext/source.exe",
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "linkages": [
+            {
+              "addend": 0,
+              "candidate_target": "0x0043841C",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0162",
+              "local": false,
+              "offset": "0x7",
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "target": "0x00491C10",
+              "target_encoded_value": "0x00491C10",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0xF",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035BCD",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x1F",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035BBD",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x2D",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035BAF",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x3B",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035BA1",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x49",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035B93",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004051E0",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "offset": "0x57",
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "target": "0x004492A0",
+              "target_encoded_value": "0x00035B85",
+              "type": "REL32",
+              "width": 4
+            }
+          ],
+          "matched_bytes": 97,
+          "matched_compared_bytes": 97,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2",
+          "pdb_module_index": 7,
+          "raw_equal": false,
+          "result": "exact",
+          "returncode": 0,
+          "size": 97,
+          "symbol": "??1GuiMessageVmView@@QAE@XZ",
+          "target_address": "0x004136C0",
+          "unit": "gui-message-destructor"
+        }
+      },
+      "startup": {
+        "size": 1009,
+        "fields": 102,
+        "qualified_static": {
+          "symbol": "?MarkGameChains@@YAXPAUGameChainOwnerView@@@Z",
+          "address": "0x0042F8D0",
+          "size": 28,
+          "extent_source": "pdb-section-contribution",
+          "owner_visibility": "static",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 190672,
+          "map_object": "support-16-GameManager.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-16-GameManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-16-GameManager.ltcg.obj",
+          "sha256": "ff7169a1ffda26fb648d1b9021d0a6affadd599732ae8acf918d02ca1872f6d1"
+        }
+      },
+      "existing_contracts": {
+        "anm-manager-mark-vm-for-deletion": {
+          "size": 66,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "decomphelp-chain-unregister": {
+          "size": 114,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "enemy-ecl-resource-destructor": {
+          "size": 36,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "replay-restore-stage-state": {
+          "size": 356,
+          "fields": 27,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "replay-manager-create": {
+          "size": 185,
+          "fields": 12,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-prepare-dummy-music": {
+          "size": 41,
+          "fields": 5,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "enemy-end-spell": {
+          "size": 399,
+          "fields": 20,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-score-add-power": {
+          "size": 166,
+          "fields": 4,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "item-rank-add": {
+          "size": 42,
+          "fields": 0,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "gui-update-score-display": {
+          "size": 671,
+          "fields": 36,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-add-lives": {
+          "size": 141,
+          "fields": 12,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "anm-loaded-create-vm-variant0": {
+          "size": 73,
+          "fields": 5,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "anm-loaded-set-sprite": {
+          "size": 356,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "enemy-sound-queue-sample": {
+          "size": 123,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "enemy-mark-pending-interrupt": {
+          "size": 65,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "anm-manager-find-vm": {
+          "size": 73,
+          "fields": 0,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "anm-vm-id-set-flag2": {
+          "size": 67,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "anm-vm-id-clear-flag2": {
+          "size": 67,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "transition-effect-factory": {
+          "size": 82,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-stage-transition-delay": {
+          "size": 92,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-enter-menu-state": {
+          "size": 119,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "script-viewer-worker-stop": {
+          "size": 101,
+          "fields": 3,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "bullet-reset-pool": {
+          "size": 45,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "enemy-manager-clear": {
+          "size": 118,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "main-set-next-game-mode": {
+          "size": 37,
+          "fields": 0,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "front-end-play-music": {
+          "size": 73,
+          "fields": 8,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-manager-update-callback": {
+          "size": 7,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-clear-linked-objects": {
+          "size": 66,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "replay-clear-stage-frame-data": {
+          "size": 93,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "replay-restore-stage-position": {
+          "size": 83,
+          "fields": 2,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "input-debug-repeat": {
+          "size": 109,
+          "fields": 0,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-update-faith-decay": {
+          "size": 65,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "anm-timer-tick": {
+          "size": 72,
+          "fields": 4,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "replay-process-frame": {
+          "size": 596,
+          "fields": 33,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "replay-append-record": {
+          "size": 85,
+          "fields": 0,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "replay-process-frame-callback": {
+          "size": 10,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "decomphelp-game-manager-on-draw": {
+          "size": 31,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "chain-add-calc": {
+          "size": 131,
+          "fields": 7,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "chain-add-draw": {
+          "size": 131,
+          "fields": 7,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "front-end-load-music": {
+          "size": 120,
+          "fields": 5,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-score-set-faith": {
+          "size": 73,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-score-set-timer-current": {
+          "size": 59,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "enemy-laser-manager-create": {
+          "size": 91,
+          "fields": 6,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "sound-player-queue-command": {
+          "size": 104,
+          "fields": 0,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "gui-creation-factory": {
+          "size": 136,
+          "fields": 10,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "game-decomphelp-fulltu-00417800": {
+          "size": 58,
+          "fields": 1,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        },
+        "stage-lifecycle-destructor": {
+          "size": 499,
+          "fields": 39,
+          "image_sha256": "353bd059835f1e9c3f1792584f09506598caaeb5604b53e65c3da02d1cba5e37",
+          "pdb_guid": "ac16dab19c2b074f9b87b36ae9d986f2"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "serial": true,
+    "cpu": 0,
+    "nice": 10,
+    "cold_timeout_seconds": 900,
+    "zero_object_reuse": true
+  },
+  "claims": {
+    "complete_message": true,
+    "original_source_qualifiers_or_barriers": false,
+    "game_cleanup": "1098/1105 nonexact",
+    "game_update": "1538/1544 nonexact",
+    "player_teardown": "333/325 nonexact",
+    "gui_teardown": "579/574 nonexact",
+    "product": false,
+    "runtime": false,
+    "portability": false
+  },
+  "cold_open_parent_diagnostics": {
+    "report_sha256": "626933dc9837d716f2f41f335379f1cc761af0a3f64746c66fbd95fc5aca432b",
+    "owners": {
+      "cleanup": {
+        "native": {
+          "symbol": "?GameManagerCleanup@@YGXPAUGameManager@@@Z",
+          "address": "0x00430540",
+          "size": 1098,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 193856,
+          "map_object": "support-16-GameManager.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-16-GameManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-16-GameManager.ltcg.obj",
+          "sha256": "1187246666715e3a64e2af49447e09f90b94fe2d170792771d8a3c12fdcb7a1c"
+        },
+        "target_size": 1105,
+        "result": "mismatch"
+      },
+      "update": {
+        "native": {
+          "symbol": "?GameManagerUpdateBody@@YGIPAUGameManager@@@Z",
+          "address": "0x0042FAC0",
+          "size": 1538,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 191168,
+          "map_object": "support-16-GameManager.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-16-GameManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-16-GameManager.ltcg.obj",
+          "sha256": "0100598040719ab7889bbd72cd945bafaea08f9e8353f6a6ab5fb6af5b54fb5b"
+        },
+        "target_size": 1544,
+        "result": "mismatch"
+      },
+      "player": {
+        "native": {
+          "symbol": "??1Player@@QAE@XZ",
+          "address": "0x00412FA0",
+          "size": 333,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 73632,
+          "map_object": "support-06-Player.ltcg.obj",
+          "pdb_module_index": 17,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-06-Player.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-06-Player.ltcg.obj",
+          "sha256": "8b6cfa01b2cb72c70e9b6329afd120315719629c27bb9724c4884bb46be0178e"
+        },
+        "target_size": 325,
+        "result": "mismatch"
+      },
+      "gui": {
+        "native": {
+          "symbol": "??1GuiView@@QAE@XZ",
+          "address": "0x0042D490",
+          "size": 579,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 181392,
+          "map_object": "support-14-Gui.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-14-Gui.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameCleanupContext\\support-14-Gui.ltcg.obj",
+          "sha256": "7bb2796ed5ab4f4f975d50451063c81a7ca90a20e895a6512218cd7391972fa9"
+        },
+        "target_size": 574,
+        "result": "mismatch"
+      }
+    }
+  }
+}

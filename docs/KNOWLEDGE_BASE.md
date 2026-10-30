@@ -8566,3 +8566,26 @@ No comparator, runtime, product or portability closure is claimed. Authored
 exact becomes107521/275863 across519 owners; canonical175635/1397, mappings1221/
 authored703/backlog184. See the
 [complete teardown proof](evidence/enemy-manager-teardown-20261031/README.md).
+
+
+## 2026-10-31 GUI message teardown and parked parent controls
+
+Complete GuiMessageVmView teardown4136C0..413720 is97/all7 exact in two34-input
+colds. It captures the real ANM manager once and reads/marks/clears ids40..54 in
+six ordered triples. Five inter-pair compiler memory barriers preserve target
+scheduling without emitted instructions; original barriers/qualifiers/threading
+remain unknown. Volatile reads/writes leave eight opcode bytes wrong, while
+volatile writes alone retain hoisting. Private ESI, six actual4492A0 calls, zero
+local branches, sole return and final pop/clear/pop all agree. Direct reuse121
+and46 existing contracts6261/all275 plus startup1009/static28 pass in both images.
+
+Full cleanup controls are restored: whole switch1120/1105 adds a jump table;
+nested tail switch1091 uses destructive subtraction; actual score-owner address
+and separate flag assignments remain1098; branch-local publication becomes1118.
+The nonthrowing Player VM member control is333/325 and restored. Complete update
+1538/1544 has stage-helper interface/register/member-addressing/null-check
+mismatches beyond its size gap. No parent equality follows. These controls are
+parked; no current compiler/linker profile changes. Source mappings, boundaries,
+origins and authored denominator stay fixed. Authored exact107618/275863 across
+520 owners; canonical175732/1398, mappings1221/authored703/backlog183. See the
+[complete message teardown proof](evidence/gui-message-teardown-20261031/README.md).
