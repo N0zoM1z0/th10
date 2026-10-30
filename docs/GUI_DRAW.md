@@ -1,5 +1,15 @@
 # GUI draw and untextured rectangle recovery
 
+## Current exact follow-up — 2026-10-30
+
+The complete483-byte rectangle is now canonical exact in two independent colds,
+including all14 fields and the actual EDI/EBX interface. Real XYZ temporary
+construction and descending W/color stores recover the target; see the
+[complete rectangle proof](evidence/rectangle-vector-exact-20261030/README.md).
+This grants no exact credit to the724-byte GUI drawing owner. Sections below
+retain the October17 source/native history and its former407-byte rectangle;
+the archived host/regression commands are not current checkpoint requirements.
+
 ## Scope and status
 
 This local-only packet recovers two complete substantial target owners: GUI draw 0x00415800–0x00415AD3, 724 bytes, and its rectangle renderer 0x0043BDA0–0x0043BF82, 483 bytes. It also preserves the real 7-byte registered callback 415AF0 as source context, without claiming a separately authored/exact wrapper or changing its ledger origin. No GUI initializer/factory is invented. During packet preparation on 2026-10-17 UTC, no native build, remote source edit or target execution was performed. At preparation, byte exactness, original source/TU, private native ABI and runtime/GPU closure remained open; the later integration/native sections distinguish what has since been verified.

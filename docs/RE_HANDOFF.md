@@ -2,6 +2,29 @@
 
 ## Current checkpoint
 
+DrawColoredRectangle43BDA0..43BF82 /483 now closes142 instructions/all14 fields,
+11 D3D virtual calls/no local branches/plain RET. Existing AnmFloat3 value
+construction and complete XYZ assignment recover the real0C-byte temporary
+beside four14-byte vertices; reversed W/color chains restore3/2/1/0 stores.
+Frame5C and all ordinary bytes match, versus prior407/frame50. The first complete
+proposal closes structurally; two independent canonical three-input /GL colds
+then pass483/all14. Actual rectangle EDI/color EBX and Flush ESI interfaces agree.
+See the [complete rectangle proof](evidence/rectangle-vector-exact-20261030/README.md).
+
+First scoped cold also explicitly replays drawing409, adapter7 and Flush133:
+1032/all42 exact. Second selects only483/all14. No shared header, profile,
+forced-inline, fake ABI or padding changes. The twelve encoded entry calls have
+no interior transfer. Original vector ancestry/constructor/helper/TU, GPU/runtime
+and portability remain unknown. Previous host/report commands are historical.
+
+Current valid three-input drawing context is
+`.analysis/gpt-6.1-sol/rectangle-vector-context-20261030/cold-b-context.json`.
+The older drawing SourceRect pin is historical. All58 source/header pins of the
+existing17-input Player context still verify; SourceRect.cpp is not one of those
+inputs, so no unrelated parent cold replay occurs. Main/hit/movement remain NE.
+Authored exact101532/275817,495 owners; total codegen169636/1372. Mappings remain
+1207/authored689/backlog194, with boundary/origin unchanged. New authored credit483.
+
 PlayerDrawCallbackBody426360..4264F8 /409 is now complete exact:98 instructions,
 all23 fields,11 fixed local branches/plain RET. The registered426510 adapter is
 independently7/all1 exact, retaining indeterminate origin. Two zero-reuse

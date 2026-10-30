@@ -7894,3 +7894,32 @@ main3108, hit624 and movement1616 native receipts, without exact parent credit.
 New authored credit409/one; adapter7 adds only indeterminate codegen credit.
 Source mappings grow one. Boundary/origin unchanged. See the
 [complete drawing evidence](evidence/player-draw-exact-20261030/README.md).
+
+
+## 2026-10-30 Exact complete untextured rectangle and real XYZ temporary
+
+DrawColoredRectangle43BDA0..43BF82 owns483 bytes:142 instructions,14 address
+fields,11 D3D virtual calls, no local branch and plain RET. Three CC precede
+and13 follow. Whole-text E8/E9 scan finds12 entry calls in seven enclosing
+reviewed owners, five GUI and two Player sites included; no encoded interior
+transfer. This is not a dynamic pointer-discovery or original-TU claim.
+
+The real5C-byte frame contains four14-byte canonical untextured vertices and
+one reused0C-byte XYZ temporary. Coordinates are raw MOV copies after the real
+Flush call. Constructing existing AnmFloat3View values and assigning full XYZ
+restores the temporary and all target copies; W/color chains write3/2/1/0.
+This first complete natural model closes all483 ordinary bytes and14 fields,
+versus prior407/frame50. Thirteen DIR32 fields bind two manager and11 device
+reloads; the REL32 binds Flush442F50. All state calls/cache invalidations and
+stack cleanup remain inside the complete owner. No padding, forced-inline,
+fake ABI, shared header or compiler-profile change is introduced.
+
+Actual private interface is EDI rectangle/EBX color/plain RET; Flush receives
+ESI manager. Two independent canonical three-input /GL colds pass483/all14.
+The first includes actual drawing409, adapter7 and Flush133:1032/all42 exact;
+second selects only the new483. Same-image strict checks also pass all four.
+The existing17-input Player source/header pins stay current, with no SourceRect
+input, so main/hit/movement are not rebuilt or promoted. Original vector ancestry,
+constructor/helper boundaries, source spelling, TU, GPU/runtime and portability
+remain open. New authored credit483/one; Source presence/boundary/origin unchanged.
+See the [complete rectangle proof](evidence/rectangle-vector-exact-20261030/README.md).

@@ -3,26 +3,23 @@
 
 // Target 0x0043BDA0-0x0043BF82, complete 483-byte owner.
 // Target-private EDI rectangle / EBX packed color / plain RET. The ordinary
-// source signature is semantic; linked LTCG must establish that private ABI.
+// signature recovers this ABI through the real Player drawing caller.
 void DrawColoredRectangle(AnmFloatRectView *rectangle, unsigned int color)
 {
     g_AnmRenderManagerView->FlushVertexBuffer();
 
     AnmUntexturedVertexView vertices[4];
-    vertices[0].x = rectangle->left;
-    vertices[0].y = rectangle->top;
-    vertices[0].z = 0.0f;
-    vertices[1].x = rectangle->right;
-    vertices[1].y = rectangle->top;
-    vertices[1].z = 0.0f;
-    vertices[2].x = rectangle->left;
-    vertices[2].y = rectangle->bottom;
-    vertices[2].z = 0.0f;
-    vertices[3].x = rectangle->right;
-    vertices[3].y = rectangle->bottom;
-    vertices[3].z = 0.0f;
-    vertices[3].w = vertices[2].w = vertices[1].w = vertices[0].w = 1.0f;
-    vertices[3].color = vertices[2].color = vertices[1].color = vertices[0].color = color;
+    // Construct and assign each complete XYZ value before setting W and color.
+    *reinterpret_cast<AnmFloat3View *>(&vertices[0]) =
+        AnmFloat3View(rectangle->left, rectangle->top, 0.0f);
+    *reinterpret_cast<AnmFloat3View *>(&vertices[1]) =
+        AnmFloat3View(rectangle->right, rectangle->top, 0.0f);
+    *reinterpret_cast<AnmFloat3View *>(&vertices[2]) =
+        AnmFloat3View(rectangle->left, rectangle->bottom, 0.0f);
+    *reinterpret_cast<AnmFloat3View *>(&vertices[3]) =
+        AnmFloat3View(rectangle->right, rectangle->bottom, 0.0f);
+    vertices[0].w = vertices[1].w = vertices[2].w = vertices[3].w = 1.0f;
+    vertices[0].color = vertices[1].color = vertices[2].color = vertices[3].color = color;
 
     g_Direct3DDevice->vtable->SetTextureStageState(
         g_Direct3DDevice, 0, D3D9_VIEW_TSS_ALPHAOP, D3D9_VIEW_TOP_SELECTARG1);
