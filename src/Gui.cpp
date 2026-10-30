@@ -936,9 +936,9 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
     for (i = 0; i < 2; ++i)
         AnmRenderManagerView::ExecuteScript(&gui->displayVms4[i]);
 
-    if (g_Player != NULL)
+    if ((gui->guiFlags & 1) == 0)
     {
-        if ((gui->guiFlags & 1) == 0 &&
+        if (g_Player != NULL &&
             g_Player->drawPosition.y > 416.0f &&
             g_Player->drawPosition.x < -128.0)
         {
@@ -946,20 +946,20 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                 gui->displayVms5[i].pendingInterrupt = 3;
             gui->guiFlags |= 1;
         }
-        else if ((gui->guiFlags & 1) != 0 &&
-                 (g_Player->drawPosition.y < 400.0f ||
-                  g_Player->drawPosition.x > -112.0))
-        {
-            for (i = 0; i < 7; ++i)
-                gui->displayVms5[i].pendingInterrupt = 2;
-            gui->guiFlags &= ~1u;
-        }
+    }
+    else if (g_Player != NULL &&
+             (g_Player->drawPosition.y < 400.0f ||
+              g_Player->drawPosition.x > -112.0))
+    {
+        for (i = 0; i < 7; ++i)
+            gui->displayVms5[i].pendingInterrupt = 2;
+        gui->guiFlags &= ~1u;
     }
 
     // The target latches the counter before executing the first panel VM.
     int value = g_GuiCounter4C4C;
-    AnmRenderManagerView::ExecuteScript(&gui->displayVms5[0]);
     int divisor = 10000;
+    AnmRenderManagerView::ExecuteScript(&gui->displayVms5[0]);
     for (i = 1; i < 6; ++i)
     {
         const int digit = value / divisor;
@@ -1146,23 +1146,21 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                 switch (g_GuiStage)
                 {
                 case 1:
-                    if (g_GuiMessageState > 0x17)
+                    if (g_GuiMessageState >= 0x18)
                         script = 0x86;
                     break;
                 case 2:
                     if (g_GuiMessageState < 0x18)
-                        script = -1;
-                    else
-                        script = 0x87;
+                        goto BossGaugeCreationDone;
+                    script = 0x87;
                     break;
                 case 3:
                     if (g_GuiMessageState < 0x18)
-                        script = -1;
-                    else
-                        script = 0x88;
+                        goto BossGaugeCreationDone;
+                    script = 0x88;
                     break;
                 case 4:
-                    script = g_GuiMessageState > 0x17 ? 0x8a : 0x89;
+                    script = g_GuiMessageState >= 0x18 ? 0x8a : 0x89;
                     break;
                 case 5:
                     script = 0x8b;
@@ -1171,12 +1169,11 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     script = 0x8c;
                     break;
                 case 7:
-                    script = g_GuiMessageState > 0x17 ? 0x8d : 0x8c;
+                    script = g_GuiMessageState >= 0x18 ? 0x8d : 0x8c;
                     break;
                 }
 
                 // HUD boss-gauge stage selector end.
-                if (script >= 0)
                 {
                     // Allocate using the retained manager, initialize using the captured resource,
                     // then publish through the freshly loaded global manager.
@@ -1204,15 +1201,16 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                         node->previous = tail;
                     }
                     manager->primaryVmListTail = node;
-                    manager->nextVmId.value = static_cast<int>(
-                        static_cast<unsigned int>(manager->nextVmId.value) + 1u);
-                    if (manager->nextVmId.value == 0)
-                        ++manager->nextVmId.value;
+                    AnmVmIdView *incrementReceiver = &manager->nextVmId;
+                    (*incrementReceiver)++;
+                    if (manager->nextVmId == AnmVmIdView())
+                        manager->nextVmId++;
                     vm->id = manager->nextVmId.value;
                     gui->bossGaugeVmId.value = manager->nextVmId.value;
                 }
             }
-            for (int segment = 0; segment < 10; ++segment)
+        BossGaugeCreationDone:
+            for (int segment = 0; segment < 10u; ++segment)
             {
                 if (segment < gui->bossGaugeSegmentCount)
                 {
@@ -1244,10 +1242,10 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                             node->previous = tail;
                         }
                         manager->primaryVmListTail = node;
-                        manager->nextVmId.value = static_cast<int>(
-                            static_cast<unsigned int>(manager->nextVmId.value) + 1u);
-                        if (manager->nextVmId.value == 0)
-                            ++manager->nextVmId.value;
+                        AnmVmIdView *incrementReceiver = &manager->nextVmId;
+                        (*incrementReceiver)++;
+                        if (manager->nextVmId == AnmVmIdView())
+                            manager->nextVmId++;
                         vm->id = manager->nextVmId.value;
                         gui->bossGaugeSegmentVmIds[segment].value = manager->nextVmId.value;
                     }
@@ -1384,7 +1382,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                                 }
                             }
                         }
-                        finishedMessage->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = 0;
+                        memset(&finishedMessage->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0, sizeof(AnmVmIdView));
                     }
                     {
                         const int id = finishedMessage->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value;
@@ -1419,7 +1417,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                                 }
                             }
                         }
-                        finishedMessage->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = 0;
+                        memset(&finishedMessage->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0, sizeof(AnmVmIdView));
                     }
                     {
                         const int id = finishedMessage->vmIds[GUI_MESSAGE_TEXT_BOX].value;
@@ -1454,7 +1452,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                                 }
                             }
                         }
-                        finishedMessage->vmIds[GUI_MESSAGE_TEXT_BOX].value = 0;
+                        memset(&finishedMessage->vmIds[GUI_MESSAGE_TEXT_BOX], 0, sizeof(AnmVmIdView));
                     }
                     {
                         const int id = finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_0].value;
@@ -1489,7 +1487,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                                 }
                             }
                         }
-                        finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_0].value = 0;
+                        memset(&finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_0], 0, sizeof(AnmVmIdView));
                     }
                     {
                         const int id = finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_1].value;
@@ -1524,7 +1522,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                                 }
                             }
                         }
-                        finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_1].value = 0;
+                        memset(&finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_1], 0, sizeof(AnmVmIdView));
                     }
                     {
                         const int id = finishedMessage->vmIds[GUI_MESSAGE_ENEMY_NAME].value;
@@ -1559,7 +1557,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                                 }
                             }
                         }
-                        finishedMessage->vmIds[GUI_MESSAGE_ENEMY_NAME].value = 0;
+                        memset(&finishedMessage->vmIds[GUI_MESSAGE_ENEMY_NAME], 0, sizeof(AnmVmIdView));
                     }
                     ::operator delete(finishedMessage);
                 }
@@ -1579,14 +1577,14 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
             {
                 if (gui->spellSeconds < gui->previousSpellSeconds)
                 {
-                    if (gui->spellSeconds < 6)
+                    if (gui->spellSeconds <= 5)
                     {
                         gui->displayVms4[0].pendingInterrupt = 9;
                         gui->displayVms4[1].pendingInterrupt = 9;
                         reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                             QueueSoundSample(0x24, 0);
                     }
-                    else if (gui->spellSeconds < 11)
+                    else if (gui->spellSeconds <= 10)
                     {
                         gui->displayVms4[0].pendingInterrupt = 8;
                         gui->displayVms4[1].pendingInterrupt = 8;
@@ -1613,11 +1611,12 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
             // Select the live boss after countdown calls, then retain it across the
             // boss marker's ExecuteScript, matching the target's ESI lifetime.
             EnemyFullObjectView *boss = manager->specialEnemySlots[0];
-            if (boss != NULL && (boss->runtime.flags & 0x11) == 0)
+            if (boss != NULL && ((~(boss->runtime.flags >> 4)) & 1u) != 0 &&
+                ((~boss->runtime.flags) & 1u) != 0)
             {
-                unsigned int phase = (gui->guiFlags >> 1) & 3;
                 if ((g_GuiGameOwner->flags378C & 1) != 0)
                 {
+                    const unsigned int phase = (gui->guiFlags >> 1) & 3;
                     if (phase == 0)
                     {
                         if (boss->runtime.value13C8 < 2000)
@@ -1653,6 +1652,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                 }
                 else
                 {
+                    const unsigned int phase = (gui->guiFlags >> 1) & 3;
                     if (phase == 0)
                     {
                         if (boss->runtime.value13C8 < 700)
@@ -1708,6 +1708,13 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
     return 1;
 }
 
+
+// Registered update-chain callback at target 0x00415AE0.
+// Original source-written versus compiler-emitted adapter remains unproved.
+int __fastcall GuiUpdateCallback(void *owner)
+{
+    return GuiView::UpdateStageElements(static_cast<GuiView *>(owner));
+}
 
 // Stage/session fields read by the complete reset owner. Existing game globals
 // retain their shared names; this partial owner view exposes only target +0x5C.
@@ -2031,7 +2038,6 @@ GuiView::~GuiView()
 #include "GameErrorContext.hpp"
 extern void *g_ScriptViewerStageRoute;
 extern char g_StageFilePath[];
-extern int __fastcall GuiUpdateCallback(void *owner);
 extern int __fastcall GuiDrawCallback(void *owner);
 
 GuiView::GuiView()

@@ -7950,3 +7950,32 @@ adds a real16-byte temporary. All are restored/parked. No shared header, flags,
 forced-inline, fake ABI, numeric data alias or padding change. No new exact or
 source/boundary/origin credit; see the
 [complete GUI candidate evidence](evidence/gui-draw-context-20261030/README.md).
+
+
+## 2026-10-30 Complete GUI update control and ID schedules recovered
+
+The complete414900..4157FB GUI update owner now emits3836/3836, NONEXACT,
+versus3824 in the current canonical17-input responsibility context. Source
+flag-first overlap branching retains both actual null checks. Direct stage2/3
+allocation skips, unsigned segment bound, phase extraction inside game-mode
+branches, existing VM-ID postincrement/equality operations, early divisor10000
+and complete four-byte message-ID clears recover the target schedules. Actual
+registered415AE0 callback now has source; its7-byte exact same-image body remains
+unadmitted context, with source-written/compiler ancestry unknown.
+
+Target executable code3805/1088 instructions is followed by3 alignment bytes
+and seven pointers atEE0. The70 target PE relocation/control fields omit two
+fixed sound-object addresses atBFD/C30; complete replay binds all72 operands.
+All250 fixed local branches, both RET4 exits and selector destinations
+514/524/538/54C/563/56A/571 agree. Four ordinary bytes891..894 still differ:
+message timer loads subframe before scale, where target loads scale before
+subframe. Equal arithmetic/size does not establish exactness. Helpers can move
+this difference to the correct frame timer and are restored/parked.
+
+One zero-reuse17-input cold reproduces complete native3836/all72, branches,
+returns and table. Explicit damage1170/auxiliary202 replays pass1372/all34;
+same-image callback context adds7/all1 without credit. The previous Player
+17-input Gui.cpp pin is historical; use the new final-cold context identified
+in the handoff. No canonical GUI unit/match, new boundary/source/origin credit,
+header/profile change or product/runtime/port claim follows. See the
+[complete evidence and parked models](evidence/gui-update-context-20261030/README.md).

@@ -2,6 +2,35 @@
 
 ## Current checkpoint
 
+Complete GUI update414900..4157FB remains NONEXACT, now3836/3836 versus3824
+at current-context entry. Flag-first overlap branches, direct stage allocation
+branches, branch-local phase, existing VM-ID operators, divisor lifetime and
+complete message-ID clears recover the full target layout. Strict replay binds
+all72 resolved fields:70 target PE relocation/control entries plus two required
+unrelocated sound-object immediates. All250 local destinations, both RET4 exits
+and all seven table entries match. Only ordinary891..894 differ: message timer
+FLD/FADD operands are reversed. No waiver or new exact credit. See the
+[complete GUI update candidate](evidence/gui-update-context-20261030/README.md).
+
+A zero-reuse17-input cold reproduces every3836 native byte,72 field identities,
+250 branches and complete table. Explicit canonical damage1170/auxiliary202
+replays pass1372/all34. Same-image checks also pass the newly implemented real
+7-byte update callback, which remains context only without boundary/mapping/
+origin/exact admission. The callback was previously declared/registered only.
+Current17-input context is
+`.analysis/gpt-6.1-sol/gui-update-context-20261030/final-cold-context.json`.
+Previous Player17-input contexts now have a historical Gui.cpp pin. Smaller
+Player drawing/rectangle and ANM executor contexts do not include Gui.cpp.
+
+Timer helpers/value/compound controls either do nothing or move the mismatch to
+the otherwise correct frame timer; output/release helpers and alternate callback
+root regress. All are restored and parked; reopen only with new evidence and a
+falsifiable prediction. No shared-header/profile/forced-inline/fake ABI/padding
+change. Original helper/type/TU/data ownership and product/runtime/port remain
+open. Authored totals stay101532/275817,495 owners; codegen169636/1372;
+source1207/authored689/backlog194. Historical host/report controls below are
+not current exact-stage checkpoint requirements.
+
 Complete GUI draw415800..415AD3 remains NONEXACT, now724/724 versus708 at entry.
 Explicit inverted DWORD bits4/0 restore target marker/final-pair operations,
 ECX manager lifetime, branches and alignment. Two score-rectangle schedules
