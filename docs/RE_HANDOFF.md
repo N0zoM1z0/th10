@@ -2,6 +2,28 @@
 
 ## Current checkpoint
 
+Complete GUI draw415800..415AD3 remains NONEXACT, now724/724 versus708 at entry.
+Explicit inverted DWORD bits4/0 restore target marker/final-pair operations,
+ECX manager lifetime, branches and alignment. Two score-rectangle schedules
+remain: native LEA precedes FMUL and bottom store precedes FADD. Factor/addend
+field positions D6/F4 differ from target D2/EC. All33 field roles/payloads are
+understood, all23 local destinations match; this does not waive those differences.
+See the [complete GUI candidate](evidence/gui-draw-context-20261030/README.md).
+
+A fresh three-input zero-reuse cold reproduces complete724 bytes/all33 fields,
+173 instructions/23 branches/RET4. Canonical actual Draw216 and rectangle483
+replays pass699/all35; same-image checks pass those plus provisional callback7.
+The real415AF0 callback remains context only, not a new mapping/match/origin claim.
+Current diagnostic context is `.analysis/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold-context.json`.
+GuiDraw.cpp is not an existing canonical recipe input; shared headers unchanged.
+
+Seven output/scalar/constructor/color/array/width models are byte-neutral;
+aggregate value return756 adds an unwanted real16-byte temporary. All are
+restored and parked. Do not repeat without new evidence. No numeric data alias,
+profile/TU sweep, forced inline, fake ABI or padding change. Source/origin/
+boundaries and exact totals stay101532/275817,495 authored owners,169636/1372
+codegen; mappings1207/authored689/backlog194. Product/runtime/portability open.
+
 DrawColoredRectangle43BDA0..43BF82 /483 now closes142 instructions/all14 fields,
 11 D3D virtual calls/no local branches/plain RET. Existing AnmFloat3 value
 construction and complete XYZ assignment recover the real0C-byte temporary

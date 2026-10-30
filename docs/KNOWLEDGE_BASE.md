@@ -7923,3 +7923,30 @@ input, so main/hit/movement are not rebuilt or promoted. Original vector ancestr
 constructor/helper boundaries, source spelling, TU, GPU/runtime and portability
 remain open. New authored credit483/one; Source presence/boundary/origin unchanged.
 See the [complete rectangle proof](evidence/rectangle-vector-exact-20261030/README.md).
+
+
+## 2026-10-30 Complete GUI drawing DWORD-bit candidate
+
+Fresh target decode reconfirms415800..415AD3 /724:173 instructions,33 fields,
+23 direct local branches and RET4, with4 preceding/12 following CC bytes. The
+sole encoded E8/E9 entry/interior ref is CALL415AF1 in the registered415AF0
+callback. That7-byte entry remains unadmitted context only, with no new boundary,
+source mapping, origin or exact credit. Body is one stack GUI pointer/RET4.
+
+The target loads boss flags as a DWORD, shifts/inverts bit4 then separately
+inverts/tests bit0. Mask predicates had lowered to byte TEST11. Actual inverted
+bit expressions restore target DWORD operations, ECX manager lifetime, later
+branches/alignment and complete724 bytes, versus708 at entry. This remains
+NONEXACT: first score rectangle has LEA before FMUL and bottom store before
+FADD. Native operand-field positions D6/F4 differ from target D2/EC. All33 field
+roles/payloads are independently understood, and all23 relative destinations
+match; physical byte/field differences still block admission.
+
+A zero-reuse three-input cold reproduces all724 native bytes,33 identities,
+173 instructions,23 locals and RET4. Actual canonical Draw216/rectangle483
+checks pass699/all35; same-image checks also pass those and provisional7-byte
+callback. Seven geometry/color/storage models are neutral; aggregate value756
+adds a real16-byte temporary. All are restored/parked. No shared header, flags,
+forced-inline, fake ABI, numeric data alias or padding change. No new exact or
+source/boundary/origin credit; see the
+[complete GUI candidate evidence](evidence/gui-draw-context-20261030/README.md).

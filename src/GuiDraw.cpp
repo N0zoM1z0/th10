@@ -92,8 +92,9 @@ int __stdcall GuiView::DrawStageElements(GuiView *gui)
     if (manager != NULL)
     {
         EnemyFullObjectView *boss = manager->specialEnemySlots[0];
-        if (boss != NULL && (boss->runtime.flags & 0x10u) == 0 &&
-            (boss->runtime.flags & 1u) == 0)
+        // The target tests inverted bits 4 and 0 from one DWORD flag value.
+        if (boss != NULL && ((~(boss->runtime.flags >> 4)) & 1u) != 0 &&
+            ((~boss->runtime.flags) & 1u) != 0)
         {
             g_AnmRenderManagerView->Draw(&gui->bossPositionVm);
             manager = g_EnemyManager;

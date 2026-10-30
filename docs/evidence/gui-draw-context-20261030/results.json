@@ -1,0 +1,2915 @@
+{
+  "scope": "Complete724-byte native GUI drawing candidate reproduction only; zero target exact credit. No new callback ledger/physical owner/origin/source claim.",
+  "baseline_commit": "89ca22f",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_owner_review": {
+    "address": "0x415800",
+    "size": 724,
+    "sha256": "c217d9c7e46230a539d1283e2d426f64287011d69c2ad3a38ec89350f2f62f06",
+    "instructions": 173,
+    "field_count": 33,
+    "fields": [
+      {
+        "offset": 34,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x491c10"
+      },
+      {
+        "offset": 45,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x4451c0"
+      },
+      {
+        "offset": 51,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x491c10"
+      },
+      {
+        "offset": 58,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x4451c0"
+      },
+      {
+        "offset": 84,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x491c10"
+      },
+      {
+        "offset": 91,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x4451c0"
+      },
+      {
+        "offset": 117,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x491c10"
+      },
+      {
+        "offset": 124,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x4451c0"
+      },
+      {
+        "offset": 162,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x491c10"
+      },
+      {
+        "offset": 169,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x4451c0"
+      },
+      {
+        "offset": 183,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x474c58"
+      },
+      {
+        "offset": 194,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x474c58"
+      },
+      {
+        "offset": 210,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470cb8"
+      },
+      {
+        "offset": 236,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470d2c"
+      },
+      {
+        "offset": 253,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x43bda0"
+      },
+      {
+        "offset": 270,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470afc"
+      },
+      {
+        "offset": 312,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x43bda0"
+      },
+      {
+        "offset": 324,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470b04"
+      },
+      {
+        "offset": 352,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470d28"
+      },
+      {
+        "offset": 378,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470d24"
+      },
+      {
+        "offset": 395,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x43bda0"
+      },
+      {
+        "offset": 408,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470afc"
+      },
+      {
+        "offset": 441,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x43bda0"
+      },
+      {
+        "offset": 466,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470b04"
+      },
+      {
+        "offset": 508,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470d28"
+      },
+      {
+        "offset": 529,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x470c64"
+      },
+      {
+        "offset": 554,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x43bda0"
+      },
+      {
+        "offset": 574,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x477704"
+      },
+      {
+        "offset": 620,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x491c10"
+      },
+      {
+        "offset": 631,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x4451c0"
+      },
+      {
+        "offset": 637,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x477704"
+      },
+      {
+        "offset": 690,
+        "width": 4,
+        "type": "DIR32",
+        "target": "0x491c10"
+      },
+      {
+        "offset": 697,
+        "width": 4,
+        "type": "REL32",
+        "target": "0x4451c0"
+      }
+    ],
+    "local_branch_count": 23,
+    "fixed_local_branches": [
+      {
+        "offset": 21,
+        "destination": 32,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 69,
+        "destination": 32,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 102,
+        "destination": 82,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 135,
+        "destination": 115,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 148,
+        "destination": 160,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 180,
+        "destination": 160,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 190,
+        "destination": 316,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 333,
+        "destination": 572,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 459,
+        "destination": 464,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 479,
+        "destination": 558,
+        "mnemonic": "jnp"
+      },
+      {
+        "offset": 494,
+        "destination": 500,
+        "mnemonic": "jp"
+      },
+      {
+        "offset": 498,
+        "destination": 506,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 570,
+        "destination": 464,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 581,
+        "destination": 710,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 592,
+        "destination": 641,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 610,
+        "destination": 641,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 616,
+        "destination": 641,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 643,
+        "destination": 710,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 653,
+        "destination": 710,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 660,
+        "destination": 710,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 670,
+        "destination": 710,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 683,
+        "destination": 688,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 708,
+        "destination": 688,
+        "mnemonic": "jne"
+      }
+    ],
+    "returns": [
+      {
+        "offset": 721,
+        "operand": "4"
+      }
+    ],
+    "preceding_cc_count": 4,
+    "following_cc_count": 12,
+    "raw_encoded_e8_e9_entry_or_interior_refs": [
+      {
+        "address": "0x415af1",
+        "opcode": "0xe8",
+        "destination": "0x415800"
+      }
+    ],
+    "callback": {
+      "address": "0x415AF0",
+      "size": 7,
+      "scope": "Real registered ECX-to-stack callback context only; no new ledger boundary/origin/exact credit."
+    }
+  },
+  "field_role_review": {
+    "scope": "Independent field roles/payloads and local destinations only; two field positions and ordinary schedules differ, so no target exact admission.",
+    "roles": [
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "target_offset": 34,
+        "native_offset": 34
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x4451c0",
+        "target_offset": 45,
+        "native_offset": 45
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "target_offset": 51,
+        "native_offset": 51
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x4451c0",
+        "target_offset": 58,
+        "native_offset": 58
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "target_offset": 84,
+        "native_offset": 84
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x4451c0",
+        "target_offset": 91,
+        "native_offset": 91
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "target_offset": 117,
+        "native_offset": 117
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x4451c0",
+        "target_offset": 124,
+        "native_offset": 124
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "target_offset": 162,
+        "native_offset": 162
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x4451c0",
+        "target_offset": 169,
+        "native_offset": 169
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiState4C58@@3HA",
+        "target": "0x474c58",
+        "target_offset": 183,
+        "native_offset": 183
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GuiState4C58@@3HA",
+        "target": "0x474c58",
+        "target_offset": 194,
+        "native_offset": 194
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3e95a95b",
+        "target": "0x470cb8",
+        "target_offset": 210,
+        "native_offset": 214
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@424c0000",
+        "target": "0x470d2c",
+        "target_offset": 236,
+        "native_offset": 244
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+        "target": "0x43bda0",
+        "target_offset": 253,
+        "native_offset": 253
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3f800000",
+        "target": "0x470afc",
+        "target_offset": 270,
+        "native_offset": 270
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+        "target": "0x43bda0",
+        "target_offset": 312,
+        "native_offset": 312
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@00000000",
+        "target": "0x470b04",
+        "target_offset": 324,
+        "native_offset": 324
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@43ab0000",
+        "target": "0x470d28",
+        "target_offset": 352,
+        "native_offset": 352
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@42240000",
+        "target": "0x470d24",
+        "target_offset": 378,
+        "native_offset": 378
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+        "target": "0x43bda0",
+        "target_offset": 395,
+        "native_offset": 395
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3f800000",
+        "target": "0x470afc",
+        "target_offset": 408,
+        "native_offset": 408
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+        "target": "0x43bda0",
+        "target_offset": 441,
+        "native_offset": 441
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@00000000",
+        "target": "0x470b04",
+        "target_offset": 466,
+        "native_offset": 466
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@43ab0000",
+        "target": "0x470d28",
+        "target_offset": 508,
+        "native_offset": 508
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@42200000",
+        "target": "0x470c64",
+        "target_offset": 529,
+        "native_offset": 529
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+        "target": "0x43bda0",
+        "target_offset": 554,
+        "native_offset": 554
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+        "target": "0x477704",
+        "target_offset": 574,
+        "native_offset": 574
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "target_offset": 620,
+        "native_offset": 620
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x4451c0",
+        "target_offset": 631,
+        "native_offset": 631
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+        "target": "0x477704",
+        "target_offset": 637,
+        "native_offset": 637
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": "0x491c10",
+        "target_offset": 690,
+        "native_offset": 690
+      },
+      {
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+        "target": "0x4451c0",
+        "target_offset": 697,
+        "native_offset": 697
+      }
+    ],
+    "moved_field_positions": [
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@3e95a95b",
+        "target": "0x470cb8",
+        "target_offset": 210,
+        "native_offset": 214
+      },
+      {
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__real@424c0000",
+        "target": "0x470d2c",
+        "target_offset": 236,
+        "native_offset": 244
+      }
+    ],
+    "all23_local_destinations_match": true
+  },
+  "native_reproduction": {
+    "result": "complete-warm-cold-native-identity",
+    "before": {
+      "owner": {
+        "symbol": "?DrawStageElements@GuiView@@SGHPAU1@@Z",
+        "address": "0x00401000",
+        "size": 724,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 0,
+        "map_object": "source.ltcg.obj",
+        "pdb_module_index": 1,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\gui-draw-context-20261030\\final\\source.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\gui-draw-context-20261030\\final\\source.ltcg.obj",
+        "sha256": "43c432dfd937488014ca9ac4320c4d313774a344dec782aeab67f2e4a5e20114"
+      },
+      "complete_owned_bytes": 724,
+      "decoded_instructions": 173,
+      "normalized_sha256": "b5959953fa3527ce9747c4cb63beb5ea0bdc426f59580efef205fa6c2a2c384c",
+      "field_identities": [
+        {
+          "offset": 34,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 45,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 51,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 58,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 84,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 91,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 117,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 124,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 162,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 169,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 183,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiState4C58@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 194,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiState4C58@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 214,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3e95a95b"
+            ]
+          }
+        },
+        {
+          "offset": 244,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@424c0000"
+            ]
+          }
+        },
+        {
+          "offset": 253,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 270,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f800000"
+            ]
+          }
+        },
+        {
+          "offset": 312,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 324,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@00000000"
+            ]
+          }
+        },
+        {
+          "offset": 352,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@43ab0000"
+            ]
+          }
+        },
+        {
+          "offset": 378,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@42240000"
+            ]
+          }
+        },
+        {
+          "offset": 395,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 408,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f800000"
+            ]
+          }
+        },
+        {
+          "offset": 441,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 466,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@00000000"
+            ]
+          }
+        },
+        {
+          "offset": 508,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@43ab0000"
+            ]
+          }
+        },
+        {
+          "offset": 529,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@42200000"
+            ]
+          }
+        },
+        {
+          "offset": 554,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 574,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 620,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 631,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 637,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 690,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 697,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 21,
+          "destination": 32,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 69,
+          "destination": 32,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 102,
+          "destination": 82,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 135,
+          "destination": 115,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 148,
+          "destination": 160,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 180,
+          "destination": 160,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 190,
+          "destination": 316,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 333,
+          "destination": 572,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 459,
+          "destination": 464,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 479,
+          "destination": 558,
+          "mnemonic": "jnp"
+        },
+        {
+          "offset": 494,
+          "destination": 500,
+          "mnemonic": "jp"
+        },
+        {
+          "offset": 498,
+          "destination": 506,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 570,
+          "destination": 464,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 581,
+          "destination": 710,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 592,
+          "destination": 641,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 610,
+          "destination": 641,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 616,
+          "destination": 641,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 643,
+          "destination": 710,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 653,
+          "destination": 710,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 660,
+          "destination": 710,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 670,
+          "destination": 710,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 683,
+          "destination": 688,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 708,
+          "destination": 688,
+          "mnemonic": "jne"
+        }
+      ],
+      "returns": [
+        {
+          "offset": 721,
+          "operand": "4"
+        }
+      ]
+    },
+    "after": {
+      "owner": {
+        "symbol": "?DrawStageElements@GuiView@@SGHPAU1@@Z",
+        "address": "0x00401000",
+        "size": 724,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 0,
+        "map_object": "source.ltcg.obj",
+        "pdb_module_index": 1,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\gui-draw-context-20261030\\candidate-cold\\source.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\gui-draw-context-20261030\\candidate-cold\\source.ltcg.obj",
+        "sha256": "43c432dfd937488014ca9ac4320c4d313774a344dec782aeab67f2e4a5e20114"
+      },
+      "complete_owned_bytes": 724,
+      "decoded_instructions": 173,
+      "normalized_sha256": "b5959953fa3527ce9747c4cb63beb5ea0bdc426f59580efef205fa6c2a2c384c",
+      "field_identities": [
+        {
+          "offset": 34,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 45,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 51,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 58,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 84,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 91,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 117,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 124,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 162,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 169,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 183,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiState4C58@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 194,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_GuiState4C58@@3HA"
+            ]
+          }
+        },
+        {
+          "offset": 214,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3e95a95b"
+            ]
+          }
+        },
+        {
+          "offset": 244,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@424c0000"
+            ]
+          }
+        },
+        {
+          "offset": 253,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 270,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f800000"
+            ]
+          }
+        },
+        {
+          "offset": 312,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 324,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@00000000"
+            ]
+          }
+        },
+        {
+          "offset": 352,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@43ab0000"
+            ]
+          }
+        },
+        {
+          "offset": 378,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@42240000"
+            ]
+          }
+        },
+        {
+          "offset": 395,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 408,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@3f800000"
+            ]
+          }
+        },
+        {
+          "offset": 441,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 466,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@00000000"
+            ]
+          }
+        },
+        {
+          "offset": 508,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@43ab0000"
+            ]
+          }
+        },
+        {
+          "offset": 529,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "__real@42200000"
+            ]
+          }
+        },
+        {
+          "offset": 554,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+            ]
+          }
+        },
+        {
+          "offset": 574,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 620,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 631,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        },
+        {
+          "offset": 637,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 690,
+          "width": 4,
+          "type": "DIR32",
+          "destination": {
+            "symbols": [
+              "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+            ]
+          }
+        },
+        {
+          "offset": 697,
+          "width": 4,
+          "type": "REL32",
+          "destination": {
+            "symbols": [
+              "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+            ]
+          }
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 21,
+          "destination": 32,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 69,
+          "destination": 32,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 102,
+          "destination": 82,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 135,
+          "destination": 115,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 148,
+          "destination": 160,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 180,
+          "destination": 160,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 190,
+          "destination": 316,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 333,
+          "destination": 572,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 459,
+          "destination": 464,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 479,
+          "destination": 558,
+          "mnemonic": "jnp"
+        },
+        {
+          "offset": 494,
+          "destination": 500,
+          "mnemonic": "jp"
+        },
+        {
+          "offset": 498,
+          "destination": 506,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 570,
+          "destination": 464,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 581,
+          "destination": 710,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 592,
+          "destination": 641,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 610,
+          "destination": 641,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 616,
+          "destination": 641,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 643,
+          "destination": 710,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 653,
+          "destination": 710,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 660,
+          "destination": 710,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 670,
+          "destination": 710,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 683,
+          "destination": 688,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 708,
+          "destination": 688,
+          "mnemonic": "jne"
+        }
+      ],
+      "returns": [
+        {
+          "offset": 721,
+          "operand": "4"
+        }
+      ]
+    },
+    "exact_credit": 0
+  },
+  "final_cold_context": {
+    "variant": "candidate-cold",
+    "forced_cold": true,
+    "graph": {
+      "source": "src/GuiDraw.cpp",
+      "support_sources": [
+        "src/AnmRectangle.cpp",
+        "src/AnmManager.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "entry_symbol": "?GuiDrawCallback@@YIHPAX@Z"
+    },
+    "pins": {
+      "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+      "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+      "src/AnmRectangle.cpp": "3e0687c228ab4b25c9a4255c0f4487975a6f65f7f390abb4ed4cc0d4d7620695",
+      "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+      "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+      "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+      "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+      "src/GuiDraw.cpp": "e217998ad1054f9d682e12a8647c7316ef4ac0d79bda1981693c24abcb97839e",
+      "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef"
+    },
+    "changed_inputs": [
+      "src/AnmManager.cpp",
+      "src/AnmRectangle.cpp",
+      "src/GuiDraw.cpp"
+    ],
+    "compiled": [
+      "src/GuiDraw.cpp",
+      "src/AnmRectangle.cpp",
+      "src/AnmManager.cpp",
+      "build/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold/link-anchors.c",
+      "build/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold/link-anchors.c"
+    ],
+    "reused": {},
+    "artifacts": {
+      "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold/source.exe",
+      "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold/source.map",
+      "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold/source.pdb"
+    },
+    "image_sha256": "c52dbe42ce93aebb1894a9d61483a5df432524bbb695293b960a360ac12c4b20",
+    "object_sha256": {
+      "src/GuiDraw.cpp": "de6fc978fec0096a46a579cf369b20af4b8cb7d60cb4557e718d8bcf903067c9",
+      "src/AnmRectangle.cpp": "6c348992075e86e9c334e1ed8dc968b53d4981582ff60d978c94b81e1fa2a226",
+      "src/AnmManager.cpp": "93eedef1b9e2474361b0d98995a3cb33fa551d0307ac9cc9b21b2ee0b3c03d69"
+    }
+  },
+  "entry_candidate": {
+    "size": 708,
+    "fields": 33,
+    "context": {
+      "variant": "entry",
+      "forced_cold": false,
+      "graph": {
+        "source": "src/GuiDraw.cpp",
+        "support_sources": [
+          "src/AnmRectangle.cpp",
+          "src/AnmManager.cpp"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "entry_symbol": "?GuiDrawCallback@@YIHPAX@Z"
+      },
+      "pins": {
+        "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+        "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+        "src/AnmRectangle.cpp": "3e0687c228ab4b25c9a4255c0f4487975a6f65f7f390abb4ed4cc0d4d7620695",
+        "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+        "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+        "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+        "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+        "src/GuiDraw.cpp": "6ff7fd7d108ba74aa98ed5210592fbfc916a542f85fb12f5a75075c3ca3a03d7",
+        "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef"
+      },
+      "changed_inputs": [
+        "src/AnmManager.cpp",
+        "src/GuiDraw.cpp"
+      ],
+      "compiled": [
+        "src/GuiDraw.cpp",
+        "src/AnmManager.cpp",
+        "build/gpt-6.1-sol/gui-draw-context-20261030/entry/link-anchors.c",
+        "build/gpt-6.1-sol/gui-draw-context-20261030/entry/link-anchors.c"
+      ],
+      "reused": {
+        "src/AnmRectangle.cpp": "aacff14deda549e6f73e0cc874ddd439ae875a42973684763d003fa747e34531"
+      },
+      "artifacts": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-context-20261030/entry/source.exe",
+        "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-context-20261030/entry/source.map",
+        "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-context-20261030/entry/source.pdb"
+      },
+      "image_sha256": "12c5cec95ff1a8634c75846ce8f4c44e904efa302065fcba7b43f8dc8ebe87b3",
+      "object_sha256": {
+        "src/GuiDraw.cpp": "a995240715e6c0858f5a26a4fbc65ee8415129fada1d6ed79dedae84dbcbecf0",
+        "src/AnmRectangle.cpp": "aacff14deda549e6f73e0cc874ddd439ae875a42973684763d003fa747e34531",
+        "src/AnmManager.cpp": "249903e23ab060620489769787f64c09223ffaf33965ac9bccc21f397410059d"
+      }
+    },
+    "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.entry"
+  },
+  "canonical_actual_callee_replay": {
+    "artifact_count": 2,
+    "groups": [
+      {
+        "artifact": "build/match-linked/AnmRendererDispatch",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "anm-render-draw",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/AnmManager.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x0040BBE0",
+            "capstone_version": "5.0.6",
+            "compared_size": 216,
+            "data_spans": [],
+            "decoded_bytes": 215,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/AnmRendererDispatch/source.exe",
+            "image_sha256": "bd387c218eea17ead7fb054e88b9c11f167df133cbd6a88c757fe40748b3d898",
+            "linkages": [
+              {
+                "addend": 176,
+                "candidate_target": "0x0040BC90",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0x30",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x00445270",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00409C70",
+                "linked_symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0x38",
+                "symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x00443080",
+                "target_encoded_value": "0xFFFFDE84",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040A0B0",
+                "linked_symbol": "?Draw2D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0x44",
+                "symbol": "?Draw2D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004436C0",
+                "target_encoded_value": "0xFFFFE4B8",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040A9A0",
+                "linked_symbol": "?DrawCameraFacingQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0x4C",
+                "symbol": "?DrawCameraFacingQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x00443F80",
+                "target_encoded_value": "0xFFFFED70",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040AFA0",
+                "linked_symbol": "?DrawProjected3DQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0x58",
+                "symbol": "?DrawProjected3DQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x00444580",
+                "target_encoded_value": "0xFFFFF364",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040A9D0",
+                "linked_symbol": "?DrawMode6@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0x64",
+                "symbol": "?DrawMode6@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x00443FB0",
+                "target_encoded_value": "0xFFFFED88",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040AFE0",
+                "linked_symbol": "?DrawMode7@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0x6E",
+                "symbol": "?DrawMode7@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004445C0",
+                "target_encoded_value": "0xFFFFF38E",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040B180",
+                "linked_symbol": "?Draw3D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0x77",
+                "symbol": "?Draw3D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x00444760",
+                "target_encoded_value": "0xFFFFF525",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040B700",
+                "linked_symbol": "?DrawGeneratedVertices@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAnmRenderVertexView@@H@Z",
+                "local": false,
+                "offset": "0x8F",
+                "symbol": "?DrawGeneratedVertices@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAnmRenderVertexView@@H@Z",
+                "target": "0x00444CE0",
+                "target_encoded_value": "0xFFFFFA8D",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00409E80",
+                "linked_symbol": "?DrawNoRotationNoRound@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0x98",
+                "symbol": "?DrawNoRotationNoRound@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x00443290",
+                "target_encoded_value": "0xFFFFE034",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040A300",
+                "linked_symbol": "?Draw2DRotatedOrAxisAligned@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xA4",
+                "symbol": "?Draw2DRotatedOrAxisAligned@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x00443910",
+                "target_encoded_value": "0xFFFFE6A8",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 52,
+                "candidate_target": "0x0040BC14",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xB0",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x004451F4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 63,
+                "candidate_target": "0x0040BC1F",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xB4",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x004451FF",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 150,
+                "candidate_target": "0x0040BC76",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xB8",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x00445256",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 159,
+                "candidate_target": "0x0040BC7F",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xBC",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x0044525F",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 72,
+                "candidate_target": "0x0040BC28",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xC0",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x00445208",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 83,
+                "candidate_target": "0x0040BC33",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xC4",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x00445213",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 95,
+                "candidate_target": "0x0040BC3F",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xC8",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x0044521F",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 107,
+                "candidate_target": "0x0040BC4B",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xCC",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x0044522B",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 117,
+                "candidate_target": "0x0040BC55",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xD0",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x00445235",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 126,
+                "candidate_target": "0x0040BC5E",
+                "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "local": false,
+                "offset": "0xD4",
+                "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+                "target": "0x004451C0",
+                "target_encoded_value": "0x0044523E",
+                "type": "DIR32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 216,
+            "matched_compared_bytes": 216,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "c1c15c5fb97429429e200e88cfcd50af",
+            "pdb_module_index": 1,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 216,
+            "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+            "target_address": "0x004451C0",
+            "unit": "anm-render-draw"
+          }
+        ]
+      },
+      {
+        "artifact": "build/match-linked/PlayerDraw",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "anm-draw-colored-rectangle",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/Player.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00410E30",
+            "capstone_version": "5.0.6",
+            "compared_size": 483,
+            "data_spans": [],
+            "decoded_bytes": 483,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/PlayerDraw/source.exe",
+            "image_sha256": "b7144d82a687bc2c1e5533ed825ea9551bb0084182ce204410d124125b0fe0ce",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x0041314C",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0083",
+                "local": false,
+                "offset": "0x6",
+                "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "target": "0x00491C10",
+                "target_encoded_value": "0x00491C10",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040E2C0",
+                "linked_symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+                "local": false,
+                "offset": "0xB",
+                "symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+                "target": "0x00442F50",
+                "target_encoded_value": "0x000071A1",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0xA0",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0xF5",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0x108",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0x11A",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0x12C",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0x13E",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0x14E",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041314C",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0083",
+                "local": false,
+                "offset": "0x167",
+                "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+                "target": "0x00491C10",
+                "target_encoded_value": "0x00491C10",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0x197",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0x1A6",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0x1B9",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00413164",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0089",
+                "local": false,
+                "offset": "0x1CC",
+                "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+                "target": "0x00491C30",
+                "target_encoded_value": "0x00491C30",
+                "type": "DIR32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 483,
+            "matched_compared_bytes": 483,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "4a6c0e73dd7ca248a9163aa77008323e",
+            "pdb_module_index": 2,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 483,
+            "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+            "target_address": "0x0043BDA0",
+            "unit": "anm-draw-colored-rectangle"
+          }
+        ]
+      }
+    ],
+    "matched_bytes": 699,
+    "result": "exact",
+    "source_count": 2,
+    "unit_count": 2
+  },
+  "same_image_strict": {
+    "anm-render-draw": {
+      "unit": "probe-anm-render-draw",
+      "artifact_kind": "linked-pe",
+      "result": "exact",
+      "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+      "target_address": "0x004451C0",
+      "size": 216,
+      "matched_bytes": 216,
+      "compared_size": 216,
+      "matched_compared_bytes": 216,
+      "image": "build/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold/source.exe",
+      "image_sha256": "c52dbe42ce93aebb1894a9d61483a5df432524bbb695293b960a360ac12c4b20",
+      "pdb_guid": "2783c4dfa8138e4a86134100a9d55af8",
+      "pdb_age": 1,
+      "candidate_address": "0x0040C0C0",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 2,
+      "decoded_bytes": 213,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x30",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C170",
+          "target": "0x004451C0",
+          "addend": 176,
+          "target_encoded_value": "0x00445270"
+        },
+        {
+          "offset": "0x38",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040A150",
+          "target": "0x00443080",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFDE84"
+        },
+        {
+          "offset": "0x44",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?Draw2D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw2D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040A590",
+          "target": "0x004436C0",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFE4B8"
+        },
+        {
+          "offset": "0x4C",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?DrawCameraFacingQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?DrawCameraFacingQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040AE80",
+          "target": "0x00443F80",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFED70"
+        },
+        {
+          "offset": "0x58",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?DrawProjected3DQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?DrawProjected3DQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040B480",
+          "target": "0x00444580",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFF364"
+        },
+        {
+          "offset": "0x64",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?DrawMode6@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?DrawMode6@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040AEB0",
+          "target": "0x00443FB0",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFED88"
+        },
+        {
+          "offset": "0x6E",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?DrawMode7@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?DrawMode7@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040B4C0",
+          "target": "0x004445C0",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFF38E"
+        },
+        {
+          "offset": "0x77",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?Draw3D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw3D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040B660",
+          "target": "0x00444760",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFF525"
+        },
+        {
+          "offset": "0x8F",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?DrawGeneratedVertices@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAnmRenderVertexView@@H@Z",
+          "linked_symbol": "?DrawGeneratedVertices@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAnmRenderVertexView@@H@Z",
+          "local": false,
+          "candidate_target": "0x0040BBE0",
+          "target": "0x00444CE0",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFFA8D"
+        },
+        {
+          "offset": "0x98",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?DrawNoRotationNoRound@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?DrawNoRotationNoRound@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040A360",
+          "target": "0x00443290",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFE034"
+        },
+        {
+          "offset": "0xA4",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?Draw2DRotatedOrAxisAligned@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw2DRotatedOrAxisAligned@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040A7E0",
+          "target": "0x00443910",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFE6A8"
+        },
+        {
+          "offset": "0xB0",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C0F4",
+          "target": "0x004451C0",
+          "addend": 52,
+          "target_encoded_value": "0x004451F4"
+        },
+        {
+          "offset": "0xB4",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C0FF",
+          "target": "0x004451C0",
+          "addend": 63,
+          "target_encoded_value": "0x004451FF"
+        },
+        {
+          "offset": "0xB8",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C156",
+          "target": "0x004451C0",
+          "addend": 150,
+          "target_encoded_value": "0x00445256"
+        },
+        {
+          "offset": "0xBC",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C15F",
+          "target": "0x004451C0",
+          "addend": 159,
+          "target_encoded_value": "0x0044525F"
+        },
+        {
+          "offset": "0xC0",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C108",
+          "target": "0x004451C0",
+          "addend": 72,
+          "target_encoded_value": "0x00445208"
+        },
+        {
+          "offset": "0xC4",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C113",
+          "target": "0x004451C0",
+          "addend": 83,
+          "target_encoded_value": "0x00445213"
+        },
+        {
+          "offset": "0xC8",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C11F",
+          "target": "0x004451C0",
+          "addend": 95,
+          "target_encoded_value": "0x0044521F"
+        },
+        {
+          "offset": "0xCC",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C12B",
+          "target": "0x004451C0",
+          "addend": 107,
+          "target_encoded_value": "0x0044522B"
+        },
+        {
+          "offset": "0xD0",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C135",
+          "target": "0x004451C0",
+          "addend": 117,
+          "target_encoded_value": "0x00445235"
+        },
+        {
+          "offset": "0xD4",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "linked_symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040C13E",
+          "target": "0x004451C0",
+          "addend": 126,
+          "target_encoded_value": "0x0044523E"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [],
+      "capstone_version": "5.0.6"
+    },
+    "anm-draw-colored-rectangle": {
+      "unit": "probe-anm-draw-colored-rectangle",
+      "artifact_kind": "linked-pe",
+      "result": "exact",
+      "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+      "target_address": "0x0043BDA0",
+      "size": 483,
+      "matched_bytes": 483,
+      "compared_size": 483,
+      "matched_compared_bytes": 483,
+      "image": "build/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold/source.exe",
+      "image_sha256": "c52dbe42ce93aebb1894a9d61483a5df432524bbb695293b960a360ac12c4b20",
+      "pdb_guid": "2783c4dfa8138e4a86134100a9d55af8",
+      "pdb_age": 1,
+      "candidate_address": "0x00401310",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 3,
+      "decoded_bytes": 483,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x6",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0058",
+          "local": false,
+          "candidate_target": "0x0040E0E8",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0xB",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+          "linked_symbol": "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+          "local": false,
+          "candidate_target": "0x0040A020",
+          "target": "0x00442F50",
+          "addend": 0,
+          "target_encoded_value": "0x000071A1"
+        },
+        {
+          "offset": "0xA0",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0xF5",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0x108",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0x11A",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0x12C",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0x13E",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0x14E",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0x167",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0058",
+          "local": false,
+          "candidate_target": "0x0040E0E8",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0x197",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0x1A6",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0x1B9",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        },
+        {
+          "offset": "0x1CC",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0064",
+          "local": false,
+          "candidate_target": "0x0040E100",
+          "target": "0x00491C30",
+          "addend": 0,
+          "target_encoded_value": "0x00491C30"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [],
+      "capstone_version": "5.0.6"
+    },
+    "gui-adapter-context-only": {
+      "unit": "probe-gui-adapter",
+      "artifact_kind": "linked-pe",
+      "result": "exact",
+      "symbol": "?GuiDrawCallback@@YIHPAX@Z",
+      "target_address": "0x00415AF0",
+      "size": 7,
+      "matched_bytes": 7,
+      "compared_size": 7,
+      "matched_compared_bytes": 7,
+      "image": "build/gpt-6.1-sol/gui-draw-context-20261030/candidate-cold/source.exe",
+      "image_sha256": "c52dbe42ce93aebb1894a9d61483a5df432524bbb695293b960a360ac12c4b20",
+      "pdb_guid": "2783c4dfa8138e4a86134100a9d55af8",
+      "pdb_age": 1,
+      "candidate_address": "0x004012E0",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 1,
+      "decoded_bytes": 7,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x2",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?DrawStageElements@GuiView@@SGHPAU1@@Z",
+          "linked_symbol": "?DrawStageElements@GuiView@@SGHPAU1@@Z",
+          "local": false,
+          "candidate_target": "0x00401000",
+          "target": "0x00415800",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFFD0A"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [],
+      "capstone_version": "5.0.6"
+    }
+  },
+  "controls": [
+    {
+      "variant": "inverted-flag-values",
+      "exit": 0,
+      "candidate_size": 724,
+      "fields": 33,
+      "result": "nonexact",
+      "source_sha256": "91290cb93b3cd10b57d5a3c09bda3fca0b2bd87a3356bca161dc6d030c5890a5",
+      "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.inverted-flags",
+      "observation": "Retained real inverted DWORD bit values restore marker/final-pair scheduling and724 bytes. Seven later neutral models are restored."
+    },
+    {
+      "variant": "score-rectangle-helper",
+      "exit": 0,
+      "candidate_size": 724,
+      "fields": 33,
+      "result": "nonexact",
+      "source_sha256": "1715aa38031ec0a8b7d0714fb22bff986d2f29c5227a18387f76d65ec41d32b0",
+      "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.score-rectangle-helper",
+      "observation": "Output helper is instruction-neutral."
+    },
+    {
+      "variant": "score-right-value",
+      "exit": 0,
+      "candidate_size": 724,
+      "fields": 33,
+      "result": "nonexact",
+      "source_sha256": "0a9c70de96f69736a829da039eb4b2937c4da5bac364263c79768bede88b34a3",
+      "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.score-right-value",
+      "observation": "Scalar right-value boundary is instruction-neutral."
+    },
+    {
+      "variant": "score-rectangle-value",
+      "exit": 0,
+      "candidate_size": 756,
+      "fields": 33,
+      "result": "nonexact",
+      "source_sha256": "3d2da280369ac4df094d5cb32995f1bf5e0bb2d3988aa8d16ae9aa18ab2951be",
+      "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.score-rectangle-value",
+      "observation": "Aggregate return creates a real16-byte extra temporary and756/frame20; restored."
+    },
+    {
+      "variant": "score-direct-constructor",
+      "exit": 0,
+      "candidate_size": 724,
+      "fields": 33,
+      "result": "nonexact",
+      "source_sha256": "549fb903db71b617ef0498ec4ecde4fd0af40c3d435754f0a1a9b4ab0e877bb3",
+      "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.score-direct-constructor",
+      "observation": "Direct16-byte constructor/local scope is instruction-neutral."
+    },
+    {
+      "variant": "score-left-plus-width",
+      "exit": 0,
+      "candidate_size": 724,
+      "fields": 33,
+      "result": "nonexact",
+      "source_sha256": "17891747b26914501c4cf3d333abb41d27e2fbbd0828ad07291ef369a192007f",
+      "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.score-left-plus-width",
+      "observation": "Left-plus-width operand relationship is instruction-neutral."
+    },
+    {
+      "variant": "score-call-color",
+      "exit": 0,
+      "candidate_size": 724,
+      "fields": 33,
+      "result": "nonexact",
+      "source_sha256": "c739002a22d45937e159e835c0300e11f28c5733067dad65bc7d73a270a328a8",
+      "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.score-call-color",
+      "observation": "Color value at the call is instruction-neutral."
+    },
+    {
+      "variant": "rectangle-array-storage",
+      "exit": 0,
+      "candidate_size": 724,
+      "fields": 33,
+      "result": "nonexact",
+      "source_sha256": "84baa58a769815b28d137fe6507d757e7595c3239ea488cd0c0afd7f46daa180",
+      "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.rectangle-array-storage",
+      "observation": "Array storage/view is instruction-neutral."
+    },
+    {
+      "variant": "score-width-then-offset",
+      "exit": 0,
+      "candidate_size": 724,
+      "fields": 33,
+      "result": "nonexact",
+      "source_sha256": "842f31cb57a909cfc9d4ecad2066cbc1a931243db13b399703531edfea834634",
+      "source_snapshot": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/GuiDraw.cpp.score-width-then-offset",
+      "observation": "Separate width initialization/compound offset is instruction-neutral."
+    }
+  ],
+  "remaining": {
+    "target_scope": "All bytes and every physical field position remain mandatory.",
+    "ordinary_schedules": [
+      "Native LEA D0 precedes FMUL D4; target FMUL D0 precedes LEA D6.",
+      "Native bottom store EA precedes FADD F2; target FADD EA precedes bottom store F0."
+    ],
+    "native_field_offsets": [
+      "0xD6",
+      "0xF4"
+    ],
+    "target_field_offsets": [
+      "0xD2",
+      "0xEC"
+    ],
+    "admission": "NONEXACT; no matches.csv row or canonical GUI unit."
+  },
+  "unchanged_inputs": {
+    "existing_canonical_units_using_gui_draw": [],
+    "shared_header_changes": false,
+    "existing_player_context": ".analysis/gpt-6.1-sol/player-draw-context-20261030/cold-b-player-context.json",
+    "player_source_header_pins_verified": 58,
+    "scope": "No parent source input changes; no parent/full historical cold replay."
+  },
+  "progress": {
+    "new_exact_bytes": 0,
+    "new_exact_owners": 0,
+    "authored_exact_bytes": 101532,
+    "authored_owned_bytes": 275817,
+    "authored_exact_owners": 495,
+    "total_codegen_bytes": 169636,
+    "total_codegen_owners": 1372,
+    "source_present": 1207,
+    "source_present_authored": 689,
+    "authored_exact_backlog": 194
+  },
+  "private_retention": {
+    "workbench": ".analysis/gpt-6.1-sol/gui-draw-context-20261030",
+    "retained": [
+      "Current708-byte entry baseline",
+      "Final724-byte warm candidate",
+      "Independent full zero-reuse724-byte cold",
+      "Canonical actual-callee cold artifacts",
+      "Hash-verified snapshots of each restored source model"
+    ]
+  },
+  "verification": {
+    "target": "Canonical Japanese v1.00a SHA-256 verified",
+    "toolchain": "Declarations checked; copied canonical renderer /GL profile unchanged",
+    "native_cold_exit": 0,
+    "native": "Complete724-byte inventory,33 identities,173 instructions,23 destinations and RET4 reproduced",
+    "canonical_callee_cold_exit": 0,
+    "canonical_callees": "699 bytes/all35 fields exact",
+    "ci": "passed all seven default stages; ci.exit=0",
+    "whitespace": "passed git diff --check"
+  },
+  "closed_control_storage": {
+    "result": "losslessly-archived-and-hash-verified-before-removal",
+    "archive": ".analysis/gpt-6.1-sol/gui-draw-context-20261030/closed-native-controls.tar.xz",
+    "archive_sha256": "4ba0147bc6677fcbf6d6cc02e3e74b5785cc21582cca4cb71a33efd377e4a8b4",
+    "members": 180,
+    "original_bytes": 4647520,
+    "archive_bytes": 123632
+  }
+}
