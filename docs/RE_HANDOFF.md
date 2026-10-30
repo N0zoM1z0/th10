@@ -2,6 +2,40 @@
 
 ## Current checkpoint
 
+Fresh Ending18-input replay exposed an existing constructor regression:648 bytes
+but17 ordinary differences, first+0x92. Actual text decoder definition was also
+missing after its move to GuiMessageLeaves.cpp, yielding Run1576/1568 and the
+wrong stack decoder interface. Do not reuse the old18-input Ending cache as a
+current exact receipt. See the [complete repair proof](evidence/ending-context-repair-20261030/README.md).
+
+Two actual dependencies repair the declared graph under its unchanged checksum
+root and original18 profiles. GuiMessageLeaves restores decoder EAX and Run1564;
+Gui's two real InitializeVm callers restore ECX bank/two stack args/RET8 and all
+constructor bytes. The new sources retain their existing /GL profiles. Only
+ending-text-constructor and ending-load-script migrate to20-input
+build/match-linked/EndingTextContext. Two zero-reuse colds restore754/all17;
+same-image decoder41 is raw-equal. Worker-member EH binding remains strict;
+initializer207/217 remains body-nonexact. No new exact credit or game C++ change.
+
+CompleteRun1564/1568 remains NE with92 field identities,53 direct local branches
+and18 table words, all reproduced. Target1496 code/alignment plus72 table bytes
+ends exactly before callback40C3A0. Target sound-owner immediates+0x204/+0x284 lie in
+virtual BSS and remain included. Command8 retains ID storage address in target
+but an index in native; subsequent destinations differ2 bytes plus tail alignment.
+Live color, pointer view and sampled-line controls failed and are restored/parked.
+Do not force registers/ABI/inline or repeat those spellings without new evidence.
+
+Current20-input Ending receipt is
+`.analysis/gpt-6.1-sol/ending-run-context-20261030/canonical-b-context.json`,
+with all69 transitive pins fixed and active artifacts at the actual producer.
+Historical reports stay immutable. Previous Enemy21 and other epochs retain their
+source pins because no game source change survives this batch. Authored exact
+stays103090/275835 across503; codegen171194/1380; source1207/authored689/backlog186.
+Original class/TU/data ownership, product/runtime and portability remain open.
+No full cohort or host failure/lifecycle/mutation campaign is required.
+
+## Previous Enemy operand checkpoint
+
 Complete Enemy integer operand reader411FC0..4122F3 now closes820/all95:
 616 code/142ins/41RET4 plus204 bytes containing all51 selector words412228.
 All43 external fields and52 local destinations (table base plus51 entries)

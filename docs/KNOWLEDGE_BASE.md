@@ -8171,3 +8171,31 @@ This adds820 authored bytes/one owner:103090/275835 across503; codegen171194/138
 Source mappings stay1207/authored689; backlog186. No product/runtime/portability
 closure follows, and previous graph receipts containing Enemy.cpp have a
 historical pin until their actual graph is relinked.
+
+
+## 2026-10-30 Ending actual-definition context repair
+
+A fresh current18-input canonical text-constructor replay failed17 ordinary bytes
+at648, starting+0x92; old historical exact reports did not describe current inputs.
+Its initializer used ECX script/EDX VM/stack bank instead of target ECX bank plus
+two stack args/RET8. The same image emitted Run1576 with a stack text-decode call
+because moved Fn00417010 was absent from the graph.
+
+Adding actual GuiMessageLeaves restores EAX decode and Run1564. Adding actual Gui,
+which has two InitializeVm callers in UpdateStageElements, independently restores
+the initializer interface and constructor648/all12. No source, ABI declaration,
+root or prior18 profile change is needed. Both new sources retain existing /GL
+profiles. Two complete20-input canonical colds restore constructor648/all12 and
+LoadScript106/all5; same-image decoder41 is raw-equal. Existing worker-member EH
+binding is retained; initializer207/217 body remains NE and receives no credit.
+Only those two recipes migrate to EndingTextContext. No new exact byte or owner.
+
+CompleteRun40BD80..40C39F still owns1496 code/alignment bytes and18 table words
+40C358..40C39F; independent callback40C3A0 immediately follows. Both native/target
+inventories include92 fields and53 direct locals. The sound-owner immediates at
++0x204/+0x284 are target492590 in virtual .data, not raw-backed data to synthesize.
+Native1564 retains an array index across command8 deletion where target retains
+its ID storage address; subsequent destinations differ2 bytes plus alignment.
+Live-color, pointer-view and sampled-line controls did not close the complete
+owner and are restored/parked. No partial or equal-size credit follows. All69
+transitive input/header pins are fixed. See the [repair proof](evidence/ending-context-repair-20261030/README.md).
