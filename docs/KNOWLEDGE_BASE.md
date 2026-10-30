@@ -8316,3 +8316,58 @@ unchanged. Counts become104586/275863 across508 authored exact owners, total
 172690/1385, mappings1213/authored695 and backlog187. The two new source mappings
 do not change the reviewed denominator. Product/runtime/portability remain open.
 See the [complete proof](evidence/stage-animation-slots-20261031/README.md).
+
+
+## 2026-10-31 Complete GameManager call binding repair
+
+GameClearLinkedObjects417770..4177B1 is66/all1 exact. Its ordinary pointer source
+receives the laser-owner view privately in EAX, captures node.next before the
+virtual slot4 call, rereads previous/next for unlinking, conditionally updates
+successor.previous and performs scalar delete4524A1. Existing storage/base views
+and local assertions provide head18/previous4/next8. All branches, alignment and
+the sole REL32 at+32 reproduce in two independent28-input canonical colds. Original
+name/class/TU/data ownership and runtime remain open.
+
+The full1544-byte GameManager update target has114 fields,60 direct locals,
+36 direct calls and four RET4 exits. Six source facades now bind actual
+BulletManager::ResetPool405ED0, EnemyManagerClear409F90, FrontEndPlayMusic420B10,
+Stage destructor402440, transition factory43C8B0 and Main mode setter40AC90.
+The last helper changes Main nextGameMode, not sound state. Demo parameters are
+priority43/kind5/60/three zeros. Target417FAC confirms the terminal cleanup also
+calls EnemyManagerClear. Both update reset paths call the new complete66-byte
+list cleanup. Existing worker/replay/lifecycle sources join the current graph;
+no fake arguments, register hints or compiler flag changes are introduced.
+
+Real pool calls prevent expansion1602 to1528. Separate final flag checks produce
+1533 and recover the27-byte branch/return span raw-equal; explicit sound selection
+produces1535 and recovers31-byte grammar/four bound fields. Both complete owners
+have114 fields and36 callee identities in equal order; native has59 locals and
+still differs in interfaces, address formation, null gate and local offsets.
+These spans receive no partial-owner credit. Typed stage delete leaves every
+ordinary byte and all114 field identities/positions unchanged and is restored.
+
+The old single-TU callback recipe now fails10 versus7: it saves EBX, moves ECX
+to EBX and calls a private plain-RET1552-byte core. Its retained failed image
+does not describe target. Only the callback recipe migrates to the actual28-input
+graph, where the unchanged source yields full7/all1 and the core retains stack
+owner/RET4. Two independent colds restore this existing credit without promoting
+its indeterminate origin. Update1535/1544 and terminal cleanup1108/1105 remain
+nonexact; Replay1000/582 and stage destructor460/499 are separate current barriers.
+The stage destructor contract rejects rather than trimming or rebinding its size.
+
+Both28-input frozen images pass23 existing contracts3054/all112, including full
+worker101, pool45, enemy clear118, music73, Main mode37 and transition119. Header
+Tick72 is qualified to the primary Enemy PDB object here. First scoped canonical
+cold also passes transition119 and stage-delay92 through unchanged recipes. All75
+transitive source/header pins match. Counts become104652/275863 across509 authored
+exact owners; canonical172756/1386, mappings1214/authored696 and backlog187. No
+boundary/denominator/product/runtime/portability credit. See the
+[complete proof](evidence/game-manager-bindings-20261031/README.md).
+
+Target BeginStage's playback pair copies remain a counted4-iteration loop,
+followed by resetFlag writes at Player332C/33C4/345C/34F4. Current source places
+those writes inside the copy loop and native1000 unrolls playback; recording's
+counted loop is retained. Target reloads Player after position/rebuild helpers
+and current-stage indices across stage helpers. These are concrete next source/
+alias leads, not permission to guess helper arity from stack words: live registers
+may supply additional meaningful arguments.

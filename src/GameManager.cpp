@@ -18,6 +18,8 @@
 #include "GameStageDescriptor.hpp"
 #include "ScriptViewer.hpp"
 #include "Sound.hpp"
+#include "BulletManager.hpp"
+#include "TransitionEffect.hpp"
 
 // Natural source candidate adapted from th10-decomphelp-forN0.  The bounded
 // OnDraw body is retained here only after direct TH10 IDA boundary review;
@@ -112,13 +114,8 @@ extern void GameEnterMenuState(GameMenuView *menu);
 // target bodies use private LTCG register receivers: their observed machine
 // live-ins remain in the ledger/analysis, rather than invented source ABIs.
 extern void GameResetAnimationSlots(GameChainOwnerView *owner);
-extern void GameResetAnimationOwner(GameChainOwnerView *owner);
-extern void __stdcall GameClearEnemyVms(EnemyManagerView *manager);
 extern void GameClearLinkedObjects(GameChainOwnerView *owner);
-extern void __stdcall GamePlayStageMusic(int channel, int musicIndex);
-extern void __stdcall GameDestroyMenu(GameMenuView *menu);
-extern void GameEmitDemoEffect(int script, int type, int duration, int x, int y, int z);
-extern void GameQueueSound(unsigned char *sound, int soundId);
+extern int __stdcall FrontEndPlayMusic(int channel, int musicIndex);
 extern void GameUpdateGui(GuiView *gui);
 extern void EnemyMarkPendingInterrupt(int *vmId);
 
@@ -163,10 +160,17 @@ static inline void MarkGameChains(GameChainOwnerView *owner)
 
 static __forceinline void ResetGameStage()
 {
-    GameResetAnimationOwner(g_GameOwner4776F0);
+    // Target41822E/41842E calls the complete pool reset out of line.
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
+    reinterpret_cast<BulletManagerView *>(g_GameOwner4776F0)->ResetPool();
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     PlayerResetRuntimeState(g_Player);
     memset(reinterpret_cast<u8 *>(g_GameOwner477818) + 0x14, 0, 0x21cea0);
-    GameClearEnemyVms(g_EnemyManager);
+    EnemyManagerClear(g_EnemyManager);
     GameClearLinkedObjects(reinterpret_cast<GameChainOwnerView *>(g_EnemyLaserManager));
     g_GameFrameCounter0 = 0;
     g_GameFrameCounter1 = 0;
@@ -230,7 +234,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
             manager->m_Flags &= ~0x800;
             ResetGameStage();
             if ((g_GameRuntimeFlags & 0x20) == 0)
-                GamePlayStageMusic(0, g_GameStageUpdate->musicIndex);
+                FrontEndPlayMusic(0, g_GameStageUpdate->musicIndex);
             GameEffectUpdateView *effect = g_GameEffectUpdate;
             EnemyMarkPendingInterrupt(&effect->firstVmId);
             EnemyMarkPendingInterrupt(&effect->secondVmId);
@@ -241,9 +245,13 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
     {
         manager->m_Flags &= ~0x800;
         ResetGameStage();
-        reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand("dummy",
-            (g_GameConfigurationFlags491D78 & 0x10) != 0 ? 4 : 3, 0);
-        GamePlayStageMusic(0, g_GameStageUpdate->musicIndex);
+        if ((g_GameConfigurationFlags491D78 & 0x10) != 0)
+            reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->
+                QueueCommand("dummy", 4, 0);
+        else
+            reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->
+                QueueCommand("dummy", 3, 0);
+        FrontEndPlayMusic(0, g_GameStageUpdate->musicIndex);
         GameEffectUpdateView *effect = g_GameEffectUpdate;
         EnemyMarkPendingInterrupt(&effect->secondVmId);
         effect->secondVmId = 0;
@@ -253,7 +261,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
     GameMenuView *menu = g_GameMenu;
     if (menu != NULL && (menu->flags2A18 & 8) != 0)
     {
-        GameDestroyMenu(menu);
+        reinterpret_cast<StageScriptView *>(menu)->~StageScriptView();
         ::operator delete(menu);
     }
     if ((manager->m_Flags & 4) != 0)
@@ -267,14 +275,25 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
     {
         if ((g_GameInputBits & 0x160b) != 0 || (manager->m_Flags & 0x70) != 0)
             g_GameTransitionState = (g_GameConfigurationFlags & 0x1000) != 0 ? 2 : 4;
+        // Target4186BD/4186D2 retains both actual calls out of line.
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
         if (manager->stageTimer.current == 2940)
-            GameEmitDemoEffect(43, 5, 60, 0, 0, 0);
+            StageCreateTransitionEffect(43, 5, 60, 0, 0, 0);
         else if (manager->stageTimer.current == 3000)
-            GameQueueSound(g_GameSoundState, 4);
+            g_MainSupervisorView.SetNextGameMode(4);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     }
     GameUpdateGui(g_GuiView);
-    if ((manager->m_Flags & 0x10) != 0 || (manager->m_Flags & 0x20) != 0 ||
-        (manager->m_Flags & 0x40) != 0)
+    unsigned int finalFlags = manager->m_Flags;
+    if ((finalFlags & 0x10) != 0)
+        return 3;
+    if ((finalFlags & 0x20) != 0)
+        return 3;
+    if ((finalFlags & 0x40) != 0)
         return 3;
 
     if (g_ReplayManager->mode != REPLAY_MANAGER_PLAYBACK)
@@ -631,7 +650,7 @@ void __stdcall GameManagerCleanup(GameManager *manager)
             delete enemy;
     }
     else
-        GameClearEnemyVms(g_EnemyManager);
+        EnemyManagerClear(g_EnemyManager);
     GameChainOwnerView *owner40AF00 = g_GameOwner4776FC;
     if (owner40AF00 != NULL)
     {

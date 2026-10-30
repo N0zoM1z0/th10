@@ -1212,3 +1212,4 @@ EnemyEndSpell,0x00409C00,function
 GuiShowScoreNotice,0x004172E0,function
 GamePrepareAnimationSlots,0x00404450,function
 GameEnterMenuState,0x00404530,function
+GameClearLinkedObjects,0x00417770,function

@@ -4,26 +4,70 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint completes two real GameManager stage dependencies
-and adds119 exact bytes after recovering the transition factory's actual Chain
-context. The preceding checkpoint refined the complete nonexact spell-start body.
+selected lane. This checkpoint repairs the complete GameManager update's actual
+calls, adds66 exact list-cleanup bytes and restores its existing callback recipe
+in the actual dependency graph. The large update remains nonexact.
 Compiler profiles and the comparator remain unchanged. No experiment is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 104,586 / 275,863 |
-| Authored exact owners | 508 |
-| Total canonical exact owners / codegen bytes | 1,385 / 172,690 |
-| Source mappings / authored mappings / authored exact backlog | 1,213 / 695 / 187 |
+| Reviewed authored owned bytes exact | 104,652 / 275,863 |
+| Authored exact owners | 509 |
+| Total canonical exact owners / codegen bytes | 1,386 / 172,756 |
+| Source mappings / authored mappings / authored exact backlog | 1,214 / 696 / 187 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: stage animation reset interfaces
+## Latest source checkpoint: complete GameManager call binding repair
+
+[The complete proof](evidence/game-manager-bindings-20261031/README.md) adds
+GameClearLinkedObjects41777066/all1 exact in GameObjectReset.cpp. It captures next
+before virtual slot4, rereads links to unlink, performs scalar delete and advances
+through captured next. Existing laser views supply the layout; original ownership
+remains unknown. Target GameManager has two actual calls to this complete owner.
+
+Six GameManager facades now name actual pool reset, enemy clear, music, stage
+destructor, transition factory and Main mode functions. Main mode is not a sound
+call; demo operands are priority43/kind5/60/three zeros. The terminal cleanup's
+417FAC edge also confirms real EnemyManagerClear. Four actual existing TUs plus
+the new cleanup join the previous23-input graph, with their pinned profiles.
+
+The complete parent evolves1544 to1602 (pool reset inlined),1528 (real pool call
+boundary),1533 (three final flag checks) and1535 (sound selection branches).
+Final1535/1544 remains NONEXACT:114 fields,59 locals versus target60, all36 actual
+callee identities in order. The27-byte final gate is raw-equal and the31-byte
+sound gate has four bound fields/15 ordinary bytes equal; no fragment credit.
+Typed stage delete is fully byte/field neutral and restored. Terminal cleanup
+remains1108/1105. Replay1000/582, stage destructor460/499, reset184/214 and the
+embedded/binder interfaces remain unequal. Begin stays2424/2432.
+
+Current-source single-TU OnUpdate rejects10 bytes: ECX moves to EBX and its core
+returns plain RET. Only game-manager-update-callback migrates to the actual28-input
+GameObjectReset recipe, restoring7/all1 with stack/RET4 core. Its indeterminate
+origin and existing credit remain unchanged. Failed native image/report retained.
+
+Two independent28-input canonical colds, with75 transitive pins, pass new66/all1
+and restored7/all1. First also cold-passes unchanged transition119 and delay92
+recipes. Both28-input images pass23 existing contracts3054/all112; the full stage
+destructor rejection460/499 remains explicit. Header Tick's PDB owner is primary
+Enemy in this graph. Comparator/profiles unchanged; no full-cohort replay.
+Producer: build/match-linked/GameObjectReset. Frozen colds and current baseline
+context are under the private game-manager-bindings-20261031 campaign. Earlier
+GameManager source freezes are historical; check pins before reuse.
+
+Concrete coupled lead: target Replay BeginStage582 has a counted playback pair
+loop and four resetFlag stores after it; current1000-byte native playback is
+unrolled with resets inside the iterations. Target also rereads g_Player after
+position/rebuild calls and g_CurrentStage across stage helpers. Review the actual
+helper operands/bodies before changing declarations; live registers can carry
+meaningful inputs. Do not infer a one-argument helper from stack usage alone.
+
+## Previous source checkpoint: stage animation reset interfaces
 
 [The complete proof](evidence/stage-animation-slots-20261031/README.md) adds
 GameEnterMenuState404530119/all2 exact and complete nonexact

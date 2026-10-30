@@ -1,0 +1,1852 @@
+{
+  "date": "2026-10-31",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_exact_bytes": 66,
+  "new_authored_exact_owners": 1,
+  "new_source_mappings": 1,
+  "boundary_changes": 0,
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": ["src/AnmManager.cpp", "src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/AnmInt3Scale.cpp", "src/EclVm.cpp", "src/Player.cpp", "src/PlayerCollision.cpp", "src/EnemyEclDispatcher.cpp", "src/VmIdInterrupt.cpp", "src/FrontEnd.cpp", "src/ItemManager.cpp", "src/Main.cpp", "src/Sound.cpp", "src/Gui.cpp", "src/Hint.cpp", "src/GameManager.cpp", "src/GuiScoreDisplay.cpp", "src/GuiSpellNotice.cpp", "src/StageAnimationSlots.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/BulletLifecycle.cpp", "src/ScriptViewerWorker.cpp", "src/StageLifecycle.cpp", "src/ReplayManager.cpp", "src/GameObjectReset.cpp"],
+    "support_profiles": {
+      "src/AnmManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/RandomMath.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/AnmVmCreate.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/AnmVmId.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/AnmInt3Scale.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"],
+      "src/Player.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/PlayerCollision.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/EnemyEclDispatcher.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/VmIdInterrupt.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"],
+      "src/FrontEnd.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ItemManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Main.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Sound.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Gui.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Hint.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/TransitionEffect.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/Chain.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+      "src/BulletLifecycle.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ScriptViewerWorker.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/StageLifecycle.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"],
+      "src/ReplayManager.cpp": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+    },
+    "profile": ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"],
+    "link_profile": ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"],
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "canonical_contracts": {
+    "game-clear-linked-objects": {
+      "output_dir": "build/match-linked/GameObjectReset",
+      "pdb_source": "src/GameObjectReset.cpp",
+      "symbol": "?GameClearLinkedObjects@@YAXPAUGameChainOwnerView@@@Z",
+      "target_address": 4290416,
+      "size": 66,
+      "functions": ["GameClearLinkedObjects"],
+      "linkages": [
+        {
+          "offset": 50,
+          "width": 4,
+          "type": "REL32",
+          "symbol": "??3@YAXPAX@Z",
+          "target": 4531361
+        }
+      ]
+    },
+    "game-manager-update-callback": {
+      "output_dir": "build/match-linked/GameObjectReset",
+      "functions": ["GameManager::OnUpdate"],
+      "symbol": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+      "target_address": 4294592,
+      "size": 7,
+      "linkages": [
+        {
+          "offset": 2,
+          "type": "REL32",
+          "symbol": "?GameManagerUpdateBody@@YGIPAUGameManager@@@Z",
+          "target": 4293008
+        }
+      ],
+      "pdb_source": "src/GameManager.cpp"
+    }
+  },
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "d76bbbf665a29b6d2e76f08a6601e3cd4013f5e564755bc808f046afa02704f9",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletLifecycle.cpp": "6410d0ee742c475936ca2cba28577a242d5d9c541bb64cbcd8c87c798946e243",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "65c7125f66818ed3bcc5ef18773bd615d98c9b8a54bd25a338d160ec05f88048",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "1cac61c8c5ed02ee9b49d8a843421bb13a36687396ef0e080bf8a0934f1f61c5",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.cpp": "85b968a41cac5b8bb506dc5e70e29ceaefba8405ad702b700afc0c35897918e1",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameObjectReset.cpp": "cf8d6de1488764355a394d04496ce690fa1fb41aad54b07a047bcaf6d4490593",
+    "src/GameScoreState.hpp": "48aa2ef01c7307245a3ec5600239e381efff49cd776d82634646e02172273250",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/GameStatistics.hpp": "3db83612f100ae38b109e358bbf777f897fab2e760520bc92c52fbec1b4823bc",
+    "src/Gui.cpp": "a2940382f3f8aff0e96dceb5262067eea5b36c85b1b503cae984505dffb38e91",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/GuiScoreDisplay.cpp": "037599d4e5aade1c81cc9ac8f728ef2725ce1be639e04c70b57995b4ffe06e7c",
+    "src/GuiSpellNotice.cpp": "3db80f14c123c18716e03b1b39400e4dce774e690d1d956fd11c673a3af160f2",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/ItemManager.cpp": "c7eb31442b087cb6062c9b62e7d9a1e48e6e442f111fc8238603680f4cbacffa",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/Player.cpp": "3fa6b87037d280bcd7f25d05cf89b0f820aca16b3b47701a7d03372148e1587a",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/ReplayManager.cpp": "c36918f724269293acb48c0bb8f61a945df84de7559e634fe19a6adcaf18cac0",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewer.hpp": "d2bdd5dc267c1f76a32df7d0ee7b0507fc1854933c33e2bd8075d2b318ee5ab2",
+    "src/ScriptViewerWorker.cpp": "8151a0503ae3c4adad8c39e7777a5c95a05669f0806c7f540c211687cbe88157",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageAnimationSlots.cpp": "fd00235c85f114e2875907b1b7ead1c69bb72bac637f7ab96168c4a0f0f07208",
+    "src/StageLifecycle.cpp": "dff4a52c4f41f0e8a478d9753d1d54a957dcd314cc9d83c9436c66e98fed0558",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "target_cleanup_review": {
+    "address": 4290416,
+    "size": 66,
+    "sha256": "1071ffd232392b372c765e37a902f7d28c1fb0428de34e5173ef26b7b463271b",
+    "instructions": 27,
+    "fields": [
+      {
+        "offset": 50,
+        "type": "REL32",
+        "target": 4531361
+      }
+    ],
+    "branches": [
+      {
+        "offset": 6,
+        "destination": 64
+      },
+      {
+        "offset": 40,
+        "destination": 48
+      },
+      {
+        "offset": 61,
+        "destination": 16
+      }
+    ],
+    "calls": [
+      {
+        "offset": 49,
+        "target": 4531361,
+        "name": "",
+        "source": ""
+      }
+    ],
+    "returns": [
+      {
+        "offset": 65,
+        "operand": ""
+      }
+    ]
+  },
+  "complete_parent_review": {
+    "result": "nonexact",
+    "acceptance_authority": "none",
+    "complete": {
+      "target": {
+        "address": 4293008,
+        "size": 1544,
+        "sha256": "8faf3cdb2077f0f36debf6973da3bdec9f650b5300a30b65def4e1d59b317a6b",
+        "instructions": 461,
+        "field_count": 114,
+        "fields": [
+          [31, "DIR32", 4792916],
+          [36, "REL32", 4505936],
+          [41, "DIR32", 4792308],
+          [60, "DIR32", 4792248],
+          [78, "DIR32", 4683496],
+          [84, "REL32", 4211792],
+          [90, "DIR32", 4683492],
+          [99, "REL32", 4212016],
+          [104, "DIR32", 4683496],
+          [109, "REL32", 4212144],
+          [121, "DIR32", 4683532],
+          [131, "REL32", 4234832],
+          [145, "DIR32", 4683504],
+          [159, "REL32", 4218576],
+          [165, "DIR32", 4683828],
+          [170, "REL32", 4345232],
+          [176, "DIR32", 4683800],
+          [182, "DIR32", 4683524],
+          [200, "REL32", 4235152],
+          [205, "DIR32", 4683804],
+          [210, "REL32", 4290416],
+          [216, "DIR32", 4683832],
+          [222, "DIR32", 4672648],
+          [228, "DIR32", 4672652],
+          [233, "REL32", 4367440],
+          [251, "DIR32", 4683524],
+          [256, "DIR32", 4641400],
+          [266, "REL32", 4247472],
+          [272, "DIR32", 4683532],
+          [277, "REL32", 4275136],
+          [282, "DIR32", 4683824],
+          [314, "DIR32", 4683828],
+          [337, "REL32", 4353904],
+          [342, "DIR32", 4683504],
+          [369, "DIR32", 4683524],
+          [396, "DIR32", 4683800],
+          [423, "DIR32", 4683804],
+          [451, "DIR32", 4683516],
+          [468, "DIR32", 4683500],
+          [496, "DIR32", 4683840],
+          [513, "DIR32", 4683508],
+          [547, "DIR32", 4683796],
+          [575, "DIR32", 4672672],
+          [584, "DIR32", 4683848],
+          [594, "REL32", 4328208],
+          [600, "DIR32", 4683488],
+          [611, "REL32", 4234832],
+          [624, "REL32", 4234832],
+          [658, "DIR32", 4683504],
+          [671, "REL32", 4218576],
+          [677, "DIR32", 4683828],
+          [682, "REL32", 4345232],
+          [688, "DIR32", 4683800],
+          [705, "DIR32", 4683524],
+          [711, "REL32", 4235152],
+          [716, "DIR32", 4683804],
+          [721, "REL32", 4290416],
+          [727, "DIR32", 4683832],
+          [733, "DIR32", 4672648],
+          [739, "DIR32", 4672652],
+          [744, "REL32", 4367440],
+          [763, "DIR32", 4683524],
+          [768, "DIR32", 4641400],
+          [778, "REL32", 4247472],
+          [784, "DIR32", 4683532],
+          [789, "REL32", 4275136],
+          [794, "DIR32", 4683824],
+          [826, "DIR32", 4683828],
+          [849, "REL32", 4353904],
+          [854, "DIR32", 4683504],
+          [881, "DIR32", 4683524],
+          [908, "DIR32", 4683800],
+          [935, "DIR32", 4683804],
+          [963, "DIR32", 4683516],
+          [980, "DIR32", 4683500],
+          [1008, "DIR32", 4683840],
+          [1025, "DIR32", 4683508],
+          [1059, "DIR32", 4683796],
+          [1087, "DIR32", 4791672],
+          [1093, "DIR32", 4644760],
+          [1099, "DIR32", 4793744],
+          [1112, "REL32", 4449376],
+          [1118, "DIR32", 4683848],
+          [1128, "REL32", 4328208],
+          [1134, "DIR32", 4683488],
+          [1147, "REL32", 4234832],
+          [1162, "REL32", 4215824],
+          [1172, "DIR32", 4683492],
+          [1195, "REL32", 4203584],
+          [1201, "REL32", 4531361],
+          [1239, "DIR32", 4792916],
+          [1244, "REL32", 4505936],
+          [1250, "DIR32", 4672672],
+          [1259, "DIR32", 4673072],
+          [1277, "DIR32", 4792308],
+          [1299, "DIR32", 4792248],
+          [1326, "REL32", 4442288],
+          [1342, "DIR32", 4791336],
+          [1347, "REL32", 4238480],
+          [1353, "DIR32", 4683532],
+          [1358, "REL32", 4288576],
+          [1394, "DIR32", 4683832],
+          [1405, "DIR32", 4672616],
+          [1411, "DIR32", 4672620],
+          [1421, "DIR32", 4683836],
+          [1458, "DIR32", 4683524],
+          [1469, "DIR32", 4683532],
+          [1488, "DIR32", 4672576],
+          [1493, "REL32", 4295168],
+          [1499, "DIR32", 4672648],
+          [1504, "DIR32", 4672652],
+          [1515, "DIR32", 4672648],
+          [1520, "DIR32", 4672652],
+          [1525, "REL32", 4214480]
+        ],
+        "locals": [
+          [18, 635],
+          [28, 76],
+          [96, 140],
+          [135, 1170],
+          [296, 301],
+          [306, 313],
+          [351, 356],
+          [361, 368],
+          [378, 383],
+          [388, 395],
+          [405, 410],
+          [415, 422],
+          [432, 437],
+          [442, 449],
+          [477, 482],
+          [487, 494],
+          [522, 527],
+          [532, 537],
+          [556, 561],
+          [566, 573],
+          [580, 598],
+          [630, 1166],
+          [638, 1170],
+          [650, 1170],
+          [808, 813],
+          [818, 825],
+          [863, 868],
+          [873, 880],
+          [890, 895],
+          [900, 907],
+          [917, 922],
+          [927, 934],
+          [944, 949],
+          [954, 961],
+          [989, 994],
+          [999, 1006],
+          [1034, 1039],
+          [1044, 1049],
+          [1068, 1073],
+          [1078, 1085],
+          [1103, 1109],
+          [1107, 1111],
+          [1178, 1208],
+          [1187, 1208],
+          [1191, 1208],
+          [1213, 1238],
+          [1255, 1351],
+          [1267, 1275],
+          [1273, 1303],
+          [1311, 1332],
+          [1330, 1351],
+          [1337, 1351],
+          [1367, 1377],
+          [1371, 1377],
+          [1375, 1392],
+          [1402, 1456],
+          [1451, 1456],
+          [1465, 1497],
+          [1479, 1497],
+          [1485, 1497]
+        ],
+        "calls": [
+          [35, 4505936, 4505936],
+          [83, 4211792, 4211792],
+          [98, 4212016, 4212016],
+          [108, 4212144, 4212144],
+          [130, 4234832, 4234832],
+          [158, 4218576, 4218576],
+          [169, 4345232, 4345232],
+          [199, 4235152, 4235152],
+          [209, 4290416, 4290416],
+          [232, 4367440, 4367440],
+          [265, 4247472, 4247472],
+          [276, 4275136, 4275136],
+          [336, 4353904, 4353904],
+          [593, 4328208, 4328208],
+          [610, 4234832, 4234832],
+          [623, 4234832, 4234832],
+          [670, 4218576, 4218576],
+          [681, 4345232, 4345232],
+          [710, 4235152, 4235152],
+          [720, 4290416, 4290416],
+          [743, 4367440, 4367440],
+          [777, 4247472, 4247472],
+          [788, 4275136, 4275136],
+          [848, 4353904, 4353904],
+          [1111, 4449376, 4449376],
+          [1127, 4328208, 4328208],
+          [1146, 4234832, 4234832],
+          [1161, 4215824, 4215824],
+          [1194, 4203584, 4203584],
+          [1200, 4531361, 4531361],
+          [1243, 4505936, 4505936],
+          [1325, 4442288, 4442288],
+          [1346, 4238480, 4238480],
+          [1357, 4288576, 4288576],
+          [1492, 4295168, 4295168],
+          [1524, 4214480, 4214480]
+        ]
+      },
+      "native": {
+        "address": 4388496,
+        "size": 1535,
+        "sha256": "346d279d991531a0fda88f8915d0140c85bcc679e07550c56b1bce2ae6f298d0",
+        "instructions": 459,
+        "field_count": 114,
+        "fields": [
+          [31, "DIR32", 4417108],
+          [36, "REL32", 4398464],
+          [41, "DIR32", 4416928],
+          [60, "DIR32", 4417092],
+          [78, "DIR32", 4416916],
+          [83, "REL32", 4394096],
+          [89, "DIR32", 4416988],
+          [98, "REL32", 4394288],
+          [103, "DIR32", 4416916],
+          [108, "REL32", 4387904],
+          [120, "DIR32", 4417208],
+          [130, "REL32", 4306288],
+          [144, "DIR32", 4417000],
+          [158, "REL32", 4398352],
+          [164, "DIR32", 4417384],
+          [169, "REL32", 4271632],
+          [175, "DIR32", 4417016],
+          [193, "DIR32", 4416696],
+          [199, "REL32", 4205744],
+          [204, "DIR32", 4416684],
+          [209, "REL32", 4406336],
+          [215, "DIR32", 4417576],
+          [222, "DIR32", 4416952],
+          [228, "DIR32", 4416956],
+          [233, "REL32", 4402576],
+          [251, "DIR32", 4416696],
+          [256, "DIR32", 4416964],
+          [266, "REL32", 4207328],
+          [272, "DIR32", 4417208],
+          [277, "REL32", 4376608],
+          [282, "DIR32", 4417020],
+          [314, "DIR32", 4417384],
+          [337, "REL32", 4282736],
+          [342, "DIR32", 4417000],
+          [369, "DIR32", 4416696],
+          [396, "DIR32", 4417016],
+          [423, "DIR32", 4416684],
+          [451, "DIR32", 4417008],
+          [468, "DIR32", 4416996],
+          [496, "DIR32", 4417024],
+          [513, "DIR32", 4417004],
+          [547, "DIR32", 4417012],
+          [575, "DIR32", 4417032],
+          [584, "DIR32", 4417056],
+          [594, "REL32", 4337168],
+          [600, "DIR32", 4416940],
+          [611, "REL32", 4306288],
+          [624, "REL32", 4306288],
+          [658, "DIR32", 4417000],
+          [671, "REL32", 4398352],
+          [677, "DIR32", 4417384],
+          [682, "REL32", 4271632],
+          [688, "DIR32", 4417016],
+          [705, "DIR32", 4416696],
+          [711, "REL32", 4205744],
+          [716, "DIR32", 4416684],
+          [721, "REL32", 4406336],
+          [727, "DIR32", 4417576],
+          [734, "DIR32", 4416952],
+          [740, "DIR32", 4416956],
+          [745, "REL32", 4402576],
+          [751, "DIR32", 4416696],
+          [767, "DIR32", 4416964],
+          [779, "REL32", 4207328],
+          [785, "DIR32", 4417208],
+          [790, "REL32", 4376608],
+          [795, "DIR32", 4417020],
+          [827, "DIR32", 4417384],
+          [850, "REL32", 4282736],
+          [855, "DIR32", 4417000],
+          [882, "DIR32", 4416696],
+          [909, "DIR32", 4417016],
+          [936, "DIR32", 4416684],
+          [964, "DIR32", 4417008],
+          [981, "DIR32", 4416996],
+          [1009, "DIR32", 4417024],
+          [1026, "DIR32", 4417004],
+          [1060, "DIR32", 4417012],
+          [1088, "DIR32", 4416924],
+          [1094, "DIR32", 4408716],
+          [1100, "DIR32", 4417368],
+          [1113, "REL32", 4367152],
+          [1118, "DIR32", 4417056],
+          [1128, "REL32", 4337168],
+          [1133, "DIR32", 4416940],
+          [1146, "REL32", 4306288],
+          [1157, "REL32", 4209424],
+          [1163, "DIR32", 4416988],
+          [1182, "REL32", 4399792],
+          [1188, "REL32", 4415904],
+          [1226, "DIR32", 4417108],
+          [1231, "REL32", 4398464],
+          [1237, "DIR32", 4417032],
+          [1246, "DIR32", 4416968],
+          [1264, "DIR32", 4416928],
+          [1286, "DIR32", 4417092],
+          [1313, "REL32", 4396880],
+          [1333, "DIR32", 4417376],
+          [1338, "REL32", 4353872],
+          [1344, "DIR32", 4417208],
+          [1349, "REL32", 4392352],
+          [1384, "DIR32", 4417576],
+          [1395, "DIR32", 4417080],
+          [1401, "DIR32", 4417084],
+          [1411, "DIR32", 4417088],
+          [1449, "DIR32", 4416696],
+          [1460, "DIR32", 4417208],
+          [1479, "DIR32", 4417052],
+          [1484, "REL32", 4387824],
+          [1490, "DIR32", 4416952],
+          [1495, "DIR32", 4416956],
+          [1506, "DIR32", 4416952],
+          [1511, "DIR32", 4416956],
+          [1516, "REL32", 4198528]
+        ],
+        "locals": [
+          [18, 635],
+          [28, 76],
+          [95, 139],
+          [134, 1161],
+          [296, 301],
+          [306, 313],
+          [351, 356],
+          [361, 368],
+          [378, 383],
+          [388, 395],
+          [405, 410],
+          [415, 422],
+          [432, 437],
+          [442, 449],
+          [477, 482],
+          [487, 494],
+          [522, 527],
+          [532, 537],
+          [556, 561],
+          [566, 573],
+          [580, 598],
+          [630, 1161],
+          [638, 1161],
+          [650, 1161],
+          [809, 814],
+          [819, 826],
+          [864, 869],
+          [874, 881],
+          [891, 896],
+          [901, 908],
+          [918, 923],
+          [928, 935],
+          [945, 950],
+          [955, 962],
+          [990, 995],
+          [1000, 1007],
+          [1035, 1040],
+          [1045, 1050],
+          [1069, 1074],
+          [1079, 1086],
+          [1104, 1110],
+          [1108, 1112],
+          [1169, 1195],
+          [1178, 1195],
+          [1200, 1225],
+          [1242, 1342],
+          [1254, 1262],
+          [1260, 1290],
+          [1298, 1323],
+          [1321, 1342],
+          [1328, 1342],
+          [1358, 1368],
+          [1362, 1368],
+          [1366, 1383],
+          [1392, 1447],
+          [1438, 1447],
+          [1456, 1488],
+          [1470, 1488],
+          [1476, 1488]
+        ],
+        "calls": [
+          [35, 4398464, 4505936],
+          [82, 4394096, 4211792],
+          [97, 4394288, 4212016],
+          [107, 4387904, 4212144],
+          [129, 4306288, 4234832],
+          [157, 4398352, 4218576],
+          [168, 4271632, 4345232],
+          [198, 4205744, 4235152],
+          [208, 4406336, 4290416],
+          [232, 4402576, 4367440],
+          [265, 4207328, 4247472],
+          [276, 4376608, 4275136],
+          [336, 4282736, 4353904],
+          [593, 4337168, 4328208],
+          [610, 4306288, 4234832],
+          [623, 4306288, 4234832],
+          [670, 4398352, 4218576],
+          [681, 4271632, 4345232],
+          [710, 4205744, 4235152],
+          [720, 4406336, 4290416],
+          [744, 4402576, 4367440],
+          [778, 4207328, 4247472],
+          [789, 4376608, 4275136],
+          [849, 4282736, 4353904],
+          [1112, 4367152, 4449376],
+          [1127, 4337168, 4328208],
+          [1145, 4306288, 4234832],
+          [1156, 4209424, 4215824],
+          [1181, 4399792, 4203584],
+          [1187, 4415904, 4531361],
+          [1230, 4398464, 4505936],
+          [1312, 4396880, 4442288],
+          [1337, 4353872, 4238480],
+          [1348, 4392352, 4288576],
+          [1483, 4387824, 4295168],
+          [1515, 4198528, 4214480]
+        ]
+      }
+    },
+    "call_binding_bases": {
+      "?Stop@ScriptViewerWorkerView@@QAEXXZ": "0x44c150",
+      "?GamePrepareAnimationSlots@@YGXPAUGameChainOwnerView@@@Z": "0x404450",
+      "?GameEnterMenuState@@YAXPAUGameMenuView@@@Z": "0x404530",
+      "?GameResetAnimationSlots@@YAXPAUGameChainOwnerView@@@Z": "0x4045b0",
+      "?EnemyMarkPendingInterrupt@@YAXPAH@Z": "0x409e50",
+      "?ResetPool@BulletManagerView@@QAEXXZ": "0x405ed0",
+      "?PlayerResetRuntimeState@@YAXPAUPlayer@@@Z": "0x424d90",
+      "?EnemyManagerClear@@YGXPAUEnemyManagerView@@@Z": "0x409f90",
+      "?GameClearLinkedObjects@@YAXPAUGameChainOwnerView@@@Z": "0x417770",
+      "?BeginStage@ReplayManager@@QAEXXZ": "0x42a450",
+      "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z": "0x40cfb0",
+      "?GameResetGui@@YAXPAUGuiView@@@Z": "0x413bc0",
+      "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z": "0x426f70",
+      "?FrontEndPlayMusic@@YGHHH@Z": "0x420b10",
+      "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z": "0x43e460",
+      "?SetCurrent@AnmVmTimerView@@QAEXH@Z": "0x405410",
+      "??1StageScriptView@@QAE@XZ": "0x402440",
+      "??3@YAXPAX@Z": "0x4524a1",
+      "?StageCreateTransitionEffect@@YGPAXHHHIII@Z": "0x43c8b0",
+      "?SetNextGameMode@MainSupervisorView@@QAEXH@Z": "0x40ac90",
+      "?GameUpdateGui@@YAXPAUGuiView@@@Z": "0x417040",
+      "?GameUpdateFaithDecay@@YAXPAE@Z": "0x418a00",
+      "?Tick@AnmVmTimerView@@QAEXXZ": "0x404ed0"
+    },
+    "all36_call_identities_and_order_equal": true,
+    "diagnostic_windows": {
+      "target": {
+        "flags_start": 1365,
+        "flags_sha256": "ea6ced34cf3114c4e819ee17ef3b456a8a84d4bb3aff66165b35c68d26b77adb",
+        "sound_start": 1085,
+        "sound_ordinary_sha256": "4cfc971c65bfe767460d1fa2711130d96138cbd62e9acabd93ae5dace963f637",
+        "sound_fields": [
+          {
+            "offset": 1087,
+            "type": "DIR32",
+            "destination": 4791672,
+            "bound_identity": 4791672
+          },
+          {
+            "offset": 1093,
+            "type": "DIR32",
+            "destination": 4644760,
+            "bound_identity": 4644760
+          },
+          {
+            "offset": 1099,
+            "type": "DIR32",
+            "destination": 4793744,
+            "bound_identity": 4793744
+          },
+          {
+            "offset": 1112,
+            "type": "REL32",
+            "destination": 4449376,
+            "bound_identity": 4449376
+          }
+        ]
+      },
+      "native": {
+        "flags_start": 1356,
+        "flags_sha256": "ea6ced34cf3114c4e819ee17ef3b456a8a84d4bb3aff66165b35c68d26b77adb",
+        "sound_start": 1086,
+        "sound_ordinary_sha256": "4cfc971c65bfe767460d1fa2711130d96138cbd62e9acabd93ae5dace963f637",
+        "sound_fields": [
+          {
+            "offset": 1088,
+            "type": "DIR32",
+            "destination": 4416924,
+            "bound_identity": 4791672
+          },
+          {
+            "offset": 1094,
+            "type": "DIR32",
+            "destination": 4408716,
+            "bound_identity": 4644760
+          },
+          {
+            "offset": 1100,
+            "type": "DIR32",
+            "destination": 4417368,
+            "bound_identity": 4793744
+          },
+          {
+            "offset": 1113,
+            "type": "REL32",
+            "destination": 4367152,
+            "bound_identity": 4449376
+          }
+        ]
+      }
+    },
+    "window_note": "27-byte final3-bit branch/return span raw-equal;31-byte sound selection has15 ordinary bytes equal after its4 fields are excluded. Neither is an independently accepted owner. Whole1544/1535 extents and local destinations remain unequal."
+  },
+  "cold_replays": [
+    {
+      "label": "cold-one",
+      "exit_code": 0,
+      "unit_count": 4,
+      "matched_bytes": 284,
+      "groups": [
+        {
+          "artifact": "build/match-linked/GameObjectReset",
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "unit": "game-manager-update-callback",
+              "symbol": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+              "result": "exact",
+              "size": 7,
+              "matched_bytes": 7,
+              "compared_size": 7,
+              "decoded_bytes": 7,
+              "normalization_complete": true,
+              "image_sha256": "956295feb20eeab0f4d77f7d63468f2932fd6d09af70cf3173fe840173881e8b",
+              "pdb_guid": "d6114e653c5a1f45ab631ab06f2a22c3",
+              "pdb_age": 1,
+              "bound_fields": 1
+            },
+            {
+              "unit": "game-clear-linked-objects",
+              "symbol": "?GameClearLinkedObjects@@YAXPAUGameChainOwnerView@@@Z",
+              "result": "exact",
+              "size": 66,
+              "matched_bytes": 66,
+              "compared_size": 66,
+              "decoded_bytes": 66,
+              "normalization_complete": true,
+              "image_sha256": "956295feb20eeab0f4d77f7d63468f2932fd6d09af70cf3173fe840173881e8b",
+              "pdb_guid": "d6114e653c5a1f45ab631ab06f2a22c3",
+              "pdb_age": 1,
+              "bound_fields": 1
+            }
+          ]
+        },
+        {
+          "artifact": "build/match-linked/GameStageTransition",
+          "source": "src/GameManager.cpp",
+          "units": [
+            {
+              "unit": "game-stage-transition-delay",
+              "symbol": "?GameResetAnimationSlots@@YAXPAUGameChainOwnerView@@@Z",
+              "result": "exact",
+              "size": 92,
+              "matched_bytes": 92,
+              "compared_size": 92,
+              "decoded_bytes": 92,
+              "normalization_complete": true,
+              "image_sha256": "f2522193cb3dc8b9ff1663f179a67e308484e7c9843ef9e2ffa960c6cfd33ae4",
+              "pdb_guid": "dc931818ccb1b446a152a38c4a17df97",
+              "pdb_age": 1,
+              "bound_fields": 1
+            }
+          ]
+        },
+        {
+          "artifact": "build/match-linked/GameStageSlots",
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "unit": "game-enter-menu-state",
+              "symbol": "?GameEnterMenuState@@YAXPAUGameMenuView@@@Z",
+              "result": "exact",
+              "size": 119,
+              "matched_bytes": 119,
+              "compared_size": 119,
+              "decoded_bytes": 119,
+              "normalization_complete": true,
+              "image_sha256": "7d16f1ba52ae07d4f1f5c3f6f90ff706fb728b0be384c40ae699f0d3dbfb888d",
+              "pdb_guid": "47b811616316de469c710adccfd5a4ce",
+              "pdb_age": 1,
+              "bound_fields": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "cold-two",
+      "exit_code": 0,
+      "unit_count": 2,
+      "matched_bytes": 73,
+      "groups": [
+        {
+          "artifact": "build/match-linked/GameObjectReset",
+          "source": "src/Enemy.cpp",
+          "units": [
+            {
+              "unit": "game-manager-update-callback",
+              "symbol": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+              "result": "exact",
+              "size": 7,
+              "matched_bytes": 7,
+              "compared_size": 7,
+              "decoded_bytes": 7,
+              "normalization_complete": true,
+              "image_sha256": "1432cf4e70d32fa605c77f6d414c6e34099efce18eecb9ccc5bdbb62a34743a7",
+              "pdb_guid": "1a4b2eb639fe664c9343bae7eb06d82a",
+              "pdb_age": 1,
+              "bound_fields": 1
+            },
+            {
+              "unit": "game-clear-linked-objects",
+              "symbol": "?GameClearLinkedObjects@@YAXPAUGameChainOwnerView@@@Z",
+              "result": "exact",
+              "size": 66,
+              "matched_bytes": 66,
+              "compared_size": 66,
+              "decoded_bytes": 66,
+              "normalization_complete": true,
+              "image_sha256": "1432cf4e70d32fa605c77f6d414c6e34099efce18eecb9ccc5bdbb62a34743a7",
+              "pdb_guid": "1a4b2eb639fe664c9343bae7eb06d82a",
+              "pdb_age": 1,
+              "bound_fields": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "same_image_guards": {
+    "cold-one": {
+      "passed": {
+        "enemy-end-spell": {
+          "result": "exact",
+          "size": 399,
+          "bound_fields": 20
+        },
+        "game-score-add-power": {
+          "result": "exact",
+          "size": 166,
+          "bound_fields": 4
+        },
+        "item-rank-add": {
+          "result": "exact",
+          "size": 42,
+          "bound_fields": 0
+        },
+        "gui-update-score-display": {
+          "result": "exact",
+          "size": 671,
+          "bound_fields": 36
+        },
+        "game-add-lives": {
+          "result": "exact",
+          "size": 141,
+          "bound_fields": 12
+        },
+        "anm-loaded-create-vm-variant0": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 5
+        },
+        "anm-loaded-set-sprite": {
+          "result": "exact",
+          "size": 356,
+          "bound_fields": 2
+        },
+        "enemy-sound-queue-sample": {
+          "result": "exact",
+          "size": 123,
+          "bound_fields": 1
+        },
+        "enemy-mark-pending-interrupt": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 2
+        },
+        "anm-manager-find-vm": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 0
+        },
+        "anm-vm-id-set-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "anm-vm-id-clear-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "transition-effect-factory": {
+          "result": "exact",
+          "size": 82,
+          "bound_fields": 2
+        },
+        "game-stage-transition-delay": {
+          "result": "exact",
+          "size": 92,
+          "bound_fields": 1
+        },
+        "game-enter-menu-state": {
+          "result": "exact",
+          "size": 119,
+          "bound_fields": 2
+        },
+        "script-viewer-worker-stop": {
+          "result": "exact",
+          "size": 101,
+          "bound_fields": 3
+        },
+        "bullet-reset-pool": {
+          "result": "exact",
+          "size": 45,
+          "bound_fields": 2
+        },
+        "enemy-manager-clear": {
+          "result": "exact",
+          "size": 118,
+          "bound_fields": 2
+        },
+        "main-set-next-game-mode": {
+          "result": "exact",
+          "size": 37,
+          "bound_fields": 0
+        },
+        "front-end-play-music": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 8
+        },
+        "game-manager-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "bound_fields": 1
+        },
+        "game-update-faith-decay": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "bound_fields": 4
+        }
+      },
+      "rejected": {
+        "stage-lifecycle-destructor": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x1cc differs from manifest 0x1f3"
+        }
+      }
+    },
+    "cold-two": {
+      "passed": {
+        "enemy-end-spell": {
+          "result": "exact",
+          "size": 399,
+          "bound_fields": 20
+        },
+        "game-score-add-power": {
+          "result": "exact",
+          "size": 166,
+          "bound_fields": 4
+        },
+        "item-rank-add": {
+          "result": "exact",
+          "size": 42,
+          "bound_fields": 0
+        },
+        "gui-update-score-display": {
+          "result": "exact",
+          "size": 671,
+          "bound_fields": 36
+        },
+        "game-add-lives": {
+          "result": "exact",
+          "size": 141,
+          "bound_fields": 12
+        },
+        "anm-loaded-create-vm-variant0": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 5
+        },
+        "anm-loaded-set-sprite": {
+          "result": "exact",
+          "size": 356,
+          "bound_fields": 2
+        },
+        "enemy-sound-queue-sample": {
+          "result": "exact",
+          "size": 123,
+          "bound_fields": 1
+        },
+        "enemy-mark-pending-interrupt": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 2
+        },
+        "anm-manager-find-vm": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 0
+        },
+        "anm-vm-id-set-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "anm-vm-id-clear-flag2": {
+          "result": "exact",
+          "size": 67,
+          "bound_fields": 2
+        },
+        "transition-effect-factory": {
+          "result": "exact",
+          "size": 82,
+          "bound_fields": 2
+        },
+        "game-stage-transition-delay": {
+          "result": "exact",
+          "size": 92,
+          "bound_fields": 1
+        },
+        "game-enter-menu-state": {
+          "result": "exact",
+          "size": 119,
+          "bound_fields": 2
+        },
+        "script-viewer-worker-stop": {
+          "result": "exact",
+          "size": 101,
+          "bound_fields": 3
+        },
+        "bullet-reset-pool": {
+          "result": "exact",
+          "size": 45,
+          "bound_fields": 2
+        },
+        "enemy-manager-clear": {
+          "result": "exact",
+          "size": 118,
+          "bound_fields": 2
+        },
+        "main-set-next-game-mode": {
+          "result": "exact",
+          "size": 37,
+          "bound_fields": 0
+        },
+        "front-end-play-music": {
+          "result": "exact",
+          "size": 73,
+          "bound_fields": 8
+        },
+        "game-manager-update-callback": {
+          "result": "exact",
+          "size": 7,
+          "bound_fields": 1
+        },
+        "game-update-faith-decay": {
+          "result": "exact",
+          "size": 65,
+          "bound_fields": 1
+        },
+        "anm-timer-tick": {
+          "result": "exact",
+          "size": 72,
+          "bound_fields": 4
+        }
+      },
+      "rejected": {
+        "stage-lifecycle-destructor": {
+          "result": "rejected",
+          "error": "PDB contribution size 0x1cc differs from manifest 0x1f3"
+        }
+      }
+    }
+  },
+  "callback_failed_single_tu": {
+    "global_exit": 1,
+    "error": {
+      "result": "error",
+      "error": "unit 'game-manager-update-callback' failed exact replay: {\"error\": \"PDB contribution size 0xa differs from manifest 0x7\", \"result\": \"error\", \"returncode\": 1}"
+    },
+    "review": {
+      "?OnUpdate@GameManager@@SIIPAU1@@Z": {
+        "owner": {
+          "symbol": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+          "address": "0x004013B0",
+          "size": 10,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 944,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 1,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameStageTransition\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameStageTransition\\source.ltcg.obj",
+          "sha256": "14aab13f1e9c468b03bfc6dea4f9983df77be1b12cedd76b279c0e00a3eff924"
+        },
+        "ends": ["9 ret "],
+        "body": ["0 push ebx", "1 mov ebx, ecx", "3 call 0x4013c0", "8 pop ebx", "9 ret "]
+      },
+      "?GameManagerUpdateBody@@YGIPAUGameManager@@@Z": {
+        "owner": {
+          "symbol": "?GameManagerUpdateBody@@YGIPAUGameManager@@@Z",
+          "address": "0x004013C0",
+          "size": 1552,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 960,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 1,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameStageTransition\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\GameStageTransition\\source.ltcg.obj",
+          "sha256": "fdf4d2ddcbdde6d348bb8ac04a76af481f56c0cddacc6536fb10164bb3a982fd"
+        },
+        "ends": ["43 ret ", "4E3 ret ", "57A ret ", "60F ret "],
+        "body": []
+      }
+    },
+    "repair": "Only callback recipe migrates to actual28-input graph; strict7/all1 target contract unchanged."
+  },
+  "typed_delete_control": {
+    "restored": true,
+    "ordinary_hashes_equal": true,
+    "all114_resolved_field_identities_and_positions_equal": true
+  },
+  "controls": [
+    {
+      "label": "first-complete-fixed",
+      "comparisons": {
+        "cleanup": {
+          "result": "structural-exact",
+          "candidate_size": 66,
+          "target_size": 66,
+          "normalization_complete": true
+        },
+        "worker": {
+          "result": "structural-exact",
+          "candidate_size": 101,
+          "target_size": 101,
+          "normalization_complete": true
+        },
+        "pool": {
+          "result": "structural-exact",
+          "candidate_size": 45,
+          "target_size": 45,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 1000,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "enter": {
+          "result": "structural-exact",
+          "candidate_size": 119,
+          "target_size": 119,
+          "normalization_complete": true
+        },
+        "factory": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "normalization_complete": true
+        },
+        "slots": {
+          "result": "mismatch",
+          "candidate_size": 184,
+          "target_size": 214,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1602,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "embedded": {
+          "result": "mismatch",
+          "candidate_size": 200,
+          "target_size": 202,
+          "normalization_complete": true
+        },
+        "initialize": {
+          "result": "structural-exact",
+          "candidate_size": 273,
+          "target_size": 273,
+          "normalization_complete": true
+        },
+        "binder": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        },
+        "end": {
+          "result": "structural-exact",
+          "candidate_size": 399,
+          "target_size": 399,
+          "normalization_complete": true
+        },
+        "dispatch": {
+          "result": "mismatch",
+          "candidate_size": 14348,
+          "target_size": 14416,
+          "normalization_complete": true
+        },
+        "power": {
+          "result": "structural-exact",
+          "candidate_size": 166,
+          "target_size": 166,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "pool-boundary",
+      "comparisons": {
+        "cleanup": {
+          "result": "structural-exact",
+          "candidate_size": 66,
+          "target_size": 66,
+          "normalization_complete": true
+        },
+        "worker": {
+          "result": "structural-exact",
+          "candidate_size": 101,
+          "target_size": 101,
+          "normalization_complete": true
+        },
+        "pool": {
+          "result": "structural-exact",
+          "candidate_size": 45,
+          "target_size": 45,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 1000,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "enter": {
+          "result": "structural-exact",
+          "candidate_size": 119,
+          "target_size": 119,
+          "normalization_complete": true
+        },
+        "factory": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "normalization_complete": true
+        },
+        "slots": {
+          "result": "mismatch",
+          "candidate_size": 184,
+          "target_size": 214,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1528,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "embedded": {
+          "result": "mismatch",
+          "candidate_size": 200,
+          "target_size": 202,
+          "normalization_complete": true
+        },
+        "initialize": {
+          "result": "structural-exact",
+          "candidate_size": 273,
+          "target_size": 273,
+          "normalization_complete": true
+        },
+        "binder": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        },
+        "end": {
+          "result": "structural-exact",
+          "candidate_size": 399,
+          "target_size": 399,
+          "normalization_complete": true
+        },
+        "dispatch": {
+          "result": "mismatch",
+          "candidate_size": 14348,
+          "target_size": 14416,
+          "normalization_complete": true
+        },
+        "power": {
+          "result": "structural-exact",
+          "candidate_size": 166,
+          "target_size": 166,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "separate-final-flags",
+      "comparisons": {
+        "cleanup": {
+          "result": "structural-exact",
+          "candidate_size": 66,
+          "target_size": 66,
+          "normalization_complete": true
+        },
+        "worker": {
+          "result": "structural-exact",
+          "candidate_size": 101,
+          "target_size": 101,
+          "normalization_complete": true
+        },
+        "pool": {
+          "result": "structural-exact",
+          "candidate_size": 45,
+          "target_size": 45,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 1000,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "enter": {
+          "result": "structural-exact",
+          "candidate_size": 119,
+          "target_size": 119,
+          "normalization_complete": true
+        },
+        "factory": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "normalization_complete": true
+        },
+        "slots": {
+          "result": "mismatch",
+          "candidate_size": 184,
+          "target_size": 214,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1533,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "embedded": {
+          "result": "mismatch",
+          "candidate_size": 200,
+          "target_size": 202,
+          "normalization_complete": true
+        },
+        "initialize": {
+          "result": "structural-exact",
+          "candidate_size": 273,
+          "target_size": 273,
+          "normalization_complete": true
+        },
+        "binder": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        },
+        "end": {
+          "result": "structural-exact",
+          "candidate_size": 399,
+          "target_size": 399,
+          "normalization_complete": true
+        },
+        "dispatch": {
+          "result": "mismatch",
+          "candidate_size": 14348,
+          "target_size": 14416,
+          "normalization_complete": true
+        },
+        "power": {
+          "result": "structural-exact",
+          "candidate_size": 166,
+          "target_size": 166,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "typed-stage-delete",
+      "comparisons": {
+        "cleanup": {
+          "result": "structural-exact",
+          "candidate_size": 66,
+          "target_size": 66,
+          "normalization_complete": true
+        },
+        "worker": {
+          "result": "structural-exact",
+          "candidate_size": 101,
+          "target_size": 101,
+          "normalization_complete": true
+        },
+        "pool": {
+          "result": "structural-exact",
+          "candidate_size": 45,
+          "target_size": 45,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 1000,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "enter": {
+          "result": "structural-exact",
+          "candidate_size": 119,
+          "target_size": 119,
+          "normalization_complete": true
+        },
+        "factory": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "normalization_complete": true
+        },
+        "slots": {
+          "result": "mismatch",
+          "candidate_size": 184,
+          "target_size": 214,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1533,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "embedded": {
+          "result": "mismatch",
+          "candidate_size": 200,
+          "target_size": 202,
+          "normalization_complete": true
+        },
+        "initialize": {
+          "result": "structural-exact",
+          "candidate_size": 273,
+          "target_size": 273,
+          "normalization_complete": true
+        },
+        "binder": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        },
+        "end": {
+          "result": "structural-exact",
+          "candidate_size": 399,
+          "target_size": 399,
+          "normalization_complete": true
+        },
+        "dispatch": {
+          "result": "mismatch",
+          "candidate_size": 14348,
+          "target_size": 14416,
+          "normalization_complete": true
+        },
+        "power": {
+          "result": "structural-exact",
+          "candidate_size": 166,
+          "target_size": 166,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "branch-sound-mode",
+      "comparisons": {
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "cleanup": {
+          "result": "structural-exact",
+          "candidate_size": 66,
+          "target_size": 66,
+          "normalization_complete": true
+        },
+        "worker": {
+          "result": "structural-exact",
+          "candidate_size": 101,
+          "target_size": 101,
+          "normalization_complete": true
+        },
+        "pool": {
+          "result": "structural-exact",
+          "candidate_size": 45,
+          "target_size": 45,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 1000,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "enter": {
+          "result": "structural-exact",
+          "candidate_size": 119,
+          "target_size": 119,
+          "normalization_complete": true
+        },
+        "factory": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "normalization_complete": true
+        },
+        "slots": {
+          "result": "mismatch",
+          "candidate_size": 184,
+          "target_size": 214,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1535,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "embedded": {
+          "result": "mismatch",
+          "candidate_size": 200,
+          "target_size": 202,
+          "normalization_complete": true
+        },
+        "initialize": {
+          "result": "structural-exact",
+          "candidate_size": 273,
+          "target_size": 273,
+          "normalization_complete": true
+        },
+        "binder": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        },
+        "end": {
+          "result": "structural-exact",
+          "candidate_size": 399,
+          "target_size": 399,
+          "normalization_complete": true
+        },
+        "dispatch": {
+          "result": "mismatch",
+          "candidate_size": 14348,
+          "target_size": 14416,
+          "normalization_complete": true
+        },
+        "power": {
+          "result": "structural-exact",
+          "candidate_size": 166,
+          "target_size": 166,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "cold-one-image",
+      "comparisons": {
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "cleanup": {
+          "result": "structural-exact",
+          "candidate_size": 66,
+          "target_size": 66,
+          "normalization_complete": true
+        },
+        "worker": {
+          "result": "structural-exact",
+          "candidate_size": 101,
+          "target_size": 101,
+          "normalization_complete": true
+        },
+        "pool": {
+          "result": "structural-exact",
+          "candidate_size": 45,
+          "target_size": 45,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 1000,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "enter": {
+          "result": "structural-exact",
+          "candidate_size": 119,
+          "target_size": 119,
+          "normalization_complete": true
+        },
+        "factory": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "normalization_complete": true
+        },
+        "slots": {
+          "result": "mismatch",
+          "candidate_size": 184,
+          "target_size": 214,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1535,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "embedded": {
+          "result": "mismatch",
+          "candidate_size": 200,
+          "target_size": 202,
+          "normalization_complete": true
+        },
+        "initialize": {
+          "result": "structural-exact",
+          "candidate_size": 273,
+          "target_size": 273,
+          "normalization_complete": true
+        },
+        "binder": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        },
+        "end": {
+          "result": "structural-exact",
+          "candidate_size": 399,
+          "target_size": 399,
+          "normalization_complete": true
+        },
+        "dispatch": {
+          "result": "mismatch",
+          "candidate_size": 14348,
+          "target_size": 14416,
+          "normalization_complete": true
+        },
+        "power": {
+          "result": "structural-exact",
+          "candidate_size": 166,
+          "target_size": 166,
+          "normalization_complete": true
+        }
+      }
+    },
+    {
+      "label": "cold-two-image",
+      "comparisons": {
+        "gamecleanup": {
+          "result": "mismatch",
+          "candidate_size": 1108,
+          "target_size": 1105,
+          "normalization_complete": true
+        },
+        "cleanup": {
+          "result": "structural-exact",
+          "candidate_size": 66,
+          "target_size": 66,
+          "normalization_complete": true
+        },
+        "worker": {
+          "result": "structural-exact",
+          "candidate_size": 101,
+          "target_size": 101,
+          "normalization_complete": true
+        },
+        "pool": {
+          "result": "structural-exact",
+          "candidate_size": 45,
+          "target_size": 45,
+          "normalization_complete": true
+        },
+        "replay": {
+          "result": "mismatch",
+          "candidate_size": 1000,
+          "target_size": 582,
+          "normalization_complete": true
+        },
+        "enter": {
+          "result": "structural-exact",
+          "candidate_size": 119,
+          "target_size": 119,
+          "normalization_complete": true
+        },
+        "factory": {
+          "result": "structural-exact",
+          "candidate_size": 82,
+          "target_size": 82,
+          "normalization_complete": true
+        },
+        "slots": {
+          "result": "mismatch",
+          "candidate_size": 184,
+          "target_size": 214,
+          "normalization_complete": true
+        },
+        "game": {
+          "result": "mismatch",
+          "candidate_size": 1535,
+          "target_size": 1544,
+          "normalization_complete": true
+        },
+        "embedded": {
+          "result": "mismatch",
+          "candidate_size": 200,
+          "target_size": 202,
+          "normalization_complete": true
+        },
+        "initialize": {
+          "result": "structural-exact",
+          "candidate_size": 273,
+          "target_size": 273,
+          "normalization_complete": true
+        },
+        "binder": {
+          "result": "mismatch",
+          "candidate_size": 197,
+          "target_size": 203,
+          "normalization_complete": true
+        },
+        "begin": {
+          "result": "mismatch",
+          "candidate_size": 2424,
+          "target_size": 2432,
+          "normalization_complete": true
+        },
+        "end": {
+          "result": "structural-exact",
+          "candidate_size": 399,
+          "target_size": 399,
+          "normalization_complete": true
+        },
+        "dispatch": {
+          "result": "mismatch",
+          "candidate_size": 14348,
+          "target_size": 14416,
+          "normalization_complete": true
+        },
+        "power": {
+          "result": "structural-exact",
+          "candidate_size": 166,
+          "target_size": 166,
+          "normalization_complete": true
+        }
+      }
+    }
+  ],
+  "private_campaign": ".analysis/gpt-6.1-sol/game-manager-bindings-20261031",
+  "limitations": "GameManager1535/1544 and cleanup1108/1105 remain nonexact. Replay1000/582, stage destructor460/499, stage reset184/214 and embedded/binder interfaces remain nonexact. No fragment, original class/TU/storage, product/runtime/portability claim."
+}
