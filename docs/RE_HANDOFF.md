@@ -11,16 +11,19 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 113,817 / 275,890 |
-| Authored exact owners | 530 |
-| Total canonical exact owners / codegen bytes | 1,410 / 181,951 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 173 |
+| Reviewed authored owned bytes exact | 113,944 / 275,890 |
+| Authored exact owners | 531 |
+| Total canonical exact owners / codegen bytes | 1,411 / 182,078 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 172 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
 proves neither original names/class/TU ownership nor product/runtime/portability.
 
 ## Latest reviewed authored exact checkpoint
+
+[TransitionEffectView::Cleanup @43CB00](evidence/transition-cleanup-exact-20261031/README.md) is now complete **127/127 exact**, all 14 original call/global fields bound, under the actual StageCreate link. Two independent selected cold links pass cleanup alone, then both cleanup and existing StageLifecycle initializer (**649/649**). The authored exact numerator becomes **113,944 / 275,890**, **531 owners**. No full cold replay or source/ABI changes were required.
+
 
 [Three complete lifecycle owners](evidence/script-viewer-graph-lifecycle-exacts-20261031/README.md) now replay **69/69 PlayerCreate**, **95/95 EnemyManagerCreate** and **161/161 ANM AllocateVm** under one real `ScriptViewerCreate` lifecycle producer. All14 original target fields and the unique source/PDB owners bind; two independent scoped cold builds pass first **626/626** across three new and two existing guards, then **325/325** across only the three new functions. This raises reviewed authored exact to **113,817/275,890**, **530 authored exact owners**; the denominator is still provisional.
 

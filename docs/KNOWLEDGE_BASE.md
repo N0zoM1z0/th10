@@ -2653,6 +2653,9 @@ remain open.
 
 ## Transition allocator and scheduler interfaces (2026-10-19)
 
+**2026-10-31 strict cleanup acceptance:** [TransitionEffectView::Cleanup](evidence/transition-cleanup-exact-20261031/README.md) now matches all **127/127 bytes, 14/14 bound fields** in the genuine StageCreate linked graph: both critical-section enter/leave calls, each Chain pointer, four critical-section references, four nesting-counter references and two UnregisterElem calls are target-bound. Two independent selected colds reproduce it, the second also preserving the existing 522-byte StageLifecycle initializer (**649/649**). This is a new exact-source checkpoint; the older statement below that cleanup was unequal describes a historical alternate graph and is now superseded. Original TU/data/runtime remains open.
+
+
 Read-only local Ghidra attests all mapped text before/after temporary metadata,
 with rollback. The target43C8B0 factory calls452493 with a single size0x44 and
 ADD ESP4, then uses EBX priority/five real stack operands and RET20. Fresh pinned
@@ -2675,7 +2678,9 @@ nine-slot table43CAD8. All9 destinations are internal starts, selector bounds
 are unsigned0..8, physical order0/1/2/3/5/4/6/7/8, and next cleanup starts43CB00.
 The corrected ownership adds39 authored denominator bytes with zero parent
 credit; the two callbacks add161 reviewed bytes. Native factory remains88/82,
-initializer396/396 still has scheduling differences, cleanup127 remains unequal.
+initializer396/396 still has scheduling differences; the earlier cleanup127
+nonexact comparison is historical and is superseded by the 2026-10-31
+StageCreate graph full-match proof above.
 The positive factory branch/common source return is byte-neutral. Do not infer
 exactness from sizes or relaxed static callback-address normalization.
 
