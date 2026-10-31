@@ -1,0 +1,2104 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owner": {
+    "symbol": "?ConsumeEntries@HintOwnerView@@QAEHPAUHintLinkView@@H@Z",
+    "target_address": "0x00419120",
+    "map_object": "source.ltcg.obj"
+  },
+  "target_field_roles": [
+    {
+      "offset": 19,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4791312,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+    },
+    {
+      "offset": 50,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4672644,
+      "symbol": "?g_GameFrameRestorePending@@3HA"
+    },
+    {
+      "offset": 218,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4656080,
+      "symbol": "__real@41000000"
+    },
+    {
+      "offset": 239,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655868,
+      "symbol": "__real@3f800000"
+    },
+    {
+      "offset": 255,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4683488,
+      "symbol": "?g_GameEffectUpdate@@3PAUGameEffectUpdateView@@A"
+    },
+    {
+      "offset": 276,
+      "width": 4,
+      "type": "REL32",
+      "target": 4492720,
+      "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z"
+    },
+    {
+      "offset": 290,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4791312,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+    },
+    {
+      "offset": 417,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4656296,
+      "symbol": "__real@3fc00000"
+    },
+    {
+      "offset": 464,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655880,
+      "symbol": "__real@40000000"
+    },
+    {
+      "offset": 481,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4683488,
+      "symbol": "?g_GameEffectUpdate@@3PAUGameEffectUpdateView@@A"
+    },
+    {
+      "offset": 498,
+      "width": 4,
+      "type": "REL32",
+      "target": 4492720,
+      "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z"
+    },
+    {
+      "offset": 532,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4791312,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+    },
+    {
+      "offset": 545,
+      "width": 4,
+      "type": "REL32",
+      "target": 4493760,
+      "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+    },
+    {
+      "offset": 562,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4656136,
+      "symbol": "__real@41700000"
+    },
+    {
+      "offset": 567,
+      "width": 4,
+      "type": "REL32",
+      "target": 4602668,
+      "symbol": "__ftol2"
+    },
+    {
+      "offset": 588,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4656356,
+      "symbol": "__real@3f400000"
+    },
+    {
+      "offset": 615,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655884,
+      "symbol": "__real@3f000000"
+    },
+    {
+      "offset": 636,
+      "width": 4,
+      "type": "REL32",
+      "target": 4303728,
+      "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z"
+    },
+    {
+      "offset": 642,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4791312,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+    },
+    {
+      "offset": 653,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4683488,
+      "symbol": "?g_GameEffectUpdate@@3PAUGameEffectUpdateView@@A"
+    },
+    {
+      "offset": 670,
+      "width": 4,
+      "type": "REL32",
+      "target": 4492720,
+      "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z"
+    },
+    {
+      "offset": 684,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4791312,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+    },
+    {
+      "offset": 719,
+      "width": 4,
+      "type": "REL32",
+      "target": 4493760,
+      "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+    },
+    {
+      "offset": 748,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4656356,
+      "symbol": "__real@3f400000"
+    },
+    {
+      "offset": 777,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655884,
+      "symbol": "__real@3f000000"
+    },
+    {
+      "offset": 796,
+      "width": 4,
+      "type": "REL32",
+      "target": 4303728,
+      "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z"
+    },
+    {
+      "offset": 878,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655884,
+      "symbol": "__real@3f000000"
+    },
+    {
+      "offset": 926,
+      "width": 4,
+      "type": "REL32",
+      "target": 4487904,
+      "symbol": "?DrawTextRight@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+    },
+    {
+      "offset": 1014,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655884,
+      "symbol": "__real@3f000000"
+    },
+    {
+      "offset": 1062,
+      "width": 4,
+      "type": "REL32",
+      "target": 4487760,
+      "symbol": "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+    },
+    {
+      "offset": 1163,
+      "width": 4,
+      "type": "REL32",
+      "target": 4488112,
+      "symbol": "?DrawTextCentered@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+    },
+    {
+      "offset": 1172,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4791312,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+    },
+    {
+      "offset": 1280,
+      "width": 4,
+      "type": "REL32",
+      "target": 4531361,
+      "symbol": "??3@YAXPAX@Z"
+    },
+    {
+      "offset": 1286,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4791312,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+    }
+  ],
+  "native_reproduction": {
+    "result": "complete-native-candidate-nonexact",
+    "target_size": 1317,
+    "native_size": 1308,
+    "target_geometry": {
+      "instructions": 348,
+      "local_branches": [
+        {
+          "offset": 10,
+          "mnemonic": "je",
+          "destination": 1308
+        },
+        {
+          "offset": 46,
+          "mnemonic": "je",
+          "destination": 56
+        },
+        {
+          "offset": 54,
+          "mnemonic": "jne",
+          "destination": 59
+        },
+        {
+          "offset": 64,
+          "mnemonic": "jg",
+          "destination": 1293
+        },
+        {
+          "offset": 92,
+          "mnemonic": "je",
+          "destination": 207
+        },
+        {
+          "offset": 102,
+          "mnemonic": "je",
+          "destination": 117
+        },
+        {
+          "offset": 108,
+          "mnemonic": "je",
+          "destination": 143
+        },
+        {
+          "offset": 115,
+          "mnemonic": "jne",
+          "destination": 104
+        },
+        {
+          "offset": 125,
+          "mnemonic": "je",
+          "destination": 207
+        },
+        {
+          "offset": 132,
+          "mnemonic": "je",
+          "destination": 143
+        },
+        {
+          "offset": 139,
+          "mnemonic": "jne",
+          "destination": 128
+        },
+        {
+          "offset": 141,
+          "mnemonic": "jmp",
+          "destination": 207
+        },
+        {
+          "offset": 147,
+          "mnemonic": "je",
+          "destination": 207
+        },
+        {
+          "offset": 173,
+          "mnemonic": "jne",
+          "destination": 207
+        },
+        {
+          "offset": 180,
+          "mnemonic": "je",
+          "destination": 207
+        },
+        {
+          "offset": 182,
+          "mnemonic": "jmp",
+          "destination": 192
+        },
+        {
+          "offset": 205,
+          "mnemonic": "jne",
+          "destination": 192
+        },
+        {
+          "offset": 248,
+          "mnemonic": "jp",
+          "destination": 456
+        },
+        {
+          "offset": 323,
+          "mnemonic": "jne",
+          "destination": 329
+        },
+        {
+          "offset": 327,
+          "mnemonic": "jmp",
+          "destination": 389
+        },
+        {
+          "offset": 337,
+          "mnemonic": "je",
+          "destination": 352
+        },
+        {
+          "offset": 343,
+          "mnemonic": "je",
+          "destination": 383
+        },
+        {
+          "offset": 350,
+          "mnemonic": "jne",
+          "destination": 339
+        },
+        {
+          "offset": 360,
+          "mnemonic": "je",
+          "destination": 325
+        },
+        {
+          "offset": 372,
+          "mnemonic": "je",
+          "destination": 383
+        },
+        {
+          "offset": 379,
+          "mnemonic": "jne",
+          "destination": 368
+        },
+        {
+          "offset": 381,
+          "mnemonic": "jmp",
+          "destination": 389
+        },
+        {
+          "offset": 387,
+          "mnemonic": "jne",
+          "destination": 395
+        },
+        {
+          "offset": 451,
+          "mnemonic": "jmp",
+          "destination": 789
+        },
+        {
+          "offset": 474,
+          "mnemonic": "jp",
+          "destination": 651
+        },
+        {
+          "offset": 553,
+          "mnemonic": "jne",
+          "destination": 557
+        },
+        {
+          "offset": 646,
+          "mnemonic": "jmp",
+          "destination": 800
+        },
+        {
+          "offset": 725,
+          "mnemonic": "jne",
+          "destination": 729
+        },
+        {
+          "offset": 806,
+          "mnemonic": "je",
+          "destination": 1095
+        },
+        {
+          "offset": 813,
+          "mnemonic": "je",
+          "destination": 962
+        },
+        {
+          "offset": 820,
+          "mnemonic": "jne",
+          "destination": 1176
+        },
+        {
+          "offset": 957,
+          "mnemonic": "jmp",
+          "destination": 1170
+        },
+        {
+          "offset": 1093,
+          "mnemonic": "jmp",
+          "destination": 1170
+        },
+        {
+          "offset": 1245,
+          "mnemonic": "je",
+          "destination": 1253
+        },
+        {
+          "offset": 1258,
+          "mnemonic": "je",
+          "destination": 1266
+        },
+        {
+          "offset": 1276,
+          "mnemonic": "je",
+          "destination": 1293
+        },
+        {
+          "offset": 1299,
+          "mnemonic": "jne",
+          "destination": 32
+        }
+      ],
+      "returns": [
+        {
+          "offset": 1314,
+          "operand": "8"
+        }
+      ]
+    },
+    "native_geometry": {
+      "instructions": 349,
+      "local_branches": [
+        {
+          "offset": 10,
+          "mnemonic": "je",
+          "destination": 1299
+        },
+        {
+          "offset": 46,
+          "mnemonic": "je",
+          "destination": 56
+        },
+        {
+          "offset": 54,
+          "mnemonic": "jne",
+          "destination": 59
+        },
+        {
+          "offset": 64,
+          "mnemonic": "jg",
+          "destination": 1284
+        },
+        {
+          "offset": 92,
+          "mnemonic": "je",
+          "destination": 207
+        },
+        {
+          "offset": 102,
+          "mnemonic": "je",
+          "destination": 117
+        },
+        {
+          "offset": 108,
+          "mnemonic": "je",
+          "destination": 143
+        },
+        {
+          "offset": 115,
+          "mnemonic": "jne",
+          "destination": 104
+        },
+        {
+          "offset": 125,
+          "mnemonic": "je",
+          "destination": 207
+        },
+        {
+          "offset": 132,
+          "mnemonic": "je",
+          "destination": 143
+        },
+        {
+          "offset": 139,
+          "mnemonic": "jne",
+          "destination": 128
+        },
+        {
+          "offset": 141,
+          "mnemonic": "jmp",
+          "destination": 207
+        },
+        {
+          "offset": 147,
+          "mnemonic": "je",
+          "destination": 207
+        },
+        {
+          "offset": 173,
+          "mnemonic": "jne",
+          "destination": 207
+        },
+        {
+          "offset": 180,
+          "mnemonic": "je",
+          "destination": 207
+        },
+        {
+          "offset": 182,
+          "mnemonic": "jmp",
+          "destination": 192
+        },
+        {
+          "offset": 205,
+          "mnemonic": "jne",
+          "destination": 192
+        },
+        {
+          "offset": 248,
+          "mnemonic": "jp",
+          "destination": 447
+        },
+        {
+          "offset": 318,
+          "mnemonic": "jne",
+          "destination": 324
+        },
+        {
+          "offset": 322,
+          "mnemonic": "jmp",
+          "destination": 380
+        },
+        {
+          "offset": 332,
+          "mnemonic": "je",
+          "destination": 349
+        },
+        {
+          "offset": 340,
+          "mnemonic": "je",
+          "destination": 374
+        },
+        {
+          "offset": 347,
+          "mnemonic": "jne",
+          "destination": 336
+        },
+        {
+          "offset": 357,
+          "mnemonic": "je",
+          "destination": 320
+        },
+        {
+          "offset": 363,
+          "mnemonic": "je",
+          "destination": 374
+        },
+        {
+          "offset": 370,
+          "mnemonic": "jne",
+          "destination": 359
+        },
+        {
+          "offset": 372,
+          "mnemonic": "jmp",
+          "destination": 380
+        },
+        {
+          "offset": 378,
+          "mnemonic": "jne",
+          "destination": 386
+        },
+        {
+          "offset": 442,
+          "mnemonic": "jmp",
+          "destination": 780
+        },
+        {
+          "offset": 464,
+          "mnemonic": "jp",
+          "destination": 642
+        },
+        {
+          "offset": 544,
+          "mnemonic": "jne",
+          "destination": 548
+        },
+        {
+          "offset": 637,
+          "mnemonic": "jmp",
+          "destination": 791
+        },
+        {
+          "offset": 716,
+          "mnemonic": "jne",
+          "destination": 720
+        },
+        {
+          "offset": 797,
+          "mnemonic": "je",
+          "destination": 1086
+        },
+        {
+          "offset": 804,
+          "mnemonic": "je",
+          "destination": 953
+        },
+        {
+          "offset": 811,
+          "mnemonic": "jne",
+          "destination": 1167
+        },
+        {
+          "offset": 948,
+          "mnemonic": "jmp",
+          "destination": 1161
+        },
+        {
+          "offset": 1084,
+          "mnemonic": "jmp",
+          "destination": 1161
+        },
+        {
+          "offset": 1236,
+          "mnemonic": "je",
+          "destination": 1244
+        },
+        {
+          "offset": 1249,
+          "mnemonic": "je",
+          "destination": 1257
+        },
+        {
+          "offset": 1267,
+          "mnemonic": "je",
+          "destination": 1284
+        },
+        {
+          "offset": 1290,
+          "mnemonic": "jne",
+          "destination": 32
+        }
+      ],
+      "returns": [
+        {
+          "offset": 1305,
+          "operand": "8"
+        }
+      ]
+    },
+    "target_normalized_sha256": "6988e42d289d08640d0ca358272683e0c3c8d2fd06e06d71f999e4c578ed7f5b",
+    "native_normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+    "field_bindings": [
+      {
+        "offset": 19,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4791312,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "native_offset": 19
+      },
+      {
+        "offset": 50,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4672644,
+        "symbol": "?g_GameFrameRestorePending@@3HA",
+        "native_offset": 50
+      },
+      {
+        "offset": 218,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4656080,
+        "symbol": "__real@41000000",
+        "native_offset": 218
+      },
+      {
+        "offset": 239,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655868,
+        "symbol": "__real@3f800000",
+        "native_offset": 239
+      },
+      {
+        "offset": 255,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4683488,
+        "symbol": "?g_GameEffectUpdate@@3PAUGameEffectUpdateView@@A",
+        "native_offset": 255
+      },
+      {
+        "offset": 276,
+        "width": 4,
+        "type": "REL32",
+        "target": 4492720,
+        "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "native_offset": 276
+      },
+      {
+        "offset": 290,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4791312,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "native_offset": 290
+      },
+      {
+        "offset": 417,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4656296,
+        "symbol": "__real@3fc00000",
+        "native_offset": 408
+      },
+      {
+        "offset": 464,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655880,
+        "symbol": "__real@40000000",
+        "native_offset": 455
+      },
+      {
+        "offset": 481,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4683488,
+        "symbol": "?g_GameEffectUpdate@@3PAUGameEffectUpdateView@@A",
+        "native_offset": 471
+      },
+      {
+        "offset": 498,
+        "width": 4,
+        "type": "REL32",
+        "target": 4492720,
+        "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "native_offset": 489
+      },
+      {
+        "offset": 532,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4791312,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "native_offset": 523
+      },
+      {
+        "offset": 545,
+        "width": 4,
+        "type": "REL32",
+        "target": 4493760,
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "native_offset": 536
+      },
+      {
+        "offset": 562,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4656136,
+        "symbol": "__real@41700000",
+        "native_offset": 553
+      },
+      {
+        "offset": 567,
+        "width": 4,
+        "type": "REL32",
+        "target": 4602668,
+        "symbol": "__ftol2",
+        "native_offset": 558
+      },
+      {
+        "offset": 588,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4656356,
+        "symbol": "__real@3f400000",
+        "native_offset": 579
+      },
+      {
+        "offset": 615,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655884,
+        "symbol": "__real@3f000000",
+        "native_offset": 606
+      },
+      {
+        "offset": 636,
+        "width": 4,
+        "type": "REL32",
+        "target": 4303728,
+        "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z",
+        "native_offset": 627
+      },
+      {
+        "offset": 642,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4791312,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "native_offset": 633
+      },
+      {
+        "offset": 653,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4683488,
+        "symbol": "?g_GameEffectUpdate@@3PAUGameEffectUpdateView@@A",
+        "native_offset": 643
+      },
+      {
+        "offset": 670,
+        "width": 4,
+        "type": "REL32",
+        "target": 4492720,
+        "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "native_offset": 661
+      },
+      {
+        "offset": 684,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4791312,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "native_offset": 675
+      },
+      {
+        "offset": 719,
+        "width": 4,
+        "type": "REL32",
+        "target": 4493760,
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "native_offset": 710
+      },
+      {
+        "offset": 748,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4656356,
+        "symbol": "__real@3f400000",
+        "native_offset": 739
+      },
+      {
+        "offset": 777,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655884,
+        "symbol": "__real@3f000000",
+        "native_offset": 768
+      },
+      {
+        "offset": 796,
+        "width": 4,
+        "type": "REL32",
+        "target": 4303728,
+        "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z",
+        "native_offset": 787
+      },
+      {
+        "offset": 878,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655884,
+        "symbol": "__real@3f000000",
+        "native_offset": 869
+      },
+      {
+        "offset": 926,
+        "width": 4,
+        "type": "REL32",
+        "target": 4487904,
+        "symbol": "?DrawTextRight@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+        "native_offset": 917
+      },
+      {
+        "offset": 1014,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655884,
+        "symbol": "__real@3f000000",
+        "native_offset": 1005
+      },
+      {
+        "offset": 1062,
+        "width": 4,
+        "type": "REL32",
+        "target": 4487760,
+        "symbol": "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+        "native_offset": 1053
+      },
+      {
+        "offset": 1163,
+        "width": 4,
+        "type": "REL32",
+        "target": 4488112,
+        "symbol": "?DrawTextCentered@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+        "native_offset": 1154
+      },
+      {
+        "offset": 1172,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4791312,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "native_offset": 1163
+      },
+      {
+        "offset": 1280,
+        "width": 4,
+        "type": "REL32",
+        "target": 4531361,
+        "symbol": "??3@YAXPAX@Z",
+        "native_offset": 1271
+      },
+      {
+        "offset": 1286,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4791312,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "native_offset": 1277
+      }
+    ],
+    "actual_authored_callees": [
+      {
+        "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "size": 116,
+        "extent_source": "pdb-section-contribution"
+      },
+      {
+        "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "size": 116,
+        "extent_source": "pdb-section-contribution"
+      },
+      {
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "size": 73,
+        "extent_source": "pdb-section-contribution"
+      },
+      {
+        "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z",
+        "size": 136,
+        "extent_source": "pdb-section-contribution"
+      },
+      {
+        "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "size": 116,
+        "extent_source": "pdb-section-contribution"
+      },
+      {
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "size": 73,
+        "extent_source": "pdb-section-contribution"
+      },
+      {
+        "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z",
+        "size": 136,
+        "extent_source": "pdb-section-contribution"
+      },
+      {
+        "symbol": "?DrawTextRight@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+        "size": 174,
+        "extent_source": "pdb-section-contribution"
+      },
+      {
+        "symbol": "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+        "size": 110,
+        "extent_source": "pdb-section-contribution"
+      },
+      {
+        "symbol": "?DrawTextCentered@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+        "size": 164,
+        "extent_source": "pdb-section-contribution"
+      }
+    ],
+    "bound_regions": [
+      {
+        "target_start": 0,
+        "native_start": 0,
+        "size": 269,
+        "normalized_sha256": "89f9111f4e8d5f380123e1f1ca428d63a4b347dfd4b932b21c5044638457163c",
+        "bound_destinations": [
+          {
+            "target": 1308,
+            "native": 1299
+          },
+          {
+            "target": 56,
+            "native": 56
+          },
+          {
+            "target": 59,
+            "native": 59
+          },
+          {
+            "target": 1293,
+            "native": 1284
+          },
+          {
+            "target": 207,
+            "native": 207
+          },
+          {
+            "target": 117,
+            "native": 117
+          },
+          {
+            "target": 143,
+            "native": 143
+          },
+          {
+            "target": 104,
+            "native": 104
+          },
+          {
+            "target": 207,
+            "native": 207
+          },
+          {
+            "target": 143,
+            "native": 143
+          },
+          {
+            "target": 128,
+            "native": 128
+          },
+          {
+            "target": 207,
+            "native": 207
+          },
+          {
+            "target": 207,
+            "native": 207
+          },
+          {
+            "target": 207,
+            "native": 207
+          },
+          {
+            "target": 207,
+            "native": 207
+          },
+          {
+            "target": 192,
+            "native": 192
+          },
+          {
+            "target": 192,
+            "native": 192
+          },
+          {
+            "target": 456,
+            "native": 447
+          }
+        ]
+      },
+      {
+        "target_start": 502,
+        "native_start": 493,
+        "size": 149,
+        "normalized_sha256": "e4e2a583a7fed26dcfca531c39ff7e9b460429f356943d0c6f2c528970409453",
+        "bound_destinations": [
+          {
+            "target": 557,
+            "native": 548
+          },
+          {
+            "target": 800,
+            "native": 791
+          }
+        ]
+      },
+      {
+        "target_start": 674,
+        "native_start": 665,
+        "size": 643,
+        "normalized_sha256": "c8964f0102564e65e533630c4eefd0d44c298ee54fdd92393cb2d7fefc954db4",
+        "bound_destinations": [
+          {
+            "target": 729,
+            "native": 720
+          },
+          {
+            "target": 1095,
+            "native": 1086
+          },
+          {
+            "target": 962,
+            "native": 953
+          },
+          {
+            "target": 1176,
+            "native": 1167
+          },
+          {
+            "target": 1170,
+            "native": 1161
+          },
+          {
+            "target": 1170,
+            "native": 1161
+          },
+          {
+            "target": 1253,
+            "native": 1244
+          },
+          {
+            "target": 1266,
+            "native": 1257
+          },
+          {
+            "target": 1293,
+            "native": 1284
+          },
+          {
+            "target": 32,
+            "native": 32
+          }
+        ]
+      }
+    ],
+    "exact_credit": 0
+  },
+  "controls": [
+    {
+      "label": "entry",
+      "source_sha256": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+      "image_sha256": "d09ac6525753daf9a2d1321719eb7eff73d8e81eb2f60636cdc22cfb33725484",
+      "exit": 0,
+      "size": 1340,
+      "instructions": 372,
+      "fields": 31,
+      "branches": 65,
+      "direct_calls": 10,
+      "frame": "esp, 0x40",
+      "complete_inventory_sha256": "4ef5c6a1c2a52ea4fadcc1dfa381191996457f1a506ce3a061084867b41cd00c",
+      "normalized_sha256": "6c0499a7f58dc9680754c4c0c81931b4fee43dbeee28cca5eae4647e4ec24d78",
+      "compiled_inputs": [
+        "src/Hint.cpp",
+        "src/FileSystem.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/EnemyEclDispatcher.cpp"
+      ],
+      "reused_inputs": 0
+    },
+    {
+      "label": "scalar-and-color",
+      "source_sha256": "b148f44d0c6f15221c4badbb8fb0cbd9fd7171b63b22be9d1727801a97d11e82",
+      "image_sha256": "97f671e055c39f858fa768845805e520c917016edff62e910dfdb7bbe1c79e49",
+      "exit": 0,
+      "size": 1316,
+      "instructions": 368,
+      "fields": 31,
+      "branches": 65,
+      "direct_calls": 10,
+      "frame": "esp, 0x40",
+      "complete_inventory_sha256": "90b4f6aca52ac1c1e12a5a30289e8eca97df50c2482584d0db0b6ccc450882ae",
+      "normalized_sha256": "ceaee73e9bd9204f652352c0335ae3be7752fc99eedf7bae28244c8b2e750f87",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "alignment-bodies",
+      "source_sha256": "7c6d8cdb8788b08411248729847b2d06f278b9413e9ff8c473c3718cfc90d13b",
+      "image_sha256": "993f5ac7054a3071b1af5af506dc1dd1fe832f502900b17514c83349a5325d84",
+      "exit": 0,
+      "size": 1395,
+      "instructions": 387,
+      "fields": 30,
+      "branches": 63,
+      "direct_calls": 9,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "a91a21ada09076d943581e0d6414a88c6a041a973785f8389bf96a496bb8e8a2",
+      "normalized_sha256": "10f4ee56ed791be5e65026d1000e2cd4398e73b1428fa1dbd4aa90dd12400f27",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "owned-id-fields",
+      "source_sha256": "7c6d8cdb8788b08411248729847b2d06f278b9413e9ff8c473c3718cfc90d13b",
+      "image_sha256": "c96e1038a0d9e1f4951e2a07559a39ac7f832690cad3d9c918705b6b6a85dc8d",
+      "exit": 0,
+      "size": 1395,
+      "instructions": 387,
+      "fields": 30,
+      "branches": 63,
+      "direct_calls": 9,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "a91a21ada09076d943581e0d6414a88c6a041a973785f8389bf96a496bb8e8a2",
+      "normalized_sha256": "10f4ee56ed791be5e65026d1000e2cd4398e73b1428fa1dbd4aa90dd12400f27",
+      "compiled_inputs": [],
+      "reused_inputs": 8,
+      "excluded_as_model": "Python edit syntax error before source mutation; unchanged source, reused all eight inputs"
+    },
+    {
+      "label": "owned-id-fields-v2",
+      "source_sha256": "159c7817f81c6480db0eded2dc8ee4b0066b59fbdb6ec06fa6c05eb250e40d93",
+      "image_sha256": "f045ff02fe8250e22b8356715ba6adb8e94b95a234925edaf9c309ed88fc1a14",
+      "exit": 0,
+      "size": 1419,
+      "instructions": 396,
+      "fields": 30,
+      "branches": 62,
+      "direct_calls": 9,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "5ec5e955504728edd1c6e394e951ceb478230f37d49af207b438a8511ac29ce8",
+      "normalized_sha256": "b6842af6e524b29bfb31d184c9e9c1b1e0f7d9ad7f1023ba41d95312677e4fef",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "common-loop-advance",
+      "source_sha256": "20789708a80a17bc8a8cedc71c718e43ebeeecf9d842f6bd17cc676adde77e22",
+      "image_sha256": "0ff7819f95b9105efcd81623835552e6c1df4ea07450bcb635b9d5c1ca92b245",
+      "exit": 0,
+      "size": 1309,
+      "instructions": 350,
+      "fields": 33,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x40",
+      "complete_inventory_sha256": "6da15e3d8e41d06219cdea68c176a4a0e451c4c58f63a97a3bdf0a985b67db75",
+      "normalized_sha256": "5abf7d323062345dbabbe81b2acdda0aaafcd51c3238c80d18f4415cd70afb32",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "selected-resource-reads",
+      "source_sha256": "bede3cb2f9d8f1c291779a1c01faab432485e022c0f554a8de85778f8f18a3bc",
+      "image_sha256": "213803ed1e7d3c3a697dae1615a4a4a4bef9bc306864b2131eb4eca1200a5d67",
+      "exit": 0,
+      "size": 1302,
+      "instructions": 349,
+      "fields": 33,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x40",
+      "complete_inventory_sha256": "c549b9bb6c7e101c16e1032f8ac8585635b702576aeffda8a417ffd54eb947c4",
+      "normalized_sha256": "316ee1b995eee7a1e59b55c3e5465a949739e0be45ee28cbb98c0ea0c26ceb39",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "branch-resource-barrier",
+      "source_sha256": "abac5e1c6e87d8c2f57efe84c89ab8820d0af956dafb0661e6c7561d746a1a59",
+      "image_sha256": "81fa398865a3718e6a53a78b45f443a246d05dd680bbaa975ac99ec8150ff279",
+      "exit": 0,
+      "size": 1302,
+      "instructions": 349,
+      "fields": 33,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x40",
+      "complete_inventory_sha256": "5341cd53e5580ff60c999aeb644e2556439182c7ad52a286e630376416203c44",
+      "normalized_sha256": "23e12df28b6334211e5267785899dcabdfcd675c54f31fcc7073e67f6732f609",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "large-resource-boundary",
+      "source_sha256": "7887e3c565f386d91114c74091265ea55bc17c35a2d3875c278830bb50e0a94a",
+      "image_sha256": "2336a84abcaf1cf37e36e3f5bf5a100d020bc53333a8b0c65583eeb18320902a",
+      "exit": 0,
+      "size": 1317,
+      "instructions": 353,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x40",
+      "complete_inventory_sha256": "1d49706d985be5b1d57fa5b5ce9075a30512356874cd61a5397f65b7d05c71b9",
+      "normalized_sha256": "172fa1b4883bf97a30c454f0d7a365646b758de8621ba54c53963cb3bd683b0f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "float-value-copies",
+      "source_sha256": "a15d590793d6e76e5cf4450c2eab5090e8072bf872038408a308165135e9101f",
+      "image_sha256": "c344f57e716052007ece8bd0e75772fd21e30496f49903e140266cca255687f4",
+      "exit": 0,
+      "size": 1319,
+      "instructions": 354,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x40",
+      "complete_inventory_sha256": "27490e2b3e89c22ac4aa9233a606808f4c44bbf33def9a63a5f3a58de002e308",
+      "normalized_sha256": "ce43f60fdbc95e3906833d9aca1a6c4fbe25307b7ff9b94759c5e18f99693249",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "common-large-script",
+      "source_sha256": "7d22015c6a7735802e1d4b6e970854888e6d31ca5f7e645f94f625f6ae27aaa8",
+      "image_sha256": "1ce3e7ed9c4fd2ead28a9d92ad013159627afc981d1d5dd870c12889443c447d",
+      "exit": 0,
+      "size": 1316,
+      "instructions": 353,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x40",
+      "complete_inventory_sha256": "1989334cbc35576943a28d8896abc53622c54b25fa71318bcd2afe4314fad22e",
+      "normalized_sha256": "23742648ac054c1f3d94bb399f234c3d06ba50cac18bb73fedd60eccc4dd6a82",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "branch-vm-lifetimes",
+      "source_sha256": "529652584eb464d1cff5695362147cbb6b947e79b7c107497c68bcddf004d39c",
+      "image_sha256": "662349c318d2d9bdd68d5ba15e77d1bdc02f8f945276fcf9fb3e6677402f962c",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "7b7de4fb5f406706f6c4421f83d667e31c2c903ee522ed903d1fd7878b7e6fc2",
+      "normalized_sha256": "bbbe85243771c2ac46605e21dbe7e5aee02b0525259437d6a0b7c8db180530c0",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "ordered-scale-ends",
+      "source_sha256": "d46aeb45ba7e97759fae20caa492f04c5418e226de1255dfc3549f228f1c4fc0",
+      "image_sha256": "48c8445b64708be8d61723d619de54eefdfd8abbc093467a41f540de195663c1",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "717a6f3786b3d37dfb678594896ce2dace81badb1936a5021e5875ade7ebf2b6",
+      "normalized_sha256": "eeaf0594ca8a9e85b0829b2a54338f3caf3646cfac8e58d8fa723c05b11e8b8f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "shared-old-lookup",
+      "source_sha256": "ce208d6661514de16e5f5fe8db7192c8e01fdf84b55d66a2610853178452bac5",
+      "image_sha256": "954184a1ead38baccb22e690e050d5a0a53c106b006ba276b98d0d0259a6ddc0",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b",
+      "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "small-id-value",
+      "source_sha256": "a4cb72dbd21a0d2c2fc671640f85803a8e07596b9577d735d9b184c92fd1c567",
+      "image_sha256": "b88242a8e12f879eaf6d5fe6d11f6d6fc4c2a00b169df899aaae1581a330c9b1",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b",
+      "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "whole-created-ids",
+      "source_sha256": "0c5c5b3ce3062923e445ba9a89a945f28002bbf21288a8f81a7052814f31c29f",
+      "image_sha256": "b000d3a70e45cdaf7c2b861e142c7c46b164a49c4fb192e98cb60da27b38670f",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b",
+      "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "receiver-resource-boundary",
+      "source_sha256": "468b39ace2e0165d08dd0aa5f9f06843099f6b9204b68657a8906b1da5af5538",
+      "image_sha256": "bb064501632c469b32a4bccf0c467afd2e778b5cdf884e1c4d627d7afe167702",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b",
+      "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "small-id-read-boundary",
+      "source_sha256": "93771d8deefc6a6df6ad387656af60f7b18c49a628f4edb5d9f54f7de0d761a9",
+      "image_sha256": "bb3e6959c65cbeb54e93f35f4ad5f30a07f4cb8923024bd181d3db7ec1fdeec4",
+      "exit": 0,
+      "size": 1309,
+      "instructions": 348,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "2a5974c6dadde32c6e0bdabc83be7db44b9565822cb894857df030f820033e09",
+      "normalized_sha256": "8653b76f3d78c088d495623744b1d67e67c9bb9115b76e90093829664037b97f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "small-final-value",
+      "source_sha256": "a12030f6670f093b3253e265157d8da6b53c3a8cb70c19e85846ed9fde3c36dc",
+      "image_sha256": "1b0e1974e3db84fde587b7cf4e47b3ad50695fde192b7ddf518d1831b73ee782",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b",
+      "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "small-created-value",
+      "source_sha256": "cd23d78e0929aed2a6e8561faa5817db669fba10c605843c49c97e29eb61b7ff",
+      "image_sha256": "d34088c233d1efc67828e7e9dc30dd944ec3f91bb04c60df08eb5e48eca30a74",
+      "exit": 0,
+      "size": 1313,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "55f9832bf17b30e15ab6a56c3a8619d7ed71f931aeeb97c2fa56d1cc9253879d",
+      "normalized_sha256": "65835081fe89b1a6eefdab99b2bc8a465d77bdd02e5a99c38686d72f06f62bfb",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "reviewed-candidate",
+      "source_sha256": "32fbd219225a32a9263a62f708288805251aa5fd5ab27c0a7837a0807bd8630f",
+      "image_sha256": "71c5f35a25e0a8194c372f3c6d5d2b72f542c73f5b83aec4c4c69a869ea84823",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b",
+      "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "candidate-cold",
+      "source_sha256": "32fbd219225a32a9263a62f708288805251aa5fd5ab27c0a7837a0807bd8630f",
+      "image_sha256": "274934a74a959022a0e607d0da8c44ce810c028017f1fad60381d2ae4368a0f4",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b",
+      "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+      "compiled_inputs": [
+        "src/Hint.cpp",
+        "src/FileSystem.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/EnemyEclDispatcher.cpp"
+      ],
+      "reused_inputs": 0
+    },
+    {
+      "label": "reviewed-final",
+      "source_sha256": "7acf992492b3d5bd86db41a9ba4556c47f56e8d1edacc1135ca1df16ca953118",
+      "image_sha256": "15b319ffc988067339a4fc7b3ce32ddd16ca1ac6e60f7c96eb6418e21d704f8f",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b",
+      "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "final-cold",
+      "source_sha256": "7acf992492b3d5bd86db41a9ba4556c47f56e8d1edacc1135ca1df16ca953118",
+      "image_sha256": "24461a1804666cc6a11c380613f202a6c09047a97177b0f14eac8a9bb6a9a82a",
+      "exit": 0,
+      "size": 1308,
+      "instructions": 349,
+      "fields": 34,
+      "branches": 42,
+      "direct_calls": 12,
+      "frame": "esp, 0x3c",
+      "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b",
+      "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+      "compiled_inputs": [
+        "src/Hint.cpp",
+        "src/FileSystem.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/EnemyEclDispatcher.cpp"
+      ],
+      "reused_inputs": 0
+    }
+  ],
+  "source_and_header_pins": {
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "24b2522081ea8295cb0e293e9c26a9f7bce7b740ed41bbce858d86a630740f57",
+    "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/Hint.cpp": "7acf992492b3d5bd86db41a9ba4556c47f56e8d1edacc1135ca1df16ca953118",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "graph": {
+    "source": "src/Hint.cpp",
+    "support_sources": [
+      "src/FileSystem.cpp",
+      "src/Chain.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "entry_symbol": "?CreateHintOwner@@YAPAUHintOwnerView@@XZ",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "final_builds": [
+    {
+      "label": "reviewed-final",
+      "artifact_dir": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-consume-20261031/reviewed-final",
+      "image_sha256": "15b319ffc988067339a4fc7b3ce32ddd16ca1ac6e60f7c96eb6418e21d704f8f",
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7,
+      "object_sha256": {
+        "src/Hint.cpp": "92ca6c9b62995fe975f873d0a2237114904c4fe118e71479bfd02a19ea0a3ecb",
+        "src/FileSystem.cpp": "92e6a59471e15db6063b338130252102aec79369f0d4b22d9805012000e24375",
+        "src/Chain.cpp": "3353fe7acef09f9445552edcefbcf67fc5abbf0797d174bbdb1292d090a128ad",
+        "src/AnmManager.cpp": "ce5288d7767130d3b23075b8198fe5259c1578eb50082895cbc546da38057f6d",
+        "src/AnmVmCreate.cpp": "8c1a31b4ed81dc5ad17db7377756138d84305c0d70e5335f747a4e88c7a87357",
+        "src/AnmVmId.cpp": "7be8abfca09195f3d7d9ca1ff393a07a559795fa277549d357f4a03276e31489",
+        "src/RandomMath.cpp": "cc822fe9eed8ca0d0d3b71254d9954c20b29608a64e65a970867121d33c0088b",
+        "src/EnemyEclDispatcher.cpp": "4e733a600c87601027667a467b4d3e9e879a9b780f60a9075abe21d95857da58"
+      },
+      "guards": [
+        {
+          "unit": "hint-create-owner",
+          "size": 67,
+          "fields": 5,
+          "result": "exact"
+        },
+        {
+          "unit": "hint-draw-callback",
+          "size": 6,
+          "fields": 0,
+          "result": "exact"
+        },
+        {
+          "unit": "hint-clear-lists",
+          "size": 79,
+          "fields": 2,
+          "result": "exact"
+        },
+        {
+          "unit": "anm-start-scale-interpolation",
+          "size": 136,
+          "fields": 1,
+          "result": "exact"
+        }
+      ]
+    },
+    {
+      "label": "final-cold",
+      "artifact_dir": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-consume-20261031/final-cold",
+      "image_sha256": "24461a1804666cc6a11c380613f202a6c09047a97177b0f14eac8a9bb6a9a82a",
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp",
+        "src/FileSystem.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/EnemyEclDispatcher.cpp"
+      ],
+      "reused_inputs": 0,
+      "object_sha256": {
+        "src/Hint.cpp": "f05ac08d3719de51774b1eb1152b3e65e88a0131ab631958fbd2fc7bf4c6a040",
+        "src/FileSystem.cpp": "159f32c2750618fa0565841e2ccadabcfb8fd9e345713d82f8cacf6fca3b19c9",
+        "src/Chain.cpp": "7ce0493cfe5c026b880ef238dcaffaaca50212a772928489ce549fb442653781",
+        "src/AnmManager.cpp": "725c035a649daf17f3f31066349b549f6dd7e03760a352f1dc05f9ff83e633b5",
+        "src/AnmVmCreate.cpp": "8d8095dc5e851a4e5a0e36595631e70a9a2bef487a87d25aa1e701f15e0d3997",
+        "src/AnmVmId.cpp": "c795784ec9a97d309eff83338f21595b5388f893c945b7aff11888e60f899f65",
+        "src/RandomMath.cpp": "00cb8841a37486d629d4e87631f1674f13f6f7911f10b2f403f9da530cef65c7",
+        "src/EnemyEclDispatcher.cpp": "5017171f19f115e8e249026c005de79dca85fa29416440f7424a17552462d525"
+      },
+      "guards": [
+        {
+          "unit": "hint-create-owner",
+          "size": 67,
+          "fields": 5,
+          "result": "exact"
+        },
+        {
+          "unit": "hint-draw-callback",
+          "size": 6,
+          "fields": 0,
+          "result": "exact"
+        },
+        {
+          "unit": "hint-clear-lists",
+          "size": 79,
+          "fields": 2,
+          "result": "exact"
+        },
+        {
+          "unit": "anm-start-scale-interpolation",
+          "size": 136,
+          "fields": 1,
+          "result": "exact"
+        }
+      ]
+    }
+  ],
+  "native_controls_only_note": "Inventory hashes bind complete owners, all resolved field identities and all local destinations. They provide no exact target credit.",
+  "adjacent_nonexact": [
+    {
+      "target_address": "0x00419650",
+      "target_size": 571,
+      "native_size": 541,
+      "symbol": "?Update@HintOwnerView@@QAEHXZ"
+    },
+    {
+      "target_address": "0x00448DB0",
+      "target_size": 118,
+      "native_size": 116,
+      "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z"
+    }
+  ],
+  "verification_scope": "Complete nonexact owner and explicitly bound diagnostic regions; unchanged acceptance comparator. No partial units or later-phase claims.",
+  "tool_and_manifest_pins": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "config/match-units.toml": "aa338f5cba5fa2f9898d4cbc2450ae2d79626bff5363ad234ef53a31da80961e",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/linked_image.py": "f65c6ac8878d46323daae75e249b60527035dae30f40752871ee86af0a89a533",
+    "scripts/compare-linked-function.py": "51b20c32ae8a7f275bdd11ae344a3d13dda6ca29ee916fa6bad0275fbed5887d"
+  },
+  "affected_canonical_cold": {
+    "artifact_count": 3,
+    "groups": [
+      {
+        "artifact": "build/match-linked/AnmExecutor",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "anm-start-scale-interpolation",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/AnmManager.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x004024F0",
+            "capstone_version": "5.0.6",
+            "compared_size": 136,
+            "data_spans": [],
+            "decoded_bytes": 136,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/AnmExecutor/source.exe",
+            "image_sha256": "e80af488a6408e63375eee64ce120d7f2eb5599d596a6e2db836c5db7ac86b74",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x0040E0C8",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0050",
+                "local": false,
+                "offset": "0x65",
+                "symbol": "?g_AnmGameSpeed@@3MA",
+                "target": "0x00476F78",
+                "target_encoded_value": "0x00476F78",
+                "type": "DIR32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 136,
+            "matched_compared_bytes": 136,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "5a1b5763c3a8d548b49b1ebbf3814c04",
+            "pdb_module_index": 1,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 136,
+            "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z",
+            "target_address": "0x0041AB70",
+            "unit": "anm-start-scale-interpolation"
+          }
+        ],
+        "frozen_artifact": "build/gpt-6.1-sol/hint-consume-20261031/affected-final-0"
+      },
+      {
+        "artifact": "build/match-linked/HintLifecycle",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "hint-create-owner",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/Hint.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x004025F0",
+            "capstone_version": "5.0.6",
+            "compared_size": 67,
+            "data_spans": [],
+            "decoded_bytes": 67,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/HintLifecycle/source.exe",
+            "image_sha256": "f60c7847680d50b8a283aca691789b47c3692781a0e6e28e84094dd1291cbe75",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x0041600C",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                "local": false,
+                "offset": "0x7",
+                "symbol": "??2@YAPAXI@Z",
+                "target": "0x00452493",
+                "target_encoded_value": "0x000393F8",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00402390",
+                "linked_symbol": "??0HintOwnerView@@QAE@XZ",
+                "local": false,
+                "offset": "0x15",
+                "symbol": "??0HintOwnerView@@QAE@XZ",
+                "target": "0x00418D40",
+                "target_encoded_value": "0xFFFFFC97",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00402480",
+                "linked_symbol": "?Initialize@HintOwnerView@@QAEHXZ",
+                "local": false,
+                "offset": "0x20",
+                "symbol": "?Initialize@HintOwnerView@@QAEHXZ",
+                "target": "0x00418E30",
+                "target_encoded_value": "0xFFFFFD7C",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00402510",
+                "linked_symbol": "?CleanupHintOwner@@YGXPAUHintOwnerView@@@Z",
+                "local": false,
+                "offset": "0x2E",
+                "symbol": "?CleanupHintOwner@@YGXPAUHintOwnerView@@@Z",
+                "target": "0x00418EE0",
+                "target_encoded_value": "0xFFFFFE1E",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00416010",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0004",
+                "local": false,
+                "offset": "0x34",
+                "symbol": "??3@YAXPAX@Z",
+                "target": "0x004524A1",
+                "target_encoded_value": "0x000393D9",
+                "type": "REL32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 67,
+            "matched_compared_bytes": 67,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "940ce7d3e7b4264d883db787c9220ef4",
+            "pdb_module_index": 4,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 67,
+            "symbol": "?CreateHintOwner@@YAPAUHintOwnerView@@XZ",
+            "target_address": "0x00419090",
+            "unit": "hint-create-owner"
+          },
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00402650",
+            "capstone_version": "5.0.6",
+            "compared_size": 6,
+            "data_spans": [],
+            "decoded_bytes": 6,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/HintLifecycle/source.exe",
+            "image_sha256": "f60c7847680d50b8a283aca691789b47c3692781a0e6e28e84094dd1291cbe75",
+            "linkages": [],
+            "matched_bytes": 6,
+            "matched_compared_bytes": 6,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "940ce7d3e7b4264d883db787c9220ef4",
+            "pdb_module_index": 4,
+            "raw_equal": true,
+            "result": "exact",
+            "returncode": 0,
+            "size": 6,
+            "symbol": "?OnDraw@HintOwnerView@@SIHPAX@Z",
+            "target_address": "0x004198B0",
+            "unit": "hint-draw-callback"
+          }
+        ],
+        "frozen_artifact": "build/gpt-6.1-sol/hint-consume-20261031/affected-final-1"
+      },
+      {
+        "artifact": "build/match-linked/PlayerState2Hint",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "hint-add-caution",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/Player.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x004071D0",
+            "capstone_version": "5.0.6",
+            "compared_size": 104,
+            "data_spans": [],
+            "decoded_bytes": 104,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/PlayerState2Hint/source.exe",
+            "image_sha256": "45dcdcc0d7b4494f687face6442833746c746d91b1edbf72d86dd05ddb3764ac",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x004191D8",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0118",
+                "local": false,
+                "offset": "0x1",
+                "symbol": "?g_GameStartupMode@@3HA",
+                "target": "0x00474C7C",
+                "target_encoded_value": "0x00474C7C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x004070F0",
+                "linked_symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+                "local": false,
+                "offset": "0x32",
+                "symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+                "target": "0x0041A120",
+                "target_encoded_value": "0xFFFF5A9A",
+                "type": "REL32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 104,
+            "matched_compared_bytes": 104,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "b2ae8b4268c5f947aa7cc55fca5d31ca",
+            "pdb_module_index": 1,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 104,
+            "symbol": "?AddCaution@HintOwnerView@@QAEXPBDPBUPlayerFloat3@@@Z",
+            "target_address": "0x00424650",
+            "unit": "hint-add-caution"
+          }
+        ],
+        "frozen_artifact": "build/gpt-6.1-sol/hint-consume-20261031/affected-final-2"
+      }
+    ],
+    "matched_bytes": 313,
+    "result": "exact",
+    "source_count": 3,
+    "unit_count": 4,
+    "exit": 0,
+    "source_freeze_sha256": "c22304db3dda58b8337cdc878a8d680e662088d93688199cf475e81a0e72c4d7"
+  }
+}

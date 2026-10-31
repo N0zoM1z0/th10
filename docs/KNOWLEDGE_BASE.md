@@ -8726,3 +8726,30 @@ No GUI source/canonical recipe change follows. Authored exact becomes112511/
 275863 across522 owners; canonical180635/1401, mappings1221/authored703/backlog181.
 No boundary, origin, denominator, runtime/product or portability change. See the
 [complete spell-panel proof](evidence/spell-panel-exact-20261031/README.md).
+
+## 2026-10-31 Hint consumption phases and value transfers
+
+The complete owner at419120..419644 is1317 bytes,348 instructions,34 resolved
+fields,42 local branches and RET8 at522. It receives the first link in EAX with
+owner/freeEntries on the stack. Its empty-list guard precedes manager capture;
+the due-entry path has primary/secondary old-ID lookup, a shared hit and flat
+child pending-deletion propagation before clearing the actual slot ID field.
+
+The target arithmetic uses DWORD float literals8,1,1.5,2,15,.75 and.5. Each
+selected size branch reads effect-owner4776E0+899C separately. Alignment2/1/0
+copies12 raw position bytes, adjusts X before width publication where needed,
+and refreshes manager491C10 after the selected text call. Color copies the
+whole BGRA word before alpha is cleared. The world creator448DB0 uses EDI
+position, three stack operands (resource, hidden ID output, script), RET12 and
+returns the output pointer in EAX. Original names/types/qualifiers stay open.
+
+The [complete candidate proof](evidence/hint-consume-context-20261031/README.md)
+retains1308/1317 NONEXACT. Branch-local created VMs restore3C frame and the
+observed endpoint stores. Three volatile resource-field observations plus a
+large-branch compiler memory barrier preserve12 physical calls. These are
+source models of observed scheduling, not proof of original qualifiers. All34
+identities/payloads bind;27 field positions and small-branch registers/script
+push still reject. Three explicitly bound regions total1061 bytes without
+partial units or credit. Actual world creation remains116/118 and unchanged
+Update541/571 NONEXACT. Scoped exact guards and cold receipts are in the proof;
+product closure, runtime validation and portability are separate.

@@ -4,12 +4,13 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint restores the GUI draw owner's
-score-width multiply and right-edge addition schedules. Complete724/724 remains
-NONEXACT: the first rectangle's LEA is still late and one constant field is
-misplaced. All33 roles/payloads and23 destinations bind independently; warm and
-zero-reuse three-input cold receipts agree. No exact credit is added. The actual
-draw/rectangle callees pass scoped699/all35. No native job is running.
+selected lane. This checkpoint reconstructs the complete Hint consumption
+owner's phases and value transfers. Full1308/1317 remains NONEXACT; small-ID
+register schedules and common script-push placement remain open. The3C frame,
+12 calls, three conditional resource reads and complete old-ID/alignment/cleanup
+sequences now reproduce. All34 field identities/payloads bind;27 positions still
+differ. No exact credit is added. Warm and zero-reuse eight-input cold agree;
+affected canonical four-unit replay passes313 bytes. No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
@@ -25,7 +26,35 @@ The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: GUI drawing arithmetic order
+## Latest source checkpoint: complete Hint consumption phases
+
+[The complete candidate proof](evidence/hint-consume-context-20261031/README.md)
+records the fresh1340/1317 entry and retained1308/1317 NONEXACT owner419120.
+Natural float arithmetic, whole-ID publication, branch-local VM lifetimes,
+shared old-ID lookup, per-arm raw position copies and whole BGRA transfer
+recover target schedules without header/profile/ABI changes. Three selected
+resource reads use local volatile observations and one large-branch compiler
+barrier; original qualifiers/barriers remain unknown.
+
+Target348/native349 instructions,34 fields,42 fixed local branches and RET8
+(target522/native519) cold-reproduce. Prefix0..10D, middle1F6..28B and suffix
+2A2..525 bind equal with explicit branch destination correspondence:1061 bytes
+are diagnostic regions, never separate units/credit. Small hidden-output/ID
+register order, result publication and common script PUSH remain unresolved.
+Twenty-seven field offsets still differ; the nine-byte size gap is not a
+wrong-byte count. Neutral ID projection/whole-ID/receiver/endpoint models are
+parked; ordered endpoint and shared lookup controls improve instructions at
+the same size. An unchanged-source parsing failure is excluded as a model.
+
+Both final images preserve factory67/all5, callback6/all0, clear79/all2 and
+scale136/all1 (288/all8). Only factory, callback, scale and the actual caution
+caller are independently replayed,313/all8 across three existing producers.
+The actual world creator's EDI position + three stack operands/RET12 are
+verified, but its116/118 body remains NE; unchanged Update is541/571 NE.
+No match/recipe/boundary/source/origin change. Private campaign:
+hint-consume-20261031; default seven-stage CI and whitespace checks pass.
+
+## Previous source checkpoint: GUI drawing arithmetic order
 
 [The complete candidate proof](evidence/gui-draw-read-order-20261031/README.md)
 records724/724 NONEXACT. Width is captured before color; two compiler memory

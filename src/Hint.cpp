@@ -530,142 +530,175 @@ int __fastcall HintOwnerView::OnDraw(void *)
 extern int g_GameStartupMode;          // 0x474C7C
 extern int g_GameFrameRestorePending;  // 0x474C84
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
+// Observe the selected branch's resource read; original qualifiers are unknown.
+static inline AnmLoadedView *ReadHintMessageResource()
+{
+    GameEffectUpdateView *effect = g_GameEffectUpdate;
+    return *static_cast<AnmLoadedView *volatile *>(&effect->loadedResource);
+}
+
 int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
 {
-    AnmRenderManagerView *manager = g_AnmRenderManagerView;
-    for (HintLinkView *node = first; node != 0; )
+    if (first != 0)
     {
-        HintLinkView *next = node->next;
-        HintEntryView *entry = static_cast<HintEntryView *>(node->payload);
-        if (entry->base == 0 || entry->base == g_GameFrameRestorePending)
-            --entry->count;
-        if (entry->count > 0)
+        AnmRenderManagerView *manager = g_AnmRenderManagerView;
+        do
         {
-            node = next;
-            continue;
-        }
-        int slot = nextVmSlot;
-        if (vmIds[slot].value != 0)
-        {
-            AnmVmView *oldVm = manager->FindVm(vmIds[slot]);
-            if (oldVm != NULL)
+            HintLinkView *next = first->next;
+            HintEntryView *entry = static_cast<HintEntryView *>(first->payload);
+            if (entry->base == 0 || entry->base == g_GameFrameRestorePending)
+                --entry->count;
+            if (entry->count <= 0)
             {
-                oldVm->flags35C |= 0x04000000u;
-                if (oldVm->layerNode.previous == NULL)
+                AnmVmIdView *oldId = &vmIds[nextVmSlot];
+                const unsigned int oldValue = oldId->value;
+                if (oldValue != 0)
                 {
-                    AnmVmLayerNodeView *child = oldVm->layerNode.next;
-                    while (child != NULL)
+                    AnmVmLayerNodeView *oldNode = manager->primaryVmListHead;
+                    while (oldNode != NULL)
                     {
-                        static_cast<AnmVmView *>(child->owner)->flags35C |= 0x04000000u;
-                        child = child->next;
+                        if (static_cast<AnmVmView *>(oldNode->owner)->id == oldValue)
+                            goto MarkOldHintVm;
+                        oldNode = oldNode->next;
+                    }
+                    oldNode = manager->secondaryVmListHead;
+                    while (oldNode != NULL)
+                    {
+                        if (static_cast<AnmVmView *>(oldNode->owner)->id == oldValue)
+                            goto MarkOldHintVm;
+                        oldNode = oldNode->next;
+                    }
+                    goto ClearOldHintId;
+                MarkOldHintVm:
+                    AnmVmView *oldVm = static_cast<AnmVmView *>(oldNode->owner);
+                    if (oldVm != NULL)
+                    {
+                        oldVm->flags35C |= 0x04000000u;
+                        if (oldVm->layerNode.previous == NULL)
+                        {
+                            AnmVmLayerNodeView *child = oldVm->layerNode.next;
+                            while (child != NULL)
+                            {
+                                static_cast<AnmVmView *>(child->owner)->flags35C |= 0x04000000u;
+                                child = child->next;
+                            }
+                        }
                     }
                 }
+            ClearOldHintId:
+                oldId->value = 0;
+                entry->position.y = entry->scale * 8.0f + entry->position.y;
+                // Ordered comparisons select the branch before creation; NaN takes else.
+                // Native continues into VM writes even after failed resolution.
+                AnmVmView *vm;
+                const int scriptBase = nextVmSlot;
+                if (entry->scale <= 1.0f)
+                {
+                    vmIds[nextVmSlot] = ReadHintMessageResource()->CreateVmAtWorldVariant0(
+                        scriptBase + 2, &entry->position);
+                    manager = g_AnmRenderManagerView;
+                    AnmVmIdView *id = &vmIds[nextVmSlot];
+                    AnmVmView *createdVm = manager->FindVm(*id);
+                    if (createdVm == 0)
+                        id->value = 0;
+                    createdVm->glyphWidth = createdVm->glyphHeight = 15;
+                    AnmFloat2View initial, final;
+                    initial.x = entry->scale * 1.5f;
+                    initial.y = 0.0f;
+                    final.x = entry->scale;
+                    final.y = entry->scale;
+                    vm = createdVm;
+                    createdVm->StartScaleInterpolation(8, 4, &initial, &final);
+                }
+                else
+                {
+                    const int script = scriptBase + 12;
+                    if (entry->scale <= 2.0f)
+                    {
+                        vmIds[nextVmSlot] = ReadHintMessageResource()->CreateVmAtWorldVariant0(
+                            script, &entry->position);
+                        manager = g_AnmRenderManagerView;
+                        AnmVmIdView *id = &vmIds[nextVmSlot];
+                        AnmVmView *createdVm = manager->FindVm(*id);
+                        if (createdVm == 0)
+                            id->value = 0;
+                        unsigned char glyphSize = static_cast<unsigned char>(
+                            static_cast<int>(entry->scale * 15.0f));
+                        createdVm->glyphWidth = createdVm->glyphHeight = glyphSize;
+                        AnmFloat2View initial, final;
+                        initial.x = entry->scale * 0.75f;
+                        initial.y = 0.0f;
+                        final.y = final.x = entry->scale * 0.5f;
+                        vm = createdVm;
+                        createdVm->StartScaleInterpolation(8, 4, &initial, &final);
+                        manager = g_AnmRenderManagerView;
+                    }
+                    else
+                    {
+                        _ReadWriteBarrier();
+                        vmIds[nextVmSlot] = ReadHintMessageResource()->CreateVmAtWorldVariant0(
+                            script, &entry->position);
+                        manager = g_AnmRenderManagerView;
+                        AnmVmIdView *id = &vmIds[nextVmSlot];
+                        AnmVmView *createdVm = manager->FindVm(*id);
+                        if (createdVm == 0)
+                            id->value = 0;
+                        createdVm->glyphWidth = createdVm->glyphHeight = 30;
+                        AnmFloat2View initial, final;
+                        initial.x = entry->scale * 0.75f;
+                        initial.y = 0.0f;
+                        final.y = final.x = entry->scale * 0.5f;
+                        vm = createdVm;
+                        createdVm->StartScaleInterpolation(8, 4, &initial, &final);
+                    }
+                }
+                switch (entry->alignment)
+                {
+                case 2:
+                    *reinterpret_cast<AnmFloat3View *>(cachedPositions[nextVmSlot]) = vm->positionOffset;
+                    cachedPositions[nextVmSlot][0] -= entry->textWidth * 0.5f;
+                    cachedWidths[nextVmSlot] = entry->textWidth;
+                    manager->DrawTextRight(vm, 0x00FFFFFF, entry->text);
+                    vm->flags35C = (vm->flags35C & ~0x00040000) | 0x00080000;
+                    manager = g_AnmRenderManagerView;
+                    break;
+                case 1:
+                    *reinterpret_cast<AnmFloat3View *>(cachedPositions[nextVmSlot]) = vm->positionOffset;
+                    cachedPositions[nextVmSlot][0] += entry->textWidth * 0.5f;
+                    cachedWidths[nextVmSlot] = entry->textWidth;
+                    manager->DrawTextLeft(vm, 0x00FFFFFF, entry->text);
+                    vm->flags35C = (vm->flags35C & ~0x00080000) | 0x00040000;
+                    manager = g_AnmRenderManagerView;
+                    break;
+                case 0:
+                    *reinterpret_cast<AnmFloat3View *>(cachedPositions[nextVmSlot]) = vm->positionOffset;
+                    cachedWidths[nextVmSlot] = entry->textWidth;
+                    manager->DrawTextCentered(vm, 0x00FFFFFF, entry->text);
+                    manager = g_AnmRenderManagerView;
+                    break;
+                }
+                vm->primaryColor.value = entry->color;
+                vm->primaryColor.alpha = 0;
+                vm->intVar0 = entry->time;
+                vm->intVar1 = entry->alpha;
+                nextVmSlot = (nextVmSlot + 1) % 10;
+                if (entry->link.next != 0)
+                    entry->link.next->previous = entry->link.previous;
+                if (entry->link.previous != 0)
+                    entry->link.previous->next = entry->link.next;
+                entry->link.next = 0;
+                entry->link.previous = 0;
+                if (freeEntries != 0)
+                {
+                    delete entry;
+                    manager = g_AnmRenderManagerView;
+                }
             }
-        }
-        vmIds[slot].value = 0;
-        entry->position.y = static_cast<float>(
-            static_cast<double>(entry->scale) * 8.0 + entry->position.y);
-        // Ordered comparisons select the branch before creation; NaN takes else.
-        // Native continues into VM writes even after failed resolution.
-        AnmVmView *vm;
-        if (entry->scale <= 1.0f)
-        {
-            AnmVmIdView created = g_GameEffectUpdate->loadedResource->CreateVmAtWorldVariant0(
-                nextVmSlot + 2, &entry->position);
-            slot = nextVmSlot;
-            vmIds[slot] = created;
-            manager = g_AnmRenderManagerView;
-            vm = manager->FindVm(vmIds[slot]);
-            if (vm == 0)
-                vmIds[slot].value = 0;
-            vm->glyphWidth = vm->glyphHeight = 15;
-            AnmFloat2View initial, final;
-            initial.x = static_cast<float>(static_cast<double>(entry->scale) * 1.5);
-            initial.y = 0.0f;
-            final.x = final.y = entry->scale;
-            vm->StartScaleInterpolation(8, 4, &initial, &final);
-        }
-        else if (entry->scale <= 2.0f)
-        {
-            AnmVmIdView created = g_GameEffectUpdate->loadedResource->CreateVmAtWorldVariant0(
-                nextVmSlot + 12, &entry->position);
-            slot = nextVmSlot;
-            vmIds[slot] = created;
-            manager = g_AnmRenderManagerView;
-            vm = manager->FindVm(vmIds[slot]);
-            if (vm == 0)
-                vmIds[slot].value = 0;
-            unsigned char glyphSize = static_cast<unsigned char>(
-                static_cast<int>(static_cast<double>(entry->scale) * 15.0));
-            vm->glyphWidth = vm->glyphHeight = glyphSize;
-            AnmFloat2View initial, final;
-            initial.x = static_cast<float>(static_cast<double>(entry->scale) * 0.75);
-            initial.y = 0.0f;
-            final.x = final.y = static_cast<float>(static_cast<double>(entry->scale) * 0.5);
-            vm->StartScaleInterpolation(8, 4, &initial, &final);
-            manager = g_AnmRenderManagerView;
-        }
-        else
-        {
-            AnmVmIdView created = g_GameEffectUpdate->loadedResource->CreateVmAtWorldVariant0(
-                nextVmSlot + 12, &entry->position);
-            slot = nextVmSlot;
-            vmIds[slot] = created;
-            manager = g_AnmRenderManagerView;
-            vm = manager->FindVm(vmIds[slot]);
-            if (vm == 0)
-                vmIds[slot].value = 0;
-            vm->glyphWidth = vm->glyphHeight = 30;
-            AnmFloat2View initial, final;
-            initial.x = static_cast<float>(static_cast<double>(entry->scale) * 0.75);
-            initial.y = 0.0f;
-            final.x = final.y = static_cast<float>(static_cast<double>(entry->scale) * 0.5);
-            vm->StartScaleInterpolation(8, 4, &initial, &final);
-        }
-        slot = nextVmSlot;
-        if (entry->alignment >= 0 && entry->alignment <= 2)
-        {
-            cachedPositions[slot][0] = vm->positionOffset.x;
-            cachedPositions[slot][1] = vm->positionOffset.y;
-            cachedPositions[slot][2] = vm->positionOffset.z;
-            cachedWidths[slot] = entry->textWidth;
-            if (entry->alignment == 2)
-            {
-                cachedPositions[slot][0] = static_cast<float>(
-                    static_cast<double>(cachedPositions[slot][0]) - entry->textWidth * 0.5);
-                manager->DrawTextRight(vm, 0x00FFFFFF, entry->text);
-                vm->flags35C = (vm->flags35C & ~0x00040000) | 0x00080000;
-            }
-            else if (entry->alignment == 1)
-            {
-                cachedPositions[slot][0] = static_cast<float>(
-                    static_cast<double>(cachedPositions[slot][0]) + entry->textWidth * 0.5);
-                manager->DrawTextLeft(vm, 0x00FFFFFF, entry->text);
-                vm->flags35C = (vm->flags35C & ~0x00080000) | 0x00040000;
-            }
-            else
-                manager->DrawTextCentered(vm, 0x00FFFFFF, entry->text);
-            manager = g_AnmRenderManagerView;
-        }
-        vm->primaryColor.blue = entry->blue;
-        vm->primaryColor.green = entry->green;
-        vm->primaryColor.red = entry->red;
-        vm->primaryColor.alpha = 0;
-        vm->intVar0 = entry->time;
-        vm->intVar1 = entry->alpha;
-        nextVmSlot = (nextVmSlot + 1) % 10;
-        if (entry->link.next != 0)
-            entry->link.next->previous = entry->link.previous;
-        if (entry->link.previous != 0)
-            entry->link.previous->next = entry->link.next;
-        entry->link.next = 0;
-        entry->link.previous = 0;
-        if (freeEntries != 0)
-        {
-            delete entry;
-            manager = g_AnmRenderManagerView;
-        }
-        node = next;
+            first = next;
+        } while (first != 0);
     }
     return 0;
 }
