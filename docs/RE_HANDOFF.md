@@ -11,10 +11,10 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 113,423 / 275,890 |
-| Authored exact owners | 526 |
-| Total canonical exact owners / codegen bytes | 1,406 / 181,557 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 177 |
+| Reviewed authored owned bytes exact | 113,492 / 275,890 |
+| Authored exact owners | 527 |
+| Total canonical exact owners / codegen bytes | 1,407 / 181,626 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 176 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
@@ -22,10 +22,13 @@ proves neither original names/class/TU ownership nor product/runtime/portability
 
 ## Latest reviewed authored exact checkpoint
 
-[AsciiManagerView::OnDrawHighPriority](evidence/ascii-high-draw-exact-20261031/README.md) is now full **10/10 exact** with its real `AsciiManagerDrawGuiStrings` REL32, recovered by a natural VM pointer in the genuine GUI renderer. The selected 3-TU `AsciiManagerCreate` source graph yields the target EBX receiver; two independent selected cold links preserve new callback10 and prior Initialize330, **340/340** across all29 fields. The larger 570-byte renderer stays **NONEXACT** despite improving from54/458 to160/458 comparable positions. This new callback raises reviewed authored exact to113,423/275,890 across526 owners.
+[AsciiManagerCreate @401440](evidence/ascii-factory-exact-20261031/README.md) is now complete **69/69 exact** (five allocation/constructor/initializer/destructor/deallocation REL32 fields) in the genuine three-input ASCII initialization graph. The old 70-byte one-TU candidate had the wrong destructor private receiver; neither source ABI nor factory code needed alteration. Two independent selected colds preserve the new69 and previous initializer330 + high-draw10, **409/409 exact** across34 fields. Reviewed authored exact progress rises to113,492/275,890 across527 owners.
 
 
-[ResultMenuUpdate @4223F0](evidence/result-menu-update-exact-20261031/README.md) is now complete **206/206 exact**, including the formerly excluded 27 bytes of physical jump/selector tables. All16 external/local fields and five table destinations bind in two independent selected cold links. The previous provisional boundary stopped at the RET after 179 bytes; the corrected extent ends at 4224BD, two CC bytes before the next owner. Exact authored progress increases to 113,423/275,890 and one new owner; the reviewed denominator is still provisional.
+[AsciiManagerView::OnDrawHighPriority](evidence/ascii-high-draw-exact-20261031/README.md) is now full **10/10 exact** with its real `AsciiManagerDrawGuiStrings` REL32, recovered by a natural VM pointer in the genuine GUI renderer. The selected 3-TU `AsciiManagerCreate` source graph yields the target EBX receiver; two independent selected cold links preserve new callback10 and prior Initialize330, **340/340** across all29 fields. The larger 570-byte renderer stays **NONEXACT** despite improving from54/458 to160/458 comparable positions. This new callback raises reviewed authored exact to113,492/275,890 across527 owners.
+
+
+[ResultMenuUpdate @4223F0](evidence/result-menu-update-exact-20261031/README.md) is now complete **206/206 exact**, including the formerly excluded 27 bytes of physical jump/selector tables. All16 external/local fields and five table destinations bind in two independent selected cold links. The previous provisional boundary stopped at the RET after 179 bytes; the corrected extent ends at 4224BD, two CC bytes before the next owner. Exact authored progress increases to 113,492/275,890 and one new owner; the reviewed denominator is still provisional.
 
 
 [GameConfigurationView::ResetDefaults @418C40](evidence/game-configuration-reset-exact-20261031/README.md)
@@ -35,7 +38,7 @@ assignment ahead of numeric defaults recovers the target codegen; the prior
 order was 116/125 nonexact in the same graph. An incorrect double-addend
 manifest was independently repaired. Two **selected** cold replays pass;
 no historical whole-cohort replay is required. Current reviewed authored
-exact total is 113,423/275,890 across 526 owners; the denominator remains
+exact total is 113,492/275,890 across 526 owners; the denominator remains
 provisional.
 
 Sound PreloadBgm has a separate [bounded nonexact correction](evidence/sound-preload-reg-contract-20261031/README.md)
