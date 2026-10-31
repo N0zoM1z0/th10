@@ -640,6 +640,9 @@ int SoundPlayerView::ReopenBgm(const char *path)
     return 0;
 }
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 // Target 0x0043D7D0. Comparison uses this owner, but the filename copy uses
 // the global sound owner. Seek/read/close results are intentionally unchecked.
 int SoundPlayerView::PreloadBgm(int index, const char *path)
@@ -677,8 +680,9 @@ int SoundPlayerView::PreloadBgm(int index, const char *path)
     }
 
     DWORD bytesRead;
-    ReadFile(file, allocation, bgmFormats[formatIndex].preloadAllocSize,
-             &bytesRead, NULL);
+    const DWORD requestedSize = bgmFormats[formatIndex].preloadAllocSize;
+    _ReadWriteBarrier();
+    ReadFile(file, allocation, requestedSize, &bytesRead, NULL);
     CloseHandle(file);
 
     bgmPreloadFormats[index] = &bgmFormats[formatIndex];
