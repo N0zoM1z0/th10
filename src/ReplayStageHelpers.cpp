@@ -9,7 +9,8 @@
 ReplayFrameData::ReplayFrameData()
 {
     memset(this, 0, sizeof(*this));
-    recordEnd = records;
+    ReplayRecData **cursor = &recordEnd;
+    *cursor = records;
     fpsEnd = fpsSamples;
     link.value = this;
     link.next = NULL;

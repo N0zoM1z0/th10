@@ -28861,3 +28861,23 @@ linkages = [
   { offset = 0xD3, type = "REL32", symbol = "??_M@YGXPAXIHP6EX0@Z@Z", target = 0x004525FF },
   { offset = 0xE1, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
 ]
+
+# Real ReplayManager::BeginStage caller determines the private ESI stage
+# input and complete RET4 owner. The frame constructor is an actual support TU.
+[units.replay-allocate-frame-data]
+artifact_kind = "linked-pe"
+source = "src/ReplayManager.cpp"
+support_sources = ["src/ReplayStageHelpers.cpp"]
+pdb_source = "src/ReplayStageHelpers.cpp"
+output_dir = "build/match-linked/ReplayFrameAllocate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?BeginStage@ReplayManager@@QAEXXZ"
+functions = ["ReplayAllocateFrameData"]
+symbol = "?ReplayAllocateFrameData@@YGPAUReplayListNode@@PAVReplayManager@@H@Z"
+target_address = 0x0042AA50
+size = 139
+linkages = [
+  { offset = 0x6, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+]

@@ -11,16 +11,19 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 114,601 / 275,890 |
-| Authored exact owners | 535 |
-| Total canonical exact owners / codegen bytes | 1,415 / 182,735 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 168 |
+| Reviewed authored owned bytes exact | 114,740 / 275,890 |
+| Authored exact owners | 536 |
+| Total canonical exact owners / codegen bytes | 1,416 / 182,874 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 167 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
 proves neither original names/class/TU ownership nor product/runtime/portability.
 
 ## Latest reviewed authored exact checkpoint
+
+[ReplayAllocateFrameData @42AA50](evidence/replay-frame-allocation-exact-20261031/README.md) now passes complete **139/139 exact** with its true operator-new REL32, ESI stage/stack manager/RET4. A natural typed cursor-slot publication fixes the original store/LEA scheduling, while two independent selected two-input `ReplayManager::BeginStage`/`ReplayStageHelpers` colds prove the complete owner. Existing ReplayClearStageFrameData93 and ReplayRestoreStagePosition83 remain exact in the same new graph. This increases authored exact to **114,740 / 275,890 over 536 owners**, without admitting the nonexact 582-byte BeginStage parent or running full cold replay.
+
 
 [BulletManagerView::~BulletManagerView @405F70](evidence/script-viewer-bullet-destructor-exact-20261031/README.md) is now a **complete 236/236 authored exact parent**, all23 target fields bound. The explicit one-state 38-byte generated Bullet-array-EH protocol passed a real-image negative suite with28 rejection controls, and two independent **3-source** targeted cold links. The second also preserves the old Bomb137 via its separate 2-source graph (**373/373** across both producer groups). Only the parent236 receives credit; the generated EH helper/element destructor do not. Authored exact increases to **114,601 / 275,890** over **535** owners.
 

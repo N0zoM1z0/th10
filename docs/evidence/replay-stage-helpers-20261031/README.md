@@ -1,5 +1,7 @@
 # Replay stage helpers and complete BeginStage — 2026-10-31
 
+**Later checkpoint (2026-10-31):** The earlier nonexact 139-byte ReplayAllocateFrameData is now independently closed **139/139 exact** in a real two-source BeginStage graph by correcting the recordEnd store/LEA scheduling. See [the newer complete allocation proof](../replay-frame-allocation-exact-20261031/README.md). The historical measurements and two helper acceptances below remain valid for their earlier source epoch.
+
 Two complete authored owners add **176 exact bytes**: frame-list cleanup93/all1
 and position restoration83/all2. The complete BeginStage remains **566/582,
 NONEXACT**; frame allocation139/139 also remains nonexact. Neither receives
