@@ -3172,6 +3172,22 @@ struct AnmChildScriptLayer
     unsigned int layer;
 };
 
+static __forceinline void TickScriptTimerScale(AnmVmTimerView *timer)
+{
+    timer->previous = timer->current;
+    if (*timer->scale > 0.99f && *timer->scale < 1.01f)
+    {
+        ++timer->current;
+        timer->subframe += 1.0f;
+    }
+    else
+    {
+        const volatile float &delta = *timer->scale;
+        timer->subframe = delta + timer->subframe;
+        timer->current = static_cast<int>(timer->subframe);
+    }
+}
+
 int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
@@ -3887,8 +3903,10 @@ stop:
                 ->FromAngleMagnitude(
                     angleValue, vm->scaleY - vm->scaleX * 0.5f);
             vertex[0].z = 0.0f;
-            *reinterpret_cast<AnmFloat3View *>(&vertex[0].x) +=
-                vm->position + vm->positionOffset;
+            AnmFloat3View translation = vm->position + vm->positionOffset;
+            const volatile float &positionZ = vm->position.z;
+            translation.z = positionZ + vm->positionOffset.z;
+            *reinterpret_cast<AnmFloat3View *>(&vertex[0].x) += translation;
             ++vertex;
 
             textureV += textureStep;
@@ -3903,7 +3921,7 @@ stop:
         vertex[1].v = textureV + vm->uvScrollY;
     }
 
-    vm->scriptTimer.Tick();
+    TickScriptTimerScale(&vm->scriptTimer);
     g_AnmGameSpeed = savedGameSpeed;
     return 0;
 }

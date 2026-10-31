@@ -57,6 +57,8 @@ Its36 source/header pins match this checkpoint. Check the actual graph,
 profiles, objects and image hashes before incremental reuse. The normal
 canonical producer is `build/match-linked/HintLifecycle`.
 
+The complete 9,964-byte ANM `ExecuteScript` now strictly reproduces **9,962 bytes** using a local timer-read helper and a scoped radial Z read. Independent five-source cold and all350 field bindings confirm the remaining two bytes; see [the large-owner proof](evidence/anm-executor-two-byte-frontier-20261031/README.md). Exact totals are unchanged because the whole owner still rejects.
+
 ## Open owners worth resuming
 
 These are complete measurements at the linked proof's source epoch, not fresh
@@ -71,7 +73,7 @@ comparisons of every owner against today's source. Choose one bounded owner.
 | GameManager cleanup / update |1098/1105 and1538/1544 NE|[Cleanup controls](evidence/gui-message-teardown-20261031/README.md): transition flag publication/block placement and VM-call/private helper interfaces |
 | ECL AddScriptData450220 |547/589 NE|[Caller-context record](evidence/maintenance-20261030/README.md): actual Enemy caller restores ABI; validation-slot reload, old-table guard and insertion lifetimes remain open |
 | Enemy float operand reader |876/884 NE|[Operand proof](evidence/enemy-operands-exact-20261030/README.md): float family/source ordering controls remain unresolved |
-| ANM ExecuteScript |9960/9964 NE|[Executor proof](evidence/anm-timer-boundary-20261030/README.md): private call-boundary and retained-value scheduling |
+| ANM ExecuteScript |9962/9964 NE|[New arithmetic proof](evidence/anm-executor-two-byte-frontier-20261031/README.md): Z read and timer x87 schedule recovered; only child91 EDX/ECX push remain; all350 fields/95 locals strictly bound |
 | Ending Run |1568/1568 NE|[Ending proof](evidence/ending-native-record-20261030/README.md): old complete comparison retains54 ordinary differences; current inputs have changed |
 
 The GUI stage updater is already complete3836-byte exact; do not reopen the
