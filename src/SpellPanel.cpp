@@ -4,12 +4,14 @@
 #include "Gui.hpp"
 #include "StageScript.hpp"
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 struct GameChainOwnerView;
 extern EnemyManagerView *g_EnemyManager;        // target477704
 extern GameChainOwnerView *g_GameAnimationSlots; // target4776E8
 extern unsigned char *g_EnemySpellStatistics;   // target47783C
-extern int g_GameStatisticsIndex0;              // target474C68
-extern int g_GameStatisticsIndex1;              // target474C6C
+extern unsigned char g_GameStageState[];        // target474C40
 
 // Target408D60. Names describe the recovered panel role, not original symbols.
 int EnemyGameStateView::UpdateSpellPanel()
@@ -26,7 +28,21 @@ int EnemyGameStateView::UpdateSpellPanel()
 
     AnmRenderManagerView::ExecuteScript(&stageVms[0]);
     AnmRenderManagerView::ExecuteScript(&stageVms[1]);
-    spellTimer.Tick();
+    // Preserve the observed scale-first slow tick; original barriers are unknown.
+    spellTimer.previous = spellTimer.current;
+    float *scale = spellTimer.scale;
+    if (*scale > 0.99f && *scale < 1.01f)
+    {
+        ++spellTimer.current;
+        spellTimer.subframe += 1.0f;
+    }
+    else
+    {
+        const float step = *scale;
+        _ReadWriteBarrier();
+        spellTimer.subframe = step + spellTimer.subframe;
+        spellTimer.current = static_cast<int>(spellTimer.subframe);
+    }
     if (spellTimer.current >= 120) {
         if ((flags378C & 4u) == 0) {
             if (g_Player->drawPosition.y < 96.0f) {
@@ -64,7 +80,9 @@ int EnemyGameStateView::UpdateSpellPanel()
         AnmRenderManagerView::ExecuteScript(&frontVms[2]);
     }
 
-    int record = g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3;
+    // Selection slots share the established state base and are resampled below.
+    const int *selection = reinterpret_cast<const int *>(g_GameStageState + 0x28);
+    int record = selection[1] + selection[0] * 3;
     int count = *reinterpret_cast<int *>(g_EnemySpellStatistics +
         record * 0x437c + spellId * 0x90 + 0x624);
     if (count >= 100)
@@ -74,7 +92,7 @@ int EnemyGameStateView::UpdateSpellPanel()
     GuiView *gui = g_GuiView;
     gui->frontAnm->SetSprite(&secondaryFrontVms[0], count / 10 + 30);
     gui->frontAnm->SetSprite(&secondaryFrontVms[1], count % 10 + 30);
-    record = g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3;
+    record = selection[1] + selection[0] * 3;
     count = *reinterpret_cast<int *>(g_EnemySpellStatistics +
         record * 0x437c + spellId * 0x90 + 0x628);
     if (count >= 100)
@@ -84,11 +102,11 @@ int EnemyGameStateView::UpdateSpellPanel()
     for (int i = 0; i < 5; ++i)
         AnmRenderManagerView::ExecuteScript(&secondaryFrontVms[i]);
 
-    const PlayerFloat3 &position =
-        g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position;
-    effectPosition += (AnmFloat3View(position.x, position.y, position.z) -
-                       effectPosition) * 0.05f;
-    g_AnmRenderManagerView->SetVmWorldPosition(AnmVmIdView(managedVmId), &effectPosition);
+    const AnmFloat3View &position = reinterpret_cast<const AnmFloat3View &>(
+        g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position);
+    effectPosition += (position - effectPosition) * 0.05f;
+    g_AnmRenderManagerView->SetVmWorldPosition(
+        *reinterpret_cast<AnmVmIdView *>(&managedVmId), &effectPosition);
     return 1;
 }
 

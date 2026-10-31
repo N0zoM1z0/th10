@@ -76,8 +76,9 @@ The four-byte extent gap is not a count of incorrect bytes. Shared text-output
 setup, alternating manager registers, side-setting schedules, sprite registers,
 wait zero caching, profile/counter indexing, special-VM clear order and the
 instruction-advance cursor still differ. The native cursor coalesces a move
-present in target; a meaningful next-instruction capture is a future hypothesis,
-not a completed control or an exactness claim.
+present in target. A later meaningful next-instruction capture is fully
+byte-neutral and restored; see the [subsequent control receipt](../spell-panel-exact-20261031/README.md).
+It does not repair the cursor or grant exact credit.
 
 ```sh
 scripts/repo-python docs/evidence/gui-message-call-closure-20261031/verify-native.py --artifact-dir build/gpt-6.1-sol/gui-message-wait-20261031/reviewed-candidate

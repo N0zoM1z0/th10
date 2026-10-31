@@ -4,29 +4,66 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint restores the complete GUI interpreter's150-call
-identity sequence, all54 hidden outputs, nested stage7 ordering, two flag memory
-updates and the real transition priority interface. The21-input candidate is
-4476/4480 NONEXACT; native337 fields/121 locals are not blanket target bindings.
-Seven guards5370/all109 and four scoped canonical contracts5290/all108 pass.
-Shared headers and existing profiles/recipes stay fixed. Original source
-qualifiers/barriers/helper boundaries remain unknown. No native job is running.
+selected lane. This checkpoint closes the complete1057-byte spell-panel update
+and10-byte registered callback. All37/1 fields,26 main-body local branches,
+15 calls and internal alignment bytes agree in two independent three-input
+canonical colds. Existing ID/XYZ and shared-state views restore the actual ABI
+and reads; an owner-local timer step restores x87 operand order. Original
+class/TU/data/qualifier provenance remains unknown. No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 111,454 / 275,863 |
-| Authored exact owners | 521 |
-| Total canonical exact owners / codegen bytes | 1,399 / 179,568 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 182 |
+| Reviewed authored owned bytes exact | 112,511 / 275,863 |
+| Authored exact owners | 522 |
+| Total canonical exact owners / codegen bytes | 1,401 / 180,635 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 181 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: GUI interpreter call order and transition interface
+## Latest source checkpoint: complete spell-panel update and callback exact
+
+[The complete proof](evidence/spell-panel-exact-20261031/README.md) adds1057
+authored exact bytes at408D60..409180 and10 codegen bytes at409220..409229.
+The callback origin stays indeterminate. Fresh entry reproduces1060/1057 and
+callback7/10, including missing statistics resampling, vector-construction
+spills, reversed x87 operands and receiver transfer in the wrong owner.
+
+The retained marker uses the existing XYZ view instead of constructing another
+vector. A local timer scale capture before a compiler memory barrier recovers
+target operand order. The existing VM ID wrapper view removes integer-to-ID
+construction and naturally derives private EDI plus the complete10-byte ECX
+adapter. No fake arguments or calling-convention changes. Shared headers and
+compiler profiles stay fixed; original qualifiers/barriers remain unknown.
+
+The existing state-base view at474C40+28/+2C restores both actual selection
+read pairs and the last nine ordinary register bytes. All four absolute words
+bind the semantic base plus explicit addends, despite coincident D3D diagnostic
+anchor labels. All37 fields and every ordinary byte/local destination agree;
+the empty target relocation directory waives nothing. Independent geometry
+confirms271 instructions,26 locals,15 calls, one RET at420 and both internal
+six-byte alignments. Exactness does not close original data/class ownership.
+
+Two three-input canonical colds pass1067/all38. Both images preserve three
+existing ANM guards532/all9, totaling five contracts1599/all47.18 source/header
+pins and complete PE/MAP/PDB receipts remain. One Wine path-conversion failure
+is excluded from the pair; the required toolchain execute smoke and fresh
+retry both pass. Two earlier probe setup failures produce no native claim.
+The thirteen successful probes distinguish real source changes from restored
+flag/receiver/static/index/type controls. No historical cohort or host tests.
+Private campaign: spell-panel-close-20261031.
+
+The GUI next-instruction-capture lead is freshly tested, complete-byte-neutral
+and restored. No GUI source/recipe changes or GUI cold replay follow; park it
+until new evidence. GUI4476/4480 and other parent candidates remain nonexact.
+This checkpoint changes no mapping, boundary, origin, authored denominator or
+later-phase claim. The complete game remains far from the98% exact objective.
+
+## Previous source checkpoint: GUI interpreter call order and transition interface
 
 [The complete candidate proof](evidence/gui-message-call-closure-20261031/README.md)
 records4476/4480 NONEXACT with zero new exact credit. A skip-path compiler memory

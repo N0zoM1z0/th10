@@ -1,5 +1,9 @@
 # Spell-card panel frame update
 
+The [2026-10-31 complete exact proof](../spell-panel-exact-20261031/README.md)
+supersedes the native mismatch below. This packet preserves its historical
+source epoch; its host-test reports are historical, not current checkpoint gates.
+
 `EnemyGameStateView::UpdateSpellPanel @ 408D60` now has maintained source for
 its complete **1,057-byte authored owner**. The registered callback at `409220`
 adds ten source-present bytes with origin left indeterminate. Neither owner is

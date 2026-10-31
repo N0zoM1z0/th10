@@ -1,0 +1,1590 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "status": "complete-owners-exact",
+  "new_authored_bytes": 1057,
+  "new_indeterminate_origin_bytes": 10,
+  "unit_specs": {
+    "enemy-spell-panel-update": {
+      "artifact_kind": "linked-pe",
+      "source": "src/SpellPanel.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "output_dir": "build/match-linked/SpellPanelUpdate",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?EnemySpellPanelUpdateCallback@@YIHPAUEnemyGameStateView@@@Z",
+      "functions": [
+        "EnemyGameStateView::UpdateSpellPanel"
+      ],
+      "symbol": "?UpdateSpellPanel@EnemyGameStateView@@QAEHXZ",
+      "target_address": 4230496,
+      "size": 1057,
+      "linkages": [
+        {
+          "offset": 27,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_GameAnimationSlots@@3PAUGameChainOwnerView@@A",
+          "target": 4683496
+        },
+        {
+          "offset": 135,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target": 4451888
+        },
+        {
+          "offset": 147,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target": 4451888
+        },
+        {
+          "offset": 173,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@3f7d70a4",
+          "target": 4655976
+        },
+        {
+          "offset": 188,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@3f8147ae",
+          "target": 4655972
+        },
+        {
+          "offset": 208,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@3f800000",
+          "target": 4655868
+        },
+        {
+          "offset": 241,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "__ftol2",
+          "target": 4602668
+        },
+        {
+          "offset": 279,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Player@@3PAUPlayer@@A",
+          "target": 4683828
+        },
+        {
+          "offset": 291,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@42c00000",
+          "target": 4656256
+        },
+        {
+          "offset": 328,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?SetInterrupt@AnmVmIdView@@QAEXF@Z",
+          "target": 4494448
+        },
+        {
+          "offset": 413,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_Player@@3PAUPlayer@@A",
+          "target": 4683828
+        },
+        {
+          "offset": 425,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@43000000",
+          "target": 4656116
+        },
+        {
+          "offset": 456,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?SetInterrupt@AnmVmIdView@@QAEXF@Z",
+          "target": 4494448
+        },
+        {
+          "offset": 583,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_GuiView@@3PAUGuiView@@A",
+          "target": 4683532
+        },
+        {
+          "offset": 601,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "target": 4449696
+        },
+        {
+          "offset": 607,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target": 4451888
+        },
+        {
+          "offset": 653,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_GuiView@@3PAUGuiView@@A",
+          "target": 4683532
+        },
+        {
+          "offset": 677,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "target": 4449696
+        },
+        {
+          "offset": 683,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target": 4451888
+        },
+        {
+          "offset": 688,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_GameStageState@@3PAEA",
+          "target": 4672576,
+          "addend": 40
+        },
+        {
+          "offset": 694,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_GameStageState@@3PAEA",
+          "target": 4672576,
+          "addend": 44
+        },
+        {
+          "offset": 700,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_EnemySpellStatistics@@3PAEA",
+          "target": 4683836
+        },
+        {
+          "offset": 756,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_GuiView@@3PAUGuiView@@A",
+          "target": 4683532
+        },
+        {
+          "offset": 780,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "target": 4449696
+        },
+        {
+          "offset": 800,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "target": 4449696
+        },
+        {
+          "offset": 805,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_GameStageState@@3PAEA",
+          "target": 4672576,
+          "addend": 40
+        },
+        {
+          "offset": 811,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_GameStageState@@3PAEA",
+          "target": 4672576,
+          "addend": 44
+        },
+        {
+          "offset": 817,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_EnemySpellStatistics@@3PAEA",
+          "target": 4683836
+        },
+        {
+          "offset": 889,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "target": 4449696
+        },
+        {
+          "offset": 909,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+          "target": 4449696
+        },
+        {
+          "offset": 920,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target": 4451888
+        },
+        {
+          "offset": 935,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+          "target": 4683524
+        },
+        {
+          "offset": 966,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "target": 4791312
+        },
+        {
+          "offset": 987,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@3d4ccccd",
+          "target": 4656260
+        },
+        {
+          "offset": 997,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@3d4ccccd",
+          "target": 4656260
+        },
+        {
+          "offset": 1007,
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@3d4ccccd",
+          "target": 4656260
+        },
+        {
+          "offset": 1041,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?SetVmWorldPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+          "target": 4494160
+        }
+      ],
+      "pdb_source": "src/SpellPanel.cpp"
+    },
+    "enemy-spell-panel-update-callback": {
+      "artifact_kind": "linked-pe",
+      "source": "src/SpellPanel.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "output_dir": "build/match-linked/SpellPanelUpdate",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?EnemySpellPanelUpdateCallback@@YIHPAUEnemyGameStateView@@@Z",
+      "functions": [
+        "EnemySpellPanelUpdateCallback"
+      ],
+      "symbol": "?EnemySpellPanelUpdateCallback@@YIHPAUEnemyGameStateView@@@Z",
+      "target_address": 4231712,
+      "size": 10,
+      "linkages": [
+        {
+          "offset": 4,
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?UpdateSpellPanel@EnemyGameStateView@@QAEHXZ",
+          "target": 4230496
+        }
+      ],
+      "pdb_source": "src/SpellPanel.cpp"
+    },
+    "anm-loaded-set-sprite": {
+      "artifact_kind": "linked-pe",
+      "source": "src/SpellPanel.cpp",
+      "output_dir": "build/match-linked/SpellPanelUpdate",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?EnemySpellPanelUpdateCallback@@YIHPAUEnemyGameStateView@@@Z",
+      "functions": [
+        "AnmLoadedView::SetSprite"
+      ],
+      "symbol": "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z",
+      "target_address": 4449696,
+      "size": 356,
+      "linkages": [
+        {
+          "offset": 287,
+          "type": "DIR32",
+          "symbol": "__real@3b800000",
+          "target": 4655996
+        },
+        {
+          "offset": 298,
+          "type": "DIR32",
+          "symbol": "__real@3b800000",
+          "target": 4655996
+        }
+      ],
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "pdb_source": "src/AnmManager.cpp"
+    },
+    "anm-manager-set-vm-world-position": {
+      "artifact_kind": "linked-pe",
+      "source": "src/SpellPanel.cpp",
+      "output_dir": "build/match-linked/SpellPanelUpdate",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?EnemySpellPanelUpdateCallback@@YIHPAUEnemyGameStateView@@@Z",
+      "functions": [
+        "AnmRenderManagerView::SetVmWorldPosition"
+      ],
+      "symbol": "?SetVmWorldPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+      "target_address": 4494160,
+      "size": 111,
+      "linkages": [
+        {
+          "offset": 6,
+          "type": "REL32",
+          "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+          "target": 4493760
+        },
+        {
+          "offset": 18,
+          "type": "DIR32",
+          "symbol": "__real@43600000",
+          "target": 4655948
+        },
+        {
+          "offset": 33,
+          "type": "DIR32",
+          "symbol": "__real@41800000",
+          "target": 4655944
+        },
+        {
+          "offset": 72,
+          "type": "DIR32",
+          "symbol": "__real@43600000",
+          "target": 4655948
+        },
+        {
+          "offset": 88,
+          "type": "DIR32",
+          "symbol": "__real@41800000",
+          "target": 4655944
+        }
+      ],
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "pdb_source": "src/AnmManager.cpp"
+    },
+    "anm-vm-id-set-interrupt": {
+      "artifact_kind": "linked-pe",
+      "source": "src/SpellPanel.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "output_dir": "build/match-linked/SpellPanelUpdate",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?EnemySpellPanelUpdateCallback@@YIHPAUEnemyGameStateView@@@Z",
+      "functions": [
+        "AnmVmIdView::SetInterrupt"
+      ],
+      "symbol": "?SetInterrupt@AnmVmIdView@@QAEXF@Z",
+      "target_address": 4494448,
+      "size": 65,
+      "linkages": [
+        {
+          "offset": 4,
+          "type": "DIR32",
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "target": 4791312
+        },
+        {
+          "offset": 10,
+          "type": "REL32",
+          "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+          "target": 4493760
+        }
+      ],
+      "pdb_source": "src/AnmVmId.cpp"
+    }
+  },
+  "complete_geometry": {
+    "enemy-spell-panel-update": {
+      "owned_bytes": 1057,
+      "decoded_instructions": 271,
+      "fields": [
+        {
+          "offset": 27,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 135,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 147,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 173,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 188,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 208,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 241,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 279,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 291,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 328,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 413,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 425,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 456,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 583,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 601,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 607,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 653,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 677,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 683,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 688,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 694,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 700,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 756,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 780,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 800,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 805,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 811,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 817,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 889,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 909,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 920,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 935,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 966,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 987,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 997,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 1007,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 1041,
+          "type": "REL32",
+          "width": 4
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 11,
+          "destination": 1048,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 24,
+          "destination": 38,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 51,
+          "destination": 130,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 60,
+          "destination": 130,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 182,
+          "destination": 226,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 197,
+          "destination": 226,
+          "mnemonic": "jp"
+        },
+        {
+          "offset": 224,
+          "destination": 251,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 258,
+          "destination": 540,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 271,
+          "destination": 411,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 300,
+          "destination": 540,
+          "mnemonic": "jp"
+        },
+        {
+          "offset": 336,
+          "destination": 320,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 363,
+          "destination": 352,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 376,
+          "destination": 384,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 395,
+          "destination": 384,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 406,
+          "destination": 534,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 434,
+          "destination": 540,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 464,
+          "destination": 448,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 491,
+          "destination": 480,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 504,
+          "destination": 512,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 523,
+          "destination": 512,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 547,
+          "destination": 651,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 647,
+          "destination": 576,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 649,
+          "destination": 687,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 739,
+          "destination": 746,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 856,
+          "destination": 863,
+          "mnemonic": "jl"
+        },
+        {
+          "offset": 931,
+          "destination": 918,
+          "mnemonic": "jne"
+        }
+      ],
+      "call_offsets": [
+        134,
+        146,
+        240,
+        327,
+        455,
+        600,
+        606,
+        676,
+        682,
+        779,
+        799,
+        888,
+        908,
+        919,
+        1040
+      ],
+      "returns": [
+        {
+          "offset": 1056,
+          "operand": ""
+        }
+      ],
+      "normalized_sha256": "f62191ec1757a86ba774346c0c8171340de0974f836b8dfda29ff29b004d01ae"
+    },
+    "enemy-spell-panel-update-callback": {
+      "owned_bytes": 10,
+      "decoded_instructions": 5,
+      "fields": [
+        {
+          "offset": 4,
+          "type": "REL32",
+          "width": 4
+        }
+      ],
+      "fixed_local_branches": [],
+      "call_offsets": [
+        3
+      ],
+      "returns": [
+        {
+          "offset": 9,
+          "operand": ""
+        }
+      ],
+      "normalized_sha256": "dde0303c6556682645b27f905bc541ee6b4236a1f856211bf57cfe9eee624b7e"
+    },
+    "anm-loaded-set-sprite": {
+      "owned_bytes": 356,
+      "decoded_instructions": 80,
+      "fields": [
+        {
+          "offset": 287,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 298,
+          "type": "DIR32",
+          "width": 4
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 14,
+          "destination": 350,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 26,
+          "destination": 350,
+          "mnemonic": "jne"
+        }
+      ],
+      "call_offsets": [],
+      "returns": [
+        {
+          "offset": 349,
+          "operand": ""
+        },
+        {
+          "offset": 355,
+          "operand": ""
+        }
+      ],
+      "normalized_sha256": "4fe075d0533b02209d763a749376d668614d491e22ef8364b524c4c636092587"
+    },
+    "anm-manager-set-vm-world-position": {
+      "owned_bytes": 111,
+      "decoded_instructions": 33,
+      "fields": [
+        {
+          "offset": 6,
+          "type": "REL32",
+          "width": 4
+        },
+        {
+          "offset": 18,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 33,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 72,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 88,
+          "type": "DIR32",
+          "width": 4
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 12,
+          "destination": 108,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 57,
+          "destination": 108,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 64,
+          "destination": 108,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 106,
+          "destination": 66,
+          "mnemonic": "jne"
+        }
+      ],
+      "call_offsets": [
+        5
+      ],
+      "returns": [
+        {
+          "offset": 108,
+          "operand": "4"
+        }
+      ],
+      "normalized_sha256": "a411daafcaf61af552e7a76e1b13e9e802b81abd142d1bdbc226f29b817217e3"
+    },
+    "anm-vm-id-set-interrupt": {
+      "owned_bytes": 65,
+      "decoded_instructions": 21,
+      "fields": [
+        {
+          "offset": 4,
+          "type": "DIR32",
+          "width": 4
+        },
+        {
+          "offset": 10,
+          "type": "REL32",
+          "width": 4
+        }
+      ],
+      "fixed_local_branches": [
+        {
+          "offset": 16,
+          "destination": 64,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 30,
+          "destination": 64,
+          "mnemonic": "jne"
+        },
+        {
+          "offset": 37,
+          "destination": 64,
+          "mnemonic": "je"
+        },
+        {
+          "offset": 39,
+          "destination": 48,
+          "mnemonic": "jmp"
+        },
+        {
+          "offset": 62,
+          "destination": 48,
+          "mnemonic": "jne"
+        }
+      ],
+      "call_offsets": [
+        9
+      ],
+      "returns": [
+        {
+          "offset": 64,
+          "operand": ""
+        }
+      ],
+      "normalized_sha256": "a88102289818881f6d1936354ade1ef99965669d1021af61758f8ce6349071cd"
+    }
+  },
+  "source_pins": {
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/SpellPanel.cpp": "c99d9b87131eaaf4cc624d0e5e35f03a8acf676a546c75723589da99999dbb92",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef"
+  },
+  "source_before_sha256": "9fa87f6a3a6447524af3d2136010a114cfb3ab9358866dbd28c0d560f6f7bb91",
+  "cold": [
+    {
+      "label": "cold-1",
+      "exit": 0,
+      "artifact": "build/gpt-6.1-sol/spell-panel-close-20261031/cold-1",
+      "units": [
+        {
+          "unit": "enemy-spell-panel-update",
+          "result": "exact",
+          "size": 1057,
+          "matched_bytes": 1057,
+          "normalization_complete": true,
+          "image_sha256": "dee8de39802174d8d0a210445b662571d3724ba72255d9228f6358dffef59c09",
+          "pdb_guid": "3d2cc915bc072b42b3c97488d1e30964",
+          "pdb_age": 1,
+          "fields": 37
+        },
+        {
+          "unit": "enemy-spell-panel-update-callback",
+          "result": "exact",
+          "size": 10,
+          "matched_bytes": 10,
+          "normalization_complete": true,
+          "image_sha256": "dee8de39802174d8d0a210445b662571d3724ba72255d9228f6358dffef59c09",
+          "pdb_guid": "3d2cc915bc072b42b3c97488d1e30964",
+          "pdb_age": 1,
+          "fields": 1
+        }
+      ],
+      "manifest_sha256": "aa338f5cba5fa2f9898d4cbc2450ae2d79626bff5363ad234ef53a31da80961e",
+      "driver": "scripts/ltcg_link.py:cold_link",
+      "report_sha256": "dd6bc2adb9ad0302526e228d08a04880d672507b1e0c71e01f60c919ac108190"
+    },
+    {
+      "label": "cold-2-retry",
+      "exit": 0,
+      "artifact": "build/gpt-6.1-sol/spell-panel-close-20261031/cold-2-retry",
+      "units": [
+        {
+          "unit": "enemy-spell-panel-update",
+          "result": "exact",
+          "size": 1057,
+          "matched_bytes": 1057,
+          "normalization_complete": true,
+          "image_sha256": "75a1e4315d0e5ef8c2c5b86054cf0ac23c27c89a685f5c199c50c0bd0753221c",
+          "pdb_guid": "0a849ea802eb9a4481129929d8bf6dc5",
+          "pdb_age": 1,
+          "fields": 37
+        },
+        {
+          "unit": "enemy-spell-panel-update-callback",
+          "result": "exact",
+          "size": 10,
+          "matched_bytes": 10,
+          "normalization_complete": true,
+          "image_sha256": "75a1e4315d0e5ef8c2c5b86054cf0ac23c27c89a685f5c199c50c0bd0753221c",
+          "pdb_guid": "0a849ea802eb9a4481129929d8bf6dc5",
+          "pdb_age": 1,
+          "fields": 1
+        }
+      ],
+      "manifest_sha256": "aa338f5cba5fa2f9898d4cbc2450ae2d79626bff5363ad234ef53a31da80961e",
+      "driver": "scripts/ltcg_link.py:cold_link",
+      "report_sha256": "782d8d74f35b0e04bf351ed28051dd96a4dc11ea23c4851d6b5641997fcd3616"
+    }
+  ],
+  "same_image_validation": {
+    "cold-1": [
+      {
+        "unit": "enemy-spell-panel-update",
+        "result": "exact",
+        "size": 1057,
+        "matched_bytes": 1057,
+        "normalization_complete": true,
+        "image_sha256": "dee8de39802174d8d0a210445b662571d3724ba72255d9228f6358dffef59c09",
+        "pdb_guid": "3d2cc915bc072b42b3c97488d1e30964",
+        "pdb_age": 1,
+        "fields": 37
+      },
+      {
+        "unit": "enemy-spell-panel-update-callback",
+        "result": "exact",
+        "size": 10,
+        "matched_bytes": 10,
+        "normalization_complete": true,
+        "image_sha256": "dee8de39802174d8d0a210445b662571d3724ba72255d9228f6358dffef59c09",
+        "pdb_guid": "3d2cc915bc072b42b3c97488d1e30964",
+        "pdb_age": 1,
+        "fields": 1
+      },
+      {
+        "unit": "anm-loaded-set-sprite",
+        "result": "exact",
+        "size": 356,
+        "matched_bytes": 356,
+        "normalization_complete": true,
+        "image_sha256": "dee8de39802174d8d0a210445b662571d3724ba72255d9228f6358dffef59c09",
+        "pdb_guid": "3d2cc915bc072b42b3c97488d1e30964",
+        "pdb_age": 1,
+        "fields": 2
+      },
+      {
+        "unit": "anm-manager-set-vm-world-position",
+        "result": "exact",
+        "size": 111,
+        "matched_bytes": 111,
+        "normalization_complete": true,
+        "image_sha256": "dee8de39802174d8d0a210445b662571d3724ba72255d9228f6358dffef59c09",
+        "pdb_guid": "3d2cc915bc072b42b3c97488d1e30964",
+        "pdb_age": 1,
+        "fields": 5
+      },
+      {
+        "unit": "anm-vm-id-set-interrupt",
+        "result": "exact",
+        "size": 65,
+        "matched_bytes": 65,
+        "normalization_complete": true,
+        "image_sha256": "dee8de39802174d8d0a210445b662571d3724ba72255d9228f6358dffef59c09",
+        "pdb_guid": "3d2cc915bc072b42b3c97488d1e30964",
+        "pdb_age": 1,
+        "fields": 2
+      }
+    ],
+    "cold-2-retry": [
+      {
+        "unit": "enemy-spell-panel-update",
+        "result": "exact",
+        "size": 1057,
+        "matched_bytes": 1057,
+        "normalization_complete": true,
+        "image_sha256": "75a1e4315d0e5ef8c2c5b86054cf0ac23c27c89a685f5c199c50c0bd0753221c",
+        "pdb_guid": "0a849ea802eb9a4481129929d8bf6dc5",
+        "pdb_age": 1,
+        "fields": 37
+      },
+      {
+        "unit": "enemy-spell-panel-update-callback",
+        "result": "exact",
+        "size": 10,
+        "matched_bytes": 10,
+        "normalization_complete": true,
+        "image_sha256": "75a1e4315d0e5ef8c2c5b86054cf0ac23c27c89a685f5c199c50c0bd0753221c",
+        "pdb_guid": "0a849ea802eb9a4481129929d8bf6dc5",
+        "pdb_age": 1,
+        "fields": 1
+      },
+      {
+        "unit": "anm-loaded-set-sprite",
+        "result": "exact",
+        "size": 356,
+        "matched_bytes": 356,
+        "normalization_complete": true,
+        "image_sha256": "75a1e4315d0e5ef8c2c5b86054cf0ac23c27c89a685f5c199c50c0bd0753221c",
+        "pdb_guid": "0a849ea802eb9a4481129929d8bf6dc5",
+        "pdb_age": 1,
+        "fields": 2
+      },
+      {
+        "unit": "anm-manager-set-vm-world-position",
+        "result": "exact",
+        "size": 111,
+        "matched_bytes": 111,
+        "normalization_complete": true,
+        "image_sha256": "75a1e4315d0e5ef8c2c5b86054cf0ac23c27c89a685f5c199c50c0bd0753221c",
+        "pdb_guid": "0a849ea802eb9a4481129929d8bf6dc5",
+        "pdb_age": 1,
+        "fields": 5
+      },
+      {
+        "unit": "anm-vm-id-set-interrupt",
+        "result": "exact",
+        "size": 65,
+        "matched_bytes": 65,
+        "normalization_complete": true,
+        "image_sha256": "75a1e4315d0e5ef8c2c5b86054cf0ac23c27c89a685f5c199c50c0bd0753221c",
+        "pdb_guid": "0a849ea802eb9a4481129929d8bf6dc5",
+        "pdb_age": 1,
+        "fields": 2
+      }
+    ]
+  },
+  "controls": [
+    {
+      "label": "current-entry",
+      "exit": 0,
+      "owner_bytes": 1060,
+      "callback_bytes": 7,
+      "ordinary_matched": 427,
+      "ordinary_compared": 917,
+      "fields": 35,
+      "normalized_sha256": "6d3cdc44b3d668539b2684696e0c298df083efb91dfbcd3ec27ae6b8ab140f96",
+      "source_sha256": "9fa87f6a3a6447524af3d2136010a114cfb3ab9358866dbd28c0d560f6f7bb91",
+      "image_sha256": "bfb9c474540e43c0b2bd59442063fa839dbb817d24f09e0f30fcc7709b15283d"
+    },
+    {
+      "label": "initial-flag-observation",
+      "exit": 0,
+      "owner_bytes": 1060,
+      "callback_bytes": 7,
+      "ordinary_matched": 420,
+      "ordinary_compared": 917,
+      "fields": 35,
+      "normalized_sha256": "f93090a8deb7923c5d4cb7518a47b0ae5657d435cb90aee8cc29cbed64c8c188",
+      "source_sha256": "f0806f4b70c41c10ef2215c3aa658a458b570196a3197625ea26ea0f538e786f",
+      "image_sha256": "6c9b3a34f440dbc6cbc4ac79e4fa0ea1ad906ee57f74c8bfa56127870c857d85"
+    },
+    {
+      "label": "resampled-statistics",
+      "exit": 0,
+      "owner_bytes": 1077,
+      "callback_bytes": 7,
+      "ordinary_matched": 545,
+      "ordinary_compared": 913,
+      "fields": 37,
+      "normalized_sha256": "d4329acae642fd7f962720003e78a580c3449dd02448cfc8752dc9c6df0321cd",
+      "source_sha256": "86747222802b822afcfde08679be8b0476a71fd214ad8bab12f9c60f7ca712fa",
+      "image_sha256": "9d5cc78261df870e0adb0b060054e6f781e7dcacad3d6f2316a3172e17985bb9"
+    },
+    {
+      "label": "existing-position-view",
+      "exit": 0,
+      "owner_bytes": 1058,
+      "callback_bytes": 7,
+      "ordinary_matched": 616,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "4f21cf0115c88214c89f1b7bf11e49767f3d395ec0a854ba7299fece3f9a2845",
+      "source_sha256": "f181a8081094be537633376cd3e2f0b38ddf695ef9382a741555f74b8712d8ea",
+      "image_sha256": "8b51e0d5b5628dc5c943e6ea5332bdc32ca6e6ead8b67fad0c54d586e3c0aa6a"
+    },
+    {
+      "label": "explicit-state-owner",
+      "exit": 0,
+      "owner_bytes": 1058,
+      "callback_bytes": 7,
+      "ordinary_matched": 616,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "4f21cf0115c88214c89f1b7bf11e49767f3d395ec0a854ba7299fece3f9a2845",
+      "source_sha256": "dd35f24df66b7e07ec6518e38efa93b77ee236720885ab5a7e562b6acbe206b9",
+      "image_sha256": "3b7befdf96ac4965e4aaeffa10dd9074e689222e07431f3bde5186825f60cd84"
+    },
+    {
+      "label": "callback-local-owner",
+      "exit": 0,
+      "owner_bytes": 1058,
+      "callback_bytes": 7,
+      "ordinary_matched": 616,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "4f21cf0115c88214c89f1b7bf11e49767f3d395ec0a854ba7299fece3f9a2845",
+      "source_sha256": "f258f3e38f4216accae63efc389ceffb9f3d1e60b7728bce77c79638bcd41ae2",
+      "image_sha256": "33fff2a041c486b3698a669b10bed3188ed320a210f993eec2b42753ead0aab2"
+    },
+    {
+      "label": "declared-timer-step",
+      "exit": 0,
+      "owner_bytes": 1058,
+      "callback_bytes": 7,
+      "ordinary_matched": 611,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "cb354d32dc01aa2d5b00ce02195728844eb0eb6373fa75eb9e1b6a8bdf78c9d9",
+      "source_sha256": "f5788b93b263cc13ea1be9d075cf7c7176532e67f5acf62da4365b3f9761ed14",
+      "image_sha256": "0b28ce52b3db6793e2ec6e184c33adb2b9bebecf7e3e0bf25aa6a06890a1f635"
+    },
+    {
+      "label": "ordinary-base-read",
+      "exit": 0,
+      "owner_bytes": 1058,
+      "callback_bytes": 7,
+      "ordinary_matched": 609,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "6db81f73d3eb6fd6aefd1a95bc0ea3c8743d323c3ff4e58195ee7e3e5d4cb8ab",
+      "source_sha256": "6640ff41c1f20de4eefc7122e782ce201179bc312488a1a0a0b87733b8fdac8f",
+      "image_sha256": "6de03db7ca67614e5939ca5c5ab8601b2e745896117b669509cf9fad1e7199fe"
+    },
+    {
+      "label": "direct-selection-sum",
+      "exit": 0,
+      "owner_bytes": 1058,
+      "callback_bytes": 7,
+      "ordinary_matched": 603,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "605a2e5b8d3d42781d599df64011d32780660516cde2d42ed8935f18e1f3ea29",
+      "source_sha256": "11e22741bf310c0cc069b82979cb8790dd3e9e16add0608ed5e9e16e123d85da",
+      "image_sha256": "2d68d5e349a33a54ff20af30d4611b8898737cb48abefa63968f5bd75169eccb"
+    },
+    {
+      "label": "existing-managed-id",
+      "exit": 0,
+      "owner_bytes": 1057,
+      "callback_bytes": 10,
+      "ordinary_matched": 900,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "53a9378d40bdf40226053ba423b06e6f3c64997f270059cc6ba5f71daea0aa7b",
+      "source_sha256": "409462d786252c908065a7a2cfa64d23517f857f27f90444265d68e8917f9f18",
+      "image_sha256": "0fe3110b2a8a07dd48b02ceb0643c8d235c70b596a987e86b56523b9b728392c"
+    },
+    {
+      "label": "character-first-record",
+      "exit": 0,
+      "owner_bytes": 1057,
+      "callback_bytes": 10,
+      "ordinary_matched": 900,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "53a9378d40bdf40226053ba423b06e6f3c64997f270059cc6ba5f71daea0aa7b",
+      "source_sha256": "c6f0a4bb590daf70a713c90768af7f23f15fd98f33a534b968d37f23d64c9463",
+      "image_sha256": "bc3aeb5bbd62fccc5f4cb5a52e8a471c3b807382314c21faeb6c5ab32d1b4ce3"
+    },
+    {
+      "label": "typed-statistics-entry",
+      "exit": 0,
+      "owner_bytes": 1057,
+      "callback_bytes": 10,
+      "ordinary_matched": 900,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "53a9378d40bdf40226053ba423b06e6f3c64997f270059cc6ba5f71daea0aa7b",
+      "source_sha256": "949a42bdd362c7e92605297d337a61d150a5d18b136198da47e88a2b0f8c68d9",
+      "image_sha256": "6703eb77e87b423286737d3eb307272bc35c1a4f73d517840ceb66b6e7c9a32a"
+    },
+    {
+      "label": "canonical-selection-view",
+      "exit": 0,
+      "owner_bytes": 1057,
+      "callback_bytes": 10,
+      "ordinary_matched": 909,
+      "ordinary_compared": 909,
+      "fields": 37,
+      "normalized_sha256": "f62191ec1757a86ba774346c0c8171340de0974f836b8dfda29ff29b004d01ae",
+      "source_sha256": "7cfe5714fd54cbcd45e8c708132f6e8dfc460b55a8d698a08cfe1afc0bfd633d",
+      "image_sha256": "8637674707422de3a2fac2ed5ab402d73e280cc5c1464faee83bcc602ebe0db9"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "label": "ordered-timer-step",
+      "exit": 1,
+      "kind": "compile-error-missing-intrinsic-declaration",
+      "claim": "no native result"
+    },
+    {
+      "label": "ordinary-statistics-base",
+      "exit": 1,
+      "kind": "setup-error-base-receipt-not-produced",
+      "claim": "no native result"
+    },
+    {
+      "label": "cold-2",
+      "exit": 1,
+      "kind": "Wine path conversion crash contaminated object path",
+      "claim": "not counted as successful cold"
+    }
+  ],
+  "recovery": {
+    "toolchain_smoke_exit": 0,
+    "log_sha256": "3e01cd92172d9bd921b55101c975ff5f0611807d38e2ab5177f66c58d03017e7",
+    "retry": "cold-2-retry"
+  },
+  "gui_cursor_control": {
+    "result": "complete-native-byte-neutral-restored",
+    "owned_bytes": 4476,
+    "fields": 337,
+    "normalized_sha256": "1ed2318f2800b2af056148b257d9b4a756fc757c527ea4e0a80f867a2846ed51",
+    "scope": "no GUI source or recipe change; no GUI cold cohort replay"
+  },
+  "address_binding_review": {
+    "selection_symbol": "?g_GameStageState@@3PAEA",
+    "target_base": "0x00474C40",
+    "field_offsets": [
+      "0x2B0",
+      "0x2B6",
+      "0x325",
+      "0x32B"
+    ],
+    "addends": [
+      "0x28",
+      "0x2C",
+      "0x28",
+      "0x2C"
+    ],
+    "rule": "bind semantic base plus addend, not coincident D3D data-anchor labels",
+    "target_data_storage_closed": false
+  },
+  "claims": {
+    "new_mappings": 0,
+    "boundary_changes": 0,
+    "origin_changes": 0,
+    "authored_denominator_change": 0,
+    "original_class_or_tu_proven": false,
+    "runtime_validated": false,
+    "product_closed": false,
+    "portable": false,
+    "comparator_changes": false,
+    "profiles_changed": false
+  },
+  "cleanup": {
+    "retained_builds": [
+      "cold-1",
+      "cold-2-retry",
+      "current-entry"
+    ],
+    "removed_builds": [
+      {
+        "label": "direct-selection-sum",
+        "bytes": 518432
+      },
+      {
+        "label": "existing-managed-id",
+        "bytes": 518466
+      },
+      {
+        "label": "callback-local-owner",
+        "bytes": 518092
+      },
+      {
+        "label": "explicit-state-owner",
+        "bytes": 518092
+      },
+      {
+        "label": "existing-position-view",
+        "bytes": 518093
+      },
+      {
+        "label": "canonical-selection-view",
+        "bytes": 517922
+      },
+      {
+        "label": "ordinary-base-read",
+        "bytes": 518526
+      },
+      {
+        "label": "declared-timer-step",
+        "bytes": 518543
+      },
+      {
+        "label": "ordered-timer-step",
+        "bytes": 0
+      },
+      {
+        "label": "initial-flag-observation",
+        "bytes": 518089
+      },
+      {
+        "label": "resampled-statistics",
+        "bytes": 518168
+      },
+      {
+        "label": "character-first-record",
+        "bytes": 518485
+      },
+      {
+        "label": "typed-statistics-entry",
+        "bytes": 518543
+      }
+    ],
+    "removed_bytes": 6219451,
+    "gui_control_removed_bytes": 2371669,
+    "scope": "only superseded experiments from this batch; baseline, successful cold pair, compact receipts/source snapshots and all failure logs retained"
+  },
+  "validation": {
+    "verify-cold-1": {
+      "exit": 0,
+      "log_sha256": "86eca0f0d774b7cd07b32f40c151be1fcc5acb2ff6c0092b79b2662a8ccd912f"
+    },
+    "verify-cold-2": {
+      "exit": 0,
+      "log_sha256": "86eca0f0d774b7cd07b32f40c151be1fcc5acb2ff6c0092b79b2662a8ccd912f"
+    },
+    "ci": {
+      "exit": 0,
+      "log_sha256": "c0daddbd79ed448fd3d068420722dbf985cb73d1b6fcc24527260c93ef641f8c"
+    },
+    "diff-check": {
+      "exit": 0,
+      "log_sha256": "e85f604969fa6416e3ee42724dc5abecc4ee6b27bf7ded41a1a260f88b43d3dd"
+    },
+    "default_ci_stages": 7
+  }
+}

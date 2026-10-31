@@ -8689,3 +8689,38 @@ and16 terminal observations remain. No new exact credit, match, mapping,
 boundary, origin, denominator, product/runtime or portability change. Authored
 exact111454/275863 across521 owners; canonical179568/1399. See the
 [complete call/ABI proof](evidence/gui-message-call-closure-20261031/README.md).
+
+
+## 2026-10-31 Complete1057-byte spell-panel update and callback exact
+
+EnemyGameStateView::UpdateSpellPanel408D60..409180 closes1057/all37 in two
+independent three-input /GL /GS canonical colds. Full geometry is271 instructions,
+26 fixed local branches,15 direct calls, one RET at420 and both six-byte internal
+alignments. Callback409220..409229 closes10/all1, preserving its indeterminate
+origin. Both images retain three existing ANM guards532/all9; the complete five
+contracts pass1599/all47.18 source/header pins and independent PE/PDB receipts
+remain. Source names, original class/TU/data ownership and later phases stay open.
+
+Reusing the existing XYZ view removes real vector-construction spills. A local
+scale capture before a compiler memory barrier restores x87 operand order.
+Passing the existing VM ID wrapper view, instead of constructing an ID from
+its integer value, naturally restores private EDI and callback save/transfer/
+call/restore protocol. Formal receiver/free/static spellings do not repair that
+ABI and are restored. No fake parameters or calling-convention annotations.
+Original source qualifiers/barriers and cross-type storage legality are unknown.
+
+Selection indices use the established state base474C40+28/+2C for both records.
+The prior standalone global declarations allow CSE across SetSprite; volatile
+snapshots restore reads but leave nine ordinary register bytes wrong. The
+shared state view restores actual reads and all remaining bytes without those
+extra qualifiers. Four explicit base-plus-addend fields are mandatory. Their
+native harness addresses coincide with D3D data-anchor labels, which are not
+the semantic fields. No comparator/address exemption or D3D evidence change.
+
+One second-cold Wine path-conversion crash is retained and excluded; full
+toolchain execute smoke and the new retry pass. A GUI next-instruction local
+capture is separately complete-byte-neutral at4476/4480 and restored/parked.
+No GUI source/canonical recipe change follows. Authored exact becomes112511/
+275863 across522 owners; canonical180635/1401, mappings1221/authored703/backlog181.
+No boundary, origin, denominator, runtime/product or portability change. See the
+[complete spell-panel proof](evidence/spell-panel-exact-20261031/README.md).
