@@ -6277,6 +6277,7 @@ int __stdcall AsciiManagerDrawGuiStrings(AsciiManagerView *manager)
     int currentViewport = 1;
     int index;
     AsciiManagerStringView *string = manager->guiStrings;
+    AnmVmView *vm = &manager->primaryVm014;
 
     *reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) =
         (*reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) &
@@ -6286,10 +6287,10 @@ int __stdcall AsciiManagerDrawGuiStrings(AsciiManagerView *manager)
     {
         unsigned char *text;
 
-        manager->primaryVm014.position = string->position;
-        manager->primaryVm014.scaleX = string->scaleX;
-        manager->primaryVm014.scaleY = string->scaleY;
-        *reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) |= 8;
+        vm->position = string->position;
+        vm->scaleX = string->scaleX;
+        vm->scaleY = string->scaleY;
+        *reinterpret_cast<unsigned int *>(&vm->flags35C) |= 8;
         spaceWidth = manager->spaceWidth * string->scaleX;
 
         if (currentViewport != string->viewportIndex)
@@ -6313,14 +6314,14 @@ int __stdcall AsciiManagerDrawGuiStrings(AsciiManagerView *manager)
                 {
                     AnmSpriteView *sprite =
                         &manager->asciiAnm->sprites[*text - ' '];
-                    manager->primaryVm014.loadedSprite = sprite;
-                    manager->primaryVm014.primaryColor.value = string->color;
-                    if (manager->primaryVm014.scaleX == 1.0f)
+                    vm->loadedSprite = sprite;
+                    vm->primaryColor.value = string->color;
+                    if (vm->scaleX == 1.0f)
                         g_AnmRenderManagerView->DrawNoRotation(
-                            &manager->primaryVm014);
+                            vm);
                     else
                         g_AnmRenderManagerView->DrawNoRotationNoRound(
-                            &manager->primaryVm014);
+                            vm);
 
                 }
                 manager->primaryVm014.position.x += spaceWidth;

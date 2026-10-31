@@ -28588,3 +28588,22 @@ linkages = [
   { offset = 0xB8, type = "DIR32", local = true, target = 0x00422442 },
   { offset = 0xBC, type = "DIR32", local = true, target = 0x0042244A },
 ]
+
+# The real ASCII manager factory/callback registration graph selects EBX for
+# both the callback receiver and its GUI text renderer's private receiver.
+[units.ascii-manager-on-draw-high]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/Chain.cpp"]
+output_dir = "build/match-linked/AsciiManagerInitialize"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AsciiManagerCreate@@YAPAUAsciiManagerView@@XZ"
+functions = ["AsciiManagerView::OnDrawHighPriority"]
+symbol = "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z"
+target_address = 0x00401520
+size = 10
+linkages = [
+  { offset = 0x4, type = "REL32", symbol = "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z", target = 0x00401A50 },
+]
