@@ -4551,9 +4551,9 @@ int AnmRenderManagerView::RequestCaptureRectangle(
     if (captureSurfaceIndex >= 0)
         return -1;
     captureSurfaceIndex = vm->anmFile->anmFileIndex;
-    captureDestinationX = x;
     captureSourceX = sourceX;
     captureDestinationY = y;
+    captureDestinationX = x;
     captureDestinationWidth = width;
     captureSourceHeight = sourceHeight;
     captureSourceY = sourceY;
