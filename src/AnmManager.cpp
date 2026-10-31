@@ -2519,7 +2519,7 @@ error:
 // Target 0x00447EC0 stages raw surface bytes for a later LoadSurface call.
 int AnmRenderManagerView::PreloadSurface(int surfaceIndex, const char *path)
 {
-    char filePath[256];
+    char filePath[260];
     int fileSize;
     unsigned char *fileData;
 
@@ -2530,7 +2530,7 @@ int AnmRenderManagerView::PreloadSurface(int surfaceIndex, const char *path)
     fileData = FileSystem::OpenFile(filePath, &fileSize, 0);
     if (fileData == NULL)
     {
-        g_AnmErrorLoggerView.Log(
+        th10::g_GameErrorContext.Fatal(
             "%s\x82\xaa\x93\xc7\x82\xdd\x8d\x9e\x82\xdf"
             "\x82\xc8\x82\xa2\x82\xc5\x82\xb7\x81\x42\r\n",
             path);
