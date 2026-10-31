@@ -44,82 +44,57 @@ downloaded tools are private and never committed.
 
 ## Current status
 
-New agents should start with [the current handoff](docs/RE_HANDOFF.md). It
-summarizes current exact owners, remaining work and the retained working context.
+Start with [the current handoff](docs/RE_HANDOFF.md), the selected owner's source
+and ledger rows. [PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers
+and is the count authority. The inventory and origin classifications remain
+provisional; the Windows i386 product, runtime semantics and portability are open.
 
-The tracked function candidates have reviewed boundaries and origins, but some
-origins remain indeterminate and unresolved `.text` gaps can still change the
-inventory. Maintained source and canonical exact units are tracked separately;
-see the generated [`docs/PROGRESS.md`](docs/PROGRESS.md) for live counts. The
-whole Windows i386 build graph, runtime/semantic acceptance and portability
-remain open.
+The latest complete Hint frame owner is571 bytes/all17 fields exact. Its
+[proof](docs/evidence/hint-frame-exact-20261031/README.md) preserves the real
+callback and the still-nonexact consumption callee. The handoff lists remaining
+frontiers without treating old matching sizes as exactness.
 
-After changing a function, origin, mapping, implementation, or match ledger,
-regenerate the committed progress artifacts before committing. Public CI checks
-both `docs/PROGRESS.md` and `resources/progress.svg` against the current ledgers.
+Use `scripts/repo-python`; it enforces the locked Capstone package. Verify the
+private target before target work. Check toolchain declarations and run the
+execution smoke on setup, toolchain changes or a compiler/Wine problem.
+The pinned VC7.1 SP1 candidate reports compiler/linker build6030. Original
+production partitions, flags, libraries, resources and link order remain open.
 
 ```bash
-scripts/repo-python scripts/progress.py
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/verify-toolchain.py --check
 scripts/repo-python scripts/ci.py
 ```
 
-Default CI runs seven lightweight repository checks. The host simulation suites,
-fixtures and mutation runners have been removed; older reports are historical.
-Exact reconstruction uses complete native byte comparisons and cold replays of
-explicitly selected affected units. Allocation-failure/null/exception host
-scenarios, sanitizer/leak sweeps and mutation campaigns are not checkpoint
-requirements. Comparator self-tests are opt-in with `ci.py --only 'STAGE'` when
-that mechanism changes. See [the current workflow](docs/RE_WORKFLOW.md).
+Default CI runs seven lightweight repository checks. Regenerate progress with
+`scripts/repo-python scripts/progress.py` when ledger inputs change. Historical
+host fixtures, failure/lifecycle simulations, sanitizer sweeps and mutation
+reports are not current gates. Comparator self-tests are selected explicitly
+with `ci.py --only 'STAGE'` when the affected mechanism changes.
 
-The repository pins a VC7.1 SP1 candidate reporting compiler/linker build 6030
-and provides a headless-Wine verifier. Its smoke covers normal C/C++ COFF, C++
-LTCG, resources, and a PE32 link. Target Rich records independently show 131
-normal C, 15 normal C++, and 52 LTCG C++ inputs. Accepted exact units bind their
-own compiler contexts. Run `verify-toolchain.py --execute` on setup, toolchain
-changes or compiler/Wine problems; it is not a per-owner prerequisite. Production
-translation-unit partition, libraries, resources, data owners, and link order
-remain open.
-
-Use `scripts/repo-python` for repository Python commands. It selects an
-interpreter only when its Capstone package matches all four hashes in
-`config/tools.lock.toml`; this avoids the system Python/Conda decoder mismatch
-in Web shells without changing the decoder lock. A local environment may expose the
-ignored `.tools/capstone` Python-package root; the wrapper prepends that root
-only for a candidate execution and still verifies the same four locked files
-before running the requested command.
+Exact work compares complete native owners, every relocation/resolved field,
+fixed local destinations, actual ABI and required callee bindings. Select only
+new/affected exact owners, for example:
 
 ```bash
-scripts/repo-python scripts/verify-toolchain.py --check
-scripts/repo-python scripts/build-match-unit.py --check
-scripts/repo-python scripts/report-exact-backlog.py
-scripts/repo-python scripts/rank-exact-backlog.py --source src/PbgArchive.cpp
-scripts/repo-python scripts/probe-exact-backlog.py --source src/PbgArchive.cpp
-scripts/repo-python scripts/probe-ltcg-backlog.py --source src/PbgArchive.cpp
-scripts/repo-python scripts/probe-ltcg-backlog.py --source src/AnmManager.cpp \
-  --entry src/AnmManager.cpp=AsciiManagerCreate
 scripts/repo-python scripts/replay-exact-units.py \
-  --unit anm-evaluate-rgb-interpolation --unit anm-int3-scale
+  --unit hint-frame-update --unit hint-update-callback --json
 ```
 
-Selected units sharing the same complete build recipe use one cold artifact.
-Sharing a source or header does not require replaying every consumer. The replay command cold-builds each normal-COFF object or LTCG
-linked image and checks every selected function against the target. COFF units
-declare relocations; linked-PE units declare every link-resolved code field.
-Select the affected units for a bounded change; omitting selectors rebuilds
-the full historical cohort. Current recovery state and unresolved work are in
-[`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md).
+Selected units with the same complete recipe share one cold artifact. Source
+or header sharing alone does not require replaying every consumer. Omitting
+selectors rebuilds the historical cohort and is inappropriate for ordinary
+bounded work. Matching size or a structural candidate grants no exact credit.
 
-The linked LTCG probe derives function extents from the linker's PDB section
-contributions and reports structural candidates without granting exactness.
-Reviewed `artifact_kind = "linked-pe"` units use a separate fail-closed
-comparator that verifies PE/map/PDB identity, requires a complete PDB-owned
-extent, exhaustively enumerates link-resolved fields, and replays them against
-the target. This proves only the declared bounded unit; the incomplete harness
-is not a reconstructed product.
-The executable tool payload is shared and ignored; its 32-bit Wine prefix is
-game-bound, ignored, and always driven through Xvfb. A normal-COFF function
-comparison cannot establish an LTCG-owned function. See
-[`docs/TOOLS.md`](docs/TOOLS.md) and [`docs/ORACLES.md`](docs/ORACLES.md).
+Linked-PE acceptance binds the complete PDB contribution, PE/map/PDB identities
+and exhaustive field manifest to the original target. Its incomplete harness
+is not a runnable reconstructed product. See [ORACLES.md](docs/ORACLES.md),
+[RE_WORKFLOW.md](docs/RE_WORKFLOW.md) and [TOOLS.md](docs/TOOLS.md).
+
+Private caches and archives are documented in [RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md).
+Old paths may be archived, and source/header pin equality alone does not prove
+a reusable graph or a current native comparison. Use the listed inventory for
+selective restoration and recheck profiles, source order, objects and image.
 
 ## Required phase order
 
@@ -143,7 +118,6 @@ comparison cannot establish an LTCG-owned function. See
 - [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — current resume brief, unresolved owners, and source-epoch checks.
 - [`docs/RE_ARTIFACTS.md`](docs/RE_ARTIFACTS.md) — expanded private inputs, archived experiments, and selective restoration.
 - [`docs/KNOWLEDGE_BASE.md`](docs/KNOWLEDGE_BASE.md) — TH10-only knowledge.
-- [Touhou Reconstruction Factory](https://github.com/N0zoM1z0/touhou-reconstruction-factory) — historical shared ontology reference; this repository's local workflow is defined above.
 
 ## License
 

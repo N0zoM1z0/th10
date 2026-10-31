@@ -1,89 +1,76 @@
 # Reconstruction artifacts and recovery — 2026-10-31
 
-This index describes private local state. Use [RE_HANDOFF.md](RE_HANDOFF.md) for
-continuation and [PROGRESS.md](PROGRESS.md) for current counts. Ignored inputs,
-archives and inventories are not in a Git clone; transfer them separately when
-moving this workspace. Archive existence does not make an old result current.
+Use [RE_HANDOFF.md](RE_HANDOFF.md) for continuation and [PROGRESS.md](PROGRESS.md)
+for counts. Ignored inputs/archives are private workspace state, not Git clone
+contents. Transfer archives and inventories separately when moving workspaces.
+Archive existence or a familiar directory name does not make old bytes current.
 
-## Expanded working state
+## Preserved inputs and expanded state
 
-The original read-only `resources/th10.exe`, private `ghidra-project/`, pinned
-`.tools/` toolchain/Wine environment, `_reference/` checkouts and unrelated D3D
-evidence are preserved. Canonical outputs under `build/match-linked/` remain
-expanded. A canonical recipe in `config/match-units.toml`, not a directory name
-or an old warm context, defines an exact replay.
+The read-only original `resources/th10.exe`, `ghidra-project/`, pinned `.tools/`
+toolchain/Wine environment, `_reference/` and unrelated D3D evidence are untouched.
+Canonical outputs under `build/match-linked/` remain expanded, including the
+qualified `MusicRoomHelpers` producer and `MainD3DInterface` evidence.
+A recipe in `config/match-units.toml` defines an exact replay, not an old image.
 
-These campaigns remain expanded under `.analysis/gpt-6.1-sol/` and the matching
-`build/gpt-6.1-sol/` root:
+The following campaigns remain expanded under both `.analysis/gpt-6.1-sol/`
+and `build/gpt-6.1-sol/`:
 
 | Campaign | Retained purpose |
 | --- | --- |
-| `gui-spell-notice-20261031` | Current20-input spell-end/power proof, complete notice candidate and two canonical colds |
-| `gui-score-display-20261030` | Earlier score/life19-input proof; its ItemManager pin predates the current AddPower update |
-| `gui-update-context-20261030` | Selectively restored old final cold and current timer controls; no new exact credit |
-| `ending-run-context-20261030` | Previous21-input diagnostic; its ItemManager pin now predates the score/life caller update |
-| `enemy-operands-context-20261030` | Accepted integer reader, float candidate and canonical cold records |
-| `ecl-script-data-20261030` | Unfinished complete AddScriptData comparison and actual caller graph |
-| `anm-executor-inline-context-20261030` | Pin-compatible entry context; other controls remain historical |
-| `gui-draw-context-20261030` | Complete draw candidate and cold record |
-| `laser-draw-context-20261030` | Retained draw comparison contexts |
-| `rectangle-vector-context-20261030` | Small accepted helper cold records |
+| `hint-frame-loop-20261031` | Current exact frame/callback and actual nonexact consumption callee; current36-pin eight-input context |
+| `gui-draw-close-20261031` | Latest complete724-byte draw candidate; final15 source/header pins match |
+| `gui-state-view-20261031` | Latest4472/4480 interpreter witness; Hint.cpp pin has changed |
+| `cleanup-context-20261031`, `cleanup-switch-20261031` | Complete cleanup/update residuals and real dependency/EH witnesses; source pins are historical |
+| `ecl-script-data-20261030` | Actual-caller547/589 comparison; three inputs changed; pin-equal one-source entry is a different graph |
+| `anm-executor-inline-context-20261030` | Complete executor/call-boundary witnesses; revalidate source epoch |
+| `enemy-operands-context-20261030` | Integer-reader exact history and open float reader; revalidate source epoch |
+| `ending-run-context-20261030` | Complete1568-byte Run witness; ten inputs changed since its final source context |
+| `laser-draw-context-20261030` | Complete draw comparison witnesses; revalidate source epoch |
 
-The [pin audit](evidence/maintenance-20261030/context-audit.json) checks source
-and header equality only. Before reuse, attest all pins, compile/link profiles,
-source order, object hashes and image hash against the actual graph. Some
-historical manifests within an expanded campaign still reference archived
-builds. Do not rewrite their pins or assume every manifest is reusable.
-
-The music parsers require the actual PDB producer directory
-`build/match-linked/MusicRoomHelpers`; a copied or restored snapshot deliberately
-fails that qualification. Rebuild the explicit selectors at their declared
-producer when needed.
+The [current pin audit](evidence/maintenance-20261031/context-audit.json) covers
+319 recognized manifests before cleanup,113 of which remain expanded. Five
+match their source/header hashes. This is neither complete native acceptance
+nor permission to reuse arbitrary objects. Attest actual graph/source order,
+profiles, object hashes, image and required ABI before incremental reuse.
+Do not rewrite historical pins to make a cache appear current.
 
 ## Verified private archives
 
-| Archive | Contents and inventory |
+| Archive | Inventory / retained record |
 | --- | --- |
-| `.analysis/archive/terminal-experiments-20261030.tar.xz` | 13,305 terminal files from older analysis/build campaigns, including superseded Ending builds; per-file path/size/SHA-256 inventory at `.analysis/maintenance-20261030/archive-inventory.json.gz` |
-| `.analysis/archive/historical-analysis-20261028.tar.zst` | Earlier 26,144-file analysis archive; inventory at `.analysis/handoff-20261028/historical-file-index.jsonl.gz`, receipt at `.analysis/handoff-20261028/cleanup-summary.json` |
+| `.analysis/archive/terminal-experiments-20261031.tar.xz` |5,370 files from41 ended/superseded roots; `.analysis/maintenance-20261031/archive-inventory.jsonl.gz`; [current cleanup record](evidence/maintenance-20261031/README.md) |
+| `.analysis/archive/terminal-experiments-20261030.tar.xz` |13,305 terminal files; `.analysis/maintenance-20261030/archive-inventory.json.gz`; [previous record](evidence/maintenance-20261030/cleanup-summary.json) |
+| `.analysis/archive/historical-analysis-20261028.tar.zst` |Earlier26,144-file outer archive; `.analysis/handoff-20261028/historical-file-index.jsonl.gz` and cleanup-summary.json |
 
-The new archive is 32,495,572 bytes, preserving 396,014,930 payload bytes.
-Every member hash and one restored context were checked before originals were
-removed; source files were rehashed immediately before unlinking. Public
-[cleanup metadata](evidence/maintenance-20261030/cleanup-summary.json) pins its
-archive and inventory digests. The compactor and terminal log remain in
-`.analysis/maintenance-20261030/`.
+The new archive preserves213,017,412 payload bytes in4,162,508 archive bytes.
+Every member's path/size/SHA-256 was verified, and sources were rehashed before
+removing expanded copies. Its archive/inventory digests, protected-input checks
+and net storage reduction are in the current cleanup record. Previous archives
+and their inventories are preserved; their older verification epochs are not
+presented as fresh checks. Regenerable Python cache removal is recorded separately.
 
-The older outer archive is 123,011,695 bytes with SHA-256
-`b7cf15be7f5f243e6b5bc0aeb9a0fa69924da3364dac8e27e5390aff27426e67`, rechecked
-on 2026-10-30. It includes the older small ANM/ECL/Player/RNG/report archives
-formerly listed here. Their receipts and inventories remain historical
-provenance; **those inner archive paths are no longer expanded**.
-
-Rebuildable `build/pycache/` contents are removed separately. No target bytes,
-private database, toolchain or reference checkout was removed. Historical
-savings must not be added to this batch's savings.
+Completed exact campaigns, superseded prototypes, source capsules and logs are
+recoverable from these archives. Some context files inside retained campaigns
+still reference archived builds. Read the inventory rather than assuming all
+old paths are expanded. Never delete `.analysis/` or its archives wholesale.
 
 ## Selective restoration
 
-Run from the repository root. List archive members first, then extract only
-required ignored paths. The new archive stores individual files with their
-original repository-relative names. For example:
+List members and extract exact ignored paths from the repository root:
 
 ```sh
-tar -tJf .analysis/archive/terminal-experiments-20261030.tar.xz
-tar -xJf .analysis/archive/terminal-experiments-20261030.tar.xz -C . .analysis/gpt-6.1-sol/anm-executor-context-20261030/final-context.json
+tar -tJf .analysis/archive/terminal-experiments-20261031.tar.xz | rg 'hint-consume-lifetimes-20261031/final-cold'
+tar -xJf .analysis/archive/terminal-experiments-20261031.tar.xz -C . .analysis/gpt-6.1-sol/hint-consume-lifetimes-20261031/final-cold-context.json
 ```
 
-A context file alone does not restore its object/image inputs. Select their
-exact member paths from the inventory, or restore that campaign's ignored
-build subtree when its historical evidence is actually needed. Check restored
-file hashes against the inventory. Do not extract old maintained source over
-`src/`, relax target pins or label an old image as a new compilation.
+A context alone does not restore its objects/image. Select their exact paths
+from the per-file inventory, extract them too, and verify hashes. Do not extract
+historical maintained source over `src/`. Restoring a historical witness and
+compiling today's maintained source are different experiments.
 
-For a pre-2026-10-28 inner archive, restore the inner archive **first** from the
-outer zstd archive, then inspect and extract the desired member. This exact
-inner path was checked against the outer member list:
+For pre-2026-10-28 inner archives, restore the inner archive from the outer zstd
+archive first, then inspect its members. This inner path was previously verified:
 
 ```sh
 tar --zstd -tf .analysis/archive/historical-analysis-20261028.tar.zst
@@ -91,12 +78,8 @@ tar --zstd -xf .analysis/archive/historical-analysis-20261028.tar.zst -C . .anal
 tar -tzf .analysis/handoff-cleanup-20261023/historical-codegen-reports.tar.gz
 ```
 
-The former archive-group table and individual inner restore commands are
-recoverable with `git show 58bb846:docs/RE_ARTIFACTS.md`. Apply the outer restore
-step above before using them. Some older cleanup batches intentionally removed
-regenerable outputs rather than archiving them; these archives do not restore
-such deleted builds. Rebuild maintained code through its declared recipe.
-
-Restoring a historical source-bound witness and compiling today's source are
-different experiments. Keep their records independent. Preserve the archives
-and inventories while they are the only copies of useful historical evidence.
+Older detailed restore tables remain in Git (`58bb846:docs/RE_ARTIFACTS.md`).
+Some earlier batches intentionally deleted regenerable outputs instead of
+archiving them; rebuild those only through their declared scoped recipes.
+Music parser static ownership requires the actual qualified canonical producer
+path; a copied snapshot is not a substitute for that producer qualification.

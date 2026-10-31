@@ -1,0 +1,204 @@
+{
+  "scope": "Recognized nonempty string-hash pin maps in pre-cleanup expanded .analysis/gpt-6.1-sol JSON files. Source/header equality only; profiles, order, objects, image and ABI require separate attestation.",
+  "source_checkpoint": "9bd5b01",
+  "pre_cleanup_manifests": 319,
+  "post_cleanup_expanded_manifests": 113,
+  "source_header_pin_equal": 5,
+  "representative_retained_contexts": [
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-executor-inline-context-20261030/entry-current-context.json",
+      "pins": 13,
+      "source_and_header_pins_equal": false,
+      "mismatches": [
+        {
+          "path": "src/AnmManager.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/FileSystem.hpp",
+          "reason": "sha256 changed"
+        }
+      ],
+      "kept_expanded": true
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/cleanup-switch-20261031/reviewed-message-pairs-context.json",
+      "pins": 84,
+      "source_and_header_pins_equal": false,
+      "mismatches": [
+        {
+          "path": "src/Gui.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/Hint.cpp",
+          "reason": "sha256 changed"
+        }
+      ],
+      "kept_expanded": true
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-script-data-20261030/actual-caller-context.json",
+      "pins": 17,
+      "source_and_header_pins_equal": false,
+      "mismatches": [
+        {
+          "path": "src/AnmManager.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/Enemy.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/GameScoreState.hpp",
+          "reason": "sha256 changed"
+        }
+      ],
+      "kept_expanded": true
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-script-data-20261030/entry-context.json",
+      "pins": 2,
+      "source_and_header_pins_equal": true,
+      "mismatches": [],
+      "kept_expanded": true
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ending-run-context-20261030/final-source-context.json",
+      "pins": 70,
+      "source_and_header_pins_equal": false,
+      "mismatches": [
+        {
+          "path": "src/AnmManager.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/DecomphelpLeafAccessors.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/EnemyEclDispatcher.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/FileSystem.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/FileSystem.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/GameScoreState.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/Gui.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/InputState.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/Player.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/ReplayManager.hpp",
+          "reason": "sha256 changed"
+        }
+      ],
+      "kept_expanded": true
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/enemy-operands-context-20261030/entry-context.json",
+      "pins": 70,
+      "source_and_header_pins_equal": false,
+      "mismatches": [
+        {
+          "path": "src/AnmManager.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/Enemy.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/EnemyEclDispatcher.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/FileSystem.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/FileSystem.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/GameScoreState.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/Gui.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/Hint.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/InputState.hpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/ItemManager.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/Player.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/ReplayManager.cpp",
+          "reason": "sha256 changed"
+        },
+        {
+          "path": "src/ReplayManager.hpp",
+          "reason": "sha256 changed"
+        }
+      ],
+      "kept_expanded": true
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/gui-draw-close-20261031/candidate-cold-context.json",
+      "pins": 15,
+      "source_and_header_pins_equal": true,
+      "mismatches": [],
+      "kept_expanded": true
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/gui-state-view-20261031/reviewed-candidate-context.json",
+      "pins": 64,
+      "source_and_header_pins_equal": false,
+      "mismatches": [
+        {
+          "path": "src/Hint.cpp",
+          "reason": "sha256 changed"
+        }
+      ],
+      "kept_expanded": true
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/hint-frame-loop-20261031/final-cold-context.json",
+      "pins": 36,
+      "source_and_header_pins_equal": true,
+      "mismatches": [],
+      "kept_expanded": true
+    }
+  ],
+  "full_private_audit": ".analysis/maintenance-20261031/context-audit.json",
+  "full_private_audit_sha256": "d466c8ec4dc29135328753a1cac6758e683e46175272797c5bd057b84cedd12a"
+}

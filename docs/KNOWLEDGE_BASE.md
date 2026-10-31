@@ -21,6 +21,15 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## Current entry points
+
+Use [RE_HANDOFF.md](RE_HANDOFF.md) for the short continuation brief and
+[RE_ARTIFACTS.md](RE_ARTIFACTS.md) for current versus archived working state.
+The latest [Hint frame proof](evidence/hint-frame-exact-20261031/README.md)
+supersedes its earlier571/571 nonexact reports. The [GUI stage updater proof](evidence/gui-update-exact-20261031/README.md)
+supersedes the old four-byte residual. Historical source models/test lists and
+cache labels below retain their dated meaning; they are not current gates.
+
 ## Target
 
 | ID | State | Durable fact or constraint | Evidence |

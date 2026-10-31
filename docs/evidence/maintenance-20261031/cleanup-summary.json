@@ -1,0 +1,260 @@
+{
+  "source_checkpoint": "9bd5b01",
+  "archive": ".analysis/archive/terminal-experiments-20261031.tar.xz",
+  "archive_sha256": "8b2b1c573c499083cd632691d9085b5e17307dea922c9d4ae0303e698964e917",
+  "archive_bytes": 4162508,
+  "inventory": ".analysis/maintenance-20261031/archive-inventory.jsonl.gz",
+  "inventory_sha256": "016c0049c91547b5f35d955d410bb5b6752fac9d8acfbdbea61d6af401d9df39",
+  "inventory_bytes": 209152,
+  "archived_roots": [
+    {
+      "root": "build/gpt-6.1-sol/anm-embedded-context-20261031",
+      "files": 137,
+      "bytes": 10457114
+    },
+    {
+      "root": "build/gpt-6.1-sol/enemy-spell-begin-20261031",
+      "files": 58,
+      "bytes": 4888081
+    },
+    {
+      "root": "build/gpt-6.1-sol/game-manager-bindings-20261031",
+      "files": 163,
+      "bytes": 11408393
+    },
+    {
+      "root": "build/gpt-6.1-sol/gui-counter-flow-20261031",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "root": "build/gpt-6.1-sol/gui-draw-context-20261030",
+      "files": 58,
+      "bytes": 2596475
+    },
+    {
+      "root": "build/gpt-6.1-sol/gui-message-close-20261031",
+      "files": 107,
+      "bytes": 9035655
+    },
+    {
+      "root": "build/gpt-6.1-sol/gui-message-cursor-20261031",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "root": "build/gpt-6.1-sol/gui-message-wait-20261031",
+      "files": 109,
+      "bytes": 9310817
+    },
+    {
+      "root": "build/gpt-6.1-sol/gui-score-display-20261030",
+      "files": 94,
+      "bytes": 7360951
+    },
+    {
+      "root": "build/gpt-6.1-sol/gui-spell-notice-20261031",
+      "files": 97,
+      "bytes": 7466049
+    },
+    {
+      "root": "build/gpt-6.1-sol/gui-update-close-20261031",
+      "files": 78,
+      "bytes": 6716689
+    },
+    {
+      "root": "build/gpt-6.1-sol/gui-update-context-20261030",
+      "files": 52,
+      "bytes": 4484710
+    },
+    {
+      "root": "build/gpt-6.1-sol/hint-consume-20261031",
+      "files": 93,
+      "bytes": 5392608
+    },
+    {
+      "root": "build/gpt-6.1-sol/hint-consume-lifetimes-20261031",
+      "files": 76,
+      "bytes": 4434569
+    },
+    {
+      "root": "build/gpt-6.1-sol/rectangle-vector-context-20261030",
+      "files": 46,
+      "bytes": 2555816
+    },
+    {
+      "root": "build/gpt-6.1-sol/replay-frame-20261031",
+      "files": 178,
+      "bytes": 13317524
+    },
+    {
+      "root": "build/gpt-6.1-sol/replay-restore-20261031",
+      "files": 180,
+      "bytes": 11996236
+    },
+    {
+      "root": "build/gpt-6.1-sol/replay-stage-20261031",
+      "files": 151,
+      "bytes": 11360579
+    },
+    {
+      "root": "build/gpt-6.1-sol/spell-panel-close-20261031",
+      "files": 36,
+      "bytes": 1553201
+    },
+    {
+      "root": "build/gpt-6.1-sol/startup-controlflow-20261031",
+      "files": 180,
+      "bytes": 11996777
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/anm-embedded-context-20261031",
+      "files": 162,
+      "bytes": 4944085
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/enemy-spell-begin-20261031",
+      "files": 139,
+      "bytes": 6146731
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/game-manager-bindings-20261031",
+      "files": 215,
+      "bytes": 5941597
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/gui-counter-flow-20261031",
+      "files": 47,
+      "bytes": 1621731
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/gui-draw-context-20261030",
+      "files": 118,
+      "bytes": 1221952
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/gui-message-close-20261031",
+      "files": 182,
+      "bytes": 8274474
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/gui-message-cursor-20261031",
+      "files": 23,
+      "bytes": 671683
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/gui-message-wait-20261031",
+      "files": 150,
+      "bytes": 6277643
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/gui-score-display-20261030",
+      "files": 128,
+      "bytes": 1089244
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/gui-spell-notice-20261031",
+      "files": 140,
+      "bytes": 1563497
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/gui-update-close-20261031",
+      "files": 75,
+      "bytes": 1373531
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/gui-update-context-20261030",
+      "files": 64,
+      "bytes": 1238102
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/hint-consume-20261031",
+      "files": 434,
+      "bytes": 3816065
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/hint-consume-lifetimes-20261031",
+      "files": 284,
+      "bytes": 2509571
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/rectangle-vector-context-20261030",
+      "files": 80,
+      "bytes": 987407
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/replay-alias-20261031",
+      "files": 5,
+      "bytes": 25993
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/replay-frame-20261031",
+      "files": 172,
+      "bytes": 4861579
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/replay-restore-20261031",
+      "files": 623,
+      "bytes": 13967897
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/replay-stage-20261031",
+      "files": 175,
+      "bytes": 6780806
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/spell-panel-close-20261031",
+      "files": 120,
+      "bytes": 654770
+    },
+    {
+      "root": ".analysis/gpt-6.1-sol/startup-controlflow-20261031",
+      "files": 141,
+      "bytes": 2716810
+    }
+  ],
+  "archived_file_count": 5370,
+  "archived_payload_bytes": 213017412,
+  "removed_expanded_allocated_bytes": 226177024,
+  "net_payload_bytes_reclaimed": 208645752,
+  "archive_all_members_verified": true,
+  "sources_rehashed_before_unlink": true,
+  "protected_files_verified": 136,
+  "target_database_and_d3d_unchanged": true,
+  "canonical_outputs_preserved": true,
+  "toolchain_and_reference_paths_untouched": true,
+  "retained_campaigns": [
+    "anm-executor-inline-context-20261030",
+    "cleanup-context-20261031",
+    "cleanup-switch-20261031",
+    "ecl-script-data-20261030",
+    "ending-run-context-20261030",
+    "enemy-operands-context-20261030",
+    "gui-draw-close-20261031",
+    "gui-state-view-20261031",
+    "hint-frame-loop-20261031",
+    "laser-draw-context-20261030"
+  ],
+  "pin_audit": {
+    "contexts": 319,
+    "matching_source_header_pins": 5,
+    "note": "Source/header equality only; not a current complete native acceptance or a warm-cache authorization."
+  },
+  "protected_inventory_sha256": "2e46307708e30824e1da229318aca4c178d4b407c9dc4877b21e2ee53adec78a",
+  "history_note": "Previous archive savings are excluded. Current and unresolved witnesses remain expanded or recoverable from verified private archives; no original target/database/toolchain/reference/D3D input is removed.",
+  "regenerable_cache_removed": {
+    "path": "build/pycache",
+    "files": 246,
+    "payload_bytes": 4546881,
+    "allocated_bytes": 5062656
+  },
+  "net_total_payload_bytes_reclaimed": 213192633,
+  "net_total_allocated_bytes_reclaimed": 226861056,
+  "validation": {
+    "default_ci_stages": 7,
+    "default_ci_exit": 0,
+    "archive_and_inventory_hashes_rechecked": true,
+    "protected_hashes_rechecked": true,
+    "current_source_and_tool_pins_unchanged": true
+  }
+}
