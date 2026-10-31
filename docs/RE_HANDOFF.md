@@ -4,13 +4,12 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint refines the complete4480-byte GUI message
-interpreter. The4472-byte candidate remains NONEXACT. Ordinary shared-state
-reads restore its second profile-flag calculation; captured typed ID/manager
-inputs restore ESI and both side-setting schedules. No exact credit is added.
-Warm and zero-reuse21-input cold receipts agree, with all150 call identities
-and54 hidden output slots preserved. Original types/qualifiers remain unknown.
-No native job is running.
+selected lane. This checkpoint restores the GUI draw owner's
+score-width multiply and right-edge addition schedules. Complete724/724 remains
+NONEXACT: the first rectangle's LEA is still late and one constant field is
+misplaced. All33 roles/payloads and23 destinations bind independently; warm and
+zero-reuse three-input cold receipts agree. No exact credit is added. The actual
+draw/rectangle callees pass scoped699/all35. No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
@@ -26,7 +25,34 @@ The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: GUI state view and captured text inputs
+## Latest source checkpoint: GUI drawing arithmetic order
+
+[The complete candidate proof](evidence/gui-draw-read-order-20261031/README.md)
+records724/724 NONEXACT. Width is captured before color; two compiler memory
+barriers separate multiplication from bounds stores and addition from bottom/
+right publication. The target FILD/color/FMUL and FADD-before-bottom sequences
+now agree, without extra spills, calls or stack space. Original barriers and
+qualifiers remain unknown; no shared header, ABI or profile changes.
+
+Target LEA D6 remains native EC, and the addition's constant field is target EC
+versus native E8. The multiplier field is now correctly D2. The unresolved26-byte
+interval is not a wrong-byte count. Prefix0..D5 and suffixF0..2D3 bind equal,
+without partial admission. Full173 instructions/33 fields/23 destinations/RET4
+at2D1 cold-reproduce. All33 roles/payloads agree; one field position still rejects.
+
+Both final images preserve actual Draw216/all21, rectangle483/all14 and the
+provisional callback7/all1 (706/all36). Only the two actual callees are selected
+for independent canonical cold, passing699/all35. Callback/source/boundary/origin
+credit stays unchanged. Seven draw controls are recorded; helper/constructor
+are fully neutral and parked. Private campaign: gui-draw-close-20261031.
+
+Three preliminary interpreter controls are restored after complete comparisons:
+shared-counter jump4464, clear barrier4472 and typed statistics4472. Counter
+placement remains wrong; typed records are byte-neutral. Gui.cpp is unchanged
+from12e8780, so no interpreter cold follows. All restored sources, compact
+receipts and prediction failures remain in gui-counter-flow-20261031.
+
+## Previous source checkpoint: GUI state view and captured text inputs
 
 [The complete candidate proof](evidence/gui-message-state-view-20261031/README.md)
 records4472/4480 NONEXACT. The existing state base474C40+28/+2C/+34/+3C

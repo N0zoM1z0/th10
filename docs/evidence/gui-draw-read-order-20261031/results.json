@@ -1,0 +1,1100 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "previous_proof_sha256": "34d314399a959891c92aeb1e6ab236582c3b36a626157ce2a6a58a2c98f36f92",
+  "owner": {
+    "symbol": "?DrawStageElements@GuiView@@SGHPAU1@@Z",
+    "map_object": "source.ltcg.obj"
+  },
+  "status": "complete-native-candidate-nonexact",
+  "source_pins": {
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+    "src/AnmRectangle.cpp": "3e0687c228ab4b25c9a4255c0f4487975a6f65f7f390abb4ed4cc0d4d7620695",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiDraw.cpp": "e91c71d569590a685370dcf5c80a48a29ce07fd3daa5a226cd204b4114dca395",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef"
+  },
+  "graph": {
+    "source": "src/GuiDraw.cpp",
+    "support_sources": [
+      "src/AnmRectangle.cpp",
+      "src/AnmManager.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "entry_symbol": "?GuiDrawCallback@@YIHPAX@Z"
+  },
+  "native_reproduction": {
+    "complete_owned_bytes": 724,
+    "decoded_instructions": 173,
+    "normalized_sha256": "39cdbcccc9734fbafc52e4c78935053445871ffbef7dcad3aa3cba3e16ba39f5",
+    "field_identities": [
+      {
+        "offset": 34,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 45,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 51,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 58,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 84,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 91,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 117,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 124,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 162,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 169,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 183,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiState4C58@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 194,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiState4C58@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 210,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@3e95a95b"
+          ]
+        }
+      },
+      {
+        "offset": 232,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@424c0000"
+          ]
+        }
+      },
+      {
+        "offset": 253,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+          ]
+        }
+      },
+      {
+        "offset": 270,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@3f800000"
+          ]
+        }
+      },
+      {
+        "offset": 312,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+          ]
+        }
+      },
+      {
+        "offset": 324,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@00000000"
+          ]
+        }
+      },
+      {
+        "offset": 352,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@43ab0000"
+          ]
+        }
+      },
+      {
+        "offset": 378,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@42240000"
+          ]
+        }
+      },
+      {
+        "offset": 395,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+          ]
+        }
+      },
+      {
+        "offset": 408,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@3f800000"
+          ]
+        }
+      },
+      {
+        "offset": 441,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+          ]
+        }
+      },
+      {
+        "offset": 466,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@00000000"
+          ]
+        }
+      },
+      {
+        "offset": 508,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@43ab0000"
+          ]
+        }
+      },
+      {
+        "offset": 529,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "__real@42200000"
+          ]
+        }
+      },
+      {
+        "offset": 554,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z"
+          ]
+        }
+      },
+      {
+        "offset": 574,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 620,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 631,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 637,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 690,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 697,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+          ]
+        }
+      }
+    ],
+    "fixed_local_branches": [
+      {
+        "offset": 21,
+        "destination": 32,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 69,
+        "destination": 32,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 102,
+        "destination": 82,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 135,
+        "destination": 115,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 148,
+        "destination": 160,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 180,
+        "destination": 160,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 190,
+        "destination": 316,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 333,
+        "destination": 572,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 459,
+        "destination": 464,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 479,
+        "destination": 558,
+        "mnemonic": "jnp"
+      },
+      {
+        "offset": 494,
+        "destination": 500,
+        "mnemonic": "jp"
+      },
+      {
+        "offset": 498,
+        "destination": 506,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 570,
+        "destination": 464,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 581,
+        "destination": 710,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 592,
+        "destination": 641,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 610,
+        "destination": 641,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 616,
+        "destination": 641,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 643,
+        "destination": 710,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 653,
+        "destination": 710,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 660,
+        "destination": 710,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 670,
+        "destination": 710,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 683,
+        "destination": 688,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 708,
+        "destination": 688,
+        "mnemonic": "jne"
+      }
+    ],
+    "returns": [
+      {
+        "offset": 721,
+        "operand": "4"
+      }
+    ]
+  },
+  "field_bindings": [
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target": "0x491c10",
+      "target_offset": 34,
+      "native_offset": 34
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+      "target": "0x4451c0",
+      "target_offset": 45,
+      "native_offset": 45
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target": "0x491c10",
+      "target_offset": 51,
+      "native_offset": 51
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+      "target": "0x4451c0",
+      "target_offset": 58,
+      "native_offset": 58
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target": "0x491c10",
+      "target_offset": 84,
+      "native_offset": 84
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+      "target": "0x4451c0",
+      "target_offset": 91,
+      "native_offset": 91
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target": "0x491c10",
+      "target_offset": 117,
+      "native_offset": 117
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+      "target": "0x4451c0",
+      "target_offset": 124,
+      "native_offset": 124
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target": "0x491c10",
+      "target_offset": 162,
+      "native_offset": 162
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+      "target": "0x4451c0",
+      "target_offset": 169,
+      "native_offset": 169
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GuiState4C58@@3HA",
+      "target": "0x474c58",
+      "target_offset": 183,
+      "native_offset": 183
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_GuiState4C58@@3HA",
+      "target": "0x474c58",
+      "target_offset": 194,
+      "native_offset": 194
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3e95a95b",
+      "target": "0x470cb8",
+      "target_offset": 210,
+      "native_offset": 210
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@424c0000",
+      "target": "0x470d2c",
+      "target_offset": 236,
+      "native_offset": 232
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+      "target": "0x43bda0",
+      "target_offset": 253,
+      "native_offset": 253
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f800000",
+      "target": "0x470afc",
+      "target_offset": 270,
+      "native_offset": 270
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+      "target": "0x43bda0",
+      "target_offset": 312,
+      "native_offset": 312
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@00000000",
+      "target": "0x470b04",
+      "target_offset": 324,
+      "native_offset": 324
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@43ab0000",
+      "target": "0x470d28",
+      "target_offset": 352,
+      "native_offset": 352
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42240000",
+      "target": "0x470d24",
+      "target_offset": 378,
+      "native_offset": 378
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+      "target": "0x43bda0",
+      "target_offset": 395,
+      "native_offset": 395
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@3f800000",
+      "target": "0x470afc",
+      "target_offset": 408,
+      "native_offset": 408
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+      "target": "0x43bda0",
+      "target_offset": 441,
+      "native_offset": 441
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@00000000",
+      "target": "0x470b04",
+      "target_offset": 466,
+      "native_offset": 466
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@43ab0000",
+      "target": "0x470d28",
+      "target_offset": 508,
+      "native_offset": 508
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@42200000",
+      "target": "0x470c64",
+      "target_offset": 529,
+      "native_offset": 529
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z",
+      "target": "0x43bda0",
+      "target_offset": 554,
+      "native_offset": 554
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+      "target": "0x477704",
+      "target_offset": 574,
+      "native_offset": 574
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target": "0x491c10",
+      "target_offset": 620,
+      "native_offset": 620
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+      "target": "0x4451c0",
+      "target_offset": 631,
+      "native_offset": 631
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+      "target": "0x477704",
+      "target_offset": 637,
+      "native_offset": 637
+    },
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target": "0x491c10",
+      "target_offset": 690,
+      "native_offset": 690
+    },
+    {
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z",
+      "target": "0x4451c0",
+      "target_offset": 697,
+      "native_offset": 697
+    }
+  ],
+  "bound_regions": [
+    {
+      "start": 0,
+      "size": 214,
+      "normalized_sha256": "ab5ebaa787d2ab991720052e19df26557b4e276984d94625cbb89cb13722aa14"
+    },
+    {
+      "start": 240,
+      "size": 484,
+      "normalized_sha256": "846c110dab89882d08a95fd6401ec8048a0b4030470af7d6bbde7e3422841f39"
+    }
+  ],
+  "misplaced_fields": [
+    {
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__real@424c0000",
+      "target": "0x470d2c",
+      "target_offset": 236,
+      "native_offset": 232
+    }
+  ],
+  "exact_credit": 0,
+  "controls": [
+    {
+      "label": "entry",
+      "observation": "Fresh three-input baseline after two header pins changed; two target schedules still differ.",
+      "size": 724,
+      "instructions": 173,
+      "fields": 33,
+      "locals": 23,
+      "normalized_sha256": "b5959953fa3527ce9747c4cb63beb5ea0bdc426f59580efef205fa6c2a2c384c",
+      "native_receipt_sha256": "488530adb12506ed90a3a850356b87e16e28674f1d946d15cfd189e1fe52bc1a",
+      "source_sha256": "e217998ad1054f9d682e12a8647c7316ef4ac0d79bda1981693c24abcb97839e",
+      "image_sha256": "a3b99e16ce970ffed25c31698d31700a8fededa29865e57a8f0ad4ef9435691a",
+      "exit": 0
+    },
+    {
+      "label": "score-read-barriers",
+      "observation": "Arithmetic order restored; initial color/FILD and rectangle address order still differ.",
+      "size": 724,
+      "instructions": 173,
+      "fields": 33,
+      "locals": 23,
+      "normalized_sha256": "fc765822b1a5c1fc97e1cdd93767b9d72a00bff9eaf94a884b1f03aca3f2376a",
+      "native_receipt_sha256": "98619ffecfc8d16314a68b4d8ddc345ff25bc1c0f5c9039de876cca6796ee095",
+      "source_sha256": "e086de5cd3be0f237d3605914d83342ab295e5eb94e708dc9b05466c930bb005",
+      "image_sha256": "2347d745c685228cfcb598bbaf5225b82d2b89186ba79a26cfd42ffb479693b0",
+      "exit": 0
+    },
+    {
+      "label": "right-before-bottom",
+      "observation": "Removing first barrier retains a floating value across draw and removes required reload; restored.",
+      "size": 724,
+      "instructions": 172,
+      "fields": 33,
+      "locals": 23,
+      "normalized_sha256": "ded4e725e68e31fc4512e9b74a2ee2a90560532d869564ba00d238ccd4a8a894",
+      "native_receipt_sha256": "c3e68dea3c56c6638e12154207671dd79eba2b8d1ed3d012419b5c492e62e387",
+      "source_sha256": "ea3a7fac8ee502e47b620f55598b14b7f068b5be9d1e19e7cc060d62d809d770",
+      "image_sha256": "13bfc843c8e5ab86d05ed6e665c2e086ddf3bf3d15cf91cdf60f41dadcbfca15",
+      "exit": 0
+    },
+    {
+      "label": "width-before-color",
+      "observation": "FILD/color/FMUL restored; only LEA placement differs; retained with comments.",
+      "size": 724,
+      "instructions": 173,
+      "fields": 33,
+      "locals": 23,
+      "normalized_sha256": "39cdbcccc9734fbafc52e4c78935053445871ffbef7dcad3aa3cba3e16ba39f5",
+      "native_receipt_sha256": "63864dd4a3e487f861ed4bc237ea5cf3ef2e7acc522048bf6b47a51ce1f0717a",
+      "source_sha256": "1fb7dc1f3bab6faa3b0047574fca7590d3231e127022742d842990971d24b2cf",
+      "image_sha256": "8473b556ea32071f4a3a6fe42f5f3c13249e70ef4c62d6fa5bc6ed53ceea962b",
+      "exit": 0
+    },
+    {
+      "label": "score-output-helper",
+      "observation": "Complete native diagnostic inventory neutral against width-before-color; restored.",
+      "size": 724,
+      "instructions": 173,
+      "fields": 33,
+      "locals": 23,
+      "normalized_sha256": "39cdbcccc9734fbafc52e4c78935053445871ffbef7dcad3aa3cba3e16ba39f5",
+      "native_receipt_sha256": "63864dd4a3e487f861ed4bc237ea5cf3ef2e7acc522048bf6b47a51ce1f0717a",
+      "source_sha256": "875bc139efc98adce4fb0b7efb666784607fa57c621e87e54560e2b3ca04a982",
+      "image_sha256": "67b51d0678ebbed37fa5dcbcd103bdc50380b1ddc20dd175cafbad3e7932edce",
+      "exit": 0
+    },
+    {
+      "label": "score-width-constructor",
+      "observation": "Complete native diagnostic inventory neutral against width-before-color; restored.",
+      "size": 724,
+      "instructions": 173,
+      "fields": 33,
+      "locals": 23,
+      "normalized_sha256": "39cdbcccc9734fbafc52e4c78935053445871ffbef7dcad3aa3cba3e16ba39f5",
+      "native_receipt_sha256": "63864dd4a3e487f861ed4bc237ea5cf3ef2e7acc522048bf6b47a51ce1f0717a",
+      "source_sha256": "fd9cb4445d2d7c5b1a681b9851026b3df41588905bde98c3865b29a3a3727432",
+      "image_sha256": "5bf63d07df6687a4fad36d140362eb33ed91dec0520f859aa85c585705382627",
+      "exit": 0
+    },
+    {
+      "label": "right-read-barrier",
+      "observation": "Real external call to an unresolved anchor and floating spill; not intrinsic here; restored.",
+      "size": 740,
+      "instructions": 175,
+      "fields": 34,
+      "locals": 22,
+      "normalized_sha256": "c3c2d79b25c5e8db22c25a330b859a74698d74489ad980c62f4cd73746dbbf45",
+      "native_receipt_sha256": "ebef49d96300ba6fd8c5439ae63e3f0ce0fbdee5f4275fa511cd4de61494f21a",
+      "source_sha256": "dd8d31c286358c806a5e97efd0193ab5f838327209800cb750234e421d544cf5",
+      "image_sha256": "3d9cd76bd39bee8fe831642c80f09b3e150b2f1ec6a530307d0d7880ce42c7a8",
+      "exit": 0
+    },
+    {
+      "label": "observed-score-offset",
+      "observation": "Named constant read hoists FADD and retains extra x87 value; restored.",
+      "size": 724,
+      "instructions": 172,
+      "fields": 33,
+      "locals": 23,
+      "normalized_sha256": "8a6ebaa58710caac7b6ca918e90e91d42ca7842aded63a136e6690a2992093d1",
+      "native_receipt_sha256": "8d1b1f3af5e2016a54d9bdcb57c31b9de1e485db601b57d52608ec35a3aa01c6",
+      "source_sha256": "d56f3d9474cc6e5985e5e9b1fd10c63aed7aa95ceeb3303571fcb17c8f7e1ae3",
+      "image_sha256": "fdc3f7dd03d4d2fe7a06f7fa627394fb48a98dbc1f9a56ba3328f6c46d72fac0",
+      "exit": 0
+    }
+  ],
+  "native_runs": [
+    {
+      "variant": "reviewed-candidate",
+      "forced_cold": false,
+      "compiled": [
+        "src/GuiDraw.cpp",
+        "build/gpt-6.1-sol/gui-draw-close-20261031/reviewed-candidate/link-anchors.c",
+        "build/gpt-6.1-sol/gui-draw-close-20261031/reviewed-candidate/link-anchors.c"
+      ],
+      "reused": {
+        "src/AnmRectangle.cpp": "cfa10697466cc5c15b557a2d9f4fc5f993c3569cc59290830cf62e459c6b189b",
+        "src/AnmManager.cpp": "15a54891a60f4d6153941b424f00e92800ca90bec82969043ddb6f35d3b3450b"
+      },
+      "artifacts": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-close-20261031/reviewed-candidate/source.exe",
+        "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-close-20261031/reviewed-candidate/source.map",
+        "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-close-20261031/reviewed-candidate/source.pdb"
+      },
+      "image_sha256": "1db8284d8fed6eaba4c3cec72bc66f19bda56a23739a109b6a5d61d572d4fe8d",
+      "object_sha256": {
+        "src/GuiDraw.cpp": "af7e97493241b67a0fd0eb9807d4619ed808aaa9b412fd115232c3c08015a714",
+        "src/AnmRectangle.cpp": "cfa10697466cc5c15b557a2d9f4fc5f993c3569cc59290830cf62e459c6b189b",
+        "src/AnmManager.cpp": "15a54891a60f4d6153941b424f00e92800ca90bec82969043ddb6f35d3b3450b"
+      }
+    },
+    {
+      "variant": "candidate-cold",
+      "forced_cold": true,
+      "compiled": [
+        "src/GuiDraw.cpp",
+        "src/AnmRectangle.cpp",
+        "src/AnmManager.cpp",
+        "build/gpt-6.1-sol/gui-draw-close-20261031/candidate-cold/link-anchors.c",
+        "build/gpt-6.1-sol/gui-draw-close-20261031/candidate-cold/link-anchors.c"
+      ],
+      "reused": {},
+      "artifacts": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-close-20261031/candidate-cold/source.exe",
+        "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-close-20261031/candidate-cold/source.map",
+        "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-draw-close-20261031/candidate-cold/source.pdb"
+      },
+      "image_sha256": "95e38410a34be0502d5c30de9fbf900e336fd07a30cbb5290aed17ab17d6f702",
+      "object_sha256": {
+        "src/GuiDraw.cpp": "21fe9eff71d676f0126dfc07caf3c884eae890b01760042e2b89ceef61d64b1b",
+        "src/AnmRectangle.cpp": "7e06126d498b133c63d2664e94256dc4c24e985aac09adb478441b0848f741c0",
+        "src/AnmManager.cpp": "c9515e75d3b71d61f9f6bc49e0c33549be04be45f29b8a76153814609ae8615d"
+      }
+    }
+  ],
+  "same_image_guards": {
+    "reviewed-candidate": {
+      "anm-render-draw": {
+        "result": "exact",
+        "size": 216,
+        "first_differences": [],
+        "fields": 21
+      },
+      "anm-draw-colored-rectangle": {
+        "result": "exact",
+        "size": 483,
+        "first_differences": [],
+        "fields": 14
+      },
+      "gui-draw-callback-context": {
+        "result": "exact",
+        "size": 7,
+        "first_differences": [],
+        "fields": 1
+      }
+    },
+    "candidate-cold": {
+      "anm-render-draw": {
+        "result": "exact",
+        "size": 216,
+        "first_differences": [],
+        "fields": 21
+      },
+      "anm-draw-colored-rectangle": {
+        "result": "exact",
+        "size": 483,
+        "first_differences": [],
+        "fields": 14
+      },
+      "gui-draw-callback-context": {
+        "result": "exact",
+        "size": 7,
+        "first_differences": [],
+        "fields": 1
+      }
+    }
+  },
+  "restored_interpreter_controls": {
+    "controls": {
+      "shared-counter-label": {
+        "size": 4464,
+        "normalized_sha256": "4054f2b9ce95f581380c9c8528b62e728fb63ec23b179827c59d4409b0383e0a",
+        "fields": 337,
+        "locals": 121,
+        "calls": 150,
+        "exit": 0,
+        "source_sha256": "abf309b5d4c1d28713eae6b23391b6b7a9846709cc5d087331d4948f7b1e35f8",
+        "image_sha256": "9b43aea997ff436c402810519471ceaef1497dd1f379e2f9b068671727cfa238"
+      },
+      "clear-before-resource": {
+        "size": 4472,
+        "normalized_sha256": "fcc117c3a192d7f0f2ede62e552a6c5789b6f40d7a73771f27f0cba0aa5467cf",
+        "fields": 337,
+        "locals": 121,
+        "calls": 150,
+        "exit": 0,
+        "source_sha256": "66b6d8d54d35b778d5ce75dfa17f930e4b97de93f5c7bd8fd06ca731d41854b4",
+        "image_sha256": "d4560b4890a5b51e716806a5de3f7523120c5580d73de04f94f5d2b43153534e"
+      },
+      "typed-statistics-records": {
+        "size": 4472,
+        "normalized_sha256": "fcc117c3a192d7f0f2ede62e552a6c5789b6f40d7a73771f27f0cba0aa5467cf",
+        "fields": 337,
+        "locals": 121,
+        "calls": 150,
+        "exit": 0,
+        "source_sha256": "200c1c8bb5a4f9380c545b017126bc48f276843d688c20926cb0a9d0bf6cebb7",
+        "image_sha256": "84f1b806dbd7b30ff2d034170c5f135334e119c88daabb38aa1c1b20bdd52ae5"
+      }
+    },
+    "restored_source_sha256": "f89cc7170c5254e3d4450631028a209fb5e8505249773bf15898f8c4a932c831",
+    "retained_source_changes": false
+  },
+  "scope": {
+    "main": "GuiView::DrawStageElements415800..415AD3 complete724 NONEXACT",
+    "callback": "provisional7/all1; no boundary/mapping/origin/admission changes",
+    "shared_headers_ABI_profiles": "unchanged",
+    "exact_credit": 0,
+    "product_runtime_portability": "open"
+  },
+  "canonical_cold": {
+    "exit": 0,
+    "unit_count": 2,
+    "artifact_count": 2,
+    "matched_bytes": 699,
+    "fields": 35,
+    "units": [
+      {
+        "unit": "anm-render-draw",
+        "result": "exact",
+        "size": 216,
+        "image_sha256": "ef61171b484a02e9f9df4375948a6b75f66147b958a8d409ef57f6a31fda28ef",
+        "pdb_guid": "20d6250063db2943ac0ea9b27026ec1f",
+        "pdb_age": 1,
+        "fields": 21
+      },
+      {
+        "unit": "anm-draw-colored-rectangle",
+        "result": "exact",
+        "size": 483,
+        "image_sha256": "9501599133e9afd57731d3d3049a66bcbcbf66eed37a05af5af6a7a41d4ffab2",
+        "pdb_guid": "935c18b0eceff3488fa9c97b0e7693d9",
+        "pdb_age": 1,
+        "fields": 14
+      }
+    ],
+    "manifest_sha256": "aa338f5cba5fa2f9898d4cbc2450ae2d79626bff5363ad234ef53a31da80961e",
+    "report_sha256": "37829a298ca510cb1b4f556540d6adea822ce62fa174721d7553d5390ea77cb8"
+  },
+  "cleanup": {
+    "removed_superseded_builds": [
+      "build/gpt-6.1-sol/gui-draw-close-20261031/score-read-barriers",
+      "build/gpt-6.1-sol/gui-draw-close-20261031/right-before-bottom",
+      "build/gpt-6.1-sol/gui-draw-close-20261031/width-before-color",
+      "build/gpt-6.1-sol/gui-draw-close-20261031/score-output-helper",
+      "build/gpt-6.1-sol/gui-draw-close-20261031/score-width-constructor",
+      "build/gpt-6.1-sol/gui-draw-close-20261031/right-read-barrier",
+      "build/gpt-6.1-sol/gui-draw-close-20261031/observed-score-offset",
+      "build/gpt-6.1-sol/gui-counter-flow-20261031/shared-counter-label",
+      "build/gpt-6.1-sol/gui-counter-flow-20261031/clear-before-resource",
+      "build/gpt-6.1-sol/gui-counter-flow-20261031/typed-statistics-records"
+    ],
+    "retained_current_draw_builds": [
+      "entry",
+      "reviewed-candidate",
+      "candidate-cold",
+      "helper-cold-0",
+      "helper-cold-1"
+    ],
+    "previous_frozen_baselines_preserved": true,
+    "unrelated_D3D_evidence_preserved": true,
+    "control_sources_contexts_logs_and_receipts_retained_privately": true
+  },
+  "validation": {
+    "target_verified_at_entry": true,
+    "toolchain_declarations_checked": true,
+    "toolchain_execute_not_required": true,
+    "ghidra_used": false,
+    "lightweight_ci_stages": 7,
+    "lightweight_ci_exit": 0,
+    "diff_check_exit": 0,
+    "comparator_changed": false,
+    "canonical_manifest_changed": false,
+    "progress_regenerated": true,
+    "exact_counts_changed": false
+  }
+}
