@@ -1,0 +1,5896 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owner": {
+    "symbol": "?Run@GuiMessageVmView@@SGHPAU1@@Z",
+    "source": "src/Gui.cpp",
+    "address": "0x00415E90",
+    "size": 4480
+  },
+  "status": "complete-native-candidate-nonexact",
+  "exact_credit": 0,
+  "target_review_sha256": "6f2f3da789e2822c47eb9b36af0820db269b29752e042b10a0d66813b27ce88e",
+  "target_review_reference": "docs/evidence/gui-message-run-context-20261030/results.json",
+  "target_counts": {
+    "owned_bytes": 4480,
+    "code_bytes": 4306,
+    "alignment_bytes": 2,
+    "selector_bytes": 172,
+    "fields": 337,
+    "direct_calls": 150,
+    "fixed_local_branches": 121,
+    "pe_base_relocation_directory": [
+      0,
+      0
+    ]
+  },
+  "direct_call_role_order": [
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?Fn00417010@leaf@th10@@YAPAEPAE@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?Fn00417010@leaf@th10@@YAPAEPAE@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+    "?Fn00417010@leaf@th10@@YAPAEPAE@Z",
+    "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?SetInterrupt@AnmVmIdView@@QAEXF@Z",
+    "?SetInterrupt@AnmVmIdView@@QAEXF@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+    "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+    "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+    "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSprite@AnmVmIdView@@QAEXH@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSprite@AnmVmIdView@@QAEXH@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSprite@AnmVmIdView@@QAEXH@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSprite@AnmVmIdView@@QAEXH@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+    "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z",
+    "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+    "?Add@AnmVmTimerView@@QAEXM@Z",
+    "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+    "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+    "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+    "?FrontEndPlayMusic@@YGHHH@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?StageCreateTransitionEffect@@YGPAXHHHIII@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?Add@GuiScoreView@@QAEXH@Z",
+    "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z",
+    "?SetNextGameMode@MainSupervisorView@@QAEXH@Z",
+    "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+    "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+    "?SetNextGameMode@MainSupervisorView@@QAEXH@Z",
+    "?Fn004175E0@leaf@th10@@YAXPAE@Z",
+    "?GameQueueScaledSoundCommand@@YGHM@Z",
+    "?Tick@AnmVmTimerView@@QAEXXZ"
+  ],
+  "reviewed_code_events": {
+    "stage7_gate": "jge",
+    "stage7_operand_offsets": [
+      68,
+      77,
+      68,
+      77,
+      46,
+      55,
+      46,
+      55
+    ],
+    "stage7_script_ids": [
+      33,
+      36,
+      33,
+      36,
+      24,
+      27,
+      24,
+      27
+    ],
+    "flag_updates": [
+      "dword ptr [eax + 0x9eb4], 0x20",
+      "dword ptr [eax + 0x9eb4], 0x20"
+    ],
+    "transition_factory_setup": [
+      [
+        "push 0",
+        "push 0",
+        "push 0",
+        "push 0x78",
+        "push 5",
+        "mov ebx, 0x31"
+      ]
+    ],
+    "flag_before_score_reads": 2
+  },
+  "native_reproduction": {
+    "complete_owned_bytes": 4472,
+    "code_and_alignment_bytes": 4300,
+    "decoded_instructions": 1145,
+    "normalized_sha256": "83be9c3b64cd31745558ee527e3564ba4ba4388d0a52d43d3648b59fde7e77bd",
+    "field_identities": [
+      {
+        "offset": 37,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputCurrent@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 82,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmGameSpeed@@3MA"
+          ]
+        }
+      },
+      {
+        "offset": 137,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4300
+        }
+      },
+      {
+        "offset": 153,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 161,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 180,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Fn00417010@leaf@th10@@YAPAEPAE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 201,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 211,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 242,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 250,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 274,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "??_C@_01CLKCMJKC@?5?$AA@"
+          ]
+        }
+      },
+      {
+        "offset": 283,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 292,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 306,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 330,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "??_C@_01CLKCMJKC@?5?$AA@"
+          ]
+        }
+      },
+      {
+        "offset": 339,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 347,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 356,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 375,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Fn00417010@leaf@th10@@YAPAEPAE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 394,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 401,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 411,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 418,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 438,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 449,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 468,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Fn00417010@leaf@th10@@YAPAEPAE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 489,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+          ]
+        }
+      },
+      {
+        "offset": 499,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 522,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 530,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 541,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 561,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 576,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 593,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_Player@@3PAUPlayer@@A"
+          ]
+        }
+      },
+      {
+        "offset": 613,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 629,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_Player@@3PAUPlayer@@A"
+          ]
+        }
+      },
+      {
+        "offset": 649,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 664,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputEdges@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 674,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 692,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 709,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 724,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 744,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 770,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 788,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 805,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 821,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 841,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 856,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 873,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_Player@@3PAUPlayer@@A"
+          ]
+        }
+      },
+      {
+        "offset": 890,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 906,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_Player@@3PAUPlayer@@A"
+          ]
+        }
+      },
+      {
+        "offset": 926,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 949,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetInterrupt@AnmVmIdView@@QAEXF@Z"
+          ]
+        }
+      },
+      {
+        "offset": 967,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetInterrupt@AnmVmIdView@@QAEXF@Z"
+          ]
+        }
+      },
+      {
+        "offset": 982,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1003,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1017,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1030,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1038,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1046,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?EnemyMarkPendingInterrupt@@YAXPAH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1059,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1067,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1076,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1095,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1122,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1141,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1149,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?PlayerSetShotVmInterrupt2@@YAXPAI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1158,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1179,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1206,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1252,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 1288,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1293,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSprite@AnmVmIdView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1320,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1325,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSprite@AnmVmIdView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1354,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1359,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSprite@AnmVmIdView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1386,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1391,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSprite@AnmVmIdView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1402,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputEdges@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 1419,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4396
+        }
+      },
+      {
+        "offset": 1425,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 1446,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1471,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1476,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1482,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1513,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1518,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1532,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1557,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1562,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1568,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1599,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1604,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1615,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 1636,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1661,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1666,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1672,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1703,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1708,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1722,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1747,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1752,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1758,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1789,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1794,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1805,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 1826,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1851,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1856,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1862,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1893,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1898,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1912,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1937,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1942,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1948,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 1979,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1984,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 1995,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 2016,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2044,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2049,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2055,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2083,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2088,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2102,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2127,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2132,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2138,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2166,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2171,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2182,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 2203,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2228,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2233,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2239,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2267,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2272,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2286,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2311,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2316,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2322,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2350,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2355,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2366,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 2387,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2412,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2417,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2423,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2451,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2456,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2470,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2495,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2500,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2506,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2534,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2539,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2554,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 2581,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2606,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2611,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2617,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2645,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2650,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2664,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2689,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2694,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2700,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2731,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2736,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2762,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2790,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2795,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2801,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2832,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2837,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2851,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2879,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2884,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2890,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 2921,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2926,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2952,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2965,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@AnmVmTimerView@@QAEXM@Z"
+          ]
+        }
+      },
+      {
+        "offset": 2971,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputEdges@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 2997,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputCurrent@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3014,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3033,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_MainSoundOwner@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 3038,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3046,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetCurrent@AnmVmTimerView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3074,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GameStageUpdate@@3PAUGameStageUpdateView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3085,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?FrontEndPlayMusic@@YGHHH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3091,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3114,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3124,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputEdges@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3141,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4424
+        }
+      },
+      {
+        "offset": 3147,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3167,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3182,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3202,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3218,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3238,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3254,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3274,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3289,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3309,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3325,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3345,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3361,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3381,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3396,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGlobalMode@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3407,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputEdges@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3418,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3424,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGameFlags@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3433,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPersistentData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 3456,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGlobalMode@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3462,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGameFlags@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3471,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputEdges@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3479,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3502,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGameFlags@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3511,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GameOwner477830@@3PAUGameChainOwnerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3516,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3526,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputEdges@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3540,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3552,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3564,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3569,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3574,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGlobalMode@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3590,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4452
+        }
+      },
+      {
+        "offset": 3596,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3608,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3613,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3620,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3637,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3649,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3654,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3661,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3675,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3687,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3692,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3699,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3714,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3726,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3731,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3738,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3752,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3764,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3769,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3776,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3788,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3793,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3799,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_ReplayManager@@3PAVReplayManager@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3829,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?StageCreateTransitionEffect@@YGPAXHHHIII@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3834,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3864,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3870,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGameFlags@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 3876,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGlobalMode@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3886,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPersistentData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 3920,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3933,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3945,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3950,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3956,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPowerLevel@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 3968,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3973,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 3980,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPower@@3FA"
+          ]
+        }
+      },
+      {
+        "offset": 3992,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiScore@@3UGuiScoreView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 3997,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Add@GuiScoreView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4003,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_ReplayManager@@3PAVReplayManager@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4015,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GameOwner477830@@3PAUGameChainOwnerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4020,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4025,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiCounter4C4C@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4031,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGameFlags@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 4037,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiGlobalMode@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4046,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiPersistentData@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 4089,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4094,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetNextGameMode@MainSupervisorView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4102,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiView@@3PAUGuiView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4114,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4126,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4155,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4164,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+          ]
+        }
+      },
+      {
+        "offset": 4171,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?SetNextGameMode@MainSupervisorView@@QAEXH@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4176,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GameStageState@@3PAEA"
+          ]
+        }
+      },
+      {
+        "offset": 4181,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Fn004175E0@leaf@th10@@YAXPAE@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4189,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiInputEdges@@3IA"
+          ]
+        }
+      },
+      {
+        "offset": 4209,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?GameQueueScaledSoundCommand@@YGHM@Z"
+          ]
+        }
+      },
+      {
+        "offset": 4243,
+        "width": 4,
+        "type": "REL32",
+        "destination": {
+          "symbols": [
+            "?Tick@AnmVmTimerView@@QAEXXZ"
+          ]
+        }
+      },
+      {
+        "offset": 4264,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiMessageState@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4275,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiMessageStateAux@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4283,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "symbols": [
+            "?g_GuiMessageState@@3HA"
+          ]
+        }
+      },
+      {
+        "offset": 4300,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4262
+        }
+      },
+      {
+        "offset": 4304,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 575
+        }
+      },
+      {
+        "offset": 4308,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 663
+        }
+      },
+      {
+        "offset": 4312,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 539
+        }
+      },
+      {
+        "offset": 4316,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 976
+        }
+      },
+      {
+        "offset": 4320,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 997
+        }
+      },
+      {
+        "offset": 4324,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1026
+        }
+      },
+      {
+        "offset": 4328,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1055
+        }
+      },
+      {
+        "offset": 4332,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1137
+        }
+      },
+      {
+        "offset": 4336,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1225
+        }
+      },
+      {
+        "offset": 4340,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2935
+        }
+      },
+      {
+        "offset": 4344,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3061
+        }
+      },
+      {
+        "offset": 4348,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1250
+        }
+      },
+      {
+        "offset": 4352,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1400
+        }
+      },
+      {
+        "offset": 4356,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 141
+        }
+      },
+      {
+        "offset": 4360,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 146
+        }
+      },
+      {
+        "offset": 4364,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 220
+        }
+      },
+      {
+        "offset": 4368,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 518
+        }
+      },
+      {
+        "offset": 4372,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3073
+        }
+      },
+      {
+        "offset": 4376,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3123
+        }
+      },
+      {
+        "offset": 4380,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3395
+        }
+      },
+      {
+        "offset": 4384,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 4187
+        }
+      },
+      {
+        "offset": 4388,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 940
+        }
+      },
+      {
+        "offset": 4392,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 958
+        }
+      },
+      {
+        "offset": 4396,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1423
+        }
+      },
+      {
+        "offset": 4400,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1613
+        }
+      },
+      {
+        "offset": 4404,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1803
+        }
+      },
+      {
+        "offset": 4408,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 1993
+        }
+      },
+      {
+        "offset": 4412,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2180
+        }
+      },
+      {
+        "offset": 4416,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2364
+        }
+      },
+      {
+        "offset": 4420,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 2548
+        }
+      },
+      {
+        "offset": 4424,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3145
+        }
+      },
+      {
+        "offset": 4428,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3181
+        }
+      },
+      {
+        "offset": 4432,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3216
+        }
+      },
+      {
+        "offset": 4436,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3252
+        }
+      },
+      {
+        "offset": 4440,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3288
+        }
+      },
+      {
+        "offset": 4444,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3323
+        }
+      },
+      {
+        "offset": 4448,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3359
+        }
+      },
+      {
+        "offset": 4452,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3594
+        }
+      },
+      {
+        "offset": 4456,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3636
+        }
+      },
+      {
+        "offset": 4460,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3673
+        }
+      },
+      {
+        "offset": 4464,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3712
+        }
+      },
+      {
+        "offset": 4468,
+        "width": 4,
+        "type": "DIR32",
+        "destination": {
+          "local_offset": 3751
+        }
+      }
+    ],
+    "fixed_local_branches": [
+      {
+        "offset": 24,
+        "destination": 30,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 34,
+        "destination": 103,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 44,
+        "destination": 103,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 61,
+        "destination": 89,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 112,
+        "destination": 4239,
+        "mnemonic": "jl"
+      },
+      {
+        "offset": 128,
+        "destination": 4213,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 144,
+        "destination": 149,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 169,
+        "destination": 173,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 215,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 228,
+        "destination": 433,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 256,
+        "destination": 260,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 312,
+        "destination": 316,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 364,
+        "destination": 368,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 428,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 457,
+        "destination": 461,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 513,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 534,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 570,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 583,
+        "destination": 627,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 586,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 622,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 658,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 671,
+        "destination": 758,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 681,
+        "destination": 723,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 684,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 718,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 753,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 761,
+        "destination": 855,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 767,
+        "destination": 855,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 777,
+        "destination": 819,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 780,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 814,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 850,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 863,
+        "destination": 904,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 866,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 899,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 935,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 953,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 971,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 992,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1021,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1050,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1132,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1220,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1245,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1259,
+        "destination": 1334,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1262,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1329,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1395,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1410,
+        "destination": 4213,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 1432,
+        "destination": 1527,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1435,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1522,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1608,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1622,
+        "destination": 1717,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1625,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1712,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1798,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1812,
+        "destination": 1907,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 1815,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 1902,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 1988,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2002,
+        "destination": 2097,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2005,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2092,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2175,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2189,
+        "destination": 2281,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2192,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2276,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2359,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2373,
+        "destination": 2465,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2376,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2460,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2543,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2558,
+        "destination": 2745,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 2567,
+        "destination": 2659,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2570,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2654,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2740,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2748,
+        "destination": 2846,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 2751,
+        "destination": 4213,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2841,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2930,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 2942,
+        "destination": 2956,
+        "mnemonic": "jg"
+      },
+      {
+        "offset": 2979,
+        "destination": 3029,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 2984,
+        "destination": 3029,
+        "mnemonic": "jle"
+      },
+      {
+        "offset": 2990,
+        "destination": 4247,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3004,
+        "destination": 4247,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3024,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3056,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3068,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3118,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3132,
+        "destination": 4213,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 3176,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3211,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3247,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3283,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3318,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3354,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3390,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3403,
+        "destination": 3500,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3507,
+        "destination": 3525,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3520,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3533,
+        "destination": 3910,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 3581,
+        "destination": 3797,
+        "mnemonic": "ja"
+      },
+      {
+        "offset": 3631,
+        "destination": 3787,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3671,
+        "destination": 3786,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3710,
+        "destination": 3787,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3749,
+        "destination": 3787,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3807,
+        "destination": 4086,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 3905,
+        "destination": 4067,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 3913,
+        "destination": 4100,
+        "mnemonic": "jne"
+      },
+      {
+        "offset": 4011,
+        "destination": 4086,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 4075,
+        "destination": 4213,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 4084,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 4098,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 4185,
+        "destination": 4213,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 4194,
+        "destination": 4203,
+        "mnemonic": "je"
+      },
+      {
+        "offset": 4201,
+        "destination": 4208,
+        "mnemonic": "jmp"
+      },
+      {
+        "offset": 4233,
+        "destination": 118,
+        "mnemonic": "jge"
+      },
+      {
+        "offset": 4272,
+        "destination": 4279,
+        "mnemonic": "je"
+      }
+    ],
+    "tables": [
+      {
+        "instruction_offset": 134,
+        "offset": 4300,
+        "entry_offsets": [
+          4262,
+          575,
+          663,
+          539,
+          976,
+          997,
+          1026,
+          1055,
+          1137,
+          1225,
+          2935,
+          3061,
+          1250,
+          1400,
+          141,
+          146,
+          220,
+          518,
+          3073,
+          3123,
+          3395,
+          4187,
+          940,
+          958
+        ]
+      },
+      {
+        "instruction_offset": 1416,
+        "offset": 4396,
+        "entry_offsets": [
+          1423,
+          1613,
+          1803,
+          1993,
+          2180,
+          2364,
+          2548
+        ]
+      },
+      {
+        "instruction_offset": 3138,
+        "offset": 4424,
+        "entry_offsets": [
+          3145,
+          3181,
+          3216,
+          3252,
+          3288,
+          3323,
+          3359
+        ]
+      },
+      {
+        "instruction_offset": 3587,
+        "offset": 4452,
+        "entry_offsets": [
+          3594,
+          3636,
+          3673,
+          3712,
+          3751
+        ]
+      }
+    ],
+    "direct_call_counts": {
+      "?Add@AnmVmTimerView@@QAEXM@Z": 1,
+      "?Add@GuiScoreView@@QAEXH@Z": 10,
+      "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z": 18,
+      "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ": 5,
+      "?EnemyMarkPendingInterrupt@@YAXPAH@Z": 6,
+      "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z": 5,
+      "?Fn00417010@leaf@th10@@YAPAEPAE@Z": 3,
+      "?Fn004175E0@leaf@th10@@YAXPAE@Z": 1,
+      "?FrontEndPlayMusic@@YGHHH@Z": 1,
+      "?GameCompleteStageTransition@@YAXPAUResultMenuView@@@Z": 2,
+      "?GameQueueScaledSoundCommand@@YGHM@Z": 1,
+      "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z": 1,
+      "?PlayerSetShotVmInterrupt2@@YAXPAI@Z": 5,
+      "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z": 1,
+      "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z": 36,
+      "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z": 5,
+      "?SetCurrent@AnmVmTimerView@@QAEXH@Z": 3,
+      "?SetInterrupt@AnmVmIdView@@QAEXF@Z": 2,
+      "?SetNextGameMode@MainSupervisorView@@QAEXH@Z": 2,
+      "?SetSprite@AnmVmIdView@@QAEXH@Z": 4,
+      "?SetSpriteWithAnm@AnmVmIdView@@QAEXPAUAnmLoadedView@@H@Z": 32,
+      "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z": 4,
+      "?StageCreateTransitionEffect@@YGPAXHHHIII@Z": 1,
+      "?Tick@AnmVmTimerView@@QAEXXZ": 1
+    },
+    "physical_opcode_order": [
+      14,
+      15,
+      16,
+      17,
+      3,
+      1,
+      2,
+      22,
+      23,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      13,
+      10,
+      11,
+      18,
+      19,
+      20,
+      21,
+      0
+    ],
+    "returns": [
+      {
+        "offset": 4259,
+        "operand": "4"
+      },
+      {
+        "offset": 4297,
+        "operand": "4"
+      }
+    ]
+  },
+  "hidden_return_slots": {
+    "target": {
+      "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z": [
+        {
+          "call_offset": 560,
+          "output": "edi, [esp + 0x1c]"
+        },
+        {
+          "call_offset": 612,
+          "output": "edi, [esp + 0xbc]"
+        },
+        {
+          "call_offset": 648,
+          "output": "edi, [esp + 0x8c]"
+        },
+        {
+          "call_offset": 708,
+          "output": "edi, [esp + 0x2c]"
+        },
+        {
+          "call_offset": 743,
+          "output": "edi, [esp + 0xe4]"
+        },
+        {
+          "call_offset": 804,
+          "output": "edi, [esp + 0x34]"
+        },
+        {
+          "call_offset": 840,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 889,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 925,
+          "output": "edi, [esp + 0xc4]"
+        },
+        {
+          "call_offset": 3113,
+          "output": "edi, [esp + 0xb0]"
+        },
+        {
+          "call_offset": 3166,
+          "output": "edi, [esp + 0xb8]"
+        },
+        {
+          "call_offset": 3201,
+          "output": "edi, [esp + 0xc0]"
+        },
+        {
+          "call_offset": 3237,
+          "output": "edi, [esp + 0xc8]"
+        },
+        {
+          "call_offset": 3273,
+          "output": "edi, [esp + 0xd0]"
+        },
+        {
+          "call_offset": 3308,
+          "output": "edi, [esp + 0xd8]"
+        },
+        {
+          "call_offset": 3344,
+          "output": "edi, [esp + 0xe0]"
+        },
+        {
+          "call_offset": 3380,
+          "output": "edi, [esp + 0xe8]"
+        },
+        {
+          "call_offset": 4158,
+          "output": "edi, [esp + 0xf0]"
+        }
+      ],
+      "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z": [
+        {
+          "call_offset": 1287,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 1319,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 1353,
+          "output": "edi, [esp + 0x44]"
+        },
+        {
+          "call_offset": 1385,
+          "output": "edi, [esp + 0xd4]"
+        },
+        {
+          "call_offset": 1470,
+          "output": "edi, [esp + 0x50]"
+        },
+        {
+          "call_offset": 1512,
+          "output": "edi, [esp + 0xa0]"
+        },
+        {
+          "call_offset": 1556,
+          "output": "edi, [esp + 0x58]"
+        },
+        {
+          "call_offset": 1598,
+          "output": "edi, [esp + 0xc8]"
+        },
+        {
+          "call_offset": 1660,
+          "output": "edi, [esp + 0x60]"
+        },
+        {
+          "call_offset": 1702,
+          "output": "edi, [esp + 0xa8]"
+        },
+        {
+          "call_offset": 1746,
+          "output": "edi, [esp + 0x68]"
+        },
+        {
+          "call_offset": 1788,
+          "output": "edi, [esp + 0xe8]"
+        },
+        {
+          "call_offset": 1850,
+          "output": "edi, [esp + 0x70]"
+        },
+        {
+          "call_offset": 1892,
+          "output": "edi, [esp + 0xb0]"
+        },
+        {
+          "call_offset": 1936,
+          "output": "edi, [esp + 0x78]"
+        },
+        {
+          "call_offset": 1978,
+          "output": "edi, [esp + 0xd0]"
+        },
+        {
+          "call_offset": 2043,
+          "output": "edi, [esp + 0x80]"
+        },
+        {
+          "call_offset": 2082,
+          "output": "edi, [esp + 0x1c]"
+        },
+        {
+          "call_offset": 2126,
+          "output": "edi, [esp + 0x20]"
+        },
+        {
+          "call_offset": 2165,
+          "output": "edi, [esp + 0x24]"
+        },
+        {
+          "call_offset": 2227,
+          "output": "edi, [esp + 0x2c]"
+        },
+        {
+          "call_offset": 2266,
+          "output": "edi, [esp + 0x34]"
+        },
+        {
+          "call_offset": 2310,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 2349,
+          "output": "edi, [esp + 0x44]"
+        },
+        {
+          "call_offset": 2411,
+          "output": "edi, [esp + 0x4c]"
+        },
+        {
+          "call_offset": 2450,
+          "output": "edi, [esp + 0x54]"
+        },
+        {
+          "call_offset": 2494,
+          "output": "edi, [esp + 0x5c]"
+        },
+        {
+          "call_offset": 2533,
+          "output": "edi, [esp + 0x64]"
+        },
+        {
+          "call_offset": 2605,
+          "output": "edi, [esp + 0x6c]"
+        },
+        {
+          "call_offset": 2644,
+          "output": "edi, [esp + 0x74]"
+        },
+        {
+          "call_offset": 2688,
+          "output": "edi, [esp + 0x7c]"
+        },
+        {
+          "call_offset": 2730,
+          "output": "edi, [esp + 0x84]"
+        },
+        {
+          "call_offset": 2789,
+          "output": "edi, [esp + 0x8c]"
+        },
+        {
+          "call_offset": 2831,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 2878,
+          "output": "edi, [esp + 0x9c]"
+        },
+        {
+          "call_offset": 2920,
+          "output": "edi, [esp + 0xa4]"
+        }
+      ]
+    },
+    "native": {
+      "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z": [
+        {
+          "call_offset": 560,
+          "output": "edi, [esp + 0x1c]"
+        },
+        {
+          "call_offset": 612,
+          "output": "edi, [esp + 0xbc]"
+        },
+        {
+          "call_offset": 648,
+          "output": "edi, [esp + 0x8c]"
+        },
+        {
+          "call_offset": 708,
+          "output": "edi, [esp + 0x2c]"
+        },
+        {
+          "call_offset": 743,
+          "output": "edi, [esp + 0xe4]"
+        },
+        {
+          "call_offset": 804,
+          "output": "edi, [esp + 0x34]"
+        },
+        {
+          "call_offset": 840,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 889,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 925,
+          "output": "edi, [esp + 0xc4]"
+        },
+        {
+          "call_offset": 3113,
+          "output": "edi, [esp + 0xb0]"
+        },
+        {
+          "call_offset": 3166,
+          "output": "edi, [esp + 0xb8]"
+        },
+        {
+          "call_offset": 3201,
+          "output": "edi, [esp + 0xc0]"
+        },
+        {
+          "call_offset": 3237,
+          "output": "edi, [esp + 0xc8]"
+        },
+        {
+          "call_offset": 3273,
+          "output": "edi, [esp + 0xd0]"
+        },
+        {
+          "call_offset": 3308,
+          "output": "edi, [esp + 0xd8]"
+        },
+        {
+          "call_offset": 3344,
+          "output": "edi, [esp + 0xe0]"
+        },
+        {
+          "call_offset": 3380,
+          "output": "edi, [esp + 0xe8]"
+        },
+        {
+          "call_offset": 4154,
+          "output": "edi, [esp + 0xf0]"
+        }
+      ],
+      "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z": [
+        {
+          "call_offset": 1287,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 1319,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 1353,
+          "output": "edi, [esp + 0x44]"
+        },
+        {
+          "call_offset": 1385,
+          "output": "edi, [esp + 0xd4]"
+        },
+        {
+          "call_offset": 1470,
+          "output": "edi, [esp + 0x50]"
+        },
+        {
+          "call_offset": 1512,
+          "output": "edi, [esp + 0xa0]"
+        },
+        {
+          "call_offset": 1556,
+          "output": "edi, [esp + 0x58]"
+        },
+        {
+          "call_offset": 1598,
+          "output": "edi, [esp + 0xc8]"
+        },
+        {
+          "call_offset": 1660,
+          "output": "edi, [esp + 0x60]"
+        },
+        {
+          "call_offset": 1702,
+          "output": "edi, [esp + 0xa8]"
+        },
+        {
+          "call_offset": 1746,
+          "output": "edi, [esp + 0x68]"
+        },
+        {
+          "call_offset": 1788,
+          "output": "edi, [esp + 0xe8]"
+        },
+        {
+          "call_offset": 1850,
+          "output": "edi, [esp + 0x70]"
+        },
+        {
+          "call_offset": 1892,
+          "output": "edi, [esp + 0xb0]"
+        },
+        {
+          "call_offset": 1936,
+          "output": "edi, [esp + 0x78]"
+        },
+        {
+          "call_offset": 1978,
+          "output": "edi, [esp + 0xd0]"
+        },
+        {
+          "call_offset": 2043,
+          "output": "edi, [esp + 0x80]"
+        },
+        {
+          "call_offset": 2082,
+          "output": "edi, [esp + 0x1c]"
+        },
+        {
+          "call_offset": 2126,
+          "output": "edi, [esp + 0x20]"
+        },
+        {
+          "call_offset": 2165,
+          "output": "edi, [esp + 0x24]"
+        },
+        {
+          "call_offset": 2227,
+          "output": "edi, [esp + 0x2c]"
+        },
+        {
+          "call_offset": 2266,
+          "output": "edi, [esp + 0x34]"
+        },
+        {
+          "call_offset": 2310,
+          "output": "edi, [esp + 0x3c]"
+        },
+        {
+          "call_offset": 2349,
+          "output": "edi, [esp + 0x44]"
+        },
+        {
+          "call_offset": 2411,
+          "output": "edi, [esp + 0x4c]"
+        },
+        {
+          "call_offset": 2450,
+          "output": "edi, [esp + 0x54]"
+        },
+        {
+          "call_offset": 2494,
+          "output": "edi, [esp + 0x5c]"
+        },
+        {
+          "call_offset": 2533,
+          "output": "edi, [esp + 0x64]"
+        },
+        {
+          "call_offset": 2605,
+          "output": "edi, [esp + 0x6c]"
+        },
+        {
+          "call_offset": 2644,
+          "output": "edi, [esp + 0x74]"
+        },
+        {
+          "call_offset": 2688,
+          "output": "edi, [esp + 0x7c]"
+        },
+        {
+          "call_offset": 2730,
+          "output": "edi, [esp + 0x84]"
+        },
+        {
+          "call_offset": 2789,
+          "output": "edi, [esp + 0x8c]"
+        },
+        {
+          "call_offset": 2831,
+          "output": "edi, [esp + 0x94]"
+        },
+        {
+          "call_offset": 2878,
+          "output": "edi, [esp + 0x9c]"
+        },
+        {
+          "call_offset": 2920,
+          "output": "edi, [esp + 0xa4]"
+        }
+      ]
+    }
+  },
+  "graph": {
+    "source": "src/Enemy.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/EclVm.cpp",
+      "src/Player.cpp",
+      "src/PlayerCollision.cpp",
+      "src/EnemyEclDispatcher.cpp",
+      "src/VmIdInterrupt.cpp",
+      "src/FrontEnd.cpp",
+      "src/ItemManager.cpp",
+      "src/Main.cpp",
+      "src/Sound.cpp",
+      "src/Gui.cpp",
+      "src/Hint.cpp",
+      "src/GuiMessageLeaves.cpp",
+      "src/TransitionEffect.cpp",
+      "src/Chain.cpp",
+      "src/AnmRectangle.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/RandomMath.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmCreate.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmVmId.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "src/Player.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/PlayerCollision.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/EnemyEclDispatcher.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/VmIdInterrupt.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FrontEnd.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "src/ItemManager.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Main.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Sound.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Gui.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Hint.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/TransitionEffect.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/Chain.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "src/AnmRectangle.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+  },
+  "source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+    "src/AnmRectangle.cpp": "3e0687c228ab4b25c9a4255c0f4487975a6f65f7f390abb4ed4cc0d4d7620695",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/EclVm.cpp": "63072bee3ae6baffceaa896af611cc99ad0d8b41f2bea8b649145de085bb0f0b",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.cpp": "fbab9120022c4cdcee384d0781dd2559960333f497bc6e0ab3a37c004c77012d",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+    "src/FrontEnd.cpp": "b859fe71e75fa3b0045e6d399be68aface8ceeff5153f3f1550db5288ba6c1cc",
+    "src/FrontEnd.hpp": "b6e910badb49fc48f6ea888798943cbcf89609b32c53e1e628d6f484da0c5161",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/GameManager.hpp": "397a1907a2ffe678475f266c1d21137523b3c30354770b14c2119f08c339080d",
+    "src/GameScoreState.hpp": "a07274bb81d0a34795d3325fd43e65c14ce118e7204dd7b0bb922822979f975b",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "f89cc7170c5254e3d4450631028a209fb5e8505249773bf15898f8c4a932c831",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/GuiMessageLeaves.cpp": "7f0b02c9037056b3613d8322b4da2adc524a10d17ca29f1247159fb5843edb12",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.cpp": "3430f316988f226d3bba622d9b70053863170b09bed20dc0cdc2f068b2c04c4c",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/InputState.hpp": "f3e9b10478ae60504441e60b272cd9f17284554ba59307373f1bb8523fe801f2",
+    "src/ItemManager.cpp": "c7eb31442b087cb6062c9b62e7d9a1e48e6e442f111fc8238603680f4cbacffa",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/ItemPowerDisplay.hpp": "59e43bbfd6dd37dd9ecd3161bd7414bef3c4f9d6e88ba6c10270341908b0fe92",
+    "src/Main.cpp": "49d1ea07ffaabc20541244cccb6cfa1b8e7540f0a0d966f11d593506cf1de0fe",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/MainViewport.hpp": "c478a2cd6a83a328e9f01448f67fccdb783aa4e1fee9e609a84121b0afafddc0",
+    "src/Midi.hpp": "9f98d90df8e9bccdcd9a05175f970c8abcb55f3e795d4beb562c8acd425b5245",
+    "src/Player.cpp": "0ea3456dfb07400146775dedc6f43091e10c07edd07194cb4311306c02e4a89f",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayManager.hpp": "530f31cae0e6766074864bd7504f278293df7e926a7faa931a038e6bdb91e256",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "447a4e8a2464efa0f09816d06d0760618598f4e318fe7517fb0566e5c3eeae1a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/Sound.cpp": "bbdb8e8124a06c5c9c50427d80d61ec9dc16e314d4ef73b1c720b3a8f4323788",
+    "src/Sound.hpp": "3bcf8e0fd624eb71f1875f8c67047c15804a568909242d99ca8fc7bffc6f4820",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/TransitionEffect.cpp": "d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+    "src/VmIdInterrupt.cpp": "b644886fb9a52155c34de1e5829a052e7de73cbf67eb54b2d48113a26f010c96",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "reviewed_regions": {
+    "side_0": {
+      "target_offset": 1055,
+      "native_offset": 1055,
+      "size": 82,
+      "instructions": 22,
+      "bindings": [
+        {
+          "instruction_offset": 3,
+          "symbol": "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+          "target": "0x40c4d0"
+        },
+        {
+          "instruction_offset": 11,
+          "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+          "target": "0x40c480"
+        },
+        {
+          "instruction_offset": 19,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "addend": 0,
+          "target": "0x491c10"
+        },
+        {
+          "instruction_offset": 39,
+          "symbol": "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+          "target": "0x4492f0"
+        },
+        {
+          "instruction_offset": 66,
+          "symbol": "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+          "target": "0x4492f0"
+        },
+        {
+          "instruction_offset": 77,
+          "local_target": 4217,
+          "native_destination": 4213
+        }
+      ],
+      "normalized_sha256": "aaf4a0951bf90dbf21e8cea69a13c768ceefe032572d9a8277a936fb7074938b"
+    },
+    "side_1": {
+      "target_offset": 1137,
+      "native_offset": 1137,
+      "size": 88,
+      "instructions": 21,
+      "bindings": [
+        {
+          "instruction_offset": 3,
+          "symbol": "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+          "target": "0x40c4d0"
+        },
+        {
+          "instruction_offset": 11,
+          "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+          "target": "0x40c480"
+        },
+        {
+          "instruction_offset": 19,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "addend": 0,
+          "target": "0x491c10"
+        },
+        {
+          "instruction_offset": 41,
+          "symbol": "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+          "target": "0x4492f0"
+        },
+        {
+          "instruction_offset": 68,
+          "symbol": "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z",
+          "target": "0x4492f0"
+        },
+        {
+          "instruction_offset": 83,
+          "local_target": 4217,
+          "native_destination": 4213
+        }
+      ],
+      "normalized_sha256": "c27cc3a105b62d4c4f3b942d55377b04dc97e98e84919fe5f4b8f898c3609f90"
+    },
+    "second_profile_flag": {
+      "target_offset": 3456,
+      "native_offset": 3455,
+      "size": 45,
+      "instructions": 11,
+      "bindings": [
+        {
+          "instruction_offset": 0,
+          "symbol": "?g_GameStageState@@3PAEA",
+          "addend": 52,
+          "target": "0x474c74"
+        },
+        {
+          "instruction_offset": 5,
+          "symbol": "?g_GameStageState@@3PAEA",
+          "addend": 44,
+          "target": "0x474c6c"
+        },
+        {
+          "instruction_offset": 15,
+          "symbol": "?g_GameStageState@@3PAEA",
+          "addend": 60,
+          "target": "0x474c7c"
+        },
+        {
+          "instruction_offset": 23,
+          "symbol": "?g_GameStageState@@3PAEA",
+          "addend": 40,
+          "target": "0x474c68"
+        }
+      ],
+      "normalized_sha256": "66db213e012526c26c6ef3da3e25388dcb78ef324615bf2a04d00ae0618400cd"
+    }
+  },
+  "selection_reads_before_completion": [
+    {
+      "offset": 575,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 663,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 60,
+      "target": "0x474c7c"
+    },
+    {
+      "offset": 673,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 769,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 855,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 1250,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 1400,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 60,
+      "target": "0x474c7c"
+    },
+    {
+      "offset": 1423,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 1613,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 1803,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 1993,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 2180,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 2364,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 2552,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 40,
+      "target": "0x474c68"
+    },
+    {
+      "offset": 3123,
+      "symbol": "?g_GameStageState@@3PAEA",
+      "addend": 60,
+      "target": "0x474c7c"
+    }
+  ],
+  "baseline": {
+    "reference": "docs/evidence/gui-message-call-closure-20261031/results.json",
+    "sha256": "70565439ac32ea0988bdf3b171beb85f1fe515b9fba1bf98587c6c02c69c541e",
+    "candidate_size": 4476
+  },
+  "controls": [
+    {
+      "label": "shared-completion-state",
+      "observation": "Shared state in opcode20 removes four forced second-index observations; second flag arithmetic/registers match target.",
+      "exit": 0,
+      "source_sha256": "efccbeb3065e34d41882194908d5a0cb1e04371957c800b9a6b44b2f5844f6a1",
+      "image_sha256": "099cefeab5591ec513427cacf724a89e48d5b449fc9b929c2a084ef31705a405",
+      "native_receipt_sha256": "7b829371807fc9f9201858ea6033716f03ce93a5ccaa2f9ef33d70cda89a182b",
+      "complete_owned_bytes": 4472,
+      "code_and_alignment_bytes": 4300,
+      "decoded_instructions": 1145,
+      "normalized_sha256": "0bd7266bd74b1464a1c93f1ec601fabbc8873c42a5745189e7124bdcd0d99905",
+      "fields": 337,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4259,
+          "operand": "4"
+        },
+        {
+          "offset": 4297,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "label": "selection-before-stage",
+      "observation": "Barrier after shot forces the first selection reads earlier but adds a difficulty resample; restored.",
+      "exit": 0,
+      "source_sha256": "bc29b4dd7ca942a47c274ff80d3a14978e301ecd8cd4edc450f6c42e0ae393f7",
+      "image_sha256": "c1cbdbbbbce12286ef27a56bd6575c83ac79b430adcec95b8c65b27e28c163d3",
+      "native_receipt_sha256": "bf0487aef821bf07711eb3bb6bc642417927db338e520fd690543b79c70c9e46",
+      "complete_owned_bytes": 4480,
+      "code_and_alignment_bytes": 4308,
+      "decoded_instructions": 1146,
+      "normalized_sha256": "1240a4602b2a1b6cbc4baab505fde80e4780a0aed6753f01206ff478e39e150c",
+      "fields": 338,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4265,
+          "operand": "4"
+        },
+        {
+          "offset": 4303,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "label": "ordinary-profile-publications",
+      "observation": "Remove profile volatile; complete native inventory unchanged from shared-completion-state; retained.",
+      "exit": 0,
+      "source_sha256": "3caf0bd94c9b9cf7a7618573755efd75db802458544156ea7ad756b41fed72ff",
+      "image_sha256": "802233f0fcd0563fcd9330d8d2d38e5a47fc993d2c63cad6cdba457abd33166e",
+      "native_receipt_sha256": "7b829371807fc9f9201858ea6033716f03ce93a5ccaa2f9ef33d70cda89a182b",
+      "complete_owned_bytes": 4472,
+      "code_and_alignment_bytes": 4300,
+      "decoded_instructions": 1145,
+      "normalized_sha256": "0bd7266bd74b1464a1c93f1ec601fabbc8873c42a5745189e7124bdcd0d99905",
+      "fields": 337,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4259,
+          "operand": "4"
+        },
+        {
+          "offset": 4297,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "label": "complete-selection-view",
+      "observation": "Use the same state view throughout Run; no normalized ordinary-byte change; semantic source bindings change; retained.",
+      "exit": 0,
+      "source_sha256": "c7dbccc106ab8d4c7bd6080b41f6ce80c48195868abc704692cd139f4c78fae0",
+      "image_sha256": "101e10533ce89619b856360828fcf75e9f7b2b9ce270e513bb7a418381c46416",
+      "native_receipt_sha256": "cd1694381bff37cd39867a263b709526740cf7776193c649b249c2d989d4b179",
+      "complete_owned_bytes": 4472,
+      "code_and_alignment_bytes": 4300,
+      "decoded_instructions": 1145,
+      "normalized_sha256": "0bd7266bd74b1464a1c93f1ec601fabbc8873c42a5745189e7124bdcd0d99905",
+      "fields": 337,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4259,
+          "operand": "4"
+        },
+        {
+          "offset": 4297,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "label": "captured-first-difficulty",
+      "observation": "Difficulty snapshot plus barrier fixes first read order but not registers and worsens second index; restored.",
+      "exit": 0,
+      "source_sha256": "c4915c8911e0d5e48b5b42c02c3759d7d47939768b4f84d96e7906a82ed41002",
+      "image_sha256": "d5c3226918732b90d1128e42affaabe47d4442cf3f766ceda7b8c1abe3587a82",
+      "native_receipt_sha256": "6b7f2a0733a4d60bda52532888d949f8789288035ced9935522b20e213d34abe",
+      "complete_owned_bytes": 4476,
+      "code_and_alignment_bytes": 4304,
+      "decoded_instructions": 1146,
+      "normalized_sha256": "0d84692e2300284eca95bd56e1784acf86fc05b6ccaa354addb5bcf40e4752f8",
+      "fields": 337,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4261,
+          "operand": "4"
+        },
+        {
+          "offset": 4299,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "label": "first-record-pointer",
+      "observation": "Named record base is complete-inventory-neutral against complete-selection-view; restored.",
+      "exit": 0,
+      "source_sha256": "6c2813b8463e95386c3874ff02518755735dd7c03754cbe0425a41debdabf956",
+      "image_sha256": "422dc0cacd2b7a210524811a6677e3c013b2cc9cf72bc23b4457e57e820dffc4",
+      "native_receipt_sha256": "cd1694381bff37cd39867a263b709526740cf7776193c649b249c2d989d4b179",
+      "complete_owned_bytes": 4472,
+      "code_and_alignment_bytes": 4300,
+      "decoded_instructions": 1145,
+      "normalized_sha256": "0bd7266bd74b1464a1c93f1ec601fabbc8873c42a5745189e7124bdcd0d99905",
+      "fields": 337,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4259,
+          "operand": "4"
+        },
+        {
+          "offset": 4297,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "label": "captured-line-manager",
+      "observation": "Ordinary ID/manager capture plus post-capture barrier restores ESI and both side schedules; retained.",
+      "exit": 0,
+      "source_sha256": "ee61d9d7afd6eb536fe76b77bc278652c40b5e866b144786270ab5d079a70833",
+      "image_sha256": "ddaa8fc5c0a8ebe0bb76c739e0b539b4f5eb4da452fc072dc2c9b7d9326d066f",
+      "native_receipt_sha256": "b3637774232a194b4671c2b2e771a615f06f3798d3054efd45c07f99fcc7ccee",
+      "complete_owned_bytes": 4472,
+      "code_and_alignment_bytes": 4300,
+      "decoded_instructions": 1145,
+      "normalized_sha256": "83be9c3b64cd31745558ee527e3564ba4ba4388d0a52d43d3648b59fde7e77bd",
+      "fields": 337,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4259,
+          "operand": "4"
+        },
+        {
+          "offset": 4297,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "label": "observed-captured-manager",
+      "observation": "Reintroducing manager volatile undoes ESI and side gains; restored.",
+      "exit": 0,
+      "source_sha256": "93048d60d544e453964bfdd83b87c9c5b0ea95ebbf713300c28d330613ba8370",
+      "image_sha256": "e56ec4e5d3b3c9a28dbd556d305e3e4ee9d63df1ee1c257e791f1dfcff9cd9b8",
+      "native_receipt_sha256": "cd1694381bff37cd39867a263b709526740cf7776193c649b249c2d989d4b179",
+      "complete_owned_bytes": 4472,
+      "code_and_alignment_bytes": 4300,
+      "decoded_instructions": 1145,
+      "normalized_sha256": "0bd7266bd74b1464a1c93f1ec601fabbc8873c42a5745189e7124bdcd0d99905",
+      "fields": 337,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4259,
+          "operand": "4"
+        },
+        {
+          "offset": 4297,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "label": "observed-first-selection",
+      "observation": "Two observed selection loads match initial register loads but not arithmetic or second-index schedule; restored.",
+      "exit": 0,
+      "source_sha256": "d1e22845e1becdde0b00f23fdf40f955f2641180880d43b4b6036d4c31f83c69",
+      "image_sha256": "ecb67c2bbc34c7a1e744b6d5a913a26a79dec14dbe958a1c227a28be67e3241c",
+      "native_receipt_sha256": "e82120afb7d77c3de9c2970425a3d53ce688be2c799f5946292eb1544b313175",
+      "complete_owned_bytes": 4476,
+      "code_and_alignment_bytes": 4304,
+      "decoded_instructions": 1146,
+      "normalized_sha256": "c979d797bcc9ecf4acac5ca5621983c227ac6bcdcdc34447590d2190e692a511",
+      "fields": 337,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4261,
+          "operand": "4"
+        },
+        {
+          "offset": 4299,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "label": "observed-selection-expression",
+      "observation": "Direct volatile pair expression is complete-inventory-neutral against observed-first-selection; restored.",
+      "exit": 0,
+      "source_sha256": "5dc1b30ddc9efcda7cb2fd7d66ad5051576b8a66271973038897fc623a2b30ad",
+      "image_sha256": "6ad0b0d13358fd0677bbb39078f719aba4dd2fe7e607a15e436c089dd38ebf76",
+      "native_receipt_sha256": "e82120afb7d77c3de9c2970425a3d53ce688be2c799f5946292eb1544b313175",
+      "complete_owned_bytes": 4476,
+      "code_and_alignment_bytes": 4304,
+      "decoded_instructions": 1146,
+      "normalized_sha256": "c979d797bcc9ecf4acac5ca5621983c227ac6bcdcdc34447590d2190e692a511",
+      "fields": 337,
+      "fixed_local_branches": 121,
+      "direct_calls": 150,
+      "returns": [
+        {
+          "offset": 4261,
+          "operand": "4"
+        },
+        {
+          "offset": 4299,
+          "operand": "4"
+        }
+      ],
+      "table_entry_counts": [
+        24,
+        7,
+        7,
+        5
+      ]
+    }
+  ],
+  "same_image_guards": {
+    "reviewed-candidate": {
+      "gui-update-stage-elements": {
+        "result": "exact",
+        "size": 3836,
+        "first_differences": [],
+        "fields": 72
+      },
+      "player-calculate-damage-to-target": {
+        "result": "exact",
+        "size": 1170,
+        "first_differences": [],
+        "fields": 28
+      },
+      "player-auxiliary-damage-at-position": {
+        "result": "exact",
+        "size": 202,
+        "first_differences": [],
+        "fields": 6
+      },
+      "game-decomphelp-fulltu-00417010": {
+        "result": "exact",
+        "size": 41,
+        "first_differences": [],
+        "fields": 0
+      },
+      "game-decomphelp-fulltu-004175e0": {
+        "result": "exact",
+        "size": 32,
+        "first_differences": [],
+        "fields": 0
+      },
+      "transition-effect-factory": {
+        "result": "exact",
+        "size": 82,
+        "first_differences": [],
+        "fields": 2
+      },
+      "gui-update-callback-context": {
+        "result": "exact",
+        "size": 7,
+        "first_differences": [],
+        "fields": 1
+      }
+    },
+    "candidate-cold": {
+      "gui-update-stage-elements": {
+        "result": "exact",
+        "size": 3836,
+        "first_differences": [],
+        "fields": 72
+      },
+      "player-calculate-damage-to-target": {
+        "result": "exact",
+        "size": 1170,
+        "first_differences": [],
+        "fields": 28
+      },
+      "player-auxiliary-damage-at-position": {
+        "result": "exact",
+        "size": 202,
+        "first_differences": [],
+        "fields": 6
+      },
+      "game-decomphelp-fulltu-00417010": {
+        "result": "exact",
+        "size": 41,
+        "first_differences": [],
+        "fields": 0
+      },
+      "game-decomphelp-fulltu-004175e0": {
+        "result": "exact",
+        "size": 32,
+        "first_differences": [],
+        "fields": 0
+      },
+      "transition-effect-factory": {
+        "result": "exact",
+        "size": 82,
+        "first_differences": [],
+        "fields": 2
+      },
+      "gui-update-callback-context": {
+        "result": "exact",
+        "size": 7,
+        "first_differences": [],
+        "fields": 1
+      }
+    }
+  },
+  "claims": {
+    "complete_owner_exact": false,
+    "exact_credit": 0,
+    "new_canonical_units": 0,
+    "original_data_class_TU_qualifier_provenance": "open",
+    "product_runtime_portability": "open",
+    "regions_are_not_independent_match_units": true
+  },
+  "native_runs": [
+    {
+      "variant": "reviewed-candidate",
+      "forced_cold": false,
+      "compiled": [
+        "src/Gui.cpp",
+        "build/gpt-6.1-sol/gui-state-view-20261031/reviewed-candidate/link-anchors.c",
+        "build/gpt-6.1-sol/gui-state-view-20261031/reviewed-candidate/link-anchors.c"
+      ],
+      "reused": {
+        "src/Enemy.cpp": "f7427d3763e8a2c8f7cee4e3327bcda1cc767bd6ee4eb7ec4d5173240ba3b269",
+        "src/AnmManager.cpp": "950aded53b9fc51a8734d2d792239857763b36b30450921eabbeab1e1117ce9f",
+        "src/RandomMath.cpp": "bb9650aef8cd1cfffd33ff9c923ffeea6bfeaf6c21cfde99d77c17abed57cfa8",
+        "src/AnmVmCreate.cpp": "1e5a46b42f54a9290019d3b9b082820d489178fa78e7bf155c86fe53abc91bc0",
+        "src/AnmVmId.cpp": "d4d480e17f5e27749a9cb202e0420514160bce4024f72103f51ab5be1449964e",
+        "src/AnmInt3Scale.cpp": "b30078b1735870158eb359b7c17776d9334146dc4651207000b12ea0caa51a27",
+        "src/EclVm.cpp": "8e309847f22cfb1817ce50f4012450fd1b65d74b2b528f950b35de3c9d1a5a9e",
+        "src/Player.cpp": "2fade65dceb5ae3a42c67e81f9ff8b0028e49ee45b2b0648ed3b06f087589db3",
+        "src/PlayerCollision.cpp": "221f431cdf40678a2ee2e13d74d111cb8a29586b1173b70f213ee15570cad392",
+        "src/EnemyEclDispatcher.cpp": "4c23111b110a81df4563ef03c754b4a5570b6c1ccc481b5799a8692f7c6a88a6",
+        "src/VmIdInterrupt.cpp": "824db601d872542d9e6bb0a09aaef06121944536ceda135f1023637cd70f71ab",
+        "src/FrontEnd.cpp": "abd907e0b7b6e08e8d1a01abe5d8515f0400f3ab1c1181080875d25ca2aa65e6",
+        "src/ItemManager.cpp": "36f6ee6cd3dc431aa6f5117a6e73b35abe8c29b1feffd7a7dc25e310cc3ebc94",
+        "src/Main.cpp": "93abc9d76a4c469df6a0901a03c9a55111256cd4ac573e4c7dc96ba6857de26c",
+        "src/Sound.cpp": "66cfacb9df7246bd6c91adda71185748c1219042ef5e8bb26430e95e8e23f6e8",
+        "src/Hint.cpp": "6f9422d7a38074a2fdc0c8be80b5f2a48c508a019d92b21a3c186c32e7e5bb48",
+        "src/GuiMessageLeaves.cpp": "70b28450a4e619fe3e15045a7cfc3a080788736b25fb16dc28c4f8227addf813",
+        "src/TransitionEffect.cpp": "92df5a7529554f5ece532b4a1e0b782b90e2a7b49c36468c4eba56d490e1ad7e",
+        "src/Chain.cpp": "6d4b842681c3cf774b361dfc792d13b2f7c632e5761385ac31a8e8872481e115",
+        "src/AnmRectangle.cpp": "19273fff7bcc927d57e55863a2345df07aae114e906ec99edf46a014e2de54d3"
+      },
+      "artifacts": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-state-view-20261031/reviewed-candidate/source.exe",
+        "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-state-view-20261031/reviewed-candidate/source.map",
+        "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-state-view-20261031/reviewed-candidate/source.pdb"
+      },
+      "image_sha256": "9c93c72af7134a28f8850516cbefffb0204fcbfdd0ffa0fe00f688d383f3c808",
+      "object_sha256": {
+        "src/Enemy.cpp": "f7427d3763e8a2c8f7cee4e3327bcda1cc767bd6ee4eb7ec4d5173240ba3b269",
+        "src/AnmManager.cpp": "950aded53b9fc51a8734d2d792239857763b36b30450921eabbeab1e1117ce9f",
+        "src/RandomMath.cpp": "bb9650aef8cd1cfffd33ff9c923ffeea6bfeaf6c21cfde99d77c17abed57cfa8",
+        "src/AnmVmCreate.cpp": "1e5a46b42f54a9290019d3b9b082820d489178fa78e7bf155c86fe53abc91bc0",
+        "src/AnmVmId.cpp": "d4d480e17f5e27749a9cb202e0420514160bce4024f72103f51ab5be1449964e",
+        "src/AnmInt3Scale.cpp": "b30078b1735870158eb359b7c17776d9334146dc4651207000b12ea0caa51a27",
+        "src/EclVm.cpp": "8e309847f22cfb1817ce50f4012450fd1b65d74b2b528f950b35de3c9d1a5a9e",
+        "src/Player.cpp": "2fade65dceb5ae3a42c67e81f9ff8b0028e49ee45b2b0648ed3b06f087589db3",
+        "src/PlayerCollision.cpp": "221f431cdf40678a2ee2e13d74d111cb8a29586b1173b70f213ee15570cad392",
+        "src/EnemyEclDispatcher.cpp": "4c23111b110a81df4563ef03c754b4a5570b6c1ccc481b5799a8692f7c6a88a6",
+        "src/VmIdInterrupt.cpp": "824db601d872542d9e6bb0a09aaef06121944536ceda135f1023637cd70f71ab",
+        "src/FrontEnd.cpp": "abd907e0b7b6e08e8d1a01abe5d8515f0400f3ab1c1181080875d25ca2aa65e6",
+        "src/ItemManager.cpp": "36f6ee6cd3dc431aa6f5117a6e73b35abe8c29b1feffd7a7dc25e310cc3ebc94",
+        "src/Main.cpp": "93abc9d76a4c469df6a0901a03c9a55111256cd4ac573e4c7dc96ba6857de26c",
+        "src/Sound.cpp": "66cfacb9df7246bd6c91adda71185748c1219042ef5e8bb26430e95e8e23f6e8",
+        "src/Gui.cpp": "16f0c03bf6f5a3ffe5f83fccc1e513bdbbb796e973905897e82044cdf905709f",
+        "src/Hint.cpp": "6f9422d7a38074a2fdc0c8be80b5f2a48c508a019d92b21a3c186c32e7e5bb48",
+        "src/GuiMessageLeaves.cpp": "70b28450a4e619fe3e15045a7cfc3a080788736b25fb16dc28c4f8227addf813",
+        "src/TransitionEffect.cpp": "92df5a7529554f5ece532b4a1e0b782b90e2a7b49c36468c4eba56d490e1ad7e",
+        "src/Chain.cpp": "6d4b842681c3cf774b361dfc792d13b2f7c632e5761385ac31a8e8872481e115",
+        "src/AnmRectangle.cpp": "19273fff7bcc927d57e55863a2345df07aae114e906ec99edf46a014e2de54d3"
+      }
+    },
+    {
+      "variant": "candidate-cold",
+      "forced_cold": true,
+      "compiled": [
+        "src/Enemy.cpp",
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/EclVm.cpp",
+        "src/Player.cpp",
+        "src/PlayerCollision.cpp",
+        "src/EnemyEclDispatcher.cpp",
+        "src/VmIdInterrupt.cpp",
+        "src/FrontEnd.cpp",
+        "src/ItemManager.cpp",
+        "src/Main.cpp",
+        "src/Sound.cpp",
+        "src/Gui.cpp",
+        "src/Hint.cpp",
+        "src/GuiMessageLeaves.cpp",
+        "src/TransitionEffect.cpp",
+        "src/Chain.cpp",
+        "src/AnmRectangle.cpp",
+        "build/gpt-6.1-sol/gui-state-view-20261031/candidate-cold/link-anchors.c",
+        "build/gpt-6.1-sol/gui-state-view-20261031/candidate-cold/link-anchors.c"
+      ],
+      "reused": {},
+      "artifacts": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-state-view-20261031/candidate-cold/source.exe",
+        "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-state-view-20261031/candidate-cold/source.map",
+        "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/gui-state-view-20261031/candidate-cold/source.pdb"
+      },
+      "image_sha256": "a99b286ae3a20e34d418e4e3e166a64a2b29955fa01e66658089a8e13a260412",
+      "object_sha256": {
+        "src/Enemy.cpp": "5c634ddc77f9bad9102737d0330c5d3683a467e40b3ad73915cb673585bfdd6d",
+        "src/AnmManager.cpp": "fa80c99171ba857c1e7a114921eec14769e41ded0eb93a05811d764767531626",
+        "src/RandomMath.cpp": "8ec9c8468ca685997867869cbef5d7f38566131145d7a3e988558837b140d1e6",
+        "src/AnmVmCreate.cpp": "317103331dcf55a951526966fc6271f567dbe132b102a1ac27c1d21b8df6a68d",
+        "src/AnmVmId.cpp": "f66948d7fa384a23d3554b1fdb0a0b3a4a2ac82959b665a813b920b7e54f3f79",
+        "src/AnmInt3Scale.cpp": "2c5f1325691f36a98e67efee56c04bc918c77bee2fc992df7fc0513b62b7ca09",
+        "src/EclVm.cpp": "86c4d9421f6a1880f7742adee38f659edcc5bb748651c2d6fd9a0ef1e3536542",
+        "src/Player.cpp": "49aa1666804645c934244515497c49af160ff1d6dd694c37d49dd0b19daacda3",
+        "src/PlayerCollision.cpp": "b7496193fef15a68aa9dd1f67984a0b84a0de801367625de63ee50039c21f851",
+        "src/EnemyEclDispatcher.cpp": "d04dda85a38e70cd7003c86a9ad9cd26175b1c51353747884301231c8f0ece40",
+        "src/VmIdInterrupt.cpp": "50c26fea5264de4c553bf042692e188b6e5b1a7d97ad7e58d392d1aac67f3969",
+        "src/FrontEnd.cpp": "9f184086b815c6ac307baebe4edd597ac5b0bcdcc5c5f7be8ba102dc435e5b33",
+        "src/ItemManager.cpp": "a86ef7579a28067f3b57febacd7c468c3b9689f9fea1b66afa549e3cfccf4018",
+        "src/Main.cpp": "542d68a7a9caebf90374bd78008c9519a15bf4ded1d2280e8f5dba590fefda7f",
+        "src/Sound.cpp": "0d9579b9aaff6214cf3bf1ccc96cf1e1845eff82780eb49965218d7eaa75cb7e",
+        "src/Gui.cpp": "b96166f6b0b283cf234d3e35b90432a32164d7d109f4901c9d6c1ea130461699",
+        "src/Hint.cpp": "596258e76beea4c4506aaf9db14228d0f984f76f3a3096ae04252e192df541e2",
+        "src/GuiMessageLeaves.cpp": "ff5f92cfe0f2795a74c0ddccc906eb5273acc30abbb0c84f4d1863a7875413e1",
+        "src/TransitionEffect.cpp": "60cb2672751b7e59d187662b9316f2a0c05d5df34d650f19843f6dea81a5d39b",
+        "src/Chain.cpp": "31300eb1289cd934d3a94d3b7b93ce7b24dd4534c8322cc50e6f3677689f019c",
+        "src/AnmRectangle.cpp": "560a26ab6659427361c287afc5ef567e36178df04fe9a0517e7b7f6dee3bf37b"
+      }
+    }
+  ],
+  "reviewed_region_counts": {
+    "bytes": 215,
+    "linkage_fields": 14,
+    "fixed_local_destinations": 2
+  },
+  "cleanup": {
+    "removed_superseded_control_builds": [
+      "build/gpt-6.1-sol/gui-state-view-20261031/shared-completion-state",
+      "build/gpt-6.1-sol/gui-state-view-20261031/selection-before-stage",
+      "build/gpt-6.1-sol/gui-state-view-20261031/ordinary-profile-publications",
+      "build/gpt-6.1-sol/gui-state-view-20261031/complete-selection-view",
+      "build/gpt-6.1-sol/gui-state-view-20261031/captured-first-difficulty",
+      "build/gpt-6.1-sol/gui-state-view-20261031/first-record-pointer",
+      "build/gpt-6.1-sol/gui-state-view-20261031/captured-line-manager",
+      "build/gpt-6.1-sol/gui-state-view-20261031/observed-captured-manager",
+      "build/gpt-6.1-sol/gui-state-view-20261031/observed-first-selection",
+      "build/gpt-6.1-sol/gui-state-view-20261031/observed-selection-expression"
+    ],
+    "retained_final_builds": [
+      "build/gpt-6.1-sol/gui-state-view-20261031/reviewed-candidate",
+      "build/gpt-6.1-sol/gui-state-view-20261031/candidate-cold"
+    ],
+    "retained_private_campaign": ".analysis/gpt-6.1-sol/gui-state-view-20261031",
+    "preserved_previous_frozen_baseline": true,
+    "preserved_unrelated_D3D_evidence": true,
+    "retained_canonical_builds": [
+      "build/gpt-6.1-sol/gui-state-view-20261031/affected-canonical-cold-retry-0",
+      "build/gpt-6.1-sol/gui-state-view-20261031/affected-canonical-cold-retry-1"
+    ]
+  },
+  "complete_layout": {
+    "target": {
+      "code_bytes": 4306,
+      "alignment_bytes": 2,
+      "selector_bytes": 172
+    },
+    "native": {
+      "code_bytes": 4300,
+      "alignment_bytes": 0,
+      "selector_bytes": 172
+    }
+  },
+  "canonical_attempts": [
+    {
+      "label": "affected-canonical",
+      "exit": 2,
+      "classification": "argument-setup-error-before-native-work",
+      "error": "Private wrapper expects unit names; a redundant --unit token is rejected by argument parsing."
+    },
+    {
+      "label": "affected-canonical-cold",
+      "exit": 1,
+      "classification": "winepath-output-contamination-before-comparison",
+      "error": "build failed for src/Enemy.cpp: error: match-unit build failed: LTCG link failed without parseable unresolved symbols: LINK : fatal error LNK1104: cannot open file 'wine: Unhandled page fault on write access to 00000004 at address 78272883 (thread 0084), starting debugger...\nZ:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerCalculateDamage\\support-04-AnmInt3Scale.ltcg.obj'\nX connection to :99 broken (explicit kill or server shutdown).",
+      "receipt_sha256": "ede1ac1f14e50b1e01bd8b5a88e764cb82882c02ec8acab408b3ddeaad348623"
+    },
+    {
+      "label": "affected-canonical-cold-retry",
+      "exit": 0,
+      "classification": "exact-scoped-cold-after-toolchain-smoke"
+    }
+  ],
+  "toolchain_recovery": {
+    "trigger": "Wine path-conversion page fault during first native canonical attempt",
+    "command": "timeout 700 taskset -c 0 nice -n 10 scripts/repo-python scripts/verify-toolchain.py --execute",
+    "exit": 0,
+    "log_sha256": "3e01cd92172d9bd921b55101c975ff5f0611807d38e2ab5177f66c58d03017e7",
+    "result": "normal COFF, LTCG, resource and PE32 link smoke passed",
+    "toolchain_profile_changes": false
+  },
+  "validation": {
+    "target_verified_at_entry": true,
+    "toolchain_declarations_checked_at_entry": true,
+    "ghidra_used": false,
+    "default_lightweight_ci_stages": 7,
+    "comparator_changed": false,
+    "canonical_recipe_changed": false,
+    "progress_regenerated_after_ledger_notes_change": true,
+    "generated_counts_changed": false,
+    "default_lightweight_ci_exit": 0,
+    "diff_check_exit": 0
+  },
+  "canonical_cold": {
+    "exit": 0,
+    "artifact_prefix": "build/gpt-6.1-sol/gui-state-view-20261031/affected-canonical-cold-retry",
+    "cold_drivers": [
+      "scripts/ltcg_link.py:cold_link",
+      "scripts/ltcg_link.py:cold_link"
+    ],
+    "unit_count": 4,
+    "artifact_count": 2,
+    "matched_bytes": 5290,
+    "fields": 108,
+    "units": [
+      {
+        "unit": "transition-effect-factory",
+        "result": "exact",
+        "size": 82,
+        "matched_bytes": 82,
+        "normalization_complete": true,
+        "image_sha256": "324a1d9e4e902fcceca49b1b9615a577e51541f1cffc88e3db059a7da9f1dd72",
+        "pdb_guid": "ac97c9824ad5e647a0319544785d277d",
+        "pdb_age": 1,
+        "fields": 2
+      },
+      {
+        "unit": "player-calculate-damage-to-target",
+        "result": "exact",
+        "size": 1170,
+        "matched_bytes": 1170,
+        "normalization_complete": true,
+        "image_sha256": "bc7f0e24e76c45dfab4012f9447d6b7e6bc2a5d7380696d4ebbce8f91aaf29fc",
+        "pdb_guid": "1a3191131db5e745b98bbf4b95c32049",
+        "pdb_age": 1,
+        "fields": 28
+      },
+      {
+        "unit": "player-auxiliary-damage-at-position",
+        "result": "exact",
+        "size": 202,
+        "matched_bytes": 202,
+        "normalization_complete": true,
+        "image_sha256": "bc7f0e24e76c45dfab4012f9447d6b7e6bc2a5d7380696d4ebbce8f91aaf29fc",
+        "pdb_guid": "1a3191131db5e745b98bbf4b95c32049",
+        "pdb_age": 1,
+        "fields": 6
+      },
+      {
+        "unit": "gui-update-stage-elements",
+        "result": "exact",
+        "size": 3836,
+        "matched_bytes": 3836,
+        "normalization_complete": true,
+        "image_sha256": "bc7f0e24e76c45dfab4012f9447d6b7e6bc2a5d7380696d4ebbce8f91aaf29fc",
+        "pdb_guid": "1a3191131db5e745b98bbf4b95c32049",
+        "pdb_age": 1,
+        "fields": 72
+      }
+    ],
+    "manifest_sha256": "aa338f5cba5fa2f9898d4cbc2450ae2d79626bff5363ad234ef53a31da80961e",
+    "report_sha256": "18b8762065a5df804c5ac4c13afa6b89a5974ff8ea0ca9fe074080e43a998498"
+  }
+}

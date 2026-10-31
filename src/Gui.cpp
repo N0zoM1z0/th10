@@ -174,6 +174,8 @@ static AnmVmView *ResolveVm(AnmVmIdView *id)
 // Scoped volatile reads model observed TH10 accesses; original qualifiers are unknown.
 int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 {
+    // Provisional scalar view: character +28, shot +2C, difficulty +34, stage +3C.
+    const int *stageState = reinterpret_cast<const int *>(g_GameStageState);
     if (message->inputCooldown > 0)
         --message->inputCooldown;
 
@@ -216,9 +218,10 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 {
                     _ReadWriteBarrier();
                     AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
-                    AnmRenderManagerView *manager =
-                        *static_cast<AnmRenderManagerView *volatile *>(&g_AnmRenderManagerView);
-                    AnmVmView *line = manager->FindVm(*id);
+                    AnmVmIdView lineId = *id;
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    _ReadWriteBarrier();
+                    AnmVmView *line = manager->FindVm(lineId);
                     if (line == NULL)
                         id->value = 0;
                     manager->DrawTextLeft(line, message->textColors[message->activeSide], " ");
@@ -280,7 +283,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
 
         case GUI_MSG_SHOW_PLAYER_PORTRAIT:
-            switch (g_GuiCharacter)
+            switch (stageState[10])
             {
             case 0:
             {
@@ -298,9 +301,9 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
 
         case GUI_MSG_SHOW_ENEMY_PORTRAIT:
-            if (g_GuiStage == 6)
+            if (stageState[15] == 6)
             {
-                switch (g_GuiCharacter)
+                switch (stageState[10])
                 {
                 case 0:
                 {
@@ -316,9 +319,9 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 }
             }
-            else if (g_GuiStage == 7 && message->messageIndex < 1)
+            else if (stageState[15] == 7 && message->messageIndex < 1)
             {
-                switch (g_GuiCharacter)
+                switch (stageState[10])
                 {
                 case 0:
                 {
@@ -336,7 +339,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             }
             else
             {
-                switch (g_GuiCharacter)
+                switch (stageState[10])
                 {
                 case 0:
                 {
@@ -417,7 +420,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 
         case GUI_MSG_PLAYER_PORTRAIT_SPRITES:
         {
-            switch (g_GuiCharacter)
+            switch (stageState[10])
             {
                 case 0:
                 {
@@ -445,11 +448,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 
         case GUI_MSG_ENEMY_PORTRAIT_SPRITES:
         {
-            switch (g_GuiStage)
+            switch (stageState[15])
             {
                 case 1:
                 {
-                    switch (g_GuiCharacter)
+                    switch (stageState[10])
                     {
                     case 0:
                     {
@@ -482,7 +485,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 case 2:
                 {
-                    switch (g_GuiCharacter)
+                    switch (stageState[10])
                     {
                     case 0:
                     {
@@ -515,7 +518,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 case 3:
                 {
-                    switch (g_GuiCharacter)
+                    switch (stageState[10])
                     {
                     case 0:
                     {
@@ -548,7 +551,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 case 4:
                 {
-                    switch (g_GuiCharacter)
+                    switch (stageState[10])
                     {
                     case 0:
                     {
@@ -581,7 +584,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 case 5:
                 {
-                    switch (g_GuiCharacter)
+                    switch (stageState[10])
                     {
                     case 0:
                     {
@@ -614,7 +617,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 case 6:
                 {
-                    switch (g_GuiCharacter)
+                    switch (stageState[10])
                     {
                     case 0:
                     {
@@ -649,7 +652,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 {
                     if (message->messageIndex < 1)
                     {
-                        switch (g_GuiCharacter)
+                        switch (stageState[10])
                         {
                         case 0:
                         {
@@ -681,7 +684,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     }
                     else
                     {
-                        switch (g_GuiCharacter)
+                        switch (stageState[10])
                         {
                         case 0:
                         {
@@ -757,7 +760,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 
         case GUI_MSG_ENEMY_NAME:
         {
-            switch (g_GuiStage)
+            switch (stageState[15])
             {
                 case 1:
                     {
@@ -807,19 +810,15 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 
         case GUI_MSG_COMPLETE_STAGE:
         {
-            if (g_GuiDifficulty != 4)
+            if (stageState[13] != 4)
             {
                 // Preserve separate flag publications and the intervening index reads.
-                volatile unsigned char *profile = g_GuiPersistentData;
-                const int shot = g_GuiShotType + g_GuiCharacter * 3;
+                unsigned char *profile = g_GuiPersistentData;
+                const int shot = stageState[11] + stageState[10] * 3;
                 profile[shot * 0x437c + 0x4e1 +
-                    (g_GuiStage + g_GuiDifficulty * 6) * 8] = 1;
-                const int secondDifficulty = *static_cast<volatile int *>(&g_GuiDifficulty);
-                const int secondShot = *static_cast<volatile int *>(&g_GuiShotType);
-                const int secondStage = *static_cast<volatile int *>(&g_GuiStage);
-                const int secondCharacter = *static_cast<volatile int *>(&g_GuiCharacter);
-                profile[(secondShot + secondCharacter * 3) * 0x437c + 0x4e0 +
-                    (secondStage + secondDifficulty * 6) * 8] = 1;
+                    (stageState[15] + stageState[13] * 6) * 8] = 1;
+                profile[(stageState[11] + stageState[10] * 3) * 0x437c + 0x4e0 +
+                    (stageState[15] + stageState[13] * 6) * 8] = 1;
             }
             if ((g_GuiGameFlags & 0x10) != 0)
             {
@@ -827,13 +826,13 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
                 break;
             }
-            if (g_GuiStage == 6)
+            if (stageState[15] == 6)
             {
                 g_GuiView->guiFlags |= 0x20;
                 // Retain the flag store before the following score-input reads.
                 _ReadWriteBarrier();
                 g_GuiScore.Add(g_GuiCounter4C4C * 1000);
-                switch (g_GuiDifficulty)
+                switch (stageState[13])
                 {
                 case 0:
                     g_GuiScore.Add(g_GuiPowerLevel * 20000000);
@@ -866,8 +865,8 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 gui->guiFlags |= 0x10;
                 {
                     unsigned char *counter = g_GuiPersistentData +
-                        (g_GuiCharacter * 3 + g_GuiShotType) * 0x437c + 0x4d0 +
-                        g_GuiDifficulty * 4;
+                        (stageState[10] * 3 + stageState[11]) * 0x437c + 0x4d0 +
+                        stageState[13] * 4;
                     int value;
                     memcpy(&value, counter, sizeof(value));
                     if (value < 99999)
@@ -877,7 +876,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     }
                 }
             }
-            else if (g_GuiStage == 7)
+            else if (stageState[15] == 7)
             {
                 g_GuiView->guiFlags |= 0x20;
                 // Retain the flag store before the following score-input reads.
@@ -891,8 +890,8 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                         reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
                     {
                         unsigned char *counter = g_GuiPersistentData +
-                            (g_GuiCharacter * 3 + g_GuiShotType) * 0x437c + 0x4d0 +
-                            g_GuiDifficulty * 4;
+                            (stageState[10] * 3 + stageState[11]) * 0x437c + 0x4d0 +
+                            stageState[13] * 4;
                         int value;
                         memcpy(&value, counter, sizeof(value));
                         if (value < 99999)
@@ -924,7 +923,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
         }
 
         case GUI_MSG_EVENT_21:
-            if (g_GuiStage != 6)
+            if (stageState[15] != 6)
                 GameQueueScaledSoundCommand(2.0f);
             else
                 GameQueueScaledSoundCommand(8.0f);

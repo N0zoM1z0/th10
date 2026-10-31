@@ -4,12 +4,13 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint closes the complete1057-byte spell-panel update
-and10-byte registered callback. All37/1 fields,26 main-body local branches,
-15 calls and internal alignment bytes agree in two independent three-input
-canonical colds. Existing ID/XYZ and shared-state views restore the actual ABI
-and reads; an owner-local timer step restores x87 operand order. Original
-class/TU/data/qualifier provenance remains unknown. No native job is running.
+selected lane. This checkpoint refines the complete4480-byte GUI message
+interpreter. The4472-byte candidate remains NONEXACT. Ordinary shared-state
+reads restore its second profile-flag calculation; captured typed ID/manager
+inputs restore ESI and both side-setting schedules. No exact credit is added.
+Warm and zero-reuse21-input cold receipts agree, with all150 call identities
+and54 hidden output slots preserved. Original types/qualifiers remain unknown.
+No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
@@ -25,7 +26,34 @@ The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: complete spell-panel update and callback exact
+## Latest source checkpoint: GUI state view and captured text inputs
+
+[The complete candidate proof](evidence/gui-message-state-view-20261031/README.md)
+records4472/4480 NONEXACT. The existing state base474C40+28/+2C/+34/+3C
+replaces four independent selection names inside Run. Normal profile writes
+naturally retain the four intervening state reads, removing forced volatile
+observations. The second flag calculation now matches all45 ordinary bytes
+and four semantic state bindings. Original storage/class ownership stays open.
+
+The first alternating lookup captures its existing typed ID and ordinary
+manager, with a barrier before lookup/clear. This restores ESI and both complete
+side-setting schedules,82/88 bytes. All14 linkage fields and two actual advance
+destinations across these regions are bound independently. The15 selection reads before completion also bind base plus explicit addends despite
+coincident diagnostic anchor labels. These215 bytes are not separate units.
+
+The complete native receipt retains337 fields,121 locals,150 ordered calls,
+54 hidden outputs,43 table words, D8 frame and two RET4 exits at10A3/10C9.
+Registers/read schedules, first profile index, counter-tail placement and cursor
+still differ. Size gaps do not count wrong bytes. Ten complete controls are
+recorded; pointer spelling and direct volatile-pair controls are byte-neutral
+and parked. Both final images preserve seven guards5370/all109. The affected
+canonical GUI/damage/transition cold passes5290/all108 in two existing producers.
+One Wine path-conversion failure is excluded; required toolchain execute smoke
+and fresh retry pass. Default seven-stage CI and whitespace checks pass.
+No new matches, recipes, boundaries, source mappings or later-phase claims.
+Private campaign: gui-state-view-20261031.
+
+## Previous source checkpoint: complete spell-panel update and callback exact
 
 [The complete proof](evidence/spell-panel-exact-20261031/README.md) adds1057
 authored exact bytes at408D60..409180 and10 codegen bytes at409220..409229.
