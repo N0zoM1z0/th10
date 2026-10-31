@@ -11,16 +11,19 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 113,944 / 275,890 |
-| Authored exact owners | 531 |
-| Total canonical exact owners / codegen bytes | 1,411 / 182,078 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 172 |
+| Reviewed authored owned bytes exact | 114,033 / 275,890 |
+| Authored exact owners | 532 |
+| Total canonical exact owners / codegen bytes | 1,412 / 182,167 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 171 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
 proves neither original names/class/TU ownership nor product/runtime/portability.
 
 ## Latest reviewed authored exact checkpoint
+
+[ResultMenuClose @423510](evidence/result-menu-close-exact-20261031/README.md) now passes **89/89 exact** with real ESI receiver, two exact `EnemyMarkPendingInterrupt` call fields and two original ANM-speed global references. The first 15-input `ResultTransitions` canonical cold also protects two existing 411-byte menu callers (**911/911**). A second independent real-input cold link, after a transient Wine path-conversion fault, reproduces the complete **89/89** with the same unchanged strict comparator and four target fields. Reviewed authored numerator reaches **114,033/275,890**, 532 owners, without full cold replay.
+
 
 [TransitionEffectView::Cleanup @43CB00](evidence/transition-cleanup-exact-20261031/README.md) is now complete **127/127 exact**, all 14 original call/global fields bound, under the actual StageCreate link. Two independent selected cold links pass cleanup alone, then both cleanup and existing StageLifecycle initializer (**649/649**). The authored exact numerator becomes **113,944 / 275,890**, **531 owners**. No full cold replay or source/ABI changes were required.
 
