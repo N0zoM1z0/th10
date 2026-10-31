@@ -30,6 +30,7 @@ from linked_stack_file_eh import stack_file_eh_selector, stack_file_eh_target
 from linked_worker_member_eh import worker_member_eh_selector, worker_member_eh_target
 from linked_chain_member_eh import chain_member_eh_selector, chain_member_eh_target
 from linked_stage_array_eh import stage_array_eh_selector, stage_array_eh_target
+from linked_bullet_array_eh import bullet_array_eh_selector, bullet_array_eh_target
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -94,6 +95,7 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
         worker_member_eh_selector(unit, raw)
         chain_member_eh_selector(unit, raw)
         stage_array_eh_selector(unit, raw)
+        bullet_array_eh_selector(unit, raw)
         kind = str(raw["type"])
         width = int(raw.get("width", FIELD_WIDTHS.get(kind, 0)))
         if kind not in FIELD_WIDTHS or width != FIELD_WIDTHS[kind]:
@@ -114,6 +116,7 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
                 **({"worker_member_eh_handler": True} if raw.get("worker_member_eh_handler") else {}),
                 **({"chain_member_eh_handler": True} if raw.get("chain_member_eh_handler") else {}),
                 **({"stage_array_eh_handler": True} if raw.get("stage_array_eh_handler") else {}),
+                **({"bullet_array_eh_handler": True} if raw.get("bullet_array_eh_handler") else {}),
                 **({"static_source": raw["static_source"], "static_size": raw["static_size"]}
                    if static_linkage_selector(unit, raw) is not None else {}),
                 **({"static_callee_unit": raw["static_callee_unit"]} if "static_callee_unit" in raw else {}),
@@ -516,6 +519,11 @@ def compare_unit(name: str, *, _active_units=(), _unit_manifest=None) -> dict[st
                 unit, field, directory, candidate_image, publics, aliases,
                 target, parent_function, expected_candidate_address)
             linked_symbol = semantic
+        elif field.get("bullet_array_eh_handler"):
+            bullet_array_eh_evidence = bullet_array_eh_target(
+                unit, field, directory, candidate_image, publics, aliases,
+                target, parent_function, expected_candidate_address)
+            linked_symbol = semantic
         elif "static_source" in field:
             instruction = "jmp" if field.get("static_tail_jump") else "call"
             if observed.get("instruction") != instruction:
@@ -579,6 +587,7 @@ def compare_unit(name: str, *, _active_units=(), _unit_manifest=None) -> dict[st
                 **({"worker_member_eh": worker_member_eh_evidence} if field.get("worker_member_eh_handler") else {}),
                 **({"chain_member_eh": chain_member_eh_evidence} if field.get("chain_member_eh_handler") else {}),
                 **({"stage_array_eh": stage_array_eh_evidence} if field.get("stage_array_eh_handler") else {}),
+                **({"bullet_array_eh": bullet_array_eh_evidence} if field.get("bullet_array_eh_handler") else {}),
                 **({"static_owner": static_calls[static_key]}
                    if "static_source" in field else {}),
                 **({"static_tail_jump": True} if field.get("static_tail_jump") else {}),

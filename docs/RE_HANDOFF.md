@@ -11,10 +11,10 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 114,365 / 275,890 |
-| Authored exact owners | 534 |
-| Total canonical exact owners / codegen bytes | 1,414 / 182,499 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 169 |
+| Reviewed authored owned bytes exact | 114,601 / 275,890 |
+| Authored exact owners | 535 |
+| Total canonical exact owners / codegen bytes | 1,415 / 182,735 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 168 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
@@ -22,7 +22,10 @@ proves neither original names/class/TU ownership nor product/runtime/portability
 
 ## Latest reviewed authored exact checkpoint
 
-[ScriptViewerBombOwnerView::~ScriptViewerBombOwnerView @405620](evidence/script-viewer-bomb-cleanup-exact-20261031/README.md) is now complete **137/137 exact**, with all15 original Chain, critical-section, Supervisor state and bomb global fields. The actual `ScriptViewerReleaseBomb`/`Chain.cpp` two-input graph cold-replays twice independently; the neighboring EH-protected BulletManager destructor remains separate and not admitted. Authored exact rises to **114,365 / 275,890** across **534** owners.
+[BulletManagerView::~BulletManagerView @405F70](evidence/script-viewer-bullet-destructor-exact-20261031/README.md) is now a **complete 236/236 authored exact parent**, all23 target fields bound. The explicit one-state 38-byte generated Bullet-array-EH protocol passed a real-image negative suite with28 rejection controls, and two independent **3-source** targeted cold links. The second also preserves the old Bomb137 via its separate 2-source graph (**373/373** across both producer groups). Only the parent236 receives credit; the generated EH helper/element destructor do not. Authored exact increases to **114,601 / 275,890** over **535** owners.
+
+
+[ScriptViewerBombOwnerView::~ScriptViewerBombOwnerView @405620](evidence/script-viewer-bomb-cleanup-exact-20261031/README.md) is now complete **137/137 exact**, with all15 original Chain, critical-section, Supervisor state and bomb global fields. The actual `ScriptViewerReleaseBomb`/`Chain.cpp` two-input graph cold-replays twice independently; the previously open EH-protected BulletManager destructor is now independently admitted as full236/236 in a separate verified three-input graph; this earlier 137-byte claim remains unchanged. Authored exact rises to **114,365 / 275,890** across **534** owners.
 
 
 [GameCleanupLinked41C1C0 @41C1C0](evidence/enemy-laser-linked-cleanup-exact-20261031/README.md) is now full **195/195 exact** with all16 real IAT/callee/supervisor-state fields, including base+0x64C/+0x6F4, through the actual `GameCreateOwner41C290`-rooted 2-TU EnemyLaserManager/Chain producer. Two independently rebuilt selected colds pass; exact authored becomes **114,228 / 275,890, 533 owners**. This is a complete medium owner, not a padded prefix or a full-game replay.

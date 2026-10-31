@@ -28821,3 +28821,43 @@ linkages = [
   { offset = 0x74, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
   { offset = 0x7D, type = "DIR32", symbol = "?g_ScriptViewerBomb@@3PAXA", target = 0x004776EC },
 ]
+
+# Complete bullet lifecycle dtor, actual real Anm/Chain and reviewed EH array protocol.
+[units.script-viewer-bullet-destructor]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewerLifecycle.cpp"
+support_sources = ["src/Chain.cpp", "src/AnmManager.cpp"]
+output_dir = "build/match-linked/ScriptViewerBulletCleanup"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerReleaseBullets@@YAXPAUBulletManagerView@@@Z"
+functions = ["BulletManagerView::~BulletManagerView"]
+symbol = "??1BulletManagerView@@QAE@XZ"
+target_address = 0x00405F70
+size = 236
+linkages = [
+  { offset = 0x2, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x9, type = "DIR32", symbol = "__ehhandler$??1BulletManagerView@@QAE@XZ", target = 0x0046553C, bullet_array_eh_handler = true },
+  { offset = 0x11, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x2C, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x32, type = "DIR32", symbol = "__imp__EnterCriticalSection@4", target = 0x004660B0 },
+  { offset = 0x38, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0x3F, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x47, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0x50, type = "REL32", symbol = "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z", target = 0x00449F60 },
+  { offset = 0x55, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x5D, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0x6C, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x73, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x7B, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0x84, type = "REL32", symbol = "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z", target = 0x00449F60 },
+  { offset = 0x89, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x91, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0xA0, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0xA5, type = "REL32", symbol = "?MarkLoadedVmsForDeletion@AnmRenderManagerView@@QAEXPAUAnmLoadedView@@@Z", target = 0x004493E0 },
+  { offset = 0xAA, type = "DIR32", symbol = "??1BulletRuntimeView@@QAE@XZ", target = 0x00405DE0 },
+  { offset = 0xCA, type = "DIR32", symbol = "?g_ScriptViewerBullets@@3PAUBulletManagerView@@A", target = 0x004776F0 },
+  { offset = 0xD3, type = "REL32", symbol = "??_M@YGXPAXIHP6EX0@Z@Z", target = 0x004525FF },
+  { offset = 0xE1, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+]

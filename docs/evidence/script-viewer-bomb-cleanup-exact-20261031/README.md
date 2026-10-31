@@ -23,7 +23,7 @@ These are all 15 fields of the unique 137-byte complete PDB contribution. The ma
 
 ## Two independent bounded cold replays
 
-Two independently rebuilt **two-input** selected canonical cold links of `script-viewer-bomb-destructor` both strictly return **137/137 exact and 15 bound fields**, PDB GUIDs `dbb8a7321af00040919ed3708bfb2a69` and `4ee80400db3a434eb5a880eab30869e3`. Full ignored receipts are under `.analysis/gpt-web/current-turn/bomb-cold-{1,2}.json`; generated PE/MAP/PDB remain under the canonical `build/match-linked/ScriptViewerBombCleanup/` output. The related 236-byte BulletManager destructor stays outside this exact admission; it requires an independent EH-handler contract and cannot be credited from a normalized 236-byte image alone.
+Two independently rebuilt **two-input** selected canonical cold links of `script-viewer-bomb-destructor` both strictly return **137/137 exact and 15 bound fields**, PDB GUIDs `dbb8a7321af00040919ed3708bfb2a69` and `4ee80400db3a434eb5a880eab30869e3`. Full ignored receipts are under `.analysis/gpt-web/current-turn/bomb-cold-{1,2}.json`; generated PE/MAP/PDB remain under the canonical `build/match-linked/ScriptViewerBombCleanup/` output. This Bomb-only acceptance did not originally credit the 236-byte BulletManager destructor. A subsequent [independent complete Bullet EH proof](../script-viewer-bullet-destructor-exact-20261031/README.md) now admits that distinct 236-byte owner after verifying its separate 38-byte handler protocol and two scoped colds; the two owners are tracked independently.
 
 ```sh
 scripts/repo-python scripts/verify-target.py
