@@ -11,16 +11,19 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 114,033 / 275,890 |
-| Authored exact owners | 532 |
-| Total canonical exact owners / codegen bytes | 1,412 / 182,167 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 171 |
+| Reviewed authored owned bytes exact | 114,228 / 275,890 |
+| Authored exact owners | 533 |
+| Total canonical exact owners / codegen bytes | 1,413 / 182,362 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 170 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
 proves neither original names/class/TU ownership nor product/runtime/portability.
 
 ## Latest reviewed authored exact checkpoint
+
+[GameCleanupLinked41C1C0 @41C1C0](evidence/enemy-laser-linked-cleanup-exact-20261031/README.md) is now full **195/195 exact** with all16 real IAT/callee/supervisor-state fields, including base+0x64C/+0x6F4, through the actual `GameCreateOwner41C290`-rooted 2-TU EnemyLaserManager/Chain producer. Two independently rebuilt selected colds pass; exact authored becomes **114,228 / 275,890, 533 owners**. This is a complete medium owner, not a padded prefix or a full-game replay.
+
 
 [ResultMenuClose @423510](evidence/result-menu-close-exact-20261031/README.md) now passes **89/89 exact** with real ESI receiver, two exact `EnemyMarkPendingInterrupt` call fields and two original ANM-speed global references. The final canonical recipe uses the genuine **two-input** `ResultMenuUpdateResult`/`VmIdInterrupt` graph, where two independent selected cold links strictly reproduce **89/89** and all four fields. An older 15-input `ResultTransitions` cold had also protected two existing 411-byte menu callers (**911/911**) but its next retry hit a transient Wine path fault; that historical graph is corroboration, not the current acceptance dependency. Reviewed authored numerator reaches **114,033/275,890**, 532 owners, without full cold replay.
 

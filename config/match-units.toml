@@ -28756,3 +28756,36 @@ linkages = [
   { offset = 0x49, type = "REL32", symbol = "?EnemyMarkPendingInterrupt@@YAXPAH@Z", target = 0x00409E50 },
   { offset = 0x54, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
 ]
+
+# Real GameCreateOwner41C290 caller, actual Chain registration teardown.
+[units.enemy-laser-linked-cleanup]
+artifact_kind = "linked-pe"
+source = "src/EnemyLaserManager.cpp"
+support_sources = ["src/Chain.cpp"]
+output_dir = "build/match-linked/EnemyLaserCleanup"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?GameCreateOwner41C290@@YAPAXXZ"
+functions = ["GameCleanupLinked41C1C0"]
+symbol = "?GameCleanupLinked41C1C0@@YGXPAUGameChainOwnerView@@@Z"
+target_address = 0x0041C1C0
+size = 195
+linkages = [
+  { offset = 0x7, type = "DIR32", symbol = "__imp__EnterCriticalSection@4", target = 0x004660B0 },
+  { offset = 0xE, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0x1B, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x22, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x2A, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0x33, type = "REL32", symbol = "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z", target = 0x00449F60 },
+  { offset = 0x38, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x40, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0x4F, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x56, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x5E, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0x67, type = "REL32", symbol = "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z", target = 0x00449F60 },
+  { offset = 0x6C, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x64C },
+  { offset = 0x74, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F4 },
+  { offset = 0xA5, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0xB7, type = "DIR32", symbol = "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A", target = 0x0047781C },
+]
