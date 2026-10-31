@@ -1,0 +1,1713 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_address": "0x00419650",
+  "owner_symbol": "?Update@HintOwnerView@@QAEHXZ",
+  "target_field_roles": [
+    {
+      "offset": 8,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4672644,
+      "symbol": "?g_GameFrameRestorePending@@3HA"
+    },
+    {
+      "offset": 27,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4672636,
+      "symbol": "?g_GameStartupMode@@3HA"
+    },
+    {
+      "offset": 45,
+      "width": 4,
+      "type": "REL32",
+      "target": 4296992,
+      "symbol": "?ConsumeEntries@HintOwnerView@@QAEHPAUHintLinkView@@H@Z"
+    },
+    {
+      "offset": 50,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4683828,
+      "symbol": "?g_Player@@3PAUPlayer@@A"
+    },
+    {
+      "offset": 68,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655948,
+      "symbol": "__real@43600000"
+    },
+    {
+      "offset": 94,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655944,
+      "symbol": "__real@41800000"
+    },
+    {
+      "offset": 114,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4791312,
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+    },
+    {
+      "offset": 228,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655884,
+      "symbol": "__real@3f000000"
+    },
+    {
+      "offset": 255,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655884,
+      "symbol": "__real@3f000000"
+    },
+    {
+      "offset": 298,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4656076,
+      "symbol": "__real@42000000"
+    },
+    {
+      "offset": 325,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655884,
+      "symbol": "__real@3f000000"
+    },
+    {
+      "offset": 382,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4656416,
+      "symbol": "__real@3d000000"
+    },
+    {
+      "offset": 389,
+      "width": 4,
+      "type": "REL32",
+      "target": 4602668,
+      "symbol": "__ftol2"
+    },
+    {
+      "offset": 422,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4655884,
+      "symbol": "__real@3f000000"
+    },
+    {
+      "offset": 428,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4656076,
+      "symbol": "__real@42000000"
+    },
+    {
+      "offset": 487,
+      "width": 4,
+      "type": "DIR32",
+      "target": 4656416,
+      "symbol": "__real@3d000000"
+    },
+    {
+      "offset": 494,
+      "width": 4,
+      "type": "REL32",
+      "target": 4602668,
+      "symbol": "__ftol2"
+    }
+  ],
+  "callback_unit": {
+    "artifact_kind": "linked-pe",
+    "source": "src/Hint.cpp",
+    "support_sources": [
+      "src/FileSystem.cpp",
+      "src/Chain.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "pdb_source": "src/Hint.cpp",
+    "output_dir": "build/match-linked/HintLifecycle",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?CreateHintOwner@@YAPAUHintOwnerView@@XZ",
+    "functions": [
+      "HintOwnerView::OnUpdate"
+    ],
+    "symbol": "?OnUpdate@HintOwnerView@@SIHPAX@Z",
+    "target_address": 4298912,
+    "size": 10,
+    "linkages": [
+      {
+        "offset": 4,
+        "type": "REL32",
+        "symbol": "?Update@HintOwnerView@@QAEHXZ",
+        "target": 4298320
+      }
+    ]
+  },
+  "native_reproduction": {
+    "result": "complete-frame-nonexact-callback-exact",
+    "size": 571,
+    "target_geometry": {
+      "instructions": 169,
+      "branches": [
+        {
+          "offset": 17,
+          "mnemonic": "je",
+          "destination": 26
+        },
+        {
+          "offset": 106,
+          "mnemonic": "jne",
+          "destination": 112
+        },
+        {
+          "offset": 110,
+          "mnemonic": "jmp",
+          "destination": 174
+        },
+        {
+          "offset": 126,
+          "mnemonic": "je",
+          "destination": 141
+        },
+        {
+          "offset": 132,
+          "mnemonic": "je",
+          "destination": 168
+        },
+        {
+          "offset": 139,
+          "mnemonic": "jne",
+          "destination": 128
+        },
+        {
+          "offset": 149,
+          "mnemonic": "je",
+          "destination": 108
+        },
+        {
+          "offset": 155,
+          "mnemonic": "je",
+          "destination": 168
+        },
+        {
+          "offset": 162,
+          "mnemonic": "jne",
+          "destination": 151
+        },
+        {
+          "offset": 166,
+          "mnemonic": "jmp",
+          "destination": 174
+        },
+        {
+          "offset": 172,
+          "mnemonic": "jne",
+          "destination": 192
+        },
+        {
+          "offset": 186,
+          "mnemonic": "je",
+          "destination": 520
+        },
+        {
+          "offset": 200,
+          "mnemonic": "jne",
+          "destination": 520
+        },
+        {
+          "offset": 245,
+          "mnemonic": "jp",
+          "destination": 292
+        },
+        {
+          "offset": 268,
+          "mnemonic": "jne",
+          "destination": 292
+        },
+        {
+          "offset": 287,
+          "mnemonic": "jmp",
+          "destination": 520
+        },
+        {
+          "offset": 315,
+          "mnemonic": "jp",
+          "destination": 403
+        },
+        {
+          "offset": 338,
+          "mnemonic": "jne",
+          "destination": 403
+        },
+        {
+          "offset": 401,
+          "mnemonic": "jmp",
+          "destination": 520
+        },
+        {
+          "offset": 412,
+          "mnemonic": "jp",
+          "destination": 508
+        },
+        {
+          "offset": 443,
+          "mnemonic": "jp",
+          "destination": 506
+        },
+        {
+          "offset": 504,
+          "mnemonic": "jmp",
+          "destination": 520
+        },
+        {
+          "offset": 535,
+          "mnemonic": "jne",
+          "destination": 98
+        }
+      ],
+      "returns": [
+        {
+          "offset": 570,
+          "operand": ""
+        }
+      ]
+    },
+    "native_geometry": {
+      "instructions": 170,
+      "branches": [
+        {
+          "offset": 17,
+          "mnemonic": "je",
+          "destination": 26
+        },
+        {
+          "offset": 102,
+          "mnemonic": "jne",
+          "destination": 108
+        },
+        {
+          "offset": 106,
+          "mnemonic": "jmp",
+          "destination": 174
+        },
+        {
+          "offset": 122,
+          "mnemonic": "je",
+          "destination": 141
+        },
+        {
+          "offset": 132,
+          "mnemonic": "je",
+          "destination": 168
+        },
+        {
+          "offset": 139,
+          "mnemonic": "jne",
+          "destination": 128
+        },
+        {
+          "offset": 149,
+          "mnemonic": "je",
+          "destination": 104
+        },
+        {
+          "offset": 155,
+          "mnemonic": "je",
+          "destination": 168
+        },
+        {
+          "offset": 162,
+          "mnemonic": "jne",
+          "destination": 151
+        },
+        {
+          "offset": 166,
+          "mnemonic": "jmp",
+          "destination": 174
+        },
+        {
+          "offset": 172,
+          "mnemonic": "jne",
+          "destination": 188
+        },
+        {
+          "offset": 182,
+          "mnemonic": "je",
+          "destination": 520
+        },
+        {
+          "offset": 196,
+          "mnemonic": "jne",
+          "destination": 520
+        },
+        {
+          "offset": 245,
+          "mnemonic": "jp",
+          "destination": 292
+        },
+        {
+          "offset": 268,
+          "mnemonic": "jne",
+          "destination": 292
+        },
+        {
+          "offset": 287,
+          "mnemonic": "jmp",
+          "destination": 520
+        },
+        {
+          "offset": 315,
+          "mnemonic": "jp",
+          "destination": 403
+        },
+        {
+          "offset": 338,
+          "mnemonic": "jne",
+          "destination": 403
+        },
+        {
+          "offset": 401,
+          "mnemonic": "jmp",
+          "destination": 520
+        },
+        {
+          "offset": 412,
+          "mnemonic": "jp",
+          "destination": 508
+        },
+        {
+          "offset": 443,
+          "mnemonic": "jp",
+          "destination": 506
+        },
+        {
+          "offset": 504,
+          "mnemonic": "jmp",
+          "destination": 520
+        },
+        {
+          "offset": 535,
+          "mnemonic": "jne",
+          "destination": 98
+        }
+      ],
+      "returns": [
+        {
+          "offset": 570,
+          "operand": ""
+        }
+      ]
+    },
+    "field_bindings": [
+      {
+        "offset": 8,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4672644,
+        "symbol": "?g_GameFrameRestorePending@@3HA",
+        "native_offset": 8
+      },
+      {
+        "offset": 27,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4672636,
+        "symbol": "?g_GameStartupMode@@3HA",
+        "native_offset": 27
+      },
+      {
+        "offset": 45,
+        "width": 4,
+        "type": "REL32",
+        "target": 4296992,
+        "symbol": "?ConsumeEntries@HintOwnerView@@QAEHPAUHintLinkView@@H@Z",
+        "native_offset": 45
+      },
+      {
+        "offset": 50,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4683828,
+        "symbol": "?g_Player@@3PAUPlayer@@A",
+        "native_offset": 50
+      },
+      {
+        "offset": 68,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655948,
+        "symbol": "__real@43600000",
+        "native_offset": 68
+      },
+      {
+        "offset": 94,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655944,
+        "symbol": "__real@41800000",
+        "native_offset": 94
+      },
+      {
+        "offset": 114,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4791312,
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "native_offset": 110
+      },
+      {
+        "offset": 228,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655884,
+        "symbol": "__real@3f000000",
+        "native_offset": 228
+      },
+      {
+        "offset": 255,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655884,
+        "symbol": "__real@3f000000",
+        "native_offset": 255
+      },
+      {
+        "offset": 298,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4656076,
+        "symbol": "__real@42000000",
+        "native_offset": 298
+      },
+      {
+        "offset": 325,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655884,
+        "symbol": "__real@3f000000",
+        "native_offset": 325
+      },
+      {
+        "offset": 382,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4656416,
+        "symbol": "__real@3d000000",
+        "native_offset": 382
+      },
+      {
+        "offset": 389,
+        "width": 4,
+        "type": "REL32",
+        "target": 4602668,
+        "symbol": "__ftol2",
+        "native_offset": 389
+      },
+      {
+        "offset": 422,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4655884,
+        "symbol": "__real@3f000000",
+        "native_offset": 422
+      },
+      {
+        "offset": 428,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4656076,
+        "symbol": "__real@42000000",
+        "native_offset": 428
+      },
+      {
+        "offset": 487,
+        "width": 4,
+        "type": "DIR32",
+        "target": 4656416,
+        "symbol": "__real@3d000000",
+        "native_offset": 487
+      },
+      {
+        "offset": 494,
+        "width": 4,
+        "type": "REL32",
+        "target": 4602668,
+        "symbol": "__ftol2",
+        "native_offset": 494
+      }
+    ],
+    "bound_regions": [
+      {
+        "start": 0,
+        "size": 60,
+        "normalized_sha256": "209397985b4b22353d2d1b41fd0de40f97a0f667ba44c2c7a3703149b3e72da3"
+      },
+      {
+        "start": 78,
+        "size": 20,
+        "normalized_sha256": "1b477f4449954b8a568e0d641722dad58fdb5c32fa49032e376121aff00086bd"
+      },
+      {
+        "start": 226,
+        "size": 345,
+        "normalized_sha256": "8979c73a4283bd0ae8eacf97876472f2d5e46de2289f6f9553427298a583c02c"
+      }
+    ],
+    "target_normalized_sha256": "498db57ce768fdb599858175f8240e0c51d80e85bb06debc9d430fcd91712827",
+    "native_normalized_sha256": "25205379741c4ad144475b4ba9b56124ef024d2877ba36dd745df196f1e56587",
+    "callback": {
+      "result": "exact",
+      "size": 10,
+      "fields": 1
+    },
+    "frame_exact_credit": 0,
+    "authored_exact_credit": 0,
+    "callback_codegen_credit": 10
+  },
+  "controls": [
+    {
+      "label": "entry",
+      "source_sha256": "7acf992492b3d5bd86db41a9ba4556c47f56e8d1edacc1135ca1df16ca953118",
+      "image_sha256": "24461a1804666cc6a11c380613f202a6c09047a97177b0f14eac8a9bb6a9a82a",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 541,
+          "instructions": 165,
+          "fields": 13,
+          "branches": 22,
+          "normalized_sha256": "edaaf6804d6be8ebc20afbf762c63feeab4da9cbd21c8e92700475f8cbd15053",
+          "complete_inventory_sha256": "4b964366d1b82d15ecd73144d7b4cdfb7cc1dbfa0628bd7804e42911710a467d"
+        },
+        "callback": {
+          "size": 7,
+          "instructions": 3,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "6c51c5493dda3e553a767900cf8a42f82548808de53b027f7ef3b45d98dd73c6",
+          "complete_inventory_sha256": "b9956475e5dc35e1a33402fe2a50d668d941fbc063d5c88066b9d4f08676163a"
+        }
+      },
+      "baseline_context": ".analysis/gpt-6.1-sol/hint-consume-20261031/final-cold-context.json"
+    },
+    {
+      "label": "large-owner-observation",
+      "source_sha256": "82c7612e0dcc595c3a2c133fc7b789720d66441b5371bca8d510407a655eb7ab",
+      "image_sha256": "7daa6a19f19195f10ac54a0eeddda7e8518e81dc83ff23e16dff9a089256acb0",
+      "owners": {
+        "consume": {
+          "size": 1296,
+          "instructions": 346,
+          "fields": 33,
+          "branches": 42,
+          "normalized_sha256": "562e6e012651a0bdb7b9478faabf3e9005a83961ee2bb794b75ee8d60c82e9c6",
+          "complete_inventory_sha256": "a1d6b88f9a3e2f51d9f26313754b25f7deb451c56ce89db1ecb32ffd716df40d"
+        },
+        "update": {
+          "size": 541,
+          "instructions": 165,
+          "fields": 13,
+          "branches": 22,
+          "normalized_sha256": "edaaf6804d6be8ebc20afbf762c63feeab4da9cbd21c8e92700475f8cbd15053",
+          "complete_inventory_sha256": "4b964366d1b82d15ecd73144d7b4cdfb7cc1dbfa0628bd7804e42911710a467d"
+        },
+        "callback": {
+          "size": 7,
+          "instructions": 3,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "6c51c5493dda3e553a767900cf8a42f82548808de53b027f7ef3b45d98dd73c6",
+          "complete_inventory_sha256": "b9956475e5dc35e1a33402fe2a50d668d941fbc063d5c88066b9d4f08676163a"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "small-created-wrapper",
+      "source_sha256": "b85ba941f41bf9bc9be6ac94cb1a20d1bbeb9af34914338750eedbae258c08c1",
+      "image_sha256": "3f6bf0091f8a6d0e9b88fdf1165ec9267fefc39e11696cbdafb0ad161f51413e",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 348,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "35478513480db09c63440d6519098f1cfb9ea635326aa6cf76ec80ff946b0d9f",
+          "complete_inventory_sha256": "5c6d988f2fe0e45e2d70b3f867094cd699c9b43fd2d91e54315a0299ca69cd44"
+        },
+        "update": {
+          "size": 541,
+          "instructions": 165,
+          "fields": 13,
+          "branches": 22,
+          "normalized_sha256": "edaaf6804d6be8ebc20afbf762c63feeab4da9cbd21c8e92700475f8cbd15053",
+          "complete_inventory_sha256": "4b964366d1b82d15ecd73144d7b4cdfb7cc1dbfa0628bd7804e42911710a467d"
+        },
+        "callback": {
+          "size": 7,
+          "instructions": 3,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "6c51c5493dda3e553a767900cf8a42f82548808de53b027f7ef3b45d98dd73c6",
+          "complete_inventory_sha256": "b9956475e5dc35e1a33402fe2a50d668d941fbc063d5c88066b9d4f08676163a"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "small-lookup-value",
+      "source_sha256": "3afce538bdf4900364a3ac26e99d85a1ce1fa039ce7ef9916e6b527b6add4a68",
+      "image_sha256": "baf9a191f6c4d3a9305430dafa17b79a7fab1086b9c6e9da20199a617a5b673b",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 541,
+          "instructions": 165,
+          "fields": 13,
+          "branches": 22,
+          "normalized_sha256": "edaaf6804d6be8ebc20afbf762c63feeab4da9cbd21c8e92700475f8cbd15053",
+          "complete_inventory_sha256": "4b964366d1b82d15ecd73144d7b4cdfb7cc1dbfa0628bd7804e42911710a467d"
+        },
+        "callback": {
+          "size": 7,
+          "instructions": 3,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "6c51c5493dda3e553a767900cf8a42f82548808de53b027f7ef3b45d98dd73c6",
+          "complete_inventory_sha256": "b9956475e5dc35e1a33402fe2a50d668d941fbc063d5c88066b9d4f08676163a"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "large-owner-capture",
+      "source_sha256": "472ec2e2aaaa182d9f9e8ae7cbd3fbd9e517e17ec6479010ade7c078207588f5",
+      "image_sha256": "7d87068ae29c0e98acc250d36940beba38afe3b81c815ffcf3ac4bc668e0bc86",
+      "owners": {
+        "consume": {
+          "size": 1303,
+          "instructions": 348,
+          "fields": 33,
+          "branches": 42,
+          "normalized_sha256": "aa90735bfc9e9c1bae6aa7bf735c0b2c9e6dad096dc65700ea372adeec84bbbe",
+          "complete_inventory_sha256": "9493aac5ab5bd737536d86b7a0b5ef743294e30fe308aa9f474af55349045785"
+        },
+        "update": {
+          "size": 541,
+          "instructions": 165,
+          "fields": 13,
+          "branches": 22,
+          "normalized_sha256": "edaaf6804d6be8ebc20afbf762c63feeab4da9cbd21c8e92700475f8cbd15053",
+          "complete_inventory_sha256": "4b964366d1b82d15ecd73144d7b4cdfb7cc1dbfa0628bd7804e42911710a467d"
+        },
+        "callback": {
+          "size": 7,
+          "instructions": 3,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "6c51c5493dda3e553a767900cf8a42f82548808de53b027f7ef3b45d98dd73c6",
+          "complete_inventory_sha256": "b9956475e5dc35e1a33402fe2a50d668d941fbc063d5c88066b9d4f08676163a"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "update-branch-values",
+      "source_sha256": "46c9cf57a9b2e3940930399108449b840ce15e6c1d0f5ada74c65bac34d94f0b",
+      "image_sha256": "a80fffb97dba96cb6a9cbe901f1fb4f4cf22f76a78c5147fd0a0f5f741400530",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 570,
+          "instructions": 172,
+          "fields": 17,
+          "branches": 22,
+          "normalized_sha256": "9865e6efff78b77e0e85e65a5b12762b7b6c40390273ed7dd00e3583f7d8fe05",
+          "complete_inventory_sha256": "c2ade716c1a2f1bffc57aee65483710e6f25ca633206145921a5afcefeeffbc0"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "70bcbc1ad5e5690af602951ee0d2fd433dbd1f10a9b16901adbc5ae28e9e5ece",
+          "complete_inventory_sha256": "3ba5f5db62c88bc6b86b4b638356e8d51175a6ad5aaa867d306e6e145288732c"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "update-float-values",
+      "source_sha256": "739eef0d0c989b36268ff290a7eb9da0d160e7214fc1b2d30f650e2634c3e62c",
+      "image_sha256": "1776dcf9940cd98da1775a2de801ce8c68116ece5481d83f809b932405360fec",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 564,
+          "instructions": 167,
+          "fields": 17,
+          "branches": 22,
+          "normalized_sha256": "0e11d5fefba245e44a53e58d4874d442c29d102fee50a598e357ac4e95c4966f",
+          "complete_inventory_sha256": "cccfd8dcb1d459ba57cb78fbb96ce8171a9bf4b5c816cbd46c85e68d5ace740d"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "70bcbc1ad5e5690af602951ee0d2fd433dbd1f10a9b16901adbc5ae28e9e5ece",
+          "complete_inventory_sha256": "3ba5f5db62c88bc6b86b4b638356e8d51175a6ad5aaa867d306e6e145288732c"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "update-resolve-helper",
+      "source_sha256": "e51a668047b3372e4633f89f289a9a4b36ecfd14c4b6e004176fdce30d9f898f",
+      "image_sha256": "c16f59f93268c25ae268ee4a916aa974c3c5d38247b3104fcf06f1d08d49e92c",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 571,
+          "instructions": 170,
+          "fields": 17,
+          "branches": 23,
+          "normalized_sha256": "a31a99e09955019a443cb98b0d579abe7246904eee01d2a85b735ea1281814a1",
+          "complete_inventory_sha256": "cc2eba8892ffaffaa2505cbcaf21eb743b686f08b8261bc6dbd9a40a7dd24211"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "70bcbc1ad5e5690af602951ee0d2fd433dbd1f10a9b16901adbc5ae28e9e5ece",
+          "complete_inventory_sha256": "3ba5f5db62c88bc6b86b4b638356e8d51175a6ad5aaa867d306e6e145288732c"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "update-width-cursor",
+      "source_sha256": "08567cc1393c7553acea3c62afd4b37c353f45a7676611fcc3741f3ed87d55a3",
+      "image_sha256": "a905a317134ead507cab81b9ee308da7594b597d55ab5d3d1421f5ac83aaaf3a",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 598,
+          "instructions": 177,
+          "fields": 17,
+          "branches": 23,
+          "normalized_sha256": "dcb73648fa96deac03a37d878c1f37bc2a91a953a8d311465a1594148f4ceade",
+          "complete_inventory_sha256": "894d964515aea5c4fdd996ed5db7b6f002b9c786e8a8c34662c346ddf7004482"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "dde0303c6556682645b27f905bc541ee6b4236a1f856211bf57cfe9eee624b7e",
+          "complete_inventory_sha256": "6a82eb5f5354ebba5b7dda3bf01364b2c1856913a26af51a29f6447c92600ab5"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "update-shared-alpha",
+      "source_sha256": "97daa74f29bcd825f63235a4f7594d2a0e7edf0d50d26577fea18e819fd54c92",
+      "image_sha256": "06df4c061d7501d7104605bbe4cc27d9d68f8311fdc78214fa6f945856c99e35",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 571,
+          "instructions": 170,
+          "fields": 17,
+          "branches": 23,
+          "normalized_sha256": "25205379741c4ad144475b4ba9b56124ef024d2877ba36dd745df196f1e56587",
+          "complete_inventory_sha256": "211e68ce9d3639d206419c5c4111ff240da844fb127e87080c6181a42521db51"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "70bcbc1ad5e5690af602951ee0d2fd433dbd1f10a9b16901adbc5ae28e9e5ece",
+          "complete_inventory_sha256": "3ba5f5db62c88bc6b86b4b638356e8d51175a6ad5aaa867d306e6e145288732c"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "update-width-index",
+      "source_sha256": "785e9b882a9c7f118e772b828eb635a07de65a7f3811bd327d261989f27daa88",
+      "image_sha256": "4030ac2403387574e98f1465ae0b0f527a94bc01925e1ec42b61546d394128f0",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 609,
+          "instructions": 180,
+          "fields": 18,
+          "branches": 24,
+          "normalized_sha256": "eb90f61ce04f8127c410a3ba0699b75010b8217a32a00d559add72790d0ea6f3",
+          "complete_inventory_sha256": "b2ffc78d3b8ea8959a9856ada0ed68a0a11dd0fb113476f2c0a13ea57021e653"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "dde0303c6556682645b27f905bc541ee6b4236a1f856211bf57cfe9eee624b7e",
+          "complete_inventory_sha256": "6a82eb5f5354ebba5b7dda3bf01364b2c1856913a26af51a29f6447c92600ab5"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "update-local-width",
+      "source_sha256": "3e584229c538406ca8e081f323d811b46ab0b7d9ecd73a4e5df2a5e33a60bd12",
+      "image_sha256": "816942c63842ac1f103cd74dbe462d57b7dfe47bfd032e974d2a492d145156b6",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 571,
+          "instructions": 170,
+          "fields": 17,
+          "branches": 23,
+          "normalized_sha256": "25205379741c4ad144475b4ba9b56124ef024d2877ba36dd745df196f1e56587",
+          "complete_inventory_sha256": "211e68ce9d3639d206419c5c4111ff240da844fb127e87080c6181a42521db51"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "70bcbc1ad5e5690af602951ee0d2fd433dbd1f10a9b16901adbc5ae28e9e5ece",
+          "complete_inventory_sha256": "3ba5f5db62c88bc6b86b4b638356e8d51175a6ad5aaa867d306e6e145288732c"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "update-slot-resolver",
+      "source_sha256": "4d7994b21719ad83890ad4de3b4251d16fdb02b4881231c576cc9edebe90d43b",
+      "image_sha256": "f888e2eac83864baa6c48cd0682ec75d5f66a6cd7e7d9105c72226bb9ab158ff",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 571,
+          "instructions": 170,
+          "fields": 17,
+          "branches": 23,
+          "normalized_sha256": "25205379741c4ad144475b4ba9b56124ef024d2877ba36dd745df196f1e56587",
+          "complete_inventory_sha256": "211e68ce9d3639d206419c5c4111ff240da844fb127e87080c6181a42521db51"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "70bcbc1ad5e5690af602951ee0d2fd433dbd1f10a9b16901adbc5ae28e9e5ece",
+          "complete_inventory_sha256": "3ba5f5db62c88bc6b86b4b638356e8d51175a6ad5aaa867d306e6e145288732c"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "update-position-view",
+      "source_sha256": "ec1ffeb490ccc77e9a781157c7b30080e06bbaf40b530c1ab8dae8f359570427",
+      "image_sha256": "d6c40f4f73650c10ee892aa667b37f966c0e5d2d8841940314a1523f1ad508ed",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 571,
+          "instructions": 170,
+          "fields": 17,
+          "branches": 23,
+          "normalized_sha256": "2e78cc2d73a3460143c18481ae0bf8affefb520c6b9bb249e1a192025875d93b",
+          "complete_inventory_sha256": "46b778b0e44f322ee38cff9720b2367c0d2a3028b40a35e5863ff6a8003e54f5"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "70bcbc1ad5e5690af602951ee0d2fd433dbd1f10a9b16901adbc5ae28e9e5ece",
+          "complete_inventory_sha256": "3ba5f5db62c88bc6b86b4b638356e8d51175a6ad5aaa867d306e6e145288732c"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "reviewed-final",
+      "source_sha256": "8d201a628e038116298358faf249d4b7039c50f05a3b52830683a807f3a5fbae",
+      "image_sha256": "b9d01be76060f3ce044814f179b42c13549bc03f780b2042ab2357a4c24c2860",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 571,
+          "instructions": 170,
+          "fields": 17,
+          "branches": 23,
+          "normalized_sha256": "25205379741c4ad144475b4ba9b56124ef024d2877ba36dd745df196f1e56587",
+          "complete_inventory_sha256": "211e68ce9d3639d206419c5c4111ff240da844fb127e87080c6181a42521db51"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "70bcbc1ad5e5690af602951ee0d2fd433dbd1f10a9b16901adbc5ae28e9e5ece",
+          "complete_inventory_sha256": "3ba5f5db62c88bc6b86b4b638356e8d51175a6ad5aaa867d306e6e145288732c"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7
+    },
+    {
+      "label": "final-cold",
+      "source_sha256": "8d201a628e038116298358faf249d4b7039c50f05a3b52830683a807f3a5fbae",
+      "image_sha256": "7746871cafb8028b1434a0e672e0d60c309767ea24e74cbf901836e004e503ee",
+      "owners": {
+        "consume": {
+          "size": 1308,
+          "instructions": 349,
+          "fields": 34,
+          "branches": 42,
+          "normalized_sha256": "d20b5ee7d2ad1019d03bb6fea14bec411db7410c94720643be3d624465973e5f",
+          "complete_inventory_sha256": "261f918f695390b64dbc8f98a4c139e04236207bab9657b6350c07e7b050377b"
+        },
+        "update": {
+          "size": 571,
+          "instructions": 170,
+          "fields": 17,
+          "branches": 23,
+          "normalized_sha256": "25205379741c4ad144475b4ba9b56124ef024d2877ba36dd745df196f1e56587",
+          "complete_inventory_sha256": "211e68ce9d3639d206419c5c4111ff240da844fb127e87080c6181a42521db51"
+        },
+        "callback": {
+          "size": 10,
+          "instructions": 5,
+          "fields": 1,
+          "branches": 0,
+          "normalized_sha256": "70bcbc1ad5e5690af602951ee0d2fd433dbd1f10a9b16901adbc5ae28e9e5ece",
+          "complete_inventory_sha256": "3ba5f5db62c88bc6b86b4b638356e8d51175a6ad5aaa867d306e6e145288732c"
+        }
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp",
+        "src/FileSystem.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/EnemyEclDispatcher.cpp"
+      ],
+      "reused_inputs": 0
+    }
+  ],
+  "source_and_header_pins": {
+    "src/AnmManager.cpp": "a0a746f81824596d2f1eb30e34cca3c28828fec0e193934345a2fe0f19c08dcc",
+    "src/AnmManager.hpp": "2fb97a617baa3f56f7eb467e54baeee056c81feb10a4f6279be1dddeae570420",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/ArchiveOrDiskPath.hpp": "b161edfc45e4f52f7a47c62cf750bac3681ff5bf3fa6e36b550a6b00b0995111",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "d7b02cdf6ff8f6cf2a1552148b3a5c300c7f786d33c4f2a61502bf09e5a91188",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.hpp": "6a6c478d6dfb1a69fbab68bc672d0c8db2a8ccdc8a3ee8218abe9cebbd9d0e62",
+    "src/Enemy.hpp": "6bb188713c17bc713b516a821b63284587a6624561ef842e3cabeb0a286beb72",
+    "src/EnemyCancel.hpp": "477df8d8be8c180c6077d1a38e03cd282c7b77ab90f33e46d7a59dc20fe481ff",
+    "src/EnemyEclDispatcher.cpp": "356205a7875f37cb0836cd7d01c6e6fb566e456b2ffb5236cc44eebce62e6dab",
+    "src/EnemyGameState.hpp": "2b931d23299efc64456e0bd77fdccc3c1cada5dca046b003b666257bbb62e299",
+    "src/EnemyLaser.hpp": "d8be80b8162bab036443c849a9dd341a5da7f7995adc11d180202ef6c5ff8230",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.cpp": "24b2522081ea8295cb0e293e9c26a9f7bce7b740ed41bbce858d86a630740f57",
+    "src/FileSystem.hpp": "b07093d17575809835ae67a74f6845c51d3560fa0219a0ff25dd8a9c5f8727f4",
+    "src/GameConfiguration.hpp": "9fe718adf3d03c8792f2982035ae0fde40cfebdf68204385ef5954fe0e969e8b",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "52c20a9826dded7030d8b4b7041f6d21ef3dd63dd55db63fa7500f1360d635db",
+    "src/Gui.hpp": "bf04e75eade5a1fa696b5330547636bae5705d200cfe4f829dfc3e63f79d83a9",
+    "src/Hint.cpp": "8d201a628e038116298358faf249d4b7039c50f05a3b52830683a807f3a5fbae",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "324a09749f7f09d3febd3984e93d847e4429dc149fcae030ab52ca7275d7a2c2",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/ScriptViewerWorker.hpp": "38750054453b890c34841b88fb772ebd35d1862223d8b009a866230e9d3f77d1",
+    "src/StageScript.hpp": "41596deedf6b15ffa9ba6032422d71593b6c31c87651bdfba677016691e451ef",
+    "src/VmIdInterrupt.hpp": "2d19c37cf44d118714ceae75ac24ad2d19a421ab22d7965c52c7fcf0dc94edf5"
+  },
+  "graph": {
+    "source": "src/Hint.cpp",
+    "support_sources": [
+      "src/FileSystem.cpp",
+      "src/Chain.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "entry_symbol": "?CreateHintOwner@@YAPAUHintOwnerView@@XZ",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "final_builds": [
+    {
+      "label": "reviewed-final",
+      "artifact_dir": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-consume-lifetimes-20261031/reviewed-final",
+      "image_sha256": "b9d01be76060f3ce044814f179b42c13549bc03f780b2042ab2357a4c24c2860",
+      "object_sha256": {
+        "src/Hint.cpp": "725d2739e42bbe12a922b1615a3c1ce98b9744ebb0084d3f76968bbeb20beb0e",
+        "src/FileSystem.cpp": "159f32c2750618fa0565841e2ccadabcfb8fd9e345713d82f8cacf6fca3b19c9",
+        "src/Chain.cpp": "7ce0493cfe5c026b880ef238dcaffaaca50212a772928489ce549fb442653781",
+        "src/AnmManager.cpp": "725c035a649daf17f3f31066349b549f6dd7e03760a352f1dc05f9ff83e633b5",
+        "src/AnmVmCreate.cpp": "8d8095dc5e851a4e5a0e36595631e70a9a2bef487a87d25aa1e701f15e0d3997",
+        "src/AnmVmId.cpp": "c795784ec9a97d309eff83338f21595b5388f893c945b7aff11888e60f899f65",
+        "src/RandomMath.cpp": "00cb8841a37486d629d4e87631f1674f13f6f7911f10b2f403f9da530cef65c7",
+        "src/EnemyEclDispatcher.cpp": "5017171f19f115e8e249026c005de79dca85fa29416440f7424a17552462d525"
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp"
+      ],
+      "reused_inputs": 7,
+      "guards": [
+        {
+          "unit": "hint-create-owner",
+          "size": 67,
+          "fields": 5
+        },
+        {
+          "unit": "hint-draw-callback",
+          "size": 6,
+          "fields": 0
+        },
+        {
+          "unit": "hint-clear-lists",
+          "size": 79,
+          "fields": 2
+        },
+        {
+          "unit": "anm-start-scale-interpolation",
+          "size": 136,
+          "fields": 1
+        },
+        {
+          "unit": "hint-update-callback",
+          "size": 10,
+          "fields": 1
+        }
+      ]
+    },
+    {
+      "label": "final-cold",
+      "artifact_dir": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-consume-lifetimes-20261031/final-cold",
+      "image_sha256": "7746871cafb8028b1434a0e672e0d60c309767ea24e74cbf901836e004e503ee",
+      "object_sha256": {
+        "src/Hint.cpp": "48ba1bfb5313b202c9c382ee30a7b3bb01e301c6b6ae2983bfcc1121acaf77b4",
+        "src/FileSystem.cpp": "3aed8f0a1d590a293b51f1f65d3d48f8d6918fbe905f1c228c49b95e8df2cf90",
+        "src/Chain.cpp": "7a6d757a34f8cb33e26020b969d208341847246dcee19a2c309a2b4440a910d7",
+        "src/AnmManager.cpp": "f3980ca4463a3fe0b05d36c7840a299d353b3cc25087c5a03d4f76f355244eb8",
+        "src/AnmVmCreate.cpp": "d1dc77731f7319c960dda983c8c14999500099dd1b5a940391cda144d17ab970",
+        "src/AnmVmId.cpp": "6be9639ffc11f56297409590b50ad8f5287b14af9bff99f2b818cdbe0c0c4689",
+        "src/RandomMath.cpp": "7602e9f4fd0411b77e14f707c91b925c0778dc19acf9c9f62cf29fa94562f1f7",
+        "src/EnemyEclDispatcher.cpp": "be0f040f0269ae1ec13ebaf2dfef1ec05839e0cb6b7601b28be87037905fc7cc"
+      },
+      "exit": 0,
+      "compiled_inputs": [
+        "src/Hint.cpp",
+        "src/FileSystem.cpp",
+        "src/Chain.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/EnemyEclDispatcher.cpp"
+      ],
+      "reused_inputs": 0,
+      "guards": [
+        {
+          "unit": "hint-create-owner",
+          "size": 67,
+          "fields": 5
+        },
+        {
+          "unit": "hint-draw-callback",
+          "size": 6,
+          "fields": 0
+        },
+        {
+          "unit": "hint-clear-lists",
+          "size": 79,
+          "fields": 2
+        },
+        {
+          "unit": "anm-start-scale-interpolation",
+          "size": 136,
+          "fields": 1
+        },
+        {
+          "unit": "hint-update-callback",
+          "size": 10,
+          "fields": 1
+        }
+      ]
+    }
+  ],
+  "previous_consume_proof_sha256": "e3f5364397b2b2608eb136c5a967641e6b31f49f02e79d7edd8d48efba1eae63",
+  "tool_and_manifest_pins": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "config/match-units.toml": "55fa1f4d87567cf759ae9b90ef8482f35ca5655189b798c5f50e87ec52cdb344",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/linked_image.py": "f65c6ac8878d46323daae75e249b60527035dae30f40752871ee86af0a89a533",
+    "scripts/compare-linked-function.py": "51b20c32ae8a7f275bdd11ae344a3d13dda6ca29ee916fa6bad0275fbed5887d"
+  },
+  "validation_scope": "Complete frame owner remains nonexact; complete callback only is exact. Origin, source ownership, product closure, runtime and portability remain independent.",
+  "manifest_comment_cleanup": {
+    "build_epoch_sha256": "830bdce0d47884788a27390fd2208197e88618f1c21b9e9d602e62e810db3d07",
+    "checkpoint_sha256": "55fa1f4d87567cf759ae9b90ef8482f35ca5655189b798c5f50e87ec52cdb344",
+    "parsed_manifest_unchanged": true,
+    "note": "Remove duplicated following-unit comments copied after the new callback recipe; no recipe, graph, flags or source change."
+  },
+  "selected_canonical_cold": {
+    "artifact_count": 3,
+    "groups": [
+      {
+        "artifact": "build/match-linked/AnmExecutor",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "anm-start-scale-interpolation",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/AnmManager.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x004024F0",
+            "capstone_version": "5.0.6",
+            "compared_size": 136,
+            "data_spans": [],
+            "decoded_bytes": 136,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/AnmExecutor/source.exe",
+            "image_sha256": "5cd9949613863f02db1297047d8d8e94799b48edf35fe53849d52d32ef0df59a",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x0040E0C8",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0050",
+                "local": false,
+                "offset": "0x65",
+                "symbol": "?g_AnmGameSpeed@@3MA",
+                "target": "0x00476F78",
+                "target_encoded_value": "0x00476F78",
+                "type": "DIR32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 136,
+            "matched_compared_bytes": 136,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "02cedbc5a00f6e489a489a1ebfdde89a",
+            "pdb_module_index": 1,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 136,
+            "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXHEPBUAnmFloat2View@@0@Z",
+            "target_address": "0x0041AB70",
+            "unit": "anm-start-scale-interpolation"
+          }
+        ],
+        "frozen_artifact": "build/gpt-6.1-sol/hint-consume-lifetimes-20261031/affected-canonical-0"
+      },
+      {
+        "artifact": "build/match-linked/HintLifecycle",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "hint-create-owner",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/Hint.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x004025F0",
+            "capstone_version": "5.0.6",
+            "compared_size": 67,
+            "data_spans": [],
+            "decoded_bytes": 67,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/HintLifecycle/source.exe",
+            "image_sha256": "a9981fa5d4f4cd42aa3979dc98072a8a1a44dba7b16b805a7e52ed57f31e3984",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x0041600C",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                "local": false,
+                "offset": "0x7",
+                "symbol": "??2@YAPAXI@Z",
+                "target": "0x00452493",
+                "target_encoded_value": "0x000393F8",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00402390",
+                "linked_symbol": "??0HintOwnerView@@QAE@XZ",
+                "local": false,
+                "offset": "0x15",
+                "symbol": "??0HintOwnerView@@QAE@XZ",
+                "target": "0x00418D40",
+                "target_encoded_value": "0xFFFFFC97",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00402480",
+                "linked_symbol": "?Initialize@HintOwnerView@@QAEHXZ",
+                "local": false,
+                "offset": "0x20",
+                "symbol": "?Initialize@HintOwnerView@@QAEHXZ",
+                "target": "0x00418E30",
+                "target_encoded_value": "0xFFFFFD7C",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00402510",
+                "linked_symbol": "?CleanupHintOwner@@YGXPAUHintOwnerView@@@Z",
+                "local": false,
+                "offset": "0x2E",
+                "symbol": "?CleanupHintOwner@@YGXPAUHintOwnerView@@@Z",
+                "target": "0x00418EE0",
+                "target_encoded_value": "0xFFFFFE1E",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00416010",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0004",
+                "local": false,
+                "offset": "0x34",
+                "symbol": "??3@YAXPAX@Z",
+                "target": "0x004524A1",
+                "target_encoded_value": "0x000393D9",
+                "type": "REL32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 67,
+            "matched_compared_bytes": 67,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "d451e7d57e999d4eaa4dad317e0bf228",
+            "pdb_module_index": 4,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 67,
+            "symbol": "?CreateHintOwner@@YAPAUHintOwnerView@@XZ",
+            "target_address": "0x00419090",
+            "unit": "hint-create-owner"
+          },
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00402650",
+            "capstone_version": "5.0.6",
+            "compared_size": 6,
+            "data_spans": [],
+            "decoded_bytes": 6,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/HintLifecycle/source.exe",
+            "image_sha256": "a9981fa5d4f4cd42aa3979dc98072a8a1a44dba7b16b805a7e52ed57f31e3984",
+            "linkages": [],
+            "matched_bytes": 6,
+            "matched_compared_bytes": 6,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "d451e7d57e999d4eaa4dad317e0bf228",
+            "pdb_module_index": 4,
+            "raw_equal": true,
+            "result": "exact",
+            "returncode": 0,
+            "size": 6,
+            "symbol": "?OnDraw@HintOwnerView@@SIHPAX@Z",
+            "target_address": "0x004198B0",
+            "unit": "hint-draw-callback"
+          },
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00402640",
+            "capstone_version": "5.0.6",
+            "compared_size": 10,
+            "data_spans": [],
+            "decoded_bytes": 10,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/HintLifecycle/source.exe",
+            "image_sha256": "a9981fa5d4f4cd42aa3979dc98072a8a1a44dba7b16b805a7e52ed57f31e3984",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x00402BD0",
+                "linked_symbol": "?Update@HintOwnerView@@QAEHXZ",
+                "local": false,
+                "offset": "0x4",
+                "symbol": "?Update@HintOwnerView@@QAEHXZ",
+                "target": "0x00419650",
+                "target_encoded_value": "0xFFFFFDA8",
+                "type": "REL32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 10,
+            "matched_compared_bytes": 10,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "d451e7d57e999d4eaa4dad317e0bf228",
+            "pdb_module_index": 4,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 10,
+            "symbol": "?OnUpdate@HintOwnerView@@SIHPAX@Z",
+            "target_address": "0x004198A0",
+            "unit": "hint-update-callback"
+          }
+        ],
+        "frozen_artifact": "build/gpt-6.1-sol/hint-consume-lifetimes-20261031/affected-canonical-1"
+      },
+      {
+        "artifact": "build/match-linked/PlayerState2Hint",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "hint-add-caution",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/Player.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00407230",
+            "capstone_version": "5.0.6",
+            "compared_size": 104,
+            "data_spans": [],
+            "decoded_bytes": 104,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/PlayerState2Hint/source.exe",
+            "image_sha256": "56bd46fd769d28dbf6f71a8222e056094fe1989f855d5e7f36cafe95f6d7364f",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x004191D8",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0118",
+                "local": false,
+                "offset": "0x1",
+                "symbol": "?g_GameStartupMode@@3HA",
+                "target": "0x00474C7C",
+                "target_encoded_value": "0x00474C7C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00407150",
+                "linked_symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+                "local": false,
+                "offset": "0x32",
+                "symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+                "target": "0x0041A120",
+                "target_encoded_value": "0xFFFF5A9A",
+                "type": "REL32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 104,
+            "matched_compared_bytes": 104,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "00a7e7e746ec7f4dae0b0477b063d4e5",
+            "pdb_module_index": 1,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 104,
+            "symbol": "?AddCaution@HintOwnerView@@QAEXPBDPBUPlayerFloat3@@@Z",
+            "target_address": "0x00424650",
+            "unit": "hint-add-caution"
+          }
+        ],
+        "frozen_artifact": "build/gpt-6.1-sol/hint-consume-lifetimes-20261031/affected-canonical-2"
+      }
+    ],
+    "matched_bytes": 323,
+    "result": "exact",
+    "source_count": 3,
+    "unit_count": 5,
+    "exit": 0,
+    "source_freeze_sha256": "0fb146ecf7f81ea36b968fe4749365aa9fc34afbe7c3404b0a45a5ae633a5a3f"
+  },
+  "scope_audit": {
+    "required_units": [
+      "hint-update-callback",
+      "hint-create-owner",
+      "hint-draw-callback"
+    ],
+    "required_bytes": 83,
+    "required_fields": 6,
+    "required_producers": 1,
+    "extra_completed_control_units": [
+      "anm-start-scale-interpolation",
+      "hint-add-caution"
+    ],
+    "extra_bytes": 240,
+    "extra_fields": 3,
+    "note": "The restored consumption source/body does not require replaying either extra producer. Caution calls AddAutomaticEntry at0x0041A120, not ConsumeEntries or Update. Extra completed controls are archived, not future checkpoint gates."
+  }
+}

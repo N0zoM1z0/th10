@@ -70,10 +70,13 @@ timeout 600 taskset -c 0 nice -n 10 scripts/repo-python scripts/replay-exact-uni
 Both final images preserve factory67/all5, draw callback6/all0, clear79/all2
 and the actual scale callee136/all1 through the unchanged complete comparator:
 288 bytes/all8 fields. Independent canonical cold selects factory, callback,
-scale and the actual caution caller:313 bytes/all8 fields across three
+scale and the caution method:313 bytes/all8 fields across three
 existing producers. Clear is only a same-image guard; shared
 source membership alone does not justify another producer replay. The replay
 result and retained producer metadata are recorded in [results.json](results.json).
+Scope correction on2026-10-31: Caution calls AddAutomaticEntry41A120, not
+ConsumeEntries or Update. Its extra producer replay was unnecessary and must
+not become a future checkpoint gate.
 Native work is serial on CPU0 at nice10, bounded and exit-logged. No full
 historical replay, host failure/lifecycle tests or whole-product checks follow.
 

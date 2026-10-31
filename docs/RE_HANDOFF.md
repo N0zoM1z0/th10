@@ -4,13 +4,14 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint reconstructs the complete Hint consumption
-owner's phases and value transfers. Full1308/1317 remains NONEXACT; small-ID
-register schedules and common script-push placement remain open. The3C frame,
-12 calls, three conditional resource reads and complete old-ID/alignment/cleanup
-sequences now reproduce. All34 field identities/payloads bind;27 positions still
-differ. No exact credit is added. Warm and zero-reuse eight-input cold agree;
-affected canonical four-unit replay passes313 bytes. No native job is running.
+selected lane. This checkpoint restores Hint frame arithmetic and failed-ID
+lookup flow, deriving the real EBX private input and exact10-byte registered
+update callback. Full Update571/571 remains NONEXACT: ID-versus-width loop
+cursor and manager field72/native6E still differ. All17 field roles/payloads
+and23 local branches are retained. The callback adds10 codegen bytes only; its
+origin remains indeterminate. Warm and zero-reuse eight-input cold agree, and
+required factory-group canonical replay passes83/all6. Two extra producers
+were also replayed and are archived, not future gates. No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
@@ -18,7 +19,7 @@ affected canonical four-unit replay passes313 bytes. No native job is running.
 | --- | ---: |
 | Reviewed authored owned bytes exact | 112,511 / 275,863 |
 | Authored exact owners | 522 |
-| Total canonical exact owners / codegen bytes | 1,401 / 180,635 |
+| Total canonical exact owners / codegen bytes | 1,402 / 180,645 |
 | Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 181 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
@@ -26,7 +27,42 @@ The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: complete Hint consumption phases
+## Latest source checkpoint: Hint frame values and update callback
+
+[The complete proof](evidence/hint-frame-values-20261031/README.md) records
+Update541/571 and callback7/10 at entry, then complete571/571 NONEXACT and
+callback10/all1 exact. Natural float coordinates/distance and branch-local
+height/literal evaluation restore target x87 loads/comparisons/FIMUL/conversion
+paths. A small failed-ID lookup helper restores zero/lookup/clear/null flow.
+Shared alpha/quotient locals restore both fade stack slots. No header, ABI
+declaration, compiler profile or source graph changes.
+
+Target169/native170 instructions,17 fields,23 locals and RET at23A reproduce
+in both final images. One field position remains wrong (manager72/native6E).
+The loop uses ID baseDC instead of width base17C, changing two LEAs, ID/width
+displacements and one internal alignment instruction. Fixed regions0..3C,
+4E..62 andE2..23B bind equal,425 bytes without separate units or exact credit.
+Independent width cursors spill; width-derived indexing adds arithmetic; local
+width/owner-slot lookup models are neutral and parked. Typed position view
+chooses the wrong x-based cursor. All restored controls retain full receipts.
+
+Callback4198A0 is the genuine registered ECX-to-EBX adapter to actual Update;
+its source origin stays indeterminate, so authored totals remain unchanged.
+Both final images preserve factory/draw/clear/scale/callback298/all9. Scoped
+canonical required subset is new callback/factory/draw83/all6 in one producer.
+The completed selection additionally ran scale136/all1 and Caution104/all2;
+these extra producers are unnecessary after restoration and are not gates.
+Caution calls AddAutomaticEntry41A120, not either frame owner; the prior scope
+record is corrected. Clear has only a same-image guard. Default seven
+CI stages and whitespace pass. Private campaign:hint-consume-lifetimes-20261031.
+
+Four new consumption controls fail or are neutral and are restored. Consume
+source is unchanged from404232a; its complete prior proof passes in both final
+images at1308/1317. Its small-ID/script-push frontier and the actual world
+creator116/118 remain open. Historical HINT_FRAME host/model reports are dated
+evidence, not current gates; its old widened-source description is superseded.
+
+## Previous source checkpoint: complete Hint consumption phases
 
 [The complete candidate proof](evidence/hint-consume-context-20261031/README.md)
 records the fresh1340/1317 entry and retained1308/1317 NONEXACT owner419120.
@@ -47,8 +83,8 @@ parked; ordered endpoint and shared lookup controls improve instructions at
 the same size. An unchanged-source parsing failure is excluded as a model.
 
 Both final images preserve factory67/all5, callback6/all0, clear79/all2 and
-scale136/all1 (288/all8). Only factory, callback, scale and the actual caution
-caller are independently replayed,313/all8 across three existing producers.
+scale136/all1 (288/all8). Factory, callback, scale and caution were independently replayed,313/all8
+across three existing producers; the extra caution scope is corrected above.
 The actual world creator's EDI position + three stack operands/RET12 are
 verified, but its116/118 body remains NE; unchanged Update is541/571 NE.
 No match/recipe/boundary/source/origin change. Private campaign:

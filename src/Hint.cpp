@@ -703,49 +703,56 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
     return 0;
 }
 
-// Target419650. Widened expressions represent retained x87 temporaries; the
-// native control word is unknown. This is not a universal host/native FP claim.
+// Complete failed-ID clearing before the per-frame interpolation gate.
+static inline AnmVmView *ResolveHintFrameVm(AnmVmIdView *id)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*id);
+    if (vm == 0)
+        id->value = 0;
+    return vm;
+}
+
+// Target419650. Player coordinates and horizontal distance stay in x87;
+// only the observed dy/width/outer-width values are materialized as floats.
 int HintOwnerView::Update()
 {
     if (currentBase != g_GameFrameRestorePending)
         counter14 = 0;
     ConsumeEntries(loadedStageLists[g_GameStartupMode].next, 1);
-    const double playerX = static_cast<double>(g_Player->drawPosition.x) + 224.0;
-    const double playerY = static_cast<double>(g_Player->drawPosition.y) + 16.0;
+    const float playerX = g_Player->drawPosition.x + 224.0f;
+    const float playerY = g_Player->drawPosition.y + 16.0f;
     for (int slot = 0; slot < 10; ++slot)
     {
-        if (vmIds[slot].value == 0)
+        AnmVmView *vm = ResolveHintFrameVm(&vmIds[slot]);
+        if (vm == 0 || vm->primaryAlphaInterpolation.duration != 0)
             continue;
-        AnmVmView *vm = g_AnmRenderManagerView->FindVm(vmIds[slot]);
-        if (vm == 0)
-        {
-            vmIds[slot].value = 0;
-            continue;
-        }
-        if (vm->primaryAlphaInterpolation.duration != 0)
-            continue;
-        const double dx = fabs(playerX - cachedPositions[slot][0]);
+        const float dx = static_cast<float>(fabs(playerX - cachedPositions[slot][0]));
         const float dy = static_cast<float>(fabs(playerY - cachedPositions[slot][1]));
-        const double h = static_cast<double>(vm->spriteHeight) * vm->scaleY * 0.5;
-        const float w = static_cast<float>(static_cast<double>(cachedWidths[slot]) * 0.5);
-        const float outerW = static_cast<float>(static_cast<double>(w) + 32.0);
-        const int alpha = vm->intVar1;
-        if (dx < w && dy < h)
-            vm->primaryColor.alpha = static_cast<unsigned char>(alpha) >> 2;
-        else if (dx < outerW && dy < h)
-        {
-            const int q = (3 * alpha) / 4;
-            vm->primaryColor.alpha = static_cast<unsigned char>(static_cast<int>(
-                alpha - (outerW - dx) * q * 0.03125));
-        }
-        else if (dx < w && dy < h + 32.0)
-        {
-            const int q = (3 * alpha) / 4;
-            vm->primaryColor.alpha = static_cast<unsigned char>(static_cast<int>(
-                alpha - ((h + 32.0) - dy) * q * 0.03125));
-        }
+        const float w = cachedWidths[slot] * 0.5f;
+        int alpha;
+        int q;
+        if (dx < w && vm->spriteHeight * vm->scaleY * 0.5f > dy)
+            vm->primaryColor.alpha = static_cast<unsigned char>(vm->intVar1) >> 2;
         else
-            vm->primaryColor.alpha = static_cast<unsigned char>(alpha);
+        {
+            const float outerW = w + 32.0f;
+            if (dx < outerW && vm->spriteHeight * vm->scaleY * 0.5f > dy)
+            {
+                alpha = vm->intVar1;
+                q = (3 * alpha) / 4;
+                vm->primaryColor.alpha = static_cast<unsigned char>(static_cast<int>(
+                    alpha - (outerW - dx) * q * 0.03125f));
+            }
+            else if (dx < w && dy < vm->spriteHeight * vm->scaleY * 0.5f + 32.0f)
+            {
+                alpha = vm->intVar1;
+                q = (3 * alpha) / 4;
+                vm->primaryColor.alpha = static_cast<unsigned char>(static_cast<int>(
+                    alpha - ((vm->spriteHeight * vm->scaleY * 0.5f + 32.0f) - dy) * q * 0.03125f));
+            }
+            else
+                vm->primaryColor.alpha = static_cast<unsigned char>(vm->intVar1);
+        }
     }
     ++counter10;
     ++counter14;

@@ -8753,3 +8753,35 @@ push still reject. Three explicitly bound regions total1061 bytes without
 partial units or credit. Actual world creation remains116/118 and unchanged
 Update541/571 NONEXACT. Scoped exact guards and cold receipts are in the proof;
 product closure, runtime validation and portability are separate.
+
+## 2026-10-31 Hint frame arithmetic and exact update callback
+
+Target Update419650..41988A is571 bytes,169 instructions,17 fields,23 local
+branches and RET at23A, with owner in EBX. Its player-coordinate additions,
+half-widths, branch-local height products and fade factor use DWORD floats.
+Horizontal distance stays in x87 while dy/half-width/outer-width are stored.
+The selected fade branches reload alpha and use signed quotient(3*alpha)/4.
+A failed-ID lookup clears the actual field before a separate null/frame gate.
+The native control word and general host equivalence remain unknown.
+
+The [complete frame proof](evidence/hint-frame-values-20261031/README.md)
+retains571/571 NONEXACT. Natural float source, a lookup phase helper and shared
+integer locals restore target x87 and stack-slot schedules. Native170
+instructions retain all17 identities/payloads and23 real branch destinations.
+The manager field is target72/native6E; the loop still chooses ID-array baseDC
+instead of width-array base17C, with different displacements/alignment. Equal
+size and425 explicitly bound region bytes are not owner or partial credit.
+
+The real registered update callback4198A0..4198A9 is newly exact10/all1 in
+the existing factory graph. Its complete ECX-to-EBX adapter binds the actual
+Update owner; ordinary source generates this private ABI without declaration
+changes. Warm, zero-reuse eight-input cold and scoped canonical replay pass.
+Callback origin remains indeterminate:10 codegen bytes, zero authored credit.
+The consumption source/body is unchanged from404232a and still passes its
+complete1308/1317 nonexact proof. Product/runtime/portability remain open.
+
+Canonical scope correction: the exact Caution424650 body calls AddAutomaticEntry
+41A120 and reads startup mode474C7C. It does not call either Hint frame owner.
+Its extra replay in these campaigns was unnecessary, not a future gate. The
+current required callback/factory/draw subset passes83/all6 in one producer;
+the two additional completed producer controls remain archived separately.

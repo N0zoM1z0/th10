@@ -1,5 +1,15 @@
 # Hint entry consumption and per-frame update
 
+## Current exact-stage checkpoint — 2026-10-31
+
+The historical source/model and host-test reports below describe their dated
+checkpoints. They are not current validation gates. The maintained frame
+expressions now use natural float operands and branch-local height evaluation;
+the old explicit-double source model is superseded. The [current native proof](evidence/hint-frame-values-20261031/README.md)
+records complete Update571/571 NONEXACT and the exact10-byte registered update
+callback, whose origin remains indeterminate. The [consumption proof](evidence/hint-consume-context-20261031/README.md)
+records1308/1317 NONEXACT. No shared declarations change in these two checkpoints.
+
 ## Scope and evidence
 
 This source checkpoint reconstructs natural `HintOwnerView::ConsumeEntries` and `Update` interfaces for target 419120/1317 and 419650/571. It is based on the pinned Japanese 1.00a decode and the maintained sources at clean repository HEAD c94bd4c56edd6695f0d9cbf5aa37d110461fb0d6. It adds no fake registered callback, renderer, resource, global storage, or forced private calling convention. Callback registration and factory/lifecycle integration remain a separate contribution.

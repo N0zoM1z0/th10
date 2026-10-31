@@ -28477,3 +28477,21 @@ size = 10
 linkages = [
   { offset = 0x4, type = "REL32", width = 0x4, symbol = "?UpdateSpellPanel@EnemyGameStateView@@QAEHXZ", target = 0x408d60 },
 ]
+
+[units.hint-update-callback]
+artifact_kind = "linked-pe"
+source = "src/Hint.cpp"
+support_sources = ["src/FileSystem.cpp","src/Chain.cpp","src/AnmManager.cpp","src/AnmVmCreate.cpp","src/AnmVmId.cpp","src/RandomMath.cpp","src/EnemyEclDispatcher.cpp"]
+pdb_source = "src/Hint.cpp"
+output_dir = "build/match-linked/HintLifecycle"
+profile = ["/TP","/MT","/O2","/Gy","/GF","/Oi","/DNDEBUG","/Isrc","/GL"]
+link_profile = ["/ltcg","/nodefaultlib","/subsystem:console","/incremental:no","/fixed:no","/base:0x00400000","/debug","/debugtype:cv","/opt:noref","/opt:noicf","/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CreateHintOwner@@YAPAUHintOwnerView@@XZ"
+functions = ["HintOwnerView::OnUpdate"]
+symbol = "?OnUpdate@HintOwnerView@@SIHPAX@Z"
+target_address = 0x004198A0
+size = 10
+linkages = [
+  { offset = 0x4, type = "REL32", symbol = "?Update@HintOwnerView@@QAEHXZ", target = 0x00419650 },
+]
