@@ -11,16 +11,32 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 113,082 / 275,863 |
-| Authored exact owners | 523 |
-| Total canonical exact owners / codegen bytes | 1,403 / 181,216 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 180 |
+| Reviewed authored owned bytes exact | 113,207 / 275,863 |
+| Authored exact owners | 524 |
+| Total canonical exact owners / codegen bytes | 1,404 / 181,341 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 179 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
 proves neither original names/class/TU ownership nor product/runtime/portability.
 
-## Latest exact source checkpoint
+## Latest reviewed authored exact checkpoint
+
+[GameConfigurationView::ResetDefaults @418C40](evidence/game-configuration-reset-exact-20261031/README.md)
+now passes all **125 bytes and all five fields** from its real
+MainLoadConfiguration caller graph. Moving the existing `colorMode = 0`
+assignment ahead of numeric defaults recovers the target codegen; the prior
+order was 116/125 nonexact in the same graph. An incorrect double-addend
+manifest was independently repaired. Two **selected** cold replays pass;
+no historical whole-cohort replay is required. Current reviewed authored
+exact total is 113,207/275,863 across 524 owners; the denominator remains
+provisional.
+
+Sound PreloadBgm has a separate [bounded nonexact correction](evidence/sound-preload-reg-contract-20261031/README.md)
+that recovers the real GetFmtIndexByName ECX input; do not admit its
+369-byte owner merely because it has a full-size candidate.
+
+## Recent Hint exact source checkpoint
 
 [Hint frame Update419650..41988A](evidence/hint-frame-exact-20261031/README.md)
 is complete571/all17 exact, committed in `9bd5b01`. It has169 instructions,

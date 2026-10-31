@@ -10,12 +10,12 @@ int __stdcall GameManagerInitialize(GameManager *manager);
 void GameConfigurationView::ResetDefaults()
 {
     memset(this, 0, sizeof(*this));
+    colorMode = 0;
     unknown016 = 600;
     unknown018 = 600;
     unknown01B = 1;
     unknown01C = 1;
     options |= 0x100;
-    colorMode = 0;
     format = 0x100003;
     windowed = 0;
     frameskip = 0;
