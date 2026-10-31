@@ -28553,3 +28553,38 @@ linkages = [
   { offset = 0x59, type = "DIR32", symbol = "?g_DefaultGameKeyBindings@@3PAFA", target = 0x00474E88, addend = 12 },
   { offset = 0x63, type = "DIR32", symbol = "?g_DefaultGameKeyBindings@@3PAFA", target = 0x00474E88, addend = 16 },
 ]
+
+# Full physical result-menu update owner: 179 bytes executable instructions,
+# one alignment NOP, three absolute jump entries and 14 selector bytes.
+# Source/target physical contributions are 206 bytes, not the old 179-byte
+# code-only inventory. All five local table/destination bindings are strict.
+[units.result-menu-update]
+artifact_kind = "linked-pe"
+source = "src/FrontEnd.cpp"
+output_dir = "build/match-linked/ResultMenuUpdate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ResultMenuSynchronizeScore@@YAXPAUGuiView@@@Z"
+functions = ["ResultMenuUpdate"]
+symbol = "?ResultMenuUpdate@@YAHPAUResultMenuView@@@Z"
+target_address = 0x004223F0
+size = 206
+linkages = [
+  { offset = 0x0B, type = "DIR32", local = true, target = 0x004224B0 },
+  { offset = 0x12, type = "DIR32", local = true, target = 0x004224A4 },
+  { offset = 0x18, type = "DIR32", symbol = "?g_GameRuntimeFlags@@3IA", target = 0x00474CA0 },
+  { offset = 0x21, type = "DIR32", symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A", target = 0x00474E30, addend = 6 },
+  { offset = 0x2A, type = "DIR32", symbol = "?g_GameConfigurationFlags@@3IA", target = 0x00491FF4 },
+  { offset = 0x33, type = "DIR32", symbol = "?g_ResultGameManager@@3PAUResultGameManagerView@@A", target = 0x00477810 },
+  { offset = 0x4C, type = "REL32", symbol = "?ResultMenuOpenPause@@YGXPAUResultMenuView@@@Z", target = 0x00422AB0 },
+  { offset = 0x54, type = "REL32", symbol = "?ResultMenuUpdatePause@@YGXPAUResultMenuView@@@Z", target = 0x00422C80 },
+  { offset = 0x5C, type = "REL32", symbol = "?ResultMenuUpdateResult@@YGXPAUResultMenuView@@@Z", target = 0x004236F0 },
+  { offset = 0x6D, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x00470B68 },
+  { offset = 0x7C, type = "DIR32", symbol = "__real@3f8147ae", target = 0x00470B64 },
+  { offset = 0x8D, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0xA6, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0xB4, type = "DIR32", local = true, target = 0x00422406 },
+  { offset = 0xB8, type = "DIR32", local = true, target = 0x00422442 },
+  { offset = 0xBC, type = "DIR32", local = true, target = 0x0042244A },
+]

@@ -11,16 +11,19 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 113,207 / 275,863 |
-| Authored exact owners | 524 |
-| Total canonical exact owners / codegen bytes | 1,404 / 181,341 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 179 |
+| Reviewed authored owned bytes exact | 113,413 / 275,890 |
+| Authored exact owners | 525 |
+| Total canonical exact owners / codegen bytes | 1,405 / 181,547 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 178 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
 proves neither original names/class/TU ownership nor product/runtime/portability.
 
 ## Latest reviewed authored exact checkpoint
+
+[ResultMenuUpdate @4223F0](evidence/result-menu-update-exact-20261031/README.md) is now complete **206/206 exact**, including the formerly excluded 27 bytes of physical jump/selector tables. All16 external/local fields and five table destinations bind in two independent selected cold links. The previous provisional boundary stopped at the RET after 179 bytes; the corrected extent ends at 4224BD, two CC bytes before the next owner. Exact authored progress increases to 113,413/275,890 and one new owner; the reviewed denominator is still provisional.
+
 
 [GameConfigurationView::ResetDefaults @418C40](evidence/game-configuration-reset-exact-20261031/README.md)
 now passes all **125 bytes and all five fields** from its real
@@ -29,7 +32,7 @@ assignment ahead of numeric defaults recovers the target codegen; the prior
 order was 116/125 nonexact in the same graph. An incorrect double-addend
 manifest was independently repaired. Two **selected** cold replays pass;
 no historical whole-cohort replay is required. Current reviewed authored
-exact total is 113,207/275,863 across 524 owners; the denominator remains
+exact total is 113,413/275,890 across 525 owners; the denominator remains
 provisional.
 
 Sound PreloadBgm has a separate [bounded nonexact correction](evidence/sound-preload-reg-contract-20261031/README.md)
