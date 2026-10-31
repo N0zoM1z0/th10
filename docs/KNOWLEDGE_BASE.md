@@ -4679,6 +4679,23 @@ Source mappings rise602->605, authored exact396->397 and72283->72387 bytes.
 
 ## Hint entry copy and initialization controls (2026-10-22)
 
+### 2026-10-31 HintInitialize complete native closure (supersedes older 4-byte residual)
+
+`HintOwnerView::Initialize @ 0x00418E30..0x00418EB2` now accepts full
+**131/131 exact authored bytes**, all **13 original typed fields** including
+both actual `LoadHintFile @0x00419960` calls and real `g_MainSupervisorView`
+base `0x00491C28 +0x142`. The prior one-TU source had a wrong private loader
+register schedule, not evidence the real three-stack-argument parser had a
+different ABI. Separating its existing parser and four static helpers into a
+normal-compiled `src/HintLoad.cpp` support TU restores the lifecycle's source
+codegen without register forcing. Two independent selected native cold builds
+pass initialization with the four existing lifecycle owners **785/785**;
+separate two-pass `/GL` and `/GL /GS` loader cold groups preserve six existing
+owners, **366/366** and **312/312**. The older parser remains **1498-byte
+NONEXACT**, and no existing owner is counted twice. [All 13 fields, changed
+physical source mapping and scoped replay proof](evidence/hint-initialize-split-exact-20261031/README.md).
+
+
 In the real six-TU Player update graph,12-byte position memcpy recovers the
 three target integer load/store pairs and EAX destination. The34-byte XYZ/
 strncpy-call fragment is equal after its one independently bound REL32, but is

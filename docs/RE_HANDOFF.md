@@ -11,16 +11,19 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 114,909 / 275,890 |
-| Authored exact owners | 537 |
-| Total canonical exact owners / codegen bytes | 1,417 / 183,043 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 166 |
+| Reviewed authored owned bytes exact | 115,040 / 275,890 |
+| Authored exact owners | 538 |
+| Total canonical exact owners / codegen bytes | 1,418 / 183,174 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 165 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
 proves neither original names/class/TU ownership nor product/runtime/portability.
 
 ## Latest reviewed authored exact checkpoint
+
+[HintOwnerView::Initialize @418E30](evidence/hint-initialize-split-exact-20261031/README.md) is now full **131/131 exact** with all13 real callback, Chain, supervisor flag, file-path and `LoadHintFile` fields. A bounded source partition puts the parser and its four static helpers in normal-compiled `HintLoad.cpp` while preserving the actual three-stack-input call rather than changing ABI manually. Two independent targeted native cold runs protect lifecycle **785/785**, loader `/GL` **366/366**, loader `/GL /GS` **312/312**, and the separate Caution/FileSystem guards 180/180. Full loader1498 remains nonexact. Exact authored progress is **115,040 / 275,890 across 538 owners**.
+
 
 [AnmRenderManagerView::PreloadSurface @447EC0](evidence/anm-preload-surface-exact-20261031/README.md) is now full **169/169 exact** with all10 real Stage-linked fields, correcting prior fabricated `AnmErrorLoggerView::Log` to original `th10::g_GameErrorContext.Fatal @44B8E0` and original `filePath[260]` stack frame. Two independent selected StageCreate colds preserve new169 and existing stage initializer522, **691/691** in one shared real source graph. Authored exact rises to **114,909 / 275,890 over 537 owners**. No full cold replay, no original-source/TU/runtime claim.
 
