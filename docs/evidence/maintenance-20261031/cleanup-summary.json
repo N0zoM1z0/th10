@@ -256,5 +256,27 @@
     "archive_and_inventory_hashes_rechecked": true,
     "protected_hashes_rechecked": true,
     "current_source_and_tool_pins_unchanged": true
+  },
+  "follow_up_build_prune": {
+    "date": "2026-10-31",
+    "inventory": ".analysis/maintenance-20261031-followup/build-prune.json",
+    "removed_file_count": 2650,
+    "removed_payload_bytes": 115052465,
+    "removed_allocated_bytes": 120496128,
+    "preserved_final_capture_cold": {
+      "path": "build/gpt-web/newturn-front-end/final-capture-cold",
+      "files": 11,
+      "payload_bytes": 808795,
+      "allocated_bytes": 839680
+    },
+    "python_cache_removed": {
+      "path": "build/pycache",
+      "files": 245,
+      "payload_bytes": 4547738,
+      "allocated_bytes": 5074944
+    },
+    "canonical_match_unit_outputs_removed": 0,
+    "source_or_reference_inputs_removed": 0,
+    "final_default_ci_exit": 0
   }
 }

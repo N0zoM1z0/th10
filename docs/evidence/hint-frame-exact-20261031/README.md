@@ -18,6 +18,19 @@ and every ordinary byte. No independent pointer, forced register declaration,
 padding, shared header, build flag or source graph change is introduced.
 The source model does not establish original variable names or expressions.
 
+## Current-source refresh after the HintLoad split
+
+The original results.json is a retained 36-pin witness from before the later
+AnmManager.cpp and Hint.cpp changes; only 34/36 of those source/header pins
+match today's tree. Its image is historical and must not be reused as a
+current-source cache. The canonical selected replay was repeated twice after
+the Hint.cpp / HintLoad.cpp partition. Both fresh cold runs strictly reproduce
+HintOwnerView::Update 571/571 and its update callback 10/10 (581/581 total),
+with distinct PDB GUIDs 1121e78937b9ca49814888c78c86888c and
+7a82b94de2986a41833ad56d687e784e. Receipts are retained in
+.analysis/gpt-web/current-turn/hint-frame-post-split.json and
+hint-frame-post-split-2.json.
+
 ## Complete validation
 
 Fresh target decoding and both final images agree on169 instructions,17 fields,

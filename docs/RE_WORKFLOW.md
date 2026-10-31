@@ -5,7 +5,7 @@
 As of 2026-10-28, work directly with local tools on exact reconstruction.
 [AGENTS.md](../AGENTS.md) is the operational authority. No Factory provider,
 receipt, coordinator or Factory-document prerequisite applies. Use
-`gpt-6.1-sol:` local commits; never push.
+`gpt-web:` local commits; never push.
 
 The objective is at least 98% of reviewed authored owned bytes exact. Advance
 complete medium/large representatives and useful leaves. Natural low-level

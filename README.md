@@ -49,10 +49,13 @@ and ledger rows. [PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers
 and is the count authority. The inventory and origin classifications remain
 provisional; the Windows i386 product, runtime semantics and portability are open.
 
-The latest complete Hint frame owner is571 bytes/all17 fields exact. Its
-[proof](docs/evidence/hint-frame-exact-20261031/README.md) preserves the real
-callback and the still-nonexact consumption callee. The handoff lists remaining
-frontiers without treating old matching sizes as exactness.
+The current Hint exact set includes the complete 131-byte
+HintOwnerView::Initialize and 571-byte HintOwnerView::Update, plus the
+10-byte update callback. The initialization proof records the corrected
+Hint.cpp / HintLoad.cpp source partition; the frame proof was independently
+replayed twice after that split. See the current handoff and the linked
+initialization and frame proofs. The 1498-byte file parser and 1317-byte
+consumption owner remain nonexact. Old candidate sizes are not exactness.
 
 Use `scripts/repo-python`; it enforces the locked Capstone package. Verify the
 private target before target work. Check toolchain declarations and run the

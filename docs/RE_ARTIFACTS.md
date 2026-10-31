@@ -18,21 +18,24 @@ and `build/gpt-6.1-sol/`:
 
 | Campaign | Retained purpose |
 | --- | --- |
-| `hint-frame-loop-20261031` | Current exact frame/callback and actual nonexact consumption callee; current36-pin eight-input context |
-| `gui-draw-close-20261031` | Latest complete724-byte draw candidate; final15 source/header pins match |
-| `gui-state-view-20261031` | Latest4472/4480 interpreter witness; Hint.cpp pin has changed |
+| hint-frame-loop-20261031 | Exact frame/callback proof; retained 36-pin context is now 34/36 after AnmManager.cpp and Hint.cpp changed. The current source was separately cold-replayed twice (581/581). |
+| gui-draw-close-20261031 | 724-byte nonexact draw candidate; retained 15-pin context is now 14/15 after AnmManager.cpp changed. |
+| gui-state-view-20261031 | 4472/4480 interpreter witness; retained 64-pin context is now 60/64 (AnmManager.cpp, FrontEnd.cpp, Hint.cpp, Sound.cpp changed). |
 | `cleanup-context-20261031`, `cleanup-switch-20261031` | Complete cleanup/update residuals and real dependency/EH witnesses; source pins are historical |
 | `ecl-script-data-20261030` | Actual-caller547/589 comparison; three inputs changed; pin-equal one-source entry is a different graph |
-| `anm-executor-inline-context-20261030` | Complete executor/call-boundary witnesses; revalidate source epoch |
+| anm-executor-inline-context-20261030 | Complete executor/call-boundary witnesses; latest post-PreloadSurface context is 13/13 current pins, older variants are stale. |
 | `enemy-operands-context-20261030` | Integer-reader exact history and open float reader; revalidate source epoch |
-| `ending-run-context-20261030` | Complete1568-byte Run witness; ten inputs changed since its final source context |
+| ending-run-context-20261030 | Complete 1568-byte Run witness; latest final-source context is now 57/70 pins (13 changed inputs). |
 | `laser-draw-context-20261030` | Complete draw comparison witnesses; revalidate source epoch |
 
-The [current pin audit](evidence/maintenance-20261031/context-audit.json) covers
-319 recognized manifests before cleanup,113 of which remain expanded. Five
-match their source/header hashes. This is neither complete native acceptance
-nor permission to reuse arbitrary objects. Attest actual graph/source order,
-profiles, object hashes, image and required ABI before incremental reuse.
+The original pin audit (evidence/maintenance-20261031/context-audit.json)
+covers 319 recognized manifests at the pre-follow-up cleanup epoch, 113 of
+which remained expanded and five matched their recorded source/header hashes.
+Later accepted source changes invalidate some of those pins. Current selected
+campaign status is listed in the table above and in RE_HANDOFF.md. This is
+neither complete native acceptance nor permission to reuse arbitrary objects.
+Attest actual graph/source order, profiles, object hashes, image and required
+ABI before incremental reuse.
 Do not rewrite historical pins to make a cache appear current.
 
 ## Verified private archives
@@ -54,6 +57,20 @@ Completed exact campaigns, superseded prototypes, source capsules and logs are
 recoverable from these archives. Some context files inside retained campaigns
 still reference archived builds. Read the inventory rather than assuming all
 old paths are expanded. Never delete `.analysis/` or its archives wholesale.
+
+## Follow-up generated-build pruning — 2026-10-31
+
+A later cleanup removed **2,650 ignored, untracked files**
+(115,052,465 payload bytes; 109.72 MiB) from
+build/gpt-web/current-turn, all exploratory permutations under
+build/gpt-web/newturn-front-end except final-capture-cold, build/gpt-web/newturn-ascii,
+build/gpt-web/seek, and regenerable build/pycache. The current-turn research
+scripts, source snapshots and receipts under .analysis/gpt-web/current-turn
+were retained. Canonical build/match-linked outputs, the final capture witness
+(11 files), all ten retained gpt-6.1-sol campaigns, active ANM research
+contexts, private archives, original target, Ghidra database and toolchain were
+not removed. Per-root counts and hashes for the retained capture witness are
+recorded in the follow-up maintenance inventory and cleanup-summary.json.
 
 ## Selective restoration
 

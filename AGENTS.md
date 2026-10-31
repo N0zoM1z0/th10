@@ -11,7 +11,7 @@ Call local tools directly. Do not route through Factory providers, require
 Factory receipts, or read Factory guidance as a session prerequisite. Use
 `scripts/ghidra.py` for read-only local Ghidra analysis when needed.
 
-Use English local commits prefixed `gpt-6.1-sol:`, author
+Use English local commits prefixed `gpt-web:`, author
 `N0zoM1z0 <1705004398@qq.com>`, with trailer
 `Co-authored-by: gensokyo-dev <342580529+gensokyo-dev@users.noreply.github.com>`.
 Never push. Preserve unrelated work, including D3D adapter evidence.

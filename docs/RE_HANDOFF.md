@@ -25,6 +25,13 @@ proves neither original names/class/TU ownership nor product/runtime/portability
 [HintOwnerView::Initialize @418E30](evidence/hint-initialize-split-exact-20261031/README.md) is now full **131/131 exact** with all13 real callback, Chain, supervisor flag, file-path and `LoadHintFile` fields. A bounded source partition puts the parser and its four static helpers in normal-compiled `HintLoad.cpp` while preserving the actual three-stack-input call rather than changing ABI manually. Two independent targeted native cold runs protect lifecycle **785/785**, loader `/GL` **366/366**, loader `/GL /GS` **312/312**, and the separate Caution/FileSystem guards 180/180. Full loader1498 remains nonexact. Exact authored progress is **115,040 / 275,890 across 538 owners**.
 
 
+## Earlier accepted checkpoints (historical snapshots)
+
+The entries below record cumulative totals at each earlier acceptance. Their
+per-checkpoint counts are chronology, not current progress. Use the top-level
+counts and generated PROGRESS.md as the only current ledger totals; do not add
+these historical numerators together.
+
 [AnmRenderManagerView::PreloadSurface @447EC0](evidence/anm-preload-surface-exact-20261031/README.md) is now full **169/169 exact** with all10 real Stage-linked fields, correcting prior fabricated `AnmErrorLoggerView::Log` to original `th10::g_GameErrorContext.Fatal @44B8E0` and original `filePath[260]` stack frame. Two independent selected StageCreate colds preserve new169 and existing stage initializer522, **691/691** in one shared real source graph. Authored exact rises to **114,909 / 275,890 over 537 owners**. No full cold replay, no original-source/TU/runtime claim.
 
 
@@ -87,13 +94,18 @@ Warm and zero-reuse eight-input cold agree; independent canonical selects only
 Same-image factory/draw guards also pass. Actual ConsumeEntries remains
 1308/1317 NONEXACT and passes its previous full proof in both final images.
 
-Current complete build/cache context:
-`.analysis/gpt-6.1-sol/hint-frame-loop-20261031/final-cold-context.json`.
-Its36 source/header pins match this checkpoint. Check the actual graph,
-profiles, objects and image hashes before incremental reuse. The normal
-canonical producer is `build/match-linked/HintLifecycle`.
+Historical build/cache context:
+.analysis/gpt-6.1-sol/hint-frame-loop-20261031/final-cold-context.json.
+It records 36 source/header pins, but only 34/36 match current sources;
+src/AnmManager.cpp and src/Hint.cpp changed in later accepted work. Do not
+reuse its image or objects as a current-source witness. After the Hint source
+split, two independent canonical selected colds freshly replayed
+hint-frame-update + hint-update-callback as 581/581 exact, with distinct
+PDB GUIDs 1121e78937b9ca49814888c78c86888c and
+7a82b94de2986a41833ad56d687e784e. The normal canonical producer remains
+build/match-linked/HintLifecycle.
 
-The complete 9,964-byte ANM `ExecuteScript` now strictly reproduces **9,962 bytes** using a local timer-read helper and a scoped radial Z read. Independent five-source cold and all350 field bindings confirm the remaining two bytes; see [the large-owner proof](evidence/anm-executor-two-byte-frontier-20261031/README.md). Exact totals are unchanged because the whole owner still rejects.
+The complete 9,964-byte ANM ExecuteScript now strictly reproduces **9,962 bytes** using a local timer-read helper and a scoped radial Z read. The earlier child-variant contexts are historical; the latest post-PreloadSurface context gptweb-post-preload-20261031-context.json has **13/13 current source/header pins**. Its five-source cold and all350 field bindings confirm the remaining two bytes; see [the large-owner proof](evidence/anm-executor-two-byte-frontier-20261031/README.md). Exact totals are unchanged because the whole owner still rejects.
 
 ## Open owners worth resuming
 
@@ -133,12 +145,22 @@ per-file hashes; their old paths do not imply expanded or reusable inputs.
 The current [cleanup audit](evidence/maintenance-20261031/README.md) records scope,
 storage savings and source-pin mismatches. In particular:
 
-- Latest GUI Run context differs at Hint.cpp; its4472-byte image is historical.
+- GUI Run remains a 4472/4480 nonexact candidate; its reviewed 64-pin context
+  is now 60/64 (AnmManager.cpp, FrontEnd.cpp, Hint.cpp, Sound.cpp changed).
+  Its image is historical until rebuilt.
 - ECL actual-caller context differs at AnmManager.hpp, Enemy.cpp and GameScoreState.hpp.
   The pin-equal one-source entry is a different graph with the wrong ABI.
-- Cleanup/message contexts differ at Gui.cpp and Hint.cpp. Ending has ten changed inputs.
-- The current Hint and latest GUI draw pins match, but matching pins alone do
-  not establish graph/ABI correctness or complete native equality.
+- Cleanup/message contexts are historical: the retained cleanup-leaf sample
+  is 74/84 pins and the reviewed message-pairs sample is 78/84. The latest
+  Ending final-source context is 57/70 (13 changed inputs). Rebuild before reuse.
+- Hint frame's retained 36-pin context is now 34/36 (changed AnmManager.cpp
+  and Hint.cpp); the accepted frame/callback pair was freshly cold-replayed
+  twice against the current Hint split (581/581 each run).
+- Latest GUI draw context is 14/15 (changed AnmManager.cpp); treat its
+  candidate image as historical until rebuilt.
+- The ANM executor's latest post-PreloadSurface context is 13/13 current pins;
+  older child/radial variant contexts have changed AnmManager.cpp and are not
+  reusable current-source artifacts.
 
 Caution424650 calls AddAutomaticEntry41A120, not ConsumeEntries or Update.
 Its extra replay in older Hint campaigns was unnecessary and is not a gate.
@@ -159,7 +181,7 @@ Select comparator self-tests only for a changed mechanism. Historical host
 failure/lifecycle/sanitizer/mutation reports are not current gates. Product
 closure, semantic dual-Oracle work and portability remain later phases.
 Regenerate progress when ledger inputs change; finish with `git diff --check`
-and a local English `gpt-6.1-sol:` commit using the specified author/trailer.
+and a local English `gpt-web:` commit using the specified author/trailer.
 Never push.
 
 The previous858-line handoff is recoverable with

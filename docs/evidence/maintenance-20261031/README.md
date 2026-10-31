@@ -35,14 +35,36 @@ are preserved. All136 individually hashed target/database/D3D files remain
 unchanged. No game binary, database, generated decompiler text, toolchain or
 private archive is committed.
 
+## Follow-up source-epoch audit and build pruning
+
+After the later PreloadSurface and HintInitialize source commits, the original
+pin audit is no longer a current-source statement. The retained Hint frame
+context is 34/36, GUI draw 14/15, GUI Run 60/64, while the latest ANM
+post-PreloadSurface context is 13/13. Hint frame/callback were independently
+replayed twice against the current split source (581/581 both runs). See
+RE_HANDOFF.md and RE_ARTIFACTS.md for the per-file mismatches and reuse rules.
+
+The follow-up pruned **2,650 ignored, untracked files**
+(115,052,465 payload bytes / 109.72 MiB; allocated
+120,496,128 bytes / 114.91 MiB): current-turn
+variant outputs, superseded FrontEnd permutations, old ASCII/seek scratch
+outputs and regenerable Python bytecode. The final-capture-cold witness remains
+expanded (11 files, 808,795 bytes). The .analysis scripts, receipts and source
+snapshots remain. Canonical match-linked producers, retained research
+campaigns, archives, target, Ghidra, toolchain and D3D inputs were preserved.
+The exact per-root counts are in cleanup-summary.json and the private
+maintenance inventory.
+
 ## Cache scope and validation
 
 The [pin audit](context-audit.json) covers319 recognized pre-cleanup expanded
 context manifests; only five match their recorded source/header pins. This is
 not a test of every context schema or proof of current complete acceptance.
-The ECL pin-equal one-source entry has the wrong graph/ABI for the actual caller
-investigation. The real two-source context has three changed inputs. The latest
-GUI Run context differs at Hint.cpp; Ending has ten changed inputs.
+The ECL actual-caller context is 14/17 (AnmManager.hpp, Enemy.cpp and
+GameScoreState.hpp changed); its pin-equal one-source entry is the wrong
+graph/ABI. GUI Run is 60/64, GUI draw 14/15, cleanup-leaf 74/84,
+message-pairs 78/84, and Ending final-source 57/70. These are historical
+candidate images, not current-source reusable artifacts.
 
 Pin equality alone never authorizes reuse: compare graph/source order, compile
 and link profiles, actual object/image hashes and required ABI too. Restoring
