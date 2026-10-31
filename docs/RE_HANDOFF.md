@@ -4,30 +4,46 @@
 
 Start with [AGENTS.md](../AGENTS.md), this brief and the relevant source/ledger
 rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) and [ORACLES.md](ORACLES.md) describe the
-selected lane. This checkpoint restores Hint frame arithmetic and failed-ID
-lookup flow, deriving the real EBX private input and exact10-byte registered
-update callback. Full Update571/571 remains NONEXACT: ID-versus-width loop
-cursor and manager field72/native6E still differ. All17 field roles/payloads
-and23 local branches are retained. The callback adds10 codegen bytes only; its
-origin remains indeterminate. Warm and zero-reuse eight-input cold agree, and
-required factory-group canonical replay passes83/all6. Two extra producers
-were also replayed and are archived, not future gates. No native job is running.
+selected lane. The complete Hint frame Update419650 is newly exact571/all17,
+with169 instructions,23 fixed local branches and the actual EBX/RET interface.
+Repeated genuine width expressions restore the target width-array cursor and
+eliminate duplicate arithmetic naturally. Its existing10-byte callback remains
+exact and origin-indeterminate. Warm and zero-reuse eight-input cold agree;
+scoped canonical frame/callback replay passes581/all18 in one producer.
+ConsumeEntries remains1308/1317 NONEXACT. No native job is running.
 
 [PROGRESS.md](PROGRESS.md) is the generated count authority. At this checkpoint:
 
 | Measure | Count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 112,511 / 275,863 |
-| Authored exact owners | 522 |
-| Total canonical exact owners / codegen bytes | 1,402 / 180,645 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 181 |
+| Reviewed authored owned bytes exact | 113,082 / 275,863 |
+| Authored exact owners | 523 |
+| Total canonical exact owners / codegen bytes | 1,403 / 181,216 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 180 |
 | Reviewed function boundaries / authored functions | 1,819 / 747 |
 
 The authored inventory remains provisional. Complete exact codegen does not
 establish original names, class/TU/data ownership, product closure, runtime
 semantics or portability. Those phases remain open.
 
-## Latest source checkpoint: Hint frame values and update callback
+## Latest source checkpoint: complete Hint frame exact
+
+[The complete proof](evidence/hint-frame-exact-20261031/README.md) closes571
+new authored exact bytes. Writing the width-array expression at all three real
+uses replaces the named half-width local. Ordinary CSE and loop reduction now
+choose width base17C, retain the required half-width store, align the lookup
+and place the manager field at72. No header/profile/ABI declaration changes.
+
+Full169 instructions,17 resolved fields,23 local destinations and RET at23A
+match in warm and zero-reuse eight-input cold. All DWORD payloads and actual
+ConsumeEntries body/ABI are verified; consumption stays1308/1317 NE. Both images
+preserve callback/factory/draw654/all23. Only new frame and its affected existing
+callback are independently replayed,581/all18 in one producer. No extra scope.
+Source/origin/boundary mappings and authored denominator stay unchanged.
+Private campaign:hint-frame-loop-20261031; default seven CI stages and whitespace
+pass. Original names/class/TU ownership and later phases remain open.
+
+## Previous source checkpoint: Hint frame values and update callback
 
 [The complete proof](evidence/hint-frame-values-20261031/README.md) records
 Update541/571 and callback7/10 at entry, then complete571/571 NONEXACT and

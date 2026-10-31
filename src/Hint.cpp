@@ -728,14 +728,13 @@ int HintOwnerView::Update()
             continue;
         const float dx = static_cast<float>(fabs(playerX - cachedPositions[slot][0]));
         const float dy = static_cast<float>(fabs(playerY - cachedPositions[slot][1]));
-        const float w = cachedWidths[slot] * 0.5f;
         int alpha;
         int q;
-        if (dx < w && vm->spriteHeight * vm->scaleY * 0.5f > dy)
+        if (dx < cachedWidths[slot] * 0.5f && vm->spriteHeight * vm->scaleY * 0.5f > dy)
             vm->primaryColor.alpha = static_cast<unsigned char>(vm->intVar1) >> 2;
         else
         {
-            const float outerW = w + 32.0f;
+            const float outerW = cachedWidths[slot] * 0.5f + 32.0f;
             if (dx < outerW && vm->spriteHeight * vm->scaleY * 0.5f > dy)
             {
                 alpha = vm->intVar1;
@@ -743,7 +742,7 @@ int HintOwnerView::Update()
                 vm->primaryColor.alpha = static_cast<unsigned char>(static_cast<int>(
                     alpha - (outerW - dx) * q * 0.03125f));
             }
-            else if (dx < w && dy < vm->spriteHeight * vm->scaleY * 0.5f + 32.0f)
+            else if (dx < cachedWidths[slot] * 0.5f && dy < vm->spriteHeight * vm->scaleY * 0.5f + 32.0f)
             {
                 alpha = vm->intVar1;
                 q = (3 * alpha) / 4;

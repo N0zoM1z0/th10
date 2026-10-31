@@ -28495,3 +28495,37 @@ size = 10
 linkages = [
   { offset = 0x4, type = "REL32", symbol = "?Update@HintOwnerView@@QAEHXZ", target = 0x00419650 },
 ]
+
+[units.hint-frame-update]
+artifact_kind = "linked-pe"
+source = "src/Hint.cpp"
+support_sources = ["src/FileSystem.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/EnemyEclDispatcher.cpp"]
+pdb_source = "src/Hint.cpp"
+output_dir = "build/match-linked/HintLifecycle"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CreateHintOwner@@YAPAUHintOwnerView@@XZ"
+functions = ["HintOwnerView::Update"]
+symbol = "?Update@HintOwnerView@@QAEHXZ"
+target_address = 0x00419650
+size = 571
+linkages = [
+  { offset = 0x8, type = "DIR32", width = 0x4, symbol = "?g_GameFrameRestorePending@@3HA", target = 0x00474C84 },
+  { offset = 0x1B, type = "DIR32", width = 0x4, symbol = "?g_GameStartupMode@@3HA", target = 0x00474C7C },
+  { offset = 0x2D, type = "REL32", width = 0x4, symbol = "?ConsumeEntries@HintOwnerView@@QAEHPAUHintLinkView@@H@Z", target = 0x00419120 },
+  { offset = 0x32, type = "DIR32", width = 0x4, symbol = "?g_Player@@3PAUPlayer@@A", target = 0x00477834 },
+  { offset = 0x44, type = "DIR32", width = 0x4, symbol = "__real@43600000", target = 0x00470B4C },
+  { offset = 0x5E, type = "DIR32", width = 0x4, symbol = "__real@41800000", target = 0x00470B48 },
+  { offset = 0x72, type = "DIR32", width = 0x4, symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0xE4, type = "DIR32", width = 0x4, symbol = "__real@3f000000", target = 0x00470B0C },
+  { offset = 0xFF, type = "DIR32", width = 0x4, symbol = "__real@3f000000", target = 0x00470B0C },
+  { offset = 0x12A, type = "DIR32", width = 0x4, symbol = "__real@42000000", target = 0x00470BCC },
+  { offset = 0x145, type = "DIR32", width = 0x4, symbol = "__real@3f000000", target = 0x00470B0C },
+  { offset = 0x17E, type = "DIR32", width = 0x4, symbol = "__real@3d000000", target = 0x00470D20 },
+  { offset = 0x185, type = "REL32", width = 0x4, symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x1A6, type = "DIR32", width = 0x4, symbol = "__real@3f000000", target = 0x00470B0C },
+  { offset = 0x1AC, type = "DIR32", width = 0x4, symbol = "__real@42000000", target = 0x00470BCC },
+  { offset = 0x1E7, type = "DIR32", width = 0x4, symbol = "__real@3d000000", target = 0x00470D20 },
+  { offset = 0x1EE, type = "REL32", width = 0x4, symbol = "__ftol2", target = 0x00463B2C },
+]

@@ -8785,3 +8785,21 @@ Canonical scope correction: the exact Caution424650 body calls AddAutomaticEntry
 Its extra replay in these campaigns was unnecessary, not a future gate. The
 current required callback/factory/draw subset passes83/all6 in one producer;
 the two additional completed producer controls remain archived separately.
+
+## 2026-10-31 Complete Hint frame Update exact
+
+The [complete frame proof](evidence/hint-frame-exact-20261031/README.md) closes
+Update419650..41988A:571 authored exact bytes, all17 resolved fields,169
+instructions,23 fixed local destinations and RET at23A. The real factory graph
+derives owner EBX; the existing registered callback10/all1 remains exact with
+indeterminate origin. Target/class/TU/source declarations remain independent.
+
+Removing the named half-width local and writing its width-array expression at
+all three real uses makes the pinned compiler choose width cursor17C. Ordinary
+CSE retains one half-width computation and its observed float store/reloads.
+The manager field72 and internal alignment then match. No explicit extra
+induction pointer, forced registers, padding, header or profile change is used.
+Warm and zero-reuse eight-input cold, plus scoped canonical frame/callback
+581/all18, pass. Actual ConsumeEntries has its1308-byte PDB body and unchanged
+private interface but remains nonexact against1317; no callee credit follows.
+Product closure, runtime semantics and portability remain separate.

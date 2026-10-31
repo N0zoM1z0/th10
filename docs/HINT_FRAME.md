@@ -5,8 +5,8 @@
 The historical source/model and host-test reports below describe their dated
 checkpoints. They are not current validation gates. The maintained frame
 expressions now use natural float operands and branch-local height evaluation;
-the old explicit-double source model is superseded. The [current native proof](evidence/hint-frame-values-20261031/README.md)
-records complete Update571/571 NONEXACT and the exact10-byte registered update
+the old explicit-double source model is superseded. The [current native proof](evidence/hint-frame-exact-20261031/README.md)
+records complete Update571/all17 exact and the maintained10-byte registered update
 callback, whose origin remains indeterminate. The [consumption proof](evidence/hint-consume-context-20261031/README.md)
 records1308/1317 NONEXACT. No shared declarations change in these two checkpoints.
 
