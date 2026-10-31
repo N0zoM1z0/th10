@@ -11,16 +11,19 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 113,492 / 275,890 |
-| Authored exact owners | 527 |
-| Total canonical exact owners / codegen bytes | 1,407 / 181,626 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 176 |
+| Reviewed authored owned bytes exact | 113,817 / 275,890 |
+| Authored exact owners | 530 |
+| Total canonical exact owners / codegen bytes | 1,410 / 181,951 |
+| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 173 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
 proves neither original names/class/TU ownership nor product/runtime/portability.
 
 ## Latest reviewed authored exact checkpoint
+
+[Three complete lifecycle owners](evidence/script-viewer-graph-lifecycle-exacts-20261031/README.md) now replay **69/69 PlayerCreate**, **95/95 EnemyManagerCreate** and **161/161 ANM AllocateVm** under one real `ScriptViewerCreate` lifecycle producer. All14 original target fields and the unique source/PDB owners bind; two independently rebuilt scoped cold links preserve the three new units and two preexisting script-viewer guards, **626/626 exact**. This raises reviewed authored exact to **113,817/275,890**, **530 authored exact owners**; the denominator is still provisional.
+
 
 [AsciiManagerCreate @401440](evidence/ascii-factory-exact-20261031/README.md) is now complete **69/69 exact** (five allocation/constructor/initializer/destructor/deallocation REL32 fields) in the genuine three-input ASCII initialization graph. The old 70-byte one-TU candidate had the wrong destructor private receiver; neither source ABI nor factory code needed alteration. Two independent selected colds preserve the new69 and previous initializer330 + high-draw10, **409/409 exact** across34 fields. Reviewed authored exact progress rises to113,492/275,890 across527 owners.
 
