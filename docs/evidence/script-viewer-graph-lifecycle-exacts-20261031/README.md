@@ -20,9 +20,19 @@ The target `EnemyManagerCreate` allocates the `0x68`-byte manager, publishes the
 
 The target `AnmRenderManagerView::AllocateVm` traverses its actual in-object 4,096-entry VM occupancy pool with wrap and a heap fallback. The natural source's complete **161 bytes** match, including `operator new @0x00452493`, `AnmVmView::AnmVmView @0x00402050`, and the two separate `AnmVmView::Initialize @0x00401DE0` calls (four REL32 fields). Target code retains the fast reuse path, the two-slot search and construction/initialization fallback. No pool-size, null-path or layout assumption is repaired by manually editing the executable.
 
+## Address-field offsets verified directly
+
+The complete target field inventory, by offset within each original owner, is:
+
+* AllocateVm `0x00449950`: `+0x50` `operator new @0x00452493`; `+0x5E` `AnmVmView::AnmVmView @0x00402050`; `+0x67` and `+0x74` two independent `AnmVmView::Initialize @0x00401DE0` calls.
+* EnemyManagerCreate `0x0040D6B0`: `+0x04` `operator new @0x00452493`; `+0x26` writable `g_EnemyManager @0x00477704`; `+0x37` `EnemyManagerView::Initialize @0x0040D280`; `+0x46` destructor `0x0040D530`; `+0x4C` `operator delete @0x004524A1`.
+* PlayerCreate `0x00425020`: `+0x07` `operator new @0x00452493`; `+0x16` `Player::Player @0x004246C0`; `+0x22` `PlayerInitialize @0x004247F0`; `+0x30` destructor `0x00424ED0`; `+0x36` `operator delete @0x004524A1`.
+
+These values are independently read from target code and pinned to the exact original offsets and callee identities; none is accepted merely because a linker-data anchor happens to have a nearby value. Full target returns, branches, section geometry and cleanup paths remain subject to the strict 69/95/161-byte comparisons.
+
 ## Strict scoped independent acceptance
 
-The original linked archive already provided complete-size, zero-ordinary-difference candidates; **this was a discovery hint only**. The new canonical units each passed the unchanged strict complete-owner comparator with every linkage's original target/callee address. Two independent selected cold replays then rebuilt only the shared 14-input ScriptViewer producer, not the entire history. They also selected the already exact `ScriptViewerView::ScriptViewerView` 234-byte constructor and `ScriptViewerCreate` 67-byte factory as actual lifecycle guards. The complete result is **five units, 626/626 bytes and 21 bound fields** in *each* run; their independent PDB GUIDs are `c4e5c7dacb40cc468781780f24971c69` and `4b270e670f99074c81f8eea6d2388270`. Reports are retained under `.analysis/gpt-web/current-turn/lifecycle-scoped-cold-{1,2}.json` and the image under `build/match-linked/ScriptViewerLifecycle-cold-2/`.
+The original linked archive already provided complete-size, zero-ordinary-difference candidates; **this was a discovery hint only**. The new canonical units each passed the unchanged strict complete-owner comparator with every linkage's original target/callee address. Two independent selected cold replays then rebuilt only the shared 14-input ScriptViewer producer, not the entire history. They also selected the already exact `ScriptViewerView::ScriptViewerView` 234-byte constructor and `ScriptViewerCreate` 67-byte factory as actual lifecycle guards. The first replay selects all five owners and returns **626/626 bytes and 21 bound fields**, PDB GUID `c4e5c7dacb40cc468781780f24971c69`. The independent second replay selects **only the three new owners**, returning **325/325 bytes and 14 bound fields**, PDB GUID `363c958add215b4992cf54240e0465cd`. The two earlier existing guards are checked in the first replay, not in the second; neither result is broadened into a whole-corpus replay. Reports are retained under `.analysis/gpt-web/current-turn/lifecycle-scoped-cold-{1,2}.json` and the image under `build/match-linked/ScriptViewerLifecycle-cold-2/`.
 
 ```sh
 scripts/repo-python scripts/verify-target.py
