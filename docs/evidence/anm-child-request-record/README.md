@@ -177,3 +177,14 @@ Successful CI host outputs and Python bytecode are subsequently cleared as
 compressed locally. This removes10.24MB of generated payload and no native
 reconstruction carrier. It includes new validation output and is separate from
 the closed-control archive saving.
+
+## ABI correction superseding the child91 call spelling (2026-11-01)
+
+The earlier maintained `vm->anmFile->CreateVmVariant2(script, layer)` member
+call was not the target ABI. Fresh target-call disassembly shows an explicit
+file pointer among three stack arguments, an EDI hidden return pointer, and
+`RET 0xC`. The maintained source now models child91 as a static `__stdcall`
+`AnmLoadedView::CreateVmVariant2(file, script, layer)`. Its complete 73-byte
+leaf contribution and all five target-bound fields replay exact in a focused
+linked-PE build. The parent still has only the EDX/ECX load-and-push pair open;
+see [the ABI correction evidence](../anm-child91-static-abi-20261101/README.md).

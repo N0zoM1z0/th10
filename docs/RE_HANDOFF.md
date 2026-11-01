@@ -1,4 +1,14 @@
-# TH10 handoff — 2026-10-31
+# TH10 handoff — 2026-11-01
+
+## Latest ANM child91 ABI correction (2026-11-01)
+
+Fresh callsite decoding corrected the child91 creator from an implicit member
+call to static `__stdcall CreateVmVariant2(AnmLoadedView *file, int script,
+unsigned int layer)`. The focused selected VC7.1 linked-PE artifact reproduces
+the full 73-byte leaf and all five target-bound fields. This corrects the source
+ABI without claiming original TU provenance. The 9,964-byte ExecuteScript boss
+remains **9,962/9,964**; only the EDX-vs-ECX load/push pair at `+0x113/+0x115`
+remains. See [the static ABI proof](evidence/anm-child91-static-abi-20261101/README.md).
 
 ## Start here
 
