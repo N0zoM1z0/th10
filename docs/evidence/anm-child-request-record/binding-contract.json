@@ -111,7 +111,7 @@
       "offset": 294,
       "type": "REL32",
       "width": 4,
-      "symbol": "?CreateVmVariant2@AnmLoadedView@@SG?AUAnmVmIdView@@PAU1@HI@Z",
+      "symbol": "?CreateVmVariant2@AnmLoadedView@@QAG?AUAnmVmIdView@@HI@Z",
       "target": 4492848,
       "evidence": {
         "kind": "canonical independent binding",

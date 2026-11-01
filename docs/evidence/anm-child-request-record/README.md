@@ -188,3 +188,13 @@ file pointer among three stack arguments, an EDI hidden return pointer, and
 leaf contribution and all five target-bound fields replay exact in a focused
 linked-PE build. The parent still has only the EDX/ECX load-and-push pair open;
 see [the ABI correction evidence](../anm-child91-static-abi-20261101/README.md).
+
+## Selected child91 ABI correction (2026-11-01)
+
+The selected declaration is a non-static `AnmLoadedView::CreateVmVariant2`
+member with `__stdcall`, not the earlier static overload experiment. Its
+implicit `this` pointer is the first stack argument, followed by script and
+layer; EDI carries the hidden result and the callee returns with `RET 0xC`.
+A fresh focused linked-PE replay proves the complete73-byte leaf and all five
+target-bound fields. The parent remains9962/9964 with only the ECX/EDX pair;
+see [the selected member ABI proof](../anm-child91-member-stdcall-20261101/README.md).

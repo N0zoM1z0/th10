@@ -3071,12 +3071,12 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant1(
 }
 
 AnmVmIdView __stdcall AnmLoadedView::CreateVmVariant2(
-    AnmLoadedView *file, int scriptIndex, unsigned int renderLayer)
+    int scriptIndex, unsigned int renderLayer)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
     vm->renderLayer = renderLayer;
     vm->flags35C |= 0x40000000u;
-    file->InitializeVm(vm, scriptIndex);
+    InitializeVm(vm, scriptIndex);
     return g_AnmRenderManagerView->AddVmVariant2(vm);
 }
 
@@ -3254,8 +3254,8 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             AnmChildScriptLayer childArguments = {
                 GET_INT_VAR(0), vm->renderLayer
             };
-            AnmVmIdView childId = AnmLoadedView::CreateVmVariant2(
-                vm->anmFile, childArguments.script, childArguments.layer);
+            AnmVmIdView childId = vm->anmFile->CreateVmVariant2(
+                childArguments.script, childArguments.layer);
             createdChild = childId.GetVm();
             goto child_variant_2_or_3;
         }

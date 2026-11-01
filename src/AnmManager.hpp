@@ -746,8 +746,8 @@ struct AnmLoadedView
         int scriptIndex, const AnmFloat3View *position);
     AnmVmIdView CreateVmAtWorldVariant1(
         int scriptIndex, const AnmFloat3View *position);
-    static AnmVmIdView __stdcall CreateVmVariant2(
-        AnmLoadedView *file, int scriptIndex, unsigned int renderLayer);
+    AnmVmIdView __stdcall CreateVmVariant2(
+        int scriptIndex, unsigned int renderLayer);
     AnmVmIdView CreateVmAtScreenVariant2(
         int scriptIndex, const AnmFloat3View *position);
     AnmVmIdView CreateVmAtWorldVariant2(
