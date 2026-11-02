@@ -184,6 +184,7 @@ DrawPulsingRadialTrail
 AnmFloat3View::FromAngleMagnitude
 RngView::GetRandomU16
 RngView::GetRandomU32
+RngView::GetRandomU32_Duplicate0044BA30
 RngView::GetRandomF32
 RngView::GetRandomF32Signed
 AnmVmView::GetFloatVar

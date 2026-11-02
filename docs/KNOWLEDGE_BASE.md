@@ -194,6 +194,21 @@ cache labels below retain their dated meaning; they are not current gates.
 
 ## Frontend
 
+### 2026-11-02 RNG duplicate physical target body exact
+
+The independently reviewed, CC-bounded 0x0044BA30..0x0044BA7D
+78-byte RNG-like target body is raw-byte identical to the
+original GetRandomU32 target 0x0044B9E0..0x0044BA2D.
+Native VC7.1 SP1 normal COFF RngView::GetRandomU32 emits
+the identical complete 78 bytes, no relocations; two selected
+independent colds test both target ranges 156/156 each.
+Original duplicate entry reachability and game-authored vs
+optimizer-emitted ancestry are **indeterminate**. One new
+canonical codegen exact owner / 78 bytes is accepted, no
+authored-origin credit or full-product assertion.
+See docs/evidence/rng-duplicate-u32-exact-20261102/README.md.
+
+
 ### 2026-11-02 ScriptViewer enemy-release exact leaf
 
 Target 0x0040D730 has a complete19-byte nullable deletion adapter

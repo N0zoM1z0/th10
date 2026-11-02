@@ -1,0 +1,59 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+  "coff_object_sha256": "dd24b1fa4736990a8a53af3a8817be8535e263bdee244d8dd41fe9f53ac888d3",
+  "original_rng_address": "0x0044B9E0",
+  "unreferenced_duplicate_address": "0x0044BA30",
+  "target_owner_size": 78,
+  "target_owner_sha256": "2b20fcb8a0ece13f7f1465509980c2681494efcbbf532a71a2baaa4404973d09",
+  "identical_target_recurrence_extent": true,
+  "instruction_count": 27,
+  "full_instruction_byte_coverage": 78,
+  "native_symbol": "?GetRandomU32@RngView@@QAEIXZ",
+  "raw_match_bytes": 78,
+  "external_relocation_count": 0,
+  "independent_selected_cold_replays": [
+    {
+      "matched_bytes": 156,
+      "unit_count": 2,
+      "artifact_count": 1,
+      "units": [
+        {
+          "name": "rng-get-random-u32",
+          "size": 78,
+          "result": "exact",
+          "relocations": []
+        },
+        {
+          "name": "rng-get-random-u32-duplicate",
+          "size": 78,
+          "result": "exact",
+          "relocations": []
+        }
+      ]
+    },
+    {
+      "matched_bytes": 156,
+      "unit_count": 2,
+      "artifact_count": 1,
+      "units": [
+        {
+          "name": "rng-get-random-u32",
+          "size": 78,
+          "result": "exact",
+          "relocations": []
+        },
+        {
+          "name": "rng-get-random-u32-duplicate",
+          "size": 78,
+          "result": "exact",
+          "relocations": []
+        }
+      ]
+    }
+  ],
+  "new_canonical_codegen_exact_bytes": 78,
+  "new_authored_exact_bytes": 0,
+  "origin": "indeterminate; no independent entry reference",
+  "whole_product_or_runtime_verified": false
+}

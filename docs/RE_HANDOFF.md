@@ -1,5 +1,19 @@
 # TH10 handoff — 2026-11-02
 
+## RNG duplicate target exact owner at 0x0044BA30 (2026-11-02)
+
+Recovered the previously uncredited CC-delimited complete
+78-byte target extent at 0x0044BA30. Its original bytes equal
+the adjacent GetRandomU32 owner at 0x0044B9E0; the same real
+normal COFF VC7.1 source symbol is 78/78 raw-exact with no
+external fields against either original range. Two independent
+selected COFF cold invocations each pass 156/156. Adds 78
+canonical codegen exact bytes and one source-code mapping but
+**no authored credit**, because the second target has no
+independently reviewed entry reference and physical source
+origin is indeterminate. See
+[evidence](evidence/rng-duplicate-u32-exact-20261102/README.md).
+
 ## Large ECL Run 7020-byte source checkpoint (2026-11-02)
 
 The complete 7020-byte EclVmContext::Run improves from
@@ -195,8 +209,8 @@ There is no running compiler/linker job or unfinished source edit.
 | --- | ---: |
 | Reviewed authored owned bytes exact | 115,334 / 275,890 |
 | Authored exact owners | 540 |
-| Total canonical exact owners / codegen bytes | 1,424 / 183,609 |
-| Source mappings / authored mappings / authored exact backlog | 1,223 / 703 / 163 |
+| Total canonical exact owners / codegen bytes | 1,425 / 183,687 |
+| Source mappings / authored mappings / authored exact backlog | 1,224 / 703 / 163 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen

@@ -3301,6 +3301,17 @@ target_address = 0x0044B9E0
 size = 78
 relocations = []
 
+[units.rng-get-random-u32-duplicate]
+artifact_kind = "coff"
+source = "src/RandomMath.cpp"
+object = "build/match/RandomMath.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["RngView::GetRandomU32_Duplicate0044BA30"]
+symbol = "?GetRandomU32@RngView@@QAEIXZ"
+target_address = 0x0044BA30
+size = 78
+relocations = []
+
 [units.rng-get-random-f32]
 artifact_kind = "coff"
 source = "src/RandomMath.cpp"

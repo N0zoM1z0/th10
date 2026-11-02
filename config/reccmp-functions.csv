@@ -203,6 +203,7 @@ DrawPulsingRadialTrail,0x00445880,function
 AnmFloat3View::FromAngleMagnitude,0x004458B0,function
 RngView::GetRandomU16,0x0044B9B0,function
 RngView::GetRandomU32,0x0044B9E0,function
+RngView::GetRandomU32_Duplicate0044BA30,0x0044BA30,function
 RngView::GetRandomF32,0x0044BB20,function
 RngView::GetRandomF32Signed,0x0044BB90,function
 AnmVmView::GetFloatVar,0x0043EAC0,function
