@@ -611,24 +611,29 @@ extern "C" void _ReadWriteBarrier();
 void *GameCreateOwner40AF90()
 {
     GameOwner40AF90View *owner = new GameOwner40AF90View();
+    GameOwner40AF90View *initializedOwner;
     if (owner != NULL)
     {
         _ReadWriteBarrier();
         owner->flags |= 2u;
         g_GameOwner4776FC = reinterpret_cast<GameChainOwnerView *>(owner);
+        initializedOwner = owner;
     }
-    if (owner->Initialize() != 0)
+    else
+        initializedOwner = NULL;
+    if (initializedOwner->Initialize() != 0)
     {
-        if (owner != NULL)
+        if (initializedOwner != NULL)
         {
             GameCleanupOwner40AF00(
-                reinterpret_cast<GameChainOwnerView *>(owner));
-            ::operator delete(owner);
+                reinterpret_cast<GameChainOwnerView *>(initializedOwner));
+            ::operator delete(initializedOwner);
         }
         return NULL;
     }
-    return owner;
+    return initializedOwner;
 }
+
 extern void __stdcall GameCleanupLoader405620(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupOwner408AF0(GameAdditionalChainView *owner);
 extern void FrontEndQueueSoundCommand(const char *path, int opcode, int argument);
