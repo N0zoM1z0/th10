@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "ItemManager.hpp"
+#include "ScriptViewerOwners.hpp"
 #include "ItemPowerDisplay.hpp"
 #include "GameScoreState.hpp"
 #include "Player.hpp"
@@ -122,9 +123,8 @@ struct ItemAutoCollectGateView
     unsigned char unknown000[0x28];
     int value28;
 };
-struct ItemPopupOwnerView;
 extern ItemAutoCollectGateView *g_ItemAutoCollectGate;
-extern ItemPopupOwnerView *g_ItemPopupOwner;
+extern void *g_ScriptViewerPopups;
 extern unsigned char g_MainSoundOwner[0x52d0];
 extern unsigned int g_PlayerInputBits;
 extern short g_PlayerPower;
@@ -184,85 +184,6 @@ int GameScoreStateView::AddPower(short amount)
     }
     return (static_cast<int>(power) - static_cast<int>(amount)) / 20 !=
         static_cast<int>(power) / 20;
-}
-
-// Maintained views of target 0x42B9C0's popup storage. The digit prefix
-// reserves the observed span before position; its original array type and
-// unused bytes remain unknown.
-struct ItemPopupRecordView
-{
-    unsigned char digits[0x0c];
-    AnmFloat3View position;
-    unsigned int color;
-    GameScoreTimerView timer;
-    unsigned char unknown030[8];
-    unsigned char active;
-    unsigned char digitCount;
-    unsigned char unknown03A[6];
-};
-struct ItemPopupOwnerView
-{
-    unsigned char unknown000[0x14];
-    int nextIndex;
-    unsigned char unknown018[0x3c4 - 0x18];
-    ItemPopupRecordView records[0x2d0];
-    void EmitValuePopup(const AnmFloat3View *position,
-        int value, unsigned int color);
-};
-typedef char ItemPopupRecordSizeIs40[
-    (sizeof(ItemPopupRecordView) == 0x40) ? 1 : -1];
-typedef char ItemPopupPositionAt0C[
-    (offsetof(ItemPopupRecordView, position) == 0x0c) ? 1 : -1];
-typedef char ItemPopupTimerAt1C[
-    (offsetof(ItemPopupRecordView, timer) == 0x1c) ? 1 : -1];
-typedef char ItemPopupActiveAt38[
-    (offsetof(ItemPopupRecordView, active) == 0x38 &&
-     offsetof(ItemPopupRecordView, digitCount) == 0x39) ? 1 : -1];
-typedef char ItemPopupPoolAt3C4[
-    (offsetof(ItemPopupOwnerView, records) == 0x3c4) ? 1 : -1];
-
-void ItemPopupOwnerView::EmitValuePopup(
-    const AnmFloat3View *position, int value, unsigned int color)
-{
-    if (nextIndex >= 0x2d0)
-        nextIndex = 0;
-    ItemPopupRecordView *row = &records[nextIndex];
-    int count = 0;
-    row->active = 1;
-    if (value < 0)
-        goto negativeValue;
-    while (value != 0)
-    {
-        row->digits[count] = static_cast<unsigned char>(value % 10);
-        value /= 10;
-        ++count;
-    }
-    if (count != 0)
-        goto storePopup;
-    row->digits[0] = 0;
-singleDigit:
-    count = 1;
-storePopup:
-    row->digitCount = static_cast<unsigned char>(count);
-    row->color = color;
-    if ((row->timer.flags & 1u) == 0)
-    {
-        row->timer.current = 0;
-        row->timer.previous = -999999;
-        row->timer.subframe = 0.0f;
-        row->timer.scale = &g_PlayerTimerScale;
-        row->timer.flags |= 1u;
-    }
-    row->timer.current = 0;
-    row->timer.subframe = 0.0f;
-    row->timer.previous = -1;
-    row->position = *position;
-    ++nextIndex;
-    return;
-
-negativeValue:
-    row->digits[0] = 10;
-    goto singleDigit;
 }
 
 // Complete update body 0x41AFD0-0x41B89C; its two selector tables extend
@@ -411,7 +332,7 @@ attract:
             if (changed != 0)
             {
                 RebuildPlayerOptions(g_Player);
-                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
                     -1, 0xffffff40);
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                     QueueSoundCue(29, item->worldPosition.x);
@@ -421,7 +342,7 @@ attract:
             }
             else
             {
-                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
                     g_PlayerPower / 2, 0xffff4040);
             }
             g_GameScoreState.ExtendFaithTimer(60);
@@ -442,7 +363,7 @@ attract:
                     (g_GameScoreState.faith * 0.5f - 5000.0f));
                 pickupScore = g_GameScoreState.faith * 10 / 2 - reduction;
                 pickupScore -= pickupScore % 10;
-                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
                     pickupScore, 0xffffffff);
                 rankDelta = 1;
                 goto addScore;
@@ -450,7 +371,7 @@ attract:
         case 5:
             pickupScore = g_GameScoreState.faith * 10;
 maximumScore:
-            g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+            static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
                 pickupScore, 0xffffff00);
             rankDelta = 8;
 addScore:
@@ -467,7 +388,7 @@ addScore:
             case 2: amount = 8000; break;
             case 3: case 4: amount = 10000; break;
             }
-            g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+            static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
                 amount, 0xff00ff00);
             g_GameScoreState.AddFaith(amount);
             g_GameScoreState.ExtendFaithTimer(120);
@@ -485,7 +406,7 @@ addScore:
                 RebuildPlayerOptions(g_Player);
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                     QueueSoundCue(29, item->worldPosition.x);
-                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
                     -1, 0xffffff40);
                 g_GameScoreState.AddRank(24);
                 if (g_PlayerPower >= 100)
@@ -493,7 +414,7 @@ addScore:
             }
             else
             {
-                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+                static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
                     g_PlayerPower / 2, 0xffff4040);
             }
             g_GameScoreState.ExtendFaithTimer(20);
@@ -509,7 +430,7 @@ addScore:
             reinterpret_cast<GuiScoreView *>(&g_GameScoreState)->Add(10);
             break;
         case 9:
-            g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
+            static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups)->EmitValuePopup(&item->worldPosition,
                 100, 0xff00ff00);
             g_GameScoreState.AddFaith(100);
             g_GameScoreState.ExtendFaithTimer(60);

@@ -130,6 +130,55 @@ int __fastcall ScriptViewerPopupDraw42B9B0(void *owner)
     return static_cast<ScriptViewerPopupOwnerView *>(owner)->Draw();
 }
 
+// Target 0x42B9C0 is called from ItemManager with this same 0x477840 owner.
+// Popup row insertions wrap at 720, while Update/Draw iterate all 723 rows.
+// Preserve that observed distinction and the original timer initialization.
+void ScriptViewerPopupOwnerView::EmitValuePopup(
+    const AnmFloat3View *position, int value, unsigned int color)
+{
+    if (nextPopupIndex >= 0x2d0)
+        nextPopupIndex = 0;
+    ScriptViewerPopupRecord *row = reinterpret_cast<ScriptViewerPopupRecord *>(
+        reinterpret_cast<unsigned char *>(this) + 0x3C4) + nextPopupIndex;
+    int count = 0;
+    row->active = 1;
+    if (value < 0)
+        goto negativeValue;
+    while (value != 0)
+    {
+        row->digits[count] = static_cast<unsigned char>(value % 10);
+        value /= 10;
+        ++count;
+    }
+    if (count != 0)
+        goto storePopup;
+    row->digits[0] = 0;
+singleDigit:
+    count = 1;
+storePopup:
+    row->digitCount = static_cast<unsigned char>(count);
+    row->color = color;
+    if ((row->timer.flags & 1u) == 0)
+    {
+        row->timer.current = 0;
+        row->timer.previous = -999999;
+        row->timer.subframe = 0.0f;
+        row->timer.scale = &g_AnmGameSpeed;
+        row->timer.flags |= 1u;
+    }
+    row->timer.current = 0;
+    row->timer.subframe = 0.0f;
+    row->timer.previous = -1;
+    row->position = *position;
+    ++nextPopupIndex;
+    return;
+
+negativeValue:
+    row->digits[0] = 10;
+    goto singleDigit;
+}
+
+
 // Original 0x42B4D0: connect update/draw tasks and initialize the shared VM.
 int ScriptViewerPopupOwnerView::Initialize()
 {

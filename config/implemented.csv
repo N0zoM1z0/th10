@@ -868,7 +868,7 @@ ItemManagerView::Draw
 ItemManagerView::OnUpdate
 ItemPowerDisplayOwnerView::UpdatePowerDisplay
 GameScoreStateView::ExtendFaithTimer
-ItemPopupOwnerView::EmitValuePopup
+ScriptViewerPopupOwnerView::EmitValuePopup
 GameScoreStateView::AddPower
 ItemRecordView::ItemRecordView
 ItemRecordView::~ItemRecordView

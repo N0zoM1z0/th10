@@ -38,13 +38,14 @@ struct ScriptViewerPopupOwnerView
     th10::ChainElem *updateTask;
     th10::ChainElem *drawTask;
     unsigned int unknown010;
-    unsigned int unknown014;
+    int nextPopupIndex;
     AnmVmView vm;
     unsigned char opaque3C4[0xb884 - 0x3c4];
     __declspec(noinline) ScriptViewerPopupOwnerView();
     __declspec(noinline) int Initialize();
     __declspec(noinline) int Update();
     __declspec(noinline) int Draw();
+    void EmitValuePopup(const AnmFloat3View *position, int value, unsigned int color);
     ~ScriptViewerPopupOwnerView();
 };
 
