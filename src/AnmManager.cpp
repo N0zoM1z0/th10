@@ -1675,14 +1675,14 @@ int AnmRenderManagerView::LoadTexture(
     AnmTextureEntryView *entry, unsigned char *data, int size, int format,
     int unused, int hasData)
 {
-    D3d9SurfaceView *surface = NULL;
-    D3d9RectView sourceRect;
+    D3d9SurfaceView *surface;
     AnmRawEntryView *rawEntry;
     AnmTextureHeaderView *header;
 
     (void)unused;
     format = NormalizeAnmTextureFormat(format);
     entry->rawDataSize = size;
+    surface = NULL;
     entry->texture->vtable->GetSurfaceLevel(entry->texture, 0, &surface);
 
     if (hasData == 0)
@@ -1693,6 +1693,7 @@ int AnmRenderManagerView::LoadTexture(
     }
     else
     {
+        D3d9RectView sourceRect;
         rawEntry = reinterpret_cast<AnmRawEntryView *>(data);
         header = reinterpret_cast<AnmTextureHeaderView *>(
             data + rawEntry->textureOffset);

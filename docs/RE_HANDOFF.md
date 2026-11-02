@@ -11,6 +11,18 @@ fields. The 9,964-byte ExecuteScript boss remains **9,962/9,964**; only the
 EDX-vs-ECX load/push pair at `+0x113/+0x115` remains. See [the selected member
 ABI proof](evidence/anm-child91-member-stdcall-20261101/README.md).
 
+## ANM non-region texture-load source checkpoint (2026-11-02)
+
+The independent 243-byte AnmRenderManagerView::LoadTexture now retains
+branch-owned source rectangle storage and late surface initialization.
+Under the real single-TU linked graph its candidate shrinks from
+250 bytes to 242, restores the observed 0x18 stack frame and agrees
+through the first 0x71 bytes after addressing normalization. Like the
+320-byte LoadTextureRegion below, its unresolved embedded-header
+MOV+ADD versus MOV+LEA schedule keeps the **whole owner nonexact**.
+The three selected exact resource guards continue to pass 437/437.
+See [the full source/codegen proof](evidence/anm-texture-load-scope-20261102/README.md).
+
 ## ANM texture-region source checkpoint (2026-11-02)
 
 The previously nonexact 320-byte AnmRenderManagerView::LoadTextureRegion
