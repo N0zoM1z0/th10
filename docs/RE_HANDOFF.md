@@ -1,5 +1,17 @@
 # TH10 handoff — 2026-11-02
 
+## Exact ScriptViewer enemy nullable-delete leaf (2026-11-02)
+
+The existing ScriptViewerLifecycle.cpp adapter at 0x0040D730 now
+has strict **19/19 complete PDB-owned codegen exactness** with
+both original EnemyManager destructor and operator-delete calls
+bound. Two independent real ScriptViewerCreate 14-source cold
+builds preserve the new leaf plus Create67 and EnemyManagerClear118,
+**204/204** bytes each. Adds one canonical exact owner/19 bytes,
+but the original helper-versus-compiler-generated origin remains
+indeterminate and authored credit is unchanged. No full cold replay
+was run. See [evidence](evidence/script-viewer-release-enemies-exact-20261102/README.md).
+
 ## Sound/ZWave shared GetBuffer producer repaired (2026-11-02)
 
 The accepted 19-byte ZWave CSound::GetBuffer had a duplicate inline
@@ -161,7 +173,7 @@ There is no running compiler/linker job or unfinished source edit.
 | --- | ---: |
 | Reviewed authored owned bytes exact | 115,334 / 275,890 |
 | Authored exact owners | 540 |
-| Total canonical exact owners / codegen bytes | 1,423 / 183,590 |
+| Total canonical exact owners / codegen bytes | 1,424 / 183,609 |
 | Source mappings / authored mappings / authored exact backlog | 1,223 / 703 / 163 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 

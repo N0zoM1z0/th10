@@ -194,6 +194,22 @@ cache labels below retain their dated meaning; they are not current gates.
 
 ## Frontend
 
+### 2026-11-02 ScriptViewer enemy-release exact leaf
+
+Target 0x0040D730 has a complete19-byte nullable deletion adapter
+that checks ESI, calls EnemyManagerView::~EnemyManagerView @0x0040D530
+and scalar operator-delete @0x004524A1. The natural existing
+ScriptViewerLifecycle.cpp templated deletion source emits the
+identical PDB-owned whole 19 bytes with both original REL32 fields
+strictly bound. Two real independent 14-input ScriptViewerCreate
+/GL /GS /EHs selected colds preserve this owner plus
+ScriptViewerCreate67 and EnemyManagerClear118, 204/204 each.
+This adds one canonical codegen exact owner and19 bytes but
+no authored-origin credit: original helper versus compiler-generated
+null-delete contribution is still indeterminate. No product/runtime
+closure. See docs/evidence/script-viewer-release-enemies-exact-20261102/README.md.
+
+
 ### 2026-11-02 complete 74-byte ResultMenuResume exact owner
 
 The reviewed authored result/pause owner ResultMenuResume @0x00422C30
