@@ -1,0 +1,59 @@
+{
+  "target_pe_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source": "src/EnemyLaserPatternCancel.cpp",
+  "source_sha256": "5160de1e2882c8e38ac202659a615deede3b0e53039e09e5355ce4d4d1eaed79",
+  "bomb_caller_source_sha256": "2e492fa900ab079036bb9baf7931d893f5ec2e72d17f0e9701ca81a2cf72bf30",
+  "selected_real_native_owners": [
+    {
+      "symbol": "?ApplyPatternCancel@EnemyEffectWaitManager@@QAEIPBUPlayerFloat3@@MH@Z",
+      "target_address": "0x0041C800",
+      "target_size": 76,
+      "native_size": 76,
+      "extent_source": "pdb-section-contribution",
+      "native_fields": 0,
+      "target_owner_sha256": "6ebb1b3a212e91677366ae5f1243792ff836644ace3295f6f7ffb42cb75b7bf1"
+    },
+    {
+      "symbol": "?EmitAuxiliary@ScriptViewerBombOwnerView@@QAEHXZ",
+      "target_address": "0x00405AC0",
+      "target_size": 124,
+      "native_size": 128,
+      "extent_source": "pdb-section-contribution",
+      "native_fields": 6,
+      "target_owner_sha256": "364a596efb37c054d809c0c73b760642d3532ae4aafcb3941c2e69d1f5d115e6"
+    },
+    {
+      "symbol": "?Update@ScriptViewerBombOwnerView@@QAEHXZ",
+      "target_address": "0x00405750",
+      "target_size": 223,
+      "native_size": 220,
+      "extent_source": "pdb-section-contribution",
+      "native_fields": 12,
+      "target_owner_sha256": "b61f8cdc787bf2084cd6e45aa1c6b229febe3efdfc9e515a1eb6128cbfe114a2"
+    }
+  ],
+  "laser_exact_cold_receipts": [
+    {
+      "image_sha256": "6efc7497f21969d52303a89e6d662fba1a6e47c61cafef2e7c637da660d2f8d2",
+      "pdb_guid": "8737cfb801328a40849054e31f577b0e",
+      "pdb_age": 1,
+      "matched_bytes": 76,
+      "field_count": 0,
+      "extent_source": "pdb-section-contribution"
+    },
+    {
+      "image_sha256": "b7a63a6b8ba1b71a34db4a1cdfa9f7112613bcf120c0acd545e01b04f051b78e",
+      "pdb_guid": "5bd577a732ecea4496f5bb1c74d42649",
+      "pdb_age": 1,
+      "matched_bytes": 76,
+      "field_count": 0,
+      "extent_source": "pdb-section-contribution"
+    }
+  ],
+  "first_selected_bomb_update_callback_guard": {
+    "unit": "script-viewer-bomb-update-callback",
+    "bytes": 10,
+    "bound_fields": 1
+  },
+  "original_source_spelling_or_product_runtime_proven": false
+}

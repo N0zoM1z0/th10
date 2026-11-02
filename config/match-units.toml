@@ -29297,6 +29297,24 @@ linkages = [
 
 # The separate original ten-byte fastcall adapter carries ECX owner to EDI
 # and CALLs the real 223-byte Bomb Update member. Update remains nonexact.
+# 76-byte authored laser pattern propagation, exact only when the actual
+# Bomb-auxiliary source caller lets VC7.1 LTCG bind EAX manager / EBX center.
+[units.enemy-effect-wait-pattern-cancel]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewerBombEmit.cpp"
+support_sources = ["src/EnemyLaserPatternCancel.cpp", "src/ScriptViewerBombCreate.cpp", "src/Chain.cpp", "src/ScriptViewerLifecycle.cpp", "src/AnmManager.cpp"]
+output_dir = "build/match-linked/EnemyEffectWaitPatternCancel"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?EmitAuxiliary@ScriptViewerBombOwnerView@@QAEHXZ"
+pdb_source = "src/EnemyLaserPatternCancel.cpp"
+functions = ["EnemyEffectWaitManager::ApplyPatternCancel"]
+symbol = "?ApplyPatternCancel@EnemyEffectWaitManager@@QAEIPBUPlayerFloat3@@MH@Z"
+target_address = 0x0041C800
+size = 76
+linkages = []
+
 [units.script-viewer-bomb-update-callback]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewerBombCreate.cpp"

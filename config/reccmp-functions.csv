@@ -1246,3 +1246,5 @@ ScriptViewerBombOwnerView::RegisterTasks,0x004055C0,function
 ScriptViewerCreateBomb,0x004056B0,function
 ScriptViewerBombOwnerView::Update,0x00405750,function
 ScriptViewerBombUpdateCallback405840,0x00405840,function
+ScriptViewerBombOwnerView::EmitAuxiliary,0x00405AC0,function
+EnemyEffectWaitManager::ApplyPatternCancel,0x0041C800,function
