@@ -49,9 +49,9 @@ config/matches.csv. Generate ledger statistics with:
 | Measure | 2026-11-02 accepted state |
 | --- | ---: |
 | Tracked target extents / reviewed boundaries | 1,823 / 1,823 |
-| Source-present target mappings | 1,249 |
-| Canonical exact owners / bytes | **1,444 / 185,475** |
-| Reviewed authored exact owners / bytes | **552 / 116,732** |
+| Source-present target mappings | 1,250 |
+| Canonical exact owners / bytes | **1,445 / 185,573** |
+| Reviewed authored exact owners / bytes | **553 / 116,830** |
 | Reviewed authored byte denominator | 276,024 (provisional) |
 | Authored source-present nonexact backlog | 167 |
 | Classified excluded / origin-indeterminate owners | 520 / 555 |
@@ -63,6 +63,7 @@ an established total for all original game-authored code.
 
 | Area | Accepted full-owner result | Reproduce / evidence |
 | --- | --- | --- |
+| **DirectInput axis EnumObjects callback @0x0043BB30** | **98/98 full-owner authored exact**, one strictly bound `g_InputPadDevices` global; two independent VC7.1 colds and existing input-controller guard **264/264 exact**. Original 439-byte input initializer remains separate. | [Complete callback proof](evidence/input-axis-range-callback-exact-20261102/README.md) |
 | **Laser pattern cancellation @0x0041C800 and Bomb auxiliary @0x00405AC0** | **76/76 RAW EQUAL authored exact** Laser manager list traversal with zero relocation fields; two independent six-source colds, Bomb callback10 exact guard. Real 124-byte Bomb auxiliary source restored (**128/124 NONEXACT**) linking Bullet cancel260 and Laser cancel76; parent Bomb Update220/223 remains nonexact | [Laser / Bomb cancellation proof](evidence/bomb-laser-cancel-20261102/README.md) |
 | **Bomb Update @0x00405750 / callback @0x00405840** | Full **223-byte** real Update source now maintained, current native **220/223 NONEXACT**; independent **10/10 codegen exact** callback with target-bound CALL; two separate colds, old Bomb lifecycle **306/306** guards | [Bomb update/callback proof](evidence/script-viewer-bomb-update-callback-exact-20261102/README.md) |
 | **ScriptViewer Bomb register/create @0x004055C0 / 0x004056B0** | **84/84 + 85/85 authored exact** in two independent colds, all 13 external fields strictly bound. Bomb destructor137 selected-cold guard; 223-byte Update and 10-byte callback remain separate. | [Bomb creator proof](evidence/script-viewer-bomb-creator-exact-20261102/README.md) |

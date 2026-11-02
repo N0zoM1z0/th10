@@ -1248,3 +1248,4 @@ ScriptViewerBombOwnerView::Update,0x00405750,function
 ScriptViewerBombUpdateCallback405840,0x00405840,function
 ScriptViewerBombOwnerView::EmitAuxiliary,0x00405AC0,function
 EnemyEffectWaitManager::ApplyPatternCancel,0x0041C800,function
+InputEnumAxisRangeCallback,0x0043BB30,function

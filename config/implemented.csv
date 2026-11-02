@@ -1247,3 +1247,4 @@ ScriptViewerBombOwnerView::Update
 ScriptViewerBombUpdateCallback405840
 ScriptViewerBombOwnerView::EmitAuxiliary
 EnemyEffectWaitManager::ApplyPatternCancel
+InputEnumAxisRangeCallback
