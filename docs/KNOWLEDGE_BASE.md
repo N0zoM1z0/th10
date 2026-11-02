@@ -4102,6 +4102,20 @@ phase gates remain open.
 
 ## Window callback source lifetime and actual MIDI callee (2026-10-21)
 
+### Main configuration callback ordering recovered (2026-11-02)
+
+The complete authored 233-byte MainConfigurationDialogProc @0x0043A3A0
+now emits216/233 normalized ordinary bytes under the actual four-TU
+WinMain /GL /GS producer, up from208/233. A scoped compiler
+_ReadWriteBarrier before the WM_COMMAND low-word switch recovers
+target parameter stack displacement and ESI lifetime. Four return
+epilogues and initial save still differ (17 bytes), so there is
+no whole-owner or partial exact credit. Fourteen external fields
+remain fixed. WindowProc265 and ActivateWindow8 cold-pass273/273.
+Original source/TU, runtime and compiler cause are unresolved. See
+docs/evidence/main-dialog-command-scheduling-20261102/README.md.
+
+
 Target WindowProc4390E0/265 registers as a standard four-argument stdcall
 callback and returns RET16. Its MM_MOM_DONE callee43AEB0 is the maintained
 MidiOutputView::UnprepareHeader79, receiving owner in EDX and header in ESI.

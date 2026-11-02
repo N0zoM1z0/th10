@@ -1,5 +1,15 @@
 # TH10 handoff — 2026-11-02
 
+## Main dialog 233-byte source scheduling checkpoint (2026-11-02)
+
+MainConfigurationDialogProc improves from208/233 to216/233 with
+14 fields intact under the four-TU WinMain /GL /GS graph.
+A scoped WM_COMMAND compiler barrier recovers eight register-save/
+input stack byte positions. Four return epilogues and ESI
+save remain nonexact (17 bytes). WindowProc265 and
+ActivateWindow8 independently cold-pass273/273. Adds zero exact
+credit; see evidence/main-dialog-command-scheduling-20261102/README.md.
+
 ## Exact ScriptViewer enemy nullable-delete leaf (2026-11-02)
 
 The existing ScriptViewerLifecycle.cpp adapter at 0x0040D730 now
