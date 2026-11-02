@@ -1239,3 +1239,5 @@ ScriptViewerPopupOwnerView::Initialize
 GameCreateOwner42B660
 ScriptViewerPopupOwnerView::Update
 ScriptViewerPopupUpdate42B9A0
+ScriptViewerPopupOwnerView::Draw
+ScriptViewerPopupDraw42B9B0

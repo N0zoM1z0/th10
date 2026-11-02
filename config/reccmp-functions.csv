@@ -1240,3 +1240,5 @@ ScriptViewerPopupOwnerView::Initialize,0x0042B4D0,function
 GameCreateOwner42B660,0x0042B660,function
 ScriptViewerPopupOwnerView::Update,0x0042B6F0,function
 ScriptViewerPopupUpdate42B9A0,0x0042B9A0,function
+ScriptViewerPopupOwnerView::Draw,0x0042B780,function
+ScriptViewerPopupDraw42B9B0,0x0042B9B0,function

@@ -1,11 +1,12 @@
 #include "Main.hpp"
 #include "ScriptViewerOwners.hpp"
+#include "Player.hpp"
 #include <new>
 #include <string.h>
 
 extern void *g_ScriptViewerPopups;
 int __fastcall ScriptViewerPopupUpdate42B9A0(void *owner);
-extern unsigned int __fastcall ScriptViewerPopupDraw42B9B0(void *owner);
+int __fastcall ScriptViewerPopupDraw42B9B0(void *owner);
 
 // Original 0x42B430: the allocation is 0xB884 bytes and the embedded
 // ANM machine is constructed before the full object is zeroed.
@@ -61,6 +62,72 @@ int ScriptViewerPopupOwnerView::Update()
 int __fastcall ScriptViewerPopupUpdate42B9A0(void *owner)
 {
     return static_cast<ScriptViewerPopupOwnerView *>(owner)->Update();
+}
+
+// Target 0x42B780: full 723-record digit popup renderer, preserving the
+// target's fog transition and loop-internal player refresh.
+int ScriptViewerPopupOwnerView::Draw()
+{
+    ScriptViewerPopupRecord *record = reinterpret_cast<ScriptViewerPopupRecord *>(
+        reinterpret_cast<unsigned char *>(this) + 0x3C4);
+    if ((g_AnmHardwareFlags & 4) == 0 && g_MainSupervisorView.cachedFogEnabled != 0)
+    {
+        g_AnmRenderManagerView->FlushVertexBuffer();
+        g_MainSupervisorView.cachedFogEnabled = 0;
+        g_Direct3DDevice->vtable->SetRenderState(g_Direct3DDevice, 28, 0);
+    }
+    Player *player = g_Player;
+    for (int i = 0; i < 723; ++i, ++record)
+    {
+        if (!record->active)
+            continue;
+        float spacing = record->timer.current < 8 ? 8.0f / record->timer.subframe : 8.0f;
+        vm.positionOffset.x = record->position.x - static_cast<int>(record->digitCount) * spacing * 0.5f + 224.0f;
+        vm.positionOffset.y = record->position.y + 16.0f;
+        vm.primaryColor.value = record->color;
+        const float dx = player->drawPosition.x - record->position.x;
+        const float dy = player->drawPosition.y - record->position.y;
+        int distance = static_cast<int>(dy * dy + dx * dx);
+        int alpha;
+        if (distance > 4096)
+            alpha = 208;
+        else if (distance > 1024)
+            alpha = 80 + ((distance - 1024) << 7) / 3072;
+        else
+            alpha = 80;
+        int count = record->digitCount;
+        unsigned char *digit = record->digits + count - 1;
+        if (count > 0)
+        {
+            AnmVmView *const drawVm = &vm;
+            do
+            {
+                if (record->timer.current >= 52 && *digit != 10)
+                {
+                    if (record->timer.current < 56)
+                        drawVm->loadedSprite = &reinterpret_cast<AnmLoadedView *>(unknown010)->sprites[*digit + 207];
+                    else
+                        drawVm->loadedSprite = &reinterpret_cast<AnmLoadedView *>(unknown010)->sprites[*digit + 217];
+                }
+                else
+                    drawVm->loadedSprite = &reinterpret_cast<AnmLoadedView *>(unknown010)->sprites[*digit + 196];
+                drawVm->primaryColor.alpha = static_cast<unsigned char>(alpha);
+                drawVm->spriteWidth = drawVm->loadedSprite->width;
+                drawVm->flags35C |= 8;
+                g_AnmRenderManagerView->DrawNoRotation(drawVm);
+                drawVm->positionOffset.x += spacing;
+                --digit;
+            } while (--count);
+            player = g_Player;
+        }
+    }
+    return 1;
+}
+
+// Target 0x42B9B0: the draw scheduler's independent callback adapter.
+int __fastcall ScriptViewerPopupDraw42B9B0(void *owner)
+{
+    return static_cast<ScriptViewerPopupOwnerView *>(owner)->Draw();
 }
 
 // Original 0x42B4D0: connect update/draw tasks and initialize the shared VM.

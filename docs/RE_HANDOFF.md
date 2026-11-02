@@ -48,13 +48,13 @@ config/matches.csv. Generate ledger statistics with:
 
 | Measure | 2026-11-02 accepted state |
 | --- | ---: |
-| Tracked target extents / reviewed boundaries | 1,821 / 1,821 |
-| Source-present target mappings | 1,241 |
+| Tracked target extents / reviewed boundaries | 1,822 / 1,822 |
+| Source-present target mappings | 1,243 |
 | Canonical exact owners / bytes | **1,440 / 185,220** |
 | Reviewed authored exact owners / bytes | **549 / 116,487** |
 | Reviewed authored byte denominator | 276,024 (provisional) |
-| Authored source-present nonexact backlog | 164 |
-| Classified excluded / origin-indeterminate owners | 520 / 553 |
+| Authored source-present nonexact backlog | 165 |
+| Classified excluded / origin-indeterminate owners | 520 / 554 |
 
 These values are generated from current ledgers. The denominator is not
 an established total for all original game-authored code.
@@ -63,6 +63,7 @@ an established total for all original game-authored code.
 
 | Area | Accepted full-owner result | Reproduce / evidence |
 | --- | --- | --- |
+| **Popup Draw @0x0042B780 / draw callback @0x0042B9B0** | Complete 540-byte Draw **source now maintained**, current PDB **537/540 nonexact** (15 native field slots); distinct 10-byte draw callback maps but differs in 3 register bytes. Three neighboring exact owners retain 275/275 in selected cold. **Zero exact credit.** | [Complete Draw source / nonexact proof](evidence/script-viewer-popup-draw-source-20261102/README.md) |
 | **ScriptViewer popup Update @0x0042B6F0 and callback @0x0042B9A0** | **134/134 authored exact + 7/7 indeterminate-origin adapter exact**, seven strict fields and original active-723-record timer loop; two independent four-TU colds; constructor134 same-image guard | [Full update and callback proof](evidence/script-viewer-popup-update-exact-20261102/README.md) |
 | **ScriptViewer popup constructor @0x0042B430** | **134/134 full-owner codegen exact**, one global field; two independent four-TU colds, bomb destructor137 guard; initializer145 and factory71 remain nonexact | [Popup constructor proof](evidence/script-viewer-popup-constructor-exact-20261102/README.md) |
 | **ResultMenu cleanup @0x00422220** | **311/311 authored exact**, 18 strict fields and all 16 local branches; two independent selected colds; neighboring three lifecycle owners preserve 310/310 | [Complete cleanup proof](evidence/result-menu-cleanup-exact-20261102/README.md)  with [integrated 621/621 five-source double-cold](evidence/result-menu-integrated-lifecycle-20261102/README.md) |

@@ -791,6 +791,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0042B6F0,authored_game,ScriptViewer,authored,medium,script-viewer-popup-update-cold-20261102
 0x0042B780,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0042B9A0,unknown,ScriptViewer,indeterminate,unknown,script-viewer-popup-update-cold-20261102
+0x0042B9B0,unknown,ScriptViewer,indeterminate,unknown,script-viewer-popup-draw-target-20261102
 0x0042B9C0,authored_game,ItemPopup,authored,high,target-item-shared-helper-contracts-2026-10-02
 0x0042BAB0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0042BAD0,authored_game,SptTest,authored,high,spt-test-helpers-complete-owner-2026-10-25

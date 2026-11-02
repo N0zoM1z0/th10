@@ -44,6 +44,7 @@ struct ScriptViewerPopupOwnerView
     __declspec(noinline) ScriptViewerPopupOwnerView();
     __declspec(noinline) int Initialize();
     __declspec(noinline) int Update();
+    __declspec(noinline) int Draw();
     ~ScriptViewerPopupOwnerView();
 };
 
