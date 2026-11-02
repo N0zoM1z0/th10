@@ -20,17 +20,33 @@ inline void ScriptViewerDeleteOwned(T *object)
     }
 }
 
-// Minimum lifecycle views. No allocation, complete original class size or
-// production TU is established. Both destructor boundaries take one stack
-// pointer and return with RET4; that is a measured LTCG boundary, not a source
-// calling-convention annotation for these C++ destructors.
+// Reviewed lifecycle views. The Bomb has a target-measured 0x48-byte
+// allocation and timer layout; the Popup has a target-measured 0xB884 layout.
+// Original physical translation units and class declarations are unknown.
+// Both destructor boundaries take one stack pointer and return with RET4;
+// these are measured LTCG boundaries, not source ABI annotations.
 struct ScriptViewerBombOwnerView
 {
-    unsigned char unknown000[8];
+    unsigned int flags;
+    unsigned int unknown004;
     th10::ChainElem *updateTask;
     th10::ChainElem *drawTask;
+    unsigned int unknown010;
+    AnmVmTimerView timer;
+    int mode28;
+    unsigned int vmId2C;
+    AnmFloat3View position30;
+    int unknown03C;
+    unsigned char opaque040[8];
+    ScriptViewerBombOwnerView();
+    __declspec(noinline) int RegisterTasks();
     ~ScriptViewerBombOwnerView();
 };
+typedef char ScriptViewerBombOwnerSize48[
+    (sizeof(ScriptViewerBombOwnerView) == 0x48) ? 1 : -1];
+typedef char ScriptViewerBombTimerAt014[
+    (offsetof(ScriptViewerBombOwnerView, timer) == 0x14 &&
+     offsetof(ScriptViewerBombOwnerView, timer.flags) == 0x24) ? 1 : -1];
 
 struct ScriptViewerPopupOwnerView
 {

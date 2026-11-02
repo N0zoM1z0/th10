@@ -1241,3 +1241,5 @@ ScriptViewerPopupOwnerView::Update
 ScriptViewerPopupUpdate42B9A0
 ScriptViewerPopupOwnerView::Draw
 ScriptViewerPopupDraw42B9B0
+ScriptViewerBombOwnerView::RegisterTasks
+ScriptViewerCreateBomb

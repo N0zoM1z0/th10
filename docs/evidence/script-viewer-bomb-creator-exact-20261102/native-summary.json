@@ -1,0 +1,73 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owners": [
+    {
+      "entry": "0x004055C0",
+      "size": 84,
+      "target_sha256": "eee37007391435ae74419692f39846311cf929dce7c28cacb593fbc8a02e5c4a",
+      "fields": 8
+    },
+    {
+      "entry": "0x004056B0",
+      "size": 85,
+      "target_sha256": "846246d9036b6993079c239a6f8d1623be471f8d72aad6419508fcc3530d1520",
+      "fields": 5
+    }
+  ],
+  "source": "src/ScriptViewerBombCreate.cpp",
+  "source_sha256": "4b869aad80b5715b8efa6d5f45998fddbedb6f6a981c88ee48478b0e24d1196f",
+  "two_independent_colds": [
+    [
+      {
+        "unit": "script-viewer-bomb-register-tasks",
+        "size": 84,
+        "matched_bytes": 84,
+        "image_sha256": "29342277db05613dcef7466592bf6ee39d9c7bc9238e533e9803f1f72731cd47",
+        "pdb_guid": "62a8b70f96d71b4b832bf80b2cd018ae",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "bound_fields": 8
+      },
+      {
+        "unit": "script-viewer-bomb-create",
+        "size": 85,
+        "matched_bytes": 85,
+        "image_sha256": "29342277db05613dcef7466592bf6ee39d9c7bc9238e533e9803f1f72731cd47",
+        "pdb_guid": "62a8b70f96d71b4b832bf80b2cd018ae",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "bound_fields": 5
+      }
+    ],
+    [
+      {
+        "unit": "script-viewer-bomb-register-tasks",
+        "size": 84,
+        "matched_bytes": 84,
+        "image_sha256": "363f3a4e16fe80550b9c1cafc879cf83d37b56c43ab7223274dcd8fa6e8fcaa3",
+        "pdb_guid": "a2e2db08337437478ba6f2ea3fe887d4",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "bound_fields": 8
+      },
+      {
+        "unit": "script-viewer-bomb-create",
+        "size": 85,
+        "matched_bytes": 85,
+        "image_sha256": "363f3a4e16fe80550b9c1cafc879cf83d37b56c43ab7223274dcd8fa6e8fcaa3",
+        "pdb_guid": "a2e2db08337437478ba6f2ea3fe887d4",
+        "pdb_age": 1,
+        "extent_source": "pdb-section-contribution",
+        "bound_fields": 5
+      }
+    ]
+  ],
+  "neighbor_guard": {
+    "unit": "script-viewer-bomb-destructor",
+    "exact_bytes": 137,
+    "fields": 15,
+    "first_selected_cold": true
+  },
+  "actual_profile": "VC7.1 SP1 /GL /GS /EHs",
+  "original_source_or_runtime_proven": false
+}
