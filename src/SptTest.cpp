@@ -81,12 +81,19 @@ int SptTestView::RegisterTasks()
     drawTask = task;
     return 0;
 }
+// The complete cleanup owner at 0x0042BC30 accepts the object on the stack
+// and returns with RET 4. Its natural definition remains under reconstruction.
+extern void __stdcall SptTestCleanupOwner42BC30(SptTestView *view);
 SptTestView *SptTestCreate()
 {
     SptTestView *view = new SptTestView;
     if (view->RegisterTasks() != 0)
     {
-        delete view;
+        if (view != NULL)
+        {
+            SptTestCleanupOwner42BC30(view);
+            ::operator delete(view);
+        }
         return NULL;
     }
     return view;

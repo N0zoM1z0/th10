@@ -24389,6 +24389,29 @@ linkages = [{"offset" = 31, "type" = "DIR32", "symbol" = "??_C@_08GGFKNFHG@?5?5?
 
 # Independently reviewed SptTest helpers; real factory with unresolved destructor.
 
+# Reviewed stack-cleanup ABI at 0x42BC30 and fully outlined factory graph.
+[units.spt-test-create]
+artifact_kind = "linked-pe"
+source = "src/SptTest.cpp"
+output_dir = "build/match-linked/SptTestHelpers-cold"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewer.cpp"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?SptTestCreate@@YAPAUSptTestView@@XZ"
+pdb_source = "src/SptTest.cpp"
+symbol = "?SptTestCreate@@YAPAUSptTestView@@XZ"
+functions = ["SptTestCreate"]
+size = 67
+target_address = 0x0042BF30
+linkages = [
+  { offset = 0x07, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x15, type = "REL32", symbol = "??0SptTestView@@QAE@XZ", target = 0x0042BB30 },
+  { offset = 0x20, type = "REL32", symbol = "?RegisterTasks@SptTestView@@QAEHXZ", target = 0x0042BBD0 },
+  { offset = 0x2E, type = "REL32", symbol = "?SptTestCleanupOwner42BC30@@YGXPAUSptTestView@@@Z", target = 0x0042BC30 },
+  { offset = 0x34, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
 [units.spt-test-constructor]
 artifact_kind = "linked-pe"
 source = "src/SptTest.cpp"

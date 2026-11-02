@@ -25,9 +25,9 @@ struct SptTestView
     EclVmScriptDatabase *scriptDatabase;
     EnemyEclHostBaseView *activeVm;
     unsigned char *scriptData;
-    SptTestView();
+    __declspec(noinline) SptTestView();
     ~SptTestView();
-    int RegisterTasks();
+    __declspec(noinline) int RegisterTasks();
     void ClearScriptNames();
     int Draw();
     int Update();

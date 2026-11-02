@@ -50,10 +50,10 @@ config/matches.csv. Generate ledger statistics with:
 | --- | ---: |
 | Tracked target extents / reviewed boundaries | 1,819 / 1,819 |
 | Source-present target mappings | 1,231 |
-| Canonical exact owners / bytes | **1,432 / 184,257** |
-| Reviewed authored exact owners / bytes | **544 / 115,766** |
+| Canonical exact owners / bytes | **1,433 / 184,324** |
+| Reviewed authored exact owners / bytes | **545 / 115,833** |
 | Reviewed authored byte denominator | 275,890 (provisional) |
-| Authored source-present nonexact backlog | 163 |
+| Authored source-present nonexact backlog | 162 |
 | Classified excluded / origin-indeterminate owners | 520 / 552 |
 
 These values are generated from current ledgers. The denominator is not
@@ -63,6 +63,7 @@ an established total for all original game-authored code.
 
 | Area | Accepted full-owner result | Reproduce / evidence |
 | --- | --- | --- |
+| SptTestCreate @0x0042BF30 | **67/67 authored exact**, five strictly bound calls; real constructor145 and registration84 selected-cold guard | [Full factory proof](evidence/spt-test-create-exact-20261102/README.md) |
 | Keyboard high-bit reset @0x0044B080 | **75/75 authored exact**, four bound IAT/cookie fields; two independent selected cold links | [Keyboard reset proof](evidence/game-keyboard-clear-high-bits-exact-20261102/README.md) |
 | Game owner creator @0x0040AF90 | **86/86 authored exact**, 5 strict fields, including both constructor/null merges and failure teardown; selected cold graph also preserves initializer134 and cleanup137 | [Creator](evidence/game-owner-creator-exact-20261102/README.md), [initializer](evidence/game-owner-40ae70-initialize-exact-20261102/README.md), [cleanup](evidence/game-owner-40af00-exact-20261102/README.md) |
 | Game owner initialization @0x0040AE70 | **134/134 authored exact**, 14 strict fields, selected cold with creator86; cleanup @0x0040AF00 stays 137/137 | [Initializer](evidence/game-owner-40ae70-initialize-exact-20261102/README.md), [cleanup](evidence/game-owner-40af00-exact-20261102/README.md) |
