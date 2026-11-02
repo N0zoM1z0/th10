@@ -1,0 +1,49 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "sound_source_sha256": "842f410ed44363232813df85ce910432573b90366428ac0bb4942ad31ab8bd2c",
+  "zwave_source_sha256": "754af3bf03814f9b9fa84d48163047de5488790ebadb75532268c5cfe6dba7b8",
+  "sound_producer": {
+    "exact_bytes": 1641,
+    "units": [
+      {
+        "name": "sound-bgm-player-thread",
+        "size": 189,
+        "fields": 7
+      },
+      {
+        "name": "sound-process-queues",
+        "size": 1452,
+        "fields": 43
+      }
+    ],
+    "artifact_count": 1
+  },
+  "zwave_producer": {
+    "exact_bytes": 699,
+    "units": [
+      {
+        "name": "zwave-csound-get-buffer",
+        "size": 19,
+        "fields": 0
+      },
+      {
+        "name": "zwave-csound-get3d-buffer",
+        "size": 52,
+        "fields": 1
+      },
+      {
+        "name": "zwave-csound-play",
+        "size": 145,
+        "fields": 5
+      },
+      {
+        "name": "zwave-csound-fill",
+        "size": 483,
+        "fields": 6
+      }
+    ],
+    "artifact_count": 1
+  },
+  "exact_credit_new": 0,
+  "source_topology": "Sound.cpp declaration; ZWave.cpp single external definition"
+}

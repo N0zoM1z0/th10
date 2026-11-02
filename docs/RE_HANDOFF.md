@@ -1,5 +1,16 @@
 # TH10 handoff — 2026-11-02
 
+## Sound/ZWave shared GetBuffer producer repaired (2026-11-02)
+
+The accepted 19-byte ZWave CSound::GetBuffer had a duplicate inline
+definition in Sound.cpp. Actual Sound+ZWave /GL linking exposed LNK2005.
+Sound.cpp now declares that real external member without defining a
+second body. Two selected cold source graphs preserve full ProcessQueues
+1452 plus BgmPlayerThread189 (**1641/1641**) and the four ZWave exact
+owners (**699/699**). The joint producer now links; this adds no new
+codegen exact credit and is not a full-game/product proof. See
+[evidence](evidence/sound-zwave-single-owner-20261102/README.md).
+
 ## Exact result-menu resume and ANM deletion ordering (2026-11-02)
 
 The full reviewed authored ResultMenuResume @0x00422C30 now

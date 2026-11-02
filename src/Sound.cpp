@@ -122,14 +122,7 @@ public:
         return waveFile;
     }
 
-    LPDIRECTSOUNDBUFFER GetBuffer(DWORD index)
-    {
-        if (soundBuffers == NULL)
-            return NULL;
-        if (index >= bufferCount)
-            return NULL;
-        return soundBuffers[index];
-    }
+    LPDIRECTSOUNDBUFFER GetBuffer(DWORD index);
 
     void FadeOut(float seconds)
     {
