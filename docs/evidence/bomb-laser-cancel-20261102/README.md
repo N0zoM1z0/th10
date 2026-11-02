@@ -59,6 +59,24 @@ Neither 124-byte nor 223-byte parent is marked exact, and the physical
 original translation units, source spellings and complete game runtime remain
 unknown.
 
+### Rejected six-source Bomb-factory entry graph: equal lengths are not exact
+
+A further selected, full-real-source LTCG experiment used
+`ScriptViewerCreateBomb` as the entrypoint with all six maintained sources.
+Here the complete Bomb auxiliary and Bomb update PDB contributions reached
+**124 native / 124 target** and **223 native / 223 target** respectively.
+Crucially, after masking only recognized *candidate* address slots, they
+still differed at **79** and **153 ordinary instruction bytes**. The original
+10-byte fastcall callback regressed to a **7-byte** tail jump. The Laser
+pattern propagation stayed **76/76 raw-equal** without relocation masks;
+Bomb registration and factory retained their complete 84-byte and 85-byte
+codegen shapes after candidate-field normalization. This source graph is
+**rejected as an exact cohort**, not credited on the basis of matching sizes.
+Its full candidate PDB contributions, size/difference counts, first differing
+offsets and image SHA-256 are preserved in
+[native-summary.json](native-summary.json). This does not verify the
+unmatched parents' call-field identities or a runnable whole game.
+
 Only bounded verification was run; no historical all-unit cold replay:
 
 ```sh
