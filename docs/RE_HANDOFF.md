@@ -1,5 +1,18 @@
 # TH10 handoff — 2026-11-02
 
+## Exact 27-byte ScriptViewer scalar deleting destructor (2026-11-02)
+
+Original target 0x0040A410 now has a complete 27/27
+PDB-owned codegen match in the real 14-source
+ScriptViewerCreate graph, with both real destructor
+@0x0040A1A0 and scalar delete @0x004524A1
+calls strictly bound. Two independent selected colds
+preserve the new owner, Create67, BulletRuntime destructor34
+and ReleaseEnemies19: **147/147** per image. Adds 27
+canonical exact bytes without authored-origin attribution;
+template/optimizer ancestry is still open. See
+[evidence](evidence/script-viewer-scalar-deleting-dtor-exact-20261102/README.md).
+
 ## Exact BulletRuntimeView destructor at 0x00405DE0 (2026-11-02)
 
 The reviewed complete 34-byte bullet-runtime optional-buffer
@@ -267,8 +280,8 @@ There is no running compiler/linker job or unfinished source edit.
 | --- | ---: |
 | Reviewed authored owned bytes exact | 115,471 / 275,890 |
 | Authored exact owners | 541 |
-| Total canonical exact owners / codegen bytes | 1,428 / 183,935 |
-| Source mappings / authored mappings / authored exact backlog | 1,227 / 704 / 163 |
+| Total canonical exact owners / codegen bytes | 1,429 / 183,962 |
+| Source mappings / authored mappings / authored exact backlog | 1,228 / 704 / 163 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen

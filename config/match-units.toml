@@ -20619,6 +20619,26 @@ linkages = [
   { offset = 0x0D, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
 ]
 
+[units.script-viewer-scalar-delete-0040a410]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewer.cpp"
+functions = ["ScriptViewerView::ScalarDeletingDestructor"]
+symbol = "??_GScriptViewerView@@QAEPAXI@Z"
+target_address = 0x0040A410
+size = 27
+linkages = [
+  { offset = 0x02, type = "REL32", symbol = "??1ScriptViewerView@@QAE@XZ", target = 0x0040A1A0 },
+  { offset = 0x0F, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
 [units.script-viewer-create]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"

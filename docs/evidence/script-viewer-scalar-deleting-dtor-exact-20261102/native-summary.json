@@ -1,0 +1,104 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_address": "0x0040A410",
+  "target_owner_size": 27,
+  "target_owner_sha256": "7d49eedd3f9cac1dd6683681d4b24be61252bae1f1b3e56d0c92936f1b610989",
+  "source_file": "src/ScriptViewer.cpp",
+  "source_sha256": "b9804acbd14400dbf450bc819400caeb1e8fc45dc9a5c21f14ed8fdad9c575c1",
+  "native_symbol": "??_GScriptViewerView@@QAEPAXI@Z",
+  "extent_source": "pdb-section-contribution",
+  "pdb_module_index": 4,
+  "complete_decoded_bytes": 27,
+  "instruction_count": 9,
+  "strict_original_field_bindings": [
+    {
+      "addend": 0,
+      "candidate_target": "0x004012B0",
+      "linked_symbol": "??1ScriptViewerView@@QAE@XZ",
+      "local": false,
+      "offset": "0x2",
+      "symbol": "??1ScriptViewerView@@QAE@XZ",
+      "target": "0x0040A1A0",
+      "target_encoded_value": "0xFFFFFD8A",
+      "type": "REL32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x00428044",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+      "local": false,
+      "offset": "0xF",
+      "symbol": "??3@YAXPAX@Z",
+      "target": "0x004524A1",
+      "target_encoded_value": "0x0004807E",
+      "type": "REL32",
+      "width": 4
+    }
+  ],
+  "ordinary_differences": [],
+  "independent_cold_replays": [
+    {
+      "image_sha256": "ee5e6691410a8196bf7c839f2215ebb23549c68411e6f1768aec687df50a3fd1",
+      "pdb_guid": "35ee078f4dd2954990e4e3820094716d",
+      "matched_bytes": 147,
+      "unit_count": 4,
+      "artifact_count": 1,
+      "selected_units": [
+        {
+          "name": "bullet-runtime-generated-destructor-00405de0",
+          "size": 34,
+          "fields": 1
+        },
+        {
+          "name": "script-viewer-create",
+          "size": 67,
+          "fields": 5
+        },
+        {
+          "name": "script-viewer-release-enemies",
+          "size": 19,
+          "fields": 2
+        },
+        {
+          "name": "script-viewer-scalar-delete-0040a410",
+          "size": 27,
+          "fields": 2
+        }
+      ]
+    },
+    {
+      "image_sha256": "0494c5f5dcb42b993b9e18f83f0df839239ed8f88f72dc6040c31e9c4f9123c4",
+      "pdb_guid": "be945747cb65f540a7221cca3d415c3e",
+      "matched_bytes": 147,
+      "unit_count": 4,
+      "artifact_count": 1,
+      "selected_units": [
+        {
+          "name": "bullet-runtime-generated-destructor-00405de0",
+          "size": 34,
+          "fields": 1
+        },
+        {
+          "name": "script-viewer-create",
+          "size": 67,
+          "fields": 5
+        },
+        {
+          "name": "script-viewer-release-enemies",
+          "size": 19,
+          "fields": 2
+        },
+        {
+          "name": "script-viewer-scalar-delete-0040a410",
+          "size": 27,
+          "fields": 2
+        }
+      ]
+    }
+  ],
+  "new_canonical_codegen_bytes": 27,
+  "new_authored_exact_bytes": 0,
+  "origin": "indeterminate compiler-generated vs authored deletion adapter",
+  "whole_product_or_runtime_proven": false
+}

@@ -194,6 +194,22 @@ cache labels below retain their dated meaning; they are not current gates.
 
 ## Frontend
 
+### 2026-11-02 ScriptViewer scalar deleting destructor
+
+The original 27-byte owner at 0x0040A410 is now matched
+against the real VC7.1 PDB code contribution for
+??_GScriptViewerView@@QAEPAXI@Z under the ScriptViewerCreate
+14-source graph. The complete machine code and both original
+REL32 destinations (ScriptViewerView::~ @0x0040A1A0
+and operator delete @0x004524A1) are strictly compared.
+Two independent selected colds each preserve this 27-byte
+owner alongside Create67, BulletRuntime destructor34 and
+ReleaseEnemies19, **147/147**. This adds one canonical
+codegen owner/27 bytes without changing indeterminate
+source-authored versus compiler generated provenance.
+See docs/evidence/script-viewer-scalar-deleting-dtor-exact-20261102/README.md.
+
+
 ### 2026-11-02 BulletRuntimeView destructor codegen owner
 
 Complete original 0x00405DE0..0x00405E01 is a 34-byte
