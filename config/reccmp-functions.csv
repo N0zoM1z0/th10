@@ -1229,3 +1229,4 @@ BulletRuntimeView::~BulletRuntimeView,0x00405DE0,function
 ScriptViewerView::ScalarDeletingDestructor,0x0040A410,function
 GameOwner40AF90View::Initialize,0x0040AE70,function
 GameCreateOwner40AF90,0x0040AF90,function
+ClearKeyboardHighBits,0x0044B080,function

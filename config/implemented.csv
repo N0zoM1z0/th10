@@ -1228,3 +1228,4 @@ BulletRuntimeView::~BulletRuntimeView
 ScriptViewerView::ScalarDeletingDestructor
 GameOwner40AF90View::Initialize
 GameCreateOwner40AF90
+ClearKeyboardHighBits
