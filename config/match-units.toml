@@ -22973,6 +22973,29 @@ linkages = [
   { offset = 0x17, type = "DIR32", symbol = "?g_InputPadDevices@@3PAPAUInputDeviceView@@A", target = 0x00491C3C },
 ]
 
+# The private second fastcall argument in EDX supplies the 256-byte keyboard
+# buffer. Six original globals/imports, complete 103-byte PDB section owner.
+[units.input-keyboard-state-snapshot]
+artifact_kind = "linked-pe"
+source = "src/InputKeyboardSnapshot.cpp"
+output_dir = "build/match-linked/InputKeyboardSnapshot"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ReadKeyboardState@InputKeyboardSnapshotView@@QAIHPAE@Z"
+functions = ["InputKeyboardSnapshotView::ReadKeyboardState"]
+symbol = "?ReadKeyboardState@InputKeyboardSnapshotView@@QAIHPAE@Z"
+target_address = 0x0044B010
+size = 103
+linkages = [
+  { offset = 0x0D, type = "DIR32", symbol = "?g_InputEnabled@@3HA", target = 0x004924FC },
+  { offset = 0x17, type = "DIR32", symbol = "?g_FrontEndSupervisorFlags@@3IA", target = 0x00491FF4 },
+  { offset = 0x23, type = "DIR32", symbol = "__imp__GetKeyboardState@4", target = 0x00466208 },
+  { offset = 0x2B, type = "DIR32", symbol = "?g_InputKeyboardDevice@@3PAUInputDeviceView@@A", target = 0x00491C38 },
+  { offset = 0x42, type = "DIR32", symbol = "?g_InputKeyboardDevice@@3PAUInputDeviceView@@A", target = 0x00491C38 },
+  { offset = 0x57, type = "DIR32", symbol = "?g_InputKeyboardDevice@@3PAUInputDeviceView@@A", target = 0x00491C38 },
+]
+
 [units.input-controller-buttons]
 artifact_kind = "linked-pe"
 source = "src/InputPolling.cpp"

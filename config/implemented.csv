@@ -1251,3 +1251,4 @@ InputEnumAxisRangeCallback
 InputEnumPadDeviceCallback
 InputInitializeDevices
 InputDeviceInitThread
+InputKeyboardSnapshotView::ReadKeyboardState

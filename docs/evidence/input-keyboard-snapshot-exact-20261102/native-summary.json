@@ -1,0 +1,72 @@
+{
+  "target_pe_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_address": "0x0044B010",
+  "size": 103,
+  "original_body_sha256": "3a93be7c0828c0582431f4831df564df55af319256c50cbfd9b87a6997ac66e5",
+  "source": "src/InputKeyboardSnapshot.cpp",
+  "source_sha256": "dd9236c9e680e6ef7f5370c54af4bbcb6d0e7e6272182028f938e57b69d76ec1",
+  "toolchain": "VC7.1 SP1 /GL /GS /EHs",
+  "strict_bindings": [
+    {
+      "offset": "0x0D",
+      "target": "0x004924FC",
+      "symbol": "g_InputEnabled"
+    },
+    {
+      "offset": "0x17",
+      "target": "0x00491FF4",
+      "symbol": "g_FrontEndSupervisorFlags"
+    },
+    {
+      "offset": "0x23",
+      "target": "0x00466208",
+      "symbol": "__imp__GetKeyboardState@4"
+    },
+    {
+      "offset": "0x2B",
+      "target": "0x00491C38",
+      "symbol": "g_InputKeyboardDevice"
+    },
+    {
+      "offset": "0x42",
+      "target": "0x00491C38",
+      "symbol": "g_InputKeyboardDevice"
+    },
+    {
+      "offset": "0x57",
+      "target": "0x00491C38",
+      "symbol": "g_InputKeyboardDevice"
+    }
+  ],
+  "independent_colds": [
+    {
+      "unit": "input-keyboard-state-snapshot",
+      "result": "exact",
+      "size": 103,
+      "matched_bytes": 103,
+      "image_sha256": "188d949ce8f11a5ef46025069b26d2116eb31201c3855d43944aafefd74cd4a9",
+      "pdb_guid": "b176e23132f23b42a0c4c82b20860277",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution",
+      "bound_fields": 6
+    },
+    {
+      "unit": "input-keyboard-state-snapshot",
+      "result": "exact",
+      "size": 103,
+      "matched_bytes": 103,
+      "image_sha256": "17cd2adbb948fde8657a10a3b1ef928505c52a5b0a429de37361c2e1e8cae1e1",
+      "pdb_guid": "7a4702892f261d45af5f899e3fe33c53",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution",
+      "bound_fields": 6
+    }
+  ],
+  "first_cold_guard": {
+    "unit": "input-controller-buttons",
+    "result": "exact",
+    "bytes": 264,
+    "fields": 12
+  },
+  "original_source_or_runtime_proven": false
+}

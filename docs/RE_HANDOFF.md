@@ -49,9 +49,9 @@ config/matches.csv. Generate ledger statistics with:
 | Measure | 2026-11-02 accepted state |
 | --- | ---: |
 | Tracked target extents / reviewed boundaries | 1,824 / 1,824 |
-| Source-present target mappings | 1,253 |
-| Canonical exact owners / bytes | **1,446 / 185,625** |
-| Reviewed authored exact owners / bytes | **554 / 116,882** |
+| Source-present target mappings | 1,254 |
+| Canonical exact owners / bytes | **1,447 / 185,728** |
+| Reviewed authored exact owners / bytes | **555 / 116,985** |
 | Reviewed authored byte denominator | 276,076 (provisional) |
 | Authored source-present nonexact backlog | 169 |
 | Classified excluded / origin-indeterminate owners | 520 / 555 |
@@ -63,6 +63,7 @@ an established total for all original game-authored code.
 
 | Area | Accepted full-owner result | Reproduce / evidence |
 | --- | --- | --- |
+| **Input keyboard state snapshot @0x0044B010** | **103/103 complete-byte authored exact**, six strictly original-bound globals/IAT; two independent cold links and existing Input controller **264/264** exact guard. The 1,052-byte stage controller remains nonexact. | [Complete keyboard state proof](evidence/input-keyboard-snapshot-exact-20261102/README.md) |
 | **DirectInput initializer @0x0043B8D0 and input thread @0x0043BA90** | **439 + 83 = 522 original bytes now source-covered**, three-source VC7.1 joint native PDB extents **419/439 and 85/83 NONEXACT**; the two full enum callback bodies remain 150/150 equal. No parent exact credit. | [DirectInput parent and thread source](evidence/input-directinput-init-source-20261102/README.md) |
 | **DirectInput EnumDevices callback @0x0043BAF0** | Newly recovered independent **52-byte boundary and complete 52/52 authored exact** codegen; three strictly bound original globals, two distinct selected cold links and adjacent axis callback **98/98** same-cold guard. | [Device callback and original boundary](evidence/input-pad-device-enum-exact-20261102/README.md) |
 | **DirectInput axis EnumObjects callback @0x0043BB30** | **98/98 full-owner authored exact**, one strictly bound `g_InputPadDevices` global; two independent VC7.1 colds and existing input-controller guard **264/264 exact**. Original 439-byte input initializer remains separate. | [Complete callback proof](evidence/input-axis-range-callback-exact-20261102/README.md) |
