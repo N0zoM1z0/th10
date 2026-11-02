@@ -553,8 +553,10 @@ HintEntryView *HintOwnerView::AddAutomaticEntry(
     memcpy(&entry->position, position, sizeof(entry->position));
     strncpy(entry->text, text, 64);
     entry->alignment = 0;
-    entry->base = g_GameFrameRestorePending;
-    entry->count = g_GameFrameRestorePending != 0
+    // Observe the two distinct global reads present in the original owner.
+    const volatile int &stageFlag = g_GameFrameRestorePending;
+    entry->base = stageFlag;
+    entry->count = stageFlag != 0
         ? g_GameFrameCounter1 : g_GameFrameCounter0;
     return entry;
 }

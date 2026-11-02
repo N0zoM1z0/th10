@@ -13,6 +13,34 @@ owner (+19 bytes), not an authored-origin promotion. See
 [evidence](evidence/zwave-getbuffer-exact-20261102/README.md).
 No full historical cold replay was run.
 
+## Exact 220-byte Hint automatic-entry owner (2026-11-02)
+
+The complete **authored** HintOwnerView::AddAutomaticEntry
+@0x0041A120 now cold-replays220/220 owned bytes with strict
+binding of all seven original external address fields. A local
+const volatile stage-flag reference restores the two target
+loads at +0xB6/+0xBE and final store/branch schedule.
+Two independent real nine-TU HintCreate /GL builds pass the
+new owner and existing CreateHintOwner/OnDraw, 293/293
+bytes each; separately selected Caution/constructor/ReadLine/
+Append guards pass467/467. Adds **220 authored and canonical**
+exact bytes, not a partial parent match. See
+[evidence](evidence/hint-automatic-entry-exact-20261102/README.md).
+
+## Exact Hint automatic-entry owner (2026-11-02)
+
+The genuine nine-source CreateHintOwner /GL graph now reproduces all
+**220/220 bytes** and seven target-identity fields of
+HintOwnerView::AddAutomaticEntry at0x0041A120. The target reads the
+same stage-restore global twice; an ordinary scoped volatile-reference
+observation restores both loads, alignment publication and register
+scheduling. Two selected independent native colds each preserve
+new220 plus CreateHintOwner67 and OnDraw6 (293/293); targeted Hint
+consumer guards also remain exact. This adds220 reviewed authored
+exact bytes. The 1317-byte ConsumeEntries and 1498-byte loader
+remain nonexact. See
+[evidence](evidence/hint-automatic-entry-exact-20261102/README.md).
+
 ## Exact DirectSound indexed buffer getter (2026-11-02)
 
 The previously pending CSound::GetBuffer @0x0044D3E0 is now
@@ -107,10 +135,10 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 115,040 / 275,890 |
-| Authored exact owners | 538 |
-| Total canonical exact owners / codegen bytes | 1,421 / 183,296 |
-| Source mappings / authored mappings / authored exact backlog | 1,223 / 703 / 165 |
+| Reviewed authored owned bytes exact | 115,260 / 275,890 |
+| Authored exact owners | 539 |
+| Total canonical exact owners / codegen bytes | 1,422 / 183,516 |
+| Source mappings / authored mappings / authored exact backlog | 1,223 / 703 / 164 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen

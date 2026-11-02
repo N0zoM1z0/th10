@@ -4684,6 +4684,46 @@ Source mappings rise602->605, authored exact396->397 and72283->72387 bytes.
 
 ## Hint entry copy and initialization controls (2026-10-22)
 
+### 2026-11-02: exact 220-byte Hint automatic-entry allocator
+
+The complete authored HintOwnerView::AddAutomaticEntry @0x0041A120
+now replays all220 owned bytes with strict binding of seven real
+operator-new, stage index, strncpy and two separately observed
+g_GameFrameRestorePending plus two frame counter fields. Prior
+source/runtime controls emitted212/220 and collapsed the two base/
+predicate reads. The retained natural const volatile reference to
+the existing stage flag reproduces both independent physical reads
+and the target alignment/base/count scheduling; original volatile
+qualification, threading intent and original source partition are
+not established. Two independent actual nine-TU /GL colds select the
+full220-byte owner, CreateHintOwner67 and OnDraw6, 293/293 each.
+Another selected cold covers Caution104, constructor51, ReadLine260
+and Append52, 467/467. Existing source mapping and authored origin
+remain; one authored exact owner adds220 bytes to both authored and
+canonical numerators, with no partial credit to any unresolved
+1317-byte ConsumeEntries or other larger parent.
+See docs/evidence/hint-automatic-entry-exact-20261102/README.md.
+
+
+### 2026-11-02 automatic Hint entry allocation exactness
+
+HintOwnerView::AddAutomaticEntry at original 0x0041A120 is now **complete
+220-byte authored exact**, including all seven independently bound
+operator-new/stage/strncpy/frame-global fields and every local branch.
+The actual nine-source CreateHintOwner /GL linked compiler graph was
+used, retaining normal-compiled HintLoad, with unchanged source layout
+and the already exact HintEntryView constructor. Two original-stage
+global reads at offsets +0xB6/+0xBE are distinct in TH10; a natural,
+scoped const volatile reference preserves these reads and restores
+the original alignment/base/count and new-entry register schedules.
+Barriers alone leave 212/220 and were rejected. Two independent
+selected cold links reproduce the whole220-byte owner and two existing
+CreateHintOwner/draw units (293/293 each); separate affected Hint
+consumer guards pass. This adds220 canonical and authored codegen
+bytes, but not a claim about original volatile qualifier/TU or runtime.
+Larger ConsumeEntries and Hint loader remain nonexact.
+See docs/evidence/hint-automatic-entry-exact-20261102/README.md.
+
 ### 2026-11-02 HintEntryView constructor exactness (supersedes older nonexact candidate)
 
 The complete 51-byte HintEntryView::HintEntryView at original 0x00418D00

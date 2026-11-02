@@ -1,0 +1,173 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_file": "src/Hint.cpp",
+  "source_sha256": "ae48fc39fa9c578e1ec86282da88b34645d2a4b7425235d53aad36ef989859ef",
+  "target_address": "0x0041A120",
+  "target_length": 220,
+  "target_owner_sha256": "b6efe901254b6b64a0d7d7dbdebb34f99d1b4772c0f20df7e01cbec45ae2e298",
+  "native_symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+  "native_PDB_module": 4,
+  "native_extent_source": "pdb-section-contribution",
+  "native_owner_size": 220,
+  "decoded_owner_bytes": 220,
+  "normalization_complete": true,
+  "target_address_linkages": [
+    {
+      "addend": 0,
+      "candidate_target": "0x0041600C",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+      "local": false,
+      "offset": "0x7",
+      "symbol": "??2@YAPAXI@Z",
+      "target": "0x00452493",
+      "target_encoded_value": "0x00038368",
+      "type": "REL32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004161EC",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0123",
+      "local": false,
+      "offset": "0x4B",
+      "symbol": "?g_GameStartupMode@@3HA",
+      "target": "0x00474C7C",
+      "target_encoded_value": "0x00474C7C",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004162B0",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0172",
+      "local": false,
+      "offset": "0xA9",
+      "symbol": "_strncpy",
+      "target": "0x00452960",
+      "target_encoded_value": "0x00038793",
+      "type": "REL32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004161E4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0121",
+      "local": false,
+      "offset": "0xB6",
+      "symbol": "?g_GameFrameRestorePending@@3HA",
+      "target": "0x00474C84",
+      "target_encoded_value": "0x00474C84",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004161E4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0121",
+      "local": false,
+      "offset": "0xBE",
+      "symbol": "?g_GameFrameRestorePending@@3HA",
+      "target": "0x00474C84",
+      "target_encoded_value": "0x00474C84",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004161E0",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0120",
+      "local": false,
+      "offset": "0xC8",
+      "symbol": "?g_GameFrameCounter1@@3HA",
+      "target": "0x00474C8C",
+      "target_encoded_value": "0x00474C8C",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004161DC",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0119",
+      "local": false,
+      "offset": "0xCF",
+      "symbol": "?g_GameFrameCounter0@@3HA",
+      "target": "0x00474C88",
+      "target_encoded_value": "0x00474C88",
+      "type": "DIR32",
+      "width": 4
+    }
+  ],
+  "first_differences": [],
+  "independent_cold_proofs": [
+    {
+      "units": {
+        "hint-add-automatic-entry": {
+          "size": 220,
+          "address_fields": 7,
+          "result": "exact"
+        },
+        "hint-create-owner": {
+          "size": 67,
+          "address_fields": 5,
+          "result": "exact"
+        },
+        "hint-draw-callback": {
+          "size": 6,
+          "address_fields": 0,
+          "result": "exact"
+        }
+      },
+      "selected_bytes": 293,
+      "unit_count": 3,
+      "artifact_count": 1,
+      "image_sha256": "3e15b0c0f5a264eb98a2ccba3dccc3dc274a5480279f34fe10bc44a828d0f443",
+      "pdb_guid": "3502f4bedcbb994a879b6d855e740690"
+    },
+    {
+      "units": {
+        "hint-add-automatic-entry": {
+          "size": 220,
+          "address_fields": 7,
+          "result": "exact"
+        },
+        "hint-create-owner": {
+          "size": 67,
+          "address_fields": 5,
+          "result": "exact"
+        },
+        "hint-draw-callback": {
+          "size": 6,
+          "address_fields": 0,
+          "result": "exact"
+        }
+      },
+      "selected_bytes": 293,
+      "unit_count": 3,
+      "artifact_count": 1,
+      "image_sha256": "263c2f15c7b06daf0b09a9ef7a41ab0fc76f61a2fb3d5975d8c62b369a06b45e",
+      "pdb_guid": "c67deeb89da6794a8f3064dc5a5847dc"
+    }
+  ],
+  "additional_selected_guards": {
+    "hint-entry-constructor": {
+      "size": 51,
+      "result": "exact"
+    },
+    "hint-read-line": {
+      "size": 260,
+      "result": "exact"
+    },
+    "hint-append-link": {
+      "size": 52,
+      "result": "exact"
+    },
+    "hint-add-caution": {
+      "size": 104,
+      "result": "exact"
+    }
+  },
+  "new_canonical_exact_bytes": 220,
+  "new_authored_exact_bytes": 220,
+  "source_names_and_original_TU": "not established",
+  "product_or_runtime_closure": false
+}
