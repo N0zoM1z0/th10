@@ -1,5 +1,29 @@
 # TH10 handoff — 2026-11-02
 
+## Exact DirectSound buffer getter (2026-11-02)
+
+The complete 19-byte CSound::GetBuffer at 0x0044D3E0 now reproduces
+TH10 **19/19 raw bytes** with no address fields or ABI manufacture.
+Splitting the previous compound guard into ordinary separate null-array
+and unsigned-index checks restores the original target return-branch
+layout. Two independently selected ZWavePlayRoot /GL /GS cold builds
+preserve Get3DBuffer52, Play145 and Fill483 alongside the new getter:
+**699/699** each. This is an additional canonical codegen-exact
+owner (+19 bytes), not an authored-origin promotion. See
+[evidence](evidence/zwave-getbuffer-exact-20261102/README.md).
+No full historical cold replay was run.
+
+## Exact DirectSound indexed buffer getter (2026-11-02)
+
+The previously pending CSound::GetBuffer @0x0044D3E0 is now
+complete 19/19 raw-exact. Two independent selected ZWavePlayRoot
+VC7.1 /GL /GS cold links each pass four units, 699/699 bytes,
+preserving Get3DBuffer, Play and FillBufferWithSound. Separate null
+and unsigned-index guards recover the original zero-return/success
+block order. This adds 19 canonical codegen bytes without authored
+origin credit or a full-product claim. See
+[evidence](evidence/zwave-getbuffer-exact-20261102/README.md).
+
 ## Exact Hint entry constructor (2026-11-02)
 
 The complete HintEntryView::HintEntryView at 0x00418D00 now
@@ -85,8 +109,8 @@ There is no running compiler/linker job or unfinished source edit.
 | --- | ---: |
 | Reviewed authored owned bytes exact | 115,040 / 275,890 |
 | Authored exact owners | 538 |
-| Total canonical exact owners / codegen bytes | 1,420 / 183,277 |
-| Source mappings / authored mappings / authored exact backlog | 1,222 / 703 / 165 |
+| Total canonical exact owners / codegen bytes | 1,421 / 183,296 |
+| Source mappings / authored mappings / authored exact backlog | 1,223 / 703 / 165 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen

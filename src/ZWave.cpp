@@ -145,6 +145,7 @@ public:
 
     HRESULT RestoreBuffer(LPDIRECTSOUNDBUFFER buffer, BOOL *wasRestored);
     LPDIRECTSOUNDBUFFER GetFreeBuffer();
+    LPDIRECTSOUNDBUFFER GetBuffer(DWORD index);
     HRESULT Get3DBuffer(DWORD index, LPDIRECTSOUND3DBUFFER *output);
     HRESULT FillBufferWithSound(
         LPDIRECTSOUNDBUFFER buffer, BOOL repeatIfBufferLarger);
@@ -519,6 +520,18 @@ LPDIRECTSOUNDBUFFER CSound::GetFreeBuffer()
     if (i != m_dwNumBuffers)
         return m_apDSBuffer[i];
     return m_apDSBuffer[rand() % m_dwNumBuffers];
+}
+
+
+// Target 0x0044D3E0: expose an existing DirectSound buffer only when
+// the allocated array exists and the unsigned index is in range.
+LPDIRECTSOUNDBUFFER CSound::GetBuffer(DWORD index)
+{
+    if (m_apDSBuffer == NULL)
+        return NULL;
+    if (index >= m_dwNumBuffers)
+        return NULL;
+    return m_apDSBuffer[index];
 }
 
 
