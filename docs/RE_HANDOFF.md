@@ -1,5 +1,18 @@
 # TH10 handoff — 2026-11-01
 
+## Sound sample-loader source improvement (2026-11-02)
+
+The full 684-byte SoundPlayerView::LoadSoundSample remains nonexact, but its
+actual 17-input native EndingCreate graph now reaches **678/684** versus the
+previous 676/684. A retained const scan-length local produces the target
+ADD EBP,-12; only the six ordinary bytes at +0x122..+0x127 (argument
+MOV/LEA scheduling) remain in the complete location-normalized comparison.
+All 25 native field locations are decoded; target-role exactness is not
+claimed. Selected exact producers cold-pass ending-create **99/99** and
+Sound worker/queue **1,641/1,641**. See the
+[evidence](evidence/sound-sample-lifetime-20261102/README.md). The cumulative
+exact ledger count is unchanged.
+
 ## Latest ANM child91 ABI correction (2026-11-01)
 
 Fresh callsite and callee-stack decoding selected a non-static

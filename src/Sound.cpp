@@ -396,14 +396,16 @@ int SoundPlayerView::LoadSoundSample(int index, const char *path)
     }
     data += 4;
     remaining -= 12;
+    // Snapshot the chunk-search span before resolving both sections.
+    const unsigned int scanRemaining = remaining;
     unsigned int chunkSize;
     WAVEFORMATEX format;
-    unsigned char *formatData = FindWaveChunk(data, remaining, "fmt ", &chunkSize);
+    unsigned char *formatData = FindWaveChunk(data, scanRemaining, "fmt ", &chunkSize);
     unsigned char *samples = NULL;
     if (formatData != NULL)
     {
         format = *reinterpret_cast<WAVEFORMATEX *>(formatData);
-        samples = FindWaveChunk(data, remaining, "data", &chunkSize);
+        samples = FindWaveChunk(data, scanRemaining, "data", &chunkSize);
     }
     if (samples == NULL)
     {
