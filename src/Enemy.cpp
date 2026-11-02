@@ -1,4 +1,5 @@
 #include "EnemyGameState.hpp"
+#include "FileSystem.hpp"
 #include "GameErrorContext.hpp"
 #include "Enemy.hpp"
 #include "Chain.hpp"
@@ -307,11 +308,7 @@ void EnemyDestroyAnimationResource(
 char g_EnemyResourceLoadErrorFormat[] =
     "\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4"
     "\x82\xa2\x82\xdc\x82\xb7\x0d\x0a";
-// Target 0x0044B360 receives filename in EAX plus stack sizeOut/mode; this
-// logical declaration preserves all three source values without claiming that
-// private register assignment.
-void * __stdcall EnemyLoadFileBytes(
-    const char *filename, unsigned int *sizeOut, int mode);
+// Read the actual target 0x0044B360 via the maintained FileSystem owner.
 
 // Target 0x0040C800-0x0040C80E is the retained constructor for the embedded
 // 0x1008-byte operand-storage state. The two cursors are the only fields that
@@ -1136,7 +1133,7 @@ int EnemyEclResourceView::LoadFile(const char *filename)
     g_EnemyEclFilenameBuffer[0] = '\0';
     strcat(g_EnemyEclFilenameBuffer, filename);
 
-    void *scriptData = EnemyLoadFileBytes(
+    void *scriptData = FileSystem::OpenFile(
         g_EnemyEclFilenameBuffer, NULL, 0);
     const int result = EclVmScriptDatabase::AddScriptData(scriptData);
     return result < 0 ? -1 : 0;
