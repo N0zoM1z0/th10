@@ -30,8 +30,8 @@ is involved.
 Two **independent targeted cold builds** each emit a 75-byte exact result,
 with distinct PE and PDB identities (not reused intermediate artifacts):
 
-- First PE SHA-256 `be78d878b6b05263b58f119a4d8c635d3bd83ab66237c1507f23794b6a284441`, PDB GUID `17ec7cf2da8593499a6c175c38bd4c8e`.
-- Second PE SHA-256 `4c47a74df9f50b0466bf399026970fafbaa02df9c391b5fa16fd7deec1ac0add`, PDB GUID `6c8c1931d577704e90972c5adb526e53`.
+- First PE SHA-256 `6fb856c5ddd68c9fc3c496840c3a6acc1d92bcaef4a6aa8e547e7522b916da03`, PDB GUID `60fdeec354720348bf9cb8f2dc36fa5d`.
+- Second PE SHA-256 `ba91d4e8fb4630d69e025c85010999a790ba7868c95d49a1b535d683de036462`, PDB GUID `7834051f07aade47816ca534bbeb600a`.
 
 Scoped reproduction:
 
