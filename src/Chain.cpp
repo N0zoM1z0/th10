@@ -7,6 +7,8 @@
 #include <windows.h>
 #include <stdlib.h>
 #include <new>
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
 
 typedef unsigned char u8;
 typedef unsigned int u32;
@@ -20,12 +22,15 @@ extern u8 g_ChainNestCounter;
 
 ChainElem::ChainElem()
 {
+    const unsigned int previousFlags = flags;
+    _ReadWriteBarrier();
     callback = NULL;
     addedCallback = NULL;
     deletedCallback = NULL;
     prio = 0;
-    // The constructor initializes only the ownership bit, preserving the rest.
-    flagBits.heapAllocated = 0;
+    // Preserve unrelated flags after the callback stores.
+    _ReadWriteBarrier();
+    flags = previousFlags & ~1u;
     self = this;
     next = NULL;
     prev = NULL;
