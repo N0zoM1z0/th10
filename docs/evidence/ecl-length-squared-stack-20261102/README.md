@@ -37,9 +37,10 @@ link and runtime are not established.
 
 ## Bounded regression
 
-The selected real source-graph cold replay passes six separate existing
-canonical exact owners, 859/859 bytes: ReadFloat183, ReadInt144,
-ReadFloatValue171, ResolveFloat93, StackPop122, HostRun146.
+The selected real source-graph cold replay passes eight separate existing
+canonical exact owners, 1037/1037 bytes across two selected graphs:
+ReadFloat183, ReadInt144, ReadFloatValue171, ResolveFloat93,
+StackPop122, FindThread36, HostRun146 and SpawnThread142.
 Other large ECL functions, including the full ECL Run owner, get
 zero new exact credit. Rejected controls retained the same
 full 25 differences, or emitted 7028/7036, 6928 or other
@@ -52,6 +53,7 @@ Selected reproduction (no historical full cold replay):
     scripts/repo-python scripts/replay-exact-units.py \
       --unit ecl-vm-host-run --unit ecl-vm-read-float \
       --unit ecl-vm-read-int --unit ecl-vm-read-float-value \
-      --unit ecl-vm-stack-pop --unit ecl-vm-resolve-float --json
+      --unit ecl-vm-stack-pop --unit ecl-vm-resolve-float \
+      --unit ecl-vm-find-thread --unit ecl-vm-spawn-thread --json
     scripts/repo-python scripts/ci.py
     git diff --check

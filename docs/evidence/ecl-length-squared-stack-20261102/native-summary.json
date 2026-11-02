@@ -140,7 +140,7 @@
     "0x181B",
     "0x182B"
   ],
-  "selected_exact_guard_total": 859,
+  "selected_exact_guard_total": 1037,
   "selected_guards": [
     {
       "unit": "ecl-vm-read-float",
@@ -167,6 +167,12 @@
       "result": "exact"
     },
     {
+      "unit": "ecl-vm-find-thread",
+      "size": 36,
+      "field_count": 0,
+      "result": "exact"
+    },
+    {
       "unit": "ecl-vm-stack-pop",
       "size": 122,
       "field_count": 1,
@@ -177,8 +183,15 @@
       "size": 146,
       "field_count": 4,
       "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-spawn-thread",
+      "size": 142,
+      "field_count": 3,
+      "result": "exact"
     }
   ],
   "exact_new_bytes": 0,
-  "game_product_or_runtime_closure": false
+  "game_product_or_runtime_closure": false,
+  "selected_guard_groups": 2
 }
