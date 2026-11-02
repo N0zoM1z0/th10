@@ -605,12 +605,15 @@ int GameOwner40AF90View::Initialize()
     return 0;
 }
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
 // Target 0x0040AF90 creates the owner and tears it down on init failure.
 void *GameCreateOwner40AF90()
 {
     GameOwner40AF90View *owner = new GameOwner40AF90View();
     if (owner != NULL)
     {
+        _ReadWriteBarrier();
         owner->flags |= 2u;
         g_GameOwner4776FC = reinterpret_cast<GameChainOwnerView *>(owner);
     }
