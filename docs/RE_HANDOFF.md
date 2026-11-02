@@ -1,470 +1,127 @@
-# TH10 handoff — 2026-11-02
+# TH10 reconstruction handoff — 2026-11-02
 
-## New 134-byte game owner initializer and open creator (2026-11-02)
+This is the **current resume brief**, not a running log of every experiment.
+Use [PROGRESS.md](PROGRESS.md) for exact counts, the function and origin
+ledgers for individual claims, [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md)
+for durable target facts, and [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for the
+current private working set and artifact cleanup. Prior dated narratives
+and historical numbers are retained in Git and the
+[2026-10-30 history](RE_HANDOFF_HISTORY_20261030.md). They are
+not current acceptance receipts.
 
-The reviewed authored 0x0040AE70 initialization owner has natural
-source in GameManager.cpp and now strict **134/134 exact** codegen,
-with all14 target bindings. Two independent four-source selected
-cold links pass; the existing game owner cleanup137 also cold-passes.
-The related 0x0040AF90 creator is now source-present but **83/86
-NONEXACT**, with no partial or full owner credit. The two source
-functions and their cross-TU dependencies form a practical
-initialization/teardown continuation path. See
-[evidence](evidence/game-owner-40ae70-initialize-exact-20261102/README.md).
+## Target, rules and validation
 
-## Exact 27-byte ScriptViewer scalar deleting destructor (2026-11-02)
+- Target: **original Japanese TH10 v1.00a** at ignored
+  resources/th10.exe, 487,936 bytes, SHA-256
+  2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
+- Branch: main, upstream origin/main. The latest source checkpoint in
+  this handoff is e0ad99a; use git status/log to see subsequent docs
+  or local commits. **Never push automatically.**
+- Local commit format: **gpt-web: xxx**, author
+  N0zoM1z0 <1705004398@qq.com>, with the existing gensokyo-dev
+  co-author trailer. Take multiple useful checkpoints per working session.
+- **Do not discard dirty work**; inspect and finish or document it. Work on
+  both large core functions and useful leaves. Do not trust old claims
+  without independent source/target comparison.
+- Cold replay **only new/affected --unit selectors**; no full historical
+  cold replay. A matched size, masked bytes, successful compile or local
+  commit does not equal codegen exactness.
+- Run the local repository Python wrapper. Original source/TU,
+  game product, runtime semantics and portability remain unproven.
+  Ghidra/IDA names are provisional until confirmed.
 
-Original target 0x0040A410 now has a complete 27/27
-PDB-owned codegen match in the real 14-source
-ScriptViewerCreate graph, with both real destructor
-@0x0040A1A0 and scalar delete @0x004524A1
-calls strictly bound. Two independent selected colds
-preserve the new owner, Create67, BulletRuntime destructor34
-and ReleaseEnemies19: **147/147** per image. Adds 27
-canonical exact bytes without authored-origin attribution;
-template/optimizer ancestry is still open. See
-[evidence](evidence/script-viewer-scalar-deleting-dtor-exact-20261102/README.md).
+    git status --short --branch
+    git log -6 --oneline
+    scripts/repo-python scripts/verify-target.py
+    scripts/repo-python scripts/verify-toolchain.py --check
+    scripts/repo-python scripts/ci.py
 
-## Exact BulletRuntimeView destructor at 0x00405DE0 (2026-11-02)
+Default CI has seven lightweight checks. Only a complete target-bound,
+PDB/COFF-owned and cold-reproducible zero-difference result with *every*
+external address and required local destination bound can enter
+config/matches.csv. Generate ledger statistics with:
 
-The reviewed complete 34-byte bullet-runtime optional-buffer
-destructor now has strict target/native codegen exactness, with
-the original _free @0x00452422 call bound. The real
-ScriptViewerCreate 14-source /GL source graph emits the complete
-PDB-owned destructor; two independent selected colds preserve
-it plus Create67 and ReleaseEnemies19 (at least **120/120**);
-one selected cold also retains BulletResetPool45 (**165/165**).
-This adds 34 canonical codegen exact bytes only: original
-hand-written versus generated origin remains indeterminate.
-See [evidence](evidence/bullet-runtime-generated-destructor-exact-20261102/README.md).
+    scripts/repo-python scripts/progress.py
+    scripts/repo-python scripts/report-reconstruction-status.py
 
-## Exact game cleanup owner @0x0040AF00 (2026-11-02)
+## Current accepted snapshot
 
-The previously unimplemented reviewed authored 137-byte
-GameCleanupOwner40AF00 now has natural C++ source. Linking
-GameManager.cpp with the **real Chain.cpp** recovers the target's
-two callback unregister operations and compact lock-depth writes,
-with all **15 external fields** bound. Two independent selected
-cold links pass **137/137**; existing GameManager MarkGameChains28
-and StageTransitionDelay92 selected guards remain **120/120**.
-The final clear targets g_GameOwner4776FC @0x004776FC,
-**not** the otherwise similar ScriptViewerBombOwnerView global
-@0x004776EC. Adds one authored/canonical exact owner (+137 bytes).
-The much larger GameManagerCleanup remains nonexact. See
-[evidence](evidence/game-owner-40af00-exact-20261102/README.md).
-
-## Authored GameCleanupOwner40AF00 complete exact owner (2026-11-02)
-
-Implemented the complete 137-byte original owner at
-0x0040AF00 as the real GameManager.cpp
-GameCleanupOwner40AF00 called by GameManagerCleanup.
-The target's two Chain unregisters, both
-MainSupervisorView critical-section/count updates and
-final **g_GameOwner4776FC**, not bomb global,
-are now recovered. Two independent real GameManager
-and Chain /GL /GS /EHs selected colds reproduce
-**137/137**, all15 original address fields; two
-prior GameManager source exact owners retain120/120.
-Adds **137 authored and canonical** exact bytes.
-GameManagerCleanup 1105 remains nonexact; there
-is no full replay or original TU/runtime proof.
-See [evidence](evidence/game-owner-40af00-exact-20261102/README.md).
-
-## Exact Stage vector cross-product physical target (2026-11-02)
-
-The previously uncredited reviewed but unreferenced 77-byte
-0x00421B90 target body matches StageDraw.cpp StageCrossProduct
-raw-exact. Two independent selected real ten-TU /GL /GS StageCreate
-native colds preserve this full owner and the 330-byte
-StageCameraStateView::ConfigureCamera, **407/407** per cold
-with ten existing caller fields. Adds **77 canonical exact bytes**,
-but no authored-origin credit because the source compiler
-provenance/independent target entry is unresolved. No broad
-cold replay. See
-[evidence](evidence/stage-cross-product-exact-20261102/README.md).
-
-## RNG duplicate target exact owner at 0x0044BA30 (2026-11-02)
-
-Recovered the previously uncredited CC-delimited complete
-78-byte target extent at 0x0044BA30. Its original bytes equal
-the adjacent GetRandomU32 owner at 0x0044B9E0; the same real
-normal COFF VC7.1 source symbol is 78/78 raw-exact with no
-external fields against either original range. Two independent
-selected COFF cold invocations each pass 156/156. Adds 78
-canonical codegen exact bytes and one source-code mapping but
-**no authored credit**, because the second target has no
-independently reviewed entry reference and physical source
-origin is indeterminate. See
-[evidence](evidence/rng-duplicate-u32-exact-20261102/README.md).
-
-## Large ECL Run 7020-byte source checkpoint (2026-11-02)
-
-The complete 7020-byte EclVmContext::Run improves from
-6995/7020 to 6997/7020 ordinary bytes matched, preserving
-all189 strict original target field bindings (62 locals), table
-and terminal selector. A source-local const volatile x in the
-LENGTH_SQUARED case fixes only two stack-home offsets
-(+0x181B/+0x182B) without introducing new differences. Eight
-affected existing ECL exact guards cold-pass1037/1037. This is
-nonexact large-owner source improvement; exact credit unchanged.
-See [evidence](evidence/ecl-length-squared-stack-20261102/README.md).
-
-## Main dialog 233-byte source scheduling checkpoint (2026-11-02)
-
-MainConfigurationDialogProc improves from208/233 to216/233 with
-14 fields intact under the four-TU WinMain /GL /GS graph.
-A scoped WM_COMMAND compiler barrier recovers eight register-save/
-input stack byte positions. Four return epilogues and ESI
-save remain nonexact (17 bytes). WindowProc265 and
-ActivateWindow8 independently cold-pass273/273. Adds zero exact
-credit; see evidence/main-dialog-command-scheduling-20261102/README.md.
-
-## Exact ScriptViewer enemy nullable-delete leaf (2026-11-02)
-
-The existing ScriptViewerLifecycle.cpp adapter at 0x0040D730 now
-has strict **19/19 complete PDB-owned codegen exactness** with
-both original EnemyManager destructor and operator-delete calls
-bound. Two independent real ScriptViewerCreate 14-source cold
-builds preserve the new leaf plus Create67 and EnemyManagerClear118,
-**204/204** bytes each. Adds one canonical exact owner/19 bytes,
-but the original helper-versus-compiler-generated origin remains
-indeterminate and authored credit is unchanged. No full cold replay
-was run. See [evidence](evidence/script-viewer-release-enemies-exact-20261102/README.md).
-
-## Sound/ZWave shared GetBuffer producer repaired (2026-11-02)
-
-The accepted 19-byte ZWave CSound::GetBuffer had a duplicate inline
-definition in Sound.cpp. Actual Sound+ZWave /GL linking exposed LNK2005.
-Sound.cpp now declares that real external member without defining a
-second body. Two selected cold source graphs preserve full ProcessQueues
-1452 plus BgmPlayerThread189 (**1641/1641**) and the four ZWave exact
-owners (**699/699**). The joint producer now links; this adds no new
-codegen exact credit and is not a full-game/product proof. See
-[evidence](evidence/sound-zwave-single-owner-20261102/README.md).
-
-## Exact result-menu resume and ANM deletion ordering (2026-11-02)
-
-The full reviewed authored ResultMenuResume @0x00422C30 now
-replays **74/74 bytes** and all seven strictly bound
-external fields. A scoped compiler ordering barrier
-following the VM ID zero-store restores the target's
-speed-read placement. Two independent 17-input
-EndingCreate selected /GL /GS colds preserve this owner
-and existing EndingCreate99, **173/173 bytes each**.
-Adds one authored/canonical owner (+74 bytes); no
-entire-game or parent credit. See
-[evidence](evidence/result-menu-resume-exact-20261102/README.md).
-
-## Exact DirectSound buffer getter (2026-11-02)
-
-The complete 19-byte CSound::GetBuffer at 0x0044D3E0 now reproduces
-TH10 **19/19 raw bytes** with no address fields or ABI manufacture.
-Splitting the previous compound guard into ordinary separate null-array
-and unsigned-index checks restores the original target return-branch
-layout. Two independently selected ZWavePlayRoot /GL /GS cold builds
-preserve Get3DBuffer52, Play145 and Fill483 alongside the new getter:
-**699/699** each. This is an additional canonical codegen-exact
-owner (+19 bytes), not an authored-origin promotion. See
-[evidence](evidence/zwave-getbuffer-exact-20261102/README.md).
-No full historical cold replay was run.
-
-## Exact 220-byte Hint automatic-entry owner (2026-11-02)
-
-The complete **authored** HintOwnerView::AddAutomaticEntry
-@0x0041A120 now cold-replays220/220 owned bytes with strict
-binding of all seven original external address fields. A local
-const volatile stage-flag reference restores the two target
-loads at +0xB6/+0xBE and final store/branch schedule.
-Two independent real nine-TU HintCreate /GL builds pass the
-new owner and existing CreateHintOwner/OnDraw, 293/293
-bytes each; separately selected Caution/constructor/ReadLine/
-Append guards pass467/467. Adds **220 authored and canonical**
-exact bytes, not a partial parent match. See
-[evidence](evidence/hint-automatic-entry-exact-20261102/README.md).
-
-## Exact Hint automatic-entry owner (2026-11-02)
-
-The genuine nine-source CreateHintOwner /GL graph now reproduces all
-**220/220 bytes** and seven target-identity fields of
-HintOwnerView::AddAutomaticEntry at0x0041A120. The target reads the
-same stage-restore global twice; an ordinary scoped volatile-reference
-observation restores both loads, alignment publication and register
-scheduling. Two selected independent native colds each preserve
-new220 plus CreateHintOwner67 and OnDraw6 (293/293); targeted Hint
-consumer guards also remain exact. This adds220 reviewed authored
-exact bytes. The 1317-byte ConsumeEntries and 1498-byte loader
-remain nonexact. See
-[evidence](evidence/hint-automatic-entry-exact-20261102/README.md).
-
-## Exact DirectSound indexed buffer getter (2026-11-02)
-
-The previously pending CSound::GetBuffer @0x0044D3E0 is now
-complete 19/19 raw-exact. Two independent selected ZWavePlayRoot
-VC7.1 /GL /GS cold links each pass four units, 699/699 bytes,
-preserving Get3DBuffer, Play and FillBufferWithSound. Separate null
-and unsigned-index guards recover the original zero-return/success
-block order. This adds 19 canonical codegen bytes without authored
-origin credit or a full-product claim. See
-[evidence](evidence/zwave-getbuffer-exact-20261102/README.md).
-
-## Exact Hint entry constructor (2026-11-02)
-
-The complete HintEntryView::HintEntryView at 0x00418D00 now
-matches **51/51 original bytes raw-equal** using an ordinary embedded
-link reference (no memory barrier or synthetic register ABI). Two
-independent five-TU source cold builds preserve existing ReadLine260
-and Append52: **363/363** each. Selected Hint owner/draw73 and
-clear/Caution183 also cold-pass; no full historical replay was run.
-Original constructor source/optimizer ancestry is indeterminate, so
-canonical codegen grows by51 bytes but authored credit remains fixed.
-See [source and native proof](evidence/hint-entry-constructor-exact-20261102/README.md).
-
-## Exact 3D DirectSound buffer leaf (2026-11-02)
-
-Recovered the previously missing CSound::Get3DBuffer at 0x0044D400 in
-the actual ZWave.cpp class. Two independent selected /GL /GS linked
-replays reproduce its **complete 52/52 bytes** and unique
-IID_IDirectSound3DBuffer DIR32 binding. The three-unit first cold
-also preserves Play145 and Fill483, **680/680 total**, while the
-second selects only the new 52-byte owner. Original standalone
-source-vs-SDK authorship remains **indeterminate**, so the canonical
-exact numerator grows without an authored-origin promotion.
-See [the complete native proof](evidence/zwave-get3d-buffer-exact-20261102/README.md).
-There was no full cold cohort or full product replay.
-
-## Sound sample-loader source improvement (2026-11-02)
-
-The full 684-byte SoundPlayerView::LoadSoundSample remains nonexact, but its
-actual 17-input native EndingCreate graph now reaches **678/684** versus the
-previous 676/684. A retained const scan-length local produces the target
-ADD EBP,-12; only the six ordinary bytes at +0x122..+0x127 (argument
-MOV/LEA scheduling) remain in the complete location-normalized comparison.
-All 25 native field locations are decoded; target-role exactness is not
-claimed. Selected exact producers cold-pass ending-create **99/99** and
-Sound worker/queue **1,641/1,641**. See the
-[evidence](evidence/sound-sample-lifetime-20261102/README.md). This nonexact 684-byte owner itself receives no exact credit.
-
-## Latest ANM child91 ABI correction (2026-11-01)
-
-Fresh callsite and callee-stack decoding selected a non-static
-`AnmLoadedView::CreateVmVariant2` member with `__stdcall`: implicit `this` is
-the first stack argument, followed by script and layer; EDI carries the hidden
-result and `RET 0xC` removes all three stack args. The focused selected VC7.1
-linked-PE artifact reproduces the full 73-byte leaf and all five target-bound
-fields. The 9,964-byte ExecuteScript boss remains **9,962/9,964**; only the
-EDX-vs-ECX load/push pair at `+0x113/+0x115` remains. See [the selected member
-ABI proof](evidence/anm-child91-member-stdcall-20261101/README.md).
-
-## ANM non-region texture-load source checkpoint (2026-11-02)
-
-The independent 243-byte AnmRenderManagerView::LoadTexture now retains
-branch-owned source rectangle storage and late surface initialization.
-Under the real single-TU linked graph its candidate shrinks from
-250 bytes to 242, restores the observed 0x18 stack frame and agrees
-through the first 0x71 bytes after addressing normalization. Like the
-320-byte LoadTextureRegion below, its unresolved embedded-header
-MOV+ADD versus MOV+LEA schedule keeps the **whole owner nonexact**.
-The three selected exact resource guards continue to pass 437/437.
-See [the full source/codegen proof](evidence/anm-texture-load-scope-20261102/README.md).
-
-## ANM texture-region source checkpoint (2026-11-02)
-
-The previously nonexact 320-byte AnmRenderManagerView::LoadTextureRegion
-now retains the target's branch-exclusive rectangle/description lifetime and
-delayed surface initialization. A fresh native linked context emits a 319-byte
-owner versus target 320 (the embedded-header pointer calculation still uses
-ADD instead of the one-byte-longer LEA). The initial target prefix and the
-real 0x34 stack frame are recovered; the complete function **remains
-nonexact** and gets no credit. Three selected existing exact texture units
-cold-replay **437/437**. See
-[evidence](evidence/anm-texture-region-scope-20261102/README.md).
-
-## Start here
-
-Follow [AGENTS.md](../AGENTS.md), then read the selected owner's source and
-ledger rows. [RE_WORKFLOW.md](RE_WORKFLOW.md) defines the bounded exact loop;
-[ORACLES.md](ORACLES.md) defines acceptance. Call local tools directly.
-There is no running compiler/linker job or unfinished source edit.
-
-[PROGRESS.md](PROGRESS.md) is generated from the ledgers and is the count authority:
-
-| Measure | Current count |
+| Measure | 2026-11-02 accepted state |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 115,605 / 275,890 |
-| Authored exact owners | 542 |
-| Total canonical exact owners / codegen bytes | 1,430 / 184,096 |
-| Source mappings / authored mappings / authored exact backlog | 1,230 / 706 / 164 |
-| Reviewed boundaries / authored functions | 1,819 / 747 |
+| Tracked target extents / reviewed boundaries | 1,819 / 1,819 |
+| Source-present target mappings | 1,230 |
+| Canonical exact owners / bytes | **1,430 / 184,096** |
+| Reviewed authored exact owners / bytes | **542 / 115,605** |
+| Reviewed authored byte denominator | 275,890 (provisional) |
+| Authored source-present nonexact backlog | 164 |
+| Classified excluded / origin-indeterminate owners | 520 / 552 |
 
-The denominator and source/origin inventory remain provisional. Exact codegen
-proves neither original names/class/TU ownership nor product/runtime/portability.
+These values are generated from current ledgers. The denominator is not
+an established total for all original game-authored code.
 
-## Latest reviewed authored exact checkpoint
+### Recent substantive complete-owner proofs
 
-[HintOwnerView::Initialize @418E30](evidence/hint-initialize-split-exact-20261031/README.md) is now full **131/131 exact** with all13 real callback, Chain, supervisor flag, file-path and `LoadHintFile` fields. A bounded source partition puts the parser and its four static helpers in normal-compiled `HintLoad.cpp` while preserving the actual three-stack-input call rather than changing ABI manually. Two independent targeted native cold runs protect lifecycle **785/785**, loader `/GL` **366/366**, loader `/GL /GS` **312/312**, and the separate Caution/FileSystem guards 180/180. Full loader1498 remains nonexact. Exact authored progress is **115,040 / 275,890 across 538 owners**.
-
-
-## Earlier accepted checkpoints (historical snapshots)
-
-The entries below record cumulative totals at each earlier acceptance. Their
-per-checkpoint counts are chronology, not current progress. Use the top-level
-counts and generated PROGRESS.md as the only current ledger totals; do not add
-these historical numerators together.
-
-[AnmRenderManagerView::PreloadSurface @447EC0](evidence/anm-preload-surface-exact-20261031/README.md) is now full **169/169 exact** with all10 real Stage-linked fields, correcting prior fabricated `AnmErrorLoggerView::Log` to original `th10::g_GameErrorContext.Fatal @44B8E0` and original `filePath[260]` stack frame. Two independent selected StageCreate colds preserve new169 and existing stage initializer522, **691/691** in one shared real source graph. Authored exact rises to **114,909 / 275,890 over 537 owners**. No full cold replay, no original-source/TU/runtime claim.
-
-
-[ReplayAllocateFrameData @42AA50](evidence/replay-frame-allocation-exact-20261031/README.md) now passes complete **139/139 exact** with its true operator-new REL32, ESI stage/stack manager/RET4. A natural typed cursor-slot publication fixes the original store/LEA scheduling, while two independent selected two-input `ReplayManager::BeginStage`/`ReplayStageHelpers` colds prove the complete owner. Existing ReplayClearStageFrameData93 and ReplayRestoreStagePosition83 remain exact in the same new graph. This increases authored exact to **114,740 / 275,890 over 536 owners**, without admitting the nonexact 582-byte BeginStage parent or running full cold replay.
-
-
-[BulletManagerView::~BulletManagerView @405F70](evidence/script-viewer-bullet-destructor-exact-20261031/README.md) is now a **complete 236/236 authored exact parent**, all23 target fields bound. The explicit one-state 38-byte generated Bullet-array-EH protocol passed a real-image negative suite with28 rejection controls, and two independent **3-source** targeted cold links. The second also preserves the old Bomb137 via its separate 2-source graph (**373/373** across both producer groups). Only the parent236 receives credit; the generated EH helper/element destructor do not. Authored exact increases to **114,601 / 275,890** over **535** owners.
-
-
-[ScriptViewerBombOwnerView::~ScriptViewerBombOwnerView @405620](evidence/script-viewer-bomb-cleanup-exact-20261031/README.md) is now complete **137/137 exact**, with all15 original Chain, critical-section, Supervisor state and bomb global fields. The actual `ScriptViewerReleaseBomb`/`Chain.cpp` two-input graph cold-replays twice independently; the previously open EH-protected BulletManager destructor is now independently admitted as full236/236 in a separate verified three-input graph; this earlier 137-byte claim remains unchanged. Authored exact rises to **114,365 / 275,890** across **534** owners.
-
-
-[GameCleanupLinked41C1C0 @41C1C0](evidence/enemy-laser-linked-cleanup-exact-20261031/README.md) is now full **195/195 exact** with all16 real IAT/callee/supervisor-state fields, including base+0x64C/+0x6F4, through the actual `GameCreateOwner41C290`-rooted 2-TU EnemyLaserManager/Chain producer. Two independently rebuilt selected colds pass; exact authored becomes **114,228 / 275,890, 533 owners**. This is a complete medium owner, not a padded prefix or a full-game replay.
-
-
-[ResultMenuClose @423510](evidence/result-menu-close-exact-20261031/README.md) now passes **89/89 exact** with real ESI receiver, two exact `EnemyMarkPendingInterrupt` call fields and two original ANM-speed global references. The final canonical recipe uses the genuine **two-input** `ResultMenuUpdateResult`/`VmIdInterrupt` graph, where two independent selected cold links strictly reproduce **89/89** and all four fields. An older 15-input `ResultTransitions` cold had also protected two existing 411-byte menu callers (**911/911**) but its next retry hit a transient Wine path fault; that historical graph is corroboration, not the current acceptance dependency. Reviewed authored numerator reaches **114,033/275,890**, 532 owners, without full cold replay.
-
-
-[TransitionEffectView::Cleanup @43CB00](evidence/transition-cleanup-exact-20261031/README.md) is now complete **127/127 exact**, all 14 original call/global fields bound, under the actual StageCreate link. Two independent selected cold links pass cleanup alone, then both cleanup and existing StageLifecycle initializer (**649/649**). The authored exact numerator becomes **113,944 / 275,890**, **531 owners**. No full cold replay or source/ABI changes were required.
-
-
-[Three complete lifecycle owners](evidence/script-viewer-graph-lifecycle-exacts-20261031/README.md) now replay **69/69 PlayerCreate**, **95/95 EnemyManagerCreate** and **161/161 ANM AllocateVm** under one real `ScriptViewerCreate` lifecycle producer. All14 original target fields and the unique source/PDB owners bind; two independent scoped cold builds pass first **626/626** across three new and two existing guards, then **325/325** across only the three new functions. This raises reviewed authored exact to **113,817/275,890**, **530 authored exact owners**; the denominator is still provisional.
-
-
-[AsciiManagerCreate @401440](evidence/ascii-factory-exact-20261031/README.md) is now complete **69/69 exact** (five allocation/constructor/initializer/destructor/deallocation REL32 fields) in the genuine three-input ASCII initialization graph. The old 70-byte one-TU candidate had the wrong destructor private receiver; neither source ABI nor factory code needed alteration. Two independent selected colds preserve the new69 and previous initializer330 + high-draw10, **409/409 exact** across34 fields. Reviewed authored exact progress rises to113,492/275,890 across527 owners.
-
-
-[AsciiManagerView::OnDrawHighPriority](evidence/ascii-high-draw-exact-20261031/README.md) is now full **10/10 exact** with its real `AsciiManagerDrawGuiStrings` REL32, recovered by a natural VM pointer in the genuine GUI renderer. The selected 3-TU `AsciiManagerCreate` source graph yields the target EBX receiver; two independent selected cold links preserve new callback10 and prior Initialize330, **340/340** across all29 fields. The larger 570-byte renderer stays **NONEXACT** despite improving from54/458 to160/458 comparable positions. This new callback raises reviewed authored exact to113,492/275,890 across527 owners.
-
-
-[ResultMenuUpdate @4223F0](evidence/result-menu-update-exact-20261031/README.md) is now complete **206/206 exact**, including the formerly excluded 27 bytes of physical jump/selector tables. All16 external/local fields and five table destinations bind in two independent selected cold links. The previous provisional boundary stopped at the RET after 179 bytes; the corrected extent ends at 4224BD, two CC bytes before the next owner. Exact authored progress increases to 113,492/275,890 and one new owner; the reviewed denominator is still provisional.
-
-
-[GameConfigurationView::ResetDefaults @418C40](evidence/game-configuration-reset-exact-20261031/README.md)
-now passes all **125 bytes and all five fields** from its real
-MainLoadConfiguration caller graph. Moving the existing `colorMode = 0`
-assignment ahead of numeric defaults recovers the target codegen; the prior
-order was 116/125 nonexact in the same graph. An incorrect double-addend
-manifest was independently repaired. Two **selected** cold replays pass;
-no historical whole-cohort replay is required. Current reviewed authored
-exact total is 113,492/275,890 across 526 owners; the denominator remains
-provisional.
-
-Sound PreloadBgm has a separate [bounded nonexact correction](evidence/sound-preload-reg-contract-20261031/README.md)
-that recovers the real GetFmtIndexByName ECX input; do not admit its
-369-byte owner merely because it has a full-size candidate.
-
-## Recent Hint exact source checkpoint
-
-[Hint frame Update419650..41988A](evidence/hint-frame-exact-20261031/README.md)
-is complete571/all17 exact, committed in `9bd5b01`. It has169 instructions,
-23 fixed local branches, EBX owner and RET at23A. Repeating the width-array
-expression at its three genuine uses makes ordinary CSE/loop reduction select
-width base17C; the target store/reloads, manager field72 and alignment follow.
-No extra induction pointer, register forcing, padding, header or flag changes.
-
-The existing update callback10/all1 remains exact and origin-indeterminate.
-Warm and zero-reuse eight-input cold agree; independent canonical selects only
-`hint-frame-update` and `hint-update-callback`,581/all18 in one producer.
-Same-image factory/draw guards also pass. Actual ConsumeEntries remains
-1308/1317 NONEXACT and passes its previous full proof in both final images.
-
-Historical build/cache context:
-.analysis/gpt-6.1-sol/hint-frame-loop-20261031/final-cold-context.json.
-It records 36 source/header pins, but only 34/36 match current sources;
-src/AnmManager.cpp and src/Hint.cpp changed in later accepted work. Do not
-reuse its image or objects as a current-source witness. After the Hint source
-split, two independent canonical selected colds freshly replayed
-hint-frame-update + hint-update-callback as 581/581 exact, with distinct
-PDB GUIDs 1121e78937b9ca49814888c78c86888c and
-7a82b94de2986a41833ad56d687e784e. The normal canonical producer remains
-build/match-linked/HintLifecycle.
-
-The complete 9,964-byte ANM ExecuteScript now strictly reproduces **9,962 bytes** using a local timer-read helper and a scoped radial Z read. The earlier child-variant contexts are historical; the latest post-PreloadSurface context gptweb-post-preload-20261031-context.json has **13/13 current source/header pins**. Its five-source cold and all350 field bindings confirm the remaining two bytes; see [the large-owner proof](evidence/anm-executor-two-byte-frontier-20261031/README.md). Exact totals are unchanged because the whole owner still rejects.
-
-## Open owners worth resuming
-
-These are complete measurements at the linked proof's source epoch, not fresh
-comparisons of every owner against today's source. Choose one bounded owner.
-
-| Owner | Last complete snapshot | Evidence / concrete remaining lead |
+| Area | Accepted full-owner result | Reproduce / evidence |
 | --- | --- | --- |
-| Sound PreloadBgm43D7D0 |365/369 NE|[Read-register experiment](evidence/sound-preload-barrier-20261031/README.md): ten bound fields and all 121 instructions match except four EAX/EDX register bytes; affected existing units cold-pass 1641/all |
-| Hint ConsumeEntries419120 |1308/1317 NE|[Consumption proof](evidence/hint-consume-context-20261031/README.md): small-ID result/register order and common script PUSH; actual world creator116/118 remains NE |
-| GUI message Run |4472/4480 NE|[Latest state view](evidence/gui-message-state-view-20261031/README.md): counter placement, cursor and remaining register/read schedules |
-| Capture RequestCaptureRectangle424480 |148/162 NE|[Full strict context](evidence/capture-rectangle-schedule-20261031/README.md): real FindVm EDX callee recovered; 23 to 14 remaining store-schedule differences; two existing actual callers cold-pass 822/all |
-| GUI DrawStageElements415800 |724/724 NE|[Latest arithmetic proof](evidence/gui-draw-read-order-20261031/README.md): first rectangle LEA targetD6/nativeEC, addition field targetEC/nativeE8 |
-| GameManager cleanup / update |1098/1105 and1538/1544 NE|[Cleanup controls](evidence/gui-message-teardown-20261031/README.md): transition flag publication/block placement and VM-call/private helper interfaces |
-| ECL AddScriptData450220 |547/589 NE|[Caller-context record](evidence/maintenance-20261030/README.md): actual Enemy caller restores ABI; validation-slot reload, old-table guard and insertion lifetimes remain open |
-| Enemy float operand reader |876/884 NE|[Operand proof](evidence/enemy-operands-exact-20261030/README.md): float family/source ordering controls remain unresolved |
-| ANM ExecuteScript |9962/9964 NE|[New arithmetic proof](evidence/anm-executor-two-byte-frontier-20261031/README.md): Z read and timer x87 schedule recovered; only child91 EDX/ECX push remain; all350 fields/95 locals strictly bound |
-| Ending Run |1568/1568 NE|[Ending proof](evidence/ending-native-record-20261030/README.md): old complete comparison retains54 ordinary differences; current inputs have changed |
+| Game owner initialization @0x0040AE70 | **134/134 authored exact**, 14 strict fields, two independently selected colds; cleanup @0x0040AF00 stays 137/137 | [Initializer](evidence/game-owner-40ae70-initialize-exact-20261102/README.md), [cleanup](evidence/game-owner-40af00-exact-20261102/README.md) |
+| Game callback cleanup @0x0040AF00 | **137/137 authored exact**, 15 fields; correct final global is 0x004776FC, not the similar bomb object's 0x004776EC | [Complete game owner proof](evidence/game-owner-40af00-exact-20261102/README.md) |
+| Hint automatic-entry @0x0041A120 | **220/220 authored exact**, seven fields | [Hint allocator proof](evidence/hint-automatic-entry-exact-20261102/README.md) |
+| ResultMenuResume @0x00422C30 | **74/74 authored exact**, seven fields, target VM-deletion/speed scheduling | [Result menu proof](evidence/result-menu-resume-exact-20261102/README.md) |
+| Stage cross product @0x00421B90 | **77/77 codegen exact** and camera330 guarded; original target entry/authoring indeterminate | [Stage proof](evidence/stage-cross-product-exact-20261102/README.md) |
+| Duplicate RNG target @0x0044BA30 | **78/78 codegen exact** using existing relocation-free RNG symbol; do not invent a second C++ implementation or authored origin | [RNG proof](evidence/rng-duplicate-u32-exact-20261102/README.md) |
+| BulletRuntimeView destructor @0x00405DE0 | **34/34 codegen exact**, one strict free call, origin indeterminate | [Bullet lifecycle proof](evidence/bullet-runtime-generated-destructor-exact-20261102/README.md) |
+| ScriptViewer deleting destructor @0x0040A410 | **27/27 codegen exact**, two strictly bound calls, origin indeterminate | [ScriptViewer proof](evidence/script-viewer-scalar-deleting-dtor-exact-20261102/README.md) |
+| ScriptViewer enemy release @0x0040D730 | **19/19 codegen exact**, two strict callee fields, origin indeterminate | [Release proof](evidence/script-viewer-release-enemies-exact-20261102/README.md) |
+| ZWave GetBuffer and Get3DBuffer | **19/19** and **52/52 codegen exact**, source origin indeterminate | [GetBuffer](evidence/zwave-getbuffer-exact-20261102/README.md), [Get3D](evidence/zwave-get3d-buffer-exact-20261102/README.md) |
 
-The GUI stage updater is already complete3836-byte exact; do not reopen the
-old four-byte residual. See [its accepted proof](evidence/gui-update-exact-20261031/README.md).
-The integer operand reader is already exact too. Use the ledgers before
-selecting a similarly named old candidate.
+The Sound/ZWave duplicate GetBuffer definition was also fixed at the
+source level; true Sound+ZWave compilation now links and its selected
+exact Sound owners remain 1,641/1,641. This is **integration work,
+not additional codegen credit**:
+[producer repair](evidence/sound-zwave-single-owner-20261102/README.md).
+Other earlier exact functions remain accepted according to the ledgers.
 
-Parked Hint models: separate width induction spills; width-derived slot indexing
-adds arithmetic; local width address and owner/slot lookup forms are neutral;
-typed position view selects the wrong x-based cursor. New repeated-width source
-has superseded that loop frontier. For consumption, lookup-value projection and
-receiver/endpoint spelling controls are neutral. Reopen only with new evidence
-and a distinguishing prediction.
+## Open complete functions: next agent's priorities
 
-## Cache and artifact recovery
+Every row below is **NONEXACT**, even when a candidate has the right length.
+The numerical comparison is a particular source-epoch diagnostic; recompile
+the current source before claiming an improvement.
 
-[RE_ARTIFACTS.md](RE_ARTIFACTS.md) lists expanded working contexts, the verified
-private archives and selective restoration. Ended campaigns are archived with
-per-file hashes; their old paths do not imply expanded or reusable inputs.
-The current [cleanup audit](evidence/maintenance-20261031/README.md) records scope,
-storage savings and source-pin mismatches. In particular:
+| Owner, target extent | Last useful diagnostic and next concrete lead |
+| --- | --- |
+| **ANM ExecuteScript @0x0043EE30, 9,964 bytes** | Last complete native diagnostic **9,962/9,964**, 350 external fields, 95 local obligations. Only opcode91 child-create ECX-versus-EDX two-byte scheduling remains. The CreateVmVariant2 member/stdcall ABI is separately verified; don't fake the registers or change its three-stack-argument contract. [Boss frontier](evidence/anm-executor-two-byte-frontier-20261031/README.md), [member ABI](evidence/anm-child91-member-stdcall-20261101/README.md) |
+| **EclVmContext::Run @0x0044E1A0, 7,020 bytes** | Maintained volatile-x LENGTH_SQUARED scope gives **6,997/7,020** with all 189 fields; 23 ordinary bytes remain in x87/format trace locals. Failed POINT_ANGLE, aggregate and reversed-expression source controls were restored. [Large ECL proof](evidence/ecl-length-squared-stack-20261102/README.md) |
+| **GameCreateOwner40AF90 @0x0040AF90, 86 bytes** | Newly source-present but **83-byte** native owner in the same four-TU graph as exact initializer134 and cleanup137. Reopen allocation/null-branch EAX-to-EBX transfer and local constructor lifetime, not the already exact helpers. [Source/codegen checkpoint](evidence/game-owner-40ae70-initialize-exact-20261102/README.md) |
+| **GameManagerCleanup @0x00417C80, 1,105 bytes** | Historical 34-input candidate **1,098/1,105**; source now includes additional exact helper definitions, so that number is **not asserted current**. Rebuild before testing flags, branch blocks and VM calls. [Previous cleanup context](evidence/gui-message-teardown-20261031/README.md) |
+| **MainConfigurationDialogProc @0x0043A3A0, 233 bytes** | Current maintained barrier near WM_COMMAND gave **216/233**, 14 fields; ESI saves and return epilogue order still differ. [Command scheduling](evidence/main-dialog-command-scheduling-20261102/README.md) |
+| **Sound LoadSoundSample @0x0043D390, 684 bytes** | Last source graph **678/684**, 25 address-field positions (not all original roles proven); six bytes at +0x122..+0x127 are MOV/LEA argument-order scheduling. [Sound proof](evidence/sound-sample-lifetime-20261102/README.md) |
+| **Sound PreloadBgm @0x0043D7D0, 369 bytes** | Same-size candidate, **not exact**; last useful proof was **365/369** with ten address fields, remaining EAX/EDX ReadFile setup bytes. Do not use the older six-difference note as current. [Bounded proof](evidence/sound-preload-barrier-20261031/README.md) |
+| **Hint ConsumeEntries @0x00419120, 1,317 bytes** | Historical **1,308/1,317**, still nonexact; ID result and script-push register scheduling. The Hint Update571 and AddAutomaticEntry220 are already exact. [Hint consumption](evidence/hint-consume-context-20261031/README.md) |
+| **GUI DrawStageElements @0x00415800, 724 bytes** | Full-size owner and 33 native fields, **not exact**: local rectangle LEA/input field order still differs. [GUI draw proof](evidence/gui-draw-read-order-20261031/README.md) |
+| **ANM LoadTexture / LoadTextureRegion** | Native owners **242/243** and **319/320** respectively, wrong embedded-header ADD/LEA length. Three selected existing texture guards still replay 437/437. [Texture upload](evidence/anm-texture-load-scope-20261102/README.md), [region](evidence/anm-texture-region-scope-20261102/README.md) |
+| **GUI message Run / Enemy float operands / Ending Run** | Earlier complete contexts remain nonexact, but their source pins are stale. Consult the original evidence and rebuild a chosen scope; do not repeat old scores as current facts. |
 
-- GUI Run remains a 4472/4480 nonexact candidate; its reviewed 64-pin context
-  is now 60/64 (AnmManager.cpp, FrontEnd.cpp, Hint.cpp, Sound.cpp changed).
-  Its image is historical until rebuilt.
-- ECL actual-caller context differs at AnmManager.hpp, Enemy.cpp and GameScoreState.hpp.
-  The pin-equal one-source entry is a different graph with the wrong ABI.
-- Cleanup/message contexts are historical: the retained cleanup-leaf sample
-  is 74/84 pins and the reviewed message-pairs sample is 78/84. The latest
-  Ending final-source context is 57/70 (13 changed inputs). Rebuild before reuse.
-- Hint frame's retained 36-pin context is now 34/36 (changed AnmManager.cpp
-  and Hint.cpp); the accepted frame/callback pair was freshly cold-replayed
-  twice against the current Hint split (581/581 each run).
-- Latest GUI draw context is 14/15 (changed AnmManager.cpp); treat its
-  candidate image as historical until rebuilt.
-- The ANM executor's latest post-PreloadSurface context is 13/13 current pins;
-  older child/radial variant contexts have changed AnmManager.cpp and are not
-  reusable current-source artifacts.
+Do not waste runs on a previously rejected cosmetic permutation unless a
+new source/ABI observation yields a falsifiable instruction-level prediction.
+Continue substantial large-owner work alongside small exact candidates.
 
-Caution424650 calls AddAutomaticEntry41A120, not ConsumeEntries or Update.
-Its extra replay in older Hint campaigns was unnecessary and is not a gate.
-Preserve original target, Ghidra, toolchain/Wine, reference checkouts and the
-[D3D adapter evidence](evidence/d3d-adapter-format/README.md). That D3D hypothesis
-is unadopted; do not rerun its consumed one-shot probe. Music parser qualification
-requires the real `build/match-linked/MusicRoomHelpers` producer path.
+## Artifacts and storage after handoff cleanup
 
-## Validation and history
+The **2026-11-02 storage cleanup** removed about **200.41 MiB** of
+regenerable experimental PE/OBJ/PDB and Python bytecode. It preserved
+six particularly useful nonexact/near-exact witnesses under
+build/gpt-web, the entire **build/match-linked** canonical producer
+cache, prior build/gpt-6.1-sol contexts, private analysis archives,
+target, toolchain, Ghidra project and D3D adapter evidence.
 
-Verify the target before target work; attest Ghidra before using observations.
-Keep compiler/linker jobs serial, CPU0/nice10, bounded and exit-logged. Compare
-complete owners, every field, fixed locals, required callees and actual ABI.
-Replay only new/affected exact owners with explicit `--unit` selectors.
+[Cleanup receipt](evidence/handoff-storage-20261102/cleanup-summary.json)
+and [artifact recovery guide](RE_ARTIFACTS.md) give exact paths and
+storage policy. Deleted experimental paths must be **regenerated**; the
+ignored pruned-file inventory records names and hashes, not payloads.
+Historical build manifests may have mismatched source/header pins.
+Never silently reuse an older compiled PE/PDB as a current-source witness.
 
-Default `scripts/repo-python scripts/ci.py` runs seven lightweight checks.
-Select comparator self-tests only for a changed mechanism. Historical host
-failure/lifecycle/sanitizer/mutation reports are not current gates. Product
-closure, semantic dual-Oracle work and portability remain later phases.
-Regenerate progress when ledger inputs change; finish with `git diff --check`
-and a local English `gpt-web:` commit using the specified author/trailer.
-Never push.
-
-The previous858-line handoff is recoverable with
-`git show 9bd5b01:docs/RE_HANDOFF.md`. Older detail remains in
-[the dated handoff](RE_HANDOFF_HISTORY_20261030.md), linked evidence and Git.
-Old sizes, open statuses, test lists and “current” cache labels do not override
-current ledgers, source pins or the latest complete owner proof.
+There is no global whole-product exactness or native runnable binary.
+Make new commits after substantial verified source improvements, and
+leave a concise current handoff rather than appending duplicate
+sections to this page. Older handoff history remains in Git.

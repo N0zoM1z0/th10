@@ -1,6 +1,6 @@
 # TH10 reconstruction agent rules
 
-## Current direction — October 28, 2026
+## Current direction — November 2, 2026
 
 The current task is exact reconstruction. Target at least 98% of reviewed
 authored owned bytes exact. Prioritize complete medium/large representatives
@@ -79,6 +79,24 @@ Unknown TH10 facts stay unknown.
 Product build/runtime closure, semantic dual-Oracle work and portability are
 later phases. Do not require their tests or whole-build/source-completeness
 reports to finish an exact unit. Do not claim these phases from exactness.
+
+## Agent handoff and reclaimable storage
+
+The short, authoritative continuation brief is docs/RE_HANDOFF.md.
+Do not append repetitive chronological exact claims to its top;
+consolidate into the accepted-owners table and current open-owner
+frontiers, with evidence links. Generated PROGRESS.md is the count
+authority; dated notes, scratch candidates and historical source
+pins must not override current ledgers. For uncertain old claims,
+label their source epoch rather than silently promoting them.
+
+When asked to save disk space, remove only verified regenerable
+ignored experiment PE/OBJ/PDB and Python caches. Preserve original
+target inputs, .tools, the Ghidra project, canonical
+build/match-linked, historical private evidence archives and
+unresolved heavyweight witness contexts. Record the deleted scope,
+retained witnesses and payload bytes in docs/RE_ARTIFACTS.md.
+Do not mistake a list of deleted file hashes for a restorable archive.
 
 ## Checkpoint
 

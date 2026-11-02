@@ -49,13 +49,15 @@ and ledger rows. [PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers
 and is the count authority. The inventory and origin classifications remain
 provisional; the Windows i386 product, runtime semantics and portability are open.
 
-The current Hint exact set includes the complete 131-byte
-HintOwnerView::Initialize and 571-byte HintOwnerView::Update, plus the
-10-byte update callback. The initialization proof records the corrected
-Hint.cpp / HintLoad.cpp source partition; the frame proof was independently
-replayed twice after that split. See the current handoff and the linked
-initialization and frame proofs. The 1498-byte file parser and 1317-byte
-consumption owner remain nonexact. Old candidate sizes are not exactness.
+Representative accepted full owners now include the Hint
+Initialize131, Update571 and AddAutomaticEntry220, the GameManager
+owner Initialize134 and callback Cleanup137, and the StageCrossProduct77
+codegen helper. Source-written/authored provenance is kept separate
+from compiler-generated or indeterminate-origin exact bodies.
+The ANM 9,964-byte ExecuteScript, 7,020-byte ECL interpreter and
+GameCreateOwner40AF90 (83 native vs 86 target) still remain nonexact.
+Use the [current handoff](docs/RE_HANDOFF.md) and generated progress
+rather than treating any historical candidate score as exactness.
 
 Use `scripts/repo-python`; it enforces the locked Capstone package. Verify the
 private target before target work. Check toolchain declarations and run the

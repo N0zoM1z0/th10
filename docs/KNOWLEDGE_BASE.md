@@ -21,6 +21,22 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-02 source-epoch corrections
+
+The latest accepted *ledger counts* are generated in PROGRESS.md, not the
+old cumulative totals in dated campaign notes. The earlier
+ANM ExecuteScript 9960/9964/four-difference observation is superseded
+by a complete 9962/9964/two-difference proof at the 2026-11-02
+maintained source epoch. The latest retained EclVmContext::Run diagnostic
+is 6997/7020 (23 remaining ordinary bytes) with 189 bound fields.
+The original Sound PreloadBgm has a same-size but **nonexact** body;
+its earlier six-difference note must not override the later bounded
+365/369/four-register-byte observation. GameManagerCleanup's 1098/1105
+diagnostic predates new helper source and is historical until rebuilt.
+See the concise current RE_HANDOFF.md for open owners and proof paths.
+The old rows below are preserved as time-stamped evidence rather than
+silently rewritten as current acceptance.
+
 ## Current entry points
 
 Use [RE_HANDOFF.md](RE_HANDOFF.md) for the short continuation brief and
@@ -4798,7 +4814,7 @@ Authored exact is396/72283 bytes,26.42% provisional. See
 | --- | --- | --- | --- |
 | ANM-114 | observed / source-codegen improvement / non-exact | Grouped seven real locals and original vertex-count expressions recover TH10 radial LEA ESI,[EAX-1]/TEST/spill/FILD setup before coefficient divisions and remove native's late MOV ESI,EAX. Both current actual33-input eleven-TU and full32-input canonical ten-TU graphs emit9964/9964,90/92 equal groups,gap2 and7541/7995 diagnostic positions versus7478. Private positive and maintained-source all3 large bodies reproduce raw; actual Run/Enemy remain unchanged. All46 guards5335/all142 and canonical35 guards4424/all118 pass; five accepted units cold-replay. One-based vertex loop regresses; combined split flags fix Tick but reverse radial Z and are rejected. Adjacent TH095 declarations/loop are hypothesis only; TH10 closing writes/calls retained. Names/declaration order/bounds changed together, so original spelling or unique mechanism is unproved. Current45 absolute-memory references still pass21 literal payload and24 global/vector address checks; this is not exhaustive field or runtime validation. No new exact/case credit, ownership or phase-gate promotion. | Fresh local read-only target/mapped-text attestation; current compiler/cold/pinned field guards; docs/evidence/anm-radial-count/README.md |
 | ANM-115 | observed compiler diagnostic / unadopted hypothesis | A source-local initialized 32-bit flag view with a 2-bit flip group yields a complete 9964-byte ExecuteScript contribution, 92/92 target-sized case groups, gap 0 and 7982/7994 case positions. The retained structural comparison enumerates 350 fields and finds 12 ordinary mismatches; independent semantic bindings for the full parent and complete peer preservation are unfinished. All 36 guards covering 4618 bytes / 121 fields, strict ECL 6995/7020 / all 189 fields plus the 171-byte callee and bounded child routes pass. Adjacent TH09 suggests source shape only; original classes/TUs/layout and ANM exactness remain unknown. Maintained ANM stays 7541/7995; no source adoption or exact credit. | Source/artifact-pinned retained replay; docs/evidence/handoff-cleanup-20261024/README.md |
-| ANM-116 | observed / maintained source-codegen improvement / nonexact | Complete ExecuteScript now replays 9960/9964 after all 350 fields are independently bound, including 95 unchanged local/table destinations and 15 vector references using proper 12-byte bases/addends. An initialized two-bit axis flag value and consumed child91 script/layer record give case 7990/7994, 92/92 sizes, gap 0. Remaining bytes are child91 ECX/EDX layer at +113/+115 and second radial-vertex Z operands at +249A/+24A0; the old slow-Tick attribution was wrong. Selected/actual maintained 352 public owners are raw-identical; against before, other 351 are raw-identical. All 36 guards 4618/all121 and strict ECL 6995/7020/all189/62 plus 171-byte callee remain. Actual Player17/52 graph recompiles ANM, preserves 1380/1435/all49 and 8 guards 1753/all99, with other 518/519 public owners raw-identical. Five additional semantic identities grant no child/owner/origin credit; native Decrement68 versus target20 stays nonexact. No header, ABI, profile, recipe, exact-count or phase-gate change. | Fresh full mapped-text Ghidra attestation; independent target inventory; unchanged strict comparator; actual-source builds/public peer proofs; docs/evidence/anm-child-request-record/README.md |
+| ANM-116 | historical / superseded source-codegen improvement / nonexact | At its earlier source epoch ExecuteScript replayed 9960/9964 (superseded by the later 9962/9964 proof) after all 350 fields are independently bound, including 95 unchanged local/table destinations and 15 vector references using proper 12-byte bases/addends. An initialized two-bit axis flag value and consumed child91 script/layer record give case 7990/7994, 92/92 sizes, gap 0. Remaining bytes are child91 ECX/EDX layer at +113/+115 and second radial-vertex Z operands at +249A/+24A0; the old slow-Tick attribution was wrong. Selected/actual maintained 352 public owners are raw-identical; against before, other 351 are raw-identical. All 36 guards 4618/all121 and strict ECL 6995/7020/all189/62 plus 171-byte callee remain. Actual Player17/52 graph recompiles ANM, preserves 1380/1435/all49 and 8 guards 1753/all99, with other 518/519 public owners raw-identical. Five additional semantic identities grant no child/owner/origin credit; native Decrement68 versus target20 stays nonexact. No header, ABI, profile, recipe, exact-count or phase-gate change. | Fresh full mapped-text Ghidra attestation; independent target inventory; unchanged strict comparator; actual-source builds/public peer proofs; docs/evidence/anm-child-request-record/README.md |
 
 ## ECL Run storage controls (2026-10-21)
 
