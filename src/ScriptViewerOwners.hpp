@@ -43,6 +43,7 @@ struct ScriptViewerPopupOwnerView
     unsigned char opaque3C4[0xb884 - 0x3c4];
     __declspec(noinline) ScriptViewerPopupOwnerView();
     __declspec(noinline) int Initialize();
+    __declspec(noinline) int Update();
     ~ScriptViewerPopupOwnerView();
 };
 

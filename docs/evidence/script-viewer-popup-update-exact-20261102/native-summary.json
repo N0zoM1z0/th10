@@ -1,0 +1,65 @@
+{
+  "target_pe_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owner_update": {
+    "address": "0x0042B6F0",
+    "size": 134,
+    "sha256": "fb110ab350b53c7e5896bc5ebf67385022b86a3fc114227755c93a3be195eeb1",
+    "field_count": 6
+  },
+  "callback": {
+    "address": "0x0042B9A0",
+    "size": 7,
+    "sha256": "0c829e4069f7242da89a712a5f39a5b59df3297843a96a410149468aedfd5623",
+    "field_count": 1
+  },
+  "source": "src/ScriptViewerPopupCreate.cpp",
+  "source_sha256": "81ebe9fb5ce1e16b0c5fceef6885f8f0d10243138e80f4a8e06fb7ca8c80b994",
+  "actual_selected_colds": [
+    [
+      {
+        "unit": "script-viewer-popup-update",
+        "size": 134,
+        "matched_bytes": 134,
+        "fields": 6,
+        "image_sha256": "21d9b7a834996f9749fc622be31858422ca5b236ff6198faac5bf53d4e2a8092",
+        "pdb_guid": "3b4c64670ff0f94b98118c5f5fbfa3fc",
+        "pdb_age": 1
+      },
+      {
+        "unit": "script-viewer-popup-update-callback",
+        "size": 7,
+        "matched_bytes": 7,
+        "fields": 1,
+        "image_sha256": "21d9b7a834996f9749fc622be31858422ca5b236ff6198faac5bf53d4e2a8092",
+        "pdb_guid": "3b4c64670ff0f94b98118c5f5fbfa3fc",
+        "pdb_age": 1
+      }
+    ],
+    [
+      {
+        "unit": "script-viewer-popup-update",
+        "size": 134,
+        "matched_bytes": 134,
+        "fields": 6,
+        "image_sha256": "6d92da1eebedbbe5b7435348925ee1b6af3456013a346ce13eecd55aebfc108e",
+        "pdb_guid": "d5368656d2a90647a080f836ddb7ff42",
+        "pdb_age": 1
+      },
+      {
+        "unit": "script-viewer-popup-update-callback",
+        "size": 7,
+        "matched_bytes": 7,
+        "fields": 1,
+        "image_sha256": "6d92da1eebedbbe5b7435348925ee1b6af3456013a346ce13eecd55aebfc108e",
+        "pdb_guid": "d5368656d2a90647a080f836ddb7ff42",
+        "pdb_age": 1
+      }
+    ]
+  ],
+  "neighbor_constructor_guard": {
+    "unit": "script-viewer-popup-constructor",
+    "matched_bytes": 134,
+    "fields": 1
+  },
+  "full_game_or_runtime_verified": false
+}

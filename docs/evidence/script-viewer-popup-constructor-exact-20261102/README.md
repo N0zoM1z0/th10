@@ -52,3 +52,5 @@ nice -n 10 scripts/repo-python scripts/replay-exact-units.py \
 scripts/repo-python scripts/ci.py
 git diff --check
 ```
+
+**Later 2026-11-02 extension:** The same source graph now also recovers the separate popup-number tick/update owner **134/134** and its **7/7** fastcall callback. These are independently matched code functions with seven new target bindings; see [the update proof](../script-viewer-popup-update-exact-20261102/README.md). This does not resolve the nonexact popup initializer, factory or 540-byte Draw.

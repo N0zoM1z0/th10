@@ -5,24 +5,24 @@ inventory is provisional; reviewed boundary and origin states are counted below.
 
 | Measure | Count |
 | --- | ---: |
-| Tracked 1.00a function candidates | 1,820 |
-| Boundary reviewed | 1,820 |
+| Tracked 1.00a function candidates | 1,821 |
+| Boundary reviewed | 1,821 |
 | Boundary provisional | 0 |
 | Boundary needs focused review | 0 |
 | Origin review pending | 0 |
-| Confirmed authored functions | 747 |
-| Confirmed authored code bytes | 275,890 |
+| Confirmed authored functions | 748 |
+| Confirmed authored code bytes | 276,024 |
 | Classified exclusions | 520 |
 | Reviewed, origin indeterminate | 553 |
-| Source-present mappings | 1,239 |
-| Source-present with authored origin | 712 |
+| Source-present mappings | 1,241 |
+| Source-present with authored origin | 713 |
 | Source-present origin review pending | 0 |
-| Source-present origin indeterminate | 527 |
+| Source-present origin indeterminate | 528 |
 | Authored source-present exact backlog | 164 |
-| Canonical exact functions | 1,438 |
-| Canonical exact codegen bytes | 185,079 |
-| Canonical exact functions with authored origin | 548 |
-| Canonical exact authored bytes | 116,353 |
+| Canonical exact functions | 1,440 |
+| Canonical exact codegen bytes | 185,220 |
+| Canonical exact functions with authored origin | 549 |
+| Canonical exact authored bytes | 116,487 |
 
 The tracked-candidate denominator remains provisional because unresolved `.text`
 gaps can contain code, data, thunks, tables, and padding. While origin review,

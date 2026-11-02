@@ -1237,3 +1237,5 @@ GameCleanupController422220
 ScriptViewerPopupOwnerView::ScriptViewerPopupOwnerView
 ScriptViewerPopupOwnerView::Initialize
 GameCreateOwner42B660
+ScriptViewerPopupOwnerView::Update
+ScriptViewerPopupUpdate42B9A0
