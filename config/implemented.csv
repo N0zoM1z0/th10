@@ -1243,3 +1243,5 @@ ScriptViewerPopupOwnerView::Draw
 ScriptViewerPopupDraw42B9B0
 ScriptViewerBombOwnerView::RegisterTasks
 ScriptViewerCreateBomb
+ScriptViewerBombOwnerView::Update
+ScriptViewerBombUpdateCallback405840

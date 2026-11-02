@@ -40,6 +40,8 @@ struct ScriptViewerBombOwnerView
     unsigned char opaque040[8];
     ScriptViewerBombOwnerView();
     __declspec(noinline) int RegisterTasks();
+    __declspec(noinline) int Update();
+    __declspec(noinline) int EmitAuxiliary();
     ~ScriptViewerBombOwnerView();
 };
 typedef char ScriptViewerBombOwnerSize48[

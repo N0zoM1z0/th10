@@ -29295,6 +29295,23 @@ linkages = [
   { offset = 0x46, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
 ]
 
+# The separate original ten-byte fastcall adapter carries ECX owner to EDI
+# and CALLs the real 223-byte Bomb Update member. Update remains nonexact.
+[units.script-viewer-bomb-update-callback]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewerBombCreate.cpp"
+support_sources = ["src/Chain.cpp", "src/ScriptViewerLifecycle.cpp", "src/AnmManager.cpp"]
+output_dir = "build/match-linked/ScriptViewerBombUpdate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreateBomb@@YAPAXXZ"
+functions = ["ScriptViewerBombUpdateCallback405840"]
+symbol = "?ScriptViewerBombUpdateCallback405840@@YIHPAX@Z"
+target_address = 0x00405840
+size = 10
+linkages = [{ offset = 0x04, type = "REL32", symbol = "?Update@ScriptViewerBombOwnerView@@QAEHXZ", target = 0x00405750 }]
+
 [units.script-viewer-bomb-destructor]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewerLifecycle.cpp"

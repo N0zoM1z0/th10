@@ -48,13 +48,13 @@ config/matches.csv. Generate ledger statistics with:
 
 | Measure | 2026-11-02 accepted state |
 | --- | ---: |
-| Tracked target extents / reviewed boundaries | 1,822 / 1,822 |
-| Source-present target mappings | 1,245 |
-| Canonical exact owners / bytes | **1,442 / 185,389** |
+| Tracked target extents / reviewed boundaries | 1,823 / 1,823 |
+| Source-present target mappings | 1,247 |
+| Canonical exact owners / bytes | **1,443 / 185,399** |
 | Reviewed authored exact owners / bytes | **551 / 116,656** |
 | Reviewed authored byte denominator | 276,024 (provisional) |
-| Authored source-present nonexact backlog | 165 |
-| Classified excluded / origin-indeterminate owners | 520 / 554 |
+| Authored source-present nonexact backlog | 166 |
+| Classified excluded / origin-indeterminate owners | 520 / 555 |
 
 These values are generated from current ledgers. The denominator is not
 an established total for all original game-authored code.
@@ -63,6 +63,7 @@ an established total for all original game-authored code.
 
 | Area | Accepted full-owner result | Reproduce / evidence |
 | --- | --- | --- |
+| **Bomb Update @0x00405750 / callback @0x00405840** | Full **223-byte** real Update source now maintained, current native **220/223 NONEXACT**; independent **10/10 codegen exact** callback with target-bound CALL; two separate colds, old Bomb lifecycle **306/306** guards | [Bomb update/callback proof](evidence/script-viewer-bomb-update-callback-exact-20261102/README.md) |
 | **ScriptViewer Bomb register/create @0x004055C0 / 0x004056B0** | **84/84 + 85/85 authored exact** in two independent colds, all 13 external fields strictly bound. Bomb destructor137 selected-cold guard; 223-byte Update and 10-byte callback remain separate. | [Bomb creator proof](evidence/script-viewer-bomb-creator-exact-20261102/README.md) |
 | **Popup insertion @0x0042B9C0 / ItemManager** | Rejoined **eight original calls** and popup constructor/teardown to the single shared global **0x477840**; full 167-byte insertion implementation moved to shared Popup owner (native **171/167 NONEXACT**). 470/470 previously exact guarded bytes selected cold. | [Shared owner and field evidence](evidence/popup-shared-owner-20261102/README.md) |
 | **Popup Draw @0x0042B780 / draw callback @0x0042B9B0** | Complete 540-byte Draw **source now maintained**, current PDB **537/540 nonexact** (15 native field slots); distinct 10-byte draw callback maps but differs in 3 register bytes. Three neighboring exact owners retain 275/275 in selected cold. **Zero exact credit.** | [Complete Draw source / nonexact proof](evidence/script-viewer-popup-draw-source-20261102/README.md) |

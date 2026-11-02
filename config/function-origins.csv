@@ -109,6 +109,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004056B0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
 0x00405730,unknown,ScriptViewer,indeterminate,unknown,script-viewer-native-lifecycle-2026-10-19
 0x00405750,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x00405840,unknown,Bomb,indeterminate,unknown,script-viewer-bomb-update-callback-20261102
 0x00405850,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00405860,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x004059F0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17

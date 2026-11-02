@@ -36,6 +36,65 @@ int ScriptViewerBombOwnerView::RegisterTasks()
     return 0;
 }
 
+// AnmVM tree position propagation and distinct bomb-effect emission
+// are external source-bound functions; never substitute a fabricated ABI.
+#include "EnemyGameState.hpp"
+extern int g_GameStatisticsIndex0;
+
+// Target 0x405750: stateful per-frame Bomb owner update. The input is the
+// 0x48-byte controller, whose active VM belongs to the ANM render manager.
+int ScriptViewerBombOwnerView::Update()
+{
+    int currentMode = mode28;
+    if (currentMode == 0)
+        return 1;
+    if (--currentMode == 0)
+    {
+        int vmId = static_cast<int>(vmId2C);
+        AnmRenderManagerView *manager = g_AnmRenderManagerView;
+        AnmVmView *vm = manager->FindVm(AnmVmIdView(vmId));
+        if (vm == NULL)
+        {
+            vmId2C = 0;
+            mode28 = 0;
+            return 1;
+        }
+        EnemyGameStateView *state = g_EnemyGameState;
+        if ((state->flags378C & 1u) != 0 &&
+            ((state->spellId >= 93 && state->spellId <= 96) ||
+             state->spellId == 109))
+            position30.y -= 0.5f;
+        else if (g_GameStatisticsIndex0 == 0)
+            position30.y -= 1.0f;
+        else
+            position30.y -= 1.3f;
+
+        AnmFloat3View screenPosition;
+        screenPosition.x = position30.x + 224.0f;
+        screenPosition.y = position30.y + 16.0f;
+        screenPosition.z = position30.z;
+        manager->SetVmPosition(AnmVmIdView(static_cast<int>(vmId2C)),
+            &screenPosition);
+        unknown03C = *reinterpret_cast<unsigned int *>(
+            reinterpret_cast<unsigned char *>(vm) + 0x40);
+        EmitAuxiliary();
+    }
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
+    timer.Tick();
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
+    return 1;
+}
+
+// Target 0x405840 is an independent ECX update chain callback.
+int __fastcall ScriptViewerBombUpdateCallback405840(void *owner)
+{
+    return static_cast<ScriptViewerBombOwnerView *>(owner)->Update();
+}
+
 // Original 0x4056B0 creates the owner and tears it down on registration
 // failure. The nullable branch is an original codegen constraint.
 void *ScriptViewerCreateBomb()
