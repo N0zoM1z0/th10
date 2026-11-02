@@ -412,6 +412,22 @@ See docs/evidence/result-menu-resume-exact-20261102/README.md.
 
 | ID | State | Durable fact or constraint | Evidence |
 | --- | --- | --- | --- |
+### 2026-11-02 ECL Run 7020-byte owner refinement
+
+The maintained EclVmContext::Run codegen now matches 6997/7020
+ordinary target bytes, up from6995/7020, under actual two-TU
+VC7.1 /GL cold reconstruction. A local const volatile first
+LENGTH_SQUARED scalar x repairs two original x/y stack-home
+displacements at+0x181B/+0x182B, with no newly lost ordinary
+byte positions. All189 location-bound fields,62 internal
+local destinations and the trailing selector byte remain
+compared; the 23 remaining differences are not granted credit.
+Six selected existing ECL target-exact units still cold-pass859
+bytes. This documents measured source/codegen improvement,
+not a claim about original volatile qualifiers, exactness,
+physical TU, product or runtime. See
+docs/evidence/ecl-length-squared-stack-20261102/README.md.
+
 | ECLVM-001 | observed / corroborated | `EclVmContext::Run @ 0x0044E1A0` is the generic TH10 typed-stack ECL interpreter beneath the Enemy-specific `0x0040E770` high-opcode dispatcher. The target checks `float(instruction.time) <= currentTime`, gates on the context/instruction difficulty masks, dispatches 59 active opcodes in `0x00..0x57`, and forwards the remaining 29 selector values plus every opcode outside that range through host vtable slot zero. Its `0x1024`-byte context has time/instruction at `+0/+4`, a `0x1000`-byte stack at `+8`, stack top/frame base at `+0x1008/+0x100C`, thread id/host at `+0x1010/+0x1014`, thread control/difficulty at `+0x1018/+0x101C`, and flags at `+0x1020`. The maintained core covers call/return/jump, threads, frames, typed operand/local/host resolution, arithmetic/comparisons, logical/bitwise operations and trigonometric/vector instructions. Raw opcode `0x55` executes integer `NEG` on the float storage dword before pushing type `f`; source preserves that observed behavior. The reviewed physical owner is `0x0044E1A0-0x0044FD0B` = 7,020 bytes, including two alignment bytes, the 60-entry destination table and 88-byte selector table after code ends at `0x0044FBC1`. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | ECLVM-002 | observed / nested-stack-owner | `EclVmContext + 0x08` is a distinct `0x1008`-byte `EclVmStackView`, containing `data[0x1000]`, `stackTop` at stack `+0x1000` and `frameBase` at stack `+0x1004`; the enclosing context remains exactly `0x1024` bytes with those fields at context `+0x1008/+0x100C`. `Push @ 0x004505B0` optionally emits a four-byte typed-slot tag and copies an arbitrary-sized value. `EnterFrame @ 0x00450690` reserves locals, saves the prior frame base and publishes the prior top. `LeaveFrame @ 0x004506D0` restores the saved base and resets the top to the frame captured on entry. Their reviewed target ABIs use the nested stack receiver in private EAX. | Hash-attested target code and callers; Factory-native Ghidra helper decompilation; maintained exact-size layout assertions and natural source |
 | ECLVM-003 | observed / recovered-missed-owner | Direct target review recovers the Ghidra-missed `EclVmStackView::Pop @ 0x00450610-0x00450689` as a 122-byte owner ending in `RET 4`, followed by six `CC` bytes before `EnterFrame`. Its private ABI uses EAX for the nested stack receiver, ECX for byte count, BL for requested scalar type and one stack output pointer. It copies the value, optionally consumes a four-byte type slot and converts stored `i`/`f` values when the requested type differs. | Complete hash-attested target disassembly and neighboring boundaries; exact linked contribution; maintained natural source |

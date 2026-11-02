@@ -1,5 +1,17 @@
 # TH10 handoff — 2026-11-02
 
+## Large ECL Run 7020-byte source checkpoint (2026-11-02)
+
+The complete 7020-byte EclVmContext::Run improves from
+6995/7020 to 6997/7020 ordinary bytes matched, preserving
+all189 strict original target field bindings (62 locals), table
+and terminal selector. A source-local const volatile x in the
+LENGTH_SQUARED case fixes only two stack-home offsets
+(+0x181B/+0x182B) without introducing new differences. Six
+affected existing ECL exact guards cold-pass859/859. This is
+nonexact large-owner source improvement; exact credit unchanged.
+See [evidence](evidence/ecl-length-squared-stack-20261102/README.md).
+
 ## Main dialog 233-byte source scheduling checkpoint (2026-11-02)
 
 MainConfigurationDialogProc improves from208/233 to216/233 with
