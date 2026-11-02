@@ -194,6 +194,23 @@ cache labels below retain their dated meaning; they are not current gates.
 
 ## Frontend
 
+### 2026-11-02 StageCrossProduct full native target body
+
+The reviewed target 0x00421B90..0x00421BDC is a
+complete 77-byte vector cross product without independently
+observed entry xrefs. In the real StageCreate ten-TU /GL /GS graph,
+the maintained src/StageDraw.cpp StageCrossProduct contributes
+the exact same PDB-owned 77 bytes raw, with zero external
+linkage fields and all original instructions decoded.
+Two independent selected colds each preserve this 77-byte
+body and StageCameraStateView::ConfigureCamera330, **407/407**
+with all ten existing external fields on the caller. This
+adds one canonical codegen owner and 77 exact bytes, but the
+original entry/provenance remains indeterminate. No authored
+credit, full-product or runtime assertion.
+See docs/evidence/stage-cross-product-exact-20261102/README.md.
+
+
 ### 2026-11-02 RNG duplicate physical target body exact
 
 The independently reviewed, CC-bounded 0x0044BA30..0x0044BA7D

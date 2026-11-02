@@ -26763,6 +26763,22 @@ linkages = [
 ]
 
 # Complete stage camera in the real StageCreate registration graph.
+[units.stage-cross-product-00421b90]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp", "src/MainViewport.cpp"]
+pdb_source = "src/StageDraw.cpp"
+output_dir = "build/match-linked/StageViewport"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+functions = ["StageCrossProduct"]
+symbol = "?StageCrossProduct@@YAPAUAnmFloat3View@@PAU1@PBU1@1@Z"
+target_address = 0x00421B90
+size = 77
+linkages = []
+
 [units.stage-configure-camera]
 artifact_kind = "linked-pe"
 source = "src/StageScript.cpp"

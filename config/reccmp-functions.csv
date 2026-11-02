@@ -1223,3 +1223,4 @@ ReplayAppendRecord,0x0042A8A0,function
 GameRestoreReplayState,0x0042A6A0,function
 GamePrepareDummyMusic,0x00420C00,function
 GamePrepareGuiReuse414570,0x00414570,function
+StageCrossProduct,0x00421B90,function

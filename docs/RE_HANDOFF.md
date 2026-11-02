@@ -1,5 +1,18 @@
 # TH10 handoff — 2026-11-02
 
+## Exact Stage vector cross-product physical target (2026-11-02)
+
+The previously uncredited reviewed but unreferenced 77-byte
+0x00421B90 target body matches StageDraw.cpp StageCrossProduct
+raw-exact. Two independent selected real ten-TU /GL /GS StageCreate
+native colds preserve this full owner and the 330-byte
+StageCameraStateView::ConfigureCamera, **407/407** per cold
+with ten existing caller fields. Adds **77 canonical exact bytes**,
+but no authored-origin credit because the source compiler
+provenance/independent target entry is unresolved. No broad
+cold replay. See
+[evidence](evidence/stage-cross-product-exact-20261102/README.md).
+
 ## RNG duplicate target exact owner at 0x0044BA30 (2026-11-02)
 
 Recovered the previously uncredited CC-delimited complete
@@ -209,8 +222,8 @@ There is no running compiler/linker job or unfinished source edit.
 | --- | ---: |
 | Reviewed authored owned bytes exact | 115,334 / 275,890 |
 | Authored exact owners | 540 |
-| Total canonical exact owners / codegen bytes | 1,425 / 183,687 |
-| Source mappings / authored mappings / authored exact backlog | 1,224 / 703 / 163 |
+| Total canonical exact owners / codegen bytes | 1,426 / 183,764 |
+| Source mappings / authored mappings / authored exact backlog | 1,225 / 703 / 163 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
