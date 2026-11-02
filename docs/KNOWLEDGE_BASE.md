@@ -194,6 +194,21 @@ cache labels below retain their dated meaning; they are not current gates.
 
 ## Frontend
 
+### 2026-11-02 BulletRuntimeView destructor codegen owner
+
+Complete original 0x00405DE0..0x00405E01 is a 34-byte
+optional-buffer destructor with a single REL32 free call. In the
+real ScriptViewerCreate 14-source graph the PDB-owned
+??1BulletRuntimeView@@QAE@XZ reproduces every ordinary byte and
+strictly binds free @0x00452422. Two independent selected colds
+preserve the destructor34, Create67 and ReleaseEnemies19
+(120/120 common bytes); one additionally preserves
+BulletResetPool45 (165/165). This is 34 additional *canonical*
+exact codegen bytes with no authored-origin credit or
+original compiler/source-TU claim. See
+docs/evidence/bullet-runtime-generated-destructor-exact-20261102/README.md.
+
+
 ### 2026-11-02 full GameCleanupOwner40AF00 source/Chain closure
 
 The original reviewed authored GameManager helper 0x0040AF00

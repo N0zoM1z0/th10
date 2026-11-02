@@ -1,5 +1,18 @@
 # TH10 handoff — 2026-11-02
 
+## Exact BulletRuntimeView destructor at 0x00405DE0 (2026-11-02)
+
+The reviewed complete 34-byte bullet-runtime optional-buffer
+destructor now has strict target/native codegen exactness, with
+the original _free @0x00452422 call bound. The real
+ScriptViewerCreate 14-source /GL source graph emits the complete
+PDB-owned destructor; two independent selected colds preserve
+it plus Create67 and ReleaseEnemies19 (at least **120/120**);
+one selected cold also retains BulletResetPool45 (**165/165**).
+This adds 34 canonical codegen exact bytes only: original
+hand-written versus generated origin remains indeterminate.
+See [evidence](evidence/bullet-runtime-generated-destructor-exact-20261102/README.md).
+
 ## Exact game cleanup owner @0x0040AF00 (2026-11-02)
 
 The previously unimplemented reviewed authored 137-byte
@@ -254,8 +267,8 @@ There is no running compiler/linker job or unfinished source edit.
 | --- | ---: |
 | Reviewed authored owned bytes exact | 115,471 / 275,890 |
 | Authored exact owners | 541 |
-| Total canonical exact owners / codegen bytes | 1,427 / 183,901 |
-| Source mappings / authored mappings / authored exact backlog | 1,226 / 704 / 163 |
+| Total canonical exact owners / codegen bytes | 1,428 / 183,935 |
+| Source mappings / authored mappings / authored exact backlog | 1,227 / 704 / 163 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
