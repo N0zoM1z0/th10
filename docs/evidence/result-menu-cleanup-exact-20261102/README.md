@@ -83,3 +83,5 @@ nice -n 10 scripts/repo-python scripts/replay-exact-units.py \
 scripts/repo-python scripts/ci.py
 git diff --check
 ```
+
+**Additional integrated producer receipt:** the complete constructor, initializer, creator, and cleanup now also replay in one actual five-source artifact, twice independently, **621/621** with 33 bound fields. See [integrated lifecycle](../result-menu-integrated-lifecycle-20261102/README.md). No duplicate exact-byte credit is assigned.
