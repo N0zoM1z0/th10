@@ -4682,6 +4682,26 @@ Source mappings rise602->605, authored exact396->397 and72283->72387 bytes.
 
 ## Hint entry copy and initialization controls (2026-10-22)
 
+### 2026-11-02 HintEntryView constructor exactness (supersedes older nonexact candidate)
+
+The complete 51-byte HintEntryView::HintEntryView at original 0x00418D00
+now replays *raw byte-for-byte* in the real LoadHintFile five-TU /GL /GS
+compiler graph. The prior direct link.payload=this spelling gave the
+wrong store order: the self link was written after the packed BGRA and
+remaining stores. A natural local HintLinkView reference to that existing
+embedded link naturally preserves target self-link-first scheduling and
+the target XOR EAX / PUSH EDI prologue. No volatile storage, compiler
+barrier, ABI hack, or target bytes are introduced. Two independent cold
+replays verify complete51/51 with **zero linked fields**, alongside
+HintReadLine260 and HintLinkView::Append52, 363/363 per build. Scoped
+owner/draw and clear/Caution guard groups also pass73 and183 bytes. One
+canonical codegen function /51 bytes is added, with no authored-origin
+credit: the constructor remains origin indeterminate. The earlier 37/51
+notes below are historical and superseded by this native proof. The
+1498-byte loader and 1308/1317 ConsumeEntries remain nonexact.
+See docs/evidence/hint-entry-constructor-exact-20261102/README.md.
+
+
 ### 2026-10-31 HintInitialize complete native closure (supersedes older 4-byte residual)
 
 `HintOwnerView::Initialize @ 0x00418E30..0x00418EB2` now accepts full

@@ -1,5 +1,17 @@
 # TH10 handoff — 2026-11-02
 
+## Exact Hint entry constructor (2026-11-02)
+
+The complete HintEntryView::HintEntryView at 0x00418D00 now
+matches **51/51 original bytes raw-equal** using an ordinary embedded
+link reference (no memory barrier or synthetic register ABI). Two
+independent five-TU source cold builds preserve existing ReadLine260
+and Append52: **363/363** each. Selected Hint owner/draw73 and
+clear/Caution183 also cold-pass; no full historical replay was run.
+Original constructor source/optimizer ancestry is indeterminate, so
+canonical codegen grows by51 bytes but authored credit remains fixed.
+See [source and native proof](evidence/hint-entry-constructor-exact-20261102/README.md).
+
 ## Exact 3D DirectSound buffer leaf (2026-11-02)
 
 Recovered the previously missing CSound::Get3DBuffer at 0x0044D400 in
@@ -73,7 +85,7 @@ There is no running compiler/linker job or unfinished source edit.
 | --- | ---: |
 | Reviewed authored owned bytes exact | 115,040 / 275,890 |
 | Authored exact owners | 538 |
-| Total canonical exact owners / codegen bytes | 1,419 / 183,226 |
+| Total canonical exact owners / codegen bytes | 1,420 / 183,277 |
 | Source mappings / authored mappings / authored exact backlog | 1,222 / 703 / 165 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 

@@ -19,8 +19,8 @@ inventory is provisional; reviewed boundary and origin states are counted below.
 | Source-present origin review pending | 0 |
 | Source-present origin indeterminate | 519 |
 | Authored source-present exact backlog | 165 |
-| Canonical exact functions | 1,419 |
-| Canonical exact codegen bytes | 183,226 |
+| Canonical exact functions | 1,420 |
+| Canonical exact codegen bytes | 183,277 |
 | Canonical exact functions with authored origin | 538 |
 | Canonical exact authored bytes | 115,040 |
 

@@ -154,7 +154,8 @@ HintEntryView::HintEntryView()
     memset(this, 0, sizeof(*this));
     link.next = 0;
     link.previous = 0;
-    link.payload = this;
+    HintLinkView &linkView = link;
+    linkView.payload = this;
     color = 0xffffffffu;
     time = 300;
     scale = 1.0f;
