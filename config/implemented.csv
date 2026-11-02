@@ -1234,3 +1234,6 @@ ResultMenuView::Initialize
 GameCreateController
 ResultMenuMarkTasks422200
 GameCleanupController422220
+ScriptViewerPopupOwnerView::ScriptViewerPopupOwnerView
+ScriptViewerPopupOwnerView::Initialize
+GameCreateOwner42B660

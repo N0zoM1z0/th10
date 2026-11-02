@@ -40,9 +40,14 @@ struct ScriptViewerPopupOwnerView
     unsigned int unknown010;
     unsigned int unknown014;
     AnmVmView vm;
+    unsigned char opaque3C4[0xb884 - 0x3c4];
+    __declspec(noinline) ScriptViewerPopupOwnerView();
+    __declspec(noinline) int Initialize();
     ~ScriptViewerPopupOwnerView();
 };
 
+typedef char ScriptViewerPopupOwnerTargetSizeB884[
+    (sizeof(ScriptViewerPopupOwnerView) == 0xb884) ? 1 : -1];
 typedef char ScriptViewerPopupVmOffset[
     (offsetof(ScriptViewerPopupOwnerView, vm) == 0x18 &&
      offsetof(ScriptViewerPopupOwnerView, vm) +

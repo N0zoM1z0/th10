@@ -1235,3 +1235,6 @@ ResultMenuView::Initialize,0x00422150,function
 GameCreateController,0x00422360,function
 ResultMenuMarkTasks422200,0x00422200,function
 GameCleanupController422220,0x00422220,function
+ScriptViewerPopupOwnerView::ScriptViewerPopupOwnerView,0x0042B430,function
+ScriptViewerPopupOwnerView::Initialize,0x0042B4D0,function
+GameCreateOwner42B660,0x0042B660,function

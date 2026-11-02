@@ -49,8 +49,8 @@ config/matches.csv. Generate ledger statistics with:
 | Measure | 2026-11-02 accepted state |
 | --- | ---: |
 | Tracked target extents / reviewed boundaries | 1,820 / 1,820 |
-| Source-present target mappings | 1,236 |
-| Canonical exact owners / bytes | **1,437 / 184,945** |
+| Source-present target mappings | 1,239 |
+| Canonical exact owners / bytes | **1,438 / 185,079** |
 | Reviewed authored exact owners / bytes | **548 / 116,353** |
 | Reviewed authored byte denominator | 275,890 (provisional) |
 | Authored source-present nonexact backlog | 162 |
@@ -63,6 +63,7 @@ an established total for all original game-authored code.
 
 | Area | Accepted full-owner result | Reproduce / evidence |
 | --- | --- | --- |
+| **ScriptViewer popup constructor @0x0042B430** | **134/134 full-owner codegen exact**, one global field; two independent four-TU colds, bomb destructor137 guard; initializer145 and factory71 remain nonexact | [Popup constructor proof](evidence/script-viewer-popup-constructor-exact-20261102/README.md) |
 | **ResultMenu cleanup @0x00422220** | **311/311 authored exact**, 18 strict fields and all 16 local branches; two independent selected colds; neighboring three lifecycle owners preserve 310/310 | [Complete cleanup proof](evidence/result-menu-cleanup-exact-20261102/README.md)  with [integrated 621/621 five-source double-cold](evidence/result-menu-integrated-lifecycle-20261102/README.md) |
 | ResultMenu lifecycle @0x004220E0 / 0x00422150 / 0x00422360 | **101+142+67 = 310/310** exact in two-source real graph, 15 strictly bound fields; constructor origin indeterminate; two independent scoped cold links. Existing update206 and draw callback7 guarded | [Lifecycle proof](evidence/result-menu-lifecycle-exact-20261102/README.md) |
 | SptTestCreate @0x0042BF30 | **67/67 authored exact**, five strictly bound calls; real constructor145 and registration84 selected-cold guard | [Full factory proof](evidence/spt-test-create-exact-20261102/README.md) |
