@@ -1,0 +1,234 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_owner_address": "0x0040AF00",
+  "full_owner_size": 137,
+  "target_owner_sha256": "71d0d3702cd6e7c9d2d001c65cfe6931b24ceac993da86ad9df604d94b1b1b8e",
+  "full_instruction_count": 40,
+  "source_file": "src/GameManager.cpp",
+  "source_sha256": "bbde33e1a994107f972c118a4766e9d71284f718d515713d0550c8f29c0a2428",
+  "native_symbol": "?GameCleanupOwner40AF00@@YGXPAUGameChainOwnerView@@@Z",
+  "pdb_module_index": 1,
+  "extent_source": "pdb-section-contribution",
+  "decoded_bytes": 137,
+  "normalization_complete": true,
+  "target_bound_fields": [
+    {
+      "addend": 0,
+      "candidate_target": "0x004041B8",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0110",
+      "local": false,
+      "offset": "0x7",
+      "symbol": "__imp__EnterCriticalSection@4",
+      "target": "0x004660B0",
+      "target_encoded_value": "0x004660B0",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004041BC",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0111",
+      "local": false,
+      "offset": "0xE",
+      "symbol": "__imp__LeaveCriticalSection@4",
+      "target": "0x004660B4",
+      "target_encoded_value": "0x004660B4",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004040F4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0061",
+      "local": false,
+      "offset": "0x1B",
+      "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+      "target": "0x00491BE4",
+      "target_encoded_value": "0x00491BE4",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 1612,
+      "candidate_target": "0x004047D8",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0099",
+      "local": false,
+      "offset": "0x22",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "target_encoded_value": "0x00492274",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 1780,
+      "candidate_target": "0x00404880",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0099",
+      "local": false,
+      "offset": "0x2A",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "target_encoded_value": "0x0049231C",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x00402620",
+      "linked_symbol": "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z",
+      "local": false,
+      "offset": "0x33",
+      "symbol": "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z",
+      "target": "0x00449F60",
+      "target_encoded_value": "0x0003F029",
+      "type": "REL32",
+      "width": 4
+    },
+    {
+      "addend": 1612,
+      "candidate_target": "0x004047D8",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0099",
+      "local": false,
+      "offset": "0x38",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "target_encoded_value": "0x00492274",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 1780,
+      "candidate_target": "0x00404880",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0099",
+      "local": false,
+      "offset": "0x40",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "target_encoded_value": "0x0049231C",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x004040F4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0061",
+      "local": false,
+      "offset": "0x4F",
+      "symbol": "?g_Chain@th10@@3PAUChain@1@A",
+      "target": "0x00491BE4",
+      "target_encoded_value": "0x00491BE4",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 1612,
+      "candidate_target": "0x004047D8",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0099",
+      "local": false,
+      "offset": "0x56",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "target_encoded_value": "0x00492274",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 1780,
+      "candidate_target": "0x00404880",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0099",
+      "local": false,
+      "offset": "0x5E",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "target_encoded_value": "0x0049231C",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x00402620",
+      "linked_symbol": "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z",
+      "local": false,
+      "offset": "0x67",
+      "symbol": "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z",
+      "target": "0x00449F60",
+      "target_encoded_value": "0x0003EFF5",
+      "type": "REL32",
+      "width": 4
+    },
+    {
+      "addend": 1612,
+      "candidate_target": "0x004047D8",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0099",
+      "local": false,
+      "offset": "0x6C",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "target_encoded_value": "0x00492274",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 1780,
+      "candidate_target": "0x00404880",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0099",
+      "local": false,
+      "offset": "0x74",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "target_encoded_value": "0x0049231C",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x00404148",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+      "local": false,
+      "offset": "0x7D",
+      "symbol": "?g_GameOwner4776FC@@3PAUGameChainOwnerView@@A",
+      "target": "0x004776FC",
+      "target_encoded_value": "0x004776FC",
+      "type": "DIR32",
+      "width": 4
+    }
+  ],
+  "ordinary_differences": [],
+  "two_independent_cold_replays": [
+    {
+      "image_sha256": "c699e440f579a2d7f9f6a5a2ed8ffc5b625ee4c1289ceb654b61679b7d3c2282",
+      "pdb_guid": "177042794d2b634fa7a5a15b3d41a42f",
+      "matched_bytes": 137,
+      "unit_count": 1,
+      "artifact_count": 1,
+      "binding_count": 15
+    },
+    {
+      "image_sha256": "721bc5b55b0a6ad5fb0806422fdc313053b0a3fef3c6958ff564331698523312",
+      "pdb_guid": "489c078859d2f94aa89573dd7b6a5b86",
+      "matched_bytes": 137,
+      "unit_count": 1,
+      "artifact_count": 1,
+      "binding_count": 15
+    }
+  ],
+  "selected_existing_guards": {
+    "matched_bytes": 120,
+    "units": [
+      {
+        "name": "game-manager-mark-chains",
+        "size": 28,
+        "fields": 0
+      },
+      {
+        "name": "game-stage-transition-delay",
+        "size": 92,
+        "fields": 1
+      }
+    ]
+  },
+  "large_GameManagerCleanup_in_small_graph": "1110-byte producer against target 1105, remains nonexact",
+  "new_canonical_exact_bytes": 137,
+  "new_authored_exact_bytes": 137,
+  "original_source_TU_runtime_product_proven": false
+}

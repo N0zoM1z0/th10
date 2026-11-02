@@ -194,6 +194,48 @@ cache labels below retain their dated meaning; they are not current gates.
 
 ## Frontend
 
+### 2026-11-02 full GameCleanupOwner40AF00 source/Chain closure
+
+The original reviewed authored GameManager helper 0x0040AF00
+is now a complete 137-byte target PDB owner. A true
+GameManager.cpp + Chain.cpp /GL /GS /EHs graph restores both
+callback unregister arms, supervisor critical-section state
+and the correct g_GameOwner4776FC final publication. Isolating
+GameManager.cpp alone emits149 bytes, which is NOT exact.
+The real two-source graph matches137/137 ordinary bytes and all
+15 rigorously identified source/target fields in two independent
+colds, while two existing GameManager guards remain120/120.
+Although the bomb-owner destructor has the same normalized
+machine skeleton, its last global address is different; it
+cannot substitute for the actual game cleanup source identity.
+One authored and canonical exact owner adds137 bytes. The
+1105-byte parent GameManagerCleanup remains nonexact and there
+is no full-product/runtime claim.
+See docs/evidence/game-owner-40af00-exact-20261102/README.md.
+
+
+### 2026-11-02 GameCleanupOwner40AF00 full authored recovery
+
+The original target 0x0040AF00..0x0040AF88 is a reviewed
+authored 137-byte owner, reached from GameManagerCleanup.
+The final physical global is **g_GameOwner4776FC**, not
+the lookalike ScriptViewerBombOwnerView destructor
+global at 0x004776EC. The GameManager.cpp real
+source now unregisters both +8/+12 callback nodes
+under supervisor +0x64C critical section / +0x6F4
+lock depth using actual Chain methods and clears
+the correct 0x004776FC pointer. With Chain.cpp
+in the real source graph VC7.1 /GL /GS /EHs
+naturally emits the full 137-byte PDB owner,
+all 15 original IAT/Chain/global fields and RET4.
+Two independent selected colds pass 137/137; two
+selected prior GameManager owner guards pass120/120.
+Adds one authored and canonical exact function
+and137 bytes. The nonexact larger GameManagerCleanup
+and original physical source provenance remain open.
+See docs/evidence/game-owner-40af00-exact-20261102/README.md.
+
+
 ### 2026-11-02 StageCrossProduct full native target body
 
 The reviewed target 0x00421B90..0x00421BDC is a

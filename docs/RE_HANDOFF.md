@@ -1,5 +1,37 @@
 # TH10 handoff — 2026-11-02
 
+## Exact game cleanup owner @0x0040AF00 (2026-11-02)
+
+The previously unimplemented reviewed authored 137-byte
+GameCleanupOwner40AF00 now has natural C++ source. Linking
+GameManager.cpp with the **real Chain.cpp** recovers the target's
+two callback unregister operations and compact lock-depth writes,
+with all **15 external fields** bound. Two independent selected
+cold links pass **137/137**; existing GameManager MarkGameChains28
+and StageTransitionDelay92 selected guards remain **120/120**.
+The final clear targets g_GameOwner4776FC @0x004776FC,
+**not** the otherwise similar ScriptViewerBombOwnerView global
+@0x004776EC. Adds one authored/canonical exact owner (+137 bytes).
+The much larger GameManagerCleanup remains nonexact. See
+[evidence](evidence/game-owner-40af00-exact-20261102/README.md).
+
+## Authored GameCleanupOwner40AF00 complete exact owner (2026-11-02)
+
+Implemented the complete 137-byte original owner at
+0x0040AF00 as the real GameManager.cpp
+GameCleanupOwner40AF00 called by GameManagerCleanup.
+The target's two Chain unregisters, both
+MainSupervisorView critical-section/count updates and
+final **g_GameOwner4776FC**, not bomb global,
+are now recovered. Two independent real GameManager
+and Chain /GL /GS /EHs selected colds reproduce
+**137/137**, all15 original address fields; two
+prior GameManager source exact owners retain120/120.
+Adds **137 authored and canonical** exact bytes.
+GameManagerCleanup 1105 remains nonexact; there
+is no full replay or original TU/runtime proof.
+See [evidence](evidence/game-owner-40af00-exact-20261102/README.md).
+
 ## Exact Stage vector cross-product physical target (2026-11-02)
 
 The previously uncredited reviewed but unreferenced 77-byte
@@ -220,10 +252,10 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 115,334 / 275,890 |
-| Authored exact owners | 540 |
-| Total canonical exact owners / codegen bytes | 1,426 / 183,764 |
-| Source mappings / authored mappings / authored exact backlog | 1,225 / 703 / 163 |
+| Reviewed authored owned bytes exact | 115,471 / 275,890 |
+| Authored exact owners | 541 |
+| Total canonical exact owners / codegen bytes | 1,427 / 183,901 |
+| Source mappings / authored mappings / authored exact backlog | 1,226 / 704 / 163 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen

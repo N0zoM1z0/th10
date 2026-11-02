@@ -531,7 +531,34 @@ extern void __stdcall GameCleanupAnimation405F70(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupLinked41C1C0(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupOwner42B570(GameChainOwnerView *owner);
 extern void GamePrepareGuiReuse414570(GuiView *owner);
-extern void __stdcall GameCleanupOwner40AF00(GameChainOwnerView *owner);
+// Target 0x0040AF00 owns the two callback unregistrations for the
+// distinct owner published at 0x004776FC. Keep the target's two
+// critical-section transitions and clear that slot only after both.
+__declspec(noinline) void __stdcall GameCleanupOwner40AF00(
+    GameChainOwnerView *owner)
+{
+    GameChainElementView *task = owner->updateChain;
+    th10::Chain *chain = th10::g_Chain;
+    if (task != NULL)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(task));
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    task = owner->drawChain;
+    chain = th10::g_Chain;
+    if (task != NULL)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(task));
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    g_GameOwner4776FC = NULL;
+}
 extern void __stdcall GameCleanupLoader405620(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupOwner408AF0(GameAdditionalChainView *owner);
 extern void FrontEndQueueSoundCommand(const char *path, int opcode, int argument);
