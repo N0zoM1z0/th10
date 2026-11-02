@@ -2,6 +2,29 @@
 #define TH10_RESULT_MENU_HPP
 #include "FrontEnd.hpp"
 
+// This owner constructs its VM slots only through the final memset, unlike
+// AnmVmIdView's default constructor which writes a zero before the memset.
+// Keep the exact four-byte representation and delegate operations to the
+// existing VM-id interface without inventing an earlier initialization.
+struct ResultMenuVmIdStorage
+{
+    ResultMenuVmIdStorage() {}
+    ResultMenuVmIdStorage &operator=(AnmVmIdView id)
+    {
+        value = id.value;
+        return *this;
+    }
+    operator AnmVmIdView() const { return AnmVmIdView(value); }
+    void SetInterrupt(short interrupt)
+    {
+        reinterpret_cast<AnmVmIdView *>(this)->SetInterrupt(interrupt);
+    }
+    void SetFlag2() { reinterpret_cast<AnmVmIdView *>(this)->SetFlag2(); }
+    void ClearFlag2() { reinterpret_cast<AnmVmIdView *>(this)->ClearFlag2(); }
+    int value;
+};
+typedef char ResultMenuVmIdStorageSize04[(sizeof(ResultMenuVmIdStorage)==4)?1:-1];
+
 // Target-observed prefix through the pause ANM resource; allocation/constructor remain open.
 struct ResultMenuView
 {
@@ -9,11 +32,11 @@ struct ResultMenuView
     int state;
     unsigned char unknown008[8];
     AnmVmTimerView timer;
-    FrontEndCursorView cursor;
-    FrontEndCursorView keyboard;
-    AnmVmIdView mainVm;
-    AnmVmIdView secondaryVm;
-    AnmVmIdView auxiliaryVm;
+    ScriptViewerCursorView cursor;
+    ScriptViewerCursorView keyboard;
+    ResultMenuVmIdStorage mainVm;
+    ResultMenuVmIdStorage secondaryVm;
+    ResultMenuVmIdStorage auxiliaryVm;
     int nameIndex;
     int completed;
     int scoreUnavailable;
@@ -23,6 +46,11 @@ struct ResultMenuView
     unsigned char unknown2BD[3];
     float savedSpeed;
     AnmLoadedView *frontAnm;
+
+    // The original owner is allocated at 0x422360, constructed at 0x4220E0,
+    // and registered on both frame chains by 0x422150.
+    ResultMenuView();
+    int Initialize();
 };
 typedef char ResultMenuTimerAt10[(offsetof(ResultMenuView, timer)==0x10)?1:-1];
 typedef char ResultMenuCursorsAt24FC[(offsetof(ResultMenuView,cursor)==0x24 && offsetof(ResultMenuView,keyboard)==0xfc)?1:-1];

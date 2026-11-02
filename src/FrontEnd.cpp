@@ -3959,6 +3959,17 @@ AnmVmIdView ResultMenuFindScript(AnmVmIdView *id, int scriptIndex)
     return AnmVmIdView(static_cast<AnmVmView *>(node->owner)->id);
 }
 
+// ResultMenu slots have the same four-byte representation as VM IDs but
+// deliberately omit the default constructor's early zero stores.
+static void ResultMenuPendingThree(ResultMenuVmIdStorage *id)
+{
+    ResultMenuPendingThree(reinterpret_cast<AnmVmIdView *>(id));
+}
+static AnmVmIdView ResultMenuFindScript(ResultMenuVmIdStorage *id, int scriptIndex)
+{
+    return ResultMenuFindScript(reinterpret_cast<AnmVmIdView *>(id), scriptIndex);
+}
+
 // Target 0x421F60, GUI receiver in EAX; shared maintained score/storage views.
 void ResultMenuSynchronizeScore(GuiView *gui)
 {

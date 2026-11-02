@@ -1230,3 +1230,6 @@ ScriptViewerView::ScalarDeletingDestructor,0x0040A410,function
 GameOwner40AF90View::Initialize,0x0040AE70,function
 GameCreateOwner40AF90,0x0040AF90,function
 ClearKeyboardHighBits,0x0044B080,function
+ResultMenuView::ResultMenuView,0x004220E0,function
+ResultMenuView::Initialize,0x00422150,function
+GameCreateController,0x00422360,function
