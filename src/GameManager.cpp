@@ -1,4 +1,5 @@
 #include "Main.hpp" // Shield ANM imports before the Windows SDK.
+#include "GameErrorContext.hpp"
 #include "ItemManager.hpp"
 #include "ReplayChain.hpp"
 #include "ReplayTimingSource.hpp"
@@ -558,6 +559,73 @@ __declspec(noinline) void __stdcall GameCleanupOwner40AF00(
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
     g_GameOwner4776FC = NULL;
+}
+// Complete 0x18-byte game-owned animation/chain resource. The original
+// source identifier is not known; target 0x0040AF90 allocates this owner.
+struct GameOwner40AF90View
+{
+    unsigned int flags;
+    unsigned int reserved04;
+    th10::ChainElem *updateChain;
+    th10::ChainElem *drawChain;
+    AnmLoadedView *bulletAnm;
+    unsigned int reserved14;
+
+    __declspec(noinline) int Initialize();
+};
+typedef char GameOwner40AF90Size24[(sizeof(GameOwner40AF90View) == 24) ? 1 : -1];
+
+extern char g_GameOwnerBulletAnmErrorMessage[];
+namespace th10 { namespace leaf {
+    int Fn0040B050(void);
+    int Fn0040B060(void);
+} }
+
+// Target 0x0040AE70 preloads bullet.anm and registers two chain callbacks.
+int GameOwner40AF90View::Initialize()
+{
+    bulletAnm = g_AnmRenderManagerView->PreloadAnm(7, "bullet.anm");
+    if (bulletAnm == NULL)
+    {
+        th10::g_GameErrorContext.Log(g_GameOwnerBulletAnmErrorMessage);
+        return -1;
+    }
+    th10::ChainElem *task = th10::Chain::AllocElem(
+        reinterpret_cast<th10::ChainCallback>(&th10::leaf::Fn0040B050));
+    task->flags &= ~2u;
+    task->arg = this;
+    th10::g_Chain->AddToCalcChain(task, 23);
+    updateChain = task;
+    task = th10::Chain::AllocElem(
+        reinterpret_cast<th10::ChainCallback>(&th10::leaf::Fn0040B060));
+    task->flags &= ~2u;
+    task->arg = this;
+    th10::g_Chain->AddToDrawChain(task, 32);
+    drawChain = task;
+    return 0;
+}
+
+// Target 0x0040AF90 creates the owner and tears it down on init failure.
+void *GameCreateOwner40AF90()
+{
+    GameOwner40AF90View *owner = new GameOwner40AF90View;
+    if (owner != NULL)
+    {
+        memset(owner, 0, sizeof(*owner));
+        owner->flags |= 2u;
+        g_GameOwner4776FC = reinterpret_cast<GameChainOwnerView *>(owner);
+    }
+    if (owner->Initialize() != 0)
+    {
+        if (owner != NULL)
+        {
+            GameCleanupOwner40AF00(
+                reinterpret_cast<GameChainOwnerView *>(owner));
+            ::operator delete(owner);
+        }
+        return NULL;
+    }
+    return owner;
 }
 extern void __stdcall GameCleanupLoader405620(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupOwner408AF0(GameAdditionalChainView *owner);

@@ -194,6 +194,22 @@ cache labels below retain their dated meaning; they are not current gates.
 
 ## Frontend
 
+### 2026-11-02 Game owner 40AE70 creation/initializer source checkpoint
+
+The reviewed authored original 0x0040AE70 initializer is now a
+complete PDB-owned 134-byte exact function: fourteen original
+ANM bullet preload, error log, Chain callback allocation and
+registration fields are bound in the actual four-source VC7.1
+LTCG graph. Two selected independent cold links pass134/134,
+and an additional game cleanup guard passes137/137.
+A separately source-present caller at0x0040AF90 returns 83
+native bytes versus target86 and remains NONEXACT. This
+contributes one new authored/canonical exact owner (+134 bytes),
+not two. Original identifiers, physical TU and product/runtime
+closure remain unknown. See
+docs/evidence/game-owner-40ae70-initialize-exact-20261102/README.md.
+
+
 ### 2026-11-02 ScriptViewer scalar deleting destructor
 
 The original 27-byte owner at 0x0040A410 is now matched

@@ -28976,6 +28976,36 @@ linkages = [
 ]
 
 # Actual viewer release callback and real Chain helper preserve complete Bomb destructor.
+[units.game-owner-40ae70-initialize]
+artifact_kind = "linked-pe"
+source = "src/GameManager.cpp"
+support_sources = ["src/Chain.cpp", "src/AnmManager.cpp", "src/GameErrorContext.cpp"]
+output_dir = "build/match-linked/GameOwner40AE70"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?GameManagerCleanup@@YGXPAUGameManager@@@Z"
+functions = ["GameOwner40AF90View::Initialize"]
+symbol = "?Initialize@GameOwner40AF90View@@QAEHXZ"
+target_address = 0x0040AE70
+size = 134
+linkages = [
+  { offset = 0x02, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x07, type = "DIR32", symbol = "??_C@_0L@JHPPDGCE@bullet?4anm?$AA@", target = 0x0046CD88 },
+  { offset = 0x11, type = "REL32", symbol = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z", target = 0x00447280 },
+  { offset = 0x1D, type = "DIR32", symbol = "?g_GameOwnerBulletAnmErrorMessage@@3PADA", target = 0x0046CF74 },
+  { offset = 0x22, type = "DIR32", symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", target = 0x00474F70 },
+  { offset = 0x27, type = "REL32", symbol = "?Log@GameErrorContext@th10@@QAAPADPADZZ", target = 0x0044B810 },
+  { offset = 0x35, type = "DIR32", symbol = "?Fn0040B050@leaf@th10@@YAHXZ", target = 0x0040B050 },
+  { offset = 0x3A, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x45, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x53, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449AE0 },
+  { offset = 0x58, type = "DIR32", symbol = "?Fn0040B060@leaf@th10@@YAHXZ", target = 0x0040B060 },
+  { offset = 0x60, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x6C, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x7A, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+]
+
 [units.game-cleanup-owner-40af00]
 artifact_kind = "linked-pe"
 source = "src/GameManager.cpp"

@@ -1,5 +1,17 @@
 # TH10 handoff — 2026-11-02
 
+## New 134-byte game owner initializer and open creator (2026-11-02)
+
+The reviewed authored 0x0040AE70 initialization owner has natural
+source in GameManager.cpp and now strict **134/134 exact** codegen,
+with all14 target bindings. Two independent four-source selected
+cold links pass; the existing game owner cleanup137 also cold-passes.
+The related 0x0040AF90 creator is now source-present but **83/86
+NONEXACT**, with no partial or full owner credit. The two source
+functions and their cross-TU dependencies form a practical
+initialization/teardown continuation path. See
+[evidence](evidence/game-owner-40ae70-initialize-exact-20261102/README.md).
+
 ## Exact 27-byte ScriptViewer scalar deleting destructor (2026-11-02)
 
 Original target 0x0040A410 now has a complete 27/27
@@ -278,10 +290,10 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 115,471 / 275,890 |
-| Authored exact owners | 541 |
-| Total canonical exact owners / codegen bytes | 1,429 / 183,962 |
-| Source mappings / authored mappings / authored exact backlog | 1,228 / 704 / 163 |
+| Reviewed authored owned bytes exact | 115,605 / 275,890 |
+| Authored exact owners | 542 |
+| Total canonical exact owners / codegen bytes | 1,430 / 184,096 |
+| Source mappings / authored mappings / authored exact backlog | 1,230 / 706 / 164 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
