@@ -1249,3 +1249,5 @@ ScriptViewerBombOwnerView::EmitAuxiliary
 EnemyEffectWaitManager::ApplyPatternCancel
 InputEnumAxisRangeCallback
 InputEnumPadDeviceCallback
+InputInitializeDevices
+InputDeviceInitThread

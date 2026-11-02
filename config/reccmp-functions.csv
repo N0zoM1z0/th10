@@ -1250,3 +1250,5 @@ ScriptViewerBombOwnerView::EmitAuxiliary,0x00405AC0,function
 EnemyEffectWaitManager::ApplyPatternCancel,0x0041C800,function
 InputEnumAxisRangeCallback,0x0043BB30,function
 InputEnumPadDeviceCallback,0x0043BAF0,function
+InputInitializeDevices,0x0043B8D0,function
+InputDeviceInitThread,0x0043BA90,function
