@@ -65,3 +65,17 @@ void *GameCreateController()
     }
     return owner;
 }
+
+// Target 0x00422200: mark both frame callback elements for removal.
+// This only sets the flag; the full controller cleanup at 0x422220 later
+// unregisters them under the scheduler critical section.
+void ResultMenuMarkTasks422200(ResultMenuView *owner)
+{
+    th10::ChainElem *task = *reinterpret_cast<th10::ChainElem **>(
+        &owner->unknown008[0]);
+    if (task != NULL)
+        task->flags |= 2u;
+    task = *reinterpret_cast<th10::ChainElem **>(&owner->unknown008[4]);
+    if (task != NULL)
+        task->flags |= 2u;
+}

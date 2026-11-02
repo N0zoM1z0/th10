@@ -657,6 +657,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00422150,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x004221E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004221F0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
+0x00422200,unknown,,indeterminate,unknown,result-menu-mark-tasks-boundary-20261102
 0x00422220,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00422360,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x004223F0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
