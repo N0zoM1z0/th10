@@ -1,0 +1,77 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_address": "0x0044A0C0",
+  "target_bytes": 105,
+  "target_owner_sha256": "35af7bf413eea413af24bdcc336b1857d7a2cb28115e4615780b9452f5dbade5",
+  "source": "src/InputWinmmJoystickCapabilities.cpp",
+  "source_sha256": "6a28dc2c62cd9da2877cc448c49604c6bf57d5a6ff79b8325f9a4aa059f3f3ba",
+  "real_support": "src/GameErrorContext.cpp",
+  "profile": "VC7.1 SP1 /GL /GS /EHs",
+  "original_target_linkages": [
+    {
+      "offset": "0x06",
+      "kind": "DIR32",
+      "target": "0x00466280",
+      "symbol": "__imp__joyGetPosEx@8"
+    },
+    {
+      "offset": "0x35",
+      "kind": "DIR32",
+      "target": "0x00470580",
+      "symbol": "g_InputJoystickNotDetectedMessage"
+    },
+    {
+      "offset": "0x3A",
+      "kind": "DIR32",
+      "target": "0x00474F70",
+      "symbol": "g_GameErrorContext"
+    },
+    {
+      "offset": "0x3F",
+      "kind": "REL32",
+      "target": "0x0044B810",
+      "symbol": "GameErrorContext::Log"
+    },
+    {
+      "offset": "0x55",
+      "kind": "DIR32",
+      "target": "0x004918B8",
+      "symbol": "g_InputJoystickCaps"
+    },
+    {
+      "offset": "0x5D",
+      "kind": "DIR32",
+      "target": "0x0046627C",
+      "symbol": "__imp__joyGetDevCapsA@12"
+    }
+  ],
+  "two_independent_colds": [
+    {
+      "unit": "input-winmm-joystick-capabilities",
+      "size": 105,
+      "matched_bytes": 105,
+      "image_sha256": "73a845e2839b03bccdf0508abea4d94da5e54ab5cd3048b49bc0b39208e0a1ce",
+      "pdb_guid": "f004be893eee7a409124651c3b0902d5",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution",
+      "bound_fields": 6
+    },
+    {
+      "unit": "input-winmm-joystick-capabilities",
+      "size": 105,
+      "matched_bytes": 105,
+      "image_sha256": "d170bb8ee9e01712f2baf37cbd485be624ef61c8a781ebb1b136c2115bdf7db3",
+      "pdb_guid": "a4f43dfecb225144a053997bf3337347",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution",
+      "bound_fields": 6
+    }
+  ],
+  "first_cold_guard": {
+    "unit": "input-controller-buttons",
+    "bytes": 264,
+    "external_fields": 12,
+    "result": "exact"
+  },
+  "whole_game_or_runtime_proven": false
+}
