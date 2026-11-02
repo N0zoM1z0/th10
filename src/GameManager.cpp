@@ -608,10 +608,9 @@ int GameOwner40AF90View::Initialize()
 // Target 0x0040AF90 creates the owner and tears it down on init failure.
 void *GameCreateOwner40AF90()
 {
-    GameOwner40AF90View *owner = new GameOwner40AF90View;
+    GameOwner40AF90View *owner = new GameOwner40AF90View();
     if (owner != NULL)
     {
-        memset(owner, 0, sizeof(*owner));
         owner->flags |= 2u;
         g_GameOwner4776FC = reinterpret_cast<GameChainOwnerView *>(owner);
     }
