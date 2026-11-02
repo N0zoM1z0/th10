@@ -4658,12 +4658,16 @@ void GameCompleteStageTransition(ResultMenuView *menu)
 }
 
 // Target 0x422C30. This does not change state or clear the two primary IDs.
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 void ResultMenuResume(ResultMenuView *menu)
 {
     g_ResultGameManager->flags58 &= ~0x10;
     FrontEndQueueSoundCommand("UnPause", 7, 0);
     g_AnmRenderManagerView->MarkVmForDeletion(menu->auxiliaryVm);
     menu->auxiliaryVm.value = 0;
+    _ReadWriteBarrier();
     g_AnmGameSpeed = menu->savedSpeed;
 }
 

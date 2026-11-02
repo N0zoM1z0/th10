@@ -194,6 +194,25 @@ cache labels below retain their dated meaning; they are not current gates.
 
 ## Frontend
 
+### 2026-11-02 complete 74-byte ResultMenuResume exact owner
+
+The reviewed authored result/pause owner ResultMenuResume @0x00422C30
+is now fully canonical exact, 74/74 with all seven original
+global, string, Sound command, ANM deletion and speed address
+fields. Target machine code zeros auxiliaryVm.value before
+reading the saved game speed; the old 74-byte candidate loaded
+the speed before zeroing the ID, differing in twelve ordinary bytes.
+The maintained natural C++ adds only a scoped compiler
+_ReadWriteBarrier after the ID zero, preserving target
+dataflow and recovering the native schedule. Two independently
+selected actual 17-input EndingCreate /GL /GS /EHs
+cold links each pass ResultMenuResume74 and EndingCreate99,
+173/173 bytes. This adds 74 authored and canonical codegen
+bytes; no partial credit to UpdatePause, capture or ANM.
+Original source/TU, runtime and complete product are open.
+See docs/evidence/result-menu-resume-exact-20261102/README.md.
+
+
 | ID | State | Durable fact or constraint | Evidence |
 | --- | --- | --- | --- |
 | FRONTEND-001 | observed / inferred | Target review adds three Ghidra-missed front-end entries. `0x0042D260-0x0042D2D3` ends executable code at `0x0042D2B3` and owns an eight-entry absolute switch table through `0x0042D2D3`. `0x0042D2E0-0x0042D2E6` is `mov eax,ecx; jmp 0x0042CDF0`, and `0x0042D2F0-0x0042D2F6` is `mov eax,ecx; jmp 0x0042D260`; both are followed by CC padding and have target data references. The reviewed title/front-end chain identified `0x0042CDF0`, `0x0042D920` and `0x0042E5A0` as one coherent core recovery batch, subsequently completed in `FRONTEND-002`; that prioritization was inferred from target call structure and size rather than origin or exactness. | Direct target bytes/xrefs; Factory-native Ghidra callers/decompile; `scripts/rank-core-backlog.py` |

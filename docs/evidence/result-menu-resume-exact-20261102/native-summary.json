@@ -1,0 +1,145 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_owner_address": "0x00422C30",
+  "target_owner_size": 74,
+  "target_owner_sha256": "15bbf07f759e850064b7b1d7b7199083811490be1263d57b0bc61b465b38e0d4",
+  "source": "src/FrontEnd.cpp",
+  "source_sha256": "52ff5b584f3ae54673ec2ac8af19c02f2d16519bedd3aa8a07c020417a5b71d8",
+  "native_symbol": "?ResultMenuResume@@YAXPAUResultMenuView@@@Z",
+  "native_owner_size": 74,
+  "pdb_module_index": 12,
+  "extent_source": "pdb-section-contribution",
+  "normalization_complete": true,
+  "decoded_bytes": 74,
+  "strict_field_bindings": [
+    {
+      "addend": 0,
+      "candidate_target": "0x0042F688",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0323",
+      "local": false,
+      "offset": "0x1",
+      "symbol": "?g_ResultGameManager@@3PAUResultGameManagerView@@A",
+      "target": "0x00477810",
+      "target_encoded_value": "0x00477810",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x0042E1FC",
+      "linked_symbol": "??_C@_07OGJCKFMD@UnPause?$AA@",
+      "local": false,
+      "offset": "0x13",
+      "symbol": "??_C@_07OGJCKFMD@UnPause?$AA@",
+      "target": "0x0046E0B8",
+      "target_encoded_value": "0x0046E0B8",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x0042F5C8",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0275",
+      "local": false,
+      "offset": "0x18",
+      "symbol": "?g_MainSoundOwner@@3PAEA",
+      "target": "0x00492590",
+      "target_encoded_value": "0x00492590",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x00429130",
+      "linked_symbol": "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z",
+      "local": false,
+      "offset": "0x1D",
+      "symbol": "?QueueCommand@SoundPlayerView@@QAEXPBDHH@Z",
+      "target": "0x0043E460",
+      "target_encoded_value": "0x0001B80F",
+      "type": "REL32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x0042F3C8",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0147",
+      "local": false,
+      "offset": "0x29",
+      "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+      "target": "0x00491C10",
+      "target_encoded_value": "0x00491C10",
+      "type": "DIR32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x00403AC0",
+      "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+      "local": false,
+      "offset": "0x2F",
+      "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+      "target": "0x004492A0",
+      "target_encoded_value": "0x0002663D",
+      "type": "REL32",
+      "width": 4
+    },
+    {
+      "addend": 0,
+      "candidate_target": "0x0042F3A8",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0139",
+      "local": false,
+      "offset": "0x45",
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": "0x00476F78",
+      "target_encoded_value": "0x00476F78",
+      "type": "DIR32",
+      "width": 4
+    }
+  ],
+  "ordinary_differences": [],
+  "independent_scoped_colds": [
+    {
+      "unit_count": 2,
+      "matched_bytes": 173,
+      "artifact_count": 1,
+      "image_sha256": "df94dcada5da099c2d36451478f2c8fef1139b2aa62da0fda9dc3eb7af255f44",
+      "pdb_guid": "4e24526a57595147a98bdf838d89adf4",
+      "units": [
+        {
+          "unit": "ending-create",
+          "size": 99,
+          "external_fields": 5
+        },
+        {
+          "unit": "result-menu-resume",
+          "size": 74,
+          "external_fields": 7
+        }
+      ]
+    },
+    {
+      "unit_count": 2,
+      "matched_bytes": 173,
+      "artifact_count": 1,
+      "image_sha256": "bac3ca6a98bf4caf46f2a9bb2ebc350f8cdc9a96b5d67b15a7eb9373b84cc712",
+      "pdb_guid": "a0677740e61315448fcf964e5eeb058a",
+      "units": [
+        {
+          "unit": "ending-create",
+          "size": 99,
+          "external_fields": 5
+        },
+        {
+          "unit": "result-menu-resume",
+          "size": 74,
+          "external_fields": 7
+        }
+      ]
+    }
+  ],
+  "new_canonical_exact_bytes": 74,
+  "new_authored_exact_bytes": 74,
+  "original_source_and_tu_proven": false,
+  "native_product_or_runtime_proven": false
+}

@@ -1,5 +1,18 @@
 # TH10 handoff — 2026-11-02
 
+## Exact result-menu resume and ANM deletion ordering (2026-11-02)
+
+The full reviewed authored ResultMenuResume @0x00422C30 now
+replays **74/74 bytes** and all seven strictly bound
+external fields. A scoped compiler ordering barrier
+following the VM ID zero-store restores the target's
+speed-read placement. Two independent 17-input
+EndingCreate selected /GL /GS colds preserve this owner
+and existing EndingCreate99, **173/173 bytes each**.
+Adds one authored/canonical owner (+74 bytes); no
+entire-game or parent credit. See
+[evidence](evidence/result-menu-resume-exact-20261102/README.md).
+
 ## Exact DirectSound buffer getter (2026-11-02)
 
 The complete 19-byte CSound::GetBuffer at 0x0044D3E0 now reproduces
@@ -135,10 +148,10 @@ There is no running compiler/linker job or unfinished source edit.
 
 | Measure | Current count |
 | --- | ---: |
-| Reviewed authored owned bytes exact | 115,260 / 275,890 |
-| Authored exact owners | 539 |
-| Total canonical exact owners / codegen bytes | 1,422 / 183,516 |
-| Source mappings / authored mappings / authored exact backlog | 1,223 / 703 / 164 |
+| Reviewed authored owned bytes exact | 115,334 / 275,890 |
+| Authored exact owners | 540 |
+| Total canonical exact owners / codegen bytes | 1,423 / 183,590 |
+| Source mappings / authored mappings / authored exact backlog | 1,223 / 703 / 163 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen
