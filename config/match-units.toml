@@ -5037,6 +5037,22 @@ linkages = [
   { offset = 0x55, type = "REL32", symbol = "_rand", target = 0x0045371B },
 ]
 
+[units.zwave-csound-get3d-buffer]
+artifact_kind = "linked-pe"
+source = "src/ZWave.cpp"
+output_dir = "build/match-linked/ZWavePlayRoot"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ProbePlayRoot@@YAJPAVCSound@@KK@Z"
+functions = ["CSound::Get3DBuffer"]
+symbol = "?Get3DBuffer@CSound@@QAEJKPAPAUIDirectSound3DBuffer@@@Z"
+target_address = 0x0044D400
+size = 52
+linkages = [
+  { offset = 0x2B, type = "DIR32", symbol = "_IID_IDirectSound3DBuffer", target = 0x0046747C },
+]
+
 [units.zwave-csound-play]
 artifact_kind = "linked-pe"
 source = "src/ZWave.cpp"

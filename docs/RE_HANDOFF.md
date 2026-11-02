@@ -1,4 +1,17 @@
-# TH10 handoff — 2026-11-01
+# TH10 handoff — 2026-11-02
+
+## Exact 3D DirectSound buffer leaf (2026-11-02)
+
+Recovered the previously missing CSound::Get3DBuffer at 0x0044D400 in
+the actual ZWave.cpp class. Two independent selected /GL /GS linked
+replays reproduce its **complete 52/52 bytes** and unique
+IID_IDirectSound3DBuffer DIR32 binding. The three-unit first cold
+also preserves Play145 and Fill483, **680/680 total**, while the
+second selects only the new 52-byte owner. Original standalone
+source-vs-SDK authorship remains **indeterminate**, so the canonical
+exact numerator grows without an authored-origin promotion.
+See [the complete native proof](evidence/zwave-get3d-buffer-exact-20261102/README.md).
+There was no full cold cohort or full product replay.
 
 ## Sound sample-loader source improvement (2026-11-02)
 
@@ -10,8 +23,7 @@ MOV/LEA scheduling) remain in the complete location-normalized comparison.
 All 25 native field locations are decoded; target-role exactness is not
 claimed. Selected exact producers cold-pass ending-create **99/99** and
 Sound worker/queue **1,641/1,641**. See the
-[evidence](evidence/sound-sample-lifetime-20261102/README.md). The cumulative
-exact ledger count is unchanged.
+[evidence](evidence/sound-sample-lifetime-20261102/README.md). This nonexact 684-byte owner itself receives no exact credit.
 
 ## Latest ANM child91 ABI correction (2026-11-01)
 
@@ -61,8 +73,8 @@ There is no running compiler/linker job or unfinished source edit.
 | --- | ---: |
 | Reviewed authored owned bytes exact | 115,040 / 275,890 |
 | Authored exact owners | 538 |
-| Total canonical exact owners / codegen bytes | 1,418 / 183,174 |
-| Source mappings / authored mappings / authored exact backlog | 1,221 / 703 / 165 |
+| Total canonical exact owners / codegen bytes | 1,419 / 183,226 |
+| Source mappings / authored mappings / authored exact backlog | 1,222 / 703 / 165 |
 | Reviewed boundaries / authored functions | 1,819 / 747 |
 
 The denominator and source/origin inventory remain provisional. Exact codegen

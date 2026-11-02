@@ -145,6 +145,7 @@ public:
 
     HRESULT RestoreBuffer(LPDIRECTSOUNDBUFFER buffer, BOOL *wasRestored);
     LPDIRECTSOUNDBUFFER GetFreeBuffer();
+    HRESULT Get3DBuffer(DWORD index, LPDIRECTSOUND3DBUFFER *output);
     HRESULT FillBufferWithSound(
         LPDIRECTSOUNDBUFFER buffer, BOOL repeatIfBufferLarger);
     HRESULT Play(DWORD priority, DWORD flags);
@@ -518,6 +519,22 @@ LPDIRECTSOUNDBUFFER CSound::GetFreeBuffer()
     if (i != m_dwNumBuffers)
         return m_apDSBuffer[i];
     return m_apDSBuffer[rand() % m_dwNumBuffers];
+}
+
+
+// Target 0x0044D400: retrieve one existing 3D DirectSound buffer through
+// QueryInterface. The target returns before touching output for unavailable
+// storage or an out-of-range index, then clears output before the COM call.
+HRESULT CSound::Get3DBuffer(DWORD index, LPDIRECTSOUND3DBUFFER *output)
+{
+    if (m_apDSBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+    if (index >= m_dwNumBuffers)
+        return E_INVALIDARG;
+
+    *output = NULL;
+    return m_apDSBuffer[index]->QueryInterface(
+        IID_IDirectSound3DBuffer, reinterpret_cast<void **>(output));
 }
 
 

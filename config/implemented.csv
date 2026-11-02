@@ -394,6 +394,7 @@ FrontEndUpdateCallback
 FrontEndDrawCallback
 CSound::RestoreBuffer
 CSound::GetFreeBuffer
+CSound::Get3DBuffer
 CSound::FillBufferWithSound
 CSound::Play
 CSound::Reset

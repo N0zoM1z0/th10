@@ -1,0 +1,164 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_file": "src/ZWave.cpp",
+  "source_sha256": "cf5082a6efb722f1b3c4944ac3269bee88489dfa5ad63ae4f7ee5bdf8665ecad",
+  "target_function": "CSound::Get3DBuffer",
+  "target_address": "0x0044D400",
+  "complete_owner_size": 52,
+  "original_iid_target_address": "0x0046747C",
+  "target_iid_bytes": "86fa9a278149ce11a5210020af0be560",
+  "scope": "complete linked-PE PDB function, one actual data DIR32 field",
+  "source_origin": "indeterminate",
+  "native_product_closure": false,
+  "independent_scoped_cold_proofs": [
+    {
+      "unit_count": 3,
+      "total_exact_bytes": 680,
+      "artifact_count": 1,
+      "owners": [
+        {
+          "unit": "zwave-csound-get3d-buffer",
+          "target_address": "0x0044D400",
+          "target_size": 52,
+          "matched_bytes": 52,
+          "pdb_guid": "26e0943921391042b30a69c1d4b5c949",
+          "image_sha256": "a781ea3d37fc812a1da912ff3225c38cc8be46f76755bb8c8b3b6d30fae4414c",
+          "pdb_module_index": 1,
+          "linkages": [
+            {
+              "offset": "0x2B",
+              "type": "DIR32",
+              "symbol": "_IID_IDirectSound3DBuffer",
+              "target": "0x0046747C",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0005"
+            }
+          ]
+        },
+        {
+          "unit": "zwave-csound-play",
+          "target_address": "0x0044D440",
+          "target_size": 145,
+          "matched_bytes": 145,
+          "pdb_guid": "26e0943921391042b30a69c1d4b5c949",
+          "image_sha256": "a781ea3d37fc812a1da912ff3225c38cc8be46f76755bb8c8b3b6d30fae4414c",
+          "pdb_module_index": 1,
+          "linkages": [
+            {
+              "offset": "0x1B",
+              "type": "REL32",
+              "symbol": "?GetFreeBuffer@CSound@@QAEPAUIDirectSoundBuffer@@XZ",
+              "target": "0x0044D370",
+              "linked_symbol": "?GetFreeBuffer@CSound@@QAEPAUIDirectSoundBuffer@@XZ"
+            },
+            {
+              "offset": "0x37",
+              "type": "REL32",
+              "symbol": "?RestoreBuffer@CSound@@QAEJPAUIDirectSoundBuffer@@PAH@Z",
+              "target": "0x0044D300",
+              "linked_symbol": "?RestoreBuffer@CSound@@QAEJPAUIDirectSoundBuffer@@PAH@Z"
+            },
+            {
+              "offset": "0x4B",
+              "type": "REL32",
+              "symbol": "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z",
+              "target": "0x0044D110",
+              "linked_symbol": "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z"
+            },
+            {
+              "offset": "0x54",
+              "type": "REL32",
+              "symbol": "?Reset@CSound@@QAEJXZ",
+              "target": "0x0044D600",
+              "linked_symbol": "?Reset@CSound@@QAEJXZ"
+            },
+            {
+              "offset": "0x65",
+              "type": "REL32",
+              "symbol": "?SetVolume@CSound@@QAEJH@Z",
+              "target": "0x0044D4E0",
+              "linked_symbol": "?SetVolume@CSound@@QAEJH@Z"
+            }
+          ]
+        },
+        {
+          "unit": "zwave-csound-fill",
+          "target_address": "0x0044D110",
+          "target_size": 483,
+          "matched_bytes": 483,
+          "pdb_guid": "26e0943921391042b30a69c1d4b5c949",
+          "image_sha256": "a781ea3d37fc812a1da912ff3225c38cc8be46f76755bb8c8b3b6d30fae4414c",
+          "pdb_module_index": 1,
+          "linkages": [
+            {
+              "offset": "0x4A",
+              "type": "DIR32",
+              "symbol": "__imp__Sleep@4",
+              "target": "0x004660AC",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0014"
+            },
+            {
+              "offset": "0xCC",
+              "type": "DIR32",
+              "symbol": "?g_SoundBgmFileBaseOffset@@3HA",
+              "target": "0x004977A4",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0003"
+            },
+            {
+              "offset": "0xD8",
+              "type": "DIR32",
+              "symbol": "__imp__SetFilePointer@16",
+              "target": "0x004660C8",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0013"
+            },
+            {
+              "offset": "0xFA",
+              "type": "REL32",
+              "symbol": "?Read@CWaveFile@@QAEJPAEKPAK@Z",
+              "target": "0x0044DE10",
+              "linked_symbol": "?Read@CWaveFile@@QAEJPAEKPAK@Z"
+            },
+            {
+              "offset": "0x149",
+              "type": "REL32",
+              "symbol": "?ResetFile@CWaveFile@@QAEJ_N@Z",
+              "target": "0x0044DD40",
+              "linked_symbol": "?ResetFile@CWaveFile@@QAEJ_N@Z"
+            },
+            {
+              "offset": "0x16C",
+              "type": "REL32",
+              "symbol": "?Read@CWaveFile@@QAEJPAEKPAK@Z",
+              "target": "0x0044DE10",
+              "linked_symbol": "?Read@CWaveFile@@QAEJPAEKPAK@Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "unit_count": 1,
+      "total_exact_bytes": 52,
+      "artifact_count": 1,
+      "owners": [
+        {
+          "unit": "zwave-csound-get3d-buffer",
+          "target_address": "0x0044D400",
+          "target_size": 52,
+          "matched_bytes": 52,
+          "pdb_guid": "a20f96153092ae45a201c853d113cb0e",
+          "image_sha256": "c6b690331bdbb1b14b046f9195f59993521da29629fc146cb4763b127236dda5",
+          "pdb_module_index": 1,
+          "linkages": [
+            {
+              "offset": "0x2B",
+              "type": "DIR32",
+              "symbol": "_IID_IDirectSound3DBuffer",
+              "target": "0x0046747C",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0005"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
