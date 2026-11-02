@@ -50,10 +50,10 @@ config/matches.csv. Generate ledger statistics with:
 | --- | ---: |
 | Tracked target extents / reviewed boundaries | 1,819 / 1,819 |
 | Source-present target mappings | 1,230 |
-| Canonical exact owners / bytes | **1,430 / 184,096** |
-| Reviewed authored exact owners / bytes | **542 / 115,605** |
+| Canonical exact owners / bytes | **1,431 / 184,182** |
+| Reviewed authored exact owners / bytes | **543 / 115,691** |
 | Reviewed authored byte denominator | 275,890 (provisional) |
-| Authored source-present nonexact backlog | 164 |
+| Authored source-present nonexact backlog | 163 |
 | Classified excluded / origin-indeterminate owners | 520 / 552 |
 
 These values are generated from current ledgers. The denominator is not
@@ -90,7 +90,7 @@ the current source before claiming an improvement.
 
 | Owner, target extent | Last useful diagnostic and next concrete lead |
 | --- | --- |
-| **ANM ExecuteScript @0x0043EE30, 9,964 bytes** | Last complete native diagnostic **9,962/9,964**, 350 external fields, 95 local obligations. Only opcode91 child-create ECX-versus-EDX two-byte scheduling remains. The CreateVmVariant2 member/stdcall ABI is separately verified; don't fake the registers or change its three-stack-argument contract. [Boss frontier](evidence/anm-executor-two-byte-frontier-20261031/README.md), [member ABI](evidence/anm-child91-member-stdcall-20261101/README.md) |
+| **ANM ExecuteScript @0x0043EE30, 9,964 bytes** | Last complete native diagnostic **9,962/9,964**, 350 external fields, 95 local obligations. Only opcode91 child-create ECX-versus-EDX two-byte scheduling remains. Sequential assignments, const record, pre-call barrier were byte-neutral in fresh whole-owner tests; temporary ID regressed and split-ID shifted fields. The CreateVmVariant2 member/stdcall ABI is verified; do not fake the registers. [Boss frontier](evidence/anm-executor-two-byte-frontier-20261031/README.md), [member ABI](evidence/anm-child91-member-stdcall-20261101/README.md) |
 | **EclVmContext::Run @0x0044E1A0, 7,020 bytes** | Maintained volatile-x LENGTH_SQUARED scope gives **6,997/7,020** with all 189 fields; 23 ordinary bytes remain in x87/format trace locals. Failed POINT_ANGLE, aggregate and reversed-expression source controls were restored. [Large ECL proof](evidence/ecl-length-squared-stack-20261102/README.md) |
 | **GameManagerCleanup @0x00417C80, 1,105 bytes** | Historical 34-input candidate **1,098/1,105**; source now includes additional exact helper definitions, so that number is **not asserted current**. Rebuild before testing flags, branch blocks and VM calls. [Previous cleanup context](evidence/gui-message-teardown-20261031/README.md) |
 | **MainConfigurationDialogProc @0x0043A3A0, 233 bytes** | Current maintained barrier near WM_COMMAND gave **216/233**, 14 fields; ESI saves and return epilogue order still differ. [Command scheduling](evidence/main-dialog-command-scheduling-20261102/README.md) |
@@ -99,6 +99,7 @@ the current source before claiming an improvement.
 | **Hint ConsumeEntries @0x00419120, 1,317 bytes** | Historical **1,308/1,317**, still nonexact; ID result and script-push register scheduling. The Hint Update571 and AddAutomaticEntry220 are already exact. [Hint consumption](evidence/hint-consume-context-20261031/README.md) |
 | **GUI DrawStageElements @0x00415800, 724 bytes** | Full-size owner and 33 native fields, **not exact**: local rectangle LEA/input field order still differs. [GUI draw proof](evidence/gui-draw-read-order-20261031/README.md) |
 | **ANM LoadTexture / LoadTextureRegion** | Native owners **242/243** and **319/320** respectively, wrong embedded-header ADD/LEA length. Three selected existing texture guards still replay 437/437. [Texture upload](evidence/anm-texture-load-scope-20261102/README.md), [region](evidence/anm-texture-region-scope-20261102/README.md) |
+| **Bullet UpdateAbsoluteDirectionChange @0x004078E0, 335 bytes** | Fresh BulletHorizontalWrap context is **335 bytes with two ordinary register differences** at +0xD7/+0xDD after masking eight candidate address fields; source variants did not close EAX-versus-EDX lifetime. This is **NONEXACT** and not a canonical field proof. [Current native controls](evidence/native-frontier-controls-20261102/README.md) |
 | **GUI message Run / Enemy float operands / Ending Run** | Earlier complete contexts remain nonexact, but their source pins are stale. Consult the original evidence and rebuild a chosen scope; do not repeat old scores as current facts. |
 
 Do not waste runs on a previously rejected cosmetic permutation unless a

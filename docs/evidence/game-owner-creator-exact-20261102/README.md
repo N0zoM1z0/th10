@@ -45,6 +45,7 @@ GameManager/Chain cleanup graph is also cold-built. Their complete receipts:
 | Cleanup `0x0040AF00` | 137 | 137/137 | 15 |
 
 All three return `exact`; 357/357 bytes total across two selected artifacts.
+A second independent creator-only selected cold build also passes 86/86; its PE hash and PDB GUID differ from the combined three-unit cold, so this is not a warm reused artifact.
 The historical whole-game cold replay is not run. Other game loop/ANM/ECL
 parent functions remain nonexact, and this exact codegen does not prove
 original-source ancestry, product/image closure or runtime behavior.
