@@ -11,6 +11,18 @@ fields. The 9,964-byte ExecuteScript boss remains **9,962/9,964**; only the
 EDX-vs-ECX load/push pair at `+0x113/+0x115` remains. See [the selected member
 ABI proof](evidence/anm-child91-member-stdcall-20261101/README.md).
 
+## ANM texture-region source checkpoint (2026-11-02)
+
+The previously nonexact 320-byte AnmRenderManagerView::LoadTextureRegion
+now retains the target's branch-exclusive rectangle/description lifetime and
+delayed surface initialization. A fresh native linked context emits a 319-byte
+owner versus target 320 (the embedded-header pointer calculation still uses
+ADD instead of the one-byte-longer LEA). The initial target prefix and the
+real 0x34 stack frame are recovered; the complete function **remains
+nonexact** and gets no credit. Three selected existing exact texture units
+cold-replay **437/437**. See
+[evidence](evidence/anm-texture-region-scope-20261102/README.md).
+
 ## Start here
 
 Follow [AGENTS.md](../AGENTS.md), then read the selected owner's source and

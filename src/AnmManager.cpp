@@ -1720,21 +1720,20 @@ int AnmRenderManagerView::LoadTextureRegion(
     AnmTextureEntryView *entry, unsigned char *data, int size, int format,
     int unused, int hasData, int top)
 {
-    D3d9SurfaceView *surface = NULL;
-    D3d9SurfaceDescriptionView description;
-    D3d9RectView fileDestinationRect;
-    D3d9RectView sourceRect;
-    D3d9RectView dataDestinationRect;
+    D3d9SurfaceView *surface;
     AnmRawEntryView *rawEntry;
     AnmTextureHeaderView *header;
 
     (void)unused;
     format = NormalizeAnmTextureFormat(format);
     entry->rawDataSize = size;
+    surface = NULL;
     entry->texture->vtable->GetSurfaceLevel(entry->texture, 0, &surface);
 
     if (hasData == 0)
     {
+        D3d9SurfaceDescriptionView description;
+        D3d9RectView fileDestinationRect;
         surface->vtable->GetDesc(surface, &description);
         fileDestinationRect.left = 0;
         fileDestinationRect.top = top;
@@ -1746,6 +1745,8 @@ int AnmRenderManagerView::LoadTextureRegion(
     }
     else
     {
+        D3d9RectView sourceRect;
+        D3d9RectView dataDestinationRect;
         rawEntry = reinterpret_cast<AnmRawEntryView *>(data);
         header = reinterpret_cast<AnmTextureHeaderView *>(
             data + rawEntry->textureOffset);
