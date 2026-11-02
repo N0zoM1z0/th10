@@ -1,0 +1,38 @@
+{
+  "target": "original Japanese TH10 v1.00a",
+  "target_address": "0x00422220",
+  "target_size": 311,
+  "target_pe_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_owner_sha256": "3fc2856a14e84f767ea5070b5fe0916a8dbc9be84df4af050f24949beb919781",
+  "source": "src/ResultMenuCleanup.cpp",
+  "source_sha256": "730ae880c9edb6a17083644cb323ca69e83d7a410f79adea2a163671f3a3de2e",
+  "pinned_toolchain": "VC7.1 SP1 /GL /GS /EHs",
+  "owner_bytes_matched": 311,
+  "independently_bound_fields": 18,
+  "local_branch_obligations": 16,
+  "colds": [
+    {
+      "image_sha256": "2c61eed2b08cf47767c05add8c2b41873c0630ecdc60ba6f6878eec5c5bb573c",
+      "pdb_guid": "8549de3268712645ba4a8a0073a48ade",
+      "pdb_age": 1,
+      "matched_bytes": 311,
+      "fields": 18,
+      "extent_source": "pdb-section-contribution"
+    },
+    {
+      "image_sha256": "fafa9ee03f1ff14ebca4d88b410ae7d7f2cb94b66f4bd8f826e7813281d6e057",
+      "pdb_guid": "e48e4f8676fbc64897e138d3dc47e9f7",
+      "pdb_age": 1,
+      "matched_bytes": 311,
+      "fields": 18,
+      "extent_source": "pdb-section-contribution"
+    }
+  ],
+  "selected_first_cold_guards": {
+    "result-menu-constructor": 101,
+    "result-menu-initialize": 142,
+    "result-menu-creator": 67
+  },
+  "original_source_provenance_proven": false,
+  "product_or_runtime_proven": false
+}

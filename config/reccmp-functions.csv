@@ -1234,3 +1234,4 @@ ResultMenuView::ResultMenuView,0x004220E0,function
 ResultMenuView::Initialize,0x00422150,function
 GameCreateController,0x00422360,function
 ResultMenuMarkTasks422200,0x00422200,function
+GameCleanupController422220,0x00422220,function

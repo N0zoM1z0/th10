@@ -49,9 +49,9 @@ config/matches.csv. Generate ledger statistics with:
 | Measure | 2026-11-02 accepted state |
 | --- | ---: |
 | Tracked target extents / reviewed boundaries | 1,820 / 1,820 |
-| Source-present target mappings | 1,235 |
-| Canonical exact owners / bytes | **1,436 / 184,634** |
-| Reviewed authored exact owners / bytes | **547 / 116,042** |
+| Source-present target mappings | 1,236 |
+| Canonical exact owners / bytes | **1,437 / 184,945** |
+| Reviewed authored exact owners / bytes | **548 / 116,353** |
 | Reviewed authored byte denominator | 275,890 (provisional) |
 | Authored source-present nonexact backlog | 162 |
 | Classified excluded / origin-indeterminate owners | 520 / 553 |
@@ -63,6 +63,7 @@ an established total for all original game-authored code.
 
 | Area | Accepted full-owner result | Reproduce / evidence |
 | --- | --- | --- |
+| **ResultMenu cleanup @0x00422220** | **311/311 authored exact**, 18 strict fields and all 16 local branches; two independent selected colds; neighboring three lifecycle owners preserve 310/310 | [Complete cleanup proof](evidence/result-menu-cleanup-exact-20261102/README.md) |
 | ResultMenu lifecycle @0x004220E0 / 0x00422150 / 0x00422360 | **101+142+67 = 310/310** exact in two-source real graph, 15 strictly bound fields; constructor origin indeterminate; two independent scoped cold links. Existing update206 and draw callback7 guarded | [Lifecycle proof](evidence/result-menu-lifecycle-exact-20261102/README.md) |
 | SptTestCreate @0x0042BF30 | **67/67 authored exact**, five strictly bound calls; real constructor145 and registration84 selected-cold guard | [Full factory proof](evidence/spt-test-create-exact-20261102/README.md) |
 | Keyboard high-bit reset @0x0044B080 | **75/75 authored exact**, four bound IAT/cookie fields; two independent selected cold links | [Keyboard reset proof](evidence/game-keyboard-clear-high-bits-exact-20261102/README.md) |

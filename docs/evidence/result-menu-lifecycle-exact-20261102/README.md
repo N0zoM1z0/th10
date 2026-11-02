@@ -14,7 +14,7 @@ All 15 target address-field positions and identities are bound, including
 `g_GameOwner477830`, the actual update/draw callbacks, `g_Chain`, real
 `Chain::AllocElem`, `AddToCalcChain`, `AddToDrawChain`, `g_AnmGameSpeed`,
 operator new/delete, real constructor, initializer, and cleanup
-`GameCleanupController422220` (the cleanup itself remains nonexact and
+`GameCleanupController422220` (the cleanup was not exact **at the time of this original three-owner proof** and
 source-absent). The PDB-owning constructor/initializer/factory contributions
 are independently taken from the real linked image; **310/310 complete
 bytes**, without masking unbound locations, changing target bytes, forcing
@@ -80,3 +80,5 @@ nice -n 10 scripts/repo-python scripts/replay-exact-units.py \
 scripts/repo-python scripts/ci.py
 git diff --check
 ```
+
+**Later 2026-11-02 checkpoint:** the complete cleanup owner is now independently exact **311/311** with 18 bound fields and 16 local branches; see [the subsequent proof](../result-menu-cleanup-exact-20261102/README.md). The historical three-owner cold results above are unchanged.
