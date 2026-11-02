@@ -5,6 +5,44 @@ for counts. Ignored inputs/archives are private workspace state, not Git clone
 contents. Transfer archives and inventories separately when moving workspaces.
 Archive existence or a familiar directory name does not make old bytes current.
 
+## Handoff cleanup and remaining witnesses — 2026-11-02
+
+A second targeted cleanup reclaimed **200.41 MiB** (210,141,821 payload
+bytes) from ignored, regenerable build/gpt-web permutations and build/pycache.
+It deleted 4,252 experimental build files plus bytecode-cache files. The
+candidate build tree went from about 210 MiB to **4.9 MiB**. See the
+[reconciled cleanup report](evidence/handoff-storage-20261102/README.md)
+and [machine-readable summary](evidence/handoff-storage-20261102/cleanup-summary.json).
+
+Six small diagnostic build directories stay expanded:
+
+- build/gpt-web/anm-executor-current-20261102
+- build/gpt-web/anm-executor-independent-20261031
+- build/gpt-web/ecl-run-stack-home-20261102/len-volatile-x
+- build/gpt-web/game-owner-create-init-20261102/current
+- build/gpt-web/gui-draw-20261102/baseline
+- build/gpt-web/current-turn/sound-sample-captured-remaining
+
+The 90 retained files are **candidate/near-match witnesses**, not a
+complete game build. Their source/header pins and native graph must be
+re-checked before use. Large source-input graphs and past per-variant
+source snapshots remain under ignored .analysis/gpt-web; canonical
+accepted native producers under build/match-linked are untouched.
+The compressed per-file deleted inventory is ignored under
+.analysis/maintenance-20261102/, and describes files to regenerate;
+it is **not** a restorable archive of their contents.
+
+The original target, Ghidra project, .tools, .analysis/archive,
+build/match-linked, build/gpt-6.1-sol and D3D evidence were preserved.
+No archived evidence or unique private input was deleted.
+
+## Historical 2026-10-31 inventory (source-epoch warning)
+
+The next table documents what was expanded **at that earlier epoch**.
+Its 13/13, 14/15, 34/36 and similar source-pin fractions were
+observations at the original snapshot, not measurements of the
+post-2026-11-02 source. Never call them current without recomputing.
+
 ## Preserved inputs and expanded state
 
 The read-only original `resources/th10.exe`, `ghidra-project/`, pinned `.tools/`
@@ -23,7 +61,7 @@ and `build/gpt-6.1-sol/`:
 | gui-state-view-20261031 | 4472/4480 interpreter witness; retained 64-pin context is now 60/64 (AnmManager.cpp, FrontEnd.cpp, Hint.cpp, Sound.cpp changed). |
 | `cleanup-context-20261031`, `cleanup-switch-20261031` | Complete cleanup/update residuals and real dependency/EH witnesses; source pins are historical |
 | `ecl-script-data-20261030` | Actual-caller547/589 comparison; three inputs changed; pin-equal one-source entry is a different graph |
-| anm-executor-inline-context-20261030 | Complete executor/call-boundary witnesses; latest post-PreloadSurface context is 13/13 current pins, older variants are stale. |
+| anm-executor-inline-context-20261030 | Complete executor/call-boundary witnesses; post-PreloadSurface context was 13/13 at its prior check; later source changes require a fresh pin audit. |
 | `enemy-operands-context-20261030` | Integer-reader exact history and open float reader; revalidate source epoch |
 | ending-run-context-20261030 | Complete 1568-byte Run witness; latest final-source context is now 57/70 pins (13 changed inputs). |
 | `laser-draw-context-20261030` | Complete draw comparison witnesses; revalidate source epoch |
