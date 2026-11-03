@@ -68,5 +68,7 @@ Only the new constructor and directly affected spell-panel exact owners
 were cold-replayed. No full historical cohort or product cold replay is
 inferred or required. The original constructor's authorship remains
 **origin indeterminate**, even though its maintained source is exact in
-this compiler context. `0x00408AF0` destructor and `0x00408C90` factory
-remain nonexact and are not credited; runtime/game equivalence is open.
+this compiler context. `0x00408AF0` destructor remains nonexact. `0x00408C90` factory has since
+closed exact under a separate, real Chain compiler graph; see
+[factory evidence](../spell-panel-factory-exact-20261103/README.md).
+Runtime/game equivalence is still open.

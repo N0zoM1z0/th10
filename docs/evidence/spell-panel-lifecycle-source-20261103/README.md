@@ -4,7 +4,10 @@
 (**211/211, 13/13 fields**) using the real Chain LTCG producer. The
 constructor **0x00408910** also closed at **176/176, 14/14 fields**, with
 verified generated EH code/metadata and the true AnmVmView destructor.
-The other two recovered lifecycle owners remain nonexact. Earlier isolated probes
+The 136-byte CreateEnemyGameState factory has additionally become canonical
+exact under the real Chain `/GL /GS /EHsc` graph, with its entire allocation
+EH protocol proved. Only the 402-byte destructor remains nonexact. See
+[Factory exact](../spell-panel-factory-exact-20261103/README.md). Earlier isolated probes
 retained below are historical controls, not the selected final context.
 
 Target: original JP 1.00a at hash in `config/target.toml`. This source
@@ -103,3 +106,18 @@ constructor still needs its own exact extent and compiler context review.
 The no-Chain context's 392/402 destructor, 136/136 factory (87/96 ordinary)
 and 206/211 registration results remain useful for comparison but are not
 canonical evidence. The recorded 211-byte proof closes only its own owner.
+
+## Factory closure after original Chain context recovery
+
+The earlier isolated `CreateEnemyGameState` was 136/136 bytes but 9 ordinary
+register encoding bytes differed (ESI candidate versus EBX target). Adding
+the actual unchanged `src/Chain.cpp` as `/GL` support source while retaining
+the target `/GS /EHsc` exception profile produces the target register
+assignment and all branch lengths, **96/96 ordinary bytes and 10/10 address
+fields**. Two independent complete 136-byte cold replays prove exact.
+The existing strict allocation-EH verifier independently closes the generated
+21-byte one-state handler at 0x0046586B and its immutable unwind map.
+The full factory and linked constructor are each exact in their respective
+real source graphs. These results do not make the still-open 402-byte
+`EnemyGameStateView` destructor exact or establish product/runtime closure.
+See [factory evidence](../spell-panel-factory-exact-20261103/README.md).

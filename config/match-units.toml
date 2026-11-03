@@ -29728,3 +29728,31 @@ linkages = [
   { offset = 0x9C, type = "DIR32", symbol = "?g_EnemyGameState@@3PAUEnemyGameStateView@@A", target = 0x004776F4 },
   { offset = 0xA5, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
 ]
+
+# Real Chain producer preserves the original private EBX owner register for
+# the factory's registration/teardown branch; other isolated graphs used ESI.
+[units.enemy-spell-panel-create]
+artifact_kind = "linked-pe"
+source = "src/EnemyGameStateLifecycle.cpp"
+support_sources = ["src/Chain.cpp"]
+output_dir = "build/match-linked/SpellPanelFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CreateEnemyGameState@@YAPAUEnemyGameStateView@@XZ"
+functions = ["CreateEnemyGameState"]
+symbol = "?CreateEnemyGameState@@YAPAUEnemyGameStateView@@XZ"
+target_address = 0x00408C90
+size = 136
+linkages = [
+  { offset = 0x03, type = "DIR32", symbol = "__ehhandler$?CreateEnemyGameState@@YAPAUEnemyGameStateView@@XZ", target = 0x0046586B, allocation_eh_handler = true },
+  { offset = 0x09, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x11, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x1D, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x36, type = "REL32", symbol = "??0EnemyGameStateView@@QAE@XZ", target = 0x00408910 },
+  { offset = 0x49, type = "REL32", symbol = "?RegisterTasks@EnemyGameStateView@@QAEHXZ", target = 0x004089C0 },
+  { offset = 0x57, type = "REL32", symbol = "??1EnemyGameStateView@@QAE@XZ", target = 0x00408AF0 },
+  { offset = 0x5D, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0x6E, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 0x80, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+]
