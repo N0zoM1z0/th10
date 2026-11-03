@@ -1255,3 +1255,4 @@ InputKeyboardSnapshotView::ReadKeyboardState
 InputReadWinmmJoystickCapabilities
 TextReleaseFontResources
 TextHelperView::RenderTextToTextureAlternate
+MidiOutputView::LoadTrackFile

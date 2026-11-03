@@ -60,6 +60,56 @@ void MidiOutputView::ReleaseTracks()
     trackCount = 0;
 }
 
+// Target 0x0043AAD0. This method uses the MIDI file slot already held by
+// the output owner, not a filesystem read. The target does not validate the
+// MThd/MTrk magic, reject allocation failures, or skip invalid track chunks;
+// playback consumers assume callers supplied a complete MIDI file.
+int MidiOutputView::LoadTrackFile(int fileIndex)
+{
+    ReleaseTracks();
+    const unsigned char *header = fileData[fileIndex];
+    if (header == NULL)
+        return -1;
+
+    unsigned char reversed[4];
+    unsigned int headerWord = *reinterpret_cast<const unsigned int *>(header + 4);
+    reversed[0] = static_cast<unsigned char>(headerWord >> 24);
+    reversed[1] = static_cast<unsigned char>(headerWord >> 16);
+    reversed[2] = static_cast<unsigned char>(headerWord >> 8);
+    reversed[3] = static_cast<unsigned char>(headerWord);
+    unsigned int headerLength = *reinterpret_cast<const unsigned int *>(reversed);
+    reversed[0] = header[9];
+    reversed[1] = header[8];
+    unknown11C = *reinterpret_cast<const unsigned short *>(reversed);
+    reversed[0] = header[11];
+    reversed[1] = header[10];
+    trackCount = *reinterpret_cast<const unsigned short *>(reversed);
+    reversed[0] = header[13];
+    reversed[1] = header[12];
+    ticksPerQuarterNote = *reinterpret_cast<const unsigned short *>(reversed);
+    const unsigned char *cursor = header + 8 + headerLength;
+
+    tracks = static_cast<MidiTrackView *>(malloc(trackCount * sizeof(MidiTrackView)));
+    memset(tracks, 0, trackCount * sizeof(MidiTrackView));
+    for (int i = 0; i < trackCount; ++i) {
+        unsigned int rawSize = *reinterpret_cast<const unsigned int *>(cursor + 4);
+        reversed[0] = static_cast<unsigned char>(rawSize >> 24);
+        reversed[1] = static_cast<unsigned char>(rawSize >> 16);
+        reversed[2] = static_cast<unsigned char>(rawSize >> 8);
+        reversed[3] = static_cast<unsigned char>(rawSize);
+        unsigned int size = *reinterpret_cast<const unsigned int *>(reversed);
+        MidiTrackView *track = &tracks[i];
+        track->dataSize = size;
+        track->data = static_cast<unsigned char *>(malloc(size));
+        track->active = 1;
+        memcpy(track->data, cursor + 8, size);
+        cursor += 8 + size;
+    }
+    activeFileIndex = fileIndex;
+    tempoMicroseconds = 1000000;
+    return 0;
+}
+
 int MidiOutputView::UnprepareHeader(MIDIHDR *header)
 {
     int i;
