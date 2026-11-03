@@ -170,3 +170,31 @@ Reproducible private reports are
 plus `laser-selected-275.log`. The already exact 46-byte draw callback and
 linked laser-manager/constructor functions are cold-replayed only in the
 affected scope, not through full historical cold product replay.
+
+## Independently separated 43-byte laser draw-list owner @0x0041C450
+
+Native 0x0041C450..0x0041C47A is a complete CC-delimited **43-byte**
+laser Draw traversal, physically distinct from both the large 274-byte
+update and the separately exact 46-byte registered draw callback. It reads
+laser-manager +0x18 from native **EAX**, checks that pointer, walks the
++0x8 `next` chain with a saved node, skips state1 at +0x0C, dispatches
+virtual slot3 `Draw` through vtable +0x0C for each remaining node, and
+returns 1. This is independently decoded actual executable behavior, not
+inferred from name similarity. There is **no independent direct inbound
+call** or authentic C++ declaration to prove its original authored vs.
+compiler-retained origin; both metadata ledgers mark it **indeterminate**.
+
+New maintained `EnemyLaserDrawList(void *owner)` in the same typed
+`src/EnemyLaserUpdateList.cpp` expresses this entire function. The
+pinned VC7.1 SP1 `/GL` build from this real source emits a unique
+**43-byte** PDB-owned function with **40/43 raw instruction bytes** equal
+and **zero** relocation fields. Three bytes encode private receiver/register
+choices: the original expects its manager in EAX and virtual vtable in EDX;
+ordinary `__fastcall` source receives the manager in ECX and naturally
+uses EAX for the vtable. The original caller context has not been found,
+so this is **NONEXACT**, no canonical match row or codegen byte credit.
+Proof: `.analysis/gpt-web/20261103/laser-draw-list-43-first.json` plus
+its complete linked disassembly. Its source introduction does **not** change
+the independent 46-byte draw callback or exact manager initializer, each
+of which remains guarded via scoped cold replay. Do not manufacture a
+caller or inline-assembly register shim just to force these three bytes.

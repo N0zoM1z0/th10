@@ -106,3 +106,23 @@ int __fastcall EnemyLaserDrawCallback(void *owner)
     }
     return 1;
 }
+
+// Target 0x0041C450..0x0041C47A is a separate 43-byte laser draw-list
+// function, though no independent incoming reference or authored C++ name
+// was established. It consumes manager in the native private EAX register.
+int __fastcall EnemyLaserDrawList(void *owner)
+{
+    EnemyLaserManagerStorageView *manager =
+        static_cast<EnemyLaserManagerStorageView *>(owner);
+    EnemyLaserConstructionBaseView *laser =
+        reinterpret_cast<EnemyLaserConstructionBaseView *>(manager->sentinel.next);
+    while (laser != NULL)
+    {
+        EnemyLaserConstructionBaseView *next =
+            reinterpret_cast<EnemyLaserConstructionBaseView *>(laser->next);
+        if (laser->unknown00C != 1)
+            laser->Draw();
+        laser = next;
+    }
+    return 1;
+}
