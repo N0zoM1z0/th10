@@ -1267,3 +1267,5 @@ EnemyGameStateView::EnemyGameStateView,0x00408910,function
 EnemyGameStateView::RegisterTasks,0x004089C0,function
 EnemyGameStateView::~EnemyGameStateView,0x00408AF0,function
 CreateEnemyGameState,0x00408C90,function
+GameUiSendVmInterrupt1,0x00421070,function
+GameUiSendVmInterrupt2,0x00421300,function

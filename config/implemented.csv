@@ -1266,3 +1266,5 @@ EnemyGameStateView::EnemyGameStateView
 EnemyGameStateView::RegisterTasks
 EnemyGameStateView::~EnemyGameStateView
 CreateEnemyGameState
+GameUiSendVmInterrupt1
+GameUiSendVmInterrupt2
