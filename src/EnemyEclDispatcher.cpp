@@ -9,6 +9,7 @@
 #include "EnemyLaser.hpp"
 #include "EclVm.hpp"
 #include "Rng.hpp"
+#include "EclWorldAnchor.hpp"
 #include "Gui.hpp"
 #include "BulletManager.hpp"
 
@@ -571,15 +572,6 @@ static void EnemyReadDialog(GuiView *gui, int index)
     if (previousIndex != nextIndex) {
         g_EnemyDialogState = 0;
     }
-}
-static __declspec(noinline) AnmFloat3View *EnemyGetAnmPosition(
-    const AnmFloat3View *position)
-{
-    static AnmFloat3View result;
-    result.x = position->x + 224.0f;
-    result.y = position->y + 16.0f;
-    result.z = position->z;
-    return &result;
 }
 static __declspec(noinline) unsigned int EnemyWaitForEffect(
     EnemyEffectWaitManager *manager)
@@ -1311,7 +1303,7 @@ dispatch_create_enemy_mirrored:
     }
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
-          EnemyGetAnmPosition(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
+          PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       *(unsigned int *)(iVar26 + 0x340) = *puVar5;
       *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
       *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
@@ -1333,7 +1325,7 @@ dispatch_create_enemy_mirrored:
     }
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
-          EnemyGetAnmPosition(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
+          PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       *(unsigned int *)(iVar26 + 0x340) = *puVar5;
       *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
       *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
@@ -1362,7 +1354,7 @@ dispatch_create_enemy_mirrored:
     }
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
-          EnemyGetAnmPosition(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
+          PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       *(unsigned int *)(iVar26 + 0x340) = *puVar5;
       *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
       *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
