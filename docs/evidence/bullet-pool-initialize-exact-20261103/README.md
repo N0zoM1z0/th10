@@ -63,7 +63,7 @@ GUIDs reproduce all 163/163 bytes/all14 fields. Full comparison reports:
 (private build evidence). The target is **codegen exact**, not a product,
 original-TU, global-ownership or runtime execution proof.
 
-## Larger factory follow-up (not exact)
+## Larger factory follow-up (historical nonexact controls)
 
 `CreateBulletManager @ 0x00406060` allocates the full **0x3E0B54** bytes,
 constructs 2001 original BulletRuntime records using compiler vector
@@ -72,8 +72,11 @@ construction, zeros the whole object and publishes the global pointer
 load failure, it invokes the separate existing full BulletManager destructor
 and scalar delete before returning null. The first anchored candidate
 emitted **179/182**, while the full real-support graph emitted **183/182**
-and did not preserve the complete factory byte schedule. No exactness is
-claimed for the factory or its unclosed BulletRuntime constructor.
+and did not preserve the complete factory byte schedule. The factory has **subsequently become exact** with the additional, real
+`ScriptViewerLifecycle.cpp` support source (182/182, all13 fields, strict
+21-byte allocation-EH handler): see
+[factory closure](../bullet-pool-create-exact-20261103/README.md).
+The generated BulletRuntime constructor remains an independent open owner.
 
 Only explicitly selected related exact units should be cold-replayed;
 never use an entire-product or full-historical cold run for this checkpoint.
