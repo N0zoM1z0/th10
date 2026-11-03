@@ -233,7 +233,9 @@ struct BulletManagerView
     BulletRuntimeView bullets[2001];             // +0x000060
     AnmLoadedView *bulletAnm;                    // +0x3E0B50
 
+    BulletManagerView();
     ~BulletManagerView();
+    int Initialize();
 
     int SpawnSingleBullet(
         BulletSpawnDescriptorView *descriptor,

@@ -1269,3 +1269,5 @@ EnemyGameStateView::~EnemyGameStateView,0x00408AF0,function
 CreateEnemyGameState,0x00408C90,function
 GameUiSendVmInterrupt1,0x00421070,function
 GameUiSendVmInterrupt2,0x00421300,function
+BulletManagerView::Initialize,0x00405E20,function
+CreateBulletManager,0x00406060,function

@@ -29815,3 +29815,35 @@ linkages = [
   { offset = 0xFC, type = "DIR32", symbol = "?g_GameUiTransitionResetIndicator@@3HA", target = 0x00491BEC },
   { offset = 0x104, type = "DIR32", symbol = "?g_GameUiTransitionResetIndicator@@3HA", target = 0x00491BEC },
 ]
+
+# Target 0x405E20: the actual Chain, AnmManager and GameErrorContext
+# `/GL` producers jointly restore all three compiler-private call ABIs.
+[units.bullet-pool-initialize]
+artifact_kind = "linked-pe"
+source = "src/BulletPoolCreation.cpp"
+support_sources = ["src/Chain.cpp", "src/AnmManager.cpp", "src/GameErrorContext.cpp"]
+output_dir = "build/match-linked/BulletPoolInitialize"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CreateBulletManager@@YAPAUBulletManagerView@@XZ"
+functions = ["BulletManagerView::Initialize"]
+symbol = "?Initialize@BulletManagerView@@QAEHXZ"
+target_address = 0x00405E20
+size = 163
+linkages = [
+  { offset = 0x02, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x07, type = "DIR32", symbol = "??_C@_0L@JHPPDGCE@bullet?4anm?$AA@", target = 0x0046CD88 },
+  { offset = 0x11, type = "REL32", symbol = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z", target = 0x00447280 },
+  { offset = 0x20, type = "DIR32", symbol = "?g_GameOwnerBulletAnmErrorMessage@@3PADA", target = 0x0046CD54 },
+  { offset = 0x25, type = "DIR32", symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", target = 0x00474F70 },
+  { offset = 0x2A, type = "REL32", symbol = "?Log@GameErrorContext@th10@@QAAPADPADZZ", target = 0x0044B810 },
+  { offset = 0x3B, type = "DIR32", symbol = "?BulletManagerUpdateCallback@@YIHPAUBulletManagerView@@@Z", target = 0x00406770 },
+  { offset = 0x4C, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x52, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x6B, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449AE0 },
+  { offset = 0x70, type = "DIR32", symbol = "?BulletManagerDrawCallback@@YIHPAUBulletManagerView@@@Z", target = 0x004067A0 },
+  { offset = 0x78, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x7E, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x97, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z", target = 0x00449B70 },
+]
