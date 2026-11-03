@@ -23,7 +23,7 @@ per-file SHA-256 manifest remains under `.analysis/maintenance-20261103/`;
 it is **not** an archive containing deleted bytes. Rebuild individual
 missing experimental outputs only when needed for new work.
 
-All **six** earlier canonical nonexact/near-exact witnesses listed below
+All **six** earlier preserved nonexact/near-exact diagnostic witnesses listed below
 remain, plus these **five** more contemporary large-owner witness directories:
 `build/gpt-web/game-cleanup-warm-20261102`,
 `build/gpt-web/popup-browser-context-20261102`,
@@ -33,7 +33,9 @@ remain, plus these **five** more contemporary large-owner witness directories:
 They are retained as historical compiler contexts only, not guarantees of
 current source pin equality. Files under build/gpt-web outside those kept
 roots may intentionally lack PE/PDB/OBJ after this cleanup, while preserving
-their diagnostic logs, MAPs and scripts.
+their diagnostic logs, MAPs and scripts. Python-driven CI may recreate ignored bytecode caches; clearing the
+regenerated `.pyc` files after final verification does not represent a second
+independent storage saving and is not added to the original cleanup tally.
 
 ## Earlier cleanup and six historical witnesses — 2026-11-02
 

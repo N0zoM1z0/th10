@@ -71,3 +71,10 @@ full historical cold replay to replace disposable caches.
 After deletion, Git remained clean; the original target hash was rechecked
 and the protected sources were verified unchanged. The exact bytes in this
 report are storage metadata, **not progress or reconstructed-code credit**.
+
+**Post-validation cache note:** executing the repository Python wrapper or
+lightweight CI may regenerate ignored `build/pycache` and
+`scripts/__pycache__` entries. Remove these regenerated **bytecode only**
+after the final validation pass, using the same regular-file and Git-ignore
+checks. These repeated cache deletions are not counted again in the 543-file
+initial cleanup inventory or the 14.94 MiB payload tally.

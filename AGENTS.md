@@ -1,6 +1,6 @@
 # TH10 reconstruction agent rules
 
-## Current direction — November 2, 2026
+## Current direction — November 3, 2026
 
 The current task is exact reconstruction. Target at least 98% of reviewed
 authored owned bytes exact. Prioritize complete medium/large representatives

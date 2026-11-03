@@ -1,4 +1,4 @@
-# TH10 reconstruction handoff — 2026-11-02
+# TH10 reconstruction handoff — 2026-11-03
 
 This is the **current resume brief**, not a running log of every experiment.
 Use [PROGRESS.md](PROGRESS.md) for exact counts, the function and origin
@@ -14,9 +14,10 @@ not current acceptance receipts.
 - Target: **original Japanese TH10 v1.00a** at ignored
   resources/th10.exe, 487,936 bytes, SHA-256
   2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
-- Branch: main, upstream origin/main. The latest source checkpoint in
-  this handoff is e0ad99a; use git status/log to see subsequent docs
-  or local commits. **Never push automatically.**
+- Branch: `main`, upstream `origin/main`. The latest source/codegen checkpoint
+  recorded in this handoff is **`e62e9ac`** (149-byte GDI cleanup); storage
+  and handoff-document commits may be newer. Always inspect `git status` and
+  `git log` rather than treating a dated hash as HEAD. **Never push automatically.**
 - Local commit format: **gpt-web: xxx**, author
   N0zoM1z0 <1705004398@qq.com>, with the existing gensokyo-dev
   co-author trailer. Take multiple useful checkpoints per working session.
@@ -44,14 +45,36 @@ config/matches.csv. Generate ledger statistics with:
     scripts/repo-python scripts/progress.py
     scripts/repo-python scripts/report-reconstruction-status.py
 
+## Ready-to-resume state for the next agent
+
+The last source-recovery batch has **no intentionally pending dirty files**:
+`TextReleaseFontResources` at `0x00437D10` was completed and locally committed,
+with all **149** bytes and **18** bound fields in canonical replay; the old
+107-byte buffer-release callee also passed. The first action is still
+`git status --short --branch`, because future work may leave new dirty edits.
+Do not carry forward stale candidate PE/PDB fingerprints after the November 3
+selective storage pruning; exact accepted outputs are retained under
+`build/match-linked`, source recipes are in `config/match-units.toml`, and
+private experiment source/receipt notes remain under `.analysis/gpt-web`.
+
+**Next substantive priorities:** attack the complete **9,964-byte ANM
+ExecuteScript** (two opcode-91 register bytes remaining), **7,020-byte ECL
+Run** (23 ordinary bytes remaining), and **335-byte Bullet absolute-direction
+update** (two register bytes), not just leaves. The complete DirectInput
+initializer (439 bytes), Bomb Update (223), and large GameManager cleanup
+(1,105) are **source-covered but NONEXACT**. Recompile one coherent source
+graph at a time, check complete target-linked fields and local branches,
+then commit independently verified improvements. Old scratch scores and
+historical reports are leads, not new exact claims.
+
 ## Current accepted snapshot
 
-| Measure | 2026-11-02 accepted state |
+| Measure | 2026-11-03 accepted state |
 | --- | ---: |
 | Tracked target extents / reviewed boundaries | 1,824 / 1,824 |
-| Source-present target mappings | 1,255 |
-| Canonical exact owners / bytes | **1,448 / 185,833** |
-| Reviewed authored exact owners / bytes | **556 / 117,090** |
+| Source-present target mappings | 1,256 |
+| Canonical exact owners / bytes | **1,449 / 185,982** |
+| Reviewed authored exact owners / bytes | **557 / 117,239** |
 | Reviewed authored byte denominator | 276,076 (provisional) |
 | Authored source-present nonexact backlog | 169 |
 | Classified excluded / origin-indeterminate owners | 520 / 555 |
@@ -63,6 +86,7 @@ an established total for all original game-authored code.
 
 | Area | Accepted full-owner result | Reproduce / evidence |
 | --- | --- | --- |
+| **GDI font/bitmap teardown @0x00437D10** | **149/149 complete-owner authored exact**, 18 target-bound fields (15 font handles, shared buffer, real ReleaseBuffer, GDI DeleteObject); two independent selected colds with existing TextRenderBuffer::ReleaseBuffer **107/107** guard. | [GDI full-owner proof](evidence/text-font-release-exact-20261103/README.md) |
 | **WINMM joystick capabilities @0x0044A0C0** | **105/105 authored exact**, six target-bound IAT/globals/callee fields, two independent colds with real GameErrorContext LTCG; existing Input controller264/264 guard. | [WinMM two-device probe proof](evidence/input-winmm-joystick-capabilities-exact-20261102/README.md) |
 | **Enemy ECL resource LoadFile @0x0040CD20** | Corrected real callee identity to maintained `FileSystem::OpenFile @0x0044B360`, full 95-byte source and five strict fields; **85/95 NONEXACT** (callee private EAX input vs source stack), selected three-constructor guard **84/84 exact**. | [Callee identity and ABI evidence](evidence/enemy-ecl-load-file-identity-20261102/README.md) |
 | **Input keyboard state snapshot @0x0044B010** | **103/103 complete-byte authored exact**, six strictly original-bound globals/IAT; two independent cold links and existing Input controller **264/264** exact guard. The 1,052-byte stage controller remains nonexact. | [Complete keyboard state proof](evidence/input-keyboard-snapshot-exact-20261102/README.md) |
@@ -127,14 +151,17 @@ Continue substantial large-owner work alongside small exact candidates.
 
 ## Artifacts and storage after handoff cleanup
 
-The **2026-11-02 storage cleanup** removed about **200.41 MiB** of
-regenerable experimental PE/OBJ/PDB and Python bytecode. It preserved
-six particularly useful nonexact/near-exact witnesses under
-build/gpt-web, the entire **build/match-linked** canonical producer
-cache, prior build/gpt-6.1-sol contexts, private analysis archives,
-target, toolchain, Ghidra project and D3D adapter evidence.
+The earlier **2026-11-02 cleanup** removed **200.41 MiB**, and the
+**2026-11-03 audited cleanup** removed a further **14.94 MiB** of ignored
+regenerable PE/OBJ/PDB and Python bytecode (**543 files**, or **15.83 MiB**
+in allocated disk blocks). All six historically retained near-match witnesses
+and five further large-owner context images remain expanded under
+`build/gpt-web`, along with the entire canonical **build/match-linked** tree,
+prior `build/gpt-6.1-sol` contexts, private archives, target, toolchain,
+Ghidra project and D3D adapter evidence.
 
-[Cleanup receipt](evidence/handoff-storage-20261102/cleanup-summary.json)
+[Most recent cleanup receipt](evidence/handoff-storage-20261103/cleanup-summary.json),
+[earlier cleanup receipt](evidence/handoff-storage-20261102/cleanup-summary.json),
 and [artifact recovery guide](RE_ARTIFACTS.md) give exact paths and
 storage policy. Deleted experimental paths must be **regenerated**; the
 ignored pruned-file inventory records names and hashes, not payloads.
