@@ -1276,3 +1276,5 @@ InitializeGameStatisticsRecord,0x0042ACB0,function
 GameLoadStartupVersion,0x00420100,function
 CreateFpsCounter,0x00413350,function
 GameInitializeRuntimeSystems,0x004201B0,function
+BulletManagerView::DrawBucket,0x004066E0,function
+BulletManagerDrawCallback,0x004067A0,function
