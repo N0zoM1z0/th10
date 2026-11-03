@@ -85,25 +85,14 @@ int __fastcall EnemyLaserUpdateCallback(void *owner)
 }
 
 // The registered draw-chain callback at original 0x0041C4E0, recorded by
-// EnemyLaserManagerStorageView::Initialize at 0x0041C17A. This matches the
-// pre-existing function-pointer declaration using a void* parameter.
+// EnemyLaserManagerStorageView::Initialize at 0x0041C17A. Its real C++
+// callee is retained as a separately compiled 43-byte owner by VC7.1, but
+// LTCG inlines the traversal here (native 46-byte callback has no E8 call).
+int __fastcall EnemyLaserDrawList(void *owner);
 int __fastcall EnemyLaserDrawCallback(void *owner)
 {
-    EnemyLaserManagerStorageView *manager =
-        static_cast<EnemyLaserManagerStorageView *>(owner);
     if ((g_GameManager->m_Flags & 4u) == 0)
-    {
-        EnemyLaserConstructionBaseView *laser =
-            reinterpret_cast<EnemyLaserConstructionBaseView *>(manager->sentinel.next);
-        while (laser != NULL)
-        {
-            EnemyLaserConstructionBaseView *next =
-                reinterpret_cast<EnemyLaserConstructionBaseView *>(laser->next);
-            if (laser->unknown00C != 1)
-                laser->Draw();
-            laser = next;
-        }
-    }
+        return EnemyLaserDrawList(owner);
     return 1;
 }
 

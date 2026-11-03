@@ -173,6 +173,14 @@ affected scope, not through full historical cold product replay.
 
 ## Independently separated 43-byte laser draw-list owner @0x0041C450
 
+**Superseding result:** this previously NONEXACT 43-byte source has now
+closed full **43/43 raw exact** through the genuine 46-byte registered
+draw callback as the `/GL` link entry. The first isolated-source mismatch
+diagnostic below remains as a historical compiler-context control, not
+the selected current exactness status. Original caller provenance still
+remains indeterminate.
+
+
 Native 0x0041C450..0x0041C47A is a complete CC-delimited **43-byte**
 laser Draw traversal, physically distinct from both the large 274-byte
 update and the separately exact 46-byte registered draw callback. It reads
@@ -198,3 +206,57 @@ its complete linked disassembly. Its source introduction does **not** change
 the independent 46-byte draw callback or exact manager initializer, each
 of which remains guarded via scoped cold replay. Do not manufacture a
 caller or inline-assembly register shim just to force these three bytes.
+
+## 2026-11-03: natural parent inlining closes the 43-byte owner exact
+
+A fresh, nonbinary-edited **source** change lets the actual
+`EnemyLaserDrawCallback` call the typed `EnemyLaserDrawList` helper rather
+than spelling the identical loop twice. The target's 46-byte callback
+still has **no physical E8 call**: pinned VC7.1 SP1 `/GL` inlines the
+helper into that registered callback. Crucially, it also retains a
+separate 43-byte PDB-owned callable `EnemyLaserDrawList` in the same
+primary source module. The real call-context compiler sees the helper
+receiver in **native EAX** and virtual vtable pointer in **native EDX**;
+this naturally corrects all three register encoding differences of the
+isolated 40/43 source experiment, without forcing registers, patching
+machine code or inventing assembly. All original game-visible behavior
+of the registered draw callback is unchanged.
+
+The new canonical `enemy-laser-draw-list-0041c450` unit uses the unchanged
+pinned `/GL` profile and the real `EnemyLaserDrawCallback` as its root.
+Two independent zero-reuse cold linked PEs have different SHA-256 and
+PDB GUIDs. Both strict full-owner comparisons reproduce **43/43 raw-equal
+bytes**, with zero relocation fields, zero skipped bytes and a unique
+43-byte primary-source PDB contribution. The separately canonical
+`enemy-laser-draw-callback-0041c4e0` continues to match **46/46 bytes**
+with its sole independently bound `g_GameManager` reference at 0x00477810.
+Receipt files:
+`.analysis/gpt-web/20261103/laser-draw-list-cold{1,2}.json` and
+`laser-draw-callback-inlined-cold2.json` (ignored, regenerable).
+
+This is **43 additional exact physical codegen bytes** in the target,
+credited only once. No new authored-game origin credit is claimed: the
+original 43-byte target has no independently proven direct incoming call,
+so its historic handwritten-vs-retained-compiler provenance remains
+**indeterminate** even though its source expression is now exact in a
+real maintained callback graph. The 91-byte update callback and
+274-byte list update remain **NONEXACT** and are not promoted by this
+result. Scoped cold replay protects both exact draw functions and nearby
+laser manager functions, never a full cold product or historical cohort.
+
+## 2026-11-03 follow-up: real source-level draw helper call is exact
+
+The distinct CC-delimited 43-byte `EnemyLaserDrawList @0x0041C450` was
+initially 40/43 ordinary bytes when compiled without a caller. Changing the
+existing maintained `EnemyLaserDrawCallback` to call that typed list helper
+caused the original VC7.1 `/GL` optimizer to inline the draw traversal into
+the callback, **and** retain the list's separate PDB owner. Both source
+functions now have exact codegen **in the same real compiler graph**:
+43/43 raw exact for the helper, and 46/46 with its one bound global for the
+existing callback. Two independent cold builds and the strict complete
+function comparators close both; see the separate
+[43-byte helper exactness evidence](../enemy-laser-draw-list-exact-20261103/README.md).
+The original executable has no verified direct E8 call to the 43-byte
+helper and its original authorship remains indeterminate. The larger
+274-byte updater and 91-byte update callback remain nonexact; their
+previous negative controls still apply.
