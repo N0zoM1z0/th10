@@ -1,5 +1,10 @@
 # TH10 spell-panel lifecycle: native 176 + 211 + 402 + 136 bytes
 
+**Current status:** registration owner 0x004089C0 is now canonical exact
+(**211/211, 13/13 fields**) using the real Chain LTCG producer. The other
+three recovered lifecycle owners remain nonexact. Earlier isolated probes
+retained below are historical controls, not the selected final context.
+
 Target: original JP 1.00a at hash in `config/target.toml`. This source
 checkpoint recovers four previously unmapped, reviewed target function
 bodies into the EXISTING `EnemyGameStateView` owner; no second synthetic
@@ -67,3 +72,32 @@ The private build log is
 PDB-linked diagnostic is retained below `build/probe-ltcg/` (regenerable).
 The original physical translation unit and runtime/game-product equivalence
 remain open. No `config/matches.csv` row or codegen credit for these four.
+
+## Registration complete canonical recovery (2026-11-03)
+
+A new scoped compiler experiment passed the **actual, unchanged**
+`src/Chain.cpp` as one `/GL` support source to the lifecycle file and
+selected `CreateEnemyGameState` as the link entry. Unlike the initial
+206-byte isolated function, the compiler now sees real `Chain::AllocElem`,
+`Chain::AddToCalcChain` and `Chain::AddToDrawChain` implementations, giving
+the target's private ESI element and EDI priority register transports.
+The complete 0x004089C0 owner becomes **211/211** with **159/159** ordinary
+bytes and exactly **13** real address/control fields at the original
+instruction locations. The bound fields cover all three callback pointers
+`0x00409220/0x00409230/0x00409270`, three AllocElem call sites,
+three `g_Chain` references, one calc and two draw insertion calls and the
+`0x00476F78` timer speed pointer. No old target byte is copied or patched.
+
+Two independent zero-reuse cold builds of the canonical unit
+`enemy-spell-panel-register-tasks`, using pinned VC7.1 SP1, replayed
+**211/211 exact** with all 13 fields and no byte differences. Independent
+PE SHA-256 and PDB GUIDs confirm two separate outputs. Full reports:
+`.analysis/gpt-web/20261103/spell-register-cold{1,2}.json`.
+
+In the same genuine Chain graph the destructor emits 341/402 and factory
+70/136; this context is NOT accepted for them. They remain source-present,
+NONEXACT and do not receive ledger or partial-function credit. The
+constructor still needs its own exact extent and compiler context review.
+The no-Chain context's 392/402 destructor, 136/136 factory (87/96 ordinary)
+and 206/211 registration results remain useful for comparison but are not
+canonical evidence. The recorded 211-byte proof closes only its own owner.
