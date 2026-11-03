@@ -19,21 +19,19 @@ int EnemyLaserManagerStorageView::UpdateLinkedLasers()
         bool expired = false;
         if (laser->removalPhase != 0)
         {
-            ++laser->removalPhase;
-            if (laser->removalPhase >= 2)
-                expired = true;
+            unsigned char phase = static_cast<unsigned char>(laser->removalPhase + 1);
+            laser->removalPhase = phase;
+            expired = phase >= 2;
         }
         if (expired || laser->unknown00C == 1)
         {
             laser->Unlink();
             --count;
-            EnemyLaserCommonStorageView *previous = laser->previous;
-            EnemyLaserCommonStorageView *following = laser->next;
-            previous->next = following;
-            if (following != NULL)
-                following->previous = previous;
+            laser->previous->next = laser->next;
+            if (laser->next != NULL)
+                laser->next->previous = laser->previous;
             if (tail == reinterpret_cast<EnemyLaserCommonStorageView *>(laser))
-                tail = previous;
+                tail = laser->previous;
             ::operator delete(laser);
         }
         else if (laser->Update() != 0)

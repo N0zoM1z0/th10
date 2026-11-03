@@ -1,5 +1,12 @@
 # TH10 EnemyLaser update/draw chain — 274 + 91 + 46 target bytes
 
+**Latest source status:** the 274-byte UpdateLinkedLasers owner now emits
+**275 candidate PDB bytes** in the genuine registered-callback /GL graph
+(**39/254** ordinary comparable bytes); a former 206-byte variant is kept
+below as a historical rejected compiler control, not the current source.
+The 46-byte draw callback remains canonical exact, the 91-byte update
+callback remains nonexact.
+
 Target: verified original Japanese TH10 v1.00a (`config/target.toml`).
 This checkpoint restores **three complete** EnemyLaser runtime functions in
 `src/EnemyLaserUpdateList.cpp` and reuses the existing *actual*
@@ -117,3 +124,49 @@ three were rejected and the original source restored. Artifacts:
 `.analysis/gpt-web/20261103/laser-update-91-variants.json` and per-variant
 cold compiler logs. Neither the 274-byte manager update nor 91-byte
 registered updater is claimed exact, despite the real compiler context.
+
+## 2026-11-03 follow-up: restoring two distinct removal paths (275 vs 274)
+
+The older maintained C++ had identical pointer-cached deletion bodies in
+two branches. Pinned VC7.1 `/GL` naturally merged both native deletion
+routes into one, yielding **206 vs target 274 bytes**. A fresh comparison of
+the **entire** original executable at 0x0041C330 established that it does
+**not** merge them: one route begins at original +0x33 and copies the
+*next* pointer first, whereas the other begins at +0x78 and copies the
+*previous* pointer first. Each route separately unlinks, updates the
+manager's tail, calls scalar `::operator delete` at 0x004524A1, and rejoins
+the loop after the chosen branch. The distinction matters for precise
+register scheduling and potential pointer aliasing, not just bytes.
+
+The maintained source now expresses the first removal route with **direct**
+`laser->previous`/`laser->next` member reads and the second with cached
+`previous`/`following` typed pointers. Five real, bounded source experiments
+checked the two deletion routes: selected first-direct shape gave
+**266/274 PDB bytes** (37/254 comparable ordinary), while changing only
+the second path into direct reads merged the routes again (206/274); one
+mixed variant yielded 263 and one extra-uncached-tail variant 247.
+
+The selected version additionally stores an **8-bit** `removalPhase`
+result explicitly after the increment and assigns its >=2 comparison into
+`expired`. The target actually uses `INC AL; CMP AL,2; MOV [ESI+50],AL`,
+so the wrap/zero behavior is preserved; this source is not a dummy flag or
+register-forcing trick. It yields **275/274 PDB bytes**, 39/254 ordinary
+comparable bytes, five candidate address fields (not an exhaustive bound
+normalization contract), with unchanged real virtual Update/Unlink, real
+operator delete and real inline timer Tick semantics.
+
+Six additional source variations (increment-local/field, equivalent
+const-byte variable and explicit branch, and store/check ordering) were
+separately compiled to their complete extents; three neutral cases stayed
+275/274, two regressed to 266/274 and one to 275 with 36/254. The
+maintained direct-first + explicit-byte-state form is the best *full-owner
+layout proximity*, still **NONEXACT**. This changes the large live source
+meaningfully; it does **not** justify any new exactness credit or claims
+about original C++ authorship, data origins, runtime/game behavior or the
+exact native caller ABI.
+
+Reproducible private reports are
+`.analysis/gpt-web/20261103/laser-274-{deletion-variants,source-scheduling-results,phase-variants}.json`
+plus `laser-selected-275.log`. The already exact 46-byte draw callback and
+linked laser-manager/constructor functions are cold-replayed only in the
+affected scope, not through full historical cold product replay.
