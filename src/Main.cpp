@@ -1305,13 +1305,17 @@ typedef char FpsCounterCurrentFpsAt34[
 int __fastcall FpsCounterDrawCallback(FpsCounterView *counter);
 FpsCounterView *CreateFpsCounter()
 {
-    FpsCounterView *counter = new FpsCounterView;
-    if (counter != NULL)
+    FpsCounterView *allocated = new FpsCounterView;
+    FpsCounterView *counter;
+    if (allocated != NULL)
     {
-        memset(counter, 0, sizeof(*counter));
-        *reinterpret_cast<unsigned int *>(counter) |= 2u;
-        g_ReplayTimingSource = reinterpret_cast<ReplayTimingSource *>(counter);
+        memset(allocated, 0, sizeof(*allocated));
+        *reinterpret_cast<unsigned int *>(allocated) |= 2u;
+        g_ReplayTimingSource = reinterpret_cast<ReplayTimingSource *>(allocated);
+        counter = allocated;
     }
+    else
+        counter = NULL;
 
     th10::ChainElem *task = new th10::ChainElem;
     task->callback = reinterpret_cast<th10::ChainCallback>(
