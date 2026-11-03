@@ -1,8 +1,10 @@
 # TH10 spell-panel lifecycle: native 176 + 211 + 402 + 136 bytes
 
-**Current status:** registration owner 0x004089C0 is now canonical exact
-(**211/211, 13/13 fields**) using the real Chain LTCG producer. The other
-three recovered lifecycle owners remain nonexact. Earlier isolated probes
+**Current status:** registration owner 0x004089C0 is canonical exact
+(**211/211, 13/13 fields**) using the real Chain LTCG producer. The
+constructor **0x00408910** also closed at **176/176, 14/14 fields**, with
+verified generated EH code/metadata and the true AnmVmView destructor.
+The other two recovered lifecycle owners remain nonexact. Earlier isolated probes
 retained below are historical controls, not the selected final context.
 
 Target: original JP 1.00a at hash in `config/target.toml`. This source

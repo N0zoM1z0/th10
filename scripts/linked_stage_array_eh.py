@@ -1,8 +1,9 @@
-"""Bind the two reviewed Stage array-member EH protocols, without runtime credit.
+"""Bind target-reviewed VM-array EH metadata, without runtime credit.
 
-The complete generated region, immutable FuncInfo/unwind rows, saved-this+4,
-array offsets/counts/stride, real VM destructor and runtime entries are checked.
-The opt-in is restricted to the reviewed Stage constructor and destructor.
+Covers Stage's VM array owners and the spell-panel constructor's two
+compiler-generated unwind actions (25-byte small-offset + 27-byte action).
+A full PDB-generated contribution, immutable FuncInfo/unwind map, saved this,
+real VM destructor and CRT entries must agree with the original executable.
 """
 from pathlib import Path
 import struct
@@ -17,6 +18,9 @@ PARENTS = {
                                      handler=0x46556b, arrays=((0x180, 8),)),
     '??1StageScriptView@@QAE@XZ': dict(entry=0x402440, size=499, offset=3,
                                      handler=0x4652d6, arrays=((0x180, 8), (0x1f08, 3))),
+    '??0EnemyGameStateView@@QAE@XZ': dict(entry=0x408910, size=176, offset=9,
+        handler=0x465514, arrays=((0x10, 2), (0x778, 8)),
+        owner_source='src/EnemyGameStateLifecycle.cpp'),
 }
 DESTRUCTOR_SYMBOL = '??1AnmVmView@@QAE@XZ'
 ITERATOR_SYMBOL = '??_M@YGXPAXIHP6EX0@Z@Z'
@@ -73,9 +77,20 @@ def immediate(instruction, value):
         and instruction.operands[0].imm == value
 
 
+def action_size(member):
+    # VC7.1 uses add eax,imm8 for the panel's +0x10 array and the normal
+    # add eax,imm32 for the larger Stage/panel offsets.
+    return 25 if 0 <= member <= 0x7f else 27
+
+
+def generated_lead(arrays):
+    return sum(action_size(member) for member, _ in arrays)
+
+
 def protocol(image, handler, frame, destructor, iterator, arrays):
-    region_size = 27 * len(arrays) + 10
-    start = handler - 27 * len(arrays)
+    lead = generated_lead(arrays)
+    region_size = lead + 10
+    start = handler - lead
     section_range(image, start, region_size, True)
     decoder = Cs(CS_ARCH_X86, CS_MODE_32)
     decoder.detail = True
@@ -94,12 +109,14 @@ def protocol(image, handler, frame, destructor, iterator, arrays):
             'FuncInfo shape differs')
     section_range(image, words[2], 8 * len(arrays), False)
     actions = []
+    action_offset = 0
     for index, (member, count) in enumerate(arrays):
+        size = action_size(member)
         predecessor, action = struct.unpack('<iI', image.read_address(words[2] + index * 8, 8))
-        require(predecessor == index - 1 and action == start + index * 27,
+        require(predecessor == index - 1 and action == start + action_offset,
                 'unwind state/action edge differs')
-        code = list(decoder.disasm(image.read_address(action, 27), action))
-        require(len(code) == 8 and [i.size for i in code] == [5, 2, 5, 3, 5, 1, 5, 1]
+        code = list(decoder.disasm(image.read_address(action, size), action))
+        require(len(code) == 8 and [i.size for i in code] == [5, 2, 5, 3, size - 22, 1, 5, 1]
                 and [i.mnemonic for i in code] ==
                 ['push', 'push', 'push', 'mov', 'add', 'push', 'call', 'ret'],
                 'complete array cleanup shape differs')
@@ -120,7 +137,8 @@ def protocol(image, handler, frame, destructor, iterator, arrays):
                 and immediate(call, iterator) and not ret.operands,
                 'saved-this/member/iterator protocol differs')
         actions.append(dict(state=index, predecessor=predecessor, address=hex(action),
-                            member_offset=member, count=count, stride=0x3ac))
+                            member_offset=member, count=count, stride=0x3ac, size=size))
+        action_offset += size
     return dict(handler=hex(handler), func_info=hex(info), unwind_map=hex(words[2]),
                 unwind_states=len(arrays), region_bytes=region_size, func_info_bytes=28,
                 saved_this_offset=4, actions=actions)
@@ -170,8 +188,9 @@ def stage_array_eh_target(unit, field, directory, image, publics, aliases, targe
                           parent, observed_address):
     require(stage_array_eh_selector(unit, field), 'missing selector')
     require(parent.get('symbol') == unit['symbol'] and parent.get('size') == unit['size']
-            and parent.get('map_object') == source_object(unit, 'src/StageLifecycle.cpp'),
-            'parent leaves its declared StageLifecycle object')
+            and parent.get('map_object') == source_object(unit,
+                PARENTS[unit['symbol']].get('owner_source', 'src/StageLifecycle.cpp')),
+            'parent leaves its declared lifecycle object')
     rows = [r for r in map_statics(directory/'source.map') if r['symbol'] == field['symbol']]
     require(len(rows) == 1, 'named MAP handler absent or ambiguous')
     row = rows[0]
@@ -190,7 +209,7 @@ def stage_array_eh_target(unit, field, directory, image, publics, aliases, targe
                and r['section_offset'] <= row['section_offset']
                and row['section_offset'] + 10 <= r['section_offset'] + r['size']]
     spec = PARENTS[unit['symbol']]
-    lead = 27 * len(spec['arrays'])
+    lead = generated_lead(spec['arrays'])
     require(len(matches) == 1, 'handler lacks unique PDB contribution')
     contribution = matches[0]
     require(int(contribution['characteristics']) & 0x20000020 == 0x20000020
@@ -203,8 +222,12 @@ def stage_array_eh_target(unit, field, directory, image, publics, aliases, targe
     require(len(modules) == 1 and str(modules[0]['object']).casefold() ==
             str(parent['pdb_object']).casefold(), 'parent PDB module differs')
     generated_fields = linked_code_fields(image, publics, address - lead, lead + 10)
-    expected = {(27 * i + offset, 4, kind) for i in range(len(spec['arrays']))
-                for offset, kind in [(1, 'DIR32'), (22, 'REL32')]}
+    expected = set()
+    cursor = 0
+    for member, count in spec['arrays']:
+        size = action_size(member)
+        expected.update(((cursor + 1, 4, 'DIR32'), (cursor + size - 5, 4, 'REL32')))
+        cursor += size
     expected.update({(lead + 1, 4, 'DIR32'), (lead + 6, 4, 'REL32')})
     require(generated_fields['normalization_complete']
             and generated_fields['decoded_bytes'] == lead + 10

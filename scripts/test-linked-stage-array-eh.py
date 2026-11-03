@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synthetic address/metadata controls for the two Stage array EH bindings."""
+"""Synthetic metadata controls for Stage and spell-panel array EH bindings."""
 import copy
 import runpy
 import struct
@@ -17,15 +17,17 @@ class Image:
     def __init__(self, handler, frame, destructor, iterator, free, arrays, base, data):
         self.sections = [SimpleNamespace(rva=base, virtual_size=0x100000, characteristics=0x60000020),
                          SimpleNamespace(rva=data, virtual_size=0x100, characteristics=0x40000040)]
-        start = handler - 27 * len(arrays)
+        start = handler - eh.generated_lead(arrays)
         code = bytearray()
         unwind = bytearray()
         for index, (member, count) in enumerate(arrays):
             action = start + len(code)
             code += b'\x68' + struct.pack('<I', destructor) + b'\x6a' + bytes([count])
-            code += b'\x68' + struct.pack('<I', 0x3ac) + b'\x8b\x45\x04\x05'
-            code += struct.pack('<I', member) + b'\x50\xe8'
-            code += struct.pack('<i', iterator - action - 26) + b'\xc3'
+            code += b'\x68' + struct.pack('<I', 0x3ac) + b'\x8b\x45\x04'
+            code += (b'\x83\xc0' + bytes([member]) if member <= 0x7f
+                     else b'\x05' + struct.pack('<I', member))
+            code += b'\x50\xe8'
+            code += struct.pack('<i', iterator - action - eh.action_size(member) + 1) + b'\xc3'
             unwind += struct.pack('<iI', index - 1, action)
         code += b'\xb8' + struct.pack('<I', data + 0x20)
         code += b'\xe9' + struct.pack('<i', frame - handler - 10)
@@ -57,16 +59,26 @@ class Image:
 def fixture(symbol):
     spec = eh.PARENTS[symbol]
     arrays = spec['arrays']
-    lead = 27 * len(arrays)
+    lead = eh.generated_lead(arrays)
     address = 0x111000 + lead
-    stage_object = 'Z:\\synthetic\\support-00-StageLifecycle.ltcg.obj'
-    vm_object = 'Z:\\synthetic\\support-01-AnmManager.ltcg.obj'
-    unit = dict(artifact_kind='linked-pe', source='src/StageScript.cpp',
-                support_sources=['src/StageLifecycle.cpp', 'src/AnmManager.cpp'],
+    if spec.get('owner_source'):
+        source = spec['owner_source']
+        supports = ['src/AnmManager.cpp']
+        owner_object = 'source.ltcg.obj'
+        vm_basename = 'support-00-AnmManager.ltcg.obj'
+    else:
+        source = 'src/StageScript.cpp'
+        supports = ['src/StageLifecycle.cpp', 'src/AnmManager.cpp']
+        owner_object = 'support-00-StageLifecycle.ltcg.obj'
+        vm_basename = 'support-01-AnmManager.ltcg.obj'
+    stage_object = 'Z:\\synthetic\\' + owner_object
+    vm_object = 'Z:\\synthetic\\' + vm_basename
+    unit = dict(artifact_kind='linked-pe', source=source,
+                support_sources=supports,
                 symbol=symbol, target_address=spec['entry'], size=spec['size'])
     field = dict(offset=spec['offset'], type='DIR32', symbol='__ehhandler$' + symbol,
                  target=spec['handler'], stage_array_eh_handler=True)
-    parent = dict(symbol=symbol, size=spec['size'], map_object='support-00-StageLifecycle.ltcg.obj',
+    parent = dict(symbol=symbol, size=spec['size'], map_object=owner_object,
                   pdb_module_index=13, pdb_object=stage_object)
     statics = [dict(symbol=field['symbol'], section_number=1, section_offset=address - 0x100000,
                    address=address, flags=['f', 'CIL', 'library:', 'CIL'], object='module')]
@@ -78,16 +90,20 @@ def fixture(symbol):
                             (eh.DESTRUCTOR_SYMBOL, 0x101840), ('free', 0x1018a0)]]
     aliases = {'___CxxFrameHandler': 'frame', eh.ITERATOR_SYMBOL: 'iterator', '_free': 'free'}
     functions = [dict(symbol=eh.DESTRUCTOR_SYMBOL, address='0x101840', size=34,
-                     map_object='support-01-AnmManager.ltcg.obj',
+                     map_object=vm_basename,
                      pdb_module_index=14, pdb_object=vm_object)]
     native = Image(address, 0x101800, 0x101840, 0x101820, 0x1018a0, arrays, 0x100000, 0x300000)
     target = Image(spec['handler'], eh.TARGET_FRAME_HANDLER, eh.TARGET_DESTRUCTOR,
                    eh.TARGET_ITERATOR, eh.TARGET_FREE, arrays, 0x400000, 0x600000)
     links = dict(normalization_complete=True, decoded_bytes=34,
                  fields=[dict(offset=15, width=4, type='REL32')])
-    region_fields = [dict(offset=27 * i + offset, width=4, type=kind)
-                     for i in range(len(arrays))
-                     for offset, kind in [(1, 'DIR32'), (22, 'REL32')]]
+    region_fields = []
+    cursor = 0
+    for member, count in arrays:
+        size = eh.action_size(member)
+        region_fields.extend([dict(offset=cursor + 1, width=4, type='DIR32'),
+                              dict(offset=cursor + size - 5, width=4, type='REL32')])
+        cursor += size
     region_fields += [dict(offset=lead + 1, width=4, type='DIR32'),
                       dict(offset=lead + 6, width=4, type='REL32')]
     region_links = dict(normalization_complete=True, decoded_bytes=lead + 10, fields=region_fields)
@@ -174,7 +190,7 @@ def main():
                 checks += 1
                 continue
             raise AssertionError('accepted ' + label)
-    print('Stage array EH guards passed: both protocols, metadata tails and', checks, 'focused rejections')
+    print('Stage/panel array EH guards passed:', len(eh.PARENTS), 'protocols and', checks, 'focused rejections')
 
 
 if __name__ == '__main__':

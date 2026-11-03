@@ -5,6 +5,20 @@ namespace th10 { struct ChainElem; }
 
 // Shared partial view of the spell-card/panel owner, target global4776F4.
 // Original class/data ownership remains open; all fields below have TH10 evidence.
+// The native panel constructor does NOT run AnmVmIdView's default
+// constructor on these three slots. They are bitwise storage until the
+// subsequent full-object clear, then are used by VM-ID operations.
+struct SpellPanelIdSlotsView
+{
+    unsigned int slots[3];
+    AnmVmIdView &operator[](unsigned int index)
+    {
+        return *reinterpret_cast<AnmVmIdView *>(&slots[index]);
+    }
+};
+typedef char SpellPanelIdSlotsSizeIs0C[
+    sizeof(SpellPanelIdSlotsView) == 0x0c ? 1 : -1];
+
 struct EnemyGameStateView
 {
     unsigned int flags;
@@ -12,7 +26,7 @@ struct EnemyGameStateView
     th10::ChainElem *updateTask;
     th10::ChainElem *drawTask;
     AnmVmView stageVms[2];
-    AnmVmIdView panelVmIds[3];
+    SpellPanelIdSlotsView panelVmIds;
     int managedVmId;
     AnmVmView frontVms[8];
     AnmVmView secondaryFrontVms[5];
