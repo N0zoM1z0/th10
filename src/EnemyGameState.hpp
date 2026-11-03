@@ -1,12 +1,16 @@
 #pragma once
 #include "AnmManager.hpp"
 #include <stddef.h>
+namespace th10 { struct ChainElem; }
 
 // Shared partial view of the spell-card/panel owner, target global4776F4.
 // Original class/data ownership remains open; all fields below have TH10 evidence.
 struct EnemyGameStateView
 {
-    unsigned char unknown000[0x10];
+    unsigned int flags;
+    unsigned int unknown004;
+    th10::ChainElem *updateTask;
+    th10::ChainElem *drawTask;
     AnmVmView stageVms[2];
     AnmVmIdView panelVmIds[3];
     int managedVmId;
@@ -20,6 +24,12 @@ struct EnemyGameStateView
     int initialSpellBonus;
     int spellDuration;
     AnmFloat3View effectPosition;
+    unsigned int unknown37A8;
+    th10::ChainElem *auxiliaryDrawTask;
+
+    EnemyGameStateView();
+    ~EnemyGameStateView();
+    int RegisterTasks();
 
     int UpdateSpellPanel();
     int DrawPanelVms();
@@ -45,6 +55,13 @@ typedef char EnemyGameStateVmIdAt774[
 typedef char EnemyGameStateFlagsAt378C[
     (offsetof(EnemyGameStateView, flags378C) == 0x378c) ? 1 : -1];
 
+typedef char EnemyGameStateTasksAndSize[
+    (offsetof(EnemyGameStateView, updateTask) == 8 &&
+     offsetof(EnemyGameStateView, drawTask) == 0x0c &&
+     offsetof(EnemyGameStateView, auxiliaryDrawTask) == 0x37ac &&
+     sizeof(EnemyGameStateView) == 0x37b0) ? 1 : -1];
+
 extern EnemyGameStateView *g_EnemyGameState;
+EnemyGameStateView *CreateEnemyGameState();
 int __fastcall EnemySpellPanelUpdateCallback(EnemyGameStateView *state);
 int __fastcall EnemySpellPanelDrawCallback(EnemyGameStateView *state);

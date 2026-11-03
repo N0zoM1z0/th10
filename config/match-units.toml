@@ -29640,3 +29640,26 @@ size = 10
 linkages = [
   { offset = 0x4, type = "REL32", symbol = "?DrawPanelVms@EnemyGameStateView@@QAEHXZ", target = 0x004091C0 },
 ]
+
+# The complete 95-byte SpellPanel draw owner uses the actual ANM Draw callee;
+# without AnmManager in the same VC7.1 LTCG graph the compiler pushes the
+# VM on the stack and emits 93 (nonexact) bytes instead of the target's 95.
+[units.enemy-spell-panel-draw-vms]
+artifact_kind = "linked-pe"
+source = "src/SpellPanelDraw.cpp"
+support_sources = ["src/AnmManager.cpp"]
+output_dir = "build/match-linked/SpellPanelDrawAnm"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?EnemySpellPanelDrawCallback@@YIHPAUEnemyGameStateView@@@Z"
+functions = ["EnemyGameStateView::DrawPanelVms"]
+symbol = "?DrawPanelVms@EnemyGameStateView@@QAEHXZ"
+target_address = 0x004091C0
+size = 95
+linkages = [
+  { offset = 0x22, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x29, type = "REL32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0 },
+  { offset = 0x43, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x4A, type = "REL32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0 },
+]

@@ -1262,3 +1262,7 @@ StageResetPublishedCameras
 AnmFloatRectView::DrawGradient
 EnemyGameStateView::DrawPanelVms
 EnemySpellPanelDrawCallback
+EnemyGameStateView::EnemyGameStateView
+EnemyGameStateView::RegisterTasks
+EnemyGameStateView::~EnemyGameStateView
+CreateEnemyGameState
