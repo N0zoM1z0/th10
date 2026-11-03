@@ -1298,6 +1298,33 @@ typedef char FpsCounterFrameCountAt20[
 typedef char FpsCounterCurrentFpsAt34[
     (offsetof(FpsCounterView, currentFps) == 0x34) ? 1 : -1];
 
+// Target 0x00413350: allocate the shared 0x8C-byte FPS/replay timing owner,
+// publish the same 0x00477708 pointer consumed by replay code, then allocate
+// and register a dedicated draw task at priority 47. The compiler-generated
+// 0x24-byte ChainElem constructor is real; do not substitute AllocElem here.
+int __fastcall FpsCounterDrawCallback(FpsCounterView *counter);
+FpsCounterView *CreateFpsCounter()
+{
+    FpsCounterView *counter = new FpsCounterView;
+    if (counter != NULL)
+    {
+        memset(counter, 0, sizeof(*counter));
+        *reinterpret_cast<unsigned int *>(counter) |= 2u;
+        g_ReplayTimingSource = reinterpret_cast<ReplayTimingSource *>(counter);
+    }
+
+    th10::ChainElem *task = new th10::ChainElem;
+    task->callback = reinterpret_cast<th10::ChainCallback>(
+        &FpsCounterDrawCallback);
+    task->addedCallback = NULL;
+    task->deletedCallback = NULL;
+    task->arg = counter;
+    task->flags |= 3u;
+    th10::g_Chain->AddToDrawChain(task, 47);
+    counter->drawElement = task;
+    return counter;
+}
+
 // Target413450..4134A3. The retained pointer global is shared with replay timing.
 void DeleteFpsCounter(FpsCounterView *counter)
 {

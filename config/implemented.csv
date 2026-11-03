@@ -1273,3 +1273,5 @@ CreateBulletManager
 BulletRuntimeView::BulletRuntimeView
 InitializeGameStatisticsRecord
 GameLoadStartupVersion
+CreateFpsCounter
+GameInitializeRuntimeSystems
