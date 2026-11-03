@@ -1284,3 +1284,4 @@ PlayerShotSetOptionOrigin
 PublishEclWorldAnchor
 InputDeviceOwnerView::ReleaseDirectInput8
 CreateConfiguredAnmVm
+DetectLegacyWindowsVersion

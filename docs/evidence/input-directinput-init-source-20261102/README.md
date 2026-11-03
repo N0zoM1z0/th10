@@ -109,3 +109,18 @@ The parent `InputInitializeDevices` **still remains NONEXACT** (an isolated
 probe emits **411/439**) and the input thread is also nonexact; the 21-byte
 helper does not inherit or grant codegen credit to either. The two existing
 EnumDevices and EnumObjects exact callbacks were checked separately.
+
+
+## 2026-11-03: 83-byte input initializer thread now independently exact
+
+The historical three-TU results above (85 vs native 83 bytes for the
+thread) predate the correct `InputDeviceOwnerView::ReleaseDirectInput8`
+implementation. With the same three genuine `/GL /GS /EHs` sources and
+`InputDeviceInitThread` as the actual entry, the caller now uses the native
+register schedule: **83 PDB bytes vs 83 original, 55/55 ordinary bytes and
+7/7 independently target-bound fields**. Two separate zero-reuse linked
+cold images have different PE SHA-256 and PDB GUID and both pass canonical
+comparison. The 439-byte `InputInitializeDevices` remains **NONEXACT**
+(409/439 in this new graph). The separate 21-byte release helper and the
+52/98-byte enumeration callbacks also retain independent exact receipts.
+See [thread evidence](../input-device-thread-exact-20261103/README.md).
