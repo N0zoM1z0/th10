@@ -63,8 +63,45 @@ addresses: +0x0A/+0x32 are pi at 0x00470B18; +0x1D/+0x45 are 2*pi at
 machine code. Receipts:
 `.analysis/gpt-web/20261103/player-shot-angle-cold{1,2}.json`.
 
-The new canonical unit is `player-shot-angle-difference-00428ce0`; the
-new match row credits one **80-byte codegen exact** (not authored exact).
+The canonical angle unit is `player-shot-angle-difference-00428ce0`; this
+80-byte owner is byte-exact but not proven authored. The adjacent target
+acquisition owner described below adds an independent 53-byte exact match.
 Original source/TU naming, game runtime and whole-product equivalence are
 not established. Existing Player damage/shot and canonical angle-math units
 are protected by local cold replays, not a full history or product replay.
+
+## Adjacent 53-byte Player shot target acquisition — second exact owner
+
+The separately reviewed original `0x00428AD0..0x00428B04` is **53 bytes**
+with EAX zero and `RET 4`. It was formerly absent from maintained source,
+but is now `int __fastcall PlayerShotAcquireTarget(Player *, PlayerShotRuntimeView *, int)`
+in the *same* real PlayerShotTracking translation unit. The third argument
+is a stack word whose native value is never read; its source spelling,
+original callback registration and authored-versus-generated origin remain
+**indeterminate**, as recorded before this checkpoint. There is no false
+promotion of authorship.
+
+The target writes NULL to the shot's tracked enemy at shot offset +0x4C,
+then reads the player target pointer at +0x3504. When nonnull, it stores
+that enemy and checks the enemy's actual world X at +0x1068. Native x87
+`FLD`/`FABS`/`FCOMP` against **224.0f** clears the selected target only
+when the absolute X exceeds the bound. The equality and NaN acceptance
+paths remain intact; no extra safety or liveness guards were invented.
+Compiler layout asserts verify both real offsets without overlaying a
+second shadow Player/Enemy type.
+
+The ordinary natural C++ source compiled under pinned VC7.1 SP1 `/GL`
+produces **exactly 53 PDB-owned bytes** with **49/49** ordinary bytes equal
+and one independently target-bound DIR32 at `+0x1E` for floating constant
+`0x00470B4C`. Two completely separate `PlayerShotAcquireTarget`-entry
+cold linked PEs with different image SHA-256 and PDB GUID both pass the
+unchanged full canonical comparison, with no skipped, patched or cropped
+bytes. Unit: `player-shot-acquire-target-00428ad0`; private receipts:
+`.analysis/gpt-web/20261103/player-shot-acquire-cold{1,2}.json`.
+
+This is **53 new exact codegen bytes**, but the function's original
+hand-authored/compiler-produced status and full runtime correctness are not
+established. It also does not turn the **266-byte** `PlayerShotTrackEnemy`
+owner exact; the latter remains complete semantic source with nonmatching
+native codegen. Both 53-byte and 80-byte exact units are tested through
+focused cold replay, never full cold game reconstruction.

@@ -3,6 +3,29 @@
 
 #include <math.h>
 
+// Target 0x00428AD0: install Player's currently tracked Enemy as this
+// shot's target only if its world X remains in the 224-unit playfield window.
+// The observed entry uses ECX Player, EDX shot and one unused stack argument.
+typedef char PlayerTrackedEnemyNativeOffset3504[
+    offsetof(Player, trackedEnemy) == 0x3504 ? 1 : -1];
+typedef char EnemyWorldXNativeOffset1068[
+    offsetof(EnemyFullObjectView, runtime) +
+    offsetof(EnemyRuntimeView, worldMotion) == 0x1068 ? 1 : -1];
+int __fastcall PlayerShotAcquireTarget(
+    Player *player, PlayerShotRuntimeView *shot, int unusedFrame)
+{
+    shot->trackedEnemy = NULL;
+    EnemyFullObjectView *enemy = player->trackedEnemy;
+    if (enemy != NULL)
+    {
+        shot->trackedEnemy = enemy;
+        float x = enemy->runtime.worldMotion.position.x;
+        if (fabs(x) > 224.0f)
+            shot->trackedEnemy = NULL;
+    }
+    return 0;
+}
+
 // Native target 0x00428CE0 is raw-byte-identical for 80 bytes to the
 // independently exact BulletAngleDifference owner at 0x00408660. Preserve a
 // separate source callable owner; the physical TU and C++ spelling are open.
