@@ -1261,3 +1261,5 @@ BulletManagerView::CancelBulletsInArea,0x00408210,function
 TextRenderBufferView::InvertAlpha,0x00437160,function
 StageResetPublishedCameras,0x004216F0,function
 AnmFloatRectView::DrawGradient,0x0043BFA0,function
+EnemyGameStateView::DrawPanelVms,0x004091C0,function
+EnemySpellPanelDrawCallback,0x00409270,function

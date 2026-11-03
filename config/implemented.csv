@@ -1260,3 +1260,5 @@ BulletManagerView::CancelBulletsInArea
 TextRenderBufferView::InvertAlpha
 StageResetPublishedCameras
 AnmFloatRectView::DrawGradient
+EnemyGameStateView::DrawPanelVms
+EnemySpellPanelDrawCallback

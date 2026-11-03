@@ -29622,3 +29622,21 @@ linkages = [
   { offset = 0x32, type = "DIR32", symbol = "__imp__SetKeyboardState@4", target = 0x00466204 },
   { offset = 0x40, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
 ]
+
+# 10-byte native panel callback: ECX owner => EBX private member receiver.
+# Binds the complete independently decoded 95-byte draw owner at 0x4091C0.
+[units.enemy-spell-panel-draw-callback]
+artifact_kind = "linked-pe"
+source = "src/SpellPanelDraw.cpp"
+output_dir = "build/match-linked/SpellPanelDraw"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?EnemySpellPanelDrawCallback@@YIHPAUEnemyGameStateView@@@Z"
+functions = ["EnemySpellPanelDrawCallback"]
+symbol = "?EnemySpellPanelDrawCallback@@YIHPAUEnemyGameStateView@@@Z"
+target_address = 0x00409270
+size = 10
+linkages = [
+  { offset = 0x4, type = "REL32", symbol = "?DrawPanelVms@EnemyGameStateView@@QAEHXZ", target = 0x004091C0 },
+]

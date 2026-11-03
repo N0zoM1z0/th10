@@ -22,6 +22,7 @@ struct EnemyGameStateView
     AnmFloat3View effectPosition;
 
     int UpdateSpellPanel();
+    int DrawPanelVms();
     void InvalidateSpellBonus();
 };
 typedef char EnemySpellEmbeddedVmsAt10[
@@ -46,3 +47,4 @@ typedef char EnemyGameStateFlagsAt378C[
 
 extern EnemyGameStateView *g_EnemyGameState;
 int __fastcall EnemySpellPanelUpdateCallback(EnemyGameStateView *state);
+int __fastcall EnemySpellPanelDrawCallback(EnemyGameStateView *state);
