@@ -1254,3 +1254,4 @@ InputInitializeDevices,0x0043B8D0,function
 InputDeviceInitThread,0x0043BA90,function
 InputKeyboardSnapshotView::ReadKeyboardState,0x0044B010,function
 InputReadWinmmJoystickCapabilities,0x0044A0C0,function
+TextReleaseFontResources,0x00437D10,function

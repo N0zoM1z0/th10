@@ -1,0 +1,65 @@
+{
+  "target_pe_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "original_address": "0x00437D10",
+  "original_bytes": 149,
+  "target_body_sha256": "967b881109d808d9da77d91968aaeb92027f158537c76e0ebdcf2e6aae5e00c8",
+  "source": "src/TextFontRelease.cpp",
+  "source_sha256": "19a5407a52c1f514e327cfd8516f4873862d3cde5a248b04350783b2d168ec50",
+  "compiler": "VC7.1 SP1 /GL",
+  "graph": [
+    "src/TextFontRelease.cpp",
+    "src/TextRenderer.cpp",
+    "src/RandomMath.cpp"
+  ],
+  "source_sha256_snapshot": "004d588c69dfb5b3dbb59cca0ffe67cab93ecd70520a822bade27bc8b871caf5",
+  "bound_fields": 18,
+  "recorded_offsets": [
+    "0x02",
+    "0x07",
+    "0x0C",
+    "0x12",
+    "0x1B",
+    "0x24",
+    "0x2C",
+    "0x35",
+    "0x3E",
+    "0x46",
+    "0x4F",
+    "0x58",
+    "0x60",
+    "0x69",
+    "0x72",
+    "0x7A",
+    "0x83",
+    "0x8C"
+  ],
+  "independent_colds": [
+    {
+      "result": "exact",
+      "size": 149,
+      "matched_bytes": 149,
+      "image_sha256": "18921eeb66382f203fc64e9d20d4a94036e5257efdbb801c2226a13f265bd72d",
+      "pdb_guid": "48d6a0a1ad3677469efc678f120f23df",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution",
+      "field_count": 18
+    },
+    {
+      "result": "exact",
+      "size": 149,
+      "matched_bytes": 149,
+      "image_sha256": "647ae5965517d8c53fd5fe391e219a100660d186f135a6ff372df1134e6c87c1",
+      "pdb_guid": "65890dad18536b4498f9db73f8b028dc",
+      "pdb_age": 1,
+      "extent_source": "pdb-section-contribution",
+      "field_count": 18
+    }
+  ],
+  "first_cold_guard": {
+    "unit": "text-release-buffer",
+    "bytes": 107,
+    "fields": 3
+  },
+  "original_source_proven": false,
+  "whole_game_runtime_proven": false
+}

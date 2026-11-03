@@ -14,15 +14,15 @@ inventory is provisional; reviewed boundary and origin states are counted below.
 | Confirmed authored code bytes | 276,076 |
 | Classified exclusions | 520 |
 | Reviewed, origin indeterminate | 555 |
-| Source-present mappings | 1,255 |
-| Source-present with authored origin | 725 |
+| Source-present mappings | 1,256 |
+| Source-present with authored origin | 726 |
 | Source-present origin review pending | 0 |
 | Source-present origin indeterminate | 530 |
 | Authored source-present exact backlog | 169 |
-| Canonical exact functions | 1,448 |
-| Canonical exact codegen bytes | 185,833 |
-| Canonical exact functions with authored origin | 556 |
-| Canonical exact authored bytes | 117,090 |
+| Canonical exact functions | 1,449 |
+| Canonical exact codegen bytes | 185,982 |
+| Canonical exact functions with authored origin | 557 |
+| Canonical exact authored bytes | 117,239 |
 
 The tracked-candidate denominator remains provisional because unresolved `.text`
 gaps can contain code, data, thunks, tables, and padding. While origin review,
