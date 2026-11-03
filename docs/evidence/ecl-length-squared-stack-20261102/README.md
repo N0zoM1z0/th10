@@ -57,3 +57,28 @@ Selected reproduction (no historical full cold replay):
       --unit ecl-vm-find-thread --unit ecl-vm-spawn-thread --json
     scripts/repo-python scripts/ci.py
     git diff --check
+
+## 2026-11-03 full-owner FORMAT / POINT_ANGLE stack-home controls
+
+Fresh **executed** pinned VC7.1 `/GL` two-source links of the complete
+7,020-byte `EclVmContext::Run` retained the independent **189-field**
+normalization geometry and all existing target code/data destinations.
+The selected source baseline still matches **6,997/7,020** with 23
+ordinary differences. Moving `FORMAT`'s argument-index declaration
+before `malloc` or before the cursor statement left 6,997/7,020
+unchanged. Moving the scratch allocation before the cursor changed the
+linked field layout and was rejected, without accepting a cropped or
+relocation-masked comparison. Requalifying `POINT_ANGLE`'s X or Y local
+as `volatile` emitted an incorrect **7,036** bytes, and qualifying both
+emitted **7,052**, with unchanged 189 field counts but incompatible
+field geometry. Two mutable non-const locals kept 7,020 bytes and
+6,997/7,020 matching, a neutral result. All variants preserve the same
+source math/read order except for explicitly tested declaration placement;
+none became canonical exact. Every temporary `src/EclVm.cpp` edit was
+restored byte-for-byte, and the original 7,020-byte source is retained.
+
+Logs, full byte mismatch inventories, per-variant size and field-layout
+receipts are under `.analysis/gpt-web/20261103/ecl/format-results.json`
+and `point-results.json`, with reproducible local panel scripts. This
+records actual rejected compiler hypotheses, not proof of a runnable ECL
+interpreter; no historical full cold replay or exact ledger update follows.

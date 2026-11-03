@@ -105,3 +105,18 @@ established. It also does not turn the **266-byte** `PlayerShotTrackEnemy`
 owner exact; the latter remains complete semantic source with nonmatching
 native codegen. Both 53-byte and 80-byte exact units are tested through
 focused cold replay, never full cold game reconstruction.
+
+## Corrected adjacent 125-byte option-origin callback
+
+The independent `0x00428C20..0x00428C9C` **125-byte** origin initializer
+is now source-mapped under `PlayerShotSetOptionOrigin`, but remains
+**NONEXACT**. Crucially, fresh original PE disassembly invalidated our
+first `options[sourceIndex].replayPair0` hypothesis: it addressed the
+wrong player storage. The corrected source indexes
+`options[sourceIndex - 1].replayPair1` to access the *actual* fixed-point
+values at original player +0x3244/+0x3248. This is a semantic correction,
+not merely a compiler-register experiment. The complete target extent,
+VC7.1 source candidate and rejected reload controls are documented in
+[the dedicated option-origin evidence](../player-shot-option-origin-20261103/README.md).
+The two neighboring 53-byte and 80-byte owners remain independently exact;
+no credit is claimed for the 125-byte function.

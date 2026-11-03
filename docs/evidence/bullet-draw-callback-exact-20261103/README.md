@@ -61,3 +61,16 @@ synthetic register stubs or match ledger credit were added for that owner.
 
 Only scoped cold replay of the callback, related bullet update/initialization
 owners and repository checks was performed, never the full game cold replay.
+
+## Further bucket-renderer controls — no false exactness
+
+Four more pinned VC7.1 `/GL` links against the real `AnmManager.cpp`
+explored the exact x87 read/add order and original bit-flag store in
+`BulletManagerView::DrawBucket` (134 target bytes): reversing X/Y add
+terms held **139/134**, **35/114** comparable bytes; direct nonvolatile
+member reads fell to 30/114. A volatile in-memory OR emitted 143 bytes
+and 25-29/114 comparable bytes. Both C++ addition order and the volatile
+OR qualifier were restored after these neutral/regressive trials, leaving
+the previous strongest typed source and the **44/44** exact callback
+unchanged. Full candidate receipts are retained under
+`.analysis/gpt-web/20261103/bullet-draw-order-results.json`.

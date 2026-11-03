@@ -82,3 +82,29 @@ Do **not** assume the old child controls remain neutral at this new source
 epoch: the final two bytes still merit fresh, bounded compiler experiments.
 No full product-build, runtime-equivalence, original TU/ABI-source ancestry or
 portability claim follows from 9,962/9,964.
+
+## 2026-11-03 independent follow-up on the full 9,964-byte owner
+
+This checkpoint **reran real VC7.1 `/GL /GS` links**, not a textual
+re-evaluation, for opcode 91 under the current maintained source epoch.
+Two independent groups tested the following source lifetime variants:
+`const AnmChildScriptLayer` record, dedicated `AnmLoadedView * const`
+file receiver, two-element argument array, pointer-indirected record and
+read-order forms around the 91 child branch. Every compiling variant kept
+**9,964** complete PDB bytes; the best repeated **9,962/9,964** with all
+**350** independently bound fields, and the same native EDX versus linked
+ECX at +0x113/+0x115. The pointer-indirected record regressed two more
+ordinary bytes to 9,960/9,964. A `const AnmVmIdView` return attempt did
+**not compile** because the real `GetVm()` member requires mutable `this`;
+this failure is not counted as a codegen experiment. All actual candidate
+sources were restored byte-for-byte in `finally`, preserving the exact
+child factory and the already proven 9,962-byte frontier.
+
+Fully bounded results and replay recipes:
+`.analysis/gpt-web/anm/child91-20261103-new-forms-results.json`,
+`.analysis/gpt-web/anm/gptweb-20261103-child91-fresh-results.json`, and
+`.analysis/gpt-web/anm/gptweb-20261103-boss-followup-results.json`.
+No exact owner was admitted, no field omitted, no full cold replay invoked.
+The remaining two target bytes require evidence about source-level
+register allocation across `GET_INT_VAR`/`CreateVmVariant2`; code length
+alone is no evidence.
