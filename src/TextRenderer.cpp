@@ -236,6 +236,80 @@ void __stdcall TextHelperView::RenderTextToTexture(
         surface->vtable->Release(surface);
 }
 
+// Target 0x00437FE0. The alternate path fills the bitmap with a 4:4:4
+// version of the requested color and draws one foreground pass (no shadow).
+// The same font restoration and bleed steps are retained as the main path.
+void __stdcall TextHelperView::RenderTextToTextureAlternate(
+    const D3d9RectView *rectangle, int x, int glyphWidth,
+    unsigned int color, const char *text, D3d9TextureView *texture)
+{
+    HFONT font;
+    if (glyphWidth <= 17)
+        font = g_TextFont17;
+    else if (glyphWidth <= 18)
+        font = g_TextFont18;
+    else if (glyphWidth <= 19)
+        font = g_TextFont19;
+    else if (glyphWidth <= 20)
+        font = g_TextFont20;
+    else if (glyphWidth <= 21)
+        font = g_TextFont21;
+    else if (glyphWidth <= 22)
+        font = g_TextFont22;
+    else if (glyphWidth <= 23)
+        font = g_TextFont23;
+    else if (glyphWidth <= 24)
+        font = g_TextFont24;
+    else if (glyphWidth <= 25)
+        font = g_TextFont25;
+    else if (glyphWidth <= 26)
+        font = g_TextFont26;
+    else if (glyphWidth <= 27)
+        font = g_TextFont27;
+    else if (glyphWidth <= 28)
+        font = g_TextFont28;
+    else if (glyphWidth <= 29)
+        font = g_TextFont29;
+    else if (glyphWidth <= 30)
+        font = g_TextFont30;
+    else
+        font = g_TextFont31;
+
+    if (glyphWidth < 17)
+        glyphWidth = 17;
+
+    g_TextRenderBuffer.FillColor(color);
+    HDC hdc = g_TextRenderBuffer.deviceContext;
+    HGDIOBJ previousFont = SelectObject(hdc, font);
+    int processedRows = glyphWidth * 2 + 6;
+    g_TextRenderBuffer.InvertAlpha(processedRows);
+    SetBkMode(hdc, TRANSPARENT);
+    int textLength = static_cast<int>(strlen(text));
+    SetTextColor(hdc, color);
+    TextOutA(hdc, x * 2, 0, text, textLength);
+    SelectObject(hdc, previousFont);
+    g_TextRenderBuffer.InvertAlpha(processedRows);
+    TextRenderBufferApplyAlphaBleed(&g_TextRenderBuffer, processedRows);
+    SelectObject(hdc, previousFont);
+
+    D3d9RectView sourceRect;
+    sourceRect.left = 0;
+    sourceRect.top = 0;
+    sourceRect.right = (rectangle->right - rectangle->left) * 2 + 22;
+    sourceRect.bottom = glyphWidth * 2 + 2;
+    if (sourceRect.right > 1024)
+        sourceRect.right = 1024;
+    D3d9SurfaceView *surface;
+    texture->vtable->GetSurfaceLevel(texture, 0, &surface);
+    D3DXLoadSurfaceFromMemory(
+        surface, NULL, rectangle, g_TextRenderBuffer.pixels,
+        g_TextRenderBuffer.format, g_TextRenderBuffer.pitch,
+        NULL, &sourceRect, 4, 0);
+    if (surface != NULL)
+        surface->vtable->Release(surface);
+}
+
+
 struct TextRenderFormatInfo
 {
     int format;

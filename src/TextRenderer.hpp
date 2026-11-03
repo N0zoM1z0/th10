@@ -57,6 +57,9 @@ void CreateTextBuffer();
 void __stdcall RenderTextToTexture(
     const D3d9RectView *rectangle, int x, int glyphWidth,
     unsigned int color, const char *text, D3d9TextureView *texture);
+void __stdcall RenderTextToTextureAlternate(
+    const D3d9RectView *rectangle, int x, int glyphWidth,
+    unsigned int color, const char *text, D3d9TextureView *texture);
 }
 
 #endif

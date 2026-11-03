@@ -1254,3 +1254,4 @@ InputDeviceInitThread
 InputKeyboardSnapshotView::ReadKeyboardState
 InputReadWinmmJoystickCapabilities
 TextReleaseFontResources
+TextHelperView::RenderTextToTextureAlternate
