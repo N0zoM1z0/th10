@@ -238,7 +238,11 @@ struct EnemyLaserConstructionBaseView
     EnemyLaserCommonStorageView *next;
     unsigned int unknown00C;
     AnmVmTimerView timer;
-    unsigned char unknown024[0x54 - 0x24];
+    // Native linked-list update at 0x41C330 increments this single byte
+    // before deciding whether to unlink a pending laser.
+    unsigned char unknown024[0x50 - 0x24];
+    unsigned char removalPhase;
+    unsigned char unknown051[3];
     unsigned int id;
     EnemyLaserPatternRecordView patterns[18];
     unsigned char unknown400[0x410 - 0x400];
@@ -250,6 +254,8 @@ struct EnemyLaserConstructionBaseView
         timer.SetCurrent(0);
     }
 };
+typedef char EnemyLaserRemovalPhaseAt50[
+    offsetof(EnemyLaserConstructionBaseView, removalPhase) == 0x50 ? 1 : -1];
 
 // Complete storage view: +18 is sentinel.next, while +434 is the append tail.
 // The recovered callback prefix shares this owner with GameManager's existing

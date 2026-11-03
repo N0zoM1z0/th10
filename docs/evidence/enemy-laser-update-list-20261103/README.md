@@ -20,8 +20,9 @@ laser state at +0x0C is 1, it calls virtual `Unlink` at vtable +0x10.
 Otherwise it invokes the real virtual `Update` at vtable +0x08; any nonzero
 return triggers the same unlink. Both cleanup paths decrement count at
 manager +0x438, patch the doubly linked previous/next fields at node +4/+8,
-update the manager's tail at +0x434 when applicable, and free the original
-laser allocation through `_free @0x004524A1`. Successful updates advance
+update the manager's tail at +0x434 when applicable, and deallocate the original
+laser allocation through the native scalar-delete/free CRT endpoint
+at `0x004524A1`. Successful updates advance
 `AnmVmTimerView` at node +0x10: previous gets current, normal-speed range
 (0.99,1.01) increments current and subframe, and the alternative branch
 adds scale to subframe and stores its integer conversion as current. The
@@ -30,6 +31,12 @@ loop repeats until the saved next pointer is null and returns 1.
 The maintained function `EnemyLaserManagerStorageView::UpdateLinkedLasers`
 models those virtual calls, both real removal branches, pointer adjustment
 and the **existing** `AnmVmTimerView::Tick` (no shadow timer type).
+Its target +0x50 removal byte, initially implemented through a raw pointer,
+is now a named `EnemyLaserConstructionBaseView::removalPhase` member with a
+compile-time **`offsetof == 0x50`** assertion. It retains the same byte
+inc/compare and preserves the common laser-storage view layout. A new
+actual pinned VC7.1 `/GL` caller-entry probe still emits 206/274 with
+35/254 ordinary bytes and five candidate fields; no exactness promotion.
 Independent actual VC7.1 SP1 `/GL` linked-PE probes yield 207 PDB bytes
 against native 274 as standalone entry, and **206/274** with the genuine
 registered update callback selected as entry; the latter has 35/254
@@ -72,8 +79,8 @@ builds produce *different* PE SHA-256 and PDB GUIDs but both pass full
 **46/46 bytes, one/one fields** with no differences. Rechecking after
 normalizing the callback's sibling update to the real GameManager type also
 passes 46/46. Private receipts are at
-`.analysis/gpt-web/20261103/laser-draw-46-cold{1,2}.json` and
-`laser-draw-after-owner-guard.json` (not committed).
+`.analysis/gpt-web/20261103/laser-draw-cold{1,2}.json` and
+`laser-draw-after-delete.json` (not committed).
 
 This **one** new 46-byte physical function, of indeterminate authorship,
 receives canonical exact codegen credit, and both previously untracked
@@ -93,3 +100,20 @@ cold PE artifacts: `enemy-laser-draw-callback-0041c4e0`,
 byte/field equality. `scripts/ci.py` independently passed all seven
 repository exact-stage checks. Logs, not whole-cohort replays, remain under
 `.analysis/gpt-web/20261103/laser-{scoped-cold-guard,ci}.log`.
+
+## Follow-up compiler negative controls after exact callback closure
+
+The exact 46-byte callback continues to pass unchanged strict comparison
+after replacing its sibling `g_BulletUpdateGate` alias with the true shared
+`g_GameManager->m_Flags` typed word and changing the 274-byte function's
+release to the scalar `::operator delete` pathway. The entire 274-byte
+`UpdateLinkedLasers` still generates **206 bytes** with the real registered
+91-byte updater selected as `/GL` entry; the compiler merges two distinct
+native unlink/removal lanes into one, a remaining structural difference.
+Three natural control-flow rewrites of the 91-byte updater (separate early
+returns, nested gate and explicit high-byte test) were fully compiled:
+the first two remained **88/91**, the third became **93/91**. All
+three were rejected and the original source restored. Artifacts:
+`.analysis/gpt-web/20261103/laser-update-91-variants.json` and per-variant
+cold compiler logs. Neither the 274-byte manager update nor 91-byte
+registered updater is claimed exact, despite the real compiler context.

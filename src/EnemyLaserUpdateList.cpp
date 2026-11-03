@@ -16,12 +16,11 @@ int EnemyLaserManagerStorageView::UpdateLinkedLasers()
     {
         EnemyLaserConstructionBaseView *next =
             reinterpret_cast<EnemyLaserConstructionBaseView *>(laser->next);
-        unsigned char *phase = reinterpret_cast<unsigned char *>(laser) + 0x50;
         bool expired = false;
-        if (*phase != 0)
+        if (laser->removalPhase != 0)
         {
-            ++*phase;
-            if (*phase >= 2)
+            ++laser->removalPhase;
+            if (laser->removalPhase >= 2)
                 expired = true;
         }
         if (expired || laser->unknown00C == 1)
