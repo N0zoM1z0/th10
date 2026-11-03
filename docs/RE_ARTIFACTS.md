@@ -1,20 +1,50 @@
-# Reconstruction artifacts and recovery — 2026-10-31
+# Reconstruction artifacts and recovery — 2026-11-03
 
 Use [RE_HANDOFF.md](RE_HANDOFF.md) for continuation and [PROGRESS.md](PROGRESS.md)
 for counts. Ignored inputs/archives are private workspace state, not Git clone
 contents. Transfer archives and inventories separately when moving workspaces.
 Archive existence or a familiar directory name does not make old bytes current.
 
-## Handoff cleanup and remaining witnesses — 2026-11-02
+## Latest verified selective cleanup — 2026-11-03
 
-A second targeted cleanup reclaimed **200.41 MiB** (210,141,821 payload
+A further bounded cleanup removed **543 ignored files** and reclaimed
+**15,661,348 payload bytes (14.94 MiB)** or **16,596,992 disk-block bytes
+(15.83 MiB)**. The deleted set consisted only of generated PE/OBJ/PDB
+from superseded `build/gpt-web/` experiments and verified Python bytecode.
+Candidate source snapshots, logs, `.map` and `.rsp` diagnostics remain;
+**canonical `build/match-linked/` producers, target, Ghidra, `.tools`,
+private archives and the D3D workspace were unchanged**.
+
+[Cleanup scope and recovery notes](evidence/handoff-storage-20261103/README.md)
+and [audited machine summary](evidence/handoff-storage-20261103/cleanup-summary.json)
+list all pruned top-level roots, byte counts, protected before/after
+inventories and the per-file inventory checksum. The ignored complete
+per-file SHA-256 manifest remains under `.analysis/maintenance-20261103/`;
+it is **not** an archive containing deleted bytes. Rebuild individual
+missing experimental outputs only when needed for new work.
+
+All **six** earlier canonical nonexact/near-exact witnesses listed below
+remain, plus these **five** more contemporary large-owner witness directories:
+`build/gpt-web/game-cleanup-warm-20261102`,
+`build/gpt-web/popup-browser-context-20261102`,
+`build/gpt-web/bomb-full-caller-20261102`,
+`build/gpt-web/bomb-laser-integrated-20261102`, and
+`build/gpt-web/popup-item-same-owner-20261102`.
+They are retained as historical compiler contexts only, not guarantees of
+current source pin equality. Files under build/gpt-web outside those kept
+roots may intentionally lack PE/PDB/OBJ after this cleanup, while preserving
+their diagnostic logs, MAPs and scripts.
+
+## Earlier cleanup and six historical witnesses — 2026-11-02
+
+At the earlier 2026-11-02 checkpoint a targeted cleanup reclaimed **200.41 MiB** (210,141,821 payload
 bytes) from ignored, regenerable build/gpt-web permutations and build/pycache.
 It deleted 4,252 experimental build files plus bytecode-cache files. The
 candidate build tree went from about 210 MiB to **4.9 MiB**. See the
 [reconciled cleanup report](evidence/handoff-storage-20261102/README.md)
 and [machine-readable summary](evidence/handoff-storage-20261102/cleanup-summary.json).
 
-Six small diagnostic build directories stay expanded:
+The six diagnostic build directories preserved at that earlier checkpoint are still retained:
 
 - build/gpt-web/anm-executor-current-20261102
 - build/gpt-web/anm-executor-independent-20261031

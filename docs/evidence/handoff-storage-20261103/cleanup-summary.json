@@ -1,0 +1,300 @@
+{
+  "date": "2026-11-03",
+  "head": "e62e9ac",
+  "file_count": 543,
+  "bytes": 15661348,
+  "allocated_bytes": 16596992,
+  "categories": {
+    "superseded-generated-VC71-PE-PDB-OBJ": 183,
+    "python-bytecode-cache": 360
+  },
+  "protected_top_level_candidate_roots": [
+    "anm-executor-current-20261102",
+    "anm-executor-independent-20261031",
+    "bomb-full-caller-20261102",
+    "bomb-laser-integrated-20261102",
+    "current-turn",
+    "ecl-run-stack-home-20261102",
+    "game-cleanup-warm-20261102",
+    "game-owner-create-init-20261102",
+    "gui-draw-20261102",
+    "popup-browser-context-20261102",
+    "popup-item-same-owner-20261102"
+  ],
+  "by_root": {
+    ".analysis/gpt-web": {
+      "files": 28,
+      "bytes": 243192,
+      "allocated_bytes": 294912
+    },
+    "build/gpt-web/anm-executor-gpt-web-trial": {
+      "files": 8,
+      "bytes": 426006,
+      "allocated_bytes": 434176
+    },
+    "build/gpt-web/bomb-aux-integrated-20261102": {
+      "files": 8,
+      "bytes": 569045,
+      "allocated_bytes": 577536
+    },
+    "build/gpt-web/bomb-aux-real-20261102": {
+      "files": 8,
+      "bytes": 568983,
+      "allocated_bytes": 577536
+    },
+    "build/gpt-web/bomb-emit-candidate-20261102": {
+      "files": 7,
+      "bytes": 538027,
+      "allocated_bytes": 544768
+    },
+    "build/gpt-web/bomb-emit-standalone-20261102": {
+      "files": 4,
+      "bytes": 71070,
+      "allocated_bytes": 69632
+    },
+    "build/gpt-web/bomb-owner-candidate-20261102": {
+      "files": 6,
+      "bytes": 168929,
+      "allocated_bytes": 180224
+    },
+    "build/gpt-web/bomb-update-candidate-20261102": {
+      "files": 7,
+      "bytes": 519790,
+      "allocated_bytes": 524288
+    },
+    "build/gpt-web/ecl-run-20261102-struct-pair": {
+      "files": 5,
+      "bytes": 229299,
+      "allocated_bytes": 233472
+    },
+    "build/gpt-web/enemy-resource-file-20261102": {
+      "files": 5,
+      "bytes": 208116,
+      "allocated_bytes": 212992
+    },
+    "build/gpt-web/enemy-subroutine-real-20261102": {
+      "files": 5,
+      "bytes": 229176,
+      "allocated_bytes": 233472
+    },
+    "build/gpt-web/input-enum-axis-20261102": {
+      "files": 4,
+      "bytes": 34471,
+      "allocated_bytes": 32768
+    },
+    "build/gpt-web/input-enum-pad-20261102": {
+      "files": 4,
+      "bytes": 34339,
+      "allocated_bytes": 32768
+    },
+    "build/gpt-web/input-init-owner-20261102": {
+      "files": 6,
+      "bytes": 70331,
+      "allocated_bytes": 73728
+    },
+    "build/gpt-web/input-init-thread-20261102": {
+      "files": 6,
+      "bytes": 71150,
+      "allocated_bytes": 77824
+    },
+    "build/gpt-web/input-keyboard-20261102": {
+      "files": 4,
+      "bytes": 34839,
+      "allocated_bytes": 32768
+    },
+    "build/gpt-web/input-thread-split-20261102": {
+      "files": 7,
+      "bytes": 98092,
+      "allocated_bytes": 106496
+    },
+    "build/gpt-web/keyboard-reset-20261102": {
+      "files": 4,
+      "bytes": 48800,
+      "allocated_bytes": 49152
+    },
+    "build/gpt-web/laser-pattern-cancel-20261102": {
+      "files": 4,
+      "bytes": 49093,
+      "allocated_bytes": 49152
+    },
+    "build/gpt-web/popup-draw-20261102": {
+      "files": 7,
+      "bytes": 535679,
+      "allocated_bytes": 540672
+    },
+    "build/gpt-web/popup-draw-standalone-entry-20261102": {
+      "files": 7,
+      "bytes": 535853,
+      "allocated_bytes": 540672
+    },
+    "build/gpt-web/popup-initialize-entry-20261102": {
+      "files": 7,
+      "bytes": 518141,
+      "allocated_bytes": 524288
+    },
+    "build/gpt-web/popup-item-integration-20261102": {
+      "files": 8,
+      "bytes": 615179,
+      "allocated_bytes": 626688
+    },
+    "build/gpt-web/popup-owner-candidate-20261102": {
+      "files": 7,
+      "bytes": 518987,
+      "allocated_bytes": 524288
+    },
+    "build/gpt-web/result-controller-cleanup-20261102": {
+      "files": 7,
+      "bytes": 552044,
+      "allocated_bytes": 561152
+    },
+    "build/gpt-web/result-menu-cleanup-20261102": {
+      "files": 7,
+      "bytes": 551990,
+      "allocated_bytes": 561152
+    },
+    "build/gpt-web/result-menu-integrated-20261102": {
+      "files": 8,
+      "bytes": 580491,
+      "allocated_bytes": 585728
+    },
+    "build/gpt-web/result-menu-lifecycle-20261102": {
+      "files": 5,
+      "bytes": 96227,
+      "allocated_bytes": 106496
+    },
+    "build/gpt-web/scriptviewer-popup-factory-20261102": {
+      "files": 7,
+      "bytes": 518177,
+      "allocated_bytes": 524288
+    },
+    "build/gpt-web/text-font-release-20261102": {
+      "files": 6,
+      "bytes": 92489,
+      "allocated_bytes": 102400
+    },
+    "build/gpt-web/winmm-capabilities-20261102": {
+      "files": 5,
+      "bytes": 56980,
+      "allocated_bytes": 61440
+    },
+    "build/pycache": {
+      "files": 245,
+      "bytes": 4547738,
+      "allocated_bytes": 5074944
+    },
+    "docs/evidence": {
+      "files": 4,
+      "bytes": 27609,
+      "allocated_bytes": 36864
+    },
+    "probes/input-native": {
+      "files": 1,
+      "bytes": 5548,
+      "allocated_bytes": 8192
+    },
+    "scripts/__pycache__": {
+      "files": 82,
+      "bytes": 1695468,
+      "allocated_bytes": 1880064
+    }
+  },
+  "inventory": ".analysis/maintenance-20261103/regenerable-pruned-files.jsonl.gz",
+  "completed": true,
+  "protected_verified_after": {
+    "resources/th10.exe": {
+      "before": {
+        "bytes": 487936,
+        "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+      },
+      "after": {
+        "bytes": 487936,
+        "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+      },
+      "unchanged": true
+    },
+    "build/match-linked": {
+      "before": {
+        "files": 1924,
+        "bytes": 89668333
+      },
+      "after": {
+        "files": 1924,
+        "bytes": 89668333
+      },
+      "unchanged": true
+    },
+    "build/gpt-6.1-sol": {
+      "before": {
+        "files": 3186,
+        "bytes": 137066316
+      },
+      "after": {
+        "files": 3186,
+        "bytes": 137066316
+      },
+      "unchanged": true
+    },
+    ".tools": {
+      "before": {
+        "files": 994,
+        "bytes": 607887049
+      },
+      "after": {
+        "files": 994,
+        "bytes": 607887049
+      },
+      "unchanged": true
+    },
+    ".analysis/archive": {
+      "before": {
+        "files": 3,
+        "bytes": 159669775
+      },
+      "after": {
+        "files": 3,
+        "bytes": 159669775
+      },
+      "unchanged": true
+    },
+    "ghidra-project": {
+      "before": {
+        "files": 10,
+        "bytes": 10044423
+      },
+      "after": {
+        "files": 10,
+        "bytes": 10044423
+      },
+      "unchanged": true
+    },
+    "_reference": {
+      "before": {
+        "files": 5213,
+        "bytes": 260464391
+      },
+      "after": {
+        "files": 5213,
+        "bytes": 260464391
+      },
+      "unchanged": true
+    },
+    "docs/evidence/d3d-adapter-format": {
+      "before": {
+        "files": 12,
+        "bytes": 26874
+      },
+      "after": {
+        "files": 12,
+        "bytes": 26874
+      },
+      "unchanged": true
+    }
+  },
+  "payload_mib": 14.936,
+  "allocated_mib": 15.828,
+  "private_plan_and_inventory_dir": ".analysis/maintenance-20261103",
+  "inventory_gzip_sha256": "fd6462a1c561b0b4224a7e662c17314424db3b2f37a6fd30cd2ad2053f7ee8b2",
+  "kept_source_experiment_logs": true,
+  "kept_canonical_builds_and_target": true,
+  "no_full_cold_replay_performed": true
+}
