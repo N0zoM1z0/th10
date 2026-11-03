@@ -1256,3 +1256,4 @@ InputReadWinmmJoystickCapabilities
 TextReleaseFontResources
 TextHelperView::RenderTextToTextureAlternate
 MidiOutputView::LoadTrackFile
+BulletManagerView::CancelBulletsInArea

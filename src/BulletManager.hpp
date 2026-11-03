@@ -227,7 +227,8 @@ struct BulletManagerView
     BulletRuntimeView *bulletCursor;             // +0x000010
     BulletRuntimeView *drawBucketHeads[6];       // +0x000014
     BulletRuntimeView *drawBucketTails[6];       // +0x00002C
-    unsigned char unknown044[0x18];              // +0x000044
+    AnmFloat3View cancelAreaCenter;                 // +0x000044
+    AnmFloat3View cancelAreaSize;                   // +0x000050
     int activeBulletCount;                       // +0x00005C
     BulletRuntimeView bullets[2001];             // +0x000060
     AnmLoadedView *bulletAnm;                    // +0x3E0B50
@@ -240,10 +241,14 @@ struct BulletManagerView
     int SpawnBulletPattern(BulletSpawnDescriptorView *descriptor);
     int UpdateBullets();
     void ResetPool();
+    int CancelBulletsInArea(int spawnItems);
 };
 
 typedef char BulletManagerCursorAt10[
     (offsetof(BulletManagerView, bulletCursor) == 0x10) ? 1 : -1];
+typedef char BulletManagerCancelAreaAt44[
+    (offsetof(BulletManagerView, cancelAreaCenter) == 0x44 &&
+     offsetof(BulletManagerView, cancelAreaSize) == 0x50) ? 1 : -1];
 typedef char BulletManagerBulletsAt60[
     (offsetof(BulletManagerView, bullets) == 0x60) ? 1 : -1];
 typedef char BulletManagerAnmAt3E0B50[

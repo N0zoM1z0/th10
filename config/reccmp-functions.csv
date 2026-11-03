@@ -1257,3 +1257,4 @@ InputReadWinmmJoystickCapabilities,0x0044A0C0,function
 TextReleaseFontResources,0x00437D10,function
 TextHelperView::RenderTextToTextureAlternate,0x00437FE0,function
 MidiOutputView::LoadTrackFile,0x0043AAD0,function
+BulletManagerView::CancelBulletsInArea,0x00408210,function
