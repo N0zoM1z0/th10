@@ -144,6 +144,7 @@ struct StageScriptView
     int UpdateObjectVms();
     int Update();
 };
+void StageResetPublishedCameras();
 StageScriptView *__stdcall StageCreate(const char *path, int priorityOffset);
 int __fastcall StageUpdateCallback(StageScriptView *stage);
 int __stdcall StageExecuteScript(StageScriptView *stage);
