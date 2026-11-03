@@ -51,6 +51,13 @@ bool __stdcall TextRenderBufferApplyAlphaBleed(
 
 struct D3d9RectView;
 struct D3d9TextureView;
+struct D3d9SurfaceView;
+// Source-level description of target 0x00437750. The original private
+// EAX row register and three-stack-word ABI are not yet reconstructed.
+bool __fastcall BlendTextBitmapToSurface(
+    int column, TextRenderBufferView *buffer, int row,
+    D3d9SurfaceView *surface, int pixelWidth, int rows);
+
 namespace TextHelperView
 {
 void CreateTextBuffer();

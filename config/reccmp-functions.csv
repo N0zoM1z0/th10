@@ -1286,3 +1286,4 @@ PublishEclWorldAnchor,0x00418810,function
 InputDeviceOwnerView::ReleaseDirectInput8,0x00421D20,function
 CreateConfiguredAnmVm,0x0040B110,function
 DetectLegacyWindowsVersion,0x0044BD10,function
+BlendTextBitmapToSurface,0x00437750,function
