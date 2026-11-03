@@ -14,13 +14,13 @@ inventory is provisional; reviewed boundary and origin states are counted below.
 | Confirmed authored code bytes | 276,076 |
 | Classified exclusions | 520 |
 | Reviewed, origin indeterminate | 555 |
-| Source-present mappings | 1,272 |
+| Source-present mappings | 1,273 |
 | Source-present with authored origin | 740 |
 | Source-present origin review pending | 0 |
-| Source-present origin indeterminate | 532 |
+| Source-present origin indeterminate | 533 |
 | Authored source-present exact backlog | 176 |
-| Canonical exact functions | 1,458 |
-| Canonical exact codegen bytes | 187,492 |
+| Canonical exact functions | 1,459 |
+| Canonical exact codegen bytes | 187,707 |
 | Canonical exact functions with authored origin | 564 |
 | Canonical exact authored bytes | 118,563 |
 

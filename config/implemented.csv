@@ -1270,3 +1270,4 @@ GameUiSendVmInterrupt1
 GameUiSendVmInterrupt2
 BulletManagerView::Initialize
 CreateBulletManager
+BulletRuntimeView::BulletRuntimeView

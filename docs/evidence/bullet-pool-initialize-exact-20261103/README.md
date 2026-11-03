@@ -76,7 +76,8 @@ and did not preserve the complete factory byte schedule. The factory has **subse
 `ScriptViewerLifecycle.cpp` support source (182/182, all13 fields, strict
 21-byte allocation-EH handler): see
 [factory closure](../bullet-pool-create-exact-20261103/README.md).
-The generated BulletRuntime constructor remains an independent open owner.
+The generated BulletRuntime constructor later closed independently at
+215/215 raw-exact; see [constructor evidence](../bullet-runtime-generated-constructor-exact-20261103/README.md).
 
 Only explicitly selected related exact units should be cold-replayed;
 never use an entire-product or full-historical cold run for this checkpoint.

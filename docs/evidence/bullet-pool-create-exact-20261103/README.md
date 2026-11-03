@@ -70,8 +70,8 @@ metadata must obey this same fully parsed protocol. This proves the handler
 *address binding* for factory codegen, not runtime exception behavior or
 an independently exact generated-helper function.
 
-The 2001-entry `BulletRuntimeView` **constructor** at 0x00405D00 remains a
-separate, currently source-absent/nonexact owner even though its target
-address is bound by the factory. The already matched 236-byte manager
+The 2001-entry `BulletRuntimeView` **constructor** at 0x00405D00 is
+now independently canonical **215/215 raw-exact** in this same genuine
+factory compiler graph; see [constructor evidence](../bullet-runtime-generated-constructor-exact-20261103/README.md). The already matched 236-byte manager
 destructor remains an independently accepted canonical function. Only
 selected affected exact units were replayed; no complete cold product replay.
