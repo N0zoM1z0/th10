@@ -556,6 +556,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041C1C0,0x0041C282,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0041C290,0x0041C2EA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041C330,0x0041C441,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x41c4c1 to entry; independent IDA MCP extent agrees"
+0x0041C480,0x0041C4DA,reviewed,high,target-enemy-laser-callback-update-20261103,"Native push of callback pointer at 0x0041C157, complete 91-byte indirect-target body with RET at 0x41C4DA, CC ahead of next entry at 0x41C4E0; no overlapping known extent."
+0x0041C4E0,0x0041C50D,reviewed,high,target-enemy-laser-callback-draw-20261103,"Native push of callback pointer 0x0041C4E0 at 0x0041C17A in real EnemyLaserManager Initialize; complete 46 bytes through RET and CC padding at 0x41C50E/0F before 0x41C510; reviewed disassembly/no overlap."
 0x0041C510,0x0041C5A8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=10; no overlap or external interior branch
 0x0041C5B0,0x0041C679,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041C680,0x0041C75A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch

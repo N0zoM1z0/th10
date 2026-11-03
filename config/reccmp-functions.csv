@@ -1287,3 +1287,6 @@ InputDeviceOwnerView::ReleaseDirectInput8,0x00421D20,function
 CreateConfiguredAnmVm,0x0040B110,function
 DetectLegacyWindowsVersion,0x0044BD10,function
 BlendTextBitmapToSurface,0x00437750,function
+EnemyLaserManagerStorageView::UpdateLinkedLasers,0x0041C330,function
+EnemyLaserUpdateCallback,0x0041C480,function
+EnemyLaserDrawCallback,0x0041C4E0,function

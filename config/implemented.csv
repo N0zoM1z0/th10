@@ -1286,3 +1286,6 @@ InputDeviceOwnerView::ReleaseDirectInput8
 CreateConfiguredAnmVm
 DetectLegacyWindowsVersion
 BlendTextBitmapToSurface
+EnemyLaserManagerStorageView::UpdateLinkedLasers
+EnemyLaserUpdateCallback
+EnemyLaserDrawCallback

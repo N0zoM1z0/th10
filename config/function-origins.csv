@@ -556,6 +556,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041C1C0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x0041C290,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x0041C330,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x0041C480,unknown,EnemyLaser,indeterminate,unknown,target-enemy-laser-callback-update-20261103
+0x0041C4E0,unknown,EnemyLaser,indeterminate,unknown,target-enemy-laser-callback-draw-20261103
 0x0041C510,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x0041C5B0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0041C680,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
