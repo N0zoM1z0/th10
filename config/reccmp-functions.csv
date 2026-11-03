@@ -1281,3 +1281,4 @@ BulletManagerDrawCallback,0x004067A0,function
 PlayerShotTrackEnemy,0x00428B10,function
 PlayerShotAngleDifference,0x00428CE0,function
 PlayerShotAcquireTarget,0x00428AD0,function
+PlayerShotSetOptionOrigin,0x00428C20,function

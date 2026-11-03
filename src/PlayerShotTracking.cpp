@@ -40,6 +40,27 @@ __declspec(noinline) float __stdcall PlayerShotAngleDifference(
     return difference;
 }
 
+// Target 0x00428C20..0x00428C9C (125 bytes): a shot's initial
+// position comes from the indicated player's option's fixed-point replay
+// coordinates, then receives the descriptor offset minus shot velocity.
+// Real native receiver register inputs are ECX=Player and EDX=shot.
+int __fastcall PlayerShotSetOptionOrigin(
+    Player *player, PlayerShotRuntimeView *shot)
+{
+    const PlayerShotDescriptorView *descriptor = shot->descriptor;
+    const PlayerPositionPair *optionPosition =
+        &player->options[descriptor->sourceIndex - 1].replayPair1;
+    PlayerFloat3Value origin(
+        static_cast<float>(optionPosition->x) * 0.01f,
+        static_cast<float>(optionPosition->y) * 0.01f, 0.0f);
+    shot->motion.position = origin;
+    shot->motion.position.x +=
+        descriptor->spawnOffsetX - shot->motion.velocity.x;
+    shot->motion.position.y +=
+        descriptor->spawnOffsetY - shot->motion.velocity.y;
+    return 0;
+}
+
 // The raw target 0x00428B10 has one private live input, EDX=shot; the
 // registered callback's ECX/owner identity has not been established.
 extern float __stdcall EnemyWrapAngle(float angle);
