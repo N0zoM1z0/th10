@@ -1259,3 +1259,4 @@ MidiOutputView::LoadTrackFile
 BulletManagerView::CancelBulletsInArea
 TextRenderBufferView::InvertAlpha
 StageResetPublishedCameras
+AnmFloatRectView::DrawGradient

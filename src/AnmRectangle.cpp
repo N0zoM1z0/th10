@@ -54,3 +54,61 @@ void DrawColoredRectangle(AnmFloatRectView *rectangle, unsigned int color)
     g_Direct3DDevice->vtable->SetTextureStageState(
         g_Direct3DDevice, 0, D3D9_VIEW_TSS_COLORARG1, D3D9_VIEW_TA_TEXTURE);
 }
+
+// Target 0x0043BFA0 (501-byte member-style sibling of DrawColoredRectangle).
+// The target takes four independently supplied per-corner colors and returns
+// with RET16. Its original receiver ABI/TU and calling sites are unresolved.
+void AnmFloatRectView::DrawGradient(unsigned int color0, unsigned int color1,
+    unsigned int color2, unsigned int color3)
+{
+    g_AnmRenderManagerView->FlushVertexBuffer();
+
+    AnmUntexturedVertexView vertices[4];
+    // Construct and assign each complete XYZ value before setting W and color.
+    *reinterpret_cast<AnmFloat3View *>(&vertices[0]) =
+        AnmFloat3View(this->left, this->top, 0.0f);
+    *reinterpret_cast<AnmFloat3View *>(&vertices[1]) =
+        AnmFloat3View(this->right, this->top, 0.0f);
+    *reinterpret_cast<AnmFloat3View *>(&vertices[2]) =
+        AnmFloat3View(this->left, this->bottom, 0.0f);
+    *reinterpret_cast<AnmFloat3View *>(&vertices[3]) =
+        AnmFloat3View(this->right, this->bottom, 0.0f);
+    vertices[0].w = vertices[1].w = vertices[2].w = vertices[3].w = 1.0f;
+    vertices[0].color = color0;
+    vertices[1].color = color1;
+    vertices[2].color = color2;
+    vertices[3].color = color3;
+
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0, D3D9_VIEW_TSS_ALPHAOP, D3D9_VIEW_TOP_SELECTARG1);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0, D3D9_VIEW_TSS_COLOROP, D3D9_VIEW_TOP_SELECTARG1);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0, D3D9_VIEW_TSS_ALPHAARG1, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0, D3D9_VIEW_TSS_COLORARG1, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->SetRenderState(
+        g_Direct3DDevice, D3D9_VIEW_RS_DESTBLEND, D3D9_VIEW_BLEND_INVSRCALPHA);
+    g_Direct3DDevice->vtable->SetFVF(
+        g_Direct3DDevice, D3D9_VIEW_FVF_XYZRHW | D3D9_VIEW_FVF_DIFFUSE);
+    g_Direct3DDevice->vtable->DrawPrimitiveUP(
+        g_Direct3DDevice, D3D9_VIEW_PT_TRIANGLESTRIP, 2, vertices,
+        sizeof(AnmUntexturedVertexView));
+
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    manager->currentVertexShader = 0xff;
+    manager->currentSprite = NULL;
+    manager->currentTexture = NULL;
+    manager->currentColorOperation = 0xff;
+    manager->currentBlendMode = 3;
+    manager->currentZWrite = 0xff;
+
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0, D3D9_VIEW_TSS_ALPHAOP, D3D9_VIEW_TOP_MODULATE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0, D3D9_VIEW_TSS_COLOROP, D3D9_VIEW_TOP_MODULATE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0, D3D9_VIEW_TSS_ALPHAARG1, D3D9_VIEW_TA_TEXTURE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0, D3D9_VIEW_TSS_COLORARG1, D3D9_VIEW_TA_TEXTURE);
+}

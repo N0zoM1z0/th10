@@ -11,6 +11,9 @@ struct AnmFloatRectView
     float top;
     float right;
     float bottom;
+
+    void DrawGradient(unsigned int color0, unsigned int color1,
+        unsigned int color2, unsigned int color3);
 };
 typedef char AnmFloatRectViewSizeIs10[
     (sizeof(AnmFloatRectView) == 0x10 &&
