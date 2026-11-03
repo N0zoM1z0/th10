@@ -14,6 +14,7 @@ struct InputDeviceOwnerView
     HWND window;                        // +0x48
     unsigned char unknown04C[0x150-0x4c];
     unsigned int flags;                 // +0x150
+    void ReleaseDirectInput8();
 };
 typedef char InputDeviceOwnerOffsets[
     (offsetof(InputDeviceOwnerView, directInput8)==0x0c &&
@@ -65,11 +66,24 @@ extern char g_InputJoystickEnumeratedLog[];
 extern int __stdcall InputEnumPadDeviceCallback(const unsigned char *,void *);
 struct InputDirectObjectInstanceView;
 extern int __stdcall InputEnumAxisRangeCallback(const InputDirectObjectInstanceView *, void *);
-extern void InputReleaseDevices421D20();
 
 static inline InputDirectDeviceMethods *InputMethods(InputDeviceView *device)
 {
     return reinterpret_cast<InputDirectDeviceMethods *>(device->vtable);
+}
+
+// Target original 0x00421D20: conditional release and clear of the parent
+// DirectInput8 pointer. The original incoming receiver is held in ESI, which
+// the actual InputInitializeDevices caller may promote under VC7.1 /GL.
+__declspec(noinline) void InputDeviceOwnerView::ReleaseDirectInput8()
+{
+    InputDeviceView *const input =
+        reinterpret_cast<InputDeviceView *>(directInput8);
+    if (input != NULL)
+    {
+        InputMethods(input)->Release(input);
+        directInput8 = NULL;
+    }
 }
 
 // DirectInput8Create and the two enumeration callbacks have their real
@@ -125,7 +139,7 @@ __declspec(noinline) int InputInitializeDevices(InputDeviceOwnerView *owner)
             InputMethods(keyboard)->Release(keyboard);
             owner->keyboard=NULL;
         }
-        InputReleaseDevices421D20();
+        owner->ReleaseDirectInput8();
         th10::g_GameErrorContext.Log(g_InputKeyboardCoopFailureLog);
         return -1;
     }

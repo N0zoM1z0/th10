@@ -85,3 +85,27 @@ nice -n 10 scripts/repo-python scripts/replay-exact-units.py \
 scripts/repo-python scripts/ci.py
 git diff --check
 ```
+
+
+## 2026-11-03: full 21-byte DirectInput8 COM release helper closes exact
+
+A direct original native review confirmed that `0x00421D20..0x00421D34`
+consumes the `InputDeviceOwnerView` in **ESI**, reads its +0x0C DirectInput8
+interface, calls its actual vtable `Release` at +8 through `PUSH EAX`, and
+zeros only the +0x0C owner slot after release. The previous
+`extern void InputReleaseDevices421D20()` used by this parent was an
+unresolved no-argument placeholder and did not carry real source semantics.
+It is now replaced in the maintained 439-byte `InputInitializeDevices`
+with the real `owner->ReleaseDirectInput8()` member. The actual
+`InputDeviceOwnerView::ReleaseDirectInput8` is implemented in the same
+source file, no fake memory-mapped global or host COM device is invented.
+
+Pinned VC7.1 `/GL` compiles this complete helper to **21/21 raw-equal
+bytes**, **zero** linkage fields, with the actual parent as linker entry.
+Two independent zero-reuse cold linked-PE builds pass the strict complete
+PDB source-owner comparator. See
+[the dedicated exact helper evidence](../input-directinput-release-exact-20261103/README.md).
+The parent `InputInitializeDevices` **still remains NONEXACT** (an isolated
+probe emits **411/439**) and the input thread is also nonexact; the 21-byte
+helper does not inherit or grant codegen credit to either. The two existing
+EnumDevices and EnumObjects exact callbacks were checked separately.

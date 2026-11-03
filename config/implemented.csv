@@ -1282,3 +1282,4 @@ PlayerShotAngleDifference
 PlayerShotAcquireTarget
 PlayerShotSetOptionOrigin
 PublishEclWorldAnchor
+InputDeviceOwnerView::ReleaseDirectInput8

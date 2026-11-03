@@ -1283,3 +1283,4 @@ PlayerShotAngleDifference,0x00428CE0,function
 PlayerShotAcquireTarget,0x00428AD0,function
 PlayerShotSetOptionOrigin,0x00428C20,function
 PublishEclWorldAnchor,0x00418810,function
+InputDeviceOwnerView::ReleaseDirectInput8,0x00421D20,function
