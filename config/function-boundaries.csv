@@ -735,6 +735,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00428AD0,0x00428B04,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 53/53, tail ret"
 0x00428B10,0x00428C19,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 266/266, tail ret"
 0x00428C20,0x00428C9C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
+0x00428CE0,0x00428D2F,reviewed,high,target-player-shot-angle-duplicate-20261103,"Direct E8 call at 0x00428B7D; preceding CC and complete dense RET8 at 0x00428D2D plus two target zero bytes before next function. All 80 bytes raw-identical to exact 0x00408660 owner; independent direct byte check."
 0x00428D60,0x00428D63,reviewed,medium,target-ida-leaf-review-2026-09-30,Direct IDA Pro MCP byte read covers the complete leaf extent and ret tail; CC padding follows with no interior branch evidence.
 0x00428D70,0x00428DCA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00428DD0,0x00428DE3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch

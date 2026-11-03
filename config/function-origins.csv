@@ -735,6 +735,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00428AD0,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00428B10,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
 0x00428C20,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x00428CE0,unknown,Player,indeterminate,unknown,target-player-shot-angle-duplicate-20261103
 0x00428D60,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00428D70,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x00428DD0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18

@@ -1278,3 +1278,5 @@ CreateFpsCounter,0x00413350,function
 GameInitializeRuntimeSystems,0x004201B0,function
 BulletManagerView::DrawBucket,0x004066E0,function
 BulletManagerDrawCallback,0x004067A0,function
+PlayerShotTrackEnemy,0x00428B10,function
+PlayerShotAngleDifference,0x00428CE0,function

@@ -1277,3 +1277,5 @@ CreateFpsCounter
 GameInitializeRuntimeSystems
 BulletManagerView::DrawBucket
 BulletManagerDrawCallback
+PlayerShotTrackEnemy
+PlayerShotAngleDifference

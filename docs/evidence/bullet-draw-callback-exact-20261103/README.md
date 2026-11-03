@@ -50,8 +50,11 @@ via actual `AnmRenderManagerView::Draw` at 0x004451C0.
 
 `BulletManagerView::DrawBucket` is newly implemented as full typed C++ source
 but remains **NONEXACT**: isolated VC7.1 links vary between 136 and 144
-bytes against target 134, while real ANM/BulletManager LTCG support produces
-139/134 with 30/114 preliminary ordinary bytes. Original private EAX/ECX
+bytes against target 134, while actual ANM LTCG support produces
+139/134 with 30/114 initial preliminary ordinary bytes. Preserving the real
+world-position reads as const volatile float references improves that same
+139-byte graph to **35/114** preliminary ordinary bytes without changing the
+callback. This qualifier models ordering, not original threading semantics. Original private EAX/ECX
 transport and loop scheduling remain unresolved. The callback's exact REL32
 call **does not** make the draw-bucket function itself exact. No target bytes,
 synthetic register stubs or match ledger credit were added for that owner.
