@@ -138,6 +138,48 @@ bool __stdcall TextRenderBufferApplyAlphaBleed(
     return true;
 }
 
+// Target 0x00437160 (157-byte owner): invert GDI bitmap alpha for the
+// three supported pixel formats. The A1R5G5B5 path also clears the 15-bit
+// color whenever the new alpha becomes zero; the other formats keep RGB.
+bool TextRenderBufferView::InvertAlpha(int processedRows)
+{
+    unsigned short *wordPixels = static_cast<unsigned short *>(pixels);
+    int totalBytes = pitch * processedRows;
+    unsigned char *bytes = reinterpret_cast<unsigned char *>(wordPixels);
+    int index;
+    switch (format)
+    {
+    case 0x15:  // A8R8G8B8
+        for (index = 3; index < totalBytes; index += 4)
+            bytes[index] = static_cast<unsigned char>(~bytes[index]);
+        return true;
+
+    case 0x19:  // A1R5G5B5
+        if (totalBytes > 0)
+        {
+            unsigned short *pixel = wordPixels;
+            index = (static_cast<unsigned int>(totalBytes - 1) >> 1) + 1;
+            do
+            {
+                unsigned short value = *pixel;
+                unsigned short newValue = static_cast<unsigned short>(
+                    (value & 0x7fff) | (~value & 0x8000));
+                *pixel = newValue;
+                if (static_cast<signed char>(newValue >> 8) >= 0)
+                    *pixel = static_cast<unsigned short>(newValue & 0x8000);
+                ++pixel;
+            } while (--index != 0);
+        }
+        return true;
+
+    case 0x1a:  // A4R4G4B4
+        for (index = 1; index < totalBytes; index += 2)
+            bytes[index] ^= 0xf0;
+        return true;
+    }
+    return false;
+}
+
 extern TextRenderBufferView g_TextRenderBuffer;
 extern HFONT g_TextFont17;
 extern HFONT g_TextFont18;

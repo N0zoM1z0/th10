@@ -1257,3 +1257,4 @@ TextReleaseFontResources
 TextHelperView::RenderTextToTextureAlternate
 MidiOutputView::LoadTrackFile
 BulletManagerView::CancelBulletsInArea
+TextRenderBufferView::InvertAlpha
