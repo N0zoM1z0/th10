@@ -30075,3 +30075,29 @@ linkages = [
   { offset = 0x37, type = "DIR32", symbol = "?g_InputPadDevices@@3PAPAUInputDeviceView@@A", target = 0x00491C3C },
   { offset = 0x4E, type = "DIR32", symbol = "?g_FrontEndSupervisorFlags@@3IA", target = 0x00491FF4 },
 ]
+
+# Original CC-bounded Win32s/9x/NT version classifier: full 260-byte body,
+# including /GS cookie and all six cleanup returns. Indeterminate physical
+# C++ source authorship is preserved in function-origins.csv.
+[units.legacy-windows-version-0044bd10]
+artifact_kind = "linked-pe"
+source = "src/LegacyWindowsVersion.cpp"
+output_dir = "build/match-linked/LegacyWindowsVersion"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DetectLegacyWindowsVersion@@YAHXZ"
+functions = ["DetectLegacyWindowsVersion"]
+symbol = "?DetectLegacyWindowsVersion@@YAHXZ"
+target_address = 0x0044BD10
+size = 260
+linkages = [
+  { offset = 0x0D, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x37, type = "DIR32", symbol = "__imp__GetVersionExA@4", target = 0x0046612C },
+  { offset = 0x5C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+  { offset = 0x7D, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+  { offset = 0x9E, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+  { offset = 0xC8, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+  { offset = 0xE4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+  { offset = 0xFC, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
