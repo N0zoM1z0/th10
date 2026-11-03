@@ -1273,3 +1273,4 @@ BulletManagerView::Initialize,0x00405E20,function
 CreateBulletManager,0x00406060,function
 BulletRuntimeView::BulletRuntimeView,0x00405D00,function
 InitializeGameStatisticsRecord,0x0042ACB0,function
+GameLoadStartupVersion,0x00420100,function

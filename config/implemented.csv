@@ -1272,3 +1272,4 @@ BulletManagerView::Initialize
 CreateBulletManager
 BulletRuntimeView::BulletRuntimeView
 InitializeGameStatisticsRecord
+GameLoadStartupVersion
