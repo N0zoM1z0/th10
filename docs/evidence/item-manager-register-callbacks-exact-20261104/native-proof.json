@@ -1,0 +1,138 @@
+{
+  "target": {
+    "version": "Japanese TH10 v1.00a",
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "address": "0x0041AD90",
+    "size": 84
+  },
+  "canonical_unit": "item-manager-register-callbacks-0041ad90",
+  "source": "src/ItemManager.cpp",
+  "support_sources": [
+    "src/Chain.cpp",
+    "src/AnmManager.cpp"
+  ],
+  "entry_symbol": "?GameCreateItemManager@@YAPAXXZ",
+  "source_sha256": "ef9a0d093e28a619cd134b4984d9354e001f7b09825e8f3f908324f659c8f7f3",
+  "independent_colds": [
+    {
+      "cold_number": 1,
+      "build_unit": "item-manager-register-callbacks-0041ad90",
+      "image_sha256": "515e41a4070688c9acc1ae64efa1e1a512a4c6892e034b1b48df0b410a4f3b0e",
+      "pdb_guid": "fb61d5bf6073774f95f16cbffbc82a52",
+      "result": "exact",
+      "matched_bytes": 84,
+      "compared_size": 84,
+      "pdb_module_index": 1,
+      "linkages": [
+        [
+          "0x3",
+          "DIR32",
+          "?OnUpdate@ItemManagerView@@SIHPAU1@@Z",
+          "0x0041BA00"
+        ],
+        [
+          "0x8",
+          "REL32",
+          "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+          "0x00449ED0"
+        ],
+        [
+          "0x13",
+          "DIR32",
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "0x00491BE4"
+        ],
+        [
+          "0x21",
+          "REL32",
+          "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z",
+          "0x00449AE0"
+        ],
+        [
+          "0x26",
+          "DIR32",
+          "?OnDraw@ItemManagerView@@SIHPAU1@@Z",
+          "0x0041BA30"
+        ],
+        [
+          "0x2E",
+          "REL32",
+          "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+          "0x00449ED0"
+        ],
+        [
+          "0x3A",
+          "DIR32",
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "0x00491BE4"
+        ],
+        [
+          "0x48",
+          "REL32",
+          "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z",
+          "0x00449B70"
+        ]
+      ]
+    },
+    {
+      "cold_number": 2,
+      "build_unit": "item-manager-register-callbacks-0041ad90",
+      "image_sha256": "aac285881dd2de4773596630c5584f6158e157a2d702a18b10f22141cf7478a3",
+      "pdb_guid": "bab2f5b82544bf44a4700d823180aca5",
+      "result": "exact",
+      "matched_bytes": 84,
+      "compared_size": 84,
+      "pdb_module_index": 1,
+      "linkages": [
+        [
+          "0x3",
+          "DIR32",
+          "?OnUpdate@ItemManagerView@@SIHPAU1@@Z",
+          "0x0041BA00"
+        ],
+        [
+          "0x8",
+          "REL32",
+          "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+          "0x00449ED0"
+        ],
+        [
+          "0x13",
+          "DIR32",
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "0x00491BE4"
+        ],
+        [
+          "0x21",
+          "REL32",
+          "?AddToCalcChain@Chain@th10@@QAEHPAUChainElem@2@H@Z",
+          "0x00449AE0"
+        ],
+        [
+          "0x26",
+          "DIR32",
+          "?OnDraw@ItemManagerView@@SIHPAU1@@Z",
+          "0x0041BA30"
+        ],
+        [
+          "0x2E",
+          "REL32",
+          "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z",
+          "0x00449ED0"
+        ],
+        [
+          "0x3A",
+          "DIR32",
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "0x00491BE4"
+        ],
+        [
+          "0x48",
+          "REL32",
+          "?AddToDrawChain@Chain@th10@@QAEHPAUChainElem@2@H@Z",
+          "0x00449B70"
+        ]
+      ]
+    }
+  ]
+}

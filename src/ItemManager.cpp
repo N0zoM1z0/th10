@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "ItemManager.hpp"
+#include "Chain.hpp"
 #include "ScriptViewerOwners.hpp"
 #include "ItemPowerDisplay.hpp"
 #include "GameScoreState.hpp"
@@ -486,25 +487,24 @@ typedef char ItemChainArgumentAt20[
     (offsetof(ItemChainElementView, argument) == 0x20) ? 1 : -1];
 typedef int (__fastcall *ItemCallback)(ItemManagerView *manager);
 extern void *g_ItemCallbackChainOwner;
-extern ItemChainElementView *ItemCreateCallbackNode(ItemCallback callback);
-extern void ItemRegisterUpdateNode(void *owner, int priority,
-    ItemChainElementView *node);
-extern void ItemRegisterDrawNode(void *owner, int priority,
-    ItemChainElementView *node);
 
 int ItemManagerRegisterCallbacks(ItemManagerView *manager)
 {
     ItemChainElementView *node =
-        ItemCreateCallbackNode(&ItemManagerView::OnUpdate);
+        reinterpret_cast<ItemChainElementView *>(
+            th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(
+                &ItemManagerView::OnUpdate)));
     node->flags &= ~2u;
     node->argument = manager;
-    ItemRegisterUpdateNode(g_ItemCallbackChainOwner, 21, node);
+    th10::g_Chain->AddToCalcChain(reinterpret_cast<th10::ChainElem *>(node), 21);
     manager->updateCallbackNode = node;
 
-    node = ItemCreateCallbackNode(&ItemManagerView::OnDraw);
+    node = reinterpret_cast<ItemChainElementView *>(
+        th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(
+            &ItemManagerView::OnDraw)));
     node->flags &= ~2u;
     node->argument = manager;
-    ItemRegisterDrawNode(g_ItemCallbackChainOwner, 25, node);
+    th10::g_Chain->AddToDrawChain(reinterpret_cast<th10::ChainElem *>(node), 25);
     manager->drawCallbackNode = node;
     return 0;
 }
