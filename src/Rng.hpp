@@ -11,6 +11,7 @@ struct RngView
 
     unsigned short GetRandomU16();
     unsigned int GetRandomU32();
+    unsigned int GetRandomU32SkipNextPair();
     float GetRandomF32();
     float GetRandomF32Signed();
 

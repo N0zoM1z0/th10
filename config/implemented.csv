@@ -1294,3 +1294,4 @@ EnemyLaserManagerStorageView::AccumulatePointChecks
 EnemyLaserLineView::CheckPoint
 LaunchProcessWithOptionalWait
 MainSupervisorView::MatchDebugRecord
+RngView::GetRandomU32SkipNextPair

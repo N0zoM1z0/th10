@@ -54,8 +54,8 @@ The old accepted PE/PDB and a matching *size* are not enough.
 | Measure | Verified count |
 | --- | ---: |
 | Reviewed target functions/boundaries | 1,829 / 1,829 |
-| Source-present functions | **1,294** |
-| Canonical exact functions / codegen bytes | **1,469 / 188,587** |
+| Source-present functions | **1,297** |
+| Canonical exact functions / codegen bytes | **1,470 / 188,742** |
 | Confirmed authored functions / bytes (provisional) | 750 / 276,120 |
 | Confirmed-authored exact functions / bytes | 569 / 118,961 |
 | Authored source-present nonexact backlog | 181 |
@@ -82,6 +82,7 @@ recounted for a parent merely because its call target is known:
 
 | Area | Current exact scope | Evidence / reproducible unit |
 | --- | --- | --- |
+| Four-step RNG `0x44BA80` | **155/155**, complete `/GL /GS` body, cookie at +0x04, check-jump at +0x97; four seed steps with two-word result, 2 independent cold builds | [full proof](evidence/rng-four-advance-exact-20261104/README.md), unit `rng-get-random-u32-skip-next-pair` |
 | Laser draw-list `0x41C450` + draw callback `0x41C4E0` | **43/43 raw** + **46/46**; the genuine callback LTCG inlines the helper while retaining a separate 43-byte PDB owner | [draw-list](evidence/enemy-laser-draw-list-exact-20261103/README.md), units `enemy-laser-draw-list-0041c450` and `enemy-laser-draw-callback-0041c4e0` |
 | Input device release `0x421D20` + input thread `0x43BA90` | **21/21 raw** + **83/83**; complete 439-byte input init parent **NONEXACT** | [COM release](evidence/input-directinput-release-exact-20261103/README.md), [thread](evidence/input-device-thread-exact-20261103/README.md) |
 | Windows classifier `0x44BD10` | **260/260**, eight bound IAT/security-cookie/callee fields; **origin indeterminate** | [full proof](evidence/legacy-windows-version-exact-20261103/README.md) |

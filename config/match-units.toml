@@ -3312,6 +3312,24 @@ target_address = 0x0044BA30
 size = 78
 relocations = []
 
+[units.rng-get-random-u32-skip-next-pair]
+artifact_kind = "linked-pe"
+source = "src/RandomAdvance.cpp"
+support_sources = ["src/RandomMath.cpp"]
+output_dir = "build/match-linked/RngFourAdvance"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?GetRandomU32SkipNextPair@RngView@@QAEIXZ"
+functions = ["RngView::GetRandomU32SkipNextPair"]
+symbol = "?GetRandomU32SkipNextPair@RngView@@QAEIXZ"
+target_address = 0x0044BA80
+size = 155
+linkages = [
+  { offset = 0x04, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x97, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
+
 [units.rng-get-random-f32]
 artifact_kind = "coff"
 source = "src/RandomMath.cpp"

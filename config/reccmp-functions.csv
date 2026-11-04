@@ -1295,3 +1295,4 @@ EnemyLaserManagerStorageView::AccumulatePointChecks,0x0041C880,function
 EnemyLaserLineView::CheckPoint,0x0041E4D0,function
 LaunchProcessWithOptionalWait,0x00436570,function
 MainSupervisorView::MatchDebugRecord,0x00420DD0,function
+RngView::GetRandomU32SkipNextPair,0x0044BA80,function
