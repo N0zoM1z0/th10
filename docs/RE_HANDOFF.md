@@ -54,7 +54,7 @@ The old accepted PE/PDB and a matching *size* are not enough.
 | Measure | Verified count |
 | --- | ---: |
 | Reviewed target functions/boundaries | 1,829 / 1,829 |
-| Source-present functions | **1,304** |
+| Source-present functions | **1,305** |
 | Canonical exact functions / codegen bytes | **1,473 / 188,926** |
 | Confirmed authored functions / bytes (provisional) | 750 / 276,120 |
 | Confirmed-authored exact functions / bytes | 569 / 118,961 |
@@ -116,6 +116,7 @@ pins, full PDB extent, all field locations and root-entry ABI together.
 | **Type-0 laser virtual `CheckPoint` `0x41E4D0`, 226 bytes** | Actual vtable `0x46DA60 +0x20` identifies `EnemyLaserLineView`; selected volatile XYZ delta shape compiles **200/226**, 36/214 diagnostic ordinary bytes. Its slot +0x10, +0x1C and +0x20 had previously been incorrectly named `UnknownSlot*`; the declarations were corrected. [Vtable & full owner](evidence/laser-type0-point-contact-20261103/README.md) |
 | **Laser manager point accumulator `0x41C880`, 54 bytes** | Source now traverses the actual manager's nodes and calls virtual CheckPoint (+0x20), producing **54/54 size** but **31/54 ordinary bytes**. No independently verified original direct caller; don't invent a private EAX ABI shim. [Linked laser evidence](evidence/enemy-laser-update-list-20261103/README.md) |
 | **GDI bitmap compositor `0x437750`, 645 bytes** | Complete 3-format source; continuous pitch-corrected cursor candidate **670/645**, nonexact. [GDI 3-path source](evidence/text-surface-composite-source-20261103/README.md) |
+| **Archive path suffix `0x4356D0`, 20 bytes** | Complete source recovers genuine `strchr`/first-slash selection; old exact FileSystem inline owners untouched. Natural VC7.1 **27/20**, original ESI ABI unproven, **NONEXACT** | [source and native proof](evidence/archive-entry-suffix-source-20261104/README.md) |
 | **FrontEnd VM constant interrupt adapters `0x42C730/0x42C750`** | 27-byte targets now mapped to distinct natural source and **2+7** confirmed original callers. Actual `/GL` bodies 32/27 each, **NONEXACT**; 4,519 distinct selected existing exact bytes still pass | [source and native caller proof](evidence/frontend-constant-interrupt-adapters-20261104/README.md) |
 | **Replay timestamp/completion helper `0x429B30`, 36 bytes** | Complete natural source with true `_time`/timestamp/selector/global field semantics. Native private EDI/ESI ABI unresolved; ordinary C++ entry **46/36 NONEXACT** | [native source proof](evidence/replay-header-timestamp-source-20261104/README.md) |
 | **Player option trail `0x427960`, 359 bytes** | Fresh callback-root **359/359 PDB size, still NONEXACT**. Natural zero-mode position/sample locals advance ordinary diagnostic **155/339 → 205/339** but target fields and other bytes differ; 123/123 existing callback exact guards pass | [359-byte source/byte frontier](evidence/player-trail-zero-locals-20261104/README.md) |
