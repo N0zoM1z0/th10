@@ -23,28 +23,10 @@ ScriptViewerPopupOwnerView::ScriptViewerPopupOwnerView()
     g_ScriptViewerPopups = this;
 }
 
-// Target record: 0x40 bytes at owner+0x3C4, with its timer at +0x1C.
-// The record array is intentionally not a constructed C++ member: original
-// outer-object initialization clears it after initializing its VM member.
-struct ScriptViewerPopupRecord
-{
-    unsigned char digits[12];
-    AnmFloat3View position;
-    unsigned int color;
-    AnmVmTimerView timer;
-    unsigned char reserved30[8];
-    unsigned char active;
-    unsigned char digitCount;
-    unsigned char reserved3A[6];
-};
-typedef char PopupRecordSize40[(sizeof(ScriptViewerPopupRecord) == 0x40) ? 1 : -1];
-typedef char PopupRecordTimerAt1C[(offsetof(ScriptViewerPopupRecord, timer) == 0x1C) ? 1 : -1];
-
 // Complete 0x42B6F0 behavior: active record fading and timer expiry.
 int ScriptViewerPopupOwnerView::Update()
 {
-    ScriptViewerPopupRecord *record = reinterpret_cast<ScriptViewerPopupRecord *>(
-        reinterpret_cast<unsigned char *>(this) + 0x3C4);
+    ScriptViewerPopupRecord *record = PopupRecords();
     for (int index = 0; index < 723; ++index, ++record)
     {
         if (record->active)
@@ -68,8 +50,7 @@ int __fastcall ScriptViewerPopupUpdate42B9A0(void *owner)
 // target's fog transition and loop-internal player refresh.
 int ScriptViewerPopupOwnerView::Draw()
 {
-    ScriptViewerPopupRecord *record = reinterpret_cast<ScriptViewerPopupRecord *>(
-        reinterpret_cast<unsigned char *>(this) + 0x3C4);
+    ScriptViewerPopupRecord *record = PopupRecords();
     if ((g_AnmHardwareFlags & 4) == 0 && g_MainSupervisorView.cachedFogEnabled != 0)
     {
         g_AnmRenderManagerView->FlushVertexBuffer();
@@ -138,8 +119,7 @@ void ScriptViewerPopupOwnerView::EmitValuePopup(
 {
     if (nextPopupIndex >= 0x2d0)
         nextPopupIndex = 0;
-    ScriptViewerPopupRecord *row = reinterpret_cast<ScriptViewerPopupRecord *>(
-        reinterpret_cast<unsigned char *>(this) + 0x3C4) + nextPopupIndex;
+    ScriptViewerPopupRecord *row = PopupRecords() + nextPopupIndex;
     int count = 0;
     row->active = 1;
     if (value < 0)

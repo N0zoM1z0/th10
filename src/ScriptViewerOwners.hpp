@@ -50,6 +50,23 @@ typedef char ScriptViewerBombTimerAt014[
     (offsetof(ScriptViewerBombOwnerView, timer) == 0x14 &&
      offsetof(ScriptViewerBombOwnerView, timer.flags) == 0x24) ? 1 : -1];
 
+// Target record: 0x40 bytes at owner+0x3C4, with its timer at +0x1C.
+// The record array is intentionally not a constructed C++ member: original
+// outer-object initialization clears it after initializing its VM member.
+struct ScriptViewerPopupRecord
+{
+    unsigned char digits[12];
+    AnmFloat3View position;
+    unsigned int color;
+    AnmVmTimerView timer;
+    unsigned char reserved30[8];
+    unsigned char active;
+    unsigned char digitCount;
+    unsigned char reserved3A[6];
+};
+typedef char PopupRecordSize40[(sizeof(ScriptViewerPopupRecord) == 0x40) ? 1 : -1];
+typedef char PopupRecordTimerAt1C[(offsetof(ScriptViewerPopupRecord, timer) == 0x1C) ? 1 : -1];
+
 struct ScriptViewerPopupOwnerView
 {
     unsigned char unknown000[8];
@@ -59,6 +76,12 @@ struct ScriptViewerPopupOwnerView
     int nextPopupIndex;
     AnmVmView vm;
     unsigned char opaque3C4[0xb884 - 0x3c4];
+    // Keep the physical record storage unconstructed: the retail outer
+    // constructor clears it after the ANM VM is initialized.
+    ScriptViewerPopupRecord *PopupRecords()
+    {
+        return reinterpret_cast<ScriptViewerPopupRecord *>(opaque3C4);
+    }
     __declspec(noinline) ScriptViewerPopupOwnerView();
     __declspec(noinline) int Initialize();
     __declspec(noinline) int Update();
@@ -69,6 +92,9 @@ struct ScriptViewerPopupOwnerView
 
 typedef char ScriptViewerPopupOwnerTargetSizeB884[
     (sizeof(ScriptViewerPopupOwnerView) == 0xb884) ? 1 : -1];
+typedef char ScriptViewerPopupRecordStorageAt3C4[
+    (offsetof(ScriptViewerPopupOwnerView, opaque3C4) == 0x3c4 &&
+     723 * sizeof(ScriptViewerPopupRecord) == 0xb884 - 0x3c4) ? 1 : -1];
 typedef char ScriptViewerPopupVmOffset[
     (offsetof(ScriptViewerPopupOwnerView, vm) == 0x18 &&
      offsetof(ScriptViewerPopupOwnerView, vm) +
