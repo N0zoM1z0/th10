@@ -54,8 +54,8 @@ The old accepted PE/PDB and a matching *size* are not enough.
 | Measure | Verified count |
 | --- | ---: |
 | Reviewed target functions/boundaries | 1,829 / 1,829 |
-| Source-present functions | **1,297** |
-| Canonical exact functions / codegen bytes | **1,470 / 188,742** |
+| Source-present functions | **1,301** |
+| Canonical exact functions / codegen bytes | **1,473 / 188,926** |
 | Confirmed authored functions / bytes (provisional) | 750 / 276,120 |
 | Confirmed-authored exact functions / bytes | 569 / 118,961 |
 | Authored source-present nonexact backlog | 181 |
@@ -82,6 +82,9 @@ recounted for a parent merely because its call target is known:
 
 | Area | Current exact scope | Evidence / reproducible unit |
 | --- | --- | --- |
+| Derived Win32 resource PBG destructor `0x436680` | **49/49** with three actual base-vtable/free/IFile-vtable fields; distinct from the 49-byte base destructor | [full proof](evidence/resource-pbgfile-derived-destructor-exact-20261104/README.md), unit `win32-resource-pbgfile-destructor-00436680` |
+| Signed rank counter `0x4088C0` | **75/75**, five fields into the original signed rank table, natural five-column `do/while` | [full proof](evidence/game-statistics-rank-kind-exact-20261104/README.md), unit `game-statistics-rank-kind-count-004088c0` |
+| ANM vertex buffer installer `0x40B250` | **60/60**, 11 dword allocation and +0x340 position mirror, one scalar-new call field | [full proof](evidence/anm-vm-vertex-buffer-exact-20261104/README.md), unit `anm-vm-vertex-buffer-0040b250` |
 | Four-step RNG `0x44BA80` | **155/155**, complete `/GL /GS` body, cookie at +0x04, check-jump at +0x97; four seed steps with two-word result, 2 independent cold builds | [full proof](evidence/rng-four-advance-exact-20261104/README.md), unit `rng-get-random-u32-skip-next-pair` |
 | Laser draw-list `0x41C450` + draw callback `0x41C4E0` | **43/43 raw** + **46/46**; the genuine callback LTCG inlines the helper while retaining a separate 43-byte PDB owner | [draw-list](evidence/enemy-laser-draw-list-exact-20261103/README.md), units `enemy-laser-draw-list-0041c450` and `enemy-laser-draw-callback-0041c4e0` |
 | Input device release `0x421D20` + input thread `0x43BA90` | **21/21 raw** + **83/83**; complete 439-byte input init parent **NONEXACT** | [COM release](evidence/input-directinput-release-exact-20261103/README.md), [thread](evidence/input-device-thread-exact-20261103/README.md) |
@@ -106,8 +109,8 @@ pins, full PDB extent, all field locations and root-entry ABI together.
 
 | Complete target owner | Last checked diagnostic and useful next move |
 | --- | --- |
-| **ANM `ExecuteScript` @0x43EE30, 9,964 bytes** | Selected graph **9,962/9,964**, 350 external fields and 95 local obligations. Two opcode-91 private child VM-create register bytes remain. Fresh const-record, local-file and reordered script/layer variations did not close it; the source was restored. [Frontier](evidence/anm-executor-two-byte-frontier-20261031/README.md) |
-| **ECL `Run` @0x44E1A0, 7,020 bytes** | Selected graph **6,997/7,020** with 189 fields. Volatile LENGTH_SQUARED expression is retained; recent FORMAT and POINT_ANGLE local-variable permutations were non-improvements; source restored. [ECL stack proof](evidence/ecl-length-squared-stack-20261102/README.md) |
+| **ANM `ExecuteScript` @0x43EE30, 9,964 bytes** | Fresh five-input graph **9,962/9,964**, strict 350 fields and 95 locals. New temporary-record field reordering also leaves the exact same two EDX/ECX gaps at +0x113/+0x115; source restored. [Current controls](evidence/boss-ecl-anm-byte-frontiers-20261104/README.md) |
+| **ECL `Run` @0x44E1A0, 7,020 bytes** | Current 189-field layout, **6,997/7,020**; all 23 remaining ordinary bytes now mapped to specific register/index/stack-home families. Five new bounded compiler hypotheses rejected, including one wrong field layout; source restored. [Current byte frontier](evidence/boss-ecl-anm-byte-frontiers-20261104/README.md) |
 | **Enemy ECL dispatcher `DispatchEclInstruction`, 14,416 bytes** | Real 11-source selected WPO graph emitted **14,352/14,416** after corrected world-anchor wiring. Two controlled entry/support variations left 14,352 unchanged. Do not infer the parent is exact because its **64-byte anchor callee** is. Logs/recipes: `.analysis/gpt-web/20261103/large-enemy-context/`. |
 | **Laser linked list update `0x41C330`, 274 bytes** | Maintained source now has distinct deletion routes; callback-entry VC7.1 produces **275/274** (39/254 diagnostic ordinary bytes). Update callback `0x41C480` still **88/91**; list draw43 and draw callback46 are separately exact. [Laser owner](evidence/enemy-laser-update-list-20261103/README.md) |
 | **Type-0 laser virtual `CheckPoint` `0x41E4D0`, 226 bytes** | Actual vtable `0x46DA60 +0x20` identifies `EnemyLaserLineView`; selected volatile XYZ delta shape compiles **200/226**, 36/214 diagnostic ordinary bytes. Its slot +0x10, +0x1C and +0x20 had previously been incorrectly named `UnknownSlot*`; the declarations were corrected. [Vtable & full owner](evidence/laser-type0-point-contact-20261103/README.md) |
