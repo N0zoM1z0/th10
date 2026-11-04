@@ -2002,9 +2002,9 @@ dispatch_difficulty_float_index_4_a:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     uVar23 = ENEMY_READ_INT_DIRECT(0);
     *reinterpret_cast<EnemyBulletPatternCopyView *>(
-        (int)runtimeAddress + 0x2c4 + (int)uVar23 * 0x210) =
+        &bulletPatterns[uVar23]) =
         *reinterpret_cast<const EnemyBulletPatternCopyView *>(
-            (int)runtimeAddress + 0x2c4 + (int)uVar22 * 0x210);
+            &bulletPatterns[uVar22]);
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
