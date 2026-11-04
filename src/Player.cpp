@@ -640,8 +640,12 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
     Player *player = g_Player;
     const int optionMode = player->optionMode;
 
-    option->replayPair0 =
-        player->replayPositionHistory[(option->optionIndex + 1) * 8];
+    // Preserve the separate X/Y load sequence of the physical option-trail
+    // owner; a struct assignment triggers a different VC7.1 register schedule.
+    const PlayerPositionPair *const currentSample =
+        &player->replayPositionHistory[(option->optionIndex + 1) * 8];
+    option->replayPair0.x = currentSample->x;
+    option->replayPair0.y = currentSample->y;
     if (optionMode == 0)
     {
         option->replayPair2.x = option->replayPair0.x - player->positionX;
