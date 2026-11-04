@@ -151,6 +151,27 @@ enum EnemyEclOpcode
 };
 
 
+// ENEMY_ECL_SET_BULLET_EXTRA indexes six consecutive 32-bit fields using
+// a 0x18-byte stride. Their semantic names are intentionally provisional.
+struct EnemyBulletExtraView
+{
+    float floatA;
+    float floatB;
+    int value08;
+    int value0C;
+    int value10;
+    int value14;
+};
+typedef char EnemyBulletExtraSizeIs18[
+    (sizeof(EnemyBulletExtraView) == 0x18) ? 1 : -1];
+typedef char EnemyBulletExtraFieldsNativeOffsets[
+    (offsetof(EnemyBulletExtraView, floatA) == 0x00 &&
+     offsetof(EnemyBulletExtraView, floatB) == 0x04 &&
+     offsetof(EnemyBulletExtraView, value08) == 0x08 &&
+     offsetof(EnemyBulletExtraView, value0C) == 0x0c &&
+     offsetof(EnemyBulletExtraView, value10) == 0x10 &&
+     offsetof(EnemyBulletExtraView, value14) == 0x14) ? 1 : -1];
+
 struct EnemyManagedVmView;
 extern int g_EnemyDifficulty;
 extern EnemyManagerView *g_EnemyManager;
@@ -2277,15 +2298,15 @@ dispatch_select_bullet_count_low:
     iVar26 = (int)uVar22 * 0x16 + (int)uVar23;
     iVar27 = (int)runtimeAddress + iVar26 * 0x18;
     uVar22 = ENEMY_READ_INT_DIRECT(2);
-    *(int *)(iVar27 + 0x2f8) = (int)uVar22;
+    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->value14 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(3);
-    *(int *)(iVar27 + 0x2f4) = (int)uVar22;
+    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->value10 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(4);
-    *(int *)(iVar27 + 0x2ec) = (int)uVar22;
+    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->value08 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(5);
-    *(int *)(iVar27 + 0x2f0) = (int)uVar22;
+    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->value0C = (int)uVar22;
     fVar19 = (ReadFloatArgument(6));
-    *(float *)(iVar27 + 0x2e4) = (float)fVar19;
+    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->floatA = (float)fVar19;
     fVar19 = (ReadFloatArgument(7));
     *(float *)((int)runtimeAddress + (iVar26 * 3 + 0x5d) * 8) = (float)fVar19;
     return 0;
