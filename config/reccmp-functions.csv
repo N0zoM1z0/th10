@@ -1293,3 +1293,4 @@ EnemyLaserDrawCallback,0x0041C4E0,function
 EnemyLaserDrawList,0x0041C450,function
 EnemyLaserManagerStorageView::AccumulatePointChecks,0x0041C880,function
 EnemyLaserLineView::CheckPoint,0x0041E4D0,function
+LaunchProcessWithOptionalWait,0x00436570,function
