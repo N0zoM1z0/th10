@@ -686,8 +686,10 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
         }
     }
 
-    option->replayPair0.x = player->positionX + option->replayPair2.x;
-    option->replayPair0.y = player->positionY + option->replayPair2.y;
+    const int sumX = player->positionX + option->replayPair2.x;
+    const int sumY = player->positionY + option->replayPair2.y;
+    option->replayPair0.x = sumX;
+    option->replayPair0.y = sumY;
     option->previousMode = optionMode;
 }
 
