@@ -644,12 +644,14 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
     // owner; a struct assignment triggers a different VC7.1 register schedule.
     const PlayerPositionPair *const currentSample =
         &player->replayPositionHistory[(option->optionIndex + 1) * 8];
-    option->replayPair0.x = currentSample->x;
-    option->replayPair0.y = currentSample->y;
+    const int initialX = currentSample->x;
+    const int initialY = currentSample->y;
+    option->replayPair0.x = initialX;
+    option->replayPair0.y = initialY;
     if (optionMode == 0)
     {
-        const int x = option->replayPair0.x;
-        const int y = option->replayPair0.y;
+        const int x = initialX;
+        const int y = initialY;
         const int positionX = player->positionX;
         const int positionY = player->positionY;
         option->replayPair2.x = x - positionX;

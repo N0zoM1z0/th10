@@ -23,6 +23,19 @@ a constraint on the maintained implementation.
 
 ## 2026-11-04 authoritative updates for the next agent
 
+**Player zero-mode initial history value reuse (2026-11-04):** The original
+359-byte `PlayerOptionTrailCallbackBody` loads initial history X/Y once,
+stores those values into the option and then reuses the same register values
+in its zero-mode subtractors. Maintained typed `initialX`/`initialY` locals
+now reproduce this source-level lifetime in the real three-source
+`RebuildPlayerOptions` `/GL` graph. The full 359-byte PDB body improves
+preliminary ordinary positional agreement **215/339 → 245/339**, with five
+candidate fields. **NONEXACT** remains mandatory: original field geometry
+and all remaining bytes still differ. Selected accepted neighboring callback
+bodies cold-replay **123/123 exact**.
+[Evidence](evidence/player-trail-initial-xy-register-reuse-20261104/README.md).
+
+
 **Player option-trail two staged coordinate writes (2026-11-04):** The full
 359-byte `PlayerOptionTrailCallbackBody` now computes both nonzero-mode X/Y
 coordinates as ordinary typed, volatile-lifetime locals and writes them
