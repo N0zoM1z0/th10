@@ -1072,6 +1072,9 @@ float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)
 int EnemyRuntimeView::DispatchEclInstruction()
 
 {
+  // Runtime flags at +0x1444 are the native EnemyRuntimeView::flags
+  // member, independently layout-checked in Enemy.hpp. Preserve the
+  // target's byte-wide tests by explicitly reading its low byte.
   int runtimeAddress = reinterpret_cast<int>(this);
   short opcode;
   float fVar2;
@@ -1137,7 +1140,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
     iVar26 = *(int *)(iVar27 + 0x10) + 4;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-    if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
+    if ((flags & 0x40000) == 0) {
       fVar9 = *(float *)((int)runtimeAddress + 0x2c);
       fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
       fVar10 = *(float *)((int)runtimeAddress + 0x30);
@@ -1301,7 +1304,7 @@ dispatch_create_enemy_mirrored:
               CreateVmVariant2((int)uVar23, 6);
       iVar26 = reinterpret_cast<int>(createdVm.GetVm());
     }
-    if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
+    if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       *(unsigned int *)(iVar26 + 0x340) = *puVar5;
@@ -1323,7 +1326,7 @@ dispatch_create_enemy_mirrored:
               CreateVmVariant0((int)uVar23, 6);
       iVar26 = reinterpret_cast<int>(createdVm.GetVm());
     }
-    if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
+    if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       *(unsigned int *)(iVar26 + 0x340) = *puVar5;
@@ -1352,7 +1355,7 @@ dispatch_create_enemy_mirrored:
               CreateVmVariant2((int)uVar23, 6);
       iVar26 = reinterpret_cast<int>(createdVm.GetVm());
     }
-    if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
+    if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       *(unsigned int *)(iVar26 + 0x340) = *puVar5;
@@ -1388,11 +1391,11 @@ dispatch_create_enemy_mirrored:
       *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar11 + 0x50) * *(float *)(iVar11 + 0x40);
       *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar11 + 0x4c) * *(float *)(iVar11 + 0x3c);
     }
-    if ((*(unsigned char *)((int)runtimeAddress + 0x1444) & 0x10) != 0) {
+    if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
       reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
     }
     if (iVar26 == 0) {
-      *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) | 0x1000;
+      flags = flags | 0x1000;
       *(int *)((int)runtimeAddress + 0xf4) = iVar27;
       *(int *)((int)runtimeAddress + 0xf0) = iVar27;
       *(unsigned int *)((int)runtimeAddress + 0xf8) = 0;
@@ -1418,7 +1421,7 @@ dispatch_update_primary_anm_bounds:
       *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar27 + 0x50) * *(float *)(iVar27 + 0x40);
       *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar27 + 0x4c) * *(float *)(iVar27 + 0x3c);
     }
-    if ((*(unsigned char *)((int)runtimeAddress + 0x1444) & 0x10) != 0) {
+    if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
       reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
       return 0;
     }
@@ -1509,7 +1512,7 @@ dispatch_update_primary_anm_bounds:
     local_2bc = (float)fVar19;
     fVar19 = (ReadFloatArgument(1));
     if (-999999.0 < local_2bc) {
-      if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x800) != 0) {
+      if ((flags & 0x800) != 0) {
         fVar21 = EnemyWrapAngle(local_2bc - 1.5707964f);
         fVar21 = EnemyWrapAngle((float)(1.5707964f - fVar21));
         local_2bc = (float)fVar21;
@@ -1546,7 +1549,7 @@ dispatch_update_primary_anm_bounds:
       }
       else {
         finalPolar.x = local_2c8;
-        if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x800) != 0) {
+        if ((flags & 0x800) != 0) {
           fVar19 = EnemyWrapAngle((float)(finalPolar.x - 1.5707964f));
           finalPolar.x = (float)EnemyWrapAngle((float)(1.5707964f - fVar19));
         }
@@ -1716,7 +1719,7 @@ dispatch_update_primary_anm_bounds:
         *reinterpret_cast<PlayerFloat3 *>(iVar26 + 0x1068);
     return 0;
   case ENEMY_ECL_SET_MOVEMENT_BOUNDS:
-    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) | 0x200;
+    flags = flags | 0x200;
     fVar19 = (ReadFloatArgument(0));
     *(float *)((int)runtimeAddress + 0x13ac) = (float)fVar19;
     fVar19 = (ReadFloatArgument(1));
@@ -1727,7 +1730,7 @@ dispatch_update_primary_anm_bounds:
     *(float *)((int)runtimeAddress + 0x13b8) = (float)fVar19;
     return 0;
   case ENEMY_ECL_CLEAR_MOVEMENT_BOUNDS:
-    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) & 0xfffffdff;
+    flags = flags & 0xfffffdff;
     return 0;
   case ENEMY_ECL_SET_BULLET_PROTECTION_RANGE:
     fVar19 = (ReadFloatArgument(0));
@@ -1818,8 +1821,8 @@ dispatch_initialize_polar_interpolation:
     return 0;
   case ENEMY_ECL_SET_FLAGS:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    uVar8 = *(unsigned int *)((int)runtimeAddress + 0x1444) | (unsigned int)uVar22;
-    *(unsigned int *)((int)runtimeAddress + 0x1444) = uVar8;
+    uVar8 = flags | (unsigned int)uVar22;
+    flags = uVar8;
     if ((uVar8 & 0x10) != 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
         reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
@@ -1828,8 +1831,8 @@ dispatch_initialize_polar_interpolation:
     break;
   case ENEMY_ECL_CLEAR_FLAGS:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    uVar8 = *(unsigned int *)((int)runtimeAddress + 0x1444) & ~(unsigned int)uVar22;
-    *(unsigned int *)((int)runtimeAddress + 0x1444) = uVar8;
+    uVar8 = flags & ~(unsigned int)uVar22;
+    flags = uVar8;
     if ((uVar8 & 0x10) == 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
         reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->SetFlag2();
@@ -1842,7 +1845,7 @@ dispatch_initialize_polar_interpolation:
   case ENEMY_ECL_ADD_ITEM_DROP:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    if ((char)((unsigned int)*(unsigned int *)((int)runtimeAddress + 0x1444) >> 8) < '\0') {
+    if ((char)((unsigned int)flags >> 8) < '\0') {
       if (iVar26 == 1) {
         iVar26 = 10;
       }
@@ -1865,7 +1868,7 @@ dispatch_initialize_polar_interpolation:
   case ENEMY_ECL_SET_MAIN_DROP:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    if ((char)((unsigned int)*(unsigned int *)((int)runtimeAddress + 0x1444) >> 8) < '\0') {
+    if ((char)((unsigned int)flags >> 8) < '\0') {
       if (iVar26 == 1) {
         *(unsigned int *)((int)runtimeAddress + 0x13cc) = 10;
         return 0;
@@ -2385,9 +2388,9 @@ dispatch_select_bullet_count_low:
     return 0;
   case ENEMY_ECL_SET_GAME_SPEED_FLAG:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    *(unsigned int *)((int)runtimeAddress + 0x1444) =
-         *(unsigned int *)((int)runtimeAddress + 0x1444) ^
-         ((int)uVar22 << 0x13 ^ *(unsigned int *)((int)runtimeAddress + 0x1444)) & 0x80000;
+    flags =
+         flags ^
+         ((int)uVar22 << 0x13 ^ flags) & 0x80000;
     return 0;
   case ENEMY_ECL_FIRE_LASER_A:
   case ENEMY_ECL_FIRE_LASER_A_WITH_PATTERN:
@@ -2740,12 +2743,12 @@ dispatch_rank_int_low:
     return 0;
   case ENEMY_ECL_SET_ANM_MODE:
     uVar22 = ReadIntArgument(0);
-    *(unsigned int *)((int)runtimeAddress + 0x1444) =
-         *(unsigned int *)((int)runtimeAddress + 0x1444) ^
-         ((int)uVar22 << 0x14 ^ *(unsigned int *)((int)runtimeAddress + 0x1444)) & 0x100000;
+    flags =
+         flags ^
+         ((int)uVar22 << 0x14 ^ flags) & 0x100000;
     uVar22 = ReadIntArgument(1);
     *(int *)((int)runtimeAddress + 0x1448) = (int)uVar22;
-    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) & 0xffdfffff;
+    flags = flags & 0xffdfffff;
     *(unsigned int *)((int)runtimeAddress + 0x144c) = *(unsigned int *)((int)runtimeAddress + 0xf4);
     return 0;
   case ENEMY_ECL_SET_TIMER_SCALE:
