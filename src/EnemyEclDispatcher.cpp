@@ -1397,7 +1397,7 @@ dispatch_create_enemy_mirrored:
     }
     fVar19 = (ReadFloatArgument(2));
     reinterpret_cast<AnmVmView *>(iVar26)->rotation.z = (float)fVar19;
-    *(unsigned int *)(iVar26 + 0x35c) = *(unsigned int *)(iVar26 + 0x35c) | 4;
+    reinterpret_cast<AnmVmView *>(iVar26)->flags35C |= 4u;
     return 0;
   case ENEMY_ECL_SET_MAIN_ANM_SCRIPT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1416,8 +1416,8 @@ dispatch_create_enemy_mirrored:
     iVar11 = reinterpret_cast<int>(
         reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
     if (iVar26 == 0) {
-      visibilityExtentX = *(float *)(iVar11 + 0x50) * *(float *)(iVar11 + 0x40);
-      visibilityExtentY = *(float *)(iVar11 + 0x4c) * *(float *)(iVar11 + 0x3c);
+      visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar11)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar11)->scaleY;
+      visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar11)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar11)->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
       reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
@@ -1446,8 +1446,8 @@ dispatch_create_enemy_mirrored:
         reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
 dispatch_update_primary_anm_bounds:
     if (iVar26 == 0) {
-      visibilityExtentX = *(float *)(iVar27 + 0x50) * *(float *)(iVar27 + 0x40);
-      visibilityExtentY = *(float *)(iVar27 + 0x4c) * *(float *)(iVar27 + 0x3c);
+      visibilityExtentX = reinterpret_cast<const AnmVmView *>(iVar27)->spriteHeight * reinterpret_cast<const AnmVmView *>(iVar27)->scaleY;
+      visibilityExtentY = reinterpret_cast<const AnmVmView *>(iVar27)->spriteWidth * reinterpret_cast<const AnmVmView *>(iVar27)->scaleX;
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
       reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
