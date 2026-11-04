@@ -1293,3 +1293,4 @@ EnemyLaserDrawList
 EnemyLaserManagerStorageView::AccumulatePointChecks
 EnemyLaserLineView::CheckPoint
 LaunchProcessWithOptionalWait
+MainSupervisorView::MatchDebugRecord

@@ -269,6 +269,7 @@ struct MainSupervisorView
     int StartModeThread(int (*entry)(), void *context);
     int UpdateGameMode();
     int ReleaseGame();
+    int MatchDebugRecord(const char *name, int first, int second);
     void LeaveLock(int index);
     static int __fastcall OnUpdate(MainSupervisorView *supervisor);
 
@@ -314,7 +315,8 @@ struct MainSupervisorView
     unsigned char criticalSectionLockCounts[7]; // +0x6F4
     unsigned char unknown6FB[0x055];
     unsigned int cachedFogEnabled;              // +0x750, full-word cache
-    unsigned char unknown754[0x010];
+    unsigned char unknown754[0x00C];
+    unsigned int bufferBytes760;               // +0x760, debug text remaining bytes
     void *buffer764;                           // +0x764
     StartupWorkerView *startupWorker;            // +0x768
     unsigned char unknown76C[0x00C];
@@ -333,6 +335,7 @@ typedef char MainSupervisorCleanupFields[
      offsetof(MainSupervisorView, inputDevice0) == 0x10 &&
      offsetof(MainSupervisorView, inputDevice1) == 0x14 &&
      offsetof(MainSupervisorView, timerOwner) == 0x11c &&
+     offsetof(MainSupervisorView, bufferBytes760) == 0x760 &&
      offsetof(MainSupervisorView, buffer764) == 0x764) ? 1 : -1];
 
 typedef char MainSupervisorSizeIs784[
