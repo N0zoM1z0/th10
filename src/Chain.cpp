@@ -13,6 +13,12 @@ extern "C" void _ReadWriteBarrier();
 typedef unsigned char u8;
 typedef unsigned int u32;
 typedef int i32;
+// Retail ChainElem callback slots: offsets independently established by
+// the 0x449ED0 AllocElem and 0x449A90 destructor owners.
+typedef char ChainCallbackSlotOffsets[
+    (offsetof(th10::ChainElem, callback) == 0x08 &&
+     offsetof(th10::ChainElem, addedCallback) == 0x0c &&
+     offsetof(th10::ChainElem, deletedCallback) == 0x10) ? 1 : -1];
 
 namespace th10
 {
@@ -63,9 +69,9 @@ __declspec(noinline) ChainElem * __stdcall Chain::AllocElem(ChainCallback callba
     elem = new ChainElem;
 
     cb = callback;
-    *(ChainCallback *)((u8 *)elem + 0x0c) = NULL;
-    *(ChainCallback *)((u8 *)elem + 0x10) = NULL;
-    *(ChainCallback *)((u8 *)elem + 0x8) = cb;
+    elem->addedCallback = NULL;
+    elem->deletedCallback = NULL;
+    elem->callback = cb;
     elem->flagBits.heapAllocated = 1;
     return elem;
 }
