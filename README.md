@@ -54,8 +54,11 @@ Initialize131, Update571 and AddAutomaticEntry220, the GameManager
 owner Initialize134 and callback Cleanup137, and the StageCrossProduct77
 codegen helper. Source-written/authored provenance is kept separate
 from compiler-generated or indeterminate-origin exact bodies.
-The ANM 9,964-byte ExecuteScript, 7,020-byte ECL interpreter and
-GameCreateOwner40AF90 (83 native vs 86 target) still remain nonexact.
+The ANM 9,964-byte ExecuteScript and 7,020-byte ECL interpreter remain
+nonexact, as does the 14,416-byte enemy ECL instruction dispatcher.
+**Correction:** GameCreateOwner @0x0040AF90 is now **86/86 canonical exact**
+(see `docs/evidence/game-owner-creator-exact-20261102/README.md`);
+older 83/86 candidate wording was superseded by a complete exact proof.
 Use the [current handoff](docs/RE_HANDOFF.md) and generated progress
 rather than treating any historical candidate score as exactness.
 

@@ -21,6 +21,46 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-04 authoritative updates for the next agent
+
+**Current ledger:** **1,829** reviewed boundaries, **1,294** source-present,
+**1,469** canonical exact functions and **188,587** exact codegen bytes.
+`PROGRESS.md` is generated and overrides any earlier cumulative table below;
+these totals do not prove a runnable retail product or original source
+ancestry. The new [current handoff](RE_HANDOFF.md) consolidates the complete
+remaining **ANM 9,964**, **ECL Run 7,020**, **Enemy ECL dispatcher 14,416**, and
+laser/Player owner frontiers. Do not carry old source-PDB fingerprints into
+a fresh compiled source epoch.
+
+**Previously obsolete claims corrected:** the 83-byte DirectInput thread at
+`0x0043BA90` is **83/83 exact** (not nonexact), with the 21-byte real
+DirectInput8 COM release at `0x00421D20` independently **21/21 exact**;
+[thread evidence](evidence/input-device-thread-exact-20261103/README.md).
+`GameCreateOwner40AF90` at `0x0040AF90` is also **86/86 exact**, not the older
+83/86 candidate mentioned by the root README before this cleanup;
+[creator proof](evidence/game-owner-creator-exact-20261102/README.md).
+The 43-byte `EnemyLaserDrawList` at `0x0041C450` and 46-byte registered
+laser draw callback are **both exact** under the same genuine callback-root
+LTCG graph; the 274-byte updater and 91-byte update callback remain nonexact.
+The laser type-0 vtable `0x0046DA60 +0x20` actually points to the 226-byte
+`EnemyLaserLineView::CheckPoint`; previously unnamed slots +0x10/+0x1C/+0x20
+were corrected using the original vtable. These sources are **not byte-exact**
+unless listed in `config/matches.csv`.
+
+**Private storage as of November 4:** older `.analysis/gpt-6.1-sol/` and
+`build/gpt-6.1-sol/` roots are **archived, not expanded**. All 11,061 files
+were verified independently by size and SHA-256 before deleting the
+expanded copies, saving **347,042,395 net workspace bytes** including
+regenerable cache pruning. `build/match-linked/`, `.analysis/gpt-web/`,
+original target, pinned tools, Ghidra project and all earlier archives are
+retained. Details and selective restore:
+[RE_ARTIFACTS.md](RE_ARTIFACTS.md) and
+[November 4 storage proof](evidence/handoff-storage-20261104/README.md).
+
+The November 3 section and all dated sections below are **historical source
+epochs**. Their former "current" statuses are not current claims when
+contradicted by this section or the exact ledgers.
+
 ## 2026-11-03 verified handoff corrections
 
 - **GDI resource lifetime:** `TextReleaseFontResources @0x00437D10`
@@ -45,8 +85,9 @@ a constraint on the maintained implementation.
   `InputKeyboardSnapshotView::ReadKeyboardState @0x0044B010` is **103/103**;
   DirectInput EnumDevices @`0x0043BAF0` and EnumObjects @`0x0043BB30`
   are independently **52/52** and **98/98** exact. The 439-byte DirectInput
-  parent initializer and 83-byte input-thread entry are **maintained but
-  NONEXACT**, not aliases of these callbacks. See the corresponding recent
+  parent initializer remains **maintained but NONEXACT**. At this historical
+  2026-11-03 source epoch the input thread was also nonexact; it **later
+  closed 83/83 exact** after the actual COM release source was restored. See the corresponding recent
   source proofs in [RE_HANDOFF.md](RE_HANDOFF.md).
 - **Large-owner status:** the early `ANM-038` native size of 9,784 was
   historic and no longer represents the selected ANM source. The complete
@@ -54,11 +95,12 @@ a constraint on the maintained implementation.
   NONEXACT**, with the last two bytes tied to opcode-91 EDX/ECX scheduling.
   The similarly near-matched Bullet 335-byte, Sound 369/684-byte and ECL
   7,020-byte owners remain nonexact. Do not credit partial exact bytes.
-- **Storage:** the November 3 handoff pruned only 543 ignored, regenerable
-  PE/OBJ/PDB and Python bytecode files (**14.94 MiB payload**). Canonical
-  native build outputs, original target, toolchain, Ghidra project,
-  archives and important large-owner witnesses remain retained.
-  [Current artifact recovery policy](RE_ARTIFACTS.md).
+- **Storage (historical November 3 action):** that specific cleanup pruned
+  543 ignored, regenerable PE/OBJ/PDB and Python bytecode files (**14.94 MiB
+  payload**). A separate **2026-11-04 archival cleanup** subsequently
+  compressed the old gpt-6.1-sol compiler graphs and pruned their expanded
+  copies. Canonical build output, target, tools, Ghidra and archives stay
+  protected. [Current artifact policy](RE_ARTIFACTS.md).
 
 All date-stamped source scores and cumulative numbers elsewhere in this
 knowledge book refer to their original test epochs unless later independent
