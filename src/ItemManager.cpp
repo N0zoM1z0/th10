@@ -511,19 +511,22 @@ __declspec(noinline) int ItemManagerRegisterCallbacks(ItemManagerView *manager)
 int ItemManagerView::Draw()
 {
     ItemRecordView *item = &items[0];
-    for (int remaining = 0x896; remaining != 0; --remaining, ++item)
+    AnmFloat3View *position = &items[0].vm.position;
+    for (int remaining = 0x896; remaining != 0; --remaining, ++item,
+         position = reinterpret_cast<AnmFloat3View *>(
+             reinterpret_cast<unsigned char *>(position) + sizeof(ItemRecordView)))
     {
         if (item->active == 0)
             continue;
 
-        item->vm.position.x = item->worldPosition.x + g_ItemScreenOffsetX;
-        item->vm.position.y = item->worldPosition.y + g_ItemScreenOffsetY;
-        item->vm.position.z = item->worldPosition.z;
+        position->x = item->worldPosition.x + g_ItemScreenOffsetX;
+        position->y = item->worldPosition.y + g_ItemScreenOffsetY;
+        position->z = item->worldPosition.z;
 
-        if (item->vm.position.y < g_ItemTopThreshold)
+        if (position->y < g_ItemTopThreshold)
         {
-            const float y = item->vm.position.y;
-            item->vm.position.y = 24.0f;
+            const float y = position->y;
+            position->y = 24.0f;
             const float delta = y - g_ItemTopThreshold;
             if (delta >= g_ItemAlphaRange)
             {
