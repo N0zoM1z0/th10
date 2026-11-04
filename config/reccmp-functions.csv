@@ -1300,3 +1300,4 @@ InstallAnmVmVertexBuffer,0x0040B250,function
 CountGameStatisticsRankKind,0x004088C0,function
 PlayerOptionTrailCallbackBody,0x00427960,function
 CWin32ResourcePbgFile::~CWin32ResourcePbgFile,0x00436680,function
+StampReplayHeaderTimeAndCompletion,0x00429B30,function

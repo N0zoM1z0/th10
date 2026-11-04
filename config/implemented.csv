@@ -1299,3 +1299,4 @@ InstallAnmVmVertexBuffer
 CountGameStatisticsRankKind
 PlayerOptionTrailCallbackBody
 CWin32ResourcePbgFile::~CWin32ResourcePbgFile
+StampReplayHeaderTimeAndCompletion
