@@ -1306,3 +1306,4 @@ FrontEndInterruptVmNowThree,0x0042C750,function
 ArchiveEntrySuffix,0x004356D0,function
 ScriptViewerNullableDelete,0x0040A430,function
 StartupNullableDelete,0x0041FD70,function
+ResultMenuUpdateCallback,0x00422A90,function
