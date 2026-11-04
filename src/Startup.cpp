@@ -198,7 +198,8 @@ int __stdcall StartupWorkerView::Draw()
         created->renderLayer = 15;
         created->useAlternateRng = 1;
         loaded->InitializeVm(created, 0);
-        signatureVmId = g_AnmRenderManagerView->AddVmVariant0(created).value;
+        AnmVmIdView resultId = g_AnmRenderManagerView->AddVmVariant0(created);
+        signatureVmId = resultId.value;
         ++signatureReady;
     }
     if (textReady == 1)

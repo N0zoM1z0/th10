@@ -119,6 +119,12 @@ source mapped, VC7.1 ordinary ABI **27/18 NONEXACT**; separate worker
 constructor/factory/update callback exact guards **260/260**.
 [Evidence](evidence/startup-nullable-delete-source-20261104/README.md).
 
+**StartupWorker Draw `0x41FDD0` (220 bytes)**: current genuine 19-input
+WPO graph now emits **220/220 PDB length, 216/220 strict bound bytes** after
+retaining the natural ANM VM ID result local; four EAX/EDX differences remain
+(**NONEXACT**), while 260/260 affected exact-unit guards cold-pass.
+[Current source codegen evidence](evidence/startup-draw-native-vmid-lifetime-20261104/README.md).
+
 ## Major open owners — work on big bosses as well as leaves
 
 All numbers here describe a specific native compiler context, not current
