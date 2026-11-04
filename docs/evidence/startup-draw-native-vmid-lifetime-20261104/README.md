@@ -1,5 +1,13 @@
 # TH10 Startup worker Draw — complete 220-byte WPO owner frontier
 
+**Superseded exactness frontier (2026-11-04):** A later, real 19-TU
+WPO source correction to the **second** VM's `AnmLoadedView *const loaded`
+local now reproduces this complete **220/220** owner and every bound field
+in two selected cold replays. This document retains the previous, genuinely
+nonexact 216/220 stage as historical negative control. See
+[new canonical evidence](../startup-draw-exact-20261104/README.md).
+
+
 Original target is the pinned Japanese TH10 v1.00a executable, SHA-256
 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
 The physical **220-byte** `0x0041FDD0..0x0041FEAB` member body draws the

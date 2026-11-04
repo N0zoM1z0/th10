@@ -207,7 +207,10 @@ int __stdcall StartupWorkerView::Draw()
         AnmFloat3View position(480.0f, 392.0f, 0.0f);
         int *id = &g_AsciiManagerView->auxiliaryVm89A4;
         if (*id == 0)
-            *id = g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
+        {
+            AnmLoadedView *const loaded = g_AsciiManagerView->asciiAnm;
+            *id = loaded->CreateVmAtScreenVariant0(6, &position).value;
+        }
         ++textReady;
     }
     ++frames;

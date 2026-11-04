@@ -55,9 +55,9 @@ The old accepted PE/PDB and a matching *size* are not enough.
 | --- | ---: |
 | Reviewed target functions/boundaries | 1,829 / 1,829 |
 | Source-present functions | **1,309** |
-| Canonical exact functions / codegen bytes | **1,475 / 188,943** |
+| Canonical exact functions / codegen bytes | **1,476 / 189,163** |
 | Confirmed authored functions / bytes (provisional) | 750 / 276,120 |
-| Confirmed-authored exact functions / bytes | 569 / 118,961 |
+| Confirmed-authored exact functions / bytes | 570 / 119,181 |
 | Authored source-present nonexact backlog | 181 |
 | Classified exclusions / origin-indeterminate | 520 / 559 |
 
@@ -82,6 +82,7 @@ recounted for a parent merely because its call target is known:
 
 | Area | Current exact scope | Evidence / reproducible unit |
 | --- | --- | --- |
+| StartupWorker Draw `0x41FDD0` | **220/220**, 7 original target fields, genuine 19-TU ANM VM creation and text-ready flow; two independent colds, 260 sibling exact bytes retained | [complete source / WPO proof](evidence/startup-draw-exact-20261104/README.md), unit `startup-worker-draw-0041fdd0` |
 | Derived Win32 resource PBG destructor `0x436680` | **49/49** with three actual base-vtable/free/IFile-vtable fields; distinct from the 49-byte base destructor | [full proof](evidence/resource-pbgfile-derived-destructor-exact-20261104/README.md), unit `win32-resource-pbgfile-destructor-00436680` |
 | `IPbgFile` retained base constructor `0x4356C0` | **7/7**, actual WPO EAX receiver, one bound vtable `DIR32` field, explicit natural C++ base declaration; adjacent 18-byte memory-file constructor remains exact | [two cold complete-owner proofs](evidence/ipbgfile-base-constructor-exact-20261104/README.md), unit `pbgfile-base-constructor-004356c0` |
 | ResultMenu update-chain callback `0x422A90` | **10/10**, sole bound `CALL` to real 206-byte update callee; genuine two-TU WPO restores private ESI receiver without ABI shim | [two independent colds and complete source proof](evidence/result-menu-update-callback-exact-20261104/README.md), unit `result-menu-update-callback-00422a90` |
@@ -119,11 +120,11 @@ source mapped, VC7.1 ordinary ABI **27/18 NONEXACT**; separate worker
 constructor/factory/update callback exact guards **260/260**.
 [Evidence](evidence/startup-nullable-delete-source-20261104/README.md).
 
-**StartupWorker Draw `0x41FDD0` (220 bytes)**: current genuine 19-input
-WPO graph now emits **220/220 PDB length, 216/220 strict bound bytes** after
-retaining the natural ANM VM ID result local; four EAX/EDX differences remain
-(**NONEXACT**), while 260/260 affected exact-unit guards cold-pass.
-[Current source codegen evidence](evidence/startup-draw-native-vmid-lifetime-20261104/README.md).
+**StartupWorker Draw `0x41FDD0` (220 bytes)** now **220/220 canonical
+exact** with all seven real target fields in the genuine 19-TU `WinMain`
+WPO graph. Scoped natural ANM `loaded` pointer closes the prior four
+EAX/EDX discrepancies. Two independent colds pass, plus 260/260 affected
+existing exact Startup bytes. [New complete owner proof](evidence/startup-draw-exact-20261104/README.md).
 
 ## Major open owners — work on big bosses as well as leaves
 
