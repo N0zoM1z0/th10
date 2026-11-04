@@ -152,14 +152,6 @@ enum EnemyEclOpcode
 
 
 struct EnemyManagedVmView;
-struct EnemyBulletPatternCopyView
-{
-    unsigned int words[0x84];
-};
-typedef char EnemyBulletPatternCopyViewSizeIs210[
-    (sizeof(EnemyBulletPatternCopyView) == 0x210) ? 1 : -1];
-
-
 extern int g_EnemyDifficulty;
 extern EnemyManagerView *g_EnemyManager;
 extern EnemyGameStateView *g_EnemyGameState;
@@ -2001,10 +1993,7 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_COPY_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     uVar23 = ENEMY_READ_INT_DIRECT(0);
-    *reinterpret_cast<EnemyBulletPatternCopyView *>(
-        &bulletPatterns[uVar23]) =
-        *reinterpret_cast<const EnemyBulletPatternCopyView *>(
-            &bulletPatterns[uVar22]);
+    bulletPatterns[uVar23] = bulletPatterns[uVar22];
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
