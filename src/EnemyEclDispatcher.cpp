@@ -1072,6 +1072,9 @@ float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)
 int EnemyRuntimeView::DispatchEclInstruction()
 
 {
+  // The offscreen/movement bounding rectangle and eight bullet pattern
+  // offsets are the independently checked native runtime members, not
+  // duplicate pointer-arithmetic field projections.
   // Native motion coordinates at +0x2c/+0x30/+0x34 are the typed world
   // position; view their bits as words only at the target's bit-copy sites.
   // The animation state +0xe8..+0xf8 is the existing named runtime storage.
@@ -1391,8 +1394,8 @@ dispatch_create_enemy_mirrored:
     iVar11 = reinterpret_cast<int>(
         reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
     if (iVar26 == 0) {
-      *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar11 + 0x50) * *(float *)(iVar11 + 0x40);
-      *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar11 + 0x4c) * *(float *)(iVar11 + 0x3c);
+      visibilityExtentX = *(float *)(iVar11 + 0x50) * *(float *)(iVar11 + 0x40);
+      visibilityExtentY = *(float *)(iVar11 + 0x4c) * *(float *)(iVar11 + 0x3c);
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
       reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
@@ -1421,8 +1424,8 @@ dispatch_create_enemy_mirrored:
         reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
 dispatch_update_primary_anm_bounds:
     if (iVar26 == 0) {
-      *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar27 + 0x50) * *(float *)(iVar27 + 0x40);
-      *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar27 + 0x4c) * *(float *)(iVar27 + 0x3c);
+      visibilityExtentX = *(float *)(iVar27 + 0x50) * *(float *)(iVar27 + 0x40);
+      visibilityExtentY = *(float *)(iVar27 + 0x4c) * *(float *)(iVar27 + 0x3c);
     }
     if ((*reinterpret_cast<const unsigned char *>(&flags) & 0x10) != 0) {
       reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
@@ -1724,13 +1727,13 @@ dispatch_update_primary_anm_bounds:
   case ENEMY_ECL_SET_MOVEMENT_BOUNDS:
     flags = flags | 0x200;
     fVar19 = (ReadFloatArgument(0));
-    *(float *)((int)runtimeAddress + 0x13ac) = (float)fVar19;
+    movementBoundsCenterX = (float)fVar19;
     fVar19 = (ReadFloatArgument(1));
-    *(float *)((int)runtimeAddress + 0x13b0) = (float)fVar19;
+    movementBoundsCenterY = (float)fVar19;
     fVar19 = (ReadFloatArgument(2));
-    *(float *)((int)runtimeAddress + 0x13b4) = (float)fVar19;
+    movementBoundsSizeX = (float)fVar19;
     fVar19 = (ReadFloatArgument(3));
-    *(float *)((int)runtimeAddress + 0x13b8) = (float)fVar19;
+    movementBoundsSizeY = (float)fVar19;
     return 0;
   case ENEMY_ECL_CLEAR_MOVEMENT_BOUNDS:
     flags = flags & 0xfffffdff;
@@ -1751,9 +1754,9 @@ dispatch_update_primary_anm_bounds:
       firstScalarInterpolation = &scalarInterpolation1;
     }
     firstScalarValues = reinterpret_cast<float *>(firstScalarInterpolation);
-    fVar9 = *(float *)((int)runtimeAddress + 0x13b4) * 0.25f;
-    if (*(float *)((int)runtimeAddress + 0x13ac) - fVar9 <= worldMotion.position.x) {
-      if (worldMotion.position.x <= fVar9 + *(float *)((int)runtimeAddress + 0x13ac)) {
+    fVar9 = movementBoundsSizeX * 0.25f;
+    if (movementBoundsCenterX - fVar9 <= worldMotion.position.x) {
+      if (worldMotion.position.x <= fVar9 + movementBoundsCenterX) {
         if (worldMotion.position.x < *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0)) {
           fVar19 = EnemyRandomAngle();
           fVar19 = fVar19 * 1.5707964f;
@@ -1774,9 +1777,9 @@ dispatch_update_primary_anm_bounds:
     }
 dispatch_random_angle_ready:
     local_2bc = (float)fVar19;
-    fVar9 = *(float *)((int)runtimeAddress + 0x13b8) * 0.25f;
-    if (*(float *)((int)runtimeAddress + 0x13b0) - fVar9 <= worldMotion.position.y) {
-      if (fVar9 + *(float *)((int)runtimeAddress + 0x13b0) < worldMotion.position.y) {
+    fVar9 = movementBoundsSizeY * 0.25f;
+    if (movementBoundsCenterY - fVar9 <= worldMotion.position.y) {
+      if (fVar9 + movementBoundsCenterY < worldMotion.position.y) {
         local_2bc = -EnemyAbsoluteFloat(local_2bc);
       }
     }
@@ -2407,9 +2410,9 @@ dispatch_select_bullet_count_low:
              &bulletPatterns[0].words[8],
              sizeof(local_288.type0.patternWords));
     }
-    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + worldMotion.position.x;
-    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + worldMotion.position.y;
-    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + worldMotion.position.z;
+    vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
+    vectorScratch.y = bulletPatternOffsets[0].y + worldMotion.position.y;
+    vectorScratch.z = bulletPatternOffsets[0].z + worldMotion.position.z;
     *reinterpret_cast<PlayerFloat3 *>(&local_288) = vectorScratch;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     reinterpret_cast<unsigned short *>(&local_288)[18] = (unsigned short)uVar22;
@@ -2444,9 +2447,9 @@ dispatch_select_bullet_count_low:
              &bulletPatterns[0].words[8],
              sizeof(local_288.type1.patternWords));
     }
-    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + worldMotion.position.x;
-    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + worldMotion.position.y;
-    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + worldMotion.position.z;
+    vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
+    vectorScratch.y = bulletPatternOffsets[0].y + worldMotion.position.y;
+    vectorScratch.z = bulletPatternOffsets[0].z + worldMotion.position.z;
     *reinterpret_cast<PlayerFloat3 *>(&local_288) = vectorScratch;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     reinterpret_cast<unsigned short *>(&local_288)[32] = (unsigned short)uVar22;
@@ -2489,9 +2492,9 @@ dispatch_select_bullet_count_low:
           reinterpret_cast<const void *>(runtimeAddress + 0x2e4),
           0x6c * sizeof(unsigned int));
     }
-    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + worldMotion.position.x;
-    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + worldMotion.position.y;
-    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + worldMotion.position.z;
+    vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
+    vectorScratch.y = bulletPatternOffsets[0].y + worldMotion.position.y;
+    vectorScratch.z = bulletPatternOffsets[0].z + worldMotion.position.z;
     reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
     reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
     reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
@@ -2527,9 +2530,9 @@ dispatch_select_bullet_count_low:
         puVar13 = puVar13 + 1;
       }
     }
-    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + worldMotion.position.x;
-    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + worldMotion.position.y;
-    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + worldMotion.position.z;
+    vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
+    vectorScratch.y = bulletPatternOffsets[0].y + worldMotion.position.y;
+    vectorScratch.z = bulletPatternOffsets[0].z + worldMotion.position.z;
     reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
     reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
     reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
