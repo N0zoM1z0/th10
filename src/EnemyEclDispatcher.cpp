@@ -2070,7 +2070,7 @@ dispatch_difficulty_float_index_4_a:
     }
     fVar19 = ReadFloatArgument(speedIndex);
     iVar26 = (int)uVar22 * 0x210;
-    *(float *)(iVar26 + 0x2dc + (int)runtimeAddress) = (float)fVar19;
+    reinterpret_cast<EnemyBulletPatternView *>(iVar26 + (int)runtimeAddress + 0x2c4)->fields.speedA = (float)fVar19;
     if (g_EnemyDifficulty == 0) {
       speedIndex = 5;
     }
@@ -2084,7 +2084,7 @@ dispatch_difficulty_float_index_4_a:
       }
     }
     fVar19 = ReadFloatArgument(speedIndex);
-    *(float *)(iVar26 + (int)runtimeAddress + 0x2e0) = (float)fVar19;
+    reinterpret_cast<EnemyBulletPatternView *>(iVar26 + (int)runtimeAddress + 0x2c4)->fields.speedB = (float)fVar19;
     return 0;
   }
   case ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY:
@@ -2251,10 +2251,10 @@ dispatch_select_bullet_count_low:
     uVar25 = ENEMY_READ_INT_DIRECT(4);
     iVar27 = (int)uVar22 * 0x210;
     iVar26 = ((int)uVar24 - (int)uVar23) * (g_EnemyChapterState.rank + 0x400);
-    *(short *)(iVar27 + 0x4b8 + (int)runtimeAddress) =
+    reinterpret_cast<EnemyBulletPatternView *>(iVar27 + (int)runtimeAddress + 0x2c4)->fields.countA =
          (short)(iVar26 / 2048) + (short)uVar23;
     iVar26 = ((int)uVar25 - secondLowBulletCount) * (g_EnemyChapterState.rank + 0x400);
-    *(short *)(iVar27 + (int)runtimeAddress + 0x4ba) =
+    reinterpret_cast<EnemyBulletPatternView *>(iVar27 + (int)runtimeAddress + 0x2c4)->fields.countB =
          (short)(iVar26 / 2048) +
          (short)secondLowBulletCount;
     return 0;

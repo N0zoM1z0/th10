@@ -1,0 +1,13 @@
+{
+  "label": "native-bullet-difficulty-count-20261104",
+  "size": 14348,
+  "old_size": 14348,
+  "fields": 716,
+  "old_fields": 716,
+  "same_geometry": true,
+  "ordinary_differences_from_old_candidate": 0,
+  "first_diffs": [],
+  "source_sha256": "489b940f5226d0a598696fd616a759e9971b1e517ec15cf0de43a1299644f03a",
+  "elapsed_seconds": 81.5,
+  "link_artifact": "build/gpt-web/20261104-live-enemy/native-bullet-difficulty-count-20261104"
+}
