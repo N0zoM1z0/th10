@@ -23,8 +23,22 @@ a constraint on the maintained implementation.
 
 ## 2026-11-04 authoritative updates for the next agent
 
-**Current ledger:** **1,829** reviewed boundaries, **1,294** source-present,
-**1,469** canonical exact functions and **188,587** exact codegen bytes.
+**New exact FrontEnd closure (2026-11-04):** Both previously nonexact
+27-byte FrontEnd constant-2/3 VM interrupt helpers at `0x0042C730` and
+`0x0042C750` are **27/27 full canonical exact** in a real
+`UpdateOptions` plus seven-support `/GL /GS` graph. The natural
+`(int index, FrontEndControllerView *controller)` source parameter order,
+together with the existing typed `AnmVmIdView` reference, naturally selects
+EAX controller / ECX index / EDI interrupt value. Four independent original
+fields across the two functions, all nonrelocation bytes and two distinct
+cold PE/PDB identities pass. Selected existing 3,999-byte options and
+246-byte sibling exact owners remain exact. The older 32/27 source frontier
+is superseded; authored/outlined origin remains indeterminate.
+[Full evidence](evidence/frontend-vm-interrupt-adapters-exact-20261104/README.md).
+
+
+**Current ledger:** **1,829** reviewed boundaries, **1,309** source-present,
+**1,478** canonical exact functions and **189,217** exact codegen bytes.
 `PROGRESS.md` is generated and overrides any earlier cumulative table below;
 these totals do not prove a runnable retail product or original source
 ancestry. The new [current handoff](RE_HANDOFF.md) consolidates the complete

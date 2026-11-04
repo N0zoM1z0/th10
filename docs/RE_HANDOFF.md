@@ -55,7 +55,7 @@ The old accepted PE/PDB and a matching *size* are not enough.
 | --- | ---: |
 | Reviewed target functions/boundaries | 1,829 / 1,829 |
 | Source-present functions | **1,309** |
-| Canonical exact functions / codegen bytes | **1,476 / 189,163** |
+| Canonical exact functions / codegen bytes | **1,478 / 189,217** |
 | Confirmed authored functions / bytes (provisional) | 750 / 276,120 |
 | Confirmed-authored exact functions / bytes | 570 / 119,181 |
 | Authored source-present nonexact backlog | 181 |
@@ -142,7 +142,7 @@ pins, full PDB extent, all field locations and root-entry ABI together.
 | **Laser manager point accumulator `0x41C880`, 54 bytes** | Source now traverses the actual manager's nodes and calls virtual CheckPoint (+0x20), producing **54/54 size** but **31/54 ordinary bytes**. No independently verified original direct caller; don't invent a private EAX ABI shim. [Linked laser evidence](evidence/enemy-laser-update-list-20261103/README.md) |
 | **GDI bitmap compositor `0x437750`, 645 bytes** | Complete 3-format source; continuous pitch-corrected cursor candidate **670/645**, nonexact. [GDI 3-path source](evidence/text-surface-composite-source-20261103/README.md) |
 | **Archive path suffix `0x4356D0`, 20 bytes** | Complete source recovers genuine `strchr`/first-slash selection; old exact FileSystem inline owners untouched. Natural VC7.1 **27/20**, original ESI ABI unproven, **NONEXACT** | [source and native proof](evidence/archive-entry-suffix-source-20261104/README.md) |
-| **FrontEnd VM constant interrupt adapters `0x42C730/0x42C750`** | 27-byte targets now mapped to distinct natural source and **2+7** confirmed original callers. Actual `/GL` bodies 32/27 each, **NONEXACT**; 4,519 distinct selected existing exact bytes still pass | [source and native caller proof](evidence/frontend-constant-interrupt-adapters-20261104/README.md) |
+| **FrontEnd VM constant interrupt adapters `0x42C730/0x42C750`** | Two newly exact **27/27 + 27/27** owners in real seven-support `/GL /GS` graph, **2+7** native callers and all **4/4 target fields**. Two independent colds; 3,999-byte FrontEnd options and 246 sibling bytes remain exact | [new target-bound proof](evidence/frontend-vm-interrupt-adapters-exact-20261104/README.md) |
 | **Replay timestamp/completion helper `0x429B30`, 36 bytes** | Complete natural source with true `_time`/timestamp/selector/global field semantics. Native private EDI/ESI ABI unresolved; ordinary C++ entry **46/36 NONEXACT** | [native source proof](evidence/replay-header-timestamp-source-20261104/README.md) |
 | **Player option trail `0x427960`, 359 bytes** | Fresh callback-root **359/359 PDB size, still NONEXACT**. Natural zero-mode locals and new dual-sum final X/Y publication advance ordinary diagnostic **155/339 → 205/339 → 209/339**, but target fields/bytes still differ; 123/123 existing callback exact guards pass | [updated 359-byte source/byte frontier](evidence/player-trail-tail-dual-sums-20261104/README.md) |
 | **FPS creator `0x413350`, 151 bytes** | Split first-allocation pointer lifetime restores **151/151 extent** but only 109/127 ordinary bytes, nonexact. [FPS source](evidence/fps-counter-source-20261103/README.md) |

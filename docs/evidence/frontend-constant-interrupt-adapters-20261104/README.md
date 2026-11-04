@@ -1,5 +1,13 @@
 # TH10 FrontEnd constant-2/3 VM interrupt adapters: source ownership, nonexact
 
+**Superseded frontier (2026-11-04):** A later genuine VC7.1 `/GL /GS`
+source correction to natural `(int index, FrontEndControllerView *controller)`
+argument order and `AnmVmIdView` reference passes now reproduces **both
+entire 27/27 target owners**, four address fields and two independent
+canonical cold proofs. The earlier 32-byte codegen tests in this document
+are retained as falsified historical controls, **not** the current status.
+See [new exact evidence](../frontend-vm-interrupt-adapters-exact-20261104/README.md).
+
 Target: pinned original Japanese TH10 1.00a, SHA-256
 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
 The separate 27-byte owners at **0x0042C730..0x0042C74A** and
