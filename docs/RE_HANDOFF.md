@@ -54,7 +54,7 @@ The old accepted PE/PDB and a matching *size* are not enough.
 | Measure | Verified count |
 | --- | ---: |
 | Reviewed target functions/boundaries | 1,829 / 1,829 |
-| Source-present functions | **1,306** |
+| Source-present functions | **1,307** |
 | Canonical exact functions / codegen bytes | **1,473 / 188,926** |
 | Confirmed authored functions / bytes (provisional) | 750 / 276,120 |
 | Confirmed-authored exact functions / bytes | 569 / 118,961 |
@@ -111,6 +111,11 @@ ordinary raw bytes** and zero relocations (previous source 117 bytes).
 source now mapped; ordinary VC7.1 private-ABI gap **27/18 NONEXACT**. Its
 separate creator and scalar-delete owners retain **94/94 strict exact**.
 [Evidence](evidence/script-viewer-nullable-delete-source-20261104/README.md).
+
+**StartupWorker retained nullable delete `0x41FD70` (18 bytes)**: full
+source mapped, VC7.1 ordinary ABI **27/18 NONEXACT**; separate worker
+constructor/factory/update callback exact guards **260/260**.
+[Evidence](evidence/startup-nullable-delete-source-20261104/README.md).
 
 ## Major open owners — work on big bosses as well as leaves
 
