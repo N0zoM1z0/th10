@@ -68,20 +68,19 @@ int __fastcall EnemyLaserUpdateCallback(void *owner)
     EnemyLaserManagerStorageView *manager =
         static_cast<EnemyLaserManagerStorageView *>(owner);
     const unsigned int flags = g_GameManager->m_Flags;
-    if (((flags | (flags >> 2)) & 1u) != 0 || (flags & 0x400u) != 0)
+    if (((flags | (flags >> 2)) & 1u) != 0)
+        return 1;
+    if ((flags & 0x400u) != 0)
         return 1;
     if ((flags & 2u) != 0)
     {
         const float oldSpeed = g_AnmGameSpeed;
         g_AnmGameSpeed = 0.0f;
-        manager->UpdateLinkedLasers();
+        const int result = manager->UpdateLinkedLasers();
         g_AnmGameSpeed = oldSpeed;
+        return result;
     }
-    else
-    {
-        manager->UpdateLinkedLasers();
-    }
-    return 1;
+    return manager->UpdateLinkedLasers();
 }
 
 // The registered draw-chain callback at original 0x0041C4E0, recorded by

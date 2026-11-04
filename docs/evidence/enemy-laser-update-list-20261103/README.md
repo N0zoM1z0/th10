@@ -5,7 +5,11 @@
 (**39/254** ordinary comparable bytes); a former 206-byte variant is kept
 below as a historical rejected compiler control, not the current source.
 The 46-byte draw callback remains canonical exact, the 91-byte update
-callback remains nonexact.
+callback remains nonexact. **2026-11-04 correction:** current maintained update callback
+forwards its actual callee return on both processing lanes; a new selected
+source graph is **87/91** instead of the former 88/91, with 2/67
+preliminary ordinary agreement. The distinct 274-byte parent remains
+275/274; see [fresh return-flow evidence](../enemy-laser-update-result-forwarding-20261104/README.md).
 
 Target: verified original Japanese TH10 v1.00a (`config/target.toml`).
 This checkpoint restores **three complete** EnemyLaser runtime functions in
