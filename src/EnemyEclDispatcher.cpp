@@ -1733,10 +1733,10 @@ dispatch_update_primary_anm_bounds:
     fVar19 = (ReadFloatArgument(0));
     fVar21 = (ReadFloatArgument(1));
     if (-999999.0 < (float)fVar19) {
-      *(float *)(iVar26 + 0xc) = (float)fVar19;
+      reinterpret_cast<EnemyMotionView *>(iVar26)->velocity.x = (float)fVar19;
     }
     if (fVar21 > -999999.0) {
-      *(float *)(iVar26 + 0x10) = (float)fVar21;
+      reinterpret_cast<EnemyMotionView *>(iVar26)->velocity.y = (float)fVar21;
     }
     goto dispatch_copy_player_to_motion;
   case ENEMY_ECL_COPY_PLAYER_TO_OFFSET:
@@ -1744,7 +1744,7 @@ dispatch_update_primary_anm_bounds:
   case ENEMY_ECL_COPY_PLAYER_TO_BASE:
     iVar26 = *(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10);
     baseMotion.position =
-        *reinterpret_cast<PlayerFloat3 *>(iVar26 + 0x1068);
+        reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position;
     return 0;
   case ENEMY_ECL_SET_MOVEMENT_BOUNDS:
     flags = flags | 0x200;
@@ -2832,8 +2832,8 @@ dispatch_create_enemy_absolute_mirrored:
   goto dispatch_spawn_enemy;
 dispatch_copy_player_to_motion:
   iVar26 = *(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10);
-  *reinterpret_cast<unsigned int *>(&offsetMotion.position.x) = *(unsigned int *)(iVar26 + 0x1068);
-  *reinterpret_cast<unsigned int *>(&offsetMotion.position.y) = *(unsigned int *)(iVar26 + 0x106c);
-  *reinterpret_cast<unsigned int *>(&offsetMotion.position.z) = *(unsigned int *)(iVar26 + 0x1070);
+  *reinterpret_cast<unsigned int *>(&offsetMotion.position.x) = *reinterpret_cast<const unsigned int *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position.x);
+  *reinterpret_cast<unsigned int *>(&offsetMotion.position.y) = *reinterpret_cast<const unsigned int *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position.y);
+  *reinterpret_cast<unsigned int *>(&offsetMotion.position.z) = *reinterpret_cast<const unsigned int *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position.z);
   return 0;
 }
