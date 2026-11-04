@@ -1072,6 +1072,9 @@ float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)
 int EnemyRuntimeView::DispatchEclInstruction()
 
 {
+  // Native motion coordinates at +0x2c/+0x30/+0x34 are the typed world
+  // position; view their bits as words only at the target's bit-copy sites.
+  // The animation state +0xe8..+0xf8 is the existing named runtime storage.
   // Runtime flags at +0x1444 are the native EnemyRuntimeView::flags
   // member, independently layout-checked in Enemy.hpp. Preserve the
   // target's byte-wide tests by explicitly reading its low byte.
@@ -1141,21 +1144,21 @@ int EnemyRuntimeView::DispatchEclInstruction()
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     if ((flags & 0x40000) == 0) {
-      fVar9 = *(float *)((int)runtimeAddress + 0x2c);
+      fVar9 = worldMotion.position.x;
       fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
-      fVar10 = *(float *)((int)runtimeAddress + 0x30);
+      fVar10 = worldMotion.position.y;
       local_90.spawnRequest.position.x = (float)(fVar19 + fVar9);
       fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
       fVar19 = fVar19 + fVar10;
     }
     else {
-      fVar9 = *(float *)((int)runtimeAddress + 0x2c);
+      fVar9 = worldMotion.position.x;
       fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
-      fVar10 = *(float *)((int)runtimeAddress + 0x30);
+      fVar10 = worldMotion.position.y;
       vectorScratch.x = (float)(fVar19 + fVar9);
       vectorScratch.y = ReadRawFloatArgument(
           2, *(float *)(iVar27 + 0x14 + iVar26 * 4)) + fVar10;
-      vectorScratch.z = *(float *)((int)runtimeAddress + 0x34);
+      vectorScratch.z = worldMotion.position.z;
       EnemyPrepareProjection(&g_MainSupervisorView, 0);
       D3DXVec3Project(&local_90.spawnRequest.position, &vectorScratch,
                       &g_EnemyViewport, &g_EnemyProjectionMatrix,
@@ -1232,13 +1235,13 @@ dispatch_create_enemy_global:
   case ENEMY_ECL_CREATE_ENEMY_MIRRORED:
 dispatch_create_enemy_mirrored:
     iVar26 = *(int *)(iVar27 + 0x10) + 4;
-    fVar9 = *(float *)((int)runtimeAddress + 0x2c);
+    fVar9 = worldMotion.position.x;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     local_90.spawnRequest.position.x =
         ReadRawFloatArgument(
             1, *(float *)(iVar27 + 0x10 + iVar26 * 4)) + fVar9;
-    fVar10 = *(float *)((int)runtimeAddress + 0x30);
+    fVar10 = worldMotion.position.y;
     local_90.spawnRequest.position.y =
         ReadRawFloatArgument(
             2, *(float *)(iVar27 + 0x14 + iVar26 * 4)) + fVar10;
@@ -1266,7 +1269,7 @@ dispatch_create_enemy_mirrored:
     goto dispatch_create_enemy_absolute_mirrored;
   case ENEMY_ECL_SELECT_ANM_RESOURCE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    *(int *)((int)runtimeAddress + 0xe8) = (int)uVar22;
+    value0E8 = (int)uVar22;
     return 0;
   case ENEMY_ECL_SET_ANM_SCRIPT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1287,8 +1290,8 @@ dispatch_create_enemy_mirrored:
     uVar6 = managedVmIds[iVar26];
     if (iVar26 == 0) {
       uVar22 = ENEMY_READ_INT_DIRECT(1);
-      *(int *)((int)runtimeAddress + 0xf0) = (int)uVar22;
-      *(unsigned int *)((int)runtimeAddress + 0xec) = *(unsigned int *)((int)runtimeAddress + 0xe8);
+      value0F0 = (int)uVar22;
+      value0EC = value0E8;
       uVar6 = managedVmIds[iVar26];
     }
     iVar27 = reinterpret_cast<int>(
@@ -1312,9 +1315,9 @@ dispatch_create_enemy_mirrored:
       *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
       return 0;
     }
-    *(unsigned int *)(iVar26 + 0x340) = *(unsigned int *)((int)runtimeAddress + 0x2c);
-    *(unsigned int *)(iVar26 + 0x344) = *(unsigned int *)((int)runtimeAddress + 0x30);
-    *(unsigned int *)(iVar26 + 0x348) = *(unsigned int *)((int)runtimeAddress + 0x34);
+    *(unsigned int *)(iVar26 + 0x340) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
+    *(unsigned int *)(iVar26 + 0x344) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
+    *(unsigned int *)(iVar26 + 0x348) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
     return 0;
   case ENEMY_ECL_PLAY_ANM_HIGH:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1334,9 +1337,9 @@ dispatch_create_enemy_mirrored:
       *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
       return 0;
     }
-    *(unsigned int *)(iVar26 + 0x340) = *(unsigned int *)((int)runtimeAddress + 0x2c);
-    *(unsigned int *)(iVar26 + 0x344) = *(unsigned int *)((int)runtimeAddress + 0x30);
-    *(unsigned int *)(iVar26 + 0x348) = *(unsigned int *)((int)runtimeAddress + 0x34);
+    *(unsigned int *)(iVar26 + 0x340) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
+    *(unsigned int *)(iVar26 + 0x344) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
+    *(unsigned int *)(iVar26 + 0x348) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
     return 0;
   case ENEMY_ECL_PLAY_ANM_ABSOLUTE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1363,9 +1366,9 @@ dispatch_create_enemy_mirrored:
       *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
     }
     else {
-      *(unsigned int *)(iVar26 + 0x340) = *(unsigned int *)((int)runtimeAddress + 0x2c);
-      *(unsigned int *)(iVar26 + 0x344) = *(unsigned int *)((int)runtimeAddress + 0x30);
-      *(unsigned int *)(iVar26 + 0x348) = *(unsigned int *)((int)runtimeAddress + 0x34);
+      *(unsigned int *)(iVar26 + 0x340) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
+      *(unsigned int *)(iVar26 + 0x344) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
+      *(unsigned int *)(iVar26 + 0x348) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
     }
     fVar19 = (ReadFloatArgument(2));
     *(float *)(iVar26 + 0x2c) = (float)fVar19;
@@ -1396,10 +1399,10 @@ dispatch_create_enemy_mirrored:
     }
     if (iVar26 == 0) {
       flags = flags | 0x1000;
-      *(int *)((int)runtimeAddress + 0xf4) = iVar27;
-      *(int *)((int)runtimeAddress + 0xf0) = iVar27;
-      *(unsigned int *)((int)runtimeAddress + 0xf8) = 0;
-      *(unsigned int *)((int)runtimeAddress + 0xec) = *(unsigned int *)((int)runtimeAddress + 0xe8);
+      animationBaseScript = iVar27;
+      value0F0 = iVar27;
+      animationDirection = 0;
+      value0EC = value0E8;
       return 0;
     }
     break;
@@ -1749,9 +1752,9 @@ dispatch_update_primary_anm_bounds:
     }
     firstScalarValues = reinterpret_cast<float *>(firstScalarInterpolation);
     fVar9 = *(float *)((int)runtimeAddress + 0x13b4) * 0.25f;
-    if (*(float *)((int)runtimeAddress + 0x13ac) - fVar9 <= *(float *)((int)runtimeAddress + 0x2c)) {
-      if (*(float *)((int)runtimeAddress + 0x2c) <= fVar9 + *(float *)((int)runtimeAddress + 0x13ac)) {
-        if (*(float *)((int)runtimeAddress + 0x2c) < *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0)) {
+    if (*(float *)((int)runtimeAddress + 0x13ac) - fVar9 <= worldMotion.position.x) {
+      if (worldMotion.position.x <= fVar9 + *(float *)((int)runtimeAddress + 0x13ac)) {
+        if (worldMotion.position.x < *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0)) {
           fVar19 = EnemyRandomAngle();
           fVar19 = fVar19 * 1.5707964f;
           goto dispatch_random_angle_ready;
@@ -1772,8 +1775,8 @@ dispatch_update_primary_anm_bounds:
 dispatch_random_angle_ready:
     local_2bc = (float)fVar19;
     fVar9 = *(float *)((int)runtimeAddress + 0x13b8) * 0.25f;
-    if (*(float *)((int)runtimeAddress + 0x13b0) - fVar9 <= *(float *)((int)runtimeAddress + 0x30)) {
-      if (fVar9 + *(float *)((int)runtimeAddress + 0x13b0) < *(float *)((int)runtimeAddress + 0x30)) {
+    if (*(float *)((int)runtimeAddress + 0x13b0) - fVar9 <= worldMotion.position.y) {
+      if (fVar9 + *(float *)((int)runtimeAddress + 0x13b0) < worldMotion.position.y) {
         local_2bc = -EnemyAbsoluteFloat(local_2bc);
       }
     }
@@ -1994,10 +1997,10 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar27 = (int)uVar22 * 3 + 0x4d1;
-    vectorScratch.x = *(float *)((int)runtimeAddress + iVar27 * 4) + *(float *)((int)runtimeAddress + 0x2c);
-    vectorScratch.y = *(float *)((int)runtimeAddress + 4 + iVar27 * 4) + *(float *)((int)runtimeAddress + 0x30);
+    vectorScratch.x = *(float *)((int)runtimeAddress + iVar27 * 4) + worldMotion.position.x;
+    vectorScratch.y = *(float *)((int)runtimeAddress + 4 + iVar27 * 4) + worldMotion.position.y;
     iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
-    vectorScratch.z = *(float *)((int)runtimeAddress + iVar27 * 4 + 8) + *(float *)((int)runtimeAddress + 0x34);
+    vectorScratch.z = *(float *)((int)runtimeAddress + iVar27 * 4 + 8) + worldMotion.position.z;
     *(float *)(iVar26 + 0x2c8) = vectorScratch.x;
     *(float *)(iVar26 + 0x2cc) = vectorScratch.y;
     fVar9 = 0.0f;
@@ -2404,9 +2407,9 @@ dispatch_select_bullet_count_low:
              &bulletPatterns[0].words[8],
              sizeof(local_288.type0.patternWords));
     }
-    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + worldMotion.position.x;
+    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + worldMotion.position.y;
+    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + worldMotion.position.z;
     *reinterpret_cast<PlayerFloat3 *>(&local_288) = vectorScratch;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     reinterpret_cast<unsigned short *>(&local_288)[18] = (unsigned short)uVar22;
@@ -2441,9 +2444,9 @@ dispatch_select_bullet_count_low:
              &bulletPatterns[0].words[8],
              sizeof(local_288.type1.patternWords));
     }
-    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + worldMotion.position.x;
+    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + worldMotion.position.y;
+    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + worldMotion.position.z;
     *reinterpret_cast<PlayerFloat3 *>(&local_288) = vectorScratch;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     reinterpret_cast<unsigned short *>(&local_288)[32] = (unsigned short)uVar22;
@@ -2486,9 +2489,9 @@ dispatch_select_bullet_count_low:
           reinterpret_cast<const void *>(runtimeAddress + 0x2e4),
           0x6c * sizeof(unsigned int));
     }
-    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + worldMotion.position.x;
+    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + worldMotion.position.y;
+    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + worldMotion.position.z;
     reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
     reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
     reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
@@ -2524,9 +2527,9 @@ dispatch_select_bullet_count_low:
         puVar13 = puVar13 + 1;
       }
     }
-    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + worldMotion.position.x;
+    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + worldMotion.position.y;
+    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + worldMotion.position.z;
     reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
     reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
     reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
