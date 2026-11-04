@@ -648,8 +648,12 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
     option->replayPair0.y = currentSample->y;
     if (optionMode == 0)
     {
-        option->replayPair2.x = option->replayPair0.x - player->positionX;
-        option->replayPair2.y = option->replayPair0.y - player->positionY;
+        const int x = option->replayPair0.x;
+        const int y = option->replayPair0.y;
+        const int positionX = player->positionX;
+        const int positionY = player->positionY;
+        option->replayPair2.x = x - positionX;
+        option->replayPair2.y = y - positionY;
     }
     else
     {
