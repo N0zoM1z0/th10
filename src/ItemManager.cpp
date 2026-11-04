@@ -519,8 +519,8 @@ int ItemManagerView::Draw()
         if (item->active == 0)
             continue;
 
-        position->x = item->worldPosition.x + g_ItemScreenOffsetX;
-        position->y = item->worldPosition.y + g_ItemScreenOffsetY;
+        position->x = *reinterpret_cast<volatile const float *>(&item->worldPosition.x) + g_ItemScreenOffsetX;
+        position->y = *reinterpret_cast<volatile const float *>(&item->worldPosition.y) + g_ItemScreenOffsetY;
         position->z = item->worldPosition.z;
 
         if (position->y < g_ItemTopThreshold)
