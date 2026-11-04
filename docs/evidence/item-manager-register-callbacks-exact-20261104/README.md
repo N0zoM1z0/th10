@@ -1,76 +1,74 @@
-# Exact TH10 ItemManager callback registration (84-byte physical owner)
+# TH10 ItemManager callback registration: 84/84 exact in genuine Chain graph
 
-Target: original Japanese TH10 v1.00a, SHA-256
-`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
-The reviewed source-written Item manager registration owner at
-`0x0041AD90..0x0041ADE3` has a complete 84-byte extent, with one
-ESI/EBX/EAX/EDI optimizer-private caller context. It returns with plain
-`RET`, not a stack-argument return. Its original source filename and
-physical production translation unit are unknown.
+The attested Japanese TH10 v1.00a target (`resources/th10.exe`, SHA-256
+`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`)
+contains the **complete 84-byte** `ItemManagerRegisterCallbacks` owner at
+`0x0041AD90..0x0041ADE3`. The original enters with the manager in private EBX,
+and registers real update and draw callbacks at priorities 21 and 25. It returns
+zero with plain `RET`. This is a codegen exactness proof, not original symbol
+spelling, source-TU provenance, a full-game image, or runtime equivalence.
 
-## Fix the actual source dependency, not the register outcome
+## Actual source/dependency correction
 
-The old `src/ItemManager.cpp` version used three fictional external
-`ItemCreateCallbackNode`, `ItemRegisterUpdateNode`, and
-`ItemRegisterDrawNode` declarations, plus an additional callback-chain
-global. That isolated candidate produced **91 bytes**, never matched the
-complete owner and did not bind its four original calls. The real target
-instruction stream, already independently reviewed in the Chain ledger,
-instead calls:
+The maintained `src/ItemManager.cpp` previously used three unrelated, unresolved
+extern placeholders (`ItemCreateCallbackNode`, `ItemRegisterUpdateNode` and
+`ItemRegisterDrawNode`) that did *not* reproduce the actual original call
+identities. Direct target disassembly gives two calls to `Chain::AllocElem`
+`0x00449ED0`, `Chain::AddToCalcChain` `0x00449AE0`, and
+`Chain::AddToDrawChain` `0x00449B70`. These are existing, independently mapped
+TH10 `Chain` methods; no new fake ABI declaration or target bytes are used.
 
-| Full target call | Bound original destination |
-| --- | --- |
-| allocate update callback | `th10::Chain::AllocElem @ 0x00449ED0` |
-| insert update at priority 21 | `th10::Chain::AddToCalcChain @ 0x00449AE0` |
-| allocate draw callback | `th10::Chain::AllocElem @ 0x00449ED0` |
-| insert draw at priority 25 | `th10::Chain::AddToDrawChain @ 0x00449B70` |
+The source now includes `Chain.hpp`, calls those real methods, preserves the
+original `ItemManagerView::OnUpdate` `0x0041BA00` and `OnDraw` `0x0041BA30`
+callbacks, clears each chain element's bit 1, publishes the manager at the
+existing element +0x20, and stores the two chain nodes at manager +8/+0xC.
+Genuine `Chain.cpp` and `AnmManager.cpp` support with the real
+`GameCreateItemManager` caller naturally recover the original EBX receiver,
+EDI priority and ESI element lifetime. A narrower isolated build had 93
+bytes and a two-TU Chain build had 95 bytes; only the genuine selected
+three-TU caller graph produces the 84-byte owner.
 
-The maintained C++ now invokes the real, existing Chain class, uses its
-canonical global `th10::g_Chain @ 0x00491BE4`, clears each allocated
-element's flag bit 1, publishes the original ItemManager argument
-at node +0x20, and stores the update/draw nodes at manager +0x08/+0x0C.
-This does not copy game instructions, modify source ABIs to force machine
-registers, create a second Chain class, or fabricate register-pressure
-work. It preserves the independent already exact callbacks at
-`0x0041BA00` and `0x0041BA30`.
+## Complete strict linked-PE acceptance
 
-## Canonical 84/84 complete-owner proof
+The canonical unit is `item-manager-register-callbacks-0041ad90`. The
+specified pinned VC7.1 SP1 `/GL` compiler and exact matched source graph
+produced **two independent cold PE/MAP/PDB objects**. Both have a complete
+84-byte PDB owner and the strict complete binary comparator reports **84/84
+exact**, with all **eight target-address fields independently bound**:
 
-The genuine `GameCreateItemManager` source entry, with `ItemManager.cpp`,
-`Chain.cpp` and `AnmManager.cpp`, was cold-built using the pinned VC7.1
-SP1 `/GL` profile. Optimizer context naturally restores the target
-private EBX manager receiver, ESI element, and EDI priority. The complete
-PDB-owned **84 bytes** agree with the original without masking any
-ordinary bytes. The **eight decoded address fields** are bound separately
-to both real callback entrypoints, the two allocation calls, the two
-Chain-insertion calls, and the twice-loaded original Chain global.
+| Offset | Type | Bound original destination |
+| --- | --- | --- |
+| `+0x03` | DIR32 | update callback `0x0041BA00` |
+| `+0x08` | REL32 | `Chain::AllocElem` `0x00449ED0` |
+| `+0x13` | DIR32 | `th10::g_Chain` `0x00491BE4` |
+| `+0x21` | REL32 | `Chain::AddToCalcChain` `0x00449AE0` |
+| `+0x26` | DIR32 | draw callback `0x0041BA30` |
+| `+0x2E` | REL32 | `Chain::AllocElem` `0x00449ED0` |
+| `+0x3A` | DIR32 | `th10::g_Chain` `0x00491BE4` |
+| `+0x48` | REL32 | `Chain::AddToDrawChain` `0x00449B70` |
 
-The same source and canonical recipe passed **two independently built PE/PDB
-images**, with different image SHA-256 and PDB GUIDs. Both pass **84/84,
-8/8 fields**. [native-proof.json](native-proof.json) records both concrete
-cold identities and complete field manifests; the private executables and
-PDBs remain ignored under `build/match-linked/ItemManagerRegisterCallbacks/`.
+Independent cold image SHA-256 digests:
 
-The preexisting four affected exact units were **selected and cold-built**
-after this source modification, independently of the new match:
-`item-manager-update-callback` 48,
-`item-manager-draw-callback` 29,
-`item-power-display` 79 and
-`item-record-constructor` 104 bytes — **260/260**.
-[Selected guards](selected-guards.json) record their results.
-No whole-cohort replay was executed.
+- Cold 1: `515e41a4070688c9acc1ae64efa1e1a512a4c6892e034b1b48df0b410a4f3b0e`
+- Cold 2: `aac285881dd2de4773596630c5584f6158e157a2d702a18b10f22141cf7478a3`
 
-To reproduce only this new unit:
+The exact comparison is `scripts/compare-linked-function.py`, not a raw
+size-based score. The source bytes were installed before both canonical cold
+builds. Four selected affected existing exact units also passed **260/260**
+bytes: ItemManager OnUpdate 48, OnDraw 29, power display 79, and item record
+constructor 104. No full historical cold replay was run.
+
+Reproduce only the affected units:
 
 ```sh
-scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/replay-exact-units.py \
-  --unit item-manager-register-callbacks-0041ad90 --json
+  --unit item-manager-register-callbacks-0041ad90 \
+  --unit item-manager-update-callback --unit item-manager-draw-callback \
+  --unit item-power-display --unit item-record-constructor --json
 scripts/repo-python scripts/ci.py
 ```
 
-This is exact *authored* codegen at the reviewed target extent, not proof of
-the historical source spelling, a complete linked Windows game, runtime
-equivalence or portability. The nonexact Chain allocation body is a
-separately tracked owner; this result binds its **call target**, not its
-codegen or runtime.
+The record is admitted to `config/matches.csv` only after that full strict
+verification. Archive/WPO graph selection and target-bound evidence are
+explicit; separate game product, original source ownership, semantics under
+execution and portability remain unproven.
