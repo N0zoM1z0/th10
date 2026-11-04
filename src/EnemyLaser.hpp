@@ -240,7 +240,15 @@ struct EnemyLaserConstructionBaseView
     AnmVmTimerView timer;
     // Native linked-list update at 0x41C330 increments this single byte
     // before deciding whether to unlink a pending laser.
-    unsigned char unknown024[0x50 - 0x24];
+    // Original ECL laser control and type-0 collision both bind these
+    // storage offsets; their names do not assert original class spelling.
+    EnemyLaserVectorView eclPosition;  // +0x24
+    unsigned char unknown030[0x3c - 0x30];
+    float eclAngle;                    // +0x3c
+    unsigned char unknown040[0x44 - 0x40];
+    float eclValue44;                  // +0x44
+    float eclValue48;                  // +0x48
+    unsigned char unknown04c[0x50 - 0x4c];
     unsigned char removalPhase;
     unsigned char unknown051[3];
     unsigned int id;
@@ -256,6 +264,11 @@ struct EnemyLaserConstructionBaseView
 };
 typedef char EnemyLaserRemovalPhaseAt50[
     offsetof(EnemyLaserConstructionBaseView, removalPhase) == 0x50 ? 1 : -1];
+typedef char EnemyLaserEclControlFieldsAtNativeOffsets[
+    (offsetof(EnemyLaserConstructionBaseView, eclPosition) == 0x24 &&
+     offsetof(EnemyLaserConstructionBaseView, eclAngle) == 0x3c &&
+     offsetof(EnemyLaserConstructionBaseView, eclValue44) == 0x44 &&
+     offsetof(EnemyLaserConstructionBaseView, eclValue48) == 0x48) ? 1 : -1];
 
 // Complete storage view: +18 is sentinel.next, while +434 is the append tail.
 // The recovered callback prefix shares this owner with GameManager's existing

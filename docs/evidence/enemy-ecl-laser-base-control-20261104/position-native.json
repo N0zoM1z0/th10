@@ -1,0 +1,13 @@
+{
+  "label": "laser-position-typed-20261104",
+  "size": 14348,
+  "old_size": 14348,
+  "fields": 716,
+  "old_fields": 716,
+  "same_geometry": true,
+  "ordinary_differences_from_old_candidate": 0,
+  "first_diffs": [],
+  "source_sha256": "ea75f9779b978ad3a26eacfd427efc7d7c0d6cf2087cd141ac4bff0abf915cca",
+  "elapsed_seconds": 78.8,
+  "link_artifact": "build/gpt-web/20261104-live-enemy/laser-position-typed-20261104"
+}

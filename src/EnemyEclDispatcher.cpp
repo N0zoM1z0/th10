@@ -2592,7 +2592,8 @@ dispatch_select_bullet_count_low:
       vectorScratch.x = (float)fVar21;
       vectorScratch.y = (float)fVar19;
       vectorScratch.z = 0.0f;
-      *reinterpret_cast<PlayerFloat3 *>(iVar26 + 0x24) = vectorScratch;
+      reinterpret_cast<EnemyLaserConstructionBaseView *>(iVar26)->eclPosition =
+          *reinterpret_cast<const EnemyLaserVectorView *>(&vectorScratch);
       return 0;
     }
     break;
@@ -2615,7 +2616,7 @@ dispatch_select_bullet_count_low:
     iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x48) = (float)fVar19;
+      reinterpret_cast<EnemyLaserConstructionBaseView *>(iVar26)->eclValue48 = (float)fVar19;
       return 0;
     }
     break;
@@ -2624,7 +2625,7 @@ dispatch_select_bullet_count_low:
     iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x44) = (float)fVar19;
+      reinterpret_cast<EnemyLaserConstructionBaseView *>(iVar26)->eclValue44 = (float)fVar19;
       return 0;
     }
     break;
@@ -2633,7 +2634,7 @@ dispatch_select_bullet_count_low:
     iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x3c) = (float)fVar19;
+      reinterpret_cast<EnemyLaserConstructionBaseView *>(iVar26)->eclAngle = (float)fVar19;
       return 0;
     }
     break;
