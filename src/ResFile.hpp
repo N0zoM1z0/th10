@@ -29,6 +29,7 @@ class CMemoryPbgFile : public IPbgFile
 class CWin32ResourcePbgFile : public CMemoryPbgFile
 {
   public:
+    virtual ~CWin32ResourcePbgFile();
     virtual bool Open(const char *resourceName, char *mode);
 };
 

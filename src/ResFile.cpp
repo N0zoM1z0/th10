@@ -118,6 +118,10 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
     }
 }
 
+// The native derived destruction at 0x00436680 is physically separate but
+// has the same complete cleanup body as the base memory-file destructor.
+CWin32ResourcePbgFile::~CWin32ResourcePbgFile() {}
+
 bool CWin32ResourcePbgFile::Open(const char *resourceName, char *mode)
 {
     (void)mode;

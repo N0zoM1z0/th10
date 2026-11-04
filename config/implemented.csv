@@ -1298,3 +1298,4 @@ RngView::GetRandomU32SkipNextPair
 InstallAnmVmVertexBuffer
 CountGameStatisticsRankKind
 PlayerOptionTrailCallbackBody
+CWin32ResourcePbgFile::~CWin32ResourcePbgFile
