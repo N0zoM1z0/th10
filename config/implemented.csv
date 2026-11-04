@@ -1297,3 +1297,4 @@ MainSupervisorView::MatchDebugRecord
 RngView::GetRandomU32SkipNextPair
 InstallAnmVmVertexBuffer
 CountGameStatisticsRankKind
+PlayerOptionTrailCallbackBody
