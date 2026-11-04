@@ -487,7 +487,7 @@ typedef char ItemChainArgumentAt20[
     (offsetof(ItemChainElementView, argument) == 0x20) ? 1 : -1];
 typedef int (__fastcall *ItemCallback)(ItemManagerView *manager);
 
-int ItemManagerRegisterCallbacks(ItemManagerView *manager)
+__declspec(noinline) int ItemManagerRegisterCallbacks(ItemManagerView *manager)
 {
     ItemChainElementView *node =
         reinterpret_cast<ItemChainElementView *>(

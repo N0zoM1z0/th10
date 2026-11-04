@@ -1,0 +1,36 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "entry": "0x0041AED0",
+  "source": "src/ItemManager.cpp",
+  "source_sha256": "7a1568105f7ba3c765bc0b4c8ecd5f7dced4b88f5ca38c45e977023b073e7ce6",
+  "profile": [
+    "/GL",
+    "/GS",
+    "/EHs"
+  ],
+  "sources": [
+    "src/ItemManager.cpp",
+    "src/Chain.cpp",
+    "src/AnmManager.cpp"
+  ],
+  "independent_colds": [
+    {
+      "cold": 1,
+      "image_sha256": "40dafdd721974e9162b980409c991e2c6d1aed6f9c3d9da02d465a86965dd2ee",
+      "pdb_guid": "1785f34c854c6248932a606c9d5a8500",
+      "creator_bytes": 185,
+      "creator_fields": 13,
+      "destructor_bytes": 216,
+      "destructor_fields": 21
+    },
+    {
+      "cold": 2,
+      "image_sha256": "e3710ec85c9707a2694350c3f4c5b9796900bf3b30401d23dba275bccc1b992c",
+      "pdb_guid": "844218303437a440a316ef7880f6c265",
+      "creator_bytes": 185,
+      "creator_fields": 13,
+      "destructor_bytes": 216,
+      "destructor_fields": 21
+    }
+  ]
+}
