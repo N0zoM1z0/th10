@@ -11,7 +11,9 @@ static unsigned int MergeWinMmButton(unsigned short *out, short button,
 {
     if (button < 0)
         return 0;
-    unsigned int mask = 1u << button;
+    // The original x86 SHL EAX,CL uses only CL's low five bits; masking
+    // explicitly also defines the behavior of saved WinMM bindings >= 32.
+    unsigned int mask = 1u << (static_cast<unsigned int>(button) & 31u);
     *out |= (buttons & mask) ? action : 0;
     return (buttons & mask) ? action : 0;
 }
