@@ -1202,7 +1202,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
     local_90.spawnRequest.eclVariables = eclVariables;
 dispatch_spawn_enemy:
     EnemySpawn(
-        g_EnemyManager, reinterpret_cast<const char *>(iVar27 + 0x14),
+        g_EnemyManager, reinterpret_cast<const char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[1]),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_IF_NO_BOSS:
@@ -1251,7 +1251,7 @@ dispatch_create_enemy_global:
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag40000 = local_90.spawnRequest.setFlag40000 | 1;
     EnemySpawn(
-        g_EnemyManager, reinterpret_cast<const char *>(iVar27 + 0x14),
+        g_EnemyManager, reinterpret_cast<const char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[1]),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET_IF_NO_BOSS:
@@ -1279,7 +1279,7 @@ dispatch_create_enemy_mirrored:
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag0800 = 1;
     EnemySpawn(
-        g_EnemyManager, reinterpret_cast<const char *>(iVar27 + 0x14),
+        g_EnemyManager, reinterpret_cast<const char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[1]),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED:
@@ -2319,12 +2319,12 @@ dispatch_select_bullet_count_low:
     uVar24 = ENEMY_READ_INT_DIRECT(0);
     EnemyConfigureInterrupt(
         owner, (int)uVar24, (int)uVar23, (int)uVar22,
-        reinterpret_cast<const unsigned char *>(iVar27 + 0x20));
+        reinterpret_cast<const unsigned char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[4]));
     return 0;
   case ENEMY_ECL_SET_TIMEOUT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     owner->runtime.callbackThresholds[uVar22].timerCallbackName =
-        reinterpret_cast<const unsigned char *>(iVar27 + 0x18);
+        reinterpret_cast<const unsigned char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[2]);
     return 0;
   case ENEMY_ECL_CANCEL_ALL_BULLETS:
     reinterpret_cast<EnemyCancelManagerView *>(
@@ -2371,8 +2371,8 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
   {
     const unsigned char *encryptedName =
-        reinterpret_cast<const unsigned char *>(iVar27 + 0x20);
-    const int spellNameLength = *(int *)(iVar27 + 0x1c);
+        reinterpret_cast<const unsigned char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[4]);
+    const int spellNameLength = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[3];
     iVar17 = 0;
     bVar3 = 0x77;
     local_29d = '\a';
