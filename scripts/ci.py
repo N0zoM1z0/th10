@@ -62,6 +62,7 @@ ORACLE_CHECKS = {
     'Validate chain-member EH address binding': [sys.executable, "scripts/test-linked-chain-member-eh.py"],
     'Validate Stage array EH address binding': [sys.executable, "scripts/test-linked-stage-array-eh.py"],
     'Validate Bullet array EH address binding': [sys.executable, "scripts/test-linked-bullet-array-eh.py"],
+    'Validate Item array EH address binding': [sys.executable, "scripts/test-linked-item-array-eh.py"],
     'Validate Ending complete address inventory': [sys.executable, "scripts/test-ending-address-inventory.py"],
 }
 

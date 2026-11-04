@@ -486,7 +486,6 @@ typedef char ItemChainFlagsAt04[
 typedef char ItemChainArgumentAt20[
     (offsetof(ItemChainElementView, argument) == 0x20) ? 1 : -1];
 typedef int (__fastcall *ItemCallback)(ItemManagerView *manager);
-extern void *g_ItemCallbackChainOwner;
 
 int ItemManagerRegisterCallbacks(ItemManagerView *manager)
 {
@@ -581,16 +580,15 @@ ItemManagerView::ItemManagerView()
 struct ItemCriticalSectionView { unsigned char storage[0x18]; };
 extern ItemCriticalSectionView g_ItemCallbackCriticalSection; // 0x492274
 extern unsigned char g_ItemCallbackLockDepth; // 0x49231C
-extern void ItemUnlinkCallbackNode(ItemChainElementView *node, void *owner);
-
+// Direct original destination: th10::Chain::UnregisterElem at 0x00449F60.
 static void RemoveItemCallbackNode(ItemChainElementView *node)
 {
-    void *owner = g_ItemCallbackChainOwner;
+    th10::Chain *const chain = th10::g_Chain;
     if (node == NULL)
         return;
     EnterCriticalSection(&g_ItemCallbackCriticalSection);
     ++g_ItemCallbackLockDepth;
-    ItemUnlinkCallbackNode(node, owner);
+    chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(node));
     LeaveCriticalSection(&g_ItemCallbackCriticalSection);
     --g_ItemCallbackLockDepth;
 }

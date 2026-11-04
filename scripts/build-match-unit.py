@@ -10,6 +10,7 @@ from linked_worker_member_eh import worker_member_eh_selector
 from linked_chain_member_eh import chain_member_eh_selector
 from linked_stage_array_eh import stage_array_eh_selector
 from linked_bullet_array_eh import bullet_array_eh_selector
+from linked_item_array_eh import item_array_eh_selector
 
 import argparse
 from collections import Counter
@@ -54,6 +55,7 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
         chain_member_eh_selector(unit, field)
         stage_array_eh_selector(unit, field)
         bullet_array_eh_selector(unit, field)
+        item_array_eh_selector(unit, field)
         kind = str(field.get("type", ""))
         width = int(field.get("width", SUPPORTED_FIELDS.get(kind, 0)))
         if kind not in SUPPORTED_FIELDS or width != SUPPORTED_FIELDS[kind]:

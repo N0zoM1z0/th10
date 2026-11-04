@@ -1,0 +1,393 @@
+{
+  "target": {
+    "game": "TH10 original Japanese 1.00a",
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "start": "0x0041ADF0",
+    "size": 216
+  },
+  "canonical_unit": "item-manager-destructor-0041adf0",
+  "source": "src/ItemManager.cpp",
+  "source_sha256": "5607160a17b751679fc7337e99b2ddf730a684d65af8cca282c6b0d53f720808",
+  "real_support_sources": [
+    "src/Chain.cpp",
+    "src/AnmManager.cpp"
+  ],
+  "compiler_profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL",
+    "/GS",
+    "/EHs"
+  ],
+  "entry": "?GameCreateItemManager@@YAPAXXZ",
+  "independent_cold_proofs": [
+    {
+      "cold": 1,
+      "result": "exact",
+      "target_address": "0x0041ADF0",
+      "matched_bytes": 216,
+      "compared_size": 216,
+      "image_sha256": "12fb87a0beaa59de98c9531352a72270750895cb2598414ab662446d3bc0356a",
+      "pdb_guid": "58a272d15010d944bb443742e6d6306f",
+      "pdb_age": 1,
+      "pdb_module_index": 1,
+      "field_count": 21,
+      "field_destinations": [
+        [
+          "0x2",
+          "DIR32",
+          "__except_list",
+          "0x00000000"
+        ],
+        [
+          "0x9",
+          "DIR32",
+          "__ehhandler$??1ItemManagerView@@QAE@XZ",
+          "0x0046541C"
+        ],
+        [
+          "0x11",
+          "DIR32",
+          "__except_list",
+          "0x00000000"
+        ],
+        [
+          "0x2C",
+          "DIR32",
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "0x00491BE4"
+        ],
+        [
+          "0x32",
+          "DIR32",
+          "__imp__EnterCriticalSection@4",
+          "0x004660B0"
+        ],
+        [
+          "0x38",
+          "DIR32",
+          "__imp__LeaveCriticalSection@4",
+          "0x004660B4"
+        ],
+        [
+          "0x3F",
+          "DIR32",
+          "?g_ItemCallbackCriticalSection@@3UItemCriticalSectionView@@A",
+          "0x00492274"
+        ],
+        [
+          "0x47",
+          "DIR32",
+          "?g_ItemCallbackLockDepth@@3EA",
+          "0x0049231C"
+        ],
+        [
+          "0x50",
+          "REL32",
+          "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z",
+          "0x00449F60"
+        ],
+        [
+          "0x55",
+          "DIR32",
+          "?g_ItemCallbackCriticalSection@@3UItemCriticalSectionView@@A",
+          "0x00492274"
+        ],
+        [
+          "0x5D",
+          "DIR32",
+          "?g_ItemCallbackLockDepth@@3EA",
+          "0x0049231C"
+        ],
+        [
+          "0x6C",
+          "DIR32",
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "0x00491BE4"
+        ],
+        [
+          "0x73",
+          "DIR32",
+          "?g_ItemCallbackCriticalSection@@3UItemCriticalSectionView@@A",
+          "0x00492274"
+        ],
+        [
+          "0x7B",
+          "DIR32",
+          "?g_ItemCallbackLockDepth@@3EA",
+          "0x0049231C"
+        ],
+        [
+          "0x84",
+          "REL32",
+          "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z",
+          "0x00449F60"
+        ],
+        [
+          "0x89",
+          "DIR32",
+          "?g_ItemCallbackCriticalSection@@3UItemCriticalSectionView@@A",
+          "0x00492274"
+        ],
+        [
+          "0x91",
+          "DIR32",
+          "?g_ItemCallbackLockDepth@@3EA",
+          "0x0049231C"
+        ],
+        [
+          "0x96",
+          "DIR32",
+          "??1ItemRecordView@@QAE@XZ",
+          "0x0041AD60"
+        ],
+        [
+          "0xB6",
+          "DIR32",
+          "?g_ItemManager@@3PAUItemManagerView@@A",
+          "0x00477818"
+        ],
+        [
+          "0xBF",
+          "REL32",
+          "??_M@YGXPAXIHP6EX0@Z@Z",
+          "0x004525FF"
+        ],
+        [
+          "0xCD",
+          "DIR32",
+          "__except_list",
+          "0x00000000"
+        ]
+      ],
+      "generated_item_array_eh": {
+        "authority": "strict address/metadata binding, not generated-code or runtime EH credit",
+        "candidate": {
+          "action": "0x40e690",
+          "action_bytes": 28,
+          "destructor": "0x401180",
+          "element_count": 2198,
+          "element_stride": 1008,
+          "func_info": "0x40f3b4",
+          "func_info_bytes": 28,
+          "handler": "0x40e6ac",
+          "handler_bytes": 10,
+          "iterator": "0x410010",
+          "member_offset": 20,
+          "saved_this": 4,
+          "unwind_map": "0x40f3ac",
+          "unwind_states": 1
+        },
+        "handler_symbol": "__ehhandler$??1ItemManagerView@@QAE@XZ",
+        "parent": "??1ItemManagerView@@QAE@XZ",
+        "pdb_module_index": 1,
+        "target": {
+          "action": "0x465400",
+          "action_bytes": 28,
+          "destructor": "0x41ad60",
+          "element_count": 2198,
+          "element_stride": 1008,
+          "func_info": "0x4714fc",
+          "func_info_bytes": 28,
+          "handler": "0x46541c",
+          "handler_bytes": 10,
+          "iterator": "0x4525ff",
+          "member_offset": 20,
+          "saved_this": 4,
+          "unwind_map": "0x4714f4",
+          "unwind_states": 1
+        }
+      }
+    },
+    {
+      "cold": 2,
+      "result": "exact",
+      "target_address": "0x0041ADF0",
+      "matched_bytes": 216,
+      "compared_size": 216,
+      "image_sha256": "aa545d5e9a808a5966a8b2cf8661f65f4c41696ab4791acfebd60e81c535dd07",
+      "pdb_guid": "3d0b17f86618d049a27785cc4bc38451",
+      "pdb_age": 1,
+      "pdb_module_index": 1,
+      "field_count": 21,
+      "field_destinations": [
+        [
+          "0x2",
+          "DIR32",
+          "__except_list",
+          "0x00000000"
+        ],
+        [
+          "0x9",
+          "DIR32",
+          "__ehhandler$??1ItemManagerView@@QAE@XZ",
+          "0x0046541C"
+        ],
+        [
+          "0x11",
+          "DIR32",
+          "__except_list",
+          "0x00000000"
+        ],
+        [
+          "0x2C",
+          "DIR32",
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "0x00491BE4"
+        ],
+        [
+          "0x32",
+          "DIR32",
+          "__imp__EnterCriticalSection@4",
+          "0x004660B0"
+        ],
+        [
+          "0x38",
+          "DIR32",
+          "__imp__LeaveCriticalSection@4",
+          "0x004660B4"
+        ],
+        [
+          "0x3F",
+          "DIR32",
+          "?g_ItemCallbackCriticalSection@@3UItemCriticalSectionView@@A",
+          "0x00492274"
+        ],
+        [
+          "0x47",
+          "DIR32",
+          "?g_ItemCallbackLockDepth@@3EA",
+          "0x0049231C"
+        ],
+        [
+          "0x50",
+          "REL32",
+          "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z",
+          "0x00449F60"
+        ],
+        [
+          "0x55",
+          "DIR32",
+          "?g_ItemCallbackCriticalSection@@3UItemCriticalSectionView@@A",
+          "0x00492274"
+        ],
+        [
+          "0x5D",
+          "DIR32",
+          "?g_ItemCallbackLockDepth@@3EA",
+          "0x0049231C"
+        ],
+        [
+          "0x6C",
+          "DIR32",
+          "?g_Chain@th10@@3PAUChain@1@A",
+          "0x00491BE4"
+        ],
+        [
+          "0x73",
+          "DIR32",
+          "?g_ItemCallbackCriticalSection@@3UItemCriticalSectionView@@A",
+          "0x00492274"
+        ],
+        [
+          "0x7B",
+          "DIR32",
+          "?g_ItemCallbackLockDepth@@3EA",
+          "0x0049231C"
+        ],
+        [
+          "0x84",
+          "REL32",
+          "?UnregisterElem@Chain@th10@@QAEXPAUChainElem@2@@Z",
+          "0x00449F60"
+        ],
+        [
+          "0x89",
+          "DIR32",
+          "?g_ItemCallbackCriticalSection@@3UItemCriticalSectionView@@A",
+          "0x00492274"
+        ],
+        [
+          "0x91",
+          "DIR32",
+          "?g_ItemCallbackLockDepth@@3EA",
+          "0x0049231C"
+        ],
+        [
+          "0x96",
+          "DIR32",
+          "??1ItemRecordView@@QAE@XZ",
+          "0x0041AD60"
+        ],
+        [
+          "0xB6",
+          "DIR32",
+          "?g_ItemManager@@3PAUItemManagerView@@A",
+          "0x00477818"
+        ],
+        [
+          "0xBF",
+          "REL32",
+          "??_M@YGXPAXIHP6EX0@Z@Z",
+          "0x004525FF"
+        ],
+        [
+          "0xCD",
+          "DIR32",
+          "__except_list",
+          "0x00000000"
+        ]
+      ],
+      "generated_item_array_eh": {
+        "authority": "strict address/metadata binding, not generated-code or runtime EH credit",
+        "candidate": {
+          "action": "0x40e690",
+          "action_bytes": 28,
+          "destructor": "0x401180",
+          "element_count": 2198,
+          "element_stride": 1008,
+          "func_info": "0x40f3b4",
+          "func_info_bytes": 28,
+          "handler": "0x40e6ac",
+          "handler_bytes": 10,
+          "iterator": "0x410010",
+          "member_offset": 20,
+          "saved_this": 4,
+          "unwind_map": "0x40f3ac",
+          "unwind_states": 1
+        },
+        "handler_symbol": "__ehhandler$??1ItemManagerView@@QAE@XZ",
+        "parent": "??1ItemManagerView@@QAE@XZ",
+        "pdb_module_index": 1,
+        "target": {
+          "action": "0x465400",
+          "action_bytes": 28,
+          "destructor": "0x41ad60",
+          "element_count": 2198,
+          "element_stride": 1008,
+          "func_info": "0x4714fc",
+          "func_info_bytes": 28,
+          "handler": "0x46541c",
+          "handler_bytes": 10,
+          "iterator": "0x4525ff",
+          "member_offset": 20,
+          "saved_this": 4,
+          "unwind_map": "0x4714f4",
+          "unwind_states": 1
+        }
+      }
+    }
+  ],
+  "canonical_acceptance": {
+    "complete_exact_bytes": 216,
+    "bound_fields": 21,
+    "metadata_eh_bound": true,
+    "native_game_product_complete": false
+  }
+}
