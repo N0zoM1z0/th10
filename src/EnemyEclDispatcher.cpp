@@ -1072,6 +1072,11 @@ float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)
 int EnemyRuntimeView::DispatchEclInstruction()
 
 {
+  // Indexed bullet launch offsets use the genuine 12-byte float3 records
+  // at runtime +0x1344; zeroing keeps the original word-wise bit stores.
+  // Native motion base/offset pointers and copied position words now name
+  // the existing 0x2C-byte motion records; laser copies start at the
+  // existing first bullet pattern's word 8, not an invented raw base.
   // Remaining life/drops, collision sizes, mode state and host back-pointer
   // use the native EnemyRuntimeView members rather than the old absolute
   // offsets. Keep squared protection range at +0x1454 as a float view of
@@ -1461,9 +1466,9 @@ dispatch_update_primary_anm_bounds:
   }
   case ENEMY_ECL_ADD_OFFSET_POSITION:
   case ENEMY_ECL_ADD_BASE_POSITION:
-    pfVar15 = (float *)((int)runtimeAddress + 0x58);
+    pfVar15 = &offsetMotion.position.x;
     if (opcode != 0x128) {
-      pfVar15 = (float *)((int)runtimeAddress + 0x84);
+      pfVar15 = &baseMotion.position.x;
     }
     fVar19 = (ReadFloatArgument(0));
     fVar21 = (ReadFloatArgument(1));
@@ -1708,9 +1713,9 @@ dispatch_update_primary_anm_bounds:
   // Movement and game-state instructions in target case order.
   case ENEMY_ECL_ADD_OFFSET_VELOCITY:
   case ENEMY_ECL_ADD_BASE_VELOCITY:
-    iVar26 = (int)runtimeAddress + 0x58;
+    iVar26 = reinterpret_cast<int>(&offsetMotion);
     if (opcode != 0x12a) {
-      iVar26 = (int)runtimeAddress + 0x84;
+      iVar26 = reinterpret_cast<int>(&baseMotion);
     }
     fVar19 = (ReadFloatArgument(0));
     fVar21 = (ReadFloatArgument(1));
@@ -1990,8 +1995,8 @@ dispatch_difficulty_float_index_4_a:
     *(unsigned int *)(iVar11 + 0x4c4) = 7;
     *(unsigned int *)(iVar11 + 0x4c8) = 0x18;
     *(unsigned int *)(iVar11 + 0x4c0) = 0x203;
-    *(unsigned int *)((int)runtimeAddress + (iVar26 * 3 + 0x4d1) * 4) = 0;
-    *(unsigned int *)((int)runtimeAddress + 0x1348 + iVar26 * 0xc) = 0;
+    *reinterpret_cast<unsigned int *>(&bulletPatternOffsets[iVar26].x) = 0;
+    *reinterpret_cast<unsigned int *>(&bulletPatternOffsets[iVar26].y) = 0;
     return 0;
   case ENEMY_ECL_COPY_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
@@ -2034,9 +2039,9 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_SET_BULLET_OFFSET:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     fVar19 = (ReadFloatArgument(1));
-    *(float *)((int)runtimeAddress + ((int)uVar22 * 3 + 0x4d1) * 4) = (float)fVar19;
+    bulletPatternOffsets[uVar22].x = (float)fVar19;
     fVar19 = (ReadFloatArgument(2));
-    *(float *)((int)runtimeAddress + 0x1348 + (int)uVar22 * 0xc) = (float)fVar19;
+    bulletPatternOffsets[uVar22].y = (float)fVar19;
     return 0;
   case ENEMY_ECL_SET_BULLET_ANGLE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -2493,7 +2498,7 @@ dispatch_select_bullet_count_low:
     if (opcode == 0x1b1) {
       memcpy(
           reinterpret_cast<unsigned int *>(&local_288) + 11,
-          reinterpret_cast<const void *>(runtimeAddress + 0x2e4),
+          reinterpret_cast<const void *>(&bulletPatterns[0].words[8]),
           0x6c * sizeof(unsigned int));
     }
     vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
@@ -2526,7 +2531,7 @@ dispatch_select_bullet_count_low:
     EnemyInitializeLaserConfig(&local_288);
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
     if (*(short *)(iVar27 + 4) == 0x1b2) {
-      puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);
+      puVar14 = &bulletPatterns[0].words[8];
       puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;
       for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
         *puVar13 = *puVar14;
@@ -2815,8 +2820,8 @@ dispatch_create_enemy_absolute_mirrored:
   goto dispatch_spawn_enemy;
 dispatch_copy_player_to_motion:
   iVar26 = *(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10);
-  *(unsigned int *)((int)runtimeAddress + 0x58) = *(unsigned int *)(iVar26 + 0x1068);
-  *(unsigned int *)((int)runtimeAddress + 0x5c) = *(unsigned int *)(iVar26 + 0x106c);
-  *(unsigned int *)((int)runtimeAddress + 0x60) = *(unsigned int *)(iVar26 + 0x1070);
+  *reinterpret_cast<unsigned int *>(&offsetMotion.position.x) = *(unsigned int *)(iVar26 + 0x1068);
+  *reinterpret_cast<unsigned int *>(&offsetMotion.position.y) = *(unsigned int *)(iVar26 + 0x106c);
+  *reinterpret_cast<unsigned int *>(&offsetMotion.position.z) = *(unsigned int *)(iVar26 + 0x1070);
   return 0;
 }

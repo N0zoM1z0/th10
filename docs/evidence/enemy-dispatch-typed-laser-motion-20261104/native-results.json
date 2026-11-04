@@ -1,0 +1,28 @@
+[
+  {
+    "label": "motion-bullet-address-typed",
+    "size": 14352,
+    "old_size": 14352,
+    "fields": 716,
+    "old_fields": 716,
+    "same_geometry": true,
+    "ordinary_differences_from_old_candidate": 0,
+    "first_diffs": [],
+    "source_sha256": "1c884ac3299fcbc6df374c39eaf30e185e5ae45f1828b60987f158e598cb520d",
+    "elapsed_seconds": 86.7,
+    "link_artifact": "build/gpt-web/20261104-live-enemy/motion-bullet-address-typed"
+  },
+  {
+    "label": "indexed-bullet-offsets-typed",
+    "size": 14352,
+    "old_size": 14352,
+    "fields": 716,
+    "old_fields": 716,
+    "same_geometry": true,
+    "ordinary_differences_from_old_candidate": 0,
+    "first_diffs": [],
+    "source_sha256": "2d592193b93cc750e8ca6b94d9abd389f283f4725079675a6a8fb8fb21342ec6",
+    "elapsed_seconds": 85.6,
+    "link_artifact": "build/gpt-web/20261104-live-enemy/indexed-bullet-offsets-typed"
+  }
+]
