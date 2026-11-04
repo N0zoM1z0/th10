@@ -1304,3 +1304,4 @@ StampReplayHeaderTimeAndCompletion,0x00429B30,function
 FrontEndInterruptVmNowTwo,0x0042C730,function
 FrontEndInterruptVmNowThree,0x0042C750,function
 ArchiveEntrySuffix,0x004356D0,function
+ScriptViewerNullableDelete,0x0040A430,function

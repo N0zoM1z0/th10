@@ -54,7 +54,7 @@ The old accepted PE/PDB and a matching *size* are not enough.
 | Measure | Verified count |
 | --- | ---: |
 | Reviewed target functions/boundaries | 1,829 / 1,829 |
-| Source-present functions | **1,305** |
+| Source-present functions | **1,306** |
 | Canonical exact functions / codegen bytes | **1,473 / 188,926** |
 | Confirmed authored functions / bytes (provisional) | 750 / 276,120 |
 | Confirmed-authored exact functions / bytes | 569 / 118,961 |
@@ -106,6 +106,11 @@ source compiles as a complete **107-byte normal COFF owner** with **100/107
 ordinary raw bytes** and zero relocations (previous source 117 bytes).
 **NONEXACT**; the remaining EAX/EDX swap and shared branch target are open.
 [Current complete-owner evidence](evidence/resfile-seek-common-cursor-20261104/README.md).
+
+**ScriptViewer nullable deletion `0x40A430` (18 bytes)**: full natural
+source now mapped; ordinary VC7.1 private-ABI gap **27/18 NONEXACT**. Its
+separate creator and scalar-delete owners retain **94/94 strict exact**.
+[Evidence](evidence/script-viewer-nullable-delete-source-20261104/README.md).
 
 ## Major open owners — work on big bosses as well as leaves
 
