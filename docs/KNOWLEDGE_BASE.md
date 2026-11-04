@@ -23,6 +23,17 @@ a constraint on the maintained implementation.
 
 ## 2026-11-04 authoritative updates for the next agent
 
+**Player option-trail two staged coordinate writes (2026-11-04):** The full
+359-byte `PlayerOptionTrailCallbackBody` now computes both nonzero-mode X/Y
+coordinates as ordinary typed, volatile-lifetime locals and writes them
+through one real `PlayerPositionPair*`. In the three-source VC7.1 `/GL`
+callback graph, the complete PDB extent remains **359/359**, and the
+noncanonical positional ordinary byte diagnostic improves **209/339 to
+215/339**. Five candidate external fields are not enough to prove exactness;
+this owner remains **NONEXACT**, with **123/123** selected existing callback
+exact bytes cold-confirmed. [Bounded evidence](evidence/player-trail-two-staged-coordinates-20261104/README.md).
+
+
 **New exact FrontEnd closure (2026-11-04):** Both previously nonexact
 27-byte FrontEnd constant-2/3 VM interrupt helpers at `0x0042C730` and
 `0x0042C750` are **27/27 full canonical exact** in a real

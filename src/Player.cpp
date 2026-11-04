@@ -657,10 +657,12 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
     }
     else
     {
-        player->replayPositionHistory[(option->optionIndex + 1) * 8].x =
-            player->positionX + option->replayPair2.x;
-        player->replayPositionHistory[(option->optionIndex + 1) * 8].y =
-            player->positionY + option->replayPair2.y;
+        volatile int nextX = player->positionX + option->replayPair2.x;
+        volatile int nextY = player->positionY + option->replayPair2.y;
+        PlayerPositionPair *const destination =
+            &player->replayPositionHistory[(option->optionIndex + 1) * 8];
+        destination->x = nextX;
+        destination->y = nextY;
 
         float fraction = 0.125f;
         for (int i = option->optionIndex * 8 + 1;
