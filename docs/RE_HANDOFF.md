@@ -150,6 +150,19 @@ renderer is source-covered and **503/501 nonexact**. Historical documents
 may call any of these "not yet implemented" or "exact by size" — those
 older claims are superseded by current function and match ledgers.
 
+## Freshly falsified ANM/Sound compiler hypotheses — 2026-11-04
+
+[Current complete-source experimental panel](evidence/current-anm-sound-frontiers-20261104/README.md)
+independently recompiled the **9,964-byte ANM executor**, **320-byte texture
+region uploader**, **203-byte ANM script binder** and **369-byte Sound BGM
+preloader**. All remained **NONEXACT**, with unchanged primary source SHA and
+full external-field/owner constraints checked at their respective acceptance
+levels. Four ANM child91 variants retain 9962/9964 at best; the 203-byte
+binder retains 202/203 with four fields; sound read setup remains 365/369
+with ten fields. The separate 320-byte target uploader still emits a
+319-byte or shorter candidate. Do not adopt the rejected variants, assume
+that an equal-size mismatch is exact, or rerun these without new target facts.
+
 ## Storage / private provenance
 
 **2026-11-04 cleanup:** old `.analysis/gpt-6.1-sol/` and
