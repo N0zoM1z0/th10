@@ -8,6 +8,8 @@
 class IPbgFile
 {
   public:
+    // Source-facing natural base constructor; original authored identity unknown.
+    IPbgFile() {}
     virtual bool Open(const char *filename, char *mode) = 0;
     virtual void Close() = 0;
     virtual DWORD Read(void *data, DWORD dataLen) = 0;

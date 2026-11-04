@@ -54,8 +54,8 @@ The old accepted PE/PDB and a matching *size* are not enough.
 | Measure | Verified count |
 | --- | ---: |
 | Reviewed target functions/boundaries | 1,829 / 1,829 |
-| Source-present functions | **1,308** |
-| Canonical exact functions / codegen bytes | **1,474 / 188,936** |
+| Source-present functions | **1,309** |
+| Canonical exact functions / codegen bytes | **1,475 / 188,943** |
 | Confirmed authored functions / bytes (provisional) | 750 / 276,120 |
 | Confirmed-authored exact functions / bytes | 569 / 118,961 |
 | Authored source-present nonexact backlog | 181 |
@@ -83,6 +83,7 @@ recounted for a parent merely because its call target is known:
 | Area | Current exact scope | Evidence / reproducible unit |
 | --- | --- | --- |
 | Derived Win32 resource PBG destructor `0x436680` | **49/49** with three actual base-vtable/free/IFile-vtable fields; distinct from the 49-byte base destructor | [full proof](evidence/resource-pbgfile-derived-destructor-exact-20261104/README.md), unit `win32-resource-pbgfile-destructor-00436680` |
+| `IPbgFile` retained base constructor `0x4356C0` | **7/7**, actual WPO EAX receiver, one bound vtable `DIR32` field, explicit natural C++ base declaration; adjacent 18-byte memory-file constructor remains exact | [two cold complete-owner proofs](evidence/ipbgfile-base-constructor-exact-20261104/README.md), unit `pbgfile-base-constructor-004356c0` |
 | ResultMenu update-chain callback `0x422A90` | **10/10**, sole bound `CALL` to real 206-byte update callee; genuine two-TU WPO restores private ESI receiver without ABI shim | [two independent colds and complete source proof](evidence/result-menu-update-callback-exact-20261104/README.md), unit `result-menu-update-callback-00422a90` |
 | Signed rank counter `0x4088C0` | **75/75**, five fields into the original signed rank table, natural five-column `do/while` | [full proof](evidence/game-statistics-rank-kind-exact-20261104/README.md), unit `game-statistics-rank-kind-count-004088c0` |
 | ANM vertex buffer installer `0x40B250` | **60/60**, 11 dword allocation and +0x340 position mirror, one scalar-new call field | [full proof](evidence/anm-vm-vertex-buffer-exact-20261104/README.md), unit `anm-vm-vertex-buffer-0040b250` |

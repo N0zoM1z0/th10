@@ -30236,3 +30236,22 @@ size = 10
 linkages = [
   { offset = 0x04, type = "REL32", symbol = "?ResultMenuUpdate@@YAHPAUResultMenuView@@@Z", target = 0x004223F0 },
 ]
+
+# Complete retained 7-byte IPbgFile base vtable constructor. Only the actual
+# CMemoryPbgFile/ResFile /GL WPO graph selects the target's private EAX this;
+# ordinary stand-alone COFF and CPbgFile graph instead add MOV EAX,ECX.
+[units.pbgfile-base-constructor-004356c0]
+artifact_kind = "linked-pe"
+source = "src/ResFile.cpp"
+output_dir = "build/match-linked/ResFileMemoryOpen"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z"
+functions = ["IPbgFile::IPbgFile"]
+symbol = "??0IPbgFile@@QAE@XZ"
+target_address = 0x004356C0
+size = 7
+linkages = [
+  { offset = 0x02, type = "DIR32", symbol = "??_7IPbgFile@@6B@", target = 0x0046F210 },
+]
