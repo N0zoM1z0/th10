@@ -260,3 +260,38 @@ The original executable has no verified direct E8 call to the 43-byte
 helper and its original authorship remains indeterminate. The larger
 274-byte updater and 91-byte update callback remain nonexact; their
 previous negative controls still apply.
+
+## Separately recovered 54-byte generic point-check accumulator @0x0041C880
+
+The original Japanese 1.00a contains a complete 54-byte, CC-delimited
+`0x0041C880..0x0041C8B5` routine ending in **RET8**, immediately before
+the 442-byte laser line `Initialize` owner at 0x0041C8C0. This was
+previously source-absent but physically reviewed; no direct incoming
+call or original authored identity was identified, so existing
+`config/function-origins.csv` correctly leaves it **indeterminate**.
+
+It accepts the real laser manager through native **EAX**, plus two stack
+arguments (a typed `EnemyLaserVectorView *` at the first stack slot, and
+a 32-bit float at the second). It reads the actual list head at +0x18,
+starts sum in EDI at zero, saves each node's +8 next pointer before any
+virtual call, skips nodes whose state word +0x0C equals 1, invokes the
+real vtable **slot8 `CheckPoint` at +0x20**, and accumulates every virtual
+return into EDI. After walking all nodes it returns the sum in EAX; no
+special overflow/empty-list guard or error path was added.
+
+`EnemyLaserManagerStorageView::AccumulatePointChecks` is now implemented in
+`src/EnemyLaserUpdateList.cpp` and declared alongside the real manager's
+other typed operations. Its first *isolated* VC7.1 SP1 `/GL` link emits an
+independently PDB-owned **54-byte** function and zero relocation fields;
+the complete comparison has **31/54 raw ordinary bytes** equal. The
+remaining 23-byte differences include the compiler's normal ECX receiver
+in place of the original private EAX manager and its spill/save choices,
+plus the virtual vtable EAX versus native EDX. With no proven original
+caller, this is **source-present NONEXACT** and receives no canonical match
+or authored-origin credit. Reproducible local report:
+`.analysis/gpt-web/20261103/laser-point-54-first.json`.
+
+The same maintained file's separately exact 43-byte and 46-byte draw
+functions are cold-replayed as narrow regression guards. The 274-byte
+update and 91-byte callback remain NONEXACT, and no full historical or
+product replay is claimed.

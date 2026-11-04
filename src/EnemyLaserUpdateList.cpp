@@ -115,3 +115,23 @@ int __fastcall EnemyLaserDrawList(void *owner)
     }
     return 1;
 }
+
+// Target 0x0041C880..0x0041C8B5 is a physically independent 54-byte
+// accumulation over non-state-1 lasers. It takes manager privately in EAX
+// and two stack words; no actual original caller is independently known.
+int EnemyLaserManagerStorageView::AccumulatePointChecks(
+    EnemyLaserVectorView *point, float radius)
+{
+    int total = 0;
+    EnemyLaserConstructionBaseView *laser =
+        reinterpret_cast<EnemyLaserConstructionBaseView *>(sentinel.next);
+    while (laser != NULL)
+    {
+        EnemyLaserConstructionBaseView *next =
+            reinterpret_cast<EnemyLaserConstructionBaseView *>(laser->next);
+        if (laser->unknown00C != 1)
+            total += laser->CheckPoint(point, radius);
+        laser = next;
+    }
+    return total;
+}

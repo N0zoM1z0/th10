@@ -1291,3 +1291,5 @@ EnemyLaserManagerStorageView::UpdateLinkedLasers,0x0041C330,function
 EnemyLaserUpdateCallback,0x0041C480,function
 EnemyLaserDrawCallback,0x0041C4E0,function
 EnemyLaserDrawList,0x0041C450,function
+EnemyLaserManagerStorageView::AccumulatePointChecks,0x0041C880,function
+EnemyLaserLineView::CheckPoint,0x0041E4D0,function

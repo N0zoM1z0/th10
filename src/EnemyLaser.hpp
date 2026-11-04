@@ -276,6 +276,7 @@ struct EnemyLaserManagerStorageView
     EnemyLaserManagerStorageView() { memset(this, 0, sizeof(*this)); g_EnemyLaserManager = reinterpret_cast<EnemyLaserManagerView *>(this); }
     int Initialize();
     int UpdateLinkedLasers();
+    int AccumulatePointChecks(EnemyLaserVectorView *point, float radius);
 };
 typedef char EnemyLaserManagerStorageLayout[
     (sizeof(EnemyLaserManagerStorageView) == 0x45c &&

@@ -1290,3 +1290,5 @@ EnemyLaserManagerStorageView::UpdateLinkedLasers
 EnemyLaserUpdateCallback
 EnemyLaserDrawCallback
 EnemyLaserDrawList
+EnemyLaserManagerStorageView::AccumulatePointChecks
+EnemyLaserLineView::CheckPoint

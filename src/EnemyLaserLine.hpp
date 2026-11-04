@@ -9,11 +9,11 @@ struct EnemyLaserLineView
     virtual int Initialize(const EnemyLaserType0RequestView *initial);
     virtual int Update();
     virtual int Draw();
-    virtual void UnknownSlot10();
+    virtual int Unlink();
     virtual int Clear(int spawnItems);
     virtual int CheckCollisionBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
-    virtual void UnknownSlot1C();
-    virtual void UnknownSlot20();
+    virtual int CheckCollisionCircle(EnemyLaserVectorView *, float, int);
+    virtual int CheckPoint(EnemyLaserVectorView *point, float radius);
     virtual void Motion0001();
     virtual void Motion0010();
     virtual void Motion0020();
