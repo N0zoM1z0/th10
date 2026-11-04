@@ -177,19 +177,43 @@ typedef char EnemyCallbackThresholdViewSizeIs10[
 // The eight target bullet-pattern records occupy runtime +0x2C4..+0x1343.
 // Their constructor clears all 0x210 bytes and then writes -1 at +0x204.
 // The dispatcher independently proves the 0x210 stride.
+// Opcode store offsets are independently decoded from the retail dispatcher.
+// Field names express observed ECL roles, not historical C++ identifiers.
 struct EnemyBulletPatternFieldsView
 {
-    unsigned char unknown000[0x18];
-    float speedA;
-    float speedB;
-    unsigned char unknown020[0x210 - 0x20];
+    unsigned short spriteId;       // +0x000, SET_BULLET_SPRITES(1)
+    unsigned short spriteVariant;  // +0x002, SET_BULLET_SPRITES(2)
+    unsigned char unknown004[0x0c];
+    float angleA;                  // +0x010, SET_BULLET_ANGLE(1)
+    float angleB;                  // +0x014, SET_BULLET_ANGLE(2)
+    float speedA;                  // +0x018
+    float speedB;                  // +0x01c
+    unsigned char unknown020[0x1f4 - 0x020];
+    unsigned short countA;        // +0x1f4, SET_BULLET_COUNT(1)
+    unsigned short countB;        // +0x1f6, SET_BULLET_COUNT(2)
+    unsigned short aimMode;       // +0x1f8, SET_BULLET_AIM_MODE
+    unsigned char unknown1FA[2];
+    unsigned int flags1FC;        // +0x1fc, INITIALIZE_BULLET_PATTERN
+    int soundId;                  // +0x200, SET_BULLET_SOUND(1)
+    int soundVariant;             // +0x204, SET_BULLET_SOUND(2)
+    unsigned char unknown208[0x210 - 0x208];
 };
 typedef char EnemyBulletPatternFieldsViewSizeIs210[
     (sizeof(EnemyBulletPatternFieldsView) == 0x210) ? 1 : -1];
-typedef char EnemyBulletPatternSpeedAAt018[
-    (offsetof(EnemyBulletPatternFieldsView, speedA) == 0x18) ? 1 : -1];
-typedef char EnemyBulletPatternSpeedBAt01C[
-    (offsetof(EnemyBulletPatternFieldsView, speedB) == 0x1c) ? 1 : -1];
+typedef char EnemyBulletPatternHeaderOffsets[
+    (offsetof(EnemyBulletPatternFieldsView, spriteId) == 0 &&
+     offsetof(EnemyBulletPatternFieldsView, spriteVariant) == 2 &&
+     offsetof(EnemyBulletPatternFieldsView, angleA) == 0x10 &&
+     offsetof(EnemyBulletPatternFieldsView, angleB) == 0x14 &&
+     offsetof(EnemyBulletPatternFieldsView, speedA) == 0x18 &&
+     offsetof(EnemyBulletPatternFieldsView, speedB) == 0x1c) ? 1 : -1];
+typedef char EnemyBulletPatternTailOffsets[
+    (offsetof(EnemyBulletPatternFieldsView, countA) == 0x1f4 &&
+     offsetof(EnemyBulletPatternFieldsView, countB) == 0x1f6 &&
+     offsetof(EnemyBulletPatternFieldsView, aimMode) == 0x1f8 &&
+     offsetof(EnemyBulletPatternFieldsView, flags1FC) == 0x1fc &&
+     offsetof(EnemyBulletPatternFieldsView, soundId) == 0x200 &&
+     offsetof(EnemyBulletPatternFieldsView, soundVariant) == 0x204) ? 1 : -1];
 
 struct EnemyBulletPatternView
 {
