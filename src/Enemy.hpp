@@ -183,7 +183,9 @@ struct EnemyBulletPatternFieldsView
 {
     unsigned short spriteId;       // +0x000, SET_BULLET_SPRITES(1)
     unsigned short spriteVariant;  // +0x002, SET_BULLET_SPRITES(2)
-    unsigned char unknown004[0x0c];
+    float spawnPositionX;         // +0x004, FIRE_BULLET_PATTERN
+    float spawnPositionY;         // +0x008
+    float spawnPositionZ;         // +0x00c
     float angleA;                  // +0x010, SET_BULLET_ANGLE(1)
     float angleB;                  // +0x014, SET_BULLET_ANGLE(2)
     float speedA;                  // +0x018
@@ -203,6 +205,9 @@ typedef char EnemyBulletPatternFieldsViewSizeIs210[
 typedef char EnemyBulletPatternHeaderOffsets[
     (offsetof(EnemyBulletPatternFieldsView, spriteId) == 0 &&
      offsetof(EnemyBulletPatternFieldsView, spriteVariant) == 2 &&
+     offsetof(EnemyBulletPatternFieldsView, spawnPositionX) == 4 &&
+     offsetof(EnemyBulletPatternFieldsView, spawnPositionY) == 8 &&
+     offsetof(EnemyBulletPatternFieldsView, spawnPositionZ) == 0x0c &&
      offsetof(EnemyBulletPatternFieldsView, angleA) == 0x10 &&
      offsetof(EnemyBulletPatternFieldsView, angleB) == 0x14 &&
      offsetof(EnemyBulletPatternFieldsView, speedA) == 0x18 &&

@@ -2023,13 +2023,13 @@ dispatch_difficulty_float_index_4_a:
     vectorScratch.y = *(float *)((int)runtimeAddress + 4 + iVar27 * 4) + worldMotion.position.y;
     iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
     vectorScratch.z = *(float *)((int)runtimeAddress + iVar27 * 4 + 8) + worldMotion.position.z;
-    *(float *)(iVar26 + 0x2c8) = vectorScratch.x;
-    *(float *)(iVar26 + 0x2cc) = vectorScratch.y;
+    reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionX = vectorScratch.x;
+    reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionY = vectorScratch.y;
     fVar9 = 0.0f;
-    *(float *)(iVar26 + 0x2d0) = vectorScratch.z;
+    reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionZ = vectorScratch.z;
     if ((*reinterpret_cast<float *>(&unknown1454) == fVar9) ||
-       (fVar9 = *(float *)(iVar26 + 0x2cc) - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c4),
-       fVar10 = *(float *)(iVar26 + 0x2c8) - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0),
+       (fVar9 = reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionY - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c4),
+       fVar10 = reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionX - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0),
        fVar9 = fVar9 * fVar9 + fVar10 * fVar10,
        *reinterpret_cast<float *>(&unknown1454) <= fVar9)) {
       reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->

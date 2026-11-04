@@ -1,0 +1,13 @@
+{
+  "label": "native-bullet-spawn-position-20261104",
+  "size": 14348,
+  "old_size": 14348,
+  "fields": 716,
+  "old_fields": 716,
+  "same_geometry": true,
+  "ordinary_differences_from_old_candidate": 0,
+  "first_diffs": [],
+  "source_sha256": "c7d81f2914f4973ccf6b6d283a04fe24e5720a920b2570348695072e28252d44",
+  "elapsed_seconds": 79.6,
+  "link_artifact": "build/gpt-web/20261104-live-enemy/native-bullet-spawn-position-20261104"
+}
