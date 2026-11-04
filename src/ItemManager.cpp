@@ -474,36 +474,28 @@ int __fastcall ItemManagerView::OnUpdate(ItemManagerView *manager)
 
 // The actual callback address escapes through this recovered registration
 // owner; it supplies the ECX callback contract without a synthetic caller.
-struct ItemChainElementView
-{
-    unsigned char unknown000[4];
-    unsigned int flags;
-    unsigned char unknown008[0x18];
-    ItemManagerView *argument;
-};
+// Both registered callbacks are the same native 0x24-byte ChainElem, not
+// a parallel private Item node. Verify the original published offsets.
 typedef char ItemChainFlagsAt04[
-    (offsetof(ItemChainElementView, flags) == 0x04) ? 1 : -1];
+    (offsetof(th10::ChainElem, flags) == 0x04) ? 1 : -1];
 typedef char ItemChainArgumentAt20[
-    (offsetof(ItemChainElementView, argument) == 0x20) ? 1 : -1];
-typedef int (__fastcall *ItemCallback)(ItemManagerView *manager);
+    (offsetof(th10::ChainElem, arg) == 0x20) ? 1 : -1];
 
 __declspec(noinline) int ItemManagerRegisterCallbacks(ItemManagerView *manager)
 {
-    ItemChainElementView *node =
-        reinterpret_cast<ItemChainElementView *>(
-            th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(
-                &ItemManagerView::OnUpdate)));
+    th10::ChainElem *node =
+        th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(
+            &ItemManagerView::OnUpdate));
     node->flags &= ~2u;
-    node->argument = manager;
-    th10::g_Chain->AddToCalcChain(reinterpret_cast<th10::ChainElem *>(node), 21);
+    node->arg = manager;
+    th10::g_Chain->AddToCalcChain(node, 21);
     manager->updateCallbackNode = node;
 
-    node = reinterpret_cast<ItemChainElementView *>(
-        th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(
-            &ItemManagerView::OnDraw)));
+    node = th10::Chain::AllocElem(reinterpret_cast<th10::ChainCallback>(
+        &ItemManagerView::OnDraw));
     node->flags &= ~2u;
-    node->argument = manager;
-    th10::g_Chain->AddToDrawChain(reinterpret_cast<th10::ChainElem *>(node), 25);
+    node->arg = manager;
+    th10::g_Chain->AddToDrawChain(node, 25);
     manager->drawCallbackNode = node;
     return 0;
 }
@@ -584,14 +576,14 @@ struct ItemCriticalSectionView { unsigned char storage[0x18]; };
 extern ItemCriticalSectionView g_ItemCallbackCriticalSection; // 0x492274
 extern unsigned char g_ItemCallbackLockDepth; // 0x49231C
 // Direct original destination: th10::Chain::UnregisterElem at 0x00449F60.
-static void RemoveItemCallbackNode(ItemChainElementView *node)
+static void RemoveItemCallbackNode(th10::ChainElem *node)
 {
     th10::Chain *const chain = th10::g_Chain;
     if (node == NULL)
         return;
     EnterCriticalSection(&g_ItemCallbackCriticalSection);
     ++g_ItemCallbackLockDepth;
-    chain->UnregisterElem(reinterpret_cast<th10::ChainElem *>(node));
+    chain->UnregisterElem(node);
     LeaveCriticalSection(&g_ItemCallbackCriticalSection);
     --g_ItemCallbackLockDepth;
 }

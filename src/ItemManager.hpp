@@ -39,13 +39,13 @@ struct ItemRecordView
     int delayFrames;
 };
 
-struct ItemChainElementView;
+namespace th10 { struct ChainElem; }
 struct ItemManagerView
 {
     unsigned int flags;
     unsigned char unknown004[4];
-    ItemChainElementView *updateCallbackNode;
-    ItemChainElementView *drawCallbackNode;
+    th10::ChainElem *updateCallbackNode;
+    th10::ChainElem *drawCallbackNode;
     unsigned char unknown010[4];
     ItemRecordView items[0x896];
     int animatedItemCount;
