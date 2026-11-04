@@ -1158,14 +1158,14 @@ int EnemyRuntimeView::DispatchEclInstruction()
 
   iVar26 = reinterpret_cast<int>(owner);
   iVar27 = reinterpret_cast<int>(owner->activeEclContext->currentInstruction);
-  opcode = *(short *)(iVar27 + 4);
+  opcode = static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode);
   switch(opcode) {
   case ENEMY_ECL_CREATE_ENEMY_IF_NO_BOSS:
     if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
       return 0;
     }
   case ENEMY_ECL_CREATE_ENEMY:
-    iVar26 = *(int *)(iVar27 + 0x10) + 4;
+    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     if ((flags & 0x40000) == 0) {
@@ -1211,7 +1211,7 @@ dispatch_spawn_enemy:
     }
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
 dispatch_create_enemy_absolute:
-    iVar26 = *(int *)(iVar27 + 0x10) + 4;
+    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
@@ -1228,7 +1228,7 @@ dispatch_create_enemy_absolute:
     goto dispatch_spawn_enemy;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET:
 dispatch_create_enemy_global:
-    iVar26 = *(int *)(iVar27 + 0x10) + 4;
+    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     local_90.spawnRequest.position.x =
@@ -1259,7 +1259,7 @@ dispatch_create_enemy_global:
     break;
   case ENEMY_ECL_CREATE_ENEMY_MIRRORED:
 dispatch_create_enemy_mirrored:
-    iVar26 = *(int *)(iVar27 + 0x10) + 4;
+    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
     fVar9 = worldMotion.position.x;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
@@ -2387,7 +2387,7 @@ dispatch_select_bullet_count_low:
     }
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    switch (*(short *)(iVar27 + 4)) {
+    switch (static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode)) {
     case ENEMY_ECL_START_SPELL_DIFFICULTY:
       iVar26 += g_EnemyDifficulty;
       break;
@@ -2462,7 +2462,7 @@ dispatch_select_bullet_count_low:
     }
     reinterpret_cast<float *>(&local_288)[11] = 8.0f;
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-    if (*(short *)(iVar27 + 4) == 0x1b0) {
+    if (static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode) == 0x1b0) {
       memcpy(local_288.type1.patternWords,
              &bulletPatterns[0].words[8],
              sizeof(local_288.type1.patternWords));
@@ -2541,7 +2541,7 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2_WITH_PATTERN:
     EnemyInitializeLaserConfig(&local_288);
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-    if (*(short *)(iVar27 + 4) == 0x1b2) {
+    if (static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode) == 0x1b2) {
       puVar14 = &bulletPatterns[0].words[8];
       puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;
       for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
@@ -2814,7 +2814,7 @@ dispatch_rank_int_low:
 dispatch_complete:
   return 0;
 dispatch_create_enemy_absolute_mirrored:
-  iVar26 = *(int *)(iVar27 + 0x10) + 4;
+  iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
   iVar26 /= 4;
   memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
   fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
