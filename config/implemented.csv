@@ -1300,3 +1300,5 @@ CountGameStatisticsRankKind
 PlayerOptionTrailCallbackBody
 CWin32ResourcePbgFile::~CWin32ResourcePbgFile
 StampReplayHeaderTimeAndCompletion
+FrontEndInterruptVmNowTwo
+FrontEndInterruptVmNowThree

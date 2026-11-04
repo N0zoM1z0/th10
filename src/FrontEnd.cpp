@@ -306,6 +306,24 @@ static void InterruptVmNow(
         controller->vmIds[index].value, interrupt);
 }
 
+// The original FrontEnd retains two independent constant-interrupt helpers
+// at 0x42C730 (interrupt 2) and 0x42C750 (interrupt 3). Only the real
+// direct-call sites below use these wrappers; other calls stay generic.
+// The original's private EAX/ECX inputs are not source-level ABI claims.
+static __declspec(noinline) void FrontEndInterruptVmNowTwo(
+    FrontEndControllerView *controller, int index)
+{
+    g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+        controller->vmIds[index].value, 2);
+}
+
+static __declspec(noinline) void FrontEndInterruptVmNowThree(
+    FrontEndControllerView *controller, int index)
+{
+    g_AnmRenderManagerView->SetVmPendingInterruptAndExecute(
+        controller->vmIds[index].value, 3);
+}
+
 static void InterruptVm(
     FrontEndControllerView *controller, int index, short interrupt)
 {
@@ -789,7 +807,7 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                 FRONT_END_SOUND_CANCEL, 0);
             cursor->SetCurrent(7);
-            InterruptVmNow(controller, 0, 3);
+            FrontEndInterruptVmNowThree(controller, 0);
             controller->MarkVmInterrupt(0, static_cast<short>(cursor->current + 7));
         }
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
@@ -821,8 +839,8 @@ int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
                     FRONT_END_SOUND_SELECT, 0);
                 controller->SetScreenStateTarget(4);
-                InterruptVmNow(controller, 0x5a, 3);
-                InterruptVmNow(controller, 0x5b, 3);
+                FrontEndInterruptVmNowThree(controller, 0x5a);
+                FrontEndInterruptVmNowThree(controller, 0x5b);
                 break;
             case 7:
             quit:
@@ -1166,7 +1184,7 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             {
                 QueueOptionsSound(FRONT_END_SOUND_CANCEL);
                 controller->cursor.SetCurrent(5);
-                InterruptVmNow(controller, FRONT_END_ROOT_VM, 3);
+                FrontEndInterruptVmNowThree(controller, FRONT_END_ROOT_VM);
                 controller->MarkVmInterrupt(FRONT_END_ROOT_VM,
                     static_cast<short>(static_cast<short>(controller->cursor.current) + 7));
                 return 1;
@@ -1281,8 +1299,8 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             }
             else if (controller->cursor.current == 5)
             {
-                InterruptVmNow(controller, 0x5a, 2);
-                InterruptVmNow(controller, 0x5b, 2);
+                FrontEndInterruptVmNowTwo(controller, 0x5a);
+                FrontEndInterruptVmNowTwo(controller, 0x5b);
                 controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
                 controller->cursor.Pop();
                 return 1;
@@ -1721,7 +1739,7 @@ int __stdcall FrontEndControllerView::UpdateDifficulty(
             if (controller->cursor.previous != controller->cursor.current)
             {
                 FrontEndPlaySound(FRONT_END_SOUND_MOVE);
-                InterruptVmNow(controller, rootIndex, 3);
+                FrontEndInterruptVmNowThree(controller, rootIndex);
                 InterruptVm(
                     controller, rootIndex,
                     static_cast<short>(controller->cursor.current + 7));
@@ -1840,7 +1858,7 @@ int __stdcall FrontEndControllerView::UpdateCharacter(
         if (controller->cursor.previous != controller->cursor.current)
         {
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
-            InterruptVmNow(controller, 0x7d, 3);
+            FrontEndInterruptVmNowThree(controller, 0x7d);
             InterruptVm(
                 controller, 0x7d,
                 static_cast<short>(controller->cursor.current + 7));
@@ -1987,7 +2005,7 @@ int __stdcall FrontEndControllerView::UpdateShotType(
         if (controller->cursor.previous != controller->cursor.current)
         {
             FrontEndPlaySound(FRONT_END_SOUND_MOVE);
-            InterruptVmNow(controller, rootIndex, 3);
+            FrontEndInterruptVmNowThree(controller, rootIndex);
             InterruptVm(
                 controller, rootIndex,
                 static_cast<short>(controller->cursor.current + 7));
