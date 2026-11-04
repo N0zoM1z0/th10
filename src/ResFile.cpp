@@ -82,40 +82,37 @@ DWORD CMemoryPbgFile::GetSize()
 bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
 {
     LONG signedOffset = (LONG)offset;
-
+    unsigned char *position;
     switch (seekFrom)
     {
     case FILE_BEGIN:
         if (signedOffset < 0 || offset >= m_Size)
             return false;
-        m_Current = m_Data + offset;
-        return true;
-
+        position = m_Data + offset;
+        break;
     case FILE_CURRENT:
     {
-        LONG bytesRemaining = (LONG)(m_Data + m_Size - m_Current);
-        if (bytesRemaining <= signedOffset)
+        LONG remaining = (LONG)(m_Data + m_Size - m_Current);
+        if (remaining <= signedOffset)
             return false;
-        m_Current += signedOffset;
-        return true;
+        position = m_Current + signedOffset;
+        break;
     }
-
     case FILE_END:
     {
         if (signedOffset > 0)
             return false;
-
         DWORD distance = signedOffset < 0 ? 0U - offset : offset;
         if (distance >= m_Size)
             return false;
-
-        m_Current = m_Data + m_Size + signedOffset;
-        return true;
+        position = m_Data + m_Size + signedOffset;
+        break;
     }
-
     default:
         return false;
     }
+    m_Current = position;
+    return true;
 }
 
 // The native derived destruction at 0x00436680 is physically separate but

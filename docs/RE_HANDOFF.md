@@ -101,6 +101,12 @@ manager/constructor code, Input enum callbacks and GDI font teardown) predate
 these entries. **Use the actual ledger for the full exact set**; the table is
 not intended to be exhaustive.
 
+**Memory-file Seek `0x4364F0` (107 bytes)**: selected shared-cursor
+source compiles as a complete **107-byte normal COFF owner** with **100/107
+ordinary raw bytes** and zero relocations (previous source 117 bytes).
+**NONEXACT**; the remaining EAX/EDX swap and shared branch target are open.
+[Current complete-owner evidence](evidence/resfile-seek-common-cursor-20261104/README.md).
+
 ## Major open owners — work on big bosses as well as leaves
 
 All numbers here describe a specific native compiler context, not current
