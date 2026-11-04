@@ -13,7 +13,7 @@ extern GameChainOwnerView *g_GameOwner477830;
 void __stdcall GameCleanupController422220(GameChainOwnerView *opaque)
 {
     ResultMenuView *owner = reinterpret_cast<ResultMenuView *>(opaque);
-    th10::ChainElem *task = *reinterpret_cast<th10::ChainElem **>(&owner->unknown008[0]);
+    th10::ChainElem *task = owner->updateTask;
     th10::Chain *chain = th10::g_Chain;
     if (task != NULL)
     {
@@ -24,7 +24,7 @@ void __stdcall GameCleanupController422220(GameChainOwnerView *opaque)
         --g_MainSupervisorView.criticalSectionLockCounts[0];
     }
 
-    task = *reinterpret_cast<th10::ChainElem **>(&owner->unknown008[4]);
+    task = owner->drawTask;
     chain = th10::g_Chain;
     if (task != NULL)
     {

@@ -1,0 +1,49 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_pins": {
+    "src/ResultMenu.hpp": "1b565d105b87979e02d2dec7cb464cf4f3f643904ada26464d900b94e255a43c",
+    "src/ResultMenuLifecycle.cpp": "8091e8a898f1a011f2871c97c979be8cf7d30b5a2ff4ffde918237b0a45ff9d0",
+    "src/ResultMenuCleanup.cpp": "ab1c83b072e217d9f19447c66cb55058fa299c548946aefcd0751c6246c52e00",
+    "src/Chain.hpp": "2cbc4bdae37aac1eda6f75f5acf828efc093e086a24efb11ee540a1dbab913ab"
+  },
+  "selected_exact_units": [
+    {
+      "unit": "result-menu-cleanup",
+      "result": "exact",
+      "bytes": 311,
+      "extent": 311
+    },
+    {
+      "unit": "result-menu-constructor",
+      "result": "exact",
+      "bytes": 101,
+      "extent": 101
+    },
+    {
+      "unit": "result-menu-creator",
+      "result": "exact",
+      "bytes": 67,
+      "extent": 67
+    },
+    {
+      "unit": "result-menu-initialize",
+      "result": "exact",
+      "bytes": 142,
+      "extent": 142
+    }
+  ],
+  "selected_exact_bytes": 621,
+  "nonexact_mark_tasks": {
+    "candidate_size": 26,
+    "target_size": 28,
+    "source_sha256": {
+      "src/ResultMenu.hpp": "1b565d105b87979e02d2dec7cb464cf4f3f643904ada26464d900b94e255a43c",
+      "src/ResultMenuLifecycle.cpp": "8091e8a898f1a011f2871c97c979be8cf7d30b5a2ff4ffde918237b0a45ff9d0",
+      "src/ResultMenuCleanup.cpp": "ab1c83b072e217d9f19447c66cb55058fa299c548946aefcd0751c6246c52e00"
+    },
+    "candidate_bytes": "8b410885c0ba0200000074030950048b410c85c07403095004c3",
+    "target_sha256": "ff7169a1ffda26fb648d1b9021d0a6affadd599732ae8acf918d02ca1872f6d1",
+    "canonical_credit": 0
+  },
+  "new_exact_credit": 0
+}

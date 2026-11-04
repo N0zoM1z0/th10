@@ -35,14 +35,14 @@ int ResultMenuView::Initialize()
     elem->flags &= ~2u;
     elem->arg = this;
     th10::g_Chain->AddToCalcChain(elem, 9);
-    *reinterpret_cast<th10::ChainElem **>(&unknown008[0]) = elem;
+    updateTask = elem;
 
     elem = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(&ResultMenuDrawRowsCallback));
     elem->arg = this;
     elem->flags &= ~2u;
     th10::g_Chain->AddToDrawChain(elem, 46);
-    *reinterpret_cast<th10::ChainElem **>(&unknown008[4]) = elem;
+    drawTask = elem;
     timer.SetCurrent(0);
     return 0;
 }
@@ -71,11 +71,10 @@ void *GameCreateController()
 // unregisters them under the scheduler critical section.
 void ResultMenuMarkTasks422200(ResultMenuView *owner)
 {
-    th10::ChainElem *task = *reinterpret_cast<th10::ChainElem **>(
-        &owner->unknown008[0]);
+    th10::ChainElem *task = owner->updateTask;
     if (task != NULL)
         task->flags |= 2u;
-    task = *reinterpret_cast<th10::ChainElem **>(&owner->unknown008[4]);
+    task = owner->drawTask;
     if (task != NULL)
         task->flags |= 2u;
 }

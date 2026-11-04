@@ -1,6 +1,7 @@
 #ifndef TH10_RESULT_MENU_HPP
 #define TH10_RESULT_MENU_HPP
 #include "FrontEnd.hpp"
+namespace th10 { struct ChainElem; }
 
 // This owner constructs its VM slots only through the final memset, unlike
 // AnmVmIdView's default constructor which writes a zero before the memset.
@@ -30,7 +31,8 @@ struct ResultMenuView
 {
     int unknown000;
     int state;
-    unsigned char unknown008[8];
+    th10::ChainElem *updateTask;
+    th10::ChainElem *drawTask;
     AnmVmTimerView timer;
     ScriptViewerCursorView cursor;
     ScriptViewerCursorView keyboard;
@@ -52,6 +54,9 @@ struct ResultMenuView
     ResultMenuView();
     int Initialize();
 };
+typedef char ResultMenuTaskNodeOffsets[
+    (offsetof(ResultMenuView, updateTask)==0x08 &&
+     offsetof(ResultMenuView, drawTask)==0x0c) ? 1 : -1];
 typedef char ResultMenuTimerAt10[(offsetof(ResultMenuView, timer)==0x10)?1:-1];
 typedef char ResultMenuCursorsAt24FC[(offsetof(ResultMenuView,cursor)==0x24 && offsetof(ResultMenuView,keyboard)==0xfc)?1:-1];
 typedef char ResultMenuIdsAt1D4[(offsetof(ResultMenuView,mainVm)==0x1d4 && offsetof(ResultMenuView,secondaryVm)==0x1d8)?1:-1];
