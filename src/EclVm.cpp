@@ -398,10 +398,10 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     }
 
     file = *fileSlot;
-    EclVmSubroutineEntry *const previousEntries = subroutines;
+    EclVmSubroutineEntry *volatile previousEntries = subroutines;
     scriptData = reinterpret_cast<unsigned char *>(file)
         + sizeof(EclVmScriptFileHeader) + file->includeLength;
-    unsigned int *offsets = static_cast<unsigned int *>(scriptData);
+    unsigned int *volatile offsets = static_cast<unsigned int *>(scriptData);
     const int totalCount = subroutineCount + file->subroutineCount;
     const char *name = reinterpret_cast<const char *>(
         offsets + file->subroutineCount);

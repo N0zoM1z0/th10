@@ -1,0 +1,104 @@
+{
+  "target_version": "Japanese TH10 v1.00a",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_address": "0x00450220",
+  "target_size": 589,
+  "source": "src/EclVm.cpp",
+  "source_sha256": "ec6a825ed8dc6d3f025d6caabc8cd7eca896fdf462ae6fe45ff8b637baff9703",
+  "actual_candidate_size": 570,
+  "candidate_section": "PDB-owned entire function",
+  "field_count": 2,
+  "original_copy_op": [
+    {
+      "offset": "0xfb",
+      "bytes": "f3a5",
+      "next": "je 0x10c"
+    }
+  ],
+  "current_copy_op": [
+    {
+      "offset": "0xfc",
+      "bytes": "f3a5",
+      "next": "je 0x10d"
+    }
+  ],
+  "candidate_image_sha256": "72febde4614e5edd53ce4224e29c26e80950a6cd310855c2207be795510785a6",
+  "matched_instruction_tokens_exploratory": 88,
+  "analysis_scope": "exploratory non-acceptance; different-sized functions cannot be credited exact",
+  "other_tested_shapes": [
+    {
+      "name": "name-stack",
+      "size": 566,
+      "rep_movsd": true,
+      "matched_instruction_tokens": 51
+    },
+    {
+      "name": "old-table-stack",
+      "size": 563,
+      "rep_movsd": true,
+      "matched_instruction_tokens": 86
+    },
+    {
+      "name": "offsets-stack",
+      "size": 577,
+      "rep_movsd": true,
+      "matched_instruction_tokens": 86
+    },
+    {
+      "name": "old-table-and-name",
+      "size": 581,
+      "rep_movsd": true,
+      "matched_instruction_tokens": 45
+    },
+    {
+      "name": "name-and-offsets",
+      "size": 581,
+      "rep_movsd": true,
+      "matched_instruction_tokens": 48
+    },
+    {
+      "name": "old-table-and-offsets",
+      "size": 570,
+      "rep_movsd": true,
+      "matched_instruction_tokens": 88
+    },
+    {
+      "name": "offsets-and-sortedcount",
+      "size": 593,
+      "rep_movsd": true,
+      "matched_instruction_tokens": 83
+    },
+    {
+      "name": "newtable-stack",
+      "size": 547,
+      "rep_movsd": true,
+      "matched_instruction_tokens": 87
+    },
+    {
+      "name": "offsets-and-newtable",
+      "size": 577,
+      "rep_movsd": true,
+      "matched_instruction_tokens": 86
+    }
+  ],
+  "exact_guards": [
+    {
+      "unit": "ecl-vm-find-subroutine",
+      "result": "exact",
+      "matched_bytes": 136,
+      "compared_size": 136
+    },
+    {
+      "unit": "enemy-ecl-resource-load-package",
+      "result": "exact",
+      "matched_bytes": 239,
+      "compared_size": 239
+    },
+    {
+      "unit": "enemy-ecl-resource-load-file-0040cd20",
+      "result": "exact",
+      "matched_bytes": 95,
+      "compared_size": 95
+    }
+  ]
+}
