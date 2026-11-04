@@ -1335,14 +1335,14 @@ dispatch_create_enemy_mirrored:
     if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
-      *(unsigned int *)(iVar26 + 0x340) = *puVar5;
-      *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
-      *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *puVar5;
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = puVar5[1];
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = puVar5[2];
       return 0;
     }
-    *(unsigned int *)(iVar26 + 0x340) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
-    *(unsigned int *)(iVar26 + 0x344) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
-    *(unsigned int *)(iVar26 + 0x348) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
+    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
+    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
+    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
     return 0;
   case ENEMY_ECL_PLAY_ANM_HIGH:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1357,14 +1357,14 @@ dispatch_create_enemy_mirrored:
     if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
-      *(unsigned int *)(iVar26 + 0x340) = *puVar5;
-      *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
-      *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *puVar5;
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = puVar5[1];
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = puVar5[2];
       return 0;
     }
-    *(unsigned int *)(iVar26 + 0x340) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
-    *(unsigned int *)(iVar26 + 0x344) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
-    *(unsigned int *)(iVar26 + 0x348) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
+    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
+    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
+    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
     return 0;
   case ENEMY_ECL_PLAY_ANM_ABSOLUTE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1386,17 +1386,17 @@ dispatch_create_enemy_mirrored:
     if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
-      *(unsigned int *)(iVar26 + 0x340) = *puVar5;
-      *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
-      *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *puVar5;
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = puVar5[1];
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = puVar5[2];
     }
     else {
-      *(unsigned int *)(iVar26 + 0x340) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
-      *(unsigned int *)(iVar26 + 0x344) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
-      *(unsigned int *)(iVar26 + 0x348) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
+      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
     }
     fVar19 = (ReadFloatArgument(2));
-    *(float *)(iVar26 + 0x2c) = (float)fVar19;
+    reinterpret_cast<AnmVmView *>(iVar26)->rotation.z = (float)fVar19;
     *(unsigned int *)(iVar26 + 0x35c) = *(unsigned int *)(iVar26 + 0x35c) | 4;
     return 0;
   case ENEMY_ECL_SET_MAIN_ANM_SCRIPT:
