@@ -1,0 +1,13 @@
+{
+  "label": "typed-pattern-copy",
+  "size": 14352,
+  "old_size": 14352,
+  "fields": 716,
+  "old_fields": 716,
+  "same_geometry": true,
+  "ordinary_differences_from_old_candidate": 0,
+  "first_diffs": [],
+  "source_sha256": "fb7ee6becb9f1c83642814f881ae8f8610e4375097b69078963fc0184c0b6885",
+  "elapsed_seconds": 88.1,
+  "link_artifact": "build/gpt-web/20261104-live-enemy/typed-pattern-copy"
+}
