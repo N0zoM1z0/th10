@@ -658,13 +658,18 @@ __declspec(noinline) void PlayerOptionTrailCallbackBody(
         for (int i = option->optionIndex * 8 + 1;
              i <= option->optionIndex * 8 + 7; ++i)
         {
-            PlayerPositionPair &sample = player->replayPositionHistory[i];
-            sample.x = (int)(
+            // Native loop cursor points to the Y word. Derive both signed
+            // coordinates from the same physical 8-byte history entry.
+            unsigned char *sampleY =
+                reinterpret_cast<unsigned char *>(
+                    &player->replayPositionHistory[i]) +
+                offsetof(PlayerPositionPair, y);
+            *reinterpret_cast<int *>(sampleY - sizeof(int)) = (int)(
                 (player->replayPositionHistory[(option->optionIndex + 1) * 8].x -
                  player->replayPositionHistory[option->optionIndex * 8].x) *
                     fraction +
                 player->replayPositionHistory[option->optionIndex * 8].x);
-            sample.y = (int)(
+            *reinterpret_cast<int *>(sampleY) = (int)(
                 (player->replayPositionHistory[(option->optionIndex + 1) * 8].y -
                  player->replayPositionHistory[option->optionIndex * 8].y) *
                     fraction +
