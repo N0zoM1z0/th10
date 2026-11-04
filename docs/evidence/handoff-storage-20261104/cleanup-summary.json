@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-11-04T04:27:23Z",
+  "archive": ".analysis/archive/historical-compiler-graphs-20261104.tar.zst",
+  "archive_sha256": "7917cbed088dbff5d12ec914e33975c79fc9999bc6ded0266b94da0a8472e513",
+  "archive_payload_bytes": 20253646,
+  "roots": [
+    ".analysis/gpt-6.1-sol",
+    "build/gpt-6.1-sol"
+  ],
+  "file_count": 11061,
+  "uncompressed_file_bytes": 333340746,
+  "compression_ratio": 0.0608,
+  "manifest": ".analysis/maintenance-20261104/historical-compiler-graphs-manifest.jsonl.gz",
+  "verification": "every regular tar member size and sha256 independently equal to manifest of expanded originals",
+  "elapsed_seconds": 1.62,
+  "deleted_expanded_roots": true,
+  "additional_pruned_regenerable_build_roots": [
+    "build/pycache",
+    "build/probe-ltcg"
+  ],
+  "working_trees_before_bytes": 679305329,
+  "working_trees_after_bytes": 332262934,
+  "working_tree_bytes_reclaimed": 347042395
+}
