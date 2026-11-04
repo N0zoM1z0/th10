@@ -1072,6 +1072,10 @@ float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)
 int EnemyRuntimeView::DispatchEclInstruction()
 
 {
+  // Remaining life/drops, collision sizes, mode state and host back-pointer
+  // use the native EnemyRuntimeView members rather than the old absolute
+  // offsets. Keep squared protection range at +0x1454 as a float view of
+  // the still-indeterminate backing dword, not a new layout field.
   // The offscreen/movement bounding rectangle and eight bullet pattern
   // offsets are the independently checked native runtime members, not
   // duplicate pointer-arithmetic field projections.
@@ -1740,7 +1744,7 @@ dispatch_update_primary_anm_bounds:
     return 0;
   case ENEMY_ECL_SET_BULLET_PROTECTION_RANGE:
     fVar19 = (ReadFloatArgument(0));
-    *(float *)((int)runtimeAddress + 0x1454) = (float)(fVar19 * fVar19);
+    *reinterpret_cast<float *>(&unknown1454) = (float)(fVar19 * fVar19);
     break;
   case ENEMY_ECL_MOVE_RANDOM:
   case ENEMY_ECL_MOVE_RANDOM_BASE:
@@ -1808,22 +1812,22 @@ dispatch_initialize_polar_interpolation:
     uVar22 = ENEMY_READ_INT_DIRECT(2);
     fVar19 = (ReadFloatArgument(1));
     local_2a8 = (float)fVar19;
-    iVar26 = *(int *)((int)runtimeAddress + 0x13c4);
+    iVar26 = unknown13C4;
     uVar23 = ENEMY_READ_INT_DIRECT(0);
     g_GuiView->bossGaugeValues[(int)uVar23].color = (unsigned int)uVar22;
     g_GuiView->bossGaugeValues[(int)uVar23].value = local_2a8 / (float)iVar26;
     return 0;
   case ENEMY_ECL_SET_DAMAGE_HITBOX:
     fVar19 = (ReadFloatArgument(0));
-    *(float *)((int)runtimeAddress + 0xb0) = (float)fVar19;
+    damageHitbox.x = (float)fVar19;
     fVar19 = (ReadFloatArgument(1));
-    *(float *)((int)runtimeAddress + 0xb4) = (float)fVar19;
+    damageHitbox.y = (float)fVar19;
     return 0;
   case ENEMY_ECL_SET_PLAYER_HITBOX:
     fVar19 = (ReadFloatArgument(0));
-    *(float *)((int)runtimeAddress + 0xb8) = (float)fVar19;
+    playerCollisionHitbox.x = (float)fVar19;
     fVar19 = (ReadFloatArgument(1));
-    *(float *)((int)runtimeAddress + 0xbc) = (float)fVar19;
+    playerCollisionHitbox.y = (float)fVar19;
     return 0;
   case ENEMY_ECL_SET_FLAGS:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1860,13 +1864,13 @@ dispatch_initialize_polar_interpolation:
       }
     }
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    *(int *)((int)runtimeAddress + 0x13cc + iVar26 * 4) = (int)uVar22;
+    reinterpret_cast<int *>(&itemDropType)[iVar26] = (int)uVar22;
     return 0;
   case ENEMY_ECL_SET_DROP_AREA:
     fVar19 = (ReadFloatArgument(1));
     fVar21 = (ReadFloatArgument(0));
-    *(float *)((int)runtimeAddress + 0x1400) = (float)fVar21;
-    *(float *)((int)runtimeAddress + 0x1404) = (float)fVar19;
+    value1400 = (float)fVar21;
+    value1404 = (float)fVar19;
     return 0;
   case ENEMY_ECL_DROP_ITEMS:
     EnemyDropItemCounts(&worldMotion.position, &itemDropType);
@@ -1876,19 +1880,19 @@ dispatch_initialize_polar_interpolation:
     iVar26 = (int)uVar22;
     if ((char)((unsigned int)flags >> 8) < '\0') {
       if (iVar26 == 1) {
-        *(unsigned int *)((int)runtimeAddress + 0x13cc) = 10;
+        itemDropType = 10;
         return 0;
       }
       if (iVar26 == 4) {
         iVar26 = 0xb;
       }
     }
-    *(int *)((int)runtimeAddress + 0x13cc) = iVar26;
+    itemDropType = iVar26;
     return 0;
   case ENEMY_ECL_SET_LIFE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    *(int *)((int)runtimeAddress + 0x13c0) = (int)uVar22;
-    *(int *)((int)runtimeAddress + 0x13c4) = (int)uVar22;
+    life = (int)uVar22;
+    unknown13C4 = (int)uVar22;
     g_GuiView->bossGaugeValues[0].value = 0.0f;
     g_GuiView->bossGaugeValues[0].color = 0;
     g_GuiView->bossGaugeValues[1].value = 0.0f;
@@ -1897,7 +1901,7 @@ dispatch_initialize_polar_interpolation:
     g_GuiView->bossGaugeValues[2].color = 0;
     g_GuiView->bossGaugeValues[3].value = 0.0f;
     g_GuiView->bossGaugeValues[3].color = 0;
-    *(unsigned int *)((int)runtimeAddress + 0x13c8) = *(unsigned int *)((int)runtimeAddress + 0x13c0);
+    value13C8 = static_cast<unsigned int>(life);
     return 0;
   case ENEMY_ECL_SET_BOSS_SLOT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -2008,11 +2012,11 @@ dispatch_difficulty_float_index_4_a:
     *(float *)(iVar26 + 0x2cc) = vectorScratch.y;
     fVar9 = 0.0f;
     *(float *)(iVar26 + 0x2d0) = vectorScratch.z;
-    if ((*(float *)((int)runtimeAddress + 0x1454) == fVar9) ||
+    if ((*reinterpret_cast<float *>(&unknown1454) == fVar9) ||
        (fVar9 = *(float *)(iVar26 + 0x2cc) - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c4),
        fVar10 = *(float *)(iVar26 + 0x2c8) - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0),
        fVar9 = fVar9 * fVar9 + fVar10 * fVar10,
-       *(float *)((int)runtimeAddress + 0x1454) <= fVar9)) {
+       *reinterpret_cast<float *>(&unknown1454) <= fVar9)) {
       reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
           SpawnBulletPattern(reinterpret_cast<BulletSpawnDescriptorView *>(
               iVar26 + 0x2c4));
@@ -2231,7 +2235,7 @@ dispatch_bullet_count_high:
     if (g_EnemyChapterState.rank >= -200) goto dispatch_bullet_count_high;
     iVar27 = g_EnemyChapterState.rank + 600;
 dispatch_select_bullet_count_low:
-    iVar11 = *(int *)((int)runtimeAddress + 0x14d8);
+    iVar11 = reinterpret_cast<int>(owner);
     iVar26 = iVar26 * 0x210 + (int)runtimeAddress;
     if (0 <= iVar27) {
       uVar22 = ENEMY_READ_INT_DIRECT(3);
@@ -2304,7 +2308,7 @@ dispatch_select_bullet_count_low:
     return 0;
   case ENEMY_ECL_SET_TIMEOUT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    *(int *)(((int)uVar22 + 0x24a) * 0x10 + *(int *)((int)runtimeAddress + 0x14d8)) = iVar27 + 0x18;
+    *(int *)(((int)uVar22 + 0x24a) * 0x10 + reinterpret_cast<int>(owner)) = iVar27 + 0x18;
     return 0;
   case ENEMY_ECL_CANCEL_ALL_BULLETS:
     reinterpret_cast<EnemyCancelManagerView *>(
@@ -2753,9 +2757,9 @@ dispatch_rank_int_low:
          flags ^
          ((int)uVar22 << 0x14 ^ flags) & 0x100000;
     uVar22 = ReadIntArgument(1);
-    *(int *)((int)runtimeAddress + 0x1448) = (int)uVar22;
+    animationScriptPrimary = (int)uVar22;
     flags = flags & 0xffdfffff;
-    *(unsigned int *)((int)runtimeAddress + 0x144c) = *(unsigned int *)((int)runtimeAddress + 0xf4);
+    animationScriptAlternate = animationBaseScript;
     return 0;
   case ENEMY_ECL_SET_TIMER_SCALE:
     fVar19 = (ReadFloatArgument(0));
@@ -2786,7 +2790,7 @@ dispatch_rank_int_low:
       uVar22 = ReadIntArgument(3);
       fVar9 = (float)(int)uVar22;
     }
-    pfVar15 = *(float **)(*(int *)((int)runtimeAddress + 0x14d8) + 4);
+    pfVar15 = *(float **)(reinterpret_cast<int>(owner) + 4);
     *pfVar15 = *pfVar15 - fVar9;
     break;
   }
