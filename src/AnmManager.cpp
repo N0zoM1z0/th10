@@ -3253,9 +3253,9 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         }
         case ANM_OP_CREATE_CHILD_91:
         {
-            AnmChildScriptLayer childArguments = {
-                GET_INT_VAR(0), vm->renderLayer
-            };
+            AnmChildScriptLayer childArguments;
+            childArguments.script = GET_INT_VAR(0);
+            childArguments.layer = vm->renderLayer;
             AnmVmIdView childId = vm->anmFile->CreateVmVariant2(
                 childArguments.script, childArguments.layer);
             createdChild = childId.GetVm();
