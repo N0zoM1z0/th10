@@ -2323,7 +2323,8 @@ dispatch_select_bullet_count_low:
     return 0;
   case ENEMY_ECL_SET_TIMEOUT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    *(int *)(((int)uVar22 + 0x24a) * 0x10 + reinterpret_cast<int>(owner)) = iVar27 + 0x18;
+    owner->runtime.callbackThresholds[uVar22].timerCallbackName =
+        reinterpret_cast<const unsigned char *>(iVar27 + 0x18);
     return 0;
   case ENEMY_ECL_CANCEL_ALL_BULLETS:
     reinterpret_cast<EnemyCancelManagerView *>(
