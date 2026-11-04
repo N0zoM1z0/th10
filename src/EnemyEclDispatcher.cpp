@@ -1980,13 +1980,13 @@ dispatch_difficulty_float_index_4_a:
       *puVar5 = 0;
       puVar5 = puVar5 + 1;
     }
-    *(unsigned short *)(iVar11 + 0x4b8) = 1;
-    *(unsigned short *)(iVar11 + 0x4ba) = 1;
-    *(unsigned int *)(iVar11 + 0x2d4) = 0;
-    *(unsigned int *)(iVar11 + 0x2dc) = 0x40000000;
-    *(unsigned int *)(iVar11 + 0x4c4) = 7;
-    *(unsigned int *)(iVar11 + 0x4c8) = 0x18;
-    *(unsigned int *)(iVar11 + 0x4c0) = 0x203;
+    bulletPatterns[iVar26].fields.countA = 1;
+    bulletPatterns[iVar26].fields.countB = 1;
+    *reinterpret_cast<unsigned int *>(&bulletPatterns[iVar26].fields.angleA) = 0;
+    *reinterpret_cast<unsigned int *>(&bulletPatterns[iVar26].fields.speedA) = 0x40000000;
+    bulletPatterns[iVar26].fields.soundId = 7;
+    bulletPatterns[iVar26].fields.soundVariant = 0x18;
+    bulletPatterns[iVar26].fields.flags1FC = 0x203;
     *reinterpret_cast<unsigned int *>(&bulletPatternOffsets[iVar26].x) = 0;
     *reinterpret_cast<unsigned int *>(&bulletPatternOffsets[iVar26].y) = 0;
     return 0;

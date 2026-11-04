@@ -1,0 +1,67 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "original_target_address": "0x0040E770",
+  "original_target_size": 14416,
+  "current_dispatch_source_sha256": "c605a7918f3daccdd2d4eff653cf7f20082c4113c402e7440a633b9f07797e6b",
+  "selected_trial": "pattern-typed-tail-only",
+  "wpo_trials": [
+    {
+      "trial": "pattern-typed-initializer",
+      "candidate_size": 14348,
+      "baseline_size": 14352,
+      "candidate_fields": 716,
+      "field_geometry_equal_baseline": false,
+      "source_sha256": "959575395017ade933038366783382b8371f03af191e47fdfe923e3bb1f2a2b8",
+      "elapsed_seconds": 83.0,
+      "artifact": "build/gpt-web/20261104-live-enemy/pattern-typed-initializer"
+    },
+    {
+      "trial": "pattern-typed-iVar11",
+      "candidate_size": 14348,
+      "baseline_size": 14352,
+      "candidate_fields": 716,
+      "field_geometry_equal_baseline": false,
+      "source_sha256": "37250f0df3744ae647f26295d2ebaee9a99884f779ec4152dfee14e5b1e97d7c",
+      "elapsed_seconds": 80.4,
+      "artifact": "build/gpt-web/20261104-live-enemy/pattern-typed-iVar11"
+    },
+    {
+      "trial": "pattern-typed-tail-only",
+      "candidate_size": 14348,
+      "baseline_size": 14352,
+      "candidate_fields": 716,
+      "field_geometry_equal_baseline": false,
+      "source_sha256": "c605a7918f3daccdd2d4eff653cf7f20082c4113c402e7440a633b9f07797e6b",
+      "elapsed_seconds": 83.2,
+      "artifact": "build/gpt-web/20261104-live-enemy/pattern-typed-tail-only"
+    },
+    {
+      "trial": "pattern-init-counts-only",
+      "candidate_size": 14352,
+      "baseline_size": 14352,
+      "candidate_fields": 716,
+      "field_geometry_equal_baseline": false,
+      "source_sha256": "52f1552629835eaa3e44fb469d396d409bfd9912ecb2150a3e03a997e0757d41",
+      "elapsed_seconds": 80.6,
+      "artifact": "build/gpt-web/20261104-live-enemy/pattern-init-counts-only"
+    }
+  ],
+  "selected_unit_regressions": [
+    {
+      "unit": "enemy-runtime-constructor",
+      "matched": 145,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-read-raw-float-argument",
+      "matched": 26,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-drop-item-counts-core",
+      "matched": 503,
+      "result": "exact"
+    }
+  ],
+  "canonical_new_exact_credit": 0
+}
