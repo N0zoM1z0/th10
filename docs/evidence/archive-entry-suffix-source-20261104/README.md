@@ -43,14 +43,27 @@ NONEXACT** and is deliberately absent from `config/matches.csv`.
 
 This source has no existing unit consumer or modified exact sibling:
 `FileSystem.cpp`, its exact `FindArchive`/`Read`/`GetSize` source and
-its compiler graphs remain byte-for-byte unchanged. No historical
-all-unit cold replay was run, as no accepted unit was changed. The seven
-repository exact-stage lightweight checks cover the new ledger mapping.
+its compiler graphs remain byte-for-byte unchanged. A fresh explicitly
+selected VC7.1 `/GL` **cold replay of `filesystem-find-archive`** nevertheless
+confirmed its **complete 212/212-byte PDB extent and 7/7 independent native
+fields** remain `exact`. It is strictly a sibling regression, not byte credit
+for the 20-byte suffix. The first isolated ordinary-ABI suffix candidate
+matches **0/16 ordinary positional bytes** due to its different private ESI
+entry schedule; this does not measure its functional behavior. No historical
+all-unit cold replay was run. The seven repository exact-stage lightweight
+checks cover the new ledger mapping.
 
 Ignored diagnostic receipts:
 `.analysis/gpt-web/20261104-next/archive-suffix-native.log`,
-`archive-suffix-abi-results.json`, and
-`archive-suffix-native-xrefs.txt`; current linked artifact:
+`archive-suffix-abi-results.json`,
+`archive-suffix-native-xrefs.txt`, and
+`suffix-find-archive-guard.json`; current linked artifact:
 `build/gpt-web/20261104-next-filesystem-suffix/native/`.
+Only the selected scoped replay is needed to recheck the unchanged sibling:
+
+```sh
+scripts/repo-python scripts/replay-exact-units.py --unit filesystem-find-archive --json
+```
+
 This is source reconstruction evidence only, not an original-source/
 full-product/runtime/portability claim.
