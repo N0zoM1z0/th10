@@ -38,34 +38,60 @@ In a real VC7.1 SP1 `/GL /GS` `FrontEnd.cpp` plus seven support TUs,
 `UpdateOptions` entry, the selected source compiles the two independent
 helper definitions and retains linker-map code entries. Their generated
 natural C++ bodies are **32 bytes each**, versus **27 target** each.
-A separate actual WPO diagnostic with 2/3 helper registrations verified
-**32-byte PDB contributions**, each with a `DIR32` reference to the real
-ANM renderer global and a `REL32` call to the real `SetVmPendingInterruptAndExecute`.
+The **maintained nine-call** `UpdateOptions` source graph retains the
+internal linker-map function entries `0x004014C0` and `0x004014E0`,
+each ending at the next 32-byte-spaced map public. Its PDB does **not**
+provide separate static-function contribution rows: the full 32-byte map
+extent was examined diagnostically, not admitted as a canonical PDB owner.
+Each candidate has **2/22** ordinary positional bytes agreeing, a real
+manager `DIR32` candidate at `+0x0B` and real ANM callee `REL32` at
+`+0x1A`; those positions/bytes are not the complete original field
+geometry. A *rejected* 22-call control did expose distinct 32-byte PDB
+contributions, but overconnected real caller paths and was restored.
 The candidate's argument movement differs from the original EAX/ECX/EDI
-private call convention and its field positions do **not** match the target.
+private call convention, and its fields do **not** establish target exactness.
 These are **source-present, NONEXACT**, and neither contributes to
 `config/matches.csv`. The 3999-byte `RefreshOptionsDisplay` remains a distinct
 existing exact owner; its match does not prove these helpers exact.
 
-Selected canonical cold regressions with the *maintained changed source*:
-`frontend-options-refresh` **3999/3999**, `frontend-set-screen-state`
-**80/80**, `frontend-set-screen` **83/83**, and `frontend-delete-vm`
-**83/83** — **4245/4245 selected existing exact bytes**, no all-units replay.
-All external bindings in those accepted units still pass their canonical
-checks. Source file changes, new owner codegen, and the original private
-call ABI remain independent proof categories.
+Selected canonical cold regressions with the *maintained changed source*
+pass eight **distinct** existing exact owners, not two differently labeled
+copies of a matching helper:
+
+| Affected exact unit | Whole native bytes |
+| --- | ---: |
+| `frontend-options-refresh` | 3,999/3,999 |
+| `frontend-set-screen-state`, `frontend-set-screen` | 80/80, 83/83 |
+| `frontend-delete-vm` | 83/83 |
+| `frontend-cursor-push`, `frontend-cursor-pop`, `frontend-cursor-move` | 66/66, 47/47, 128/128 |
+| `frontend-input-repeated` | 33/33 |
+| **Unique existing exact total** | **4,519/4,519** |
+
+These results came from three selected scoped cold compiler graphs; the
+separate 4,245-byte and 4,356-byte reports share owners and **must not**
+be added together. All external bindings in these accepted units still
+pass strict comparison. No all-units replay was run. Source coverage,
+original caller xrefs, near-match helper codegen, and actual original ABI
+remain independent proof categories.
 
 Reproduce only the affected accepted units:
 
 ```sh
 scripts/repo-python scripts/replay-exact-units.py \
-  --unit frontend-options-refresh --unit frontend-set-screen-state \
-  --unit frontend-set-screen --unit frontend-delete-vm --json
+  --unit frontend-options-refresh --json
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit frontend-set-screen-state --unit frontend-set-screen \
+  --unit frontend-delete-vm --json
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit frontend-cursor-push --unit frontend-cursor-pop \
+  --unit frontend-cursor-move --unit frontend-input-repeated \
+  --unit frontend-delete-vm --json
 scripts/repo-python scripts/ci.py
 ```
 
 Ignored receipts under `.analysis/gpt-web/20261104-next/`:
 `frontend-wrapper-xrefs.txt`, `front27-global-root-results.json`,
-`front27-selected-options-guard.json`, `front27-sibling-guards.json`.
+`front27-selected-options-guard.json`, `front27-sibling-guards.json`,
+`front27-selected-cursor-guards.json`, and `front27-selected-map-probe.json`.
 This is complete semantic source recovery and direct-caller attribution,
 **not** original authorship, exact codegen, runnable product, or runtime proof.
