@@ -1297,3 +1297,4 @@ LaunchProcessWithOptionalWait,0x00436570,function
 MainSupervisorView::MatchDebugRecord,0x00420DD0,function
 RngView::GetRandomU32SkipNextPair,0x0044BA80,function
 InstallAnmVmVertexBuffer,0x0040B250,function
+CountGameStatisticsRankKind,0x004088C0,function
