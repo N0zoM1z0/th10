@@ -78,7 +78,13 @@ struct BulletExStateView
 {
     AnmVmTimerView timer;
     float value0;
-    float value1;
+    // Absolute-direction transforms copy the same binary32 payload by bits;
+    // other transforms interpret this word as a floating-point angle.
+    union
+    {
+        float value1;
+        int value1Bits;
+    };
     AnmFloat3View vector;
     int int0;
     int int1;
@@ -89,6 +95,10 @@ typedef char BulletExStateViewSizeIs34[
     (sizeof(BulletExStateView) == 0x34) ? 1 : -1];
 typedef char BulletExStateValue0At14[
     (offsetof(BulletExStateView, value0) == 0x14) ? 1 : -1];
+typedef char BulletExStateValue1BitOverlayAt18[
+    (offsetof(BulletExStateView, value1) == 0x18 &&
+     offsetof(BulletExStateView, value1Bits) == 0x18 &&
+     sizeof(((BulletExStateView *)0)->value1Bits) == 4) ? 1 : -1];
 typedef char BulletExStateVectorAt1C[
     (offsetof(BulletExStateView, vector) == 0x1c) ? 1 : -1];
 typedef char BulletExStateInt0At28[

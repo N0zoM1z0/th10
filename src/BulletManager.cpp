@@ -251,8 +251,7 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
 
         // The transform's next angle is a 32-bit IEEE-754 bit payload.
         // Copy its representation without imposing a float conversion.
-        int nextAngleBits;
-        memcpy(&nextAngleBits, &state.value1, sizeof(nextAngleBits));
+        const int nextAngleBits = state.value1Bits;
         float newSpeed = state.value0;
         speed = newSpeed;
         memcpy(&angle, &nextAngleBits, sizeof(angle));
