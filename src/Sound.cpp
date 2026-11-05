@@ -466,12 +466,13 @@ void MainStartSoundThread(unsigned char *soundOwner, HWND window)
 void SoundDataLoaderThread()
 {
     SoundPlayerView *owner = reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner);
+    unsigned char **const slots = owner->soundFileData;
     for (int i = 0; i < 37; ++i)
     {
         if (owner->soundDataLoadState == 2)
             return;
-        owner->soundFileData[i] = FileSystem::OpenFile(g_SoundFileNames[i], NULL, 0);
-        if (owner->soundFileData[i] == NULL)
+        slots[i] = FileSystem::OpenFile(g_SoundFileNames[i], NULL, 0);
+        if (slots[i] == NULL)
         {
             th10::g_GameErrorContext.Log(g_SoundDataLoadErrorFormat, g_SoundFileNames[i]);
             return;
