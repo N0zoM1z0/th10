@@ -401,7 +401,8 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     EclVmSubroutineEntry *volatile previousEntries = subroutines;
     scriptData = reinterpret_cast<unsigned char *>(file)
         + sizeof(EclVmScriptFileHeader) + file->includeLength;
-    unsigned int *volatile offsets = static_cast<unsigned int *>(scriptData);
+    EclVmSerializedSubroutineOffsetView *volatile offsets =
+        static_cast<EclVmSerializedSubroutineOffsetView *>(scriptData);
     const int totalCount = subroutineCount + file->subroutineCount;
     const char *name = reinterpret_cast<const char *>(
         offsets + file->subroutineCount);
@@ -419,7 +420,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
             do
             {
                 subroutines[index].header =
-                    reinterpret_cast<unsigned char *>(files[fileCount]) + *offsets;
+                    reinterpret_cast<unsigned char *>(files[fileCount]) + offsets->instructionOffset;
                 subroutines[index].name = name;
                 name += strlen(name) + 1;
                 ++index;
@@ -459,7 +460,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                     subroutines[index] = subroutines[index - 1];
 
                 subroutines[insertionIndex].header =
-                    reinterpret_cast<unsigned char *>(files[fileCount]) + *offsets;
+                    reinterpret_cast<unsigned char *>(files[fileCount]) + offsets->instructionOffset;
                 subroutines[insertionIndex].name = name;
                 name += strlen(name) + 1;
                 ++offsets;

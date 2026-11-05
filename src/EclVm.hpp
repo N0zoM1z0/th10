@@ -131,6 +131,17 @@ struct EclVmScriptFileHeader
     unsigned short unknown12;
     unsigned int zero14[4];
 };
+// An SCPT file holds one 32-bit instruction offset per subroutine after
+// its 0x24-byte header and counted include payload. The counted name stream
+// immediately follows the offsets; it is not a C++ pointer array.
+struct EclVmSerializedSubroutineOffsetView
+{
+    unsigned int instructionOffset;
+};
+typedef char EclVmSerializedSubroutineOffsetIs04[
+    (sizeof(EclVmSerializedSubroutineOffsetView) == sizeof(unsigned int) &&
+     offsetof(EclVmSerializedSubroutineOffsetView, instructionOffset) == 0 &&
+     sizeof(EclVmScriptFileHeader) == 0x24) ? 1 : -1];
 
 struct EnemyEclHostBaseView;
 struct EclVmScriptDatabase
