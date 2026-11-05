@@ -85,9 +85,8 @@ int EnemyGameStateView::UpdateSpellPanel()
     const int *selection = reinterpret_cast<const int *>(g_GameStageState + 0x28);
     int record = selection[1] + selection[0] * 3;
     const GameStatisticsSpellHistoryEntryView *history =
-        reinterpret_cast<const GameStatisticsSpellHistoryEntryView *>(
-            g_EnemySpellStatistics + record * 0x437c +
-            spellId * 0x90 + 0x5a4);
+        reinterpret_cast<GameStatisticsOwner *>(g_EnemySpellStatistics)->
+            records[record].SpellHistoryAt(spellId);
     int count = history->captures;
     if (count >= 100)
         count = 99;
@@ -97,9 +96,8 @@ int EnemyGameStateView::UpdateSpellPanel()
     gui->frontAnm->SetSprite(&secondaryFrontVms[0], count / 10 + 30);
     gui->frontAnm->SetSprite(&secondaryFrontVms[1], count % 10 + 30);
     record = selection[1] + selection[0] * 3;
-    history = reinterpret_cast<const GameStatisticsSpellHistoryEntryView *>(
-        g_EnemySpellStatistics + record * 0x437c +
-        spellId * 0x90 + 0x5a4);
+    history = reinterpret_cast<GameStatisticsOwner *>(g_EnemySpellStatistics)->
+        records[record].SpellHistoryAt(spellId);
     count = history->attempts;
     if (count >= 100)
         count = 99;
