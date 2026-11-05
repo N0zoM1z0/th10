@@ -1,9 +1,13 @@
 # TH10 reconstruction — next-agent handoff (2026-11-05, updated source epoch)
 
-**Start here.** The latest tested feature-source checkpoint is **`588851e`**
-(`gpt-web: unify ECL stack scalar storage through full VM readers`), after
-`79ac30a` (ANM pointer mask) and `0b51d9d` (Enemy callback life). The
-older `2061ddf` and `0dd8b20` source-epoch statements are **obsolete**.
+**Start here.** The latest tested feature-source checkpoint is **`24fe28b`**
+(`gpt-web: share typed ECL scalar words across Pop and CALL`), following
+`6bcbd11` (CALL stack destination words) and `709e494` (Enemy ECL shared
+instruction header and pattern byte cursor). Other relevant current source
+checkpoints are `2dcbad7` (Enemy item-drop words), `81e5419` (ECL indirect
+mask), `79ac30a` (ANM pointer mask), and `0b51d9d` (Enemy callback life).
+The older `588851e`, `2061ddf` and `0dd8b20` headings are now historical
+source epochs, not the latest source HEAD.
 Always check live `git status` and source hashes: a documentation checkpoint
 may move HEAD without changing these source inputs, and private artifacts
 can belong to older source epochs.
@@ -44,9 +48,10 @@ mappings; **1,482** fully original-bound exact functions / **189,797**
 exact codegen bytes; **574** confirmed-authored exact functions / **119,761**
 authored exact bytes; **176** confirmed-authored source-present nonexact
 backlog. These are neither source completeness nor whole-product closure.
-**No new canonical exact units were admitted by the three latest
-feature-source commits**; affected existing exact leaves were selectively
-replayed under the new source revisions.
+**No new canonical exact units were admitted by the current source
+checkpoints**; only affected existing exact leaves were selectively
+replayed under the tested source revisions. Replayed bytes keep their
+previously accepted credit and do not increment the ledger.
 
 ## Latest whole-owner frontiers: do not confuse size with target agreement
 
@@ -75,31 +80,33 @@ is already correct). They must **not** be marked exact.
 | Source family | Installed source recovery | Relevant retained original-bound proof / witness |
 | --- | --- | --- |
 | ANM | Header +6 has one typed 16-bit variable-argument mask. Now **all four** value/lvalue instruction macros in the full 9,964-byte executor use `variableArgs.bits` | [Typed pointer mask](evidence/anm-typed-pointer-operand-mask-20261105/README.md): fresh five-source strict **350/350** original-bound fields, including 95 locals; **9,962/9,964** original bytes, still NONEXACT. Affected pointer leaves **288/288 exact**. Private `build/gpt-web/20261105-anm-pointer-mask/current/`. Earlier full-mask [proof](evidence/anm-instruction-variable-mask-overlay-20261105/README.md) belongs to its own source epoch. |
-| Enemy dispatcher / GUI | A single typed `itemDrops` 0x3C-byte packet at runtime +0x13CC; named life-gauge baseline +0x13C4 and callback-life difference +0x13C8 across lifecycle, ECL dispatcher, callback helper and GUI | [Current callback life](evidence/enemy-next-callback-life-20261105/README.md): fresh 11-TU complete ECL dispatcher **14,352 candidate bytes / 716 candidate fields**, byte-neutral against the preceding candidate, still NONEXACT versus 14,416 original. The callback helper now compiles standalone with a necessary forward declaration; selected GUI leaf **46/46 exact**. [Nested drop packet](evidence/enemy-item-drop-packet-20261105/README.md). |
-| Generic ECL VM | Runtime thread signal bit, typed CALL/SCPT records, and now the shared 32-bit `EclVmScalar` word in six value/lvalue stack accessors | [Typed stack scalar](evidence/ecl-typed-stack-scalar-20261105/README.md): fresh two-source full Run **7,020/7,020**, **189/189** original-bound fields, **6,997/7,020** ordinary bytes; six affected leaf owners **773/773 exact**, Run NONEXACT. Private `build/gpt-web/20261105-ecl-stack-scalar/current/`. |
+| Enemy dispatcher / GUI | Native item-drop `itemDrops` 0x3C-byte packet at runtime +0x13CC, raw indexed-word alias, life-gauge/callback-life fields, and the shared 16-bit ECL instruction header. The 14,416-byte big dispatcher now uses a typed pattern-byte-cursor helper without hoisting its signed arithmetic across operand reads | [Shared Enemy ECL header / pattern cursor](evidence/enemy-ecl-shared-instruction-pattern-20261105/README.md): fresh 11-TU **14,352 candidate bytes / 716 candidate fields** with zero candidate ordinary differences versus the previous pinned graph; BeginSpell and three other complete owners preserved. Selected native `ReadIntArgument` **16/16 exact**. [Raw drop overlay](evidence/enemy-drop-raw-word-overlay-20261105/README.md) scoped selected leaves **696/696 exact**. The 14,416-byte original big dispatcher remains NONEXACT. |
+| Generic ECL VM | Shared typed 16-bit instruction mask, 4-byte scalar payload across six value/lvalue leaf paths and ECL `Pop` conversions, plus the four CALL operand writebacks. The caller's typed descriptor is intentionally reconstructed at each access: retaining it across callee calls shifts original field sites | [Shared Pop scalar](evidence/ecl-pop-shared-scalar-20261105/README.md): fresh two-source full `Run` **7,020/7,020**, **189/189** original-bound fields, **6,997/7,020** ordinary bytes; selected `Push`/`Pop` **218/218 exact**. [CALL stack destinations](evidence/ecl-call-scalar-destinations-20261105/README.md): complete 551-byte `StartSubroutine` candidate and all four call sites unchanged, selected value leaves **295/295 exact**. Both nonexact boss/helper owners remain nonexact. |
 | Bullet | Both state `value1Bits` and runtime `angleBits` overlap binary32 payloads; full 335-byte direction updater preserved | [Runtime angle](evidence/bullet-runtime-angle-word-20261105/README.md): seven-source native proof of 8 candidate field positions, two remaining register bytes (+0xD7/+0xDD), existing leaf replays **312/312 exact**. Local outgoing-angle union trial on this current source was rejected with no byte improvement. |
 
 Source SHA-256 at this HEAD (verify before reuse):
 
 ```text
 Enemy.cpp          c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2
-Enemy.hpp          f7b23495539c4ab85b6a37ff02580714d5ab64c77117f7d615052d2b3f513c11
+Enemy.hpp          4ad70650ea73b0c1d4a060de223c91758828ba716a956c5a29cbf703026f4184
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
-EnemyEclDispatcher.cpp a553dd30b547f96d753e0e5edd5c4adccdfce1de0c40ed9e8336534188ad87f4
+EnemyEclDispatcher.cpp b71ef388425f28762527cdaecbf2b6a85fb0526e812d9aadc1def81ab694cd33
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
-EclVm.cpp          21ebfab3057a242dda80ae10f6dba894452580abd25c34dc8d7b145dd81f54eb
-EclVm.hpp          97d0e02605e6bb0e7ba7af34bad1b8beab372e00220157bf9c692186f019f34c
+EclVm.cpp          63741a55c7189e0ed45d8530cd03477c5d5fb3f8bef5e04dc80176b95879967c
+EclVm.hpp          f8fb2c92ab263a69a4255c957bcbc9b1d30bd5428adf23e86080040de528231f
 AnmManager.cpp     c05add280091300b1dd76b6cff422d322a4da0fe1e21808c1156829e0bec9776
 AnmManager.hpp     57c8ec82ae92116c4edea9fd475558843ee5752e5a234c1749f5f38392771e49
 BulletManager.cpp  2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa
 BulletManager.hpp  725f281ee37e77f7490d339c1072eaecd6177816aae1b52969f2ac977915fd53
 ```
 
-Current source edits are `0b51d9d` (Enemy), `79ac30a` (ANM), and
-`588851e` (ECL). The older typed ANM edit at `e885fb5` and its evidence
-follow-up `2061ddf`, Bullet at `9634285`, and Enemy at `ceed3ea`
-remain useful **historical** source epochs, not current HEAD. Private
-witnesses must be matched to the relevant file hashes, not guessed by date.
+Current tested feature source checkpoints include `24fe28b` and
+`6bcbd11` (ECL scalar/Call), `709e494` (Enemy ECL instruction/pattern),
+`2dcbad7` (Enemy drop alias), `81e5419` (ECL mask), `79ac30a` (ANM) and
+`0b51d9d` (Enemy callback life). The older typed ANM source at `e885fb5`,
+evidence `2061ddf`, Bullet `9634285` and Enemy `ceed3ea` remain useful
+**historical** source epochs, not current HEAD. Private witnesses must be
+matched to these file hashes, not guessed by date.
 
 ## Next experiments: what the immediately preceding source investigation found
 
@@ -129,14 +136,30 @@ witnesses must be matched to the relevant file hashes, not guessed by date.
   Earlier FORMAT pointer-lifetime rewrites displaced original fields.
   Read [instruction-family byte map](evidence/boss-ecl-anm-byte-frontiers-20261104/README.md)
   and measure a **new** x87 hypothesis rather than repeating these controls.
-- **Seek & Sound leaves:** 15 recent `Seek` CURRENT/END natural forms stayed
-  100/107 (one grew to 111). `SoundDataLoaderThread` cached-filename
-  trial shrank to 104 bytes; unsigned-index trial grew to 127; do/while and
-  failure-reload variants remained 112. The source was restored after
-  all of them. Original target's private ESI/ECX/EAX ABIs cannot be
-  fabricated by a source-only exactness claim.
+- **Seek & Sound leaves:** a further 12 new natural `Seek` source variants
+  (guard and pointer expression forms) were compiled as whole 107-byte
+  normal COFF owners with zero relocations. Ten valid 107-byte forms stayed
+  **100/107** or regressed (one **94/107**, one **98/107**); two local
+  declarations did not compile due switch-case initialization scope. All
+  failed candidates were restored: `.analysis/gpt-web/20261105-seek-new-register/`.
+  `SoundDataLoaderThread` uses one scaled index in the target but the current
+  112-byte producer uses two counters. A fresh five-source **private-TU**
+  cached-filename/state-test trial shrank to **104 bytes** but only had
+  **10** link fields, not the baseline's **11**; it is *not* an exact 107-byte
+  target proof or a validated improvement. Original `src/Sound.cpp` was not
+  modified. Trial: `.analysis/gpt-web/20261105-sound-index-lifetime/`.
+  No fake ESI/ECX/EAX ABI declaration was used.
 
 ## Current-source rejected experiments (not installed)
+
+- **ANM child VM 88/90/92 parameter record controls:** three freshly
+  compiled full five-source variants were rejected: applying opcode-91's
+  `AnmChildScriptLayer` source record to 88+90+92 or 88+92 shrank the PDB
+  executor to **9,868**, invalidating the target's 9,964-byte owner.
+  Applying the record to opcode 90 alone kept 9,964 and 350 fields but
+  regressed to **9,873/9,964**, versus the pinned **9,962/9,964** baseline.
+  Each trial restored the source in `finally`; details and source SHA in
+  `.analysis/gpt-web/20261105-anm-child-requests/results.json`.
 
 - **ECL Run FORMAT local stack homes:** two separately compiled declaration/
   initialization-order trials stayed **6,997/7,020**, all **189** original
