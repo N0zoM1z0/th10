@@ -3415,12 +3415,12 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             currentInstruction = vm->beginningOfScript;
             while (!((currentInstruction->opcode == ANM_OP_INTERRUPT_LABEL) &&
                      (vm->pendingInterrupt ==
-                      currentInstruction->intArgs[0])) &&
+                      currentInstruction->interruptLabel.labelId)) &&
                    currentInstruction->opcode !=
                        static_cast<short>(interruptSentinel))
             {
                 if (currentInstruction->opcode == ANM_OP_INTERRUPT_LABEL &&
-                    currentInstruction->intArgs[0] == interruptSentinel)
+                    currentInstruction->interruptLabel.labelId == interruptSentinel)
                 {
                     fallbackInterrupt = currentInstruction;
                 }
@@ -3693,19 +3693,19 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
 
         case ANM_OP_FLAG28:
-            vm->flag28 = currentInstruction->byteArgs[0];
+            vm->flag28 = currentInstruction->byteState.value;
             break;
         case ANM_OP_RENDER_LAYER:
-            vm->renderLayer = currentInstruction->byteArgs[0];
+            vm->renderLayer = currentInstruction->byteState.value;
             break;
         case ANM_OP_USE_SECONDARY_COLOR:
-            vm->useSecondaryColor = currentInstruction->byteArgs[0];
+            vm->useSecondaryColor = currentInstruction->byteState.value;
             break;
         case ANM_OP_FLAG27:
-            vm->flag27 = currentInstruction->byteArgs[0];
+            vm->flag27 = currentInstruction->byteState.value;
             break;
         case ANM_OP_ALTERNATE_RNG:
-            vm->useAlternateRng = currentInstruction->byteArgs[0];
+            vm->useAlternateRng = currentInstruction->byteState.value;
             break;
 
         case ANM_OP_I_JUMP_EQ:

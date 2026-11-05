@@ -310,6 +310,24 @@ typedef char AnmRenderAndTimedOperandWireSizes[
      sizeof(AnmTimedInterpolationOperandsView) == 8 &&
      offsetof(AnmTimedInterpolationOperandsView, interpolationMode) == 4) ? 1 : -1];
 
+// INTERRUPT_LABEL carries a native 32-bit label selector; the one-byte
+// flag/layer/alternate-RNG setter family instead consumes exactly one byte
+// at the same payload start. Neither aliases extra storage nor requires
+// the real encoded instruction to occupy sizeof the C++ union.
+struct AnmInterruptLabelOperandsView
+{
+    int labelId;
+};
+struct AnmByteStateOperandView
+{
+    unsigned char value;
+};
+typedef char AnmInterruptAndByteStateNativeWidths[
+    (sizeof(AnmInterruptLabelOperandsView) == 4 &&
+     sizeof(AnmByteStateOperandView) == 1 &&
+     offsetof(AnmInterruptLabelOperandsView, labelId) == 0 &&
+     offsetof(AnmByteStateOperandView, value) == 0) ? 1 : -1];
+
 struct AnmRawInstructionView
 {
     short opcode;
@@ -331,6 +349,8 @@ struct AnmRawInstructionView
         AnmJumpOperandsView jump;
         AnmDecrementJumpOperandsView decrementJump;
         AnmConditionalJumpOperandsView conditionalJump;
+        AnmInterruptLabelOperandsView interruptLabel;
+        AnmByteStateOperandView byteState;
         AnmRenderStateOperandPairView renderStateWords;
         AnmTimedInterpolationOperandsView timedInterpolation;
     };
@@ -372,6 +392,8 @@ typedef char AnmRawInstructionArgumentsAt08[
        offsetof(AnmConditionalJumpOperandsView, scriptByteOffset) == 0x10 &&
      offsetof(AnmRawInstructionView, conditionalJump) +
        offsetof(AnmConditionalJumpOperandsView, targetTime) == 0x14 &&
+     offsetof(AnmRawInstructionView, interruptLabel) == 0x08 &&
+     offsetof(AnmRawInstructionView, byteState) == 0x08 &&
      offsetof(AnmRawInstructionView, renderStateWords) == 0x08 &&
      offsetof(AnmRawInstructionView, renderStateWords) +
        offsetof(AnmRenderStateOperandPairView, stateB) == 0x0A &&
