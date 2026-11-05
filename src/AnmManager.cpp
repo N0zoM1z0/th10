@@ -2981,7 +2981,7 @@ void AnmLoadedView::SetAndExecuteScriptIdx(
         vm->flags35C = flags;
     }
 
-    *reinterpret_cast<unsigned short *>(&vm->flags35C) = 7;
+    vm->flagsLow16 = 7;
     vm->primaryColor.value = 0xffffffffu;
     vm->scriptTimer.Initialize();
     vm->positionInterpolation.duration = 0;
@@ -4059,7 +4059,7 @@ void AnmVmView::Initialize()
     vm->scaleX = 1.0f;
     vm->scaleY = 1.0f;
     vm->matrix23C.SetIdentity();
-    *reinterpret_cast<unsigned short *>(&vm->flags35C) = 7;
+    vm->flagsLow16 = 7;
     vm->scriptTimer.Initialize();
 
     vm->positionInterpolation.duration = 0;

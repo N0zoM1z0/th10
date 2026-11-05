@@ -566,6 +566,13 @@ struct AnmVmView
     union
     {
         unsigned int flags35C;
+        // The original Initialize owner stores exactly the low 16 bits at
+        // VM+0x35C; the high halfword is the same 32-bit flag word.
+        struct
+        {
+            unsigned short flagsLow16;
+            unsigned short flagsHigh16;
+        };
         struct
         {
             unsigned int visible : 1;
@@ -646,6 +653,10 @@ typedef char AnmVmTextureMatrixAt2BC[
     (offsetof(AnmVmView, textureMatrix2BC) == 0x2bc) ? 1 : -1];
 typedef char AnmVmFlagsAt35C[
     (offsetof(AnmVmView, flags35C) == 0x35c) ? 1 : -1];
+typedef char AnmVmFlagsHalfwordOverlay[
+    (offsetof(AnmVmView, flagsLow16) == 0x35c &&
+     offsetof(AnmVmView, flagsHigh16) == 0x35e &&
+     sizeof(((AnmVmView *)0)->flagsLow16) == 2) ? 1 : -1];
 typedef char AnmVmTextFieldsAt360[
     (offsetof(AnmVmView, textFlags360) == 0x360 &&
      offsetof(AnmVmView, glyphWidth) == 0x3a0 &&
