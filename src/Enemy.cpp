@@ -1724,8 +1724,7 @@ int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy)
 
     if (runtime->deathEffectScript >= 0)
     {
-        reinterpret_cast<AnmLoadedView *>(
-            g_EnemyManager->effectResources[runtime->deathEffectResourceIndex])->
+        g_EnemyManager->loadedAnmResources[runtime->deathEffectResourceIndex]->
                 CreateVmAtWorldVariant0(
                     runtime->deathEffectScript,
                     reinterpret_cast<const AnmFloat3View *>(

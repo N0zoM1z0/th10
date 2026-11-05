@@ -557,6 +557,9 @@ struct EnemyManagerView
     union
     {
         void *effectResources[4];
+        // Original dynamic 0..3 resource selectors feed ANM VM creators;
+        // keep the raw alias for the package loader and other writers.
+        AnmLoadedView *loadedAnmResources[4];
         struct
         {
             void *unknownResource0;
@@ -576,6 +579,9 @@ typedef char EnemyManagerViewSizeIs68[
     (sizeof(EnemyManagerView) == 0x68) ? 1 : -1];
 typedef char EnemyManagerStageAnimationAt38[
     (offsetof(EnemyManagerView, effectResources) == 0x30 &&
+     offsetof(EnemyManagerView, loadedAnmResources) == 0x30 &&
+     offsetof(EnemyManagerView, loadedAnmResources) +
+         2 * sizeof(AnmLoadedView *) == 0x38 &&
      offsetof(EnemyManagerView, typedEffectResources.stageAnimationAnm) == 0x38 &&
      offsetof(EnemyManagerView, timer) == 0x40) ? 1 : -1];
 typedef char EnemyManagerTimerAt40[

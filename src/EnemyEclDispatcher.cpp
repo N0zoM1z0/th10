@@ -1336,8 +1336,7 @@ dispatch_create_enemy_mirrored:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     {
       AnmVmIdView createdVm =
-          reinterpret_cast<AnmLoadedView *>(
-              g_EnemyManager->effectResources[value0E8])->
+          g_EnemyManager->loadedAnmResources[value0E8]->
               CreateVmVariant2((int)uVar22, 5);
       managedVmIds[iVar26] = createdVm.value;
     }
@@ -1356,8 +1355,7 @@ dispatch_create_enemy_mirrored:
     uVar23 = ENEMY_READ_INT_DIRECT(1);
     {
       AnmVmIdView createdVm =
-          reinterpret_cast<AnmLoadedView *>(
-              g_EnemyManager->effectResources[(int)uVar22])->
+          g_EnemyManager->loadedAnmResources[(int)uVar22]->
               CreateVmVariant2((int)uVar23, 6);
       iVar26 = reinterpret_cast<int>(createdVm.GetVm());
     }
@@ -1378,8 +1376,7 @@ dispatch_create_enemy_mirrored:
     uVar23 = ENEMY_READ_INT_DIRECT(1);
     {
       AnmVmIdView createdVm =
-          reinterpret_cast<AnmLoadedView *>(
-              g_EnemyManager->effectResources[(int)uVar22])->
+          g_EnemyManager->loadedAnmResources[(int)uVar22]->
               CreateVmVariant0((int)uVar23, 6);
       iVar26 = reinterpret_cast<int>(createdVm.GetVm());
     }
@@ -1398,8 +1395,7 @@ dispatch_create_enemy_mirrored:
   case ENEMY_ECL_PLAY_ANM_ABSOLUTE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
-    reinterpret_cast<AnmLoadedView *>(
-        g_EnemyManager->effectResources[(int)uVar22])->
+    g_EnemyManager->loadedAnmResources[(int)uVar22]->
         CreateVmVariant2((int)uVar23, 6);
     return 0;
   case ENEMY_ECL_PLAY_ANM_ROTATED:
@@ -1407,8 +1403,7 @@ dispatch_create_enemy_mirrored:
     uVar23 = ENEMY_READ_INT_DIRECT(1);
     {
       AnmVmIdView createdVm =
-          reinterpret_cast<AnmLoadedView *>(
-              g_EnemyManager->effectResources[(int)uVar22])->
+          g_EnemyManager->loadedAnmResources[(int)uVar22]->
               CreateVmVariant2((int)uVar23, 6);
       iVar26 = reinterpret_cast<int>(createdVm.GetVm());
     }
@@ -1436,8 +1431,7 @@ dispatch_create_enemy_mirrored:
     reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->Release();
     {
       AnmVmIdView createdVm =
-          reinterpret_cast<AnmLoadedView *>(
-              g_EnemyManager->effectResources[value0E8])->
+          g_EnemyManager->loadedAnmResources[value0E8]->
               CreateVmVariant2(iVar27, 5);
       managedVmIds[iVar26] = createdVm.value;
     }
@@ -1466,8 +1460,7 @@ dispatch_create_enemy_mirrored:
     reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->Release();
     {
       AnmVmIdView createdVm =
-          reinterpret_cast<AnmLoadedView *>(
-              g_EnemyManager->effectResources[value0E8])->
+          g_EnemyManager->loadedAnmResources[value0E8]->
               CreateVmVariant2(animationBaseScript + 5, 5);
       managedVmIds[iVar26] = createdVm.value;
     }

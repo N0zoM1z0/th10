@@ -1,0 +1,101 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": {
+    "src/Enemy.hpp": "1c3f57ab38e61f8edb13a5e2c9757c0ee37458ad905c2cbc38d90bc95d188f99",
+    "src/Enemy.cpp": "c856886e95c40521e39a1e409ee922b9f8ac7bf9369d539054bc609f21a9dc79",
+    "src/EnemyEclDispatcher.cpp": "e3ed493eb629af33fc5096f35360070755028bc7a0b25e6ef8f33558ade554a3"
+  },
+  "typed_dynamic_slots": 4,
+  "typed_ecl_accesses": 7,
+  "typed_death_effect_accesses": 1,
+  "layout": {
+    "resource_slot_base": 48,
+    "stage_resource_slot_2": 56,
+    "next_timer": 64
+  },
+  "full_fresh_build": true,
+  "large_linked_owner_results": [
+    {
+      "owner": "EnemyBeginSpell",
+      "original_target_size": 2432,
+      "candidate_size": 2432,
+      "baseline_size": 2432,
+      "candidate_linked_field_count": 108,
+      "same_candidate_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "DispatchEclInstruction",
+      "original_target_size": 14416,
+      "candidate_size": 14352,
+      "baseline_size": 14352,
+      "candidate_linked_field_count": 716,
+      "same_candidate_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyFinalizeDeath",
+      "original_target_size": 162,
+      "candidate_size": 162,
+      "baseline_size": 162,
+      "candidate_linked_field_count": 9,
+      "same_candidate_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyFullObjectView ctor",
+      "original_target_size": 673,
+      "candidate_size": 672,
+      "baseline_size": 672,
+      "candidate_linked_field_count": 5,
+      "same_candidate_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyConfigureViewportOwner",
+      "original_target_size": 330,
+      "candidate_size": 330,
+      "baseline_size": 330,
+      "candidate_linked_field_count": 10,
+      "same_candidate_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyDropItemCountsCore",
+      "original_target_size": 503,
+      "candidate_size": 505,
+      "baseline_size": 505,
+      "candidate_linked_field_count": 27,
+      "same_candidate_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    }
+  ],
+  "selected_exact_regressions": [
+    {
+      "unit": "enemy-manager-constructor",
+      "result": "exact",
+      "matched_bytes": 29,
+      "target_bytes": 29
+    },
+    {
+      "unit": "enemy-ecl-resource-load-package",
+      "result": "exact",
+      "matched_bytes": 239,
+      "target_bytes": 239
+    },
+    {
+      "unit": "enemy-finalize-death",
+      "result": "exact",
+      "matched_bytes": 162,
+      "target_bytes": 162
+    }
+  ],
+  "prior_exact_bytes_preserved": 430,
+  "new_exact_credit": 0
+}
