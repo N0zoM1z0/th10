@@ -181,8 +181,13 @@ build/match-linked and every existing private input are protected. Old
 experiment PE/MAP/PDB outputs may be archived and selectively restored,
 not assumed expanded; a historic artifact is not current-source proof.
 Evidence markdown and numeric receipts remain committed. The latest
-storage inventory/restore instructions are in RE_ARTIFACTS.md and
-evidence/handoff-storage-20261105/README.md when available. For a new
+storage inventory, exact preserved witness paths, restore commands and
+per-file verified archive SHA-256 are in RE_ARTIFACTS.md and
+evidence/handoff-storage-20261105/README.md. As of November 5, the
+previous 269 MiB build/gpt-web expansion has been reduced to about
+9.1 MiB by archiving 7,243 fully attested experiment files; 13 selected
+frontier subtrees and all canonical build/match-linked outputs remain.
+**Private archive bytes are not in Git.** For a new
 workspace, Git alone will not provide the original game, pinned VC7.1
 toolchain, Wine prefix, Ghidra database or ignored private archives.
 

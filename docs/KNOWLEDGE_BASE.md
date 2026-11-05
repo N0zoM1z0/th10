@@ -49,6 +49,17 @@ The ECL script-table insertion is a 570-byte candidate against a
 ownership and callbacks while preserving selected existing exact owners.
 [Current frontier and source pins](RE_HANDOFF.md).
 
+**Storage correction (2026-11-05):** the currently expanded
+build/gpt-web tree contains 13 selected frontier witness subtrees
+(199 generated files), not every older diagnostic graph. Another 7,243
+files are recoverable from a verified local 13,907,599-byte zstd archive
+after checking the private per-file SHA-256 manifest. All canonical
+build/match-linked output, source, original target, pinned tools, Ghidra,
+previous archives and research scripts remain retained. Older October/
+November experiment README paths may need selective restoration.
+See [current artifact inventory](RE_ARTIFACTS.md) and the
+[Nov 5 audited cleanup](evidence/handoff-storage-20261105/README.md).
+
 Historical compiler evidence referenced below remains tied to the
 source epoch in which it was measured. Always use the live ledgers and
 current source SHA before applying any old byte score or archive path.

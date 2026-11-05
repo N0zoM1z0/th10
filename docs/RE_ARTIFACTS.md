@@ -1,7 +1,9 @@
-# TH10 private reconstruction artifacts — current storage policy (2026-11-04)
+# TH10 private reconstruction artifacts — current storage policy (2026-11-05)
 
 See [current agent handoff](RE_HANDOFF.md), [ledger progress](PROGRESS.md)
-and the [2026-11-04 audited cleanup](evidence/handoff-storage-20261104/README.md).
+and the [2026-11-05 audited selective archive](evidence/handoff-storage-20261105/README.md).
+The [2026-11-04 earlier cleanup](evidence/handoff-storage-20261104/README.md)
+is a separate historical event.
 This page describes what is **expanded now**, what is in a **local archive**,
 and how to recover it. Older cleanup campaigns are historical, **not** an
 instruction to assume their input hashes still match current source.
@@ -24,14 +26,92 @@ The following are **not** expendable scratch outputs:
   for current comparisons and handoff).
 - `.analysis/gpt-web/`: **retained** recent experiment scripts, source
   snapshots and JSON/LOG receipts, including Nov 3 ANM/ECL/laser work.
-- `build/gpt-web/`: **retained** selected near-miss/warm experiment outputs;
-  source/header epoch must be checked before any reuse. Not an exact Oracle.
+- build/gpt-web/: **only 13 current frontier witness subtrees are expanded**,
+  comprising 199 generated files / 9,042,285 payload bytes. Another 7,243
+  historical/failed/older-epoch files are **archived, not expanded** as of
+  2026-11-05. They remain recoverable under the new verified private archive,
+  not evidence of current exactness. See the selection list in the new
+  [tracked receipt](evidence/handoff-storage-20261105/cleanup-summary.json).
 
 Older accepted proofs under `docs/evidence/` are versioned in Git. Their
 references to archived `.analysis/gpt-6.1-sol/` paths describe *former*
 expanded states, **not live paths after the latest cleanup**. Codegen exact
 credit comes from accepted complete-owner ledgers and canonical replay, not
 from finding an old PDB with a familiar name.
+
+## 2026-11-05 verified archive of regenerable experiment images
+
+The selected early-November experiment trees under build/gpt-web were cleaned
+**without deleting their only recoverable copy**. The new local, ignored
+compressed archive is:
+
+    .analysis/archive/gpt-web-regenerable-experiments-20261105.tar.zst
+
+It contains **7,243 independently attested regular files / 254,774,405
+expanded payload bytes** and occupies **13,907,599 bytes**. Archive SHA-256:
+
+    c3c38c20fa7c6f303911973988b4582f0d012a62f0dd2c9fbde24fcc9f03ebde
+
+The per-file original path, size and SHA-256 manifest is *private, ignored*:
+
+    .analysis/maintenance-20261105/gpt-web-regenerable-manifest.jsonl.gz
+
+Manifest SHA-256:
+
+    48e168d4b8eb432f1eb493a58c55f2a63b15fc7b1cf0e2dcf719c309b91fe1e4
+
+Before deleting any expanded copy, the compression was decoded as a tar
+stream and **every one of the 7,243 members** independently matched the
+pre-deletion file size and SHA-256. All source files were then **re-hashed
+once more immediately before deletion**. A separate smoke check restored
+one archived file to a temporary directory, verified its byte size and
+hash, then removed only that temporary copy. The target, toolchain,
+Ghidra project, .analysis/gpt-web research scripts and JSON receipts,
+all existing archives, and the whole build/match-linked canonical tree
+were *not touched*.
+
+Thirteen selected frontier subtrees remain expanded, including the latest
+14KB Enemy ECL candidate and its two preceding source epochs, the ANM
+9,964-byte two-byte frontier, ECL AddScriptData 570-byte candidate,
+Chain allocator 74-byte candidate, Text alpha 157-byte candidate,
+Sound Preload 369-byte candidate, Popup draw graph and Item draw
+candidate. See the exact path list in
+[evidence/handoff-storage-20261105/cleanup-summary.json](evidence/handoff-storage-20261105/cleanup-summary.json).
+Other old README/source experiment paths may no longer be expanded.
+The old date in a directory name does **not** by itself prove which
+source/hash epoch it represents.
+
+### Selective read/restore without an all-unit rebuild
+
+Run from the TH10 repository root. These commands need the **private
+archive** on disk; they do not work in a Git clone without that transfer.
+
+    zstd -t .analysis/archive/gpt-web-regenerable-experiments-20261105.tar.zst
+    zstd -dc .analysis/archive/gpt-web-regenerable-experiments-20261105.tar.zst |
+      tar -tf - | grep '^build/gpt-web/20261104-current-popup-creator/' | head
+
+To restore a selected missing experiment directory (do not extract the
+whole archive or overwrite existing witnesses without checking):
+
+    zstd -dc .analysis/archive/gpt-web-regenerable-experiments-20261105.tar.zst |
+      tar -xf - --wildcards 'build/gpt-web/20261104-current-popup-creator/*'
+
+The tar contains only ignored build/gpt-web paths, never src/, config/,
+tools or the original target. The compressed manifest and the tracked
+cleanup summary permit full independent SHA-256 checks before using any
+restored PE/MAP/PDB. In particular, restored objects from former source
+epochs must not be silently mixed into a current VC7.1 graph.
+
+The exact **post-archive** measured reduction in build + .analysis was
+**258,570,524 bytes (246.6 MiB)**, including a separately measured
+5,809,259 bytes of regenerated Python-build cache removal. Because this
+measurement began **after** the new archive was written, it is not an
+all-in net claim. Subtracting the new 13,907,599-byte archive gives
+approximately **244,662,925 bytes (233.3 MiB) saved overall**, with
+additional small manifest/audit-file overhead excluded from that
+estimate. The stage-specific before/after du bytes are saved in the
+machine-readable cleanup receipt. Do not add the Nov 4 savings to the
+Nov 5 savings without accounting for different baselines.
 
 ## Current compressed archive — old source-epoch compiler graphs
 
@@ -78,9 +158,12 @@ The cleanup also removed **unarchived but automatically regenerable**
 `build/pycache/` and `build/probe-ltcg/` outputs. They can be recreated by
 repository Python or the targeted `probe-ltcg-backlog.py` command; they
 contain no required source or target input. The total measured reduction
-in `.analysis` plus `build` was **347,042,395 bytes (~331 MiB)** including
-archive creation, expanded-tree deletion and cache pruning. Afterward,
-`.analysis` was about **207 MiB** and `build` about **125 MiB**.
+in .analysis plus build **at the Nov 4 source epoch** was
+**347,042,395 bytes (~331 MiB)** including that earlier archive,
+expanded-tree deletion and cache pruning. Immediately after the Nov 4
+cleanup only, .analysis was about **207 MiB** and build about
+**125 MiB**; these are historical intermediate measurements, not current
+expanded-storage figures after the Nov 5 selective archive.
 Do **not** rerun the same cache cleanup and add those bytes to the tally
 again if normal compiler activity regenerates them.
 
