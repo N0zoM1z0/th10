@@ -3217,11 +3217,11 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
            currentInstruction->time <= vm->scriptTimer.current)
     {
 #define GET_INT_VAR(argumentNumber)                                      \
-    ((currentInstruction->variableMask & (1 << (argumentNumber))) != 0   \
+    ((currentInstruction->variableArgs.bits & (1 << (argumentNumber))) != 0   \
         ? vm->GetIntVar(currentInstruction->intArgs[(argumentNumber)])   \
         : currentInstruction->intArgs[(argumentNumber)])
 #define GET_FLOAT_VAR(argumentNumber)                                    \
-    ((currentInstruction->variableMask & (1 << (argumentNumber))) != 0   \
+    ((currentInstruction->variableArgs.bits & (1 << (argumentNumber))) != 0   \
         ? vm->GetFloatVar(currentInstruction->floatArgs[(argumentNumber)]) \
         : currentInstruction->floatArgs[(argumentNumber)])
 #define GET_INT_VAR_PTR(argumentNumber)                                  \

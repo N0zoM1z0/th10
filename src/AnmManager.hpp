@@ -257,7 +257,13 @@ struct AnmRawInstructionView
     short opcode;
     unsigned short size;
     short time;
-    unsigned short variableMask;
+    // The same encoded 16-bit variable-argument mask has both its legacy
+    // scalar ABI and the independently verified typed mask representation.
+    union
+    {
+        unsigned short variableMask;
+        AnmVariableArgumentMaskView variableArgs;
+    };
     union
     {
         int intArgs[10];
@@ -284,7 +290,9 @@ typedef char AnmRawInstructionHeaderOffsets[
     (offsetof(AnmRawInstructionView, opcode) == 0x00 &&
      offsetof(AnmRawInstructionView, size) == 0x02 &&
      offsetof(AnmRawInstructionView, time) == 0x04 &&
-     offsetof(AnmRawInstructionView, variableMask) == 0x06) ? 1 : -1];
+     offsetof(AnmRawInstructionView, variableMask) == 0x06 &&
+     offsetof(AnmRawInstructionView, variableArgs) == 0x06 &&
+     sizeof(((AnmRawInstructionView *)0)->variableArgs) == 2) ? 1 : -1];
 
 typedef char AnmRawInstructionArgumentsAt08[
     (offsetof(AnmRawInstructionView, intArgs) == 0x08) ? 1 : -1];
