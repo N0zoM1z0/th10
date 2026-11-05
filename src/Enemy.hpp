@@ -439,6 +439,27 @@ typedef char EnemyEclSpellInlineOperandsOffsets[
     (offsetof(EnemyEclSpellInlineOperandsView, encryptedNameLength) == 0x0c &&
      offsetof(EnemyEclSpellInlineOperandsView, encryptedName) == 0x10) ? 1 : -1];
 
+// SET_INTERRUPT stores its callback's inline name after four operand
+// dwords; SET_TIMEOUT's name follows two. The intervening words have not
+// been fully classified, so the layouts stop at their observed byte starts.
+struct EnemyEclInterruptInlineOperandsView
+{
+    int callbackSlot;
+    int lifeThreshold;
+    int timerThreshold;
+    int unknownWord3;
+    unsigned char callbackName[1];
+};
+struct EnemyEclTimeoutInlineOperandsView
+{
+    int callbackSlot;
+    int unknownWord1;
+    unsigned char callbackName[1];
+};
+typedef char EnemyEclCallbackInlineNameOffsets[
+    (offsetof(EnemyEclInterruptInlineOperandsView, callbackName) == 0x10 &&
+     offsetof(EnemyEclTimeoutInlineOperandsView, callbackName) == 0x08) ? 1 : -1];
+
 // Minimal variable-length instruction header proven by the TH10 ECL dispatcher
 // and the generic typed-operand helpers. Names describe target-observed roles;
 // the original source type and the fields not exposed here remain unknown.
@@ -464,6 +485,8 @@ struct EnemyEclInstructionView
         int operands[1];
         float floatOperands[1];
         EnemyEclSpellInlineOperandsView spellOperands;
+        EnemyEclInterruptInlineOperandsView interruptOperands;
+        EnemyEclTimeoutInlineOperandsView timeoutOperands;
     };
 };
 typedef char EnemyEclInstructionOpcodeAt004[
@@ -488,6 +511,11 @@ typedef char EnemyEclInstructionHeaderMatchesVm[
      offsetof(EnemyEclInstructionView, operands) ==
          offsetof(EclVmInstruction, integerOperands) &&
      sizeof(((EnemyEclInstructionView *)0)->indirectOperands) == 2) ? 1 : -1];
+typedef char EnemyEclInstructionInlineCallbackNameOffsets[
+    (offsetof(EnemyEclInstructionView, interruptOperands) +
+         offsetof(EnemyEclInterruptInlineOperandsView, callbackName) == 0x020 &&
+     offsetof(EnemyEclInstructionView, timeoutOperands) +
+         offsetof(EnemyEclTimeoutInlineOperandsView, callbackName) == 0x018) ? 1 : -1];
 typedef char EnemyEclInstructionOperandMaskAt008[
     (offsetof(EnemyEclInstructionView, operandMask) == 0x008 &&
      offsetof(EnemyEclInstructionView, indirectOperands) == 0x008) ? 1 : -1];

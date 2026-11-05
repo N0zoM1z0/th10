@@ -89,20 +89,22 @@ is already correct). They must **not** be marked exact.
 | Bullet | Both state `value1Bits` and runtime `angleBits` overlap binary32 payloads; full 335-byte direction updater preserved | [Runtime angle](evidence/bullet-runtime-angle-word-20261105/README.md): seven-source native proof of 8 candidate field positions, two remaining register bytes (+0xD7/+0xDD), existing leaf replays **312/312 exact**. Local outgoing-angle union trial on this current source was rejected with no byte improvement. |
 | Sound | `SoundDataLoaderThread` uses a single typed pointer-to-slot alias and one retail ESI index for all 37 files | [Sound single-index complete exact](evidence/sound-loader-single-index-exact-20261105/README.md): two independent original-bound 5-TU VC7.1 builds, complete **107/107** code bytes and all **11** field identities, accepted as `sound-data-loader-thread`; launcher selected replay **34/34 exact**. Canonical native `build/match-linked/SoundDataLoaderThread/`. |
 
-The new [START_SPELL variable-length payload](evidence/enemy-ecl-start-spell-inline-payload-20261105/README.md)
-restores the encrypted spell-name offset/length as a checked typed overlay in
-the complete 14KB dispatcher. Current 11-TU candidate codegen is unchanged;
-two selected operand leaf owners replay **42/42 exact**, and no new big-function
-exact credit follows.
+The [START_SPELL variable-length payload](evidence/enemy-ecl-start-spell-inline-payload-20261105/README.md)
+and [callback inline-name payloads](evidence/enemy-ecl-callback-inline-names-20261105/README.md)
+recover two independently proven wire layouts in the 14KB Enemy dispatcher:
+encrypted spell name length/name at instruction +0x1C/+0x20, callback names
+for SET_INTERRUPT/SET_TIMEOUT at +0x20/+0x18. Fresh 11-TU native candidate
+codegen is preserved; selected affected leaf owners replay **42/42** and
+**64/64** exact. The 14,416-byte original ECL dispatcher is still NONEXACT.
 
 Source SHA-256 at this HEAD (verify before reuse):
 
 ```text
 Sound.cpp          63936e47ae782558d08c2b7cedcba749a63723d8236052c65bac53d3228cff57
 Enemy.cpp          c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2
-Enemy.hpp          639dba7ef740b3c5cdd6f045f0d3399af40cff048d607c371833c9f54645aed1
+Enemy.hpp          12bfd2983becc5f94964b47e9cc1989d31acd2e265ffdfe0fc67857f84115729
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
-EnemyEclDispatcher.cpp a791010b46e0e0a590013ca4c0a3b780956a651f476ecc982dc90978458800c2
+EnemyEclDispatcher.cpp 4eb0a4157a4066dd10492f0d91bad7426a51a0964243c5c728e132af04ec67ef
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
 EclVm.cpp          e964d47ad4336950065be90bf3be82981c818a666e12e2810f1e77c537b912c1
 EclVm.hpp          f8fb2c92ab263a69a4255c957bcbc9b1d30bd5428adf23e86080040de528231f

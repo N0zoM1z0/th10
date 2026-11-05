@@ -2444,12 +2444,12 @@ dispatch_select_bullet_count_low:
     uVar24 = ENEMY_READ_INT_DIRECT(0);
     EnemyConfigureInterrupt(
         owner, (int)uVar24, (int)uVar23, (int)uVar22,
-        reinterpret_cast<const unsigned char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[4]));
+        reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->interruptOperands.callbackName);
     return 0;
   case ENEMY_ECL_SET_TIMEOUT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     owner->runtime.callbackThresholds[uVar22].timerCallbackName =
-        reinterpret_cast<const unsigned char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[2]);
+        reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->timeoutOperands.callbackName;
     return 0;
   case ENEMY_ECL_CANCEL_ALL_BULLETS:
     reinterpret_cast<EnemyCancelManagerView *>(
