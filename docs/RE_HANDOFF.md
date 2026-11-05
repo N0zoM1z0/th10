@@ -48,9 +48,9 @@ scripts/repo-python scripts/ci.py
 
 `docs/PROGRESS.md` (generated from the ledgers) controls acceptance:
 **1,829/1,829** target boundaries reviewed; **1,309** source-present
-mappings; **1,484** fully original-bound exact functions / **190,131**
-exact codegen bytes; **576** confirmed-authored exact functions / **120,095**
-authored exact bytes; **174** confirmed-authored source-present nonexact
+mappings; **1,485** fully original-bound exact functions / **190,260**
+exact codegen bytes; **577** confirmed-authored exact functions / **120,224**
+authored exact bytes; **173** confirmed-authored source-present nonexact
 backlog. These are neither source completeness nor whole-product closure.
 **Two new original-bound exact Sound owners are now admitted:**
 `SoundDataLoaderThread @0x0043D080` (**107 bytes, 11 fields**) and
@@ -89,6 +89,7 @@ is already correct). They must **not** be marked exact.
 | Generic ECL VM | Shared typed 16-bit instruction mask, 4-byte scalar payload across six value/lvalue leaf paths and ECL `Pop` conversions, plus the four CALL operand writebacks. The SCPT file-table slot is now reloaded after validation in nonexact `AddScriptData` (585-byte source candidate). The caller's typed descriptor is intentionally reconstructed at each access: retaining it across callee calls shifts original field sites | [Shared Pop scalar](evidence/ecl-pop-shared-scalar-20261105/README.md): fresh two-source full `Run` **7,020/7,020**, **189/189** original-bound fields, **6,997/7,020** ordinary bytes; selected `Push`/`Pop` **218/218 exact**. [CALL stack destinations](evidence/ecl-call-scalar-destinations-20261105/README.md): complete 551-byte `StartSubroutine` candidate and all four call sites unchanged, selected value leaves **295/295 exact**. Both nonexact boss/helper owners remain nonexact. |
 | Bullet | Both state `value1Bits` and runtime `angleBits` overlap binary32 payloads; full 335-byte direction updater preserved | [Runtime angle](evidence/bullet-runtime-angle-word-20261105/README.md): seven-source native proof of 8 candidate field positions, two remaining register bytes (+0xD7/+0xDD), existing leaf replays **312/312 exact**. Local outgoing-angle union trial on this current source was rejected with no byte improvement. |
 | Sound | Exact `SoundDataLoaderThread` 107-byte single-index slot loop; exact `GetFmtIndexByName` 227-byte basename/format-table lookup after moving the index initialization before delimiter searches | [Loader](evidence/sound-loader-single-index-exact-20261105/README.md) **107/107** and 11 fields; [format-name lookup](evidence/sound-getfmt-index-227-exact-20261105/README.md) **227/227** and four fields. Both independently cold replayed in one current 5-TU canonical source graph. Launcher remains **34/34 exact**. |
+| MIDI | `MidiOutputView::StopPlayback` calls a real outlined `UnprepareHeader` and publishes its timerId-zero store before testing the output device | [StopPlayback](evidence/midi-stop-playback-single-owner-20261105/README.md) **129/129** target bytes and **5/5** target-bound fields in a new independent canonical 1-TU destructor-caller graph. A selected existing 30-TU MIDI destructor/release source graph also passes **263/263**. No synthetic register ABI. |
 
 The [START_SPELL variable-length payload](evidence/enemy-ecl-start-spell-inline-payload-20261105/README.md)
 and [callback inline-name payloads](evidence/enemy-ecl-callback-inline-names-20261105/README.md)
@@ -107,6 +108,8 @@ Source SHA-256 at this HEAD (verify before reuse):
 
 ```text
 Sound.cpp          7499ecbafd237b53880969ad260a96407380327f246a308f2c2fa823c3d96c11
+Midi.cpp           1892650e1eae61877c583d1fcd4b70ad3e3f8714cfc842ff0703fff73f32d782
+Midi.hpp           2c0227d3743fd685883b6acfb6d4464747649692289a1215d771d4096a71397c
 Enemy.cpp          c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2
 Enemy.hpp          12bfd2983becc5f94964b47e9cc1989d31acd2e265ffdfe0fc67857f84115729
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745

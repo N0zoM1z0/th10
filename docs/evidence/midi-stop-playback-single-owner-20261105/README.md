@@ -42,13 +42,30 @@ Private first proof: `.analysis/gpt-web/20261105-next-midi-stop/strict.py`,
 `.analysis/gpt-web/20261105-next-midi-stop/unprepare-replay.json`.
 
 The one-source diagnostic destructor differs by one ordinary byte at +0x03
-relative to original, because its native entry/whole-program context differs;
-this is not counted as a destructor regression or exact claim. The accepted
-156-byte destructor has its own full real caller graph and requires **selected
-canonical replay after this source change**. The new StopPlayback exact
-candidate must likewise be admitted only after independent canonical cold
-replay with the correct five fields. No full historical cohort, complete
-product build or runtime semantics claim follows.
+relative to original because the synthetic caller graph is not the whole
+production context. Crucially, a **separate selected cold replay of the
+original 30-input `midi-output-destructor`/`midi-release-tracks` canonical
+source graph** with the installed changed Midi source passed **156/156 +
+107/107 = 263/263** original bytes (9 + 2 original-bound link fields). This
+was restricted to those two affected owners, not a historical full replay.
+Private selected receipt:
+`.analysis/gpt-web/20261105-next-midi-stop/existing-dtor-selected.json`.
+
+## Independently accepted new canonical StopPlayback owner
+
+The new `midi-stop-playback` unit uses its *own* fresh pinned one-source
+`/GL /GS` destructor-caller graph under `build/match-linked/MidiStopPlayback/`.
+Explicit selected canonical cold replay of this unit passed **129/129** bytes
+and **all five independently target-bound helper/import linkages**, with no
+local tail/branch normalization or ignored code. It is the **second**
+original-bound build, separate from the first diagnostic and from the
+longer existing destructor regression producer. Private receipt:
+`.analysis/gpt-web/20261105-next-midi-stop/canonical-replay.json`.
+
+This adds **one authored exact function / 129 new original-bound bytes** to
+the ledger. No credit is duplicated for the already accepted 156-byte
+destructor, 107-byte ReleaseTracks, or 79-byte UnprepareHeader. Neither whole
+product/runtime closure, new original ABI knowledge, nor portability follows.
 
 Installed `Midi.cpp` SHA-256: `1892650e1eae61877c583d1fcd4b70ad3e3f8714cfc842ff0703fff73f32d782`.
 

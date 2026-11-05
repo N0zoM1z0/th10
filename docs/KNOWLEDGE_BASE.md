@@ -21,6 +21,23 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-05 MIDI StopPlayback newly accepted exact
+
+`MidiOutputView::StopPlayback @0x0043AE20` is one newly accepted complete
+**129-byte** authored original-exact owner (five independent helper/import
+fields). The genuine original maintains a **private EDI receiver**, calls
+an outlined `UnprepareHeader` rather than inlining its whole body, and
+commits the timerId=0 store before checking the MIDI output handle. Native
+source uses a `__declspec(noinline)` member declaration and a scoped
+`_ReadWriteBarrier` after the real timer store; neither changes emitted ABI
+or invents padding/target bytes. One true C++ destructor-caller graph
+strictly matches **129/129 + 5 fields**, and a second separately selected
+canonical cold build reproduces it. The existing full **30-TU** original-bound
+MIDI destructor (156) and track release (107) also cold-pass **263/263**
+after these source changes. New total **1,485 exact / 190,260 bytes**
+(**577 authored / 120,224 bytes**). See
+[evidence](evidence/midi-stop-playback-single-owner-20261105/README.md).
+
 ## 2026-11-05 Newly accepted Sound BGM format-name lookup
 
 `SoundPlayerView::GetFmtIndexByName @0x0043D2A0` now has one complete
