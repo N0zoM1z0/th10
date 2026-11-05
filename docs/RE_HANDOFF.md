@@ -157,6 +157,14 @@ retains 9,962/9,964 bytes, all 350 fields and 95 local branch destinations;
 selected operand helpers pass 276/276. The remaining two opcode-91 bytes
 are **not** claimed exact.
 
+[ANM four-way typed scalar access](evidence/anm-scalar-operand-20261106/README.md):
+all four interpreter variable/literal value/lvalue macros share one
+four-byte scalar view, with mask and operand offset asserts. Full 5-TU
+ExecuteScript remains **9,962/9,964** target bytes, **350** fields incl.
+95 local destinations; selected four native accessor owners pass **856/856**
+original-bound exact across their two scoped graphs. Opcode-91 two-byte
+register frontier remains NONEXACT.
+
 [ANM direct DWORD state and timed-vector mode operands](evidence/anm-dword-vector-mode-20261106/README.md):
 full 32-bit direct state and 32-bit vector interpolation modes now share
 nine named wire accesses in `ExecuteScript` instead of raw array indexes.
@@ -197,8 +205,8 @@ EnemyEclDispatcher.cpp 445b1a33e110dbb871fd8c1bda20b1c11c1b4791d662dbd5fa9ad3131
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
 EclVm.cpp          468d49050f66e9969525027faed0724764fee70416c597359d19dd584fe2a364
 EclVm.hpp          b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52
-AnmManager.cpp     b4aefba570e98e5753bce501d7f38954de9c34080818d260c575be703f17c2f5
-AnmManager.hpp     267be9344aa302eef89f111aba8f621ebe9618fa0f8ff50c0c28a9e3b03d9818
+AnmManager.cpp     0573896fb5b5728af19fc30683aa3f35dc4b88886847786bf8fb192e23fa6547
+AnmManager.hpp     7699948c6b160b097b8af9b01c69a898d31d12501994f1d02fef9552803746fe
 BulletManager.cpp  2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa
 BulletManager.hpp  725f281ee37e77f7490d339c1072eaecd6177816aae1b52969f2ac977915fd53
 ```

@@ -3218,19 +3218,19 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
     {
 #define GET_INT_VAR(argumentNumber)                                      \
     ((currentInstruction->variableArgs.bits & (1 << (argumentNumber))) != 0   \
-        ? vm->GetIntVar(currentInstruction->intArgs[(argumentNumber)])   \
-        : currentInstruction->intArgs[(argumentNumber)])
+        ? vm->GetIntVar(currentInstruction->scalarArgs[(argumentNumber)].integer)   \
+        : currentInstruction->scalarArgs[(argumentNumber)].integer)
 #define GET_FLOAT_VAR(argumentNumber)                                    \
     ((currentInstruction->variableArgs.bits & (1 << (argumentNumber))) != 0   \
-        ? vm->GetFloatVar(currentInstruction->floatArgs[(argumentNumber)]) \
-        : currentInstruction->floatArgs[(argumentNumber)])
+        ? vm->GetFloatVar(currentInstruction->scalarArgs[(argumentNumber)].real) \
+        : currentInstruction->scalarArgs[(argumentNumber)].real)
 #define GET_INT_VAR_PTR(argumentNumber)                                  \
     vm->GetIntVarPtr(                                                    \
-        &currentInstruction->intArgs[(argumentNumber)],                  \
+        &currentInstruction->scalarArgs[(argumentNumber)].integer,                  \
         currentInstruction->variableArgs.bits, (argumentNumber))
 #define GET_FLOAT_VAR_PTR(argumentNumber)                                \
     vm->GetFloatVarPtr(                                                  \
-        &currentInstruction->floatArgs[(argumentNumber)],                \
+        &currentInstruction->scalarArgs[(argumentNumber)].real,                \
         currentInstruction->variableArgs.bits, (argumentNumber))
 
         switch (currentInstruction->opcode)

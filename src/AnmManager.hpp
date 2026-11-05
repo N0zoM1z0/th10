@@ -344,6 +344,18 @@ typedef char AnmInterruptAndByteStateNativeWidths[
      offsetof(AnmInterruptLabelOperandsView, labelId) == 0 &&
      offsetof(AnmByteStateOperandView, value) == 0) ? 1 : -1];
 
+// Every ANM arithmetic/variable operand is one encoded 32-bit word.
+// The variable-bit selector determines whether the same payload is an
+// int/float literal or a VM register reference, not the word's size.
+union AnmOperandScalarWordView
+{
+    int integer;
+    float real;
+    unsigned int rawBits;
+};
+typedef char AnmOperandScalarNativeWordSize04[
+    (sizeof(AnmOperandScalarWordView) == 4) ? 1 : -1];
+
 struct AnmRawInstructionView
 {
     short opcode;
@@ -360,6 +372,7 @@ struct AnmRawInstructionView
     {
         int intArgs[10];
         float floatArgs[10];
+        AnmOperandScalarWordView scalarArgs[10];
         unsigned short shortArgs[20];
         unsigned char byteArgs[40];
         AnmJumpOperandsView jump;
@@ -397,6 +410,10 @@ typedef char AnmRawInstructionHeaderOffsets[
 
 typedef char AnmRawInstructionArgumentsAt08[
     (offsetof(AnmRawInstructionView, intArgs) == 0x08 &&
+     offsetof(AnmRawInstructionView, scalarArgs) == 0x08 &&
+     (offsetof(AnmRawInstructionView, scalarArgs) +
+      sizeof(((AnmRawInstructionView *)0)->scalarArgs[0])) == 0x0C &&
+     sizeof(((AnmRawInstructionView *)0)->scalarArgs[0]) == 4 &&
      offsetof(AnmRawInstructionView, jump) == 0x08 &&
      offsetof(AnmRawInstructionView, decrementJump) == 0x08 &&
      offsetof(AnmRawInstructionView, jump) +
