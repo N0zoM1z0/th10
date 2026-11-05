@@ -74,6 +74,20 @@ after these source changes. New total **1,485 exact / 190,260 bytes**
 (**577 authored / 120,224 bytes**). See
 [evidence](evidence/midi-stop-playback-single-owner-20261105/README.md).
 
+## 2026-11-06 AnmFloatRectView::DrawGradient complete exact admission
+
+The complete 501-byte gradient-rectangle renderer at original
+`0x0043BFA0` now has an independently original-bound **501/501** exact owner
+with **all 14** native global/callee fields. The true 14-TU VC7.1 SP1 LTCG
+producer naturally uses the retail EDI receiver and `RET 16` while the old
+isolated producer's 503-byte candidate is no longer the current frontier.
+Two separately generated current-source PE images passed the complete
+original target contract; the second is an explicitly selected canonical
+cold build. This adds exactly one authored exact owner / 501 bytes, for
+**1,486 canonical exact owners / 190,761 bytes** (578 authored / 120,725
+bytes). Original historical source identity and product/runtime closure
+remain unknown. [Evidence](evidence/anm-gradient-rect-501-exact-20261106/README.md).
+
 ## 2026-11-05 Newly accepted Sound BGM format-name lookup
 
 `SoundPlayerView::GetFmtIndexByName @0x0043D2A0` now has one complete

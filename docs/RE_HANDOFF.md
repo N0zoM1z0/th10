@@ -48,15 +48,21 @@ scripts/repo-python scripts/ci.py
 
 `docs/PROGRESS.md` (generated from the ledgers) controls acceptance:
 **1,829/1,829** target boundaries reviewed; **1,309** source-present
-mappings; **1,485** fully original-bound exact functions / **190,260**
-exact codegen bytes; **577** confirmed-authored exact functions / **120,224**
-authored exact bytes; **173** confirmed-authored source-present nonexact
+mappings; **1,486** fully original-bound exact functions / **190,761**
+exact codegen bytes; **578** confirmed-authored exact functions / **120,725**
+authored exact bytes; **172** confirmed-authored source-present nonexact
 backlog. These are neither source completeness nor whole-product closure.
 **Two new original-bound exact Sound owners are now admitted:**
 `SoundDataLoaderThread @0x0043D080` (**107 bytes, 11 fields**) and
 `SoundPlayerView::GetFmtIndexByName @0x0043D2A0` (**227 bytes, four fields**),
 each through a source-pinned, independently cold-replayed canonical five-TU
 graph. Prior exact owner guard replays are not added a second time.
+
+**New exact admission (current source):** `AnmFloatRectView::DrawGradient
+@0x0043BFA0` is **501/501 complete original bytes**, **14/14** independently
+original-bound DIR32/REL32 fields, and has an independent 14-input VC7.1 SP1
+`/GL` canonical cold proof. See [gradient 501 exact](evidence/anm-gradient-rect-501-exact-20261106/README.md). The earlier isolated 503-byte
+producer is a superseded source/context experiment; no fake EDI ABI was used.
 
 ## Latest whole-owner frontiers: do not confuse size with target agreement
 

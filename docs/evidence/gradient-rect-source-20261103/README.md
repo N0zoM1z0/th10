@@ -33,6 +33,8 @@ sibling and the target-hash-attested read-only Ghidra decompilation.
 in `src/AnmRectangle.cpp/.hpp`. The original name/TU/caller identity is
 still open. We did not modify the previously accepted 483-byte function.
 
+**Current-source supersession (2026-11-06):** A genuine 14-TU pinned VC7.1 SP1 LTCG graph, unlike the isolated compile described below, naturally reproduces the original complete **501-byte** owner. An independent newly registered target-bound canonical cold replay passes **501/501 bytes and all 14 independently target-bound fields**. See the [accepted exact proof](../anm-gradient-rect-501-exact-20261106/README.md). Everything below is historical isolated-context evidence, **not the current acceptance status**.
+
 ## Codegen status and narrow guard
 
 The isolated pinned VC7.1 `/GL` source build/link gives **503 bytes** against
