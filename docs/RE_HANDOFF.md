@@ -2,7 +2,9 @@
 
 **Read this first when taking over.** The current Git worktree was clean at
 handoff preparation; inspect it again before editing. The latest reviewed
-source checkpoint is e30dd9b, but future commits can supersede this page.
+source checkpoint is **4ba28ab** (ANM interpreter typed traversal); newer
+**960d2e1** adds additional evidence without source edits. Later commits may
+supersede this page.
 Do not assume any historical dated experiment describes the currently
 installed source. The function/match/origin ledgers and generated PROGRESS.md,
 not old handoff counts, determine exact credit and attribution.
@@ -57,23 +59,52 @@ that its original source was handwritten, that the game links, or that it runs.
   opcode/header/variable-length ECL arguments and names, and ANM VM
   position/rotation/geometry fields have replaced many raw offset casts.
   Latest full real 11-source VC7.1 /GL PDB candidate **14,352 bytes** with
-  **716 linked fields**. The last two source edits (7e094a9, ef63080)
-  generated zero ordinary candidate-to-candidate differences. The
-  **14,352 / 14,416 numbers are sizes, NOT 14,352 matching bytes or
-  exactness**; 716 candidate fields were not exhaustively accepted as
-  original 14KB function fields. Still NONEXACT.
-  Current source/result:
-  evidence/enemy-ecl-typed-anm-geometry-20261104/README.md,
-  evidence/enemy-ecl-typed-anm-vm-20261104/README.md.
-  Current image, if still expanded:
-  build/gpt-web/20261104-live-enemy/boss-typed-anm-vm-bounds-flags-20261104/.
+  **716 linked fields**. The latest confirmed batch 652113c typed the real
+  position/scalar interpolation timers; their independent 50-byte COFF helpers
+  each match the original 50-byte code shape (one exactly resolved DIR32), but
+  this deliberately changes **18 ordinary candidate-to-candidate bytes** in
+  the 14KB dispatcher (two independent store-scheduling regions) without
+  changing extent or linked-field geometry. Earlier typed boss slot, world
+  coordinates, and bullet-offset vector work preserved the prior candidate's
+  ordinary bytes; evidence is source-epoch-specific.
+  **14,352 / 14,416 are sizes, NOT 14,352 matching original-target bytes**.
+  The full owner is still **NONEXACT**; its 716 fields are diagnostic, not a
+  canonically accepted full original-target binding contract.
+  Current evidence:
+  evidence/enemy-ecl-manager-player-typed-20261105/README.md,
+  evidence/enemy-ecl-bullet-offset-typed-20261105/README.md,
+  evidence/enemy-interpolation-typed-timers-20261105/README.md.
+  Latest whole graph: build/gpt-web/20261105-followup-ecl/typed-interpolation-timers/.
 - **ANM ExecuteScript**, target 0x0043EE30 / 9,964 bytes,
   src/AnmManager.cpp: sequential opcode-91 child-script/layer evaluation
-  is installed (eb854c4), not reverted. A five-source /GL /GS graph
-  retains a full **9,962/9,964 strict** comparison with **350 field
-  bindings including 95 local destinations**. Remaining +0x113/+0x115
-  ECX-vs-EDX argument transport. NONEXACT; no forced register ABI.
-  evidence/anm-executor-op91-evaluation-order-20261104/README.md.
+  is installed (eb854c4), not reverted. The 4ba28ab source now also models
+  all three normal/interrupt byte-sized steps with
+  `AnmRawInstructionView::Next()` and all three script-offset jumps with
+  `AtByteOffset`, with native header offset assertions. A freshly linked real
+  five-source VC7.1 `/GL /GS` graph retains **9,962/9,964 strict original
+  bytes**, including **350 target-bound fields / 95 local destinations**.
+  The only remaining mismatches are +0x113/+0x115 ECX-vs-EDX argument
+  transport; four scoped canonical ANM units cold-replayed **1001/1001**.
+  The large function remains **NONEXACT**, no forced-register ABI.
+  Evidence: evidence/anm-boss-typed-instruction-walk-20261105/README.md;
+  current image: build/gpt-web/20261105-followup-anm/typed-instruction-next/.
+- **EnemyBeginSpell**, target 0x00409280 / **2,432 bytes**:
+  the full 11-source VC7.1 /GL owner remains **2,424 bytes**, 108 linked
+  fields. Current source reads the real full enemy runtime world position at
+  +0x1068 and models `0x90`-byte spell-history entries with name +0,
+  capped count +0x84, and preserved statistics group stride. Both large ECL
+  owners retained ordinary candidate bytes during this batch. NONEXACT;
+  evidence/enemy-spell-history-typed-20261105/README.md.
+- **Exact small ECL helpers in the large-function producer**:
+  `EnemyConfigureInterrupt` @0x412720 remains target-exact **48/48** after
+  recovering typed timer threshold and life callback fields; unlike the
+  failed direct-four-fields rewrite, its mixed pointer lifetime retains the
+  original compiler stores. Position/scalar interpolator helpers each retain
+  independent 50-byte original-body matches (one resolved speed-pointer
+  field) with historically non-unique source attribution. These are source
+  improvements, **zero newly credited canonical exact functions**. Evidence:
+  evidence/enemy-interrupt-typed-exact-20261105/README.md and
+  evidence/enemy-interpolation-typed-timers-20261105/README.md.
 - **ECL Run**, target 0x0044E1A0 / 7,020 bytes: last explicitly checked
   native graph had **6,997/7,020** and 189 field obligations, with 23
   ordinary differences around index registers, x87 evaluation order and
@@ -89,12 +120,13 @@ that its original source was handwritten, that the game links, or that it runs.
   EnemyEclResourceView::LoadFile is separately exact 95/95.
   evidence/ecl-add-script-data-cursor-lifetimes-20261104/README.md.
 - **Popup Draw**, target 0x0042B780 / 540 bytes: current typed 723-row
-  storage/accessor in ScriptViewerOwners.hpp and
-  ScriptViewerPopupCreate.cpp, PDB candidate **537 bytes**. Independent
-  10-byte draw callback mismatches at three non-field register positions;
-  both NONEXACT. Constructor, Update and Update callback remain exact
-  **134 + 134 + 7**.
-  evidence/popup-record-typed-access-20261104/README.md.
+  storage/accessor and `loadedDigitAnm` resource pointer at owner +0x10
+  in ScriptViewerOwners.hpp and ScriptViewerPopupCreate.cpp. Whole PDB Draw
+  candidate **537 bytes** and factory **71 bytes** retain their prior candidate
+  codegen; the 10-byte draw callback still mismatches three non-field bytes.
+  All three remain NONEXACT. Constructor, Update and Update callback remain
+  exact **134 + 134 + 7**; selective native replay passed **275/275**.
+  Evidence: evidence/popup-digit-resource-typed-20261105/README.md.
 - **ResultMenu Chain owners**: real update/draw ChainElem pointers at
   +0x08/+0x0C, native 0x2C8 object. Exact constructor 101,
   initialization 142, factory 67, cleanup 311, all retained after typed
