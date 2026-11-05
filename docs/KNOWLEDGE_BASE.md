@@ -47,6 +47,20 @@ Equal sizes and candidate-field agreement do not imply full original-target
 linkage identity. **Both ECL bosses remain NONEXACT.** Latest native graph:
 `build/gpt-web/20261105-handoff-current/complete-ecl/` with SHA-pinned
 current source. See [latest handoff native receipt](evidence/handoff-maintenance-20261105/current-native-frontiers.json).
+**Later full-graph supersession (2026-11-05):** the dispatcher now derives
+its 22-per-pattern extra-record indexing, 24-byte extra stride, and native
+bullet-offset dword cursor from checked C++ type extents rather than literal
+math. A new **fully recompiled 11-TU graph**, including the changed
+`EclVm.hpp` dependents, confirms all 716 candidate link-field positions and
+all ordinary candidate bytes against the previous candidate. The 14,416-byte
+original remains 64 bytes longer; neither it nor the 2,432-byte spell-start
+candidate is admitted as exact. Original-bound selected replays preserve
+292/292 existing bytes. [Current evidence](evidence/enemy-ecl-native-stride-closure-20261105/README.md).
+The ECL FORMAT case now has a `+0` serialized inline-byte-count prefix and
+signed record-stride computation; the complete 7,020-byte Run retains 189
+original layout/field obligations and 23 ordinary target differences.
+[Typed FORMAT evidence](evidence/ecl-format-signed-prefix-overlay-20261105/README.md).
+
 The ANM 9,964-byte executor now retains sequentially evaluated opcode-91
 child arguments with 9,962/9,964 strict bytes; this source edit was
 **installed**, not reverted as an older experimental note below suggests.

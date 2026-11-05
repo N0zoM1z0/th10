@@ -1,14 +1,13 @@
 # TH10 reconstruction — next-agent handoff (2026-11-05)
 
-**Start with this page, not a dated experiment log.** The last reviewed
-**source** checkpoint before this handoff cleanup is **`77dc82a`**; later
-commits may only update documentation. Always inspect the actual `git HEAD`,
-`git status` and current source hashes before interpreting any old receipt.
-The source worktree was clean at that checkpoint. Remote-tracking references
-may advance independently: during this documentation pass, `origin/main`
-updated to `77dc82a`, changing the displayed ahead count. Always use current
-`git status`/`git log` rather than a recorded ahead/behind number. Do not
-push from the agent without explicit authorization.
+**Start with this page, not a dated experiment log.** The latest reviewed
+**source** checkpoint from this reconstruction pass is **`6856ea0`**
+(after `d901fca` and `b5b3d1b`); all three source changes have selected
+native evidence and commit messages prefixed `gpt-web:`. The working tree
+was clean after `6856ea0`; inspect live `git HEAD`, `git status` and source
+hashes before reusing any receipt. Earlier `77dc82a` was the *previous*
+source checkpoint, not the current one. Remote refs and ahead counts can
+advance independently; **do not push** without explicit authorization.
 
 ## Five-minute recovery and rules
 
@@ -82,15 +81,20 @@ source/header pins before claiming a new measurement**.
 
 ## Latest real native witness and source-epoch cautions
 
-- **Fresh current ECL graph (11 TUs, no stale support objects):**
-  `build/gpt-web/20261105-handoff-current/complete-ecl/` (ignored).
+- **Newest fresh ECL graph (11 TUs, current EclVm header/source):**
+  `build/gpt-web/20261105-typed-strides/current-ecl/` (ignored), with
   `src/EnemyEclDispatcher.cpp` SHA-256
-  `9c270b89dd61dda01896261de742b5d4ff2b1dc3405ab102af933bcf62efa0fc`.
-  It confirms complete 2,432-byte `EnemyBeginSpell`, 14,352-byte dispatcher,
-  162-byte death finalizer, 672-byte constructor and 330-byte camera owner.
-  Compared to an **older candidate**, only the ECL dispatcher's SIB encoding
-  at `+0x271F` differs; this is *not* a strict original-target match.
-  Receipt: [current native frontiers](evidence/handoff-maintenance-20261105/current-native-frontiers.json).
+  `57b9ffa95de4ed21fa1493b3bc76bc6da0bf32e593308429d18388ce045c831a`
+  and `src/EclVm.cpp` SHA-256
+  `2d2f9cdbc0227d72864209ff3904db37cad7686b9eb96619465cd9715984254a`.
+  Every support TU was freshly compiled, including those affected by the
+  revised `EclVm.hpp`. The complete dispatcher remains 14,352 candidate
+  bytes (64 short of target), with 716 same-geometry candidate fields and
+  zero ordinary candidate-to-candidate differences; `EnemyBeginSpell`
+  remains 2,432 candidate bytes with 108 unchanged candidate fields.
+  This **does not establish original-bound exactness**. Four selected exact
+  original-bound functions replayed 292/292. [Native stride closure](evidence/enemy-ecl-native-stride-closure-20261105/README.md)
+  and [previous baseline](evidence/handoff-maintenance-20261105/current-native-frontiers.json).
 - **ANM near-exact five-source graph:**
   `build/gpt-web/20261105-followup-anm/typed-instruction-next/` (ignored).
   Installed `AnmManager.cpp` SHA-256
@@ -99,11 +103,14 @@ source/header pins before claiming a new measurement**.
   `ffb3ea5d5493607d9e4f97cbec8ed8f568d7972aa0d3fccfe5882878055bd69b`.
   Strict two-byte result is not a canonical exact admission. See
   [typed variable-mask leaves](evidence/anm-typed-variable-mask-leaves-20261105/README.md).
-- **ECL Run last dedicated comparison:**
-  `build/gpt-web/20261105-continuation-ecl-run/ecl-format-int-and-float-words/`
-  (ignored). Its direct ECL source is at a different graph epoch; re-pin
-  dependent headers/support objects before further target claims. See
-  [typed FORMAT numeric operands](evidence/ecl-vm-format-typed-scalar-words-20261105/README.md).
+- **ECL Run last strict original-bound comparison:**
+  `build/gpt-web/20261105-continuation-ecl-run/ecl-format-signed-typed-prefix/`
+  (ignored). The 7,020-byte source contains the typed FORMAT prefix and
+  signed eight-byte argument record stride. Its 189 target-bound field
+  positions/types remain valid, but the 23 ordinary target-byte differences
+  remain. Reusing a previous ECL boss linked object after changing `EclVm.hpp`
+  is invalid; the selected fresh 11-source graph above fixes that source epoch.
+  [Signed FORMAT recovery](evidence/ecl-format-signed-prefix-overlay-20261105/README.md).
 - **Full ECL Boss source improvements already installed:** typed Type-0/1
   laser request fields, positions and pattern copies, real dynamic ANM
   resource arrays, typed 13 binary32 spawn operands, native bullet-pattern
@@ -111,6 +118,11 @@ source/header pins before claiming a new measurement**.
   See [laser work](evidence/enemy-ecl-typed-type1-laser-20261105/README.md),
   [pattern arithmetic](evidence/enemy-ecl-native-pattern-arithmetic-20261105/README.md),
   and [cancel flags](evidence/enemy-ecl-spell-flags-laser-control-20261105/README.md).
+  Current type-derived extra-record stride (`0x210 / 0x18 = 22`),
+  bullet-offset vector cursor (`0x1344`, 12-byte stride) and six-field
+  overlapping record are documented in
+  [native strides](evidence/enemy-ecl-native-stride-closure-20261105/README.md)
+  and [overlay](evidence/enemy-ecl-bullet-extra-overlay-20261105/README.md).
 - **Shared state now spans several source owners:** spell-history
   `captures +0x80` vs `attempts +0x84` are *different* counters;
   `GameScoreStateView.history` types statistics groups at +0x28/+0x2C;
