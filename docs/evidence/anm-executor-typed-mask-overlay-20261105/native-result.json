@@ -1,0 +1,101 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "primary_source_sha256": "a246090b1e5e3a4df61fc3fd291548dc8b2c148110d510bb708fe51d56c851c0",
+  "header_sha256": "57c8ec82ae92116c4edea9fd475558843ee5752e5a234c1749f5f38392771e49",
+  "support_sources_sha256": {
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
+  },
+  "fresh_vc71_graph_translation_units": 5,
+  "native_vm_instruction_variable_mask_offset": 6,
+  "mask_view_size": 2,
+  "shared_mask_used_by_macros": [
+    "GET_INT_VAR",
+    "GET_FLOAT_VAR"
+  ],
+  "full_native_pdb_owners": {
+    "ExecuteScript": {
+      "candidate_size": 9964,
+      "linked_fields": 350,
+      "extent_source": "pdb-section-contribution"
+    },
+    "VmInitialize": {
+      "candidate_size": 273,
+      "linked_fields": 0,
+      "extent_source": "pdb-section-contribution"
+    },
+    "SetAndExecuteScriptIdx": {
+      "candidate_size": 287,
+      "linked_fields": 4,
+      "extent_source": "pdb-section-contribution"
+    }
+  },
+  "strict_original_bound_executors": {
+    "result": "mismatch",
+    "size": 9964,
+    "matched_bytes": 9962,
+    "link_fields": 350,
+    "errors": null,
+    "first_differences": [
+      {
+        "offset": "0x113",
+        "linked": 77,
+        "target": 85
+      },
+      {
+        "offset": "0x115",
+        "linked": 81,
+        "target": 82
+      }
+    ]
+  },
+  "selected_existing_exact_units": [
+    {
+      "unit": "anm-vm-initialize-private",
+      "result": "exact",
+      "size": 273,
+      "matched_original_bytes": 273
+    },
+    {
+      "unit": "anm-get-float-var",
+      "result": "exact",
+      "size": 424,
+      "matched_original_bytes": 424
+    },
+    {
+      "unit": "anm-loaded-set-and-execute-script-index",
+      "result": "exact",
+      "size": 194,
+      "matched_original_bytes": 194
+    },
+    {
+      "unit": "anm-get-int-var",
+      "result": "exact",
+      "size": 144,
+      "matched_original_bytes": 144
+    },
+    {
+      "unit": "anm-get-float-var-ptr",
+      "result": "exact",
+      "size": 156,
+      "matched_original_bytes": 156
+    },
+    {
+      "unit": "anm-get-int-var-ptr",
+      "result": "exact",
+      "size": 132,
+      "matched_original_bytes": 132
+    }
+  ],
+  "previously_exact_bytes_preserved": 1323,
+  "new_exact_credit": 0,
+  "rejected_nonretained_trial": {
+    "variant": "temporary inline bool helper SelectsVariable",
+    "candidate_size": 10252,
+    "field_count": 349,
+    "reason": "strict original owner size and fields changed"
+  },
+  "historical_all_unit_replay": false
+}
