@@ -5,9 +5,11 @@
 // Target-backed partial storage views, not claims about original source names.
 struct GameStatisticsFileHeader
 {
-    unsigned int unknown00;
+    unsigned int magic; // 0x30314854 (TH10) in the retail header.
     unsigned int fileSize;
-    unsigned int unknown08;
+    // TH10's score-file format version is the low 16 bits of header +0x08.
+    unsigned short formatVersion;
+    unsigned short unknown00A;
     unsigned int unknown0C;
     int compressedSize;
     int uncompressedSize;
@@ -46,7 +48,9 @@ struct GameStatisticsRecord
 
 struct GameStatisticsTail
 {
-    unsigned int unknown00;
+    // The tail initializer writes type 0x5453 and a zero 16-bit flag.
+    unsigned short magic;
+    unsigned short unknown002;
     unsigned int checksum;
     unsigned char payload[0x440];
 };
@@ -63,11 +67,19 @@ struct GameStatisticsOwner
 };
 
 typedef char GameStatisticsHeaderSize18[(sizeof(GameStatisticsFileHeader) == 0x18) ? 1 : -1];
+typedef char GameStatisticsFileMagicAt00[
+    (offsetof(GameStatisticsFileHeader, magic) == 0x00) ? 1 : -1];
+typedef char GameStatisticsFileVersionAt08[
+    (offsetof(GameStatisticsFileHeader, formatVersion) == 0x08 &&
+     offsetof(GameStatisticsFileHeader, unknown00A) == 0x0A) ? 1 : -1];
 typedef char GameStatisticsCompressedAt10[(offsetof(GameStatisticsFileHeader, compressedSize) == 0x10) ? 1 : -1];
 typedef char GameStatisticsUncompressedAt14[(offsetof(GameStatisticsFileHeader, uncompressedSize) == 0x14) ? 1 : -1];
 typedef char GameStatisticsRecordChecksumAt4[(offsetof(GameStatisticsRecord, checksum) == 4) ? 1 : -1];
 typedef char GameStatisticsRecordIndexAtC[(offsetof(GameStatisticsRecord, recordIndex) == 0xc) ? 1 : -1];
 typedef char GameStatisticsTailChecksumAt4[(offsetof(GameStatisticsTail, checksum) == 4) ? 1 : -1];
+typedef char GameStatisticsTailMagicAt00[
+    (offsetof(GameStatisticsTail, magic) == 0 &&
+     offsetof(GameStatisticsTail, unknown002) == 0x02) ? 1 : -1];
 typedef char GameStatisticsTailPayloadAt8[(offsetof(GameStatisticsTail, payload) == 8) ? 1 : -1];
 typedef char GameStatisticsRecordSize437C[(sizeof(GameStatisticsRecord) == 0x437c) ? 1 : -1];
 typedef char GameStatisticsSessionsAt4C0[(offsetof(GameStatisticsRecord, sessionStarts) == 0x4c0) ? 1 : -1];

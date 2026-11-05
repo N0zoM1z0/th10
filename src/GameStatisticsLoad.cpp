@@ -27,8 +27,8 @@ GameStatisticsOwner *CreateStatistics42AF20()
 
 int GameStatisticsOwner::Load42B030()
 {
-    if (header != NULL && header->unknown00 == 0x30314854 &&
-        *reinterpret_cast<unsigned short *>(&header->unknown08) == 3)
+    if (header != NULL && header->magic == 0x30314854 &&
+        header->formatVersion == 3)
     {
         FileSystem::Decrypt(reinterpret_cast<unsigned char *>(header) + 0x18,
             header->compressedSize, 0xac, 0x35, 0x10, header->compressedSize);
@@ -79,8 +79,8 @@ fallback:
     }
     header = static_cast<GameStatisticsFileHeader *>(malloc(0x18));
     memset(header, 0, 0x18);
-    header->unknown00 = 0x30314854;
-    *reinterpret_cast<unsigned short *>(&header->unknown08) = 3;
+    header->magic = 0x30314854;
+    header->formatVersion = 3;
     header->unknown0C = 0x100;
     return 0;
 }
@@ -89,8 +89,8 @@ void InitializeStatisticsTail42ADD0(GameStatisticsTail *tail)
 {
     memset(tail, 0, sizeof(*tail));
     unsigned char *bytes = reinterpret_cast<unsigned char *>(tail);
-    *reinterpret_cast<unsigned short *>(bytes) = 0x5453;
-    *reinterpret_cast<unsigned short *>(bytes + 2) = 0;
+    tail->magic = 0x5453;
+    tail->unknown002 = 0;
     *reinterpret_cast<unsigned int *>(bytes + 8) = sizeof(*tail);
     strcpy(reinterpret_cast<char *>(bytes + 0xc), "        ");
     for (int i = 0; i < 512; ++i)
