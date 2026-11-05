@@ -76,5 +76,18 @@
   "target_toolchain_private_archives_research_scripts_retained": true,
   "new_exact_codegen_credit": 0,
   "full_cold_replay_performed": false,
-  "seconds": 0.9
+  "seconds": 0.9,
+  "independent_post_cleanup_review": {
+    "verified_after_cleanup": true,
+    "archive_regular_members_rehashed": 1016,
+    "archive_original_payload_bytes_rehashed": 36775436,
+    "retained_expanded_regular_files_recounted": 437,
+    "retained_expanded_payload_bytes_recounted": 19819118,
+    "target_sha256_rechecked": true,
+    "seven_critical_source_sha256_rechecked": true,
+    "all_pruned_paths_confirmed_absent": true,
+    "second_selective_restore_sample_path": "build/gpt-web/20261105-ecl-square-order/square-y-first-local/native-result.json",
+    "second_selective_restore_sample_sha256": "f2665ad33090e2fc848bf6641070f547f99e6652358155c363f47c085e0e8291",
+    "second_selective_restore_sample_sha256_verified": true
+  }
 }

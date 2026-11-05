@@ -96,6 +96,23 @@ source/header epochs differ, rebuild a specifically named graph. The
 reproducible cleanup/verification driver and detailed log are retained
 under ignored `.analysis/maintenance-next-agent-20261105/`.
 
+## Independent review after pruning
+
+The archive, manifest and installed source pins were **checked again after
+cleanup**, independently of the original deletion routine. The complete
+compressed tar was streamed and all **1,016 actual regular-member SHA-256
+hashes, paths and lengths** revalidated (36,775,436 original bytes); the
+remaining expanded tree was recounted as **437 files / 19,819,118 bytes**.
+A *second* archive sample,
+`build/gpt-web/20261105-ecl-square-order/square-y-first-local/native-result.json`,
+was separately restored in a disposable temporary directory and checked
+against SHA-256
+`f2665ad33090e2fc848bf6641070f547f99e6652358155c363f47c085e0e8291`.
+The original target and seven critical current source hashes were verified
+unchanged. The record is in `cleanup-summary.json` under
+`independent_post_cleanup_review`. This review did not delete anything else
+or run a full cold replay.
+
 **Important for handoff:** Git transfers the tracked source, evidence README
 and JSON cleanup receipt, **not** ignored private archives, original EXE,
 Wine/VC7.1 toolchain or Ghidra. Another machine needs an explicitly
