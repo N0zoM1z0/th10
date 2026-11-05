@@ -2018,11 +2018,16 @@ dispatch_difficulty_float_index_4_a:
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
+    // 0x4D1 dwords from runtime is the real bulletPatternOffsets array.
+    // Each ECL pattern carries one contiguous PlayerFloat3 offset vector.
     iVar27 = (int)uVar22 * 3 + 0x4d1;
-    vectorScratch.x = *(float *)((int)runtimeAddress + iVar27 * 4) + worldMotion.position.x;
-    vectorScratch.y = *(float *)((int)runtimeAddress + 4 + iVar27 * 4) + worldMotion.position.y;
+    vectorScratch.x = reinterpret_cast<const PlayerFloat3 *>(
+        (int)runtimeAddress + iVar27 * 4)->x + worldMotion.position.x;
+    vectorScratch.y = reinterpret_cast<const PlayerFloat3 *>(
+        (int)runtimeAddress + iVar27 * 4)->y + worldMotion.position.y;
     iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
-    vectorScratch.z = *(float *)((int)runtimeAddress + iVar27 * 4 + 8) + worldMotion.position.z;
+    vectorScratch.z = reinterpret_cast<const PlayerFloat3 *>(
+        (int)runtimeAddress + iVar27 * 4)->z + worldMotion.position.z;
     reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionX = vectorScratch.x;
     reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionY = vectorScratch.y;
     fVar9 = 0.0f;
