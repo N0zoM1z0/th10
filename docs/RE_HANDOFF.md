@@ -143,6 +143,13 @@ retains 9,962/9,964 bytes, all 350 fields and 95 local branch destinations;
 selected operand helpers pass 276/276. The remaining two opcode-91 bytes
 are **not** claimed exact.
 
+[ANM direct DWORD state and timed-vector mode operands](evidence/anm-dword-vector-mode-20261106/README.md):
+full 32-bit direct state and 32-bit vector interpolation modes now share
+nine named wire accesses in `ExecuteScript` instead of raw array indexes.
+Fresh 5-TU complete owner still matches 9,962/9,964 original bytes and
+all 350 target fields; selected dependent leaf guards 300/300 exact.
+Opcode-91 register differences remain; NONEXACT.
+
 [ANM interrupt label / state-byte overlay](evidence/anm-interrupt-label-byte-states-20261105/README.md): one 32-bit interrupt ID and five 8-bit state opcode operands at the same wire start; freshly verified complete executor **9,962/9,964** with **350** target fields, **95** local targets, and selected leaf guards **300/300 exact**. Remains NONEXACT.
 
 [ANM jump payload evidence](evidence/anm-jump-instruction-payload-20261105/README.md):
@@ -176,8 +183,8 @@ EnemyEclDispatcher.cpp 445b1a33e110dbb871fd8c1bda20b1c11c1b4791d662dbd5fa9ad3131
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
 EclVm.cpp          d3828bf3b13739b89af895601237c4ae262d038195c7a392d2bf746476d978a5
 EclVm.hpp          96ed76bb161759b21915f038b958160f4e2ca3372c6bab8e136c9cf0d539a2f8
-AnmManager.cpp     1f4c521e8f4a70922ab022b7049231168394dd68d61fece1847d444306f0a0c2
-AnmManager.hpp     6b79ae190e74e054e5b6102a8deec36e09bcd0bcb61ec35f721f7e7330cd39b8
+AnmManager.cpp     b4aefba570e98e5753bce501d7f38954de9c34080818d260c575be703f17c2f5
+AnmManager.hpp     267be9344aa302eef89f111aba8f621ebe9618fa0f8ff50c0c28a9e3b03d9818
 BulletManager.cpp  2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa
 BulletManager.hpp  725f281ee37e77f7490d339c1072eaecd6177816aae1b52969f2ac977915fd53
 ```

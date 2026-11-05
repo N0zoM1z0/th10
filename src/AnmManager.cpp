@@ -3377,10 +3377,10 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             vm->StartPrimaryAlphaInterpolation(
                 GET_INT_VAR(1), ANM_INTERPOLATION_LINEAR,
                 vm->primaryColor.alpha,
-                static_cast<unsigned char>(currentInstruction->intArgs[0]));
+                static_cast<unsigned char>(currentInstruction->dwordState.value));
             break;
         case ANM_OP_BLEND_MODE:
-            vm->blendMode = currentInstruction->intArgs[0];
+            vm->blendMode = currentInstruction->dwordState.value;
             break;
         case ANM_OP_POSITION:
             if (!vm->useAlternatePosition)
@@ -3451,7 +3451,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             vm->currentInstruction = vm->interruptReturnInstruction;
             continue;
         case ANM_OP_VISIBLE:
-            vm->visible = currentInstruction->intArgs[0];
+            vm->visible = currentInstruction->dwordState.value;
             break;
         case ANM_OP_RENDER_STATE:
             vm->renderStateA = currentInstruction->renderStateWords.stateA;
@@ -3464,13 +3464,13 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             vm->uvScrollVelocityY = GET_FLOAT_VAR(0);
             break;
         case ANM_OP_Z_WRITE_DISABLE:
-            vm->zWriteDisabled = currentInstruction->intArgs[0];
+            vm->zWriteDisabled = currentInstruction->dwordState.value;
             break;
         case ANM_OP_FLAG13:
-            vm->flag13 = currentInstruction->intArgs[0];
+            vm->flag13 = currentInstruction->dwordState.value;
             break;
         case ANM_OP_POINT_TEXTURE_FILTER:
-            vm->usePointTextureFilter = currentInstruction->intArgs[0];
+            vm->usePointTextureFilter = currentInstruction->dwordState.value;
             break;
 
         case ANM_OP_POSITION_TIME:
@@ -3480,7 +3480,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             memcpy(&vm->positionInterpolation.finalTangent, &g_AnmZeroVector491C14,
                    sizeof(vm->positionInterpolation.finalTangent));
             vm->positionInterpolation.mode =
-                currentInstruction->intArgs[1];
+                currentInstruction->timedVectorMode.interpolationMode;
             if (!vm->useAlternatePosition)
                 vm->positionInterpolation.initial = vm->position;
             else
@@ -3546,7 +3546,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                    sizeof(vm->rotationInterpolation.initialTangent));
             memcpy(&vm->rotationInterpolation.finalTangent, &g_AnmZeroVector491C14,
                    sizeof(vm->rotationInterpolation.finalTangent));
-            vm->rotationInterpolation.mode = currentInstruction->intArgs[1];
+            vm->rotationInterpolation.mode = currentInstruction->timedVectorMode.interpolationMode;
             vm->rotationInterpolation.initial = vm->rotation;
             vm->rotationInterpolation.final = finalRotation;
             vm->rotationInterpolation.ResetTimer();
@@ -3566,7 +3566,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         }
 
         case ANM_OP_RENDER_MODE:
-            vm->renderMode = currentInstruction->intArgs[0];
+            vm->renderMode = currentInstruction->dwordState.value;
             if (vm->renderMode == 10)
                 vm->InitializePulsingRadialTrail();
             break;

@@ -322,6 +322,22 @@ struct AnmByteStateOperandView
 {
     unsigned char value;
 };
+// The other direct state opcodes consume a full native DWORD; POSITION_TIME
+// and ROTATION_TIME encode their interpolation mode as the second DWORD,
+// not the one-byte mode used by the color/alpha interpolation family.
+struct AnmDwordStateOperandView
+{
+    int value;
+};
+struct AnmTimedVectorModeOperandsView
+{
+    int durationOperand;
+    int interpolationMode;
+};
+typedef char AnmDirectDwordStateAndVectorModeWidths[
+    (sizeof(AnmDwordStateOperandView) == 4 &&
+     sizeof(AnmTimedVectorModeOperandsView) == 8 &&
+     offsetof(AnmTimedVectorModeOperandsView, interpolationMode) == 4) ? 1 : -1];
 typedef char AnmInterruptAndByteStateNativeWidths[
     (sizeof(AnmInterruptLabelOperandsView) == 4 &&
      sizeof(AnmByteStateOperandView) == 1 &&
@@ -351,6 +367,8 @@ struct AnmRawInstructionView
         AnmConditionalJumpOperandsView conditionalJump;
         AnmInterruptLabelOperandsView interruptLabel;
         AnmByteStateOperandView byteState;
+        AnmDwordStateOperandView dwordState;
+        AnmTimedVectorModeOperandsView timedVectorMode;
         AnmRenderStateOperandPairView renderStateWords;
         AnmTimedInterpolationOperandsView timedInterpolation;
     };
@@ -394,6 +412,10 @@ typedef char AnmRawInstructionArgumentsAt08[
        offsetof(AnmConditionalJumpOperandsView, targetTime) == 0x14 &&
      offsetof(AnmRawInstructionView, interruptLabel) == 0x08 &&
      offsetof(AnmRawInstructionView, byteState) == 0x08 &&
+     offsetof(AnmRawInstructionView, dwordState) == 0x08 &&
+     offsetof(AnmRawInstructionView, timedVectorMode) == 0x08 &&
+     offsetof(AnmRawInstructionView, timedVectorMode) +
+       offsetof(AnmTimedVectorModeOperandsView, interpolationMode) == 0x0C &&
      offsetof(AnmRawInstructionView, renderStateWords) == 0x08 &&
      offsetof(AnmRawInstructionView, renderStateWords) +
        offsetof(AnmRenderStateOperandPairView, stateB) == 0x0A &&
