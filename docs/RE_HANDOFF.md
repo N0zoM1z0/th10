@@ -4,8 +4,11 @@
 **source** checkpoint before this handoff cleanup is **`77dc82a`**; later
 commits may only update documentation. Always inspect the actual `git HEAD`,
 `git status` and current source hashes before interpreting any old receipt.
-This workspace's last checked local `main` was clean, **29 commits ahead of
-`origin/main`**, and had **not been pushed**. A different checkout may differ.
+The source worktree was clean at that checkpoint. Remote-tracking references
+may advance independently: during this documentation pass, `origin/main`
+updated to `77dc82a`, changing the displayed ahead count. Always use current
+`git status`/`git log` rather than a recorded ahead/behind number. Do not
+push from the agent without explicit authorization.
 
 ## Five-minute recovery and rules
 
