@@ -86,6 +86,14 @@ is already correct). They must **not** be marked exact.
 | --- | --- | --- |
 | ANM | Header +6 has one typed 16-bit variable-argument mask. JUMP and JUMP_DEC use typed byte-displacement/time wire records. RENDER_STATE and timed color/alpha/scale opcodes now use typed halfword and mode-byte payloads. **All four** value/lvalue instruction macros in the full 9,964-byte executor use `variableArgs.bits` | [Typed pointer mask](evidence/anm-typed-pointer-operand-mask-20261105/README.md): fresh five-source strict **350/350** original-bound fields, including 95 locals; **9,962/9,964** original bytes, still NONEXACT. Affected pointer leaves **288/288 exact**. Private `build/gpt-web/20261105-anm-pointer-mask/current/`. Earlier full-mask [proof](evidence/anm-instruction-variable-mask-overlay-20261105/README.md) belongs to its own source epoch. |
 | Enemy dispatcher / GUI | Native item-drop `itemDrops` 0x3C-byte packet at runtime +0x13CC, raw indexed-word alias, life-gauge/callback-life fields, and the shared 16-bit ECL instruction header. The 14,416-byte big dispatcher now uses a typed pattern-byte-cursor helper without hoisting its signed arithmetic across operand reads | [Shared Enemy ECL header / pattern cursor](evidence/enemy-ecl-shared-instruction-pattern-20261105/README.md): fresh 11-TU **14,352 candidate bytes / 716 candidate fields** with zero candidate ordinary differences versus the previous pinned graph; BeginSpell and three other complete owners preserved. Selected native `ReadIntArgument` **16/16 exact**. [Raw drop overlay](evidence/enemy-drop-raw-word-overlay-20261105/README.md) scoped selected leaves **696/696 exact**. The 14,416-byte original big dispatcher remains NONEXACT. |
+[ECL FORMAT counted scalar value overlay](evidence/ecl-format-counted-scalar-values-20261105/README.md):
+counted byte prefix and eight-byte tagged argument payload now use a
+same-width `EclVmScalar` view in the actual 7,020-byte Run, retaining the
+original integer-divided variable text length rather than assuming alignment.
+Whole-Run original contract remains **6,997/7,020 with 189 fields**;
+`StartSubroutine`'s four native calls are unchanged and selected value
+readers replay **295/295 exact**. Neither large owner is admitted exact.
+
 | Generic ECL VM | Shared typed 16-bit instruction mask, 4-byte scalar payload across six value/lvalue leaf paths and ECL `Pop` conversions, plus the four CALL operand writebacks. The SCPT file-table slot is now reloaded after validation in nonexact `AddScriptData` (585-byte source candidate). The caller's typed descriptor is intentionally reconstructed at each access: retaining it across callee calls shifts original field sites | [Shared Pop scalar](evidence/ecl-pop-shared-scalar-20261105/README.md): fresh two-source full `Run` **7,020/7,020**, **189/189** original-bound fields, **6,997/7,020** ordinary bytes; selected `Push`/`Pop` **218/218 exact**. [CALL stack destinations](evidence/ecl-call-scalar-destinations-20261105/README.md): complete 551-byte `StartSubroutine` candidate and all four call sites unchanged, selected value leaves **295/295 exact**. Both nonexact boss/helper owners remain nonexact. |
 | Bullet | Both state `value1Bits` and runtime `angleBits` overlap binary32 payloads; full 335-byte direction updater preserved | [Runtime angle](evidence/bullet-runtime-angle-word-20261105/README.md): seven-source native proof of 8 candidate field positions, two remaining register bytes (+0xD7/+0xDD), existing leaf replays **312/312 exact**. Local outgoing-angle union trial on this current source was rejected with no byte improvement. |
 | Sound | Exact `SoundDataLoaderThread` 107-byte single-index slot loop; exact `GetFmtIndexByName` 227-byte basename/format-table lookup after moving the index initialization before delimiter searches | [Loader](evidence/sound-loader-single-index-exact-20261105/README.md) **107/107** and 11 fields; [format-name lookup](evidence/sound-getfmt-index-227-exact-20261105/README.md) **227/227** and four fields. Both independently cold replayed in one current 5-TU canonical source graph. Launcher remains **34/34 exact**. |
@@ -153,8 +161,8 @@ Enemy.hpp          7b3f3bf9465e1a54cfafb5970cd438fe6f9efd004a4de26a3aae6d4535f65
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
 EnemyEclDispatcher.cpp 227fba94cccbd9d0e623bf82efafa002acd30e824d6fe418dbcfd0482eec3b44
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
-EclVm.cpp          e964d47ad4336950065be90bf3be82981c818a666e12e2810f1e77c537b912c1
-EclVm.hpp          f8fb2c92ab263a69a4255c957bcbc9b1d30bd5428adf23e86080040de528231f
+EclVm.cpp          afbc6c03fedbedb4102765ce528f54a1c7100a2404b6a3e4df89d38b9a3b05a7
+EclVm.hpp          669fcc7f18c7be8ef83f47bde5cb2e7f09bbd88578e9d73a98f18acbb5e9c06f
 AnmManager.cpp     1f4c521e8f4a70922ab022b7049231168394dd68d61fece1847d444306f0a0c2
 AnmManager.hpp     6b79ae190e74e054e5b6102a8deec36e09bcd0bcb61ec35f721f7e7330cd39b8
 BulletManager.cpp  2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa

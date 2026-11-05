@@ -21,6 +21,18 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-05 ECL FORMAT counted scalar payload across Run
+
+The FORMAT opcode's counted text length is read through its native
+four-byte header, with tagged eight-byte argument records at the original
+computed, integer-divided text offset. Source uses an `EclVmScalar` overlay
+for actual int/float argument values but retains the native `count / 4`
+indexing (no fabricated alignment). The fresh two-TU compiled
+`EclVmContext::Run` remains 7,020 bytes, 189/189 original fields,
+6,997/7,020 target ordinary bytes, and **NONEXACT**. StartSubroutine retains
+all four call sites; selected existing value leaves remain **295/295 exact**.
+[Evidence](evidence/ecl-format-counted-scalar-values-20261105/README.md).
+
 ## 2026-11-05 RIFF/WAVE native chunk wire prefix recovery
 
 The Sound sample owner uses the RIFF 4-byte container size word and the

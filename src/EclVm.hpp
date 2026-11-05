@@ -50,11 +50,14 @@ struct EclVmFormatArgumentView
     {
         int integer;
         float real;
+        EclVmScalar scalar;
     };
 };
 typedef char EclVmFormatArgumentSize08[
     (sizeof(EclVmFormatArgumentView) == 0x08 &&
-     offsetof(EclVmFormatArgumentView, integer) == 0x04) ? 1 : -1];
+     offsetof(EclVmFormatArgumentView, integer) == 0x04 &&
+     offsetof(EclVmFormatArgumentView, scalar) == 0x04 &&
+     sizeof(((EclVmFormatArgumentView *)0)->scalar) == 4) ? 1 : -1];
 
 // The FORMAT opcode begins with a byte count followed by its inline text;
 // the remaining packed arguments start after the counted string. This is a

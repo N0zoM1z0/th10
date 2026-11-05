@@ -1209,7 +1209,9 @@ jump_instruction:
                     case 'd':
                     case 'f':
                     {
-                        const int inlineBytes = OperandInt(instruction, 0);
+                        const int inlineBytes =
+                            reinterpret_cast<const EclVmFormatInlinePrefixView *>(
+                                instruction->operands)->inlineBytes;
                         const EclVmFormatArgumentView *argument =
                             reinterpret_cast<const EclVmFormatArgumentView *>(
                                 instruction->operands + sizeof(int) +
@@ -1219,22 +1221,22 @@ jump_instruction:
                         if (argumentType == 'f' || argumentType == 'g') {
                             EclDebugTrace(scratch, ReadFloatValue(
                                 argumentIndex + 1, this,
-                                instruction->floatOperands[
+                                instruction->scalarOperands[
                                     inlineBytes / static_cast<int>(sizeof(int)) + 2 +
                                     argumentIndex *
                                         static_cast<int>(
                                             sizeof(EclVmFormatArgumentView) /
-                                            sizeof(int))]));
+                                            sizeof(int))].real));
                             ++argumentIndex;
                         } else {
                             EclDebugTrace(scratch, ReadIntValue(
                                 argumentIndex + 1,
-                                instruction->integerOperands[
+                                instruction->scalarOperands[
                                     inlineBytes / static_cast<int>(sizeof(int)) + 2 +
                                     argumentIndex *
                                         static_cast<int>(
                                             sizeof(EclVmFormatArgumentView) /
-                                            sizeof(int))]));
+                                            sizeof(int))].integer));
                             ++argumentIndex;
                         }
                         break;
