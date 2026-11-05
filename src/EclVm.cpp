@@ -1203,14 +1203,14 @@ jump_instruction:
                         if (argumentType == 'f' || argumentType == 'g') {
                             EclDebugTrace(scratch, ReadFloatValue(
                                 argumentIndex + 1, this,
-                                reinterpret_cast<const float *>(instruction)[
-                                    inlineBytes / 4 + 6 + argumentIndex * 2]));
+                                instruction->floatOperands[
+                                    inlineBytes / 4 + 2 + argumentIndex * 2]));
                             ++argumentIndex;
                         } else {
                             EclDebugTrace(scratch, ReadIntValue(
                                 argumentIndex + 1,
-                                reinterpret_cast<const int *>(instruction)[
-                                    inlineBytes / 4 + 6 + argumentIndex * 2]));
+                                instruction->integerOperands[
+                                    inlineBytes / 4 + 2 + argumentIndex * 2]));
                             ++argumentIndex;
                         }
                         break;
