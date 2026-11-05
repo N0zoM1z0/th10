@@ -1,0 +1,29 @@
+{
+  "label": "spell-typed-playback-state",
+  "results": [
+    {
+      "owner": "EnemyBeginSpell",
+      "target_bytes": 2432,
+      "candidate_bytes": 2424,
+      "baseline_bytes": 2424,
+      "linked_fields": 108,
+      "same_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyRuntimeView::DispatchEclInstruction",
+      "target_bytes": 14416,
+      "candidate_bytes": 14352,
+      "baseline_bytes": 14352,
+      "linked_fields": 716,
+      "same_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    }
+  ],
+  "source_sha256": "9a244b60d78465882c8cea78e2ada3333e0adb430685bfbe28dc41a37952a3f0",
+  "seconds": 105.4,
+  "artifact": "build/gpt-web/20261105-followup-ecl/spell-typed-playback-state",
+  "target_exact_claim": false
+}

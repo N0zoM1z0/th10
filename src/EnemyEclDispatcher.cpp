@@ -718,6 +718,17 @@ typedef char EnemySpellHistoryEntrySize90[
 typedef char EnemySpellHistoryCountAt84[
     (offsetof(EnemySpellHistoryEntryView, captureCount) == 0x84) ? 1 : -1];
 
+// The original spell-start owner loads the pointer at 0x00477838 and checks
+// dword +0x10 against one before touching either statistics history. Its
+// remaining fields and the precise meaning of stateCode10 are unresolved.
+struct EnemySpellPlaybackGateView
+{
+    unsigned char unknown000[0x10];
+    int stateCode10;
+};
+typedef char EnemySpellPlaybackStateAt10[
+    (offsetof(EnemySpellPlaybackGateView, stateCode10) == 0x10) ? 1 : -1];
+
 // Target pointer slots: playback at 477838 and statistics at 47783C.
 // Statistics indices and bonus input use receiver-relative slots in the
 // partial view at 474C40 above; original data/class owners remain unknown.
@@ -738,7 +749,8 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
     strcpy(state->spellName, name);
     state->flags378C = (state->flags378C & ~0x18u) | 3u;
 
-    if (*reinterpret_cast<int *>(g_EnemySpellPlaybackState + 0x10) != 1) {
+    if (reinterpret_cast<const EnemySpellPlaybackGateView *>(
+            g_EnemySpellPlaybackState)->stateCode10 != 1) {
         unsigned char *statistics = g_EnemySpellStatistics;
         int spellOffset = spellId * 0x90;
         EnemySpellHistoryEntryView *record =
