@@ -183,6 +183,18 @@ typedef char EnemyBulletExtraPatternOverlayLayout[
      sizeof(EnemyBulletPatternView) == 0x16 * sizeof(EnemyBulletExtraView))
         ? 1 : -1];
 
+// The five direct opcode stores use one checked overlapping-record address.
+// Keep each access expression local to its original argument read. Hoisting
+// this pointer across those reads changes the full dispatcher's LTCG liveness.
+static __forceinline EnemyBulletExtraView *EnemyExtraRecordAt(int baseAddress)
+{
+    return reinterpret_cast<EnemyBulletExtraView *>(
+        baseAddress + static_cast<int>(
+            offsetof(EnemyRuntimeView, bulletPatterns) +
+            offsetof(EnemyBulletPatternFieldsView, unknown020)));
+}
+
+
 struct EnemyManagedVmView;
 extern int g_EnemyDifficulty;
 extern EnemyManagerView *g_EnemyManager;
@@ -2374,25 +2386,15 @@ dispatch_select_bullet_count_low:
     iVar27 = (int)runtimeAddress + iVar26 *
         static_cast<int>(sizeof(EnemyBulletExtraView));
     uVar22 = ENEMY_READ_INT_DIRECT(2);
-    reinterpret_cast<EnemyBulletExtraView *>(
-        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
-                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->value14 = (int)uVar22;
+    EnemyExtraRecordAt(iVar27)->value14 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(3);
-    reinterpret_cast<EnemyBulletExtraView *>(
-        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
-                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->value10 = (int)uVar22;
+    EnemyExtraRecordAt(iVar27)->value10 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(4);
-    reinterpret_cast<EnemyBulletExtraView *>(
-        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
-                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->value08 = (int)uVar22;
+    EnemyExtraRecordAt(iVar27)->value08 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(5);
-    reinterpret_cast<EnemyBulletExtraView *>(
-        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
-                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->value0C = (int)uVar22;
+    EnemyExtraRecordAt(iVar27)->value0C = (int)uVar22;
     fVar19 = (ReadFloatArgument(6));
-    reinterpret_cast<EnemyBulletExtraView *>(
-        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
-                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->floatA = (float)fVar19;
+    EnemyExtraRecordAt(iVar27)->floatA = (float)fVar19;
     fVar19 = (ReadFloatArgument(7));
     // Keep the native index scaled in eight-byte units. This is the +4
     // floatB member of the same extra slot, not a separate float array.
