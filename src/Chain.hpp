@@ -18,7 +18,8 @@ struct ChainElem
         struct
         {
             unsigned int heapAllocated : 1;
-            unsigned int otherFlags : 31;
+            unsigned int pendingRemoval : 1;
+            unsigned int otherFlags : 30;
         } flagBits;
     };
     ChainCallback callback;
