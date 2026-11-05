@@ -44,6 +44,26 @@ typedef char EclVmFormatInlinePrefixTextAt04[
     (offsetof(EclVmFormatInlinePrefixView, inlineBytes) == 0x00 &&
      offsetof(EclVmFormatInlinePrefixView, text) == sizeof(int)) ? 1 : -1];
 
+// CALL operand descriptors use a source type, a requested destination
+// type, two unknown bytes, then a 32-bit scalar. Unlike FORMAT arguments,
+// both tag bytes are independently read by StartSubroutine.
+struct EclVmCallArgumentView
+{
+    unsigned char sourceType;
+    unsigned char destinationType;
+    unsigned char unknown002[2];
+    union
+    {
+        int integer;
+        float real;
+    };
+};
+typedef char EclVmCallArgumentNativeLayout[
+    (sizeof(EclVmCallArgumentView) == 8 &&
+     offsetof(EclVmCallArgumentView, sourceType) == 0 &&
+     offsetof(EclVmCallArgumentView, destinationType) == 1 &&
+     offsetof(EclVmCallArgumentView, integer) == 4) ? 1 : -1];
+
 struct EclVmInstruction
 {
     int time;

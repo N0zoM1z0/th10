@@ -532,14 +532,17 @@ int EclVmContext::StartSubroutine(
     int argumentIndex = firstArgument + 1;
     if (argumentIndex < (*callerInstruction)->operandCount)
     {
-        unsigned int valueOffset = metadataOffset + 4;
+        unsigned int valueOffset = metadataOffset +
+            static_cast<int>(offsetof(EclVmCallArgumentView, integer));
         unsigned char *argument = destination->stack.data + argumentOffset;
         for (; argumentIndex < (*callerInstruction)->operandCount;
-             argument += 4, ++argumentIndex, valueOffset += 8,
-             metadataOffset += 8)
+             argument += sizeof(int), ++argumentIndex,
+             valueOffset += sizeof(EclVmCallArgumentView),
+             metadataOffset += static_cast<int>(sizeof(EclVmCallArgumentView)))
         {
             const char sourceType =
-                (*callerInstruction)->operands[metadataOffset];
+                reinterpret_cast<const EclVmCallArgumentView *>(
+                    (*callerInstruction)->operands + metadataOffset)->sourceType;
 
             if (sourceType == 'f' || sourceType == 'g')
             {
@@ -547,7 +550,8 @@ int EclVmContext::StartSubroutine(
                 value.integer = reinterpret_cast<const int *>(
                     (*callerInstruction)->operands)[valueOffset / 4];
                 value.real = ReadFloatValue(argumentIndex, caller, value.real);
-                if ((*callerInstruction)->operands[metadataOffset + 1] == 'f')
+                if (reinterpret_cast<const EclVmCallArgumentView *>(
+                    (*callerInstruction)->operands + metadataOffset)->destinationType == 'f')
                     *reinterpret_cast<float *>(argument) = value.real;
                 else
                     *reinterpret_cast<int *>(argument) =
@@ -560,7 +564,8 @@ int EclVmContext::StartSubroutine(
                     (*callerInstruction)->operands)[valueOffset / 4];
                 value.integer = caller->ReadIntValue(
                     argumentIndex, value.integer);
-                if ((*callerInstruction)->operands[metadataOffset + 1] != 'f')
+                if (reinterpret_cast<const EclVmCallArgumentView *>(
+                    (*callerInstruction)->operands + metadataOffset)->destinationType != 'f')
                     *reinterpret_cast<int *>(argument) = value.integer;
                 else
                     *reinterpret_cast<float *>(argument) =

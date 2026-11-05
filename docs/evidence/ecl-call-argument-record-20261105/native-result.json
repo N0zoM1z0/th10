@@ -1,0 +1,198 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "651c0b0315fc4e1fa6fab1e17aeec0651e0aba368a6692d2d07387b1509f4203",
+  "header_sha256": "949fa91a532fa3818ea2e8e9561e6ddc5f60e4413388973137ee7c1744da9179",
+  "support_source_sha256": "c856886e95c40521e39a1e409ee922b9f8ac7bf9369d539054bc609f21a9dc79",
+  "call_argument_layout": {
+    "size": 8,
+    "source_type_offset": 0,
+    "destination_type_offset": 1,
+    "scalar_offset": 4,
+    "unknown_gap_bytes": 2
+  },
+  "signed_metadata_stride_from_sizeof": true,
+  "individual_typed_tag_loads": 3,
+  "linked_graph_translation_units": 2,
+  "full_candidate_owner_comparisons": {
+    "start-subroutine": {
+      "candidate_bytes": 551,
+      "pre_change_candidate_bytes": 551,
+      "linked_fields": 4,
+      "identical_field_geometry": true,
+      "ordinary_candidate_byte_differences": 0
+    },
+    "ecl-run": {
+      "candidate_bytes": 7020,
+      "pre_change_candidate_bytes": 7020,
+      "linked_fields": 189,
+      "identical_field_geometry": true,
+      "ordinary_candidate_byte_differences": 0
+    },
+    "find-subroutine": {
+      "candidate_bytes": 136,
+      "pre_change_candidate_bytes": 136,
+      "linked_fields": 0,
+      "identical_field_geometry": true,
+      "ordinary_candidate_byte_differences": 0
+    }
+  },
+  "full_original_ecl_run_target_binding": {
+    "result": "mismatch",
+    "error": null,
+    "target_matched_bytes": 6997,
+    "field_count": 189,
+    "first_differences": [
+      {
+        "offset": "0xAF",
+        "linked": 56,
+        "target": 7
+      },
+      {
+        "offset": "0xEC",
+        "linked": 124,
+        "target": 84
+      },
+      {
+        "offset": "0xF1",
+        "linked": 87,
+        "target": 82
+      },
+      {
+        "offset": "0x12A",
+        "linked": 16,
+        "target": 0
+      },
+      {
+        "offset": "0x12C",
+        "linked": 106,
+        "target": 104
+      },
+      {
+        "offset": "0x1FB",
+        "linked": 48,
+        "target": 6
+      },
+      {
+        "offset": "0x151D",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x1838",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x183C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1840",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1844",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1899",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18B6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18E6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18F8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x191C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1932",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1957",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x199E",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19A8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19BA",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x19E6",
+        "linked": 3,
+        "target": 19
+      },
+      {
+        "offset": "0x19E8",
+        "linked": 0,
+        "target": 2
+      }
+    ]
+  },
+  "selected_exact_replay": [
+    {
+      "unit": "ecl-vm-read-int",
+      "result": "exact",
+      "matched_bytes": 144,
+      "target_size": 144
+    },
+    {
+      "unit": "ecl-vm-find-subroutine",
+      "result": "exact",
+      "matched_bytes": 136,
+      "target_size": 136
+    },
+    {
+      "unit": "ecl-vm-stack-push",
+      "result": "exact",
+      "matched_bytes": 96,
+      "target_size": 96
+    },
+    {
+      "unit": "ecl-vm-stack-pop",
+      "result": "exact",
+      "matched_bytes": 122,
+      "target_size": 122
+    },
+    {
+      "unit": "ecl-vm-host-run",
+      "result": "exact",
+      "matched_bytes": 146,
+      "target_size": 146
+    }
+  ],
+  "previously_accepted_exact_bytes_preserved": 644,
+  "new_exact_credit": 0,
+  "target_start_subroutine_bytes": 550,
+  "start_subroutine_exact": false
+}
