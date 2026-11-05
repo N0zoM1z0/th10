@@ -86,12 +86,12 @@ int ScriptViewerPopupOwnerView::Draw()
                 if (record->timer.current >= 52 && *digit != 10)
                 {
                     if (record->timer.current < 56)
-                        drawVm->loadedSprite = &reinterpret_cast<AnmLoadedView *>(unknown010)->sprites[*digit + 207];
+                        drawVm->loadedSprite = &loadedDigitAnm->sprites[*digit + 207];
                     else
-                        drawVm->loadedSprite = &reinterpret_cast<AnmLoadedView *>(unknown010)->sprites[*digit + 217];
+                        drawVm->loadedSprite = &loadedDigitAnm->sprites[*digit + 217];
                 }
                 else
-                    drawVm->loadedSprite = &reinterpret_cast<AnmLoadedView *>(unknown010)->sprites[*digit + 196];
+                    drawVm->loadedSprite = &loadedDigitAnm->sprites[*digit + 196];
                 drawVm->primaryColor.alpha = static_cast<unsigned char>(alpha);
                 drawVm->spriteWidth = drawVm->loadedSprite->width;
                 drawVm->flags35C |= 8;
@@ -163,7 +163,7 @@ negativeValue:
 int ScriptViewerPopupOwnerView::Initialize()
 {
     AnmLoadedView *loaded = g_AsciiManagerView->asciiAnm;
-    unknown010 = reinterpret_cast<unsigned int>(loaded);
+    loadedDigitAnm = loaded;
     th10::ChainElem *task = th10::Chain::AllocElem(
         reinterpret_cast<th10::ChainCallback>(&ScriptViewerPopupUpdate42B9A0));
     task->arg = this;

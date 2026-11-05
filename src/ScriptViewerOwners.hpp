@@ -72,7 +72,8 @@ struct ScriptViewerPopupOwnerView
     unsigned char unknown000[8];
     th10::ChainElem *updateTask;
     th10::ChainElem *drawTask;
-    unsigned int unknown010;
+    // Shared ASCII ANM file installed by Initialize, used by Draw's digit sprites.
+    AnmLoadedView *loadedDigitAnm;
     int nextPopupIndex;
     AnmVmView vm;
     unsigned char opaque3C4[0xb884 - 0x3c4];
@@ -95,6 +96,8 @@ typedef char ScriptViewerPopupOwnerTargetSizeB884[
 typedef char ScriptViewerPopupRecordStorageAt3C4[
     (offsetof(ScriptViewerPopupOwnerView, opaque3C4) == 0x3c4 &&
      723 * sizeof(ScriptViewerPopupRecord) == 0xb884 - 0x3c4) ? 1 : -1];
+typedef char ScriptViewerPopupDigitAnmAt010[
+    (offsetof(ScriptViewerPopupOwnerView, loadedDigitAnm) == 0x10) ? 1 : -1];
 typedef char ScriptViewerPopupVmOffset[
     (offsetof(ScriptViewerPopupOwnerView, vm) == 0x18 &&
      offsetof(ScriptViewerPopupOwnerView, vm) +

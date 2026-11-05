@@ -1,0 +1,62 @@
+{
+  "image": "build/gpt-web/20261105-popup/typed-digit-anm",
+  "source_sha256": "0dff304fae4b0febbf4325c9b46991f88f1fcb6c23917259451a2609eec738c2",
+  "header_sha256": "7a28e0762d0360e15ea519aa6c75d6b84cbffe898648b9e95e65819264399995",
+  "elapsed_seconds": 62.0,
+  "original_target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owners": {
+    "?Draw@ScriptViewerPopupOwnerView@@QAEHXZ": {
+      "target_size": 540,
+      "candidate_size": 537,
+      "baseline_candidate_size": 537,
+      "fields": 15,
+      "same_field_geometry": true,
+      "ordinary_differences_from_baseline": 0,
+      "first_differences": []
+    },
+    "?Initialize@ScriptViewerPopupOwnerView@@QAEHXZ": {
+      "target_size": 145,
+      "candidate_size": 141,
+      "baseline_candidate_size": 141,
+      "fields": 11,
+      "same_field_geometry": true,
+      "ordinary_differences_from_baseline": 0,
+      "first_differences": []
+    },
+    "?GameCreateOwner42B660@@YAPAUScriptViewerPopupOwnerView@@XZ": {
+      "target_size": 71,
+      "candidate_size": 71,
+      "baseline_candidate_size": 71,
+      "fields": 5,
+      "same_field_geometry": true,
+      "ordinary_differences_from_baseline": 0,
+      "first_differences": []
+    },
+    "?ScriptViewerPopupDraw42B9B0@@YIHPAX@Z": {
+      "target_size": 10,
+      "candidate_size": 10,
+      "baseline_candidate_size": 10,
+      "fields": 1,
+      "same_field_geometry": true,
+      "ordinary_differences_from_baseline": 0,
+      "first_differences": []
+    }
+  },
+  "scoped_exact_replay": [
+    {
+      "unit": "script-viewer-popup-constructor",
+      "result": "exact",
+      "bytes": 134
+    },
+    {
+      "unit": "script-viewer-popup-update",
+      "result": "exact",
+      "bytes": 134
+    },
+    {
+      "unit": "script-viewer-popup-update-callback",
+      "result": "exact",
+      "bytes": 7
+    }
+  ]
+}
