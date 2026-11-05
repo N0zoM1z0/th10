@@ -112,10 +112,11 @@ int EclVmStackView::EnterFrame(int localBytes)
         return -1;
 
     stackTop = localTop;
-    if (stackTop + 4 < 0x1000)
+    if (stackTop + static_cast<int>(sizeof(EclVmStackSavedWordView)) < 0x1000)
     {
-        *reinterpret_cast<int *>(data + stackTop) = frameBase;
-        stackTop += 4;
+        reinterpret_cast<EclVmStackSavedWordView *>(
+            data + stackTop)->value = frameBase;
+        stackTop += static_cast<int>(sizeof(EclVmStackSavedWordView));
     }
     frameBase = previousTop;
     return 0;
@@ -124,10 +125,11 @@ int EclVmStackView::EnterFrame(int localBytes)
 int EclVmStackView::LeaveFrame()
 {
     const int previousFrame = frameBase;
-    if (stackTop - 4 >= 0)
+    if (stackTop - static_cast<int>(sizeof(EclVmStackSavedWordView)) >= 0)
     {
-        stackTop -= 4;
-        frameBase = *reinterpret_cast<int *>(data + stackTop);
+        stackTop -= static_cast<int>(sizeof(EclVmStackSavedWordView));
+        frameBase = reinterpret_cast<const EclVmStackSavedWordView *>(
+            data + stackTop)->value;
     }
     stackTop = previousFrame;
     return 0;
@@ -579,8 +581,10 @@ int EclVmContext::StartSubroutine(
     {
         destination->stack.Pop(0, sizeof(preservedValue), &preservedValue);
         destination->stack.stackTop = previousTop;
-        *reinterpret_cast<int *>(
-            destination->stack.data + previousTop - 4) = preservedValue;
+        reinterpret_cast<EclVmStackSavedWordView *>(
+            destination->stack.data + previousTop -
+            static_cast<int>(sizeof(EclVmStackSavedWordView)))->value =
+                preservedValue;
         destination->stack.Push(
             0, sizeof(caller->currentTime), &caller->currentTime);
         destination->stack.Push(

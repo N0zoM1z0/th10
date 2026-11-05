@@ -16,6 +16,17 @@ typedef char EclVmStackTypeSlotIs04[
     (sizeof(EclVmStackTypeSlotView) == sizeof(int) &&
      offsetof(EclVmStackTypeSlotView, type) == 0) ? 1 : -1];
 
+// A saved stack dword is used for the caller's frame base (ENTER/LEAVE)
+// and for StartSubroutine's separately preserved word. Unlike a typed
+// scalar it has no four-byte type prefix; its full value is overwritten.
+struct EclVmStackSavedWordView
+{
+    int value;
+};
+typedef char EclVmStackSavedWordNativeLayout[
+    (sizeof(EclVmStackSavedWordView) == sizeof(int) &&
+     offsetof(EclVmStackSavedWordView, value) == 0) ? 1 : -1];
+
 // FORMAT's counted arguments are eight-byte records: a tag followed by
 // an opaque three-byte gap and the original 32-bit scalar bit representation.
 struct EclVmFormatArgumentView
