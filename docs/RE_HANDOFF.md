@@ -1,15 +1,16 @@
 # TH10 reconstruction — next-agent handoff (2026-11-05)
 
-**Start with this page, not a dated experiment log.** The latest reviewed
-**source** checkpoint in this local pass is **`0bf7005`** (ECL boss typed
-extra-record cursor). `3935b6e` improves Text alpha native codegen,
-`4e26e11` types the SCPT offset records and `3735f01` restores the Chain
-task-removal bit. Each has selected native evidence; earlier source work
-`d901fca`, `b5b3d1b`, `6856ea0` recovered ECL boss and FORMAT layouts. This paragraph is a source epoch, not a
-promise that any long-lived historical witness still represents the current
-transitive header graph. Recheck live `git HEAD`, `git status`, and hashes;
-work through any unfinished dirty changes. Remote refs and ahead counts
-may advance independently; **do not push** without explicit authorization.
+**Start with this page, not a dated experiment log.** Latest verified
+**source** checkpoint in this pass is **`0dd8b20`**, after `58ffb13` and
+`cbe03f9`. These three new commits recover ECL CALL descriptors, the CALL
+name byte origin and VM stack type slots. Each has a current selected
+original-bound native verification, not just a source-only guess. Earlier
+Enemy ECL and Text work includes `0bf7005`, `0f30c7d`, `07d00ce`, and
+`3935b6e`. The current **fresh 11-source** and **11-unit selected exact**
+witnesses are recorded below. Always inspect live Git HEAD/status and source
+hashes; resolve any dirty state, even if an older handoff claimed otherwise.
+Remote refs can advance independently; **do not push** without explicit
+authorization.
 
 ## Five-minute recovery and rules
 
@@ -83,12 +84,49 @@ source/header pins before claiming a new measurement**.
 
 ## Latest real native witness and source-epoch cautions
 
-- **Fresh post-SCPT ECL boss graph (11 TUs, installed source epoch):**
+### Current cross-source supersession (2026-11-05 after `0dd8b20`)
+
+The **latest** complete Enemy ECL graph is
+`build/gpt-web/20261105-ecl-current-epoch/fresh-11-tu/`: **all 11 actual
+translation units freshly compiled** under pinned MSVC 7.1. Source hashes:
+`src/EnemyEclDispatcher.cpp` `3881a4e3133ba646856477dfa824dac124b0544d6b56c52f9f20f66abd28a3cf`,
+`src/EclVm.cpp` `651c0b0315fc4e1fa6fab1e17aeec0651e0aba368a6692d2d07387b1509f4203`,
+and `src/EclVm.hpp` `949fa91a532fa3818ea2e8e9561e6ddc5f60e4413388973137ee7c1744da9179`.
+The 14,352-byte dispatcher is still **64 bytes shorter than its 14,416-byte
+original**, with all 716 candidate fields and ordinary candidate bytes
+unchanged. `EnemyBeginSpell` is still 2,432 candidate bytes with 108 fields,
+not original-target exact. The 162-byte death finalizer, 330-byte viewport,
+and 672-byte full-object constructor also preserve entire candidate codegen.
+Do **not** infer a new exact function from candidate-to-candidate equality.
+
+Current ECL VM source graph:
+`build/gpt-web/20261105-ecl-call-argument/per-access-tags/` strictly binds
+**189 original fields** and retains **6,997/7,020** original bytes in the
+full interpreter, still 23 byte differences. The exact 4-byte stack tags,
+8-byte CALL descriptors and `+0x14` CALL name offset are now expressed through
+typed source layouts (see source commits `cbe03f9`, `58ffb13`, `0dd8b20`).
+A **single selection of 11 affected canonical exact owners** from the
+latest installed source passed **1,129/1,129 previously credited bytes**.
+Zero newly credited functions; no full cold replay. [Current cross-source
+receipt](evidence/th10-current-ecl-graph-after-call-20261105/README.md).
+
+ANM `ExecuteScript` is still **9,962/9,964** in the real five-source `/GL`
+graph, with 350 target fields and two remaining opcode-91 register-choice
+bytes. The new scalar-`memcpy` layer trial was byte-neutral and restored.
+Earlier hoisted-pointer trial moved field geometry and was rejected. Do not
+reuse them as evidence of progress. The ignored current control is
+`.analysis/gpt-web/20261105/anm-layer-memcpy-result.json`.
+
+The older entries below are **historical, source-epoch-scoped**; they must
+not override this latest 11-TU build and selected original-target replay.
+
+
+- **Earlier post-SCPT ECL boss graph (11 TUs, historical source epoch):**
   `build/gpt-web/20261105-ecl-extra-slot/baseline/` (all 11 source inputs
   freshly compiled) and
   `build/gpt-web/20261105-ecl-extra-slot/typed-cursor/` (the changed
   `EnemyEclDispatcher.cpp` recompiled with 10 source+header SHA-pinned support
-  objects) are the current complete local witnesses. Installed
+  objects) are prior source-epoch witnesses. The then-installed
   `src/EnemyEclDispatcher.cpp` SHA-256 is
   `2a5b2b0ee483736aa75704b8d126980fcf294960f50898ef30119408d2f98795`,
   with `src/EclVm.cpp` at
@@ -113,7 +151,7 @@ source/header pins before claiming a new measurement**.
   `ffb3ea5d5493607d9e4f97cbec8ed8f568d7972aa0d3fccfe5882878055bd69b`.
   Strict two-byte result is not a canonical exact admission. See
   [typed variable-mask leaves](evidence/anm-typed-variable-mask-leaves-20261105/README.md).
-- **ECL Run last strict original-bound comparison:**
+- **Earlier ECL Run original-bound comparison (historical epoch):**
   `build/gpt-web/20261105-continuation-ecl-run/ecl-format-signed-typed-prefix/`
   (ignored). The 7,020-byte source contains the typed FORMAT prefix and
   signed eight-byte argument record stride. Its 189 target-bound field

@@ -23,6 +23,19 @@ a constraint on the maintained implementation.
 
 ## 2026-11-05 current source/ledger supersession
 
+**Later November 5 ECL VM source supersession:** `cbe03f9` formalizes the
+four-byte typed stack slot whose first byte is the scalar tag; `58ffb13`
+derives the CALL name from the actual instruction byte stream; and
+`0dd8b20` recovers the CALL argument descriptor's two tag bytes and 32-bit
+scalar without hoisting a pointer across VM calls. A fresh **11-TU Enemy ECL**
+link and an independent **189-field original-bound, 7,020-byte generic ECL
+Run** comparison establish unchanged current codegen, not new exact credit.
+Eleven selected complete exact owners replay **1,129/1,129 bytes** from the
+current source epoch. The large dispatcher remains 14,352 candidate bytes
+versus original 14,416; the ECL Run remains 6,997/7,020 original-matched.
+[Cross-graph native proof](evidence/th10-current-ecl-graph-after-call-20261105/README.md).
+
+
 The generated ledger now records **1,482 complete exact functions and
 189,797 exact codegen bytes**, with 1,309 source-present mappings and
 574 confirmed-authored exact functions. The older 1,478/189,217 and
