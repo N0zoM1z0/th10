@@ -972,18 +972,36 @@ struct EnemyDropVectorView
 // Scatter storage/order informed by th10-decomp (MIT), commit
 // c6791d82dc9f02e55eca45a5314f900a85481efd; TH10 target/native evidence is authoritative.
 // See docs/licenses/th10-decomp-MIT.txt.
+// The scatter block is a mixed 32-bit count/radius record. The original
+// caller passes it by its first integer word; a single view retains that ABI.
+// Array slot 0 and the gap at +0x30 are intentionally not given semantics.
+struct EnemyItemDropCountRadiusView
+{
+    int unknown000;
+    int countsByKind[11];
+    int unknown030;
+    float radiusX;
+    float radiusY;
+};
+typedef char EnemyItemDropCountRadiusLayout[
+    (sizeof(EnemyItemDropCountRadiusView) == 0x3c &&
+     offsetof(EnemyItemDropCountRadiusView, countsByKind) == 0x04 &&
+     offsetof(EnemyItemDropCountRadiusView, radiusX) == 0x34 &&
+     offsetof(EnemyItemDropCountRadiusView, radiusY) == 0x38) ? 1 : -1];
+
 __declspec(noinline) void __stdcall EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock)
 {
+    const EnemyItemDropCountRadiusView *scatter =
+        reinterpret_cast<const EnemyItemDropCountRadiusView *>(itemDropBlock);
     float angle = g_RngView.GetRandomF32Signed() * 3.1415927f;
 
     for (int itemIndex = 0; itemIndex < 11; ++itemIndex) {
-        for (int i = 0; i < itemDropBlock[itemIndex + 1]; ++i) {
+        for (int i = 0; i < scatter->countsByKind[itemIndex]; ++i) {
             EnemyDropVectorView offset;
             offset.FromAngleRadii(
                 angle,
-                reinterpret_cast<float *>(itemDropBlock)[13],
-                reinterpret_cast<float *>(itemDropBlock)[14]);
+                scatter->radiusX, scatter->radiusY);
 
             unsigned int radiusBits = g_RngView.GetRandomU32();
             // VC7.1 supplies the target unsigned high-bit correction once.
