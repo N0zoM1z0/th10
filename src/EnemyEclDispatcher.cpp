@@ -596,12 +596,26 @@ extern void __stdcall EnemySetMotionAngle(EnemyMotionView *motion, float angle);
 extern int g_EnemyDialogIndex;
 extern int g_EnemyDialogState;
 
+// In the observed GUI message file's indexed table, each entry is eight
+// bytes. Original EnemyReadDialog loads the signed content offset from
+// entry +4 and adds it to the file base after message allocation.
+struct EnemyDialogFileIndexEntryView
+{
+    unsigned int unknown000;
+    int contentOffset;
+};
+typedef char EnemyDialogFileIndexEntryLayout[
+    (sizeof(EnemyDialogFileIndexEntryView) == 8 &&
+     offsetof(EnemyDialogFileIndexEntryView, contentOffset) == 4) ? 1 : -1];
+
 static void EnemyReadDialog(GuiView *gui, int index)
 {
+    // The new-expression allocates the message before either file dereference.
+    // Keep both loads at their original source evaluation point.
     GuiMessageVmView *dialog = new GuiMessageVmView(
         static_cast<unsigned char *>(gui->messageFile) +
-        *reinterpret_cast<int *>(static_cast<unsigned char *>(gui->messageFile) +
-            4 + index * 8));
+        reinterpret_cast<const EnemyDialogFileIndexEntryView *>(
+            gui->messageFile)[index].contentOffset);
     gui->message = dialog;
     dialog->messageIndex = index;
     int nextIndex = index + 1;

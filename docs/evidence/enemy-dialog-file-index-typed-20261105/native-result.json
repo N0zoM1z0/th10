@@ -1,0 +1,80 @@
+{
+  "source_sha256": "2b9fc10a6b9eff5f5d14559e17fe7ec2ecf721e149baf5fe1d56ac41afb742c3",
+  "candidate_static_complete_size_without_eh": 78,
+  "candidate_field_offsets_equal": true,
+  "linked_fields": 5,
+  "ordinary_candidate_to_candidate_changes": 0,
+  "first_changes": [],
+  "target_body_with_eh_bytes": 124,
+  "exact_target_claim": false,
+  "selected_exact_replays": [
+    {
+      "unit": "enemy-ecl-resource-load-package",
+      "result": "exact",
+      "matched_bytes": 239,
+      "target_bytes": 239
+    },
+    {
+      "unit": "enemy-set-chapter",
+      "result": "exact",
+      "matched_bytes": 16,
+      "target_bytes": 16
+    },
+    {
+      "unit": "enemy-configure-interrupt",
+      "result": "exact",
+      "matched_bytes": 48,
+      "target_bytes": 48
+    }
+  ],
+  "previous_exact_bytes_preserved": 303,
+  "other_whole_owners": [
+    {
+      "owner": "EnemyBeginSpell",
+      "original_target_size": 2432,
+      "candidate_size": 2432,
+      "previous_candidate_size": 2432,
+      "field_count": 108,
+      "same_geometry": true,
+      "candidate_ordinary_differences": 0
+    },
+    {
+      "owner": "ECL dispatch",
+      "original_target_size": 14416,
+      "candidate_size": 14352,
+      "previous_candidate_size": 14352,
+      "field_count": 716,
+      "same_geometry": true,
+      "candidate_ordinary_differences": 0
+    },
+    {
+      "owner": "Drop item core",
+      "original_target_size": 503,
+      "candidate_size": 505,
+      "previous_candidate_size": 505,
+      "field_count": 27,
+      "same_geometry": true,
+      "candidate_ordinary_differences": 0
+    },
+    {
+      "owner": "Camera",
+      "original_target_size": 330,
+      "candidate_size": 330,
+      "previous_candidate_size": 330,
+      "field_count": 10,
+      "same_geometry": true,
+      "candidate_ordinary_differences": 0
+    },
+    {
+      "owner": "Enemy object constructor",
+      "original_target_size": 673,
+      "candidate_size": 672,
+      "previous_candidate_size": 672,
+      "field_count": 5,
+      "same_geometry": true,
+      "candidate_ordinary_differences": 0
+    }
+  ],
+  "pinned_support_objects": 10,
+  "new_exact_credit": 0
+}
