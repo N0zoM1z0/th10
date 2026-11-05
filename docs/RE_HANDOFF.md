@@ -106,6 +106,12 @@ readers replay **295/295 exact**. Neither large owner is admitted exact.
 | Sound | Exact `SoundDataLoaderThread` 107-byte single-index slot loop; exact `GetFmtIndexByName` 227-byte basename/format-table lookup after moving the index initialization before delimiter searches | [Loader](evidence/sound-loader-single-index-exact-20261105/README.md) **107/107** and 11 fields; [format-name lookup](evidence/sound-getfmt-index-227-exact-20261105/README.md) **227/227** and four fields. Both independently cold replayed in one current 5-TU canonical source graph. Launcher remains **34/34 exact**. |
 | MIDI | `MidiOutputView::StopPlayback` calls a real outlined `UnprepareHeader` and publishes its timerId-zero store before testing the output device | [StopPlayback](evidence/midi-stop-playback-single-owner-20261105/README.md) **129/129** target bytes and **5/5** target-bound fields in a new independent canonical 1-TU destructor-caller graph. A selected existing 30-TU MIDI destructor/release source graph also passes **263/263**. No synthetic register ABI. |
 
+[Enemy typed spawn scalar tail](evidence/enemy-spawn-scalar-word-20261106/README.md):
+28 raw int/float reads in the 14KB Enemy ECL dispatcher now share the
+same 4-byte scalar view as the generic ECL interpreter. New real 11-TU
+source build preserves all 14,352 candidate bytes/716 fields, and
+selected original-bound operand leaves pass 59/59; dispatcher NONEXACT.
+
 The [CREATE_ENEMY inline name/spawn tail](evidence/enemy-ecl-spawn-inline-name-20261105/README.md)
 now has a typed name-byte-count/name prefix at full instruction +0x10/+0x14,
 with the original dynamic scalar-tail indexing preserved across five spawn
@@ -164,9 +170,9 @@ Sound.cpp          cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b
 Midi.cpp           1892650e1eae61877c583d1fcd4b70ad3e3f8714cfc842ff0703fff73f32d782
 Midi.hpp           2c0227d3743fd685883b6acfb6d4464747649692289a1215d771d4096a71397c
 Enemy.cpp          c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2
-Enemy.hpp          7b3f3bf9465e1a54cfafb5970cd438fe6f9efd004a4de26a3aae6d4535f65324
+Enemy.hpp          f34369ef9e3c2e45e4d3fa2f71054b5e5750e173e1e5166da48e62d6dee5f40a
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
-EnemyEclDispatcher.cpp 227fba94cccbd9d0e623bf82efafa002acd30e824d6fe418dbcfd0482eec3b44
+EnemyEclDispatcher.cpp 445b1a33e110dbb871fd8c1bda20b1c11c1b4791d662dbd5fa9ad313112afa54
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
 EclVm.cpp          d3828bf3b13739b89af895601237c4ae262d038195c7a392d2bf746476d978a5
 EclVm.hpp          96ed76bb161759b21915f038b958160f4e2ca3372c6bab8e136c9cf0d539a2f8

@@ -497,6 +497,9 @@ struct EnemyEclInstructionView
     {
         int operands[1];
         float floatOperands[1];
+        // The counted inline-name tail contains the same binary32/INT32
+        // four-byte words already used by the generic ECL scalar reader.
+        EclVmScalar scalarOperands[1];
         EnemyEclSpawnInlineOperandsView spawnOperands;
         EnemyEclSpellInlineOperandsView spellOperands;
         EnemyEclInterruptInlineOperandsView interruptOperands;
@@ -540,6 +543,10 @@ typedef char EnemyEclInstructionOperandMaskAt008[
 typedef char EnemyEclInstructionOperandsAt010[
     (offsetof(EnemyEclInstructionView, operands) == 0x010 &&
      offsetof(EnemyEclInstructionView, floatOperands) == 0x010 &&
+     offsetof(EnemyEclInstructionView, scalarOperands) == 0x010 &&
+     offsetof(EnemyEclInstructionView, scalarOperands) ==
+         offsetof(EclVmInstruction, scalarOperands) &&
+     sizeof(((EnemyEclInstructionView *)0)->scalarOperands[0]) == 4 &&
      offsetof(EnemyEclInstructionView, spellOperands) == 0x010 &&
      offsetof(EnemyEclInstructionView, spellOperands) +
          offsetof(EnemyEclSpellInlineOperandsView, encryptedNameLength) == 0x01c &&
