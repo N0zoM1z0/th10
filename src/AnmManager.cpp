@@ -3227,11 +3227,11 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 #define GET_INT_VAR_PTR(argumentNumber)                                  \
     vm->GetIntVarPtr(                                                    \
         &currentInstruction->intArgs[(argumentNumber)],                  \
-        currentInstruction->variableMask, (argumentNumber))
+        currentInstruction->variableArgs.bits, (argumentNumber))
 #define GET_FLOAT_VAR_PTR(argumentNumber)                                \
     vm->GetFloatVarPtr(                                                  \
         &currentInstruction->floatArgs[(argumentNumber)],                \
-        currentInstruction->variableMask, (argumentNumber))
+        currentInstruction->variableArgs.bits, (argumentNumber))
 
         switch (currentInstruction->opcode)
         {
