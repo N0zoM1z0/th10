@@ -86,6 +86,13 @@ is already correct). They must **not** be marked exact.
 | --- | --- | --- |
 | ANM | Header +6 has one typed 16-bit variable-argument mask. JUMP and JUMP_DEC use typed byte-displacement/time wire records. RENDER_STATE and timed color/alpha/scale opcodes now use typed halfword and mode-byte payloads. **All four** value/lvalue instruction macros in the full 9,964-byte executor use `variableArgs.bits` | [Typed pointer mask](evidence/anm-typed-pointer-operand-mask-20261105/README.md): fresh five-source strict **350/350** original-bound fields, including 95 locals; **9,962/9,964** original bytes, still NONEXACT. Affected pointer leaves **288/288 exact**. Private `build/gpt-web/20261105-anm-pointer-mask/current/`. Earlier full-mask [proof](evidence/anm-instruction-variable-mask-overlay-20261105/README.md) belongs to its own source epoch. |
 | Enemy dispatcher / GUI | Native item-drop `itemDrops` 0x3C-byte packet at runtime +0x13CC, raw indexed-word alias, life-gauge/callback-life fields, and the shared 16-bit ECL instruction header. The 14,416-byte big dispatcher now uses a typed pattern-byte-cursor helper without hoisting its signed arithmetic across operand reads | [Shared Enemy ECL header / pattern cursor](evidence/enemy-ecl-shared-instruction-pattern-20261105/README.md): fresh 11-TU **14,352 candidate bytes / 716 candidate fields** with zero candidate ordinary differences versus the previous pinned graph; BeginSpell and three other complete owners preserved. Selected native `ReadIntArgument` **16/16 exact**. [Raw drop overlay](evidence/enemy-drop-raw-word-overlay-20261105/README.md) scoped selected leaves **696/696 exact**. The 14,416-byte original big dispatcher remains NONEXACT. |
+[ECL JUMP and thread-counted wire prefixes](evidence/ecl-jump-spawn-thread-wire-20261105/README.md)
+are now typed at the instruction payload +0x10/+0x14. Actual native
+Run **7,020 bytes**, **189** original-bound fields, **6,997/7,020** original
+ordinary bytes; StartSubroutine's four call positions and 551-byte source
+candidate are preserved. Selected two ECL value readers **268/268 exact**;
+Run and StartSubroutine remain NONEXACT.
+
 [ECL FORMAT counted scalar value overlay](evidence/ecl-format-counted-scalar-values-20261105/README.md):
 counted byte prefix and eight-byte tagged argument payload now use a
 same-width `EclVmScalar` view in the actual 7,020-byte Run, retaining the
@@ -161,8 +168,8 @@ Enemy.hpp          7b3f3bf9465e1a54cfafb5970cd438fe6f9efd004a4de26a3aae6d4535f65
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
 EnemyEclDispatcher.cpp 227fba94cccbd9d0e623bf82efafa002acd30e824d6fe418dbcfd0482eec3b44
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
-EclVm.cpp          afbc6c03fedbedb4102765ce528f54a1c7100a2404b6a3e4df89d38b9a3b05a7
-EclVm.hpp          669fcc7f18c7be8ef83f47bde5cb2e7f09bbd88578e9d73a98f18acbb5e9c06f
+EclVm.cpp          d3828bf3b13739b89af895601237c4ae262d038195c7a392d2bf746476d978a5
+EclVm.hpp          96ed76bb161759b21915f038b958160f4e2ca3372c6bab8e136c9cf0d539a2f8
 AnmManager.cpp     1f4c521e8f4a70922ab022b7049231168394dd68d61fece1847d444306f0a0c2
 AnmManager.hpp     6b79ae190e74e054e5b6102a8deec36e09bcd0bcb61ec35f721f7e7330cd39b8
 BulletManager.cpp  2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa

@@ -768,7 +768,7 @@ int EclVmContext::Run(float timeDelta)
             case ECL_VM_SPAWN_THREAD_WITH_ID:
             {
                 const unsigned int operandIndex =
-                    static_cast<unsigned int>(OperandInt(current, 0) + 4) >> 2;
+                    static_cast<unsigned int>(current->spawnThreadOperands.inlineBytes + 4) >> 2;
                 host->SpawnThread(
                     ReadIntValue(1, OperandInt(current, operandIndex)), 1);
                 break;
@@ -829,8 +829,8 @@ int EclVmContext::Run(float timeDelta)
 jump_instruction:
             {
                 advanceInstruction = *instructionCursor;
-                currentTime = static_cast<float>(OperandInt(advanceInstruction, 1));
-                instructionOffset = OperandInt(advanceInstruction, 0);
+                currentTime = static_cast<float>(advanceInstruction->jumpOperands.targetTime);
+                instructionOffset = advanceInstruction->jumpOperands.instructionByteOffset;
                 goto advance_instruction;
             }
 

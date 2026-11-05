@@ -21,6 +21,18 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-05 ECL JUMP / spawned-thread counted operand wire views
+
+Generic ECL normal/conditional JUMP has signed byte displacement at payload
++0 and integer time at +4; SPAWN_THREAD_WITH_ID has counted inline bytes
+at payload +0/+4 before the dynamically indexed integer argument. Native
+view overlays model both without assuming rounded alignment or fixed
+instruction sizes. Two-source VC7.1 complete Run remains **6,997/7,020**
+with all **189** target bindings, and StartSubroutine retains four original
+call positions in its 551-byte nonexact candidate. Selected accepted ECL
+value readers remain **268/268 exact**; no new credit.
+[Evidence](evidence/ecl-jump-spawn-thread-wire-20261105/README.md).
+
 ## 2026-11-05 ECL FORMAT counted scalar payload across Run
 
 The FORMAT opcode's counted text length is read through its native

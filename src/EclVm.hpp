@@ -101,6 +101,27 @@ struct EclVmOperandIndirectMaskView
 typedef char EclVmOperandIndirectMaskIs02[
     (sizeof(EclVmOperandIndirectMaskView) == 2) ? 1 : -1];
 
+// The shared normal/conditional JUMP opcodes use two 32-bit words:
+// a signed byte displacement in the script and the target time.
+// SpawnThreadWithId begins with a count of inline bytes; subsequent
+// operands follow at the byte count plus the first dword, rounded by
+// the target's explicit shift/division. Both views are variable-length
+// stream prefixes, not independent fixed-size allocations.
+struct EclVmJumpOperandsView
+{
+    int instructionByteOffset;
+    int targetTime;
+};
+struct EclVmSpawnThreadInlinePrefixView
+{
+    int inlineBytes;
+    unsigned char inlineData[1];
+};
+typedef char EclVmJumpAndSpawnWireOffsets[
+    (sizeof(EclVmJumpOperandsView) == 8 &&
+     offsetof(EclVmJumpOperandsView, targetTime) == 4 &&
+     offsetof(EclVmSpawnThreadInlinePrefixView, inlineData) == 4) ? 1 : -1];
+
 struct EclVmInstruction
 {
     int time;
@@ -125,6 +146,8 @@ struct EclVmInstruction
         // The same serialized dword is the integer/float bit carrier read
         // by the VM and passed to CALL's typed argument services.
         EclVmScalar scalarOperands[1];
+        EclVmJumpOperandsView jumpOperands;
+        EclVmSpawnThreadInlinePrefixView spawnThreadOperands;
     };
 
     // The encoded size and branch operands are measured in bytes, not
@@ -143,7 +166,13 @@ typedef char EclVmInstructionHeaderOffsets[
      offsetof(EclVmInstruction, integerOperands) == 0x10 &&
      offsetof(EclVmInstruction, floatOperands) == 0x10 &&
      offsetof(EclVmInstruction, scalarOperands) == 0x10 &&
-     sizeof(((EclVmInstruction *)0)->scalarOperands[0]) == 4) ? 1 : -1];
+     sizeof(((EclVmInstruction *)0)->scalarOperands[0]) == 4 &&
+     offsetof(EclVmInstruction, jumpOperands) == 0x10 &&
+     offsetof(EclVmInstruction, jumpOperands) +
+       offsetof(EclVmJumpOperandsView, targetTime) == 0x14 &&
+     offsetof(EclVmInstruction, spawnThreadOperands) == 0x10 &&
+     offsetof(EclVmInstruction, spawnThreadOperands) +
+       offsetof(EclVmSpawnThreadInlinePrefixView, inlineData) == 0x14) ? 1 : -1];
 
 class EclVmHost;
 struct EclVmScriptDatabase;
