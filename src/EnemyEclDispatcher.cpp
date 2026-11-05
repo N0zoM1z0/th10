@@ -975,8 +975,8 @@ struct EnemyDropVectorView
 __declspec(noinline) void __stdcall EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock)
 {
-    const EnemyItemDropCountRadiusView *scatter =
-        reinterpret_cast<const EnemyItemDropCountRadiusView *>(itemDropBlock);
+    EnemyItemDropCountRadiusView *scatter =
+        reinterpret_cast<EnemyItemDropCountRadiusView *>(itemDropBlock);
     float angle = g_RngView.GetRandomF32Signed() * 3.1415927f;
 
     for (int itemIndex = 0; itemIndex < 11; ++itemIndex) {
@@ -1012,19 +1012,24 @@ __declspec(noinline) void __stdcall EnemyDropItemCountsCore(
         }
     }
 
-    memset(itemDropBlock + 1, 0, 12 * sizeof(int));
+    // Clear the eleven counts and the following opaque word, *not* the
+    // separately persisted X/Y radii at packet +0x34/+0x38.
+    memset(scatter->countsByKind, 0,
+        sizeof(scatter->countsByKind) + sizeof(scatter->unknown030));
 }
 
 static __declspec(noinline) void EnemyDropItemCounts(
     const PlayerFloat3 *position, int *itemDropBlock)
 {
-    if (*itemDropBlock > 0) {
+    EnemyItemDropCountRadiusView *scatter =
+        reinterpret_cast<EnemyItemDropCountRadiusView *>(itemDropBlock);
+    if (scatter->mainItemType > 0) {
         g_ItemManager->Spawn(
             reinterpret_cast<const AnmFloat3View *>(position),
-            *itemDropBlock, -1, -1.5707964f, 2.2f);
+            scatter->mainItemType, -1, -1.5707964f, 2.2f);
     }
     EnemyDropItemCountsCore(position, itemDropBlock);
-    *itemDropBlock = 0;
+    scatter->mainItemType = 0;
 }
 
 extern float EnemyRandomAngle();
