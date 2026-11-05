@@ -21,6 +21,20 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-05 Newly accepted Sound BGM format-name lookup
+
+`SoundPlayerView::GetFmtIndexByName @0x0043D2A0` now has one complete
+**227-byte** target-bound original-exact VC7.1 owner. Moving the already
+existing logical-zero format index initialization ahead of path delimiter
+searches restores the original register schedule, matching every byte and
+all four independent target symbols in a fresh five-source `/GL` build.
+The registered canonical `sound-get-fmt-index-by-name` unit then passed a
+second independent cold replay **227/227**, with existing 107-byte Sound
+loader retained. The current generated ledger is **1,484 canonical exact
+functions / 190,131 bytes, including 576 authored / 120,095 bytes**;
+older source-epoch totals below are superseded. See
+[evidence](evidence/sound-getfmt-index-227-exact-20261105/README.md).
+
 ## 2026-11-05 ECL SCPT file-slot reload after validation
 
 At target `0x00450220`, the **589-byte** `EclVmScriptDatabase::AddScriptData`

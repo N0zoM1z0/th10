@@ -41,5 +41,20 @@ Private trial source and original-bound proof:
 `.analysis/gpt-web/20261105-next-sound-fmt/verify-strict.py`,
 `build/gpt-web/20261105-next-sound-fmt/index-before-search/`.
 
-The source checkpoint precedes independent canonical unit cold replay.
-It does not claim whole-game product, runtime equivalence or portability.
+## Independently cold-replayed canonical unit
+
+The `sound-get-fmt-index-by-name` canonical unit is registered with all four
+independent target-bound symbol identities. Selected
+`scripts/repo-python scripts/replay-exact-units.py --unit sound-get-fmt-index-by-name --json`
+ran a **second independent 5-TU VC7.1 SP1 `/GL` cold build** from the installed
+source and accepted the complete **227/227 bytes, 4/4 original fields**.
+The first original-bound source graph is separate from the generated canonical
+artifact `build/match-linked/SoundDataLoaderThread/`; both are current-source
+hash pinned. The unchanged `SoundDataLoaderThread` (107 bytes / 11 fields)
+is also present and exact in that same linked producer, but remains its prior
+single exact ledger entry. Private receipt:
+`.analysis/gpt-web/20261105-next-sound-fmt/canonical-replay.json`.
+
+This adds **one newly accepted authored exact owner / 227 bytes** and not
+partial credit for adjacent nonexact Sound functions. Whole-product build,
+original private ABI, runtime equivalence and portability remain unproven.
