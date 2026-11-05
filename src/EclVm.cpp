@@ -863,100 +863,100 @@ jump_instruction:
 
             case ECL_VM_ADD_INT:
             {
-                int right;
-                stack.Pop('i', sizeof(right), &right);
-                int left;
-                stack.Pop('i', sizeof(left), &left);
-                left += right;
-                stack.Push('i', sizeof(left), &left);
+                EclVmScalar right;
+                stack.Pop('i', sizeof(right.integer), &right.integer);
+                EclVmScalar left;
+                stack.Pop('i', sizeof(left.integer), &left.integer);
+                left.integer += right.integer;
+                stack.Push('i', sizeof(left.integer), &left.integer);
                 break;
             }
 
             case ECL_VM_SUBTRACT_INT:
             {
-                int right;
-                stack.Pop('i', sizeof(right), &right);
-                int left;
-                stack.Pop('i', sizeof(left), &left);
-                left -= right;
-                stack.Push('i', sizeof(left), &left);
+                EclVmScalar right;
+                stack.Pop('i', sizeof(right.integer), &right.integer);
+                EclVmScalar left;
+                stack.Pop('i', sizeof(left.integer), &left.integer);
+                left.integer -= right.integer;
+                stack.Push('i', sizeof(left.integer), &left.integer);
                 break;
             }
 
             case ECL_VM_MULTIPLY_INT:
             {
-                int right;
-                stack.Pop('i', sizeof(right), &right);
-                int left;
-                stack.Pop('i', sizeof(left), &left);
-                left *= right;
-                stack.Push('i', sizeof(left), &left);
+                EclVmScalar right;
+                stack.Pop('i', sizeof(right.integer), &right.integer);
+                EclVmScalar left;
+                stack.Pop('i', sizeof(left.integer), &left.integer);
+                left.integer *= right.integer;
+                stack.Push('i', sizeof(left.integer), &left.integer);
                 break;
             }
 
             case ECL_VM_DIVIDE_INT:
             {
-                int right;
-                stack.Pop('i', sizeof(right), &right);
-                int left;
-                stack.Pop('i', sizeof(left), &left);
-                left /= right;
-                stack.Push('i', sizeof(left), &left);
+                EclVmScalar right;
+                stack.Pop('i', sizeof(right.integer), &right.integer);
+                EclVmScalar left;
+                stack.Pop('i', sizeof(left.integer), &left.integer);
+                left.integer /= right.integer;
+                stack.Push('i', sizeof(left.integer), &left.integer);
                 break;
             }
 
             case ECL_VM_MODULO_INT:
             {
-                int right;
-                stack.Pop('i', sizeof(right), &right);
-                int left;
-                stack.Pop('i', sizeof(left), &left);
-                left %= right;
-                stack.Push('i', sizeof(left), &left);
+                EclVmScalar right;
+                stack.Pop('i', sizeof(right.integer), &right.integer);
+                EclVmScalar left;
+                stack.Pop('i', sizeof(left.integer), &left.integer);
+                left.integer %= right.integer;
+                stack.Push('i', sizeof(left.integer), &left.integer);
                 break;
             }
 
             case ECL_VM_ADD_FLOAT:
             {
-                float right;
-                stack.Pop('f', sizeof(right), &right);
-                float left;
-                stack.Pop('f', sizeof(left), &left);
-                left += right;
-                stack.Push('f', sizeof(left), &left);
+                EclVmScalar right;
+                stack.Pop('f', sizeof(right.real), &right.real);
+                EclVmScalar left;
+                stack.Pop('f', sizeof(left.real), &left.real);
+                left.real += right.real;
+                stack.Push('f', sizeof(left.real), &left.real);
                 break;
             }
 
             case ECL_VM_SUBTRACT_FLOAT:
             {
-                float right;
-                stack.Pop('f', sizeof(right), &right);
-                float left;
-                stack.Pop('f', sizeof(left), &left);
-                left -= right;
-                stack.Push('f', sizeof(left), &left);
+                EclVmScalar right;
+                stack.Pop('f', sizeof(right.real), &right.real);
+                EclVmScalar left;
+                stack.Pop('f', sizeof(left.real), &left.real);
+                left.real -= right.real;
+                stack.Push('f', sizeof(left.real), &left.real);
                 break;
             }
 
             case ECL_VM_MULTIPLY_FLOAT:
             {
-                float right;
-                stack.Pop('f', sizeof(right), &right);
-                float left;
-                stack.Pop('f', sizeof(left), &left);
-                left *= right;
-                stack.Push('f', sizeof(left), &left);
+                EclVmScalar right;
+                stack.Pop('f', sizeof(right.real), &right.real);
+                EclVmScalar left;
+                stack.Pop('f', sizeof(left.real), &left.real);
+                left.real *= right.real;
+                stack.Push('f', sizeof(left.real), &left.real);
                 break;
             }
 
             case ECL_VM_DIVIDE_FLOAT:
             {
-                float right;
-                stack.Pop('f', sizeof(right), &right);
-                float left;
-                stack.Pop('f', sizeof(left), &left);
-                left /= right;
-                stack.Push('f', sizeof(left), &left);
+                EclVmScalar right;
+                stack.Pop('f', sizeof(right.real), &right.real);
+                EclVmScalar left;
+                stack.Pop('f', sizeof(left.real), &left.real);
+                left.real /= right.real;
+                stack.Push('f', sizeof(left.real), &left.real);
                 break;
             }
 

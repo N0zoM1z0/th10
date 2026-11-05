@@ -86,6 +86,13 @@ is already correct). They must **not** be marked exact.
 | --- | --- | --- |
 | ANM | Header +6 has one typed 16-bit variable-argument mask. JUMP and JUMP_DEC use typed byte-displacement/time wire records. RENDER_STATE and timed color/alpha/scale opcodes now use typed halfword and mode-byte payloads. **All four** value/lvalue instruction macros in the full 9,964-byte executor use `variableArgs.bits` | [Typed pointer mask](evidence/anm-typed-pointer-operand-mask-20261105/README.md): fresh five-source strict **350/350** original-bound fields, including 95 locals; **9,962/9,964** original bytes, still NONEXACT. Affected pointer leaves **288/288 exact**. Private `build/gpt-web/20261105-anm-pointer-mask/current/`. Earlier full-mask [proof](evidence/anm-instruction-variable-mask-overlay-20261105/README.md) belongs to its own source epoch. |
 | Enemy dispatcher / GUI | Native item-drop `itemDrops` 0x3C-byte packet at runtime +0x13CC, raw indexed-word alias, life-gauge/callback-life fields, and the shared 16-bit ECL instruction header. The 14,416-byte big dispatcher now uses a typed pattern-byte-cursor helper without hoisting its signed arithmetic across operand reads | [Shared Enemy ECL header / pattern cursor](evidence/enemy-ecl-shared-instruction-pattern-20261105/README.md): fresh 11-TU **14,352 candidate bytes / 716 candidate fields** with zero candidate ordinary differences versus the previous pinned graph; BeginSpell and three other complete owners preserved. Selected native `ReadIntArgument` **16/16 exact**. [Raw drop overlay](evidence/enemy-drop-raw-word-overlay-20261105/README.md) scoped selected leaves **696/696 exact**. The 14,416-byte original big dispatcher remains NONEXACT. |
+[ECL arithmetic scalar stack words](evidence/ecl-arithmetic-stack-scalar-20261106/README.md):
+all nine integer/float math opcodes now use the same 32-bit stack word as
+Push/Pop and operand readers. Fresh 2-TU complete Run still **7,020 bytes**,
+**189** original fields and **6,997** matching original ordinary bytes;
+StartSubroutine call field geometry remains stable, selected stack helpers
+**218/218 exact**. Neither large function is newly exact.
+
 [ECL CALL counted-name and scalar descriptor](evidence/ecl-call-counted-inline-name-20261106/README.md):
 StartSubroutine now uses a native typed name byte-count/name prefix at
 full instruction +0x10/+0x14 and a tagged descriptor scalar overlay at +4.
@@ -188,7 +195,7 @@ Enemy.hpp          f34369ef9e3c2e45e4d3fa2f71054b5e5750e173e1e5166da48e62d6dee5f
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
 EnemyEclDispatcher.cpp 445b1a33e110dbb871fd8c1bda20b1c11c1b4791d662dbd5fa9ad313112afa54
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
-EclVm.cpp          9ed17001b07a7271273bdfee1dbe7027031498161a65996ed350481c0558a612
+EclVm.cpp          468d49050f66e9969525027faed0724764fee70416c597359d19dd584fe2a364
 EclVm.hpp          b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52
 AnmManager.cpp     b4aefba570e98e5753bce501d7f38954de9c34080818d260c575be703f17c2f5
 AnmManager.hpp     267be9344aa302eef89f111aba8f621ebe9618fa0f8ff50c0c28a9e3b03d9818
