@@ -36,29 +36,41 @@ Its 589-byte AddScriptData callee is *still nonexact*.
 
 Subsequent source changes typed the full 14KB Enemy ECL interpreter's
 dynamic operand, spell/name, laser, ANM VM and runtime data fields.
-The latest candidate has a **14,352-byte PDB extent, not 14,352 equal
-original bytes**; the original function is **14,416 bytes**. 716
-candidate link-field positions/types remained stable in the last
-candidate-to-candidate comparisons, but this does not imply full
-original-target linkage identity. The source remains NONEXACT.
+A fresh **eleven-source** current-source link retains a **14,352-byte
+PDB extent, not 14,352 equal original bytes**; the original function is
+**14,416 bytes**. All **716 candidate linked-field positions/types**
+remain stable against its preceding source epoch. The separately owned
+`EnemyBeginSpell @0x00409280` candidate is **now 2,432 bytes** with 108
+fields, equal in extent to its original 2,432-byte owner after recovering
+two child-node owner reloads; **the old 2,424-byte candidate is superseded**.
+Equal sizes and candidate-field agreement do not imply full original-target
+linkage identity. **Both ECL bosses remain NONEXACT.** Latest native graph:
+`build/gpt-web/20261105-handoff-current/complete-ecl/` with SHA-pinned
+current source. See [latest handoff native receipt](evidence/handoff-maintenance-20261105/current-native-frontiers.json).
 The ANM 9,964-byte executor now retains sequentially evaluated opcode-91
 child arguments with 9,962/9,964 strict bytes; this source edit was
 **installed**, not reverted as an older experimental note below suggests.
+The complete `EclVmContext::Run` is still 7,020 target/candidate bytes,
+with 189 positioned linkage fields and 23 original-target ordinary
+differences. Its current source includes **typed FORMAT numeric operand
+reads** as well as typed variable-length instruction cursors and tag
+records; earlier notes suggesting only the tag edit was retained are stale.
 The ECL script-table insertion is a 570-byte candidate against a
 589-byte target. ResultMenu, Popup and Chain recovered typed task
 ownership and callbacks while preserving selected existing exact owners.
 [Current frontier and source pins](RE_HANDOFF.md).
 
-**Storage correction (2026-11-05):** the currently expanded
-build/gpt-web tree contains 13 selected frontier witness subtrees
-(199 generated files), not every older diagnostic graph. Another 7,243
-files are recoverable from a verified local 13,907,599-byte zstd archive
-after checking the private per-file SHA-256 manifest. All canonical
-build/match-linked output, source, original target, pinned tools, Ghidra,
-previous archives and research scripts remain retained. Older October/
-November experiment README paths may need selective restoration.
-See [current artifact inventory](RE_ARTIFACTS.md) and the
-[Nov 5 audited cleanup](evidence/handoff-storage-20261105/README.md).
+**Storage correction (later 2026-11-05 handoff):** the previously
+reported 13 expanded witness subtrees / 199 files described the **first**
+Nov 5 cleanup, not the subsequently expanded workspace. A second verified
+archive preserved 1,581 further regenerable files in a 3,292,104-byte zstd
+tar, while retaining **311 expanded witness files** (14,079,534 payload
+bytes) and all canonical `build/match-linked` producers, source, original
+target, toolchain, Ghidra, prior archives and research scripts. Selected
+restoration was tested; see [latest artifact inventory](RE_ARTIFACTS.md)
+and [next-agent storage receipt](evidence/handoff-maintenance-20261105/README.md).
+Old archive names remain part of the recovery history and must not be
+confused with current exact-codegen claims.
 
 Historical compiler evidence referenced below remains tied to the
 source epoch in which it was measured. Always use the live ledgers and

@@ -1,244 +1,162 @@
-# TH10 reconstruction — current agent handoff (2026-11-05)
+# TH10 reconstruction — next-agent handoff (2026-11-05)
 
-**Read this first when taking over.** The source checkpoint reviewed here is
-**f91f0e8** (typed Enemy cancellation loop), following the current spell
-history and stage ANM accessors. Always inspect `git status` and `git log`
-before editing: even a clean checkpoint is not target-exact admission, and
-later source/experiment receipts can supersede any observation here.
-Do not assume any historical dated experiment describes the currently
-installed source. The function/match/origin ledgers and generated PROGRESS.md,
-not old handoff counts, determine exact credit and attribution.
+**Start with this page, not a dated experiment log.** The last reviewed
+**source** checkpoint before this handoff cleanup is **`77dc82a`**; later
+commits may only update documentation. Always inspect the actual `git HEAD`,
+`git status` and current source hashes before interpreting any old receipt.
+This workspace's last checked local `main` was clean, **29 commits ahead of
+`origin/main`**, and had **not been pushed**. A different checkout may differ.
 
-## Start here (no full cold replay)
+## Five-minute recovery and rules
 
-    git status --short --branch
-    git log -8 --oneline
-    scripts/repo-python scripts/verify-target.py
-    scripts/repo-python scripts/verify-toolchain.py --check
-    scripts/repo-python scripts/validate-tracking.py
-    scripts/repo-python scripts/ci.py
+```sh
+git status --short --branch
+git log -8 --oneline
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/verify-toolchain.py --check
+scripts/repo-python scripts/validate-tracking.py
+scripts/repo-python scripts/ci.py
+```
 
-The sole valid original target is privately supplied Japanese TH10 v1.00a,
-resources/th10.exe, 487,936 bytes, SHA-256
-2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
-The original executable, pinned VC7.1 SP1 and Wine toolchain under .tools,
-Ghidra project, private archives and ignored experiment images are **not
-committed** and must be transferred separately to a different workspace.
+- Only the private **Japanese TH10 v1.00a** original at `resources/th10.exe`
+  is an accepted target. Size **487,936**; SHA-256
+  `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+  Keep the original read-only, ignored and out of Git.
+- Actual source, Git history, unfinished dirty changes and independently
+  accepted exact units take priority over old notes. Do not dismiss dirty
+  files as another agent's work; inspect and complete them.
+- Make natural VC7.1 source changes to **complete large and small functions**.
+  Commit substantive checkpoints as **`gpt-web: ...`**, author
+  `N0zoM1z0 <1705004398@qq.com>`, with
+  `Co-authored-by: gensokyo-dev <342580529+gensokyo-dev@users.noreply.github.com>`.
+  **Do not push** without explicit authorization.
+- Always specify selected `--unit` names for an existing exact regression;
+  **never** invoke the full historical cold replay by omitting selectors.
+  Check the complete linked PDB/COFF owner, not a cropped function fragment.
+- Equal candidate sizes, unchanged candidate machine code, source presence
+  and old Ghidra names **do not** grant exact credit. New exact acceptance
+  requires the entire original body, correctly bound relocations/fields,
+  local/table destinations and callee/ABI obligations.
 
-Preserve and finish dirty changes; do not assume another worker caused them.
-Use substantive, separate commits with subject **gpt-web: ...**, established
-N0zoM1z0 author identity and gensokyo-dev co-author trailer. Never push
-without a separate instruction.
+## Current canonical ledger (from `docs/PROGRESS.md`)
 
-## Verified ledger snapshot
-
-| Generated measure at this handoff | Current value |
+| Counted measure | Value |
 | --- | ---: |
-| Reviewed target functions / boundaries | 1,829 / 1,829 |
-| Source-present function mappings | 1,309 |
-| Canonical byte-exact functions | **1,482** |
-| Canonical exact codegen bytes | **189,797** |
-| Confirmed authored functions / code bytes (provisional) | 750 / 276,120 |
-| Confirmed-authored exact functions / code bytes | 574 / 119,761 |
-| Confirmed-authored source-present nonexact backlog | 176 |
-| Classified exclusions / origin-indeterminate entries | 520 / 559 |
+| Reviewed target boundaries | **1,829 / 1,829** |
+| Source-present function mappings | **1,309** |
+| Canonical original-target exact functions | **1,482** |
+| Canonical original-target exact codegen bytes | **189,797** |
+| Confirmed-authored functions / bytes (provisional) | **750 / 276,120** |
+| Confirmed-authored exact functions / bytes | **574 / 119,761** |
+| Confirmed-authored source-present nonexact backlog | **176** |
+| Origin-excluded / origin-indeterminate entries | **520 / 559** |
 
-These values come from PROGRESS.md as checked on 2026-11-05. The previously
-printed **1,478 / 189,217**, **570 / 119,181** and **181 backlog** were
-stale. Run scripts/repo-python scripts/progress.py after actual ledger
-changes; do not manually edit its generated output. Source presence,
-source-shape improvements, equal-sized functions and historical byte scores
-do not add codegen-exact credit. A byte-exact function also does not prove
-that its original source was handwritten, that the game links, or that it runs.
+These are generated ledger values, **not** cumulative estimates from
+individual evidence README files. Recompute `scripts/repo-python
+scripts/progress.py` only after a ledger edit. They say nothing about
+original handwritten provenance or a linked/runnable Windows product.
 
-## Recent actual source progress — big bosses AND leaves
+## Important incomplete owners — verified status, not wishful exactness
 
-- **Full Enemy ECL instruction dispatcher**, target 0x0040E770 / 14,416
-  bytes, in src/EnemyEclDispatcher.cpp: real typed bullet pattern and
-  difficulty fields, laser storage, player/world motion, timeout callbacks,
-  opcode/header/variable-length ECL arguments and names, and ANM VM
-  position/rotation/geometry fields have replaced many raw offset casts.
-  Latest full real 11-source VC7.1 /GL PDB candidate **14,352 bytes** with
-  **716 linked fields**. The latest confirmed batch 652113c typed the real
-  position/scalar interpolation timers; their independent 50-byte COFF helpers
-  each match the original 50-byte code shape (one exactly resolved DIR32), but
-  this deliberately changes **18 ordinary candidate-to-candidate bytes** in
-  the 14KB dispatcher (two independent store-scheduling regions) without
-  changing extent or linked-field geometry. Earlier typed boss slot, world
-  coordinates, and bullet-offset vector work preserved the prior candidate's
-  ordinary bytes; evidence is source-epoch-specific.
-  **14,352 / 14,416 are sizes, NOT 14,352 matching original-target bytes**.
-  The full owner is still **NONEXACT**; its 716 fields are diagnostic, not a
-  canonically accepted full original-target binding contract.
-  The subsequent typed spell-history accessor, 24 stage ANM resource loads,
-  199-byte cancellation leaf and typed batch-cancellation loop all preserve
-  **14,352 candidate bytes / 716 field positions** against the exact
-  previous source epoch. This remains a candidate-to-candidate comparison,
-  not original-target equality. Current evidence:
-  evidence/spell-history-record-accessor-20261105/README.md,
-  evidence/enemy-stage-animation-resource-typed-20261105/README.md,
-  evidence/enemy-cancel-typed-runtime-record-20261105/README.md,
-  evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md.
-  Latest whole graph: build/gpt-web/20261105-cancel-manager/typed-cancel-manager-all-bullets/.
-- **ANM ExecuteScript**, target 0x0043EE30 / 9,964 bytes,
-  src/AnmManager.cpp: sequential opcode-91 child-script/layer evaluation
-  is installed (eb854c4), not reverted. The 4ba28ab source now also models
-  all three normal/interrupt byte-sized steps with
-  `AnmRawInstructionView::Next()` and all three script-offset jumps with
-  `AtByteOffset`, with native header offset assertions. A freshly linked real
-  five-source VC7.1 `/GL /GS` graph retains **9,962/9,964 strict original
-  bytes**, including **350 target-bound fields / 95 local destinations**.
-  The only remaining mismatches are +0x113/+0x115 ECX-vs-EDX argument
-  transport; four scoped canonical ANM units cold-replayed **1001/1001**.
-  The large function remains **NONEXACT**, no forced-register ABI.
-  Evidence: evidence/anm-boss-typed-instruction-walk-20261105/README.md;
-  current image: build/gpt-web/20261105-followup-anm/typed-instruction-next/.
-- **EnemyBeginSpell**, target 0x00409280 / **2,432 bytes**:
-  the full 11-source VC7.1 /GL owner remains **2,424 bytes**, with 108
-  linked fields and a seven-entry owned switch table. The maintained source
-  now reads the real full enemy world position at +0x1068, uses the shared
-  `GameStatisticsRecord::SpellHistoryAt()` to access the 0x90-byte spell
-  entry, and increments **attempts** at +0x84 (NOT captures). Successful
-  `EnemyEndSpell` increments **captures** at +0x80; the exact 1,057-byte
-  `UpdateSpellPanel` reads the two different counters. The manager's ANM
-  resource slot +0x38 is typed, including all 24 reloads across seven stage
-  arms. Original vs candidate still differ, so **NONEXACT**.
-  Evidence: evidence/spell-history-record-accessor-20261105/README.md,
-  evidence/spell-panel-record-accessor-20261105/README.md and
-  evidence/enemy-stage-animation-resource-typed-20261105/README.md.
-- **Exact small ECL helpers and cancellation loop**:
-  `EnemyConfigureInterrupt` @0x412720 remains target-exact **48/48** with
-  typed callback slots and preserved pointer lifetime.
-  `EnemyCancelBulletRecord` @0x408030 remains target-exact **199/199** after
-  replacing raw state, VM pending interrupt, position, effect script, timer
-  and flags accesses with actual `BulletRuntimeView` fields. The enclosing
-  `EnemyCancelManagerView::CancelAllBullets` also gained typed state,
-  collision, color, and marker accesses; no independent exact credit is
-  claimed for that larger owner. Position/scalar interpolator helpers retain
-  their independent 50-byte shape matches, with non-unique attribution.
-  Evidence: evidence/enemy-interrupt-typed-exact-20261105/README.md,
-  evidence/enemy-cancel-typed-runtime-record-20261105/README.md,
-  evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md.
-- **ECL Run**, target 0x0044E1A0 / 7,020 bytes: full current source-epoch
-  graph after the ECL byte-cursor and FORMAT argument-tag changes still has
-  **7,020 candidate bytes**, 189 positioned linkage fields and **23
-  ordinary original-target mismatches**. They include index-register,
-  x87 order and FORMAT stack-home differences. A fully typed FORMAT value
-  access was **rejected** after shrinking the candidate to 6,940 bytes;
-  only the type-tag change is retained. This is a linkage-geometry diagnostic,
-  not a canonical exact acceptance. Evidence:
-  evidence/ecl-run-byte-cursor-typed-20261105/README.md and
-  evidence/ecl-format-tag-typed-20261105/README.md.
-- **EclVmScriptDatabase::AddScriptData**, target 0x00450220 / 589 bytes:
-  current src/EclVm.cpp models the old table pointer and input offset
-  cursor as reloadable pointer locals (22ca6b5). Real 5-TU /GL source
-  candidate **570 bytes**, up from 547; retains original REP MOVSD copy
-  and conditional release. Remains NONEXACT. The external caller
-  EnemyEclResourceView::LoadFile is separately exact 95/95.
-  evidence/ecl-add-script-data-cursor-lifetimes-20261104/README.md.
-- **Popup Draw**, target 0x0042B780 / 540 bytes: current typed 723-row
-  storage/accessor and `loadedDigitAnm` resource pointer at owner +0x10
-  in ScriptViewerOwners.hpp and ScriptViewerPopupCreate.cpp. Whole PDB Draw
-  candidate **537 bytes** and factory **71 bytes** retain their prior candidate
-  codegen; the 10-byte draw callback still mismatches three non-field bytes.
-  All three remain NONEXACT. Constructor, Update and Update callback remain
-  exact **134 + 134 + 7**; selective native replay passed **275/275**.
-  Evidence: evidence/popup-digit-resource-typed-20261105/README.md.
-- **ResultMenu Chain owners**: real update/draw ChainElem pointers at
-  +0x08/+0x0C, native 0x2C8 object. Exact constructor 101,
-  initialization 142, factory 67, cleanup 311, all retained after typed
-  source replacement (6a9216a). The independent MarkTasks @0x422200
-  remains **26-byte candidate / 28-byte original**, nonexact due to
-  private receiver/register ordering.
-  evidence/result-menu-typed-chain-ownership-20261104/README.md.
-- **Chain::AllocElem**, target 0x449ED0 / 74 bytes: source now writes the
-  real callback/addedCallback/deletedCallback fields with offset asserts
-  (e30dd9b). The 74-byte candidate is ordinary-byte identical to the
-  previous candidate but still **22 ordinary mismatches vs target**.
-  The 59-byte Chain sentinel constructor also remains NONEXACT.
-  evidence/chain-typed-allocator-callbacks-20261104/README.md.
-- **ItemManager Draw**, target 0x41B8E0 / 281 bytes: two typed cursors,
-  target-shaped x87 source operands, actual 281-byte candidate but
-  remaining x87 lifetime and 14 address-field placement differences;
-  NONEXACT. Existing 84-byte callback registration, 216-byte destructor
-  and 185-byte factory are independently accepted exact.
-  evidence/item-draw-x87-operand-order-20261104/README.md.
-- **Leaf near matches**: TextRenderBufferView::InvertAlpha @0x437160
-  is 156/157, +0x69 JL vs target JS (natural JS variants disturb 19
-  other bytes); BulletRuntime::UpdateAbsoluteDirectionChange @0x4078E0
-  is 333/335; SoundPlayerView::PreloadBgm @0x43D7D0 is 365/369
-  with 10 field bindings (ReadFile EAX/EDX swap); EnemyEclHostBaseView::
-  SetSubroutine @0x450700 is 24/30; SoundDataLoaderThread @0x43D080
-  has a target 107-byte body but the latest full real producer emitted
-  112. No exact credit. Private experiments under
-  .analysis/gpt-web/20261104-current/ record negative controls.
-- **Other medium/large active fronts**: 274-byte laser list updater,
-  226-byte type-0 laser CheckPoint, 359-byte Player option trail,
-  335-byte Bullet direction changer, 540-byte Popup Draw, 645-byte GDI
-  bitmap compositor, 2,320-byte Item update, 9,964-byte ANM and 14,416-byte
-  Enemy ECL dispatcher. Target specific owners and compare complete
-  bodies; do not spend an entire session on tiny leaf-only work.
+| Target owner | Original bytes | Best documented candidate | Evidence and next challenge |
+| --- | ---: | --- | --- |
+| `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | **14,416** | **14,352**; 716 candidate linked fields | Current **fresh 11-source** local graph below. Still NONEXACT; 64-byte size gap, target-field binding work remains |
+| `EnemyBeginSpell @ 0x00409280` | **2,432** | **2,432**; 108 linked fields | **Corrected from stale 2,424**. Two child-node owner reloads recovered target-sized body and seven switch-table destinations; still NONEXACT |
+| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | **9,964** | **9,962/9,964** original bytes; 350 fully target-bound fields, 95 local destinations | Last two differences `+0x113`, `+0x115`: opcode 91 layer EDX vs ECX; still NONEXACT |
+| `EclVmContext::Run @ 0x0044E1A0` | **7,020** | **7,020**; 189 positioned fields, 23 ordinary target-byte differences | Typed byte cursor, FORMAT tag **and numeric operands** retained; still NONEXACT |
+| `EnemyFullObjectView` constructor @ `0x0040D830` | **673** | **672**; 5 linked fields | Target frame/register/initialization scheduling differs; NONEXACT |
+| `BulletRuntimeView::AdvanceTransformProgram @ 0x00406D90` | **1,454** | **1,540** normal COFF; 32 relocations | Signed halfword in child pattern restored; real large owner NONEXACT |
+| `TextRenderBufferView::InvertAlpha @ 0x00437160` | **157** | **157**, one normal COFF byte off | Conditional `JL` vs original `JS`; prior natural rewrites often grow other diffs |
+| `SoundDataLoaderThread @ 0x0043D080` | **107** | **112** in real five-source graph | Extra index/register lifetime; NONEXACT |
 
-## Newly accepted exact function to retain
+Other open owners: `EclVmScriptDatabase::AddScriptData` 589 target vs
+570 candidate, Popup Draw 540 target vs 537, `ItemManagerView::Draw`
+281 vs 281 (x87/linked fields differ), `ResultMenuMarkTasks` 28 vs 26,
+`GameStatisticsOwner` constructor 132 vs 137, and the 335-byte absolute
+bullet-direction changer with two register-choice bytes. Those values
+come from particular prior compiler contexts; **recheck their current
+source/header pins before claiming a new measurement**.
 
-EnemyEclResourceView::LoadFile at **0x0040CD20**, 95/95 original bytes,
-was accepted by **two independent** real VC7.1 /GL linked colds with
-**five exhaustive target-bound fields**. The critical correction is the
-natural private EAX filename interface of the real
-FileSystem::OpenFile @0x0044B360; the isolated earlier caller pushed the
-filename on the stack and did not match. The new canonical unit is
-enemy-ecl-resource-load-file-0040cd20. Its separately nonexact
-AddScriptData callee gains **no extra exact credit**.
-Evidence: evidence/enemy-ecl-loadfile-real-filesystem-exact-20261104/README.md.
+## Latest real native witness and source-epoch cautions
 
-Other useful accepted boundaries include ItemManager's factory 185,
-destructor 216 and registration 84; Real FileSystem::OpenFile 360;
-ANM CreateVmVariant2 73; ResultMenu's four owners 621 combined; and
-the exact Chain/Popup helpers noted above. These examples are
-not an exhaustive canonical list: search config/matches.csv and
-config/match-units.toml for exact unit names and accepted field contracts.
+- **Fresh current ECL graph (11 TUs, no stale support objects):**
+  `build/gpt-web/20261105-handoff-current/complete-ecl/` (ignored).
+  `src/EnemyEclDispatcher.cpp` SHA-256
+  `9c270b89dd61dda01896261de742b5d4ff2b1dc3405ab102af933bcf62efa0fc`.
+  It confirms complete 2,432-byte `EnemyBeginSpell`, 14,352-byte dispatcher,
+  162-byte death finalizer, 672-byte constructor and 330-byte camera owner.
+  Compared to an **older candidate**, only the ECL dispatcher's SIB encoding
+  at `+0x271F` differs; this is *not* a strict original-target match.
+  Receipt: [current native frontiers](evidence/handoff-maintenance-20261105/current-native-frontiers.json).
+- **ANM near-exact five-source graph:**
+  `build/gpt-web/20261105-followup-anm/typed-instruction-next/` (ignored).
+  Installed `AnmManager.cpp` SHA-256
+  `84e2d02b5dba569beace359926316473a4d784a40c4166f5b67468d38f007b10`;
+  `AnmManager.hpp` SHA-256
+  `ffb3ea5d5493607d9e4f97cbec8ed8f568d7972aa0d3fccfe5882878055bd69b`.
+  Strict two-byte result is not a canonical exact admission. See
+  [typed variable-mask leaves](evidence/anm-typed-variable-mask-leaves-20261105/README.md).
+- **ECL Run last dedicated comparison:**
+  `build/gpt-web/20261105-continuation-ecl-run/ecl-format-int-and-float-words/`
+  (ignored). Its direct ECL source is at a different graph epoch; re-pin
+  dependent headers/support objects before further target claims. See
+  [typed FORMAT numeric operands](evidence/ecl-vm-format-typed-scalar-words-20261105/README.md).
+- **Full ECL Boss source improvements already installed:** typed Type-0/1
+  laser request fields, positions and pattern copies, real dynamic ANM
+  resource arrays, typed 13 binary32 spawn operands, native bullet-pattern
+  `0x2C4` base / `0x210` stride, cancel flag and laser control word.
+  See [laser work](evidence/enemy-ecl-typed-type1-laser-20261105/README.md),
+  [pattern arithmetic](evidence/enemy-ecl-native-pattern-arithmetic-20261105/README.md),
+  and [cancel flags](evidence/enemy-ecl-spell-flags-laser-control-20261105/README.md).
+- **Shared state now spans several source owners:** spell-history
+  `captures +0x80` vs `attempts +0x84` are *different* counters;
+  `GameScoreStateView.history` types statistics groups at +0x28/+0x2C;
+  constructor/ECL/item drop use the same 0x3C mixed drop packet.
+  [Score selector evidence](evidence/shared-score-history-group-fields-20261105/README.md),
+  [spell node lifetime](evidence/enemy-spell-second-child-branch-20261105/README.md),
+  [drop layout](evidence/enemy-shared-drop-packet-layout-20261105/README.md).
 
-## Scoped continuation workflow
+## Specific bounded replay and checking workflow
 
-1. Inspect dirty files and match the target SHA. Read the maintained source
-   and its current exact-unit recipe, not an arbitrary historical PDB.
-2. Examine complete target bytes and the **whole** compiled PDB/COFF
-   function. Check real source/headers, compiler profile, linker entry,
-   all original address fields and fixed local/callee obligations.
-3. Make a small real source change and compile **only its actual source
-   graph**. For a true exact addition require independent complete
-   original-target, field-bound colds. Never score a function exact
-   by size, a candidate-to-candidate match, or partial byte overlap.
-4. Replay only affected existing exact units, explicitly naming --unit.
-   Examples:
+```sh
+# Name the exact units actually touched; never omit --unit.
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit enemy-set-laser-position --unit enemy-find-laser --json
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit enemy-end-spell --json
+scripts/repo-python scripts/ci.py
+git diff --check
+```
 
-       scripts/repo-python scripts/replay-exact-units.py \
-         --unit enemy-read-int-argument \
-         --unit enemy-read-raw-float-argument --json
-       scripts/repo-python scripts/replay-exact-units.py \
-         --unit chain-register-calc \
-         --unit result-menu-initialize --json
+A shared public header change may require recompiling affected support
+translation units for a fresh 11-source graph. Reuse an object **only** after
+verifying its original source/profile **and transitive header** inputs; do
+not mix objects from different source epochs. In particular the earlier
+`20261105-float-ops` graph is *not* the latest compiled source even though
+an older report compares its bytes to the current boss.
 
-5. Run scripts/repo-python scripts/ci.py (seven light stages),
-   scripts/repo-python scripts/progress.py --check if a ledger changed,
-   and git diff --check. Commit substantive verified milestones separately.
-   **Never run the full-cohort cold replay by omitting --unit.**
+Previously failed variants worth **not** repeating without a new lead:
+ANM opcode-91 direct-call, volatile layer, field-order and sign changes;
+ECL FORMAT fully typed parameter-pointer rewrite (reduced function size);
+ECL POINT_ANGLE volatile/staged values (codegen regression); Text alpha
+mask/sign rewrites (disrupt other instruction bytes); and SoundDataLoader
+unsigned-index/volatile alternatives. Local scripts and receipts are under
+ignored `.analysis/gpt-web/`, with older compiler graphs selectively archived.
 
-## Storage and transfer: read RE_ARTIFACTS.md
+## Storage, preservation and transfer
 
-build/match-linked and every existing private input are protected. Old
-experiment PE/MAP/PDB outputs may be archived and selectively restored,
-not assumed expanded; a historic artifact is not current-source proof.
-Evidence markdown and numeric receipts remain committed. The latest
-storage inventory, exact preserved witness paths, restore commands and
-per-file verified archive SHA-256 are in RE_ARTIFACTS.md and
-evidence/handoff-storage-20261105/README.md. As of November 5, the
-previous 269 MiB build/gpt-web expansion has been reduced to about
-9.1 MiB by archiving 7,243 fully attested experiment files; 13 selected
-frontier subtrees and all canonical build/match-linked outputs remain.
-**Private archive bytes are not in Git.** For a new
-workspace, Git alone will not provide the original game, pinned VC7.1
-toolchain, Wine prefix, Ghidra database or ignored private archives.
+Read [RE_ARTIFACTS.md](RE_ARTIFACTS.md) and the
+[latest cleanup receipt](evidence/handoff-maintenance-20261105/README.md).
+The new guarded cleanup reduced expanded `build/gpt-web` to **311 files /
+14,079,534 payload bytes**, retaining the frontier graphs above. Another
+**1,581** historical/failed/older-epoch files were **verified and archived**
+in `.analysis/archive/gpt-web-extra-graphs-20261105.tar.zst` (local, ignored),
+with per-file private SHA-256 manifests and selective restore instructions.
+Other protected private archives also remain retained.
 
-The complete original Windows executable, real game runtime, authorship,
-product linking, semantics and portability are still separate open phases.
+**Git alone cannot transfer** `resources/th10.exe`, `.tools/` (VC7.1 and
+Wine), Ghidra project, `_reference/`, ignored compiled witnesses, archives
+or manifests. A new machine needs those inputs transferred separately and
+verified; do not commit them. Never delete the old archives or
+`build/match-linked/` merely to obtain extra space. The previous storage
+figures of **13 expanded witnesses / ~9 MB** were historical, not current.
