@@ -154,13 +154,12 @@ void EnemyEndSpell(EnemyGameStateView *state)
                 reinterpret_cast<unsigned char *>(&g_GameScoreState) + 0x2c);
             const int group = groupA * 3 + groupB;
             GameStatisticsRecord *row = &g_GameStatisticsRows->records[group];
-            GameStatisticsSpellHistoryEntryView *record = reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(
-                reinterpret_cast<unsigned char *>(row) + state->spellId * 0x90 + 0x59c);
+            GameStatisticsSpellHistoryEntryView *record =
+                row->SpellHistoryAt(state->spellId);
             if (record->captures < 99999)
                 ++record->captures;
             row = &g_GameStatisticsRows->records[6];
-            record = reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(
-                reinterpret_cast<unsigned char *>(row) + state->spellId * 0x90 + 0x59c);
+            record = row->SpellHistoryAt(state->spellId);
             if (record->captures < 99999)
                 ++record->captures;
         }

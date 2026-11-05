@@ -738,24 +738,20 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
 
     if (reinterpret_cast<const EnemySpellPlaybackGateView *>(
             g_EnemySpellPlaybackState)->stateCode10 != 1) {
-        unsigned char *statistics = g_EnemySpellStatistics;
-        int spellOffset = spellId * 0x90;
-        GameStatisticsSpellHistoryEntryView *record =
-            reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(statistics +
-                (g_EnemyChapterState.statisticsGroupA * 3 +
-                 g_EnemyChapterState.statisticsGroupB) *
-                    0x437c + spellOffset + 0x5a4);
+        GameStatisticsOwner *statistics =
+            reinterpret_cast<GameStatisticsOwner *>(g_EnemySpellStatistics);
+        GameStatisticsSpellHistoryEntryView *record = statistics->records[
+            g_EnemyChapterState.statisticsGroupA * 3 +
+            g_EnemyChapterState.statisticsGroupB].SpellHistoryAt(spellId);
         strcpy(record->name, name);
-        record = reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(statistics +
-            (g_EnemyChapterState.statisticsGroupA * 3 +
-             g_EnemyChapterState.statisticsGroupB) *
-                0x437c + spellOffset + 0x5a4);
+        record = statistics->records[
+            g_EnemyChapterState.statisticsGroupA * 3 +
+            g_EnemyChapterState.statisticsGroupB].SpellHistoryAt(spellId);
         int count = record->attempts;
         if (count < 99999) {
             record->attempts = count + 1;
         }
-        record = reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(
-            statistics + spellOffset + 0x19a8c);
+        record = statistics->records[6].SpellHistoryAt(spellId);
         strcpy(record->name, name);
         if (record->attempts < 99999) {
             ++record->attempts;
