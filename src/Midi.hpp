@@ -85,7 +85,7 @@ public:
     ~MidiOutputView();
     void ReleaseTracks();
     int LoadTrackFile(int fileIndex);
-    int UnprepareHeader(MIDIHDR *header);
+    __declspec(noinline) int UnprepareHeader(MIDIHDR *header);
     int StopPlayback();
     void ResetTracks();
     virtual void Tick();

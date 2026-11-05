@@ -1,4 +1,6 @@
 #include "Midi.hpp"
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
 #include <stdlib.h>
 #include <string.h>
 
@@ -142,6 +144,7 @@ int MidiOutputView::StopPlayback()
         timeKillEvent(timerId);
     timeEndPeriod(timerPeriod);
     timerId = 0;
+    _ReadWriteBarrier();
 
     if (outputHandle != NULL) {
         midiOutReset(outputHandle);
