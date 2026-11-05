@@ -173,6 +173,15 @@ typedef char EnemyBulletExtraFieldsNativeOffsets[
      offsetof(EnemyBulletExtraView, value0C) == 0x0c &&
      offsetof(EnemyBulletExtraView, value10) == 0x10 &&
      offsetof(EnemyBulletExtraView, value14) == 0x14) ? 1 : -1];
+// ECL opcode 0x199 addresses these 0x18-byte slots from the first
+// pattern's +0x20. There are 0x16 slots per 0x210-byte pattern stride.
+// This is an *overlapping* view of pattern storage, not a second array:
+// entries 20/21 alias the normal pattern tail and the next pattern's head.
+typedef char EnemyBulletExtraPatternOverlayLayout[
+    (offsetof(EnemyRuntimeView, bulletPatterns) +
+         offsetof(EnemyBulletPatternFieldsView, unknown020) == 0x2e4 &&
+     sizeof(EnemyBulletPatternView) == 0x16 * sizeof(EnemyBulletExtraView))
+        ? 1 : -1];
 
 struct EnemyManagedVmView;
 extern int g_EnemyDifficulty;
@@ -2359,17 +2368,33 @@ dispatch_select_bullet_count_low:
     iVar26 = (int)uVar22 * 0x16 + (int)uVar23;
     iVar27 = (int)runtimeAddress + iVar26 * 0x18;
     uVar22 = ENEMY_READ_INT_DIRECT(2);
-    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->value14 = (int)uVar22;
+    reinterpret_cast<EnemyBulletExtraView *>(
+        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
+                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->value14 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(3);
-    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->value10 = (int)uVar22;
+    reinterpret_cast<EnemyBulletExtraView *>(
+        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
+                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->value10 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(4);
-    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->value08 = (int)uVar22;
+    reinterpret_cast<EnemyBulletExtraView *>(
+        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
+                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->value08 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(5);
-    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->value0C = (int)uVar22;
+    reinterpret_cast<EnemyBulletExtraView *>(
+        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
+                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->value0C = (int)uVar22;
     fVar19 = (ReadFloatArgument(6));
-    reinterpret_cast<EnemyBulletExtraView *>(iVar27 + 0x2e4)->floatA = (float)fVar19;
+    reinterpret_cast<EnemyBulletExtraView *>(
+        iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
+                                  offsetof(EnemyBulletPatternFieldsView, unknown020)))->floatA = (float)fVar19;
     fVar19 = (ReadFloatArgument(7));
-    *(float *)((int)runtimeAddress + (iVar26 * 3 + 0x5d) * 8) = (float)fVar19;
+    // Keep the native index scaled in eight-byte units. This is the +4
+    // floatB member of the same extra slot, not a separate float array.
+    *(float *)((int)runtimeAddress +
+               (iVar26 * 3 + static_cast<int>(
+                   (offsetof(EnemyRuntimeView, bulletPatterns) +
+                    offsetof(EnemyBulletPatternFieldsView, unknown020) +
+                    offsetof(EnemyBulletExtraView, floatB)) / 8)) * 8) = (float)fVar19;
     return 0;
   case ENEMY_ECL_RESET_UPDATE_TIMER:
     updateTimer.SetCurrent(0);

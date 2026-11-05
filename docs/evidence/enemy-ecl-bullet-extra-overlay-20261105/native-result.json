@@ -1,0 +1,52 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source": "src/EnemyEclDispatcher.cpp",
+  "source_sha256": "2af97e7356b630b7f969af7f1df5e596f7efa86abd4436f358cc004402ccaf81",
+  "native_profile": "pinned VC7.1 SP1 /GL /GS eleven-TU ECL graph; ten SHA-pinned unchanged support objects",
+  "original_dispatch_size": 14416,
+  "current_dispatch": {
+    "candidate_bytes": 14352,
+    "baseline_bytes": 14352,
+    "field_count": 716,
+    "field_geometry_equal": true,
+    "ordinary_diff_count": 0,
+    "first_diffs": []
+  },
+  "current_begin_spell": {
+    "candidate_bytes": 2432,
+    "baseline_bytes": 2432,
+    "field_count": 108,
+    "field_geometry_equal": true,
+    "ordinary_diff_count": 0,
+    "first_diffs": []
+  },
+  "unmodified_baseline_source_sha256": "9c270b89dd61dda01896261de742b5d4ff2b1dc3405ab102af933bcf62efa0fc",
+  "native_variant_rejected": {
+    "kind": "direct cursor reuse on sixth float write",
+    "field_positions_changed": 223,
+    "note": "same-length owner but shifts subsequent linked fields; not installed"
+  },
+  "exact_replay": {
+    "result": "exact",
+    "matched_bytes": 281,
+    "unit_count": 3,
+    "units": [
+      {
+        "unit": "enemy-ecl-resource-load-package",
+        "bytes": 239,
+        "result": "exact"
+      },
+      {
+        "unit": "enemy-read-int-argument",
+        "bytes": 16,
+        "result": "exact"
+      },
+      {
+        "unit": "enemy-read-raw-float-argument",
+        "bytes": 26,
+        "result": "exact"
+      }
+    ]
+  },
+  "new_exact_credit": 0
+}
