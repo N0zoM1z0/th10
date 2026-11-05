@@ -1,11 +1,11 @@
 # TH10 reconstruction — next-agent handoff (2026-11-05)
 
 **Start with this page, not a dated experiment log.** The latest reviewed
-**source** checkpoint in this local pass is **`3935b6e`**. The immediately
-preceding source checkpoints **`4e26e11`** (ECL SCPT offset records) and
-**`3735f01`** (Chain pending-removal bit) have independent selected-native
-proofs; `d901fca`, `b5b3d1b`, `6856ea0` recovered the ECL boss and FORMAT
-layouts earlier in the same pass. This paragraph is a source epoch, not a
+**source** checkpoint in this local pass is **`0bf7005`** (ECL boss typed
+extra-record cursor). `3935b6e` improves Text alpha native codegen,
+`4e26e11` types the SCPT offset records and `3735f01` restores the Chain
+task-removal bit. Each has selected native evidence; earlier source work
+`d901fca`, `b5b3d1b`, `6856ea0` recovered ECL boss and FORMAT layouts. This paragraph is a source epoch, not a
 promise that any long-lived historical witness still represents the current
 transitive header graph. Recheck live `git HEAD`, `git status`, and hashes;
 work through any unfinished dirty changes. Remote refs and ahead counts
@@ -83,25 +83,28 @@ source/header pins before claiming a new measurement**.
 
 ## Latest real native witness and source-epoch cautions
 
-- **Latest ECL boss graph (11 TUs, pre-SCPT offset-record source epoch):**
-  `build/gpt-web/20261105-typed-strides/current-ecl/` (ignored), with
-  `src/EnemyEclDispatcher.cpp` SHA-256
-  `57b9ffa95de4ed21fa1493b3bc76bc6da0bf32e593308429d18388ce045c831a`
-  and `src/EclVm.cpp` SHA-256
-  `2d2f9cdbc0227d72864209ff3904db37cad7686b9eb96619465cd9715984254a`.
-  Every support TU was freshly compiled, including those affected by the
-  revised `EclVm.hpp`. The complete dispatcher remains 14,352 candidate
-  bytes (64 short of target), with 716 same-geometry candidate fields and
-  zero ordinary candidate-to-candidate differences; `EnemyBeginSpell`
-  remains 2,432 candidate bytes with 108 unchanged candidate fields.
-  This **does not establish original-bound exactness**. Four selected exact
-  original-bound functions replayed 292/292. **Source-epoch warning:** the
-  installed `src/EclVm.cpp` and `EclVm.hpp` subsequently changed in `4e26e11`;
-  this 11-TU PE is *not* an attestation of those newer transitive inputs.
-  The separate, newly recompiled two-TU ECL graph below validates the
-  affected ECL VM and subroutine database owners; rerun dependent 11-TU
-  compilation before claiming new boss bytes. [Native stride closure](evidence/enemy-ecl-native-stride-closure-20261105/README.md)
-  and [previous baseline](evidence/handoff-maintenance-20261105/current-native-frontiers.json).
+- **Fresh post-SCPT ECL boss graph (11 TUs, installed source epoch):**
+  `build/gpt-web/20261105-ecl-extra-slot/baseline/` (all 11 source inputs
+  freshly compiled) and
+  `build/gpt-web/20261105-ecl-extra-slot/typed-cursor/` (the changed
+  `EnemyEclDispatcher.cpp` recompiled with 10 source+header SHA-pinned support
+  objects) are the current complete local witnesses. Installed
+  `src/EnemyEclDispatcher.cpp` SHA-256 is
+  `2a5b2b0ee483736aa75704b8d126980fcf294960f50898ef30119408d2f98795`,
+  with `src/EclVm.cpp` at
+  `b476f4a535203f522f0d69036f67bcc1f32db9faab9779ab75f5377bef4186e0`.
+  The 14,352-byte **candidate** ECL dispatcher has **716** same-position,
+  same-type **candidate** fields and zero ordinary candidate differences;
+  the **original** owner has 14,416 bytes and is **NONEXACT**.
+  `EnemyBeginSpell` retains its 2,432-byte candidate (108 unchanged fields),
+  and the 162-byte death finalizer and 330-byte viewport owner preserve
+  candidate codegen. Five selected **original-bound** exact owners replayed
+  **340/340 previously accepted bytes**, with zero new exact credit.
+  A hoisted extra-record pointer moved 223 linked-field positions and was
+  rejected; the retained typed per-access inline cursor preserves geometry.
+  [Current boss proof](evidence/enemy-ecl-inline-extra-cursor-20261105/README.md).
+  The earlier `20261105-typed-strides` graph is a prior source epoch, **not**
+  the current ECL/Chain transitive-header witness.
 - **ANM near-exact five-source graph:**
   `build/gpt-web/20261105-followup-anm/typed-instruction-next/` (ignored).
   Installed `AnmManager.cpp` SHA-256
@@ -157,6 +160,17 @@ source/header pins before claiming a new measurement**.
   at `+0x69`. This is **112/157 original ordinary bytes**, not an exact
   acceptance. Selected existing text owners passed **1,799/1,799**; see
   [alpha sign-branch evidence](evidence/text-alpha-native-sign-branch-20261105/README.md).
+  A separate current `/GL /GS` real `TextBufferLifecycle` link gives
+  **138/157** raw original bytes with the same target `JS` branch, but a
+  different EAX private receiver instead of target ECX. A scoped `noinline`
+  trial produced **identical 138/157** codegen, so it was rejected and
+  restored. Its ignored witness is
+  `build/gpt-web/20261105-text-leaf/noinline-ltcg/`.
+- **Failed current ANM opcode 91 lifetime trial:** capturing the ANM resource
+  before the child-script read kept a 9,964-byte candidate and 350 fields,
+  but **moved linked field positions** and fails the full 350-field target
+  manifest. Source restored; do not interpret size equality as exactness.
+  Local receipt: `.analysis/gpt-web/20261105/anm-child-resource-live-trial-result.json`.
 - **Current failed controls, source restored:** seven 107-byte Seek-source
   variants retained the same seven target-vs-candidate register/jump byte
   differences (one other variant grew to 118); two `EclVmContext::ReadInt`

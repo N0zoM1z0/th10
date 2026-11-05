@@ -61,6 +61,25 @@ signed record-stride computation; the complete 7,020-byte Run retains 189
 original layout/field obligations and 23 ordinary target differences.
 [Typed FORMAT evidence](evidence/ecl-format-signed-prefix-overlay-20261105/README.md).
 
+**Current November 5 whole-boss recompilation:** a fresh post-SCPT, post-Chain
+11-TU VC7.1 link establishes a current source-epoch baseline. All five ECL
+opcode `0x199` direct field stores now address the checked overlapping
+24-byte record through a per-access inline cursor; unlike an earlier
+hoisted-pointer trial, they retain all 716 candidate ECL linkage fields at
+unchanged positions and all 14,352 candidate bytes. The genuine original is
+14,416 bytes, so this **does not** close the boss. Five original-bound exact
+neighbors passed 340/340; see
+[complete typed cursor evidence](evidence/enemy-ecl-inline-extra-cursor-20261105/README.md).
+
+**Text bitmap sign-branch finding:** the A1R5G5B5 alpha test maps to the
+encoded high-byte bit 7, allowing VC7.1 to emit `TEST AH,AH / JS` instead
+of `JL` for the complete 157-byte `InvertAlpha` owner. The normal-COFF
+body improves 111/157 to 112/157 ordinary raw target bytes; a separate
+real `/GL` producer reproduces 138/157. The unresolved discrepancy is
+primarily receiver/register allocation. Neither is exact. Existing selected
+text owners replayed 1,799/1,799.
+[Source and compiler proof](evidence/text-alpha-native-sign-branch-20261105/README.md).
+
 The ANM 9,964-byte executor now retains sequentially evaluated opcode-91
 child arguments with 9,962/9,964 strict bytes; this source edit was
 **installed**, not reverted as an older experimental note below suggests.
