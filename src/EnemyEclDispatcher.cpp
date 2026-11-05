@@ -500,6 +500,18 @@ typedef char EnemyLaserPositionAt430Layout[
     (offsetof(EnemyLaserPositionAt430View, position430) == 0x430 &&
      sizeof(EnemyLaserPositionAt430View) == 0x43c) ? 1 : -1];
 
+// ECL SET_LASER_SOUND writes a binary32 value at laser receiver +0x440.
+// The concrete subtype is not known for every returned laser, so this
+// deliberately does not attach the word to a speculative derived class.
+struct EnemyLaserControlFloatAt440View
+{
+    unsigned char unknown000[0x440];
+    float value440;
+};
+typedef char EnemyLaserControlFloatAt440Layout[
+    (offsetof(EnemyLaserControlFloatAt440View, value440) == 0x440 &&
+     sizeof(EnemyLaserControlFloatAt440View) == 0x444) ? 1 : -1];
+
 static __declspec(noinline) void EnemySetLaserPosition(
     int laser, const PlayerFloat3 *position)
 {
@@ -2456,7 +2468,9 @@ dispatch_select_bullet_count_low:
     EnemyEndSpell(g_EnemyGameState);
     return 0;
   case ENEMY_ECL_CANCEL_LASERS:
-    *(unsigned int *)(reinterpret_cast<int>(g_EnemyGameState) + 0x378c) = *(unsigned int *)(reinterpret_cast<int>(g_EnemyGameState) + 0x378c) | 8;
+    // The target changes bit 3 in the same game-state flag word already
+    // shared by spell start/end and the bomb-shield helper.
+    g_EnemyGameState->flags378C |= 8;
     return 0;
   case ENEMY_ECL_ENABLE_BOMB_SHIELD:
     EnemyEnableBombShield(g_EnemyGameState);
@@ -2693,7 +2707,8 @@ dispatch_select_bullet_count_low:
     iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x440) = (float)fVar19;
+      reinterpret_cast<EnemyLaserControlFloatAt440View *>(iVar26)->value440 =
+          (float)fVar19;
       return 0;
     }
     break;
