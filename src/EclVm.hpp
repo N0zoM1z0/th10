@@ -3,6 +3,19 @@
 
 #include <stddef.h>
 
+// Each typed ECL VM stack value occupies exactly one four-byte word.
+// Its optional type prefix is a separate four-byte stack slot.
+struct EclVmInstruction;
+union EclVmScalar
+{
+    int integer;
+    unsigned int bits;
+    float real;
+    EclVmInstruction *instruction;
+};
+typedef char EclVmScalarNativeWordIs04[
+    (sizeof(EclVmScalar) == 4) ? 1 : -1];
+
 
 // The VM value stack prefixes each typed scalar with a four-byte tag slot.
 // Push writes only the first byte and skips the other three untouched;

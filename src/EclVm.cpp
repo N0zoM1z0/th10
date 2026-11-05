@@ -90,14 +90,14 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
         {
             if (storedType == 'i' && type == 'f')
             {
-                *reinterpret_cast<float *>(value) = static_cast<float>(
-                    *reinterpret_cast<int *>(value));
+                reinterpret_cast<EclVmScalar *>(value)->real = static_cast<float>(
+                    reinterpret_cast<EclVmScalar *>(value)->integer);
             }
         }
         else if (type == 'i')
         {
-            *reinterpret_cast<int *>(value) = static_cast<int>(
-                *reinterpret_cast<float *>(value));
+            reinterpret_cast<EclVmScalar *>(value)->integer = static_cast<int>(
+                reinterpret_cast<EclVmScalar *>(value)->real);
         }
     }
 
@@ -204,17 +204,7 @@ enum EclVmOpcode
 namespace
 {
 
-union EclVmScalar
-{
-    int integer;
-    unsigned int bits;
-    float real;
-    EclVmInstruction *instruction;
-};
-// The VM scalar payload is one tagged or untagged 32-bit stack word.
-// This view never includes the separate four-byte type prefix.
-typedef char EclVmScalarNativeWordIs04[
-    (sizeof(EclVmScalar) == 4) ? 1 : -1];
+// The common four-byte scalar storage is declared in EclVm.hpp.
 
 static int OperandInt(const EclVmInstruction *instruction, unsigned int index)
 {
