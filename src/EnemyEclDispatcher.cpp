@@ -504,14 +504,16 @@ static __declspec(noinline) void __stdcall EnemyConfigureInterrupt(
         reinterpret_cast<unsigned char *>(owner) + slot * 0x10;
     *reinterpret_cast<int *>(record + 0x2494) = lifeThreshold;
     if (lifeThreshold >= 0) {
-        *reinterpret_cast<int *>(record + 0x2498) = timerThreshold;
-        *reinterpret_cast<const unsigned char **>(record + 0x249c) =
-            callbackName;
+        EnemyCallbackThresholdView *threshold =
+            reinterpret_cast<EnemyCallbackThresholdView *>(record + 0x2494);
+        threshold->timerThreshold = timerThreshold;
+        threshold->lifeCallbackName = callbackName;
         *reinterpret_cast<const unsigned char **>(
             reinterpret_cast<unsigned char *>(owner) +
             (slot + 0x24a) * 0x10) = callbackName;
     }
 }
+
 static __declspec(noinline) void EnemyInitializeScalarInterpolation(
     EnemyScalarInterpolationView *interpolation)
 {
