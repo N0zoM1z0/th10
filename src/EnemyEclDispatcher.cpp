@@ -972,23 +972,6 @@ struct EnemyDropVectorView
 // Scatter storage/order informed by th10-decomp (MIT), commit
 // c6791d82dc9f02e55eca45a5314f900a85481efd; TH10 target/native evidence is authoritative.
 // See docs/licenses/th10-decomp-MIT.txt.
-// The scatter block is a mixed 32-bit count/radius record. The original
-// caller passes it by its first integer word; a single view retains that ABI.
-// Array slot 0 and the gap at +0x30 are intentionally not given semantics.
-struct EnemyItemDropCountRadiusView
-{
-    int unknown000;
-    int countsByKind[11];
-    int unknown030;
-    float radiusX;
-    float radiusY;
-};
-typedef char EnemyItemDropCountRadiusLayout[
-    (sizeof(EnemyItemDropCountRadiusView) == 0x3c &&
-     offsetof(EnemyItemDropCountRadiusView, countsByKind) == 0x04 &&
-     offsetof(EnemyItemDropCountRadiusView, radiusX) == 0x34 &&
-     offsetof(EnemyItemDropCountRadiusView, radiusY) == 0x38) ? 1 : -1];
-
 __declspec(noinline) void __stdcall EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock)
 {
@@ -1914,8 +1897,8 @@ dispatch_initialize_polar_interpolation:
   case ENEMY_ECL_SET_DROP_AREA:
     fVar19 = (ReadFloatArgument(1));
     fVar21 = (ReadFloatArgument(0));
-    value1400 = (float)fVar21;
-    value1404 = (float)fVar19;
+    reinterpret_cast<EnemyItemDropCountRadiusView *>(&itemDropType)->radiusX = (float)fVar21;
+    reinterpret_cast<EnemyItemDropCountRadiusView *>(&itemDropType)->radiusY = (float)fVar19;
     return 0;
   case ENEMY_ECL_DROP_ITEMS:
     EnemyDropItemCounts(&worldMotion.position, &itemDropType);

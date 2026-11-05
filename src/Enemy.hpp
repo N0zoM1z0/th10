@@ -246,6 +246,23 @@ typedef char EnemyEclVariableViewSizeIs20[
 typedef char EnemyEclVariableFloatsAt10[
     (offsetof(EnemyEclVariableView, floats) == 0x10) ? 1 : -1];
 
+// Shared original 0x3C-byte item-drop packet. Enemy construction initializes
+// both ellipse radii; ECL opcodes configure counts and area; the item-scatter
+// core consumes the same address. Opaque word +0x30 remains unexplained.
+struct EnemyItemDropCountRadiusView
+{
+    int mainItemType;
+    int countsByKind[11];
+    int unknown030;
+    float radiusX;
+    float radiusY;
+};
+typedef char EnemyItemDropCountRadiusLayout[
+    (sizeof(EnemyItemDropCountRadiusView) == 0x3c &&
+     offsetof(EnemyItemDropCountRadiusView, countsByKind) == 0x04 &&
+     offsetof(EnemyItemDropCountRadiusView, radiusX) == 0x34 &&
+     offsetof(EnemyItemDropCountRadiusView, radiusY) == 0x38) ? 1 : -1];
+
 struct EnemyRuntimeView
 {
     // Target 0x0040E770 is the runtime-tail implementation reached by the
@@ -364,6 +381,9 @@ typedef char EnemyRuntimeItemDropAt13CC[
     (offsetof(EnemyRuntimeView, itemDropType) == 0x13cc) ? 1 : -1];
 typedef char EnemyRuntimeItemDropCountsAt13D0[
     (offsetof(EnemyRuntimeView, itemDropCounts) == 0x13d0) ? 1 : -1];
+typedef char EnemyRuntimeItemDropPacketAt13CC[
+    (offsetof(EnemyRuntimeView, itemDropType) == 0x13cc &&
+     offsetof(EnemyRuntimeView, value1404) == 0x1404) ? 1 : -1];
 typedef char EnemyRuntimeValue1400At1400[
     (offsetof(EnemyRuntimeView, value1400) == 0x1400) ? 1 : -1];
 typedef char EnemyRuntimeValue1404At1404[

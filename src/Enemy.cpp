@@ -1349,17 +1349,6 @@ EnemyBulletPatternView::EnemyBulletPatternView()
     words[0x81] = 0xffffffffu;
 }
 
-struct EnemyItemDropStateView
-{
-    int itemDropType;
-    int itemDropCounts[11];
-    int unknown34;
-    float value38;
-    float value3C;
-};
-typedef char EnemyItemDropStateViewSizeIs3C[
-    (sizeof(EnemyItemDropStateView) == 0x3c) ? 1 : -1];
-
 // Maintained logical constructor for target 0x0040D830-0x0040DAD0. The target
 // machine boundary carries the full object in ESI and one stack subroutine-name
 // argument with RET 4. The ordinary C++ spelling recovers the target-proven
@@ -1405,11 +1394,11 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
     enemy->runtime.listNode.next = NULL;
     enemy->runtime.listNode.previous = NULL;
 
-    EnemyItemDropStateView *itemDropState =
-        reinterpret_cast<EnemyItemDropStateView *>(&enemy->runtime.itemDropType);
+    EnemyItemDropCountRadiusView *itemDropState =
+        reinterpret_cast<EnemyItemDropCountRadiusView *>(&enemy->runtime.itemDropType);
     memset(itemDropState, 0, sizeof(*itemDropState));
-    itemDropState->value3C = 32.0f;
-    itemDropState->value38 = 32.0f;
+    itemDropState->radiusY = 32.0f;
+    itemDropState->radiusX = 32.0f;
 
     if ((enemy->runtime.updateTimer.flags & 1u) == 0)
     {
