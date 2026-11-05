@@ -1062,8 +1062,8 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
             {
                 const unsigned int gameFlags = g_EnemyGameState->flags378C;
                 if (((gameFlags & 1u) == 0 || (gameFlags & 8u) == 0) &&
-                    (((gameFlags & 1u) != 0 && enemy->owner->runtime.value13C8 < 300) ||
-                     ((gameFlags & 1u) == 0 && enemy->owner->runtime.value13C8 < 900)))
+                    (((gameFlags & 1u) != 0 && enemy->owner->runtime.lifeToNextCallback < 300) ||
+                     ((gameFlags & 1u) == 0 && enemy->owner->runtime.lifeToNextCallback < 900)))
                     lowLifeCue = true;
             }
             if (lowLifeCue)
@@ -1443,7 +1443,7 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 
     enemy->runtime.life = 0;
     enemy->runtime.lifeGaugeReference = 0;
-    enemy->runtime.value13C8 = 0;
+    enemy->runtime.lifeToNextCallback = 0;
 
     for (int i = 0; i < 8; ++i)
     {

@@ -33,7 +33,7 @@ typedef char GuiCanonicalEnemyFields[
          offsetof(EnemyMotionView, position) + offsetof(PlayerFloat3, x) == 0x1068 &&
      offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, life) == 0x23fc &&
      offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, lifeGaugeReference) == 0x2400 &&
-     offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, value13C8) == 0x2404 &&
+     offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, lifeToNextCallback) == 0x2404 &&
      offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, flags) == 0x2480) ? 1 : -1];
 typedef char GuiCanonicalEnemyManagerSlotAt10[
     (offsetof(EnemyManagerView, specialEnemySlots) == 0x10) ? 1 : -1];
@@ -1690,7 +1690,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     const unsigned int phase = (gui->guiFlags >> 1) & 3;
                     if (phase == 0)
                     {
-                        if (boss->runtime.value13C8 < 2000)
+                        if (boss->runtime.lifeToNextCallback < 2000)
                         {
                             gui->bossPositionVm.pendingInterrupt = 7;
                             gui->guiFlags = (gui->guiFlags & ~4u) | 2;
@@ -1698,7 +1698,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 1)
                     {
-                        if (boss->runtime.value13C8 < 1000)
+                        if (boss->runtime.lifeToNextCallback < 1000)
                         {
                             gui->bossPositionVm.pendingInterrupt = 8;
                             gui->guiFlags = (gui->guiFlags & ~2u) | 4;
@@ -1706,7 +1706,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 2)
                     {
-                        if (boss->runtime.value13C8 < 400)
+                        if (boss->runtime.lifeToNextCallback < 400)
                         {
                             gui->bossPositionVm.pendingInterrupt = 9;
                             gui->guiFlags |= 6;
@@ -1714,7 +1714,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 3)
                     {
-                        if (boss->runtime.value13C8 > 400)
+                        if (boss->runtime.lifeToNextCallback > 400)
                         {
                             gui->bossPositionVm.pendingInterrupt = 10;
                             gui->guiFlags &= ~6u;
@@ -1726,7 +1726,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     const unsigned int phase = (gui->guiFlags >> 1) & 3;
                     if (phase == 0)
                     {
-                        if (boss->runtime.value13C8 < 700)
+                        if (boss->runtime.lifeToNextCallback < 700)
                         {
                             gui->bossPositionVm.pendingInterrupt = 7;
                             gui->guiFlags = (gui->guiFlags & ~4u) | 2;
@@ -1734,7 +1734,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 1)
                     {
-                        if (boss->runtime.value13C8 < 400)
+                        if (boss->runtime.lifeToNextCallback < 400)
                         {
                             gui->bossPositionVm.pendingInterrupt = 8;
                             gui->guiFlags = (gui->guiFlags & ~2u) | 4;
@@ -1742,7 +1742,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 2)
                     {
-                        if (boss->runtime.value13C8 < 200)
+                        if (boss->runtime.lifeToNextCallback < 200)
                         {
                             gui->bossPositionVm.pendingInterrupt = 9;
                             gui->guiFlags |= 6;
@@ -1750,7 +1750,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 3)
                     {
-                        if (boss->runtime.value13C8 > 200)
+                        if (boss->runtime.lifeToNextCallback > 200)
                         {
                             gui->bossPositionVm.pendingInterrupt = 10;
                             gui->guiFlags &= ~6u;

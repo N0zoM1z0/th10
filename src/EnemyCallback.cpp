@@ -66,7 +66,7 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     {
         if (enemy->callbackThresholds[callbackIndex].lifeThreshold >= 0)
         {
-            enemy->value13C8 =
+            enemy->lifeToNextCallback =
                 enemy->life -
                 enemy->callbackThresholds[callbackIndex].lifeThreshold;
             if (enemy->life <=

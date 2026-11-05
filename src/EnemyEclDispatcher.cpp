@@ -2017,7 +2017,7 @@ dispatch_initialize_polar_interpolation:
     g_GuiView->bossGaugeValues[2].color = 0;
     g_GuiView->bossGaugeValues[3].value = 0.0f;
     g_GuiView->bossGaugeValues[3].color = 0;
-    value13C8 = static_cast<unsigned int>(life);
+    lifeToNextCallback = static_cast<unsigned int>(life);
     return 0;
   case ENEMY_ECL_SET_BOSS_SLOT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);

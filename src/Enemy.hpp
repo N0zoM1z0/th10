@@ -9,6 +9,7 @@ struct EnemyFullObjectView;
 struct EnemyEclHostBaseView;
 struct EnemyListNodeView;
 struct EnemyManagerView;
+struct AnmLoadedView;
 
 extern float g_AnmGameSpeed;
 
@@ -312,8 +313,9 @@ struct EnemyRuntimeView
     int life;
     // Set with life; opcode 0x15B divides gauge markers by this baseline.
     int lifeGaugeReference;
-    // The callback resolver writes life minus the next active life threshold.
-    int value13C8;
+    // Updated with (life - next callback threshold); before threshold setup
+    // the ECL SET_LIFE path initializes this to the full current life.
+    int lifeToNextCallback;
     // The ECL opcodes, spawn path and scatter helper share this full packet.
     EnemyItemDropCountRadiusView itemDrops;
     int deathSoundId;
@@ -378,6 +380,8 @@ typedef char EnemyRuntimeLifeAt13C0[
     (offsetof(EnemyRuntimeView, life) == 0x13c0) ? 1 : -1];
 typedef char EnemyRuntimeLifeGaugeReferenceAt13C4[
     (offsetof(EnemyRuntimeView, lifeGaugeReference) == 0x13c4) ? 1 : -1];
+typedef char EnemyRuntimeNextCallbackLifeAt13C8[
+    (offsetof(EnemyRuntimeView, lifeToNextCallback) == 0x13c8) ? 1 : -1];
 typedef char EnemyRuntimeItemDropPacketAt13CC[
     (offsetof(EnemyRuntimeView, itemDrops) == 0x13cc &&
      sizeof(EnemyItemDropCountRadiusView) == 0x3c) ? 1 : -1];
