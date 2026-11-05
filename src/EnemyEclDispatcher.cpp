@@ -376,45 +376,45 @@ __declspec(noinline) int EnemyBulletPositionView::IsOutsidePlayfield(
 __declspec(noinline) unsigned int EnemyCancelBulletRecord(
     unsigned char *bullet)
 {
-    short state = *reinterpret_cast<short *>(bullet + 0x446);
+    BulletRuntimeView *record = reinterpret_cast<BulletRuntimeView *>(bullet);
+    short state = record->state;
     if (state != 2 && state != 1) {
         return 0;
     }
 
     EnemyBulletPositionView *position =
-        reinterpret_cast<EnemyBulletPositionView *>(bullet + 0x3b4);
+        reinterpret_cast<EnemyBulletPositionView *>(&record->position);
     if (position->IsOutsidePlayfield(8.0f, 8.0f) == 0) {
-        *reinterpret_cast<short *>(bullet + 0x446) = 3;
-        *reinterpret_cast<short *>(bullet + 0x30c) = 1;
+        record->state = 3;
+        record->vm.pendingInterrupt = 1;
         int zero = 0;
-        int effectScript = *reinterpret_cast<int *>(bullet + 0x438);
+        int effectScript = record->effectScript;
         if (effectScript >= 0) {
             g_EnemyPrimaryResourceOwner->primaryEnemyResource->
                 CreateVmAtWorldVariant0(
                     effectScript,
-                    reinterpret_cast<const AnmFloat3View *>(
-                        bullet + 0x3b4));
+                    reinterpret_cast<const AnmFloat3View *>(&record->position));
         }
 
         unsigned int *timerFlags =
-            reinterpret_cast<unsigned int *>(bullet + 0x408);
+            &record->stateTimer.flags;
         unsigned int timerFlagValue = *timerFlags;
         if ((timerFlagValue & 1u) == 0) {
             timerFlagValue |= 1u;
-            *reinterpret_cast<int *>(bullet + 0x3fc) = zero;
-            *reinterpret_cast<int *>(bullet + 0x3f8) = -999999;
-            *reinterpret_cast<float *>(bullet + 0x400) = 0.0f;
-            *reinterpret_cast<float **>(bullet + 0x404) = &g_AnmGameSpeed;
+            record->stateTimer.current = zero;
+            record->stateTimer.previous = -999999;
+            record->stateTimer.subframe = 0.0f;
+            record->stateTimer.scale = &g_AnmGameSpeed;
             *timerFlags = timerFlagValue;
         }
-        *reinterpret_cast<int *>(bullet + 0x3fc) = zero;
-        *reinterpret_cast<float *>(bullet + 0x400) = 0.0f;
-        *reinterpret_cast<int *>(bullet + 0x3f8) = -1;
+        record->stateTimer.current = zero;
+        record->stateTimer.subframe = 0.0f;
+        record->stateTimer.previous = -1;
         return 1;
     }
-    *reinterpret_cast<short *>(bullet + 0x446) = 3;
-    *reinterpret_cast<short *>(bullet + 0x30c) = 1;
-    *reinterpret_cast<unsigned int *>(bullet) |= 8;
+    record->state = 3;
+    record->vm.pendingInterrupt = 1;
+    record->flags |= 8;
     return 1;
 }
 

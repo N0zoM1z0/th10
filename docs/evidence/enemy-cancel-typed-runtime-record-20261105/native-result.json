@@ -1,0 +1,51 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "26b1b28238b0cff5c8873fe2adcc1529245553fc2475b4f16721e8b0dd6e3300",
+  "typed_offsets": {
+    "state": 1094,
+    "position": 948,
+    "effect_script": 1080,
+    "vm_pending_interrupt": 780,
+    "state_timer": 1016,
+    "state_timer_flags": 1032
+  },
+  "scoped_replays": [
+    {
+      "unit": "enemy-cancel-bullet-record",
+      "result": "exact",
+      "compared_bytes": 199,
+      "matched_bytes": 199
+    },
+    {
+      "unit": "enemy-cancel-bullet-pattern",
+      "result": "exact",
+      "compared_bytes": 260,
+      "matched_bytes": 260
+    }
+  ],
+  "already_exact_total_bytes": 459,
+  "large_owners": [
+    {
+      "owner": "EnemyBeginSpell",
+      "original_target_bytes": 2432,
+      "candidate_bytes": 2424,
+      "previous_candidate_bytes": 2424,
+      "linked_fields": 108,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    },
+    {
+      "owner": "EnemyRuntimeView::DispatchEclInstruction",
+      "original_target_bytes": 14416,
+      "candidate_bytes": 14352,
+      "previous_candidate_bytes": 14352,
+      "linked_fields": 716,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    }
+  ],
+  "support_pins_checked": 10,
+  "new_exact_credit": 0
+}
