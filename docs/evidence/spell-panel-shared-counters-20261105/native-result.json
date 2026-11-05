@@ -1,0 +1,30 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_pins": {
+    "src/SpellPanel.cpp": "ecea6f55566313d596435dfdb4c745d9b9906f60c2f75940eb577fc95ba1a178",
+    "src/GameStatistics.hpp": "042c388f54b1b845d43aaab716c11bd7ee515704186f186587e815df0cfbfc09"
+  },
+  "selected_canonical_replays": [
+    {
+      "unit": "enemy-spell-panel-update",
+      "result": "exact",
+      "matched_bytes": 1057,
+      "compared_bytes": 1057
+    },
+    {
+      "unit": "enemy-spell-panel-update-callback",
+      "result": "exact",
+      "matched_bytes": 10,
+      "compared_bytes": 10
+    }
+  ],
+  "exact_matched_bytes": 1067,
+  "record_shape": {
+    "size": 144,
+    "captures": 128,
+    "attempts": 132,
+    "record_offset": 1436,
+    "owner_offset": 1444
+  },
+  "new_exact_credit": 0
+}

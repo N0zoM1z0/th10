@@ -1,5 +1,6 @@
 #include "Main.hpp"
 #include "EnemyGameState.hpp"
+#include "GameStatistics.hpp"
 #include "Enemy.hpp"
 #include "Gui.hpp"
 #include "StageScript.hpp"
@@ -83,8 +84,11 @@ int EnemyGameStateView::UpdateSpellPanel()
     // Selection slots share the established state base and are resampled below.
     const int *selection = reinterpret_cast<const int *>(g_GameStageState + 0x28);
     int record = selection[1] + selection[0] * 3;
-    int count = *reinterpret_cast<int *>(g_EnemySpellStatistics +
-        record * 0x437c + spellId * 0x90 + 0x624);
+    const GameStatisticsSpellHistoryEntryView *history =
+        reinterpret_cast<const GameStatisticsSpellHistoryEntryView *>(
+            g_EnemySpellStatistics + record * 0x437c +
+            spellId * 0x90 + 0x5a4);
+    int count = history->captures;
     if (count >= 100)
         count = 99;
     // The target captures one GUI owner for all four counter writes, while
@@ -93,8 +97,10 @@ int EnemyGameStateView::UpdateSpellPanel()
     gui->frontAnm->SetSprite(&secondaryFrontVms[0], count / 10 + 30);
     gui->frontAnm->SetSprite(&secondaryFrontVms[1], count % 10 + 30);
     record = selection[1] + selection[0] * 3;
-    count = *reinterpret_cast<int *>(g_EnemySpellStatistics +
-        record * 0x437c + spellId * 0x90 + 0x628);
+    history = reinterpret_cast<const GameStatisticsSpellHistoryEntryView *>(
+        g_EnemySpellStatistics + record * 0x437c +
+        spellId * 0x90 + 0x5a4);
+    count = history->attempts;
     if (count >= 100)
         count = 99;
     gui->frontAnm->SetSprite(&secondaryFrontVms[3], count / 10 + 30);
