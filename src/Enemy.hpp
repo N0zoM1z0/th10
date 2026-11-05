@@ -314,11 +314,8 @@ struct EnemyRuntimeView
     int lifeGaugeReference;
     // The callback resolver writes life minus the next active life threshold.
     int value13C8;
-    int itemDropType;
-    int itemDropCounts[11];
-    int unknown13FC;
-    float value1400;
-    float value1404;
+    // The ECL opcodes, spawn path and scatter helper share this full packet.
+    EnemyItemDropCountRadiusView itemDrops;
     int deathSoundId;
     int deathEffectScript;
     int deathEffectResourceIndex;
@@ -381,17 +378,17 @@ typedef char EnemyRuntimeLifeAt13C0[
     (offsetof(EnemyRuntimeView, life) == 0x13c0) ? 1 : -1];
 typedef char EnemyRuntimeLifeGaugeReferenceAt13C4[
     (offsetof(EnemyRuntimeView, lifeGaugeReference) == 0x13c4) ? 1 : -1];
-typedef char EnemyRuntimeItemDropAt13CC[
-    (offsetof(EnemyRuntimeView, itemDropType) == 0x13cc) ? 1 : -1];
-typedef char EnemyRuntimeItemDropCountsAt13D0[
-    (offsetof(EnemyRuntimeView, itemDropCounts) == 0x13d0) ? 1 : -1];
 typedef char EnemyRuntimeItemDropPacketAt13CC[
-    (offsetof(EnemyRuntimeView, itemDropType) == 0x13cc &&
-     offsetof(EnemyRuntimeView, value1404) == 0x1404) ? 1 : -1];
-typedef char EnemyRuntimeValue1400At1400[
-    (offsetof(EnemyRuntimeView, value1400) == 0x1400) ? 1 : -1];
-typedef char EnemyRuntimeValue1404At1404[
-    (offsetof(EnemyRuntimeView, value1404) == 0x1404) ? 1 : -1];
+    (offsetof(EnemyRuntimeView, itemDrops) == 0x13cc &&
+     sizeof(EnemyItemDropCountRadiusView) == 0x3c) ? 1 : -1];
+typedef char EnemyRuntimeItemDropCountsAt13D0[
+    (offsetof(EnemyRuntimeView, itemDrops) +
+     offsetof(EnemyItemDropCountRadiusView, countsByKind) == 0x13d0) ? 1 : -1];
+typedef char EnemyRuntimeItemDropRadiiAt1400[
+    (offsetof(EnemyRuntimeView, itemDrops) +
+     offsetof(EnemyItemDropCountRadiusView, radiusX) == 0x1400 &&
+     offsetof(EnemyRuntimeView, itemDrops) +
+     offsetof(EnemyItemDropCountRadiusView, radiusY) == 0x1404) ? 1 : -1];
 typedef char EnemyRuntimeDeathSoundAt1408[
     (offsetof(EnemyRuntimeView, deathSoundId) == 0x1408) ? 1 : -1];
 typedef char EnemyRuntimeDeathEffectAt140C[

@@ -1965,7 +1965,8 @@ dispatch_initialize_polar_interpolation:
     }
     break;
   case ENEMY_ECL_CLEAR_ITEM_DROPS:
-    memset(itemDropCounts, 0, sizeof(itemDropCounts) + sizeof(unknown13FC));
+    memset(itemDrops.countsByKind, 0,
+        sizeof(itemDrops.countsByKind) + sizeof(itemDrops.unknown030));
     return 0;
   case ENEMY_ECL_ADD_ITEM_DROP:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1979,30 +1980,30 @@ dispatch_initialize_polar_interpolation:
       }
     }
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    reinterpret_cast<int *>(&itemDropType)[iVar26] = (int)uVar22;
+    reinterpret_cast<int *>(&itemDrops.mainItemType)[iVar26] = (int)uVar22;
     return 0;
   case ENEMY_ECL_SET_DROP_AREA:
     fVar19 = (ReadFloatArgument(1));
     fVar21 = (ReadFloatArgument(0));
-    reinterpret_cast<EnemyItemDropCountRadiusView *>(&itemDropType)->radiusX = (float)fVar21;
-    reinterpret_cast<EnemyItemDropCountRadiusView *>(&itemDropType)->radiusY = (float)fVar19;
+    itemDrops.radiusX = (float)fVar21;
+    itemDrops.radiusY = (float)fVar19;
     return 0;
   case ENEMY_ECL_DROP_ITEMS:
-    EnemyDropItemCounts(&worldMotion.position, &itemDropType);
+    EnemyDropItemCounts(&worldMotion.position, &itemDrops.mainItemType);
     return 0;
   case ENEMY_ECL_SET_MAIN_DROP:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
     if ((char)((unsigned int)flags >> 8) < '\0') {
       if (iVar26 == 1) {
-        itemDropType = 10;
+        itemDrops.mainItemType = 10;
         return 0;
       }
       if (iVar26 == 4) {
         iVar26 = 0xb;
       }
     }
-    itemDropType = iVar26;
+    itemDrops.mainItemType = iVar26;
     return 0;
   case ENEMY_ECL_SET_LIFE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);

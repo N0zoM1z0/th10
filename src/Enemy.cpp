@@ -1395,7 +1395,7 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
     enemy->runtime.listNode.previous = NULL;
 
     EnemyItemDropCountRadiusView *itemDropState =
-        reinterpret_cast<EnemyItemDropCountRadiusView *>(&enemy->runtime.itemDropType);
+        &enemy->runtime.itemDrops;
     memset(itemDropState, 0, sizeof(*itemDropState));
     itemDropState->radiusY = 32.0f;
     itemDropState->radiusX = 32.0f;
@@ -1470,7 +1470,7 @@ EnemyFullObjectView *__stdcall EnemySpawn(
     enemy->runtime.offsetMotion.position = request->position;
     enemy->runtime.scoreReward = request->scoreReward;
     enemy->runtime.life = request->life;
-    enemy->runtime.itemDropType = request->itemDropType;
+    enemy->runtime.itemDrops.mainItemType = request->itemDropType;
 
     enemy->runtime.flags =
         (enemy->runtime.flags & ~0x800u) |
@@ -1510,12 +1510,12 @@ EnemyFullObjectView *__stdcall EnemySpawn(
 
     if ((enemy->runtime.flags & 0x8000u) != 0)
     {
-        int itemDropType = enemy->runtime.itemDropType;
+        int itemDropType = enemy->runtime.itemDrops.mainItemType;
         if (itemDropType == 1)
             itemDropType = 10;
         else if (itemDropType == 4)
             itemDropType = 11;
-        enemy->runtime.itemDropType = itemDropType;
+        enemy->runtime.itemDrops.mainItemType = itemDropType;
     }
 
     enemy->runtime.deathSoundId = (manager->spawnCounter & 1) + 2;
@@ -1732,7 +1732,7 @@ int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy)
     }
 
     const PlayerFloat3 *position = &runtime->worldMotion.position;
-    int *itemDropBlock = &runtime->itemDropType;
+    int *itemDropBlock = &runtime->itemDrops.mainItemType;
     if (*itemDropBlock > 0)
     {
         g_ItemManager->Spawn(
