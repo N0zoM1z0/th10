@@ -303,23 +303,24 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelAllBullets(int m
     unsigned char *bullet = bulletStorage;
     for (int remaining = 2000; remaining != 0;
          --remaining, bullet += 0x7f0) {
-        short state = *reinterpret_cast<short *>(bullet + 0x446);
+        BulletRuntimeView *record = reinterpret_cast<BulletRuntimeView *>(bullet);
+        short state = record->state;
         if (state == 0 || state == 3) {
             continue;
         }
 
-        float *position = reinterpret_cast<float *>(bullet + 0x3b4);
+        float *position = &record->position.x;
         float radiusX =
-            *reinterpret_cast<float *>(bullet + 0x3f0) *
+            record->collisionWidth *
             g_EnemyCancelHalfScale;
         float radiusY =
-            *reinterpret_cast<float *>(bullet + 0x3f4) *
+            record->collisionHeight *
             g_EnemyCancelHalfScale;
         if (minimum.x <= position[0] + radiusX &&
             position[0] - radiusX <= maximum.x &&
             minimum.y <= position[1] + radiusY &&
             position[1] - radiusY <= maximum.y) {
-            *reinterpret_cast<unsigned int *>(bullet) |= 8;
+            record->flags |= 8;
             if (mode != 0) {
                 EnemySpawnCancelEffect(
                     position, 8, -1, -1.5707964f, 0.6f);
@@ -332,7 +333,7 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelAllBullets(int m
             if (colorOwner != 0) {
                 float value = *reinterpret_cast<float *>(colorOwner + 0x34);
                 short colorIndex =
-                    *reinterpret_cast<short *>(bullet + 0x7ec);
+                    record->color;
                 unsigned int color;
                 if (value > g_EnemyCancelHighThreshold) {
                     color = g_EnemyCancelColorHigh[colorIndex];
@@ -345,7 +346,7 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelAllBullets(int m
                 }
                 *reinterpret_cast<unsigned int *>(vm + 0x2fc) = color;
             }
-            *reinterpret_cast<unsigned int *>(bullet + 0x450) = 0;
+            record->unknown450 = 0;
         }
     }
     return 0;

@@ -1,0 +1,57 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "0137574e9f357e6d2f79fb6f70a0a215fbaf121a748cf027acaf93e2390dedb6",
+  "source_entry": "EnemyCancelManagerView::CancelAllBullets",
+  "cancellation_scan_length": 2000,
+  "bullet_record_stride": 2032,
+  "candidate_only_comparisons": [
+    {
+      "owner": "EnemyBeginSpell",
+      "original_target_bytes": 2432,
+      "candidate_bytes": 2424,
+      "previous_candidate_bytes": 2424,
+      "linked_fields": 108,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    },
+    {
+      "owner": "EnemyRuntimeView::DispatchEclInstruction",
+      "original_target_bytes": 14416,
+      "candidate_bytes": 14352,
+      "previous_candidate_bytes": 14352,
+      "linked_fields": 716,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    },
+    {
+      "owner": "EnemyCancelManagerView::CancelAllBullets",
+      "original_target_bytes": null,
+      "candidate_bytes": 418,
+      "previous_candidate_bytes": 418,
+      "linked_fields": 12,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    }
+  ],
+  "target_original_size_for_cancel_all": null,
+  "selected_exact": [
+    {
+      "unit": "enemy-cancel-bullet-record",
+      "result": "exact",
+      "compared_bytes": 199,
+      "matched_bytes": 199
+    },
+    {
+      "unit": "enemy-cancel-bullet-pattern",
+      "result": "exact",
+      "compared_bytes": 260,
+      "matched_bytes": 260
+    }
+  ],
+  "already_exact_matched_bytes": 459,
+  "new_exact_credit": 0,
+  "pinned_support_count": 10
+}
