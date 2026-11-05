@@ -249,11 +249,13 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
 
-        int nextAngleBits =
-            *reinterpret_cast<int *>(&state.value1);
+        // The transform's next angle is a 32-bit IEEE-754 bit payload.
+        // Copy its representation without imposing a float conversion.
+        int nextAngleBits;
+        memcpy(&nextAngleBits, &state.value1, sizeof(nextAngleBits));
         float newSpeed = state.value0;
         speed = newSpeed;
-        *reinterpret_cast<int *>(&angle) = nextAngleBits;
+        memcpy(&angle, &nextAngleBits, sizeof(angle));
         nextSpeed = newSpeed;
         state.timer.SetCurrent(0);
     }
@@ -264,11 +266,12 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
                 static_cast<float>(state.int0);
     }
 
-    int angleBits = *reinterpret_cast<int *>(&angle);
+    int angleBits;
+    memcpy(&angleBits, &angle, sizeof(angleBits));
+    float outgoingAngle;
+    memcpy(&outgoingAngle, &angleBits, sizeof(outgoingAngle));
     reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
-        FromAngleMagnitude(
-            *reinterpret_cast<float *>(&angleBits),
-            nextSpeed);
+        FromAngleMagnitude(outgoingAngle, nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
         ++state.timer.current;
