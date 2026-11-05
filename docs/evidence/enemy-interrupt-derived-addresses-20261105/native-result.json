@@ -1,0 +1,79 @@
+{
+  "original_target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "3881a4e3133ba646856477dfa824dac124b0544d6b56c52f9f20f66abd28a3cf",
+  "independent_native_layout": {
+    "callback_records_full_offset": 9364,
+    "record_stride_bytes": 16,
+    "timer_callback_scaled_base": 586,
+    "timer_callback_full_offset": 9376
+  },
+  "normal_coff_target_address": "0x00412720",
+  "complete_normal_coff_target_bytes": 48,
+  "baseline_object_size": 48,
+  "modified_object_size": 48,
+  "normal_coff_linkage_fields": 0,
+  "all_normal_coff_bytes_equal_original": true,
+  "full_dispatcher_and_companions": {
+    "ecl-boss": {
+      "candidate_size": 14352,
+      "prior_candidate_size": 14352,
+      "link_field_count": 716,
+      "field_geometry_equal": true,
+      "ordinary_candidate_diff_count": 0,
+      "first_diffs": []
+    },
+    "begin-spell": {
+      "candidate_size": 2432,
+      "prior_candidate_size": 2432,
+      "link_field_count": 108,
+      "field_geometry_equal": true,
+      "ordinary_candidate_diff_count": 0,
+      "first_diffs": []
+    },
+    "finalize-death": {
+      "candidate_size": 162,
+      "prior_candidate_size": 162,
+      "link_field_count": 9,
+      "field_geometry_equal": true,
+      "ordinary_candidate_diff_count": 0,
+      "first_diffs": []
+    },
+    "viewport": {
+      "candidate_size": 330,
+      "prior_candidate_size": 330,
+      "link_field_count": 10,
+      "field_geometry_equal": true,
+      "ordinary_candidate_diff_count": 0,
+      "first_diffs": []
+    }
+  },
+  "complete_graph_support_reused_after_all_hash_pins": 10,
+  "scoped_exact_regressions": [
+    {
+      "unit": "enemy-ecl-dispatch-forwarder",
+      "result": "exact",
+      "target_bytes": 11,
+      "matched_bytes": 11
+    },
+    {
+      "unit": "enemy-configure-interrupt",
+      "result": "exact",
+      "target_bytes": 48,
+      "matched_bytes": 48
+    },
+    {
+      "unit": "enemy-read-int-argument",
+      "result": "exact",
+      "target_bytes": 16,
+      "matched_bytes": 16
+    },
+    {
+      "unit": "enemy-read-raw-float-argument",
+      "result": "exact",
+      "target_bytes": 26,
+      "matched_bytes": 26
+    }
+  ],
+  "previous_exact_bytes_preserved": 101,
+  "new_exact_credit": 0
+}

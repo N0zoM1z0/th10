@@ -552,21 +552,41 @@ static __declspec(noinline) int EnemyFindLaser(
     return 0;
 }
 extern void __stdcall EnemyKillAll(EnemyManagerView *manager);
+// Full Enemy +0x2494 holds eight native 0x10-byte callback records.
+// The timer-name store uses the original record-scaled +0x24A origin.
+enum EnemyCallbackRecordAddress
+{
+    ENEMY_CALLBACK_FULL_BASE =
+        offsetof(EnemyFullObjectView, runtime) +
+        offsetof(EnemyRuntimeView, callbackThresholds),
+    ENEMY_CALLBACK_TIMER_SCALED_BASE =
+        (ENEMY_CALLBACK_FULL_BASE +
+         offsetof(EnemyCallbackThresholdView, timerCallbackName)) /
+        sizeof(EnemyCallbackThresholdView)
+};
+typedef char EnemyCallbackRecordNativeAddresses[
+    (ENEMY_CALLBACK_FULL_BASE == 0x2494 &&
+     ENEMY_CALLBACK_TIMER_SCALED_BASE == 0x24a &&
+     sizeof(EnemyCallbackThresholdView) == 0x10) ? 1 : -1];
+
 static __declspec(noinline) void __stdcall EnemyConfigureInterrupt(
     EnemyFullObjectView *owner, int slot, int lifeThreshold,
     int timerThreshold, const unsigned char *callbackName)
 {
     unsigned char *record =
-        reinterpret_cast<unsigned char *>(owner) + slot * 0x10;
-    *reinterpret_cast<int *>(record + 0x2494) = lifeThreshold;
+        reinterpret_cast<unsigned char *>(owner) +
+        slot * static_cast<int>(sizeof(EnemyCallbackThresholdView));
+    *reinterpret_cast<int *>(record + ENEMY_CALLBACK_FULL_BASE) = lifeThreshold;
     if (lifeThreshold >= 0) {
         EnemyCallbackThresholdView *threshold =
-            reinterpret_cast<EnemyCallbackThresholdView *>(record + 0x2494);
+            reinterpret_cast<EnemyCallbackThresholdView *>(
+                record + ENEMY_CALLBACK_FULL_BASE);
         threshold->timerThreshold = timerThreshold;
         threshold->lifeCallbackName = callbackName;
         *reinterpret_cast<const unsigned char **>(
             reinterpret_cast<unsigned char *>(owner) +
-            (slot + 0x24a) * 0x10) = callbackName;
+            (slot + ENEMY_CALLBACK_TIMER_SCALED_BASE) *
+            static_cast<int>(sizeof(EnemyCallbackThresholdView))) = callbackName;
     }
 }
 
