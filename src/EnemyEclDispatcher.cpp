@@ -1179,6 +1179,11 @@ int EnemyRuntimeView::DispatchEclInstruction()
   float local_29c;
   float local_298;
   EnemyLaserRequestScratch local_288;
+  typedef char EclLaserRequestPatternPositions[
+      (offsetof(EnemyLaserType0RequestView, position) == 0x00 &&
+       offsetof(EnemyLaserType0RequestView, patternWords) == 0x2c &&
+       offsetof(EnemyLaserType1RequestView, position) == 0x00 &&
+       offsetof(EnemyLaserType1RequestView, patternWords) == 0x48) ? 1 : -1];
   // The two straight-laser layouts share this native 0x1F8 request overlay.
   // These offsets are established by the independent type-1 laser consumer.
   typedef char EclStraightLaserRequestOffsets[
@@ -2549,16 +2554,16 @@ dispatch_select_bullet_count_low:
     }
     if (opcode == 0x1b1) {
       memcpy(
-          reinterpret_cast<unsigned int *>(&local_288) + 11,
+          local_288.type0.patternWords,
           reinterpret_cast<const void *>(&bulletPatterns[0].words[8]),
-          0x6c * sizeof(unsigned int));
+          sizeof(local_288.type0.patternWords));
     }
     vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
     vectorScratch.y = bulletPatternOffsets[0].y + worldMotion.position.y;
     vectorScratch.z = bulletPatternOffsets[0].z + worldMotion.position.z;
-    reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
-    reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
-    reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
+    local_288.type0.position.x = vectorScratch.x;
+    local_288.type0.position.y = vectorScratch.y;
+    local_288.type0.position.z = vectorScratch.z;
     uVar22 = ReadIntArgument(0);
     local_288.type0.type = (unsigned short)uVar22;
     uVar22 = ReadIntArgument(1);
@@ -2584,7 +2589,7 @@ dispatch_select_bullet_count_low:
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
     if (static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode) == 0x1b2) {
       puVar14 = &bulletPatterns[0].words[8];
-      puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;
+      puVar13 = local_288.type1.patternWords;
       for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
         *puVar13 = *puVar14;
         puVar14 = puVar14 + 1;
@@ -2594,9 +2599,9 @@ dispatch_select_bullet_count_low:
     vectorScratch.x = bulletPatternOffsets[0].x + worldMotion.position.x;
     vectorScratch.y = bulletPatternOffsets[0].y + worldMotion.position.y;
     vectorScratch.z = bulletPatternOffsets[0].z + worldMotion.position.z;
-    reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
-    reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
-    reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
+    local_288.type1.position.x = vectorScratch.x;
+    local_288.type1.position.y = vectorScratch.y;
+    local_288.type1.position.z = vectorScratch.z;
     uVar22 = ReadIntArgument(1);
     local_288.type1.type = (unsigned short)uVar22;
     uVar22 = ReadIntArgument(2);

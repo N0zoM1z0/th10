@@ -1,0 +1,83 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "ddd7d253080fac6f3ff4f2d6d9c567a3112b29466f4a6e8cccb2a6f3853134b9",
+  "typed_coordinate_stores": 6,
+  "typed_pattern_destination_sites": 2,
+  "type0_pattern_offset": 44,
+  "type1_pattern_offset": 72,
+  "whole_linked_owner_comparisons": [
+    {
+      "name": "ECL dispatcher",
+      "target_bytes": 14416,
+      "candidate_bytes": 14352,
+      "baseline_bytes": 14352,
+      "fields": 716,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    },
+    {
+      "name": "EnemyBeginSpell",
+      "target_bytes": 2432,
+      "candidate_bytes": 2432,
+      "baseline_bytes": 2432,
+      "fields": 108,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    },
+    {
+      "name": "EnemyFinalizeDeath",
+      "target_bytes": 162,
+      "candidate_bytes": 162,
+      "baseline_bytes": 162,
+      "fields": 9,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    },
+    {
+      "name": "EnemyConfigureViewportOwner",
+      "target_bytes": 330,
+      "candidate_bytes": 330,
+      "baseline_bytes": 330,
+      "fields": 10,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    },
+    {
+      "name": "EnemyDropItemCountsCore",
+      "target_bytes": 503,
+      "candidate_bytes": 505,
+      "baseline_bytes": 505,
+      "fields": 27,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    }
+  ],
+  "hash_pinned_reused_supports": 10,
+  "selected_original_exact": [
+    {
+      "unit": "enemy-set-laser-position",
+      "result": "exact",
+      "matched_bytes": 23,
+      "target_bytes": 23
+    },
+    {
+      "unit": "enemy-find-laser",
+      "result": "exact",
+      "matched_bytes": 22,
+      "target_bytes": 22
+    },
+    {
+      "unit": "enemy-finalize-death",
+      "result": "exact",
+      "matched_bytes": 162,
+      "target_bytes": 162
+    }
+  ],
+  "previously_exact_bytes": 207,
+  "new_exact_credit": 0
+}
