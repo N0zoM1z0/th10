@@ -1,0 +1,33 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "f105324c55d3ab2d2d28291cdf58c25f77da9067cc55a5a637adc3724d05255f",
+  "header_sha256": "b1038e6c1631f5f0b819795ca5e07afb68b25d66d961fd9a2b188b9f309dc9ae",
+  "canonical_exact_replays": [
+    {
+      "unit": "game-statistics-load",
+      "result": "exact",
+      "matched_bytes": 423,
+      "compared_bytes": 423
+    },
+    {
+      "unit": "game-statistics-initialize-tail",
+      "result": "exact",
+      "matched_bytes": 142,
+      "compared_bytes": 142
+    }
+  ],
+  "same_graph_neighbors": [
+    {
+      "name": "CreateStatistics42AF20",
+      "target_size": 97,
+      "candidate_size": 98,
+      "exact": false
+    },
+    {
+      "name": "GameStatisticsOwner::GameStatisticsOwner",
+      "target_size": 132,
+      "candidate_size": 137,
+      "exact": false
+    }
+  ]
+}
