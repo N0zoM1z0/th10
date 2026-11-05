@@ -3321,18 +3321,18 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                 static_cast<unsigned char>(GET_INT_VAR(2));
             break;
         case ANM_OP_JUMP:
-            vm->scriptTimer.SetCurrent(currentInstruction->intArgs[1]);
+            vm->scriptTimer.SetCurrent(currentInstruction->jump.targetTime);
             vm->currentInstruction = vm->beginningOfScript->AtByteOffset(
-                currentInstruction->intArgs[0]);
+                currentInstruction->jump.scriptByteOffset);
             continue;
 
         case ANM_OP_JUMP_DEC:
             --*GET_INT_VAR_PTR(0);
             if (GET_INT_VAR(0) > 0)
             {
-                vm->scriptTimer.SetCurrent(currentInstruction->intArgs[2]);
+                vm->scriptTimer.SetCurrent(currentInstruction->decrementJump.targetTime);
                 vm->currentInstruction = vm->beginningOfScript->AtByteOffset(
-                    currentInstruction->intArgs[1]);
+                    currentInstruction->decrementJump.scriptByteOffset);
                 continue;
             }
             break;

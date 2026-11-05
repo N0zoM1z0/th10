@@ -252,6 +252,28 @@ struct AnmVariableArgumentMaskView
 typedef char AnmVariableArgumentMaskSize02[
     (sizeof(AnmVariableArgumentMaskView) == 2) ? 1 : -1];
 
+// ANM JUMP stores a byte displacement followed by the destination time.
+// JUMP_DEC first stores a variable operand to decrement, then the same
+// displacement/time pair. These describe wire prefixes, not fixed-size
+// instruction objects or independent allocations.
+struct AnmJumpOperandsView
+{
+    int scriptByteOffset;
+    int targetTime;
+};
+struct AnmDecrementJumpOperandsView
+{
+    int counterOperand;
+    int scriptByteOffset;
+    int targetTime;
+};
+typedef char AnmJumpOperandWireLayouts[
+    (sizeof(AnmJumpOperandsView) == 8 &&
+     offsetof(AnmJumpOperandsView, targetTime) == 4 &&
+     sizeof(AnmDecrementJumpOperandsView) == 12 &&
+     offsetof(AnmDecrementJumpOperandsView, scriptByteOffset) == 4 &&
+     offsetof(AnmDecrementJumpOperandsView, targetTime) == 8) ? 1 : -1];
+
 struct AnmRawInstructionView
 {
     short opcode;
@@ -270,6 +292,8 @@ struct AnmRawInstructionView
         float floatArgs[10];
         unsigned short shortArgs[20];
         unsigned char byteArgs[40];
+        AnmJumpOperandsView jump;
+        AnmDecrementJumpOperandsView decrementJump;
     };
 
     // The ANM instruction stream uses byte sizes, not sizeof(record).
@@ -295,7 +319,15 @@ typedef char AnmRawInstructionHeaderOffsets[
      sizeof(((AnmRawInstructionView *)0)->variableArgs) == 2) ? 1 : -1];
 
 typedef char AnmRawInstructionArgumentsAt08[
-    (offsetof(AnmRawInstructionView, intArgs) == 0x08) ? 1 : -1];
+    (offsetof(AnmRawInstructionView, intArgs) == 0x08 &&
+     offsetof(AnmRawInstructionView, jump) == 0x08 &&
+     offsetof(AnmRawInstructionView, decrementJump) == 0x08 &&
+     offsetof(AnmRawInstructionView, jump) +
+       offsetof(AnmJumpOperandsView, targetTime) == 0x0C &&
+     offsetof(AnmRawInstructionView, decrementJump) +
+       offsetof(AnmDecrementJumpOperandsView, scriptByteOffset) == 0x0C &&
+     offsetof(AnmRawInstructionView, decrementJump) +
+       offsetof(AnmDecrementJumpOperandsView, targetTime) == 0x10) ? 1 : -1];
 
 struct AnmInt3View
 {
