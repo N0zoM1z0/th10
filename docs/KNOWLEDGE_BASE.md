@@ -21,6 +21,38 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-05 current source/ledger supersession
+
+The generated ledger now records **1,482 complete exact functions and
+189,797 exact codegen bytes**, with 1,309 source-present mappings and
+574 confirmed-authored exact functions. The older 1,478/189,217 and
+570/119,181 totals were valid only for the earlier source epoch; they
+must not be reused as current status. The 95-byte
+EnemyEclResourceView::LoadFile at 0x0040CD20 is canonical exact with
+five original target-bound fields and two independent cold links in a
+real FileSystem/EclVm producer (see
+[evidence](evidence/enemy-ecl-loadfile-real-filesystem-exact-20261104/README.md)).
+Its 589-byte AddScriptData callee is *still nonexact*.
+
+Subsequent source changes typed the full 14KB Enemy ECL interpreter's
+dynamic operand, spell/name, laser, ANM VM and runtime data fields.
+The latest candidate has a **14,352-byte PDB extent, not 14,352 equal
+original bytes**; the original function is **14,416 bytes**. 716
+candidate link-field positions/types remained stable in the last
+candidate-to-candidate comparisons, but this does not imply full
+original-target linkage identity. The source remains NONEXACT.
+The ANM 9,964-byte executor now retains sequentially evaluated opcode-91
+child arguments with 9,962/9,964 strict bytes; this source edit was
+**installed**, not reverted as an older experimental note below suggests.
+The ECL script-table insertion is a 570-byte candidate against a
+589-byte target. ResultMenu, Popup and Chain recovered typed task
+ownership and callbacks while preserving selected existing exact owners.
+[Current frontier and source pins](RE_HANDOFF.md).
+
+Historical compiler evidence referenced below remains tied to the
+source epoch in which it was measured. Always use the live ledgers and
+current source SHA before applying any old byte score or archive path.
+
 ## 2026-11-04 authoritative updates for the next agent
 
 **Player zero-mode initial history value reuse (2026-11-04):** The original
@@ -62,7 +94,7 @@ is superseded; authored/outlined origin remains indeterminate.
 
 
 **Current ledger:** **1,829** reviewed boundaries, **1,309** source-present,
-**1,478** canonical exact functions and **189,217** exact codegen bytes.
+**1,482** canonical exact functions and **189,797** exact codegen bytes.
 `PROGRESS.md` is generated and overrides any earlier cumulative table below;
 these totals do not prove a runnable retail product or original source
 ancestry. The new [current handoff](RE_HANDOFF.md) consolidates the complete
