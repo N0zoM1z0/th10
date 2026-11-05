@@ -2083,9 +2083,12 @@ dispatch_difficulty_float_index_4_a:
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    // 0x4D1 dwords from runtime is the real bulletPatternOffsets array.
-    // Each ECL pattern carries one contiguous PlayerFloat3 offset vector.
-    iVar27 = (int)uVar22 * 3 + 0x4d1;
+    // The dword cursor uses the verified 0x1344 pattern-offset origin and
+    // the real 12-byte vector stride; preserve its signed integer lifetime.
+    iVar27 = (int)uVar22 *
+        static_cast<int>(sizeof(PlayerFloat3) / sizeof(unsigned int)) +
+        static_cast<int>(offsetof(EnemyRuntimeView, bulletPatternOffsets) /
+                         sizeof(unsigned int));
     vectorScratch.x = reinterpret_cast<const PlayerFloat3 *>(
         (int)runtimeAddress + iVar27 * 4)->x + worldMotion.position.x;
     vectorScratch.y = reinterpret_cast<const PlayerFloat3 *>(
@@ -2365,8 +2368,11 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_SET_BULLET_EXTRA:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
-    iVar26 = (int)uVar22 * 0x16 + (int)uVar23;
-    iVar27 = (int)runtimeAddress + iVar26 * 0x18;
+    iVar26 = (int)uVar22 * static_cast<int>(
+        sizeof(EnemyBulletPatternView) / sizeof(EnemyBulletExtraView)) +
+        (int)uVar23;
+    iVar27 = (int)runtimeAddress + iVar26 *
+        static_cast<int>(sizeof(EnemyBulletExtraView));
     uVar22 = ENEMY_READ_INT_DIRECT(2);
     reinterpret_cast<EnemyBulletExtraView *>(
         iVar27 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns) +
