@@ -298,7 +298,10 @@ int EclVmContext::ReadInt(unsigned int index)
                 index = *reinterpret_cast<unsigned int *>(
                     stack.data + stack.stackTop);
                 stack.stackTop -= 4;
-                if (stack.data[stack.stackTop] == 'f')
+                // The caller has just popped a value DWORD; the preceding
+                // four-byte slot carries its one-byte type tag.
+                if (reinterpret_cast<const EclVmStackTypeSlotView *>(
+                        stack.data + stack.stackTop)->type == 'f')
                     return static_cast<int>(
                         *reinterpret_cast<float *>(&index));
             }
@@ -589,8 +592,11 @@ int EclVmContext::StartSubroutine(
     EclVmContext *const previousContext = caller->host->activeContext;
     caller->host->activeContext = destination;
     EclVmHost *const host = caller->host;
+    // Subroutine names follow the initial serialized 32-bit CALL operand.
+    // The instruction prefix owns the +0x10 byte-stream start.
     host->activeContext->instruction = host->scriptDatabase->FindSubroutine(
-        reinterpret_cast<const char *>(*callerInstruction) + 0x14);
+        reinterpret_cast<const char *>(
+            (*callerInstruction)->operands + sizeof(int)));
     host->activeContext->currentTime = 0.0f;
     if (host->activeContext->instruction == NULL)
     {
