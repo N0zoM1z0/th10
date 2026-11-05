@@ -52,7 +52,7 @@ nextRecord:
     case BULLET_TRANSFORM_DECELERATE:
         this->activeTransformFlags |= BULLET_TRANSFORM_DECELERATE;
         this->exStates[0].timer.SetCurrent(0);
-        *reinterpret_cast<int *>(&this->exStates[0].vector.z) = 0;
+        this->exStates[0].vector.z = 0.0f;
         break;
 
     case BULLET_TRANSFORM_ACCELERATE_VECTOR:
@@ -180,8 +180,7 @@ nextRecord:
 
             ++record;
             ++this->transformIndex;
-            pattern.count2 =
-                *reinterpret_cast<short *>(&record->payload.int0);
+            pattern.count2 = record->payload.int0LowSigned16;
             pattern.transformFlags =
                 static_cast<unsigned int>(record->payload.int1);
             pattern.angle = record->payload.float0;

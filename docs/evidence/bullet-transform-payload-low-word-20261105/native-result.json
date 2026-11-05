@@ -1,0 +1,43 @@
+{
+  "original_target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "installed_source_sha256": "51201c2ba53e5929e395bcccad13cfa250800148793ab8fc31301160ad008ad7",
+  "installed_header_sha256": "e5da890a68bfae86d8fd6fe15d7900eca3d5706bc17af27d83bf411b878347a5",
+  "payload_offset_low_signed_word": 8,
+  "payload_size": 16,
+  "transform_record_size": 24,
+  "whole_transform_normal_coff": {
+    "target_bytes": 1454,
+    "baseline_normal_coff_bytes": 1540,
+    "new_normal_coff_bytes": 1540,
+    "baseline_field_count": 32,
+    "new_field_count": 32,
+    "same_field_geometry": true,
+    "ordinary_candidate_differences": 0,
+    "first_differences": [],
+    "installed_source_sha256": "51201c2ba53e5929e395bcccad13cfa250800148793ab8fc31301160ad008ad7",
+    "installed_header_sha256": "e5da890a68bfae86d8fd6fe15d7900eca3d5706bc17af27d83bf411b878347a5",
+    "original_target_exact": false
+  },
+  "selected_canonical_exact": [
+    {
+      "unit": "bullet-update-horizontal-wrap",
+      "result": "exact",
+      "matched_bytes": 148,
+      "target_bytes": 148
+    },
+    {
+      "unit": "bullet-update-state8",
+      "result": "exact",
+      "matched_bytes": 306,
+      "target_bytes": 306
+    },
+    {
+      "unit": "bullet-runtime-update",
+      "result": "exact",
+      "matched_bytes": 885,
+      "target_bytes": 885
+    }
+  ],
+  "previous_exact_bytes_preserved": 1339,
+  "new_exact_credit": 0
+}

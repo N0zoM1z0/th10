@@ -10,9 +10,19 @@ struct BulletTransformPayloadView
 {
     float float0;
     float float1;
-    int int0;
+    // The second transform record of a child-pattern spawn reuses the low
+    // signed halfword of payload int0 for the second bullet count.
+    union
+    {
+        int int0;
+        short int0LowSigned16;
+    };
     int int1;
 };
+
+typedef char BulletTransformPayloadLowHalfAt08[
+    (offsetof(BulletTransformPayloadView, int0) == 0x08 &&
+     offsetof(BulletTransformPayloadView, int0LowSigned16) == 0x08) ? 1 : -1];
 
 struct BulletTransformRecordView
 {
