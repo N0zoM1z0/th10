@@ -3454,8 +3454,8 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             vm->visible = currentInstruction->intArgs[0];
             break;
         case ANM_OP_RENDER_STATE:
-            vm->renderStateA = currentInstruction->shortArgs[0];
-            vm->renderStateB = currentInstruction->shortArgs[1];
+            vm->renderStateA = currentInstruction->renderStateWords.stateA;
+            vm->renderStateB = currentInstruction->renderStateWords.stateB;
             break;
         case ANM_OP_U_SCROLL:
             vm->uvScrollVelocityX = GET_FLOAT_VAR(0);
@@ -3504,12 +3504,12 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             finalColor.red = static_cast<unsigned char>(finalRed);
             vm->StartPrimaryColorInterpolation(
                 &initialColor, &finalColor, GET_INT_VAR(0),
-                currentInstruction->byteArgs[4]);
+                currentInstruction->timedInterpolation.interpolationMode);
             break;
         }
         case ANM_OP_ALPHA1_TIME:
             vm->StartPrimaryAlphaInterpolation(
-                GET_INT_VAR(0), currentInstruction->byteArgs[4],
+                GET_INT_VAR(0), currentInstruction->timedInterpolation.interpolationMode,
                 vm->primaryColor.alpha,
                 static_cast<unsigned char>(GET_INT_VAR(2)));
             break;
@@ -3528,12 +3528,12 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             finalColor.red = static_cast<unsigned char>(finalRed);
             vm->StartSecondaryColorInterpolation(
                 &initialColor, &finalColor, GET_INT_VAR(0),
-                currentInstruction->byteArgs[4]);
+                currentInstruction->timedInterpolation.interpolationMode);
             break;
         }
         case ANM_OP_ALPHA2_TIME:
             vm->StartSecondaryAlphaInterpolation(
-                GET_INT_VAR(0), currentInstruction->byteArgs[4],
+                GET_INT_VAR(0), currentInstruction->timedInterpolation.interpolationMode,
                 vm->secondaryColor.alpha,
                 static_cast<unsigned char>(GET_INT_VAR(2)));
             break;
@@ -3558,7 +3558,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             const AnmFloat2View finalScale(
                 GET_FLOAT_VAR(2), GET_FLOAT_VAR(3));
             vm->StartScaleInterpolation(
-                GET_INT_VAR(0), currentInstruction->byteArgs[4],
+                GET_INT_VAR(0), currentInstruction->timedInterpolation.interpolationMode,
                 reinterpret_cast<AnmFloat2View *>(&vm->scaleX),
                 &finalScale);
             vm->updateScale = 1;

@@ -274,6 +274,27 @@ typedef char AnmJumpOperandWireLayouts[
      offsetof(AnmDecrementJumpOperandsView, scriptByteOffset) == 4 &&
      offsetof(AnmDecrementJumpOperandsView, targetTime) == 8) ? 1 : -1];
 
+// RENDER_STATE writes two consecutive 16-bit state words. The timed
+// color/alpha/scale opcodes encode a 32-bit duration operand followed by a
+// one-byte interpolation mode, with the remaining mode-word bytes opaque.
+// Both are overlapping prefixes on the existing variable-length payload.
+struct AnmRenderStateOperandPairView
+{
+    unsigned short stateA;
+    unsigned short stateB;
+};
+struct AnmTimedInterpolationOperandsView
+{
+    int durationOperand;
+    unsigned char interpolationMode;
+    unsigned char unknown005[3];
+};
+typedef char AnmRenderAndTimedOperandWireSizes[
+    (sizeof(AnmRenderStateOperandPairView) == 4 &&
+     offsetof(AnmRenderStateOperandPairView, stateB) == 2 &&
+     sizeof(AnmTimedInterpolationOperandsView) == 8 &&
+     offsetof(AnmTimedInterpolationOperandsView, interpolationMode) == 4) ? 1 : -1];
+
 struct AnmRawInstructionView
 {
     short opcode;
@@ -294,6 +315,8 @@ struct AnmRawInstructionView
         unsigned char byteArgs[40];
         AnmJumpOperandsView jump;
         AnmDecrementJumpOperandsView decrementJump;
+        AnmRenderStateOperandPairView renderStateWords;
+        AnmTimedInterpolationOperandsView timedInterpolation;
     };
 
     // The ANM instruction stream uses byte sizes, not sizeof(record).
@@ -327,7 +350,13 @@ typedef char AnmRawInstructionArgumentsAt08[
      offsetof(AnmRawInstructionView, decrementJump) +
        offsetof(AnmDecrementJumpOperandsView, scriptByteOffset) == 0x0C &&
      offsetof(AnmRawInstructionView, decrementJump) +
-       offsetof(AnmDecrementJumpOperandsView, targetTime) == 0x10) ? 1 : -1];
+       offsetof(AnmDecrementJumpOperandsView, targetTime) == 0x10 &&
+     offsetof(AnmRawInstructionView, renderStateWords) == 0x08 &&
+     offsetof(AnmRawInstructionView, renderStateWords) +
+       offsetof(AnmRenderStateOperandPairView, stateB) == 0x0A &&
+     offsetof(AnmRawInstructionView, timedInterpolation) == 0x08 &&
+     offsetof(AnmRawInstructionView, timedInterpolation) +
+       offsetof(AnmTimedInterpolationOperandsView, interpolationMode) == 0x0C) ? 1 : -1];
 
 struct AnmInt3View
 {
