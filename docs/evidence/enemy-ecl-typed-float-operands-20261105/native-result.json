@@ -1,0 +1,108 @@
+{
+  "original_target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "current_source_hashes": {
+    "src/Enemy.hpp": "02a53024a4af2cda5fdd52f5753660416d94fc0d48ba790a894682483bbffe11",
+    "src/EnemyEclDispatcher.cpp": "0ef1469d3fb21be0deb20345a8fb1abbb93762eb553856a5941fea436bc1f0ed"
+  },
+  "typed_float_operand_reads": 13,
+  "data_start_offset": 16,
+  "whole_owner_comparisons": [
+    {
+      "owner": "EnemyBeginSpell",
+      "target_length": 2432,
+      "candidate_length": 2432,
+      "baseline_length": 2432,
+      "field_count": 108,
+      "same_field_geometry": true,
+      "ordinary_candidate_byte_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "DispatchEclInstruction",
+      "target_length": 14416,
+      "candidate_length": 14352,
+      "baseline_length": 14352,
+      "field_count": 716,
+      "same_field_geometry": true,
+      "ordinary_candidate_byte_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyDropItemCountsCore",
+      "target_length": 503,
+      "candidate_length": 505,
+      "baseline_length": 505,
+      "field_count": 27,
+      "same_field_geometry": true,
+      "ordinary_candidate_byte_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyFullObjectView ctor",
+      "target_length": 673,
+      "candidate_length": 672,
+      "baseline_length": 672,
+      "field_count": 5,
+      "same_field_geometry": true,
+      "ordinary_candidate_byte_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyConfigureViewportOwner",
+      "target_length": 330,
+      "candidate_length": 330,
+      "baseline_length": 330,
+      "field_count": 10,
+      "same_field_geometry": true,
+      "ordinary_candidate_byte_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyPrepareProjection",
+      "target_length": 60,
+      "candidate_length": 60,
+      "baseline_length": 60,
+      "field_count": 1,
+      "same_field_geometry": true,
+      "ordinary_candidate_byte_differences": 0,
+      "first_differences": []
+    }
+  ],
+  "fresh_rebuilt_sources": [
+    "Enemy.cpp",
+    "Player.cpp",
+    "EnemyEclDispatcher.cpp"
+  ],
+  "hash_pinned_reused_sources": [
+    "AnmManager.cpp",
+    "RandomMath.cpp",
+    "AnmVmCreate.cpp",
+    "AnmVmId.cpp",
+    "AnmInt3Scale.cpp",
+    "EclVm.cpp",
+    "PlayerCollision.cpp",
+    "EclWorldAnchor.cpp"
+  ],
+  "selected_canonical_replays": [
+    {
+      "unit": "enemy-read-int-argument",
+      "result": "exact",
+      "matched_bytes": 16,
+      "target_bytes": 16
+    },
+    {
+      "unit": "enemy-read-raw-float-argument",
+      "result": "exact",
+      "matched_bytes": 26,
+      "target_bytes": 26
+    },
+    {
+      "unit": "enemy-drop-item-counts-core",
+      "result": "exact",
+      "matched_bytes": 503,
+      "target_bytes": 503
+    }
+  ],
+  "previously_exact_bytes": 545,
+  "new_exact_credit": 0
+}

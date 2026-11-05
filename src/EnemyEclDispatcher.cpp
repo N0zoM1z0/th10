@@ -1199,19 +1199,19 @@ int EnemyRuntimeView::DispatchEclInstruction()
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     if ((flags & 0x40000) == 0) {
       fVar9 = worldMotion.position.x;
-      fVar19 = (ReadRawFloatArgument((1), (*reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26]))));
+      fVar19 = (ReadRawFloatArgument((1), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26])));
       fVar10 = worldMotion.position.y;
       local_90.spawnRequest.position.x = (float)(fVar19 + fVar9);
-      fVar19 = (ReadRawFloatArgument((2), (*reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 1]))));
+      fVar19 = (ReadRawFloatArgument((2), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26 + 1])));
       fVar19 = fVar19 + fVar10;
     }
     else {
       fVar9 = worldMotion.position.x;
-      fVar19 = (ReadRawFloatArgument((1), (*reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26]))));
+      fVar19 = (ReadRawFloatArgument((1), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26])));
       fVar10 = worldMotion.position.y;
       vectorScratch.x = (float)(fVar19 + fVar9);
       vectorScratch.y = ReadRawFloatArgument(
-          2, *reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 1])) + fVar10;
+          2, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26 + 1]) + fVar10;
       vectorScratch.z = worldMotion.position.z;
       EnemyPrepareProjection(&g_MainSupervisorView, 0);
       D3DXVec3Project(&local_90.spawnRequest.position, &vectorScratch,
@@ -1243,9 +1243,9 @@ dispatch_create_enemy_absolute:
     iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-    fVar19 = (ReadRawFloatArgument((1), (*reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26]))));
+    fVar19 = (ReadRawFloatArgument((1), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26])));
     local_90.spawnRequest.position.x = (float)fVar19;
-    fVar19 = (ReadRawFloatArgument((2), (*reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 1]))));
+    fVar19 = (ReadRawFloatArgument((2), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26 + 1])));
     local_90.spawnRequest.position.y = (float)fVar19;
     uVar22 = ReadRawIntArgument(3, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 2]);
     local_90.spawnRequest.life = uVar22;
@@ -1262,15 +1262,15 @@ dispatch_create_enemy_global:
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     local_90.spawnRequest.position.x =
         ReadRawFloatArgument(
-            1, *reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26])) +
+            1, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26]) +
         g_EnemyGlobalPositionOffset.x;
     local_90.spawnRequest.position.y =
         ReadRawFloatArgument(
-            2, *reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 1])) +
+            2, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26 + 1]) +
         g_EnemyGlobalPositionOffset.y;
     local_90.spawnRequest.position.z =
         ReadRawFloatArgument(
-            3, *reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 2]));
+            3, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26 + 2]);
     uVar22 = ReadRawIntArgument(4, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 3]);
     local_90.spawnRequest.life = uVar22;
     uVar22 = ReadRawIntArgument(5, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 4]);
@@ -1294,11 +1294,11 @@ dispatch_create_enemy_mirrored:
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     local_90.spawnRequest.position.x =
         ReadRawFloatArgument(
-            1, *reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26])) + fVar9;
+            1, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26]) + fVar9;
     fVar10 = worldMotion.position.y;
     local_90.spawnRequest.position.y =
         ReadRawFloatArgument(
-            2, *reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 1])) + fVar10;
+            2, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26 + 1]) + fVar10;
     uVar22 = ReadRawIntArgument(3, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 2]);
     local_90.spawnRequest.life = uVar22;
     uVar22 = ReadRawIntArgument(4, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 3]);
@@ -2851,9 +2851,9 @@ dispatch_create_enemy_absolute_mirrored:
   iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
   iVar26 /= 4;
   memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-  fVar19 = (ReadRawFloatArgument((1), (*reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26]))));
+  fVar19 = (ReadRawFloatArgument((1), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26])));
   local_90.spawnRequest.position.x = (float)fVar19;
-  fVar19 = (ReadRawFloatArgument((2), (*reinterpret_cast<const float *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 1]))));
+  fVar19 = (ReadRawFloatArgument((2), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26 + 1])));
   local_90.spawnRequest.position.y = (float)fVar19;
   uVar22 = ReadRawIntArgument(3, reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[iVar26 + 2]);
   local_90.spawnRequest.life = uVar22;

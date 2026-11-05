@@ -417,14 +417,21 @@ struct EnemyEclInstructionView
     unsigned short value06;
     unsigned short operandMask;
     unsigned char unknown00A[0x06];
-    int operands[1];
+    // ECL operand words are shared between integer and IEEE-754 access.
+    // The actual instruction size remains variable and encoded separately.
+    union
+    {
+        int operands[1];
+        float floatOperands[1];
+    };
 };
 typedef char EnemyEclInstructionOpcodeAt004[
     (offsetof(EnemyEclInstructionView, opcode) == 0x004) ? 1 : -1];
 typedef char EnemyEclInstructionOperandMaskAt008[
     (offsetof(EnemyEclInstructionView, operandMask) == 0x008) ? 1 : -1];
 typedef char EnemyEclInstructionOperandsAt010[
-    (offsetof(EnemyEclInstructionView, operands) == 0x010) ? 1 : -1];
+    (offsetof(EnemyEclInstructionView, operands) == 0x010 &&
+     offsetof(EnemyEclInstructionView, floatOperands) == 0x010) ? 1 : -1];
 
 // The generic TH10 ECL operand helpers prove that the full Enemy embeds this
 // execution context at +0x008. The active-context pointer is stored separately
