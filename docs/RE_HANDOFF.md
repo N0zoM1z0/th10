@@ -1,13 +1,15 @@
 # TH10 reconstruction — next-agent handoff (2026-11-05)
 
 **Start with this page, not a dated experiment log.** The latest reviewed
-**source** checkpoint from this reconstruction pass is **`6856ea0`**
-(after `d901fca` and `b5b3d1b`); all three source changes have selected
-native evidence and commit messages prefixed `gpt-web:`. The working tree
-was clean after `6856ea0`; inspect live `git HEAD`, `git status` and source
-hashes before reusing any receipt. Earlier `77dc82a` was the *previous*
-source checkpoint, not the current one. Remote refs and ahead counts can
-advance independently; **do not push** without explicit authorization.
+**source** checkpoint in this local pass is **`3935b6e`**. The immediately
+preceding source checkpoints **`4e26e11`** (ECL SCPT offset records) and
+**`3735f01`** (Chain pending-removal bit) have independent selected-native
+proofs; `d901fca`, `b5b3d1b`, `6856ea0` recovered the ECL boss and FORMAT
+layouts earlier in the same pass. This paragraph is a source epoch, not a
+promise that any long-lived historical witness still represents the current
+transitive header graph. Recheck live `git HEAD`, `git status`, and hashes;
+work through any unfinished dirty changes. Remote refs and ahead counts
+may advance independently; **do not push** without explicit authorization.
 
 ## Five-minute recovery and rules
 
@@ -68,7 +70,7 @@ original handwritten provenance or a linked/runnable Windows product.
 | `EclVmContext::Run @ 0x0044E1A0` | **7,020** | **7,020**; 189 positioned fields, 23 ordinary target-byte differences | Typed byte cursor, FORMAT tag **and numeric operands** retained; still NONEXACT |
 | `EnemyFullObjectView` constructor @ `0x0040D830` | **673** | **672**; 5 linked fields | Target frame/register/initialization scheduling differs; NONEXACT |
 | `BulletRuntimeView::AdvanceTransformProgram @ 0x00406D90` | **1,454** | **1,540** normal COFF; 32 relocations | Signed halfword in child pattern restored; real large owner NONEXACT |
-| `TextRenderBufferView::InvertAlpha @ 0x00437160` | **157** | **157**, one normal COFF byte off | Conditional `JL` vs original `JS`; prior natural rewrites often grow other diffs |
+| `TextRenderBufferView::InvertAlpha @ 0x00437160` | **157** | **157**, 112/157 raw target bytes in current normal COFF | New explicit alpha-bit test recovers original `JS` at `+0x69`; 45 other differences remain. Still NONEXACT; see current evidence below |
 | `SoundDataLoaderThread @ 0x0043D080` | **107** | **112** in real five-source graph | Extra index/register lifetime; NONEXACT |
 
 Other open owners: `EclVmScriptDatabase::AddScriptData` 589 target vs
@@ -81,7 +83,7 @@ source/header pins before claiming a new measurement**.
 
 ## Latest real native witness and source-epoch cautions
 
-- **Newest fresh ECL graph (11 TUs, current EclVm header/source):**
+- **Latest ECL boss graph (11 TUs, pre-SCPT offset-record source epoch):**
   `build/gpt-web/20261105-typed-strides/current-ecl/` (ignored), with
   `src/EnemyEclDispatcher.cpp` SHA-256
   `57b9ffa95de4ed21fa1493b3bc76bc6da0bf32e593308429d18388ce045c831a`
@@ -93,7 +95,12 @@ source/header pins before claiming a new measurement**.
   zero ordinary candidate-to-candidate differences; `EnemyBeginSpell`
   remains 2,432 candidate bytes with 108 unchanged candidate fields.
   This **does not establish original-bound exactness**. Four selected exact
-  original-bound functions replayed 292/292. [Native stride closure](evidence/enemy-ecl-native-stride-closure-20261105/README.md)
+  original-bound functions replayed 292/292. **Source-epoch warning:** the
+  installed `src/EclVm.cpp` and `EclVm.hpp` subsequently changed in `4e26e11`;
+  this 11-TU PE is *not* an attestation of those newer transitive inputs.
+  The separate, newly recompiled two-TU ECL graph below validates the
+  affected ECL VM and subroutine database owners; rerun dependent 11-TU
+  compilation before claiming new boss bytes. [Native stride closure](evidence/enemy-ecl-native-stride-closure-20261105/README.md)
   and [previous baseline](evidence/handoff-maintenance-20261105/current-native-frontiers.json).
 - **ANM near-exact five-source graph:**
   `build/gpt-web/20261105-followup-anm/typed-instruction-next/` (ignored).
@@ -108,9 +115,16 @@ source/header pins before claiming a new measurement**.
   (ignored). The 7,020-byte source contains the typed FORMAT prefix and
   signed eight-byte argument record stride. Its 189 target-bound field
   positions/types remain valid, but the 23 ordinary target-byte differences
-  remain. Reusing a previous ECL boss linked object after changing `EclVm.hpp`
-  is invalid; the selected fresh 11-source graph above fixes that source epoch.
-  [Signed FORMAT recovery](evidence/ecl-format-signed-prefix-overlay-20261105/README.md).
+  remain. **Newer local SCPT source epoch:** `src/EclVm.cpp` SHA-256
+  `b476f4a535203f522f0d69036f67bcc1f32db9faab9779ab75f5377bef4186e0`
+  and `EclVm.hpp` SHA-256
+  `7fedc7debe07d742abbacb0670d3ab16e232fb06cd6f77d1151c5fc3f10df5f0`.
+  A fresh two-TU compilation gives the same 7,020-byte candidate and 189
+  candidate fields; it does **not** newly rebind every field to the target.
+  `AddScriptData` remains 570/589 candidate bytes. Selected original-bound
+  exact guards passed **609/609**; see
+  [SCPT record proof](evidence/ecl-scpt-subroutine-offset-record-20261105/README.md)
+  and [signed FORMAT recovery](evidence/ecl-format-signed-prefix-overlay-20261105/README.md).
 - **Full ECL Boss source improvements already installed:** typed Type-0/1
   laser request fields, positions and pattern copies, real dynamic ANM
   resource arrays, typed 13 binary32 spawn operands, native bullet-pattern
@@ -130,6 +144,28 @@ source/header pins before claiming a new measurement**.
   [Score selector evidence](evidence/shared-score-history-group-fields-20261105/README.md),
   [spell node lifetime](evidence/enemy-spell-second-child-branch-20261105/README.md),
   [drop layout](evidence/enemy-shared-drop-packet-layout-20261105/README.md).
+
+- **Shared Chain/ResultMenu task flag recovery:** the independently
+  original-observed bit 1 of `ChainElem::flags` is now the typed
+  `pendingRemoval` bit used by ResultMenu registration and retirement.
+  Four selected native exact owners still pass **621/621**; the independent
+  28-byte `ResultMenuMarkTasks` remains a 26-byte nonexact native candidate
+  due to a private receiver/register difference. See
+  [typed task ownership](evidence/result-menu-chain-pending-removal-20261105/README.md).
+- **Text alpha branch correction in current source:** normal-COFF native
+  `InvertAlpha` is 157 bytes, with `TEST AH,AH / JS` now matching the target
+  at `+0x69`. This is **112/157 original ordinary bytes**, not an exact
+  acceptance. Selected existing text owners passed **1,799/1,799**; see
+  [alpha sign-branch evidence](evidence/text-alpha-native-sign-branch-20261105/README.md).
+- **Current failed controls, source restored:** seven 107-byte Seek-source
+  variants retained the same seven target-vs-candidate register/jump byte
+  differences (one other variant grew to 118); two `EclVmContext::ReadInt`
+  alternative float-bit forms broke its already exact 144-byte owner and
+  were reverted. Three natural Popup factory creation variants remained
+  67 or 71 candidate bytes, not the original 71-byte instruction sequence.
+  Ignored focused trials: `.analysis/gpt-web/20261105/seek-new-trials.py`,
+  `popup-creator-trial.py` and the ECL read-int selected replay JSONs.
+  Do **not** reintroduce a regressed exact leaf to force a codegen hypothesis.
 
 ## Specific bounded replay and checking workflow
 
@@ -153,8 +189,9 @@ an older report compares its bytes to the current boss.
 Previously failed variants worth **not** repeating without a new lead:
 ANM opcode-91 direct-call, volatile layer, field-order and sign changes;
 ECL FORMAT fully typed parameter-pointer rewrite (reduced function size);
-ECL POINT_ANGLE volatile/staged values (codegen regression); Text alpha
-mask/sign rewrites (disrupt other instruction bytes); and SoundDataLoader
+ECL POINT_ANGLE volatile/staged values (codegen regression); *most* Text
+alpha sign/mask rewrites (the installed explicit high-bit test is the
+exception that recovers the target JS); and SoundDataLoader
 unsigned-index/volatile alternatives. Local scripts and receipts are under
 ignored `.analysis/gpt-web/`, with older compiler graphs selectively archived.
 
