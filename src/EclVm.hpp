@@ -20,6 +20,18 @@ typedef char EclVmFormatArgumentSize08[
     (sizeof(EclVmFormatArgumentView) == 0x08 &&
      offsetof(EclVmFormatArgumentView, integer) == 0x04) ? 1 : -1];
 
+// The FORMAT opcode begins with a byte count followed by its inline text;
+// the remaining packed arguments start after the counted string. This is a
+// flexible on-disk prefix, NOT a fixed-size owned C++ allocation.
+struct EclVmFormatInlinePrefixView
+{
+    int inlineBytes;
+    char text[1];
+};
+typedef char EclVmFormatInlinePrefixTextAt04[
+    (offsetof(EclVmFormatInlinePrefixView, inlineBytes) == 0x00 &&
+     offsetof(EclVmFormatInlinePrefixView, text) == sizeof(int)) ? 1 : -1];
+
 struct EclVmInstruction
 {
     int time;

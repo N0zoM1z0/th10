@@ -1174,8 +1174,9 @@ jump_instruction:
             case ECL_VM_EVALUATE_FORMAT_OPERANDS:
             {
                 // The inline format string follows the first 32-bit operand.
-                const char *cursor = reinterpret_cast<const char *>(
-                    current->operands + sizeof(int));
+                const char *cursor =
+                    reinterpret_cast<const EclVmFormatInlinePrefixView *>(
+                        current->operands)->text;
                 char *scratch = static_cast<char *>(malloc(0x400));
                 scratch[0] = '\0';
 
@@ -1198,19 +1199,28 @@ jump_instruction:
                         const EclVmFormatArgumentView *argument =
                             reinterpret_cast<const EclVmFormatArgumentView *>(
                                 instruction->operands + sizeof(int) +
-                                inlineBytes + argumentIndex * 8);
+                                inlineBytes +
+                                argumentIndex * static_cast<int>(sizeof(EclVmFormatArgumentView)));
                         const char argumentType = argument->type;
                         if (argumentType == 'f' || argumentType == 'g') {
                             EclDebugTrace(scratch, ReadFloatValue(
                                 argumentIndex + 1, this,
                                 instruction->floatOperands[
-                                    inlineBytes / 4 + 2 + argumentIndex * 2]));
+                                    inlineBytes / static_cast<int>(sizeof(int)) + 2 +
+                                    argumentIndex *
+                                        static_cast<int>(
+                                            sizeof(EclVmFormatArgumentView) /
+                                            sizeof(int))]));
                             ++argumentIndex;
                         } else {
                             EclDebugTrace(scratch, ReadIntValue(
                                 argumentIndex + 1,
                                 instruction->integerOperands[
-                                    inlineBytes / 4 + 2 + argumentIndex * 2]));
+                                    inlineBytes / static_cast<int>(sizeof(int)) + 2 +
+                                    argumentIndex *
+                                        static_cast<int>(
+                                            sizeof(EclVmFormatArgumentView) /
+                                            sizeof(int))]));
                             ++argumentIndex;
                         }
                         break;

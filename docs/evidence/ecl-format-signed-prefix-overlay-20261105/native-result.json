@@ -1,0 +1,84 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_owner": "EclVmContext::Run @0x0044E1A0",
+  "complete_target_bytes": 7020,
+  "native_profile": "VC7.1 SP1 /GL EclVm.cpp + Enemy.cpp",
+  "variants": {
+    "ecl-format-inline-prefix": {
+      "candidate_bytes": 7008,
+      "fields": 189,
+      "geometry_equal": false,
+      "ordinary_diff_count": null,
+      "source_sha256": "c6079c3e3236cddb13908856c38a1b38df2ec3652a466bf971627a80a59026e2"
+    },
+    "ecl-format-stride-only": {
+      "candidate_bytes": 7008,
+      "fields": 189,
+      "geometry_equal": false,
+      "ordinary_diff_count": null,
+      "source_sha256": "5a5c1dcf4431eb4a370433dea6be7308eb9b4c201686c1c955e532d086529437"
+    },
+    "ecl-format-signed-stride": {
+      "candidate_bytes": 7020,
+      "fields": 189,
+      "geometry_equal": true,
+      "ordinary_diff_count": 23,
+      "source_sha256": "fac3653730aecdaf2dab0e90b96ea3bfb933429c2ebe61550b144bc873cf1d3c"
+    },
+    "ecl-format-signed-typed-prefix": {
+      "candidate_bytes": 7020,
+      "fields": 189,
+      "geometry_equal": true,
+      "ordinary_diff_count": 23,
+      "source_sha256": "2d2f9cdbc0227d72864209ff3904db37cad7686b9eb96619465cd9715984254a"
+    }
+  },
+  "selected_original_byte_differences": [
+    "0xaf",
+    "0xec",
+    "0xf1",
+    "0x12a",
+    "0x12c",
+    "0x1fb",
+    "0x151d",
+    "0x1838",
+    "0x183c",
+    "0x1840",
+    "0x1844",
+    "0x1899",
+    "0x18b6",
+    "0x18e6",
+    "0x18f8",
+    "0x191c",
+    "0x1932",
+    "0x1957",
+    "0x199e",
+    "0x19a8",
+    "0x19ba",
+    "0x19e6",
+    "0x19e8"
+  ],
+  "selected_exact_replay": {
+    "status": "exact",
+    "unit_count": 3,
+    "previously_exact_bytes": 473,
+    "units": [
+      {
+        "name": "ecl-vm-read-float",
+        "result": "exact",
+        "bytes": 183
+      },
+      {
+        "name": "ecl-vm-read-int",
+        "result": "exact",
+        "bytes": 144
+      },
+      {
+        "name": "ecl-vm-host-run",
+        "result": "exact",
+        "bytes": 146
+      }
+    ]
+  },
+  "new_exact_credit": 0
+}
