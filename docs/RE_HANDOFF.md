@@ -122,6 +122,8 @@ retains 9,962/9,964 bytes, all 350 fields and 95 local branch destinations;
 selected operand helpers pass 276/276. The remaining two opcode-91 bytes
 are **not** claimed exact.
 
+[ANM interrupt label / state-byte overlay](evidence/anm-interrupt-label-byte-states-20261105/README.md): one 32-bit interrupt ID and five 8-bit state opcode operands at the same wire start; freshly verified complete executor **9,962/9,964** with **350** target fields, **95** local targets, and selected leaf guards **300/300 exact**. Remains NONEXACT.
+
 [ANM jump payload evidence](evidence/anm-jump-instruction-payload-20261105/README.md):
 full 9,964-byte interpreter remains 9,962/9,964 original-matched,
 350 target-bound fields including 95 locals, with selected operand leaves
