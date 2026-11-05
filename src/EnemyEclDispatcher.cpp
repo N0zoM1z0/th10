@@ -251,10 +251,10 @@ __declspec(noinline) void EnemyConfigureViewportOwner(
 __declspec(noinline) void EnemyPrepareProjection(
     MainSupervisorView *supervisor, int viewportIndex)
 {
-    AnmViewportOwnerView *viewport =
-        reinterpret_cast<AnmViewportOwnerView *>(
-            reinterpret_cast<unsigned char *>(supervisor) +
-            0x154 + viewportIndex * 0x118);
+    MainCameraRecordView *record =
+        reinterpret_cast<MainCameraRecordView *>(supervisor->unknown154) +
+        viewportIndex;
+    AnmViewportOwnerView *viewport = &record->prefix;
     supervisor->activeViewport = viewport;
     EnemyConfigureViewportOwner(viewport);
     supervisor->d3dDevice->vtable->SetViewport(

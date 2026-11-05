@@ -8,20 +8,6 @@ extern "C" AnmMatrixView *__stdcall D3DXMatrixLookAtLH(
 extern "C" AnmMatrixView *__stdcall D3DXMatrixPerspectiveFovLH(
     AnmMatrixView *output, float fieldOfView, float aspect, float nearZ, float farZ);
 
-// The two records at supervisor+154/+26C have118-byte stride. Reuse the
-// maintained matrix/viewport prefix; allocation and original class are open.
-struct MainCameraRecordView
-{
-    AnmViewportOwnerView prefix;
-    unsigned int unknown0E4;
-    float screenShakeX, screenShakeY;
-    unsigned char unknown0F0[0x28];
-};
-typedef char MainCameraRecordLayout[
-    (sizeof(MainCameraRecordView) == 0x118 &&
-     offsetof(MainCameraRecordView, screenShakeX) == 0xe8 &&
-     offsetof(MainCameraRecordView, screenShakeY) == 0xec) ? 1 : -1];
-
 // Target421480/287: positive screen coordinates and downward up vector.
 // Width/height convert separately before the aspect division.
 void MainConfigureCamera(AnmViewportOwnerView *camera)
@@ -54,8 +40,9 @@ void MainConfigureCamera(AnmViewportOwnerView *camera)
 // Target405300/60. No index check is added; target callers use0/1.
 void MainConfigureGameplayViewport(MainSupervisorView *supervisor, int index)
 {
-    AnmViewportOwnerView *camera = reinterpret_cast<AnmViewportOwnerView *>(
-        reinterpret_cast<unsigned char *>(supervisor) + 0x154 + index * 0x118);
+    MainCameraRecordView *cameraRecord =
+        reinterpret_cast<MainCameraRecordView *>(supervisor->unknown154) + index;
+    AnmViewportOwnerView *camera = &cameraRecord->prefix;
     supervisor->activeViewport = camera;
     MainConfigureCamera(camera);
     supervisor->d3dDevice->vtable->SetViewport(supervisor->d3dDevice,

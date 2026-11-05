@@ -251,6 +251,23 @@ struct MainInputVtableView
 struct MainInputObjectView { MainInputVtableView *vtable; };
 struct MidiTimerView;
 
+// Two camera slots starting at Main supervisor +0x154 use a 0x118-byte
+// record. The first 0xE4 bytes are the actual ANM viewport/matrix prefix;
+// target-observed +0xE8/+0xEC screen-shake scalars follow that prefix.
+// This is a storage view, not a claim about the original C++ class name.
+struct MainCameraRecordView
+{
+    AnmViewportOwnerView prefix;
+    unsigned int unknown0E4;
+    float screenShakeX, screenShakeY;
+    unsigned char unknown0F0[0x28];
+};
+typedef char MainCameraRecordLayout[
+    (sizeof(MainCameraRecordView) == 0x118 &&
+     offsetof(MainCameraRecordView, prefix) == 0x00 &&
+     offsetof(MainCameraRecordView, screenShakeX) == 0xe8 &&
+     offsetof(MainCameraRecordView, screenShakeY) == 0xec) ? 1 : -1];
+
 // Target constructor clears784 bytes through clearColor; preserve that view extent.
 #pragma pack(push, 4)
 struct MainSupervisorView
@@ -362,6 +379,11 @@ typedef char MainSupervisorConfigurationOffsets[
 typedef char MainSupervisorViewportAt26C[
     (offsetof(MainSupervisorView, gameplayViewport) == 0x26c &&
      offsetof(MainSupervisorView, activeViewport) == 0x384) ? 1 : -1];
+typedef char MainSupervisorCameraSlotsAt154[
+    (offsetof(MainSupervisorView, unknown154) == 0x154 &&
+     offsetof(MainSupervisorView, gameplayViewport) -
+         offsetof(MainSupervisorView, unknown154) == sizeof(MainCameraRecordView))
+        ? 1 : -1];
 typedef char MainSupervisorFlagsAt3CC[
     (offsetof(MainSupervisorView, nextGameMode) == 0x390 &&
      offsetof(MainSupervisorView, screenTransitionCountdown) == 0x3ac &&
