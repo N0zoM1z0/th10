@@ -1980,7 +1980,7 @@ dispatch_initialize_polar_interpolation:
       }
     }
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    reinterpret_cast<int *>(&itemDrops.mainItemType)[iVar26] = (int)uVar22;
+    itemDropRawWords[iVar26] = (int)uVar22;
     return 0;
   case ENEMY_ECL_SET_DROP_AREA:
     fVar19 = (ReadFloatArgument(1));

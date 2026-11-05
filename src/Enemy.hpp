@@ -316,8 +316,14 @@ struct EnemyRuntimeView
     // Updated with (life - next callback threshold); before threshold setup
     // the ECL SET_LIFE path initializes this to the full current life.
     int lifeToNextCallback;
-    // The ECL opcodes, spawn path and scatter helper share this full packet.
-    EnemyItemDropCountRadiusView itemDrops;
+    // ECL opcodes and lifecycle use typed packet members, while the native
+    // ADD_ITEM_DROP opcode writes a raw indexed DWORD into the same packet.
+    // Both views start at runtime +0x13CC; the indexed opcode does not clamp.
+    union
+    {
+        EnemyItemDropCountRadiusView itemDrops;
+        int itemDropRawWords[sizeof(EnemyItemDropCountRadiusView) / sizeof(int)];
+    };
     int deathSoundId;
     int deathEffectScript;
     int deathEffectResourceIndex;
@@ -384,7 +390,9 @@ typedef char EnemyRuntimeNextCallbackLifeAt13C8[
     (offsetof(EnemyRuntimeView, lifeToNextCallback) == 0x13c8) ? 1 : -1];
 typedef char EnemyRuntimeItemDropPacketAt13CC[
     (offsetof(EnemyRuntimeView, itemDrops) == 0x13cc &&
-     sizeof(EnemyItemDropCountRadiusView) == 0x3c) ? 1 : -1];
+     offsetof(EnemyRuntimeView, itemDropRawWords) == 0x13cc &&
+     sizeof(EnemyItemDropCountRadiusView) == 0x3c &&
+     sizeof(((EnemyRuntimeView *)0)->itemDropRawWords) == 0x3c) ? 1 : -1];
 typedef char EnemyRuntimeItemDropCountsAt13D0[
     (offsetof(EnemyRuntimeView, itemDrops) +
      offsetof(EnemyItemDropCountRadiusView, countsByKind) == 0x13d0) ? 1 : -1];
