@@ -488,10 +488,23 @@ __declspec(noinline) void EnemyEnableBombShield(
         *reinterpret_cast<AnmVmIdView *>(&gameState->managedVmId));
     gameState->managedVmId = 0;
 }
+// Narrow storage view: only the target-confirmed 12-byte destination at
+// laser object +0x430 is interpreted; surrounding laser subtype fields are
+// deliberately opaque and this does not assert an original class identity.
+struct EnemyLaserPositionAt430View
+{
+    unsigned char unknown000[0x430];
+    PlayerFloat3 position430;
+};
+typedef char EnemyLaserPositionAt430Layout[
+    (offsetof(EnemyLaserPositionAt430View, position430) == 0x430 &&
+     sizeof(EnemyLaserPositionAt430View) == 0x43c) ? 1 : -1];
+
 static __declspec(noinline) void EnemySetLaserPosition(
     int laser, const PlayerFloat3 *position)
 {
-    *reinterpret_cast<PlayerFloat3 *>(laser + 0x430) = *position;
+    reinterpret_cast<EnemyLaserPositionAt430View *>(laser)->position430 =
+        *position;
 }
 static __declspec(noinline) int EnemyFindLaser(
     EnemyLaserManagerView *manager, int id)
