@@ -211,6 +211,10 @@ union EclVmScalar
     float real;
     EclVmInstruction *instruction;
 };
+// The VM scalar payload is one tagged or untagged 32-bit stack word.
+// This view never includes the separate four-byte type prefix.
+typedef char EclVmScalarNativeWordIs04[
+    (sizeof(EclVmScalar) == 4) ? 1 : -1];
 
 static int OperandInt(const EclVmInstruction *instruction, unsigned int index)
 {
@@ -269,8 +273,8 @@ int EclVmContext::ReadIntValue(unsigned int flagIndex, int value)
         if (value >= 0)
         {
             EclVmStackView *const operandStack = &stack;
-            return *reinterpret_cast<int *>(
-                operandStack->data + operandStack->frameBase + value);
+            return reinterpret_cast<const EclVmScalar *>(
+                operandStack->data + operandStack->frameBase + value)->integer;
         }
         if (value == -1)
         {
@@ -290,15 +294,15 @@ int EclVmContext::ReadInt(unsigned int index)
     {
         const int value = OperandInt(instruction, index);
         if (value >= 0)
-            return *reinterpret_cast<int *>(
-                stack.data + stack.frameBase + value);
+            return reinterpret_cast<const EclVmScalar *>(
+                stack.data + stack.frameBase + value)->integer;
         if (value == -1)
         {
             if (stack.stackTop - 4 >= 0)
             {
                 stack.stackTop -= 4;
-                index = *reinterpret_cast<unsigned int *>(
-                    stack.data + stack.stackTop);
+                index = reinterpret_cast<const EclVmScalar *>(
+                    stack.data + stack.stackTop)->bits;
                 stack.stackTop -= 4;
                 // The caller has just popped a value DWORD; the preceding
                 // four-byte slot carries its one-byte type tag.
@@ -320,8 +324,8 @@ float __stdcall EclVmContext::ReadFloatValue(
     if (IsOperandIndirect(context->instruction, flagIndex))
     {
         if (value >= 0.0f)
-            return *reinterpret_cast<float *>(
-                context->stack.data + context->stack.frameBase + static_cast<int>(value));
+            return reinterpret_cast<const EclVmScalar *>(
+                context->stack.data + context->stack.frameBase + static_cast<int>(value))->real;
         if (value == -1.0f)
         {
             context->stack.Pop('f', sizeof(value), &value);
@@ -339,9 +343,9 @@ float EclVmContext::ReadFloat(unsigned int index)
     if (IsOperandIndirect(instruction, index))
     {
         if (OperandFloat(instruction, index) >= 0.0f)
-            return *reinterpret_cast<float *>(
+            return reinterpret_cast<const EclVmScalar *>(
                 stack.data + stack.frameBase
-                + static_cast<int>(OperandFloat(instruction, index)));
+                + static_cast<int>(OperandFloat(instruction, index)))->real;
         if (OperandFloat(instruction, index) == -1.0f)
         {
             float result;
@@ -361,9 +365,9 @@ int *EclVmContext::ResolveInt(unsigned int index)
         if (OperandInt(instruction, index) >= 0)
         {
             EclVmStackView *const operandStack = &stack;
-            return reinterpret_cast<int *>(
+            return &reinterpret_cast<EclVmScalar *>(
                 operandStack->data + operandStack->frameBase
-                + OperandInt(instruction, index));
+                + OperandInt(instruction, index))->integer;
         }
         return host->ResolveEclInt(OperandInt(instruction, index));
     }
@@ -377,9 +381,9 @@ float *EclVmContext::ResolveFloat(unsigned int index)
         if (OperandFloat(instruction, index) >= 0.0f)
         {
             EclVmStackView *const operandStack = &stack;
-            return reinterpret_cast<float *>(
+            return &reinterpret_cast<EclVmScalar *>(
                 operandStack->data + operandStack->frameBase
-                + static_cast<int>(OperandFloat(instruction, index)));
+                + static_cast<int>(OperandFloat(instruction, index)))->real;
         }
         return host->ResolveEclFloat(
             static_cast<int>(OperandFloat(instruction, index)));
