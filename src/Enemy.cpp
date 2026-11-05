@@ -231,7 +231,7 @@ int EnemyEclHostBaseView::SetSubroutine(const char *name)
     EnemyEclInstructionView *const instruction =
         reinterpret_cast<EnemyEclInstructionView *>(scriptDatabase->FindSubroutine(name));
     activeEclContext->currentInstruction = instruction;
-    activeEclContext->value00 = 0;
+    activeEclContext->currentTime = 0.0f;
     return 0;
 }
 
@@ -339,7 +339,7 @@ void EnemyEclHostBaseView::ReleaseEclAllocations()
 void EnemyEclHostBaseView::ResetEclState()
 {
     unsigned int flags = flags1028;
-    embeddedEclContext.value00 = 0;
+    embeddedEclContext.currentTime = 0.0f;
     EnemyEclContextView *context = &embeddedEclContext;
     flags &= ~1u;
     flags1028 = flags;
@@ -1359,7 +1359,7 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 
     memset(&enemy->runtime, 0, sizeof(enemy->runtime));
 
-    enemy->embeddedEclContext.value00 = 0;
+    enemy->embeddedEclContext.currentTime = 0.0f;
     enemy->embeddedEclContext.currentInstruction = NULL;
     enemy->embeddedEclContext.operandResolver = enemy;
     enemy->flags1028 &= ~1u;
@@ -1439,7 +1439,7 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
     enemy->scriptDatabase = g_EnemyManager->scriptDatabase;
     enemy->activeEclContext->currentInstruction =
         EnemyLookupEclSubroutine(enemy->scriptDatabase, eclSubroutineName);
-    enemy->activeEclContext->value00 = 0;
+    enemy->activeEclContext->currentTime = 0.0f;
 
     enemy->runtime.life = 0;
     enemy->runtime.unknown13C4 = 0;
@@ -1822,6 +1822,6 @@ EnemyEclHostBaseView *EclVmScriptDatabase::CreateHost(const char *name)
     host->scriptDatabase = reinterpret_cast<EnemyEclResourceView *>(this);
     host->activeEclContext->currentInstruction =
         reinterpret_cast<EnemyEclInstructionView *>(FindSubroutine(name));
-    host->activeEclContext->value00 = 0;
+    host->activeEclContext->currentTime = 0.0f;
     return host;
 }
