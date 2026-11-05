@@ -1179,6 +1179,20 @@ int EnemyRuntimeView::DispatchEclInstruction()
   float local_29c;
   float local_298;
   EnemyLaserRequestScratch local_288;
+  // The two straight-laser layouts share this native 0x1F8 request overlay.
+  // These offsets are established by the independent type-1 laser consumer.
+  typedef char EclStraightLaserRequestOffsets[
+      (offsetof(EnemyLaserType1RequestView, angle) == 0x18 &&
+       offsetof(EnemyLaserType1RequestView, initialLength) == 0x24 &&
+       offsetof(EnemyLaserType1RequestView, maximumLength) == 0x20 &&
+       offsetof(EnemyLaserType1RequestView, width) == 0x28 &&
+       offsetof(EnemyLaserType1RequestView, waitFrames) == 0x30 &&
+       offsetof(EnemyLaserType1RequestView, growFrames) == 0x34 &&
+       offsetof(EnemyLaserType1RequestView, holdFrames) == 0x38 &&
+       offsetof(EnemyLaserType1RequestView, shrinkFrames) == 0x3c &&
+       offsetof(EnemyLaserType1RequestView, type) == 0x40 &&
+       offsetof(EnemyLaserType1RequestView, color) == 0x42 &&
+       offsetof(EnemyLaserType1RequestView, flags44) == 0x44) ? 1 : -1];
   union {
     EnemySpawnRequestView spawnRequest;
     float floatWords[16];
@@ -2487,7 +2501,7 @@ dispatch_select_bullet_count_low:
       *pfVar15 = 0.0;
       pfVar15 = pfVar15 + 1;
     }
-    reinterpret_cast<float *>(&local_288)[11] = 8.0f;
+    local_288.type1.fixed2C = 8.0f;
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
     if (static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode) == 0x1b0) {
       memcpy(local_288.type1.patternWords,
@@ -2499,27 +2513,27 @@ dispatch_select_bullet_count_low:
     vectorScratch.z = bulletPatternOffsets[0].z + worldMotion.position.z;
     *reinterpret_cast<PlayerFloat3 *>(&local_288) = vectorScratch;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    reinterpret_cast<unsigned short *>(&local_288)[32] = (unsigned short)uVar22;
+    local_288.type1.type = (unsigned short)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(2);
-    reinterpret_cast<unsigned short *>(&local_288)[33] = (unsigned short)uVar22;
+    local_288.type1.color = (unsigned short)uVar22;
     fVar19 = (ReadFloatArgument(3));
-    reinterpret_cast<float *>(&local_288)[6] = (float)fVar19;
+    local_288.type1.angle = (float)fVar19;
     fVar19 = (ReadFloatArgument(4));
-    reinterpret_cast<float *>(&local_288)[9] = (float)fVar19;
+    local_288.type1.initialLength = (float)fVar19;
     fVar19 = (ReadFloatArgument(5));
-    reinterpret_cast<float *>(&local_288)[8] = (float)fVar19;
+    local_288.type1.maximumLength = (float)fVar19;
     uVar22 = ENEMY_READ_INT_DIRECT(6);
-    reinterpret_cast<unsigned int *>(&local_288)[12] = (unsigned int)uVar22;
+    local_288.type1.waitFrames = (unsigned int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(7);
-    reinterpret_cast<unsigned int *>(&local_288)[13] = (unsigned int)uVar22;
+    local_288.type1.growFrames = (unsigned int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(8);
-    reinterpret_cast<unsigned int *>(&local_288)[14] = (unsigned int)uVar22;
+    local_288.type1.holdFrames = (unsigned int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(9);
-    reinterpret_cast<unsigned int *>(&local_288)[15] = (unsigned int)uVar22;
+    local_288.type1.shrinkFrames = (unsigned int)uVar22;
     fVar19 = (ReadFloatArgument(10));
-    reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;
+    local_288.type1.width = (float)fVar19;
     uVar22 = ENEMY_READ_INT_DIRECT(0xb);
-    reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 | 2;
+    local_288.type1.flags44 = (unsigned int)uVar22 | 2;
     uVar6 = EnemyFireLaser(g_EnemyLaserManager, &local_288, 1);
     if (puVar5 != (unsigned int *)0x0) {
       *puVar5 = uVar6;
@@ -2584,27 +2598,27 @@ dispatch_select_bullet_count_low:
     reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
     reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
     uVar22 = ReadIntArgument(1);
-    reinterpret_cast<unsigned short *>(&local_288)[32] = (unsigned short)uVar22;
+    local_288.type1.type = (unsigned short)uVar22;
     uVar22 = ReadIntArgument(2);
-    reinterpret_cast<unsigned short *>(&local_288)[33] = (unsigned short)uVar22;
+    local_288.type1.color = (unsigned short)uVar22;
     fVar19 = (ReadFloatArgument(3));
-    reinterpret_cast<float *>(&local_288)[6] = (float)fVar19;
+    local_288.type1.angle = (float)fVar19;
     fVar19 = (ReadFloatArgument(4));
-    reinterpret_cast<float *>(&local_288)[9] = (float)fVar19;
+    local_288.type1.initialLength = (float)fVar19;
     fVar19 = (ReadFloatArgument(5));
-    reinterpret_cast<float *>(&local_288)[8] = (float)fVar19;
+    local_288.type1.maximumLength = (float)fVar19;
     uVar22 = ReadIntArgument(6);
-    reinterpret_cast<unsigned int *>(&local_288)[12] = (unsigned int)uVar22;
+    local_288.type1.waitFrames = (unsigned int)uVar22;
     uVar22 = ReadIntArgument(7);
-    reinterpret_cast<unsigned int *>(&local_288)[13] = (unsigned int)uVar22;
+    local_288.type1.growFrames = (unsigned int)uVar22;
     uVar22 = ReadIntArgument(8);
-    reinterpret_cast<unsigned int *>(&local_288)[14] = (unsigned int)uVar22;
+    local_288.type1.holdFrames = (unsigned int)uVar22;
     uVar22 = ReadIntArgument(9);
-    reinterpret_cast<unsigned int *>(&local_288)[15] = (unsigned int)uVar22;
+    local_288.type1.shrinkFrames = (unsigned int)uVar22;
     fVar19 = (ReadFloatArgument(10));
-    reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;
+    local_288.type1.width = (float)fVar19;
     uVar22 = ReadIntArgument(0xb);
-    reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 & 0xfffffffd;
+    local_288.type1.flags44 = (unsigned int)uVar22 & 0xfffffffd;
     uVar6 = EnemyFireLaser(g_EnemyLaserManager, &local_288, 1);
     if (puVar5 != (unsigned int *)0x0) {
       *puVar5 = uVar6;
