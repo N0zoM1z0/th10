@@ -21,6 +21,18 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-05 ECL SCPT file-slot reload after validation
+
+At target `0x00450220`, the **589-byte** `EclVmScriptDatabase::AddScriptData`
+reloads the file header from the script-table slot immediately after checking
+its magic and version. A `*volatile *const fileSlot` declaration recovers that
+specific observable pointer reload. The source's complete pinned VC7.1 /GL
+candidate improves from 570 to **585 bytes** but remains **NONEXACT**:
+`REP MOVSD` and the two call fields are not at the original locations.
+The complete 7,020-byte ECL Run remains 6,997/7,020 original-bound, while
+three selected existing exact leaves pass 470/470. See
+[evidence](evidence/ecl-script-slot-reload-20261105/README.md).
+
 ## 2026-11-05 SoundDataLoaderThread newly accepted exact
 
 `SoundDataLoaderThread @0x0043D080` is one complete **107-byte**, authored

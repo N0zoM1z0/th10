@@ -386,7 +386,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
 {
     const unsigned int SCPT_MAGIC = 0x54504353u;
     files[fileCount] = static_cast<EclVmScriptFileHeader *>(scriptData);
-    EclVmScriptFileHeader **const fileSlot = &files[fileCount];
+    EclVmScriptFileHeader *volatile *const fileSlot = &files[fileCount];
     EclVmScriptFileHeader *file = *fileSlot;
     if (file->magic != SCPT_MAGIC)
     {

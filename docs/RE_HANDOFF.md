@@ -1,8 +1,10 @@
 # TH10 reconstruction — next-agent handoff (2026-11-05, updated source epoch)
 
-**Start here.** The latest tested feature-source checkpoint is **`12524fe`**
-(`gpt-web: recover single-index exact sound data loader source`), independently
-confirmed by the new canonical `sound-data-loader-thread` replay. Preceding
+**Start here.** The latest active large-source epoch is the verified
+SCPT file-slot reload in `src/EclVm.cpp` (SHA pinned below); inspect live
+`git log` for its checkpoint commit. The independent sound owner source
+checkpoint `12524fe` is confirmed by the newly accepted canonical
+`sound-data-loader-thread` replay. Preceding
 large-source checkpoints include `24fe28b` (ECL scalar Pop/CALL),
 `6bcbd11` (CALL stack destination words), and `709e494` (Enemy ECL shared
 instruction header and pattern byte cursor). Other relevant current source
@@ -66,7 +68,7 @@ are not added a second time to the ledger.
 | `BulletRuntimeView::UpdateAbsoluteDirectionChange @ 0x004078E0` | **335 / 335** | **333/335 preliminary ordinary bytes** after masking 8 candidate linkage fields; remaining `+0xD7/+0xDD` EAX vs target EDX. Complete independent field-identity binding remains unaccepted. **NONEXACT**. |
 | `BulletRuntimeView::UpdateVectorAcceleration @ 0x00407560` | **305 / 285** installed | See *active lead* below: genuine seven-source trial reached **305 candidate bytes** but only **196/305 positional bytes**; **not installed** and **not exact**. |
 | `EnemyFullObjectView` constructor `@ 0x0040D830` | **673 / 672** | 5 candidate fields, frame/register schedule differs. **NONEXACT**. |
-| `EclVmScriptDatabase::AddScriptData` | **589 / 570** | Needs full script-table insertion/control-flow recovery. **NONEXACT**. |
+| `EclVmScriptDatabase::AddScriptData @ 0x00450220` | **589 / 585** | Target reloads the SCPT file pointer after header validation; typed volatile file-slot declaration restores `mov eax,[eax]` at +0x3B. Full 2-TU PDB now 585 bytes (prior 570), but `REP MOVSD` +0xFE vs target +0xFB and relocated calls differ. **NONEXACT**. [Evidence](evidence/ecl-script-slot-reload-20261105/README.md). |
 
 Other independent leaves worth revisiting **with a new falsifiable lead**:
 `CMemoryPbgFile::Seek` original/candidate **107/107**, **100/107** ordinary
@@ -83,7 +85,7 @@ is already correct). They must **not** be marked exact.
 | --- | --- | --- |
 | ANM | Header +6 has one typed 16-bit variable-argument mask. Now **all four** value/lvalue instruction macros in the full 9,964-byte executor use `variableArgs.bits` | [Typed pointer mask](evidence/anm-typed-pointer-operand-mask-20261105/README.md): fresh five-source strict **350/350** original-bound fields, including 95 locals; **9,962/9,964** original bytes, still NONEXACT. Affected pointer leaves **288/288 exact**. Private `build/gpt-web/20261105-anm-pointer-mask/current/`. Earlier full-mask [proof](evidence/anm-instruction-variable-mask-overlay-20261105/README.md) belongs to its own source epoch. |
 | Enemy dispatcher / GUI | Native item-drop `itemDrops` 0x3C-byte packet at runtime +0x13CC, raw indexed-word alias, life-gauge/callback-life fields, and the shared 16-bit ECL instruction header. The 14,416-byte big dispatcher now uses a typed pattern-byte-cursor helper without hoisting its signed arithmetic across operand reads | [Shared Enemy ECL header / pattern cursor](evidence/enemy-ecl-shared-instruction-pattern-20261105/README.md): fresh 11-TU **14,352 candidate bytes / 716 candidate fields** with zero candidate ordinary differences versus the previous pinned graph; BeginSpell and three other complete owners preserved. Selected native `ReadIntArgument` **16/16 exact**. [Raw drop overlay](evidence/enemy-drop-raw-word-overlay-20261105/README.md) scoped selected leaves **696/696 exact**. The 14,416-byte original big dispatcher remains NONEXACT. |
-| Generic ECL VM | Shared typed 16-bit instruction mask, 4-byte scalar payload across six value/lvalue leaf paths and ECL `Pop` conversions, plus the four CALL operand writebacks. The caller's typed descriptor is intentionally reconstructed at each access: retaining it across callee calls shifts original field sites | [Shared Pop scalar](evidence/ecl-pop-shared-scalar-20261105/README.md): fresh two-source full `Run` **7,020/7,020**, **189/189** original-bound fields, **6,997/7,020** ordinary bytes; selected `Push`/`Pop` **218/218 exact**. [CALL stack destinations](evidence/ecl-call-scalar-destinations-20261105/README.md): complete 551-byte `StartSubroutine` candidate and all four call sites unchanged, selected value leaves **295/295 exact**. Both nonexact boss/helper owners remain nonexact. |
+| Generic ECL VM | Shared typed 16-bit instruction mask, 4-byte scalar payload across six value/lvalue leaf paths and ECL `Pop` conversions, plus the four CALL operand writebacks. The SCPT file-table slot is now reloaded after validation in nonexact `AddScriptData` (585-byte source candidate). The caller's typed descriptor is intentionally reconstructed at each access: retaining it across callee calls shifts original field sites | [Shared Pop scalar](evidence/ecl-pop-shared-scalar-20261105/README.md): fresh two-source full `Run` **7,020/7,020**, **189/189** original-bound fields, **6,997/7,020** ordinary bytes; selected `Push`/`Pop` **218/218 exact**. [CALL stack destinations](evidence/ecl-call-scalar-destinations-20261105/README.md): complete 551-byte `StartSubroutine` candidate and all four call sites unchanged, selected value leaves **295/295 exact**. Both nonexact boss/helper owners remain nonexact. |
 | Bullet | Both state `value1Bits` and runtime `angleBits` overlap binary32 payloads; full 335-byte direction updater preserved | [Runtime angle](evidence/bullet-runtime-angle-word-20261105/README.md): seven-source native proof of 8 candidate field positions, two remaining register bytes (+0xD7/+0xDD), existing leaf replays **312/312 exact**. Local outgoing-angle union trial on this current source was rejected with no byte improvement. |
 | Sound | `SoundDataLoaderThread` uses a single typed pointer-to-slot alias and one retail ESI index for all 37 files | [Sound single-index complete exact](evidence/sound-loader-single-index-exact-20261105/README.md): two independent original-bound 5-TU VC7.1 builds, complete **107/107** code bytes and all **11** field identities, accepted as `sound-data-loader-thread`; launcher selected replay **34/34 exact**. Canonical native `build/match-linked/SoundDataLoaderThread/`. |
 
@@ -96,7 +98,7 @@ Enemy.hpp          4ad70650ea73b0c1d4a060de223c91758828ba716a956c5a29cbf703026f4
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
 EnemyEclDispatcher.cpp b71ef388425f28762527cdaecbf2b6a85fb0526e812d9aadc1def81ab694cd33
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
-EclVm.cpp          63741a55c7189e0ed45d8530cd03477c5d5fb3f8bef5e04dc80176b95879967c
+EclVm.cpp          e964d47ad4336950065be90bf3be82981c818a666e12e2810f1e77c537b912c1
 EclVm.hpp          f8fb2c92ab263a69a4255c957bcbc9b1d30bd5428adf23e86080040de528231f
 AnmManager.cpp     c05add280091300b1dd76b6cff422d322a4da0fe1e21808c1156829e0bec9776
 AnmManager.hpp     57c8ec82ae92116c4edea9fd475558843ee5752e5a234c1749f5f38392771e49
