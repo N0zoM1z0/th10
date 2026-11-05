@@ -1859,7 +1859,7 @@ dispatch_update_primary_anm_bounds:
     return 0;
   case ENEMY_ECL_SET_BULLET_PROTECTION_RANGE:
     fVar19 = (ReadFloatArgument(0));
-    *reinterpret_cast<float *>(&unknown1454) = (float)(fVar19 * fVar19);
+    bulletProtectionRadiusSquared = (float)(fVar19 * fVar19);
     break;
   case ENEMY_ECL_MOVE_RANDOM:
   case ENEMY_ECL_MOVE_RANDOM_BASE:
@@ -2132,11 +2132,11 @@ dispatch_difficulty_float_index_4_a:
     reinterpret_cast<EnemyBulletPatternView *>(iVar26 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns)))->fields.spawnPositionY = vectorScratch.y;
     fVar9 = 0.0f;
     reinterpret_cast<EnemyBulletPatternView *>(iVar26 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns)))->fields.spawnPositionZ = vectorScratch.z;
-    if ((*reinterpret_cast<float *>(&unknown1454) == fVar9) ||
+    if ((bulletProtectionRadiusSquared == fVar9) ||
        (fVar9 = reinterpret_cast<EnemyBulletPatternView *>(iVar26 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns)))->fields.spawnPositionY - g_Player->drawPosition.y,
        fVar10 = reinterpret_cast<EnemyBulletPatternView *>(iVar26 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns)))->fields.spawnPositionX - g_Player->drawPosition.x,
        fVar9 = fVar9 * fVar9 + fVar10 * fVar10,
-       *reinterpret_cast<float *>(&unknown1454) <= fVar9)) {
+       bulletProtectionRadiusSquared <= fVar9)) {
       reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
           SpawnBulletPattern(reinterpret_cast<BulletSpawnDescriptorView *>(
               iVar26 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns))));

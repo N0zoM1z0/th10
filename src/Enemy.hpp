@@ -329,7 +329,8 @@ struct EnemyRuntimeView
     int animationScriptPrimary;
     int animationScriptAlternate;
     int managerSlot;
-    int unknown1454;
+    // ECL opcode 0x15A stores the squared protection radius here as binary32.
+    float bulletProtectionRadiusSquared;
     EnemyCallbackThresholdView callbackThresholds[8];
     EnemyFullObjectView *owner;
 };
@@ -402,6 +403,8 @@ typedef char EnemyRuntimeFlagsAt1444[
     (offsetof(EnemyRuntimeView, flags) == 0x1444) ? 1 : -1];
 typedef char EnemyRuntimeManagerSlotAt1450[
     (offsetof(EnemyRuntimeView, managerSlot) == 0x1450) ? 1 : -1];
+typedef char EnemyRuntimeBulletProtectionAt1454[
+    (offsetof(EnemyRuntimeView, bulletProtectionRadiusSquared) == 0x1454) ? 1 : -1];
 typedef char EnemyRuntimeCallbackThresholdsAt1458[
     (offsetof(EnemyRuntimeView, callbackThresholds) == 0x1458) ? 1 : -1];
 typedef char EnemyRuntimeOwnerAt14D8[
