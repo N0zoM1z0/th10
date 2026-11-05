@@ -265,19 +265,19 @@ extern float g_AnmGameSpeed;
 static __declspec(noinline) void EnemyInitializePositionInterpolation(
     EnemyPositionInterpolationView *interpolation)
 {
-    unsigned int *words = reinterpret_cast<unsigned int *>(interpolation);
-    unsigned int flags = words[0x40 / 4];
+    EnemyInterpolationTimerView &timer = interpolation->timer;
+    unsigned int flags = timer.flags;
     if ((flags & 1) == 0) {
         flags |= 1;
-        words[0x34 / 4] = 0;
-        words[0x30 / 4] = static_cast<unsigned int>(-999999);
-        words[0x38 / 4] = 0;
-        words[0x3c / 4] = reinterpret_cast<unsigned int>(&g_AnmGameSpeed);
-        words[0x40 / 4] = flags;
+        timer.current = 0;
+        timer.previous = -999999;
+        timer.subframe = 0.0f;
+        timer.scale = &g_AnmGameSpeed;
+        timer.flags = flags;
     }
-    words[0x34 / 4] = 0;
-    words[0x38 / 4] = 0;
-    words[0x30 / 4] = static_cast<unsigned int>(-1);
+    timer.current = 0;
+    timer.subframe = 0.0f;
+    timer.previous = -1;
 }
 extern void EnemySpawnCancelEffect(
     float *position, int kind, int color, float angle, float scale);
@@ -517,19 +517,19 @@ static __declspec(noinline) void __stdcall EnemyConfigureInterrupt(
 static __declspec(noinline) void EnemyInitializeScalarInterpolation(
     EnemyScalarInterpolationView *interpolation)
 {
-    unsigned int *words = reinterpret_cast<unsigned int *>(interpolation);
-    unsigned int flags = words[0x30 / 4];
+    EnemyInterpolationTimerView &timer = interpolation->timer;
+    unsigned int flags = timer.flags;
     if ((flags & 1) == 0) {
         flags |= 1;
-        words[0x24 / 4] = 0;
-        words[0x20 / 4] = static_cast<unsigned int>(-999999);
-        words[0x28 / 4] = 0;
-        words[0x2c / 4] = reinterpret_cast<unsigned int>(&g_AnmGameSpeed);
-        words[0x30 / 4] = flags;
+        timer.current = 0;
+        timer.previous = -999999;
+        timer.subframe = 0.0f;
+        timer.scale = &g_AnmGameSpeed;
+        timer.flags = flags;
     }
-    words[0x24 / 4] = 0;
-    words[0x28 / 4] = 0;
-    words[0x20 / 4] = static_cast<unsigned int>(-1);
+    timer.current = 0;
+    timer.subframe = 0.0f;
+    timer.previous = -1;
 }
 struct EnemyChapterStateView
 {
