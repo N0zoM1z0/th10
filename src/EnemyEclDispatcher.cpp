@@ -793,15 +793,14 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         state->managedVmId = 0;
     }
     AnmVmLayerNodeView *node = &vm->layerNode;
-    AnmVmView *child = 0;
     while (node != 0) {
         AnmVmView *candidate = static_cast<AnmVmView *>(node->owner);
-        if (candidate->scriptIndex == 0x19f) {
-            child = candidate;
+        if (candidate->scriptIndex == 0x19f)
             break;
-        }
         node = node->next;
     }
+    AnmVmView *child = node != 0 ?
+        static_cast<AnmVmView *>(node->owner) : 0;
     child->intVar2 = value;
 
     vm = g_AnmRenderManagerView->FindVm(AnmVmIdView(state->managedVmId));
