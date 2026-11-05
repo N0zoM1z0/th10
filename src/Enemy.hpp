@@ -2,6 +2,7 @@
 #define TH10_RECONSTRUCTION_ENEMY_HPP
 
 #include "Player.hpp"
+#include "EclVm.hpp"
 
 #include <stddef.h>
 
@@ -427,11 +428,19 @@ typedef char EnemyRuntimeOwnerAt14D8[
 // the original source type and the fields not exposed here remain unknown.
 struct EnemyEclInstructionView
 {
-    int value00;
+    // This is the very same variable-length wire instruction consumed by
+    // EclVmContext::Run; the Enemy dispatcher only needs its extended opcodes.
+    int time;
     unsigned short opcode;
-    unsigned short value06;
-    unsigned short operandMask;
-    unsigned char unknown00A[0x06];
+    unsigned short size;
+    union
+    {
+        unsigned short operandMask;
+        EclVmOperandIndirectMaskView indirectOperands;
+    };
+    unsigned char difficultyMask;
+    unsigned char operandCount;
+    unsigned char unknown00C[4];
     // ECL operand words are shared between integer and IEEE-754 access.
     // The actual instruction size remains variable and encoded separately.
     union
@@ -442,8 +451,29 @@ struct EnemyEclInstructionView
 };
 typedef char EnemyEclInstructionOpcodeAt004[
     (offsetof(EnemyEclInstructionView, opcode) == 0x004) ? 1 : -1];
+// Cross-check the independently reconstructed generic VM instruction.
+// These are byte-stream offsets, not a fixed-size script allocation.
+typedef char EnemyEclInstructionHeaderMatchesVm[
+    (offsetof(EnemyEclInstructionView, time) ==
+         offsetof(EclVmInstruction, time) &&
+     offsetof(EnemyEclInstructionView, opcode) ==
+         offsetof(EclVmInstruction, opcode) &&
+     offsetof(EnemyEclInstructionView, size) ==
+         offsetof(EclVmInstruction, size) &&
+     offsetof(EnemyEclInstructionView, operandMask) ==
+         offsetof(EclVmInstruction, operandFlags) &&
+     offsetof(EnemyEclInstructionView, indirectOperands) ==
+         offsetof(EclVmInstruction, operandMask) &&
+     offsetof(EnemyEclInstructionView, difficultyMask) ==
+         offsetof(EclVmInstruction, difficultyMask) &&
+     offsetof(EnemyEclInstructionView, operandCount) ==
+         offsetof(EclVmInstruction, operandCount) &&
+     offsetof(EnemyEclInstructionView, operands) ==
+         offsetof(EclVmInstruction, integerOperands) &&
+     sizeof(((EnemyEclInstructionView *)0)->indirectOperands) == 2) ? 1 : -1];
 typedef char EnemyEclInstructionOperandMaskAt008[
-    (offsetof(EnemyEclInstructionView, operandMask) == 0x008) ? 1 : -1];
+    (offsetof(EnemyEclInstructionView, operandMask) == 0x008 &&
+     offsetof(EnemyEclInstructionView, indirectOperands) == 0x008) ? 1 : -1];
 typedef char EnemyEclInstructionOperandsAt010[
     (offsetof(EnemyEclInstructionView, operands) == 0x010 &&
      offsetof(EnemyEclInstructionView, floatOperands) == 0x010) ? 1 : -1];
