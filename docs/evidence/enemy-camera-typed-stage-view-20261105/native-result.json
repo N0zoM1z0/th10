@@ -1,0 +1,92 @@
+{
+  "original_target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "69a0c1df9cdd13fdd28b312700c3af2265010f1d7d777e50c49b0170fca62d73",
+  "stage_camera_type": "StageCameraStateView",
+  "camera_layout_bytes": 280,
+  "typed_fields": [
+    "position",
+    "direction",
+    "up",
+    "rockingOffset",
+    "value048",
+    "value0E8",
+    "value0EC"
+  ],
+  "whole_owner_comparisons": [
+    {
+      "owner": "EnemyBeginSpell",
+      "original_target_bytes": 2432,
+      "candidate_bytes": 2432,
+      "previous_candidate_bytes": 2432,
+      "linked_fields": 108,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    },
+    {
+      "owner": "EnemyRuntimeView::DispatchEclInstruction",
+      "original_target_bytes": 14416,
+      "candidate_bytes": 14352,
+      "previous_candidate_bytes": 14352,
+      "linked_fields": 716,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    },
+    {
+      "owner": "EnemyCancelManagerView::CancelAllBullets",
+      "original_target_bytes": null,
+      "candidate_bytes": 418,
+      "previous_candidate_bytes": 418,
+      "linked_fields": 12,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    },
+    {
+      "owner": "EnemyConfigureViewportOwner",
+      "original_target_bytes": 330,
+      "candidate_bytes": 330,
+      "previous_candidate_bytes": 330,
+      "linked_fields": 10,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    },
+    {
+      "owner": "EnemyPrepareProjection",
+      "original_target_bytes": 60,
+      "candidate_bytes": 60,
+      "previous_candidate_bytes": 60,
+      "linked_fields": 1,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    }
+  ],
+  "verified_reused_support_object_count": 9,
+  "rebuilt_support_source": "src/EclVm.cpp",
+  "selected_canonical_replays": [
+    {
+      "unit": "enemy-set-chapter",
+      "result": "exact",
+      "target_bytes": 16,
+      "matched_bytes": 16
+    },
+    {
+      "unit": "enemy-configure-interrupt",
+      "result": "exact",
+      "target_bytes": 48,
+      "matched_bytes": 48
+    },
+    {
+      "unit": "enemy-prepare-projection",
+      "result": "exact",
+      "target_bytes": 60,
+      "matched_bytes": 60
+    }
+  ],
+  "previously_exact_bytes_preserved": 124,
+  "new_exact_credit": 0,
+  "product_exact": false
+}

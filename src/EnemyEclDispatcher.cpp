@@ -13,6 +13,7 @@
 #include "EclWorldAnchor.hpp"
 #include "Gui.hpp"
 #include "BulletManager.hpp"
+#include "StageScript.hpp"
 
 #include <math.h>
 #include <new>
@@ -205,25 +206,26 @@ __declspec(noinline) void EnemyConfigureViewportOwner(
         g_AnmRenderManagerView->FlushVertexBuffer();
     }
 
-    float *values = reinterpret_cast<float *>(viewport);
+    // The target's viewport prefix aliases the independently checked
+    // 0x118-byte StageCameraStateView in the real stage/camera owner.
+    StageCameraStateView *camera =
+        reinterpret_cast<StageCameraStateView *>(viewport);
     AnmFloat3View at;
     AnmFloat3View eye;
-    at.x = values[3] + values[0];
-    at.y = values[4] + values[1];
-    at.z = values[5] + values[2];
-    eye.x = values[0] + values[15];
-    eye.y = values[1] + values[16];
-    eye.z = values[2] + values[17];
+    at.x = camera->direction.x + camera->position.x;
+    at.y = camera->direction.y + camera->position.y;
+    at.z = camera->direction.z + camera->position.z;
+    eye.x = camera->position.x + camera->rockingOffset.x;
+    eye.y = camera->position.y + camera->rockingOffset.y;
+    eye.z = camera->position.z + camera->rockingOffset.z;
 
     D3DXMatrixLookAtLH(
-        &viewport->viewMatrix, &eye, &at,
-        reinterpret_cast<AnmFloat3View *>(
-            reinterpret_cast<unsigned char *>(viewport) + 0x18));
+        &viewport->viewMatrix, &eye, &at, &camera->up);
 
     unsigned int width = viewport->viewport.width;
     unsigned int height = viewport->viewport.height;
     D3DXMatrixPerspectiveFovLH(
-        &viewport->projectionMatrix, values[0x48 / 4],
+        &viewport->projectionMatrix, camera->value048,
         static_cast<float>(width) / static_cast<float>(height),
         30.0f, 1800.0f);
 
@@ -232,19 +234,17 @@ __declspec(noinline) void EnemyConfigureViewportOwner(
     g_MainSupervisorView.d3dDevice->vtable->SetTransform(
         g_MainSupervisorView.d3dDevice, 3, &viewport->projectionMatrix);
 
-    const AnmFloat3View *up =
-        reinterpret_cast<const AnmFloat3View *>(
-            reinterpret_cast<const unsigned char *>(viewport) + 0x18);
+    const AnmFloat3View *up = &camera->up;
     AnmFloat3View cross;
-    cross.x = up->z * values[4] - up->y * values[5];
-    cross.y = up->x * values[5] - up->z * values[3];
-    cross.z = up->y * values[3] - up->x * values[4];
+    cross.x = up->z * camera->direction.y - up->y * camera->direction.z;
+    cross.y = up->x * camera->direction.z - up->z * camera->direction.x;
+    cross.z = up->y * camera->direction.x - up->x * camera->direction.y;
     viewport->cameraRight = cross;
     D3DXVec3Normalize(&viewport->cameraRight, &viewport->cameraRight);
 
     if (g_AnmRenderManagerView != 0) {
-        g_AnmRenderManagerView->screenShakeX = values[0xE8 / 4];
-        g_AnmRenderManagerView->screenShakeY = values[0xEC / 4];
+        g_AnmRenderManagerView->screenShakeX = camera->value0E8;
+        g_AnmRenderManagerView->screenShakeY = camera->value0EC;
     }
 }
 
