@@ -165,7 +165,9 @@ bool TextRenderBufferView::InvertAlpha(int processedRows)
                 unsigned short newValue = static_cast<unsigned short>(
                     (value & 0x7fff) | (~value & 0x8000));
                 *pixel = newValue;
-                if (static_cast<signed char>(newValue >> 8) >= 0)
+                // Test only the encoded A1 high-alpha bit. VC7.1 uses
+                // TEST AH,AH / JS, as in the native 157-byte format owner.
+                if ((static_cast<unsigned char>(newValue >> 8) & 0x80u) == 0)
                     *pixel = static_cast<unsigned short>(newValue & 0x8000);
                 ++pixel;
             } while (--index != 0);
