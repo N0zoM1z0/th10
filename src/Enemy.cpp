@@ -1442,7 +1442,7 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
     enemy->activeEclContext->currentTime = 0.0f;
 
     enemy->runtime.life = 0;
-    enemy->runtime.unknown13C4 = 0;
+    enemy->runtime.lifeGaugeReference = 0;
     enemy->runtime.value13C8 = 0;
 
     for (int i = 0; i < 8; ++i)

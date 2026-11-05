@@ -1927,7 +1927,7 @@ dispatch_initialize_polar_interpolation:
     uVar22 = ENEMY_READ_INT_DIRECT(2);
     fVar19 = (ReadFloatArgument(1));
     local_2a8 = (float)fVar19;
-    iVar26 = unknown13C4;
+    iVar26 = lifeGaugeReference;
     uVar23 = ENEMY_READ_INT_DIRECT(0);
     g_GuiView->bossGaugeValues[(int)uVar23].color = (unsigned int)uVar22;
     g_GuiView->bossGaugeValues[(int)uVar23].value = local_2a8 / (float)iVar26;
@@ -2007,7 +2007,7 @@ dispatch_initialize_polar_interpolation:
   case ENEMY_ECL_SET_LIFE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     life = (int)uVar22;
-    unknown13C4 = (int)uVar22;
+    lifeGaugeReference = (int)uVar22;
     g_GuiView->bossGaugeValues[0].value = 0.0f;
     g_GuiView->bossGaugeValues[0].color = 0;
     g_GuiView->bossGaugeValues[1].value = 0.0f;

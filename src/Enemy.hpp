@@ -310,7 +310,8 @@ struct EnemyRuntimeView
     float movementBoundsSizeY;
     int scoreReward;
     int life;
-    int unknown13C4;
+    // Set with life; opcode 0x15B divides gauge markers by this baseline.
+    int lifeGaugeReference;
     // The callback resolver writes life minus the next active life threshold.
     int value13C8;
     int itemDropType;
@@ -378,6 +379,8 @@ typedef char EnemyRuntimeScoreAt13BC[
     (offsetof(EnemyRuntimeView, scoreReward) == 0x13bc) ? 1 : -1];
 typedef char EnemyRuntimeLifeAt13C0[
     (offsetof(EnemyRuntimeView, life) == 0x13c0) ? 1 : -1];
+typedef char EnemyRuntimeLifeGaugeReferenceAt13C4[
+    (offsetof(EnemyRuntimeView, lifeGaugeReference) == 0x13c4) ? 1 : -1];
 typedef char EnemyRuntimeItemDropAt13CC[
     (offsetof(EnemyRuntimeView, itemDropType) == 0x13cc) ? 1 : -1];
 typedef char EnemyRuntimeItemDropCountsAt13D0[
