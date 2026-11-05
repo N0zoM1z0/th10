@@ -1195,9 +1195,11 @@ jump_instruction:
                     case 'f':
                     {
                         const int inlineBytes = OperandInt(instruction, 0);
-                        const char argumentType = *(
-                            reinterpret_cast<const char *>(instruction)
-                            + 0x14 + inlineBytes + argumentIndex * 8);
+                        const EclVmFormatArgumentView *argument =
+                            reinterpret_cast<const EclVmFormatArgumentView *>(
+                                instruction->operands + sizeof(int) +
+                                inlineBytes + argumentIndex * 8);
+                        const char argumentType = argument->type;
                         if (argumentType == 'f' || argumentType == 'g') {
                             EclDebugTrace(scratch, ReadFloatValue(
                                 argumentIndex + 1, this,

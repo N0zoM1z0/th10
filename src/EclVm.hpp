@@ -4,6 +4,22 @@
 #include <stddef.h>
 
 
+// FORMAT's counted arguments are eight-byte records: a tag followed by
+// an opaque three-byte gap and the original 32-bit scalar bit representation.
+struct EclVmFormatArgumentView
+{
+    char type;
+    unsigned char unknown001[3];
+    union
+    {
+        int integer;
+        float real;
+    };
+};
+typedef char EclVmFormatArgumentSize08[
+    (sizeof(EclVmFormatArgumentView) == 0x08 &&
+     offsetof(EclVmFormatArgumentView, integer) == 0x04) ? 1 : -1];
+
 struct EclVmInstruction
 {
     int time;
