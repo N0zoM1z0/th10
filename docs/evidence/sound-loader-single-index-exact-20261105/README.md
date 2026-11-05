@@ -42,6 +42,25 @@ Private proof: `.analysis/gpt-web/20261105-turn-sound/verify-strict.py`,
 MAP/PDB, and the source-pinned `trial-result.json`. The current maintained
 `Sound.cpp` SHA-256 is
 `63936e47ae782558d08c2b7cedcba749a63723d8236052c65bac53d3228cff57`.
-This source checkpoint is pending independent cold-replay registration as a
-canonical match unit; it does not claim any complete game product, runtime,
-full-ABI restoration, or portability.
+## Independently cold-replayed canonical acceptance
+
+Following source checkpoint `12524fe`, the newly registered canonical
+`[units.sound-data-loader-thread]` recipe in `config/match-units.toml`
+recompiled the *installed, source-hash-identical* `Sound.cpp` in an independent
+five-TU VC7.1 SP1 linked-PE artifact at
+`build/match-linked/SoundDataLoaderThread/`. Selected replay
+`scripts/repo-python scripts/replay-exact-units.py --unit sound-data-loader-thread --json`
+passed **107/107** bytes, **11/11** original symbol/addend/callee obligations
+and the complete physical PDB owner with no differences. The independent
+canonical image SHA-256 is
+`00151531e255d60bea99fadf1b5d651c7578b6729b81f951a2a1bd3456c40136`;
+private replay receipt:
+`.analysis/gpt-web/20261105-turn-sound/canonical-replay.json`. The actual
+launcher `sound-start-load-thread` was separately replayed with an explicit
+selector and remains **34/34 exact**.
+
+This is **one newly accepted authored exact function / 107 new exact bytes**
+in the generated ledger, not an extra credit for the already accepted launcher.
+The observed retail plain-RET function and the CreateThread cast remain
+separate ABI evidence. Neither the whole reconstructed Windows product nor
+semantic runtime equivalence or portability has been established.

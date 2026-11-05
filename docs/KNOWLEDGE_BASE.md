@@ -21,6 +21,23 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-05 SoundDataLoaderThread newly accepted exact
+
+`SoundDataLoaderThread @0x0043D080` is one complete **107-byte**, authored
+original-bound exact function. The original VC7.1 loop uses one ESI
+`i*4` element index for both the 37-name and destination-slot arrays; the
+former two-register, 112-byte source was structurally nonexact. A natural
+`unsigned char **const slots = owner->soundFileData` alias causes a fresh
+5-TU pinned VC7.1 SP1 build to reproduce **107/107 original bytes and all
+11 independently bound real-world fields**. A second independent selected
+canonical cold replay verifies the same complete owner and field identities;
+its actual launcher also remains **34/34 exact**. This is new authored
+codegen credit only, not whole-product or runtime closure. Evidence:
+[evidence/sound-loader-single-index-exact-20261105/README.md](evidence/sound-loader-single-index-exact-20261105/README.md).
+Current authoritative generated ledger: **1,483 exact functions, 189,904
+exact bytes, 575 authored exact functions and 119,868 authored exact bytes**.
+The older counts below are source-epoch snapshots, not live totals.
+
 ## 2026-11-05 live source supersession for the next agent
 
 At clean `2061ddf` source HEAD, the older `0dd8b20`-era “latest”

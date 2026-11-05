@@ -1,8 +1,10 @@
 # TH10 reconstruction — next-agent handoff (2026-11-05, updated source epoch)
 
-**Start here.** The latest tested feature-source checkpoint is **`24fe28b`**
-(`gpt-web: share typed ECL scalar words across Pop and CALL`), following
-`6bcbd11` (CALL stack destination words) and `709e494` (Enemy ECL shared
+**Start here.** The latest tested feature-source checkpoint is **`12524fe`**
+(`gpt-web: recover single-index exact sound data loader source`), independently
+confirmed by the new canonical `sound-data-loader-thread` replay. Preceding
+large-source checkpoints include `24fe28b` (ECL scalar Pop/CALL),
+`6bcbd11` (CALL stack destination words), and `709e494` (Enemy ECL shared
 instruction header and pattern byte cursor). Other relevant current source
 checkpoints are `2dcbad7` (Enemy item-drop words), `81e5419` (ECL indirect
 mask), `79ac30a` (ANM pointer mask), and `0b51d9d` (Enemy callback life).
@@ -44,14 +46,14 @@ scripts/repo-python scripts/ci.py
 
 `docs/PROGRESS.md` (generated from the ledgers) controls acceptance:
 **1,829/1,829** target boundaries reviewed; **1,309** source-present
-mappings; **1,482** fully original-bound exact functions / **189,797**
-exact codegen bytes; **574** confirmed-authored exact functions / **119,761**
-authored exact bytes; **176** confirmed-authored source-present nonexact
+mappings; **1,483** fully original-bound exact functions / **189,904**
+exact codegen bytes; **575** confirmed-authored exact functions / **119,868**
+authored exact bytes; **175** confirmed-authored source-present nonexact
 backlog. These are neither source completeness nor whole-product closure.
-**No new canonical exact units were admitted by the current source
-checkpoints**; only affected existing exact leaves were selectively
-replayed under the tested source revisions. Replayed bytes keep their
-previously accepted credit and do not increment the ledger.
+**One new exact owner was admitted:** `SoundDataLoaderThread @0x0043D080`
+(**107 original bytes, 11 independently bound fields**), after a genuinely
+independent canonical 5-TU cold build. Prior existing exact guard replays
+are not added a second time to the ledger.
 
 ## Latest whole-owner frontiers: do not confuse size with target agreement
 
@@ -68,8 +70,8 @@ previously accepted credit and do not increment the ledger.
 
 Other independent leaves worth revisiting **with a new falsifiable lead**:
 `CMemoryPbgFile::Seek` original/candidate **107/107**, **100/107** ordinary
-bytes (7 register/jump bytes); `SoundDataLoaderThread` **107/112**;
-`Chain::AllocElem` **74/74**, **52/74** original bytes in its verified
+bytes (7 register/jump bytes); `Chain::AllocElem` **74/74**,
+**52/74** original bytes in its verified
 context; `GameStatisticsOwner` ctor **132/137**;
 `TextRenderBufferView::InvertAlpha` original **157**, real LTCG
 **138/157** but normal COFF **112/157** (the retained `JS` at `+0x69`
@@ -83,10 +85,12 @@ is already correct). They must **not** be marked exact.
 | Enemy dispatcher / GUI | Native item-drop `itemDrops` 0x3C-byte packet at runtime +0x13CC, raw indexed-word alias, life-gauge/callback-life fields, and the shared 16-bit ECL instruction header. The 14,416-byte big dispatcher now uses a typed pattern-byte-cursor helper without hoisting its signed arithmetic across operand reads | [Shared Enemy ECL header / pattern cursor](evidence/enemy-ecl-shared-instruction-pattern-20261105/README.md): fresh 11-TU **14,352 candidate bytes / 716 candidate fields** with zero candidate ordinary differences versus the previous pinned graph; BeginSpell and three other complete owners preserved. Selected native `ReadIntArgument` **16/16 exact**. [Raw drop overlay](evidence/enemy-drop-raw-word-overlay-20261105/README.md) scoped selected leaves **696/696 exact**. The 14,416-byte original big dispatcher remains NONEXACT. |
 | Generic ECL VM | Shared typed 16-bit instruction mask, 4-byte scalar payload across six value/lvalue leaf paths and ECL `Pop` conversions, plus the four CALL operand writebacks. The caller's typed descriptor is intentionally reconstructed at each access: retaining it across callee calls shifts original field sites | [Shared Pop scalar](evidence/ecl-pop-shared-scalar-20261105/README.md): fresh two-source full `Run` **7,020/7,020**, **189/189** original-bound fields, **6,997/7,020** ordinary bytes; selected `Push`/`Pop` **218/218 exact**. [CALL stack destinations](evidence/ecl-call-scalar-destinations-20261105/README.md): complete 551-byte `StartSubroutine` candidate and all four call sites unchanged, selected value leaves **295/295 exact**. Both nonexact boss/helper owners remain nonexact. |
 | Bullet | Both state `value1Bits` and runtime `angleBits` overlap binary32 payloads; full 335-byte direction updater preserved | [Runtime angle](evidence/bullet-runtime-angle-word-20261105/README.md): seven-source native proof of 8 candidate field positions, two remaining register bytes (+0xD7/+0xDD), existing leaf replays **312/312 exact**. Local outgoing-angle union trial on this current source was rejected with no byte improvement. |
+| Sound | `SoundDataLoaderThread` uses a single typed pointer-to-slot alias and one retail ESI index for all 37 files | [Sound single-index complete exact](evidence/sound-loader-single-index-exact-20261105/README.md): two independent original-bound 5-TU VC7.1 builds, complete **107/107** code bytes and all **11** field identities, accepted as `sound-data-loader-thread`; launcher selected replay **34/34 exact**. Canonical native `build/match-linked/SoundDataLoaderThread/`. |
 
 Source SHA-256 at this HEAD (verify before reuse):
 
 ```text
+Sound.cpp          63936e47ae782558d08c2b7cedcba749a63723d8236052c65bac53d3228cff57
 Enemy.cpp          c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2
 Enemy.hpp          4ad70650ea73b0c1d4a060de223c91758828ba716a956c5a29cbf703026f4184
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
@@ -142,12 +146,12 @@ matched to these file hashes, not guessed by date.
   **100/107** or regressed (one **94/107**, one **98/107**); two local
   declarations did not compile due switch-case initialization scope. All
   failed candidates were restored: `.analysis/gpt-web/20261105-seek-new-register/`.
-  `SoundDataLoaderThread` uses one scaled index in the target but the current
-  112-byte producer uses two counters. A fresh five-source **private-TU**
-  cached-filename/state-test trial shrank to **104 bytes** but only had
-  **10** link fields, not the baseline's **11**; it is *not* an exact 107-byte
-  target proof or a validated improvement. Original `src/Sound.cpp` was not
-  modified. Trial: `.analysis/gpt-web/20261105-sound-index-lifetime/`.
+  Older `SoundDataLoaderThread` trials used a two-counter, 112-byte source
+  epoch or a 104-byte cached-filename candidate with only 10 fields; both
+  are **superseded** by the newly accepted original-bound **107-byte / 11-field**
+  `sound-data-loader-thread` owner at `12524fe`. The actual natural indexed-slot
+  alias and its canonical replay are documented above. Retain previous trials
+  only as historical negative controls, not the current sound frontier.
   No fake ESI/ECX/EAX ABI declaration was used.
 
 ## Current-source rejected experiments (not installed)
