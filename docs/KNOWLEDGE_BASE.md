@@ -21,7 +21,32 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
-## 2026-11-05 current source/ledger supersession
+## 2026-11-05 live source supersession for the next agent
+
+At clean `2061ddf` source HEAD, the older `0dd8b20`-era “latest”
+checkpoint below is **historical**. Current source has independently
+reverified ANM `ExecuteScript` **9,962/9,964 with all 350 original-bound
+fields**, Enemy ECL dispatcher **14,352 candidate versus 14,416 target**
+(716 candidate fields; genuinely rebuilt 11 TUs), and ECL VM `Run`
+**6,997/7,020 with 189 bound fields**; all three are **NONEXACT**.
+`EnemyBeginSpell` now has a 2,432-byte candidate (108 candidate fields),
+but is also **NONEXACT**. The Bullet absolute-direction updater is
+**333/335 preliminary ordinary positions** with 8 candidate field
+locations, still **NONEXACT**. The latest ANM instruction-mask word,
+Enemy lifecycle time reset, and Bullet runtime angle overlay recovery is
+pinned by source hashes and real native/selected exact receipts in
+[the concise current handoff](RE_HANDOFF.md) and [its evidence index](RE_HANDOFF.md#current-source-proofs-and-candidate-epoch-pins).
+The official ledger remains **1,482 canonical exact functions /
+189,797 bytes**. The selected existing exact guards across those last
+three source recoveries passed **1,323/1,323**, **432/432**, and
+**312/312**, respectively, not new exact credit.
+
+For storage figures, **do not use historical 311-file/14,079,534-byte
+snapshots as a live inventory**; that was the immediate result of the
+previous archive cleanup, before additional compilations. The actual
+post-handoff inventory/restore rules are in [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
+
+## 2026-11-05 historical source/ledger supersession (superseded by current handoff)
 
 **Later November 5 ECL VM source supersession:** `cbe03f9` formalizes the
 four-byte typed stack slot whose first byte is the scalar tag; `58ffb13`
@@ -110,8 +135,8 @@ ownership and callbacks while preserving selected existing exact owners.
 reported 13 expanded witness subtrees / 199 files described the **first**
 Nov 5 cleanup, not the subsequently expanded workspace. A second verified
 archive preserved 1,581 further regenerable files in a 3,292,104-byte zstd
-tar, while retaining **311 expanded witness files** (14,079,534 payload
-bytes) and all canonical `build/match-linked` producers, source, original
+tar, while retaining **311 expanded witness files at that historical cleanup
+checkpoint** (14,079,534 payload bytes) and all canonical `build/match-linked` producers, source, original
 target, toolchain, Ghidra, prior archives and research scripts. Selected
 restoration was tested; see [latest artifact inventory](RE_ARTIFACTS.md)
 and [next-agent storage receipt](evidence/handoff-maintenance-20261105/README.md).
