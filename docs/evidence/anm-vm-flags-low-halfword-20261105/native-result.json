@@ -1,68 +1,40 @@
 {
-  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
-  "source_sha256": "1f6d0398c916ff052b2ec0c22b8843857b895a282c1ca6affebf7ade20dccdb0",
-  "header_sha256": "f158339e362ddd0716495f180a8d6e64ccec1a89be3b1e34fb819b7ce6d2ffa7",
-  "all_source_sha256": {
+  "original_target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "fresh_5_translation_units_source_pins": {
     "src/AnmManager.cpp": "1f6d0398c916ff052b2ec0c22b8843857b895a282c1ca6affebf7ade20dccdb0",
     "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
     "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
     "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
     "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
   },
-  "native_flags_word_offset": 860,
-  "native_flags_low_halfword_offset": 860,
-  "native_flags_high_halfword_offset": 862,
-  "low_halfword_write_value": 7,
-  "target_instructions": [
-    {
-      "name": "AnmVmView::Initialize",
-      "address": "0x00401E97",
-      "bytes": "66c7825c0300000700"
+  "changed_header_sha256": "f158339e362ddd0716495f180a8d6e64ccec1a89be3b1e34fb819b7ce6d2ffa7",
+  "vm_flags_word_offset": 860,
+  "low_halfword_offset": 860,
+  "high_halfword_offset": 862,
+  "full_native_owners": {
+    "ExecuteScript": {
+      "candidate_size": 9964,
+      "linked_fields": 350,
+      "extent_source": "pdb-section-contribution"
     },
-    {
-      "name": "AnmLoadedView::SetAndExecuteScriptIdx",
-      "address": "0x0043E90A",
-      "bytes": "66c7805c0300000700"
-    }
-  ],
-  "complete_candidate_owner_comparisons": {
-    "ANM_ExecuteScript": {
-      "previous_candidate_size": 9964,
-      "current_candidate_size": 9964,
-      "candidate_link_field_count": 350,
-      "field_geometry_identical": true,
-      "ordinary_candidate_byte_differences": 0
+    "VmInitialize": {
+      "candidate_size": 273,
+      "linked_fields": 0,
+      "extent_source": "pdb-section-contribution"
     },
-    "AnmVm_Initialize": {
-      "previous_candidate_size": 273,
-      "current_candidate_size": 273,
-      "candidate_link_field_count": 0,
-      "field_geometry_identical": true,
-      "ordinary_candidate_byte_differences": 0
-    },
-    "AnmLoaded_SetAndExecuteScriptIdx": {
-      "previous_candidate_size": 287,
-      "current_candidate_size": 287,
-      "candidate_link_field_count": 4,
-      "field_geometry_identical": true,
-      "ordinary_candidate_byte_differences": 0
-    },
-    "AnmLoaded_InitializeVm": {
-      "previous_candidate_size": 207,
-      "current_candidate_size": 207,
-      "candidate_link_field_count": 1,
-      "field_geometry_identical": true,
-      "ordinary_candidate_byte_differences": 0
+    "SetAndExecuteScriptIdx": {
+      "candidate_size": 287,
+      "linked_fields": 4,
+      "extent_source": "pdb-section-contribution"
     }
   },
-  "strict_original_target_ANM_ExecuteScript": {
-    "result": "complete-nonexact",
-    "target_size": 9964,
-    "native_size": 9964,
+  "strict_full_execute_script_original_target": {
+    "result": "mismatch",
+    "size": 9964,
     "matched_bytes": 9962,
-    "independently_bound_fields": 350,
-    "local_destinations": 95,
-    "ordinary_differences": [
+    "link_fields": 350,
+    "errors": null,
+    "first_differences": [
       {
         "offset": "0x113",
         "linked": 77,
@@ -73,24 +45,25 @@
         "linked": 81,
         "target": 82
       }
-    ],
-    "exact_credit": 0
+    ]
   },
-  "selected_exact_replays": [
+  "selected_existing_exact_replays": [
     {
       "unit": "anm-vm-constructor",
       "result": "exact",
-      "matched_bytes": 88,
-      "target_bytes": 88
+      "bytes": 88
     },
     {
       "unit": "anm-vm-initialize-private",
       "result": "exact",
-      "matched_bytes": 273,
-      "target_bytes": 273
+      "bytes": 273
+    },
+    {
+      "unit": "anm-loaded-set-and-execute-script-index",
+      "result": "exact",
+      "bytes": 194
     }
   ],
-  "previously_exact_bytes_preserved": 361,
-  "new_exact_credit": 0,
-  "whole_history_cold_replayed": false
+  "previously_exact_bytes_preserved": 555,
+  "new_exact_credit": 0
 }

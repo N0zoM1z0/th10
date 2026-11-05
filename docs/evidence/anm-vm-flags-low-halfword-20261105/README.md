@@ -1,48 +1,36 @@
-# TH10 ANM VM flags: recover the independent low 16-bit flag overlay
+# TH10 ANM VM flags low-halfword: two complete owner writes
 
-Original executable: Japanese TH10 v1.00a, SHA-256
+Verified Japanese TH10 v1.00a target SHA-256:
 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
 
-`AnmVmView::flags35C` is a 32-bit overlapping flag word at VM +0x35C.
-Two *separate complete* original owners explicitly write its **low 16
-bits** with value `7`, without requiring a 32-bit assignment:
+The ANM VM stores one 32-bit flags word at offset `+0x35C`. The real
+`AnmVmView::Initialize` and `AnmLoadedView::SetAndExecuteScriptIdx`
+write **only the low 16 bits** of that word to `7`; they do not overwrite
+the high 16 bits. The maintained view now overlaps the existing `flags35C`
+word and named bitfields with `flagsLow16` at `+0x35C` and `flagsHigh16` at
+`+0x35E`. Compiler-time `offsetof`/size assertions bind the native layout.
+Two formerly opaque `unsigned short *` pointer casts in real C++ source now
+write `vm->flagsLow16 = 7`. This adds no invented initialization, flags,
+or original source-name claim.
 
-- `AnmVmView::Initialize @0x00401DE0`: `MOV WORD PTR [EDX+0x35C],7` at
-  original `0x00401E97` (9-byte original instruction).
-- `AnmLoadedView::SetAndExecuteScriptIdx @0x0043E8B0`: `MOV WORD PTR
-  [EAX+0x35C],7` at original `0x0043E90A`. That owner also preserves and
-  restores the whole 32-bit flag word in its other paths.
+A genuine **five-translation-unit** VC7.1 SP1 `/GL /GS` link freshly
+compiled the modified `AnmManager.cpp`, `RandomMath.cpp`,
+`AnmVmCreate.cpp`, `AnmVmId.cpp`, and `AnmInt3Scale.cpp` with the
+registered `/Ob1` override for the final support TU. Its **complete**
+`AnmRenderManagerView::ExecuteScript` PDB contribution remains 9,964 bytes.
+The **independent original-target strict comparison** binds all **350**
+linkage fields and their local destinations; **9,962/9,964** bytes match.
+Only `+0x113` (ECX-vs-EDX load) and `+0x115` (ECX-vs-EDX push) in
+opcode 91 remain different. This large function is **NONEXACT**.
 
-The maintained VM union now exposes `flagsLow16` and `flagsHigh16` along
-with the already named whole word and bitfields. Compile-time `offsetof`
-assertions fix the two halfwords at +0x35C and +0x35E. Both real source
-stores use `vm->flagsLow16 = 7` rather than casting the address of the
-32-bit member to `unsigned short *`. This preserves high flags in paths
-where they are live, and does not change any of the 32-bit or bitfield
-consumers. The original historic spelling of the fields remains unknown.
+Three selected canonical original-bound cold replays from the modified
+source are exact: `anm-vm-constructor` **88/88**,
+`anm-vm-initialize-private` **273/273**, and
+`anm-loaded-set-and-execute-script-index` **194/194**. They preserve
+**555/555 already credited bytes**, with **zero new exact codegen credit**.
+The separate `SetAndExecuteScriptIdx` 287-byte candidate is not promoted.
 
-## Original-bound full-owner verification
-
-Both changed source and header were compiled by pinned VC7.1 SP1 in their
-**real five-source `/GL /GS`** ANM interpreter graph, with the established
-`/Ob1` support profile on `AnmInt3Scale.cpp`. In a complete source-epoch
-comparison, `ExecuteScript` retains **9,964 bytes, 350 same-position and
-same-type linked fields and zero ordinary candidate differences**;
-`AnmVmView::Initialize` retains **273 bytes/zero fields**, and the real
-`AnmLoadedView::SetAndExecuteScriptIdx` **287 bytes/four fields**, plus
-`AnmLoadedView::InitializeVm` **207 bytes/one field**. These are whole PDB
-contributions, not overlapping prefixes.
-
-An independent **target-bound strict comparison** rebinds all 350 fields,
-including 95 fixed original local/data destinations. The full 9,964-byte
-`ExecuteScript` remains **9,962/9,964** original bytes, with exactly the
-prior two EDX-vs-ECX register-transport bytes at `+0x113` and `+0x115`;
-**NONEXACT**, zero new exact credit. Two scoped canonical original-target
-cold replays pass: `anm-vm-initialize-private` **273/273** and
-`anm-vm-constructor` **88/88** (**361/361 previously accepted bytes**).
-
-`native-result.json` pins source/header SHA-256, all five input sources,
-original write opcodes, strict full-owner comparison and scoped exact replay.
-Ignored native PE/MAP/PDB are under
-`build/gpt-web/20261105-anm-vm-halfword/full-boss/`. No historical full
-cold replay, complete game executable or runtime-equivalence claim.
+Machine-readable current source/header pins and field/byte comparisons are
+in `native-result.json`; the native PE/MAP/PDB remains in ignored
+`build/gpt-web/20261105-anm-flags-halfword/current-5-tu/`.
+No full historical cold replay, native product link or runtime claim.
