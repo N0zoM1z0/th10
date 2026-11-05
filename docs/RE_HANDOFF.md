@@ -1,10 +1,12 @@
 # TH10 reconstruction — next-agent handoff (2026-11-05, updated source epoch)
 
-**Start here.** At this audit the clean `main` HEAD is **`2061ddf`**
-(`gpt-web: bind ANM executor variable argument masks to typed script words`).
-The older statement that `0dd8b20` was the latest source commit is **obsolete**.
-Check live `git status` and source hashes before building: the remote branch,
-local experiments and ignored binaries may differ from this recorded epoch.
+**Start here.** The latest tested feature-source checkpoint is **`588851e`**
+(`gpt-web: unify ECL stack scalar storage through full VM readers`), after
+`79ac30a` (ANM pointer mask) and `0b51d9d` (Enemy callback life). The
+older `2061ddf` and `0dd8b20` source-epoch statements are **obsolete**.
+Always check live `git status` and source hashes: a documentation checkpoint
+may move HEAD without changing these source inputs, and private artifacts
+can belong to older source epochs.
 The task is target-exact reconstruction, **not** approximate behavior or a
 runnable full-game claim. Work on the large interpreters **and** independent
 leaves; checkpoint substantive source progress as `gpt-web: ...` with the
@@ -42,7 +44,9 @@ mappings; **1,482** fully original-bound exact functions / **189,797**
 exact codegen bytes; **574** confirmed-authored exact functions / **119,761**
 authored exact bytes; **176** confirmed-authored source-present nonexact
 backlog. These are neither source completeness nor whole-product closure.
-**None** of the three most recent feature-source commits added exact credit.
+**No new canonical exact units were admitted by the three latest
+feature-source commits**; affected existing exact leaves were selectively
+replayed under the new source revisions.
 
 ## Latest whole-owner frontiers: do not confuse size with target agreement
 
@@ -70,26 +74,32 @@ is already correct). They must **not** be marked exact.
 
 | Source family | Installed source recovery | Relevant retained original-bound proof / witness |
 | --- | --- | --- |
-| ANM | Low-halfword VM flags, 16-bit instruction argument-mask raw/typed union at header +6, and full interpreter macros | [Typed ANM mask](evidence/anm-instruction-variable-mask-overlay-20261105/README.md): full five-source strict 350-field owner; six selected exact units **1,323/1,323**. Expanded `build/gpt-web/20261105-anm-flags-halfword/current-5-tu/`. |
-| Enemy/ECL | Five lifecycle `currentTime = 0.0f` writes (same binary32 zero), bit 0 of the thread signal and typed CALL/stack/SCPT structures | [Typed Enemy time](evidence/enemy-ecl-time-reset-typed-20261105/README.md): fresh 11-source graph and two-source complete PDB owners; six selected exact units **432/432**. Expanded `build/gpt-web/20261105-enemy-time-lifecycle/{fresh-11-tu,two-source}/`. [ECL signal proof](evidence/ecl-thread-signal-bit-20261105/README.md). |
-| Bullet | Both state `value1Bits` and runtime `angleBits` overlap binary32 payloads; full 335-byte direction updater preserved | [Runtime angle](evidence/bullet-runtime-angle-word-20261105/README.md): genuine seven-source PDB field geometry, two remaining register bytes; two selected original-bound exact units **312/312**. Expanded `build/gpt-web/20261105-continuation-bullet/runtime-angle-overlay/`. |
+| ANM | Header +6 has one typed 16-bit variable-argument mask. Now **all four** value/lvalue instruction macros in the full 9,964-byte executor use `variableArgs.bits` | [Typed pointer mask](evidence/anm-typed-pointer-operand-mask-20261105/README.md): fresh five-source strict **350/350** original-bound fields, including 95 locals; **9,962/9,964** original bytes, still NONEXACT. Affected pointer leaves **288/288 exact**. Private `build/gpt-web/20261105-anm-pointer-mask/current/`. Earlier full-mask [proof](evidence/anm-instruction-variable-mask-overlay-20261105/README.md) belongs to its own source epoch. |
+| Enemy dispatcher / GUI | A single typed `itemDrops` 0x3C-byte packet at runtime +0x13CC; named life-gauge baseline +0x13C4 and callback-life difference +0x13C8 across lifecycle, ECL dispatcher, callback helper and GUI | [Current callback life](evidence/enemy-next-callback-life-20261105/README.md): fresh 11-TU complete ECL dispatcher **14,352 candidate bytes / 716 candidate fields**, byte-neutral against the preceding candidate, still NONEXACT versus 14,416 original. The callback helper now compiles standalone with a necessary forward declaration; selected GUI leaf **46/46 exact**. [Nested drop packet](evidence/enemy-item-drop-packet-20261105/README.md). |
+| Generic ECL VM | Runtime thread signal bit, typed CALL/SCPT records, and now the shared 32-bit `EclVmScalar` word in six value/lvalue stack accessors | [Typed stack scalar](evidence/ecl-typed-stack-scalar-20261105/README.md): fresh two-source full Run **7,020/7,020**, **189/189** original-bound fields, **6,997/7,020** ordinary bytes; six affected leaf owners **773/773 exact**, Run NONEXACT. Private `build/gpt-web/20261105-ecl-stack-scalar/current/`. |
+| Bullet | Both state `value1Bits` and runtime `angleBits` overlap binary32 payloads; full 335-byte direction updater preserved | [Runtime angle](evidence/bullet-runtime-angle-word-20261105/README.md): seven-source native proof of 8 candidate field positions, two remaining register bytes (+0xD7/+0xDD), existing leaf replays **312/312 exact**. Local outgoing-angle union trial on this current source was rejected with no byte improvement. |
 
 Source SHA-256 at this HEAD (verify before reuse):
 
 ```text
-Enemy.cpp          87293321fd46faeb2189fc5c12e21d6bbf580f5dde5f7e16e3ff0c45e33caea5
-EclVm.cpp          5553a713690c2378e94e783be8f6c8fec7b80c6100905f58a62a0ec34219f766
+Enemy.cpp          c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2
+Enemy.hpp          f7b23495539c4ab85b6a37ff02580714d5ab64c77117f7d615052d2b3f513c11
+EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
+EnemyEclDispatcher.cpp a553dd30b547f96d753e0e5edd5c4adccdfce1de0c40ed9e8336534188ad87f4
+Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
+EclVm.cpp          21ebfab3057a242dda80ae10f6dba894452580abd25c34dc8d7b145dd81f54eb
 EclVm.hpp          97d0e02605e6bb0e7ba7af34bad1b8beab372e00220157bf9c692186f019f34c
-AnmManager.cpp     a246090b1e5e3a4df61fc3fd291548dc8b2c148110d510bb708fe51d56c851c0
+AnmManager.cpp     c05add280091300b1dd76b6cff422d322a4da0fe1e21808c1156829e0bec9776
 AnmManager.hpp     57c8ec82ae92116c4edea9fd475558843ee5752e5a234c1749f5f38392771e49
 BulletManager.cpp  2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa
 BulletManager.hpp  725f281ee37e77f7490d339c1072eaecd6177816aae1b52969f2ac977915fd53
 ```
 
-The typed ANM sources are committed at `e885fb5` (and its follow-up
-`2061ddf`, which adds evidence only); Bullet at `9634285`; Enemy at
-`ceed3ea`. Earlier commits such as `0dd8b20`, `d556496`, and `de9d141`
-remain relevant to the **history**, not current HEAD.
+Current source edits are `0b51d9d` (Enemy), `79ac30a` (ANM), and
+`588851e` (ECL). The older typed ANM edit at `e885fb5` and its evidence
+follow-up `2061ddf`, Bullet at `9634285`, and Enemy at `ceed3ea`
+remain useful **historical** source epochs, not current HEAD. Private
+witnesses must be matched to the relevant file hashes, not guessed by date.
 
 ## Next experiments: what the immediately preceding source investigation found
 
@@ -125,6 +135,29 @@ remain relevant to the **history**, not current HEAD.
   failure-reload variants remained 112. The source was restored after
   all of them. Original target's private ESI/ECX/EAX ABIs cannot be
   fabricated by a source-only exactness claim.
+
+## Current-source rejected experiments (not installed)
+
+- **ECL Run FORMAT local stack homes:** two separately compiled declaration/
+  initialization-order trials stayed **6,997/7,020**, all **189** original
+  fields passing; two local-record trials changed PDB owner sizes to **6,928**
+  or **7,028** and failed the original-size contract. All were reverted.
+  Private drivers: `.analysis/gpt-web/20261105-ecl-format-stack/`.
+- **Bullet absolute-angle outgoing word:** a new local int/float union in
+  the real seven-TU build retained **335** bytes, **8** candidate field
+  positions/types and **333/335** preliminary ordinary bytes, with the same
+  EAX-versus-EDX register pair at `+0xD7/+0xDD`. Rejected and restored.
+  Private driver: `.analysis/gpt-web/20261105-bullet-argument/trial.py`.
+- **ECL StartSubroutine CALL descriptor pointer lifetime:** a single typed
+  pointer held across value-service calls kept Run at **6,997/7,020** but
+  *regressed another full owner*: the 551-byte `StartSubroutine` candidate
+  moved four REL32 call fields from the baseline offsets `0x9E/0xD2/0xE8/0x1DE`
+  to `0x9D/0xC5/0xD9/0x1DA`. Original field positions include
+  `0x9E/0xD2/0xE8/0x1DD`. Reverted; keep per-access typed descriptor
+  reads. Private native proof in `build/gpt-web/20261105-ecl-call-descriptor/current/`.
+  An older independent rejection is documented in
+  [CALL argument records](evidence/ecl-call-argument-record-20261105/README.md).
+  This is why a Run-only byte comparison is insufficient for helper edits.
 
 For selected exact regression on these latest changes, use only relevant
 unit names (not the full cohort), e.g.:
