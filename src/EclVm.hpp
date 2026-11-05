@@ -83,13 +83,16 @@ struct EclVmCallArgumentView
     {
         int integer;
         float real;
+        EclVmScalar scalar;
     };
 };
 typedef char EclVmCallArgumentNativeLayout[
     (sizeof(EclVmCallArgumentView) == 8 &&
      offsetof(EclVmCallArgumentView, sourceType) == 0 &&
      offsetof(EclVmCallArgumentView, destinationType) == 1 &&
-     offsetof(EclVmCallArgumentView, integer) == 4) ? 1 : -1];
+     offsetof(EclVmCallArgumentView, integer) == 4 &&
+     offsetof(EclVmCallArgumentView, scalar) == 4 &&
+     sizeof(((EclVmCallArgumentView *)0)->scalar) == 4) ? 1 : -1];
 
 // The instruction header stores the operand-indirection selector as one
 // unsigned 16-bit word.  Bit n describes the nth encoded operand; unused
@@ -122,6 +125,17 @@ typedef char EclVmJumpAndSpawnWireOffsets[
      offsetof(EclVmJumpOperandsView, targetTime) == 4 &&
      offsetof(EclVmSpawnThreadInlinePrefixView, inlineData) == 4) ? 1 : -1];
 
+// CALL uses a counted inline subroutine name before its tagged 8-byte
+// argument descriptors. Both are serialized byte-stream fragments; the
+// encoded byte count, not sizeof this view, finds the argument tail.
+struct EclVmCallInlinePrefixView
+{
+    int inlineNameBytes;
+    char subroutineName[1];
+};
+typedef char EclVmCallInlineNameStartsAt04[
+    (offsetof(EclVmCallInlinePrefixView, subroutineName) == 4) ? 1 : -1];
+
 struct EclVmInstruction
 {
     int time;
@@ -148,6 +162,7 @@ struct EclVmInstruction
         EclVmScalar scalarOperands[1];
         EclVmJumpOperandsView jumpOperands;
         EclVmSpawnThreadInlinePrefixView spawnThreadOperands;
+        EclVmCallInlinePrefixView callOperands;
     };
 
     // The encoded size and branch operands are measured in bytes, not
@@ -172,7 +187,10 @@ typedef char EclVmInstructionHeaderOffsets[
        offsetof(EclVmJumpOperandsView, targetTime) == 0x14 &&
      offsetof(EclVmInstruction, spawnThreadOperands) == 0x10 &&
      offsetof(EclVmInstruction, spawnThreadOperands) +
-       offsetof(EclVmSpawnThreadInlinePrefixView, inlineData) == 0x14) ? 1 : -1];
+       offsetof(EclVmSpawnThreadInlinePrefixView, inlineData) == 0x14 &&
+     offsetof(EclVmInstruction, callOperands) == 0x10 &&
+     offsetof(EclVmInstruction, callOperands) +
+       offsetof(EclVmCallInlinePrefixView, subroutineName) == 0x14) ? 1 : -1];
 
 class EclVmHost;
 struct EclVmScriptDatabase;

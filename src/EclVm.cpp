@@ -513,7 +513,7 @@ int EclVmContext::StartSubroutine(
     EclVmContext *destination = this;
     EclVmInstruction **const callerInstruction = &caller->instruction;
     EclVmInstruction *const call = *callerInstruction;
-    const int inlineBytes = OperandInt(call, 0);
+    const int inlineBytes = call->callOperands.inlineNameBytes;
     int metadataOffset = inlineBytes + firstArgument * 4 + 4;
     int preservedValue = 0;
     const int previousTop = destination->stack.stackTop;
@@ -598,8 +598,7 @@ int EclVmContext::StartSubroutine(
     // Subroutine names follow the initial serialized 32-bit CALL operand.
     // The instruction prefix owns the +0x10 byte-stream start.
     host->activeContext->instruction = host->scriptDatabase->FindSubroutine(
-        reinterpret_cast<const char *>(
-            (*callerInstruction)->operands + sizeof(int)));
+        (*callerInstruction)->callOperands.subroutineName);
     host->activeContext->currentTime = 0.0f;
     if (host->activeContext->instruction == NULL)
     {
