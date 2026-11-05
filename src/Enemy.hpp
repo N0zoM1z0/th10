@@ -460,6 +460,19 @@ typedef char EnemyEclCallbackInlineNameOffsets[
     (offsetof(EnemyEclInterruptInlineOperandsView, callbackName) == 0x10 &&
      offsetof(EnemyEclTimeoutInlineOperandsView, callbackName) == 0x08) ? 1 : -1];
 
+// All CREATE_ENEMY variants encode a byte count at payload +0 and the
+// inline ECL subroutine name at +4. The subsequent scalar operand words
+// are addressed dynamically using (name byte count + 4) / sizeof(int),
+// not by applying sizeof this C++ view to the serialized byte stream.
+struct EnemyEclSpawnInlineOperandsView
+{
+    int inlineNameByteCount;
+    unsigned char subroutineName[1];
+};
+typedef char EnemyEclSpawnInlineNameOffset[
+    (offsetof(EnemyEclSpawnInlineOperandsView, inlineNameByteCount) == 0 &&
+     offsetof(EnemyEclSpawnInlineOperandsView, subroutineName) == 4) ? 1 : -1];
+
 // Minimal variable-length instruction header proven by the TH10 ECL dispatcher
 // and the generic typed-operand helpers. Names describe target-observed roles;
 // the original source type and the fields not exposed here remain unknown.
@@ -484,6 +497,7 @@ struct EnemyEclInstructionView
     {
         int operands[1];
         float floatOperands[1];
+        EnemyEclSpawnInlineOperandsView spawnOperands;
         EnemyEclSpellInlineOperandsView spellOperands;
         EnemyEclInterruptInlineOperandsView interruptOperands;
         EnemyEclTimeoutInlineOperandsView timeoutOperands;
@@ -516,6 +530,10 @@ typedef char EnemyEclInstructionInlineCallbackNameOffsets[
          offsetof(EnemyEclInterruptInlineOperandsView, callbackName) == 0x020 &&
      offsetof(EnemyEclInstructionView, timeoutOperands) +
          offsetof(EnemyEclTimeoutInlineOperandsView, callbackName) == 0x018) ? 1 : -1];
+typedef char EnemyEclInstructionInlineSpawnNameOffsets[
+    (offsetof(EnemyEclInstructionView, spawnOperands) == 0x010 &&
+     offsetof(EnemyEclInstructionView, spawnOperands) +
+       offsetof(EnemyEclSpawnInlineOperandsView, subroutineName) == 0x014) ? 1 : -1];
 typedef char EnemyEclInstructionOperandMaskAt008[
     (offsetof(EnemyEclInstructionView, operandMask) == 0x008 &&
      offsetof(EnemyEclInstructionView, indirectOperands) == 0x008) ? 1 : -1];

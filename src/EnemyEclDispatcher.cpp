@@ -1279,7 +1279,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
       return 0;
     }
   case ENEMY_ECL_CREATE_ENEMY:
-    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
+    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     if ((flags & 0x40000) == 0) {
@@ -1316,7 +1316,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
     local_90.spawnRequest.eclVariables = eclVariables;
 dispatch_spawn_enemy:
     EnemySpawn(
-        g_EnemyManager, reinterpret_cast<const char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[1]),
+        g_EnemyManager, reinterpret_cast<const char *>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.subroutineName),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_IF_NO_BOSS:
@@ -1325,7 +1325,7 @@ dispatch_spawn_enemy:
     }
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
 dispatch_create_enemy_absolute:
-    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
+    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     fVar19 = (ReadRawFloatArgument((1), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26])));
@@ -1342,7 +1342,7 @@ dispatch_create_enemy_absolute:
     goto dispatch_spawn_enemy;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET:
 dispatch_create_enemy_global:
-    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
+    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     local_90.spawnRequest.position.x =
@@ -1365,7 +1365,7 @@ dispatch_create_enemy_global:
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag40000 = local_90.spawnRequest.setFlag40000 | 1;
     EnemySpawn(
-        g_EnemyManager, reinterpret_cast<const char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[1]),
+        g_EnemyManager, reinterpret_cast<const char *>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.subroutineName),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET_IF_NO_BOSS:
@@ -1373,7 +1373,7 @@ dispatch_create_enemy_global:
     break;
   case ENEMY_ECL_CREATE_ENEMY_MIRRORED:
 dispatch_create_enemy_mirrored:
-    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
+    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
     fVar9 = worldMotion.position.x;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
@@ -1393,7 +1393,7 @@ dispatch_create_enemy_mirrored:
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag0800 = 1;
     EnemySpawn(
-        g_EnemyManager, reinterpret_cast<const char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[1]),
+        g_EnemyManager, reinterpret_cast<const char *>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.subroutineName),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED:
@@ -2945,7 +2945,7 @@ dispatch_rank_int_low:
 dispatch_complete:
   return 0;
 dispatch_create_enemy_absolute_mirrored:
-  iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[0] + 4;
+  iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
   iVar26 /= 4;
   memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
   fVar19 = (ReadRawFloatArgument((1), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->floatOperands[iVar26])));
