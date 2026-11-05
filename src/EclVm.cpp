@@ -547,8 +547,8 @@ int EclVmContext::StartSubroutine(
             if (sourceType == 'f' || sourceType == 'g')
             {
                 EclVmScalar value;
-                value.integer = reinterpret_cast<const int *>(
-                    (*callerInstruction)->operands)[valueOffset / 4];
+                value.integer =
+                    (*callerInstruction)->integerOperands[valueOffset / sizeof(int)];
                 value.real = ReadFloatValue(argumentIndex, caller, value.real);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     (*callerInstruction)->operands + metadataOffset)->destinationType == 'f')
@@ -560,8 +560,8 @@ int EclVmContext::StartSubroutine(
             else
             {
                 EclVmScalar value;
-                value.integer = reinterpret_cast<const int *>(
-                    (*callerInstruction)->operands)[valueOffset / 4];
+                value.integer =
+                    (*callerInstruction)->integerOperands[valueOffset / sizeof(int)];
                 value.integer = caller->ReadIntValue(
                     argumentIndex, value.integer);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
