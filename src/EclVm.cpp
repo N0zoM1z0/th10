@@ -558,9 +558,9 @@ int EclVmContext::StartSubroutine(
                 value.real = ReadFloatValue(argumentIndex, caller, value.real);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     (*callerInstruction)->operands + metadataOffset)->destinationType == 'f')
-                    *reinterpret_cast<float *>(argument) = value.real;
+                    reinterpret_cast<EclVmScalar *>(argument)->real = value.real;
                 else
-                    *reinterpret_cast<int *>(argument) =
+                    reinterpret_cast<EclVmScalar *>(argument)->integer =
                         static_cast<int>(value.real);
             }
             else
@@ -572,9 +572,9 @@ int EclVmContext::StartSubroutine(
                     argumentIndex, value.integer);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     (*callerInstruction)->operands + metadataOffset)->destinationType != 'f')
-                    *reinterpret_cast<int *>(argument) = value.integer;
+                    reinterpret_cast<EclVmScalar *>(argument)->integer = value.integer;
                 else
-                    *reinterpret_cast<float *>(argument) =
+                    reinterpret_cast<EclVmScalar *>(argument)->real =
                         static_cast<float>(value.integer);
             }
 
