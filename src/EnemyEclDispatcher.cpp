@@ -2495,9 +2495,10 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
   {
-    const unsigned char *encryptedName =
-        reinterpret_cast<const unsigned char *>(&reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[4]);
-    const int spellNameLength = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->operands[3];
+    const EnemyEclSpellInlineOperandsView &spellOperands =
+        reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spellOperands;
+    const unsigned char *encryptedName = spellOperands.encryptedName;
+    const int spellNameLength = spellOperands.encryptedNameLength;
     iVar17 = 0;
     bVar3 = 0x77;
     local_29d = '\a';

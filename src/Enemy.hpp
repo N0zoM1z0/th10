@@ -423,6 +423,22 @@ typedef char EnemyRuntimeCallbackThresholdsAt1458[
 typedef char EnemyRuntimeOwnerAt14D8[
     (offsetof(EnemyRuntimeView, owner) == 0x14d8) ? 1 : -1];
 
+// The five START_SPELL opcodes share four encoded 32-bit arguments,
+// followed immediately by an encrypted byte string. The instruction's
+// own length remains the only record-length authority: this is an
+// overlapping wire prefix, not a fixed-size name array.
+struct EnemyEclSpellInlineOperandsView
+{
+    int spellId;
+    int argument1;
+    int argument2;
+    int encryptedNameLength;
+    unsigned char encryptedName[1];
+};
+typedef char EnemyEclSpellInlineOperandsOffsets[
+    (offsetof(EnemyEclSpellInlineOperandsView, encryptedNameLength) == 0x0c &&
+     offsetof(EnemyEclSpellInlineOperandsView, encryptedName) == 0x10) ? 1 : -1];
+
 // Minimal variable-length instruction header proven by the TH10 ECL dispatcher
 // and the generic typed-operand helpers. Names describe target-observed roles;
 // the original source type and the fields not exposed here remain unknown.
@@ -447,6 +463,7 @@ struct EnemyEclInstructionView
     {
         int operands[1];
         float floatOperands[1];
+        EnemyEclSpellInlineOperandsView spellOperands;
     };
 };
 typedef char EnemyEclInstructionOpcodeAt004[
@@ -476,7 +493,12 @@ typedef char EnemyEclInstructionOperandMaskAt008[
      offsetof(EnemyEclInstructionView, indirectOperands) == 0x008) ? 1 : -1];
 typedef char EnemyEclInstructionOperandsAt010[
     (offsetof(EnemyEclInstructionView, operands) == 0x010 &&
-     offsetof(EnemyEclInstructionView, floatOperands) == 0x010) ? 1 : -1];
+     offsetof(EnemyEclInstructionView, floatOperands) == 0x010 &&
+     offsetof(EnemyEclInstructionView, spellOperands) == 0x010 &&
+     offsetof(EnemyEclInstructionView, spellOperands) +
+         offsetof(EnemyEclSpellInlineOperandsView, encryptedNameLength) == 0x01c &&
+     offsetof(EnemyEclInstructionView, spellOperands) +
+         offsetof(EnemyEclSpellInlineOperandsView, encryptedName) == 0x020) ? 1 : -1];
 
 // The generic TH10 ECL operand helpers prove that the full Enemy embeds this
 // execution context at +0x008. The active-context pointer is stored separately
