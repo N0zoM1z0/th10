@@ -59,8 +59,9 @@ int EclVmStackView::Push(
 
     if (type != 0)
     {
-        data[stackTop] = type;
-        stackTop += 4;
+        reinterpret_cast<EclVmStackTypeSlotView *>(
+            data + stackTop)->type = type;
+        stackTop += static_cast<int>(sizeof(EclVmStackTypeSlotView));
     }
 
     memcpy(data + stackTop, value, size);
@@ -80,9 +81,11 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
 
     if (type != 0)
     {
-        stackTop -= 4;
-        const unsigned char *const typeAddress = stackData + stackTop;
-        const unsigned char storedType = *typeAddress;
+        stackTop -= static_cast<int>(sizeof(EclVmStackTypeSlotView));
+        const EclVmStackTypeSlotView *const typeAddress =
+            reinterpret_cast<const EclVmStackTypeSlotView *>(
+                stackData + stackTop);
+        const unsigned char storedType = typeAddress->type;
         if (storedType != 'f')
         {
             if (storedType == 'i' && type == 'f')

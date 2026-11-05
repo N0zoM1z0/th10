@@ -4,6 +4,18 @@
 #include <stddef.h>
 
 
+// The VM value stack prefixes each typed scalar with a four-byte tag slot.
+// Push writes only the first byte and skips the other three untouched;
+// Pop reads that first byte. This is an observed stack wire layout.
+struct EclVmStackTypeSlotView
+{
+    unsigned char type;
+    unsigned char unknown001[3];
+};
+typedef char EclVmStackTypeSlotIs04[
+    (sizeof(EclVmStackTypeSlotView) == sizeof(int) &&
+     offsetof(EclVmStackTypeSlotView, type) == 0) ? 1 : -1];
+
 // FORMAT's counted arguments are eight-byte records: a tag followed by
 // an opaque three-byte gap and the original 32-bit scalar bit representation.
 struct EclVmFormatArgumentView
