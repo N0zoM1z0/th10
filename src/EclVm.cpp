@@ -792,7 +792,7 @@ int EclVmContext::Run(float timeDelta)
             {
                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->context->flags |= 1;
+                    thread->context->threadFlag0 = 1;
                 break;
             }
 
@@ -800,7 +800,7 @@ int EclVmContext::Run(float timeDelta)
             {
                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->context->flags &= ~1U;
+                    thread->context->threadFlag0 = 0;
                 break;
             }
 

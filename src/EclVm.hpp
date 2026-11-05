@@ -137,7 +137,17 @@ struct EclVmContext
     int threadControl;
     unsigned char difficultyMask;
     unsigned char unknown101D[3];
-    unsigned int flags;
+    // Native ECL thread signal opcodes set/clear only bit zero of +0x1020.
+    // The other 31 bits are deliberately unnamed and left untouched.
+    union
+    {
+        unsigned int flags;
+        struct
+        {
+            unsigned int threadFlag0 : 1;
+            unsigned int unknownFlags1To31 : 31;
+        };
+    };
 
     int ReadInt(unsigned int index);
     float ReadFloat(unsigned int index);
