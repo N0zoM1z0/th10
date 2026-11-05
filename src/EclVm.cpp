@@ -208,13 +208,13 @@ namespace
 
 static int OperandInt(const EclVmInstruction *instruction, unsigned int index)
 {
-    return instruction->integerOperands[index];
+    return instruction->scalarOperands[index].integer;
 }
 
 static float OperandFloat(
     const EclVmInstruction *instruction, unsigned int index)
 {
-    return instruction->floatOperands[index];
+    return instruction->scalarOperands[index].real;
 }
 
 static bool IsOperandIndirect(
@@ -544,7 +544,7 @@ int EclVmContext::StartSubroutine(
             {
                 EclVmScalar value;
                 value.integer =
-                    (*callerInstruction)->integerOperands[valueOffset / sizeof(int)];
+                    (*callerInstruction)->scalarOperands[valueOffset / sizeof(int)].integer;
                 value.real = ReadFloatValue(argumentIndex, caller, value.real);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     (*callerInstruction)->operands + metadataOffset)->destinationType == 'f')
@@ -557,7 +557,7 @@ int EclVmContext::StartSubroutine(
             {
                 EclVmScalar value;
                 value.integer =
-                    (*callerInstruction)->integerOperands[valueOffset / sizeof(int)];
+                    (*callerInstruction)->scalarOperands[valueOffset / sizeof(int)].integer;
                 value.integer = caller->ReadIntValue(
                     argumentIndex, value.integer);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(

@@ -119,6 +119,9 @@ struct EclVmInstruction
         unsigned char operands[1];
         int integerOperands[1];
         float floatOperands[1];
+        // The same serialized dword is the integer/float bit carrier read
+        // by the VM and passed to CALL's typed argument services.
+        EclVmScalar scalarOperands[1];
     };
 
     // The encoded size and branch operands are measured in bytes, not
@@ -135,7 +138,9 @@ typedef char EclVmInstructionHeaderOffsets[
      offsetof(EclVmInstruction, difficultyMask) == 0x0A &&
      offsetof(EclVmInstruction, operands) == 0x10 &&
      offsetof(EclVmInstruction, integerOperands) == 0x10 &&
-     offsetof(EclVmInstruction, floatOperands) == 0x10) ? 1 : -1];
+     offsetof(EclVmInstruction, floatOperands) == 0x10 &&
+     offsetof(EclVmInstruction, scalarOperands) == 0x10 &&
+     sizeof(((EclVmInstruction *)0)->scalarOperands[0]) == 4) ? 1 : -1];
 
 class EclVmHost;
 struct EclVmScriptDatabase;
