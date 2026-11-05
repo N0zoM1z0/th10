@@ -414,7 +414,7 @@ void ReplayManager::BeginStage()
             slot.replayPair3 =
                 *reinterpret_cast<const PlayerPositionPair *>(&stageHeader->runtimePairs3[i]);
 
-            if (*reinterpret_cast<const int *>(g_GameScoreState.unknown28 + 4) + *reinterpret_cast<const int *>(g_GameScoreState.unknown28) * 3 == 5)
+            if (g_GameScoreState.history.statisticsGroupB + g_GameScoreState.history.statisticsGroupA * 3 == 5)
             {
                 slot.replayPair3 =
                     *reinterpret_cast<const PlayerPositionPair *>(&stageHeader->runtimePairs0[i]);

@@ -395,8 +395,8 @@ int __stdcall GameManagerInitialize(GameManager *manager)
         if (g_GameStartupState.score.selectedStage == 7)
             *reinterpret_cast<int *>(g_GameStartupState.score.unknown28 + 12) = 4;
         GameStatisticsOwner *statistics = g_GameStatisticsRows;
-        int group = *reinterpret_cast<const int *>(g_GameStartupState.score.unknown28 + 4) +
-            *reinterpret_cast<const int *>(g_GameStartupState.score.unknown28) * 3;
+        int group = g_GameStartupState.score.history.statisticsGroupB +
+            g_GameStartupState.score.history.statisticsGroupA * 3;
         unsigned char *rowBase = reinterpret_cast<unsigned char *>(statistics) +
             group * sizeof(GameStatisticsRecord);
         int startingStage = *reinterpret_cast<int *>(g_GameStartupState.score.unknown28 + 12);
@@ -418,8 +418,8 @@ int __stdcall GameManagerInitialize(GameManager *manager)
         g_GameStartupState.runtimeFlags &= ~4;
         if (manager->initializationMode == 0)
         {
-            int group = *reinterpret_cast<const int *>(g_GameStartupState.score.unknown28 + 4) +
-                *reinterpret_cast<const int *>(g_GameStartupState.score.unknown28) * 3;
+            int group = g_GameStartupState.score.history.statisticsGroupB +
+                g_GameStartupState.score.history.statisticsGroupA * 3;
             int *sessionStarts = reinterpret_cast<int *>(
                 reinterpret_cast<unsigned char *>(statistics) +
                 group * sizeof(GameStatisticsRecord) + 0x4c8);

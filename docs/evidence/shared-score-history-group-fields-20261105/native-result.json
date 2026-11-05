@@ -1,0 +1,53 @@
+{
+  "original_target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": {
+    "src/GameScoreState.hpp": "81fd474e644a960e72c778e33756a7d0c1644cb6af5076be587b217a629fe966",
+    "src/GuiSpellNotice.cpp": "687f1de5503d92565e3bc28f88386026f3feb4106cb4c34bfa72afba8f2ea23d",
+    "src/Player.cpp": "0e22a1c6ea31a0c5566c2c9e496b0536774a55f95e690e6ade2ef63675312878",
+    "src/GameManager.cpp": "96d0a9c6dfe4736573869c5aa0a5feb798436d141a9a2d0273844925b3946e56",
+    "src/ReplayManager.cpp": "c8169d54ae6f28a3315a8b1091f95392e46b89e487bd88ef1399d87f27e2e587"
+  },
+  "layout": {
+    "stat_group_a": 40,
+    "stat_group_b": 44,
+    "remaining_opaque_start": 48,
+    "old_raw_alias_size": 20
+  },
+  "normal_coff_counts": {
+    "Player": {
+      "before": 79,
+      "after": 79,
+      "unchanged_functions": 61,
+      "regressed_functions": 0
+    },
+    "GameManager": {
+      "before": 24,
+      "after": 24,
+      "unchanged_functions": 23,
+      "regressed_functions": 0
+    },
+    "ReplayManager": {
+      "before": 23,
+      "after": 23,
+      "unchanged_functions": 22,
+      "regressed_functions": 0
+    }
+  },
+  "selected_original_exact": [
+    {
+      "unit": "enemy-end-spell",
+      "result": "exact",
+      "matched_bytes": 399,
+      "target_bytes": 399
+    },
+    {
+      "unit": "script-viewer-player-create",
+      "result": "exact",
+      "matched_bytes": 69,
+      "target_bytes": 69
+    }
+  ],
+  "previously_exact_bytes": 468,
+  "new_exact_credit": 0,
+  "whole_product_exact": false
+}

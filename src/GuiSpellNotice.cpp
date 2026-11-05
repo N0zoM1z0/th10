@@ -148,10 +148,8 @@ void EnemyEndSpell(EnemyGameStateView *state)
         GuiShowScoreNotice(0, g_GuiView, state->currentSpellBonus);
         if (g_ReplayManager->mode != REPLAY_MANAGER_PLAYBACK)
         {
-            const int groupA = *reinterpret_cast<int *>(
-                reinterpret_cast<unsigned char *>(&g_GameScoreState) + 0x28);
-            const int groupB = *reinterpret_cast<int *>(
-                reinterpret_cast<unsigned char *>(&g_GameScoreState) + 0x2c);
+            const int groupA = g_GameScoreState.history.statisticsGroupA;
+            const int groupB = g_GameScoreState.history.statisticsGroupB;
             const int group = groupA * 3 + groupB;
             GameStatisticsRecord *row = &g_GameStatisticsRows->records[group];
             GameStatisticsSpellHistoryEntryView *record =

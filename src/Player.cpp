@@ -941,10 +941,8 @@ static AnmFloat3View AddPlayerPositionExtent(
 // a maintainable spelling of that private machine boundary.
 int PlayerInitialize(Player *player)
 {
-    const int &character =
-        *reinterpret_cast<const int *>(g_GameScoreState.unknown28);
-    const int &shotType =
-        *reinterpret_cast<const int *>(g_GameScoreState.unknown28 + 4);
+    const int &character = g_GameScoreState.history.statisticsGroupA;
+    const int &shotType = g_GameScoreState.history.statisticsGroupB;
     const char *animationFilename =
         character == 0 ? "pl00.anm" : "pl01.anm";
     player->resource = reinterpret_cast<AnmRenderManagerView *>(g_PlayerVmManager)->

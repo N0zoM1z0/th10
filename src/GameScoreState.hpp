@@ -24,7 +24,19 @@ struct GameScoreStateView
     int faith;
     int unknown10;
     GameScoreTimerView timer;
-    unsigned char unknown28[0x14];
+    // The two 32-bit statistics-group selectors at +0x28/+0x2C are read
+    // by spell capture, player construction, gameplay start and replay.
+    // Keep the older byte alias for unresolved fields in this 20-byte span.
+    union
+    {
+        unsigned char unknown28[0x14];
+        struct
+        {
+            int statisticsGroupA;
+            int statisticsGroupB;
+            unsigned char unknown30[0x0c];
+        } history;
+    };
     int selectedStage;
     int nextStage;
     unsigned char unknown44[0x14];
@@ -48,6 +60,11 @@ typedef char GameScoreStateTimerAt14[
     (offsetof(GameScoreStateView, timer) == 0x14) ? 1 : -1];
 typedef char GameScoreStateRankAt58[
     (offsetof(GameScoreStateView, rank) == 0x58) ? 1 : -1];
+typedef char GameScoreStateHistoryGroupsAt28[
+    (offsetof(GameScoreStateView, unknown28) == 0x28 &&
+     offsetof(GameScoreStateView, history.statisticsGroupA) == 0x28 &&
+     offsetof(GameScoreStateView, history.statisticsGroupB) == 0x2c &&
+     offsetof(GameScoreStateView, history.unknown30) == 0x30) ? 1 : -1];
 typedef char GameScoreStateStageFields[
     (offsetof(GameScoreStateView, selectedStage) == 0x3c &&
      offsetof(GameScoreStateView, nextStage) == 0x40) ? 1 : -1];
