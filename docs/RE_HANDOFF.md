@@ -1,10 +1,10 @@
 # TH10 reconstruction — current agent handoff (2026-11-05)
 
-**Read this first when taking over.** The current Git worktree was clean at
-handoff preparation; inspect it again before editing. The latest reviewed
-source checkpoint is **4ba28ab** (ANM interpreter typed traversal); newer
-**960d2e1** adds additional evidence without source edits. Later commits may
-supersede this page.
+**Read this first when taking over.** The source checkpoint reviewed here is
+**f91f0e8** (typed Enemy cancellation loop), following the current spell
+history and stage ANM accessors. Always inspect `git status` and `git log`
+before editing: even a clean checkpoint is not target-exact admission, and
+later source/experiment receipts can supersede any observation here.
 Do not assume any historical dated experiment describes the currently
 installed source. The function/match/origin ledgers and generated PROGRESS.md,
 not old handoff counts, determine exact credit and attribution.
@@ -70,11 +70,16 @@ that its original source was handwritten, that the game links, or that it runs.
   **14,352 / 14,416 are sizes, NOT 14,352 matching original-target bytes**.
   The full owner is still **NONEXACT**; its 716 fields are diagnostic, not a
   canonically accepted full original-target binding contract.
-  Current evidence:
-  evidence/enemy-ecl-manager-player-typed-20261105/README.md,
-  evidence/enemy-ecl-bullet-offset-typed-20261105/README.md,
-  evidence/enemy-interpolation-typed-timers-20261105/README.md.
-  Latest whole graph: build/gpt-web/20261105-followup-ecl/typed-interpolation-timers/.
+  The subsequent typed spell-history accessor, 24 stage ANM resource loads,
+  199-byte cancellation leaf and typed batch-cancellation loop all preserve
+  **14,352 candidate bytes / 716 field positions** against the exact
+  previous source epoch. This remains a candidate-to-candidate comparison,
+  not original-target equality. Current evidence:
+  evidence/spell-history-record-accessor-20261105/README.md,
+  evidence/enemy-stage-animation-resource-typed-20261105/README.md,
+  evidence/enemy-cancel-typed-runtime-record-20261105/README.md,
+  evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md.
+  Latest whole graph: build/gpt-web/20261105-cancel-manager/typed-cancel-manager-all-bullets/.
 - **ANM ExecuteScript**, target 0x0043EE30 / 9,964 bytes,
   src/AnmManager.cpp: sequential opcode-91 child-script/layer evaluation
   is installed (eb854c4), not reverted. The 4ba28ab source now also models
@@ -89,29 +94,41 @@ that its original source was handwritten, that the game links, or that it runs.
   Evidence: evidence/anm-boss-typed-instruction-walk-20261105/README.md;
   current image: build/gpt-web/20261105-followup-anm/typed-instruction-next/.
 - **EnemyBeginSpell**, target 0x00409280 / **2,432 bytes**:
-  the full 11-source VC7.1 /GL owner remains **2,424 bytes**, 108 linked
-  fields. Current source reads the real full enemy runtime world position at
-  +0x1068 and models `0x90`-byte spell-history entries with name +0,
-  capped count +0x84, and preserved statistics group stride. Both large ECL
-  owners retained ordinary candidate bytes during this batch. NONEXACT;
-  evidence/enemy-spell-history-typed-20261105/README.md.
-- **Exact small ECL helpers in the large-function producer**:
-  `EnemyConfigureInterrupt` @0x412720 remains target-exact **48/48** after
-  recovering typed timer threshold and life callback fields; unlike the
-  failed direct-four-fields rewrite, its mixed pointer lifetime retains the
-  original compiler stores. Position/scalar interpolator helpers each retain
-  independent 50-byte original-body matches (one resolved speed-pointer
-  field) with historically non-unique source attribution. These are source
-  improvements, **zero newly credited canonical exact functions**. Evidence:
-  evidence/enemy-interrupt-typed-exact-20261105/README.md and
-  evidence/enemy-interpolation-typed-timers-20261105/README.md.
-- **ECL Run**, target 0x0044E1A0 / 7,020 bytes: last explicitly checked
-  native graph had **6,997/7,020** and 189 field obligations, with 23
-  ordinary differences around index registers, x87 evaluation order and
-  FORMAT stack homes. It is a retained diagnostic from an earlier source
-  epoch, **not a fresh rebuild of all current sources**. Recheck field
-  bindings and current source hashes before using its score.
-  evidence/boss-ecl-anm-byte-frontiers-20261104/README.md.
+  the full 11-source VC7.1 /GL owner remains **2,424 bytes**, with 108
+  linked fields and a seven-entry owned switch table. The maintained source
+  now reads the real full enemy world position at +0x1068, uses the shared
+  `GameStatisticsRecord::SpellHistoryAt()` to access the 0x90-byte spell
+  entry, and increments **attempts** at +0x84 (NOT captures). Successful
+  `EnemyEndSpell` increments **captures** at +0x80; the exact 1,057-byte
+  `UpdateSpellPanel` reads the two different counters. The manager's ANM
+  resource slot +0x38 is typed, including all 24 reloads across seven stage
+  arms. Original vs candidate still differ, so **NONEXACT**.
+  Evidence: evidence/spell-history-record-accessor-20261105/README.md,
+  evidence/spell-panel-record-accessor-20261105/README.md and
+  evidence/enemy-stage-animation-resource-typed-20261105/README.md.
+- **Exact small ECL helpers and cancellation loop**:
+  `EnemyConfigureInterrupt` @0x412720 remains target-exact **48/48** with
+  typed callback slots and preserved pointer lifetime.
+  `EnemyCancelBulletRecord` @0x408030 remains target-exact **199/199** after
+  replacing raw state, VM pending interrupt, position, effect script, timer
+  and flags accesses with actual `BulletRuntimeView` fields. The enclosing
+  `EnemyCancelManagerView::CancelAllBullets` also gained typed state,
+  collision, color, and marker accesses; no independent exact credit is
+  claimed for that larger owner. Position/scalar interpolator helpers retain
+  their independent 50-byte shape matches, with non-unique attribution.
+  Evidence: evidence/enemy-interrupt-typed-exact-20261105/README.md,
+  evidence/enemy-cancel-typed-runtime-record-20261105/README.md,
+  evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md.
+- **ECL Run**, target 0x0044E1A0 / 7,020 bytes: full current source-epoch
+  graph after the ECL byte-cursor and FORMAT argument-tag changes still has
+  **7,020 candidate bytes**, 189 positioned linkage fields and **23
+  ordinary original-target mismatches**. They include index-register,
+  x87 order and FORMAT stack-home differences. A fully typed FORMAT value
+  access was **rejected** after shrinking the candidate to 6,940 bytes;
+  only the type-tag change is retained. This is a linkage-geometry diagnostic,
+  not a canonical exact acceptance. Evidence:
+  evidence/ecl-run-byte-cursor-typed-20261105/README.md and
+  evidence/ecl-format-tag-typed-20261105/README.md.
 - **EclVmScriptDatabase::AddScriptData**, target 0x00450220 / 589 bytes:
   current src/EclVm.cpp models the old table pointer and input offset
   cursor as reloadable pointer locals (22ca6b5). Real 5-TU /GL source

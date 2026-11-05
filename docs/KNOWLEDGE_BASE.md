@@ -9303,3 +9303,36 @@ Warm and zero-reuse eight-input cold, plus scoped canonical frame/callback
 581/all18, pass. Actual ConsumeEntries has its1308-byte PDB body and unchanged
 private interface but remains nonexact against1317; no callee credit follows.
 Product closure, runtime semantics and portability remain separate.
+
+## 2026-11-05 Spell history ownership and typed cancellation accessors
+
+The target's spell-history rows are not 0x90-byte opaque counters with a
+single `captureCount`. The independently target-exact `EnemyEndSpell` 399-byte
+owner increments **captures** at +0x80 only when a spell is captured. The
+2,432-byte (still NONEXACT) `EnemyBeginSpell` increments **attempts** at
++0x84 when starting the spell. The exact 1,057-byte `UpdateSpellPanel`
+reads both counters at their different offsets, without caching the
+stage/group selector across the intervening GUI calls. Each 0x437C-byte
+statistics row contains 110 entries beginning at row +0x59C; overall slot
+six is `8 + 6*0x437C + 0x59C = 0x19A8C`. The maintained
+`GameStatisticsRecord::SpellHistoryAt()` and shared 0x90-byte entry view
+now encode these relationships. Exact scoped replays of `EnemyEndSpell`
+399/399, score loading 423/423 and spell panel 1057/1057 pass; no newly
+credited exact bytes. Full target-based evidence:
+[evidence/spell-history-record-accessor-20261105/README.md](evidence/spell-history-record-accessor-20261105/README.md)
+and [evidence/spell-panel-record-accessor-20261105/README.md](evidence/spell-panel-record-accessor-20261105/README.md).
+
+`EnemyManagerView::effectResources[2]` is the pointer at manager +0x38 used
+for stage ANM. The maintained 2,432-byte spell-start owner now reads the
+typed `stageAnimationAnm` alias for all 24 loads, while preserving original
+array consumers and ABI. In an actual 11-source VC7.1 /GL graph the complete
+`EnemyBeginSpell` candidate remains 2,424 bytes /108 bound field positions,
+and `EnemyRuntimeView::DispatchEclInstruction` remains 14,352 bytes /716
+field positions. Later conversion of the 199-byte exact
+`EnemyCancelBulletRecord` and the enclosing batch cancel loop to genuine
+`BulletRuntimeView` fields does not disturb either whole candidate. These
+are preserved candidate-codegen statements, not complete target exactness
+or proof of source provenance. See
+[evidence/enemy-stage-animation-resource-typed-20261105/README.md](evidence/enemy-stage-animation-resource-typed-20261105/README.md),
+[evidence/enemy-cancel-typed-runtime-record-20261105/README.md](evidence/enemy-cancel-typed-runtime-record-20261105/README.md), and
+[evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md](evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md).
