@@ -525,7 +525,19 @@ struct EnemyManagerView
     EnemyCallbackNodeView *updateCallbackNode;
     EnemyCallbackNodeView *drawCallbackNode;
     EnemyFullObjectView *specialEnemySlots[8];
-    void *effectResources[4];
+    // The four 32-bit resource slots are retained for all existing ECL
+    // loaders. Their third slot is independently used as a stage ANM.
+    union
+    {
+        void *effectResources[4];
+        struct
+        {
+            void *unknownResource0;
+            void *unknownResource1;
+            AnmLoadedView *stageAnimationAnm;
+            void *unknownResource3;
+        } typedEffectResources;
+    };
     PlayerTimerView timer;
     EnemyEclResourceView *scriptDatabase;
     EnemyListNodeView *enemyListHead;
@@ -535,6 +547,10 @@ struct EnemyManagerView
 };
 typedef char EnemyManagerViewSizeIs68[
     (sizeof(EnemyManagerView) == 0x68) ? 1 : -1];
+typedef char EnemyManagerStageAnimationAt38[
+    (offsetof(EnemyManagerView, effectResources) == 0x30 &&
+     offsetof(EnemyManagerView, typedEffectResources.stageAnimationAnm) == 0x38 &&
+     offsetof(EnemyManagerView, timer) == 0x40) ? 1 : -1];
 typedef char EnemyManagerTimerAt40[
     (offsetof(EnemyManagerView, timer) == 0x40) ? 1 : -1];
 typedef char EnemyManagerScriptDatabaseAt54[
