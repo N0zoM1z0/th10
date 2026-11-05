@@ -1161,7 +1161,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
   opcode = static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode);
   switch(opcode) {
   case ENEMY_ECL_CREATE_ENEMY_IF_NO_BOSS:
-    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
+    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
       return 0;
     }
   case ENEMY_ECL_CREATE_ENEMY:
@@ -1206,7 +1206,7 @@ dispatch_spawn_enemy:
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_IF_NO_BOSS:
-    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
+    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
       return 0;
     }
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
@@ -1255,7 +1255,7 @@ dispatch_create_enemy_global:
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET_IF_NO_BOSS:
-    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) == 0) goto dispatch_create_enemy_global;
+    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) == 0) goto dispatch_create_enemy_global;
     break;
   case ENEMY_ECL_CREATE_ENEMY_MIRRORED:
 dispatch_create_enemy_mirrored:
@@ -1285,10 +1285,10 @@ dispatch_create_enemy_mirrored:
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED:
     goto dispatch_create_enemy_absolute_mirrored;
   case ENEMY_ECL_CREATE_ENEMY_MIRRORED_IF_NO_BOSS:
-    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) == 0) goto dispatch_create_enemy_mirrored;
+    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) == 0) goto dispatch_create_enemy_mirrored;
     break;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED_IF_NO_BOSS:
-    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
+    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
       return 0;
     }
     goto dispatch_create_enemy_absolute_mirrored;
@@ -1742,7 +1742,7 @@ dispatch_update_primary_anm_bounds:
   case ENEMY_ECL_COPY_PLAYER_TO_OFFSET:
     goto dispatch_copy_player_to_motion;
   case ENEMY_ECL_COPY_PLAYER_TO_BASE:
-    iVar26 = *(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10);
+    iVar26 = reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]);
     baseMotion.position =
         reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position;
     return 0;
@@ -1779,7 +1779,7 @@ dispatch_update_primary_anm_bounds:
     fVar9 = movementBoundsSizeX * 0.25f;
     if (movementBoundsCenterX - fVar9 <= worldMotion.position.x) {
       if (worldMotion.position.x <= fVar9 + movementBoundsCenterX) {
-        if (worldMotion.position.x < *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0)) {
+        if (worldMotion.position.x < g_Player->drawPosition.x) {
           fVar19 = EnemyRandomAngle();
           fVar19 = fVar19 * 1.5707964f;
           goto dispatch_random_angle_ready;
@@ -2028,8 +2028,8 @@ dispatch_difficulty_float_index_4_a:
     fVar9 = 0.0f;
     reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionZ = vectorScratch.z;
     if ((*reinterpret_cast<float *>(&unknown1454) == fVar9) ||
-       (fVar9 = reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionY - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c4),
-       fVar10 = reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionX - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0),
+       (fVar9 = reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionY - g_Player->drawPosition.y,
+       fVar10 = reinterpret_cast<EnemyBulletPatternView *>(iVar26 + 0x2c4)->fields.spawnPositionX - g_Player->drawPosition.x,
        fVar9 = fVar9 * fVar9 + fVar10 * fVar10,
        *reinterpret_cast<float *>(&unknown1454) <= fVar9)) {
       reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
@@ -2360,7 +2360,7 @@ dispatch_select_bullet_count_low:
     }
     break;
   case ENEMY_ECL_WAIT_BOSS_CLEAR:
-    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
+    if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
       return 0xffffffff;
     }
     break;
@@ -2783,11 +2783,11 @@ dispatch_rank_int_low:
     g_AnmGameSpeed = (float)fVar19;
     return 0;
   case ENEMY_ECL_AIM_BULLET_AT_PLAYER:
-    pfVar15 = (float *)(reinterpret_cast<int>(g_Player) + 0x3c0);
+    pfVar15 = &g_Player->drawPosition.x;
     fVar19 = (ReadFloatArgument(1));
     iVar26 = reinterpret_cast<int>(g_Player);
     fVar21 = (ReadFloatArgument(2));
-    fVar19 = atan2(*(float *)(iVar26 + 0x3c4) - fVar21,
+    fVar19 = atan2(reinterpret_cast<Player *>(iVar26)->drawPosition.y - fVar21,
                    *pfVar15 - (float)fVar19);
     goto dispatch_store_float_result;
   case ENEMY_ECL_SUBTRACT_DIFFICULTY_VALUE:
@@ -2831,7 +2831,7 @@ dispatch_create_enemy_absolute_mirrored:
   local_90.spawnRequest.setFlag0800 = 1;
   goto dispatch_spawn_enemy;
 dispatch_copy_player_to_motion:
-  iVar26 = *(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10);
+  iVar26 = reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]);
   *reinterpret_cast<unsigned int *>(&offsetMotion.position.x) = *reinterpret_cast<const unsigned int *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position.x);
   *reinterpret_cast<unsigned int *>(&offsetMotion.position.y) = *reinterpret_cast<const unsigned int *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position.y);
   *reinterpret_cast<unsigned int *>(&offsetMotion.position.z) = *reinterpret_cast<const unsigned int *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position.z);
