@@ -267,6 +267,21 @@ struct AnmDecrementJumpOperandsView
     int scriptByteOffset;
     int targetTime;
 };
+// The twelve integer/float conditional jump opcodes compare two operands,
+// then branch to an encoded script byte offset at payload +0x08 and resume
+// at the encoded timer word at +0x0C. The comparison operands may be
+// variable-references according to the shared 16-bit instruction mask.
+struct AnmConditionalJumpOperandsView
+{
+    int compareLhs;
+    int compareRhs;
+    int scriptByteOffset;
+    int targetTime;
+};
+typedef char AnmConditionalJumpOperandWireOffsets[
+    (sizeof(AnmConditionalJumpOperandsView) == 0x10 &&
+     offsetof(AnmConditionalJumpOperandsView, scriptByteOffset) == 0x08 &&
+     offsetof(AnmConditionalJumpOperandsView, targetTime) == 0x0c) ? 1 : -1];
 typedef char AnmJumpOperandWireLayouts[
     (sizeof(AnmJumpOperandsView) == 8 &&
      offsetof(AnmJumpOperandsView, targetTime) == 4 &&
@@ -315,6 +330,7 @@ struct AnmRawInstructionView
         unsigned char byteArgs[40];
         AnmJumpOperandsView jump;
         AnmDecrementJumpOperandsView decrementJump;
+        AnmConditionalJumpOperandsView conditionalJump;
         AnmRenderStateOperandPairView renderStateWords;
         AnmTimedInterpolationOperandsView timedInterpolation;
     };
@@ -351,6 +367,11 @@ typedef char AnmRawInstructionArgumentsAt08[
        offsetof(AnmDecrementJumpOperandsView, scriptByteOffset) == 0x0C &&
      offsetof(AnmRawInstructionView, decrementJump) +
        offsetof(AnmDecrementJumpOperandsView, targetTime) == 0x10 &&
+     offsetof(AnmRawInstructionView, conditionalJump) == 0x08 &&
+     offsetof(AnmRawInstructionView, conditionalJump) +
+       offsetof(AnmConditionalJumpOperandsView, scriptByteOffset) == 0x10 &&
+     offsetof(AnmRawInstructionView, conditionalJump) +
+       offsetof(AnmConditionalJumpOperandsView, targetTime) == 0x14 &&
      offsetof(AnmRawInstructionView, renderStateWords) == 0x08 &&
      offsetof(AnmRawInstructionView, renderStateWords) +
        offsetof(AnmRenderStateOperandPairView, stateB) == 0x0A &&

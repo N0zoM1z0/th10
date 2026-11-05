@@ -99,6 +99,13 @@ for SET_INTERRUPT/SET_TIMEOUT at +0x20/+0x18. Fresh 11-TU native candidate
 codegen is preserved; selected affected leaf owners replay **42/42** and
 **64/64** exact. The 14,416-byte original ECL dispatcher is still NONEXACT.
 
+The [ANM conditional jump family](evidence/anm-conditional-branch-wire-20261105/README.md)
+now uses a typed 16-byte comparison/byte-offset/target-time packet for all
+12 integer/float conditional branches. New five-source original-bound test
+retains 9,962/9,964 bytes, all 350 fields and 95 local branch destinations;
+selected operand helpers pass 276/276. The remaining two opcode-91 bytes
+are **not** claimed exact.
+
 [ANM jump payload evidence](evidence/anm-jump-instruction-payload-20261105/README.md):
 full 9,964-byte interpreter remains 9,962/9,964 original-matched,
 350 target-bound fields including 95 locals, with selected operand leaves
@@ -123,8 +130,8 @@ EnemyEclDispatcher.cpp 4eb0a4157a4066dd10492f0d91bad7426a51a0964243c5c728e132af0
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
 EclVm.cpp          e964d47ad4336950065be90bf3be82981c818a666e12e2810f1e77c537b912c1
 EclVm.hpp          f8fb2c92ab263a69a4255c957bcbc9b1d30bd5428adf23e86080040de528231f
-AnmManager.cpp     649d506617f7e0d8c69aa3c7c5d1344dedf6f0453245f203af4f15eb4c448cba
-AnmManager.hpp     72773835994b02230434a62297d446a2681b530b359d37e7b4f9f1eef4849627
+AnmManager.cpp     fd976c4db1d21bf108be43f64c04bdd5ccadb74b5ea45208955fde782c26202e
+AnmManager.hpp     7d918c92c3bba71c89790308d3681e51880af746212cc9cb774eef461cace7ea
 BulletManager.cpp  2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa
 BulletManager.hpp  725f281ee37e77f7490d339c1072eaecd6177816aae1b52969f2ac977915fd53
 ```

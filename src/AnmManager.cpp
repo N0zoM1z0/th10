@@ -3746,9 +3746,9 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
 
         jump:
-            vm->scriptTimer.SetCurrent(currentInstruction->intArgs[3]);
+            vm->scriptTimer.SetCurrent(currentInstruction->conditionalJump.targetTime);
             vm->currentInstruction = vm->beginningOfScript->AtByteOffset(
-                currentInstruction->intArgs[2]);
+                currentInstruction->conditionalJump.scriptByteOffset);
             continue;
 
         default:
