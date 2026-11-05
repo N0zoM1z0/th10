@@ -3,6 +3,7 @@
 #include "EnemySoundQueue.hpp"
 #include "ItemManager.hpp"
 #include "EnemyGameState.hpp"
+#include "GameStatistics.hpp"
 #include "EnemyPrimaryResources.hpp"
 #include "Enemy.hpp"
 #include "EnemyCancel.hpp"
@@ -704,20 +705,6 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
 
 extern __declspec(noinline) float __stdcall EnemyWrapAngle(float angle);
 
-// One spell-history entry has 0x90 bytes. The retail 0x409280 body
-// copies the name at entry+0 and caps the count at entry+0x84. The remaining
-// eight bytes have no established interpretation.
-struct EnemySpellHistoryEntryView
-{
-    char name[0x84];
-    int captureCount;
-    unsigned char unknown088[8];
-};
-typedef char EnemySpellHistoryEntrySize90[
-    (sizeof(EnemySpellHistoryEntryView) == 0x90) ? 1 : -1];
-typedef char EnemySpellHistoryCountAt84[
-    (offsetof(EnemySpellHistoryEntryView, captureCount) == 0x84) ? 1 : -1];
-
 // The original spell-start owner loads the pointer at 0x00477838 and checks
 // dword +0x10 against one before touching either statistics history. Its
 // remaining fields and the precise meaning of stateCode10 are unresolved.
@@ -753,25 +740,25 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
             g_EnemySpellPlaybackState)->stateCode10 != 1) {
         unsigned char *statistics = g_EnemySpellStatistics;
         int spellOffset = spellId * 0x90;
-        EnemySpellHistoryEntryView *record =
-            reinterpret_cast<EnemySpellHistoryEntryView *>(statistics +
+        GameStatisticsSpellHistoryEntryView *record =
+            reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(statistics +
                 (g_EnemyChapterState.statisticsGroupA * 3 +
                  g_EnemyChapterState.statisticsGroupB) *
                     0x437c + spellOffset + 0x5a4);
         strcpy(record->name, name);
-        record = reinterpret_cast<EnemySpellHistoryEntryView *>(statistics +
+        record = reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(statistics +
             (g_EnemyChapterState.statisticsGroupA * 3 +
              g_EnemyChapterState.statisticsGroupB) *
                 0x437c + spellOffset + 0x5a4);
-        int count = record->captureCount;
+        int count = record->attempts;
         if (count < 99999) {
-            record->captureCount = count + 1;
+            record->attempts = count + 1;
         }
-        record = reinterpret_cast<EnemySpellHistoryEntryView *>(
+        record = reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(
             statistics + spellOffset + 0x19a8c);
         strcpy(record->name, name);
-        if (record->captureCount < 99999) {
-            ++record->captureCount;
+        if (record->attempts < 99999) {
+            ++record->attempts;
         }
     }
 

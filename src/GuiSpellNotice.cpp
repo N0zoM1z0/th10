@@ -8,18 +8,6 @@
 #include "ReplayManager.hpp"
 #include "VmIdInterrupt.hpp"
 
-struct SpellCaptureRecordView
-{
-    char name[0x80];
-    int captures;
-    int attempts;
-    unsigned char unknown88[8];
-};
-typedef char SpellCaptureRecordLayout[
-    (sizeof(SpellCaptureRecordView) == 0x90 &&
-     offsetof(SpellCaptureRecordView, captures) == 0x80 &&
-     offsetof(SpellCaptureRecordView, attempts) == 0x84) ? 1 : -1];
-
 struct GameChainOwnerView;
 extern GameChainOwnerView *g_GameAnimationSlots;
 
@@ -166,12 +154,12 @@ void EnemyEndSpell(EnemyGameStateView *state)
                 reinterpret_cast<unsigned char *>(&g_GameScoreState) + 0x2c);
             const int group = groupA * 3 + groupB;
             GameStatisticsRecord *row = &g_GameStatisticsRows->records[group];
-            SpellCaptureRecordView *record = reinterpret_cast<SpellCaptureRecordView *>(
+            GameStatisticsSpellHistoryEntryView *record = reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(
                 reinterpret_cast<unsigned char *>(row) + state->spellId * 0x90 + 0x59c);
             if (record->captures < 99999)
                 ++record->captures;
             row = &g_GameStatisticsRows->records[6];
-            record = reinterpret_cast<SpellCaptureRecordView *>(
+            record = reinterpret_cast<GameStatisticsSpellHistoryEntryView *>(
                 reinterpret_cast<unsigned char *>(row) + state->spellId * 0x90 + 0x59c);
             if (record->captures < 99999)
                 ++record->captures;

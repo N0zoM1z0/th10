@@ -15,6 +15,21 @@ struct GameStatisticsFileHeader
     int uncompressedSize;
 };
 
+// Spell-history records are 0x90 bytes. Spell start increments attempts
+// (+0x84) while successful spell end increments captures (+0x80); both
+// counters are independently read by the on-screen spell panel.
+struct GameStatisticsSpellHistoryEntryView
+{
+    char name[0x80];
+    int captures;
+    int attempts;
+    unsigned char unknown088[8];
+};
+typedef char GameStatisticsSpellHistoryLayout[
+    (sizeof(GameStatisticsSpellHistoryEntryView) == 0x90 &&
+     offsetof(GameStatisticsSpellHistoryEntryView, captures) == 0x80 &&
+     offsetof(GameStatisticsSpellHistoryEntryView, attempts) == 0x84) ? 1 : -1];
+
 struct GameStatisticsRecord
 {
     unsigned short magic;
@@ -46,13 +61,27 @@ struct GameStatisticsRecord
     }
 };
 
+// Typed overlay of the original 0x440-byte tail payload, without changing
+// the byte array used by the checksum owner. The text and 512 random words
+// are established by the target's complete tail initializer.
+struct GameStatisticsTailPayloadView
+{
+    unsigned char unknown008[4];
+    char initialText0C[0x3a];
+    unsigned short randomWords046[512];
+    unsigned char unknown446[2];
+};
 struct GameStatisticsTail
 {
     // The tail initializer writes type 0x5453 and a zero 16-bit flag.
     unsigned short magic;
     unsigned short unknown002;
     unsigned int checksum;
-    unsigned char payload[0x440];
+    union
+    {
+        unsigned char payload[0x440];
+        GameStatisticsTailPayloadView parsedPayload;
+    };
 };
 
 struct GameStatisticsOwner
@@ -81,6 +110,11 @@ typedef char GameStatisticsTailMagicAt00[
     (offsetof(GameStatisticsTail, magic) == 0 &&
      offsetof(GameStatisticsTail, unknown002) == 0x02) ? 1 : -1];
 typedef char GameStatisticsTailPayloadAt8[(offsetof(GameStatisticsTail, payload) == 8) ? 1 : -1];
+typedef char GameStatisticsTailPayloadLayout[
+    (sizeof(GameStatisticsTailPayloadView) == 0x440 &&
+     offsetof(GameStatisticsTailPayloadView, initialText0C) == 0x04 &&
+     offsetof(GameStatisticsTailPayloadView, randomWords046) == 0x3e &&
+     offsetof(GameStatisticsTail, parsedPayload) == 0x08) ? 1 : -1];
 typedef char GameStatisticsRecordSize437C[(sizeof(GameStatisticsRecord) == 0x437c) ? 1 : -1];
 typedef char GameStatisticsSessionsAt4C0[(offsetof(GameStatisticsRecord, sessionStarts) == 0x4c0) ? 1 : -1];
 typedef char GameStatisticsFramesAt4C4[(offsetof(GameStatisticsRecord, activeFrames) == 0x4c4) ? 1 : -1];

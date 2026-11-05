@@ -92,7 +92,7 @@ void InitializeStatisticsTail42ADD0(GameStatisticsTail *tail)
     tail->magic = 0x5453;
     tail->unknown002 = 0;
     *reinterpret_cast<unsigned int *>(bytes + 8) = sizeof(*tail);
-    strcpy(reinterpret_cast<char *>(bytes + 0xc), "        ");
+    strcpy(tail->parsedPayload.initialText0C, "        ");
     for (int i = 0; i < 512; ++i)
-        *reinterpret_cast<unsigned short *>(bytes + 0x46 + i * 2) = g_RngView.GetRandomU16();
+        tail->parsedPayload.randomWords046[i] = g_RngView.GetRandomU16();
 }
