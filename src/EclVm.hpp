@@ -75,12 +75,26 @@ typedef char EclVmCallArgumentNativeLayout[
      offsetof(EclVmCallArgumentView, destinationType) == 1 &&
      offsetof(EclVmCallArgumentView, integer) == 4) ? 1 : -1];
 
+// The instruction header stores the operand-indirection selector as one
+// unsigned 16-bit word.  Bit n describes the nth encoded operand; unused
+// bits are preserved by readers rather than promoted to wider flags.
+struct EclVmOperandIndirectMaskView
+{
+    unsigned short bits;
+};
+typedef char EclVmOperandIndirectMaskIs02[
+    (sizeof(EclVmOperandIndirectMaskView) == 2) ? 1 : -1];
+
 struct EclVmInstruction
 {
     int time;
     short opcode;
     unsigned short size;
-    unsigned short operandFlags;
+    union
+    {
+        unsigned short operandFlags;
+        EclVmOperandIndirectMaskView operandMask;
+    };
     unsigned char difficultyMask;
     unsigned char operandCount;
     unsigned char unknown0C[4];
@@ -248,7 +262,9 @@ typedef char EclVmInstruction_opcode_offset[
 typedef char EclVmInstruction_size_offset[
     offsetof(EclVmInstruction, size) == 0x6 ? 1 : -1];
 typedef char EclVmInstruction_operand_flags_offset[
-    offsetof(EclVmInstruction, operandFlags) == 0x8 ? 1 : -1];
+    (offsetof(EclVmInstruction, operandFlags) == 0x8 &&
+     offsetof(EclVmInstruction, operandMask) == 0x8 &&
+     sizeof(((EclVmInstruction *)0)->operandMask) == 2) ? 1 : -1];
 typedef char EclVmInstruction_difficulty_offset[
     offsetof(EclVmInstruction, difficultyMask) == 0xA ? 1 : -1];
 typedef char EclVmInstruction_operand_count_offset[

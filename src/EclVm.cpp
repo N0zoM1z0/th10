@@ -230,7 +230,7 @@ static float OperandFloat(
 static bool IsOperandIndirect(
     const EclVmInstruction *instruction, unsigned int index)
 {
-    return (instruction->operandFlags & (1U << index)) != 0;
+    return (instruction->operandMask.bits & (1U << index)) != 0;
 }
 
 static __forceinline int PopInt(EclVmContext *context)
