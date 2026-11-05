@@ -808,15 +808,13 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         state->managedVmId = 0;
     }
     node = &vm->layerNode;
-    child = 0;
     while (node != 0) {
         AnmVmView *candidate = static_cast<AnmVmView *>(node->owner);
-        if (candidate->scriptIndex == 0x1a0) {
-            child = candidate;
+        if (candidate->scriptIndex == 0x1a0)
             break;
-        }
         node = node->next;
     }
+    child = node != 0 ? static_cast<AnmVmView *>(node->owner) : 0;
     child->intVar2 = value;
     state->spellDuration = value;
     int bonus = (g_EnemyChapterState.stage * 3 + 10) *
