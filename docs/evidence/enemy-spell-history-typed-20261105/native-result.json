@@ -1,0 +1,29 @@
+{
+  "label": "spell-typed-history-record",
+  "results": [
+    {
+      "owner": "EnemyBeginSpell",
+      "target_bytes": 2432,
+      "candidate_bytes": 2424,
+      "baseline_bytes": 2424,
+      "linked_fields": 108,
+      "same_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    },
+    {
+      "owner": "EnemyRuntimeView::DispatchEclInstruction",
+      "target_bytes": 14416,
+      "candidate_bytes": 14352,
+      "baseline_bytes": 14352,
+      "linked_fields": 716,
+      "same_linkage_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_differences": []
+    }
+  ],
+  "source_sha256": "d978c4048319c04155b3c85bf0e303fc88b4be4f97c13464665d4cb823e6ea43",
+  "seconds": 82.7,
+  "artifact": "build/gpt-web/20261105-followup-ecl/spell-typed-history-record",
+  "target_exact_claim": false
+}

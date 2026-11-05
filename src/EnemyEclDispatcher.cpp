@@ -702,6 +702,20 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
 
 extern __declspec(noinline) float __stdcall EnemyWrapAngle(float angle);
 
+// One spell-history entry has 0x90 bytes. The retail 0x409280 body
+// copies the name at entry+0 and caps the count at entry+0x84. The remaining
+// eight bytes have no established interpretation.
+struct EnemySpellHistoryEntryView
+{
+    char name[0x84];
+    int captureCount;
+    unsigned char unknown088[8];
+};
+typedef char EnemySpellHistoryEntrySize90[
+    (sizeof(EnemySpellHistoryEntryView) == 0x90) ? 1 : -1];
+typedef char EnemySpellHistoryCountAt84[
+    (offsetof(EnemySpellHistoryEntryView, captureCount) == 0x84) ? 1 : -1];
+
 // Target pointer slots: playback at 477838 and statistics at 47783C.
 // Statistics indices and bonus input use receiver-relative slots in the
 // partial view at 474C40 above; original data/class owners remain unknown.
@@ -725,23 +739,25 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
     if (*reinterpret_cast<int *>(g_EnemySpellPlaybackState + 0x10) != 1) {
         unsigned char *statistics = g_EnemySpellStatistics;
         int spellOffset = spellId * 0x90;
-        unsigned char *record = statistics +
+        EnemySpellHistoryEntryView *record =
+            reinterpret_cast<EnemySpellHistoryEntryView *>(statistics +
+                (g_EnemyChapterState.statisticsGroupA * 3 +
+                 g_EnemyChapterState.statisticsGroupB) *
+                    0x437c + spellOffset + 0x5a4);
+        strcpy(record->name, name);
+        record = reinterpret_cast<EnemySpellHistoryEntryView *>(statistics +
             (g_EnemyChapterState.statisticsGroupA * 3 +
              g_EnemyChapterState.statisticsGroupB) *
-                0x437c + spellOffset + 0x5a4;
-        strcpy(reinterpret_cast<char *>(record), name);
-        record = statistics +
-            (g_EnemyChapterState.statisticsGroupA * 3 +
-             g_EnemyChapterState.statisticsGroupB) *
-                0x437c + spellOffset + 0x5a4;
-        int count = *reinterpret_cast<int *>(record + 0x84);
+                0x437c + spellOffset + 0x5a4);
+        int count = record->captureCount;
         if (count < 99999) {
-            *reinterpret_cast<int *>(record + 0x84) = count + 1;
+            record->captureCount = count + 1;
         }
-        record = statistics + spellOffset + 0x19a8c;
-        strcpy(reinterpret_cast<char *>(record), name);
-        if (*reinterpret_cast<int *>(record + 0x84) < 99999) {
-            ++*reinterpret_cast<int *>(record + 0x84);
+        record = reinterpret_cast<EnemySpellHistoryEntryView *>(
+            statistics + spellOffset + 0x19a8c);
+        strcpy(record->name, name);
+        if (record->captureCount < 99999) {
+            ++record->captureCount;
         }
     }
 
@@ -766,9 +782,10 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         QueueSoundSample(14, 0);
     state->managedVmId = g_EnemyPrimaryResourceOwner->primaryEnemyResource->
         CreateVmVariant0(0x1a1, 15).value;
-    state->effectPosition = *reinterpret_cast<AnmFloat3View *>(
-        reinterpret_cast<unsigned char *>(g_EnemyManager->specialEnemySlots[0]) +
-        0x1068);
+    // Full enemy +0x1068 is runtime +0x2C: the world-motion position.
+    // Read the three float words through their established owner.
+    state->effectPosition = *reinterpret_cast<const AnmFloat3View *>(
+        &g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position);
     g_AnmRenderManagerView->SetVmWorldPosition(
         AnmVmIdView(state->managedVmId), &state->effectPosition);
 
