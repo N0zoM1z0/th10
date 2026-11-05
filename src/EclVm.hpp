@@ -114,6 +114,17 @@ struct EclVmThreadNode
     EclVmThreadNode *previous;
 };
 
+// A serialized subroutine has sixteen bytes of native header before its
+// first variable-length instruction. The prefix contents are still opaque;
+// the 0x10 instruction origin is established by the exact search leaf.
+struct EclVmSubroutineStreamView
+{
+    unsigned char unknown000[0x10];
+    EclVmInstruction firstInstruction[1];
+};
+typedef char EclVmSubroutineFirstInstructionAt10[
+    (offsetof(EclVmSubroutineStreamView, firstInstruction) == 0x10) ? 1 : -1];
+
 struct EclVmSubroutineEntry
 {
     const char *name;

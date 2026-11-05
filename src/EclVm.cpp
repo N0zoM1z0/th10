@@ -493,7 +493,8 @@ EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
         if (comparison == 0)
         {
             return reinterpret_cast<EclVmInstruction *>(
-                subroutines[middle].header + 0x10);
+                subroutines[middle].header +
+                offsetof(EclVmSubroutineStreamView, firstInstruction));
         }
         if (comparison < 0)
             upper = middle - 1;
