@@ -295,6 +295,15 @@ extern unsigned int g_EnemyCancelColorHigh[];
 extern unsigned int g_EnemyCancelColorMid[];
 extern unsigned int g_EnemyCancelColorLow[];
 
+// The bullet stores its sprite in the embedded ANM VM at full record +0x39C.
+// The sprite's width at +0x34 selects the cancel color palette, and the
+// newly created effect VM stores its primary color at +0x2FC.
+typedef char EnemyCancelSpriteWidthAndColorLayout[
+    (offsetof(BulletRuntimeView, vm) +
+     offsetof(AnmVmView, loadedSprite) == 0x39c &&
+     offsetof(AnmSpriteView, width) == 0x34 &&
+     offsetof(AnmVmView, primaryColor) == 0x2fc) ? 1 : -1];
+
 __declspec(noinline) unsigned int EnemyCancelManagerView::CancelAllBullets(int mode)
 {
     AnmFloat3View halfSize = cancelSize * g_EnemyCancelHalfScale;
@@ -328,10 +337,9 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelAllBullets(int m
 
             int *vmId = EnemyCreateCancelVm(primaryEnemyResource);
             int vm = EnemyResolveCancelVm(*vmId);
-            unsigned int colorOwner =
-                *reinterpret_cast<unsigned int *>(bullet + 0x39c);
+            AnmSpriteView *colorOwner = record->vm.loadedSprite;
             if (colorOwner != 0) {
-                float value = *reinterpret_cast<float *>(colorOwner + 0x34);
+                float value = colorOwner->width;
                 short colorIndex =
                     record->color;
                 unsigned int color;
@@ -344,7 +352,7 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelAllBullets(int m
                 else {
                     color = g_EnemyCancelColorLow[colorIndex];
                 }
-                *reinterpret_cast<unsigned int *>(vm + 0x2fc) = color;
+                reinterpret_cast<AnmVmView *>(vm)->primaryColor.value = color;
             }
             record->unknown450 = 0;
         }

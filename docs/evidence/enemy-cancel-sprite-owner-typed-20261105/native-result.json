@@ -1,0 +1,58 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "3d4a8861bb1383edfe389c3a972e0ea4c71a21798e479532d287d0a06ae68ad8",
+  "source_fields": {
+    "bullet.vm.loadedSprite": 924,
+    "sprite.width": 52,
+    "effectVm.primaryColor.value": 764
+  },
+  "large_owner_results": [
+    {
+      "owner": "EnemyBeginSpell",
+      "original_target_bytes": 2432,
+      "candidate_bytes": 2432,
+      "previous_candidate_bytes": 2432,
+      "linked_fields": 108,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    },
+    {
+      "owner": "EnemyRuntimeView::DispatchEclInstruction",
+      "original_target_bytes": 14416,
+      "candidate_bytes": 14352,
+      "previous_candidate_bytes": 14352,
+      "linked_fields": 716,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    },
+    {
+      "owner": "EnemyCancelManagerView::CancelAllBullets",
+      "original_target_bytes": null,
+      "candidate_bytes": 418,
+      "previous_candidate_bytes": 418,
+      "linked_fields": 12,
+      "same_linked_field_geometry": true,
+      "candidate_ordinary_byte_changes": 0,
+      "first_diff_offsets": []
+    }
+  ],
+  "pinned_support_count": 10,
+  "selected_exact_guards": [
+    {
+      "unit": "enemy-cancel-bullet-record",
+      "result": "exact",
+      "matched": 199,
+      "compared": 199
+    },
+    {
+      "unit": "enemy-cancel-bullet-pattern",
+      "result": "exact",
+      "matched": 260,
+      "compared": 260
+    }
+  ],
+  "previously_exact_bytes_preserved": 459,
+  "new_exact_credit": 0
+}
