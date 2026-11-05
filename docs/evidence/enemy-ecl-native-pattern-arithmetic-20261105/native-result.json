@@ -1,0 +1,84 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "89bc17e3881f5f5d89f36214c83376543faa1c76b1e7b843ee3eab0c89d56ae0",
+  "native_pattern_base": 708,
+  "native_pattern_stride": 528,
+  "replaced_base_literals": 41,
+  "replaced_stride_literals": 18,
+  "whole_linked_owner_comparisons": [
+    {
+      "name": "ECL dispatcher",
+      "target_bytes": 14416,
+      "candidate_bytes": 14352,
+      "baseline_bytes": 14352,
+      "fields": 716,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    },
+    {
+      "name": "EnemyBeginSpell",
+      "target_bytes": 2432,
+      "candidate_bytes": 2432,
+      "baseline_bytes": 2432,
+      "fields": 108,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    },
+    {
+      "name": "EnemyFinalizeDeath",
+      "target_bytes": 162,
+      "candidate_bytes": 162,
+      "baseline_bytes": 162,
+      "fields": 9,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    },
+    {
+      "name": "EnemyConfigureViewportOwner",
+      "target_bytes": 330,
+      "candidate_bytes": 330,
+      "baseline_bytes": 330,
+      "fields": 10,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    },
+    {
+      "name": "EnemyDropItemCountsCore",
+      "target_bytes": 503,
+      "candidate_bytes": 505,
+      "baseline_bytes": 505,
+      "fields": 27,
+      "same_field_geometry": true,
+      "ordinary_candidate_differences": 0,
+      "first_diffs": []
+    }
+  ],
+  "pinned_support_objects": 10,
+  "selected_canonical_replays": [
+    {
+      "unit": "enemy-ecl-resource-load-package",
+      "result": "exact",
+      "matched_bytes": 239,
+      "target_bytes": 239
+    },
+    {
+      "unit": "enemy-read-int-argument",
+      "result": "exact",
+      "matched_bytes": 16,
+      "target_bytes": 16
+    },
+    {
+      "unit": "enemy-read-raw-float-argument",
+      "result": "exact",
+      "matched_bytes": 26,
+      "target_bytes": 26
+    }
+  ],
+  "previous_exact_bytes_preserved": 281,
+  "new_exact_credit": 0,
+  "whole_target_exact": false
+}
