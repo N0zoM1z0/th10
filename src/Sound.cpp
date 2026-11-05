@@ -602,6 +602,7 @@ void SoundPlayerView::StopBgm()
 int SoundPlayerView::GetFmtIndexByName(const char *path)
 {
     char basename[128];
+    int index = 0;
     const char *separator = strrchr(path, '/');
     if (separator == NULL)
         separator = strrchr(path, '\\');
@@ -611,7 +612,6 @@ int SoundPlayerView::GetFmtIndexByName(const char *path)
     else
         strcpy(basename, separator + 1);
 
-    int index = 0;
     while (bgmFormats[index].name[0] != '\0')
     {
         if (strcmp(bgmFormats[index].name, basename) == 0)
