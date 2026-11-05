@@ -441,7 +441,13 @@ struct EnemyEclContextView
 {
     EnemyEclContextView();
 
-    int value00;
+    // TH10 generic ECL Run interprets this first word as binary32 time;
+    // existing reset paths write integer zero to the identical four bytes.
+    union
+    {
+        int value00;
+        float currentTime;
+    };
     EnemyEclInstructionView *currentInstruction;
     unsigned char unknown008[0x1000];
     int operandStackOffset;
@@ -451,6 +457,9 @@ struct EnemyEclContextView
 };
 typedef char EnemyEclContextSizeIs1018[
     (sizeof(EnemyEclContextView) == 0x1018) ? 1 : -1];
+typedef char EnemyEclContextTimeAt000[
+    (offsetof(EnemyEclContextView, value00) == 0 &&
+     offsetof(EnemyEclContextView, currentTime) == 0) ? 1 : -1];
 typedef char EnemyEclContextInstructionAt004[
     (offsetof(EnemyEclContextView, currentInstruction) == 0x004) ? 1 : -1];
 typedef char EnemyEclContextOperandStackAt1008[

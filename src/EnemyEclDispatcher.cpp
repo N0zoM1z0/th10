@@ -2904,7 +2904,9 @@ dispatch_rank_int_low:
       uVar22 = ReadIntArgument(3);
       fVar9 = (float)(int)uVar22;
     }
-    pfVar15 = *(float **)(reinterpret_cast<int>(owner) + 4);
+    // The active ECL context's first word is the frame-time scalar.
+    // Preserve the pointer's lifetime across the read/modify/write.
+    pfVar15 = &owner->activeEclContext->currentTime;
     *pfVar15 = *pfVar15 - fVar9;
     break;
   }

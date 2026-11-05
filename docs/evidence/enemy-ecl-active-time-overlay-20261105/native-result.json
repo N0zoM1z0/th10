@@ -1,0 +1,120 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "current_source_pins": {
+    "src/Enemy.cpp": "c856886e95c40521e39a1e409ee922b9f8ac7bf9369d539054bc609f21a9dc79",
+    "src/AnmManager.cpp": "84e2d02b5dba569beace359926316473a4d784a40c4166f5b67468d38f007b10",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/EclVm.cpp": "b476f4a535203f522f0d69036f67bcc1f32db9faab9779ab75f5377bef4186e0",
+    "src/Player.cpp": "0e22a1c6ea31a0c5566c2c9e496b0536774a55f95e690e6ade2ef63675312878",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/EnemyEclDispatcher.cpp": "759879cef088dde6d70018f1a47b353ce4370ecc932e1ff18eeb8a86eb32fbf4",
+    "src/EclWorldAnchor.cpp": "d8c9f1449021aaedf760d9d88708c257142fb478ff6f09aa8d793d6f11db300c"
+  },
+  "changed_header_sha256": "6af7a32dcd693198465746fd63f15756d50dca863dcf408fef3075c405eb8314",
+  "same_first_word_offsets": {
+    "EnemyEclContextView.value00": 0,
+    "EnemyEclContextView.currentTime": 0,
+    "EclVmContext.currentTime": 0
+  },
+  "full_current_graph_source_count": 11,
+  "all_graph_sources_recompiled": true,
+  "whole_owner_comparisons": {
+    "ecl-boss": {
+      "owner_size": 14352,
+      "baseline_owner_size": 14352,
+      "linked_fields": 716,
+      "field_geometry_identical": true,
+      "ordinary_candidate_diff_count": 0,
+      "first_ordinary_diffs": []
+    },
+    "begin-spell": {
+      "owner_size": 2432,
+      "baseline_owner_size": 2432,
+      "linked_fields": 108,
+      "field_geometry_identical": true,
+      "ordinary_candidate_diff_count": 0,
+      "first_ordinary_diffs": []
+    },
+    "death-finalizer": {
+      "owner_size": 162,
+      "baseline_owner_size": 162,
+      "linked_fields": 9,
+      "field_geometry_identical": true,
+      "ordinary_candidate_diff_count": 0,
+      "first_ordinary_diffs": []
+    },
+    "viewport": {
+      "owner_size": 330,
+      "baseline_owner_size": 330,
+      "linked_fields": 10,
+      "field_geometry_identical": true,
+      "ordinary_candidate_diff_count": 0,
+      "first_ordinary_diffs": []
+    },
+    "full-ctor": {
+      "owner_size": 672,
+      "baseline_owner_size": 672,
+      "linked_fields": 5,
+      "field_geometry_identical": true,
+      "ordinary_candidate_diff_count": 0,
+      "first_ordinary_diffs": []
+    }
+  },
+  "original_owner_sizes": {
+    "ecl-boss": 14416,
+    "begin-spell": 2432,
+    "death-finalizer": 162,
+    "viewport": 330,
+    "full-ctor": 673
+  },
+  "selected_target_bound_exact_regressions": [
+    {
+      "unit": "ecl-vm-read-int",
+      "result": "exact",
+      "original_bytes": 144,
+      "matched_bytes": 144
+    },
+    {
+      "unit": "enemy-ecl-resource-load-package",
+      "result": "exact",
+      "original_bytes": 239,
+      "matched_bytes": 239
+    },
+    {
+      "unit": "enemy-runtime-constructor",
+      "result": "exact",
+      "original_bytes": 145,
+      "matched_bytes": 145
+    },
+    {
+      "unit": "enemy-ecl-dispatch-forwarder",
+      "result": "exact",
+      "original_bytes": 11,
+      "matched_bytes": 11
+    },
+    {
+      "unit": "enemy-configure-interrupt",
+      "result": "exact",
+      "original_bytes": 48,
+      "matched_bytes": 48
+    },
+    {
+      "unit": "enemy-read-int-argument",
+      "result": "exact",
+      "original_bytes": 16,
+      "matched_bytes": 16
+    },
+    {
+      "unit": "enemy-read-raw-float-argument",
+      "result": "exact",
+      "original_bytes": 26,
+      "matched_bytes": 26
+    }
+  ],
+  "previous_exact_bytes_preserved": 629,
+  "new_exact_credit": 0,
+  "nonexact_boss": true
+}
