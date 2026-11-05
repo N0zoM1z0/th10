@@ -1,0 +1,51 @@
+{
+  "candidate_size": 9964,
+  "original_target_size": 9964,
+  "result": "mismatch",
+  "matched_bytes": 9962,
+  "linked_fields": 350,
+  "local_linked_fields": 95,
+  "first_differences": [
+    {
+      "offset": "0x113",
+      "linked": 77,
+      "target": 85
+    },
+    {
+      "offset": "0x115",
+      "linked": 81,
+      "target": 82
+    }
+  ],
+  "source_sha256": "b1c93d7d1dc579c220bd147f2aa5e05b8923226abc9181cc39177d197685aba1",
+  "header_sha256": "f69e6b165b0ea0913a093a74deaedbf4fff6474b800b6abe60eb40bef3a8e086",
+  "image_sha256": "e05069ffff529fa81e3efe1a2f69b70dd09c8375cbfd932f89303f7bc2e0c4ce",
+  "seconds": 62.9,
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scoped_exact_replay": [
+    {
+      "unit": "anm-vm-timer-add",
+      "result": "exact",
+      "matched": 88,
+      "size": 88
+    },
+    {
+      "unit": "anm-vm-timer-decrement",
+      "result": "exact",
+      "matched": 20,
+      "size": 20
+    },
+    {
+      "unit": "anm-loaded-create-vm-variant2",
+      "result": "exact",
+      "matched": 73,
+      "size": 73
+    },
+    {
+      "unit": "anm-evaluate-rgb-interpolation",
+      "result": "exact",
+      "matched": 820,
+      "size": 820
+    }
+  ]
+}

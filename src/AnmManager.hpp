@@ -252,7 +252,26 @@ struct AnmRawInstructionView
         unsigned short shortArgs[20];
         unsigned char byteArgs[40];
     };
+
+    // The ANM instruction stream uses byte sizes, not sizeof(record).
+    // Leave the target's variable-length traversal and sentinel handling intact.
+    AnmRawInstructionView *Next()
+    {
+        return reinterpret_cast<AnmRawInstructionView *>(
+            reinterpret_cast<unsigned char *>(this) + size);
+    }
+    AnmRawInstructionView *AtByteOffset(int offset)
+    {
+        return reinterpret_cast<AnmRawInstructionView *>(
+            reinterpret_cast<unsigned char *>(this) + offset);
+    }
 };
+
+typedef char AnmRawInstructionHeaderOffsets[
+    (offsetof(AnmRawInstructionView, opcode) == 0x00 &&
+     offsetof(AnmRawInstructionView, size) == 0x02 &&
+     offsetof(AnmRawInstructionView, time) == 0x04 &&
+     offsetof(AnmRawInstructionView, variableMask) == 0x06) ? 1 : -1];
 
 typedef char AnmRawInstructionArgumentsAt08[
     (offsetof(AnmRawInstructionView, intArgs) == 0x08) ? 1 : -1];

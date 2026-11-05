@@ -3320,8 +3320,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
         case ANM_OP_JUMP:
             vm->scriptTimer.SetCurrent(currentInstruction->intArgs[1]);
-            vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
-                reinterpret_cast<unsigned char *>(vm->beginningOfScript) +
+            vm->currentInstruction = vm->beginningOfScript->AtByteOffset(
                 currentInstruction->intArgs[0]);
             continue;
 
@@ -3330,11 +3329,8 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             if (GET_INT_VAR(0) > 0)
             {
                 vm->scriptTimer.SetCurrent(currentInstruction->intArgs[2]);
-                vm->currentInstruction =
-                    reinterpret_cast<AnmRawInstructionView *>(
-                        reinterpret_cast<unsigned char *>(
-                            vm->beginningOfScript) +
-                        currentInstruction->intArgs[1]);
+                vm->currentInstruction = vm->beginningOfScript->AtByteOffset(
+                    currentInstruction->intArgs[1]);
                 continue;
             }
             break;
@@ -3427,9 +3423,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                     fallbackInterrupt = currentInstruction;
                 }
                 currentInstruction =
-                    reinterpret_cast<AnmRawInstructionView *>(
-                        reinterpret_cast<unsigned char *>(currentInstruction) +
-                        currentInstruction->size);
+                    currentInstruction->Next();
             }
             vm->pendingInterrupt = 0;
             vm->stopped = 0;
@@ -3446,9 +3440,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             vm->interruptReturnInstruction = vm->currentInstruction;
             vm->scriptTimer.SetCurrent(currentInstruction->time);
             vm->currentInstruction =
-                reinterpret_cast<AnmRawInstructionView *>(
-                    reinterpret_cast<unsigned char *>(currentInstruction) +
-                    currentInstruction->size);
+                currentInstruction->Next();
             vm->visible = 1;
             continue;
 
@@ -3753,8 +3745,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 
         jump:
             vm->scriptTimer.SetCurrent(currentInstruction->intArgs[3]);
-            vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
-                reinterpret_cast<unsigned char *>(vm->beginningOfScript) +
+            vm->currentInstruction = vm->beginningOfScript->AtByteOffset(
                 currentInstruction->intArgs[2]);
             continue;
 
@@ -3767,9 +3758,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 #undef GET_FLOAT_VAR
 #undef GET_INT_VAR
 
-        vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
-            reinterpret_cast<unsigned char *>(currentInstruction) +
-            currentInstruction->size);
+        vm->currentInstruction = currentInstruction->Next();
         interruptSentinel = -1;
         continue;
     }
