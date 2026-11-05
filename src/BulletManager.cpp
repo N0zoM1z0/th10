@@ -254,7 +254,7 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
         const int nextAngleBits = state.value1Bits;
         float newSpeed = state.value0;
         speed = newSpeed;
-        memcpy(&angle, &nextAngleBits, sizeof(angle));
+        angleBits = nextAngleBits;
         nextSpeed = newSpeed;
         state.timer.SetCurrent(0);
     }
@@ -265,10 +265,9 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
                 static_cast<float>(state.int0);
     }
 
-    int angleBits;
-    memcpy(&angleBits, &angle, sizeof(angleBits));
+    int outgoingAngleBits = angleBits;
     float outgoingAngle;
-    memcpy(&outgoingAngle, &angleBits, sizeof(outgoingAngle));
+    memcpy(&outgoingAngle, &outgoingAngleBits, sizeof(outgoingAngle));
     reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
         FromAngleMagnitude(outgoingAngle, nextSpeed);
     state.timer.previous = state.timer.current;

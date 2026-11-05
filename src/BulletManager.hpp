@@ -155,7 +155,13 @@ struct BulletRuntimeView
     unsigned char unknown3CC[0x0c];             // +0x3CC
     float speed;                                // +0x3D8
     unsigned char unknown3DC[0x08];             // +0x3DC
-    float angle;                                // +0x3E4
+    // The direction updater forwards this same IEEE-754 word as 32-bit bits.
+    // Other transforms still use the scalar angle. Both occupy +0x3E4.
+    union
+    {
+        float angle;
+        int angleBits;
+    };
     unsigned char unknown3E8[0x08];             // +0x3E8
     float collisionWidth;                       // +0x3F0
     float collisionHeight;                      // +0x3F4
@@ -196,6 +202,11 @@ struct BulletRuntimeView
     void UpdateVerticalWrap();
     void UpdateState8();
 };
+
+typedef char BulletRuntimeAngleBitOverlayAt3E4[
+    (offsetof(BulletRuntimeView, angle) == 0x3e4 &&
+     offsetof(BulletRuntimeView, angleBits) == 0x3e4 &&
+     sizeof(((BulletRuntimeView *)0)->angleBits) == 4) ? 1 : -1];
 
 typedef char BulletRuntimeViewSizeIs7F0[
     (sizeof(BulletRuntimeView) == 0x7f0) ? 1 : -1];

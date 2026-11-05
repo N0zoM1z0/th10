@@ -1,0 +1,125 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": "2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa",
+  "header_sha256": "725f281ee37e77f7490d339c1072eaecd6177816aae1b52969f2ac977915fd53",
+  "support_source_pins": {
+    "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+    "src/BulletTransform.cpp": "51201c2ba53e5929e395bcccad13cfa250800148793ab8fc31301160ad008ad7",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/AnmManager.cpp": "1f6d0398c916ff052b2ec0c22b8843857b895a282c1ca6affebf7ade20dccdb0",
+    "src/EnemyEclDispatcher.cpp": "3881a4e3133ba646856477dfa824dac124b0544d6b56c52f9f20f66abd28a3cf",
+    "src/Enemy.cpp": "87293321fd46faeb2189fc5c12e21d6bbf580f5dde5f7e16e3ff0c45e33caea5"
+  },
+  "full_graph_sources_compiled": 7,
+  "runtime_angle_float_offset": 996,
+  "runtime_angle_integer_bits_offset": 996,
+  "original_target_bullet_function_bytes": 335,
+  "full_candidate_owners": [
+    {
+      "name": "absolute-direction",
+      "candidate_bytes": 335,
+      "target_bytes": 335,
+      "linked_fields": 8,
+      "field_geometry": [
+        [
+          38,
+          "DIR32"
+        ],
+        [
+          43,
+          "REL32"
+        ],
+        [
+          151,
+          "DIR32"
+        ],
+        [
+          229,
+          "REL32"
+        ],
+        [
+          255,
+          "DIR32"
+        ],
+        [
+          270,
+          "DIR32"
+        ],
+        [
+          290,
+          "DIR32"
+        ],
+        [
+          323,
+          "REL32"
+        ]
+      ],
+      "ordinary_target_differences": 2,
+      "first_differences": [
+        "0xd7",
+        "0xdd"
+      ]
+    },
+    {
+      "name": "horizontal-wrap",
+      "candidate_bytes": 148,
+      "target_bytes": 148,
+      "linked_fields": 8,
+      "field_geometry": [
+        [
+          21,
+          "REL32"
+        ],
+        [
+          34,
+          "DIR32"
+        ],
+        [
+          53,
+          "DIR32"
+        ],
+        [
+          63,
+          "DIR32"
+        ],
+        [
+          79,
+          "DIR32"
+        ],
+        [
+          99,
+          "REL32"
+        ],
+        [
+          114,
+          "DIR32"
+        ],
+        [
+          121,
+          "REL32"
+        ]
+      ],
+      "ordinary_target_differences": 0,
+      "first_differences": []
+    }
+  ],
+  "absolute_direction_comparable_original_byte_differences": [
+    "0xd7",
+    "0xdd"
+  ],
+  "nonexact": true,
+  "selected_original_target_exact_units": [
+    {
+      "unit": "bullet-update-deceleration",
+      "result": "exact",
+      "exact_bytes": 164
+    },
+    {
+      "unit": "bullet-update-horizontal-wrap",
+      "result": "exact",
+      "exact_bytes": 148
+    }
+  ],
+  "previously_exact_bytes_preserved": 312,
+  "new_exact_credit": 0
+}
