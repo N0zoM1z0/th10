@@ -135,10 +135,17 @@ now use verified payload overlays (state words at +0x08/+0x0A, mode byte
 at +0x0C). Its 350 original-bound fields and 9,962/9,964 ordinary bytes
 remain unchanged; three affected leaf owners pass **432/432 exact**.
 
+[Sound native RIFF chunk prefixes](evidence/sound-riff-chunk-prefix-20261105/README.md)
+are now typed in `LoadSoundSample` and `FindWaveChunk`. Actual current 5-TU
+compiler/PDB owner preserves the Sound sample full **684-byte** contribution,
+all 25 candidate fields and the six original mismatches at +0x122..+0x127;
+three accepted Sound canonical leaves pass **405/405 exact** after selective
+fresh replay, with no added exact credit.
+
 Source SHA-256 at this HEAD (verify before reuse):
 
 ```text
-Sound.cpp          7499ecbafd237b53880969ad260a96407380327f246a308f2c2fa823c3d96c11
+Sound.cpp          cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b3b0
 Midi.cpp           1892650e1eae61877c583d1fcd4b70ad3e3f8714cfc842ff0703fff73f32d782
 Midi.hpp           2c0227d3743fd685883b6acfb6d4464747649692289a1215d771d4096a71397c
 Enemy.cpp          c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2

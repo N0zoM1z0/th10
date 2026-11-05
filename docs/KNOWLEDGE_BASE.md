@@ -21,6 +21,18 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-05 RIFF/WAVE native chunk wire prefix recovery
+
+The Sound sample owner uses the RIFF 4-byte container size word and the
+separate chunk parser consumes exactly `size + 8` bytes without RIFF
+padding. Maintained `Sound.cpp` now has native-width, offset-asserted
+8-byte views for both byte-stream layouts. One actual five-source VC7.1
+source graph preserves full `LoadSoundSample` **684-byte** codegen at
+**678/684** independently compared ordinary positions (the six byte call
+operand schedule remains NONEXACT), while accepted 71/107/227-byte Sound
+leaves retain their target-bound **405/405 exact** selected cold replays.
+[Evidence](evidence/sound-riff-chunk-prefix-20261105/README.md).
+
 ## 2026-11-05 MIDI StopPlayback newly accepted exact
 
 `MidiOutputView::StopPlayback @0x0043AE20` is one newly accepted complete

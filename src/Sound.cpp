@@ -2,6 +2,7 @@
 #include <dsound.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 #include "Main.hpp"
 #include "SoundFormat.hpp"
@@ -330,6 +331,25 @@ int SoundPlayerView::Initialize(HWND window)
 }
 
 
+// RIFF container wire words used by both Sound sample loader and the
+// separate 71-byte FindWaveChunk parser. These are byte-stream overlays,
+// never owning allocations or a generic host WAV parser.
+struct SoundRiffChunkPrefixView
+{
+    char tag[4];
+    unsigned int byteLength;
+};
+struct SoundWaveRootAfterTagView
+{
+    unsigned int containerBytes;
+    char waveTag[4];
+};
+typedef char SoundNativeRiffWireOffsets[
+    (sizeof(SoundRiffChunkPrefixView) == 8 &&
+     offsetof(SoundRiffChunkPrefixView, byteLength) == 4 &&
+     sizeof(SoundWaveRootAfterTagView) == 8 &&
+     offsetof(SoundWaveRootAfterTagView, waveTag) == 4) ? 1 : -1];
+
 // Target 0x0043D250. The serialized chunk length is used literally: no RIFF
 // padding adjustment or malformed-input bounds repair is present in the game.
 unsigned char *__stdcall FindWaveChunk(unsigned char *data, unsigned int remaining,
@@ -337,7 +357,7 @@ unsigned char *__stdcall FindWaveChunk(unsigned char *data, unsigned int remaini
 {
     while (remaining > 0)
     {
-        *chunkSize = *reinterpret_cast<unsigned int *>(data + 4);
+        *chunkSize = reinterpret_cast<const SoundRiffChunkPrefixView *>(data)->byteLength;
         if (strncmp(reinterpret_cast<const char *>(data), tag, 4) == 0)
             return data + 8;
         remaining -= *chunkSize + 8;
@@ -379,7 +399,7 @@ int SoundPlayerView::LoadSoundSample(int index, const char *path)
         return -1;
     }
     unsigned char *data = allocation + 4;
-    unsigned int remaining = *reinterpret_cast<unsigned int *>(data);
+    unsigned int remaining = reinterpret_cast<const SoundWaveRootAfterTagView *>(data)->containerBytes;
     data += 4;
     if (strncmp(reinterpret_cast<const char *>(data), "WAVE", 4) != 0)
     {
