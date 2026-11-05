@@ -14,7 +14,20 @@ struct EclVmInstruction
     unsigned char operandCount;
     unsigned char unknown0C[4];
     unsigned char operands[1];
+
+    // The encoded size and branch operands are measured in bytes, not
+    // EclVmInstruction objects. Keep signed offsets for backward jumps.
+    EclVmInstruction *AtByteOffset(int distance)
+    {
+        return reinterpret_cast<EclVmInstruction *>(
+            reinterpret_cast<unsigned char *>(this) + distance);
+    }
 };
+typedef char EclVmInstructionHeaderOffsets[
+    (offsetof(EclVmInstruction, opcode) == 0x04 &&
+     offsetof(EclVmInstruction, size) == 0x06 &&
+     offsetof(EclVmInstruction, difficultyMask) == 0x0A &&
+     offsetof(EclVmInstruction, operands) == 0x10) ? 1 : -1];
 
 class EclVmHost;
 struct EclVmScriptDatabase;

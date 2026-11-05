@@ -1173,8 +1173,9 @@ jump_instruction:
 
             case ECL_VM_EVALUATE_FORMAT_OPERANDS:
             {
-                const char *cursor =
-                    reinterpret_cast<const char *>(current) + 0x14;
+                // The inline format string follows the first 32-bit operand.
+                const char *cursor = reinterpret_cast<const char *>(
+                    current->operands + sizeof(int));
                 char *scratch = static_cast<char *>(malloc(0x400));
                 scratch[0] = '\0';
 
@@ -1229,10 +1230,8 @@ jump_instruction:
         advanceInstruction = *instructionCursor;
         instructionOffset = advanceInstruction->size;
 advance_instruction:
-        unsigned char *advanceBytes =
-            reinterpret_cast<unsigned char *>(advanceInstruction);
-        advanceBytes += instructionOffset;
-        *instructionCursor = reinterpret_cast<EclVmInstruction *>(advanceBytes);
+        *instructionCursor = advanceInstruction->AtByteOffset(
+            instructionOffset);
     }
 
     currentTime += timeDelta;

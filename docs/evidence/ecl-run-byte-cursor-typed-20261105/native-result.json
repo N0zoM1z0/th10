@@ -1,0 +1,95 @@
+{
+  "complete_target_bytes": 7020,
+  "candidate_bytes": 7020,
+  "linked_fields": 189,
+  "linkage_geometry_matches_previous_contract": true,
+  "ordinary_differences_vs_target": 23,
+  "first_differences": [
+    "0xaf",
+    "0xec",
+    "0xf1",
+    "0x12a",
+    "0x12c",
+    "0x1fb",
+    "0x151d",
+    "0x1838",
+    "0x183c",
+    "0x1840",
+    "0x1844",
+    "0x1899",
+    "0x18b6",
+    "0x18e6",
+    "0x18f8",
+    "0x191c",
+    "0x1932",
+    "0x1957",
+    "0x199e",
+    "0x19a8",
+    "0x19ba",
+    "0x19e6",
+    "0x19e8"
+  ],
+  "source_sha256": "1e928d72bf880d096645c420aa96a7a26131185fba7fc52f3bc99ed6bea5b86a",
+  "header_sha256": "62f2d3a3ea91e71451981fdc7c539e93963f1171af5e87b89e4e48f4393f9a29",
+  "support_sha256": {
+    "src/Enemy.cpp": "8cb09b97a9d6d4e3ecaf4dedfeac9982a6e905bf4b7ec5e46ebbc59a9708893e"
+  },
+  "artifact": "build/gpt-web/20261105-continuation-ecl-run/typed-cursor-and-format-string",
+  "seconds": 41.3,
+  "baseline_comparison": {
+    "source_sha256": "ec6a825ed8dc6d3f025d6caabc8cd7eca896fdf462ae6fe45ff8b637baff9703",
+    "candidate_bytes": 7020,
+    "linked_fields": 189,
+    "original_differences": [
+      "0xaf",
+      "0xec",
+      "0xf1",
+      "0x12a",
+      "0x12c",
+      "0x1fb",
+      "0x151d",
+      "0x1838",
+      "0x183c",
+      "0x1840",
+      "0x1844",
+      "0x1899",
+      "0x18b6",
+      "0x18e6",
+      "0x18f8",
+      "0x191c",
+      "0x1932",
+      "0x1957",
+      "0x199e",
+      "0x19a8",
+      "0x19ba",
+      "0x19e6",
+      "0x19e8"
+    ],
+    "original_difference_count": 23
+  },
+  "scoped_exact_replays": [
+    {
+      "unit": "ecl-vm-read-float",
+      "status": "exact",
+      "target_bytes": 183,
+      "matched_bytes": 183
+    },
+    {
+      "unit": "ecl-vm-read-int",
+      "status": "exact",
+      "target_bytes": 144,
+      "matched_bytes": 144
+    },
+    {
+      "unit": "ecl-vm-host-run",
+      "status": "exact",
+      "target_bytes": 146,
+      "matched_bytes": 146
+    }
+  ],
+  "rejected_format_argument_variant": {
+    "candidate_bytes": 6892,
+    "linked_fields": 188,
+    "reason": "failed complete-owner and original field geometry; rejected and source restored"
+  }
+}
