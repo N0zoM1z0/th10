@@ -198,7 +198,8 @@ int AnmVmView::GetIntVar(int variable)
 float *AnmVmView::GetFloatVarPtr(
     float *value, unsigned short variableMask, unsigned int argumentNumber)
 {
-    if ((variableMask & (1u << argumentNumber)) == 0)
+    AnmVariableArgumentMaskView mask = { variableMask };
+    if (!mask.SelectsVariable(argumentNumber))
         return value;
 
     switch (static_cast<int>(*value))
@@ -227,7 +228,8 @@ float *AnmVmView::GetFloatVarPtr(
 int *AnmVmView::GetIntVarPtr(
     int *value, unsigned short variableMask, unsigned int argumentNumber)
 {
-    if ((variableMask & (1u << argumentNumber)) == 0)
+    AnmVariableArgumentMaskView mask = { variableMask };
+    if (!mask.SelectsVariable(argumentNumber))
         return value;
 
     switch (*value)

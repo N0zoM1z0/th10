@@ -239,6 +239,19 @@ enum AnmInterpolationModeView
 
 float __stdcall CalculateAnmInterpolation(int mode, float current, float duration);
 
+// The encoded ANM argument mask is a 16-bit field; each bit selects
+// whether the matching operand is a VM variable rather than a literal.
+struct AnmVariableArgumentMaskView
+{
+    unsigned short bits;
+    bool SelectsVariable(unsigned int argumentNumber) const
+    {
+        return (bits & (1u << argumentNumber)) != 0;
+    }
+};
+typedef char AnmVariableArgumentMaskSize02[
+    (sizeof(AnmVariableArgumentMaskView) == 2) ? 1 : -1];
+
 struct AnmRawInstructionView
 {
     short opcode;
