@@ -32,7 +32,7 @@ typedef char GuiCanonicalEnemyFields[
          offsetof(EnemyRuntimeView, worldMotion) +
          offsetof(EnemyMotionView, position) + offsetof(PlayerFloat3, x) == 0x1068 &&
      offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, life) == 0x23fc &&
-     offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, unknown13C4) == 0x2400 &&
+     offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, lifeGaugeReference) == 0x2400 &&
      offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, value13C8) == 0x2404 &&
      offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, flags) == 0x2480) ? 1 : -1];
 typedef char GuiCanonicalEnemyManagerSlotAt10[
@@ -1032,7 +1032,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
             const int bossLife = boss->runtime.life;
             gui->bossLife = bossLife;
             gui->bossGaugeTarget = static_cast<float>(bossLife) /
-                static_cast<float>(boss->runtime.unknown13C4);
+                static_cast<float>(boss->runtime.lifeGaugeReference);
             if (gui->bossGaugeDisplayed < gui->bossGaugeTarget)
                 gui->bossGaugeDisplayed += 0.025f;
             if (gui->bossGaugeDisplayed > gui->bossGaugeTarget)
