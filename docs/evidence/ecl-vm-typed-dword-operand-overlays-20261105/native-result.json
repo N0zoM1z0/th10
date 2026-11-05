@@ -1,0 +1,66 @@
+{
+  "original_target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "installed_source_sha256": "97f1d36cd0940d639eb52f436ed14e901ce8cb3c7abba98b3931c55f162a1d22",
+  "installed_header_sha256": "884d9d658b5e44784b34f3cdec59ae989c6320cd50696dbab25c6a6a0a10a4c7",
+  "full_ecl_run": {
+    "complete_target_bytes": 7020,
+    "candidate_bytes": 7020,
+    "linked_fields": 189,
+    "linkage_geometry_matches_previous_contract": true,
+    "ordinary_differences_vs_target": 23,
+    "first_differences": [
+      "0xaf",
+      "0xec",
+      "0xf1",
+      "0x12a",
+      "0x12c",
+      "0x1fb",
+      "0x151d",
+      "0x1838",
+      "0x183c",
+      "0x1840",
+      "0x1844",
+      "0x1899",
+      "0x18b6",
+      "0x18e6",
+      "0x18f8",
+      "0x191c",
+      "0x1932",
+      "0x1957",
+      "0x199e",
+      "0x19a8",
+      "0x19ba",
+      "0x19e6",
+      "0x19e8"
+    ],
+    "source_sha256": "97f1d36cd0940d639eb52f436ed14e901ce8cb3c7abba98b3931c55f162a1d22",
+    "header_sha256": "884d9d658b5e44784b34f3cdec59ae989c6320cd50696dbab25c6a6a0a10a4c7",
+    "support_sha256": {
+      "src/Enemy.cpp": "8cb09b97a9d6d4e3ecaf4dedfeac9982a6e905bf4b7ec5e46ebbc59a9708893e"
+    },
+    "artifact": "build/gpt-web/20261105-continuation-ecl-run/ecl-typed-word-operand-overlays",
+    "seconds": 42.7
+  },
+  "selected_canonical_exact_guards": [
+    {
+      "unit": "ecl-vm-read-float",
+      "result": "exact",
+      "matched_bytes": 183,
+      "target_bytes": 183
+    },
+    {
+      "unit": "ecl-vm-read-int",
+      "result": "exact",
+      "matched_bytes": 144,
+      "target_bytes": 144
+    },
+    {
+      "unit": "ecl-vm-host-run",
+      "result": "exact",
+      "matched_bytes": 146,
+      "target_bytes": 146
+    }
+  ],
+  "exact_bytes_preserved": 473,
+  "new_exact_credit": 0
+}

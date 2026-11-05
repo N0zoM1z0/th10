@@ -29,7 +29,15 @@ struct EclVmInstruction
     unsigned char difficultyMask;
     unsigned char operandCount;
     unsigned char unknown0C[4];
-    unsigned char operands[1];
+    // Variable-length operands share their first 32-bit word with the raw
+    // byte stream; further words follow at dword stride. Encoding length
+    // continues to come from the instruction's explicit byte size field.
+    union
+    {
+        unsigned char operands[1];
+        int integerOperands[1];
+        float floatOperands[1];
+    };
 
     // The encoded size and branch operands are measured in bytes, not
     // EclVmInstruction objects. Keep signed offsets for backward jumps.
@@ -43,7 +51,9 @@ typedef char EclVmInstructionHeaderOffsets[
     (offsetof(EclVmInstruction, opcode) == 0x04 &&
      offsetof(EclVmInstruction, size) == 0x06 &&
      offsetof(EclVmInstruction, difficultyMask) == 0x0A &&
-     offsetof(EclVmInstruction, operands) == 0x10) ? 1 : -1];
+     offsetof(EclVmInstruction, operands) == 0x10 &&
+     offsetof(EclVmInstruction, integerOperands) == 0x10 &&
+     offsetof(EclVmInstruction, floatOperands) == 0x10) ? 1 : -1];
 
 class EclVmHost;
 struct EclVmScriptDatabase;

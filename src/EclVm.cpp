@@ -209,13 +209,13 @@ union EclVmScalar
 
 static int OperandInt(const EclVmInstruction *instruction, unsigned int index)
 {
-    return reinterpret_cast<const int *>(instruction->operands)[index];
+    return instruction->integerOperands[index];
 }
 
 static float OperandFloat(
     const EclVmInstruction *instruction, unsigned int index)
 {
-    return reinterpret_cast<const float *>(instruction->operands)[index];
+    return instruction->floatOperands[index];
 }
 
 static bool IsOperandIndirect(
