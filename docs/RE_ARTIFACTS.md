@@ -1,8 +1,9 @@
 # TH10 private reconstruction artifacts — current storage policy (2026-11-05)
 
 See [current agent handoff](RE_HANDOFF.md), [ledger progress](PROGRESS.md)
-and the [2026-11-05 final handoff cleanup](evidence/handoff-maintenance-20261105/README.md).
-The [first November 5 selective archive](evidence/handoff-storage-20261105/README.md)
+and the [latest verified source-epoch cleanup](evidence/handoff-current-cleanup-20261105/README.md).
+The [earlier November 5 handoff cleanup](evidence/handoff-maintenance-20261105/README.md),
+[first November 5 selective archive](evidence/handoff-storage-20261105/README.md)
 and [November 4 cleanup](evidence/handoff-storage-20261104/README.md)
 are separately verified **historical events**, not today's live inventory.
 This page describes what is **expanded now**, what is in a **local archive**,
@@ -27,20 +28,70 @@ The following are **not** expendable scratch outputs:
   for current comparisons and handoff).
 - `.analysis/gpt-web/`: **retained** recent experiment scripts, source
   snapshots and JSON/LOG receipts, including Nov 3 ANM/ECL/laser work.
-- `build/gpt-web/`: currently **311 expanded witness files totaling
-  14,079,534 file-content bytes**, spanning the 13 retained early-November
-  frontier prefixes **plus nine newer selected checkpoint prefixes**.
-  Another 7,243 historical files remain recoverable in the first November 5
-  archive, and a further **1,581 old/intermediate experiments** are recoverable
-  in the [later 2026-11-05 verified archive](evidence/handoff-maintenance-20261105/README.md).
-  All of these are candidate artifacts, **not exact credit**. See the latest
-  [retention inventory](evidence/handoff-maintenance-20261105/cleanup-summary.json).
+- `build/gpt-web/`: **437 currently expanded witness files totaling
+  19,819,118 file-content bytes**, from the prior 22 protected path
+  prefixes **plus eight more current-source witness prefixes**. An additional
+  1,016 transient files have been verified, compressed and pruned in the
+  [latest cleanup](evidence/handoff-current-cleanup-20261105/README.md),
+  after the earlier **1,581** and **7,243** archived generated files.
+  Candidate PE/PDB/OBJ extents are **not exact codegen credit**. See the
+  [current source-epoch retention receipt](evidence/handoff-current-cleanup-20261105/cleanup-summary.json).
+  These counts are a **2026-11-05 cleanup snapshot**, not a promise that
+  later recompiles leave the expanded inventory unchanged.
 
 Older accepted proofs under `docs/evidence/` are versioned in Git. Their
 references to archived `.analysis/gpt-6.1-sol/` paths describe *former*
 expanded states, **not live paths after the latest cleanup**. Codegen exact
 credit comes from accepted complete-owner ledgers and canonical replay, not
 from finding an old PDB with a familiar name.
+
+## Latest 2026-11-05 source-epoch pruning (current inventory snapshot)
+
+Following actual later ANM, Enemy, Bullet, Sound and ECL builds, the earlier
+**311-file** snapshot grew to **1,453 files / 56,594,554 payload bytes**.
+A [new independently verified cleanup](evidence/handoff-current-cleanup-20261105/README.md)
+retained all 22 previously protected prefixes and additionally retained:
+
+- `20261105-anm-flags-halfword/current-5-tu` (original-bound 9,964-byte ANM)
+- `20261105-enemy-time-lifecycle/{fresh-11-tu,two-source}`
+- `20261105-continuation-bullet/runtime-angle-overlay`
+- `20261105-ecl-thread-flag-bit/full-run`
+- `20261105-vector-accel/{expiry-first-volatiles,expiry-barrier-memory-reload}`
+- `20261105-continuation-sound/epoch-current`
+
+Under ignored `build/gpt-web/` only, **1,016 other generated files**
+(**36,775,436 uncompressed content bytes**) were individually size/SHA
+verified in the new local compressed tar; each original was rehashed before
+its expanded copy was removed. A genuine member extraction was checked.
+The 247 regenerated Python `.pyc` files in `build/pycache` were also deleted.
+Exactly **437 original linked witness files / 19,819,118 payload bytes**
+remain expanded. Measured combined `build` plus `.analysis` allocated-block
+savings, **including** the new archive, was **42,033,152 bytes (~40.1 MiB)**.
+Do not add that number to prior savings from a different baseline.
+
+Newest archive (private/ignored, must be transferred separately if needed):
+
+    .analysis/archive/gpt-web-transient-frontiers-20261105.tar.zst
+
+Compressed **2,310,433 bytes**, SHA-256
+`d99f7572d6d1ab66efac495c5091c32b5b4499bc3ea9102fbd7f26b004d130a6`.
+The private per-file manifest is
+`.analysis/maintenance-next-agent-20261105/transient-graphs-manifest.jsonl.gz`,
+SHA-256 `a230b5fe213938bb29421d14f2a476da5ff20d322108f3c609b78396c1b947fc`.
+To verify or restore a single old member **without overwriting** current
+source-epoch outputs:
+
+```sh
+zstd -t .analysis/archive/gpt-web-transient-frontiers-20261105.tar.zst
+mkdir -p /tmp/th10-restore-evidence
+zstd -dc .analysis/archive/gpt-web-transient-frontiers-20261105.tar.zst |
+  tar -xf - -C /tmp/th10-restore-evidence -- \
+    build/gpt-web/20261105-anm-const-layer-ref/link-aliases.rsp
+```
+
+For detailed initial/final measured disk blocks, surviving witnesses,
+verified SHA-256 and the exact archive entry list, see
+[tracked machine receipt](evidence/handoff-current-cleanup-20261105/cleanup-summary.json).
 
 ## 2026-11-05 verified archive of regenerable experiment images
 
@@ -117,17 +168,19 @@ estimate. The stage-specific before/after du bytes are saved in the
 machine-readable cleanup receipt. Do not add the Nov 4 savings to the
 Nov 5 savings without accounting for different baselines.
 
-## Later 2026-11-05 next-agent cleanup (current expanded inventory)
+## Earlier 2026-11-05 next-agent cleanup (historical 311-file snapshot)
 
-After many more VC7.1 source/field experiments, `build/gpt-web` expanded
-again from the prior 13 witness prefixes / 199 files to **1,892 files**.
+At that historical checkpoint, `build/gpt-web` expanded from the prior
+13 witness prefixes / 199 files to **1,892 files**.
 The second, independent [verified handoff cleanup](evidence/handoff-maintenance-20261105/README.md)
 archived **1,581** regenerated/older-source experiment files with
 **72,321,019 bytes** of original content. All were hashed before archiving;
 every regular member was independently size/SHA-256 verified from the
 compressed tar; every original file was rehashed again before guarded unlink.
 The old 13 protected prefixes plus nine current frontier prefixes were
-left expanded: **311 files / 14,079,534 payload bytes**. A verified
+left expanded **at that point in time**: **311 files / 14,079,534 payload
+bytes**. Later builds and the source-epoch cleanup above superseded those
+**current-inventory** numbers. A verified
 single-member restoration confirmed selective recoverability.
 
 New ignored private zstd tar:

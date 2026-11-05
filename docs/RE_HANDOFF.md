@@ -141,8 +141,13 @@ scripts/repo-python scripts/replay-exact-units.py \
 
 ## Storage / transfer
 
-Use [private artifact inventory and selective restore](RE_ARTIFACTS.md),
-not old counts embedded in historical evidence. Original target,
+Use [private artifact inventory and selective restore](RE_ARTIFACTS.md)
+and the [latest verified 1,016-file cleanup](evidence/handoff-current-cleanup-20261105/README.md),
+not old counts embedded in historical evidence. At this cleanup checkpoint,
+**437 witness files / 19,819,118 content bytes** remain expanded, and the
+separate new archive plus regenerated cache pruning reclaimed **42,033,152
+allocated disk bytes**; treat these as measured snapshots, not fixed live
+inventory totals. Original target,
 compiler/Wine `.tools/`, `.analysis/archive/` (ignored compressed
 experiments), private Ghidra project and `_reference/` **are not in Git**.
 `build/match-linked/` contains canonical accepted producers and is kept.
