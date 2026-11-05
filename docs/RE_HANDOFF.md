@@ -48,9 +48,9 @@ scripts/repo-python scripts/ci.py
 
 `docs/PROGRESS.md` (generated from the ledgers) controls acceptance:
 **1,829/1,829** target boundaries reviewed; **1,309** source-present
-mappings; **1,486** fully original-bound exact functions / **190,761**
-exact codegen bytes; **578** confirmed-authored exact functions / **120,725**
-authored exact bytes; **172** confirmed-authored source-present nonexact
+mappings; **1,487** fully original-bound exact functions / **190,955**
+exact codegen bytes; **579** confirmed-authored exact functions / **120,919**
+authored exact bytes; **171** confirmed-authored source-present nonexact
 backlog. These are neither source completeness nor whole-product closure.
 **Two new original-bound exact Sound owners are now admitted:**
 `SoundDataLoaderThread @0x0043D080` (**107 bytes, 11 fields**) and
@@ -63,6 +63,12 @@ graph. Prior exact owner guard replays are not added a second time.
 original-bound DIR32/REL32 fields, and has an independent 14-input VC7.1 SP1
 `/GL` canonical cold proof. See [gradient 501 exact](evidence/anm-gradient-rect-501-exact-20261106/README.md). The earlier isolated 503-byte
 producer is a superseded source/context experiment; no fake EDI ABI was used.
+
+**New exact bullet owner:** `BulletManagerView::SpawnBulletPattern @0x004073E0`
+now has a current-source canonical four-TU original-bound proof of **194/194
+bytes and all six float constant/callee/global fields**. The older 195-byte
+isolated candidate is superseded by the live 194-byte source graph.
+[Bullet spawn 194 exact evidence](evidence/bullet-spawn-pattern-194-exact-20261106/README.md).
 
 ## Latest whole-owner frontiers: do not confuse size with target agreement
 

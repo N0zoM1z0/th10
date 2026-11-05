@@ -74,6 +74,19 @@ after these source changes. New total **1,485 exact / 190,260 bytes**
 (**577 authored / 120,224 bytes**). See
 [evidence](evidence/midi-stop-playback-single-owner-20261105/README.md).
 
+## 2026-11-06 BulletManagerView::SpawnBulletPattern complete exact admission
+
+The original 194-byte nested bullet-pattern fanout with optional sound cue
+at `0x004073E0` now reproduces **194/194 original target bytes** with
+**six independently original-bound constant/global/callee fields** in a
+pinned four-input VC7.1 SP1 LTCG graph rooted at the actual bullet update
+owner. A second separate canonical cold build of current source passes
+identically; the earlier 195-byte isolated candidate is superseded, not
+promoted. This accepts one new authored exact function / 194 bytes, for
+**1,487 canonical exact / 190,955 bytes** and **579 authored exact /
+120,919 bytes**. Existing large Enemy/ANM/ECL bosses remain nonexact.
+[Evidence](evidence/bullet-spawn-pattern-194-exact-20261106/README.md).
+
 ## 2026-11-06 AnmFloatRectView::DrawGradient complete exact admission
 
 The complete 501-byte gradient-rectangle renderer at original
