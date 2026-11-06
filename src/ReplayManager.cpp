@@ -29,7 +29,6 @@ typedef char ReplayUserDataHeaderSizeIs0C[
 
 // Maintained descriptive external names. Their physical data owners are not
 // established by this packet.
-extern int g_ReplayScore;
 extern const char *g_ReplayCharacterNames[];
 extern const char *g_ReplayDifficultyNames[];
 extern const char g_ReplayUserInfoText[];
@@ -567,9 +566,32 @@ int ReplayManager::DrawFps()
 }
 
 
+static inline int ReplayFramePayloadSize(const ReplayFrameData *frame)
+{
+    return (frame->recordEnd - frame->records) * sizeof(ReplayRecData)
+        + (frame->fpsEnd - frame->fpsSamples);
+}
+
+static inline int ReplayFrameRecordCount(const ReplayFrameData *frame)
+{
+    return frame->recordEnd - frame->records;
+}
+
+// Replay save source model informed by levzzz5154/th10-decomp, MIT (c) 2026 levzzz.
+// d1f31212514781c928fba145d8207397c8fb5650,
+// matching2/msvc/src/game/replay/replay_save.cpp; docs/licenses/th10-decomp-MIT.txt.
 int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
 {
-    strcpy(replayData->replayName, replayName);
+    int firstStage = 0;
+    int lastStage = 0;
+    char *nameOutput = replayData->replayName;
+    const char *nameInput = replayName;
+    char current;
+    do
+    {
+        current = *nameInput++;
+        *nameOutput++ = current;
+    } while (current != '\0');
     int replayNameLength = strlen(replayName);
     for (int i = replayNameLength; i < 8; i++)
         replayData->replayName[i] = ' ';
@@ -581,8 +603,6 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
 
     int allocationSize = sizeof(ReplayDataHeader);
     int stageCount = 0;
-    int firstStage = 0;
-    int lastStage = 0;
 
     for (int stage = 0; stage < 8; stage++)
     {
@@ -595,28 +615,23 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
 
         stageHeader->payloadSize = 0;
         allocationSize += sizeof(ReplayStageDataHeader);
+        lastStage = stage;
 
         for (ReplayListNode *link = stageFrameLists[stage].next;
              link != NULL; link = link->next)
         {
-            ReplayFrameData *frameData = (ReplayFrameData *)link->value;
-            allocationSize +=
-                (frameData->recordEnd - frameData->records) * sizeof(ReplayRecData) +
-                (frameData->fpsEnd - frameData->fpsSamples);
+            allocationSize += ReplayFramePayloadSize((ReplayFrameData *)link->value);
             stageHeaders[stage]->payloadSize +=
-                (frameData->recordEnd - frameData->records) * sizeof(ReplayRecData) +
-                (frameData->fpsEnd - frameData->fpsSamples);
-            frameData = (ReplayFrameData *)link->value;
+                ReplayFramePayloadSize((ReplayFrameData *)link->value);
             stageHeaders[stage]->recordCount +=
-                frameData->recordEnd - frameData->records;
+                ReplayFrameRecordCount((ReplayFrameData *)link->value);
         }
 
         stageCount++;
-        lastStage = stage;
     }
 
     replayData->stageCount = stageCount;
-    replayData->score = g_ReplayScore;
+    replayData->score = g_GameScoreState.score;
     replayData->slowRate =
         100.0f -
         (float)(g_ReplayTimingSource->lagNumerator /
@@ -627,16 +642,16 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
         (unsigned char *)malloc(allocationSize);
     memcpy(uncompressedData, replayData, sizeof(ReplayDataHeader));
 
-    int uncompressedSize = sizeof(ReplayDataHeader);
+    allocationSize = sizeof(ReplayDataHeader);
     for (int stage = 0; stage < 8; stage++)
     {
         ReplayStageDataHeader *stageHeader = stageHeaders[stage];
         if (stageHeader == NULL)
             continue;
 
-        memcpy(uncompressedData + uncompressedSize, stageHeader,
+        memcpy(uncompressedData + allocationSize, stageHeader,
                sizeof(ReplayStageDataHeader));
-        uncompressedSize += sizeof(ReplayStageDataHeader);
+        allocationSize += sizeof(ReplayStageDataHeader);
 
         for (ReplayListNode *link = stageFrameLists[stage].next;
              link != NULL; link = link->next)
@@ -644,9 +659,9 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
             ReplayFrameData *frameData = (ReplayFrameData *)link->value;
             int recordCount = frameData->recordEnd - frameData->records;
             int recordBytes = recordCount * sizeof(ReplayRecData);
-            memcpy(uncompressedData + uncompressedSize, frameData->records,
+            memcpy(uncompressedData + allocationSize, frameData->records,
                    recordBytes);
-            uncompressedSize += (frameData->recordEnd - frameData->records) *
+            allocationSize += (frameData->recordEnd - frameData->records) *
                                 sizeof(ReplayRecData);
         }
 
@@ -656,25 +671,29 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
         {
             ReplayFrameData *frameData = (ReplayFrameData *)link->value;
             int fpsBytes = frameData->fpsEnd - frameData->fpsSamples;
-            memcpy(uncompressedData + uncompressedSize, frameData->fpsSamples,
+            memcpy(uncompressedData + allocationSize, frameData->fpsSamples,
                    fpsBytes);
-            uncompressedSize += frameData->fpsEnd - frameData->fpsSamples;
+            allocationSize += frameData->fpsEnd - frameData->fpsSamples;
         }
     }
 
     int compressedSize;
-    unsigned char *compressedData =
-        CompressData(uncompressedData, uncompressedSize, &compressedSize);
-    free(uncompressedData);
+    unsigned char *compressedData;
+    {
+        int outputSize;
+        compressedData = CompressData(uncompressedData, allocationSize, &outputSize);
+        free(uncompressedData);
+        compressedSize = outputSize;
+    }
 
     FileSystem::Encrypt(compressedData, compressedSize, 0x3d, 0x7a, 0x80,
                         compressedSize);
     FileSystem::Encrypt(compressedData, compressedSize, 0xaa, 0xe1, 0x400,
                         compressedSize);
 
-    fileHeader->decompressedPayloadSize = uncompressedSize;
+    fileHeader->decompressedPayloadSize = allocationSize;
     fileHeader->compressedPayloadSize = compressedSize;
-    fileHeader->userDataOffset = compressedSize + sizeof(ReplayFileHeader);
+    fileHeader->userDataOffset = fileHeader->compressedPayloadSize + sizeof(ReplayFileHeader);
 
     FileSystem::OpenWriteFile(fullPath);
     FileSystem::WriteToOpenFile(fileHeader, sizeof(ReplayFileHeader));
@@ -734,34 +753,26 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
     userDataCursor +=
         sprintf(userDataCursor, "Score %d\r\n", replayData->score);
     userDataCursor += sprintf(userDataCursor, "Slow Rate %2.2f\r\n",
-                              replayData->slowRate);
-    userDataCursor++;
+                              replayData->slowRate) + 1;
 
-    int userDataSize = userDataCursor - (char *)userData;
-    int userDataRemainder = userDataSize % 4;
-    if (userDataRemainder != 0)
-        userDataCursor += 4 - userDataRemainder;
+    if (static_cast<int>(userDataCursor - (char *)userData) % 4 != 0)
+        userDataCursor += 4 - static_cast<int>(userDataCursor - (char *)userData) % 4;
 
-    userDataSize = userDataCursor - (char *)userData;
-    userDataHeader->size = userDataSize;
-    FileSystem::WriteToOpenFile(userData, userDataSize);
+    userDataHeader->size = static_cast<int>(userDataCursor - (char *)userData);
+    FileSystem::WriteToOpenFile(userData, userDataHeader->size);
 
     memset(userData, 0, 0xffff);
     userDataHeader = (ReplayUserDataHeader *)userData;
     userDataHeader->magic = 0x52455355;
     userDataHeader->type = 1;
     userDataCursor = (char *)(userDataHeader + 1);
-    userDataCursor += sprintf(userDataCursor, g_ReplayUserCommentText);
-    userDataCursor++;
+    userDataCursor += sprintf(userDataCursor, g_ReplayUserCommentText) + 1;
 
-    userDataSize = userDataCursor - (char *)userData;
-    userDataRemainder = userDataSize % 4;
-    if (userDataRemainder != 0)
-        userDataCursor += 4 - userDataRemainder;
+    if (static_cast<int>(userDataCursor - (char *)userData) % 4 != 0)
+        userDataCursor += 4 - static_cast<int>(userDataCursor - (char *)userData) % 4;
 
-    userDataSize = userDataCursor - (char *)userData;
-    userDataHeader->size = userDataSize;
-    FileSystem::WriteToOpenFile(userData, userDataSize);
+    userDataHeader->size = static_cast<int>(userDataCursor - (char *)userData);
+    FileSystem::WriteToOpenFile(userData, userDataHeader->size);
 
     free(userData);
     FileSystem::CloseWriteFile();

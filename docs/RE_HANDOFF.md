@@ -35,8 +35,8 @@ scripts/repo-python scripts/ci.py
 
 As of this source checkpoint, [PROGRESS.md](PROGRESS.md) reports **1,829
 reviewed function boundaries**, **1,309 source-present mappings**,
-**1,492 complete exact functions / 191,833 original bytes**, including
-**583 confirmed-authored exact / 121,743 bytes**. There are **167 authored
+**1,493 complete exact functions / 193,514 original bytes**, including
+**584 confirmed-authored exact / 123,424 bytes**. There are **166 authored
 source-present nonexact** functions. Original author/source provenance is
 not interchangeable with a reconstructed function's exact codegen. Product
 build, actual game execution, semantic dual-Oracle and portability are
@@ -46,6 +46,7 @@ Recent *accepted* full owners (replay only one affected cohort when needed):
 
 | Exact original owner | Strict acceptance | Evidence |
 | --- | --- | --- |
+| `ReplayManager::SaveReplay @0x00429B60` | 1681/1681; 83/83 fields; independent 21-input cold; same-image replay/file guards412/all33 and shared-artifact ReadIntOperand820 pass | [replay save](evidence/replay-save-1681-exact-20261106/README.md) |
 | `EnemyLaserType1View::Draw @0x0041EA40` | 173/173; 10/10 fields; independent two-input cold; same-image angle94/renderer216 pass | [type-1 draw](evidence/laser-type1-draw-173-exact-20261106/README.md) |
 | `BulletRuntimeView::UpdateVerticalWrap @0x00407E40` | 172/172; 8/8 fields; independent seven-input cold with horizontal148 guard | [vertical wrap](evidence/bullet-vertical-wrap-20261106/README.md) |
 | `BulletRuntimeView::UpdateVectorAcceleration @0x00407560` | 305/305; 10/10 fields; final seven-input cold with horizontal148 guard | [vector acceleration](evidence/bullet-vector-acceleration-20261106/README.md) |
@@ -121,10 +122,13 @@ receipts are ignored private files, not Git attachments.
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |
 | `src/GameStatisticsRecordDefaults.cpp` | `bd62bc5eb20ab8346d8b81d724cd6db90050ed75816e05bd406e47c3711b75d9` |
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
+| `src/ReplayManager.cpp` | `3baf46fe750c0961ea3343fc0010acf8e4beef3a0dd8e88cfcc573954d54ca1f` |
 | `src/TransitionEffect.cpp` | `d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f` |
 
 Preferred current native witnesses (only if the source pin matches):
 
+- Replay Save exact: `build/match-linked/EnemyReadIntOperand/` (shared real graph),
+  [source/image, original field and related-guard pins](evidence/replay-save-1681-exact-20261106/native-result.json).
 - Type-1 Draw exact: `build/match-linked/LaserType1Draw/`,
   [source/image and required-callee pins](evidence/laser-type1-draw-173-exact-20261106/native-result.json).
 - Type-1 box candidate: `build/gpt-web/20261106-laser-type1-box/shared-sample-pointer/`,

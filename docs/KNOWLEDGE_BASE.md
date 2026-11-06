@@ -18,8 +18,8 @@ not current prerequisites.
 like “current ledger 1,482/1,483/1,485”, which were true only when those
 notes were written. The new source-pinned [short handoff](RE_HANDOFF.md) and
 generated [current ledger](PROGRESS.md) supersede them. As of this checkpoint
-the ledger is **1,492 exact functions / 191,833 bytes**, including **583
-confirmed-authored exact / 121,743 bytes**. The previously one-byte-close
+the ledger is **1,493 exact functions / 193,514 bytes**, including **584
+confirmed-authored exact / 123,424 bytes**. The previously one-byte-close
 `TextRenderBufferView::InvertAlpha` is from a *different source and build
 epoch*; the currently installed source's fresh two-TU graph is **138/157**,
 not 156/157. [Current proof and cleanup](evidence/handoff-storage-20261106/README.md)
@@ -31,6 +31,25 @@ evidence. Private archives, inventories and unresolved witnesses under ignored
 delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
+
+## 2026-11-06 complete replay save exact
+
+`ReplayManager::SaveReplay429B60..42A1F0` now passes the complete **1681 bytes /
+83 original-bound fields** (27 REL32, 56 DIR32), including the actual ECX owner,
+EDX path, one stack name and RET4 interface. Natural frame measurement helpers,
+the scoped compressor output and reused packed-byte counter recover the target
+schedule and final SIB encoding. USER offset/length expressions reread actual
+header fields; score storage is the shared `g_GameScoreState` base474C40+4,
+not a separate replay score object or the adjacent harness-anchor name.
+
+The updated MIT reference's save writer supplies concrete source leads;
+original TH10 bytes establish acceptance. A fresh final-source link and an
+independent all21-input canonical cold pass1681/all83 with different PE/PDB
+identities and unchanged83 source/header pins. Both images preserve existing
+replay/file guards412/all33; the cold image also preserves shared-artifact
+ReadIntOperand820. Original boundary/authored provenance remain unchanged.
+Encrypt286/307 stays nonexact; this establishes no runtime/product closure.
+[Complete proof and reproducible selected command](evidence/replay-save-1681-exact-20261106/README.md).
 
 ## 2026-11-06 ECL counted offset cursor restores the complete owner size
 
