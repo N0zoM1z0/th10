@@ -18,8 +18,8 @@ not current prerequisites.
 like “current ledger 1,482/1,483/1,485”, which were true only when those
 notes were written. The new source-pinned [short handoff](RE_HANDOFF.md) and
 generated [current ledger](PROGRESS.md) supersede them. As of this checkpoint
-the ledger is **1,491 exact functions / 191,660 bytes**, including **582
-confirmed-authored exact / 121,570 bytes**. The previously one-byte-close
+the ledger is **1,492 exact functions / 191,833 bytes**, including **583
+confirmed-authored exact / 121,743 bytes**. The previously one-byte-close
 `TextRenderBufferView::InvertAlpha` is from a *different source and build
 epoch*; the currently installed source's fresh two-TU graph is **138/157**,
 not 156/157. [Current proof and cleanup](evidence/handoff-storage-20261106/README.md)
@@ -31,6 +31,19 @@ evidence. Private archives, inventories and unresolved witnesses under ignored
 delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
+
+## 2026-11-06 complete type-1 laser drawing exact
+
+`EnemyLaserType1View::Draw41EA40..41EAEC` is complete173-byte exact, actual
+ECX/RET and original vtable46DA10+C binding. The exact type-0 sibling's
+ordinary Float3 destination helper restores coordinate/rotation/flag store
+timing from the field-displaced173-byte baseline. Primary VM61C is cached;
+the post-render traveled/position/renderer reads remain live, with JP6E->A8
+excluding unordered equality. First final-source and separate all-two-input
+canonical GL/GS colds pass173/all10. Same-image actual angle94/all6 and
+renderer216/all21 pass in both images, including the renderer table. New
+authored exact:173 bytes /one owner; original helper/class/TU and runtime
+remain unknown. See [the complete proof](evidence/laser-type1-draw-173-exact-20261106/README.md).
 
 ## 2026-11-06 statistics-record kind-loop reconstruction
 
@@ -380,6 +393,12 @@ real `/GL` producer reproduces 138/157. The unresolved discrepancy is
 primarily receiver/register allocation. Neither is exact. Existing selected
 text owners replayed 1,799/1,799.
 [Source and compiler proof](evidence/text-alpha-native-sign-branch-20261105/README.md).
+
+A later split pitch-read/multiply control is byte-neutral in both complete
+normal COFF112/157 and real two-input GL138/157. The latter's19 differences
+track EAX/ECX receiver/count/selector allocation. The control restores the
+source exactly; retained evidence is private
+`.analysis/gpt-web/20261106-text-alpha-owner/`. No new exact credit follows.
 
 The ANM 9,964-byte executor now retains sequentially evaluated opcode-91
 child arguments with 9,962/9,964 strict bytes; this source edit was

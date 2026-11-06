@@ -158,21 +158,25 @@ int EnemyLaserType1View::Update()
     return 0;
 }
 
+static void SetType1ScreenPosition(AnmFloat3View *destination,
+    const EnemyLaserVectorView *position)
+{
+    destination->x = position->x + 224.0f;
+    destination->y = position->y + 16.0f;
+    destination->z = position->z;
+}
+
 // Target41EA40: position334 is distinct from the allocating creator's offset340.
 int EnemyLaserType1View::Draw()
 {
     AnmVmView *vm = &primaryVm;
-    primaryVm.position.x = position.x + 224.0f;
-    primaryVm.position.y = position.y + 16.0f;
-    primaryVm.position.z = position.z;
+    SetType1ScreenPosition(&primaryVm.position, &position);
     vm->rotation.z = AddNormalizeAngle(angle, 1.5707964f);
     vm->flags35C |= 4u;
     g_AnmRenderManagerView->Draw(vm);
     if (traveled == 0.0f)
     {
-        secondaryVm.position.x = position.x + 224.0f;
-        secondaryVm.position.y = position.y + 16.0f;
-        secondaryVm.position.z = position.z;
+        SetType1ScreenPosition(&secondaryVm.position, &position);
         g_AnmRenderManagerView->Draw(&secondaryVm);
     }
     return 0;

@@ -35,8 +35,8 @@ scripts/repo-python scripts/ci.py
 
 As of this source checkpoint, [PROGRESS.md](PROGRESS.md) reports **1,829
 reviewed function boundaries**, **1,309 source-present mappings**,
-**1,491 complete exact functions / 191,660 original bytes**, including
-**582 confirmed-authored exact / 121,570 bytes**. There are **168 authored
+**1,492 complete exact functions / 191,833 original bytes**, including
+**583 confirmed-authored exact / 121,743 bytes**. There are **167 authored
 source-present nonexact** functions. Original author/source provenance is
 not interchangeable with a reconstructed function's exact codegen. Product
 build, actual game execution, semantic dual-Oracle and portability are
@@ -46,6 +46,7 @@ Recent *accepted* full owners (replay only one affected cohort when needed):
 
 | Exact original owner | Strict acceptance | Evidence |
 | --- | --- | --- |
+| `EnemyLaserType1View::Draw @0x0041EA40` | 173/173; 10/10 fields; independent two-input cold; same-image angle94/renderer216 pass | [type-1 draw](evidence/laser-type1-draw-173-exact-20261106/README.md) |
 | `BulletRuntimeView::UpdateVerticalWrap @0x00407E40` | 172/172; 8/8 fields; independent seven-input cold with horizontal148 guard | [vertical wrap](evidence/bullet-vertical-wrap-20261106/README.md) |
 | `BulletRuntimeView::UpdateVectorAcceleration @0x00407560` | 305/305; 10/10 fields; final seven-input cold with horizontal148 guard | [vector acceleration](evidence/bullet-vector-acceleration-20261106/README.md) |
 | `GameLoadStartupVersion @0x00420100` | 174/174 bytes; 15/15 fields; independent final six-TU cold, real PBG path entry | [startup version](evidence/startup-version-174-exact-20261106/README.md) |
@@ -77,7 +78,7 @@ confirmed authored code.
 | `StageResetPublishedCameras @0x004216F0` | **465 / 533** | Restored omitted secondary/published +0xE4 dword assignments, respectively 1/0; camera layout stays 0x118. Both fresh `/GL` and normal-COFF complete owners emit 533 bytes /40 fields; vector temporary reuse and global-store scheduling remain nonexact. [Word-store proof](evidence/stage-camera-default-words-20261106/README.md). |
 | `EnemyLaserType0StorageView::Bounce @0x0041CFD0` | **410 / 510** | Actual type-0 vtable46DA60+3C and Update call41D45F bind this owner. Real generated virtual ownership restores ECX/RET; typed XYZ copies and ordered Y predicates are installed. One FireLaser path inlines; factory private arguments/registers remain nonexact. Original Update-entry canonical guard1001/all31 and native polar30/sound123 pass. Bounce-as-entry is rejected (same510; Update1009). Fresh stdcall and complete manager-member controls both give factory157/RET8 with stack request; restored/parked. [Current proof](evidence/laser-bounce-virtual-owner-20261106/README.md). |
 | `InitializeGameStatisticsRecord @0x0042ACB0` | **274 / 274** | Natural110-iteration kind loop shrinks fresh302/12-field source to274/8 in normal COFF and separate `/GL /GS` cold. Full address-bound diagnostic **174/274**, still NONEXACT; field positions disagree. Score copy keeps two cursors and spills group count; kind tail has two SIB differences. Literal/aggregate copies are neutral; method280 and indexed791 restore. [Current proof](evidence/statistics-record-natural-loop-20261106/README.md). |
-| `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** fresh two-TU `/GL /GS` measures **138/157**, zero fields. An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Native current proof is private `.analysis/gpt-web/20261106-text-current-exact/`. |
+| `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** two-TU `/GL /GS` measures **138/157**, zero fields; EAX/ECX receiver/count/selector choice accounts for19 differences. Separate pitch capture/multiply is byte-neutral in normal COFF112/157 and GL138/157; restored. An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Private proofs: `.analysis/gpt-web/20261106-text-current-exact/` and `.analysis/gpt-web/20261106-text-alpha-owner/`. |
 
 Other unaccepted leaves worth *new evidence-led* work: `CMemoryPbgFile::Seek`
 107/107 but 100 matching ordinary bytes; `AnmLoadedView::SetAndExecuteScriptIdx`
@@ -103,6 +104,7 @@ receipts are ignored private files, not Git attachments.
 | `src/Enemy.cpp` | `c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `0eb005f5c6a76acb35a8985229b0c3e1bcc1978b9b70868325a066449a645c77` |
+| `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/BulletManager.cpp` | `fa95d6ff3f5293c8e0df9e66cbcda29be51d3b27902a9b002a52792fc9072929` |
 | `src/Sound.cpp` | `cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b3b0` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
@@ -113,6 +115,8 @@ receipts are ignored private files, not Git attachments.
 
 Preferred current native witnesses (only if the source pin matches):
 
+- Type-1 Draw exact: `build/match-linked/LaserType1Draw/`,
+  [source/image and required-callee pins](evidence/laser-type1-draw-173-exact-20261106/native-result.json).
 - Statistics-record candidate:
   `build/gpt-web/20261106-statistics-record/final-linked/`,
   [full original-bound diagnostic and source pins](evidence/statistics-record-natural-loop-20261106/native-result.json).
