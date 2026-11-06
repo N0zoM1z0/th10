@@ -3224,6 +3224,12 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
     ((currentInstruction->variableArgs.bits & (1 << (argumentNumber))) != 0   \
         ? vm->GetFloatVar(currentInstruction->scalarArgs[(argumentNumber)].real) \
         : currentInstruction->scalarArgs[(argumentNumber)].real)
+// Only vector-timed opcodes use words 2..4 as their encoded XYZ target;
+// use the same variable argument mask and float getter as GET_FLOAT_VAR.
+#define GET_TIMED_VECTOR_FLOAT_VAR(argumentNumber)                       \
+    ((currentInstruction->variableArgs.bits & (1 << (argumentNumber))) != 0 \
+        ? vm->GetFloatVar(currentInstruction->timedVectorTarget.target[(argumentNumber)-2].real) \
+        : currentInstruction->timedVectorTarget.target[(argumentNumber)-2].real)
 #define GET_INT_VAR_PTR(argumentNumber)                                  \
     vm->GetIntVarPtr(                                                    \
         &currentInstruction->scalarArgs[(argumentNumber)].integer,                  \
@@ -3486,7 +3492,8 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             else
                 vm->positionInterpolation.initial = vm->alternatePosition;
             vm->positionInterpolation.final = AnmFloat3View(
-                GET_FLOAT_VAR(2), GET_FLOAT_VAR(3), GET_FLOAT_VAR(4));
+                GET_TIMED_VECTOR_FLOAT_VAR(2), GET_TIMED_VECTOR_FLOAT_VAR(3),
+                GET_TIMED_VECTOR_FLOAT_VAR(4));
             vm->positionInterpolation.ResetTimer();
             break;
         case ANM_OP_COLOR1_TIME:
@@ -3540,7 +3547,8 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         case ANM_OP_ROTATION_TIME:
         {
             const AnmFloat3View finalRotation(
-                GET_FLOAT_VAR(2), GET_FLOAT_VAR(3), GET_FLOAT_VAR(4));
+                GET_TIMED_VECTOR_FLOAT_VAR(2), GET_TIMED_VECTOR_FLOAT_VAR(3),
+                GET_TIMED_VECTOR_FLOAT_VAR(4));
             vm->rotationInterpolation.duration = GET_INT_VAR(0);
             memcpy(&vm->rotationInterpolation.initialTangent, &g_AnmZeroVector491C14,
                    sizeof(vm->rotationInterpolation.initialTangent));

@@ -355,6 +355,20 @@ union AnmOperandScalarWordView
 };
 typedef char AnmOperandScalarNativeWordSize04[
     (sizeof(AnmOperandScalarWordView) == 4) ? 1 : -1];
+// POSITION_TIME and ROTATION_TIME encode a duration, a full 32-bit mode,
+// then three 32-bit variable-or-literal target vector components. Both
+// target triples share this variable-length instruction prefix.
+struct AnmTimedVector3TargetOperandsView
+{
+    int durationOperand;
+    int interpolationMode;
+    AnmOperandScalarWordView target[3];
+};
+typedef char AnmTimedVector3TargetNativeOffsets[
+    (sizeof(AnmTimedVector3TargetOperandsView) == 0x14 &&
+     offsetof(AnmTimedVector3TargetOperandsView, target) == 0x08 &&
+     offsetof(AnmTimedVector3TargetOperandsView, interpolationMode) == 0x04 &&
+     sizeof(((AnmTimedVector3TargetOperandsView *)0)->target[0]) == 4) ? 1 : -1];
 
 struct AnmRawInstructionView
 {
@@ -382,6 +396,7 @@ struct AnmRawInstructionView
         AnmByteStateOperandView byteState;
         AnmDwordStateOperandView dwordState;
         AnmTimedVectorModeOperandsView timedVectorMode;
+        AnmTimedVector3TargetOperandsView timedVectorTarget;
         AnmRenderStateOperandPairView renderStateWords;
         AnmTimedInterpolationOperandsView timedInterpolation;
     };
@@ -431,6 +446,9 @@ typedef char AnmRawInstructionArgumentsAt08[
      offsetof(AnmRawInstructionView, byteState) == 0x08 &&
      offsetof(AnmRawInstructionView, dwordState) == 0x08 &&
      offsetof(AnmRawInstructionView, timedVectorMode) == 0x08 &&
+     offsetof(AnmRawInstructionView, timedVectorTarget) == 0x08 &&
+     offsetof(AnmRawInstructionView, timedVectorTarget) +
+         offsetof(AnmTimedVector3TargetOperandsView, target) == 0x10 &&
      offsetof(AnmRawInstructionView, timedVectorMode) +
        offsetof(AnmTimedVectorModeOperandsView, interpolationMode) == 0x0C &&
      offsetof(AnmRawInstructionView, renderStateWords) == 0x08 &&

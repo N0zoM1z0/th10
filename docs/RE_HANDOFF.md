@@ -196,6 +196,13 @@ retains 9,962/9,964 bytes, all 350 fields and 95 local branch destinations;
 selected operand helpers pass 276/276. The remaining two opcode-91 bytes
 are **not** claimed exact.
 
+[ANM timed XYZ target words](evidence/anm-timed-vector3-target-20261106/README.md):
+POSITION_TIME and ROTATION_TIME now have complete offset-asserted 0x14-byte
+duration/mode/XYZ wire records. Six actual masked float target lookups use
+this view. Full five-TU ExecuteScript stays **9,962/9,964**, all **350**
+fields and 95 local destinations intact, with direct getters **568/568 exact**.
+Opcode-91 remains NONEXACT.
+
 [ANM allocated vertex pairs](evidence/anm-generated-vertex-pairs-20261106/README.md):
 ANM opcode 84 now models the actual 0x38-byte pair of two 0x1C-byte
 render vertices. Fresh 5-TU full ExecuteScript retains 9,962/9,964 target
@@ -250,8 +257,8 @@ EnemyEclDispatcher.cpp c1e0e3a356f1d24956a2a3fdf95c95b8787ff7fb6c094fc0a950fc12b
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
 EclVm.cpp          63eb562811821baf48bb2760428a624018a8d33d54b412367e01ddace077b274
 EclVm.hpp          b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52
-AnmManager.cpp     7af073bbdb66376e54d3e7b242f39855a586ae7843e86411766479714d8c8c32
-AnmManager.hpp     23f4e6517de057e72ab34098be290d545e6f25411613fb79085b30815230e425
+AnmManager.cpp     fe0c381a142518b78ddb30b0d9d9c95a3b95bb301e1b055fc4641eb5a6960b35
+AnmManager.hpp     3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667
 BulletManager.cpp  2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa
 BulletManager.hpp  725f281ee37e77f7490d339c1072eaecd6177816aae1b52969f2ac977915fd53
 ```
