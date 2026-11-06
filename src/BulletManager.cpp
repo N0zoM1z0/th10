@@ -207,6 +207,9 @@ void BulletRuntimeView::UpdatePolarAcceleration()
     }
 }
 
+// The three direction-change variants increment the signed cycle counter
+// as a native 32-bit word. The low word wraps even at INT_MAX; retain the
+// signed comparison against int1 after publishing that word.
 // Targets 0x00407780 and 0x004078E0. Both operate on transform state 3.
 // Their retail calls use a private ESI receiver recovered from BulletUpdateRuntime.
 void BulletRuntimeView::UpdateRelativeDirectionChange()
@@ -219,7 +222,8 @@ void BulletRuntimeView::UpdateRelativeDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        ++state.int2;
+        state.int2 = static_cast<int>(
+            static_cast<unsigned int>(state.int2) + 1u);
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE;
 
@@ -259,7 +263,8 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        ++state.int2;
+        state.int2 = static_cast<int>(
+            static_cast<unsigned int>(state.int2) + 1u);
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
 
@@ -321,7 +326,8 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
-        ++state.int2;
+        state.int2 = static_cast<int>(
+            static_cast<unsigned int>(state.int2) + 1u);
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED;
 
