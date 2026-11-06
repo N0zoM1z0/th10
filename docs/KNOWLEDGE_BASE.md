@@ -1,5 +1,19 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-06 capture rectangle complete authored exact
+
+`AnmRenderManagerView::RequestCaptureRectangle @0x00424480` (162 bytes)
+now reproduces the complete TH10 target in a **real three-TU LTCG context**.
+Two-TU attempts plateaued at161/162 even with the correct independent
+capture destination/source store order. Linking the actual AnmManager
+FindVm implementation (receiver EDX) alongside FrontEnd and VmIdInterrupt
+recovers the one remaining byte without forcing registers. Six original
+fields are independently bound; two independent zero-reuse colds confirm
+capture162, FindVm73 and ResultMenuClose89 all exact. This is +162 original
+confirmed-authored exact bytes, not a runtime or original-TU proof.
+[Complete evidence](evidence/anm-capture-rectangle-exact-20261106/README.md).
+
+
 This index retains target-observed boundaries, structure layouts, private ABI
 constraints, canonical exact findings, and useful negative constraints. It is
 **not** an experiment journal or a live similarity scoreboard. Older transient

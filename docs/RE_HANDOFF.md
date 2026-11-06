@@ -33,11 +33,11 @@ scripts/repo-python scripts/ci.py
 
 ## Resume at this checkpoint
 
-Latest source checkpoint: `f3a6d2f` (replay construction/shared state). Its
-selected 34-input Create and 21-input Save cold builds pass; Initialize remains
-nonexact. This handoff
-maintenance changes documentation and regenerable artifacts only; use live
-Git status/log to identify its subsequent checkpoint.
+Latest accepted checkpoint: `AnmRenderManagerView::RequestCaptureRectangle`
+162/162/all six original fields from two independent real three-TU cold links.
+The preceding ECL, Enemy ECL, ANM and bullet word-arithmetic commits remain
+source-semantic improvements with selected exact guards, not new whole-owner
+credit. Always use live Git status/log; the tree may be dirty during work.
 
 - Choose one bounded owner with a new concrete lead. The Init two-load order
   mismatch is reproduced in real 26/36-input contexts; missing file-system context
@@ -53,15 +53,20 @@ Git status/log to identify its subsequent checkpoint.
 - Reference source is pinned at `d1f3121`; its synthetic stand-in/escape
   contexts are not local acceptance recipes. Save1681 and Ending1568 are
   already credited; do not count their guard replays as new progress.
-- No native compile/cold replay is required just to take over. Rebuild only
-  the selected changed owner and affected exact interfaces when work resumes.
+- The FrontEnd capture owner now exact (162/162 original fields six): the
+  complete result-menu caller graph needs real `AnmManager.cpp` as a support
+  translation unit. Reordering destination/source rect stores alone gives
+  161/162, not exact; actual FindVm linkage restores final EDX. See
+  [capture proof](evidence/anm-capture-rectangle-exact-20261106/README.md).
+- No full historical cold replay is needed for handoff. Rebuild only selected
+  changed owners and affected exact interfaces as work resumes.
 
 ## Acceptance ledger — generated truth, not a runnable-game claim
 
 As of this source checkpoint, [PROGRESS.md](PROGRESS.md) reports **1,829
 reviewed function boundaries**, **1,309 source-present mappings**,
-**1,494 complete exact functions / 195,082 original bytes**, including
-**585 confirmed-authored exact / 124,992 bytes**. There are **165 authored
+**1,495 complete exact functions / 195,244 original bytes**, including
+**586 confirmed-authored exact / 125,154 bytes**. There are **164 authored
 source-present nonexact** functions. Original author/source provenance is
 not interchangeable with a reconstructed function's exact codegen. Product
 build, actual game execution, semantic dual-Oracle and portability are
@@ -71,6 +76,7 @@ Recent *accepted* full owners (replay only one affected cohort when needed):
 
 | Exact original owner | Strict acceptance | Evidence |
 | --- | --- | --- |
+| `AnmRenderManagerView::RequestCaptureRectangle @0x00424480` | 162/162, six target-bound fields; two independent real FrontEnd/VmIdInterrupt/AnmManager three-TU colds; same-image FindVm73 and result close89 exact | [capture rectangle](evidence/anm-capture-rectangle-exact-20261106/README.md) |
 | `EndingTextVmView::Run @0x0040BD80` | 1568/1568; 92/92 fields; 53 direct locals and all18 owned table words; independent 21-input cold; existing guards953/all24 pass | [ending execution](evidence/ending-run-1568-exact-20261106/README.md) |
 | `ReplayManager::SaveReplay @0x00429B60` | 1681/1681; 83/83 fields; independent 21-input cold; same-image replay/file guards412/all33 and shared-artifact ReadIntOperand820 pass | [replay save](evidence/replay-save-1681-exact-20261106/README.md) |
 | `EnemyLaserType1View::Draw @0x0041EA40` | 173/173; 10/10 fields; independent two-input cold; same-image angle94/renderer216 pass | [type-1 draw](evidence/laser-type1-draw-173-exact-20261106/README.md) |
@@ -135,6 +141,7 @@ receipts are ignored private files, not Git attachments.
 
 | Installed source | SHA-256 |
 | --- | --- |
+| `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `e4c4e24b4e7c3879e2a88265c161867a3ea8db5dcfe6d9abc6bf0d833beb0707` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
 | `src/EclVm.cpp` | `3b4af08fec32d38a1323575365bdbbb9e211afef25adfc1d0ad6de881ebc8c7b` |

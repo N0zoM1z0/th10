@@ -4579,14 +4579,16 @@ int AnmRenderManagerView::RequestCaptureRectangle(
     int sourceX = static_cast<int>(sprite->sourceX);
     if (captureSurfaceIndex >= 0)
         return -1;
+    // Publish the destination rectangle before the source crop; these are
+    // independent fields but the order also matches the native store schedule.
     captureSurfaceIndex = vm->anmFile->anmFileIndex;
-    captureSourceX = sourceX;
-    captureDestinationY = y;
     captureDestinationX = x;
+    captureDestinationY = y;
     captureDestinationWidth = width;
+    captureDestinationHeight = height;
+    captureSourceX = sourceX;
     captureSourceHeight = sourceHeight;
     captureSourceY = sourceY;
-    captureDestinationHeight = height;
     captureSourceWidth = sourceWidth;
     captureRequestState = 0;
     return 0;
