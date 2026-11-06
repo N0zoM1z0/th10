@@ -32,6 +32,27 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-06 type-1 box cutter real owner and vector source
+
+`46DA10+18 ->41EB00` independently binds the existing type-1 virtual box
+method. Its maintained body moves from the disconnected collision view to
+`EnemyLaserType1View`. Original negated XY rejects accept unordered operands;
+the previous positive bounds chain did not. Sample Z is explicitly cleared
+at target+16E after vector addition. The existing typed float-vector API
+restores the original0x344 frame and intermediate XYZ copies; real request
+aliases444/464/466 replace provisional field names. Sharing one sample
+pointer across bounds and Item Spawn removes the extra LEA and restores the
+first13 field positions, without granting prefix credit.
+
+Current four-input GL/GS native candidate is complete1209 bytes /20 fields,
+against original1171/19; strict comparator rejects its extent. The factory
+still inlines its type-0 branch; standalone factory153/151, world creator
+116/118 and Item Spawn code795/793 show unresolved real-callee context.
+Original virtual ABI and all target branches belong to this bounded source
+recovery; it is **not exact**. Same-image polar30 and bounds91/all4 pass; selected canonical type-1 Update
+832/all34 cold passes.
+[Whole-owner facts, current pins and selected caller guard](evidence/laser-type1-box-owner-20261106/README.md).
+
 ## 2026-11-06 updated external TH10 source leads
 
 The preserved `_reference/th10-decomp` baseline `c6791d8` (October 18) now
