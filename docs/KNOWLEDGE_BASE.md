@@ -18,8 +18,8 @@ not current prerequisites.
 like “current ledger 1,482/1,483/1,485”, which were true only when those
 notes were written. The new source-pinned [short handoff](RE_HANDOFF.md) and
 generated [current ledger](PROGRESS.md) supersede them. As of this checkpoint
-the ledger is **1,489 exact functions / 191,183 bytes**, including **580
-confirmed-authored exact / 121,093 bytes**. The previously one-byte-close
+the ledger is **1,490 exact functions / 191,488 bytes**, including **581
+confirmed-authored exact / 121,398 bytes**. The previously one-byte-close
 `TextRenderBufferView::InvertAlpha` is from a *different source and build
 epoch*; the currently installed source's fresh two-TU graph is **138/157**,
 not 156/157. [Current proof and cleanup](evidence/handoff-storage-20261106/README.md)
@@ -31,6 +31,19 @@ evidence. Private archives, inventories and unresolved witnesses under ignored
 delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
+
+## 2026-11-06 complete bullet vector acceleration exact
+
+`UpdateVectorAcceleration @0x00407560` is now complete305-byte canonical exact.
+Expiry-first control flow, captured XYZ products and an ordinary reference-add
+boundary recover the12-byte frame, Z spill and velocity rereads from the285-byte
+baseline. The exact aimed-direction sibling's ordered subframe read resolves
+seven remaining x87 operand bytes; original volatile qualification is unknown.
+A first final-source link and a separate all-seven-input canonical cold both
+pass305/all10; related horizontal148/all8 passes. New authored exact:305 bytes /
+one owner. Same-artifact AbsoluteDirection remains333/335, now with all8 fields
+independently original-bound; +0xD7/+0xDD differ. See
+[the complete proofs](evidence/bullet-vector-acceleration-20261106/README.md).
 
 ## 2026-11-06 input frame publication and repeat-cursor lifetimes
 

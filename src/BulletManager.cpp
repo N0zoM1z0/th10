@@ -138,21 +138,32 @@ void BulletRuntimeView::UpdateDeceleration()
     }
 }
 
+static inline PlayerFloat3 &AddVectorAcceleration(
+    PlayerFloat3 &velocity, const AnmFloat3View &acceleration)
+{
+    velocity.x += acceleration.x;
+    velocity.y += acceleration.y;
+    velocity.z += acceleration.z;
+    return velocity;
+}
+
 void BulletRuntimeView::UpdateVectorAcceleration()
 {
     BulletExStateView &state = exStates[1];
-    if (state.timer.current < state.int0) {
+    if (state.timer.current >= state.int0) {
+        activeTransformFlags &= ~BULLET_TRANSFORM_ACCELERATE_VECTOR;
+    }
+    else {
         speed += g_AnmGameSpeed * state.value0;
-        velocity.x += g_AnmGameSpeed * state.vector.x;
-        velocity.y += g_AnmGameSpeed * state.vector.y;
-        velocity.z += g_AnmGameSpeed * state.vector.z;
+        AnmFloat3View acceleration;
+        acceleration.x = g_AnmGameSpeed * state.vector.x;
+        acceleration.y = g_AnmGameSpeed * state.vector.y;
+        acceleration.z = g_AnmGameSpeed * state.vector.z;
+        AddVectorAcceleration(velocity, acceleration);
         if (fabsf(velocity.x) > 0.0001f ||
             fabsf(velocity.y) > 0.0001f) {
             angle = static_cast<float>(atan2(velocity.y, velocity.x));
         }
-    }
-    else {
-        activeTransformFlags &= ~BULLET_TRANSFORM_ACCELERATE_VECTOR;
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
@@ -160,8 +171,11 @@ void BulletRuntimeView::UpdateVectorAcceleration()
         state.timer.subframe += 1.0f;
     }
     else {
-        state.timer.subframe += *state.timer.scale;
-        state.timer.current = static_cast<int>(state.timer.subframe);
+        float nextSubframe =
+            *reinterpret_cast<volatile float *>(&state.timer.subframe);
+        nextSubframe += *state.timer.scale;
+        state.timer.subframe = nextSubframe;
+        state.timer.current = static_cast<int>(nextSubframe);
     }
 }
 

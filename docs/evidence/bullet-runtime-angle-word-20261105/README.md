@@ -1,5 +1,10 @@
 # TH10 runtime bullet angle: overlapping binary32 and raw word
 
+**Proof update, 2026-11-06:** a fresh final-source seven-input cold now
+independently binds all8 original fields and compares333/335, retaining the
+same two operand differences. See [the complete current contract](../bullet-vector-acceleration-20261106/README.md).
+The candidate-field diagnostics below remain the earlier source/proof epoch.
+
 Original: Japanese TH10 v1.00a, SHA-256
 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
 

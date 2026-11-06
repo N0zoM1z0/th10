@@ -1,0 +1,58 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_pins": {
+    "src/BulletManager.cpp": "504af18f27223934c35a1f35794d138ebbd1a58d8ff859bc042cf965f8b8e372",
+    "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+    "src/BulletTransform.cpp": "51201c2ba53e5929e395bcccad13cfa250800148793ab8fc31301160ad008ad7",
+    "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+    "src/AnmManager.cpp": "94070661d61c5e144811bf220ac4cd618aac5cdfc0b3b3f7941a0ce4e12ff973",
+    "src/EnemyEclDispatcher.cpp": "0f496115327b594e053e3aa5e92f37addf5c968a23a613649b0b4376d5e1b034",
+    "src/Enemy.cpp": "c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2",
+    "src/BulletManager.hpp": "725f281ee37e77f7490d339c1072eaecd6177816aae1b52969f2ac977915fd53",
+    "src/AnmManager.hpp": "3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667",
+    "src/Player.hpp": "d8a40d5abfeb6b3fed4704142fd5aa0cd2467e141a825ece93ef5f18ee8ec182"
+  },
+  "new_unit": "bullet-update-vector-acceleration",
+  "first_final_source_link": {
+    "result": "exact",
+    "matched_bytes": 305,
+    "fields": 10,
+    "image_sha256": "1358a07b4f04b63f1877bcb1c752da62cda9a513dec565b3f3ebb99cf6bd63c5",
+    "six_support_objects_reused_after_hash_checks": true
+  },
+  "canonical_cold": {
+    "result": "exact",
+    "all_seven_inputs_recompiled": true,
+    "matched_bytes": 453,
+    "new_owner_bytes": 305,
+    "new_owner_fields": 10,
+    "horizontal_guard_bytes": 148,
+    "horizontal_guard_fields": 8,
+    "image_sha256": "20cfec73887ecbc4df5e1054302eaab4b83f52479e6e3fdbf5ea4ec8d930b5c1",
+    "pdb_guid": "0b05d6f2aaac1940bd3b8e218c2ebf6e",
+    "normalization_complete": true,
+    "decoded_new_owner_bytes": 305,
+    "first_differences": []
+  },
+  "absolute_owner": {
+    "result": "mismatch",
+    "size": 335,
+    "matched_bytes": 333,
+    "normalization_complete": true,
+    "first_differences": [
+      {
+        "offset": "0xD7",
+        "linked": 134,
+        "target": 150
+      },
+      {
+        "offset": "0xDD",
+        "linked": 80,
+        "target": 82
+      }
+    ]
+  },
+  "absolute_bound_fields": 8,
+  "new_authored_exact_bytes": 305,
+  "new_exact_functions": 1
+}
