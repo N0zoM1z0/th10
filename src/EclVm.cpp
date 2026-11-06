@@ -880,7 +880,9 @@ jump_instruction:
                 stack.Pop('i', sizeof(right.integer), &right.integer);
                 EclVmScalar left;
                 stack.Pop('i', sizeof(left.integer), &left.integer);
-                left.integer += right.integer;
+                // The native integer VM operates on 32-bit words: add,
+                // subtract and multiply wrap even at the signed limits.
+                left.bits += right.bits;
                 stack.Push('i', sizeof(left.integer), &left.integer);
                 break;
             }
@@ -891,7 +893,7 @@ jump_instruction:
                 stack.Pop('i', sizeof(right.integer), &right.integer);
                 EclVmScalar left;
                 stack.Pop('i', sizeof(left.integer), &left.integer);
-                left.integer -= right.integer;
+                left.bits -= right.bits;
                 stack.Push('i', sizeof(left.integer), &left.integer);
                 break;
             }
@@ -902,7 +904,7 @@ jump_instruction:
                 stack.Pop('i', sizeof(right.integer), &right.integer);
                 EclVmScalar left;
                 stack.Pop('i', sizeof(left.integer), &left.integer);
-                left.integer *= right.integer;
+                left.bits *= right.bits;
                 stack.Push('i', sizeof(left.integer), &left.integer);
                 break;
             }
@@ -1152,7 +1154,7 @@ jump_instruction:
             {
                 EclVmScalar value;
                 stack.Pop('i', sizeof(value.integer), &value.integer);
-                value.integer = -value.integer;
+                value.bits = 0u - value.bits;
                 stack.Push('i', sizeof(value.integer), &value.integer);
                 break;
             }
@@ -1174,7 +1176,7 @@ jump_instruction:
                 EclVmScalar value;
                 value.integer = ReadInt(0);
                 int *destination = ResolveInt(0);
-                *destination = value.integer - 1;
+                *destination = static_cast<int>(value.bits - 1u);
                 stack.Push('i', sizeof(value.integer), &value.integer);
                 break;
             }

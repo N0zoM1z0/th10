@@ -88,7 +88,7 @@ confirmed authored code.
 | Target | Original vs current complete owner | What is known; next meaningful investigation |
 | --- | --- | --- |
 | `AnmRenderManagerView::ExecuteScript @0x0043EE30` | **9,964 / 9,964** | **9,962/9,964** original bytes, **350/350 independently original-bound fields**, 95 local targets. Opcode 91 registers at +0x113/+0x115 (original EDX, candidate ECX). Current source also explicitly wraps three integer assignment ops. Do not retry failed aggregate, volatile, member-order or layer-lifetime permutations without a new compiler lead. [Current-source proof](evidence/anm-integer-assignment-wrap-20261106/README.md). |
-| `EclVmContext::Run @0x0044E1A0` | **7,020 / 7,020** | **6,997/7,020**, **189/189 bound fields**. Remaining 23 ordinary byte differences include register/stack homes, `LENGTH_SQUARED`, `POINT_ANGLE`, FORMAT and loop/callback paths. `STORE_INT`/`STORE_FLOAT`, CALL, JUMP and stack scalar work are installed. [Current full-source proof](evidence/ecl-counted-offset-cursor-20261106/README.md). |
+| `EclVmContext::Run @0x0044E1A0` | **7,020 / 7,020** | **6,997/7,020**, **189/189 bound fields**. Remaining 23 ordinary byte differences include register/stack homes, `LENGTH_SQUARED`, `POINT_ANGLE`, FORMAT and loop/callback paths. `STORE_INT`/`STORE_FLOAT`, CALL, JUMP and stack scalar work are installed; add/subtract/multiply/negate/post-decrement now explicitly preserve 32-bit wrap without new exact credit ([proof](evidence/ecl-integer-word-wrap-20261106/README.md)). [Current full-source proof](evidence/ecl-counted-offset-cursor-20261106/README.md). |
 | `EnemyRuntimeView::DispatchEclInstruction @0x0040E770` | **14,416 / 14,352** | 64-byte length gap; **716 candidate** fields. Fresh 11-TU source/PDB codegen checks are mostly candidate-vs-candidate, **not** a full independently bound target acceptance. Typed spawn record, position, word clear and bullet call are installed. [Caller record](evidence/enemy-pattern-bullet-descriptor-boundary-20261106/README.md). |
 | `EnemyBeginSpell @0x00409280` | **2,432 / 2,432** | **108 candidate** fields but many ordinary code differences. Source bonus arithmetic now explicitly wraps modulo 2^32 before the signed cap. Same extent is not exact. [Bonus proof](evidence/enemy-begin-spell-bonus-wrap-20261106/README.md). |
 | `EclVmScriptDatabase::AddScriptData @0x00450220` | **589 / 589** | **510/589**, **2/2 original-bound fields**. Count-reference growth and read-only loop view of the actual input-parameter cursor restore0x10 frame, old-table EBP, REP MOVSD+FB and both CRT call positions. First count/fill/merge-tail register scheduling remains nonexact; no identity selector. Early count/whole-cursor/force-inline controls are parked. [Current proof](evidence/ecl-counted-offset-cursor-20261106/README.md). |
@@ -131,7 +131,7 @@ receipts are ignored private files, not Git attachments.
 | --- | --- |
 | `src/AnmManager.cpp` | `94070661d61c5e144811bf220ac4cd618aac5cdfc0b3b3f7941a0ce4e12ff973` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
-| `src/EclVm.cpp` | `1f11255ba18029f5ac8513eb735d48df31bd79b4dc5dd811b0e6a27cd8e17e37` |
+| `src/EclVm.cpp` | `f7d7e6e1aa4a1939cae3a05e03f883d3725d18ad8d9f599a8915a066571929fb` |
 | `src/EclVm.hpp` | `b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `0f496115327b594e053e3aa5e92f37addf5c968a23a613649b0b4376d5e1b034` |
