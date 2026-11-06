@@ -202,9 +202,17 @@ struct EnemyBulletPatternFieldsView
     float spawnPositionX;         // +0x004, FIRE_BULLET_PATTERN
     float spawnPositionY;         // +0x008
     float spawnPositionZ;         // +0x00c
-    float angleA;                  // +0x010, SET_BULLET_ANGLE(1)
+    union
+    {
+        float angleA;
+        unsigned int angleABits;
+    };                  // +0x010, SET_BULLET_ANGLE(1)
     float angleB;                  // +0x014, SET_BULLET_ANGLE(2)
-    float speedA;                  // +0x018
+    union
+    {
+        float speedA;
+        unsigned int speedABits;
+    };                  // +0x018
     float speedB;                  // +0x01c
     unsigned char unknown020[0x1f4 - 0x020];
     unsigned short countA;        // +0x1f4, SET_BULLET_COUNT(1)
@@ -225,8 +233,10 @@ typedef char EnemyBulletPatternHeaderOffsets[
      offsetof(EnemyBulletPatternFieldsView, spawnPositionY) == 8 &&
      offsetof(EnemyBulletPatternFieldsView, spawnPositionZ) == 0x0c &&
      offsetof(EnemyBulletPatternFieldsView, angleA) == 0x10 &&
+     offsetof(EnemyBulletPatternFieldsView, angleABits) == 0x10 &&
      offsetof(EnemyBulletPatternFieldsView, angleB) == 0x14 &&
      offsetof(EnemyBulletPatternFieldsView, speedA) == 0x18 &&
+     offsetof(EnemyBulletPatternFieldsView, speedABits) == 0x18 &&
      offsetof(EnemyBulletPatternFieldsView, speedB) == 0x1c) ? 1 : -1];
 typedef char EnemyBulletPatternTailOffsets[
     (offsetof(EnemyBulletPatternFieldsView, countA) == 0x1f4 &&

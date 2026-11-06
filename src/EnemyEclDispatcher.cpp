@@ -2138,13 +2138,13 @@ dispatch_difficulty_float_index_4_a:
     }
     bulletPatterns[iVar26].fields.countA = 1;
     bulletPatterns[iVar26].fields.countB = 1;
-    *reinterpret_cast<unsigned int *>(&bulletPatterns[iVar26].fields.angleA) = 0;
-    *reinterpret_cast<unsigned int *>(&bulletPatterns[iVar26].fields.speedA) = 0x40000000;
+    bulletPatterns[iVar26].fields.angleABits = 0;
+    bulletPatterns[iVar26].fields.speedABits = 0x40000000u;
     bulletPatterns[iVar26].fields.soundId = 7;
     bulletPatterns[iVar26].fields.soundVariant = 0x18;
     bulletPatterns[iVar26].fields.flags1FC = 0x203;
-    *reinterpret_cast<unsigned int *>(&bulletPatternOffsets[iVar26].x) = 0;
-    *reinterpret_cast<unsigned int *>(&bulletPatternOffsets[iVar26].y) = 0;
+    reinterpret_cast<EnemyPositionDwordView *>(&bulletPatternOffsets[iVar26])->word[0] = 0;
+    reinterpret_cast<EnemyPositionDwordView *>(&bulletPatternOffsets[iVar26])->word[1] = 0;
     return 0;
   case ENEMY_ECL_COPY_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
