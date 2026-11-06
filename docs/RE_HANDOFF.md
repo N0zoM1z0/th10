@@ -35,8 +35,8 @@ scripts/repo-python scripts/ci.py
 
 As of this source checkpoint, [PROGRESS.md](PROGRESS.md) reports **1,829
 reviewed function boundaries**, **1,309 source-present mappings**,
-**1,488 complete exact functions / 191,009 original bytes**, including
-**579 confirmed-authored exact / 120,919 bytes**. There are **171 authored
+**1,489 complete exact functions / 191,183 original bytes**, including
+**580 confirmed-authored exact / 121,093 bytes**. There are **170 authored
 source-present nonexact** functions. Original author/source provenance is
 not interchangeable with a reconstructed function's exact codegen. Product
 build, actual game execution, semantic dual-Oracle and portability are
@@ -46,6 +46,7 @@ Recent *accepted* full owners (replay only one affected cohort when needed):
 
 | Exact original owner | Strict acceptance | Evidence |
 | --- | --- | --- |
+| `GameLoadStartupVersion @0x00420100` | 174/174 bytes; 15/15 fields; independent final six-TU cold, real PBG path entry | [startup version](evidence/startup-version-174-exact-20261106/README.md) |
 | `AnmFloatRectView::DrawGradient @0x0043BFA0` | 501/501 bytes; 14/14 source/callee/global fields, real 14-TU context | [gradient](evidence/anm-gradient-rect-501-exact-20261106/README.md) |
 | `BulletManagerView::SpawnBulletPattern @0x004073E0` | 194/194; 6/6 fields; real four-TU context | [bullet](evidence/bullet-spawn-pattern-194-exact-20261106/README.md) |
 | `EnemyLaserManagerStorageView::AccumulatePointChecks @0x0041C880` | 54/54 *unmasked* bytes, zero external fields; **original authored provenance indeterminate** | [laser](evidence/enemy-laser-point-checks-54-exact-20261106/README.md) |
@@ -100,6 +101,7 @@ receipts are ignored private files, not Git attachments.
 | `src/Sound.cpp` | `cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b3b0` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
+| `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |
 
 Preferred current native witnesses (only if the source pin matches):
 

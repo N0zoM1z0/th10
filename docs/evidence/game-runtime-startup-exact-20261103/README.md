@@ -1,5 +1,10 @@
 # TH10 complete 186-byte runtime bootstrap — canonical exact
 
+**Dependency update, 2026-11-06:** the separately owned 174-byte
+`GameLoadStartupVersion` is now [canonical exact](../startup-version-174-exact-20261106/README.md).
+Its nonexact status below records this bootstrap proof's earlier source epoch.
+The 186-byte bootstrap receives no additional credit from that dependency.
+
 Target original Japanese TH10 1.00a 0x004201B0..0x00420269 is a reviewed,
 CC-delimited **186-byte** game startup function. The target executable matches
 `config/target.toml`. Previous Ghidra function inventory missed this pointer-

@@ -18,8 +18,8 @@ not current prerequisites.
 like “current ledger 1,482/1,483/1,485”, which were true only when those
 notes were written. The new source-pinned [short handoff](RE_HANDOFF.md) and
 generated [current ledger](PROGRESS.md) supersede them. As of this checkpoint
-the ledger is **1,488 exact functions / 191,009 bytes**, including **579
-confirmed-authored exact / 120,919 bytes**. The previously one-byte-close
+the ledger is **1,489 exact functions / 191,183 bytes**, including **580
+confirmed-authored exact / 121,093 bytes**. The previously one-byte-close
 `TextRenderBufferView::InvertAlpha` is from a *different source and build
 epoch*; the currently installed source's fresh two-TU graph is **138/157**,
 not 156/157. [Current proof and cleanup](evidence/handoff-storage-20261106/README.md)
@@ -31,6 +31,19 @@ evidence. Private archives, inventories and unresolved witnesses under ignored
 delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
+
+## 2026-11-06 complete startup version loader exact
+
+`GameLoadStartupVersion @0x00420100` owns 174 bytes through `0x004201AD`.
+Its archive-success body contains a version-file null-failure branch; the
+archive failure follows the successful return, and both errors share the
+original Fatal tail. The real six-source PBG path graph retains ECX archive
+transport with the existing PBG `/Ob1` and normal ResFile partition. A first
+final-source link and a separate all-six-input canonical cold both compare
+174/174 bytes with all 15 independently original-bound fields, complete
+cookie/error exits and local destinations. New authored exact: one owner /
+174 bytes; original TU/data ownership and runtime remain unknown. See
+[the complete proof](evidence/startup-version-174-exact-20261106/README.md).
 
 ## 2026-11-06 camera reset +0xE4 word stores
 

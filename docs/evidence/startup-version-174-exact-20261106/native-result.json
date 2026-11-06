@@ -1,0 +1,34 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "unit": "game-startup-version",
+  "target_address": "0x00420100",
+  "complete_owner_bytes": 174,
+  "source_sha256": {
+    "src/GameStartupVersion.cpp": "125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/FileSystem.cpp": "24b2522081ea8295cb0e293e9c26a9f7bce7b740ed41bbce858d86a630740f57",
+    "src/GameErrorContext.cpp": "844567a9b5580e9554e4a75a9942a9bccc381e90fba3826639df0ac746e21df7",
+    "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+    "src/ResFile.cpp": "fbb971d095319a3a5dd7257f7ae75c4b8e73439a71bbfed155a4c811154fcadd"
+  },
+  "initial_link": {
+    "result": "exact",
+    "matched_bytes": 174,
+    "field_count": 15,
+    "image_sha256": "a4d541b1d2ee9dd7c2d2af747a35e63041020c012563c49d380d59a89006e504",
+    "support_objects_reused_after_hash_checks": 5
+  },
+  "canonical_cold": {
+    "result": "exact",
+    "matched_bytes": 174,
+    "field_count": 15,
+    "image_sha256": "eff11fec4463500a929e7516a9b3db6d6fabcb60f02843f418ebded8977de4e9",
+    "pdb_guid": "678759819beb9647ba8059907d5cba7d",
+    "all_six_translation_units_recompiled": true,
+    "normalization_complete": true,
+    "decoded_bytes": 174,
+    "first_differences": []
+  },
+  "new_authored_exact_bytes": 174,
+  "new_exact_functions": 1
+}

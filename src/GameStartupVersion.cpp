@@ -20,19 +20,20 @@ int GameLoadStartupVersion()
 {
     char versionFile[128];
     int fileSize;
-    if (!g_MainPbgArchive.Load(g_GameStartupArchiveFilename))
+    if (g_MainPbgArchive.Load(g_GameStartupArchiveFilename))
     {
-        th10::g_GameErrorContext.Fatal(
-            const_cast<char *>(g_GameStartupArchiveError));
-        return -1;
+        sprintf(versionFile, g_GameStartupVersionFilenameFormat, 0x100, 'a');
+        g_GameStartupVersionData = FileSystem::OpenFile(versionFile, &fileSize, 0);
+        g_GameStartupVersionSize = fileSize;
+        if (g_GameStartupVersionData == NULL)
+        {
+            th10::g_GameErrorContext.Fatal(
+                const_cast<char *>(g_GameStartupVersionError));
+            return -1;
+        }
+        return 0;
     }
 
-    sprintf(versionFile, g_GameStartupVersionFilenameFormat, 0x100, 'a');
-    g_GameStartupVersionData = FileSystem::OpenFile(versionFile, &fileSize, 0);
-    g_GameStartupVersionSize = fileSize;
-    if (g_GameStartupVersionData != NULL)
-        return 0;
-
-    th10::g_GameErrorContext.Fatal(const_cast<char *>(g_GameStartupVersionError));
+    th10::g_GameErrorContext.Fatal(const_cast<char *>(g_GameStartupArchiveError));
     return -1;
 }
