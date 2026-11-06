@@ -35,7 +35,10 @@ void ItemVectorView::FromAngleMagnitude(float angle, float magnitude)
 
 void GameScoreStateView::AddFaith(int amount)
 {
-    faith += amount / 10;
+    // The target adds two 32-bit words before clamping the signed result.
+    // Unsigned addition preserves native wrap at the signed bounds.
+    faith = static_cast<int>(static_cast<unsigned int>(faith) +
+        static_cast<unsigned int>(amount / 10));
     if (faith > 99999)
         faith = 99999;
 }
@@ -80,7 +83,9 @@ void GameScoreStateView::SetTimerCurrent(int value)
 
 void GameScoreStateView::AddRank(int amount)
 {
-    rank += amount;
+    // The native ADD wraps before the signed [-0x400, 0x400] bounds test.
+    unsigned int &rankWord = reinterpret_cast<unsigned int &>(rank);
+    rankWord += static_cast<unsigned int>(amount);
     if (rank > 0x400)
         rank = 0x400;
     else if (rank < -0x400)
