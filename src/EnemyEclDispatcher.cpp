@@ -1830,8 +1830,8 @@ dispatch_update_primary_anm_bounds:
       vectorScratch.x = selectedMotion->value20;
     }
     vectorScratch.y = (float)fVar19;
-    uVar6 = *reinterpret_cast<unsigned int *>(&selectedMotion->value24);
-    uVar4 = *reinterpret_cast<unsigned int *>(&selectedMotion->value20);
+    uVar6 = selectedMotion->value24Bits;
+    uVar4 = selectedMotion->value20Bits;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
     firstScalarValues = reinterpret_cast<float *>(firstScalarInterpolation);
@@ -1848,10 +1848,10 @@ dispatch_update_primary_anm_bounds:
     secondScalarInterpolation->duration = (int)uVar22;
     secondScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
     secondScalarInterpolation->finalTangent = g_EnemyInterpolationBasis;
-    *reinterpret_cast<unsigned int *>(&secondScalarInterpolation->initial.x) = uVar4;
+    reinterpret_cast<EnemyFloat2NativeBitView *>(&secondScalarInterpolation->initial)->words[0] = uVar4;
     secondScalarInterpolation->final.y = vectorScratch.y;
     secondScalarInterpolation->mode = (int)uVar23;
-    *reinterpret_cast<unsigned int *>(&secondScalarInterpolation->initial.y) = uVar6;
+    reinterpret_cast<EnemyFloat2NativeBitView *>(&secondScalarInterpolation->initial)->words[1] = uVar6;
     secondScalarInterpolation->final.x = vectorScratch.x;
     EnemyInitializeScalarInterpolation(secondScalarInterpolation);
     selectedMotion->velocity = selectedMotion->position;

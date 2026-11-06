@@ -62,13 +62,36 @@ struct EnemyMotionView
     PlayerFloat3 velocity;
     float value18;
     float value1C;
-    float value20;
-    float value24;
+    union
+    {
+        float value20;
+        unsigned int value20Bits;
+    };
+    union
+    {
+        float value24;
+        unsigned int value24Bits;
+    };
     unsigned int flags;
 };
 typedef char EnemyMotionViewSizeIs2C[(sizeof(EnemyMotionView) == 0x2c) ? 1 : -1];
 typedef char EnemyMotionVelocityAt0C[(offsetof(EnemyMotionView, velocity) == 0x0c) ? 1 : -1];
 typedef char EnemyMotionFlagsAt28[(offsetof(EnemyMotionView, flags) == 0x28) ? 1 : -1];
+// Circle interpolation copies the raw binary32 words at +0x20 and +0x24
+// through the VM without x87 round-trips.
+typedef char EnemyMotionCircleScalarBitOffsets[
+    (offsetof(EnemyMotionView, value20) == 0x20 &&
+     offsetof(EnemyMotionView, value20Bits) == 0x20 &&
+     offsetof(EnemyMotionView, value24) == 0x24 &&
+     offsetof(EnemyMotionView, value24Bits) == 0x24) ? 1 : -1];
+
+struct EnemyFloat2NativeBitView
+{
+    unsigned int words[2];
+};
+typedef char EnemyFloat2NativeBitViewIs08[
+    (sizeof(EnemyFloat2NativeBitView) == sizeof(EnemyFloat2) &&
+     sizeof(EnemyFloat2NativeBitView) == 0x08) ? 1 : -1];
 
 // Target 0x44C5D0 is shared by Enemy and Player shot motion. The original
 // vector class name and source owner remain unknown.

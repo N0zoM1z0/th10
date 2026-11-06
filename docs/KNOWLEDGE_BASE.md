@@ -74,6 +74,19 @@ after these source changes. New total **1,485 exact / 190,260 bytes**
 (**577 authored / 120,224 bytes**). See
 [evidence](evidence/midi-stop-playback-single-owner-20261105/README.md).
 
+## 2026-11-06 Enemy ECL circle scalar raw word storage
+
+Enemy `INTERPOLATE_OFFSET_CIRCLE`/`INTERPOLATE_BASE_CIRCLE` use binary32
+bit-preserving transfers from motion fields +0x20/+0x24 to the native
+8-byte initial interpolation pair. The maintained view overlays those
+fields with unsigned DWORD aliases and binds their native sizes/offsets.
+Fresh 11-TU VC7.1 source candidate keeps the 14,352-byte / 716-field
+large Enemy ECL owner unchanged. Three affected existing original-bound
+owners, including the complete **652-byte** scalar interpolation evaluator,
+selectively cold-pass **682/682** exact bytes. The original ECL boss remains
+14,416 bytes / NONEXACT; no new canonical credit.
+[Evidence](evidence/enemy-circle-scalar-bits-20261106/README.md).
+
 ## 2026-11-06 EnemyLaser AccumulatePointChecks 54-byte exact / origin unknown
 
 `EnemyLaserManagerStorageView::AccumulatePointChecks @0x0041C880` is a
