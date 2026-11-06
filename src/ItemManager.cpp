@@ -45,7 +45,9 @@ void GameScoreStateView::AddFaith(int amount)
 
 void GameScoreStateView::DecayFaith(int amount)
 {
-    faith -= amount / 10;
+    // Reconstruct the original 32-bit word subtraction before the signed cap.
+    faith = static_cast<int>(static_cast<unsigned int>(faith) -
+        static_cast<unsigned int>(amount / 10));
     if (faith < 5000)
         faith = 5000;
 }
@@ -77,7 +79,8 @@ void GameScoreStateView::SetTimerCurrent(int value)
         timer.flags |= 1u;
     }
     timer.current = value;
-    timer.previous = value - 1;
+    // Native timer publication stores the low 32 bits even at INT_MIN.
+    timer.previous = static_cast<int>(static_cast<unsigned int>(value) - 1u);
     timer.subframe = (float)value;
 }
 

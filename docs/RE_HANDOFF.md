@@ -47,6 +47,9 @@ Git status/log to identify its subsequent checkpoint.
 - Score/rank 32-bit wrapping now matches original signed-clamp semantics with
   both existing exact leaf owners preserved (see
   [word arithmetic](evidence/item-score-word-wrap-20261106/README.md)).
+- Faith decay and timer previous-frame publication now likewise avoid
+  signed-overflow UB, with selected original-bound native 46/46 and 59/59
+  comparisons ([follow-on proof](evidence/item-faith-decay-timer-wrap-20261106/README.md)).
 - Reference source is pinned at `d1f3121`; its synthetic stand-in/escape
   contexts are not local acceptance recipes. Save1681 and Ending1568 are
   already credited; do not count their guard replays as new progress.
@@ -143,7 +146,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
-| `src/ItemManager.cpp` | `5a6456fb03757f25ad6769f43fdd627858a5f08d3bbd137aa8f5d86e11043073` |
+| `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletManager.cpp` | `fa95d6ff3f5293c8e0df9e66cbcda29be51d3b27902a9b002a52792fc9072929` |
 | `src/Sound.cpp` | `cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b3b0` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
