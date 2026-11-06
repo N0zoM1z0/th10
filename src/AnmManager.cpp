@@ -3579,7 +3579,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         case ANM_OP_ALLOC_VERTICES:
             vm->renderMode = 9;
             vm->generatedVertices = malloc(
-                GET_INT_VAR(0) * sizeof(AnmRenderVertexView) * 2);
+                GET_INT_VAR(0) * sizeof(AnmGeneratedVertexPairView));
             break;
         case ANM_OP_I_SET:
             *GET_INT_VAR_PTR(0) = GET_INT_VAR(1);

@@ -1118,6 +1118,18 @@ struct AnmRenderVertexView
 
 typedef char AnmRenderVertexViewSizeIs1C[
     (sizeof(AnmRenderVertexView) == 0x1c) ? 1 : -1];
+// ANM_OP_ALLOC_VERTICES reserves exactly two consecutive 0x1c-byte
+// renderer vertices for each requested logical point (0x38 bytes total).
+// The existing VM pointer still owns the same allocation; the paired
+// layout only describes the native byte count used by the opcode.
+struct AnmGeneratedVertexPairView
+{
+    AnmRenderVertexView first;
+    AnmRenderVertexView second;
+};
+typedef char AnmGeneratedVertexPairNativeLayout[
+    (sizeof(AnmGeneratedVertexPairView) == 0x38 &&
+     offsetof(AnmGeneratedVertexPairView, second) == 0x1c) ? 1 : -1];
 typedef char AnmRenderVertexUvOffsets[
     (offsetof(AnmRenderVertexView, uv) == 0x14 &&
      offsetof(AnmRenderVertexView, u) == 0x14 &&
