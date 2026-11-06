@@ -32,6 +32,24 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-06 ECL counted offset cursor restores the complete owner size
+
+`EclVmScriptDatabase::AddScriptData450220` now emits the complete589-byte
+original extent, from fresh prior585. An ordinary count-reference helper and
+read-only volatile loop view of the actual input parameter home remove the
+extra offset local/volatile old-table model. The original0x10 frame, saved
+old-table EBP, REP MOVSD+FB and CRT call positions+6C/+101 return. Whole-owner
+strict comparison is **510/589, all2 original-bound fields**, still nonexact;
+79 ordinary register/schedule differences remain. No identity pointer select,
+forced-inline annotation, profile or ABI change is retained. Early count
+snapshots/references and whole-cursor volatility regress; park those controls.
+
+The final current-source two-input GL cold preserves generic Run6997/7020,
+all189 fields and all60 jump words/88 selectors. The maintained diagnostic
+covers its now-undecoded selector suffix without changing the comparator.
+ReadFloatValue171/all4 and Find136 pass in the same image; selected canonical
+Find136 cold also passes. [Complete pins and evidence](evidence/ecl-counted-offset-cursor-20261106/README.md).
+
 ## 2026-11-06 type-1 box cutter real owner and vector source
 
 `46DA10+18 ->41EB00` independently binds the existing type-1 virtual box

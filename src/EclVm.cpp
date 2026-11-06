@@ -382,6 +382,16 @@ float *EclVmContext::ResolveFloat(unsigned int index)
 }
 
 
+// Count-reference source lead: levzzz5154/th10-decomp, MIT (c) 2026 levzzz,
+// d1f31212514781c928fba145d8207397c8fb5650,
+// matching2/msvc/src/script/sptlib/ecl_name_table.cpp.
+// See docs/licenses/th10-decomp-MIT.txt.
+static void AddEclSubroutineCount(int &count, int added)
+{
+    count += added;
+}
+
+
 int EclVmScriptDatabase::AddScriptData(void *scriptData)
 {
     const unsigned int SCPT_MAGIC = 0x54504353u;
@@ -400,21 +410,22 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     }
 
     file = *fileSlot;
-    EclVmSubroutineEntry *volatile previousEntries = subroutines;
+    // The input parameter becomes the offset cursor. Keep its loop reads
+    // in that stack slot; ordinary writes can still feed the name calculation.
+    void *const volatile &offsetCursor = scriptData;
+    EclVmSubroutineEntry *oldEntries = subroutines;
+    EclVmSubroutineEntry *previousEntries = subroutines;
     scriptData = reinterpret_cast<unsigned char *>(file)
         + sizeof(EclVmScriptFileHeader) + file->includeLength;
-    EclVmSerializedSubroutineOffsetView *volatile offsets =
-        static_cast<EclVmSerializedSubroutineOffsetView *>(scriptData);
-    const int totalCount = subroutineCount + file->subroutineCount;
     const char *name = reinterpret_cast<const char *>(
-        offsets + file->subroutineCount);
-    subroutineCount = totalCount;
+        static_cast<EclVmSerializedSubroutineOffsetView *>(scriptData) + file->subroutineCount);
+    AddEclSubroutineCount(subroutineCount, file->subroutineCount);
     EclVmSubroutineEntry *const newEntries =
         static_cast<EclVmSubroutineEntry *>(
         malloc(subroutineCount * sizeof(EclVmSubroutineEntry)));
     subroutines = newEntries;
 
-    if (previousEntries == NULL)
+    if (oldEntries == NULL)
     {
         int index = 0;
         if (subroutineCount > 0)
@@ -422,11 +433,11 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
             do
             {
                 subroutines[index].header =
-                    reinterpret_cast<unsigned char *>(files[fileCount]) + offsets->instructionOffset;
+                    reinterpret_cast<unsigned char *>(files[fileCount]) + static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset;
                 subroutines[index].name = name;
                 name += strlen(name) + 1;
                 ++index;
-                ++offsets;
+                scriptData = static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor) + 1;
             } while (index < subroutineCount);
         }
     }
@@ -434,13 +445,13 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     {
         int sortedCount = subroutineCount
             - files[fileCount]->subroutineCount;
-        memcpy(newEntries, previousEntries,
+        memcpy(newEntries, oldEntries,
                sortedCount * sizeof(EclVmSubroutineEntry));
         if (previousEntries != NULL)
             free(previousEntries);
 
         int added = 0;
-        if (files[fileCount]->subroutineCount != 0)
+        if (files[fileCount]->subroutineCount > 0u)
         {
             do
             {
@@ -462,10 +473,10 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                     subroutines[index] = subroutines[index - 1];
 
                 subroutines[insertionIndex].header =
-                    reinterpret_cast<unsigned char *>(files[fileCount]) + offsets->instructionOffset;
+                    reinterpret_cast<unsigned char *>(files[fileCount]) + static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset;
                 subroutines[insertionIndex].name = name;
                 name += strlen(name) + 1;
-                ++offsets;
+                scriptData = static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor) + 1;
                 ++sortedCount;
                 ++added;
             } while (added < files[fileCount]->subroutineCount);

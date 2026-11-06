@@ -67,10 +67,10 @@ confirmed authored code.
 | Target | Original vs current complete owner | What is known; next meaningful investigation |
 | --- | --- | --- |
 | `AnmRenderManagerView::ExecuteScript @0x0043EE30` | **9,964 / 9,964** | **9,962/9,964** original bytes, **350/350 independently original-bound fields**, 95 local targets. Opcode 91 registers at +0x113/+0x115 (original EDX, candidate ECX). Current source also explicitly wraps three integer assignment ops. Do not retry failed aggregate, volatile, member-order or layer-lifetime permutations without a new compiler lead. [Current-source proof](evidence/anm-integer-assignment-wrap-20261106/README.md). |
-| `EclVmContext::Run @0x0044E1A0` | **7,020 / 7,020** | **6,997/7,020**, **189/189 bound fields**. Remaining 23 ordinary byte differences include register/stack homes, `LENGTH_SQUARED`, `POINT_ANGLE`, FORMAT and loop/callback paths. `STORE_INT`/`STORE_FLOAT`, CALL, JUMP and stack scalar work are installed. [STORE proof](evidence/ecl-stores-scalar-lvalues-20261106/README.md). |
+| `EclVmContext::Run @0x0044E1A0` | **7,020 / 7,020** | **6,997/7,020**, **189/189 bound fields**. Remaining 23 ordinary byte differences include register/stack homes, `LENGTH_SQUARED`, `POINT_ANGLE`, FORMAT and loop/callback paths. `STORE_INT`/`STORE_FLOAT`, CALL, JUMP and stack scalar work are installed. [Current full-source proof](evidence/ecl-counted-offset-cursor-20261106/README.md). |
 | `EnemyRuntimeView::DispatchEclInstruction @0x0040E770` | **14,416 / 14,352** | 64-byte length gap; **716 candidate** fields. Fresh 11-TU source/PDB codegen checks are mostly candidate-vs-candidate, **not** a full independently bound target acceptance. Typed spawn record, position, word clear and bullet call are installed. [Caller record](evidence/enemy-pattern-bullet-descriptor-boundary-20261106/README.md). |
 | `EnemyBeginSpell @0x00409280` | **2,432 / 2,432** | **108 candidate** fields but many ordinary code differences. Source bonus arithmetic now explicitly wraps modulo 2^32 before the signed cap. Same extent is not exact. [Bonus proof](evidence/enemy-begin-spell-bonus-wrap-20261106/README.md). |
-| `EclVmScriptDatabase::AddScriptData @0x00450220` | **589 / 585** | Checked script-file slot reload after validation; `REP MOVSD` and two call fields still displaced. [SCPT proof](evidence/ecl-script-slot-reload-20261105/README.md). |
+| `EclVmScriptDatabase::AddScriptData @0x00450220` | **589 / 589** | **510/589**, **2/2 original-bound fields**. Count-reference growth and read-only loop view of the actual input-parameter cursor restore0x10 frame, old-table EBP, REP MOVSD+FB and both CRT call positions. First count/fill/merge-tail register scheduling remains nonexact; no identity selector. Early count/whole-cursor/force-inline controls are parked. [Current proof](evidence/ecl-counted-offset-cursor-20261106/README.md). |
 | `EclVmContext::StartSubroutine` | **550 / 551** | Four caller field positions preserved; direct signed/source pointer lifetime scheduling unresolved. **NONEXACT**. [CALL proof](evidence/ecl-call-counted-inline-name-20261106/README.md). |
 | `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x004078E0` | **335 / 335** at Vector source epoch | Last complete measurement **333/335**, **8/8 independently original-bound fields**, at BulletManager.cpp `504af18f...` before the vertical-wrap change. EAX/EDX at +0xD7/+0xDD remain the measured nonexact frontier; its source body is unchanged. [Pinned proof](evidence/bullet-vector-acceleration-20261106/README.md). |
 | `SoundPlayerView::LoadSoundSample` / `PreloadBgm` | **684 / 684**; **369 / 369** | Respectively **678/684** and **365/369** ordinary bytes in suitable five-TU graphs; mainly call argument register order. Many simple declaration/alias and wrapper trials already failed. [Sound wire evidence](evidence/sound-riff-chunk-prefix-20261105/README.md). |
@@ -107,7 +107,7 @@ receipts are ignored private files, not Git attachments.
 | --- | --- |
 | `src/AnmManager.cpp` | `94070661d61c5e144811bf220ac4cd618aac5cdfc0b3b3f7941a0ce4e12ff973` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
-| `src/EclVm.cpp` | `480e2c574242417024b67b7295f5c367fc52cda59b83dd29bc704df74568a566` |
+| `src/EclVm.cpp` | `1f11255ba18029f5ac8513eb735d48df31bd79b4dc5dd811b0e6a27cd8e17e37` |
 | `src/EclVm.hpp` | `b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52` |
 | `src/EnemyEclDispatcher.cpp` | `0f496115327b594e053e3aa5e92f37addf5c968a23a613649b0b4376d5e1b034` |
 | `src/Enemy.cpp` | `c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2` |
@@ -144,7 +144,10 @@ Preferred current native witnesses (only if the source pin matches):
 - ANM five-TU whole executor:
   `build/gpt-web/20261106-handoff-anm-wrap/current/gptweb-proof.json`,
   `docs/evidence/anm-integer-assignment-wrap-20261106/README.md`.
-- ECL two-TU `Run`:
+- ECL counted-offset cursor589 and whole Run7020:
+  `build/gpt-web/20261106-ecl-count-reference/final/`,
+  [current source/image and complete comparisons](evidence/ecl-counted-offset-cursor-20261106/native-result.json).
+- Earlier ECL two-TU `Run` source epoch (check its pins):
   `build/gpt-web/20261106-ecl-store-word/current/native-result.json`,
   `docs/evidence/ecl-stores-scalar-lvalues-20261106/README.md`.
 - Enemy 11-TU dispatcher/BeginSpell:
