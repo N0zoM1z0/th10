@@ -2131,7 +2131,7 @@ dispatch_difficulty_float_index_4_a:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
     iVar11 = iVar26 * static_cast<int>(sizeof(EnemyBulletPatternView)) + (int)runtimeAddress;
-    puVar5 = (unsigned int *)(iVar11 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns)));
+    puVar5 = EnemyPatternAtRuntimeByte(iVar11)->words;
     for (iVar27 = 0x84; iVar27 != 0; iVar27 = iVar27 + -1) {
       *puVar5 = 0;
       puVar5 = puVar5 + 1;
