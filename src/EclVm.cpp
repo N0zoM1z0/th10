@@ -1085,43 +1085,53 @@ jump_instruction:
 
             case ECL_VM_LOGICAL_OR:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                logicalResult = left != 0 || right != 0;
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                logicalResult = left.integer != 0 || right.integer != 0;
                 PushInt(this, logicalResult);
                 break;
             }
 
             case ECL_VM_LOGICAL_AND:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                logicalResult = left != 0 && right != 0;
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                logicalResult = left.integer != 0 && right.integer != 0;
                 PushInt(this, logicalResult);
                 break;
             }
 
             case ECL_VM_BITWISE_XOR:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left ^ right);
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                PushInt(this, left.integer ^ right.integer);
                 break;
             }
 
             case ECL_VM_BITWISE_OR:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left | right);
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                PushInt(this, left.integer | right.integer);
                 break;
             }
 
             case ECL_VM_BITWISE_AND:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left & right);
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                PushInt(this, left.integer & right.integer);
                 break;
             }
 
