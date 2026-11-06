@@ -193,6 +193,20 @@ static __forceinline EnemyBulletPatternView *EnemyPatternAtRuntimeByte(int byteA
             offsetof(EnemyRuntimeView, bulletPatterns)));
 }
 
+// This complete 0x210-byte Enemy pattern has the *same wire fields* as the
+// bullet manager's spawn descriptor at this call boundary. The native
+// renderer consumes it directly; no intermediate descriptor is allocated.
+typedef char EnemyPatternBulletSpawnDescriptorOverlap[
+    (sizeof(EnemyBulletPatternView) == sizeof(BulletSpawnDescriptorView) &&
+     offsetof(EnemyBulletPatternFieldsView, spriteId) ==
+         offsetof(BulletSpawnDescriptorView, bulletType) &&
+     offsetof(EnemyBulletPatternFieldsView, spawnPositionX) ==
+         offsetof(BulletSpawnDescriptorView, position) &&
+     offsetof(EnemyBulletPatternFieldsView, countA) ==
+         offsetof(BulletSpawnDescriptorView, count1) &&
+     offsetof(EnemyBulletPatternFieldsView, flags1FC) ==
+         offsetof(BulletSpawnDescriptorView, transformFlags)) ? 1 : -1];
+
 // The five direct opcode stores use one checked overlapping-record address.
 // Keep each access expression local to its original argument read. Hoisting
 // this pointer across those reads changes the full dispatcher's LTCG liveness.
@@ -2179,7 +2193,7 @@ dispatch_difficulty_float_index_4_a:
        bulletProtectionRadiusSquared <= fVar9)) {
       reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
           SpawnBulletPattern(reinterpret_cast<BulletSpawnDescriptorView *>(
-              iVar26 + static_cast<int>(offsetof(EnemyRuntimeView, bulletPatterns))));
+              EnemyPatternAtRuntimeByte(iVar26)));
       return 0;
     }
     break;
