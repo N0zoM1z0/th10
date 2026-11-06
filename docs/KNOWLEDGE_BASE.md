@@ -18,8 +18,8 @@ not current prerequisites.
 like “current ledger 1,482/1,483/1,485”, which were true only when those
 notes were written. The new source-pinned [short handoff](RE_HANDOFF.md) and
 generated [current ledger](PROGRESS.md) supersede them. As of this checkpoint
-the ledger is **1,493 exact functions / 193,514 bytes**, including **584
-confirmed-authored exact / 123,424 bytes**. The previously one-byte-close
+the ledger is **1,494 exact functions / 195,082 bytes**, including **585
+confirmed-authored exact / 124,992 bytes**. The previously one-byte-close
 `TextRenderBufferView::InvertAlpha` is from a *different source and build
 epoch*; the currently installed source's fresh two-TU graph is **138/157**,
 not 156/157. [Current proof and cleanup](evidence/handoff-storage-20261106/README.md)
@@ -31,6 +31,30 @@ evidence. Private archives, inventories and unresolved witnesses under ignored
 delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
+
+## 2026-11-06 complete ending script execution exact
+
+`EndingTextVmView::Run40BD80..40C39F` now passes the complete **1568 bytes /
+92 original-bound fields**, including all53 direct local destinations and the
+18-entry table at40C358. Existing stack receiver/RET4, high boundary review
+and medium authored-game origin review remain unchanged. The fresh baseline
+was1514/1568 with54 ordinary differences; it is superseded by the complete proof.
+
+Stored-ID lookup and a single text-call expression restore the text-ring path.
+A real pending-ID cursor restores the scaled-timer x87 operand order, and
+loading-flag source order restores the original OR/path/flag schedule. Animation
+opcodes8/15/16/17 read a16-byte command prefix with destination/resource/script
+dwords at+4/+8/+C. Capturing that view after release closes the last28 argument
+and result register differences. Publication still rereads the current
+instruction after creation. No explicit return-output slots, forced inlining,
+fake ABI, volatile control, shared-header or compiler-profile change is used.
+
+An independent all21-input canonical cold repeats1568/all92 with different
+PE/PDB identities and unchanged83 source/header pins. Constructor648,
+LoadScript106, decoder41, pending-ID65 and direct caller Tick93 pass953/all24
+in both images, including worker-member EH binding. Updated MIT reference
+expressions are source leads; local original bytes establish acceptance.
+[Complete proof and selected replay](evidence/ending-run-1568-exact-20261106/README.md).
 
 ## 2026-11-06 complete replay save exact
 

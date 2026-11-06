@@ -35,8 +35,8 @@ scripts/repo-python scripts/ci.py
 
 As of this source checkpoint, [PROGRESS.md](PROGRESS.md) reports **1,829
 reviewed function boundaries**, **1,309 source-present mappings**,
-**1,493 complete exact functions / 193,514 original bytes**, including
-**584 confirmed-authored exact / 123,424 bytes**. There are **166 authored
+**1,494 complete exact functions / 195,082 original bytes**, including
+**585 confirmed-authored exact / 124,992 bytes**. There are **165 authored
 source-present nonexact** functions. Original author/source provenance is
 not interchangeable with a reconstructed function's exact codegen. Product
 build, actual game execution, semantic dual-Oracle and portability are
@@ -46,6 +46,7 @@ Recent *accepted* full owners (replay only one affected cohort when needed):
 
 | Exact original owner | Strict acceptance | Evidence |
 | --- | --- | --- |
+| `EndingTextVmView::Run @0x0040BD80` | 1568/1568; 92/92 fields; 53 direct locals and all18 owned table words; independent 21-input cold; existing guards953/all24 pass | [ending execution](evidence/ending-run-1568-exact-20261106/README.md) |
 | `ReplayManager::SaveReplay @0x00429B60` | 1681/1681; 83/83 fields; independent 21-input cold; same-image replay/file guards412/all33 and shared-artifact ReadIntOperand820 pass | [replay save](evidence/replay-save-1681-exact-20261106/README.md) |
 | `EnemyLaserType1View::Draw @0x0041EA40` | 173/173; 10/10 fields; independent two-input cold; same-image angle94/renderer216 pass | [type-1 draw](evidence/laser-type1-draw-173-exact-20261106/README.md) |
 | `BulletRuntimeView::UpdateVerticalWrap @0x00407E40` | 172/172; 8/8 fields; independent seven-input cold with horizontal148 guard | [vertical wrap](evidence/bullet-vertical-wrap-20261106/README.md) |
@@ -84,8 +85,9 @@ confirmed authored code.
 | `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** two-TU `/GL /GS` measures **138/157**, zero fields; EAX/ECX receiver/count/selector choice accounts for19 differences. Separate pitch capture/multiply is byte-neutral in normal COFF112/157 and GL138/157; restored. An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Private proofs: `.analysis/gpt-web/20261106-text-current-exact/` and `.analysis/gpt-web/20261106-text-alpha-owner/`. |
 
 Updated external reference: `_reference/th10-decomp-d1f3121` preserves the
-November 1 head alongside the October 18 checkout. Its 16 newly promoted
-regions map to 15 open local entries. Prioritize the three substantial laser
+November 1 head alongside the October 18 checkout. At review start its 16
+promotions mapped to 15 open local entries. SaveReplay and Ending Run are now
+accepted here; 13 remain open. Prioritize the three substantial laser
 cutters and ECL count-reference model using our real callees; synthetic
 caller/escape/stand-in contexts confer no local exact credit. See the
 [review/crosswalk](evidence/upstream-th10-decomp-review-20261106/README.md).
@@ -110,6 +112,7 @@ receipts are ignored private files, not Git attachments.
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
 | `src/EclVm.cpp` | `1f11255ba18029f5ac8513eb735d48df31bd79b4dc5dd811b0e6a27cd8e17e37` |
 | `src/EclVm.hpp` | `b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52` |
+| `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `0f496115327b594e053e3aa5e92f37addf5c968a23a613649b0b4376d5e1b034` |
 | `src/Enemy.cpp` | `c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
@@ -127,6 +130,8 @@ receipts are ignored private files, not Git attachments.
 
 Preferred current native witnesses (only if the source pin matches):
 
+- Ending Run exact: `build/match-linked/EndingTextRun/`,
+  [complete source/image, original fields, table and guard pins](evidence/ending-run-1568-exact-20261106/native-result.json).
 - Replay Save exact: `build/match-linked/EnemyReadIntOperand/` (shared real graph),
   [source/image, original field and related-guard pins](evidence/replay-save-1681-exact-20261106/native-result.json).
 - Type-1 Draw exact: `build/match-linked/LaserType1Draw/`,

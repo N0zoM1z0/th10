@@ -40,10 +40,16 @@ Pinned primary notes and source diffs:
 ## What the upstream numbers mean
 
 The pinned regions manifest reduces equivalent regions from 23 to 7,
-promoting 16 entries. Fifteen of those entry addresses are still nonexact in
-our ledger; `GuiView::UpdateStageElements @414900` is already exact here.
+promoting 16 entries. At review start fifteen of those entry addresses were
+nonexact in our ledger; `GuiView::UpdateStageElements @414900` was already exact.
 [inventory.json](inventory.json) records the address/source crosswalk and
 manifest hash. Entries establish where to investigate, with no local credit.
+
+Subsequent local complete-owner proofs accepted
+[SaveReplay1681](../replay-save-1681-exact-20261106/README.md) and
+[Ending Run1568](../ending-run-1568-exact-20261106/README.md), leaving13 of those
+promoted entry addresses open. The inventory's review-start flags remain
+historical; current exact counts come from the local generated ledger.
 
 Upstream's current README reports 91.3% exact game bytes and an estimated
 99.6% after weighting matching instructions within equivalent functions.
