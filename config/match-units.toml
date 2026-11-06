@@ -5452,6 +5452,30 @@ linkages = [
   { offset = 0x79, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
 ]
 
+[units.bullet-update-vertical-wrap]
+artifact_kind = "linked-pe"
+source = "src/BulletManager.cpp"
+support_sources = ["src/BulletRuntime.cpp", "src/BulletTransform.cpp", "src/PlayerCollision.cpp", "src/AnmManager.cpp", "src/EnemyEclDispatcher.cpp", "src/Enemy.cpp"]
+output_dir = "build/match-linked/BulletHorizontalWrap"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?BulletManagerUpdateCallback@@YIHPAUBulletManagerView@@@Z"
+functions = ["BulletRuntimeView::UpdateVerticalWrap"]
+symbol = "?UpdateVerticalWrap@BulletRuntimeView@@QAEXXZ"
+target_address = 0x00407E40
+size = 172
+linkages = [
+  { offset = 0x15, type = "REL32", symbol = "?IsOutsidePlayfield@BulletWrapPositionView@@QAEHMM@Z", target = 0x004061D0 },
+  { offset = 0x2A, type = "DIR32", symbol = "__real@0000000000000000", target = 0x00470B70 },
+  { offset = 0x41, type = "DIR32", symbol = "?g_BulletCullBottom@@3MA", target = 0x00470B38 },
+  { offset = 0x4F, type = "DIR32", symbol = "?g_BulletCullBottom@@3MA", target = 0x00470B38 },
+  { offset = 0x5F, type = "DIR32", symbol = "?g_BulletCullBottom@@3MA", target = 0x00470B38 },
+  { offset = 0x7B, type = "REL32", symbol = "?Add@AnmVmTimerView@@QAEXM@Z", target = 0x0044BF40 },
+  { offset = 0x8A, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x91, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+]
+
 [units.bullet-manager-update]
 artifact_kind = "linked-pe"
 source = "src/BulletManager.cpp"

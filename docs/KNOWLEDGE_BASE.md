@@ -18,8 +18,8 @@ not current prerequisites.
 like “current ledger 1,482/1,483/1,485”, which were true only when those
 notes were written. The new source-pinned [short handoff](RE_HANDOFF.md) and
 generated [current ledger](PROGRESS.md) supersede them. As of this checkpoint
-the ledger is **1,490 exact functions / 191,488 bytes**, including **581
-confirmed-authored exact / 121,398 bytes**. The previously one-byte-close
+the ledger is **1,491 exact functions / 191,660 bytes**, including **582
+confirmed-authored exact / 121,570 bytes**. The previously one-byte-close
 `TextRenderBufferView::InvertAlpha` is from a *different source and build
 epoch*; the currently installed source's fresh two-TU graph is **138/157**,
 not 156/157. [Current proof and cleanup](evidence/handoff-storage-20261106/README.md)
@@ -31,6 +31,20 @@ evidence. Private archives, inventories and unresolved witnesses under ignored
 delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
+
+## 2026-11-06 complete bullet vertical wrap exact
+
+`UpdateVerticalWrap @0x00407E40..0x00407EEB` is complete172-byte canonical
+exact with the actual EBX/RET interface. Target branch tests reload Y;
+successful branches read sprite height first and join before the position
+store and timer Add. Sound capture follows Add, and the timer expiry check
+also covers the no-wrap path. Branch-local timer/sound tails plus scoped
+ordered reads recover the complete instruction/register layout. Direct
+compound expressions avoid the extra x87 temporaries from separate locals;
+original volatile qualification is unknown. First final-source link and
+independent all-seven-input canonical cold pass172/all8; related horizontal
+148/all8 passes. New authored exact:172 bytes /one owner. See
+[the complete proof](evidence/bullet-vertical-wrap-20261106/README.md).
 
 ## 2026-11-06 complete bullet vector acceleration exact
 

@@ -462,26 +462,26 @@ void BulletRuntimeView::UpdateVerticalWrap()
             IsOutsidePlayfield(sprite->width, sprite->height) == 0)
         return;
 
-    BulletExStateView &state = exStates[7];
-    int &soundId = transformSound;
+    volatile float &y = position.y;
+    if (y < 0.0) {
+        position.y += *reinterpret_cast<volatile float *>(&sprite->height) +
+            g_BulletCullBottom;
+        exStates[7].timer.Add(-1.0f);
+        if (transformSound >= 0) {
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(transformSound, 0);
+        }
+    }
+    else if (y > g_BulletCullBottom) {
+        position.y -= *reinterpret_cast<volatile float *>(&sprite->height) +
+            g_BulletCullBottom;
+        exStates[7].timer.Add(-1.0f);
+        if (transformSound >= 0) {
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(transformSound, 0);
+        }
+    }
 
-    if (position.y < 0.0) {
-        position.y += sprite->height + g_BulletCullBottom;
-    }
-    else if (position.y > g_BulletCullBottom) {
-        position.y -= sprite->height + g_BulletCullBottom;
-    }
-    else {
-        goto checkTimer;
-    }
-
-    state.timer.Add(-1.0f);
-    if (soundId >= 0) {
-        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-            QueueSoundSample(soundId, 0);
-    }
-
-checkTimer:
     if (exStates[7].timer.current <= 0)
         activeTransformFlags ^= BULLET_TRANSFORM_WRAP_Y;
 }
