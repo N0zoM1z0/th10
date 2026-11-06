@@ -1,5 +1,19 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-06 text rasterization native word geometry
+
+The reconstructed `TextRenderBufferView::InvertAlpha` and both 554/509-byte
+`RenderTextToTexture` source functions now compute row and screen/texture
+geometry using unsigned i386 low-word operations before signed publication,
+removing signed overflow UB without inventing range guards. All three
+current-source normal COFF candidates remain **ordinary-byte identical** to
+the preceding source; same-graph linked PDB contributions are also identical,
+although the alternate function remains575 vs original509 in the `/GL`
+context and the current `/GL /GS` inverter is only138/157. Affected three
+canonical exact units cold-replay1799/1799, no new exact credit.
+[Scoped proof](evidence/text-native-word-geometry-20261106/README.md).
+
+
 ## 2026-11-06 capture rectangle complete authored exact
 
 `AnmRenderManagerView::RequestCaptureRectangle @0x00424480` (162 bytes)

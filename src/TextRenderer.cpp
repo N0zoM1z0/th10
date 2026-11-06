@@ -144,7 +144,10 @@ bool __stdcall TextRenderBufferApplyAlphaBleed(
 bool TextRenderBufferView::InvertAlpha(int processedRows)
 {
     unsigned short *wordPixels = static_cast<unsigned short *>(pixels);
-    int totalBytes = pitch * processedRows;
+    // Bitmap row count is a native low-32-bit signed product.
+    int totalBytes = static_cast<int>(
+        static_cast<unsigned int>(pitch) *
+        static_cast<unsigned int>(processedRows));
     unsigned char *bytes = reinterpret_cast<unsigned char *>(wordPixels);
     int index;
     switch (format)
@@ -208,6 +211,9 @@ extern "C" long __stdcall D3DXLoadSurfaceFromMemory(
 
 // Target 0x00437DB0. The two old-font restores around the second inversion
 // and bleed are both present in TH10. HRESULTs are intentionally unchecked.
+// Both rendering paths use the source i386 low 32 bits for screen-space
+// coordinates and upload rectangles, without signed-overflow UB. On the
+// original MSVC32 compiler the conversions retain those machine words.
 void __stdcall TextHelperView::RenderTextToTexture(
     const D3d9RectView *rectangle, int x, int glyphWidth,
     unsigned int color, const char *text, D3d9TextureView *texture)
@@ -250,14 +256,17 @@ void __stdcall TextHelperView::RenderTextToTexture(
     memset(g_TextRenderBuffer.pixels, 0, g_TextRenderBuffer.imageSize);
     HDC hdc = g_TextRenderBuffer.deviceContext;
     HGDIOBJ previousFont = SelectObject(hdc, font);
-    int processedRows = glyphWidth * 2 + 6;
+    int processedRows = static_cast<int>(
+        static_cast<unsigned int>(glyphWidth) * 2u + 6u);
     g_TextRenderBuffer.InvertAlpha(processedRows);
     SetBkMode(hdc, TRANSPARENT);
     int textLength = static_cast<int>(strlen(text));
     SetTextColor(hdc, 0);
-    TextOutA(hdc, x * 2 + 2, 2, text, textLength);
+    TextOutA(hdc, static_cast<int>(static_cast<unsigned int>(x) * 2u + 2u),
+        2, text, textLength);
     SetTextColor(hdc, color);
-    TextOutA(hdc, x * 2, 0, text, textLength);
+    TextOutA(hdc, static_cast<int>(static_cast<unsigned int>(x) * 2u),
+        0, text, textLength);
     SelectObject(hdc, previousFont);
     g_TextRenderBuffer.InvertAlpha(processedRows);
     TextRenderBufferApplyAlphaBleed(&g_TextRenderBuffer, processedRows);
@@ -266,8 +275,11 @@ void __stdcall TextHelperView::RenderTextToTexture(
     D3d9RectView sourceRect;
     sourceRect.left = 0;
     sourceRect.top = 0;
-    sourceRect.right = (rectangle->right - rectangle->left) * 2 + 22;
-    sourceRect.bottom = glyphWidth * 2 + 2;
+    sourceRect.right = static_cast<int>(
+        (static_cast<unsigned int>(rectangle->right) -
+         static_cast<unsigned int>(rectangle->left)) * 2u + 22u);
+    sourceRect.bottom = static_cast<int>(
+        static_cast<unsigned int>(glyphWidth) * 2u + 2u);
     if (sourceRect.right > 1024)
         sourceRect.right = 1024;
     D3d9SurfaceView *surface;
@@ -325,12 +337,14 @@ void __stdcall TextHelperView::RenderTextToTextureAlternate(
     g_TextRenderBuffer.FillColor(color);
     HDC hdc = g_TextRenderBuffer.deviceContext;
     HGDIOBJ previousFont = SelectObject(hdc, font);
-    int processedRows = glyphWidth * 2 + 6;
+    int processedRows = static_cast<int>(
+        static_cast<unsigned int>(glyphWidth) * 2u + 6u);
     g_TextRenderBuffer.InvertAlpha(processedRows);
     SetBkMode(hdc, TRANSPARENT);
     int textLength = static_cast<int>(strlen(text));
     SetTextColor(hdc, color);
-    TextOutA(hdc, x * 2, 0, text, textLength);
+    TextOutA(hdc, static_cast<int>(static_cast<unsigned int>(x) * 2u),
+        0, text, textLength);
     SelectObject(hdc, previousFont);
     g_TextRenderBuffer.InvertAlpha(processedRows);
     TextRenderBufferApplyAlphaBleed(&g_TextRenderBuffer, processedRows);
@@ -339,8 +353,11 @@ void __stdcall TextHelperView::RenderTextToTextureAlternate(
     D3d9RectView sourceRect;
     sourceRect.left = 0;
     sourceRect.top = 0;
-    sourceRect.right = (rectangle->right - rectangle->left) * 2 + 22;
-    sourceRect.bottom = glyphWidth * 2 + 2;
+    sourceRect.right = static_cast<int>(
+        (static_cast<unsigned int>(rectangle->right) -
+         static_cast<unsigned int>(rectangle->left)) * 2u + 22u);
+    sourceRect.bottom = static_cast<int>(
+        static_cast<unsigned int>(glyphWidth) * 2u + 2u);
     if (sourceRect.right > 1024)
         sourceRect.right = 1024;
     D3d9SurfaceView *surface;
