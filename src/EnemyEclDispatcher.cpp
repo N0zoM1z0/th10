@@ -2424,16 +2424,22 @@ dispatch_select_bullet_count_low:
     EnemyPatternAtRuntimeByte(iVar26)->fields.countB = (short)uVar22;
     return 0;
   case ENEMY_ECL_INTERPOLATE_BULLET_COUNT_BY_RANK:
+    // Native SUB, ADD and IMUL keep the low 32-bit word even on overflow.
+    // The subsequent signed division still rounds toward zero.
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
     secondLowBulletCount = ENEMY_READ_INT_DIRECT(2);
     uVar24 = ENEMY_READ_INT_DIRECT(3);
     uVar25 = ENEMY_READ_INT_DIRECT(4);
     iVar27 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView));
-    iVar26 = ((int)uVar24 - (int)uVar23) * (g_EnemyChapterState.rank + 0x400);
+    iVar26 = static_cast<int>((static_cast<unsigned int>(uVar24) -
+        static_cast<unsigned int>(uVar23)) *
+        (static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x400u));
     EnemyPatternAtRuntimeByte(iVar27 + (int)runtimeAddress)->fields.countA =
          (short)(iVar26 / 2048) + (short)uVar23;
-    iVar26 = ((int)uVar25 - secondLowBulletCount) * (g_EnemyChapterState.rank + 0x400);
+    iVar26 = static_cast<int>((static_cast<unsigned int>(uVar25) -
+        static_cast<unsigned int>(secondLowBulletCount)) *
+        (static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x400u));
     EnemyPatternAtRuntimeByte(iVar27 + (int)runtimeAddress)->fields.countB =
          (short)(iVar26 / 2048) +
          (short)secondLowBulletCount;
@@ -2926,11 +2932,16 @@ dispatch_rank_int_low:
     *puVar5 = (int)uVar22;
     return 0;
   case ENEMY_ECL_INTERPOLATE_INT_BY_RANK:
+    // Restore native word-wrap interpolation before signed division and
+    // final 32-bit value publication, without widening the product.
     uVar22 = ReadIntArgument(1);
     uVar23 = ReadIntArgument(2);
     piVar7 = (int *)((int)ResolveIntArgument(0));
-    iVar26 = ((int)uVar23 - (int)uVar22) * (g_EnemyChapterState.rank + 0x400);
-    *piVar7 = (iVar26 / 2048) + (int)uVar22;
+    iVar26 = static_cast<int>((static_cast<unsigned int>(uVar23) -
+        static_cast<unsigned int>(uVar22)) *
+        (static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x400u));
+    *piVar7 = static_cast<int>(static_cast<unsigned int>(iVar26 / 2048) +
+        static_cast<unsigned int>(uVar22));
     return 0;
   case ENEMY_ECL_SET_SPELL_TIMEOUT:
     uVar22 = ReadIntArgument(0);
