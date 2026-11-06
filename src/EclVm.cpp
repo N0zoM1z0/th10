@@ -962,49 +962,61 @@ jump_instruction:
 
             case ECL_VM_EQUAL_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left == right);
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                PushInt(this, left.integer == right.integer);
                 break;
             }
 
             case ECL_VM_NOT_EQUAL_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left != right);
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                PushInt(this, left.integer != right.integer);
                 break;
             }
 
             case ECL_VM_LESS_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left < right);
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                PushInt(this, left.integer < right.integer);
                 break;
             }
 
             case ECL_VM_LESS_EQUAL_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left <= right);
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                PushInt(this, left.integer <= right.integer);
                 break;
             }
 
             case ECL_VM_GREATER_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left > right);
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                PushInt(this, left.integer > right.integer);
                 break;
             }
 
             case ECL_VM_GREATER_EQUAL_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left >= right);
+                EclVmScalar right;
+                right.integer = PopInt(this);
+                EclVmScalar left;
+                left.integer = PopInt(this);
+                PushInt(this, left.integer >= right.integer);
                 break;
             }
 
