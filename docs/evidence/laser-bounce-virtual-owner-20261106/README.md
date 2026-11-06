@@ -40,6 +40,14 @@ original image fields are independently decoded and recorded in the
 
 ## Complete comparisons and remaining frontier
 
+Follow-up factory controls use all ten real call sites in the same four-input
+graph. Standard stdcall and a complete manager-member conversion both emit
+factory157/RET8 with the request still on the stack; Bounce emits507 and533.
+Each retains Update1001/all31 and both constructors202/219/all4. Neither
+restores the target EDI request/RET4 interface. Both controls are restored;
+calling-convention spelling is parked pending new caller-lifetime evidence.
+Full receipts remain under `.analysis/gpt-web/20261106-laser-factory/`.
+
 The first actual-vtable source emitted494 bytes. The final typed/ordered
 source emits510 in both the private native link and the independent canonical
 Update-entry cold. The strict comparator rejects the complete510-byte PDB

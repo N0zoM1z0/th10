@@ -46,6 +46,10 @@ Complete current candidate510/410 remains NONEXACT: one factory path inlines,
 the other private call and receiver/fired registers differ. Bounce-as-entry
 does not improve510 and regresses Update1001->1009; the original recipe stays.
 Independent canonical Update1001/all31 and same-native polar30/sound123 pass.
+Fresh four-input factory stdcall and complete manager-member controls both
+retain stack request and157/RET8; Bounce507/533, while Update and both
+constructors pass. Both restore; no new declaration permutation is warranted
+without distinguishing caller-lifetime evidence.
 No exact/boundary/origin/count credit. The old402-byte isolated diagnostic is
 historical. See [the source-pinned proof](evidence/laser-bounce-virtual-owner-20261106/README.md).
 

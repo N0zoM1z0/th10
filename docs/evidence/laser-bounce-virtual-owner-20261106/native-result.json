@@ -87,5 +87,61 @@
   },
   "new_exact_functions": 0,
   "new_authored_exact_bytes": 0,
-  "boundary_origin_mapping_count_changes": 0
+  "boundary_origin_mapping_count_changes": 0,
+  "factory_abi_controls_20261106": [
+    {
+      "name": "stdcall",
+      "factory_bytes": 157,
+      "factory_stack_cleanup": 8,
+      "request_still_on_stack": true,
+      "bounce_bytes": 507,
+      "all_ten_actual_call_sites_present": true,
+      "image_sha256": "a17da3168de1c3f83038e5e514498dcb930b1381f1a0c678db4fd0a0ea1eca08",
+      "three_complete_guards": {
+        "laser-line-update": {
+          "result": "exact",
+          "bytes": 1001,
+          "fields": 31
+        },
+        "enemy-laser-type0-constructor": {
+          "result": "exact",
+          "bytes": 202,
+          "fields": 2
+        },
+        "enemy-laser-type1-constructor": {
+          "result": "exact",
+          "bytes": 219,
+          "fields": 2
+        }
+      },
+      "adopted": false
+    },
+    {
+      "name": "manager-member",
+      "factory_bytes": 157,
+      "factory_stack_cleanup": 8,
+      "request_still_on_stack": true,
+      "bounce_bytes": 533,
+      "all_ten_actual_call_sites_present": true,
+      "image_sha256": "650d3d7cf0f22c61d69ed07d56fc170066f400b68bd58473e1237b12d7c87f80",
+      "three_complete_guards": {
+        "laser-line-update": {
+          "result": "exact",
+          "bytes": 1001,
+          "fields": 31
+        },
+        "enemy-laser-type0-constructor": {
+          "result": "exact",
+          "bytes": 202,
+          "fields": 2
+        },
+        "enemy-laser-type1-constructor": {
+          "result": "exact",
+          "bytes": 219,
+          "fields": 2
+        }
+      },
+      "adopted": false
+    }
+  ]
 }
