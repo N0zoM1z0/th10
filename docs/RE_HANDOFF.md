@@ -105,6 +105,12 @@ ECL circle interpolation now preserves the two 32-bit motion parameters at
 Full 11-TU Enemy boss codegen stays byte-neutral, and selected native
 readers plus the 652-byte scalar evaluator pass **682/682 original exact**.
 The 14,416-byte original big dispatcher remains NONEXACT. |
+[ECL ReadInt float-tagged stack word](evidence/ecl-readint-float-tag-scalar-20261106/README.md):
+the four-byte scalar overlay replaces the last raw float-pointer cast in
+ReadInt. Selected `ReadInt`+`Pop` replays **266/266 exact**; 2-TU full Run
+retains **7,020 bytes/189 original-bound fields/6,997 matching bytes**.
+Run is still NONEXACT and earns no new codegen credit.
+
 [ECL NEGATE/POST_DECREMENT scalar word](evidence/ecl-negate-postdecrement-word-20261106/README.md):
 complete two-TU `Run` remains 7,020 bytes, 189 original-bound fields and
 6,997 matching original ordinary bytes; source now models the native 4-byte
@@ -262,7 +268,7 @@ Enemy.hpp          2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35e
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
 EnemyEclDispatcher.cpp c1e0e3a356f1d24956a2a3fdf95c95b8787ff7fb6c094fc0a950fc12bd40cc0a
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
-EclVm.cpp          63eb562811821baf48bb2760428a624018a8d33d54b412367e01ddace077b274
+EclVm.cpp          80271137a8df906f23697048dff7c6ba0f0ce3b71402a160906cdd596e5e6ef0
 EclVm.hpp          b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52
 AnmManager.cpp     fe0c381a142518b78ddb30b0d9d9c95a3b95bb301e1b055fc4641eb5a6960b35
 AnmManager.hpp     3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667

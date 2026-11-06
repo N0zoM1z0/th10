@@ -299,7 +299,7 @@ int EclVmContext::ReadInt(unsigned int index)
                 if (reinterpret_cast<const EclVmStackTypeSlotView *>(
                         stack.data + stack.stackTop)->type == 'f')
                     return static_cast<int>(
-                        *reinterpret_cast<float *>(&index));
+                        reinterpret_cast<const EclVmScalar *>(&index)->real);
             }
             return static_cast<int>(index);
         }
