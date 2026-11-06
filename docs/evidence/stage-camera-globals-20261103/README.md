@@ -1,5 +1,11 @@
 # TH10 scene-global camera defaults @ 0x004216F0
 
+**Source-epoch correction, 2026-11-06:** the implementation described below
+omitted the original secondary/published +0xE4 dword stores (1/0). They are
+now restored; the fresh complete owner is 533 bytes and remains nonexact.
+See [the current word-store evidence](../stage-camera-default-words-20261106/README.md).
+The 518-byte measurement below describes the earlier source.
+
 Scope: original JP v1.00a, SHA-256 pinned in `config/target.toml`.
 Reviewed authored entry **0x004216F0..0x004218C0** (465 bytes), called
 without explicit arguments from native 0x004201CB in the main startup

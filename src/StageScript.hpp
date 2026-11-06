@@ -63,7 +63,7 @@ struct StageCameraStateView
     float value048;
     AnmMatrixView viewMatrix, projectionMatrix;
     AnmViewportView viewport;
-    unsigned char unknown0E4[4];
+    unsigned int unknown0E4;
     float value0E8, value0EC;
     AnmFloat3View positionDelta;
     StageFogView fog;

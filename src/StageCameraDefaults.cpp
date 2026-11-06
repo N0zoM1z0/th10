@@ -6,6 +6,10 @@
 extern StageCameraStateView g_StagePublishedCamera; // native 0x00491D7C
 extern StageCameraStateView g_StageSecondaryCamera; // native 0x00491E94
 
+typedef char StageCameraDefaultsLayout[
+    (sizeof(StageCameraStateView) == 0x118 &&
+     offsetof(StageCameraStateView, unknown0E4) == 0xe4) ? 1 : -1];
+
 // Original TH10 v1.00a at 0x004216F0. This resets the two published views,
 // NOT the stage's per-instance matrix state or the unrelated interpolators.
 void StageResetPublishedCameras()
@@ -25,6 +29,7 @@ void StageResetPublishedCameras()
     g_StageSecondaryCamera.viewport.height = 480;
     g_StageSecondaryCamera.viewport.minZ = 0.0f;
     g_StageSecondaryCamera.viewport.maxZ = 1.0f;
+    g_StageSecondaryCamera.unknown0E4 = 1;
 
     g_StagePublishedCamera.value048 = 0.5235988f;
 
@@ -34,5 +39,6 @@ void StageResetPublishedCameras()
     g_StagePublishedCamera.viewport.height = 448;
     g_StagePublishedCamera.viewport.minZ = 0.0f;
     g_StagePublishedCamera.viewport.maxZ = 1.0f;
+    g_StagePublishedCamera.unknown0E4 = 0;
     g_StagePublishedCamera.rockingOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
 }

@@ -32,6 +32,18 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-06 camera reset +0xE4 word stores
+
+The complete 465-byte `StageResetPublishedCameras @0x004216F0` writes dword
+one to secondary camera `0x00491E94 + 0xE4` at `0x0042183F`, and dword zero
+to published camera `0x00491D7C + 0xE4` at `0x0042189C`. The previous typed
+source omitted both. `StageCameraStateView::unknown0E4` now names the existing
+unsigned word; its meaning remains unknown. Both assignments are restored
+with size/offset assertions. Fresh complete `/GL` and normal-COFF owners are
+533 versus original 465 bytes, so no exact credit. The earlier 518-byte result
+is a source epoch without these stores. See
+[the original/native evidence](evidence/stage-camera-default-words-20261106/README.md).
+
 ## 2026-11-05 ECL JUMP / spawned-thread counted operand wire views
 
 Generic ECL normal/conditional JUMP has signed byte displacement at payload

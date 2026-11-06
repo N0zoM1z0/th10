@@ -70,6 +70,7 @@ confirmed authored code.
 | `EclVmContext::StartSubroutine` | **550 / 551** | Four caller field positions preserved; direct signed/source pointer lifetime scheduling unresolved. **NONEXACT**. [CALL proof](evidence/ecl-call-counted-inline-name-20261106/README.md). |
 | `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x004078E0` | **335 / 335** | **333/335 preliminary ordinary** positions after eight *candidate* field sites; EAX/EDX at +0xD7/+0xDD. Original field identity acceptance not yet complete. [Angle proof](evidence/bullet-runtime-angle-word-20261105/README.md). |
 | `SoundPlayerView::LoadSoundSample` / `PreloadBgm` | **684 / 684**; **369 / 369** | Respectively **678/684** and **365/369** ordinary bytes in suitable five-TU graphs; mainly call argument register order. Many simple declaration/alias and wrapper trials already failed. [Sound wire evidence](evidence/sound-riff-chunk-prefix-20261105/README.md). |
+| `StageResetPublishedCameras @0x004216F0` | **465 / 533** | Restored omitted secondary/published +0xE4 dword assignments, respectively 1/0; camera layout stays 0x118. Both fresh `/GL` and normal-COFF complete owners emit 533 bytes /40 fields; vector temporary reuse and global-store scheduling remain nonexact. [Word-store proof](evidence/stage-camera-default-words-20261106/README.md). |
 | `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** fresh two-TU `/GL /GS` measures **138/157**, zero fields. An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Native current proof is private `.analysis/gpt-web/20261106-text-current-exact/`. |
 
 Other unaccepted leaves worth *new evidence-led* work: `CMemoryPbgFile::Seek`
@@ -97,6 +98,8 @@ receipts are ignored private files, not Git attachments.
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/BulletManager.cpp` | `2bda79b9659785c784bb33d7c9b453c4cfefb249d37631d63cc20956d18f25aa` |
 | `src/Sound.cpp` | `cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b3b0` |
+| `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
+| `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 
 Preferred current native witnesses (only if the source pin matches):
 
