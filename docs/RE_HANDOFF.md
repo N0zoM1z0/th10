@@ -203,6 +203,13 @@ this view. Full five-TU ExecuteScript stays **9,962/9,964**, all **350**
 fields and 95 local destinations intact, with direct getters **568/568 exact**.
 Opcode-91 remains NONEXACT.
 
+[ANM timed vector3 target prefix](evidence/anm-timed-vector3-payload-20261106/README.md):
+POSITION_TIME and ROTATION_TIME now read a single offset-checked
+0x14-byte duration/mode/XYZ payload, preserving the variable-word mask.
+Fresh five-TU strict native Run retains **9,962/9,964** original bytes,
+**350** target-bound fields (95 local); selected operand readers pass
+**724/724 exact**. Opcode-91 register difference remains NONEXACT.
+
 [ANM allocated vertex pairs](evidence/anm-generated-vertex-pairs-20261106/README.md):
 ANM opcode 84 now models the actual 0x38-byte pair of two 0x1C-byte
 render vertices. Fresh 5-TU full ExecuteScript retains 9,962/9,964 target
