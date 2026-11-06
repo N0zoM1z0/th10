@@ -38,6 +38,20 @@ struct EnemyFloat2
 
 typedef char EnemyFloat2SizeIs08[(sizeof(EnemyFloat2) == 0x08) ? 1 : -1];
 
+// ECL/ANM position transfers copy the three raw 32-bit scalar words,
+// including IEEE-754 sign and NaN payload bits, without applying any
+// arithmetic or implicit float conversion. This is only a storage overlay.
+struct EnemyPositionDwordView
+{
+    unsigned int word[3];
+};
+typedef char EnemyPositionDwordLayoutIs0C[
+    (sizeof(EnemyPositionDwordView) == 0x0c &&
+     sizeof(PlayerFloat3) == 0x0c &&
+     sizeof(AnmFloat3View) == 0x0c &&
+     offsetof(EnemyPositionDwordView, word) == 0 &&
+     sizeof(((EnemyPositionDwordView *)0)->word[0]) == 4) ? 1 : -1];
+
 // Maintained view of the 0x2C movement records consumed by the reviewed TH10
 // hostile runtime owner. Position, velocity and the flag word are target-proven;
 // the four scalar motion parameters retain offset-based names because their

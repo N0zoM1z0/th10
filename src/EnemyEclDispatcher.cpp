@@ -1447,14 +1447,23 @@ dispatch_create_enemy_mirrored:
     if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *puVar5;
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = puVar5[1];
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = puVar5[2];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] = puVar5[0];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] = puVar5[1];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] = puVar5[2];
       return 0;
     }
-    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
-    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
-    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
+    reinterpret_cast<EnemyPositionDwordView *>(
+        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] =
+        reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[0];
+    reinterpret_cast<EnemyPositionDwordView *>(
+        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] =
+        reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[1];
+    reinterpret_cast<EnemyPositionDwordView *>(
+        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] =
+        reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[2];
     return 0;
   case ENEMY_ECL_PLAY_ANM_HIGH:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1468,14 +1477,23 @@ dispatch_create_enemy_mirrored:
     if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *puVar5;
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = puVar5[1];
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = puVar5[2];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] = puVar5[0];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] = puVar5[1];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] = puVar5[2];
       return 0;
     }
-    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
-    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
-    *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
+    reinterpret_cast<EnemyPositionDwordView *>(
+        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] =
+        reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[0];
+    reinterpret_cast<EnemyPositionDwordView *>(
+        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] =
+        reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[1];
+    reinterpret_cast<EnemyPositionDwordView *>(
+        &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] =
+        reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[2];
     return 0;
   case ENEMY_ECL_PLAY_ANM_ABSOLUTE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -1495,14 +1513,23 @@ dispatch_create_enemy_mirrored:
     if ((flags & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           PublishEclWorldAnchor(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *puVar5;
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = puVar5[1];
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = puVar5[2];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] = puVar5[0];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] = puVar5[1];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] = puVar5[2];
     }
     else {
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.x) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.x);
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.y) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.y);
-      *reinterpret_cast<unsigned int *>(&reinterpret_cast<AnmVmView *>(iVar26)->positionOffset.z) = *reinterpret_cast<const unsigned int *>(&worldMotion.position.z);
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[0] =
+          reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[0];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[1] =
+          reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[1];
+      reinterpret_cast<EnemyPositionDwordView *>(
+          &reinterpret_cast<AnmVmView *>(iVar26)->positionOffset)->word[2] =
+          reinterpret_cast<const EnemyPositionDwordView *>(&worldMotion.position)->word[2];
     }
     fVar19 = (ReadFloatArgument(2));
     reinterpret_cast<AnmVmView *>(iVar26)->rotation.z = (float)fVar19;
@@ -2963,8 +2990,8 @@ dispatch_create_enemy_absolute_mirrored:
   goto dispatch_spawn_enemy;
 dispatch_copy_player_to_motion:
   iVar26 = reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]);
-  *reinterpret_cast<unsigned int *>(&offsetMotion.position.x) = *reinterpret_cast<const unsigned int *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position.x);
-  *reinterpret_cast<unsigned int *>(&offsetMotion.position.y) = *reinterpret_cast<const unsigned int *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position.y);
-  *reinterpret_cast<unsigned int *>(&offsetMotion.position.z) = *reinterpret_cast<const unsigned int *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position.z);
+  reinterpret_cast<EnemyPositionDwordView *>(&offsetMotion.position)->word[0] = reinterpret_cast<const EnemyPositionDwordView *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position)->word[0];
+  reinterpret_cast<EnemyPositionDwordView *>(&offsetMotion.position)->word[1] = reinterpret_cast<const EnemyPositionDwordView *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position)->word[1];
+  reinterpret_cast<EnemyPositionDwordView *>(&offsetMotion.position)->word[2] = reinterpret_cast<const EnemyPositionDwordView *>(&reinterpret_cast<EnemyFullObjectView *>(iVar26)->runtime.worldMotion.position)->word[2];
   return 0;
 }

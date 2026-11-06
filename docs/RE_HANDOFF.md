@@ -99,7 +99,7 @@ is already correct). They must **not** be marked exact.
 | Source family | Installed source recovery | Relevant retained original-bound proof / witness |
 | --- | --- | --- |
 | ANM | Header +6 has one typed 16-bit variable-argument mask. JUMP and JUMP_DEC use typed byte-displacement/time wire records. RENDER_STATE and timed color/alpha/scale opcodes now use typed halfword and mode-byte payloads. **All four** value/lvalue instruction macros in the full 9,964-byte executor use `variableArgs.bits` | [Typed pointer mask](evidence/anm-typed-pointer-operand-mask-20261105/README.md): fresh five-source strict **350/350** original-bound fields, including 95 locals; **9,962/9,964** original bytes, still NONEXACT. Affected pointer leaves **288/288 exact**. Private `build/gpt-web/20261105-anm-pointer-mask/current/`. Earlier full-mask [proof](evidence/anm-instruction-variable-mask-overlay-20261105/README.md) belongs to its own source epoch. |
-| Enemy dispatcher / GUI | Native item-drop `itemDrops` 0x3C-byte packet at runtime +0x13CC, raw indexed-word alias, life-gauge/callback-life fields, and the shared 16-bit ECL instruction header. The 14,416-byte big dispatcher now uses a typed pattern-byte-cursor helper without hoisting its signed arithmetic across operand reads | [Shared Enemy ECL header / pattern cursor](evidence/enemy-ecl-shared-instruction-pattern-20261105/README.md): fresh 11-TU **14,352 candidate bytes / 716 candidate fields** with zero candidate ordinary differences versus the previous pinned graph; BeginSpell and three other complete owners preserved. Selected native `ReadIntArgument` **16/16 exact**. [Raw drop overlay](evidence/enemy-drop-raw-word-overlay-20261105/README.md) scoped selected leaves **696/696 exact**. The 14,416-byte original big dispatcher remains NONEXACT. |
+| Enemy dispatcher / GUI | Native 0x3C-byte item-drop packet, raw indexed-word alias, life-gauge/callback fields and ECL header. PLAY_ANM's 18 DWORD position copies use a 12-byte `EnemyPositionDwordView` preserving source bits and projection control flow. The 14,416-byte target boss remains 14,352 native candidate bytes with 716 candidate fields | [Shared Enemy ECL header / pattern cursor](evidence/enemy-ecl-shared-instruction-pattern-20261105/README.md): fresh 11-TU **14,352 candidate bytes / 716 candidate fields** with zero candidate ordinary differences versus the previous pinned graph; BeginSpell and three other complete owners preserved. Selected native `ReadIntArgument` **16/16 exact**. [Raw drop overlay](evidence/enemy-drop-raw-word-overlay-20261105/README.md) scoped selected leaves **696/696 exact**. [PLAY_ANM position DWORDs](evidence/enemy-ecl-raw-vm-position-20261106/README.md): complete 11-TU PDB candidate zero-regression, selected leaves **37/37 original exact**. The 14,416-byte original big dispatcher remains NONEXACT. |
 [ECL arithmetic scalar stack words](evidence/ecl-arithmetic-stack-scalar-20261106/README.md):
 all nine integer/float math opcodes now use the same 32-bit stack word as
 Push/Pop and operand readers. Fresh 2-TU complete Run still **7,020 bytes**,
@@ -213,9 +213,9 @@ Sound.cpp          cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b
 Midi.cpp           1892650e1eae61877c583d1fcd4b70ad3e3f8714cfc842ff0703fff73f32d782
 Midi.hpp           2c0227d3743fd685883b6acfb6d4464747649692289a1215d771d4096a71397c
 Enemy.cpp          c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2
-Enemy.hpp          f34369ef9e3c2e45e4d3fa2f71054b5e5750e173e1e5166da48e62d6dee5f40a
+Enemy.hpp          8dadcfe889812dcf508e17d855c49d94463bf127949d834bb0d8f905e3bcb3f9
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
-EnemyEclDispatcher.cpp 445b1a33e110dbb871fd8c1bda20b1c11c1b4791d662dbd5fa9ad313112afa54
+EnemyEclDispatcher.cpp 187d8e5720fb9c663c811ecd09293aa0a8cd9b3fc7abf41cb188a5f507ab95df
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
 EclVm.cpp          468d49050f66e9969525027faed0724764fee70416c597359d19dd584fe2a364
 EclVm.hpp          b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52
