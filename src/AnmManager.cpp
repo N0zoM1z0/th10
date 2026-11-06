@@ -3596,19 +3596,25 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             *GET_FLOAT_VAR_PTR(0) = GET_FLOAT_VAR(1);
             break;
         case ANM_OP_I_SET_ADD:
-            *GET_INT_VAR_PTR(0) = GET_INT_VAR(1) + GET_INT_VAR(2);
+            *GET_INT_VAR_PTR(0) = static_cast<int>(
+                static_cast<unsigned int>(GET_INT_VAR(1)) +
+                static_cast<unsigned int>(GET_INT_VAR(2)));
             break;
         case ANM_OP_F_SET_ADD:
             *GET_FLOAT_VAR_PTR(0) = GET_FLOAT_VAR(1) + GET_FLOAT_VAR(2);
             break;
         case ANM_OP_I_SET_SUB:
-            *GET_INT_VAR_PTR(0) = GET_INT_VAR(1) - GET_INT_VAR(2);
+            *GET_INT_VAR_PTR(0) = static_cast<int>(
+                static_cast<unsigned int>(GET_INT_VAR(1)) -
+                static_cast<unsigned int>(GET_INT_VAR(2)));
             break;
         case ANM_OP_F_SET_SUB:
             *GET_FLOAT_VAR_PTR(0) = GET_FLOAT_VAR(1) - GET_FLOAT_VAR(2);
             break;
         case ANM_OP_I_SET_MUL:
-            *GET_INT_VAR_PTR(0) = GET_INT_VAR(1) * GET_INT_VAR(2);
+            *GET_INT_VAR_PTR(0) = static_cast<int>(
+                static_cast<unsigned int>(GET_INT_VAR(1)) *
+                static_cast<unsigned int>(GET_INT_VAR(2)));
             break;
         case ANM_OP_F_SET_MUL:
             *GET_FLOAT_VAR_PTR(0) = GET_FLOAT_VAR(1) * GET_FLOAT_VAR(2);
