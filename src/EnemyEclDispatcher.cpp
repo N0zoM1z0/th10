@@ -915,8 +915,10 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
     child = node != 0 ? static_cast<AnmVmView *>(node->owner) : 0;
     child->intVar2 = value;
     state->spellDuration = value;
-    int bonus = (g_EnemyChapterState.stage * 3 + 10) *
-        g_EnemyChapterState.spellBonusBase * 10;
+    const unsigned int bonusBits =
+        (static_cast<unsigned int>(g_EnemyChapterState.stage) * 3u + 10u) *
+        static_cast<unsigned int>(g_EnemyChapterState.spellBonusBase) * 10u;
+    const int bonus = static_cast<int>(bonusBits);
     state->currentSpellBonus = bonus;
     state->initialSpellBonus = bonus;
     if (bonus >= 100000000) {
