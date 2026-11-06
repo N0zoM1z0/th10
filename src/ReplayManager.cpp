@@ -7,6 +7,9 @@
 #include "GameScoreState.hpp"
 #include "Lzss.hpp"
 #include "Player.hpp"
+#include "GameManager.hpp"
+#include "Rng.hpp"
+#include "Chain.hpp"
 
 #include <direct.h>
 #include <stdio.h>
@@ -164,6 +167,37 @@ ReplayManager::~ReplayManager()
         g_ReplayManager = NULL;
 }
 
+// Construction views preserve the serialized base layouts. The configuration
+// member's defaults precede the enclosing header reset in target428FED.
+namespace
+{
+struct ReplayFileHeaderConstructionView : ReplayFileHeader
+{
+    ReplayFileHeaderConstructionView()
+    {
+        memset(this, 0, sizeof(*this));
+        magic = 0x72303174;
+        version = 5;
+        gameVersion = 0x100;
+    }
+};
+struct ReplayDataHeaderConstructionView : ReplayDataHeader
+{
+    ReplayDataHeaderConstructionView()
+    {
+        reinterpret_cast<GameConfigurationView *>(runtimeSnapshot)->ResetDefaults();
+        memset(this, 0, sizeof(*this));
+    }
+};
+typedef char ReplayConstructionViewSizes[
+    (sizeof(ReplayFileHeaderConstructionView) == 0x24 &&
+     sizeof(ReplayDataHeaderConstructionView) == 0x64) ? 1 : -1];
+}
+
+// Lifecycle source leads from levzzz5154/th10-decomp, MIT (c) 2026 levzzz,
+// d1f31212514781c928fba145d8207397c8fb5650,
+// matching2/msvc/src/game/replay/replay_runtime_bootstrap.cpp.
+// License: docs/licenses/th10-decomp-MIT.txt. Real shared callees are retained.
 int ReplayManager::Initialize(int replayMode, const char *path)
 {
     mode = replayMode;
@@ -172,71 +206,72 @@ int ReplayManager::Initialize(int replayMode, const char *path)
     {
         g_ReplayManager = this;
 
-        ReplayClearStageFrameData(this, g_ReplayCurrentStage);
-        currentFrameLink = ReplayAllocateFrameData(this, g_ReplayCurrentStage);
+        ReplayClearStageFrameData(this, g_GameScoreState.selectedStage);
+        currentFrameLink = ReplayAllocateFrameData(this, g_GameScoreState.selectedStage);
 
-        fileHeader = new ReplayFileHeader;
-        memset(fileHeader, 0, sizeof(*fileHeader));
-        fileHeader->magic = 0x72303174;
-        fileHeader->version = 5;
-        fileHeader->gameVersion = 0x100;
+        fileHeader = new ReplayFileHeaderConstructionView;
+        replayData = new ReplayDataHeaderConstructionView;
+        stageHeaders[g_GameScoreState.selectedStage] = new ReplayStageDataHeader;
+        ReplayStageDataHeader *stageHeader = stageHeaders[g_GameScoreState.selectedStage];
 
-        replayData = new ReplayDataHeader;
-        memset(replayData, 0, sizeof(*replayData));
-
-        ReplayStageDataHeader *stageHeader = new ReplayStageDataHeader;
-        memset(stageHeader, 0, sizeof(*stageHeader));
-        stageHeaders[g_ReplayCurrentStage] = stageHeader;
-
-        replayData->character = g_ReplayCharacter;
-        replayData->shotType = g_ReplayShotType;
-        replayData->difficulty = g_ReplayDifficulty;
-        if (g_ReplayRuntime != NULL)
+        replayData->character = g_GameScoreState.history.statisticsGroupA;
+        replayData->shotType = g_GameScoreState.history.statisticsGroupB;
+        replayData->difficulty = *reinterpret_cast<int *>(g_GameScoreState.history.unknown30 + 4);
+        if (g_GameManager != NULL)
         {
-            memcpy(replayData->runtimeSnapshot, g_ReplayRuntime->replaySnapshot,
+            memcpy(replayData->runtimeSnapshot, &g_GameManager->configuration,
                    sizeof(replayData->runtimeSnapshot));
         }
 
-        stageHeader->stageIndex = (short)g_ReplayCurrentStage;
-        stageHeader->unknown002 = g_ReplayStageSeed;
-        g_ReplayStageSeedCounter = 0;
-        stageHeader->unknownFlag1C0 = g_ReplayStageFlags;
-        if (g_ReplayStageFlags != 0)
+        stageHeader->stageIndex = (short)g_GameScoreState.selectedStage;
+        stageHeader->unknown002 = g_RngView.seed;
+        g_RngView.generationCount = 0;
+        stageHeader->unknownFlag1C0 = g_MainSupervisorView.newGameSession;
+        if (g_MainSupervisorView.newGameSession != 0)
         {
             stageHeader->unknown024 = 0;
             stageHeader->unknown028 = 0;
         }
-        stageHeader->unknown00C = g_ReplayStageValue00C;
-        stageHeader->unknown010 = g_ReplayStageValue010;
-        stageHeader->unknown014 = g_ReplayStageValue014;
-        stageHeader->unknown018 = g_ReplayStageValue018;
-        stageHeader->unknown01C = g_ReplayStageValue01C;
-        stageHeader->unknown020 = g_ReplayStageValue020;
-        stageHeader->unknown1B4 = g_ReplayStageValue1B4;
-        replayData->unknown060 = g_ReplayStageValue1B4;
+        stageHeader->unknown00C = g_GameScoreState.score;
+        stageHeader->unknown010 = g_GameScoreState.power;
+        stageHeader->unknown014 = g_GameScoreState.faith;
+        stageHeader->unknown018 = g_GameScoreState.timer.current;
+        stageHeader->unknown01C = *reinterpret_cast<int *>(g_GameScoreState.history.unknown30);
+        stageHeader->unknown020 = g_GameScoreState.rank;
+        stageHeader->unknown1B4 = *reinterpret_cast<int *>(g_GameScoreState.unknown44 + 12);
+        replayData->unknown060 = *reinterpret_cast<int *>(g_GameScoreState.unknown44 + 12);
 
-        updateChain = new ReplayChainElement;
-        updateChain->callback = ReplayProcessFrameCallback;
-        updateChain->argument = this;
-        updateChain->unknownFlag1 = 0;
-        updateChain->isHeapAllocated = 1;
-        ReplayAddToCalcChain(g_ReplayChainManager, updateChain, 0x0b);
+        th10::ChainElem *task = new th10::ChainElem;
+        unsigned int taskFlags = task->flags;
+        task->callback = reinterpret_cast<th10::ChainCallback>(ReplayProcessFrameCallback);
+        task->addedCallback = NULL;
+        task->deletedCallback = NULL;
+        task->arg = this;
+        task->flags = (taskFlags & ~2u) | 1u;
+        th10::g_Chain->AddToCalcChain(task, 0x0b);
+        updateChain = reinterpret_cast<ReplayChainElement *>(task);
 
-        playbackChain = new ReplayChainElement;
-        playbackChain->callback = ReplayPlaybackFrameControlCallback;
-        playbackChain->argument = this;
-        playbackChain->unknownFlag1 = 0;
-        playbackChain->isHeapAllocated = 1;
-        ReplayAddToCalcChain(g_ReplayChainManager, playbackChain, 0x1b);
+        task = new th10::ChainElem;
+        taskFlags = task->flags;
+        task->callback = reinterpret_cast<th10::ChainCallback>(ReplayPlaybackFrameControlCallback);
+        task->addedCallback = NULL;
+        task->deletedCallback = NULL;
+        task->arg = this;
+        task->flags = (taskFlags & ~2u) | 1u;
+        th10::g_Chain->AddToCalcChain(task, 0x1b);
+        playbackChain = reinterpret_cast<ReplayChainElement *>(task);
 
-        drawChain = new ReplayChainElement;
-        drawChain->callback = ReplayDrawFpsCallback;
-        drawChain->argument = this;
-        drawChain->unknownFlag1 = 0;
-        drawChain->isHeapAllocated = 1;
-        ReplayAddToDrawChain(g_ReplayChainManager, drawChain, 5);
+        task = new th10::ChainElem;
+        taskFlags = task->flags;
+        task->callback = reinterpret_cast<th10::ChainCallback>(ReplayDrawFpsCallback);
+        task->addedCallback = NULL;
+        task->deletedCallback = NULL;
+        task->arg = this;
+        task->flags = (taskFlags & ~2u) | 1u;
+        th10::g_Chain->AddToDrawChain(task, 5);
+        drawChain = reinterpret_cast<ReplayChainElement *>(task);
 
-        activeStage = g_ReplayCurrentStage;
+        activeStage = g_GameScoreState.selectedStage;
         return 0;
     }
 
@@ -246,56 +281,69 @@ int ReplayManager::Initialize(int replayMode, const char *path)
         if (LoadReplay(path) != 0)
             return -1;
 
-        memcpy(g_ReplayRuntime->replaySnapshot, replayData->runtimeSnapshot,
+        memcpy(&g_GameManager->configuration, replayData->runtimeSnapshot,
                sizeof(replayData->runtimeSnapshot));
 
-        ReplayStageState &stageState = stageStates[g_ReplayCurrentStage];
+        ReplayStageState &stageState = stageStates[g_GameScoreState.selectedStage];
         ReplayStageDataHeader *stageHeader = stageState.header;
         stageState.recordCursor = stageState.recordStart;
         stageState.recordIndex = 0;
         stageState.fpsCursor = stageState.fpsStart;
 
-        g_ReplayCharacter = replayData->character;
-        g_ReplayShotType = replayData->shotType;
-        g_ReplayDifficulty = replayData->difficulty;
-        g_ReplayStageSeed = stageHeader->unknown002;
-        g_ReplayStageSeedCounter = 0;
-        g_ReplayStageValue00C = stageHeader->unknown00C;
-        g_ReplayStageValue010 = stageHeader->unknown010;
+        g_GameScoreState.history.statisticsGroupA = replayData->character;
+        g_GameScoreState.history.statisticsGroupB = replayData->shotType;
+        *reinterpret_cast<int *>(g_GameScoreState.history.unknown30 + 4) = replayData->difficulty;
+        g_RngView.seed = stageHeader->unknown002;
+        g_RngView.generationCount = 0;
+        g_GameScoreState.score = stageHeader->unknown00C;
+        g_GameScoreState.power = stageHeader->unknown010;
         g_GameScoreState.SetFaith(stageHeader->unknown014 * 10);
         g_GameScoreState.SetTimerCurrent(stageHeader->unknown018);
-        g_ReplayStageValue01C = stageHeader->unknown01C;
-        g_ReplayStageValue020 = stageHeader->unknown020;
-        g_ReplayStageValue1B4 = stageHeader->unknown1B4;
-        g_ReplayStageValue1B8 = stageHeader->unknown1B8;
+        *reinterpret_cast<int *>(g_GameScoreState.history.unknown30) = stageHeader->unknown01C;
+        g_GameScoreState.rank = stageHeader->unknown020;
+        *reinterpret_cast<int *>(g_GameScoreState.unknown44 + 12) = stageHeader->unknown1B4;
+        g_ReplayStageValue1B8 =
+            stageStates[g_GameScoreState.selectedStage].header->unknown1B8;
 
-        updateChain = new ReplayChainElement;
-        updateChain->callback = ReplayProcessFrameCallback;
-        updateChain->argument = this;
-        updateChain->unknownFlag1 = 0;
-        updateChain->isHeapAllocated = 1;
-        ReplayAddToCalcChain(g_ReplayChainManager, updateChain, 0x0b);
+        th10::ChainElem *task = new th10::ChainElem;
+        unsigned int taskFlags = task->flags;
+        task->callback = reinterpret_cast<th10::ChainCallback>(ReplayProcessFrameCallback);
+        task->addedCallback = NULL;
+        task->deletedCallback = NULL;
+        task->arg = this;
+        task->flags = (taskFlags & ~2u) | 1u;
+        th10::g_Chain->AddToCalcChain(task, 0x0b);
+        updateChain = reinterpret_cast<ReplayChainElement *>(task);
 
-        playbackChain = new ReplayChainElement;
-        playbackChain->callback = ReplayPlaybackFrameControlCallback;
-        playbackChain->argument = this;
-        playbackChain->unknownFlag1 = 0;
-        playbackChain->isHeapAllocated = 1;
-        ReplayAddToCalcChain(g_ReplayChainManager, playbackChain, 0x1b);
+        task = new th10::ChainElem;
+        taskFlags = task->flags;
+        task->callback = reinterpret_cast<th10::ChainCallback>(ReplayPlaybackFrameControlCallback);
+        task->addedCallback = NULL;
+        task->deletedCallback = NULL;
+        task->arg = this;
+        task->flags = (taskFlags & ~2u) | 1u;
+        th10::g_Chain->AddToCalcChain(task, 0x1b);
+        playbackChain = reinterpret_cast<ReplayChainElement *>(task);
 
-        drawChain = new ReplayChainElement;
-        drawChain->callback = ReplayDrawFpsCallback;
-        drawChain->argument = this;
-        drawChain->unknownFlag1 = 0;
-        drawChain->isHeapAllocated = 1;
-        ReplayAddToDrawChain(g_ReplayChainManager, drawChain, 5);
+        task = new th10::ChainElem;
+        taskFlags = task->flags;
+        task->callback = reinterpret_cast<th10::ChainCallback>(ReplayDrawFpsCallback);
+        task->addedCallback = NULL;
+        task->deletedCallback = NULL;
+        task->arg = this;
+        task->flags = (taskFlags & ~2u) | 1u;
+        th10::g_Chain->AddToDrawChain(task, 5);
+        drawChain = reinterpret_cast<ReplayChainElement *>(task);
 
         activeStage = -1;
         return 0;
     }
 
     if (mode == REPLAY_MANAGER_LOAD_ONLY)
-        return LoadReplay(path) == 0 ? 0 : -1;
+    {
+        if (LoadReplay(path) != 0)
+            return -1;
+    }
 
     return 0;
 }

@@ -32,6 +32,32 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-06 replay initialization construction and private loader ABI
+
+Original Initialize428F60..42949F is1344 bytes with EBX owner/EAX mode/ECX
+path, not a standard source convention. Original428FED calls real configuration
+defaults before zeroing the enclosing replay-data header. Shared RNG4918B0,
+application491C28+39C and score-state474C40 replace disconnected replay views.
+Real ChainElem nodes publish after registration. Playback reloads the current
+stage's header after faith/timer setters; Unknown1B8 remains separate storage.
+Construction views preserve serialized sizes without claiming original types.
+
+Current26 real inputs give1344/74 fields, but selected-stage DIR32 is+3C5
+versus original+3CB; two reversed loads yield9 diagnostic ordinary differences.
+Strict comparison rejects. The current34-input Create graph's loader uses
+ECX path/plain RET instead of stack path/RET4: missing one-byte pushes account
+for Init1342 and static Load180. These are graph-dependent private ABIs.
+Real FileSystem/PbgArchive restore stack path/RET4 and1344 in a verified36-input
+fresh link, but its rebased diagnostic repeats the same9 differences. Scalar
+snapshots and typed-view controls are byte-neutral and restored.
+
+Existing Create185 requires actual configuration-default providers after the
+source correction. Adding GameManagerLifecycle/MainConfiguration under their
+existing profiles restores selected34-input cold185/all12, including EH.
+Save's own21-input current-source selected cold passes1681/all83. Neither
+result is new credit. Shared headers, compiler profiles and comparator remain
+unchanged. [Complete evidence and frontier](evidence/replay-initialize-constructors-20261106/README.md).
+
 ## 2026-11-06 type-1 circle real owner and sample semantics
 
 Original vtable46DA10+1C points to `41EFA0..41F3F3`, the complete1108-byte
