@@ -15,19 +15,22 @@ int GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics)
     unsigned char *scratch = static_cast<unsigned char *>(malloc(0x200000));
     memcpy(scratch, statistics->header, 0x18);
     unsigned int appendOffset = 0x18;
-    for (unsigned int i = 0; i < 7; ++i)
+    // The original loop carries a cursor to each record's index field,
+    // at +0x0C. The magic, checksum, payload and full-copy base are
+    // accessed relative to that one real field, without duplicate layouts.
+    unsigned char *indexCursor =
+        reinterpret_cast<unsigned char *>(&statistics->records[0].recordIndex);
+    for (unsigned int i = 0; i < 7; ++i, indexCursor += sizeof(GameStatisticsRecord))
     {
-        GameStatisticsRecord &record = statistics->records[i];
-        if (record.magic == 0x5243)
+        if (*reinterpret_cast<unsigned short *>(indexCursor - offsetof(GameStatisticsRecord, recordIndex)) == 0x5243)
         {
-            record.recordIndex = i;
+            *reinterpret_cast<unsigned int *>(indexCursor) = i;
             unsigned int checksum = 0;
-            const unsigned char *payload =
-                reinterpret_cast<const unsigned char *>(&record) + 8;
+            const unsigned char *payload = indexCursor - (offsetof(GameStatisticsRecord, recordIndex) - offsetof(GameStatisticsRecord, unknown08));
             for (unsigned int j = 0; j < 0x4374; ++j)
                 checksum += payload[j];
-            record.checksum = checksum;
-            memcpy(scratch + appendOffset, &record, 0x437c);
+            *reinterpret_cast<unsigned int *>(indexCursor - (offsetof(GameStatisticsRecord, recordIndex) - offsetof(GameStatisticsRecord, checksum))) = checksum;
+            memcpy(scratch + appendOffset, indexCursor - offsetof(GameStatisticsRecord, recordIndex), sizeof(GameStatisticsRecord));
             appendOffset += 0x437c;
         }
     }

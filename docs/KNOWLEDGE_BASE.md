@@ -1,5 +1,20 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-06 statistics finalizer recordIndex cursor
+
+Original `GameFinalizeStatistics42B1E0` uses `EDX=owner+0x14` for the
+7-record processing loop, which is `&records[0].recordIndex`, not the
+record base. Typed `offsetof`-derived negative offsets to magic, checksum,
+payload and copy source now recover the original `REP MOVSD` and checksum
+register/loop schedule. Fresh real five-TU source compile and all 24
+original-bound call/global fields improve the full 564-byte function
+from **481/564 to 553/564**, without reducing target size or removing
+code. Eleven ordinary differences remain: pre-loop setup order7 and tail
+checksum cursor positions4. Loader423, initializer142 selected cold and
+same-context destructor45 remain exact. **No new exact credit**.
+[Strict owner proof](evidence/game-statistics-finalize-record-cursor-20261106/README.md).
+
+
 ## 2026-11-06 text rasterization native word geometry
 
 The reconstructed `TextRenderBufferView::InvertAlpha` and both 554/509-byte
