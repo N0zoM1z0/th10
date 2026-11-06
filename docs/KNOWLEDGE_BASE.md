@@ -32,6 +32,20 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-06 input frame publication and repeat-cursor lifetimes
+
+`PollInputFrame @0x0044A5F0` publishes the joystick return directly from AX
+at +0x2D9, then homes the destructive sixteen-bit repeat cursor at +0x2DE.
+Separating the immutable published word from that cursor restores this order
+and reduces the current complete owner from855 to850 bytes. Both keyboard
+branches already aligned before this change; diagonal lexical permutations
+are not an established source of the residual mismatch. A final-source
+single-TU canonical query cold passes264/all12; its frame owner compares
+807/850 with all10 independently original-bound fields, still NONEXACT.
+Remaining43 differences begin+0x2DD in repeat/edge registers and scheduling.
+XOR/countdown/wider-mask/snapshot controls did not improve this frontier and
+are restored. See [the complete current proof and contract](evidence/input-frame-published-mask-20261106/README.md).
+
 ## 2026-11-06 complete startup version loader exact
 
 `GameLoadStartupVersion @0x00420100` owns 174 bytes through `0x004201AD`.

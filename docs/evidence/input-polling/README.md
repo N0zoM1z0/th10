@@ -1,5 +1,12 @@
 # Input polling and gameplay repeat
 
+**Source-epoch update, 2026-11-06:** the current input frame now emits850 bytes
+and compares807/850 with all10 independently original-bound fields after
+separating publication from the repeat cursor. It remains NONEXACT; the related
+264-byte query still passes its selected cold. See
+[the current proof](../input-frame-published-mask-20261106/README.md).
+The 854-byte frame measurement below describes the earlier source epoch.
+
 Three existing authored owners now have complete source in
 [InputPolling.cpp](../../../src/InputPolling.cpp): joystick merge44A190/833,
 controller button query44A4E0/264 and frame poll44A5F0/850, totaling1947 bytes.

@@ -71,6 +71,7 @@ confirmed authored code.
 | `EclVmContext::StartSubroutine` | **550 / 551** | Four caller field positions preserved; direct signed/source pointer lifetime scheduling unresolved. **NONEXACT**. [CALL proof](evidence/ecl-call-counted-inline-name-20261106/README.md). |
 | `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x004078E0` | **335 / 335** | **333/335 preliminary ordinary** positions after eight *candidate* field sites; EAX/EDX at +0xD7/+0xDD. Original field identity acceptance not yet complete. [Angle proof](evidence/bullet-runtime-angle-word-20261105/README.md). |
 | `SoundPlayerView::LoadSoundSample` / `PreloadBgm` | **684 / 684**; **369 / 369** | Respectively **678/684** and **365/369** ordinary bytes in suitable five-TU graphs; mainly call argument register order. Many simple declaration/alias and wrapper trials already failed. [Sound wire evidence](evidence/sound-riff-chunk-prefix-20261105/README.md). |
+| `PollInputFrame @0x0044A5F0` | **850 / 850** | Split immutable published return from destructive repeat cursor; fresh baseline855 shrinks to850. **807/850 bytes**, **10/10 independently bound fields**. Remaining43 ordinary differences start +0x2DD in repeat/edge registers and scheduling. Related264-byte query cold passes. XOR/countdown/wider-mask/snapshot controls give no further improvement and are restored. [Current proof](evidence/input-frame-published-mask-20261106/README.md). |
 | `StageResetPublishedCameras @0x004216F0` | **465 / 533** | Restored omitted secondary/published +0xE4 dword assignments, respectively 1/0; camera layout stays 0x118. Both fresh `/GL` and normal-COFF complete owners emit 533 bytes /40 fields; vector temporary reuse and global-store scheduling remain nonexact. [Word-store proof](evidence/stage-camera-default-words-20261106/README.md). |
 | `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** fresh two-TU `/GL /GS` measures **138/157**, zero fields. An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Native current proof is private `.analysis/gpt-web/20261106-text-current-exact/`. |
 
@@ -102,6 +103,7 @@ receipts are ignored private files, not Git attachments.
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |
+| `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
 
 Preferred current native witnesses (only if the source pin matches):
 

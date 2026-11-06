@@ -210,9 +210,11 @@ void __fastcall PollInputFrame(int bindingIndex)
             }
         }
     }
-    unsigned short bits = MergeJoystickInput(bindingIndex, 0, mask);
+    // Publish the returned word before destructively shifting a separate cursor.
+    const unsigned short merged = MergeJoystickInput(bindingIndex, 0, mask);
     binding->previous = binding->current;
-    binding->current = bits;
+    binding->current = merged;
+    unsigned short bits = merged;
     unsigned short repeat = 1;
     binding->repeated = 0;
     unsigned short *hold = binding->holdCounters;
