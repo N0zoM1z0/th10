@@ -388,7 +388,9 @@ float *EclVmContext::ResolveFloat(unsigned int index)
 // See docs/licenses/th10-decomp-MIT.txt.
 static void AddEclSubroutineCount(int &count, int added)
 {
-    count += added;
+    // TH10 accumulates the number of named scripts as a 32-bit word.
+    count = static_cast<int>(static_cast<unsigned int>(count) +
+        static_cast<unsigned int>(added));
 }
 
 
@@ -443,8 +445,10 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     }
     else
     {
-        int sortedCount = subroutineCount
-            - files[fileCount]->subroutineCount;
+        // This size is also native 32-bit subtraction, including wrap.
+        int sortedCount = static_cast<int>(
+            static_cast<unsigned int>(subroutineCount) -
+            static_cast<unsigned int>(files[fileCount]->subroutineCount));
         memcpy(newEntries, oldEntries,
                sortedCount * sizeof(EclVmSubroutineEntry));
         if (previousEntries != NULL)
