@@ -74,6 +74,19 @@ after these source changes. New total **1,485 exact / 190,260 bytes**
 (**577 authored / 120,224 bytes**). See
 [evidence](evidence/midi-stop-playback-single-owner-20261105/README.md).
 
+## 2026-11-06 EnemyLaser AccumulatePointChecks 54-byte exact / origin unknown
+
+`EnemyLaserManagerStorageView::AccumulatePointChecks @0x0041C880` is a
+complete original-bound **54/54 raw-byte exact** leaf with zero external
+fields, naturally reproducing the original EAX-live-in receiver, linked-list
+walk, virtual CheckPoint slot +0x20, and `RET 8`. First real PDB owner proof
+and second independent source cold proof agree; older 31/54 isolated-context
+hypothesis is superseded. The function's original compiler-author/library
+provenance is explicitly **indeterminate**, so this adds one exact function
+and 54 bytes but **not** to confirmed-authored exact totals. Current
+canonical ledger: **1,488 functions / 191,009 bytes**; authored exact remains
+**579 / 120,919 bytes**. [Evidence](evidence/enemy-laser-point-checks-54-exact-20261106/README.md).
+
 ## 2026-11-06 BulletManagerView::SpawnBulletPattern complete exact admission
 
 The original 194-byte nested bullet-pattern fanout with optional sound cue

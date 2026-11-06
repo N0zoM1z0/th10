@@ -21,6 +21,8 @@ ancestry of each function remain unproven. The two registered callback
 boundaries have **indeterminate** source-authored-versus-generated origins;
 physical target boundaries are independently established here.
 
+**2026-11-06 independent leaf supersession:** The *separate* `AccumulatePointChecks @0x0041C880` owner, not the 274-byte manager update here, now has a source-pinned complete **54/54 raw byte** selected canonical exact cold proof in the genuine one-TU draw-callback context. The older isolated 31/54 candidate is historical. The original author/source ancestry of this helper remains **indeterminate**, and the 274-byte manager loop is still NONEXACT. [Evidence](../enemy-laser-point-checks-54-exact-20261106/README.md).
+
 ## 274-byte manager list update @0x0041C330..0x0041C441 — NONEXACT
 
 Original x86 code enters with its manager in private **EDI** and follows

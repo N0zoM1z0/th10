@@ -48,7 +48,7 @@ scripts/repo-python scripts/ci.py
 
 `docs/PROGRESS.md` (generated from the ledgers) controls acceptance:
 **1,829/1,829** target boundaries reviewed; **1,309** source-present
-mappings; **1,487** fully original-bound exact functions / **190,955**
+mappings; **1,488** fully original-bound exact functions / **191,009**
 exact codegen bytes; **579** confirmed-authored exact functions / **120,919**
 authored exact bytes; **171** confirmed-authored source-present nonexact
 backlog. These are neither source completeness nor whole-product closure.
@@ -69,6 +69,8 @@ now has a current-source canonical four-TU original-bound proof of **194/194
 bytes and all six float constant/callee/global fields**. The older 195-byte
 isolated candidate is superseded by the live 194-byte source graph.
 [Bullet spawn 194 exact evidence](evidence/bullet-spawn-pattern-194-exact-20261106/README.md).
+
+**New origin-indeterminate exact leaf:** `EnemyLaserManagerStorageView::AccumulatePointChecks @0x0041C880` is now a **complete 54/54 raw original byte** match with **zero external fields**; a separate selected VC7.1 SP1 `/GL` one-TU cold build confirms it. Original authored provenance remains unknown; **no increase in confirmed-authored counts**. [Laser-point exact evidence](evidence/enemy-laser-point-checks-54-exact-20261106/README.md).
 
 ## Latest whole-owner frontiers: do not confuse size with target agreement
 
