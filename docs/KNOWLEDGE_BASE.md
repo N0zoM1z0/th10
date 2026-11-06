@@ -32,6 +32,23 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-06 type-0 Bounce virtual ownership and ordered Y predicate
+
+Original46DA60+3C points to41CFD0; Update41D45F calls that same virtual slot
+under08000C00. The former independent BoundaryState model is now implemented
+as the existing type-0 construction class's Bounce. Its actual generated
+vtable binds the body and restores ECX/RET; a declaration-only view did not.
+Target Y reflection uses direct ordered <minimum / >=maximum predicates;
+unordered skips reflection, unlike the former negated >=minimum source.
+Whole-vector request assignment preserves all three memory-word reads, and
+pattern4 value0 at13C supplies request speed444. Original17 fields are decoded.
+Complete current candidate510/410 remains NONEXACT: one factory path inlines,
+the other private call and receiver/fired registers differ. Bounce-as-entry
+does not improve510 and regresses Update1001->1009; the original recipe stays.
+Independent canonical Update1001/all31 and same-native polar30/sound123 pass.
+No exact/boundary/origin/count credit. The old402-byte isolated diagnostic is
+historical. See [the source-pinned proof](evidence/laser-bounce-virtual-owner-20261106/README.md).
+
 ## 2026-11-06 complete bullet vertical wrap exact
 
 `UpdateVerticalWrap @0x00407E40..0x00407EEB` is complete172-byte canonical

@@ -1,5 +1,6 @@
 #include "AnmManager.hpp"
 #include "EnemyLaser.hpp"
+#include "EnemyLaserLine.hpp"
 #include "ItemManager.hpp"
 #include "EnemySoundQueue.hpp"
 #include <new>
@@ -60,93 +61,6 @@ extern float g_EnemyPlayfieldMaxX;
 extern float g_EnemyPlayfieldMinY;
 extern float g_EnemyPlayfieldMaxY;
 extern float g_EnemyPi;
-
-struct EnemyLaserBoundaryStateView
-{
-    unsigned char unknown000[0x24];
-    float positionX;
-    float positionY;
-    float positionZ;
-    unsigned char unknown030[0x3c - 0x30];
-    float angle;
-    float magnitude;
-    unsigned char unknown044[0x13c - 0x44];
-    int requestOwner;
-    unsigned char unknown140[0x404 - 0x140];
-    unsigned int flags;
-    unsigned char unknown408[0x40c - 0x408];
-    int soundId;
-    unsigned char unknown410[0x424 - 0x410];
-    EnemyLaserRequestScratch request;
-
-    void UpdateBoundary();
-};
-
-typedef char EnemyLaserBoundaryPositionXAt024[
-    (offsetof(EnemyLaserBoundaryStateView, positionX) == 0x24) ? 1 : -1];
-typedef char EnemyLaserBoundaryAngleAt03C[
-    (offsetof(EnemyLaserBoundaryStateView, angle) == 0x3c) ? 1 : -1];
-typedef char EnemyLaserBoundaryRequestOwnerAt13C[
-    (offsetof(EnemyLaserBoundaryStateView, requestOwner) == 0x13c) ? 1 : -1];
-typedef char EnemyLaserBoundaryFlagsAt404[
-    (offsetof(EnemyLaserBoundaryStateView, flags) == 0x404) ? 1 : -1];
-typedef char EnemyLaserBoundarySoundIdAt40C[
-    (offsetof(EnemyLaserBoundaryStateView, soundId) == 0x40c) ? 1 : -1];
-typedef char EnemyLaserBoundaryRequestAt424[
-    (offsetof(EnemyLaserBoundaryStateView, request) == 0x424) ? 1 : -1];
-
-void EnemyLaserBoundaryStateView::UpdateBoundary()
-{
-    EnemyLaserVectorView projected;
-    projected.FromAngleMagnitude(angle, magnitude);
-    projected.x += positionX;
-    projected.y += positionY;
-    projected.z = 0.0f;
-
-    if (!(projected.x <= g_EnemyPlayfieldMinX ||
-          projected.x >= g_EnemyPlayfieldMaxX ||
-          projected.y <= g_EnemyPlayfieldMinY ||
-          projected.y >= g_EnemyPlayfieldMaxY)) {
-        return;
-    }
-
-    int fired = 0;
-    if (soundId >= 0) {
-        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)
-            ->QueueSoundSample(soundId, 0);
-    }
-
-    float *requestWords = reinterpret_cast<float *>(&request);
-    if (projected.x < g_EnemyPlayfieldMinX ||
-        projected.x >= g_EnemyPlayfieldMaxX) {
-        requestWords[0] = projected.x;
-        requestWords[1] = projected.y;
-        requestWords[2] = projected.z;
-        requestWords[3] = EnemyWrapAngle(-angle - g_EnemyPi);
-        reinterpret_cast<int *>(&request)[0x20 / 4] = requestOwner;
-        EnemyFireLaser(g_EnemyLaserManager, &request, 0);
-        fired = 1;
-    }
-
-    if ((flags & 0x08000000u) != 0 ||
-        (projected.y >= g_EnemyPlayfieldMinY &&
-         (projected.y < g_EnemyPlayfieldMaxY ||
-          (flags & 0x400u) == 0))) {
-        if (!fired)
-            return;
-    }
-    else {
-        requestWords[0] = projected.x;
-        requestWords[1] = projected.y;
-        requestWords[2] = projected.z;
-        requestWords[3] = -angle;
-        reinterpret_cast<int *>(&request)[0x20 / 4] = requestOwner;
-        EnemyFireLaser(g_EnemyLaserManager, &request, 0);
-    }
-
-    flags &= 0xf7fff3ffu;
-}
-
 
 // The type-0 request copied by target collision owner 0x0041D880 is 0x77
 // dwords (0x1DC bytes).  Its short type/color pair at +0x24/+0x26 and the
@@ -943,4 +857,54 @@ unsigned int EnemyFireLaser(
     manager->tail = reinterpret_cast<EnemyLaserCommonStorageView *>(laser);
     laser->ApplyRequest(request);
     return manager->nextId;
+}
+
+// Target41CFD0: actual type-0 construction virtual, slot3C of46DA60.
+void EnemyLaserType0StorageView::Bounce()
+{
+    EnemyLaserLineView &state = *reinterpret_cast<EnemyLaserLineView *>(this);
+    EnemyLaserVectorView projected;
+    projected.FromAngleMagnitude(state.angle, state.length);
+    projected.x += state.position.x;
+    projected.y += state.position.y;
+    projected.z = 0.0f;
+
+    if (!(projected.x <= g_EnemyPlayfieldMinX ||
+          projected.x >= g_EnemyPlayfieldMaxX ||
+          projected.y <= g_EnemyPlayfieldMinY ||
+          projected.y >= g_EnemyPlayfieldMaxY)) {
+        return;
+    }
+
+    int fired = 0;
+    if (state.soundId >= 0) {
+        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)
+            ->QueueSoundSample(state.soundId, 0);
+    }
+
+    if (projected.x < g_EnemyPlayfieldMinX ||
+        projected.x >= g_EnemyPlayfieldMaxX) {
+        state.request.position = projected;
+        state.request.angle = EnemyWrapAngle(-state.angle - g_EnemyPi);
+        state.request.speed = state.patterns[4].values[0].scalar;
+        EnemyFireLaser(g_EnemyLaserManager,
+            reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
+        fired = 1;
+    }
+
+    if ((state.flags & 0x08000000u) == 0 &&
+        (projected.y < g_EnemyPlayfieldMinY ||
+         (projected.y >= g_EnemyPlayfieldMaxY &&
+          (state.flags & 0x400u) != 0))) {
+        state.request.position = projected;
+        state.request.angle = -state.angle;
+        state.request.speed = state.patterns[4].values[0].scalar;
+        EnemyFireLaser(g_EnemyLaserManager,
+            reinterpret_cast<EnemyLaserRequestScratch *>(&state.request), 0);
+    }
+    else if (!fired) {
+        return;
+    }
+
+    state.flags &= 0xf7fff3ffu;
 }

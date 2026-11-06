@@ -75,6 +75,7 @@ confirmed authored code.
 | `SoundPlayerView::LoadSoundSample` / `PreloadBgm` | **684 / 684**; **369 / 369** | Respectively **678/684** and **365/369** ordinary bytes in suitable five-TU graphs; mainly call argument register order. Many simple declaration/alias and wrapper trials already failed. [Sound wire evidence](evidence/sound-riff-chunk-prefix-20261105/README.md). |
 | `PollInputFrame @0x0044A5F0` | **850 / 850** | Split immutable published return from destructive repeat cursor; fresh baseline855 shrinks to850. **807/850 bytes**, **10/10 independently bound fields**. Remaining43 ordinary differences start +0x2DD in repeat/edge registers and scheduling. Related264-byte query cold passes. XOR/countdown/wider-mask/snapshot controls give no further improvement and are restored. [Current proof](evidence/input-frame-published-mask-20261106/README.md). |
 | `StageResetPublishedCameras @0x004216F0` | **465 / 533** | Restored omitted secondary/published +0xE4 dword assignments, respectively 1/0; camera layout stays 0x118. Both fresh `/GL` and normal-COFF complete owners emit 533 bytes /40 fields; vector temporary reuse and global-store scheduling remain nonexact. [Word-store proof](evidence/stage-camera-default-words-20261106/README.md). |
+| `EnemyLaserType0StorageView::Bounce @0x0041CFD0` | **410 / 510** | Actual type-0 vtable46DA60+3C and Update call41D45F bind this owner. Real generated virtual ownership restores ECX/RET; typed XYZ copies and ordered Y predicates are installed. One FireLaser path inlines; factory private arguments/registers remain nonexact. Original Update-entry canonical guard1001/all31 and native polar30/sound123 pass. Bounce-as-entry is rejected (same510; Update1009). [Current proof](evidence/laser-bounce-virtual-owner-20261106/README.md). |
 | `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** fresh two-TU `/GL /GS` measures **138/157**, zero fields. An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Native current proof is private `.analysis/gpt-web/20261106-text-current-exact/`. |
 
 Other unaccepted leaves worth *new evidence-led* work: `CMemoryPbgFile::Seek`
@@ -100,6 +101,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EnemyEclDispatcher.cpp` | `0f496115327b594e053e3aa5e92f37addf5c968a23a613649b0b4376d5e1b034` |
 | `src/Enemy.cpp` | `c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
+| `src/EnemyLaser.cpp` | `0eb005f5c6a76acb35a8985229b0c3e1bcc1978b9b70868325a066449a645c77` |
 | `src/BulletManager.cpp` | `fa95d6ff3f5293c8e0df9e66cbcda29be51d3b27902a9b002a52792fc9072929` |
 | `src/Sound.cpp` | `cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b3b0` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
@@ -109,6 +111,9 @@ receipts are ignored private files, not Git attachments.
 
 Preferred current native witnesses (only if the source pin matches):
 
+- Type-0 Bounce candidate and selected Update guard:
+  `build/match-linked/LaserLineUpdate/`,
+  [source/image and actual virtual-slot pins](evidence/laser-bounce-virtual-owner-20261106/native-result.json).
 - Bullet vertical/horizontal wrap: canonical
   `build/match-linked/BulletHorizontalWrap/`, private
   `.analysis/gpt-web/20261106-bullet-vertical-wrap/canonical-replay.json`,

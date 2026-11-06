@@ -1,0 +1,91 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_owner": {
+    "address": "0x0041CFD0",
+    "size": 410,
+    "last_byte": "0x0041D169",
+    "original_vtable": "0x0046DA60",
+    "virtual_slot": "0x3C",
+    "update_dispatch": "0x0041D45F",
+    "independently_decoded_fields": 17
+  },
+  "source_pins": {
+    "src/LaserLine.cpp": "86a209478e8346ab98a555f756737a4dde0e09dac8b81ecd140cbe626f544760",
+    "src/EnemyLaser.cpp": "0eb005f5c6a76acb35a8985229b0c3e1bcc1978b9b70868325a066449a645c77",
+    "src/AnmManager.cpp": "94070661d61c5e144811bf220ac4cd618aac5cdfc0b3b3f7941a0ce4e12ff973",
+    "src/EnemyEclDispatcher.cpp": "0f496115327b594e053e3aa5e92f37addf5c968a23a613649b0b4376d5e1b034",
+    "src/EnemyLaser.hpp": "24111959c5e98485547e37e28fc27fdfaf11feb5b09683e521b90d69efb8fab4",
+    "src/EnemyLaserLine.hpp": "acfaa3fd311fb6eb2d7239f3bb9feceb6ec78211139142ffe0b2fbad6989ac57",
+    "src/AnmManager.hpp": "3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667"
+  },
+  "baseline_enemy_laser_sha256": "d26d9c146ec7ae8401408e40293fe43233ac1d3f03b1bda254062fdeed9c1439",
+  "installed_candidate": {
+    "symbol": "?Bounce@EnemyLaserType0StorageView@@UAEXXZ",
+    "size": 510,
+    "result": "nonexact_extent",
+    "strict_error": "PDB contribution size 0x1fe differs from manifest 0x19a",
+    "actual_abi": "ECX receiver, plain RET",
+    "map_object": "support-01-EnemyLaser.ltcg.obj",
+    "image_sha256": "fd3d5825f58e786ba8e0275f10093ed85463b9c4bd84a88976aa92ac64b347ef",
+    "pdb_guid": "3591b35ff91bcc4498f3c719e557f56b",
+    "generated_vtable_address": "0x414220",
+    "generated_slot_3c_destination": "0x0040E790",
+    "generated_slot_matches_owner": true
+  },
+  "native_controls": [
+    {
+      "name": "baseline",
+      "candidate_size": 498,
+      "image_sha256": "637a40f95bb5e168d9bfe7c0dacde0d04069467f52e926bc237c3c946e7a2f4b",
+      "line_guard_result": "exact"
+    },
+    {
+      "name": "virtual-owner",
+      "candidate_size": 498,
+      "image_sha256": "71514e9eb2c775671f4e4130d66881dd37c7fcd4403fdde1d343449954f3b482",
+      "line_guard_result": "exact"
+    },
+    {
+      "name": "actual-vtable",
+      "candidate_size": 494,
+      "image_sha256": "d98964974dd292122786fabcbca113ff1be632918a8a6886bd3840858f087b9f",
+      "line_guard_result": "exact"
+    },
+    {
+      "name": "typed-ordered-bounce",
+      "candidate_size": 510,
+      "image_sha256": "8a6fef9aded6edcbfdb4d869f4370c0026c4bcd351afa0c390f180a926897575",
+      "line_guard_result": "exact"
+    }
+  ],
+  "rejected_callback_entry": {
+    "same_final_source": true,
+    "candidate_size": 510,
+    "line_target_size": 1001,
+    "line_candidate_size": 1009,
+    "accepted_recipe_change": false
+  },
+  "canonical_line_guard": {
+    "result": "exact",
+    "bytes": 1001,
+    "fields": 31,
+    "all_four_inputs_recompiled": true,
+    "normalization_complete": true,
+    "first_differences": []
+  },
+  "same_final_native_callee_guards": {
+    "enemy-laser-vector-from-angle-magnitude": {
+      "result": "exact",
+      "bytes": 30,
+      "fields": 0
+    },
+    "enemy-sound-queue-sample": {
+      "result": "exact",
+      "bytes": 123,
+      "fields": 1
+    }
+  },
+  "new_exact_functions": 0,
+  "new_authored_exact_bytes": 0,
+  "boundary_origin_mapping_count_changes": 0
+}

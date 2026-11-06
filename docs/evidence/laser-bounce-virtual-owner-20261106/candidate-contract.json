@@ -1,0 +1,148 @@
+{
+  "artifact_kind": "linked-pe",
+  "source": "src/LaserLine.cpp",
+  "support_sources": [
+    "src/AnmManager.cpp",
+    "src/EnemyLaser.cpp",
+    "src/EnemyEclDispatcher.cpp"
+  ],
+  "output_dir": "build/match-linked/LaserLineUpdate",
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL",
+    "/GS"
+  ],
+  "link_profile": [
+    "/ltcg",
+    "/nodefaultlib",
+    "/subsystem:console",
+    "/incremental:no",
+    "/fixed:no",
+    "/base:0x00400000",
+    "/debug",
+    "/debugtype:cv",
+    "/opt:noref",
+    "/opt:noicf",
+    "/safeseh:no"
+  ],
+  "harness": "unresolved-symbol-data-anchors-v1",
+  "entry_symbol": "?Update@EnemyLaserLineView@@UAEHXZ",
+  "functions": [
+    "EnemyLaserType0StorageView::Bounce"
+  ],
+  "symbol": "?Bounce@EnemyLaserType0StorageView@@UAEXXZ",
+  "target_address": 4313040,
+  "size": 410,
+  "linkages": [
+    {
+      "offset": 19,
+      "type": "REL32",
+      "symbol": "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z",
+      "target": 4323328
+    },
+    {
+      "offset": 59,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPlayfieldMinX@@3MA",
+      "target": 4655936
+    },
+    {
+      "offset": 76,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPlayfieldMaxX@@3MA",
+      "target": 4655932
+    },
+    {
+      "offset": 93,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPlayfieldMinY@@3MA",
+      "target": 4655876
+    },
+    {
+      "offset": 110,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPlayfieldMaxY@@3MA",
+      "target": 4655928
+    },
+    {
+      "offset": 141,
+      "type": "DIR32",
+      "symbol": "?g_MainSoundOwner@@3PAEA",
+      "target": 4793744
+    },
+    {
+      "offset": 146,
+      "type": "REL32",
+      "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+      "target": 4447376
+    },
+    {
+      "offset": 157,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPlayfieldMinX@@3MA",
+      "target": 4655936
+    },
+    {
+      "offset": 174,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPlayfieldMaxX@@3MA",
+      "target": 4655932
+    },
+    {
+      "offset": 200,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPi@@3MA",
+      "target": 4655896
+    },
+    {
+      "offset": 229,
+      "type": "REL32",
+      "symbol": "?EnemyWrapAngle@@YGMM@Z",
+      "target": 4504688
+    },
+    {
+      "offset": 247,
+      "type": "DIR32",
+      "symbol": "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A",
+      "target": 4683804
+    },
+    {
+      "offset": 265,
+      "type": "REL32",
+      "symbol": "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z",
+      "target": 4310288
+    },
+    {
+      "offset": 289,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPlayfieldMinY@@3MA",
+      "target": 4655876
+    },
+    {
+      "offset": 306,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPlayfieldMaxY@@3MA",
+      "target": 4655928
+    },
+    {
+      "offset": 337,
+      "type": "DIR32",
+      "symbol": "?g_EnemyLaserManager@@3PAUEnemyLaserManagerView@@A",
+      "target": 4683804
+    },
+    {
+      "offset": 382,
+      "type": "REL32",
+      "symbol": "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z",
+      "target": 4310288
+    }
+  ],
+  "pdb_source": "src/EnemyLaser.cpp"
+}
