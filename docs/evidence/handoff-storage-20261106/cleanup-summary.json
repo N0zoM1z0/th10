@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-06",
+  "purpose": "Next-agent storage handoff; selected old rejected/redundant native experiment bytecode only",
+  "archive_path": ".analysis/archive/gpt-web-rejected-native-20261106.tar.zst",
+  "archive_size_bytes": 3158740,
+  "archive_sha256": "cd9d92d88606ca46060eed0154c140d3971e6bfdcb6436b9db05df31a3992ed5",
+  "archive_verified_all_members": 367,
+  "archive_single_member_restoration_verified": "build/gpt-web/20261106-enemy-constructor-sentinel/sentinel-first/source.map",
+  "private_manifest": ".analysis/maintenance-next-agent-20261106/native-pruned-files-20261106.jsonl",
+  "private_manifest_sha256": "b371183c1add0e8536c51fa687346d99eb6e59592b4f56d32ecd38eb02f9c194",
+  "deleted_binary_files": 367,
+  "deleted_binary_payload_bytes": 24327745,
+  "deleted_pycache_files": 247,
+  "deleted_pycache_payload_bytes": 4581025,
+  "selected_failed_experiment_prefixes": [
+    "20261106-capture-barrier",
+    "20261106-capture-store-order",
+    "20261106-anm-op91-order",
+    "20261106-anm-child-layout",
+    "20261106-anm-set-script-register",
+    "20261106-ecl-stop-thread-register",
+    "20261106-ecl-time-reg-lifetime",
+    "20261106-ecl-comparison-scalars",
+    "20261106-popup-factory",
+    "20261106-preload-param-record",
+    "20261106-preload-readfile-wrapper",
+    "20261106-sound-inline-call",
+    "20261106-text-sign-intshift",
+    "20261106-bullet-angle-reference",
+    "20261106-main-register",
+    "20261106-enemy-constructor-sentinel",
+    "20261105-bullet-final-reg",
+    "20261105-next-anm-child91",
+    "20261105-next-addscript",
+    "20261105-next-ecl-square",
+    "20261105-ecl-copy-barrier",
+    "20261105-ecl-format-stack",
+    "20261105-anm-child-requests",
+    "20261105-bullet-argument"
+  ],
+  "before_allocated_bytes": {
+    "build": 219348992,
+    "build/gpt-web": 93376512,
+    "build/match-linked": 119414784,
+    "build/pycache": 5279744,
+    ".analysis": 258027520,
+    ".analysis/archive": 202616832,
+    ".analysis/gpt-web": 44843008
+  },
+  "after_allocated_bytes": {
+    "build": 189104128,
+    "build/gpt-web": 68411392,
+    "build/match-linked": 119414784,
+    ".analysis": 258007040,
+    ".analysis/archive": 202616832,
+    ".analysis/gpt-web": 44843008
+  },
+  "measured_build_plus_analysis_saving_bytes": 30265344,
+  "retained": [
+    "resources/th10.exe",
+    ".tools/",
+    "ghidra-project/",
+    "_reference/",
+    "resources/private/",
+    ".analysis/archive/ all older archives",
+    "build/match-linked/",
+    "all .analysis/gpt-web scripts and receipts",
+    "current ANM/ECL/Enemy full-source proof graphs",
+    "docs/evidence/"
+  ],
+  "limitations": [
+    "Historical private build paths under the selected prefixes are no longer expanded: restore their exact archived members or rebuild by retained scripts.",
+    "An archive or old native PE does not establish current source exactness.",
+    "Only ignored generated PE/PDB/OBJ/map/library files and pycache were unlinked."
+  ],
+  "measurement_notes": {
+    "baseline_timestamp": "At the start of the successful resumed cleanup, after the archive was already written during a protected first attempt",
+    "baseline_includes_new_archive": true,
+    "new_archive_allocated_bytes": 3162112,
+    "approx_initial_to_final_saving_including_new_archive_bytes": 27103232,
+    "estimated_initial_saving_note": "Archive creation preceded the measured before snapshot. Overall net gain after accounting for its allocated blocks is approximate; the post-archive before/after disk block difference is directly measured."
+  }
+}

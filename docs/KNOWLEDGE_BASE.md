@@ -14,6 +14,17 @@ Dated checkpoint sections record their original source/build epochs; old sizes
 and open statuses can be superseded by later complete proofs. They are records,
 not current prerequisites.
 
+**2026-11-06 handoff correction:** Earlier sections below include statements
+like “current ledger 1,482/1,483/1,485”, which were true only when those
+notes were written. The new source-pinned [short handoff](RE_HANDOFF.md) and
+generated [current ledger](PROGRESS.md) supersede them. As of this checkpoint
+the ledger is **1,488 exact functions / 191,009 bytes**, including **579
+confirmed-authored exact / 120,919 bytes**. The previously one-byte-close
+`TextRenderBufferView::InvertAlpha` is from a *different source and build
+epoch*; the currently installed source's fresh two-TU graph is **138/157**,
+not 156/157. [Current proof and cleanup](evidence/handoff-storage-20261106/README.md)
+restore old experimental images separately; they do not become current proofs.
+
 Generated builds and superseded scratch are disposable after preserving useful
 evidence. Private archives, inventories and unresolved witnesses under ignored
 `.analysis/` are retained according to [RE_ARTIFACTS.md](RE_ARTIFACTS.md); do not
