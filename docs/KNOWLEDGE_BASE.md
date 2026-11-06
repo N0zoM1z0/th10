@@ -32,6 +32,22 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-06 statistics-record kind-loop reconstruction
+
+Complete InitializeGameStatisticsRecord42ACB0 owns274 bytes. The fresh
+hand-unrolled five-pair source emits302/12 fields; an ordinary110-iteration
+loop naturally produces the original three induction chains, five-way
+unroll and2D0 stride. Retaining the kind cursor at record628 restores field
+displacements. Normal COFF and separate single-input GL/GS cold both emit
+274/all8, with identical complete code after independent original referent
+binding. Full positional diagnostic is174/274, still NONEXACT; field offsets
+disagree. Score active/name cursors and spilled group count differ; kind tail
+retains two SIB encodings. Literal/aggregate copies are neutral, method280
+and indexed791 reject and restore. No canonical source consumer, new match,
+boundary/origin/count change or original data allocation follows. The old
+source-absent ledger wording and isolated274-byte claims are historical.
+See [the complete current proof](evidence/statistics-record-natural-loop-20261106/README.md).
+
 ## 2026-11-06 type-0 Bounce virtual ownership and ordered Y predicate
 
 Original46DA60+3C points to41CFD0; Update41D45F calls that same virtual slot

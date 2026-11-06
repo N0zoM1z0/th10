@@ -58,25 +58,10 @@ void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record)
 
     int *kindData = reinterpret_cast<int *>(
         reinterpret_cast<unsigned char *>(record) + 0x628);
-    int first = 0;
-    int second = 1;
-    int fourth = 3;
-    do
+    for (int index = 0; index < 110; ++index)
     {
-        kindData[-1] = first;
-        kindData[0] = g_GameStatisticsRankKind[first];
-        kindData[35] = second;
-        kindData[36] = g_GameStatisticsRankKind[second];
-        kindData[71] = fourth-1;
-        kindData[72] = g_GameStatisticsRankKind[fourth-1];
-        kindData[107] = fourth;
-        kindData[108] = g_GameStatisticsRankKind[fourth];
-        kindData[143] = first+4;
-        kindData[144] = g_GameStatisticsRankKind[first+4];
-        first += 5;
-        second += 5;
-        fourth += 5;
-        kindData += 180;
-    } while (second < 111);
-
+        kindData[-1] = index;
+        kindData[0] = g_GameStatisticsRankKind[index];
+        kindData += 0x90 / sizeof(int);
+    }
 }

@@ -76,6 +76,7 @@ confirmed authored code.
 | `PollInputFrame @0x0044A5F0` | **850 / 850** | Split immutable published return from destructive repeat cursor; fresh baseline855 shrinks to850. **807/850 bytes**, **10/10 independently bound fields**. Remaining43 ordinary differences start +0x2DD in repeat/edge registers and scheduling. Related264-byte query cold passes. XOR/countdown/wider-mask/snapshot controls give no further improvement and are restored. [Current proof](evidence/input-frame-published-mask-20261106/README.md). |
 | `StageResetPublishedCameras @0x004216F0` | **465 / 533** | Restored omitted secondary/published +0xE4 dword assignments, respectively 1/0; camera layout stays 0x118. Both fresh `/GL` and normal-COFF complete owners emit 533 bytes /40 fields; vector temporary reuse and global-store scheduling remain nonexact. [Word-store proof](evidence/stage-camera-default-words-20261106/README.md). |
 | `EnemyLaserType0StorageView::Bounce @0x0041CFD0` | **410 / 510** | Actual type-0 vtable46DA60+3C and Update call41D45F bind this owner. Real generated virtual ownership restores ECX/RET; typed XYZ copies and ordered Y predicates are installed. One FireLaser path inlines; factory private arguments/registers remain nonexact. Original Update-entry canonical guard1001/all31 and native polar30/sound123 pass. Bounce-as-entry is rejected (same510; Update1009). Fresh stdcall and complete manager-member controls both give factory157/RET8 with stack request; restored/parked. [Current proof](evidence/laser-bounce-virtual-owner-20261106/README.md). |
+| `InitializeGameStatisticsRecord @0x0042ACB0` | **274 / 274** | Natural110-iteration kind loop shrinks fresh302/12-field source to274/8 in normal COFF and separate `/GL /GS` cold. Full address-bound diagnostic **174/274**, still NONEXACT; field positions disagree. Score copy keeps two cursors and spills group count; kind tail has two SIB differences. Literal/aggregate copies are neutral; method280 and indexed791 restore. [Current proof](evidence/statistics-record-natural-loop-20261106/README.md). |
 | `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** fresh two-TU `/GL /GS` measures **138/157**, zero fields. An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Native current proof is private `.analysis/gpt-web/20261106-text-current-exact/`. |
 
 Other unaccepted leaves worth *new evidence-led* work: `CMemoryPbgFile::Seek`
@@ -107,10 +108,14 @@ receipts are ignored private files, not Git attachments.
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |
+| `src/GameStatisticsRecordDefaults.cpp` | `bd62bc5eb20ab8346d8b81d724cd6db90050ed75816e05bd406e47c3711b75d9` |
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
 
 Preferred current native witnesses (only if the source pin matches):
 
+- Statistics-record candidate:
+  `build/gpt-web/20261106-statistics-record/final-linked/`,
+  [full original-bound diagnostic and source pins](evidence/statistics-record-natural-loop-20261106/native-result.json).
 - Type-0 Bounce candidate and selected Update guard:
   `build/match-linked/LaserLineUpdate/`,
   [source/image and actual virtual-slot pins](evidence/laser-bounce-virtual-owner-20261106/native-result.json).
