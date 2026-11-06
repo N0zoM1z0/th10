@@ -100,6 +100,12 @@ is already correct). They must **not** be marked exact.
 | --- | --- | --- |
 | ANM | Full typed variable-operand mask and scalar words, jump/time/mode and halfword payloads. `ALLOC_VERTICES` now allocates explicitly offset-asserted **two 0x1C-byte render vertices per 0x38-byte pair** without changing runtime allocation semantics. The 9,964-byte executor is still 9,962/9,964 original matched and NONEXACT. | [Typed pointer mask](evidence/anm-typed-pointer-operand-mask-20261105/README.md): fresh five-source strict **350/350** original-bound fields, including 95 locals; **9,962/9,964** original bytes, still NONEXACT. Affected pointer leaves **288/288 exact**. Private `build/gpt-web/20261105-anm-pointer-mask/current/`. Earlier full-mask [proof](evidence/anm-instruction-variable-mask-overlay-20261105/README.md) belongs to its own source epoch. |
 | Enemy dispatcher / GUI | Native 0x3C-byte item-drop packet, raw indexed-word alias, life-gauge/callback fields and ECL header. PLAY_ANM's 18 DWORD position copies use a 12-byte `EnemyPositionDwordView` preserving source bits and projection control flow. The 14,416-byte target boss remains 14,352 native candidate bytes with 716 candidate fields | [Shared Enemy ECL header / pattern cursor](evidence/enemy-ecl-shared-instruction-pattern-20261105/README.md): fresh 11-TU **14,352 candidate bytes / 716 candidate fields** with zero candidate ordinary differences versus the previous pinned graph; BeginSpell and three other complete owners preserved. Selected native `ReadIntArgument` **16/16 exact**. [Raw drop overlay](evidence/enemy-drop-raw-word-overlay-20261105/README.md) scoped selected leaves **696/696 exact**. [PLAY_ANM position DWORDs](evidence/enemy-ecl-raw-vm-position-20261106/README.md): complete 11-TU PDB candidate zero-regression, selected leaves **37/37 original exact**. The 14,416-byte original big dispatcher remains NONEXACT. |
+[ECL NEGATE/POST_DECREMENT scalar word](evidence/ecl-negate-postdecrement-word-20261106/README.md):
+complete two-TU `Run` remains 7,020 bytes, 189 original-bound fields and
+6,997 matching original ordinary bytes; source now models the native 4-byte
+old-value/postdecrement and signed-negation payload. Selected leaf guards
+**362/362 exact**. Run/StartSubroutine remain NONEXACT.
+
 [ECL logical and bitwise stack words](evidence/ecl-logical-bitwise-scalar-20261106/README.md):
 all five OR/AND/XOR stack operations now share native 4-byte typed scalar
 storage. New two-TU full Run remains **7,020 bytes, 189 fields, 6,997
@@ -237,7 +243,7 @@ Enemy.hpp          8dadcfe889812dcf508e17d855c49d94463bf127949d834bb0d8f905e3bcb
 EnemyCallback.cpp  705b2537af9e117946e4626de97fd195efb7ee592681df4e82002d7d282ac745
 EnemyEclDispatcher.cpp 187d8e5720fb9c663c811ecd09293aa0a8cd9b3fc7abf41cb188a5f507ab95df
 Gui.cpp            375d5b39c583fce37b4a5f29b25f28de7d5f7400940ef580e8fd47e7650efc09
-EclVm.cpp          00c4cebf8caf2a950ecd814d222459baab0b74378a80eda6a1f260fe6630f08e
+EclVm.cpp          63eb562811821baf48bb2760428a624018a8d33d54b412367e01ddace077b274
 EclVm.hpp          b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52
 AnmManager.cpp     7af073bbdb66376e54d3e7b242f39855a586ae7843e86411766479714d8c8c32
 AnmManager.hpp     23f4e6517de057e72ab34098be290d545e6f25411613fb79085b30815230e425

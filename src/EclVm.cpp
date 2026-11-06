@@ -1137,10 +1137,10 @@ jump_instruction:
 
             case ECL_VM_NEGATE_INT:
             {
-                int value;
-                stack.Pop('i', sizeof(value), &value);
-                value = -value;
-                stack.Push('i', sizeof(value), &value);
+                EclVmScalar value;
+                stack.Pop('i', sizeof(value.integer), &value.integer);
+                value.integer = -value.integer;
+                stack.Push('i', sizeof(value.integer), &value.integer);
                 break;
             }
 
@@ -1158,10 +1158,11 @@ jump_instruction:
 
             case ECL_VM_POST_DECREMENT_INT:
             {
-                int value = ReadInt(0);
+                EclVmScalar value;
+                value.integer = ReadInt(0);
                 int *destination = ResolveInt(0);
-                *destination = value - 1;
-                stack.Push('i', sizeof(value), &value);
+                *destination = value.integer - 1;
+                stack.Push('i', sizeof(value.integer), &value.integer);
                 break;
             }
 
