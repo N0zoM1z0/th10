@@ -3634,19 +3634,24 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
 
         case ANM_OP_I_ADD:
-            *GET_INT_VAR_PTR(0) += GET_INT_VAR(1);
+            // Native integer VM lvalues are 32-bit words. Retain the original
+            // resolver/read order, but make ADD/SUB/IMUL wrap without signed UB.
+            *reinterpret_cast<unsigned int *>(GET_INT_VAR_PTR(0)) +=
+                static_cast<unsigned int>(GET_INT_VAR(1));
             break;
         case ANM_OP_F_ADD:
             *GET_FLOAT_VAR_PTR(0) += GET_FLOAT_VAR(1);
             break;
         case ANM_OP_I_SUB:
-            *GET_INT_VAR_PTR(0) -= GET_INT_VAR(1);
+            *reinterpret_cast<unsigned int *>(GET_INT_VAR_PTR(0)) -=
+                static_cast<unsigned int>(GET_INT_VAR(1));
             break;
         case ANM_OP_F_SUB:
             *GET_FLOAT_VAR_PTR(0) -= GET_FLOAT_VAR(1);
             break;
         case ANM_OP_I_MUL:
-            *GET_INT_VAR_PTR(0) *= GET_INT_VAR(1);
+            *reinterpret_cast<unsigned int *>(GET_INT_VAR_PTR(0)) *=
+                static_cast<unsigned int>(GET_INT_VAR(1));
             break;
         case ANM_OP_F_MUL:
             *GET_FLOAT_VAR_PTR(0) *= GET_FLOAT_VAR(1);
