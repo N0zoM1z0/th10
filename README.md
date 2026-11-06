@@ -49,18 +49,18 @@ and ledger rows. [PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers
 and is the count authority. The inventory and origin classifications remain
 provisional; the Windows i386 product, runtime semantics and portability are open.
 
-Representative accepted full owners now include the Hint
-Initialize131, Update571 and AddAutomaticEntry220, the GameManager
-owner Initialize134 and callback Cleanup137, and the StageCrossProduct77
-codegen helper. Source-written/authored provenance is kept separate
-from compiler-generated or indeterminate-origin exact bodies.
-The ANM 9,964-byte ExecuteScript and 7,020-byte ECL interpreter remain
-nonexact, as does the 14,416-byte enemy ECL instruction dispatcher.
-**Correction:** GameCreateOwner @0x0040AF90 is now **86/86 canonical exact**
-(see `docs/evidence/game-owner-creator-exact-20261102/README.md`);
-older 83/86 candidate wording was superseded by a complete exact proof.
-Use the [current handoff](docs/RE_HANDOFF.md) and generated progress
-rather than treating any historical candidate score as exactness.
+Recent complete exact owners include `ReplayManager::SaveReplay` (1,681 bytes),
+`EndingTextVmView::Run` (1,568 bytes) and `EnemyLaserType1View::Draw` (173 bytes).
+Source-written provenance remains separate from generated or indeterminate-origin
+exact code. The 9,964-byte ANM executor, 7,020-byte ECL interpreter, 14,416-byte
+enemy dispatcher and 1,344-byte replay initializer remain nonexact. See the current handoff for
+source-pinned comparisons and parked controls; matching size grants no credit.
+
+For a new agent, read [AGENTS.md](AGENTS.md), then
+[RE_HANDOFF.md](docs/RE_HANDOFF.md), the selected owner's source/ledger rows,
+and the relevant comparison lane. Use [RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md)
+for private inputs, retained witnesses and restoration. Dated evidence keeps
+its original source epoch; it is not a current checklist.
 
 Use `scripts/repo-python`; it enforces the locked Capstone package. Verify the
 private target before target work. Check toolchain declarations and run the

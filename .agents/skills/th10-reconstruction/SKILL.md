@@ -25,4 +25,4 @@ owners; run default lightweight CI, plus affected comparator self-tests when
 changing the Oracle. Product and semantic runtime tests belong to later phases.
 
 Keep scratch in `.analysis/`, accepted TH10 facts in the repository and a
-coherent local checkpoint using `gpt-6.1-sol:`. Never push.
+coherent local checkpoint using `gpt-web:`. Never push.

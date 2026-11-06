@@ -4,14 +4,15 @@
 | --- | --- | --- |
 | Verify the private target | `scripts/repo-python scripts/verify-target.py` | Target identity, PE structure, and Rich record stream |
 | Verify shared analyzer surfaces | `scripts/repo-python scripts/verify-analysis-tools.py` | Selected Ghidra/JDK file identity |
-| Attest and execute VC7.1 SP1 | `scripts/repo-python scripts/verify-toolchain.py --execute` | Hash/banner identity plus headless normal-COFF, LTCG, resource, PE32 link, and PE/PDB extent smoke |
+| Check pinned toolchain declarations | `scripts/repo-python scripts/verify-toolchain.py --check` | Routine target-independent declaration check |
+| Execute VC7.1 SP1 smoke on setup/change or compiler/Wine problems | `scripts/repo-python scripts/verify-toolchain.py --execute` | Hash/banner identity plus headless normal-COFF, LTCG, resource, PE32 link, and PE/PDB extent smoke |
 | Compile a source/profile hypothesis | `scripts/compile-probe.sh SOURCE OUTPUT.obj FLAG...` | Compiler observation only |
 | Compare a normal-COFF source probe | `scripts/repo-python scripts/compare-coff-function.py OBJECT SYMBOL ADDRESS SIZE --json` | Relocation-masked diagnostic plus target-derived relocation candidates; no acceptance authority |
 | Enumerate normal-COFF functions | `scripts/repo-python scripts/compare-coff-function.py OBJECT --list-functions [--contains TEXT] [--json]` | Exact decorated symbol, section extent and relocation count for probe setup; no acceptance authority |
 | Build a canonical compiler unit | `scripts/repo-python scripts/build-match-unit.py --unit NAME` | Cold normal-COFF compile or `/GL` compile/link, no exactness by itself |
 | Compare a canonical normal-COFF unit | `scripts/repo-python scripts/compare-coff-function.py --unit NAME --json` | Complete target bytes and declared relocation replay |
 | Compare a canonical linked-PE unit | `scripts/repo-python scripts/compare-linked-function.py --unit NAME --json` | PE/map/PDB-bound complete extent, exhaustive linked-field validation and target replay |
-| Cold-replay canonical exact units | `scripts/repo-python scripts/replay-exact-units.py [--source SOURCE | --unit NAME]` | One cold build per shared artifact context followed by strict comparison of every selected COFF or linked-PE unit |
+| Cold-replay canonical exact units | `scripts/repo-python scripts/replay-exact-units.py --unit NAME [--unit NAME...]` | One cold build per shared artifact context followed by strict comparison of every selected COFF or linked-PE unit |
 | List the source-present exact backlog | `scripts/repo-python scripts/report-exact-backlog.py [--source SOURCE] [--module MODULE] [--state authored\|origin-review\|origin-indeterminate\|excluded\|all] [--json]` | Triage-only joined view of non-exact source mappings; default excludes origin-pending entries |
 | Rank the exact backlog in both codegen lanes | `scripts/repo-python scripts/rank-exact-backlog.py [--source SOURCE] [--limit N] [--json]` | Fresh normal-COFF and LTCG probes joined to the same current backlog and ranked by explicit size/byte distance; no acceptance authority |
 | Batch-probe the authored exact backlog | `scripts/repo-python scripts/probe-exact-backlog.py [--source SOURCE] [--show RESULT] [--json]` | One cold normal-COFF compile per source plus strict diagnostic comparison; no acceptance authority |
@@ -23,16 +24,13 @@
 | Attest private Ghidra project | `scripts/repo-python scripts/ghidra.py check` | Target/project binding, no exactness credit |
 | Query local Ghidra | `scripts/repo-python scripts/ghidra.py query .analysis/query.txt OPERATION ARG...` | Read-only target-attested provisional semantic analysis |
 | Decompile local functions | `scripts/repo-python scripts/ghidra.py decompile .analysis/functions.txt ADDRESS...` | Bounded source hypotheses, no exactness credit |
-| Discover/call Ghidra through Factory | Factory provider `th10-ghidra`, when that transport is selected | Target-attested provisional semantic analysis |
 | Validate ledgers | `scripts/repo-python scripts/validate-tracking.py --require-target` | Internal consistency and target binding |
 | Report progress | `scripts/repo-python scripts/report-reconstruction-status.py` | Ledger-derived status |
 | Validate public checkout | `scripts/repo-python scripts/ci.py` | Small target-independent checks |
 
-The public game repository contains no MCP server and has no game-specific
-public URL. Local sessions can use the headless commands directly. Factory
-clients select repository `th10` plus provider `th10-ghidra` and separately
-attest that transport; a local result is not a Factory receipt. Follow the
-operator's current tool selection in `docs/RE_HANDOFF.md`.
+Use local commands directly under [AGENTS.md](../AGENTS.md). No Factory
+provider, routing prerequisite or receipt is required. The public game
+repository contains no MCP server or game-specific public endpoint.
 
 For bounded local review, use one CPU and a bounded Java heap, for example
 `_JAVA_OPTIONS='-Xmx768m -XX:ActiveProcessorCount=1' nice -n 10 scripts/repo-python scripts/ghidra.py check`.
@@ -42,7 +40,7 @@ Wine/compiler jobs and select explicit affected units for canonical replay;
 the replay command without selectors rebuilds the full historical cohort.
 
 Ghidra 12.1.3 and Temurin JDK 21.0.12.1 are installed once in private
-Factory-managed storage. The ignored `.tools/ghidra` and `.tools/jdk` links
+shared storage. The ignored `.tools/ghidra` and `.tools/jdk` links
 select those immutable shared installations. The mutable project remains
 game-specific at `ghidra-project/TH10`.
 
@@ -82,6 +80,7 @@ section. Probe records produced before this invariant was added must be rerun
 before their object-size or comparable-byte fields are used as current
 evidence.
 
-The original executable is copied once from the Windows installation to the
-ignored `resources/th10.exe`. Normal Factory work neither searches nor mounts
-the Windows drive.
+The canonical private input is ignored/read-only `resources/th10.exe`. Do not
+search `/mnt`, add Windows mounts or set `TH10_TARGET_PATH` without an explicit
+operator override. A Git clone does not supply this executable; see
+[RE_ARTIFACTS.md](RE_ARTIFACTS.md) for transfer and recovery.

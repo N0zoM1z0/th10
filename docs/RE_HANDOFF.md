@@ -20,7 +20,7 @@ scripts/repo-python scripts/ci.py
   **487,936 bytes**, SHA-256
   `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`,
   is the original target. Keep `AGENTS.md` rules, pinned VC7.1 SP1 and
-  actual LTCG `/GL` profiles. **Never push** without authorization.
+  actual LTCG `/GL` profiles. **Never push.**
 - Every dirty change is part of this worktree: inspect and continue it;
   never reset it simply because an earlier note says the tree was clean.
 - Make substantive source fixes in both large interpreters and useful leaves.
@@ -30,6 +30,25 @@ scripts/repo-python scripts/ci.py
   build. Matching size, 100% normalized candidate-vs-candidate code and
   repeated guard replays confer **zero new exact credit**. Build only affected
   units using explicit `--unit` selectors. **Never cold replay all units.**
+
+## Resume at this checkpoint
+
+Latest source checkpoint: `f3a6d2f` (replay construction/shared state). Its
+selected 34-input Create and 21-input Save cold builds pass; Initialize remains
+nonexact. This handoff
+maintenance changes documentation and regenerable artifacts only; use live
+Git status/log to identify its subsequent checkpoint.
+
+- Choose one bounded owner with a new concrete lead. The Init two-load order
+  mismatch is reproduced in real 26/36-input contexts; missing file-system context
+  and scalar/typed-view spelling controls are disproved leads and parked.
+- ANM's opcode 91 two-byte mismatch and ECL's 23 ordinary differences remain
+  open. Their current whole-function witnesses are retained below.
+- Reference source is pinned at `d1f3121`; its synthetic stand-in/escape
+  contexts are not local acceptance recipes. Save1681 and Ending1568 are
+  already credited; do not count their guard replays as new progress.
+- No native compile/cold replay is required just to take over. Rebuild only
+  the selected changed owner and affected exact interfaces when work resumes.
 
 ## Acceptance ledger — generated truth, not a runnable-game claim
 
@@ -193,7 +212,7 @@ when needed. **Do not mix old PDB/MAP/OBJ with current source hashes.**
 The ignored original, private toolchain, database and archives are **not in
 Git**; transferring just the Git branch is insufficient for a new machine.
 
-For source/evidence-only changes run `scripts/repo-python scripts/ci.py`
+For documentation/metadata-only changes run `scripts/repo-python scripts/ci.py`
 and `git diff --check`. No full historical cold replay is needed for
 handoff documentation. Store new source results in small separate
 `gpt-web:` commits, then update this concise table rather than appending

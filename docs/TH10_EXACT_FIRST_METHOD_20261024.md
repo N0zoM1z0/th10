@@ -1,8 +1,8 @@
 # TH10 exact-first method, 2026-10-24
 
-## Current execution — 2026-10-28
+## Current execution — 2026-11-06
 
-Use local tools directly and `gpt-6.1-sol:` commits; never push. Exact work
+Use local tools directly and `gpt-web:` commits; never push. Exact work
 requires complete native byte/field/ABI comparison and cold reproducibility.
 Host allocation-failure/null/exception simulations, lifecycle suites,
 sanitizer/leak runs and mutation campaigns are not checkpoint requirements.
@@ -10,6 +10,10 @@ Replay only affected exact owners. Default CI is seven lightweight repository
 checks; select comparator self-tests only when changing that mechanism.
 See [the current workflow](RE_WORKFLOW.md). Earlier validation reports below
 are historical observations, not a checklist to repeat.
+
+The source scores and pilot outcomes below describe the October24 adoption
+epoch. They do not override the current [handoff](RE_HANDOFF.md), source pins
+or generated [progress](PROGRESS.md).
 
 ## Decision and scope
 
@@ -187,7 +191,7 @@ Every checkpoint reports separately:
    fragments or ordinary equal-byte counts to the exact total.
 
 Run compiler/linker jobs locally, serially on one CPU at niceness 10, with
-bounded runtime and retained exit logs. Use `gpt-6.1-sol:` local commits and never
+bounded runtime and retained exit logs. Use `gpt-web:` local commits and never
 push. Preserve unrelated work, including D3D adapter evidence. No Factory
 transport, coordinator or parallel-agent requirement applies.
 

@@ -2,7 +2,8 @@
 
 ## Current scope
 
-As of 2026-10-28, work directly with local tools on exact reconstruction.
+Current direction, 2026-11-06: work directly with local tools on exact
+reconstruction.
 [AGENTS.md](../AGENTS.md) is the operational authority. No Factory provider,
 receipt, coordinator or Factory-document prerequisite applies. Use
 `gpt-web:` local commits; never push.
@@ -84,5 +85,8 @@ Exact functions alone do not establish a runnable product.
 
 Use `.analysis/` for working evidence, `build/` for generated artifacts and
 tracked ledgers/docs for accepted facts. Retain what reproduces an unresolved
-claim and remove superseded dumps, logs and builds. Inspect recovered dirty
-artifacts before cleanup. Never commit private binaries/data, databases or tools.
+claim. For storage cleanup follow [RE_ARTIFACTS.md](RE_ARTIFACTS.md): remove only
+verified regenerable ignored experiment PE/OBJ/PDB files and Python caches,
+preserving canonical artifacts, private archives and unresolved witnesses.
+Keep source snapshots, drivers and useful logs. Inspect dirty work before
+cleanup. Never commit private binaries/data, databases or tools.

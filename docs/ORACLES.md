@@ -86,8 +86,9 @@ records the same context with `support_sources = [...]` and, when needed,
 
 A canonical `artifact_kind = "linked-pe"` unit uses the same cold compiler and
 linker surfaces but adds a target-bound acceptance contract. The comparator
-requires one uniquely named `source.ltcg.obj` PDB contribution, checks its full
-size, requires the pinned Capstone decoder to consume the instruction extent,
+requires one uniquely owned PDB contribution for the declared `pdb_source`
+(primary or support source), checks its full size, requires the pinned Capstone
+decoder to consume the instruction extent,
 and accepts an undecoded suffix only when every byte is covered by complete,
 authoritative PE base-relocation fields or explicitly reviewed trailing data
 annotations. This supports PDB code contributions ending in absolute jump tables
