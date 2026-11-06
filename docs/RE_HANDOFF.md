@@ -78,7 +78,15 @@ confirmed authored code.
 | `StageResetPublishedCameras @0x004216F0` | **465 / 533** | Restored omitted secondary/published +0xE4 dword assignments, respectively 1/0; camera layout stays 0x118. Both fresh `/GL` and normal-COFF complete owners emit 533 bytes /40 fields; vector temporary reuse and global-store scheduling remain nonexact. [Word-store proof](evidence/stage-camera-default-words-20261106/README.md). |
 | `EnemyLaserType0StorageView::Bounce @0x0041CFD0` | **410 / 510** | Actual type-0 vtable46DA60+3C and Update call41D45F bind this owner. Real generated virtual ownership restores ECX/RET; typed XYZ copies and ordered Y predicates are installed. One FireLaser path inlines; factory private arguments/registers remain nonexact. Original Update-entry canonical guard1001/all31 and native polar30/sound123 pass. Bounce-as-entry is rejected (same510; Update1009). Fresh stdcall and complete manager-member controls both give factory157/RET8 with stack request; restored/parked. [Current proof](evidence/laser-bounce-virtual-owner-20261106/README.md). |
 | `InitializeGameStatisticsRecord @0x0042ACB0` | **274 / 274** | Natural110-iteration kind loop shrinks fresh302/12-field source to274/8 in normal COFF and separate `/GL /GS` cold. Full address-bound diagnostic **174/274**, still NONEXACT; field positions disagree. Score copy keeps two cursors and spills group count; kind tail has two SIB differences. Literal/aggregate copies are neutral; method280 and indexed791 restore. [Current proof](evidence/statistics-record-natural-loop-20261106/README.md). |
+| `TransitionShakeLinear @0x0043C550` | **439 / 439** | Fresh existing14-input `/GL` graph: **412/439**, **20/20 original-bound fields**. `FIDIV` is at +0xB6 instead of target +0xCE. Named float-product controls (outer conversion; then explicit inner/outer conversions) both move it to +0xAA and displace two fields; rejected/restored. Initializer396/all37 guard passes from the restored-source baseline image. [Reference review and pins](evidence/upstream-th10-decomp-review-20261106/README.md#local-camera-experiment). |
 | `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** two-TU `/GL /GS` measures **138/157**, zero fields; EAX/ECX receiver/count/selector choice accounts for19 differences. Separate pitch capture/multiply is byte-neutral in normal COFF112/157 and GL138/157; restored. An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Private proofs: `.analysis/gpt-web/20261106-text-current-exact/` and `.analysis/gpt-web/20261106-text-alpha-owner/`. |
+
+Updated external reference: `_reference/th10-decomp-d1f3121` preserves the
+November 1 head alongside the October 18 checkout. Its 16 newly promoted
+regions map to 15 open local entries. Prioritize the three substantial laser
+cutters and ECL count-reference model using our real callees; synthetic
+caller/escape/stand-in contexts confer no local exact credit. See the
+[review/crosswalk](evidence/upstream-th10-decomp-review-20261106/README.md).
 
 Other unaccepted leaves worth *new evidence-led* work: `CMemoryPbgFile::Seek`
 107/107 but 100 matching ordinary bytes; `AnmLoadedView::SetAndExecuteScriptIdx`
@@ -112,11 +120,14 @@ receipts are ignored private files, not Git attachments.
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |
 | `src/GameStatisticsRecordDefaults.cpp` | `bd62bc5eb20ab8346d8b81d724cd6db90050ed75816e05bd406e47c3711b75d9` |
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
+| `src/TransitionEffect.cpp` | `d114571cc8111ba3fa36be41ce51321e9a3747871bf34aaa9ba60002a22e315f` |
 
 Preferred current native witnesses (only if the source pin matches):
 
 - Type-1 Draw exact: `build/match-linked/LaserType1Draw/`,
   [source/image and required-callee pins](evidence/laser-type1-draw-173-exact-20261106/native-result.json).
+- Linear camera-shake candidate: `build/gpt-web/20261106-upstream-review/camera-baseline/`,
+  [complete baseline, rejected controls and restored-source guard](evidence/upstream-th10-decomp-review-20261106/camera-experiments.json).
 - Statistics-record candidate:
   `build/gpt-web/20261106-statistics-record/final-linked/`,
   [full original-bound diagnostic and source pins](evidence/statistics-record-natural-loop-20261106/native-result.json).

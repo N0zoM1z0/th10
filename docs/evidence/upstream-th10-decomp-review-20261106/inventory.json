@@ -1,0 +1,174 @@
+{
+  "review_date": "2026-11-06",
+  "repository": "https://github.com/levzzz5154/th10-decomp",
+  "base": "c6791d82dc9f02e55eca45a5314f900a85481efd",
+  "head": "d1f31212514781c928fba145d8207397c8fb5650",
+  "github_compare_ahead_by": 42,
+  "github_compare_changed_paths": 264,
+  "base_equivalent_count": 23,
+  "head_equivalent_count": 7,
+  "promoted_regions": [
+    {
+      "address": "0x4067d0",
+      "size": 1472,
+      "upstream_source": "src/game/bullet/projectile_spawn_cell.cpp",
+      "upstream_symbol": "?SpawnPatternCell2@@YGHPAUProjectilePattern@@PAUProjectileManager2@@HHM@Z",
+      "local_name": "BulletManagerView::SpawnSingleBullet",
+      "local_source": "src/BulletManager.cpp",
+      "local_size": 1413,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x406d90",
+      "size": 1604,
+      "upstream_source": "src/game/bullet/projectile_command_runtime.cpp",
+      "upstream_symbol": "?Tick@ProjectileCommandRuntime@@QAEXXZ",
+      "local_name": "BulletRuntimeView::AdvanceTransformProgram",
+      "local_source": "src/BulletTransform.cpp",
+      "local_size": 1454,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x40bd80",
+      "size": 1568,
+      "upstream_source": "src/game/ending/recovery_script_executor.cpp",
+      "upstream_symbol": "_RecoveryScript_Execute2@4",
+      "local_name": "EndingTextVmView::Run",
+      "local_source": "src/Ending.cpp",
+      "local_size": 1568,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x414900",
+      "size": 3836,
+      "upstream_source": "src/game/front/front_hud_update.cpp",
+      "upstream_symbol": "?FrontHudUpdate@@YGHPAUFrontUpdateView@@@Z",
+      "local_name": "GuiView::UpdateStageElements",
+      "local_source": "src/Gui.cpp",
+      "local_size": 3836,
+      "local_exact_at_review_start": true
+    },
+    {
+      "address": "0x41dd80",
+      "size": 1238,
+      "upstream_source": "src/game/laser/laser_circle_trim.cpp",
+      "upstream_symbol": "?TrimCircle@TrimLaser@@UAEHPBUCutVector@@MH@Z",
+      "local_name": "EnemyLaserType0CollisionView::CheckCollisionCircle",
+      "local_source": "src/EnemyLaser.cpp",
+      "local_size": 1238,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x41eb00",
+      "size": 1171,
+      "upstream_source": "src/game/laser/laser_rectangle_split.cpp",
+      "upstream_symbol": "?CutRectangle@CutLaser@@UAEHPBUCutVector@@0H@Z",
+      "local_name": "EnemyLaserType1CollisionView::CheckCollisionBox",
+      "local_source": "src/EnemyLaser.cpp",
+      "local_size": 1171,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x41efa0",
+      "size": 1108,
+      "upstream_source": "src/game/laser/laser_circle_split.cpp",
+      "upstream_symbol": "?CutCircle@CutLaser@@UAEHPBUCutVector@@MH@Z",
+      "local_name": "EnemyLaserType1CollisionView::CheckCollisionCircle",
+      "local_source": "src/EnemyLaser.cpp",
+      "local_size": 1108,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x428f60",
+      "size": 1344,
+      "upstream_source": "src/game/replay/replay_runtime_bootstrap.cpp",
+      "upstream_symbol": "?Start@ReplayManager@@QAEHHPBD@Z",
+      "local_name": "ReplayManager::Initialize",
+      "local_source": "src/ReplayManager.cpp",
+      "local_size": 1344,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x429b60",
+      "size": 1681,
+      "upstream_source": "src/game/replay/replay_save.cpp",
+      "upstream_symbol": "?Save@ReplaySaveManager@@QAIHPBD0@Z",
+      "local_name": "ReplayManager::SaveReplay",
+      "local_source": "src/ReplayManager.cpp",
+      "local_size": 1681,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x42a3e0",
+      "size": 68,
+      "upstream_source": "src/game/replay/replay_frame_step.cpp",
+      "upstream_symbol": "?Check@ReplayFrameStep@@QAEHXZ",
+      "local_name": "ReplayPlaybackFrameControlCallback",
+      "local_source": "src/ReplayManager.cpp",
+      "local_size": 68,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x42cdf0",
+      "size": 1128,
+      "upstream_source": "src/game/title/title_dispatcher.cpp",
+      "upstream_symbol": "?TitleDispatcher@@YGHPAUTitle@@@Z",
+      "local_name": "FrontEndControllerView::Update",
+      "local_source": "src/FrontEnd.cpp",
+      "local_size": 1128,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x433ef0",
+      "size": 2796,
+      "upstream_source": "src/game/title/ui_final_runtime.cpp",
+      "upstream_symbol": "?TitleMusicRoom@@YGHPAUTitle@@@Z",
+      "local_name": "FrontEndUpdateMusicRoom",
+      "local_source": "src/FrontEnd.cpp",
+      "local_size": 2796,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x43c550",
+      "size": 439,
+      "upstream_source": "src/core/screen/camera_shake.cpp",
+      "upstream_symbol": "@LinearShakeUpdate@4",
+      "local_name": "TransitionShakeLinear",
+      "local_source": "src/TransitionEffect.cpp",
+      "local_size": 439,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x43ee30",
+      "size": 9964,
+      "upstream_source": "src/core/sprtanim/anm_vm_tick.cpp",
+      "upstream_symbol": "?Tick@AnmVm@@SGHPAU1@@Z",
+      "local_name": "AnmRenderManagerView::ExecuteScript",
+      "local_source": "src/AnmManager.cpp",
+      "local_size": 9964,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x44a190",
+      "size": 833,
+      "upstream_source": "src/core/zunlib/joystick_poll.cpp",
+      "upstream_symbol": "?ReadPad@@YGGGHH@Z",
+      "local_name": "MergeJoystickInput",
+      "local_source": "src/InputPolling.cpp",
+      "local_size": 833,
+      "local_exact_at_review_start": false
+    },
+    {
+      "address": "0x450220",
+      "size": 589,
+      "upstream_source": "src/script/sptlib/ecl_name_table.cpp",
+      "upstream_symbol": "?Parse@ScriptFileLoader@@UAEHPAH@Z",
+      "local_name": "EclVmScriptDatabase::AddScriptData",
+      "local_source": "src/EclVm.cpp",
+      "local_size": 589,
+      "local_exact_at_review_start": false
+    }
+  ],
+  "upstream_regions_sha256": "36866cfd86ec790d2fdfa056ec9806bfaac14bde05d117c9235d9671ca0f859c",
+  "upstream_metrics_are_not_local_acceptance": true
+}

@@ -32,6 +32,30 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-06 updated external TH10 source leads
+
+The preserved `_reference/th10-decomp` baseline `c6791d8` (October 18) now
+has a separate ignored detached sibling at current upstream `d1f3121`
+(November 1). GitHub compares 42 commits / 264 paths; 24 source files change.
+The pinned regions ledger promotes 16 equivalent entries and leaves seven;
+15 promoted entry addresses were still open locally at review start. Read
+[the review and address crosswalk](evidence/upstream-th10-decomp-review-20261106/README.md)
+for camera float-product lifetime, ECL count references, scoped replay locals,
+plain Ending-manager reads, substantial laser cutters and visible real-callee
+requirements. Synthetic escape/caller/stand-in contexts are not adopted.
+Upstream's stale October 25 HANDOFF metrics and its weighted equivalent-byte
+estimate must not override either current upstream regions or our own ledger.
+Its two projectile regions have different extents from our reviewed owners;
+resolve those boundaries independently before importing comparisons.
+
+The camera lead is **not adopted**: our current14-input GL baseline is complete
+439 bytes /412 matching /20 original-bound fields, with FIDIV at +B6 rather
+than target +CE. Both natural float-product controls instead emit the same
+439-byte body with FIDIV at +AA and two displaced fields. Restore source
+`d114571c...`; its fresh baseline initializer396/all37 passes. The linked proof
+above retains all76 source/header pins, owner/PE/PDB identities and the rejected
+field inventories. No new exact credit and no whole-cohort replay.
+
 ## 2026-11-06 complete type-1 laser drawing exact
 
 `EnemyLaserType1View::Draw41EA40..41EAEC` is complete173-byte exact, actual
