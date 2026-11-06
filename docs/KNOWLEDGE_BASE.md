@@ -32,6 +32,31 @@ delete that directory wholesale. Historical scratch paths may require selective
 restoration. Recheck their source/header pins before using a recorded claim as
 a constraint on the maintained implementation.
 
+## 2026-11-06 type-1 circle real owner and sample semantics
+
+Original vtable46DA10+1C points to `41EFA0..41F3F3`, the complete1108-byte
+circle cutter ending RET C. `EnemyLaserType1View::CheckCollisionCircle` now
+implements that slot; replacing UnknownSlot1C preserves the runtime view's
+layout. The disconnected collision view is removed. Original radial+10A..116
+rejects only ordered squared distance greater than the squared radius, so
+unordered values pass. Original+B2 clears sample Z after step plus position;
+radius squares in its argument home. These missing distinctions are restored.
+
+Typed vectors recover the0x32C frame. Actual ANM allocation, flag/layer,
+coordinate, initialization and registration operations are present. A fresh
+four-input real owner is1258/30 fields; a broader22-input real caller context
+restores the separate registration118 call and gives1178/30, still rejected
+against1108/29. The graph change is not a source-only gain. Factory expansion
+into allocation/construction remains. A request-member full-factory control
+gives157/RET8 and leaves1178, so it is restored without an ABI/inline attribute.
+
+Current same-image polar30, bounds91 and registration118 pass239/all4; allocator
+153/161 stays nonexact in this context. Affected Update832 and Draw173 use
+their own selected canonical recipes; Draw169 in the Update-root image is
+rejected as a substitute for Draw's canonical contract. Original boundary and
+origin reviews remain unchanged; zero new exact bytes.
+[Complete current-source/context evidence](evidence/laser-type1-circle-owner-20261106/README.md).
+
 ## 2026-11-06 complete ending script execution exact
 
 `EndingTextVmView::Run40BD80..40C39F` now passes the complete **1568 bytes /

@@ -425,47 +425,6 @@ int EnemyLaserType0CollisionView::CheckCollisionCircle(
 }
 
 
-// TH10 owners 0x0041EB00 and 0x0041EFA0 are the type-1 box/circle
-// collision split paths. They retain the leading unhit span in the current
-// laser and respawn later unhit gaps as zero-initialized type-0 requests.
-struct EnemyLaserType1CollisionView
-{
-    void *vtable;
-    void *previous;
-    void *next;
-    unsigned char unknown00C[0x24 - 0x0c];
-    EnemyLaserVectorView position;
-    unsigned char unknown030[0x3c - 0x30];
-    float angle;
-    float length;
-    float width;
-    unsigned char unknown048[0x444 - 0x48];
-    float terminalDistance;
-    unsigned char unknown448[0x464 - 0x448];
-    short type;
-    short color;
-
-    int CheckCollisionCircle(
-        EnemyLaserVectorView *center,
-        float radius,
-        int capture);
-};
-
-typedef char EnemyLaserType1CollisionPositionAt024[
-    (offsetof(EnemyLaserType1CollisionView, position) == 0x24) ? 1 : -1];
-typedef char EnemyLaserType1CollisionAngleAt03C[
-    (offsetof(EnemyLaserType1CollisionView, angle) == 0x3c) ? 1 : -1];
-typedef char EnemyLaserType1CollisionLengthAt040[
-    (offsetof(EnemyLaserType1CollisionView, length) == 0x40) ? 1 : -1];
-typedef char EnemyLaserType1CollisionWidthAt044[
-    (offsetof(EnemyLaserType1CollisionView, width) == 0x44) ? 1 : -1];
-typedef char EnemyLaserType1CollisionTerminalAt444[
-    (offsetof(EnemyLaserType1CollisionView, terminalDistance) == 0x444) ? 1 : -1];
-typedef char EnemyLaserType1CollisionTypeAt464[
-    (offsetof(EnemyLaserType1CollisionView, type) == 0x464) ? 1 : -1];
-typedef char EnemyLaserType1CollisionColorAt466[
-    (offsetof(EnemyLaserType1CollisionView, color) == 0x466) ? 1 : -1];
-
 // Natural vector/counter structure follows levzzz5154/th10-decomp, MIT
 // copyright (c) 2026 levzzz, d1f31212514781c928fba145d8207397c8fb5650,
 // matching2/msvc/src/game/laser/laser_rectangle_split.cpp.
@@ -577,131 +536,115 @@ done:
     return hitCount;
 }
 
-int EnemyLaserType1CollisionView::CheckCollisionCircle(
-    EnemyLaserVectorView *center,
-    float radius,
-    int capture)
+// Circle source leads: levzzz5154/th10-decomp, MIT (c) 2026 levzzz,
+// d1f31212514781c928fba145d8207397c8fb5650,
+// matching2/msvc/src/game/laser/laser_circle_split.cpp.
+// License: docs/licenses/th10-decomp-MIT.txt. TH10 vtable46DA10+1C ->41EFA0.
+int EnemyLaserType1View::CheckCollisionCircle(
+    EnemyLaserVectorView *center, float radius, int capture)
 {
-    EnemyLaserVectorView originalPosition = position;
+    int hitCount = 0;
+    int sampleCount = 0;
+    AnmFloat3View originalPosition =
+        reinterpret_cast<const AnmFloat3View &>(position);
     unsigned char hits[256];
     memset(hits, 0, sizeof(hits));
-
-    int sampleCount = 0;
-    int hitCount = 0;
     float distance = 6.0f;
-    const float radiusSquared = radius * radius;
-
-    EnemyLaserVectorView step;
+    AnmFloat3View step;
     step.z = 0.0f;
-    step.FromAngleMagnitude(angle, 6.0f);
-
-    EnemyLaserVectorView sample;
-    sample.x = position.x + step.x;
-    sample.y = position.y + step.y;
-    sample.z = position.z + step.z;
-
-    step.x += step.x;
-    step.y += step.y;
-    step.z += step.z;
+    reinterpret_cast<EnemyLaserVectorView *>(&step)->FromAngleMagnitude(angle, 6.0f);
+    AnmFloat3View sample;
+    sample = step + reinterpret_cast<const AnmFloat3View &>(position);
+    sample.z = 0.0f;
+    step += step;
+    radius *= radius;
 
     while (distance + 6.0f < length)
     {
-        const float dx = center->x - sample.x;
-        const float dy = center->y - sample.y;
-        if (dx * dx + dy * dy <= radiusSquared)
+        EnemyLaserVectorView *samplePosition =
+            reinterpret_cast<EnemyLaserVectorView *>(&sample);
+        float dy = center->y - samplePosition->y;
+        float dx = center->x - samplePosition->x;
+        if (!(dx * dx + dy * dy > radius))
         {
             hits[sampleCount] = 1;
             ++hitCount;
-
             if (capture != 0 &&
-                g_EnemyPlayfieldMinX <= sample.x + 32.0f &&
-                sample.x - 32.0f < g_EnemyPlayfieldMaxX &&
-                g_EnemyPlayfieldMinY <= sample.y + 32.0f &&
-                sample.y - 32.0f < g_EnemyPlayfieldMaxY)
+                samplePosition->IsOutsidePlayfield(32.0f, 32.0f) == 0)
             {
                 g_ItemManager->Spawn(
-                    reinterpret_cast<const AnmFloat3View *>(&sample),
+                    reinterpret_cast<const AnmFloat3View *>(samplePosition),
                     8, 0xffffffffu, -1.5707964f, 0.6f);
             }
-
-            EnemyLaserManagerResourceView *manager =
+            int scriptIndex = static_cast<int>(request.color) * 2 + 0x11;
+            AnmLoadedView *resource =
                 reinterpret_cast<EnemyLaserManagerResourceView *>(
-                    g_EnemyLaserManager);
-            manager->effectResource->CreateVmAtWorldVariant0(
-                static_cast<int>(color) * 2 + 0x11,
-                reinterpret_cast<const AnmFloat3View *>(&sample));
+                    g_EnemyLaserManager)->effectResource;
+            AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+            unsigned int vmFlags = vm->flags35C;
+            vm->flags35C = vmFlags | 0x40000000u;
+            unsigned int *renderLayer = &vm->renderLayer;
+            *renderLayer = 0;
+            vm->positionOffset.x = samplePosition->x + 224.0f;
+            vm->positionOffset.z = samplePosition->z;
+            vm->positionOffset.y = samplePosition->y + 16.0f;
+            resource->InitializeAndExecuteScriptIndex(vm, scriptIndex);
+            g_AnmRenderManagerView->AddVmVariant0(vm);
         }
-
-        ++sampleCount;
-        sample.x += step.x;
-        sample.y += step.y;
-        sample.z += step.z;
+        sample += step;
         distance += 12.0f;
+        ++sampleCount;
     }
 
-    if (hitCount == 0)
-        return 0;
-
-    int sampleIndex = 0;
-    while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
-        ++sampleIndex;
-
-    if (sampleIndex != 0)
+    if (hitCount)
     {
-        length = 0.0f;
-    }
-    else
-    {
-        int prefixLength = 0;
-        while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
-        {
-            ++sampleIndex;
-            ++prefixLength;
-        }
-        if (sampleIndex >= sampleCount)
-            return hitCount;
-        length = static_cast<float>(prefixLength) * 12.0f;
-    }
-
-    while (sampleIndex < sampleCount)
-    {
+        int sampleIndex = 0;
         while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
             ++sampleIndex;
-        if (sampleIndex >= sampleCount)
-            return hitCount;
-
-        const int gapStart = sampleIndex;
-        int gapLength = 0;
-        while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+        if (sampleIndex != 0)
+            length = 0.0f;
+        else
         {
-            ++sampleIndex;
-            ++gapLength;
+            int prefixLength = 0;
+            while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+            {
+                ++sampleIndex;
+                ++prefixLength;
+            }
+            if (sampleIndex >= sampleCount)
+                goto done;
+            length = static_cast<float>(prefixLength) * 12.0f;
         }
-
-        EnemyLaserType0RequestView args;
-        memset(&args, 0, sizeof(args));
-
-        const float start = static_cast<float>(gapStart);
-        const float segmentLength =
-            static_cast<float>(gapLength) * 12.0f;
-        args.position.x = originalPosition.x + step.x * start;
-        args.position.y = originalPosition.y + step.y * start;
-        args.position.z = originalPosition.z + step.z * start;
-        args.angle = angle;
-        args.maximumLength = segmentLength;
-        args.initialLength = segmentLength;
-        args.terminalDistance = terminalDistance - start * 12.0f;
-        args.width = width;
-        args.speed = 8.0f;
-        args.type = type;
-        args.color = color;
-
-        EnemyFireLaser(
-            g_EnemyLaserManager,
-            reinterpret_cast<EnemyLaserRequestScratch *>(&args),
-            0);
+        while (sampleIndex < sampleCount)
+        {
+            while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
+                ++sampleIndex;
+            if (sampleIndex >= sampleCount)
+                break;
+            int gapLength = 0;
+            int gapStart = sampleIndex;
+            while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+            {
+                ++sampleIndex;
+                ++gapLength;
+            }
+            EnemyLaserType0RequestView args;
+            memset(&args, 0, sizeof(args));
+            args.maximumLength = static_cast<float>(gapLength) * 12.0f;
+            args.initialLength = args.maximumLength;
+            args.speed = 8.0f;
+            reinterpret_cast<AnmFloat3View &>(args.position) =
+                originalPosition + step * static_cast<float>(gapStart);
+            args.angle = angle;
+            args.width = width;
+            args.type = request.type;
+            args.color = request.color;
+            args.terminalDistance = request.maximumLength - gapStart * 12.0f;
+            EnemyFireLaser(g_EnemyLaserManager,
+                reinterpret_cast<EnemyLaserRequestScratch *>(&args), 0);
+        }
     }
-
+done:
     return hitCount;
 }
 

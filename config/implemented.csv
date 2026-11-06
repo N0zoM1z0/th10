@@ -354,7 +354,7 @@ EnemyLaserType0StorageView::Bounce
 EnemyLaserType0CollisionView::CheckCollisionBox
 EnemyLaserType0CollisionView::CheckCollisionCircle
 EnemyLaserType1View::CheckCollisionBox
-EnemyLaserType1CollisionView::CheckCollisionCircle
+EnemyLaserType1View::CheckCollisionCircle
 AnmOpcodeVectorView::FromAngleMagnitude
 AnmScriptVectorView::FromAngleMagnitude
 EnemyRuntimeVectorView::FromAngleMagnitude

@@ -12,7 +12,7 @@ struct EnemyLaserType1View
     virtual void UnknownSlot10();
     virtual int Clear(int spawnItems);
     virtual int CheckCollisionBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
-    virtual void UnknownSlot1C();
+    virtual int CheckCollisionCircle(EnemyLaserVectorView *, float, int);
     virtual void UnknownSlot20();
 
     void *previous;
