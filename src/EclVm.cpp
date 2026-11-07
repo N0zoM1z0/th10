@@ -544,10 +544,13 @@ int EclVmContext::StartSubroutine(
     EclVmInstruction **const callerInstruction = &caller->instruction;
     EclVmInstruction *const call = *callerInstruction;
     const int inlineBytes = call->callOperands.inlineNameBytes;
-    int metadataOffset = inlineBytes + firstArgument * 4 + 4;
+    int metadataOffset = static_cast<int>(
+        static_cast<unsigned int>(inlineBytes) +
+        firstArgument * 4u + 4u);
     int preservedValue = 0;
     const int previousTop = destination->stack.stackTop;
-    int argumentOffset = previousTop + 8;
+    int argumentOffset = static_cast<int>(
+        static_cast<unsigned int>(previousTop) + 8u);
 
     if (previousTop == 0)
     {
@@ -564,7 +567,9 @@ int EclVmContext::StartSubroutine(
         for (; argumentIndex < (*callerInstruction)->operandCount;
              argument += sizeof(int), ++argumentIndex,
              valueOffset += sizeof(EclVmCallArgumentView),
-             metadataOffset += static_cast<int>(sizeof(EclVmCallArgumentView)))
+             metadataOffset = static_cast<int>(
+                 static_cast<unsigned int>(metadataOffset) +
+                 static_cast<unsigned int>(sizeof(EclVmCallArgumentView))))
         {
             const char sourceType =
                 reinterpret_cast<const EclVmCallArgumentView *>(

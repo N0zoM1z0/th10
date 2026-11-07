@@ -69,6 +69,16 @@ also preserve full byte/field geometry in that graph; their original codegen
 remains NONEXACT. Final-source three-unit selected cold **463/463** passes,
 zero new exact credit. [Complete proof](evidence/ecl-find-subroutine-native-word-20261107/README.md).
 
+## 2026-11-07 ECL CALL metadata and stack native offset words
+
+`StartSubroutine` now uses native 32-bit unsigned arithmetic before signed
+publication for inline-argument metadata offset, stack top+8 and the
+per-argument descriptor stride. Five complete actual one-TU source probes
+preserve StartSubroutine551/4 fields and ECL Run7020/189 fields byte for byte;
+Start remains NONEXACT (original550). Installed-source scoped two-artifact
+cold replay protects exact Find136, ReadInt144, ReadFloat183 and HostRun146,
+**609/609**, no new exact owner. [Proof](evidence/ecl-start-subroutine-word-offset-20261107/README.md).
+
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
 `TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,
