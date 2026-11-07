@@ -23,7 +23,7 @@ bounds repair or claim that malformed input is safe.
 Six natural variants were compiled and linked separately in the current
 ECL/Enemy **two-TU** VC7.1 SP1 `/GL` graph: word-decrement, word-sorted
 increment, word-added increment, both increments, assignment-form word
--decrement, and the installed three-counter combination. Each compared
+-decrement, and a three-counter combination. Each compared
 the whole `AddScriptData` original target and the complete 7,020-byte
 `EclVmContext::Run`, not only selected instructions.
 
@@ -35,14 +35,31 @@ the whole `AddScriptData` original target and the complete 7,020-byte
 | Word-added increment | 502/581 | 6,997/7,020; 189/189 |
 | Both increments | 502/581 | 6,997/7,020; 189/189 |
 | Word-decrement assignment | 502/581 | 6,997/7,020; 189/189 |
-| **All three (installed)** | **502/581**, 589 bytes | **6,997/7,020**, **189/189** |
+| All three (intermediate trial) | **502/581**, 589 bytes | **6,997/7,020**, **189/189** |
+
+## Final installed five-counter source epoch
+
+The committed `src/EclVm.cpp` also advances the initial file-record index
+(`index`) and sorted-search insertion index (`insertionIndex`) through
+explicit unsigned 32-bit addition before publishing their signed values.
+These two **additional** expression changes were installed after the six
+three-counter trials above, so the table must not be treated as a replay
+receipt for those additional edits. The final installed source is SHA-256
+`ace4cf31d88ae762dd4e5626772323f798e04d21f00380109c87ec7100086ccb`.
+A **new full two-TU cold build from that exact source** gives the same
+complete AddScriptData **589 bytes, 502/581** comparable original ordinary
+bytes and the two identical original-target CRT field positions, plus Run
+**6,997/7,020** with all **189** original-bound fields and exact
+`ReadFloatValue`. A second selected final-source cold replay passes four
+previous exact owners, **575/575**, in two graphs. These two counters do
+not establish additional exactness or error handling.
 
 The AddScriptData full owner keeps the two original CRT call fields at
 `+0x6C` and `+0x101`; the other 79 ordinary mismatches remain. The giant
 Run remains **NONEXACT**, as does AddScriptData. The zero difference
 relative to the previous candidate does not grant new exact codegen credit.
 
-Fresh current-source selected canonical cold replay:
+Final-source selected canonical cold replay:
 
 ```sh
 scripts/repo-python scripts/replay-exact-units.py \
@@ -58,5 +75,6 @@ their two selected build graphs, as does the seven-stage repository CI.
 The reproduction driver, six per-variant receipts, native source pins and
 selected exact receipts are kept in ignored `.analysis/gpt-web/20261107-active/`
 (`ecl-record-counter-trials.py`, `ecl-record-counter-results.json`,
-`ecl-record-counters-guards.json`); native linked artifacts are under
+`ecl-record-counters-guards.json`, `ecl-five-counter-final-guards.json`,
+`ecl-five-counters-run.json`); native linked artifacts are under
 `build/gpt-web/20261107-active-ecl-counter/`.

@@ -17,7 +17,9 @@ This restores the original i386 wrap behavior for unchecked SCPT counts
 without a range guard or changed record ordering. Six native two-TU
 experiments rejected an unsigned-lvalue predecrement (500/581 instead of
 502/581 original comparable ordinary bytes) and retained the natural
-assignment-form decrement plus two unsigned increments. Installed complete
+assignment-form decrement plus two unsigned increments. The committed
+source additionally uses native 32-bit `index` and `insertionIndex`
+increments. A fresh final-source cold two-TU comparison confirms the complete
 589-byte AddScriptData remains **502/581 nonexact**, with two original
 call fields; full `EclVmContext::Run` remains **6,997/7,020**, 189 original
 fields, and four original-bound exact guards cold-pass **575/575**. No new
