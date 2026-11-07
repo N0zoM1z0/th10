@@ -247,6 +247,17 @@ separate two-TU `Run` **6,997/7,020** with all 189 original field
 bindings. No new exact codegen credit.
 [Proof](evidence/ecl-stack-frame-saved-word-native-address-20261107/README.md).
 
+## 2026-11-07 ECL Run FORMAT native argument counter dwords
+
+Two real `ECL_VM_EVALUATE_FORMAT_OPERANDS` scalar branches now increment
+the 32-bit script argument index via its corresponding unsigned native
+word, without signed-C++ overflow. Six actual two-TU compiler forms
+were compared over all **7,020 original bytes / 189 original fields**:
+the installed lvalue form retains **6,997/7,020**; five natural address/
+assignment alternatives regress to 6,996 and were rejected. Current-
+source selected seven-unit original cold **1,000/1,000**; Run NONEXACT,
+zero new credit. [Proof](evidence/ecl-format-argument-index-wrap-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

@@ -1341,6 +1341,8 @@ jump_instruction:
                 char *scratch = static_cast<char *>(malloc(0x400));
                 scratch[0] = '\0';
 
+                // Retail advances the FORMAT scalar argument index as one
+                // native low-32-bit word before the next signed read.
                 int argumentIndex = 0;
                 while (cursor != NULL) {
                     const char *percent = strchr(cursor, '%');
@@ -1376,7 +1378,7 @@ jump_instruction:
                                         static_cast<int>(
                                             sizeof(EclVmFormatArgumentView) /
                                             sizeof(int))].real));
-                            ++argumentIndex;
+                            ++*reinterpret_cast<unsigned int *>(&argumentIndex);
                         } else {
                             EclDebugTrace(scratch, ReadIntValue(
                                 argumentIndex + 1u,
@@ -1386,7 +1388,7 @@ jump_instruction:
                                         static_cast<int>(
                                             sizeof(EclVmFormatArgumentView) /
                                             sizeof(int))].integer));
-                            ++argumentIndex;
+                            ++*reinterpret_cast<unsigned int *>(&argumentIndex);
                         }
                         break;
                     }

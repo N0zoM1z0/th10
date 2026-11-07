@@ -324,6 +324,16 @@ source seven-unit cold passes **776/776**. Complete two-TU Run remains
 **6,997/7,020** with all **189 original target fields**, NONEXACT.
 [Native full-owner proof](evidence/ecl-stack-frame-saved-word-native-address-20261107/README.md).
 
+**Current ECL Run FORMAT argument dword:** both tagged scalar
+branches now increment the actual script `argumentIndex` through its
+unsigned 32-bit word. Six real pinned two-TU source variants prove this
+form retains the complete **Run 6,997/7,020** with **189/189** original
+bindings; alternative signed-to-unsigned assignments or native record
+address forms regress to 6,996 and were rejected. Installed-source
+selected seven canonical exact owners cold-pass **1,000/1,000**; Run
+remains NONEXACT, zero new exact credit.
+[Full source and original-target proof](evidence/ecl-format-argument-index-wrap-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -444,7 +454,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `65909682e0b1bb3e9d6347e3e36311babc745eb7ef0f4aa65efa3990144cb5d7` |
+| `src/EclVm.cpp` | `7e3fc6a3739d35adb5fcb1551bff3718130f3926ef5e7364d4ef604e837d40c9` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |
