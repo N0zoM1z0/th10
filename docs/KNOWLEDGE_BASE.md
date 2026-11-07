@@ -11,83 +11,46 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 
 ## 2026-11-07 ANM ExecuteScript native generated-vertex count and cursor words
 
-The **9,964-byte** ANM executor's generated radial strip now evaluates
-all three script-controlled `(vertexCount - 1)` cases with native
-32-bit word wrapping, and both strip-vertex cursors advance by an
-unsigned native pointer address word rather than unchecked array-pointer
-arithmetic. Independent scoped experiments isolated the three count
-locations and both vertex steps. The installed five-source VC7.1 native
-owner still matches **9,962/9,964 original bytes** with **350/350
-original-bound fields**; only the two opcode-91 register bytes remain.
-Three selected accepted ANM leaves cold-pass **164/164**. Six further
-natural child-91 layout/type alternatives did not improve the complete
-parent and were rejected. No new exact owner is credited.
-[Evidence](evidence/anm-executor-native-vertex-words-20261107/README.md).
+The complete **9,964-byte** ANM executor's generated radial strip now
+models all three script-controlled `(vertexCount - 1)` uses and both full
+vertex-record cursor steps through native 32-bit words. Current five-input
+VC7.1 original comparison is **9,962/9,964** with all **350 original-bound
+fields**; only opcode-91's two register bytes remain. Three selected
+original-bound leaves cold-pass **164/164**. Combined and independent
+source variants were compared in the *complete* boss; alternative child-91
+register/layout forms failed and were rejected. The boss is still NONEXACT,
+not a newly accepted exact owner.
+[Installed comparison](evidence/anm-render9-native-vertex-words-20261107/README.md),
+[variant history](evidence/anm-executor-native-vertex-words-20261107/README.md).
 
 ## 2026-11-07 Enemy ECL boss pattern-clear native word cursor
 
-In the full **14,416-byte** original dispatcher, the 0x84-word
-`INITIALIZE_BULLET_PATTERN` zero pass now advances its unchecked record
-cursor by native modulo-32-bit word addition, not C++ pointer increment.
-Three independent current-source 11-input native trials reproduced the
-same **14,352-byte candidate** and **716 candidate** fields; the selected
-installed form plus four neighboring complete owners has zero
-candidate-vs-candidate ordinary differences. Three resource-bank indexing
-forms and a typed clear-step form each changed a register SIB byte and
-were rejected. Selected preaccepted original-bound Enemy argument leaves
-cold-pass **87/87**; boss is still NONEXACT and 64 bytes short.
-[Evidence](evidence/enemy-ecl-pattern-clear-native-step-20261107/README.md).
-
-## 2026-11-07 ANM renderMode 9 native vertex cursors
-
-The 9,964-byte `ExecuteScript` boss's renderMode-9 generator now expresses
-all three script-provided `(vertexCount - 1)` calculations as wrapping
-Win32 integer words and both vertex-record cursor advances as low-32-bit
-address additions. A fresh pinned five-input original comparison of the
-**installed** source holds **9,962/9,964** target bytes and all **350
-original-bound fields**. Only opcode-91's two register bytes remain;
-this boss is still NONEXACT. Three selected original-bound ANM leaves
-cold-pass **164/164**, seven CI stages pass, and no new exact owner is
-claimed. [Evidence](evidence/anm-render9-native-vertex-words-20261107/README.md).
+The original **14,416-byte** Enemy ECL dispatcher has `REP STOSD` at
+`+0x19DE` after `LEA EDI,[EDX+0x2C4]` and clears `0x84` dwords of
+pattern data. The C++ code now advances this unchecked record cursor as
+a native low-32-bit address word rather than C++ out-of-array pointer
+arithmetic. Fresh eleven-input current-source native compilation preserves
+the complete **14,352-byte NONEXACT** candidate, its **716 candidate-only
+field positions**, and four neighboring complete owners. Resource bank
+variants regressed the original spell-name SIB and were rejected.
+Five selected original-bound ECL argument leaves cold-pass **87/87**.
+[Native STOSD proof](evidence/enemy-ecl-pattern-clear-stos-word-20261107/README.md),
+[additional experiments](evidence/enemy-ecl-pattern-clear-native-step-20261107/README.md).
 
 ## 2026-11-07 Enemy ECL spell-name native byte-stream words
 
-The large `DispatchEclInstruction` spell-name decode now addresses both the
-script input and local output bytes through a native 32-bit typed byte-stride
-index. Five fully compiled 11-TU natural C++ variants showed the selected
-both-word source retains all **14,352** candidate ordinary bytes and **716
-candidate fields**, plus four neighboring owners. The **14,416-byte original
-boss remains NONEXACT**. Three additional combinations with VM ID indexing
-all regressed the decrypt SIB from original `8A 0C 31` to `8A 0C 0E` and
-were rejected. Five selected target-bound ECL operand leaves cold-pass
-**87/87** bytes; seven CI stages pass. No added canonical exact credit.
-[Evidence](evidence/enemy-ecl-spell-name-native-words-20261107/README.md).
-
-## 2026-11-07 Enemy ECL counted spell-name native address words
-
-In the 14,416-byte original Enemy ECL dispatcher, five spell-start opcodes
-read a script-counted encrypted name into a local byte buffer. The real i386
-loop uses flat byte-address arithmetic. Both source/destination byte indices
-now use `EnemyNativeWordIndex` with no artificial clamp. Five 11-TU trials
-and three additional combined managed-VM-ID trials established that the
-selected read/write-word source preserves the **14,352-byte nonexact**
-current-source dispatcher candidate, all 716 candidate field positions,
-and four neighboring complete bodies. The combined VM-ID forms changed the
-spell loop SIB byte and were rejected. Five independently original-bound
-ECL argument leaves remain **87/87** exact. No new exact credit.
-[Evidence](evidence/enemy-ecl-spell-name-words-20261107/README.md).
-
-## 2026-11-07 Enemy ECL 528-byte pattern clearing native cursor
-
-An uncommitted Enemy ECL source change was kept, investigated and verified
-rather than discarded: its `0x84`-dword pattern-clear pointer now advances
-with the native modulo-32-bit address arithmetic. Original target
-`DispatchEclInstruction +0x19DE` has `REP STOSD` after `LEA EDI,[EDX+0x2C4]`.
-Fresh eleven-input current-source compilation preserves the complete
-14,352-byte **nonexact** dispatcher candidate and all 716 candidate field
-positions, plus four neighboring owners. Five original-bound related
-ECL leaves pass **87/87**; the original dispatcher is still **14,416 bytes**.
-[Evidence](evidence/enemy-ecl-pattern-clear-stos-word-20261107/README.md).
+The five spell-start opcodes in the **14,416-byte** original Enemy ECL
+boss XOR-decode a script-counted name into a local byte buffer. Both
+unchecked input and output accesses now use a native byte-stride
+`EnemyNativeWordIndex` to preserve i386 low-32-bit address arithmetic.
+Five complete eleven-input compiler variants established that the installed
+form retains the **14,352-byte nonexact candidate extent**, its ordinary
+(non-field) bytes, and **716 candidate field positions**, and four neighboring owners. Three combined managed VM
+ID trials changed the cipher SIB `8A 0C 31` (original at `+0x273B`)
+to `8A 0C 0E`; all were rejected. Original-bound ECL argument leaves
+cold-pass **87/87**. No new exact owner or safety bounds are claimed.
+[Current installed proof](evidence/enemy-ecl-spell-name-native-words-20261107/README.md),
+[alternate trials](evidence/enemy-ecl-spell-name-words-20261107/README.md).
 
 ## 2026-11-07 Enemy sound-queue negative sample-count native words
 

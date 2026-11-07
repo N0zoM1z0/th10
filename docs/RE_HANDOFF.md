@@ -1,6 +1,6 @@
 # TH10 reconstruction — live next-agent handoff
 
-**Verified 2026-11-07, source checkpoint `2c04d55`.** This is a *working
+**Verified 2026-11-07, source checkpoint `6f1b83c`.** This is a *working
 resume brief*, not a list of every experiment. The previous 603-line handoff
 is available with `git show 9996cd6:docs/RE_HANDOFF.md`; the detailed dated
 hypotheses are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and
@@ -55,9 +55,9 @@ These are the latest relevant **whole-owner** baselines, not acceptance:
 
 | Original target | Original / source PDB bytes | Current evidence and unresolved action |
 | --- | ---: | --- |
-| ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964 original ordinary bytes, all 350 original-bound fields**; opcode 91 at `+0x113,+0x115` uses EDX in target, ECX candidate. Fourteen-/five-TU contexts differ. Seventeen new local register/lifetime forms failed. [Current stream words](evidence/anm-variable-stream-native-address-20261107/README.md). |
+| ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964 original ordinary bytes, all 350 original-bound fields**; opcode 91 at `+0x113,+0x115` uses EDX in target, ECX candidate. Fourteen-/five-TU contexts differ. Seventeen new local register/lifetime forms failed. [Current mode-9 word proof](evidence/anm-render9-native-vertex-words-20261107/README.md), [original opcode-91 frontier](evidence/anm-variable-stream-native-address-20261107/README.md). |
 | ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020 original bytes, all 189 target-bound fields** in real ECL/Enemy **two-TU** graph; single-TU context can be **6,996/7,020** without a regression. Remaining 23 bytes span FORMAT register/stack homes, LENGTH_SQUARED, POINT_ANGLE, loop/callback. Some `Pop` unsigned pointer forms regress whole Run despite leaf exact. [FORMAT evidence](evidence/ecl-format-argument-index-wrap-20261107/README.md), [Pop rejection](evidence/ecl-stack-push-native-word-20261107/README.md). |
-| Enemy ECL `DispatchEclInstruction @0x0040E770` | 14,416 / 14,352 | 64-byte size gap, **716 candidate fields only**; not 716 independently target-bound links. Fresh 11-TU source/field graph, 87/87 related exact operand guards. [Native pattern/spawn proof](evidence/enemy-ecl-spawn-pattern-index-words-20261107/README.md). |
+| Enemy ECL `DispatchEclInstruction @0x0040E770` | 14,416 / 14,352 | 64-byte size gap, **716 candidate fields only**; not 716 independently target-bound links. Fresh 11-TU source/field graph, 87/87 related exact operand guards. [Current spell-name proof](evidence/enemy-ecl-spell-name-native-words-20261107/README.md), [STOSD proof](evidence/enemy-ecl-pattern-clear-stos-word-20261107/README.md), [earlier pattern/spawn](evidence/enemy-ecl-spawn-pattern-index-words-20261107/README.md). |
 | `EnemyRuntimeUpdate @0x0040DC80` | 2,412 / 2,371 | 69 **candidate** fields; native life SUB, flash DEC and ANM script ADD source semantics installed. PDB candidate unchanged, not exact. [Script word proof](evidence/enemy-runtime-animation-script-word-20261107/README.md). |
 | `SpawnSingleBullet @0x004067D0` | 1,413 / 1,504 | 44 **candidate** fields; odd-angle index, both 0x7F0-byte pool advances, ANM/effect-script words installed. Nine seven-TU source probes leave entire candidate unchanged; canonical SpawnBulletPattern194 must be replayed in its **different** correct graph. [Final source](evidence/bullet-spawn-script-words-20261107/README.md). |
 | ECL `StartSubroutine` | 550 / 551 | Four candidate call fields; native counted metadata and stack addresses restored. Remains nonexact. [CALL proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md). |
@@ -75,6 +75,38 @@ stage orchestration) are indexed in
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). Before acting on a dated proof,
 **rebuild or verify its full source/header graph**: isolated sizes can differ
 from integrated canonical graphs even when source is unchanged.
+
+## Current 2026-11-07 source-only closure since the older checkpoint
+
+- **Enemy ECL giant (14,416 target / 14,352 native)**: direct original
+  disassembly confirms `REP STOSD` at `+0x19DE` for 132 pattern words and
+  `8A 0C 31` at `+0x273B` for the spell-name cipher. The maintained
+  32-bit pattern cursor and counted name input/output address words were
+  checked in a source-pinned eleven-input native graph. Five complete PDB
+  candidate owners retain their prior ordinary bytes and field layouts,
+  and selected independently original-bound argument leaves pass **87/87**.
+  Three resource-index, three VM-index, and three combined name/VM forms
+  change the cipher's SIB to `8A 0C 0E`, contrary to the original; **none
+  were installed**. See [pattern](evidence/enemy-ecl-pattern-clear-stos-word-20261107/README.md)
+  and [name](evidence/enemy-ecl-spell-name-native-words-20261107/README.md).
+- **ANM giant (9,964 / 9,964)**: render-mode-9 script count decrement and
+  two vertex steps now use native wrapping address words. A complete
+  current-source five-input original-bound native comparison remains
+  **9,962/9,964**, **350/350 target fields**, with only the opcode-91
+  two-register frontier. Three selected exact ANM guards pass **164/164**.
+  See [mode-9 evidence](evidence/anm-render9-native-vertex-words-20261107/README.md).
+- **Existing exact sound-queue leaves**: typed native metadata/cue/sample
+  slots preserve **123/123** and **149/149**, all four original-bound fields
+  in one current-source cold graph. See [ID words](evidence/enemy-sound-queue-native-words-20261107/README.md)
+  and [sample words](evidence/enemy-sound-queue-native-sample-words-20261107/README.md).
+- **Rejected focused controls, not progress**: 13 natural Seek-tail forms
+  remained **100/107**; 8 new Run-advance variants and 7 Pop-address forms
+  failed to improve **6,997/7,020** ECL original bytes. Retain the
+  original-target instruction witnesses before revisiting; do not promote
+  these uninstalled trials. No historical full replay was run.
+
+The current ledger totals remain unchanged: these are native behavioral
+source recoveries and strict regression guards, **not new exact owners**.
 
 ## 2026-11-07 current-source recovery checkpoints (no new exact credit)
 
@@ -284,19 +316,19 @@ in the canonical exact scoreboard. No full historical replay was run.**
 These are **installed source bytes**, not historical artifacts. The
 lightweight `scripts/repo-python scripts/verify-handoff-pins.py` checks each
 file's SHA-256 and the target; use it before relying on cached native PDBs.
-All values were reverified at checkpoint `2c04d55`.
+All values were reverified at checkpoint `6f1b83c`.
 
 | Installed source | SHA-256 |
 | --- | --- |
 | `src/GameStatistics.cpp` | `dc31f5c888d68d363571a74457ed3da000c2a36386e790cd9234b0798c229666` |
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
-| `src/AnmManager.cpp` | `0b450271e48b7367e74803d87d8abd96c9c1040ea15fcf213e7f5eee3ef4ee5c` |
+| `src/AnmManager.cpp` | `0de0bdff08ca81f78882b72f91e4bbdc1d7ab44305984ab9968aa66dd299ed6a` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
 | `src/EclVm.cpp` | `f571c0df4c407037776a3fd5f93009bce67066c73b31d6f6093532950353b665` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
-| `src/EnemyEclDispatcher.cpp` | `b4933f1e40b4c1d6cae0af0228ad30e3589fb0196d57804f3c5a1be5e587f670` |
+| `src/EnemyEclDispatcher.cpp` | `cebadf0dd493c970699b98b371ebd9792d1dd3c51c26fe49cdc591df0e0d581f` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
