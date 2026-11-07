@@ -206,6 +206,13 @@ in the canonical exact scoreboard. No full historical replay was run.**
   dispatcher 14,416 is NONEXACT.
   [Proof](evidence/enemy-ecl-native-unchecked-index-20261107/README.md).
 
+- ECL `FindSubroutine` now uses a typed native dword word-address
+  helper for its eight-byte binary-search records. Installed source exact
+  leaf **136/136**, full `Run` **6,997/7,020** and all **189 target-bound
+  fields** unchanged; four selected exact units **575/575**. Five other
+  attempted `AddScriptData` old-count forms grew the 589-byte owner to 605
+  and were rejected. [Proof](evidence/ecl-native-subroutine-record-index-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -258,7 +265,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `0b450271e48b7367e74803d87d8abd96c9c1040ea15fcf213e7f5eee3ef4ee5c` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `8b6ed82795f60cf3fcf3e979e0a6f6fff2e9fa1212522565d23a9021ad1700bb` |
+| `src/EclVm.cpp` | `b9f2d07d21cf0611f998d5c8bb81610c6ba43feca55772dab4a85d62eba1cfa7` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |

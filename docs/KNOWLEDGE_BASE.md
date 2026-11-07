@@ -104,6 +104,19 @@ geometry. Five original-bound ECL leaves cold-pass **87/87**.
 Dispatcher remains **NONEXACT**, zero new canonical exact bytes.
 [Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
 
+## 2026-11-07 ECL native eight-byte subroutine record lookup
+
+`EclVmScriptDatabase::FindSubroutine` now addresses its eight-byte
+name/header records through a native unsigned 32-bit indexed byte word
+and reuses one typed `mid` record per binary-search step. Three genuine
+VC7.1 2-TU variants preserve the whole leaf **136/136 original bytes**,
+the 7,020-byte `Run` **6,997/7,020** and **189 original fields**. A
+separate five-variant old-count lifetime hypothesis grew `AddScriptData`
+from 589 to 605 bytes and was rejected; installed-source AddScriptData
+retains all 589 candidate bytes, still **NONEXACT**. Four original-bound
+ECL leaf/host units cold-pass **575/575**; zero new exact credit.
+[Native proof](evidence/ecl-native-subroutine-record-index-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL unchecked script-indexed record addresses
 
 Six runtime writes in the 14,416-byte original enemy ECL dispatcher now

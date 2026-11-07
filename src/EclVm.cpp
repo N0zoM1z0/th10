@@ -586,6 +586,16 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
 }
 
 
+// Script lookup indices address an eight-byte native record with i386
+// low-32-bit base plus stride arithmetic, even for corrupt table counts.
+static __forceinline const EclVmSubroutineEntry *EclSubroutineAtWord(
+    const EclVmSubroutineEntry *base, int index)
+{
+    return reinterpret_cast<const EclVmSubroutineEntry *>(
+        reinterpret_cast<unsigned int>(base) +
+        static_cast<unsigned int>(index) * sizeof(EclVmSubroutineEntry));
+}
+
 EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
 {
     // Retail i386 keeps every bound update and midpoint in a 32-bit word.
@@ -601,11 +611,12 @@ EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
         const int middle = static_cast<int>(
             static_cast<unsigned int>(difference / 2) +
             static_cast<unsigned int>(lower));
-        const int comparison = strcmp(name, subroutines[middle].name);
+        const EclVmSubroutineEntry *const mid = EclSubroutineAtWord(subroutines, middle);
+        const int comparison = strcmp(name, mid->name);
         if (comparison == 0)
         {
             return reinterpret_cast<EclVmInstruction *>(
-                subroutines[middle].header +
+                mid->header +
                 offsetof(EclVmSubroutineStreamView, firstInstruction));
         }
         if (comparison < 0)
