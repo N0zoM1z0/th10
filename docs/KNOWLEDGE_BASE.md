@@ -188,6 +188,18 @@ Installed-source ten-unit exact original cold **1,319/1,319** and
 separate ECL/Enemy `Run` **6,997/7,020** with 189 fields; no new exact
 credit. [Proof](evidence/ecl-readint-tagged-pop-native-words-20261107/README.md).
 
+## 2026-11-07 EnemyRuntimeUpdate original life SUB native dword
+
+Target `EnemyRuntimeUpdate @0x0040DC80 +0x536` uses an i386
+`SUB [EBP+0x13C0],ECX` for enemy life loss. Maintained source now
+expresses identical low 32-bit subtraction via the unsigned corresponding
+integer field instead of signed-overflow UB, leaving signed tests intact.
+Five current two-TU VC7.1 source trials preserve complete nonexact
+Enemy 2,371/69 candidate fields and related ECL Run 6,997/7,020 with
+189 original fields. Final selected exact four-unit cold **404/404**;
+zero new exact owner credit.
+[Evidence](evidence/enemy-runtime-life-native-word-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

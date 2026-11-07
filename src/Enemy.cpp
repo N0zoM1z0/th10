@@ -936,7 +936,9 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
             if ((enemy->flags & 8u) == 0 &&
                 enemy->damageReductionTimer.current <= 0)
             {
-                enemy->life -= damage;
+                // Retail i386 SUB uses the native low 32-bit life word.
+                *reinterpret_cast<unsigned int *>(&enemy->life) -=
+                    static_cast<unsigned int>(damage);
             }
 
             const unsigned char *callback =
