@@ -186,6 +186,12 @@ in the canonical exact scoreboard. No full historical replay was run.**
   **original target 14,416** is NONEXACT. Five selected exact ECL argument
   leaves pass **87/87**. [Proof](evidence/enemy-ecl-difficulty-speed-address-word-20261107/README.md).
 
+- ANM `TickScriptTimerScale` now advances its signed script timer as a
+  native unsigned 32-bit word (no pointer alias or signed overflow). Current
+  five-TU source **9,962/9,964** `ExecuteScript` original bytes, **350/350**
+  target-bound code fields, and selected ANM guards **876/876**. Original
+  opcode-91 two-register byte frontier is still open. [Evidence](evidence/anm-script-timer-native-counter-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -236,7 +242,7 @@ All values were reverified at checkpoint `2c04d55`.
 | --- | --- |
 | `src/GameStatistics.cpp` | `dc31f5c888d68d363571a74457ed3da000c2a36386e790cd9234b0798c229666` |
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
-| `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
+| `src/AnmManager.cpp` | `0b450271e48b7367e74803d87d8abd96c9c1040ea15fcf213e7f5eee3ef4ee5c` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
 | `src/EclVm.cpp` | `8b6ed82795f60cf3fcf3e979e0a6f6fff2e9fa1212522565d23a9021ad1700bb` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |

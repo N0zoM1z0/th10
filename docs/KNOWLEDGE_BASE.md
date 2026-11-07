@@ -104,6 +104,18 @@ geometry. Five original-bound ECL leaves cold-pass **87/87**.
 Dispatcher remains **NONEXACT**, zero new canonical exact bytes.
 [Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
 
+## 2026-11-07 ANM ExecuteScript native counter-word increment
+
+The `TickScriptTimerScale` helper inlined into ANM `ExecuteScript` now
+increments the current frame through explicit modulo-32-bit unsigned
+word arithmetic rather than signed C++ overflow or an unrelated
+`unsigned int*` lvalue alias. Four actual current five-TU VC7.1 trials
+all preserve complete **9,962/9,964** original bytes and all **350
+independently target-bound fields**; the two unchanged opcode-91 register
+bytes remain `+0x113,+0x115`. The installed source was freshly compiled;
+two affected existing exact ANM owners cold-pass **876/876**. No new exact
+credit. [Native proof](evidence/anm-script-timer-native-counter-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL difficulty speed native address words
 
 `DispatchEclInstruction`'s difficulty-selected bullet-speed writes now

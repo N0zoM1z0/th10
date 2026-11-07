@@ -3181,7 +3181,11 @@ static __forceinline void TickScriptTimerScale(AnmVmTimerView *timer)
     timer->previous = timer->current;
     if (*timer->scale > 0.99f && *timer->scale < 1.01f)
     {
-        ++*reinterpret_cast<unsigned int *>(&timer->current);
+        // One native i386 INC word, including the INT_MAX -> INT_MIN
+        // transition; avoid signed overflow and type-punning through an
+        // unrelated unsigned-int lvalue.
+        timer->current = static_cast<int>(
+            static_cast<unsigned int>(timer->current) + 1u);
         timer->subframe += 1.0f;
     }
     else
