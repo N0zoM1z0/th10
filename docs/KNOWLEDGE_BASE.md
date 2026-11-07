@@ -23,6 +23,19 @@ were rejected. Selected preaccepted original-bound Enemy argument leaves
 cold-pass **87/87**; boss is still NONEXACT and 64 bytes short.
 [Evidence](evidence/enemy-ecl-pattern-clear-native-step-20261107/README.md).
 
+## 2026-11-07 Enemy ECL spell-name native byte-stream words
+
+The large `DispatchEclInstruction` spell-name decode now addresses both the
+script input and local output bytes through a native 32-bit typed byte-stride
+index. Five fully compiled 11-TU natural C++ variants showed the selected
+both-word source retains all **14,352** candidate ordinary bytes and **716
+candidate fields**, plus four neighboring owners. The **14,416-byte original
+boss remains NONEXACT**. Three additional combinations with VM ID indexing
+all regressed the decrypt SIB from original `8A 0C 31` to `8A 0C 0E` and
+were rejected. Five selected target-bound ECL operand leaves cold-pass
+**87/87** bytes; seven CI stages pass. No added canonical exact credit.
+[Evidence](evidence/enemy-ecl-spell-name-native-words-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL 528-byte pattern clearing native cursor
 
 An uncommitted Enemy ECL source change was kept, investigated and verified

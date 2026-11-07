@@ -2714,8 +2714,8 @@ dispatch_select_bullet_count_low:
     local_29d = '\a';
     if (0 < spellNameLength) {
       do {
-        local_90.bytes[iVar17] =
-            encryptedName[iVar17] ^ bVar3;
+        *EnemyNativeWordIndex(&local_90.bytes[0], iVar17) =
+            *EnemyNativeWordIndex(encryptedName, iVar17) ^ bVar3;
         bVar3 = bVar3 + local_29d;
         local_29d = local_29d + '\x10';
         iVar17 = iVar17 + 1;
