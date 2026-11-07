@@ -1,9 +1,11 @@
 # TH10 private artifacts — next-agent storage and recovery
 
-**Current snapshot: handoff maintenance, 2026-11-06, after source checkpoint
-`f3a6d2f`.** Use [RE_HANDOFF.md](RE_HANDOFF.md) for source pins/frontiers and
-[PROGRESS.md](PROGRESS.md) for counts. Earlier storage reports describe their
-own cleanup events; their directory sizes are not current inventories.
+**Current snapshot: 2026-11-07, after source checkpoint `16b0ae5`,
+subsequent handoff-documentation correction `7aeab42`, and the selected
+2026-11-07 native-artifact pruning.** Use [RE_HANDOFF.md](RE_HANDOFF.md) for
+current source pins/frontiers and [PROGRESS.md](PROGRESS.md) for canonical
+counts. Older storage events and source epochs are historical; do not use
+those figures as live disk inventories.
 
 ## Retain and transfer
 
@@ -21,41 +23,82 @@ research receipts. Transfer those separately and verify their hashes. An old
 native image does not certify changed source, even when its directory still
 exists. Do not mix old PDB/MAP/OBJ files with a current source epoch.
 
-## Current expanded storage and this cleanup
+## Current expanded storage and the 2026-11-07 cleanup
 
-| Directory | Allocated storage at this snapshot | Policy |
+The table below is a *measured 2026-11-07 snapshot*, not a quota guarantee.
+Actual allocation varies with future selected builds and Python validation.
+`build/match-linked` and source-pinned complete cold witnesses are preserved;
+the compact exact ledgers are tracked and do not depend on rejected variant
+binaries.
+
+| Directory | Allocated bytes at the cleaned checkpoint | Retention |
 | --- | ---: | --- |
-| `build/gpt-web/` | 115,552,256 bytes (110.2 MiB) | Current/first-exact witnesses retained; selected superseded native files archived |
-| `build/match-linked/` | 126,160,896 bytes (120.3 MiB) | Keep every canonical artifact |
-| `.analysis/archive/` | 216,694,784 bytes (206.7 MiB) | Keep all verified archives |
-| `.analysis/gpt-web/` | 52,469,760 bytes (50.0 MiB) | Keep research source snapshots, drivers and receipts |
-| `build/pycache/`, `scripts/__pycache__/` | Removed at cleanup | Regenerate on Python use |
+| `build/gpt-web/` | **152,375,296** (145.3 MiB) | Rejected variants pruned; current full owner/cold witnesses retained |
+| `build/match-linked/` | **127,270,912** (121.4 MiB) | Entire canonical graph preserved |
+| `.analysis/archive/` | **216,694,784** (206.7 MiB) | All historical compressed evidence retained |
+| `.analysis/gpt-web/` | **58,744,832** (56.0 MiB) | Private source variants, scripts, output JSON and logs retained |
+| `build/pycache/` and local `__pycache__/` | **0 in the cleaned local cache roots** | Only ephemeral Python bytecode removed; regenerates automatically |
 
-This event removed **731 ignored `.exe/.obj/.pdb` files** from 39 explicitly
-selected rejected/superseded experiment directories: **65,780,410 payload
-bytes**. Their actual compressed archive is **14,075,697 bytes**;
-all 731 member hashes/sizes and an isolated PDB restoration were verified
-before deletion. Maps, logs, JSON, source snapshots and experiment drivers
-remain. Pruned experiment directories can therefore be partial; restore their
-native members before inspecting an old image. Current 26/36 replay-init,
-ANM/ECL/Enemy, camera, box/circle and first-exact witnesses remain expanded.
+**Actual native deletion:** 1,342 ignored `.exe/.obj/.pdb` files from
+**26 explicitly inspected rejected/superseded variant families**, totaling
+**74,380,757 payload bytes** and **76,615,680 allocated bytes** (73.1 MiB).
+This batch created **no replacement archive** so that storage is really
+reclaimed. Each deletion path/size/SHA-256 is recorded in the private
+`.analysis/maintenance-handoff-20261107/native-deleted.jsonl`, SHA-256
+`314ef076e4ff105628ae88ab8d33f61b33bb3f71c1f547a384fb247958c8e2d9`.
+The exact plan, retained variant names and one-time guarded driver remain
+under `.analysis/maintenance-handoff-20261107/`. A hash list establishes
+*which generated file was removed*, **not** a restorable binary backup.
 
-Original Python caches removed: **531 files /
-9,832,764 payload bytes**. Caches generated solely by the
-maintenance validation are removed separately. Cache hashes are a deletion
-inventory, **not** a restorable archive; normal Python execution regenerates
-them. No compiler or game replay is needed for that regeneration.
+To revisit a rejected variant, regenerate it with the retained
+`.analysis/gpt-web/` source/driver and pinned VC7.1 compiler; do not assume
+an old MAP/PDB pair is valid for a new current source. Retained MAP/log/JSON,
+source snapshots and experiment scripts are **not** proof of exact acceptance.
 
-Measured `build` + `.analysis` reduction is **63,229,952 allocated bytes
-(60.3 MiB)**, including the new archive and cleanup metadata. The measurement
-starts after the protection inventory and before archive creation/cache
-pruning. This is one event's net result; do not add historical cleanup savings.
-[Summary, selected directories and retained witnesses](evidence/agent-handoff-maintenance-20261106/cleanup-summary.json).
+**Local Python cache deletion:** 289 ignored `.pyc/.pyo` files, totaling
+**5,033,902 payload bytes**; 60 empty cache directories removed. The measured
+allocation reduction across `build/`, `scripts/` and `.analysis/gpt-web/`
+was **5,894,144 bytes** (5.6 MiB). Python validation recreates bytecode;
+future CI/experiments may change the live cache size. The private
+`.analysis/maintenance-handoff-20261107/cache-result.json` records the
+bounded before/after footprint. Cache contents are not archived or necessary
+for verification.
 
-The earlier [Nov6 cleanup](evidence/handoff-storage-20261106/README.md)
-archived 367 files/24,327,745 payload bytes and removed 247 cache files. Its
-68,411,392-byte `build/gpt-web` snapshot and 28.9 MiB post-archive reduction
-belong to that earlier event. They are superseded as current storage values.
+After the final seven-stage CI, Python had automatically regenerated
+**248 cache files**; these were immediately removed again and documented in
+`.analysis/maintenance-handoff-20261107/cache-post-ci-result.json`.
+This is **not a second independent storage saving**: it simply leaves the
+working tree with no local Python bytecode at the measured checkpoint.
+
+**Combined new cleanup:** **1,631 files**, **79,414,659 payload bytes**, and
+**82,509,824 bytes** (78.7 MiB) of independently measured native-plus-cache
+allocated reclamation. Accounting for the retained private cleanup manifests,
+actual net allocation in the measured `build/` + `.analysis/` + `scripts/`
+directories fell **82,108,416 bytes** (78.3 MiB).
+The live folder snapshot after cache pruning was: `build/`
+**280,932,352 bytes**, `.analysis/` **287,662,080 bytes**, and `scripts/`
+**1,658,880 bytes**. All sizes are source-epoch-specific and will grow as
+compilers, CI or research run. No extra archive was created.
+
+**Directly verified exclusions:** original `resources/th10.exe`, `.tools/`,
+`_reference/`, `ghidra-project/`, `.analysis/archive/`,
+**all `build/match-linked/`** (including six-source statistics canonical),
+ANM capture and statistics exact cold witnesses, statistics record
+`installed-cold` native proof, current real-caller witness and private source
+investigation. No target input, Git history, source, config, tracked evidence,
+original data, scripts or archived native member was pruned.
+
+The [previous 2026-11-06 cleanup](evidence/agent-handoff-maintenance-20261106/README.md)
+archived 731 superseded native files and reported an older 110.2 MiB
+`build/gpt-web` snapshot. That figure is *not* current; native experiments
+later rebuilt the directory. Likewise
+[earlier 367-member archive](evidence/handoff-storage-20261106/README.md)
+belongs to its own historical event. Both archives and their restoration
+instructions remain valid and protected. The new deletion batch is separate
+and intentionally unarchived.
+
+[2026-11-07 cleanup summary](evidence/agent-handoff-maintenance-20261107/README.md)
+and [machine-readable scope](evidence/agent-handoff-maintenance-20261107/cleanup-summary.json).
 
 ## Private archive registry
 
@@ -74,7 +117,7 @@ SHA-256 after transfer; all sizes/identities below are as of 2026-11-06.
 | `terminal-experiments-20261030.tar.xz` | `d1fb67af025897e2facf375b8f6e1a62646bd0fcea303a95586a791befd2179c` | Earlier terminal experiments |
 | `terminal-experiments-20261031.tar.xz` | `8b2b1c573c499083cd632691d9085b5e17307dea922c9d4ae0303e698964e917` | Earlier terminal experiments |
 
-The latest native manifest is
+The **previous archived-member** manifest is
 `.analysis/maintenance-agent-handoff-20261106/native-pruned-files.jsonl`
 (SHA-256 `83f18f7cce1d2cb3d59d897ca596a0abc000775ec113dbf20b6d334fa7f48dd9`).
 The private driver is `.analysis/maintenance-agent-handoff-20261106/prune-native.py`;
@@ -98,6 +141,11 @@ Check the member hash/size against the private native manifest. The archive
 hash is in the registry above. A restored old experiment is still bound to its
 old source/profile/context, not the current code. Older archives have separate
 dated manifests; consult their evidence before restoring them.
+
+**2026-11-07 pruning has no archive and cannot be restored by these commands.**
+Its private JSONL is an audit manifest, not file content; recompile from the
+retained real source and experiment driver/profile. Canonical artifacts and
+newest accepted cold proofs were never pruned.
 
 Future pruning is limited to verified regenerable ignored experiment PE/OBJ/PDB
 and Python caches under [AGENTS.md](../AGENTS.md). Preserve unresolved complete

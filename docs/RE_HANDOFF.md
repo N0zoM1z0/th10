@@ -239,8 +239,12 @@ scripts/repo-python scripts/replay-exact-units.py \
 
 ## Storage, evidence, and next-agent transfer
 
-Consult [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for **current** expanded/archived
-storage and selective recovery. Keep the original EXE, `.tools/`,
+Consult [RE_ARTIFACTS.md](RE_ARTIFACTS.md) for the **2026-11-07**
+expanded/archived storage snapshot and selective recovery. The
+[2026-11-07 cleanup](evidence/agent-handoff-maintenance-20261107/README.md)
+removed rejected *rebuildable* native variants (76,615,680 allocated bytes)
+without creating a duplicate archive; its private file-hash manifest is
+**not** a restorable backup. Keep the original EXE, `.tools/`,
 `ghidra-project/`, `_reference/`, `.analysis/archive/`, current proof
 scripts/receipts and **all `build/match-linked/` canonical artifacts**.
 Deleted failed *regenerable* experiments are not missing Git source; re-run
