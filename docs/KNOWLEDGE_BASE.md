@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 LoadBgm 298-byte format-pointer lifetime breakthrough
+
+TH10 `LoadBgm @0x0043D950` loads the 16-bit alignment into EBP and
+later uses DIV EBP. The old source retained the ThBgmFormat pointer
+across event/thread creation, spilling alignment and emitting 304
+bytes. Re-reading `bgmPreloadFormats[index]` through the native typed
+slot helper at the streaming-creation call restores target register
+allocation, the complete **298-byte** owner, all **12 independently
+bound target fields**, and **298/298 strict original bytes** in the
+fresh real Sound+ZWave graph. Five prior exact Sound owners recompile
+**2,261/2,261**. Canonical double-cold admission remains separate from
+this source checkpoint. [Evidence](evidence/sound-load-bgm-format-lifetime-20261107/README.md).
+
 ## 2026-11-07 Sound BGM format and 16-slot preloaded native indices
 
 `ReopenBgm` now forms unchecked 0x34-byte BGM format record indices as

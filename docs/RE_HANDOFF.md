@@ -64,6 +64,7 @@ These are the latest relevant **whole-owner** baselines, not acceptance:
 | ECL `AddScriptData @0x00450220` | 589 / 589 | 2 original CRT call fields; **502/581 comparable ordinary bytes** (510/589 including eight linked operand bytes). 79 ordinary mismatches; native SCPT pointers and merge counter words installed. [SCPT](evidence/ecl-serialized-script-native-address-20261107/README.md), [merge counters](evidence/ecl-record-merge-counter-native-20261107/README.md). |
 | `TransitionShakeEnvelope @0x0043C710` | 349 / 350 | **13/16 original field positions**; 16 referents known, three position/register errors and 1-byte extent gap. Do *not* repeat the old incorrect 14/16 claim. Selected four related exact callbacks protect 689/689. [Envelope proof](evidence/transition-envelope-shared-second-limit-20261107/README.md). |
 | Bullet `UpdateAbsoluteDirectionChange @0x004078E0` | 335 / 335 | **333/335**, all **8 original-bound fields**; EDX/EAX difference at `+0xD7,+0xDD`. Recent 12 argument/struct variants failed. [Earlier proof](evidence/bullet-direction-counter-wrap-20261106/README.md). |
+| Sound `LoadBgm @0x0043D950` | 298 / **298** | Recovered real format-pointer reload and EBP block-align lifetime; installed-source strict **298/298 all 12 target-bound fields**, pending canonical ledger/double-cold admission. [Evidence](evidence/sound-load-bgm-format-lifetime-20261107/README.md). |
 | Sound `PreloadBgm @0x0043D7D0` | 369 / 369 | **365/369**, all **10 original fields**; request-size/output-count register assignments in ReadFile. 23 read-call and nine format-index variants failed to close; [current native stride](evidence/sound-preload-native-format-stride-20261107/README.md). |
 | `CMemoryPbgFile::Seek @0x004364F0` | 107 / 107 | **100/107**, no relocations; last seven branch/register bytes. Native CURRENT/END/remaining word addresses installed. [Proof](evidence/resfile-seek-remaining-native-word-20261107/README.md). |
 | Game stats constructor / factory | 132 / 137; 97 / 98 | Calling convention/real caller still differs (original constructor EAX/RET). Real six-TU statistics loader/finalizer/tail exact guard 1,129/1,129. [Real caller](evidence/statistics-record-real-caller-20261107/README.md). |
@@ -393,7 +394,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletTransform.cpp` | `05a488b848b78fd97561676973f2e02619d7e28fe403150e59da1e55cf309e24` |
 | `src/BulletManager.cpp` | `9a0f09a620cf03e38105fdc14e11baca9ae40e59444540286032862f08075348` |
-| `src/Sound.cpp` | `a0a86cdf8b8d5272ddfc19355af6c2901c9355e9d8f4818ab3f473e3fc58f3df` |
+| `src/Sound.cpp` | `c9f816245e17781f3221019d7a8d88962e769760e647b77b8fb94a9493d837ed` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |

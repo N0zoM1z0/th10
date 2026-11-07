@@ -778,7 +778,7 @@ int SoundPlayerView::LoadBgm(int index)
 
     HRESULT result = manager->CreateStreamingFromMemory(
         &bgm, *SoundWordSlot(&bgmPreloadData[0], index),
-        *SoundWordSlot(&bgmPreloadAllocSizes[0], index), format,
+        *SoundWordSlot(&bgmPreloadAllocSizes[0], index), *SoundWordSlot(&bgmPreloadFormats[0], index),
         DSBCAPS_GETCURRENTPOSITION2 | DSBCAPS_CTRLPOSITIONNOTIFY,
         GUID_NULL, 16, notifySize, bgmUpdateEvent);
     if (result < 0)
