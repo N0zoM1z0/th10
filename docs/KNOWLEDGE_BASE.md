@@ -147,6 +147,20 @@ The complete ordinary candidate code and candidate field geometry remain
 unchanged, but neither nonexact owner gains codegen credit.
 [Evidence](evidence/enemy-callback-native-arithmetic-20261107/README.md).
 
+## 2026-11-07 ECL sorted SCPT native record mover
+
+`AddScriptData` insertion now copies a complete eight-byte sorted entry
+through `EclMutableEntryAtWord` typed destination and previous-entry
+pointers, using a native modulo-32-bit `index - 1` rather than unchecked
+C++ array subscript. Three actual native word/memcpy trials regressed
+the 589-byte owner from **502/581** to 439/581 ordinary matching bytes
+and were rejected; the chosen named local pointers preserve
+**502/581** and the two original CRT call-field positions. Complete
+7,020-byte `Run` still compares **6,997/7,020**, all 189 target-bound
+fields. Five existing exact ECL owners cold replay **671/671**. The two
+large bodies remain NONEXACT, with no new exact codegen credit.
+[Evidence](evidence/ecl-sorted-record-native-copy-20261107/README.md).
+
 ## 2026-11-07 ECL CALL argument counter native word
 
 `StartSubroutine` now increments its tagged CALL argument index via native

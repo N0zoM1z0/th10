@@ -570,7 +570,14 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
 
                 int index = subroutineCount;
                 while ((index = static_cast<int>(static_cast<unsigned int>(index) - 1u)) > insertionIndex)
-                    subroutines[index] = subroutines[index - 1];
+                {
+                    EclVmSubroutineEntry *const destination =
+                        EclMutableEntryAtWord(subroutines, index);
+                    const EclVmSubroutineEntry *const previous =
+                        EclMutableEntryAtWord(subroutines,
+                            static_cast<int>(static_cast<unsigned int>(index) - 1u));
+                    *destination = *previous;
+                }
 
                 EclMutableEntryAtWord(subroutines, insertionIndex)->header =
                     reinterpret_cast<unsigned char *>(
