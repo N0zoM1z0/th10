@@ -265,6 +265,16 @@ combines with the prior four reader changes without regressing the large
 **1,197/1,197** original bytes, **zero new exact credit**.
 [Source and native proof](evidence/ecl-indirect-resolve-native-stack-words-20261107/README.md).
 
+**Current ECL tagged -1 integer pop:** `ReadInt @0x0044FDB0`
+now computes its signed stack-top minus-four guard, two four-byte pops and
+two payload/tag addresses via native unsigned i386 low words. Six real
+one-TU full-owner source trials keep all six scalar getter/resolver leaves
+original-bound exact and the entire same-graph Run byte-neutral.
+Installed-source selected ten exact owners cold-pass **1,319/1,319**;
+separate two-TU **Run 6,997/7,020** with **189** original fields remains
+NONEXACT. **No new exact codegen credit.**
+[Current-source native proof](evidence/ecl-readint-tagged-pop-native-words-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -385,7 +395,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `99c972b17343009accd42385987630a0bd771ef33e07d2830484ac19e642899b` |
+| `src/EclVm.cpp` | `6b5bb981dac3ad26ebf8f6770a154ba2021529d0b96800b35e9bf33f70a26c4a` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |

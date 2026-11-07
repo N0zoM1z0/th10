@@ -176,6 +176,18 @@ nine previously exact functions. Two-TU full Run remains **6,997/7,020**
 with **189** original fields, NONEXACT and zero new canonical credit.
 [Current evidence](evidence/ecl-indirect-resolve-native-stack-words-20261107/README.md).
 
+## 2026-11-07 ECL ReadInt(-1) native tagged stack-pop words
+
+When the ECL `ReadInt` argument is a stack-pop sentinel `-1`, the target
+uses an original signed compare after 32-bit subtraction and then consumes
+two native words, scalar and type. The maintained C++ now uses low-dword
+unsigned arithmetic for the signed guard, two `stackTop` decrements and
+two stack byte addresses. Six true original-compiler variants keep all
+six scalar getter/resolver leaves exact and one-TU Run unchanged.
+Installed-source ten-unit exact original cold **1,319/1,319** and
+separate ECL/Enemy `Run` **6,997/7,020** with 189 fields; no new exact
+credit. [Proof](evidence/ecl-readint-tagged-pop-native-words-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

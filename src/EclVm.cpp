@@ -292,6 +292,9 @@ int EclVmContext::ReadIntValue(unsigned int flagIndex, int value)
     return value;
 }
 
+// The encoded -1 operand pops a scalar and its four-byte type slot.
+// Retail i386 forms both stack positions by 32-bit subtraction/addition;
+// preserve the signed nonnegative test before consuming either word.
 int EclVmContext::ReadInt(unsigned int index)
 {
     if (IsOperandIndirect(instruction, index))
@@ -305,16 +308,22 @@ int EclVmContext::ReadInt(unsigned int index)
                     static_cast<unsigned int>(value)))->integer;
         if (value == -1)
         {
-            if (stack.stackTop - 4 >= 0)
+            if (static_cast<int>(static_cast<unsigned int>(stack.stackTop) - 4u) >= 0)
             {
-                stack.stackTop -= 4;
+                stack.stackTop = static_cast<int>(
+                    static_cast<unsigned int>(stack.stackTop) - 4u);
                 index = reinterpret_cast<const EclVmScalar *>(
-                    stack.data + stack.stackTop)->bits;
-                stack.stackTop -= 4;
+                    reinterpret_cast<const unsigned char *>(
+                    reinterpret_cast<unsigned int>(stack.data) +
+                    static_cast<unsigned int>(stack.stackTop)))->bits;
+                stack.stackTop = static_cast<int>(
+                    static_cast<unsigned int>(stack.stackTop) - 4u);
                 // The caller has just popped a value DWORD; the preceding
                 // four-byte slot carries its one-byte type tag.
                 if (reinterpret_cast<const EclVmStackTypeSlotView *>(
-                        stack.data + stack.stackTop)->type == 'f')
+                        reinterpret_cast<const unsigned char *>(
+                    reinterpret_cast<unsigned int>(stack.data) +
+                    static_cast<unsigned int>(stack.stackTop)))->type == 'f')
                     return static_cast<int>(
                         reinterpret_cast<const EclVmScalar *>(&index)->real);
             }
