@@ -735,14 +735,20 @@ int BulletManagerView::SpawnSingleBullet(
     bullet->flags = (bullet->flags & ~0x0cu) | 2u;
     bullet->value454 = 0;
 
+    // Original ADD EAX,[table+type*4] uses low 32-bit ANM script words.
     bullet->vm.InitializeForLoadedScript(
         bulletAnm,
-        g_BulletSpriteScriptBase[descriptor->bulletType] + descriptor->color);
+        static_cast<int>(
+            static_cast<unsigned int>(g_BulletSpriteScriptBase[descriptor->bulletType]) +
+            static_cast<unsigned int>(static_cast<int>(descriptor->color))));
 
+    // The effect-script ID also uses retail LEA EAX*2+0x11 word wrap.
     switch (g_BulletEffectMode[descriptor->bulletType])
     {
     case 0:
-        bullet->effectScript = descriptor->color * 2 + 0x11;
+        bullet->effectScript = static_cast<int>(
+            static_cast<unsigned int>(static_cast<int>(descriptor->color)) * 2u +
+            0x11u);
         break;
     case 1:
         bullet->effectScript = g_BulletEffectScriptByColor[descriptor->color];

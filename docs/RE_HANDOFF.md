@@ -517,7 +517,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
-| `src/BulletManager.cpp` | `9d4aaf9c5b590bd0e9f5be597a936d49050621d294a67f0a4c7fb3406f8345c6` |
+| `src/BulletManager.cpp` | `5edcaf7151ebcacce077d8116d7e2adf1e33ef2dc1389ab4950be2253b81ec0b` |
 | `src/Sound.cpp` | `bd73bb4a184fd3151b1b36513f96d11e229a91fd8d6205eb76884a0c1e9cd0a9` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
