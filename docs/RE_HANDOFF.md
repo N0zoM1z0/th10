@@ -1,6 +1,6 @@
 # TH10 reconstruction — live next-agent handoff
 
-**Verified 2026-11-07, source checkpoint `9996cd6`.** This is a *working
+**Verified 2026-11-07, source checkpoint `2c04d55`.** This is a *working
 resume brief*, not a list of every experiment. The previous 603-line handoff
 is available with `git show 9996cd6:docs/RE_HANDOFF.md`; the detailed dated
 hypotheses are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and
@@ -76,6 +76,40 @@ stage orchestration) are indexed in
 **rebuild or verify its full source/header graph**: isolated sizes can differ
 from integrated canonical graphs even when source is unchanged.
 
+## 2026-11-07 current-source recovery checkpoints (no new exact credit)
+
+Five source/evidence checkpoints and a separate evidence note after
+`a30249b` reconstructed **native low-32-bit address arithmetic**, in both
+large and small owners, without promoting any nonexact owner:
+
+- Enemy ECL `DispatchEclInstruction` **14,416 target / 14,352 source PDB**:
+  the FIRE_BULLET_PATTERN offset vector, pattern initialization, and
+  opcode 0x199 overlapping extra-index and floatB store now use native
+  unsigned word calculations, not C++ signed overflow. Full fresh current
+  11-TU producer **retains its prior candidate** (all five observed owners
+  identical); five selected original-bound ECL argument leaves **87/87**.
+  [Fire offset](evidence/enemy-ecl-fire-offset-word-20261107/README.md),
+  [extra words](evidence/enemy-ecl-remaining-pattern-word-20261107/README.md).
+- ECL `Run` **7,020 source/target, 6,997/7,020 original bytes and all
+  189 original-bound fields**: `OperandWord` replaces one-element C++
+  variable-stream indexed pointer arithmetic in the int/float readers;
+  eight affected prior exact owners **1,037/1,037**.
+  [Proof](evidence/ecl-operand-word-address-20261107/README.md).
+- `CMemoryPbgFile::Read` / `Tell`: both already exact, native 32-bit
+  subtraction/advancement recovered. Ten affected file units **491/491**
+  selected original bytes; Seek remains **100/107 nonexact**.
+  [Proof](evidence/resfile-native-read-tell-words-20261107/README.md).
+
+Fresh real 2-TU ECL Run experiments swapping the length-squared expression
+(4 source variants) either retained **6,997** matching bytes, regressed to
+**6,995**, or changed the whole owner extent; none were installed. Three
+fresh FORMAT `OperandWord` source variants all regressed to **6,996/7,020**
+(from 6,997), despite restoring some SIB bytes; they were also rejected.
+Private trial scripts and complete linked artifacts are under
+`.analysis/gpt-web/20261107-session-th10/` and `build/gpt-web/`.
+**Do not mistake individual new C++ well-definedness changes for increases
+in the canonical exact scoreboard. No full historical replay was run.**
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -120,7 +154,7 @@ from integrated canonical graphs even when source is unchanged.
 These are **installed source bytes**, not historical artifacts. The
 lightweight `scripts/repo-python scripts/verify-handoff-pins.py` checks each
 file's SHA-256 and the target; use it before relying on cached native PDBs.
-All values were reverified at checkpoint `9996cd6`.
+All values were reverified at checkpoint `2c04d55`.
 
 | Installed source | SHA-256 |
 | --- | --- |
@@ -128,10 +162,11 @@ All values were reverified at checkpoint `9996cd6`.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `7e3fc6a3739d35adb5fcb1551bff3718130f3926ef5e7364d4ef604e837d40c9` |
+| `src/EclVm.cpp` | `84890c3ad3750e4c20ad195df3919ec636f6fd57ca93cac51efb117f4de8c9c6` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
-| `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |
+| `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
+| `src/EnemyEclDispatcher.cpp` | `b36cb6ee4e534f93b4ee85c63a0d63beb23e291c38abb6788adad3d5cfb642f6` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
