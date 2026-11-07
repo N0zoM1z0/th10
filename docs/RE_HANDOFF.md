@@ -133,6 +133,13 @@ in the canonical exact scoreboard. No full historical replay was run.**
   original-bound exact ECL units pass **1,161/1,161**.
   [Proof](evidence/ecl-call-scalar-word-address-20261107/README.md).
 
+- ECL `StartSubroutine` CALL scalar payloads now use `OperandWord`
+  for native low-32-bit counted-stream addresses in both tag branches.
+  Current **551-byte candidate vs 550-byte target** keeps four candidate
+  fields unchanged; **nonexact**. Whole original-bound `Run` remains
+  **6,997/7,020**, all **189** target fields; nine ECL exact guards
+  **1,161/1,161**. [Proof](evidence/ecl-call-scalar-word-overlay-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound

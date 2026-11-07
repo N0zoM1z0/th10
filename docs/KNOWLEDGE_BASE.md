@@ -51,6 +51,20 @@ installed-source original-bound ECL exact guards cold-pass **1,037/1,037**.
 Run remains nonexact; no new match credit.
 [Proof](evidence/ecl-format-native-scalar-byte-address-20261107/README.md).
 
+## 2026-11-07 ECL CALL serialized scalar word overlays
+
+The ECL `StartSubroutine` CALL argument float/int paths now read through
+the native `OperandWord` address helper, not an out-of-bounds one-element
+`scalarOperands[1]` array index. This retains the counted name/tagged
+byte-stream layout and low-32-bit i386 arithmetic. The entire current
+**551-byte** candidate StartSubroutine (original **550 bytes**) and its
+four candidate call fields are unchanged versus an independently compiled
+source trial. The parent **7,020-byte** ECL Run still matches **6,997**
+original bytes and all **189** independently target-bound fields. Nine
+selected ECL exact units cold-pass **1,161/1,161**. Both large owners
+remain NONEXACT; no new exact credit.
+[Evidence](evidence/ecl-call-scalar-word-overlay-20261107/README.md).
+
 ## 2026-11-07 sound RIFF native cursor word arithmetic
 
 The already-exact 71-byte `FindWaveChunk` advances serialized chunk cursors
