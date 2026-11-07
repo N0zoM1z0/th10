@@ -73,6 +73,15 @@ difference result uses **one fixed diagnostic mask**, not canonical equality.
 The real `__stdcall` record callee is now linked instead of a stand-in.
 [Record copy proof](evidence/statistics-record-name-copy-schedule-20261107/README.md).
 
+**Current transition-envelope 349-byte boss frontier:** installed
+`TransitionShakeEnvelope` now expresses the target `SHR/OR/TEST` pause-word
+shape and x87 float-amplitude stack home. The source-present candidate grows
+from 297 to **352** bytes, against original **349**; the target's third-stage
+sum, register allocation and remaining three-byte extent still differ.
+One current-source selected 14-TU cold protects **689/689** previously exact
+Init396/FadeIn133/Delete26/DrawScreen134 bytes. No new exact credit.
+[Evidence and bounded experiments](evidence/transition-envelope-pause-x87-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
