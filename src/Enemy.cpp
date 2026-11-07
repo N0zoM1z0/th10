@@ -1081,7 +1081,8 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         primaryVm->flags &= ~0x8000u;
         if ((enemy->flags & 0x8000u) != 0)
             g_GuiView->bossPositionVm.flags35C &= ~0x8000u;
-        enemy->damageFlashFrames--;
+        // Retail i386 decrements the actual four-byte flash counter word.
+        --*reinterpret_cast<unsigned int *>(&enemy->damageFlashFrames);
     }
 
     if (enemy->damageReductionTimer.current > 0)

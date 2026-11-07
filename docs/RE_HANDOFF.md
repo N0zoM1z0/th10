@@ -285,6 +285,16 @@ fields. Installed-source four selected exact owners cold-pass **404/404**;
 original Enemy update is 2,412 bytes, still NONEXACT and zero new credit.
 [Source and full-native proof](evidence/enemy-runtime-life-native-word-20261107/README.md).
 
+**Current Enemy flash timer native decrement:** original
+`EnemyRuntimeUpdate +0x8B8` uses `DEC DWORD [EBP+0x1414]` for
+`damageFlashFrames`; the maintained source now decrements its corresponding
+unsigned 32-bit word, preserving original zero tests and flash behavior.
+The complete two-TU **2,371/69 candidate** Enemy update is byte/field
+identical to the pinned baseline and still NONEXACT vs original 2,412;
+original-bound `Run` remains **6,997/7,020** and 189 fields. Installed
+source selected five exact owners cold-pass **570/570**; zero new exact
+codegen credit. [Native evidence](evidence/enemy-runtime-flash-native-word-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -409,7 +419,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |
-| `src/Enemy.cpp` | `76df11f182b71c7cd88d74caad8daf793e70607b64d5bd3d1fc125a571cb8d1f` |
+| `src/Enemy.cpp` | `50ff057332b846bc97e9629e3ccf70d4becacd22ceaa2168c18a28bedb60bbad` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |

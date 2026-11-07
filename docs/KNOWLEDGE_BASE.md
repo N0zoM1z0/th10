@@ -188,6 +188,18 @@ Installed-source ten-unit exact original cold **1,319/1,319** and
 separate ECL/Enemy `Run` **6,997/7,020** with 189 fields; no new exact
 credit. [Proof](evidence/ecl-readint-tagged-pop-native-words-20261107/README.md).
 
+## 2026-11-07 EnemyRuntimeUpdate original flash DEC native dword
+
+The complete original Enemy update's `+0x8B8 DEC [EBP+0x1414]` is a
+signed-counter low-word i386 decrement, not portable signed C++ `--`
+overflow. The maintained `damageFlashFrames` field uses its corresponding
+unsigned 32-bit lvalue under the original signed/zero consumers. Five
+actual two-TU source variants preserve the complete 2,371-byte/69-field
+nonexact Enemy candidate; final-source five exact original-bound cold
+passes **570/570**, and two-TU `Run` remains **6,997/7,020** with 189
+original fields. No new exact owner credit.
+[Proof](evidence/enemy-runtime-flash-native-word-20261107/README.md).
+
 ## 2026-11-07 EnemyRuntimeUpdate original life SUB native dword
 
 Target `EnemyRuntimeUpdate @0x0040DC80 +0x536` uses an i386
