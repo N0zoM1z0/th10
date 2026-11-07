@@ -469,6 +469,15 @@ static __forceinline EclVmScriptFileHeader **EclFileSlotAtWord(
         static_cast<unsigned int>(index) * sizeof(EclVmScriptFileHeader *));
 }
 
+// Serialized sorted subroutine entries have an eight-byte Win32 stride.
+static __forceinline EclVmSubroutineEntry *EclMutableEntryAtWord(
+    EclVmSubroutineEntry *base, int index)
+{
+    return reinterpret_cast<EclVmSubroutineEntry *>(
+        reinterpret_cast<unsigned int>(base) +
+        static_cast<unsigned int>(index) * sizeof(EclVmSubroutineEntry));
+}
+
 int EclVmScriptDatabase::AddScriptData(void *scriptData)
 {
     const unsigned int SCPT_MAGIC = 0x54504353u;
@@ -513,11 +522,11 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
         {
             do
             {
-                subroutines[index].header =
+                EclMutableEntryAtWord(subroutines, index)->header =
                     reinterpret_cast<unsigned char *>(
                         reinterpret_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))) +
                         static_cast<unsigned int>(static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset));
-                subroutines[index].name = name;
+                EclMutableEntryAtWord(subroutines, index)->name = name;
                 name = reinterpret_cast<const char *>(
                     reinterpret_cast<unsigned int>(name) +
                     static_cast<unsigned int>(strlen(name)) + 1u);
@@ -553,7 +562,9 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                         if (strcmp(name, entry->name) <= 0)
                             break;
                         ++insertionIndex;
-                        ++entry;
+                        entry = reinterpret_cast<EclVmSubroutineEntry *>(
+                            reinterpret_cast<unsigned int>(entry) +
+                            static_cast<unsigned int>(sizeof(EclVmSubroutineEntry)));
                     } while (insertionIndex < sortedCount);
                 }
 
@@ -561,11 +572,11 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                 while (--index > insertionIndex)
                     subroutines[index] = subroutines[index - 1];
 
-                subroutines[insertionIndex].header =
+                EclMutableEntryAtWord(subroutines, insertionIndex)->header =
                     reinterpret_cast<unsigned char *>(
                         reinterpret_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))) +
                         static_cast<unsigned int>(static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset));
-                subroutines[insertionIndex].name = name;
+                EclMutableEntryAtWord(subroutines, insertionIndex)->name = name;
                 name = reinterpret_cast<const char *>(
                     reinterpret_cast<unsigned int>(name) +
                     static_cast<unsigned int>(strlen(name)) + 1u);

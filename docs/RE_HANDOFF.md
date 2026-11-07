@@ -233,6 +233,13 @@ in the canonical exact scoreboard. No full historical replay was run.**
   Combined ANM-resource + managed-ID codegen regressed one byte and was
   rejected. [Evidence](evidence/enemy-ecl-anm-managed-slot-words-20261107/README.md).
 
+- ECL `AddScriptData` sorted-record header/name writes and traversal
+  now use native 8-byte low-word pointer steps. Current two-TU complete
+  AddScriptData **589** with **502/581** original ordinary matches,
+  original `Run` **6,997/7,020** with all 189 target-bound fields;
+  selected four ECL exact guards **575/575**. The record-copy candidate
+  regressed **439/581** and was rejected. [Proof](evidence/ecl-scpt-sorted-record-word-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -285,7 +292,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `0b450271e48b7367e74803d87d8abd96c9c1040ea15fcf213e7f5eee3ef4ee5c` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `9bb3d88f8f3592353476b0bf314b40274c0a799a002362dc7466c833be97fd2c` |
+| `src/EclVm.cpp` | `f571c0df4c407037776a3fd5f93009bce67066c73b31d6f6093532950353b665` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |

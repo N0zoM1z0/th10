@@ -9,6 +9,18 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 ECL SCPT sorted subroutine native record words
+
+`AddScriptData` now computes unchecked eight-byte SCPT sorted-record
+addresses through the natural typed `EclMutableEntryAtWord` helper,
+covering initial header/name writes, sorted insertion writes and traversal
+cursor advancement. Six actual VC7.1 native trials distinguish the
+chosen three-part combination (589-byte owner, **502/581** original
+ordinary matches) from a rejected full record-move rewrite (**439/581**).
+`Run` stays **6,997/7,020** with 189 original-bound fields;
+`FindSubroutine` remains exact 136 bytes. Four selected exact ECL owners
+cold-pass **575/575**, no new exact credit. [Evidence](evidence/ecl-scpt-sorted-record-word-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL managed ANM script slot words
 
 Opcode `SET_ANM_SCRIPT` now uses the real native 32-bit indexed VM ID
