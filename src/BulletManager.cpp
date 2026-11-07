@@ -652,8 +652,10 @@ int BulletManagerView::SpawnSingleBullet(
     {
     case 0:
     case 1:
+        // Retail LEA EAX,[ECX+1] uses the low 32-bit word before
+        // the original signed rounding/division of an odd spawn index.
         if ((descriptor->count1 & 1) != 0)
-            angle += static_cast<float>((index1 + 1) / 2) *
+            angle += static_cast<float>((static_cast<int>(static_cast<unsigned int>(index1) + 1u)) / 2) *
                 descriptor->angleStep;
         else
             angle += static_cast<float>(index1 / 2) *

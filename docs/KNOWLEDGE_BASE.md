@@ -340,6 +340,18 @@ frontier; unsigned remaining comparison regresses and was rejected. Ten
 selected original-bound file owners cold-pass **491/491**, no new exact
 credit. [Native proof](evidence/resfile-seek-native-remaining-word-20261107/README.md).
 
+## 2026-11-07 bullet large SpawnSingle native odd index word
+
+Retail `SpawnSingleBullet @0x004067D0 +0x152` executes `LEA EAX,[ECX+1]`
+then the original signed divide-by-two for the alternating aim angle.
+The source now uses unsigned 32-bit addition before the signed quotient,
+avoiding C++ signed overflow for an arbitrary direct parameter. Nine
+actual 7-TU source variants preserve the complete nonexact 1,504-byte
+candidate/44 fields and adjacent functions. Installed-source selected
+two-graph canonical exact cold **1,028/1,028**, 40 original fields;
+`UpdateAbsoluteDirectionChange` still **333/335**, no new exact credit.
+[Proof](evidence/bullet-spawn-odd-index-native-word-20261107/README.md).
+
 ## 2026-11-07 bullet main-loop state timer unsigned native word
 
 The independent `BulletManagerView::UpdateBullets` main loop (target249)

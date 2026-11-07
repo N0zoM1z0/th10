@@ -365,6 +365,17 @@ ProcessQueues **1,452/1,452**, while PreloadBgm stays nonexact
 passes **2,261/2,261** across three graphs, zero newly exact credit.
 [Native proof](evidence/sound-getfmt-record-native-address-20261107/README.md).
 
+**Current bullet SpawnSingleBullet native odd index:** the real
+`+0x152 LEA EAX,[ECX+1]` now has unsigned i386 low-word source arithmetic
+before the unchanged **signed** divide-by-two. Nine actual seven-TU source
+controls preserve the **complete 1,504-byte/44-candidate-field**
+nonexact boss and four same-graph neighbors; the original SpawnSingleBullet
+is 1,413 bytes and remains nonexact. Installed-source canonical two-graph
+selected cold protects SpawnBulletPattern194 and four exact transform
+leaves, **1,028/1,028** target bytes, 40 original fields. Absolute
+direction remains **333/335**, eight original fields, zero new credit.
+[Complete native proof](evidence/bullet-spawn-odd-index-native-word-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -495,7 +506,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
-| `src/BulletManager.cpp` | `34cb5ceb0c88620a77e3aa9fcf8ab7f19754fc5bbf4bcf292ad844f6da35bba9` |
+| `src/BulletManager.cpp` | `5b0cbe9673b702caecc687cbd2f4277e2f07b7db6da6330fde989ec0785fb689` |
 | `src/Sound.cpp` | `bd73bb4a184fd3151b1b36513f96d11e229a91fd8d6205eb76884a0c1e9cd0a9` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
