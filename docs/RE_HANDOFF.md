@@ -107,6 +107,20 @@ EnemyRuntimeUpdate (2,371 candidate / 2,412 original) and callback
 (606 / 593) remain NONEXACT, with zero candidate ordinary differences and
 unchanged candidate field geometry. [Evidence](evidence/enemy-interpolation-timer-words-20261107/README.md).
 
+## GDI text format and DIB native word arithmetic (2026-11-07)
+
+`FindTextRenderFormat` now traverses the unchecked 0x18-byte format
+records using the established typed Win32 word-address helper.
+`TextRenderBufferView::TryAllocateBuffer` now preserves modulo-32-bit
+width/bit-count multiplication, height negation and image-byte product
+while retaining the original signed pitch divisions and DIB semantics.
+Six independent real two-TU native trials and final installed-source
+cold replay preserve **2,327/2,327 original bytes** across five exact
+text owners (including **781-byte CreateBuffer and 946-byte alpha-bleed**).
+The 157/554/509-byte neighboring owners remain nonexact, with unchanged
+current comparable scores. No new exact credit.
+[Evidence](evidence/text-format-row-native-words-20261107/README.md).
+
 ## Native Sound command shift cursor (2026-11-07)
 
 The 1,452-byte `ProcessQueues` exact owner now uses typed native 32-bit
@@ -422,7 +436,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/GameStatisticsRecordDefaults.cpp` | `2c0c4d290118b9a65a781fef030825b07b89dde090a24cbc1252c200cf3173df` |
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
 | `src/ReplayManager.cpp` | `7c6a50d945a9c83f694bda661880d9211b29b1970c99a8a4ddd4844dab6fcaf3` |
-| `src/TextRenderer.cpp` | `eb7bfffc04a9ac2e4bd7cb531c07e371a30593e825858ee71b3b8e2e37efed9b` |
+| `src/TextRenderer.cpp` | `1a250e674a282812be4aa7b99934fc1820e38670d1807b0ce9c59182424da9af` |
 | `src/TransitionEffect.cpp` | `711fb19a08a7bdfa45cd600a8f3bb82af5d2c90f3292d214e91e63e3625ebcd8` |
 
 ## Private evidence, transfer and storage

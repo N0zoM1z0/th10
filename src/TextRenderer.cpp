@@ -401,14 +401,14 @@ extern TextRenderFormatInfo g_TextRenderFormats[];
 static TextRenderFormatInfo *FindTextRenderFormat(int format)
 {
     unsigned int index = 0;
-    while (g_TextRenderFormats[index].format != -1 &&
-           g_TextRenderFormats[index].format != format)
+    while (TextNativePixelAt(&g_TextRenderFormats[0], static_cast<int>(index))->format != -1 &&
+           TextNativePixelAt(&g_TextRenderFormats[0], static_cast<int>(index))->format != format)
         ++index;
     // TH10 rejects an explicit -1 request, but otherwise returns the row
     // reached by the search, including the sentinel for unsupported formats.
     if (format == -1)
         return NULL;
-    return &g_TextRenderFormats[index];
+    return TextNativePixelAt(&g_TextRenderFormats[0], static_cast<int>(index));
 }
 
 // Target 0x00436A30 is a dependency of the allocation owner below. Its ESI
@@ -445,13 +445,18 @@ bool TextRenderBufferView::TryAllocateBuffer(
     if (formatInfo == NULL)
         return false;
 
-    int rowPitch = ((requestedWidth * formatInfo->bitCount / 8 + 3) / 4) * 4;
+    int rowPitch = ((static_cast<int>(
+        static_cast<unsigned int>(requestedWidth) *
+        static_cast<unsigned int>(formatInfo->bitCount)) / 8 + 3) / 4) * 4;
     info.bV4Size = sizeof(info);
     info.bV4Width = requestedWidth;
-    info.bV4Height = -(requestedHeight + 1);
+    info.bV4Height = static_cast<int>(
+        0u - (static_cast<unsigned int>(requestedHeight) + 1u));
     info.bV4Planes = 1;
     info.bV4BitCount = static_cast<WORD>(formatInfo->bitCount);
-    info.bV4SizeImage = rowPitch * requestedHeight;
+    info.bV4SizeImage = static_cast<int>(
+        static_cast<unsigned int>(rowPitch) *
+        static_cast<unsigned int>(requestedHeight));
     if (requestedFormat != 0x18 && requestedFormat != 0x16)
     {
         info.bV4V4Compression = BI_BITFIELDS;

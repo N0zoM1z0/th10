@@ -147,6 +147,20 @@ The complete ordinary candidate code and candidate field geometry remain
 unchanged, but neither nonexact owner gains codegen credit.
 [Evidence](evidence/enemy-callback-native-arithmetic-20261107/README.md).
 
+## 2026-11-07 Text GDI format record and DIB native words
+
+The existing `TextNativePixelAt` typed helper now also traverses the
+`0x18`-byte `g_TextRenderFormats` records with modulo-32-bit address
+words instead of potentially out-of-array C++ subscripts. DIB line pitch,
+negative image height and output image byte-count calculations preserve
+retail i386 signed-division and unsigned-word overflow semantics. Six
+real current-source two-TU trials and installed-source selected cold
+replay protect **2,327/2,327** exact target bytes across five owners,
+including the **781-byte** text-buffer creator and **946-byte** alpha
+bleed. Three 157/554/509-byte nonexact siblings do not regress. No new
+exact codegen owner, runtime or portability claim.
+[Evidence](evidence/text-format-row-native-words-20261107/README.md).
+
 ## 2026-11-07 ECL sorted SCPT native record mover
 
 `AddScriptData` insertion now copies a complete eight-byte sorted entry
