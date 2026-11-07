@@ -1,3 +1,4 @@
+#include "AnmManager.hpp"
 #include "Enemy.hpp"
 #include "Gui.hpp"
 
@@ -66,9 +67,9 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     {
         if (enemy->callbackThresholds[callbackIndex].lifeThreshold >= 0)
         {
-            enemy->lifeToNextCallback =
-                enemy->life -
-                enemy->callbackThresholds[callbackIndex].lifeThreshold;
+            enemy->lifeToNextCallback = static_cast<int>(
+                static_cast<unsigned int>(enemy->life) -
+                static_cast<unsigned int>(enemy->callbackThresholds[callbackIndex].lifeThreshold));
             if (enemy->life <=
                 enemy->callbackThresholds[callbackIndex].lifeThreshold)
             {
@@ -88,10 +89,9 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
         if (enemy->callbackThresholds[callbackIndex].lifeThreshold >= 0 &&
             enemy->callbackThresholds[callbackIndex].timerThreshold > 0)
         {
-            int seconds =
-                (enemy->callbackThresholds[callbackIndex].timerThreshold -
-                     enemy->updateTimer.current + 59) /
-                60;
+            int seconds = static_cast<int>(
+                static_cast<unsigned int>(enemy->callbackThresholds[callbackIndex].timerThreshold) -
+                static_cast<unsigned int>(enemy->updateTimer.current) + 59u) / 60;
             if (seconds > 99)
                 seconds = 99;
             g_GuiView->spellSeconds = seconds;
@@ -106,7 +106,8 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
             EnemyResetCallbackTimer(&enemy->updateTimer);
             enemy->flags |= 0x10000u;
 
-            g_EnemyTimeoutValue -= 3000;
+            g_EnemyTimeoutValue = static_cast<int>(
+                static_cast<unsigned int>(g_EnemyTimeoutValue) - 3000u);
             if (g_EnemyTimeoutValue < 5000)
                 g_EnemyTimeoutValue = 5000;
 

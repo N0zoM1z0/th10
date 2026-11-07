@@ -9,6 +9,20 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Enemy callback native countdown and penalty words
+
+`EnemyResolveRuntimeCallback` now explicitly includes the complete ANM
+float-vector dependency and compiles standalone. The callback's unchecked
+life difference, signed countdown dividend (after `+59`) and timeout
+budget decrement now use the original low-32-bit SUB/ADD word arithmetic.
+Four normal-COFF trials and fresh two-TU `/GL` original-target comparisons
+show no regression: callback 606 candidate bytes / 7 candidate fields
+against original **593 bytes**; real `EnemyRuntimeUpdate` caller 2,371
+candidate bytes / 69 candidate fields against original **2,412 bytes**.
+The complete ordinary candidate code and candidate field geometry remain
+unchanged, but neither nonexact owner gains codegen credit.
+[Evidence](evidence/enemy-callback-native-arithmetic-20261107/README.md).
+
 ## 2026-11-07 ECL CALL argument counter native word
 
 `StartSubroutine` now increments its tagged CALL argument index via native
