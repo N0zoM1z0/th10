@@ -1381,26 +1381,37 @@ jump_instruction:
                                 inlineBytes +
                                 static_cast<unsigned int>(argumentIndex) *
                                 static_cast<unsigned int>(sizeof(EclVmFormatArgumentView)));
+                        // FORMAT is a counted scalar word stream, not a
+                        // C++ one-element scalarOperands array. The original
+                        // i386 index * 4 address arithmetic wraps at 32 bits.
                         const char argumentType = argument->type;
                         if (argumentType == 'f' || argumentType == 'g') {
                             EclDebugTrace(scratch, ReadFloatValue(
                                 argumentIndex + 1u, this,
-                                instruction->scalarOperands[
-                                    inlineBytes / static_cast<int>(sizeof(int)) + 2 +
-                                    argumentIndex *
-                                        static_cast<int>(
+                                reinterpret_cast<const EclVmScalar *>(
+                                    reinterpret_cast<unsigned int>(instruction) +
+                                    static_cast<unsigned int>(
+                                        offsetof(EclVmInstruction, scalarOperands)) +
+                                    (static_cast<unsigned int>(
+                                        inlineBytes / static_cast<int>(sizeof(int))) +
+                                     2u + static_cast<unsigned int>(argumentIndex) *
+                                        static_cast<unsigned int>(
                                             sizeof(EclVmFormatArgumentView) /
-                                            sizeof(int))].real));
+                                            sizeof(int))) * 4u)->real));
                             ++*reinterpret_cast<unsigned int *>(&argumentIndex);
                         } else {
                             EclDebugTrace(scratch, ReadIntValue(
                                 argumentIndex + 1u,
-                                instruction->scalarOperands[
-                                    inlineBytes / static_cast<int>(sizeof(int)) + 2 +
-                                    argumentIndex *
-                                        static_cast<int>(
+                                reinterpret_cast<const EclVmScalar *>(
+                                    reinterpret_cast<unsigned int>(instruction) +
+                                    static_cast<unsigned int>(
+                                        offsetof(EclVmInstruction, scalarOperands)) +
+                                    (static_cast<unsigned int>(
+                                        inlineBytes / static_cast<int>(sizeof(int))) +
+                                     2u + static_cast<unsigned int>(argumentIndex) *
+                                        static_cast<unsigned int>(
                                             sizeof(EclVmFormatArgumentView) /
-                                            sizeof(int))].integer));
+                                            sizeof(int))) * 4u)->integer));
                             ++*reinterpret_cast<unsigned int *>(&argumentIndex);
                         }
                         break;

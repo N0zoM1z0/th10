@@ -23,6 +23,20 @@ its 716 candidate fields and four neighboring complete owners. Five selected
 original-bound ECL leaf units pass **87/87**. The dispatcher is
 **NONEXACT**, zero new codegen credit. [Proof](evidence/enemy-ecl-pattern-init-extra-word-20261107/README.md).
 
+## 2026-11-07 ECL FORMAT raw scalar word addressing
+
+The 7,020-byte ECL `Run` boss's two FORMAT scalar read branches now use
+native unsigned 32-bit byte addresses from the instruction's variable-length
+payload instead of indexing the declared one-element scalar array. This
+preserves signed inline byte-count divide-by-four and the actual eight-byte
+argument record stride. Six real current-source VC7.1 two-TU variants
+were compiled: five regressed to **6,996/7,020**; the selected direct
+address-word form preserves **6,997/7,020**, all **189 independently
+original-bound fields**, and the exact 171-byte float value callee. Eight
+installed-source original-bound ECL exact guards cold-pass **1,037/1,037**.
+Run remains nonexact; no new match credit.
+[Proof](evidence/ecl-format-native-scalar-byte-address-20261107/README.md).
+
 ## 2026-11-07 sound RIFF native cursor word arithmetic
 
 The already-exact 71-byte `FindWaveChunk` advances serialized chunk cursors
