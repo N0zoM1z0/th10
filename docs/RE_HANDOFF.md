@@ -180,6 +180,16 @@ one- and two-TU original-bound exact guards pass **1,037/1,037** across
 8 owners; **zero new exact credit**.
 [Full proof](evidence/ecl-native-script-jump-address-20261107/README.md).
 
+**Current ECL stack-frame word arithmetic:** `EnterFrame` and
+`LeaveFrame` now use unsigned 32-bit intermediate words for signed frame-top
+addition, saved-slot bounds and four-byte restore decrement. Seven actual
+single-TU source variations keep Enter64, Leave41, Push96, Pop122
+**original-bound exact**, with Run's complete same-graph normalized code
+unchanged. Installed-source selected six-unit original-bound cold is
+**605/605**; the separate two-TU interpreter remains **6,997/7,020**,
+189 fields, NONEXACT. Zero new exact credit.
+[Real native proof](evidence/ecl-stack-frame-native-word-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -300,7 +310,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
-| `src/EclVm.cpp` | `da854e5838cebc2ee834796bdec88b136a87614496dda34f5a2bdaf88ed09e4f` |
+| `src/EclVm.cpp` | `b66651c092c017e996b205e305972d3b0d5306a4b88a1cb5a215c5d055cc9179` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |

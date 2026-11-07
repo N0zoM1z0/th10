@@ -81,6 +81,17 @@ final-source scoped eight-unit cold passes **1,037/1,037** previous exact
 bytes. No new canonical exact credit.
 [Evidence](evidence/ecl-native-script-jump-address-20261107/README.md).
 
+## 2026-11-07 ECL EnterFrame/LeaveFrame native 32-bit words
+
+The 64-byte `EnterFrame` and 41-byte `LeaveFrame` leaf owners now model
+original i386 wrapping dword frame-top, signed saved-slot compare and
+four-byte decrement explicitly using unsigned intermediates, rather than
+undefined signed C++ overflow. Seven complete single-TU compiler trials
+reproduce all four stack owners exact and the same-graph `Run` candidate
+unchanged. Installed current-source selected six-unit exact cold **605/605**;
+separate two-TU `Run` still **6,997/7,020** with 189 fields, NONEXACT.
+[Evidence](evidence/ecl-stack-frame-native-word-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

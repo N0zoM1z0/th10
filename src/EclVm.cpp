@@ -107,12 +107,15 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
 int EclVmStackView::EnterFrame(int localBytes)
 {
     const int previousTop = stackTop;
-    const int localTop = previousTop + localBytes;
+    const int localTop = static_cast<int>(
+        static_cast<unsigned int>(previousTop) +
+        static_cast<unsigned int>(localBytes));
     if (localTop >= 0x1000)
         return -1;
 
     stackTop = localTop;
-    if (stackTop + static_cast<int>(sizeof(EclVmStackSavedWordView)) < 0x1000)
+    if (static_cast<int>(static_cast<unsigned int>(stackTop) +
+        static_cast<unsigned int>(sizeof(EclVmStackSavedWordView))) < 0x1000)
     {
         reinterpret_cast<EclVmStackSavedWordView *>(
             data + stackTop)->value = frameBase;
@@ -125,9 +128,11 @@ int EclVmStackView::EnterFrame(int localBytes)
 int EclVmStackView::LeaveFrame()
 {
     const int previousFrame = frameBase;
-    if (stackTop - static_cast<int>(sizeof(EclVmStackSavedWordView)) >= 0)
+    if (static_cast<int>(static_cast<unsigned int>(stackTop) -
+        static_cast<unsigned int>(sizeof(EclVmStackSavedWordView))) >= 0)
     {
-        stackTop -= static_cast<int>(sizeof(EclVmStackSavedWordView));
+        stackTop = static_cast<int>(static_cast<unsigned int>(stackTop) -
+            static_cast<unsigned int>(sizeof(EclVmStackSavedWordView)));
         frameBase = reinterpret_cast<const EclVmStackSavedWordView *>(
             data + stackTop)->value;
     }
