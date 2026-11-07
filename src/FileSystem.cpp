@@ -37,7 +37,10 @@ PbgArchive *ArchiveOrDiskPathView::FindArchive()
         strcpy(archiveFilename + slashIndex, ".dat");
 
     PbgArchive *archive = g_PbgArchives;
-    for (int index = 0; index < g_PbgArchiveCount; ++index, ++archive)
+    for (int index = 0; index < g_PbgArchiveCount;
+         index = static_cast<int>(static_cast<unsigned int>(index) + 1u),
+         archive = reinterpret_cast<PbgArchive *>(
+             reinterpret_cast<unsigned int>(archive) + sizeof(PbgArchive)))
     {
         if (strcmp(archive->GetArchiveFilename(), archiveFilename) == 0)
             return archive;
@@ -251,9 +254,11 @@ int __stdcall WriteFile(const char *path, const void *data, unsigned int size)
 // seam. This source signature records the behavior without claiming that ABI.
 bool LoadArchive(const char *filename)
 {
-    if (g_PbgArchives[g_PbgArchiveCount].Load(filename))
+    if (reinterpret_cast<PbgArchive *>(
+            reinterpret_cast<unsigned int>(&g_PbgArchives[0]) +
+            static_cast<unsigned int>(g_PbgArchiveCount) * sizeof(PbgArchive))->Load(filename))
     {
-        ++g_PbgArchiveCount;
+        g_PbgArchiveCount = static_cast<int>(static_cast<unsigned int>(g_PbgArchiveCount) + 1u);
         return true;
     }
     return false;
