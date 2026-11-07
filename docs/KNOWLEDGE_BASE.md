@@ -151,6 +151,17 @@ EDX/ECX two-byte mismatch; rejected and restored. Seven affected previous
 exact ANM helpers replay **1,037/1,037**. No new exact credit.
 [Native proof](evidence/anm-variable-stream-native-address-20261107/README.md).
 
+## 2026-11-07 ECL indirect stack scalar read native word addresses
+
+The four `ReadIntValue`/`ReadInt`/`ReadFloatValue`/`ReadFloat` leaf owners
+now form the actual i386 VM stack-buffer + signed frame-base + script
+operand addresses using low-32-bit unsigned dword addition. Eleven real
+one-TU C++ controls retain six exact read/resolve native owners and the
+whole single-TU `Run`; final-source original-bound two-TU Run remains
+**6,997/7,020** with 189 fields, and selected eight previously exact
+owners pass **1,061/1,061**. Two lvalue Resolve* sources remain separate.
+[Source epoch and proof](evidence/ecl-indirect-read-native-stack-words-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

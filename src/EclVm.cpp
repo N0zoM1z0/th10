@@ -264,6 +264,9 @@ static __forceinline int PushFloat(EclVmContext *context, float value)
 } // namespace
 
 
+// Original VM stack-local reads form low 32-bit i386 address words from
+// the actual stack byte buffer, signed frame base and script operand.
+// Keep the original signed indirect/index decisions and read order.
 int EclVmContext::ReadIntValue(unsigned int flagIndex, int value)
 {
     if (IsOperandIndirect(instruction, flagIndex))
@@ -272,7 +275,10 @@ int EclVmContext::ReadIntValue(unsigned int flagIndex, int value)
         {
             EclVmStackView *const operandStack = &stack;
             return reinterpret_cast<const EclVmScalar *>(
-                operandStack->data + operandStack->frameBase + value)->integer;
+                reinterpret_cast<const unsigned char *>(
+                    reinterpret_cast<unsigned int>(operandStack->data) +
+                    static_cast<unsigned int>(operandStack->frameBase) +
+                    static_cast<unsigned int>(value)))->integer;
         }
         if (value == -1)
         {
@@ -293,7 +299,10 @@ int EclVmContext::ReadInt(unsigned int index)
         const int value = OperandInt(instruction, index);
         if (value >= 0)
             return reinterpret_cast<const EclVmScalar *>(
-                stack.data + stack.frameBase + value)->integer;
+                reinterpret_cast<const unsigned char *>(
+                    reinterpret_cast<unsigned int>(stack.data) +
+                    static_cast<unsigned int>(stack.frameBase) +
+                    static_cast<unsigned int>(value)))->integer;
         if (value == -1)
         {
             if (stack.stackTop - 4 >= 0)
@@ -323,7 +332,10 @@ float __stdcall EclVmContext::ReadFloatValue(
     {
         if (value >= 0.0f)
             return reinterpret_cast<const EclVmScalar *>(
-                context->stack.data + context->stack.frameBase + static_cast<int>(value))->real;
+                reinterpret_cast<const unsigned char *>(
+                    reinterpret_cast<unsigned int>(context->stack.data) +
+                    static_cast<unsigned int>(context->stack.frameBase) +
+                    static_cast<unsigned int>(static_cast<int>(value))))->real;
         if (value == -1.0f)
         {
             context->stack.Pop('f', sizeof(value), &value);
@@ -342,8 +354,10 @@ float EclVmContext::ReadFloat(unsigned int index)
     {
         if (OperandFloat(instruction, index) >= 0.0f)
             return reinterpret_cast<const EclVmScalar *>(
-                stack.data + stack.frameBase
-                + static_cast<int>(OperandFloat(instruction, index)))->real;
+                reinterpret_cast<const unsigned char *>(
+                    reinterpret_cast<unsigned int>(stack.data) +
+                    static_cast<unsigned int>(stack.frameBase) +
+                    static_cast<unsigned int>(static_cast<int>(OperandFloat(instruction, index)))))->real;
         if (OperandFloat(instruction, index) == -1.0f)
         {
             float result;

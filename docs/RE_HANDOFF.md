@@ -243,6 +243,17 @@ register-lifetime variants still do not solve the two ECX/EDX bytes.
 Selected seven exact helpers cold-pass **1,037/1,037**. No new exact credit.
 [Complete current-source proof](evidence/anm-variable-stream-native-address-20261107/README.md).
 
+**Current ECL indirect stack scalar reads:** the `ReadIntValue`,
+`ReadInt`, `ReadFloatValue`, and `ReadFloat` leaf owners now form signed
+frame-base + script-operand addresses as native low-32-bit unsigned dword
+additions before their original scalar reads; the two Resolve* lvalue
+owners are not yet changed. Eleven real single-TU source controls retain
+all six original exact helper bodies and the full same-graph Run. Final
+installed two-TU **Run 6,997/7,020** with all **189** original fields,
+and selected eight exact readers/host owners **1,061/1,061** pass.
+No new codegen credit.
+[Full native source proof](evidence/ecl-indirect-read-native-stack-words-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -363,7 +374,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `83cbd5227e9b366181970dbd2cceb6ceaeabfde056c7c8cdda3a5744900fc70b` |
+| `src/EclVm.cpp` | `75c0e57a1bcad612900332a8a8421d1124a778efe82bf0c461d03f52bd50127a` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |
