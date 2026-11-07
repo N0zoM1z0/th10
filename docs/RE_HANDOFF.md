@@ -102,6 +102,15 @@ overflow UB. The full owner stays **9,962/9,964** with **350/350** bound
 original fields; four selected exact variable-access guards pass **856/856**.
 No new exact credit. [Source and whole-owner proof](evidence/anm-jump-dec-word-wrap-20261107/README.md).
 
+**Current ANM frame timer native word correction:** the script-timer
+fast branch increments `timer.current` through its unsigned 32-bit field
+view; together with the already committed JUMP_DEC word decrement this
+removes C++ signed overflow UB while retaining the full **9,962/9,964**
+original-bound executor (350 fields, only opcode-91 EDX/ECX mismatch).
+Six selected current-source exact timer/operand helpers pass **964/964**
+in two native cold artifacts, no new exact credit.
+[Full owner and selected guard](evidence/anm-timer-tick-word-wrap-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -208,7 +217,7 @@ receipts are ignored private files, not Git attachments.
 | --- | --- |
 | `src/GameStatistics.cpp` | `dc31f5c888d68d363571a74457ed3da000c2a36386e790cd9234b0798c229666` |
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
-| `src/AnmManager.cpp` | `d72d8e135c28f2398fe920fe2e14b3bfa510fbc698c4c5ab9e9f92db4d0b95c1` |
+| `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
 | `src/EclVm.cpp` | `5c47304faae61c3ecb51fe31f8574d80a1dfaa710088c7d7d8cc6ba6110084de` |
 | `src/EclVm.hpp` | `b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52` |
