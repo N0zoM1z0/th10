@@ -61,7 +61,7 @@ These are the latest relevant **whole-owner** baselines, not acceptance:
 | `EnemyRuntimeUpdate @0x0040DC80` | 2,412 / 2,371 | 69 **candidate** fields; native life SUB, flash DEC and ANM script ADD source semantics installed. PDB candidate unchanged, not exact. [Script word proof](evidence/enemy-runtime-animation-script-word-20261107/README.md). |
 | `SpawnSingleBullet @0x004067D0` | 1,413 / 1,504 | 44 **candidate** fields; odd-angle index, both 0x7F0-byte pool advances, ANM/effect-script words installed. Nine seven-TU source probes leave entire candidate unchanged; canonical SpawnBulletPattern194 must be replayed in its **different** correct graph. [Final source](evidence/bullet-spawn-script-words-20261107/README.md). |
 | ECL `StartSubroutine` | 550 / 551 | Four candidate call fields; native counted metadata and stack addresses restored. Remains nonexact. [CALL proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md). |
-| ECL `AddScriptData @0x00450220` | 589 / 589 | 2 original CRT call fields; **502/581 comparable ordinary bytes** (510/589 including eight linked operand bytes). 79 ordinary mismatches; native SCPT pointer words installed. [SCPT proof](evidence/ecl-serialized-script-native-address-20261107/README.md). |
+| ECL `AddScriptData @0x00450220` | 589 / 589 | 2 original CRT call fields; **502/581 comparable ordinary bytes** (510/589 including eight linked operand bytes). 79 ordinary mismatches; native SCPT pointers and merge counter words installed. [SCPT](evidence/ecl-serialized-script-native-address-20261107/README.md), [merge counters](evidence/ecl-record-merge-counter-native-20261107/README.md). |
 | `TransitionShakeEnvelope @0x0043C710` | 349 / 350 | **13/16 original field positions**; 16 referents known, three position/register errors and 1-byte extent gap. Do *not* repeat the old incorrect 14/16 claim. Selected four related exact callbacks protect 689/689. [Envelope proof](evidence/transition-envelope-shared-second-limit-20261107/README.md). |
 | Bullet `UpdateAbsoluteDirectionChange @0x004078E0` | 335 / 335 | **333/335**, all **8 original-bound fields**; EDX/EAX difference at `+0xD7,+0xDD`. Recent 12 argument/struct variants failed. [Earlier proof](evidence/bullet-direction-counter-wrap-20261106/README.md). |
 | Sound `PreloadBgm @0x0043D7D0` | 369 / 369 | **365/369**, all **10 original fields**; request-size/output-count register assignments in ReadFile. 23 read-call and nine format-index variants failed to close; [current native stride](evidence/sound-preload-native-format-stride-20261107/README.md). |
@@ -324,7 +324,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `0de0bdff08ca81f78882b72f91e4bbdc1d7ab44305984ab9968aa66dd299ed6a` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `f571c0df4c407037776a3fd5f93009bce67066c73b31d6f6093532950353b665` |
+| `src/EclVm.cpp` | `83a7a7ef03e5df5019b308a2aa458bf61517136bdeee013a7c7683e479eb4327` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |

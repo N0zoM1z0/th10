@@ -530,7 +530,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                 name = reinterpret_cast<const char *>(
                     reinterpret_cast<unsigned int>(name) +
                     static_cast<unsigned int>(strlen(name)) + 1u);
-                ++index;
+                index = static_cast<int>(static_cast<unsigned int>(index) + 1u);
                 scriptData = reinterpret_cast<void *>(
                     reinterpret_cast<unsigned int>(offsetCursor) +
                     static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
@@ -561,7 +561,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                     {
                         if (strcmp(name, entry->name) <= 0)
                             break;
-                        ++insertionIndex;
+                        insertionIndex = static_cast<int>(static_cast<unsigned int>(insertionIndex) + 1u);
                         entry = reinterpret_cast<EclVmSubroutineEntry *>(
                             reinterpret_cast<unsigned int>(entry) +
                             static_cast<unsigned int>(sizeof(EclVmSubroutineEntry)));
@@ -569,7 +569,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                 }
 
                 int index = subroutineCount;
-                while (--index > insertionIndex)
+                while ((index = static_cast<int>(static_cast<unsigned int>(index) - 1u)) > insertionIndex)
                     subroutines[index] = subroutines[index - 1];
 
                 EclMutableEntryAtWord(subroutines, insertionIndex)->header =
@@ -583,8 +583,8 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                 scriptData = reinterpret_cast<void *>(
                     reinterpret_cast<unsigned int>(offsetCursor) +
                     static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
-                ++sortedCount;
-                ++added;
+                sortedCount = static_cast<int>(static_cast<unsigned int>(sortedCount) + 1u);
+                added = static_cast<int>(static_cast<unsigned int>(added) + 1u);
             } while (added < (*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount);
         }
     }
