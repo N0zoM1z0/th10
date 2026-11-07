@@ -576,10 +576,12 @@ int BulletManagerView::UpdateBullets()
         drawBucketTails[bullet->drawBucketIndex] = bullet;
         bullet->nextInDrawBucket = 0;
         ++activeBulletCount;
+        // Original stateTimer increment is a native 32-bit word, even
+        // when the signed counter reaches INT_MAX.
         AnmVmTimerView &timer = bullet->stateTimer;
         timer.previous = timer.current;
         if (*timer.scale > 0.99f && *timer.scale < 1.01f) {
-            ++timer.current;
+            ++*reinterpret_cast<unsigned int *>(&timer.current);
             timer.subframe += 1.0f;
         }
         else {

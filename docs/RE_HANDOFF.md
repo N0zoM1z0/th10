@@ -160,6 +160,16 @@ source deceleration/horizontal/vertical owners cold-pass **484/484**.
 **Zero new exact credit.**
 [Source and complete-native evidence](evidence/bullet-transform-timer-word-wrap-20261107/README.md).
 
+**Current bullet manager main-loop state timer:** the **249-byte
+original-bound exact** `BulletManagerView::UpdateBullets` now increments
+each surviving bullet's signed `stateTimer.current` through its actual
+unsigned 32-bit i386 field word. Its updated full native main-loop body,
+its 40-byte callback, the 158-byte Deactivate and 109-byte bounds helper
+all remain **556/556** previously exact original bytes in two selected
+current-source artifacts. No new exact credit; it is separate from the seven
+transform timer words already committed.
+[Complete main-loop proof](evidence/bullet-manager-state-timer-word-wrap-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -290,7 +300,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
-| `src/BulletManager.cpp` | `4e2358af726818fa555e5c2ca9524dd4d4eb2c709ba8eb0fc52bf8014106f424` |
+| `src/BulletManager.cpp` | `34cb5ceb0c88620a77e3aa9fcf8ab7f19754fc5bbf4bcf292ad844f6da35bba9` |
 | `src/Sound.cpp` | `cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b3b0` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |

@@ -116,6 +116,17 @@ frontier; unsigned remaining comparison regresses and was rejected. Ten
 selected original-bound file owners cold-pass **491/491**, no new exact
 credit. [Native proof](evidence/resfile-seek-native-remaining-word-20261107/README.md).
 
+## 2026-11-07 bullet main-loop state timer unsigned native word
+
+The independent `BulletManagerView::UpdateBullets` main loop (target249)
+now increments the actual `stateTimer.current` as an unsigned low 32-bit
+word after its existing scale predicate. The entire PDB-owned main function
+stays strictly original-bound **249/249 exact**, as do callback40,
+Deactivate158 and IsOutsidePlayfield109, for **556/556** selected cold
+original bytes across two source-epoch native artifacts. This addresses a
+distinct timer from the seven transform helpers and adds no newly exact
+code. [Current proof](evidence/bullet-manager-state-timer-word-wrap-20261107/README.md).
+
 ## 2026-11-07 Bullet transforms: native frame-timer word increments
 
 Seven transform-state `timer.current` fast-branch increments now use the
