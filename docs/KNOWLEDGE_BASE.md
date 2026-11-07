@@ -46,6 +46,18 @@ identical to their prior source; five selected original-bound ECL leaves
 still pass **87/87**. **NONEXACT**, no new codegen credit.
 [Evidence](evidence/enemy-ecl-pattern-final-address-word-20261107/README.md).
 
+## 2026-11-07 memory-file Seek remaining-space native word arithmetic
+
+Following the previous CURRENT/END pointer-word changes, `Seek` now
+computes its signed remaining-space test through the same Win32 32-bit
+unsigned address-word arithmetic. This avoids C++ out-of-array pointer
+subtraction after native-allowed negative seeks, while preserving the
+signed comparison, control flow and complete 107-byte original target
+frontier of **100/107**, zero fields. Nine separate VC7.1 COFF native
+variants were tested and restored. Ten selected canonical file owners
+pass **491/491** exact original bytes in a fresh selected cold; no new
+canonical credit. [Evidence](evidence/resfile-seek-remaining-native-word-20261107/README.md).
+
 ## 2026-11-07 memory-file Seek native address words
 
 The 107-byte memory-file Seek owner remains **100/107 raw bytes** (no

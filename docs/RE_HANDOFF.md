@@ -238,6 +238,14 @@ cutters and ECL count-reference model using our real callees; synthetic
 caller/escape/stand-in contexts confer no local exact credit. See the
 [review/crosswalk](evidence/upstream-th10-decomp-review-20261106/README.md).
 
+**Current memory-file signed remaining word:** `CMemoryPbgFile::Seek`
+now also computes `FILE_CURRENT` remaining bytes from unsigned Win32
+`DWORD` address-word addition/subtraction before its original signed
+comparison. Nine actual complete 107-byte source trials confirm the full
+owner stays **100/107**, zero linked fields; ten selected current-source
+exact file owners cold-pass **491/491**. No new exact codegen credit.
+[Source and current cold proof](evidence/resfile-seek-remaining-native-word-20261107/README.md).
+
 Other unaccepted leaves worth *new evidence-led* work: `CMemoryPbgFile::Seek`
 107/107 but 100 matching ordinary bytes (its CURRENT/END cursor now uses
 explicit native Win32 unsigned-word addresses, with all original behavior
