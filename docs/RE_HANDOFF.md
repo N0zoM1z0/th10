@@ -74,13 +74,16 @@ The real `__stdcall` record callee is now linked instead of a stand-in.
 [Record copy proof](evidence/statistics-record-name-copy-schedule-20261107/README.md).
 
 **Current transition-envelope 349-byte boss frontier:** installed
-`TransitionShakeEnvelope` now expresses the target `SHR/OR/TEST` pause-word
-shape and x87 float-amplitude stack home. The source-present candidate grows
-from 297 to **352** bytes, against original **349**; the target's third-stage
-sum, register allocation and remaining three-byte extent still differ.
-One current-source selected 14-TU cold protects **689/689** previously exact
-Init396/FadeIn133/Delete26/DrawScreen134 bytes. No new exact credit.
-[Evidence and bounded experiments](evidence/transition-envelope-pause-x87-20261107/README.md).
+`TransitionShakeEnvelope` first recovered the target `SHR/OR/TEST` pause-word
+and x87 amplitude stack home, then named the second-stage unsigned boundary
+for reuse in both comparisons. The source-present candidate progresses from
+297 → 352 → **350 bytes**, against original **349**, with **16/16 actual
+code-reference identities and 14/16 original positions**. Register allocation,
+Y-store encoding and one-byte extent gap remain NONEXACT. A fresh selected
+14-TU original-bound cold protects **689/689** previously exact
+Init396/FadeIn133/Delete26/DrawScreen134 bytes; zero new exact credit.
+[Latest code and proof](evidence/transition-envelope-shared-second-limit-20261107/README.md);
+[earlier recovery](evidence/transition-envelope-pause-x87-20261107/README.md).
 
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
@@ -159,7 +162,7 @@ confirmed authored code.
 | `GameStatisticsOwner::GameStatisticsOwner @0x0042AE60` / `CreateStatistics42AF20 @0x0042AF20` | **132 / 137**; **97 / 98** | **Both NONEXACT.** Original ctor EAX owner/RET; native candidate stack owner/RET4, even after resolving its actual record initializer. Explicit `__fastcall`/`__cdecl` constructor annotations are byte-neutral; VC7.1 disallows explicit `__thiscall` for this declaration. Six-TU current-source selected guards1129 and destructor45 exact. Revisit real caller ABI/context, not artificial register-forcing. [Real caller/guard proof](evidence/statistics-record-real-caller-20261107/README.md). |
 | `InitializeGameStatisticsRecord @0x0042ACB0` | **274 / 274** | Earlier natural110-iteration rank-kind loop restored size274/8 fields but had only4/8 original field offsets. The current **split 8+1 name copy with extra word between** remains size274, validates all eight referenced original data identities and now aligns **7/8 original field positions**. Under the same 230-byte diagnostic ordinary comparison mask, differences drop **75→36**; name dword2 is still `+0x50` rather than original `+0x53`. **NONEXACT; zero credit**. Constructor now resolves its actual six-source `__stdcall` call, with selected exact1129 still passing ([real caller](evidence/statistics-record-real-caller-20261107/README.md)). [Current copy proof](evidence/statistics-record-name-copy-schedule-20261107/README.md); [prior loop](evidence/statistics-record-natural-loop-20261106/README.md). |
 | `TransitionShakeLinear @0x0043C550` | **439 / 439** | Fresh existing14-input `/GL` graph: **412/439**, **20/20 original-bound fields**. `FIDIV` is at +0xB6 instead of target +0xCE. Named float-product controls (outer conversion; then explicit inner/outer conversions) both move it to +0xAA and displace two fields; rejected/restored. Initializer396/all37 guard passes from the restored-source baseline image. [Reference review and pins](evidence/upstream-th10-decomp-review-20261106/README.md#local-camera-experiment). |
-| `TransitionShakeEnvelope @0x0043C710` | **349 original / 352 current candidate** | Natural two-stage 0x77 pause-flag test restores SHR/OR/test and a provisional volatile float amplitude restores original x87 spill before both RNG calls. Whole PDB extent still +3 bytes; all 16 external referent identities match, but their field positions/register schedule differ. Scoped cold protects Init396, FadeIn133, Delete26, Dim175: **730/730** previously exact, **zero new credit**. [Current-source proof](evidence/transition-shake-envelope-schedule-20261107/README.md). |
+| `TransitionShakeEnvelope @0x0043C710` | **349 original / 350 current candidate** | Original pause SHR/OR/test and x87 float stack home retained; the named shared unsigned second-stage boundary improves the full PDB extent 352→350 and aligns 14/16 code-field positions. One-byte size and register schedule remain nonexact. Current selected original-bound cold protects Init396/FadeIn133/Delete26/DrawScreen134 **689/689**, **zero new credit**. [Latest proof](evidence/transition-envelope-shared-second-limit-20261107/README.md). |
 | `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** two-TU `/GL /GS` measures **138/157**, zero fields; EAX/ECX receiver/count/selector choice accounts for19 differences. Separate pitch capture/multiply is byte-neutral in normal COFF112/157 and GL138/157; restored. Current installed signed-overflow-free text row and geometry words preserve all ordinary codegen; fresh GL/GS still measures138/157 and selected exact text owners1799/1799 pass ([native proof](evidence/text-native-word-geometry-20261106/README.md)). An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Private proofs: `.analysis/gpt-web/20261106-text-current-exact/` and `.analysis/gpt-web/20261106-text-alpha-owner/`. |
 
 Updated external reference: `_reference/th10-decomp-d1f3121` preserves the

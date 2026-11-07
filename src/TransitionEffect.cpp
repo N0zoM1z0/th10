@@ -238,13 +238,16 @@ static int __fastcall TransitionShakeEnvelope(void *argument)
         ((game->flags58 & 0x72u) != 0))
         return 1;
     effect->timer.Tick();
+    // Both later branches use the same modulo-2^32 second-stage boundary.
+    // Keeping it named restores the target's earlier direct field operands.
+    const unsigned int secondBound = effect->value0 + effect->value1;
     float envelope;
     if (effect->timer.current < static_cast<int>(effect->value0))
         envelope = effect->timer.subframe / static_cast<int>(effect->value0);
-    else if (effect->timer.current < static_cast<int>(effect->value0 + effect->value1))
+    else if (effect->timer.current < static_cast<int>(secondBound))
         envelope = 1.0f;
     else if (effect->timer.current <
-        static_cast<int>(effect->value0 + effect->value1 + effect->value2))
+        static_cast<int>(secondBound + effect->value2))
         envelope = (static_cast<float>(effect->value0 + effect->value1 + effect->value2) -
             effect->timer.subframe) / static_cast<float>(effect->value2);
     else
