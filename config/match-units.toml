@@ -22247,7 +22247,7 @@ linkages = [
   { offset = 0xdb, type = "REL32", target = 0x44a000, symbol = "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z" },
   { offset = 0xe3, type = "DIR32", target = 0x43c410, symbol = "?TransitionDrawDimPlayfield@@YIHPAX@Z", static_address_source = "src/TransitionEffect.cpp", static_address_candidate_size = 0x44, static_address_target_size = 0x44 },
   { offset = 0xeb, type = "REL32", target = 0x44a030, symbol = "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z" },
-  { offset = 0xf5, type = "DIR32", target = 0x43c710, symbol = "?TransitionShakeEnvelope@@YIHPAX@Z", static_address_source = "src/TransitionEffect.cpp", static_address_candidate_size = 0x129, static_address_target_size = 0x15d },
+  { offset = 0xf5, type = "DIR32", target = 0x43c710, symbol = "?TransitionShakeEnvelope@@YIHPAX@Z", static_address_source = "src/TransitionEffect.cpp", static_address_candidate_size = 0x160, static_address_target_size = 0x15d },
   { offset = 0x100, type = "REL32", target = 0x44a000, symbol = "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z" },
   { offset = 0x10e, type = "DIR32", target = 0x43c870, symbol = "?TransitionDelete@@YIHPAX@Z", static_address_source = "src/TransitionEffect.cpp", static_address_candidate_size = 0x1a, static_address_target_size = 0x1a },
   { offset = 0x12e, type = "DIR32", target = 0x476f78, symbol = "?g_AnmGameSpeed@@3MA" },

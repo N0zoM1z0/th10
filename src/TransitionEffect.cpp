@@ -231,7 +231,11 @@ static int __fastcall TransitionShakeEnvelope(void *argument)
     if (g_GameStartupCounter != 0)
         return 7;
     ResultGameManagerView *game = g_ResultGameManager;
-    if (game == NULL || (game->flags58 & 0x77u) != 0)
+    // The target observes bit0 and bit2 through SHR/OR/TEST before it
+    // separately tests bits 1, 4, 5 and 6 of the same flags word.
+    if (game == NULL ||
+        ((((game->flags58 >> 2) | game->flags58) & 1u) != 0) ||
+        ((game->flags58 & 0x72u) != 0))
         return 1;
     effect->timer.Tick();
     float envelope;
@@ -245,7 +249,10 @@ static int __fastcall TransitionShakeEnvelope(void *argument)
             effect->timer.subframe) / static_cast<float>(effect->value2);
     else
         return 7;
-    const float amplitude = effect->frames * envelope;
+    // The retail callback materializes the amplitude into a float stack
+    // slot before both RNG calls; keep that observable x87 lifetime.
+    // Volatile is a provisional codegen model, not thread synchronization.
+    const volatile float amplitude = effect->frames * envelope;
     switch (AnmRandomU32InRange(&g_RngView, 3))
     {
     case 0: g_TransitionShakeX = 0.0f; break;

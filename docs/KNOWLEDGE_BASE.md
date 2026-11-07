@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 TransitionShakeEnvelope 349-byte frontier
+
+Direct target/native review found that `TransitionShakeEnvelope @0x0043C710`
+uses the same split SHR/OR flag-bit test as the now-exact FadeIn but then
+separately tests 0x72. Its amplitude is materialized to a stack float before
+two real RNG calls and later reloaded. The retained natural source makes
+both schedules explicit: 14-TU VC7.1 `/GL` PDB owner changes from 297 to
+**352 candidate vs original 349**, with all 16 external referent identities
+present but **wrong positions at several sites**. This is NONEXACT, no new
+credit; only current selected original-bound exact guards Init396/FadeIn133/
+Delete26/Dim175 passed **730/730**. The remaining phase-limit EBX spill and
+source register scheduling are open. [Proof](evidence/transition-shake-envelope-schedule-20261107/README.md).
+
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
 `TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,
