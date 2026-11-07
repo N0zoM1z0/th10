@@ -370,6 +370,9 @@ float EclVmContext::ReadFloat(unsigned int index)
     return OperandFloat(instruction, index);
 }
 
+// Original ECL lvalue resolvers return i386 address words formed from
+// the stack byte base, signed frame-base and serialized operand dword.
+// Keep the original indirect guards and real host resolver fallbacks.
 int *EclVmContext::ResolveInt(unsigned int index)
 {
     if (IsOperandIndirect(instruction, index))
@@ -378,8 +381,10 @@ int *EclVmContext::ResolveInt(unsigned int index)
         {
             EclVmStackView *const operandStack = &stack;
             return &reinterpret_cast<EclVmScalar *>(
-                operandStack->data + operandStack->frameBase
-                + OperandInt(instruction, index))->integer;
+                reinterpret_cast<unsigned char *>(
+                    reinterpret_cast<unsigned int>(operandStack->data) +
+                    static_cast<unsigned int>(operandStack->frameBase) +
+                    static_cast<unsigned int>(OperandInt(instruction, index))))->integer;
         }
         return host->ResolveEclInt(OperandInt(instruction, index));
     }
@@ -394,8 +399,10 @@ float *EclVmContext::ResolveFloat(unsigned int index)
         {
             EclVmStackView *const operandStack = &stack;
             return &reinterpret_cast<EclVmScalar *>(
-                operandStack->data + operandStack->frameBase
-                + static_cast<int>(OperandFloat(instruction, index)))->real;
+                reinterpret_cast<unsigned char *>(
+                    reinterpret_cast<unsigned int>(operandStack->data) +
+                    static_cast<unsigned int>(operandStack->frameBase) +
+                    static_cast<unsigned int>(static_cast<int>(OperandFloat(instruction, index)))))->real;
         }
         return host->ResolveEclFloat(
             static_cast<int>(OperandFloat(instruction, index)));

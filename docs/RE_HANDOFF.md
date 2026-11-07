@@ -254,6 +254,17 @@ and selected eight exact readers/host owners **1,061/1,061** pass.
 No new codegen credit.
 [Full native source proof](evidence/ecl-indirect-read-native-stack-words-20261107/README.md).
 
+**Current ECL indirect lvalue word addresses:** the two
+`ResolveInt @0x00450030` and `ResolveFloat @0x00450070` leaf functions
+now form the actual stack/frame/script-operand address in native unsigned
+32-bit i386 words, preserving their positive-operand tests and real host
+fallbacks. Two independent compiler variant paths retained strict
+**58/58** and **93/93** original leaf codegen, and their installed source
+combines with the prior four reader changes without regressing the large
+**Run 6,997/7,020 / 189 fields**. Selected nine exact units cold-pass
+**1,197/1,197** original bytes, **zero new exact credit**.
+[Source and native proof](evidence/ecl-indirect-resolve-native-stack-words-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -374,7 +385,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `75c0e57a1bcad612900332a8a8421d1124a778efe82bf0c461d03f52bd50127a` |
+| `src/EclVm.cpp` | `99c972b17343009accd42385987630a0bd771ef33e07d2830484ac19e642899b` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |

@@ -162,6 +162,20 @@ whole single-TU `Run`; final-source original-bound two-TU Run remains
 owners pass **1,061/1,061**. Two lvalue Resolve* sources remain separate.
 [Source epoch and proof](evidence/ecl-indirect-read-native-stack-words-20261107/README.md).
 
+## 2026-11-07 ECL ResolveInt/ResolveFloat native 32-bit lvalue addresses
+
+The original ECL `ResolveInt` (58 bytes) and `ResolveFloat` (93 bytes)
+form writable VM stack lvalues by hardware i386 32-bit additions of the
+buffer, signed frame base and encoded script operand. Their maintained
+C++ uses corresponding unsigned word arithmetic before converting the
+result to the actual `EclVmScalar*`. This is separate from the earlier
+four scalar **read** helpers. Standalone VC7.1 source controls keep all
+six scalar leaves and the complete single-TU Run unchanged; installed
+reader+resolver current-source selected cold passes **1,197/1,197** across
+nine previously exact functions. Two-TU full Run remains **6,997/7,020**
+with **189** original fields, NONEXACT and zero new canonical credit.
+[Current evidence](evidence/ecl-indirect-resolve-native-stack-words-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids
