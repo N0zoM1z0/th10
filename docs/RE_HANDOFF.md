@@ -226,6 +226,13 @@ in the canonical exact scoreboard. No full historical replay was run.**
   fields). Four selected ECL exact leaves cold-pass **575/575**.
   [Proof](evidence/ecl-scpt-file-slot-native-words-20261107/README.md).
 
+- Enemy ECL `SET_ANM_SCRIPT` now uses native `EnemyNativeWordIndex` for
+  five script-provided VM ID slot accesses. Fresh current-source 11-TU
+  **14,352 candidate** with four unchanged neighbor bodies; original
+  **14,416 NONEXACT**. Selected exact ECL argument leaves **87/87**.
+  Combined ANM-resource + managed-ID codegen regressed one byte and was
+  rejected. [Evidence](evidence/enemy-ecl-anm-managed-slot-words-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -282,7 +289,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
-| `src/EnemyEclDispatcher.cpp` | `02f8994f45e4dc93e0d4865bbd23a6af8bd8960f12e8511bb62fe6dfdb455189` |
+| `src/EnemyEclDispatcher.cpp` | `b4933f1e40b4c1d6cae0af0228ad30e3589fb0196d57804f3c5a1be5e587f670` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |

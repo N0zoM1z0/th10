@@ -1489,7 +1489,7 @@ dispatch_create_enemy_mirrored:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->Release();
+    reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->Release();
     if ((int)uVar22 < 0) {
       return 0;
     }
@@ -1498,17 +1498,17 @@ dispatch_create_enemy_mirrored:
       AnmVmIdView createdVm =
           g_EnemyManager->loadedAnmResources[value0E8]->
               CreateVmVariant2((int)uVar22, 5);
-      managedVmIds[iVar26] = createdVm.value;
+      *EnemyNativeWordIndex(&managedVmIds[0], iVar26) = createdVm.value;
     }
-    uVar6 = managedVmIds[iVar26];
+    uVar6 = *EnemyNativeWordIndex(&managedVmIds[0], iVar26);
     if (iVar26 == 0) {
       uVar22 = ENEMY_READ_INT_DIRECT(1);
       value0F0 = (int)uVar22;
       value0EC = value0E8;
-      uVar6 = managedVmIds[iVar26];
+      uVar6 = *EnemyNativeWordIndex(&managedVmIds[0], iVar26);
     }
     iVar27 = reinterpret_cast<int>(
-        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
+        reinterpret_cast<AnmVmIdView *>(EnemyNativeWordIndex(&managedVmIds[0], iVar26))->GetVm());
     goto dispatch_update_primary_anm_bounds;
   case ENEMY_ECL_PLAY_ANM:
     uVar22 = ENEMY_READ_INT_DIRECT(0);

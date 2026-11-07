@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Enemy ECL managed ANM script slot words
+
+Opcode `SET_ANM_SCRIPT` now uses the real native 32-bit indexed VM ID
+address for release, publication, two reads and VM lookup. This avoids
+bounded C++ array pointer formation for an unchecked ECL operand.
+A fresh current eleven-TU native PDB build retains the full **14,352-byte
+candidate** and four neighboring owners with identical candidate field
+geometry/ordinary bytes. An attempted combination with ANM resource-bank
+indexing changed one byte and was rejected. Five selected original-bound
+Enemy ECL leaves cold-pass **87/87**. The original dispatcher remains
+**14,416 bytes, NONEXACT**, no new codegen credit.
+[Evidence](evidence/enemy-ecl-anm-managed-slot-words-20261107/README.md).
+
 ## 2026-11-07 native ECL 0x190/0x199 pattern index words
 
 The 14,416-byte target Enemy ECL dispatcher implements the 0x210-byte
