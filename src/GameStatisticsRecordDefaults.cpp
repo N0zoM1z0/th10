@@ -48,8 +48,12 @@ void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record)
         {
             *reinterpret_cast<int *>(activeByte - 4) = score;
             activeByte[0] = 1;
-            memcpy(activeByte + 2, g_GameStatisticsDefaultEntryName, 9);
+            // The retail copy consumes two 32-bit words and one final byte.
+            // Publish the independent extra word between those writes so
+            // VC7.1 retains the original source-name load schedule.
+            memcpy(activeByte + 2, g_GameStatisticsDefaultEntryName, 8);
             *reinterpret_cast<int *>(activeByte + 12) = 0;
+            activeByte[10] = g_GameStatisticsDefaultEntryName[8];
             activeByte[1] = 0;
             score -= 100000;
             activeByte += 24;

@@ -1,5 +1,18 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-07 statistics record default-name copy
+
+`InitializeGameStatisticsRecord` remains a **274-byte NONEXACT** owner. The
+new natural default-entry copy publishes eight bytes then the independent
+extra word and final name byte. A real one-TU VC7.1 `/GL /GS` cold preserves
+the full owner and all eight *identity*-verified source globals, while
+aligning **7/8 original positions** (previously4/8). In one common fixed
+230-position ordinary mask, differences decrease **75→36**. The second
+name-word load at candidate+0x50 versus target+0x53 and distinct cursor
+registers are unresolved. No canonical or authored exact credit.
+[Current proof](evidence/statistics-record-name-copy-schedule-20261107/README.md).
+
+
 ## 2026-11-07 complete finalizer 564-byte exact
 
 `GameFinalizeStatistics42B1E0` now builds **564/564 bytes exact** with all
