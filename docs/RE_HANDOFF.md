@@ -200,7 +200,10 @@ caller/escape/stand-in contexts confer no local exact credit. See the
 [review/crosswalk](evidence/upstream-th10-decomp-review-20261106/README.md).
 
 Other unaccepted leaves worth *new evidence-led* work: `CMemoryPbgFile::Seek`
-107/107 but 100 matching ordinary bytes; `AnmLoadedView::SetAndExecuteScriptIdx`
+107/107 but 100 matching ordinary bytes (its CURRENT/END cursor now uses
+explicit native Win32 unsigned-word addresses, with all original behavior
+and a **491/491** selected exact file-owner cold; see
+[evidence](evidence/resfile-seek-native-cursor-word-20261107/README.md)); `AnmLoadedView::SetAndExecuteScriptIdx`
 287/287 with about 22 instruction bytes differing; `EnemyEclHostBaseView::SetSubroutine`
 30/30 with register/ABI disagreement; `EnemyFullObjectView` ctor target
 673 vs native 672. The 20-TU `enemy-end-spell` replay can exceed execution

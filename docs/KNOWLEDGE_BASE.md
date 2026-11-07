@@ -46,6 +46,18 @@ identical to their prior source; five selected original-bound ECL leaves
 still pass **87/87**. **NONEXACT**, no new codegen credit.
 [Evidence](evidence/enemy-ecl-pattern-final-address-word-20261107/README.md).
 
+## 2026-11-07 memory-file Seek native address words
+
+The 107-byte memory-file Seek owner remains **100/107 raw bytes** (no
+external fields). Its FILE_CURRENT path may seek before the C++ allocated
+array start because the original only checks remaining bytes as signed;
+both CURRENT and END final cursor computations now use the original x86
+low 32-bit unsigned `DWORD` address sums before converting to `BYTE*`.
+Eighteen actual whole-function source address variants were compiled and
+rejected/byte-neutral. The selected installed source cold preserves ten
+previously exact file owners, **491/491**, zero new match credit.
+[Native proof](evidence/resfile-seek-native-cursor-word-20261107/README.md).
+
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
 `TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,

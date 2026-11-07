@@ -95,7 +95,7 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
         LONG remaining = (LONG)(m_Data + m_Size - m_Current);
         if (remaining <= signedOffset)
             return false;
-        position = m_Current + signedOffset;
+        position = reinterpret_cast<BYTE *>(reinterpret_cast<DWORD>(m_Current) + offset);
         break;
     }
     case FILE_END:
@@ -105,7 +105,7 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
         DWORD distance = signedOffset < 0 ? 0U - offset : offset;
         if (distance >= m_Size)
             return false;
-        position = m_Data + m_Size + signedOffset;
+        position = reinterpret_cast<BYTE *>(reinterpret_cast<DWORD>(m_Data) + m_Size + offset);
         break;
     }
     default:
