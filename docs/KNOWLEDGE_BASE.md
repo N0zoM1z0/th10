@@ -79,6 +79,19 @@ Start remains NONEXACT (original550). Installed-source scoped two-artifact
 cold replay protects exact Find136, ReadInt144, ReadFloat183 and HostRun146,
 **609/609**, no new exact owner. [Proof](evidence/ecl-start-subroutine-word-offset-20261107/README.md).
 
+## 2026-11-07 Enemy ECL pattern and counted spawn native word semantics
+
+18 real ECL expression sites now explicitly use i386 unsigned 32-bit
+intermediates for counted spawn inline-name bytes, 0x210-byte bullet-pattern
+strides/address formation and difficulty-rank additions. All signed
+consumers and branches remain. Four independent current-source 11-TU
+experiments plus installed-source PDB replay preserve the entire
+14,352-byte/716-candidate-field large dispatcher and four other native
+owners with zero candidate ordinary byte changes. Original dispatcher
+14,416 bytes remains nonexact, no target-field credit inferred. Selected
+five original-bound leaves remain **87/87** exact.
+[Full trial proof](evidence/enemy-ecl-spawn-pattern-index-words-20261107/README.md).
+
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
 `TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,

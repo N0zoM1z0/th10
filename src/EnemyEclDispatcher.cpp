@@ -1297,8 +1297,13 @@ int EnemyRuntimeView::DispatchEclInstruction()
     if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
       return 0;
     }
+  // Inline SCPT name byte counts are advanced by one native dword
+  // before division into scalar-operand slots.
   case ENEMY_ECL_CREATE_ENEMY:
-    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(
+            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+                ->spawnOperands.inlineNameByteCount) + 4u);
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     if ((flags & 0x40000) == 0) {
@@ -1344,7 +1349,10 @@ dispatch_spawn_enemy:
     }
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
 dispatch_create_enemy_absolute:
-    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(
+            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+                ->spawnOperands.inlineNameByteCount) + 4u);
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     fVar19 = (ReadRawFloatArgument((1), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->scalarOperands[iVar26].real)));
@@ -1361,7 +1369,10 @@ dispatch_create_enemy_absolute:
     goto dispatch_spawn_enemy;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET:
 dispatch_create_enemy_global:
-    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(
+            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+                ->spawnOperands.inlineNameByteCount) + 4u);
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     local_90.spawnRequest.position.x =
@@ -1392,7 +1403,10 @@ dispatch_create_enemy_global:
     break;
   case ENEMY_ECL_CREATE_ENEMY_MIRRORED:
 dispatch_create_enemy_mirrored:
-    iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(
+            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+                ->spawnOperands.inlineNameByteCount) + 4u);
     fVar9 = worldMotion.position.x;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
@@ -2146,6 +2160,8 @@ dispatch_difficulty_float_index_4_a:
     default:
       goto dispatch_complete;
     }
+  // Original i386 IMUL/ADD compute the low 32-bit pattern address even
+  // when script-provided indices overflow a signed C++ expression.
   case ENEMY_ECL_INITIALIZE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
@@ -2182,7 +2198,10 @@ dispatch_difficulty_float_index_4_a:
         (int)runtimeAddress + iVar27 * 4)->x + worldMotion.position.x;
     vectorScratch.y = reinterpret_cast<const PlayerFloat3 *>(
         (int)runtimeAddress + iVar27 * 4)->y + worldMotion.position.y;
-    iVar26 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView)) + (int)runtimeAddress;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
     vectorScratch.z = reinterpret_cast<const PlayerFloat3 *>(
         (int)runtimeAddress + iVar27 * 4)->z + worldMotion.position.z;
     EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionX = vectorScratch.x;
@@ -2202,7 +2221,10 @@ dispatch_difficulty_float_index_4_a:
     break;
   case ENEMY_ECL_SET_BULLET_SPRITES:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    iVar26 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView)) + (int)runtimeAddress;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     EnemyPatternAtRuntimeByte(iVar26)->fields.spriteId = static_cast<unsigned short>(uVar22);
     uVar22 = ENEMY_READ_INT_DIRECT(2);
@@ -2217,7 +2239,10 @@ dispatch_difficulty_float_index_4_a:
     return 0;
   case ENEMY_ECL_SET_BULLET_ANGLE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    iVar26 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView)) + (int)runtimeAddress;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
     fVar19 = (ReadFloatArgument(1));
     EnemyPatternAtRuntimeByte(iVar26)->fields.angleA = (float)fVar19;
     fVar19 = (ReadFloatArgument(2));
@@ -2225,11 +2250,17 @@ dispatch_difficulty_float_index_4_a:
     return 0;
   case ENEMY_ECL_SET_BULLET_SPEED:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    iVar26 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView)) + (int)runtimeAddress;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
     goto dispatch_bullet_speed_lowest;
   case ENEMY_ECL_SET_BULLET_COUNT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    iVar26 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView)) + (int)runtimeAddress;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     EnemyPatternAtRuntimeByte(iVar26)->fields.countA = (short)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(2);
@@ -2252,7 +2283,9 @@ dispatch_difficulty_float_index_4_a:
       }
     }
     fVar19 = ReadFloatArgument(speedIndex);
-    iVar26 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView));
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
     EnemyPatternAtRuntimeByte(iVar26 + (int)runtimeAddress)->fields.speedA = (float)fVar19;
     if (g_EnemyDifficulty == 0) {
       speedIndex = 5;
@@ -2287,7 +2320,10 @@ dispatch_difficulty_float_index_4_a:
       }
     }
     uVar23 = ENEMY_READ_INT_DIRECT(countIndex);
-    iVar26 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView)) + (int)runtimeAddress;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
     EnemyPatternAtRuntimeByte(iVar26)->fields.countA = (short)uVar23;
     if (g_EnemyDifficulty == 0) {
       countIndex = 5;
@@ -2320,7 +2356,8 @@ dispatch_bullet_speed_high:
       EnemyPatternAtRuntimeByte(iVar26)->fields.speedB = (float)fVar19;
       return 0;
     }
-    iVar27 = g_EnemyChapterState.rank + 0x200;
+    iVar27 = static_cast<int>(
+        static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x200u);
     goto dispatch_select_bullet_speed_low;
   case ENEMY_ECL_SET_BULLET_SPEED_BY_RANK_5:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -2348,7 +2385,8 @@ dispatch_bullet_speed_high:
       return 0;
     }
     if (g_EnemyChapterState.rank >= -200) goto dispatch_bullet_speed_high;
-    iVar27 = g_EnemyChapterState.rank + 600;
+    iVar27 = static_cast<int>(
+        static_cast<unsigned int>(g_EnemyChapterState.rank) + 600u);
 dispatch_select_bullet_speed_low:
     iVar26 = static_cast<int>(
           static_cast<unsigned int>(iVar26) *
@@ -2400,7 +2438,8 @@ dispatch_bullet_count_high:
       EnemyPatternAtRuntimeByte(iVar26)->fields.countB = (short)uVar22;
       return 0;
     }
-    iVar27 = g_EnemyChapterState.rank + 0x200;
+    iVar27 = static_cast<int>(
+        static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x200u);
     goto dispatch_select_bullet_count_low;
   case ENEMY_ECL_SET_BULLET_COUNT_BY_RANK_5:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -2434,7 +2473,8 @@ dispatch_bullet_count_high:
       return 0;
     }
     if (g_EnemyChapterState.rank >= -200) goto dispatch_bullet_count_high;
-    iVar27 = g_EnemyChapterState.rank + 600;
+    iVar27 = static_cast<int>(
+        static_cast<unsigned int>(g_EnemyChapterState.rank) + 600u);
 dispatch_select_bullet_count_low:
     iVar11 = reinterpret_cast<int>(owner);
     iVar26 = static_cast<int>(
@@ -2461,7 +2501,9 @@ dispatch_select_bullet_count_low:
     secondLowBulletCount = ENEMY_READ_INT_DIRECT(2);
     uVar24 = ENEMY_READ_INT_DIRECT(3);
     uVar25 = ENEMY_READ_INT_DIRECT(4);
-    iVar27 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView));
+    iVar27 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
     iVar26 = static_cast<int>((static_cast<unsigned int>(uVar24) -
         static_cast<unsigned int>(uVar23)) *
         (static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x400u));
@@ -2481,7 +2523,10 @@ dispatch_select_bullet_count_low:
     return 0;
   case ENEMY_ECL_SET_BULLET_SOUND:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    iVar26 = (int)uVar22 * static_cast<int>(sizeof(EnemyBulletPatternView)) + (int)runtimeAddress;
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     EnemyPatternAtRuntimeByte(iVar26)->fields.soundId = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(2);
@@ -3034,7 +3079,10 @@ dispatch_rank_int_low:
 dispatch_complete:
   return 0;
 dispatch_create_enemy_absolute_mirrored:
-  iVar26 = reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.inlineNameByteCount + 4;
+  iVar26 = static_cast<int>(
+        static_cast<unsigned int>(
+            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+                ->spawnOperands.inlineNameByteCount) + 4u);
   iVar26 /= 4;
   memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
   fVar19 = (ReadRawFloatArgument((1), (reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->scalarOperands[iVar26].real)));

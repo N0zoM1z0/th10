@@ -85,6 +85,17 @@ Init396/FadeIn133/Delete26/DrawScreen134 bytes; zero new exact credit.
 [Latest code and proof](evidence/transition-envelope-shared-second-limit-20261107/README.md);
 [earlier recovery](evidence/transition-envelope-pause-x87-20261107/README.md).
 
+**Current Enemy ECL pattern/spawn word correction:** the giant
+`DispatchEclInstruction` now also evaluates five inline script-name count
+advances, nine byte-stride products/addresses, and four rank-bias expressions
+through 32-bit unsigned words, retaining native signed consumers. Four
+separate real 11-TU source variants plus the installed formatted source
+preserve complete **14,352-byte/716-candidate-field** geometry and four
+additional owner bodies byte-identically; selected original-bound ECL
+argument leaves remain **87/87** exact. The target is still **14,416 bytes**;
+this is **NONEXACT and zero new credit**.
+[Compiler experiments and field evidence](evidence/enemy-ecl-spawn-pattern-index-words-20261107/README.md).
+
 **Current Enemy ECL native pointer-word correction:** both shared
 pattern/overlapping-extra record addressing helpers now add their typed
 record offset as unsigned 32-bit i386 words, eliminating signed C++
@@ -243,7 +254,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EclVm.cpp` | `da854e5838cebc2ee834796bdec88b136a87614496dda34f5a2bdaf88ed09e4f` |
 | `src/EclVm.hpp` | `b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
-| `src/EnemyEclDispatcher.cpp` | `d370613afd9e6979897737e85b2156f70c1120d37bdcbd3cda265228968e40cd` |
+| `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |
 | `src/Enemy.cpp` | `c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
