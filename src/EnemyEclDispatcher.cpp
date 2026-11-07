@@ -800,6 +800,13 @@ struct EnemySoundCueMetadataView
     short cueValue;
 };
 
+// Sound IDs come from ECL, not a checked host array index. The original
+// i386 lookup multiplies the signed ID as one 32-bit word and reads the
+// 0x06 cue halfword of an 8-byte metadata record.
+typedef char EnemySoundCueNativeRecordLayout[
+    (sizeof(EnemySoundCueMetadataView) == 8 &&
+     offsetof(EnemySoundCueMetadataView, cueValue) == 6) ? 1 : -1];
+
 
 
 extern EnemySoundCueMetadataView g_EnemySoundCueMetadata[];
@@ -807,7 +814,7 @@ extern EnemySoundCueMetadataView g_EnemySoundCueMetadata[];
 void EnemySoundQueueView::QueueSoundCue(int soundId, float positionX)
 {
     float scaledPosition = positionX * 5.208333492279053f;
-    int cueValue = g_EnemySoundCueMetadata[soundId].cueValue;
+    int cueValue = EnemyNativeWordIndex(g_EnemySoundCueMetadata, soundId)->cueValue;
     int sample = static_cast<int>(scaledPosition);
     int slot = 0;
     while (slot < 12) {
@@ -828,14 +835,14 @@ void EnemySoundQueueView::QueueSoundCue(int soundId, float positionX)
     }
     if (slot < 12) {
         activeSoundIds[slot] = soundId;
-        cueValues[soundId] = cueValue;
+        *EnemyNativeWordIndex(&cueValues[0], soundId) = cueValue;
         samples[slot][0] = sample;
         ++sampleCounts[slot];
     }
 }
 void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
 {
-    int cueValue = g_EnemySoundCueMetadata[soundId].cueValue;
+    int cueValue = EnemyNativeWordIndex(g_EnemySoundCueMetadata, soundId)->cueValue;
     int slot = 0;
     while (slot < 12) {
         int activeId = activeSoundIds[slot];
@@ -855,7 +862,7 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
     }
     if (slot < 12) {
         activeSoundIds[slot] = soundId;
-        cueValues[soundId] = cueValue;
+        *EnemyNativeWordIndex(&cueValues[0], soundId) = cueValue;
         samples[slot][0] = sample;
         ++sampleCounts[slot];
     }

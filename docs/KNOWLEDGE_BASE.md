@@ -9,6 +9,17 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Enemy sound-queue unchecked native index words
+
+Both `EnemySoundQueueView` sound handlers now address unbounded ECL `soundId`
+metadata (8-byte records, cue at +6) and cue-publishing slots through
+native modulo-32-bit typed word indices instead of C++ out-of-array
+indexing. The selected current-source canonical cold replay preserves the
+already exact `QueueSoundSample` **123/123** and `QueueSoundCue` **149/149**,
+with all four original-bound fields. No new exact owner is claimed, and
+the larger ECL dispatcher remains nonexact.
+[Evidence](evidence/enemy-sound-queue-native-words-20261107/README.md).
+
 ## 2026-11-07 ECL SCPT sorted subroutine native record words
 
 `AddScriptData` now computes unchecked eight-byte SCPT sorted-record
