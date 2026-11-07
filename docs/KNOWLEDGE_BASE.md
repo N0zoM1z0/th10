@@ -23,6 +23,18 @@ were rejected. Selected preaccepted original-bound Enemy argument leaves
 cold-pass **87/87**; boss is still NONEXACT and 64 bytes short.
 [Evidence](evidence/enemy-ecl-pattern-clear-native-step-20261107/README.md).
 
+## 2026-11-07 Enemy ECL 528-byte pattern clearing native cursor
+
+An uncommitted Enemy ECL source change was kept, investigated and verified
+rather than discarded: its `0x84`-dword pattern-clear pointer now advances
+with the native modulo-32-bit address arithmetic. Original target
+`DispatchEclInstruction +0x19DE` has `REP STOSD` after `LEA EDI,[EDX+0x2C4]`.
+Fresh eleven-input current-source compilation preserves the complete
+14,352-byte **nonexact** dispatcher candidate and all 716 candidate field
+positions, plus four neighboring owners. Five original-bound related
+ECL leaves pass **87/87**; the original dispatcher is still **14,416 bytes**.
+[Evidence](evidence/enemy-ecl-pattern-clear-stos-word-20261107/README.md).
+
 ## 2026-11-07 Enemy sound-queue negative sample-count native words
 
 The two sound queue handlers check only `count >= 128`; a negative
