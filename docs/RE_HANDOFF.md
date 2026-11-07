@@ -47,6 +47,12 @@ the same source/build-graph epoch as the current six-source canonical image.
 [Full finalizer proof](evidence/game-statistics-finalize-exact-20261107/README.md)
 and [current caller proof](evidence/statistics-record-real-caller-20261107/README.md).
 
+**Current loader word-shift correction:** `Load42B030` now uses the
+native modulo-32-bit `SHL 2` on the header's uncompressed-size word.
+The selected six-source cold keeps loader423, finalizer564 and tail142 exact
+(1,129/1,129); this adds no new exact credit.
+[Source and proof](evidence/game-statistics-alloc-word-wrap-20261107/README.md).
+
 **Immediate open statistics work:** the constructor still emits **137 bytes
 vs original 132**, factory **98 vs 97**, and record defaults **274 vs 274
 but NONEXACT**. `GameStatisticsOwner` originally receives owner in **EAX**
@@ -180,7 +186,7 @@ receipts are ignored private files, not Git attachments.
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |
-| `src/GameStatisticsLoad.cpp` | `5e553e651f61a9eb4f85573ca292264c8a31805686e7bb68a514466d9b6dbb6d` |
+| `src/GameStatisticsLoad.cpp` | `684dec01a9689775f71146085bd13ce83f1319d7291b6986005af0a5fbb0d9a0` |
 | `src/GameStatisticsRecordDefaults.cpp` | `2c0c4d290118b9a65a781fef030825b07b89dde090a24cbc1252c200cf3173df` |
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
 | `src/ReplayManager.cpp` | `7c6a50d945a9c83f694bda661880d9211b29b1970c99a8a4ddd4844dab6fcaf3` |
