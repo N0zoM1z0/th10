@@ -22,6 +22,21 @@ previously exact Sound units **2212/2212** and all 70 target-bound fields.
 No new exact-owner credit, whole-game build, or runtime claim.
 [Evidence](evidence/sound-bgm-native-index-words-20261107/README.md).
 
+## 2026-11-07 Sound BGM native preload and format slot words
+
+The existing typed low-32-bit `SoundWordSlot` now replaces unchecked BGM
+format table indexing in `ReopenBgm` and five preload/filename data slots
+in `LoadBgm`. Seven independently recompiled real Sound+ZWave two-TU
+source variants preserve complete current-source `LoadBgm` **304-byte
+nonexact** candidate and all 12 candidate field positions. In the same
+graph `PreloadBgm` remains **369 bytes / 325 of 329 comparable ordinary
+original bytes** with ten original-bound fields (365/369 normalized total),
+while original-bound `ReopenBgm` **55/55** and `ProcessQueues`
+**1,452/1,452** stay exact. Selected installed-source replay passes
+**2,034/2,034** Sound bytes plus a separate **178/178** WAV guard. No
+new exact owner or unchecked index repair.
+[Evidence](evidence/sound-bgm-native-slots-20261107/README.md).
+
 ## 2026-11-07 Sound WAV loader native file and byte address words
 
 The full **684-byte** `LoadSoundSample` now forms unchecked `soundBuffers`
