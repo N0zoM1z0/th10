@@ -35,6 +35,19 @@ previously exact Sound units **2212/2212** and all 70 target-bound fields.
 No new exact-owner credit, whole-game build, or runtime claim.
 [Evidence](evidence/sound-bgm-native-index-words-20261107/README.md).
 
+## 2026-11-07 Sound command queue native 0x10C-byte shift cursor
+
+In complete already exact 1,452-byte `ProcessQueues`, the command removal
+loop now uses the existing typed low-32-bit `SoundWordSlot(command,1)` for
+both the shifting source and the advancing destination. Five separate
+full native two-TU source trials, including the installed combined form,
+preserve **1,452/1,452 original bytes and 43/43 original-bound fields**.
+Current-source selected cold replay retains **2,034/2,034** Sound bytes
+and **178/178** WAV exact guards. The new independent 298/298 target-
+bound `LoadBgm` candidate remains separately subject to canonical
+admission; the shift itself adds no new exact codegen owner.
+[Evidence](evidence/sound-process-queue-native-shift-20261107/README.md).
+
 ## 2026-11-07 Sound BGM native preload and format slot words
 
 The existing typed low-32-bit `SoundWordSlot` now replaces unchecked BGM

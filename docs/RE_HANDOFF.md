@@ -99,6 +99,17 @@ EnemyRuntimeUpdate (2,371 candidate / 2,412 original) and callback
 (606 / 593) remain NONEXACT, with zero candidate ordinary differences and
 unchanged candidate field geometry. [Evidence](evidence/enemy-interpolation-timer-words-20261107/README.md).
 
+## Native Sound command shift cursor (2026-11-07)
+
+The 1,452-byte `ProcessQueues` exact owner now uses typed native 32-bit
+address words for both 0x10C-byte record cursor increment and one-next
+`memcpy` source in its command removal loop. Five real Sound/ZWave
+full-extent trials and independent current-source original-bound cold
+replay retain **1,452/1,452 / 43 target links**; selected Sound guards
+**2,034/2,034**, WAV guards **178/178**. The new `LoadBgm` complete
+**298/298 / 12 target fields** remains intact after this change, with
+ledger admission separate. [Evidence](evidence/sound-process-queue-native-shift-20261107/README.md).
+
 ## BGM format and preloaded table native indices (2026-11-07)
 
 The previously exact **55-byte** ReopenBgm now uses a typed Win32
@@ -394,7 +405,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletTransform.cpp` | `05a488b848b78fd97561676973f2e02619d7e28fe403150e59da1e55cf309e24` |
 | `src/BulletManager.cpp` | `9a0f09a620cf03e38105fdc14e11baca9ae40e59444540286032862f08075348` |
-| `src/Sound.cpp` | `c9f816245e17781f3221019d7a8d88962e769760e647b77b8fb94a9493d837ed` |
+| `src/Sound.cpp` | `977faf3e332e03a8d1ef3200a1cfd047147c464b6b9f295d243e4aed5ce2bc02` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |

@@ -973,11 +973,11 @@ process_command:
         break;
 
     remove_command:
-        for (int i = 0; i < 31; ++i, ++command)
+        for (int i = 0; i < 31; ++i, command = SoundWordSlot(command, 1))
         {
             if (command->opcode == SOUND_COMMAND_NONE)
                 break;
-            memcpy(command, command + 1, sizeof(*command));
+            memcpy(command, SoundWordSlot(command, 1), sizeof(*command));
         }
         if (processNext)
             goto process_command;
