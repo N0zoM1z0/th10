@@ -78,7 +78,7 @@ The real `__stdcall` record callee is now linked instead of a stand-in.
 and x87 amplitude stack home, then named the second-stage unsigned boundary
 for reuse in both comparisons. The source-present candidate progresses from
 297 → 352 → **350 bytes**, against original **349**, with **16/16 actual
-code-reference identities and 14/16 original positions**. Register allocation,
+code-reference identities and 13/16 original positions**. Register allocation,
 Y-store encoding and one-byte extent gap remain NONEXACT. A fresh selected
 14-TU original-bound cold protects **689/689** previously exact
 Init396/FadeIn133/Delete26/DrawScreen134 bytes; zero new exact credit.
@@ -172,7 +172,7 @@ confirmed authored code.
 | `GameStatisticsOwner::GameStatisticsOwner @0x0042AE60` / `CreateStatistics42AF20 @0x0042AF20` | **132 / 137**; **97 / 98** | **Both NONEXACT.** Original ctor EAX owner/RET; native candidate stack owner/RET4, even after resolving its actual record initializer. Explicit `__fastcall`/`__cdecl` constructor annotations are byte-neutral; VC7.1 disallows explicit `__thiscall` for this declaration. Six-TU current-source selected guards1129 and destructor45 exact. Revisit real caller ABI/context, not artificial register-forcing. [Real caller/guard proof](evidence/statistics-record-real-caller-20261107/README.md). |
 | `InitializeGameStatisticsRecord @0x0042ACB0` | **274 / 274** | Earlier natural110-iteration rank-kind loop restored size274/8 fields but had only4/8 original field offsets. The current **split 8+1 name copy with extra word between** remains size274, validates all eight referenced original data identities and now aligns **7/8 original field positions**. Under the same 230-byte diagnostic ordinary comparison mask, differences drop **75→36**; name dword2 is still `+0x50` rather than original `+0x53`. **NONEXACT; zero credit**. Constructor now resolves its actual six-source `__stdcall` call, with selected exact1129 still passing ([real caller](evidence/statistics-record-real-caller-20261107/README.md)). [Current copy proof](evidence/statistics-record-name-copy-schedule-20261107/README.md); [prior loop](evidence/statistics-record-natural-loop-20261106/README.md). |
 | `TransitionShakeLinear @0x0043C550` | **439 / 439** | Fresh existing14-input `/GL` graph: **412/439**, **20/20 original-bound fields**. `FIDIV` is at +0xB6 instead of target +0xCE. Named float-product controls (outer conversion; then explicit inner/outer conversions) both move it to +0xAA and displace two fields; rejected/restored. Initializer396/all37 guard passes from the restored-source baseline image. [Reference review and pins](evidence/upstream-th10-decomp-review-20261106/README.md#local-camera-experiment). |
-| `TransitionShakeEnvelope @0x0043C710` | **349 original / 350 current candidate** | Original pause SHR/OR/test and x87 float stack home retained; the named shared unsigned second-stage boundary improves the full PDB extent 352→350 and aligns 14/16 code-field positions. One-byte size and register schedule remain nonexact. Current selected original-bound cold protects Init396/FadeIn133/Delete26/DrawScreen134 **689/689**, **zero new credit**. [Latest proof](evidence/transition-envelope-shared-second-limit-20261107/README.md). |
+| `TransitionShakeEnvelope @0x0043C710` | **349 original / 350 current candidate** | Original pause SHR/OR/test and x87 float stack home retained; the named shared unsigned second-stage boundary improves the full PDB extent 352→350 and aligns **13/16** independently decoded original field positions; original game-pointer +17 vs candidate +16, Y positive +12D vs +12E and Y zero +13B vs +13C. One-byte size and register schedule remain nonexact. Current selected original-bound cold protects Init396/FadeIn133/Delete26/DrawScreen134 **689/689**, **zero new credit**. [Latest proof](evidence/transition-envelope-shared-second-limit-20261107/README.md). |
 | `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** two-TU `/GL /GS` measures **138/157**, zero fields; EAX/ECX receiver/count/selector choice accounts for19 differences. Separate pitch capture/multiply is byte-neutral in normal COFF112/157 and GL138/157; restored. Current installed signed-overflow-free text row and geometry words preserve all ordinary codegen; fresh GL/GS still measures138/157 and selected exact text owners1799/1799 pass ([native proof](evidence/text-native-word-geometry-20261106/README.md)). An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Private proofs: `.analysis/gpt-web/20261106-text-current-exact/` and `.analysis/gpt-web/20261106-text-alpha-owner/`. |
 
 Updated external reference: `_reference/th10-decomp-d1f3121` preserves the
@@ -206,7 +206,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EclVm.cpp` | `5c47304faae61c3ecb51fe31f8574d80a1dfaa710088c7d7d8cc6ba6110084de` |
 | `src/EclVm.hpp` | `b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
-| `src/EnemyEclDispatcher.cpp` | `83b6f1c4f837318c741d3811229936cdc7f8ecd778bf5ae06edb3a3fadc38394` |
+| `src/EnemyEclDispatcher.cpp` | `d370613afd9e6979897737e85b2156f70c1120d37bdcbd3cda265228968e40cd` |
 | `src/Enemy.cpp` | `c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
@@ -223,7 +223,7 @@ receipts are ignored private files, not Git attachments.
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
 | `src/ReplayManager.cpp` | `7c6a50d945a9c83f694bda661880d9211b29b1970c99a8a4ddd4844dab6fcaf3` |
 | `src/TextRenderer.cpp` | `2e95a09f2ea5f0aef8fe3b22f487fce776ea4ae5a918606f464ebf6a4e2c0cc4` |
-| `src/TransitionEffect.cpp` | `ced15f2a50427bf46255fe0773d2395859411e382d37279cbc3753816193e63b` |
+| `src/TransitionEffect.cpp` | `711fb19a08a7bdfa45cd600a8f3bb82af5d2c90f3292d214e91e63e3625ebcd8` |
 
 Preferred current native witnesses (only if the source pin matches):
 

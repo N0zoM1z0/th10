@@ -38,19 +38,35 @@ compiled the real `TransitionEffect.cpp` input under pinned VC7.1 SP1
 changed source yields a complete **350-byte** callback and all **16**
 code-address fields. Independently reviewed original field positions are:
 
-`+02,+16,+43,+6A,+94,+A9,+B8,+C5,+DC,+E8,+F0,+FE,+103,+120,+12D,+13B`.
+`+02,+17,+43,+6A,+94,+A9,+B8,+C5,+DC,+E8,+F0,+FE,+103,+120,+12D,+13B`.
 
-Current candidate positions are identical through **14 of 16** fields;
-the two final Y-displacement store references are at `+12E` and `+13C`
-instead of original `+12D` and `+13B`. Each field still resolves to the
-same intended source/global/CRT/RNG identity in matching order. The
+**Correction after independent original-byte decode:** the previous source
+note listed `+16` as the original game-manager global. The actual target
+instruction at original offset `+15` is `8B 0D 10 78 47 00`,
+`MOV ECX,[0x00477810]` with its DIR32 field at **`+17`**. The compiled
+candidate is `A1 40 06 43 00`, `MOV EAX,[g_ResultGameManager]`,
+with its field at **`+16`**. Moreover, original Y positive publication
+is the one-byte direct-accumulator opcode `A3`, field at **`+12D`**,
+whereas the candidate uses the two-byte `89 15` store through EDX, field
+at **`+12E`**. Its following Y zero-store field is original **`+13B`**,
+candidate **`+13C`**. Thus **13/16**, not 14/16, positions align.
+The other thirteen field identities and locations are unchanged. Each
+field still resolves to the corresponding intended source/global/CRT/RNG
+identity, but this is NONEXACT, not a masked partial acceptance. The
 remaining mismatches include register selection and code scheduling;
 field-position alignment alone does not prove machine-code exactness.
 
 Other compiled natural spellings using a `const` game-manager pointer,
 read-only member reference, X/Y byte-wise `memcpy`, bit word access,
 explicit nested second-limit scope, and an alternative float numerator
-were rejected or code-neutral. One isolated Wine link produced a page
+were rejected or code-neutral. Five further current-source variations
+placed the shared secondBound assignment inside the middle-phase test,
+snapshotted the game pointer, or used a volatile game-manager pointee.
+The four non-volatile cases kept the full **350-byte/16-field** candidate
+unchanged in size and field positions; the volatile-pointee case emitted
+**352 bytes**. None removes the three remaining field-location mismatches,
+and all temporary source edits were restored. The actual trial reports
+are recorded in the same `results.json` and PE/PDB directories. One isolated Wine link produced a page
 fault and is recorded as failure, not recast as a successful native build.
 All unselected source trials were restored; the 350-byte form is installed.
 
