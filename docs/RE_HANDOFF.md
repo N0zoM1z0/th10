@@ -212,6 +212,16 @@ combination. The installed selected combination preserves the **complete
 previously exact bytes in an eight-unit selected native cold. No new exact
 credit. [Source/trial evidence](evidence/ecl-format-native-word-cursors-20261107/README.md).
 
+**Current ECL CALL pointer-word addresses:** the 551-byte candidate
+`StartSubroutine` now uses unsigned i386 address words for the destination
+argument pointer, +4 cursor advances, three typed metadata reads and the
+saved caller frame slot. Seven genuine two-TU C++ trials preserve the entire
+551-byte/four-field candidate and **6,997/7,020**, **189/189** original-bound
+Run boss. Installed-source eight selected exact leaves/host owners cold-pass
+**1,081/1,081**; original StartSubroutine is still **550 bytes, NONEXACT**.
+**Zero new exact credit.**
+[Source, trials and field proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -332,7 +342,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
-| `src/EclVm.cpp` | `918aa4be269e7d60635cc267da980b9b99182990352651882a2c340cde556481` |
+| `src/EclVm.cpp` | `40d43d41bddcb6daa0a1bdec9d6515f498b06114d30776f056a6f0e74ab5ee46` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |

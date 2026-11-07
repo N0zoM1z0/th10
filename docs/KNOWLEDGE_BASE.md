@@ -116,6 +116,17 @@ combination preserves **6,997/7,020** original bytes and **189 fields**;
 eight scoped exact owners remain **1,037/1,037**. Still NONEXACT, zero new
 canonical credit. [Native result](evidence/ecl-format-native-word-cursors-20261107/README.md).
 
+## 2026-11-07 ECL CALL native script/stack address words
+
+The 551-byte nonexact `EclVmContext::StartSubroutine` now uses actual Win32
+low-32-bit unsigned address addition for the VM argument stack, per-argument
++4 cursor progression, tagged metadata byte positions and saved frame word.
+Seven complete real two-TU compiler variants preserve its 551-byte/four-
+field candidate code exactly and the independently original-bound **Run
+6,997/7,020** with **189** target fields. Installed-source eight related
+exact owners cold-pass **1,081/1,081**; neither large function gains any
+canonical exact credit. [Proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

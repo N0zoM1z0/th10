@@ -571,9 +571,13 @@ int EclVmContext::StartSubroutine(
     {
         unsigned int valueOffset = metadataOffset +
             static_cast<int>(offsetof(EclVmCallArgumentView, integer));
-        unsigned char *argument = destination->stack.data + argumentOffset;
+        unsigned char *argument = reinterpret_cast<unsigned char *>(
+            reinterpret_cast<unsigned int>(destination->stack.data) +
+            static_cast<unsigned int>(argumentOffset));
         for (; argumentIndex < (*callerInstruction)->operandCount;
-             argument += sizeof(int), ++argumentIndex,
+             argument = reinterpret_cast<unsigned char *>(
+                 reinterpret_cast<unsigned int>(argument) + sizeof(int)),
+             ++argumentIndex,
              valueOffset += sizeof(EclVmCallArgumentView),
              metadataOffset = static_cast<int>(
                  static_cast<unsigned int>(metadataOffset) +
@@ -581,7 +585,9 @@ int EclVmContext::StartSubroutine(
         {
             const char sourceType =
                 reinterpret_cast<const EclVmCallArgumentView *>(
-                    (*callerInstruction)->operands + metadataOffset)->sourceType;
+                    reinterpret_cast<const unsigned char *>(
+                    reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
+                    static_cast<unsigned int>(metadataOffset)))->sourceType;
 
             if (sourceType == 'f' || sourceType == 'g')
             {
@@ -590,7 +596,9 @@ int EclVmContext::StartSubroutine(
                     (*callerInstruction)->scalarOperands[valueOffset / sizeof(int)].integer;
                 value.real = ReadFloatValue(argumentIndex, caller, value.real);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
-                    (*callerInstruction)->operands + metadataOffset)->destinationType == 'f')
+                    reinterpret_cast<const unsigned char *>(
+                    reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
+                    static_cast<unsigned int>(metadataOffset)))->destinationType == 'f')
                     reinterpret_cast<EclVmScalar *>(argument)->real = value.real;
                 else
                     reinterpret_cast<EclVmScalar *>(argument)->integer =
@@ -604,7 +612,9 @@ int EclVmContext::StartSubroutine(
                 value.integer = caller->ReadIntValue(
                     argumentIndex, value.integer);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
-                    (*callerInstruction)->operands + metadataOffset)->destinationType != 'f')
+                    reinterpret_cast<const unsigned char *>(
+                    reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
+                    static_cast<unsigned int>(metadataOffset)))->destinationType != 'f')
                     reinterpret_cast<EclVmScalar *>(argument)->integer = value.integer;
                 else
                     reinterpret_cast<EclVmScalar *>(argument)->real =
@@ -619,8 +629,9 @@ int EclVmContext::StartSubroutine(
         destination->stack.Pop(0, sizeof(preservedValue), &preservedValue);
         destination->stack.stackTop = previousTop;
         reinterpret_cast<EclVmStackSavedWordView *>(
-            destination->stack.data + previousTop -
-            static_cast<int>(sizeof(EclVmStackSavedWordView)))->value =
+            reinterpret_cast<unsigned int>(destination->stack.data) +
+            static_cast<unsigned int>(previousTop) -
+            static_cast<unsigned int>(sizeof(EclVmStackSavedWordView)))->value =
                 preservedValue;
         destination->stack.Push(
             0, sizeof(caller->currentTime), &caller->currentTime);
