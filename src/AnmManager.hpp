@@ -403,15 +403,18 @@ struct AnmRawInstructionView
 
     // The ANM instruction stream uses byte sizes, not sizeof(record).
     // Leave the target's variable-length traversal and sentinel handling intact.
+    // i386 computes low 32-bit address words for both the instruction size
+    // and signed relative branch distances, including backward jumps.
+    // Do not rely on C++ pointer arithmetic outside a single record.
     AnmRawInstructionView *Next()
     {
         return reinterpret_cast<AnmRawInstructionView *>(
-            reinterpret_cast<unsigned char *>(this) + size);
+            reinterpret_cast<unsigned int>(this) + static_cast<unsigned int>(size));
     }
     AnmRawInstructionView *AtByteOffset(int offset)
     {
         return reinterpret_cast<AnmRawInstructionView *>(
-            reinterpret_cast<unsigned char *>(this) + offset);
+            reinterpret_cast<unsigned int>(this) + static_cast<unsigned int>(offset));
     }
 };
 

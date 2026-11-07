@@ -139,6 +139,18 @@ fields. Six selected current-source exact owners cold-pass 904/904.
 No new canonical codegen credit.
 [Evidence](evidence/ecl-serialized-script-native-address-20261107/README.md).
 
+## 2026-11-07 ANM variable-length script native byte addresses
+
+The two `AnmRawInstructionView` address helpers now use the actual
+Win32 low-32-bit word addition for serialized variable-size instruction
+traversal and negative relative script jump offsets. Four genuine pinned
+five-TU native controls plus a separate installed-source cold keep the
+whole ANM executor **9,962/9,964** with **350 original fields**. Seventeen
+natural opcode-91 compiler-register variants still fail to remove the
+EDX/ECX two-byte mismatch; rejected and restored. Seven affected previous
+exact ANM helpers replay **1,037/1,037**. No new exact credit.
+[Native proof](evidence/anm-variable-stream-native-address-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

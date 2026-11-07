@@ -233,6 +233,16 @@ six selected exact owners original-bound cold-pass **904/904**. No new
 canonical exact credit.
 [Full source and real native proof](evidence/ecl-serialized-script-native-address-20261107/README.md).
 
+**Current ANM variable-stream address words:** `AnmRawInstructionView`
+now computes both encoded `Next()` and signed relative-jump byte addresses
+as low 32-bit Win32 words, preserving native negative branch displacements.
+Four genuine fresh VC7.1 SP1 five-TU native control builds plus installed
+final-source cold preserve the **complete 9,962/9,964** `ExecuteScript`
+with **350/350** original target fields. Seventeen additional opcode-91
+register-lifetime variants still do not solve the two ECX/EDX bytes.
+Selected seven exact helpers cold-pass **1,037/1,037**. No new exact credit.
+[Complete current-source proof](evidence/anm-variable-stream-native-address-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -352,7 +362,7 @@ receipts are ignored private files, not Git attachments.
 | `src/GameStatistics.cpp` | `dc31f5c888d68d363571a74457ed3da000c2a36386e790cd9234b0798c229666` |
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
-| `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
+| `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
 | `src/EclVm.cpp` | `83cbd5227e9b366181970dbd2cceb6ceaeabfde056c7c8cdda3a5744900fc70b` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
