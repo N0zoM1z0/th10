@@ -89,7 +89,7 @@ changed/affected units. For storage transfer, see [RE_ARTIFACTS.md](RE_ARTIFACTS
 
 As of this source checkpoint, [PROGRESS.md](PROGRESS.md) reports **1,829
 reviewed function boundaries**, **1,309 source-present mappings**,
-**1,496 complete exact functions / 195,808 original bytes**, including
+**1,497 complete exact functions / 195,834 original bytes**, including
 **587 confirmed-authored exact / 125,718 bytes**. There are **163 authored
 source-present nonexact** functions. Original author/source provenance is
 not interchangeable with a reconstructed function's exact codegen. Product
@@ -100,6 +100,7 @@ Recent *accepted* full owners (replay only one affected cohort when needed):
 
 | Exact original owner | Strict acceptance | Evidence |
 | --- | --- | --- |
+| `TransitionDelete @0x0043C870` | **26/26**, two complete original-bound calls, unique internal static PDB contribution; two independent 14-TU colds; initializer396 same-image guard exact; **authorship indeterminate** | [complete static callback](evidence/transition-delete-26-exact-20261107/README.md) |
 | `GameFinalizeStatistics42B1E0 @0x0042B1E0` | **564/564**, 24/24 original-bound fields; two independent unchanged-finalizer five-TU colds and a newer **six-TU** current-source canonical 1129/1129 across finalizer564/loader423/tail142; same-image destructor45 exact | [complete finalizer](evidence/game-statistics-finalize-exact-20261107/README.md); [six-TU caller](evidence/statistics-record-real-caller-20261107/README.md) |
 | `AnmRenderManagerView::RequestCaptureRectangle @0x00424480` | 162/162, six target-bound fields; two independent real FrontEnd/VmIdInterrupt/AnmManager three-TU colds; same-image FindVm73 and result close89 exact | [capture rectangle](evidence/anm-capture-rectangle-exact-20261106/README.md) |
 | `EndingTextVmView::Run @0x0040BD80` | 1568/1568; 92/92 fields; 53 direct locals and all18 owned table words; independent 21-input cold; existing guards953/all24 pass | [ending execution](evidence/ending-run-1568-exact-20261106/README.md) |
@@ -171,10 +172,10 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `e4c4e24b4e7c3879e2a88265c161867a3ea8db5dcfe6d9abc6bf0d833beb0707` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
-| `src/EclVm.cpp` | `3b4af08fec32d38a1323575365bdbbb9e211afef25adfc1d0ad6de881ebc8c7b` |
+| `src/EclVm.cpp` | `77bc52b1d4eef5e1853c4a982e5f5be34b3577f1b631d43e58f8719d5ed633bf` |
 | `src/EclVm.hpp` | `b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
-| `src/EnemyEclDispatcher.cpp` | `7d30a9b073172e0e1867972a0530d92400a9f6f432d81c17214e815b71e31471` |
+| `src/EnemyEclDispatcher.cpp` | `83b6f1c4f837318c741d3811229936cdc7f8ecd778bf5ae06edb3a3fadc38394` |
 | `src/Enemy.cpp` | `c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
@@ -186,7 +187,7 @@ receipts are ignored private files, not Git attachments.
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |
-| `src/GameStatisticsLoad.cpp` | `684dec01a9689775f71146085bd13ce83f1319d7291b6986005af0a5fbb0d9a0` |
+| `src/GameStatisticsLoad.cpp` | `788036ed9a8881282db93f878bb2b899dd949b3c268bd45f5a7591e402650ce8` |
 | `src/GameStatisticsRecordDefaults.cpp` | `2c0c4d290118b9a65a781fef030825b07b89dde090a24cbc1252c200cf3173df` |
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
 | `src/ReplayManager.cpp` | `7c6a50d945a9c83f694bda661880d9211b29b1970c99a8a4ddd4844dab6fcaf3` |
