@@ -76,6 +76,17 @@ stage orchestration) are indexed in
 **rebuild or verify its full source/header graph**: isolated sizes can differ
 from integrated canonical graphs even when source is unchanged.
 
+## Player shot option table continuation
+
+`PlayerShotSetOptionOrigin @0x00428C20` now addresses unchecked
+signed-byte `sourceIndex` records through a native modulo-32-bit
+`0x98`-stride word, and `Enemy.hpp` explicitly includes the ANM vector
+layout that its assertions use. Seven source variants preserve the
+**122-byte normal-COFF candidate vs original 125**, still **NONEXACT**.
+Current-source selected exact PlayerShot 53+80 and ECL host 146
+replay **279/279** original bytes in three scoped artifacts. No new
+exact credit. [Evidence](evidence/player-shot-option-native-word-20261107/README.md).
+
 ## Current 2026-11-07 source-only closure since the older checkpoint
 
 - **Enemy ECL giant (14,416 target / 14,352 native)**: direct original
@@ -330,7 +341,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
 | `src/EnemyEclDispatcher.cpp` | `cebadf0dd493c970699b98b371ebd9792d1dd3c51c26fe49cdc591df0e0d581f` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
-| `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
+| `src/Enemy.hpp` | `5b5f601a642ee0f0c7eedeaa4ad6a26d02851a2010239b2fe44ab54067c46e98` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |

@@ -9,6 +9,18 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Player shot option indexed native record words
+
+The signed byte shot `sourceIndex` addresses a `0x98`-byte Player option
+record without a target clamp; `PlayerShotSetOptionOrigin` now forms that
+record using native Win32 unsigned low-word index arithmetic. The direct
+COFF candidate stays **122 bytes vs original 125**, with 80/117 ordinary
+original positions and two candidate relocations. A self-contained
+`Enemy.hpp` ANM vector include fixes standalone compile failures.
+Two selected exact PlayerShot owners and ECL host replay **279/279**
+original bytes. The option origin and larger shot tracker stay nonexact.
+[Evidence](evidence/player-shot-option-native-word-20261107/README.md).
+
 ## 2026-11-07 Enemy callback native countdown and penalty words
 
 `EnemyResolveRuntimeCallback` now explicitly includes the complete ANM

@@ -2,6 +2,7 @@
 #define TH10_RECONSTRUCTION_ENEMY_HPP
 
 #include "Player.hpp"
+#include "AnmManager.hpp" // Defines the embedded AnmFloat3View layout.
 #include "EclVm.hpp"
 
 #include <stddef.h>

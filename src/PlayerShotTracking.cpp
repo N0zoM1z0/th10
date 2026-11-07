@@ -1,3 +1,4 @@
+#include "AnmManager.hpp"
 #include "Player.hpp"
 #include "Enemy.hpp"
 
@@ -48,8 +49,11 @@ int __fastcall PlayerShotSetOptionOrigin(
     Player *player, PlayerShotRuntimeView *shot)
 {
     const PlayerShotDescriptorView *descriptor = shot->descriptor;
-    const PlayerPositionPair *optionPosition =
-        &player->options[descriptor->sourceIndex - 1].replayPair1;
+    const int optionIndex = static_cast<int>(descriptor->sourceIndex) - 1;
+    const PlayerOptionRuntime *const option = reinterpret_cast<const PlayerOptionRuntime *>(
+        reinterpret_cast<unsigned int>(&player->options[0]) +
+        static_cast<unsigned int>(optionIndex) * sizeof(PlayerOptionRuntime));
+    const PlayerPositionPair *optionPosition = &option->replayPair1;
     PlayerFloat3Value origin(
         static_cast<float>(optionPosition->x) * 0.01f,
         static_cast<float>(optionPosition->y) * 0.01f, 0.0f);
