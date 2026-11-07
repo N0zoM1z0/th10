@@ -23,6 +23,18 @@ its 716 candidate fields and four neighboring complete owners. Five selected
 original-bound ECL leaf units pass **87/87**. The dispatcher is
 **NONEXACT**, zero new codegen credit. [Proof](evidence/enemy-ecl-pattern-init-extra-word-20261107/README.md).
 
+## 2026-11-07 enemy ECL remaining pattern-index word arithmetic
+
+The actual 14,416-byte enemy ECL dispatcher uses low-32-bit cursor words in
+bullet-pattern initialization and the overlapping opcode-0x199 extra-record
+index and floatB store. These paths now use unsigned 32-bit intermediate
+arithmetic instead of signed C++ overflow, retaining the original field and
+read evaluation sites. The fresh *current* eleven-TU source compilation
+preserves the complete 14,352-byte dispatcher candidate and four neighboring
+owners, with unchanged candidate field geometry. Five original-bound ECL
+argument leaf units cold-pass 87/87. The dispatcher remains **NONEXACT** and
+adds zero exact credit. [Evidence](evidence/enemy-ecl-remaining-pattern-word-20261107/README.md).
+
 ## 2026-11-07 memory-file Read/Tell cursor word semantics
 
 Both already-exact memory-file leaves use native 32-bit address arithmetic,
