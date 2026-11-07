@@ -3333,7 +3333,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             continue;
 
         case ANM_OP_JUMP_DEC:
-            --*GET_INT_VAR_PTR(0);
+            --*reinterpret_cast<unsigned int *>(GET_INT_VAR_PTR(0));
             if (GET_INT_VAR(0) > 0)
             {
                 vm->scriptTimer.SetCurrent(currentInstruction->decrementJump.targetTime);
