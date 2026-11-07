@@ -9,6 +9,20 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Text alpha bleed and inversion native pixel cursors
+
+The complete **946-byte** `TextRenderBufferApplyAlphaBleed` body now uses
+one typed Win32 low-32-bit pixel-address helper for both 32-bit and
+16-bit formats, across the continuous row cursor and all horizontal
+and vertical neighbor references. The 157-byte `InvertAlpha` uses the
+same address model plus native signed-index wrap in its byte-step loops.
+Seven isolated cursor/neighbor probes and four combined helper trials
+preserved the exact alpha-bleed body **946/946**. A final installed-source
+selected original-bound replay passes **2,327/2,327** across five old
+exact text-renderer functions. `InvertAlpha` remains **112/157 NONEXACT**,
+and the 554/509-byte render-text owners remain open. No new exact owner.
+[Evidence](evidence/text-alpha-native-pixel-cursors-20261107/README.md).
+
 ## 2026-11-07 Player shot option indexed native record words
 
 The signed byte shot `sourceIndex` addresses a `0x98`-byte Player option

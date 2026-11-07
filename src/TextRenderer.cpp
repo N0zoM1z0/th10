@@ -42,6 +42,15 @@ static void AccumulateTextArgb4444Neighbor(
 // the cursor continues across rows. Vertical neighbors use signed pitch
 // divided by the pixel size with truncation toward zero. Only transparent
 // destinations are written, and all sampled neighbors have nonzero alpha.
+// Native TH10 bitmap pixels are walked as low-32-bit address words.
+// The original GDI loops use this arithmetic even for unchecked extents.
+template <class T> static __forceinline T *TextNativePixelAt(T *pixel, int delta)
+{
+    return reinterpret_cast<T *>(
+        reinterpret_cast<unsigned int>(pixel) +
+        static_cast<unsigned int>(delta) * static_cast<unsigned int>(sizeof(T)));
+}
+
 bool __stdcall TextRenderBufferApplyAlphaBleed(
     TextRenderBufferView *buffer, unsigned int processedRows)
 {
@@ -52,7 +61,8 @@ bool __stdcall TextRenderBufferApplyAlphaBleed(
             unsigned int *pixel = static_cast<unsigned int *>(buffer->pixels);
             for (unsigned int y = 0; y < processedRows; ++y)
             {
-                for (unsigned int x = 0; x < buffer->width; ++pixel, ++x)
+                for (unsigned int x = 0; x < buffer->width;
+                     pixel = TextNativePixelAt(pixel, 1), ++x)
                 {
                     unsigned char *components =
                         reinterpret_cast<unsigned char *>(pixel);
@@ -63,20 +73,20 @@ bool __stdcall TextRenderBufferApplyAlphaBleed(
                         unsigned int count = 0;
                         if (x > 0)
                             AccumulateTextArgb8888Neighbor(sums,
-                                reinterpret_cast<unsigned char *>(pixel - 1),
+                                reinterpret_cast<unsigned char *>(TextNativePixelAt(pixel, -1)),
                                 &count);
                         if (x < buffer->width - 1)
                             AccumulateTextArgb8888Neighbor(sums,
-                                reinterpret_cast<unsigned char *>(pixel + 1),
+                                reinterpret_cast<unsigned char *>(TextNativePixelAt(pixel, 1)),
                                 &count);
                         if (y > 0)
                             AccumulateTextArgb8888Neighbor(sums,
                                 reinterpret_cast<unsigned char *>(
-                                    pixel - buffer->pitch / 4), &count);
+                                    TextNativePixelAt(pixel, -(buffer->pitch / 4))), &count);
                         if (y < buffer->height - 1)
                             AccumulateTextArgb8888Neighbor(sums,
                                 reinterpret_cast<unsigned char *>(
-                                    pixel + buffer->pitch / 4), &count);
+                                    TextNativePixelAt(pixel, buffer->pitch / 4)), &count);
                         if (count > 1)
                         {
                             sums[0] /= count;
@@ -97,7 +107,8 @@ bool __stdcall TextRenderBufferApplyAlphaBleed(
                 static_cast<TextArgb4444PixelView *>(buffer->pixels);
             for (unsigned int y = 0; y < processedRows; ++y)
             {
-                for (unsigned int x = 0; x < buffer->width; ++pixel, ++x)
+                for (unsigned int x = 0; x < buffer->width;
+                     pixel = TextNativePixelAt(pixel, 1), ++x)
                 {
                     if (pixel->alpha == 0)
                     {
@@ -106,16 +117,16 @@ bool __stdcall TextRenderBufferApplyAlphaBleed(
                         unsigned int count = 0;
                         if (x > 0)
                             AccumulateTextArgb4444Neighbor(
-                                sums, pixel - 1, &count);
+                                sums, TextNativePixelAt(pixel, -1), &count);
                         if (x < buffer->width - 1)
                             AccumulateTextArgb4444Neighbor(
-                                sums, pixel + 1, &count);
+                                sums, TextNativePixelAt(pixel, 1), &count);
                         if (y > 0)
                             AccumulateTextArgb4444Neighbor(
-                                sums, pixel - buffer->pitch / 2, &count);
+                                sums, TextNativePixelAt(pixel, -(buffer->pitch / 2)), &count);
                         if (y < buffer->height - 1)
                             AccumulateTextArgb4444Neighbor(
-                                sums, pixel + buffer->pitch / 2, &count);
+                                sums, TextNativePixelAt(pixel, buffer->pitch / 2), &count);
                         if (count > 1)
                         {
                             sums[0] /= count;
@@ -153,8 +164,10 @@ bool TextRenderBufferView::InvertAlpha(int processedRows)
     switch (format)
     {
     case 0x15:  // A8R8G8B8
-        for (index = 3; index < totalBytes; index += 4)
-            bytes[index] = static_cast<unsigned char>(~bytes[index]);
+        for (index = 3; index < totalBytes;
+             index = static_cast<int>(static_cast<unsigned int>(index) + 4u))
+            *TextNativePixelAt(bytes, index) = static_cast<unsigned char>(
+                ~*TextNativePixelAt(bytes, index));
         return true;
 
     case 0x19:  // A1R5G5B5
@@ -172,14 +185,15 @@ bool TextRenderBufferView::InvertAlpha(int processedRows)
                 // TEST AH,AH / JS, as in the native 157-byte format owner.
                 if ((static_cast<unsigned char>(newValue >> 8) & 0x80u) == 0)
                     *pixel = static_cast<unsigned short>(newValue & 0x8000);
-                ++pixel;
+                pixel = TextNativePixelAt(pixel, 1);
             } while (--index != 0);
         }
         return true;
 
     case 0x1a:  // A4R4G4B4
-        for (index = 1; index < totalBytes; index += 2)
-            bytes[index] ^= 0xf0;
+        for (index = 1; index < totalBytes;
+             index = static_cast<int>(static_cast<unsigned int>(index) + 2u))
+            *TextNativePixelAt(bytes, index) ^= 0xf0;
         return true;
     }
     return false;

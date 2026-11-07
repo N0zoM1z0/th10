@@ -356,7 +356,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/GameStatisticsRecordDefaults.cpp` | `2c0c4d290118b9a65a781fef030825b07b89dde090a24cbc1252c200cf3173df` |
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
 | `src/ReplayManager.cpp` | `7c6a50d945a9c83f694bda661880d9211b29b1970c99a8a4ddd4844dab6fcaf3` |
-| `src/TextRenderer.cpp` | `2e95a09f2ea5f0aef8fe3b22f487fce776ea4ae5a918606f464ebf6a4e2c0cc4` |
+| `src/TextRenderer.cpp` | `eb7bfffc04a9ac2e4bd7cb531c07e371a30593e825858ee71b3b8e2e37efed9b` |
 | `src/TransitionEffect.cpp` | `711fb19a08a7bdfa45cd600a8f3bb82af5d2c90f3292d214e91e63e3625ebcd8` |
 
 ## Private evidence, transfer and storage
