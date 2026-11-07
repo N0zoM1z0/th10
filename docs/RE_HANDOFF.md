@@ -43,6 +43,19 @@ scripts/repo-python scripts/ci.py
 
 ## Authoritative progress and current nonexact work
 
+## Alternate text render local stack-frame improvement (2026-11-08)
+
+`TextHelperView::RenderTextToTextureAlternate @0x00437FE0` now scopes
+its late D3D upload rectangle and surface pointer naturally, restoring
+the target **0x14-byte** stack frame from previous 0x18. Its full
+509-byte normal-COFF owner remains **NONEXACT**, but improves from
+**185/381** to **193/381 comparable ordinary original bytes**.
+Nine additional width/font local lifetime variants did not improve it
+and were rejected. Selected current-source cold replay still proves the
+seven previous exact text owners **3,030/3,030** including the new
+**554-byte** main renderer with all 35 target fields. No new exact
+credit. [Evidence](evidence/text-render-alternate-stack-scope-20261108/README.md).
+
 ## Text main render source stack lifetime recovery (2026-11-08)
 
 `TextHelperView::RenderTextToTexture @0x00437DB0` now scopes its late
@@ -493,7 +506,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/GameStatisticsRecordDefaults.cpp` | `2c0c4d290118b9a65a781fef030825b07b89dde090a24cbc1252c200cf3173df` |
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
 | `src/ReplayManager.cpp` | `7c6a50d945a9c83f694bda661880d9211b29b1970c99a8a4ddd4844dab6fcaf3` |
-| `src/TextRenderer.cpp` | `0adc88ef7764554082d1feea916cbc9e211d5c5aa9dddb491f0174ac05522c75` |
+| `src/TextRenderer.cpp` | `f016d9482e8d94015c6dc18ffc1123407edc68e7b4c355b057c6448924d51ddb` |
 | `src/TransitionEffect.cpp` | `711fb19a08a7bdfa45cd600a8f3bb82af5d2c90f3292d214e91e63e3625ebcd8` |
 
 ## Private evidence, transfer and storage

@@ -366,24 +366,26 @@ void __stdcall TextHelperView::RenderTextToTextureAlternate(
     TextRenderBufferApplyAlphaBleed(&g_TextRenderBuffer, processedRows);
     SelectObject(hdc, previousFont);
 
-    D3d9RectView sourceRect;
-    sourceRect.left = 0;
-    sourceRect.top = 0;
-    sourceRect.right = static_cast<int>(
-        (static_cast<unsigned int>(rectangle->right) -
-         static_cast<unsigned int>(rectangle->left)) * 2u + 22u);
-    sourceRect.bottom = static_cast<int>(
-        static_cast<unsigned int>(glyphWidth) * 2u + 2u);
-    if (sourceRect.right > 1024)
-        sourceRect.right = 1024;
-    D3d9SurfaceView *surface;
-    texture->vtable->GetSurfaceLevel(texture, 0, &surface);
-    D3DXLoadSurfaceFromMemory(
-        surface, NULL, rectangle, g_TextRenderBuffer.pixels,
-        g_TextRenderBuffer.format, g_TextRenderBuffer.pitch,
-        NULL, &sourceRect, 4, 0);
-    if (surface != NULL)
-        surface->vtable->Release(surface);
+    {
+        D3d9RectView sourceRect;
+        sourceRect.left = 0;
+        sourceRect.top = 0;
+        sourceRect.right = static_cast<int>(
+            (static_cast<unsigned int>(rectangle->right) -
+             static_cast<unsigned int>(rectangle->left)) * 2u + 22u);
+        sourceRect.bottom = static_cast<int>(
+            static_cast<unsigned int>(glyphWidth) * 2u + 2u);
+        if (sourceRect.right > 1024)
+            sourceRect.right = 1024;
+        D3d9SurfaceView *surface;
+        texture->vtable->GetSurfaceLevel(texture, 0, &surface);
+        D3DXLoadSurfaceFromMemory(
+            surface, NULL, rectangle, g_TextRenderBuffer.pixels,
+            g_TextRenderBuffer.format, g_TextRenderBuffer.pitch,
+            NULL, &sourceRect, 4, 0);
+        if (surface != NULL)
+            surface->vtable->Release(surface);
+    }
 }
 
 

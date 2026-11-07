@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 Alternate text upload scope improves eight original bytes
+
+The nonexact **509-byte** `RenderTextToTextureAlternate` now scopes its
+late D3D texture upload, shrinking the compiler's stack frame from
+0x18 to the original **0x14**. Whole normal-COFF original comparison
+rises from **185/381 to 193/381** comparable ordinary bytes. Nine
+other width/font lifetime and alias forms failed to improve the
+EBP/EDI/EBX register discrepancy and were rejected. Current selected
+canonical text cold replay retains **3,030/3,030** exact bytes across
+seven other already accepted text owners, including main text upload
+**554/554 with 35 original fields**. No new exact function or runtime
+claim. [Evidence](evidence/text-render-alternate-stack-scope-20261108/README.md).
+
 ## 2026-11-08 TextRender main 554-byte owner stack-frame breakthrough
 
 `TextHelperView::RenderTextToTexture` is now naturally scoped so the
