@@ -22,6 +22,18 @@ credit; only current selected original-bound exact guards Init396/FadeIn133/
 Delete26/Dim175 passed **730/730**. The remaining phase-limit EBX spill and
 source register scheduling are open. [Proof](evidence/transition-shake-envelope-schedule-20261107/README.md).
 
+## 2026-11-07 ECL spawn inline count native word arithmetic
+
+The original `EclVmContext::Run` opcode `SPAWN_THREAD_WITH_ID` adds four to
+the encoded signed inline byte count as one x86 word before logically
+shifting by two. The maintained source now casts the count to `unsigned
+int` before the `+4u`, removing signed overflow UB while retaining the
+actual pointer/index schedule. Fresh current two-TU original-bound native
+comparison still reports **6997/7020**, all **189/189** fields and
+ReadFloatValue171 exact; selected exact ECL guards **441/441** pass. This
+is a large-interpreter source-semantic improvement, **zero new exact
+credit**. [Source and proof](evidence/ecl-spawn-index-word-wrap-20261107/README.md).
+
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
 `TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,

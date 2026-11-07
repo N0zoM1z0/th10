@@ -786,8 +786,11 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_SPAWN_THREAD_WITH_ID:
             {
+                // Retail ADD ECX,4 then SHR ECX,2 uses the low 32-bit word
+                // even if the encoded signed inline length would overflow.
                 const unsigned int operandIndex =
-                    static_cast<unsigned int>(current->spawnThreadOperands.inlineBytes + 4) >> 2;
+                    (static_cast<unsigned int>(current->spawnThreadOperands.inlineBytes)
+                        + 4u) >> 2;
                 host->SpawnThread(
                     ReadIntValue(1, OperandInt(current, operandIndex)), 1);
                 break;
