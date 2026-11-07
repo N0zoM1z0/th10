@@ -9,6 +9,18 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Sound ProcessQueues native command stage words
+
+The 1,452-byte original Sound command dispatcher increments four signed
+`step` words and decrements its release-retry `step` via the original
+i386 low-32-bit INC/DEC behavior. The maintained source now expresses
+all five unsigned word additions/subtractions before signed publication.
+Six independent two-TU /GL /GS /EHsc trials preserve **1,452/1,452
+original bytes and all 43 target-bound links**. The reformatted committed
+source was separately cold replayed, preserving **2,034/2,034** old exact
+Sound bytes in two affected graphs. No new codegen credit or full replay.
+[Evidence](evidence/sound-process-queue-native-step-words-20261107/README.md).
+
 ## 2026-11-07 Enemy interpolation Tick and SetCurrent native timer words
 
 The 652-byte original Enemy scalar-interpolation evaluator contains

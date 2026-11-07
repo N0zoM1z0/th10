@@ -98,6 +98,16 @@ EnemyRuntimeUpdate (2,371 candidate / 2,412 original) and callback
 (606 / 593) remain NONEXACT, with zero candidate ordinary differences and
 unchanged candidate field geometry. [Evidence](evidence/enemy-interpolation-timer-words-20261107/README.md).
 
+## Sound command stage native increments (2026-11-07)
+
+`SoundPlayerView::ProcessQueues` now preserves native 32-bit signed-stage
+wrap for four command increments and its RELEASE retry decrement. Six
+natural-source current-epoch real two-TU native experiments preserve the
+complete original **1,452/1,452 bytes and 43/43 field bindings**. The
+*committed*, reformatted current `src/Sound.cpp` was independently cold
+replayed: **2,034/2,034** original bytes in four existing Sound exact
+owners. No new exact credit. [Evidence](evidence/sound-process-queue-native-step-words-20261107/README.md).
+
 ## Current 2026-11-07 source-only closure since the older checkpoint
 
 - **Enemy ECL giant (14,416 target / 14,352 native)**: direct original
@@ -359,7 +369,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletTransform.cpp` | `05a488b848b78fd97561676973f2e02619d7e28fe403150e59da1e55cf309e24` |
 | `src/BulletManager.cpp` | `9a0f09a620cf03e38105fdc14e11baca9ae40e59444540286032862f08075348` |
-| `src/Sound.cpp` | `5b019a039a6895a57b9ffa783cf9fc7d92b34b7032199e0316c136b357aed7ac` |
+| `src/Sound.cpp` | `57f145d575c1d8a009056b791710e6c8b982684f0c34d79d4f59d80e78bd4bbb` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |
