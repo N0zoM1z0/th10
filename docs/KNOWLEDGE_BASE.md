@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 ECL indexed scalar word addresses
+
+ECL instruction scalar operands are a counted variable-length stream, not
+an allocated one-element C++ array. Both operand readers now share a native
+32-bit `instruction + 0x10 + index*4` word-address helper; this removes
+out-of-bounds C++ array arithmetic without changing the original i386
+reads. Four complete VC7.1 source variants were tested and preserve the
+large `Run` **6,997/7,020**, all 189 independently target-bound fields,
+and the exact float callee. An explicit operand-mask shift was rejected
+because it changed the large owner's extent. Eight selected original-bound
+ECL owners cold-replay **1,037/1,037**. `Run` is **NONEXACT**; zero new
+exact credit. [Native evidence](evidence/ecl-operand-word-address-20261107/README.md).
+
 ## 2026-11-07 ECL FIRE_BULLET_PATTERN native offset word
 
 The 14,416-byte target Enemy ECL dispatcher forms a 12-byte pattern-offset

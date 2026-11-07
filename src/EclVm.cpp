@@ -228,15 +228,28 @@ namespace
 
 // The common four-byte scalar storage is declared in EclVm.hpp.
 
+// Each ECL instruction is a variable-length byte stream. The one-element
+// scalarOperands declaration locates its first word, not the length of an
+// allocated array. Native i386 computes every indexed word address modulo
+// 2^32 even for script-provided indices past that initial declaration.
+static const EclVmScalar *OperandWord(
+    const EclVmInstruction *instruction, unsigned int index)
+{
+    return reinterpret_cast<const EclVmScalar *>(
+        reinterpret_cast<unsigned int>(instruction) +
+        static_cast<unsigned int>(offsetof(EclVmInstruction, scalarOperands)) +
+        index * static_cast<unsigned int>(sizeof(EclVmScalar)));
+}
+
 static int OperandInt(const EclVmInstruction *instruction, unsigned int index)
 {
-    return instruction->scalarOperands[index].integer;
+    return OperandWord(instruction, index)->integer;
 }
 
 static float OperandFloat(
     const EclVmInstruction *instruction, unsigned int index)
 {
-    return instruction->scalarOperands[index].real;
+    return OperandWord(instruction, index)->real;
 }
 
 static bool IsOperandIndirect(
