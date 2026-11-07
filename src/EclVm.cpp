@@ -115,6 +115,8 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
 
 int EclVmStackView::EnterFrame(int localBytes)
 {
+    // Retail uses native 32-bit stack base/top words for the saved
+    // frame slot and the four-byte counter advance.
     const int previousTop = stackTop;
     const int localTop = static_cast<int>(
         static_cast<unsigned int>(previousTop) +
@@ -127,8 +129,12 @@ int EclVmStackView::EnterFrame(int localBytes)
         static_cast<unsigned int>(sizeof(EclVmStackSavedWordView))) < 0x1000)
     {
         reinterpret_cast<EclVmStackSavedWordView *>(
-            data + stackTop)->value = frameBase;
-        stackTop += static_cast<int>(sizeof(EclVmStackSavedWordView));
+            reinterpret_cast<unsigned char *>(
+                reinterpret_cast<unsigned int>(data) +
+                static_cast<unsigned int>(stackTop)))->value = frameBase;
+        stackTop = static_cast<int>(
+            static_cast<unsigned int>(stackTop) +
+            static_cast<unsigned int>(sizeof(EclVmStackSavedWordView)));
     }
     frameBase = previousTop;
     return 0;
@@ -143,7 +149,9 @@ int EclVmStackView::LeaveFrame()
         stackTop = static_cast<int>(static_cast<unsigned int>(stackTop) -
             static_cast<unsigned int>(sizeof(EclVmStackSavedWordView)));
         frameBase = reinterpret_cast<const EclVmStackSavedWordView *>(
-            data + stackTop)->value;
+            reinterpret_cast<const unsigned char *>(
+                reinterpret_cast<unsigned int>(data) +
+                static_cast<unsigned int>(stackTop)))->value;
     }
     stackTop = previousFrame;
     return 0;

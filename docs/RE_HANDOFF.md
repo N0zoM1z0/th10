@@ -315,6 +315,15 @@ selected six-unit original cold **593/593**. Separate two-TU Run remains
 NONEXACT, zero new canonical credit.
 [Full native proof](evidence/ecl-stack-push-native-word-address-20261107/README.md).
 
+**Current ECL native saved-frame positions:** `EnterFrame` and
+`LeaveFrame` now form their saved-frame slot addresses from the actual
+unsigned 32-bit data+top words; EnterFrame also advances its `stackTop`
+by one native wrapping four-byte dword. Nine full native compiler trials
+preserve Push96, Pop122, EnterFrame64, LeaveFrame41 exact, and installed-
+source seven-unit cold passes **776/776**. Complete two-TU Run remains
+**6,997/7,020** with all **189 original target fields**, NONEXACT.
+[Native full-owner proof](evidence/ecl-stack-frame-saved-word-native-address-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -435,7 +444,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `393f5c55cd14ad9d1eecbaba3ec9945e6954f05f672516350af2c001440046e3` |
+| `src/EclVm.cpp` | `65909682e0b1bb3e9d6347e3e36311babc745eb7ef0f4aa65efa3990144cb5d7` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |

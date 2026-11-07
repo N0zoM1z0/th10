@@ -235,6 +235,18 @@ selected cold passes **593/593**; two-TU Run remains **6,997/7,020**
 with 189 original target fields, NONEXACT, no new credit.
 [Proof](evidence/ecl-stack-push-native-word-address-20261107/README.md).
 
+## 2026-11-07 ECL saved-frame low-word addresses and top advance
+
+Retail EnterFrame stores its old frame through `[EAX+ECX]` then advances
+the `stackTop` four-byte machine word. LeaveFrame reads the same slot
+through that native i386 address word. Three maintained C++ operations
+now express those original low-32-bit unsigned sums. Nine full-source
+actual VC7.1 trials preserve the four existing exact stack leaves and
+same-graph `Run`; installed-source seven-unit original cold **776/776**,
+separate two-TU `Run` **6,997/7,020** with all 189 original field
+bindings. No new exact codegen credit.
+[Proof](evidence/ecl-stack-frame-saved-word-native-address-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids
