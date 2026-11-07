@@ -104,6 +104,18 @@ geometry. Five original-bound ECL leaves cold-pass **87/87**.
 Dispatcher remains **NONEXACT**, zero new canonical exact bytes.
 [Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
 
+## 2026-11-07 Enemy ECL difficulty speed native address words
+
+`DispatchEclInstruction`'s difficulty-selected bullet-speed writes now
+add their pre-scaled 0x210-byte cursor to the runtime base through unsigned
+32-bit i386 address words. Both sites remove signed C++ overflow UB while
+retaining the target's original per-argument evaluation order. Fresh
+current-source eleven-TU native PDB comparison preserves the whole
+**14,352-byte candidate** and four related complete owners, with unchanged
+candidate fields. The original is **14,416 bytes**, NONEXACT, no new exact
+credit. Five affected original-bound argument leaves cold-pass **87/87**.
+[Evidence](evidence/enemy-ecl-difficulty-speed-address-word-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL native 0x210-byte pattern-index helper
 
 The 14,416-byte original Enemy ECL dispatcher now uses one natural inline

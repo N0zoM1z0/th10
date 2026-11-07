@@ -180,6 +180,12 @@ in the canonical exact scoreboard. No full historical replay was run.**
   one rejected with a 10,044-byte PDB extent. All temporary source changes
   restored. [Scope and source pins](evidence/anm-opcode91-current-structure-20261107/README.md).
 
+- `ENEMY_ECL_SET_BULLET_SPEED_BY_DIFFICULTY` now uses i386 native
+  32-bit address addition for both speed stores. Fresh eleven-TU candidate
+  dispatcher remains **14,352 bytes** with five complete owners unchanged;
+  **original target 14,416** is NONEXACT. Five selected exact ECL argument
+  leaves pass **87/87**. [Proof](evidence/enemy-ecl-difficulty-speed-address-word-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -236,7 +242,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
-| `src/EnemyEclDispatcher.cpp` | `a9a1ffbf669c5a32b9f3db53c0540fe86b8182ad8f9973e95b0f980d408a2698` |
+| `src/EnemyEclDispatcher.cpp` | `a9953fb9b0937c0c9f81606a476aadb2815a99aaa54ba1a286801c2a12e5e6ef` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |

@@ -2309,6 +2309,8 @@ dispatch_difficulty_float_index_4_a:
     uVar22 = ENEMY_READ_INT_DIRECT(2);
     EnemyPatternAtRuntimeByte(iVar26)->fields.countB = (short)uVar22;
     return 0;
+  // The target carries the scaled pattern cursor in one i386 dword;
+  // publishing each speed member also adds the runtime base modulo 2^32.
   case ENEMY_ECL_SET_BULLET_SPEED_BY_DIFFICULTY:
   {
     int speedIndex;
@@ -2329,7 +2331,9 @@ dispatch_difficulty_float_index_4_a:
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(uVar22) *
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)));
-    EnemyPatternAtRuntimeByte(iVar26 + (int)runtimeAddress)->fields.speedA = (float)fVar19;
+    EnemyPatternAtRuntimeByte(static_cast<int>(
+        static_cast<unsigned int>(iVar26) +
+        static_cast<unsigned int>(runtimeAddress)))->fields.speedA = (float)fVar19;
     if (g_EnemyDifficulty == 0) {
       speedIndex = 5;
     }
@@ -2343,7 +2347,9 @@ dispatch_difficulty_float_index_4_a:
       }
     }
     fVar19 = ReadFloatArgument(speedIndex);
-    EnemyPatternAtRuntimeByte(iVar26 + (int)runtimeAddress)->fields.speedB = (float)fVar19;
+    EnemyPatternAtRuntimeByte(static_cast<int>(
+        static_cast<unsigned int>(iVar26) +
+        static_cast<unsigned int>(runtimeAddress)))->fields.speedB = (float)fVar19;
     return 0;
   }
   case ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY:
