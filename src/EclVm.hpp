@@ -167,10 +167,13 @@ struct EclVmInstruction
 
     // The encoded size and branch operands are measured in bytes, not
     // EclVmInstruction objects. Keep signed offsets for backward jumps.
+    // Original i386 address arithmetic adds their low 32-bit words even
+    // when jumping behind the current variable-length instruction object.
     EclVmInstruction *AtByteOffset(int distance)
     {
         return reinterpret_cast<EclVmInstruction *>(
-            reinterpret_cast<unsigned char *>(this) + distance);
+            reinterpret_cast<unsigned int>(this) +
+            static_cast<unsigned int>(distance));
     }
 };
 typedef char EclVmInstructionHeaderOffsets[

@@ -70,6 +70,17 @@ rejected/byte-neutral. The selected installed source cold preserves ten
 previously exact file owners, **491/491**, zero new match credit.
 [Native proof](evidence/resfile-seek-native-cursor-word-20261107/README.md).
 
+## 2026-11-07 native-word ECL backward relative jump addresses
+
+`EclVmInstruction::AtByteOffset` now forms variable-length script branch
+addresses using the low 32-bit Win32 unsigned address-word addition. This
+models negative JUMP distances without C++ single-array pointer overflow;
+real 2-TU original-bound Run still matches **6,997/7,020**, all 189 fields,
+with 171-byte float callee exact. Four actual compiler variants were tested;
+final-source scoped eight-unit cold passes **1,037/1,037** previous exact
+bytes. No new canonical exact credit.
+[Evidence](evidence/ecl-native-script-jump-address-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

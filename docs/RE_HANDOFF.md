@@ -170,6 +170,16 @@ current-source artifacts. No new exact credit; it is separate from the seven
 transform timer words already committed.
 [Complete main-loop proof](evidence/bullet-manager-state-timer-word-wrap-20261107/README.md).
 
+**Current ECL native script-jump addresses:** the variable-length
+`EclVmInstruction::AtByteOffset` uses low 32-bit unsigned address words
+before publishing its pointer. This keeps original negative relative JUMP
+byte displacements without C++ out-of-array pointer addition. Four actual
+native 2-TU forms preserve the entire **Run 6,997/7,020** / **189/189**
+original field frontier and float callee exact171. Installed-source selected
+one- and two-TU original-bound exact guards pass **1,037/1,037** across
+8 owners; **zero new exact credit**.
+[Full proof](evidence/ecl-native-script-jump-address-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -291,7 +301,7 @@ receipts are ignored private files, not Git attachments.
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
 | `src/EclVm.cpp` | `da854e5838cebc2ee834796bdec88b136a87614496dda34f5a2bdaf88ed09e4f` |
-| `src/EclVm.hpp` | `b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52` |
+| `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |
 | `src/Enemy.cpp` | `c08272bf324217b9e6e4ffa91cd13fb2555aeb37b44be6231075082ebfcac5d2` |
