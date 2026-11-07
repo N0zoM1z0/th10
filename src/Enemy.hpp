@@ -122,7 +122,8 @@ struct EnemyInterpolationTimerView
         previous = current;
         if (*scale > 0.99f && *scale < 1.01f)
         {
-            ++current;
+            // Original i386 INC stores the wrapped low 32-bit counter word.
+            current = static_cast<int>(static_cast<unsigned int>(current) + 1u);
             subframe += 1.0f;
         }
         else
@@ -144,7 +145,8 @@ struct EnemyInterpolationTimerView
 
         current = value;
         subframe = static_cast<float>(value);
-        previous = value - 1;
+        // Native DEC preserves the Win32 counter word even at INT_MIN.
+        previous = static_cast<int>(static_cast<unsigned int>(value) - 1u);
     }
 
     int previous;

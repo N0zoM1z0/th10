@@ -87,6 +87,17 @@ Current-source selected exact PlayerShot 53+80 and ECL host 146
 replay **279/279** original bytes in three scoped artifacts. No new
 exact credit. [Evidence](evidence/player-shot-option-native-word-20261107/README.md).
 
+### Enemy interpolation timer source word checkpoint
+
+The original 652-byte `EnemyScalarInterpolationView::Evaluate` executes
+`INC EDX` and `DEC ECX` for its 32-bit timer word. The maintained inline
+`EnemyInterpolationTimerView` now uses native wrap arithmetic in `Tick`
+and `SetCurrent`. Selected original-bound cold replays preserve **964/964**
+bytes across five previously exact Enemy functions. The separately linked
+EnemyRuntimeUpdate (2,371 candidate / 2,412 original) and callback
+(606 / 593) remain NONEXACT, with zero candidate ordinary differences and
+unchanged candidate field geometry. [Evidence](evidence/enemy-interpolation-timer-words-20261107/README.md).
+
 ## Current 2026-11-07 source-only closure since the older checkpoint
 
 - **Enemy ECL giant (14,416 target / 14,352 native)**: direct original
@@ -341,7 +352,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
 | `src/EnemyEclDispatcher.cpp` | `cebadf0dd493c970699b98b371ebd9792d1dd3c51c26fe49cdc591df0e0d581f` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
-| `src/Enemy.hpp` | `5b5f601a642ee0f0c7eedeaa4ad6a26d02851a2010239b2fe44ab54067c46e98` |
+| `src/Enemy.hpp` | `372ef4e3ca68687434092efa8b50573ef6ebcf8aa0fc0bb2e14058d60b85f668` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |

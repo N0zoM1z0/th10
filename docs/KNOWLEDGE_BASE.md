@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Enemy interpolation Tick and SetCurrent native timer words
+
+The 652-byte original Enemy scalar-interpolation evaluator contains
+native `INC EDX` at `+0x3B` and `DEC ECX` at `+0x99` for the embedded
+20-byte timer. Natural unsigned-word additions/subtractions now replace
+the two signed-overflow expressions in `EnemyInterpolationTimerView`
+without changing the signed comparisons. Individual 5-support `/GL`
+original-bound cold builds each preserve **652/652** bytes; three further
+selected exact contexts total **964/964** previously accepted bytes.
+The complete 2-TU Enemy runtime and callback candidate functions retain
+their earlier sizes and all ordinary bytes but remain **NONEXACT**.
+[Evidence](evidence/enemy-interpolation-timer-words-20261107/README.md).
+
 ## 2026-11-07 Text alpha bleed and inversion native pixel cursors
 
 The complete **946-byte** `TextRenderBufferApplyAlphaBleed` body now uses
