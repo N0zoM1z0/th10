@@ -58,15 +58,21 @@ int EclVmStackView::Push(
         static_cast<unsigned int>(size)) >= 0x1000)
         return -1;
 
+    // The native stack type slot and value write are addressed as Win32
+    // low 32-bit words, even outside an abstract C++ array extent.
     if (type != 0)
     {
         reinterpret_cast<EclVmStackTypeSlotView *>(
-            data + stackTop)->type = type;
+            reinterpret_cast<unsigned char *>(
+                reinterpret_cast<unsigned int>(data) +
+                static_cast<unsigned int>(stackTop)))->type = type;
         stackTop = static_cast<int>(static_cast<unsigned int>(stackTop) +
             static_cast<unsigned int>(sizeof(EclVmStackTypeSlotView)));
     }
 
-    memcpy(data + stackTop, value, size);
+    memcpy(reinterpret_cast<unsigned char *>(
+        reinterpret_cast<unsigned int>(data) +
+        static_cast<unsigned int>(stackTop)), value, size);
     stackTop = static_cast<int>(static_cast<unsigned int>(stackTop) +
         static_cast<unsigned int>(size));
     return 0;

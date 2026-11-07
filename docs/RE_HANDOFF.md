@@ -305,6 +305,16 @@ independently original-bound ECL `Run` remains **6,997/7,020** with all
 **570/570**, zero new canonical codegen credit.
 [Original instruction and native proof](evidence/enemy-runtime-animation-script-word-20261107/README.md).
 
+**Current ECL Stack Push native destination words:** the 96-byte exact
+`Push` leaf now forms the existing byte type slot and value data copy
+destinations as native i386 low-32-bit stack-base+top addresses. Nine
+original-compiler whole-leaf source probes preserve Push96, Pop122,
+EnterFrame64, LeaveFrame41 and complete same-graph Run; installed-source
+selected six-unit original cold **593/593**. Separate two-TU Run remains
+**6,997/7,020** with all **189** independently original-bound fields,
+NONEXACT, zero new canonical credit.
+[Full native proof](evidence/ecl-stack-push-native-word-address-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -425,7 +435,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `6b5bb981dac3ad26ebf8f6770a154ba2021529d0b96800b35e9bf33f70a26c4a` |
+| `src/EclVm.cpp` | `393f5c55cd14ad9d1eecbaba3ec9945e6954f05f672516350af2c001440046e3` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |

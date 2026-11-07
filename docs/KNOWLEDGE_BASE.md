@@ -224,6 +224,17 @@ Enemy 2,371/69 candidate fields and related ECL Run 6,997/7,020 with
 zero new exact owner credit.
 [Evidence](evidence/enemy-runtime-life-native-word-20261107/README.md).
 
+## 2026-11-07 Stack Push type-slot and memcpy native byte addresses
+
+Original `Push @0x004505B0` uses ADD of stack byte-base/top words for
+its type-slot write and the data `REP MOVSD/MOVSB` copy. Maintained C++
+now uses matching low-32-bit integer-word pointer formation. Nine genuine
+full-owner source trials preserve four original-exact stack leaves and
+the same-graph 7,020-byte Run candidate. Installed-source six-unit
+selected cold passes **593/593**; two-TU Run remains **6,997/7,020**
+with 189 original target fields, NONEXACT, no new credit.
+[Proof](evidence/ecl-stack-push-native-word-address-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids
