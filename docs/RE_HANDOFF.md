@@ -376,6 +376,17 @@ leaves, **1,028/1,028** target bytes, 40 original fields. Absolute
 direction remains **333/335**, eight original fields, zero new credit.
 [Complete native proof](evidence/bullet-spawn-odd-index-native-word-20261107/README.md).
 
+**Current Bullet SpawnSingle pool cursor native words:** original
+`ADD EBP,0x7F0` in the actual 1,413-byte target now has low-32-bit
+unsigned bullet cursor arithmetic at both scan and final publication
+sites, preserving the existing 2001-record/sentinel pool. Nine actual
+7-TU compiler variants and the installed-source full PDB comparison keep
+the **1,504-byte/44-field candidate** byte/field identical; the boss
+remains NONEXACT. Separately canonical SpawnBulletPattern194 and four
+exact transform leaves replay **1,028/1,028**, all 40 original fields;
+absolute direction remains **333/335**, zero new exact credit.
+[Real native proof](evidence/bullet-spawn-native-pool-cursor-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -506,7 +517,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
-| `src/BulletManager.cpp` | `5b0cbe9673b702caecc687cbd2f4277e2f07b7db6da6330fde989ec0785fb689` |
+| `src/BulletManager.cpp` | `9d4aaf9c5b590bd0e9f5be597a936d49050621d294a67f0a4c7fb3406f8345c6` |
 | `src/Sound.cpp` | `bd73bb4a184fd3151b1b36513f96d11e229a91fd8d6205eb76884a0c1e9cd0a9` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |

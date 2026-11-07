@@ -340,6 +340,19 @@ frontier; unsigned remaining comparison regresses and was rejected. Ten
 selected original-bound file owners cold-pass **491/491**, no new exact
 credit. [Native proof](evidence/resfile-seek-native-remaining-word-20261107/README.md).
 
+## 2026-11-07 large Bullet SpawnSingle 0x7F0 cursor dword stride
+
+Original `SpawnSingleBullet` scans its 2001-record BulletRuntimeView pool
+using i386 `ADD EBP,0x7F0` per record, including its actual sentinel,
+then advances the post-spawn cursor once more. Maintained source now
+spells both low-32-bit unsigned pointer sums explicitly. Nine real
+seven-TU source probes keep the entire still-nonexact 1,504-byte/44-field
+candidate codegen unchanged (original1,413). The separately compiled
+canonical SpawnBulletPattern194 plus four exact transform leaves pass
+**1,028/1,028**, 40 true original fields. Adjacent absolute direction
+stays **333/335**, no newly exact codegen credit.
+[Evidence](evidence/bullet-spawn-native-pool-cursor-20261107/README.md).
+
 ## 2026-11-07 bullet large SpawnSingle native odd index word
 
 Retail `SpawnSingleBullet @0x004067D0 +0x152` executes `LEA EAX,[ECX+1]`

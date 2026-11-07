@@ -628,7 +628,11 @@ int BulletManagerView::SpawnSingleBullet(
     {
         if (bullet->state == 0)
             break;
-        ++bullet;
+        // Original pool scanning uses an i386 ADD of one 0x7F0-byte
+        // row, including the existing final sentinel record.
+        bullet = reinterpret_cast<BulletRuntimeView *>(
+            reinterpret_cast<unsigned int>(bullet) +
+            static_cast<unsigned int>(sizeof(BulletRuntimeView)));
         if (bullet->state == 5)
             bullet = &bullets[0];
     }
@@ -799,7 +803,10 @@ int BulletManagerView::SpawnSingleBullet(
     bullet->AdvanceTransformProgram();
     AnmRenderManagerView::ExecuteScript(&bullet->vm);
 
-    ++bullet;
+    // Original post-spawn cursor also advances by the native 0x7F0 word.
+    bullet = reinterpret_cast<BulletRuntimeView *>(
+        reinterpret_cast<unsigned int>(bullet) +
+        static_cast<unsigned int>(sizeof(BulletRuntimeView)));
     if (bullet->state == 5)
         bulletCursor = &bullets[0];
     else
