@@ -127,6 +127,18 @@ field candidate code exactly and the independently original-bound **Run
 exact owners cold-pass **1,081/1,081**; neither large function gains any
 canonical exact credit. [Proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md).
 
+## 2026-11-07 SCPT serialized file and name native address words
+
+`EclVmScriptDatabase::AddScriptData` now forms offsets, name starts and
+subroutine-header pointers using original i386 low-32-bit arithmetic,
+not undefined C++ single-object pointer addition. Eight genuine 2-TU
+VC7.1 source experiments preserve complete 589-byte candidate / two
+original CRT call positions and the nonexact 502/581 target ordinary
+comparison, and `Run` stays 6,997/7,020 with all 189 original target
+fields. Six selected current-source exact owners cold-pass 904/904.
+No new canonical codegen credit.
+[Evidence](evidence/ecl-serialized-script-native-address-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

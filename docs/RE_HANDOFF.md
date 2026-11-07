@@ -222,6 +222,17 @@ Run boss. Installed-source eight selected exact leaves/host owners cold-pass
 **Zero new exact credit.**
 [Source, trials and field proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md).
 
+**Current SCPT script loader address words:** the 589-byte nonexact
+`EclVmScriptDatabase::AddScriptData` now forms file-header, counted offset,
+subroutine header, typed offset cursor, name and include-package addresses
+using original low-32-bit i386 word additions. Eight actual two-TU source
+controls preserve full **589 bytes**, both original CRT field positions
++6C/+101 and **502/581** comparable original bytes, while the related
+`Run` remains **6,997/7,020**, all 189 original fields. Installed-source
+six selected exact owners original-bound cold-pass **904/904**. No new
+canonical exact credit.
+[Full source and real native proof](evidence/ecl-serialized-script-native-address-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -342,7 +353,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
-| `src/EclVm.cpp` | `40d43d41bddcb6daa0a1bdec9d6515f498b06114d30776f056a6f0e74ab5ee46` |
+| `src/EclVm.cpp` | `83cbd5227e9b366181970dbd2cceb6ceaeabfde056c7c8cdda3a5744900fc70b` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |

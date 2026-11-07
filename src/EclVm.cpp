@@ -425,10 +425,14 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     void *const volatile &offsetCursor = scriptData;
     EclVmSubroutineEntry *oldEntries = subroutines;
     EclVmSubroutineEntry *previousEntries = subroutines;
-    scriptData = reinterpret_cast<unsigned char *>(file)
-        + sizeof(EclVmScriptFileHeader) + file->includeLength;
+    scriptData = reinterpret_cast<unsigned char *>(
+        reinterpret_cast<unsigned int>(file) +
+        static_cast<unsigned int>(sizeof(EclVmScriptFileHeader)) +
+        static_cast<unsigned int>(file->includeLength));
     const char *name = reinterpret_cast<const char *>(
-        static_cast<EclVmSerializedSubroutineOffsetView *>(scriptData) + file->subroutineCount);
+        reinterpret_cast<unsigned int>(scriptData) +
+        static_cast<unsigned int>(file->subroutineCount) *
+        static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
     AddEclSubroutineCount(subroutineCount, file->subroutineCount);
     EclVmSubroutineEntry *const newEntries =
         static_cast<EclVmSubroutineEntry *>(
@@ -443,11 +447,17 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
             do
             {
                 subroutines[index].header =
-                    reinterpret_cast<unsigned char *>(files[fileCount]) + static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset;
+                    reinterpret_cast<unsigned char *>(
+                        reinterpret_cast<unsigned int>(files[fileCount]) +
+                        static_cast<unsigned int>(static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset));
                 subroutines[index].name = name;
-                name += strlen(name) + 1;
+                name = reinterpret_cast<const char *>(
+                    reinterpret_cast<unsigned int>(name) +
+                    static_cast<unsigned int>(strlen(name)) + 1u);
                 ++index;
-                scriptData = static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor) + 1;
+                scriptData = reinterpret_cast<void *>(
+                    reinterpret_cast<unsigned int>(offsetCursor) +
+                    static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
             } while (index < subroutineCount);
         }
     }
@@ -485,10 +495,16 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                     subroutines[index] = subroutines[index - 1];
 
                 subroutines[insertionIndex].header =
-                    reinterpret_cast<unsigned char *>(files[fileCount]) + static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset;
+                    reinterpret_cast<unsigned char *>(
+                        reinterpret_cast<unsigned int>(files[fileCount]) +
+                        static_cast<unsigned int>(static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset));
                 subroutines[insertionIndex].name = name;
-                name += strlen(name) + 1;
-                scriptData = static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor) + 1;
+                name = reinterpret_cast<const char *>(
+                    reinterpret_cast<unsigned int>(name) +
+                    static_cast<unsigned int>(strlen(name)) + 1u);
+                scriptData = reinterpret_cast<void *>(
+                    reinterpret_cast<unsigned int>(offsetCursor) +
+                    static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
                 ++sortedCount;
                 ++added;
             } while (added < files[fileCount]->subroutineCount);
@@ -505,8 +521,9 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     if (file->includeLength != 0)
     {
         LoadPackage(
-            reinterpret_cast<unsigned char *>(file)
-            + sizeof(EclVmScriptFileHeader));
+            reinterpret_cast<unsigned char *>(
+                reinterpret_cast<unsigned int>(file) +
+                static_cast<unsigned int>(sizeof(EclVmScriptFileHeader))));
     }
     return result;
 }
