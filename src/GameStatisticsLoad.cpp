@@ -4,9 +4,11 @@
 #include <string.h>
 #include "Decompress.hpp"
 #include "Rng.hpp"
-// The record initializer remains a declared, unreconstructed dependency.
+// The record initializer is reconstructed in GameStatisticsRecordDefaults.cpp.
+// The retail callee has a stack argument and RET 4; its real source is
+// included in the statistics constructor LTCG graph instead of a stand-in.
 void InitializeStatisticsTail42ADD0(GameStatisticsTail *tail);
-void InitializeStatisticsRecord42ACB0(GameStatisticsRecord *record);
+void __stdcall InitializeGameStatisticsRecord(GameStatisticsRecord *record);
 
 GameStatisticsOwner::GameStatisticsOwner()
 {
@@ -15,7 +17,7 @@ GameStatisticsOwner::GameStatisticsOwner()
     header = reinterpret_cast<GameStatisticsFileHeader *>(FileSystem::OpenFile("scoreth10.dat", &fileSize, 1));
     InitializeStatisticsTail42ADD0(&tail);
     for (GameStatisticsRecord *record = records; static_cast<unsigned int>(record - records) < 7; ++record)
-        InitializeStatisticsRecord42ACB0(record);
+        InitializeGameStatisticsRecord(record);
     Load42B030();
 }
 

@@ -1,5 +1,20 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-07 statistics constructor real record dependency
+
+The original `GameStatisticsOwner::GameStatisticsOwner` calls the real
+`InitializeGameStatisticsRecord @0x0042ACB0` for each of seven initialized
+records, using a stack argument with callee `RET4`. The reconstructed
+constructor had a separate unresolved declaration. The maintained caller
+now links the real, source-present 274-byte function through the genuine
+six-source constructor graph; the call's native target is its actual PDB
+address, no anchor. Installed-source selected finalizer564, loader423 and
+tail142 original-bound exact units still pass1129/1129; same-image
+destructor45 exact. Constructor137 versus target132 and factory98 versus97
+remain NONEXACT. No new canonical credit.
+[Native proof](evidence/statistics-record-real-caller-20261107/README.md).
+
+
 ## 2026-11-07 statistics record default-name copy
 
 `InitializeGameStatisticsRecord` remains a **274-byte NONEXACT** owner. The

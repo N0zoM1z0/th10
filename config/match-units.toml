@@ -24622,8 +24622,9 @@ linkages = []
 artifact_kind = "linked-pe"
 source = "src/GameStatisticsLoad.cpp"
 pdb_source = "src/GameStatisticsLoad.cpp"
-support_sources = ["src/GameStatistics.cpp", "src/FileSystem.cpp", "src/Decompress.cpp", "src/RandomMath.cpp"]
+support_sources = ["src/GameStatistics.cpp", "src/FileSystem.cpp", "src/Decompress.cpp", "src/RandomMath.cpp", "src/GameStatisticsRecordDefaults.cpp"]
 normal_support_sources = ["src/Decompress.cpp"]
+support_profiles = { "src/GameStatisticsRecordDefaults.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"] }
 output_dir = "build/match-linked/GameStatisticsTail"
 entry_symbol = "?CreateStatistics42AF20@@YGPAUGameStatisticsOwner@@XZ"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc", "/Gz"]
@@ -24642,8 +24643,9 @@ linkages = [{"offset" = 53, "type" = "REL32", "symbol" = "?Decrypt@FileSystem@@Y
 artifact_kind = "linked-pe"
 source = "src/GameStatisticsLoad.cpp"
 pdb_source = "src/GameStatistics.cpp"
-support_sources = ["src/GameStatistics.cpp", "src/FileSystem.cpp", "src/Decompress.cpp", "src/RandomMath.cpp"]
+support_sources = ["src/GameStatistics.cpp", "src/FileSystem.cpp", "src/Decompress.cpp", "src/RandomMath.cpp", "src/GameStatisticsRecordDefaults.cpp"]
 normal_support_sources = ["src/Decompress.cpp"]
+support_profiles = { "src/GameStatisticsRecordDefaults.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"] }
 output_dir = "build/match-linked/GameStatisticsTail"
 entry_symbol = "?CreateStatistics42AF20@@YGPAUGameStatisticsOwner@@XZ"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc", "/Gz"]
@@ -24684,8 +24686,9 @@ linkages = [
 artifact_kind = "linked-pe"
 source = "src/GameStatisticsLoad.cpp"
 pdb_source = "src/GameStatisticsLoad.cpp"
-support_sources = ["src/GameStatistics.cpp", "src/FileSystem.cpp", "src/Decompress.cpp", "src/RandomMath.cpp"]
+support_sources = ["src/GameStatistics.cpp", "src/FileSystem.cpp", "src/Decompress.cpp", "src/RandomMath.cpp", "src/GameStatisticsRecordDefaults.cpp"]
 normal_support_sources = ["src/Decompress.cpp"]
+support_profiles = { "src/GameStatisticsRecordDefaults.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"] }
 output_dir = "build/match-linked/GameStatisticsTail"
 entry_symbol = "?CreateStatistics42AF20@@YGPAUGameStatisticsOwner@@XZ"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc", "/Gz"]
