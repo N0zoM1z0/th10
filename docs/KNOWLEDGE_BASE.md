@@ -51,6 +51,20 @@ installed-source original-bound ECL exact guards cold-pass **1,037/1,037**.
 Run remains nonexact; no new match credit.
 [Proof](evidence/ecl-format-native-scalar-byte-address-20261107/README.md).
 
+## 2026-11-07 Enemy ECL native 0x210-byte pattern-index helper
+
+The 14,416-byte original Enemy ECL dispatcher now uses one natural inline
+`EnemyPatternAtRuntimeIndex` to form native low-32-bit record strides from
+unchecked script indices in all seven initialization stores and aim-mode
+publication. Both final pattern addresses for rank-interpolated bullet
+counts now also add unsigned 32-bit word operands. The **current 11-TU**
+compiled **14,352-byte candidate** and four related complete functions
+are candidate-byte- and field-geometry-identical to the current baseline.
+One cursor-reuse variant was rejected for changed field geometry. Five
+selected original-target argument leaves cold-pass **87/87**. The giant
+owner remains **NONEXACT**, zero new canonical exact credit.
+[Evidence](evidence/enemy-ecl-pattern-index-helper-20261107/README.md).
+
 ## 2026-11-07 ECL CALL serialized scalar word overlays
 
 The ECL `StartSubroutine` CALL argument float/int paths now read through

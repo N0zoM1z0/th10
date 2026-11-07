@@ -209,6 +209,16 @@ typedef char EnemyPatternBulletSpawnDescriptorOverlap[
      offsetof(EnemyBulletPatternFieldsView, flags1FC) ==
          offsetof(BulletSpawnDescriptorView, transformFlags)) ? 1 : -1];
 
+// Native 0x210-byte pattern index/address word for unchecked ECL operands.
+static __forceinline EnemyBulletPatternView *EnemyPatternAtRuntimeIndex(
+    int runtimeAddress, int patternIndex)
+{
+    return EnemyPatternAtRuntimeByte(static_cast<int>(
+        static_cast<unsigned int>(patternIndex) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress)));
+}
+
 // The five direct opcode stores use one checked overlapping-record address.
 // Keep each access expression local to its original argument read. Hoisting
 // this pointer across those reads changes the full dispatcher's LTCG liveness.
@@ -2175,13 +2185,13 @@ dispatch_difficulty_float_index_4_a:
       *puVar5 = 0;
       puVar5 = puVar5 + 1;
     }
-    bulletPatterns[iVar26].fields.countA = 1;
-    bulletPatterns[iVar26].fields.countB = 1;
-    bulletPatterns[iVar26].fields.angleABits = 0;
-    bulletPatterns[iVar26].fields.speedABits = 0x40000000u;
-    bulletPatterns[iVar26].fields.soundId = 7;
-    bulletPatterns[iVar26].fields.soundVariant = 0x18;
-    bulletPatterns[iVar26].fields.flags1FC = 0x203;
+    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.countA = 1;
+    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.countB = 1;
+    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.angleABits = 0;
+    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.speedABits = 0x40000000u;
+    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.soundId = 7;
+    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.soundVariant = 0x18;
+    EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.flags1FC = 0x203;
     reinterpret_cast<EnemyPositionDwordView *>(&bulletPatternOffsets[iVar26])->word[0] = 0;
     reinterpret_cast<EnemyPositionDwordView *>(&bulletPatternOffsets[iVar26])->word[1] = 0;
     return 0;
@@ -2516,19 +2526,23 @@ dispatch_select_bullet_count_low:
     iVar26 = static_cast<int>((static_cast<unsigned int>(uVar24) -
         static_cast<unsigned int>(uVar23)) *
         (static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x400u));
-    EnemyPatternAtRuntimeByte(iVar27 + (int)runtimeAddress)->fields.countA =
+    EnemyPatternAtRuntimeByte(static_cast<int>(
+        static_cast<unsigned int>(iVar27) +
+        static_cast<unsigned int>(runtimeAddress)))->fields.countA =
          (short)(iVar26 / 2048) + (short)uVar23;
     iVar26 = static_cast<int>((static_cast<unsigned int>(uVar25) -
         static_cast<unsigned int>(secondLowBulletCount)) *
         (static_cast<unsigned int>(g_EnemyChapterState.rank) + 0x400u));
-    EnemyPatternAtRuntimeByte(iVar27 + (int)runtimeAddress)->fields.countB =
+    EnemyPatternAtRuntimeByte(static_cast<int>(
+        static_cast<unsigned int>(iVar27) +
+        static_cast<unsigned int>(runtimeAddress)))->fields.countB =
          (short)(iVar26 / 2048) +
          (short)secondLowBulletCount;
     return 0;
   case ENEMY_ECL_SET_BULLET_AIM_MODE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
-    bulletPatterns[uVar22].fields.aimMode = static_cast<unsigned short>(uVar23);
+    EnemyPatternAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar22))->fields.aimMode = static_cast<unsigned short>(uVar23);
     return 0;
   case ENEMY_ECL_SET_BULLET_SOUND:
     uVar22 = ENEMY_READ_INT_DIRECT(0);

@@ -140,6 +140,13 @@ in the canonical exact scoreboard. No full historical replay was run.**
   **6,997/7,020**, all **189** target fields; nine ECL exact guards
   **1,161/1,161**. [Proof](evidence/ecl-call-scalar-word-overlay-20261107/README.md).
 
+- Enemy ECL opcode pattern initialization/aim-mode and rank-interpolated
+  count stores now share native modulo-2^32 index/address arithmetic.
+  Source-pinned full **11-TU** dispatcher remains **14,352 candidate vs
+  14,416 original**, four neighboring owners unchanged; five selected
+  original-bound ECL argument leaves **87/87**. Giant owner NONEXACT.
+  [Current proof](evidence/enemy-ecl-pattern-index-helper-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -196,7 +203,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
-| `src/EnemyEclDispatcher.cpp` | `b36cb6ee4e534f93b4ee85c63a0d63beb23e291c38abb6788adad3d5cfb642f6` |
+| `src/EnemyEclDispatcher.cpp` | `90b0e299a82b1af3eac18f9c6e835d756b01b93358f52f56cd80881193a62be2` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
