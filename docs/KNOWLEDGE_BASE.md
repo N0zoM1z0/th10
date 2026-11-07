@@ -104,6 +104,19 @@ geometry. Five original-bound ECL leaves cold-pass **87/87**.
 Dispatcher remains **NONEXACT**, zero new canonical exact bytes.
 [Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
 
+## 2026-11-07 Bullet SpawnSingle native indexed script/color tables
+
+The big `SpawnSingleBullet` spawner now reads five unchecked signed-short
+indexed tables through a typed `BulletNativeTableRead<T>` helper that
+computes actual i386 low-32-bit address words, not C++ out-of-array
+pointer offsets. In a freshly rebuilt current seven-TU `/GL /GS` graph,
+all **1,504 candidate spawner bytes/44 candidate fields** and four
+complete neighboring PDB owner bodies preserve the prior source codegen.
+Original SpawnSingle is **1,413 bytes**, still NONEXACT. Five selected
+original-bound accepted Bullet owners cold-pass **1,028/1,028** across
+their correct two graphs. Zero new exact credit.
+[Evidence](evidence/bullet-spawn-native-table-index-20261107/README.md).
+
 ## 2026-11-07 ANM ExecuteScript native counter-word increment
 
 The `TickScriptTimerScale` helper inlined into ANM `ExecuteScript` now

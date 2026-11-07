@@ -11,6 +11,18 @@ extern int g_BulletEffectMode[];
 extern int g_BulletEffectScriptByColor[];
 extern int g_BulletDrawBucket[];
 extern float g_BulletCollisionSize[];
+// Original bullet tables are indexed by signed ECL-provided shorts. The
+// i386 address calculation uses a low-32-bit word, including out-of-range
+// offsets; do not form a C++ out-of-bounds pointer through array indexing.
+template <class T> static __forceinline T BulletNativeTableRead(
+    const T *base, int index)
+{
+    return *reinterpret_cast<const T *>(
+        reinterpret_cast<unsigned int>(base) +
+        static_cast<unsigned int>(index) * sizeof(T));
+}
+
+
 extern unsigned int EnemyCancelBulletRecord(unsigned char *bullet);
 extern void *g_EnemyBulletManager;
 extern void BulletQueueSoundAtPosition(int soundId, float positionX);
@@ -739,11 +751,11 @@ int BulletManagerView::SpawnSingleBullet(
     bullet->vm.InitializeForLoadedScript(
         bulletAnm,
         static_cast<int>(
-            static_cast<unsigned int>(g_BulletSpriteScriptBase[descriptor->bulletType]) +
+            static_cast<unsigned int>(BulletNativeTableRead(g_BulletSpriteScriptBase, static_cast<int>(descriptor->bulletType))) +
             static_cast<unsigned int>(static_cast<int>(descriptor->color))));
 
     // The effect-script ID also uses retail LEA EAX*2+0x11 word wrap.
-    switch (g_BulletEffectMode[descriptor->bulletType])
+    switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(descriptor->bulletType)))
     {
     case 0:
         bullet->effectScript = static_cast<int>(
@@ -751,7 +763,7 @@ int BulletManagerView::SpawnSingleBullet(
             0x11u);
         break;
     case 1:
-        bullet->effectScript = g_BulletEffectScriptByColor[descriptor->color];
+        bullet->effectScript = BulletNativeTableRead(g_BulletEffectScriptByColor, static_cast<int>(descriptor->color));
         break;
     case 2:
         bullet->effectScript = -1;
@@ -766,10 +778,10 @@ int BulletManagerView::SpawnSingleBullet(
         break;
     }
 
-    bullet->drawBucketIndex = g_BulletDrawBucket[descriptor->bulletType];
+    bullet->drawBucketIndex = BulletNativeTableRead(g_BulletDrawBucket, static_cast<int>(descriptor->bulletType));
     bullet->transformSound = descriptor->transformSound;
     bullet->offscreenCullDelayFrames = 10;
-    bullet->collisionWidth = g_BulletCollisionSize[descriptor->bulletType];
+    bullet->collisionWidth = BulletNativeTableRead(g_BulletCollisionSize, static_cast<int>(descriptor->bulletType));
     bullet->collisionHeight = bullet->collisionWidth;
 
     transformFlags = descriptor->transformFlags;

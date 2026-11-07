@@ -192,6 +192,13 @@ in the canonical exact scoreboard. No full historical replay was run.**
   target-bound code fields, and selected ANM guards **876/876**. Original
   opcode-91 two-register byte frontier is still open. [Evidence](evidence/anm-script-timer-native-counter-20261107/README.md).
 
+- Bullet `SpawnSingleBullet` now computes all five script type/color
+  table accesses through a native typed low-32-bit address-word helper.
+  Current 7-TU **1,504 candidate bytes** and four neighboring owners are
+  unchanged (44 candidate spawner fields); original **1,413-byte** target
+  remains NONEXACT. Five selected original-bound Bullet guards pass
+  **1,028/1,028**. [Proof](evidence/bullet-spawn-native-table-index-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -256,7 +263,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletTransform.cpp` | `05a488b848b78fd97561676973f2e02619d7e28fe403150e59da1e55cf309e24` |
-| `src/BulletManager.cpp` | `5edcaf7151ebcacce077d8116d7e2adf1e33ef2dc1389ab4950be2253b81ec0b` |
+| `src/BulletManager.cpp` | `9a0f09a620cf03e38105fdc14e11baca9ae40e59444540286032862f08075348` |
 | `src/Sound.cpp` | `5b019a039a6895a57b9ffa783cf9fc7d92b34b7032199e0316c136b357aed7ac` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
