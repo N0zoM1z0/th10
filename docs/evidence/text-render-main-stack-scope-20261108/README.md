@@ -57,20 +57,49 @@ caller differs by one byte; the already accepted font-release unit
 continues to use its own correct all-`/GL` graph. This source change
 must not overwrite that existing compiler context.
 
-At this *source-checkpoint* stage the strict 554-byte candidate is
-**not yet admitted to the canonical ledger**. A separate second native
-cold build and explicit acceptance are required for **new** exact credit.
-This is not a complete executable or runtime-equivalence claim.
+## Canonical exact admission — two distinct current-source cold builds
+
+The previously provisional 554-byte source owner is now **accepted** as
+`text-render-main` in `config/match-units.toml`, the sorted
+`config/matches.csv` exact ledger, and `config/functions.csv` with its
+reviewed authored origin. All 35 original relocation fields are
+independently matched to real symbols, actual target addresses and exact
+record-member addends. They are not masked as anonymous unknown dwords.
+
+Two separate canonical `replay-exact-units.py --unit text-render-main`
+source builds independently verify **554/554 code bytes, 35/35 fields**:
+
+| Selected verification | New render owner | Other exact text owners | Strict total |
+| --- | ---: | ---: | ---: |
+| Cold 1, seven units / four artifact graphs | 554/554 | 2,476/2,476 | **3,030/3,030** |
+| Cold 2, render + separate font release | 554/554 | 149/149 | **703/703** |
+
+The main hybrid PE SHA-256s differ:
+`8b25539bea7caed24ddffaf198ba2a7c2b2eca185a9b450add9467d88081ebe7`
+and `35b68f1b086768750880c3605ab231a325d5092837472181faa6fc60079be919`.
+The original source SHA remains pinned to
+`0adc88ef7764554082d1feea916cbc9e211d5c5aa9dddb491f0174ac05522c75`.
+Canonical current totals rise from **1,499 to 1,500 exact owners**, and
+from **196,265 to 196,819 exact original bytes**: **+1 authored exact
+owner, +554 bytes**. This acceptance is a **codegen equivalence claim**,
+not an assertion of original C++ source spelling, physical source TU,
+full executable product build, or runtime equivalence.
 
 Focused exact guard:
 
 ```sh
 scripts/repo-python scripts/replay-exact-units.py \
-  --unit text-font-release-resources --unit text-create-buffer \
-  --unit text-try-allocate-buffer --unit text-release-buffer \
-  --unit text-fill-color --unit text-buffer-apply-alpha-bleed --json
+  --unit text-render-main --unit text-font-release-resources \
+  --unit text-create-buffer --unit text-try-allocate-buffer \
+  --unit text-release-buffer --unit text-fill-color \
+  --unit text-buffer-apply-alpha-bleed --json
 scripts/repo-python scripts/verify-handoff-pins.py
 scripts/repo-python scripts/ci.py
 ```
 
 Source SHA-256: `0adc88ef7764554082d1feea916cbc9e211d5c5aa9dddb491f0174ac05522c75`.
+
+Independent canonical acceptance receipts:
+`.analysis/gpt-web/20261107-active/text-main-canonical-cold-1.json`,
+`text-main-canonical-cold-2.json` and private fully decoded
+`text-main-original-fields.json`.

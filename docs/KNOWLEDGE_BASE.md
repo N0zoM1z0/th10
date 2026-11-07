@@ -22,7 +22,14 @@ TextFontRelease primary `/GL` + TextRenderer **normal COFF** + RandomMath
 comparison with all **35 target fields**. All-`/GL` graph has 11
 remaining EAX vs ECX call-convention differences; don't conflate.
 Six prior accepted text exact owners cold-pass **2,476/2,476**.
-Second independent cold and formal ledger acceptance are still required.
+**Canonical exact acceptance is complete:** two separate new unit cold
+compilations from the pinned installed source have distinct PE identities,
+match **554/554** original bytes and all **35** original referents with
+correct source/addend/call semantics. The first seven-unit selected cold
+passes **3,030/3,030** bytes; second focused cold passes **703/703**.
+This adds **one newly exact authored owner and 554 original codegen bytes**.
+The all-LTCG 149-byte font-release owner stays in its correct separate
+graph, and whole-game/runtime closure remains unproven.
 [Evidence](evidence/text-render-main-stack-scope-20261108/README.md).
 
 ## 2026-11-07 ECL FORMAT native scratch/text and argument words
