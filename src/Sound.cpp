@@ -796,7 +796,8 @@ process_command:
         {
             if (command->step != 0)
             {
-                ++command->step;
+                command->step = static_cast<int>(
+            static_cast<unsigned int>(command->step) + 1u);
                 break;
             }
             StopBgm();
@@ -876,7 +877,8 @@ process_command:
             else if (command->step >= 7)
                 goto remove_command;
         }
-        ++command->step;
+        command->step = static_cast<int>(
+            static_cast<unsigned int>(command->step) + 1u);
         break;
 
     case SOUND_COMMAND_RELEASE_BGM:
@@ -895,7 +897,8 @@ process_command:
             if (WaitForSingleObject(bgmThreadHandle, 256) != WAIT_OBJECT_0)
             {
                 PostThreadMessageA(bgmThreadId, WM_QUIT, 0, 0);
-                --command->step;
+                command->step = static_cast<int>(
+                    static_cast<unsigned int>(command->step) - 1u);
             }
             else
                 bgmThreadHandle = NULL;
@@ -914,7 +917,8 @@ process_command:
         }
         else if (command->step == 10)
             goto remove_command;
-        ++command->step;
+        command->step = static_cast<int>(
+            static_cast<unsigned int>(command->step) + 1u);
         break;
 
     case SOUND_COMMAND_STOP_BGM:
@@ -924,7 +928,8 @@ process_command:
             bgm->Stop();
         else if (command->step == 1)
             goto remove_command;
-        ++command->step;
+        command->step = static_cast<int>(
+            static_cast<unsigned int>(command->step) + 1u);
         break;
 
     case SOUND_COMMAND_FADE_BGM:
