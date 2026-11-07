@@ -682,7 +682,7 @@ int SoundPlayerView::ReopenBgm(const char *path)
         return -1;
 
     const int index = GetFmtIndexByName(path);
-    ThBgmFormat *format = &bgmFormats[index];
+    ThBgmFormat *format = SoundWordSlot(bgmFormats, index);
     CWaveFile *waveFile = bgm->GetWaveFile();
     waveFile->Reopen(format);
     return 0;
@@ -761,12 +761,12 @@ int SoundPlayerView::LoadBgm(int index)
         return -1;
 
     if ((g_MainSupervisorView.configuration.options & 0x10) == 0)
-        return ReopenBgm(bgmFileNames[index]);
+        return ReopenBgm(*SoundWordSlot(&bgmFileNames[0], index));
 
-    if (bgmPreloadAllocations[index] == NULL)
+    if (*SoundWordSlot(&bgmPreloadAllocations[0], index) == NULL)
         return -1;
 
-    ThBgmFormat *format = bgmPreloadFormats[index];
+    ThBgmFormat *format = *SoundWordSlot(&bgmPreloadFormats[0], index);
     DWORD blockAlign = format->format.nBlockAlign;
     DWORD notifySize = format->format.nSamplesPerSec * 4 * blockAlign / 16;
     notifySize -= notifySize % blockAlign;
@@ -777,7 +777,8 @@ int SoundPlayerView::LoadBgm(int index)
         0, &bgmThreadId);
 
     HRESULT result = manager->CreateStreamingFromMemory(
-        &bgm, bgmPreloadData[index], bgmPreloadAllocSizes[index], format,
+        &bgm, *SoundWordSlot(&bgmPreloadData[0], index),
+        *SoundWordSlot(&bgmPreloadAllocSizes[0], index), format,
         DSBCAPS_GETCURRENTPOSITION2 | DSBCAPS_CTRLPOSITIONNOTIFY,
         GUID_NULL, 16, notifySize, bgmUpdateEvent);
     if (result < 0)

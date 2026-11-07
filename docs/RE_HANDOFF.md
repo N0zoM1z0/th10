@@ -98,6 +98,19 @@ EnemyRuntimeUpdate (2,371 candidate / 2,412 original) and callback
 (606 / 593) remain NONEXACT, with zero candidate ordinary differences and
 unchanged candidate field geometry. [Evidence](evidence/enemy-interpolation-timer-words-20261107/README.md).
 
+## BGM format and preloaded table native indices (2026-11-07)
+
+The previously exact **55-byte** ReopenBgm now uses a typed Win32
+low-32-bit `0x34`-stride BGM format row address. The separate original
+**298-byte** LoadBgm (304-byte candidate) uses native indices into the
+filename and four preload tables, without adding a range check. Seven
+complete two-TU native source trials preserve ReopenBgm **55/55**,
+ProcessQueues **1452/1452**, the unchanged LoadBgm owner and PreloadBgm
+**365/369** (four ordinary differences, original fields intact).
+Installed-source selected cold replay: **2212/2212** already exact Sound
+bytes in six units/four artifacts, no new exact credit.
+[Evidence](evidence/sound-bgm-native-index-words-20261107/README.md).
+
 ## Sound sample loader native address recovery (2026-11-07)
 
 `LoadSoundSample` has unchecked sound-buffer/pending-data indices, RIFF
@@ -380,7 +393,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletTransform.cpp` | `05a488b848b78fd97561676973f2e02619d7e28fe403150e59da1e55cf309e24` |
 | `src/BulletManager.cpp` | `9a0f09a620cf03e38105fdc14e11baca9ae40e59444540286032862f08075348` |
-| `src/Sound.cpp` | `6a7d27653b231ce1104e05312ee520c80b4d86145012e4b803ee61c60e315945` |
+| `src/Sound.cpp` | `a0a86cdf8b8d5272ddfc19355af6c2901c9355e9d8f4818ab3f473e3fc58f3df` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |

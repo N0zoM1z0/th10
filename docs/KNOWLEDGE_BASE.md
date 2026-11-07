@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Sound BGM format and 16-slot preloaded native indices
+
+`ReopenBgm` now forms unchecked 0x34-byte BGM format record indices as
+low-32-bit word addresses; `LoadBgm` does likewise for its 16-slot
+filename, preload allocation, format, data and size tables. Seven
+independent two-TU native candidate trials retained the complete 55-byte
+original exact ReopenBgm, 304-byte nonexact LoadBgm candidate (target
+298), and 369-byte PreloadBgm with only four original ordinary differences.
+Current source cold replay in four scoped artifacts preserves six
+previously exact Sound units **2212/2212** and all 70 target-bound fields.
+No new exact-owner credit, whole-game build, or runtime claim.
+[Evidence](evidence/sound-bgm-native-index-words-20261107/README.md).
+
 ## 2026-11-07 Sound WAV loader native file and byte address words
 
 The full **684-byte** `LoadSoundSample` now forms unchecked `soundBuffers`
