@@ -36,6 +36,20 @@ were rejected. Five selected target-bound ECL operand leaves cold-pass
 **87/87** bytes; seven CI stages pass. No added canonical exact credit.
 [Evidence](evidence/enemy-ecl-spell-name-native-words-20261107/README.md).
 
+## 2026-11-07 Enemy ECL counted spell-name native address words
+
+In the 14,416-byte original Enemy ECL dispatcher, five spell-start opcodes
+read a script-counted encrypted name into a local byte buffer. The real i386
+loop uses flat byte-address arithmetic. Both source/destination byte indices
+now use `EnemyNativeWordIndex` with no artificial clamp. Five 11-TU trials
+and three additional combined managed-VM-ID trials established that the
+selected read/write-word source preserves the **14,352-byte nonexact**
+current-source dispatcher candidate, all 716 candidate field positions,
+and four neighboring complete bodies. The combined VM-ID forms changed the
+spell loop SIB byte and were rejected. Five independently original-bound
+ECL argument leaves remain **87/87** exact. No new exact credit.
+[Evidence](evidence/enemy-ecl-spell-name-words-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL 528-byte pattern clearing native cursor
 
 An uncommitted Enemy ECL source change was kept, investigated and verified
