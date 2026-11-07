@@ -1407,9 +1407,12 @@ jump_instruction:
                         break;
 
                     strcpy(scratch, cursor);
-                    scratch[reinterpret_cast<unsigned int>(percent) -
-                            reinterpret_cast<unsigned int>(cursor)] = '\0';
-                    switch (percent[1]) {
+                    *reinterpret_cast<char *>(
+                        reinterpret_cast<unsigned int>(scratch) +
+                        (reinterpret_cast<unsigned int>(percent) -
+                         reinterpret_cast<unsigned int>(cursor))) = '\0';
+                    switch (*reinterpret_cast<const char *>(
+                        reinterpret_cast<unsigned int>(percent) + 1u)) {
                     case '%':
                         EclDebugTrace(scratch);
                         break;
@@ -1421,8 +1424,10 @@ jump_instruction:
                                 instruction->operands)->inlineBytes;
                         const EclVmFormatArgumentView *argument =
                             reinterpret_cast<const EclVmFormatArgumentView *>(
-                                instruction->operands + sizeof(int) +
-                                inlineBytes +
+                                reinterpret_cast<unsigned int>(
+                                    instruction->operands) +
+                                static_cast<unsigned int>(sizeof(int)) +
+                                static_cast<unsigned int>(inlineBytes) +
                                 static_cast<unsigned int>(argumentIndex) *
                                 static_cast<unsigned int>(sizeof(EclVmFormatArgumentView)));
                         // FORMAT is a counted scalar word stream, not a

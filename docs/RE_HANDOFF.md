@@ -43,6 +43,20 @@ scripts/repo-python scripts/ci.py
 
 ## Authoritative progress and current nonexact work
 
+## ECL FORMAT native counted text and argument addresses (2026-11-07)
+
+In the full **7,020-byte** `EclVmContext::Run`, the inline FORMAT
+scratch terminator, `%` character fetch and counted argument-record
+address now use native modulo-32-bit words, not C++ out-of-array
+pointer arithmetic. Four real ECL/Enemy two-TU experiments show that
+the record-address-only variant regresses **6,997 to 6,996/7,020**, but
+the installed three-way combination preserves **6,997/7,020** and all
+**189** original field bindings. Eight selected previously exact VM
+owners cold-pass **1,081/1,081**. Run still has 23 differing bytes;
+no new exact credit. [Evidence](evidence/ecl-format-native-text-addresses-20261107/README.md).
+
+
+
 ## FileSystem Encrypt native replay shuffle (2026-11-07)
 
 `FileSystem::Encrypt` now uses the existing low-32-bit native byte-offset
@@ -79,7 +93,7 @@ These are the latest relevant **whole-owner** baselines, not acceptance:
 | Original target | Original / source PDB bytes | Current evidence and unresolved action |
 | --- | ---: | --- |
 | ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964 original ordinary bytes, all 350 original-bound fields**; opcode 91 at `+0x113,+0x115` uses EDX in target, ECX candidate. Fourteen-/five-TU contexts differ. Seventeen new local register/lifetime forms failed. [Current vertex-index word proof](evidence/anm-render9-native-vertex-index-20261107/README.md), [earlier mode-9 proof](evidence/anm-render9-native-vertex-words-20261107/README.md), [original opcode-91 frontier](evidence/anm-variable-stream-native-address-20261107/README.md). |
-| ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020 original bytes, all 189 target-bound fields** in real ECL/Enemy **two-TU** graph; single-TU context can be **6,996/7,020** without a regression. Remaining 23 bytes span FORMAT register/stack homes, LENGTH_SQUARED, POINT_ANGLE, loop/callback. Some `Pop` unsigned pointer forms regress whole Run despite leaf exact. [FORMAT evidence](evidence/ecl-format-argument-index-wrap-20261107/README.md), [Pop rejection](evidence/ecl-stack-push-native-word-20261107/README.md). |
+| ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020 original bytes, all 189 target-bound fields** in real ECL/Enemy **two-TU** graph; single-TU context can be **6,996/7,020** without a regression. Remaining 23 bytes span FORMAT register/stack homes, LENGTH_SQUARED, POINT_ANGLE, loop/callback. Some `Pop` unsigned pointer forms regress whole Run despite leaf exact. [Current FORMAT native-address proof](evidence/ecl-format-native-text-addresses-20261107/README.md), [FORMAT evidence](evidence/ecl-format-argument-index-wrap-20261107/README.md), [Pop rejection](evidence/ecl-stack-push-native-word-20261107/README.md). |
 | Enemy ECL `DispatchEclInstruction @0x0040E770` | 14,416 / 14,352 | 64-byte size gap, **716 candidate fields only**; not 716 independently target-bound links. Fresh 11-TU source/field graph, 87/87 related exact operand guards. [Current spell-name proof](evidence/enemy-ecl-spell-name-native-words-20261107/README.md), [STOSD proof](evidence/enemy-ecl-pattern-clear-stos-word-20261107/README.md), [earlier pattern/spawn](evidence/enemy-ecl-spawn-pattern-index-words-20261107/README.md). |
 | `EnemyRuntimeUpdate @0x0040DC80` | 2,412 / 2,371 | 69 **candidate** fields; native life SUB, flash DEC and ANM script ADD source semantics installed. Its independently compiled 593-byte target / 606-byte source callback now has native 32-bit countdown and timeout words, still nonexact. [Callback proof](evidence/enemy-callback-native-arithmetic-20261107/README.md). PDB candidate unchanged, not exact. [Script word proof](evidence/enemy-runtime-animation-script-word-20261107/README.md). |
 | `SpawnSingleBullet @0x004067D0` | 1,413 / 1,504 | 44 **candidate** fields; odd-angle index, both 0x7F0-byte pool advances, ANM/effect-script words installed. Nine seven-TU source probes leave entire candidate unchanged; canonical SpawnBulletPattern194 must be replayed in its **different** correct graph. [Final source](evidence/bullet-spawn-script-words-20261107/README.md). |
@@ -429,7 +443,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `3ab26d964232575916055f24a0b09dffb32bc059b0a8fced7751d815a290f677` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `0e94c3f1b23ae662bead5c35dbf24725f31799a9eed4e6d02813e9b514a0226b` |
+| `src/EclVm.cpp` | `62cbc480c658beec6fca953680cb1267faf546d6dcaf3d19d0937472f4c74766` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |

@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 ECL FORMAT native scratch/text and argument words
+
+`EclVmContext::Run` now forms the unchecked 0x400-byte FORMAT scratch
+terminator address, post-percent byte read and serialized argument
+record via i386 low-32-bit word addresses. Four complete current-source
+EclVm/Enemy `/GL` native experiments preserve the full **7,020-byte**
+VM interpreter and all **189** original-bound fields. The argument
+record change alone costs one byte (6,996), but the installed combined
+version returns to **6,997/7,020**, with the same 23 remaining original
+byte mismatches. Selected eight prior exact VM leaves cold-pass
+**1,081/1,081**. No new exact function or codegen credit.
+[Evidence](evidence/ecl-format-native-text-addresses-20261107/README.md).
+
 ## 2026-11-07 LoadBgm 298-byte format-pointer lifetime breakthrough
 
 TH10 `LoadBgm @0x0043D950` loads the 16-bit alignment into EBP and
