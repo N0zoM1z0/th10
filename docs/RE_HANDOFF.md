@@ -199,6 +199,13 @@ in the canonical exact scoreboard. No full historical replay was run.**
   remains NONEXACT. Five selected original-bound Bullet guards pass
   **1,028/1,028**. [Proof](evidence/bullet-spawn-native-table-index-20261107/README.md).
 
+- Enemy ECL now also expresses six unchecked typed gauge/drop/slot/timeout
+  addresses as native 32-bit words. Fresh rebuilt eleven-TU current candidate
+  still 14,352 bytes/716 candidate fields, four neighboring owners
+  unchanged; five original-bound ECL leaves pass **87/87**. Target
+  dispatcher 14,416 is NONEXACT.
+  [Proof](evidence/enemy-ecl-native-unchecked-index-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -255,7 +262,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
-| `src/EnemyEclDispatcher.cpp` | `a9953fb9b0937c0c9f81606a476aadb2815a99aaa54ba1a286801c2a12e5e6ef` |
+| `src/EnemyEclDispatcher.cpp` | `02f8994f45e4dc93e0d4865bbd23a6af8bd8960f12e8511bb62fe6dfdb455189` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |

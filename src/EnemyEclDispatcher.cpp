@@ -209,6 +209,15 @@ typedef char EnemyPatternBulletSpawnDescriptorOverlap[
      offsetof(EnemyBulletPatternFieldsView, flags1FC) ==
          offsetof(BulletSpawnDescriptorView, transformFlags)) ? 1 : -1];
 
+// Native ECL index arithmetic uses a flat 32-bit base plus a typed stride.
+// The script operands are not clamped by the original dispatcher.
+template <class T> static __forceinline T *EnemyNativeWordIndex(T *first, int index)
+{
+    return reinterpret_cast<T *>(
+        reinterpret_cast<unsigned int>(first) +
+        static_cast<unsigned int>(index) * static_cast<unsigned int>(sizeof(T)));
+}
+
 // Native 0x210-byte pattern index/address word for unchecked ECL operands.
 static __forceinline EnemyBulletPatternView *EnemyPatternAtRuntimeIndex(
     int runtimeAddress, int patternIndex)
@@ -2032,8 +2041,8 @@ dispatch_initialize_polar_interpolation:
     local_2a8 = (float)fVar19;
     iVar26 = lifeGaugeReference;
     uVar23 = ENEMY_READ_INT_DIRECT(0);
-    g_GuiView->bossGaugeValues[(int)uVar23].color = (unsigned int)uVar22;
-    g_GuiView->bossGaugeValues[(int)uVar23].value = local_2a8 / (float)iVar26;
+    EnemyNativeWordIndex(&g_GuiView->bossGaugeValues[0], static_cast<int>(uVar23))->color = (unsigned int)uVar22;
+    EnemyNativeWordIndex(&g_GuiView->bossGaugeValues[0], static_cast<int>(uVar23))->value = local_2a8 / (float)iVar26;
     return 0;
   case ENEMY_ECL_SET_DAMAGE_HITBOX:
     fVar19 = (ReadFloatArgument(0));
@@ -2083,7 +2092,7 @@ dispatch_initialize_polar_interpolation:
       }
     }
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    itemDropRawWords[iVar26] = (int)uVar22;
+    *EnemyNativeWordIndex(&itemDropRawWords[0], iVar26) = (int)uVar22;
     return 0;
   case ENEMY_ECL_SET_DROP_AREA:
     fVar19 = (ReadFloatArgument(1));
@@ -2127,7 +2136,7 @@ dispatch_initialize_polar_interpolation:
     iVar27 = (int)uVar22;
     if (iVar27 < 0) {
       if ((char)(flags >> 8) < 0) {
-        g_EnemyManager->specialEnemySlots[managerSlot] = 0;
+        *EnemyNativeWordIndex(&g_EnemyManager->specialEnemySlots[0], managerSlot) = 0;
       }
       flags &= 0xffff7fff;
       return 0;
@@ -2136,7 +2145,7 @@ dispatch_initialize_polar_interpolation:
     iVar26 = reinterpret_cast<int>(g_EnemyManager);
     uVar4 |= 0x8000;
     flags = uVar4;
-    reinterpret_cast<EnemyManagerView *>(iVar26)->specialEnemySlots[iVar27] = owner;
+    *EnemyNativeWordIndex(&reinterpret_cast<EnemyManagerView *>(iVar26)->specialEnemySlots[0], iVar27) = owner;
     managerSlot = iVar27;
     return 0;
   case ENEMY_ECL_SET_INVULNERABILITY:
@@ -2633,7 +2642,7 @@ dispatch_select_bullet_count_low:
     return 0;
   case ENEMY_ECL_SET_TIMEOUT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    owner->runtime.callbackThresholds[uVar22].timerCallbackName =
+    EnemyNativeWordIndex(&owner->runtime.callbackThresholds[0], static_cast<int>(uVar22))->timerCallbackName =
         reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->timeoutOperands.callbackName;
     return 0;
   case ENEMY_ECL_CANCEL_ALL_BULLETS:

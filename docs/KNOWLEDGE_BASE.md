@@ -104,6 +104,19 @@ geometry. Five original-bound ECL leaves cold-pass **87/87**.
 Dispatcher remains **NONEXACT**, zero new canonical exact bytes.
 [Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
 
+## 2026-11-07 Enemy ECL unchecked script-indexed record addresses
+
+Six runtime writes in the 14,416-byte original enemy ECL dispatcher now
+form explicit native modulo-32-bit typed addresses: boss gauges, raw item
+drops, special enemy slots, and timeout callback descriptors. The fresh
+current-source **eleven-TU** producer proves all **14,352 candidate bytes**
+and **716 candidate fields** retained, alongside four whole neighboring
+owners. The original target remains **NONEXACT** and adds no exact credit.
+Five directly related original-bound ECL argument leaves cold-pass
+**87/87**. A stale 11-TU cache with outdated ANM/dispatcher input pins
+was explicitly rejected and rebuilt, not treated as trustworthy history.
+[Evidence](evidence/enemy-ecl-native-unchecked-index-20261107/README.md).
+
 ## 2026-11-07 Bullet SpawnSingle native indexed script/color tables
 
 The big `SpawnSingleBullet` spawner now reads five unchecked signed-short
