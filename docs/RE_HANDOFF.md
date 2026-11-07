@@ -104,9 +104,9 @@ unchanged candidate field geometry. [Evidence](evidence/enemy-interpolation-time
 byte cursors and split PCM data offsets. Typed Win32 word-address helpers
 now express these while preserving the complete five-TU current source
 owner at **684 bytes / 578 of 584 ordinary original bytes** and **25
-candidate fields** (still nonexact, six ordering bytes). Six independent
-full parent trials, plus installed-source selected original-bound replay:
-**1,874/1,874 exact bytes across five existing Sound units**. No new
+candidate fields** (still nonexact, six ordering bytes). Seven independent
+full parent trials, plus an extended installed-source original-bound replay:
+**2,212/2,212 exact bytes across six existing Sound units**. No new
 codegen exact credit. [Evidence](evidence/sound-sample-native-address-words-20261107/README.md).
 
 ## Sound command stage native increments (2026-11-07)

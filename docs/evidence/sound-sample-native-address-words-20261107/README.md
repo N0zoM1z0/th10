@@ -24,9 +24,9 @@ pointer guarantee is claimed.
 
 ## Independent complete-source native trials
 
-Six C++ source forms were actually compiled and fully linked in the above
+Seven C++ source forms were actually compiled and fully linked in the above
 five-input graph against the original target: only the buffer slot,
-only pending-data slots, only RIFF byte advances, only second PCM copy,
+pending-data slots with repeated or local slot addressing, only RIFF byte advances, only second PCM copy,
 both slots, and the installed all-address combination. Every result
 preserved the entire 684-byte PDB contribution, all **25 candidate**
 link-field positions/type/width, and the remaining **six original ordinary
@@ -36,8 +36,10 @@ these 25 candidate fields are *not* upgraded to independent original
 bindings. All builds preserved the full 71-byte `FindWaveChunk` leaf,
 with its original CRT strncmp linkage.
 
-A separate selected cold replay from the **installed** source checked five
-already accepted units in four affected graphs:
+A first selected cold replay checked five already accepted units
+(1,874/1,874); a separate extended current-source cold replay also
+checked the original-bound 338-byte streaming-buffer owner. All six
+checks pass in the four affected graphs:
 
 | Existing exact unit | Original bytes |
 | --- | ---: |
@@ -46,7 +48,8 @@ already accepted units in four affected graphs:
 | `sound-process-queues` | 1,452/1,452 |
 | `sound-bgm-player-thread` | 189/189 |
 | `sound-player-reopen-bgm` | 55/55 |
-| **Total** | **1,874/1,874** |
+| `streaming-sound-init-buffers` | 338/338 |
+| **Total** | **2,212/2,212** |
 
 No new exact owner/codegen credit, whole-game build, or runtime correctness
 claim. The five-input retained parent from the installed source was also
@@ -57,7 +60,8 @@ ordinary mismatches. Reproduction (selected units only):
 scripts/repo-python scripts/replay-exact-units.py \
   --unit sound-find-wave-chunk --unit sound-data-loader-thread \
   --unit sound-process-queues --unit sound-bgm-player-thread \
-  --unit sound-player-reopen-bgm --json
+  --unit sound-player-reopen-bgm \
+  --unit streaming-sound-init-buffers --json
 scripts/repo-python scripts/verify-handoff-pins.py
 scripts/repo-python scripts/ci.py
 ```
@@ -67,3 +71,20 @@ Ignored source/PE/PDB/MAP trial artifacts are under
 `.../sound-sample-native-word-results.json`,
 `.../sound-sample-native-installed-replay.json`, and
 `build/gpt-web/20261107-active-sound-sample-words/`.
+
+## Additional current-source field/extent witness
+
+After the initial commit, the seven isolated word-index alternatives and
+the helper-based installed source were compared again from the real current
+five-TU PE/MAP/PDB against the complete original 684-byte function: the
+source retains **25 candidate** field locations/types and precisely six
+ordinary differing bytes at `+0x122..+0x127` (**578/584**). The sibling
+`FindWaveChunk` remains complete 71 bytes with one original-bound strncmp
+REL32 at `+0x1A`. The additional selected cold replay passes six existing
+exact units **2,212/2,212**, not a new match claim.
+
+Retained private receipts: `.analysis/gpt-web/20261107-active/`
+`sound-sample-native-index-probe.py`, `sound-sample-native-results.json`,
+`sound-sample-current-owners.json`, `sound-sample-words-selected-replay.json`;
+full independent candidate PE/MAP/PDB images are under
+`build/gpt-web/20261107-active-sound-sample-native/`.
