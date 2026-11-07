@@ -9,6 +9,17 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 ECL CALL argument counter native word
+
+`StartSubroutine` now increments its tagged CALL argument index via native
+32-bit unsigned-word addition and publishes it back to the signed counter.
+Two natural original-compiler trials preserved the entire 551-byte
+**NONEXACT** candidate and its four call-field positions; promoting the
+variable itself to unsigned changed two bytes and was rejected. Original
+7,020-byte `Run` remains **6,997/7,020**, all **189** target fields;
+eight selected previously exact ECL owners cold-pass **1,081/1,081**.
+[Evidence](evidence/ecl-call-argument-index-wrap-20261107/README.md).
+
 ## 2026-11-07 ECL sorted-subroutine merge native counter words
 
 `EclVmScriptDatabase::AddScriptData` now decrements its insertion-shift

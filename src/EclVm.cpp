@@ -683,7 +683,7 @@ int EclVmContext::StartSubroutine(
         for (; argumentIndex < (*callerInstruction)->operandCount;
              argument = reinterpret_cast<unsigned char *>(
                  reinterpret_cast<unsigned int>(argument) + sizeof(int)),
-             ++argumentIndex,
+             argumentIndex = static_cast<int>(static_cast<unsigned int>(argumentIndex) + 1u),
              valueOffset += sizeof(EclVmCallArgumentView),
              metadataOffset = static_cast<int>(
                  static_cast<unsigned int>(metadataOffset) +
