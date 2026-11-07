@@ -459,11 +459,21 @@ static void AddEclSubroutineCount(int &count, int added)
 }
 
 
+// Native SCPT file-slot words are indexed in one flat Win32 address space.
+// The parser does not range-check fileCount before forming a slot pointer.
+static __forceinline EclVmScriptFileHeader **EclFileSlotAtWord(
+    EclVmScriptFileHeader **base, int index)
+{
+    return reinterpret_cast<EclVmScriptFileHeader **>(
+        reinterpret_cast<unsigned int>(base) +
+        static_cast<unsigned int>(index) * sizeof(EclVmScriptFileHeader *));
+}
+
 int EclVmScriptDatabase::AddScriptData(void *scriptData)
 {
     const unsigned int SCPT_MAGIC = 0x54504353u;
-    files[fileCount] = static_cast<EclVmScriptFileHeader *>(scriptData);
-    EclVmScriptFileHeader *volatile *const fileSlot = &files[fileCount];
+    (*EclFileSlotAtWord(&files[0], fileCount)) = static_cast<EclVmScriptFileHeader *>(scriptData);
+    EclVmScriptFileHeader *volatile *const fileSlot = EclFileSlotAtWord(&files[0], fileCount);
     EclVmScriptFileHeader *file = *fileSlot;
     if (file->magic != SCPT_MAGIC)
     {
@@ -505,7 +515,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
             {
                 subroutines[index].header =
                     reinterpret_cast<unsigned char *>(
-                        reinterpret_cast<unsigned int>(files[fileCount]) +
+                        reinterpret_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))) +
                         static_cast<unsigned int>(static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset));
                 subroutines[index].name = name;
                 name = reinterpret_cast<const char *>(
@@ -523,14 +533,14 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
         // This size is also native 32-bit subtraction, including wrap.
         int sortedCount = static_cast<int>(
             static_cast<unsigned int>(subroutineCount) -
-            static_cast<unsigned int>(files[fileCount]->subroutineCount));
+            static_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount));
         memcpy(newEntries, oldEntries,
                sortedCount * sizeof(EclVmSubroutineEntry));
         if (previousEntries != NULL)
             free(previousEntries);
 
         int added = 0;
-        if (files[fileCount]->subroutineCount > 0u)
+        if ((*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount > 0u)
         {
             do
             {
@@ -553,7 +563,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
 
                 subroutines[insertionIndex].header =
                     reinterpret_cast<unsigned char *>(
-                        reinterpret_cast<unsigned int>(files[fileCount]) +
+                        reinterpret_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))) +
                         static_cast<unsigned int>(static_cast<EclVmSerializedSubroutineOffsetView *>(offsetCursor)->instructionOffset));
                 subroutines[insertionIndex].name = name;
                 name = reinterpret_cast<const char *>(
@@ -564,7 +574,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                     static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
                 ++sortedCount;
                 ++added;
-            } while (added < files[fileCount]->subroutineCount);
+            } while (added < (*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount);
         }
     }
 
@@ -574,7 +584,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     const int result = fileCount;
     fileCount = static_cast<int>(
         static_cast<unsigned int>(fileCount) + 1u);
-    file = files[result];
+    file = (*EclFileSlotAtWord(&files[0], result));
     if (file->includeLength != 0)
     {
         LoadPackage(

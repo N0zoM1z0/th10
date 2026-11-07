@@ -104,6 +104,18 @@ geometry. Five original-bound ECL leaves cold-pass **87/87**.
 Dispatcher remains **NONEXACT**, zero new canonical exact bytes.
 [Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
 
+## 2026-11-07 ECL SCPT native file-slot address words
+
+`EclVmScriptDatabase::AddScriptData` now performs all unchecked 32-slot
+SCPT file-pointer table accesses through one typed low-32-bit address
+helper, instead of potentially out-of-array C++ pointer indexing. Three
+separate VC7.1 two-TU variants and a fresh installed-source build preserve
+the **589-byte** owner and its two CRT fields: still **502/581** original
+ordinary bytes, NONEXACT. `FindSubroutine` remains **136/136 exact**; the
+parent `Run` stays **6,997/7,020**, all **189 target-bound fields**.
+Four selected original-target ECL units cold-pass **575/575**. No new
+exact credit. [Proof](evidence/ecl-scpt-native-file-slots-20261107/README.md).
+
 ## 2026-11-07 ECL native eight-byte subroutine record lookup
 
 `EclVmScriptDatabase::FindSubroutine` now addresses its eight-byte
