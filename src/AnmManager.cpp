@@ -3901,7 +3901,7 @@ stop:
         textureV = 0.0f;
         textureStep = static_cast<float>(vm->intVar1) / (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u));
 
-        for (vertexIndex = 0; vertexIndex < (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u)); ++vertexIndex)
+        for (vertexIndex = 0; vertexIndex < (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u)); vertexIndex = static_cast<int>(static_cast<unsigned int>(vertexIndex) + 1u))
         {
             vertex[0].rhw = 1.0f;
             vertex[0].diffuse.value = vm->primaryColor.value;

@@ -64,7 +64,7 @@ These are the latest relevant **whole-owner** baselines, not acceptance:
 
 | Original target | Original / source PDB bytes | Current evidence and unresolved action |
 | --- | ---: | --- |
-| ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964 original ordinary bytes, all 350 original-bound fields**; opcode 91 at `+0x113,+0x115` uses EDX in target, ECX candidate. Fourteen-/five-TU contexts differ. Seventeen new local register/lifetime forms failed. [Current mode-9 word proof](evidence/anm-render9-native-vertex-words-20261107/README.md), [original opcode-91 frontier](evidence/anm-variable-stream-native-address-20261107/README.md). |
+| ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964 original ordinary bytes, all 350 original-bound fields**; opcode 91 at `+0x113,+0x115` uses EDX in target, ECX candidate. Fourteen-/five-TU contexts differ. Seventeen new local register/lifetime forms failed. [Current vertex-index word proof](evidence/anm-render9-native-vertex-index-20261107/README.md), [earlier mode-9 proof](evidence/anm-render9-native-vertex-words-20261107/README.md), [original opcode-91 frontier](evidence/anm-variable-stream-native-address-20261107/README.md). |
 | ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020 original bytes, all 189 target-bound fields** in real ECL/Enemy **two-TU** graph; single-TU context can be **6,996/7,020** without a regression. Remaining 23 bytes span FORMAT register/stack homes, LENGTH_SQUARED, POINT_ANGLE, loop/callback. Some `Pop` unsigned pointer forms regress whole Run despite leaf exact. [FORMAT evidence](evidence/ecl-format-argument-index-wrap-20261107/README.md), [Pop rejection](evidence/ecl-stack-push-native-word-20261107/README.md). |
 | Enemy ECL `DispatchEclInstruction @0x0040E770` | 14,416 / 14,352 | 64-byte size gap, **716 candidate fields only**; not 716 independently target-bound links. Fresh 11-TU source/field graph, 87/87 related exact operand guards. [Current spell-name proof](evidence/enemy-ecl-spell-name-native-words-20261107/README.md), [STOSD proof](evidence/enemy-ecl-pattern-clear-stos-word-20261107/README.md), [earlier pattern/spawn](evidence/enemy-ecl-spawn-pattern-index-words-20261107/README.md). |
 | `EnemyRuntimeUpdate @0x0040DC80` | 2,412 / 2,371 | 69 **candidate** fields; native life SUB, flash DEC and ANM script ADD source semantics installed. Its independently compiled 593-byte target / 606-byte source callback now has native 32-bit countdown and timeout words, still nonexact. [Callback proof](evidence/enemy-callback-native-arithmetic-20261107/README.md). PDB candidate unchanged, not exact. [Script word proof](evidence/enemy-runtime-animation-script-word-20261107/README.md). |
@@ -399,7 +399,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | --- | --- |
 | `src/GameStatistics.cpp` | `dc31f5c888d68d363571a74457ed3da000c2a36386e790cd9234b0798c229666` |
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
-| `src/AnmManager.cpp` | `0de0bdff08ca81f78882b72f91e4bbdc1d7ab44305984ab9968aa66dd299ed6a` |
+| `src/AnmManager.cpp` | `3ab26d964232575916055f24a0b09dffb32bc059b0a8fced7751d815a290f677` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
 | `src/EclVm.cpp` | `918729cf978320c3ab026852b3148a42befb89c1fbb4919010dbfe62e5d26d6a` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |

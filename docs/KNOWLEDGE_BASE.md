@@ -320,6 +320,18 @@ installed-source original-bound ECL exact guards cold-pass **1,037/1,037**.
 Run remains nonexact; no new match credit.
 [Proof](evidence/ecl-format-native-scalar-byte-address-20261107/README.md).
 
+## 2026-11-07 ANM 9,964-byte interpreter native vertex-index word
+
+RenderMode 9 uses an unchecked signed vertex-count loop. The natural
+`++vertexIndex` is now an explicit native 32-bit unsigned addition
+published to the signed counter, reproducing original x86 wrap rather
+than invoking signed C++ overflow. Two distinct full five-TU compiler
+probes preserve **9,962/9,964 original `ExecuteScript` bytes, all 350
+original-bound fields**, and the same two opcode-91 register mismatches.
+Three previously exact ANM helpers cold replay **164/164**. No new exact
+owner is claimed for the giant interpreter.
+[Evidence](evidence/anm-render9-native-vertex-index-20261107/README.md).
+
 ## 2026-11-07 current ANM opcode-91 structural register controls
 
 The current five-TU VC7.1 original-bound ANM `ExecuteScript` baseline is
