@@ -9,6 +9,18 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 memory-file Read/Tell cursor word semantics
+
+Both already-exact memory-file leaves use native 32-bit address arithmetic,
+including after an original-permitted negative Seek moves the cursor outside
+C++ array bounds. The installed `Read` now forms remaining bytes and both
+cursor advances through `DWORD` words, and `Tell` uses the same native
+subtraction. Five actual VC7.1 combined/isolated variants preserved complete
+Read **108/108** and Tell **7/7** target code. Ten installed-source selected
+original-bound file owners cold-pass **491/491**; related Seek still has its
+same seven differences over 107 bytes. No newly exact owners or runtime
+claims. [Evidence](evidence/resfile-native-read-tell-words-20261107/README.md).
+
 ## 2026-11-07 ECL indexed scalar word addresses
 
 ECL instruction scalar operands are a counted variable-length stream, not

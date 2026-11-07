@@ -44,18 +44,23 @@ void CMemoryPbgFile::Close()
 
 DWORD CMemoryPbgFile::Read(void *data, DWORD dataLen)
 {
-    DWORD bytesRemaining = (DWORD)(m_Data + m_Size - m_Current);
+    // Native Win32 cursors are low 32-bit address words: Seek can leave
+    // m_Current before m_Data, so C++ array pointer subtraction would
+    // be undefined even though the original uses ADD/SUB dwords.
+    DWORD bytesRemaining =
+        reinterpret_cast<DWORD>(m_Data) + m_Size -
+        reinterpret_cast<DWORD>(m_Current);
     if (bytesRemaining >= dataLen)
     {
         memcpy(data, m_Current, dataLen);
-        m_Current += dataLen;
+        m_Current = reinterpret_cast<BYTE *>(reinterpret_cast<DWORD>(m_Current) + dataLen);
         return dataLen;
     }
 
     if (bytesRemaining != 0)
     {
         memcpy(data, m_Current, bytesRemaining);
-        m_Current += bytesRemaining;
+        m_Current = reinterpret_cast<BYTE *>(reinterpret_cast<DWORD>(m_Current) + bytesRemaining);
         return bytesRemaining;
     }
 
@@ -71,7 +76,8 @@ bool CMemoryPbgFile::Write(void *data, DWORD dataLen)
 
 DWORD CMemoryPbgFile::Tell()
 {
-    return (DWORD)(m_Current - m_Data);
+    // Signed negative seeks still report their native wrapping offset.
+    return reinterpret_cast<DWORD>(m_Current) - reinterpret_cast<DWORD>(m_Data);
 }
 
 DWORD CMemoryPbgFile::GetSize()
