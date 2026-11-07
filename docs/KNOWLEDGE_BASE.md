@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Sound WAV loader native file and byte address words
+
+The full **684-byte** `LoadSoundSample` now forms unchecked `soundBuffers`
+and `soundFileData` native Win32 slot addresses through a typed helper,
+and native modulo-32-bit RIFF tag advances and second PCM lock-buffer
+copy addresses. Six live five-TU source/target comparisons preserve
+**578/584 non-field original bytes**, the same six instruction-order
+mismatches, the 25 candidate field geometry, and 71/71 exact
+`FindWaveChunk`. Installed-source selected cold replays retain **1,874/
+1,874** previously exact Sound bytes across five units. The parent stays
+nonexact, with no new exact credit.
+[Evidence](evidence/sound-sample-native-address-words-20261107/README.md).
+
 ## 2026-11-07 Sound ProcessQueues native command stage words
 
 The 1,452-byte original Sound command dispatcher increments four signed

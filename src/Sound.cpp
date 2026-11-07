@@ -380,24 +380,36 @@ char g_SoundInvalidWaveFormat[] = "Wav \x83\x74\x83\x40\x83\x43\x83\x8b\x82\xb6\
 // Target 0x0043D390-0x0043D63B. Consumes one loader-owned allocation.
 // API failure retains the published DirectSound buffer; cancellation before
 // acquisition leaves the archive slot untouched and returns zero.
+// Win32 sound stream and slot indices form native low 32-bit addresses.
+template <class T> static __forceinline T *SoundWordSlot(T *base, int index)
+{
+    return reinterpret_cast<T *>(
+        reinterpret_cast<unsigned int>(base) +
+        static_cast<unsigned int>(index) * static_cast<unsigned int>(sizeof(T)));
+}
+static __forceinline unsigned char *SoundByteWord(unsigned char *base, unsigned int delta)
+{
+    return reinterpret_cast<unsigned char *>(reinterpret_cast<unsigned int>(base) + delta);
+}
+
 int SoundPlayerView::LoadSoundSample(int index, const char *path)
 {
     if (manager == NULL)
         return 0;
-    LPDIRECTSOUNDBUFFER *buffer = &soundBuffers[index];
+    LPDIRECTSOUNDBUFFER *buffer = SoundWordSlot(&soundBuffers[0], index);
     if (*buffer != NULL)
     {
         (*buffer)->Release();
         *buffer = NULL;
     }
-    while (soundFileData[index] == NULL)
+    while ((*SoundWordSlot(&soundFileData[0], index)) == NULL)
     {
         Sleep(10);
         if (reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->soundDataLoadState == 2)
             return 0;
     }
-    unsigned char *allocation = soundFileData[index];
-    soundFileData[index] = NULL;
+    unsigned char *allocation = (*SoundWordSlot(&soundFileData[0], index));
+    (*SoundWordSlot(&soundFileData[0], index)) = NULL;
     if (allocation == NULL)
         return -1;
     if (strncmp(reinterpret_cast<const char *>(allocation), "RIFF", 4) != 0)
@@ -406,16 +418,16 @@ int SoundPlayerView::LoadSoundSample(int index, const char *path)
         free(allocation);
         return -1;
     }
-    unsigned char *data = allocation + 4;
+    unsigned char *data = SoundByteWord(allocation, 4);
     unsigned int remaining = reinterpret_cast<const SoundWaveRootAfterTagView *>(data)->containerBytes;
-    data += 4;
+    data = SoundByteWord(data, 4);
     if (strncmp(reinterpret_cast<const char *>(data), "WAVE", 4) != 0)
     {
         th10::g_GameErrorContext.Log(g_SoundInvalidWaveFormat, path);
         free(allocation);
         return -1;
     }
-    data += 4;
+    data = SoundByteWord(data, 4);
     remaining -= 12;
     // Snapshot the chunk-search span before resolving both sections.
     const unsigned int scanRemaining = remaining;
@@ -460,7 +472,7 @@ int SoundPlayerView::LoadSoundSample(int index, const char *path)
     }
     memcpy(firstData, samples, firstSize);
     if (secondSize != 0)
-        memcpy(secondData, samples + firstSize, secondSize);
+        memcpy(secondData, SoundByteWord(samples, firstSize), secondSize);
     (*buffer)->Unlock(firstData, firstSize, secondData, secondSize);
     free(allocation);
     return 0;
