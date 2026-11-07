@@ -34,6 +34,18 @@ ReadFloatValue171 exact; selected exact ECL guards **441/441** pass. This
 is a large-interpreter source-semantic improvement, **zero new exact
 credit**. [Source and proof](evidence/ecl-spawn-index-word-wrap-20261107/README.md).
 
+## 2026-11-07 Enemy ECL final pattern address word semantics
+
+The actual 14,416-byte original `DispatchEclInstruction` contains 32-bit
+pattern-stride IMUL and LEA offset formation. The maintained 14,352-byte
+candidate's `EnemyPatternAtRuntimeByte` and `EnemyExtraRecordAt` now use
+unsigned native-word addition of the real member offsets, removing signed
+C++ overflow UB while preserving every address and argument evaluation
+site. Fresh current-epoch 11-TU PDB owners all remain candidate-byte
+identical to their prior source; five selected original-bound ECL leaves
+still pass **87/87**. **NONEXACT**, no new codegen credit.
+[Evidence](evidence/enemy-ecl-pattern-final-address-word-20261107/README.md).
+
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
 `TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,

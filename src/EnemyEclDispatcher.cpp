@@ -184,13 +184,15 @@ typedef char EnemyBulletExtraPatternOverlayLayout[
         ? 1 : -1];
 
 // Multiple ECL opcode families use a signed, byte-scaled pattern cursor.
-// Keep the native integer cursor lifetime at each expression site, but bind
+// Keep that native integer cursor lifetime at each expression site and bind
 // its final field access to the independently checked 0x210-byte record.
+// Its address addition is an i386 dword ADD, so use unsigned 32-bit arithmetic
+// rather than invoking C++ signed overflow for out-of-range ECL indices.
 static __forceinline EnemyBulletPatternView *EnemyPatternAtRuntimeByte(int byteAddress)
 {
     return reinterpret_cast<EnemyBulletPatternView *>(
-        byteAddress + static_cast<int>(
-            offsetof(EnemyRuntimeView, bulletPatterns)));
+        static_cast<unsigned int>(byteAddress) +
+        static_cast<unsigned int>(offsetof(EnemyRuntimeView, bulletPatterns)));
 }
 
 // This complete 0x210-byte Enemy pattern has the *same wire fields* as the
@@ -213,7 +215,8 @@ typedef char EnemyPatternBulletSpawnDescriptorOverlap[
 static __forceinline EnemyBulletExtraView *EnemyExtraRecordAt(int baseAddress)
 {
     return reinterpret_cast<EnemyBulletExtraView *>(
-        baseAddress + static_cast<int>(
+        static_cast<unsigned int>(baseAddress) +
+        static_cast<unsigned int>(
             offsetof(EnemyRuntimeView, bulletPatterns) +
             offsetof(EnemyBulletPatternFieldsView, unknown020)));
 }

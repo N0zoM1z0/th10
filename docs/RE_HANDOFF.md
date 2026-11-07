@@ -85,6 +85,16 @@ Init396/FadeIn133/Delete26/DrawScreen134 bytes; zero new exact credit.
 [Latest code and proof](evidence/transition-envelope-shared-second-limit-20261107/README.md);
 [earlier recovery](evidence/transition-envelope-pause-x87-20261107/README.md).
 
+**Current Enemy ECL native pointer-word correction:** both shared
+pattern/overlapping-extra record addressing helpers now add their typed
+record offset as unsigned 32-bit i386 words, eliminating signed C++
+overflow at the final address formation. A fresh actual 11-TU graph
+keeps the full dispatcher **14,352/716 candidate-field geometry** and four
+adjacent native owners byte-identical to its prior source. Selected real
+argument leaves remain **87/87 original-bound exact**. This adds **zero**
+new canonical credit; dispatcher target remains 14,416 bytes.
+[Source and native evidence](evidence/enemy-ecl-pattern-final-address-word-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
