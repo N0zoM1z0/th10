@@ -9,6 +9,17 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Enemy sound-queue negative sample-count native words
+
+The two sound queue handlers check only `count >= 128`; a negative
+`sampleCounts` value remains accepted by the original and its sample
+address is calculated as a modulo-32-bit native word. Both actual
+`samples[slot][count]` source writes
+now use typed `EnemyNativeWordIndex` addressing. The selected four-source
+cold graph continues to reproduce the **272/272** existing original bytes
+and four original-bound fields; no new exact claim or bounds repair.
+[Evidence](evidence/enemy-sound-queue-native-sample-words-20261107/README.md).
+
 ## 2026-11-07 Enemy sound-queue unchecked native index words
 
 Both `EnemySoundQueueView` sound handlers now address unbounded ECL `soundId`

@@ -827,7 +827,10 @@ void EnemySoundQueueView::QueueSoundCue(int soundId, float positionX)
             if (count >= 128) {
                 return;
             }
-            samples[slot][count] = sample;
+            // The queue rejects counts >= 128 but never rejects a negative
+            // stored count. Retail indexes this sample slot in flat i386
+            // address words, without creating a bounded C++ array pointer.
+            *EnemyNativeWordIndex(&samples[slot][0], count) = sample;
             sampleCounts[slot] = sampleCounts[slot] + 1;
             return;
         }
@@ -854,7 +857,10 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
             if (count >= 128) {
                 return;
             }
-            samples[slot][count] = sample;
+            // The queue rejects counts >= 128 but never rejects a negative
+            // stored count. Retail indexes this sample slot in flat i386
+            // address words, without creating a bounded C++ array pointer.
+            *EnemyNativeWordIndex(&samples[slot][0], count) = sample;
             sampleCounts[slot] = sampleCounts[slot] + 1;
             return;
         }
