@@ -58,6 +58,10 @@ credit. Always use live Git status/log; the tree may be dirty during work.
   translation unit. Reordering destination/source rect stores alone gives
   161/162, not exact; actual FindVm linkage restores final EDX. See
   [capture proof](evidence/anm-capture-rectangle-exact-20261106/README.md).
+- New exact score-file finalizer **564/564**, with 24 bound original
+  call/data fields and two independent final-source five-input colds. The
+  earlier 553/564 record-cursor checkpoint is superseded; see
+  [complete proof](evidence/game-statistics-finalize-exact-20261107/README.md).
 - No full historical cold replay is needed for handoff. Rebuild only selected
   changed owners and affected exact interfaces as work resumes.
 
@@ -65,8 +69,8 @@ credit. Always use live Git status/log; the tree may be dirty during work.
 
 As of this source checkpoint, [PROGRESS.md](PROGRESS.md) reports **1,829
 reviewed function boundaries**, **1,309 source-present mappings**,
-**1,495 complete exact functions / 195,244 original bytes**, including
-**586 confirmed-authored exact / 125,154 bytes**. There are **164 authored
+**1,496 complete exact functions / 195,808 original bytes**, including
+**587 confirmed-authored exact / 125,718 bytes**. There are **163 authored
 source-present nonexact** functions. Original author/source provenance is
 not interchangeable with a reconstructed function's exact codegen. Product
 build, actual game execution, semantic dual-Oracle and portability are
@@ -76,6 +80,7 @@ Recent *accepted* full owners (replay only one affected cohort when needed):
 
 | Exact original owner | Strict acceptance | Evidence |
 | --- | --- | --- |
+| `GameFinalizeStatistics42B1E0 @0x0042B1E0` | **564/564**, 24/24 original-bound fields; two independent real five-TU colds; same-image loader423/tail142/destructor45 exact; canonical scoped 1129/1129 | [complete finalizer](evidence/game-statistics-finalize-exact-20261107/README.md) |
 | `AnmRenderManagerView::RequestCaptureRectangle @0x00424480` | 162/162, six target-bound fields; two independent real FrontEnd/VmIdInterrupt/AnmManager three-TU colds; same-image FindVm73 and result close89 exact | [capture rectangle](evidence/anm-capture-rectangle-exact-20261106/README.md) |
 | `EndingTextVmView::Run @0x0040BD80` | 1568/1568; 92/92 fields; 53 direct locals and all18 owned table words; independent 21-input cold; existing guards953/all24 pass | [ending execution](evidence/ending-run-1568-exact-20261106/README.md) |
 | `ReplayManager::SaveReplay @0x00429B60` | 1681/1681; 83/83 fields; independent 21-input cold; same-image replay/file guards412/all33 and shared-artifact ReadIntOperand820 pass | [replay save](evidence/replay-save-1681-exact-20261106/README.md) |
@@ -104,7 +109,6 @@ confirmed authored code.
 | `EnemyRuntimeView::DispatchEclInstruction @0x0040E770` | **14,416 / 14,352** | 64-byte length gap; **716 candidate** fields. Fresh 11-TU source/PDB codegen checks are mostly candidate-vs-candidate, **not** a full independently bound target acceptance. Typed spawn record, position, word clear and bullet call are installed. Three bullet-count and one integer rank interpolation operations now use native 32-bit wrapping; real 11-TU codegen/716 fields unchanged and five related exact guards87/87 pass ([new proof](evidence/enemy-ecl-rank-word-wrap-20261106/README.md)). [Caller record](evidence/enemy-pattern-bullet-descriptor-boundary-20261106/README.md). |
 | `EnemyBeginSpell @0x00409280` | **2,432 / 2,432** | **108 candidate** fields but many ordinary code differences. Source bonus arithmetic now explicitly wraps modulo 2^32 before the signed cap. Same extent is not exact. [Bonus proof](evidence/enemy-begin-spell-bonus-wrap-20261106/README.md). |
 | `EclVmScriptDatabase::AddScriptData @0x00450220` | **589 / 589** | **510/589**, **2/2 original-bound fields**. Count-reference growth and read-only loop view of the actual input-parameter cursor restore0x10 frame, old-table EBP, REP MOVSD+FB and both CRT call positions. First count/fill/merge-tail register scheduling remains nonexact; no identity selector. Both count growth and old-record subtraction now use native word-wrap source expressions; full 589/2 and Run7020/189 geometry unchanged ([new proof](evidence/ecl-count-word-wrap-20261106/README.md)). Early count/whole-cursor/force-inline controls are parked. [Current proof](evidence/ecl-counted-offset-cursor-20261106/README.md). |
-| `GameFinalizeStatistics42B1E0 @0x0042B1E0` | **564 / 564** | **553/564**, full **24/24 independently bound fields**, improved from481/564 by anchoring the entire 7-record sum/copy loop on `recordIndex` (+0x0C) instead of the record base. Eleven ordinary differences remain at +0x52..+0x58 and four tail checksum addresses. Loader423 + tail142 selected cold exact and same-image destructor45 exact. **NONEXACT**. [New proof](evidence/game-statistics-finalize-record-cursor-20261106/README.md). |
 | `EclVmContext::StartSubroutine` | **550 / 551** | Four caller field positions preserved; direct signed/source pointer lifetime scheduling unresolved. **NONEXACT**. [CALL proof](evidence/ecl-call-counted-inline-name-20261106/README.md). |
 | `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x004078E0` | **335 / 335** at Vector source epoch | Last complete measurement **333/335**, **8/8 independently original-bound fields**, at BulletManager.cpp `504af18f...` before the vertical-wrap change. EAX/EDX at +0xD7/+0xDD remain the nonexact frontier; the three direction-change counter increments now preserve native unsigned 32-bit wrap with 1,394/1,394 selected exact guard bytes and the absolute owner still 333/335 ([fresh proof](evidence/bullet-direction-counter-wrap-20261106/README.md)). [Pinned proof](evidence/bullet-vector-acceleration-20261106/README.md). |
 | `SoundPlayerView::LoadSoundSample` / `PreloadBgm` | **684 / 684**; **369 / 369** | Respectively **678/684** and **365/369** ordinary bytes in suitable five-TU graphs; mainly call argument register order. Many simple declaration/alias and wrapper trials already failed. [Sound wire evidence](evidence/sound-riff-chunk-prefix-20261105/README.md). |
@@ -142,7 +146,7 @@ receipts are ignored private files, not Git attachments.
 
 | Installed source | SHA-256 |
 | --- | --- |
-| `src/GameStatistics.cpp` | `7549d302f2a3b267f55eec9d993229058af41fa8d221217b579507dff3f25f7f` |
+| `src/GameStatistics.cpp` | `dc31f5c888d68d363571a74457ed3da000c2a36386e790cd9234b0798c229666` |
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `e4c4e24b4e7c3879e2a88265c161867a3ea8db5dcfe6d9abc6bf0d833beb0707` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |

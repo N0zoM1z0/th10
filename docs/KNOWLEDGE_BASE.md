@@ -1,5 +1,19 @@
 # TH10 durable reconstruction knowledge
 
+## 2026-11-07 complete finalizer 564-byte exact
+
+`GameFinalizeStatistics42B1E0` now builds **564/564 bytes exact** with all
+24 original-bound call/global/import fields. The earlier recordIndex cursor
+change moved481 to553; declaring the index counter before the cursor fixes
+seven setup bytes, and using a four-byte-group tail checksum cursor at
+payload+2 with a decrementing count fixes the other four. The installed
+final source uses typed `offsetof` addresses relative to the whole owner.
+Two independent real five-TU colds and canonical selected1129/1129 confirm.
+New credited original authored owner: **+1/+564 bytes**. No all-unit replay or
+runnable game/product claim.
+[Complete original-bound proof](evidence/game-statistics-finalize-exact-20261107/README.md).
+
+
 ## 2026-11-06 statistics finalizer recordIndex cursor
 
 Original `GameFinalizeStatistics42B1E0` uses `EDX=owner+0x14` for the
