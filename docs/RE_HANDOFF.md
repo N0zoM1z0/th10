@@ -43,6 +43,20 @@ scripts/repo-python scripts/ci.py
 
 ## Authoritative progress and current nonexact work
 
+## Text main render source stack lifetime recovery (2026-11-08)
+
+`TextHelperView::RenderTextToTexture @0x00437DB0` now scopes its late
+rectangle/surface upload naturally, recovering the original **0x14-byte
+stack frame** instead of 0x18. Fresh normal-COFF compilation matches
+**414/414 ordinary bytes** and all 35 relocation positions. A real
+TextFontRelease/TextRenderer/RandomMath **mixed COFF+LTCG** graph
+strictly matches the **entire 554/554 original owner, all 35 semantic
+target-bound fields**; the all-LTCG graph instead chooses the wrong
+EAX receiver and differs at 11 bytes. Six separately canonical text
+unit guards pass **2,476/2,476**. The new 554 owner is **pending a
+second independent cold and ledger admission**, no exact credit yet.
+[Evidence](evidence/text-render-main-stack-scope-20261108/README.md).
+
 ## ECL FORMAT native counted text and argument addresses (2026-11-07)
 
 In the full **7,020-byte** `EclVmContext::Run`, the inline FORMAT
@@ -464,7 +478,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/GameStatisticsRecordDefaults.cpp` | `2c0c4d290118b9a65a781fef030825b07b89dde090a24cbc1252c200cf3173df` |
 | `src/InputPolling.cpp` | `f3bb9e5230f9db7e141e187b054e9bbd68d1282c7cd27f02723176f4415d641f` |
 | `src/ReplayManager.cpp` | `7c6a50d945a9c83f694bda661880d9211b29b1970c99a8a4ddd4844dab6fcaf3` |
-| `src/TextRenderer.cpp` | `1a250e674a282812be4aa7b99934fc1820e38670d1807b0ce9c59182424da9af` |
+| `src/TextRenderer.cpp` | `0adc88ef7764554082d1feea916cbc9e211d5c5aa9dddb491f0174ac05522c75` |
 | `src/TransitionEffect.cpp` | `711fb19a08a7bdfa45cd600a8f3bb82af5d2c90f3292d214e91e63e3625ebcd8` |
 
 ## Private evidence, transfer and storage

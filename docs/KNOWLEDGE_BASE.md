@@ -9,6 +9,22 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 TextRender main 554-byte owner stack-frame breakthrough
+
+`TextHelperView::RenderTextToTexture` is now naturally scoped so the
+late rectangle and surface pointer use the original **0x14-byte** stack
+frame (previous candidate 0x18). Five source variants confirmed that
+this late scope, not the early font scope or extra initialized surface,
+closes all 24 stack-displacement bytes in the complete **554-byte**
+normal-COFF owner: **414/414 ordinary bytes, 35 COFF fields**. A real
+TextFontRelease primary `/GL` + TextRenderer **normal COFF** + RandomMath
+`/GL` source graph passes the strict original-bound **554/554** byte
+comparison with all **35 target fields**. All-`/GL` graph has 11
+remaining EAX vs ECX call-convention differences; don't conflate.
+Six prior accepted text exact owners cold-pass **2,476/2,476**.
+Second independent cold and formal ledger acceptance are still required.
+[Evidence](evidence/text-render-main-stack-scope-20261108/README.md).
+
 ## 2026-11-07 ECL FORMAT native scratch/text and argument words
 
 `EclVmContext::Run` now forms the unchecked 0x400-byte FORMAT scratch
