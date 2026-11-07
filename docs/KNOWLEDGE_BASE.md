@@ -142,6 +142,17 @@ Five directly related original-bound ECL argument leaves cold-pass
 was explicitly rejected and rebuilt, not treated as trustworthy history.
 [Evidence](evidence/enemy-ecl-native-unchecked-index-20261107/README.md).
 
+## 2026-11-07 ECL SCPT native file-pointer slots
+
+SCPT `AddScriptData` now uses `EclFileSlotAtWord` for all eight reads/writes
+of indexed file-header pointers, representing the original 32-bit i386
+fileCount*4+base address without C++ array-bound pointer arithmetic.
+Actual native source maintains its complete **589-byte** candidate with
+**502/581** original nonfield bytes, **79 differences**, while the
+7,020-byte `Run` still matches **6,997/7,020**, all 189 target-bound
+fields. Four related accepted ECL exact functions pass **575/575**.
+No new exact credit. [Evidence](evidence/ecl-scpt-file-slot-native-words-20261107/README.md).
+
 ## 2026-11-07 Bullet SpawnSingle native indexed script/color tables
 
 The big `SpawnSingleBullet` spawner now reads five unchecked signed-short

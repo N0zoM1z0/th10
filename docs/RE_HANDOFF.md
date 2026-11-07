@@ -220,6 +220,12 @@ in the canonical exact scoreboard. No full historical replay was run.**
   original fields, and four focused exact guards **575/575** preserved.
   [Evidence](evidence/ecl-scpt-native-file-slots-20261107/README.md).
 
+- ECL `AddScriptData` SCPT table slot reads/writes now use native
+  32-bit file-index words; complete candidate **589**, original ordinary
+  **502/581**, 79 differences; original Run **6,997/7,020** (189 target
+  fields). Four selected ECL exact leaves cold-pass **575/575**.
+  [Proof](evidence/ecl-scpt-file-slot-native-words-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
