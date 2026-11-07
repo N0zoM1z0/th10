@@ -9,6 +9,17 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 ECL FIRE_BULLET_PATTERN native offset word
+
+The 14,416-byte target Enemy ECL dispatcher forms a 12-byte pattern-offset
+cursor and three addresses using 32-bit i386 word arithmetic. The maintained
+C++ now does the indexed dword stride/base and three x/y/z publication reads
+without signed overflow UB. Fresh current-source eleven-TU native comparison
+preserved all 14,352 candidate bytes, 716 candidate field positions, and four
+neighboring complete owner bodies; five original-bound ECL argument leaves
+cold-pass 87/87. The dispatcher is **NONEXACT**, no new exact credit.
+[Source and evidence](evidence/enemy-ecl-fire-offset-word-20261107/README.md).
+
 ## 2026-11-07 TransitionShakeEnvelope 349-byte frontier
 
 Direct target/native review found that `TransitionShakeEnvelope @0x0043C710`

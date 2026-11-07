@@ -2188,22 +2188,27 @@ dispatch_difficulty_float_index_4_a:
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    // The dword cursor uses the verified 0x1344 pattern-offset origin and
-    // the real 12-byte vector stride; preserve its signed integer lifetime.
-    iVar27 = (int)uVar22 *
-        static_cast<int>(sizeof(PlayerFloat3) / sizeof(unsigned int)) +
-        static_cast<int>(offsetof(EnemyRuntimeView, bulletPatternOffsets) /
-                         sizeof(unsigned int));
+    // The original IMUL/LEA form treats both the three-word offset index
+    // and its final byte-address as modulo-2^32 words. A negative or very
+    // large ECL index must not overflow a signed C++ expression.
+    iVar27 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(sizeof(PlayerFloat3) / sizeof(unsigned int)) +
+        static_cast<unsigned int>(offsetof(EnemyRuntimeView, bulletPatternOffsets) /
+                                  sizeof(unsigned int)));
     vectorScratch.x = reinterpret_cast<const PlayerFloat3 *>(
-        (int)runtimeAddress + iVar27 * 4)->x + worldMotion.position.x;
+        static_cast<unsigned int>(runtimeAddress) +
+        static_cast<unsigned int>(iVar27) * sizeof(unsigned int))->x + worldMotion.position.x;
     vectorScratch.y = reinterpret_cast<const PlayerFloat3 *>(
-        (int)runtimeAddress + iVar27 * 4)->y + worldMotion.position.y;
+        static_cast<unsigned int>(runtimeAddress) +
+        static_cast<unsigned int>(iVar27) * sizeof(unsigned int))->y + worldMotion.position.y;
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(uVar22) *
         static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
         static_cast<unsigned int>(runtimeAddress));
     vectorScratch.z = reinterpret_cast<const PlayerFloat3 *>(
-        (int)runtimeAddress + iVar27 * 4)->z + worldMotion.position.z;
+        static_cast<unsigned int>(runtimeAddress) +
+        static_cast<unsigned int>(iVar27) * sizeof(unsigned int))->z + worldMotion.position.z;
     EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionX = vectorScratch.x;
     EnemyPatternAtRuntimeByte(iVar26)->fields.spawnPositionY = vectorScratch.y;
     fVar9 = 0.0f;
