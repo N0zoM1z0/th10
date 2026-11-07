@@ -33,7 +33,14 @@ scripts/repo-python scripts/ci.py
 
 ## Resume at this checkpoint
 
-**Newest accepted full owner:** `GameFinalizeStatistics42B1E0 @0x0042B1E0`
+**Newest accepted full owner:** `TransitionFadeIn @0x0043C230`, **133/133**
+with **5/5 original-bound fields** in two independent current-source 14-TU
+/GL colds. Natural `(flags >> 2 | flags) & 1` restores the retail SHR/OR/TEST
+pause-bit schedule and full length from the prior 124-byte candidate; same
+selected artifact keeps Init396 and Delete26 exact (555/555). This is a new
+confirmed-authored owner. [Full native proof](evidence/transition-fade-in-133-exact-20261107/README.md).
+
+**Earlier accepted large owner:** `GameFinalizeStatistics42B1E0 @0x0042B1E0`
 **564/564** with all **24 original-bound fields**. The installed
 `src/GameStatistics.cpp` was verified in **two independent five-source
 cold builds** before its caller changed. The **current six-source** actual
@@ -89,8 +96,8 @@ changed/affected units. For storage transfer, see [RE_ARTIFACTS.md](RE_ARTIFACTS
 
 As of this source checkpoint, [PROGRESS.md](PROGRESS.md) reports **1,829
 reviewed function boundaries**, **1,309 source-present mappings**,
-**1,497 complete exact functions / 195,834 original bytes**, including
-**587 confirmed-authored exact / 125,718 bytes**. There are **163 authored
+**1,498 complete exact functions / 195,967 original bytes**, including
+**588 confirmed-authored exact / 125,851 bytes**. There are **162 authored
 source-present nonexact** functions. Original author/source provenance is
 not interchangeable with a reconstructed function's exact codegen. Product
 build, actual game execution, semantic dual-Oracle and portability are
@@ -100,6 +107,7 @@ Recent *accepted* full owners (replay only one affected cohort when needed):
 
 | Exact original owner | Strict acceptance | Evidence |
 | --- | --- | --- |
+| `TransitionFadeIn @0x0043C230` | **133/133**, five independently bound original source/global/CRT/timer fields, full control flow and real static PDB extent; two distinct 14-TU colds, Init396 and Delete26 guards exact | [FadeIn exact proof](evidence/transition-fade-in-133-exact-20261107/README.md) |
 | `TransitionDelete @0x0043C870` | **26/26**, two complete original-bound calls, unique internal static PDB contribution; two independent 14-TU colds; initializer396 same-image guard exact; **authorship indeterminate** | [complete static callback](evidence/transition-delete-26-exact-20261107/README.md) |
 | `GameFinalizeStatistics42B1E0 @0x0042B1E0` | **564/564**, 24/24 original-bound fields; two independent unchanged-finalizer five-TU colds and a newer **six-TU** current-source canonical 1129/1129 across finalizer564/loader423/tail142; same-image destructor45 exact | [complete finalizer](evidence/game-statistics-finalize-exact-20261107/README.md); [six-TU caller](evidence/statistics-record-real-caller-20261107/README.md) |
 | `AnmRenderManagerView::RequestCaptureRectangle @0x00424480` | 162/162, six target-bound fields; two independent real FrontEnd/VmIdInterrupt/AnmManager three-TU colds; same-image FindVm73 and result close89 exact | [capture rectangle](evidence/anm-capture-rectangle-exact-20261106/README.md) |
@@ -125,7 +133,7 @@ confirmed authored code.
 
 | Target | Original vs current complete owner | What is known; next meaningful investigation |
 | --- | --- | --- |
-| `AnmRenderManagerView::ExecuteScript @0x0043EE30` | **9,964 / 9,964** | **9,962/9,964** original bytes, **350/350 independently original-bound fields**, 95 local targets. Opcode 91 registers at +0x113/+0x115 (original EDX, candidate ECX). Current source explicitly wraps three integer assignment and three in-place arithmetic ops; full original-bound 350-field owner stays 9962/9964 with only opcode91 register differences, and the selected four variable access guards remain 856/856 ([new proof](evidence/anm-inplace-word-wrap-20261106/README.md)). Do not retry failed aggregate, volatile, member-order or layer-lifetime permutations without a new compiler lead. [Current-source proof](evidence/anm-integer-assignment-wrap-20261106/README.md). |
+| `AnmRenderManagerView::ExecuteScript @0x0043EE30` | **9,964 / 9,964** | **9,962/9,964** original bytes, **350/350 independently original-bound fields**, 95 local targets. Opcode 91 registers at +0x113/+0x115 (original EDX, candidate ECX). Current source explicitly wraps three integer assignment and three in-place arithmetic ops; full original-bound 350-field owner stays 9962/9964 with only opcode91 register differences, and the selected four variable access guards remain 856/856 ([new proof](evidence/anm-inplace-word-wrap-20261106/README.md)). Six additional current-source natural child91 file/operand lifetime controls confirmed the same two-byte frontier (one regressed); all restored ([trial proof](evidence/anm-child91-lifetime-20261107/README.md)). Do not retry failed aggregate, volatile, member-order or layer-lifetime permutations without a new compiler lead. [Current-source proof](evidence/anm-integer-assignment-wrap-20261106/README.md). |
 | `EclVmContext::Run @0x0044E1A0` | **7,020 / 7,020** | **6,997/7,020**, **189/189 bound fields**. Remaining 23 ordinary byte differences include register/stack homes, `LENGTH_SQUARED`, `POINT_ANGLE`, FORMAT and loop/callback paths. `STORE_INT`/`STORE_FLOAT`, CALL, JUMP and stack scalar work are installed; add/subtract/multiply/negate/post-decrement now explicitly preserve 32-bit wrap without new exact credit ([proof](evidence/ecl-integer-word-wrap-20261106/README.md)). [Current full-source proof](evidence/ecl-counted-offset-cursor-20261106/README.md). |
 | `EnemyRuntimeView::DispatchEclInstruction @0x0040E770` | **14,416 / 14,352** | 64-byte length gap; **716 candidate** fields. Fresh 11-TU source/PDB codegen checks are mostly candidate-vs-candidate, **not** a full independently bound target acceptance. Typed spawn record, position, word clear and bullet call are installed. Three bullet-count and one integer rank interpolation operations now use native 32-bit wrapping; real 11-TU codegen/716 fields unchanged and five related exact guards87/87 pass ([new proof](evidence/enemy-ecl-rank-word-wrap-20261106/README.md)). [Caller record](evidence/enemy-pattern-bullet-descriptor-boundary-20261106/README.md). |
 | `EnemyBeginSpell @0x00409280` | **2,432 / 2,432** | **108 candidate** fields but many ordinary code differences. Source bonus arithmetic now explicitly wraps modulo 2^32 before the signed cap. Same extent is not exact. [Bonus proof](evidence/enemy-begin-spell-bonus-wrap-20261106/README.md). |
