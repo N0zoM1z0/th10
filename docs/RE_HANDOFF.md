@@ -334,6 +334,17 @@ selected seven canonical exact owners cold-pass **1,000/1,000**; Run
 remains NONEXACT, zero new exact credit.
 [Full source and original-target proof](evidence/ecl-format-argument-index-wrap-20261107/README.md).
 
+**Current Sound PreloadBgm 0x34 stride words:** the target-confirmed
+`IMUL EDI,EDI,0x34` and 32-bit format record base addresses are now
+explicit for `SetFilePointer` start offset, `malloc` allocation length,
+and `ReadFile` requested size. Nine genuine current-context compiler
+controls preserve the complete **369-byte PreloadBgm** at **365/369** with
+all **10 original-bound fields**; the fourth pointer publication would
+regress to 362/369 and was rejected. A fresh installed-source selected
+Sound cold guards full ProcessQueues1,452 and three leaf owners for
+**2,034/2,034**, zero new exact credit.
+[Whole owner and native proof](evidence/sound-preload-native-format-stride-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -465,7 +476,7 @@ receipts are ignored private files, not Git attachments.
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletManager.cpp` | `34cb5ceb0c88620a77e3aa9fcf8ab7f19754fc5bbf4bcf292ad844f6da35bba9` |
-| `src/Sound.cpp` | `cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b3b0` |
+| `src/Sound.cpp` | `5ff49ec2afcc82da178570524ec72eafaf4f38edc9fb4d3b95d944d041503ae8` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |

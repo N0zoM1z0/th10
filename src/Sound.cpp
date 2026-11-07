@@ -684,11 +684,19 @@ int SoundPlayerView::PreloadBgm(int index, const char *path)
     if (file == INVALID_HANDLE_VALUE)
         return -1;
 
+    // Original i386 IMUL index,0x34 then adds the BGM-format base as
+    // low 32-bit address words; keep the three distinct format reads.
     const int formatIndex = GetFmtIndexByName(path);
-    SetFilePointer(file, bgmFormats[formatIndex].startOffset,
+    SetFilePointer(file, (reinterpret_cast<ThBgmFormat *>(
+        reinterpret_cast<unsigned int>(bgmFormats) +
+        static_cast<unsigned int>(formatIndex) *
+        static_cast<unsigned int>(sizeof(ThBgmFormat))))->startOffset,
                    NULL, FILE_BEGIN);
     BYTE *allocation = static_cast<BYTE *>(
-        malloc(bgmFormats[formatIndex].preloadAllocSize));
+        malloc((reinterpret_cast<ThBgmFormat *>(
+        reinterpret_cast<unsigned int>(bgmFormats) +
+        static_cast<unsigned int>(formatIndex) *
+        static_cast<unsigned int>(sizeof(ThBgmFormat))))->preloadAllocSize));
     if (allocation == NULL)
     {
         CloseHandle(file);
@@ -696,7 +704,10 @@ int SoundPlayerView::PreloadBgm(int index, const char *path)
     }
 
     DWORD bytesRead;
-    const DWORD requestedSize = bgmFormats[formatIndex].preloadAllocSize;
+    const DWORD requestedSize = (reinterpret_cast<ThBgmFormat *>(
+        reinterpret_cast<unsigned int>(bgmFormats) +
+        static_cast<unsigned int>(formatIndex) *
+        static_cast<unsigned int>(sizeof(ThBgmFormat))))->preloadAllocSize;
     _ReadWriteBarrier();
     ReadFile(file, allocation, requestedSize, &bytesRead, NULL);
     CloseHandle(file);

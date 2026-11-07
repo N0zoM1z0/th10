@@ -212,6 +212,19 @@ geometry and ECL Run 6,997/7,020/189 original fields. Installed-source
 selected exact five-unit cold **570/570**; zero newly exact owners.
 [Full native proof](evidence/enemy-runtime-animation-script-word-20261107/README.md).
 
+## 2026-11-07 Sound PreloadBgm original 0x34 format record stride
+
+The actual 369-byte original `SoundPlayerView::PreloadBgm` uses
+`IMUL EDI,EDI,0x34` for signed BGM format-index address computation.
+Three source reads of format start offset/allocation size/ReadFile size
+now use native 32-bit unsigned low words and target-verified 0x34 record
+layout. Nine current-source native experiments keep the whole original-
+bound `PreloadBgm` at **365/369**, 10 fields; updating the fourth format
+publication regresses and is rejected. Installed-source selected four
+exact Sound owners, including full ProcessQueues1,452, cold-pass
+**2,034/2,034**, zero newly exact codegen credit.
+[Proof](evidence/sound-preload-native-format-stride-20261107/README.md).
+
 ## 2026-11-07 EnemyRuntimeUpdate original life SUB native dword
 
 Target `EnemyRuntimeUpdate @0x0040DC80 +0x536` uses an i386
