@@ -9,6 +9,20 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 Enemy ECL boss pattern-clear native word cursor
+
+In the full **14,416-byte** original dispatcher, the 0x84-word
+`INITIALIZE_BULLET_PATTERN` zero pass now advances its unchecked record
+cursor by native modulo-32-bit word addition, not C++ pointer increment.
+Three independent current-source 11-input native trials reproduced the
+same **14,352-byte candidate** and **716 candidate** fields; the selected
+installed form plus four neighboring complete owners has zero
+candidate-vs-candidate ordinary differences. Three resource-bank indexing
+forms and a typed clear-step form each changed a register SIB byte and
+were rejected. Selected preaccepted original-bound Enemy argument leaves
+cold-pass **87/87**; boss is still NONEXACT and 64 bytes short.
+[Evidence](evidence/enemy-ecl-pattern-clear-native-step-20261107/README.md).
+
 ## 2026-11-07 Enemy sound-queue negative sample-count native words
 
 The two sound queue handlers check only `count >= 128`; a negative

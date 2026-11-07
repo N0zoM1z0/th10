@@ -2228,7 +2228,10 @@ dispatch_difficulty_float_index_4_a:
     puVar5 = EnemyPatternAtRuntimeByte(iVar11)->words;
     for (iVar27 = 0x84; iVar27 != 0; iVar27 = iVar27 + -1) {
       *puVar5 = 0;
-      puVar5 = puVar5 + 1;
+      // The original STOSD-style loop advances a native 32-bit address
+      // word, including when an unchecked ECL pattern index wraps.
+      puVar5 = reinterpret_cast<unsigned int *>(
+          reinterpret_cast<unsigned int>(puVar5) + sizeof(unsigned int));
     }
     EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.countA = 1;
     EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.countB = 1;
