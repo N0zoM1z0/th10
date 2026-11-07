@@ -3890,14 +3890,18 @@ stop:
         float textureStep;
         int vertexIndex;
 
+        // This script-controlled count is decremented as a native Win32
+        // unsigned word before its signed float conversion and loop test.
+        // The generated-vertex cursor below likewise advances in flat
+        // low-32-bit address words, not unchecked C++ array pointers.
         vertexCount = vm->intVar0;
         angleValue = vm->rotation.z;
-        angle = 6.2831855f / (vertexCount - 1);
+        angle = 6.2831855f / (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u));
         vertex = static_cast<AnmRenderVertexView *>(vm->generatedVertices);
         textureV = 0.0f;
-        textureStep = static_cast<float>(vm->intVar1) / (vertexCount - 1);
+        textureStep = static_cast<float>(vm->intVar1) / (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u));
 
-        for (vertexIndex = 0; vertexIndex < vertexCount - 1; ++vertexIndex)
+        for (vertexIndex = 0; vertexIndex < (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u)); ++vertexIndex)
         {
             vertex[0].rhw = 1.0f;
             vertex[0].diffuse.value = vm->primaryColor.value;
@@ -3909,7 +3913,8 @@ stop:
             vertex[0].z = 0.0f;
             *reinterpret_cast<AnmFloat3View *>(&vertex[0].x) +=
                 vm->position + vm->positionOffset;
-            ++vertex;
+            vertex = reinterpret_cast<AnmRenderVertexView *>(
+                reinterpret_cast<unsigned int>(vertex) + sizeof(*vertex));
 
             vertex[0].rhw = 1.0f;
             vertex[0].diffuse.value = vm->primaryColor.value;
@@ -3923,7 +3928,8 @@ stop:
             const volatile float &positionZ = vm->position.z;
             translation.z = positionZ + vm->positionOffset.z;
             *reinterpret_cast<AnmFloat3View *>(&vertex[0].x) += translation;
-            ++vertex;
+            vertex = reinterpret_cast<AnmRenderVertexView *>(
+                reinterpret_cast<unsigned int>(vertex) + sizeof(*vertex));
 
             textureV += textureStep;
             angleValue = AddNormalizeAngle(angleValue, angle);

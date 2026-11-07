@@ -9,6 +9,21 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 ANM ExecuteScript native generated-vertex count and cursor words
+
+The **9,964-byte** ANM executor's generated radial strip now evaluates
+all three script-controlled `(vertexCount - 1)` cases with native
+32-bit word wrapping, and both strip-vertex cursors advance by an
+unsigned native pointer address word rather than unchecked array-pointer
+arithmetic. Independent scoped experiments isolated the three count
+locations and both vertex steps. The installed five-source VC7.1 native
+owner still matches **9,962/9,964 original bytes** with **350/350
+original-bound fields**; only the two opcode-91 register bytes remain.
+Three selected accepted ANM leaves cold-pass **164/164**. Six further
+natural child-91 layout/type alternatives did not improve the complete
+parent and were rejected. No new exact owner is credited.
+[Evidence](evidence/anm-executor-native-vertex-words-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL boss pattern-clear native word cursor
 
 In the full **14,416-byte** original dispatcher, the 0x84-word
