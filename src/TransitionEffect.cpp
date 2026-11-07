@@ -94,7 +94,9 @@ static int __fastcall TransitionFadeIn(void *argument)
     if (effect->timer.current >= end)
         return 7;
     ResultGameManagerView *game = g_ResultGameManager;
-    if (game == NULL || (game->flags58 & 5u) == 0)
+    // Native pause gate combines the 0x04 bit with bit zero through
+    // a right shift and OR; both expressions test the same two bits.
+    if (game == NULL || (((game->flags58 >> 2) | game->flags58) & 1u) == 0)
         effect->timer.Tick();
     return 1;
 }

@@ -67,3 +67,15 @@ Local original-bound cold receipts:
 `build/match-linked/GuiTransitionEffectFactory/` PE, MAP and PDB.
 These prove neither the full executable, physical original translation-unit
 partition, runtime behavior, nor portability.
+
+## Additional independent 26-byte selected cold (same source epoch)
+
+A separate third selected native cold built only `--unit transition-delete`
+from the unchanged `TransitionEffect.cpp` source prior to the new FadeIn
+change. It independently passes **26/26** with both original call fields,
+PDB GUID `d6a8d08f46eeb94a814918342553f55c`, image SHA-256
+`3ace9a8f4bc374d36c2dc68cefe6fbcacc399faca4e5a0ce665f055b4f44a9ae`.
+Receipt: `.analysis/gpt-web/20261107-transition-delete-cold-2.json`.
+This is a further regression witness, not additional exact credit.
+The later FadeIn edit is separately guarded in its 555/555 selected current
+source cold. [FadeIn proof](../transition-fade-in-133-exact-20261107/README.md).

@@ -9,6 +9,20 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 FadeIn 133-byte authored callback exact
+
+`TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,
+5-field exact** current-source `src/TransitionEffect.cpp` static callback.
+The initial natural `(game->flags58 & 5u)` compiled to a 124-byte callback:
+VC7.1 optimized the test to a single memory `TEST`. The original loads flags,
+right-shifts two, ORs with its unshifted word and tests the low bit; the now
+installed source `(((flags >> 2) | flags) & 1u) == 0` preserves the same pause
+semantics but restores the native scheduling and full function length. Two
+independent full 14-TU exact colds pass plus first-artifact Init396/Delete26
+original-bound exact guards. Accepted +1 confirmed-authored exact owner,
++133 original bytes. No full-game or physical-TU assertion.
+[Proof](evidence/transition-fade-in-133-exact-20261107/README.md).
+
 ## 2026-11-07 statistics constructor real record dependency
 
 The original `GameStatisticsOwner::GameStatisticsOwner` calls the real
