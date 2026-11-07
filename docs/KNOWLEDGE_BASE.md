@@ -65,6 +65,18 @@ installed-source original-bound ECL exact guards cold-pass **1,037/1,037**.
 Run remains nonexact; no new match credit.
 [Proof](evidence/ecl-format-native-scalar-byte-address-20261107/README.md).
 
+## 2026-11-07 current ANM opcode-91 structural register controls
+
+The current five-TU VC7.1 original-bound ANM `ExecuteScript` baseline is
+**9,962/9,964** with all **350** original target fields. Seven genuinely
+recompiled opcode-91 lifetime/aggregate/argument-source variants did not
+recover original EDX for the layer argument: five preserve 9,962; one
+pointer-to-aggregate form regresses to 9,960; and a typed inline helper
+changes the complete PDB extent to **10,044 bytes**. All experimental source
+edits were restored, no new match credit. The remaining original differences
+are exactly `+0x113,+0x115`.
+[Whole-owner evidence](evidence/anm-opcode91-current-structure-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL native variable-length spawn operand words
 
 Twenty-eight dynamic scalar reads across the 14,416-byte original Enemy

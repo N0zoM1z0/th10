@@ -173,6 +173,13 @@ in the canonical exact scoreboard. No full historical replay was run.**
   Original **14,416-byte** dispatcher still NONEXACT.
   [Proof](evidence/enemy-ecl-variable-spawn-scalar-words-20261107/README.md).
 
+- Fresh current-source **five-TU** ANM `ExecuteScript` 9,964-byte
+  original-bound comparison (350 original fields) still passes
+  **9,962/9,964**. Seven new natural opcode-91 source variants failed to
+  recover the EDX layer register: five byte-neutral, one to **9,960**,
+  one rejected with a 10,044-byte PDB extent. All temporary source changes
+  restored. [Scope and source pins](evidence/anm-opcode91-current-structure-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
