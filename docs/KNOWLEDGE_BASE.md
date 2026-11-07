@@ -38,6 +38,18 @@ were rejected. Selected preaccepted original-bound Enemy argument leaves
 cold-pass **87/87**; boss is still NONEXACT and 64 bytes short.
 [Evidence](evidence/enemy-ecl-pattern-clear-native-step-20261107/README.md).
 
+## 2026-11-07 ANM renderMode 9 native vertex cursors
+
+The 9,964-byte `ExecuteScript` boss's renderMode-9 generator now expresses
+all three script-provided `(vertexCount - 1)` calculations as wrapping
+Win32 integer words and both vertex-record cursor advances as low-32-bit
+address additions. A fresh pinned five-input original comparison of the
+**installed** source holds **9,962/9,964** target bytes and all **350
+original-bound fields**. Only opcode-91's two register bytes remain;
+this boss is still NONEXACT. Three selected original-bound ANM leaves
+cold-pass **164/164**, seven CI stages pass, and no new exact owner is
+claimed. [Evidence](evidence/anm-render9-native-vertex-words-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL spell-name native byte-stream words
 
 The large `DispatchEclInstruction` spell-name decode now addresses both the
