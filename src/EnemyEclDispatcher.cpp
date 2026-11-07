@@ -2589,15 +2589,20 @@ dispatch_select_bullet_count_low:
     }
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
+    // The target uses ADD/LEA on native 32-bit words for difficulty-biased
+    // spell IDs; the signed input must not introduce C++ overflow UB.
     switch (static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode)) {
     case ENEMY_ECL_START_SPELL_DIFFICULTY:
-      iVar26 += g_EnemyDifficulty;
+      iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) +
+          static_cast<unsigned int>(g_EnemyDifficulty));
       break;
     case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
-      iVar26 += g_EnemyDifficulty - 1;
+      iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) +
+          static_cast<unsigned int>(g_EnemyDifficulty) - 1u);
       break;
     case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
-      iVar26 += g_EnemyDifficulty - 2;
+      iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) +
+          static_cast<unsigned int>(g_EnemyDifficulty) - 2u);
       break;
     }
     ENEMY_READ_INT_DIRECT(2);
