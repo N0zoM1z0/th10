@@ -295,6 +295,16 @@ original-bound `Run` remains **6,997/7,020** and 189 fields. Installed
 source selected five exact owners cold-pass **570/570**; zero new exact
 codegen credit. [Native evidence](evidence/enemy-runtime-flash-native-word-20261107/README.md).
 
+**Current Enemy animation script index dword:** the original
+`EnemyRuntimeUpdate +0x6E5 ADD EDX,ECX` now has explicit low-32-bit
+unsigned source operands for `animationBaseScript + scriptOffset`, after
+the separately committed native life `SUB` and flash `DEC`. The full
+nonexact Enemy candidate remains **2,371 bytes/69 fields** and the
+independently original-bound ECL `Run` remains **6,997/7,020** with all
+189 target bindings. Installed-source five selected exact owners cold-pass
+**570/570**, zero new canonical codegen credit.
+[Original instruction and native proof](evidence/enemy-runtime-animation-script-word-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -419,7 +429,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |
-| `src/Enemy.cpp` | `50ff057332b846bc97e9629e3ccf70d4becacd22ceaa2168c18a28bedb60bbad` |
+| `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |

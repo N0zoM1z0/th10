@@ -200,6 +200,18 @@ passes **570/570**, and two-TU `Run` remains **6,997/7,020** with 189
 original fields. No new exact owner credit.
 [Proof](evidence/enemy-runtime-flash-native-word-20261107/README.md).
 
+## 2026-11-07 EnemyRuntimeUpdate native animation-script word
+
+Target `EnemyRuntimeUpdate +0x6DF` loads `animationBaseScript`, and its
+`+0x6E5 ADD EDX,ECX` forms the actual low-32-bit ANM script index.
+Maintained C++ now adds the same signed field and selected direction
+index through unsigned i386 word intermediates, preserving the actual
+ANM receiver and signed consumers. Five original compiled two-TU source
+experiments preserve full Enemy update 2,371-byte/69-candidate-field
+geometry and ECL Run 6,997/7,020/189 original fields. Installed-source
+selected exact five-unit cold **570/570**; zero newly exact owners.
+[Full native proof](evidence/enemy-runtime-animation-script-word-20261107/README.md).
+
 ## 2026-11-07 EnemyRuntimeUpdate original life SUB native dword
 
 Target `EnemyRuntimeUpdate @0x0040DC80 +0x536` uses an i386

@@ -1011,7 +1011,10 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
             enemy->animationDirection = direction;
             AnmSetVmScriptIndexAndExecute(
                 &enemy->managedVmIds[0],
-                enemy->animationBaseScript + scriptOffset);
+                // Original ADD EDX,ECX publishes the low 32-bit script word.
+                static_cast<int>(
+                    static_cast<unsigned int>(enemy->animationBaseScript) +
+                    static_cast<unsigned int>(scriptOffset)));
         }
     }
 
