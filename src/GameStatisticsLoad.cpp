@@ -35,10 +35,10 @@ int GameStatisticsOwner::Load42B030()
         FileSystem::Decrypt(reinterpret_cast<unsigned char *>(header) + 0x18,
             header->compressedSize, 0xac, 0x35, 0x10, header->compressedSize);
         unsigned char *input = reinterpret_cast<unsigned char *>(header) + 0x18;
-        // Retail 0x0042B071 uses a 32-bit SHL before malloc: preserve the low
-    // word, including when the encoded signed size would overflow C++ shift.
-    loadedPayload = static_cast<unsigned char *>(malloc(
-        static_cast<unsigned int>(header->uncompressedSize) << 2));
+        // Original 0x0042B071 performs SHL EAX,2 on the stored 32-bit size.
+        // Preserve the low word without signed-left-shift undefined behavior.
+        loadedPayload = static_cast<unsigned char *>(malloc(
+            static_cast<unsigned int>(header->uncompressedSize) << 2));
         DecompressData(input, header->compressedSize, loadedPayload, header->uncompressedSize);
         int remaining = header->uncompressedSize;
         unsigned char *cursor = loadedPayload;
