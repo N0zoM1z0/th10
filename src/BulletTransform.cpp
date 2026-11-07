@@ -33,7 +33,15 @@ nextRecord:
     if (this->transformIndex >= 18)
         return;
 
-    record = &this->transforms[this->transformIndex];
+    // The upper bound is checked above, but a negative script jump can
+    // still select a signed index. Native i386 forms the record address
+    // as one low 32-bit word even if it points before the array.
+    const unsigned int recordAddress =
+        reinterpret_cast<unsigned int>(this) +
+        static_cast<unsigned int>(offsetof(BulletRuntimeView, transforms)) +
+        static_cast<unsigned int>(this->transformIndex) *
+        static_cast<unsigned int>(sizeof(BulletTransformRecordView));
+    record = reinterpret_cast<BulletTransformRecordView *>(recordAddress);
     kind = record->kind;
 
     if (kind == BULLET_TRANSFORM_NONE)
@@ -124,9 +132,12 @@ nextRecord:
 
     case BULLET_TRANSFORM_SET_SPRITE:
         {
-            int scriptIndex =
-                g_BulletSpriteScriptBase[record->payload.int0] +
-                record->payload.int1;
+            const unsigned int scriptBaseAddress =
+                reinterpret_cast<unsigned int>(g_BulletSpriteScriptBase) +
+                static_cast<unsigned int>(record->payload.int0) * sizeof(int);
+            int scriptIndex = static_cast<int>(
+                static_cast<unsigned int>(*reinterpret_cast<const int *>(scriptBaseAddress)) +
+                static_cast<unsigned int>(record->payload.int1));
             vm.InitializeForLoadedScript(
                 reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->bulletAnm,
                 scriptIndex);
@@ -178,7 +189,9 @@ nextRecord:
             pattern.speed1 = record->payload.float0;
             pattern.speed2 = record->payload.float1;
 
-            ++record;
+            record = reinterpret_cast<BulletTransformRecordView *>(
+                reinterpret_cast<unsigned int>(record) +
+                static_cast<unsigned int>(sizeof(BulletTransformRecordView)));
             ++this->transformIndex;
             pattern.count2 = record->payload.int0LowSigned16;
             pattern.transformFlags =

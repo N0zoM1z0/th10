@@ -23,6 +23,20 @@ its 716 candidate fields and four neighboring complete owners. Five selected
 original-bound ECL leaf units pass **87/87**. The dispatcher is
 **NONEXACT**, zero new codegen credit. [Proof](evidence/enemy-ecl-pattern-init-extra-word-20261107/README.md).
 
+## 2026-11-07 large Bullet transform program native record words
+
+`BulletRuntimeView::AdvanceTransformProgram` original owns **1,454 bytes**;
+its actual mixed-profile normal-COFF candidate is **1,540 bytes with 32
+relocations**, still NONEXACT. The script-indexed 0x18-byte record address,
+second child-pattern record advance, and SPRITE script-index address/word
+now use native modulo-32-bit integer pointers rather than signed overflow
+or C++ out-of-array pointer arithmetic. Five initial and five focused
+combined native C++ compiler variants were tested: the selected combination
+preserves all **1,540/1,540 candidate bytes** and 32 relocations with exact
+local destination offsets; three source-reordered forms grew to 1,548.
+Three selected original-bound Bullet exact owners cold-pass **1,339/1,339**.
+No new exact owner credited. [Native evidence](evidence/bullet-transform-native-record-words-20261107/README.md).
+
 ## 2026-11-07 ECL CALL counted scalar payload word addresses
 
 The real 550-byte `EclVmContext::StartSubroutine` accesses variable-length

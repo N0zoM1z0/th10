@@ -147,6 +147,15 @@ in the canonical exact scoreboard. No full historical replay was run.**
   original-bound ECL argument leaves **87/87**. Giant owner NONEXACT.
   [Current proof](evidence/enemy-ecl-pattern-index-helper-20261107/README.md).
 
+- Bullet `AdvanceTransformProgram`, original **1,454 bytes**, is still
+  NONEXACT (normal-COFF current candidate **1,540 bytes / 32 relocations**).
+  Native word addresses now handle the script's signed record index,
+  second child pattern record and sprite script arithmetic. Five fresh
+  normal-COFF and five combined trials; installed code preserves all
+  1,540 candidate bytes and 32 resolved reloc referents. Three selected
+  original-bound Bullet units cold-pass **1,339/1,339**.
+  [Proof](evidence/bullet-transform-native-record-words-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -210,6 +219,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
+| `src/BulletTransform.cpp` | `05a488b848b78fd97561676973f2e02619d7e28fe403150e59da1e55cf309e24` |
 | `src/BulletManager.cpp` | `5edcaf7151ebcacce077d8116d7e2adf1e33ef2dc1389ab4950be2253b81ec0b` |
 | `src/Sound.cpp` | `5b019a039a6895a57b9ffa783cf9fc7d92b34b7032199e0316c136b357aed7ac` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
