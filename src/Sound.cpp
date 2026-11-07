@@ -359,9 +359,17 @@ unsigned char *__stdcall FindWaveChunk(unsigned char *data, unsigned int remaini
     {
         *chunkSize = reinterpret_cast<const SoundRiffChunkPrefixView *>(data)->byteLength;
         if (strncmp(reinterpret_cast<const char *>(data), tag, 4) == 0)
-            return data + 8;
+            // Original flat i386 32-bit address addition, not C++ array pointer
+            // arithmetic: the length is supplied by unchecked RIFF data.
+            return reinterpret_cast<unsigned char *>(
+                reinterpret_cast<unsigned int>(data) +
+                static_cast<unsigned int>(sizeof(SoundRiffChunkPrefixView)));
         remaining -= *chunkSize + 8;
-        data += *chunkSize + 8;
+        // The next chunk address also wraps as one native 32-bit word.
+        data = reinterpret_cast<unsigned char *>(
+            reinterpret_cast<unsigned int>(data) +
+            static_cast<unsigned int>(*chunkSize) +
+            static_cast<unsigned int>(sizeof(SoundRiffChunkPrefixView)));
     }
     return NULL;
 }

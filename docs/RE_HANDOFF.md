@@ -110,6 +110,13 @@ Private trial scripts and complete linked artifacts are under
 **Do not mistake individual new C++ well-definedness changes for increases
 in the canonical exact scoreboard. No full historical replay was run.**
 
+- Sound `FindWaveChunk` remains **71/71 exact** after recovering native
+  32-bit unchecked RIFF cursor arithmetic. The actual **684-byte**
+  `LoadSoundSample` parent still differs in exactly six ordinary bytes at
+  `+0x122..+0x127` (MOV/LEA schedule); 25 candidate code fields are
+  not original-bound promotion. Four selected Sound exact owners pass
+  **1,819/1,819**. [Current proof](evidence/sound-riff-native-cursors-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -174,7 +181,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletManager.cpp` | `5edcaf7151ebcacce077d8116d7e2adf1e33ef2dc1389ab4950be2253b81ec0b` |
-| `src/Sound.cpp` | `bd73bb4a184fd3151b1b36513f96d11e229a91fd8d6205eb76884a0c1e9cd0a9` |
+| `src/Sound.cpp` | `5b019a039a6895a57b9ffa783cf9fc7d92b34b7032199e0316c136b357aed7ac` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |

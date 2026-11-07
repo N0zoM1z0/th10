@@ -23,6 +23,20 @@ its 716 candidate fields and four neighboring complete owners. Five selected
 original-bound ECL leaf units pass **87/87**. The dispatcher is
 **NONEXACT**, zero new codegen credit. [Proof](evidence/enemy-ecl-pattern-init-extra-word-20261107/README.md).
 
+## 2026-11-07 sound RIFF native cursor word arithmetic
+
+The already-exact 71-byte `FindWaveChunk` advances serialized chunk cursors
+through native unsigned 32-bit address words, not undefined C++ pointer
+arithmetic past a malformed RIFF allocation. Both the match return and
+subsequent chunk advance now use the real 8-byte header stride. Original
+bound `FindWaveChunk` remains **71/71 exact**. The complete 684-byte
+`LoadSoundSample` caller still differs at only its six `MOV EAX`/`LEA EDI`
+scheduling bytes `+0x122..+0x127` (25 candidate code-address fields).
+Four installed-source, selected original-bound Sound owners pass
+**1,819/1,819**; no new exact credit. Nine separate caller lifetime probes
+were byte-neutral and rejected; an unstable Wine link is not a passing
+trial. [Native evidence](evidence/sound-riff-native-cursors-20261107/README.md).
+
 ## 2026-11-07 enemy ECL remaining pattern-index word arithmetic
 
 The actual 14,416-byte enemy ECL dispatcher uses low-32-bit cursor words in
