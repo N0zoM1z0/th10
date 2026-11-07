@@ -487,7 +487,12 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
         }
     }
 
-    const int result = fileCount++;
+    // The original increments the file-slot index as one i386 word, even
+    // across the signed boundary. Publish the wrapped word after retaining
+    // the old index for the package-load dispatch and result.
+    const int result = fileCount;
+    fileCount = static_cast<int>(
+        static_cast<unsigned int>(fileCount) + 1u);
     file = files[result];
     if (file->includeLength != 0)
     {
