@@ -92,6 +92,18 @@ owners with zero candidate ordinary byte changes. Original dispatcher
 five original-bound leaves remain **87/87** exact.
 [Full trial proof](evidence/enemy-ecl-spawn-pattern-index-words-20261107/README.md).
 
+## 2026-11-07 Seek signed remaining-space using native DWORD address subtraction
+
+The original FILE_CURRENT remaining-byte check is signed, but its source
+pointers can lie outside the same C++ array after a negative seek. Using
+unsigned Win32 address words for `base+size-current`, then interpreting
+that low word as `LONG`, restores the actual i386 arithmetic without
+inventing a bound check. Nine genuinely compiled normal-COFF alternatives
+retain the complete **107-byte / 100 matching original bytes / zero fields**
+frontier; unsigned remaining comparison regresses and was rejected. Ten
+selected original-bound file owners cold-pass **491/491**, no new exact
+credit. [Native proof](evidence/resfile-seek-native-remaining-word-20261107/README.md).
+
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
 `TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,

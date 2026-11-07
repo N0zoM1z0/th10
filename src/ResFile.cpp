@@ -92,7 +92,12 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
         break;
     case FILE_CURRENT:
     {
-        LONG remaining = (LONG)(m_Data + m_Size - m_Current);
+        // The original ADD/SUB uses Win32 address words, not C++ array
+        // subtraction: an earlier negative seek may leave this cursor
+        // before the allocated buffer, and the signed check still applies.
+        LONG remaining = static_cast<LONG>(
+            reinterpret_cast<DWORD>(m_Data) + m_Size -
+            reinterpret_cast<DWORD>(m_Current));
         if (remaining <= signedOffset)
             return false;
         position = reinterpret_cast<BYTE *>(reinterpret_cast<DWORD>(m_Current) + offset);

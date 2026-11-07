@@ -140,6 +140,16 @@ target) and Run7020/189 geometry byte-identical. Current-source selected
 one-TU and ECL/Enemy exact guards pass **609/609**, no new exact credit.
 [Source and complete-owner trial](evidence/ecl-start-subroutine-word-offset-20261107/README.md).
 
+**Current memory-file Seek remaining-word correction:** FILE_CURRENT
+now computes its signed available-byte count through Win32 unsigned 32-bit
+address subtraction, matching native arithmetic when a previous allowed
+negative seek places `m_Current` before the C++ array boundary. Nine direct
+normal-COFF source variants were compiled; the installed complete 107-byte
+function keeps the prior **100/107** original comparison with zero external
+fields. Ten affected accepted memory/resource owners selected-cold-pass
+**491/491** original bytes; no new exact credit.
+[Complete native proof](evidence/resfile-seek-native-remaining-word-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -232,7 +242,8 @@ Other unaccepted leaves worth *new evidence-led* work: `CMemoryPbgFile::Seek`
 107/107 but 100 matching ordinary bytes (its CURRENT/END cursor now uses
 explicit native Win32 unsigned-word addresses, with all original behavior
 and a **491/491** selected exact file-owner cold; see
-[evidence](evidence/resfile-seek-native-cursor-word-20261107/README.md)); `AnmLoadedView::SetAndExecuteScriptIdx`
+[previous cursor evidence](evidence/resfile-seek-native-cursor-word-20261107/README.md),
+and [current remaining-word proof](evidence/resfile-seek-native-remaining-word-20261107/README.md)); `AnmLoadedView::SetAndExecuteScriptIdx`
 287/287 with about 22 instruction bytes differing; `EnemyEclHostBaseView::SetSubroutine`
 30/30 with register/ABI disagreement; `EnemyFullObjectView` ctor target
 673 vs native 672. The 20-TU `enemy-end-spell` replay can exceed execution
