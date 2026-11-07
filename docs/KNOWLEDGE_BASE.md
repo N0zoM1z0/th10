@@ -19,8 +19,14 @@ slot helper at the streaming-creation call restores target register
 allocation, the complete **298-byte** owner, all **12 independently
 bound target fields**, and **298/298 strict original bytes** in the
 fresh real Sound+ZWave graph. Five prior exact Sound owners recompile
-**2,261/2,261**. Canonical double-cold admission remains separate from
-this source checkpoint. [Evidence](evidence/sound-load-bgm-format-lifetime-20261107/README.md).
+**2,261/2,261**. This source breakthrough was subsequently **canonically
+admitted** as `sound-load-bgm`: two new independent source-pinned
+cold builds reproduce the complete original **298/298 bytes and all 12
+original-bound address/call fields**, while 1,452-byte `ProcessQueues`
+and 55-byte `ReopenBgm` stay exact. The focused three-owner acceptance
+replay totals **1,805/1,805 bytes** in each run. The ledger now earns
+**one newly exact authored owner and +298 codegen bytes**; no whole
+product or runtime equivalence is inferred. [Evidence](evidence/sound-load-bgm-format-lifetime-20261107/README.md).
 
 ## 2026-11-07 Sound BGM format and 16-slot preloaded native indices
 
@@ -43,9 +49,9 @@ both the shifting source and the advancing destination. Five separate
 full native two-TU source trials, including the installed combined form,
 preserve **1,452/1,452 original bytes and 43/43 original-bound fields**.
 Current-source selected cold replay retains **2,034/2,034** Sound bytes
-and **178/178** WAV exact guards. The new independent 298/298 target-
-bound `LoadBgm` candidate remains separately subject to canonical
-admission; the shift itself adds no new exact codegen owner.
+and **178/178** WAV exact guards. The independent 298/298 target-bound `LoadBgm` candidate was
+subsequently admitted by two canonical colds. The command shift itself
+adds no new exact codegen owner.
 [Evidence](evidence/sound-process-queue-native-shift-20261107/README.md).
 
 ## 2026-11-07 Sound BGM native preload and format slot words

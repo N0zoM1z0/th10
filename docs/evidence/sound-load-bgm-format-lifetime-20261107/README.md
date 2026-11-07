@@ -47,10 +47,55 @@ addends and widths; zero ordinary or field differences**. In particular:
   with addends `0`, `4`, `8` and `12`
 
 The complete original code, including conditional branches and both
-normal/early return paths, is compared, not an isolated excerpt. This
-is a strong *new exact-owner candidate*. Canonical ledger admission and
-independent cold double-replay are tracked separately from the source
-checkpoint; no ledger byte credit is claimed merely from this document.
+normal/early return paths, is compared, not an isolated excerpt. At the
+source-checkpoint stage this was a *candidate*. Canonical admission is now
+**complete**: `sound-load-bgm` binds the reviewed original owner and all
+12 target fields in `config/match-units.toml`, the sorted accepted row in
+`config/matches.csv`, and the source-inventory status in
+`config/functions.csv`.
+
+## Two independent canonical cold replays — newly accepted exact
+
+The correct VC7.1 SP1 `/GL /GS /EHsc` real Sound.cpp + ZWave.cpp
+`ProcessQueues` entry graph was **cold compiled twice from current source**.
+Both strict normalizers accepted every complete code byte, relocations,
+source-to-target referents, addends and call addresses:
+
+| Owner | Cold 1 | Cold 2 | Original link fields |
+| --- | ---: | ---: | ---: |
+| **LoadBgm** | **298/298** | **298/298** | **12/12** |
+| ProcessQueues | 1,452/1,452 | 1,452/1,452 | 43/43 |
+| ReopenBgm | 55/55 | 55/55 | 2/2 |
+| **Selected total** | **1,805/1,805** | **1,805/1,805** | **57/57** |
+
+The two separate SoundInitBuffers PE SHA-256s are
+`ce60a76352529be357f175ecdb7cf3324a8cce7ec60c5fec890f6e89c6115b03`
+and `1108e08688915b8496a74389c655ff1d23bd7404b25fc75e3eddce081de8f39d`;
+they are **different cold outputs**, not the same image checked twice.
+Full PDB extents and all local branches/return paths were required.
+The source SHA-256 is
+`977faf3e332e03a8d1ef3200a1cfd047147c464b6b9f295d243e4aed5ce2bc02`.
+
+This acceptance contributes **one new authored exact owner and 298 new
+original codegen bytes**, raising the canonical totals from **1,498 to
+1,499 exact functions** and from **195,967 to 196,265 exact bytes**.
+Neither cold compilation nor target code equality establishes original
+source spelling, the complete game product or runtime equivalence.
+Only the affected Sound graph was replayed, not the full historical cohort.
+
+Focused reproduction:
+
+```sh
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit sound-load-bgm --unit sound-process-queues \
+  --unit sound-player-reopen-bgm --json
+scripts/repo-python scripts/progress.py --check
+scripts/repo-python scripts/ci.py
+```
+
+Private acceptance receipts:
+`.analysis/gpt-web/20261107-active/sound-load-bgm-canonical-cold-1.json`
+and `sound-load-bgm-canonical-cold-2.json`.
 
 Neighbor regression from the installed source passed five prior exact
 owners **2,261/2,261 target bytes** (`ReopenBgm`, `ProcessQueues`,
