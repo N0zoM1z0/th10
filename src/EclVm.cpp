@@ -663,11 +663,15 @@ int EclVmContext::StartSubroutine(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
                     static_cast<unsigned int>(metadataOffset)))->sourceType;
 
+            // CALL arguments follow a counted name; scalarOperands[1] is
+            // only their first-word overlay, not a bounded C++ array.
+            // Preserve the original low-32-bit dword byte-address walk.
             if (sourceType == 'f' || sourceType == 'g')
             {
                 EclVmScalar value;
                 value.integer =
-                    (*callerInstruction)->scalarOperands[valueOffset / sizeof(int)].integer;
+                    OperandWord(*callerInstruction,
+                        valueOffset / sizeof(int))->integer;
                 value.real = ReadFloatValue(argumentIndex, caller, value.real);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     reinterpret_cast<const unsigned char *>(
@@ -682,7 +686,8 @@ int EclVmContext::StartSubroutine(
             {
                 EclVmScalar value;
                 value.integer =
-                    (*callerInstruction)->scalarOperands[valueOffset / sizeof(int)].integer;
+                    OperandWord(*callerInstruction,
+                        valueOffset / sizeof(int))->integer;
                 value.integer = caller->ReadIntValue(
                     argumentIndex, value.integer);
                 if (reinterpret_cast<const EclVmCallArgumentView *>(

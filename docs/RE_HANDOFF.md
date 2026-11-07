@@ -124,6 +124,15 @@ in the canonical exact scoreboard. No full historical replay was run.**
   **189 original-bound fields**. Eight affected exact units cold-pass
   **1,037/1,037**. [Proof](evidence/ecl-format-native-scalar-byte-address-20261107/README.md).
 
+- ECL `StartSubroutine` now reads both types of counted CALL payload
+  through the native typed `OperandWord` helper instead of indexing a
+  one-element C++ array. Five native source variants compared; a raw-int
+  alternative regressed **76** ordinary candidate bytes and was rejected.
+  Installed source retains the **551-byte** nonexact CALL candidate and
+  7,020-byte Run at **6,997** with all 189 target fields; nine selected
+  original-bound exact ECL units pass **1,161/1,161**.
+  [Proof](evidence/ecl-call-scalar-word-address-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -176,7 +185,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `f8808860b6256b74122634ff24cfddaec20137993077fc61c56fc634b9325a68` |
+| `src/EclVm.cpp` | `8b6ed82795f60cf3fcf3e979e0a6f6fff2e9fa1212522565d23a9021ad1700bb` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |

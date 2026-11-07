@@ -23,6 +23,20 @@ its 716 candidate fields and four neighboring complete owners. Five selected
 original-bound ECL leaf units pass **87/87**. The dispatcher is
 **NONEXACT**, zero new codegen credit. [Proof](evidence/enemy-ecl-pattern-init-extra-word-20261107/README.md).
 
+## 2026-11-07 ECL CALL counted scalar payload word addresses
+
+The real 550-byte `EclVmContext::StartSubroutine` accesses variable-length
+CALL arguments through `scalarOperands[1]`, which is a stream overlay rather
+than a bounded C++ array. Both float/int payloads now use the existing
+`OperandWord` native low-32-bit pointer helper with the original unsigned
+word index. Five native 2-TU variants were compiled; four retain the full
+**551-byte** candidate and its four candidate call fields, whereas a raw
+`int*` variation changes **76** candidate ordinary bytes and was rejected.
+The complete original-bound 7,020-byte `Run` remains **6,997/7,020** with
+**189** target fields; nine final-source exact ECL units cold-pass
+**1,161/1,161**. Neither nonexact owner gains canonical credit.
+[Native evidence](evidence/ecl-call-scalar-word-address-20261107/README.md).
+
 ## 2026-11-07 ECL FORMAT raw scalar word addressing
 
 The 7,020-byte ECL `Run` boss's two FORMAT scalar read branches now use
