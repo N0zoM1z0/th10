@@ -116,6 +116,18 @@ frontier; unsigned remaining comparison regresses and was rejected. Ten
 selected original-bound file owners cold-pass **491/491**, no new exact
 credit. [Native proof](evidence/resfile-seek-native-remaining-word-20261107/README.md).
 
+## 2026-11-07 Bullet transforms: native frame-timer word increments
+
+Seven transform-state `timer.current` fast-branch increments now use the
+same storage's unsigned 32-bit view, preserving i386 overflow wrapping
+rather than C++ signed-increment UB. Three genuine pinned VC7.1 seven-TU
+native source variants preserve all ordinary code bytes and actual link-field
+geometry for seven complete owner functions. The absolute direction-change
+boss is still **333/335 original bytes, 8/8 bound fields**; no exact credit
+added. Current installed-source selected deceleration, horizontal-wrap and
+vertical-wrap exact guards cold-pass **484/484** original bytes.
+[Full evidence](evidence/bullet-transform-timer-word-wrap-20261107/README.md).
+
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
 `TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,

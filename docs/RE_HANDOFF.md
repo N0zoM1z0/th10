@@ -150,6 +150,16 @@ fields. Ten affected accepted memory/resource owners selected-cold-pass
 **491/491** original bytes; no new exact credit.
 [Complete native proof](evidence/resfile-seek-native-remaining-word-20261107/README.md).
 
+**Current bullet transform timer native increments:** all seven
+per-frame `state.timer.current` fast-path increments now use an unsigned
+32-bit word view, matching i386 low-word wrap rather than C++ signed UB.
+Three real current-source seven-TU variants preserve complete code/field
+geometry of seven transform owners. The original absolute-direction boss
+remains **333/335** with all eight original-bound fields; selected current-
+source deceleration/horizontal/vertical owners cold-pass **484/484**.
+**Zero new exact credit.**
+[Source and complete-native evidence](evidence/bullet-transform-timer-word-wrap-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -280,7 +290,7 @@ receipts are ignored private files, not Git attachments.
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
-| `src/BulletManager.cpp` | `ddb77dc65b7e1ae9629d16b64fee178cff743f3192ce95617d8dcbcf64a34a63` |
+| `src/BulletManager.cpp` | `4e2358af726818fa555e5c2ca9524dd4d4eb2c709ba8eb0fc52bf8014106f424` |
 | `src/Sound.cpp` | `cb5cdabd1732dfbd93d6da73938df42dc541356fe7c34fd20a33950576b5b3b0` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
