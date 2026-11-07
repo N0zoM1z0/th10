@@ -1257,6 +1257,9 @@ jump_instruction:
                 break;
             }
 
+            // The counted FORMAT text and argument records are advanced
+            // in native i386 address words; the inline length still
+            // uses its original signed divide-by-four decoding.
             case ECL_VM_EVALUATE_FORMAT_OPERANDS:
             {
                 // The inline format string follows the first 32-bit operand.
@@ -1273,7 +1276,8 @@ jump_instruction:
                         break;
 
                     strcpy(scratch, cursor);
-                    scratch[percent - cursor] = '\0';
+                    scratch[reinterpret_cast<unsigned int>(percent) -
+                            reinterpret_cast<unsigned int>(cursor)] = '\0';
                     switch (percent[1]) {
                     case '%':
                         EclDebugTrace(scratch);
@@ -1288,11 +1292,12 @@ jump_instruction:
                             reinterpret_cast<const EclVmFormatArgumentView *>(
                                 instruction->operands + sizeof(int) +
                                 inlineBytes +
-                                argumentIndex * static_cast<int>(sizeof(EclVmFormatArgumentView)));
+                                static_cast<unsigned int>(argumentIndex) *
+                                static_cast<unsigned int>(sizeof(EclVmFormatArgumentView)));
                         const char argumentType = argument->type;
                         if (argumentType == 'f' || argumentType == 'g') {
                             EclDebugTrace(scratch, ReadFloatValue(
-                                argumentIndex + 1, this,
+                                argumentIndex + 1u, this,
                                 instruction->scalarOperands[
                                     inlineBytes / static_cast<int>(sizeof(int)) + 2 +
                                     argumentIndex *
@@ -1302,7 +1307,7 @@ jump_instruction:
                             ++argumentIndex;
                         } else {
                             EclDebugTrace(scratch, ReadIntValue(
-                                argumentIndex + 1,
+                                argumentIndex + 1u,
                                 instruction->scalarOperands[
                                     inlineBytes / static_cast<int>(sizeof(int)) + 2 +
                                     argumentIndex *
@@ -1314,7 +1319,8 @@ jump_instruction:
                         break;
                     }
                     }
-                    cursor = percent + 2;
+                    cursor = reinterpret_cast<const char *>(
+                        reinterpret_cast<unsigned int>(percent) + 2u);
                 }
                 free(scratch);
                 break;

@@ -104,6 +104,18 @@ Pop changes are rejected. The installed Push source passes selected
 **6,997/7,020**, 189 fields, NONEXACT. Zero newly exact credit.
 [Evidence](evidence/ecl-stack-push-native-word-20261107/README.md).
 
+## 2026-11-07 ECL FORMAT native-word cursor and scalar-index traps
+
+The FORMAT case of ECL Run now uses original i386 low 32-bit words for
+argument record strides, flag indices, literal `%` byte displacement and
+percent+2 token cursor. Thirty-one actual two-TU compiler variations
+prove that even a single unsigned scalar index changes the full Run by
+removing two previous mismatches but adding three new ones; combining two
+separately neutral changes can likewise regress. The selected final-source
+combination preserves **6,997/7,020** original bytes and **189 fields**;
+eight scoped exact owners remain **1,037/1,037**. Still NONEXACT, zero new
+canonical credit. [Native result](evidence/ecl-format-native-word-cursors-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids
