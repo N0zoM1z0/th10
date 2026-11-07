@@ -92,6 +92,18 @@ unchanged. Installed current-source selected six-unit exact cold **605/605**;
 separate two-TU `Run` still **6,997/7,020** with 189 fields, NONEXACT.
 [Evidence](evidence/ecl-stack-frame-native-word-20261107/README.md).
 
+## 2026-11-07 native ECL Stack Push with guarded Pop rejection
+
+The 96-byte ECL Stack Push owner now uses native low 32-bit dword
+addition for signed capacity comparison, type-tag advance and value
+advance, retaining strict original codegen. Nine actual VC7.1 source
+variants show the Push-only forms leave 7,020-byte one-TU Run unchanged,
+whereas Pop forms preserve Pop122 exact but regress Run by 34-67 bytes;
+Pop changes are rejected. The installed Push source passes selected
+**776/776** exact bytes in two cold graphs; separate two-TU Run remains
+**6,997/7,020**, 189 fields, NONEXACT. Zero newly exact credit.
+[Evidence](evidence/ecl-stack-push-native-word-20261107/README.md).
+
 ## 2026-11-07 native-word ECL binary search without codegen regression
 
 The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids

@@ -54,18 +54,21 @@ EclVmStackView::EclVmStackView()
 int EclVmStackView::Push(
     unsigned char type, int size, const void *value)
 {
-    if (stackTop + size >= 0x1000)
+    if (static_cast<int>(static_cast<unsigned int>(stackTop) +
+        static_cast<unsigned int>(size)) >= 0x1000)
         return -1;
 
     if (type != 0)
     {
         reinterpret_cast<EclVmStackTypeSlotView *>(
             data + stackTop)->type = type;
-        stackTop += static_cast<int>(sizeof(EclVmStackTypeSlotView));
+        stackTop = static_cast<int>(static_cast<unsigned int>(stackTop) +
+            static_cast<unsigned int>(sizeof(EclVmStackTypeSlotView)));
     }
 
     memcpy(data + stackTop, value, size);
-    stackTop += size;
+    stackTop = static_cast<int>(static_cast<unsigned int>(stackTop) +
+        static_cast<unsigned int>(size));
     return 0;
 }
 

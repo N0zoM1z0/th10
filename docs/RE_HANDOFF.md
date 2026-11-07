@@ -190,6 +190,16 @@ unchanged. Installed-source selected six-unit original-bound cold is
 189 fields, NONEXACT. Zero new exact credit.
 [Real native proof](evidence/ecl-stack-frame-native-word-20261107/README.md).
 
+**Current ECL stack Push native words:** the stack data-size signed
+bound check, four-byte tag-slot advance and final top advance now use
+i386 low-32-bit unsigned intermediates. Nine native source probes show
+all four stack leaf owners remain exact; Push-only forms leave the whole
+same-graph Run unchanged, while Pop variants *regress* 7,020-byte Run and
+were explicitly rejected. Installed-source selected seven exact owners
+pass **776/776**. The separate two-TU Run stays **6,997/7,020** with all
+189 target fields. **No new exact credit**.
+[Native and rejected-variant evidence](evidence/ecl-stack-push-native-word-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -310,7 +320,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
-| `src/EclVm.cpp` | `b66651c092c017e996b205e305972d3b0d5306a4b88a1cb5a215c5d055cc9179` |
+| `src/EclVm.cpp` | `af4c45e9404e046d33cb7a7d891b6fdbf3e44b08c11412db20dff3a3b2eee4a0` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `1823e96cd57454d3a630f9ae738674918d8c3414363f42691cbff753ec41e286` |
