@@ -2162,10 +2162,14 @@ dispatch_difficulty_float_index_4_a:
     }
   // Original i386 IMUL/ADD compute the low 32-bit pattern address even
   // when script-provided indices overflow a signed C++ expression.
+  // The indexed 0x210-byte pattern cursor is also a native 32-bit word.
   case ENEMY_ECL_INITIALIZE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    iVar11 = iVar26 * static_cast<int>(sizeof(EnemyBulletPatternView)) + (int)runtimeAddress;
+    iVar11 = static_cast<int>(
+        static_cast<unsigned int>(iVar26) *
+        static_cast<unsigned int>(sizeof(EnemyBulletPatternView)) +
+        static_cast<unsigned int>(runtimeAddress));
     puVar5 = EnemyPatternAtRuntimeByte(iVar11)->words;
     for (iVar27 = 0x84; iVar27 != 0; iVar27 = iVar27 + -1) {
       *puVar5 = 0;
@@ -2537,14 +2541,21 @@ dispatch_select_bullet_count_low:
     uVar22 = ENEMY_READ_INT_DIRECT(2);
     EnemyPatternAtRuntimeByte(iVar26)->fields.soundVariant = (int)uVar22;
     return 0;
+  // Opcode 0x199 uses 22 overlapping 0x18-byte records per pattern.
+  // Keep the two index words and final eight-byte-scaled float store as
+  // modulo-32-bit arithmetic, even when script inputs exceed signed int.
   case ENEMY_ECL_SET_BULLET_EXTRA:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
-    iVar26 = (int)uVar22 * static_cast<int>(
-        sizeof(EnemyBulletPatternView) / sizeof(EnemyBulletExtraView)) +
-        (int)uVar23;
-    iVar27 = (int)runtimeAddress + iVar26 *
-        static_cast<int>(sizeof(EnemyBulletExtraView));
+    iVar26 = static_cast<int>(
+        static_cast<unsigned int>(uVar22) *
+        static_cast<unsigned int>(
+            sizeof(EnemyBulletPatternView) / sizeof(EnemyBulletExtraView)) +
+        static_cast<unsigned int>(uVar23));
+    iVar27 = static_cast<int>(
+        static_cast<unsigned int>(runtimeAddress) +
+        static_cast<unsigned int>(iVar26) *
+        static_cast<unsigned int>(sizeof(EnemyBulletExtraView)));
     uVar22 = ENEMY_READ_INT_DIRECT(2);
     EnemyExtraRecordAt(iVar27)->value14 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(3);
@@ -2558,11 +2569,12 @@ dispatch_select_bullet_count_low:
     fVar19 = (ReadFloatArgument(7));
     // Keep the native index scaled in eight-byte units. This is the +4
     // floatB member of the same extra slot, not a separate float array.
-    *(float *)((int)runtimeAddress +
-               (iVar26 * 3 + static_cast<int>(
-                   (offsetof(EnemyRuntimeView, bulletPatterns) +
-                    offsetof(EnemyBulletPatternFieldsView, unknown020) +
-                    offsetof(EnemyBulletExtraView, floatB)) / 8)) * 8) = (float)fVar19;
+    *reinterpret_cast<float *>(static_cast<unsigned int>(runtimeAddress) +
+        (static_cast<unsigned int>(iVar26) * 3u +
+         static_cast<unsigned int>(
+             (offsetof(EnemyRuntimeView, bulletPatterns) +
+              offsetof(EnemyBulletPatternFieldsView, unknown020) +
+              offsetof(EnemyBulletExtraView, floatB)) / 8)) * 8u) = (float)fVar19;
     return 0;
   case ENEMY_ECL_RESET_UPDATE_TIMER:
     updateTimer.SetCurrent(0);

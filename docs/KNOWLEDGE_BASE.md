@@ -9,6 +9,20 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-07 native ECL 0x190/0x199 pattern index words
+
+The 14,416-byte target Enemy ECL dispatcher implements the 0x210-byte
+pattern initialize and 22-slot/24-byte overlapping extra-record opcodes
+using i386 IMUL/ADD/LEA low 32-bit words. Direct target instruction
+review and five independent VC7.1 source trials support explicit unsigned
+word calculations for these three index/address formations, preserving
+original operand schedules. After `EclVm.cpp` changed, a NEW 11-source
+baseline was built with only source-pinned unchanged objects reused. The
+installed final source preserves the complete **14,352-byte candidate**,
+its 716 candidate fields and four neighboring complete owners. Five selected
+original-bound ECL leaf units pass **87/87**. The dispatcher is
+**NONEXACT**, zero new codegen credit. [Proof](evidence/enemy-ecl-pattern-init-extra-word-20261107/README.md).
+
 ## 2026-11-07 memory-file Read/Tell cursor word semantics
 
 Both already-exact memory-file leaves use native 32-bit address arithmetic,
