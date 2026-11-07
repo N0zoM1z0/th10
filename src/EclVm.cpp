@@ -506,11 +506,19 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
 
 EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
 {
+    // Retail i386 keeps every bound update and midpoint in a 32-bit word.
+    // Preserve signed comparisons/division without signed-overflow UB.
     int lower = 0;
-    int upper = subroutineCount - 1;
+    int upper = static_cast<int>(
+        static_cast<unsigned int>(subroutineCount) - 1u);
     while (lower <= upper)
     {
-        const int middle = (upper - lower) / 2 + lower;
+        const int difference = static_cast<int>(
+            static_cast<unsigned int>(upper) -
+            static_cast<unsigned int>(lower));
+        const int middle = static_cast<int>(
+            static_cast<unsigned int>(difference / 2) +
+            static_cast<unsigned int>(lower));
         const int comparison = strcmp(name, subroutines[middle].name);
         if (comparison == 0)
         {
@@ -519,9 +527,11 @@ EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
                 offsetof(EclVmSubroutineStreamView, firstInstruction));
         }
         if (comparison < 0)
-            upper = middle - 1;
+            upper = static_cast<int>(
+                static_cast<unsigned int>(middle) - 1u);
         else
-            lower = middle + 1;
+            lower = static_cast<int>(
+                static_cast<unsigned int>(middle) + 1u);
     }
     return NULL;
 }

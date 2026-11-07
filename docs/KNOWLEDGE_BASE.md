@@ -58,6 +58,17 @@ rejected/byte-neutral. The selected installed source cold preserves ten
 previously exact file owners, **491/491**, zero new match credit.
 [Native proof](evidence/resfile-seek-native-cursor-word-20261107/README.md).
 
+## 2026-11-07 native-word ECL binary search without codegen regression
+
+The actual `EclVmScriptDatabase::FindSubroutine @0x00450470` now avoids
+signed overflow UB in upper-bound decrement, signed midpoint formation and
+selected bound updates with unsigned native 32-bit intermediate operations.
+Five actual single-TU original-target native probes produce the same full
+**136/136 exact** function. Candidate Run7020/189 fields and AddScriptData588/2
+also preserve full byte/field geometry in that graph; their original codegen
+remains NONEXACT. Final-source three-unit selected cold **463/463** passes,
+zero new exact credit. [Complete proof](evidence/ecl-find-subroutine-native-word-20261107/README.md).
+
 ## 2026-11-07 FadeIn 133-byte authored callback exact
 
 `TransitionFadeIn @0x0043C230` is now a complete **133/133 original-bound,

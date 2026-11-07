@@ -111,6 +111,15 @@ Six selected current-source exact timer/operand helpers pass **964/964**
 in two native cold artifacts, no new exact credit.
 [Full owner and selected guard](evidence/anm-timer-tick-word-wrap-20261107/README.md).
 
+**Current ECL binary-search word correction:** the real 136-byte
+`EclVmScriptDatabase::FindSubroutine` now spells its upper bound, signed
+midpoint delta and bound updates as native unsigned 32-bit words with
+signed comparison/division semantics. Five actual source probes preserve the
+**complete 136/136 exact owner** and surrounding Run7020/189-field graph;
+selected current-source original-bound cold keeps Find136, ReadInt144 and
+ReadFloat183 at **463/463**. No additional exact credit.
+[Complete source/whole-owner evidence](evidence/ecl-find-subroutine-native-word-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -222,7 +231,7 @@ receipts are ignored private files, not Git attachments.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `339c95eba4063aab4a62da3d496cb07de2c6240197f6957761392579f93b435f` |
 | `src/AnmManager.hpp` | `3adee93a8eaec70e0b7d469e96271126a5a631b6a44e5e17199892acd2dc9667` |
-| `src/EclVm.cpp` | `5c47304faae61c3ecb51fe31f8574d80a1dfaa710088c7d7d8cc6ba6110084de` |
+| `src/EclVm.cpp` | `33f9eee6ed7df8df500a1c17bf7af38ad23bde80b1759e4ea7946d451c173c66` |
 | `src/EclVm.hpp` | `b7f6c877aff0fb70ac53f4b55b3e5da5be0b6032532eb3b983d97604ae93fe52` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/EnemyEclDispatcher.cpp` | `d370613afd9e6979897737e85b2156f70c1120d37bdcbd3cda265228968e40cd` |
