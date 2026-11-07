@@ -636,7 +636,8 @@ int SoundPlayerView::GetFmtIndexByName(const char *path)
     {
         if (strcmp(bgmFormats[index].name, basename) == 0)
             break;
-        ++index;
+        // Retail INC EBP wraps the low 32-bit format-table index.
+        ++*reinterpret_cast<unsigned int *>(&index);
     }
 
     if (bgmFormats[index].name[0] == '\0')

@@ -212,6 +212,17 @@ geometry and ECL Run 6,997/7,020/189 original fields. Installed-source
 selected exact five-unit cold **570/570**; zero newly exact owners.
 [Full native proof](evidence/enemy-runtime-animation-script-word-20261107/README.md).
 
+## 2026-11-07 Sound GetFmtIndexByName native index dword increment
+
+Original `GetFmtIndexByName @0x0043D2A0 +0xA8` uses `INC EBP` on the
+0x34-byte-record search index. The maintained C++ now writes the same
+low-32-bit unsigned-word increment without signed-overflow UB, keeping
+the source index logically signed. Eleven genuine two-TU native source
+variants preserve complete original exact GetFmt227/4 fields and
+ProcessQueues1452/43 fields, plus PreloadBgm365/369/10 fields. Final
+selected five-unit 3-graph original cold passes **2,261/2,261**, no newly
+exact functions. [Evidence](evidence/sound-getfmt-index-dword-wrap-20261107/README.md).
+
 ## 2026-11-07 Sound PreloadBgm original 0x34 format record stride
 
 The actual 369-byte original `SoundPlayerView::PreloadBgm` uses

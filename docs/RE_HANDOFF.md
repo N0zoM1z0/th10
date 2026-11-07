@@ -345,6 +345,16 @@ Sound cold guards full ProcessQueues1,452 and three leaf owners for
 **2,034/2,034**, zero new exact credit.
 [Whole owner and native proof](evidence/sound-preload-native-format-stride-20261107/README.md).
 
+**Current BGM format-index native INC:** the already-original-exact
+227-byte `GetFmtIndexByName` now increments its actual signed index as
+the original i386 low-32-bit `INC EBP` rather than signed-C++ overflow UB.
+Eleven actual two-TU compiler variants preserve full **227/227** and
+`ProcessQueues 1,452/1,452`; installed-source selected five units in
+three native graphs, including the real five-TU format-search producer,
+cold-pass **2,261/2,261**, 62 original fields. Nonexact `PreloadBgm`
+remains **365/369** with ten original fields. No new exact credit.
+[Original-bound proof](evidence/sound-getfmt-index-dword-wrap-20261107/README.md).
+
 **Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
 all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
 and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
@@ -476,7 +486,7 @@ receipts are ignored private files, not Git attachments.
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletManager.cpp` | `34cb5ceb0c88620a77e3aa9fcf8ab7f19754fc5bbf4bcf292ad844f6da35bba9` |
-| `src/Sound.cpp` | `5ff49ec2afcc82da178570524ec72eafaf4f38edc9fb4d3b95d944d041503ae8` |
+| `src/Sound.cpp` | `ee5f883cb6db7004913ae1a3fd2407d0cdb5f77b7e17c4187c64e864d4a1b22c` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |
