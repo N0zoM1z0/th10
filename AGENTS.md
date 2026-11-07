@@ -1,6 +1,6 @@
 # TH10 reconstruction agent rules
 
-## Current direction — November 6, 2026 (handoff-ready)
+## Current direction — handoff and exact reconstruction
 
 The current task is exact reconstruction. Target at least 98% of reviewed
 authored owned bytes exact. Prioritize complete medium/large representatives
@@ -83,6 +83,9 @@ reports to finish an exact unit. Do not claim these phases from exactness.
 ## Agent handoff and reclaimable storage
 
 The short, authoritative continuation brief is docs/RE_HANDOFF.md.
+Its current-source six-TU score-file graph supersedes older five-TU
+caller assumptions; earlier independent exact-owner receipts remain valid
+for the source epoch they actually compile.
 Do not append repetitive chronological exact claims to its top;
 consolidate into the accepted-owners table and current open-owner
 frontiers, with evidence links. Generated PROGRESS.md is the count

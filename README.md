@@ -49,8 +49,12 @@ and ledger rows. [PROGRESS.md](docs/PROGRESS.md) is generated from the ledgers
 and is the count authority. The inventory and origin classifications remain
 provisional; the Windows i386 product, runtime semantics and portability are open.
 
-Recent complete exact owners include `ReplayManager::SaveReplay` (1,681 bytes),
-`EndingTextVmView::Run` (1,568 bytes) and `EnemyLaserType1View::Draw` (173 bytes).
+Recent complete exact owners include `GameFinalizeStatistics42B1E0`
+(**564 bytes, 24 original-bound fields**), `ReplayManager::SaveReplay`
+(1,681 bytes), `EndingTextVmView::Run` (1,568 bytes), and
+`AnmRenderManagerView::RequestCaptureRectangle` (162 bytes). The current
+statistics constructor now links the real 274-byte record initializer;
+that initializer, constructor and factory remain **NONEXACT**.
 Source-written provenance remains separate from generated or indeterminate-origin
 exact code. The 9,964-byte ANM executor, 7,020-byte ECL interpreter, 14,416-byte
 enemy dispatcher and 1,344-byte replay initializer remain nonexact. See the current handoff for

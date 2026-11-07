@@ -1,6 +1,6 @@
 # TH10 reconstruction — next-agent continuation brief
 
-**Updated 2026-11-06.** This is the **current operational handoff**, not a
+**Updated 2026-11-07.** This is the **current operational handoff**, not a
 chronological trial log. Check live `git status`, `git log`, source hashes and
 the generated [progress ledger](PROGRESS.md) before acting. Historical
 source-epoch notes belong in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and
@@ -33,42 +33,51 @@ scripts/repo-python scripts/ci.py
 
 ## Resume at this checkpoint
 
-Latest accepted checkpoint: `AnmRenderManagerView::RequestCaptureRectangle`
-162/162/all six original fields from two independent real three-TU cold links.
-The preceding ECL, Enemy ECL, ANM and bullet word-arithmetic commits remain
-source-semantic improvements with selected exact guards, not new whole-owner
-credit. Always use live Git status/log; the tree may be dirty during work.
+**Newest accepted full owner:** `GameFinalizeStatistics42B1E0 @0x0042B1E0`
+**564/564** with all **24 original-bound fields**. The installed
+`src/GameStatistics.cpp` was verified in **two independent five-source
+cold builds** before its caller changed. The **current six-source** actual
+constructor graph (`GameStatisticsLoad.cpp`, `GameStatistics.cpp`,
+`GameStatisticsRecordDefaults.cpp`, `FileSystem.cpp`, `Decompress.cpp`,
+`RandomMath.cpp`) then passed selected canonical original-bound
+finalizer **564/564**, loader **423/423**, tail initializer **142/142**
+(**1,129/1,129**); same-image statistics destructor **45/45** remains exact.
+The two earlier five-source PE receipts are real evidence but are **not**
+the same source/build-graph epoch as the current six-source canonical image.
+[Full finalizer proof](evidence/game-statistics-finalize-exact-20261107/README.md)
+and [current caller proof](evidence/statistics-record-real-caller-20261107/README.md).
 
-- Choose one bounded owner with a new concrete lead. The Init two-load order
-  mismatch is reproduced in real 26/36-input contexts; missing file-system context
-  and scalar/typed-view spelling controls are disproved leads and parked.
-- ANM's opcode 91 two-byte mismatch and ECL's 23 ordinary differences remain
-  open. Their current whole-function witnesses are retained below.
-- Score/rank 32-bit wrapping now matches original signed-clamp semantics with
-  both existing exact leaf owners preserved (see
-  [word arithmetic](evidence/item-score-word-wrap-20261106/README.md)).
-- Faith decay and timer previous-frame publication now likewise avoid
-  signed-overflow UB, with selected original-bound native 46/46 and 59/59
-  comparisons ([follow-on proof](evidence/item-faith-decay-timer-wrap-20261106/README.md)).
-- Reference source is pinned at `d1f3121`; its synthetic stand-in/escape
-  contexts are not local acceptance recipes. Save1681 and Ending1568 are
-  already credited; do not count their guard replays as new progress.
-- The FrontEnd capture owner now exact (162/162 original fields six): the
-  complete result-menu caller graph needs real `AnmManager.cpp` as a support
-  translation unit. Reordering destination/source rect stores alone gives
-  161/162, not exact; actual FindVm linkage restores final EDX. See
-  [capture proof](evidence/anm-capture-rectangle-exact-20261106/README.md).
-- New exact score-file finalizer **564/564**, with 24 bound original
-  call/data fields and two independent final-source five-input colds. The
-  earlier 553/564 record-cursor checkpoint is superseded; see
-  [complete proof](evidence/game-statistics-finalize-exact-20261107/README.md).
-- The statistics constructor now calls the **actual reconstructed**
-  `InitializeGameStatisticsRecord` (rather than an unresolved placeholder)
-  from a six-source link. Scoped original-bound finalizer564/loader423/tail142
-  still pass; ctor137/132, factory98/97 and record274 with7/8 fields remain
-  NONEXACT. [Real caller proof](evidence/statistics-record-real-caller-20261107/README.md).
-- No full historical cold replay is needed for handoff. Rebuild only selected
-  changed owners and affected exact interfaces as work resumes.
+**Immediate open statistics work:** the constructor still emits **137 bytes
+vs original 132**, factory **98 vs 97**, and record defaults **274 vs 274
+but NONEXACT**. `GameStatisticsOwner` originally receives owner in **EAX**
+and returns `RET`; current constructor uses a stack owner/`RET 4`. An ordinary
+constructor declaration annotated `__fastcall` or `__cdecl` was byte-neutral;
+this VC7.1 compiler rejects explicit `__thiscall` on constructors. Do not
+force a fake ABI merely to match. The record source's natural 8+1 byte name
+copy recovered **7/8 original global field positions**, but its second
+name-word operand is still `+0x50` vs original `+0x53`; its 75→36 ordinary
+difference result uses **one fixed diagnostic mask**, not canonical equality.
+The real `__stdcall` record callee is now linked instead of a stand-in.
+[Record copy proof](evidence/statistics-record-name-copy-schedule-20261107/README.md).
+
+**Other large active frontiers:** ANM `ExecuteScript` **9,962/9,964** with
+all 350 original-bound fields, ECL `Run` **6,997/7,020** with all 189,
+and Enemy ECL dispatcher **14,352 candidate bytes vs 14,416 target**
+(its 716 fields are *candidate* inventory, not fully original-bound).
+Try a new concrete compiler/source lead, not the already-failed aliases,
+volatile permutations or lifetime reorderings. Eight genuine two-TU
+`StartSubroutine` cursor/increment source variations failed to improve the
+**550 target / 551 candidate**, while `Run` remained 6,997/7,020 and its
+189 fields unchanged. Bullet direction and score/faith/timer integer-word
+semantics were improved without claiming unearned new whole-owner exactness.
+
+Previously accepted Replay Save1681, Ending Run1568 and ANM capture162 are
+already credited; their replays are regression guards, not new exact code.
+The neighboring TH10 decomp reference pinned at `d1f3121` is a hypothesis
+source, never a local codegen acceptance Oracle. Preserve existing ignored
+witnesses and research drivers; inspect source hashes before reusing them.
+**Do not run the full historical cold replay.** Replay only explicitly
+changed/affected units. For storage transfer, see [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 ## Acceptance ledger — generated truth, not a runnable-game claim
 
@@ -85,7 +94,7 @@ Recent *accepted* full owners (replay only one affected cohort when needed):
 
 | Exact original owner | Strict acceptance | Evidence |
 | --- | --- | --- |
-| `GameFinalizeStatistics42B1E0 @0x0042B1E0` | **564/564**, 24/24 original-bound fields; two independent real five-TU colds; same-image loader423/tail142/destructor45 exact; canonical scoped 1129/1129 | [complete finalizer](evidence/game-statistics-finalize-exact-20261107/README.md) |
+| `GameFinalizeStatistics42B1E0 @0x0042B1E0` | **564/564**, 24/24 original-bound fields; two independent unchanged-finalizer five-TU colds and a newer **six-TU** current-source canonical 1129/1129 across finalizer564/loader423/tail142; same-image destructor45 exact | [complete finalizer](evidence/game-statistics-finalize-exact-20261107/README.md); [six-TU caller](evidence/statistics-record-real-caller-20261107/README.md) |
 | `AnmRenderManagerView::RequestCaptureRectangle @0x00424480` | 162/162, six target-bound fields; two independent real FrontEnd/VmIdInterrupt/AnmManager three-TU colds; same-image FindVm73 and result close89 exact | [capture rectangle](evidence/anm-capture-rectangle-exact-20261106/README.md) |
 | `EndingTextVmView::Run @0x0040BD80` | 1568/1568; 92/92 fields; 53 direct locals and all18 owned table words; independent 21-input cold; existing guards953/all24 pass | [ending execution](evidence/ending-run-1568-exact-20261106/README.md) |
 | `ReplayManager::SaveReplay @0x00429B60` | 1681/1681; 83/83 fields; independent 21-input cold; same-image replay/file guards412/all33 and shared-artifact ReadIntOperand820 pass | [replay save](evidence/replay-save-1681-exact-20261106/README.md) |
@@ -114,7 +123,7 @@ confirmed authored code.
 | `EnemyRuntimeView::DispatchEclInstruction @0x0040E770` | **14,416 / 14,352** | 64-byte length gap; **716 candidate** fields. Fresh 11-TU source/PDB codegen checks are mostly candidate-vs-candidate, **not** a full independently bound target acceptance. Typed spawn record, position, word clear and bullet call are installed. Three bullet-count and one integer rank interpolation operations now use native 32-bit wrapping; real 11-TU codegen/716 fields unchanged and five related exact guards87/87 pass ([new proof](evidence/enemy-ecl-rank-word-wrap-20261106/README.md)). [Caller record](evidence/enemy-pattern-bullet-descriptor-boundary-20261106/README.md). |
 | `EnemyBeginSpell @0x00409280` | **2,432 / 2,432** | **108 candidate** fields but many ordinary code differences. Source bonus arithmetic now explicitly wraps modulo 2^32 before the signed cap. Same extent is not exact. [Bonus proof](evidence/enemy-begin-spell-bonus-wrap-20261106/README.md). |
 | `EclVmScriptDatabase::AddScriptData @0x00450220` | **589 / 589** | **510/589**, **2/2 original-bound fields**. Count-reference growth and read-only loop view of the actual input-parameter cursor restore0x10 frame, old-table EBP, REP MOVSD+FB and both CRT call positions. First count/fill/merge-tail register scheduling remains nonexact; no identity selector. Both count growth and old-record subtraction now use native word-wrap source expressions; full 589/2 and Run7020/189 geometry unchanged ([new proof](evidence/ecl-count-word-wrap-20261106/README.md)). Early count/whole-cursor/force-inline controls are parked. [Current proof](evidence/ecl-counted-offset-cursor-20261106/README.md). |
-| `EclVmContext::StartSubroutine` | **550 / 551** | Four caller field positions preserved; direct signed/source pointer lifetime scheduling unresolved. **NONEXACT**. [CALL proof](evidence/ecl-call-counted-inline-name-20261106/README.md). |
+| `EclVmContext::StartSubroutine` | **550 / 551** | Four caller call-field positions preserved. Eight further real two-source cursor/loop declaration-order variants did not improve the complete owner; all were restored and `Run` stayed 6997/7020, 189 fields. Do not retry identical proposals without a new lead. **NONEXACT**. [CALL proof](evidence/ecl-call-counted-inline-name-20261106/README.md). |
 | `BulletRuntimeView::UpdateAbsoluteDirectionChange @0x004078E0` | **335 / 335** at Vector source epoch | Last complete measurement **333/335**, **8/8 independently original-bound fields**, at BulletManager.cpp `504af18f...` before the vertical-wrap change. EAX/EDX at +0xD7/+0xDD remain the nonexact frontier; the three direction-change counter increments now preserve native unsigned 32-bit wrap with 1,394/1,394 selected exact guard bytes and the absolute owner still 333/335 ([fresh proof](evidence/bullet-direction-counter-wrap-20261106/README.md)). [Pinned proof](evidence/bullet-vector-acceleration-20261106/README.md). |
 | `SoundPlayerView::LoadSoundSample` / `PreloadBgm` | **684 / 684**; **369 / 369** | Respectively **678/684** and **365/369** ordinary bytes in suitable five-TU graphs; mainly call argument register order. Many simple declaration/alias and wrapper trials already failed. [Sound wire evidence](evidence/sound-riff-chunk-prefix-20261105/README.md). |
 | `PollInputFrame @0x0044A5F0` | **850 / 850** | Split immutable published return from destructive repeat cursor; fresh baseline855 shrinks to850. **807/850 bytes**, **10/10 independently bound fields**. Remaining43 ordinary differences start +0x2DD in repeat/edge registers and scheduling. Related264-byte query cold passes. XOR/countdown/wider-mask/snapshot controls give no further improvement and are restored. [Current proof](evidence/input-frame-published-mask-20261106/README.md). |
@@ -123,6 +132,7 @@ confirmed authored code.
 | `EnemyLaserType1View::CheckCollisionCircle @0x0041EFA0` | **1,108 / 1,178** | Real virtual slot46DA10+1C now owns the body. Unordered radial acceptance, post-add sample Z clear and radius parameter home restored; typed vectors recover0x32C frame. Current22-input real context restores the independent registration118 call; factory still expands and full30-field extent rejects original29. Request-member factory control gives157/RET8 and is restored. Existing polar30/bounds91/registration118 pass239/all4; affected Update832 and Draw173 use their own selected cold recipes. [Current proof](evidence/laser-type1-circle-owner-20261106/README.md). |
 | `EnemyLaserType1View::CheckCollisionBox @0x0041EB00` | **1,171 / 1,225** in current22-input circle context | Body unchanged since the earlier four-input1209/20-field proof, which belongs to pre-circle EnemyLaser.cpp408659cf. Current broader context emits1225/20 and remains nonexact; graph-dependent sizes are not source-only regressions. Actual slot18, unordered XY rejects, post-add Z clear and0x344 frame remain. Factory type-0 branch still inlines. [Prior four-input proof](evidence/laser-type1-box-owner-20261106/README.md); [current context](evidence/laser-type1-circle-owner-20261106/README.md). |
 | `EnemyLaserType0StorageView::Bounce @0x0041CFD0` | **410 / 510** at pre-box source epoch | Measured at EnemyLaser.cpp `0eb005f5...`, before the box-owner change; Bounce body is unchanged. Actual type-0 vtable46DA60+3C and Update call41D45F bind this owner. Real generated virtual ownership restores ECX/RET; typed XYZ copies and ordered Y predicates are installed. One FireLaser path inlines; factory private arguments/registers remain nonexact. Original Update-entry canonical guard1001/all31 and native polar30/sound123 pass. Bounce-as-entry is rejected (same510; Update1009). Fresh stdcall and complete manager-member controls both give factory157/RET8 with stack request; restored/parked. [Current proof](evidence/laser-bounce-virtual-owner-20261106/README.md). |
+| `GameStatisticsOwner::GameStatisticsOwner @0x0042AE60` / `CreateStatistics42AF20 @0x0042AF20` | **132 / 137**; **97 / 98** | **Both NONEXACT.** Original ctor EAX owner/RET; native candidate stack owner/RET4, even after resolving its actual record initializer. Explicit `__fastcall`/`__cdecl` constructor annotations are byte-neutral; VC7.1 disallows explicit `__thiscall` for this declaration. Six-TU current-source selected guards1129 and destructor45 exact. Revisit real caller ABI/context, not artificial register-forcing. [Real caller/guard proof](evidence/statistics-record-real-caller-20261107/README.md). |
 | `InitializeGameStatisticsRecord @0x0042ACB0` | **274 / 274** | Earlier natural110-iteration rank-kind loop restored size274/8 fields but had only4/8 original field offsets. The current **split 8+1 name copy with extra word between** remains size274, validates all eight referenced original data identities and now aligns **7/8 original field positions**. Under the same 230-byte diagnostic ordinary comparison mask, differences drop **75→36**; name dword2 is still `+0x50` rather than original `+0x53`. **NONEXACT; zero credit**. Constructor now resolves its actual six-source `__stdcall` call, with selected exact1129 still passing ([real caller](evidence/statistics-record-real-caller-20261107/README.md)). [Current copy proof](evidence/statistics-record-name-copy-schedule-20261107/README.md); [prior loop](evidence/statistics-record-natural-loop-20261106/README.md). |
 | `TransitionShakeLinear @0x0043C550` | **439 / 439** | Fresh existing14-input `/GL` graph: **412/439**, **20/20 original-bound fields**. `FIDIV` is at +0xB6 instead of target +0xCE. Named float-product controls (outer conversion; then explicit inner/outer conversions) both move it to +0xAA and displace two fields; rejected/restored. Initializer396/all37 guard passes from the restored-source baseline image. [Reference review and pins](evidence/upstream-th10-decomp-review-20261106/README.md#local-camera-experiment). |
 | `TextRenderBufferView::InvertAlpha @0x00437160` | **157 / 157** | **Current source** two-TU `/GL /GS` measures **138/157**, zero fields; EAX/ECX receiver/count/selector choice accounts for19 differences. Separate pitch capture/multiply is byte-neutral in normal COFF112/157 and GL138/157; restored. Current installed signed-overflow-free text row and geometry words preserve all ordinary codegen; fresh GL/GS still measures138/157 and selected exact text owners1799/1799 pass ([native proof](evidence/text-native-word-geometry-20261106/README.md)). An *older different source/graph* had only `JS` vs `JL` at +0x69; **that one-byte near-exact result is not current**. Private proofs: `.analysis/gpt-web/20261106-text-current-exact/` and `.analysis/gpt-web/20261106-text-alpha-owner/`. |

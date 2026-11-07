@@ -1,5 +1,14 @@
 # TH10 durable reconstruction knowledge
 
+**Source-epoch notice (2026-11-07):** This file is a historical
+research log, not a single live codegen scoreboard. In particular, the
+5-source initial finalizer exact colds predate the later **6-source** real
+record-initializer caller wiring. Both statements are true only for their
+explicit source/build epochs. For *current* pins, canonical exact counts,
+artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
+[PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
+
+
 ## 2026-11-07 statistics constructor real record dependency
 
 The original `GameStatisticsOwner::GameStatisticsOwner` calls the real
