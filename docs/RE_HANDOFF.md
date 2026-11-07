@@ -165,6 +165,14 @@ in the canonical exact scoreboard. No full historical replay was run.**
   14,416-byte dispatcher is still NONEXACT.
   [Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
 
+- Enemy ECL spawn opcode families now use a native 32-bit byte-stream
+  helper for all **28** scalar operands following counted inline names.
+  Fresh current-source 11-TU complete dispatcher candidate remains
+  **14,352 bytes** with 716 candidate field positions and four neighboring
+  owners unchanged; five original-bound ECL leaves pass **87/87**.
+  Original **14,416-byte** dispatcher still NONEXACT.
+  [Proof](evidence/enemy-ecl-variable-spawn-scalar-words-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -221,7 +229,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
-| `src/EnemyEclDispatcher.cpp` | `210dcf465ed3a4aa41020510ba58cba4433c6b1942f2bc3118a8736ea9a33c94` |
+| `src/EnemyEclDispatcher.cpp` | `a9a1ffbf669c5a32b9f3db53c0540fe86b8182ad8f9973e95b0f980d408a2698` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |

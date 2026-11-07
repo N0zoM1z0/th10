@@ -65,6 +65,20 @@ installed-source original-bound ECL exact guards cold-pass **1,037/1,037**.
 Run remains nonexact; no new match credit.
 [Proof](evidence/ecl-format-native-scalar-byte-address-20261107/README.md).
 
+## 2026-11-07 Enemy ECL native variable-length spawn operand words
+
+Twenty-eight dynamic scalar reads across the 14,416-byte original Enemy
+ECL dispatcher now use `EnemySpawnScalarWordAt`, with `instruction + 0x10
++ index*4` as low-32-bit i386 words. This models counted inline subroutine
+names rather than applying C++ array indexing beyond `scalarOperands[1]`,
+and ensures the signed index increments wrap in unsigned intermediates.
+Three independent VC7.1 full-11-TU source variants and a separately
+recompiled installed-source image preserve all **14,352 candidate bytes**,
+716 candidate address positions and four complete neighboring owner bodies.
+Five selected original-bound ECL argument leaves still pass **87/87**.
+The dispatcher remains **NONEXACT**, zero new canonical exact credit.
+[Evidence](evidence/enemy-ecl-variable-spawn-scalar-words-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL typed 0x210/0x0C native index words
 
 The original 14,416-byte Enemy ECL dispatcher now uses unsigned 32-bit
