@@ -212,6 +212,18 @@ geometry and ECL Run 6,997/7,020/189 original fields. Installed-source
 selected exact five-unit cold **570/570**; zero newly exact owners.
 [Full native proof](evidence/enemy-runtime-animation-script-word-20261107/README.md).
 
+## 2026-11-07 Sound GetFmtIndexByName native record address words
+
+The original BGM `GetFmtIndexByName` name loop and end sentinel use
+`IMUL ... ,0x34` + a native 32-bit table base. The three current C++
+`bgmFormats[index].name` uses now make the unsigned 32-bit product/address
+explicit, retaining the separately committed native index INC. Eleven
+source-pinned compiler probes preserve complete exact GetFmt227, large
+Sound ProcessQueues1452 and their original fields; installed-source
+five-unit 3-graph cold **2,261/2,261**, PreloadBgm remains nonexact
+365/369 with ten original fields. No newly exact codegen credit.
+[Proof](evidence/sound-getfmt-record-native-address-20261107/README.md).
+
 ## 2026-11-07 Sound GetFmtIndexByName native index dword increment
 
 Original `GetFmtIndexByName @0x0043D2A0 +0xA8` uses `INC EBP` on the

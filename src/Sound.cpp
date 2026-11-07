@@ -632,15 +632,26 @@ int SoundPlayerView::GetFmtIndexByName(const char *path)
     else
         strcpy(basename, separator + 1);
 
-    while (bgmFormats[index].name[0] != '\0')
+    // Each native BGM row is 0x34 bytes; unchecked indexes address
+    // the low 32-bit Win32 table word, not a C++ array subobject.
+    while (reinterpret_cast<ThBgmFormat *>(
+            reinterpret_cast<unsigned int>(bgmFormats) +
+            static_cast<unsigned int>(index) *
+            static_cast<unsigned int>(sizeof(ThBgmFormat)))->name[0] != '\0')
     {
-        if (strcmp(bgmFormats[index].name, basename) == 0)
+        if (strcmp(reinterpret_cast<ThBgmFormat *>(
+            reinterpret_cast<unsigned int>(bgmFormats) +
+            static_cast<unsigned int>(index) *
+            static_cast<unsigned int>(sizeof(ThBgmFormat)))->name, basename) == 0)
             break;
         // Retail INC EBP wraps the low 32-bit format-table index.
         ++*reinterpret_cast<unsigned int *>(&index);
     }
 
-    if (bgmFormats[index].name[0] == '\0')
+    if (reinterpret_cast<ThBgmFormat *>(
+            reinterpret_cast<unsigned int>(bgmFormats) +
+            static_cast<unsigned int>(index) *
+            static_cast<unsigned int>(sizeof(ThBgmFormat)))->name[0] == '\0')
         index = 0;
     return index;
 }
