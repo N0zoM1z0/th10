@@ -156,6 +156,15 @@ in the canonical exact scoreboard. No full historical replay was run.**
   original-bound Bullet units cold-pass **1,339/1,339**.
   [Proof](evidence/bullet-transform-native-record-words-20261107/README.md).
 
+- Enemy ECL full pattern copy, rank-speed interpolation and 12-byte
+  offset-vector indexing now use native unsigned i386 cursor words via
+  `EnemyPatternAtRuntimeIndex`/`EnemyPatternOffsetAtRuntimeIndex`.
+  Fresh whole current eleven-TU compilation preserves **14,352** candidate
+  bytes and all 716 candidate address fields, with four neighboring owners
+  unchanged; five original-bound Enemy argument leaves **87/87**. Original
+  14,416-byte dispatcher is still NONEXACT.
+  [Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
+
 ## Already accepted exact examples and good guards
 
 - **Large owners:** `ReplayManager::SaveReplay` **1,681/1,681** (83 bound
@@ -212,7 +221,7 @@ All values were reverified at checkpoint `2c04d55`.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `4fbf31b36054079f9672b2012427dcef3aaae10bf3e69460fbf400854efd3299` |
-| `src/EnemyEclDispatcher.cpp` | `90b0e299a82b1af3eac18f9c6e835d756b01b93358f52f56cd80881193a62be2` |
+| `src/EnemyEclDispatcher.cpp` | `210dcf465ed3a4aa41020510ba58cba4433c6b1942f2bc3118a8736ea9a33c94` |
 | `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
 | `src/Enemy.hpp` | `2e2168b1d84e6dab64abb51c2d6dcdf0498c6f36856c9b1a25f18637ed35eea2` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |

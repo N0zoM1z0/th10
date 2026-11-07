@@ -65,6 +65,19 @@ installed-source original-bound ECL exact guards cold-pass **1,037/1,037**.
 Run remains nonexact; no new match credit.
 [Proof](evidence/ecl-format-native-scalar-byte-address-20261107/README.md).
 
+## 2026-11-07 Enemy ECL typed 0x210/0x0C native index words
+
+The original 14,416-byte Enemy ECL dispatcher now uses unsigned 32-bit
+script-index words for full pattern copy, rank-speed fields, and parallel
+12-byte bullet-offset vectors. `EnemyPatternOffsetAtRuntimeIndex` uses the
+reviewed +0x1344 field offset; the existing 0x210-byte helper handles the
+record-copy and speed writes. Fresh current 11-TU native experiments, plus
+independent installed-source rebuild, preserve all **14,352** compiled
+candidate dispatcher bytes and four neighboring owner extents/field
+geometry. Five original-bound ECL leaves cold-pass **87/87**.
+Dispatcher remains **NONEXACT**, zero new canonical exact bytes.
+[Evidence](evidence/enemy-ecl-typed-pattern-array-words-20261107/README.md).
+
 ## 2026-11-07 Enemy ECL native 0x210-byte pattern-index helper
 
 The 14,416-byte original Enemy ECL dispatcher now uses one natural inline

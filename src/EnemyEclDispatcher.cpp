@@ -219,6 +219,18 @@ static __forceinline EnemyBulletPatternView *EnemyPatternAtRuntimeIndex(
         static_cast<unsigned int>(runtimeAddress)));
 }
 
+// A script index selects a 12-byte XYZ offset in the same runtime record.
+// Original i386 IMUL/LEA form low 32-bit words, without an index clamp.
+static __forceinline PlayerFloat3 *EnemyPatternOffsetAtRuntimeIndex(
+    int runtimeAddress, int index)
+{
+    return reinterpret_cast<PlayerFloat3 *>(
+        static_cast<unsigned int>(runtimeAddress) +
+        static_cast<unsigned int>(offsetof(EnemyRuntimeView, bulletPatternOffsets)) +
+        static_cast<unsigned int>(index) *
+        static_cast<unsigned int>(sizeof(PlayerFloat3)));
+}
+
 // The five direct opcode stores use one checked overlapping-record address.
 // Keep each access expression local to its original argument read. Hoisting
 // this pointer across those reads changes the full dispatcher's LTCG liveness.
@@ -2192,13 +2204,14 @@ dispatch_difficulty_float_index_4_a:
     EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.soundId = 7;
     EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.soundVariant = 0x18;
     EnemyPatternAtRuntimeIndex(runtimeAddress, iVar26)->fields.flags1FC = 0x203;
-    reinterpret_cast<EnemyPositionDwordView *>(&bulletPatternOffsets[iVar26])->word[0] = 0;
-    reinterpret_cast<EnemyPositionDwordView *>(&bulletPatternOffsets[iVar26])->word[1] = 0;
+    reinterpret_cast<EnemyPositionDwordView *>(EnemyPatternOffsetAtRuntimeIndex(runtimeAddress, iVar26))->word[0] = 0;
+    reinterpret_cast<EnemyPositionDwordView *>(EnemyPatternOffsetAtRuntimeIndex(runtimeAddress, iVar26))->word[1] = 0;
     return 0;
   case ENEMY_ECL_COPY_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     uVar23 = ENEMY_READ_INT_DIRECT(0);
-    bulletPatterns[uVar23] = bulletPatterns[uVar22];
+    *EnemyPatternAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar23)) =
+        *EnemyPatternAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar22));
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -2252,9 +2265,9 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_SET_BULLET_OFFSET:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     fVar19 = (ReadFloatArgument(1));
-    bulletPatternOffsets[uVar22].x = (float)fVar19;
+    EnemyPatternOffsetAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar22))->x = (float)fVar19;
     fVar19 = (ReadFloatArgument(2));
-    bulletPatternOffsets[uVar22].y = (float)fVar19;
+    EnemyPatternOffsetAtRuntimeIndex(runtimeAddress, static_cast<int>(uVar22))->y = (float)fVar19;
     return 0;
   case ENEMY_ECL_SET_BULLET_ANGLE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -2431,10 +2444,10 @@ dispatch_bullet_speed_lowest:
     float lowSpeedB = ReadFloatArgument(2);
     float highSpeedA = ReadFloatArgument(3);
     float highSpeedB = ReadFloatArgument(4);
-    bulletPatterns[patternIndex].fields.speedA =
+    EnemyPatternAtRuntimeIndex(runtimeAddress, patternIndex)->fields.speedA =
          (highSpeedA - lowSpeedA) * ((float)g_EnemyChapterState.rank + 1024.0f) *
          0.00048828125f + lowSpeedA;
-    bulletPatterns[patternIndex].fields.speedB =
+    EnemyPatternAtRuntimeIndex(runtimeAddress, patternIndex)->fields.speedB =
          (highSpeedB - lowSpeedB) * ((float)g_EnemyChapterState.rank + 1024.0f) *
          0.00048828125f + lowSpeedB;
     return 0;
