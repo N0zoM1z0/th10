@@ -133,6 +133,20 @@ Two selected exact PlayerShot owners and ECL host replay **279/279**
 original bytes. The option origin and larger shot tracker stay nonexact.
 [Evidence](evidence/player-shot-option-native-word-20261107/README.md).
 
+## 2026-11-07 FileSystem Encrypt native replay-shuffle pointer words
+
+The nonexact **307-byte original / 279-byte source** `FileSystem::Encrypt`
+now walks its interleaved XOR byte-stream using native modulo-32-bit
+addresses in both directions. The unencrypted-byte count, chunk size
+and maximum-byte updates similarly preserve i386 word wrap. Four
+actual normal-COFF variants and an independent formatted-source
+comparison preserve the entire 279-byte Encrypt and 278-byte Decrypt
+source candidates (two original CRT call-relocation positions in each),
+with zero candidate ordinary regressions. Five existing exact FileSystem
+owners cold-pass **760/760**, 45 original-bound fields. Neither crypto
+owner becomes exact.
+[Evidence](evidence/filesystem-encrypt-native-cursor-words-20261107/README.md).
+
 ## 2026-11-07 Enemy callback native countdown and penalty words
 
 `EnemyResolveRuntimeCallback` now explicitly includes the complete ANM
