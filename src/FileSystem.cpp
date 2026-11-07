@@ -264,6 +264,15 @@ bool LoadArchive(const char *filename)
     return false;
 }
 
+// The retail i386 stream shuffler walks unchecked byte addresses in
+// a flat low-32-bit word; do not introduce abstract out-of-array pointers.
+static __forceinline unsigned char *NativeCryptoByteOffset(
+    unsigned char *base, unsigned int delta)
+{
+    return reinterpret_cast<unsigned char *>(
+        reinterpret_cast<unsigned int>(base) + delta);
+}
+
 unsigned char *Decrypt(unsigned char *data, int size, unsigned char xorValue,
                        unsigned char xorValueIncrement, int chunkSize,
                        int maxBytes)
@@ -275,8 +284,12 @@ unsigned char *Decrypt(unsigned char *data, int size, unsigned char xorValue,
     if (temporary == NULL)
         return data;
 
-    unencryptedBytes += size & 1;
-    size -= unencryptedBytes;
+    unencryptedBytes = static_cast<int>(
+        static_cast<unsigned int>(unencryptedBytes) +
+        static_cast<unsigned int>(size & 1));
+    size = static_cast<int>(
+        static_cast<unsigned int>(size) -
+        static_cast<unsigned int>(unencryptedBytes));
     memcpy(temporary, data, copySize);
 
     unsigned char *inputCursor = temporary;
@@ -288,27 +301,36 @@ unsigned char *Decrypt(unsigned char *data, int size, unsigned char xorValue,
             chunkSize = size;
 
         unsigned char *outputCursorBackup = outputCursor;
-        outputCursor += chunkSize - 1;
+        outputCursor = NativeCryptoByteOffset(outputCursor,
+            static_cast<unsigned int>(chunkSize) - 1u);
 
         int i;
-        for (i = (chunkSize + 1) / 2; i > 0; i--, inputCursor++)
+        for (i = static_cast<int>(
+                 static_cast<unsigned int>(chunkSize) + 1u) / 2;
+             i > 0; i--, inputCursor = NativeCryptoByteOffset(inputCursor, 1u))
         {
             *outputCursor = *inputCursor ^ xorValue;
-            outputCursor -= 2;
+            outputCursor = NativeCryptoByteOffset(outputCursor, static_cast<unsigned int>(-2));
             xorValue += xorValueIncrement;
         }
 
-        outputCursor = outputCursorBackup + chunkSize - 2;
-        for (i = chunkSize / 2; i > 0; i--, inputCursor++)
+        outputCursor = NativeCryptoByteOffset(outputCursorBackup,
+            static_cast<unsigned int>(chunkSize) - 2u);
+        for (i = chunkSize / 2; i > 0;
+             i--, inputCursor = NativeCryptoByteOffset(inputCursor, 1u))
         {
             *outputCursor = *inputCursor ^ xorValue;
-            outputCursor -= 2;
+            outputCursor = NativeCryptoByteOffset(outputCursor, static_cast<unsigned int>(-2));
             xorValue += xorValueIncrement;
         }
 
-        size -= chunkSize;
-        outputCursor = outputCursorBackup + chunkSize;
-        maxBytes -= chunkSize;
+        size = static_cast<int>(
+            static_cast<unsigned int>(size) -
+            static_cast<unsigned int>(chunkSize));
+        outputCursor = NativeCryptoByteOffset(outputCursorBackup, static_cast<unsigned int>(chunkSize));
+        maxBytes = static_cast<int>(
+            static_cast<unsigned int>(maxBytes) -
+            static_cast<unsigned int>(chunkSize));
     }
 
     free(temporary);
