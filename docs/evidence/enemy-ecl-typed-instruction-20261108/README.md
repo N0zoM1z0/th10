@@ -57,6 +57,17 @@ The guard replays are scoped to these owners; no whole-repository historical
 replay was run. `native-result.json` records source/object pins, the complete
 large-owner comparison and the individual guard receipts.
 
+## Second boss baseline: EnemyBeginSpell
+
+The same graph also contains `EnemyBeginSpell @0x00409280` as a complete
+2,432-byte PDB contribution at candidate `0x00416F90`, matching the target
+physical extent. Its candidate has 108 relocation fields (67 DIR32, 41 REL32);
+after masking those candidate fields, **1,403/2,000 ordinary bytes match**
+and 597 differ. These are candidate-only fields, not an independently
+original-bound linkage proof. The function remains NONEXACT. The comparison
+is retained in [`enemy-begin-spell-baseline.json`](enemy-begin-spell-baseline.json)
+for the next focused source-recovery pass.
+
 ## Reproduction
 
 Run from the repository root:

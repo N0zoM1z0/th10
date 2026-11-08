@@ -140,6 +140,10 @@ in focused groups and all pass **2,363/2,363**: the dispatcher helpers,
 ANM release/readers, bullet bounds, item drops/cancellation, laser
 constructors, projection preparation and ECL world anchor. No full
 all-unit cold replay was run. [Evidence](evidence/enemy-ecl-typed-instruction-20261108/README.md).
+The same graph also emits a full 2,432-byte PDB contribution for
+`EnemyBeginSpell @0x00409280`. It matches **1,403/2,000** comparable ordinary
+bytes after masking 108 candidate-only relocation fields; it remains
+NONEXACT and is the next large boss target. [Baseline](evidence/enemy-ecl-typed-instruction-20261108/enemy-begin-spell-baseline.json).
 
 ## EnemyFullObject destructor native count/slot words (2026-11-08)
 
@@ -288,8 +292,9 @@ These are the latest relevant **whole-owner** baselines, not acceptance:
 | --- | ---: | --- |
 | ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964 original ordinary bytes, all 350 original-bound fields**; opcode 91 at `+0x113,+0x115` uses EDX in target, ECX candidate. Fourteen-/five-TU contexts differ. Seventeen new local register/lifetime forms failed. [Current vertex-index word proof](evidence/anm-render9-native-vertex-index-20261107/README.md), [earlier mode-9 proof](evidence/anm-render9-native-vertex-words-20261107/README.md), [original opcode-91 frontier](evidence/anm-variable-stream-native-address-20261107/README.md). |
 | ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020 original bytes, all 189 target-bound fields** in real ECL/Enemy **two-TU** graph; single-TU context can be **6,996/7,020** without a regression. Remaining 23 bytes span FORMAT register/stack homes, LENGTH_SQUARED, POINT_ANGLE, loop/callback. Some `Pop` unsigned pointer forms regress whole Run despite leaf exact. [Current FORMAT native-address proof](evidence/ecl-format-native-text-addresses-20261107/README.md), [FORMAT evidence](evidence/ecl-format-argument-index-wrap-20261107/README.md), [Pop rejection](evidence/ecl-stack-push-native-word-20261107/README.md). |
-| Enemy ECL `DispatchEclInstruction @0x0040E770` | 14,416 / 14,416 | **NONEXACT**; 1,252/11,536 comparable bytes, 720 candidate linkage fields (not independently original-bound); 181-byte opcode map matches retail. [Rank-five float-tail proof](evidence/enemy-ecl-rank-five-tail-20261108/README.md). Earlier 14,352/716 measurements below are historical source epochs, not current. |
+| Enemy ECL `DispatchEclInstruction @0x0040E770` | 14,416 / 14,416 | **NONEXACT**; 1,255/11,536 comparable bytes, 720 candidate linkage fields (not independently original-bound). Typed signed opcode/current-instruction view and 21 exact guards are in [current proof](evidence/enemy-ecl-typed-instruction-20261108/README.md). Earlier 14,352/716 and 1,252-byte measurements are historical. |
 | `EnemyRuntimeUpdate @0x0040DC80` | 2,412 / 2,412 | **NONEXACT**; 1,582/2,136 comparable bytes, 69 candidate linkage fields; X/Y/Z base-before-offset x87 order and Z spill at `ESP+0x24`. [Aggregate/vector proof](evidence/enemy-runtime-world-vector-aggregate-20261108/README.md). |
+| `EnemyBeginSpell @0x00409280` | 2,432 / 2,432 | **NONEXACT**; 1,403/2,000 comparable ordinary bytes after masking 108 candidate-only fields. New baseline from the current 12-TU Enemy/ECL graph. [Comparison](evidence/enemy-ecl-typed-instruction-20261108/enemy-begin-spell-baseline.json). |
 | `EnemyAdvanceMotion @0x0044C2A0` | 171 / 168 | **NONEXACT**; 133/140 ordinary bytes and all 7 original-bound fields; final stack cleanup differs at `+0xA1..+0xA7`. [Polar/x87 proof](evidence/enemy-advance-motion-x87-polar-20261108/README.md). |
 | `SpawnSingleBullet @0x004067D0` | 1,413 / 1,504 | 44 **candidate** fields; odd-angle index, both 0x7F0-byte pool advances, ANM/effect-script words installed. Nine seven-TU source probes leave entire candidate unchanged; canonical SpawnBulletPattern194 must be replayed in its **different** correct graph. [Final source](evidence/bullet-spawn-script-words-20261107/README.md). |
 | ECL `StartSubroutine` | 550 / 551 | Four candidate call fields; native counted metadata, stack addresses and signed CALL argument-counter word increment restored. Remains nonexact. [New argument-counter proof](evidence/ecl-call-argument-index-wrap-20261107/README.md). [CALL proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md). |
