@@ -9,6 +9,18 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 CMemoryPbgFile Seek native FILE_BEGIN base word
+
+`CMemoryPbgFile::Seek` now publishes FILE_BEGIN positions through the
+same native low-32-bit address arithmetic previously restored to
+CURRENT/END, instead of an unchecked C++ abstract array addition.
+Thirteen standalone source trials and nine scoped-case variants confirmed
+that the seven branch/tail-merging differences remain. The installed
+complete **107-byte** candidate is **100/107 raw original bytes** with
+zero relocations, still **NONEXACT**. Ten selected previously exact
+file-interface units cold-pass **491/491**. No codegen ledger credit.
+[Evidence](evidence/resfile-seek-begin-native-word-20261108/README.md).
+
 ## 2026-11-08 Alternate text upload scope improves eight original bytes
 
 The nonexact **509-byte** `RenderTextToTextureAlternate` now scopes its

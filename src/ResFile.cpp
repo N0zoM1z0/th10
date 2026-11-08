@@ -94,7 +94,10 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
     case FILE_BEGIN:
         if (signedOffset < 0 || offset >= m_Size)
             return false;
-        position = m_Data + offset;
+        // Retail forms the FILE_BEGIN position as one low-32-bit Win32
+        // address word, even if the backing allocation metadata is invalid.
+        position = reinterpret_cast<BYTE *>(
+            reinterpret_cast<DWORD>(m_Data) + offset);
         break;
     case FILE_CURRENT:
     {
