@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 OpenDiskBgm exact-size early guard breakthrough
+
+The reviewed 241-byte original `SoundPlayerView::OpenDiskBgm` has separate
+immediate absent-manager and absent-device returns. Source merged checks
+caused a 249-byte linked function; two natural separate C++ guards now
+restore a 241-byte native `/GL` owner. The complete original-bound
+comparison passes **241/241 bytes with ten exact typed target fields**
+(StopBgm, two Win32 imports, window global/addend, BgmPlayerThread,
+GUID_NULL four DWORDs and the CreateStreaming target). Seven previously
+accepted Sound functions cold-pass **2,510/2,510**. Source checkpoint
+remains pending independent double-cold canonical exact admission.
+[Evidence](evidence/sound-open-disk-bgm-early-guards-20261108/README.md).
+
 ## 2026-11-08 BulletManager native draw-bucket slot addressing
 
 The six-head/six-tail `UpdateBullets` draw buckets now use a typed

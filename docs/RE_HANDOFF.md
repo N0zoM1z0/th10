@@ -281,6 +281,18 @@ The 157/554/509-byte neighboring owners remain nonexact, with unchanged
 current comparable scores. No new exact credit.
 [Evidence](evidence/text-format-row-native-words-20261107/README.md).
 
+## Sound OpenDiskBgm natural early-return lifetime recovery (2026-11-08)
+
+Splitting the absent-manager and absent-DirectSound checks into two
+ordinary C++ early returns restores the retail **241-byte** native
+`OpenDiskBgm` PDB owner in the real Sound+ZWave `/GL /GS /EHsc` graph.
+The target-bound strict comparator passes **241/241 original bytes,
+all 10 original relocation/address/call fields**, including four GUID_NULL
+addends. Seven separately canonical Sound guards cold-pass **2,510/2,510**.
+The new 241-byte owner is **pending canonical double-cold admission**;
+no new exact ledger credit at this source checkpoint.
+[Evidence](evidence/sound-open-disk-bgm-early-guards-20261108/README.md).
+
 ## Native Sound command shift cursor (2026-11-07)
 
 The 1,452-byte `ProcessQueues` exact owner now uses typed native 32-bit
@@ -588,7 +600,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletTransform.cpp` | `05a488b848b78fd97561676973f2e02619d7e28fe403150e59da1e55cf309e24` |
 | `src/BulletManager.cpp` | `2050ed5197807702de5f250db77d6e37358a612cdec323849baaab1d786c7c35` |
-| `src/Sound.cpp` | `977faf3e332e03a8d1ef3200a1cfd047147c464b6b9f295d243e4aed5ce2bc02` |
+| `src/Sound.cpp` | `5c66f60e5b6a7e6d8a5e7e5e103bdbd742e981fbc5dd72917ac5457d75cce22b` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
 | `src/GameStartupVersion.cpp` | `125b80a073015e9d0fd2694b989a0983bf3f3777fb29634825818ced0f125b4f` |

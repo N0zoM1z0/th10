@@ -1094,7 +1094,9 @@ void FrontEndQueueSoundCommand(const char *path, int opcode, int argument)
 int SoundPlayerView::OpenDiskBgm(const char *path)
 {
     strcpy(unknownNameSlot, path);
-    if (manager == NULL || directSound == NULL)
+    if (manager == NULL)
+        return -1;
+    if (directSound == NULL)
         return -1;
     StopBgm();
     ThBgmFormat *format = bgmFormats;
