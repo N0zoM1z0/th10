@@ -1650,10 +1650,16 @@ EnemyFullObjectView::~EnemyFullObjectView()
         listNode->previous->next = listNode->next;
     listNode->next = NULL;
     listNode->previous = NULL;
-    --manager->activeEnemyCount;
+    manager->activeEnemyCount = static_cast<int>(
+        static_cast<unsigned int>(manager->activeEnemyCount) - 1u);
 
     if ((enemy->runtime.flags & 0x8000u) != 0)
-        manager->specialEnemySlots[enemy->runtime.managerSlot] = NULL;
+        // Retail indexes the unchecked special-enemy slot as a native
+        // 32-bit table address, with four-byte pointer-sized entries.
+        *reinterpret_cast<EnemyFullObjectView **>(
+            reinterpret_cast<unsigned int>(&manager->specialEnemySlots[0]) +
+            static_cast<unsigned int>(enemy->runtime.managerSlot) *
+            sizeof(manager->specialEnemySlots[0])) = NULL;
 
     for (int i = 0; i < 10; ++i)
     {

@@ -34,6 +34,19 @@ accepted bullet functions, **665/665 original bytes and 22/22 fields**.
 No new exact codegen ledger credit or runtime/product claim.
 [Evidence](evidence/bullet-manager-native-pool-cursor-20261108/README.md).
 
+## 2026-11-08 EnemyFullObject destructor native DEC and VM slot words
+
+The nonexact **386-byte original** enemy object destructor (separate from
+300-byte exact EnemyManager destructor) uses native `DEC [ECX+0x60]` on
+manager activeEnemyCount and an unchecked slot table index. Source now
+models signed underflow via modulo-32-bit subtraction and low-word
+pointer-sized special slot address arithmetic. Four actual 14-TU
+variants show the complete 385-byte candidate and its seven fields
+unchanged; installed-source canonical cold replay of five related exact
+owners passes **899/899**, 20 original fields. Destructor is still
+NONEXACT with no new codegen credit.
+[Evidence](evidence/enemy-full-destructor-native-words-20261108/README.md).
+
 ## 2026-11-08 EnemySpawn native active-enemy and spawn counter words
 
 `EnemySpawn` now uses Win32 modulo-32-bit additions for manager

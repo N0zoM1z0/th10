@@ -80,6 +80,18 @@ with all original fields. Five selected already-exact bullet functions
 cold-pass **665/665** in two original graph families, no new exact credit.
 [Evidence](evidence/bullet-manager-native-pool-cursor-20261108/README.md).
 
+## EnemyFullObject destructor native count/slot words (2026-11-08)
+
+The distinct `EnemyFullObjectView::~EnemyFullObjectView @0x0040DAE0`
+now decrements the signed manager active count as native 32-bit `DEC`,
+and addresses unchecked special-enemy slot pointers by low-32-bit
+index-times-four words. Four real 14-TU compiler variants preserve the
+full **385-byte candidate / 386-byte original** with seven candidate
+fields; this destructor remains **NONEXACT** (55/357 ordinary bytes in
+its current graph). Final installed-source selected cold replay protects
+five already exact EnemySpawn/manager owners **899/899**, 20 original
+fields. No new exact credit. [Evidence](evidence/enemy-full-destructor-native-words-20261108/README.md).
+
 ## EnemySpawn native active/spawn counter words (2026-11-08)
 
 Original **577-byte EnemySpawn** now increments the signed manager
@@ -556,7 +568,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `5784637d77b9bc502f5ad4157aa1f199355a17668cb8a056c43a50dbe4541126` |
 | `src/EnemyEclDispatcher.cpp` | `cebadf0dd493c970699b98b371ebd9792d1dd3c51c26fe49cdc591df0e0d581f` |
-| `src/Enemy.cpp` | `7fbc4b94ea173a05bdea370e0eaf6660fb5855de7ebdfa8281642dc200a068b7` |
+| `src/Enemy.cpp` | `bcbf59bf58b94432c0a1e350433e6715600c5bef6646e814d5b82e935d13f0bb` |
 | `src/Enemy.hpp` | `372ef4e3ca68687434092efa8b50573ef6ebcf8aa0fc0bb2e14058d60b85f668` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
