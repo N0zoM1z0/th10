@@ -18,11 +18,20 @@ int EnemyLaserLineView::Clear(int spawnItems)
     {
         do
         {
+            const int color = request.color;
+            AnmLoadedView *resource =
+                reinterpret_cast<EnemyLaserManagerStorageView *>(
+                    g_EnemyLaserManager)->effectResource;
             ++count;
-            reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->
-                effectResource->CreateVmAtWorldVariant0(
-                    request.color * 2 + 0x11,
-                    &point);
+            const int scriptIndex = color * 2 + 0x11;
+            AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+            vm->flags35C |= 0x40000000u;
+            vm->renderLayer = 0;
+            vm->positionOffset.x = point.x + 224.0f;
+            vm->positionOffset.y = point.y + 16.0f;
+            vm->positionOffset.z = point.z;
+            resource->InitializeAndExecuteScriptIndex(vm, scriptIndex);
+            g_AnmRenderManagerView->AddVmVariant0(vm);
             if (spawnItems != 0 &&
                 !(point.x + 32.0f <= -192.0f) &&
                 !(point.x - 32.0f >= 192.0f) &&

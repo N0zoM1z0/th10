@@ -23,13 +23,16 @@ only while ordered distance+6 < the **current** length. In particular, equality
 and NaN terminate. The target retains a three-float construction/copy and adds
 zero to sample Z after each segment; it does not just preserve a Z bit pattern.
 
-Each iteration selects signed request.color at44A, script2*color+17 and the
-current laser manager47781C's resource458. The ANM world creator allocates a VM,
-sets flags35C bit40000000/layer0 and writes **positionOffset340**, adding224/16.
-It calls the actual script binder43E710 and then registers with the current
-render manager491C10. The target inlines the primary registrar4489D0, preserving
-its linked-list writes and nonzero id rule. Script execution can change live
-state; subsequent iterations sample resource, color, allocation owner and length
+Each iteration reads signed request.color at44A and the current laser
+manager47781C's resource458. The target then increments the sample count,
+computes script index2*color+17, and calls the VM allocator449950 directly.
+It sets flags35C bit40000000/layer0 and writes **positionOffset340** with
+x+224/y+16/original z. It directly calls script binder43E710 and then inlines
+the primary registrar4489D0, preserving its linked-list writes and nonzero-id
+rule. It does not call the world creator448DB0 from this owner. The order
+of color/resource/count/script-index/allocator operations matters to the
+private LTCG register assignment. Script execution can change live state;
+subsequent iterations sample resource, color, allocation owner and length
 again. Slot14h finally sets stateC=1 and returns the number of segments, even
 when no segment was created. It does not set deletion byte50.
 
@@ -48,25 +51,39 @@ retained; older diagnostics describe earlier source contexts.
 
 ## Native observations and limits
 
-Three complete four-TU /GL /GS diagnostics freeze18 source/header inputs:
-LaserClear.cpp with AnmManager.cpp, EnemyLaser.cpp and ItemManager.cpp.
-Aggregate construction and direct AnmFloat3 construction each emit597 bytes;
-ordinary default construction followed by assignment preserves the target's
-three-float temporary/copy and emits613 bytes against609. The final source
-uses this existing natural vector API and typed ANM/Item point arguments.
-The latter has204/521 comparable ordinary bytes; a similarity score grants no
-acceptance. The actual script binder's private register assignment and ANM
-flag/layer/list scheduling remain different. No artificial padding, volatile,
-code placement, forced inlining, fake ABI or byte copying is used.
+The earlier three four-TU /GL /GS diagnostics in the historical native
+receipt predate the direct-allocation source correction. Their597/613-byte
+Clear candidates and world-creator measurements are not measurements of the
+current source. They remain useful historical controls, not current-source
+proof.
 
-The world creator emits116/118 in this context, and Item Spawn's PDB code
-contribution is795 bytes against its793-byte target code span. The819-byte
-Item physical owner additionally includes26 bytes of alignment/tables; a raw
-PDB size comparison is not a complete ownership replay. The30-byte polar helper
-is structurally equal here, with no new credit. Unresolved anchors make these
-diagnostic images unsuitable for execution. [Native receipt](native-proof.json)
-records the frozen contexts and the focused existing-unit guards; there is no
-new canonical match unit for Clear.
+## Direct ANM call restoration — 2026-11-08
+
+The current source now follows the target's direct allocator/binder/registrar
+path. A fresh focused seven-TU /GL /GS link used AnmManager.cpp, Gui.cpp,
+EnemyLaser.cpp, LaserClear.cpp, LaserType1Clear.cpp, Player.cpp and
+EnemyEclDispatcher.cpp. The selected Clear owner emits623 bytes against the
+609-byte target. After masking22 candidate link fields (88 bytes),164/521
+ordinary target bytes match; the previous same-graph indirect-world-creator
+baseline was630 bytes and24/521 ordinary matches. This is a real structural
+improvement, not exact codegen.
+
+The same image emits the binder as197/203 bytes (17/187 ordinary matches)
+with a different private ABI: the candidate passes resource/VM/script in
+ESI/EDX/EAX, while the target caller passes them in ECX/EAX/EBX. The current
+source computes scriptIndex before AllocateVm, matching the target's
+data-dependency order; that improved Clear to164 ordinary matches but did not
+yet restore the binder's global private-register assignment. The neighboring
+AnmVmView::Initialize leaf is byte-equal at273/273 in this image and already
+has its own canonical exact unit. These observations are diagnostic only:
+291 unresolved anchors remain, the image is not executable evidence, and no
+new exact bytes are claimed. See the direct-call receipt
+(direct-anm-call-20261108.json).
+
+The old world-creator contribution and Item Spawn contribution in
+native-proof.json belong to their frozen historical context. The30-byte polar
+helper remains structurally equal there, with no new credit. There is no new
+canonical match unit for Clear.
 
 The four necessary existing canonical guards pass: polar30, bounds91/all4
 fields, Motion0010269/all10 fields and Motion0040329/all8 fields. They cover719
@@ -80,24 +97,13 @@ and whitespace checks pass. Cleanup frees1,865,298 bytes from this batch.
 
 ## Host evidence
 
-The actual Clear body runs with actual ANM world/screen creators, allocator,
-primary registrar, node insertion and complete Item Spawn
-body. Tests exercise the kind8 path, its busy-slot count/cursor rule, timer and
-motion fields, and the actual creator's world offsets, flags, primary links and
-zero-id skip. Script execution and polar math are roles. The script role alone
-can mutate live globals/state; no callbacks are injected into VM reset, pool
-allocation, list registration or kind8 spawning. Native assertions and outer
-constructors receive explicit host adaptations; all objects have typed live
-storage. No original C++ object-lifetime claim follows from these host adaptations.
-
-Twenty-five strict named-CHECK mutants pass ASan/UBSan/leak checks. They cover sampling, signed-zero Z addition, exact/NaN
-loop boundaries, live length/color/resource/Item owner, mode/bounds/NaN rules,
-script/world coordinates, kind/velocity, retirement order/state and return.
-The runner rejects compile errors, sanitizer failures and unrelated CHECKs as
-mutation evidence. See the test (`e1c4075:scripts/test-laser-clear.py`, retired host tooling) and
-fixture (`e1c4075:scripts/fixtures/laser-clear.cpp`, retired host tooling). Assets, allocation failure,
-native x87 precision/exceptions, invalid/unbounded counters, original object
-lifetimes and game runtime reachability remain open.
+The previous host fixture and its twenty-five strict named-CHECK ASan/UBSan
+mutants are historical evidence for the earlier world-creator path. The test
+and fixture were retired and are not validation of the current direct
+AllocateVm/binder/registrar source. The current direct path has focused native
+compile/link evidence above, but no active host fixture. Native x87
+precision/exceptions, allocation failure, invalid/unbounded counters,
+original object lifetimes and game runtime reachability remain open.
 
 The ignored MIT [reference repository](https://github.com/levzzz5154/th10-decomp)
 is pinned at c6791d82dc9f02e55eca45a5314f900a85481efd. Its
@@ -109,5 +115,5 @@ D3D evidence directory is untouched.
 
 ```sh
 scripts/repo-python scripts/report-laser-clear.py
-scripts/repo-python scripts/test-laser-clear.py --sanitize
+scripts/repo-python scripts/relink-laser-clear-direct-anm-path.py
 ```
