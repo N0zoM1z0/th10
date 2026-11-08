@@ -25,6 +25,22 @@ remains at **1,578/2,136** comparable bytes. Seven selected existing Enemy
 owners cold-pass **933/933** bytes; CI and diff-check pass. No full replay.
 [Evidence](evidence/enemy-advance-motion-x87-polar-20261108/README.md).
 
+## 2026-11-08 EnemyAdvanceMotion Cartesian and polar x87 frontier
+
+`EnemyAdvanceMotion @0x0044C2A0` now preserves the target's Cartesian X
+operand order and explicitly materializes the polar vector's third word.
+The full 12-source VC7.1 `/GL` graph reproduces the polar branch's complete
+`+0x25..+0x6C` sequence, including its x87 operations and three result stores.
+The 171-byte target currently has a **168-byte** candidate with all **7**
+original-bound fields at matching offsets and **133/140** ordinary
+non-field bytes matched. The only seven ordinary differences are the final
+stack cleanup/store ordering at `+0xA1..+0xA7`; natural C++ local, volatile,
+and expression-order experiments did not remove it. The function remains
+**NONEXACT**, no new ledger credit. The 2,412-byte `EnemyRuntimeUpdate`
+parent remains **655/671** aligned instructions in the same 12-TU graph.
+Four selected previously exact Enemy owners cold-pass **848/848** bytes.
+[Evidence](evidence/enemy-advance-motion-x87-frontier-20261108/README.md).
+
 ## 2026-11-08 EnemyRuntimeUpdate shared managed-VM cursor
 
 The complete 2,412-byte `EnemyRuntimeUpdate` now declares one managed-VM
