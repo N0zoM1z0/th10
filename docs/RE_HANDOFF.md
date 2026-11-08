@@ -6,9 +6,9 @@
 > Older broad validation instructions apply only when their impact is relevant.
 
 
-**Source and ledgers rechecked 2026-11-08 after the signed ECL opcode and
-typed instruction-pointer update; the current source checkpoint is documented
-below.** This is a *working resume brief*, not a list of every experiment. The previous 603-line handoff
+**Source and ledgers rechecked 2026-11-08, after source commit `95763fb`;
+subsequent commits in this handoff are docs/storage-only.** This is a
+*working resume brief*, not a list of every experiment. The previous 603-line handoff
 is available with `git show 9996cd6:docs/RE_HANDOFF.md`; the detailed dated
 hypotheses are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and
 [`docs/evidence/`](evidence/). Check live status and hashes again; a source
