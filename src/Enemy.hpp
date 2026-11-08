@@ -531,7 +531,8 @@ struct EnemyEclInstructionView
     // This is the very same variable-length wire instruction consumed by
     // EclVmContext::Run; the Enemy dispatcher only needs its extended opcodes.
     int time;
-    unsigned short opcode;
+    // Signed on the shared variable-length ECL stream, like EclVmInstruction.
+    short opcode;
     unsigned short size;
     union
     {

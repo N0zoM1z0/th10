@@ -6,9 +6,9 @@
 > Older broad validation instructions apply only when their impact is relevant.
 
 
-**Source and ledgers rechecked 2026-11-08, after source commit
-`c76397f`; subsequent commits in this handoff are docs/storage-only.** This
-is a *working resume brief*, not a list of every experiment. The previous 603-line handoff
+**Source and ledgers rechecked 2026-11-08 after the signed ECL opcode and
+typed instruction-pointer update; the current source checkpoint is documented
+below.** This is a *working resume brief*, not a list of every experiment. The previous 603-line handoff
 is available with `git show 9996cd6:docs/RE_HANDOFF.md`; the detailed dated
 hypotheses are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and
 [`docs/evidence/`](evidence/). Check live status and hashes again; a source
@@ -120,6 +120,26 @@ selected canonical cold replay of eight VM owners passes **1,081/1,081**.
 The full 7,020-byte VM `Run` still matches **6,997/7,020** original bytes,
 all **189** target fields and exact float callee (NONEXACT). No new exact
 credit. [Evidence](evidence/ecl-find-subroutine-native-return-20261108/README.md).
+
+## Enemy ECL dispatcher signed opcode and typed instruction view (2026-11-08)
+
+`EnemyEclInstructionView::opcode` is now a signed `short`, matching the
+shared generic `EclVmInstruction::opcode` and the original dispatcher's
+sign-extending 16-bit opcode load. The complete 14,416-byte
+`EnemyRuntimeView::DispatchEclInstruction @0x0040E770` keeps the current
+instruction as `const EnemyEclInstructionView *`; its variable-length SCPT
+scalar reader also accepts that typed pointer instead of an integer address.
+The fresh selected 12-TU Enemy/ECL graph has a 14,416-byte PDB contribution,
+720 candidate relocation fields and **1,255/11,536** comparable ordinary
+bytes matching the original, up three bytes from the same-graph prior
+candidate (**1,252/11,536**). The candidate fields are not original-bound;
+the large owner remains **NONEXACT**, with zero new exact credit.
+
+Twenty-one selected exact owners in the changed dispatcher TU were replayed
+in focused groups and all pass **2,363/2,363**: the dispatcher helpers,
+ANM release/readers, bullet bounds, item drops/cancellation, laser
+constructors, projection preparation and ECL world anchor. No full
+all-unit cold replay was run. [Evidence](evidence/enemy-ecl-typed-instruction-20261108/README.md).
 
 ## EnemyFullObject destructor native count/slot words (2026-11-08)
 
@@ -631,7 +651,8 @@ These are **installed source bytes**, not historical artifacts. The
 lightweight `scripts/repo-python scripts/verify-handoff-pins.py` checks each
 file's SHA-256 and the target; use it before relying on cached native PDBs.
 These values were rechecked with `verify-handoff-pins.py` on 2026-11-08
-after source commit `c76397f`. Recheck after any subsequent source edit.
+after the Enemy ECL typed-instruction source update. Recheck after any
+subsequent source edit.
 
 | Installed source | SHA-256 |
 | --- | --- |
@@ -643,9 +664,9 @@ after source commit `c76397f`. Recheck after any subsequent source edit.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `5784637d77b9bc502f5ad4157aa1f199355a17668cb8a056c43a50dbe4541126` |
-| `src/EnemyEclDispatcher.cpp` | `85f22f44df1d412068e47ded39d06cae20c929ce1581a27d20d9db79ba958517` |
+| `src/EnemyEclDispatcher.cpp` | `66193d00120a326ad753abf27806f5a043059c95231d8c4a85eaca3380014284` |
 | `src/Enemy.cpp` | `c4831dcd88f9df6eaf638569f646b92915a1987bab32b53a3c3d483ec83d1a68` |
-| `src/Enemy.hpp` | `372ef4e3ca68687434092efa8b50573ef6ebcf8aa0fc0bb2e14058d60b85f668` |
+| `src/Enemy.hpp` | `75cdb9727b6a1d7535beeef4bb703594c994958ae8af5f88a42186d8cdadc78a` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |

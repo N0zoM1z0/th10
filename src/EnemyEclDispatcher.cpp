@@ -243,10 +243,10 @@ static __forceinline PlayerFloat3 *EnemyPatternOffsetAtRuntimeIndex(
 // Scalar values after a counted inline spawn name are a variable-length
 // four-byte stream. Unchecked ECL offsets use native low 32-bit addresses.
 static __forceinline const EclVmScalar *EnemySpawnScalarWordAt(
-    int instructionAddress, unsigned int index)
+    const EnemyEclInstructionView *instruction, unsigned int index)
 {
     return reinterpret_cast<const EclVmScalar *>(
-        static_cast<unsigned int>(instructionAddress) +
+        reinterpret_cast<unsigned int>(instruction) +
         static_cast<unsigned int>(offsetof(EnemyEclInstructionView, scalarOperands)) +
         index * static_cast<unsigned int>(sizeof(EclVmScalar)));
 }
@@ -1298,6 +1298,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
   int uVar25;
   int iVar26;
   int iVar27;
+  const EnemyEclInstructionView *instruction;
   int secondLowBulletCount;
   unsigned int uVar28;
   EnemyMotionView *selectedMotion;
@@ -1345,8 +1346,8 @@ int EnemyRuntimeView::DispatchEclInstruction()
   } local_90;
 
   iVar26 = reinterpret_cast<int>(owner);
-  iVar27 = reinterpret_cast<int>(owner->activeEclContext->currentInstruction);
-  opcode = static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode);
+  instruction = owner->activeEclContext->currentInstruction;
+  opcode = instruction->opcode;
   switch(opcode) {
   case ENEMY_ECL_CREATE_ENEMY_IF_NO_BOSS:
     if (reinterpret_cast<int>(g_EnemyManager->specialEnemySlots[0]) != 0) {
@@ -1357,25 +1358,25 @@ int EnemyRuntimeView::DispatchEclInstruction()
   case ENEMY_ECL_CREATE_ENEMY:
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(
-            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+            instruction
                 ->spawnOperands.inlineNameByteCount) + 4u);
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     if ((flags & 0x40000) == 0) {
       fVar9 = worldMotion.position.x;
-      fVar19 = (ReadRawFloatArgument((1), (EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26))->real)));
+      fVar19 = (ReadRawFloatArgument((1), (EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26))->real)));
       fVar10 = worldMotion.position.y;
       local_90.spawnRequest.position.x = (float)(fVar19 + fVar9);
-      fVar19 = (ReadRawFloatArgument((2), (EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 1u)->real)));
+      fVar19 = (ReadRawFloatArgument((2), (EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 1u)->real)));
       fVar19 = fVar19 + fVar10;
     }
     else {
       fVar9 = worldMotion.position.x;
-      fVar19 = (ReadRawFloatArgument((1), (EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26))->real)));
+      fVar19 = (ReadRawFloatArgument((1), (EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26))->real)));
       fVar10 = worldMotion.position.y;
       vectorScratch.x = (float)(fVar19 + fVar9);
       vectorScratch.y = ReadRawFloatArgument(
-          2, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 1u)->real) + fVar10;
+          2, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 1u)->real) + fVar10;
       vectorScratch.z = worldMotion.position.z;
       EnemyPrepareProjection(&g_MainSupervisorView, 0);
       D3DXVec3Project(&local_90.spawnRequest.position, &vectorScratch,
@@ -1386,16 +1387,16 @@ int EnemyRuntimeView::DispatchEclInstruction()
       fVar19 = local_90.spawnRequest.position.y - 16.0f;
     }
     local_90.spawnRequest.position.y = (float)fVar19;
-    uVar22 = ReadRawIntArgument(3, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 2u)->integer);
+    uVar22 = ReadRawIntArgument(3, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 2u)->integer);
     local_90.spawnRequest.life = uVar22;
-    uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 3u)->integer);
+    uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 3u)->integer);
     local_90.spawnRequest.scoreReward = uVar22;
-    uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 4u)->integer);
+    uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 4u)->integer);
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
 dispatch_spawn_enemy:
     EnemySpawn(
-        g_EnemyManager, reinterpret_cast<const char *>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.subroutineName),
+        g_EnemyManager, reinterpret_cast<const char *>(instruction->spawnOperands.subroutineName),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_IF_NO_BOSS:
@@ -1406,19 +1407,19 @@ dispatch_spawn_enemy:
 dispatch_create_enemy_absolute:
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(
-            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+            instruction
                 ->spawnOperands.inlineNameByteCount) + 4u);
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-    fVar19 = (ReadRawFloatArgument((1), (EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26))->real)));
+    fVar19 = (ReadRawFloatArgument((1), (EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26))->real)));
     local_90.spawnRequest.position.x = (float)fVar19;
-    fVar19 = (ReadRawFloatArgument((2), (EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 1u)->real)));
+    fVar19 = (ReadRawFloatArgument((2), (EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 1u)->real)));
     local_90.spawnRequest.position.y = (float)fVar19;
-    uVar22 = ReadRawIntArgument(3, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 2u)->integer);
+    uVar22 = ReadRawIntArgument(3, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 2u)->integer);
     local_90.spawnRequest.life = uVar22;
-    uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 3u)->integer);
+    uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 3u)->integer);
     local_90.spawnRequest.scoreReward = uVar22;
-    uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 4u)->integer);
+    uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 4u)->integer);
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
     goto dispatch_spawn_enemy;
@@ -1426,31 +1427,31 @@ dispatch_create_enemy_absolute:
 dispatch_create_enemy_global:
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(
-            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+            instruction
                 ->spawnOperands.inlineNameByteCount) + 4u);
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     local_90.spawnRequest.position.x =
         ReadRawFloatArgument(
-            1, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26))->real) +
+            1, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26))->real) +
         g_EnemyGlobalPositionOffset.x;
     local_90.spawnRequest.position.y =
         ReadRawFloatArgument(
-            2, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 1u)->real) +
+            2, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 1u)->real) +
         g_EnemyGlobalPositionOffset.y;
     local_90.spawnRequest.position.z =
         ReadRawFloatArgument(
-            3, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 2u)->real);
-    uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 3u)->integer);
+            3, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 2u)->real);
+    uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 3u)->integer);
     local_90.spawnRequest.life = uVar22;
-    uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 4u)->integer);
+    uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 4u)->integer);
     local_90.spawnRequest.scoreReward = uVar22;
-    uVar22 = ReadRawIntArgument(6, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 5u)->integer);
+    uVar22 = ReadRawIntArgument(6, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 5u)->integer);
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag40000 = local_90.spawnRequest.setFlag40000 | 1;
     EnemySpawn(
-        g_EnemyManager, reinterpret_cast<const char *>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.subroutineName),
+        g_EnemyManager, reinterpret_cast<const char *>(instruction->spawnOperands.subroutineName),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET_IF_NO_BOSS:
@@ -1460,28 +1461,28 @@ dispatch_create_enemy_global:
 dispatch_create_enemy_mirrored:
     iVar26 = static_cast<int>(
         static_cast<unsigned int>(
-            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+            instruction
                 ->spawnOperands.inlineNameByteCount) + 4u);
     fVar9 = worldMotion.position.x;
     iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     local_90.spawnRequest.position.x =
         ReadRawFloatArgument(
-            1, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26))->real) + fVar9;
+            1, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26))->real) + fVar9;
     fVar10 = worldMotion.position.y;
     local_90.spawnRequest.position.y =
         ReadRawFloatArgument(
-            2, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 1u)->real) + fVar10;
-    uVar22 = ReadRawIntArgument(3, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 2u)->integer);
+            2, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 1u)->real) + fVar10;
+    uVar22 = ReadRawIntArgument(3, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 2u)->integer);
     local_90.spawnRequest.life = uVar22;
-    uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 3u)->integer);
+    uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 3u)->integer);
     local_90.spawnRequest.scoreReward = uVar22;
-    uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 4u)->integer);
+    uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 4u)->integer);
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag0800 = 1;
     EnemySpawn(
-        g_EnemyManager, reinterpret_cast<const char *>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spawnOperands.subroutineName),
+        g_EnemyManager, reinterpret_cast<const char *>(instruction->spawnOperands.subroutineName),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED:
@@ -2654,12 +2655,12 @@ dispatch_select_bullet_count_low:
     uVar24 = ENEMY_READ_INT_DIRECT(0);
     EnemyConfigureInterrupt(
         owner, (int)uVar24, (int)uVar23, (int)uVar22,
-        reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->interruptOperands.callbackName);
+        instruction->interruptOperands.callbackName);
     return 0;
   case ENEMY_ECL_SET_TIMEOUT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     EnemyNativeWordIndex(&owner->runtime.callbackThresholds[0], static_cast<int>(uVar22))->timerCallbackName =
-        reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->timeoutOperands.callbackName;
+        instruction->timeoutOperands.callbackName;
     return 0;
   case ENEMY_ECL_CANCEL_ALL_BULLETS:
     reinterpret_cast<EnemyCancelManagerView *>(
@@ -2706,7 +2707,7 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
   {
     const EnemyEclSpellInlineOperandsView &spellOperands =
-        reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->spellOperands;
+        instruction->spellOperands;
     const unsigned char *encryptedName = spellOperands.encryptedName;
     const int spellNameLength = spellOperands.encryptedNameLength;
     iVar17 = 0;
@@ -2725,7 +2726,7 @@ dispatch_select_bullet_count_low:
     iVar26 = (int)uVar22;
     // The target uses ADD/LEA on native 32-bit words for difficulty-biased
     // spell IDs; the signed input must not introduce C++ overflow UB.
-    switch (static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode)) {
+    switch (instruction->opcode) {
     case ENEMY_ECL_START_SPELL_DIFFICULTY:
       iVar26 = static_cast<int>(static_cast<unsigned int>(iVar26) +
           static_cast<unsigned int>(g_EnemyDifficulty));
@@ -2805,7 +2806,7 @@ dispatch_select_bullet_count_low:
     }
     local_288.type1.fixed2C = 8.0f;
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-    if (static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode) == 0x1b0) {
+    if (instruction->opcode == 0x1b0) {
       memcpy(local_288.type1.patternWords,
              &bulletPatterns[0].words[8],
              sizeof(local_288.type1.patternWords));
@@ -2884,7 +2885,7 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2_WITH_PATTERN:
     EnemyInitializeLaserConfig(&local_288);
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-    if (static_cast<short>(reinterpret_cast<const EnemyEclInstructionView *>(iVar27)->opcode) == 0x1b2) {
+    if (instruction->opcode == 0x1b2) {
       puVar14 = &bulletPatterns[0].words[8];
       puVar13 = local_288.type1.patternWords;
       for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
@@ -3171,19 +3172,19 @@ dispatch_complete:
 dispatch_create_enemy_absolute_mirrored:
   iVar26 = static_cast<int>(
         static_cast<unsigned int>(
-            reinterpret_cast<const EnemyEclInstructionView *>(iVar27)
+            instruction
                 ->spawnOperands.inlineNameByteCount) + 4u);
   iVar26 /= 4;
   memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-  fVar19 = (ReadRawFloatArgument((1), (EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26))->real)));
+  fVar19 = (ReadRawFloatArgument((1), (EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26))->real)));
   local_90.spawnRequest.position.x = (float)fVar19;
-  fVar19 = (ReadRawFloatArgument((2), (EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 1u)->real)));
+  fVar19 = (ReadRawFloatArgument((2), (EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 1u)->real)));
   local_90.spawnRequest.position.y = (float)fVar19;
-  uVar22 = ReadRawIntArgument(3, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 2u)->integer);
+  uVar22 = ReadRawIntArgument(3, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 2u)->integer);
   local_90.spawnRequest.life = uVar22;
-  uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 3u)->integer);
+  uVar22 = ReadRawIntArgument(4, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 3u)->integer);
   local_90.spawnRequest.scoreReward = uVar22;
-  uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(iVar27, static_cast<unsigned int>(iVar26) + 4u)->integer);
+  uVar22 = ReadRawIntArgument(5, EnemySpawnScalarWordAt(instruction, static_cast<unsigned int>(iVar26) + 4u)->integer);
   local_90.spawnRequest.itemDropType = uVar22;
   local_90.spawnRequest.eclVariables = eclVariables;
   local_90.spawnRequest.setFlag0800 = 1;
