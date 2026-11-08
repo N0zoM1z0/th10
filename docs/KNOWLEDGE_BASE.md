@@ -11,6 +11,22 @@ artifact retention and next steps, start with
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 EnemyRuntimeUpdate shared managed-VM cursor
+
+The complete 2,412-byte `EnemyRuntimeUpdate` now declares one managed-VM
+ID cursor before the world-position/position branch and advances it in both
+loops. In the pinned 12-source VC7.1 `/GL` diagnostic graph, this natural C++
+shape restores the target's EDI ID-cursor / EBX manager register roles. The
+heuristic instruction-token alignment rises from **647/671** to **655/671**;
+aligned instruction bytes rise **2,331 to 2,353**, and the candidate-only
+relocation-normalized comparison rises **1,575/2,136 to 1,578/2,136**. The
+candidate retains 69 detected fields, not an exhaustive original-bound
+field contract. The parent remains **NONEXACT**, with no exact ledger credit.
+Six selected previously exact Enemy owners cold-pass **903/903** bytes;
+CI and diff-check pass. No full cold replay. `EnemyAdvanceMotion` remains
+160/171 and `SetSubroutine` remains nonexact.
+[Evidence](evidence/enemy-runtime-vm-id-cursor-20261108/README.md).
+
 ## 2026-11-08 OpenDiskBgm exact-size early guard breakthrough
 
 The reviewed 241-byte original `SoundPlayerView::OpenDiskBgm` has separate
