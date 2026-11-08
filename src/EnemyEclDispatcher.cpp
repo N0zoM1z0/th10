@@ -565,7 +565,7 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelBulletPattern(
     }
     return 0;
 }
-extern void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int value, char *name, int spellId);
+extern void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int spellId, char *name, int value);
 
 
 extern void EnemyEndSpell(EnemyGameStateView *gameState);
@@ -894,11 +894,13 @@ extern unsigned char *g_EnemySpellPlaybackState;
 extern unsigned char *g_EnemySpellStatistics;
 
 // Complete maintained body for target 0x00409280, including every stage arm.
-// The four-stack-argument stdcall surface is target-proven; original source
-// class, filename and declaration shape remain unknown.
+// The target call at 0x00410F3A passes (state, spellId, name, value): it pushes
+// value/name/spellId/state right-to-left. The callee reads name at entry ESP+0x0C,
+// state at +0x04, and spellId at +0x08 before storing spellId at state+0x3788.
+// Original source class and filename remain unknown.
 static void CreateSpellStageAnimation(AnmLoadedView *resource, int script);
 
-void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int value, char *name, int spellId)
+void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int spellId, char *name, int value)
 {
     state->spellTimer.SetCurrent(0);
     state->spellId = spellId;

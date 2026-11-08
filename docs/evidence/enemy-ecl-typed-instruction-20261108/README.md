@@ -63,20 +63,29 @@ a new 21-owner guard replay for that later source hash.
 
 ## Second boss baseline: EnemyBeginSpell
 
-A second focused relink, reusing the same 11 support objects but recompiling
-the current dispatcher TU, also emits `EnemyBeginSpell @0x00409280` as a
-complete 2,432-byte PDB contribution at candidate `0x00416F90`. Its candidate
-has 108 relocation fields (67 DIR32, 41 REL32); after masking those candidate
-fields, **1,403/2,000 ordinary bytes match** and 597 differ. These fields are
-not an independently original-bound linkage proof, and the function remains
-NONEXACT. Its first parameter is now reconstructed as `EnemyGameStateView
-*state` rather than an integer address followed by a body cast; the call site
-passes `g_EnemyGameState` directly. This type correction preserves both the
-2,432-byte owner and the same 1,403/2,000 byte comparison (no codegen or
-exactness gain). The current focused relink compares both large owners in
-[`receiver-type-relink.json`](receiver-type-relink.json); the initial baseline
-remains in [`enemy-begin-spell-baseline.json`](enemy-begin-spell-baseline.json).
+A focused relink using the same 11 support objects and recompiling the current
+dispatcher TU emits `EnemyBeginSpell @0x00409280` as a complete 2,432-byte PDB
+contribution at candidate `0x00416F90`, matching the target physical extent.
+The candidate has 108 relocation fields (67 DIR32, 41 REL32); after masking
+those candidate fields, **1,403/2,000 ordinary bytes match** and 597 differ.
+These fields are not an independently original-bound linkage proof, and the
+function remains NONEXACT.
 
+The target call site at `0x00410F3A` pushes `value`, inline name, `spellId`, and
+state in reverse order. At the callee, the name is loaded from entry
+`ESP+0x0C`, state from `ESP+0x04`, and `spellId` from `ESP+0x08`; the store at
+`0x004092E3` writes that second argument to `state+0x3788`. The maintained
+signature is therefore `EnemyBeginSpell(state, spellId, name, value)`. An
+intermediate source revision had the second and fourth parameter names
+reversed; that was a source-level bug, not a target ambiguity. The corrected
+signature preserves the 2,432-byte extent and 1,403/2,000 ordinary-byte
+comparison. See [`receiver-type-relink.json`](receiver-type-relink.json) and
+[`enemy-begin-spell-baseline.json`](enemy-begin-spell-baseline.json).
+The seven-entry stage-switch table at function offset `+0x964` also has
+identical target-relative destinations in both images: `0x6E4`, `0x74B`,
+`0x796`, `0x7E1`, `0x82C`, `0x877`, and `0x8BF`. This validates the switch
+layout and branch destinations, not the entire function body. See
+[`stage-switch-table.json`](stage-switch-table.json).
 ## Reproduction
 
 Run from the repository root:

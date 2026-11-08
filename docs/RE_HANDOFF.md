@@ -144,13 +144,18 @@ the subsequent `EnemyBeginSpell` receiver-type correction; the later focused
 relink rechecks the two large owners but does not claim a new 21-owner guard
 replay. No full all-unit cold replay was run.
 [Evidence](evidence/enemy-ecl-typed-instruction-20261108/README.md).
-The same graph also emits a full 2,432-byte PDB contribution for
-`EnemyBeginSpell @0x00409280`. It matches **1,403/2,000** comparable ordinary
-bytes after masking 108 candidate-only relocation fields; it remains
-NONEXACT. Its first parameter is now typed as `EnemyGameStateView *`, with the
-integer address cast removed from the body and call site. The fresh focused
-relink preserves the same size and byte count; no exact credit. This is the
-next large boss target. [Current relink](evidence/enemy-ecl-typed-instruction-20261108/receiver-type-relink.json).
+A focused relink emits a full 2,432-byte PDB contribution for
+`EnemyBeginSpell @0x00409280`, matching **1,403/2,000** comparable ordinary
+bytes after masking 108 candidate-only relocation fields. The first parameter
+is typed as `EnemyGameStateView *`; the target call at `0x00410F3A` also proves
+the parameter order `(state, spellId, name, value)`: the caller pushes
+value/name/spellId/state, and the callee stores its second argument to
+`state+0x3788`. An intermediate revision had the second/fourth parameter
+names reversed; this was corrected from callsite and callee evidence. The
+function remains NONEXACT. [Current relink and argument-order proof](evidence/enemy-ecl-typed-instruction-20261108/receiver-type-relink.json).
+The seven-entry stage-switch table at function offset `+0x964` has identical
+target-relative destinations in both images; this validates the stage switch
+layout, not whole-function exactness. [Table proof](evidence/enemy-ecl-typed-instruction-20261108/stage-switch-table.json).
 
 ## EnemyFullObject destructor native count/slot words (2026-11-08)
 
