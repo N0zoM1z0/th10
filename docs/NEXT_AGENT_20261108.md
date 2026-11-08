@@ -71,7 +71,7 @@ build graph; it does not prove a runnable reconstruction.
 | --- | ---: | --- |
 | ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964**, all **350** original fields; opcode 91 EDX vs ECX at `+0x113,+0x115` |
 | ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020**, all **189** original fields; x87/FORMAT stack homes and control-flow bytes |
-| Enemy ECL dispatcher `@0x0040E770` | 14,416 / 14,352 | 64-byte size gap; **716 candidate-only fields** (not independently original-bound) |
+| Enemy ECL dispatcher `@0x0040E770` | 14,416 / 14,416 | NONEXACT; **1,252/11,536** comparable bytes, 720 linkage fields; 181-byte opcode map matches retail; rank-five float result tail restored |
 | EnemyAdvanceMotion `@0x0044C2A0` | 171 / 168 | **133/140** ordinary prefix bytes, all **7** original fields; final 7-byte stack cleanup mismatch |
 | EnemyAdvanceMotion `@0x0044C2A0` | 171 / 168 | 7 original-bound fields; 133/140 ordinary bytes; final stack cleanup differs at `+0xA1..+0xA7` |
 | EnemyRuntimeUpdate `@0x0040DC80` | 2,412 / 2,412 | NONEXACT; **1,582/2,136** comparable bytes, 69 linkage fields; X/Y/Z base-before-offset x87 order; Z spill now matches `ESP+0x24`; remaining differences start at `+0x49D` |

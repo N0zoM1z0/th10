@@ -11144,9 +11144,10 @@ and [evidence/spell-panel-record-accessor-20261105/README.md](evidence/spell-pan
 for stage ANM. The maintained 2,432-byte spell-start owner now reads the
 typed `stageAnimationAnm` alias for all 24 loads, while preserving original
 array consumers and ABI. In an actual 11-source VC7.1 /GL graph the complete
-`EnemyBeginSpell` candidate remains 2,424 bytes /108 bound field positions,
-and `EnemyRuntimeView::DispatchEclInstruction` remains 14,352 bytes /716
-field positions. Later conversion of the 199-byte exact
+`EnemyBeginSpell` candidate remains 2,424 bytes /108 bound field positions.
+The dispatcher candidate was 14,352 bytes /716 linkage fields in the earlier
+graph; the 2026-11-08 rank-five-tail reconstruction now yields 14,416 bytes
+and 720 linkage fields, still NONEXACT. Later conversion of the 199-byte exact
 `EnemyCancelBulletRecord` and the enclosing batch cancel loop to genuine
 `BulletRuntimeView` fields does not disturb either whole candidate. These
 are preserved candidate-codegen statements, not complete target exactness
@@ -11169,3 +11170,19 @@ in instruction order and stack home; the remaining function differences
 begin at `+0x49D`. This is a natural C++ codegen hypothesis, not proof of the
 original source declaration or full-function exactness. See
 [evidence/enemy-runtime-world-vector-aggregate-20261108/README.md](evidence/enemy-runtime-world-vector-aggregate-20261108/README.md).
+
+
+## 2026-11-08 Enemy ECL rank-five float result tail
+
+`EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` now has a
+14,416-byte candidate, matching the target extent. The previous candidate was
+14,352 bytes and matched 1,079/11,552 comparable bytes with 716 linkage
+fields; inlining the natural rank-1 `ReadFloatArgument(1)` plus
+`EclVmContext::ResolveFloat(0)` result path for
+`ENEMY_ECL_SELECT_FLOAT_BY_RANK_5` produces 1,252/11,536 comparable bytes
+and 720 linkage fields. The 181-byte opcode-to-jump-table map remains
+byte-identical to retail. This is still NONEXACT: the comparable-byte match
+is limited, and `ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK` still differs in x87
+operand order and local spill homes (`ESP+0x0C/+0x28` versus retail
+`ESP+0x10/+0x30`). See
+[evidence/enemy-ecl-rank-five-tail-20261108/README.md](evidence/enemy-ecl-rank-five-tail-20261108/README.md).
