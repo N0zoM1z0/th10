@@ -9,6 +9,18 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 EnemyManagerUpdate signed timer word wrap
+
+Original 166-byte `EnemyManagerUpdate` increments its timer.current
+through i386 `INC EDX`, which wraps as a low-32-bit word. The source now
+casts through unsigned addition before writing back to the same signed
+field, with the original floating and callback control flow untouched.
+Three separately linked natural VC7.1 `/GL` forms reproduce full
+**166/166** update and **10/10** callback bodies with all six target-bound
+fields; installed-source selected cold replay passes **176/176**. No new
+exact owner, only faithful Win32 source behavior.
+[Evidence](evidence/enemy-manager-update-native-timer-20261108/README.md).
+
 ## 2026-11-08 ANM ExecuteScript renderMode 9 terminal vertex words
 
 Render mode 9's terminal second-vertex copy and texture V write now form

@@ -56,6 +56,16 @@ seven previous exact text owners **3,030/3,030** including the new
 **554-byte** main renderer with all 35 target fields. No new exact
 credit. [Evidence](evidence/text-render-alternate-stack-scope-20261108/README.md).
 
+## Enemy manager native 32-bit timer increment (2026-11-08)
+
+`EnemyManagerUpdate` now reproduces its original `INC EDX` timer-word
+wrap with an unsigned addition published to the signed field. Three
+natural-source native `/GL` trials and installed-source selected cold
+replay preserve the full **166/166** manager update and **10/10** callback
+with **6/6 original-bound fields**, total **176/176**. These are already
+exact owners, with no new codegen credit.
+[Evidence](evidence/enemy-manager-update-native-timer-20261108/README.md).
+
 ## ANM 9,964-byte interpreter terminal vertex word addresses (2026-11-08)
 
 The generated-vertex tail now uses typed low-32-bit `0x1C`-stride Win32
@@ -510,7 +520,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `5784637d77b9bc502f5ad4157aa1f199355a17668cb8a056c43a50dbe4541126` |
 | `src/EnemyEclDispatcher.cpp` | `cebadf0dd493c970699b98b371ebd9792d1dd3c51c26fe49cdc591df0e0d581f` |
-| `src/Enemy.cpp` | `5b9ca4dfcd672a8ca6cc7cabb276f1ca831594b0c816755d6ece8914677e8380` |
+| `src/Enemy.cpp` | `c16cedf695457409899dea7cd5af9e6e43c56c1095cfe687aefef9c1955c9824` |
 | `src/Enemy.hpp` | `372ef4e3ca68687434092efa8b50573ef6ebcf8aa0fc0bb2e14058d60b85f668` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |

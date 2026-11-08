@@ -1603,7 +1603,8 @@ int EnemyManagerUpdate(EnemyManagerView *manager)
     if (*manager->timer.scale > 0.9900000095367432f &&
         *manager->timer.scale < 1.0099999904632568f)
     {
-        ++manager->timer.current;
+        manager->timer.current = static_cast<int>(
+            static_cast<unsigned int>(manager->timer.current) + 1u);
         manager->timer.subframe += 1.0f;
     }
     else
