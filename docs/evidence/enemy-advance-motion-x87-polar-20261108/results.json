@@ -1,0 +1,69 @@
+{
+  "owner": "EnemyAdvanceMotion",
+  "target_address": "0x0044C2A0",
+  "target_size": 171,
+  "candidate_address": "0x00401F60",
+  "candidate_size": 168,
+  "source_sha256": "13159be7d9344e41254d0809ff0d84d99899510608fe357ccebe9aeaed2a3900",
+  "target_bound_fields": 7,
+  "field_bindings": [
+    {
+      "offset": "0x32",
+      "type": "REL32",
+      "target": "0x44c5d0"
+    },
+    {
+      "offset": "0x76",
+      "type": "DIR32",
+      "target": "0x470b44"
+    },
+    {
+      "offset": "0x7e",
+      "type": "REL32",
+      "target": "0x452ff0"
+    },
+    {
+      "offset": "0x84",
+      "type": "DIR32",
+      "target": "0x470b00"
+    },
+    {
+      "offset": "0x8f",
+      "type": "DIR32",
+      "target": "0x470b44"
+    },
+    {
+      "offset": "0x97",
+      "type": "REL32",
+      "target": "0x452ff0"
+    },
+    {
+      "offset": "0x9d",
+      "type": "DIR32",
+      "target": "0x470b00"
+    }
+  ],
+  "common_prefix_bytes": 168,
+  "relocation_bytes": 28,
+  "comparable_bytes": 140,
+  "matched_comparable_bytes": 133,
+  "ordinary_difference_offsets": [
+    "0xa1",
+    "0xa2",
+    "0xa3",
+    "0xa4",
+    "0xa5",
+    "0xa6",
+    "0xa7"
+  ],
+  "target_tail": "83 c4 08 d9 5e 04 83 c4 18 c3",
+  "candidate_tail": "d9 5e 04 83 c4 20 c3",
+  "parent": {
+    "size": 2412,
+    "target_size": 2412,
+    "candidate_field_count": 69,
+    "matched_comparable_bytes": 1578,
+    "comparable_bytes": 2136
+  },
+  "exactness": "nonexact; no ledger credit"
+}

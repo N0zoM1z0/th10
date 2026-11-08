@@ -72,6 +72,7 @@ build graph; it does not prove a runnable reconstruction.
 | ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964**, all **350** original fields; opcode 91 EDX vs ECX at `+0x113,+0x115` |
 | ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020**, all **189** original fields; x87/FORMAT stack homes and control-flow bytes |
 | Enemy ECL dispatcher `@0x0040E770` | 14,416 / 14,352 | 64-byte size gap; **716 candidate-only fields** (not independently original-bound) |
+| EnemyAdvanceMotion `@0x0044C2A0` | 171 / 168 | **133/140** ordinary prefix bytes, all **7** original fields; final 7-byte stack cleanup mismatch |
 | EnemyRuntimeUpdate `@0x0040DC80` | 2,412 / 2,412 | Nonexact 12-TU graph; 655/671 aligned instructions, 1,578/2,136 comparable bytes, 69 candidate-only fields |
 | Bullet `UpdateAbsoluteDirectionChange @0x004078E0` | 335 / 335 | **333/335**, all 8 original-bound fields |
 | Sound `PreloadBgm @0x0043D7D0` | 369 / 369 | **365/369**, all 10 original-bound fields |

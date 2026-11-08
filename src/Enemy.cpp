@@ -727,7 +727,9 @@ void EnemyAdvanceMotion(EnemyMotionView *motion)
 {
     if ((motion->flags & 1u) == 0)
     {
-        motion->position.x = motion->position.x + motion->velocity.x;
+        volatile float &oldX = *reinterpret_cast<volatile float *>(&motion->position.x);
+        const float positionX = oldX;
+        motion->position.x = motion->velocity.x + positionX;
         motion->position.y = motion->velocity.y + motion->position.y;
         motion->position.z = motion->velocity.z + motion->position.z;
     }
@@ -735,12 +737,12 @@ void EnemyAdvanceMotion(EnemyMotionView *motion)
     {
         EnemyRuntimeVectorView polar;
         polar.FromAngleMagnitude(motion->value1C, motion->value20);
-        polar.z = 0.0f;
-        PlayerFloat3 position;
-        position.x = polar.x + motion->velocity.x;
-        position.y = polar.y + motion->velocity.y;
-        position.z = motion->velocity.z;
-        motion->position = position;
+        volatile float &polarZ =
+            *reinterpret_cast<volatile float *>(&polar.z);
+        polarZ = 0.0f;
+        const PlayerFloat3 &polarPosition =
+            *reinterpret_cast<const PlayerFloat3 *>(&polar);
+        motion->position = polarPosition + motion->velocity;
     }
     motion->position.x = static_cast<float>(floor(motion->position.x * 100.0f) * 0.01f);
     motion->position.y = static_cast<float>(floor(motion->position.y * 100.0f) * 0.01f);

@@ -11,6 +11,20 @@ artifact retention and next steps, start with
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 EnemyAdvanceMotion x87 operand order and polar temporary
+
+The 171-byte `EnemyAdvanceMotion @0x0044C2A0` leaf now emits the target
+Cartesian-X x87 load/add order and the complete polar temporary/result path
+in the real 12-source Enemy/ANM/ECL/Player LTCG graph. Its candidate is
+**168/171 bytes**, with **7/7 original-bound fields** and **133/140**
+ordinary bytes matching in the common prefix. The only seven ordinary
+mismatches are the final `add esp,8; fstp; add esp,0x18` versus
+`fstp; add esp,0x20` cleanup schedule. The leaf remains **NONEXACT** and
+receives no exact ledger credit. The 2,412-byte EnemyRuntimeUpdate parent
+remains at **1,578/2,136** comparable bytes. Seven selected existing Enemy
+owners cold-pass **933/933** bytes; CI and diff-check pass. No full replay.
+[Evidence](evidence/enemy-advance-motion-x87-polar-20261108/README.md).
+
 ## 2026-11-08 EnemyRuntimeUpdate shared managed-VM cursor
 
 The complete 2,412-byte `EnemyRuntimeUpdate` now declares one managed-VM
@@ -23,8 +37,9 @@ relocation-normalized comparison rises **1,575/2,136 to 1,578/2,136**. The
 candidate retains 69 detected fields, not an exhaustive original-bound
 field contract. The parent remains **NONEXACT**, with no exact ledger credit.
 Six selected previously exact Enemy owners cold-pass **903/903** bytes;
-CI and diff-check pass. No full cold replay. `EnemyAdvanceMotion` remains
-160/171 and `SetSubroutine` remains nonexact.
+CI and diff-check pass. No full cold replay. `EnemyAdvanceMotion` now emits 168/171 with 133/140 ordinary prefix bytes
+and all seven target fields; its final stack cleanup remains nonexact.
+`SetSubroutine` remains nonexact.
 [Evidence](evidence/enemy-runtime-vm-id-cursor-20261108/README.md).
 
 ## 2026-11-08 OpenDiskBgm exact-size early guard breakthrough
