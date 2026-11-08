@@ -338,5 +338,28 @@
         "matched_bytes": 64
       }
     }
+  },
+  "enemy_begin_spell": {
+    "symbol": "?EnemyBeginSpell@@YGXPAUEnemyGameStateView@@HPADH@Z",
+    "target_address": "0x00409280",
+    "candidate_address": "0x00416F90",
+    "target_size": 2432,
+    "candidate_pdb_size": 2432,
+    "extent_source": "pdb-section-contribution",
+    "candidate_fields": 108,
+    "candidate_field_types": {
+      "DIR32": 67,
+      "REL32": 41
+    },
+    "raw_difference_bytes": 928,
+    "plain_difference_bytes": 597,
+    "matched_plain_bytes": 1403,
+    "candidate_image_sha256": "7a451804895202217bd400a664257b1dcc0d2e2cae702d1bef3bc7c04b88fe5b",
+    "candidate_source_sha256": "21df202ecce083c96c38dd29d2ca33c54c28228d780156304e3c5af7cbc0d70e",
+    "first_parameter_type": "EnemyGameStateView *state",
+    "candidate_fields_are_original_bound": false,
+    "exactness": "NONEXACT",
+    "new_exact_credit": 0,
+    "type_change_effect": "integer-address parameter and body cast removed; candidate owner size and byte comparison unchanged"
   }
 }

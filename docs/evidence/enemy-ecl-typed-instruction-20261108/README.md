@@ -56,17 +56,26 @@ were replayed in focused groups. All passed: **2,363 / 2,363 bytes**.
 The guard replays are scoped to these owners; no whole-repository historical
 replay was run. `native-result.json` records source/object pins, the complete
 large-owner comparison and the individual guard receipts.
+The guard receipts above belong to the signed-opcode/typed-instruction
+source epoch before the subsequent `EnemyBeginSpell` receiver-type correction.
+The later focused relink below rechecks both large owners, but does not claim
+a new 21-owner guard replay for that later source hash.
 
 ## Second boss baseline: EnemyBeginSpell
 
-The same graph also contains `EnemyBeginSpell @0x00409280` as a complete
-2,432-byte PDB contribution at candidate `0x00416F90`, matching the target
-physical extent. Its candidate has 108 relocation fields (67 DIR32, 41 REL32);
-after masking those candidate fields, **1,403/2,000 ordinary bytes match**
-and 597 differ. These are candidate-only fields, not an independently
-original-bound linkage proof. The function remains NONEXACT. The comparison
-is retained in [`enemy-begin-spell-baseline.json`](enemy-begin-spell-baseline.json)
-for the next focused source-recovery pass.
+A second focused relink, reusing the same 11 support objects but recompiling
+the current dispatcher TU, also emits `EnemyBeginSpell @0x00409280` as a
+complete 2,432-byte PDB contribution at candidate `0x00416F90`. Its candidate
+has 108 relocation fields (67 DIR32, 41 REL32); after masking those candidate
+fields, **1,403/2,000 ordinary bytes match** and 597 differ. These fields are
+not an independently original-bound linkage proof, and the function remains
+NONEXACT. Its first parameter is now reconstructed as `EnemyGameStateView
+*state` rather than an integer address followed by a body cast; the call site
+passes `g_EnemyGameState` directly. This type correction preserves both the
+2,432-byte owner and the same 1,403/2,000 byte comparison (no codegen or
+exactness gain). The current focused relink compares both large owners in
+[`receiver-type-relink.json`](receiver-type-relink.json); the initial baseline
+remains in [`enemy-begin-spell-baseline.json`](enemy-begin-spell-baseline.json).
 
 ## Reproduction
 

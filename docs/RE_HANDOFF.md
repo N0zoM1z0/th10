@@ -138,12 +138,19 @@ the large owner remains **NONEXACT**, with zero new exact credit.
 Twenty-one selected exact owners in the changed dispatcher TU were replayed
 in focused groups and all pass **2,363/2,363**: the dispatcher helpers,
 ANM release/readers, bullet bounds, item drops/cancellation, laser
-constructors, projection preparation and ECL world anchor. No full
-all-unit cold replay was run. [Evidence](evidence/enemy-ecl-typed-instruction-20261108/README.md).
+constructors, projection preparation and ECL world anchor. These guard
+receipts belong to the signed-opcode/typed-instruction source epoch before
+the subsequent `EnemyBeginSpell` receiver-type correction; the later focused
+relink rechecks the two large owners but does not claim a new 21-owner guard
+replay. No full all-unit cold replay was run.
+[Evidence](evidence/enemy-ecl-typed-instruction-20261108/README.md).
 The same graph also emits a full 2,432-byte PDB contribution for
 `EnemyBeginSpell @0x00409280`. It matches **1,403/2,000** comparable ordinary
 bytes after masking 108 candidate-only relocation fields; it remains
-NONEXACT and is the next large boss target. [Baseline](evidence/enemy-ecl-typed-instruction-20261108/enemy-begin-spell-baseline.json).
+NONEXACT. Its first parameter is now typed as `EnemyGameStateView *`, with the
+integer address cast removed from the body and call site. The fresh focused
+relink preserves the same size and byte count; no exact credit. This is the
+next large boss target. [Current relink](evidence/enemy-ecl-typed-instruction-20261108/receiver-type-relink.json).
 
 ## EnemyFullObject destructor native count/slot words (2026-11-08)
 

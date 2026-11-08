@@ -1,9 +1,9 @@
 {
-  "symbol": "?EnemyBeginSpell@@YGXHHPADH@Z",
+  "symbol": "?EnemyBeginSpell@@YGXPAUEnemyGameStateView@@HPADH@Z",
   "candidate_address": "0x00416F90",
   "target_address": "0x409280",
   "size": 2432,
-  "candidate_sha256": "83dfaf53d5d28bfb0d06fb4ab36bf7465ebb553e9b6e3a70e66f9db95d322743",
+  "candidate_sha256": "7a451804895202217bd400a664257b1dcc0d2e2cae702d1bef3bc7c04b88fe5b",
   "fields": 108,
   "field_types": {
     "DIR32": 67,
@@ -417,5 +417,8 @@
     "0x1b9",
     "0x1ba",
     "0x1bb"
-  ]
+  ],
+  "candidate_source_sha256": "21df202ecce083c96c38dd29d2ca33c54c28228d780156304e3c5af7cbc0d70e",
+  "first_parameter_type": "EnemyGameStateView *state",
+  "signature_change": "replaced integer gameState plus body reinterpret_cast with the typed game-state pointer; the selected graph preserves the same 2,432-byte owner and byte comparison"
 }

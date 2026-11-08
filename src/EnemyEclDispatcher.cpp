@@ -565,7 +565,7 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelBulletPattern(
     }
     return 0;
 }
-extern void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value);
+extern void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int value, char *name, int spellId);
 
 
 extern void EnemyEndSpell(EnemyGameStateView *gameState);
@@ -898,10 +898,8 @@ extern unsigned char *g_EnemySpellStatistics;
 // class, filename and declaration shape remain unknown.
 static void CreateSpellStageAnimation(AnmLoadedView *resource, int script);
 
-void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value)
+void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int value, char *name, int spellId)
 {
-    EnemyGameStateView *state =
-        reinterpret_cast<EnemyGameStateView *>(gameState);
     state->spellTimer.SetCurrent(0);
     state->spellId = spellId;
     strcpy(state->spellName, name);
@@ -2742,7 +2740,7 @@ dispatch_select_bullet_count_low:
     }
     ENEMY_READ_INT_DIRECT(2);
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    EnemyBeginSpell(reinterpret_cast<int>(g_EnemyGameState),iVar26,reinterpret_cast<char *>(local_90.bytes),(int)uVar22);
+    EnemyBeginSpell(g_EnemyGameState, iVar26, reinterpret_cast<char *>(local_90.bytes), (int)uVar22);
     return 0;
   }
   case ENEMY_ECL_END_SPELL:
