@@ -80,6 +80,18 @@ with all original fields. Five selected already-exact bullet functions
 cold-pass **665/665** in two original graph families, no new exact credit.
 [Evidence](evidence/bullet-manager-native-pool-cursor-20261108/README.md).
 
+## ECL FindSubroutine native returned instruction word (2026-11-08)
+
+`EclVmScriptDatabase::FindSubroutine` now forms its terminal `header+0x10`
+address as a low-32-bit Win32 word, rather than unchecked C++ byte-array
+pointer arithmetic. Two real independent VC7.1 `/GL` source variants in
+both the EclVmStack and two-TU EclVm/Enemy graphs preserve **136/136**
+FindSubroutine, **122/122** Pop, and **96/96** Push exact. Final-source
+selected canonical cold replay of eight VM owners passes **1,081/1,081**.
+The full 7,020-byte VM `Run` still matches **6,997/7,020** original bytes,
+all **189** target fields and exact float callee (NONEXACT). No new exact
+credit. [Evidence](evidence/ecl-find-subroutine-native-return-20261108/README.md).
+
 ## EnemyFullObject destructor native count/slot words (2026-11-08)
 
 The distinct `EnemyFullObjectView::~EnemyFullObjectView @0x0040DAE0`
@@ -563,7 +575,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
 | `src/AnmManager.cpp` | `4e5cbaad2538269266088d16671a880cae13a4a131fc4f264b0e2c2a5abb29e9` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `62cbc480c658beec6fca953680cb1267faf546d6dcaf3d19d0937472f4c74766` |
+| `src/EclVm.cpp` | `f711207c627fa33814337dcd1453ce60aee4158654c22d14f8b8e5b59a60b002` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `5784637d77b9bc502f5ad4157aa1f199355a17668cb8a056c43a50dbe4541126` |

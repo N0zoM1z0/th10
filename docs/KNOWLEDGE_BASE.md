@@ -34,6 +34,18 @@ accepted bullet functions, **665/665 original bytes and 22/22 fields**.
 No new exact codegen ledger credit or runtime/product claim.
 [Evidence](evidence/bullet-manager-native-pool-cursor-20261108/README.md).
 
+## 2026-11-08 ECL FindSubroutine native header +0x10 return
+
+`EclVmScriptDatabase::FindSubroutine` now returns the first instruction
+through original 32-bit `header+0x10` address arithmetic rather than
+abstract C++ array addition. Two separate full VC7.1 `/GL` variants
+linked in the one-TU EclVmStack and real two-TU ECL/Enemy graph preserve
+**136/136** target FindSubroutine, **122/122** Pop, **96/96** Push and the
+giants' **6,997/7,020**, all **189** original Run fields. Installed-source
+selected eight-unit exact replay passes **1,081/1,081**. Run remains
+NONEXACT and this earns no new codegen ledger credit.
+[Evidence](evidence/ecl-find-subroutine-native-return-20261108/README.md).
+
 ## 2026-11-08 EnemyFullObject destructor native DEC and VM slot words
 
 The nonexact **386-byte original** enemy object destructor (separate from

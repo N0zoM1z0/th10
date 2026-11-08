@@ -644,8 +644,9 @@ EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
         if (comparison == 0)
         {
             return reinterpret_cast<EclVmInstruction *>(
-                mid->header +
-                offsetof(EclVmSubroutineStreamView, firstInstruction));
+                reinterpret_cast<unsigned int>(mid->header) +
+                static_cast<unsigned int>(
+                    offsetof(EclVmSubroutineStreamView, firstInstruction)));
         }
         if (comparison < 0)
             upper = static_cast<int>(
