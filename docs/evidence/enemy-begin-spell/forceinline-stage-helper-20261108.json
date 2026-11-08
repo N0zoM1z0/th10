@@ -1,0 +1,26 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "entry_symbol": "?EnemyBeginSpell@@YGXPAUEnemyGameStateView@@HPADH@Z",
+  "target_address": "0x00409280",
+  "target_size": 2432,
+  "candidate_address": "0x00416F90",
+  "candidate_size": 2432,
+  "candidate_image_sha256": "a9d81bb90becccc893940af5744c03d34b4c72c7121cb00c9b5d6cb4997d4dcc",
+  "candidate_source_sha256": "9c403a3ea778cbab66ba76e209b2691e08a3bad7c7514faaa082d4219fa9a529",
+  "comparison": {
+    "method": "byte comparison after excluding linker-relocation fields",
+    "ordinary_bytes": 2000,
+    "ordinary_matches": 1403,
+    "ordinary_differences": 597
+  },
+  "baseline": {
+    "candidate_size": 2440,
+    "candidate_image_sha256": "9aa77471e568b1f5a0de62a52722b29ee5143cccf0aeec46b3143b8f98ce78b7",
+    "candidate_source_sha256": "6c84d25e399237f906713d36b525bc836a49901ca157976729957c3cc960947b",
+    "ordinary_bytes": 2008,
+    "ordinary_matches": 1371,
+    "ordinary_differences": 637
+  },
+  "change": "static __forceinline on CreateSpellStageAnimation declaration and definition",
+  "status": "diagnostic-only; focused LTCG link; no canonical replay receipt; no exactness credit"
+}\n

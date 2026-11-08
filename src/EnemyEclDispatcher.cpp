@@ -897,8 +897,10 @@ extern unsigned char *g_EnemySpellStatistics;
 // The target call at 0x00410F3A passes (state, spellId, name, value): it pushes
 // value/name/spellId/state right-to-left. The callee reads name at entry ESP+0x0C,
 // state at +0x04, and spellId at +0x08 before storing spellId at state+0x3788.
-// Original source class and filename remain unknown.
-static void CreateSpellStageAnimation(AnmLoadedView *resource, int script);
+// Original source class and filename remain unknown. The target folds this
+// allocation/setup/list-insertion sequence into EnemyBeginSpell, so keep the
+// helper force-inlined instead of emitting a separate call for each stage arm.
+static __forceinline void CreateSpellStageAnimation(AnmLoadedView *resource, int script);
 
 void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int spellId, char *name, int value)
 {
@@ -1076,7 +1078,7 @@ void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int spellId, char *nam
     }
 }
 
-static void CreateSpellStageAnimation(AnmLoadedView *resource, int script)
+static __forceinline void CreateSpellStageAnimation(AnmLoadedView *resource, int script)
 {
     AnmVmView *stageVm = g_AnmRenderManagerView->AllocateVm();
     stageVm->renderLayer = 15;
