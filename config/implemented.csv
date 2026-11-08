@@ -741,8 +741,8 @@ th10::leaf::Fn00408800
 th10::leaf::Fn00408810
 th10::leaf::Fn00408820
 th10::leaf::Fn00408830
-th10::leaf::Fn00408840
-th10::leaf::Fn00408850
+th10::leaf::ClearStageScriptFlag0
+th10::leaf::SetStageScriptFlag0
 th10::leaf::Fn004088B0
 th10::leaf::Fn00408AA0
 th10::leaf::Fn00408AB0

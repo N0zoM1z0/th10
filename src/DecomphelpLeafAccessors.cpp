@@ -131,16 +131,18 @@ __declspec(noinline) u32 Fn00408830(i32 index, u8 *pThis)
     return ((u32 *)(pThis + 0x30))[index];
 }
 
-// 0x408840: this->flags_2a18 &= ~1
-__declspec(noinline) void Fn00408840(u8 *pThis)
+// 0x408840: clear bit 0 of StageScriptView::flags at +0x2a18.
+// StageScriptLayoutChecks asserts the field offset; original owner remains unproven.
+__declspec(noinline) void ClearStageScriptFlag0(StageScriptView *stage)
 {
-    *(u32 *)(pThis + 0x2a18) &= ~1u;
+    stage->flags &= ~1u;
 }
 
-// 0x408850: this->flags_2a18 |= 1
-__declspec(noinline) void Fn00408850(u8 *pThis)
+// 0x408850: set bit 0 of StageScriptView::flags at +0x2a18.
+// This is a layout-compatible view, not proof of original class ownership.
+__declspec(noinline) void SetStageScriptFlag0(StageScriptView *stage)
 {
-    *(u32 *)(pThis + 0x2a18) |= 1;
+    stage->flags |= 1u;
 }
 
 // 0x4088a0: &pArray->entries[index] with a 0x437c stride and a 8 byte header

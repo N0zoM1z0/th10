@@ -748,8 +748,8 @@ th10::leaf::Fn00408800,0x00408800,function
 th10::leaf::Fn00408810,0x00408810,function
 th10::leaf::Fn00408820,0x00408820,function
 th10::leaf::Fn00408830,0x00408830,function
-th10::leaf::Fn00408840,0x00408840,function
-th10::leaf::Fn00408850,0x00408850,function
+th10::leaf::ClearStageScriptFlag0,0x00408840,function
+th10::leaf::SetStageScriptFlag0,0x00408850,function
 th10::leaf::Fn004088B0,0x004088B0,function
 th10::leaf::Fn00408AA0,0x00408AA0,function
 th10::leaf::Fn00408AB0,0x00408AB0,function
