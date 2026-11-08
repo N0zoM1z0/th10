@@ -10,6 +10,7 @@
 #define LeaveCriticalSection AnmManagerLeaveCriticalSection
 #include "StageScript.hpp"
 #include "GameStatistics.hpp"
+#include "Enemy.hpp"
 #undef LeaveCriticalSection
 #undef EnterCriticalSection
 
@@ -120,10 +121,12 @@ __declspec(noinline) void SetAnmVmPendingInterrupt(u16 value, AnmVmView *pThis)
     pThis->pendingInterrupt = static_cast<short>(value);
 }
 
-// 0x408820: &this->field_1068
-__declspec(noinline) u8 *Fn00408820(u8 *pThis)
+// 0x408820: EnemyFullObjectView::runtime.worldMotion.position.x at +0x1068.
+// The component offsets are independently asserted by Enemy.hpp; the target
+// leaf has no callers, so this is a compatible receiver view, not owner proof.
+__declspec(noinline) float *EnemyWorldPositionXPointer(EnemyFullObjectView *enemy)
 {
-    return pThis + 0x1068;
+    return &enemy->runtime.worldMotion.position.x;
 }
 
 // 0x408830: this->array_30[index]

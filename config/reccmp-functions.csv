@@ -746,7 +746,7 @@ th10::leaf::Fn004087C0,0x004087C0,function
 th10::leaf::SetAnmVmPendingInterrupt,0x004087D0,function
 th10::leaf::Fn00408800,0x00408800,function
 th10::leaf::Fn00408810,0x00408810,function
-th10::leaf::Fn00408820,0x00408820,function
+th10::leaf::EnemyWorldPositionXPointer,0x00408820,function
 th10::leaf::Fn00408830,0x00408830,function
 th10::leaf::ClearStageScriptFlag0,0x00408840,function
 th10::leaf::SetStageScriptFlag0,0x00408850,function
