@@ -191,5 +191,12 @@
         "32f4:b9 03 00 00 00:mov ecx, 3"
       ]
     }
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "baseline": {
+    "function_size": 14352,
+    "matched_comparable_bytes": 1079,
+    "comparable_bytes": 11552,
+    "linkage_fields": 716
   }
 }
