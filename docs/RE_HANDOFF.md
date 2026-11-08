@@ -6,7 +6,7 @@
 > Older broad validation instructions apply only when their impact is relevant.
 
 
-**Source and ledgers rechecked 2026-11-08, after source commit `95763fb`;
+**Source and ledgers rechecked 2026-11-08, after source commit `7046c9e`;
 subsequent commits in this handoff are docs/storage-only.** This is a
 *working resume brief*, not a list of every experiment. The previous 603-line handoff
 is available with `git show 9996cd6:docs/RE_HANDOFF.md`; the detailed dated
@@ -676,7 +676,7 @@ subsequent source edit.
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `5784637d77b9bc502f5ad4157aa1f199355a17668cb8a056c43a50dbe4541126` |
-| `src/EnemyEclDispatcher.cpp` | `66193d00120a326ad753abf27806f5a043059c95231d8c4a85eaca3380014284` |
+| `src/EnemyEclDispatcher.cpp` | `942eb418693dff267eb5f5e77f90824631dd03bf116bfc9bf85eb8af91af71ca` |
 | `src/Enemy.cpp` | `c4831dcd88f9df6eaf638569f646b92915a1987bab32b53a3c3d483ec83d1a68` |
 | `src/Enemy.hpp` | `75cdb9727b6a1d7535beeef4bb703594c994958ae8af5f88a42186d8cdadc78a` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
