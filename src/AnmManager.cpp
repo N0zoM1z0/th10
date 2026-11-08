@@ -2886,10 +2886,21 @@ int AnmLoadedView::SetSprite(AnmVmView *vm, int spriteIndex)
 // Target 0x0043E7E0 binds a VM to one script owned by this loaded ANM. Invalid
 // or still-loading entries clear the whole VM; a valid entry resets the script
 // timer, executes frame zero, and accounts for the newly started script.
+// TH10 looks up script slots through a flat 32-bit table. Script indices
+// come from VM instructions and are not range-checked by these entrypoints;
+// form the native i386 word instead of an out-of-bounds C++ array pointer.
+static __forceinline AnmRawInstructionView *AnmScriptAtWord(
+    AnmRawInstructionView *const *scripts, int index)
+{
+    return *reinterpret_cast<AnmRawInstructionView *const *>(
+        reinterpret_cast<unsigned int>(scripts) +
+        static_cast<unsigned int>(index) * sizeof(*scripts));
+}
+
 void AnmLoadedView::SetAndExecuteScriptIndex(
     AnmVmView *vm, int scriptIndex)
 {
-    AnmRawInstructionView *beginningOfScript = scripts[scriptIndex];
+    AnmRawInstructionView *beginningOfScript = AnmScriptAtWord(scripts, scriptIndex);
 
     if (beginningOfScript == NULL || pendingLoadCount != 0)
     {
@@ -2903,7 +2914,7 @@ void AnmLoadedView::SetAndExecuteScriptIndex(
         flags &= ~0x600u;
         vm->anmFile = this;
         vm->flags35C = flags;
-        vm->beginningOfScript = scripts[scriptIndex];
+        vm->beginningOfScript = AnmScriptAtWord(scripts, scriptIndex);
         vm->currentInstruction = vm->beginningOfScript;
         vm->scriptTimer.SetCurrent(0);
         vm->visible = 0;
@@ -2934,7 +2945,7 @@ void AnmVmView::InitializeForLoadedScript(
 void AnmLoadedView::InitializeAndExecuteScriptIndex(
     AnmVmView *vm, int scriptIndex)
 {
-    AnmRawInstructionView *beginningOfScript = scripts[scriptIndex];
+    AnmRawInstructionView *beginningOfScript = AnmScriptAtWord(scripts, scriptIndex);
 
     if (beginningOfScript == NULL || pendingLoadCount != 0)
     {
@@ -2949,7 +2960,7 @@ void AnmLoadedView::InitializeAndExecuteScriptIndex(
         flags &= ~0x600u;
         vm->anmFile = this;
         vm->flags35C = flags;
-        vm->beginningOfScript = scripts[scriptIndex];
+        vm->beginningOfScript = AnmScriptAtWord(scripts, scriptIndex);
         vm->currentInstruction = vm->beginningOfScript;
         vm->scriptTimer.SetCurrent(0);
         vm->visible = 0;
@@ -2964,7 +2975,7 @@ void AnmLoadedView::InitializeAndExecuteScriptIndex(
 void AnmLoadedView::SetAndExecuteScriptIdx(
     AnmVmView *vm, int scriptIndex)
 {
-    AnmRawInstructionView *beginningOfScript = scripts[scriptIndex];
+    AnmRawInstructionView *beginningOfScript = AnmScriptAtWord(scripts, scriptIndex);
     if (beginningOfScript == NULL)
         return;
     if (pendingLoadCount != 0)
