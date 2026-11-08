@@ -1,11 +1,17 @@
 # TH10 reconstruction — live next-agent handoff
 
-**Verified 2026-11-07, source checkpoint `6f1b83c`.** This is a *working
+**Source and ledgers rechecked 2026-11-08, after `b254c0f` (before this docs-only maintenance).** This is a *working
 resume brief*, not a list of every experiment. The previous 603-line handoff
 is available with `git show 9996cd6:docs/RE_HANDOFF.md`; the detailed dated
 hypotheses are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and
 [`docs/evidence/`](evidence/). Check live status and hashes again; a source
 or build epoch may have changed after this snapshot.
+
+**First-time successor:** start with the shorter [2026-11-08 quick resume](NEXT_AGENT_20261108.md).
+The sections below include historic source-epoch checkpoints as context;
+only the generated ledger and successful **current-source** proofs determine
+live exactness. Cached PDBs under ignored `build/gpt-web/` may have been
+pruned; rebuild them if needed.
 
 ## Start here — actual repo and rules
 
@@ -42,6 +48,11 @@ scripts/repo-python scripts/ci.py
    original private compiler source partition is not necessarily reconstructed.
 
 ## Authoritative progress and current nonexact work
+
+**2026-11-08 current ledger:** 1,501 exact functions, 197,060 exact bytes,
+591 confirmed authored exact / 126,944 bytes; authored source-present
+nonexact backlog 159. See generated [PROGRESS.md](PROGRESS.md), not the
+figures in historic experiment descriptions below.
 
 ## Alternate text render local stack-frame improvement (2026-11-08)
 
@@ -301,8 +312,10 @@ while retaining the original signed pitch divisions and DIB semantics.
 Six independent real two-TU native trials and final installed-source
 cold replay preserve **2,327/2,327 original bytes** across five exact
 text owners (including **781-byte CreateBuffer and 946-byte alpha-bleed**).
-The 157/554/509-byte neighboring owners remain nonexact, with unchanged
-current comparable scores. No new exact credit.
+At this 2026-11-07 experimental epoch the 157/554/509-byte neighbors
+were nonexact. **Current correction (2026-11-08): the 554-byte main text
+renderer is now canonical exact**; 157-byte InvertAlpha and 509-byte
+alternate renderer remain nonexact. No new exact credit.
 [Evidence](evidence/text-format-row-native-words-20261107/README.md).
 
 ## Sound OpenDiskBgm natural early-return lifetime recovery (2026-11-08)
@@ -313,8 +326,11 @@ ordinary C++ early returns restores the retail **241-byte** native
 The target-bound strict comparator passes **241/241 original bytes,
 all 10 original relocation/address/call fields**, including four GUID_NULL
 addends. Seven separately canonical Sound guards cold-pass **2,510/2,510**.
-The new 241-byte owner is **pending canonical double-cold admission**;
-no new exact ledger credit at this source checkpoint.
+**Historic note:** this 241-byte owner was pending acceptance at the
+source-only checkpoint described here. It was **subsequently admitted**
+after two independently verified current-source canonical colds as
+`sound-open-disk-bgm` (**241/241, ten original fields, +1 exact owner**).
+The current ledger already includes it; do not count it twice.
 [Evidence](evidence/sound-open-disk-bgm-early-guards-20261108/README.md).
 
 ## Native Sound command shift cursor (2026-11-07)
@@ -332,9 +348,10 @@ canonical cold builds. [Evidence](evidence/sound-process-queue-native-shift-2026
 ## BGM format and preloaded table native indices (2026-11-07)
 
 The previously exact **55-byte** ReopenBgm now uses a typed Win32
-low-32-bit `0x34`-stride BGM format row address. The separate original
-**298-byte** LoadBgm (304-byte candidate) uses native indices into the
-filename and four preload tables, without adding a range check. Seven
+low-32-bit `0x34`-stride BGM format row address. At this older source checkpoint the separate original
+**298-byte** LoadBgm had a **304-byte candidate**. **Current correction:**
+LoadBgm has since been accepted **298/298 exact**, with native indices
+into the filename and four preload tables, without adding a range check. Seven
 complete two-TU native source trials preserve ReopenBgm **55/55**,
 ProcessQueues **1452/1452**, the unchanged LoadBgm owner and PreloadBgm
 **365/369** (four ordinary differences, original fields intact).
@@ -392,8 +409,10 @@ owners. No new exact credit. [Evidence](evidence/sound-process-queue-native-step
   original-target instruction witnesses before revisiting; do not promote
   these uninstalled trials. No historical full replay was run.
 
-The current ledger totals remain unchanged: these are native behavioral
-source recoveries and strict regression guards, **not new exact owners**.
+**Scope of the historical 2026-11-07 section above:** those specific
+source-only recoveries added no exact owners *at that time*. The current
+ledger now includes the later admitted Sound OpenDiskBgm and text-render
+owners; see the current totals near the top of this handoff.
 
 ## 2026-11-07 current-source recovery checkpoints (no new exact credit)
 
@@ -603,7 +622,8 @@ in the canonical exact scoreboard. No full historical replay was run.**
 These are **installed source bytes**, not historical artifacts. The
 lightweight `scripts/repo-python scripts/verify-handoff-pins.py` checks each
 file's SHA-256 and the target; use it before relying on cached native PDBs.
-All values were reverified at checkpoint `6f1b83c`.
+These values were rechecked with `verify-handoff-pins.py` on 2026-11-08
+at the source epoch after `b254c0f`. Recheck after subsequent source edits.
 
 | Installed source | SHA-256 |
 | --- | --- |

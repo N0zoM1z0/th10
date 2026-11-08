@@ -1,11 +1,13 @@
 # TH10 durable reconstruction knowledge
 
-**Source-epoch notice (2026-11-07):** This file is a historical
+**Source-epoch notice (updated 2026-11-08):** This file is a historical
 research log, not a single live codegen scoreboard. In particular, the
 5-source initial finalizer exact colds predate the later **6-source** real
 record-initializer caller wiring. Both statements are true only for their
 explicit source/build epochs. For *current* pins, canonical exact counts,
-artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
+artifact retention and next steps, start with
+[NEXT_AGENT_20261108.md](NEXT_AGENT_20261108.md), then
+[RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
