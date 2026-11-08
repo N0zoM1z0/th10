@@ -1393,9 +1393,13 @@ jump_instruction:
             case ECL_VM_EVALUATE_FORMAT_OPERANDS:
             {
                 // The inline format string follows the first 32-bit operand.
-                const char *cursor =
-                    reinterpret_cast<const EclVmFormatInlinePrefixView *>(
-                        current->operands)->text;
+                // FORMAT's inline text is a counted wire region, not a C++
+                // one-character array. The target forms its first byte by
+                // adding the prefix width to a flat 32-bit address word.
+                const unsigned int textPosition =
+                    reinterpret_cast<unsigned int>(current->operands) +
+                    static_cast<unsigned int>(sizeof(int));
+                const char *cursor = reinterpret_cast<const char *>(textPosition);
                 char *scratch = static_cast<char *>(malloc(0x400));
                 scratch[0] = '\0';
 
