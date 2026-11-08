@@ -60,15 +60,41 @@ accepted Sound units across four proper native build contexts:
 | sound-data-loader-thread | 107/107 |
 | **Selected total** | **2,510/2,510** |
 
-At this **source checkpoint**, `OpenDiskBgm` has *strong target-bound
-exact evidence* but is **not yet admitted to the canonical ledger**.
-A separate exact unit and two independent canonical cold replays are
-still required for new exact codegen credit. No full historical replay,
-whole executable or runtime-equivalence claim is made.
+## Canonical exact acceptance — two independent current-source colds
 
-Focused old-exact guard reproduction:
+The full 241-byte owner is now registered as `sound-open-disk-bgm` in
+`config/match-units.toml`, `config/matches.csv` and `config/functions.csv`.
+The ten original-bound fields include exact identities, original targets
+and GUID_NULL member addends, not anonymous masked dwords. All ordinary
+201/201 original bytes and 10/10 original fields pass strict linked-PE
+comparison in the genuine Sound+ZWave ProcessQueues graph.
+
+Two **separate** complete VC7.1 SP1 `/GL /GS /EHsc` canonical cold replays
+were performed against the installed, committed Sound source:
+
+| Canonical cold | OpenDiskBgm | Other already exact Sound | Total |
+| --- | ---: | ---: | ---: |
+| Cold 1, three units | **241/241, all 10 fields** | LoadBgm 298 + ProcessQueues 1,452 | **1,991/1,991** |
+| Cold 2, two units | **241/241, all 10 fields** | LoadBgm 298 | **539/539** |
+
+The two source-identical cold PEs have distinct SHA-256 identities:
+`c9f7d4c648c469575d8de82b7e5df86b03fe477518cfd966a8bb2c0cd42ef180`
+and `dc15db6708cdd493c2482cee3a82d9e872c688751828bc16c5ff26e7d707f63a`.
+The original-target unit includes **all ten target referents** and
+independent PDB contribution boundaries. This adds **+1 authored exact
+function and +241 original exact code bytes**, with no double-counting of
+existing Sound owners. The seven previously accepted Sound cold guards
+still pass their independent **2,510/2,510** source-checkpoint replay.
+No historical full cold replay, complete executable or runtime-equivalence
+claim is made. This establishes codegen equivalence, not original human
+source spelling or original physical translation-unit ownership.
+
+Focused canonical acceptance and prior guard reproduction:
 
 ```sh
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit sound-open-disk-bgm --unit sound-load-bgm \
+  --unit sound-process-queues --json
 scripts/repo-python scripts/replay-exact-units.py \
   --unit sound-load-bgm --unit sound-process-queues \
   --unit sound-player-reopen-bgm --unit streaming-sound-init-buffers \
@@ -87,3 +113,8 @@ Private trial, original reference field manifest and full PE/PDB/MAP:
 `build/gpt-web/20261108-sound-open-disk-control/`.
 Installed Sound source SHA-256:
 `5c66f60e5b6a7e6d8a5e7e5e103bdbd742e981fbc5dd72917ac5457d75cce22b`.
+
+Independent canonical acceptance receipts:
+`.analysis/gpt-web/20261108-sound-disk-canonical-cold-1.json`,
+`20261108-sound-disk-canonical-cold-2.json`, with private target-reference
+field proof at `.analysis/gpt-web/20261107-active/sound-open-disk-original-strict-probe.json`.

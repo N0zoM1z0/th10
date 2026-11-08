@@ -18,8 +18,12 @@ restore a 241-byte native `/GL` owner. The complete original-bound
 comparison passes **241/241 bytes with ten exact typed target fields**
 (StopBgm, two Win32 imports, window global/addend, BgmPlayerThread,
 GUID_NULL four DWORDs and the CreateStreaming target). Seven previously
-accepted Sound functions cold-pass **2,510/2,510**. Source checkpoint
-remains pending independent double-cold canonical exact admission.
+accepted Sound functions cold-pass **2,510/2,510**. **Canonical acceptance
+complete**: two independent source-identical, PE-distinct Sound+ZWave
+cold replays exactly match new `OpenDiskBgm` **241/241** original bytes
+with all ten original target fields, plus the protected LoadBgm/queue
+owners, totaling **1,991/1,991** and **539/539**. Newly admitted
+**+1 authored exact function, +241 original bytes**, no runtime claim.
 [Evidence](evidence/sound-open-disk-bgm-early-guards-20261108/README.md).
 
 ## 2026-11-08 BulletManager native draw-bucket slot addressing
