@@ -807,7 +807,7 @@ th10::leaf::LeafValueSetter00412F20View::Set,0x00412F20,function
 th10::leaf::LeafGetter00438250View::Get,0x00438250,function
 th10::leaf::LeafIdentity004383F0View::Get,0x004383F0,function
 th10::leaf::LeafIdentity00438410View::Get,0x00438410,function
-th10::leaf::Fn004088A0,0x004088A0,function
+th10::leaf::GameStatisticsRecordAt,0x004088A0,function
 th10::leaf::Fn0040ACC0,0x0040ACC0,function
 th10::leaf::Fn00421CD0,0x00421CD0,function
 th10::leaf::Fn00449860,0x00449860,function

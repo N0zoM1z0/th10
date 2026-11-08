@@ -9,6 +9,7 @@
 #define EnterCriticalSection AnmManagerEnterCriticalSection
 #define LeaveCriticalSection AnmManagerLeaveCriticalSection
 #include "StageScript.hpp"
+#include "GameStatistics.hpp"
 #undef LeaveCriticalSection
 #undef EnterCriticalSection
 
@@ -145,10 +146,13 @@ __declspec(noinline) void SetStageScriptFlag0(StageScriptView *stage)
     stage->flags |= 1u;
 }
 
-// 0x4088a0: &pArray->entries[index] with a 0x437c stride and a 8 byte header
-__declspec(noinline) u8 *Fn004088A0(i32 index, u8 *pArray)
+// 0x4088a0: address one GameStatisticsOwner::records entry.
+// GameStatisticsOwner's x86 layout asserts records at +8 and each record at
+// stride +0x437c; original leaf ownership remains unproven.
+__declspec(noinline) GameStatisticsRecord *GameStatisticsRecordAt(
+    i32 index, GameStatisticsOwner *owner)
 {
-    return pArray + index * 0x437c + 8;
+    return &owner->records[index];
 }
 
 // 0x408aa0: return 0

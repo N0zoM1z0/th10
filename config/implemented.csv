@@ -800,7 +800,7 @@ th10::leaf::LeafValueSetter00412F20View::Set
 th10::leaf::LeafGetter00438250View::Get
 th10::leaf::LeafIdentity004383F0View::Get
 th10::leaf::LeafIdentity00438410View::Get
-th10::leaf::Fn004088A0
+th10::leaf::GameStatisticsRecordAt
 th10::leaf::Fn0040ACC0
 th10::leaf::Fn00421CD0
 th10::leaf::Fn00449860
