@@ -3,6 +3,14 @@
 // Exactness is granted only by canonical target-bound replay; see
 // docs/KNOWLEDGE_BASE.md and config/match-units.toml.
 #include "DecomphelpLeafTypes.hpp"
+// AnmManager.hpp redeclares these Win32 imports with void* parameters. The
+// leaf TU PCH already includes windows.h, so rename only those unused header
+// declarations while importing the verified project view types.
+#define EnterCriticalSection AnmManagerEnterCriticalSection
+#define LeaveCriticalSection AnmManagerLeaveCriticalSection
+#include "StageScript.hpp"
+#undef LeaveCriticalSection
+#undef EnterCriticalSection
 
 // The /Yu PCH swallows the command line optimization flags, so the original
 // /O2 (+/GL, whole program) codegen has to be forced per TU. See the Chain TU
@@ -61,22 +69,26 @@ __declspec(noinline) u32 Fn00404990(u8 *pThis)
     return *(u32 *)(pThis + 0x44);
 }
 
-// 0x404c90: this->field_84 = value
-__declspec(noinline) void Fn00404C90(u32 value, u8 *pThis)
+// 0x404c90: StageFogInterpolationView-compatible receiver; duration is +0x84.
+// The layout is asserted in StageScript.hpp; original owner remains unproven.
+__declspec(noinline) void SetStageFogInterpolationDuration(
+    u32 value, StageFogInterpolationView *pThis)
 {
-    *(u32 *)(pThis + 0x84) = value;
+    pThis->duration = static_cast<int>(value);
 }
 
-// 0x404d30: this->field_84 = 0
-__declspec(noinline) void Fn00404D30(u8 *pThis)
+// 0x404d30: clear StageFogInterpolationView-compatible duration at +0x84.
+// The boundary has no callers, so this is a typed layout view, not owner proof.
+__declspec(noinline) void ClearStageFogInterpolationDuration(StageFogInterpolationView *pThis)
 {
-    *(u32 *)(pThis + 0x84) = 0;
+    pThis->duration = 0;
 }
 
-// 0x404f20: this->flags_35c &= ~1
-__declspec(noinline) void Fn00404F20(u8 *pThis)
+// 0x404f20: clear AnmVmView-compatible visible bit (flags35C bit 0).
+// AnmVmView asserts the field offset; original leaf ownership remains unknown.
+__declspec(noinline) void ClearAnmVmVisible(AnmVmView *pThis)
 {
-    *(u32 *)(pThis + 0x35c) &= ~1u;
+    pThis->visible = 0;
 }
 
 // 0x405150: pOther->field_48 = value (value in eax, object in ecx)
@@ -100,10 +112,11 @@ __declspec(noinline) u32 Fn004087C0(u8 *pThis)
     return (*(u32 *)(pThis + 0x58) >> 1) & 1;
 }
 
-// 0x4087d0: this->word_304 = value
-__declspec(noinline) void Fn004087D0(u16 value, u8 *pThis)
+// 0x4087d0: set AnmVmView-compatible pendingInterrupt at +0x304.
+// The field offset is asserted in AnmManager.hpp; owner remains unproven.
+__declspec(noinline) void SetAnmVmPendingInterrupt(u16 value, AnmVmView *pThis)
 {
-    *(u16 *)(pThis + 0x304) = value;
+    pThis->pendingInterrupt = static_cast<short>(value);
 }
 
 // 0x408820: &this->field_1068
@@ -1495,19 +1508,19 @@ __declspec(noinline) void Fn00401CB0(u8 value, u8 *pThis)
     *(u8 *)(pThis + 0x2ff) = value;
 }
 
-// 0x401cc0: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x401cc0: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn00401CC0(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x2fc) = value;
 }
 
-// 0x401d10: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x401d10: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn00401D10(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x394) = value;
 }
 
-// 0x401fb0: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x401fb0: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn00401FB0(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x898c) = value;
@@ -1519,25 +1532,25 @@ __declspec(noinline) void Fn00412D50(u8 *pObj, u32 value)
     *(u32 *)(pObj + 0x38) = value;
 }
 
-// 0x4130a0: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x4130a0: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn004130A0(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x300) = value;
 }
 
-// 0x4130d0: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x4130d0: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn004130D0(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x10) = value;
 }
 
-// 0x417580: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x417580: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn00417580(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x5c) = value;
 }
 
-// 0x4175d0: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x4175d0: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn004175D0(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x54) = value;
@@ -1549,43 +1562,43 @@ __declspec(noinline) void Fn004176C0(u32 value, u8 *pThis)
     *(u32 *)pThis = value;
 }
 
-// 0x418b40: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x418b40: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn00418B40(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x58) = value;
 }
 
-// 0x418b60: cloned shape of th10::leaf::Fn004087D0 (verify_leaves --from-exe)
+// 0x418b60: cloned shape of th10::leaf::SetAnmVmPendingInterrupt (verify_leaves --from-exe)
 __declspec(noinline) void Fn00418B60(u16 value, u8 *pThis)
 {
     *(u16 *)(pThis + 0x8) = value;
 }
 
-// 0x418b70: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x418b70: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn00418B70(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x30) = value;
 }
 
-// 0x418bd0: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x418bd0: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn00418BD0(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x4) = value;
 }
 
-// 0x418be0: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x418be0: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn00418BE0(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x50) = value;
 }
 
-// 0x418bf0: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x418bf0: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn00418BF0(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x34) = value;
 }
 
-// 0x41ac00: cloned shape of th10::leaf::Fn00404C90 (verify_leaves --from-exe)
+// 0x41ac00: cloned shape of th10::leaf::SetStageFogInterpolationDuration (verify_leaves --from-exe)
 __declspec(noinline) void Fn0041AC00(u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + 0x34) = value;
