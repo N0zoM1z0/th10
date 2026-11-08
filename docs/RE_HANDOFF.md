@@ -56,6 +56,18 @@ seven previous exact text owners **3,030/3,030** including the new
 **554-byte** main renderer with all 35 target fields. No new exact
 credit. [Evidence](evidence/text-render-alternate-stack-scope-20261108/README.md).
 
+## ANM 9,964-byte interpreter terminal vertex word addresses (2026-11-08)
+
+The generated-vertex tail now uses typed low-32-bit `0x1C`-stride Win32
+addresses for the second source/destination vertex and V-coordinate
+write, replacing unchecked abstract C++ `[1]` pointer formation. Five
+separate five-TU original-bound trials and a fresh final-source cold
+retain **9,962/9,964** original `ExecuteScript` bytes, all **350** target
+fields and only opcode-91 EDX/ECX differences at `+0x113,+0x115`.
+Six related existing ANM exact helpers cold-pass **694/694**.
+The giant owner is still NONEXACT, no new exact ledger credit.
+[Evidence](evidence/anm-render9-terminal-vertex-words-20261108/README.md).
+
 ## Memory-file Seek FILE_BEGIN native address word (2026-11-08)
 
 The installed FILE_BEGIN pointer now uses i386 low-32-bit base+offset
@@ -491,7 +503,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | --- | --- |
 | `src/GameStatistics.cpp` | `dc31f5c888d68d363571a74457ed3da000c2a36386e790cd9234b0798c229666` |
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
-| `src/AnmManager.cpp` | `3ab26d964232575916055f24a0b09dffb32bc059b0a8fced7751d815a290f677` |
+| `src/AnmManager.cpp` | `4e5cbaad2538269266088d16671a880cae13a4a131fc4f264b0e2c2a5abb29e9` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
 | `src/EclVm.cpp` | `62cbc480c658beec6fca953680cb1267faf546d6dcaf3d19d0937472f4c74766` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |

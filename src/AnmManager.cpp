@@ -3196,6 +3196,14 @@ static __forceinline void TickScriptTimerScale(AnmVmTimerView *timer)
     }
 }
 
+static __forceinline AnmRenderVertexView *AnmVertexAtWord(
+    AnmRenderVertexView *base, unsigned int index)
+{
+    return reinterpret_cast<AnmRenderVertexView *>(
+        reinterpret_cast<unsigned int>(base) +
+        index * static_cast<unsigned int>(sizeof(AnmRenderVertexView)));
+}
+
 int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
@@ -3938,9 +3946,13 @@ stop:
         vertex[0] = static_cast<AnmRenderVertexView *>(
             vm->generatedVertices)[0];
         vertex[0].v = textureV + vm->uvScrollY;
-        vertex[1] = static_cast<AnmRenderVertexView *>(
-            vm->generatedVertices)[1];
-        vertex[1].v = textureV + vm->uvScrollY;
+        // The second vertex is a 0x1c-byte native Win32 word offset,
+        // not a C++ array-bound assumption for a malformed script count.
+        *AnmVertexAtWord(vertex, 1u) =
+            *AnmVertexAtWord(
+                static_cast<AnmRenderVertexView *>(vm->generatedVertices),
+                1u);
+        AnmVertexAtWord(vertex, 1u)->v = textureV + vm->uvScrollY;
     }
 
     TickScriptTimerScale(&vm->scriptTimer);

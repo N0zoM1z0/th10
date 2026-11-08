@@ -9,6 +9,20 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 ANM ExecuteScript renderMode 9 terminal vertex words
+
+Render mode 9's terminal second-vertex copy and texture V write now form
+typed `AnmRenderVertexView` addresses through a forced-inline native
+Win32 `0x1c`-byte stride helper, instead of unchecked C++ array `[1]`.
+Five natural C++ tail variants and a typed-helper trial were compiled in
+the current five-TU `/GL /GS` source graph after rejecting a stale
+cache. A named terminal pointer grew the owner by four bytes and was
+rejected; the installed typed helper retains **9,962/9,964** complete
+original interpreter bytes and **350/350** target-bound fields. Six
+selected previously exact ANM helper owners cold-pass **694/694**.
+No new exact credit; opcode 91's two register bytes still differ.
+[Evidence](evidence/anm-render9-terminal-vertex-words-20261108/README.md).
+
 ## 2026-11-08 CMemoryPbgFile Seek native FILE_BEGIN base word
 
 `CMemoryPbgFile::Seek` now publishes FILE_BEGIN positions through the
