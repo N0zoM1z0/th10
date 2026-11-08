@@ -11155,17 +11155,17 @@ or proof of source provenance. See
 [evidence/enemy-cancel-typed-runtime-record-20261105/README.md](evidence/enemy-cancel-typed-runtime-record-20261105/README.md), and
 [evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md](evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md).
 
-## 2026-11-08 EnemyRuntimeUpdate world-velocity x87 order
+## 2026-11-08 EnemyRuntimeUpdate world-velocity x87 order and aggregate home
 
-`EnemyRuntimeUpdate @ 0x0040DC80` remains a 2,412-byte NONEXACT candidate,
-but a fresh 12-TU LTCG build now matches the original base-before-offset
-X/Y/Z x87 load/add order. A local `EnemyFloat3SumView` with reversed
-Z/Y/X constructor parameters plus volatile base-component references moves
-the candidate from 655 to 657 aligned instructions and from 1,578 to 1,580
-matched comparable bytes (2,136 comparable). The Z sum still spills at
-`ESP+0x2C` rather than the original `ESP+0x24`, and later differences remain.
-This is a compiler-ordering reconstruction, not proof of original volatile
-fields or helper declarations. The exact `EnemyRuntimeView` constructor
-145/145 and `EnemyRuntimeVectorView::FromAngleMagnitude` 30/30 scoped
-replays still pass. See
-[evidence/enemy-runtime-world-vector-order-20261108/README.md](evidence/enemy-runtime-world-vector-order-20261108/README.md).
+`EnemyRuntimeUpdate @ 0x0040DC80` remains a 2,412-byte NONEXACT candidate.
+The first constructor-based C++ hypothesis restored the original base-before-
+offset X/Y/Z x87 load/add order, but spilled the Z sum at `ESP+0x2C` instead
+of `ESP+0x24` (1,580/2,136 comparable bytes). Replacing that constructor with
+a plain three-float aggregate and an X/Y/Z aggregate initializer keeps the
+same 0x18-byte local frame and 2,412-byte function extent, matches the target
+Z spill home `ESP+0x24`, and improves the comparison to **1,582/2,136** bytes
+with 69 linkage fields. The local vector block `+0x246..+0x28E` now matches
+in instruction order and stack home; the remaining function differences
+begin at `+0x49D`. This is a natural C++ codegen hypothesis, not proof of the
+original source declaration or full-function exactness. See
+[evidence/enemy-runtime-world-vector-aggregate-20261108/README.md](evidence/enemy-runtime-world-vector-aggregate-20261108/README.md).

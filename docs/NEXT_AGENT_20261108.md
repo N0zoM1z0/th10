@@ -74,7 +74,7 @@ build graph; it does not prove a runnable reconstruction.
 | Enemy ECL dispatcher `@0x0040E770` | 14,416 / 14,352 | 64-byte size gap; **716 candidate-only fields** (not independently original-bound) |
 | EnemyAdvanceMotion `@0x0044C2A0` | 171 / 168 | **133/140** ordinary prefix bytes, all **7** original fields; final 7-byte stack cleanup mismatch |
 | EnemyAdvanceMotion `@0x0044C2A0` | 171 / 168 | 7 original-bound fields; 133/140 ordinary bytes; final stack cleanup differs at `+0xA1..+0xA7` |
-| EnemyRuntimeUpdate `@0x0040DC80` | 2,412 / 2,412 | Nonexact 12-TU graph; **657/671** aligned instructions, **1,580/2,136** comparable bytes; X/Y/Z base-before-offset x87 order; Z spill still `ESP+0x2C` vs `ESP+0x24` |
+| EnemyRuntimeUpdate `@0x0040DC80` | 2,412 / 2,412 | NONEXACT; **1,582/2,136** comparable bytes, 69 linkage fields; X/Y/Z base-before-offset x87 order; Z spill now matches `ESP+0x24`; remaining differences start at `+0x49D` |
 | Bullet `UpdateAbsoluteDirectionChange @0x004078E0` | 335 / 335 | **333/335**, all 8 original-bound fields |
 | Sound `PreloadBgm @0x0043D7D0` | 369 / 369 | **365/369**, all 10 original-bound fields |
 | Memory PBG `Seek @0x004364F0` | 107 / 107 | **100/107** with zero relocations |
