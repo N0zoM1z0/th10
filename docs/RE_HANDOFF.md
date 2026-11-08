@@ -56,6 +56,18 @@ seven previous exact text owners **3,030/3,030** including the new
 **554-byte** main renderer with all 35 target fields. No new exact
 credit. [Evidence](evidence/text-render-alternate-stack-scope-20261108/README.md).
 
+## EnemySpawn native active/spawn counter words (2026-11-08)
+
+Original **577-byte EnemySpawn** now increments the signed manager
+`activeEnemyCount` and `spawnCounter` via the original low-32-bit INC
+semantics instead of undefined signed C++ overflow. Three separate
+current-source 14-TU compiled variants preserve **577/577 original
+bytes, 12/12 fields**, while 118-byte manager clear and 28-byte
+callback suspension remain exact. Installed-source selected cold replay
+across the 14-TU spawn graph and manager-update graph totals **899/899**
+old exact bytes with **20/20** target fields. No new codegen credit.
+[Evidence](evidence/enemy-spawn-native-manager-counts-20261108/README.md).
+
 ## Enemy manager native 32-bit timer increment (2026-11-08)
 
 `EnemyManagerUpdate` now reproduces its original `INC EDX` timer-word
@@ -520,7 +532,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `5784637d77b9bc502f5ad4157aa1f199355a17668cb8a056c43a50dbe4541126` |
 | `src/EnemyEclDispatcher.cpp` | `cebadf0dd493c970699b98b371ebd9792d1dd3c51c26fe49cdc591df0e0d581f` |
-| `src/Enemy.cpp` | `c16cedf695457409899dea7cd5af9e6e43c56c1095cfe687aefef9c1955c9824` |
+| `src/Enemy.cpp` | `7fbc4b94ea173a05bdea370e0eaf6660fb5855de7ebdfa8281642dc200a068b7` |
 | `src/Enemy.hpp` | `372ef4e3ca68687434092efa8b50573ef6ebcf8aa0fc0bb2e14058d60b85f668` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |

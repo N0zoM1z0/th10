@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 EnemySpawn native active-enemy and spawn counter words
+
+`EnemySpawn` now uses Win32 modulo-32-bit additions for manager
+`activeEnemyCount` and `spawnCounter` before publishing the same signed
+fields. Original i386 at +0x1E4/+0x1E6 uses `INC EDX` and `INC ECX`.
+Three independently linked current-source full 14-TU C++ trials preserve
+**577/577 exact original Spawn bytes and all 12 fields**. The sibling
+manager clear and callback suspension owners also remain exact; a fresh
+selected installed-source cold replay of five related exact owners in
+two graphs passes **899/899** original bytes and 20 field obligations.
+No new exact credit or complete executable/runtime claim.
+[Evidence](evidence/enemy-spawn-native-manager-counts-20261108/README.md).
+
 ## 2026-11-08 EnemyManagerUpdate signed timer word wrap
 
 Original 166-byte `EnemyManagerUpdate` increments its timer.current

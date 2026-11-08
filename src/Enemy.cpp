@@ -1573,8 +1573,10 @@ EnemyFullObjectView *__stdcall EnemySpawn(
         node->previous = tail;
     }
     manager->enemyListTail = node;
-    ++manager->activeEnemyCount;
-    ++manager->spawnCounter;
+    manager->activeEnemyCount = static_cast<int>(
+        static_cast<unsigned int>(manager->activeEnemyCount) + 1u);
+    manager->spawnCounter = static_cast<int>(
+        static_cast<unsigned int>(manager->spawnCounter) + 1u);
     return enemy;
 }
 
