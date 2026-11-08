@@ -1,9 +1,9 @@
 # TH10 ignored artifacts — live next-agent storage and recovery
 
-**Verified 2026-11-07 after source checkpoint `9996cd6`, handoff cleanup
-`5e97d2e`, and the audited new native-trial pruning.** This is a retention
-policy and measured checkpoint, not a claim that the same sizes will persist
-after future builds. Use [RE_HANDOFF.md](RE_HANDOFF.md) for the current
+**Remeasured 2026-11-08 after the bounded 57-family native-trial cleanup.**
+The table immediately below is the current allocation. The subsequent
+2026-11-07 measurements and one-time deletion audits are preserved as
+**historical snapshots**, not current disk usage. Use [RE_HANDOFF.md](RE_HANDOFF.md) for the current
 nonexact frontiers and SHA-pinned source, and
 [PROGRESS.md](PROGRESS.md) for canonical exact counts. Older cleanup
 snapshots are historical evidence, not live disk figures.
@@ -27,9 +27,49 @@ SHA-256 and VC7.1 profile. Never mix an old PE/PDB with newer source
 hashes, and **never delete the original EXE, private toolchain, canonical
 match-linked graph, Ghidra DB, reference tree or historical archives**.
 
-## Post-cleanup measured allocation
+## Current measured storage and new deletion audit (2026-11-08)
 
-After deleting only verified rejected native experiment binaries:
+The operator-approved next-agent prune removed only explicitly listed,
+**rebuildable ignored** `.obj/.exe/.pdb` experiment files from
+`build/gpt-web/`. The previous script and its audit were not rerun.
+The new tracked [cleanup evidence](evidence/next-agent-storage-prune-20261108/README.md)
+and [machine-readable summary](evidence/next-agent-storage-prune-20261108/cleanup-summary.json)
+record the **57 allowlisted roots, 3,786 files**, full measured allocated
+reclamation and original/canonical protection checks.
+
+| Path | Current allocated bytes (`du -s -B1`) | Approx. MiB | Retention |
+| --- | ---: | ---: | --- |
+| `build/gpt-web/` | **297,750,528** | 284.0 | Regenerable trial outputs; selected witnesses kept |
+| `build/match-linked/` | **128,786,432** | 122.8 | **Preserved complete canonical build graph** |
+| `.analysis/gpt-web/` | **98,545,664** | 94.0 | Preserved drivers, source snapshots, JSON/MAP/logs |
+| `.analysis/archive/` | **216,694,784** | 206.7 | **All historical compressed archives preserved** |
+| `.tools/` | **610,553,856** | 582.3 | **Pinned compiler/toolchain preserved** |
+| `_reference/` | **315,129,856** | 300.5 | **Original research/reference preserved** |
+| `ghidra-project/` | **10,088,448** | 9.6 | **Original private Ghidra project preserved** |
+
+For `build/gpt-web/` the allocated footprint changed from
+**572,641,280** to **297,750,528** bytes: **274,890,752 bytes reclaimed**
+(**about 262.2 MiB**). The deletion inventory is private ignored
+`.analysis/maintenance-next-agent-20261108/removed-native.jsonl`
+(SHA-256 `a309a6e1c748e2a388a4d5c1f3a0f54f8f3600018e1cb27edc187a0c652a539f`);
+its complete audit is the adjacent `cleanup-result.json`.
+No archive was made because these variants are independently regenerable.
+**The manifest is not a backup.** Dated `build/gpt-web/*.pdb` and `.exe`
+references in old evidence can now describe deleted files: rebuild before
+claiming a current source/PE/PDB identity.
+
+The new opt-in script
+[`scripts/prune-next-agent-native-20261108.py`](../scripts/prune-next-agent-native-20261108.py)
+is dry-run by default and **already applied once**. Do not rerun `--apply`.
+It is not a general-purpose tool to delete other experiment directories.
+The original target, canonical exact owners, all pinned inputs and nine
+historical archives were explicitly protected.
+
+## Previous 2026-11-07 allocation snapshot (historical; superseded)
+
+
+At the older 2026-11-07 source/disk epoch, after a *different*
+reviewed deletion batch (not the current allocation):
 
 | Directory | Allocated bytes | Approximate MiB | Policy |
 | --- | ---: | ---: | --- |
@@ -48,7 +88,7 @@ canonical/native/toolchain/archives were verified unchanged by allocation
 and representative SHA-256 identities. `build/gpt-web/` immediately
 before this batch measured **468,172,800 bytes** (446.5 MiB).
 
-## Latest rejected native experiment cleanup (2026-11-07)
+## Previous rejected native experiment cleanup (2026-11-07; historical)
 
 - **21 specifically reviewed rejected/superseded probe families** under
   ignored `build/gpt-web/`, not a blanket build-directory deletion.

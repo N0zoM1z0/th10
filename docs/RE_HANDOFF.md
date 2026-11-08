@@ -662,9 +662,13 @@ The original EXE, VC7.1/Wine `.tools/`, Ghidra database, `_reference/`,
 ignored and do not travel with Git**. Transfer these separately if the
 next agent uses a different machine. Preserve **all** `build/match-linked/`
 canonical graphs, original inputs, private toolchain/database and the
-compressed `.analysis/archive/` registry. Regenerable rejected variant
-binaries under `build/gpt-web/` may be pruned after recording a manifest
-and retaining their small `*.json`/trial source evidence. Consult the
+compressed `.analysis/archive/` registry. A bounded 2026-11-08 cleanup **already removed 3,786** regenerable
+`.obj/.exe/.pdb` trial binaries from 57 allowlisted ignored
+`build/gpt-web/` families, reclaiming **274,890,752 allocated bytes**.
+All canonical `build/match-linked/` images, private archive and source
+snapshots, JSON and MAP/logs remain preserved. The deletion manifest is
+**not** a binary backup; rebuild stale trial images as necessary.
+[Current cleanup proof](evidence/next-agent-storage-prune-20261108/README.md). Consult the
 separately maintained [storage registry](RE_ARTIFACTS.md); old source
 hashes do not validate a restored PDB. Do not cold replay all units for
 handoff/doc/storage maintenance: run `scripts/repo-python scripts/ci.py`

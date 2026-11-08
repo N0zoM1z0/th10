@@ -90,8 +90,12 @@ and all `build/match-linked/` canonical images. These private inputs are
 ignored and need separate transfer if the next agent runs on another
 machine. They do **not** accompany an ordinary Git clone.
 
-Old rejected binary trial outputs (`*.obj`, `*.exe`, `*.pdb`) under ignored
-`build/gpt-web/` may be pruned after an explicit audited allowlist. Their
+A bounded cleanup **has now pruned 3,786 old experiment binaries**
+(`*.obj`, `*.exe`, `*.pdb`) from 57 allowlisted ignored
+`build/gpt-web/` families, reclaiming **274,890,752 allocated bytes**
+(about **262.2 MiB**). The retained `build/gpt-web/` now occupies
+297,750,528 bytes. See the one-time [cleanup evidence](evidence/next-agent-storage-prune-20261108/README.md).
+Do **not** rerun the already applied `--apply` script. Their
 ignored `.analysis/gpt-web/` Python trial drivers, source snapshots and JSON
 receipts should remain. After cleanup, **do not expect a historical
 `build/gpt-web/.../source.pdb` to exist** merely because a dated evidence

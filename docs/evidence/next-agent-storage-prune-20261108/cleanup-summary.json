@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-08",
+  "scope": "rebuildable ignored VC7.1 native experiment outputs only",
+  "allowlisted_roots": 57,
+  "deleted_files": 3786,
+  "deleted_payload_bytes": 268831202,
+  "allocated_build_gpt_web_before_bytes": 572641280,
+  "allocated_build_gpt_web_after_bytes": 297750528,
+  "allocated_reclaimed_bytes": 274890752,
+  "removed_manifest_path": ".analysis/maintenance-next-agent-20261108/removed-native.jsonl",
+  "removed_manifest_sha256": "a309a6e1c748e2a388a4d5c1f3a0f54f8f3600018e1cb27edc187a0c652a539f",
+  "archive_created": false,
+  "protected_directories": [
+    "build/match-linked",
+    ".analysis/archive",
+    ".tools",
+    "_reference",
+    "ghidra-project"
+  ],
+  "protected_witness_paths": [
+    "resources/th10.exe",
+    "build/match-linked/SoundInitBuffers/source.exe",
+    "build/match-linked/TextRenderMainHybrid/source.exe",
+    "build/match-linked/EclVmHostRunEnemy/source.exe",
+    "build/match-linked/BulletManagerUpdateCallback/source.exe"
+  ],
+  "retained": [
+    "original target",
+    "pinned compiler",
+    "Ghidra and reference inputs",
+    "all historical archives",
+    "all canonical linked PEs",
+    "all source, snapshots, JSON, MAP, logs and probe drivers"
+  ],
+  "warning": "A deletion SHA manifest is not an archive; regenerate variant binaries from pinned source and compiler."
+}

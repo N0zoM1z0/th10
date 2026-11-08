@@ -28,6 +28,19 @@ owners, totaling **1,991/1,991** and **539/539**. Newly admitted
 **+1 authored exact function, +241 original bytes**, no runtime claim.
 [Evidence](evidence/sound-open-disk-bgm-early-guards-20261108/README.md).
 
+## 2026-11-08 Audited next-agent storage cleanup
+
+The current remeasured allocation for ignored `build/gpt-web/` is
+**297,750,528 bytes**, down from 572,641,280, after deleting **3,786**
+regenerable native trial `.obj/.exe/.pdb` files under 57 explicitly
+reviewed family roots. Exact allocated reclamation **274,890,752 bytes**.
+All `build/match-linked/` canonical graphs, target/toolchain, nine
+historical compressed archives, Ghidra and references, trial drivers,
+source snapshots, JSON/MAP/logs were protected. The private SHA audit is
+`.analysis/maintenance-next-agent-20261108/removed-native.jsonl`; old
+evidence references to deleted PDBs are historical, not existing files.
+[Current proof](evidence/next-agent-storage-prune-20261108/README.md).
+
 ## 2026-11-08 BulletManager native draw-bucket slot addressing
 
 The six-head/six-tail `UpdateBullets` draw buckets now use a typed
