@@ -1,5 +1,11 @@
 # Tool routing
 
+> Current workflow: follow the **Highest priority** section in `AGENTS.md`.
+> Prefer affected exact comparisons and useful Markdown knowledge. Ordinary
+> notes do not require full CI, native replay or document-hash/pin refreshes.
+> Older broad validation instructions apply only when their impact is relevant.
+
+
 | Need | Command or provider | Authority |
 | --- | --- | --- |
 | Verify the private target | `scripts/repo-python scripts/verify-target.py` | Target identity, PE structure, and Rich record stream |

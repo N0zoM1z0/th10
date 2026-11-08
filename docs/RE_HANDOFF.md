@@ -1,5 +1,11 @@
 # TH10 reconstruction — live next-agent handoff
 
+> Current workflow: follow the **Highest priority** section in `AGENTS.md`.
+> Prefer affected exact comparisons and useful Markdown knowledge. Ordinary
+> notes do not require full CI, native replay or document-hash/pin refreshes.
+> Older broad validation instructions apply only when their impact is relevant.
+
+
 **Source and ledgers rechecked 2026-11-08, after `b254c0f` (before this docs-only maintenance).** This is a *working
 resume brief*, not a list of every experiment. The previous 603-line handoff
 is available with `git show 9996cd6:docs/RE_HANDOFF.md`; the detailed dated
