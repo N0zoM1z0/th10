@@ -3,7 +3,8 @@
 **Read this first**, then [the source-pinned handoff](RE_HANDOFF.md), the
 [selected canonical unit](../config/match-units.toml), and the specific
 [evidence](evidence/) for the function you plan to change. This is a live
-handoff of the source state checked after `b254c0f`; historical notes may
+handoff of the source state checked after source commit `c76397f`;
+historical notes may
 refer to different source and compiler epochs. Read `git status` and the
 actual current source rather than trusting any dated candidate score.
 
@@ -71,10 +72,9 @@ build graph; it does not prove a runnable reconstruction.
 | --- | ---: | --- |
 | ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964**, all **350** original fields; opcode 91 EDX vs ECX at `+0x113,+0x115` |
 | ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020**, all **189** original fields; x87/FORMAT stack homes and control-flow bytes |
-| Enemy ECL dispatcher `@0x0040E770` | 14,416 / 14,416 | NONEXACT; **1,252/11,536** comparable bytes, 720 linkage fields; 181-byte opcode map matches retail; rank-five float result tail restored |
-| EnemyAdvanceMotion `@0x0044C2A0` | 171 / 168 | **133/140** ordinary prefix bytes, all **7** original fields; final 7-byte stack cleanup mismatch |
-| EnemyAdvanceMotion `@0x0044C2A0` | 171 / 168 | 7 original-bound fields; 133/140 ordinary bytes; final stack cleanup differs at `+0xA1..+0xA7` |
-| EnemyRuntimeUpdate `@0x0040DC80` | 2,412 / 2,412 | NONEXACT; **1,582/2,136** comparable bytes, 69 linkage fields; X/Y/Z base-before-offset x87 order; Z spill now matches `ESP+0x24`; remaining differences start at `+0x49D` |
+| Enemy ECL dispatcher `@0x0040E770` | 14,416 / 14,416 | NONEXACT; **1,252/11,536** comparable bytes, 720 candidate linkage fields (not independently original-bound); 181-byte opcode map matches retail; rank-five float result tail restored; [proof](evidence/enemy-ecl-rank-five-tail-20261108/README.md) |
+| EnemyAdvanceMotion `@0x0044C2A0` | 171 / 168 | NONEXACT; **133/140** ordinary bytes, all **7** original-bound fields; final stack cleanup differs at `+0xA1..+0xA7`; [proof](evidence/enemy-advance-motion-x87-polar-20261108/README.md) |
+| EnemyRuntimeUpdate `@0x0040DC80` | 2,412 / 2,412 | NONEXACT; **1,582/2,136** comparable bytes, 69 candidate linkage fields; X/Y/Z base-before-offset x87 order; Z spill now matches `ESP+0x24`; remaining differences start at `+0x49D`; [proof](evidence/enemy-runtime-world-vector-aggregate-20261108/README.md) |
 | Bullet `UpdateAbsoluteDirectionChange @0x004078E0` | 335 / 335 | **333/335**, all 8 original-bound fields |
 | Sound `PreloadBgm @0x0043D7D0` | 369 / 369 | **365/369**, all 10 original-bound fields |
 | Memory PBG `Seek @0x004364F0` | 107 / 107 | **100/107** with zero relocations |
@@ -92,16 +92,19 @@ and all `build/match-linked/` canonical images. These private inputs are
 ignored and need separate transfer if the next agent runs on another
 machine. They do **not** accompany an ordinary Git clone.
 
-A bounded cleanup **has now pruned 3,786 old experiment binaries**
-(`*.obj`, `*.exe`, `*.pdb`) from 57 allowlisted ignored
-`build/gpt-web/` families, reclaiming **274,890,752 allocated bytes**
-(about **262.2 MiB**). The retained `build/gpt-web/` now occupies
-297,750,528 bytes. See the one-time [cleanup evidence](evidence/next-agent-storage-prune-20261108/README.md).
-Do **not** rerun the already applied `--apply` script. Their
-ignored `.analysis/gpt-web/` Python trial drivers, source snapshots and JSON
-receipts should remain. After cleanup, **do not expect a historical
-`build/gpt-web/.../source.pdb` to exist** merely because a dated evidence
-page cites it: rerun the linked recipe in a new output directory. See
-[the current artifact registry](RE_ARTIFACTS.md) for measured storage,
-protected paths and the removal audit. An SHA deletion manifest proves
-what was deleted but **cannot restore the removed bytes**.
+Two bounded cleanups have pruned regenerable native trial binaries from
+`build/gpt-web/`. The first removed 3,786 files from 57 roots (274,890,752
+allocated bytes). The second removed **12,051** `.obj/.exe/.pdb` files from
+448 explicitly reviewed roots, reclaiming **886,214,656 allocated bytes
+(about 845.2 MiB)**. `build/gpt-web/` is now **262,840,320 bytes
+(250.7 MiB)**, down from 1,149,054,976 bytes before the second pass.
+Three selected enemy witness graphs, 12 nested `installed-cold` native
+files and three root-level `.obj` inputs remain. `.analysis/gpt-web/`
+drivers/source snapshots/JSON remain; retained `build/gpt-web/` MAPs/logs
+remain. See the tracked
+[second-pass cleanup evidence](evidence/next-agent-storage-prune-20261108b/README.md)
+and [artifact registry](RE_ARTIFACTS.md). The private per-file SHA manifest
+is `.analysis/maintenance-next-agent-20261108b/removed-native.jsonl`; it is
+an audit, not a backup. **Both one-time `--apply` scripts have already
+run; do not rerun them.** Historical PDBs deleted in these passes must be
+rebuilt from their retained driver/source snapshot before use.

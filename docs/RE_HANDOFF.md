@@ -6,8 +6,9 @@
 > Older broad validation instructions apply only when their impact is relevant.
 
 
-**Source and ledgers rechecked 2026-11-08, after `b254c0f` (before this docs-only maintenance).** This is a *working
-resume brief*, not a list of every experiment. The previous 603-line handoff
+**Source and ledgers rechecked 2026-11-08, after source commit
+`c76397f`; subsequent commits in this handoff are docs/storage-only.** This
+is a *working resume brief*, not a list of every experiment. The previous 603-line handoff
 is available with `git show 9996cd6:docs/RE_HANDOFF.md`; the detailed dated
 hypotheses are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and
 [`docs/evidence/`](evidence/). Check live status and hashes again; a source
@@ -267,8 +268,9 @@ These are the latest relevant **whole-owner** baselines, not acceptance:
 | --- | ---: | --- |
 | ANM `ExecuteScript @0x0043EE30` | 9,964 / 9,964 | **9,962/9,964 original ordinary bytes, all 350 original-bound fields**; opcode 91 at `+0x113,+0x115` uses EDX in target, ECX candidate. Fourteen-/five-TU contexts differ. Seventeen new local register/lifetime forms failed. [Current vertex-index word proof](evidence/anm-render9-native-vertex-index-20261107/README.md), [earlier mode-9 proof](evidence/anm-render9-native-vertex-words-20261107/README.md), [original opcode-91 frontier](evidence/anm-variable-stream-native-address-20261107/README.md). |
 | ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020 original bytes, all 189 target-bound fields** in real ECL/Enemy **two-TU** graph; single-TU context can be **6,996/7,020** without a regression. Remaining 23 bytes span FORMAT register/stack homes, LENGTH_SQUARED, POINT_ANGLE, loop/callback. Some `Pop` unsigned pointer forms regress whole Run despite leaf exact. [Current FORMAT native-address proof](evidence/ecl-format-native-text-addresses-20261107/README.md), [FORMAT evidence](evidence/ecl-format-argument-index-wrap-20261107/README.md), [Pop rejection](evidence/ecl-stack-push-native-word-20261107/README.md). |
-| Enemy ECL `DispatchEclInstruction @0x0040E770` | 14,416 / 14,352 | 64-byte size gap, **716 candidate fields only**; not 716 independently target-bound links. Fresh 11-TU source/field graph, 87/87 related exact operand guards. [Current spell-name proof](evidence/enemy-ecl-spell-name-native-words-20261107/README.md), [STOSD proof](evidence/enemy-ecl-pattern-clear-stos-word-20261107/README.md), [earlier pattern/spawn](evidence/enemy-ecl-spawn-pattern-index-words-20261107/README.md). |
-| `EnemyRuntimeUpdate @0x0040DC80` | 2,412 / 2,371 | 69 **candidate** fields; native life SUB, flash DEC and ANM script ADD source semantics installed. Its independently compiled 593-byte target / 606-byte source callback now has native 32-bit countdown and timeout words, still nonexact. [Callback proof](evidence/enemy-callback-native-arithmetic-20261107/README.md). PDB candidate unchanged, not exact. [Script word proof](evidence/enemy-runtime-animation-script-word-20261107/README.md). |
+| Enemy ECL `DispatchEclInstruction @0x0040E770` | 14,416 / 14,416 | **NONEXACT**; 1,252/11,536 comparable bytes, 720 candidate linkage fields (not independently original-bound); 181-byte opcode map matches retail. [Rank-five float-tail proof](evidence/enemy-ecl-rank-five-tail-20261108/README.md). Earlier 14,352/716 measurements below are historical source epochs, not current. |
+| `EnemyRuntimeUpdate @0x0040DC80` | 2,412 / 2,412 | **NONEXACT**; 1,582/2,136 comparable bytes, 69 candidate linkage fields; X/Y/Z base-before-offset x87 order and Z spill at `ESP+0x24`. [Aggregate/vector proof](evidence/enemy-runtime-world-vector-aggregate-20261108/README.md). |
+| `EnemyAdvanceMotion @0x0044C2A0` | 171 / 168 | **NONEXACT**; 133/140 ordinary bytes and all 7 original-bound fields; final stack cleanup differs at `+0xA1..+0xA7`. [Polar/x87 proof](evidence/enemy-advance-motion-x87-polar-20261108/README.md). |
 | `SpawnSingleBullet @0x004067D0` | 1,413 / 1,504 | 44 **candidate** fields; odd-angle index, both 0x7F0-byte pool advances, ANM/effect-script words installed. Nine seven-TU source probes leave entire candidate unchanged; canonical SpawnBulletPattern194 must be replayed in its **different** correct graph. [Final source](evidence/bullet-spawn-script-words-20261107/README.md). |
 | ECL `StartSubroutine` | 550 / 551 | Four candidate call fields; native counted metadata, stack addresses and signed CALL argument-counter word increment restored. Remains nonexact. [New argument-counter proof](evidence/ecl-call-argument-index-wrap-20261107/README.md). [CALL proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md). |
 | ECL `AddScriptData @0x00450220` | 589 / 589 | 2 original CRT call fields; **502/581 comparable ordinary bytes** (510/589 including eight linked operand bytes). 79 ordinary mismatches; native SCPT pointers and merge counter words installed. [Native sorted-record mover](evidence/ecl-sorted-record-native-copy-20261107/README.md), [SCPT](evidence/ecl-serialized-script-native-address-20261107/README.md), [merge counters](evidence/ecl-record-merge-counter-native-20261107/README.md). |
@@ -629,27 +631,27 @@ These are **installed source bytes**, not historical artifacts. The
 lightweight `scripts/repo-python scripts/verify-handoff-pins.py` checks each
 file's SHA-256 and the target; use it before relying on cached native PDBs.
 These values were rechecked with `verify-handoff-pins.py` on 2026-11-08
-at the source epoch after `b254c0f`. Recheck after subsequent source edits.
+after source commit `c76397f`. Recheck after any subsequent source edit.
 
 | Installed source | SHA-256 |
 | --- | --- |
 | `src/GameStatistics.cpp` | `dc31f5c888d68d363571a74457ed3da000c2a36386e790cd9234b0798c229666` |
 | `src/FrontEnd.cpp` | `0bab7e7448c0762a1410d627301652bfc8cfe22e7aaa88b76e979151cdaaf8c6` |
-| `src/AnmManager.cpp` | `4e5cbaad2538269266088d16671a880cae13a4a131fc4f264b0e2c2a5abb29e9` |
+| `src/AnmManager.cpp` | `6ee78dffa74097e62542bc126774fe720be0842c9bde426b86dddcf8bed4cb2c` |
 | `src/AnmManager.hpp` | `7baea2b709d535639ab5a3d44a8bb1adb6eefd9c26b70f50a89fc248c5ce0bc3` |
-| `src/EclVm.cpp` | `f711207c627fa33814337dcd1453ce60aee4158654c22d14f8b8e5b59a60b002` |
+| `src/EclVm.cpp` | `26bf124190f1d515b7b3a3635c6c64e182cb41f9f644d5d0c3863a60e1dfc38a` |
 | `src/EclVm.hpp` | `96764231991c72ff5eebb2d56884fbaafef6406d87d3a751cb53cbf96679d1fc` |
 | `src/Ending.cpp` | `ed016273f068605e633f3faaff6a89556c953ec3a30b724ec52b8c54706a23ff` |
 | `src/ResFile.cpp` | `5784637d77b9bc502f5ad4157aa1f199355a17668cb8a056c43a50dbe4541126` |
-| `src/EnemyEclDispatcher.cpp` | `cebadf0dd493c970699b98b371ebd9792d1dd3c51c26fe49cdc591df0e0d581f` |
-| `src/Enemy.cpp` | `bcbf59bf58b94432c0a1e350433e6715600c5bef6646e814d5b82e935d13f0bb` |
+| `src/EnemyEclDispatcher.cpp` | `85f22f44df1d412068e47ded39d06cae20c929ce1581a27d20d9db79ba958517` |
+| `src/Enemy.cpp` | `c4831dcd88f9df6eaf638569f646b92915a1987bab32b53a3c3d483ec83d1a68` |
 | `src/Enemy.hpp` | `372ef4e3ca68687434092efa8b50573ef6ebcf8aa0fc0bb2e14058d60b85f668` |
 | `src/EnemyLaser.cpp` | `7d5f898f3fe4718ec4d44637b71883f300cd9493771ff2296538baf986adead7` |
 | `src/EnemyLaserType1.hpp` | `dfd675f59897f541739888e99067a4306fcbe67b6773ec184b8baca90984facc` |
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletTransform.cpp` | `05a488b848b78fd97561676973f2e02619d7e28fe403150e59da1e55cf309e24` |
-| `src/BulletManager.cpp` | `2050ed5197807702de5f250db77d6e37358a612cdec323849baaab1d786c7c35` |
+| `src/BulletManager.cpp` | `93c0c4872d708b8816827392763f9dfb77548be15f78ecb8be01a3941499a08d` |
 | `src/Sound.cpp` | `5c66f60e5b6a7e6d8a5e7e5e103bdbd742e981fbc5dd72917ac5457d75cce22b` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |
@@ -668,14 +670,23 @@ The original EXE, VC7.1/Wine `.tools/`, Ghidra database, `_reference/`,
 ignored and do not travel with Git**. Transfer these separately if the
 next agent uses a different machine. Preserve **all** `build/match-linked/`
 canonical graphs, original inputs, private toolchain/database and the
-compressed `.analysis/archive/` registry. A bounded 2026-11-08 cleanup **already removed 3,786** regenerable
-`.obj/.exe/.pdb` trial binaries from 57 allowlisted ignored
-`build/gpt-web/` families, reclaiming **274,890,752 allocated bytes**.
-All canonical `build/match-linked/` images, private archive and source
-snapshots, JSON and MAP/logs remain preserved. The deletion manifest is
-**not** a binary backup; rebuild stale trial images as necessary.
-[Current cleanup proof](evidence/next-agent-storage-prune-20261108/README.md). Consult the
-separately maintained [storage registry](RE_ARTIFACTS.md); old source
-hashes do not validate a restored PDB. Do not cold replay all units for
-handoff/doc/storage maintenance: run `scripts/repo-python scripts/ci.py`
-and `git diff --check` instead. **Never push.**
+compressed `.analysis/archive/` registry.
+
+Two separate 2026-11-08 bounded cleanups removed rebuildable ignored native
+trial outputs. The first removed 3,786 files from 57 roots (274,890,752
+allocated bytes); the second removed 12,051 files from 448 roots and
+reclaimed **886,214,656 allocated bytes (about 845.2 MiB)**, reducing
+`build/gpt-web/` from 1,149,054,976 to 262,840,320 bytes (250.7 MiB).
+The second pass retained three selected enemy witness graphs, 12 nested
+`installed-cold` native files and three root-level `.obj` inputs. It left all
+`.analysis/gpt-web/` drivers/snapshots/JSON, retained `build/gpt-web/`
+MAPs/logs, canonical images, private inputs and archives untouched. See the tracked [second-pass cleanup
+evidence](evidence/next-agent-storage-prune-20261108b/README.md) and
+[storage registry](RE_ARTIFACTS.md). The per-file SHA manifest is private at
+`.analysis/maintenance-next-agent-20261108b/removed-native.jsonl`; it is an
+audit, **not** a backup. Both one-time `--apply` scripts have already run;
+do not rerun them. Rebuild an old trial from its retained driver/source if
+needed. Old source hashes do not validate a restored PDB. Do not cold replay
+all units for handoff/doc/storage maintenance: run
+`scripts/repo-python scripts/ci.py` and `git diff --check` instead.
+**Never push.**

@@ -10,8 +10,8 @@ shape and restores the target-sized function.
 The fresh targeted VC7.1 `/GL` build (the dispatcher TU plus the retained 11
 support LTCG objects) produces a 14,416-byte function, versus 14,352 bytes in
 the previous candidate. Its structural comparison rises from **1,079/11,552**
-comparable bytes with 716 linkage fields to **1,252/11,536** with 720 linkage
-fields. The 181-byte opcode-to-jump-table map remains byte-identical to the
+comparable bytes with 716 candidate linkage fields to **1,252/11,536** with 720 candidate
+linkage fields (not independently original-bound). The 181-byte opcode-to-jump-table map remains byte-identical to the
 retail map. This is a substantial local codegen improvement, not a complete
 match: 1,252 bytes is still a small fraction of the comparable function, and
 the first reported differences begin in the function prologue.

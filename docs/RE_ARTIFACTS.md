@@ -1,6 +1,6 @@
 # TH10 ignored artifacts — live next-agent storage and recovery
 
-**Remeasured 2026-11-08 after the bounded 57-family native-trial cleanup.**
+**Remeasured 2026-11-08 after the second bounded native-trial cleanup.**
 The table immediately below is the current allocation. The subsequent
 2026-11-07 measurements and one-time deletion audits are preserved as
 **historical snapshots**, not current disk usage. Use [RE_HANDOFF.md](RE_HANDOFF.md) for the current
@@ -27,43 +27,71 @@ SHA-256 and VC7.1 profile. Never mix an old PE/PDB with newer source
 hashes, and **never delete the original EXE, private toolchain, canonical
 match-linked graph, Ghidra DB, reference tree or historical archives**.
 
-## Current measured storage and new deletion audit (2026-11-08)
+## Current measured storage and second deletion audit (2026-11-08)
 
-The operator-approved next-agent prune removed only explicitly listed,
-**rebuildable ignored** `.obj/.exe/.pdb` experiment files from
-`build/gpt-web/`. The previous script and its audit were not rerun.
-The new tracked [cleanup evidence](evidence/next-agent-storage-prune-20261108/README.md)
-and [machine-readable summary](evidence/next-agent-storage-prune-20261108/cleanup-summary.json)
-record the **57 allowlisted roots, 3,786 files**, full measured allocated
-reclamation and original/canonical protection checks.
+The second one-time prune removed only rebuildable ignored `.obj/.exe/.pdb`
+outputs from the fixed 451-root `build/gpt-web/` snapshot. It reviewed 448
+roots and preserved three selected enemy witness graphs. The retained tree
+now occupies **262,840,320 allocated bytes (250.7 MiB)**.
 
 | Path | Current allocated bytes (`du -s -B1`) | Approx. MiB | Retention |
 | --- | ---: | ---: | --- |
-| `build/gpt-web/` | **297,750,528** | 284.0 | Regenerable trial outputs; selected witnesses kept |
-| `build/match-linked/` | **128,786,432** | 122.8 | **Preserved complete canonical build graph** |
-| `.analysis/gpt-web/` | **98,545,664** | 94.0 | Preserved drivers, source snapshots, JSON/MAP/logs |
+| `build/gpt-web/` | **262,840,320** | 250.7 | Trial logs/MAPs/sources, three witness graphs, 12 installed-cold files and three root `.obj` inputs |
+| `build/match-linked/` | **128,806,912** | 122.8 | **Preserved complete canonical build graph** |
+| `.analysis/gpt-web/` | **103,477,248** | 98.7 | Preserved drivers, source snapshots, JSON/MAP/logs |
 | `.analysis/archive/` | **216,694,784** | 206.7 | **All historical compressed archives preserved** |
-| `.tools/` | **610,553,856** | 582.3 | **Pinned compiler/toolchain preserved** |
+| `.tools/` | **611,315,712** | 583.0 | **Pinned compiler/toolchain preserved** |
 | `_reference/` | **315,129,856** | 300.5 | **Original research/reference preserved** |
 | `ghidra-project/` | **10,088,448** | 9.6 | **Original private Ghidra project preserved** |
+| `build/pycache/` | **5,312,512** | 5.1 | Regenerable Python bytecode cache |
 
-For `build/gpt-web/` the allocated footprint changed from
-**572,641,280** to **297,750,528** bytes: **274,890,752 bytes reclaimed**
-(**about 262.2 MiB**). The deletion inventory is private ignored
-`.analysis/maintenance-next-agent-20261108/removed-native.jsonl`
+The cleanup removed **12,051 native files** with 869,252,724 payload bytes
+and reclaimed **886,214,656 allocated bytes (845.2 MiB)**, reducing
+`build/gpt-web/` from **1,149,054,976 bytes (1,095.8 MiB)** to the current
+262,840,320 bytes. It retained these three roots intact:
+
+- `build/gpt-web/enemy-runtime-full-ltcg-callers/` — reusable 11-TU base graph;
+- `build/gpt-web/20261108-enemy-runtime-aggregate-sum/` — current best
+  EnemyRuntimeUpdate/EnemyAdvanceMotion witness;
+- `build/gpt-web/20261108-enemy-dispatch-rank-tail-final/` — latest dispatcher
+  witness.
+
+The 448 reviewed roots retain their non-native MAP/log/response/source/JSON
+files where present. Nested `installed-cold`, `accepted-exact` and
+`canonical-cold` paths were excluded. Sixty native files remain: 45 in the
+three selected witness graphs, 12 under two `installed-cold` paths and three
+root-level `.obj` inputs. The separate `.analysis/gpt-web/` driver and source-
+snapshot tree was not pruned. The canonical graph, original target, private
+toolchain, Ghidra/reference inputs, `.analysis/gpt-web/` and every historical
+archive were verified unchanged. The tracked [cleanup evidence](evidence/next-agent-storage-prune-20261108b/README.md)
+and [machine-readable summary](evidence/next-agent-storage-prune-20261108b/cleanup-summary.json)
+record the before/after measurements and protected identities.
+
+The private per-file deletion inventory is
+`.analysis/maintenance-next-agent-20261108b/removed-native.jsonl`
+(SHA-256 `53406dc8c0da3d57bf543859482cdb6950e12a4beb6b25c14735e6636a9100eb`);
+its adjacent `cleanup-result.json` contains the complete private audit.
+No archive was made. **The manifest is an audit, not a backup.** Rebuild a
+removed trial from its retained driver and source snapshot if needed.
+
+The opt-in script
+[`scripts/prune-next-agent-native-20261108b.py`](../scripts/prune-next-agent-native-20261108b.py)
+was dry-run first and **its `--apply` has already completed once**. Do not
+rerun it. It is pinned to the reviewed root inventory and is not a general
+purpose cleanup tool.
+
+## Previous 2026-11-08 first prune (historical; superseded by the second pass)
+
+The earlier same-day bounded pass removed **3,786** regenerable `.obj/.exe/.pdb`
+files from 57 allowlisted ignored `build/gpt-web/` roots. It reclaimed
+**274,890,752 allocated bytes (262.2 MiB)**, taking the tree from
+572,641,280 to 297,750,528 bytes at that earlier point in time. Its private
+manifest is `.analysis/maintenance-next-agent-20261108/removed-native.jsonl`
 (SHA-256 `a309a6e1c748e2a388a4d5c1f3a0f54f8f3600018e1cb27edc187a0c652a539f`);
-its complete audit is the adjacent `cleanup-result.json`.
-No archive was made because these variants are independently regenerable.
-**The manifest is not a backup.** Dated `build/gpt-web/*.pdb` and `.exe`
-references in old evidence can now describe deleted files: rebuild before
-claiming a current source/PE/PDB identity.
-
-The new opt-in script
-[`scripts/prune-next-agent-native-20261108.py`](../scripts/prune-next-agent-native-20261108.py)
-is dry-run by default and **already applied once**. Do not rerun `--apply`.
-It is not a general-purpose tool to delete other experiment directories.
-The original target, canonical exact owners, all pinned inputs and nine
-historical archives were explicitly protected.
+its adjacent `cleanup-result.json` is the corresponding receipt. Its tracked [historical note](evidence/next-agent-storage-prune-20261108/README.md)
+records that pass. The first script
+`scripts/prune-next-agent-native-20261108.py` was already applied; do not
+rerun it. This historical snapshot is not the current allocation.
 
 ## Previous 2026-11-07 allocation snapshot (historical; superseded)
 

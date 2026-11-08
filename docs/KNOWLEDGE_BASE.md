@@ -20,8 +20,9 @@ in the real 12-source Enemy/ANM/ECL/Player LTCG graph. Its candidate is
 ordinary bytes matching in the common prefix. The only seven ordinary
 mismatches are the final `add esp,8; fstp; add esp,0x18` versus
 `fstp; add esp,0x20` cleanup schedule. The leaf remains **NONEXACT** and
-receives no exact ledger credit. The 2,412-byte EnemyRuntimeUpdate parent
-remains at **1,578/2,136** comparable bytes. Seven selected existing Enemy
+receives no exact ledger credit. The 2,412-byte EnemyRuntimeUpdate
+parent now reaches **1,582/2,136** comparable bytes in the later
+aggregate-sum graph. Seven selected existing Enemy
 owners cold-pass **933/933** bytes; CI and diff-check pass. No full replay.
 [Evidence](evidence/enemy-advance-motion-x87-polar-20261108/README.md).
 
@@ -77,16 +78,19 @@ owners, totaling **1,991/1,991** and **539/539**. Newly admitted
 
 ## 2026-11-08 Audited next-agent storage cleanup
 
-The current remeasured allocation for ignored `build/gpt-web/` is
-**297,750,528 bytes**, down from 572,641,280, after deleting **3,786**
-regenerable native trial `.obj/.exe/.pdb` files under 57 explicitly
-reviewed family roots. Exact allocated reclamation **274,890,752 bytes**.
-All `build/match-linked/` canonical graphs, target/toolchain, nine
-historical compressed archives, Ghidra and references, trial drivers,
-source snapshots, JSON/MAP/logs were protected. The private SHA audit is
-`.analysis/maintenance-next-agent-20261108/removed-native.jsonl`; old
-evidence references to deleted PDBs are historical, not existing files.
-[Current proof](evidence/next-agent-storage-prune-20261108/README.md).
+The latest remeasured allocation for ignored `build/gpt-web/` is
+**262,840,320 bytes (250.7 MiB)**. A second bounded pass removed **12,051**
+regenerable `.obj/.exe/.pdb` outputs from 448 explicitly reviewed roots,
+reclaiming **886,214,656 allocated bytes** and reducing the tree from
+1,149,054,976 bytes. Three selected enemy witness graphs, all canonical
+`build/match-linked/` graphs, target/toolchain, nine historical compressed
+archives, Ghidra/reference inputs, `.analysis/gpt-web/` trial
+drivers/source snapshots/JSON and retained `build/gpt-web/` MAPs/logs
+were preserved. The 12 nested `installed-cold` native files and three
+root-level `.obj` inputs also remain. The private per-file SHA
+audit is `.analysis/maintenance-next-agent-20261108b/removed-native.jsonl`;
+it is not a backup. The earlier same-day 3,786-file pass is recorded in
+`.analysis/maintenance-next-agent-20261108/`. [Current tracked proof](evidence/next-agent-storage-prune-20261108b/README.md).
 
 ## 2026-11-08 BulletManager native draw-bucket slot addressing
 
@@ -11147,7 +11151,8 @@ array consumers and ABI. In an actual 11-source VC7.1 /GL graph the complete
 `EnemyBeginSpell` candidate remains 2,424 bytes /108 bound field positions.
 The dispatcher candidate was 14,352 bytes /716 linkage fields in the earlier
 graph; the 2026-11-08 rank-five-tail reconstruction now yields 14,416 bytes
-and 720 linkage fields, still NONEXACT. Later conversion of the 199-byte exact
+and 720 candidate linkage fields (not independently original-bound),
+still NONEXACT. Later conversion of the 199-byte exact
 `EnemyCancelBulletRecord` and the enclosing batch cancel loop to genuine
 `BulletRuntimeView` fields does not disturb either whole candidate. These
 are preserved candidate-codegen statements, not complete target exactness
@@ -11165,7 +11170,7 @@ of `ESP+0x24` (1,580/2,136 comparable bytes). Replacing that constructor with
 a plain three-float aggregate and an X/Y/Z aggregate initializer keeps the
 same 0x18-byte local frame and 2,412-byte function extent, matches the target
 Z spill home `ESP+0x24`, and improves the comparison to **1,582/2,136** bytes
-with 69 linkage fields. The local vector block `+0x246..+0x28E` now matches
+with 69 candidate linkage fields. The local vector block `+0x246..+0x28E` now matches
 in instruction order and stack home; the remaining function differences
 begin at `+0x49D`. This is a natural C++ codegen hypothesis, not proof of the
 original source declaration or full-function exactness. See
@@ -11180,7 +11185,8 @@ original source declaration or full-function exactness. See
 fields; inlining the natural rank-1 `ReadFloatArgument(1)` plus
 `EclVmContext::ResolveFloat(0)` result path for
 `ENEMY_ECL_SELECT_FLOAT_BY_RANK_5` produces 1,252/11,536 comparable bytes
-and 720 linkage fields. The 181-byte opcode-to-jump-table map remains
+and 720 candidate linkage fields (not independently original-bound).
+The 181-byte opcode-to-jump-table map remains
 byte-identical to retail. This is still NONEXACT: the comparable-byte match
 is limited, and `ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK` still differs in x87
 operand order and local spill homes (`ESP+0x0C/+0x28` versus retail

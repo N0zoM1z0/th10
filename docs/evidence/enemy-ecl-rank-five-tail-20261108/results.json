@@ -198,5 +198,6 @@
     "matched_comparable_bytes": 1079,
     "comparable_bytes": 11552,
     "linkage_fields": 716
-  }
+  },
+  "linkage_fields_are_candidate_only": true
 }

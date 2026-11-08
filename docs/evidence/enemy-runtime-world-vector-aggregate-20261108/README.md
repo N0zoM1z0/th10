@@ -24,7 +24,7 @@ hypothesis. It preserves the target's X/Y/Z x87 `fld`/`fadd` order and moves
 the Z-sum spill from candidate `ESP+0x2C` to the target's `ESP+0x24`, without
 changing the 2,412-byte function extent or the 0x18-byte local frame. The
 scoped structural comparison rises from 1,580/2,136 to **1,582/2,136**
-comparable bytes, with 69 linkage fields. The vector block at `+0x246..+0x28E`
+comparable bytes, with 69 candidate linkage fields (not independently original-bound). The vector block at `+0x246..+0x28E`
 now matches the target instruction sequence and stack slot; the call relocation
 is graph-specific.
 
