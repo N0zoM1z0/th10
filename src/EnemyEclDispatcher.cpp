@@ -3037,8 +3037,12 @@ dispatch_select_bullet_count_low:
       iVar27 = 0;
       goto dispatch_rank_float_tail_a;
     }
-    iVar27 = 1;
-    goto dispatch_rank_float_tail_b;
+    fVar19 = ReadFloatArgument(1);
+    iVar26 = reinterpret_cast<int>(owner);
+    pfVar15 = reinterpret_cast<EclVmContext *>(
+        *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
+    *pfVar15 = (float)fVar19;
+    return 0;
 dispatch_rank_float_tail_b:
     fVar19 = ReadFloatArgument(iVar27);
 dispatch_store_float_result:
