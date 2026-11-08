@@ -56,6 +56,18 @@ seven previous exact text owners **3,030/3,030** including the new
 **554-byte** main renderer with all 35 target fields. No new exact
 credit. [Evidence](evidence/text-render-alternate-stack-scope-20261108/README.md).
 
+## Bullet manager native 2,000-entry pool cursor and active count (2026-11-08)
+
+The 249-byte complete original `BulletManagerView::UpdateBullets` walks
+2,000 entries at **0x7F0-byte** strides. The source now models this as a
+typed low-32-bit pointer advance rather than unchecked `++bullet`, and
+publishes the unsigned-word increment of the signed activeBulletCount
+field in the target's native INC form. Four independent real `/GL /GS`
+source variants preserve **249/249** UpdateBullets and **40/40** callback
+with all original fields. Five selected already-exact bullet functions
+cold-pass **665/665** in two original graph families, no new exact credit.
+[Evidence](evidence/bullet-manager-native-pool-cursor-20261108/README.md).
+
 ## EnemySpawn native active/spawn counter words (2026-11-08)
 
 Original **577-byte EnemySpawn** now increments the signed manager
@@ -539,7 +551,7 @@ All values were reverified at checkpoint `6f1b83c`.
 | `src/LaserType1.cpp` | `b7f759886f4897a9c1e2cd8fb99007f045e932d7a3826417ecd194f9006ead51` |
 | `src/ItemManager.cpp` | `b029539ab91eba926525a1de3dcb6baaa05d3b6c53e181702b325b8a4ad32fcc` |
 | `src/BulletTransform.cpp` | `05a488b848b78fd97561676973f2e02619d7e28fe403150e59da1e55cf309e24` |
-| `src/BulletManager.cpp` | `9a0f09a620cf03e38105fdc14e11baca9ae40e59444540286032862f08075348` |
+| `src/BulletManager.cpp` | `5e77f0933cf738a6bfeff6826ebdb5e7bcb485b026c7985d8239c40ffadcc196` |
 | `src/Sound.cpp` | `977faf3e332e03a8d1ef3200a1cfd047147c464b6b9f295d243e4aed5ce2bc02` |
 | `src/StageCameraDefaults.cpp` | `4ac0d9c1eeb14e1763f5ed642e50895e5081fdf2f41dcda819a6ca7ee7255fb8` |
 | `src/StageScript.hpp` | `3a1a5402fdd969c150844102680d007f1080f6e38e44f429e70f0594b537bf5b` |

@@ -9,6 +9,19 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 BulletManager UpdateBullets native 0x7F0 cursor and count
+
+The main 249-byte `BulletManagerView::UpdateBullets` now advances its
+fixed 2,000-element bullet cursor by the target's 0x7F0-byte i386 word
+rather than abstract C++ pointer increment, and performs a native 32-bit
+wrapped increment on signed `activeBulletCount`. Four independent whole
+VC7.1 `/GL /GS` variants reproduce **249/249** complete original bytes
+and all 6 fields, with the **40/40** callback also exact. Installed-source
+selected cold replay across two graph families protects five previously
+accepted bullet functions, **665/665 original bytes and 22/22 fields**.
+No new exact codegen ledger credit or runtime/product claim.
+[Evidence](evidence/bullet-manager-native-pool-cursor-20261108/README.md).
+
 ## 2026-11-08 EnemySpawn native active-enemy and spawn counter words
 
 `EnemySpawn` now uses Win32 modulo-32-bit additions for manager

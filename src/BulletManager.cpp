@@ -568,7 +568,11 @@ int BulletManagerView::UpdateBullets()
     drawBucketTails[0] = 0;
 
     BulletRuntimeView *bullet = &bullets[0];
-    for (int remaining = 2000; remaining != 0; --remaining, ++bullet) {
+    // The original i386 walks the fixed bullet pool by 0x7f0-byte words.
+    for (int remaining = 2000; remaining != 0;
+         --remaining, bullet = reinterpret_cast<BulletRuntimeView *>(
+             reinterpret_cast<unsigned int>(bullet) +
+             sizeof(BulletRuntimeView))) {
         if (bullet->state == 0)
             continue;
 
@@ -587,7 +591,8 @@ int BulletManagerView::UpdateBullets()
             drawBucketHeads[bucket] = bullet;
         drawBucketTails[bullet->drawBucketIndex] = bullet;
         bullet->nextInDrawBucket = 0;
-        ++activeBulletCount;
+        activeBulletCount = static_cast<int>(
+            static_cast<unsigned int>(activeBulletCount) + 1u);
         // Original stateTimer increment is a native 32-bit word, even
         // when the signed counter reaches INT_MAX.
         AnmVmTimerView &timer = bullet->stateTimer;
