@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
+# Resolve Wine through Factory while retaining repository-owned state.
+factory_repo_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+export PATH="$factory_repo_root/.tools/factory-bin:$PATH"
 set -euo pipefail
 
 repo_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 msvc_root=${TH10_MSVC71_ROOT:-$repo_root/.tools/msvc710-sp1}
-wine_prefix=${TH10_WINEPREFIX:-${WINEPREFIX:-$repo_root/.tools/wineprefix-msvc710-sp1}}
+wine_prefix=${TH10_WINEPREFIX:-$repo_root/.tools/wineprefix-msvc710-sp1}
 wine_bin=${WINE:-wine}
 
 if [[ $# -lt 3 ]]; then

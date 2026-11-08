@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from shared_runtime import command as shared_command
+
 import argparse
 import os
 from pathlib import Path
@@ -240,7 +242,7 @@ def run_headless(
 ) -> None:
     ghidra_home, analyzer = find_analyzer()
     command = [
-        str(analyzer),
+        *shared_command("ghidra"),
         str(PROJECT_DIR),
         PROJECT_NAME,
         *arguments,
