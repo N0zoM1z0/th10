@@ -757,8 +757,6 @@ struct EnemyFloat3SumView
     float x;
     float y;
     float z;
-    EnemyFloat3SumView(float zValue, float yValue, float xValue)
-        : x(xValue), y(yValue), z(zValue) {}
 };
 static AnmFloat3View operator-(
     const EnemyFloat3SumView &sum, const AnmFloat3View &position)
@@ -874,10 +872,10 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         *reinterpret_cast<const AnmFloat3View *>(&enemy->offsetMotion.position);
     const AnmFloat3View &worldPosition =
         *reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position);
-    const EnemyFloat3SumView sum(
-        baseZ + offsetPosition.z,
+    const EnemyFloat3SumView sum = {
+        baseX + offsetPosition.x,
         baseY + offsetPosition.y,
-        baseX + offsetPosition.x);
+        baseZ + offsetPosition.z};
     *reinterpret_cast<AnmFloat3View *>(&enemy->worldMotion.velocity) = sum - worldPosition;
     EnemyAdvanceMotion(&enemy->worldMotion);
 
