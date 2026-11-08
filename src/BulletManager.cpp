@@ -550,6 +550,15 @@ tickTimer:
 }
 
 
+// This target's bucket index is an unchecked native 32-bit word, not
+// an abstract C++ in-range array offset.
+template <class T> static __forceinline T *BulletBucketAtWord(T *base, int index)
+{
+    return reinterpret_cast<T *>(
+        reinterpret_cast<unsigned int>(base) +
+        static_cast<unsigned int>(index) * sizeof(T));
+}
+
 // Target 0x004065C0. Retail LTCG keeps the manager in private ESI.
 int BulletManagerView::UpdateBullets()
 {
@@ -585,11 +594,12 @@ int BulletManagerView::UpdateBullets()
         }
 
         int bucket = bullet->drawBucketIndex;
-        if (drawBucketHeads[bucket] != 0)
-            drawBucketTails[bucket]->nextInDrawBucket = bullet;
+        if (*BulletBucketAtWord(&drawBucketHeads[0], bucket) != 0)
+            (*BulletBucketAtWord(&drawBucketTails[0], bucket))->nextInDrawBucket = bullet;
         else
-            drawBucketHeads[bucket] = bullet;
-        drawBucketTails[bullet->drawBucketIndex] = bullet;
+            *BulletBucketAtWord(&drawBucketHeads[0], bucket) = bullet;
+        *BulletBucketAtWord(&drawBucketTails[0],
+            bullet->drawBucketIndex) = bullet;
         bullet->nextInDrawBucket = 0;
         activeBulletCount = static_cast<int>(
             static_cast<unsigned int>(activeBulletCount) + 1u);

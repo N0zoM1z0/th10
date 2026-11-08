@@ -9,6 +9,18 @@ artifact retention and next steps, use [RE_HANDOFF.md](RE_HANDOFF.md),
 [PROGRESS.md](PROGRESS.md) and [RE_ARTIFACTS.md](RE_ARTIFACTS.md).
 
 
+## 2026-11-08 BulletManager native draw-bucket slot addressing
+
+The six-head/six-tail `UpdateBullets` draw buckets now use a typed
+low-32-bit Win32 index-times-four helper for all three uses of the
+unchecked per-bullet bucket index. Five separately native-compiled
+natural C++ trials and the final installed-source original-bound replay
+preserve the **249/249** manager body with all **6** target fields, the
+**40/40** callback with 2 fields, and three related exact bullet helpers.
+Selected five-unit cold replay is **665/665** original bytes,
+**22/22** fields. No new exact codegen credit or runtime guarantee.
+[Evidence](evidence/bullet-drawbucket-native-slots-20261108/README.md).
+
 ## 2026-11-08 BulletManager UpdateBullets native 0x7F0 cursor and count
 
 The main 249-byte `BulletManagerView::UpdateBullets` now advances its
