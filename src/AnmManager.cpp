@@ -3042,8 +3042,10 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant0(
     int scriptIndex, const AnmFloat3View *position)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
-    vm->flags35C |= 0x40000000u;
-    vm->renderLayer = 0;
+    unsigned int flags = vm->flags35C;
+    unsigned int *renderLayer = &vm->renderLayer;
+    *renderLayer = 0;
+    vm->flags35C = flags | 0x40000000u;
     vm->positionOffset.x = position->x + 224.0f;
     vm->positionOffset.y = position->y + 16.0f;
     vm->positionOffset.z = position->z;
@@ -3076,8 +3078,10 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant1(
     int scriptIndex, const AnmFloat3View *position)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
-    vm->flags35C |= 0x40000000u;
-    vm->renderLayer = 0;
+    unsigned int flags = vm->flags35C;
+    unsigned int *renderLayer = &vm->renderLayer;
+    *renderLayer = 0;
+    vm->flags35C = flags | 0x40000000u;
     vm->positionOffset.x = position->x + 224.0f;
     vm->positionOffset.y = position->y + 16.0f;
     vm->positionOffset.z = position->z;
@@ -3110,8 +3114,10 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant2(
     int scriptIndex, const AnmFloat3View *position)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
-    vm->flags35C |= 0x40000000u;
-    vm->renderLayer = 0;
+    unsigned int flags = vm->flags35C;
+    unsigned int *renderLayer = &vm->renderLayer;
+    *renderLayer = 0;
+    vm->flags35C = flags | 0x40000000u;
     vm->positionOffset.x = position->x + 224.0f;
     vm->positionOffset.y = position->y + 16.0f;
     vm->positionOffset.z = position->z;
@@ -3144,8 +3150,10 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant3(
     int scriptIndex, const AnmFloat3View *position)
 {
     AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
-    vm->flags35C |= 0x40000000u;
-    vm->renderLayer = 0;
+    unsigned int flags = vm->flags35C;
+    unsigned int *renderLayer = &vm->renderLayer;
+    *renderLayer = 0;
+    vm->flags35C = flags | 0x40000000u;
     vm->positionOffset.x = position->x + 224.0f;
     vm->positionOffset.y = position->y + 16.0f;
     vm->positionOffset.z = position->z;

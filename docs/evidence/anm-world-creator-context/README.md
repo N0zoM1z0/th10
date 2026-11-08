@@ -1,111 +1,125 @@
-# ANM world-creator context review (2026-10-19)
+# ANM world-creator and shared-start context (2026-11-08)
 
-Scope: four complete118-byte world-coordinate VM creators and the shared
-203-byte `InitializeAndExecuteScriptIndex`. **None is exact. All source/API
-trials are restored; this checkpoint adds zero exact bytes.**
+Scope: four complete 118-byte world-coordinate VM creators and the shared
+203-byte `InitializeAndExecuteScriptIndex`. The four world creators are now
+**canonical exact linked-PE units**. The shared start helper remains open.
 
-| Owner | Target | Complete size |
-| --- | --- | ---: |
-| CreateVmAtWorldVariant0 | 0x448DB0 | 118 |
-| CreateVmAtWorldVariant1 | 0x449010 | 118 |
-| CreateVmAtWorldVariant2 | 0x448EE0 | 118 |
-| CreateVmAtWorldVariant3 | 0x449140 | 118 |
-| InitializeAndExecuteScriptIndex | 0x43E710 | 203 |
+| Owner | Target | Complete size | Current result |
+| --- | --- | ---: | --- |
+| CreateVmAtWorldVariant0 | 0x448DB0 | 118 | exact |
+| CreateVmAtWorldVariant1 | 0x449010 | 118 | exact |
+| CreateVmAtWorldVariant2 | 0x448EE0 | 118 | exact |
+| CreateVmAtWorldVariant3 | 0x449140 | 118 | exact |
+| InitializeAndExecuteScriptIndex | 0x43E710 | 203 | unresolved (202/203 prior candidate) |
 
 ## Target observations
 
-Local hash-attested Ghidra agrees with all four full creator extents, including
-three functions temporarily defined inside a rolled-back transaction under
-`-readOnly`. Every creator receives position in EDI, uses three stack words
-for resource, hidden ID result storage and index, and ends in RET12. The target
-captures allocated VM in ESI, reads its flags, clears render layer, ORs bit30
-and stores flags. It adds binary32 constants224/16 to position X/Y, copies Z,
-starts the script, reloads the global manager and registers the VM in the
-corresponding list. Resource/VM/index reach the shared start helper through
-ECX/EAX/EBX. Source class names and original compiler/TU ownership remain unknown.
+The target-attested `target-facts.json` pins all four full creator extents,
+code hashes, seven address fields per function, the translation constants and
+the shared helper. Every creator receives its position in EDI, uses three
+stack words for resource, hidden `AnmVmIdView` return storage and script index,
+and ends in RET12. The allocated VM is captured in ESI. The target's critical
+schedule is: load `flags35C` at +0x14, store zero to `renderLayer` at +0x22,
+OR bit 30 at +0x29, then store flags at +0x2E. It adds binary32 constants
+224.0f and 16.0f to position X/Y, copies Z, starts the script, reloads the
+manager and inserts the VM into the variant-specific list.
 
-`target-facts.json` pins the target, mapped `.text` attestation, complete code
-hashes and each creator's seven independently reviewed address fields. The
-translation constant payloads are checked separately. Existing reviewed
-boundaries/origins are unchanged. Ghidra's incomplete incoming-reference lists
-are not treated as proof that a sibling has no callers.
+## Natural C++ reconstruction that closes all four leaves
 
-## Complete strict candidates
+The previous direct source sequence emitted the flag OR/store before clearing
+the layer, leaving 13 ordinary bytes different in every complete function.
+The following ordinary C++ expression shape makes the compiler preserve the
+observed alias-sensitive schedule without inline assembly, volatile accesses,
+byte padding or target-specific intrinsics:
 
-`candidate-recipes.toml` is explicitly **noncanonical**. It binds all28 creator
-fields and all four shared-helper fields to independently reviewed target
-addresses. The existing strict linked comparator validates every field and
-decodes every complete extent, but correctly returns `mismatch` for all five.
-`strict-candidate-results.json` records the full results.
+```cpp
+unsigned int flags = vm->flags35C;
+unsigned int *renderLayer = &vm->renderLayer;
+*renderLayer = 0;
+vm->flags35C = flags | 0x40000000u;
+```
 
-In the existing single-TU `/GL` screen-creator family, each creator has the
-target118-byte size and private interface. Thirteen ordinary bytes differ
-inside the flags/layer scheduling interval: source-generated OR/store precedes
-layer zero, while the target writes layer zero between flag load and OR/store.
-Full replay therefore gives105/118 bytes for each creator, with all seven
-fields accounted for. This is neither exactness nor partial-owner credit.
+This is applied identically in all four `CreateVmAtWorldVariant0..3`
+implementations in `src/AnmManager.cpp`. The important property is not a
+forced statement-order trick: taking the address of the adjacent member gives
+MSVC's alias analysis a real pointer alias to account for while the earlier
+flags value remains live. The emitted sequence is byte-identical to the
+reviewed target sequence.
 
-The shared helper has the target203-byte size and202/203 strict replay bytes.
-Its sole ordinary difference at +0x27 changes `MOV EDX,EDI` to `MOV ECX,EDI`
-before calling Initialize. This context uses Initialize itself as the linker
-entry; its emitted275-byte receiver-ECX body differs from target273/EDX.
-Binding the callee's address cannot waive the unlike receiver instruction.
-No whole-product claim can combine these separate-context observations.
+Bounded source experiments were run against the existing single-TU VC7.1
+SP1 `/GL` screen-family recipe before promoting the change:
 
-The four existing screen creators95 each and SetupVertexBuffer472 pass
-**852 complete bytes and42 target-bound fields** in that actual retained image.
-Their recipes are explicitly adapted as same-image guards; canonical manifests
-and existing exact totals are unchanged.
+- The original `flags |= bit; layer = 0;` shape: 13 ordinary differences per
+  118-byte creator.
+- Merely moving the layer assignment before the flag expression, or using
+  several scalar flag-local forms: still 13 differences.
+- Taking a pointer to the layer before loading flags, or using a byte-offset
+  pointer: 18 differences due to the compiler scheduling the layer store too
+  early.
+- Loading flags first, then taking and writing the member pointer, then
+  storing the updated flags: zero ordinary differences for all four leaves.
+- A byte-offset pointer alias and `memset` variant were also checked; the
+  member pointer form above is the simplest natural expression with the same
+  exact output.
 
-## Bounded controls
+## Canonical replay
 
-All builds are cold VC7.1 SP1 CL13.10.6030 / LINK7.10.6030 diagnostic links.
-All inputs retain `/GL`; unresolved anchors make these images nonrunnable.
-`native-summary.json` records the exact entry, profile, support order, frozen
-CPP/quoted-header inputs, image identities and complete-owner diagnostics.
+Four canonical units are now declared in `config/match-units.toml`:
+`anm-create-vm-world-variant0..3`. Each unit is a complete 118-byte
+PDB-section contribution in a cold linked PE built with the pinned VC7.1 SP1
+CL13.10.6030 / LINK7.10.6030 `/GL` profile and the existing
+`AnmVmView::Initialize` entry context. Every unit exhaustively accounts for
+seven independently reviewed DIR32/REL32 fields:
 
-| Context/control | World creator /118 | Shared helper /203 | Result |
-| --- | ---: | ---: | --- |
-| Four-TU ExecuteScript `/GL /GS` | 116 | 197 | Private registers differ |
-| Same, layer write moved before flags | 116 | 197 | Entire four creator bodies byte-identical; restored |
-| Real EnemyKillAll plus four ANM TUs | 116 | 197 | Creator work inlined into caller; caller404/182 |
-| Above, retain observed world0 call boundary | 116 | 197 | Caller183/182, creators unchanged; annotation restored |
-| Existing single-TU screen-family profile/entry | 118 | 203 | Thirteen and one ordinary byte differences respectively |
-| Same, actual flags local before layer write | 118 | 203 | Same diagnostic mismatch counts; restored |
-| Same, existing useUnitSpeed bitfield | 118 | 203 | Same diagnostic mismatch counts; restored |
-| Same profile, real screen0 creator as entry | 116 | 197 | Initialize273 raw-equal, helper coalesces VM into EDX |
-| Above, ordinary resource/VM/index free helper | 116 | 197 | No improvement; all five API/source files restored |
+| Field offset | Kind | Target |
+| ---: | --- | ---: |
+| +0x09 | DIR32 | g_AnmRenderManagerView @ 0x491C10 |
+| +0x0E | REL32 | AllocateVm @ 0x449950 |
+| +0x38 | DIR32 | 224.0f @ 0x470B4C |
+| +0x47 | DIR32 | 16.0f @ 0x470B48 |
+| +0x5D | REL32 | InitializeAndExecuteScriptIndex @ 0x43E710 |
+| +0x63 | DIR32 | g_AnmRenderManagerView @ 0x491C10 |
+| +0x6C | REL32 | AddVmVariantN (variant-specific) |
 
-The four-TU graph is primary AnmManager, then RandomMath, AnmVmCreate and
-AnmVmId, using the already declared ExecuteScript `/GL /GS` recipe. The real
-caller graph is primary GuiMessage/EnemyKillAll, then those four TUs with the
-same profile. The retained single-TU recipe is copied from the existing
-`anm-create-vm-screen-variant0` family: `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc
-/GL`, entry `?Initialize@AnmVmView@@QAEXXZ`, no support inputs. It is an existing
-bounded compiler context, not evidence for original production flags.
+Two independent focused cold replays of the four canonical units returned
+`exact` for all four functions: 118/118 compared bytes, complete decoding,
+complete relocation normalization, and no ordinary-byte differences. The
+first replay image SHA-256 was
+`a3b2c449995259f10da825d3a1eb36a25f145f2fd795d4d5a27f201cf19e421c`; the
+second was
+`88ef117ba5b5ed3b194afcbe3f6d41a7df0100508f05932da66aa01dcc07c692`.
+The image identity varies between cold link invocations, but all four complete
+function comparisons and all seven target-bound fields passed on both runs.
 
-The MIT reference supplied source-shape hypotheses for world0 and the start
-helper. Its volatile world accesses, asm interfaces and unused leading
-initializer argument are not adopted. The free-helper control used only three
-real operands and preserved the complete maintained body; neither class
-ownership nor parameter spelling is established by the experiment.
+The four existing 95-byte screen creators also replayed exact in the same
+focused source graph (380/380 bytes, five fields each). This does not imply
+that the entire executable or every incoming caller is closed. The linker
+harness intentionally contains unresolved anchors and is diagnostic, not a
+runnable product image. The original production translation-unit ownership
+and whole-image closure remain separate questions.
 
-Do not repeat these store-order, bitfield, outlining, member/free-function or
-entry controls without additional TH10 source/alias/lifetime/caller evidence.
-The target schedule and the coupled Initialize/start-helper interfaces remain
-open. Rotate to another complete authored owner instead of granting near-match
-credit or introducing dummy operands, volatile accesses or byte padding.
+## Shared helper remains open
 
-## Reproduction and checkpoint
+The shared helper is still 203 bytes. Its prior single-TU candidate had one
+ordinary receiver-register difference at +0x27: target `MOV EDX,EDI`, candidate
+`MOV ECX,EDI`, before calling `Initialize`. Matching the callee's address does
+not waive the receiver instruction. Do not mark this helper exact or combine
+its near-match with the four exact creators.
 
-Use `ltcg_link.cold_link` with the recorded single-TU profile/entry and output
-directory from `candidate-recipes.toml`. Then import
-`scripts/compare-linked-function.py`, set its `UNITS_MANIFEST` to this candidate
-manifest and call `compare_unit` for each listed unit. All five must currently
-return `mismatch`, with complete field normalization. The manifest is deliberately
-outside `config/match-units.toml` and `config/matches.csv`.
+## Reproduction and next work
 
-Target/toolchain/tracking checks, focused strict candidates/guards, generated
-progress, public CI and whitespace checks pass. Superseded controls are removed;
-one ignored single-TU image remains for the unresolved claim.
-Native product, runtime, dual-Oracle semantic and port gates remain open.
+Run only the touched leaves when iterating:
+
+```sh
+scripts/repo-python scripts/replay-exact-units.py --json \
+  --unit anm-create-vm-world-variant0 \
+  --unit anm-create-vm-world-variant1 \
+  --unit anm-create-vm-world-variant2 \
+  --unit anm-create-vm-world-variant3
+```
+
+The four source implementations and canonical recipes are retained. Next
+ANM work should attack the shared 203-byte helper with real caller/receiver
+and lifetime evidence, while the boss-side `EnemyBeginSpell` work should
+continue independently. Do not repeat the already-negative store-order,
+bitfield, outlining or free-helper experiments without new evidence.
