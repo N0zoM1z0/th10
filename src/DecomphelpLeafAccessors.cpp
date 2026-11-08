@@ -129,10 +129,13 @@ __declspec(noinline) float *EnemyWorldPositionXPointer(EnemyFullObjectView *enem
     return &enemy->runtime.worldMotion.position.x;
 }
 
-// 0x408830: this->array_30[index]
-__declspec(noinline) u32 Fn00408830(i32 index, u8 *pThis)
+// 0x408830: read one raw word from AnmVmView::angularVelocity at +0x30.
+// The view offset is asserted below; no callers prove the original owner.
+typedef char AnmVmAngularVelocityAt030[
+    (offsetof(AnmVmView, angularVelocity) == 0x30) ? 1 : -1];
+__declspec(noinline) u32 ReadAnmVmAngularVelocityWord(i32 index, AnmVmView *vm)
 {
-    return ((u32 *)(pThis + 0x30))[index];
+    return reinterpret_cast<u32 *>(&vm->angularVelocity)[index];
 }
 
 // 0x408840: clear bit 0 of StageScriptView::flags at +0x2a18.

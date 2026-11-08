@@ -740,7 +740,7 @@ th10::leaf::SetAnmVmPendingInterrupt
 th10::leaf::Fn00408800
 th10::leaf::Fn00408810
 th10::leaf::EnemyWorldPositionXPointer
-th10::leaf::Fn00408830
+th10::leaf::ReadAnmVmAngularVelocityWord
 th10::leaf::ClearStageScriptFlag0
 th10::leaf::SetStageScriptFlag0
 th10::leaf::Fn004088B0
