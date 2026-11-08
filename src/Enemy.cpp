@@ -752,6 +752,21 @@ void EnemyAdvanceMotion(EnemyMotionView *motion)
 // update owner. Allocation/constructor evidence proves that the sole target
 // argument points to the 0x14DC-byte tail at full object +0x103C. The target
 // body independently loads that pointer from the stack and returns with RET 4.
+struct EnemyFloat3SumView
+{
+    float x;
+    float y;
+    float z;
+    EnemyFloat3SumView(float zValue, float yValue, float xValue)
+        : x(xValue), y(yValue), z(zValue) {}
+};
+static AnmFloat3View operator-(
+    const EnemyFloat3SumView &sum, const AnmFloat3View &position)
+{
+    return AnmFloat3View(
+        sum.x - position.x, sum.y - position.y, sum.z - position.z);
+}
+
 int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
 {
     if ((enemy->flags & 0x400u) != 0)
@@ -852,10 +867,18 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     }
     EnemyAdvanceMotion(baseMotion);
 
-    *reinterpret_cast<AnmFloat3View *>(&enemy->worldMotion.velocity) =
-        (*reinterpret_cast<const AnmFloat3View *>(&enemy->offsetMotion.position) +
-         *reinterpret_cast<const AnmFloat3View *>(&baseMotion->position)) -
+    const volatile float &baseX = baseMotion->position.x;
+    const volatile float &baseY = baseMotion->position.y;
+    const volatile float &baseZ = baseMotion->position.z;
+    const AnmFloat3View &offsetPosition =
+        *reinterpret_cast<const AnmFloat3View *>(&enemy->offsetMotion.position);
+    const AnmFloat3View &worldPosition =
         *reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position);
+    const EnemyFloat3SumView sum(
+        baseZ + offsetPosition.z,
+        baseY + offsetPosition.y,
+        baseX + offsetPosition.x);
+    *reinterpret_cast<AnmFloat3View *>(&enemy->worldMotion.velocity) = sum - worldPosition;
     EnemyAdvanceMotion(&enemy->worldMotion);
 
     if ((enemy->flags & 0x200u) != 0)

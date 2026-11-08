@@ -11154,3 +11154,18 @@ or proof of source provenance. See
 [evidence/enemy-stage-animation-resource-typed-20261105/README.md](evidence/enemy-stage-animation-resource-typed-20261105/README.md),
 [evidence/enemy-cancel-typed-runtime-record-20261105/README.md](evidence/enemy-cancel-typed-runtime-record-20261105/README.md), and
 [evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md](evidence/enemy-cancel-all-typed-bullet-loop-20261105/README.md).
+
+## 2026-11-08 EnemyRuntimeUpdate world-velocity x87 order
+
+`EnemyRuntimeUpdate @ 0x0040DC80` remains a 2,412-byte NONEXACT candidate,
+but a fresh 12-TU LTCG build now matches the original base-before-offset
+X/Y/Z x87 load/add order. A local `EnemyFloat3SumView` with reversed
+Z/Y/X constructor parameters plus volatile base-component references moves
+the candidate from 655 to 657 aligned instructions and from 1,578 to 1,580
+matched comparable bytes (2,136 comparable). The Z sum still spills at
+`ESP+0x2C` rather than the original `ESP+0x24`, and later differences remain.
+This is a compiler-ordering reconstruction, not proof of original volatile
+fields or helper declarations. The exact `EnemyRuntimeView` constructor
+145/145 and `EnemyRuntimeVectorView::FromAngleMagnitude` 30/30 scoped
+replays still pass. See
+[evidence/enemy-runtime-world-vector-order-20261108/README.md](evidence/enemy-runtime-world-vector-order-20261108/README.md).
