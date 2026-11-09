@@ -6,15 +6,16 @@
 > Older broad validation instructions apply only when their impact is relevant.
 
 
-**Source and ledgers rechecked 2026-11-08, after source commit `dd71a67`;
-subsequent commits in this handoff are docs/storage-only.** This is a
-*working resume brief*, not a list of every experiment. The previous 603-line handoff
-is available with `git show 9996cd6:docs/RE_HANDOFF.md`; the detailed dated
-hypotheses are in [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and
-[`docs/evidence/`](evidence/). Check live status and hashes again; a source
-or build epoch may have changed after this snapshot.
+**Source and ledgers rechecked 2026-11-09, after source checkpoint `2833424`
+(`gpt-web: recover GameUI transition VM initialization`).** The current
+ANM/GameUI candidate is a focused 23-TU incremental diagnostic, not a new
+canonical exact admission. This is a *working resume brief*, not a list of
+every experiment. The previous 603-line handoff is available with
+`git show 9996cd6:docs/RE_HANDOFF.md`; detailed dated hypotheses are in
+[KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md) and [`docs/evidence/`](evidence/).
+Recheck live status and hashes before relying on any source/build epoch.
 
-**First-time successor:** start with the shorter [2026-11-08 quick resume](NEXT_AGENT_20261108.md).
+**First-time successor:** start with the shorter [2026-11-09 quick resume](NEXT_AGENT_20261109.md).
 The sections below include historic source-epoch checkpoints as context;
 only the generated ledger and successful **current-source** proofs determine
 live exactness. Cached PDBs under ignored `build/gpt-web/` may have been
@@ -26,7 +27,6 @@ pruned; rebuild them if needed.
 git status --short --branch && git log -8 --oneline
 scripts/repo-python scripts/verify-target.py
 scripts/repo-python scripts/verify-toolchain.py --check
-scripts/repo-python scripts/verify-handoff-pins.py
 scripts/repo-python scripts/ci.py
 ```
 
@@ -56,10 +56,55 @@ scripts/repo-python scripts/ci.py
 
 ## Authoritative progress and current nonexact work
 
-**2026-11-08 current ledger:** 1,501 exact functions, 197,060 exact bytes,
-591 confirmed authored exact / 126,944 bytes; authored source-present
-nonexact backlog 159. See generated [PROGRESS.md](PROGRESS.md), not the
+**2026-11-09 current ledger:** 1,505 exact functions, 197,532 exact bytes,
+595 confirmed authored exact / 127,416 bytes; authored source-present
+nonexact backlog 155. See generated [PROGRESS.md](PROGRESS.md), not the
 figures in historic experiment descriptions below.
+
+## 2026-11-09 ANM VM registration and GameUI transition checkpoint
+
+`AnmRenderManagerView::AddVmVariant0 @0x004489D0` returns
+`AnmVmIdView` through the compiler's hidden structure-return buffer in EAX.
+Ghidra's `in_EAX` is not an explicit output-pointer parameter; the natural
+`AnmVmIdView AddVmVariant0(AnmVmView *)` declaration is retained. An attempted
+explicit-output signature was rejected and reverted.
+
+The GameUI transition functions now have target-backed owner and argument
+views: `GameUiVmTransitionView::Initialize @0x00420F30` is a member initializer
+with a position argument; `GameUiTransitionInitializeSecondary @0x00421180`
+takes owner and position. Both create scripts 0, 1 and 2 as three root VMs and
+propagate the supplied position. The descriptive owner view places the ANM
+resource at `+0x3C8` and transition state at `+0x6FC`; the original class
+name remains unidentified. The secondary initializer also restores the
+renderer's transition viewport when `captureAnmIndex < 0`, writing
+`0, 0, 0x280, 0x1E0, 0, 0, 0x280, 0x1E0` at manager offsets `+0x2C..+0x48`.
+
+The latest 23-TU incremental diagnostic is recorded in
+`.analysis/gpt-web/20261108-current/anm-initialize-vm-gameui-results.json`;
+its driver is
+`.analysis/gpt-web/20261108-current/relink-anm-initialize-vm-gameui-incremental.py`.
+The current explicit three-script source gives these candidate comparisons:
+
+| Function | Target / candidate | Ordinary-byte matches | Candidate fields |
+| --- | ---: | ---: | ---: |
+| `InitializeVm @0x00449870` | 218 / 207 | 35/203 | 1 |
+| `InitializeForLoadedScript @0x00404F30` | 202 / 200 | 24/192 | 2 |
+| `InitializeAndExecuteScriptIndex @0x0043E710` | 203 / 197 | 17/181 | 4 |
+| GameUI primary transition | 309 / 307 | 63/219 | 22 |
+| GameUI secondary transition | 369 / 369 | 30/277 | 23 |
+| `EnemyBeginSpell @0x00409280` | 2,432 / 2,432 | 1,352/2,000 | 108 |
+
+`AnmVmView::Initialize @0x00401DE0` remains 273/273 in this
+diagnostic. Candidate field counts are not independently original-bound
+relocation contracts; this link creates no new exact credit. A loop-based
+GameUI source variant shrank the two functions to 194 and 250 bytes and was
+rejected in favor of the explicit C++ sequences. The `EnemyBeginSpell` score is
+1,352/2,000 in this 23-TU graph; the older 1,403/2,000 result belongs to a
+different 12-TU Enemy/ECL graph and is not a like-for-like regression.
+
+Next, continue the large ANM `InitializeVm`/script-execution path and the
+2,432-byte `EnemyBeginSpell` owner. Use their real callers and target ABI;
+do not spend the session only on small leaves.
 
 ## Alternate text render local stack-frame improvement (2026-11-08)
 
@@ -144,9 +189,13 @@ the subsequent `EnemyBeginSpell` receiver-type correction; the later focused
 relink rechecks the two large owners but does not claim a new 21-owner guard
 replay. No full all-unit cold replay was run.
 [Evidence](evidence/enemy-ecl-typed-instruction-20261108/README.md).
-A focused relink emits a full 2,432-byte PDB contribution for
-`EnemyBeginSpell @0x00409280`, matching **1,403/2,000** comparable ordinary
-bytes after masking 108 candidate-only relocation fields. The first parameter
+A focused relink in the older 12-TU Enemy/ECL graph emits a full
+2,432-byte PDB contribution for `EnemyBeginSpell @0x00409280`, matching
+**1,403/2,000** comparable ordinary bytes after masking 108 candidate-only
+relocation fields. A later 23-TU ANM/GameUI diagnostic reports
+**1,352/2,000** with the same 108 candidate fields; because the LTCG graphs
+differ, treat both as graph-specific measurements rather than a direct
+source regression. The first parameter
 is typed as `EnemyGameStateView *`; the target call at `0x00410F3A` also proves
 the parameter order `(state, spellId, name, value)`: the caller pushes
 value/name/spellId/state, and the callee stores its second argument to
@@ -258,8 +307,8 @@ exact codegen credit.
 
 [PROGRESS.md](PROGRESS.md) is generated by `scripts/progress.py` from the
 canonical ledgers: **1,829 reviewed candidates, 1,309 source-present mappings,
-1,501 complete exact functions / 197,060 original code bytes**, of which
-**591 confirmed authored exact / 126,944 bytes**. Source-present authored
+1,505 complete exact functions / 197,532 original code bytes**, of which
+**595 confirmed authored exact / 127,416 bytes**. Source-present authored
 **nonexact backlog: 159**. These numbers do **not** establish a working
 rebuild, complete original inventory, correct runtime, or source authorship.
 Never edit generated totals by hand.
@@ -306,7 +355,7 @@ These are the latest relevant **whole-owner** baselines, not acceptance:
 | ECL `Run @0x0044E1A0` | 7,020 / 7,020 | **6,997/7,020 original bytes, all 189 target-bound fields** in real ECL/Enemy **two-TU** graph; single-TU context can be **6,996/7,020** without a regression. Remaining 23 bytes span FORMAT register/stack homes, LENGTH_SQUARED, POINT_ANGLE, loop/callback. Some `Pop` unsigned pointer forms regress whole Run despite leaf exact. [Current FORMAT native-address proof](evidence/ecl-format-native-text-addresses-20261107/README.md), [FORMAT evidence](evidence/ecl-format-argument-index-wrap-20261107/README.md), [Pop rejection](evidence/ecl-stack-push-native-word-20261107/README.md). |
 | Enemy ECL `DispatchEclInstruction @0x0040E770` | 14,416 / 14,416 | **NONEXACT**; 1,255/11,536 comparable bytes, 720 candidate linkage fields (not independently original-bound). Typed signed opcode/current-instruction view and 21 exact guards are in [current proof](evidence/enemy-ecl-typed-instruction-20261108/README.md). Earlier 14,352/716 and 1,252-byte measurements are historical. |
 | `EnemyRuntimeUpdate @0x0040DC80` | 2,412 / 2,412 | **NONEXACT**; 1,582/2,136 comparable bytes, 69 candidate linkage fields; X/Y/Z base-before-offset x87 order and Z spill at `ESP+0x24`. [Aggregate/vector proof](evidence/enemy-runtime-world-vector-aggregate-20261108/README.md). |
-| `EnemyBeginSpell @0x00409280` | 2,432 / 2,432 | **NONEXACT**; 1,403/2,000 comparable ordinary bytes after masking 108 candidate-only fields. New baseline from the current 12-TU Enemy/ECL graph. [Comparison](evidence/enemy-ecl-typed-instruction-20261108/enemy-begin-spell-baseline.json). |
+| `EnemyBeginSpell @0x00409280` | 2,432 / 2,432 | **NONEXACT**; 1,403/2,000 in the older 12-TU Enemy/ECL graph, 1,352/2,000 in the later 23-TU ANM/GameUI diagnostic. Both mask 108 candidate-only fields; the graphs differ, so scores are not directly comparable. [12-TU comparison](evidence/enemy-ecl-typed-instruction-20261108/enemy-begin-spell-baseline.json); 23-TU result: `.analysis/gpt-web/20261108-current/anm-initialize-vm-gameui-results.json`. |
 | `EnemyAdvanceMotion @0x0044C2A0` | 171 / 168 | **NONEXACT**; 133/140 ordinary bytes and all 7 original-bound fields; final stack cleanup differs at `+0xA1..+0xA7`. [Polar/x87 proof](evidence/enemy-advance-motion-x87-polar-20261108/README.md). |
 | `SpawnSingleBullet @0x004067D0` | 1,413 / 1,504 | 44 **candidate** fields; odd-angle index, both 0x7F0-byte pool advances, ANM/effect-script words installed. Nine seven-TU source probes leave entire candidate unchanged; canonical SpawnBulletPattern194 must be replayed in its **different** correct graph. [Final source](evidence/bullet-spawn-script-words-20261107/README.md). |
 | ECL `StartSubroutine` | 550 / 551 | Four candidate call fields; native counted metadata, stack addresses and signed CALL argument-counter word increment restored. Remains nonexact. [New argument-counter proof](evidence/ecl-call-argument-index-wrap-20261107/README.md). [CALL proof](evidence/ecl-start-subroutine-native-argument-address-20261107/README.md). |
@@ -710,21 +759,20 @@ next agent uses a different machine. Preserve **all** `build/match-linked/`
 canonical graphs, original inputs, private toolchain/database and the
 compressed `.analysis/archive/` registry.
 
-Two separate 2026-11-08 bounded cleanups removed rebuildable ignored native
-trial outputs. The first removed 3,786 files from 57 roots (274,890,752
-allocated bytes); the second removed 12,051 files from 448 roots and
-reclaimed **886,214,656 allocated bytes (about 845.2 MiB)**, reducing
-`build/gpt-web/` from 1,149,054,976 to 262,840,320 bytes (250.7 MiB).
-The second pass retained three selected enemy witness graphs, 12 nested
-`installed-cold` native files and three root-level `.obj` inputs. It left all
-`.analysis/gpt-web/` drivers/snapshots/JSON, retained `build/gpt-web/`
-MAPs/logs, canonical images, private inputs and archives untouched. See the tracked [second-pass cleanup
-evidence](evidence/next-agent-storage-prune-20261108b/README.md) and
-[storage registry](RE_ARTIFACTS.md). The per-file SHA manifest is private at
-`.analysis/maintenance-next-agent-20261108b/removed-native.jsonl`; it is an
-audit, **not** a backup. Both one-time `--apply` scripts have already run;
-do not rerun them. Rebuild an old trial from its retained driver/source if
-needed. Old source hashes do not validate a restored PDB. Do not cold replay
-all units for handoff/doc/storage maintenance: run
-`scripts/repo-python scripts/ci.py` and `git diff --check` instead.
-**Never push.**
+The 2026-11-08 bounded cleanups removed rebuildable native outputs from
+superseded trial roots; their source-epoch audits remain in
+[RE_ARTIFACTS.md](RE_ARTIFACTS.md). A further selective cleanup on 2026-11-09
+removed **2,622** obsolete .obj/.exe/.pdb files (222,426,440 payload bytes)
+from non-preserved build/gpt-web/ trial roots, reclaiming
+**226,918,400 allocated bytes** and reducing the tree from 540,475,392 to
+313,556,992 bytes (**299.03 MiB**). It also removed 290 .pyc caches and
+the generated build/pycache/ tree. Eight useful diagnostic roots, nested
+installed-cold/accepted-exact/canonical-cold directories, root-level .obj
+inputs, all MAP/LOG/RSP/JSON/source snapshots and all experiment drivers
+remain. The original EXE, .tools/, Ghidra project, _reference/, canonical
+build/match-linked/ and every .analysis/archive/ archive were verified
+unchanged. See the [current storage registry](RE_ARTIFACTS.md). The private
+per-file audit is
+.analysis/maintenance-next-agent-20261109/removed-files.jsonl; its adjacent
+cleanup-summary.json records the before/after measurements. The manifest is
+an audit, **not** a backup. No full cold replay was run. **Never push.**

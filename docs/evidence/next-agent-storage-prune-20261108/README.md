@@ -82,4 +82,4 @@ Dated evidence links to the pruned `build/gpt-web/<family>/*.pdb` or
 `*.exe` are historical reproduction paths, **not proof those binaries
 remain present**. Avoid treating them as current evidence until rebuilt.
 See the updated [artifact policy](../../RE_ARTIFACTS.md) and
-[current next-agent resume](../../NEXT_AGENT_20261108.md).
+[current next-agent resume](../../NEXT_AGENT_20261109.md).

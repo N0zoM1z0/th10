@@ -63,7 +63,7 @@ enemy dispatcher and 1,344-byte replay initializer remain nonexact. See the curr
 source-pinned comparisons and parked controls; matching size grants no credit.
 
 For a new agent, read [AGENTS.md](AGENTS.md), then the concise
-[NEXT_AGENT_20261108.md](docs/NEXT_AGENT_20261108.md) and
+[NEXT_AGENT_20261109.md](docs/NEXT_AGENT_20261109.md) and
 [RE_HANDOFF.md](docs/RE_HANDOFF.md), followed by the selected owner's source/ledger rows,
 and the relevant comparison lane. Use [RE_ARTIFACTS.md](docs/RE_ARTIFACTS.md)
 for private inputs, retained witnesses and restoration. Dated evidence keeps
