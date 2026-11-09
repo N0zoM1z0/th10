@@ -66,15 +66,21 @@ int EclVmStackView::Push(
             reinterpret_cast<unsigned char *>(
                 reinterpret_cast<unsigned int>(data) +
                 static_cast<unsigned int>(stackTop)))->type = type;
-        stackTop = static_cast<int>(static_cast<unsigned int>(stackTop) +
-            static_cast<unsigned int>(sizeof(EclVmStackTypeSlotView)));
+        // Publishing the native type-slot advance copies the four word
+        // bits; an out-of-range unsigned-to-signed cast is not required.
+        const unsigned int typeTopBits = static_cast<unsigned int>(stackTop) +
+            static_cast<unsigned int>(sizeof(EclVmStackTypeSlotView));
+        memcpy(&stackTop, &typeTopBits, sizeof(stackTop));
     }
 
     memcpy(reinterpret_cast<unsigned char *>(
         reinterpret_cast<unsigned int>(data) +
         static_cast<unsigned int>(stackTop)), value, size);
-    stackTop = static_cast<int>(static_cast<unsigned int>(stackTop) +
-        static_cast<unsigned int>(size));
+    // The serialized value size can wrap at the native 32-bit boundary.
+    // Preserve the observed bit pattern when publishing the new stack top.
+    const unsigned int valueTopBits = static_cast<unsigned int>(stackTop) +
+        static_cast<unsigned int>(size);
+    memcpy(&stackTop, &valueTopBits, sizeof(stackTop));
     return 0;
 }
 
