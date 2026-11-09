@@ -170,7 +170,7 @@ bool TextRenderBufferView::InvertAlpha(int processedRows)
     {
     case 0x15:  // A8R8G8B8
         for (index = 3; index < totalBytes;
-             index = static_cast<int>(static_cast<unsigned int>(index) + 4u))
+             *reinterpret_cast<unsigned int *>(&index) += 4u)
             *TextNativePixelAt(bytes, index) = static_cast<unsigned char>(
                 ~*TextNativePixelAt(bytes, index));
         return true;
@@ -197,7 +197,7 @@ bool TextRenderBufferView::InvertAlpha(int processedRows)
 
     case 0x1a:  // A4R4G4B4
         for (index = 1; index < totalBytes;
-             index = static_cast<int>(static_cast<unsigned int>(index) + 2u))
+             *reinterpret_cast<unsigned int *>(&index) += 2u)
             *TextNativePixelAt(bytes, index) ^= 0xf0;
         return true;
     }
