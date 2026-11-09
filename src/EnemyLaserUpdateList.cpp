@@ -63,16 +63,35 @@ int EnemyLaserManagerStorageView::UpdateLinkedLasers()
 // existing real GameManager flags at +0x58 of global 0x00477810; do not
 // introduce another shadow manager or allocation for those same bytes.
 
+struct LaserFrameFlagBits
+{
+    unsigned int paused : 1;
+    unsigned int frozen : 1;
+    unsigned int idle : 1;
+    unsigned int reserved03 : 7;
+    unsigned int deferred : 1;
+    unsigned int reserved0B : 21;
+};
+struct LaserFrameFlagView
+{
+    unsigned char unused000[0x58];
+    LaserFrameFlagBits bits;
+};
+typedef char LaserFrameFlagSizeIs4[(sizeof(LaserFrameFlagBits) == 4) ? 1 : -1];
+typedef char LaserFrameFlagOffsetIs58[
+    (offsetof(LaserFrameFlagView, bits) == 0x58) ? 1 : -1];
+
 int __fastcall EnemyLaserUpdateCallback(void *owner)
 {
     EnemyLaserManagerStorageView *manager =
         static_cast<EnemyLaserManagerStorageView *>(owner);
-    const unsigned int flags = g_GameManager->m_Flags;
-    if (((flags | (flags >> 2)) & 1u) != 0)
+    const LaserFrameFlagView *const game =
+        reinterpret_cast<const LaserFrameFlagView *>(g_GameManager);
+    if (game->bits.paused | game->bits.idle)
         return 1;
-    if ((flags & 0x400u) != 0)
+    if (game->bits.deferred)
         return 1;
-    if ((flags & 2u) != 0)
+    if (game->bits.frozen)
     {
         const float oldSpeed = g_AnmGameSpeed;
         g_AnmGameSpeed = 0.0f;

@@ -1,3 +1,8 @@
+> **Historical 87/91 frontier.** A new natural typed-bitfield source
+> reproduces the complete 91-byte callback exactly under two independent
+> focused links as of 2026-11-09. See
+> [the canonical proof](../enemy-laser-update-bitfields-20261109/README.md).
+
 # TH10 laser update chain: real callback return-value forwarding
 
 Original Japanese TH10 v1.00a SHA-256

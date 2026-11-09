@@ -61,6 +61,18 @@ scripts/repo-python scripts/ci.py
 nonexact backlog 155. See generated [PROGRESS.md](PROGRESS.md), not the
 figures in historic experiment descriptions below.
 
+## 2026-11-09 exact 91-byte enemy-laser update callback
+
+EnemyLaserUpdateCallback @0x0041C480 is now full **91/91 exact**
+(two separate selected-only /GL sources, six original-bound fields,
+67/67 ordinary bytes) after expressing the real GameManager +0x58
+paused/frozen/idle/deferred bits as a typed C++ bitfield view. The
+old cached DWORD code generated 87 bytes with the wrong AH/AL
+tests; the new source generates the original EDX/EAX/DH/DL schedule.
+The already-exact draw callback (46 bytes) and point accumulator
+(54 bytes) remain exact under fresh current-source build.
+Evidence: [laser callback native proof](evidence/enemy-laser-update-bitfields-20261109/README.md).
+
 ## 2026-11-09 exact ANM texture pair: 243 and 320 bytes
 
 Both adjacent TH10 texture uploads now exactly reconstruct in a pinned

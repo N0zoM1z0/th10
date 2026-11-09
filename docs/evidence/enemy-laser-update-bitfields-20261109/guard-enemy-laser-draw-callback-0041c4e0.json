@@ -1,0 +1,38 @@
+{
+  "artifact_kind": "linked-pe",
+  "candidate_address": "0x004011F0",
+  "capstone_version": "5.0.6",
+  "compared_size": 46,
+  "data_spans": [],
+  "decoded_bytes": 46,
+  "extent_source": "pdb-section-contribution",
+  "first_differences": [],
+  "image": "build/match-linked/EnemyLaserDrawCallback/source.exe",
+  "image_sha256": "9ffd80f5f947d6a88ad0a3ed96c9af3e0d3866de464678fdeb2aedd2435023eb",
+  "linkages": [
+    {
+      "addend": 0,
+      "candidate_target": "0x00403008",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0002",
+      "local": false,
+      "offset": "0x1",
+      "symbol": "?g_GameManager@@3PAUGameManager@@A",
+      "target": "0x00477810",
+      "target_encoded_value": "0x00477810",
+      "type": "DIR32",
+      "width": 4
+    }
+  ],
+  "matched_bytes": 46,
+  "matched_compared_bytes": 46,
+  "normalization_complete": true,
+  "pdb_age": 1,
+  "pdb_guid": "6ec0d6783f60424dadfa4835842e5c3c",
+  "pdb_module_index": 1,
+  "raw_equal": false,
+  "result": "exact",
+  "size": 46,
+  "symbol": "?EnemyLaserDrawCallback@@YIHPAX@Z",
+  "target_address": "0x0041C4E0",
+  "unit": "enemy-laser-draw-callback-0041c4e0"
+}
