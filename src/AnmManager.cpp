@@ -3191,6 +3191,14 @@ static __forceinline AnmRenderVertexView *AnmVertexAtWord(
         index * static_cast<unsigned int>(sizeof(AnmRenderVertexView)));
 }
 
+// Interpret a native 32-bit VM word as signed without a narrowing cast.
+static __forceinline int AnmSignedWordBits(unsigned int bits)
+{
+    int value;
+    memcpy(&value, &bits, sizeof(value));
+    return value;
+}
+
 int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
@@ -3898,7 +3906,7 @@ stop:
         textureV = 0.0f;
         textureStep = static_cast<float>(vm->intVar1) / (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u));
 
-        for (vertexIndex = 0; vertexIndex < (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u)); vertexIndex = static_cast<int>(static_cast<unsigned int>(vertexIndex) + 1u))
+        for (vertexIndex = 0; vertexIndex < (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u)); vertexIndex = AnmSignedWordBits(static_cast<unsigned int>(vertexIndex) + 1u))
         {
             vertex[0].rhw = 1.0f;
             vertex[0].diffuse.value = vm->primaryColor.value;
