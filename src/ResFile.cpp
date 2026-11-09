@@ -108,9 +108,12 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
         // The original ADD/SUB uses Win32 address words, not C++ array
         // subtraction: an earlier negative seek may leave this cursor
         // before the allocated buffer, and the signed check still applies.
-        LONG remaining = static_cast<LONG>(
-            reinterpret_cast<DWORD>(m_Data) + m_Size -
-            reinterpret_cast<DWORD>(m_Current));
+        // Remaining bytes are compared as one signed native 32-bit word.
+        // Preserve the original low 32-bit address arithmetic without
+        // converting an out-of-range DWORD to signed LONG.
+        const DWORD remainingBits = reinterpret_cast<DWORD>(m_Data) + m_Size -
+            reinterpret_cast<DWORD>(m_Current);
+        const LONG remaining = *reinterpret_cast<const LONG *>(&remainingBits);
         if (remaining <= signedOffset)
             return false;
         position = reinterpret_cast<BYTE *>(reinterpret_cast<DWORD>(m_Current) + offset);
