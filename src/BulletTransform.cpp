@@ -138,10 +138,7 @@ nextRecord:
             int scriptIndex = static_cast<int>(
                 static_cast<unsigned int>(*reinterpret_cast<const int *>(scriptBaseAddress)) +
                 static_cast<unsigned int>(record->payload.int1));
-            AnmVmStartScript(
-                &vm,
-                reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->bulletAnm,
-                scriptIndex);
+            EntityStartScript_00404f30(reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->bulletAnm, &vm, scriptIndex);
         }
         break;
 

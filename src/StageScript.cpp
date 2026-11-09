@@ -165,8 +165,7 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             break;
         case 14:
             if (integers[1] >= 0)
-                AnmVmStartScript(
-                    &stage->scriptVms[integers[0]], stage->anm, integers[1]);
+                EntityStartScript_00404f30(stage->anm, &stage->scriptVms[integers[0]], integers[1]);
             else
             {
                 AnmVmView *vm = &stage->scriptVms[integers[0]];

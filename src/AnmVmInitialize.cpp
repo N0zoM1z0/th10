@@ -1,8 +1,8 @@
 #include "AnmManager.hpp"
 #include <string.h>
 
-__declspec(noinline) void __fastcall AnmVmInitialize(
-    void *unused, AnmVmView *vm)
+__declspec(noinline) void __fastcall AnmRenderManagerView::InitializeVm(
+    AnmVmView *vm)
 {
     AnmFloat3View savedPosition = vm->positionOffset;
     unsigned int savedLayer = vm->renderLayer;

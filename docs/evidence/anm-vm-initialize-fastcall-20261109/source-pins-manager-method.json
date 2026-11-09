@@ -1,0 +1,6 @@
+{
+  "src/AnmVmInitialize.cpp": "08743ecf4965efd00fc34e9a742f2a011f232ac2fa7ae81b2829fda6dc036cad",
+  "src/AnmManager.hpp": "cb491f7ea44e700e2c1ab678a6e8404240bc84479f6e48809923d219bd12d294",
+  "src/AnmManager.cpp": "6768019121bd213ccf6d67be79de3b8cadc5d9167f0d9841440bedc58fdd92a5",
+  "config/match-units.toml": "635f90920b963a3cdbc24fb389c3b86a17c6faedcee8b26a1dbbe7bbe7f7bb66"
+}

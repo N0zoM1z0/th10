@@ -770,9 +770,7 @@ int BulletManagerView::SpawnSingleBullet(
     bullet->value454 = 0;
 
     // Original ADD EAX,[table+type*4] uses low 32-bit ANM script words.
-    AnmVmStartScript(
-        &bullet->vm, bulletAnm,
-        static_cast<int>(
+    EntityStartScript_00404f30(bulletAnm, &bullet->vm, static_cast<int>(
             static_cast<unsigned int>(BulletNativeTableRead(g_BulletSpriteScriptBase, static_cast<int>(descriptor->bulletType))) +
             static_cast<unsigned int>(static_cast<int>(descriptor->color))));
 

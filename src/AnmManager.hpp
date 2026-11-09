@@ -630,10 +630,7 @@ struct AnmSpriteView;
 struct AnmVmView;
 struct AnmLoadedView;
 struct AnmTextureEntryView;
-// Retail 0x401DE0 is an Entity_Init-style fastcall; VM is in EDX.
-__declspec(noinline) void __fastcall AnmVmInitialize(void *unused, AnmVmView *vm);
-__declspec(noinline) void __stdcall AnmVmStartScript(
-    AnmVmView *vm, AnmLoadedView *loaded, int scriptIndex);
+// Retail 0x401DE0 is the renderer manager's fastcall VM initializer.
 
 
 struct AnmVmLayerNodeView
@@ -659,7 +656,7 @@ struct AnmVmView
 {
     AnmVmView();
     ~AnmVmView();
-    void Initialize() { AnmVmInitialize(0, this); }
+    void Initialize();
     int InitializePulsingRadialTrail();
     float GetFloatVar(float variable);
     int GetIntVar(int variable);
@@ -1278,6 +1275,8 @@ struct AnmRenderManagerView
 
     AnmRenderManagerView();
     ~AnmRenderManagerView();
+    __declspec(noinline) void __fastcall InitializeVm(AnmVmView *vm);
+
     void SetupVertexBuffer();
     void ApplyTextureAlphaBleed(AnmTextureEntryView *entry);
     int LoadTexture(
@@ -1532,6 +1531,16 @@ typedef char AnmPhotoBlendFarColorAt18[
     (offsetof(AnmPhotoBlendView, farColor) == 0x18) ? 1 : -1];
 
 extern AnmRenderManagerView *g_AnmRenderManagerView;
+__declspec(noinline) void __stdcall EntityStartScript_00404f30(
+    AnmLoadedView *resource, AnmVmView *entity, int scriptIndex);
+__forceinline void __fastcall AnmVmInitialize(void *unused, AnmVmView *vm)
+{
+    g_AnmRenderManagerView->InitializeVm(vm);
+}
+inline void AnmVmView::Initialize()
+{
+    AnmVmInitialize(0, this);
+}
 extern D3d9DeviceView *g_Direct3DDevice;
 extern AnmRenderVertexView g_AnmQuadVertices[4];
 extern AnmRenderVertexNoDiffuseView g_AnmQuadVerticesNoDiffuse[4];
