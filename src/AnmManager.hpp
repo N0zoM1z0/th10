@@ -1217,7 +1217,17 @@ struct AnmRenderManagerView
     int captureSourceWidth;
     int captureSourceHeight;
     int captureRequestState;
-    unsigned char unknown02C[0x020];
+    // The secondary UI transition initializer resets these fields when
+    // captureAnmIndex is negative. Their exact subsystem semantics remain
+    // unknown; the paired 0x280/0x1e0 dimensions are target-observed.
+    int transitionViewportUnknown2C;
+    int transitionViewportUnknown30;
+    int transitionViewportWidth;
+    int transitionViewportHeight;
+    int transitionViewportUnknown3C;
+    int transitionViewportUnknown40;
+    int transitionViewportWidth2;
+    int transitionViewportHeight2;
     unsigned int scriptsStartedThisFrame;
     unsigned char unknown050[0x004];
     unsigned int renderStateChangesThisFrame;
@@ -1406,6 +1416,13 @@ struct AnmRenderManagerView
     static int __fastcall DrawLayer16(AnmRenderManagerView *manager);
     static int __fastcall DrawLayer19(AnmRenderManagerView *manager);
 };
+
+typedef char AnmRenderTransitionViewportAt02C[
+    (offsetof(AnmRenderManagerView, transitionViewportUnknown2C) == 0x02c &&
+     offsetof(AnmRenderManagerView, transitionViewportWidth) == 0x034 &&
+     offsetof(AnmRenderManagerView, transitionViewportHeight) == 0x038 &&
+     offsetof(AnmRenderManagerView, transitionViewportWidth2) == 0x044 &&
+     offsetof(AnmRenderManagerView, transitionViewportHeight2) == 0x048) ? 1 : -1];
 
 typedef char AnmRenderFlushCountAt058[
     (offsetof(AnmRenderManagerView, scriptsStartedThisFrame) == 0x04c &&
