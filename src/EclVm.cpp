@@ -491,6 +491,12 @@ static __forceinline EclVmSubroutineEntry *EclMutableEntryAtWord(
         static_cast<unsigned int>(index) * sizeof(EclVmSubroutineEntry));
 }
 
+static __forceinline int EclPredecrementNativeWord(int &value)
+{
+    --*reinterpret_cast<unsigned int *>(&value);
+    return value;
+}
+
 int EclVmScriptDatabase::AddScriptData(void *scriptData)
 {
     const unsigned int SCPT_MAGIC = 0x54504353u;
@@ -553,9 +559,10 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     else
     {
         // This size is also native 32-bit subtraction, including wrap.
-        int sortedCount = static_cast<int>(
+        int sortedCount;
+        *reinterpret_cast<unsigned int *>(&sortedCount) =
             static_cast<unsigned int>(subroutineCount) -
-            static_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount));
+            static_cast<unsigned int>((*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount);
         memcpy(newEntries, oldEntries,
                sortedCount * sizeof(EclVmSubroutineEntry));
         if (previousEntries != NULL)
@@ -582,7 +589,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                 }
 
                 int index = subroutineCount;
-                while ((index = static_cast<int>(static_cast<unsigned int>(index) - 1u)) > insertionIndex)
+                while (EclPredecrementNativeWord(index) > insertionIndex)
                 {
                     EclVmSubroutineEntry *const destination =
                         EclMutableEntryAtWord(subroutines, index);
