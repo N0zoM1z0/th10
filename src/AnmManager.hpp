@@ -1563,7 +1563,9 @@ typedef char AnmPhotoBlendFarColorAt18[
 
 extern AnmRenderManagerView *g_AnmRenderManagerView;
 __declspec(noinline) void __stdcall EntityStartScript_00404f30(
-    AnmLoadedView *resource, AnmVmView *entity, int scriptIndex);
+    AnmLoadedView *resource);
+__declspec(noinline) void __stdcall StartEntityScript_00404f30(
+    AnmVmView *entity, int scriptIndex, AnmLoadedView *resource);
 extern D3d9DeviceView *g_Direct3DDevice;
 extern AnmRenderVertexView g_AnmQuadVertices[4];
 extern AnmRenderVertexNoDiffuseView g_AnmQuadVerticesNoDiffuse[4];

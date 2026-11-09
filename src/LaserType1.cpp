@@ -30,14 +30,14 @@ int EnemyLaserType1View::Initialize(const EnemyLaserType1RequestView *initial)
     request = *initial;
     state = 3;
     AnmVmView *vm = &primaryVm;
-    EntityStartScript_00404f30(reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource, vm, request.color + g_BulletSpriteScriptBase[request.type]);
+    StartEntityScript_00404f30(vm, request.color + g_BulletSpriteScriptBase[request.type], reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource);
     primaryVm.pendingInterrupt = 2;
     AnmRenderManagerView::ExecuteScript(vm);
     if ((request.flags44 & 2u) != 0)
         vm->flags35C = (vm->flags35C & ~0x20u) | 0x10u;
     primaryVm.flags35C = (primaryVm.flags35C & 0xfc63ffffu) | 0x00600000u;
     vm = &secondaryVm;
-    EntityStartScript_00404f30(reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource, vm, request.color + 0x103);
+    StartEntityScript_00404f30(vm, request.color + 0x103, reinterpret_cast<EnemyLaserManagerStorageView *>(g_EnemyLaserManager)->effectResource);
     secondaryVm.pendingInterrupt = 2;
     AnmRenderManagerView::ExecuteScript(vm);
     vm->flags35C = (vm->flags35C & ~0x20u) | 0x10u;

@@ -15,7 +15,7 @@ extern "C" void __stdcall asm_FUN_0043ee30_0043ee30(
 #define Entity_Init AnmVmInitialize
 
 #pragma code_seg(".text$01accessor")
-extern "C" __declspec(noinline) void __stdcall LoadScript_0043e710(
+static __declspec(noinline) void __fastcall LoadScriptBody_0043e710(
     AnimationResource_0043E710 *resource,
     AnimationObject_0043E710 *object,
     int index)
@@ -57,5 +57,29 @@ extern "C" __declspec(noinline) void __stdcall LoadScript_0043e710(
 
     asm_FUN_0043ee30_0043ee30(object);
     ++data_00491c10->script_tick_counter;
+}
+
+extern "C" __declspec(naked) void __cdecl LoadScript_0043e710(void)
+{
+    __asm
+    {
+        mov edx, eax
+        push ebx
+        jmp LoadScriptBody_0043e710
+    }
+}
+
+__declspec(noinline) void __stdcall LoadScriptAdapter_0043e710(
+    AnimationResource_0043E710 *resource,
+    AnimationObject_0043E710 *object,
+    int index)
+{
+    __asm
+    {
+        mov ecx, resource
+        mov eax, object
+        mov ebx, index
+        call LoadScript_0043e710
+    }
 }
 #pragma code_seg()

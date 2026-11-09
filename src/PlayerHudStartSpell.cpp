@@ -50,15 +50,21 @@ static inline void CopyPanelName(char *destination, const char *source)
         ;
 }
 
-static inline void LoadSpellDigit(
+static __forceinline void __fastcall LoadSpellDigit(
     AnmLoadedView *resource, AnmVmView *sprite, int script)
 {
-    StartAnmLoadedScript(resource, sprite, script);
+    __asm
+    {
+        mov ecx, resource
+        mov eax, edx
+        mov ebx, script
+        call LoadScript_0043e710
+    }
 }
 
 static inline void StartSpellStageScript(AnmVmView *sprite, int script)
 {
-    EntityStartScript_00404f30(g_EnemyManager->typedEffectResources.stageAnimationAnm, sprite, script);
+    StartEntityScript_00404f30(sprite, script, g_EnemyManager->typedEffectResources.stageAnimationAnm);
 }
 
 static inline AnmVmIdView CreatePanelAnimation(

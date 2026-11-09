@@ -32,7 +32,7 @@ void __stdcall GamePrepareAnimationSlots(GameChainOwnerView *owner)
             &stage->objects[objectIndex]->firstPrimitive;
         while (primitive->type >= 0)
         {
-            EntityStartScript_00404f30(stage->anm, &stage->objectVms[vmIndex], primitive->unknown004);
+            StartEntityScript_00404f30(&stage->objectVms[vmIndex], primitive->unknown004, stage->anm);
             primitive->vmIndex = static_cast<short>(vmIndex);
             ++vmIndex;
             primitive = reinterpret_cast<StageObjectPrimitiveView *>(
