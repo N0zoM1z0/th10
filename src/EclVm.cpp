@@ -666,9 +666,12 @@ int EclVmContext::StartSubroutine(
     EclVmInstruction **const callerInstruction = &caller->instruction;
     EclVmInstruction *const call = *callerInstruction;
     const int inlineBytes = call->callOperands.inlineNameBytes;
-    int metadataOffset = static_cast<int>(
+    // The CALL metadata offset is a serialized i386 address word, not a
+    // signed counter. Advancing it modulo 2^32 preserves unchecked script
+    // byte offsets without an implementation-defined signed conversion.
+    unsigned int metadataOffset =
         static_cast<unsigned int>(inlineBytes) +
-        firstArgument * 4u + 4u);
+        firstArgument * 4u + 4u;
     int preservedValue = 0;
     const int previousTop = destination->stack.stackTop;
     int argumentOffset = static_cast<int>(
@@ -693,15 +696,13 @@ int EclVmContext::StartSubroutine(
                  reinterpret_cast<unsigned int>(argument) + sizeof(int)),
              argumentIndex = static_cast<int>(static_cast<unsigned int>(argumentIndex) + 1u),
              valueOffset += sizeof(EclVmCallArgumentView),
-             metadataOffset = static_cast<int>(
-                 static_cast<unsigned int>(metadataOffset) +
-                 static_cast<unsigned int>(sizeof(EclVmCallArgumentView))))
+             metadataOffset += sizeof(EclVmCallArgumentView))
         {
             const char sourceType =
                 reinterpret_cast<const EclVmCallArgumentView *>(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
-                    static_cast<unsigned int>(metadataOffset)))->sourceType;
+                    metadataOffset))->sourceType;
 
             // CALL arguments follow a counted name; scalarOperands[1] is
             // only their first-word overlay, not a bounded C++ array.
@@ -716,7 +717,7 @@ int EclVmContext::StartSubroutine(
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
-                    static_cast<unsigned int>(metadataOffset)))->destinationType == 'f')
+                    metadataOffset))->destinationType == 'f')
                     reinterpret_cast<EclVmScalar *>(argument)->real = value.real;
                 else
                     reinterpret_cast<EclVmScalar *>(argument)->integer =
@@ -733,7 +734,7 @@ int EclVmContext::StartSubroutine(
                 if (reinterpret_cast<const EclVmCallArgumentView *>(
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>((*callerInstruction)->operands) +
-                    static_cast<unsigned int>(metadataOffset)))->destinationType != 'f')
+                    metadataOffset))->destinationType != 'f')
                     reinterpret_cast<EclVmScalar *>(argument)->integer = value.integer;
                 else
                     reinterpret_cast<EclVmScalar *>(argument)->real =
