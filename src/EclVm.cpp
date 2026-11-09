@@ -350,7 +350,9 @@ int EclVmContext::ReadInt(unsigned int index)
                     static_cast<unsigned int>(value)))->integer;
         if (value == -1)
         {
-            if (static_cast<int>(static_cast<unsigned int>(stack.stackTop) - 4u) >= 0)
+            const unsigned int topBits =
+                static_cast<unsigned int>(stack.stackTop) - 4u;
+            if (*reinterpret_cast<const int *>(&topBits) >= 0)
             {
                 stack.stackTop = static_cast<int>(
                     static_cast<unsigned int>(stack.stackTop) - 4u);
