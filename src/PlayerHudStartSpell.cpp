@@ -21,11 +21,6 @@ struct EnemySpellPlaybackGateView
 typedef char EnemySpellPlaybackStateAt10[
     (offsetof(EnemySpellPlaybackGateView, stateCode10) == 0x10) ? 1 : -1];
 
-struct RecoveryIndicatorVm_00419120
-{
-    void __cdecl FormatRightAligned(void *manager, ...);
-};
-
 static __forceinline void CountSpellAttempt(GameStatisticsSpellHistoryEntryView *record)
 {
     if (record->attempts < 99999)
@@ -153,9 +148,11 @@ void __stdcall EnemyGameStateView::StartSpell(
     panelVmIds[1] = CreatePanelAnimation(g_AsciiManagerView->textAnm, 72);
     panelVmIds[2] = CreatePanelAnimation(g_AsciiManagerView->asciiAnm, 2);
 
-    reinterpret_cast<RecoveryIndicatorVm_00419120 *>(
-        GetPanelAnimation(panelVmIds[1].value))
-        ->FormatRightAligned(g_AnmRenderManagerView, 0x00FFFFFFu, panelNameCursor);
+    // Retail 0x00409681 calls the canonical right-aligned ANM text renderer.
+    // The loaded panel name is its format argument, not a separate %s value.
+    g_AnmRenderManagerView->DrawTextRight(
+        GetPanelAnimation(panelVmIds[1].value), 0x00FFFFFFu,
+        panelNameCursor);
 
     reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
         QueueSoundSample(14, 0);

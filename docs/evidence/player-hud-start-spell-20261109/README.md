@@ -2,6 +2,25 @@
 
 This is the maintained source reconstruction of the 2,432-byte spell-card HUD start routine. The maintained source surface is EnemyGameStateView::StartSpell in src/PlayerHudStartSpell.cpp; the original class and translation-unit ownership remain unproven.
 
+## 2026-11-09: spell name renderer identity
+
+The original TH10 StartSpell call at **0x00409681** targets the exact
+AnmRenderManagerView::DrawTextRight at **0x00447AE0**, after pushing
+the current spell name as the format argument, 0x00FFFFFF as color and
+the manager pointer; the VM is the internal ESI live-in. The previously
+maintained RecoveryIndicatorVm_00419120::FormatRightAligned was an
+invented source facade with the wrong receiver/argument semantics.
+
+Production C++ now calls the actual manager DrawTextRight method,
+passing GetPanelAnimation(panelVmIds[1].value), 0x00FFFFFFu and
+panelNameCursor, preserving native formatting and removing the
+fabricated class. Independent canonical replay of anm-text-right-gs
+confirms the complete **204/204 exact** renderer; the spell HUD seven-TU
+producer rebuilt successfully and still owns a **2252-byte** PDB
+contribution against **2432** target bytes, with **322/1920** ordinary
+bytes aligned and 83 candidate relocation fields. **NONEXACT**: no new
+boss byte credit. Report: draw-text-right-seven-tu-report.json.
+
 ## Current natural C++ seven-TU candidate
 
 A source-checked, complete seven-TU LTCG link of the current
