@@ -1,11 +1,13 @@
 # TH10 ignored artifacts — live next-agent storage and recovery
 
-**Remeasured 2026-11-09 after the selective native-trial cleanup.**
-The 2026-11-09 table below is the current allocation. The 2026-11-08 and
-2026-11-07 measurements and deletion audits are preserved as historical
-snapshots, not current disk usage. Use [RE_HANDOFF.md](RE_HANDOFF.md) for
-the current nonexact frontiers and [PROGRESS.md](PROGRESS.md) for canonical
-exact counts.
+**Latest measured private-artifact checkpoint: 2026-11-09, after the
+handoff cleanup.** Only verified, ignored, regenerable trial
+`.obj/.exe/.pdb` and Python bytecode files were removed. Current allocations,
+retained witness roots, and the exact audit path appear below. The earlier
+2026-11-09, 2026-11-08 and 2026-11-07 measurements are deliberately retained
+as **historical**, not presented as current storage. See
+[RE_HANDOFF.md](RE_HANDOFF.md) for the live nonexact frontiers and
+[PROGRESS.md](PROGRESS.md) for canonical exact counts.
 
 ## Preserve for the new agent
 
@@ -26,9 +28,70 @@ SHA-256 and VC7.1 profile. Never mix an old PE/PDB with newer source
 hashes, and **never delete the original EXE, private toolchain, canonical
 match-linked graph, Ghidra DB, reference tree or historical archives**.
 
-## Current measured storage and selective native prune (2026-11-09)
+## Current 2026-11-09 handoff cleanup (verified)
 
-| Path | Current allocated bytes (du -s -B1) | Approx. MiB | Retention |
+This is the latest measurement and supersedes all snapshots below.
+The cleanup removed **1,090** ignored, regenerable files
+containing **73,334,711 payload bytes
+(69.94 MiB)**. By extension:
+**804 `.obj`**, **136 `.exe`**, **131 `.pdb`**, and **19 `.pyc`**.
+The three experiment allocation trees (`build/gpt-web`,
+`build/probe-ltcg`, `.analysis/gpt-web`) together reclaimed
+**74,633,216 allocated bytes
+(71.18 MiB)**,
+measured with `du -s -B1` before/after; Python caches elsewhere also
+had their payload removed.
+
+| Path | Current allocated bytes (du -s -B1) | MiB | Disposition |
+| --- | ---: | ---: | --- |
+| `build/gpt-web/` | 325,505,024 | 310.43 | Rejected trial PE/OBJ/PDB outputs pruned; logs, MAP, source snapshots and selected witnesses kept |
+| `build/probe-ltcg/` | 708,608 | 0.68 | Regenerable native probe files pruned |
+| `.analysis/gpt-web/` | 146,444,288 | 139.66 | Scratch source variants, drivers and diagnostics preserved; only generated native files pruned |
+| `build/match-linked/` | 138,731,520 | 132.30 | **Preserved entire canonical native graph** |
+| `.analysis/archive/` | 216,694,784 | 206.66 | **Preserved historical private archives** |
+| `.tools/` | 611,442,688 | 583.12 | **Preserved pinned toolchain and Wine inputs** |
+| `_reference/` | 45,891,584 | 43.77 | **Preserved reference checkout** |
+| `ghidra-project/` | 10,088,448 | 9.62 | **Preserved Ghidra database** |
+
+The original `resources/th10.exe` SHA-256 remained
+`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`. All files selected for deletion
+were proven **ignored by Git** and outside tracked paths. The allocator
+measurements for `build/match-linked/`, `.analysis/archive/`,
+`.tools/`, `ghidra-project/` and `_reference/` were unchanged.
+No original game file, useful source snapshot, MAP/log/JSON receipt,
+scratch experiment driver, Ghidra data, private compressed archive,
+or canonical linked artifact was deleted.
+
+Besides three root-level input objects and nested accepted/installed
+cold contexts, **195
+native files** inside the following **13 live witness roots** were
+explicitly protected:
+
+- `build/gpt-web/enemy-runtime-full-ltcg-callers/`
+- `build/gpt-web/20261108-enemy-runtime-aggregate-sum/`
+- `build/gpt-web/20261108-enemy-dispatch-rank-tail-final/`
+- `build/gpt-web/20261108-anm-initialize-vm-gameui/`
+- `build/gpt-web/20261108-anm-initialize-vm-gameui-callers/`
+- `build/gpt-web/20261108-enemy-begin-spell-20261105-full-snapshot/`
+- `build/gpt-web/20261108-anm-binder-complete-real-callers/`
+- `build/gpt-web/20261108-anm-binder-real-callers/`
+- `build/gpt-web/20261109/playerhud-restored-natural-loader/`
+- `build/gpt-web/20261109/anm-child91-natural-aliases/baseline/`
+- `build/gpt-web/20261109/anm-execute-child91-aggregate/`
+- `build/gpt-web/20261109/ecl-run-length-pointer-order/pointer-y-first/`
+- `build/gpt-web/20261109/laser-callback-new/baseline/`
+
+Private audit files (ignored, deliberately not in Git):
+`.analysis/maintenance-handoff-20261109/cleanup-summary.json` and
+`.analysis/maintenance-handoff-20261109/removed-paths.tsv`. The TSV
+contains removed file names and payload sizes, **not** a backup of the
+deleted binaries. They are restored only by recompiling the retained
+sources and drivers with the pinned toolchain. These audit files should
+be transferred separately if the new agent moves to a different machine.
+
+## Earlier 2026-11-09 native prune (historical; superseded)
+
+| Path | Earlier allocated bytes (du -s -B1) | Approx. MiB | Retention |
 | --- | ---: | ---: | --- |
 | build/gpt-web/ | **313,556,992** | 299.03 | Eight selected diagnostic roots, nested installed/canonical witnesses, MAP/LOG/RSP/JSON/source snapshots and drivers |
 | build/match-linked/ | **134,434,816** | 128.21 | **Preserved canonical build graph** |

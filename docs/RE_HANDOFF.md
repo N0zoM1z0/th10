@@ -134,9 +134,11 @@ with a clone. The **ignored** original executable, `.tools/` compiler,
 `ghidra-project/`, `_reference/`, historical `.analysis/archive/`,
 private scratch drivers and canonical `build/match-linked/` **do not**
 travel with Git; transfer them separately if the new agent uses another
-machine. Disk pruning is documented in
-[RE_ARTIFACTS.md](RE_ARTIFACTS.md), including precisely which regenerated
-experiment binaries were removed. Keep useful MAP/log/JSON results,
+machine. The latest audited ignored-artifact cleanup reclaimed **71.18 MiB**
+of allocation by removing 1,090 rebuildable trial PE/OBJ/PDB and
+Python-bytecode files. Disk pruning, retained witness roots and
+private audit locations are documented in
+[RE_ARTIFACTS.md](RE_ARTIFACTS.md). Keep useful MAP/log/JSON results,
 selected native witness graphs and the canonical match graph.
 
 Commit meaningful verified work in English as `gpt-web: ...`, using

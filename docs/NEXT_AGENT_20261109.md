@@ -59,7 +59,9 @@ target-bound extents and required exact consumers, then make
 `gpt-web: ...` commits. Never push without permission.
 
 For local/private evidence and storage pruning read
-[RE_ARTIFACTS.md](RE_ARTIFACTS.md). Do not delete original executable,
+[RE_ARTIFACTS.md](RE_ARTIFACTS.md). The latest verified private
+cleanup reclaimed **71.18 MiB**, without deleting evidence archives
+or canonical linked graphs. Do not delete the original executable,
 pinned `.tools/`, `ghidra-project/`, `_reference/`,
-`.analysis/archive/` or canonical `build/match-linked/`. A Git
-clone alone does not carry these ignored resources.
+`.analysis/archive/` or `build/match-linked/`. A Git clone alone
+does not carry these ignored resources or the private deletion audit.
