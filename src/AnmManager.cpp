@@ -2874,7 +2874,8 @@ int AnmLoadedView::SetSprite(AnmVmView *vm, int spriteIndex)
     if (rawData == NULL || pendingLoadCount != 0)
         return -1;
 
-    vm->activeSpriteIndex = static_cast<short>(spriteIndex);
+    *reinterpret_cast<unsigned short *>(&vm->activeSpriteIndex) =
+        static_cast<unsigned short>(spriteIndex);
     vm->anmFile = this;
     vm->loadedSprite = &sprites[spriteIndex];
     vm->spriteWidth = vm->loadedSprite->width;
@@ -2919,7 +2920,8 @@ void AnmLoadedView::SetAndExecuteScriptIndex(
     }
     else
     {
-        vm->scriptIndex = static_cast<short>(scriptIndex);
+        *reinterpret_cast<unsigned short *>(&vm->scriptIndex) =
+            static_cast<unsigned short>(scriptIndex);
         vm->anmFileIndex = anmFileIndex;
         unsigned int flags = vm->flags35C;
         flags &= ~0x600u;
@@ -2949,7 +2951,8 @@ void AnmLoadedView::SetAndExecuteScriptIdx(
     if (pendingLoadCount != 0)
         return;
 
-    vm->scriptIndex = static_cast<short>(scriptIndex);
+    *reinterpret_cast<unsigned short *>(&vm->scriptIndex) =
+        static_cast<unsigned short>(scriptIndex);
     unsigned int flags = vm->flags35C;
     vm->anmFile = this;
     if ((flags & 0x200u) != 0)
