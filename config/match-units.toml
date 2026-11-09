@@ -31377,3 +31377,14 @@ symbol = "?MergeDirectButton@@YAIPAGFGPBC@Z"
 target_address = 0x0044A130
 size = 37
 relocations = []
+
+[units.input-merge-winmm-button-0044a160]
+artifact_kind = "coff"
+source = "src/InputPolling.cpp"
+object = "build/match/InputPolling.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["MergeWinMmButton"]
+symbol = "?MergeWinMmButton@@YGIPAGFGI@Z"
+target_address = 0x0044A160
+size = 43
+relocations = []

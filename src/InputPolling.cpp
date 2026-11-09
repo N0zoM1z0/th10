@@ -6,14 +6,16 @@ extern "C" __declspec(dllimport) int __stdcall GetKeyboardState(
 extern "C" __declspec(dllimport) unsigned int __stdcall joyGetPosEx(
     unsigned int id, InputJoystickInfoView *info);
 
-static unsigned int MergeWinMmButton(unsigned short *out, short button,
+static unsigned int __stdcall MergeWinMmButton(unsigned short *out, short button,
     unsigned short action, unsigned int buttons)
 {
     if (button < 0)
         return 0;
-    // The original x86 SHL EAX,CL uses only CL's low five bits; masking
-    // explicitly also defines the behavior of saved WinMM bindings >= 32.
-    unsigned int mask = 1u << (static_cast<unsigned int>(button) & 31u);
+    // Retail VC7.1 emits SHL EAX, CL, whose native count uses CL's low
+    // five bits. Do not introduce an explicit AND: it changes the target
+    // 43-byte helper. The original binary's wider-count behavior is x86-
+    // specific, rather than a promise of portable C++ shift semantics.
+    unsigned int mask = 1u << static_cast<unsigned int>(button);
     *out |= (buttons & mask) ? action : 0;
     return (buttons & mask) ? action : 0;
 }
