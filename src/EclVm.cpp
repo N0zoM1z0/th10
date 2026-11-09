@@ -143,9 +143,11 @@ int EclVmStackView::EnterFrame(int localBytes)
             reinterpret_cast<unsigned char *>(
                 reinterpret_cast<unsigned int>(data) +
                 static_cast<unsigned int>(stackTop)))->value = frameBase;
-        stackTop = static_cast<int>(
-            static_cast<unsigned int>(stackTop) +
-            static_cast<unsigned int>(sizeof(EclVmStackSavedWordView)));
+        // Frame-base records advance the stack top as a native dword;
+        // retain the bit pattern even across the signed boundary.
+        const unsigned int storedTopBits = static_cast<unsigned int>(stackTop) +
+            static_cast<unsigned int>(sizeof(EclVmStackSavedWordView));
+        memcpy(&stackTop, &storedTopBits, sizeof(stackTop));
     }
     frameBase = previousTop;
     return 0;
