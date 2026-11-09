@@ -1355,7 +1355,11 @@ jump_instruction:
                 EclVmScalar value;
                 value.integer = ReadInt(0);
                 int *destination = ResolveInt(0);
-                *destination = static_cast<int>(value.bits - 1u);
+                // Decrement is a native 32-bit unsigned word operation.
+                // Access the int destination through its corresponding
+                // unsigned type to avoid implementation-defined narrowing.
+                *reinterpret_cast<unsigned int *>(destination) =
+                    value.bits - 1u;
                 stack.Push('i', sizeof(value.integer), &value.integer);
                 break;
             }
