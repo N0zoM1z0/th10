@@ -118,9 +118,14 @@ int EclVmStackView::EnterFrame(int localBytes)
     // Retail uses native 32-bit stack base/top words for the saved
     // frame slot and the four-byte counter advance.
     const int previousTop = stackTop;
-    const int localTop = static_cast<int>(
+    // The serialized stack top is an i386 word. Preserve the exact signed
+    // bit pattern after modulo-32 addition without converting an out-of-range
+    // unsigned result to int (which is implementation-defined in C++).
+    const unsigned int nativeBits =
         static_cast<unsigned int>(previousTop) +
-        static_cast<unsigned int>(localBytes));
+        static_cast<unsigned int>(localBytes);
+    int localTop;
+    memcpy(&localTop, &nativeBits, sizeof(localTop));
     if (localTop >= 0x1000)
         return -1;
 
