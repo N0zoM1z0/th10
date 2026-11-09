@@ -156,9 +156,14 @@ bool TextRenderBufferView::InvertAlpha(int processedRows)
 {
     unsigned short *wordPixels = static_cast<unsigned short *>(pixels);
     // Bitmap row count is a native low-32-bit signed product.
-    int totalBytes = static_cast<int>(
+    // The native bitmap row-byte product is a low-32-bit i386 word.
+    // Copy its signed bit pattern without an implementation-defined
+    // unsigned-to-int conversion when the product exceeds INT_MAX.
+    const unsigned int nativeRowBytes =
         static_cast<unsigned int>(pitch) *
-        static_cast<unsigned int>(processedRows));
+        static_cast<unsigned int>(processedRows);
+    int totalBytes;
+    memcpy(&totalBytes, &nativeRowBytes, sizeof totalBytes);
     unsigned char *bytes = reinterpret_cast<unsigned char *>(wordPixels);
     int index;
     switch (format)
