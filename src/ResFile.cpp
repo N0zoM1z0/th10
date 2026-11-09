@@ -87,7 +87,11 @@ DWORD CMemoryPbgFile::GetSize()
 
 bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
 {
-    LONG signedOffset = (LONG)offset;
+    // Interpret the seek DWORD as one signed native i386 word. Copy the
+    // representation instead of converting an out-of-range unsigned value
+    // to LONG (which is implementation-defined by ISO C++).
+    LONG signedOffset;
+    memcpy(&signedOffset, &offset, sizeof signedOffset);
     unsigned char *position;
     switch (seekFrom)
     {

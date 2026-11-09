@@ -1,0 +1,9 @@
+# MemoryPbgFile::Seek: preserve native signed offset bits
+
+The original Japanese TH10 1.00a, SHA-256 2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040, interprets an incoming DWORD seek offset as a signed 32-bit word for signed acceptance checks, while retaining its original DWORD representation for flat i386 address arithmetic. The maintained C++ formerly assigned (LONG)offset; for values above LONG_MAX this conversion is implementation-defined.
+
+The new C++ copies four bytes from the original DWORD into a LONG using memcpy. Thus the serialized bits and original two's-complement comparison behavior are stated without any signed out-of-range conversion. This does not repair or sanitize the native buffer indexing, negative seek behavior, overflow, or missing bounds checks.
+
+Six genuine pinned MSVC 7.1 normal-COFF experiments compared the prior cast, memcpy bit-copy, union, alias pointer, alias reference, and unsigned intermediary. All emitted the same complete 107-byte Seek function and zero relocations; all remain 100/107 raw target bytes. The seven unresolved offsets are +0x49,+0x51,+0x55,+0x59,+0x5E,+0x61,+0x63, caused by compiler sharing FILE_BEGIN/CURRENT rather than retail FILE_END/CURRENT and the FILE_BEGIN register choice. Therefore this is a source semantic improvement, NOT a new exact owner.
+
+Only affected previously exact file owners are scoped for replay: memory-pbgfile-open, memory-pbgfile-destructor, memory-pbgfile-close, memory-pbgfile-read, memory-pbgfile-tell, memory-pbgfile-get-size, memory-pbgfile-write, win32-resource-pbgfile-open, win32-resource-pbgfile-destructor-00436680, and memory-pbgfile-constructor. Original binary and target hash are not modified. Rebuild with replay-exact-units.py --unit NAME --json. Probe receipt: build/gpt-web/20261109-live/seek-bitcast/results.jsonl. No all-unit cold replay or runnable game claim.
