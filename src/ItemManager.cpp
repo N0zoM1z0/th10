@@ -37,8 +37,8 @@ void GameScoreStateView::AddFaith(int amount)
 {
     // The target adds two 32-bit words before clamping the signed result.
     // Unsigned addition preserves native wrap at the signed bounds.
-    faith = static_cast<int>(static_cast<unsigned int>(faith) +
-        static_cast<unsigned int>(amount / 10));
+    *reinterpret_cast<unsigned int *>(&faith) +=
+        static_cast<unsigned int>(amount / 10);
     if (faith > 99999)
         faith = 99999;
 }
@@ -46,8 +46,8 @@ void GameScoreStateView::AddFaith(int amount)
 void GameScoreStateView::DecayFaith(int amount)
 {
     // Reconstruct the original 32-bit word subtraction before the signed cap.
-    faith = static_cast<int>(static_cast<unsigned int>(faith) -
-        static_cast<unsigned int>(amount / 10));
+    *reinterpret_cast<unsigned int *>(&faith) -=
+        static_cast<unsigned int>(amount / 10);
     if (faith < 5000)
         faith = 5000;
 }
@@ -80,7 +80,8 @@ void GameScoreStateView::SetTimerCurrent(int value)
     }
     timer.current = value;
     // Native timer publication stores the low 32 bits even at INT_MIN.
-    timer.previous = static_cast<int>(static_cast<unsigned int>(value) - 1u);
+    *reinterpret_cast<unsigned int *>(&timer.previous) =
+        static_cast<unsigned int>(value) - 1u;
     timer.subframe = (float)value;
 }
 
