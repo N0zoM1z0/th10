@@ -1408,7 +1408,10 @@ jump_instruction:
 
                 // Retail advances the FORMAT scalar argument index as one
                 // native low-32-bit word before the next signed read.
-                int argumentIndex = 0;
+                // FORMAT consumes argument records by a native 32-bit word
+                // cursor. Use the unsigned count directly: this preserves
+                // wraparound without casting an int local to a pointer.
+                unsigned int argumentIndex = 0;
                 while (cursor != NULL) {
                     const char *percent = strchr(cursor, '%');
                     if (percent == NULL)
@@ -1455,7 +1458,7 @@ jump_instruction:
                                         static_cast<unsigned int>(
                                             sizeof(EclVmFormatArgumentView) /
                                             sizeof(int))) * 4u)->real));
-                            ++*reinterpret_cast<unsigned int *>(&argumentIndex);
+                            ++argumentIndex;
                         } else {
                             EclDebugTrace(scratch, ReadIntValue(
                                 argumentIndex + 1u,
@@ -1469,7 +1472,7 @@ jump_instruction:
                                         static_cast<unsigned int>(
                                             sizeof(EclVmFormatArgumentView) /
                                             sizeof(int))) * 4u)->integer));
-                            ++*reinterpret_cast<unsigned int *>(&argumentIndex);
+                            ++argumentIndex;
                         }
                         break;
                     }
