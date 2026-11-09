@@ -306,7 +306,9 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
         if (row.activeFrames < 215999999)
             ++row.activeFrames;
     }
-    if (*reinterpret_cast<int *>(reinterpret_cast<u8 *>(g_EnemyManager) + 0x10) == 0 &&
+    // The target reads EnemyManager+0x10, which is the first special enemy
+    // pointer, not the manager's activeEnemyCount at +0x60.
+    if (g_EnemyManager->specialEnemySlots[0] == NULL &&
         g_GuiView->message == NULL &&
         manager->stageTimer.current >= 90)
         GameUpdateFaithDecay(g_GameStageState);
@@ -316,6 +318,8 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
     return 1;
 }
 
+typedef char GameManagerPrimaryEnemySlotAt10[
+    (offsetof(EnemyManagerView, specialEnemySlots) == 0x10) ? 1 : -1];
 typedef char GameManagerModeAt5C[(offsetof(GameManager, initializationMode) == 0x5c) ? 1 : -1];
 typedef char GameChainOwnerAt20[(offsetof(GameChainElementView, owner) == 0x20) ? 1 : -1];
 
