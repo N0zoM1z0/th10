@@ -1,0 +1,6 @@
+{
+  "resources/th10.exe": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "src/AnmManager.cpp": "5e6614c029bb9de1bb18fe84e3cbf08ae0f5ab60519a122b0274f87864acf2a6",
+  "src/AnmManager.hpp": "2114f662b70dfd155db6b4c7ae12ec4648d6ef82d9defe9cab69a662b2601663",
+  "config/match-units.toml": "094e38b360b4dae6828b0cb04523e0f66fcb8d0cfdb8f76f79439532d416ffac"
+}

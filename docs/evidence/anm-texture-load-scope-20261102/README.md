@@ -1,3 +1,8 @@
+> **Historical 242/243 frontier.** This document records an earlier
+> compiler/source epoch. The complete 243-byte uploader was recovered
+> as exact on 2026-11-09; see
+> [the current exact proof](../anm-texture-load-exact-20261109/README.md).
+
 # TH10 ANM non-region texture load: independent frame recovery (2026-11-02)
 
 AnmRenderManagerView::LoadTexture at target 0x00446C70..0x00446D62

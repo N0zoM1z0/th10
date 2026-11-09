@@ -74,3 +74,15 @@ Reproduce using only the affected graph:
 
 Neither this proof nor the source reconstruction establishes original
 historical TU ownership, whole-game execution, or runtime equivalence.
+
+
+## Current-source preservation after recovering neighboring LoadTexture
+
+On 2026-11-09 the same typed THTX accessor was moved before both upload
+owners, and the first width read in LoadTexture was switched to it. The
+selected newly compiled ANM texture-producer image reproduces this region
+**320/320 exact** while the adjacent LoadTexture is now **243/243 exact**.
+The current-source guard is independently preserved in
+../anm-texture-load-exact-20261109/guard-anm-resource-load-texture-region.json.
+The original two exact owner reports above remain source-pinned historical
+receipts for their preceding checkpoint, not today's linked image.

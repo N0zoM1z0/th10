@@ -1674,6 +1674,13 @@ static int NormalizeAnmTextureFormat(int format)
 // Target 0x00446C70 uploads either an external image or the embedded texture
 // payload of one raw ANM entry into an existing texture. The target keeps the
 // otherwise-unused argument present in the source ABI.
+static __forceinline AnmTextureHeaderView *AnmGetThtx(
+    AnmRawEntryView *rawEntry)
+{
+    return reinterpret_cast<AnmTextureHeaderView *>(
+        reinterpret_cast<unsigned char *>(rawEntry) + rawEntry->textureOffset);
+}
+
 int AnmRenderManagerView::LoadTexture(
     AnmTextureEntryView *entry, unsigned char *data, int size, int format,
     int unused, int hasData)
@@ -1702,7 +1709,7 @@ int AnmRenderManagerView::LoadTexture(
             data + rawEntry->textureOffset);
         sourceRect.left = 0;
         sourceRect.top = 0;
-        sourceRect.right = header->width;
+        sourceRect.right = AnmGetThtx(rawEntry)->width;
         sourceRect.bottom = header->height;
         D3DXLoadSurfaceFromMemory(
             surface, NULL, NULL,
@@ -1723,13 +1730,6 @@ int AnmRenderManagerView::LoadTexture(
 // Keep an actual typed ANM-entry accessor: the initial width read uses this
 // accessor whereas later loads use the cached THTX header pointer. This
 // mirrors the source-level expression lifetimes selected by retail LTCG.
-static __forceinline AnmTextureHeaderView *AnmGetThtx(
-    AnmRawEntryView *rawEntry)
-{
-    return reinterpret_cast<AnmTextureHeaderView *>(
-        reinterpret_cast<unsigned char *>(rawEntry) + rawEntry->textureOffset);
-}
-
 int AnmRenderManagerView::LoadTextureRegion(
     AnmTextureEntryView *entry, unsigned char *data, int size, int format,
     int unused, int hasData, int top)

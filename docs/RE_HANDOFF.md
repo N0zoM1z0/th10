@@ -61,7 +61,20 @@ scripts/repo-python scripts/ci.py
 nonexact backlog 155. See generated [PROGRESS.md](PROGRESS.md), not the
 figures in historic experiment descriptions below.
 
-## 2026-11-09 exact ANM texture-region uploader
+## 2026-11-09 exact ANM texture pair: 243 and 320 bytes
+
+Both adjacent TH10 texture uploads now exactly reconstruct in a pinned
+single-TU AsciiManager LTCG producer. LoadTexture @0x00446C70 is
+**243/243 exact** (8 original fields) and LoadTextureRegion @0x00446D70
+is **320/320 exact** (8 fields). The shared natural typed AnmGetThtx
+accessor for the first source-width read restores the retail MOV/LEA pair
+in both cases. Both were independently double-proved in selected-only
+builds; the latest single-TU source image also keeps three texture creators
+132/132, 264/264, and 41/41 exact: **1000/1000 original bytes in five
+separate functions**. No full cold replay was performed.
+Evidence: [exact 243-byte uploader](evidence/anm-texture-load-exact-20261109/README.md)
+and [exact 320-byte region uploader](evidence/anm-texture-region-exact-20261109/README.md).
+
 
 The complete AnmRenderManagerView::LoadTextureRegion @0x00446D70 is now
 **320/320 exact** in two independent selected-only canonical linked-PE
