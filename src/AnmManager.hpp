@@ -630,7 +630,8 @@ struct AnmSpriteView;
 struct AnmVmView;
 struct AnmLoadedView;
 struct AnmTextureEntryView;
-// Retail 0x401DE0 is the renderer manager's fastcall VM initializer.
+// Retail 0x401DE0 is the Entity_Init-style fastcall initializer; the VM is in EDX.
+__declspec(noinline) void __fastcall AnmVmInitialize(void *unused, AnmVmView *vm);
 
 
 struct AnmVmLayerNodeView
@@ -656,7 +657,7 @@ struct AnmVmView
 {
     AnmVmView();
     ~AnmVmView();
-    void Initialize();
+    void Initialize() { AnmVmInitialize(0, this); }
     int InitializePulsingRadialTrail();
     float GetFloatVar(float variable);
     int GetIntVar(int variable);
@@ -791,6 +792,39 @@ struct AnmVmView
     unsigned char glyphWidth;
     unsigned char glyphHeight;
     unsigned char unknown3A2[0x00a];
+
+    // Script-loader accessors preserve the original Entity view's lvalue
+    // aliases at the target's independently observed byte offsets.
+    unsigned int &AnimationFlags()
+    {
+        return *reinterpret_cast<unsigned int *>(
+            reinterpret_cast<unsigned char *>(this) + 0x35c);
+    }
+    unsigned short &ScriptResourceId()
+    {
+        return *reinterpret_cast<unsigned short *>(
+            reinterpret_cast<unsigned char *>(this) + 0x386);
+    }
+    short &ScriptIndex()
+    {
+        return *reinterpret_cast<short *>(
+            reinterpret_cast<unsigned char *>(this) + 0x38a);
+    }
+    void *&ScriptResource()
+    {
+        return *reinterpret_cast<void **>(
+            reinterpret_cast<unsigned char *>(this) + 0x308);
+    }
+    void *&ScriptBase()
+    {
+        return *reinterpret_cast<void **>(
+            reinterpret_cast<unsigned char *>(this) + 0x38c);
+    }
+    void *&ScriptCursor()
+    {
+        return *reinterpret_cast<void **>(
+            reinterpret_cast<unsigned char *>(this) + 0x390);
+    }
 };
 
 typedef char AnmVmViewSizeIs3AC[
@@ -948,7 +982,6 @@ struct AnmLoadedView
     void Release();
     int SetSprite(AnmVmView *vm, int spriteIndex);
     __declspec(noinline) void InitializeVm(AnmVmView *vm, int scriptIndex);
-    void InitializeAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
     void SetAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
     void SetAndExecuteScriptIdx(AnmVmView *vm, int scriptIndex);
     AnmVmIdView CreateVmVariant0(int scriptIndex, unsigned int renderLayer);
@@ -1275,8 +1308,6 @@ struct AnmRenderManagerView
 
     AnmRenderManagerView();
     ~AnmRenderManagerView();
-    __declspec(noinline) void __fastcall InitializeVm(AnmVmView *vm);
-
     void SetupVertexBuffer();
     void ApplyTextureAlphaBleed(AnmTextureEntryView *entry);
     int LoadTexture(
@@ -1533,14 +1564,6 @@ typedef char AnmPhotoBlendFarColorAt18[
 extern AnmRenderManagerView *g_AnmRenderManagerView;
 __declspec(noinline) void __stdcall EntityStartScript_00404f30(
     AnmLoadedView *resource, AnmVmView *entity, int scriptIndex);
-__forceinline void __fastcall AnmVmInitialize(void *unused, AnmVmView *vm)
-{
-    g_AnmRenderManagerView->InitializeVm(vm);
-}
-inline void AnmVmView::Initialize()
-{
-    AnmVmInitialize(0, this);
-}
 extern D3d9DeviceView *g_Direct3DDevice;
 extern AnmRenderVertexView g_AnmQuadVertices[4];
 extern AnmRenderVertexNoDiffuseView g_AnmQuadVerticesNoDiffuse[4];

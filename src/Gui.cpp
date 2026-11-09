@@ -1,6 +1,7 @@
 #include "GuiScore.hpp"
 #include "EnemySoundQueue.hpp"
 #include "Main.hpp"
+#include "AnmLoadedStartScript.hpp"
 #include "Gui.hpp"
 #include "Chain.hpp"
 #include "Player.hpp"
@@ -1857,23 +1858,17 @@ void GameResetGui(GuiView *gui)
     {
         for (int i = 0; i < 10; ++i)
         {
-            gui->frontAnm->InitializeAndExecuteScriptIndex(
-                &gui->displayVms0[i], i + 10);
-            gui->frontAnm->InitializeAndExecuteScriptIndex(
-                &gui->displayVms1[i], i + 20);
+            StartAnmLoadedScript(gui->frontAnm, &gui->displayVms0[i], i + 10);
+            StartAnmLoadedScript(gui->frontAnm, &gui->displayVms1[i], i + 20);
         }
         for (int i = 0; i < 9; ++i)
-            gui->frontAnm->InitializeAndExecuteScriptIndex(
-                &gui->displayVms2[i], i + 30);
+            StartAnmLoadedScript(gui->frontAnm, &gui->displayVms2[i], i + 30);
         for (int i = 0; i < 4; ++i)
-            gui->frontAnm->InitializeAndExecuteScriptIndex(
-                &gui->displayVms3[i], i + 47);
+            StartAnmLoadedScript(gui->frontAnm, &gui->displayVms3[i], i + 47);
         for (int i = 0; i < 2; ++i)
-            gui->frontAnm->InitializeAndExecuteScriptIndex(
-                &gui->displayVms4[i], i + 80);
+            StartAnmLoadedScript(gui->frontAnm, &gui->displayVms4[i], i + 80);
         for (int i = 0; i < 7; ++i)
-            gui->frontAnm->InitializeAndExecuteScriptIndex(
-                &gui->displayVms5[i], i + 51);
+            StartAnmLoadedScript(gui->frontAnm, &gui->displayVms5[i], i + 51);
     }
 
     // The target does not clamp the life count to the nine-element array.
@@ -1892,8 +1887,8 @@ void GameResetGui(GuiView *gui)
     if ((g_GameRuntimeFlags & 0x20) != 0)
         gui->frontAnm->CreateVmVariant0(0x71, 15);
 
-    g_AsciiManagerView->asciiAnm->InitializeAndExecuteScriptIndex(
-        &gui->bossPositionVm, 0);
+    StartAnmLoadedScript(
+        g_AsciiManagerView->asciiAnm, &gui->bossPositionVm, 0);
     if (g_GameStartupMode == 1 && g_GuiResetSession->value5C == 0 &&
         g_GameStartupValue474C90 == 0)
         gui->frontAnm->CreateVmVariant0(0x4f, 15);

@@ -6,6 +6,7 @@
 #include "GameStatistics.hpp"
 #include "GameScoreState.hpp"
 #include "Gui.hpp"
+#include "AnmLoadedStartScript.hpp"
 
 #include <stddef.h>
 
@@ -49,9 +50,10 @@ static inline void CopyPanelName(char *destination, const char *source)
         ;
 }
 
-static inline void LoadSpellDigit(AnmVmView *sprite, int script)
+static inline void LoadSpellDigit(
+    AnmLoadedView *resource, AnmVmView *sprite, int script)
 {
-    g_GuiView->frontAnm->InitializeAndExecuteScriptIndex(sprite, script);
+    StartAnmLoadedScript(resource, sprite, script);
 }
 
 static inline void StartSpellStageScript(AnmVmView *sprite, int script)
@@ -149,10 +151,13 @@ void __stdcall EnemyGameStateView::StartSpell(
     }
 
     int i;
-    for (i = 0; i < 8; ++i)
-        LoadSpellDigit(&frontVms[i], i + 58);
-    for (i = 0; i < 5; ++i)
-        LoadSpellDigit(&secondaryFrontVms[i], i + 66);
+    AnmVmView *digitVm = &frontVms[0];
+    for (i = 0; i < 8; ++i, ++digitVm)
+        LoadSpellDigit(g_GuiView->frontAnm, digitVm, i + 58);
+
+    digitVm = &secondaryFrontVms[0];
+    for (i = 0; i < 5; ++i, ++digitVm)
+        LoadSpellDigit(g_GuiView->frontAnm, digitVm, i + 66);
 
     panelVmIds[0] = CreatePanelAnimation(g_AsciiManagerView->asciiAnm, 1);
     panelVmIds[1] = CreatePanelAnimation(g_AsciiManagerView->textAnm, 72);

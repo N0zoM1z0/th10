@@ -1,4 +1,5 @@
 #include "AnmManager.hpp"
+#include "AnmLoadedStartScript.hpp"
 #include "EnemyLaser.hpp"
 #include "EnemyLaserLine.hpp"
 #include "EnemyLaserType1.hpp"
@@ -588,7 +589,7 @@ int EnemyLaserType1View::CheckCollisionCircle(
             vm->positionOffset.x = samplePosition->x + 224.0f;
             vm->positionOffset.z = samplePosition->z;
             vm->positionOffset.y = samplePosition->y + 16.0f;
-            resource->InitializeAndExecuteScriptIndex(vm, scriptIndex);
+            StartAnmLoadedScript(resource, vm, scriptIndex);
             g_AnmRenderManagerView->AddVmVariant0(vm);
         }
         sample += step;

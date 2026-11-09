@@ -1,3 +1,4 @@
+#include "AnmLoadedStartScript.hpp"
 #include "EnemyLaserLine.hpp"
 #include "ItemManager.hpp"
 
@@ -30,7 +31,7 @@ int EnemyLaserLineView::Clear(int spawnItems)
             vm->positionOffset.x = point.x + 224.0f;
             vm->positionOffset.y = point.y + 16.0f;
             vm->positionOffset.z = point.z;
-            resource->InitializeAndExecuteScriptIndex(vm, scriptIndex);
+            StartAnmLoadedScript(resource, vm, scriptIndex);
             g_AnmRenderManagerView->AddVmVariant0(vm);
             if (spawnItems != 0 &&
                 !(point.x + 32.0f <= -192.0f) &&

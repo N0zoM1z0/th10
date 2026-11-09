@@ -1,4 +1,5 @@
 #include "Main.hpp"
+#include "AnmLoadedStartScript.hpp"
 #include "AnmManager.hpp"
 
 #pragma code_seg(".text$00404F30_fn")
@@ -12,6 +13,6 @@ __declspec(noinline) void __stdcall EntityStartScript_00404f30(
     entity->glyphHeight = 0x10;
     entity->glyphWidth = 0x10;
     entity->scriptIndex = static_cast<short>(scriptIndex);
-    resource->InitializeAndExecuteScriptIndex(entity, scriptIndex);
+    StartAnmLoadedScript(resource, entity, scriptIndex);
 }
 #pragma code_seg()

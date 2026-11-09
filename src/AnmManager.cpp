@@ -1,5 +1,6 @@
 #include "GameErrorContext.hpp"
 #include "AnmManager.hpp"
+#include "AnmLoadedStartScript.hpp"
 #include "StageScript.hpp"
 #include "FileSystem.hpp"
 #include "Chain.hpp"
@@ -2926,33 +2927,6 @@ void AnmLoadedView::SetAndExecuteScriptIndex(
 // Target 0x0043E710 is the allocating-spawn counterpart of the binder above.
 // It preserves the caller-selected position and layer through Initialize,
 // then installs and starts the requested script.
-void AnmLoadedView::InitializeAndExecuteScriptIndex(
-    AnmVmView *vm, int scriptIndex)
-{
-    AnmRawInstructionView *beginningOfScript = AnmScriptAtWord(scripts, scriptIndex);
-
-    if (beginningOfScript == NULL || pendingLoadCount != 0)
-    {
-        memset(vm, 0, sizeof(AnmVmView));
-    }
-    else
-    {
-        vm->Initialize();
-        vm->scriptIndex = static_cast<short>(scriptIndex);
-        vm->anmFileIndex = anmFileIndex;
-        unsigned int flags = vm->flags35C;
-        flags &= ~0x600u;
-        vm->anmFile = this;
-        vm->flags35C = flags;
-        vm->beginningOfScript = AnmScriptAtWord(scripts, scriptIndex);
-        vm->currentInstruction = vm->beginningOfScript;
-        vm->scriptTimer.SetCurrent(0);
-        vm->visible = 0;
-        AnmRenderManagerView::ExecuteScript(vm);
-        ++g_AnmRenderManagerView->scriptsStartedThisFrame;
-    }
-}
-
 // Target 0x0043E8B0 switches an existing VM to another script while retaining
 // its placement and list identity. The script-local timer, color, interpolation
 // state and flip transform are rebuilt before frame zero executes.
@@ -3018,7 +2992,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant0(
     vm->flags35C |= 0x40000000u;
     vm->renderLayer = 0;
     vm->positionOffset = *position;
-    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    StartAnmLoadedScript(this, vm, scriptIndex);
     return g_AnmRenderManagerView->AddVmVariant0(vm);
 }
 
@@ -3033,7 +3007,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant0(
     vm->positionOffset.x = position->x + 224.0f;
     vm->positionOffset.y = position->y + 16.0f;
     vm->positionOffset.z = position->z;
-    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    StartAnmLoadedScript(this, vm, scriptIndex);
     return g_AnmRenderManagerView->AddVmVariant0(vm);
 }
 
@@ -3054,7 +3028,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant1(
     vm->flags35C |= 0x40000000u;
     vm->renderLayer = 0;
     vm->positionOffset = *position;
-    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    StartAnmLoadedScript(this, vm, scriptIndex);
     return g_AnmRenderManagerView->AddVmVariant1(vm);
 }
 
@@ -3069,7 +3043,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant1(
     vm->positionOffset.x = position->x + 224.0f;
     vm->positionOffset.y = position->y + 16.0f;
     vm->positionOffset.z = position->z;
-    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    StartAnmLoadedScript(this, vm, scriptIndex);
     return g_AnmRenderManagerView->AddVmVariant1(vm);
 }
 
@@ -3090,7 +3064,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant2(
     vm->flags35C |= 0x40000000u;
     vm->renderLayer = 0;
     vm->positionOffset = *position;
-    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    StartAnmLoadedScript(this, vm, scriptIndex);
     return g_AnmRenderManagerView->AddVmVariant2(vm);
 }
 
@@ -3105,7 +3079,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant2(
     vm->positionOffset.x = position->x + 224.0f;
     vm->positionOffset.y = position->y + 16.0f;
     vm->positionOffset.z = position->z;
-    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    StartAnmLoadedScript(this, vm, scriptIndex);
     return g_AnmRenderManagerView->AddVmVariant2(vm);
 }
 
@@ -3126,7 +3100,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant3(
     vm->flags35C |= 0x40000000u;
     vm->renderLayer = 0;
     vm->positionOffset = *position;
-    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    StartAnmLoadedScript(this, vm, scriptIndex);
     return g_AnmRenderManagerView->AddVmVariant3(vm);
 }
 
@@ -3141,7 +3115,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant3(
     vm->positionOffset.x = position->x + 224.0f;
     vm->positionOffset.y = position->y + 16.0f;
     vm->positionOffset.z = position->z;
-    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    StartAnmLoadedScript(this, vm, scriptIndex);
     return g_AnmRenderManagerView->AddVmVariant3(vm);
 }
 

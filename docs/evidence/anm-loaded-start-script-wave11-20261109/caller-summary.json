@@ -1,0 +1,82 @@
+[
+  {
+    "unit": "anm-create-vm-screen-variant0",
+    "target_address": "0x00448D50",
+    "size": 95,
+    "result": "exact",
+    "matched_bytes": 95,
+    "linkages": 5
+  },
+  {
+    "unit": "anm-create-vm-screen-variant1",
+    "target_address": "0x00448FB0",
+    "size": 95,
+    "result": "exact",
+    "matched_bytes": 95,
+    "linkages": 5
+  },
+  {
+    "unit": "anm-create-vm-screen-variant2",
+    "target_address": "0x00448E80",
+    "size": 95,
+    "result": "exact",
+    "matched_bytes": 95,
+    "linkages": 5
+  },
+  {
+    "unit": "anm-create-vm-screen-variant3",
+    "target_address": "0x004490E0",
+    "size": 95,
+    "result": "exact",
+    "matched_bytes": 95,
+    "linkages": 5
+  },
+  {
+    "unit": "anm-create-vm-world-variant0",
+    "target_address": "0x00448DB0",
+    "size": 118,
+    "result": "exact",
+    "matched_bytes": 118,
+    "linkages": 7
+  },
+  {
+    "unit": "anm-create-vm-world-variant1",
+    "target_address": "0x00449010",
+    "size": 118,
+    "result": "exact",
+    "matched_bytes": 118,
+    "linkages": 7
+  },
+  {
+    "unit": "anm-create-vm-world-variant2",
+    "target_address": "0x00448EE0",
+    "size": 118,
+    "result": "exact",
+    "matched_bytes": 118,
+    "linkages": 7
+  },
+  {
+    "unit": "anm-create-vm-world-variant3",
+    "target_address": "0x00449140",
+    "size": 118,
+    "result": "exact",
+    "matched_bytes": 118,
+    "linkages": 7
+  },
+  {
+    "unit": "anm-loaded-initialize-vm",
+    "target_address": "0x00449870",
+    "size": 217,
+    "result": "exact",
+    "matched_bytes": 217,
+    "linkages": 1
+  },
+  {
+    "unit": "anm-vm-initialize-private",
+    "target_address": "0x00401DE0",
+    "size": 273,
+    "result": "exact",
+    "matched_bytes": 273,
+    "linkages": 0
+  }
+]

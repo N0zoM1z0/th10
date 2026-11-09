@@ -1,5 +1,6 @@
 #include "AnmRectangle.hpp"
 #include "Main.hpp"
+#include "AnmLoadedStartScript.hpp"
 #include "GameManager.hpp"
 #include "ResultMenu.hpp"
 #include "EnemyGameState.hpp"
@@ -543,7 +544,8 @@ void __stdcall PlayerHandleCollisionHit(Player *player)
     if (g_GameManager != NULL && (g_GameManager->m_Flags & 0x200u) == 0)
         reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(4, 0);
     player->highlightTimer.SetCurrent(6);
-    static_cast<AnmLoadedView *>(player->resource)->InitializeAndExecuteScriptIndex(
+    StartAnmLoadedScript(
+        static_cast<AnmLoadedView *>(player->resource),
         reinterpret_cast<AnmVmView *>(&player->drawVm), 0);
 
     EnemyGameStateView *panel = g_EnemyGameState;
@@ -574,7 +576,8 @@ void __stdcall PlayerTransitionToState2(Player *player)
     player->runtimeState = 2;
     player->updateTimer1.SetCurrent(0);
     player->highlightTimer.SetCurrent(180);
-    reinterpret_cast<AnmLoadedView *>(player->resource)->InitializeAndExecuteScriptIndex(
+    StartAnmLoadedScript(
+        reinterpret_cast<AnmLoadedView *>(player->resource),
         reinterpret_cast<AnmVmView *>(&player->drawVm), 0);
     for (int i = 0; i < 4; ++i)
     {
@@ -1245,8 +1248,8 @@ int PlayerUpdateMovementAndOptions(Player *player)
     }
 
     if (horizontalSpeed < 0 && player->previousHorizontalSpeed >= 0)
-        static_cast<AnmLoadedView *>(player->resource)->
-            InitializeAndExecuteScriptIndex(
+        StartAnmLoadedScript(
+                static_cast<AnmLoadedView *>(player->resource),
                 reinterpret_cast<AnmVmView *>(&player->drawVm),
                 PLAYER_MAIN_VM_MOVE_LEFT);
     do
@@ -1263,17 +1266,17 @@ int PlayerUpdateMovementAndOptions(Player *player)
             if (horizontalSpeed != 0)
                 break;
             if (player->previousHorizontalSpeed < 0)
-                static_cast<AnmLoadedView *>(player->resource)->
-                    InitializeAndExecuteScriptIndex(
-                        reinterpret_cast<AnmVmView *>(&player->drawVm),
-                        PLAYER_MAIN_VM_STOP_LEFT);
+                StartAnmLoadedScript(
+                    static_cast<AnmLoadedView *>(player->resource),
+                    reinterpret_cast<AnmVmView *>(&player->drawVm),
+                    PLAYER_MAIN_VM_STOP_LEFT);
             if (player->previousHorizontalSpeed <= 0)
                 break;
             scriptIndex = PLAYER_MAIN_VM_STOP_RIGHT;
         }
-        static_cast<AnmLoadedView *>(player->resource)->
-            InitializeAndExecuteScriptIndex(
-                reinterpret_cast<AnmVmView *>(&player->drawVm), scriptIndex);
+        StartAnmLoadedScript(
+            static_cast<AnmLoadedView *>(player->resource),
+            reinterpret_cast<AnmVmView *>(&player->drawVm), scriptIndex);
     } while (false);
 
     player->previousHorizontalSpeed = horizontalSpeed;
