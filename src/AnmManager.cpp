@@ -1720,6 +1720,16 @@ int AnmRenderManagerView::LoadTexture(
 
 // Target 0x00446D70 is the vertically-offset form used when several source
 // images share one destination texture.
+// Keep an actual typed ANM-entry accessor: the initial width read uses this
+// accessor whereas later loads use the cached THTX header pointer. This
+// mirrors the source-level expression lifetimes selected by retail LTCG.
+static __forceinline AnmTextureHeaderView *AnmGetThtx(
+    AnmRawEntryView *rawEntry)
+{
+    return reinterpret_cast<AnmTextureHeaderView *>(
+        reinterpret_cast<unsigned char *>(rawEntry) + rawEntry->textureOffset);
+}
+
 int AnmRenderManagerView::LoadTextureRegion(
     AnmTextureEntryView *entry, unsigned char *data, int size, int format,
     int unused, int hasData, int top)
@@ -1756,7 +1766,7 @@ int AnmRenderManagerView::LoadTextureRegion(
             data + rawEntry->textureOffset);
         sourceRect.left = 0;
         sourceRect.top = 0;
-        sourceRect.right = header->width;
+        sourceRect.right = AnmGetThtx(rawEntry)->width;
         sourceRect.bottom = header->height;
         dataDestinationRect.left = 0;
         dataDestinationRect.top = top;

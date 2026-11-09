@@ -1,3 +1,8 @@
+> **Historical 319/320 frontier.** This 2026-11-02 report describes an
+> earlier source epoch. The complete 320-byte owner was independently
+> recovered as exact on 2026-11-09; see
+> [the newer exact source proof](../anm-texture-region-exact-20261109/README.md).
+
 # TH10 ANM texture region: branch-owned frame recovery (2026-11-02)
 
 AnmRenderManagerView::LoadTextureRegion at target 0x00446D70..0x00446EAF

@@ -61,6 +61,17 @@ scripts/repo-python scripts/ci.py
 nonexact backlog 155. See generated [PROGRESS.md](PROGRESS.md), not the
 figures in historic experiment descriptions below.
 
+## 2026-11-09 exact ANM texture-region uploader
+
+The complete AnmRenderManagerView::LoadTextureRegion @0x00446D70 is now
+**320/320 exact** in two independent selected-only canonical linked-PE
+replays, with all eight genuine original target addresses bound and
+**288/288 ordinary bytes** equal. This closes the previous 319-byte owner
+frontier: an inline typed AnmGetThtx accessor for the first source-width
+read restores the original ECX/LEA schedule without target-byte copying.
+All three adjacent exact ANM texture helpers retain **437/437 bytes**.
+See [the exact new proof](evidence/anm-texture-region-exact-20261109/README.md).
+
 ## 2026-11-09 ANM loader and spell-HUD owners (current source)
 
 `AnmVmInitialize @0x00401DE0` is restored as a global fastcall entry with
