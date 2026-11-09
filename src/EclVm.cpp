@@ -356,8 +356,7 @@ int EclVmContext::ReadInt(unsigned int index)
                     reinterpret_cast<const unsigned char *>(
                     reinterpret_cast<unsigned int>(stack.data) +
                     static_cast<unsigned int>(stack.stackTop)))->bits;
-                stack.stackTop = static_cast<int>(
-                    static_cast<unsigned int>(stack.stackTop) - 4u);
+                *reinterpret_cast<unsigned int *>(&stack.stackTop) -= 4u;
                 // The caller has just popped a value DWORD; the preceding
                 // four-byte slot carries its one-byte type tag.
                 if (reinterpret_cast<const EclVmStackTypeSlotView *>(
