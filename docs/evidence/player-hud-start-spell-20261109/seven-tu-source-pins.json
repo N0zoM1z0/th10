@@ -1,0 +1,17 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "selected_source_sha256": "48147977fb1f6d2a84eea3ac7cf053fa889cf6b8e2706de9d71d1b0357469a13",
+  "source_sha256": {
+    "src/AnmManager.cpp": "dc19e5895026b6819cf643944ee24fbe5582cfc7422fd5a08519f9d30f543141",
+    "src/AnmVmCreate.cpp": "54bb9f3e7a81b4b4a21c018db6177042705384f80af8c9054723fce92ed8f6c8",
+    "src/AnmVmInitialize.cpp": "a94ede563fc101b5ca4e12c4008b38c86f602002051c189e6328819ba5e37f9b",
+    "src/AnmVmStartScript.cpp": "870d36c5cfda3ca4581efcedd380fc0f61149544707134d1ad729a69f8d2867f",
+    "src/PlayerHudStartSpell.cpp": "48147977fb1f6d2a84eea3ac7cf053fa889cf6b8e2706de9d71d1b0357469a13",
+    "src/AnmLoadedStartScript.cpp": "2c29caeaa962b1f51ce48cca10adcfa83536bd9556fdc28ffef3b6613756feee",
+    ".analysis/gpt-web/20261109/AnmLoadedStartScriptContext.cpp": "35ba2219da3103a0392651f368eff7c01fe51ead33d8f96a80d2c84a2b4478d8"
+  },
+  "candidate_image_sha256": "c3284ac87c021fc9bc08f5ea2b942f163580c54640da4c27a7639946f4669c58",
+  "entry_symbol": "?StartSpell@EnemyGameStateView@@QAGXHPBDH@Z",
+  "result": "NONEXACT",
+  "basis": "complete PDB contribution for selected function, candidate-defined field exclusion"
+}
