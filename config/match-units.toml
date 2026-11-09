@@ -3581,6 +3581,32 @@ target_address = 0x00448B40
 size = 112
 linkages = []
 
+[units.anm-loaded-initialize-vm]
+artifact_kind = "linked-pe"
+source = "src/AnmVmCreate.cpp"
+support_sources = ["src/AnmSpecialVmCreate.cpp", "src/Ending.cpp", "src/GuiMessage.cpp", "src/GuiSpellNotice.cpp", "src/Startup.cpp", "src/FrontEnd.cpp", "src/AnmManager.cpp", "src/GameUiVmInterrupts.cpp", "src/Gui.cpp", "src/EnemyLaser.cpp", "src/LaserClear.cpp", "src/LaserType1Clear.cpp", "src/Player.cpp", "src/EnemyEclDispatcher.cpp", "src/StageScript.cpp", "src/StageAnimationSlots.cpp", "src/BulletManager.cpp", "src/BulletTransform.cpp", "src/ItemManager.cpp", "src/LaserInitialize.cpp", "src/LaserScript.cpp", "src/LaserType1.cpp"]
+output_dir = "build/match-linked/AnmLoadedInitializeVm"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+functions = ["AnmLoadedView::InitializeVm"]
+symbol = "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+target_address = 0x00449870
+size = 217
+linkages = [
+  { offset = 0xCD, type = "REL32", symbol = "?SetAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z", target = 0x0043E7E0 },
+]
+
+[units.anm-loaded-initialize-vm.support_profiles]
+"src/Ending.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+"src/Startup.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+"src/FrontEnd.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+"src/Gui.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+"src/ItemManager.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+"src/Player.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+"src/StageAnimationSlots.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+
 [units.anm-loaded-create-vm-variant0]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"

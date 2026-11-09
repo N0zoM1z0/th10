@@ -1,14 +1,31 @@
 #include "AnmManager.hpp"
-// Target 0x00449870 prepares a newly allocated VM for a loaded script. The
-// allocator owns the full VM reset; this phase initializes spawn-local state
-// before handing the script index to the loaded-resource executor.
+// The value wrapper preserves the original flag word as a distinct value
+// while the three animation-space vectors are reset. Besides matching the
+// target's write order, this keeps the flag update from collapsing into the
+// allocator's surrounding state setup.
+struct AnmVmFlagValue
+{
+    unsigned int value;
+
+    AnmVmFlagValue(unsigned int bits) : value(bits) {}
+    AnmVmFlagValue operator|(unsigned int bits) const
+    {
+        return AnmVmFlagValue(value | bits);
+    }
+};
+
+// Target 0x00449870 initializes the existing object's position, base position
+// and render offset, then binds the selected script without replacing its
+// render-layer or list identity.
 __declspec(noinline) void AnmLoadedView::InitializeVm(AnmVmView *vm, int scriptIndex)
 {
+    AnmVmFlagValue flags =
+        *reinterpret_cast<AnmVmFlagValue *>(&vm->flags35C);
     vm->positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
     vm->position = AnmFloat3View(0.0f, 0.0f, 0.0f);
-    vm->alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);
-    vm->flags35C |= 0x40000000u;
+    vm->flags35C = (flags | 0x40000000u).value;
     vm->scriptIndex = static_cast<short>(scriptIndex);
+    vm->alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);
     vm->glyphHeight = 0x10;
     vm->glyphWidth = 0x10;
     SetAndExecuteScriptIndex(vm, scriptIndex);
