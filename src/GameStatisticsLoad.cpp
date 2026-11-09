@@ -69,10 +69,16 @@ int GameStatisticsOwner::Load42B030()
             }
             else
                 goto fallback;
-            remaining -= record->unknown08;
+            // Stream records use native low-32-bit size words. An unsigned
+            // view preserves the original wrapped subtraction and its signed
+            // negative check, without an out-of-range integer conversion.
+            *reinterpret_cast<unsigned int *>(&remaining) -= record->unknown08;
             if (remaining < 0)
                 goto fallback;
-            cursor += record->unknown08;
+            // A malformed recorded length may advance beyond the backing
+            // array; the retail cursor is a flat Win32 address word.
+            cursor = reinterpret_cast<unsigned char *>(
+                reinterpret_cast<unsigned int>(cursor) + record->unknown08);
         }
         return 0;
     }
