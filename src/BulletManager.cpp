@@ -691,8 +691,12 @@ int BulletManagerView::SpawnSingleBullet(
         // Retail LEA EAX,[ECX+1] uses the low 32-bit word before
         // the original signed rounding/division of an odd spawn index.
         if ((descriptor->count1 & 1) != 0)
-            angle += static_cast<float>((static_cast<int>(static_cast<unsigned int>(index1) + 1u)) / 2) *
+        {
+            const unsigned int nextIndexBits = static_cast<unsigned int>(index1) + 1u;
+            const int nextIndex = *reinterpret_cast<const int *>(&nextIndexBits);
+            angle += static_cast<float>((nextIndex) / 2) *
                 descriptor->angleStep;
+        }
         else
             angle += static_cast<float>(index1 / 2) *
                 descriptor->angleStep + descriptor->angleStep * 0.5f;
@@ -776,9 +780,8 @@ int BulletManagerView::SpawnSingleBullet(
     switch (BulletNativeTableRead(g_BulletEffectMode, static_cast<int>(descriptor->bulletType)))
     {
     case 0:
-        bullet->effectScript = static_cast<int>(
-            static_cast<unsigned int>(static_cast<int>(descriptor->color)) * 2u +
-            0x11u);
+        *reinterpret_cast<unsigned int *>(&bullet->effectScript) =
+            static_cast<unsigned int>(static_cast<int>(descriptor->color)) * 2u + 0x11u;
         break;
     case 1:
         bullet->effectScript = BulletNativeTableRead(g_BulletEffectScriptByColor, static_cast<int>(descriptor->color));
