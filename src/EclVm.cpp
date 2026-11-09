@@ -467,8 +467,8 @@ float *EclVmContext::ResolveFloat(unsigned int index)
 static void AddEclSubroutineCount(int &count, int added)
 {
     // TH10 accumulates the number of named scripts as a 32-bit word.
-    count = static_cast<int>(static_cast<unsigned int>(count) +
-        static_cast<unsigned int>(added));
+    *reinterpret_cast<unsigned int *>(&count) +=
+        static_cast<unsigned int>(added);
 }
 
 
@@ -543,7 +543,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                 name = reinterpret_cast<const char *>(
                     reinterpret_cast<unsigned int>(name) +
                     static_cast<unsigned int>(strlen(name)) + 1u);
-                index = static_cast<int>(static_cast<unsigned int>(index) + 1u);
+                ++*reinterpret_cast<unsigned int *>(&index);
                 scriptData = reinterpret_cast<void *>(
                     reinterpret_cast<unsigned int>(offsetCursor) +
                     static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
@@ -574,7 +574,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                     {
                         if (strcmp(name, entry->name) <= 0)
                             break;
-                        insertionIndex = static_cast<int>(static_cast<unsigned int>(insertionIndex) + 1u);
+                        ++*reinterpret_cast<unsigned int *>(&insertionIndex);
                         entry = reinterpret_cast<EclVmSubroutineEntry *>(
                             reinterpret_cast<unsigned int>(entry) +
                             static_cast<unsigned int>(sizeof(EclVmSubroutineEntry)));
@@ -603,8 +603,8 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
                 scriptData = reinterpret_cast<void *>(
                     reinterpret_cast<unsigned int>(offsetCursor) +
                     static_cast<unsigned int>(sizeof(EclVmSerializedSubroutineOffsetView)));
-                sortedCount = static_cast<int>(static_cast<unsigned int>(sortedCount) + 1u);
-                added = static_cast<int>(static_cast<unsigned int>(added) + 1u);
+                ++*reinterpret_cast<unsigned int *>(&sortedCount);
+                ++*reinterpret_cast<unsigned int *>(&added);
             } while (added < (*EclFileSlotAtWord(&files[0], fileCount))->subroutineCount);
         }
     }
@@ -613,8 +613,7 @@ int EclVmScriptDatabase::AddScriptData(void *scriptData)
     // across the signed boundary. Publish the wrapped word after retaining
     // the old index for the package-load dispatch and result.
     const int result = fileCount;
-    fileCount = static_cast<int>(
-        static_cast<unsigned int>(fileCount) + 1u);
+    ++*reinterpret_cast<unsigned int *>(&fileCount);
     file = (*EclFileSlotAtWord(&files[0], result));
     if (file->includeLength != 0)
     {
