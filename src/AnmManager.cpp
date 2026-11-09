@@ -3202,6 +3202,12 @@ static __forceinline int AnmSignedWordBits(unsigned int bits)
     return value;
 }
 
+static __forceinline int AnmSignedCountMinusOne(int count)
+{
+    const unsigned int nativeBits = static_cast<unsigned int>(count) - 1u;
+    return *reinterpret_cast<const int *>(&nativeBits);
+}
+
 int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
@@ -3904,12 +3910,12 @@ stop:
         // low-32-bit address words, not unchecked C++ array pointers.
         vertexCount = vm->intVar0;
         angleValue = vm->rotation.z;
-        angle = 6.2831855f / (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u));
+        angle = 6.2831855f / (AnmSignedCountMinusOne(vertexCount));
         vertex = static_cast<AnmRenderVertexView *>(vm->generatedVertices);
         textureV = 0.0f;
-        textureStep = static_cast<float>(vm->intVar1) / (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u));
+        textureStep = static_cast<float>(vm->intVar1) / (AnmSignedCountMinusOne(vertexCount));
 
-        for (vertexIndex = 0; vertexIndex < (static_cast<int>(static_cast<unsigned int>(vertexCount) - 1u)); vertexIndex = AnmSignedWordBits(static_cast<unsigned int>(vertexIndex) + 1u))
+        for (vertexIndex = 0; vertexIndex < (AnmSignedCountMinusOne(vertexCount)); vertexIndex = AnmSignedWordBits(static_cast<unsigned int>(vertexIndex) + 1u))
         {
             vertex[0].rhw = 1.0f;
             vertex[0].diffuse.value = vm->primaryColor.value;
