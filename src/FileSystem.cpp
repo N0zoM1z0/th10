@@ -38,7 +38,7 @@ PbgArchive *ArchiveOrDiskPathView::FindArchive()
 
     PbgArchive *archive = g_PbgArchives;
     for (int index = 0; index < g_PbgArchiveCount;
-         index = static_cast<int>(static_cast<unsigned int>(index) + 1u),
+         ++*reinterpret_cast<unsigned int *>(&index),
          archive = reinterpret_cast<PbgArchive *>(
              reinterpret_cast<unsigned int>(archive) + sizeof(PbgArchive)))
     {
