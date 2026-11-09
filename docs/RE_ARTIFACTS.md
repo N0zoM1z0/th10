@@ -1,12 +1,11 @@
 # TH10 ignored artifacts — live next-agent storage and recovery
 
-**Remeasured 2026-11-08 after the second bounded native-trial cleanup.**
-The table immediately below is the current allocation. The subsequent
-2026-11-07 measurements and one-time deletion audits are preserved as
-**historical snapshots**, not current disk usage. Use [RE_HANDOFF.md](RE_HANDOFF.md) for the current
-nonexact frontiers and SHA-pinned source, and
-[PROGRESS.md](PROGRESS.md) for canonical exact counts. Older cleanup
-snapshots are historical evidence, not live disk figures.
+**Remeasured 2026-11-09 after the selective native-trial cleanup.**
+The 2026-11-09 table below is the current allocation. The 2026-11-08 and
+2026-11-07 measurements and deletion audits are preserved as historical
+snapshots, not current disk usage. Use [RE_HANDOFF.md](RE_HANDOFF.md) for
+the current nonexact frontiers and [PROGRESS.md](PROGRESS.md) for canonical
+exact counts.
 
 ## Preserve for the new agent
 
@@ -27,14 +26,61 @@ SHA-256 and VC7.1 profile. Never mix an old PE/PDB with newer source
 hashes, and **never delete the original EXE, private toolchain, canonical
 match-linked graph, Ghidra DB, reference tree or historical archives**.
 
-## Current measured storage and second deletion audit (2026-11-08)
+## Current measured storage and selective native prune (2026-11-09)
 
-The second one-time prune removed only rebuildable ignored `.obj/.exe/.pdb`
-outputs from the fixed 451-root `build/gpt-web/` snapshot. It reviewed 448
-roots and preserved three selected enemy witness graphs. The retained tree
-now occupies **262,840,320 allocated bytes (250.7 MiB)**.
+| Path | Current allocated bytes (du -s -B1) | Approx. MiB | Retention |
+| --- | ---: | ---: | --- |
+| build/gpt-web/ | **313,556,992** | 299.03 | Eight selected diagnostic roots, nested installed/canonical witnesses, MAP/LOG/RSP/JSON/source snapshots and drivers |
+| build/match-linked/ | **134,434,816** | 128.21 | **Preserved canonical build graph** |
+| .analysis/gpt-web/ | **132,583,424** | 126.44 | **Preserved source snapshots, drivers and comparison results** |
+| .analysis/archive/ | **216,694,784** | 206.66 | **All historical compressed archives preserved** |
+| .tools/ | **611,430,400** | 583.11 | **Pinned compiler/toolchain preserved** |
+| _reference/ | **315,129,856** | 300.53 | **Original research/reference preserved** |
+| ghidra-project/ | **10,088,448** | 9.62 | **Original private Ghidra project preserved** |
+| build/pycache/ | removed | — | 250 generated .pyc files removed |
 
-| Path | Current allocated bytes (`du -s -B1`) | Approx. MiB | Retention |
+The 2026-11-09 prune reviewed ignored native outputs in build/gpt-web/ and
+removed **2,622** obsolete .obj/.exe/.pdb files from non-preserved trial
+roots: **2,239 .obj, 191 .exe, 192 .pdb**, totaling **222,426,440
+payload bytes**. Allocated usage fell from **540,475,392** to
+**313,556,992 bytes**, reclaiming **226,918,400 allocated bytes**. All
+MAP/LOG/RSP/JSON/source snapshot files and experiment drivers were retained.
+
+Eight useful diagnostic roots remain intact:
+- enemy-runtime-full-ltcg-callers/
+- 20261108-enemy-runtime-aggregate-sum/
+- 20261108-enemy-dispatch-rank-tail-final/
+- 20261108-anm-initialize-vm-gameui/
+- 20261108-anm-initialize-vm-gameui-callers/
+- 20261108-enemy-begin-spell-20261105-full-snapshot/
+- 20261108-anm-binder-complete-real-callers/
+- 20261108-anm-binder-real-callers/
+
+Nested installed-cold, accepted-exact and canonical-cold directories,
+plus root-level .obj inputs, were preserved. A further **290 Python
+bytecode cache files** were removed (5,243,328 payload bytes), including the
+4.6 MB build/pycache/ payload. The original target, canonical
+build/match-linked/, .analysis/archive/, .tools/, _reference/ and
+ghidra-project/ were measured before and after and remained unchanged.
+The original target still hashes to
+2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
+
+The private file-by-file audit is
+.analysis/maintenance-next-agent-20261109/removed-files.jsonl
+(SHA-256 3b9f4f3346ccca96e1bd0556dc48e1c0fb70be44b719b222d8686f0ee99c5bdc);
+cleanup-summary.json records the complete before/after measurements.
+No backup archive was created. **The manifest is an audit, not a restore
+medium.** Rebuild a removed trial from its retained driver/source snapshot.
+
+## Previous measured storage and second deletion audit (2026-11-08; historical)
+
+At that 2026-11-08 checkpoint, the second one-time prune had removed only
+rebuildable ignored `.obj/.exe/.pdb` outputs from the fixed 451-root
+`build/gpt-web/` snapshot. It reviewed 448 roots and preserved three selected
+enemy witness graphs. The retained tree then occupied **262,840,320
+allocated bytes (250.7 MiB)**.
+
+| Path | Recorded allocated bytes at that checkpoint (`du -s -B1`) | Approx. MiB | Retention |
 | --- | ---: | ---: | --- |
 | `build/gpt-web/` | **262,840,320** | 250.7 | Trial logs/MAPs/sources, three witness graphs, 12 installed-cold files and three root `.obj` inputs |
 | `build/match-linked/` | **128,806,912** | 122.8 | **Preserved complete canonical build graph** |
