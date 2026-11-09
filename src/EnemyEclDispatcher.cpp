@@ -565,7 +565,7 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelBulletPattern(
     }
     return 0;
 }
-extern void __stdcall EnemyBeginSpell(EnemyGameStateView *state, register int spellId, register char *name, int value);
+extern void __stdcall EnemyBeginSpell(EnemyGameStateView *state, int spellId, char *name, int value);
 
 
 extern void EnemyEndSpell(EnemyGameStateView *gameState);

@@ -13,3 +13,13 @@ __declspec(noinline) void AnmLoadedView::InitializeVm(AnmVmView *vm, int scriptI
     vm->glyphWidth = 0x10;
     SetAndExecuteScriptIndex(vm, scriptIndex);
 }
+
+// Keep the loaded-resource initializer address-taken in the LTCG graph.
+// Otherwise LTCG may replace its externally visible thiscall with a private
+// register ABI at internal call sites.
+typedef void (AnmLoadedView::*AnmLoadedVmInitializer)(AnmVmView *, int);
+extern "C" {
+AnmLoadedVmInitializer volatile g_AnmLoadedVmInitializer =
+    &AnmLoadedView::InitializeVm;
+}
+#pragma comment(linker, "/include:_g_AnmLoadedVmInitializer")
